@@ -17,22 +17,25 @@
   <!-- ボディ -->
   <div class="grid grid-cols-1 sm:grid-cols-1 gap-4 p-4">
    <!-- ID表示(開発モード専用) -->
-   <SettingItem
-    v-if="isDev"
-    label="ID"
-    description="ルールの一意識別子"
-    :showReset="false"
-    containerClass="form-control"
+   <div
+    v-if="data.displaySettings.developer.godModeEnabled"
+    class="p-2 bg-warning text-warning-content rounded-md"
    >
-    <div class="flex gap-2 items-center">
-     <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
-      {{ id }}
+    <SettingItem
+     label="ID"
+     description="Q.なぜ変更できる? A.データの見た目が良くなる"
+     :showReset="false"
+     containerClass="form-control"
+    >
+     <div class="flex gap-2 items-center">
+      <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
+       {{ id }}
+      </div>
+      <!-- 編集ボタン -->
+      <IdEditor :currentId="id" :category="category" />
      </div>
-     <!-- 編集ボタン -->
-     <IdEditor :currentId="id" :category="category" />
-    </div>
-   </SettingItem>
-
+    </SettingItem>
+   </div>
    <SettingItem
     label="ルール名"
     description="識別しやすい名前"
@@ -60,6 +63,8 @@ import { RuleType, SelectCategoryType, isDev } from '@/types/';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
+import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { storeToRefs } from 'pinia';
 
 const props = defineProps<{
  modelValue: RuleType;
@@ -69,6 +74,10 @@ const props = defineProps<{
 const emit = defineEmits<{
  'update:modelValue': [value: RuleType];
 }>();
+
+// Store
+const omikujiStore = useOmikujiStore();
+const { data } = storeToRefs(omikujiStore);
 
 // 各プロパティのcomputed getter/setter
 const createComputed = <T extends keyof RuleType>(key: T) =>

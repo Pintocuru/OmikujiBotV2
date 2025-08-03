@@ -5,6 +5,36 @@
    リストのテキスト編集
   </div>
   <div class="card-body">
+   <!-- ゲームスクリプトの説明 -->
+   <div class="alert alert-info w-full">
+    <Info class="w-5 h-5 mt-0.5 shrink-0" />
+    <div class="space-y-1">
+     <p>
+      <code class="label bg-accent text-accent-content"> WordPartyリスト </code>は、任意のWordParty
+      テンプレートを発動させるためのリストです。
+     </p>
+     <p>
+      予めこのリストに記載しておくと、<code class="label bg-accent text-accent-content"
+       >おみくじ設定 > 詳細設定 > Post Actions 編集</code
+      >
+      から
+     </p>
+     <p>このリストに記載された内容を選択することができます。</p>
+     <p class="pt-2">
+      初期設定では、
+      <a
+       href="https://booth.pm/ja/items/6048048"
+       target="_blank"
+       rel="noopener"
+       class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
+      >
+       おみくじBOT用 word-party
+      </a>
+      のデータが入っています。
+     </p>
+    </div>
+   </div>
+
    <!-- テキストエディタ（直接表示） -->
    <div class="mb-2 text-sm text-base-content/70">
     <p>書式: 名前,パターン（1行につき1つ）</p>
@@ -26,6 +56,7 @@
 
 <script setup lang="ts">
 import { WordPartySettings } from '@/types/';
+import { Info } from 'lucide-vue-next';
 
 defineProps<{
  modelValue: string;

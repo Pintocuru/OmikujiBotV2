@@ -21,7 +21,12 @@
   </div>
 
   <!-- ナビゲーションタブ -->
-  <div class="flex w-full justify-center my-6">
+  <div
+   class="flex w-full justify-center my-4 p-2 pt-4 rounded-md"
+   :class="
+    data.displaySettings.developer.godModeEnabled ? ['bg-warning text-accent-content'] : ['border']
+   "
+  >
    <div class="tabs gap-8">
     <button
      v-for="(tab, key) in categoryLabels"
@@ -48,19 +53,26 @@
 
   <!-- スクロール位置に応じて表示されるDock（下部） -->
   <!-- TODO:buttonはコンポーネントで使いまわしして欲しい -->
-  <div v-if="showDock" class="dock dock-xl bg-base-300 fixed bottom-0 left-0 w-full z-40">
+  <div v-if="showDock" class="dock dock-xl z-40">
    <button
     v-for="(tab, key) in categoryLabels"
     :key="key"
-    :class="[
-     'flex flex-col items-center justify-center gap-1 tooltip tooltip-top',
-     selectedCategory === key ? 'dock-active' : ''
-    ]"
+    class="tooltip tooltip-top"
+    :class="
+     data.displaySettings.developer.godModeEnabled ? ['bg-warning text-accent-content'] : ['border']
+    "
     :data-tip="tab.description"
     @click="omikujiStore.selectCategory(key)"
    >
     <component :is="tab.icon" class="size-[1.2em]" />
     <span class="dock-label">{{ tab.label }}</span>
+    <!-- 件数バッジ -->
+    <span
+     v-if="getCategoryItemCount(key) > 0"
+     class="badge badge-xs badge-primary absolute -top-1 -right-1"
+    >
+     {{ getCategoryItemCount(key) }}
+    </span>
    </button>
   </div>
 

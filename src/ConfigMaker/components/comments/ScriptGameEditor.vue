@@ -1,6 +1,9 @@
 <!-- src/configMaker/components/comments/ScriptGameEditor.vue -->
 <template>
- <div class="card bg-base-300 mt-4">
+ <div
+  v-if="data.displaySettings.developer.scriptSettingsEnabled || isScriptEnabled"
+  class="card bg-base-300 mt-4"
+ >
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ゲームスクリプト設定</div>
   <div class="card-body space-y-4">
    <!-- ゲームスクリプトの説明 -->
@@ -26,24 +29,37 @@
    </div>
 
    <!-- スクリプト有効化チェックボックス -->
-   <SettingItem label="ゲームスクリプトを使用" :showReset="false">
-    <label class="label cursor-pointer justify-start gap-3">
-     <input type="checkbox" v-model="isScriptEnabled" class="checkbox checkbox-primary" />
-     <span class="label-text font-medium"
-      >ゲームスクリプトを選択することで、使用できるプレースホルダーが増えます</span
-     >
-    </label>
-   </SettingItem>
+   <div
+    v-if="data.displaySettings.developer.godModeEnabled"
+    class="card-body bg-warning text-warning-content rounded-md"
+   >
+    <SettingItem
+     label="ゲームスクリプトを使用"
+     description="好きなゲームを選んでね!"
+     :showReset="false"
+    >
+     <label class="label cursor-pointer justify-start gap-3">
+      <input type="checkbox" v-model="isScriptEnabled" class="toggle toggle-warning" />
+      <span class="label-text font-medium"
+       >ゲームスクリプトを選択することで、使用できるプレースホルダーが増えます</span
+      >
+     </label>
+    </SettingItem>
+   </div>
 
    <!-- スクリプト選択とパラメータ設定 -->
    <div v-if="isScriptEnabled" class="mt-6 space-y-4">
     <!-- スクリプト選択 -->
     <SettingItem
      label="ゲームスクリプト"
-     :description="'ゲーム結果は、おみくじ設定＞プレースホルダー一覧で出力'"
+     description="ゲーム結果は、おみくじ設定＞プレースホルダー一覧で出力"
      :showReset="false"
     >
-     <select v-model="scriptId" class="select select-bordered w-full">
+     <select
+      :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
+      v-model="scriptId"
+      class="select select-bordered w-full"
+     >
       <option value="">スクリプトを選択してください</option>
       <option v-for="(script, scriptId) in scriptGameMap" :key="scriptId" :value="scriptId">
        {{ scriptId }}
@@ -63,6 +79,7 @@
       <!-- 文字列入力 -->
       <input
        v-if="setting.inputType === 'string'"
+       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
        type="text"
        v-model="scriptParams[setting.key]"
        class="input input-bordered w-full"
@@ -72,6 +89,7 @@
       <!-- 数値入力 -->
       <input
        v-else-if="setting.inputType === 'number'"
+       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
        type="number"
        v-model.number="scriptParams[setting.key]"
        :min="setting.min"
@@ -82,6 +100,7 @@
       <!-- セレクト -->
       <select
        v-else-if="setting.inputType === 'select'"
+       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
        v-model="scriptParams[setting.key]"
        class="select select-bordered w-full"
       >
@@ -118,6 +137,8 @@ import { DefaultTypes } from '@shared/types';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
+import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { storeToRefs } from 'pinia';
 
 const props = defineProps<{
  modelValue: CommentRuleType;
@@ -126,6 +147,10 @@ const props = defineProps<{
 const emit = defineEmits<{
  'update:modelValue': [value: CommentRuleType];
 }>();
+
+// Store
+const omikujiStore = useOmikujiStore();
+const { data } = storeToRefs(omikujiStore);
 
 // スクリプト有効化フラグ
 const isScriptEnabled = computed({

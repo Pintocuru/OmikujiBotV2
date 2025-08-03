@@ -7,8 +7,9 @@
     開発者モード (config.js読み込み)
    </div>
    <div class="card-body">
-    <div class="alert alert-warning mb-4">
-     <div>
+    <div class="alert alert-warning w-full mb-4">
+     <Info class="w-5 h-5 mt-0.5 shrink-0" />
+     <div class="space-y-1">
       <h4 class="font-semibold">⚠️ 開発者モードについて</h4>
       <p class="text-sm mt-2">
        この機能はWordPartyのconfig.jsファイルを読み込みます。<br />
@@ -52,6 +53,8 @@
 </template>
 
 <script setup lang="ts">
+import { Info } from 'lucide-vue-next';
+
 defineProps<{
  agreed: boolean;
  loadStatus: { type: 'success' | 'error'; message: string } | null;
