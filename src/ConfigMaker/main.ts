@@ -2,7 +2,8 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
-import '../../assets/DaisyUiDark.css';
+import 'vue-sonner/style.css';
+import '../../../../shared/styles/DaisyUiDark.css';
 
 async function initApp() {
  try {

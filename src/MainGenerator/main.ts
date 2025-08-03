@@ -1,7 +1,7 @@
 // src/main.ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import '../../assets/TailwindCSS.css';
+import '../../../../shared/styles/TailwindCSS.css';
 import OneSDK from '@onecomme.com/onesdk';
 
 // createApp

@@ -3,12 +3,13 @@
     "omikujiReimu": {
       "id": "omikujiReimu",
       "name": "おみくじ",
+      "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "order": 1,
       "editorColor": "#10B981",
-      "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "c4dcf0cd-554d-4dfc-8880-eab00077e9fc",
           "name": "おみくじ:大吉",
           "description": "",
           "weight": 15,
@@ -40,6 +41,7 @@
           ]
         },
         {
+          "id": "ea8cfca6-7c08-46e5-96b3-d93cdf95783a",
           "name": "おみくじ:吉",
           "description": "",
           "weight": 20,
@@ -71,6 +73,7 @@
           ]
         },
         {
+          "id": "5cd77096-dca9-4714-a0a9-e24b5b8cee62",
           "name": "おみくじ:中吉",
           "description": "",
           "weight": 20,
@@ -102,6 +105,7 @@
           ]
         },
         {
+          "id": "e6d4e9f7-e72c-4e31-9f18-920557fec162",
           "name": "おみくじ:小吉",
           "description": "",
           "weight": 15,
@@ -133,6 +137,7 @@
           ]
         },
         {
+          "id": "81e073ba-a404-4dff-b066-be59b9cc2010",
           "name": "おみくじ:末吉",
           "description": "",
           "weight": 15,
@@ -164,6 +169,7 @@
           ]
         },
         {
+          "id": "1066e6ff-58ad-4264-b684-09cc0dd8ca6d",
           "name": "おみくじ:凶",
           "description": "",
           "weight": 10,
@@ -195,6 +201,7 @@
           ]
         },
         {
+          "id": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
           "name": "おみくじ:残念賞",
           "description": "",
           "weight": 5,
@@ -257,12 +264,13 @@
     "GouseiSuika": {
       "id": "GouseiSuika",
       "name": "スイカジェネレーター",
+      "description": "スイカゲーム風のおみくじ",
       "order": 3,
       "editorColor": "#10B981",
-      "description": "スイカゲーム風のおみくじ",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "name": "",
           "description": "",
           "weight": 1,
@@ -321,12 +329,13 @@
     "BomberSpin": {
       "id": "BomberSpin",
       "name": "ボンバースピン",
+      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "order": 4,
       "editorColor": "#10B981",
-      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
           "name": "通常",
           "description": "",
           "weight": 1,
@@ -384,12 +393,13 @@
     "HondaJanken": {
       "id": "HondaJanken",
       "name": "じゃんけん",
+      "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "order": 6,
       "editorColor": "#10B981",
-      "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
           "name": "じゃんけん(グーA)",
           "description": "",
           "weight": 35,
@@ -429,6 +439,7 @@
           ]
         },
         {
+          "id": "553a8977-dda1-4933-869e-48d650e148d5",
           "name": "じゃんけん(グーB)",
           "description": "",
           "weight": 3,
@@ -468,6 +479,7 @@
           ]
         },
         {
+          "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
           "name": "じゃんけん(チョキA)",
           "description": "",
           "weight": 35,
@@ -507,6 +519,7 @@
           ]
         },
         {
+          "id": "3bb51efe-3ec6-4514-9a62-b609238d813b",
           "name": "じゃんけん(チョキB)",
           "description": "",
           "weight": 3,
@@ -546,6 +559,7 @@
           ]
         },
         {
+          "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
           "name": "じゃんけん(パーA)",
           "description": "",
           "weight": 35,
@@ -585,6 +599,7 @@
           ]
         },
         {
+          "id": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
           "name": "じゃんけん(パーB)",
           "description": "",
           "weight": 3,
@@ -624,6 +639,7 @@
           ]
         },
         {
+          "id": "aa7082a8-b05f-48e1-8019-12fd58a51405",
           "name": "じゃんけん(グー勝利A)",
           "description": "",
           "weight": 1,
@@ -663,6 +679,7 @@
           ]
         },
         {
+          "id": "c078b92a-aaf5-444e-9ccc-9b4034513c95",
           "name": "じゃんけん(グー勝利B)",
           "description": "",
           "weight": 1,
@@ -702,6 +719,7 @@
           ]
         },
         {
+          "id": "a7c9795f-291d-4be0-a64b-e5bedae059f6",
           "name": "じゃんけん(チョキ勝利A)",
           "description": "",
           "weight": 1,
@@ -741,6 +759,7 @@
           ]
         },
         {
+          "id": "5d9137d8-75ab-4ab5-9928-37910442fe91",
           "name": "じゃんけん(チョキ勝利B)",
           "description": "",
           "weight": 1,
@@ -780,6 +799,7 @@
           ]
         },
         {
+          "id": "527bffa4-f827-43bb-8bd9-2d82cc128824",
           "name": "じゃんけん(パー勝利A)",
           "description": "",
           "weight": 1,
@@ -819,6 +839,7 @@
           ]
         },
         {
+          "id": "d63d44e9-48c2-4f16-b30d-8373fcc44aaa",
           "name": "じゃんけん(パー勝利B)",
           "description": "",
           "weight": 1,
@@ -858,6 +879,7 @@
           ]
         },
         {
+          "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
           "name": "じゃんけん(ILoveYou勝利A)",
           "description": "",
           "weight": 1,
@@ -897,6 +919,7 @@
           ]
         },
         {
+          "id": "6912bbc6-b8a0-486b-862e-d70072ece11c",
           "name": "じゃんけん(ILoveYou勝利B)",
           "description": "",
           "weight": 1,
@@ -965,12 +988,13 @@
     "HondaJankenRock": {
       "id": "HondaJankenRock",
       "name": "じゃんけん(グー)",
+      "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "order": 7,
       "editorColor": "#10B981",
-      "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
           "name": "じゃんけん(グーA)",
           "description": "",
           "weight": 35,
@@ -1010,6 +1034,7 @@
           ]
         },
         {
+          "id": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
           "name": "じゃんけん(グーB)",
           "description": "",
           "weight": 3,
@@ -1049,6 +1074,7 @@
           ]
         },
         {
+          "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
           "name": "じゃんけん(グー勝利A)",
           "description": "",
           "weight": 1,
@@ -1088,6 +1114,7 @@
           ]
         },
         {
+          "id": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
           "name": "じゃんけん(グー勝利B)",
           "description": "",
           "weight": 1,
@@ -1158,12 +1185,13 @@
     "HondaJankenScissors": {
       "id": "HondaJankenScissors",
       "name": "じゃんけん(チョキ)",
+      "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "order": 8,
       "editorColor": "#10B981",
-      "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
           "name": "じゃんけん(チョキA)",
           "description": "",
           "weight": 35,
@@ -1203,6 +1231,7 @@
           ]
         },
         {
+          "id": "35eafe60-fd85-461e-a572-ee1743096688",
           "name": "じゃんけん(チョキB)",
           "description": "",
           "weight": 3,
@@ -1242,6 +1271,7 @@
           ]
         },
         {
+          "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
           "name": "じゃんけん(チョキ勝利A)",
           "description": "",
           "weight": 1,
@@ -1281,6 +1311,7 @@
           ]
         },
         {
+          "id": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
           "name": "じゃんけん(チョキ勝利B)",
           "description": "",
           "weight": 1,
@@ -1350,12 +1381,13 @@
     "HondaJankenPaper": {
       "id": "HondaJankenPaper",
       "name": "じゃんけん(パー)",
+      "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "order": 9,
       "editorColor": "#10B981",
-      "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
           "name": "じゃんけん(パーA)",
           "description": "",
           "weight": 35,
@@ -1395,6 +1427,7 @@
           ]
         },
         {
+          "id": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
           "name": "じゃんけん(パーB)",
           "description": "",
           "weight": 3,
@@ -1434,6 +1467,7 @@
           ]
         },
         {
+          "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
           "name": "じゃんけん(パー勝利A)",
           "description": "",
           "weight": 1,
@@ -1473,6 +1507,7 @@
           ]
         },
         {
+          "id": "2165a3b8-9018-4400-a7a9-911a93ef6873",
           "name": "じゃんけん(パー勝利B)",
           "description": "",
           "weight": 1,
@@ -1543,12 +1578,13 @@
     "FortuneMarisa": {
       "id": "FortuneMarisa",
       "name": "フラワー占い",
+      "description": "ゆっくり魔理沙の、色占い。時々キノコのうんちくが聞けるよ。",
       "order": 2,
       "editorColor": "#10B981",
-      "description": "ゆっくり魔理沙の、色占い。時々キノコのうんちくが聞けるよ。",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "daccba76-9c92-466b-bb58-217734027c5b",
           "name": "フラワー:通常色",
           "description": "",
           "weight": 7,
@@ -1588,6 +1624,7 @@
           ]
         },
         {
+          "id": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
           "name": "フラワー:キノコ",
           "description": "",
           "weight": 3,
@@ -1662,12 +1699,13 @@
     "DwarfBomb": {
       "id": "DwarfBomb",
       "name": "うさぎスロット",
+      "description": "スロット風のおみくじ。最大枚数20000枚!",
       "order": 5,
       "editorColor": "#10B981",
-      "description": "スロット風のおみくじ。最大枚数20000枚!",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
           "name": "",
           "description": "",
           "weight": 1,
@@ -1725,12 +1763,13 @@
     "WelcomeSagi": {
       "id": "WelcomeSagi",
       "name": "初見詐欺",
+      "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "order": 10,
       "editorColor": "#10B981",
-      "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
           "name": "初見詐欺1",
           "description": "",
           "weight": 7,
@@ -1754,6 +1793,7 @@
           ]
         },
         {
+          "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
           "name": "初見詐欺2",
           "description": "",
           "weight": 6,
@@ -1777,6 +1817,7 @@
           ]
         },
         {
+          "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
           "name": "ああ初見だと思ったら騙された高校校歌",
           "description": "",
           "weight": 2,
@@ -1808,6 +1849,7 @@
           ]
         },
         {
+          "id": "352ea94d-dd73-41a8-abb7-bab726c205f6",
           "name": "初見詐欺魔理沙",
           "description": "",
           "weight": 4,
@@ -1862,12 +1904,13 @@
     "WelcomeHonto": {
       "id": "WelcomeHonto",
       "name": "ホントの初見",
+      "description": "初めてから5回までは歓迎してくれます",
       "order": 11,
       "editorColor": "#10B981",
-      "description": "初めてから5回までは歓迎してくれます",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
           "name": "ホントの初見1",
           "description": "",
           "weight": 4,
@@ -1891,6 +1934,7 @@
           ]
         },
         {
+          "id": "c7fa3746-f34c-4620-96a7-a3f7057ef2a7",
           "name": "ホントの初見2",
           "description": "",
           "weight": 1,
@@ -1945,12 +1989,13 @@
     "ReimuGiftLow": {
       "id": "ReimuGiftLow",
       "name": "ギフト(1-999円)",
+      "description": "ギフトを貰ったときの感謝コメント",
       "order": 13,
       "editorColor": "#84CC16",
-      "description": "ギフトを貰ったときの感謝コメント",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
           "name": "ギフト:霊夢",
           "description": "",
           "weight": 1,
@@ -1982,6 +2027,7 @@
           ]
         },
         {
+          "id": "67cb8edc-3fdb-44b2-9b5a-b88a78680745",
           "name": "ギフト:魔理沙",
           "description": "",
           "weight": 1,
@@ -2043,12 +2089,13 @@
     "ReimuGiftMiddle": {
       "id": "ReimuGiftMiddle",
       "name": "ギフト(1000-1999円)",
+      "description": "大きなギフトを貰ったときの感謝コメント",
       "order": 14,
       "editorColor": "#84CC16",
-      "description": "大きなギフトを貰ったときの感謝コメント",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
           "name": "ギフト:霊夢",
           "description": "",
           "weight": 1,
@@ -2108,12 +2155,13 @@
     "ReimuGiftHigh": {
       "id": "ReimuGiftHigh",
       "name": "ギフト(2000-)",
+      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "order": 15,
       "editorColor": "#84CC16",
-      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
           "name": "ギフト:霊夢",
           "description": "",
           "weight": 1,
@@ -2176,12 +2224,13 @@
     "CheckNumber": {
       "id": "CheckNumber",
       "name": "コメント数表示",
+      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "order": 12,
       "editorColor": "#10B981",
-      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
           "name": "霊夢",
           "description": "",
           "weight": 14,
@@ -2197,6 +2246,7 @@
           ]
         },
         {
+          "id": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
           "name": "魔理沙",
           "description": "",
           "weight": 5,
@@ -2212,6 +2262,7 @@
           ]
         },
         {
+          "id": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
           "name": "魔理沙 (おふざけ)",
           "description": "",
           "weight": 1,
@@ -2263,12 +2314,13 @@
     "UserCountTrigger": {
       "id": "UserCountTrigger",
       "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "order": 17,
       "editorColor": "#F97316",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
           "name": "100回コメント:霊夢",
           "description": "",
           "weight": 4,
@@ -2284,6 +2336,7 @@
           ]
         },
         {
+          "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
           "name": "100回コメント:魔理沙",
           "description": "",
           "weight": 1,
@@ -2325,12 +2378,13 @@
     "StreamCountTrigger": {
       "id": "StreamCountTrigger",
       "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "order": 16,
       "editorColor": "#F97316",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
           "name": "100回コメント:霊夢",
           "description": "",
           "weight": 4,
@@ -2346,6 +2400,7 @@
           ]
         },
         {
+          "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
           "name": "100回コメント:魔理沙",
           "description": "",
           "weight": 1,
@@ -2387,12 +2442,13 @@
     "FirstCounterSyoken": {
       "id": "FirstCounterSyoken",
       "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
       "order": 18,
       "editorColor": "#F97316",
-      "description": "初めてコメントをした方への挨拶",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
           "name": "初見さんへの挨拶1",
           "description": "",
           "weight": 9,
@@ -2416,6 +2472,7 @@
           ]
         },
         {
+          "id": "33f283d4-5e09-49a4-ad6a-ea1ff97462fb",
           "name": "初見さんへの挨拶2",
           "description": "",
           "weight": 8,
@@ -2439,6 +2496,7 @@
           ]
         },
         {
+          "id": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
           "name": "初見さんへの挨拶3",
           "description": "",
           "weight": 5,
@@ -2462,6 +2520,7 @@
           ]
         },
         {
+          "id": "c6a82039-cb28-4311-a8de-58724fcedefb",
           "name": "初見さんへの挨拶4",
           "description": "",
           "weight": 4,
@@ -2513,12 +2572,13 @@
     "FirstCounterAgain": {
       "id": "FirstCounterAgain",
       "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
       "order": 19,
       "editorColor": "#F97316",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "19bb44c2-92e2-4761-b577-caed879dcdc7",
           "name": "久しぶり1",
           "description": "",
           "weight": 4,
@@ -2534,6 +2594,7 @@
           ]
         },
         {
+          "id": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
           "name": "久しぶり2",
           "description": "",
           "weight": 3,
@@ -2549,6 +2610,7 @@
           ]
         },
         {
+          "id": "c383530d-30fd-48ad-89c5-7b486de885ed",
           "name": "久しぶり3",
           "description": "",
           "weight": 2,
@@ -2564,6 +2626,7 @@
           ]
         },
         {
+          "id": "2c902efa-2397-45c9-8f75-89c24c11c0ba",
           "name": "久しぶり4",
           "description": "",
           "weight": 1,
@@ -2607,12 +2670,13 @@
     "FirstCounterFirstVisit": {
       "id": "FirstCounterFirstVisit",
       "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "order": 20,
       "editorColor": "#F97316",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
           "name": "挨拶1",
           "description": "",
           "weight": 4,
@@ -2628,6 +2692,7 @@
           ]
         },
         {
+          "id": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
           "name": "挨拶2",
           "description": "",
           "weight": 3,
@@ -2643,6 +2708,7 @@
           ]
         },
         {
+          "id": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
           "name": "挨拶3",
           "description": "",
           "weight": 2,
@@ -2658,6 +2724,7 @@
           ]
         },
         {
+          "id": "898ba322-99ba-4e3c-929b-c8b8794b378a",
           "name": "挨拶4",
           "description": "",
           "weight": 1,
@@ -2703,12 +2770,13 @@
     "ViewCountDisplay": {
       "id": "ViewCountDisplay",
       "name": "閲覧数表示(1min)",
+      "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "order": 0,
       "editorColor": "#3B82F6",
-      "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
           "name": "閲覧数:霊夢",
           "description": "",
           "weight": 4,
@@ -2724,6 +2792,7 @@
           ]
         },
         {
+          "id": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
           "name": "閲覧数:魔理沙",
           "description": "",
           "weight": 1,
@@ -2746,12 +2815,13 @@
     "PromotionToast": {
       "id": "PromotionToast",
       "name": "告知トースト",
+      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "order": 1,
       "editorColor": "#3B82F6",
-      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "isEnabled": true,
       "omikuji": [
         {
+          "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
           "name": "チャンネル登録告知",
           "description": "",
           "weight": 24,
@@ -2767,6 +2837,7 @@
           ]
         },
         {
+          "id": "3a2b5e96-b79a-4bdb-b4a7-c9c7d9afebde",
           "name": "Twitter告知",
           "description": "",
           "weight": 18,
@@ -2782,6 +2853,7 @@
           ]
         },
         {
+          "id": "a5cd85d8-666e-4107-8e90-744f92deabbd",
           "name": "ショート動画告知",
           "description": "",
           "weight": 20,
@@ -2797,6 +2869,7 @@
           ]
         },
         {
+          "id": "9dea8c40-0801-4523-93e2-dc3049fe1814",
           "name": "discord告知",
           "description": "",
           "weight": 16,
@@ -2812,6 +2885,7 @@
           ]
         },
         {
+          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
           "name": "おみくじBOT告知",
           "description": "",
           "weight": 1,
@@ -3615,9 +3689,9 @@
     "reimu": {
       "id": "reimu",
       "name": "ゆっくり霊夢",
+      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
       "order": 101,
       "editorColor": "#EC4899",
-      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
       "version": "0.0.1",
       "author": "Pintocuru",
       "tags": [
@@ -3626,9 +3700,13 @@
       ],
       "url": "https://nagipon-sozai.studio.site/",
       "path": "",
-      "isIconDisplay": true,
       "displayName": "ゆっくり霊夢",
       "frameId": "OmikenReimu",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
       "color": {
         "nameColor": "#FFC107",
         "textColor": "#ECEFF1",
@@ -3652,9 +3730,9 @@
     "marisa": {
       "id": "marisa",
       "name": "ゆっくり魔理沙",
+      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
       "order": 102,
       "editorColor": "#84CC16",
-      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
       "version": "0.0.1",
       "author": "Pintocuru",
       "tags": [
@@ -3663,9 +3741,13 @@
       ],
       "url": "https://nagipon-sozai.studio.site/",
       "path": "",
-      "isIconDisplay": true,
       "displayName": "ゆっくり魔理沙",
       "frameId": "OmikenMarisa",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
       "color": {
         "nameColor": "#FFE082",
         "textColor": "#333333",
