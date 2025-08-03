@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/usePlaceholderStore.ts
 // プレースホルダー専用store
-import { PlaceholderValueType, OmikujiSetType, PostActionType, RuleType } from '@type/';
+import { PlaceholderValueType, OmikujiSetType, PostActionType, RuleType } from '@/types/';
 import { useOmikujiStore } from './useOmikujiStore';
 import { useRecordOperations } from './useRecordStore';
 import { defineStore } from 'pinia';

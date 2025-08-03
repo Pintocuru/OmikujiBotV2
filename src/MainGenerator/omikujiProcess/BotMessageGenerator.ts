@@ -5,7 +5,7 @@ import {
  CharacterEmotionType,
  CharacterType,
  PostActionType
-} from '@type/';
+} from '@/types/';
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 
 export class BotMessageGenerator {

@@ -95,7 +95,7 @@ import {
  AccessCondition,
  GiftCondition,
  CountConditionType
-} from '@type/';
+} from '@shared/types';
 
 const props = defineProps<{ modelValue: CommentThresholdType }>();
 const emit = defineEmits<{ 'update:modelValue': [value: CommentThresholdType] }>();

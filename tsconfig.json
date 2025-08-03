@@ -7,10 +7,6 @@
   ],
   "outDir": "./dist", // 出力先ディレクトリ
   "paths": {
-   "@type/*": [
-    "./src/types/*",
-    "./src/types/index"
-   ],
    "@shared/*": [
     "../../shared/*"
    ],
@@ -19,9 +15,6 @@
    ],
    "@/*": [
     "./src/*"
-   ],
-   "@GameScripts/*": [
-    "src/GameScripts/*"
    ],
    "@LogRank/*": [
     "src/GameScripts/LogRank/src/*"

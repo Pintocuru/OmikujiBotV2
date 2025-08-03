@@ -3,7 +3,7 @@
 import { DefaultTypes, PresetMetadata } from '@shared/types/';
 import { GameRankingThemeLabel } from '../../utils/rankComponent/ThemePresets';
 import { GameState } from './GameScriptSchema';
-import { PostActionType, PostActionWordPartyType } from '@type/';
+import { PostActionType, PostActionWordPartyType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // スクリプトプリセット

@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ParameterItem } from '@type/';
+import { ParameterItem } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useScriptSettings } from './useScriptSettings';
 

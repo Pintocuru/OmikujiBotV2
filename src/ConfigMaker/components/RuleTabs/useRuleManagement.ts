@@ -1,7 +1,7 @@
 // src/configMaker/components/RuleTabs/useRuleManagement.ts
 import { inject } from 'vue';
 import { toast } from 'vue-sonner';
-import type { CategoryType } from '@type/';
+import type { CategoryType } from '@/types/';
 import type { BaseRule, RuleStore } from './RuleTabsTypes';
 
 export function useRuleManagement(ruleType: CategoryType) {

@@ -1,6 +1,6 @@
 // src/configMaker/components/presets/useJsonImporter.ts (更新版)
 import { ref, computed } from 'vue';
-import type { OmikujiDataType, CategoryType } from '@type/';
+import type { OmikujiDataType, CategoryType } from '@/types/';
 import { useJsonFileLoader } from './useJsonFileLoader';
 import { useJsonServerLoader } from './useJsonServerLoader';
 import { useImportPreviewManager, CategoryImportConfig } from './useImportPreviewManager';

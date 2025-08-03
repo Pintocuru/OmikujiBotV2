@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useBotMessage.ts
 import { ref, computed, Ref } from 'vue';
-import { BotMessage, getImagePath } from '@type/';
+import { BotMessage, getImagePath } from '@/types/';
 
 const DISPLAY_CONFIG = {
  INTERVAL: 250,

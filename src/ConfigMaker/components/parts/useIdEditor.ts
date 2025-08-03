@@ -1,6 +1,6 @@
 // src/configMaker/components/parts/useIdEditor.ts
 import { ref, computed } from 'vue';
-import { SelectCategoryType } from '@/types/types';
+import { SelectCategoryType } from '@/types/';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { useCharacterStore } from '@ConfigStore/useCharacterStore';
 import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';

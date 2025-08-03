@@ -4,7 +4,7 @@ import { generateDateFileName } from '../services/devConfigUtils';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { DevConfigState } from './useDevConfigState';
-import { OmikujiDataType } from '@type/';
+import { OmikujiDataType } from '@/types/';
 
 export function useDevConfigApiActions(state: DevConfigState) {
  // エラーハンドリング

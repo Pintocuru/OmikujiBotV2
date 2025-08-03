@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
 import { ref, computed, Ref } from 'vue';
-import { emotionLabels, characterEmotions, CharacterEmotionType } from '@type/';
+import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
 import IconPreviewModal from '@ConfigComponents/postAction/IconPreviewModal.vue';
 import { useCharacterStore } from '@ConfigStore/useCharacterStore';

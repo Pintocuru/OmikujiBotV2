@@ -78,7 +78,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CategoryType } from '@type/';
+import { CategoryType } from '@/types/';
 import draggable from 'vuedraggable';
 import RuleTabItem from './RuleTabItem.vue';
 import RuleContextMenu from './RuleContextMenu.vue';

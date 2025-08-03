@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { OmikujiSetType } from '@type/';
+import { OmikujiSetType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue';
 import { GripVertical } from 'lucide-vue-next';

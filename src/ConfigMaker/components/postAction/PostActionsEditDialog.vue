@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, computed, Ref } from 'vue';
-import { CharacterType, PostActionSchema, PostActionType } from '@type/';
+import { CharacterType, PostActionSchema, PostActionType } from '@/types/';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
 import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue';
 import PostActionsContainer from './PostActionsContainer.vue';

@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/OmikujiProcessor.ts
 // おみくじ処理クラス
-import { BotMessage, CommentRuleType, OmikujiDataType, OmikujiSetType } from '@type/';
+import { BotMessage, CommentRuleType, OmikujiDataType, OmikujiSetType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GameScriptManager } from './GameScriptManager';
 import { CommentContextManager } from './CommentContextManager';

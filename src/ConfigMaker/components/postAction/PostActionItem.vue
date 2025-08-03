@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue';
 import PostActionBasicSettings from './PostActionBasicSettings.vue';
 import PostActionMessageFields from './PostActionMessageFields.vue';

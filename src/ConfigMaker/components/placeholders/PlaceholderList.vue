@@ -73,7 +73,7 @@ import {
  PlaceholderSchema,
  PlaceholderType,
  PostActionType
-} from '@type/';
+} from '@/types/';
 import PlaceholderModal from './PlaceholderModal.vue';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';

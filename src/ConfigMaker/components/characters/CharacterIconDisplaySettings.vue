@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DisplayOptionType } from '@type/';
+import { DisplayOptionType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 
 const props = defineProps<{

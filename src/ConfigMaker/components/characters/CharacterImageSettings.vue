@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CharacterType, emotionLabels, getImagePath } from '@type/';
+import { CharacterType, emotionLabels, getImagePath } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info, RotateCcw } from 'lucide-vue-next';
 

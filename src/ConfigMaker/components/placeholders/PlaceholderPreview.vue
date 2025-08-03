@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { PlaceholderValueType, PostActionSchema, PostActionType } from '@type/';
+import { PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { PlaceProcess } from '@/MainGenerator/omikujiProcess/PlaceProcess';

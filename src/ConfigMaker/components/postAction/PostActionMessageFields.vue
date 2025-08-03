@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import WordPartyField from './WordPartyField.vue';
 
 // Props

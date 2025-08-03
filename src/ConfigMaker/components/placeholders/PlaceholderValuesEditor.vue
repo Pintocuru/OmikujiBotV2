@@ -103,7 +103,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { PlaceholderValueType } from '@type/';
+import { PlaceholderValueType } from '@/types/';
 import { usePlaceholderValues } from './usePlaceholderValues';
 import { useTextModeParser } from './useTextModeParser';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';

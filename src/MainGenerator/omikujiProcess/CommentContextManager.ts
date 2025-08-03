@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/CommentContextManager.ts
 // コメント処理のコンテキスト管理
-import { DefaultPlaceholders } from '@type/';
+import { DefaultPlaceholders } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service';
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas';

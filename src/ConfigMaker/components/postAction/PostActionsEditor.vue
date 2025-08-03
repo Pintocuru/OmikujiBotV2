@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import { computed, ref, Ref } from 'vue';
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import PostActionsPreview from './PostActionsPreview.vue';
 import PostActionsEditDialog from './PostActionsEditDialog.vue';
 import PostActionsEditorJson from './PostActionsEditorJson.vue';

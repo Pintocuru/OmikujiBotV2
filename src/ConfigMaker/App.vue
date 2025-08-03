@@ -86,7 +86,7 @@
 
 <script setup lang="ts">
 import { markRaw, onMounted, ref } from 'vue';
-import { CategoryType, categoryLabels, isDev } from '@type/';
+import { CategoryType, categoryLabels, isDev } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import ConfigImport from '@ConfigComponents/presets/ConfigImport.vue';
 import ConfigExport from '@ConfigComponents/presets/ConfigExport.vue';

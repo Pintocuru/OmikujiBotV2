@@ -41,7 +41,7 @@ import {
  PostActionSchema,
  PostActionType,
  getImagePath
-} from '@type/';
+} from '@/types/';
 
 // Props
 const props = defineProps<{

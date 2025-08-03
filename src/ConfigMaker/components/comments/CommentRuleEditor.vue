@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { computed, provide } from 'vue';
-import { CommentRuleType, RuleType } from '@type/';
+import { CommentRuleType, RuleType } from '@/types/';
 import BaseSettingsEditor from './BaseSettingsEditor.vue';
 import ScriptGameEditor from './ScriptGameEditor.vue';
 import OmikujiSetEditor from './OmikujiSetEditor.vue';

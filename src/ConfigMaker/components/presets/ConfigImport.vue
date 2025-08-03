@@ -45,7 +45,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { type CategoryType } from '@type/';
+import { type CategoryType } from '@/types/';
 import ConfigImportModal from './ConfigImportModal.vue';
 import type { ImportMode } from './useImportPreviewManager';
 import { useJsonImporter } from './useJsonImporter';

@@ -1,6 +1,6 @@
 // src/MainGenerator/script/PostMessage.ts
 // 250709_エイリアス変更
-import { PostActionType, PostActionWordPartyType, CharacterType } from '@type/';
+import { PostActionType, PostActionWordPartyType, CharacterType } from '@/types/';
 import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme';
 import { ServiceManager } from './PostMessage/ServiceManager';
 import { CommentRequestBuilder } from './PostMessage/CommentRequestBuilder';

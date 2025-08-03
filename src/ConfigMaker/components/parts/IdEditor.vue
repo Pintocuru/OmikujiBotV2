@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { SelectCategoryType } from '@/types/types';
+import { SelectCategoryType } from '@/types/';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useIdEditor } from './useIdEditor';

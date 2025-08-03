@@ -1,9 +1,10 @@
 // src/configMaker/components/scriptSettings/useScriptSettings.ts
 import { computed } from 'vue';
-import { DefaultTypes, ParameterInputType, ParameterItem } from '@type/';
+import { ParameterInputType, ParameterItem } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useScriptSettingsStore } from '@ConfigStore/useScriptSettingsStore';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettings = () => {
  const scriptSettingsStore = useScriptSettingsStore();

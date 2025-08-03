@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage } from '@type/';
+import { BotMessage } from '@/types/';
 import { useBotCommentDisplay } from '@/MainGenerator/composables/useBotMessage';
 import { DisplaySize } from '@shared/types';
 

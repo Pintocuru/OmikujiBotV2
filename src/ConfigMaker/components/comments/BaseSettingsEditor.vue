@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RuleType, SelectCategoryType, isDev } from '@type/';
+import { RuleType, SelectCategoryType, isDev } from '@/types/';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import IdEditor from '@ConfigComponents/parts/IdEditor.vue';

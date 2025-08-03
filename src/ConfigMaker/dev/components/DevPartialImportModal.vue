@@ -105,7 +105,7 @@ import {
  OmikujiDataType,
  selectCategoryType,
  SelectCategoryType
-} from '@type/';
+} from '@/types/';
 import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 

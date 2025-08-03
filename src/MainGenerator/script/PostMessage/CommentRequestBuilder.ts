@@ -1,5 +1,5 @@
 // src/MainGenerator/script/PostMessage/CommentRequestBuilder.ts
-import { PostActionType, CharacterColorType, CharacterEmotionType, CharacterType } from '@type/';
+import { PostActionType, CharacterColorType, CharacterEmotionType, CharacterType } from '@/types/';
 import {
  SendCommentType,
  SendCommentSchema,

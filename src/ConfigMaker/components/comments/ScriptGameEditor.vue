@@ -113,7 +113,8 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CommentRuleType, DefaultTypes, ScriptPreset, createScriptParamsSchema } from '@type/';
+import { CommentRuleType, ScriptPreset, createScriptParamsSchema } from '@/types/';
+import { DefaultTypes } from '@shared/types';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';

@@ -83,7 +83,7 @@
 
 <script setup lang="ts">
 import { ref, nextTick } from 'vue';
-import { OmikujiDataType } from '@type/';
+import { OmikujiDataType } from '@/types/';
 import type { FileItem } from '../devTypes';
 import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
 import DevPartialImportModal from './DevPartialImportModal.vue';

@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CharacterType } from '@type/';
+import { CharacterType } from '@/types/';
 import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';

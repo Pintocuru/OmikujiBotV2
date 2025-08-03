@@ -1,7 +1,7 @@
 // src/MainGenerator/utils/commentProcessor/PostActionProcessor.ts
 // ポストアクション処理クラス
 // =====================================
-import { BotMessage, CharacterType, OmikujiSetType, PostActionType, ScriptResult } from '@type/';
+import { BotMessage, CharacterType, OmikujiSetType, PostActionType, ScriptResult } from '@/types/';
 import { PlaceProcess } from './PlaceProcess';
 import { PostMessage } from '@/MainGenerator/script/PostMessage';
 import { BotMessageGenerator } from './BotMessageGenerator';

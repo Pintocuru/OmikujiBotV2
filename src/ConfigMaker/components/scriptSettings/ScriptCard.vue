@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ScriptPreset } from '@type/';
+import { ScriptPreset } from '@/types/';
 import ScriptSettingItem from './ScriptSettingItem.vue';
 
 interface Props {

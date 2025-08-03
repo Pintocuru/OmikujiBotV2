@@ -1,5 +1,11 @@
 // src/MainGenerator/omikujiProcess/CharacterCollector.ts
-import { BotMessage, CharacterType, OmikujiDataType, OmikujiSetType, PostActionType } from '@type/';
+import {
+ BotMessage,
+ CharacterType,
+ OmikujiDataType,
+ OmikujiSetType,
+ PostActionType
+} from '@/types/';
 
 export class CharacterCollector {
  private readonly omikujiData: OmikujiDataType;

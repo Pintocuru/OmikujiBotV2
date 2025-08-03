@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/CommentRestrictionChecker.ts
 // 制限チェッカー
-import { BotMessage, CharacterType, CommentRuleType } from '@type/';
+import { BotMessage, CharacterType, CommentRuleType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { CooldownManager } from './CooldownManager';
 

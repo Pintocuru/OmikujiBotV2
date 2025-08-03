@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { WordPartySettings } from '@type/';
+import { WordPartySettings } from '@/types/';
 import { postWordParty } from '@shared/sdk/postMessage/PostOneComme';
 
 defineProps<{

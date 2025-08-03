@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { OmikujiDataSchema, BotMessage } from '@type/';
+import { OmikujiDataSchema, BotMessage } from '@/types/';
 import ViewBotMessage from '@/MainGenerator/components/ViewBotMessage.vue';
 import ViewBotToast from '@/MainGenerator/components/ViewBotToast.vue';
 import CharacterThumbnails from '@/MainGenerator/components/CharacterThumbnails.vue';

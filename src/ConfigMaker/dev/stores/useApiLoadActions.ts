@@ -3,7 +3,7 @@ import { devConfigApi } from '../services/apiService';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { DevConfigState } from './useDevConfigState';
-import { OmikujiDataType } from '@type/';
+import { OmikujiDataType } from '@/types/';
 
 export function useLoadActions(
  state: DevConfigState,

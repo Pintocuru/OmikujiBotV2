@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { emotionLabels, CharacterEmotionType, getImagePath } from '@type/';
+import { emotionLabels, CharacterEmotionType, getImagePath } from '@/types/';
 import { useCharacterStore } from '@ConfigStore/useCharacterStore';
 
 const props = defineProps<{

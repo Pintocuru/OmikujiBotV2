@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { computed, provide } from 'vue';
-import { RuleType, TimerRuleType } from '@type/';
+import { RuleType, TimerRuleType } from '@/types/';
 import TimerIntervalEditor from './TimerIntervalEditor.vue';
 import OmikujiSetEditor from '@ConfigComponents/comments/OmikujiSetEditor.vue';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';

@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import PostActionsHeader from './PostActionsHeader.vue';
 import PostActionItem from './PostActionItem.vue';
 

@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { giftConditionLabels, type GiftCondition } from '@type/';
+import { giftConditionLabels, GiftCondition } from '@shared/types';
 import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue';
 
 const props = defineProps<{ modelValue: GiftCondition[] }>();

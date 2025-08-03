@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { CharacterType } from '@type/';
+import type { CharacterType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
 

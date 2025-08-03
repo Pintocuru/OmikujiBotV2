@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/processors/GameScriptManager.ts
-import { CommentRuleType, OmikujiDataType } from '@type/';
-import { ScriptClass, ScriptResult, UserStatsType, GameState } from '@type/';
+import { CommentRuleType, OmikujiDataType } from '@/types/';
+import { ScriptClass, ScriptResult, UserStatsType, GameState } from '@/types/';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 

@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
 import { useTestPost } from '@ConfigScript/useTestPost';
 

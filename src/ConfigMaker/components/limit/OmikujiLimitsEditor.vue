@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { OmikujiLimitsType } from '@type/';
+import { OmikujiLimitsType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 
 const props = defineProps<{

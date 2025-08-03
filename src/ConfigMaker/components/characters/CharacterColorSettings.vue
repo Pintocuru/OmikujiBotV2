@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { CharacterType } from '@type/';
+import type { CharacterType } from '@/types/';
 
 const props = defineProps<{
  modelValue: CharacterType['color'];

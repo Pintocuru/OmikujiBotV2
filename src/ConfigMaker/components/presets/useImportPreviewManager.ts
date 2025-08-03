@@ -1,6 +1,6 @@
 // src/configMaker/components/presets/useImportPreviewManager.ts
 import { ref, computed } from 'vue';
-import { OmikujiDataType, CategoryType, OmikujiDataSchema, selectCategoryType } from '@type/';
+import { OmikujiDataType, CategoryType, OmikujiDataSchema, selectCategoryType } from '@/types/';
 
 export type ImportMode = 'replace' | 'merge' | 'add-only';
 

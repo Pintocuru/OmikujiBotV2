@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { computed, provide } from 'vue';
-import type { CharacterType } from '@type/';
+import type { CharacterType } from '@/types/';
 import { useCharacterStore } from '@ConfigStore/useCharacterStore';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';

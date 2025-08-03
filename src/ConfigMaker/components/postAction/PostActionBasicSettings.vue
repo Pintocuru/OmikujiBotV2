@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { CharacterEmotionType, PostActionType } from '@type/';
+import { CharacterEmotionType, PostActionType } from '@/types/';
 import IconSelector from '@ConfigComponents/comments/IconSelector.vue';
 
 // Props

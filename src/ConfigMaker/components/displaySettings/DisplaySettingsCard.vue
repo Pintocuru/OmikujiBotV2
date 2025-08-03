@@ -53,15 +53,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { DisplaySettingsSchema } from '@/types';
+import { displaySize, displaySizeLabels, DisplaySize } from '@shared/types';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
-import { storeToRefs } from 'pinia';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
-import {
- displaySize,
- displaySizeLabels,
- DisplaySettingsSchema,
- type DisplaySize
-} from '@/types/DisplaySettingsSchema';
+import { storeToRefs } from 'pinia';
 
 // Store
 const omikujiStore = useOmikujiStore();

@@ -1,7 +1,7 @@
 // src/composables/useMessageHandler.ts
 import { ref } from 'vue';
-import { BotMessage } from '@type/';
-import { OmikujiDataType } from '@type/';
+import { BotMessage } from '@/types/';
+import { OmikujiDataType } from '@/types/';
 import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
 import { CommentProcessor } from '@/MainGenerator/omikujiProcess/CommentProcessor';
 import { TimerProcessor } from '@/MainGenerator/omikujiProcess/timerProcessor';

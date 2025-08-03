@@ -81,7 +81,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage, getImagePath } from '@type/';
+import { BotMessage, getImagePath } from '@/types/';
 import { useBotCommentDisplay } from '@/MainGenerator/composables/useBotMessage';
 import { useCommentAnimation } from '@/MainGenerator/composables/useCommentAnimation';
 import type { AnimationType } from '@/types/animation';

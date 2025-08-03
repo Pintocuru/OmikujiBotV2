@@ -18,12 +18,9 @@
 import { ref, onUnmounted } from 'vue';
 
 interface Props {
- // コピーする値（必須）
- value: string;
- // タイトル（ツールチップ）
- dataTip?: string;
- // 無効化フラグ
- disabled?: boolean;
+ value: string; // コピーする値（必須）
+ dataTip?: string; // タイトル（ツールチップ）
+ disabled?: boolean; // 無効化フラグ
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -35,18 +32,14 @@ const props = withDefaults(defineProps<Props>(), {
 const copied = ref(false);
 const isLoading = ref(false);
 
-let successTimer: number | null = null;
+let successTimer: ReturnType<typeof setTimeout> | null = null;
 
 // コピー処理
 const handleCopy = async () => {
- if (props.disabled || isLoading.value) {
-  return;
- }
+ if (props.disabled || isLoading.value) return;
 
  // 既存のタイマーをクリア
- if (successTimer) {
-  clearTimeout(successTimer);
- }
+ if (successTimer) clearTimeout(successTimer);
 
  try {
   isLoading.value = true;

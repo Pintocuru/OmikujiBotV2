@@ -1,5 +1,5 @@
 // src/MainGenerator/utils/timerProcessor.ts
-import { BotMessage, OmikujiDataType, TimerRuleType } from '@type/';
+import { BotMessage, OmikujiDataType, TimerRuleType } from '@/types/';
 import { BotMessageGenerator } from './BotMessageGenerator';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { PlaceProcess } from './PlaceProcess';

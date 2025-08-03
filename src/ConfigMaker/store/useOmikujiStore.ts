@@ -6,7 +6,7 @@ import {
  OmikujiDataType,
  SelectCategoryType,
  selectCategoryType
-} from '@type/';
+} from '@/types/';
 import { defineStore } from 'pinia';
 import { toast } from 'vue-sonner';
 import { ImportMode, ImportPreview } from '../components/presets/useImportPreviewManager';

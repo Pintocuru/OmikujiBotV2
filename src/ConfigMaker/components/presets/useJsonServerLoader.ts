@@ -1,6 +1,6 @@
 // src/configMaker/components/presets/useJsonServerLoader.ts (新規)
 import { useJsonDataSource } from './useJsonDataSource';
-import type { OmikujiDataType } from '@type/';
+import type { OmikujiDataType } from '@/types/';
 
 /**
  * サーバーからのJSONファイルの読み込みを担当するComposable

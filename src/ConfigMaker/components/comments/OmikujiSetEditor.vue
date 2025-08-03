@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { OmikujiSetSchema, OmikujiSetType } from '@type/';
+import { OmikujiSetSchema, OmikujiSetType } from '@/types/';
 import CharacterBulkChanger from './CharacterBulkChanger.vue';
 import OmikujiItem from './OmikujiSetBasic.vue';
 import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue';

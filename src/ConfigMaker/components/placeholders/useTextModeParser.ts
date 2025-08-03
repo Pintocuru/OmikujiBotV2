@@ -1,6 +1,6 @@
 // src/configMaker/components/placeholders/useTextModeParser.ts
 import { ref, computed } from 'vue';
-import { PlaceholderValueSchema, PlaceholderValueType } from '@type/';
+import { PlaceholderValueSchema, PlaceholderValueType } from '@/types/';
 
 export function useTextModeParser() {
  const textContent = ref('');

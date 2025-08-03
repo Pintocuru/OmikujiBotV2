@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import { PostActionType } from '@type/';
+import { PostActionType } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 

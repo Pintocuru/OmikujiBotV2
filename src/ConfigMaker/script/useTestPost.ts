@@ -6,7 +6,7 @@ import {
  BotMessage,
  OmikujiSetType,
  CommentRuleType
-} from '@type/';
+} from '@/types/';
 import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
 import { MockComment } from '@shared/__mocks__/CreateMockComment';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';

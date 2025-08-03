@@ -70,7 +70,7 @@ import { useGameRanking } from './useGameRanking';
 import { getTheme } from './ThemePresets';
 import GameRankingScore from './GameRankingScore.vue';
 import TailwindDebugComponent from './TailwindDebugComponent.vue';
-import { ScriptComponentPropsType } from '@type/';
+import { ScriptComponentPropsType } from '@/types/';
 
 const props = defineProps<ScriptComponentPropsType>();
 

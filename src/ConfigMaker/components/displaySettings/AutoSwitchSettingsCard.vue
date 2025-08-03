@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DisplaySettingsSchema } from '@type/';
+import { DisplaySettingsSchema } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';

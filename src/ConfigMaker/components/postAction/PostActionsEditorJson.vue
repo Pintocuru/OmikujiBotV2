@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { type PostActionType } from '@type/';
+import { type PostActionType } from '@/types/';
 import { toast } from 'vue-sonner';
 
 // Props

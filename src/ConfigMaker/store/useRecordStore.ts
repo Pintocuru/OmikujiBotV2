@@ -7,8 +7,8 @@ import {
  PlaceholderType,
  TimerRuleSchema,
  TimerRuleType
-} from '@type/';
-import { CharacterSchema, CharacterType } from '@type/';
+} from '@/types/';
+import { CharacterSchema, CharacterType } from '@/types/';
 import { useOmikujiStore } from './useOmikujiStore';
 
 // 共通のルール操作を提供するコンポーザブル
