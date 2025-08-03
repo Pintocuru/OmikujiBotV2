@@ -35,8 +35,9 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage, DisplaySize } from '@type/';
+import { BotMessage } from '@type/';
 import { useBotCommentDisplay } from '@/MainGenerator/composables/useBotMessage';
+import { DisplaySize } from '@shared/types';
 
 // サイズ設定の定数（OBS用により狭く調整）
 const SIZE_CONFIG = {

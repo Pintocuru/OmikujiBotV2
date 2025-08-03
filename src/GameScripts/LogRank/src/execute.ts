@@ -7,8 +7,7 @@ import {
  GameSettingsSchema,
  GameParamsSchema
 } from './params';
-import { ScriptResult, ScriptClass, GameState } from '@shared/types/';
-import { GameStateSchema } from '@shared/types/';
+import { ScriptResult, ScriptClass, GameState, GameStateSchema } from '@type/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // Services

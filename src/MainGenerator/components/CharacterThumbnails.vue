@@ -39,7 +39,8 @@ import {
  CharacterEmotionType,
  CharacterType,
  PostActionSchema,
- PostActionType
+ PostActionType,
+ getImagePath
 } from '@type/';
 
 // Props
@@ -82,7 +83,7 @@ const SIZE_CONFIG = {
 const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize]);
 const characters = computed(() => props.characters);
 const currentExpressions = ref<CharacterEmotionType[]>([]);
-const expressionTimer = ref<number | null>(null);
+const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null);
 const menuTimer = ref<number | null>(null);
 
 // 初期化

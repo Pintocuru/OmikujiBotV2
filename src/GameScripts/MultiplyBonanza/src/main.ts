@@ -10,7 +10,7 @@ import {
 import execute from './execute';
 import packageJson from '../package.json';
 import component from '@/components/component.vue';
-import { ScriptPreset } from '@shared/types/GameScriptTypes';
+import { ScriptPreset } from '@type/index';
 import { GameStateExtras, UserRankingType } from '@/GameScripts/LogRank/src/params';
 
 const plugin: ScriptPreset<

@@ -3,7 +3,7 @@ import { RankingService } from '../src/services/RankingService';
 import { UserStatsService } from '../src/services/UserStatsService';
 import { GameContext } from '../src/GameContext';
 import { GameSettings, GameParams } from '../src/params';
-import { GameState, UserStatsType } from '@shared/types/GameScriptTypes';
+import { GameState, UserStatsType } from '@type/index';
 import { GameStateSchema } from '@shared/types/GameScriptSchema';
 
 describe('RankingService', () => {

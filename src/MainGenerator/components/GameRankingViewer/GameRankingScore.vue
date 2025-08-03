@@ -74,16 +74,14 @@ import { onMounted } from 'vue';
 import { useScoreAnimation } from '@/MainGenerator/components/GameRankingViewer/useScoreAnimation';
 import type { GameRankingTheme } from '@/MainGenerator/components/GameRankingViewer/GameRankingTypes';
 import * as LucideIcons from 'lucide-vue-next';
-import { UserStatsType } from '@shared/types/';
 import { SizeConfig } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
+import { UserStatsType } from '@type/index';
 
-interface Props {
+const props = defineProps<{
  playerData: UserStatsType;
  theme: GameRankingTheme;
  sizeConfig: SizeConfig;
-}
-
-const props = defineProps<Props>();
+}>();
 
 // スコアアニメーション
 const { scoreElement, initScoreAnimation } = useScoreAnimation();

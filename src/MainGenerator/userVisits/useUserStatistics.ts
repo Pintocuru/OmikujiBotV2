@@ -1,6 +1,6 @@
 // src/MainGenerator/userVisits/useUserStatistics.ts
 import { computed, Ref } from 'vue';
-import { UserVisitType } from '@shared/types/UserVisitSchema';
+import { UserVisitType } from '@shared/types/';
 import { UserVisitPlus, CustomProperties } from './useCustomProperties';
 
 export const useUserStatistics = (

@@ -1,6 +1,6 @@
 // src/MainGenerator/userVisits/useCustomProperties.ts
 import { ref } from 'vue';
-import { UserVisitType } from '@shared/types/UserVisitSchema';
+import { UserVisitType } from '@shared/types/';
 
 // カスタムプロパティの型定義
 export interface CustomProperties {

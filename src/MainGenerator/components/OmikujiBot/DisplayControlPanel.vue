@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DisplaySize, displaySizeLabels } from '@type/';
+import { DisplaySize, displaySizeLabels } from '@shared/types';
 
 const props = defineProps<{
  availableScriptKeys: (string | null)[];

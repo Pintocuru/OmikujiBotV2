@@ -70,7 +70,7 @@
 import { ref } from 'vue';
 import SuikaComponent from '@/components/component.vue';
 import { GameSettings } from '@/params';
-import { UserStatsType } from '@shared/types/GameScriptTypes';
+import { UserStatsType } from '@type/index';
 import { generateMockUserRankingData } from '__mocks__/mockUserRanking';
 
 // モックデータ

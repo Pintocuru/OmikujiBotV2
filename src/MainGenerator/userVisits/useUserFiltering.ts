@@ -1,7 +1,7 @@
 // src/MainGenerator/userVisits/useUserFiltering.ts
 import { ref, computed, Ref } from 'vue';
 import { UserVisitPlus, CustomProperties } from './useCustomProperties';
-import { UserVisitType } from '@shared/types/UserVisitSchema';
+import { UserVisitType } from '@shared/types/';
 
 export const useUserFiltering = (
  allUsers: Ref<UserVisitPlus[]>,

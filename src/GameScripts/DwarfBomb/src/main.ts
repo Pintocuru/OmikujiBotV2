@@ -9,7 +9,7 @@ import {
 } from './params';
 import execute from './execute';
 import packageJson from '../package.json';
-import { ScriptPreset } from '@shared/types/GameScriptTypes';
+import { ScriptPreset } from '@type/index';
 
 const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
  id: packageJson.name, // プラグインID

@@ -1,5 +1,5 @@
 // src/params.ts
-import { ScriptPlaceholderItem, ParameterItem } from '@shared/types/GameScriptTypes';
+import { ScriptPlaceholderItem, ParameterItem } from '@type/index';
 
 /**
  * settings

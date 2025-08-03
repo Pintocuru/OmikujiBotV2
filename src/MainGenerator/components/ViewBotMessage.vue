@@ -81,10 +81,11 @@
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage, DisplaySize, getImagePath } from '@type/';
+import { BotMessage, getImagePath } from '@type/';
 import { useBotCommentDisplay } from '@/MainGenerator/composables/useBotMessage';
 import { useCommentAnimation } from '@/MainGenerator/composables/useCommentAnimation';
 import type { AnimationType } from '@/types/animation';
+import { DisplaySize } from '@shared/types';
 
 // サイズ設定の定数
 const SIZE_CONFIG = {

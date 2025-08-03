@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameResult } from './params';
-import { ScriptResult, ScriptClass } from '@shared/types/GameScriptTypes';
+import { ScriptResult, ScriptClass } from '@type/index';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GameStateExtras, UserRankingType } from '@/GameScripts/LogRank/src/params';
 import LogRankScript from '@/GameScripts/LogRank/src/execute';

@@ -1,6 +1,6 @@
 // src/params.ts
 import { z } from 'zod';
-import { ScriptPlaceholderItem, ParameterItem } from '@shared/types/GameScriptTypes';
+import { ScriptPlaceholderItem, ParameterItem } from '@type/index';
 
 /**
  * settings

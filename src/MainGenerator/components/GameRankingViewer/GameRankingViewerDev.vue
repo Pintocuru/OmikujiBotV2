@@ -69,8 +69,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import SuikaComponent from './GameRankingViewer.vue';
-import { UserStatsType } from '@shared/types/GameScriptTypes';
 import { generateMockUserRankingData } from '__mocks__/mockUserRanking';
+import { UserStatsType } from '@type/index';
 
 // モックデータ
 const mockUserRanking = ref<UserStatsType[]>(generateMockUserRankingData(3));
