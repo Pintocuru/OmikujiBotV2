@@ -26,7 +26,11 @@
 
   <!-- 重み -->
   <div class="form-control flex-1">
-   <SettingItem label="重み" description="数値が高いほど出やすくなります" :show-reset="false">
+   <SettingItem
+    :label="`重み (${weightPercentage}%)`"
+    description="数値が高いほど出やすくなります"
+    :show-reset="false"
+   >
     <input
      type="number"
      :value="omikuji.weight"
@@ -53,8 +57,10 @@ import { OmikujiSetType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue';
 import { GripVertical } from 'lucide-vue-next';
+import { computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
+ allOmikuji: OmikujiSetType[];
  omikuji: OmikujiSetType;
  disableDelete: boolean;
 }>();
@@ -67,4 +73,15 @@ defineEmits<{
  duplicate: [];
  delete: [];
 }>();
+
+// 全体の重みの合計を計算
+const totalWeight = computed(() => {
+ return props.allOmikuji.reduce((sum, item) => sum + (item.weight || 0), 0);
+});
+
+// 現在のおみくじの出現率を計算
+const weightPercentage = computed(() => {
+ if (totalWeight.value === 0) return '0.00';
+ return ((props.omikuji.weight / totalWeight.value) * 100).toFixed(2);
+});
 </script>

@@ -12,9 +12,9 @@ import { MockComment } from '@shared/__mocks__/CreateMockComment';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useTimerRulesStore } from '@ConfigStore/useTimerRulesStore';
 import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
-import { toast } from 'vue-sonner';
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
+import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
 import { OmikujiProcessor } from '@/MainGenerator/omikujiProcess/OmikujiProcessor';
+import { toast } from 'vue-sonner';
 
 export function useTestPost() {
  const omikujiStore = useOmikujiStore();
@@ -33,7 +33,6 @@ export function useTestPost() {
      (post) =>
       new Promise<void>((resolve) => {
        setTimeout(() => {
-        if (post.comment !== '') toast.success(post.comment);
         resolve();
        }, post.delaySeconds * 1000);
       })
@@ -45,7 +44,7 @@ export function useTestPost() {
   }
  };
 
- const postTestOmikujiItem = (actions: PostActionType[]) => {
+ const postTestOmikujiItem = (actions: PostActionType[], drawnOmikuji?: OmikujiSetType) => {
   // selectedRuleForProcessing を使用して、どちらかのルールが存在するかチェック
   if (!selectedRuleForProcessing.value) {
    toast.error('テスト投稿の対象となるルールが選択されていません。'); // ユーザーにフィードバックを追加
@@ -61,17 +60,50 @@ export function useTestPost() {
    OmikujiSetSchema.parse({ postActions: actions })
   );
 
+  // 抽選結果の詳細情報をトーストで表示（15秒間）
+  if (drawnOmikuji) {
+   const weight = drawnOmikuji.weight || 1;
+   // ! drawOmikuji で新たなプロパティが付与されてるのでany
+   const weightPercent = (drawnOmikuji as any).weightPercent || 0;
+   const omikujiName = drawnOmikuji.name || 'おみくじ';
+
+   // アクションの内容を取得（最初のメッセージアクションを表示）
+   const firstMessageAction = actions.find((action) => action.messageContent);
+   const messageContent = firstMessageAction?.messageContent || 'メッセージなし';
+
+   toast.success('おみくじ抽選結果', {
+    description: `
+おみくじ: ${omikujiName}
+内容: ${messageContent}
+重み: ${weight}
+確率: ${weightPercent.toFixed(2)}%
+     `.trim(),
+    duration: 15000, // 15秒間表示
+    style: {
+     maxWidth: '400px',
+     whiteSpace: 'pre-line'
+    }
+   });
+  }
+
   toastTestPost(botMessageArray);
  };
 
  const postTestOmikuji = (omikujis: OmikujiSetType[]) => {
-  const omikujiItem = drawOmikuji(omikujis);
+  // weightPercentを付与したomikujisを作成
+  const omikujisWithPercent = addWeightPercentages(omikujis);
+
+  const omikujiItem = drawOmikuji(omikujisWithPercent);
   if (!omikujiItem) {
-   toast.error('該当するおみくじがありませんでした。');
+   toast.error('おみくじ抽選結果', {
+    description: '該当するおみくじがありませんでした。',
+    duration: 5000
+   });
    return;
   }
 
-  postTestOmikujiItem(omikujiItem.postActions);
+  // 抽選されたおみくじの情報も一緒に渡す
+  postTestOmikujiItem(omikujiItem.postActions, omikujiItem);
  };
 
  return {

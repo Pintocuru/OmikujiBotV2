@@ -1,37 +1,11 @@
 <!-- src/configMaker/components/placeholders/PlaceholderPreview.vue -->
 <template>
- <div class="card bg-base-300 mt-4" v-if="values.length > 0">
-  <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">プレースホルダープレビュー</div>
-  <div class="card-body space-y-3">
-   <!-- 抽選結果の表示 -->
-   <div v-if="drawnValue" class="card card-body bg-base-200">
-    <div class="text-sm font-medium">抽選結果:</div>
-    <div class="text-lg font-semibold">
-     {{ processedContent }}
-    </div>
-    <div class="text-sm text-gray-500 mt-1">
-     重み: {{ drawnValue.weight }}
-     <span v-if="totalWeight > 0"> ({{ percentage(drawnValue.weight) }}%)</span>
-    </div>
-   </div>
-
-   <!-- デバッグ情報 -->
-   <div
-    v-if="debugInfo && Object.keys(debugInfo).length > 0"
-    class="card card-body bg-info text-info-content"
-   >
-    <div class="text-info-content font-medium">解決済みプレースホルダー情報:</div>
-    <div class="text-sm">
-     <div v-for="(value, key) in debugInfo" :key="key" class="mt-1">
-      <span class=""><<{{ key }}>> </span>: {{ value }}
-     </div>
-    </div>
-   </div>
-   <!-- 抽選ボタン -->
-   <button class="btn btn-primary btn-sm" @click="handleDraw">
-    抽選する(わんコメが起動していれば、喋ってくれます)
-   </button>
-  </div>
+ <!-- おみくじテストボタン -->
+ <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
+  <button @click="handleDraw" class="btn btn-ghost btn-sm" :disabled="!values.length">
+   <Dices class="w-4 h-4" />
+   抽選テスト
+  </button>
  </div>
 </template>
 
@@ -39,9 +13,11 @@
 import { computed, ref } from 'vue';
 import { PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
+import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
 import { PlaceProcess } from '@/MainGenerator/omikujiProcess/PlaceProcess';
 import { postSpeech } from '@shared/sdk/postMessage/PostOneComme';
+import { toast } from 'vue-sonner';
+import { Dices } from 'lucide-vue-next';
 
 const props = defineProps<{
  id: string;
@@ -67,8 +43,11 @@ const processedContent = ref<string>('');
 const debugInfo = ref<Record<string, string | number>>({});
 
 const handleDraw = () => {
+ // weightPercentを付与したvaluesを作成
+ const valuesWithPercent = addWeightPercentages(props.values);
+
  // 従来の抽選処理
- drawnValue.value = drawOmikuji(props.values);
+ drawnValue.value = drawOmikuji(valuesWithPercent);
 
  if (drawnValue.value?.content) {
   // PlaceProcess2を使用してプレースホルダー置換をテスト
@@ -86,11 +65,38 @@ const handleDraw = () => {
 
   // デバッグ情報を取得
   debugInfo.value = placeProcess.getResolvedValues();
+
+  // トーストで結果を表示（15秒間）
+  const weight = drawnValue.value.weight || 1;
+  // ! drawOmikuji で新たなプロパティが付与されてるのでany
+  const weightPercent = (drawnValue.value as any).weightPercent || 0;
+
+  toast.success('抽選結果', {
+   description: `
+内容: ${processedContent.value}
+重み: ${weight}
+確率: ${weightPercent.toFixed(2)}%
+    `.trim(),
+   duration: 15000, // 15秒間表示
+   style: {
+    maxWidth: '400px',
+    whiteSpace: 'pre-line'
+   }
+  });
  } else {
   processedContent.value = '';
   debugInfo.value = {};
+
+  // 抽選結果がない場合のトースト
+  toast.error('抽選結果', {
+   description: '抽選できませんでした',
+   duration: 5000
+  });
  }
+
  // 結果をわんコメのスピーチ機能で喋らせる
- postSpeech(processedContent.value);
+ if (processedContent.value) {
+  postSpeech(processedContent.value);
+ }
 };
 </script>

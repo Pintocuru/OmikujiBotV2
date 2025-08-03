@@ -38,7 +38,8 @@
     @drop="onDrop(index, $event)"
    >
     <!-- OmikujiItem コンポーネント -->
-    <OmikujiItem
+    <OmikujiSetBasic
+     :allOmikuji="modelValue"
      :omikuji="omikuji"
      :disable-delete="modelValue.length <= 1"
      @dragstart="onDragStart(index, $event)"
@@ -65,7 +66,7 @@
 import { computed, ref } from 'vue';
 import { OmikujiSetSchema, OmikujiSetType } from '@/types/';
 import CharacterBulkChanger from './CharacterBulkChanger.vue';
-import OmikujiItem from './OmikujiSetBasic.vue';
+import OmikujiSetBasic from './OmikujiSetBasic.vue';
 import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue';
 import { useTestPost } from '@ConfigScript/useTestPost';
 import { Dices, Plus } from 'lucide-vue-next';

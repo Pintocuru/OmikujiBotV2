@@ -50,14 +50,22 @@
    </div>
   </div>
   <!-- プレースホルダー設定セクション -->
-  <PlaceholderValues :placeholderId="selectedPlaceholder.id" :key="selectedPlaceholder.id" />
-
-  <!-- プレビューセクション -->
-  <PlaceholderPreview
-   v-if="selectedPlaceholder.values.length > 0"
-   :id="selectedPlaceholder.id"
-   :values="selectedPlaceholder.values"
-  />
+  <div class="card bg-base-300 mt-4">
+   <div
+    class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex justify-between items-center"
+   >
+    <div class="flex items-center">プレースホルダー設定</div>
+    <!-- 抽選テストボタン -->
+    <PlaceholderPreview
+     v-if="selectedPlaceholder.values.length > 0"
+     :id="selectedPlaceholder.id"
+     :values="selectedPlaceholder.values"
+    />
+   </div>
+   <div class="card-body">
+    <PlaceholderValuesEditor :placeholderId="selectedPlaceholder.id" :isModal="false" />
+   </div>
+  </div>
  </div>
 </template>
 
@@ -65,7 +73,7 @@
 import { computed, provide } from 'vue';
 import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
 import PlaceholderPreview from './PlaceholderPreview.vue';
-import PlaceholderValues from './PlaceholderValues.vue';
+import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
