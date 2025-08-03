@@ -1,0 +1,49 @@
+{
+ "extends": "../../tsconfig.json", // 親の設定をマージ
+ "compilerOptions": {
+  "baseUrl": ".", // モジュールのベースURL
+  "typeRoots": [
+   "./src/types",
+   "./node_modules/@types"
+  ],
+  "outDir": "./dist", // 出力先ディレクトリ
+  "paths": {
+   "@type/": [
+    "./src/types/types.ts"
+   ],
+   "@shared/*": [
+    "../../shared/*"
+   ],
+   "@assets/*": [
+    "./assets/*"
+   ],
+   "@/*": [
+    "./src/*"
+   ],
+   "@GameScripts/*": [
+    "src/GameScripts/*"
+   ],
+   "@LogRank/*": [
+    "src/GameScripts/LogRank/src/*"
+   ],
+   "@Config/*": [
+    "./src/ConfigMaker/*"
+   ],
+   "@ConfigComponents/*": [
+    "./src/ConfigMaker/components/*"
+   ],
+   "@ConfigScript/*": [
+    "./src/ConfigMaker/script/*"
+   ],
+   "@ConfigStore/*": [
+    "./src/ConfigMaker/store/*"
+   ],
+  }
+ },
+ // コンパイル対象ファイル
+ "include": [
+  "src/**/*.ts",
+  "src/**/*.d.ts",
+  "src/**/*.vue",
+ ],
+}
