@@ -1,12 +1,9 @@
 // shared/types/GameScriptTypes.ts
 // 250726_1 PresetMetadata に合わせて編集
-import { DefaultTypes, PresetMetadata } from '../../../../../shared/types/CommonSchema';
+import { DefaultTypes, PresetMetadata } from '@shared/types/';
 import { GameRankingThemeLabel } from '../../utils/rankComponent/ThemePresets';
 import { GameState } from './GameScriptSchema';
-import {
- PostActionType,
- PostActionWordPartyType
-} from '../../../../../shared/types/OmikujiBot/OmikujiSchema';
+import { PostActionType, PostActionWordPartyType } from '@type/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // スクリプトプリセット
@@ -19,7 +16,7 @@ export interface ScriptPreset<
  settings: ParameterItem<TSettings>[]; // スクリプトの設定値
  params: ParameterItem<TParams>[]; // 実行時にユーザーが入力するパラメータ
  placeholders: ScriptPlaceholderItem<TPlaceholders>[]; // 動的置換用プレースホルダー
- componentConfig: RankComponentConfig; // GameScriptとは切り分けるので削除
+ componentConfig: RankComponentConfig; // TODO:GameScriptとは切り分けるので削除
 }
 
 // ===== スクリプト実行クラス =====

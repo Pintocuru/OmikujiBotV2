@@ -66,11 +66,11 @@
 import { computed } from 'vue';
 import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
-import { ScriptComponentPropsType } from '@shared/types/';
 import { useGameRanking } from './useGameRanking';
 import { getTheme } from './ThemePresets';
 import GameRankingScore from './GameRankingScore.vue';
 import TailwindDebugComponent from './TailwindDebugComponent.vue';
+import { ScriptComponentPropsType } from '@type/';
 
 const props = defineProps<ScriptComponentPropsType>();
 

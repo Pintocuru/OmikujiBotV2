@@ -3,7 +3,7 @@ import { BotMessage } from '@type/';
 import { OmikujiDataType } from '@type/';
 import { UserCommentProcessor } from '@/MainGenerator/omikujiProcess/UserCommentProcessor';
 import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
-import { POST_SETTINGS } from '@shared/sdk/PostSettings';
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 export class CommentProcessor {

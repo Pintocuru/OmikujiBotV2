@@ -1,6 +1,5 @@
 // src/services/UserStatsService.ts
-import { UserStatsTypeSchema } from '@shared/types/';
-import { UserStatsType } from '@shared/types/';
+import { UserStatsType, UserStatsTypeSchema } from '@type/';
 import { GameContext } from '../GameContext';
 
 export class UserStatsService {

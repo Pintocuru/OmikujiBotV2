@@ -1,6 +1,6 @@
 // [packages] tsconfig.json
 {
- "extends": "../../tsconfig.json", // ルートの設定を拡張
+ "extends": "../../../tsconfig.json", // ルートの設定を拡張
  "compilerOptions": {
   "baseUrl": ".", // モジュールのベースURL
   "outDir": "./dist", // 出力先ディレクトリ

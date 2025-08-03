@@ -1,9 +1,9 @@
-// shared/types/OmikujiSchema.ts
+// types/OmikujiBot/OmikujiSchema.ts
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod';
 import { CharacterEmotionSchema } from './CharacterSchema';
-import { POST_SETTINGS } from '../../sdk/PostSettings';
 import { v4 as uuidv4 } from 'uuid';
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 
 // PostAction
 export const PostActionSchema = z.object({

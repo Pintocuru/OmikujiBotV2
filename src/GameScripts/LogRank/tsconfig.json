@@ -1,6 +1,6 @@
 // [packages] tsconfig.json
 {
- "extends": "../../tsconfig.json", // ルートの設定を拡張
+ "extends": "../../../tsconfig.json", // ルートの設定を拡張
  "compilerOptions": {
   "baseUrl": ".", // モジュールのベースURL
   "outDir": "./dist", // 出力先ディレクトリ
@@ -9,14 +9,6 @@
   "resolveJsonModule": true,
   "esModuleInterop": true,
   "declarationDir": "./dist/types",
-  "paths": {
-   "@shared/*": [
-    "../../shared/*"
-   ],
-   "@/*": [
-    "./src/*"
-   ],
-  }
  },
  // コンパイル対象ファイル 
  "include": [

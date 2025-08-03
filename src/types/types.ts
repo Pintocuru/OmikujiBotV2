@@ -2,7 +2,7 @@
 import { z } from 'zod';
 import { v4 as uuidv4 } from 'uuid';
 import { OmikujiDataType } from './OmikujiDataSchema';
-import { CharacterColorScheme } from '@shared/types/';
+import { CharacterColorScheme } from './OmikujiBot/CharacterSchema';
 import { ConfigUserType } from '@shared/types/';
 
 // BotMessage Commentを大幅に略したもの
@@ -40,8 +40,3 @@ declare global {
   omikujiData?: OmikujiDataType;
  }
 }
-
-// 各型定義の公開
-export * from './OmikujiDataSchema';
-export * from './DisplaySettingsSchema';
-export * from '@shared/types/';

@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { ConfigUserSchema, OmikujiDataSchema, BotMessage } from '@type/';
+import { OmikujiDataSchema, BotMessage } from '@type/';
 import ViewBotMessage from '@/MainGenerator/components/ViewBotMessage.vue';
 import ViewBotToast from '@/MainGenerator/components/ViewBotToast.vue';
 import CharacterThumbnails from '@/MainGenerator/components/CharacterThumbnails.vue';
@@ -57,6 +57,7 @@ import { useMessageHandler } from '@/MainGenerator/composables/useMessageHandler
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
 import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue';
 import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue';
+import { ConfigUserSchema } from '@shared/types';
 
 // omikujiData config の読み込み
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData);

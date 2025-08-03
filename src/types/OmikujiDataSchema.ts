@@ -2,7 +2,6 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod';
 import { BaseSchema } from '@shared/types/';
-import { OmikujiSetSchema, PostActionSchema } from '@shared/types/';
 import {
  CommentThresholdSchema,
  countUnitCondition,
@@ -10,12 +9,13 @@ import {
  serviceMetaCondition,
  serviceMetaConditionLabels
 } from '@shared/types/';
-import { PlaceholderSchema } from '@shared/types/';
-import { CharacterSchema } from '@shared/types/';
-import { createScriptSettingsSchema } from '@shared/types/';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
+import { OmikujiSetSchema, PostActionSchema } from './OmikujiBot/OmikujiSchema';
+import { createScriptSettingsSchema } from './GameScript/GameScriptSettingsSchema';
+import { PlaceholderSchema } from './OmikujiBot/PlaceholderSchema';
+import { CharacterSchema } from './OmikujiBot/CharacterSchema';
 
 // defaultのプレースホルダー(user/Commentのmeta/ServiceMeta)
 export const defaultPlaceholders = [

@@ -32,14 +32,14 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted } from 'vue';
-import { BotMessage, characterEmotions, DisplaySize } from '@type/';
+import { DisplaySize } from '@shared/types';
 import {
- CharacterType,
- CharacterImageType,
+ BotMessage,
+ characterEmotions,
  CharacterEmotionType,
- PostActionType,
+ CharacterType,
  PostActionSchema,
- getImagePath
+ PostActionType
 } from '@type/';
 
 // Props

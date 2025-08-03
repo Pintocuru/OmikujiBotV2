@@ -1,6 +1,6 @@
 // src/GameContext.ts
 // ゲーム実行に必要な全ての情報を一つにまとめたコンテキスト
-import { GameState } from '@shared/types/';
+import { GameState } from '@type/index';
 import { GameParams, GameSettings } from './params';
 
 export interface GameContext {

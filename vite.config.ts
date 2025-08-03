@@ -13,7 +13,7 @@ const base = baseViteConfig(__dirname);
 // パッケージのエイリアス
 export const alias = {
  ...rootAlias,
- '@type': path.resolve(__dirname, 'src/types/types.ts'),
+ '@type': path.resolve(__dirname, 'src/types'),
  '@assets': path.resolve(__dirname, 'assets'),
  '@': path.resolve(__dirname, 'src'),
  '@GameScripts': path.resolve(__dirname, '../../GameScripts'),

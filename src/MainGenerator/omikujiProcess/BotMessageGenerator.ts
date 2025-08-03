@@ -1,12 +1,12 @@
 // src/MainGenerator/utils/commentProcessor/BotMessageGenerator.ts
 import {
  BotMessage,
- CharacterType,
- PostActionType,
+ BotMessageSchema,
  CharacterEmotionType,
- BotMessageSchema
+ CharacterType,
+ PostActionType
 } from '@type/';
-import { POST_SETTINGS } from '@shared/sdk/PostSettings';
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 
 export class BotMessageGenerator {
  constructor(private readonly characters: Record<string, CharacterType>) {}
