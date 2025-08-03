@@ -1,0 +1,20 @@
+{
+ "name": "gousei-suika",
+ "version": "0.0.4",
+ "displayName": "スイカジェネレーター",
+ "description": "米兜科技 合成大西瓜風のおみくじ",
+ "scripts": {
+  "dev:suika": "vite",
+  "test:suika": "jest",
+  "build:suika": "vite build"
+ },
+ "author": "Pintocuru",
+ "license": "Apache-2.0",
+ "main": "src/main.js",
+ "type": "module",
+ "keywords": [
+  "ポイント",
+  "ランキング",
+  "スイカ"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "name": "steal-em-all",
+ "version": "0.0.1",
+ "description": "Bonanza Megaways/Wing FURAIJIN風のおみくじ",
+ "scripts": {
+  "build:steal": "vite build",
+  "test:steal": "jest"
+ },
+ "author": "Pintocuru",
+ "license": "Apache-2.0",
+ "main": "src/main.js",
+ "type": "module",
+ "keywords": [
+  "ポイント",
+  "ランキング",
+  "スロット"
+ ]
+}

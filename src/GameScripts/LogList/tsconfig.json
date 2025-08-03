@@ -1,0 +1,32 @@
+// [packages] tsconfig.json
+{
+ "extends": "../../tsconfig.json", // ルートの設定を拡張
+ "compilerOptions": {
+  "baseUrl": ".", // モジュールのベースURL
+  "outDir": "./dist", // 出力先ディレクトリ
+  "declaration": true,
+  "declarationMap": true,
+  "declarationDir": "./dist/types",
+  "paths": {
+   "@shared/*": [
+    "../../public/*"
+   ],
+   "@/*": [
+    "./src/*"
+   ],
+   "@packages/*": [
+    "../*"
+   ],
+   "@LogRank/*": [
+    "../LogRank/src/*"
+   ],
+  }
+ },
+ // コンパイル対象ファイル 
+ "include": [
+  "src/**/*.ts",
+  "src/**/*.d.ts",
+  "src/**/*.vue",
+  "main.ts"
+ ],
+}

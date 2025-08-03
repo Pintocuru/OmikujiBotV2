@@ -1,0 +1,17 @@
+{
+ "name": "gacha-omikuji",
+ "version": "0.0.1",
+ "description": "ソーシャルゲームのガチャ風おみくじ",
+ "scripts": {
+  "build:gacha": "vite build"
+ },
+ "author": "Pintocuru",
+ "license": "Apache-2.0",
+ "main": "src/main.js",
+ "type": "module",
+ "keywords": [
+  "おみくじ",
+  "ソーシャルゲーム",
+  "gacha"
+ ]
+}

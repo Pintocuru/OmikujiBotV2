@@ -1,0 +1,19 @@
+{
+ "name": "log-list",
+ "version": "0.0.3",
+ "description": "パラメータを受け取ることで、ゲーム数や勝率を生成します。",
+ "scripts": {
+  "build": "vite build --config vite.config.ts"
+ },
+ "author": "Pintocuru",
+ "license": "Apache-2.0",
+ "main": "src/main.js",
+ "type": "module",
+ "keywords": [
+  "ベース",
+  "勝数",
+  "ポイント",
+  "勝率",
+  "ランキング"
+ ]
+}

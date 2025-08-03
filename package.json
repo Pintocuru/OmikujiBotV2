@@ -1,0 +1,17 @@
+{
+ "name": "omikuji-bot",
+ "version": "0.0.10",
+ "description": "おみくじ付きBOTジェネレーター",
+ "scripts": {
+  "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
+  "devHot:omikujiBot": "vite",
+  "devApi:omikujiBot": "tsx server/start-dev-server.ts",
+  "json2js:omikujiBot": "tsx tools/CreateOmikujiData.ts",
+  "buildOld:omikujiBot": "webpack",
+  "build:omikujiBot": "tsx build.ts"
+ },
+ "author": "Pintocuru",
+ "license": "Apache-2.0",
+ "main": "src/main.js",
+ "type": "module"
+}
