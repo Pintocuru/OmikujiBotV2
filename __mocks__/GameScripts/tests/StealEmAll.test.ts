@@ -1,9 +1,9 @@
 /// <reference types="jest" />
 
 // tests/execute.test.ts
-import { ExecuteScript } from '../src/execute';
+import { ExecuteScript } from '../../../src/GameScripts/StealEmAll/src/execute';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
-import { GameParams } from '../src/params';
+import { GameParams } from '../../../src/GameScripts/StealEmAll/src/params';
 
 // モックコメントデータを作成するヘルパー関数
 const createMockComment = (displayName: string = 'TestUser'): Comment =>
@@ -12,7 +12,7 @@ const createMockComment = (displayName: string = 'TestUser'): Comment =>
    displayName
    // 他の必要なプロパティがあれば追加
   }
- } as Comment);
+ }) as Comment;
 
 // モックパラメータ
 const mockParams: GameParams = {
@@ -140,7 +140,14 @@ describe('ExecuteScript', () => {
 
     // メッセージから勝利タイプを抽出
     const message = result.placeholders.message;
-    const winPatterns = ['🌟MAX WIN🌟', '👑JACKPOT👑', '💎EPIC WIN💎', '♕FEVER♕', '🎯大当り🎯', '✌あたり✌'];
+    const winPatterns = [
+     '🌟MAX WIN🌟',
+     '👑JACKPOT👑',
+     '💎EPIC WIN💎',
+     '♕FEVER♕',
+     '🎯大当り🎯',
+     '✌あたり✌'
+    ];
 
     let foundPattern = 'その他';
     for (const pattern of winPatterns) {

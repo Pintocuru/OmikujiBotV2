@@ -45,5 +45,8 @@
   "src/**/*.ts",
   "src/**/*.d.ts",
   "src/**/*.vue",
+  "__mocks__/GameScripts/tests/execute.test.ts",
+  "__mocks__/GameScripts/jest.config.ts",
+  "__mocks__/GameScripts/tests/StealEmAll.test.ts",
  ],
 }

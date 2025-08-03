@@ -1,6 +1,9 @@
 // tests/execute.test.ts
-import { GameParamsSchema, GameSettingsSchema } from '@/params';
-import { ExecuteScript } from '@/execute';
+import {
+ GameParamsSchema,
+ GameSettingsSchema
+} from '../../../src/GameScripts/BomberSpin/src/params';
+import { ExecuteScript } from '../../../src/GameScripts/BomberSpin/src/execute';
 import { MockComment } from '@shared/__mocks__/CreateMockComment';
 
 // コメント
