@@ -11,20 +11,26 @@
    設定を出力(js)
   </button>
 
-  <button
-   @click="() => handleExport('template')"
-   class="btn btn-secondary tooltip tooltip-top"
-   data-tip="テンプレート(JSONファイル)を出力します"
-   :disabled="isExporting"
-  >
-   <span v-if="isExporting" class="loading loading-spinner loading-sm mr-2"></span>
-   テンプレート出力(json)
-  </button>
+  <div v-if="showTemplateButton">
+   <button
+    @click="() => handleExport('template')"
+    class="btn btn-secondary tooltip tooltip-top"
+    data-tip="テンプレート(JSONファイル)を出力します"
+    :disabled="isExporting"
+   >
+    <span v-if="isExporting" class="loading loading-spinner loading-sm mr-2"></span>
+    テンプレート出力(json)
+   </button>
+  </div>
  </div>
 </template>
 
 <script setup lang="ts">
 import { useConfigExport } from './useConfigExport';
+
+const props = defineProps<{
+ showTemplateButton: boolean;
+}>();
 
 const { isExporting, exportFile } = useConfigExport();
 

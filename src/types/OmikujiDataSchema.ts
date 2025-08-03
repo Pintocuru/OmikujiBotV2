@@ -119,7 +119,7 @@ export const categoryLabels: Record<
   icon: Users
  },
  scriptSettings: {
-  label: 'ゲームスクリプト設定',
+  label: 'ゲームスクリプト',
   description: 'ゲームスクリプトを動かし、特殊なプレースホルダーを生成するための初期設定',
   icon: Settings
  },
@@ -129,7 +129,7 @@ export const categoryLabels: Record<
   icon: Monitor
  },
  wordPartySettings: {
-  label: 'WordPartyリスト設定',
+  label: 'WordPartyリスト',
   description: 'コメント・タイマーの設定時に補助的に使える、WordPartyリスト。',
   icon: ListChecks
  }

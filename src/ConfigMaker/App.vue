@@ -1,7 +1,13 @@
 <!-- src/configMaker/App.vue -->
 <template>
- <div class="p-4 max-w-6xl mx-auto">
-  <h1 class="text-2xl font-bold mb-6 text-center text-primary">おみくじBot コンフィグエディター</h1>
+ <div class="p-4 max-w-6xl mx-auto pb-24">
+  <h1 class="text-2xl font-bold mb-6 text-center text-primary">
+   おみくじBot コンフィグエディター
+
+   <span v-if="data.displaySettings.developer.godModeEnabled" class="badge badge-warning"
+    >GOD-MODE</span
+   >
+  </h1>
 
   <!-- 開発者用プリセット読み書きコンポーネント -->
   <component :is="devToolsComponent" v-if="devToolsComponent" />
@@ -11,36 +17,62 @@
    <!-- インポート機能 -->
    <ConfigImport />
    <!-- エクスポート機能 -->
-   <ConfigExport />
+   <ConfigExport :showTemplateButton="data.displaySettings.developer.showTemplateButton" />
   </div>
 
   <!-- ナビゲーションタブ -->
-  <div class="tabs tabs-boxed mb-6 bg-base-300">
+  <div class="flex w-full justify-center my-6">
+   <div class="tabs gap-8">
+    <button
+     v-for="(tab, key) in categoryLabels"
+     :key="key"
+     :class="['tab w-16 h-16 tooltip tooltip-top', selectedCategory === key ? 'tab-active' : '']"
+     :data-tip="tab.description"
+     @click="omikujiStore.selectCategory(key)"
+    >
+     <!-- アイコンを大きめに表示 -->
+     <component :is="tab.icon" class="w-8 h-8" />
+     <!-- 下部に小さくラベル -->
+     <span class="text-xs text-center whitespace-nowrap text-ellipsis">{{ tab.label }}</span>
+
+     <!-- 件数バッジ -->
+     <span
+      v-if="getCategoryItemCount(key) > 0"
+      class="badge badge-xs badge-primary absolute -top-1 -right-1"
+     >
+      {{ getCategoryItemCount(key) }}
+     </span>
+    </button>
+   </div>
+  </div>
+
+  <!-- スクロール位置に応じて表示されるDock（下部） -->
+  <!-- TODO:buttonはコンポーネントで使いまわしして欲しい -->
+  <div v-if="showDock" class="dock dock-xl bg-base-300 fixed bottom-0 left-0 w-full z-40">
    <button
     v-for="(tab, key) in categoryLabels"
     :key="key"
     :class="[
-     'tab',
-     selectedCategory === key ? 'tab-active' : '',
-     'flex items-center gap-2 tooltip tooltip-top'
+     'flex flex-col items-center justify-center gap-1 tooltip tooltip-top',
+     selectedCategory === key ? 'dock-active' : ''
     ]"
     :data-tip="tab.description"
     @click="omikujiStore.selectCategory(key)"
    >
-    <component :is="tab.icon" class="w-4 h-4" />
-    {{ tab.label }}
-    <span v-if="getCategoryItemCount(key) > 0" class="badge badge-sm badge-primary">
-     {{ getCategoryItemCount(key) }}
-    </span>
+    <component :is="tab.icon" class="size-[1.2em]" />
+    <span class="dock-label">{{ tab.label }}</span>
    </button>
   </div>
 
   <!-- 動的コンテンツエリア -->
   <div class="card bg-base-200">
+   <!-- ルートコンテンツタイトル -->
    <div class="card-title bg-primary text-lg p-2 pl-4 rounded-t flex items-center gap-2">
     <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
     {{ categoryLabels[selectedCategory].label }}
    </div>
+
+   <!-- コンテンツ -->
    <div class="card-body">
     <!-- コメントルール -->
     <CommentRuleEditor v-if="selectedCategory === 'comments'" />
@@ -108,6 +140,7 @@ const { selectedCategory, data } = storeToRefs(omikujiStore);
 
 // ref
 const showScrollTopButton = ref(false);
+const showDock = ref(false);
 
 // 開発者モード
 const devToolsComponent = ref<any | null>(null);
@@ -120,6 +153,7 @@ if (isDev) {
 // スクロールイベントでボタンの表示制御
 const handleScroll = () => {
  showScrollTopButton.value = window.scrollY > 300; // 300px以上スクロールで表示
+ showDock.value = window.scrollY > 300;
 };
 
 // スクロールトップ処理

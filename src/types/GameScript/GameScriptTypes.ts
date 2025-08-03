@@ -1,7 +1,6 @@
 // shared/types/GameScriptTypes.ts
 // 250726_1 PresetMetadata に合わせて編集
 import { DefaultTypes, PresetMetadata } from '@shared/types/';
-import { GameRankingThemeLabel } from '../../utils/rankComponent/ThemePresets';
 import { GameState } from './GameScriptSchema';
 import { PostActionType, PostActionWordPartyType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
@@ -16,7 +15,6 @@ export interface ScriptPreset<
  settings: ParameterItem<TSettings>[]; // スクリプトの設定値
  params: ParameterItem<TParams>[]; // 実行時にユーザーが入力するパラメータ
  placeholders: ScriptPlaceholderItem<TPlaceholders>[]; // 動的置換用プレースホルダー
- componentConfig: RankComponentConfig; // TODO:GameScriptとは切り分けるので削除
 }
 
 // ===== スクリプト実行クラス =====
@@ -37,13 +35,6 @@ export interface ScriptClass<
 export interface ScriptResult<TPlaceholders extends object = DefaultTypes> {
  postActions: (PostActionType | PostActionWordPartyType)[]; // わんコメに投稿するコメント・WordParty
  placeholders: TPlaceholders; // runして出力されたプレースホルダー群
-}
-
-// コンポーネント表示設定
-export interface RankComponentConfig {
- rankingTitle: string; // ランキング表のタイトル名
- themeName: GameRankingThemeLabel; // テーマ名
- useRankingBackgrounds?: boolean; // 1-3位の表記にするか
 }
 
 // ===== パラメータ関連 =====

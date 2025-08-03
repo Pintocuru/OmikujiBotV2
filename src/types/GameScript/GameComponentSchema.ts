@@ -1,15 +1,13 @@
 // shared/types/GameComponentSchema.ts
-import { DefaultTypes, DisplaySize } from '../../../../../shared/types/CommonSchema';
+import { DefaultTypes, DisplaySize } from '@shared/types/';
 import { UserStatsType } from './GameScriptSchema';
-import { RankComponentConfig } from './GameScriptTypes';
 
-/**
- * shared であるもの
- */
-
-/**
- * shared ではないもの
- */
+// コンポーネント表示設定
+export interface RankComponentConfig {
+ rankingTitle: string; // ランキング表のタイトル名
+ themeName: string; // テーマ名
+ useRankingBackgrounds?: boolean; // 1-3位の表記にするか
+}
 
 // props型定義付き
 export type ScriptComponentPropsType<T extends object = DefaultTypes> = {

@@ -9,7 +9,10 @@
     description="コンテンツの表示サイズを設定します"
     @reset="resetDisplaySize"
    >
-    <select v-model="displaySettings.displaySize" class="select select-bordered w-full max-w-xs">
+    <select
+     v-model="displaySettings.base.displaySize"
+     class="select select-bordered w-full max-w-xs"
+    >
      <option v-for="size in displaySizeOptions" :key="size" :value="size">
       {{ displaySizeLabels[size] }}
      </option>
@@ -24,27 +27,27 @@
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
-      v-model="displaySettings.toastEnabled"
+      v-model="displaySettings.base.toastEnabled"
       type="checkbox"
-      class="checkbox checkbox-primary"
+      class="toggle toggle-primary"
      />
      <span class="label-text">トースト通知を表示する</span>
     </label>
    </SettingItem>
 
-   <!-- キャラクターコントロールパネル -->
+   <!-- キャラクターサムネイル -->
    <SettingItem
-    label="コントロールパネル"
-    description="キャラクターコントロールパネルの表示設定"
+    label="キャラクターサムネイル"
+    description="右下で配信を見守ってくれます"
     @reset="resetHideModeSwitch"
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
-      v-model="displaySettings.modeSwitchEnabled"
+      v-model="displaySettings.base.modeSwitchEnabled"
       type="checkbox"
-      class="checkbox checkbox-primary"
+      class="toggle toggle-primary"
      />
-     <span class="label-text">キャラクターコントロールパネルを表示する</span>
+     <span class="label-text">キャラクターサムネイルを表示する</span>
     </label>
    </SettingItem>
   </div>
@@ -71,15 +74,23 @@ const displaySizeOptions: DisplaySize[] = [...displaySize];
 
 // リセット機能（スキーマのデフォルト値を使用）
 const resetDisplaySize = () => {
- displaySettings.value.displaySize = DisplaySettingsSchema.shape.displaySize.parse(undefined);
+ displaySettings.value.base.displaySize = DisplaySettingsSchema.shape.base
+  .unwrap()
+  .shape.displaySize.unwrap()
+  .parse(undefined);
 };
 
 const resetToastEnabled = () => {
- displaySettings.value.toastEnabled = DisplaySettingsSchema.shape.toastEnabled.parse(undefined);
+ displaySettings.value.base.toastEnabled = DisplaySettingsSchema.shape.base
+  .unwrap()
+  .shape.toastEnabled.unwrap()
+  .parse(undefined);
 };
 
 const resetHideModeSwitch = () => {
- displaySettings.value.modeSwitchEnabled =
-  DisplaySettingsSchema.shape.modeSwitchEnabled.parse(undefined);
+ displaySettings.value.base.modeSwitchEnabled = DisplaySettingsSchema.shape.base
+  .unwrap()
+  .shape.modeSwitchEnabled.unwrap()
+  .parse(undefined);
 };
 </script>
