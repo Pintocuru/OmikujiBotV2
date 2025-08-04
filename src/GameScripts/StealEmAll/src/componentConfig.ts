@@ -15,20 +15,22 @@ export const componentConfig: GameComponentConfig = {
    third: '',
    oddRow: '',
    evenRow: ''
-  },
-  scoreIcon: {
-   iconName: '',
-   iconColor: '',
-   customClass: ''
   }
  },
  fontStyles: {
   scoreText: '',
   rankingText: ''
  },
- scoreAnimation: 'bounce',
+ scoreDisplay: {
+  scoreIcon: {
+   iconName: '',
+   iconColor: '',
+   customClass: ''
+  },
+  scoreAnimation: 'bounce'
+ },
  displaySettings: {
-  titleText: '⛏️ きょうのうさぎランキング 💎',
+  titleText: '🍉スイカランキング🍉',
   highlightTopThree: true,
   scoreFormat: ''
  }

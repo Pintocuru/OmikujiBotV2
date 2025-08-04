@@ -1,4 +1,4 @@
-<!-- GameRankingScore.vue -->
+<!-- src/MainGenerator/components/GameRankingViewer/GameRankingScore.vue -->
 <template>
  <div
   ref="scoreElement"
@@ -6,48 +6,36 @@
  >
   <!-- Background Icon/SVG - 中央に絶対配置 -->
   <component
-   v-if="theme.backgrounds.scoreIcon?.iconName"
-   :is="getIconComponent(theme.backgrounds.scoreIcon.iconName)"
+   v-if="scoreDisplay?.scoreIcon?.iconName"
+   :is="getIconComponent(scoreDisplay.scoreIcon.iconName)"
    :size="sizeConfig.score.iconSize"
    :class="[
     'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full',
-    theme.backgrounds.scoreIcon.iconColor,
+    scoreDisplay.scoreIcon.iconColor,
     sizeConfig.score.border,
-    theme.backgrounds.scoreIcon.customClass
+    scoreDisplay.scoreIcon.customClass
    ]"
   />
 
   <!-- Main Content - 前面に表示 -->
   <div class="flex flex-col items-center justify-center text-center relative z-10">
    <div
-    :class="[
-     'font-bold drop-shadow-lg',
-     theme.fontStyles.scoreText,
-     theme.textColors.secondary,
-     sizeConfig.text.large
-    ]"
+    :class="['font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]"
+    :style="getFontStyle(theme.fontStyles.scoreText)"
    >
     スコア
    </div>
 
    <div
-    :class="[
-     'font-bold drop-shadow-2xl',
-     theme.fontStyles.scoreText,
-     theme.textColors.primary,
-     sizeConfig.text.xlarge
-    ]"
+    :class="['font-bold drop-shadow-2xl', theme.textColors.primary, sizeConfig.text.xlarge]"
+    :style="getFontStyle(theme.fontStyles.scoreText)"
    >
     {{ playerData.points }}
    </div>
 
    <div
-    :class="[
-     'mt-2 font-bold drop-shadow-lg',
-     theme.fontStyles.scoreText,
-     theme.textColors.secondary,
-     sizeConfig.text.large
-    ]"
+    :class="['mt-2 font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]"
+    :style="getFontStyle(theme.fontStyles.scoreText)"
    >
     {{ playerData.name }}
    </div>
@@ -56,29 +44,51 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { useScoreAnimation } from '@/MainGenerator/components/GameRankingViewer/useScoreAnimation';
-import type { GameRankingTheme } from '@/types/GameComponent/GameRankingTypes';
+import { computed } from 'vue';
+import { GameComponentConfig, UserStatsType, GameRankingScore } from '@/types/';
+import { useScoreAnimation } from './useScoreAnimation';
+import { fontMap, useDynamicFonts } from './useDynamicFonts';
+import { SizeConfig } from './useComponentConfig';
 import * as LucideIcons from 'lucide-vue-next';
-import { SizeConfig } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
-import { UserStatsType } from '@/types/';
 
 const props = defineProps<{
  playerData: UserStatsType;
- theme: GameRankingTheme;
+ theme: GameComponentConfig;
  sizeConfig: SizeConfig;
+ scoreDisplay?: GameRankingScore;
 }>();
 
+// 動的フォント読み込み
+const { getFontStyle } = useDynamicFonts();
+
 // スコアアニメーション
-const { scoreElement, initScoreAnimation } = useScoreAnimation();
+// TODO:アニメーションは必ず動作しない。なにがあった？
+const { scoreElement } = useScoreAnimation();
 
 // Lucide アイコンコンポーネントを取得
 const getIconComponent = (iconName: string) => {
  return (LucideIcons as any)[iconName] || null;
 };
 
-// 初回マウント時のアニメーション
-onMounted(() => {
- initScoreAnimation(props.theme.scoreAnimation);
+// フォント名を抽出する関数
+const extractFontFamily = (fontClass: string): string | null => {
+ return fontMap[fontClass] || null;
+};
+
+// フォントスタイルを取得する関数
+const getFontStyleForClass = (fontClass: string): Record<string, string> => {
+ if (!fontClass) return {};
+
+ const fontFamily = extractFontFamily(fontClass);
+ if (fontFamily) {
+  return getFontStyle(fontFamily);
+ }
+
+ return {};
+};
+
+// スコア表示設定のcomputed
+const scoreDisplayConfig = computed(() => {
+ return props.scoreDisplay || props.theme.scoreDisplay;
 });
 </script>

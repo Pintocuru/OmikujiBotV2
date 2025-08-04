@@ -1,6 +1,16 @@
 // src/types/GameComponent/GameRankingTypes.ts
 
-// コンポーネントを表示する要素を１つにまとめる
+// GameRankingScoreで使用するスコア表示設定
+export interface GameRankingScore {
+ scoreIcon: ScoreIcon;
+ scoreAnimation: ScoreAnimationType;
+}
+
+export interface ScoreIcon {
+ iconName: string; // アイコン名（lucide）
+ iconColor: string; // アイコン色
+ customClass?: string; // オプションのCSSクラス
+}
 
 // スコア表示のアニメーションの種類
 export type ScoreAnimationType =
@@ -14,12 +24,6 @@ export type ScoreAnimationType =
  | 'rubberBand'
  | 'jello'
  | 'heartBeat';
-
-export interface ScoreIcon {
- iconName: string; // アイコン名（lucide）
- iconColor: string; // アイコン色
- customClass?: string; // オプションのCSSクラス
-}
 
 export interface GameComponentConfig {
  // Color scheme
@@ -37,19 +41,19 @@ export interface GameComponentConfig {
    oddRow: string; // それ以外の奇数
    evenRow: string; // それ以外の偶数
   };
-  // スコア表示用背景
-  scoreIcon: ScoreIcon;
  };
 
  // Typography
- // TODO:Googleフォントからの動的な取得
  fontStyles: {
   scoreText: string;
   rankingText: string;
+  // 動的に追加されるスタイルオブジェクト
+  scoreTextStyle?: Record<string, string>;
+  rankingTextStyle?: Record<string, string>;
  };
 
- // Score Display Animation
- scoreAnimation: ScoreAnimationType;
+ // スコア表示設定（GameRankingScoreで使用）
+ scoreDisplay: GameRankingScore;
 
  // コンポーネント表示設定
  displaySettings: {

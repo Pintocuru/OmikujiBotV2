@@ -1,93 +1,52 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
 <template>
- <div v-if="props.componentConfig">
+ <div v-if="theme">
   <!-- Score Display with Animation -->
   <GameRankingScore
-   v-if="scoreDisplay.isVisible.value"
-   :player-data="props.userRankings[0]"
+   v-if="scoreDisplay.isVisible.value && userRankings.length > 0"
+   :player-data="userRankings[0]"
    :theme="theme"
    :size-config="sizeConfig"
+   :score-display="theme.scoreDisplay"
   />
 
-  <!-- Ranking Display -->
-  <div :class="['p-1', theme.backgrounds.base, theme.fontStyles.rankingText]">
-   <!-- ランキングタイトル -->
-   <div
-    :class="[
-     'text-center mb-2 font-bold drop-shadow-lg',
-     theme.textColors.accent,
-     sizeConfig.text.large
-    ]"
-   >
-    {{ theme.displaySettings.titleText }}
-   </div>
-
-   <!-- ランキングリスト -->
-   <div class="overflow-hidden max-h-fit">
-    <ul class="list-none p-0 m-0 space-y-1">
-     <li
-      v-for="(player, index) in props.userRankings"
-      :key="index"
-      :class="getRankingRowClass(index)"
-     >
-      <!-- 順位 -->
-      <span :class="getRankingNumberClass(index, sizeConfig.rankingNumber)">
-       {{ player.rank ?? index + 1 }}
-      </span>
-
-      <!-- プレイヤー情報 -->
-      <span class="flex justify-center items-center flex-1">
-       <span :class="['font-bold mr-2 text-white', sizeConfig.text.medium]">
-        {{ player.points ?? 0 }} pt
-       </span>
-       <span :class="[theme.textColors.primary, sizeConfig.text.medium]">
-        ({{ player.name }})
-       </span>
-      </span>
-     </li>
-    </ul>
-   </div>
-
-   <!-- 平均スコア -->
-   <div
-    :class="[
-     'p-0 m-0 flex justify-center items-center w-full mt-2',
-     theme.textColors.primary,
-     sizeConfig.text.small
-    ]"
-   >
-    平均: {{ gameStatistics.averageScore }}pt ({{ gameStatistics.totalCount }}回 / 総計{{
-     gameStatistics.totalScore
-    }}pt)
-   </div>
-
-   <!-- スコアテンプレート表示（処理前） -->
-   <div :class="['text-center mt-1', theme.textColors.secondary, sizeConfig.text.small]">
-    表示テンプレート: {{ theme.displaySettings.scoreFormat }}
-   </div>
-  </div>
+  <!-- Ranking list -->
+  <GameRankingList
+   :user-rankings="userRankings"
+   :theme="theme"
+   :size-config="sizeConfig"
+   :game-statistics="gameStatistics"
+   :format-player-info="formatPlayerInfo"
+   :get-ranking-row-class="getRankingRowClass"
+   :get-ranking-number-class="getRankingNumberClass"
+  />
 
   <!-- デバッグ用 -->
-  <TailwindDebugComponent v-show="0" />
+  <TailwindDebugComponent v-show="false" />
  </div>
 
  <!-- componentConfigがnullの場合はエラー表示 -->
  <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
   <p class="text-red-700">設定が読み込まれていません</p>
+  <p class="text-red-600 text-sm mt-1">
+   componentConfig: {{ props.componentConfig ? 'loaded' : 'null' }}
+  </p>
  </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { ScriptComponentPropsType } from '@/types/';
 import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
 import { useGameRanking } from './useGameRanking';
+import { fontMap, useDynamicFonts } from './useDynamicFonts';
 import GameRankingScore from './GameRankingScore.vue';
+import GameRankingList from './GameRankingList.vue';
 import TailwindDebugComponent from './TailwindDebugComponent.vue';
 
 const props = defineProps<ScriptComponentPropsType>();
-/*
+/**
  type ScriptComponentPropsType = {
  componentConfig: GameComponentConfig | null;
  settings: DefaultTypes;
@@ -96,34 +55,70 @@ const props = defineProps<ScriptComponentPropsType>();
 };
  */
 
+// 動的フォント読み込み
+const { getFontStyle, loadFont } = useDynamicFonts();
+
 // Score display control
-const scoreDisplay = useDelayedDisplay(() => props.userRankings, {
+const scoreDisplay = useDelayedDisplay(() => props.userRankings || [], {
  delayMs: 4500,
- displayMs: 5000
+ displayMs: 9995000
 });
 
 // Size configuration
 const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[props.displaySize]);
 
-//
-const theme = computed(() => (props.componentConfig ? props.componentConfig : null));
+// Null安全なtheme
+const theme = computed(() => {
+ if (!props.componentConfig) return null;
+
+ // フォントスタイルを動的に取得してテーマに追加
+ const updatedTheme = { ...props.componentConfig };
+
+ // フォント名を抽出してスタイルオブジェクトに変換
+ if (updatedTheme.fontStyles.scoreText) {
+  const fontFamily = extractFontFamily(updatedTheme.fontStyles.scoreText);
+  if (fontFamily) {
+   updatedTheme.fontStyles.scoreTextStyle = getFontStyle(fontFamily);
+  }
+ }
+
+ if (updatedTheme.fontStyles.rankingText) {
+  const fontFamily = extractFontFamily(updatedTheme.fontStyles.rankingText);
+  if (fontFamily) {
+   updatedTheme.fontStyles.rankingTextStyle = getFontStyle(fontFamily);
+  }
+ }
+
+ return updatedTheme;
+});
+
+// フォント名を抽出する関数
+const extractFontFamily = (fontClass: string): string | null => {
+ return fontMap[fontClass] || null;
+};
 
 // ゲームランキングコンポーザブル
-const { gameStatistics, getRankingNumberClass, getRankingRowClass } = useGameRanking(
- props.userRankings,
- props.componentConfig
+const {
+ gameStatistics,
+ userRankings,
+ formatPlayerInfo,
+ getRankingRowClass,
+ getRankingNumberClass
+} = useGameRanking(props.userRankings || [], props.componentConfig);
+
+// フォントの動的読み込み監視
+watch(
+ () => theme.value,
+ (newTheme) => {
+  if (newTheme) {
+   // 必要なフォントを動的に読み込み
+   const scoreFont = extractFontFamily(newTheme.fontStyles.scoreText);
+   const rankingFont = extractFontFamily(newTheme.fontStyles.rankingText);
+
+   if (scoreFont) loadFont(scoreFont);
+   if (rankingFont) loadFont(rankingFont);
+  }
+ },
+ { immediate: true }
 );
 </script>
-
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&family=Mochiy+Pop+P+One&display=swap');
-
-.font-rocknroll {
- font-family: 'RocknRoll One', cursive;
- text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.font-mochiy {
- font-family: 'Mochiy Pop P One', cursive;
-}
-</style>

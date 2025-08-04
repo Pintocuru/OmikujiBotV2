@@ -1,7 +1,7 @@
 // shared/utils/rankComponent/useScoreAnimation.ts
-import { ref, nextTick } from 'vue';
+import { ref } from 'vue';
+import { ScoreAnimationType } from '@/types';
 import anime from 'animejs';
-import type { ScoreAnimationType } from '../../../types/GameComponent/GameRankingTypes';
 
 // Animation configurations
 const ANIMATION_CONFIGS = {
@@ -81,32 +81,69 @@ export function useScoreAnimation() {
  const scoreElement = ref<HTMLElement | null>(null);
 
  // Score animation function
- const animateScore = async (animationType: ScoreAnimationType) => {
-  if (!scoreElement.value) return;
+ const animateScore = (animationType: ScoreAnimationType = 'bounce'): void => {
+  if (!scoreElement.value) {
+   console.warn('Score element is not available for animation');
+   return;
+  }
 
   const animConfig = ANIMATION_CONFIGS[animationType];
+  if (!animConfig) {
+   console.warn(`Animation type '${animationType}' is not defined`);
+   return;
+  }
+
+  // 要素が表示されていることを確認
+  if (scoreElement.value.offsetParent === null) {
+   console.warn('Score element is not visible, skipping animation');
+   return;
+  }
+
   const { duration, delay, easing, ...animationProps } = animConfig;
 
-  return anime({
-   targets: scoreElement.value,
-   duration,
-   delay,
-   easing,
-   ...animationProps
-  }).finished;
+  try {
+   // アニメーション開始前に初期状態をリセット
+   anime.set(scoreElement.value, {
+    transform: 'none',
+    opacity: 1
+   });
+
+   // アニメーション実行
+   anime({
+    targets: scoreElement.value,
+    duration,
+    delay,
+    easing,
+    ...animationProps,
+    complete: () => {
+     console.log(`Animation '${animationType}' completed`);
+    }
+   });
+  } catch (error) {
+   console.error('Animation failed:', error);
+  }
  };
 
- // Initialize score animation
- const initScoreAnimation = async (animationType: ScoreAnimationType) => {
-  await nextTick();
+ // アニメーションをリセットする関数
+ const resetAnimation = () => {
   if (scoreElement.value) {
-   await animateScore(animationType);
+   anime.set(scoreElement.value, {
+    transform: 'none',
+    opacity: 1,
+    scale: 1
+   });
   }
+ };
+
+ // 利用可能なアニメーション一覧を取得
+ const getAvailableAnimations = (): ScoreAnimationType[] => {
+  return Object.keys(ANIMATION_CONFIGS) as ScoreAnimationType[];
  };
 
  return {
   scoreElement,
   animateScore,
-  initScoreAnimation
+  resetAnimation,
+  getAvailableAnimations
  };
 }
