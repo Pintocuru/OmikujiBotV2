@@ -3,7 +3,7 @@
  <div v-if="theme">
   <!-- Score Display with Animation -->
   <GameRankingScore
-   v-if="scoreDisplay.isVisible.value && userRankings.length > 0"
+   v-if="scoreVisibility.isVisible.value && userRankings.length > 0"
    :player-data="userRankings[0]"
    :theme="theme"
    :size-config="sizeConfig"
@@ -21,8 +21,8 @@
    :get-ranking-number-class="getRankingNumberClass"
   />
 
-  <!-- デバッグ用 -->
-  <Dev />
+  <!-- デバッグ用
+  <Dev /> -->
  </div>
 
  <!-- componentConfigがnullの場合はエラー表示 -->
@@ -54,18 +54,15 @@ const props = defineProps<ScriptComponentPropsType>();
 };
  */
 
-// Score display control
-const scoreDisplay = useDelayedDisplay(() => props.userRankings || [], {
- delayMs: 4500,
- displayMs: 9995000
-});
-
 // Size configuration
 const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[props.displaySize]);
+const userRankingsRef = computed(() => props.userRankings || []);
+const theme = computed(() => props.componentConfig ?? null);
 
-// Null安全なtheme
-const theme = computed(() => {
- return props.componentConfig ?? null;
+// Score display control
+const scoreVisibility = useDelayedDisplay(userRankingsRef, {
+ delayMs: 4500,
+ displayMs: 5000
 });
 
 // ゲームランキングコンポーザブル
@@ -75,5 +72,5 @@ const {
  formatPlayerInfo,
  getRankingRowClass,
  getRankingNumberClass
-} = useGameRanking(props.userRankings || [], props.componentConfig);
+} = useGameRanking(userRankingsRef, theme);
 </script>

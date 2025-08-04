@@ -1,14 +1,12 @@
 // src/MainGenerator/components/GameRankingViewer/useGameRanking.ts
-import { computed } from 'vue';
+import { computed, Ref } from 'vue';
 import type { GameComponentConfig, GameStatistics, UserStatsType } from '@/types';
 
 export function useGameRanking(
- userRankingsRaw: UserStatsType[],
- optionRaw: GameComponentConfig | null
+ userRankings: Ref<UserStatsType[]>,
+ theme: Ref<GameComponentConfig | null>
 ) {
  // computed - null安全性を確保
- const userRankings = computed(() => userRankingsRaw || []);
- const options = computed(() => optionRaw);
 
  // Computed game statistics
  const gameStatistics = computed<GameStatistics>(() => {
@@ -50,7 +48,7 @@ export function useGameRanking(
 
  // Ranking row class generator
  const getRankingRowClass = (index: number): string[] => {
-  if (!options.value) return ['flex', 'items-center', 'justify-between', 'p-2'];
+  if (!theme.value) return ['flex', 'items-center', 'justify-between', 'p-2'];
 
   const baseClasses = [
    'flex',
@@ -64,9 +62,9 @@ export function useGameRanking(
    'overflow-hidden'
   ];
 
-  const ranking = options.value.backgrounds.ranking;
+  const ranking = theme.value.backgrounds.ranking;
 
-  if (!options.value.displaySettings?.highlightTopThree) {
+  if (!theme.value.displaySettings?.highlightTopThree) {
    return [...baseClasses, index % 2 === 0 ? ranking.evenRow : ranking.oddRow];
   }
 
@@ -99,7 +97,7 @@ export function useGameRanking(
    sizeClass
   ];
 
-  if (!options.value?.displaySettings?.highlightTopThree) {
+  if (!theme.value?.displaySettings?.highlightTopThree) {
    // 通常表示の場合はindexベース
    const medalColors = {
     0: ['bg-yellow-400', 'text-yellow-900', 'border-yellow-600'],
@@ -141,7 +139,7 @@ export function useGameRanking(
   // Data
   gameStatistics,
   userRankings,
-  options,
+  options: theme,
 
   // Methods
   formatPlayerInfo,

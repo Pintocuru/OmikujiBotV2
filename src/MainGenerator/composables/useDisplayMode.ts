@@ -60,10 +60,11 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
   updateTrigger.value; // eslint-disable-line no-unused-expressions
 
   const scriptKey = currentScriptKey.value;
+  const componentKey = scriptKey ? `game-${scriptKey}` : 'bot-mode';
 
   if (!scriptKey || !scriptGameMap[scriptKey]) {
    return {
-    componentKey: new Date().getTime().toString(),
+    componentKey: componentKey,
     componentConfig: null,
     settings: {},
     userRankings: [],
@@ -73,7 +74,7 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
 
   // 毎回新しいpropsオブジェクトを作成
   const props: ScriptComponentPropsType = {
-   componentKey: new Date().getTime().toString(),
+   componentKey: componentKey, //new Date().getTime().toString(),
    componentConfig: scriptGameMap[scriptKey].componentConfig,
    settings: { ...(omikujiData.scriptSettings?.[scriptKey] || {}) }, // オブジェクトを複製
    userRankings: getCurrentRankings(scriptKey), // 毎回新しいランキングデータを取得
