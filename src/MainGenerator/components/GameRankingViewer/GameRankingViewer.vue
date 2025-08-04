@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { ScriptComponentPropsType } from '@/types/';
 import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
@@ -65,12 +65,7 @@ const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[props.displaySize]);
 
 // Null安全なtheme
 const theme = computed(() => {
- if (!props.componentConfig) return null;
-
- // フォントスタイルを動的に取得してテーマに追加
- const updatedTheme = { ...props.componentConfig };
-
- return updatedTheme;
+ return props.componentConfig ?? null;
 });
 
 // ゲームランキングコンポーザブル

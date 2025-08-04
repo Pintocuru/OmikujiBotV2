@@ -39,7 +39,21 @@ export const DisplaySettingsSchema = z.object({
     .nullable()
     .default(null),
 
+   // 表示するコンポーネント(空の場合はおみくじBOT)
+   availableComponents: z
+    .array(
+     z.object({
+      id: z.string(),
+      name: z.string(),
+      componentType: z.enum(['omikujiBot', 'GameScripts']),
+      componentKey: z.string().nullable(),
+      enabled: z.boolean()
+     })
+    )
+    .catch([]),
+
    // 各種設定UIの表示制御
+   // ! availableComponents と交代
    scriptSettingsEnabled: z.boolean().default(true).catch(true),
 
    // 「テンプレート出力ボタン」を表示するか
@@ -48,6 +62,7 @@ export const DisplaySettingsSchema = z.object({
   .catch({
    godModeEnabled: true,
    selectComponent: 'omikujiBot',
+   availableComponents: [],
    defaultScriptKey: null,
    scriptSettingsEnabled: true,
    showTemplateButton: true
