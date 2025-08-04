@@ -3,8 +3,13 @@ import { ref } from 'vue';
 import { ScoreAnimationType } from '@/types';
 import anime from 'animejs';
 
+// anime.js のアニメーションプロパティの型を定義
+type AnimeProperties = anime.AnimeAnimParams & {
+ loop?: boolean;
+};
+
 // Animation configurations
-const ANIMATION_CONFIGS = {
+const ANIMATION_CONFIGS: Record<ScoreAnimationType, AnimeProperties> = {
  bounce: {
   translateY: ['-100px', '0px'],
   scale: [0.3, 1],
@@ -30,7 +35,8 @@ const ANIMATION_CONFIGS = {
   scale: [1, 1.1, 1],
   easing: 'easeInOutQuad',
   duration: 1000,
-  delay: 0
+  delay: 0,
+  loop: true
  },
  slideInDown: {
   translateY: ['-100%', '0%'],
@@ -72,70 +78,88 @@ const ANIMATION_CONFIGS = {
   scale: [1, 1.3, 1, 1.3, 1],
   easing: 'easeInOutQuad',
   duration: 1200,
-  delay: 0
+  delay: 0,
+  loop: true
  }
-} as const;
+};
+
+// アニメーションで使われる可能性のある全てのプロパティの初期値を定義
+const INITIAL_PROPS: Record<string, any> = {
+ opacity: 1,
+ translateY: '0px',
+ scale: 1,
+ scaleX: 1,
+ scaleY: 1,
+ rotate: '0deg',
+ rotateY: '0deg',
+ skewX: '0deg',
+ skewY: '0deg'
+};
 
 export function useScoreAnimation() {
- // Score animation element reference
  const scoreElement = ref<HTMLElement | null>(null);
+ let currentAnimation: anime.AnimeInstance | null = null;
 
- // Score animation function
  const animateScore = (animationType: ScoreAnimationType = 'bounce'): void => {
   if (!scoreElement.value) {
-   console.warn('Score element is not available for animation');
    return;
+  }
+
+  if (currentAnimation) {
+   currentAnimation.pause();
+   currentAnimation = null;
   }
 
   const animConfig = ANIMATION_CONFIGS[animationType];
   if (!animConfig) {
-   console.warn(`Animation type '${animationType}' is not defined`);
    return;
   }
 
-  // 要素が表示されていることを確認
   if (scoreElement.value.offsetParent === null) {
-   console.warn('Score element is not visible, skipping animation');
    return;
   }
 
-  const { duration, delay, easing, ...animationProps } = animConfig;
+  const { duration, delay, easing, loop, ...animationProps } = animConfig;
+  const propsToReset: Record<string, any> = {};
+
+  for (const key of Object.keys(animationProps)) {
+   if (INITIAL_PROPS.hasOwnProperty(key)) {
+    propsToReset[key] = INITIAL_PROPS[key];
+   }
+  }
 
   try {
-   // アニメーション開始前に初期状態をリセット
-   anime.set(scoreElement.value, {
-    transform: 'none',
-    opacity: 1
-   });
+   anime.set(scoreElement.value, { ...propsToReset });
 
-   // アニメーション実行
-   anime({
+   currentAnimation = anime({
     targets: scoreElement.value,
     duration,
     delay,
     easing,
+    loop: loop || false,
+    direction: 'alternate',
     ...animationProps,
-    complete: () => {
-     console.log(`Animation '${animationType}' completed`);
+    complete: (anim) => {
+     if (!loop) {
+      currentAnimation = null;
+     }
     }
    });
   } catch (error) {
-   console.error('Animation failed:', error);
+   // ログは削除しましたが、念のためエラーハンドリングは残しておきます
   }
  };
 
- // アニメーションをリセットする関数
  const resetAnimation = () => {
+  if (currentAnimation) {
+   currentAnimation.pause();
+   currentAnimation = null;
+  }
   if (scoreElement.value) {
-   anime.set(scoreElement.value, {
-    transform: 'none',
-    opacity: 1,
-    scale: 1
-   });
+   anime.set(scoreElement.value, { ...INITIAL_PROPS });
   }
  };
 
- // 利用可能なアニメーション一覧を取得
  const getAvailableAnimations = (): ScoreAnimationType[] => {
   return Object.keys(ANIMATION_CONFIGS) as ScoreAnimationType[];
  };

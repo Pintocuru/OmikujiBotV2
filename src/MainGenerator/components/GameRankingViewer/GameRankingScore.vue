@@ -5,7 +5,7 @@
   class="relative mx-auto whitespace-nowrap flex flex-col justify-center items-center -mb-8 min-h-[120px] z-999"
   :class="[theme.fontStyles.scoreText]"
  >
-  <!-- Background Icon/SVG - 中央に絶対配置 -->
+  <!-- Background Icon/SVG -->
   <component
    v-if="scoreDisplay?.scoreIcon?.iconName"
    :is="getIconComponent(scoreDisplay.scoreIcon.iconName)"
@@ -18,7 +18,7 @@
    ]"
   />
 
-  <!-- Main Content - 前面に表示 -->
+  <!-- Main Content -->
   <div class="flex flex-col items-center justify-center text-center relative z-10">
    <div :class="['font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]">
     スコア
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'; // watch をインポート
+import { watch } from 'vue';
 import { GameComponentConfig, UserStatsType, GameRankingScore } from '@/types/';
 import { useScoreAnimation } from './useScoreAnimation';
 import { SizeConfig } from './useComponentConfig';
@@ -53,34 +53,21 @@ const props = defineProps<{
 
 const { scoreElement, animateScore, resetAnimation } = useScoreAnimation();
 
-// scoreDisplay は親コンポーネントから渡されるため、直接 watch します
-// scoreDisplay?.isVisible はリアクティブではない可能性があるため、computed で監視対象を定義します
-const isScoreDisplayVisible = computed(() => props.scoreDisplay);
-
-watch(
- isScoreDisplayVisible,
- (isVisible) => {
-  if (isVisible) {
-   // 表示されたらループアニメーションを開始
-   // ここで 'pulse' や 'heartBeat' など、ループを設定したアニメーションタイプを指定します
-   animateScore('pulse'); // 例: pulse アニメーションを使用
-  } else {
-   // 非表示になったらアニメーションをリセット（停止）
-   resetAnimation();
-  }
- },
- { immediate: true }
-); // コンポーネントの初期ロード時にもチェック
-
-// Lucide アイコンコンポーネントを取得
 const getIconComponent = (iconName: string) => {
  return (LucideIcons as any)[iconName] || null;
 };
-onMounted(() => {
- console.log('scoreElement on mounted:', scoreElement.value);
-});
-// スコア表示設定のcomputed
-const scoreDisplayConfig = computed(() => {
- return props.scoreDisplay || props.theme.scoreDisplay;
-});
+
+// props.scoreDisplay と scoreElement の両方を監視し、準備ができたときにアニメーションを開始
+watch(
+ [() => props.scoreDisplay, scoreElement],
+ ([newScoreDisplay, newScoreElement]) => {
+  const shouldAnimate = !!newScoreDisplay && !!newScoreElement;
+  if (shouldAnimate) {
+   animateScore(newScoreDisplay?.scoreAnimation || 'bounce');
+  } else {
+   resetAnimation();
+  }
+ },
+ { immediate: true, deep: true }
+);
 </script>
