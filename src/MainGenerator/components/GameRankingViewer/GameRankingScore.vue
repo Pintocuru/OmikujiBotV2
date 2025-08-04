@@ -3,6 +3,7 @@
  <div
   ref="scoreElement"
   class="relative mx-auto whitespace-nowrap flex flex-col justify-center items-center -mb-8 min-h-[120px] z-999"
+  :class="[theme.fontStyles.scoreText]"
  >
   <!-- Background Icon/SVG - 中央に絶対配置 -->
   <component
@@ -19,23 +20,16 @@
 
   <!-- Main Content - 前面に表示 -->
   <div class="flex flex-col items-center justify-center text-center relative z-10">
-   <div
-    :class="['font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]"
-    :style="getFontStyle(theme.fontStyles.scoreText)"
-   >
+   <div :class="['font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]">
     スコア
    </div>
 
-   <div
-    :class="['font-bold drop-shadow-2xl', theme.textColors.primary, sizeConfig.text.xlarge]"
-    :style="getFontStyle(theme.fontStyles.scoreText)"
-   >
+   <div :class="['font-bold drop-shadow-2xl', theme.textColors.primary, sizeConfig.text.xlarge]">
     {{ playerData.points }}
    </div>
 
    <div
     :class="['mt-2 font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]"
-    :style="getFontStyle(theme.fontStyles.scoreText)"
    >
     {{ playerData.name }}
    </div>
@@ -44,10 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, watch } from 'vue'; // watch をインポート
 import { GameComponentConfig, UserStatsType, GameRankingScore } from '@/types/';
 import { useScoreAnimation } from './useScoreAnimation';
-import { fontMap, useDynamicFonts } from './useDynamicFonts';
 import { SizeConfig } from './useComponentConfig';
 import * as LucideIcons from 'lucide-vue-next';
 
@@ -58,35 +51,34 @@ const props = defineProps<{
  scoreDisplay?: GameRankingScore;
 }>();
 
-// 動的フォント読み込み
-const { getFontStyle } = useDynamicFonts();
+const { scoreElement, animateScore, resetAnimation } = useScoreAnimation();
 
-// スコアアニメーション
-// TODO:アニメーションは必ず動作しない。なにがあった？
-const { scoreElement } = useScoreAnimation();
+// scoreDisplay は親コンポーネントから渡されるため、直接 watch します
+// scoreDisplay?.isVisible はリアクティブではない可能性があるため、computed で監視対象を定義します
+const isScoreDisplayVisible = computed(() => props.scoreDisplay);
+
+watch(
+ isScoreDisplayVisible,
+ (isVisible) => {
+  if (isVisible) {
+   // 表示されたらループアニメーションを開始
+   // ここで 'pulse' や 'heartBeat' など、ループを設定したアニメーションタイプを指定します
+   animateScore('pulse'); // 例: pulse アニメーションを使用
+  } else {
+   // 非表示になったらアニメーションをリセット（停止）
+   resetAnimation();
+  }
+ },
+ { immediate: true }
+); // コンポーネントの初期ロード時にもチェック
 
 // Lucide アイコンコンポーネントを取得
 const getIconComponent = (iconName: string) => {
  return (LucideIcons as any)[iconName] || null;
 };
-
-// フォント名を抽出する関数
-const extractFontFamily = (fontClass: string): string | null => {
- return fontMap[fontClass] || null;
-};
-
-// フォントスタイルを取得する関数
-const getFontStyleForClass = (fontClass: string): Record<string, string> => {
- if (!fontClass) return {};
-
- const fontFamily = extractFontFamily(fontClass);
- if (fontFamily) {
-  return getFontStyle(fontFamily);
- }
-
- return {};
-};
-
+onMounted(() => {
+ console.log('scoreElement on mounted:', scoreElement.value);
+});
 // スコア表示設定のcomputed
 const scoreDisplayConfig = computed(() => {
  return props.scoreDisplay || props.theme.scoreDisplay;

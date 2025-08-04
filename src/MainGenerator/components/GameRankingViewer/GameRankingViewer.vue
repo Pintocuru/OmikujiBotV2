@@ -22,7 +22,7 @@
   />
 
   <!-- デバッグ用 -->
-  <TailwindDebugComponent v-show="false" />
+  <Dev />
  </div>
 
  <!-- componentConfigがnullの場合はエラー表示 -->
@@ -40,10 +40,9 @@ import { ScriptComponentPropsType } from '@/types/';
 import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
 import { useGameRanking } from './useGameRanking';
-import { fontMap, useDynamicFonts } from './useDynamicFonts';
 import GameRankingScore from './GameRankingScore.vue';
 import GameRankingList from './GameRankingList.vue';
-import TailwindDebugComponent from './TailwindDebugComponent.vue';
+import Dev from './Dev.vue';
 
 const props = defineProps<ScriptComponentPropsType>();
 /**
@@ -54,9 +53,6 @@ const props = defineProps<ScriptComponentPropsType>();
  displaySize: DisplaySize;
 };
  */
-
-// 動的フォント読み込み
-const { getFontStyle, loadFont } = useDynamicFonts();
 
 // Score display control
 const scoreDisplay = useDelayedDisplay(() => props.userRankings || [], {
@@ -74,28 +70,8 @@ const theme = computed(() => {
  // フォントスタイルを動的に取得してテーマに追加
  const updatedTheme = { ...props.componentConfig };
 
- // フォント名を抽出してスタイルオブジェクトに変換
- if (updatedTheme.fontStyles.scoreText) {
-  const fontFamily = extractFontFamily(updatedTheme.fontStyles.scoreText);
-  if (fontFamily) {
-   updatedTheme.fontStyles.scoreTextStyle = getFontStyle(fontFamily);
-  }
- }
-
- if (updatedTheme.fontStyles.rankingText) {
-  const fontFamily = extractFontFamily(updatedTheme.fontStyles.rankingText);
-  if (fontFamily) {
-   updatedTheme.fontStyles.rankingTextStyle = getFontStyle(fontFamily);
-  }
- }
-
  return updatedTheme;
 });
-
-// フォント名を抽出する関数
-const extractFontFamily = (fontClass: string): string | null => {
- return fontMap[fontClass] || null;
-};
 
 // ゲームランキングコンポーザブル
 const {
@@ -105,20 +81,4 @@ const {
  getRankingRowClass,
  getRankingNumberClass
 } = useGameRanking(props.userRankings || [], props.componentConfig);
-
-// フォントの動的読み込み監視
-watch(
- () => theme.value,
- (newTheme) => {
-  if (newTheme) {
-   // 必要なフォントを動的に読み込み
-   const scoreFont = extractFontFamily(newTheme.fontStyles.scoreText);
-   const rankingFont = extractFontFamily(newTheme.fontStyles.rankingText);
-
-   if (scoreFont) loadFont(scoreFont);
-   if (rankingFont) loadFont(rankingFont);
-  }
- },
- { immediate: true }
-);
 </script>

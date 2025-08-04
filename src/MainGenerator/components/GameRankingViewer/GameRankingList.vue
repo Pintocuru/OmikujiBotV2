@@ -11,7 +11,6 @@
     theme.textColors.accent,
     sizeConfig.text.large
    ]"
-   :style="getFontStyleForRanking(theme.fontStyles.rankingText)"
   >
    {{ theme.displaySettings.titleText }}
   </div>
@@ -32,8 +31,8 @@
      <!-- プレイヤー情報 -->
      <span class="flex justify-center items-center flex-1">
       <span
+       class="font-bold drop-shadow-lg"
        :class="[theme.textColors.primary, sizeConfig.text.medium]"
-       :style="getFontStyleForRanking(theme.fontStyles.rankingText)"
        v-html="formatPlayerInfo(player, theme.displaySettings.scoreFormat)"
       />
      </span>
@@ -48,7 +47,6 @@
     theme.textColors.primary,
     sizeConfig.text.small
    ]"
-   :style="getFontStyleForRanking(theme.fontStyles.rankingText)"
   >
    平均: {{ gameStatistics.averageScore }}pt ({{ gameStatistics.totalCount }}回 / 総計{{
     gameStatistics.totalScore
@@ -56,12 +54,7 @@
   </div>
 
   <!-- スコアテンプレート表示（処理前） -->
-  <div
-   :class="['text-center mt-1', theme.textColors.secondary, sizeConfig.text.small]"
-   :style="getFontStyleForRanking(theme.fontStyles.rankingText)"
-  >
-   表示テンプレート: {{ theme.displaySettings.scoreFormat }}
-  </div>
+  <div :class="['text-center mt-1', theme.textColors.secondary, sizeConfig.text.small]"></div>
  </div>
 
  <!-- データがない場合 -->
@@ -72,7 +65,6 @@
 
 <script setup lang="ts">
 import { GameComponentConfig, GameStatistics, UserStatsType } from '@/types';
-import { fontMap, useDynamicFonts } from './useDynamicFonts';
 import { SizeConfig } from './useComponentConfig';
 
 defineProps<{
@@ -84,19 +76,4 @@ defineProps<{
  getRankingRowClass: (index: number) => string[];
  getRankingNumberClass: (index: number, sizeClass: string) => string[];
 }>();
-
-// 動的フォント読み込み
-const { getFontStyle } = useDynamicFonts();
-
-// フォント名を抽出する関数
-const extractFontFamily = (fontClass: string): string | null => {
- return fontMap[fontClass] || null;
-};
-
-// ランキング用フォントスタイルを取得
-const getFontStyleForRanking = (fontClass: string): Record<string, string> => {
- if (!fontClass) return {};
- const fontFamily = extractFontFamily(fontClass);
- return fontFamily ? getFontStyle(fontFamily) : {};
-};
 </script>
