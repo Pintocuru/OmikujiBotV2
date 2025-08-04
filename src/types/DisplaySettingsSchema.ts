@@ -3,7 +3,6 @@
 import { z } from 'zod';
 import { ScriptGameKey, scriptGameKeys } from '@/ScriptGame/ScriptGameMap';
 import { displaySize } from '@shared/types/';
-import { availableComponents } from './availableComponents';
 
 const AvailableComponentsSchema = z.array(
  z.object({
@@ -50,7 +49,7 @@ export const DisplaySettingsSchema = z.object({
     .default(null),
 
    // 表示するゲームスクリプト
-   availableGameScript: z.array(z.string()).default([]).catch([]), // 参加ユーザーの履歴（時系列順）
+   availableGameScripts: z.array(z.string()).default([]).catch([]), // 参加ユーザーの履歴（時系列順）
 
    // ゲームスクリプトの設定を許可するか
    enabledGameScriptSettings: z.boolean().default(true).catch(true),
@@ -61,16 +60,12 @@ export const DisplaySettingsSchema = z.object({
   .catch({
    godModeEnabled: true,
    selectComponent: 'omikujiBot',
-   availableGameScript: [],
+   availableGameScripts: [],
    defaultScriptKey: null,
    enabledGameScriptSettings: true,
    showTemplateButton: true
   })
 });
-
-//
-export type AvailableComponentsType = z.infer<typeof AvailableComponentsSchema>;
-export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
 
 // ルートカテゴリの表示設定
 // selectCategoryType = ['comments', 'timers', 'placeholders', 'characters']

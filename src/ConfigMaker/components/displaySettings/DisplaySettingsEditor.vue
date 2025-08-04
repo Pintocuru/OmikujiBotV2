@@ -4,9 +4,38 @@
   <!-- 表示設定 -->
   <DisplaySettingsCard />
 
+  <!-- GOD-MODEがOFFの時のGODボタン -->
+  <div v-if="isDev && !data.displaySettings.developer.godModeEnabled">
+   <div class="flex flex-wrap gap-4 p-4">
+    <div class="alert alert-warning w-full">
+     <Info class="w-5 h-5 mt-0.5 shrink-0" />
+     <!-- 開発者モードの有効化 -->
+     <SettingItem
+      label="開発者モード"
+      description="配布されてるほぼすべてのモードに設定可能"
+      :showReset="false"
+     >
+      <label class="label cursor-pointer justify-start gap-3">
+       <input
+        v-model="data.displaySettings.developer.godModeEnabled"
+        type="checkbox"
+        class="toggle toggle-warning"
+       />
+       <span class="label-text"
+        >OFFにすると、この「開発者設定」の表示が「警告なしに」消えます</span
+       ></label
+      >
+     </SettingItem>
+    </div>
+   </div>
+  </div>
+
   <div v-if="data.displaySettings.developer.godModeEnabled">
    <!-- 開発者モード: -->
    <DeveloperSettings />
+
+   <!-- ゲームスクリプトの表示設定: -->
+   <AvailableGameScripts />
 
    <!-- 補足説明 -->
    <div class="flex flex-wrap gap-4 p-4">
@@ -34,8 +63,11 @@
 </template>
 
 <script setup lang="ts">
+import { isDev } from '@/types/';
 import DisplaySettingsCard from './DisplaySettingsCard.vue';
 import DeveloperSettings from './DeveloperSettings.vue';
+import AvailableGameScripts from './AvailableGameScripts.vue';
+import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import { Info } from 'lucide-vue-next';

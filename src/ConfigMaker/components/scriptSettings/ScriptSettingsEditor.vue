@@ -2,16 +2,21 @@
 <template>
  <div v-if="hasScripts">
   <ScriptCard
-   v-for="(scriptPreset, scriptId) in scriptGameMap"
+   v-for="scriptId in availableGameScripts.filter((key) => key in scriptGameMap)"
    :key="scriptId"
    :script-id="scriptId"
-   :script-preset="scriptPreset"
+   :script-preset="scriptGameMap[scriptId]"
   />
  </div>
  <div v-else>
-  <div class="text-center py-8 text-gray-500">
-   <Settings class="w-12 h-12 mx-auto mb-2 opacity-50" />
-   <p>利用可能なスクリプトがありません</p>
+  <!-- 補足説明 -->
+  <div class="flex flex-wrap gap-4 p-4">
+   <div class="alert alert-info w-full">
+    <Settings class="w-5 h-5 mt-0.5 shrink-0" />
+    <div class="space-y-1">
+     <p>利用可能なスクリプトがありません</p>
+    </div>
+   </div>
   </div>
  </div>
 </template>
@@ -22,12 +27,18 @@ import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import ScriptCard from './ScriptCard.vue';
 import { useScriptSettingsCleanup } from './useScriptSettingsCleanup';
 import { Settings } from 'lucide-vue-next';
+import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { storeToRefs } from 'pinia';
 
-const { cleanupScriptSettings } = useScriptSettingsCleanup();
+// Store
+const omikujiStore = useOmikujiStore();
+const { data } = storeToRefs(omikujiStore);
 
-const hasScripts = computed(() => Object.keys(scriptGameMap).length !== 0);
+const availableGameScripts = data.value.displaySettings.developer.availableGameScripts ?? [];
+
+const hasScripts = computed(() => availableGameScripts.some((key) => key in scriptGameMap));
 
 onMounted(() => {
- cleanupScriptSettings();
+ useScriptSettingsCleanup().cleanupScriptSettings();
 });
 </script>

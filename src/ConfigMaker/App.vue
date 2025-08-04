@@ -1,11 +1,29 @@
 <!-- src/configMaker/App.vue -->
 <template>
  <div class="p-4 max-w-6xl mx-auto pb-24">
-  <AppHeader />
+  <h1 class="text-2xl font-bold mb-6 text-center text-primary">
+   おみくじBot コンフィグエディター
+   <span v-if="data.displaySettings.developer.godModeEnabled" class="badge badge-warning">
+    GOD-MODE
+   </span>
+  </h1>
+
+  <!-- 開発者用プリセット管理 -->
   <component :is="devToolsComponent" v-if="devToolsComponent" />
-  <ConfigActions />
+
+  <!-- 設定読み込み・書き出し -->
+  <div class="flex flex-wrap justify-between items-center mb-2 gap-4 min-w-0">
+   <ConfigImport />
+   <ConfigExport :showTemplateButton="data.displaySettings.developer.showTemplateButton" />
+  </div>
+
+  <!-- ナビゲーションタブ -->
   <NavigationTabs />
+
+  <!-- コンテンツ -->
   <ContentArea />
+
+  <!-- Dock/ナビゲーションボタン/トースト -->
   <FloatingElements />
  </div>
 </template>
@@ -13,16 +31,17 @@
 <script setup lang="ts">
 import { markRaw, ref } from 'vue';
 import { isDev } from '@/types/';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useScrollBehavior } from './components/appItems/useScrollBehavior';
-import AppHeader from './components/appItems/AppHeader.vue';
-import ConfigActions from './components/appItems/ConfigActions.vue';
+import ConfigImport from '@ConfigComponents/presets/ConfigImport.vue';
+import ConfigExport from '@ConfigComponents/presets/ConfigExport.vue';
 import NavigationTabs from './components/appItems/NavigationTabs.vue';
 import ContentArea from './components/appItems/ContentArea.vue';
 import FloatingElements from './components/appItems/FloatingElements.vue';
+import { storeToRefs } from 'pinia';
+import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 
-// Store初期化
 const omikujiStore = useOmikujiStore();
+const { data } = storeToRefs(omikujiStore);
 
 // 開発者ツール
 const devToolsComponent = ref<any | null>(null);

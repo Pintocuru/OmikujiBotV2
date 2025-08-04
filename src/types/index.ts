@@ -3,6 +3,7 @@
 // 各型定義の公開
 export * from './types';
 export * from './OmikujiDataSchema';
+export * from './DisplaySettingsSchema';
 
 export * from './GameComponent/GameComponentSchema';
 export * from './GameComponent/GameRankingTypes';
