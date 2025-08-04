@@ -1,5 +1,5 @@
 // src/composables/useDisplayMode.ts
-import { ref, computed, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, watch, nextTick } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType, UserStatsType } from '@/types/';
 import { DisplaySize } from '@shared/types';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
@@ -10,11 +10,8 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
  const displaySize = ref<DisplaySize>(displaySettings.base.displaySize);
  const currentModeIndex = ref(0);
 
- // 各scriptKey専用のランキングデータキャッシュ
- const rankingCache = ref<Map<string, { data: UserStatsType[]; timestamp: number }>>(new Map());
-
- // 強制更新用のタイムスタンプ
- const lastUpdateTime = ref<number>(Date.now());
+ // 強制更新用のトリガー（数値を変更するだけでリアクティブに更新される）
+ const updateTrigger = ref(0);
 
  // コンポーネント選択設定
  const selectedComponent = computed(() => {
@@ -43,73 +40,30 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
   return keys[currentModeIndex.value];
  });
 
- // 特定のscriptKeyのランキングデータを取得（キャッシュ機能付き）
- const getRankingDataForScript = (scriptKey: string): UserStatsType[] => {
+ // ランキングデータを取得する関数（毎回新しいデータを取得）
+ const getCurrentRankings = (scriptKey: string | null): UserStatsType[] => {
   if (!scriptKey) return [];
 
   try {
-   // scriptManagerから最新データを取得
-   const freshData = scriptManager.getRankingData(scriptKey);
-
-   console.log(`[getRankingDataForScript] Raw data from scriptManager for ${scriptKey}:`, {
-    scriptKey,
-    freshData,
-    dataReference: freshData,
-    isNull: freshData === null,
-    isUndefined: freshData === undefined,
-    length: freshData?.length || 0,
-    stringified: JSON.stringify(freshData)
-   });
-
-   if (!freshData) return [];
-
-   // 完全に新しい配列として複製（深いコピー）
-   const clonedData: UserStatsType[] = freshData.map((item, index) => {
-    const cloned = {
-     ...item
-     // オブジェクトのプロパティも複製する場合は以下を追加
-     // stats: { ...item.stats }, // 例: statsプロパティがある場合
-    };
-
-    console.log(`[getRankingDataForScript] Cloning item ${index} for ${scriptKey}:`, {
-     original: item,
-     cloned: cloned,
-     isSameReference: item === cloned
-    });
-
-    return cloned;
-   });
-
-   console.log(`[getRankingDataForScript] Final cloned data for ${scriptKey}:`, {
-    scriptKey,
-    clonedData,
-    originalReference: freshData,
-    clonedReference: clonedData,
-    isSameReference: freshData === clonedData
-   });
-
-   // キャッシュを更新
-   rankingCache.value.set(scriptKey, {
-    data: clonedData,
-    timestamp: lastUpdateTime.value
-   });
-
-   return clonedData;
+   // 毎回scriptManagerから最新のデータを取得
+   const rankings = scriptManager.getRankingData(scriptKey);
+   return rankings ? [...rankings] : []; // 配列を複製して返す
   } catch (error) {
    console.warn(`Failed to get rankings for ${scriptKey}:`, error);
    return [];
   }
  };
 
- // 現在のゲームスクリプトの設定情報
+ // 現在のゲームスクリプトの設定情報（updateTriggerに依存させて強制更新対応）
  const currentScriptGameProps = computed((): ScriptComponentPropsType => {
+  // updateTriggerを参照することで強制更新に対応
+  updateTrigger.value; // eslint-disable-line no-unused-expressions
+
   const scriptKey = currentScriptKey.value;
-  // lastUpdateTime を依存関係に含めることで強制更新に対応
-  const updateTime = lastUpdateTime.value;
 
   if (!scriptKey || !scriptGameMap[scriptKey]) {
    return {
-    componentKey: Date.now().toString(),
+    componentKey: new Date().getTime().toString(),
     componentConfig: null,
     settings: {},
     userRankings: [],
@@ -117,22 +71,14 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
    };
   }
 
-  // 新しいpropsオブジェクトを毎回作成
+  // 毎回新しいpropsオブジェクトを作成
   const props: ScriptComponentPropsType = {
-   componentKey: Date.now().toString(),
+   componentKey: new Date().getTime().toString(),
    componentConfig: scriptGameMap[scriptKey].componentConfig,
-   settings: JSON.parse(JSON.stringify(omikujiData.scriptSettings?.[scriptKey] || {})), // ディープクローン
-   userRankings: getRankingDataForScript(scriptKey), // 専用関数で取得
+   settings: { ...(omikujiData.scriptSettings?.[scriptKey] || {}) }, // オブジェクトを複製
+   userRankings: getCurrentRankings(scriptKey), // 毎回新しいランキングデータを取得
    displaySize: displaySize.value
   };
-
-  // デバッグログ
-  console.log(`[useDisplayMode] Generated props for ${scriptKey}:`, {
-   scriptKey,
-   updateTime,
-   rankingsCount: props.userRankings.length,
-   rankings: props.userRankings
-  });
 
   return props;
  });
@@ -143,9 +89,7 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
   const targetIndex = keys.findIndex((key) => key === scriptKey);
 
   if (targetIndex !== -1) {
-   console.log(`[useDisplayMode] Switching to mode: ${scriptKey}`);
    currentModeIndex.value = targetIndex;
-
    // 切り替え後に強制更新
    await nextTick();
    forceUpdate();
@@ -165,40 +109,26 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
  // 表示サイズ変更
  const setDisplaySize = (size: DisplaySize) => {
   displaySize.value = size;
+  // サイズ変更時も強制更新
   forceUpdate();
  };
 
- // 強制更新（タイムスタンプを更新してcomputedを再計算させる）
+ // 強制更新（updateTriggerを変更してcomputedを再計算させる）
  const forceUpdate = () => {
-  const now = Date.now();
-  console.log(`[useDisplayMode] Force update triggered: ${now}`);
-
-  // キャッシュをクリア
-  rankingCache.value.clear();
-
-  // タイムスタンプを更新
-  lastUpdateTime.value = now;
- };
-
- // 特定のscriptKeyのキャッシュのみクリア
- const clearCacheForScript = (scriptKey: string) => {
-  rankingCache.value.delete(scriptKey);
-  lastUpdateTime.value = Date.now();
- };
-
- // 全てのキャッシュをクリア
- const clearAllCache = () => {
-  rankingCache.value.clear();
-  lastUpdateTime.value = Date.now();
+  updateTrigger.value += 1;
  };
 
  // 初期化処理
  const initialize = () => {
+  // displaySizeを設定から初期化
   displaySize.value = displaySettings.base.displaySize;
 
+  // selectComponentに基づいて初期モードを設定
   if (selectedComponent.value === 'omikujiBot') {
-   currentModeIndex.value = 0; // BOTモード
+   // omikujiBotモードの場合、BOTちゃんモードに設定
+   currentModeIndex.value = 0; // null (BOTモード) は常にindex 0
   } else if (selectedComponent.value === 'gameScript') {
+   // gameScriptモードの場合、defaultScriptKeyまたは最初のアクティブスクリプトに設定
    const defaultKey = displaySettings.developer.defaultScriptKey;
    const activeScripts = scriptManager.getActiveScripts();
 
@@ -209,7 +139,7 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
      currentModeIndex.value = targetIndex;
     }
    } else if (activeScripts.length > 0) {
-    currentModeIndex.value = 1; // 最初のゲームスクリプト
+    currentModeIndex.value = 1; // BOTモード(index 0)の次がゲームスクリプト
    }
   }
 
@@ -232,25 +162,20 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
    currentIndex: currentModeIndex.value,
    totalModes: keys.length,
    currentScriptKey: currentScriptKey.value,
-   availableScriptKeys: [...keys],
-   selectedComponent: selectedComponent.value,
-   lastUpdateTime: lastUpdateTime.value,
-   cacheStatus: Object.fromEntries(rankingCache.value)
+   availableScriptKeys: [...keys], // 配列を複製
+   selectedComponent: selectedComponent.value
   };
  };
 
- // デバッグ用: 現在のキャッシュ状態を取得
- const getCacheDebugInfo = () => {
-  const info: Record<string, any> = {};
-  rankingCache.value.forEach((value, key) => {
-   info[key] = {
-    timestamp: value.timestamp,
-    dataCount: value.data.length,
-    sampleData: value.data.slice(0, 2) // 最初の2件のみ表示
-   };
-  });
-  return info;
- };
+ // currentScriptKeyが変更されたときに自動で更新
+ watch(
+  currentScriptKey,
+  () => {
+   // scriptKeyが変更されたら強制更新
+   forceUpdate();
+  },
+  { immediate: false }
+ );
 
  // ライフサイクル
  onMounted(() => {
@@ -272,12 +197,9 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
   switchToScriptGame,
   setDisplaySize,
   forceUpdate,
-  clearCacheForScript,
-  clearAllCache,
 
   // 設定取得
   getDisplaySettings,
-  getCurrentModeInfo,
-  getCacheDebugInfo
+  getCurrentModeInfo
  };
 }
