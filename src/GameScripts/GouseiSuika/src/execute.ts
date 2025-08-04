@@ -6,7 +6,7 @@ import {
  GameSettingsSchema,
  GameParamsSchema
 } from './params';
-import { ScriptClass, GameState } from '@type/index';
+import { ScriptClass, GameState } from '@/types/';
 import LogRankScript from '@/GameScripts/LogRank/src/execute';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GAME_CONFIGS, GameResult } from './gameConfigs';

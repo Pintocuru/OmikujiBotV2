@@ -16,8 +16,9 @@
    ref="scriptGameRef"
   />
 
-  <!-- コントロールパネル（中央ホバーで表示） -->
+  <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
   <DisplayControlPanel
+   v-if="omikujiData.displaySettings.developer.godModeEnabled"
    :availableScriptKeys="availableScriptKeys"
    :currentScriptKey="currentScriptKey"
    :displaySize="displaySize"
@@ -27,14 +28,14 @@
 
   <!-- トースト表示 -->
   <ViewBotToast
-   v-if="omikujiData.displaySettings.toastEnabled"
+   v-if="omikujiData.displaySettings.base.toastEnabled"
    :botMessages="botMessages"
    :displaySize="displaySize"
   />
 
   <!-- キャラクターサムネイル -->
   <CharacterThumbnails
-   v-if="omikujiData.displaySettings.modeSwitchEnabled"
+   v-if="omikujiData.displaySettings.base.modeSwitchEnabled"
    :characters="characterCollector.getUsedCharacterPresets()"
    :displaySize="displaySize"
    :generateTestMessage="characterCollector.generateTestMessage.bind(characterCollector)"

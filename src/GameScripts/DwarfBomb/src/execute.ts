@@ -8,7 +8,7 @@ import {
 } from './params';
 import { BomberSpinGame } from './game';
 import LogRankScript from '@/GameScripts/LogRank/src/execute';
-import { ScriptClass, GameState } from '@type/index';
+import { ScriptClass, GameState } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {

@@ -81,7 +81,7 @@ import { computed } from 'vue';
 import { GameSettings } from '@/params';
 import { COMPONENT_SIZE_CONFIG } from '@shared/utils/rankComponent/useComponentConfig';
 import { useDelayedDisplay } from '@shared/utils/rankComponent/useDelayedDisplay';
-import { ScriptComponentPropsType } from '@type/index';
+import { ScriptComponentPropsType } from '@/types/';
 import { SIZE_CONFIG } from './componentConfig';
 
 const props = defineProps<ScriptComponentPropsType<GameSettings>>();

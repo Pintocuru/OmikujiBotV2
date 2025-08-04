@@ -1,13 +1,13 @@
 // src/composables/useDisplayMode.ts
 import { ref, computed, onMounted } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType } from '@/types/';
+import { DisplaySize } from '@shared/types';
 import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
 import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
-import { DisplaySize } from '@shared/types';
 
 export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
  const displaySettings = omikujiData.displaySettings;
- const displaySize = ref<DisplaySize>(displaySettings.displaySize);
+ const displaySize = ref<DisplaySize>(displaySettings.base.displaySize);
  const forceRender = ref(0);
  const currentModeIndex = ref(0);
 
@@ -86,10 +86,10 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
  // 初期化処理
  const initialize = () => {
   // displaySizeをsettingsから初期化
-  displaySize.value = displaySettings.displaySize;
+  displaySize.value = displaySettings.base.displaySize;
 
   // デフォルトモード設定
-  switchToMode(displaySettings.defaultScriptKey);
+  switchToMode(displaySettings.developer.defaultScriptKey);
  };
 
  // 設定情報を取得

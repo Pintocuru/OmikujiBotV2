@@ -1,6 +1,6 @@
 // src/services/RankingService.ts
 import { GameContext } from '../GameContext';
-import { UserStatsType } from '@type/index';
+import { UserStatsType } from '@/types/';
 
 export class RankingService {
  // 引数を簡素化

@@ -48,15 +48,3 @@ export const sortOptions = [
  { key: 'count', label: 'コメント数順' },
  { key: 'manual', label: '手動順序' }
 ];
-
-export const testUser: UserVisitType = {
- name: `テストユーザー${Math.floor(Math.random() * 1000)}`,
- userId: `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
- badges: [],
- profileImage: 'https://via.placeholder.com/40x40/3B82F6/FFFFFF?text=U',
- timestamp: new Date().toISOString(),
- service: 'youtube' as const,
- isSyoken: false,
- count: 0,
- totalPrice: 0
-};

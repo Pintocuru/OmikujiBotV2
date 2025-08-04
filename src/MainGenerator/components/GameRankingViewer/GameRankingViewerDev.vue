@@ -70,7 +70,7 @@
 import { ref } from 'vue';
 import SuikaComponent from './GameRankingViewer.vue';
 import { generateMockUserRankingData } from '__mocks__/mockUserRanking';
-import { UserStatsType } from '@type/index';
+import { UserStatsType } from '@/types/';
 
 // モックデータ
 const mockUserRanking = ref<UserStatsType[]>(generateMockUserRankingData(3));

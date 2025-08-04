@@ -1,6 +1,7 @@
 {
  "name": "log-rank",
  "version": "0.0.3",
+ "displayName": "ランキング生成メーカー",
  "description": "パラメータを受け取ることで、ゲーム数や勝率を生成します。",
  "scripts": {
   "test:LogRank": "jest",

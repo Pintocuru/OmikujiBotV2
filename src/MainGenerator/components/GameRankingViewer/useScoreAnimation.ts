@@ -1,7 +1,7 @@
 // shared/utils/rankComponent/useScoreAnimation.ts
 import { ref, nextTick } from 'vue';
 import anime from 'animejs';
-import type { ScoreAnimationType } from './GameRankingTypes';
+import type { ScoreAnimationType } from '../../../types/GameComponent/GameRankingTypes';
 
 // Animation configurations
 const ANIMATION_CONFIGS = {

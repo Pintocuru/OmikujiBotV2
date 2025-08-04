@@ -9,27 +9,25 @@ import {
 } from './params';
 import execute from './execute';
 import packageJson from '../package.json';
-import { ScriptPreset } from '@type/index';
+import { ScriptPreset } from '@/types/';
+import { componentConfig } from './componentConfig';
 
 const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
  id: packageJson.name, // プラグインID
  name: packageJson.displayName, // プラグイン名
  description: packageJson.description,
  order: 0,
- editorColor: '', // 編集画面の色
+ editorColor: '#333333',
  version: packageJson.version, // バージョン
  author: packageJson.author, // 作者
  tags: packageJson.keywords, // タグ
  url: '', // URL
+ banner: '', //
  execute,
  settings,
  params,
  placeholders,
- componentConfig: {
-  rankingTitle: '🍉スイカランキング🍉',
-  themeName: 'GouseiSuika',
-  useRankingBackgrounds: true
- }
+ componentConfig
 };
 
 export default plugin;

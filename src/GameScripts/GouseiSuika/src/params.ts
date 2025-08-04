@@ -1,6 +1,6 @@
 // src/params.ts
 import { z } from 'zod';
-import { ScriptPlaceholderItem, ParameterItem } from '@type/index';
+import { ScriptPlaceholderItem, ParameterItem } from '@/types/';
 import {
  GamePlaceholder as LogGamePlaceholder,
  placeholders as logPlaceholders

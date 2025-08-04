@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, omikujiItems } from './params';
-import { ScriptResult, ScriptClass, GameState } from '@type/index';
+import { ScriptResult, ScriptClass, GameState } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { PostActionWordParty } from '@shared/types/GameScriptSchema';
 

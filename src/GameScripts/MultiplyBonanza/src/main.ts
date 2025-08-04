@@ -9,29 +9,25 @@ import {
 } from './params';
 import execute from './execute';
 import packageJson from '../package.json';
-import component from '@/components/component.vue';
-import { ScriptPreset } from '@type/index';
-import { GameStateExtras, UserRankingType } from '@/GameScripts/LogRank/src/params';
+import { ScriptPreset } from '@/types/';
+import { componentConfig } from './componentConfig';
 
-const plugin: ScriptPreset<
- GameSettings,
- GameParams,
- GamePlaceholder,
- UserRankingType,
- GameStateExtras
-> = {
+const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
  id: packageJson.name, // プラグインID
- name: packageJson.name, // プラグイン名
+ name: packageJson.displayName, // プラグイン名
  description: packageJson.description,
+ order: 0,
+ editorColor: '#333333',
  version: packageJson.version, // バージョン
  author: packageJson.author, // 作者
  tags: packageJson.keywords, // タグ
  url: '', // URL
+ banner: '', //
  execute,
  settings,
  params,
  placeholders,
- component
+ componentConfig
 };
 
 export default plugin;

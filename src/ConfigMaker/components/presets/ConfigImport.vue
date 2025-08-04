@@ -30,21 +30,11 @@
   @category-enabled-change="handleCategoryEnabledChange"
   @category-mode-change="handleCategoryModeChange"
  />
-
- <!-- エラーモーダル -->
- <div class="modal" :class="{ 'modal-open': showErrorModal }">
-  <div class="modal-box max-w-md">
-   <h3 class="font-bold text-lg text-error mb-4">エラー</h3>
-   <p class="text-sm mb-4">{{ errorMessage }}</p>
-   <div class="modal-action">
-    <button class="btn btn-primary" @click="showErrorModal = false">閉じる</button>
-   </div>
-  </div>
- </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { toast } from 'vue-sonner';
 import { type CategoryType } from '@/types/';
 import ConfigImportModal from './ConfigImportModal.vue';
 import type { ImportMode } from './useImportPreviewManager';
@@ -61,15 +51,13 @@ const { fileInputRef, isLoading, previewData, openFileDialog } = jsonImporter;
 
 // State
 const showPreviewModal = ref(false);
-const showErrorModal = ref(false);
-const errorMessage = ref('');
 
 // ファイル選択処理
 const handleFileSelection = async (event: Event) => {
  const data = await jsonImporter.handleFileSelection(event);
 
  if (jsonImporter.loadError.value) {
-  showError(jsonImporter.loadError.value);
+  toast.error(jsonImporter.loadError.value);
   return;
  }
 
@@ -103,7 +91,7 @@ const executeImportProcess = () => {
   }
  } catch (error) {
   console.error('Import error:', error);
-  showError('設定の読み込みに失敗しました。');
+  toast.error('設定の読み込みに失敗しました。');
  }
 };
 
@@ -111,11 +99,5 @@ const executeImportProcess = () => {
 const cancelImportProcess = () => {
  showPreviewModal.value = false;
  jsonImporter.resetImportProcess();
-};
-
-// エラーを表示
-const showError = (message: string) => {
- errorMessage.value = message;
- showErrorModal.value = true;
 };
 </script>

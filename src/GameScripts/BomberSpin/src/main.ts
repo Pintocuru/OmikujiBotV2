@@ -10,6 +10,7 @@ import {
 import execute from './execute';
 import packageJson from '../package.json';
 import { ScriptPreset } from '@/types/';
+import { componentConfig } from './componentConfig';
 
 const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
  id: packageJson.name, // プラグインID
@@ -21,15 +22,12 @@ const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
  author: packageJson.author, // 作者
  tags: packageJson.keywords, // タグ
  url: '', // URL
+ banner: '', //
  execute,
  settings,
  params,
  placeholders,
- componentConfig: {
-  rankingTitle: '💣 Bomber Slot Rankings 💥',
-  themeName: 'caveMining',
-  useRankingBackgrounds: true
- }
+ componentConfig
 };
 
 export default plugin;

@@ -1,12 +1,6 @@
-<!-- GameScripts/DwarfBomb/src/components/GameRankingViewer.vue -->
+<!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
 <template>
- <!-- componentConfigがnullの場合はエラー表示 -->
- <div v-if="!props.componentConfig" class="p-4 bg-red-100 border border-red-400 rounded">
-  <p class="text-red-700">設定が読み込まれていません</p>
- </div>
-
- <!-- 正常な場合の表示 -->
- <div v-else>
+ <div v-if="props.componentConfig">
   <!-- Score Display with Animation -->
   <GameRankingScore
    v-if="scoreDisplay.isVisible.value"
@@ -16,13 +10,19 @@
   />
 
   <!-- Ranking Display -->
-  <div :class="['p-1', theme.background.container, theme.fontClass.rankingDisplay]">
+  <div :class="['p-1', theme.backgrounds.base, theme.fontStyles.rankingText]">
+   <!-- ランキングタイトル -->
    <div
-    :class="['text-center mb-2 font-bold drop-shadow-lg', theme.text.accent, sizeConfig.text.large]"
+    :class="[
+     'text-center mb-2 font-bold drop-shadow-lg',
+     theme.textColors.accent,
+     sizeConfig.text.large
+    ]"
    >
-    {{ props.componentConfig.rankingTitle }}
+    {{ theme.displaySettings.titleText }}
    </div>
 
+   <!-- ランキングリスト -->
    <div class="overflow-hidden max-h-fit">
     <ul class="list-none p-0 m-0 space-y-1">
      <li
@@ -30,25 +30,29 @@
       :key="index"
       :class="getRankingRowClass(index)"
      >
-      <!-- Ranking Number with Medal Colors -->
+      <!-- 順位 -->
       <span :class="getRankingNumberClass(index, sizeConfig.rankingNumber)">
        {{ player.rank ?? index + 1 }}
       </span>
 
+      <!-- プレイヤー情報 -->
       <span class="flex justify-center items-center flex-1">
        <span :class="['font-bold mr-2 text-white', sizeConfig.text.medium]">
         {{ player.points ?? 0 }} pt
        </span>
-       <span :class="[theme.text.primary, sizeConfig.text.medium]"> ({{ player.name }}) </span>
+       <span :class="[theme.textColors.primary, sizeConfig.text.medium]">
+        ({{ player.name }})
+       </span>
       </span>
      </li>
     </ul>
    </div>
 
+   <!-- 平均スコア -->
    <div
     :class="[
      'p-0 m-0 flex justify-center items-center w-full mt-2',
-     theme.text.primary,
+     theme.textColors.primary,
      sizeConfig.text.small
     ]"
    >
@@ -56,23 +60,41 @@
      gameStatistics.totalScore
     }}pt)
    </div>
+
+   <!-- スコアテンプレート表示（処理前） -->
+   <div :class="['text-center mt-1', theme.textColors.secondary, sizeConfig.text.small]">
+    表示テンプレート: {{ theme.displaySettings.scoreFormat }}
+   </div>
   </div>
-  <!-- 表示テスト -->
+
+  <!-- デバッグ用 -->
   <TailwindDebugComponent v-show="0" />
+ </div>
+
+ <!-- componentConfigがnullの場合はエラー表示 -->
+ <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
+  <p class="text-red-700">設定が読み込まれていません</p>
  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { ScriptComponentPropsType } from '@/types/';
 import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
 import { useGameRanking } from './useGameRanking';
-import { getTheme } from './ThemePresets';
 import GameRankingScore from './GameRankingScore.vue';
 import TailwindDebugComponent from './TailwindDebugComponent.vue';
-import { ScriptComponentPropsType } from '@/types/';
 
 const props = defineProps<ScriptComponentPropsType>();
+/*
+ type ScriptComponentPropsType = {
+ componentConfig: GameComponentConfig | null;
+ settings: DefaultTypes;
+ userRankings: UserStatsType[];
+ displaySize: DisplaySize;
+};
+ */
 
 // Score display control
 const scoreDisplay = useDelayedDisplay(() => props.userRankings, {
@@ -83,27 +105,13 @@ const scoreDisplay = useDelayedDisplay(() => props.userRankings, {
 // Size configuration
 const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[props.displaySize]);
 
-// テーマをキー名で取得（null チェック付き）
-const theme = computed(() => {
- if (!props.componentConfig) {
-  console.warn('componentConfig is null, using default theme');
-  return getTheme('ocean'); // デフォルトテーマ
- }
+//
+const theme = computed(() => (props.componentConfig ? props.componentConfig : null));
 
- console.log('Getting theme for:', props.componentConfig.themeName);
- const selectedTheme = getTheme(props.componentConfig.themeName);
- console.log('Selected theme:', selectedTheme);
- return selectedTheme;
-});
-
-// ゲームランキングコンポーザブルを使用（null チェック付き）
+// ゲームランキングコンポーザブル
 const { gameStatistics, getRankingNumberClass, getRankingRowClass } = useGameRanking(
  props.userRankings,
- props.componentConfig || {
-  rankingTitle: 'ランキング',
-  themeName: 'ocean',
-  useRankingBackgrounds: true
- }
+ props.componentConfig
 );
 </script>
 

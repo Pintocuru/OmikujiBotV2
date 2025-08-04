@@ -5,7 +5,7 @@ import {
  placeholders as LogPlaceholders,
  GamePlaceholder as LogGamePlaceholder
 } from '@/GameScripts/LogRank/src/params';
-import { ScriptPlaceholderItem, ParameterItem } from '@type/index';
+import { ScriptPlaceholderItem, ParameterItem } from '@/types/';
 
 /**
  * settings

@@ -1,15 +1,14 @@
-// shared/utils/rankComponent/useGameRanking.ts
+// src/MainGenerator/components/GameRankingViewer/useGameRanking.ts
 import { computed } from 'vue';
-import { RankComponentConfig, UserStatsType } from '@shared/types/';
-import { GameStatistics } from './GameRankingTypes';
-import { getTheme } from './ThemePresets';
+import type { GameComponentConfig, GameStatistics, UserStatsType } from '@/types';
 
-export function useGameRanking(userRankingsRaw: UserStatsType[], optionRaw: RankComponentConfig) {
+export function useGameRanking(
+ userRankingsRaw: UserStatsType[],
+ optionRaw: GameComponentConfig | null
+) {
  // computed
  const userRankings = computed(() => userRankingsRaw);
  const options = computed(() => optionRaw);
-
- const theme = computed(() => getTheme(options.value.themeName));
 
  // Computed game statistics
  const gameStatistics = computed<GameStatistics>(() => {
@@ -37,36 +36,21 @@ export function useGameRanking(userRankingsRaw: UserStatsType[], optionRaw: Rank
    'overflow-hidden'
   ];
 
-  if (!options.value.useRankingBackgrounds) {
-   switch (index) {
-    case 0:
-     return [...baseClasses, theme.value.background.ranking.first];
-    default:
-     // 偶数奇数でクラスを切り替え
-     return [
-      ...baseClasses,
-      index % 2 === 0
-       ? theme.value.background.ranking.evenRow
-       : theme.value.background.ranking.oddRow
-     ];
-   }
+  const ranking = options.value.backgrounds.ranking;
+
+  if (!options.value.displaySettings?.highlightTopThree) {
+   return [...baseClasses, index % 2 === 0 ? ranking.evenRow : ranking.oddRow];
   }
 
   switch (index) {
    case 0:
-    return [...baseClasses, theme.value.background.ranking.first];
+    return [...baseClasses, ranking.first];
    case 1:
-    return [...baseClasses, theme.value.background.ranking.second];
+    return [...baseClasses, ranking.second];
    case 2:
-    return [...baseClasses, theme.value.background.ranking.third];
+    return [...baseClasses, ranking.third];
    default:
-    // 偶数奇数でクラスを切り替え
-    return [
-     ...baseClasses,
-     index % 2 === 0
-      ? theme.value.background.ranking.evenRow
-      : theme.value.background.ranking.oddRow
-    ];
+    return [...baseClasses, index % 2 === 0 ? ranking.evenRow : ranking.oddRow];
   }
  };
 
@@ -101,7 +85,6 @@ export function useGameRanking(userRankingsRaw: UserStatsType[], optionRaw: Rank
 
  return {
   // Data
-  theme,
   gameStatistics,
 
   // Methods

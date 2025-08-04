@@ -1,16 +1,7 @@
 // shared/utils/rankComponent/ThemePresets.ts
-import { GameRankingTheme } from './GameRankingTypes';
+import { GameRankingTheme } from '../../../types/GameComponent/GameRankingTypes';
 
-export const gameRankingThemeLabel = [
- 'ocean',
- 'caveMining',
- 'GouseiSuika',
- 'halloween',
- 'crimsonFury'
-] as const;
-export type GameRankingThemeLabel = (typeof gameRankingThemeLabel)[number];
-
-const themes: Record<GameRankingThemeLabel, GameRankingTheme> = {
+const themes: Record<string, GameRankingTheme> = {
  ocean: {
   text: {
    primary: 'text-blue-100',
