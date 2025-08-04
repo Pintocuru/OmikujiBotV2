@@ -68,7 +68,7 @@ export const params: ParameterItem<GameParams>[] = [
  */
 export type GamePlaceholder = {
  message: string;
- mode: string; //
+ mode: string;
  points: number;
 } & LogGamePlaceholder; // LogRank のプレースホルダーを継承
 

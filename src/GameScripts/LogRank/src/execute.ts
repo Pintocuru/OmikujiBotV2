@@ -7,7 +7,6 @@ import {
  GameSettingsSchema,
  GameParamsSchema
 } from './params';
-import { ScriptResult, ScriptClass, GameState, GameStateSchema } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // Services
@@ -15,17 +14,18 @@ import { UserStatsService } from './services/UserStatsService';
 import { RankingService } from './services/RankingService';
 import { PlaceholderService } from './services/PlaceholderService';
 import { GameContext } from './GameContext';
+import { GameState, GameStateSchema, ScriptClass, ScriptResult } from '@/types';
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
  private settings!: GameSettings;
- private gameState?: GameState;
+ private gameState!: GameState;
 
  /**
   * 設定を初期化する
   */
- setup(settings: GameSettings): void {
-  this.gameState = GameStateSchema.parse({ ruleId: 'LogRank' });
+ setup(settings: GameSettings, ruleId: string): void {
   this.settings = GameSettingsSchema.parse(settings);
+  this.gameState = GameStateSchema.parse({ ruleId });
  }
 
  /**

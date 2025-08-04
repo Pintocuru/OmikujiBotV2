@@ -28,7 +28,7 @@ export const GameStateSchema = z.object({
  totalDraws: z.number().default(0).catch(0), // 総おみくじ実行回数
  currentUserIds: z.array(z.string()).default([]).catch([]), // 参加ユーザーの履歴（時系列順）
  userStats: z.record(z.string(), UserStatsTypeSchema).default({}).catch({}), // ユーザー別統計情報
- userRecords: z.record(z.string(), z.array(UserStatsTypeSchema)).default({}).catch({}).optional(), // ポイントモード用の複数記録
+ userRecords: z.record(z.string(), z.array(UserStatsTypeSchema)).optional().catch(undefined), // ポイントモード用の複数記録
  userRankings: z.array(UserStatsTypeSchema).optional().catch(undefined) // ランキング
 });
 

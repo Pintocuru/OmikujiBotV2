@@ -11,6 +11,7 @@ export interface GameStatistics {
 
 // props型定義付き
 export type ScriptComponentPropsType = {
+ componentKey: string; // Vueレンダリング用
  componentConfig: GameComponentConfig | null;
  settings: DefaultTypes;
  userRankings: UserStatsType[];

@@ -12,6 +12,7 @@
   <!-- Scriptsゲーム表示 -->
   <GameRankingViewer
    v-else-if="currentScriptKey !== null"
+   :key="currentScriptGameProps.componentKey"
    v-bind="currentScriptGameProps"
    ref="scriptGameRef"
   />

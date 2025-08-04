@@ -7,13 +7,13 @@ import {
  GameParamsSchema
 } from './params';
 import { BomberSpinGame } from './game';
-import LogRankScript from '@/GameScripts/LogRank/src/execute';
 import { ScriptClass, GameState } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
+import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute';
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
  private settings!: GameSettings;
- private LogRank = LogRankScript;
+ private LogRank = new LogExecuteScript();
  private game = new BomberSpinGame();
 
  /**
@@ -21,7 +21,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   */
  setup(settings: GameSettings): void {
   this.settings = GameSettingsSchema.parse(settings);
-  this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount });
+  this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'DwarfBomb');
  }
 
  /**

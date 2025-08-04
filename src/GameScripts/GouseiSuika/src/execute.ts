@@ -7,21 +7,21 @@ import {
  GameParamsSchema
 } from './params';
 import { ScriptClass, GameState } from '@/types/';
-import LogRankScript from '@/GameScripts/LogRank/src/execute';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GAME_CONFIGS, GameResult } from './gameConfigs';
 import { GachaGame } from './game';
+import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute';
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
  private settings!: GameSettings;
- private LogRank = LogRankScript;
+ private LogRank = new LogExecuteScript();
 
  /**
   * 設定を初期化する
   */
  setup(settings: GameSettings): void {
   this.settings = GameSettingsSchema.parse(settings);
-  this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount });
+  this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'GouseiSuika');
  }
 
  /**

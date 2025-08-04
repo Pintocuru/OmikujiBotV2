@@ -1,7 +1,7 @@
 {
  "name": "steal-em-all",
  "version": "0.0.1",
- "description": "Bonanza Megaways/Wing FURAIJIN風のおみくじ",
+ "description": "Nolimit City - Kill Em All/大都技研 盗忍！剛衛門 風のおみくじ",
  "scripts": {
   "build:steal": "vite build",
   "test:steal": "jest"

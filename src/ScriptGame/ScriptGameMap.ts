@@ -1,8 +1,8 @@
 // scriptGame/ScriptGameMap.ts
 import { ScriptPreset } from '@/types/';
-import BomberSpin from '@/GameScripts/BomberSpin/src/main.js';
-import GouseiSuika from '@/GameScripts/GouseiSuika/src/main.js';
-import DwarfBomb from '@/GameScripts/DwarfBomb/src/main.js';
+import BomberSpin from '@/GameScripts/BomberSpin/src/main';
+import GouseiSuika from '@/GameScripts/GouseiSuika/src/main';
+import DwarfBomb from '@/GameScripts/DwarfBomb/src/main';
 
 export const scriptGameMap: Record<string, ScriptPreset<any, any, any>> = {
  BomberSpin,

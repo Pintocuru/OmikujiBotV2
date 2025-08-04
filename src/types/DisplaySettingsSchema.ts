@@ -3,7 +3,17 @@
 import { z } from 'zod';
 import { ScriptGameKey, scriptGameKeys } from '@/ScriptGame/ScriptGameMap';
 import { displaySize } from '@shared/types/';
+import { availableComponents } from './availableComponents';
 
+const AvailableComponentsSchema = z.array(
+ z.object({
+  id: z.string(),
+  name: z.string(),
+  componentType: z.enum(['omikujiBot', 'GameScripts']),
+  componentKey: z.string().nullable(),
+  enabled: z.boolean()
+ })
+);
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
@@ -40,17 +50,7 @@ export const DisplaySettingsSchema = z.object({
     .default(null),
 
    // 表示するコンポーネント(空の場合はおみくじBOT)
-   availableComponents: z
-    .array(
-     z.object({
-      id: z.string(),
-      name: z.string(),
-      componentType: z.enum(['omikujiBot', 'GameScripts']),
-      componentKey: z.string().nullable(),
-      enabled: z.boolean()
-     })
-    )
-    .catch([]),
+   availableComponents: AvailableComponentsSchema.catch([...availableComponents]),
 
    // 各種設定UIの表示制御
    // ! availableComponents と交代
@@ -62,12 +62,16 @@ export const DisplaySettingsSchema = z.object({
   .catch({
    godModeEnabled: true,
    selectComponent: 'omikujiBot',
-   availableComponents: [],
+   availableComponents: [...availableComponents],
    defaultScriptKey: null,
    scriptSettingsEnabled: true,
    showTemplateButton: true
   })
 });
+
+//
+export type AvailableComponentsType = z.infer<typeof AvailableComponentsSchema>;
+export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
 
 // ルートカテゴリの表示設定
 // selectCategoryType = ['comments', 'timers', 'placeholders', 'characters']

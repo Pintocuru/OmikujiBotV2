@@ -27,7 +27,7 @@ export interface ScriptClass<
  TParams extends object = DefaultTypes,
  TPlaceholders extends object = DefaultTypes
 > {
- setup(settings: TSettings): void; // 初期化処理
+ setup(settings: TSettings, ruleId?: string): void; // 初期化処理
  run(comment: Comment, params: TParams): ScriptResult<TPlaceholders>; // メイン実行関数
  getGameState(): GameState | null; // gameState取得
  cleanup?(gameState: GameState): void; // 終了処理（オプション）
