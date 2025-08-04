@@ -14,7 +14,6 @@
    v-else-if="currentScriptKey !== null"
    :key="currentScriptGameProps.componentKey"
    v-bind="currentScriptGameProps"
-   ref="scriptGameRef"
   />
 
   <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
@@ -67,7 +66,6 @@ const config = ConfigUserSchema.parse(window.userConfig);
 
 // ref
 const isInitialized = ref(true); // 初期化完了フラグ
-const scriptGameRef = ref(); // コンポーネント用ref
 
 // コンポーザブルの使用
 const { botMessages, scriptManager, characterCollector, updateBotMessages, startTimers } =
@@ -83,13 +81,10 @@ const {
  forceUpdate
 } = useDisplayMode(omikujiData, scriptManager);
 
-// GetUserVisitsコンポーザブルから取得
-const { fetchComments } = GetUserComments(config);
-
 // 初期化処理
 onMounted(async () => {
  try {
-  const isInit = await fetchComments((comments) => {
+  const isInit = await GetUserComments(config).fetchComments((comments) => {
    updateBotMessages(comments);
    forceUpdate(); // Scripts更新トリガー
   });

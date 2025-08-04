@@ -31,18 +31,21 @@ export function useGameRanking(
  });
 
  // プレイヤー情報のフォーマット処理
- // TODO:不完全。ちゃんと UserStatsType を参照して欲しい。
  const formatPlayerInfo = (player: UserStatsType, scoreFormat: string): string => {
   if (!scoreFormat) return `${player.points ?? 0} pt (${player.name})`;
 
   return scoreFormat
    .replace(/<<points>>/g, String(player.points ?? 0))
    .replace(/<<name>>/g, player.name || '')
-   .replace(/<<rank>>/g, String(player.rank ?? 0))
+   .replace(/<<rank>>/g, String(player.rank ?? '-')) // 順位がない場合はハイフン
    .replace(/<<totalPoints>>/g, String(player.totalPoints ?? 0))
    .replace(/<<wins>>/g, String(player.wins ?? 0))
    .replace(/<<draws>>/g, String(player.draws ?? 0))
-   .replace(/<<rate>>/g, player.rate ? `${Math.round(player.rate * 100)}%` : '0%');
+   .replace(/<<rate>>/g, player.rate != null ? `${Math.round(player.rate * 100)}%` : '0%')
+   .replace(/<<itemValue1>>/g, player.itemValue1 || '')
+   .replace(/<<itemValue2>>/g, player.itemValue2 || '')
+   .replace(/<<itemValue3>>/g, player.itemValue3 || '')
+   .replace(/<<priority>>/g, String(player.priority ?? 0));
  };
 
  // Ranking row class generator

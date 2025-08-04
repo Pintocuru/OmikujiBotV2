@@ -9,7 +9,7 @@ export const PlaceholderValueSchema = z.object({
 });
 
 export const PlaceholderSchema = z.object({
- // TODO:ここはidではなくkeyが良いと言われた。idは別途作ると良いとも。
+ // ここはidではなくkeyが良いと言われた。idは別途作ると良いとも。
  id: z.string().default('').catch(''),
  name: z.string().default('').catch(''),
  order: z.number().min(0).default(9999).catch(9999),
