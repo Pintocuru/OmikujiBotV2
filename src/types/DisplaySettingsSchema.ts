@@ -49,12 +49,11 @@ export const DisplaySettingsSchema = z.object({
     .nullable()
     .default(null),
 
-   // 表示するコンポーネント(空の場合はおみくじBOT)
-   availableComponents: AvailableComponentsSchema.catch([...availableComponents]),
+   // 表示するゲームスクリプト
+   availableGameScript: z.array(z.string()).default([]).catch([]), // 参加ユーザーの履歴（時系列順）
 
-   // 各種設定UIの表示制御
-   // ! availableComponents と交代
-   scriptSettingsEnabled: z.boolean().default(true).catch(true),
+   // ゲームスクリプトの設定を許可するか
+   enabledGameScriptSettings: z.boolean().default(true).catch(true),
 
    // 「テンプレート出力ボタン」を表示するか
    showTemplateButton: z.boolean().default(true).catch(true)
@@ -62,9 +61,9 @@ export const DisplaySettingsSchema = z.object({
   .catch({
    godModeEnabled: true,
    selectComponent: 'omikujiBot',
-   availableComponents: [...availableComponents],
+   availableGameScript: [],
    defaultScriptKey: null,
-   scriptSettingsEnabled: true,
+   enabledGameScriptSettings: true,
    showTemplateButton: true
   })
 });

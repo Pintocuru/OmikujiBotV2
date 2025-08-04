@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/comments/ScriptGameEditor.vue -->
 <template>
  <div
-  v-if="data.displaySettings.developer.scriptSettingsEnabled || isScriptEnabled"
+  v-if="data.displaySettings.developer.enabledGameScriptSettings || isScriptEnabled"
   class="card bg-base-300 mt-4"
  >
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ゲームスクリプト設定</div>
@@ -56,7 +56,7 @@
      :showReset="false"
     >
      <select
-      :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
+      :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
       v-model="scriptId"
       class="select select-bordered w-full"
      >
@@ -79,7 +79,7 @@
       <!-- 文字列入力 -->
       <input
        v-if="setting.inputType === 'string'"
-       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
+       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
        type="text"
        v-model="scriptParams[setting.key]"
        class="input input-bordered w-full"
@@ -89,7 +89,7 @@
       <!-- 数値入力 -->
       <input
        v-else-if="setting.inputType === 'number'"
-       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
+       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
        type="number"
        v-model.number="scriptParams[setting.key]"
        :min="setting.min"
@@ -100,7 +100,7 @@
       <!-- セレクト -->
       <select
        v-else-if="setting.inputType === 'select'"
-       :disabled="!data.displaySettings.developer.scriptSettingsEnabled"
+       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
        v-model="scriptParams[setting.key]"
        class="select select-bordered w-full"
       >

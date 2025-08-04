@@ -64,7 +64,7 @@
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
-      v-model="developerSettings.scriptSettingsEnabled"
+      v-model="developerSettings.enabledGameScriptSettings"
       type="checkbox"
       class="toggle toggle-warning"
      />
