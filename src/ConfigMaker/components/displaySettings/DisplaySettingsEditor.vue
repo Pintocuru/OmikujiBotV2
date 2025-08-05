@@ -11,8 +11,8 @@
      <Info class="w-5 h-5 mt-0.5 shrink-0" />
      <!-- 開発者モードの有効化 -->
      <SettingItem
-      label="開発者モード"
-      description="配布されてるほぼすべてのモードに設定可能"
+      label="開発者モードAgain"
+      description="「開発者モード」を再び表示させる"
       :showReset="false"
      >
       <label class="label cursor-pointer justify-start gap-3">
@@ -21,9 +21,7 @@
         type="checkbox"
         class="toggle toggle-warning"
        />
-       <span class="label-text"
-        >OFFにすると、この「開発者設定」の表示が「警告なしに」消えます</span
-       ></label
+       <span class="label-text">この項目は、isDev がtrueの時のみ表示されます</span></label
       >
      </SettingItem>
     </div>

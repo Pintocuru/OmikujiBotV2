@@ -49,7 +49,7 @@
      v-model="developerSettings.defaultScriptKey"
      class="select select-bordered w-full max-w-xs"
     >
-     <option :value="null">選択なし</option>
+     <option :value="null">選択なし(nullの時はおみくじBOTが表示されます)</option>
      <option v-for="(value, key) in gameScriptMap" :key="key" :value="key">
       {{ value.name }}({{ key }})
      </option>

@@ -14,6 +14,7 @@
 
   <!-- 開発者モード -->
   <DeveloperMode
+   v-if="godModeEnabled"
    :agreed="developerModeAgreed"
    :load-status="loadStatus"
    @agree="agreeToDeveloperMode"
@@ -34,6 +35,8 @@ import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue
 // Store
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
+
+const { godModeEnabled } = data.value.displaySettings.developer;
 
 // 表示設定の参照 (computed with get/set)
 const wordPartySetting = computed({

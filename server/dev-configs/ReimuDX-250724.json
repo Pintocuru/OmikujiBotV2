@@ -3770,25 +3770,25 @@
     }
   },
   "displaySettings": {
-    "displaySize": "md",
-    "defaultScriptKey": null,
-    "modeSwitchEnabled": true,
-    "toastEnabled": true,
-    "autoSwitchInterval": 0
+    "base": {
+      "displaySize": "md",
+      "modeSwitchEnabled": true,
+      "toastEnabled": true
+    },
+    "developer": {
+      "godModeEnabled": false,
+      "selectComponent": "omikujiBot",
+      "defaultScriptKey": null,
+      "availableGameScripts": [
+        "BomberSpin",
+        "GouseiSuika",
+        "DwarfBomb"
+      ],
+      "enabledGameScriptSettings": true,
+      "showTemplateButton": true
+    }
   },
   "wordPartySettings": [
-    {
-      "name": "フラワー占い:赤い花",
-      "pattern": "!FortuneMarisaRed"
-    },
-    {
-      "name": "フラワー占い:黄色い花",
-      "pattern": "!FortuneMarisaYellow"
-    },
-    {
-      "name": "フラワー占い:白い花",
-      "pattern": "!FortuneMarisaWhite"
-    },
     {
       "name": "効果音:ドアチャイム1",
       "pattern": "!ドアチャイム1"
@@ -3936,6 +3936,18 @@
     {
       "name": "じゃんけん結果:負け",
       "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
     },
     {
       "name": "桃鉄カード:登場ノーマル",
