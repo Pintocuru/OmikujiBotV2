@@ -7,12 +7,12 @@ import { ParameterItem, ScriptPreset } from './GameScriptTypes';
  * デフォルト値の生成に必要
  */
 export function createScriptSettingsSchema<T extends Record<string, ScriptPreset>>(
- scriptGameMap: T
+ gameScriptMap: T
 ): z.ZodObject<{ [K in keyof T]: z.ZodTypeAny }> {
  const schemaShape: any = {};
 
- for (const key in scriptGameMap) {
-  const preset = scriptGameMap[key];
+ for (const key in gameScriptMap) {
+  const preset = gameScriptMap[key];
   if (preset.settings?.length) {
    const settingShape: any = {};
    for (const item of preset.settings) {
@@ -34,10 +34,10 @@ export function createScriptSettingsSchema<T extends Record<string, ScriptPreset
  */
 export function createScriptParamsSchema(
  scriptId: string,
- scriptGameMap: Record<string, ScriptPreset>
+ gameScriptMap: Record<string, ScriptPreset>
 ): z.ZodTypeAny {
  const shape: Record<string, z.ZodTypeAny> = {};
- const preset = scriptGameMap[scriptId];
+ const preset = gameScriptMap[scriptId];
  if (!preset || !preset.params) return z.object(shape).default({}).catch({});
 
  for (const params of preset.params) {

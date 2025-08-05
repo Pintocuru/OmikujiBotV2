@@ -30,7 +30,7 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
  );
 
  // スクリプトプロパティ管理
- const { currentScriptGameProps, scriptGameMap } = useDisplayScriptProps(
+ const { currentScriptGameProps, gameScriptMap } = useDisplayScriptProps(
   omikujiData,
   scriptManager,
   currentScriptKey,
@@ -75,7 +75,7 @@ export function useDisplayMode(omikujiData: OmikujiDataType, scriptManager: Game
   // 状態
   currentScriptKey,
   currentScriptGameProps,
-  scriptGameMap,
+  gameScriptMap,
   displaySize,
   availableScriptKeys,
   selectedComponent,

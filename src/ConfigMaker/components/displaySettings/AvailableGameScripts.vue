@@ -12,7 +12,7 @@
     @reset="selectAllScripts"
    >
     <div
-     v-for="(scriptPreset, scriptId) in scriptGameMap"
+     v-for="(scriptPreset, scriptId) in gameScriptMap"
      :key="scriptId"
      class="flex items-center justify-between bg-base-200 p-3 rounded shadow"
     >
@@ -34,7 +34,7 @@ import { computed } from 'vue';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 
 // Store
 const omikujiStore = useOmikujiStore();
@@ -52,7 +52,7 @@ const availableGameScripts = computed({
 
 // 全スクリプトを ON にする
 function selectAllScripts() {
- const allKeys = Object.keys(scriptGameMap);
+ const allKeys = Object.keys(gameScriptMap);
  availableGameScripts.value = allKeys; // ここでsetterが呼ばれる
 }
 </script>

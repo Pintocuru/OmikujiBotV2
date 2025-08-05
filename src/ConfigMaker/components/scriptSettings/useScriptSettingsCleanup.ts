@@ -1,6 +1,6 @@
 // src/configMaker/components/scriptSettings/useScriptSettingsCleanup.ts -->
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettingsCleanup = () => {
@@ -11,13 +11,13 @@ export const useScriptSettingsCleanup = () => {
   let hasChanges = false;
 
   for (const scriptId in currentScriptSettings as DefaultTypes) {
-   if (!(scriptId in scriptGameMap)) {
+   if (!(scriptId in gameScriptMap)) {
     delete currentScriptSettings[scriptId];
     hasChanges = true;
     continue;
    }
 
-   const scriptPreset = scriptGameMap[scriptId];
+   const scriptPreset = gameScriptMap[scriptId];
    const actualSettings = scriptPreset?.settings;
 
    if (!Array.isArray(actualSettings) || actualSettings.length === 0) {

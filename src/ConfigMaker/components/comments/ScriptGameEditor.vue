@@ -1,7 +1,10 @@
 <!-- src/configMaker/components/comments/ScriptGameEditor.vue -->
 <template>
  <div
-  v-if="data.displaySettings.developer.enabledGameScriptSettings || isScriptEnabled"
+  v-if="
+   (data.displaySettings.developer.enabledGameScriptSettings && isScriptEnabled) ||
+   data.displaySettings.developer.godModeEnabled
+  "
   class="card bg-base-300 mt-4"
  >
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ゲームスクリプト設定</div>
@@ -61,7 +64,7 @@
       class="select select-bordered w-full"
      >
       <option value="">スクリプトを選択してください</option>
-      <option v-for="(script, scriptId) in scriptGameMap" :key="scriptId" :value="scriptId">
+      <option v-for="(script, scriptId) in enabledGameScriptMap" :key="scriptId" :value="scriptId">
        {{ scriptId }}
       </option>
      </select>
@@ -134,7 +137,7 @@
 import { computed } from 'vue';
 import { CommentRuleType, ScriptPreset, createScriptParamsSchema } from '@/types/';
 import { DefaultTypes } from '@shared/types';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { enabledGameScriptMap, gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
@@ -151,6 +154,8 @@ const emit = defineEmits<{
 // Store
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
+
+const { enabledGameScriptSettings, availableGameScripts } = data.value.displaySettings.developer;
 
 // スクリプト有効化フラグ
 const isScriptEnabled = computed({
@@ -180,7 +185,7 @@ const scriptId = computed({
   let defaultParams: DefaultTypes = {};
 
   if (finalScriptId) {
-   const schema = createScriptParamsSchema(finalScriptId, scriptGameMap);
+   const schema = createScriptParamsSchema(finalScriptId, gameScriptMap);
    defaultParams = schema.parse({}) as DefaultTypes;
   }
 
@@ -195,7 +200,7 @@ const scriptId = computed({
 // 選択されたスクリプト
 const selectedScript = computed((): ScriptPreset | null => {
  if (!props.modelValue.scriptId) return null;
- return scriptGameMap[props.modelValue.scriptId] || null;
+ return gameScriptMap[props.modelValue.scriptId] || null;
 });
 
 // スクリプトパラメータの双方向バインディング

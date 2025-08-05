@@ -2,7 +2,6 @@
 import { storeToRefs } from 'pinia';
 import { categoryLabels, CategoryType } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
-import { scriptGameKeys } from '@/ScriptGame/ScriptGameMap';
 import { computed } from 'vue';
 
 export const useCategoryUtils = () => {

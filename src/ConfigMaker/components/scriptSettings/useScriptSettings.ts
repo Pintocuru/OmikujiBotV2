@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ParameterInputType, ParameterItem } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useScriptSettingsStore } from '@ConfigStore/useScriptSettingsStore';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettings = () => {
@@ -74,7 +74,7 @@ export const useScriptSettings = () => {
  };
 
  const resetScriptSetting = (scriptId: string, settingId: string) => {
-  const scriptPreset = scriptGameMap[scriptId];
+  const scriptPreset = gameScriptMap[scriptId];
   if (!scriptPreset || !scriptPreset.settings) return;
 
   const settingDef = scriptPreset.settings.find((s) => s.key === settingId);

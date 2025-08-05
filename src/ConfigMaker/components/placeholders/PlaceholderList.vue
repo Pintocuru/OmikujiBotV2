@@ -78,7 +78,7 @@ import PlaceholderModal from './PlaceholderModal.vue';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
 import CopyButton from '@ConfigComponents/parts/CopyButton.vue';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 
 // Props
 const props = defineProps<{
@@ -130,7 +130,7 @@ const isDefaultPlaceholder = (id: string) => {
 const scriptPlaceholder = computed((): PlaceholderType[] => {
  if (!selectedRule.value?.scriptId) return [];
 
- const script = scriptGameMap[selectedRule.value.scriptId];
+ const script = gameScriptMap[selectedRule.value.scriptId];
  return (
   script.placeholders?.map(
    (item): PlaceholderType =>

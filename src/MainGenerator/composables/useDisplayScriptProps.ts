@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType, UserStatsType } from '@/types/';
 import { DisplaySize } from '@shared/types';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
 
 export function useDisplayScriptProps(
@@ -33,7 +33,7 @@ export function useDisplayScriptProps(
   const scriptKey = currentScriptKey.value;
   const componentKey = scriptKey ? `game-${scriptKey}` : 'bot-mode';
 
-  if (!scriptKey || !scriptGameMap[scriptKey]) {
+  if (!scriptKey || !gameScriptMap[scriptKey]) {
    return {
     componentKey: componentKey,
     componentConfig: null,
@@ -45,7 +45,7 @@ export function useDisplayScriptProps(
 
   const props: ScriptComponentPropsType = {
    componentKey: componentKey,
-   componentConfig: scriptGameMap[scriptKey].componentConfig,
+   componentConfig: gameScriptMap[scriptKey].componentConfig,
    settings: { ...(omikujiData.scriptSettings?.[scriptKey] || {}) },
    userRankings: getCurrentRankings(scriptKey),
    displaySize: displaySize.value
@@ -56,6 +56,6 @@ export function useDisplayScriptProps(
 
  return {
   currentScriptGameProps,
-  scriptGameMap
+  gameScriptMap
  };
 }

@@ -1,7 +1,7 @@
 // src/MainGenerator/utils/processors/GameScriptManager.ts
 import { CommentRuleType, OmikujiDataType } from '@/types/';
 import { ScriptClass, ScriptResult, UserStatsType, GameState } from '@/types/';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 export class GameScriptManager {
@@ -26,7 +26,7 @@ export class GameScriptManager {
     // すでに初期化済みならスキップ
     if (this.scriptInstances[scriptId]) continue;
 
-    const scriptInstance = scriptGameMap[scriptId].execute;
+    const scriptInstance = gameScriptMap[scriptId].execute;
 
     // 初期化処理
     scriptInstance.setup(this.omikujiData.scriptSettings[scriptId]);
@@ -57,7 +57,7 @@ export class GameScriptManager {
   const scriptIds = new Set<string>();
 
   Object.values(this.omikujiData.comments).forEach((comment) => {
-   if (comment.scriptId && scriptGameMap[comment.scriptId]) {
+   if (comment.scriptId && gameScriptMap[comment.scriptId]) {
     scriptIds.add(comment.scriptId);
    }
   });
@@ -85,7 +85,7 @@ export class GameScriptManager {
  executeScript(comment: Comment, rule: CommentRuleType): ScriptResult | null {
   const { scriptId } = rule;
 
-  if (!scriptId || !scriptGameMap[scriptId]) return null;
+  if (!scriptId || !gameScriptMap[scriptId]) return null;
 
   const scriptInstance = this.getScriptInstance(scriptId);
   if (!scriptInstance) {

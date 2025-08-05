@@ -10,7 +10,7 @@ import {
  serviceMetaConditionLabels
 } from '@shared/types/';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
 import { OmikujiSetSchema, PostActionSchema } from './OmikujiBot/OmikujiSchema';
 import { createScriptSettingsSchema } from './GameScript/GameScriptSettingsSchema';
@@ -140,7 +140,7 @@ export const OmikujiDataSchema = z.object({
  comments: z.record(z.string(), CommentRuleSchema).default({}).catch({}),
  timers: z.record(z.string(), TimerRuleSchema).default({}).catch({}),
  placeholders: z.record(z.string(), PlaceholderSchema).default({}).catch({}),
- scriptSettings: createScriptSettingsSchema(scriptGameMap).default({}).catch({}),
+ scriptSettings: createScriptSettingsSchema(gameScriptMap).default({}).catch({}),
  characters: z.record(z.string(), CharacterSchema).default({}).catch({}),
  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
  wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])

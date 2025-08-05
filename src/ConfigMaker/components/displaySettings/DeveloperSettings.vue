@@ -50,7 +50,7 @@
      class="select select-bordered w-full max-w-xs"
     >
      <option :value="null">選択なし</option>
-     <option v-for="(value, key) in scriptGameMap" :key="key" :value="key">
+     <option v-for="(value, key) in gameScriptMap" :key="key" :value="key">
       {{ value.name }}({{ key }})
      </option>
     </select>
@@ -94,7 +94,7 @@
 import { computed } from 'vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import { storeToRefs } from 'pinia';
 
 // Store

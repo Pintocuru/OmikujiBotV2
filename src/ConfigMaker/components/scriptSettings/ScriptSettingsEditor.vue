@@ -2,10 +2,10 @@
 <template>
  <div v-if="hasScripts">
   <ScriptCard
-   v-for="scriptId in availableGameScripts.filter((key) => key in scriptGameMap)"
+   v-for="scriptId in availableGameScripts.filter((key) => key in gameScriptMap)"
    :key="scriptId"
    :script-id="scriptId"
-   :script-preset="scriptGameMap[scriptId]"
+   :script-preset="gameScriptMap[scriptId]"
   />
  </div>
  <div v-else>
@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { scriptGameMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
 import ScriptCard from './ScriptCard.vue';
 import { useScriptSettingsCleanup } from './useScriptSettingsCleanup';
 import { Settings } from 'lucide-vue-next';
@@ -36,7 +36,7 @@ const { data } = storeToRefs(omikujiStore);
 
 const availableGameScripts = data.value.displaySettings.developer.availableGameScripts ?? [];
 
-const hasScripts = computed(() => availableGameScripts.some((key) => key in scriptGameMap));
+const hasScripts = computed(() => availableGameScripts.some((key) => key in gameScriptMap));
 
 onMounted(() => {
  useScriptSettingsCleanup().cleanupScriptSettings();
