@@ -78,7 +78,7 @@ import PlaceholderModal from './PlaceholderModal.vue';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
 import CopyButton from '@ConfigComponents/parts/CopyButton.vue';
-import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 
 // Props
 const props = defineProps<{

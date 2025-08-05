@@ -34,7 +34,7 @@ import { computed } from 'vue';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
-import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 
 // Store
 const omikujiStore = useOmikujiStore();

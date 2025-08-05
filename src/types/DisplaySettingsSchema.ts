@@ -1,18 +1,9 @@
 // src/types/DisplaySettingsSchema.ts
 // 250716_1 新規追加
 import { z } from 'zod';
-import { ScriptGameKey, scriptGameKeys } from '@/ScriptGame/ScriptGameMap';
+import { ScriptGameKey, scriptGameKeys } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import { displaySize } from '@shared/types/';
 
-const AvailableComponentsSchema = z.array(
- z.object({
-  id: z.string(),
-  name: z.string(),
-  componentType: z.enum(['omikujiBot', 'GameScripts']),
-  componentKey: z.string().nullable(),
-  enabled: z.boolean()
- })
-);
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({

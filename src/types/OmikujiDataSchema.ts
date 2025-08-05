@@ -10,7 +10,7 @@ import {
  serviceMetaConditionLabels
 } from '@shared/types/';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
-import { gameScriptMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
 import { OmikujiSetSchema, PostActionSchema } from './OmikujiBot/OmikujiSchema';
 import { createScriptSettingsSchema } from './GameScript/GameScriptSettingsSchema';

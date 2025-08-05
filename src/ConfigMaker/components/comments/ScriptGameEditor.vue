@@ -65,7 +65,7 @@
      >
       <option value="">スクリプトを選択してください</option>
       <option v-for="(script, scriptId) in enabledGameScriptMap" :key="scriptId" :value="scriptId">
-       {{ scriptId }}
+       {{ script.name }}
       </option>
      </select>
     </SettingItem>
@@ -137,11 +137,12 @@
 import { computed } from 'vue';
 import { CommentRuleType, ScriptPreset, createScriptParamsSchema } from '@/types/';
 import { DefaultTypes } from '@shared/types';
-import { enabledGameScriptMap, gameScriptMap } from '@/ScriptGame/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { storeToRefs } from 'pinia';
+import { useEnabledGames } from '../GameScripts/useEnabledGames';
 
 const props = defineProps<{
  modelValue: CommentRuleType;
@@ -154,8 +155,7 @@ const emit = defineEmits<{
 // Store
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
-
-const { enabledGameScriptSettings, availableGameScripts } = data.value.displaySettings.developer;
+const { enabledGameScriptMap } = useEnabledGames();
 
 // スクリプト有効化フラグ
 const isScriptEnabled = computed({
