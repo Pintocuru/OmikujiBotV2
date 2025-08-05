@@ -1,5 +1,6 @@
+// tsconfig.json
 {
- "extends": "../../tsconfig.json", // 親の設定をマージ
+ "extends": "../../tsconfig.base.json", // 親の設定をマージ
  "compilerOptions": {
   "baseUrl": ".", // モジュールのベースURL
   "typeRoots": [
