@@ -4,7 +4,7 @@
   <!-- スクロールで表示されるDock（下部） -->
   <div v-if="showDock" class="dock dock-xl z-40">
    <button
-    v-for="(tab, key) in categoryLabels"
+    v-for="(tab, key) in filteredCategoryLabels"
     :key="key"
     class="tooltip tooltip-top"
     :class="
@@ -42,7 +42,6 @@
 import { storeToRefs } from 'pinia';
 import { ArrowUp } from 'lucide-vue-next';
 import { Toaster } from 'vue-sonner';
-import { categoryLabels } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useScrollBehavior } from './useScrollBehavior';
 import { useCategoryUtils } from './useCategoryUtils';
@@ -50,5 +49,5 @@ import { useCategoryUtils } from './useCategoryUtils';
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
 const { showScrollTopButton, showDock, scrollToTop } = useScrollBehavior();
-const { getCategoryItemCount } = useCategoryUtils();
+const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils();
 </script>

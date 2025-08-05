@@ -8,7 +8,7 @@
  >
   <div class="tabs gap-8">
    <button
-    v-for="(tab, key) in categoryLabels"
+    v-for="(tab, key) in filteredCategoryLabels"
     :key="key"
     :class="['tab w-16 h-16 tooltip tooltip-top', selectedCategory === key ? 'tab-active' : '']"
     :data-tip="tab.description"
@@ -29,11 +29,10 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { categoryLabels } from '@/types/';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
 import { useCategoryUtils } from './useCategoryUtils';
 
 const omikujiStore = useOmikujiStore();
 const { selectedCategory, data } = storeToRefs(omikujiStore);
-const { getCategoryItemCount } = useCategoryUtils();
+const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils();
 </script>
