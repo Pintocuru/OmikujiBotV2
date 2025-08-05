@@ -1,18 +1,6 @@
-// tsconfig.jest.json
+// .vscode/settings.json
 {
- "extends": "./tsconfig.json", // tsconfig.jsonを継承
- "compilerOptions": {
-  "moduleResolution": "node",
-  "types": [
-   "jest",
-   "node"
-  ]
- },
- "include": [
-  "src/**/*.ts",
-  "tests/**/*.ts" // testsを含める
- ],
- "exclude": [
-  "node_modules"
- ]
+ "typescript.tsdk": "node_modules/typescript/lib",
+ "typescript.enablePromptUseWorkspaceTsdk": true,
+ "typescript.tsserver.projectConfigRoot": "./" // プロジェクトルートに合わせる
 }

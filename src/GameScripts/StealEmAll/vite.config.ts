@@ -1,22 +1,26 @@
 // [packages] vite.config.ts
-import parentConfig from '../../vite.config'; // 親の config ファイル
-import { defineConfig, mergeConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { baseViteConfig, rootAlias } from '../../../../../buildRoot/viteConfigBase'; // 親の config ファイル
 import path from 'path';
-import { exec } from 'child_process';
+import { fileURLToPath } from 'url';
+import { defineConfig, mergeConfig } from 'vite';
 
+// __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const currentDir = path.basename(__dirname); // 現在のディレクトリ名を取得
 
+const base = baseViteConfig(__dirname);
+
+// パッケージのエイリアス
+export const alias = {
+ ...rootAlias,
+ '@': path.resolve(__dirname, 'src')
+};
+
 export default defineConfig(
- mergeConfig(parentConfig, {
-  resolve: {
-   alias: {
-    '@public': path.resolve(__dirname, '../../public'),
-    '@': path.resolve(__dirname, './src'),
-    '@packages': path.resolve(__dirname, '..'),
-    '@LogRank': path.resolve(__dirname, '../LogRank/src')
-   }
-  },
+ mergeConfig(base, {
+  root: path.resolve(__dirname),
+  resolve: { alias },
   build: {
    outDir: './dist/', // 子の出力ディレクトリ
    lib: {
@@ -24,21 +28,6 @@ export default defineConfig(
     fileName: `${currentDir}`, // 出力ファイル名
     formats: ['es'] // ESモジュール形式
    }
-  },
-  plugins: [
-   vue(),
-   {
-    name: 'generate-types',
-    buildStart() {
-     exec('tsc --declaration --emitDeclarationOnly --outDir types', (err, stdout, stderr) => {
-      if (err) {
-       console.error('型定義生成エラー:', err);
-      } else {
-       console.log(stdout || stderr);
-      }
-     });
-    }
-   }
-  ]
+  }
  })
 );

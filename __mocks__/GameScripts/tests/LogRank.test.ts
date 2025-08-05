@@ -1,10 +1,9 @@
 // tests/execute.test.ts
-import { RankingService } from '../src/services/RankingService';
-import { UserStatsService } from '../src/services/UserStatsService';
-import { GameContext } from '../src/GameContext';
-import { GameSettings, GameParams } from '../src/params';
-import { GameState, UserStatsType } from '@/types/';
-import { GameStateSchema } from '@shared/types/GameScriptSchema';
+import { RankingService } from '@/GameScripts/LogRank/src/services/RankingService';
+import { UserStatsService } from '@/GameScripts/LogRank/src/services/UserStatsService';
+import { GameContext } from '@/GameScripts/LogRank/src/GameContext';
+import { GameSettings, GameParams } from '@/GameScripts/LogRank/src/params';
+import { GameState, GameStateSchema, UserStatsType } from '@/types/';
 
 describe('RankingService', () => {
  // テスト用のユーザーデータを生成

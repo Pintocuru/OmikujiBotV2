@@ -1,13 +1,11 @@
 // tests/execute.test.ts
-import {
- GameParamsSchema,
- GameSettingsSchema
-} from '../../../src/GameScripts/BomberSpin/src/params';
-import { ExecuteScript } from '../../../src/GameScripts/BomberSpin/src/execute';
+import { GameParamsSchema, GameSettingsSchema } from '@/GameScripts/BomberSpin/src/params';
+import { ExecuteScript } from '@/GameScripts/BomberSpin/src/execute';
 import { MockComment } from '@shared/__mocks__/CreateMockComment';
+import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // コメント
-const mockComment = MockComment('suika');
+const mockComment: Comment = MockComment('suika');
 const instance = new ExecuteScript();
 
 // パラメータ

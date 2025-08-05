@@ -1,9 +1,9 @@
 /// <reference types="jest" />
 
 // tests/execute.test.ts
-import { ExecuteScript } from '../../../src/GameScripts/StealEmAll/src/execute';
+import { ExecuteScript } from '@/GameScripts/StealEmAll/src/execute';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
-import { GameParams } from '../../../src/GameScripts/StealEmAll/src/params';
+import { GameParams } from '@/GameScripts/StealEmAll/src/params';
 
 // モックコメントデータを作成するヘルパー関数
 const createMockComment = (displayName: string = 'TestUser'): Comment =>
@@ -15,16 +15,14 @@ const createMockComment = (displayName: string = 'TestUser'): Comment =>
  }) as Comment;
 
 // モックパラメータ
-const mockParams: GameParams = {
- enableCount: 5
-};
+const mockParams: GameParams = {};
 
 describe('ExecuteScript', () => {
  let executor: ExecuteScript;
 
  beforeEach(() => {
   executor = new ExecuteScript();
-  executor.setup({ isParty: 'ON' });
+  executor.setup({ isParty: true });
  });
 
  test('playGameForTest returns a valid result', () => {
@@ -71,8 +69,8 @@ describe('ExecuteScript', () => {
     const result = executor.run(comment, mockParams);
 
     results.push({
-     stage: result.placeholders.stage,
-     payout: result.placeholders.payout,
+     stage: String(result.placeholders.stage),
+     payout: String(result.placeholders.payout),
      message: result.placeholders.message
     });
    }
@@ -180,7 +178,7 @@ describe('ExecuteScript', () => {
     const result = executor.run(comment, mockParams);
 
     const stage = result.placeholders.stage;
-    const payout = parseInt(result.placeholders.payout);
+    const payout = parseInt(String(result.placeholders.payout));
 
     if (!stagePayouts[stage]) {
      stagePayouts[stage] = [];
@@ -235,8 +233,8 @@ describe('ExecuteScript', () => {
     expect(typeof result.placeholders.payout).toBe('string');
 
     // 値の範囲チェック
-    const stage = parseInt(result.placeholders.stage);
-    const payout = parseInt(result.placeholders.payout);
+    const stage = parseInt(String(result.placeholders.stage));
+    const payout = parseInt(String(result.placeholders.payout));
 
     expect(stage).toBeGreaterThanOrEqual(0);
     expect(stage).toBeLessThanOrEqual(8); // 最大ステージ数
