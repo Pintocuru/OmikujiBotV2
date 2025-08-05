@@ -6,6 +6,7 @@
   "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
   "devHot:omikujiBot": "vite",
   "devApi:omikujiBot": "tsx server/start-dev-server.ts",
+  "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
   "json2js:omikujiBot": "tsx tools/CreateOmikujiData.ts",
   "build:omikujiBot": "tsx build.ts"
  },

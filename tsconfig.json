@@ -1,12 +1,11 @@
-// tsconfig.json
 {
- "extends": "../../tsconfig.base.json", // 親の設定をマージ
+ "extends": "../../tsconfig.base.json",
  "compilerOptions": {
-  "baseUrl": ".", // モジュールのベースURL
+  "baseUrl": ".",
   "typeRoots": [
-   "./src/types/*",
+   "./src/types/*"
   ],
-  "outDir": "./dist", // 出力先ディレクトリ
+  "outDir": "./dist",
   "paths": {
    "@shared/*": [
     "../../shared/*"
@@ -31,18 +30,17 @@
    ],
    "@ConfigStore/*": [
     "./src/ConfigMaker/store/*"
-   ],
+   ]
   }
  },
- // コンパイル対象ファイル
  "include": [
   "src/**/*.ts",
   "src/**/*.d.ts",
-  "src/**/*.vue",
+  "src/**/*.vue"
  ],
  "exclude": [
   "node_modules",
-  "**/*.spec.ts", // 例: .spec.ts で終わるファイルをすべて除外
-  "**/*.test.ts" // test.ts ファイルのみを除外
+  "**/*.spec.ts",
+  "**/*.test.ts"
  ]
 }

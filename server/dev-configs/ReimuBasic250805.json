@@ -1569,7 +1569,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "max",
+          "comparison": "min",
           "unit": "tc",
           "value": 6
         },
@@ -1654,7 +1654,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "max",
           "unit": "tc",
           "value": 5
         },
@@ -3128,8 +3128,8 @@
     "developer": {
       "godModeEnabled": false,
       "selectComponent": "omikujiBot",
-      "availableGameScripts": [],
       "defaultScriptKey": null,
+      "availableGameScripts": [],
       "enabledGameScriptSettings": false,
       "showTemplateButton": false
     }

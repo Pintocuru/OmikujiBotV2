@@ -14,7 +14,7 @@ interface RuleProcessResult {
 }
 
 export class UserCommentProcessor {
- private readonly cooldownManager = new CooldownManager();
+ private readonly cooldownManager: CooldownManager;
  private readonly restrictionChecker: CommentRestrictionChecker;
  private readonly omikujiProcessor: OmikujiProcessor;
 
@@ -22,6 +22,7 @@ export class UserCommentProcessor {
   private readonly omikujiData: OmikujiDataType,
   scriptManager: GameScriptManager
  ) {
+  this.cooldownManager = CooldownManager.getInstance();
   const firstCharacter = Object.values(omikujiData.characters)[0];
   this.restrictionChecker = new CommentRestrictionChecker(this.cooldownManager, firstCharacter);
 

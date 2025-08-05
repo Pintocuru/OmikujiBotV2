@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import { baseViteConfig, rootAlias } from '../../buildRoot/viteConfigBase';
 import tsconfig from './tsconfig.json';
 
-// __dirname
+// __dirname の設定
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const base = baseViteConfig(__dirname);
@@ -18,7 +18,7 @@ export const alias = { ...rootAlias, ...tsAliases };
 export default defineConfig(() => {
  return mergeConfig(base, {
   root: path.resolve(__dirname),
-  resolve: alias,
+  resolve: { alias },
   server: {
    watch: {
     // server フォルダは更新してもホットリロードしない

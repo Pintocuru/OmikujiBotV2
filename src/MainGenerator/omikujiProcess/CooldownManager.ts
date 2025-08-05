@@ -14,10 +14,22 @@ interface UserDrawCount {
  * おみくじのクールダウンと抽選制限を管理するクラス
  */
 export class CooldownManager {
+ private static instance: CooldownManager;
  private lastProcessedTime: number = 0; // 最後に処理された時刻
  private lastUserId: string = ''; // 最後に抽選したユーザーID（連投チェック用）
  // ユーザーごとの抽選記録 - キー: "userId:ruleId", 値: UserDrawCount
  private userDrawCounts: Record<string, UserDrawCount> = {};
+
+ // コンストラクタをprivateにして、外部からnewできないようにする
+ private constructor() {}
+
+ // 唯一のインスタンスを取得する静的メソッド
+ public static getInstance(): CooldownManager {
+  if (!CooldownManager.instance) {
+   CooldownManager.instance = new CooldownManager();
+  }
+  return CooldownManager.instance;
+ }
 
  /**
   * プロセス全体のクールダウンチェック
