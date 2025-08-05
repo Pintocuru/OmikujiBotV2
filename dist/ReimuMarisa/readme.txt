@@ -1,6 +1,6 @@
 # おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa(プレビュー版)
 
-最終更新日：2025/07/30
+最終更新日：2025/08/05
 
 [おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa(プレビュー版)](https://pintocuru.booth.pm/items/5471598)は、配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT です。
 ダウンロードして頂きありがとうございます。

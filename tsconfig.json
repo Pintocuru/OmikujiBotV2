@@ -38,6 +38,10 @@
   "src/**/*.ts",
   "src/**/*.d.ts",
   "src/**/*.vue",
-  "__mocks__/**/*.ts",
  ],
+ "exclude": [
+  "node_modules",
+  "**/*.spec.ts", // 例: .spec.ts で終わるファイルをすべて除外
+  "**/*.test.ts" // test.ts ファイルのみを除外
+ ]
 }

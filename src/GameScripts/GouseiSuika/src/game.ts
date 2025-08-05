@@ -1,5 +1,5 @@
 // src/game.ts
-import { PostActionWordParty } from '@shared/types/GameScriptSchema';
+import { PostActionWordPartyType } from '@/types/';
 import { GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs';
 
 // ゲーム関連の定数
@@ -17,7 +17,7 @@ const GAME_CONSTANTS = {
  */
 export class GachaGame {
  private totalPoints = 0;
- private postArray: PostActionWordParty[] = [];
+ private postArray: PostActionWordPartyType[] = [];
 
  constructor(private readonly gameConfig: GameConfigDetails) {
   this.initializeEffects();
