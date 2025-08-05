@@ -26,6 +26,11 @@ export const alias = {
 export default defineConfig(() => {
  return mergeConfig(base, {
   root: path.resolve(__dirname),
-  resolve: { alias }
+  resolve: { alias },
+  server: {
+   watch: {
+    ignored: [path.resolve(__dirname, 'server/dev-configs/**')]
+   }
+  }
  });
 });

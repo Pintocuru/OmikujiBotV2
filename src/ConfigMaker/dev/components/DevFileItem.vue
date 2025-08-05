@@ -38,7 +38,7 @@
     @click="devStore.loadConfig(file.name)"
     :disabled="devStore.isLoading || devStore.isAnyLoading"
     class="btn btn-xs btn-primary tooltip tooltip-bottom"
-    data-tip="この設定をすべて置き換え"
+    data-tip="この設定を読み込む"
    >
     <Download class="w-3 h-3" />
    </button>
