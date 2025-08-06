@@ -1,4 +1,4 @@
-// shared/types/PlaceholderSchema.ts
+// shared/types/OmikujiBot/PlaceholderSchema.ts
 // 250722_1 の新規作成
 import { z } from 'zod';
 

@@ -1,0 +1,69 @@
+// src/types/OmikujiDataNormalize.ts
+import { z } from 'zod';
+import { v4 as uuidv4 } from 'uuid';
+
+/**
+ * id/orderの型
+ */
+export type NormalizableItem = { id: string; order: number; [key: string]: any };
+
+/**
+ * アイテム配列のorder値を正規化する
+ * @param items - 正規化対象のアイテム配列
+ * @returns order値が1から連番になったアイテム配列
+ */
+export const normalizeOrders = <T extends NormalizableItem>(items: T[]): T[] => {
+ if (!Array.isArray(items) || items.length === 0) return items;
+
+ const sortedItems = [...items].sort((a, b) => {
+  if (a.order === b.order) return a.id.localeCompare(b.id);
+  return a.order - b.order;
+ });
+
+ return sortedItems.map((item, index) => ({ ...item, order: index + 1 }));
+};
+
+/**
+ * アイテム配列のID重複を解決し、一意なIDを保証する
+ * @param items - ID重複解決対象のアイテム配列
+ * @returns 一意なIDを持つアイテム配列
+ */
+export const ensureUniqueIds = <T extends { id: string }>(items: T[]): T[] => {
+ const newItems: T[] = [];
+ const seenIds = new Set<string>();
+
+ for (const item of items) {
+  let newId = item.id;
+  if (seenIds.has(newId)) newId = uuidv4();
+  seenIds.add(newId);
+  newItems.push(newId === item.id ? item : { ...item, id: newId });
+ }
+ return newItems;
+};
+
+/**
+ * 正規化機能付きRecordスキーマを作成する
+ * @param itemSchema - 個別アイテムのZodスキーマ
+ * @returns 正規化機能を含むRecordスキーマ
+ */
+export const createRecordWithNormalization = <T extends z.ZodType<NormalizableItem>>(
+ itemSchema: T
+) => {
+ return z
+  .record(z.string(), itemSchema)
+  .default({})
+  .catch({})
+  .transform((record) => {
+   if (!record || typeof record !== 'object') return {};
+
+   const items: z.infer<T>[] = Object.values(record);
+   const uniqueItems = ensureUniqueIds(items);
+   const orderNormalizedItems = normalizeOrders(uniqueItems);
+
+   const result: Record<string, z.infer<T>> = {};
+   orderNormalizedItems.forEach((item) => {
+    result[item.id] = item;
+   });
+   return result;
+  });
+};
