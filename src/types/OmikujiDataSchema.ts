@@ -10,7 +10,7 @@ import {
  BaseTimerRuleSchema,
  WordPartySettingsSchema
 } from './OmikujiBot/RulesSchema';
-import { ensureUniqueIds, NormalizableItem, normalizeOrders } from './OmikujiDataNormalize';
+import { ensureUniqueIds, SelectCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
 
 // 再エクスポート
 export * from './CategoryType';
@@ -198,7 +198,7 @@ export const validateDataIntegrity = (data: OmikujiDataType) => {
 /**
  *
  */
-function createRecordWithNormalization<T extends z.ZodType<NormalizableItem>>(itemSchema: T) {
+function createRecordWithNormalization<T extends z.ZodType<SelectCategoryItem>>(itemSchema: T) {
  return z
   .record(z.string(), itemSchema)
   .default({})

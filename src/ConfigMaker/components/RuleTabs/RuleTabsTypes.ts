@@ -1,18 +1,11 @@
 // src/configMaker/components/RuleTabs/types.ts
-export interface BaseRule {
- id: string;
- name: string;
- description?: string;
- order: number;
- editorColor?: string;
- isEnabled?: boolean;
-}
+import { BaseTypes } from '@shared/types';
 
 export interface RuleStore {
- rules?: BaseRule[];
+ rules?: BaseTypes[];
  selectRule?: (ruleId: string) => void;
  add?: () => void;
- update?: (ruleId: string, updates: Partial<BaseRule>) => void;
+ update?: (ruleId: string, updates: Partial<BaseTypes>) => void;
  duplicate?: (ruleId: string) => void;
  remove?: (ruleId: string) => void;
  reorder?: (fromIndex: number, toIndex: number) => void;

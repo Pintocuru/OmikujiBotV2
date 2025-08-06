@@ -1,8 +1,9 @@
 // src/configMaker/components/RuleTabs/useRuleManagement.ts
 import { inject } from 'vue';
-import { toast } from 'vue-sonner';
 import type { CategoryType } from '@/types/';
-import type { BaseRule, RuleStore } from './RuleTabsTypes';
+import { BaseTypes } from '@shared/types';
+import type { RuleStore } from './RuleTabsTypes';
+import { toast } from 'vue-sonner';
 
 export function useRuleManagement(ruleType: CategoryType) {
  const injectedStore = inject<RuleStore>(`${ruleType}RulesStore`);
@@ -19,7 +20,7 @@ export function useRuleManagement(ruleType: CategoryType) {
   });
  };
 
- const handleUpdateRule = (ruleId: string, updates: Partial<BaseRule>) => {
+ const handleUpdateRule = (ruleId: string, updates: BaseTypes) => {
   injectedStore?.update?.(ruleId, updates);
 
   // 名前の更新時のみトーストを表示（頻繁な更新を避けるため）
@@ -80,7 +81,7 @@ export function useRuleManagement(ruleType: CategoryType) {
  };
 
  // 新機能：一括削除
- const handleBulkDeleteRules = (rulesToDelete: BaseRule[]) => {
+ const handleBulkDeleteRules = (rulesToDelete: BaseTypes[]) => {
   if (rulesToDelete.length === 0) return;
 
   const ruleNames = rulesToDelete.map((rule) => rule.name || '名前未設定').join('、');

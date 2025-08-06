@@ -1,13 +1,13 @@
 // src/configMaker/components/RuleTabs/useInlineEdit.ts
 import { ref, nextTick, onMounted, onUnmounted } from 'vue';
-import type { BaseRule } from './RuleTabsTypes';
+import { BaseTypes } from '@shared/types';
 
 export function useInlineEdit() {
  const editingRuleId = ref<string | null>(null);
  const editingName = ref('');
  const editInput = ref<HTMLInputElement>();
 
- const startInlineEdit = (rule: BaseRule) => {
+ const startInlineEdit = (rule: BaseTypes) => {
   editingRuleId.value = rule.id;
   editingName.value = rule.name || '';
   nextTick(() => {
@@ -16,8 +16,10 @@ export function useInlineEdit() {
   });
  };
 
- const finishInlineEdit = (onUpdate: (ruleId: string, updates: Partial<BaseRule>) => void) => {
+ const finishInlineEdit = (onUpdate: (ruleId: string, updates: BaseTypes) => void) => {
   if (editingRuleId.value) {
+   // BaseTypesのデータを付与できず破綻しました
+   // 型 '{ name: string; }' の引数を型 '{ id: string; name: string; order: number; editorColor: string; description?: string | undefined; isEnabled?: boolean | undefined; }' のパラメーターに割り当てることはできません。
    onUpdate(editingRuleId.value, { name: editingName.value });
    editingRuleId.value = null;
   }

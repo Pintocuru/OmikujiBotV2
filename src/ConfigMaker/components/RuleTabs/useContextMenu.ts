@@ -1,13 +1,13 @@
 // src/configMaker/components/RuleTabs/useContextMenu.ts
 import { reactive, computed } from 'vue';
-import type { BaseRule } from './RuleTabsTypes';
+import { BaseTypes } from '@shared/types';
 
-export function useContextMenu(rules: () => BaseRule[]) {
+export function useContextMenu(rules: () => BaseTypes[]) {
  const contextMenu = reactive({
   show: false,
   x: 0,
   y: 0,
-  rule: null as BaseRule | null,
+  rule: null as BaseTypes | null,
   index: -1
  });
 
@@ -21,7 +21,7 @@ export function useContextMenu(rules: () => BaseRule[]) {
   () => !!contextMenu.rule && getOriginalIndex(contextMenu.rule.id) < rules().length - 1
  );
 
- const showContextMenu = (event: MouseEvent, rule: BaseRule, index: number) => {
+ const showContextMenu = (event: MouseEvent, rule: BaseTypes, index: number) => {
   contextMenu.x = event.clientX;
   contextMenu.y = event.clientY;
   contextMenu.rule = rule;

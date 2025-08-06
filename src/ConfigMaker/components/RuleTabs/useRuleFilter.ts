@@ -1,8 +1,9 @@
 // src/configMaker/components/RuleTabs/useRuleFilter.ts
 import { ref, computed } from 'vue';
-import type { BaseRule, FilterOptions } from './RuleTabsTypes';
+import { BaseTypes } from '@shared/types';
+import type { FilterOptions } from './RuleTabsTypes';
 
-export function useRuleFilter(rules: () => BaseRule[]) {
+export function useRuleFilter(rules: () => BaseTypes[]) {
  const searchQuery = ref('');
  const filterOptions = ref<FilterOptions>({
   query: '',
@@ -12,7 +13,7 @@ export function useRuleFilter(rules: () => BaseRule[]) {
   colorFilter: null
  });
 
- const getRuleEnabledState = (rule: BaseRule): boolean => {
+ const getRuleEnabledState = (rule: BaseTypes): boolean => {
   return rule.isEnabled !== false;
  };
 
