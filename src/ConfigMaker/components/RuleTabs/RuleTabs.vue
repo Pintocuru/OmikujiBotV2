@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { watch, onMounted } from 'vue';
-import { CategoryType } from '@/types/';
+import { SelectCategoryType } from '@/types/';
 import { BaseTypes } from '@shared/types';
 import { useRuleTabsStore } from './RuleTabsStore';
 
@@ -27,7 +27,7 @@ import RuleTabList from './RuleTabList.vue';
 const props = defineProps<{
  rules: BaseTypes[];
  selectedRule: BaseTypes | null;
- ruleType: CategoryType;
+ ruleType: SelectCategoryType;
  externalStore: any;
 }>();
 

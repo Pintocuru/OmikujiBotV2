@@ -50,7 +50,9 @@
    <!-- 検索結果の統計と選択状態 -->
    <div class="mt-2 flex">
     <div class="mt-2 text-xs text-base-content/60">
-     {{ store.filteredSortedRules.length }} /
+     <span v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
+      >{{ store.filteredSortedRules.length }} /</span
+     >
      {{ store.sortedRules.length }} 件のルールが表示されています
      <button
       v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
