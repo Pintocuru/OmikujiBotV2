@@ -7,7 +7,7 @@
    基本設定
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
    <!-- ID表示 -->
    <SettingItem
     label="ID"
@@ -16,7 +16,9 @@
     containerClass="form-control"
    >
     <div class="flex gap-2 items-center">
-     <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
+     <div
+      class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto"
+     >
       {{ localCharacter.id }}
      </div>
      <!-- 編集ボタン -->
