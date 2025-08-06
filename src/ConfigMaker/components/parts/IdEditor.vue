@@ -4,21 +4,21 @@
   <!-- IDエディタボタン -->
   <button
    @click="handleOpenDialog"
-   class="btn btn-sm btn-outline tooltip tooltip-bottom"
+   class="btn btn-sm btn-outline btn-primary tooltip tooltip-bottom min-w-fit whitespace-nowrap"
    data-tip="IDを変更します。参照している他の設定も影響を受ける可能性があります。"
   >
    <span class="inline">📝</span>
-   <span class="hidden md:inline">ID編集</span>
+   <span class="hidden sm:inline ml-1">ID編集</span>
   </button>
 
   <!-- ダイアログ -->
   <div v-if="isDialogOpen" class="modal modal-open">
    <div class="modal-box">
-    <h3 class="font-bold text-lg">{{ dialogTitle }}ID編集</h3>
+    <h3 class="font-bold text-lg text-primary">{{ dialogTitle }}ID編集</h3>
 
     <div class="py-4">
      <SettingItem label="現在のID" :showReset="false">
-      <div class="input input-bordered bg-base-200 text-gray-600">
+      <div class="input input-bordered bg-neutral text-neutral-content select-all">
        {{ currentId }}
       </div>
      </SettingItem>
@@ -28,48 +28,54 @@
        type="text"
        v-model="newId"
        placeholder="新しいIDを入力"
-       class="input input-bordered"
+       class="input input-bordered focus:input-primary"
        :class="{ 'input-error': hasError }"
        @input="handleValidateId"
       />
       <label class="label" v-if="hasError">
-       <span class="label-text-alt text-error">{{ errorMessage }}</span>
+       <span class="label-text-alt text-error font-bold">{{ errorMessage }}</span>
       </label>
      </SettingItem>
 
      <!-- キャラクターモードの場合、使用箇所を表示 -->
      <div v-if="category === 'characters' && characterUsage" class="mt-4">
-      <div class="alert alert-info">
-       <span class="text-sm">
-        📊 このキャラクターの使用状況:
-        <ul class="list-disc list-inside mt-2">
-         <li v-if="characterUsage.comments.length > 0">
-          コメントルール: {{ characterUsage.comments.length }}箇所
-         </li>
-         <li v-if="characterUsage.timers.length > 0">
-          タイマールール: {{ characterUsage.timers.length }}箇所
-         </li>
-         <li v-if="characterUsage.comments.length === 0 && characterUsage.timers.length === 0">
-          使用されていません
-         </li>
-        </ul>
-       </span>
+      <div class="bg-primary text-primary-content p-4 rounded-lg">
+       <div class="flex items-start">
+        <span class="text-sm">
+         <span class="font-bold">📊 このキャラクターの使用状況:</span>
+         <ul class="list-disc list-inside mt-2 space-y-1">
+          <li v-if="characterUsage.comments.length > 0">
+           コメントルール: <span class="font-bold">{{ characterUsage.comments.length }}箇所</span>
+          </li>
+          <li v-if="characterUsage.timers.length > 0">
+           タイマールール: <span class="font-bold">{{ characterUsage.timers.length }}箇所</span>
+          </li>
+          <li v-if="characterUsage.comments.length === 0 && characterUsage.timers.length === 0">
+           使用されていません
+          </li>
+         </ul>
+        </span>
+       </div>
       </div>
      </div>
 
      <div
       v-if="category === 'placeholders' || category === 'characters'"
-      class="alert alert-warning mt-4"
+      class="bg-secondary text-secondary-content p-4 rounded-lg mt-4"
      >
-      ⚠️
-      <span class="text-sm">
-       IDを変更すると、この{{
-        getItemTypeLabel()
-       }}を参照している他の設定も影響を受ける可能性があります。
-       <span v-if="category === 'characters'">
-        <br />キャラクターの場合、コメントルールとタイマールールの投稿アクションも自動的に更新されます。
+      <div class="flex items-start">
+       <span class="text-2xl mr-3">⚠️</span>
+       <span class="text-sm">
+        <span class="font-bold"
+         >IDを変更すると、この{{
+          getItemTypeLabel()
+         }}を参照している他の設定も影響を受ける可能性があります。</span
+        >
+        <span v-if="category === 'characters'" class="block mt-2">
+         キャラクターの場合、コメントルールとタイマールールの投稿アクションも自動的に更新されます。
+        </span>
        </span>
-      </span>
+      </div>
      </div>
     </div>
 

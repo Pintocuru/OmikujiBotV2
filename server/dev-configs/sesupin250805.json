@@ -1643,14 +1643,16 @@
               "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "messageContent": ""
+              "messageContent": "",
+              "messageToast": ""
             },
             {
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "angry",
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。"
+              "wordParty": "!間抜け5",
+              "messageContent": "<<user>>さん…あなた初見じゃないでしょ。",
+              "messageToast": ""
             }
           ]
         },
