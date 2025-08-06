@@ -8,7 +8,12 @@
  </div>
 
  <!-- キャラクタータブ（複数の場合） -->
- <RuleTabs :rules="charactersArray" :selectedRule="selectedCharacter" ruleType="characters" />
+ <RuleTabs
+  :rules="charactersArray"
+  :selectedRule="selectedCharacter"
+  ruleType="characters"
+  :external-store="extendedStore"
+ />
 
  <!-- 選択されたキャラクターの編集フォーム -->
  <div v-if="selectedCharacter">
@@ -37,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import type { CharacterType } from '@/types/';
 import { useCharacterStore } from '@ConfigStore/useCharacterStore';
 import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
@@ -61,7 +66,6 @@ const extendedStore = {
   omikujiStore.selectRule(ruleId);
  }
 };
-provide('charactersRulesStore', extendedStore);
 
 // 計算プロパティ
 const charactersArray = computed(() => characterStore.rulesArray);

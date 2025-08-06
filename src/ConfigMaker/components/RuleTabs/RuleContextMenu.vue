@@ -2,24 +2,24 @@
 <template>
  <!-- 右クリックコンテキストメニュー -->
  <div
-  v-if="show"
-  :style="{ top: y + 'px', left: x + 'px' }"
+  v-if="store.contextMenu.show"
+  :style="{ top: store.contextMenu.y + 'px', left: store.contextMenu.x + 'px' }"
   class="fixed z-50 bg-base-100 border border-base-300 rounded-lg shadow-xl py-2 min-w-48"
   @click.stop
  >
   <button
-   @click="$emit('moveUp')"
-   :disabled="!canMoveUp"
-   :class="getContextMenuItemClasses(!canMoveUp)"
+   @click="store.handleContextMoveUp"
+   :disabled="!store.canMoveUp"
+   :class="getContextMenuItemClasses(!store.canMoveUp)"
   >
    <ChevronUp class="w-4 h-4" />
    上に移動
   </button>
 
   <button
-   @click="$emit('moveDown')"
-   :disabled="!canMoveDown"
-   :class="getContextMenuItemClasses(!canMoveDown)"
+   @click="store.handleContextMoveDown"
+   :disabled="!store.canMoveDown"
+   :class="getContextMenuItemClasses(!store.canMoveDown)"
   >
    <ChevronDown class="w-4 h-4" />
    下に移動
@@ -28,7 +28,7 @@
   <div class="divider my-1"></div>
 
   <button
-   @click="$emit('duplicate')"
+   @click="store.handleContextDuplicate"
    class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
   >
    <Copy class="w-4 h-4" />
@@ -36,7 +36,7 @@
   </button>
 
   <button
-   @click="$emit('delete')"
+   @click="store.handleContextDelete"
    class="w-full px-4 py-2 text-left hover:bg-error hover:text-error-content flex items-center gap-2 text-error"
   >
    <Trash2 class="w-4 h-4" />
@@ -45,30 +45,16 @@
  </div>
 
  <!-- コンテキストメニューを閉じるためのオーバーレイ -->
- <div v-if="show" @click="$emit('hide')" class="fixed inset-0 z-40"></div>
+ <div v-if="store.contextMenu.show" @click="store.hideContextMenu" class="fixed inset-0 z-40"></div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
 import { ChevronUp, ChevronDown, Copy, Trash2 } from 'lucide-vue-next';
+import { useRuleTabsStore } from './RuleTabsStore';
 
-// Props
-defineProps<{
- show: boolean;
- x: number;
- y: number;
- canMoveUp: boolean;
- canMoveDown: boolean;
-}>();
-
-// Emits
-const emit = defineEmits<{
- moveUp: [];
- moveDown: [];
- duplicate: [];
- delete: [];
- hide: [];
-}>();
+// Store
+const store = useRuleTabsStore();
 
 // スタイル計算
 const getContextMenuItemClasses = (disabled: boolean) => [
@@ -79,7 +65,7 @@ const getContextMenuItemClasses = (disabled: boolean) => [
 // ESCキーでメニューを閉じる
 const handleKeydown = (event: KeyboardEvent) => {
  if (event.key === 'Escape') {
-  emit('hide');
+  store.hideContextMenu();
  }
 };
 

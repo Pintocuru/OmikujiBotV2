@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/useContextMenu.ts
+// ! 削除予定
 import { reactive, computed } from 'vue';
 import { BaseTypes } from '@shared/types';
 

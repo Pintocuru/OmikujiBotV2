@@ -6,7 +6,7 @@
    <div class="relative flex items-center">
     <Search class="absolute left-3 w-4 h-4 text-base-content/50 pointer-events-none" />
     <input
-     v-model="searchQuery"
+     v-model="store.filterOptions.query"
      type="text"
      placeholder="ルール名や説明で検索..."
      class="input input-bordered w-full pl-10 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -15,7 +15,7 @@
 
     <!-- クリアボタン -->
     <button
-     v-if="searchQuery"
+     v-if="store.filterOptions.query"
      @click="clearSearch"
      class="absolute right-3 p-1 hover:bg-base-200 rounded-full transition-colors"
      title="検索をクリア"
@@ -27,9 +27,14 @@
    <!-- 検索結果の統計と選択状態 -->
    <div class="mt-2 flex items-center justify-between text-xs text-base-content/60">
     <div>
-     {{ filteredCount }} / {{ totalCount }} 件のルールが表示されています
+     {{ store.filteredSortedRules.length }} /
+     {{ store.sortedRules.length }} 件のルールが表示されています
      <button
-      v-if="searchQuery || enabledFilter || colorFilter"
+      v-if="
+       store.filterOptions.query ||
+       store.filterOptions.enabledOnly ||
+       store.filterOptions.colorFilter
+      "
       @click="clearSearch"
       class="ml-2 text-primary hover:text-primary-focus underline"
      >
@@ -38,12 +43,9 @@
     </div>
 
     <!-- 選択状態の表示 -->
-    <div v-if="selectedCount && selectedCount > 0" class="flex items-center gap-2">
-     <span class="text-primary font-medium">{{ selectedCount }}件選択中</span>
-     <button
-      @click="$emit('clear-selection')"
-      class="text-primary hover:text-primary-focus underline"
-     >
+    <div v-if="store.selectedRuleIds.size > 0" class="flex items-center gap-2">
+     <span class="text-primary font-medium">{{ store.selectedRuleIds.size }}件選択中</span>
+     <button @click="store.clearSelection" class="text-primary hover:text-primary-focus underline">
       選択解除
      </button>
     </div>
@@ -59,7 +61,11 @@
      <!-- 有効/無効フィルター -->
      <div class="flex items-center gap-2">
       <label class="label cursor-pointer p-0">
-       <input v-model="enabledFilter" type="checkbox" class="checkbox checkbox-sm" />
+       <input
+        v-model="store.filterOptions.enabledOnly"
+        type="checkbox"
+        class="checkbox checkbox-sm"
+       />
        <span class="label-text ml-2 text-sm">有効のみ</span>
       </label>
      </div>
@@ -68,24 +74,32 @@
      <div class="flex items-center gap-2">
       <span class="text-sm">検索対象:</span>
       <label class="label cursor-pointer p-0">
-       <input v-model="searchInName" type="checkbox" class="checkbox checkbox-sm" />
+       <input
+        v-model="store.filterOptions.searchInName"
+        type="checkbox"
+        class="checkbox checkbox-sm"
+       />
        <span class="label-text ml-1 text-sm">名前</span>
       </label>
       <label class="label cursor-pointer p-0">
-       <input v-model="searchInDescription" type="checkbox" class="checkbox checkbox-sm" />
+       <input
+        v-model="store.filterOptions.searchInDescription"
+        type="checkbox"
+        class="checkbox checkbox-sm"
+       />
        <span class="label-text ml-1 text-sm">説明</span>
       </label>
      </div>
     </div>
 
     <!-- カラーフィルター -->
-    <div v-if="availableColors.length > 0" class="flex flex-wrap items-center gap-2">
+    <div v-if="store.getUniqueColors.length > 0" class="flex flex-wrap items-center gap-2">
      <span class="text-sm font-medium">カラー:</span>
      <button
-      @click="colorFilter = null"
+      @click="store.filterOptions.colorFilter = null"
       :class="[
        'px-3 py-1 text-xs rounded-full border transition-all',
-       !colorFilter
+       !store.filterOptions.colorFilter
         ? 'bg-primary text-primary-content border-primary'
         : 'bg-base-100 border-base-300 hover:bg-base-200'
       ]"
@@ -93,12 +107,14 @@
       すべて
      </button>
      <button
-      v-for="color in availableColors"
+      v-for="color in store.getUniqueColors"
       :key="color"
-      @click="colorFilter = colorFilter === color ? null : color"
+      @click="
+       store.filterOptions.colorFilter = store.filterOptions.colorFilter === color ? null : color
+      "
       :class="[
        'flex items-center gap-2 px-3 py-1 text-xs rounded-full border transition-all',
-       colorFilter === color
+       store.filterOptions.colorFilter === color
         ? 'bg-primary text-primary-content border-primary'
         : 'bg-base-100 border-base-300 hover:bg-base-200'
       ]"
@@ -130,82 +146,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { Search, X, ChevronDown } from 'lucide-vue-next';
+import { useRuleTabsStore } from './RuleTabsStore';
 
-// Types
-import type { FilterOptions } from './RuleTabsTypes';
+// Store
+const store = useRuleTabsStore();
 
-// Props
-const props = defineProps<{
- modelValue: string;
- totalCount: number;
- filteredCount: number;
- availableColors: string[];
- selectedCount?: number; // 新規追加
-}>();
-
-// Emits
-const emit = defineEmits<{
- 'update:modelValue': [value: string];
- 'filter-change': [filters: FilterOptions];
- 'clear-selection': []; // 新規追加
-}>();
-
-// リアクティブデータ
-const searchQuery = ref(props.modelValue);
+// ローカル状態
 const showAdvancedFilters = ref(false);
-const enabledFilter = ref(false);
-const searchInName = ref(true);
-const searchInDescription = ref(true);
-const colorFilter = ref<string | null>(null);
-
-// 計算プロパティ
-const currentFilters = computed(
- (): FilterOptions => ({
-  query: searchQuery.value,
-  enabledOnly: enabledFilter.value,
-  searchInName: searchInName.value,
-  searchInDescription: searchInDescription.value,
-  colorFilter: colorFilter.value
- })
-);
-
-// ウォッチャー
-watch(searchQuery, (newValue) => {
- emit('update:modelValue', newValue);
-});
-
-watch(
- currentFilters,
- (newFilters) => {
-  emit('filter-change', newFilters);
- },
- { deep: true }
-);
-
-watch(
- () => props.modelValue,
- (newValue) => {
-  searchQuery.value = newValue;
- }
-);
 
 // メソッド
 const clearSearch = () => {
- searchQuery.value = '';
- enabledFilter.value = false;
- searchInName.value = true;
- searchInDescription.value = true;
- colorFilter.value = null;
+ store.filterOptions.query = '';
+ store.filterOptions.enabledOnly = false;
+ store.filterOptions.searchInName = true;
+ store.filterOptions.searchInDescription = true;
+ store.filterOptions.colorFilter = null;
 };
 
 // 検索対象の最低一つは選択されている状態を保持
-watch([searchInName, searchInDescription], ([name, description]) => {
- if (!name && !description) {
-  searchInName.value = true;
+watch(
+ [() => store.filterOptions.searchInName, () => store.filterOptions.searchInDescription],
+ ([name, description]) => {
+  if (!name && !description) {
+   store.filterOptions.searchInName = true;
+  }
  }
-});
+);
 </script>
 
 <style scoped>

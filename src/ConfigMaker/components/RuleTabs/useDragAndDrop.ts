@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/useDragAndDrop.ts
+// ! 削除予定
 import { ref, computed } from 'vue';
 import type { RuleStore } from './RuleTabsTypes';
 import { BaseTypes } from '@shared/types';

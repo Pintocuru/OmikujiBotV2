@@ -1,7 +1,12 @@
 <!-- src/configMaker/components/comments/CommentRuleEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs :rules="rulesArray" :selectedRule="selectedRule" ruleType="comments" />
+ <RuleTabs
+  :rules="rulesArray"
+  :selectedRule="selectedRule"
+  ruleType="comments"
+  :external-store="extendedStore"
+ />
 
  <!-- ルール編集エリア -->
  <div v-if="selectedRule">
@@ -23,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import { CommentRuleType, RuleType } from '@/types/';
 import BaseSettingsEditor from './BaseSettingsEditor.vue';
 import ScriptGameEditor from './ScriptGameEditor.vue';
@@ -46,7 +51,6 @@ const extendedStore = {
   omikujiStore.selectRule(ruleId);
  }
 };
-provide('commentsRulesStore', extendedStore);
 
 // computed
 const selectedRule = computed({

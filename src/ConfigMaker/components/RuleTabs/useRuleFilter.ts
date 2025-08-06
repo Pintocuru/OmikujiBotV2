@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/useRuleFilter.ts
+// ! 削除予定
 import { ref, computed } from 'vue';
 import { BaseTypes } from '@shared/types';
 import type { FilterOptions } from './RuleTabsTypes';

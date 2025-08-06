@@ -1,7 +1,12 @@
 <!-- src/configMaker/components/placeholders/PlaceholderEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs :rules="placeholdersArray" :selectedRule="selectedPlaceholder" ruleType="placeholders" />
+ <RuleTabs
+  :rules="placeholdersArray"
+  :selectedRule="selectedPlaceholder"
+  ruleType="placeholders"
+  :external-store="extendedStore"
+ />
 
  <!-- プレースホルダー編集エリア -->
  <div v-if="selectedPlaceholder">
@@ -70,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
 import PlaceholderPreview from './PlaceholderPreview.vue';
 import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
@@ -93,7 +98,6 @@ const extendedStore = {
   omikujiStore.selectRule(ruleId);
  }
 };
-provide('placeholdersRulesStore', extendedStore);
 
 // computed
 const placeholdersArray = computed(() => placeholderStore.rulesArray);

@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/useMultiSelect.ts
+// ! 削除予定
 import { ref } from 'vue';
 import { BaseTypes } from '@shared/types';
 

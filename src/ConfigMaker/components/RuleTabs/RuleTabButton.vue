@@ -2,17 +2,22 @@
 <template>
  <button
   :class="tabClasses"
-  @click="$emit('click', $event)"
-  @dblclick="$emit('dblclick', $event)"
+  @click="handleClick"
+  @dblclick="store.startInlineEdit(rule)"
   :style="{ borderTopColor: rule.editorColor }"
  >
   <!-- 複数選択モード時のチェックボックス -->
   <div
-   v-if="multiSelectMode"
+   v-if="store.isMultiSelectMode"
    class="flex items-center mr-2"
-   @click.stop="$emit('multiSelectClick', $event)"
+   @click.stop="handleMultiSelectClick"
   >
-   <input type="checkbox" :checked="multiSelected" class="checkbox checkbox-sm" readonly />
+   <input
+    type="checkbox"
+    :checked="store.selectedRuleIds.has(rule.id)"
+    class="checkbox checkbox-sm"
+    readonly
+   />
   </div>
 
   <!-- ドラッグハンドル -->
@@ -30,28 +35,28 @@
   />
 
   <!-- ルール名（インライン編集対応） -->
-  <!-- ! 型 '(el: HTMLInputElement) => void' を型 'VNodeRef | undefined' に割り当てることはできません。 -->
-  <!-- TODO:インライン編集は必ず失敗します -->
+  <!-- 型 '(el: HTMLInputElement) => void' を型 'VNodeRef | undefined' に割り当てることはできません -->
   <input
    v-if="isEditing"
-   :value="editingName"
-   @input="$emit('update:editingName', ($event.target as HTMLInputElement).value)"
-   @blur="$emit('finishEdit')"
-   @keyup.enter="$emit('finishEdit')"
-   @keyup.escape="$emit('cancelEdit')"
+   :value="store.editingName"
+   @input="store.updateEditingName(($event.target as HTMLInputElement).value)"
+   @blur="store.finishInlineEdit"
+   @keyup.enter="store.finishInlineEdit"
+   @keyup.escape="store.cancelInlineEdit"
    class="bg-transparent border-none outline-none text-current w-20 text-center"
-   :ref="setEditInputRef"
+   :ref="store.setEditInput"
    @click.stop
   />
   <span v-else class="truncate max-w-24">
-   {{ rule.name || `ルール${index + 1}` }}
+   {{ rule.name || `ルール${displayIndex + 1}` }}
   </span>
+
   <!-- order(Dev) -->
   <span v-if="isDev">({{ rule.order != null ? rule.order : 'order:error!' }})</span>
 
   <!-- 状態インジケーター -->
   <div class="flex items-center gap-1 text-xs">
-   <span v-if="!getRuleEnabledState(rule)" class="opacity-50 text-xs">(無効)</span>
+   <span v-if="!getRuleEnabledState" class="opacity-50 text-xs">(無効)</span>
   </div>
 
   <!-- ホバーエフェクト -->
@@ -62,67 +67,55 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import { isDev } from '@/types/';
 import { BaseTypes } from '@shared/types';
 import { GripVertical } from 'lucide-vue-next';
+import { useRuleTabsStore } from './RuleTabsStore';
 
 const props = defineProps<{
  rule: BaseTypes;
- index: number;
- selected: boolean;
- multiSelected?: boolean;
- multiSelectMode?: boolean;
- draggable?: boolean;
- getRuleEnabledState: (rule: BaseTypes) => boolean;
- editingRuleId: string | null;
- editingName: string;
 }>();
 
-const emit = defineEmits<{
- click: [event: MouseEvent];
- dblclick: [event: MouseEvent];
- multiSelectClick: [event: MouseEvent];
- finishEdit: [];
- cancelEdit: [];
- setEditInput: [el: HTMLInputElement];
- 'update:editingName': [value: string];
-}>();
+// Store
+const store = useRuleTabsStore();
 
-const inputRef = ref<HTMLInputElement>();
-
-const isEditing = computed(() => props.editingRuleId === props.rule.id);
+// Computed
+const displayIndex = computed(() => store.getDisplayIndex(props.rule.id));
+const isEditing = computed(() => store.editingRuleId === props.rule.id);
+const isSelected = computed(() => store.selectedRule?.id === props.rule.id);
+const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.id));
+const getRuleEnabledState = computed(() => props.rule.isEnabled !== false);
 
 const showDragHandle = computed(
- () => props.draggable && !isEditing.value && !props.multiSelectMode
+ () => !store.searchQuery && !isEditing.value && !store.isMultiSelectMode
 );
 
 const tabClasses = computed(() => [
  'tab tab-bordered px-4 py-2 text-sm font-medium transition-all duration-200',
  'flex items-center gap-2 relative overflow-hidden',
- props.selected
+ isSelected.value
   ? 'tab-active bg-primary text-primary-content shadow-lg'
-  : props.multiSelected
+  : isMultiSelected.value
     ? 'bg-primary/20 border-primary/40 text-primary'
     : 'hover:bg-base-200 hover:shadow-md',
- !props.getRuleEnabledState(props.rule) && 'opacity-60',
+ !getRuleEnabledState.value && 'opacity-60',
  showDragHandle.value && 'cursor-grab',
- props.multiSelectMode && 'cursor-pointer'
+ store.isMultiSelectMode && 'cursor-pointer'
 ]);
 
-const setEditInputRef = (el: HTMLInputElement) => {
- inputRef.value = el;
- if (el) {
-  emit('setEditInput', el);
+// Event Handlers
+const handleClick = (event: MouseEvent) => {
+ if (store.isMultiSelectMode) {
+  store.handleMultiSelect(props.rule.id, event);
+ } else {
+  store.handleSelectRule(props.rule.id);
  }
 };
 
-onMounted(() => {
- if (isEditing.value && inputRef.value) {
-  inputRef.value.focus();
-  inputRef.value.select();
- }
-});
+const handleMultiSelectClick = (event: MouseEvent) => {
+ store.handleMultiSelect(props.rule.id, event);
+};
 </script>
 
 <style scoped>

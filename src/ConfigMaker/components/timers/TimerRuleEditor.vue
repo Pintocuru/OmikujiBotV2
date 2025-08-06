@@ -1,7 +1,12 @@
 <!-- src/configMaker/components/timers/TimerRuleEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs :rules="rulesArray" :selectedRule="selectedRule" ruleType="timers" />
+ <RuleTabs
+  :rules="rulesArray"
+  :selectedRule="selectedRule"
+  ruleType="timers"
+  :external-store="extendedStore"
+ />
 
  <!-- ルール編集エリア -->
  <div v-if="selectedRule">
@@ -17,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import { RuleType, TimerRuleType } from '@/types/';
 import TimerIntervalEditor from './TimerIntervalEditor.vue';
 import OmikujiSetEditor from '@ConfigComponents/comments/OmikujiSetEditor.vue';
@@ -38,7 +43,6 @@ const extendedStore = {
   omikujiStore.selectRule(ruleId);
  }
 };
-provide('timersRulesStore', extendedStore);
 
 // computed
 const selectedRule = computed({

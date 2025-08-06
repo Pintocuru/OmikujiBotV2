@@ -26,11 +26,8 @@
    <!-- ステータス情報 -->
    <div class="text-xs space-y-1">
     <div class="flex items-center gap-2">
-     <span
-      class="badge badge-sm"
-      :class="getRuleEnabledState(rule) ? 'badge-success' : 'badge-error'"
-     >
-      {{ getRuleEnabledState(rule) ? '有効' : '無効' }}
+     <span class="badge badge-sm" :class="getRuleEnabledState ? 'badge-success' : 'badge-error'">
+      {{ getRuleEnabledState ? '有効' : '無効' }}
      </span>
     </div>
 
@@ -48,12 +45,14 @@ import { BaseTypes } from '@shared/types';
 
 const props = defineProps<{
  rule: BaseTypes;
- getRuleEnabledState: (rule: BaseTypes) => boolean;
 }>();
 
 defineEmits<{
  mouseenter: [];
 }>();
+
+// Computed
+const getRuleEnabledState = computed(() => props.rule.isEnabled !== false);
 
 const hasOmikuji = computed(
  () =>
@@ -62,6 +61,7 @@ const hasOmikuji = computed(
   (props.rule.omikuji as any).length > 0
 );
 
+// ! omikuji があるのは comment/timer のみ
 const omikujiCount = computed(() => (hasOmikuji.value ? (props.rule.omikuji as any).length : 0));
 
 const hasValues = computed(
@@ -72,6 +72,7 @@ const hasValues = computed(
   Object.keys(props.rule.values as object).length > 0
 );
 
+// ! これはなに？
 const valuesCount = computed(() =>
  hasValues.value ? Object.keys(props.rule.values as object).length : 0
 );

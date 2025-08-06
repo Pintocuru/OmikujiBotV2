@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/useRuleManagement.ts
+// ! 削除予定
 import { inject } from 'vue';
 import type { CategoryType } from '@/types/';
 import { BaseTypes } from '@shared/types';

@@ -1,4 +1,5 @@
 // src/configMaker/components/RuleTabs/types.ts
+// ! 削除予定
 import { BaseTypes } from '@shared/types';
 
 export interface RuleStore {
