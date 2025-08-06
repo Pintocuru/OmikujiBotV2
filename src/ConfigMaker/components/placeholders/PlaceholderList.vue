@@ -122,6 +122,8 @@ const defaultPlaceholders: PlaceholderType[] = (
 const defaultPlaceholderIds = defaultPlaceholders.map((p) => p.id);
 
 // 指定したIDがデフォルトプレースホルダーかどうかを判定
+// TODO: defaultPlaceholderIds だけでなく、ゲームスクリプトも弾かないといけない。
+// computed を使い、storeから使用されているidを検索して判断させる
 const isDefaultPlaceholder = (id: string) => {
  return defaultPlaceholderIds.includes(id);
 };

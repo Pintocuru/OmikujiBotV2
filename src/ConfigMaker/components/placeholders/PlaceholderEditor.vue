@@ -68,7 +68,11 @@
     />
    </div>
    <div class="card-body">
-    <PlaceholderValuesEditor :placeholderId="selectedPlaceholder.id" :isModal="false" />
+    <PlaceholderValuesEditor
+     :key="selectedPlaceholder.id"
+     :placeholderId="selectedPlaceholder.id"
+     :isModal="false"
+    />
    </div>
   </div>
  </div>

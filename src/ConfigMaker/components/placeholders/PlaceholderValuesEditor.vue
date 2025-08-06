@@ -60,7 +60,6 @@ const emit = defineEmits<{
 }>();
 
 const placeholderStore = usePlaceholderStore();
-
 // コンポーザブルの使用
 const { localValues, placeholderName, initializeValues, addValue, removeValue, duplicateValue } =
  usePlaceholderValues(props.placeholderId, props.isModal);
