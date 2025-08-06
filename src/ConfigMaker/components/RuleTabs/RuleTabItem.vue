@@ -40,6 +40,8 @@
    <span v-else class="truncate max-w-24">
     {{ rule.name || `ルール${index + 1}` }}
    </span>
+   <!-- order(Dev) -->
+   <span v-if="isDev">({{ rule.order || 'order:error!' }})</span>
 
    <!-- 状態インジケーター -->
    <div class="flex items-center gap-1 text-xs">
@@ -99,13 +101,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { GripVertical } from 'lucide-vue-next';
-
-// Composables
-import { useInlineEdit } from './useInlineEdit';
-
-// Types
 import type { BaseRule } from './RuleTabsTypes';
+import { isDev } from '@/types/';
+import { GripVertical } from 'lucide-vue-next';
+import { useInlineEdit } from './useInlineEdit';
 
 // Props
 const props = defineProps<{

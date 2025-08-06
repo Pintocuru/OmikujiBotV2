@@ -1,6 +1,7 @@
 // src/types/OmikujiDataSchema.ts
-// 250722_1 OmikujiLimits の新規作成
+// 修正版: 正規化機能を含むOmikujiDataSchema
 import { z } from 'zod';
+import { v4 as uuidv4 } from 'uuid';
 import { BaseSchema } from '@shared/types/';
 import {
  CommentThresholdSchema,
@@ -17,7 +18,10 @@ import { createScriptSettingsSchema } from './GameScript/GameScriptSettingsSchem
 import { PlaceholderSchema } from './OmikujiBot/PlaceholderSchema';
 import { CharacterSchema } from './OmikujiBot/CharacterSchema';
 
-// defaultのプレースホルダー(user/Commentのmeta/ServiceMeta)
+// ==========================
+// 基本定義
+// ==========================
+
 export const defaultPlaceholders = [
  'user',
  'price',
@@ -33,15 +37,72 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
  ...serviceMetaConditionLabels
 };
 
-// OmikujiLimits
 export const OmikujiLimitsSchema = z.object({
- processCooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間、0で無効
- drawLimit: z.number().default(0).catch(0), // 今回のおみくじはこの回数以下か
- isRepeatAllowed: z.boolean().default(true).catch(true), // 連投を許可するか
- limitOverPost: z.optional(PostActionSchema).catch(PostActionSchema.parse({})) // 上記の制限で引っかかった場合の投稿
+ processCooldownSeconds: z.number().min(0).max(300).catch(3),
+ drawLimit: z.number().default(0).catch(0),
+ isRepeatAllowed: z.boolean().default(true).catch(true),
+ limitOverPost: z.optional(PostActionSchema).catch(PostActionSchema.parse({}))
 });
 
-// Rule
+export const WordPartySettingsSchema = z.object({
+ name: z.string().default('').catch(''),
+ pattern: z.string().default('').catch('')
+});
+
+// ==========================
+// 正規化ヘルパー関数
+// ==========================
+
+type NormalizableItem = { id: string; order: number; [key: string]: any };
+
+const normalizeOrders = <T extends NormalizableItem>(items: T[]): T[] => {
+ if (!Array.isArray(items) || items.length === 0) return items;
+
+ const sortedItems = [...items].sort((a, b) => {
+  if (a.order === b.order) return a.id.localeCompare(b.id);
+  return a.order - b.order;
+ });
+
+ return sortedItems.map((item, index) => ({ ...item, order: index + 1 }));
+};
+
+const ensureUniqueIds = <T extends { id: string }>(items: T[]): T[] => {
+ const newItems: T[] = [];
+ const seenIds = new Set<string>();
+
+ for (const item of items) {
+  let newId = item.id;
+  if (seenIds.has(newId)) newId = uuidv4();
+  seenIds.add(newId);
+  newItems.push(newId === item.id ? item : { ...item, id: newId });
+ }
+ return newItems;
+};
+
+const createRecordWithNormalization = <T extends z.ZodType<NormalizableItem>>(itemSchema: T) => {
+ return z
+  .record(z.string(), itemSchema)
+  .default({})
+  .catch({})
+  .transform((record) => {
+   if (!record || typeof record !== 'object') return {};
+
+   const items: z.infer<T>[] = Object.values(record);
+   const uniqueItems = ensureUniqueIds(items);
+   const orderNormalizedItems = normalizeOrders(uniqueItems);
+
+   const result: Record<string, z.infer<T>> = {};
+   orderNormalizedItems.forEach((item) => {
+    result[item.id] = item;
+   });
+   return result;
+  });
+};
+
+// ==========================
+// スキーマ定義
+// ==========================
+
 const BaseRuleCommonSchema = z.object({
  ...BaseSchema.shape,
  isEnabled: z.boolean().default(true).catch(true),
@@ -53,7 +114,7 @@ const BaseRuleCommonSchema = z.object({
  omikuji: z.array(OmikujiSetSchema).default([]).catch([])
 });
 
-// CommentRule
+// 単一のルールスキーマ（元の形式を維持）
 export const CommentRuleSchema = z.object({
  ...BaseRuleCommonSchema.shape,
  ruleType: z.literal('comments').default('comments').catch('comments'),
@@ -63,7 +124,6 @@ export const CommentRuleSchema = z.object({
  limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({}))
 });
 
-// TimerRule
 export const TimerRuleSchema = z.object({
  ...BaseRuleCommonSchema.shape,
  ruleType: z.literal('timers').default('timers').catch('timers'),
@@ -76,13 +136,16 @@ export const TimerRuleSchema = z.object({
  isBaseZero: z.boolean().default(false).catch(false)
 });
 
-// WordParty設定
-export const WordPartySettingsSchema = z.object({
- name: z.string().default('').catch(''),
- pattern: z.string().default('').catch('')
-});
+// Record用の正規化機能付きスキーマ（別名で定義）
+export const CommentRuleRecordSchema = createRecordWithNormalization(CommentRuleSchema);
+export const TimerRuleRecordSchema = createRecordWithNormalization(TimerRuleSchema);
+export const PlaceholderRecordSchema = createRecordWithNormalization(PlaceholderSchema);
+export const CharacterRecordSchema = createRecordWithNormalization(CharacterSchema);
 
-// CategoryType categoryLabels
+// ==========================
+// カテゴリ定義
+// ==========================
+
 export const selectCategoryType = ['comments', 'timers', 'placeholders', 'characters'] as const;
 export type SelectCategoryType = (typeof selectCategoryType)[number];
 
@@ -135,18 +198,35 @@ export const categoryLabels: Record<
  }
 };
 
-// メインデータ構造のスキーマ
-export const OmikujiDataSchema = z.object({
- comments: z.record(z.string(), CommentRuleSchema).default({}).catch({}),
- timers: z.record(z.string(), TimerRuleSchema).default({}).catch({}),
- placeholders: z.record(z.string(), PlaceholderSchema).default({}).catch({}),
- scriptSettings: createScriptSettingsSchema(gameScriptMap).default({}).catch({}),
- characters: z.record(z.string(), CharacterSchema).default({}).catch({}),
- displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
- wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])
-});
+// ==========================
+// メインスキーマ
+// ==========================
 
+export const OmikujiDataSchema = z
+ .object({
+  comments: CommentRuleRecordSchema, // 正規化機能付きRecord
+  timers: TimerRuleRecordSchema, // 正規化機能付きRecord
+  placeholders: PlaceholderRecordSchema,
+  characters: CharacterRecordSchema,
+  scriptSettings: createScriptSettingsSchema(gameScriptMap).default({}).catch({}),
+  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
+  wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])
+ })
+ .transform((data) => {
+  console.log('データ正規化完了:', {
+   comments: Object.keys(data.comments).length,
+   timers: Object.keys(data.timers).length,
+   placeholders: Object.keys(data.placeholders).length,
+   characters: Object.keys(data.characters).length,
+   wordPartySettings: data.wordPartySettings.length
+  });
+  return data;
+ });
+
+// ==========================
 // 型エクスポート
+// ==========================
+
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>;
 export type CommentRuleType = z.infer<typeof CommentRuleSchema>;
 export type TimerRuleType = z.infer<typeof TimerRuleSchema>;
@@ -154,3 +234,82 @@ export type RuleType = CommentRuleType | TimerRuleType;
 export type OmikujiLimitsType = z.infer<typeof OmikujiLimitsSchema>;
 export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
 export type WordPartySettings = z.infer<typeof WordPartySettingsSchema>;
+
+// ==========================
+// ユーティリティ関数
+// ==========================
+
+export const parseAndNormalizeOmikujiData = (rawData: unknown) => {
+ try {
+  return OmikujiDataSchema.parse(rawData);
+ } catch (error) {
+  console.error('OmikujiData parse error:', error);
+  return OmikujiDataSchema.parse({});
+ }
+};
+
+export const mergeExternalData = (existingData: OmikujiDataType, externalData: unknown) => {
+ try {
+  const parsedExternal = OmikujiDataSchema.parse(externalData);
+  const merged = {
+   comments: { ...existingData.comments, ...parsedExternal.comments },
+   timers: { ...existingData.timers, ...parsedExternal.timers },
+   placeholders: { ...existingData.placeholders, ...parsedExternal.placeholders },
+   characters: { ...existingData.characters, ...parsedExternal.characters },
+   scriptSettings: parsedExternal.scriptSettings,
+   displaySettings: parsedExternal.displaySettings,
+   wordPartySettings: parsedExternal.wordPartySettings
+  };
+  return OmikujiDataSchema.parse(merged);
+ } catch (error) {
+  console.error('External data merge error:', error);
+  throw new Error('外部データのマージに失敗しました');
+ }
+};
+
+export const updateCategoryData = <K extends keyof OmikujiDataType>(
+ existingData: OmikujiDataType,
+ category: K,
+ newData: unknown
+): OmikujiDataType => {
+ try {
+  const updatedData = { ...existingData } as OmikujiDataType;
+
+  switch (category) {
+   case 'comments':
+    (updatedData as any).comments = CommentRuleRecordSchema.parse(newData);
+    break;
+   case 'timers':
+    (updatedData as any).timers = TimerRuleRecordSchema.parse(newData);
+    break;
+   case 'placeholders':
+    (updatedData as any).placeholders = PlaceholderRecordSchema.parse(newData);
+    break;
+   case 'characters':
+    (updatedData as any).characters = CharacterRecordSchema.parse(newData);
+    break;
+   case 'wordPartySettings':
+    (updatedData as any).wordPartySettings = z.array(WordPartySettingsSchema).parse(newData);
+    break;
+   case 'scriptSettings':
+    (updatedData as any).scriptSettings = createScriptSettingsSchema(gameScriptMap).parse(newData);
+    break;
+   case 'displaySettings':
+    (updatedData as any).displaySettings = DisplaySettingsSchema.parse(newData);
+    break;
+   default:
+    throw new Error(`未知のカテゴリ: ${String(category)}`);
+  }
+
+  return OmikujiDataSchema.parse(updatedData);
+ } catch (error) {
+  console.error(`Category ${String(category)} update error:`, error);
+  throw new Error(`${String(category)}データの更新に失敗しました`);
+ }
+};
+
+export const validateDataIntegrity = (data: OmikujiDataType) => {
+ const issues: string[] = [];
+ // 必要に応じて追加の整合性チェックを実装
+ return { isValid: issues.length === 0, issues };
+};

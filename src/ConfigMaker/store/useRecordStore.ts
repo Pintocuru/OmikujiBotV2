@@ -5,14 +5,15 @@ import {
  CommentRuleType,
  PlaceholderSchema,
  PlaceholderType,
+ SelectCategoryType,
  TimerRuleSchema,
- TimerRuleType
+ TimerRuleType,
+ CharacterSchema,
+ CharacterType
 } from '@/types/';
-import { CharacterSchema, CharacterType } from '@/types/';
 import { useOmikujiStore } from './useOmikujiStore';
 
 // 共通のルール操作を提供するコンポーザブル
-type Category = 'comments' | 'timers' | 'placeholders' | 'characters';
 
 type CategoryTypeMap = {
  comments: CommentRuleType;
@@ -22,20 +23,20 @@ type CategoryTypeMap = {
 };
 
 // スキーママップ - factoryMapと統合
-const categoryConfig = {
+const categoryConfig: Record<SelectCategoryType, { schema: any; defaultName: string }> = {
  comments: { schema: CommentRuleSchema, defaultName: 'コメントルール' },
  timers: { schema: TimerRuleSchema, defaultName: 'タイマールール' },
  placeholders: { schema: PlaceholderSchema, defaultName: 'プレースホルダー' },
  characters: { schema: CharacterSchema, defaultName: 'キャラクター設定' }
 } as const;
 
-export function useRecordOperations<C extends Category>(category: C) {
+export function useRecordOperations<C extends SelectCategoryType>(category: C) {
  const omikujiStore = useOmikujiStore();
  const config = categoryConfig[category];
 
  // 統合されたファクトリー関数
- const createRecord = (): CategoryTypeMap[C] => {
-  return config.schema.parse({}) as CategoryTypeMap[C];
+ const createRecord = (data: any = {}): CategoryTypeMap[C] => {
+  return config.schema.parse(data) as CategoryTypeMap[C];
  };
 
  // データ取得（共通化）
