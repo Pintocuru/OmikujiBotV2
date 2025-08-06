@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/RuleTabs/BulkActionBar.vue -->
+<!-- ! 削除予定 -->
 <template>
  <div class="bg-primary/10 p-3 rounded-lg border border-primary/20">
   <div class="flex items-center justify-between">

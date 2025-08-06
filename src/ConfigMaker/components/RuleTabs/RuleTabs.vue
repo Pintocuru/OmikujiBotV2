@@ -4,23 +4,8 @@
   <!-- フィルターコンポーネント -->
   <RuleFilter />
 
-  <!-- 複数選択モード時の一括操作バー -->
-  <BulkActionBar v-if="store.isMultiSelectMode" />
-
   <!-- タブ部分 -->
   <RuleTabList />
-
-  <!-- フィルター結果が空の場合のメッセージ -->
-  <div v-if="store.filterOptions.query && store.filteredSortedRules.length === 0">
-   <div class="text-center py-8">
-    <div class="text-base-content/60">
-     <p class="text-lg mb-2">
-      「{{ store.filterOptions.query }}」に一致するルールが見つかりませんでした
-     </p>
-     <p class="text-sm">検索条件を変更するか、新しいルールを追加してください</p>
-    </div>
-   </div>
-  </div>
 
   <!-- 右クリックコンテキストメニュー -->
   <RuleContextMenu />

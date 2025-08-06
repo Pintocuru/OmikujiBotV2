@@ -17,85 +17,49 @@ export * from './CategoryType';
 export * from './OmikujiBot/RulesSchema';
 export * from './CategoryType';
 
-/**
- * 単一のコメントルールスキーマ
- */
+// 基本スキーマ
 export const CommentRuleSchema = BaseCommentRuleSchema;
-
-/**
- * 単一のタイマールールスキーマ
- */
 export const TimerRuleSchema = BaseTimerRuleSchema;
 
-/**
- * 正規化機能付きコメントルールRecordスキーマ
- */
+// 正規化機能付きRecordスキーマ
 export const CommentRuleRecordSchema = createRecordWithNormalization(CommentRuleSchema);
-
-/**
- * 正規化機能付きタイマールールRecordスキーマ
- */
 export const TimerRuleRecordSchema = createRecordWithNormalization(TimerRuleSchema);
-
-/**
- * 正規化機能付きプレースホルダーRecordスキーマ
- */
 export const PlaceholderRecordSchema = createRecordWithNormalization(PlaceholderSchema);
-
-/**
- * 正規化機能付きキャラクターRecordスキーマ
- */
 export const CharacterRecordSchema = createRecordWithNormalization(CharacterSchema);
 
 /**
  * おみくじデータ全体のメインスキーマ
  */
 export const OmikujiDataSchema = z.object({
- /** コメントルール設定 */
  comments: CommentRuleRecordSchema,
- /** タイマールール設定 */
  timers: TimerRuleRecordSchema,
- /** プレースホルダー設定 */
  placeholders: PlaceholderRecordSchema,
- /** キャラクター設定 */
  characters: CharacterRecordSchema,
- /** ゲームスクリプト設定 */
  scriptSettings: createScriptSettingsSchema(gameScriptMap).default({}).catch({}),
- /** 表示設定 */
  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
- /** WordPartyリスト */
  wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])
 });
 
-/**
- * おみくじデータ全体の型
- */
+// 型定義
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>;
-
-/**
- * コメントルールの型
- */
 export type CommentRuleType = z.infer<typeof CommentRuleSchema>;
-
-/**
- * タイマールールの型
- */
 export type TimerRuleType = z.infer<typeof TimerRuleSchema>;
-
-/**
- * ルール全般の型
- */
 export type RuleType = CommentRuleType | TimerRuleType;
-
-/**
- * 表示設定の型
- */
 export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
+
+// カテゴリ更新用のスキーママップ
+const categorySchemaMap = {
+ comments: CommentRuleRecordSchema,
+ timers: TimerRuleRecordSchema,
+ placeholders: PlaceholderRecordSchema,
+ characters: CharacterRecordSchema,
+ wordPartySettings: z.array(WordPartySettingsSchema),
+ scriptSettings: createScriptSettingsSchema(gameScriptMap),
+ displaySettings: DisplaySettingsSchema
+} as const;
 
 /**
  * 生データを解析して正規化されたおみくじデータを返す
- * @param rawData - 解析対象の生データ
- * @returns 正規化されたおみくじデータ
  */
 export const parseAndNormalizeOmikujiData = (rawData: unknown): OmikujiDataType => {
  try {
@@ -108,10 +72,6 @@ export const parseAndNormalizeOmikujiData = (rawData: unknown): OmikujiDataType 
 
 /**
  * 既存データに外部データをマージする
- * @param existingData - 既存のおみくじデータ
- * @param externalData - マージする外部データ
- * @returns マージされた正規化済みデータ
- * @throws {Error} マージに失敗した場合
  */
 export const mergeExternalData = (
  existingData: OmikujiDataType,
@@ -137,11 +97,6 @@ export const mergeExternalData = (
 
 /**
  * 指定カテゴリのデータを更新する
- * @param existingData - 既存のおみくじデータ
- * @param category - 更新対象のカテゴリ
- * @param newData - 新しいカテゴリデータ
- * @returns 更新された正規化済みデータ
- * @throws {Error} 更新に失敗した場合
  */
 export const updateCategoryData = <K extends keyof OmikujiDataType>(
  existingData: OmikujiDataType,
@@ -149,33 +104,15 @@ export const updateCategoryData = <K extends keyof OmikujiDataType>(
  newData: unknown
 ): OmikujiDataType => {
  try {
-  const updatedData = { ...existingData } as OmikujiDataType;
-
-  switch (category) {
-   case 'comments':
-    (updatedData as any).comments = CommentRuleRecordSchema.parse(newData);
-    break;
-   case 'timers':
-    (updatedData as any).timers = TimerRuleRecordSchema.parse(newData);
-    break;
-   case 'placeholders':
-    (updatedData as any).placeholders = PlaceholderRecordSchema.parse(newData);
-    break;
-   case 'characters':
-    (updatedData as any).characters = CharacterRecordSchema.parse(newData);
-    break;
-   case 'wordPartySettings':
-    (updatedData as any).wordPartySettings = z.array(WordPartySettingsSchema).parse(newData);
-    break;
-   case 'scriptSettings':
-    (updatedData as any).scriptSettings = createScriptSettingsSchema(gameScriptMap).parse(newData);
-    break;
-   case 'displaySettings':
-    (updatedData as any).displaySettings = DisplaySettingsSchema.parse(newData);
-    break;
-   default:
-    throw new Error(`未知のカテゴリ: ${String(category)}`);
+  const schema = categorySchemaMap[category];
+  if (!schema) {
+   throw new Error(`未知のカテゴリ: ${String(category)}`);
   }
+
+  const updatedData = {
+   ...existingData,
+   [category]: schema.parse(newData)
+  };
 
   return OmikujiDataSchema.parse(updatedData);
  } catch (error) {
@@ -184,20 +121,14 @@ export const updateCategoryData = <K extends keyof OmikujiDataType>(
  }
 };
 
-/**
- * データの整合性をバリデーションする
- * @param data - バリデーション対象のデータ
- * @returns バリデーション結果
- */
+// データの整合性をバリデーションする
 export const validateDataIntegrity = (data: OmikujiDataType) => {
  const issues: string[] = [];
  // 必要に応じて追加の整合性チェックを実装
  return { isValid: issues.length === 0, issues };
 };
 
-/**
- *
- */
+// Record作成用のヘルパー関数
 function createRecordWithNormalization<T extends z.ZodType<SelectCategoryItem>>(itemSchema: T) {
  return z
   .record(z.string(), itemSchema)

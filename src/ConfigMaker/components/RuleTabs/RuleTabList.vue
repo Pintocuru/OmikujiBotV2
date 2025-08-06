@@ -1,24 +1,6 @@
 <!-- src/configMaker/components/RuleTabs/RuleTabList.vue -->
 <template>
- <div class="flex flex-wrap gap-1 border-b pb-2">
-  <!-- 複数選択モード切り替えボタン -->
-  <button
-   class="tab tab-bordered px-3 py-2 text-sm hover:bg-base-200 transition-all duration-200"
-   :class="{ 'tab-active bg-primary/20': store.isMultiSelectMode }"
-   @click="store.toggleMultiSelectMode"
-   title="複数選択モード"
-  >
-   <span class="flex items-center gap-2">
-    <input
-     type="checkbox"
-     class="checkbox checkbox-xs"
-     :checked="store.isMultiSelectMode"
-     readonly
-    />
-    選択
-   </span>
-  </button>
-
+ <div v-if="store.filteredSortedRules.length !== 0" class="flex flex-wrap gap-1 border-b pb-2">
   <!-- vue-draggableを使用 -->
   <draggable
    :model-value="store.draggableRules"
@@ -49,6 +31,13 @@
     追加
    </span>
   </button>
+ </div>
+
+ <!-- フィルター結果が空の場合のメッセージ -->
+ <div v-else>
+  <div class="text-center py-8 text-base-content/60">
+   <p class="text-lg">一致するルールが見つかりませんでした。</p>
+  </div>
  </div>
 </template>
 

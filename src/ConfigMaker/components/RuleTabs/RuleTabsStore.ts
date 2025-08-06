@@ -1,6 +1,6 @@
 // src/configMaker/components/RuleTabs/RuleTabsStore.ts
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import { ref, computed, ComponentPublicInstance } from 'vue';
 import { CategoryType } from '@/types/';
 import { BaseTypes } from '@shared/types';
 import { toast } from 'vue-sonner';
@@ -288,6 +288,7 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
 
  const clearSelection = () => {
   selectedRuleIds.value.clear();
+  isMultiSelectMode.value = false;
  };
 
  const handleBulkDelete = () => {
@@ -409,9 +410,12 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
   editInput.value = null;
  };
 
- const setEditInput = (el: HTMLInputElement) => {
-  editInput.value = el;
-  if (el) {
+ const setEditInput = (
+  el: Element | ComponentPublicInstance | null,
+  _refs?: Record<string, any>
+ ) => {
+  if (el instanceof HTMLInputElement) {
+   editInput.value = el;
    el.focus();
    el.select();
   }

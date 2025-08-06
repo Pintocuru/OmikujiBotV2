@@ -9,7 +9,7 @@
    <div class="font-medium text-base">{{ rule.name || '名前未設定' }}</div>
 
    <!-- 説明 -->
-   <div v-if="rule.description" class="text-sm text-base-content/70">
+   <div v-if="'description' in rule && rule.description" class="text-sm text-base-content/70">
     {{ rule.description }}
    </div>
 
@@ -26,7 +26,11 @@
    <!-- ステータス情報 -->
    <div class="text-xs space-y-1">
     <div class="flex items-center gap-2">
-     <span class="badge badge-sm" :class="getRuleEnabledState ? 'badge-success' : 'badge-error'">
+     <span
+      v-if="getRuleEnabledState !== undefined"
+      class="badge badge-sm"
+      :class="getRuleEnabledState ? 'badge-success' : 'badge-error'"
+     >
       {{ getRuleEnabledState ? '有効' : '無効' }}
      </span>
     </div>
@@ -41,10 +45,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { BaseTypes } from '@shared/types';
+import { SelectCategoryUnion } from '@/types';
 
 const props = defineProps<{
- rule: BaseTypes;
+ rule: SelectCategoryUnion;
 }>();
 
 defineEmits<{
@@ -52,28 +56,23 @@ defineEmits<{
 }>();
 
 // Computed
-const getRuleEnabledState = computed(() => props.rule.isEnabled !== false);
+const getRuleEnabledState = computed(() =>
+ 'isEnabled' in props.rule ? props.rule.isEnabled : undefined
+);
 
 const hasOmikuji = computed(
- () =>
-  'omikuji' in props.rule &&
-  Array.isArray(props.rule.omikuji as any) &&
-  (props.rule.omikuji as any).length > 0
+ () => 'omikuji' in props.rule && Array.isArray(props.rule.omikuji) && props.rule.omikuji.length > 0
 );
 
 // ! omikuji があるのは comment/timer のみ
-const omikujiCount = computed(() => (hasOmikuji.value ? (props.rule.omikuji as any).length : 0));
+const omikujiCount = computed(() => ('omikuji' in props.rule ? props.rule.omikuji.length : 0));
 
 const hasValues = computed(
- () =>
-  'values' in props.rule &&
-  typeof props.rule.values === 'object' &&
-  props.rule.values !== null &&
-  Object.keys(props.rule.values as object).length > 0
+ () => 'values' in props.rule && Object.keys(props.rule.values).length > 0
 );
 
-// ! これはなに？
+// ! プレースホルダー用
 const valuesCount = computed(() =>
- hasValues.value ? Object.keys(props.rule.values as object).length : 0
+ 'values' in props.rule ? Object.keys(props.rule.values).length : 0
 );
 </script>
