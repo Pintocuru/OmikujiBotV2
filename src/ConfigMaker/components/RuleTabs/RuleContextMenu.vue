@@ -42,6 +42,9 @@
    <Trash2 class="w-4 h-4" />
    削除
   </button>
+
+  <!-- カラーピッカー -->
+  <ColorPicker v-if="store.contextMenu.rule" v-model="store.contextMenu.rule.editorColor" />
  </div>
 
  <!-- コンテキストメニューを閉じるためのオーバーレイ -->
@@ -50,8 +53,9 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
-import { ChevronUp, ChevronDown, Copy, Trash2 } from 'lucide-vue-next';
 import { useRuleTabsStore } from './RuleTabsStore';
+import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
+import { ChevronUp, ChevronDown, Copy, Trash2 } from 'lucide-vue-next';
 
 // Store
 const store = useRuleTabsStore();

@@ -21,7 +21,6 @@ import { useRuleTabsStore } from './RuleTabsStore';
 // Components
 import RuleFilter from './RuleFilter.vue';
 import RuleContextMenu from './RuleContextMenu.vue';
-import BulkActionBar from './BulkActionBar.vue';
 import RuleTabList from './RuleTabList.vue';
 
 // Props

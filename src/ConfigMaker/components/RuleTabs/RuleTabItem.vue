@@ -14,21 +14,21 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { BaseTypes } from '@shared/types';
 import RuleTabButton from './RuleTabButton.vue';
 import RuleHoverPreview from './RuleHoverPreview.vue';
 import { useRuleTabsStore } from './RuleTabsStore';
+import { SelectCategoryUnion } from '@/types';
 
 // Props（最小限に）
 const props = defineProps<{
- rule: BaseTypes;
+ rule: SelectCategoryUnion;
 }>();
 
 // Store
 const store = useRuleTabsStore();
 
 // リアクティブデータ
-const hoveredRule = ref<BaseTypes | null>(null);
+const hoveredRule = ref<SelectCategoryUnion | null>(null);
 
 // プレビュー表示の判定
 const shouldShowPreview = computed(
