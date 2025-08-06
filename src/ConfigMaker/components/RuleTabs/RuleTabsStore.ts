@@ -6,11 +6,8 @@ import { BaseTypes } from '@shared/types';
 import { toast } from 'vue-sonner';
 
 export interface FilterOptions {
- query: string;
- enabledOnly: boolean;
- searchInName: boolean;
- searchInDescription: boolean;
- colorFilter: string | null;
+ enabledOnly: boolean; // 有効のみ
+ colorFilter: string | null; // 色
 }
 
 export interface ContextMenuState {
@@ -35,11 +32,8 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  const editInput = ref<HTMLInputElement | null>(null);
 
  const filterOptions = ref<FilterOptions>({
-  query: '',
-  enabledOnly: false,
-  searchInName: true,
-  searchInDescription: true,
-  colorFilter: null
+  enabledOnly: false, // 有効のみ
+  colorFilter: null // 色
  });
 
  const contextMenu = ref<ContextMenuState>({
@@ -75,24 +69,6 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
    filtered = filtered.filter((rule) => rule.editorColor === filterOptions.value.colorFilter);
   }
 
-  // テキスト検索フィルター
-  if (filterOptions.value.query) {
-   const query = filterOptions.value.query.toLowerCase();
-   filtered = filtered.filter((rule) => {
-    let matches = false;
-    if (filterOptions.value.searchInName && rule.name?.toLowerCase().includes(query)) {
-     matches = true;
-    }
-    if (
-     filterOptions.value.searchInDescription &&
-     rule.description?.toLowerCase().includes(query)
-    ) {
-     matches = true;
-    }
-    return matches;
-   });
-  }
-
   return filtered;
  });
 
@@ -119,7 +95,7 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  const draggableRules = computed({
   get: () => filteredSortedRules.value,
   set: (newOrder: BaseTypes[]) => {
-   if (isDragging.value && !filterOptions.value.query && !isMultiSelectMode.value) {
+   if (isDragging.value && !isMultiSelectMode.value) {
     handleReorderFromDrag(newOrder);
    }
   }
@@ -146,11 +122,6 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  // Filter Actions
  const handleFilterChange = (filters: FilterOptions) => {
   filterOptions.value = { ...filters };
- };
-
- const setSearchQuery = (query: string) => {
-  searchQuery.value = query;
-  filterOptions.value.query = query;
  };
 
  // Rule Management Actions
@@ -357,9 +328,6 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  };
 
  const getDisplayIndex = (ruleId: string) => {
-  if (filterOptions.value.query) {
-   return filteredSortedRules.value.findIndex((rule) => rule.id === ruleId);
-  }
   return allRules.value.findIndex((rule) => rule.id === ruleId);
  };
 
@@ -480,7 +448,6 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
   initializeStore,
   updateRulesData,
   handleFilterChange,
-  setSearchQuery,
   handleSelectRule,
   handleAddNewRule,
   handleUpdateRule,

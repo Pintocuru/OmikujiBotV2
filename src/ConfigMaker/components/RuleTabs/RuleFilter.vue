@@ -1,59 +1,8 @@
 <!-- src/configMaker/components/RuleTabs/RuleFilter.vue -->
 <template>
- <div class="mb-4">
-  <div class="relative">
-   <!-- 検索入力フィールド -->
-   <div class="relative flex items-center">
-    <Search class="absolute left-3 w-4 h-4 text-base-content/50 pointer-events-none" />
-    <input
-     v-model="store.filterOptions.query"
-     type="text"
-     placeholder="ルール名や説明で検索..."
-     class="input input-bordered w-full pl-10 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
-     @keyup.escape="clearSearch"
-    />
-
-    <!-- クリアボタン -->
-    <button
-     v-if="store.filterOptions.query"
-     @click="clearSearch"
-     class="absolute right-3 p-1 hover:bg-base-200 rounded-full transition-colors"
-     title="検索をクリア"
-    >
-     <X class="w-4 h-4 text-base-content/50 hover:text-base-content" />
-    </button>
-   </div>
-
-   <!-- 検索結果の統計と選択状態 -->
-   <div class="mt-2 flex items-center justify-between text-xs text-base-content/60">
-    <div>
-     {{ store.filteredSortedRules.length }} /
-     {{ store.sortedRules.length }} 件のルールが表示されています
-     <button
-      v-if="
-       store.filterOptions.query ||
-       store.filterOptions.enabledOnly ||
-       store.filterOptions.colorFilter
-      "
-      @click="clearSearch"
-      class="ml-2 text-primary hover:text-primary-focus underline"
-     >
-      すべて表示
-     </button>
-    </div>
-
-    <!-- 選択状態の表示 -->
-    <div v-if="store.selectedRuleIds.size > 0" class="flex items-center gap-2">
-     <span class="text-primary font-medium">{{ store.selectedRuleIds.size }}件選択中</span>
-     <button @click="store.clearSelection" class="text-primary hover:text-primary-focus underline">
-      選択解除
-     </button>
-    </div>
-   </div>
-  </div>
-
+ <div role="alert" class="alert alert-info alert-outline">
   <!-- フィルター条件 -->
-  <div v-if="showAdvancedFilters" class="mt-3 p-3 bg-base-200/50 rounded-lg">
+  <div class="p-3 bg-base-200/50 rounded-lg">
    <div class="space-y-3">
     <div class="flex flex-wrap gap-4 items-center">
      <span class="text-sm font-medium">フィルター条件:</span>
@@ -61,33 +10,8 @@
      <!-- 有効/無効フィルター -->
      <div class="flex items-center gap-2">
       <label class="label cursor-pointer p-0">
-       <input
-        v-model="store.filterOptions.enabledOnly"
-        type="checkbox"
-        class="checkbox checkbox-sm"
-       />
+       <input v-model="store.filterOptions.enabledOnly" type="checkbox" class="toggle toggle-sm" />
        <span class="label-text ml-2 text-sm">有効のみ</span>
-      </label>
-     </div>
-
-     <!-- 検索対象 -->
-     <div class="flex items-center gap-2">
-      <span class="text-sm">検索対象:</span>
-      <label class="label cursor-pointer p-0">
-       <input
-        v-model="store.filterOptions.searchInName"
-        type="checkbox"
-        class="checkbox checkbox-sm"
-       />
-       <span class="label-text ml-1 text-sm">名前</span>
-      </label>
-      <label class="label cursor-pointer p-0">
-       <input
-        v-model="store.filterOptions.searchInDescription"
-        type="checkbox"
-        class="checkbox checkbox-sm"
-       />
-       <span class="label-text ml-1 text-sm">説明</span>
       </label>
      </div>
     </div>
@@ -129,55 +53,42 @@
    </div>
   </div>
 
-  <!-- 詳細フィルター切り替え -->
-  <div class="mt-2 flex justify-end">
-   <button
-    @click="showAdvancedFilters = !showAdvancedFilters"
-    class="text-xs text-base-content/60 hover:text-base-content transition-colors flex items-center gap-1"
-   >
-    {{ showAdvancedFilters ? '詳細フィルターを隠す' : '詳細フィルター' }}
-    <ChevronDown
-     class="w-3 h-3 transition-transform"
-     :class="{ 'rotate-180': showAdvancedFilters }"
-    />
-   </button>
+  <!-- 検索結果の統計と選択状態 -->
+  <div class="relative">
+   <div class="mt-2 flex items-center justify-between text-xs text-base-content/60">
+    <div>
+     {{ store.filteredSortedRules.length }} /
+     {{ store.sortedRules.length }} 件のルールが表示されています
+     <button
+      v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
+      @click="clearSearch"
+      class="ml-2 text-primary hover:text-primary-focus underline"
+     >
+      すべて表示
+     </button>
+    </div>
+
+    <!-- 選択状態の表示 -->
+    <div v-if="store.selectedRuleIds.size > 0" class="flex items-center gap-2">
+     <span class="text-primary font-medium">{{ store.selectedRuleIds.size }}件選択中</span>
+     <button @click="store.clearSelection" class="text-primary hover:text-primary-focus underline">
+      選択解除
+     </button>
+    </div>
+   </div>
   </div>
  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { Search, X, ChevronDown } from 'lucide-vue-next';
 import { useRuleTabsStore } from './RuleTabsStore';
 
 // Store
 const store = useRuleTabsStore();
 
-// ローカル状態
-const showAdvancedFilters = ref(false);
-
 // メソッド
 const clearSearch = () => {
- store.filterOptions.query = '';
  store.filterOptions.enabledOnly = false;
- store.filterOptions.searchInName = true;
- store.filterOptions.searchInDescription = true;
  store.filterOptions.colorFilter = null;
 };
-
-// 検索対象の最低一つは選択されている状態を保持
-watch(
- [() => store.filterOptions.searchInName, () => store.filterOptions.searchInDescription],
- ([name, description]) => {
-  if (!name && !description) {
-   store.filterOptions.searchInName = true;
-  }
- }
-);
 </script>
-
-<style scoped>
-.input:focus {
- border-color: hsl(var(--p));
-}
-</style>
