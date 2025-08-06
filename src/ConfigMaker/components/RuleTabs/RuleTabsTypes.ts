@@ -9,12 +9,13 @@ export interface BaseRule {
 }
 
 export interface RuleStore {
+ rules?: BaseRule[];
  selectRule?: (ruleId: string) => void;
  add?: () => void;
- duplicate?: (ruleId: string) => void;
- reorder?: (fromIndex: number, toIndex: number) => void;
- remove?: (ruleId: string) => void;
  update?: (ruleId: string, updates: Partial<BaseRule>) => void;
+ duplicate?: (ruleId: string) => void;
+ remove?: (ruleId: string) => void;
+ reorder?: (fromIndex: number, toIndex: number) => void;
 }
 
 export interface FilterOptions {

@@ -8,13 +8,18 @@
  >
   <button
    :class="getTabClasses()"
-   @click="$emit('select', rule.id)"
+   @click="handleClick"
    @dblclick="startInlineEdit(rule)"
    :style="{ borderTopColor: rule.editorColor }"
   >
+   <!-- 複数選択モード時のチェックボックス -->
+   <div v-if="multiSelectMode" class="flex items-center mr-2" @click.stop="handleMultiSelectClick">
+    <input type="checkbox" :checked="multiSelected" class="checkbox checkbox-sm" readonly />
+   </div>
+
    <!-- ドラッグハンドル（編集中以外で表示） -->
    <div
-    v-if="draggable && editingRuleId !== rule.id"
+    v-if="draggable && editingRuleId !== rule.id && !multiSelectMode"
     class="drag-handle text-gray-400 hover:text-gray-600 transition-colors mr-1"
    >
     <GripVertical class="w-3 h-3" />
@@ -41,7 +46,7 @@
     {{ rule.name || `ルール${index + 1}` }}
    </span>
    <!-- order(Dev) -->
-   <span v-if="isDev">({{ rule.order || 'order:error!' }})</span>
+   <span v-if="isDev">({{ rule.order != null ? rule.order : 'order:error!' }})</span>
 
    <!-- 状態インジケーター -->
    <div class="flex items-center gap-1 text-xs">
@@ -56,7 +61,7 @@
 
   <!-- ホバープレビュー -->
   <div
-   v-if="hoveredRule?.id === rule.id && editingRuleId !== rule.id"
+   v-if="hoveredRule?.id === rule.id && editingRuleId !== rule.id && !multiSelectMode"
    class="absolute top-full left-0 mt-2 z-30 bg-base-100 border border-base-300 rounded-lg shadow-xl p-4 w-72"
    @mouseenter="hoveredRule = rule"
   >
@@ -111,6 +116,8 @@ const props = defineProps<{
  rule: BaseRule;
  index: number;
  selected: boolean;
+ multiSelected?: boolean;
+ multiSelectMode?: boolean;
  getRuleEnabledState: (rule: BaseRule) => boolean;
  draggable?: boolean;
 }>();
@@ -118,6 +125,7 @@ const props = defineProps<{
 // Emits
 const emit = defineEmits<{
  select: [ruleId: string];
+ multiSelect: [ruleId: string, event: MouseEvent];
  contextMenu: [event: MouseEvent, rule: BaseRule, index: number];
  update: [ruleId: string, updates: Partial<BaseRule>];
 }>();
@@ -136,6 +144,18 @@ const {
 const hoveredRule = ref<BaseRule | null>(null);
 
 // メソッド
+const handleClick = (event: MouseEvent) => {
+ if (props.multiSelectMode) {
+  emit('multiSelect', props.rule.id, event);
+ } else {
+  emit('select', props.rule.id);
+ }
+};
+
+const handleMultiSelectClick = (event: MouseEvent) => {
+ emit('multiSelect', props.rule.id, event);
+};
+
 const handleUpdate = (ruleId: string, updates: Partial<BaseRule>) => {
  emit('update', ruleId, updates);
 };
@@ -146,9 +166,15 @@ const getTabClasses = () => [
  'flex items-center gap-2 relative overflow-hidden',
  props.selected
   ? 'tab-active bg-primary text-primary-content shadow-lg'
-  : 'hover:bg-base-200 hover:shadow-md',
+  : props.multiSelected
+    ? 'bg-primary/20 border-primary/40 text-primary'
+    : 'hover:bg-base-200 hover:shadow-md',
  !props.getRuleEnabledState(props.rule) && 'opacity-60',
- props.draggable && editingRuleId.value !== props.rule.id && 'cursor-grab'
+ props.draggable &&
+  editingRuleId.value !== props.rule.id &&
+  !props.multiSelectMode &&
+  'cursor-grab',
+ props.multiSelectMode && 'cursor-pointer'
 ];
 </script>
 

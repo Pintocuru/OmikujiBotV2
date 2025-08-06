@@ -7,17 +7,56 @@
    :total-count="sortedRules.length"
    :filtered-count="filteredSortedRules.length"
    :available-colors="getUniqueColors"
+   :selected-count="selectedRuleIds.size"
    @filter-change="handleFilterChange"
+   @clear-selection="clearSelection"
   />
+
+  <!-- 複数選択モード時の一括操作バー -->
+  <div v-if="isMultiSelectMode" class="bg-primary/10 p-3 rounded-lg border border-primary/20">
+   <div class="flex items-center justify-between">
+    <span class="text-sm font-medium">{{ selectedRuleIds.size }}件選択中</span>
+    <div class="flex gap-2">
+     <button
+      class="btn btn-sm btn-ghost"
+      @click="selectAll"
+      :disabled="selectedRuleIds.size === filteredSortedRules.length"
+     >
+      すべて選択
+     </button>
+     <button class="btn btn-sm btn-ghost" @click="clearSelection">選択解除</button>
+     <button
+      class="btn btn-sm btn-error"
+      @click="handleBulkDelete"
+      :disabled="selectedRuleIds.size === 0"
+     >
+      選択したルールを削除
+     </button>
+    </div>
+   </div>
+  </div>
 
   <!-- タブ部分 -->
   <div class="flex flex-wrap gap-1 border-b pb-2">
+   <!-- 複数選択モード切り替えボタン -->
+   <button
+    class="tab tab-bordered px-3 py-2 text-sm hover:bg-base-200 transition-all duration-200"
+    :class="{ 'tab-active bg-primary/20': isMultiSelectMode }"
+    @click="toggleMultiSelectMode"
+    title="複数選択モード"
+   >
+    <span class="flex items-center gap-2">
+     <input type="checkbox" class="checkbox checkbox-xs" :checked="isMultiSelectMode" readonly />
+     選択(機能未実装)
+    </span>
+   </button>
+
    <!-- vue-draggableを使用 -->
    <draggable
     v-model="draggableRules"
     tag="div"
     class="flex flex-wrap gap-1"
-    :disabled="!!searchQuery"
+    :disabled="!!searchQuery || isMultiSelectMode"
     item-key="id"
     :animation="200"
     ghost-class="opacity-50"
@@ -28,11 +67,14 @@
     <template #item="{ element: rule, index }">
      <RuleTabItem
       :rule="rule"
-      :index="index"
+      :index="getDisplayIndex(rule.id)"
       :selected="selectedRule?.id === rule.id"
+      :multi-selected="selectedRuleIds.has(rule.id)"
+      :multi-select-mode="isMultiSelectMode"
       :get-rule-enabled-state="getRuleEnabledState"
-      :draggable="!searchQuery"
+      :draggable="!searchQuery && !isMultiSelectMode"
       @select="handleSelectRule"
+      @multi-select="handleMultiSelect"
       @context-menu="showContextMenu"
       @update="handleUpdateRule"
      />
@@ -77,7 +119,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, inject, ref } from 'vue';
 import { CategoryType } from '@/types/';
 import draggable from 'vuedraggable';
 import RuleTabItem from './RuleTabItem.vue';
@@ -91,7 +133,7 @@ import { useRuleFilter } from './useRuleFilter';
 import { useContextMenu } from './useContextMenu';
 
 // Types
-import type { BaseRule } from './RuleTabsTypes';
+import type { BaseRule, RuleStore } from './RuleTabsTypes';
 
 // Props
 const props = defineProps<{
@@ -99,6 +141,13 @@ const props = defineProps<{
  selectedRule: BaseRule | null;
  ruleType: CategoryType;
 }>();
+
+const injectedStore = inject<RuleStore>(`${props.ruleType}RulesStore`);
+
+// 複数選択の状態
+const isMultiSelectMode = ref(false);
+const selectedRuleIds = ref(new Set<string>());
+const isDragging = ref(false);
 
 // Composables
 const {
@@ -108,7 +157,8 @@ const {
  handleDuplicateRule,
  handleMoveRuleUp,
  handleMoveRuleDown,
- handleDeleteRule
+ handleDeleteRule,
+ handleBulkDeleteRules
 } = useRuleManagement(props.ruleType);
 
 const {
@@ -123,30 +173,123 @@ const {
 const { contextMenu, canMoveUp, canMoveDown, showContextMenu, hideContextMenu, getOriginalIndex } =
  useContextMenu(() => props.rules);
 
-// Draggable用の計算プロパティ
+// 完全修正版：Draggable用の計算プロパティ
 const draggableRules = computed({
  get: () => filteredSortedRules.value,
  set: (newOrder: BaseRule[]) => {
-  // 新しい順序でreorderを実行
-  newOrder.forEach((rule, newIndex) => {
-   const oldIndex = getOriginalIndex(rule.id);
-   if (oldIndex !== newIndex) {
-    handleUpdateRule(rule.id, { order: newIndex });
-   }
-  });
+  if (isDragging.value && !searchQuery.value && !isMultiSelectMode.value) {
+   // ドラッグ&ドロップの場合のみ処理
+   handleReorderFromDrag(newOrder);
+  }
  }
 });
+// ドラッグ&ドロップ用のヘルパー関数
+const handleReorderFromDrag = (newOrder: BaseRule[]) => {
+ // 元の配列での正確なインデックスを取得
+ const originalOrder = [...props.rules];
+
+ // 新しい順序に基づいてreorder操作を実行
+ for (let newIndex = 0; newIndex < newOrder.length; newIndex++) {
+  const rule = newOrder[newIndex];
+  const currentIndex = originalOrder.findIndex((r) => r.id === rule.id);
+
+  if (currentIndex !== -1 && currentIndex !== newIndex) {
+   // reorder操作を実行
+   injectedStore?.reorder?.(currentIndex, newIndex);
+
+   // 配列を更新（次のループで正確なインデックスを取得するため）
+   const [movedRule] = originalOrder.splice(currentIndex, 1);
+   originalOrder.splice(newIndex, 0, movedRule);
+  }
+ }
+};
+
+// 表示用インデックスを取得（フィルターを考慮）
+const getDisplayIndex = (ruleId: string) => {
+ if (searchQuery.value) {
+  return filteredSortedRules.value.findIndex((rule) => rule.id === ruleId);
+ }
+ return props.rules.findIndex((rule) => rule.id === ruleId);
+};
+
+// 複数選択機能
+const toggleMultiSelectMode = () => {
+ isMultiSelectMode.value = !isMultiSelectMode.value;
+ if (!isMultiSelectMode.value) {
+  selectedRuleIds.value.clear();
+ }
+};
+
+const handleMultiSelect = (ruleId: string, event: MouseEvent) => {
+ if (!isMultiSelectMode.value) return;
+
+ if (event.ctrlKey || event.metaKey) {
+  // Ctrl/Cmd + クリック：個別に選択/解除
+  if (selectedRuleIds.value.has(ruleId)) {
+   selectedRuleIds.value.delete(ruleId);
+  } else {
+   selectedRuleIds.value.add(ruleId);
+  }
+ } else if (event.shiftKey && selectedRuleIds.value.size > 0) {
+  // Shift + クリック：範囲選択
+  const currentRules = filteredSortedRules.value;
+  const lastSelectedIndex = Math.max(
+   ...Array.from(selectedRuleIds.value).map((id) =>
+    currentRules.findIndex((rule) => rule.id === id)
+   )
+  );
+  const clickedIndex = currentRules.findIndex((rule) => rule.id === ruleId);
+
+  const start = Math.min(lastSelectedIndex, clickedIndex);
+  const end = Math.max(lastSelectedIndex, clickedIndex);
+
+  for (let i = start; i <= end; i++) {
+   if (currentRules[i]) {
+    selectedRuleIds.value.add(currentRules[i].id);
+   }
+  }
+ } else {
+  // 通常のクリック：単一選択
+  selectedRuleIds.value.clear();
+  selectedRuleIds.value.add(ruleId);
+ }
+};
+
+const selectAll = () => {
+ filteredSortedRules.value.forEach((rule) => {
+  selectedRuleIds.value.add(rule.id);
+ });
+};
+
+const clearSelection = () => {
+ selectedRuleIds.value.clear();
+};
+
+const handleBulkDelete = () => {
+ if (selectedRuleIds.value.size === 0) return;
+
+ const rulesToDelete = Array.from(selectedRuleIds.value)
+  .map((id) => props.rules.find((rule) => rule.id === id))
+  .filter(Boolean) as BaseRule[];
+
+ handleBulkDeleteRules(rulesToDelete);
+ selectedRuleIds.value.clear();
+ isMultiSelectMode.value = false;
+};
 
 // ドラッグイベントハンドラー
 const onDragStart = () => {
- // ドラッグ開始時の処理
+ isDragging.value = true;
 };
 
 const onDragEnd = () => {
- // ドラッグ終了時の処理
+ // 少し遅らせてフラグをリセット
+ setTimeout(() => {
+  isDragging.value = false;
+ }, 100);
 };
 
-// コンテキストメニューのハンドラー
+// コンテキストメニューのハンドラー（修正版）
 const handleMoveUp = () => {
  if (contextMenu.rule && canMoveUp.value) {
   const originalIndex = getOriginalIndex(contextMenu.rule.id);

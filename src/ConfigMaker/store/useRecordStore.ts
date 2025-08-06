@@ -80,14 +80,15 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
 
  // 統合されたCRUD操作
  const add = (): string => {
-  const newRule = createRecord();
   const id = `${Date.now()}`;
   const data = getData();
-  const count = Object.keys(data).length;
+  const count = Object.keys(data).length + 1;
 
-  newRule.id = id;
-  newRule.name = `新しい${config.defaultName} ${count + 1}`;
-  newRule.order = count;
+  const newRule = createRecord({
+   id,
+   name: `新しい${config.defaultName} ${count}`,
+   order: count
+  });
 
   data[id] = newRule;
   omikujiStore.selectCategory(category);

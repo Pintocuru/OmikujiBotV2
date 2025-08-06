@@ -24,15 +24,29 @@
     </button>
    </div>
 
-   <!-- 検索結果の統計 -->
-   <div
-    v-if="searchQuery || enabledFilter || colorFilter"
-    class="mt-2 text-xs text-base-content/60"
-   >
-    {{ filteredCount }} / {{ totalCount }} 件のルールが表示されています
-    <button @click="clearSearch" class="ml-2 text-primary hover:text-primary-focus underline">
-     すべて表示
-    </button>
+   <!-- 検索結果の統計と選択状態 -->
+   <div class="mt-2 flex items-center justify-between text-xs text-base-content/60">
+    <div>
+     {{ filteredCount }} / {{ totalCount }} 件のルールが表示されています
+     <button
+      v-if="searchQuery || enabledFilter || colorFilter"
+      @click="clearSearch"
+      class="ml-2 text-primary hover:text-primary-focus underline"
+     >
+      すべて表示
+     </button>
+    </div>
+
+    <!-- 選択状態の表示 -->
+    <div v-if="selectedCount && selectedCount > 0" class="flex items-center gap-2">
+     <span class="text-primary font-medium">{{ selectedCount }}件選択中</span>
+     <button
+      @click="$emit('clear-selection')"
+      class="text-primary hover:text-primary-focus underline"
+     >
+      選択解除
+     </button>
+    </div>
    </div>
   </div>
 
@@ -128,12 +142,14 @@ const props = defineProps<{
  totalCount: number;
  filteredCount: number;
  availableColors: string[];
+ selectedCount?: number; // 新規追加
 }>();
 
 // Emits
 const emit = defineEmits<{
  'update:modelValue': [value: string];
  'filter-change': [filters: FilterOptions];
+ 'clear-selection': []; // 新規追加
 }>();
 
 // リアクティブデータ

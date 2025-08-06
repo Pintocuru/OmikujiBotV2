@@ -39,14 +39,15 @@ export function useRuleManagement(ruleType: CategoryType) {
   });
  };
 
+ // 修正版：インデックスの扱いを明確に
  const handleMoveRuleUp = (ruleId: string, currentIndex: number) => {
   if (currentIndex > 0) {
    injectedStore?.reorder?.(currentIndex, currentIndex - 1);
   }
  };
 
- const handleMoveRuleDown = (ruleId: string, currentIndex: number, maxIndex: number) => {
-  if (currentIndex < maxIndex - 1) {
+ const handleMoveRuleDown = (ruleId: string, currentIndex: number, totalLength: number) => {
+  if (currentIndex < totalLength - 1) {
    injectedStore?.reorder?.(currentIndex, currentIndex + 1);
   }
  };
@@ -54,17 +55,56 @@ export function useRuleManagement(ruleType: CategoryType) {
  const handleDeleteRule = (ruleId: string, ruleName?: string) => {
   const name = ruleName || '名前未設定';
 
-  // 削除確認のトーストを表示（目立つように）
+  // 削除確認のトーストを表示
   toast.error(`「${name}」を削除しますか？`, {
    description: 'この操作は取り消せません',
-   duration: 0, // 手動で閉じるまで表示
+   duration: 0,
    action: {
     label: '削除する',
     onClick: () => {
      injectedStore?.remove?.(ruleId);
-     // 削除完了のトーストを表示
      toast.success('ルールを削除しました', {
       description: `「${name}」を削除しました`,
+      duration: 3000
+     });
+    }
+   },
+   cancel: {
+    label: 'キャンセル',
+    onClick: () => {
+     toast.dismiss();
+    }
+   },
+   closeButton: true
+  });
+ };
+
+ // 新機能：一括削除
+ const handleBulkDeleteRules = (rulesToDelete: BaseRule[]) => {
+  if (rulesToDelete.length === 0) return;
+
+  const ruleNames = rulesToDelete.map((rule) => rule.name || '名前未設定').join('、');
+  const count = rulesToDelete.length;
+
+  toast.error(`${count}件のルールを削除しますか？`, {
+   description: `削除対象: ${ruleNames.length > 50 ? ruleNames.substring(0, 50) + '...' : ruleNames}`,
+   duration: 0,
+   action: {
+    label: `${count}件削除する`,
+    onClick: () => {
+     // 逆順で削除（インデックスのズレを防ぐため）
+     const sortedRules = [...rulesToDelete].sort((a, b) => {
+      const indexA = injectedStore?.rules?.findIndex((rule) => rule.id === a.id) ?? -1;
+      const indexB = injectedStore?.rules?.findIndex((rule) => rule.id === b.id) ?? -1;
+      return indexB - indexA; // 降順
+     });
+
+     sortedRules.forEach((rule) => {
+      injectedStore?.remove?.(rule.id);
+     });
+
+     toast.success(`${count}件のルールを削除しました`, {
+      description: '一括削除が完了しました',
       duration: 3000
      });
     }
@@ -86,6 +126,7 @@ export function useRuleManagement(ruleType: CategoryType) {
   handleDuplicateRule,
   handleMoveRuleUp,
   handleMoveRuleDown,
-  handleDeleteRule
+  handleDeleteRule,
+  handleBulkDeleteRules // 新機能
  };
 }
