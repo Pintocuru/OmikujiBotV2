@@ -35,7 +35,6 @@
   />
 
   <!-- ルール名（インライン編集対応） -->
-  <!-- 型 '(el: HTMLInputElement) => void' を型 'VNodeRef | undefined' に割り当てることはできません -->
   <input
    v-if="isEditing"
    :value="store.editingName"
@@ -51,8 +50,9 @@
    {{ rule.name || `ルール${displayIndex + 1}` }}
   </span>
 
-  <!-- order(Dev) -->
+  <!-- order(Dev) : order がエラー起きたときのために残しておきます
   <span v-if="isDev">({{ rule.order != null ? rule.order : 'order:error!' }})</span>
+  -->
 
   <!-- 状態インジケーター -->
   <div class="flex items-center gap-1 text-xs">

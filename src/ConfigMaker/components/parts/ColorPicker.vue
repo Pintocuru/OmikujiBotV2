@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/parts/ColorPicker.vue -->
+<!-- ! 廃止予定(タブのみで設定できるほうがいいので) -->
 <template>
  <div class="relative">
   <button

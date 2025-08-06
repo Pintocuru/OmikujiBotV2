@@ -7,26 +7,18 @@
   class="fixed z-50 bg-base-100 border border-base-300 rounded-lg shadow-xl py-2 min-w-48"
   @click.stop
  >
+  <!-- 有効/無効切り替え -->
   <button
-   @click="store.handleContextMoveUp"
-   :disabled="!store.canMoveUp"
-   :class="getContextMenuItemClasses(!store.canMoveUp)"
+   @click="handleToggleEnabled"
+   class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
   >
-   <ChevronUp class="w-4 h-4" />
-   上に移動
-  </button>
-
-  <button
-   @click="store.handleContextMoveDown"
-   :disabled="!store.canMoveDown"
-   :class="getContextMenuItemClasses(!store.canMoveDown)"
-  >
-   <ChevronDown class="w-4 h-4" />
-   下に移動
+   <component :is="store.contextMenu.rule?.isEnabled === false ? EyeOff : Eye" class="w-4 h-4" />
+   {{ store.contextMenu.rule?.isEnabled === false ? '有効にする' : '無効にする' }}
   </button>
 
   <div class="divider my-1"></div>
 
+  <!-- 複製 -->
   <button
    @click="store.handleContextDuplicate"
    class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
@@ -35,6 +27,7 @@
    複製
   </button>
 
+  <!-- 削除 -->
   <button
    @click="store.handleContextDelete"
    class="w-full px-4 py-2 text-left hover:bg-error hover:text-error-content flex items-center gap-2 text-error"
@@ -43,8 +36,17 @@
    削除
   </button>
 
-  <!-- カラーピッカー -->
-  <ColorPicker v-if="store.contextMenu.rule" v-model="store.contextMenu.rule.editorColor" />
+  <div class="divider my-1"></div>
+
+  <!-- カラー設定 -->
+  <div class="px-4 py-2">
+   <div class="text-sm text-base-content/70 mb-2">カラー設定</div>
+   <ColorPicker
+    v-if="store.contextMenu.rule"
+    v-model="store.contextMenu.rule.editorColor"
+    @update:model-value="handleColorChange"
+   />
+  </div>
  </div>
 
  <!-- コンテキストメニューを閉じるためのオーバーレイ -->
@@ -54,17 +56,33 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
 import { useRuleTabsStore } from './RuleTabsStore';
-import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
-import { ChevronUp, ChevronDown, Copy, Trash2 } from 'lucide-vue-next';
+import ColorPicker from './ColorPicker.vue';
+import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next';
 
 // Store
 const store = useRuleTabsStore();
 
-// スタイル計算
-const getContextMenuItemClasses = (disabled: boolean) => [
- 'w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2',
- disabled && 'opacity-50 cursor-not-allowed'
-];
+// 有効/無効切り替え
+const handleToggleEnabled = () => {
+ if (store.contextMenu.rule) {
+  const currentEnabled = store.contextMenu.rule.isEnabled !== false;
+  store.handleUpdateRule(store.contextMenu.rule.id, {
+   ...store.contextMenu.rule,
+   isEnabled: !currentEnabled
+  });
+ }
+ store.hideContextMenu();
+};
+
+// カラー変更
+const handleColorChange = (color: string) => {
+ if (store.contextMenu.rule) {
+  store.handleUpdateRule(store.contextMenu.rule.id, {
+   ...store.contextMenu.rule,
+   editorColor: color
+  });
+ }
+};
 
 // ESCキーでメニューを閉じる
 const handleKeydown = (event: KeyboardEvent) => {
