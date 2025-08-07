@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 import { categoryLabels } from '@/types/';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import CommentRuleEditor from '@ConfigComponents/comments/CommentRuleEditor.vue';
 import TimerRuleEditor from '@ConfigComponents/timers/TimerRuleEditor.vue';
 import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue';

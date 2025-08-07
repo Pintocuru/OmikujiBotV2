@@ -44,8 +44,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CharacterType } from '@/types/';
-import { useCharacterStore } from '@ConfigStore/useCharacterStore';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useCharacterStore } from '@ConfigStores/useCharacterStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
 import CharacterBasicInfo from './CharacterBasicInfo.vue';
 import CharacterColorSettings from './CharacterColorSettings.vue';

@@ -28,8 +28,8 @@ import TimerIntervalEditor from './TimerIntervalEditor.vue';
 import OmikujiSetEditor from '@ConfigComponents/comments/OmikujiSetEditor.vue';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
 import BaseSettingsEditor from '@ConfigComponents/comments/BaseSettingsEditor.vue';
-import { useTimerRulesStore } from '@ConfigStore/useTimerRulesStore';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 // ストアを使用
 const timerRulesStore = useTimerRulesStore();

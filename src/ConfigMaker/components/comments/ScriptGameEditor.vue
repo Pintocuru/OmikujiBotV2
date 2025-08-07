@@ -140,7 +140,7 @@ import { DefaultTypes } from '@shared/types';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import { useEnabledGames } from '../GameScripts/useEnabledGames';
 

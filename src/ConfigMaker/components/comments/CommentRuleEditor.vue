@@ -36,8 +36,8 @@ import OmikujiSetEditor from './OmikujiSetEditor.vue';
 import OmikujiLimitsEditor from '@ConfigComponents/limit/OmikujiLimitsEditor.vue';
 import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue';
 import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
-import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 // ストアを使用
 const commentRulesStore = useCommentRulesStore();

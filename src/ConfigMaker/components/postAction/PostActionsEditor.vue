@@ -45,7 +45,7 @@ import { PostActionType } from '@/types/';
 import PostActionsPreview from './PostActionsPreview.vue';
 import PostActionsEditDialog from './PostActionsEditDialog.vue';
 import PostActionsEditorJson from './PostActionsEditorJson.vue';
-import { useCharacterStore } from '@ConfigStore/useCharacterStore';
+import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 
 // ストアを使用
 const characterStore = useCharacterStore();

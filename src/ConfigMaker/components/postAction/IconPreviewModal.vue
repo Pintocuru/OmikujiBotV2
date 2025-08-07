@@ -41,7 +41,7 @@
 import { ref, computed, Ref } from 'vue';
 import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
-import { useCharacterStore } from '@ConfigStore/useCharacterStore';
+import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 
 const props = defineProps<{
  characterKey: string;

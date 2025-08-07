@@ -1,7 +1,7 @@
 // src/configMaker/composables/useCategoryUtils.ts
 import { storeToRefs } from 'pinia';
 import { categoryLabels, CategoryType } from '@/types/';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { computed } from 'vue';
 
 export const useCategoryUtils = () => {

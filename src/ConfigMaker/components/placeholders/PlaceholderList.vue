@@ -75,8 +75,8 @@ import {
  PostActionType
 } from '@/types/';
 import PlaceholderModal from './PlaceholderModal.vue';
-import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
-import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
+import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
+import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
 import CopyButton from '@ConfigComponents/parts/CopyButton.vue';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 

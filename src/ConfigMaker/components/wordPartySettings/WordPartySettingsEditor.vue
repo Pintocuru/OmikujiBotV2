@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { WordPartySettings } from '@/types/';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import TextEditor from '@ConfigComponents/wordPartySettings/TextEditor.vue';
 import FireList from '@ConfigComponents/wordPartySettings/FireList.vue';

@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { emotionLabels, CharacterEmotionType, getImagePath } from '@/types/';
-import { useCharacterStore } from '@ConfigStore/useCharacterStore';
+import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 
 const props = defineProps<{
  characterKey: string;

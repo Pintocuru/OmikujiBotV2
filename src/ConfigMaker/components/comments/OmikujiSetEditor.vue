@@ -68,7 +68,7 @@ import { OmikujiSetSchema, OmikujiSetType } from '@/types/';
 import CharacterBulkChanger from './CharacterBulkChanger.vue';
 import OmikujiSetBasic from './OmikujiSetBasic.vue';
 import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue';
-import { useTestPost } from '@ConfigScript/useTestPost';
+import { useTestPost } from '@/ConfigMaker/scripts/useTestPost';
 import { Dices, Plus } from 'lucide-vue-next';
 
 const props = defineProps<{

@@ -1,7 +1,7 @@
 // src/composables/useDisplayMode.ts
 import { onMounted, watch } from 'vue';
 import { OmikujiDataType } from '@/types/';
-import { GameScriptManager } from '@/MainGenerator/script/omikujiProcess/GameScriptManager';
+import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 import { useDisplayCore } from './useDisplayCore';
 import { useDisplayModeSwitcher } from './useDisplayModeSwitcher';
 import { useDisplayScriptProps } from './useDisplayScriptProps';

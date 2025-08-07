@@ -4,7 +4,7 @@ import type { OmikujiDataType, CategoryType } from '@/types/';
 import { useJsonFileLoader } from './useJsonFileLoader';
 import { useJsonServerLoader } from './useJsonServerLoader';
 import { useImportPreviewManager, CategoryImportConfig } from './useImportPreviewManager';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 /**
  * JSONインポート全体を統括するComposable（ファイル・サーバー両対応）

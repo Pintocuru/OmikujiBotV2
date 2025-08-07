@@ -33,7 +33,7 @@
 import { ref, computed, nextTick } from 'vue';
 import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
-import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
+import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 
 const props = defineProps<{
  placeholderId: string;

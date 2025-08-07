@@ -38,7 +38,7 @@ import NavigationTabs from './components/appItems/NavigationTabs.vue';
 import ContentArea from './components/appItems/ContentArea.vue';
 import FloatingElements from './components/appItems/FloatingElements.vue';
 import { storeToRefs } from 'pinia';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);

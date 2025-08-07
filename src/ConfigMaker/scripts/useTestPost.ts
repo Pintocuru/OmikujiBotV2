@@ -7,13 +7,13 @@ import {
  OmikujiSetType,
  CommentRuleType
 } from '@/types/';
-import { GameScriptManager } from '@/MainGenerator/script/omikujiProcess/GameScriptManager';
+import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 import { MockComment } from '@shared/__mocks__/CreateMockComment';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
-import { useTimerRulesStore } from '@ConfigStore/useTimerRulesStore';
-import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
+import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
-import { OmikujiProcessor } from '@/MainGenerator/script/omikujiProcess/OmikujiProcessor';
+import { OmikujiProcessor } from '@MainScripts/omikujiProcess/OmikujiProcessor';
 import { toast } from 'vue-sonner';
 
 export function useTestPost() {

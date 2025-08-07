@@ -27,7 +27,7 @@ import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMa
 import ScriptCard from './ScriptCard.vue';
 import { useScriptSettingsCleanup } from './useScriptSettingsCleanup';
 import { Settings } from 'lucide-vue-next';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 
 // Store

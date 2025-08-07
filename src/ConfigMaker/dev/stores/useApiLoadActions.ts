@@ -1,6 +1,6 @@
 // src/configMaker/dev/stores/api/useLoadActions.ts
 import { devConfigApi } from '../services/apiService';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { DevConfigState } from './useDevConfigState';
 import { OmikujiDataType } from '@/types/';

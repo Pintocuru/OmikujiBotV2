@@ -39,7 +39,7 @@ import { type CategoryType } from '@/types/';
 import ConfigImportModal from './ConfigImportModal.vue';
 import type { ImportMode } from './useImportPreviewManager';
 import { useJsonImporter } from './useJsonImporter';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 // Store
 const omikujiStore = useOmikujiStore();

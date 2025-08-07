@@ -12,9 +12,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
+import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
-import { PlaceProcess } from '@/MainGenerator/script/omikujiProcess/PlaceProcess';
+import { PlaceProcess } from '@MainScripts/omikujiProcess/PlaceProcess';
 import { postSpeech } from '@shared/sdk/postMessage/PostOneComme';
 import { toast } from 'vue-sonner';
 import { Dices } from 'lucide-vue-next';

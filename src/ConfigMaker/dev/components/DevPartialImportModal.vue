@@ -107,7 +107,7 @@ import {
  SelectCategoryType
 } from '@/types/';
 import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 interface CategoryInfo {
  type: CategoryType;

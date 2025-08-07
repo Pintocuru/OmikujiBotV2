@@ -2,10 +2,10 @@
 import { ref } from 'vue';
 import { BotMessage } from '@/types/';
 import { OmikujiDataType } from '@/types/';
-import { GameScriptManager } from '@/MainGenerator/script/omikujiProcess/GameScriptManager';
-import { CommentProcessor } from '@/MainGenerator/script/omikujiProcess/CommentProcessor';
-import { TimerProcessor } from '@/MainGenerator/script/omikujiProcess/timerProcessor';
-import { CharacterCollector } from '@/MainGenerator/script/omikujiProcess/CharacterCollector';
+import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
+import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
+import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';
+import { CharacterCollector } from '@MainScripts/omikujiProcess/CharacterCollector';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 export function useMessageHandler(omikujiData: OmikujiDataType) {

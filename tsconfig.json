@@ -23,16 +23,16 @@
     "./src/ConfigMaker/components/*"
    ],
    "@ConfigScript/*": [
-    "./src/ConfigMaker/script/*"
+    "src/ConfigMaker/scripts/*"
    ],
-   "@ConfigStore/*": [
-    "./src/ConfigMaker/store/*"
+   "@ConfigStores/*": [
+    "src/ConfigMaker/stores/*"
    ],
    "@MainComponents/*": [
     "./src/MainGenerator/components/*"
    ],
-   "@MainScript/*": [
-    "./src/MainGenerator/script/*"
+   "@MainScripts/*": [
+    "src/MainGenerator/scripts/*"
    ]
   }
  },

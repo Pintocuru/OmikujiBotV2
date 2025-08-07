@@ -42,7 +42,7 @@
 import { storeToRefs } from 'pinia';
 import { ArrowUp } from 'lucide-vue-next';
 import { Toaster } from 'vue-sonner';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { useScrollBehavior } from './useScrollBehavior';
 import { useCategoryUtils } from './useCategoryUtils';
 

@@ -1,5 +1,5 @@
 // src/configMaker/components/scriptSettings/useScriptSettingsCleanup.ts -->
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import { DefaultTypes } from '@shared/types';
 

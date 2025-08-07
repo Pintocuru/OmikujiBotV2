@@ -1,10 +1,10 @@
 // src/configMaker/components/parts/useIdEditor.ts
 import { ref, computed } from 'vue';
 import { SelectCategoryType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
-import { useCharacterStore } from '@ConfigStore/useCharacterStore';
-import { useCommentRulesStore } from '@ConfigStore/useCommentRulesStore';
-import { useTimerRulesStore } from '@ConfigStore/useTimerRulesStore';
+import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
+import { useCharacterStore } from '@ConfigStores/useCharacterStore';
+import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
+import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
 
 export function useIdEditor() {
  // ストア

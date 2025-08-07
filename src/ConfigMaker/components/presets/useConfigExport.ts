@@ -1,6 +1,6 @@
 // src/configMaker/components/presets/useConfigExport.ts
 import { ref } from 'vue';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { generateJsContent, generateJsonContent } from './generateContent';
 

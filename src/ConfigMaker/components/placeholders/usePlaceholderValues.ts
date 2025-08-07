@@ -1,7 +1,7 @@
 // src/configMaker/components/placeholders/usePlaceholderValues.ts
 import { ref, computed, watch } from 'vue';
 import { PlaceholderValueSchema, PlaceholderValueType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
+import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 
 export function usePlaceholderValues(placeholderId: string, isModal = false) {
  const placeholderStore = usePlaceholderStore();

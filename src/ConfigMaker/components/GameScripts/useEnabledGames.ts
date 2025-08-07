@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/scriptGame/useEnabledGames.ts
 import { computed } from 'vue';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import { gameScriptMap } from './ScriptGameMap';
 

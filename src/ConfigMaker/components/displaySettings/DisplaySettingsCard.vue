@@ -58,7 +58,7 @@
 import { computed } from 'vue';
 import { DisplaySettingsSchema } from '@/types/';
 import { displaySize, displaySizeLabels, DisplaySize } from '@shared/types';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { storeToRefs } from 'pinia';
 

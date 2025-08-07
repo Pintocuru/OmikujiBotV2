@@ -66,7 +66,7 @@ import DisplaySettingsCard from './DisplaySettingsCard.vue';
 import DeveloperSettings from './DeveloperSettings.vue';
 import AvailableGameScripts from './AvailableGameScripts.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import { Info } from 'lucide-vue-next';
 

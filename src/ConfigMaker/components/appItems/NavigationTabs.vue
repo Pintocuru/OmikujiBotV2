@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { useCategoryUtils } from './useCategoryUtils';
 
 const omikujiStore = useOmikujiStore();

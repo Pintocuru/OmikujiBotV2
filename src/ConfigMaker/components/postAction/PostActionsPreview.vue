@@ -59,7 +59,7 @@
 <script setup lang="ts">
 import { PostActionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
-import { useTestPost } from '@ConfigScript/useTestPost';
+import { useTestPost } from '@/ConfigMaker/scripts/useTestPost';
 
 // Props
 const props = defineProps<{

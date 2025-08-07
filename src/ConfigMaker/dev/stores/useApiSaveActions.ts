@@ -1,7 +1,7 @@
 // src/configMaker/dev/stores/api/useSaveActions.ts
 import { devConfigApi } from '../services/apiService';
 import { generateDateFileName } from '../services/devConfigUtils';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { DevConfigState } from './useDevConfigState';
 

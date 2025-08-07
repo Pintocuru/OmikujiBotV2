@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmikujiStore } from '@ConfigStore/useOmikujiStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
