@@ -56,7 +56,7 @@ export function useTestPost() {
 
   const botMessageArray = userCommentProcessor.executeOmikujiProcess(
    MockComment('suika'),
-   selectedRuleForProcessing.value as CommentRuleType, // timerでもテストデータなら問題ないのでアサーション
+   selectedRuleForProcessing.value,
    OmikujiSetSchema.parse({ postActions: actions })
   );
 

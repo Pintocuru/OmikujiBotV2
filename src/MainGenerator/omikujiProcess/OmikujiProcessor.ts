@@ -56,7 +56,7 @@ export class OmikujiProcessor {
  /**
   * おみくじプロセスの実行
   */
- private executeOmikujiProcess(
+ executeOmikujiProcess(
   comment: Comment,
   rule: RuleType,
   omikujiItem: OmikujiSetType
