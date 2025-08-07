@@ -20,7 +20,10 @@ type CategoryTypeMap = {
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
  */
-export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
+export function useCategoryOperations(
+ data: Ref<OmikujiDataType>,
+ markAsChanged: (operation?: string) => void
+) {
  /**
   * カテゴリ全体のデータを更新
   */
@@ -29,7 +32,8 @@ export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged:
   newData: Record<string, OmikujiDataType[C]>
  ) => {
   data.value[category] = newData as any;
-  markAsChanged();
+  // 💡 修正: どの操作か明確に
+  markAsChanged(`updateCategoryData: ${category}`);
  };
 
  /**
@@ -38,8 +42,8 @@ export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged:
  const addItemToCategory = <T>(category: CategoryType, id: string, item: T) => {
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
-  markAsChanged();
-  console.log('addItemToCategory 実行後の data:', JSON.stringify(data.value, null, 2));
+  // 💡 修正: どの操作か明確に
+  markAsChanged(`addItemToCategory: ${category}/${id}`);
  };
 
  /**
@@ -53,7 +57,8 @@ export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged:
    const updatedItem = { ...categoryData[id], ...updates };
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
-   markAsChanged();
+   // 💡 修正: どの操作か明確に
+   markAsChanged(`updateItemInCategory: ${category}/${id}`);
   } else {
    addItemToCategory(category, id, updates as T);
   }

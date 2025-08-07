@@ -5,7 +5,8 @@ import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
 import { useCategoryOperations } from './composables/useCategoryOperations';
 import { useNavigationState } from './composables/useNavigationState';
-import { useChangeTracking } from './composables/useChangeTracking';
+// 💡 変更：useChangeTrackingをuseSimpleChangeTrackingに置き換え
+import { useSimpleChangeTracking } from './composables/useSimpleChangeTracking';
 
 // グローバルデータの初期化
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
@@ -14,11 +15,9 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  // コアデータ
  const data = ref<OmikujiDataType>(omikujiData);
 
- // 変更追跡機能
- const { hasUnsavedChanges, isDataChanged, markAsChanged, markAsSaved } = useChangeTracking(
-  data,
-  omikujiData
- );
+ // 💡 変更：新しい変更追跡機能を使用
+ const { hasUnsavedChanges, isChanges, changeOperations, markAsChanged, markAsSaved } =
+  useSimpleChangeTracking();
 
  // ナビゲーション状態管理
  const {
@@ -46,7 +45,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateCategoryData,
   getItemFromCategory,
   getCategoryItems
- } = useCategoryOperations(data, markAsChanged);
+ } = useCategoryOperations(data, markAsChanged); // markAsChangedを渡す
 
  // カテゴリ選択のラッパー関数（依存関係のため）
  const selectCategory = (category: CategoryType) => {
@@ -62,8 +61,9 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   selectedRuleId,
 
   // 変更追跡
-  isDataChanged,
   hasUnsavedChanges,
+  isChanges,
+  changeOperations,
   markAsChanged,
   markAsSaved,
 

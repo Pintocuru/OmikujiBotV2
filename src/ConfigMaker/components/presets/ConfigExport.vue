@@ -2,13 +2,13 @@
 <template>
  <div class="flex flex-wrap gap-2">
   <div class="indicator">
-   <span v-if="isDataChanged" class="indicator-item badge badge-secondary badge-sm">
+   <span v-if="changeOperations.length > 0" class="indicator-item badge badge-secondary badge-sm">
     変更あり
    </span>
    <button
     @click="() => handleExport('config')"
     class="btn btn-primary tooltip tooltip-top"
-    :class="{ 'btn-outline': isDataChanged }"
+    :class="{ 'btn-outline': changeOperations.length > 0 }"
     data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
     :disabled="isExporting"
    >
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
 import { useConfigExport } from './useConfigExport';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
@@ -40,7 +41,8 @@ const props = defineProps<{
 }>();
 
 const { isExporting, exportFile } = useConfigExport();
-const { isDataChanged } = useOmikujiStore();
+const { isChanges, changeOperations } = useOmikujiStore();
+const { saveFileName } = useDevStore();
 
 const handleExport = async (type: 'config' | 'template') => {
  await exportFile(type);
