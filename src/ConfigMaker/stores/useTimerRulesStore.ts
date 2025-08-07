@@ -1,4 +1,7 @@
-// src/ConfigMaker/script/useTimerRulesStore.ts - 簡略化されたタイマールールストア
+// 🔴 src/ConfigMaker/script/useTimerRulesStore.ts
+//
+// データの直接操作を削除し、useRecordOperationsのメソッドを使うように修正
+//
 import { TimerRuleType } from '@/types/';
 import { useRecordOperations } from './useRecordStore';
 import { useOmikujiStore } from './useOmikujiStore';
@@ -8,7 +11,6 @@ export const useTimerRulesStore = defineStore('timerRules', () => {
  const baseOperations = useRecordOperations('timers');
  const omikujiStore = useOmikujiStore();
 
- // タイマールール特有のメソッド
  const updateInterval = (id: string, intervalSeconds: number) => {
   return baseOperations.update(id, { intervalSeconds } as Partial<TimerRuleType>);
  };
@@ -22,43 +24,21 @@ export const useTimerRulesStore = defineStore('timerRules', () => {
   return new Date(baseTime.getTime() + rule.intervalSeconds * 1000);
  };
 
- /**
-  * コメントルールのIDを更新する
-  * @param oldId 古いID
-  * @param newId 新しいID
-  * @returns 更新が成功したかどうか
-  */
  const updateRuleId = (oldId: string, newId: string): boolean => {
   try {
-   // rulesMapから古いルールを取得
    const oldRule = baseOperations.rulesMap.value[oldId];
    if (!oldRule) {
     console.error(`Rule with ID ${oldId} not found`);
     return false;
    }
-
-   // 新しいIDが既に存在するかチェック
    if (baseOperations.rulesMap.value[newId]) {
     console.error(`Rule with ID ${newId} already exists`);
     return false;
    }
 
-   // Piniaストアのデータを直接操作して更新を適用
-   const currentData = baseOperations.getData(); // 最新のデータを取得
-
-   // 古いルールを削除
-   delete currentData[oldId];
-
-   // 新しいIDでルールを追加
-   currentData[newId] = {
-    ...oldRule,
-    id: newId // ルール内のIDも更新
-   };
-
-   // 現在選択されているルールが更新対象の場合、選択を更新
-   if (omikujiStore.selectedCategory === 'timers' && omikujiStore.selectedRuleId === oldId) {
-    omikujiStore.selectRule(newId);
-   }
+   baseOperations.remove(oldId);
+   baseOperations.add();
+   omikujiStore.selectRule(newId);
 
    return true;
   } catch (error) {

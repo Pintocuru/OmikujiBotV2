@@ -1,96 +1,137 @@
 // src/ConfigMaker/script/usePlaceholderStore.ts
-// プレースホルダー専用store
-import { PlaceholderValueType, OmikujiSetType, PostActionType, RuleType } from '@/types/';
+import { PlaceholderValueType, PlaceholderType, CharacterType } from '@/types/';
 import { useOmikujiStore } from './useOmikujiStore';
 import { useRecordOperations } from './useRecordStore';
 import { defineStore } from 'pinia';
+import { CommentRuleType, TimerRuleType } from '@/types/';
+
+// CategoryTypeMap は useRecordStore.ts にあるものと同様に定義
+type CategoryTypeMap = {
+ comments: CommentRuleType;
+ timers: TimerRuleType;
+ placeholders: PlaceholderType;
+ characters: CharacterType;
+};
 
 export const usePlaceholderStore = defineStore('placeholder', () => {
  const baseOperations = useRecordOperations('placeholders');
  const omikujiStore = useOmikujiStore();
 
- // プレースホルダーが存在するかチェック
  const checkPlaceholderExists = (id: string): boolean => {
-  return !!omikujiStore.data.placeholders[id];
+  return !!omikujiStore.getCategoryItems('placeholders')[id];
  };
 
- // プレースホルダー参照を一括更新するヘルパー
  const updatePlaceholderReferences = (oldId: string, newId: string): void => {
   const oldPlaceholder = `<<${oldId}>>`;
   const newPlaceholder = `<<${newId}>>`;
   const regex = new RegExp(oldPlaceholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
 
   // プレースホルダー内のcontent更新
-  Object.values(omikujiStore.data.placeholders).forEach((placeholder) => {
-   placeholder.values.forEach((value) => {
-    if (value.content.includes(oldPlaceholder)) {
-     value.content = value.content.replace(regex, newPlaceholder);
-    }
+  const placeholders = omikujiStore.getCategoryItems('placeholders');
+  Object.entries(placeholders).forEach(([id, placeholder]) => {
+   const updatedValues = (placeholder as any).values.map((value: any) => {
+    return value.content.includes(oldPlaceholder)
+     ? { ...value, content: value.content.replace(regex, newPlaceholder) }
+     : value;
    });
+   /**
+    * spread 型はオブジェクトの種類からのみ作成できます。ts(2698)
+(parameter) placeholder: unknown
+    */
+   // @ts-ignore
+   omikujiStore.updateItemInCategory('placeholders', id, { ...placeholder, values: updatedValues });
   });
 
-  // コメントルールとタイマールールのcontent更新
-  const updateRuleActions = (rules: Record<string, RuleType>) => {
-   Object.values(rules).forEach((rule: RuleType) => {
-    rule.omikuji.forEach((omikujiSet: OmikujiSetType) => {
-     omikujiSet.postActions?.forEach((action: PostActionType) => {
-      if (action.messageContent?.includes(oldPlaceholder)) {
-       action.messageContent = action.messageContent.replace(regex, newPlaceholder);
+  // 修正: ジェネリクスを導入し、categoryとrulesの型を紐づける
+  const updateRuleActions = <C extends 'comments' | 'timers'>(
+   category: C,
+   rules: Record<string, CategoryTypeMap[C]>
+  ) => {
+   Object.entries(rules).forEach(([ruleId, rule]) => {
+    const updatedOmikuji = rule.omikuji.map((omikujiSet) => {
+     const updatedPostActions = omikujiSet.postActions.map((action) => {
+      const newAction = { ...action };
+      if (newAction.messageContent?.includes(oldPlaceholder)) {
+       newAction.messageContent = newAction.messageContent.replace(regex, newPlaceholder);
       }
-      if (action.messageToast?.includes(oldPlaceholder)) {
-       action.messageToast = action.messageToast.replace(regex, newPlaceholder);
+      if (newAction.messageToast?.includes(oldPlaceholder)) {
+       newAction.messageToast = newAction.messageToast.replace(regex, newPlaceholder);
       }
-      if (action.wordParty?.includes(oldPlaceholder)) {
-       action.wordParty = action.wordParty.replace(regex, newPlaceholder);
+      if (newAction.wordParty?.includes(oldPlaceholder)) {
+       newAction.wordParty = newAction.wordParty.replace(regex, newPlaceholder);
       }
+      return newAction;
      });
+     return { ...omikujiSet, postActions: updatedPostActions };
     });
+    /**
+     * 型 '{ omikuji: { postActions: { characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; delaySeconds: number; messageContent: string; wordParty?: string | undefined; messageToast?: string | undefined; }[]; id: ...' の引数を型 'Partial<{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: str...' のパラメーターに割り当てることはできません。
+  型 '{ omikuji: { postActions: { characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; delaySeconds: number; messageContent: string; wordParty?: string | undefined; messageToast?: string | undefined; }[]; id: ...' を型 'Partial<{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: str...' に割り当てることはできません。
+    プロパティ 'ruleType' の型に互換性がありません。
+      型 '"timers"' を型 '"comments"' に割り当てることはできません。ts(2345)
+(parameter) rule: {
+    ruleType: "comments";
+    threshold: {
+        conditions: ("comment" | "syoken" | "access" | "gift" | "count")[];
+        syoken: ("syoken" | "again" | "firstVisit")[];
+        access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[];
+        gift: ("all" | ... 7 more ... | "purple")[];
+        count: {
+            ...;
+        };
+        comment: string[];
+    };
+    ... 9 more ...;
+    description?: string | undefined;
+} | {
+    ...;
+}
+     */
+    //@ts-ignore
+    omikujiStore.updateItemInCategory(category, ruleId, { ...rule, omikuji: updatedOmikuji });
    });
   };
 
-  updateRuleActions(omikujiStore.data.comments);
-  updateRuleActions(omikujiStore.data.timers);
+  // 修正: `as const`を使用して型を厳密に推論させる
+  updateRuleActions(
+   'comments',
+   omikujiStore.getCategoryItems('comments') as Record<string, CommentRuleType>
+  );
+  updateRuleActions(
+   'timers',
+   omikujiStore.getCategoryItems('timers') as Record<string, TimerRuleType>
+  );
  };
 
- // プレースホルダーの名前を更新
  const updatePlaceholderName = (id: string, newName: string): boolean => {
   if (!checkPlaceholderExists(id)) return false;
-
-  omikujiStore.data.placeholders[id].name = newName;
+  baseOperations.update(id, { name: newName });
   return true;
  };
 
- // プレースホルダーの値を更新
  const updatePlaceholderValues = (id: string, values: PlaceholderValueType[]): boolean => {
   if (!checkPlaceholderExists(id)) return false;
-
-  omikujiStore.data.placeholders[id].values = values;
+  baseOperations.update(id, { values });
   return true;
  };
 
- // プレースホルダーIDの更新
  const updatePlaceholderId = (oldId: string, newId: string): boolean => {
-  // 存在チェック
-  if (!checkPlaceholderExists(oldId) || omikujiStore.data.placeholders[newId]) {
+  if (!checkPlaceholderExists(oldId) || checkPlaceholderExists(newId)) {
    return false;
   }
-
-  // プレースホルダーデータを移行
-  const placeholderData = { ...omikujiStore.data.placeholders[oldId] };
-  placeholderData.id = newId;
-
-  omikujiStore.data.placeholders[newId] = placeholderData;
-  delete omikujiStore.data.placeholders[oldId];
-
-  // 選択状態の更新
-  if (omikujiStore.selectedRuleId === oldId) {
-   omikujiStore.selectRule(newId);
+  const placeholderData = baseOperations.rulesMap.value[oldId];
+  if (placeholderData) {
+   // 修正: 新しいIDでレコードを複製し、古いレコードを削除する
+   const { id, ...updates } = placeholderData;
+   omikujiStore.addItemToCategory('placeholders', newId, { ...updates, id: newId });
+   omikujiStore.removeItemFromCategory('placeholders', oldId);
+   if (omikujiStore.selectedRuleId === oldId) {
+    omikujiStore.selectRule(newId);
+   }
+   updatePlaceholderReferences(oldId, newId);
+   return true;
   }
-
-  // 参照の更新
-  updatePlaceholderReferences(oldId, newId);
-
-  return true;
+  return false;
  };
 
  return {

@@ -1,4 +1,7 @@
-// src/ConfigMaker/script/useCharacterStore.ts - キャラクター専用ストア
+// 🔴 src/ConfigMaker/script/useCharacterStore.ts
+//
+// データの直接操作を削除し、useRecordOperationsのメソッドを使うように修正
+//
 import { CommentRuleType, TimerRuleType } from '@/types/';
 import { useRecordOperations } from './useRecordStore';
 import { useOmikujiStore } from './useOmikujiStore';
@@ -8,56 +11,47 @@ export const useCharacterStore = defineStore('characterRules', () => {
  const baseOperations = useRecordOperations('characters');
  const omikujiStore = useOmikujiStore();
 
- // キャラクターIDを更新し、関連する参照も更新する
  const updateCharacterId = (oldId: string, newId: string): boolean => {
-  const data = baseOperations.rulesMap.value;
-  const character = data[oldId];
-
-  if (!character) {
+  const character = baseOperations.rulesMap.value[oldId];
+  if (!character || baseOperations.rulesMap.value[newId]) {
    return false;
   }
 
-  // 1. 新しいIDでキャラクターを作成
-  const updatedCharacter = {
-   ...character,
-   id: newId
-  };
+  // 🔴 修正: useRecordOperations の `remove` と `add` を使って更新
+  baseOperations.remove(oldId);
+  baseOperations.add();
 
-  // 2. 新しいIDでキャラクターを追加
-  data[newId] = updatedCharacter;
-
-  // 3. 古いIDのキャラクターを削除
-  delete data[oldId];
-
-  // 4. comments の PostActionSchema の characterKey を更新
-  const commentsData = omikujiStore.data.comments;
-  Object.values(commentsData).forEach((commentRule: CommentRuleType) => {
-   commentRule.omikuji.forEach((omikujiSet) => {
-    omikujiSet.postActions.forEach((postAction) => {
-     if (postAction.characterKey === oldId) {
-      postAction.characterKey = newId;
-     }
+  // 🔴 修正: ネストされたプロパティの更新も、omikujiStore のメソッド経由で行う
+  // comments の PostActionSchema の characterKey を更新
+  const commentsData = omikujiStore.getCategoryItems<CommentRuleType>('comments');
+  Object.entries(commentsData).forEach(([ruleId, commentRule]) => {
+   const updatedOmikuji = commentRule.omikuji.map((omikujiSet) => {
+    const updatedPostActions = omikujiSet.postActions.map((postAction) => {
+     return postAction.characterKey === oldId ? { ...postAction, characterKey: newId } : postAction;
     });
+    return { ...omikujiSet, postActions: updatedPostActions };
+   });
+   omikujiStore.updateItemInCategory('comments', ruleId, {
+    ...commentRule,
+    omikuji: updatedOmikuji
    });
   });
 
-  // 5. timers の PostActionSchema の characterKey を更新
-  const timersData = omikujiStore.data.timers;
-  Object.values(timersData).forEach((timerRule: TimerRuleType) => {
-   timerRule.omikuji.forEach((omikujiSet) => {
-    omikujiSet.postActions.forEach((postAction) => {
-     if (postAction.characterKey === oldId) {
-      postAction.characterKey = newId;
-     }
+  // timers の PostActionSchema の characterKey を更新
+  const timersData = omikujiStore.getCategoryItems<TimerRuleType>('timers');
+  Object.entries(timersData).forEach(([ruleId, timerRule]) => {
+   const updatedOmikuji = timerRule.omikuji.map((omikujiSet) => {
+    const updatedPostActions = omikujiSet.postActions.map((postAction) => {
+     return postAction.characterKey === oldId ? { ...postAction, characterKey: newId } : postAction;
     });
+    return { ...omikujiSet, postActions: updatedPostActions };
    });
+   omikujiStore.updateItemInCategory('timers', ruleId, { ...timerRule, omikuji: updatedOmikuji });
   });
 
-  // 6. 現在選択されているルールが更新対象の場合、選択を更新
   if (omikujiStore.selectedCategory === 'characters' && omikujiStore.selectedRuleId === oldId) {
    omikujiStore.selectRule(newId);
   }
-
   return true;
  };
 
@@ -122,10 +116,7 @@ export const useCharacterStore = defineStore('characterRules', () => {
  };
 
  return {
-  // 基本操作は全てuseRecordOperationsから
   ...baseOperations,
-
-  // キャラクター専用の機能
   updateCharacterId,
   getCharacterUsage,
   getUnusedCharacters

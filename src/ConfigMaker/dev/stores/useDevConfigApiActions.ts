@@ -155,6 +155,7 @@ export function useDevConfigApiActions(state: DevConfigState) {
    const configData = await devConfigApi.loadConfig(fileName);
    omikujiStore.loadData(configData);
 
+   state.saveFileName.value = fileName;
    toast.success('読み込み完了', {
     description: `設定 "${fileName.replace('.json', '')}" を読み込みました`,
     duration: 3000

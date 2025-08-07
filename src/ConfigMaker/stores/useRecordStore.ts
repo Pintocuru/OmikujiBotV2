@@ -1,4 +1,7 @@
 // src/ConfigMaker/script/useRecordStore.ts - 共通ルールストア
+//
+// 型エラーを修正し、リアクティブな更新フローを維持
+//
 import { computed } from 'vue';
 import {
  CommentRuleSchema,
@@ -9,11 +12,11 @@ import {
  TimerRuleSchema,
  TimerRuleType,
  CharacterSchema,
- CharacterType
+ CharacterType,
+ RuleType,
+ CategoryType
 } from '@/types/';
 import { useOmikujiStore } from './useOmikujiStore';
-
-// 共通のルール操作を提供するコンポーザブル
 
 type CategoryTypeMap = {
  comments: CommentRuleType;
@@ -22,7 +25,6 @@ type CategoryTypeMap = {
  characters: CharacterType;
 };
 
-// スキーママップ - factoryMapと統合
 const categoryConfig: Record<SelectCategoryType, { schema: any; defaultName: string }> = {
  comments: { schema: CommentRuleSchema, defaultName: 'コメントルール' },
  timers: { schema: TimerRuleSchema, defaultName: 'タイマールール' },
@@ -34,82 +36,65 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
  const omikujiStore = useOmikujiStore();
  const config = categoryConfig[category];
 
- // 統合されたファクトリー関数
  const createRecord = (data: any = {}): CategoryTypeMap[C] => {
   return config.schema.parse(data) as CategoryTypeMap[C];
  };
 
- // データ取得（共通化）
- const getData = (): Record<string, CategoryTypeMap[C]> => {
-  return omikujiStore.data[category] as Record<string, CategoryTypeMap[C]>;
- };
-
- // Record型のデータ（キーがID、値がルールオブジェクト）
- const rulesMap = computed<Record<string, CategoryTypeMap[C]>>(() => getData());
-
- // 配列形式のデータ（ソート済み）
- const rulesArray = computed<CategoryTypeMap[C][]>(() =>
-  Object.values(getData()).sort((a, b) => a.order - b.order)
+ const rulesMap = computed<Record<string, CategoryTypeMap[C]>>(() =>
+  omikujiStore.getCategoryItems<CategoryTypeMap[C]>(category)
  );
 
- // リアクティブな書き込み可能selectedRule
+ const rulesArray = computed<CategoryTypeMap[C][]>(() =>
+  Object.values(rulesMap.value).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+ );
+
  const selectedRule = computed<CategoryTypeMap[C] | null>({
   get: () => {
    if (omikujiStore.selectedCategory !== category) return null;
-   const data = getData();
+   const data = rulesMap.value;
    if (!omikujiStore.selectedRuleId) return null;
    return data[omikujiStore.selectedRuleId] ?? null;
   },
   set: (value) => {
    if (value && omikujiStore.selectedRuleId) {
-    update(omikujiStore.selectedRuleId, value);
+    omikujiStore.updateItemInCategory(
+     category,
+     omikujiStore.selectedRuleId,
+     value as Partial<CategoryTypeMap[C]>
+    );
    }
   }
  });
 
- // ネストされたプロパティ用のヘルパー
  const selectedRuleNested = <K extends keyof CategoryTypeMap[C]>(key: K) =>
   computed<CategoryTypeMap[C][K] | undefined>({
    get: () => selectedRule.value?.[key],
    set: (value) => {
     if (value !== undefined && selectedRule.value) {
-     update(selectedRule.value.id, { [key]: value } as Partial<CategoryTypeMap[C]>);
+     omikujiStore.updateRuleNestedProperty(category, selectedRule.value.id, key, value);
     }
    }
   });
 
- // 統合されたCRUD操作
  const add = (): string => {
   const id = `${Date.now()}`;
-  const data = getData();
-  const count = Object.keys(data).length + 1;
-
-  const newRule = createRecord({
-   id,
-   name: `新しい${config.defaultName} ${count}`,
-   order: count
-  });
-
-  data[id] = newRule;
+  const count = Object.keys(rulesMap.value).length + 1;
+  const newRule = createRecord({ id, name: `新しい${config.defaultName} ${count}`, order: count });
+  omikujiStore.addItemToCategory(category, id, newRule);
   omikujiStore.selectCategory(category);
   omikujiStore.selectRule(id);
   return id;
  };
 
  const update = (id: string, updates: Partial<CategoryTypeMap[C]>): boolean => {
-  const data = getData();
-  const rule = data[id];
-  if (rule) {
-   data[id] = { ...rule, ...updates };
-   return true;
-  }
-  return false;
+  omikujiStore.updateItemInCategory(category, id, updates);
+  return true;
  };
 
  const remove = (id: string): boolean => {
-  const data = getData();
-  if (data[id]) {
-   delete data[id];
+  const removed = omikujiStore.getItemFromCategory(category, id);
+  if (removed) {
+   omikujiStore.removeItemFromCategory(category, id);
    if (omikujiStore.selectedRuleId === id) {
     omikujiStore.clearSelection();
    }
@@ -119,21 +104,11 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
  };
 
  const duplicate = (id: string): string | null => {
-  const data = getData();
-  const original = data[id];
-  if (original) {
-   const newId = `${Date.now()}`;
-   const duplicated: CategoryTypeMap[C] = {
-    ...original,
-    id: newId,
-    name: `${original.name} (コピー)`,
-    order: Object.keys(data).length
-   };
-   data[newId] = duplicated;
+  const newId = omikujiStore.duplicateItemInCategory(category, id);
+  if (newId) {
    omikujiStore.selectRule(newId);
-   return newId;
   }
-  return null;
+  return newId;
  };
 
  const reorder = (fromIndex: number, toIndex: number) => {
@@ -142,19 +117,20 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   const [movedId] = ids.splice(fromIndex, 1);
   ids.splice(toIndex, 0, movedId);
 
-  const data = getData();
+  const updatedRules: Record<string, CategoryTypeMap[C]> = {};
   ids.forEach((id, index) => {
-   if (data[id]) {
-    data[id].order = index;
+   const rule = omikujiStore.getItemFromCategory<CategoryTypeMap[C]>(category, id);
+   if (rule) {
+    updatedRules[id] = { ...rule, order: index + 1 };
    }
   });
+  omikujiStore.updateCategoryData(category as CategoryType, updatedRules);
  };
 
  return {
   rulesArray,
   rulesMap,
   selectedRule,
-  getData,
   selectedRuleNested,
   add,
   update,

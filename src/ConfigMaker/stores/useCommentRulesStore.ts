@@ -1,5 +1,7 @@
 // src/ConfigMaker/script/useCommentRulesStore.ts
-// 簡略化されたコメントルールストア
+//
+// データの直接操作を削除し、useRecordOperationsのメソッドを使うように修正
+//
 import { useRecordOperations } from './useRecordStore';
 import { useOmikujiStore } from './useOmikujiStore';
 import { defineStore } from 'pinia';
@@ -8,43 +10,38 @@ export const useCommentRulesStore = defineStore('commentRules', () => {
  const baseOperations = useRecordOperations('comments');
  const omikujiStore = useOmikujiStore();
 
- /**
-  * コメントルールのIDを更新する
-  * @param oldId 古いID
-  * @param newId 新しいID
-  * @returns 更新が成功したかどうか
-  */
  const updateRuleId = (oldId: string, newId: string): boolean => {
   try {
-   // rulesMapから古いルールを取得
    const oldRule = baseOperations.rulesMap.value[oldId];
    if (!oldRule) {
     console.error(`Rule with ID ${oldId} not found`);
     return false;
    }
-
-   // 新しいIDが既に存在するかチェック
    if (baseOperations.rulesMap.value[newId]) {
     console.error(`Rule with ID ${newId} already exists`);
     return false;
    }
 
-   // Piniaストアのデータを直接操作して更新を適用
-   const currentData = baseOperations.getData(); // 最新のデータを取得
+   // 新しいIDでレコードを追加する
+   const newRuleId = baseOperations.add();
 
-   // 古いルールを削除
-   delete currentData[oldId];
-
-   // 新しいIDでルールを追加
-   currentData[newId] = {
-    ...oldRule,
-    id: newId // ルール内のIDも更新
-   };
-
-   // 現在選択されているルールが更新対象の場合、選択を更新
-   if (omikujiStore.selectedCategory === 'comments' && omikujiStore.selectedRuleId === oldId) {
-    omikujiStore.selectRule(newId);
+   // 新しいレコードのIDが期待通りでない場合はエラー
+   if (newRuleId !== newId) {
+    // 新しいIDのレコードは不要なので削除
+    baseOperations.remove(newRuleId);
+    console.error(`Generated new ID ${newRuleId} does not match requested new ID ${newId}`);
+    return false;
    }
+
+   // 古いレコードのプロパティを新しいレコードにコピー
+   // `id`プロパティはコピーしないように除外する
+   const { id, ...updates } = oldRule;
+   baseOperations.update(newId, updates);
+
+   // 古いレコードを削除
+   baseOperations.remove(oldId);
+
+   omikujiStore.selectRule(newId);
 
    return true;
   } catch (error) {
