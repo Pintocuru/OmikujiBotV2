@@ -1,25 +1,29 @@
-<!-- src/MainGenerator/components/GameRankingViewer/GameRankingDisplay.vue -->
+<!-- src/MainGenerator/components/GameRankingViewer/GameRankingList.vue -->
 <template>
  <div
-  v-if="theme"
-  :class="['p-1 rounded-2xl', theme.backgrounds.base, theme.fontStyles.rankingText]"
+  v-if="displayStore.currentComponentConfig"
+  :class="[
+   'p-1 rounded-2xl',
+   displayStore.currentComponentConfig.backgrounds.base,
+   displayStore.currentComponentConfig.fontStyles.rankingText
+  ]"
  >
   <!-- ランキングタイトル -->
   <div
    :class="[
     'text-center mb-2 font-bold drop-shadow-lg',
-    theme.textColors.accent,
+    displayStore.currentComponentConfig.textColors.accent,
     sizeConfig.text.large
    ]"
   >
-   {{ theme.displaySettings.titleText }}
+   {{ displayStore.currentComponentConfig.displaySettings.titleText }}
   </div>
 
   <!-- ランキングリスト -->
   <div class="overflow-hidden max-h-fit">
    <ul class="list-none p-0 m-0 space-y-1">
     <li
-     v-for="(player, index) in userRankings"
+     v-for="(player, index) in displayStore.currentUserRankings"
      :key="`${player.userId}-${index}`"
      :class="getRankingRowClass(index)"
     >
@@ -32,8 +36,10 @@
      <span class="flex justify-center items-center flex-1">
       <span
        class="font-bold drop-shadow-lg"
-       :class="[theme.textColors.primary, sizeConfig.text.medium]"
-       v-html="formatPlayerInfo(player, theme.displaySettings.scoreFormat)"
+       :class="[displayStore.currentComponentConfig.textColors.primary, sizeConfig.text.medium]"
+       v-html="
+        formatPlayerInfo(player, displayStore.currentComponentConfig.displaySettings.scoreFormat)
+       "
       />
      </span>
     </li>
@@ -44,7 +50,7 @@
   <div
    :class="[
     'p-0 m-0 flex justify-center items-center w-full mt-2',
-    theme.textColors.primary,
+    displayStore.currentComponentConfig.textColors.primary,
     sizeConfig.text.small
    ]"
   >
@@ -54,26 +60,35 @@
   </div>
 
   <!-- スコアテンプレート表示（処理前） -->
-  <div :class="['text-center mt-1', theme.textColors.secondary, sizeConfig.text.small]"></div>
+  <div
+   :class="[
+    'text-center mt-1',
+    displayStore.currentComponentConfig.textColors.secondary,
+    sizeConfig.text.small
+   ]"
+  ></div>
  </div>
 
  <!-- データがない場合 -->
- <div v-else-if="!theme" class="p-4 bg-red-100 border border-red-400 rounded">
+ <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
   <p class="text-red-700">テーマ設定が読み込まれていません</p>
  </div>
 </template>
 
 <script setup lang="ts">
-import { GameComponentConfig, GameStatistics, UserStatsType } from '@/types';
 import { SizeConfig } from './useComponentConfig';
+import { useDisplayStore } from '@/MainGenerator/stores';
+import { useGameRanking } from './useGameRanking';
 
+// Props
 defineProps<{
- userRankings: UserStatsType[];
- theme: GameComponentConfig | null;
  sizeConfig: SizeConfig;
- gameStatistics: GameStatistics;
- formatPlayerInfo: (player: UserStatsType, scoreFormat: string) => string;
- getRankingRowClass: (index: number) => string[];
- getRankingNumberClass: (index: number, sizeClass: string) => string[];
 }>();
+
+// Piniaストアの使用
+const displayStore = useDisplayStore();
+
+// ゲームランキングコンポーザブル
+const { gameStatistics, formatPlayerInfo, getRankingRowClass, getRankingNumberClass } =
+ useGameRanking();
 </script>

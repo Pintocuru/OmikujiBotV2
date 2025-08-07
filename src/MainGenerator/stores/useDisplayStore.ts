@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed, watch, nextTick } from 'vue';
 import { DisplaySize } from '@shared/types';
-import { ScriptComponentPropsType, UserStatsType } from '@/types/';
+import { UserStatsType } from '@/types/';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
 import { useAppStore } from './useAppStore';
 
@@ -18,9 +18,7 @@ export const useDisplayStore = defineStore('display', () => {
 
  // ===== 計算されたプロパティ =====
 
- /**
-  * コンポーネント選択設定
-  */
+ // コンポーネント選択設定
  const selectedComponent = computed(() => {
   return displaySettings.developer.selectComponent;
  });
@@ -38,9 +36,7 @@ export const useDisplayStore = defineStore('display', () => {
   return keys;
  });
 
- /**
-  * 現在のscriptKey
-  */
+ // 現在のscriptKey
  const currentScriptKey = computed((): string | null => {
   const keys = availableScriptKeys.value;
   if (keys.length === 0) return null;
@@ -48,9 +44,7 @@ export const useDisplayStore = defineStore('display', () => {
   return keys[currentModeIndex.value];
  });
 
- /**
-  * ランキングデータを取得
-  */
+ // ランキングデータを取得
  const getCurrentRankings = (scriptKey: string | null): UserStatsType[] => {
   if (!scriptKey) return [];
 
@@ -63,35 +57,39 @@ export const useDisplayStore = defineStore('display', () => {
   }
  };
 
- /**
-  * 現在のゲームスクリプトの設定情報
-  */
- const currentScriptGameProps = computed((): ScriptComponentPropsType => {
+ // 現在のコンポーネントキー
+ const currentComponentKey = computed((): string => {
   // updateTriggerを参照することで強制更新に対応
   updateTrigger.value; // eslint-disable-line no-unused-expressions
 
   const scriptKey = currentScriptKey.value;
-  const componentKey = scriptKey ? `game-${scriptKey}` : 'bot-mode';
+  return scriptKey ? `game-${scriptKey}` : 'bot-mode';
+ });
 
-  if (!scriptKey || !gameScriptMap[scriptKey]) {
-   return {
-    componentKey: componentKey,
-    componentConfig: null,
-    settings: {},
-    userRankings: [],
-    displaySize: displaySize.value
-   };
-  }
+ // 現在のコンポーネント設定
+ const currentComponentConfig = computed(() => {
+  // updateTriggerを参照することで強制更新に対応
+  updateTrigger.value; // eslint-disable-line no-unused-expressions
 
-  const props: ScriptComponentPropsType = {
-   componentKey: componentKey,
-   componentConfig: gameScriptMap[scriptKey].componentConfig,
-   settings: { ...(appStore.omikujiData.scriptSettings?.[scriptKey] || {}) },
-   userRankings: getCurrentRankings(scriptKey),
-   displaySize: displaySize.value
-  };
+  const scriptKey = currentScriptKey.value;
+  return scriptKey && gameScriptMap[scriptKey] ? gameScriptMap[scriptKey].componentConfig : null;
+ });
 
-  return props;
+ // 現在のスクリプト設定
+ const currentScriptSettings = computed(() => {
+  // updateTriggerを参照することで強制更新に対応
+  updateTrigger.value; // eslint-disable-line no-unused-expressions
+
+  const scriptKey = currentScriptKey.value;
+  return scriptKey ? { ...(appStore.omikujiData.scriptSettings?.[scriptKey] || {}) } : {};
+ });
+
+ // 現在のユーザーランキング
+ const currentUserRankings = computed((): UserStatsType[] => {
+  // updateTriggerを参照することで強制更新に対応
+  updateTrigger.value; // eslint-disable-line no-unused-expressions
+
+  return getCurrentRankings(currentScriptKey.value);
  });
 
  // ===== アクション =====
@@ -104,9 +102,7 @@ export const useDisplayStore = defineStore('display', () => {
   triggerUpdate();
  };
 
- /**
-  * 強制更新
-  */
+ // 強制更新
  const triggerUpdate = () => {
   updateTrigger.value += 1;
  };
@@ -125,16 +121,12 @@ export const useDisplayStore = defineStore('display', () => {
   }
  };
 
- /**
-  * BOTちゃんモードに切り替え
-  */
+ // BOTちゃんモードに切り替え
  const switchToBotMode = () => {
   return switchToMode(null);
  };
 
- /**
-  * ゲームスクリプトモードに切り替え
-  */
+ // ゲームスクリプトモードに切り替え
  const switchToScriptGame = (scriptKey: string) => {
   return switchToMode(scriptKey);
  };
@@ -165,9 +157,7 @@ export const useDisplayStore = defineStore('display', () => {
   triggerUpdate();
  };
 
- /**
-  * 表示設定の取得
-  */
+ // 表示設定の取得
  const getDisplaySettings = () => {
   return {
    ...displaySettings,
@@ -208,8 +198,13 @@ export const useDisplayStore = defineStore('display', () => {
   selectedComponent,
   availableScriptKeys,
   currentScriptKey,
-  currentScriptGameProps,
   displaySettings,
+
+  // 個別のプロパティ（currentScriptGamePropsをバラバラに）
+  currentComponentKey,
+  currentComponentConfig,
+  currentScriptSettings,
+  currentUserRankings,
 
   // アクション
   setDisplaySize,

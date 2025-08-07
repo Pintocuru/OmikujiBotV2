@@ -12,8 +12,7 @@
   <!-- Scriptsゲーム表示 -->
   <GameRankingViewer
    v-else-if="displayStore.currentScriptKey !== null"
-   :key="displayStore.currentScriptGameProps.componentKey"
-   v-bind="displayStore.currentScriptGameProps"
+   :key="displayStore.currentComponentKey"
   />
 
   <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->

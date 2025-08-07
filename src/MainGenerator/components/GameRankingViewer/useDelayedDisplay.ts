@@ -42,10 +42,7 @@ export function useDelayedDisplay(
  const startDisplay = () => {
   clearTimers();
   isVisible.value = false;
-
-  if (userRankings.value.length === 0) {
-   return;
-  }
+  if (userRankings.value.length === 0) return;
 
   delayTimer = setTimeout(() => {
    isVisible.value = true;

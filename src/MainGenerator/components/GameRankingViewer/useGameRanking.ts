@@ -1,16 +1,17 @@
 // src/MainGenerator/components/GameRankingViewer/useGameRanking.ts
-import { computed, Ref } from 'vue';
-import type { GameComponentConfig, GameStatistics, UserStatsType } from '@/types';
+import { computed } from 'vue';
+import type { GameStatistics, UserStatsType } from '@/types';
+import { useDisplayStore } from '@/MainGenerator/stores';
+import { storeToRefs } from 'pinia';
 
-export function useGameRanking(
- userRankings: Ref<UserStatsType[]>,
- theme: Ref<GameComponentConfig | null>
-) {
- // computed - null安全性を確保
+export function useGameRanking() {
+ // Piniaストアの使用
+ const displayStore = useDisplayStore();
+ const { currentUserRankings, currentComponentConfig } = storeToRefs(displayStore);
 
  // Computed game statistics
  const gameStatistics = computed<GameStatistics>(() => {
-  const players = userRankings.value;
+  const players = currentUserRankings.value;
   if (!players || players.length === 0) {
    return {
     totalScore: 0,
@@ -48,7 +49,7 @@ export function useGameRanking(
 
  // Ranking row class generator
  const getRankingRowClass = (index: number): string[] => {
-  if (!theme.value) return ['flex', 'items-center', 'justify-between', 'p-2'];
+  if (!currentComponentConfig.value) return ['flex', 'items-center', 'justify-between', 'p-2'];
 
   const baseClasses = [
    'flex',
@@ -62,14 +63,14 @@ export function useGameRanking(
    'overflow-hidden'
   ];
 
-  const ranking = theme.value.backgrounds.ranking;
+  const ranking = currentComponentConfig.value.backgrounds.ranking;
 
-  if (!theme.value.displaySettings?.highlightTopThree) {
+  if (!currentComponentConfig.value.displaySettings?.highlightTopThree) {
    return [...baseClasses, index % 2 === 0 ? ranking.evenRow : ranking.oddRow];
   }
 
   // highlightTopThree=trueの場合、player.rankを使用
-  const player = userRankings.value[index];
+  const player = currentUserRankings.value[index];
   const playerRank = player?.rank ?? index + 1;
 
   switch (playerRank) {
@@ -97,7 +98,7 @@ export function useGameRanking(
    sizeClass
   ];
 
-  if (!theme.value?.displaySettings?.highlightTopThree) {
+  if (!currentComponentConfig.value?.displaySettings?.highlightTopThree) {
    // 通常表示の場合はindexベース
    const medalColors = {
     0: ['bg-yellow-400', 'text-yellow-900', 'border-yellow-600'],
@@ -116,7 +117,7 @@ export function useGameRanking(
   }
 
   // highlightTopThree=trueの場合、player.rankを使用
-  const player = userRankings.value[index];
+  const player = currentUserRankings.value[index];
   const playerRank = player?.rank ?? index + 1;
 
   const medalColors = {
@@ -138,8 +139,6 @@ export function useGameRanking(
  return {
   // Data
   gameStatistics,
-  userRankings,
-  options: theme,
 
   // Methods
   formatPlayerInfo,

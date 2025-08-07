@@ -1,75 +1,47 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
 <template>
- <div v-if="theme">
+ <div v-if="displayStore.currentComponentConfig">
   <!-- Score Display with Animation -->
   <GameRankingScore
-   v-if="scoreVisibility.isVisible.value && userRankings.length > 0"
-   :player-data="userRankings[0]"
-   :theme="theme"
+   v-if="scoreVisibility.isVisible.value && displayStore.currentUserRankings.length > 0"
+   :player-data="displayStore.currentUserRankings[0]"
+   :theme="displayStore.currentComponentConfig"
    :size-config="sizeConfig"
-   :score-display="theme.scoreDisplay"
+   :score-display="displayStore.currentComponentConfig.scoreDisplay"
   />
 
   <!-- Ranking list -->
-  <GameRankingList
-   :user-rankings="userRankings"
-   :theme="theme"
-   :size-config="sizeConfig"
-   :game-statistics="gameStatistics"
-   :format-player-info="formatPlayerInfo"
-   :get-ranking-row-class="getRankingRowClass"
-   :get-ranking-number-class="getRankingNumberClass"
-  />
-
-  <!-- デバッグ用
-  <Dev /> -->
+  <GameRankingList :size-config="sizeConfig" />
  </div>
 
  <!-- componentConfigがnullの場合はエラー表示 -->
  <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
   <p class="text-red-700">設定が読み込まれていません</p>
   <p class="text-red-600 text-sm mt-1">
-   componentConfig: {{ props.componentConfig ? 'loaded' : 'null' }}
+   componentConfig: {{ displayStore.currentComponentConfig ? 'loaded' : 'null' }}
   </p>
  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ScriptComponentPropsType } from '@/types/';
 import { COMPONENT_SIZE_CONFIG } from '@MainComponents/GameRankingViewer/useComponentConfig';
 import { useDelayedDisplay } from '@MainComponents/GameRankingViewer/useDelayedDisplay';
-import { useGameRanking } from './useGameRanking';
 import GameRankingScore from './GameRankingScore.vue';
 import GameRankingList from './GameRankingList.vue';
+import { useDisplayStore } from '@/MainGenerator/stores';
+import { storeToRefs } from 'pinia';
 
-const props = defineProps<ScriptComponentPropsType>();
-/**
- type ScriptComponentPropsType = {
- componentConfig: GameComponentConfig | null;
- settings: DefaultTypes;
- userRankings: UserStatsType[];
- displaySize: DisplaySize;
-};
- */
+// Piniaストアの使用
+const displayStore = useDisplayStore();
+const { displaySize, currentUserRankings } = storeToRefs(displayStore);
 
 // Size configuration
-const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[props.displaySize]);
-const userRankingsRef = computed(() => props.userRankings || []);
-const theme = computed(() => props.componentConfig ?? null);
+const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[displaySize.value]);
 
 // Score display control
-const scoreVisibility = useDelayedDisplay(userRankingsRef, {
+const scoreVisibility = useDelayedDisplay(currentUserRankings, {
  delayMs: 4500,
  displayMs: 5000
 });
-
-// ゲームランキングコンポーザブル
-const {
- gameStatistics,
- userRankings,
- formatPlayerInfo,
- getRankingRowClass,
- getRankingNumberClass
-} = useGameRanking(userRankingsRef, theme);
 </script>
