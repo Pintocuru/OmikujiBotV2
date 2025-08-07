@@ -1,9 +1,9 @@
-// src/MainGenerator/omikujiProcess/UserCommentProcessor.test.ts
+// src/MainGenerator/script/omikujiProcess/UserCommentProcessor.test.ts
 
 import { UserCommentProcessor } from './UserCommentProcessor';
-import mockOmikujiData from '../../../server/dev-configs/ReimuBasic250805.json';
-import { MockComment } from '../../../../../shared/__mocks__/CreateMockComment';
-import * as ThresholdChecker from '../../../../../shared/utils/threshold/ThresholdChecker';
+import mockOmikujiData from '../../../../server/dev-configs/ReimuBasic250805.json';
+import { MockComment } from '../../../../../../shared/__mocks__/CreateMockComment';
+import * as ThresholdChecker from '../../../../../../shared/utils/threshold/ThresholdChecker';
 
 // 依存関係をモック
 jest.mock('./GameScriptManager');

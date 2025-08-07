@@ -82,8 +82,8 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, toRef } from 'vue';
 import { BotMessage, getImagePath } from '@/types/';
-import { useBotCommentDisplay } from '@/MainGenerator/composables/useBotMessage';
-import { useCommentAnimation } from '@/MainGenerator/composables/useCommentAnimation';
+import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage';
+import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCommentAnimation';
 import type { AnimationType } from '@/types/animation';
 import { DisplaySize } from '@shared/types';
 

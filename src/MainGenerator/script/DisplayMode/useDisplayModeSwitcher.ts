@@ -1,6 +1,6 @@
 // src/composables/useDisplayModeSwitcher.ts
 import { nextTick } from 'vue';
-import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
+import { GameScriptManager } from '@/MainGenerator/script/omikujiProcess/GameScriptManager';
 
 export function useDisplayModeSwitcher(
  currentModeIndex: { value: number },

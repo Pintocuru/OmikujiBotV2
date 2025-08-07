@@ -37,8 +37,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ScriptComponentPropsType } from '@/types/';
-import { COMPONENT_SIZE_CONFIG } from '@/MainGenerator/components/GameRankingViewer/useComponentConfig';
-import { useDelayedDisplay } from '@/MainGenerator/components/GameRankingViewer/useDelayedDisplay';
+import { COMPONENT_SIZE_CONFIG } from '@MainComponents/GameRankingViewer/useComponentConfig';
+import { useDelayedDisplay } from '@MainComponents/GameRankingViewer/useDelayedDisplay';
 import { useGameRanking } from './useGameRanking';
 import GameRankingScore from './GameRankingScore.vue';
 import GameRankingList from './GameRankingList.vue';

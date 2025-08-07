@@ -49,15 +49,15 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { OmikujiDataSchema, BotMessage } from '@/types/';
-import ViewBotMessage from '@/MainGenerator/components/ViewBotMessage.vue';
-import ViewBotToast from '@/MainGenerator/components/ViewBotToast.vue';
-import CharacterThumbnails from '@/MainGenerator/components/CharacterThumbnails.vue';
-import DisplayControlPanel from '@/MainGenerator/components/OmikujiBot/DisplayControlPanel.vue';
-import { useDisplayMode } from '@/MainGenerator/composables/useDisplayMode';
-import { useMessageHandler } from '@/MainGenerator/composables/useMessageHandler';
+import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue';
+import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue';
+import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue';
+import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue';
+import { useDisplayMode } from '@/MainGenerator/script/DisplayMode/useDisplayMode';
+import { useMessageHandler } from '@/MainGenerator/script/omikujiProcess/useMessageHandler';
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
 import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue';
-import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue';
+import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue';
 import { ConfigUserSchema } from '@shared/types';
 
 // omikujiData config の読み込み

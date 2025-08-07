@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { OmikujiDataType } from '@/types/';
 import { DisplaySize } from '@shared/types';
-import { GameScriptManager } from '@/MainGenerator/omikujiProcess/GameScriptManager';
+import { GameScriptManager } from '@/MainGenerator/script/omikujiProcess/GameScriptManager';
 
 export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
  const displaySettings = omikujiData.displaySettings;

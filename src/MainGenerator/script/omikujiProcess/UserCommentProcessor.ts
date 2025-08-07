@@ -1,4 +1,4 @@
-// src/MainGenerator/omikujiProcess/UserCommentProcessor.ts
+// src/MainGenerator/script/omikujiProcess/UserCommentProcessor.ts
 import { BotMessage, CommentRuleType, OmikujiDataType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GameScriptManager } from './GameScriptManager';

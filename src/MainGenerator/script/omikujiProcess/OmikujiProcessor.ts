@@ -5,7 +5,7 @@ import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { GameScriptManager } from './GameScriptManager';
 import { CommentContextManager } from './CommentContextManager';
 import { PlaceProcess } from './PlaceProcess';
-import { PostMessage } from '@/MainGenerator/script/PostMessage';
+import { PostMessage } from '@/MainGenerator/script/PostMessage/PostMessage';
 import { BotMessageGenerator } from './BotMessageGenerator';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost';

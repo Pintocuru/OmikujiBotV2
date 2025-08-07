@@ -1,4 +1,4 @@
-// src/MainGenerator/omikujiProcess/CharacterCollector.ts
+// src/MainGenerator/script/omikujiProcess/CharacterCollector.ts
 import {
  BotMessage,
  CharacterType,

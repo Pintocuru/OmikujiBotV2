@@ -19,9 +19,6 @@
    "@LogRank/*": [
     "src/GameScripts/LogRank/src/*"
    ],
-   "@Config/*": [
-    "./src/ConfigMaker/*"
-   ],
    "@ConfigComponents/*": [
     "./src/ConfigMaker/components/*"
    ],
@@ -30,6 +27,12 @@
    ],
    "@ConfigStore/*": [
     "./src/ConfigMaker/store/*"
+   ],
+   "@MainComponents/*": [
+    "./src/MainGenerator/components/*"
+   ],
+   "@MainScript/*": [
+    "./src/MainGenerator/script/*"
    ]
   }
  },

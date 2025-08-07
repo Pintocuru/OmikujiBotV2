@@ -1,4 +1,4 @@
-// src/MainGenerator/omikujiProcess/PlaceProcess.ts
+// src/MainGenerator/script/omikujiProcess/PlaceProcess.ts
 import { PlaceholderType, PostActionType } from '@/types/';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { DefaultTypes } from '@shared/types';

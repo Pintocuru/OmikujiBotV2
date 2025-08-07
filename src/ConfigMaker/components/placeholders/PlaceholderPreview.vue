@@ -14,7 +14,7 @@ import { computed, ref } from 'vue';
 import { PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/';
 import { usePlaceholderStore } from '@ConfigStore/usePlaceholderStore';
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
-import { PlaceProcess } from '@/MainGenerator/omikujiProcess/PlaceProcess';
+import { PlaceProcess } from '@/MainGenerator/script/omikujiProcess/PlaceProcess';
 import { postSpeech } from '@shared/sdk/postMessage/PostOneComme';
 import { toast } from 'vue-sonner';
 import { Dices } from 'lucide-vue-next';

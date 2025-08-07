@@ -1,4 +1,4 @@
-// src/MainGenerator/omikujiProcess/CooldownManager.ts
+// src/MainGenerator/script/omikujiProcess/CooldownManager.ts
 
 /**
  * ユーザーの抽選回数を管理するインターフェース
