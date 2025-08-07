@@ -1,12 +1,13 @@
 // src/main.ts
 import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import App from './App.vue';
 import '../../assets/styles.css';
 import '../../assets/TailwindCSS.css';
-//import '../../../../shared/styles/TailwindCSS.css';
 import OneSDK from '@onecomme.com/onesdk';
 
 // createApp
+const pinia = createPinia();
 const app = createApp(App);
 app.config.errorHandler = (err, instance, info) => {
  console.error('グローバルエラー:', err);
@@ -18,6 +19,7 @@ app.config.errorHandler = (err, instance, info) => {
 function initApp() {
  try {
   // OneSDK > App の順にマウント
+  app.use(pinia);
   OneSDK.ready().then(() => app.mount('#App'));
  } catch (err) {
   console.error('アプリケーションの初期化に失敗:', err);

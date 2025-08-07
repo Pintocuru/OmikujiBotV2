@@ -42,7 +42,6 @@ import { useDelayedDisplay } from '@MainComponents/GameRankingViewer/useDelayedD
 import { useGameRanking } from './useGameRanking';
 import GameRankingScore from './GameRankingScore.vue';
 import GameRankingList from './GameRankingList.vue';
-import Dev from './Dev.vue';
 
 const props = defineProps<ScriptComponentPropsType>();
 /**

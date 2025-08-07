@@ -1,4 +1,4 @@
-// src/composables/useDisplayScriptProps.ts
+// src\MainGenerator\scripts\DisplayMode\useDisplayScriptProps.ts
 import { computed } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType, UserStatsType } from '@/types/';
 import { DisplaySize } from '@shared/types';

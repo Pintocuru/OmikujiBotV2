@@ -4,7 +4,6 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import 'vue-sonner/style.css';
 import '../../assets/DaisyUiDark.css';
-// import '../../../../shared/styles/DaisyUiDark.css';
 
 async function initApp() {
  try {

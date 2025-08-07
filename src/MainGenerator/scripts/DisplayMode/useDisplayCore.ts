@@ -1,4 +1,4 @@
-// src/composables/useDisplayCore.ts
+// src\MainGenerator\scripts\DisplayMode\useDisplayCore.ts
 import { ref, computed } from 'vue';
 import { OmikujiDataType } from '@/types/';
 import { DisplaySize } from '@shared/types';

@@ -1,4 +1,4 @@
-// src/composables/useDisplayMode.ts
+// src\MainGenerator\scripts\DisplayMode\useDisplayMode.ts
 import { onMounted, watch } from 'vue';
 import { OmikujiDataType } from '@/types/';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';

@@ -1,4 +1,4 @@
-// src/composables/useDisplayModeSwitcher.ts
+// src\MainGenerator\scripts\DisplayMode\useDisplayModeSwitcher.ts
 import { nextTick } from 'vue';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 

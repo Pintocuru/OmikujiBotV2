@@ -1,4 +1,4 @@
-// src/composables/useMessageHandler.ts
+// src\MainGenerator\scripts\omikujiProcess\useMessageHandler.ts
 import { ref } from 'vue';
 import { BotMessage } from '@/types/';
 import { OmikujiDataType } from '@/types/';
