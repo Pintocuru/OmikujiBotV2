@@ -1,45 +1,47 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
- <div v-if="isInitialized">
+ <div v-if="appStore.isInitialized">
   <!-- BOTメッセージ表示 -->
   <ViewBotMessage
-   v-if="currentScriptKey === null"
-   :botMessages="botMessages"
-   :displaySize="displaySize"
+   v-if="displayStore.currentScriptKey === null"
+   :botMessages="appStore.botMessages"
+   :displaySize="displayStore.displaySize"
    :animationType="'slideUp'"
   />
 
   <!-- Scriptsゲーム表示 -->
   <GameRankingViewer
-   v-else-if="currentScriptKey !== null"
-   :key="currentScriptGameProps.componentKey"
-   v-bind="currentScriptGameProps"
+   v-else-if="displayStore.currentScriptKey !== null"
+   :key="displayStore.currentScriptGameProps.componentKey"
+   v-bind="displayStore.currentScriptGameProps"
   />
 
   <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
   <DisplayControlPanel
-   v-if="omikujiData.displaySettings.developer.godModeEnabled"
-   :availableScriptKeys="availableScriptKeys"
-   :currentScriptKey="currentScriptKey"
-   :displaySize="displaySize"
-   :switchToMode="switchToMode"
-   :setDisplaySize="setDisplaySize"
+   v-if="appStore.omikujiData.displaySettings.developer.godModeEnabled"
+   :availableScriptKeys="displayStore.availableScriptKeys"
+   :currentScriptKey="displayStore.currentScriptKey"
+   :displaySize="displayStore.displaySize"
+   :switchToMode="displayStore.switchToMode"
+   :setDisplaySize="displayStore.setDisplaySize"
   />
 
   <!-- トースト表示 -->
   <ViewBotToast
-   v-if="omikujiData.displaySettings.base.toastEnabled"
-   :botMessages="botMessages"
-   :displaySize="displaySize"
+   v-if="appStore.omikujiData.displaySettings.base.toastEnabled"
+   :botMessages="appStore.botMessages"
+   :displaySize="displayStore.displaySize"
   />
 
   <!-- キャラクターサムネイル -->
   <CharacterThumbnails
-   v-if="omikujiData.displaySettings.base.modeSwitchEnabled"
-   :characters="characterCollector.getUsedCharacterPresets()"
-   :displaySize="displaySize"
-   :generateTestMessage="characterCollector.generateTestMessage.bind(characterCollector)"
-   @testMessage="(message: BotMessage) => (botMessages = [...botMessages, message])"
+   v-if="appStore.omikujiData.displaySettings.base.modeSwitchEnabled"
+   :characters="appStore.characterCollector.getUsedCharacterPresets()"
+   :displaySize="displayStore.displaySize"
+   :generateTestMessage="
+    appStore.characterCollector.generateTestMessage.bind(appStore.characterCollector)
+   "
+   @testMessage="handleTestMessage"
   />
  </div>
  <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -47,55 +49,32 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { OmikujiDataSchema, BotMessage } from '@/types/';
+import { onMounted } from 'vue';
+import { BotMessage } from '@/types/';
 import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue';
 import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue';
 import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue';
 import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue';
-import { useDisplayMode } from '@MainScripts/DisplayMode/useDisplayMode';
-import { useMessageHandler } from '@MainScripts/omikujiProcess/useMessageHandler';
-import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
 import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue';
 import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue';
-import { ConfigUserSchema } from '@shared/types';
+import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/';
 
-// omikujiData config の読み込み
-const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
-const config = ConfigUserSchema.parse(window.userConfig);
+// Piniaストアの使用
+const appStore = useAppStore();
+const displayStore = useDisplayStore();
 
-// ref
-const isInitialized = ref(true); // 初期化完了フラグ
-
-// コンポーザブルの使用
-const { botMessages, scriptManager, characterCollector, updateBotMessages, startTimers } =
- useMessageHandler(omikujiData);
-
-const {
- availableScriptKeys,
- currentScriptKey,
- currentScriptGameProps,
- displaySize,
- switchToMode,
- setDisplaySize,
- forceUpdate
-} = useDisplayMode(omikujiData, scriptManager);
+// イベントハンドラー
+const handleTestMessage = (message: BotMessage) => {
+ appStore.botMessages = [...appStore.botMessages, message];
+};
 
 // 初期化処理
 onMounted(async () => {
- try {
-  const isInit = await GetUserComments(config).fetchComments((comments) => {
-   updateBotMessages(comments);
-   forceUpdate(); // Scripts更新トリガー
-  });
+ // アプリケーションの初期化
+ await appStore.initializeApp();
 
-  isInitialized.value = isInit;
-  // タイマー開始
-  if (isInit) startTimers();
- } catch (error) {
-  console.error('初期化エラー:', error);
-  isInitialized.value = false;
- }
+ // 表示モードの初期化
+ displayStore.initializeDisplayMode();
 });
 </script>
 

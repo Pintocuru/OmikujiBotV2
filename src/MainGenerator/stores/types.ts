@@ -1,26 +1,5 @@
-// src/stores/types.ts
-import { BotMessage, OmikujiDataType } from '@/types/';
-import { GameScriptManager } from '@/MainGenerator/scripts/omikujiProcess/GameScriptManager';
-import { CharacterCollector } from '@/MainGenerator/scripts/omikujiProcess/CharacterCollector';
-import { ConfigUserType } from '@shared/types';
+// src\MainGenerator\stores\types.ts
+import type { useAppStore, useDisplayStore } from '@/MainGenerator/stores/';
 
-export interface AppState {
- isInitialized: boolean;
- omikujiData: OmikujiDataType | null;
- config: ConfigUserType;
-}
-
-export interface MessageState {
- botMessages: BotMessage[];
- scriptManager: GameScriptManager | null;
- characterCollector: CharacterCollector | null;
-}
-
-export interface DisplayState {
- displaySize: string;
- currentModeIndex: number;
- currentScriptKey: string | null;
- availableScriptKeys: string[];
- updateTrigger: number;
- selectedComponent: string | null;
-}
+export type AppStore = ReturnType<typeof useAppStore>;
+export type DisplayStore = ReturnType<typeof useDisplayStore>;

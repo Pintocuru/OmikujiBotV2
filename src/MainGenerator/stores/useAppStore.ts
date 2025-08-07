@@ -1,56 +1,137 @@
-// src/stores/useAppStore.ts
+// src\MainGenerator\stores\index.ts
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import { OmikujiDataSchema, BotMessage, OmikujiDataType } from '@/types/';
+import { ref } from 'vue';
+import { OmikujiDataSchema, BotMessage } from '@/types/';
 import { ConfigUserSchema } from '@shared/types';
-import { AppState } from './types';
+import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
+import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
+import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
+import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';
+import { CharacterCollector } from '@MainScripts/omikujiProcess/CharacterCollector';
+import { Comment } from '@onecomme.com/onesdk/types/Comment';
+import { useDisplayStore } from './useDisplayStore';
 
 export const useAppStore = defineStore('app', () => {
- // State
- const isInitialized = ref<boolean>(false);
- const omikujiData = ref<OmikujiDataType | null>(null);
- const config = ref<any>(null);
+ // ===== 基本設定 =====
+ const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
+ const config = ConfigUserSchema.parse(window.userConfig);
 
- // Getters
- const isReady = computed(() => isInitialized.value && omikujiData.value !== null);
- const displaySettings = computed(() => omikujiData.value?.displaySettings);
- const godModeEnabled = computed(() => displaySettings.value?.developer?.godModeEnabled ?? false);
- const toastEnabled = computed(() => displaySettings.value?.base?.toastEnabled ?? false);
- const modeSwitchEnabled = computed(() => displaySettings.value?.base?.modeSwitchEnabled ?? false);
+ // ===== 初期化状態 =====
+ const isInitialized = ref(true);
 
- // Actions
- const initialize = async () => {
+ // ===== メッセージ関連 =====
+ const botMessages = ref<BotMessage[]>([]);
+
+ // ===== インスタンス =====
+ const scriptManager = new GameScriptManager(omikujiData);
+ const commentProcessor = new CommentProcessor(omikujiData, scriptManager);
+ const timerProcessor = new TimerProcessor(omikujiData);
+ const characterCollector = new CharacterCollector(omikujiData);
+
+ // ===== アクション =====
+
+ /**
+  * アプリケーションの初期化
+  */
+ const initializeApp = async (): Promise<boolean> => {
   try {
-   omikujiData.value = OmikujiDataSchema.parse(window.omikujiData);
-   config.value = ConfigUserSchema.parse(window.userConfig);
-   isInitialized.value = true;
-   return true;
+   const isInit = await GetUserComments(config).fetchComments((comments) => {
+    updateBotMessages(comments);
+    forceUpdate();
+   });
+   isInitialized.value = isInit;
+   if (isInit) startTimers();
+
+   return isInit;
   } catch (error) {
-   console.error('アプリの初期化エラー:', error);
+   console.error('初期化エラー:', error);
    isInitialized.value = false;
    return false;
   }
  };
 
- const setInitialized = (value: boolean) => {
-  isInitialized.value = value;
+ /**
+  * メッセージ処理の共通ロジック
+  */
+ const scheduleBotMessages = (processedMessages: BotMessage[]) => {
+  if (!processedMessages.length) return;
+
+  Promise.all(
+   processedMessages.map((message) => {
+    const delay = message.delaySeconds * 1000;
+    return new Promise<void>((resolve) => {
+     setTimeout(() => {
+      if (!botMessages.value.some((c) => c.id === message.id)) {
+       botMessages.value = [...botMessages.value, message];
+      }
+      resolve();
+     }, delay);
+    });
+   })
+  );
+ };
+
+ /**
+  * コメントでのおみくじ処理
+  */
+ const updateBotMessages = (comments: Comment[]) => {
+  if (!comments.length) {
+   botMessages.value = [];
+   return;
+  }
+
+  const processedMessages = commentProcessor.respondToComments(comments);
+  scheduleBotMessages(processedMessages);
+ };
+
+ /**
+  * タイマーでのおみくじ処理
+  */
+ const processTimerMessages = (processedMessages: BotMessage[]) => {
+  scheduleBotMessages(processedMessages);
+ };
+
+ // タイマー開始
+ const startTimers = () => {
+  timerProcessor.startTimers(processTimerMessages);
+ };
+ //  タイマー停止
+ const stopTimers = () => {
+  timerProcessor.stopTimers();
+ };
+
+ // メッセージクリア
+ const clearMessages = () => {
+  botMessages.value = [];
+ };
+
+ /**
+  * 強制更新（displayStoreから呼び出される）
+  */
+ const forceUpdate = () => {
+  // displayStoreの更新をトリガー
+  const displayStore = useDisplayStore();
+  displayStore.triggerUpdate();
  };
 
  return {
-  // State
-  isInitialized,
+  // 状態
   omikujiData,
   config,
+  isInitialized,
+  botMessages,
+  scriptManager,
+  commentProcessor,
+  timerProcessor,
+  characterCollector,
 
-  // Getters
-  isReady,
-  displaySettings,
-  godModeEnabled,
-  toastEnabled,
-  modeSwitchEnabled,
-
-  // Actions
-  initialize,
-  setInitialized
+  // アクション
+  initializeApp,
+  updateBotMessages,
+  processTimerMessages,
+  startTimers,
+  stopTimers,
+  clearMessages,
+  forceUpdate
  };
 });

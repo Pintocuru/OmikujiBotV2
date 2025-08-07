@@ -1,35 +1,61 @@
 // src/stores/useDisplayStore.ts
 import { defineStore } from 'pinia';
 import { ref, computed, watch, nextTick } from 'vue';
-import { useAppStore } from './useAppStore';
-import { useMessageStore } from './useMessageStore';
 import { DisplaySize } from '@shared/types';
+import { ScriptComponentPropsType, UserStatsType } from '@/types/';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
-import { ScriptComponentPropsType, UserStatsType } from '@/types';
+import { useAppStore } from './useAppStore';
 
 export const useDisplayStore = defineStore('display', () => {
+ // ===== 依存関係 =====
  const appStore = useAppStore();
- const messageStore = useMessageStore();
 
- // State
- const displaySize = ref<DisplaySize>('md');
- const currentModeIndex = ref<number>(0);
- const currentScriptKey = ref<string | null>(null);
- const updateTrigger = ref<number>(0);
- const selectedComponent = ref<string | null>(null);
+ // ===== 表示設定 =====
+ const displaySettings = appStore.omikujiData.displaySettings;
+ const displaySize = ref<DisplaySize>(displaySettings.base.displaySize);
+ const currentModeIndex = ref(0);
+ const updateTrigger = ref(0);
 
- // Getters
- const availableScriptKeys = computed(() => {
-  if (!messageStore.scriptManager) return [];
-  return messageStore.scriptManager.getAvailableScriptIds();
+ // ===== 計算されたプロパティ =====
+
+ /**
+  * コンポーネント選択設定
+  */
+ const selectedComponent = computed(() => {
+  return displaySettings.developer.selectComponent;
  });
 
- // ランキングデータを取得する関数
+ /**
+  * 有効なscriptKey配列を動的に構築
+  */
+ const availableScriptKeys = computed((): (string | null)[] => {
+  const keys: (string | null)[] = [];
+  // BOTちゃんモード
+  keys.push(null);
+  // アクティブなゲームスクリプト
+  const activeScripts = appStore.scriptManager.getActiveScripts();
+  activeScripts.forEach((scriptKey) => keys.push(scriptKey));
+  return keys;
+ });
+
+ /**
+  * 現在のscriptKey
+  */
+ const currentScriptKey = computed((): string | null => {
+  const keys = availableScriptKeys.value;
+  if (keys.length === 0) return null;
+  if (currentModeIndex.value >= keys.length) currentModeIndex.value = 0;
+  return keys[currentModeIndex.value];
+ });
+
+ /**
+  * ランキングデータを取得
+  */
  const getCurrentRankings = (scriptKey: string | null): UserStatsType[] => {
   if (!scriptKey) return [];
 
   try {
-   const rankings = messageStore.scriptManager.getRankingData(scriptKey);
+   const rankings = appStore.scriptManager.getRankingData(scriptKey);
    return rankings ? [...rankings] : [];
   } catch (error) {
    console.warn(`Failed to get rankings for ${scriptKey}:`, error);
@@ -37,17 +63,17 @@ export const useDisplayStore = defineStore('display', () => {
   }
  };
 
- const currentScriptGameProps = computed(() => {
+ /**
+  * 現在のゲームスクリプトの設定情報
+  */
+ const currentScriptGameProps = computed((): ScriptComponentPropsType => {
+  // updateTriggerを参照することで強制更新に対応
+  updateTrigger.value; // eslint-disable-line no-unused-expressions
+
   const scriptKey = currentScriptKey.value;
   const componentKey = scriptKey ? `game-${scriptKey}` : 'bot-mode';
 
-  if (
-   !scriptKey ||
-   !gameRankingData.value ||
-   !currentScriptKey.value ||
-   !messageStore.scriptManager ||
-   !appStore.omikujiData
-  ) {
+  if (!scriptKey || !gameScriptMap[scriptKey]) {
    return {
     componentKey: componentKey,
     componentConfig: null,
@@ -68,87 +94,131 @@ export const useDisplayStore = defineStore('display', () => {
   return props;
  });
 
- const gameRankingData = computed(() => {
-  const scriptKey = currentScriptKey.value;
-  if (!messageStore.scriptManager) return new Map();
-  return messageStore.scriptManager.getRankingData(scriptKey);
- });
+ // ===== アクション =====
 
- // Actions
+ /**
+  * 表示サイズ変更
+  */
  const setDisplaySize = (size: DisplaySize) => {
   displaySize.value = size;
+  triggerUpdate();
  };
 
- const forceUpdate = () => {
-  updateTrigger.value++;
+ /**
+  * 強制更新
+  */
+ const triggerUpdate = () => {
+  updateTrigger.value += 1;
  };
 
- const switchToMode = (scriptKey: string | null) => {
+ /**
+  * 特定のモードに直接切り替え
+  */
+ const switchToMode = async (scriptKey: string | null) => {
   const keys = availableScriptKeys.value;
   const targetIndex = keys.findIndex((key) => key === scriptKey);
 
   if (targetIndex !== -1) {
    currentModeIndex.value = targetIndex;
-   nextTick();
-   forceUpdate();
+   await nextTick();
+   triggerUpdate();
   }
  };
 
+ /**
+  * BOTちゃんモードに切り替え
+  */
  const switchToBotMode = () => {
-  currentScriptKey.value = null;
-  currentModeIndex.value = -1;
-  forceUpdate();
+  return switchToMode(null);
  };
 
+ /**
+  * ゲームスクリプトモードに切り替え
+  */
  const switchToScriptGame = (scriptKey: string) => {
-  const keys = availableScriptKeys.value;
-  const index = keys.indexOf(scriptKey);
-  if (index !== -1) {
-   switchToMode(scriptKey);
-  }
+  return switchToMode(scriptKey);
  };
 
- const initialize = () => {
-  // 初期モードの設定
-  const keys = availableScriptKeys.value;
-  if (keys.length > 0) {
-   currentScriptKey.value = keys[0];
-   currentModeIndex.value = 0;
-  } else {
-   currentScriptKey.value = null;
-   currentModeIndex.value = -1;
+ /**
+  * 初期化処理
+  */
+ const initializeDisplayMode = () => {
+  const selectedComp = displaySettings.developer.selectComponent;
+
+  if (selectedComp === 'omikujiBot') {
+   currentModeIndex.value = 0; // BOTモード
+  } else if (selectedComp === 'gameScript') {
+   const defaultKey = displaySettings.developer.defaultScriptKey;
+   const activeScripts = appStore.scriptManager.getActiveScripts();
+
+   if (defaultKey && activeScripts.includes(defaultKey)) {
+    const keys = availableScriptKeys.value;
+    const targetIndex = keys.findIndex((key) => key === defaultKey);
+    if (targetIndex !== -1) {
+     currentModeIndex.value = targetIndex;
+    }
+   } else if (activeScripts.length > 0) {
+    currentModeIndex.value = 1; // BOTモードの次
+   }
   }
-  forceUpdate();
+
+  triggerUpdate();
  };
+
+ /**
+  * 表示設定の取得
+  */
+ const getDisplaySettings = () => {
+  return {
+   ...displaySettings,
+   currentDisplaySize: displaySize.value
+  };
+ };
+
+ /**
+  * 現在のモード情報の取得
+  */
+ const getCurrentModeInfo = () => {
+  const keys = availableScriptKeys.value;
+  return {
+   currentIndex: currentModeIndex.value,
+   totalModes: keys.length,
+   currentScriptKey: currentScriptKey.value,
+   availableScriptKeys: [...keys],
+   selectedComponent: selectedComponent.value
+  };
+ };
+
+ // ===== ウォッチャー =====
 
  // currentScriptKeyが変更されたときに自動更新
  watch(
   currentScriptKey,
   () => {
-   forceUpdate();
+   triggerUpdate();
   },
   { immediate: false }
  );
 
  return {
-  // State
+  // 状態
   displaySize,
   currentModeIndex,
-  currentScriptKey,
   updateTrigger,
   selectedComponent,
-
-  // Getters
   availableScriptKeys,
+  currentScriptKey,
   currentScriptGameProps,
-  gameScriptMap: gameRankingData,
+  displaySettings,
 
-  // Actions
+  // アクション
   setDisplaySize,
-  forceUpdate,
+  triggerUpdate,
   switchToMode,
   switchToBotMode,
   switchToScriptGame,
-  initialize
+  initializeDisplayMode,
+  getDisplaySettings,
+  getCurrentModeInfo
  };
 });
