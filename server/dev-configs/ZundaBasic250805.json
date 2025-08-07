@@ -270,7 +270,7 @@
           "id": "b3c8e1aa-aaaf-4330-b13e-6f4d3cfa73cb",
           "name": "初見詐欺(考え中)",
           "description": "",
-          "weight": 7,
+          "weight": 9,
           "postActions": [
             {
               "characterKey": "zunda",
@@ -285,7 +285,7 @@
               "iconKey": "singing",
               "delaySeconds": 1.5,
               "wordParty": "!間抜け5",
-              "messageContent": "<<user>>さん…本当は初めてじゃないのだ。僕にはわかるのだ。",
+              "messageContent": "<<ZundaSyokenSagiThinking>>",
               "messageToast": ""
             }
           ]
@@ -294,7 +294,7 @@
           "id": "e3034923-d727-4cb8-b4c4-0e0f114532ad",
           "name": "初見詐欺(驚き)",
           "description": "",
-          "weight": 6,
+          "weight": 8,
           "postActions": [
             {
               "characterKey": "zunda",
@@ -309,7 +309,7 @@
               "iconKey": "surprised",
               "delaySeconds": 1.5,
               "wordParty": "!チーン1",
-              "messageContent": "<<user>>さん、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。",
+              "messageContent": "<<ZundaSyokenSagiSurprise>>",
               "messageToast": ""
             }
           ]
@@ -318,7 +318,7 @@
           "id": "e3034923-d727-4cb8-b4c4-0e0f114532ad",
           "name": "初見詐欺(歌)",
           "description": "",
-          "weight": 6,
+          "weight": 7,
           "postActions": [
             {
               "characterKey": "zunda",
@@ -333,7 +333,7 @@
               "iconKey": "surprised",
               "delaySeconds": 1.5,
               "wordParty": "!間抜け1",
-              "messageContent": "<<user>>さん、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。",
+              "messageContent": "<<ZundaSyokenSagiSwing>>",
               "messageToast": ""
             }
           ]
@@ -357,7 +357,7 @@
               "iconKey": "surprised",
               "delaySeconds": 1.5,
               "wordParty": "!間抜け1",
-              "messageContent": "<<user>>さん、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。",
+              "messageContent": "<<ZundaSyokenSagiSad>>",
               "messageToast": ""
             }
           ]
@@ -411,6 +411,91 @@
         },
         "comment": [
           "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "ZundaSyokenHonto": {
+      "id": "ZundaSyokenHonto",
+      "name": "ホントの初見",
+      "description": "初めてから5回までは歓迎してくれます",
+      "order": 3,
+      "editorColor": "#8B5CF6",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
+          "name": "ホントの初見1",
+          "description": "",
+          "weight": 4,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "21acb5f6-ba0e-4308-a8f0-26c261251ee4",
+          "name": "ホントの初見2",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
           "所見",
           "はじめまして"
         ]
@@ -1180,91 +1265,6 @@
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
-    },
-    "ZundaSyokenHonto": {
-      "id": "ZundaSyokenHonto",
-      "name": "ホントの初見",
-      "description": "初めてから5回までは歓迎してくれます",
-      "order": 3,
-      "editorColor": "#8B5CF6",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "name": "ホントの初見1",
-          "description": "",
-          "weight": 4,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "21acb5f6-ba0e-4308-a8f0-26c261251ee4",
-          "name": "ホントの初見2",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
     }
   },
   "timers": {
@@ -1411,7 +1411,7 @@
     "zundaOmikuji01": {
       "id": "zundaOmikuji01",
       "name": "ずんだもんのおみくじ:大吉",
-      "order": 1,
+      "order": 0,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1443,7 +1443,7 @@
     "zundaOmikuji02": {
       "id": "zundaOmikuji02",
       "name": "ずんだもんのおみくじ:吉",
-      "order": 2,
+      "order": 1,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1475,7 +1475,7 @@
     "zundaOmikuji03": {
       "id": "zundaOmikuji03",
       "name": "ずんだもんのおみくじ:中吉",
-      "order": 3,
+      "order": 2,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1507,7 +1507,7 @@
     "zundaOmikuji04": {
       "id": "zundaOmikuji04",
       "name": "ずんだもんのおみくじ:小吉",
-      "order": 4,
+      "order": 3,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1539,7 +1539,7 @@
     "zundaOmikuji05": {
       "id": "zundaOmikuji05",
       "name": "ずんだもんのおみくじ:末吉",
-      "order": 5,
+      "order": 4,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1571,7 +1571,7 @@
     "zundaOmikuji06": {
       "id": "zundaOmikuji06",
       "name": "ずんだもんのおみくじ:凶",
-      "order": 6,
+      "order": 5,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1600,30 +1600,10 @@
         }
       ]
     },
-    "1754526661112": {
-      "id": "1754526661112",
-      "name": "ずんだもんの初見詐欺(考え中)",
-      "order": 7,
-      "editorColor": "#F59E0B",
-      "values": [
-        {
-          "weight": 6,
-          "content": "<<user>>さん…本当は初めてじゃないのだ。僕にはわかるのだ。"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>さん、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "あれ？<<user>>さん、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
-        }
-      ]
-    },
     "zundaOmikuji07": {
       "id": "zundaOmikuji07",
       "name": "ずんだもんのおみくじ:残念賞",
-      "order": 8,
+      "order": 6,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1652,11 +1632,31 @@
         }
       ]
     },
-    "1754526753307": {
-      "id": "1754526753307",
+    "ZundaSyokenSagiThinking": {
+      "id": "ZundaSyokenSagiThinking",
+      "name": "ずんだもんの初見詐欺(考え中)",
+      "order": 7,
+      "editorColor": "#8B5CF6",
+      "values": [
+        {
+          "weight": 6,
+          "content": "<<user>>さん…本当は初めてじゃないのだ。僕にはわかるのだ。"
+        },
+        {
+          "weight": 5,
+          "content": "<<user>>さん、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
+        },
+        {
+          "weight": 4,
+          "content": "あれ？<<user>>さん、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
+        }
+      ]
+    },
+    "ZundaSyokenSagiSurprise": {
+      "id": "ZundaSyokenSagiSurprise",
       "name": "ずんだもんの初見詐欺(驚き)",
-      "order": 9,
-      "editorColor": "#F59E0B",
+      "order": 8,
+      "editorColor": "#8B5CF6",
       "values": [
         {
           "weight": 6,
@@ -1672,11 +1672,11 @@
         }
       ]
     },
-    "1754526808176": {
-      "id": "1754526808176",
+    "ZundaSyokenSagiSwing": {
+      "id": "ZundaSyokenSagiSwing",
       "name": "ずんだもんの初見詐欺(歌)",
-      "order": 10,
-      "editorColor": "#F59E0B",
+      "order": 9,
+      "editorColor": "#8B5CF6",
       "values": [
         {
           "weight": 6,
@@ -1688,11 +1688,11 @@
         }
       ]
     },
-    "1754526830855": {
-      "id": "1754526830855",
+    "ZundaSyokenSagiSad": {
+      "id": "ZundaSyokenSagiSad",
       "name": "ずんだもんの初見詐欺(悲しみ)",
-      "order": 11,
-      "editorColor": "#F59E0B",
+      "order": 10,
+      "editorColor": "#8B5CF6",
       "values": [
         {
           "weight": 5,

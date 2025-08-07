@@ -8,9 +8,8 @@ import { CooldownManager } from './CooldownManager';
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker';
 
 interface RuleProcessResult {
- shouldSkip: boolean;
+ isCommentTriggered: boolean; // コメントによって起動したかをチェック
  botMessages: BotMessage[];
- isDuplicateComment: boolean;
 }
 
 export class UserCommentProcessor {
@@ -34,27 +33,22 @@ export class UserCommentProcessor {
   */
  generateBotMessages(comment: Comment): BotMessage[] {
   try {
-   const botMessages: BotMessage[] = [];
-   let isDuplicateComment = false;
-
    const sortedRules = this.getSortedEnabledRules();
 
    for (const rule of sortedRules) {
-    // ルールチェック
-    const result = this.runRuleExecution(comment, rule, isDuplicateComment);
+    const result = this.processRule(comment, rule);
 
-    botMessages.push(...result.botMessages);
-    isDuplicateComment = result.isDuplicateComment;
-
-    if (result.shouldSkip) continue;
-
-    // コメントルールが処理された場合、クールダウンタイムを更新
-    if (rule.threshold.conditions.includes('comment')) {
-     this.cooldownManager.updateLastProcessedTime();
+    // ルールが成功し、botメッセージが生成された場合はここで終了
+    if (result.botMessages.length > 0) {
+     if (result.isCommentTriggered) {
+      this.cooldownManager.updateLastProcessedTime();
+     }
+     return result.botMessages;
     }
    }
 
-   return botMessages;
+   // どのルールにもマッチしなかった場合
+   return [];
   } catch (error) {
    console.error('ユーザーコメント処理エラー:', error);
    return [];
@@ -62,45 +56,35 @@ export class UserCommentProcessor {
  }
 
  /**
-  * ルールチェック
+  * 単一ルールの処理
   */
- private runRuleExecution(
-  comment: Comment,
-  rule: CommentRuleType,
-  isDuplicateComment: boolean
- ): RuleProcessResult {
-  // 1. Thresholdチェック
-  const validationResult = this.validateThreshold(comment, rule, isDuplicateComment);
-
-  if (!validationResult) {
-   return {
-    shouldSkip: true,
-    botMessages: [],
-    isDuplicateComment
-   };
+ private processRule(comment: Comment, rule: CommentRuleType): RuleProcessResult {
+  // 1. 閾値条件チェック
+  if (!this.validateThreshold(comment, rule)) {
+   return { isCommentTriggered: false, botMessages: [] };
   }
 
-  // 2. 制限チェック
+  // 2. 制限チェック（ユーザーID重複、クールダウンなど）
   const restrictionResult = this.restrictionChecker.checkRestrictions(comment, rule);
-
   if (restrictionResult.isBlocked) {
    return {
-    shouldSkip: true,
-    botMessages: restrictionResult.toastMessages,
-    isDuplicateComment: true
+    isCommentTriggered: false,
+    botMessages: restrictionResult.toastMessages
    };
   }
 
   // 3. おみくじ実行
-  const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule, isDuplicateComment);
+  const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule);
 
   // 4. ユーザー情報の更新
   this.cooldownManager.updateUserId(comment.data.userId, rule.id);
 
+  // チャットワード起動かどうかを判定
+  const isCommentTriggered = rule.threshold.conditions.includes('comment');
+
   return {
-   shouldSkip: false,
-   botMessages: omikujiMessages,
-   isDuplicateComment: true
+   isCommentTriggered,
+   botMessages: omikujiMessages
   };
  }
 
@@ -116,16 +100,7 @@ export class UserCommentProcessor {
  /**
   * コメントルールの条件チェック
   */
- private validateThreshold(
-  comment: Comment,
-  rule: CommentRuleType,
-  isDuplicateComment: boolean
- ): boolean {
-  const isCommentBased = rule.threshold.conditions.includes('comment');
-  // 重複コメントで、かつコメント条件を含む場合はスキップ
-  if (isDuplicateComment && isCommentBased) return false;
-
-  // コメント条件チェック
+ private validateThreshold(comment: Comment, rule: CommentRuleType): boolean {
   return checkAllConditions(comment, rule.threshold);
  }
 }

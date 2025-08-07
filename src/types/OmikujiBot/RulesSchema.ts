@@ -35,7 +35,6 @@ export const BaseRuleCommonSchema = z.object({
 // コメントルールの基本スキーマ
 export const BaseCommentRuleSchema = z.object({
  ...BaseRuleCommonSchema.shape,
-
  ruleType: z.literal('comments').default('comments').catch('comments'), // ルールタイプ（コメント）
  threshold: CommentThresholdSchema.catch(CommentThresholdSchema.parse({})), // コメント発火条件
  scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
