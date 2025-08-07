@@ -17,7 +17,7 @@
 
   <div v-if="devStore.availableFiles.length > 0" class="space-y-1">
    <div class="text-xs">保存済みファイル:</div>
-   <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
     <DevFileItem
      v-for="file in devStore.availableFiles"
      :key="file.name"

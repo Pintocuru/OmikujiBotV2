@@ -242,7 +242,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -265,7 +265,7 @@
       "id": "HondaJanken",
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
-      "order": 6,
+      "order": 2,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -839,7 +839,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -860,7 +860,7 @@
       "id": "HondaJankenRock",
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-      "order": 7,
+      "order": 3,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -1034,7 +1034,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -1057,7 +1057,7 @@
       "id": "HondaJankenScissors",
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
-      "order": 8,
+      "order": 4,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -1231,7 +1231,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -1253,7 +1253,7 @@
       "id": "HondaJankenPaper",
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
-      "order": 9,
+      "order": 5,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -1427,7 +1427,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -1450,8 +1450,8 @@
       "id": "WelcomeSagi",
       "name": "初見詐欺",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
-      "order": 10,
-      "editorColor": "#10B981",
+      "order": 6,
+      "editorColor": "#8B5CF6",
       "isEnabled": true,
       "omikuji": [
         {
@@ -1569,7 +1569,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "tc",
           "value": 6
         },
@@ -1591,8 +1591,8 @@
       "id": "WelcomeHonto",
       "name": "ホントの初見",
       "description": "初めてから5回までは歓迎してくれます",
-      "order": 11,
-      "editorColor": "#10B981",
+      "order": 7,
+      "editorColor": "#8B5CF6",
       "isEnabled": true,
       "omikuji": [
         {
@@ -1654,7 +1654,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "max",
+          "comparison": "upperBound",
           "unit": "tc",
           "value": 5
         },
@@ -1672,11 +1672,101 @@
         "isRepeatAllowed": true
       }
     },
+    "CheckNumber": {
+      "id": "CheckNumber",
+      "name": "コメント数表示",
+      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
+      "order": 8,
+      "editorColor": "#10B981",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "20071f2f-cbb8-4882-bb98-4edc2ceb9137",
+          "name": "霊夢",
+          "description": "",
+          "weight": 14,
+          "postActions": [
+            {
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ"
+            }
+          ]
+        },
+        {
+          "id": "0bba2ccc-647f-4f47-b1f6-51522a7a5ee0",
+          "name": "魔理沙",
+          "description": "",
+          "weight": 5,
+          "postActions": [
+            {
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ"
+            }
+          ]
+        },
+        {
+          "id": "31d1c216-5e7e-4740-b56c-8c70b13d9af5",
+          "name": "魔理沙 (おふざけ)",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)"
+            },
+            {
+              "characterKey": "reimu",
+              "iconKey": "angry",
+              "delaySeconds": 5,
+              "wordParty": "!ビシッとツッコミ1",
+              "messageContent": "",
+              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "コメント"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 0,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
     "ReimuGiftLow": {
       "id": "ReimuGiftLow",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
-      "order": 13,
+      "order": 9,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -1758,7 +1848,7 @@
           "green"
         ],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -1776,7 +1866,7 @@
       "id": "ReimuGiftMiddle",
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
-      "order": 14,
+      "order": 10,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -1824,7 +1914,7 @@
           "yellow"
         ],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -1842,7 +1932,7 @@
       "id": "ReimuGiftHigh",
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
-      "order": 15,
+      "order": 11,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -1893,163 +1983,9 @@
           "purple"
         ],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "CheckNumber": {
-      "id": "CheckNumber",
-      "name": "コメント数表示",
-      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
-      "order": 12,
-      "editorColor": "#10B981",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "20071f2f-cbb8-4882-bb98-4edc2ceb9137",
-          "name": "霊夢",
-          "description": "",
-          "weight": 14,
-          "postActions": [
-            {
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ"
-            }
-          ]
-        },
-        {
-          "id": "0bba2ccc-647f-4f47-b1f6-51522a7a5ee0",
-          "name": "魔理沙",
-          "description": "",
-          "weight": 5,
-          "postActions": [
-            {
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ"
-            }
-          ]
-        },
-        {
-          "id": "31d1c216-5e7e-4740-b56c-8c70b13d9af5",
-          "name": "魔理沙 (おふざけ)",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)"
-            },
-            {
-              "characterKey": "reimu",
-              "iconKey": "angry",
-              "delaySeconds": 5,
-              "wordParty": "!ビシッとツッコミ1",
-              "messageContent": "",
-              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "min",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "コメント"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "UserCountTrigger": {
-      "id": "UserCountTrigger",
-      "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "order": 17,
-      "editorColor": "#F97316",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "8a78fa08-850d-4e17-98bc-458ba6a8f2bb",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "weight": 4,
-          "postActions": [
-            {
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
-            }
-          ]
-        },
-        {
-          "id": "966fb25a-4a48-496b-ad10-5fc018e35d88",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
         },
         "comment": []
       },
@@ -2065,7 +2001,7 @@
       "id": "StreamCountTrigger",
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "order": 16,
+      "order": 12,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -2125,11 +2061,75 @@
         "isRepeatAllowed": false
       }
     },
+    "UserCountTrigger": {
+      "id": "UserCountTrigger",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "order": 13,
+      "editorColor": "#F97316",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "8a78fa08-850d-4e17-98bc-458ba6a8f2bb",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "weight": 4,
+          "postActions": [
+            {
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+            }
+          ]
+        },
+        {
+          "id": "966fb25a-4a48-496b-ad10-5fc018e35d88",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 0,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
     "FirstCounterSyoken": {
       "id": "FirstCounterSyoken",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
-      "order": 18,
+      "order": 14,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -2241,7 +2241,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -2259,7 +2259,7 @@
       "id": "FirstCounterAgain",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "order": 19,
+      "order": 15,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -2339,7 +2339,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -2357,7 +2357,7 @@
       "id": "FirstCounterFirstVisit",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "order": 20,
+      "order": 16,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -2437,7 +2437,7 @@
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "min",
+          "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
@@ -2457,7 +2457,7 @@
       "id": "ViewCountDisplay",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
-      "order": 0,
+      "order": 1,
       "editorColor": "#3B82F6",
       "isEnabled": true,
       "omikuji": [
@@ -2502,7 +2502,7 @@
       "id": "PromotionToast",
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
-      "order": 1,
+      "order": 2,
       "editorColor": "#3B82F6",
       "isEnabled": true,
       "omikuji": [
@@ -2593,186 +2593,6 @@
     }
   },
   "placeholders": {
-    "HondaJankenA1": {
-      "id": "HondaJankenA1",
-      "name": "じゃんけん:グー1",
-      "order": 10,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "負けは次につながるチャンスです!ネバーギブアップ!"
-        },
-        {
-          "weight": 1,
-          "content": "じゃんけんの向こう側に何があるか、考えてみてください。"
-        },
-        {
-          "weight": 1,
-          "content": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。"
-        },
-        {
-          "weight": 1,
-          "content": "何事も準備がすべて。それを怠っている事がバレてますよ。"
-        }
-      ]
-    },
-    "HondaJankenA2": {
-      "id": "HondaJankenA2",
-      "name": "じゃんけん:グー2",
-      "order": 11,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。"
-        },
-        {
-          "weight": 1,
-          "content": "ちゃんと分析してます?じっくり結果に向き合ってください。"
-        },
-        {
-          "weight": 1,
-          "content": "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-        }
-      ]
-    },
-    "HondaJankenName": {
-      "id": "HondaJankenName",
-      "name": "じゃんけん:名前",
-      "order": 8,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "マリサ キリサメ"
-        }
-      ]
-    },
-    "HondaJankenB1": {
-      "id": "HondaJankenB1",
-      "name": "じゃんけん:チョキ1",
-      "order": 12,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。"
-        },
-        {
-          "weight": 1,
-          "content": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。"
-        },
-        {
-          "weight": 1,
-          "content": "運を味方につけるのは、地道な努力ですよ。"
-        },
-        {
-          "weight": 1,
-          "content": "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-        }
-      ]
-    },
-    "HondaJankenB2": {
-      "id": "HondaJankenB2",
-      "name": "じゃんけん:チョキ2",
-      "order": 13,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。"
-        },
-        {
-          "weight": 1,
-          "content": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?"
-        },
-        {
-          "weight": 1,
-          "content": "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-        }
-      ]
-    },
-    "HondaJankenC1": {
-      "id": "HondaJankenC1",
-      "name": "じゃんけん:パー1",
-      "order": 14,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。"
-        },
-        {
-          "weight": 1,
-          "content": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。"
-        },
-        {
-          "weight": 1,
-          "content": "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!"
-        },
-        {
-          "weight": 1,
-          "content": "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-        }
-      ]
-    },
-    "HondaJankenC2": {
-      "id": "HondaJankenC2",
-      "name": "じゃんけん:パー2",
-      "order": 15,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。"
-        },
-        {
-          "weight": 1,
-          "content": "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!"
-        },
-        {
-          "weight": 1,
-          "content": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-        }
-      ]
-    },
-    "HondaJankenV": {
-      "id": "HondaJankenV",
-      "name": "じゃんけん:勝利",
-      "order": 16,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。"
-        },
-        {
-          "weight": 1,
-          "content": "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!"
-        },
-        {
-          "weight": 1,
-          "content": "明日、<<HondaJankenOre>>が勝つからまたやろう!"
-        },
-        {
-          "weight": 1,
-          "content": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-        }
-      ]
-    },
-    "HondaJankenOre": {
-      "id": "HondaJankenOre",
-      "name": "じゃんけん:名前(一人称)",
-      "order": 9,
-      "editorColor": "#3B82F6",
-      "values": [
-        {
-          "weight": 1,
-          "content": "俺"
-        }
-      ]
-    },
     "ReimuOmikuji01": {
       "id": "ReimuOmikuji01",
       "name": "霊夢のおみくじ:大吉",
@@ -3016,23 +2836,186 @@
           "content": "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
         }
       ]
-    }
-  },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
     },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "order": 8,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "マリサ キリサメ"
+        }
+      ]
     },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
+    "HondaJankenOre": {
+      "id": "HondaJankenOre",
+      "name": "じゃんけん:名前(一人称)",
+      "order": 9,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "俺"
+        }
+      ]
+    },
+    "HondaJankenA1": {
+      "id": "HondaJankenA1",
+      "name": "じゃんけん:グー1",
+      "order": 10,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "負けは次につながるチャンスです!ネバーギブアップ!"
+        },
+        {
+          "weight": 1,
+          "content": "じゃんけんの向こう側に何があるか、考えてみてください。"
+        },
+        {
+          "weight": 1,
+          "content": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。"
+        },
+        {
+          "weight": 1,
+          "content": "何事も準備がすべて。それを怠っている事がバレてますよ。"
+        }
+      ]
+    },
+    "HondaJankenA2": {
+      "id": "HondaJankenA2",
+      "name": "じゃんけん:グー2",
+      "order": 11,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。"
+        },
+        {
+          "weight": 1,
+          "content": "ちゃんと分析してます?じっくり結果に向き合ってください。"
+        },
+        {
+          "weight": 1,
+          "content": "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
+        }
+      ]
+    },
+    "HondaJankenB1": {
+      "id": "HondaJankenB1",
+      "name": "じゃんけん:チョキ1",
+      "order": 12,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。"
+        },
+        {
+          "weight": 1,
+          "content": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。"
+        },
+        {
+          "weight": 1,
+          "content": "運を味方につけるのは、地道な努力ですよ。"
+        },
+        {
+          "weight": 1,
+          "content": "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
+        }
+      ]
+    },
+    "HondaJankenB2": {
+      "id": "HondaJankenB2",
+      "name": "じゃんけん:チョキ2",
+      "order": 13,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。"
+        },
+        {
+          "weight": 1,
+          "content": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?"
+        },
+        {
+          "weight": 1,
+          "content": "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
+        }
+      ]
+    },
+    "HondaJankenC1": {
+      "id": "HondaJankenC1",
+      "name": "じゃんけん:パー1",
+      "order": 14,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。"
+        },
+        {
+          "weight": 1,
+          "content": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。"
+        },
+        {
+          "weight": 1,
+          "content": "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!"
+        },
+        {
+          "weight": 1,
+          "content": "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
+        }
+      ]
+    },
+    "HondaJankenC2": {
+      "id": "HondaJankenC2",
+      "name": "じゃんけん:パー2",
+      "order": 15,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。"
+        },
+        {
+          "weight": 1,
+          "content": "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!"
+        },
+        {
+          "weight": 1,
+          "content": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
+        }
+      ]
+    },
+    "HondaJankenV": {
+      "id": "HondaJankenV",
+      "name": "じゃんけん:勝利",
+      "order": 16,
+      "editorColor": "#3B82F6",
+      "values": [
+        {
+          "weight": 1,
+          "content": "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。"
+        },
+        {
+          "weight": 1,
+          "content": "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!"
+        },
+        {
+          "weight": 1,
+          "content": "明日、<<HondaJankenOre>>が勝つからまたやろう!"
+        },
+        {
+          "weight": 1,
+          "content": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+        }
+      ]
     }
   },
   "characters": {
@@ -3040,7 +3023,7 @@
       "id": "reimu",
       "name": "ゆっくり霊夢",
       "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
-      "order": 101,
+      "order": 1,
       "editorColor": "#EC4899",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3081,7 +3064,7 @@
       "id": "marisa",
       "name": "ゆっくり魔理沙",
       "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
-      "order": 102,
+      "order": 2,
       "editorColor": "#84CC16",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3117,6 +3100,23 @@
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
       }
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
     }
   },
   "displaySettings": {

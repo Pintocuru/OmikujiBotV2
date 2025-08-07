@@ -3,7 +3,7 @@
  <div class="card bg-base-300 mt-4">
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">タイマー設定</div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
    <!-- プリセット選択 -->
    <SettingItem
     label="実行間隔(30秒～1時間)"
@@ -21,7 +21,7 @@
    <!-- isBaseZero トグル -->
    <SettingItem
     label="基準時刻を0分0秒に固定"
-    description="時報などで使います"
+    description="時報などで使えます"
     :showReset="false"
     containerClass="form-control"
    >
