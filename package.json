@@ -1,6 +1,6 @@
 {
  "name": "omikuji-bot",
- "version": "0.8.0-bate03",
+ "version": "0.8.0-bate04",
  "description": "おみくじ付きBOTジェネレーター",
  "scripts": {
   "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
@@ -8,7 +8,8 @@
   "devApi:omikujiBot": "tsx server/start-dev-server.ts",
   "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
   "json2js:omikujiBot": "tsx tools/CreateOmikujiData.ts",
-  "build:omikujiBot": "tsx build.ts"
+  "buildSingle:omikujiBot": "tsx build.ts",
+  "build:omikujiBot": "npm run json2js:omikujiBot && npm run buildSingle:omikujiBot"
  },
  "author": "Pintocuru(せすじピンとしてます)",
  "license": "Apache-2.0",
