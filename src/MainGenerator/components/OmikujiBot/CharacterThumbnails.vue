@@ -1,7 +1,6 @@
 <!-- src/MainGenerator/components/CharacterControlPanel.vue -->
 <template>
  <div class="fixed bottom-4 right-4 z-50">
-  <!-- キャラクター画像群 -->
   <div class="flex items-end gap-3" style="flex-direction: row-reverse">
    <div
     v-for="(character, index) in characters"
@@ -15,7 +14,6 @@
      class="relative rounded-full overflow-hidden transition-all duration-300 shadow-lg hover:scale-120"
      :class="[index === 0 ? sizeConfig.primaryAvatar : sizeConfig.secondaryAvatar]"
     >
-     <!-- キャラクター画像 -->
      <img
       :src="getImagePath(character.image[currentExpressions[index]])"
       :alt="`${character.name}のアイコン`"
@@ -34,26 +32,23 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { DisplaySize } from '@shared/types';
 import {
- BotMessage,
  characterEmotions,
  CharacterEmotionType,
  CharacterType,
  PostActionSchema,
- PostActionType,
  getImagePath
 } from '@/types/';
+import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/';
 
-// Props
-const props = defineProps<{
- characters: CharacterType[];
- displaySize: DisplaySize;
- generateTestMessage: (postAction: PostActionType, isToast: boolean) => BotMessage;
-}>();
+// Piniaストアの使用
+const appStore = useAppStore();
+const displayStore = useDisplayStore();
 
-// Emits
-const emit = defineEmits<{
- testMessage: [message: BotMessage];
-}>();
+// リアクティブ変数
+const characters = computed(() => appStore.characterCollector.getUsedCharacterPresets());
+const displaySize = computed(() => displayStore.displaySize);
+const currentExpressions = ref<CharacterEmotionType[]>([]);
+const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null);
 
 // サイズ設定の定数
 const SIZE_CONFIG = {
@@ -79,12 +74,7 @@ const SIZE_CONFIG = {
  }
 } as const;
 
-// リアクティブ変数
-const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize]);
-const characters = computed(() => props.characters);
-const currentExpressions = ref<CharacterEmotionType[]>([]);
-const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null);
-const menuTimer = ref<number | null>(null);
+const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value]);
 
 // 初期化
 onMounted(() => {
@@ -96,7 +86,6 @@ onMounted(() => {
 // クリーンアップ
 onUnmounted(() => {
  if (expressionTimer.value) clearTimeout(expressionTimer.value);
- if (menuTimer.value) clearTimeout(menuTimer.value);
 });
 
 // 表情サイクルの開始（5秒に1回抽選を行い、5%で特別な表情）
@@ -117,10 +106,8 @@ const startExpressionCycle = () => {
 // キャラクタークリック時の処理
 const handleCharacterClick = (character: CharacterType, isToast: boolean) => {
  try {
-  // PostActionSchemaを使用してテストメッセージ用のデータを作成
   const changeChance = Math.random() < 0.5;
   const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)];
-
   const postAction = PostActionSchema.parse({
    characterKey: character.id,
    iconKey: changeChance ? randomEmotion : 'default',
@@ -129,11 +116,9 @@ const handleCharacterClick = (character: CharacterType, isToast: boolean) => {
     : `${character.name}のトーストメッセージです！`
   });
 
-  // テストメッセージを生成
-  const testMessage = props.generateTestMessage(postAction, isToast);
-
-  // 親コンポーネントに通知
-  emit('testMessage', testMessage);
+  // テストメッセージを生成し、ストアに追加
+  const testMessage = appStore.characterCollector.generateTestMessage(postAction, isToast);
+  appStore.addBotMessage(testMessage);
  } catch (error) {
   console.error('テストメッセージの生成に失敗しました:', error);
  }

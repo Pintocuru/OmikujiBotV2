@@ -2,12 +2,7 @@
 <template>
  <div v-if="appStore.isInitialized">
   <!-- BOTメッセージ表示 -->
-  <ViewBotMessage
-   v-if="displayStore.currentScriptKey === null"
-   :botMessages="appStore.botMessages"
-   :displaySize="displayStore.displaySize"
-   :animationType="'slideUp'"
-  />
+  <ViewBotMessage v-if="displayStore.currentScriptKey === null" />
 
   <!-- Scriptsゲーム表示 -->
   <GameRankingViewer
@@ -16,32 +11,13 @@
   />
 
   <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
-  <DisplayControlPanel
-   v-if="appStore.omikujiData.displaySettings.developer.godModeEnabled"
-   :availableScriptKeys="displayStore.availableScriptKeys"
-   :currentScriptKey="displayStore.currentScriptKey"
-   :displaySize="displayStore.displaySize"
-   :switchToMode="displayStore.switchToMode"
-   :setDisplaySize="displayStore.setDisplaySize"
-  />
+  <DisplayControlPanel v-if="developer.godModeEnabled" />
 
   <!-- トースト表示 -->
-  <ViewBotToast
-   v-if="appStore.omikujiData.displaySettings.base.toastEnabled"
-   :botMessages="appStore.botMessages"
-   :displaySize="displayStore.displaySize"
-  />
+  <ViewBotToast v-if="base.toastEnabled" />
 
   <!-- キャラクターサムネイル -->
-  <CharacterThumbnails
-   v-if="appStore.omikujiData.displaySettings.base.modeSwitchEnabled"
-   :characters="appStore.characterCollector.getUsedCharacterPresets()"
-   :displaySize="displayStore.displaySize"
-   :generateTestMessage="
-    appStore.characterCollector.generateTestMessage.bind(appStore.characterCollector)
-   "
-   @testMessage="handleTestMessage"
-  />
+  <CharacterThumbnails v-if="base.modeSwitchEnabled" />
  </div>
  <!-- わんコメが起動されていない場合のエラー表示 -->
  <ErrorInitComponent v-else :pluginUid="null" />
@@ -49,7 +25,6 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { BotMessage } from '@/types/';
 import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue';
 import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue';
 import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue';
@@ -61,19 +36,12 @@ import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/';
 // Piniaストアの使用
 const appStore = useAppStore();
 const displayStore = useDisplayStore();
-
-// イベントハンドラー
-const handleTestMessage = (message: BotMessage) => {
- appStore.botMessages = [...appStore.botMessages, message];
-};
+const { base, developer } = appStore.omikujiData.displaySettings;
 
 // 初期化処理
 onMounted(async () => {
- // アプリケーションの初期化
- await appStore.initializeApp();
-
- // 表示モードの初期化
- displayStore.initializeDisplayMode();
+ await appStore.initializeApp(); // アプリケーションの初期化
+ displayStore.initializeDisplayMode(); // 表示モードの初期化
 });
 </script>
 

@@ -86,6 +86,8 @@ import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useB
 import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCommentAnimation';
 import type { AnimationType } from '@/types/BotComponents/animation';
 import { DisplaySize } from '@shared/types';
+import { useAppStore, useDisplayStore } from '@/MainGenerator/stores';
+import { storeToRefs } from 'pinia';
 
 // サイズ設定の定数
 const SIZE_CONFIG = {
@@ -96,22 +98,27 @@ const SIZE_CONFIG = {
  xl: { text: 'text-3xl', avatar: 'w-96 h-96', avatarTop: '320px', spacing: 100 }
 } as const;
 
-const props = defineProps<{
- botMessages: BotMessage[];
- displaySize: DisplaySize;
- animationType?: AnimationType; // 新しいプロパティ
-}>();
+// Piniaストアの使用
+const appStore = useAppStore();
+const displayStore = useDisplayStore();
+
+// リアクティブ変数
+const { botMessages } = storeToRefs(appStore);
+const displaySize = computed(() => displayStore.displaySize);
+
+// TODO:実装
+const animationType = computed(() => 'slideUp');
 
 const { displayedComments, handleImageError, start, stop } = useBotCommentDisplay(
- toRef(props, 'botMessages'),
+ botMessages,
  'comment'
 );
 
 // アニメーション関連
-const { animateEnter, animateLeave } = useCommentAnimation(props.animationType || 'slideUp');
+const { animateEnter, animateLeave } = useCommentAnimation(animationType.value as AnimationType);
 
 // サイズ設定の取得
-const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize]);
+const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value]);
 
 // brightness計算
 const getBrightness = (index: number) => Math.max(100 - index * 15, 30);

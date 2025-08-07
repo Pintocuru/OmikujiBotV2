@@ -12,23 +12,21 @@ import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { useDisplayStore } from './useDisplayStore';
 
 export const useAppStore = defineStore('app', () => {
- // ===== 基本設定 =====
+ // 基本設定
  const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
  const config = ConfigUserSchema.parse(window.userConfig);
 
- // ===== 初期化状態 =====
+ // 初期化状態
  const isInitialized = ref(true);
 
- // ===== メッセージ関連 =====
+ // メッセージ関連
  const botMessages = ref<BotMessage[]>([]);
 
- // ===== インスタンス =====
+ // インスタンス
  const scriptManager = new GameScriptManager(omikujiData);
  const commentProcessor = new CommentProcessor(omikujiData, scriptManager);
  const timerProcessor = new TimerProcessor(omikujiData);
  const characterCollector = new CharacterCollector(omikujiData);
-
- // ===== アクション =====
 
  /**
   * アプリケーションの初期化
@@ -69,6 +67,11 @@ export const useAppStore = defineStore('app', () => {
     });
    })
   );
+ };
+
+ // botMessageを追加
+ const addBotMessage = (message: BotMessage) => {
+  botMessages.value = [...botMessages.value, message];
  };
 
  /**
@@ -124,6 +127,7 @@ export const useAppStore = defineStore('app', () => {
   commentProcessor,
   timerProcessor,
   characterCollector,
+  addBotMessage,
 
   // アクション
   initializeApp,

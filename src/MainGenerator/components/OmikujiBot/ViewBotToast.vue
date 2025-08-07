@@ -34,12 +34,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage } from '@/types/';
+import { computed, onMounted, onUnmounted } from 'vue';
 import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage';
-import { DisplaySize } from '@shared/types';
+import { useAppStore, useDisplayStore } from '@/MainGenerator/stores';
+import { storeToRefs } from 'pinia';
 
-// サイズ設定の定数（OBS用により狭く調整）
+// ストアから必要な情報を取得
+const appStore = useAppStore();
+const displayStore = useDisplayStore();
+const { botMessages } = storeToRefs(appStore);
+const { displaySize } = storeToRefs(displayStore);
+
+// サイズ設定の定数
 const SIZE_CONFIG = {
  xs: { bottom: 'bottom-10', text: 'text-xs leading-tight', avatar: 'w-6 h-6', width: '250px' },
  sm: { bottom: 'bottom-14', text: 'text-sm leading-tight', avatar: 'w-8 h-8', width: '300px' },
@@ -48,18 +54,11 @@ const SIZE_CONFIG = {
  xl: { bottom: 'bottom-26', text: 'text-xl leading-tight', avatar: 'w-14 h-14', width: '420px' }
 } as const;
 
-const props = defineProps<{
- botMessages: BotMessage[];
- displaySize: DisplaySize;
-}>();
-
-const { displayedComments, removeItem, start, stop } = useBotCommentDisplay(
- toRef(props, 'botMessages'),
- 'toast'
-);
+// コメント表示ロジック（トースト用）
+const { displayedComments, removeItem, start, stop } = useBotCommentDisplay(botMessages, 'toast');
 
 // サイズ設定の取得
-const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize]);
+const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value]);
 
 onMounted(start);
 onUnmounted(stop);

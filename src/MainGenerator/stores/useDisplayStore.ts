@@ -98,6 +98,7 @@ export const useDisplayStore = defineStore('display', () => {
   * 表示サイズ変更
   */
  const setDisplaySize = (size: DisplaySize) => {
+  appStore.clearMessages(); // Botコメントを削除
   displaySize.value = size;
   triggerUpdate();
  };

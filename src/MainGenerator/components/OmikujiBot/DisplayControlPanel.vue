@@ -52,14 +52,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { DisplaySize, displaySizeLabels } from '@shared/types';
+import { useDisplayStore } from '@/MainGenerator/stores';
+import { storeToRefs } from 'pinia';
 
-const props = defineProps<{
- availableScriptKeys: (string | null)[];
- currentScriptKey: string | null;
- displaySize: DisplaySize;
- switchToMode: (scriptKey: string | null) => void;
- setDisplaySize: (size: DisplaySize) => void;
-}>();
+// ストアから状態と関数を取得
+const displayStore = useDisplayStore();
+const { availableScriptKeys, currentScriptKey, displaySize } = storeToRefs(displayStore);
+const { switchToMode, setDisplaySize } = displayStore;
 
 const showPanel = ref(false);
 const displaySizeOptions: DisplaySize[] = ['xs', 'sm', 'md', 'lg', 'xl'];

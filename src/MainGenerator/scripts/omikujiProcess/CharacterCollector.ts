@@ -1,6 +1,7 @@
 // src/MainGenerator/script/omikujiProcess/CharacterCollector.ts
 import {
  BotMessage,
+ BotMessageSchema,
  CharacterType,
  OmikujiDataType,
  OmikujiSetType,
@@ -69,15 +70,12 @@ export class CharacterCollector {
  generateTestMessage(postAction: PostActionType, isToast: boolean = false): BotMessage {
   const character = this.omikujiData.characters[postAction.characterKey];
 
-  return {
-   id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
-   name: character?.name ?? '',
+  return BotMessageSchema.parse({
+   name: character?.name,
    profileImage: character.image[postAction.iconKey],
-   timestamp: new Date().toISOString(),
    comment: postAction.messageContent,
    isToast,
-   color: character?.color ?? '#000000',
-   delaySeconds: 0
-  };
+   color: character?.color
+  });
  }
 }
