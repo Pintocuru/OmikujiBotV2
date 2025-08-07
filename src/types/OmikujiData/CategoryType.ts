@@ -7,8 +7,8 @@ import {
 } from '@shared/types/';
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
 import { RuleType } from './OmikujiDataSchema';
-import { PlaceholderType } from './OmikujiBot/PlaceholderSchema';
-import { CharacterType } from './OmikujiBot/CharacterSchema';
+import { PlaceholderType } from './PlaceholderSchema';
+import { CharacterType } from './CharacterSchema';
 
 // デフォルトで利用可能なプレースホルダーの定数配列
 export const defaultPlaceholders = [

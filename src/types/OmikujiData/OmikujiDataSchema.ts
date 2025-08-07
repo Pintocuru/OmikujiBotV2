@@ -2,19 +2,15 @@
 import { z } from 'zod';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
-import { createScriptSettingsSchema } from './GameScript/GameScriptSettingsSchema';
-import { PlaceholderSchema } from './OmikujiBot/PlaceholderSchema';
-import { CharacterSchema } from './OmikujiBot/CharacterSchema';
-import {
- BaseCommentRuleSchema,
- BaseTimerRuleSchema,
- WordPartySettingsSchema
-} from './OmikujiBot/RulesSchema';
+import { createScriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema';
+import { PlaceholderSchema } from './PlaceholderSchema';
+import { CharacterSchema } from './CharacterSchema';
+import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
 import { ensureUniqueIds, SelectCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
 
 // 再エクスポート
 export * from './CategoryType';
-export * from './OmikujiBot/RulesSchema';
+export * from './RulesSchema';
 export * from './CategoryType';
 
 // 基本スキーマ

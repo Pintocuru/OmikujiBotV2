@@ -1,7 +1,7 @@
 // shared/types/GameScriptTypes.ts
 // 250726_1 PresetMetadata に合わせて編集
 import { GameState } from './GameScriptSchema';
-import { PostActionType, PostActionWordPartyType } from '../OmikujiBot/OmikujiSchema';
+import { PostActionType, PostActionWordPartyType } from '../OmikujiData/OmikujiSchema';
 import { GameComponentConfig } from '../GameComponent/GameRankingTypes';
 import { DefaultTypes, PresetMetadata } from '@shared/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';

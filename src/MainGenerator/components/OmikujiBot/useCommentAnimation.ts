@@ -1,6 +1,6 @@
 // src/composables/useCommentAnimation.ts
 import anime from 'animejs';
-import type { AnimationType, AnimationConfig } from '@/types/animation';
+import type { AnimationType, AnimationConfig } from '@/types/BotComponents/animation';
 
 export function useCommentAnimation(animationType: AnimationType = 'slideUp') {
  const animationConfig: Record<AnimationType, AnimationConfig> = {

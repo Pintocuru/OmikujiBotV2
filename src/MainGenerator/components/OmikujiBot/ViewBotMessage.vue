@@ -84,7 +84,7 @@ import { computed, onMounted, onUnmounted, toRef } from 'vue';
 import { BotMessage, getImagePath } from '@/types/';
 import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage';
 import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCommentAnimation';
-import type { AnimationType } from '@/types/animation';
+import type { AnimationType } from '@/types/BotComponents/animation';
 import { DisplaySize } from '@shared/types';
 
 // サイズ設定の定数
