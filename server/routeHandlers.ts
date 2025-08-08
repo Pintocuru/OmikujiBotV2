@@ -42,7 +42,7 @@ export async function handleSaveFile(
  }
 }
 
-// おみくじデータ保存
+// assets/omikujiData.js におみくじデータ保存
 export async function handleSaveOmikuji(
  req: Request<{}, {}, { configData: string }>,
  res: Response

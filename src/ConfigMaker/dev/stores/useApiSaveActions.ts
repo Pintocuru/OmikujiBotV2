@@ -60,6 +60,7 @@ export function useSaveActions(
       const configData = JSON.stringify(omikujiStore.data, null, 2);
       await devConfigApi.saveConfig(fileName, configData);
       await fetchFileList();
+      omikujiStore.changeOperations = []; // 文字を消してfalse
 
       toast.success('上書き完了', {
        description: `設定ファイル "${displayName}" を上書きしました`,
@@ -80,11 +81,10 @@ export function useSaveActions(
   });
  };
 
- // 上書き保存（確認toast付き）
+ // assets/omikujiData.js におみくじデータを保存
  const overwriteOmikujiData = async () => {
-  console.log('コンソールコメント');
   toast.warning('上書き確認', {
-   description: `設定ファイル "omikujiData.js" を現在のデータで上書きしますか？`,
+   description: `設定ファイル "omikujiData.js" を assets に上書きしますか？`,
    duration: 10000,
    action: {
     label: '上書き',
@@ -95,7 +95,6 @@ export function useSaveActions(
       const configData = JSON.stringify(omikujiStore.data, null, 2);
       await devConfigApi.saveOmikujiData(configData);
       await fetchFileList();
-
       toast.success('上書き完了', {
        description: `設定ファイル "omikujiData.js" を上書きしました`,
        duration: 3000

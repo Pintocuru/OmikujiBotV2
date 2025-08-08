@@ -4,7 +4,7 @@
       "id": "OmikujiZunda",
       "name": "ずんだもんのおみくじ",
       "description": "みんなの運勢はすごくいいのだ！ずん子もそう言ってるのだ！",
-      "order": 1,
+      "order": 2,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -262,7 +262,7 @@
       "id": "ZundaSyokenSagi",
       "name": "初見詐欺",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
-      "order": 2,
+      "order": 3,
       "editorColor": "#8B5CF6",
       "isEnabled": true,
       "omikuji": [
@@ -427,7 +427,7 @@
       "id": "ZundaSyokenHonto",
       "name": "ホントの初見",
       "description": "初めてから5回までは歓迎してくれます",
-      "order": 3,
+      "order": 4,
       "editorColor": "#8B5CF6",
       "isEnabled": true,
       "omikuji": [
@@ -512,7 +512,7 @@
       "id": "1752373044421",
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
-      "order": 4,
+      "order": 5,
       "editorColor": "#10B981",
       "isEnabled": true,
       "omikuji": [
@@ -602,7 +602,7 @@
       "id": "1752372008621",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
-      "order": 5,
+      "order": 6,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -702,7 +702,7 @@
       "id": "1752372677921",
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
-      "order": 6,
+      "order": 7,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -768,7 +768,7 @@
       "id": "1752372867621",
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
-      "order": 7,
+      "order": 8,
       "editorColor": "#84CC16",
       "isEnabled": true,
       "omikuji": [
@@ -840,7 +840,7 @@
       "id": "1752367851091",
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "order": 8,
+      "order": 9,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -904,7 +904,7 @@
       "id": "1752368316569",
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "order": 9,
+      "order": 10,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -968,7 +968,7 @@
       "id": "WelcomeSyokenZunda",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
-      "order": 10,
+      "order": 11,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -1074,7 +1074,7 @@
       "id": "1752370465818",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "order": 11,
+      "order": 12,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -1172,7 +1172,7 @@
       "id": "1752371370422",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "order": 12,
+      "order": 13,
       "editorColor": "#F97316",
       "isEnabled": true,
       "omikuji": [
@@ -1411,7 +1411,7 @@
     "zundaOmikuji01": {
       "id": "zundaOmikuji01",
       "name": "ずんだもんのおみくじ:大吉",
-      "order": 0,
+      "order": 1,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1443,7 +1443,7 @@
     "zundaOmikuji02": {
       "id": "zundaOmikuji02",
       "name": "ずんだもんのおみくじ:吉",
-      "order": 1,
+      "order": 2,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1475,7 +1475,7 @@
     "zundaOmikuji03": {
       "id": "zundaOmikuji03",
       "name": "ずんだもんのおみくじ:中吉",
-      "order": 2,
+      "order": 3,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1507,7 +1507,7 @@
     "zundaOmikuji04": {
       "id": "zundaOmikuji04",
       "name": "ずんだもんのおみくじ:小吉",
-      "order": 3,
+      "order": 4,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1539,7 +1539,7 @@
     "zundaOmikuji05": {
       "id": "zundaOmikuji05",
       "name": "ずんだもんのおみくじ:末吉",
-      "order": 4,
+      "order": 5,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1571,7 +1571,7 @@
     "zundaOmikuji06": {
       "id": "zundaOmikuji06",
       "name": "ずんだもんのおみくじ:凶",
-      "order": 5,
+      "order": 6,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1603,7 +1603,7 @@
     "zundaOmikuji07": {
       "id": "zundaOmikuji07",
       "name": "ずんだもんのおみくじ:残念賞",
-      "order": 6,
+      "order": 7,
       "editorColor": "#10B981",
       "values": [
         {
@@ -1635,7 +1635,7 @@
     "ZundaSyokenSagiThinking": {
       "id": "ZundaSyokenSagiThinking",
       "name": "ずんだもんの初見詐欺(考え中)",
-      "order": 7,
+      "order": 8,
       "editorColor": "#8B5CF6",
       "values": [
         {
@@ -1655,7 +1655,7 @@
     "ZundaSyokenSagiSurprise": {
       "id": "ZundaSyokenSagiSurprise",
       "name": "ずんだもんの初見詐欺(驚き)",
-      "order": 8,
+      "order": 9,
       "editorColor": "#8B5CF6",
       "values": [
         {
@@ -1675,7 +1675,7 @@
     "ZundaSyokenSagiSwing": {
       "id": "ZundaSyokenSagiSwing",
       "name": "ずんだもんの初見詐欺(歌)",
-      "order": 9,
+      "order": 10,
       "editorColor": "#8B5CF6",
       "values": [
         {
@@ -1691,7 +1691,7 @@
     "ZundaSyokenSagiSad": {
       "id": "ZundaSyokenSagiSad",
       "name": "ずんだもんの初見詐欺(悲しみ)",
-      "order": 10,
+      "order": 11,
       "editorColor": "#8B5CF6",
       "values": [
         {

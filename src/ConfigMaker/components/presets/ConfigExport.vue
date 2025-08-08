@@ -1,6 +1,18 @@
 <!-- src/configMaker/components/presets/ConfigExport.vue -->
 <template>
  <div class="flex flex-wrap gap-2">
+  <div v-if="isDev && saveFileName">
+   <button
+    @click="() => devStore.overwriteConfig(saveFileName)"
+    class="btn btn-warning tooltip tooltip-top"
+    :class="changeOperations.length === 0 ? 'btn-soft' : ''"
+    data-tip="ファイルを保存"
+    :disabled="changeOperations.length === 0 || !saveFileName"
+   >
+    <Save class="w-4 h-4" />
+    {{ saveFileName.replace('.json', '') || 'ないよ' }} の保存
+   </button>
+  </div>
   <div class="indicator">
    <span v-if="changeOperations.length > 0" class="indicator-item badge badge-secondary badge-sm">
     変更あり
@@ -8,7 +20,7 @@
    <button
     @click="() => handleExport('config')"
     class="btn btn-primary tooltip tooltip-top"
-    :class="{ 'btn-outline': changeOperations.length > 0 }"
+    :class="changeOperations.length === 0 ? 'btn-soft' : ''"
     data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
     :disabled="isExporting"
    >
@@ -20,7 +32,7 @@
   <div v-if="showTemplateButton">
    <button
     @click="() => handleExport('template')"
-    class="btn btn-secondary tooltip tooltip-top"
+    class="btn btn-secondary btn-soft tooltip tooltip-top"
     data-tip="テンプレート(JSONファイル)を出力します"
     :disabled="isExporting"
    >
@@ -32,17 +44,22 @@
 </template>
 
 <script setup lang="ts">
+import { isDev } from '@/types';
 import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
 import { useConfigExport } from './useConfigExport';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { storeToRefs } from 'pinia';
+import { Download, FileText, Edit, Save } from 'lucide-vue-next';
 
 const props = defineProps<{
  showTemplateButton: boolean;
 }>();
 
 const { isExporting, exportFile } = useConfigExport();
-const { isChanges, changeOperations } = useOmikujiStore();
-const { saveFileName } = useDevStore();
+const omikujiStore = useOmikujiStore();
+const devStore = useDevStore();
+const { changeOperations } = storeToRefs(omikujiStore);
+const { saveFileName } = storeToRefs(devStore);
 
 const handleExport = async (type: 'config' | 'template') => {
  await exportFile(type);

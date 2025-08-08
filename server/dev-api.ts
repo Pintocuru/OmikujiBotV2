@@ -28,7 +28,7 @@ function setupRoutes(app: Application): void {
  // ファイル保存
  app.post('/api/dev-configs/save', handleSaveFile);
 
- // おみくじデータ保存（新機能）
+ // assets/omikujiData.jsにおみくじデータ保存
  app.post('/api/dev-configs/save-omikuji', handleSaveOmikuji);
 
  // ファイル読み込み

@@ -4,6 +4,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
 import { DevConfigState } from './useDevConfigState';
 import { OmikujiDataType } from '@/types/';
+import { useDevStore } from './useDevStore';
 
 export function useLoadActions(
  state: DevConfigState,
@@ -12,10 +13,12 @@ export function useLoadActions(
  // 設定読み込み
  const loadConfig = async (fileName: string) => {
   const omikujiStore = useOmikujiStore();
+  const devStore = useDevStore();
   return await handleAsyncAction(async () => {
    const configData = await devConfigApi.loadConfig(fileName);
+   omikujiStore.changeOperations.push('load'); // 文字を入れることで保存をON
    omikujiStore.loadData(configData);
-
+   devStore.saveFileName = fileName;
    toast.success('読み込み完了', {
     description: `設定 "${fileName.replace('.json', '')}" を読み込みました`,
     duration: 3000

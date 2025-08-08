@@ -23,16 +23,6 @@
 
   <!-- ボタン群 -->
   <div class="flex gap-1 ml-2 flex-shrink-0">
-   <!-- 上書き保存 -->
-   <button
-    @click="devStore.overwriteConfig(file.name)"
-    :disabled="devStore.isSaving || devStore.isAnyLoading"
-    class="btn btn-xs btn-warning tooltip tooltip-bottom"
-    data-tip="現在のデータで上書き保存"
-   >
-    <Save class="w-3 h-3" />
-   </button>
-
    <!-- 置き換え -->
    <button
     @click="devStore.loadConfig(file.name)"

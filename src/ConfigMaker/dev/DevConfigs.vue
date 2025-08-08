@@ -11,12 +11,12 @@
      <button
       @click="devStore.overwriteOmikujiData"
       :disabled="devStore.isSaving"
-      class="btn btn-success btn-sm tooltip tooltip-bottom"
-      data-tip="現在の設定を日付ファイル名で保存"
+      class="btn btn-success btn-sm tooltip tooltip-top"
+      data-tip="assets/omikujiData.js を上書き保存"
      >
       <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
       <Save class="w-4 h-4 mr-2" />
-      上書き保存
+      omikujiData.js に保存
      </button>
 
      <button
