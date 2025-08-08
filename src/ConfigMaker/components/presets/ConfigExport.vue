@@ -1,7 +1,6 @@
 <!-- src/configMaker/components/presets/ConfigExport.vue -->
 <template>
  <div class="flex flex-wrap gap-2">
-  {{ checkCount }}
   <div v-if="isDev && saveFileName">
    <button
     @click="() => devStore.overwriteConfig(saveFileName)"

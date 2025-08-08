@@ -70,7 +70,7 @@ export const useScriptSettings = () => {
  const updateScriptSetting = (scriptId: string, settingId: string, value: any) => {
   const currentSettings = { ...(scriptSettings.value[scriptId] as DefaultTypes) };
   currentSettings[settingId] = value;
-  scriptSettingsStore.updateItemInCategory('scriptSettings', scriptId, currentSettings);
+  scriptSettingsStore.updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  const resetScriptSetting = (scriptId: string, settingId: string) => {
@@ -86,7 +86,7 @@ export const useScriptSettings = () => {
   } else {
    delete currentSettings[settingId];
   }
-  scriptSettingsStore.updateItemInCategory('scriptSettings', scriptId, currentSettings);
+  scriptSettingsStore.updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  return {

@@ -39,7 +39,7 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
 (parameter) placeholder: unknown
     */
    // @ts-ignore
-   omikujiStore.updateItemInCategory('placeholders', id, { ...placeholder, values: updatedValues });
+   omikujiStore.updateItem('placeholders', id, { ...placeholder, values: updatedValues });
   });
 
   // 修正: ジェネリクスを導入し、categoryとrulesの型を紐づける
@@ -88,7 +88,7 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
 }
      */
     //@ts-ignore
-    omikujiStore.updateItemInCategory(category, ruleId, { ...rule, omikuji: updatedOmikuji });
+    omikujiStore.updateItem(category, ruleId, { ...rule, omikuji: updatedOmikuji });
    });
   };
 
@@ -123,8 +123,8 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
   if (placeholderData) {
    // 修正: 新しいIDでレコードを複製し、古いレコードを削除する
    const { id, ...updates } = placeholderData;
-   omikujiStore.addItemToCategory('placeholders', newId, { ...updates, id: newId });
-   omikujiStore.removeItemFromCategory('placeholders', oldId);
+   omikujiStore.addItem('placeholders', newId, { ...updates, id: newId });
+   omikujiStore.removeItem('placeholders', oldId);
    if (omikujiStore.selectedRuleId === oldId) {
     omikujiStore.selectRule(newId);
    }

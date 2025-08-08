@@ -46,7 +46,12 @@ const availableGameScripts = computed({
   return data.value.displaySettings.developer.availableGameScripts;
  },
  set(newValue: string[]) {
-  data.value.displaySettings.developer.availableGameScripts = newValue;
+  omikujiStore.updateDisplaySettings({
+   developer: {
+    ...data.value.displaySettings.developer,
+    availableGameScripts: newValue
+   }
+  });
  }
 });
 

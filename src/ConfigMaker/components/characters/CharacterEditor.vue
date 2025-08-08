@@ -74,10 +74,8 @@ const characterCount = computed(() => Object.keys(charactersArray.value).length)
 // v-modelを使用したselectedCharacterの実装
 const selectedCharacter = computed({
  get: () => characterStore.selectedRule,
- set: (value: CharacterType | null) => {
-  if (value) {
-   characterStore.update(value.id, value);
-  }
+ set: (value: CharacterType) => {
+  characterStore.update(value.id, value);
  }
 });
 </script>

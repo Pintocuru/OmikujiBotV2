@@ -14,15 +14,15 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
  const scriptCount = computed(() => scriptList.value.length);
 
  const addScript = (scriptId: string, settings: Record<string, any> = {}) => {
-  omikujiStore.addItemToCategory('scriptSettings', scriptId, settings);
+  omikujiStore.addItem('scriptSettings', scriptId, settings);
  };
 
  const updateScript = (scriptId: string, settings: Record<string, any>) => {
-  omikujiStore.updateItemInCategory('scriptSettings', scriptId, settings);
+  omikujiStore.updateItem('scriptSettings', scriptId, settings);
  };
 
  const removeScript = (scriptId: string) => {
-  omikujiStore.removeItemFromCategory('scriptSettings', scriptId);
+  omikujiStore.removeItem('scriptSettings', scriptId);
  };
 
  const getScript = (scriptId: string) => {
@@ -32,7 +32,7 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
  const addScriptSetting = (scriptId: string, key: string, value: any) => {
   const currentSettings = scriptSettings.value[scriptId] || {};
   const newSettings = { ...currentSettings, [key]: value };
-  omikujiStore.updateItemInCategory('scriptSettings', scriptId, newSettings);
+  omikujiStore.updateItem('scriptSettings', scriptId, newSettings);
  };
 
  const removeScriptSetting = (scriptId: string, key: string) => {
@@ -40,7 +40,7 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
    ...(scriptSettings.value[scriptId] as DefaultTypes)
   };
   delete currentSettings[key];
-  omikujiStore.updateItemInCategory('scriptSettings', scriptId, currentSettings);
+  omikujiStore.updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  const updateScriptSetting = (scriptId: string, key: string, value: any) => {
@@ -48,11 +48,11 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
    ...(scriptSettings.value[scriptId] as DefaultTypes)
   };
   currentSettings[key] = value;
-  omikujiStore.updateItemInCategory('scriptSettings', scriptId, currentSettings);
+  omikujiStore.updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  const duplicateScript = (scriptId: string) => {
-  return omikujiStore.duplicateItemInCategory('scriptSettings', scriptId);
+  return omikujiStore.duplicateItem('scriptSettings', scriptId);
  };
 
  const importScriptSettings = (data: Record<string, Record<string, any>>) => {
@@ -78,12 +78,12 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
   return { isValid: errors.length === 0, errors };
  };
 
- const updateItemInCategory = (
+ const updateItem = (
   category: 'scriptSettings',
   scriptId: string,
   settings: Record<string, any>
  ) => {
-  omikujiStore.updateItemInCategory(category, scriptId, settings);
+  omikujiStore.updateItem(category, scriptId, settings);
  };
 
  return {
@@ -102,6 +102,6 @@ export const useScriptSettingsStore = defineStore('scriptSettings', () => {
   importScriptSettings,
   exportScriptSettings,
   validateScriptSettings,
-  updateItemInCategory
+  updateItem
  };
 });

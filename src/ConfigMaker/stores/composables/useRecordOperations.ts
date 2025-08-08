@@ -20,7 +20,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  /**
   * カテゴリに新しいアイテムを追加
   */
- const addItemToCategory = <T>(category: CategoryType, id: string, item: T) => {
+ const addItem = <T>(category: CategoryType, id: string, item: T) => {
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
 
@@ -30,8 +30,8 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  /**
   * カテゴリ内のアイテムを更新（存在しない場合は追加）
   */
- const updateItemInCategory = <T>(category: CategoryType, id: string, updates: Partial<T>) => {
-  console.log('updateItemInCategory');
+ const updateItem = <T>(category: CategoryType, id: string, updates: Partial<T>) => {
+  console.log('updateItem');
   const categoryData = data.value[category] as Record<string, T>;
 
   if (categoryData && categoryData[id] !== undefined) {
@@ -41,16 +41,16 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
 
    markAsChanged();
   } else {
-   addItemToCategory(category, id, updates as T);
+   addItem(category, id, updates as T);
   }
  };
 
  /**
   * カテゴリからアイテムを削除
   */
- const removeItemFromCategory = (category: CategoryType, id: string) => {
+ const removeItem = (category: CategoryType, id: string) => {
   const categoryData = data.value[category] as Record<string, any>;
-  console.log('removeItemFromCategory');
+  console.log('removeItem');
 
   if (categoryData && categoryData[id] !== undefined) {
    const updatedCategory = Object.fromEntries(
@@ -66,7 +66,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  /**
   * カテゴリ内のアイテムを複製
   */
- const duplicateItemInCategory = <T extends { id: string }>(
+ const duplicateItem = <T extends { id: string }>(
   category: CategoryType,
   id: string
  ): string | null => {
@@ -76,7 +76,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
   const newId = `${id}_copy`;
   const duplicatedItem: T = { ...item, id: newId };
 
-  addItemToCategory(category, newId, duplicatedItem);
+  addItem(category, newId, duplicatedItem);
   return newId;
  };
 
@@ -116,10 +116,10 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
 
  return {
   updateCategoryData,
-  addItemToCategory,
-  updateItemInCategory,
-  removeItemFromCategory,
-  duplicateItemInCategory,
+  addItem,
+  updateItem,
+  removeItem,
+  duplicateItem,
   updateRuleNestedProperty,
   getItemFromCategory,
   getCategoryItems

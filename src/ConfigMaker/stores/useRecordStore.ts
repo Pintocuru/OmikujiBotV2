@@ -55,7 +55,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
   set: async (value) => {
    if (value && omikujiStore.selectedRuleId) {
     await nextTick();
-    omikujiStore.updateItemInCategory(
+    omikujiStore.updateItem(
      category,
      omikujiStore.selectedRuleId,
      value as Partial<CategoryTypeMap[C]>
@@ -67,7 +67,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
  const updateItem = async (updates: Partial<CategoryTypeMap[C]>) => {
   if (omikujiStore.selectedRuleId) {
    await nextTick();
-   omikujiStore.updateItemInCategory(category, omikujiStore.selectedRuleId, updates);
+   omikujiStore.updateItem(category, omikujiStore.selectedRuleId, updates);
   }
  };
 
@@ -88,7 +88,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
    order: count
   });
 
-  omikujiStore.addItemToCategory(category, id, newRule);
+  omikujiStore.addItem(category, id, newRule);
   omikujiStore.selectRecordCategory(category);
   omikujiStore.selectRule(id);
   return id;
@@ -96,14 +96,14 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
 
  const update = async (id: string, updates: Partial<CategoryTypeMap[C]>): Promise<boolean> => {
   await nextTick();
-  omikujiStore.updateItemInCategory(category, id, updates);
+  omikujiStore.updateItem(category, id, updates);
   return true;
  };
 
  const remove = (id: string): boolean => {
   const removed = omikujiStore.getItemFromCategory(category, id);
   if (removed) {
-   omikujiStore.removeItemFromCategory(category, id);
+   omikujiStore.removeItem(category, id);
    if (omikujiStore.selectedRuleId === id) {
     omikujiStore.clearSelection();
    }
@@ -113,7 +113,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
  };
 
  const duplicate = (id: string): string | null => {
-  const newId = omikujiStore.duplicateItemInCategory(category, id);
+  const newId = omikujiStore.duplicateItem(category, id);
   if (newId) omikujiStore.selectRule(newId);
   return newId;
  };

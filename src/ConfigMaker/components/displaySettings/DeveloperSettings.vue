@@ -102,5 +102,17 @@ const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
 
 // 開発者設定の参照
-const developerSettings = computed(() => data.value.displaySettings.developer);
+const developerSettings = computed({
+ get() {
+  return data.value.displaySettings.developer;
+ },
+ set(newValue) {
+  omikujiStore.updateDisplaySettings({
+   developer: {
+    ...newValue,
+    availableGameScripts: [...newValue.availableGameScripts]
+   }
+  });
+ }
+});
 </script>

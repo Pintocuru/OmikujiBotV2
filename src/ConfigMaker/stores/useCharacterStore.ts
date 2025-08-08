@@ -31,7 +31,7 @@ export const useCharacterStore = defineStore('characterRules', () => {
     });
     return { ...omikujiSet, postActions: updatedPostActions };
    });
-   omikujiStore.updateItemInCategory('comments', ruleId, {
+   omikujiStore.updateItem('comments', ruleId, {
     ...commentRule,
     omikuji: updatedOmikuji
    });
@@ -46,7 +46,7 @@ export const useCharacterStore = defineStore('characterRules', () => {
     });
     return { ...omikujiSet, postActions: updatedPostActions };
    });
-   omikujiStore.updateItemInCategory('timers', ruleId, { ...timerRule, omikuji: updatedOmikuji });
+   omikujiStore.updateItem('timers', ruleId, { ...timerRule, omikuji: updatedOmikuji });
   });
 
   if (omikujiStore.selectedCategory === 'characters' && omikujiStore.selectedRuleId === oldId) {

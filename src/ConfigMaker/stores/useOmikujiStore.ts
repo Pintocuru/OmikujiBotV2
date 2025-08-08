@@ -37,10 +37,10 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
  // カテゴリ(rules/placeholder/character)操作機能
  const {
-  addItemToCategory,
-  updateItemInCategory,
-  removeItemFromCategory,
-  duplicateItemInCategory,
+  addItem,
+  updateItem,
+  removeItem,
+  duplicateItem,
   updateRuleNestedProperty,
   updateCategoryData,
   getItemFromCategory,
@@ -78,10 +78,10 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateData,
 
   // カテゴリ操作
-  addItemToCategory,
-  updateItemInCategory,
-  removeItemFromCategory,
-  duplicateItemInCategory,
+  addItem,
+  updateItem,
+  removeItem,
+  duplicateItem,
   updateRuleNestedProperty,
   updateCategoryData,
   getItemFromCategory,

@@ -8,22 +8,22 @@ import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings
  */
 export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
  /**
-  * displaySettingsを更新する関数
-  * オブジェクト全体を上書きまたは部分的に更新します。
-  */
- const updateDisplaySettings = (updates: Partial<DisplaySettingsType>) => {
-  // 既存の設定をコピーし、新しい値で上書きする
-  data.value.displaySettings = { ...data.value.displaySettings, ...updates };
-  markAsChanged();
- };
-
- /**
   * scriptSettingsを更新する関数
   * オブジェクト全体を上書きまたは部分的に更新します。
   */
  const updateScriptSettings = (updates: Partial<ScriptSettings>) => {
   // 既存の設定をコピーし、新しい値で上書きする
   data.value.scriptSettings = { ...data.value.scriptSettings, ...updates };
+  markAsChanged();
+ };
+
+ /**
+  * displaySettingsを更新する関数
+  * オブジェクト全体を上書きまたは部分的に更新します。
+  */
+ const updateDisplaySettings = (updates: Partial<DisplaySettingsType>) => {
+  // 既存の設定をコピーし、新しい値で上書きする
+  data.value.displaySettings = { ...data.value.displaySettings, ...updates };
   markAsChanged();
  };
 
