@@ -7,11 +7,7 @@ import { ImportPreview, ImportMode } from '../../components/presets/useImportPre
 /**
  * データの読み込み、保存、マージ機能を提供するコンポーザブル
  */
-export function useDataOperations(
- data: Ref<OmikujiDataType>,
- markAsChanged: () => void,
- markAsSaved: () => void
-) {
+export function useDataOperations(data: Ref<OmikujiDataType>) {
  /**
   * データを読み込み、バリデーションを行う
   */
@@ -20,7 +16,6 @@ export function useDataOperations(
    const parsed = OmikujiDataSchema.safeParse(loadData);
    if (parsed.success) {
     data.value = parsed.data;
-    markAsSaved();
     toast.success('データを正常に読み込みました。');
     return true;
    } else {
@@ -48,7 +43,6 @@ export function useDataOperations(
  const exportData = () => {
   const validation = validateData();
   if (validation.success) {
-   markAsSaved();
    return JSON.stringify(data.value, null, 2);
   }
   throw new Error('データの検証に失敗しました。');
@@ -73,7 +67,6 @@ export function useDataOperations(
    });
 
    data.value = result;
-   markAsChanged();
    toast.success('データのマージが完了しました。');
    return true;
   } catch (error) {
@@ -104,7 +97,6 @@ export function useDataOperations(
   */
  const updateData = (newData: OmikujiDataType) => {
   data.value = newData;
-  markAsChanged();
  };
 
  return {

@@ -1,4 +1,5 @@
 // src/ConfigMaker/script/stores/composables/useSimpleChangeTracking.ts
+// ! 削除予定
 import { ref } from 'vue';
 
 /**

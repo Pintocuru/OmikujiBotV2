@@ -6,7 +6,7 @@ import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
  * の操作機能を提供するコンポーザブル
  */
-export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
+export function useSettingsOperations(data: Ref<OmikujiDataType>) {
  /**
   * scriptSettingsを更新する関数
   * オブジェクト全体を上書きまたは部分的に更新します。
@@ -14,7 +14,6 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged:
  const updateScriptSettings = (updates: Partial<ScriptSettings>) => {
   // 既存の設定をコピーし、新しい値で上書きする
   data.value.scriptSettings = { ...data.value.scriptSettings, ...updates };
-  markAsChanged();
  };
 
  /**
@@ -24,7 +23,6 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged:
  const updateDisplaySettings = (updates: Partial<DisplaySettingsType>) => {
   // 既存の設定をコピーし、新しい値で上書きする
   data.value.displaySettings = { ...data.value.displaySettings, ...updates };
-  markAsChanged();
  };
 
  /**
@@ -35,7 +33,6 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged:
  const updateWordPartySettings = (newSettings: WordPartySettings[]) => {
   // 配列全体を新しい値で上書きする
   data.value.wordPartySettings = newSettings;
-  markAsChanged();
  };
 
  return {

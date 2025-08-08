@@ -1,23 +1,23 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts
 import { readonly, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { CategoryType, OmikujiDataSchema, OmikujiDataType, RecordCategoryType } from '@/types/';
+import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
 import { useNavigationState } from './composables/useNavigationState';
 import { useRecordOperations } from './composables/useRecordOperations';
 import { useSettingsOperations } from './composables/useSettingsOperations';
-import { useSimpleChangeTracking } from './composables/useSimpleChangeTracking';
 
 // グローバルデータの初期化
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
 
 export const useOmikujiStore = defineStore('omikuji', () => {
- // コアデータ
+ // コアデータ 外部にはreadonlyなdataを公開
  const data = ref<OmikujiDataType>(omikujiData);
- const readOnlyData = readonly(data); // 外部にはreadonlyなdataを公開
+ const readOnlyData = readonly(data);
 
- // 新しい変更追跡機能
- const { checkCount, changeOperations, markAsChanged, markAsSaved } = useSimpleChangeTracking();
+ // 変更があったかどうかを追跡するフラグ
+ const hasChanged = ref(false);
+ useOmikujiStore().$subscribe(() => (hasChanged.value = true));
 
  // ナビゲーション状態管理
  const {
@@ -29,11 +29,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  } = useNavigationState();
 
  // データ操作機能
- const { loadData, validateData, exportData, mergeDataSets, updateData } = useDataOperations(
-  data,
-  markAsChanged,
-  markAsSaved
- );
+ const { loadData, validateData, exportData, mergeDataSets, updateData } = useDataOperations(data);
 
  // カテゴリ(rules/placeholder/character)操作機能
  const {
@@ -45,11 +41,11 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateCategoryData,
   getItem,
   getCategoryItems
- } = useRecordOperations(data, markAsChanged); // markAsChangedを渡す
+ } = useRecordOperations(data);
 
  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
  const { updateDisplaySettings, updateScriptSettings, updateWordPartySettings } =
-  useSettingsOperations(data, markAsChanged);
+  useSettingsOperations(data);
 
  // カテゴリ選択のラッパー関数（依存関係のため）
  const selectCategory = (category: CategoryType) => {
@@ -60,15 +56,12 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   // データ
   data: readOnlyData,
 
+  // 変更追跡
+  hasChanged,
+
   // ナビゲーション状態
   selectedCategory,
   selectedRuleId,
-
-  // 変更追跡
-  checkCount,
-  changeOperations,
-  markAsChanged,
-  markAsSaved,
 
   // データ操作
   loadData,

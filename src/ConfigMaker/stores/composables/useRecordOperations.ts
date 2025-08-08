@@ -5,7 +5,7 @@ import { CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMa
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
  */
-export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
+export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリ全体のデータを更新
   */
@@ -14,7 +14,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
   newData: Record<string, OmikujiDataType[C]>
  ) => {
   data.value[category] = newData as OmikujiDataType[C];
-  markAsChanged();
  };
 
  /**
@@ -23,8 +22,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  const addItem = <T>(category: RecordCategoryType, id: string, item: T) => {
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
-
-  markAsChanged();
  };
 
  /**
@@ -37,8 +34,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
    const updatedItem = { ...categoryData[id], ...updates };
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
-
-   markAsChanged();
   } else {
    addItem(category, id, updates as T);
   }
