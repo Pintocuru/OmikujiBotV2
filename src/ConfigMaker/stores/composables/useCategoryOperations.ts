@@ -85,12 +85,22 @@ export function useCategoryOperations(
  /**
   * カテゴリ内のアイテムを複製
   */
- const duplicateItemInCategory = <T>(category: CategoryType, id: string): string | null => {
+ const duplicateItemInCategory = <T extends { id: string }>(
+  category: CategoryType,
+  id: string
+ ): string | null => {
   const item = getItemFromCategory<T>(category, id);
   if (!item) return null;
 
-  const newId = `${id}_copy_${Date.now()}`;
-  addItemToCategory(category, newId, { ...item } as T);
+  const newId = `${id}_copy`;
+
+  // 💡 修正: オブジェクト内のidプロパティも新しいIDに更新
+  const duplicatedItem: T = {
+   ...item,
+   id: newId // idフィールドを新しいIDで上書き
+  };
+
+  addItemToCategory(category, newId, duplicatedItem);
   return newId;
  };
 

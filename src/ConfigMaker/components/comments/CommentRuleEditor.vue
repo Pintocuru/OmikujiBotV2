@@ -23,7 +23,7 @@
   <OmikujiLimitsEditor v-model="selectedRule.limits" />
 
   <!-- おみくじ設定セクション -->
-  <OmikujiSetEditor v-model="selectedRule.omikuji" />
+  <OmikujiSetEditor v-model="selectedRule.omikuji" category="comments" />
  </div>
 </template>
 

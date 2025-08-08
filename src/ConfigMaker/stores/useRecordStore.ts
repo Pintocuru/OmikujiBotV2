@@ -114,9 +114,7 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
 
  const duplicate = (id: string): string | null => {
   const newId = omikujiStore.duplicateItemInCategory(category, id);
-  if (newId) {
-   omikujiStore.selectRule(newId);
-  }
+  if (newId) omikujiStore.selectRule(newId);
   return newId;
  };
 

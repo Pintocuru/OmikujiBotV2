@@ -73,6 +73,7 @@ import { Dices, Plus } from 'lucide-vue-next';
 
 const props = defineProps<{
  modelValue: OmikujiSetType[];
+ category: 'comments' | 'timers';
 }>();
 const emit = defineEmits<{
  'update:modelValue': [value: OmikujiSetType[]];

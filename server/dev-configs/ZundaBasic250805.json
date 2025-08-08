@@ -263,10 +263,647 @@
         "isRepeatAllowed": true
       }
     },
-    "ZundaSyokenSagi": {
-      "id": "ZundaSyokenSagi",
+    "CheckNumberZunda": {
+      "id": "CheckNumberZunda",
+      "name": "コメント数表示",
+      "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
+      "order": 4,
+      "editorColor": "#10B981",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "name": "霊夢",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "<<user>>さんは [<<tc>>] 回コメントしてるのだ!"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "コメント"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftLowZunda": {
+      "id": "GiftLowZunda",
+      "name": "ギフト(1-999円)",
+      "description": "ギフトを貰ったときの感謝コメント",
+      "order": 5,
+      "editorColor": "#84CC16",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "ec4a8885-8298-494a-9489-854aed0e0acf",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0.3,
+              "wordParty": "!saisen_hako",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "blushing",
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "53565b29-20e0-4df2-9fa6-4540648bb50e",
+          "name": "ギフト:魔理沙",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0.3,
+              "wordParty": "!kinoko",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "excited",
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftMiddleZunda": {
+      "id": "GiftMiddleZunda",
+      "name": "ギフト(1000-1999円)",
+      "description": "大きなギフトを貰ったときの感謝コメント",
+      "order": 6,
+      "editorColor": "#84CC16",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "2746182a-b8b9-41b5-9b0c-5cb31a17ac00",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0.3,
+              "wordParty": "!saisen_hako",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "blushing",
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "yellow"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftHighZunda": {
+      "id": "GiftHighZunda",
+      "name": "ギフト(2000-)",
+      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
+      "order": 7,
+      "editorColor": "#84CC16",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "e6f8c4c9-313c-414a-8f79-acc376c75bac",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0.3,
+              "wordParty": "!kinoko",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "blushing",
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "all",
+          "all",
+          "all",
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTriggerZunda": {
+      "id": "StreamCountTriggerZunda",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "order": 8,
+      "editorColor": "#F97316",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "thinking",
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterSyokenZunda": {
+      "id": "FirstCounterSyokenZunda",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "order": 10,
+      "editorColor": "#F97316",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "weight": 8,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "messageContent": "<<user>>さん、初めましてなのだ！ゆっくりしていってほしいのだ。",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "9de13253-a48d-42b9-b16c-f80d02ba5cc9",
+          "name": "初見さんへの挨拶2",
+          "description": "",
+          "weight": 7,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "excited",
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "messageContent": "初めての<<user>>さん、コメントありがとうなのだ！とってもうれしいのだ！",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "8dbf5719-879b-4d96-a448-df9c582d56eb",
+          "name": "初見さんへの挨拶3",
+          "description": "",
+          "weight": 6,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "zunda",
+              "iconKey": "excited",
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "messageContent": "わぁい、<<user>>さんの初めてのコメントなのだ！ようこそなのだ～",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgainZunda": {
+      "id": "FirstCounterAgainZunda",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "order": 11,
+      "editorColor": "#F97316",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "name": "久しぶり1",
+          "description": "",
+          "weight": 4,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<user>>さん、久しぶり!また会えたね。",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "85b5faf8-13ea-4eeb-b09e-f7add22bf609",
+          "name": "久しぶり2",
+          "description": "",
+          "weight": 3,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "1d82d2f0-f8b1-47f9-8c72-ff31ce88ce2d",
+          "name": "久しぶり3",
+          "description": "",
+          "weight": 2,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "c81197d1-1309-4204-9e02-167926a6d67b",
+          "name": "久しぶり4",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisitZunda": {
+      "id": "FirstCounterFirstVisitZunda",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "order": 12,
+      "editorColor": "#F97316",
+      "isEnabled": true,
+      "omikuji": [
+        {
+          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "name": "挨拶1",
+          "description": "",
+          "weight": 4,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
+          "name": "挨拶2",
+          "description": "",
+          "weight": 3,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "9ddd25aa-beb3-46a5-b2b8-fa3555bca81d",
+          "name": "挨拶3",
+          "description": "",
+          "weight": 2,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "a6933c94-0db5-4f07-b531-9310a5dc5648",
+          "name": "挨拶4",
+          "description": "",
+          "weight": 1,
+          "postActions": [
+            {
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "processCooldownSeconds": 3,
+        "drawLimit": 0,
+        "isRepeatAllowed": true
+      }
+    },
+    "SyokenSagiZunda": {
+      "id": "SyokenSagiZunda",
       "name": "初見詐欺",
-      "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…",
       "order": 2,
       "editorColor": "#8B5CF6",
       "isEnabled": true,
@@ -426,12 +1063,12 @@
         "processCooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
-      }
+      },
+      "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…"
     },
-    "ZundaSyokenHonto": {
-      "id": "ZundaSyokenHonto",
+    "SyokenHontoZunda": {
+      "id": "SyokenHontoZunda",
       "name": "ホントの初見",
-      "description": "「初見」って言ったら配信画面に「参戦！」って出るのだ！",
       "order": 3,
       "editorColor": "#8B5CF6",
       "isEnabled": true,
@@ -487,314 +1124,12 @@
         "processCooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
-      }
-    },
-    "1752372008621": {
-      "id": "1752372008621",
-      "name": "ギフト(1-999円)",
-      "description": "ギフトを貰ったときの感謝コメント",
-      "order": 5,
-      "editorColor": "#84CC16",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "ec4a8885-8298-494a-9489-854aed0e0acf",
-          "name": "ギフト:霊夢",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "blushing",
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "53565b29-20e0-4df2-9fa6-4540648bb50e",
-          "name": "ギフト:魔理沙",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "excited",
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
+      "description": "「初見」って言ったら配信画面に「参戦！」って出るのだ！"
     },
-    "1752372677921": {
-      "id": "1752372677921",
-      "name": "ギフト(1000-1999円)",
-      "description": "大きなギフトを貰ったときの感謝コメント",
-      "order": 6,
-      "editorColor": "#84CC16",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "2746182a-b8b9-41b5-9b0c-5cb31a17ac00",
-          "name": "ギフト:霊夢",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "blushing",
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "yellow"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "1752372867621": {
-      "id": "1752372867621",
-      "name": "ギフト(2000-)",
-      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
-      "order": 7,
-      "editorColor": "#84CC16",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "e6f8c4c9-313c-414a-8f79-acc376c75bac",
-          "name": "ギフト:霊夢",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "blushing",
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "all",
-          "all",
-          "all",
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "1752367851091": {
-      "id": "1752367851091",
-      "name": "配信内コメント数チェック:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "order": 8,
-      "editorColor": "#F97316",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "weight": 4,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
-            }
-          ]
-        },
-        {
-          "id": "4b137f39-92b7-49cd-b7d9-326e6e9377e4",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 100
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "1752368316569": {
-      "id": "1752368316569",
+    "UserCountTriggerZunda": {
+      "id": "UserCountTriggerZunda",
       "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "order": 9,
       "editorColor": "#F97316",
       "isEnabled": true,
@@ -853,359 +1188,8 @@
         "processCooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
-      }
-    },
-    "WelcomeSyokenZunda": {
-      "id": "WelcomeSyokenZunda",
-      "name": "初見",
-      "description": "初めてコメントをした方への挨拶",
-      "order": 10,
-      "editorColor": "#F97316",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "name": "初見さんへの挨拶1",
-          "description": "",
-          "weight": 8,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "<<user>>さん、初めましてなのだ！ゆっくりしていってほしいのだ。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "9de13253-a48d-42b9-b16c-f80d02ba5cc9",
-          "name": "初見さんへの挨拶2",
-          "description": "",
-          "weight": 7,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "excited",
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "初めての<<user>>さん、コメントありがとうなのだ！とってもうれしいのだ！",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "8dbf5719-879b-4d96-a448-df9c582d56eb",
-          "name": "初見さんへの挨拶3",
-          "description": "",
-          "weight": 6,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "characterKey": "zunda",
-              "iconKey": "excited",
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "messageContent": "わぁい、<<user>>さんの初めてのコメントなのだ！ようこそなのだ～",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "1752370465818": {
-      "id": "1752370465818",
-      "name": "久しぶり",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "order": 11,
-      "editorColor": "#F97316",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "name": "久しぶり1",
-          "description": "",
-          "weight": 4,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<user>>さん、久しぶり!また会えたね。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "85b5faf8-13ea-4eeb-b09e-f7add22bf609",
-          "name": "久しぶり2",
-          "description": "",
-          "weight": 3,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "1d82d2f0-f8b1-47f9-8c72-ff31ce88ce2d",
-          "name": "久しぶり3",
-          "description": "",
-          "weight": 2,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "c81197d1-1309-4204-9e02-167926a6d67b",
-          "name": "久しぶり4",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "1752371370422": {
-      "id": "1752371370422",
-      "name": "こんにちは",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "order": 12,
-      "editorColor": "#F97316",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "name": "挨拶1",
-          "description": "",
-          "weight": 4,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
-          "name": "挨拶2",
-          "description": "",
-          "weight": 3,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "9ddd25aa-beb3-46a5-b2b8-fa3555bca81d",
-          "name": "挨拶3",
-          "description": "",
-          "weight": 2,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "a6933c94-0db5-4f07-b531-9310a5dc5648",
-          "name": "挨拶4",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      }
-    },
-    "CheckNumberZunda": {
-      "id": "CheckNumberZunda",
-      "name": "コメント数表示",
-      "order": 4,
-      "editorColor": "#10B981",
-      "isEnabled": true,
-      "omikuji": [
-        {
-          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
-          "name": "霊夢",
-          "description": "",
-          "weight": 1,
-          "postActions": [
-            {
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageContent": "",
-              "messageToast": "<<user>>さんは [<<tc>>] 回コメントしてるのだ!"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "コメント"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "processCooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": true
-      },
-      "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？"
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ"
     }
   },
   "timers": {
