@@ -1,21 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useCategoryOperations.ts
 import { Ref } from 'vue';
-import {
- CategoryType,
- OmikujiDataType,
- SelectCategoryType,
- CommentRuleType,
- TimerRuleType,
- PlaceholderType,
- CharacterType
-} from '@/types/';
-
-type CategoryTypeMap = {
- comments: CommentRuleType;
- timers: TimerRuleType;
- placeholders: PlaceholderType;
- characters: CharacterType;
-};
+import { CategoryType, OmikujiDataType, SelectCategoryType, SelectCategoryTypeMap } from '@/types/';
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
@@ -31,8 +16,7 @@ export function useCategoryOperations(
   category: C,
   newData: Record<string, OmikujiDataType[C]>
  ) => {
-  data.value[category] = newData as any;
-  // 💡 修正: どの操作か明確に
+  data.value[category] = newData as OmikujiDataType[C];
   markAsChanged(`updateCategoryData: ${category}`);
  };
 
@@ -42,7 +26,7 @@ export function useCategoryOperations(
  const addItemToCategory = <T>(category: CategoryType, id: string, item: T) => {
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
-  // 💡 修正: どの操作か明確に
+
   markAsChanged(`addItemToCategory: ${category}/${id}`);
  };
 
@@ -57,7 +41,7 @@ export function useCategoryOperations(
    const updatedItem = { ...categoryData[id], ...updates };
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
-   // 💡 修正: どの操作か明確に
+
    markAsChanged(`updateItemInCategory: ${category}/${id}`);
   } else {
    addItemToCategory(category, id, updates as T);
@@ -109,14 +93,14 @@ export function useCategoryOperations(
   */
  const updateRuleNestedProperty = <
   C extends SelectCategoryType,
-  K extends keyof CategoryTypeMap[C]
+  K extends keyof SelectCategoryTypeMap[C]
  >(
   category: C,
   id: string,
   key: K,
-  value: CategoryTypeMap[C][K]
+  value: SelectCategoryTypeMap[C][K]
  ) => {
-  const currentCategory = data.value[category] as Record<string, CategoryTypeMap[C]>;
+  const currentCategory = data.value[category] as Record<string, SelectCategoryTypeMap[C]>;
   if (currentCategory[id]) {
    const updatedRule = { ...currentCategory[id], [key]: value };
    const updatedCategory = { ...currentCategory, [id]: updatedRule };

@@ -15,9 +15,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  // コアデータ
  const data = ref<OmikujiDataType>(omikujiData);
 
- // 💡 変更：新しい変更追跡機能を使用
- const { hasUnsavedChanges, isChanges, changeOperations, markAsChanged, markAsSaved } =
-  useSimpleChangeTracking();
+ // 新しい変更追跡機能
+ const { checkCount, changeOperations, markAsChanged, markAsSaved } = useSimpleChangeTracking();
 
  // ナビゲーション状態管理
  const {
@@ -61,8 +60,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   selectedRuleId,
 
   // 変更追跡
-  hasUnsavedChanges,
-  isChanges,
+  checkCount,
   changeOperations,
   markAsChanged,
   markAsSaved,

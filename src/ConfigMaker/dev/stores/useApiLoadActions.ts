@@ -16,7 +16,7 @@ export function useLoadActions(
   const devStore = useDevStore();
   return await handleAsyncAction(async () => {
    const configData = await devConfigApi.loadConfig(fileName);
-   omikujiStore.changeOperations.push('load'); // 文字を入れることで保存をON
+   omikujiStore.markAsChanged(); // 変更をマーク
    omikujiStore.loadData(configData);
    devStore.saveFileName = fileName;
    toast.success('読み込み完了', {

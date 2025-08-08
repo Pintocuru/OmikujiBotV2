@@ -66,17 +66,6 @@
           />
           <span class="text-sm">マージ</span>
          </label>
-         <label class="flex items-center gap-1">
-          <input
-           type="radio"
-           :name="`mode-${category}`"
-           value="add-only"
-           :checked="config.mode === 'add-only'"
-           @change="handleCategoryModeChange(category, 'add-only')"
-           class="radio radio-sm"
-          />
-          <span class="text-sm">追加のみ</span>
-         </label>
         </div>
        </div>
 

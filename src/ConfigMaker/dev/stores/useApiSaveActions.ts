@@ -60,7 +60,8 @@ export function useSaveActions(
       const configData = JSON.stringify(omikujiStore.data, null, 2);
       await devConfigApi.saveConfig(fileName, configData);
       await fetchFileList();
-      omikujiStore.changeOperations = []; // 文字を消してfalse
+
+      omikujiStore.markAsSaved(); // セーブ済み
 
       toast.success('上書き完了', {
        description: `設定ファイル "${displayName}" を上書きしました`,

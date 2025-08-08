@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { OmikujiDataType, CategoryType, OmikujiDataSchema, selectCategoryType } from '@/types/';
 
-export type ImportMode = 'replace' | 'merge' | 'add-only';
+export type ImportMode = 'replace' | 'merge';
 
 // 競合情報を表すインターフェース
 export interface ConflictInfo {

@@ -1,26 +1,25 @@
 <!-- src/configMaker/components/presets/ConfigExport.vue -->
 <template>
  <div class="flex flex-wrap gap-2">
+  {{ checkCount }}
   <div v-if="isDev && saveFileName">
    <button
     @click="() => devStore.overwriteConfig(saveFileName)"
     class="btn btn-warning tooltip tooltip-top"
-    :class="changeOperations.length === 0 ? 'btn-soft' : ''"
+    :class="!checkCount ? 'btn-soft' : ''"
     data-tip="ファイルを保存"
-    :disabled="changeOperations.length === 0 || !saveFileName"
+    :disabled="!checkCount || !saveFileName"
    >
     <Save class="w-4 h-4" />
     {{ saveFileName.replace('.json', '') || 'ないよ' }} の保存
    </button>
   </div>
   <div class="indicator">
-   <span v-if="changeOperations.length > 0" class="indicator-item badge badge-secondary badge-sm">
-    変更あり
-   </span>
+   <span v-if="checkCount" class="indicator-item badge badge-secondary badge-sm"> 変更あり </span>
    <button
     @click="() => handleExport('config')"
     class="btn btn-primary tooltip tooltip-top"
-    :class="changeOperations.length === 0 ? 'btn-soft' : ''"
+    :class="!checkCount ? 'btn-soft' : ''"
     data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
     :disabled="isExporting"
    >
@@ -58,7 +57,7 @@ const props = defineProps<{
 const { isExporting, exportFile } = useConfigExport();
 const omikujiStore = useOmikujiStore();
 const devStore = useDevStore();
-const { changeOperations } = storeToRefs(omikujiStore);
+const { checkCount, changeOperations } = storeToRefs(omikujiStore);
 const { saveFileName } = storeToRefs(devStore);
 
 const handleExport = async (type: 'config' | 'template') => {

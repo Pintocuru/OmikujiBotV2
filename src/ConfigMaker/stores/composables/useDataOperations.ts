@@ -96,14 +96,6 @@ export function useDataOperations(
     return importItems;
    case 'merge':
     return { ...currentItems, ...importItems };
-   case 'add-only':
-    const result = { ...currentItems };
-    Object.entries(importItems).forEach(([key, value]) => {
-     if (!(key in currentItems)) {
-      result[key] = value;
-     }
-    });
-    return result;
   }
  };
 

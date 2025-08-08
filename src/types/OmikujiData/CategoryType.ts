@@ -6,7 +6,7 @@ import {
  serviceMetaConditionLabels
 } from '@shared/types/';
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
-import { RuleType } from './OmikujiDataSchema';
+import { CommentRuleType, RuleType, TimerRuleType } from './OmikujiDataSchema';
 import { PlaceholderType } from './PlaceholderSchema';
 import { CharacterType } from './CharacterSchema';
 
@@ -35,7 +35,12 @@ export const selectCategoryType = ['comments', 'timers', 'placeholders', 'charac
 // 選択可能なカテゴリタイプの型定義
 export type SelectCategoryType = (typeof selectCategoryType)[number];
 export type SelectCategoryUnion = RuleType | PlaceholderType | CharacterType;
-
+export type SelectCategoryTypeMap = {
+ comments: CommentRuleType;
+ timers: TimerRuleType;
+ placeholders: PlaceholderType;
+ characters: CharacterType;
+};
 /**
  * すべてのカテゴリタイプを定義する定数配列
  * @description selectCategoryTypeにscriptSettings, displaySettings, wordPartySettingsを追加
