@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
- <div v-if="appStore.isInitialized">
+ <div v-if="appStore.isInitialized" class="main-container">
   <!-- BOTメッセージ表示 -->
   <ViewBotMessage v-if="displayStore.currentScriptKey === null" />
 
@@ -47,12 +47,9 @@ onMounted(async () => {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap');
-html,
-body {
- height: 100%;
- width: 100%;
- margin: 0;
- padding: 0;
+
+.main-container {
+ height: 100vh;
  overflow: hidden;
  font-family: 'Zen Maru Gothic', sans-serif;
 }
