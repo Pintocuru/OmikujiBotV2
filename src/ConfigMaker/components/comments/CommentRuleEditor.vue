@@ -47,7 +47,7 @@ const omikujiStore = useOmikujiStore();
 const extendedStore = {
  ...commentRulesStore,
  selectRule: (ruleId: string) => {
-  omikujiStore.selectRecordCategory('comments');
+  omikujiStore.selectCategory('comments');
   omikujiStore.selectRule(ruleId);
  }
 };

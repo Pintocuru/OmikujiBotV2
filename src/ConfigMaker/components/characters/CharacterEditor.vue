@@ -62,7 +62,7 @@ const omikujiStore = useOmikujiStore();
 const extendedStore = {
  ...characterStore,
  selectRule: (ruleId: string) => {
-  omikujiStore.selectRecordCategory('characters');
+  omikujiStore.selectCategory('characters');
   omikujiStore.selectRule(ruleId);
  }
 };

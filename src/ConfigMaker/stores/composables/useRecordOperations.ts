@@ -20,7 +20,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  /**
   * カテゴリに新しいアイテムを追加
   */
- const addItem = <T>(category: CategoryType, id: string, item: T) => {
+ const addItem = <T>(category: RecordCategoryType, id: string, item: T) => {
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
 
@@ -30,8 +30,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  /**
   * カテゴリ内のアイテムを更新（存在しない場合は追加）
   */
- const updateItem = <T>(category: CategoryType, id: string, updates: Partial<T>) => {
-  console.log('updateItem');
+ const updateItem = <T>(category: RecordCategoryType, id: string, updates: Partial<T>) => {
   const categoryData = data.value[category] as Record<string, T>;
 
   if (categoryData && categoryData[id] !== undefined) {
@@ -43,41 +42,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
   } else {
    addItem(category, id, updates as T);
   }
- };
-
- /**
-  * カテゴリからアイテムを削除
-  */
- const removeItem = (category: CategoryType, id: string) => {
-  const categoryData = data.value[category] as Record<string, any>;
-  console.log('removeItem');
-
-  if (categoryData && categoryData[id] !== undefined) {
-   const updatedCategory = Object.fromEntries(
-    Object.entries(categoryData).filter(([key]) => key !== id)
-   );
-   updateCategoryData(
-    category,
-    updatedCategory as Record<string, OmikujiDataType[typeof category]>
-   );
-  }
- };
-
- /**
-  * カテゴリ内のアイテムを複製
-  */
- const duplicateItem = <T extends { id: string }>(
-  category: CategoryType,
-  id: string
- ): string | null => {
-  const item = getItemFromCategory<T>(category, id);
-  if (!item) return null;
-
-  const newId = `${id}_copy`;
-  const duplicatedItem: T = { ...item, id: newId };
-
-  addItem(category, newId, duplicatedItem);
-  return newId;
  };
 
  /**
@@ -101,16 +65,51 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
  };
 
  /**
+  * カテゴリからアイテムを削除
+  */
+ const removeItem = (category: RecordCategoryType, id: string) => {
+  const categoryData = data.value[category] as Record<string, any>;
+  console.log('removeItem');
+
+  if (categoryData && categoryData[id] !== undefined) {
+   const updatedCategory = Object.fromEntries(
+    Object.entries(categoryData).filter(([key]) => key !== id)
+   );
+   updateCategoryData(
+    category,
+    updatedCategory as Record<string, OmikujiDataType[typeof category]>
+   );
+  }
+ };
+
+ /**
+  * カテゴリ内のアイテムを複製
+  */
+ const duplicateItem = <T extends { id: string }>(
+  category: RecordCategoryType,
+  id: string
+ ): string | null => {
+  const item = getItem<T>(category, id);
+  if (!item) return null;
+
+  const newId = `${id}_copy`;
+  const duplicatedItem: T = { ...item, id: newId };
+
+  addItem(category, newId, duplicatedItem);
+  return newId;
+ };
+
+ /**
   * カテゴリから特定のアイテムを取得
   */
- const getItemFromCategory = <T>(category: CategoryType, id: string): T | undefined => {
+ const getItem = <T>(category: RecordCategoryType, id: string): T | undefined => {
   return (data.value[category] as Record<string, T>)?.[id];
  };
 
  /**
   * カテゴリの全アイテムを取得
   */
- const getCategoryItems = <T>(category: CategoryType): Record<string, T> => {
+ const getCategoryItems = <T>(category: RecordCategoryType): Record<string, T> => {
   return (data.value[category] as Record<string, T>) || {};
  };
 
@@ -121,7 +120,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: (
   removeItem,
   duplicateItem,
   updateRuleNestedProperty,
-  getItemFromCategory,
+  getItem,
   getCategoryItems
  };
 }

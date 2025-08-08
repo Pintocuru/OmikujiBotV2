@@ -98,7 +98,7 @@ const omikujiStore = useOmikujiStore();
 const extendedStore = {
  ...placeholderStore,
  selectRule: (ruleId: string) => {
-  omikujiStore.selectRecordCategory('placeholders');
+  omikujiStore.selectCategory('placeholders');
   omikujiStore.selectRule(ruleId);
  }
 };

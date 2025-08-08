@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts
 import { readonly, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
+import { CategoryType, OmikujiDataSchema, OmikujiDataType, RecordCategoryType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
 import { useNavigationState } from './composables/useNavigationState';
 import { useRecordOperations } from './composables/useRecordOperations';
@@ -23,7 +23,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  const {
   selectedCategory,
   selectedRuleId,
-  selectRecordCategory: _selectRecordCategory,
+  selectCategory: _selectCategory,
   selectRule,
   clearSelection
  } = useNavigationState();
@@ -43,7 +43,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   duplicateItem,
   updateRuleNestedProperty,
   updateCategoryData,
-  getItemFromCategory,
+  getItem,
   getCategoryItems
  } = useRecordOperations(data, markAsChanged); // markAsChangedを渡す
 
@@ -52,8 +52,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   useSettingsOperations(data, markAsChanged);
 
  // カテゴリ選択のラッパー関数（依存関係のため）
- const selectRecordCategory = (category: CategoryType) => {
-  _selectRecordCategory(category, getCategoryItems);
+ const selectCategory = (category: CategoryType) => {
+  _selectCategory(category, getCategoryItems);
  };
 
  return {
@@ -84,7 +84,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   duplicateItem,
   updateRuleNestedProperty,
   updateCategoryData,
-  getItemFromCategory,
+  getItem,
   getCategoryItems,
 
   // カテゴリ外操作
@@ -93,7 +93,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateWordPartySettings,
 
   // ナビゲーション
-  selectRecordCategory,
+  selectCategory,
   selectRule,
   clearSelection
  };

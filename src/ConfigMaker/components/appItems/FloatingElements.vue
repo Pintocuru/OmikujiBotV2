@@ -11,7 +11,7 @@
      data.displaySettings.developer.godModeEnabled ? ['bg-warning text-accent-content'] : ['border']
     "
     :data-tip="tab.description"
-    @click="omikujiStore.selectRecordCategory(key)"
+    @click="omikujiStore.selectCategory(key)"
    >
     <component :is="tab.icon" class="size-[1.2em]" />
     <span class="dock-label">{{ tab.label }}</span>

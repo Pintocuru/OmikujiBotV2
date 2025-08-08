@@ -89,7 +89,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
   });
 
   omikujiStore.addItem(category, id, newRule);
-  omikujiStore.selectRecordCategory(category);
+  omikujiStore.selectCategory(category);
   omikujiStore.selectRule(id);
   return id;
  };
@@ -101,7 +101,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
  };
 
  const remove = (id: string): boolean => {
-  const removed = omikujiStore.getItemFromCategory(category, id);
+  const removed = omikujiStore.getItem(category, id);
   if (removed) {
    omikujiStore.removeItem(category, id);
    if (omikujiStore.selectedRuleId === id) {
@@ -126,7 +126,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
 
   const updatedRules: Record<string, CategoryTypeMap[C]> = {};
   ids.forEach((id, index) => {
-   const rule = omikujiStore.getItemFromCategory<CategoryTypeMap[C]>(category, id);
+   const rule = omikujiStore.getItem<CategoryTypeMap[C]>(category, id);
    if (rule) {
     updatedRules[id] = { ...rule, order: index + 1 };
    }

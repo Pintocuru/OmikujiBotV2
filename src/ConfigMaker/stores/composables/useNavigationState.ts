@@ -1,6 +1,11 @@
 // src/ConfigMaker/script/stores/composables/useNavigationState.ts
 import { ref } from 'vue';
-import { CategoryType, RecordCategoryType, recordCategoryType } from '@/types/';
+import {
+ CategoryType,
+ RecordCategoryType,
+ recordCategoryType,
+ RecordCategoryTypeMap
+} from '@/types/';
 
 /**
  * ナビゲーション状態管理を提供するコンポーザブル
@@ -12,9 +17,9 @@ export function useNavigationState() {
  /**
   * カテゴリを選択し、適切なルールを自動選択
   */
- const selectRecordCategory = (
+ const selectCategory = (
   category: CategoryType,
-  getCategoryItems: <T>(category: CategoryType) => Record<string, T>
+  getCategoryItems: <T>(category: RecordCategoryType) => Record<string, T>
  ) => {
   selectedCategory.value = category;
 
@@ -25,7 +30,9 @@ export function useNavigationState() {
   }
 
   // 最初のルールを自動選択（order順または最初のアイテム）
-  const items = getCategoryItems<any>(category);
+  const items = getCategoryItems<RecordCategoryTypeMap[(typeof recordCategoryType)[number]]>(
+   category as RecordCategoryType
+  );
   const firstId =
    Object.entries(items)
     .filter(([_, item]) => typeof item.order === 'number')
@@ -53,7 +60,7 @@ export function useNavigationState() {
  return {
   selectedCategory,
   selectedRuleId,
-  selectRecordCategory,
+  selectCategory,
   selectRule,
   clearSelection
  };
