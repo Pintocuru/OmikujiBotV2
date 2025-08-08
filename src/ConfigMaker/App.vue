@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw, ref } from 'vue';
+import { markRaw, Ref, ref, watch } from 'vue';
 import { isDev } from '@/types/';
 import { useScrollBehavior } from './components/appItems/useScrollBehavior';
 import ConfigImport from '@ConfigComponents/presets/ConfigImport.vue';
@@ -39,6 +39,7 @@ import ContentArea from './components/appItems/ContentArea.vue';
 import FloatingElements from './components/appItems/FloatingElements.vue';
 import { storeToRefs } from 'pinia';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import { ThemeType } from '@shared/styles/DaisyUiTheme';
 
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
@@ -51,6 +52,15 @@ if (isDev) {
  });
 }
 
+// テーマを <html data-theme=""> に反映（DaisyUI 用）
+const themeValue: Ref<ThemeType> = ref('dark');
+watch(
+ themeValue,
+ (newTheme) => {
+  document.documentElement.setAttribute('data-theme', newTheme);
+ },
+ { immediate: true }
+);
 // スクロール動作
 useScrollBehavior();
 </script>

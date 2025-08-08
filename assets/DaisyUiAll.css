@@ -1,0 +1,5 @@
+/* shared/styles/DaisyUiAll.css */
+@import 'tailwindcss';
+@plugin "daisyui" {
+ themes: all;
+}

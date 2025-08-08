@@ -4,7 +4,7 @@ import { createPinia } from 'pinia';
 import App from './DevApp.vue';
 import 'vue-sonner/style.css';
 import '../assets/styles.css';
-import '../assets/DaisyUiDark.css';
+import '../assets/DaisyUiAll.css';
 import OneSDK from '@onecomme.com/onesdk';
 
 // createApp
