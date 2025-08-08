@@ -1,11 +1,11 @@
-// src/ConfigMaker/script/stores/composables/useCategoryOperations.ts
+// src/ConfigMaker/script/stores/composables/useRecordOperations.ts
 import { Ref } from 'vue';
 import { CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
  */
-export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
+export function useRecordOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
  /**
   * カテゴリ全体のデータを更新
   */

@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useOtherOperations.ts
+// src/ConfigMaker/script/stores/composables/useSettingsOperations.ts
 import { Ref } from 'vue';
 import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings } from '@/types/';
 
@@ -6,7 +6,7 @@ import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
  * の操作機能を提供するコンポーザブル
  */
-export function useOtherOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
+export function useSettingsOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
  /**
   * displaySettingsを更新する関数
   * オブジェクト全体を上書きまたは部分的に更新します。

@@ -41,18 +41,20 @@ export type RecordCategoryTypeMap = {
  placeholders: PlaceholderType;
  characters: CharacterType;
 };
-/**
- * すべてのカテゴリタイプを定義する定数配列
- * @description RecordCategoryTypeにscriptSettings, displaySettings, wordPartySettingsを追加
- */
-export const categoryType = [
- ...recordCategoryType,
+
+// settingsCategory なカテゴリタイプの型定義
+export const settingsCategoryType = [
  'scriptSettings',
  'displaySettings',
  'wordPartySettings'
 ] as const;
+export type SettingsCategoryType = (typeof settingsCategoryType)[number];
 
-// カテゴリタイプの型定義
+/**
+ * すべてのカテゴリタイプを定義する定数配列
+ * @description RecordCategoryTypeにscriptSettings, displaySettings, wordPartySettingsを追加
+ */
+export const categoryType = [...recordCategoryType, ...settingsCategoryType] as const;
 export type CategoryType = (typeof categoryType)[number];
 
 /**

@@ -3,11 +3,10 @@ import { readonly, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
-import { useCategoryOperations } from './composables/useCategoryOperations';
 import { useNavigationState } from './composables/useNavigationState';
-// 💡 変更：useChangeTrackingをuseSimpleChangeTrackingに置き換え
+import { useRecordOperations } from './composables/useRecordOperations';
+import { useSettingsOperations } from './composables/useSettingsOperations';
 import { useSimpleChangeTracking } from './composables/useSimpleChangeTracking';
-import { useOtherOperations } from './composables/useOtherOperations';
 
 // グローバルデータの初期化
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
@@ -46,11 +45,11 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateCategoryData,
   getItemFromCategory,
   getCategoryItems
- } = useCategoryOperations(data, markAsChanged); // markAsChangedを渡す
+ } = useRecordOperations(data, markAsChanged); // markAsChangedを渡す
 
  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
  const { updateDisplaySettings, updateScriptSettings, updateWordPartySettings } =
-  useOtherOperations(data, markAsChanged);
+  useSettingsOperations(data, markAsChanged);
 
  // カテゴリ選択のラッパー関数（依存関係のため）
  const selectRecordCategory = (category: CategoryType) => {
@@ -94,7 +93,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateWordPartySettings,
 
   // ナビゲーション
-  selectRecordCategory: selectRecordCategory,
+  selectRecordCategory,
   selectRule,
   clearSelection
  };
