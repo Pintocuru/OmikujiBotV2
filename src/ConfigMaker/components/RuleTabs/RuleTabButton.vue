@@ -68,12 +68,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { isDev, SelectCategoryUnion } from '@/types/';
+import { isDev, RecordCategoryUnion } from '@/types/';
 import { GripVertical } from 'lucide-vue-next';
 import { useRuleTabsStore } from './RuleTabsStore';
 
 const props = defineProps<{
- rule: SelectCategoryUnion;
+ rule: RecordCategoryUnion;
 }>();
 
 // Store

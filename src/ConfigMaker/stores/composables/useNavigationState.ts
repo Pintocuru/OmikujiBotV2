@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useNavigationState.ts
 import { ref } from 'vue';
-import { CategoryType, SelectCategoryType, selectCategoryType } from '@/types/';
+import { CategoryType, RecordCategoryType, recordCategoryType } from '@/types/';
 
 /**
  * ナビゲーション状態管理を提供するコンポーザブル
@@ -12,14 +12,14 @@ export function useNavigationState() {
  /**
   * カテゴリを選択し、適切なルールを自動選択
   */
- const selectCategory = (
+ const selectRecordCategory = (
   category: CategoryType,
   getCategoryItems: <T>(category: CategoryType) => Record<string, T>
  ) => {
   selectedCategory.value = category;
 
   // 選択可能なカテゴリでない場合はルール選択をクリア
-  if (!selectCategoryType.includes(category as SelectCategoryType)) {
+  if (!recordCategoryType.includes(category as RecordCategoryType)) {
    selectedRuleId.value = null;
    return;
   }
@@ -53,7 +53,7 @@ export function useNavigationState() {
  return {
   selectedCategory,
   selectedRuleId,
-  selectCategory,
+  selectRecordCategory,
   selectRule,
   clearSelection
  };

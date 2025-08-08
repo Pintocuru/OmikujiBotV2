@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { SelectCategoryType } from '@/types/';
+import { RecordCategoryType } from '@/types/';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useIdEditor } from './useIdEditor';
@@ -99,7 +99,7 @@ import { useIdEditor } from './useIdEditor';
 // Props
 const props = defineProps<{
  currentId: string;
- category: SelectCategoryType;
+ category: RecordCategoryType;
 }>();
 
 // コンポーザブルを使用

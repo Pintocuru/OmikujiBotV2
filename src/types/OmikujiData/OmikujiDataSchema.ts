@@ -6,7 +6,7 @@ import { createScriptSettingsSchema } from '../GameScript/GameScriptSettingsSche
 import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
 import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
-import { ensureUniqueIds, SelectCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
+import { ensureUniqueIds, RecordCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
 
 // 再エクスポート
 export * from './CategoryType';
@@ -129,7 +129,7 @@ export const validateDataIntegrity = (data: OmikujiDataType) => {
 };
 
 // Record作成用のヘルパー関数
-function createRecordWithNormalization<T extends z.ZodType<SelectCategoryItem>>(itemSchema: T) {
+function createRecordWithNormalization<T extends z.ZodType<RecordCategoryItem>>(itemSchema: T) {
  return z
   .record(z.string(), itemSchema)
   .default({})

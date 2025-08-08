@@ -1,6 +1,6 @@
 // src/configMaker/components/presets/useImportPreviewManager.ts
 import { ref, computed } from 'vue';
-import { OmikujiDataType, CategoryType, OmikujiDataSchema, selectCategoryType } from '@/types/';
+import { OmikujiDataType, CategoryType, OmikujiDataSchema, recordCategoryType } from '@/types/';
 
 export type ImportMode = 'replace' | 'merge';
 
@@ -68,7 +68,7 @@ export const useImportPreviewManager = () => {
   let hasConflicts = false;
 
   // Record型カテゴリのみ処理
-  selectCategoryType.forEach((category) => {
+  recordCategoryType.forEach((category) => {
    const config = categories[category];
 
    const currentItems = currentData[category] ?? {};

@@ -45,10 +45,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectCategoryUnion } from '@/types';
+import { RecordCategoryUnion } from '@/types';
 
 const props = defineProps<{
- rule: SelectCategoryUnion;
+ rule: RecordCategoryUnion;
 }>();
 
 defineEmits<{

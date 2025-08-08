@@ -103,8 +103,8 @@ import {
  categoryLabels,
  CategoryType,
  OmikujiDataType,
- selectCategoryType,
- SelectCategoryType
+ recordCategoryType,
+ RecordCategoryType
 } from '@/types/';
 import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
@@ -175,8 +175,8 @@ onMounted(async () => {
 
 // カテゴリ別マージ関数
 const mergeCategory = (categoryType: CategoryType, currentData: any, newData: any): any => {
- // selectCategoryType（comments, timers, placeholders, characters）は深いマージ
- if (selectCategoryType.includes(categoryType as SelectCategoryType)) {
+ // recordCategoryType（comments, timers, placeholders, characters）は深いマージ
+ if (recordCategoryType.includes(categoryType as RecordCategoryType)) {
   const result = { ...currentData };
   for (const key in newData) {
    if (newData.hasOwnProperty(key)) {

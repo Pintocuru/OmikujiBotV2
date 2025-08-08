@@ -17,18 +17,18 @@ import { ref, computed } from 'vue';
 import RuleTabButton from './RuleTabButton.vue';
 import RuleHoverPreview from './RuleHoverPreview.vue';
 import { useRuleTabsStore } from './RuleTabsStore';
-import { SelectCategoryUnion } from '@/types';
+import { RecordCategoryUnion } from '@/types';
 
 // Props（最小限に）
 const props = defineProps<{
- rule: SelectCategoryUnion;
+ rule: RecordCategoryUnion;
 }>();
 
 // Store
 const store = useRuleTabsStore();
 
 // リアクティブデータ
-const hoveredRule = ref<SelectCategoryUnion | null>(null);
+const hoveredRule = ref<RecordCategoryUnion | null>(null);
 
 // プレビュー表示の判定
 const shouldShowPreview = computed(

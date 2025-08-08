@@ -1,6 +1,6 @@
 // src/configMaker/components/RuleTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue';
-import { SelectCategoryType } from '@/types/';
+import { RecordCategoryType } from '@/types/';
 import { BaseTypes } from '@shared/types';
 
 export interface FilterOptions {
@@ -10,7 +10,7 @@ export interface FilterOptions {
 
 export const useRuleState = () => {
  // 基本状態
- const ruleType = ref<SelectCategoryType>('placeholders');
+ const ruleType = ref<RecordCategoryType>('placeholders');
  const allRules = ref<BaseTypes[]>([]);
  const selectedRule = ref<BaseTypes | null>(null);
  const externalStore = ref<any>(null);
@@ -55,7 +55,7 @@ export const useRuleState = () => {
 
  // 初期化とデータ更新
  const initializeStore = (
-  type: SelectCategoryType,
+  type: RecordCategoryType,
   rules: BaseTypes[],
   selected: BaseTypes | null,
   store: any

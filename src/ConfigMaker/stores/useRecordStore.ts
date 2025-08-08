@@ -5,7 +5,7 @@ import {
  CommentRuleType,
  PlaceholderSchema,
  PlaceholderType,
- SelectCategoryType,
+ RecordCategoryType,
  TimerRuleSchema,
  TimerRuleType,
  CharacterSchema,
@@ -22,14 +22,14 @@ type CategoryTypeMap = {
  characters: CharacterType;
 };
 
-const categoryConfig: Record<SelectCategoryType, { schema: any; defaultName: string }> = {
+const categoryConfig: Record<RecordCategoryType, { schema: any; defaultName: string }> = {
  comments: { schema: CommentRuleSchema, defaultName: 'コメントルール' },
  timers: { schema: TimerRuleSchema, defaultName: 'タイマールール' },
  placeholders: { schema: PlaceholderSchema, defaultName: 'プレースホルダー' },
  characters: { schema: CharacterSchema, defaultName: 'キャラクター設定' }
 } as const;
 
-export function useRecordOperations<C extends SelectCategoryType>(category: C) {
+export function useRecordOperations<C extends RecordCategoryType>(category: C) {
  const omikujiStore = useOmikujiStore();
  const config = categoryConfig[category];
 
@@ -89,7 +89,7 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   });
 
   omikujiStore.addItemToCategory(category, id, newRule);
-  omikujiStore.selectCategory(category);
+  omikujiStore.selectRecordCategory(category);
   omikujiStore.selectRule(id);
   return id;
  };

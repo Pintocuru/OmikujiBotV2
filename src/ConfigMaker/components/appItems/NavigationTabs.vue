@@ -12,7 +12,7 @@
     :key="key"
     :class="['tab w-16 h-16 tooltip tooltip-top', selectedCategory === key ? 'tab-active' : '']"
     :data-tip="tab.description"
-    @click="omikujiStore.selectCategory(key)"
+    @click="omikujiStore.selectRecordCategory(key)"
    >
     <component :is="tab.icon" class="w-8 h-8" />
     <span class="text-xs text-center whitespace-nowrap text-ellipsis">{{ tab.label }}</span>

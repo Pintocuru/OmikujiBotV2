@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useCategoryOperations.ts
 import { Ref } from 'vue';
-import { CategoryType, OmikujiDataType, SelectCategoryType, SelectCategoryTypeMap } from '@/types/';
+import { CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
@@ -81,18 +81,18 @@ export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged:
  };
 
  /**
-  * SelectCategoryのプロパティを更新
+  * RecordCategoryのプロパティを更新
   */
  const updateRuleNestedProperty = <
-  C extends SelectCategoryType,
-  K extends keyof SelectCategoryTypeMap[C]
+  C extends RecordCategoryType,
+  K extends keyof RecordCategoryTypeMap[C]
  >(
   category: C,
   id: string,
   key: K,
-  value: SelectCategoryTypeMap[C][K]
+  value: RecordCategoryTypeMap[C][K]
  ) => {
-  const currentCategory = data.value[category] as Record<string, SelectCategoryTypeMap[C]>;
+  const currentCategory = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
   if (currentCategory[id]) {
    const updatedRule = { ...currentCategory[id], [key]: value };
    const updatedCategory = { ...currentCategory, [id]: updatedRule };

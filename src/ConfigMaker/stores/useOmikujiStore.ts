@@ -24,7 +24,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  const {
   selectedCategory,
   selectedRuleId,
-  selectCategory: _selectCategory,
+  selectRecordCategory: _selectRecordCategory,
   selectRule,
   clearSelection
  } = useNavigationState();
@@ -53,8 +53,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   useOtherOperations(data, markAsChanged);
 
  // カテゴリ選択のラッパー関数（依存関係のため）
- const selectCategory = (category: CategoryType) => {
-  _selectCategory(category, getCategoryItems);
+ const selectRecordCategory = (category: CategoryType) => {
+  _selectRecordCategory(category, getCategoryItems);
  };
 
  return {
@@ -94,7 +94,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateWordPartySettings,
 
   // ナビゲーション
-  selectCategory,
+  selectRecordCategory: selectRecordCategory,
   selectRule,
   clearSelection
  };

@@ -1,6 +1,6 @@
 // src/configMaker/components/parts/useIdEditor.ts
 import { ref, computed } from 'vue';
-import { SelectCategoryType } from '@/types/';
+import { RecordCategoryType } from '@/types/';
 import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
@@ -25,7 +25,7 @@ export function useIdEditor() {
  /**
   * カテゴリーに応じた表示タイトルを取得
   */
- const getDialogTitle = (mode: SelectCategoryType): string => {
+ const getDialogTitle = (mode: RecordCategoryType): string => {
   const titles = {
    comments: 'コメントルール',
    timers: 'タイマールール',
@@ -38,7 +38,7 @@ export function useIdEditor() {
  /**
   * カテゴリーに応じた既存IDリストを取得
   */
- const getExistingIds = (mode: SelectCategoryType, currentId: string): string[] => {
+ const getExistingIds = (mode: RecordCategoryType, currentId: string): string[] => {
   switch (mode) {
    case 'characters':
     return Object.keys(characterStore.rulesMap).filter((id) => id !== currentId);
@@ -84,7 +84,7 @@ export function useIdEditor() {
   */
  const validateIdDuplication = (
   id: string,
-  mode: SelectCategoryType,
+  mode: RecordCategoryType,
   currentId: string
  ): string | null => {
   if (id === currentId) {
@@ -102,7 +102,7 @@ export function useIdEditor() {
  /**
   * IDをバリデーション
   */
- const validateId = (id: string, mode: SelectCategoryType, currentId: string) => {
+ const validateId = (id: string, mode: RecordCategoryType, currentId: string) => {
   const trimmedId = id.trim();
 
   // フォーマットチェック
@@ -125,7 +125,7 @@ export function useIdEditor() {
  /**
   * IDを更新
   */
- const updateId = (currentId: string, newIdValue: string, mode: SelectCategoryType): boolean => {
+ const updateId = (currentId: string, newIdValue: string, mode: RecordCategoryType): boolean => {
   const trimmedNewId = newIdValue.trim();
   switch (mode) {
    case 'characters':
@@ -144,7 +144,7 @@ export function useIdEditor() {
  /**
   * ダイアログを開く
   */
- const openDialog = (currentId: string, mode: SelectCategoryType) => {
+ const openDialog = (currentId: string, mode: RecordCategoryType) => {
   newId.value = currentId;
   errorMessage.value = '';
   isDialogOpen.value = true;
@@ -168,7 +168,7 @@ export function useIdEditor() {
  /**
   * IDを保存
   */
- const saveId = (currentId: string, mode: SelectCategoryType): boolean => {
+ const saveId = (currentId: string, mode: RecordCategoryType): boolean => {
   if (hasError.value || !newId.value.trim() || newId.value === currentId) {
    return false;
   }

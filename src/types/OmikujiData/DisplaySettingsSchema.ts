@@ -59,7 +59,7 @@ export const DisplaySettingsSchema = z.object({
 });
 
 // ルートカテゴリの表示設定
-// selectCategoryType = ['comments', 'timers', 'placeholders', 'characters']
+// recordCategoryType = ['comments', 'timers', 'placeholders', 'characters']
 // 以上の4つは常に表示するので設定不要
 //
 // GOD-MODE:「おみくじBot コンフィグエディター」のタイトルに「DEV」が付く

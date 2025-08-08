@@ -6,14 +6,14 @@ import { BaseTypes } from '@shared/types';
 /**
  * id/orderの型
  */
-export type SelectCategoryItem = BaseTypes & { [key: string]: any };
+export type RecordCategoryItem = BaseTypes & { [key: string]: any };
 
 /**
  * アイテム配列のorder値を正規化する
  * @param items - 正規化対象のアイテム配列
  * @returns order値が1から連番になったアイテム配列
  */
-export const normalizeOrders = <T extends SelectCategoryItem>(items: T[]): T[] => {
+export const normalizeOrders = <T extends RecordCategoryItem>(items: T[]): T[] => {
  if (!Array.isArray(items) || items.length === 0) return items;
 
  const sortedItems = [...items].sort((a, b) => {
@@ -47,7 +47,7 @@ export const ensureUniqueIds = <T extends { id: string }>(items: T[]): T[] => {
  * @param itemSchema - 個別アイテムのZodスキーマ
  * @returns 正規化機能を含むRecordスキーマ
  */
-export const createRecordWithNormalization = <T extends z.ZodType<SelectCategoryItem>>(
+export const createRecordWithNormalization = <T extends z.ZodType<RecordCategoryItem>>(
  itemSchema: T
 ) => {
  return z
