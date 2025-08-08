@@ -1,7 +1,4 @@
-// src/ConfigMaker/script/useCommentRulesStore.ts
-//
-// データの直接操作を削除し、useRecordOperationsのメソッドを使うように修正
-//
+// src/ConfigMaker/script/useCommentRulesStore.ts - 単一の真実の泉を維持
 import { useRecordOperations } from './useRecordStore';
 import { useOmikujiStore } from './useOmikujiStore';
 import { defineStore } from 'pinia';
@@ -22,26 +19,22 @@ export const useCommentRulesStore = defineStore('commentRules', () => {
     return false;
    }
 
-   // 新しいIDでレコードを追加する
-   const newRuleId = baseOperations.add();
+   // 💡 修正: 単一の真実の泉を維持 - addメソッドに新しいIDを渡す
+   const newRuleId = baseOperations.add(newId);
 
-   // 新しいレコードのIDが期待通りでない場合はエラー
    if (newRuleId !== newId) {
-    // 新しいIDのレコードは不要なので削除
+    // 予期しない動作の場合はロールバック
     baseOperations.remove(newRuleId);
-    console.error(`Generated new ID ${newRuleId} does not match requested new ID ${newId}`);
+    console.error(`Could not create rule with ID ${newId}`);
     return false;
    }
 
-   // 古いレコードのプロパティを新しいレコードにコピー
-   // `id`プロパティはコピーしないように除外する
+   // 古いルールのデータ（idを除く）を新しいルールにコピー
    const { id, ...updates } = oldRule;
    baseOperations.update(newId, updates);
 
-   // 古いレコードを削除
+   // 古いルールを削除
    baseOperations.remove(oldId);
-
-   omikujiStore.selectRule(newId);
 
    return true;
   } catch (error) {

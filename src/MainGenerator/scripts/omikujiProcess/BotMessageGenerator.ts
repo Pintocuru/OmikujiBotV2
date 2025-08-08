@@ -15,42 +15,71 @@ export class BotMessageGenerator {
   * 単一のPostActionからBotMessageを生成（複数の場合もあり）
   */
  generateMessage(postAction: PostActionType): BotMessage[] {
-  const character = this.characters[postAction.characterKey];
+  let character;
   const messages: BotMessage[] = [];
 
-  // messageContentが存在する場合
-  if (postAction.messageContent?.trim()) {
-   messages.push(
-    BotMessageSchema.parse({
-     name: character.name,
-     profileImage: character.displayOption.isIconDisplay
-      ? this.getCharacterIcon(character, postAction.iconKey)
-      : null,
-     comment: postAction.messageContent,
-     isToast: false,
-     color: character.color,
-     delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
-    })
-   );
-  }
+  try {
+   // 存在しないキーでアクセスした場合にエラーを捕捉
+   character = this.characters[postAction.characterKey];
+   if (!character) {
+    throw new Error(`Character with key "${postAction.characterKey}" not found.`);
+   }
 
-  // messageToastが存在する場合
-  if (postAction.messageToast?.trim()) {
+   // messageContentが存在する場合
+   if (postAction.messageContent?.trim()) {
+    messages.push(
+     BotMessageSchema.parse({
+      name: character.name,
+      profileImage: character.displayOption.isIconDisplay
+       ? this.getCharacterIcon(character, postAction.iconKey)
+       : null,
+      comment: postAction.messageContent,
+      isToast: false,
+      color: character.color,
+      delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
+     })
+    );
+   }
+
+   // messageToastが存在する場合
+   if (postAction.messageToast?.trim()) {
+    messages.push(
+     BotMessageSchema.parse({
+      name: character.name,
+      profileImage: character.displayOption.isIconDisplay
+       ? this.getCharacterIcon(character, postAction.iconKey)
+       : null,
+      comment: postAction.messageToast,
+      isToast: true,
+      color: character.color,
+      delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
+     })
+    );
+   }
+
+   return messages;
+  } catch (error) {
+   // エラーが発生した場合（characterが存在しない場合）の代替処理
+   character = this.characters[0];
+   if (error instanceof Error) console.error(error.message);
+
+   // ユーザーへの通知メッセージを追加
    messages.push(
     BotMessageSchema.parse({
-     name: character.name,
-     profileImage: character.displayOption.isIconDisplay
-      ? this.getCharacterIcon(character, postAction.iconKey)
-      : null,
-     comment: postAction.messageToast,
+     name: 'error',
+     profileImage: null,
+     comment: `キャラクター "${postAction.characterKey}" が設定されていないおみくじがあるよ。コンフィグエディターで設定してね。`,
      isToast: true,
-     color: character.color,
-     delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
+     color: {
+      nameColor: '#212121',
+      textColor: '#212121',
+      backgroundColor: '#ff9800'
+     },
+     delaySeconds: 5
     })
    );
+   return messages;
   }
-
-  return messages;
  }
 
  /**

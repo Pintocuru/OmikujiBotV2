@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/useRecordStore.ts - selectedRule修正版
+// src/ConfigMaker/script/useRecordStore.ts - add関数にid引数を追加
 import { computed, nextTick } from 'vue';
 import {
  CommentRuleSchema,
@@ -45,7 +45,6 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   Object.values(rulesMap.value).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
  );
 
- // 💡 修正: selectedRuleのsetterを非同期処理に変更
  const selectedRule = computed<CategoryTypeMap[C] | null>({
   get: () => {
    if (omikujiStore.selectedCategory !== category) return null;
@@ -55,7 +54,6 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   },
   set: async (value) => {
    if (value && omikujiStore.selectedRuleId) {
-    // 💡 修正: 非同期でupdateItemを実行し、変更追跡を確実にトリガー
     await nextTick();
     omikujiStore.updateItemInCategory(
      category,
@@ -66,7 +64,6 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   }
  });
 
- // 💡 修正: updateItemも非同期版に変更
  const updateItem = async (updates: Partial<CategoryTypeMap[C]>) => {
   if (omikujiStore.selectedRuleId) {
    await nextTick();
@@ -74,10 +71,23 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   }
  };
 
- const add = (): string => {
-  const id = `${Date.now()}`;
+ // 💡 修正: addメソッドにオプショナルなid引数を追加
+ const add = (customId?: string): string => {
+  const id = customId || `${Date.now()}`;
+
+  // IDの重複チェック
+  if (rulesMap.value[id]) {
+   console.warn(`ID ${id} already exists. Using generated ID instead.`);
+   return add(); // 再帰的に自動生成IDで実行
+  }
+
   const count = Object.keys(rulesMap.value).length + 1;
-  const newRule = createRecord({ id, name: `新しい${config.defaultName} ${count}`, order: count });
+  const newRule = createRecord({
+   id,
+   name: `新しい${config.defaultName} ${count}`,
+   order: count
+  });
+
   omikujiStore.addItemToCategory(category, id, newRule);
   omikujiStore.selectCategory(category);
   omikujiStore.selectRule(id);
@@ -137,6 +147,7 @@ export function useRecordOperations<C extends SelectCategoryType>(category: C) {
   remove,
   duplicate,
   reorder,
-  updateItem
+  updateItem,
+  createRecord
  };
 }

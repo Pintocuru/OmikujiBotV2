@@ -35,7 +35,7 @@
    @click="toggleView"
    class="btn btn-circle btn-primary p-1 shadow-lg transition-opacity duration-300 opacity-50 hover:opacity-100"
   >
-   <component :is="showMain ? SettingsIcon : GeneratorIcon" class="w-6 h-6" />
+   <component :is="showMain ? SettingsIcon : Cpu" class="w-6 h-6" />
   </button>
  </div>
 </template>
@@ -45,7 +45,7 @@ import { ref, markRaw, Ref, watch } from 'vue';
 import MainGenerator from './MainGenerator/App.vue';
 import ConfigMaker from './ConfigMaker/App.vue';
 import { themes, ThemeType } from '@shared/styles/DaisyUiTheme';
-import { Settings as SettingsIcon, Cpu as GeneratorIcon, Palette } from 'lucide-vue-next';
+import { Settings as SettingsIcon, Cpu, Palette } from 'lucide-vue-next';
 
 const showMain = ref(true);
 const toggleView = () => {
@@ -63,7 +63,7 @@ const selectTheme = (theme: ThemeType) => {
  themeMenuOpen.value = false;
 };
 
-// テーマを <html data-theme=""> に反映（DaisyUI 用）
+// テーマを反映（DaisyUI 用）
 watch(
  themeValue,
  (newTheme) => {
