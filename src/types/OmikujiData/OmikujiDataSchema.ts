@@ -23,6 +23,9 @@ export const TimerRuleRecordSchema = createRecordWithNormalization(TimerRuleSche
 export const PlaceholderRecordSchema = createRecordWithNormalization(PlaceholderSchema);
 export const CharacterRecordSchema = createRecordWithNormalization(CharacterSchema);
 
+// scriptSettings用
+const scriptSettingsSchema = createScriptSettingsSchema(gameScriptMap);
+
 /**
  * おみくじデータ全体のメインスキーマ
  */
@@ -31,7 +34,7 @@ export const OmikujiDataSchema = z.object({
  timers: TimerRuleRecordSchema,
  placeholders: PlaceholderRecordSchema,
  characters: CharacterRecordSchema,
- scriptSettings: createScriptSettingsSchema(gameScriptMap).default({}).catch({}),
+ scriptSettings: scriptSettingsSchema.default({}).catch({}),
  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
  wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])
 });
@@ -42,6 +45,7 @@ export type CommentRuleType = z.infer<typeof CommentRuleSchema>;
 export type TimerRuleType = z.infer<typeof TimerRuleSchema>;
 export type RuleType = CommentRuleType | TimerRuleType;
 export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
+export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 
 // カテゴリ更新用のスキーママップ
 const categorySchemaMap = {

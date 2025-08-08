@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/composables/useSimpleChangeTracking.ts
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 /**
  * シンプルな変更追跡（明示的操作ベース）
@@ -26,18 +26,10 @@ export function useSimpleChangeTracking() {
   checkCount.value = 0;
  };
 
- /**
-  * 強制的に変更状態にする（緊急時用）
-  */
- const forceChanged = () => {
-  markAsChanged('force_changed');
- };
-
  return {
   checkCount,
   changeOperations,
   markAsChanged,
-  markAsSaved,
-  forceChanged
+  markAsSaved
  };
 }

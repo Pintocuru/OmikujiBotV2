@@ -5,10 +5,7 @@ import { CategoryType, OmikujiDataType, SelectCategoryType, SelectCategoryTypeMa
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
  */
-export function useCategoryOperations(
- data: Ref<OmikujiDataType>,
- markAsChanged: (operation?: string) => void
-) {
+export function useCategoryOperations(data: Ref<OmikujiDataType>, markAsChanged: () => void) {
  /**
   * カテゴリ全体のデータを更新
   */
@@ -17,7 +14,7 @@ export function useCategoryOperations(
   newData: Record<string, OmikujiDataType[C]>
  ) => {
   data.value[category] = newData as OmikujiDataType[C];
-  markAsChanged(`updateCategoryData: ${category}`);
+  markAsChanged();
  };
 
  /**
@@ -27,7 +24,7 @@ export function useCategoryOperations(
   const currentCategory = (data.value[category] || {}) as Record<string, T>;
   data.value[category] = { ...currentCategory, [id]: item } as any;
 
-  markAsChanged(`addItemToCategory: ${category}/${id}`);
+  markAsChanged();
  };
 
  /**
@@ -42,7 +39,7 @@ export function useCategoryOperations(
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
 
-   markAsChanged(`updateItemInCategory: ${category}/${id}`);
+   markAsChanged();
   } else {
    addItemToCategory(category, id, updates as T);
   }
@@ -77,19 +74,14 @@ export function useCategoryOperations(
   if (!item) return null;
 
   const newId = `${id}_copy`;
-
-  // 💡 修正: オブジェクト内のidプロパティも新しいIDに更新
-  const duplicatedItem: T = {
-   ...item,
-   id: newId // idフィールドを新しいIDで上書き
-  };
+  const duplicatedItem: T = { ...item, id: newId };
 
   addItemToCategory(category, newId, duplicatedItem);
   return newId;
  };
 
  /**
-  * ルールのネストしたプロパティを更新
+  * SelectCategoryのプロパティを更新
   */
  const updateRuleNestedProperty = <
   C extends SelectCategoryType,
