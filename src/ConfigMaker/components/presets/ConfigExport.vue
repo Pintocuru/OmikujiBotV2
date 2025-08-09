@@ -5,20 +5,20 @@
    <button
     @click="() => devStore.overwriteConfig(saveFileName)"
     class="btn btn-warning tooltip tooltip-top"
-    :class="!checkCount ? 'btn-soft' : ''"
+    :class="!hasChanged ? 'btn-soft' : ''"
     data-tip="ファイルを保存"
-    :disabled="!checkCount || !saveFileName"
+    :disabled="!hasChanged || !saveFileName"
    >
     <Save class="w-4 h-4" />
     {{ saveFileName.replace('.json', '') || 'ないよ' }} の保存
    </button>
   </div>
   <div class="indicator">
-   <span v-if="checkCount" class="indicator-item badge badge-secondary badge-sm"> 変更あり </span>
+   <span v-if="hasChanged" class="indicator-item badge badge-secondary badge-sm"> 変更あり </span>
    <button
     @click="() => handleExport('config')"
     class="btn btn-primary tooltip tooltip-top"
-    :class="!checkCount ? 'btn-soft' : ''"
+    :class="!hasChanged ? 'btn-soft' : ''"
     data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
     :disabled="isExporting"
    >
@@ -56,7 +56,7 @@ const props = defineProps<{
 const { isExporting, exportFile } = useConfigExport();
 const omikujiStore = useOmikujiStore();
 const devStore = useDevStore();
-const { checkCount, changeOperations } = storeToRefs(omikujiStore);
+const { hasChanged } = storeToRefs(omikujiStore);
 const { saveFileName } = storeToRefs(devStore);
 
 const handleExport = async (type: 'config' | 'template') => {

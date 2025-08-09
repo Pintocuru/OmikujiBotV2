@@ -1,5 +1,5 @@
 // src/configMaker/components/RecordTabs/composables/useInlineEdit.ts
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, ComponentPublicInstance } from 'vue';
 import { BaseTypes } from '@shared/types';
 
 /**
@@ -60,16 +60,14 @@ export const useInlineEdit = (
   * input要素のref設定とフォーカス処理
   * Vue 3のref関数として使用
   */
- const setEditInput = (el: HTMLInputElement | null) => {
-  editInput.value = el;
-  if (el) {
-   // setTimeoutで確実にフォーカス（ブラウザによってはnextTickだけでは不安定）
-   setTimeout(() => {
-    el.focus();
-    el.select();
-   }, 0);
+ function setEditInput(el: Element | ComponentPublicInstance | null) {
+  if (el instanceof HTMLInputElement) {
+   // ここで HTMLInputElement として扱える
+   editInput.value = el;
+  } else {
+   editInput.value = null;
   }
- };
+ }
 
  /**
   * 編集中の名前を更新

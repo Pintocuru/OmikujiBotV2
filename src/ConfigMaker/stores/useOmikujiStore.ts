@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts
-import { readonly, ref } from 'vue';
+import { nextTick, readonly, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
@@ -16,7 +16,11 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
  // 変更があったかどうかを追跡するフラグ
  const hasChanged = ref(false);
- useOmikujiStore().$subscribe(() => (hasChanged.value = true));
+ let isInitializing = true;
+ useOmikujiStore().$subscribe(() => {
+  if (!isInitializing) hasChanged.value = true;
+ });
+ nextTick(() => (isInitializing = false)); // 初期化完了後
 
  // ナビゲーション状態管理
  const {
@@ -50,7 +54,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
  // カテゴリ選択のラッパー関数（依存関係のため）
  const selectCategory = (category: CategoryType) => {
-  _selectCategory(category, getCategoryMap);
+  _selectCategory(category, (cat: any) => getCategoryMap(cat));
  };
 
  return {

@@ -35,13 +35,6 @@
   />
 
   <!-- ルール名（インライン編集対応） -->
-  <!-- 型 '(el: HTMLInputElement | null) => void' を型 'VNodeRef | undefined' に割り当てることはできません。
-  型 '(el: HTMLInputElement | null) => void' を型 '(ref: Element | ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}, {}, {}, string, ComponentProvideOptions>, ... 4 more ..., any> | null, refs: Record<...>) => void' に割り当てることはできません。
-    パラメーター 'el' および 'ref' は型に互換性がありません。
-      型 'Element | ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}, {}, {}, string, ComponentProvideOptions>, ... 4 more ..., any> | null' を型 'HTMLInputElement | null' に割り当てることはできません。
-        型 'Element' には 型 'HTMLInputElement' からの次のプロパティがありません: accept, align, alt, autocomplete、188 など。ts-plugin(2322)
-runtime-dom.d.ts(1356, 5): 予期された型は、型 'InputHTMLAttributes & ReservedProps & Record<string, unknown>' に対してここで宣言されたプロパティ 'ref' から取得されています
-(property) ref?: VNodeRef | undefined -->
   <input
    v-if="isEditing"
    :value="store.editingName"
@@ -75,7 +68,7 @@ runtime-dom.d.ts(1356, 5): 予期された型は、型 'InputHTMLAttributes & Re
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { isDev, RecordCategoryUnion } from '@/types/';
+import { RecordCategoryUnion } from '@/types/';
 import { GripVertical } from 'lucide-vue-next';
 import { useRecordTabsStore } from './RecordTabsStore';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
