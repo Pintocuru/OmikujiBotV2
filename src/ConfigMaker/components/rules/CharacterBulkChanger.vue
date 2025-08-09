@@ -66,6 +66,7 @@ import type { OmikujiSetType } from '@/types/';
 import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
 import { Users, AlertTriangle } from 'lucide-vue-next';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 const props = defineProps<{
  modelValue: OmikujiSetType[];
@@ -74,10 +75,12 @@ const props = defineProps<{
 const emit = defineEmits<{
  'update:modelValue': [value: OmikujiSetType[]];
 }>();
-// TODO: 不要なstore
-// キャラクターストア
-const characterStore = useCharacterStore();
-const charactersArray = computed(() => characterStore.rulesArray.sort((a, b) => a.order - b.order));
+
+// ストアを使用
+const omikujiStore = useOmikujiStore();
+const charactersArray = computed(() =>
+ omikujiStore.getCategoryArray('characters').sort((a, b) => a.order - b.order)
+);
 
 // モーダル状態
 const isModalOpen = ref(false);

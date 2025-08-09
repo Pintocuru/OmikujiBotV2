@@ -1,57 +1,43 @@
 <!-- src/configMaker/components/timers/TimerRuleEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RecordTabs
-  :rules="rulesArray"
-  :selectedRule="selectedRule"
-  ruleType="timers"
-  :external-store="extendedStore"
- />
+ <RecordTabs />
 
  <!-- ルール編集エリア -->
- <div v-if="selectedRule">
+ <div v-if="selectedItem">
   <!-- 基本設定セクション -->
-  <BaseSettingsEditor v-model="selectedRule" category="timers" />
+  <BaseSettingsEditor v-model="selectedItem" category="timers" />
 
   <!-- タイマー設定セクション -->
-  <TimerIntervalEditor v-model="selectedRule" />
+  <TimerIntervalEditor v-model="selectedItem" />
 
   <!-- おみくじ設定セクション -->
-  <OmikujiSetEditor v-model="selectedRule.omikuji" category="timers" />
+  <OmikujiSetEditor v-model="selectedItem.omikuji" category="timers" />
  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RuleType, TimerRuleType } from '@/types/';
+import { TimerRuleType } from '@/types/';
 import TimerIntervalEditor from './TimerIntervalEditor.vue';
 import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue';
-import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import { storeToRefs } from 'pinia';
 
 // ストアを使用
-const timerRulesStore = useTimerRulesStore();
 const omikujiStore = useOmikujiStore();
-// TODO: 不要なstore
-// RecordTabsコンポーネントで使用するstore機能を拡張
-const extendedStore = {
- ...timerRulesStore,
- selectRule: (ruleId: string) => {
-  omikujiStore.selectCategory('timers');
-  omikujiStore.selectRule(ruleId);
- }
-};
+const { data, selectedRuleId } = storeToRefs(omikujiStore);
 
-// computed
-const selectedRule = computed({
- get: () => timerRulesStore.selectedRule,
- set: (newValue: RuleType) => {
-  if (timerRulesStore.selectedRule && timerRulesStore.selectedRule.id) {
-   timerRulesStore.update(timerRulesStore.selectedRule.id, newValue as TimerRuleType);
-  }
+const selectedItem = computed({
+ get: () => {
+  if (!selectedRuleId.value) return null;
+  // 明示的に型キャストして readonly を外す
+  return data.value.timers[selectedRuleId.value] as TimerRuleType;
+ },
+ set: (value: TimerRuleType) => {
+  omikujiStore.updateItem('characters', value.id, value);
  }
 });
-const rulesArray = computed(() => timerRulesStore.rulesArray);
 </script>

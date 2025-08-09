@@ -41,7 +41,7 @@
 import { ref, computed, Ref } from 'vue';
 import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
-import { useCharacterStore } from '@ConfigStores/useCharacterStore';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 const props = defineProps<{
  characterKey: string;
@@ -51,9 +51,10 @@ const props = defineProps<{
 const emit = defineEmits<{
  'select:icon': [iconKey: CharacterEmotionType];
 }>();
-// TODO: 不要なstore
-const characterStore = useCharacterStore();
-const charactersMap = computed(() => characterStore.rulesMap);
+
+// ストアを使用
+const omikujiStore = useOmikujiStore();
+const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
 
 const modalRef: Ref<HTMLDialogElement | null> = ref(null);
 

@@ -7,11 +7,17 @@ import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsM
 import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettings = () => {
- // TODO: 不要なstore
- const scriptSettingsStore = useScriptSettingsStore();
  const omikujiStore = useOmikujiStore();
 
  const scriptSettings = computed(() => omikujiStore.data.scriptSettings);
+
+ const updateItem = (
+  category: 'scriptSettings',
+  scriptId: string,
+  settings: Record<string, any>
+ ) => {
+  omikujiStore.updateScriptSettings({ [scriptId]: settings });
+ };
 
  const getCurrentSettingValue = (scriptId: string, settingId: string) => {
   const currentSettings = scriptSettings.value[scriptId] as DefaultTypes;
@@ -71,7 +77,7 @@ export const useScriptSettings = () => {
  const updateScriptSetting = (scriptId: string, settingId: string, value: any) => {
   const currentSettings = { ...(scriptSettings.value[scriptId] as DefaultTypes) };
   currentSettings[settingId] = value;
-  scriptSettingsStore.updateItem('scriptSettings', scriptId, currentSettings);
+  updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  const resetScriptSetting = (scriptId: string, settingId: string) => {
@@ -87,7 +93,7 @@ export const useScriptSettings = () => {
   } else {
    delete currentSettings[settingId];
   }
-  scriptSettingsStore.updateItem('scriptSettings', scriptId, currentSettings);
+  updateItem('scriptSettings', scriptId, currentSettings);
  };
 
  return {

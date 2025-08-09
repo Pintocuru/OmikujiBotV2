@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { emotionLabels, CharacterEmotionType, getImagePath } from '@/types/';
-import { useCharacterStore } from '@ConfigStores/useCharacterStore';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 const props = defineProps<{
  characterKey: string;
@@ -20,9 +20,9 @@ const props = defineProps<{
  imgClass?: string;
  fallbackClass?: string;
 }>();
-// TODO: 不要なstore
-const characterStore = useCharacterStore();
-const charactersMap = computed(() => characterStore.rulesMap);
+// ストアを使用
+const omikujiStore = useOmikujiStore();
+const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
 
 const iconSrc = computed(() =>
  getImagePath(charactersMap.value[props.characterKey]?.image[props.iconKey])

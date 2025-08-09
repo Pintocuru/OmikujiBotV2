@@ -5,96 +5,96 @@ import {
  PostActionType,
  BotMessage,
  OmikujiSetType,
- CommentRuleType
+ OmikujiDataType,
+ RuleType
 } from '@/types/';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 import { MockComment } from '@shared/__mocks__/CreateMockComment';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
-import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
 import { OmikujiProcessor } from '@MainScripts/omikujiProcess/OmikujiProcessor';
 import { toast } from 'vue-sonner';
+import { storeToRefs } from 'pinia';
 
 export function useTestPost() {
- // TODO: 不要なstore
  const omikujiStore = useOmikujiStore();
- const commentRulesStore = useCommentRulesStore();
- const timerRulesStore = useTimerRulesStore();
+ const { data, selectedCategory, selectedRuleId } = storeToRefs(omikujiStore);
 
- // 選択されているルールをコメントルールまたはタイマールールから取得するように変更
- const selectedRuleForProcessing = computed(() => {
-  return commentRulesStore.selectedRule || timerRulesStore.selectedRule;
+ // 選択されているルールを取得（型安全性を確保）
+ const selectedRule = computed((): RuleType | null => {
+  if (!selectedRuleId.value) return null;
+
+  const ruleData =
+   selectedCategory.value === 'comments'
+    ? data.value.comments[selectedRuleId.value]
+    : selectedCategory.value === 'timers'
+      ? data.value.timers[selectedRuleId.value]
+      : null;
+
+  // readonlyを取り除くためにディープコピー
+  return ruleData ? JSON.parse(JSON.stringify(ruleData)) : null;
  });
 
- const toastTestPost = async (posts: BotMessage[]): Promise<void> => {
+ // テスト投稿の遅延処理を並列実行
+ const executeTestPostDelays = async (posts: BotMessage[]): Promise<void> => {
   try {
-   await Promise.all(
-    posts.map(
-     (post) =>
-      new Promise<void>((resolve) => {
-       setTimeout(() => {
-        resolve();
-       }, post.delaySeconds * 1000);
-      })
-    )
+   const delayPromises = posts.map(
+    (post) => new Promise<void>((resolve) => setTimeout(resolve, post.delaySeconds * 1000))
    );
+   await Promise.all(delayPromises);
   } catch (error) {
    console.error('メッセージ投稿処理のトースト表示中にエラーが発生しました:', error);
    toast.error('テスト投稿の表示中にエラーが発生しました。');
   }
  };
 
+ // 抽選結果の詳細トーストを表示
+ const showOmikujiResultToast = (drawnOmikuji: OmikujiSetType, actions: PostActionType[]) => {
+  const weight = drawnOmikuji.weight || 1;
+  const weightPercent = (drawnOmikuji as any).weightPercent || 0;
+  const omikujiName = drawnOmikuji.name || 'おみくじ';
+
+  const firstMessageAction = actions.find((action) => action.messageContent);
+  const messageContent = firstMessageAction?.messageContent || 'メッセージなし';
+
+  toast.success('おみくじ抽選結果', {
+   description: `おみくじ: ${omikujiName}\n内容: ${messageContent}\n重み: ${weight}\n確率: ${weightPercent.toFixed(2)}%`,
+   duration: 15000,
+   style: {
+    maxWidth: '400px',
+    whiteSpace: 'pre-line'
+   }
+  });
+ };
+
  const postTestOmikujiItem = (actions: PostActionType[], drawnOmikuji?: OmikujiSetType) => {
-  // selectedRuleForProcessing を使用して、どちらかのルールが存在するかチェック
-  if (!selectedRuleForProcessing.value) {
-   toast.error('テスト投稿の対象となるルールが選択されていません。'); // ユーザーにフィードバックを追加
+  const rule = selectedRule.value;
+  if (!rule) {
+   toast.error('テスト投稿の対象となるルールが選択されていません。');
    return;
   }
 
-  const scriptManager = new GameScriptManager(omikujiStore.data);
-  const userCommentProcessor = new OmikujiProcessor(omikujiStore.data, scriptManager);
+  const scriptManager = new GameScriptManager(data.value as OmikujiDataType);
+  const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager);
 
-  const botMessageArray = userCommentProcessor.executeOmikujiProcess(
+  const botMessageArray = processor.executeOmikujiProcess(
    MockComment('suika'),
-   selectedRuleForProcessing.value,
+   rule,
    OmikujiSetSchema.parse({ postActions: actions })
   );
 
-  // 抽選結果の詳細情報をトーストで表示（15秒間）
+  // 抽選結果がある場合はトーストで表示
   if (drawnOmikuji) {
-   const weight = drawnOmikuji.weight || 1;
-   // ! drawOmikuji で新たなプロパティが付与されてるのでany
-   const weightPercent = (drawnOmikuji as any).weightPercent || 0;
-   const omikujiName = drawnOmikuji.name || 'おみくじ';
-
-   // アクションの内容を取得（最初のメッセージアクションを表示）
-   const firstMessageAction = actions.find((action) => action.messageContent);
-   const messageContent = firstMessageAction?.messageContent || 'メッセージなし';
-
-   toast.success('おみくじ抽選結果', {
-    description: `
-おみくじ: ${omikujiName}
-内容: ${messageContent}
-重み: ${weight}
-確率: ${weightPercent.toFixed(2)}%
-     `.trim(),
-    duration: 15000, // 15秒間表示
-    style: {
-     maxWidth: '400px',
-     whiteSpace: 'pre-line'
-    }
-   });
+   showOmikujiResultToast(drawnOmikuji, actions);
   }
 
-  toastTestPost(botMessageArray);
+  executeTestPostDelays(botMessageArray);
  };
 
  const postTestOmikuji = (omikujis: OmikujiSetType[]) => {
-  // weightPercentを付与したomikujisを作成
   const omikujisWithPercent = addWeightPercentages(omikujis);
-
   const omikujiItem = drawOmikuji(omikujisWithPercent);
+
   if (!omikujiItem) {
    toast.error('おみくじ抽選結果', {
     description: '該当するおみくじがありませんでした。',
@@ -103,13 +103,12 @@ export function useTestPost() {
    return;
   }
 
-  // 抽選されたおみくじの情報も一緒に渡す
   postTestOmikujiItem(omikujiItem.postActions, omikujiItem);
  };
 
  return {
   postTestOmikuji,
   postTestOmikujiItem,
-  toastTestPost
+  executeTestPostDelays
  };
 }

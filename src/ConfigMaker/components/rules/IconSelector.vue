@@ -53,8 +53,8 @@ import { ref, computed, Ref } from 'vue';
 import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
 import IconPreviewModal from '@ConfigComponents/postAction/IconPreviewModal.vue';
-import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 import { Eye } from 'lucide-vue-next';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 // Props
 const props = defineProps<{
@@ -67,10 +67,10 @@ const emit = defineEmits<{
  'update:iconKey': [value: string];
  showPreview: [characterKey: string, iconKey: CharacterEmotionType]; // 使用されていないようですが、残しておきます
 }>();
-// TODO: 不要なstore
-// Store
-const characterStore = useCharacterStore();
-const charactersMap = computed(() => characterStore.rulesMap);
+
+// ストアを使用
+const omikujiStore = useOmikujiStore();
+const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
 
 // Refs
 const showHoverPreview = ref(false);

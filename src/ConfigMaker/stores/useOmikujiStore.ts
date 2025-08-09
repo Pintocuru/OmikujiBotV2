@@ -11,9 +11,8 @@ import { useSettingsOperations } from './composables/useSettingsOperations';
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
 
 export const useOmikujiStore = defineStore('omikuji', () => {
- // コアデータ 外部にはreadonlyなdataを公開
+ // コアデータ
  const data = ref<OmikujiDataType>(omikujiData);
- const readOnlyData = readonly(data);
 
  // 変更があったかどうかを追跡するフラグ
  const hasChanged = ref(false);
@@ -55,8 +54,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  };
 
  return {
-  // データ
-  data: readOnlyData,
+  // 外部にはreadonlyなdataを公開
+  data: readonly(data),
 
   // 変更追跡
   hasChanged,
