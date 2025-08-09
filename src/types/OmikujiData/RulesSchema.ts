@@ -29,14 +29,33 @@ export const BaseRuleCommonSchema = z.object({
   .default('#3B82F6')
   .catch('#3B82F6'),
  // おみくじセット配列
- omikuji: z.array(OmikujiSetSchema).default([]).catch([])
+ omikuji: z
+  .array(OmikujiSetSchema)
+  .default([
+   OmikujiSetSchema.parse({
+    postActions: [
+     {
+      characterKey: '',
+      iconKey: 'default',
+      messageContent: '<<user>>さんの運勢は【大吉】',
+      delaySeconds: 0
+     }
+    ]
+   })
+  ])
+  .catch([])
 });
 
 // コメントルールの基本スキーマ
 export const BaseCommentRuleSchema = z.object({
  ...BaseRuleCommonSchema.shape,
  ruleType: z.literal('comments').default('comments').catch('comments'), // ルールタイプ（コメント）
- threshold: CommentThresholdSchema.catch(CommentThresholdSchema.parse({})), // コメント発火条件
+ threshold: CommentThresholdSchema.default(
+  CommentThresholdSchema.parse({
+   conditions: ['comment'],
+   comment: ['おみくじ']
+  })
+ ).catch(CommentThresholdSchema.parse({})), // コメント発火条件
  scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
  scriptParams: z.record(z.string(), z.any()).nullable().default(null).catch(null), // スクリプトパラメータ
  limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})) // おみくじ実行制限設定

@@ -51,8 +51,8 @@ export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 export const categorySchemaMap = {
  comments: BaseCommentRuleSchema,
  timers: BaseTimerRuleSchema,
- placeholders: PlaceholderRecordSchema,
- characters: CharacterRecordSchema,
+ placeholders: PlaceholderSchema,
+ characters: CharacterSchema,
  wordPartySettings: z.array(WordPartySettingsSchema),
  scriptSettings: createScriptSettingsSchema(gameScriptMap),
  displaySettings: DisplaySettingsSchema

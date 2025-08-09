@@ -31,7 +31,7 @@ export function useFileActions(
   return await handleAsyncAction(async () => {
    const configData = await devConfigApi.loadConfig(fileName);
    const originalName = fileName.replace('.json', '');
-   const duplicateName = `${originalName}_copy_${Date.now()}`;
+   const duplicateName = `${originalName}_copy`;
 
    await devConfigApi.saveConfig(duplicateName, JSON.stringify(configData, null, 2));
    await fetchFileList();

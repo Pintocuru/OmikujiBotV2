@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/CommentRestrictionChecker.ts
 // 制限チェッカー
-import { BotMessage, CharacterType, CommentRuleType } from '@/types/';
+import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { CooldownManager } from './CooldownManager';
 
@@ -80,16 +80,13 @@ export class CommentRestrictionChecker {
   */
  private createErrorToast(message: string): BotMessage[] {
   return [
-   {
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+   BotMessageSchema.parse({
     name: this.firstCharacter.name,
     profileImage: this.firstCharacter.image.default,
-    timestamp: new Date().toISOString(),
     comment: message,
     isToast: true,
-    color: this.firstCharacter.color,
-    delaySeconds: 0
-   }
+    color: this.firstCharacter.color
+   })
   ];
  }
 }

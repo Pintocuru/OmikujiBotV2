@@ -41,6 +41,7 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
  sleepy: '眠い'
 };
 
+// TODO:カラープリセットを作成
 export const CharacterColorScheme = z.object({
  nameColor: z.string().default('#212121').catch('#212121'),
  textColor: z.string().default('#212121').catch('#212121'),
@@ -74,6 +75,7 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
 /**
  * CharacterSchema
  */
+// TODO:やっぱり key にしたい(idではなくて)
 export const CharacterSchema = z.object({
  ...PresetMetadataSchema.shape,
  displayName: z.string().default('').catch(''),
