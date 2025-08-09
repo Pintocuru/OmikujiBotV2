@@ -12,9 +12,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
-import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
 import { PlaceProcess } from '@MainScripts/omikujiProcess/PlaceProcess';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
 import { postSpeech } from '@shared/sdk/postMessage/PostOneComme';
 import { toast } from 'vue-sonner';
 import { Dices } from 'lucide-vue-next';
@@ -25,15 +25,8 @@ const props = defineProps<{
 }>();
 
 // ストアを使用
-const placeholderStore = usePlaceholderStore();
-const placeholdersMap = computed(() => placeholderStore.rulesMap);
-
-const totalWeight = computed(() => props.values.reduce((sum, v) => sum + (v.weight || 0), 0));
-
-const percentage = (weight: number) => {
- if (totalWeight.value === 0) return 0;
- return Math.round((weight / totalWeight.value) * 100);
-};
+const omikujiStore = useOmikujiStore();
+const placeholdersMap = computed(() => omikujiStore.getCategoryMap('placeholders'));
 
 // 抽選結果
 const drawnValue = ref<PlaceholderValueType | null>(null);
@@ -43,21 +36,16 @@ const processedContent = ref<string>('');
 const debugInfo = ref<Record<string, string | number>>({});
 
 const handleDraw = () => {
- // weightPercentを付与したvaluesを作成
+ // 抽選
  const valuesWithPercent = addWeightPercentages(props.values);
-
- // 従来の抽選処理
  drawnValue.value = drawOmikuji(valuesWithPercent);
 
  if (drawnValue.value?.content) {
-  // PlaceProcess2を使用してプレースホルダー置換をテスト
+  // プレースホルダー置換
   const placeProcess = new PlaceProcess(placeholdersMap.value);
-
-  // テスト用のダミーおみくじデータを作成
   const testPost: PostActionType = PostActionSchema.parse({
    messageContent: drawnValue.value.content
   });
-  // プレースホルダー置換処理を実行
   const processedActions = placeProcess.processPostActions([testPost]);
 
   // 結果を取得
@@ -83,6 +71,8 @@ const handleDraw = () => {
     whiteSpace: 'pre-line'
    }
   });
+  // 結果をわんコメのスピーチ機能で喋らせる
+  postSpeech(processedContent.value);
  } else {
   processedContent.value = '';
   debugInfo.value = {};
@@ -92,11 +82,6 @@ const handleDraw = () => {
    description: '抽選できませんでした',
    duration: 5000
   });
- }
-
- // 結果をわんコメのスピーチ機能で喋らせる
- if (processedContent.value) {
-  postSpeech(processedContent.value);
  }
 };
 </script>

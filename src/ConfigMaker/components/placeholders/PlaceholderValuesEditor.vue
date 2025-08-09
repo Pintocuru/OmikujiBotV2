@@ -42,8 +42,8 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
 import { PlaceholderValueType } from '@/types/';
-import { usePlaceholderValues } from './usePlaceholderValues';
-import { useTextModeParser } from './useTextModeParser';
+import { usePlaceholderValues } from './composables/usePlaceholderValues';
+import { useTextModeParser } from './composables/useTextModeParser';
 import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 import PlaceholderInputMode from './PlaceholderInputMode.vue';
 import PlaceholderTextMode from './PlaceholderTextMode.vue';

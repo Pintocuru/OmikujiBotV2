@@ -103,10 +103,8 @@ const { data } = storeToRefs(omikujiStore);
 
 // 開発者設定の参照
 const developerSettings = computed({
- get() {
-  return data.value.displaySettings.developer;
- },
- set(newValue) {
+ get: () => data.value.displaySettings.developer,
+ set: (newValue) => {
   omikujiStore.updateDisplaySettings({
    developer: {
     ...newValue,

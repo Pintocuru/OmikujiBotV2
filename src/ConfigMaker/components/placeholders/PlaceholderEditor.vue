@@ -1,19 +1,14 @@
 <!-- src/configMaker/components/placeholders/PlaceholderEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RecordTabs
-  :rules="placeholdersArray"
-  :selectedRule="selectedPlaceholder"
-  ruleType="placeholders"
-  :external-store="extendedStore"
- />
+ <RecordTabs />
 
  <!-- プレースホルダー編集エリア -->
- <div v-if="selectedPlaceholder">
+ <div v-if="selectedItem">
   <div class="card bg-base-300 mt-4">
    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">
     <!-- カラーピッカー -->
-    <ColorPicker v-model="selectedPlaceholder.editorColor" />
+    <ColorPicker v-model="selectedItem.editorColor" />
     基本設定
    </div>
    <div class="card-body space-y-3">
@@ -26,15 +21,15 @@
     >
      <div class="flex gap-2 items-center">
       <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
-       {{ selectedPlaceholder.id }}
+       {{ selectedItem.id }}
       </div>
       <!-- コピーボタン -->
       <CopyButton
-       :value="`<<${selectedPlaceholder.id}>>`"
+       :value="`<<${selectedItem.id}>>`"
        dataTip="<<プレースホルダー>>の形式で文字列をコピーします"
       />
       <!-- 編集ボタン -->
-      <IdEditor :currentId="selectedPlaceholder.id" category="placeholders" />
+      <IdEditor :currentId="selectedItem.id" category="placeholders" />
      </div>
     </SettingItem>
 
@@ -47,7 +42,7 @@
     >
      <input
       type="text"
-      v-model="selectedPlaceholder.name"
+      v-model="selectedItem.name"
       placeholder="設定名を入力"
       class="input input-bordered w-full"
      />
@@ -62,15 +57,15 @@
     <div class="flex items-center">プレースホルダー設定</div>
     <!-- 抽選テストボタン -->
     <PlaceholderPreview
-     v-if="selectedPlaceholder.values.length > 0"
-     :id="selectedPlaceholder.id"
-     :values="selectedPlaceholder.values"
+     v-if="selectedItem.values.length > 0"
+     :id="selectedItem.id"
+     :values="selectedItem.values"
     />
    </div>
    <div class="card-body">
     <PlaceholderValuesEditor
-     :key="selectedPlaceholder.id"
-     :placeholderId="selectedPlaceholder.id"
+     :key="selectedItem.id"
+     :placeholderId="selectedItem.id"
      :isModal="false"
     />
    </div>
@@ -80,30 +75,30 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
+import { PlaceholderType } from '@/types';
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import PlaceholderPreview from './PlaceholderPreview.vue';
 import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import IdEditor from '@ConfigComponents/parts/IdEditor.vue';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import CopyButton from '@ConfigComponents/parts/CopyButton.vue';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
+import { storeToRefs } from 'pinia';
 
 // ストアを使用
-const placeholderStore = usePlaceholderStore();
 const omikujiStore = useOmikujiStore();
+const { data, selectedRuleId } = storeToRefs(omikujiStore);
 
-// RecordTabsコンポーネントで使用するstore機能を拡張
-const extendedStore = {
- ...placeholderStore,
- selectRule: (ruleId: string) => {
-  omikujiStore.selectCategory('placeholders');
-  omikujiStore.selectRule(ruleId);
+// v-modelを使用したselectedCharacterの実装
+const selectedItem = computed({
+ get: () => {
+  if (!selectedRuleId.value) return null;
+  // 明示的に型キャストして readonly を外す
+  return data.value.placeholders[selectedRuleId.value] as PlaceholderType;
+ },
+ set: (value: PlaceholderType) => {
+  omikujiStore.updateItem('placeholders', value.id, value);
  }
-};
-
-// computed
-const placeholdersArray = computed(() => placeholderStore.rulesArray);
-const selectedPlaceholder = computed(() => placeholderStore.selectedRule);
+});
 </script>

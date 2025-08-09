@@ -97,8 +97,8 @@ import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useIdEditor } from './useIdEditor';
 
 const props = defineProps<{
- currentId: string;
  category: RecordCategoryType;
+ currentId: string;
 }>();
 
 const {

@@ -7,12 +7,9 @@
    <SettingItem
     label="表示サイズ"
     description="コンテンツの表示サイズを設定します"
-    @reset="resetDisplaySize"
+    @reset="resetMap.displaySize"
    >
-    <select
-     v-model="displaySettings.base.displaySize"
-     class="select select-bordered w-full max-w-xs"
-    >
+    <select v-model="base.displaySize" class="select select-bordered w-full max-w-xs">
      <option v-for="size in displaySizeOptions" :key="size" :value="size">
       {{ displaySizeLabels[size] }}
      </option>
@@ -23,14 +20,10 @@
    <SettingItem
     label="トースト通知"
     description="通知メッセージを表示するかどうか"
-    @reset="resetToastEnabled"
+    @reset="resetMap.toastEnabled"
    >
     <label class="label cursor-pointer justify-start gap-3">
-     <input
-      v-model="displaySettings.base.toastEnabled"
-      type="checkbox"
-      class="toggle toggle-primary"
-     />
+     <input v-model="base.toastEnabled" type="checkbox" class="toggle toggle-primary" />
      <span class="label-text">トースト通知を表示する</span>
     </label>
    </SettingItem>
@@ -39,14 +32,10 @@
    <SettingItem
     label="キャラクターサムネイル"
     description="右下で配信を見守ってくれます"
-    @reset="resetHideModeSwitch"
+    @reset="resetMap.modeSwitchEnabled"
    >
     <label class="label cursor-pointer justify-start gap-3">
-     <input
-      v-model="displaySettings.base.modeSwitchEnabled"
-      type="checkbox"
-      class="toggle toggle-primary"
-     />
+     <input v-model="base.modeSwitchEnabled" type="checkbox" class="toggle toggle-primary" />
      <span class="label-text">キャラクターサムネイルを表示する</span>
     </label>
    </SettingItem>
@@ -67,30 +56,38 @@ const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
 
 // 表示設定の参照
-const displaySettings = computed(() => data.value.displaySettings);
+const base = computed({
+ get: () => data.value.displaySettings.base,
+ set: (newValue) => {
+  omikujiStore.updateDisplaySettings({
+   base: {
+    ...data.value.displaySettings.base,
+    ...newValue
+   }
+  });
+ }
+});
 
 // 選択肢の定義
 const displaySizeOptions: DisplaySize[] = [...displaySize];
 
-// リセット機能（スキーマのデフォルト値を使用）
-const resetDisplaySize = () => {
- displaySettings.value.base.displaySize = DisplaySettingsSchema.shape.base
+// 共通リセット関数
+const resetField = (field: keyof typeof base.value) => {
+ const defaultValue = DisplaySettingsSchema.shape.base
   .unwrap()
-  .shape.displaySize.unwrap()
+  .shape[field].unwrap()
   .parse(undefined);
+
+ base.value = {
+  ...base.value,
+  [field]: defaultValue
+ };
 };
 
-const resetToastEnabled = () => {
- displaySettings.value.base.toastEnabled = DisplaySettingsSchema.shape.base
-  .unwrap()
-  .shape.toastEnabled.unwrap()
-  .parse(undefined);
-};
-
-const resetHideModeSwitch = () => {
- displaySettings.value.base.modeSwitchEnabled = DisplaySettingsSchema.shape.base
-  .unwrap()
-  .shape.modeSwitchEnabled.unwrap()
-  .parse(undefined);
+// フィールドごとのショートカット
+const resetMap = {
+ displaySize: () => resetField('displaySize'),
+ toastEnabled: () => resetField('toastEnabled'),
+ modeSwitchEnabled: () => resetField('modeSwitchEnabled')
 };
 </script>

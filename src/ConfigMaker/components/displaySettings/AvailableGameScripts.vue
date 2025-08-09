@@ -42,10 +42,8 @@ const { data } = storeToRefs(omikujiStore);
 
 // 表示設定
 const availableGameScripts = computed({
- get() {
-  return data.value.displaySettings.developer.availableGameScripts;
- },
- set(newValue: string[]) {
+ get: () => data.value.displaySettings.developer.availableGameScripts,
+ set: (newValue: string[]) => {
   omikujiStore.updateDisplaySettings({
    developer: {
     ...data.value.displaySettings.developer,

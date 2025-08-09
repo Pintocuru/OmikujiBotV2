@@ -3,7 +3,7 @@
  <div class="card bg-base-300 mt-4">
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">
    <!-- カラーピッカー -->
-   <ColorPicker v-model="localCharacter.editorColor" />
+   <ColorPicker v-model="localData.editorColor" />
    基本設定
   </div>
 
@@ -19,10 +19,10 @@
      <div
       class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto"
      >
-      {{ localCharacter.id }}
+      {{ localData.id }}
      </div>
      <!-- 編集ボタン -->
-     <IdEditor :currentId="localCharacter.id" category="characters" />
+     <IdEditor :currentId="localData.id" category="characters" />
     </div>
    </SettingItem>
 
@@ -35,7 +35,7 @@
     :showReset="false"
     containerClass="form-control"
    >
-    <input type="text" class="input input-bordered w-full" v-model="localCharacter[field.key]" />
+    <input type="text" class="input input-bordered w-full" v-model="localData[field.key]" />
    </SettingItem>
   </div>
  </div>
@@ -70,7 +70,7 @@ const fields = [
 ] as const;
 
 // v-modelを使用したlocalCharacterの実装
-const localCharacter = computed({
+const localData = computed({
  get: () => props.modelValue,
  set: (value: CharacterType) => {
   emit('update:modelValue', value);
