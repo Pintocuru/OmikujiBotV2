@@ -40,7 +40,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateRuleNestedProperty,
   updateCategoryData,
   getItem,
-  getCategoryItems
+  getCategoryMap,
+  getCategoryArray
  } = useRecordOperations(data);
 
  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
@@ -49,7 +50,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
  // カテゴリ選択のラッパー関数（依存関係のため）
  const selectCategory = (category: CategoryType) => {
-  _selectCategory(category, getCategoryItems);
+  _selectCategory(category, getCategoryMap);
  };
 
  return {
@@ -78,7 +79,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateRuleNestedProperty,
   updateCategoryData,
   getItem,
-  getCategoryItems,
+  getCategoryMap,
+  getCategoryArray,
 
   // カテゴリ外操作
   updateDisplaySettings,

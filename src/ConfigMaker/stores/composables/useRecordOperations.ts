@@ -1,6 +1,20 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
 import { Ref } from 'vue';
-import { CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
+import {
+ categorySchemaMap,
+ CategoryType,
+ OmikujiDataType,
+ RecordCategoryType,
+ RecordCategoryTypeMap
+} from '@/types/';
+
+// categorySchemaMapの型安全性を向上
+interface TypedSchema<T> {
+ parse(input: unknown): T & { id: string };
+}
+const typedCategorySchemaMap: {
+ [K in RecordCategoryType]: TypedSchema<RecordCategoryTypeMap[K]>;
+} = categorySchemaMap as any;
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
@@ -19,23 +33,40 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリに新しいアイテムを追加
   */
- const addItem = <T>(category: RecordCategoryType, id: string, item: T) => {
-  const currentCategory = (data.value[category] || {}) as Record<string, T>;
-  data.value[category] = { ...currentCategory, [id]: item } as any;
+ const addItem = <C extends RecordCategoryType>(
+  category: C,
+  item: Partial<RecordCategoryTypeMap[C]>
+ ) => {
+  const schema = typedCategorySchemaMap[category];
+  let parseItem = item;
+
+  // 重複check
+  if (typeof parseItem.id === 'string' && data.value[category][parseItem.id]) {
+   parseItem = { ...parseItem, id: undefined };
+  }
+
+  const newItem = schema.parse(parseItem);
+  const id = newItem.id;
+
+  data.value[category] = { ...data.value[category], [id]: newItem };
  };
 
  /**
   * カテゴリ内のアイテムを更新（存在しない場合は追加）
   */
- const updateItem = <T>(category: RecordCategoryType, id: string, updates: Partial<T>) => {
-  const categoryData = data.value[category] as Record<string, T>;
+ const updateItem = <C extends RecordCategoryType>(
+  category: C,
+  id: string,
+  updates: Partial<RecordCategoryTypeMap[C]>
+ ) => {
+  const categoryData = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
 
   if (categoryData && categoryData[id] !== undefined) {
    const updatedItem = { ...categoryData[id], ...updates };
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
   } else {
-   addItem(category, id, updates as T);
+   addItem(category, updates);
   }
  };
 
@@ -80,17 +111,15 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリ内のアイテムを複製
   */
- const duplicateItem = <T extends { id: string }>(
-  category: RecordCategoryType,
-  id: string
- ): string | null => {
-  const item = getItem<T>(category, id);
+ const duplicateItem = <C extends RecordCategoryType>(category: C, id: string): string | null => {
+  const item = getItem<RecordCategoryTypeMap[C]>(category, id);
   if (!item) return null;
 
   const newId = `${id}_copy`;
-  const duplicatedItem: T = { ...item, id: newId };
+  const duplicatedItem = { ...item, id: newId };
 
-  addItem(category, newId, duplicatedItem);
+  // 型が一致するようになった
+  addItem(category, duplicatedItem);
   return newId;
  };
 
@@ -104,8 +133,12 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリの全アイテムを取得
   */
- const getCategoryItems = <T>(category: RecordCategoryType): Record<string, T> => {
+ const getCategoryMap = <T>(category: RecordCategoryType): Record<string, T> => {
   return (data.value[category] as Record<string, T>) || {};
+ };
+
+ const getCategoryArray = <T>(category: RecordCategoryType): T[] => {
+  return Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
  };
 
  return {
@@ -116,6 +149,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   duplicateItem,
   updateRuleNestedProperty,
   getItem,
-  getCategoryItems
+  getCategoryMap,
+  getCategoryArray
  };
 }

@@ -8,12 +8,7 @@
  </div>
 
  <!-- キャラクタータブ（複数の場合） -->
- <RuleTabs
-  :rules="charactersArray"
-  :selectedRule="selectedCharacter"
-  ruleType="characters"
-  :external-store="extendedStore"
- />
+ <RuleTabs :rules="charactersArray" :selectedRule="selectedCharacter" ruleType="characters" />
 
  <!-- 選択されたキャラクターの編集フォーム -->
  <div v-if="selectedCharacter">
@@ -58,17 +53,8 @@ import { Users } from 'lucide-vue-next';
 const characterStore = useCharacterStore();
 const omikujiStore = useOmikujiStore();
 
-// RuleTabsコンポーネントで使用するstore機能を拡張
-const extendedStore = {
- ...characterStore,
- selectRule: (ruleId: string) => {
-  omikujiStore.selectCategory('characters');
-  omikujiStore.selectRule(ruleId);
- }
-};
-
 // 計算プロパティ
-const charactersArray = computed(() => characterStore.rulesArray);
+const charactersArray = computed(() => omikujiStore.getCategoryArray('characters'));
 const characterCount = computed(() => Object.keys(charactersArray.value).length);
 
 // v-modelを使用したselectedCharacterの実装

@@ -38,7 +38,7 @@ export function useRecordOperations<C extends RecordCategoryType>(category: C) {
  };
 
  const rulesMap = computed<Record<string, CategoryTypeMap[C]>>(() =>
-  omikujiStore.getCategoryItems<CategoryTypeMap[C]>(category)
+  omikujiStore.getCategoryMap<CategoryTypeMap[C]>(category)
  );
 
  const rulesArray = computed<CategoryTypeMap[C][]>(() =>

@@ -22,16 +22,17 @@ import { useRuleTabsStore } from './RuleTabsStore';
 import RuleFilter from './RuleFilter.vue';
 import RuleContextMenu from './RuleContextMenu.vue';
 import RuleTabList from './RuleTabList.vue';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 // Props
 const props = defineProps<{
  rules: BaseTypes[];
  selectedRule: BaseTypes | null;
  ruleType: RecordCategoryType;
- externalStore: any;
 }>();
 
 // Store
+const omikujiStore = useOmikujiStore();
 const store = useRuleTabsStore();
 
 // ストアの初期化
@@ -46,13 +47,5 @@ watch(
   store.updateRulesData(newRules, newSelected);
  },
  { deep: true }
-);
-
-// 外部ストアの変更を監視
-watch(
- () => props.externalStore,
- (newStore) => {
-  store.initializeStore(props.ruleType, props.rules, props.selectedRule, newStore);
- }
 );
 </script>

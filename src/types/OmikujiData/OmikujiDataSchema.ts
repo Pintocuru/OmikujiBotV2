@@ -48,7 +48,7 @@ export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
 export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 
 // カテゴリ更新用のスキーママップ
-const categorySchemaMap = {
+export const categorySchemaMap = {
  comments: CommentRuleRecordSchema,
  timers: TimerRuleRecordSchema,
  placeholders: PlaceholderRecordSchema,
@@ -105,9 +105,7 @@ export const updateCategoryData = <K extends keyof OmikujiDataType>(
 ): OmikujiDataType => {
  try {
   const schema = categorySchemaMap[category];
-  if (!schema) {
-   throw new Error(`未知のカテゴリ: ${String(category)}`);
-  }
+  if (!schema) throw new Error(`未知のカテゴリ: ${String(category)}`);
 
   const updatedData = {
    ...existingData,

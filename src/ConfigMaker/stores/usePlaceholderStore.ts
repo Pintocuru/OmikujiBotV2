@@ -18,7 +18,7 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
  const omikujiStore = useOmikujiStore();
 
  const checkPlaceholderExists = (id: string): boolean => {
-  return !!omikujiStore.getCategoryItems('placeholders')[id];
+  return !!omikujiStore.getCategoryMap('placeholders')[id];
  };
 
  const updatePlaceholderReferences = (oldId: string, newId: string): void => {
@@ -27,7 +27,7 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
   const regex = new RegExp(oldPlaceholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
 
   // プレースホルダー内のcontent更新
-  const placeholders = omikujiStore.getCategoryItems('placeholders');
+  const placeholders = omikujiStore.getCategoryMap('placeholders');
   Object.entries(placeholders).forEach(([id, placeholder]) => {
    const updatedValues = (placeholder as any).values.map((value: any) => {
     return value.content.includes(oldPlaceholder)
@@ -95,11 +95,11 @@ export const usePlaceholderStore = defineStore('placeholder', () => {
   // 修正: `as const`を使用して型を厳密に推論させる
   updateRuleActions(
    'comments',
-   omikujiStore.getCategoryItems('comments') as Record<string, CommentRuleType>
+   omikujiStore.getCategoryMap('comments') as Record<string, CommentRuleType>
   );
   updateRuleActions(
    'timers',
-   omikujiStore.getCategoryItems('timers') as Record<string, TimerRuleType>
+   omikujiStore.getCategoryMap('timers') as Record<string, TimerRuleType>
   );
  };
 

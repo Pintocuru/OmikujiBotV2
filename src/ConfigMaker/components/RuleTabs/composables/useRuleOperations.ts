@@ -1,14 +1,29 @@
 // src/configMaker/components/RuleTabs/composables/useRuleOperations.ts
 import { toast } from 'vue-sonner';
 import { BaseTypes } from '@shared/types';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { storeToRefs } from 'pinia';
+import { ComputedRef, computed } from 'vue';
+import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
 
-export const useRuleOperations = (externalStore: any, allRules: any) => {
+export const useRuleOperations = (externalStore: any) => {
+ const omikujiStore = useOmikujiStore();
+
+ const { selectedCategory } = storeToRefs(omikujiStore);
+ const categoryArray: ComputedRef<RecordCategoryTypeMap[RecordCategoryType][]> = computed(() =>
+  /**
+ * 型 '"comments" | "timers" | "placeholders" | "characters" | "scriptSettings" | "displaySettings" | "wordPartySettings"' の引数を型 '"comments" | "timers" | "placeholders" | "characters"' のパラメーターに割り当てることはできません。
+  型 '"scriptSettings"' を型 '"comments" | "timers" | "placeholders" | "characters"' に割り当てることはできません。ts(2345)
+ */
+  omikujiStore.getCategoryArray(selectedCategory.value)
+ );
+
  const handleSelectRule = (ruleId: string) => {
   externalStore.value?.selectRule?.(ruleId);
  };
 
  const handleAddNewRule = () => {
-  externalStore.value?.add?.();
+  omikujiStore.addItem?.(selectedCategory.value);
   toast.success('新しいルールを追加しました', {
    description: 'ルールの設定を行ってください',
    duration: 3000
@@ -69,11 +84,11 @@ export const useRuleOperations = (externalStore: any, allRules: any) => {
  };
 
  const getOriginalIndex = (ruleId: string): number => {
-  return allRules.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
+  return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
  };
 
  const getDisplayIndex = (ruleId: string) => {
-  return allRules.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
+  return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
  };
 
  return {

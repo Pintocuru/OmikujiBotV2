@@ -19,7 +19,7 @@ export function useNavigationState() {
   */
  const selectCategory = (
   category: CategoryType,
-  getCategoryItems: <T>(category: RecordCategoryType) => Record<string, T>
+  getCategoryMap: <T>(category: RecordCategoryType) => Record<string, T>
  ) => {
   selectedCategory.value = category;
 
@@ -30,7 +30,7 @@ export function useNavigationState() {
   }
 
   // 最初のルールを自動選択（order順または最初のアイテム）
-  const items = getCategoryItems<RecordCategoryTypeMap[(typeof recordCategoryType)[number]]>(
+  const items = getCategoryMap<RecordCategoryTypeMap[(typeof recordCategoryType)[number]]>(
    category as RecordCategoryType
   );
   const firstId =

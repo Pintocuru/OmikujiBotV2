@@ -12,13 +12,13 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  const ruleState = useRuleState();
 
  // 各種操作機能
- const ruleOperations = useRuleOperations(ruleState.externalStore, ruleState.allRules);
+ const ruleOperations = useRuleOperations(ruleState.externalStore, ruleState.categoryArray);
  const multiSelect = useMultiSelect(ruleState.filteredSortedRules, ruleState.externalStore);
- const contextMenu = useContextMenu(ruleState.allRules, ruleOperations.getOriginalIndex);
+ const contextMenu = useContextMenu(ruleState.categoryArray, ruleOperations.getOriginalIndex);
  const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule);
  const dragAndDrop = useDragAndDrop(
   ruleState.filteredSortedRules,
-  ruleState.allRules,
+  ruleState.categoryArray,
   ruleState.externalStore,
   multiSelect.isMultiSelectMode
  );
@@ -38,7 +38,7 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
    ruleOperations.handleMoveRuleDown(
     contextMenu.contextMenu.value.rule.id,
     originalIndex,
-    ruleState.allRules.value.length
+    ruleState.categoryArray.value.length
    );
   }
   contextMenu.hideContextMenu();

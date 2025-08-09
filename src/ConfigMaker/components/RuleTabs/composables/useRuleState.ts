@@ -1,7 +1,8 @@
 // src/configMaker/components/RuleTabs/composables/useRuleState.ts
-import { ref, computed } from 'vue';
-import { RecordCategoryType } from '@/types/';
+import { ref, computed, ComputedRef } from 'vue';
+import { RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
 import { BaseTypes } from '@shared/types';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 export interface FilterOptions {
  enabledOnly: boolean;
@@ -9,11 +10,21 @@ export interface FilterOptions {
 }
 
 export const useRuleState = () => {
+ // TODO:基本はuseOmikujiStoreを使うこと
+ const omikujiStore = useOmikujiStore();
+
  // 基本状態
- const ruleType = ref<RecordCategoryType>('placeholders');
- const allRules = ref<BaseTypes[]>([]);
- const selectedRule = ref<BaseTypes | null>(null);
- const externalStore = ref<any>(null);
+ const selectedCategory = ref<RecordCategoryType>('placeholders');
+ const selectedRuleId = ref<string | null>(null);
+
+ const categoryArray: ComputedRef<RecordCategoryTypeMap[RecordCategoryType][]> = computed(() =>
+  omikujiStore.getCategoryArray(selectedCategory.value)
+ );
+
+ const selectedItem = computed(() =>
+  // ! 型 'string | null' の引数を型 'string' のパラメーターに割り当てることはできません。
+  omikujiStore.getItem(selectedCategory.value, selectedRuleId.value)
+ );
 
  // フィルター状態
  const filterOptions = ref<FilterOptions>({
@@ -26,7 +37,9 @@ export const useRuleState = () => {
 
  // 計算プロパティ
  const sortedRules = computed(() =>
-  Array.isArray(allRules.value) ? allRules.value.slice().sort((a, b) => a.order - b.order) : []
+  Array.isArray(categoryArray.value)
+   ? categoryArray.value.slice().sort((a, b) => a.order - b.order)
+   : []
  );
 
  const filteredSortedRules = computed(() => {
@@ -45,7 +58,7 @@ export const useRuleState = () => {
 
  const getUniqueColors = computed(() => {
   const colors = new Set<string>();
-  allRules.value.forEach((rule) => {
+  categoryArray.value.forEach((rule) => {
    if (rule.editorColor) {
     colors.add(rule.editorColor);
    }
@@ -57,18 +70,16 @@ export const useRuleState = () => {
  const initializeStore = (
   type: RecordCategoryType,
   rules: BaseTypes[],
-  selected: BaseTypes | null,
-  store: any
+  selected: BaseTypes | null
  ) => {
-  ruleType.value = type;
-  allRules.value = rules;
-  selectedRule.value = selected;
-  externalStore.value = store;
+  selectedCategory.value = type;
+  categoryArray.value = rules;
+  selectedItem.value = selected;
  };
 
  const updateRulesData = (rules: BaseTypes[], selected: BaseTypes | null) => {
-  allRules.value = rules;
-  selectedRule.value = selected;
+  categoryArray.value = rules;
+  selectedItem.value = selected;
  };
 
  // フィルター操作
@@ -78,10 +89,9 @@ export const useRuleState = () => {
 
  return {
   // State
-  ruleType,
-  allRules,
-  selectedRule,
-  externalStore,
+  selectedCategory: selectedCategory,
+  categoryArray: categoryArray,
+  selectedItem: selectedItem,
   filterOptions,
   searchQuery,
 

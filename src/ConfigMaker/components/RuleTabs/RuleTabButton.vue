@@ -82,7 +82,7 @@ const store = useRuleTabsStore();
 // Computed
 const displayIndex = computed(() => store.getDisplayIndex(props.rule.id));
 const isEditing = computed(() => store.editingRuleId === props.rule.id);
-const isSelected = computed(() => store.selectedRule?.id === props.rule.id);
+const isSelected = computed(() => store.selectedItem?.id === props.rule.id);
 const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.id));
 const getRuleEnabledState = computed(() => props.rule.isEnabled !== false);
 

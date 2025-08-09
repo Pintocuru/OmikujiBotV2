@@ -9,7 +9,7 @@ import { defineStore } from 'pinia';
 
 export const useScriptSettingsStore = defineStore('scriptSettings', () => {
  const omikujiStore = useOmikujiStore();
- const scriptSettings = computed(() => omikujiStore.getCategoryItems('scriptSettings'));
+ const scriptSettings = computed(() => omikujiStore.getCategoryMap('scriptSettings'));
  const scriptList = computed(() => Object.keys(scriptSettings.value));
  const scriptCount = computed(() => scriptList.value.length);
 

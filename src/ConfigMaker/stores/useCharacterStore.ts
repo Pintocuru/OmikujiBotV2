@@ -23,7 +23,7 @@ export const useCharacterStore = defineStore('characterRules', () => {
 
   // 🔴 修正: ネストされたプロパティの更新も、omikujiStore のメソッド経由で行う
   // comments の PostActionSchema の characterKey を更新
-  const commentsData = omikujiStore.getCategoryItems<CommentRuleType>('comments');
+  const commentsData = omikujiStore.getCategoryMap<CommentRuleType>('comments');
   Object.entries(commentsData).forEach(([ruleId, commentRule]) => {
    const updatedOmikuji = commentRule.omikuji.map((omikujiSet) => {
     const updatedPostActions = omikujiSet.postActions.map((postAction) => {
@@ -38,7 +38,7 @@ export const useCharacterStore = defineStore('characterRules', () => {
   });
 
   // timers の PostActionSchema の characterKey を更新
-  const timersData = omikujiStore.getCategoryItems<TimerRuleType>('timers');
+  const timersData = omikujiStore.getCategoryMap<TimerRuleType>('timers');
   Object.entries(timersData).forEach(([ruleId, timerRule]) => {
    const updatedOmikuji = timerRule.omikuji.map((omikujiSet) => {
     const updatedPostActions = omikujiSet.postActions.map((postAction) => {
