@@ -8,7 +8,7 @@
  </div>
 
  <!-- キャラクタータブ（複数の場合） -->
- <RuleTabs :rules="charactersArray" :selectedRule="selectedCharacter" ruleType="characters" />
+ <RecordTabs />
 
  <!-- 選択されたキャラクターの編集フォーム -->
  <div v-if="selectedCharacter">
@@ -41,7 +41,7 @@ import { computed } from 'vue';
 import type { CharacterType } from '@/types/';
 import { useCharacterStore } from '@ConfigStores/useCharacterStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
+import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import CharacterBasicInfo from './CharacterBasicInfo.vue';
 import CharacterColorSettings from './CharacterColorSettings.vue';
 import CharacterImageSettings from './CharacterImageSettings.vue';
@@ -61,7 +61,7 @@ const characterCount = computed(() => Object.keys(charactersArray.value).length)
 const selectedCharacter = computed({
  get: () => characterStore.selectedRule,
  set: (value: CharacterType) => {
-  characterStore.update(value.id, value);
+  omikujiStore.updateItem('characters', value.id, value);
  }
 });
 </script>

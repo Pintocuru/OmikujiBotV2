@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/placeholders/PlaceholderEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs
+ <RecordTabs
   :rules="placeholdersArray"
   :selectedRule="selectedPlaceholder"
   ruleType="placeholders"
@@ -85,7 +85,7 @@ import PlaceholderPreview from './PlaceholderPreview.vue';
 import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
 import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
+import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import CopyButton from '@ConfigComponents/parts/CopyButton.vue';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
@@ -94,7 +94,7 @@ import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 const placeholderStore = usePlaceholderStore();
 const omikujiStore = useOmikujiStore();
 
-// RuleTabsコンポーネントで使用するstore機能を拡張
+// RecordTabsコンポーネントで使用するstore機能を拡張
 const extendedStore = {
  ...placeholderStore,
  selectRule: (ruleId: string) => {

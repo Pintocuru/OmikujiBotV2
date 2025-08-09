@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/comments/CommentRuleEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs
+ <RecordTabs
   :rules="rulesArray"
   :selectedRule="selectedRule"
   ruleType="comments"
@@ -35,7 +35,7 @@ import ScriptGameEditor from './ScriptGameEditor.vue';
 import OmikujiSetEditor from './OmikujiSetEditor.vue';
 import OmikujiLimitsEditor from '@ConfigComponents/limit/OmikujiLimitsEditor.vue';
 import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue';
-import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
+import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
@@ -43,7 +43,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 const commentRulesStore = useCommentRulesStore();
 const omikujiStore = useOmikujiStore();
 
-// RuleTabsコンポーネントで使用するstore機能を拡張
+// RecordTabsコンポーネントで使用するstore機能を拡張
 const extendedStore = {
  ...commentRulesStore,
  selectRule: (ruleId: string) => {

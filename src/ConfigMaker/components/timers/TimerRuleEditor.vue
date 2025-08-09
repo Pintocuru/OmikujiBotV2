@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/timers/TimerRuleEditor.vue -->
 <template>
  <!-- タブ部分 -->
- <RuleTabs
+ <RecordTabs
   :rules="rulesArray"
   :selectedRule="selectedRule"
   ruleType="timers"
@@ -26,7 +26,7 @@ import { computed } from 'vue';
 import { RuleType, TimerRuleType } from '@/types/';
 import TimerIntervalEditor from './TimerIntervalEditor.vue';
 import OmikujiSetEditor from '@ConfigComponents/comments/OmikujiSetEditor.vue';
-import RuleTabs from '@ConfigComponents/RuleTabs/RuleTabs.vue';
+import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import BaseSettingsEditor from '@ConfigComponents/comments/BaseSettingsEditor.vue';
 import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
@@ -35,7 +35,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 const timerRulesStore = useTimerRulesStore();
 const omikujiStore = useOmikujiStore();
 
-// RuleTabsコンポーネントで使用するstore機能を拡張
+// RecordTabsコンポーネントで使用するstore機能を拡張
 const extendedStore = {
  ...timerRulesStore,
  selectRule: (ruleId: string) => {

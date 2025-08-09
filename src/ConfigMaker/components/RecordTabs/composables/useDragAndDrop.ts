@@ -1,4 +1,4 @@
-// src/configMaker/components/RuleTabs/composables/useDragAndDrop.ts
+// src/configMaker/components/RecordTabs/composables/useDragAndDrop.ts
 import { ref, computed, Ref } from 'vue';
 import type { useRuleState } from './useRuleState';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';

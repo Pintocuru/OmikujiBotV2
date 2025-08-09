@@ -1,4 +1,4 @@
-// src/configMaker/components/RuleTabs/RuleTabsStore.ts (メインストア)
+// src/configMaker/components/RecordTabs/RecordTabsStore.ts (メインストア)
 import { defineStore } from 'pinia';
 import { useRuleState } from './composables/useRuleState';
 import { useRuleOperations } from './composables/useRuleOperations';
@@ -11,7 +11,7 @@ import { useDragAndDrop } from './composables/useDragAndDrop';
  * ルールタブ機能の統合ストア
  * 各composableの機能を統合し、UIコンポーネントに必要な機能を提供
  */
-export const useRuleTabsStore = defineStore('ruleTabs', () => {
+export const useRecordTabsStore = defineStore('ruleTabs', () => {
  // 基本状態管理（データ、フィルター、検索など）
  const ruleState = useRuleState();
 

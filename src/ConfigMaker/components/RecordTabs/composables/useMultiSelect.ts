@@ -1,4 +1,4 @@
-// src/configMaker/components/RuleTabs/composables/useMultiSelect.ts
+// src/configMaker/components/RecordTabs/composables/useMultiSelect.ts
 import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';

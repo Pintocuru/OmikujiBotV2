@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RuleTabs/RuleFilter.vue -->
+<!-- src/configMaker/components/RecordTabs/RuleFilter.vue -->
 <template>
  <div role="alert" class="alert alert-info alert-outline">
   <!-- フィルター条件 -->
@@ -109,10 +109,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRuleTabsStore } from './RuleTabsStore';
+import { useRecordTabsStore } from './RecordTabsStore';
 
 // Store
-const store = useRuleTabsStore();
+const store = useRecordTabsStore();
 
 // メソッド
 const clearSearch = () => {

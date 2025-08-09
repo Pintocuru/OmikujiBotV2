@@ -1,4 +1,4 @@
-// src/configMaker/components/RuleTabs/composables/useRuleOperations.ts
+// src/configMaker/components/RecordTabs/composables/useRuleOperations.ts
 import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';

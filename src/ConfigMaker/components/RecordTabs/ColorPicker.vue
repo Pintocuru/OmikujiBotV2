@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RuleTabs/ColorPicker.vue -->
+<!-- src/configMaker/components/RecordTabs/ColorPicker.vue -->
 <template>
  <div class="w-full">
   <!-- カラーパレット（プリセットカラー） -->

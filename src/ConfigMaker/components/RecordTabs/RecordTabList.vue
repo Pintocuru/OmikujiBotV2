@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RuleTabs/RuleTabList.vue -->
+<!-- src/configMaker/components/RecordTabs/RecordTabList.vue -->
 <template>
  <div v-if="store.filteredSortedItems.length !== 0" class="flex flex-wrap gap-1 border-b pb-2">
   <!-- vue-draggableを使用 -->
@@ -16,7 +16,7 @@
    @end="store.onDragEnd"
   >
    <template #item="{ element: rule }">
-    <RuleTabItem :rule="rule" />
+    <RecordTabItem :rule="rule" />
    </template>
   </draggable>
 
@@ -42,11 +42,11 @@
 </template>
 
 <script setup lang="ts">
-import RuleTabItem from './RuleTabItem.vue';
+import RecordTabItem from './RecordTabItem.vue';
 import draggable from 'vuedraggable';
 import { Plus } from 'lucide-vue-next';
-import { useRuleTabsStore } from './RuleTabsStore';
+import { useRecordTabsStore } from './RecordTabsStore';
 
 // ストアを使用（propsは不要）
-const store = useRuleTabsStore();
+const store = useRecordTabsStore();
 </script>

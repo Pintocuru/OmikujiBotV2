@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RuleTabs/RuleContextMenu.vue -->
+<!-- src/configMaker/components/RecordTabs/RuleContextMenu.vue -->
 <template>
  <!-- 右クリックコンテキストメニュー -->
  <div
@@ -55,12 +55,12 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
-import { useRuleTabsStore } from './RuleTabsStore';
+import { useRecordTabsStore } from './RecordTabsStore';
 import ColorPicker from './ColorPicker.vue';
 import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next';
 
 // Store
-const store = useRuleTabsStore();
+const store = useRecordTabsStore();
 
 // 有効/無効切り替え
 const handleToggleEnabled = () => {

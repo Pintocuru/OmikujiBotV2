@@ -1,4 +1,4 @@
-// src/configMaker/components/RuleTabs/composables/useRuleState.ts
+// src/configMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue';
 import { recordCategoryLabel, RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';

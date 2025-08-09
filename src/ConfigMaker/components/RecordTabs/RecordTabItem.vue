@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RuleTabs/RuleTabItem.vue -->
+<!-- src/configMaker/components/RecordTabs/RecordTabItem.vue -->
 <template>
  <div
   class="relative group"
@@ -6,17 +6,17 @@
   @mouseenter="hoveredRule = rule"
   @mouseleave="hoveredRule = null"
  >
-  <RuleTabButton :rule="rule" />
+  <RecordTabButton :rule="rule" />
 
-  <RuleHoverPreview v-if="shouldShowPreview" :rule="rule" @mouseenter="hoveredRule = rule" />
+  <RecordHoverPreview v-if="shouldShowPreview" :rule="rule" @mouseenter="hoveredRule = rule" />
  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import RuleTabButton from './RuleTabButton.vue';
-import RuleHoverPreview from './RuleHoverPreview.vue';
-import { useRuleTabsStore } from './RuleTabsStore';
+import RecordTabButton from './RecordTabButton.vue';
+import RecordHoverPreview from './RecordHoverPreview.vue';
+import { useRecordTabsStore } from './RecordTabsStore';
 import { RecordCategoryUnion } from '@/types';
 
 // Props（最小限に）
@@ -25,7 +25,7 @@ const props = defineProps<{
 }>();
 
 // Store
-const store = useRuleTabsStore();
+const store = useRecordTabsStore();
 
 // リアクティブデータ
 const hoveredRule = ref<RecordCategoryUnion | null>(null);
