@@ -97,8 +97,12 @@ import {
  CountConditionType
 } from '@shared/types';
 
-const props = defineProps<{ modelValue: CommentThresholdType }>();
-const emit = defineEmits<{ 'update:modelValue': [value: CommentThresholdType] }>();
+const props = defineProps<{
+ modelValue: CommentThresholdType;
+}>();
+const emit = defineEmits<{
+ 'update:modelValue': [value: CommentThresholdType];
+}>();
 
 // 条件タイプの選択肢
 const conditionTypes = Object.entries(commentThresholdConditionLabels).map(([value, label]) => ({

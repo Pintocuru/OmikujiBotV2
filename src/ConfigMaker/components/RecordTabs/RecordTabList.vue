@@ -37,6 +37,17 @@
  <div v-else>
   <div class="text-center py-8 text-base-content/60">
    <p class="text-lg">一致するルールが見つかりませんでした。</p>
+   <!-- 新規追加タブ -->
+   <button
+    class="btn border-primary mt-4 transition-all duration-200 hover:btn-primary"
+    @click="store.handleAddItem"
+    title="新しいルールを追加"
+   >
+    <span class="flex items-center gap-2">
+     <Plus class="w-4 h-4" />
+     追加
+    </span>
+   </button>
   </div>
  </div>
 </template>

@@ -17,6 +17,24 @@
    <ConfigExport :showTemplateButton="data.displaySettings.developer.showTemplateButton" />
   </div>
 
+  <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
+  <div
+   v-if="isDev && Object.keys(data.comments).length === 0"
+   class="hero bg-base-200 min-h-screen"
+  >
+   <div class="hero-content text-center">
+    <div class="max-w-md">
+     <h1 class="text-5xl font-bold">Welcome to <br />"Dev World..."</h1>
+     <p class="py-6">
+      おまえが長く深淵を覗くならば、<br />
+      深淵もまた等しくおまえを見返すのだ。<br />
+      …で、どうやって君はこのコメントを見つけたんだ？
+     </p>
+     <button class="btn btn-primary">押したって何もねえよ</button>
+    </div>
+   </div>
+  </div>
+
   <!-- ナビゲーションタブ -->
   <NavigationTabs />
 

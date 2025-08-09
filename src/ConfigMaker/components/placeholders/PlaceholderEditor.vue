@@ -94,8 +94,7 @@ const { data, selectedRuleId } = storeToRefs(omikujiStore);
 const selectedItem = computed({
  get: () => {
   if (!selectedRuleId.value) return null;
-  // 明示的に型キャストして readonly を外す
-  return data.value.placeholders[selectedRuleId.value] as PlaceholderType;
+  return data.value.placeholders[selectedRuleId.value];
  },
  set: (value: PlaceholderType) => {
   omikujiStore.updateItem('placeholders', value.id, value);

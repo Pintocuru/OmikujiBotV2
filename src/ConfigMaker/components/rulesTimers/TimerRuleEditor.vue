@@ -33,8 +33,7 @@ const { data, selectedRuleId } = storeToRefs(omikujiStore);
 const selectedItem = computed({
  get: () => {
   if (!selectedRuleId.value) return null;
-  // 明示的に型キャストして readonly を外す
-  return data.value.timers[selectedRuleId.value] as TimerRuleType;
+  return data.value.timers[selectedRuleId.value];
  },
  set: (value: TimerRuleType) => {
   omikujiStore.updateItem('characters', value.id, value);

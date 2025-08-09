@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts
 import { nextTick, readonly, ref } from 'vue';
 import { defineStore } from 'pinia';
-import { CategoryType, OmikujiDataSchema, OmikujiDataType } from '@/types/';
+import { CategoryType, isDev, OmikujiDataSchema, OmikujiDataType } from '@/types/';
 import { useDataOperations } from './composables/useDataOperations';
 import { useNavigationState } from './composables/useNavigationState';
 import { useRecordOperations } from './composables/useRecordOperations';
@@ -12,7 +12,8 @@ const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
 
 export const useOmikujiStore = defineStore('omikuji', () => {
  // コアデータ
- const data = ref<OmikujiDataType>(omikujiData);
+ // isDev の時は、開発者用プリセット管理 を使うために初期値にする(omikujiData.jsを編集させない)
+ const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}));
 
  // 変更があったかどうかを追跡するフラグ
  const hasChanged = ref(false);
@@ -58,8 +59,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  };
 
  return {
-  // 外部にはreadonlyなdataを公開
-  data: readonly(data),
+  data,
 
   // 変更追跡
   hasChanged,

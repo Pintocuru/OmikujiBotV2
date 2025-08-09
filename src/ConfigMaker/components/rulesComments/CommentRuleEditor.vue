@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CommentRuleType, RuleType } from '@/types/';
+import { CommentRuleType } from '@/types/';
 import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue';
 import ScriptGameEditor from './GameScriptEditor.vue';
 import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue';
@@ -42,8 +42,7 @@ const { data, selectedRuleId } = storeToRefs(omikujiStore);
 const selectedItem = computed({
  get: () => {
   if (!selectedRuleId.value) return null;
-  // 明示的に型キャストして readonly を外す
-  return data.value.comments[selectedRuleId.value] as CommentRuleType;
+  return data.value.comments[selectedRuleId.value];
  },
  set: (value: CommentRuleType) => {
   omikujiStore.updateItem('comments', value.id, value);

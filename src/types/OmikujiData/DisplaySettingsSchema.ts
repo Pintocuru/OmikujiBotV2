@@ -49,7 +49,7 @@ export const DisplaySettingsSchema = z.object({
    showTemplateButton: z.boolean().default(true).catch(true)
   })
   .catch({
-   godModeEnabled: true,
+   godModeEnabled: false,
    selectComponent: 'omikujiBot',
    availableGameScripts: [],
    defaultScriptKey: null,
