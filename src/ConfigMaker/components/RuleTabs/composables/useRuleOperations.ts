@@ -3,97 +3,131 @@ import { toast } from 'vue-sonner';
 import { BaseTypes } from '@shared/types';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
-import { ComputedRef, computed } from 'vue';
-import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
+import { computed, Ref } from 'vue';
+import { recordCategoryLabel, RecordCategoryType, RecordCategoryTypeMap } from '@/types';
 
-export const useRuleOperations = (externalStore: any) => {
+export const useRuleOperations = <K extends RecordCategoryType>(
+ validCategory: Ref<K | undefined>,
+ categoryArray: Ref<RecordCategoryTypeMap[K][] | undefined>
+) => {
  const omikujiStore = useOmikujiStore();
-
  const { selectedCategory } = storeToRefs(omikujiStore);
- const categoryArray: ComputedRef<RecordCategoryTypeMap[RecordCategoryType][]> = computed(() =>
-  /**
- * 型 '"comments" | "timers" | "placeholders" | "characters" | "scriptSettings" | "displaySettings" | "wordPartySettings"' の引数を型 '"comments" | "timers" | "placeholders" | "characters"' のパラメーターに割り当てることはできません。
-  型 '"scriptSettings"' を型 '"comments" | "timers" | "placeholders" | "characters"' に割り当てることはできません。ts(2345)
- */
-  omikujiStore.getCategoryArray(selectedCategory.value)
- );
 
- const handleSelectRule = (ruleId: string) => {
-  externalStore.value?.selectRule?.(ruleId);
+ /**
+  * カテゴリ操作の共通処理
+  * カテゴリが無効な場合はearly returnで処理を中断
+  */
+ const withValidCategory = <T>(callback: (category: RecordCategoryType) => T): T | void => {
+  const category = validCategory.value;
+  if (!category) {
+   console.error('Invalid category:', selectedCategory.value);
+   return;
+  }
+  return callback(category);
  };
 
- const handleAddNewRule = () => {
-  omikujiStore.addItem?.(selectedCategory.value);
-  toast.success('新しいルールを追加しました', {
-   description: 'ルールの設定を行ってください',
-   duration: 3000
-  });
- };
-
- const handleUpdateRule = (ruleId: string, updates: BaseTypes) => {
-  externalStore.value?.update?.(ruleId, updates);
-  if (updates.name) {
-   toast.success('ルールを更新しました', {
-    description: `「${updates.name}」の設定を保存しました`,
-    duration: 2000
+ // 新しいルールを追加
+ const handleAddItem = () => {
+  withValidCategory((category) => {
+   omikujiStore.addItem?.(category);
+   toast.success('新しいルールを追加しました', {
+    description: 'ルールの設定を行ってください',
+    duration: 3000
    });
-  }
- };
-
- const handleDuplicateRule = (ruleId: string) => {
-  externalStore.value?.duplicate?.(ruleId);
-  toast.success('ルールを複製しました', {
-   description: 'コピーを作成しました',
-   duration: 3000
   });
  };
 
+ // ルールの内容を更新
+ const handleUpdateRule = <C extends RecordCategoryType>(
+  ruleId: string,
+  updates: RecordCategoryTypeMap[C]
+ ) => {
+  withValidCategory((category) => {
+   omikujiStore.updateItem(category, ruleId, updates);
+   if (updates.name) {
+    toast.success('ルールを更新しました', {
+     description: `「${updates.name}」の設定を保存しました`,
+     duration: 2000
+    });
+   }
+  });
+ };
+
+ // ルールを削除（確認ダイアログ付き）
  const handleDeleteRule = (ruleId: string, ruleName?: string) => {
-  const name = ruleName || '名前未設定';
-  toast.error(`「${name}」を削除しますか？`, {
-   description: 'この操作は取り消せません',
-   duration: 0,
-   action: {
-    label: '削除する',
-    onClick: () => {
-     externalStore.value?.remove?.(ruleId);
-     toast.success('ルールを削除しました', {
-      description: `「${name}」を削除しました`,
-      duration: 3000
-     });
-    }
-   },
-   cancel: {
-    label: 'キャンセル',
-    onClick: () => toast.dismiss()
-   },
-   closeButton: true
+  withValidCategory((category) => {
+   const name = ruleName || '名前未設定';
+   toast.error(`「${name}」を削除しますか？`, {
+    description: 'この操作は取り消せません',
+    duration: 0,
+    action: {
+     label: '削除する',
+     onClick: () => {
+      omikujiStore.removeItem(category, ruleId);
+      toast.success('ルールを削除しました', {
+       description: `「${name}」を削除しました`,
+       duration: 3000
+      });
+     }
+    },
+    cancel: {
+     label: 'キャンセル',
+     onClick: () => toast.dismiss()
+    },
+    closeButton: true
+   });
   });
  };
 
+ // ルールを複製
+ const handleDuplicateRule = (ruleId: string) => {
+  withValidCategory((category) => {
+   omikujiStore.duplicateItem(category, ruleId);
+   toast.success('ルールを複製しました', {
+    description: 'コピーを作成しました',
+    duration: 3000
+   });
+  });
+ };
+
+ // ルールを上に移動
  const handleMoveRuleUp = (ruleId: string, currentIndex: number) => {
-  if (currentIndex > 0) {
-   externalStore.value?.reorder?.(currentIndex, currentIndex - 1);
-  }
+  withValidCategory((category) => {
+   if (currentIndex > 0) {
+    omikujiStore.reorderItem(category, currentIndex, currentIndex - 1);
+   }
+  });
  };
 
+ // ルールを下に移動
  const handleMoveRuleDown = (ruleId: string, currentIndex: number, totalLength: number) => {
-  if (currentIndex < totalLength - 1) {
-   externalStore.value?.reorder?.(currentIndex, currentIndex + 1);
+  withValidCategory((category) => {
+   if (currentIndex < totalLength - 1) {
+    omikujiStore.reorderItem(category, currentIndex, currentIndex + 1);
+   }
+  });
+ };
+
+ /**
+  * ルールのインデックス取得の共通処理
+  * 配列とカテゴリの両方をチェックし、見つからない場合は0を返す
+  */
+ const getRuleIndex = (ruleId: string): number => {
+  if (!categoryArray.value || !validCategory.value) {
+   console.error('Invalid category:', selectedCategory.value);
+   return 0;
   }
- };
-
- const getOriginalIndex = (ruleId: string): number => {
   return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
  };
 
- const getDisplayIndex = (ruleId: string) => {
-  return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
- };
+ // 元のインデックスを取得（現在はgetDisplayIndexと同じ実装）
+ const getOriginalIndex = getRuleIndex;
+
+ // 表示用インデックスを取得
+ const getDisplayIndex = getRuleIndex;
 
  return {
-  handleSelectRule,
-  handleAddNewRule,
+  handleAddItem,
   handleUpdateRule,
   handleDuplicateRule,
   handleDeleteRule,
@@ -103,3 +137,14 @@ export const useRuleOperations = (externalStore: any) => {
   getDisplayIndex
  };
 };
+
+/**
+ * 型ガード関数: CategoryType のうち RecordCategoryType だけを通す
+ * @param value - チェックする値
+ * @returns RecordCategoryTypeまたはundefined
+ */
+function toRecordCategory(value: string): RecordCategoryType | undefined {
+ return (recordCategoryLabel as readonly string[]).includes(value as RecordCategoryType)
+  ? (value as RecordCategoryType)
+  : undefined;
+}

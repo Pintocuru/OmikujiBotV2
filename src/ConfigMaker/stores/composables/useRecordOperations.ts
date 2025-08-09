@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
-import { Ref } from 'vue';
+import { nextTick, Ref } from 'vue';
 import {
  categorySchemaMap,
  CategoryType,
@@ -35,7 +35,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   */
  const addItem = <C extends RecordCategoryType>(
   category: C,
-  item: Partial<RecordCategoryTypeMap[C]>
+  item: Partial<RecordCategoryTypeMap[C]> = {}
  ) => {
   const schema = typedCategorySchemaMap[category];
   let parseItem = item;
@@ -133,12 +133,45 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリの全アイテムを取得
   */
- const getCategoryMap = <T>(category: RecordCategoryType): Record<string, T> => {
-  return (data.value[category] as Record<string, T>) || {};
+ const getCategoryMap = <K extends RecordCategoryType>(
+  category: K
+ ): Record<string, RecordCategoryTypeMap[K]> => {
+  return (data.value[category] as Record<string, RecordCategoryTypeMap[K]>) || {};
  };
 
- const getCategoryArray = <T>(category: RecordCategoryType): T[] => {
+ /**
+  * カテゴリのアイテム配列を取得
+  */
+ const getCategoryArray = <K extends RecordCategoryType>(
+  category: K
+ ): RecordCategoryTypeMap[K][] => {
   return Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+ };
+
+ /**
+  * カテゴリ内のアイテム順序(order)を移動
+  */
+ const reorderItem = async <K extends RecordCategoryType>(
+  category: K,
+  fromIndex: number,
+  toIndex: number
+ ) => {
+  const rulesArray = getCategoryArray(category);
+
+  const ids = rulesArray.map((rule) => rule.id);
+  const [movedId] = ids.splice(fromIndex, 1);
+  ids.splice(toIndex, 0, movedId);
+
+  const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {};
+  ids.forEach((id, index) => {
+   const item = getItem<RecordCategoryTypeMap[K]>(category, id);
+   if (item) {
+    updatedRules[id] = { ...item, order: index + 1 };
+   }
+  });
+
+  await nextTick();
+  updateCategoryData(category as CategoryType, updatedRules);
  };
 
  return {
@@ -150,6 +183,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   updateRuleNestedProperty,
   getItem,
   getCategoryMap,
-  getCategoryArray
+  getCategoryArray,
+  reorderItem
  };
 }

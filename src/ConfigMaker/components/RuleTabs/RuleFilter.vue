@@ -51,9 +51,9 @@
    <div class="mt-2 flex">
     <div class="mt-2 text-xs text-base-content/60">
      <span v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
-      >{{ store.filteredSortedRules.length }} /</span
+      >{{ store.filteredSortedItems.length }} /</span
      >
-     {{ store.sortedRules.length }} 件のルールが表示されています
+     {{ store.sortedItems.length }} 件のルールが表示されています
      <button
       v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
       @click="clearSearch"
@@ -88,7 +88,7 @@
      <button
       class="btn btn-sm btn-ghost"
       @click="store.selectAll"
-      :disabled="store.selectedRuleIds.size === store.filteredSortedRules.length"
+      :disabled="store.selectedRuleIds.size === store.filteredSortedItems.length"
      >
       すべて選択
      </button>

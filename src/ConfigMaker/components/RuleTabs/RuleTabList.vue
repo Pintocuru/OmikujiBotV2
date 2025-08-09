@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/RuleTabs/RuleTabList.vue -->
 <template>
- <div v-if="store.filteredSortedRules.length !== 0" class="flex flex-wrap gap-1 border-b pb-2">
+ <div v-if="store.filteredSortedItems.length !== 0" class="flex flex-wrap gap-1 border-b pb-2">
   <!-- vue-draggableを使用 -->
   <draggable
    :model-value="store.draggableRules"
@@ -23,7 +23,7 @@
   <!-- 新規追加タブ -->
   <button
    class="tab tab-bordered px-4 py-2 text-sm border-dashed border-gray-400 hover:bg-base-200 text-gray-500 transition-all duration-200 hover:border-primary"
-   @click="store.handleAddNewRule"
+   @click="store.handleAddItem"
    title="新しいルールを追加"
   >
    <span class="flex items-center gap-2">

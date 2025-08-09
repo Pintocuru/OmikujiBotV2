@@ -1,8 +1,8 @@
 // src/configMaker/components/RuleTabs/composables/useRuleState.ts
-import { ref, computed, ComputedRef } from 'vue';
-import { RecordCategoryType, RecordCategoryTypeMap } from '@/types/';
-import { BaseTypes } from '@shared/types';
+import { ref, computed } from 'vue';
+import { recordCategoryLabel, RecordCategoryType } from '@/types/';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { storeToRefs } from 'pinia';
 
 export interface FilterOptions {
  enabledOnly: boolean;
@@ -10,21 +10,28 @@ export interface FilterOptions {
 }
 
 export const useRuleState = () => {
- // TODO:基本はuseOmikujiStoreを使うこと
  const omikujiStore = useOmikujiStore();
+ const { selectedCategory } = storeToRefs(omikujiStore);
 
- // 基本状態
- const selectedCategory = ref<RecordCategoryType>('placeholders');
+ // 選択中のカテゴリをRecordCategoryTypeに変換（型安全）
+ const validCategory = computed(() => toRecordCategory(selectedCategory.value));
+
+ // 現在のカテゴリの配列データを取得
+ const categoryArray = computed(() => {
+  const category = validCategory.value;
+  if (!category) {
+   console.error('Invalid category:', selectedCategory.value);
+   return;
+  }
+  return omikujiStore.getCategoryArray(category);
+ });
+
+ // 選択しているもの(single)
  const selectedRuleId = ref<string | null>(null);
-
- const categoryArray: ComputedRef<RecordCategoryTypeMap[RecordCategoryType][]> = computed(() =>
-  omikujiStore.getCategoryArray(selectedCategory.value)
- );
-
- const selectedItem = computed(() =>
-  // ! 型 'string | null' の引数を型 'string' のパラメーターに割り当てることはできません。
-  omikujiStore.getItem(selectedCategory.value, selectedRuleId.value)
- );
+ const selectedItem = computed(() => {
+  if (!validCategory.value || !selectedRuleId.value) return null;
+  return omikujiStore.getItem(validCategory.value, selectedRuleId.value);
+ });
 
  // フィルター状態
  const filterOptions = ref<FilterOptions>({
@@ -36,19 +43,22 @@ export const useRuleState = () => {
  const searchQuery = ref('');
 
  // 計算プロパティ
- const sortedRules = computed(() =>
+ const sortedItems = computed(() =>
   Array.isArray(categoryArray.value)
    ? categoryArray.value.slice().sort((a, b) => a.order - b.order)
    : []
  );
 
- const filteredSortedRules = computed(() => {
-  let filtered = sortedRules.value;
+ // Filterされたitems
+ const filteredSortedItems = computed(() => {
+  let filtered = sortedItems.value;
 
+  // 有効のみのフィルター
   if (filterOptions.value.enabledOnly) {
    filtered = filtered.filter((rule) => rule.isEnabled !== false);
   }
 
+  // カラーフィルター
   if (filterOptions.value.colorFilter) {
    filtered = filtered.filter((rule) => rule.editorColor === filterOptions.value.colorFilter);
   }
@@ -56,7 +66,9 @@ export const useRuleState = () => {
   return filtered;
  });
 
+ // カテゴリで使われている editorColor を取得
  const getUniqueColors = computed(() => {
+  if (!categoryArray.value) return [];
   const colors = new Set<string>();
   categoryArray.value.forEach((rule) => {
    if (rule.editorColor) {
@@ -66,43 +78,28 @@ export const useRuleState = () => {
   return Array.from(colors);
  });
 
- // 初期化とデータ更新
- const initializeStore = (
-  type: RecordCategoryType,
-  rules: BaseTypes[],
-  selected: BaseTypes | null
- ) => {
-  selectedCategory.value = type;
-  categoryArray.value = rules;
-  selectedItem.value = selected;
- };
-
- const updateRulesData = (rules: BaseTypes[], selected: BaseTypes | null) => {
-  categoryArray.value = rules;
-  selectedItem.value = selected;
- };
-
- // フィルター操作
- const handleFilterChange = (filters: FilterOptions) => {
-  filterOptions.value = { ...filters };
- };
-
  return {
   // State
-  selectedCategory: selectedCategory,
-  categoryArray: categoryArray,
-  selectedItem: selectedItem,
+  validCategory,
+  categoryArray,
+  selectedItem,
   filterOptions,
   searchQuery,
 
   // Computed
-  sortedRules,
-  filteredSortedRules,
-  getUniqueColors,
-
-  // Actions
-  initializeStore,
-  updateRulesData,
-  handleFilterChange
+  sortedItems,
+  filteredSortedItems,
+  getUniqueColors
  };
 };
+
+/**
+ * 型ガード関数: CategoryType のうち RecordCategoryType だけを通す
+ * @param value - チェックする値
+ * @returns RecordCategoryTypeまたはundefined
+ */
+function toRecordCategory(value: string): RecordCategoryType | undefined {
+ return (recordCategoryLabel as readonly string[]).includes(value as RecordCategoryType)
+  ? (value as RecordCategoryType)
+  : undefined;
+}

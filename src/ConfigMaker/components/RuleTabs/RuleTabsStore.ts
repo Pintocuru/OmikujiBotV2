@@ -12,12 +12,12 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
  const ruleState = useRuleState();
 
  // 各種操作機能
- const ruleOperations = useRuleOperations(ruleState.externalStore, ruleState.categoryArray);
- const multiSelect = useMultiSelect(ruleState.filteredSortedRules, ruleState.externalStore);
+ const ruleOperations = useRuleOperations(ruleState.validCategory, ruleState.categoryArray);
+ const multiSelect = useMultiSelect(ruleState.filteredSortedItems);
  const contextMenu = useContextMenu(ruleState.categoryArray, ruleOperations.getOriginalIndex);
  const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule);
  const dragAndDrop = useDragAndDrop(
-  ruleState.filteredSortedRules,
+  ruleState.filteredSortedItems,
   ruleState.categoryArray,
   ruleState.externalStore,
   multiSelect.isMultiSelectMode

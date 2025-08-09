@@ -8,7 +8,7 @@
     <button
      class="btn btn-sm btn-ghost"
      @click="store.selectAll"
-     :disabled="store.selectedRuleIds.size === store.filteredSortedRules.length"
+     :disabled="store.selectedRuleIds.size === store.filteredSortedItems.length"
     >
      すべて選択
     </button>

@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import {
  CategoryType,
  RecordCategoryType,
- recordCategoryType,
+ recordCategoryLabel,
  RecordCategoryTypeMap
 } from '@/types/';
 
@@ -24,13 +24,13 @@ export function useNavigationState() {
   selectedCategory.value = category;
 
   // 選択可能なカテゴリでない場合はルール選択をクリア
-  if (!recordCategoryType.includes(category as RecordCategoryType)) {
+  if (!recordCategoryLabel.includes(category as RecordCategoryType)) {
    selectedRuleId.value = null;
    return;
   }
 
   // 最初のルールを自動選択（order順または最初のアイテム）
-  const items = getCategoryMap<RecordCategoryTypeMap[(typeof recordCategoryType)[number]]>(
+  const items = getCategoryMap<RecordCategoryTypeMap[(typeof recordCategoryLabel)[number]]>(
    category as RecordCategoryType
   );
   const firstId =

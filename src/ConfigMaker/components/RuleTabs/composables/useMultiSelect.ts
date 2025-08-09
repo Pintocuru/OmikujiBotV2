@@ -3,10 +3,11 @@ import { ref } from 'vue';
 import { toast } from 'vue-sonner';
 import { BaseTypes } from '@shared/types';
 
-export const useMultiSelect = (filteredSortedRules: any, externalStore: any) => {
+export const useMultiSelect = (filteredSortedRules: any) => {
  const isMultiSelectMode = ref(false);
  const selectedRuleIds = ref(new Set<string>());
 
+ // 削除用選択機能
  const toggleMultiSelectMode = () => {
   isMultiSelectMode.value = !isMultiSelectMode.value;
   if (!isMultiSelectMode.value) {

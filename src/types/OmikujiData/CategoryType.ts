@@ -30,10 +30,10 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
 };
 
 // 選択可能なカテゴリタイプの定数配列
-export const recordCategoryType = ['comments', 'timers', 'placeholders', 'characters'] as const;
+export const recordCategoryLabel = ['comments', 'timers', 'placeholders', 'characters'] as const;
 
 // 選択可能なカテゴリタイプの型定義
-export type RecordCategoryType = (typeof recordCategoryType)[number];
+export type RecordCategoryType = (typeof recordCategoryLabel)[number];
 export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType;
 export type RecordCategoryTypeMap = {
  comments: CommentRuleType;
@@ -54,7 +54,7 @@ export type SettingsCategoryType = (typeof settingsCategoryType)[number];
  * すべてのカテゴリタイプを定義する定数配列
  * @description RecordCategoryTypeにscriptSettings, displaySettings, wordPartySettingsを追加
  */
-export const categoryType = [...recordCategoryType, ...settingsCategoryType] as const;
+export const categoryType = [...recordCategoryLabel, ...settingsCategoryType] as const;
 export type CategoryType = (typeof categoryType)[number];
 
 /**

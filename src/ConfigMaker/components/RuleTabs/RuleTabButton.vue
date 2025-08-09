@@ -71,12 +71,14 @@ import { computed } from 'vue';
 import { isDev, RecordCategoryUnion } from '@/types/';
 import { GripVertical } from 'lucide-vue-next';
 import { useRuleTabsStore } from './RuleTabsStore';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 const props = defineProps<{
  rule: RecordCategoryUnion;
 }>();
 
 // Store
+const omikujiStore = useOmikujiStore();
 const store = useRuleTabsStore();
 
 // Computed
@@ -108,7 +110,7 @@ const handleClick = (event: MouseEvent) => {
  if (store.isMultiSelectMode) {
   store.handleMultiSelect(props.rule.id, event);
  } else {
-  store.handleSelectRule(props.rule.id);
+  omikujiStore.selectRule(props.rule.id);
  }
 };
 

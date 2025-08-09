@@ -41,7 +41,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateCategoryData,
   getItem,
   getCategoryMap,
-  getCategoryArray
+  getCategoryArray,
+  reorderItem
  } = useRecordOperations(data);
 
  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
@@ -81,6 +82,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   getItem,
   getCategoryMap,
   getCategoryArray,
+  reorderItem,
 
   // カテゴリ外操作
   updateDisplaySettings,
