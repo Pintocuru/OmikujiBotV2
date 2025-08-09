@@ -33,7 +33,7 @@ import { CommentRuleType, RuleType } from '@/types/';
 import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue';
 import ScriptGameEditor from './GameScriptEditor.vue';
 import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue';
-import OmikujiLimitsEditor from '@ConfigComponents/limit/OmikujiLimitsEditor.vue';
+import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue';
 import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';

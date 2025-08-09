@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import ScriptCard from './ScriptCard.vue';
 import { useScriptSettingsCleanup } from './useScriptSettingsCleanup';
 import { Settings } from 'lucide-vue-next';

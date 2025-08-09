@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType, UserStatsType } from '@/types/';
 import { DisplaySize } from '@shared/types';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 
 export function useDisplayScriptProps(

@@ -1,200 +1,155 @@
 // src/configMaker/components/parts/useIdEditor.ts
-import { ref, computed } from 'vue';
+import { ref, computed, readonly } from 'vue';
 import { RecordCategoryType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
-import { useCharacterStore } from '@ConfigStores/useCharacterStore';
-import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
-import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { validateId as validateIdUtil } from './useIdEditor/idEditorValidation';
+import { updateStrategies } from './useIdEditor/idUpdateStrategies';
+import {
+ CharacterUsage,
+ UpdateResult,
+ CATEGORY_TITLES,
+ ITEM_TYPE_LABELS
+} from './useIdEditor/idEditorTypes';
 
 export function useIdEditor() {
- // ストア
- const characterStore = useCharacterStore();
- const placeholderStore = usePlaceholderStore();
- const commentRulesStore = useCommentRulesStore();
- const timerRulesStore = useTimerRulesStore();
+ const omikujiStore = useOmikujiStore();
 
- // リアクティブデータ
+ // リアクティブ状態
  const isDialogOpen = ref(false);
  const newId = ref('');
  const errorMessage = ref('');
- const characterUsage = ref<{ comments: string[]; timers: string[] } | null>(null);
+ const characterUsage = ref<CharacterUsage | null>(null);
 
- // computed
  const hasError = computed(() => errorMessage.value !== '');
+ const dialogTitle = computed(() => CATEGORY_TITLES[currentCategory.value] || '');
+
+ // 現在のカテゴリ（ダイアログで使用）
+ const currentCategory = ref<RecordCategoryType>('comments');
 
  /**
-  * カテゴリーに応じた表示タイトルを取得
+  * キャラクター使用箇所の取得
   */
- const getDialogTitle = (mode: RecordCategoryType): string => {
-  const titles = {
-   comments: 'コメントルール',
-   timers: 'タイマールール',
-   characters: 'キャラクター',
-   placeholders: 'プレースホルダー'
-  } as const;
-  return titles[mode];
- };
+ function getCharacterUsage(characterId: string): CharacterUsage {
+  const usage: CharacterUsage = { comments: [], timers: [] };
+
+  (['comments', 'timers'] as const).forEach((category) => {
+   const categoryData = omikujiStore.getCategoryMap(category);
+
+   Object.entries(categoryData).forEach(([ruleId, rule]) => {
+    const hasUsage = rule.omikuji.some((omikujiSet) =>
+     omikujiSet.postActions.some((action) => action.characterKey === characterId)
+    );
+
+    if (hasUsage) {
+     usage[category].push(ruleId);
+    }
+   });
+  });
+
+  return usage;
+ }
 
  /**
-  * カテゴリーに応じた既存IDリストを取得
+  * ID更新の実行
   */
- const getExistingIds = (mode: RecordCategoryType, currentId: string): string[] => {
-  switch (mode) {
-   case 'characters':
-    return Object.keys(characterStore.rulesMap).filter((id) => id !== currentId);
-   case 'placeholders':
-    return Object.keys(placeholderStore.rulesMap).filter((id) => id !== currentId);
-   case 'comments':
-    return Object.keys(commentRulesStore.rulesMap).filter((id) => id !== currentId);
-   case 'timers':
-    return Object.keys(timerRulesStore.rulesMap).filter((id) => id !== currentId);
-   default:
-    return [];
+ function executeIdUpdate(
+  currentId: string,
+  newId: string,
+  category: RecordCategoryType
+ ): UpdateResult {
+  const trimmedNewId = newId.trim();
+  const strategy = updateStrategies[category];
+
+  if (!strategy) {
+   return { success: false, error: 'サポートされていないカテゴリです' };
   }
- };
+
+  try {
+   const success = strategy.updateId(currentId, trimmedNewId);
+
+   if (success && strategy.updateReferences) {
+    strategy.updateReferences(currentId, trimmedNewId);
+   }
+
+   return success ? { success: true } : { success: false, error: 'ID更新に失敗しました' };
+  } catch (error) {
+   console.error('ID更新エラー:', error);
+   return { success: false, error: 'ID更新中にエラーが発生しました' };
+  }
+ }
 
  /**
-  * キャラクターの使用状況を取得
+  * IDバリデーション（エラーメッセージをセット）
   */
- const getCharacterUsage = (characterId: string) => {
-  if (characterStore.getCharacterUsage) {
-   return characterStore.getCharacterUsage(characterId);
-  }
-  return null;
- };
-
- /**
-  * IDの形式をバリデーション
-  */
- const validateIdFormat = (id: string): string | null => {
-  if (!id.trim()) {
-   return 'IDを入力してください';
-  }
-
-  // ID形式チェック（英数字とアンダースコア、ハイフンのみ）
-  if (!/^[a-zA-Z0-9_-]+$/.test(id)) {
-   return 'IDは英数字、アンダースコア(_)、ハイフン(-)のみ使用可能です';
-  }
-
-  return null;
- };
-
- /**
-  * ID重複をチェック
-  */
- const validateIdDuplication = (
-  id: string,
-  mode: RecordCategoryType,
-  currentId: string
- ): string | null => {
-  if (id === currentId) {
-   return null; // 同じIDの場合はエラーなし
-  }
-
-  const existingIds = getExistingIds(mode, currentId);
-  if (existingIds.includes(id)) {
-   return 'このIDは既に使用されています';
-  }
-
-  return null;
- };
-
- /**
-  * IDをバリデーション
-  */
- const validateId = (id: string, mode: RecordCategoryType, currentId: string) => {
-  const trimmedId = id.trim();
-
-  // フォーマットチェック
-  const formatError = validateIdFormat(trimmedId);
-  if (formatError) {
-   errorMessage.value = formatError;
-   return;
-  }
-
-  // 重複チェック
-  const duplicateError = validateIdDuplication(trimmedId, mode, currentId);
-  if (duplicateError) {
-   errorMessage.value = duplicateError;
-   return;
-  }
-
-  errorMessage.value = '';
- };
-
- /**
-  * IDを更新
-  */
- const updateId = (currentId: string, newIdValue: string, mode: RecordCategoryType): boolean => {
-  const trimmedNewId = newIdValue.trim();
-  switch (mode) {
-   case 'characters':
-    return characterStore.updateCharacterId?.(currentId, trimmedNewId) ?? false;
-   case 'placeholders':
-    return placeholderStore.updatePlaceholderId?.(currentId, trimmedNewId) ?? false;
-   case 'comments':
-    return commentRulesStore.updateRuleId?.(currentId, trimmedNewId) ?? false;
-   case 'timers':
-    return timerRulesStore.updateRuleId?.(currentId, trimmedNewId) ?? false;
-   default:
-    return false;
-  }
- };
+ function validateId(id: string, category: RecordCategoryType, currentId: string): void {
+  errorMessage.value = validateIdUtil(id, category, currentId);
+ }
 
  /**
   * ダイアログを開く
   */
- const openDialog = (currentId: string, mode: RecordCategoryType) => {
+ function openDialog(currentId: string, category: RecordCategoryType): void {
   newId.value = currentId;
   errorMessage.value = '';
+  currentCategory.value = category;
   isDialogOpen.value = true;
 
-  // キャラクターモードの場合、使用箇所を取得
-  if (mode === 'characters') {
+  if (category === 'characters') {
    characterUsage.value = getCharacterUsage(currentId);
   }
- };
+ }
 
  /**
   * ダイアログを閉じる
   */
- const closeDialog = () => {
+ function closeDialog(): void {
   isDialogOpen.value = false;
   newId.value = '';
   errorMessage.value = '';
   characterUsage.value = null;
- };
+ }
 
  /**
   * IDを保存
   */
- const saveId = (currentId: string, mode: RecordCategoryType): boolean => {
+ function saveId(currentId: string, category: RecordCategoryType): boolean {
   if (hasError.value || !newId.value.trim() || newId.value === currentId) {
    return false;
   }
-  const success = updateId(currentId, newId.value, mode);
-  if (success) {
+
+  const result = executeIdUpdate(currentId, newId.value, category);
+
+  if (result.success) {
    closeDialog();
    return true;
   } else {
-   errorMessage.value = 'ID更新に失敗しました';
+   errorMessage.value = result.error || 'ID更新に失敗しました';
    return false;
   }
- };
+ }
 
+ /**
+  * アイテムタイプラベルを取得
+  */
+ function getItemTypeLabel(category: RecordCategoryType): string {
+  return ITEM_TYPE_LABELS[category];
+ }
+
+ // 公開API
  return {
-  // リアクティブデータ
-  isDialogOpen,
+  // リアクティブ状態
+  isDialogOpen: readonly(isDialogOpen),
   newId,
-  errorMessage,
-  characterUsage,
+  errorMessage: readonly(errorMessage),
+  characterUsage: readonly(characterUsage),
   hasError,
+  dialogTitle,
 
   // メソッド
-  getDialogTitle,
   validateId,
   openDialog,
   closeDialog,
-  saveId
+  saveId,
+  getItemTypeLabel
  };
 }

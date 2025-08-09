@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
-import { gameScriptMap } from './ScriptGameMap';
+import { gameScriptMap } from './GameScriptsMap';
 
 // コンポーザブル関数として定義
 export function useEnabledGames() {

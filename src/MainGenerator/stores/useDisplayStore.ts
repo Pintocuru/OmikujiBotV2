@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { ref, computed, watch, nextTick } from 'vue';
 import { DisplaySize } from '@shared/types';
 import { UserStatsType } from '@/types/';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { useAppStore } from './useAppStore';
 
 export const useDisplayStore = defineStore('display', () => {

@@ -1,7 +1,7 @@
 // src/types/OmikujiDataSchema.ts
 import { z } from 'zod';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { createScriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema';
 import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
@@ -49,8 +49,8 @@ export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 
 // カテゴリ更新用のスキーママップ
 export const categorySchemaMap = {
- comments: CommentRuleRecordSchema,
- timers: TimerRuleRecordSchema,
+ comments: BaseCommentRuleSchema,
+ timers: BaseTimerRuleSchema,
  placeholders: PlaceholderRecordSchema,
  characters: CharacterRecordSchema,
  wordPartySettings: z.array(WordPartySettingsSchema),

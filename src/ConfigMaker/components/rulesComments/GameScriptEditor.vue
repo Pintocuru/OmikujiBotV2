@@ -137,7 +137,7 @@
 import { computed } from 'vue';
 import { CommentRuleType, ScriptPreset, createScriptParamsSchema } from '@/types/';
 import { DefaultTypes } from '@shared/types';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info } from 'lucide-vue-next';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';

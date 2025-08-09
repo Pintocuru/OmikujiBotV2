@@ -1,7 +1,7 @@
 // src/types/DisplaySettingsSchema.ts
 // 250716_1 新規追加
 import { z } from 'zod';
-import { ScriptGameKey, scriptGameKeys } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { ScriptGameKey, scriptGameKeys } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { displaySize } from '@shared/types/';
 
 // DisplaySettingsSchema

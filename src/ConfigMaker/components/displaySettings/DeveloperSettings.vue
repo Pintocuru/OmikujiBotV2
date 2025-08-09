@@ -94,7 +94,7 @@
 import { computed } from 'vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/ScriptGameMap';
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { storeToRefs } from 'pinia';
 
 // Store
