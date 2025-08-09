@@ -74,7 +74,7 @@ const props = defineProps<{
 const emit = defineEmits<{
  'update:modelValue': [value: OmikujiSetType[]];
 }>();
-
+// TODO: 不要なstore
 // キャラクターストア
 const characterStore = useCharacterStore();
 const charactersArray = computed(() => characterStore.rulesArray.sort((a, b) => a.order - b.order));

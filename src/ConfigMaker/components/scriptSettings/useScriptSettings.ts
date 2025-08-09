@@ -7,6 +7,7 @@ import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsM
 import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettings = () => {
+ // TODO: 不要なstore
  const scriptSettingsStore = useScriptSettingsStore();
  const omikujiStore = useOmikujiStore();
 

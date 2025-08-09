@@ -20,7 +20,6 @@
      :placeholderId="placeholderId"
      :isModal="true"
      :showNameEdit="true"
-     @nameChanged="handleNameChanged"
     />
 
     <ModalFooterActions :on-cancel="closeModal" :on-save="saveContent" :disabled="!canSave" />
@@ -33,18 +32,18 @@
 import { ref, computed, nextTick } from 'vue';
 import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue';
 import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 const props = defineProps<{
  placeholderId: string;
 }>();
 
-const placeholderStore = usePlaceholderStore();
+// ストアを使用
+const omikujiStore = useOmikujiStore();
 
 // リアクティブデータ
 const isModalOpen = ref(false);
 const editorRef = ref<InstanceType<typeof PlaceholderValuesEditor> | null>(null);
-const localName = ref('');
 
 // 保存可能かどうか
 const canSave = computed(() => {
@@ -61,11 +60,6 @@ const openModal = async () => {
 
 const closeModal = () => {
  isModalOpen.value = false;
- localName.value = '';
-};
-
-const handleNameChanged = (name: string) => {
- localName.value = name;
 };
 
 const saveContent = () => {
@@ -74,17 +68,8 @@ const saveContent = () => {
  const newValues = editorRef.value.getCurrentValues();
  if (!newValues) return;
 
- // 名前とvaluesを更新
- const nameSuccess = placeholderStore.updatePlaceholderName(
-  props.placeholderId,
-  editorRef.value.placeholderName || localName.value
- );
- const valuesSuccess = placeholderStore.updatePlaceholderValues(props.placeholderId, newValues);
-
- if (nameSuccess && valuesSuccess) {
-  closeModal();
- } else {
-  console.error(`Failed to update placeholder for ID: ${props.placeholderId}`);
- }
+ // valuesを更新して閉じる
+ omikujiStore.updateRuleNestedProperty('placeholders', props.placeholderId, 'values', newValues);
+ closeModal();
 };
 </script>

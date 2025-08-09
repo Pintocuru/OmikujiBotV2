@@ -17,6 +17,7 @@ import { OmikujiProcessor } from '@MainScripts/omikujiProcess/OmikujiProcessor';
 import { toast } from 'vue-sonner';
 
 export function useTestPost() {
+ // TODO: 不要なstore
  const omikujiStore = useOmikujiStore();
  const commentRulesStore = useCommentRulesStore();
  const timerRulesStore = useTimerRulesStore();

@@ -20,7 +20,7 @@ const props = defineProps<{
  imgClass?: string;
  fallbackClass?: string;
 }>();
-
+// TODO: 不要なstore
 const characterStore = useCharacterStore();
 const charactersMap = computed(() => characterStore.rulesMap);
 

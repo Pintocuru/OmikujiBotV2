@@ -1,17 +1,20 @@
 // src/configMaker/components/placeholders/usePlaceholderValues.ts
 import { ref, computed, watch } from 'vue';
 import { PlaceholderValueSchema, PlaceholderValueType } from '@/types/';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 export function usePlaceholderValues(placeholderId: string, isModal = false) {
- const placeholderStore = usePlaceholderStore();
+ // ストアを使用
+ const omikujiStore = useOmikujiStore();
 
  // リアクティブデータ
  const localValues = ref<Array<PlaceholderValueType>>([]);
  const placeholderName = ref('');
 
  // 現在のプレースホルダーデータ
- const currentPlaceholder = computed(() => placeholderStore.rulesMap[placeholderId]);
+ const currentPlaceholder = computed(
+  () => omikujiStore.getCategoryMap('placeholders')[placeholderId]
+ );
 
  // 初期化
  const initializeValues = () => {
@@ -47,7 +50,7 @@ export function usePlaceholderValues(placeholderId: string, isModal = false) {
   watch(
    localValues,
    (newValues) => {
-    placeholderStore.updatePlaceholderValues(placeholderId, newValues);
+    omikujiStore.updateRuleNestedProperty('placeholders', placeholderId, 'values', newValues);
    },
    { deep: true }
   );

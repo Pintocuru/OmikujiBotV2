@@ -46,7 +46,7 @@ import PostActionsPreview from './PostActionsPreview.vue';
 import PostActionsEditDialog from './PostActionsEditDialog.vue';
 import PostActionsEditorJson from './PostActionsEditorJson.vue';
 import { useCharacterStore } from '@ConfigStores/useCharacterStore';
-
+// TODO: 不要なstore
 // ストアを使用
 const characterStore = useCharacterStore();
 const charactersArray = computed(() => characterStore.rulesArray);

@@ -34,7 +34,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 // ストアを使用
 const timerRulesStore = useTimerRulesStore();
 const omikujiStore = useOmikujiStore();
-
+// TODO: 不要なstore
 // RecordTabsコンポーネントで使用するstore機能を拡張
 const extendedStore = {
  ...timerRulesStore,

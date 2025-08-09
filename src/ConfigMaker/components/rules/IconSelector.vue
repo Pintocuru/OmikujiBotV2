@@ -67,7 +67,7 @@ const emit = defineEmits<{
  'update:iconKey': [value: string];
  showPreview: [characterKey: string, iconKey: CharacterEmotionType]; // 使用されていないようですが、残しておきます
 }>();
-
+// TODO: 不要なstore
 // Store
 const characterStore = useCharacterStore();
 const charactersMap = computed(() => characterStore.rulesMap);

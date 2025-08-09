@@ -44,26 +44,28 @@ import { ref, computed, watch } from 'vue';
 import { PlaceholderValueType } from '@/types/';
 import { usePlaceholderValues } from './composables/usePlaceholderValues';
 import { useTextModeParser } from './composables/useTextModeParser';
-import { usePlaceholderStore } from '@ConfigStores/usePlaceholderStore';
 import PlaceholderInputMode from './PlaceholderInputMode.vue';
 import PlaceholderTextMode from './PlaceholderTextMode.vue';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
 const props = defineProps<{
  placeholderId: string;
  isModal?: boolean;
- showNameEdit?: boolean;
 }>();
 
 const emit = defineEmits<{
  valuesChanged: [values: Array<PlaceholderValueType>];
- nameChanged: [name: string];
 }>();
 
-const placeholderStore = usePlaceholderStore();
+// ストアを使用
+const omikujiStore = useOmikujiStore();
+
 // コンポーザブルの使用
+// これ専用
 const { localValues, placeholderName, initializeValues, addValue, removeValue, duplicateValue } =
  usePlaceholderValues(props.placeholderId, props.isModal);
 
+// これ専用
 const {
  textContent,
  lineCount,
@@ -106,13 +108,8 @@ const saveTextContent = () => {
  if (hasErrors.value || validItemsCount.value === 0) return;
 
  const newValues = convertTextToValues();
- const success = placeholderStore.updatePlaceholderValues(props.placeholderId, newValues);
-
- if (!success) {
-  console.error(`Failed to update placeholder values for ID: ${props.placeholderId}`);
- } else {
-  toggleEditMode();
- }
+ omikujiStore.updateRuleNestedProperty('placeholders', props.placeholderId, 'values', newValues);
+ toggleEditMode();
 };
 
 // キャンセル時の処理（テキストモードから入力モードへ戻る）
@@ -132,13 +129,6 @@ const getCurrentValues = () => {
 
 // 監視
 watch(textContent, updateLineCount);
-
-// 名前の変更を監視
-watch(placeholderName, (newName) => {
- if (props.showNameEdit) {
-  emit('nameChanged', newName);
- }
-});
 
 // 外部からアクセス可能な関数
 defineExpose({

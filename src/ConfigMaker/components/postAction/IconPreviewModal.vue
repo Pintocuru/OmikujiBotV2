@@ -51,7 +51,7 @@ const props = defineProps<{
 const emit = defineEmits<{
  'select:icon': [iconKey: CharacterEmotionType];
 }>();
-
+// TODO: 不要なstore
 const characterStore = useCharacterStore();
 const charactersMap = computed(() => characterStore.rulesMap);
 

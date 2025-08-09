@@ -40,6 +40,7 @@ import { useCommentRulesStore } from '@ConfigStores/useCommentRulesStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 
 // ストアを使用
+// TODO: 不要なstore
 const commentRulesStore = useCommentRulesStore();
 const omikujiStore = useOmikujiStore();
 
