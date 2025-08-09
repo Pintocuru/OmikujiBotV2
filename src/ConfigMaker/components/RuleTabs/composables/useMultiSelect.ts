@@ -1,20 +1,23 @@
 // src/configMaker/components/RuleTabs/composables/useMultiSelect.ts
-import { Ref, ref } from 'vue';
+import { ref } from 'vue';
 import { toast } from 'vue-sonner';
-import { BaseTypes } from '@shared/types';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType } from '@/types';
+import type { useRuleState } from './useRuleState';
+import { BaseTypes } from '@shared/types';
 
-export const useMultiSelect = <K extends RecordCategoryType>(
- validCategory: Ref<K | undefined>,
- filteredSortedRules: any
-) => {
+/**
+ * マルチセレクト機能の管理
+ * Ctrl/Cmd + クリック、Shift + クリック、範囲選択、一括削除を提供
+ */
+export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
  const omikujiStore = useOmikujiStore();
+ const { validCategory, filteredSortedItems } = ruleState;
 
  const isMultiSelectMode = ref(false);
  const selectedRuleIds = ref(new Set<string>());
 
- // 削除用選択機能
+ /** マルチセレクトモードの切り替え */
  const toggleMultiSelectMode = () => {
   isMultiSelectMode.value = !isMultiSelectMode.value;
   if (!isMultiSelectMode.value) {
@@ -22,6 +25,7 @@ export const useMultiSelect = <K extends RecordCategoryType>(
   }
  };
 
+ /** マルチセレクト処理（Ctrl、Shift、通常クリック対応） */
  const handleMultiSelect = (ruleId: string, event: MouseEvent) => {
   if (!isMultiSelectMode.value) return;
 
@@ -48,8 +52,9 @@ export const useMultiSelect = <K extends RecordCategoryType>(
   }
  };
 
+ /** 範囲選択の処理 */
  const handleRangeSelect = (ruleId: string) => {
-  const currentRules = filteredSortedRules.value;
+  const currentRules = filteredSortedItems.value;
   const lastSelectedIndex = Math.max(
    ...Array.from(selectedRuleIds.value).map((id) =>
     currentRules.findIndex((rule: BaseTypes) => rule.id === id)
@@ -67,22 +72,25 @@ export const useMultiSelect = <K extends RecordCategoryType>(
   }
  };
 
+ /** 全選択 */
  const selectAll = () => {
-  filteredSortedRules.value.forEach((rule: BaseTypes) => {
+  filteredSortedItems.value.forEach((rule: BaseTypes) => {
    selectedRuleIds.value.add(rule.id);
   });
  };
 
+ /** 選択解除 */
  const clearSelection = () => {
   selectedRuleIds.value.clear();
   isMultiSelectMode.value = false;
  };
 
+ /** 一括削除の実行 */
  const handleBulkDelete = () => {
   if (selectedRuleIds.value.size === 0) return;
 
   const rulesToDelete = Array.from(selectedRuleIds.value)
-   .map((id) => filteredSortedRules.value.find((rule: BaseTypes) => rule.id === id))
+   .map((id) => filteredSortedItems.value.find((rule: BaseTypes) => rule.id === id))
    .filter(Boolean) as BaseTypes[];
 
   handleBulkDeleteRules(rulesToDelete);
@@ -90,6 +98,7 @@ export const useMultiSelect = <K extends RecordCategoryType>(
   isMultiSelectMode.value = false;
  };
 
+ /** 一括削除の確認ダイアログ */
  const handleBulkDeleteRules = (rulesToDelete: BaseTypes[]) => {
   if (rulesToDelete.length === 0) return;
 
@@ -104,14 +113,14 @@ export const useMultiSelect = <K extends RecordCategoryType>(
     onClick: () => {
      const sortedRules = [...rulesToDelete].sort((a, b) => {
       const indexA =
-       filteredSortedRules.value.findIndex((rule: BaseTypes) => rule.id === a.id) ?? -1;
+       filteredSortedItems.value.findIndex((rule: BaseTypes) => rule.id === a.id) ?? -1;
       const indexB =
-       filteredSortedRules.value.findIndex((rule: BaseTypes) => rule.id === b.id) ?? -1;
+       filteredSortedItems.value.findIndex((rule: BaseTypes) => rule.id === b.id) ?? -1;
       return indexB - indexA;
      });
 
      sortedRules.forEach((rule) => {
-      omikujiStore.removeItem(validCategory.value as K, rule.id);
+      omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.id);
      });
 
      toast.success(`${count}件のルールを削除しました`, {

@@ -1,17 +1,17 @@
 // src/configMaker/components/RuleTabs/composables/useRuleOperations.ts
 import { toast } from 'vue-sonner';
-import { BaseTypes } from '@shared/types';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
-import { storeToRefs } from 'pinia';
-import { Ref } from 'vue';
-import { recordCategoryLabel, RecordCategoryType, RecordCategoryTypeMap } from '@/types';
+import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
+import type { useRuleState } from './useRuleState';
+import { BaseTypes } from '@shared/types';
 
-export const useRuleOperations = <K extends RecordCategoryType>(
- validCategory: Ref<K | undefined>,
- categoryArray: Ref<RecordCategoryTypeMap[K][] | undefined>
-) => {
+/**
+ * ルールの基本操作（追加、更新、削除、複製、移動）を管理
+ * 各操作にはトースト通知とエラーハンドリングが含まれる
+ */
+export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
  const omikujiStore = useOmikujiStore();
- const { selectedCategory } = storeToRefs(omikujiStore);
+ const { validCategory, categoryArray } = ruleState;
 
  /**
   * カテゴリ操作の共通処理
@@ -20,13 +20,13 @@ export const useRuleOperations = <K extends RecordCategoryType>(
  const withValidCategory = <T>(callback: (category: RecordCategoryType) => T): T | void => {
   const category = validCategory.value;
   if (!category) {
-   console.error('Invalid category:', selectedCategory.value);
+   console.error('Invalid category:', category);
    return;
   }
   return callback(category);
  };
 
- // 新しいルールを追加
+ /** 新しいルールを追加 */
  const handleAddItem = () => {
   withValidCategory((category) => {
    omikujiStore.addItem?.(category);
@@ -37,10 +37,10 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   });
  };
 
- // ルールの内容を更新
+ /** ルールの内容を更新 */
  const handleUpdateRule = <C extends RecordCategoryType>(
   ruleId: string,
-  updates: RecordCategoryTypeMap[C]
+  updates: Partial<RecordCategoryTypeMap[C]>
  ) => {
   withValidCategory((category) => {
    omikujiStore.updateItem(category, ruleId, updates);
@@ -53,7 +53,7 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   });
  };
 
- // ルールを削除（確認ダイアログ付き）
+ /** ルールを削除（確認ダイアログ付き） */
  const handleDeleteRule = (ruleId: string, ruleName?: string) => {
   withValidCategory((category) => {
    const name = ruleName || '名前未設定';
@@ -79,7 +79,7 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   });
  };
 
- // ルールを複製
+ /** ルールを複製 */
  const handleDuplicateRule = (ruleId: string) => {
   withValidCategory((category) => {
    omikujiStore.duplicateItem(category, ruleId);
@@ -90,7 +90,7 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   });
  };
 
- // ルールを上に移動
+ /** ルールを上に移動 */
  const handleMoveRuleUp = (ruleId: string, currentIndex: number) => {
   withValidCategory((category) => {
    if (currentIndex > 0) {
@@ -99,7 +99,7 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   });
  };
 
- // ルールを下に移動
+ /** ルールを下に移動 */
  const handleMoveRuleDown = (ruleId: string, currentIndex: number, totalLength: number) => {
   withValidCategory((category) => {
    if (currentIndex < totalLength - 1) {
@@ -114,7 +114,7 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   */
  const getRuleIndex = (ruleId: string): number => {
   if (!categoryArray.value || !validCategory.value) {
-   console.error('Invalid category:', selectedCategory.value);
+   console.error('Invalid category:', validCategory.value);
    return 0;
   }
   return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
@@ -137,14 +137,3 @@ export const useRuleOperations = <K extends RecordCategoryType>(
   getDisplayIndex
  };
 };
-
-/**
- * 型ガード関数: CategoryType のうち RecordCategoryType だけを通す
- * @param value - チェックする値
- * @returns RecordCategoryTypeまたはundefined
- */
-function toRecordCategory(value: string): RecordCategoryType | undefined {
- return (recordCategoryLabel as readonly string[]).includes(value as RecordCategoryType)
-  ? (value as RecordCategoryType)
-  : undefined;
-}
