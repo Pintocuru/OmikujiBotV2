@@ -1,9 +1,16 @@
 // src/configMaker/components/RuleTabs/composables/useMultiSelect.ts
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 import { toast } from 'vue-sonner';
 import { BaseTypes } from '@shared/types';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { RecordCategoryType } from '@/types';
 
-export const useMultiSelect = (filteredSortedRules: any) => {
+export const useMultiSelect = <K extends RecordCategoryType>(
+ validCategory: Ref<K | undefined>,
+ filteredSortedRules: any
+) => {
+ const omikujiStore = useOmikujiStore();
+
  const isMultiSelectMode = ref(false);
  const selectedRuleIds = ref(new Set<string>());
 
@@ -104,7 +111,7 @@ export const useMultiSelect = (filteredSortedRules: any) => {
      });
 
      sortedRules.forEach((rule) => {
-      externalStore.value?.remove?.(rule.id);
+      omikujiStore.removeItem(validCategory.value as K, rule.id);
      });
 
      toast.success(`${count}件のルールを削除しました`, {

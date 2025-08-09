@@ -13,14 +13,14 @@ export const useRuleTabsStore = defineStore('ruleTabs', () => {
 
  // 各種操作機能
  const ruleOperations = useRuleOperations(ruleState.validCategory, ruleState.categoryArray);
- const multiSelect = useMultiSelect(ruleState.filteredSortedItems);
+ const multiSelect = useMultiSelect(ruleState.validCategory, ruleState.filteredSortedItems);
  const contextMenu = useContextMenu(ruleState.categoryArray, ruleOperations.getOriginalIndex);
  const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule);
  const dragAndDrop = useDragAndDrop(
   ruleState.filteredSortedItems,
   ruleState.categoryArray,
-  ruleState.externalStore,
-  multiSelect.isMultiSelectMode
+  multiSelect.isMultiSelectMode,
+  ruleState.validCategory
  );
 
  // コンテキストメニューのハンドラー

@@ -3,7 +3,7 @@ import { toast } from 'vue-sonner';
 import { BaseTypes } from '@shared/types';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { storeToRefs } from 'pinia';
-import { computed, Ref } from 'vue';
+import { Ref } from 'vue';
 import { recordCategoryLabel, RecordCategoryType, RecordCategoryTypeMap } from '@/types';
 
 export const useRuleOperations = <K extends RecordCategoryType>(

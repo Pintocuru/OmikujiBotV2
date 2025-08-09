@@ -1,15 +1,19 @@
 // src/configMaker/components/RuleTabs/composables/useDragAndDrop.ts
-import { ref, computed } from 'vue';
+import { ref, computed, Ref } from 'vue';
 import { BaseTypes } from '@shared/types';
+import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 
-export const useDragAndDrop = (
- filteredSortedRules: any,
- allRules: any,
- externalStore: any,
- isMultiSelectMode: any
+export const useDragAndDrop = <K extends RecordCategoryType>(
+ filteredSortedRules: Ref<RecordCategoryTypeMap[K][]>,
+ categoryArray: Ref<RecordCategoryTypeMap[K][] | undefined>,
+ isMultiSelectMode: Ref<boolean>,
+ category: Ref<K | undefined>
 ) => {
+ const omikujiStore = useOmikujiStore();
  const isDragging = ref(false);
 
+ // 使ってる
  const draggableRules = computed({
   get: () => filteredSortedRules.value,
   set: (newOrder: BaseTypes[]) => {
@@ -20,14 +24,14 @@ export const useDragAndDrop = (
  });
 
  const handleReorderFromDrag = (newOrder: BaseTypes[]) => {
-  const originalOrder = [...allRules.value];
+  const originalOrder = [...(categoryArray.value ?? [])];
 
   for (let newIndex = 0; newIndex < newOrder.length; newIndex++) {
    const rule = newOrder[newIndex];
    const currentIndex = originalOrder.findIndex((r: BaseTypes) => r.id === rule.id);
 
    if (currentIndex !== -1 && currentIndex !== newIndex) {
-    externalStore.value?.reorder?.(currentIndex, newIndex);
+    omikujiStore.reorderItem(category.value as K, currentIndex, newIndex);
     const [movedRule] = originalOrder.splice(currentIndex, 1);
     originalOrder.splice(newIndex, 0, movedRule);
    }
