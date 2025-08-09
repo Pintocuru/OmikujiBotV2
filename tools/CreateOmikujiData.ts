@@ -11,6 +11,7 @@ const packageRoot = path.resolve(__dirname, '../');
 
 const targetFolder = path.resolve(packageRoot, 'server/dev-configs/');
 const omikujiDatasFolder = path.resolve(packageRoot, 'assets/OmikujiDatas/');
+const shimsPath = path.resolve(packageRoot, 'src/types/shims-vue.d.ts');
 
 /*
  * OmikujiData のjsonデータをjsファイルにする
@@ -37,4 +38,27 @@ async function convertAllJsonFiles() {
  }
 }
 
-convertAllJsonFiles();
+/*
+ * shims-vue.d.ts を生成
+ */
+async function createShimsVue() {
+ const content = `declare module '*.vue' {
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}`;
+ await fs.mkdir(path.dirname(shimsPath), { recursive: true });
+ await fs.writeFile(shimsPath, content, 'utf-8');
+ console.log(`✅ Created: ${shimsPath}`);
+}
+
+(async () => {
+ await convertAllJsonFiles();
+ await createShimsVue();
+})();
+
+(async () => {
+ // 並行で実行
+ convertAllJsonFiles();
+ createShimsVue();
+})();

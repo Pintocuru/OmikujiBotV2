@@ -36,7 +36,7 @@ export const useScriptSettingsCleanup = () => {
    }
   }
 
-  if (hasChanges) omikujiStore.data.scriptSettings = currentScriptSettings;
+  if (hasChanges) omikujiStore.updateScriptSettings(currentScriptSettings);
  };
 
  return {

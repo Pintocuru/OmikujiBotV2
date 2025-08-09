@@ -118,6 +118,7 @@ function updatePlaceholderReferences(oldId: string, newId: string): void {
  });
 
  // ルール内のメッセージ参照更新
+ type EditableActionFields = 'messageContent' | 'messageToast' | 'wordParty';
  (['comments', 'timers'] as const).forEach((category) => {
   const categoryData = omikujiStore.getCategoryMap(category);
 
@@ -127,12 +128,12 @@ function updatePlaceholderReferences(oldId: string, newId: string): void {
     postActions: omikujiSet.postActions.map((action) => {
      const newAction = { ...action };
 
-     ['messageContent', 'messageToast', 'wordParty'].forEach((field) => {
-      if (newAction[field]?.includes(oldPlaceholder)) {
-       newAction[field] = newAction[field].replace(regex, newPlaceholder);
+     (['messageContent', 'messageToast', 'wordParty'] as EditableActionFields[]).forEach(
+      (field) => {
+       const value = newAction[field];
+       if (value?.includes(oldPlaceholder)) newAction[field] = value.replace(regex, newPlaceholder);
       }
-     });
-
+     );
      return newAction;
     })
    }));
