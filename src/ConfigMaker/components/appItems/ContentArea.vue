@@ -40,8 +40,8 @@
 import { storeToRefs } from 'pinia';
 import { categoryLabels } from '@/types/';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import CommentRuleEditor from '@ConfigComponents/comments/CommentRuleEditor.vue';
-import TimerRuleEditor from '@ConfigComponents/timers/TimerRuleEditor.vue';
+import CommentRuleEditor from '@ConfigComponents/rulesComments/CommentRuleEditor.vue';
+import TimerRuleEditor from '@ConfigComponents/rulesTimers/TimerRuleEditor.vue';
 import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue';
 import ScriptSettingsEditor from '@ConfigComponents/scriptSettings/ScriptSettingsEditor.vue';
 import WordPartySettingsEditor from '@ConfigComponents/wordPartySettings/WordPartySettingsEditor.vue';

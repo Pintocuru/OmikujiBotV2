@@ -25,9 +25,9 @@
 import { computed } from 'vue';
 import { RuleType, TimerRuleType } from '@/types/';
 import TimerIntervalEditor from './TimerIntervalEditor.vue';
-import OmikujiSetEditor from '@ConfigComponents/comments/OmikujiSetEditor.vue';
+import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
-import BaseSettingsEditor from '@ConfigComponents/comments/BaseSettingsEditor.vue';
+import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue';
 import { useTimerRulesStore } from '@ConfigStores/useTimerRulesStore';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 

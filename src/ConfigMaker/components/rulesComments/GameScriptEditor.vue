@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/ScriptGameEditor.vue -->
+<!-- src/configMaker/components/comments/GameScriptEditor.vue -->
 <template>
  <div
   v-if="

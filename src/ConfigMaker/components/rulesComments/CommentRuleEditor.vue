@@ -30,9 +30,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { CommentRuleType, RuleType } from '@/types/';
-import BaseSettingsEditor from './BaseSettingsEditor.vue';
-import ScriptGameEditor from './ScriptGameEditor.vue';
-import OmikujiSetEditor from './OmikujiSetEditor.vue';
+import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue';
+import ScriptGameEditor from './GameScriptEditor.vue';
+import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue';
 import OmikujiLimitsEditor from '@ConfigComponents/limit/OmikujiLimitsEditor.vue';
 import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
