@@ -1,12 +1,13 @@
 <!-- src/MainGenerator/components/CharacterControlPanel.vue -->
 <template>
- <div class="fixed bottom-4 right-4 z-50">
+ <!-- charactersが空の場合や有効な画像を持つキャラクターがいない場合は何も表示しない -->
+ <div v-if="validCharacters.length > 0" class="fixed bottom-4 right-4 z-50">
   <div class="flex items-end gap-3" style="flex-direction: row-reverse">
    <div
-    v-for="(character, index) in characters"
+    v-for="(character, index) in validCharacters"
     :key="index"
     class="relative cursor-pointer"
-    :style="{ zIndex: characters.length - index }"
+    :style="{ zIndex: validCharacters.length - index }"
     @click="handleCharacterClick(character, false)"
     @contextmenu.prevent="handleCharacterClick(character, true)"
    >
@@ -30,7 +31,6 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted } from 'vue';
-import { DisplaySize } from '@shared/types';
 import {
  characterEmotions,
  CharacterEmotionType,
@@ -49,6 +49,27 @@ const characters = computed(() => appStore.characterCollector.getUsedCharacterPr
 const displaySize = computed(() => displayStore.displaySize);
 const currentExpressions = ref<CharacterEmotionType[]>([]);
 const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null);
+
+// 有効な画像を持つキャラクターのみをフィルタリング
+const validCharacters = computed(() => {
+ if (!characters.value || characters.value.length === 0) {
+  return [];
+ }
+
+ return characters.value.filter((character) => {
+  // characterまたはcharacter.imageがない場合は除外
+  if (!character || !character.image) {
+   return false;
+  }
+
+  // character.image.defaultが存在し、かつ空でない文字列である場合のみ有効
+  return (
+   character.image.default &&
+   typeof character.image.default === 'string' &&
+   character.image.default.trim() !== ''
+  );
+ });
+});
 
 // サイズ設定の定数
 const SIZE_CONFIG = {
@@ -78,9 +99,11 @@ const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value]);
 
 // 初期化
 onMounted(() => {
- // 各キャラクターの初期表情を設定
- currentExpressions.value = characters.value.map(() => 'default');
- startExpressionCycle();
+ // 各キャラクターの初期表情を設定（validCharactersベース）
+ currentExpressions.value = validCharacters.value.map(() => 'default');
+ if (validCharacters.value.length > 0) {
+  startExpressionCycle();
+ }
 });
 
 // クリーンアップ
@@ -88,15 +111,19 @@ onUnmounted(() => {
  if (expressionTimer.value) clearTimeout(expressionTimer.value);
 });
 
-// 表情サイクルの開始（5秒に1回抽選を行い、5%で特別な表情）
+// 表情サイクルの開始（10秒に1回抽選を行い、5%で特別な表情）
 const startExpressionCycle = () => {
  const updateExpressions = () => {
-  characters.value.forEach((character, index) => {
+  if (validCharacters.value.length === 0) {
+   return;
+  }
+
+  validCharacters.value.forEach((character, index) => {
    const changeChance = Math.random() < 0.05;
    const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)];
    currentExpressions.value[index] = changeChance ? randomEmotion : 'default';
   });
-  expressionTimer.value = setTimeout(updateExpressions, 5000);
+  expressionTimer.value = setTimeout(updateExpressions, 10000);
  };
 
  // 初回実行

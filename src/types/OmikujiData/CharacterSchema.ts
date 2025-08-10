@@ -75,9 +75,9 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
 /**
  * CharacterSchema
  */
-// TODO:やっぱり key にしたい(idではなくて)
 export const CharacterSchema = z.object({
  ...PresetMetadataSchema.shape,
+ key: z.string().default('').catch(''), // いつかid をkeyで扱えるように
  displayName: z.string().default('').catch(''),
  frameId: z.string().default('').catch(''),
  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),

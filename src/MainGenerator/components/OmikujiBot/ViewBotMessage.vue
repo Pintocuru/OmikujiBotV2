@@ -24,7 +24,7 @@
     <div
      class="absolute left-1/2 -translate-x-1/2 transform w-full max-w-3xl p-4 rounded-xl"
      :style="{
-      backgroundColor: message.color?.backgroundColor || '#ffffff',
+      backgroundColor: message.color?.backgroundColor || '#ccc',
       filter: `brightness(${getBrightness(index)}%)`
      }"
     >
@@ -32,14 +32,14 @@
       v-if="message.name !== ''"
       class="mb-0"
       :class="sizeConfig.text"
-      :style="{ color: message.color?.nameColor || '#000000' }"
+      :style="{ color: message.color?.nameColor || '#212121' }"
      >
       {{ message.name }}
      </div>
      <div
       class="break-words"
       :class="sizeConfig.text"
-      :style="{ color: message.color?.textColor || '#000000' }"
+      :style="{ color: message.color?.textColor || '#212121' }"
      >
       {{ message.comment }}
      </div>
@@ -50,7 +50,7 @@
       :style="{
        borderLeft: '20px solid transparent',
        borderRight: '20px solid transparent',
-       borderTop: `20px solid ${message.color?.backgroundColor || '#ffffff'}`,
+       borderTop: `20px solid ${message.color?.backgroundColor || '#ccc'}`,
        filter: `brightness(${getBrightness(index)}%)`
       }"
      />
@@ -58,7 +58,7 @@
 
     <!-- キャラクターアイコン -->
     <div
-     v-if="message.profileImage"
+     v-if="message.profileImage && message.profileImage !== ''"
      class="absolute left-1/2 -translate-x-1/2 transform rounded-full overflow-hidden z-40"
      :class="sizeConfig.avatar"
      :style="{
@@ -80,12 +80,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, toRef } from 'vue';
-import { BotMessage, getImagePath } from '@/types/';
+import { computed, onMounted, onUnmounted } from 'vue';
+import { getImagePath } from '@/types/';
 import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage';
 import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCommentAnimation';
 import type { AnimationType } from '@/types/BotComponents/animation';
-import { DisplaySize } from '@shared/types';
 import { useAppStore, useDisplayStore } from '@/MainGenerator/stores';
 import { storeToRefs } from 'pinia';
 

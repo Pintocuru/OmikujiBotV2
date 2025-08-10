@@ -9,11 +9,7 @@ import {
 } from '@/types/';
 
 export class CharacterCollector {
- private readonly omikujiData: OmikujiDataType;
-
- constructor(omikujiData: OmikujiDataType) {
-  this.omikujiData = omikujiData;
- }
+ constructor(private readonly omikujiData: OmikujiDataType) {}
 
  /**
   * postActionsからcharacterKeyを収集する
