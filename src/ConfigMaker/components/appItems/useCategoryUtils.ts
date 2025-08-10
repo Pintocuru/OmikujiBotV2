@@ -13,21 +13,36 @@ export const useCategoryUtils = () => {
 
   if (category === 'scriptSettings') return availableGameScripts.length;
   if (category === 'displaySettings') return 0;
+  if (category === 'meta') return 0;
 
   const items = data.value[category];
   return items ? Object.keys(items).length : 0;
  };
 
- const filteredCategoryLabels = computed(() => {
-  const { enabledGameScriptSettings, availableGameScripts } = data.value.displaySettings.developer;
+ /**
+  * ナビゲーションの表示・非表示設定
+  */
+ const filteredCategoryLabels = computed<
+  Record<CategoryType, (typeof categoryLabels)[CategoryType]>
+ >(() => {
+  const { enabledGameScriptSettings, availableGameScripts, showTemplateButton } =
+   data.value.displaySettings.developer;
+
+  const excludeKeys: CategoryType[] = [];
+
   // scriptSettingsを除外
   if (!enabledGameScriptSettings || availableGameScripts.length === 0) {
-   return Object.fromEntries(
-    Object.entries(categoryLabels).filter(([key]) => key !== 'scriptSettings')
-   );
+   excludeKeys.push('scriptSettings');
   }
-  // それ以外の場合は、元のcategoryLabelsをそのまま返す
-  return categoryLabels;
+
+  // showTemplateButtonがfalseならmetaを除外
+  if (!showTemplateButton) {
+   excludeKeys.push('meta');
+  }
+
+  return Object.fromEntries(
+   Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))
+  ) as Record<CategoryType, (typeof categoryLabels)[CategoryType]>;
  });
 
  return {

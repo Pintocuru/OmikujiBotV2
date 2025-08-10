@@ -7,9 +7,9 @@
   <div class="card-body space-y-4">
    <!-- 利用可能なスクリプト切替 -->
    <SettingItem
-    label="利用可能なスクリプト"
-    description="有効にするスクリプトを切り替え"
-    @reset="selectAllScripts"
+    label="利用可能なゲームスクリプト"
+    description="有効にするゲームスクリプトを切り替え"
+    @reset="availableGameScripts = []"
    >
     <div
      v-for="(scriptPreset, scriptId) in gameScriptMap"
@@ -53,9 +53,9 @@ const availableGameScripts = computed({
  }
 });
 
-// 全スクリプトを ON にする
+// 全スクリプトを ON にする(使わないけどとっておく)
 function selectAllScripts() {
  const allKeys = Object.keys(gameScriptMap);
- availableGameScripts.value = allKeys; // ここでsetterが呼ばれる
+ availableGameScripts.value = allKeys;
 }
 </script>

@@ -9,7 +9,7 @@
    <SettingItem
     label="開発者モード"
     description="配布されてるほぼすべてのモードに設定可能"
-    :showReset="false"
+    @reset="developerSettings.godModeEnabled = false"
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
@@ -23,68 +23,20 @@
     >
    </SettingItem>
 
-   <!-- 起動時に表示するコンポーネント -->
-   <SettingItem
-    label="起動時コンポーネント"
-    description="アプリケーション起動時に表示するコンポーネント"
-    :showReset="false"
-   >
-    <select
-     v-model="developerSettings.selectComponent"
-     class="select select-bordered w-full max-w-xs"
-    >
-     <option value="omikujiBot">おみくじBot</option>
-     <option value="gameScript">ゲームスクリプト</option>
-    </select>
-   </SettingItem>
-
-   <!-- デフォルトスクリプトキー (gameScript選択時のみ表示) -->
-   <SettingItem
-    v-if="developerSettings.selectComponent === 'gameScript'"
-    label="デフォルトスクリプト"
-    description="gameScript選択時のデフォルトスクリプト"
-    :showReset="false"
-   >
-    <select
-     v-model="developerSettings.defaultScriptKey"
-     class="select select-bordered w-full max-w-xs"
-    >
-     <option :value="null">選択なし(nullの時はおみくじBOTが表示されます)</option>
-     <option v-for="(value, key) in gameScriptMap" :key="key" :value="key">
-      {{ value.name }}({{ key }})
-     </option>
-    </select>
-   </SettingItem>
-
-   <!-- ゲームスクリプト設定UI表示制御 -->
-   <SettingItem
-    label="ゲームスクリプト設定の表示"
-    description="OFFにすると、ゲームスクリプトの設定が非表示になります"
-    :showReset="false"
-   >
-    <label class="label cursor-pointer justify-start gap-3">
-     <input
-      v-model="developerSettings.enabledGameScriptSettings"
-      type="checkbox"
-      class="toggle toggle-warning"
-     />
-     <span class="label-text">OFFにすると、ゲームスクリプトの設定が非表示になります</span></label
-    >
-   </SettingItem>
-
    <!-- テンプレート出力ボタン表示制御 -->
    <SettingItem
-    label="テンプレート出力ボタン"
-    description="有料版の機能「テンプレート出力」を表示するか"
-    :showReset="false"
+    label="プロ版モード"
+    description="有料版の機能を表示するか"
+    @reset="developerSettings.showTemplateButton = false"
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
       v-model="developerSettings.showTemplateButton"
       type="checkbox"
-      class="toggle toggle-warning" />
-     <span class="label-text"></span
-    ></label>
+      class="toggle toggle-secondary"
+     />
+     <span class="label-text">テンプレート出力、Metaタグ編集が使えるようになります</span></label
+    >
    </SettingItem>
   </div>
  </div>
@@ -94,7 +46,6 @@
 import { computed } from 'vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { storeToRefs } from 'pinia';
 
 // Store

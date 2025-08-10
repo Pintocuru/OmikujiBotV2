@@ -54,7 +54,7 @@ export const DisplaySettingsSchema = z.object({
    availableGameScripts: [],
    defaultScriptKey: null,
    enabledGameScriptSettings: true,
-   showTemplateButton: true
+   showTemplateButton: false
   })
 });
 

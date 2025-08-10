@@ -1,11 +1,35 @@
 <!-- src/configMaker/App.vue -->
 <template>
  <div class="p-4 max-w-6xl mx-auto pb-24">
-  <h1 class="text-2xl font-bold mb-6 text-center text-primary">
-   おみくじBot コンフィグエディター
-   <span v-if="data.displaySettings.developer.godModeEnabled" class="badge badge-warning">
-    GOD-MODE
-   </span>
+  <h1
+   class="flex justify-center text-2xl font-bold mb-6 text-center"
+   :class="
+    data.displaySettings.developer.godModeEnabled
+     ? ['text-warning']
+     : data.displaySettings.developer.showTemplateButton
+       ? ['text-secondary']
+       : ['text-primary']
+   "
+  >
+   <div class="flex items-center gap-2">
+    おみくじBot コンフィグエディター
+    <!-- GOD-MODEバッジ -->
+    <span
+     v-if="data.displaySettings.developer.godModeEnabled"
+     class="badge badge-warning tooltip tooltip-bottom"
+     data-tip="私が神です!"
+    >
+     GOD-MODE
+    </span>
+    <!-- GOD-MODEバッジ -->
+    <span
+     v-if="data.displaySettings.developer.showTemplateButton"
+     class="badge badge-secondary tooltip tooltip-bottom"
+     data-tip="テンプレート出力が可能な、有料版です!"
+    >
+     PRO
+    </span>
+   </div>
   </h1>
 
   <!-- 開発者用プリセット管理 -->

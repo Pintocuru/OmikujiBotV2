@@ -14,7 +14,7 @@
    <div class="alert alert-info w-full">
     <Settings class="w-5 h-5 mt-0.5 shrink-0" />
     <div class="space-y-1">
-     <p>利用可能なスクリプトがありません</p>
+     <p>利用可能なゲームスクリプトがありません</p>
     </div>
    </div>
   </div>

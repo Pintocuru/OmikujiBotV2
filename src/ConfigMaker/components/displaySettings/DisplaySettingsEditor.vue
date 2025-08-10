@@ -28,9 +28,12 @@
    </div>
   </div>
 
-  <div v-if="data.displaySettings.developer.godModeEnabled">
+  <div v-if="data.displaySettings.developer.godModeEnabled" class="space-y-4">
    <!-- 開発者モード: -->
    <DeveloperSettings />
+
+   <!-- コンフィグエディター機能の有効・無効設定: -->
+   <AvailableConfigEdit />
 
    <!-- ゲームスクリプトの表示設定: -->
    <AvailableGameScripts />
@@ -62,6 +65,7 @@
 import { isDev } from '@/types/';
 import DisplaySettingsCard from './DisplaySettingsCard.vue';
 import DeveloperSettings from './DeveloperSettings.vue';
+import AvailableConfigEdit from './AvailableConfigEdit.vue';
 import AvailableGameScripts from './AvailableGameScripts.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';

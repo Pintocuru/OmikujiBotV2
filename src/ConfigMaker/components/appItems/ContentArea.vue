@@ -53,5 +53,5 @@ import DisplaySettingsEditor from '@ConfigComponents/displaySettings/DisplaySett
 import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue';
 
 const omikujiStore = useOmikujiStore();
-const { selectedCategory } = storeToRefs(omikujiStore);
+const { data, selectedCategory } = storeToRefs(omikujiStore);
 </script>

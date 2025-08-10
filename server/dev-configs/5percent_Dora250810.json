@@ -23,7 +23,7 @@
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-10T10:59:27.244Z",
+      "updatedAt": "2025-08-10T20:47:29.868Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -174,9 +174,9 @@
     "1754858341283": {
       "id": "1754858341283",
       "key": "",
-      "name": "",
+      "name": "ドラちゃん(定期)",
       "createdAt": "2025-08-10T20:39:01.283Z",
-      "updatedAt": "2025-08-10T20:39:01.283Z",
+      "updatedAt": "2025-08-10T20:47:13.661Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -184,27 +184,120 @@
         {
           "id": "1754855691056",
           "key": "",
-          "name": "",
+          "name": "ドラちゃん",
           "createdAt": "2025-08-10T19:54:51.056Z",
           "updatedAt": "2025-08-10T19:54:51.056Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 380,
+          "postActions": [
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!5percent_dora_0",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 1,
+              "wordParty": "!5percent_dora_1",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "messageContent": "はぁーい、<<5percent_Dora>>～",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "1754858755996",
+          "key": "",
+          "name": "ドラちゃん (ボロン)",
+          "createdAt": "2025-08-10T20:45:55.996Z",
+          "updatedAt": "2025-08-10T20:45:55.996Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 19,
+          "postActions": [
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 0,
+              "wordParty": "!5percent_dora_0",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 1,
+              "wordParty": "!5percent_dora_1",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 1.5,
+              "wordParty": "!5percent_dora_2",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 5,
+              "wordParty": "!ニュースタイトル表示3",
+              "messageContent": "",
+              "messageToast": "オンボロがオンボロをボロンしてしまいました。大変失礼いたしました。"
+            }
+          ]
+        },
+        {
+          "id": "1754858776558",
+          "key": "",
+          "name": "ドラちゃん (こんにゃく)",
+          "createdAt": "2025-08-10T20:46:16.558Z",
+          "updatedAt": "2025-08-10T20:46:16.558Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "",
+              "characterKey": "5percent_Dora",
               "iconKey": "default",
-              "messageContent": "<<user>>さんの運勢は【大吉】"
+              "delaySeconds": 0,
+              "wordParty": "!5percent_dora_Konjac_0",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "delaySeconds": 1,
+              "wordParty": "!5percent_dora_Konjac_1",
+              "messageContent": "",
+              "messageToast": ""
             }
           ]
         }
       ],
       "ruleType": "timers",
-      "intervalSeconds": 300,
-      "isBaseZero": false
+      "intervalSeconds": 1800,
+      "isBaseZero": true,
+      "description": "ドラちゃんです。30分に1回自動で発動します",
+      "isEnabled": true
     }
   },
   "placeholders": {
@@ -213,7 +306,7 @@
       "key": "",
       "name": "ひみつ道具",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-10T20:42:28.989Z",
+      "updatedAt": "2025-08-10T20:48:19.094Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
