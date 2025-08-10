@@ -1,7 +1,7 @@
 // shared/types/OmikujiBot/PlaceholderSchema.ts
 // 250722_1 の新規作成
 import { z } from 'zod';
-import { BaseSchema } from '@shared/types';
+import { BaseRecordSchema } from '@shared/types';
 
 // PlaceholderSchema // OmikujiSchema
 export const PlaceholderValueSchema = z.object({
@@ -10,13 +10,7 @@ export const PlaceholderValueSchema = z.object({
 });
 
 export const PlaceholderSchema = z.object({
- // ここはidではなくkeyが良いと言われた。idは別途作ると良いとも。
- ...BaseSchema.shape,
- editorColor: z
-  .string()
-  .regex(/^#[0-9A-Fa-f]{6}$/)
-  .default('#3B82F6')
-  .catch('#3B82F6'),
+ ...BaseRecordSchema.shape,
  values: z.array(PlaceholderValueSchema).default([]).catch([])
 });
 

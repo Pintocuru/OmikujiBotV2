@@ -69,6 +69,7 @@ export const DisplayOptionSchema = z.object({
  isIconDisplay: z.boolean().default(true).catch(true),
  isOneCommePost: z.boolean().default(true).catch(true),
  isVoice: z.boolean().default(true).catch(true)
+ // TODO:アニメーションの実装
 });
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
 
@@ -77,7 +78,6 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
  */
 export const CharacterSchema = z.object({
  ...PresetMetadataSchema.shape,
- key: z.string().default('').catch(''), // いつかid をkeyで扱えるように
  displayName: z.string().default('').catch(''),
  frameId: z.string().default('').catch(''),
  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),

@@ -1,14 +1,14 @@
 // src/configMaker/components/RecordTabs/composables/useContextMenu.ts
 import { ref, computed } from 'vue';
 import type { useRuleState } from './useRuleState';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /** コンテキストメニューの状態 */
 export interface ContextMenuState {
  show: boolean;
  x: number;
  y: number;
- rule: BaseTypes | null;
+ rule: BaseRecordType | null;
  index: number;
 }
 
@@ -31,7 +31,7 @@ export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
  /** ルールのインデックスを取得 */
  const getOriginalIndex = (ruleId: string): number => {
   if (!categoryArray.value) return 0;
-  return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
+  return categoryArray.value.findIndex((rule: BaseRecordType) => rule.id === ruleId);
  };
 
  /** 上に移動可能かどうか */
@@ -47,7 +47,7 @@ export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
  });
 
  /** コンテキストメニューを表示 */
- const showContextMenu = (event: MouseEvent, rule: BaseTypes, index: number) => {
+ const showContextMenu = (event: MouseEvent, rule: BaseRecordType, index: number) => {
   event.preventDefault();
   contextMenu.value = {
    x: event.clientX,

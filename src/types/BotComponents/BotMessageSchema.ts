@@ -1,14 +1,13 @@
 //
 import { z } from 'zod';
-import { v4 as uuidv4 } from 'uuid';
 import { CharacterColorScheme } from '../OmikujiData/CharacterSchema';
 
 // BotMessage : Commentを大幅に略したもの
 export const BotMessageSchema = z.object({
  id: z
-  .string()
-  .default(() => uuidv4())
-  .catch(() => uuidv4()), // ID
+  .number()
+  .default(() => Date.now())
+  .catch(() => Date.now()), // ID
  name: z.string().catch('error'), // 名前
  profileImage: z.string().nullable().catch(null), // アイコン
  timestamp: z

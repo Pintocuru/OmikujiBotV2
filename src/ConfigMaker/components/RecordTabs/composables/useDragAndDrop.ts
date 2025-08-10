@@ -2,7 +2,7 @@
 import { ref, computed, Ref } from 'vue';
 import type { useRuleState } from './useRuleState';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * ドラッグ&ドロップによる並び替え機能
@@ -24,7 +24,7 @@ export const useDragAndDrop = (
   */
  const draggableRules = computed({
   get: () => filteredSortedItems.value,
-  set: (newOrder: BaseTypes[]) => {
+  set: (newOrder: BaseRecordType[]) => {
    // ドラッグ中かつマルチセレクトモードでない場合のみ並び替え実行
    if (isDragging.value && !isMultiSelectMode.value) {
     handleReorderFromDrag(newOrder);
@@ -36,7 +36,7 @@ export const useDragAndDrop = (
   * ドラッグ操作による順序変更を処理
   * 新しい順序に基づいて各ルールの位置を更新
   */
- const handleReorderFromDrag = (newOrder: BaseTypes[]) => {
+ const handleReorderFromDrag = (newOrder: BaseRecordType[]) => {
   if (!validCategory.value || !categoryArray.value) return;
 
   const originalOrder = [...categoryArray.value];
@@ -44,7 +44,7 @@ export const useDragAndDrop = (
   // 新しい順序の各アイテムについて位置を更新
   for (let newIndex = 0; newIndex < newOrder.length; newIndex++) {
    const rule = newOrder[newIndex];
-   const currentIndex = originalOrder.findIndex((r: BaseTypes) => r.id === rule.id);
+   const currentIndex = originalOrder.findIndex((r: BaseRecordType) => r.id === rule.id);
 
    // 位置が変更された場合のみ更新
    if (currentIndex !== -1 && currentIndex !== newIndex) {

@@ -4,7 +4,7 @@ import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType } from '@/types';
 import type { useRuleState } from './useRuleState';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * マルチセレクト機能の管理
@@ -57,10 +57,10 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   const currentRules = filteredSortedItems.value;
   const lastSelectedIndex = Math.max(
    ...Array.from(selectedRuleIds.value).map((id) =>
-    currentRules.findIndex((rule: BaseTypes) => rule.id === id)
+    currentRules.findIndex((rule: BaseRecordType) => rule.id === id)
    )
   );
-  const clickedIndex = currentRules.findIndex((rule: BaseTypes) => rule.id === ruleId);
+  const clickedIndex = currentRules.findIndex((rule: BaseRecordType) => rule.id === ruleId);
 
   const start = Math.min(lastSelectedIndex, clickedIndex);
   const end = Math.max(lastSelectedIndex, clickedIndex);
@@ -74,7 +74,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
 
  /** 全選択 */
  const selectAll = () => {
-  filteredSortedItems.value.forEach((rule: BaseTypes) => {
+  filteredSortedItems.value.forEach((rule: BaseRecordType) => {
    selectedRuleIds.value.add(rule.id);
   });
  };
@@ -90,8 +90,8 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   if (selectedRuleIds.value.size === 0) return;
 
   const rulesToDelete = Array.from(selectedRuleIds.value)
-   .map((id) => filteredSortedItems.value.find((rule: BaseTypes) => rule.id === id))
-   .filter(Boolean) as BaseTypes[];
+   .map((id) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.id === id))
+   .filter(Boolean) as BaseRecordType[];
 
   handleBulkDeleteRules(rulesToDelete);
   selectedRuleIds.value.clear();
@@ -99,7 +99,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
  };
 
  /** 一括削除の確認ダイアログ */
- const handleBulkDeleteRules = (rulesToDelete: BaseTypes[]) => {
+ const handleBulkDeleteRules = (rulesToDelete: BaseRecordType[]) => {
   if (rulesToDelete.length === 0) return;
 
   const ruleNames = rulesToDelete.map((rule) => rule.name || '名前未設定').join('、');
@@ -113,9 +113,9 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     onClick: () => {
      const sortedRules = [...rulesToDelete].sort((a, b) => {
       const indexA =
-       filteredSortedItems.value.findIndex((rule: BaseTypes) => rule.id === a.id) ?? -1;
+       filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.id === a.id) ?? -1;
       const indexB =
-       filteredSortedItems.value.findIndex((rule: BaseTypes) => rule.id === b.id) ?? -1;
+       filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.id === b.id) ?? -1;
       return indexB - indexA;
      });
 

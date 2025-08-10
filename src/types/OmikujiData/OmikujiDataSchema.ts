@@ -7,6 +7,7 @@ import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
 import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
 import { ensureUniqueIds, RecordCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
+import { PackageMetaSchema } from '@shared/types';
 
 // 再エクスポート
 export * from './CategoryType';
@@ -30,13 +31,14 @@ const scriptSettingsSchema = createScriptSettingsSchema(gameScriptMap);
  * おみくじデータ全体のメインスキーマ
  */
 export const OmikujiDataSchema = z.object({
+ meta: PackageMetaSchema.catch(PackageMetaSchema.parse({})),
  comments: CommentRuleRecordSchema,
  timers: TimerRuleRecordSchema,
  placeholders: PlaceholderRecordSchema,
  characters: CharacterRecordSchema,
- scriptSettings: scriptSettingsSchema.default({}).catch({}),
+ scriptSettings: scriptSettingsSchema.catch({}),
  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
- wordPartySettings: z.array(WordPartySettingsSchema).default([]).catch([])
+ wordPartySettings: z.array(WordPartySettingsSchema).catch([])
 });
 
 // 型定義
@@ -49,6 +51,7 @@ export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 
 // カテゴリ更新用のスキーママップ
 export const categorySchemaMap = {
+ meta: PackageMetaSchema,
  comments: BaseCommentRuleSchema,
  timers: BaseTimerRuleSchema,
  placeholders: PlaceholderSchema,

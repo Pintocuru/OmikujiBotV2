@@ -1,15 +1,13 @@
 // shared/types/OmikujiBot/RulesSchema.ts
 import { z } from 'zod';
-import { BaseSchema, CommentThresholdSchema } from '@shared/types/';
-import { PostActionSchema, OmikujiSetSchema } from './OmikujiSchema';
+import { BaseRecordSchema, CommentThresholdSchema } from '@shared/types/';
+import { OmikujiSetSchema } from './OmikujiSchema';
 
 // おみくじ制限設定のスキーマ
 export const OmikujiLimitsSchema = z.object({
  processCooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
  drawLimit: z.number().default(0).catch(0), // 今回のおみくじはこの回数以下か
- isRepeatAllowed: z.boolean().default(true).catch(true), // 連投を許可するか
- // 上記の制限で引っかかった場合の投稿
- limitOverPost: z.optional(PostActionSchema).catch(PostActionSchema.parse({}))
+ isRepeatAllowed: z.boolean().default(true).catch(true) // 連投を許可するか
 });
 
 // WordParty設定のスキーマ
@@ -20,14 +18,7 @@ export const WordPartySettingsSchema = z.object({
 
 // ルール共通部分の基本スキーマ
 export const BaseRuleCommonSchema = z.object({
- ...BaseSchema.shape,
- isEnabled: z.boolean().default(true).catch(true), // ルールが有効かどうか
- // エディター表示用のカラーコード
- editorColor: z
-  .string()
-  .regex(/^#[0-9A-Fa-f]{6}$/)
-  .default('#3B82F6')
-  .catch('#3B82F6'),
+ ...BaseRecordSchema.shape,
  // おみくじセット配列
  omikuji: z
   .array(OmikujiSetSchema)

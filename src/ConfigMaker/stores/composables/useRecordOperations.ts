@@ -62,7 +62,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   const categoryData = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
 
   if (categoryData && categoryData[id] !== undefined) {
-   const updatedItem = { ...categoryData[id], ...updates };
+   const updatedItem = { ...categoryData[id], ...updates, updatedAt: new Date().toISOString() };
    const updatedCategory = { ...categoryData, [id]: updatedItem };
    data.value[category] = updatedCategory as any;
   } else {
@@ -84,8 +84,12 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  ) => {
   const currentCategory = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
   if (currentCategory[id]) {
-   const updatedRule = { ...currentCategory[id], [key]: value };
-   const updatedCategory = { ...currentCategory, [id]: updatedRule };
+   const updatedItem = { ...currentCategory[id], [key]: value };
+   const updatedCategory = {
+    ...currentCategory,
+    [id]: updatedItem,
+    updatedAt: new Date().toISOString()
+   };
    updateCategoryData(category, updatedCategory as Record<string, OmikujiDataType[C]>);
   }
  };
@@ -116,9 +120,9 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   if (!item) return null;
 
   const newId = `${id}_copy`;
-  const duplicatedItem = { ...item, id: newId };
+  const now = new Date().toISOString();
+  const duplicatedItem = { ...item, id: newId, createdAt: now, updatedAt: now };
 
-  // 型が一致するようになった
   addItem(category, duplicatedItem);
   return newId;
  };

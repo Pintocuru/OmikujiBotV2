@@ -1,12 +1,11 @@
 // src/types/OmikujiDataNormalize.ts
 import { z } from 'zod';
-import { v4 as uuidv4 } from 'uuid';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * id/orderの型
  */
-export type RecordCategoryItem = BaseTypes & { [key: string]: any };
+export type RecordCategoryItem = BaseRecordType & { [key: string]: any };
 
 /**
  * アイテム配列のorder値を正規化する
@@ -35,7 +34,8 @@ export const ensureUniqueIds = <T extends { id: string }>(items: T[]): T[] => {
 
  for (const item of items) {
   let newId = item.id;
-  if (seenIds.has(newId)) newId = uuidv4();
+  if (seenIds.has(newId))
+   newId = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
   seenIds.add(newId);
   newItems.push(newId === item.id ? item : { ...item, id: newId });
  }

@@ -1,13 +1,13 @@
 // src/configMaker/components/RecordTabs/composables/useInlineEdit.ts
 import { ref, nextTick, ComponentPublicInstance } from 'vue';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * インライン編集機能の管理
  * ルール名の直接編集、入力フィールドのフォーカス管理を提供
  */
 export const useInlineEdit = (
- handleUpdateRule: (id: string, updates: Partial<BaseTypes>) => void
+ handleUpdateRule: (id: string, updates: Partial<BaseRecordType>) => void
 ) => {
  /** 現在編集中のルールID（nullの場合は編集モードではない） */
  const editingRuleId = ref<string | null>(null);
@@ -22,7 +22,7 @@ export const useInlineEdit = (
   * インライン編集を開始
   * @param rule 編集対象のルール
   */
- const startInlineEdit = async (rule: BaseTypes) => {
+ const startInlineEdit = async (rule: BaseRecordType) => {
   editingRuleId.value = rule.id;
   editingName.value = rule.name || '';
 

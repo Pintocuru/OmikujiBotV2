@@ -3,7 +3,7 @@ import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
 import type { useRuleState } from './useRuleState';
-import { BaseTypes } from '@shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * ルールの基本操作（追加、更新、削除、複製、移動）を管理
@@ -117,7 +117,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
    console.error('Invalid category:', validCategory.value);
    return 0;
   }
-  return categoryArray.value.findIndex((rule: BaseTypes) => rule.id === ruleId);
+  return categoryArray.value.findIndex((rule: BaseRecordType) => rule.id === ruleId);
  };
 
  // 元のインデックスを取得（現在はgetDisplayIndexと同じ実装）
