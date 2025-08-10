@@ -44,9 +44,10 @@ export class CharacterCollector {
  /**
   * 使用されているキャラクターデータを取得する
   */
- getUsedCharacterData(): Record<string, CharacterType> {
+ getUsedCharacterData(): Record<string, CharacterType> | null {
   const keys = this.collectCharacterKeys();
   const characters = this.omikujiData.characters;
+  if (Object.keys(characters).length === 0) return null;
   return Object.fromEntries(
    Array.from(keys)
     .filter((key) => characters[key])
@@ -58,7 +59,9 @@ export class CharacterCollector {
   * 使用されているキャラクターのプリセットを配列で取得する
   */
  getUsedCharacterPresets(): CharacterType[] {
-  return Object.values(this.getUsedCharacterData()).sort((a, b) => a.order - b.order);
+  const usedCharacterData = this.getUsedCharacterData();
+  if (!usedCharacterData) return [];
+  return Object.values(usedCharacterData).sort((a, b) => a.order - b.order);
  }
 
  /**

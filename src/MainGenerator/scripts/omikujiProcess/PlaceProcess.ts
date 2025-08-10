@@ -129,9 +129,7 @@ export class PlaceProcess {
   }
 
   // 既に解決済みの場合はスキップ
-  if (placeholderId in this.resolvedValues) {
-   return;
-  }
+  if (placeholderId in this.resolvedValues) return;
 
   // 該当するプレースホルダーを検索（効率的な検索）
   const source = this.placeholderIdMap.get(placeholderId);

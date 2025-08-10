@@ -16,12 +16,11 @@
      :class="[index === 0 ? sizeConfig.primaryAvatar : sizeConfig.secondaryAvatar]"
     >
      <img
-      :src="getImagePath(character.image[currentExpressions[index]])"
-      :alt="`${character.name}のアイコン`"
+      v-if="getImageSrc(index)"
+      :src="getImageSrc(index)"
+      :alt="`${characters[index].name}のアイコン`"
       class="w-full h-full object-cover transition-all duration-500"
-      :style="{
-       backgroundColor: character.color.backgroundColor || '#ccc'
-      }"
+      :style="{ backgroundColor: characters[index].color.backgroundColor || '#ccc' }"
      />
     </div>
    </div>
@@ -49,6 +48,15 @@ const characters = computed(() => appStore.characterCollector.getUsedCharacterPr
 const displaySize = computed(() => displayStore.displaySize);
 const currentExpressions = ref<CharacterEmotionType[]>([]);
 const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null);
+
+const getImageSrc = (index: number): string | undefined => {
+ const character = characters.value[index];
+ const expr = currentExpressions.value[index];
+ if (character?.image && expr && character.image[expr]) {
+  return getImagePath(character.image[expr]);
+ }
+ return undefined;
+};
 
 // 有効な画像を持つキャラクターのみをフィルタリング
 const validCharacters = computed(() => {
