@@ -1,12 +1,6 @@
 // src/MainGenerator/script/PostMessage/CommentRequestBuilder.ts
-import { PostActionType, CharacterColorType, CharacterType } from '@/types/';
-import {
- SendCommentType,
- SendCommentSchema,
- DEFAULT_BASE64_IMAGE,
- ColorsSchema,
- SendCommentColorType
-} from '@shared/types/';
+import { PostActionType, CharacterType } from '@/types/';
+import { SendCommentType, SendCommentSchema } from '@shared/types/';
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost';
 
@@ -20,9 +14,8 @@ export class CommentRequestBuilder {
  createCommentRequest(post: PostActionType, chara: CharacterType): SendCommentType {
   this.validateCharacter(chara);
 
-  // imageBase64が存在する場合はそちらを優先。ない場合はデフォルト画像を使用
-  const profileImage =
-   chara.imageBase64?.[post.iconKey] || chara.imageBase64?.default || DEFAULT_BASE64_IMAGE;
+  // imageBase64が存在する場合はそちらを使用
+  const profileImage = chara.imageBase64?.[post.iconKey] || chara.imageBase64?.default;
 
   return SendCommentSchema.parse({
    service: { id: chara.frameId },
@@ -32,8 +25,7 @@ export class CommentRequestBuilder {
     comment: post.messageContent,
     profileImage: profileImage,
     badges: [{ url: botIcon, label: 'おみくじBOT' }],
-    nickname: ' ', // おみくじBOTでは名前を呼ばない
-    color: this.getSendCommentColor(chara.color)
+    nickname: ' ' // おみくじBOTでは名前を呼ばない
    }
   });
  }
@@ -45,22 +37,9 @@ export class CommentRequestBuilder {
    throw new Error(errorMessage);
   }
  }
-
- private getSendCommentColor(color: CharacterColorType): SendCommentColorType | undefined {
-  const parseResult = ColorsSchema.safeParse({
-   headerBackgroundColor: color.backgroundColor,
-   headerTextColor: color.nameColor,
-   bodyBackgroundColor: color.backgroundColor,
-   bodyTextColor: color.textColor
-  });
-  return parseResult.success ? parseResult.data : undefined;
- }
-
- // キャラクターIDをidに入れる関数(使わないが残しておく)
- private generateCommentId(characterId: string): string {
-  return `${characterId}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
- }
 }
 
+// androidのドロイド君のアイコン素材
+// https://icooon-mono.com/00053-android%E3%81%AE%E3%83%89%E3%83%AD%E3%82%A4%E3%83%89%E5%90%9B%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E7%B4%A0%E6%9D%90/
 const botIcon =
- 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAoVJREFUWEftl7+LE0EVx79vdsN1CoKFVlEEFc0GGzUR4dJ7ldmANiZ/gJz/gXf/wYl/QM5GIclV2ieFN1FBxY2ghehW2oigrXFHZjezbJLNzuS8FQ/cct7beZ/3Y2beIxh8la7Xt0CbT93SwEAdlx+9LpJttYeuU9Ppk05ByqvdNxsgusXrzgkTfQlMBJ/XnZZO3whAesQKVh9CPOBueUNuGq7ZrAlBPiPyVXSWhTUCiA0WrL4Q8AlYnfOM4CsZA9VM02UEoHKaajglxgIYmORf/moEEOZUek3wQ3sCxdTcSrmSRTWgrRktQGwcAHedUD+5pkCU11FtWJ/CdcK2rhAzAaodrwlCe7JZ7FEWQHRqPKHAdPWQCTBnyCQFsynSpCI7AglPdOc5S54VhYUAU+H/E+sA9gQgi8m27fRqXxJoPB77z25ciE7QzLcwAhJgSTsL1RcZj++BKztvayIIuiD6KAJ2c9g496Ha89oQaO4LhECLN5ztSuflKULhIQgniTF39/p5eb+Ex+YdgDPRJSN2eKNczwOg2vW6AOoTp95z1zmrAOJzC9AL7pYu5QMweg6Iiyqq8mJTAN8BHIoEfw3gB3edw/8B/pkIJIvwC3dLx3Mqws+AOJZShKPHgLgW1SDd4/XSnVwAeqMtCLEeAYgn3C2vhSm42nl1NGD2VhDg27Dh3A7vhhwuIrlvpefdZ8CRwsrK+mDt9NfFj1FOAMZvQV4ROEAAchgB3d2Px2jP/QArWBIgmgFmO2HVninCpDwpSwwzac5ou2L1UzjxTCKS1vdP949iU01QuggeIIDpFn2u35+KwKQB0Xkfd0QmivF4RigyQa3Z2S8pD37+qmW1YUl7vwBuy5AwCoRj1wAAAABJRU5ErkJggg==';
+ 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAmxJREFUOE+N0s1vjFEUBvDnue870071AxXRRLvwEdXSLmh9jChCRNRHLJrYCrqR2LPQf6ALkdhZkC50SCOiFggWlAiJShtKQkIjjQWdaWn7vnPPIx00RSPu6pzF/eXcex5i1tlz803Rl9zksgS50EsjoRD5gFTgSB9VCxoXFg09aque+HWNfwLZ3HgDgvAgHACTwSEBrzGQhNe1qWw89Kx9fTwnsKHrcXmYLGmVQ7uk+YSrAESKHwQbMYeL5WW4e2t349e/gG0d98KpNQvWUu4MoBoBEcF6CDGIPglFjvqYp+ussTWDV9rop5GZJ6QvPCizsvJ9JE8KVkzBgawEGJP2QYYKOI5D7iyTYe/DA7VjBWDdUyWC96/KQ0QBPPeC2AowBbNQBAkaSD/dg8wBujUVx3eC4nnyNbU5bux5vZo+avLw70KwBbLlcAxmf+5MTTdGqg/GIXOss3z0lJuuvjhOYb+EJyS2gFgJKTE3wFEJtwkOQ9ohs+vcfLX/tMBDTngEYosMdSDmBoBRETcpDAPYBbMebs78BDgNMC1T/X8B5M4CkL7Sf1RgK6DnBFslNPwLoON1eBsQmTboBjdlBleI1kDZN+d4SoaN/5wA6HaB6/Jeiyn3gtMBmmheWhLGvkpR3FlYo1SqHyGJf0RFiUIvfKLjpSjGOVdRnE2lhr/NBKkpM7AkSR0R1AKgUUBIYhBWkOoF5Ak8ppBJIeq907Y++1sS6zIDyflBVAVLrAJ0TECpqPOhnIw4AWiCxvOatP7k28+f73dsz/8G/Np7c8/LyiAfHQRQmsdUN1CCZIjDMnk4u9x3qPHT7Ix8BzxYLSm1dzU/AAAAAElFTkSuQmCC';

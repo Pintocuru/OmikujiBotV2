@@ -1,7 +1,7 @@
 // templates/basicNew/build.ts
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { main } from '../../buildRoot/buildMain.ts';
+import { webpackBuild } from '../../buildRoot/buildMain.ts';
 import { BuildConfig } from '../../buildRoot/buildTypes.ts';
 import { alias } from './vite.config.ts';
 import packageJson from './package.json';
@@ -57,4 +57,4 @@ const buildConfigs: Record<string, BuildConfig> = {
 };
 
 // 実行
-main(buildConfigs);
+webpackBuild(buildConfigs);

@@ -61,7 +61,8 @@ export const useImportPreviewManager = () => {
    scriptSettings: createDefaultConfig(),
    characters: createDefaultConfig(),
    displaySettings: createDefaultConfig(),
-   wordPartySettings: createDefaultConfig()
+   wordPartySettings: createDefaultConfig(),
+   meta: createDefaultConfig()
   };
 
   let totalItems = 0;
