@@ -22,7 +22,8 @@ export class UserCommentProcessor {
   scriptManager: GameScriptManager
  ) {
   this.cooldownManager = CooldownManager.getInstance();
-  const firstCharacter = Object.values(omikujiData.characters)[0];
+  const characters = Object.values(omikujiData.characters);
+  const firstCharacter = characters.length > 0 ? characters[0] : null;
   this.restrictionChecker = new CommentRestrictionChecker(this.cooldownManager, firstCharacter);
 
   this.omikujiProcessor = new OmikujiProcessor(omikujiData, scriptManager);

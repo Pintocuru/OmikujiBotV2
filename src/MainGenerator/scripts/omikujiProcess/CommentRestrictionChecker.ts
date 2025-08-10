@@ -12,7 +12,7 @@ interface RestrictionCheckResult {
 export class CommentRestrictionChecker {
  constructor(
   private readonly cooldownManager: CooldownManager,
-  private readonly firstCharacter: CharacterType
+  private readonly firstCharacter: CharacterType | null
  ) {}
 
  /**
@@ -79,14 +79,20 @@ export class CommentRestrictionChecker {
   * エラー用のトーストメッセージを作成
   */
  private createErrorToast(message: string): BotMessage[] {
-  return [
-   BotMessageSchema.parse({
-    name: this.firstCharacter.name,
-    profileImage: this.firstCharacter.image.default,
-    comment: message,
-    isToast: true,
-    color: this.firstCharacter.color
-   })
-  ];
+  // firstCharacterが存在する場合はその値を使用し、存在しない場合はBotMessageSchemaのデフォルト値を使用
+  const botMessageData = this.firstCharacter
+   ? {
+      name: this.firstCharacter.name,
+      profileImage: this.firstCharacter.image?.default || null,
+      comment: message,
+      isToast: true,
+      color: this.firstCharacter.color
+     }
+   : {
+      comment: message,
+      isToast: true
+     };
+
+  return [BotMessageSchema.parse(botMessageData)];
  }
 }

@@ -67,13 +67,18 @@ export class BotMessageGenerator {
  /**
   * 安全にキャラクターを取得する
   * キャラクターが存在しない場合でもエラーを投げず、必ずキャラクターを返す
+  * ユーザー入力データの不整合に対する防御的プログラミング
   */
  private getSafeCharacter(characterKey: string): CharacterType {
   try {
    return DefaultCharacterManager.getCharacterOrDefault(characterKey, this.characters);
   } catch (error) {
    // 万が一 DefaultCharacterManager でエラーが発生した場合の最終フォールバック
-   console.warn('Failed to get character, using fallback:', error);
+   // ユーザー体験を損ねないよう、ログ出力してデフォルトキャラクターで継続
+   console.warn('Character resolution failed, using default character:', {
+    characterKey,
+    error: error instanceof Error ? error.message : error
+   });
    return DefaultCharacterManager.getDefaultCharacterByIndex(0);
   }
  }

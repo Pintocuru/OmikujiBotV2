@@ -13,13 +13,14 @@ export class CharacterCollector {
 
  /**
   * postActionsからcharacterKeyを収集する
+  * isEnabled が存在しないならtrue
   */
  private extractCharacterKeys(
-  rules: Record<string, { isEnabled: boolean; omikuji: OmikujiSetType[] }>
+  rules: Record<string, { isEnabled?: boolean; omikuji: OmikujiSetType[] }>
  ): Set<string> {
   const keys = new Set<string>();
   Object.values(rules).forEach((rule) => {
-   if (!rule.isEnabled) return;
+   if (rule.isEnabled === false) return;
    rule.omikuji.forEach(({ postActions }) =>
     postActions.forEach(({ characterKey }) => {
      if (characterKey) keys.add(characterKey);
@@ -68,7 +69,7 @@ export class CharacterCollector {
 
   return BotMessageSchema.parse({
    name: character?.name,
-   profileImage: character.image[postAction.iconKey],
+   profileImage: character?.image?.[postAction.iconKey] || character?.image?.default || null,
    comment: postAction.messageContent,
    isToast,
    color: character?.color
