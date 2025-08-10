@@ -3,50 +3,22 @@
  <div class="form-control bg-base-100 p-3 rounded-lg">
   <SettingItem
    label="適用するチャットワード"
-   description="正規表現対応、詳細は生成AIで。"
+   description="正規表現対応。複数指定できます"
    :show-reset="false"
   >
-   <div class="space-y-3">
-    <!-- 現在の条件一覧 -->
-    <div v-if="modelValue.length > 0" class="space-y-2">
-     <div class="flex flex-wrap gap-2">
-      <div
-       v-for="(comment, index) in modelValue"
-       :key="index"
-       class="badge badge-secondary badge-sm gap-1 group"
-      >
-       {{ comment }}
-       <button
-        @click="removeComment(index)"
-        class="btn btn-sm btn-ghost btn-circle h-4 w-4 min-h-0 p-0 opacity-60 group-hover:opacity-100"
-        title="削除"
-       >
-        ✕
-       </button>
-      </div>
-     </div>
-    </div>
-
-    <!-- 新しい条件追加 -->
-    <div class="space-y-2">
-     <div class="flex gap-2">
-      <div class="flex-1">
-       <input
-        v-model="newComment"
-        type="text"
-        placeholder="例: ^こんにちは|おはよう$ (正規表現可)"
-        class="input input-bordered input-sm w-full"
-        @keyup.enter="addComment"
-       />
-      </div>
-      <button
-       @click="addComment"
-       :disabled="!newComment.trim()"
-       class="btn btn-primary btn-sm px-4 flex items-center gap-1"
-      >
-       ＋ 追加
-      </button>
-     </div>
+   <div class="space-y-2">
+    <textarea
+     v-model="textValue"
+     @input="updateModelValue"
+     placeholder="例:
+^こんにちは|おはよう$
+テスト.*
+^ありがとう"
+     class="textarea textarea-bordered w-full min-h-[120px]"
+     rows="6"
+    />
+    <div class="text-xs text-base-content/60">
+     各行に1つずつ条件を記入してください。空行は無視されます。
     </div>
    </div>
   </SettingItem>
@@ -54,31 +26,36 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue';
 
 const props = defineProps<{ modelValue: string[] }>();
 const emit = defineEmits<{ 'update:modelValue': [value: string[]] }>();
 
-const newComment = ref('');
+// textarea用の文字列値
+const textValue = ref('');
 
-const addComment = () => {
- const trimmed = newComment.value.trim();
- if (!trimmed) return;
+// 初期値設定
+textValue.value = props.modelValue.join('\n');
 
- // 重複チェック
- if (props.modelValue.includes(trimmed)) {
-  return;
+// propsが変更された時にtextValueを更新
+watch(
+ () => props.modelValue,
+ (newValue) => {
+  const newText = newValue.join('\n');
+  if (textValue.value !== newText) {
+   textValue.value = newText;
+  }
  }
+);
 
- emit('update:modelValue', [...props.modelValue, trimmed]);
- newComment.value = '';
-};
+// textareaの値が変更された時にmodelValueを更新
+const updateModelValue = () => {
+ const lines = textValue.value
+  .split('\n')
+  .map((line) => line.trim())
+  .filter((line) => line.length > 0); // 空行を除外
 
-const removeComment = (index: number) => {
- emit(
-  'update:modelValue',
-  props.modelValue.filter((_, i) => i !== index)
- );
+ emit('update:modelValue', lines);
 };
 </script>
