@@ -16,17 +16,20 @@
    <!-- プレースホルダー -->
    <PlaceholderEditor v-else-if="selectedCategory === 'placeholders'" />
 
-   <!-- スクリプト設定 -->
-   <ScriptSettingsEditor v-else-if="selectedCategory === 'scriptSettings'" />
-
    <!-- キャラクター設定 -->
    <CharacterEditor v-else-if="selectedCategory === 'characters'" />
+
+   <!-- スクリプト設定 -->
+   <ScriptSettingsEditor v-else-if="selectedCategory === 'scriptSettings'" />
 
    <!-- 表示設定 -->
    <DisplaySettingsEditor v-else-if="selectedCategory === 'displaySettings'" />
 
    <!-- WordParty設定 -->
    <WordPartySettingsEditor v-else-if="selectedCategory === 'wordPartySettings'" />
+
+   <!-- Meta設定 -->
+   <PackageMetaEditor v-else-if="selectedCategory === 'meta'" />
 
    <!-- フォールバック -->
    <div v-else>
@@ -47,6 +50,7 @@ import ScriptSettingsEditor from '@ConfigComponents/scriptSettings/ScriptSetting
 import WordPartySettingsEditor from '@ConfigComponents/wordPartySettings/WordPartySettingsEditor.vue';
 import CharacterEditor from '@ConfigComponents/characters/CharacterEditor.vue';
 import DisplaySettingsEditor from '@ConfigComponents/displaySettings/DisplaySettingsEditor.vue';
+import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue';
 
 const omikujiStore = useOmikujiStore();
 const { selectedCategory } = storeToRefs(omikujiStore);

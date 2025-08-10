@@ -50,7 +50,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
  } = useRecordOperations(data);
 
  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
- const { updateDisplaySettings, updateScriptSettings, updateWordPartySettings } =
+ const { updateDisplaySettings, updateScriptSettings, updateWordPartySettings, updateMeta } =
   useSettingsOperations(data);
 
  // カテゴリ選択のラッパー関数（依存関係のため）
@@ -91,6 +91,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   updateDisplaySettings,
   updateScriptSettings,
   updateWordPartySettings,
+  updateMeta,
 
   // ナビゲーション
   selectCategory,

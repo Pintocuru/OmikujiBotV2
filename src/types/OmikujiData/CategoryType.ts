@@ -5,7 +5,16 @@ import {
  serviceMetaCondition,
  serviceMetaConditionLabels
 } from '@shared/types/';
-import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks } from 'lucide-vue-next';
+import {
+ MessageCircle,
+ Timer,
+ Hash,
+ Settings,
+ Users,
+ Monitor,
+ ListChecks,
+ Tags
+} from 'lucide-vue-next';
 import { CommentRuleType, RuleType, TimerRuleType } from './OmikujiDataSchema';
 import { PlaceholderType } from './PlaceholderSchema';
 import { CharacterType } from './CharacterSchema';
@@ -46,7 +55,8 @@ export type RecordCategoryTypeMap = {
 export const settingsCategoryType = [
  'scriptSettings',
  'displaySettings',
- 'wordPartySettings'
+ 'wordPartySettings',
+ 'meta'
 ] as const;
 export type SettingsCategoryType = (typeof settingsCategoryType)[number];
 
@@ -99,5 +109,10 @@ export const categoryLabels: Record<
   label: 'WordPartyリスト', // コメント・タイマーの設定時に補助的に使える
   description: 'コメント・タイマーの設定時に補助的に使える、WordPartyリスト。',
   icon: ListChecks
+ },
+ meta: {
+  label: 'Metaタグ',
+  description: 'おみくじデータのメタ情報を設定します',
+  icon: Tags
  }
 };

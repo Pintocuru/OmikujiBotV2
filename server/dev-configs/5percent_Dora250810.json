@@ -5701,7 +5701,7 @@
   "displaySettings": {
     "base": {
       "displaySize": "md",
-      "modeSwitchEnabled": true,
+      "modeSwitchEnabled": false,
       "toastEnabled": true
     },
     "developer": {
