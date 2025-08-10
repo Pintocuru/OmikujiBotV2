@@ -1,14 +1,20 @@
 {
   "meta": {
     "id": "1754823565389-7x2yib",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.0",
+    "name": "5percent_Dora",
+    "description": "Twitterで人気の「5％の確率で性器を露出するドラちゃん」を模したおみくじBOTです",
+    "version": "1.0.0",
     "generatorName": "unknown-generator",
     "generatorVersion": "1.x.x",
-    "author": "unknown",
-    "tags": [],
-    "license": "CC-BY 4.0"
+    "author": "Pintocuru",
+    "tags": [
+      "おみくじBOT",
+      "ドラちゃん",
+      "#よくやった青狸",
+      "#話が違うぞ青狸",
+      "https://www.tv-asahi.co.jp/doraemon/tool/"
+    ],
+    "license": "個人利用のみ"
   },
   "comments": {
     "1754775625812": {
@@ -33,7 +39,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 19,
+          "weight": 380,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -69,7 +75,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "weight": 19,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -104,6 +110,36 @@
               "messageToast": "オンボロがオンボロをボロンしてしまいました。大変失礼いたしました。"
             }
           ]
+        },
+        {
+          "id": "17765e28-5805-4872-b698-c829a462765b",
+          "key": "",
+          "name": "ドラちゃん (こんにゃく)",
+          "description": "",
+          "createdAt": "2025-08-10T10:59:27.244Z",
+          "updatedAt": "2025-08-10T10:59:27.244Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!5percent_dora_Konjac_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!5percent_dora_Konjac_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            }
+          ]
         }
       ],
       "ruleType": "comments",
@@ -120,7 +156,9 @@
           "value": 1
         },
         "comment": [
-          "ドラちゃん"
+          "^ドラちゃん",
+          "^どらちゃん",
+          "5percent_dora"
         ]
       },
       "scriptId": null,
@@ -132,14 +170,50 @@
       }
     }
   },
-  "timers": {},
+  "timers": {
+    "1754858341283": {
+      "id": "1754858341283",
+      "key": "",
+      "name": "",
+      "createdAt": "2025-08-10T20:39:01.283Z",
+      "updatedAt": "2025-08-10T20:39:01.283Z",
+      "order": 1,
+      "editorColor": "#3B82F6",
+      "tags": [],
+      "omikuji": [
+        {
+          "id": "1754855691056",
+          "key": "",
+          "name": "",
+          "createdAt": "2025-08-10T19:54:51.056Z",
+          "updatedAt": "2025-08-10T19:54:51.056Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんの運勢は【大吉】"
+            }
+          ]
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 300,
+      "isBaseZero": false
+    }
+  },
   "placeholders": {
     "5percent_Dora": {
       "id": "5percent_Dora",
       "key": "",
-      "name": "ドラちゃん",
+      "name": "ひみつ道具",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-10T10:59:27.244Z",
+      "updatedAt": "2025-08-10T20:42:28.989Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -5654,10 +5728,10 @@
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
-      "frameId": "",
+      "frameId": "5percent_Dora",
       "displayOption": {
         "isIconDisplay": false,
-        "isOneCommePost": true,
+        "isOneCommePost": false,
         "isVoice": true
       },
       "color": {

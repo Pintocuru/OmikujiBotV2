@@ -84,11 +84,14 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  ) => {
   const currentCategory = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
   if (currentCategory[id]) {
-   const updatedItem = { ...currentCategory[id], [key]: value };
+   const updatedItem = {
+    ...currentCategory[id],
+    [key]: value,
+    updatedAt: new Date().toISOString()
+   };
    const updatedCategory = {
     ...currentCategory,
-    [id]: updatedItem,
-    updatedAt: new Date().toISOString()
+    [id]: updatedItem
    };
    updateCategoryData(category, updatedCategory as Record<string, OmikujiDataType[C]>);
   }

@@ -36,7 +36,7 @@ const selectedItem = computed({
   return data.value.timers[selectedRuleId.value];
  },
  set: (value: TimerRuleType) => {
-  omikujiStore.updateItem('characters', value.id, value);
+  omikujiStore.updateItem('timers', value.id, value);
  }
 });
 </script>
