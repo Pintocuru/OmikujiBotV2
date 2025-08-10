@@ -1,77 +1,105 @@
 {
+  "meta": {
+    "id": "1754823565389-7x2yib",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.0",
+    "generatorName": "unknown-generator",
+    "generatorVersion": "1.x.x",
+    "author": "unknown",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
   "comments": {
     "1754775625812": {
       "id": "1754775625812",
+      "key": "",
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
+      "createdAt": "2025-08-10T10:59:27.244Z",
+      "updatedAt": "2025-08-10T10:59:27.244Z",
       "order": 1,
-      "editorColor": "#3B82F6",
       "isEnabled": true,
+      "editorColor": "#3B82F6",
+      "tags": [],
       "omikuji": [
         {
           "id": "a411a12c-bdbc-43fd-b2e9-a1be0de50560",
+          "key": "",
           "name": "ドラちゃん",
           "description": "",
+          "createdAt": "2025-08-10T10:59:27.244Z",
+          "updatedAt": "2025-08-10T10:59:27.244Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 19,
           "postActions": [
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!5percent_dora_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!5percent_dora_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
+              "delaySeconds": 1.5,
+              "wordParty": "",
               "characterKey": "5percent_Dora",
               "iconKey": "default",
-              "delaySeconds": 1.5,
               "messageContent": "はぁーい、<<5percent_Dora>>～"
             }
           ]
         },
         {
           "id": "17765e28-5805-4872-b698-c829a462765b",
+          "key": "",
           "name": "ドラちゃん (ボロン)",
           "description": "",
+          "createdAt": "2025-08-10T10:59:27.244Z",
+          "updatedAt": "2025-08-10T10:59:27.244Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!5percent_dora_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!5percent_dora_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1.5,
               "wordParty": "!5percent_dora_2",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
+              "delaySeconds": 5,
+              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "5percent_Dora",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "",
               "messageContent": "",
               "messageToast": "オンボロがオンボロをボロンしてしまいました。大変失礼いたしました。"
             }
@@ -108,9 +136,13 @@
   "placeholders": {
     "5percent_Dora": {
       "id": "5percent_Dora",
+      "key": "",
       "name": "ドラちゃん",
+      "createdAt": "2025-08-10T10:59:27.244Z",
+      "updatedAt": "2025-08-10T10:59:27.244Z",
       "order": 1,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -5610,13 +5642,16 @@
   "characters": {
     "5percent_Dora": {
       "id": "5percent_Dora",
+      "key": "",
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
+      "createdAt": "2025-08-10T10:59:27.245Z",
+      "updatedAt": "2025-08-10T10:59:27.245Z",
       "order": 1,
       "editorColor": "#3B82F6",
+      "tags": [],
       "version": "0.0.0",
       "author": "@5percent_Dora",
-      "tags": [],
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
       "frameId": "",
@@ -5626,9 +5661,9 @@
         "isVoice": true
       },
       "color": {
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
+        "nameColor": "#b3e5fc",
+        "textColor": "#eceff1",
+        "backgroundColor": "#1976d2"
       },
       "image": {
         "default": "",
