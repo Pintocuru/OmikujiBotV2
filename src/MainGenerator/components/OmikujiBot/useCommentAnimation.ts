@@ -1,4 +1,4 @@
-// src/composables/useCommentAnimation.ts
+// src\MainGenerator\components\OmikujiBot\useCommentAnimation.ts
 import anime from 'animejs';
 import type { AnimationType, AnimationConfig } from '@/types/BotComponents/animation';
 

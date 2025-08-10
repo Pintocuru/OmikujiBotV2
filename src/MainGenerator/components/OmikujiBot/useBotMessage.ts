@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useBotMessage.ts
+// src\MainGenerator\components\OmikujiBot\useBotMessage.ts
 import { ref, computed, Ref } from 'vue';
 import { BotMessage, getImagePath } from '@/types/';
 
@@ -31,7 +31,7 @@ export const useBotCommentDisplay = (
   });
  };
 
- const removeItem = (messageId: string) => {
+ const removeItem = (messageId: number) => {
   const index = displayedComments.value.findIndex((item) => item.id === messageId);
   if (index > -1) displayedComments.value.splice(index, 1);
  };
@@ -39,8 +39,8 @@ export const useBotCommentDisplay = (
  // 表示制御ロジック
  const useCommentDisplayControl = () => {
   let lastTime = 0;
-  let processedMessageIds = new Set<string>();
-  const commentTimers = new Map<string, number>();
+  let processedMessageIds = new Set<number>();
+  const commentTimers = new Map<number, number>();
 
   const processNewComments = (now: number) => {
    if (now - lastTime <= DISPLAY_CONFIG.INTERVAL) return;

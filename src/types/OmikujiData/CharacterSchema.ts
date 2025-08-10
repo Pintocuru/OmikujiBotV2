@@ -36,9 +36,9 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
  sad: '悲しみ',
  angry: '怒り',
  thinking: '考え中',
- wink: '茶目っ気',
- singing: '歌',
- sleepy: '眠い'
+ singing: '誇らしげ',
+ sleepy: '退屈',
+ wink: 'おふざけ'
 };
 
 // TODO:カラープリセットを作成
@@ -50,18 +50,18 @@ export const CharacterColorScheme = z.object({
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>;
 
 export const CharacterImageSetSchema = z.object({
- default: z.string().default('').catch(''),
- happy: z.string().default('').catch(''),
- excited: z.string().default('').catch(''),
- laughing: z.string().default('').catch(''),
- blushing: z.string().default('').catch(''),
- surprised: z.string().default('').catch(''),
- sad: z.string().default('').catch(''),
- angry: z.string().default('').catch(''),
- thinking: z.string().default('').catch(''),
- wink: z.string().default('').catch(''),
- singing: z.string().default('').catch(''),
- sleepy: z.string().default('').catch('')
+ default: z.string().optional(),
+ happy: z.string().optional(),
+ excited: z.string().optional(),
+ laughing: z.string().optional(),
+ blushing: z.string().optional(),
+ surprised: z.string().optional(),
+ sad: z.string().optional(),
+ angry: z.string().optional(),
+ thinking: z.string().optional(),
+ wink: z.string().optional(),
+ singing: z.string().optional(),
+ sleepy: z.string().optional()
 });
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>;
 
@@ -79,9 +79,9 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
 export const CharacterSchema = z.object({
  ...PresetMetadataSchema.shape,
  displayName: z.string().default('').catch(''),
- frameId: z.string().default('').catch(''),
+ frameId: z.string().optional().catch(undefined),
  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
  color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
- image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({}))
+ image: CharacterImageSetSchema.optional().catch(CharacterImageSetSchema.parse({}))
 });
 export type CharacterType = z.infer<typeof CharacterSchema>;

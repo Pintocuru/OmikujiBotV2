@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/CharacterControlPanel.vue -->
+<!-- src\MainGenerator\components\OmikujiBot\CharacterThumbnails.vue -->
 <template>
  <!-- charactersが空の場合や有効な画像を持つキャラクターがいない場合は何も表示しない -->
  <div v-if="validCharacters.length > 0" class="fixed bottom-4 right-4 z-50">

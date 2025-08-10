@@ -7,6 +7,7 @@ import {
  PostActionType
 } from '@/types/';
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
+import { DefaultCharacterManager } from './BotMessageDefaultCharacter';
 
 export class BotMessageGenerator {
  constructor(private readonly characters: Record<string, CharacterType>) {}
@@ -15,71 +16,37 @@ export class BotMessageGenerator {
   * 単一のPostActionからBotMessageを生成（複数の場合もあり）
   */
  generateMessage(postAction: PostActionType): BotMessage[] {
-  let character;
+  // 安全にキャラクターを取得（存在しない場合はデフォルトキャラクターを使用）
+  const character = this.getSafeCharacter(postAction.characterKey);
+
   const messages: BotMessage[] = [];
+  const baseDelaySeconds = postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds;
 
-  try {
-   // 存在しないキーでアクセスした場合にエラーを捕捉
-   character = this.characters[postAction.characterKey];
-   if (!character) {
-    throw new Error(`Character with key "${postAction.characterKey}" not found.`);
-   }
+  // 共通のメッセージ作成ロジック
+  const createMessage = (content: string, isToast: boolean): BotMessage => {
+   return BotMessageSchema.parse({
+    name: character.name,
+    profileImage: character.displayOption.isIconDisplay
+     ? this.getCharacterIcon(character, postAction.iconKey)
+     : null,
+    comment: content,
+    isToast,
+    color: character.color,
+    delaySeconds: baseDelaySeconds
+   });
+  };
 
-   // messageContentが存在する場合
-   if (postAction.messageContent?.trim()) {
-    messages.push(
-     BotMessageSchema.parse({
-      name: character.name,
-      profileImage: character.displayOption.isIconDisplay
-       ? this.getCharacterIcon(character, postAction.iconKey)
-       : null,
-      comment: postAction.messageContent,
-      isToast: false,
-      color: character.color,
-      delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
-     })
-    );
-   }
-
-   // messageToastが存在する場合
-   if (postAction.messageToast?.trim()) {
-    messages.push(
-     BotMessageSchema.parse({
-      name: character.name,
-      profileImage: character.displayOption.isIconDisplay
-       ? this.getCharacterIcon(character, postAction.iconKey)
-       : null,
-      comment: postAction.messageToast,
-      isToast: true,
-      color: character.color,
-      delaySeconds: postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
-     })
-    );
-   }
-
-   return messages;
-  } catch (error) {
-   // エラーが発生した場合（characterが存在しない場合）の代替処理
-   character = this.characters[0];
-   if (error instanceof Error) console.error(error.message);
-
-   // ユーザーへの通知メッセージを追加
-   messages.push(
-    BotMessageSchema.parse({
-     name: 'error',
-     profileImage: null,
-     comment: `キャラクター "${postAction.characterKey}" が設定されていないおみくじがあるよ。コンフィグエディターで設定してね。`,
-     isToast: true,
-     color: {
-      nameColor: '#212121',
-      textColor: '#212121',
-      backgroundColor: '#ff9800'
-     },
-     delaySeconds: 5
-    })
-   );
-   return messages;
+  // messageContentが存在する場合
+  if (postAction.messageContent?.trim()) {
+   messages.push(createMessage(postAction.messageContent, false));
   }
+
+  // messageToastが存在する場合
+  if (postAction.messageToast?.trim()) {
+   messages.push(createMessage(postAction.messageToast, true));
+  }
+
+  return messages;
  }
 
  /**
@@ -95,6 +62,20 @@ export class BotMessageGenerator {
 
   // flatMapを使用して、各アクションから生成される複数のメッセージを平坦化
   return validActions.flatMap((action) => this.generateMessage(action));
+ }
+
+ /**
+  * 安全にキャラクターを取得する
+  * キャラクターが存在しない場合でもエラーを投げず、必ずキャラクターを返す
+  */
+ private getSafeCharacter(characterKey: string): CharacterType {
+  try {
+   return DefaultCharacterManager.getCharacterOrDefault(characterKey, this.characters);
+  } catch (error) {
+   // 万が一 DefaultCharacterManager でエラーが発生した場合の最終フォールバック
+   console.warn('Failed to get character, using fallback:', error);
+   return DefaultCharacterManager.getDefaultCharacterByIndex(0);
+  }
  }
 
  /**

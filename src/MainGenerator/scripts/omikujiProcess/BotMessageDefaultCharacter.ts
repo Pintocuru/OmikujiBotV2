@@ -1,5 +1,6 @@
 // src\MainGenerator\scripts\omikujiProcess\BotMessageDefaultCharacter.ts
 import { type CharacterType, type CharacterColorType, CharacterSchema } from '@/types/';
+import MersenneTwister from 'mersenne-twister';
 
 // デフォルトキャラクター用のカラーテーマ
 const DEFAULT_COLOR_THEMES: CharacterColorType[] = [
@@ -35,45 +36,20 @@ const DEFAULT_COLOR_THEMES: CharacterColorType[] = [
  }
 ];
 
-// 空の画像セット（すべての感情で空文字列）
-const EMPTY_IMAGE_SET = {
- default: '',
- happy: '',
- excited: '',
- laughing: '',
- blushing: '',
- surprised: '',
- sad: '',
- angry: '',
- thinking: '',
- wink: '',
- singing: '',
- sleepy: ''
-};
-
 // デフォルトキャラクターデータの生成
 export const createDefaultCharacters = (): CharacterType[] => {
  return DEFAULT_COLOR_THEMES.map((colorTheme, index) =>
   CharacterSchema.parse({
    // PresetMetadataSchema fields
-   id: `default-character-${index + 1}`,
    key: `default-${index + 1}`,
-   name: `Botちゃん`,
-   description: `システムデフォルトキャラクター（カラーテーマ${index + 1}）`,
-   tags: ['default', 'system'],
-   createdAt: new Date().toISOString(),
-   updatedAt: new Date().toISOString(),
-
-   // Character specific fields
-   displayName: `Bot ${index + 1}`,
-   frameId: '',
+   name: `おみくじBOT`,
+   displayName: `おみくじBOT`,
    displayOption: {
     isIconDisplay: false, // 画像がないため非表示
-    isOneCommePost: true,
+    isOneCommePost: false,
     isVoice: true
    },
-   color: colorTheme,
-   image: EMPTY_IMAGE_SET
+   color: colorTheme
   })
  );
 };
@@ -84,102 +60,56 @@ export class DefaultCharacterManager {
 
  /**
   * キャラクターが存在しない場合にデフォルトキャラクターを返す
-  * @param characterKey - 要求されたキャラクターキー
-  * @param availableCharacters - 利用可能なキャラクター配列
-  * @returns 有効なキャラクターまたはデフォルトキャラクター
   */
  static getCharacterOrDefault(
   characterKey: string,
-  availableCharacters: CharacterType[]
+  availableCharacters: Record<string, CharacterType>
  ): CharacterType {
-  // 利用可能なキャラクターから検索
-  if (availableCharacters && availableCharacters.length > 0) {
-   const foundCharacter = availableCharacters.find((char) => char.id === characterKey);
+  const charactersArray = Object.values(availableCharacters);
+
+  if (charactersArray.length > 0) {
+   const foundCharacter = charactersArray.find((char) => char.id === characterKey);
    if (foundCharacter) {
     return foundCharacter;
    }
   }
 
-  // キャラクターが見つからない場合、デフォルトを返す
-  // characterKeyのハッシュ値を使ってデフォルトキャラクターを選択
+  // 見つからない場合は日替わりデフォルトキャラ
   const defaultIndex = this.getDefaultCharacterIndex(characterKey);
   return this.defaultCharacters[defaultIndex];
  }
 
  /**
-  * キャラクターキーからデフォルトキャラクターのインデックスを決定
-  * 同じキーに対しては常に同じキャラクターを返すようにする
+  * 今日の日付 + characterKey からデフォルトキャラクターのインデックスを決定
   */
  private static getDefaultCharacterIndex(characterKey: string): number {
-  if (!characterKey) {
-   return 0;
-  }
-
-  // 簡単なハッシュ関数でキーからインデックスを生成
-  let hash = 0;
-  for (let i = 0; i < characterKey.length; i++) {
-   const char = characterKey.charCodeAt(i);
-   hash = (hash << 5) - hash + char;
-   hash = hash & hash; // 32bit整数に変換
-  }
-
-  return Math.abs(hash) % this.defaultCharacters.length;
+  const todaySeed = this.getTodaySeed(characterKey);
+  const mt = new MersenneTwister(todaySeed);
+  return Math.floor(mt.random() * this.defaultCharacters.length);
  }
 
  /**
-  * 全てのデフォルトキャラクターを取得
+  * 今日の日付とキーからシード値を生成
   */
+ private static getTodaySeed(characterKey: string): number {
+  const today = new Date();
+  const dateStr = `${today.getFullYear()}${today.getMonth() + 1}${today.getDate()}`;
+
+  // characterKey を数値化して日付と合算
+  let hash = 0;
+  for (let i = 0; i < characterKey.length; i++) {
+   hash = (hash << 5) - hash + characterKey.charCodeAt(i);
+   hash |= 0;
+  }
+  return Math.abs(hash + Number(dateStr));
+ }
+
  static getAllDefaultCharacters(): CharacterType[] {
   return [...this.defaultCharacters];
  }
 
- /**
-  * 特定のインデックスのデフォルトキャラクターを取得
-  */
  static getDefaultCharacterByIndex(index: number): CharacterType {
   const validIndex = Math.max(0, Math.min(index, this.defaultCharacters.length - 1));
   return this.defaultCharacters[validIndex];
  }
 }
-
-// 使用例：BotMessageGeneratorでの使用方法
-/*
-// BotMessageGenerator内での使用例
-
-export class BotMessageGenerator {
-  // ... other methods
-
-  generateMessage(action: PostActionType): BotMessageType {
-    try {
-      // 既存のロジック
-      const character = DefaultCharacterManager.getCharacterOrDefault(
-        action.characterKey,
-        this.characters
-      );
-
-      return {
-        id: generateId(),
-        name: character.displayName,
-        comment: action.messageContent,
-        profileImage: character.image[action.iconKey] || character.image.default,
-        color: character.color,
-        createdAt: new Date()
-      };
-
-    } catch (error) {
-      console.error('メッセージ生成エラー:', error);
-      
-      // エラー時も確実にメッセージを返す
-      const fallbackCharacter = DefaultCharacterManager.getDefaultCharacterByIndex(0);
-      return {
-        id: generateId(),
-        name: fallbackCharacter.displayName,
-        comment: action.messageContent || 'メッセージの生成に失敗しました',
-        profileImage: '',
-        color: fallbackCharacter.color,
-        createdAt: new Date()
-      };
-    }
-  }
-}
-*/
