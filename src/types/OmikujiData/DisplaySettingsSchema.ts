@@ -31,9 +31,8 @@ export const DisplaySettingsSchema = z.object({
   }),
 
  // おみくじBot専用の表示設定(ゲームスクリプトに影響のないもの)
- omikujiBot: z.object({
-  // フキダシ・キャラクターの出現アニメーション
- }),
+ // フキダシ・キャラクターの出現アニメーション
+ // omikujiBot: z.object({}).optional,
 
  // 開発者モード（GOD-MODE）
  developer: z
