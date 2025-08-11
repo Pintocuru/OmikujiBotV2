@@ -10,7 +10,7 @@ const omikujiData = {
   name: 'unknown',
   description: '',
   version: '0.0.1',
-  generatorName: 'unknown-generator',
+  generatorName: 'omikuji-bot',
   generatorVersion: '1.x.x',
   author: 'Pintocuru',
   tags: [],

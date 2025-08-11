@@ -14,9 +14,9 @@ const buildConfig: BuildConfig = {
  configKey: 'ReimuMarisa_0.8.0-bate06',
  templateName:
   'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa(プレビュー版) 0.8.0-beta06',
- templateTxtBoothURL: 'https://pintocuru.booth.pm/items/5471598',
- templateTxtDescription: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
- templateTxtReadmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
+ templateBoothURL: 'https://pintocuru.booth.pm/items/5471598',
+ templateDescription: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+ templateReadmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
 
  filesToCopy: [
   { from: 'assets/config.js', to: 'config.js' },

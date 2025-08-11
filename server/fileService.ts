@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // ディレクトリ設定
-export const CONFIG_DIR = path.join(__dirname, 'dev-configs');
+export const CONFIG_DIR = path.join(__dirname, 'omikujiDatas');
 export const ASSETS_DIR = path.join(__dirname, '..', 'assets');
 
 // ディレクトリを作成（存在しない場合）
@@ -17,7 +17,7 @@ export async function ensureConfigDir(): Promise<void> {
   await fs.access(CONFIG_DIR);
  } catch {
   await fs.mkdir(CONFIG_DIR, { recursive: true });
-  console.log('📁 Created dev-configs directory:', CONFIG_DIR);
+  console.log('📁 Created omikujiDatas directory:', CONFIG_DIR);
  }
 }
 
