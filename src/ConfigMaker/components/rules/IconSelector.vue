@@ -6,8 +6,8 @@
   </label>
   <div class="flex gap-1">
    <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-    <option v-for="(icon, index) in characterEmotions" :key="index" :value="icon">
-     {{ emotionLabels[icon] }}
+    <option v-for="emotion in availableEmotions" :key="emotion" :value="emotion">
+     {{ emotionLabels[emotion] }}
     </option>
    </select>
    <div class="relative">
@@ -17,13 +17,13 @@
      @mouseleave="showHoverPreview = false"
      class="btn btn-sm btn-outline"
      title="アイコンプレビュー"
-     :disabled="!getCharacterIconPath(characterKey, localIconKey)"
+     :disabled="availableEmotions.length === 0"
     >
      <Eye class="w-4 h-4" />
     </button>
 
     <div
-     v-if="showHoverPreview && getCharacterIconPath(characterKey, localIconKey)"
+     v-if="showHoverPreview && hasEmotion(characterKey, localIconKey)"
      class="absolute top-full right-0 mt-1 p-2 bg-white border rounded shadow-lg z-10 pointer-events-none"
     >
      <div class="text-center">
@@ -49,34 +49,32 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, Ref } from 'vue';
-import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
+import { ref, computed, Ref, watch } from 'vue';
+import { emotionLabels, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
 import IconPreviewModal from '@ConfigComponents/postAction/IconPreviewModal.vue';
 import { Eye } from 'lucide-vue-next';
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions';
 
-// Props
 const props = defineProps<{
  characterKey: string;
  iconKey: CharacterEmotionType;
 }>();
 
-// Emits
 const emit = defineEmits<{
  'update:iconKey': [value: string];
- showPreview: [characterKey: string, iconKey: CharacterEmotionType]; // 使用されていないようですが、残しておきます
+ showPreview: [characterKey: string, iconKey: CharacterEmotionType];
 }>();
 
-// ストアを使用
-const omikujiStore = useOmikujiStore();
-const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
+// キャラクター感情のコンポーザブルを使用
+const { getAvailableEmotions, hasEmotion, charactersMap } = useCharacterEmotions();
 
-// Refs
 const showHoverPreview = ref(false);
-const iconPreviewModalRef: Ref<InstanceType<typeof IconPreviewModal> | null> = ref(null); // モーダルコンポーネントのref
+const iconPreviewModalRef: Ref<InstanceType<typeof IconPreviewModal> | null> = ref(null);
 
-// Computed properties
+// 利用可能な感情のみを取得
+const availableEmotions = computed(() => getAvailableEmotions(props.characterKey));
+
 const localIconKey = computed({
  get: () => props.iconKey,
  set: (newValue) => {
@@ -89,14 +87,16 @@ const characterName = computed(() => {
  return character?.name || '';
 });
 
-// Methods
-const getCharacterIconPath = (characterKey: string, iconKey: CharacterEmotionType): string => {
- const character = charactersMap.value[characterKey];
- if (!character || !character.image || !character.image[iconKey]) {
-  return '';
- }
- return character.image[iconKey];
-};
+// 現在選択されているアイコンが利用不可能な場合、利用可能な最初のものに変更
+watch(
+ [availableEmotions, () => props.iconKey],
+ ([emotions, currentIcon]) => {
+  if (emotions.length > 0 && !emotions.includes(currentIcon)) {
+   emit('update:iconKey', emotions[0]);
+  }
+ },
+ { immediate: true }
+);
 
 const showIconPreview = () => {
  iconPreviewModalRef.value?.showModal();

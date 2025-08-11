@@ -14,16 +14,13 @@ export class CommentRequestBuilder {
  createCommentRequest(post: PostActionType, chara: CharacterType): SendCommentType {
   this.validateCharacter(chara);
 
-  // imageBase64が存在する場合はそちらを使用
-  const profileImage = chara.imageBase64?.[post.iconKey] || chara.imageBase64?.default;
-
   return SendCommentSchema.parse({
    service: { id: chara.frameId },
    comment: {
     userId: POST_SETTINGS.botUserId,
     name: chara.displayName || 'おみくじBOT',
     comment: post.messageContent,
-    profileImage: profileImage,
+    profileImage: chara.imageBase64,
     badges: [{ url: botIcon, label: 'おみくじBOT' }],
     nickname: ' ' // おみくじBOTでは名前を呼ばない
    }

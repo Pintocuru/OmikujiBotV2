@@ -3,7 +3,7 @@
  <div class="card bg-base-300 mt-4">
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">キャラクター表示設定</div>
 
-  <div class="grid grid-cols-1 gap-4 p-4">
+  <div class="card-body gap-4 p-4">
    <!-- isIconDisplay  -->
    <SettingItem
     label="キャラクター表示"

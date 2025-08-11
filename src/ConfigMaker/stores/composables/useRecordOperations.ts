@@ -102,7 +102,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   */
  const removeItem = (category: RecordCategoryType, id: string) => {
   const categoryData = data.value[category] as Record<string, any>;
-  console.log('removeItem');
 
   if (categoryData && categoryData[id] !== undefined) {
    const updatedCategory = Object.fromEntries(

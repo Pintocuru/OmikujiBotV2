@@ -6,7 +6,7 @@
 
    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6">
     <div
-     v-for="emotion in characterEmotions"
+     v-for="emotion in availableEmotions"
      :key="emotion"
      @click="selectEmotion(emotion)"
      class="cursor-pointer p-3 rounded-lg border-2 transition-all hover:shadow-lg"
@@ -39,22 +39,21 @@
 
 <script setup lang="ts">
 import { ref, computed, Ref } from 'vue';
-import { emotionLabels, characterEmotions, CharacterEmotionType } from '@/types/';
+import { emotionLabels, CharacterEmotionType } from '@/types/';
 import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue';
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
+import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions';
 
 const props = defineProps<{
  characterKey: string;
- currentIconKey: CharacterEmotionType; // 現在選択されているアイコン
+ currentIconKey: CharacterEmotionType;
 }>();
 
 const emit = defineEmits<{
  'select:icon': [iconKey: CharacterEmotionType];
 }>();
 
-// ストアを使用
-const omikujiStore = useOmikujiStore();
-const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
+// キャラクター感情のコンポーザブルを使用
+const { getAvailableEmotions, charactersMap } = useCharacterEmotions();
 
 const modalRef: Ref<HTMLDialogElement | null> = ref(null);
 
@@ -62,6 +61,9 @@ const characterName = computed(() => {
  const character = charactersMap.value[props.characterKey];
  return character?.name || '';
 });
+
+// 利用可能な感情のみを表示
+const availableEmotions = computed(() => getAvailableEmotions(props.characterKey));
 
 const selectEmotion = (emotion: CharacterEmotionType) => {
  emit('select:icon', emotion);
@@ -76,7 +78,6 @@ const closeModal = () => {
  modalRef.value?.close();
 };
 
-// 親コンポーネントからモーダルを表示するための関数を公開
 defineExpose({
  showModal,
  closeModal

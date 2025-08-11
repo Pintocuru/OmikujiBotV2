@@ -8,11 +8,19 @@
    <div class="alert alert-info w-full">
     <Info class="w-5 h-5 mt-0.5 shrink-0" />
     <div class="space-y-1">
-     <code class="label bg-accent text-accent-content">「BOTコメントをわんコメに投稿」</code
-     >を有効にすると、自動的に「キャラクター用枠設定」も有効になります。<br />
      キャラクター専用の枠を作成すると、各キャラクターごとに
      <code class="label bg-accent text-accent-content">「読み上げ」設定</code
-     >を個別に行うことができます。
+     >を個別に行うことができます。<br />
+     詳しくは
+     <a
+      href="https://onecomme.com/docs/guide/speech"
+      target="_blank"
+      rel="noopener"
+      class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
+     >
+      読み上げ機能を使う
+     </a>
+     をお読みください。
     </div>
    </div>
 

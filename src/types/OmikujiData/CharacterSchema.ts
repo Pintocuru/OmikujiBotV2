@@ -72,28 +72,10 @@ export const CharacterImageSetSchema = z.object({
 });
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>;
 
-// Base64用画像セットのスキーマ
-export const CharacterImageSetBase64Schema = z.object({
- default: z.string().optional(),
- happy: z.string().optional(),
- excited: z.string().optional(),
- laughing: z.string().optional(),
- blushing: z.string().optional(),
- surprised: z.string().optional(),
- sad: z.string().optional(),
- angry: z.string().optional(),
- thinking: z.string().optional(),
- wink: z.string().optional(),
- singing: z.string().optional(),
- sleepy: z.string().optional()
-});
-export type CharacterImageSetBase64Type = z.infer<typeof CharacterImageSetBase64Schema>;
-
 export const DisplayOptionSchema = z.object({
  isIconDisplay: z.boolean().default(true).catch(true),
  isOneCommePost: z.boolean().default(true).catch(true),
  isVoice: z.boolean().default(true).catch(true)
- // TODO:アニメーションの実装
 });
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>;
 
@@ -107,8 +89,6 @@ export const CharacterSchema = z.object({
  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
  color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
  image: CharacterImageSetSchema.optional().catch(CharacterImageSetSchema.parse({})),
- imageBase64: CharacterImageSetBase64Schema.optional().catch(
-  CharacterImageSetBase64Schema.parse({})
- )
+ imageBase64: z.string().optional().catch(undefined) // わんコメのジェネレーター用Base64画像
 });
 export type CharacterType = z.infer<typeof CharacterSchema>;

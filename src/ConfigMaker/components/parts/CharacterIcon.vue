@@ -24,9 +24,10 @@ const props = defineProps<{
 const omikujiStore = useOmikujiStore();
 const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
 
-const iconSrc = computed(() =>
- getImagePath(charactersMap.value[props.characterKey]?.image[props.iconKey])
-);
+const iconSrc = computed(() => {
+ const imagePath = charactersMap.value[props.characterKey]?.image?.[props.iconKey];
+ return imagePath ? getImagePath(imagePath) : '';
+});
 const altText = computed(() => emotionLabels[props.iconKey]);
 
 const showImage = ref(true);

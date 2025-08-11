@@ -20,7 +20,15 @@
    v-model="selectedItem"
   />
 
-  <!-- 画像設定 -->
+  <!-- わんコメ投稿用画像設定 -->
+  <CharacterBase64Settings
+   v-if="selectedItem.displayOption.isOneCommePost"
+   v-model="selectedItem.imageBase64"
+   :id="selectedItem.id"
+   :backgroundColor="selectedItem.color.backgroundColor"
+  />
+
+  <!-- ジェネレーター用画像設定 -->
   <CharacterImageSettings
    v-if="selectedItem.displayOption.isIconDisplay"
    v-model="selectedItem.image"
@@ -36,6 +44,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue';
 import CharacterBasicInfo from './CharacterBasicInfo.vue';
 import CharacterColorSettings from './CharacterColorSettings.vue';
+import CharacterBase64Settings from './CharacterBase64Settings.vue';
 import CharacterImageSettings from './CharacterImageSettings.vue';
 import CharacterServiceSettings from './CharacterServiceSettings.vue';
 import CharacterIconDisplaySettings from './CharacterIconDisplaySettings.vue';

@@ -33,6 +33,6 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { useCategoryUtils } from './useCategoryUtils';
 
 const omikujiStore = useOmikujiStore();
-const { selectedCategory, data } = storeToRefs(omikujiStore);
+const { data } = storeToRefs(omikujiStore);
 const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils();
 </script>

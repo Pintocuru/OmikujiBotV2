@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/characters/CharacterImageSettings.vue -->
 <template>
  <div class="card bg-base-300 mt-4">
-  <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">画像設定</div>
+  <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ジェネレーター用画像設定</div>
 
   <!-- 補足説明 -->
   <div class="flex flex-wrap gap-4 p-4">
@@ -18,7 +18,7 @@
       <code class="label bg-accent text-accent-content">default.png</code>、
       <code class="label bg-accent text-accent-content">happy.png</code>、
       <code class="label bg-accent text-accent-content">laughing.png</code>
-      など12種類です。
+      など12種類です（png/jpg/jpeg/gif/webp対応）。
      </p>
      <p>
       各項目の
@@ -29,9 +29,10 @@
        <RotateCcw class="w-3 h-3 mr-1" />
        リセット
       </button>
-      ボタンで
-      <code class="label bg-accent text-accent-content"> [キャラクターID]/[感情名].png </code>
-      が自動設定されます。
+      ボタンをクリックすると、
+      <code class="label bg-accent text-accent-content">
+       [キャラクターID]/[感情名].png, gif, webp...</code
+      >といった画像の拡張子が順に切り替わります。目的の拡張子になるまでクリックしてください。
      </p>
     </div>
    </div>
@@ -43,7 +44,7 @@
      :label="emotion"
      :description="`(${key})`"
      containerClass="form-control flex-row items-center gap-2 mt-2"
-     @reset="localImages[key] = `${id}/${key}.png`"
+     @reset="resetImagePath(key)"
     >
      <input
       type="url"
@@ -67,8 +68,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { CharacterType, emotionLabels, getImagePath } from '@/types/';
+import { computed, ref } from 'vue';
+import { CharacterEmotionType, CharacterType, emotionLabels, getImagePath } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { Info, RotateCcw } from 'lucide-vue-next';
 
@@ -83,9 +84,32 @@ const emit = defineEmits<{
 
 // v-modelを使用したlocalImagesの実装
 const localImages = computed({
- get: () => props.modelValue,
+ get: () => props.modelValue ?? {},
  set: (value: CharacterType['image']) => {
   emit('update:modelValue', value);
  }
 });
+
+// 拡張子のリスト（検索順序）
+const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg'];
+
+// 各感情ごとに現在の拡張子を保持するMap
+const currentExtensions = ref<Map<CharacterEmotionType, number>>(new Map());
+
+// 画像パスのリセット（トグル機能付き）
+const resetImagePath = (key: CharacterEmotionType) => {
+ const newImages = { ...localImages.value };
+
+ // 現在の拡張子のインデックスを取得
+ let currentIndex = currentExtensions.value.get(key) || 0;
+
+ // 次の拡張子のインデックスを計算（リストの最後なら最初に戻る）
+ const nextIndex = (currentIndex + 1) % imageExtensions.length;
+ currentExtensions.value.set(key, nextIndex);
+
+ // 新しいパスを設定
+ const nextExt = imageExtensions[currentIndex];
+ newImages[key] = `${props.id}/${key}.${nextExt}`;
+ localImages.value = newImages;
+};
 </script>

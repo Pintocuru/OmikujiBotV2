@@ -1,31 +1,52 @@
 {
+  "meta": {
+    "id": "1754884254510-shoywq",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.1",
+    "generatorName": "unknown-generator",
+    "generatorVersion": "1.x.x",
+    "author": "Pintocuru",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
   "comments": {
     "StageSelect": {
       "id": "StageSelect",
+      "key": "",
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
+      "createdAt": "2025-08-11T03:50:57.708Z",
+      "updatedAt": "2025-08-11T03:50:57.708Z",
       "order": 1,
-      "editorColor": "#3B82F6",
       "isEnabled": true,
+      "editorColor": "#3B82F6",
+      "tags": [],
       "omikuji": [
         {
           "id": "e446aa2d-b9d5-4a6d-96fe-c9bd9a8887be",
+          "key": "",
           "name": "",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.708Z",
+          "updatedAt": "2025-08-11T03:50:57.708Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!抽選回す",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 2,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "今回のステージは…<<StageRandom>>!"
             }
           ]
@@ -58,211 +79,257 @@
     },
     "omikujiReimu": {
       "id": "omikujiReimu",
+      "key": "",
       "name": "おみくじ",
       "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 2,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "94253233-8ae8-46dd-8af2-e972c60238bf",
+          "key": "",
           "name": "おみくじ:大吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_01",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_01",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<ReimuOmikuji01>>"
             }
           ]
         },
         {
           "id": "e0218e15-abc7-40fb-904c-315b25b43bb3",
+          "key": "",
           "name": "おみくじ:吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 20,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_02",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_02",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!シャキーン2",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<ReimuOmikuji02>>"
             }
           ]
         },
         {
           "id": "8daf6a36-014e-4d0d-bd2b-cf0aee66a2a9",
+          "key": "",
           "name": "おみくじ:中吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 20,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!omikuji_03",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<ReimuOmikuji03>>"
             }
           ]
         },
         {
           "id": "1a70ae42-dd58-4c00-902b-cb108a72bc7d",
+          "key": "",
           "name": "おみくじ:小吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!omikuji_04",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<ReimuOmikuji04>>"
             }
           ]
         },
         {
           "id": "281759f8-266f-44f7-9eb0-b32ffb6cee36",
+          "key": "",
           "name": "おみくじ:末吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_05",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_05",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!間抜け1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<ReimuOmikuji05>>"
             }
           ]
         },
         {
           "id": "a2507c3c-b24b-44b4-83d3-0b27a731e89f",
+          "key": "",
           "name": "おみくじ:凶",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 10,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_06",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_06",
               "characterKey": "reimu",
-              "iconKey": "sad",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!呪いの旋律",
+              "characterKey": "reimu",
+              "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<ReimuOmikuji06>>"
             }
           ]
         },
         {
           "id": "ca0e9457-287e-483c-8fe2-18c361b8840c",
+          "key": "",
           "name": "おみくじ:残念賞",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 5,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "sleepy",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
+              "characterKey": "marisa",
+              "iconKey": "sleepy",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sleepy",
               "delaySeconds": 0,
               "wordParty": "!omikuji_07",
+              "characterKey": "marisa",
+              "iconKey": "sleepy",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sleepy",
               "delaySeconds": 1,
               "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "marisa",
+              "iconKey": "sleepy",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<ReimuOmikuji07>>"
             }
           ]
@@ -298,211 +365,257 @@
     },
     "OmikujiZunda": {
       "id": "OmikujiZunda",
+      "key": "",
       "name": "ずんだもんのおみくじ",
       "description": "みんなの運勢はすごくいいのだ！ずん子もそう言ってるのだ！",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 3,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "515e7490-fc7d-4ba3-823e-df1128afcee2",
+          "key": "",
           "name": "おみくじ:大吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "zunda",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_01",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_01",
               "characterKey": "zunda",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!レベルアップ",
+              "characterKey": "zunda",
+              "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<zundaOmikuji01>>"
             }
           ]
         },
         {
           "id": "cb7a65e1-9c73-4568-8032-03b28e0c0e6e",
+          "key": "",
           "name": "おみくじ:吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 20,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "zunda",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_02",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_02",
               "characterKey": "zunda",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!シャキーン2",
+              "characterKey": "zunda",
+              "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<zundaOmikuji02>>"
             }
           ]
         },
         {
           "id": "af51e223-2bf2-40e4-a668-808397c5db11",
+          "key": "",
           "name": "おみくじ:中吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 20,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!omikuji_03",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<zundaOmikuji03>>"
             }
           ]
         },
         {
           "id": "1abc7cfe-abf7-416b-adb7-5af6f59ccf6a",
+          "key": "",
           "name": "おみくじ:小吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!omikuji_04",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<zundaOmikuji04>>"
             }
           ]
         },
         {
           "id": "aa342f25-70a6-4a72-89c4-f454e258b992",
+          "key": "",
           "name": "おみくじ:末吉",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 15,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "zunda",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_05",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_05",
               "characterKey": "zunda",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!間抜け1",
+              "characterKey": "zunda",
+              "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<zundaOmikuji05>>"
             }
           ]
         },
         {
           "id": "23b49d34-5139-49c0-9e62-3cc19487d9e2",
+          "key": "",
           "name": "おみくじ:凶",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 10,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "zunda",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_06",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_06",
               "characterKey": "zunda",
-              "iconKey": "sad",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!呪いの旋律",
+              "characterKey": "zunda",
+              "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<zundaOmikuji06>>"
             }
           ]
         },
         {
           "id": "99143630-bc57-4c6e-a5d6-1e3b7a718e7d",
+          "key": "",
           "name": "おみくじ:残念賞",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 5,
           "postActions": [
             {
-              "characterKey": "zunda",
-              "iconKey": "default",
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "messageContent": ""
-            },
-            {
               "characterKey": "zunda",
               "iconKey": "default",
-              "delaySeconds": 0,
-              "wordParty": "!omikuji_07",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_07",
               "characterKey": "zunda",
-              "iconKey": "sleepy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 1,
               "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "zunda",
+              "iconKey": "sleepy",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<zundaOmikuji07>>"
             }
           ]
@@ -535,80 +648,96 @@
     },
     "FortuneMarisa": {
       "id": "FortuneMarisa",
+      "key": "",
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の、色占い。時々キノコのうんちくが聞けるよ。",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 4,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "1cef15a3-fe43-4571-9828-f7819c6b2d00",
+          "key": "",
           "name": "フラワー:通常色",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 7,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0.5,
               "wordParty": "!FortuneMarisaRed",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!FortuneMarisaYellow",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 1.5,
-              "wordParty": "!FortuneMarisaWhite",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
+              "delaySeconds": 1.5,
+              "wordParty": "!FortuneMarisaWhite",
+              "characterKey": "reimu",
               "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 3,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "<<user>>さんは<<flowerAllItem>>"
             }
           ]
         },
         {
           "id": "ee513b65-8f51-497d-ae4f-df12d87b7b5b",
+          "key": "",
           "name": "フラワー:キノコ",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0.5,
               "wordParty": "!FortuneMarisaRed",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!FortuneMarisaYellow",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 1.5,
-              "wordParty": "!FortuneMarisaWhite",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "thinking",
+              "delaySeconds": 1.5,
+              "wordParty": "!FortuneMarisaWhite",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 3,
               "wordParty": "!間抜け1",
+              "characterKey": "marisa",
+              "iconKey": "thinking",
               "messageContent": "<<user>>さんは【キノコ色】<<flowerKinoko>>"
             }
           ]
@@ -648,30 +777,40 @@
     },
     "GouseiSuika": {
       "id": "GouseiSuika",
+      "key": "",
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 5,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "3bad39b3-fb6a-4a48-bc21-15c81238c249",
+          "key": "",
           "name": "",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 3.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<message>>"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
             }
@@ -712,30 +851,40 @@
     },
     "BomberSpin": {
       "id": "BomberSpin",
+      "key": "",
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 6,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "38308a8b-6df8-4366-a1af-f8af7c61f9f2",
+          "key": "",
           "name": "通常",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 2.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<message>>"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 7,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
             }
@@ -775,30 +924,40 @@
     },
     "DwarfBomb": {
       "id": "DwarfBomb",
+      "key": "",
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 7,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "7d65397e-c45a-483c-ad52-14b94e932bf2",
+          "key": "",
           "name": "",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 3.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<message>>"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
             }
@@ -838,512 +997,600 @@
     },
     "HondaJanken": {
       "id": "HondaJanken",
+      "key": "",
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 8,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "cb5281e3-ff39-4472-b6d8-136a10d0d942",
+          "key": "",
           "name": "じゃんけん(グーA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>"
             }
           ]
         },
         {
           "id": "b1f64430-6f0d-435c-b29b-285baeccf038",
+          "key": "",
           "name": "じゃんけん(グーB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>"
             }
           ]
         },
         {
           "id": "54333790-95be-41e7-b938-63ace9a74bdf",
+          "key": "",
           "name": "じゃんけん(チョキA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>"
             }
           ]
         },
         {
           "id": "a8282d8f-adc7-4692-b9d6-68f1563cca6e",
+          "key": "",
           "name": "じゃんけん(チョキB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>"
             }
           ]
         },
         {
           "id": "2c230d6c-40e1-4ebd-a55b-9ea45c50e924",
+          "key": "",
           "name": "じゃんけん(パーA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>"
             }
           ]
         },
         {
           "id": "fc881e96-3dd4-457b-a525-352f46cdbf3d",
+          "key": "",
           "name": "じゃんけん(パーB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>"
             }
           ]
         },
         {
           "id": "58bfb507-7394-4885-ad45-4c4647ba2660",
+          "key": "",
           "name": "じゃんけん(グー勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "71c8cc79-73b4-40c3-b46d-391d49e3a1e2",
+          "key": "",
           "name": "じゃんけん(グー勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "7f0503a3-df80-4d1b-a0c9-76fcd6957550",
+          "key": "",
           "name": "じゃんけん(チョキ勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "136c98ed-a7f9-4351-b264-137acc78aa1f",
+          "key": "",
           "name": "じゃんけん(チョキ勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "454b0d37-01c1-4a16-b964-fe4f18190a71",
+          "key": "",
           "name": "じゃんけん(パー勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "b721ee78-faf7-4da4-969d-f1f51119c009",
+          "key": "",
           "name": "じゃんけん(パー勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "6e860abc-1b11-48a0-be7d-0917fbbee6c1",
+          "key": "",
           "name": "じゃんけん(ILoveYou勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "46a7f659-a0ff-4135-9cbe-7542a9f5b0a5",
+          "key": "",
           "name": "じゃんけん(ILoveYou勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "blushing",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
@@ -1377,152 +1624,180 @@
     },
     "HondaJankenRock": {
       "id": "HondaJankenRock",
+      "key": "",
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 9,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "dae6fa72-2dda-42b0-9820-04229e21ff4e",
+          "key": "",
           "name": "じゃんけん(グーA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>"
             }
           ]
         },
         {
           "id": "de1598a5-f047-4305-a1ea-7fafa8b86425",
+          "key": "",
           "name": "じゃんけん(グーB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>"
             }
           ]
         },
         {
           "id": "a3c9e289-6f39-4b8f-b90b-194340123287",
+          "key": "",
           "name": "じゃんけん(グー勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "0f61f385-5afb-46d6-8a43-e33d7932a84e",
+          "key": "",
           "name": "じゃんけん(グー勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
@@ -1558,152 +1833,180 @@
     },
     "HondaJankenScissors": {
       "id": "HondaJankenScissors",
+      "key": "",
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 10,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "3e2466e8-4f11-4e40-b7a0-2af707f88225",
+          "key": "",
           "name": "じゃんけん(チョキA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>"
             }
           ]
         },
         {
           "id": "954ee274-2c2b-44a1-b326-accb676eb780",
+          "key": "",
           "name": "じゃんけん(チョキB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>"
             }
           ]
         },
         {
           "id": "a684ee6e-9089-48e7-a3dd-b856fee0fd80",
+          "key": "",
           "name": "じゃんけん(チョキ勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "aa28b31f-54e6-45ce-85e3-3ab7d871efcd",
+          "key": "",
           "name": "じゃんけん(チョキ勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
@@ -1738,152 +2041,180 @@
     },
     "HondaJankenPaper": {
       "id": "HondaJankenPaper",
+      "key": "",
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 11,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "c1a15e68-9e7e-45e2-86f8-9ab04739007f",
+          "key": "",
           "name": "じゃんけん(パーA)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 35,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
               "characterKey": "reimu",
-              "iconKey": "wink",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>"
             }
           ]
         },
         {
           "id": "65221b6d-a527-44bc-a768-77ba3edd3db0",
+          "key": "",
           "name": "じゃんけん(パーB)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>"
             }
           ]
         },
         {
           "id": "0419f8f8-494b-4740-9e96-6a857755b33c",
+          "key": "",
           "name": "じゃんけん(パー勝利A)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "singing",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "singing",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
               "characterKey": "reimu",
-              "iconKey": "happy",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
         },
         {
           "id": "e0e36135-94bc-403c-92b8-8a5872573773",
+          "key": "",
           "name": "じゃんけん(パー勝利B)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "angry",
               "delaySeconds": 1,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "angry",
               "messageContent": "じゃんけんぽん!"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "sad",
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>"
             }
           ]
@@ -1919,31 +2250,41 @@
     },
     "WelcomeSagi": {
       "id": "WelcomeSagi",
+      "key": "",
       "name": "初見詐欺",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 12,
-      "editorColor": "#8B5CF6",
       "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
       "omikuji": [
         {
           "id": "9f10edaf-725e-4fd1-a438-842ff8ca305e",
+          "key": "",
           "name": "初見詐欺1",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 7,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "angry",
               "delaySeconds": 1.5,
               "wordParty": "!間抜け5",
+              "characterKey": "reimu",
+              "iconKey": "angry",
               "messageContent": "<<user>>さん…あなた初見じゃないでしょ。",
               "messageToast": ""
             }
@@ -1951,73 +2292,91 @@
         },
         {
           "id": "bf3e7f1e-873d-4035-90f9-01b0ba4e04e0",
+          "key": "",
           "name": "初見詐欺2",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 6,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "sleepy",
               "delaySeconds": 1.5,
               "wordParty": "!チーン1",
+              "characterKey": "reimu",
+              "iconKey": "sleepy",
               "messageContent": "<<user>>さん、初めまし…あなた初見ではないわね?"
             }
           ]
         },
         {
           "id": "8cb07d26-f4a4-4fed-964f-08c9befcf270",
+          "key": "",
           "name": "ああ初見だと思ったら騙された高校校歌",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 2,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "angry",
               "delaySeconds": 5,
               "wordParty": "!呪いの旋律",
+              "characterKey": "reimu",
+              "iconKey": "angry",
               "messageContent": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!"
             }
           ]
         },
         {
           "id": "0e946d6b-3711-4c30-b6b6-9be6002a47ee",
+          "key": "",
           "name": "初見詐欺魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "surprised",
               "delaySeconds": 1.5,
               "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "marisa",
+              "iconKey": "surprised",
               "messageContent": "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?"
             }
           ]
@@ -2053,52 +2412,68 @@
     },
     "WelcomeHonto": {
       "id": "WelcomeHonto",
+      "key": "",
       "name": "ホントの初見",
       "description": "初めてから5回までは歓迎してくれます",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 13,
-      "editorColor": "#8B5CF6",
       "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
       "omikuji": [
         {
           "id": "87e76029-f490-4071-af23-f190bf6e9e7d",
+          "key": "",
           "name": "ホントの初見1",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。"
             }
           ]
         },
         {
           "id": "3700cc5f-84ad-4099-9f3c-f9a9254fe167",
+          "key": "",
           "name": "ホントの初見2",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!"
             }
           ]
@@ -2134,23 +2509,33 @@
     },
     "CheckNumber": {
       "id": "CheckNumber",
+      "key": "",
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 14,
-      "editorColor": "#10B981",
       "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
       "omikuji": [
         {
           "id": "d065bcce-3dda-432b-bd50-98f9cd91ee2a",
+          "key": "",
           "name": "霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 14,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ"
             }
@@ -2158,15 +2543,21 @@
         },
         {
           "id": "841aebd2-d5bf-4980-933a-04ca8fdfe20e",
+          "key": "",
           "name": "魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 5,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ"
             }
@@ -2174,23 +2565,29 @@
         },
         {
           "id": "4dcdcf87-1b93-43c0-82d8-182d23e2e92b",
+          "key": "",
           "name": "魔理沙 (おふざけ)",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)"
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "angry",
               "delaySeconds": 5,
               "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "reimu",
+              "iconKey": "angry",
               "messageContent": "",
               "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。"
             }
@@ -2224,66 +2621,82 @@
     },
     "ReimuGiftLow": {
       "id": "ReimuGiftLow",
+      "key": "",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 15,
-      "editorColor": "#84CC16",
       "isEnabled": true,
+      "editorColor": "#84CC16",
+      "tags": [],
       "omikuji": [
         {
           "id": "402ef022-b3a2-48aa-bf1c-7cf7b458876c",
+          "key": "",
           "name": "ギフト:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0.3,
+              "wordParty": "!saisen_hako",
               "characterKey": "reimu",
-              "iconKey": "blushing",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "blushing",
               "messageContent": "<<user>>さん、ギフトありがとう!これからも配信続けていくわ、応援してね。"
             }
           ]
         },
         {
           "id": "347be842-e9a9-48bc-8b27-264ade59250f",
+          "key": "",
           "name": "ギフト:魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "messageContent": ""
-            },
-            {
               "characterKey": "marisa",
               "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0.3,
+              "wordParty": "!kinoko",
               "characterKey": "marisa",
-              "iconKey": "excited",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "excited",
               "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!"
             }
           ]
@@ -2318,37 +2731,47 @@
     },
     "ReimuGiftMiddle": {
       "id": "ReimuGiftMiddle",
+      "key": "",
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 16,
-      "editorColor": "#84CC16",
       "isEnabled": true,
+      "editorColor": "#84CC16",
+      "tags": [],
       "omikuji": [
         {
           "id": "593a6735-1138-49ac-9027-2d0b22fd9b69",
+          "key": "",
           "name": "ギフト:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "messageContent": ""
-            },
-            {
               "characterKey": "reimu",
               "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0.3,
+              "wordParty": "!saisen_hako",
               "characterKey": "reimu",
-              "iconKey": "blushing",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!"
             }
           ]
@@ -2381,37 +2804,47 @@
     },
     "ReimuGiftHigh": {
       "id": "ReimuGiftHigh",
+      "key": "",
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 17,
-      "editorColor": "#84CC16",
       "isEnabled": true,
+      "editorColor": "#84CC16",
+      "tags": [],
       "omikuji": [
         {
           "id": "7674a76d-f27c-4085-a9c8-ad2d0b3de921",
+          "key": "",
           "name": "ギフト:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "messageContent": ""
-            },
-            {
               "characterKey": "marisa",
               "iconKey": "default",
-              "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
               "messageContent": ""
             },
             {
+              "delaySeconds": 0.3,
+              "wordParty": "!kinoko",
               "characterKey": "marisa",
-              "iconKey": "blushing",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!"
             }
           ]
@@ -2447,23 +2880,33 @@
     },
     "StreamCountTrigger": {
       "id": "StreamCountTrigger",
+      "key": "",
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 18,
-      "editorColor": "#F97316",
       "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
       "omikuji": [
         {
           "id": "6b17a4b4-ab8c-4464-b88a-a831f7b4e10e",
+          "key": "",
           "name": "100回コメント:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
             }
@@ -2471,15 +2914,21 @@
         },
         {
           "id": "07151363-48ea-4900-88c6-4504dfdfc2a1",
+          "key": "",
           "name": "100回コメント:魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。"
             }
@@ -2511,23 +2960,33 @@
     },
     "UserCountTrigger": {
       "id": "UserCountTrigger",
+      "key": "",
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 19,
-      "editorColor": "#F97316",
       "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
       "omikuji": [
         {
           "id": "82695bf6-f2fd-48bd-956c-1363c5930da0",
+          "key": "",
           "name": "100回コメント:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
             }
@@ -2535,15 +2994,21 @@
         },
         {
           "id": "2d4e279b-41c1-4ef5-b06f-223fb5708661",
+          "key": "",
           "name": "100回コメント:魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
             }
@@ -2575,96 +3040,124 @@
     },
     "FirstCounterSyoken": {
       "id": "FirstCounterSyoken",
+      "key": "",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 20,
-      "editorColor": "#F97316",
       "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
       "omikuji": [
         {
           "id": "be651124-966b-48d5-8499-aabf1fa799a3",
+          "key": "",
           "name": "初見さんへの挨拶1",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 9,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。"
             }
           ]
         },
         {
           "id": "8d7cd86f-58a7-4153-84d4-8b46e5e415ad",
+          "key": "",
           "name": "初見さんへの挨拶2",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 8,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "reimu",
-              "iconKey": "excited",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "excited",
               "messageContent": "初見の<<user>>さん、コメントありがとう!とっても嬉しいわ!"
             }
           ]
         },
         {
           "id": "0b758f89-a9d0-4362-8518-cfc028fc91c0",
+          "key": "",
           "name": "初見さんへの挨拶3",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 5,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "excited",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "excited",
               "messageContent": "おっ、<<user>>さんが初めてのコメントだぜ!ようこそだぜ。"
             }
           ]
         },
         {
           "id": "55b471d4-2bf6-4d6d-a52e-84d178d41c8c",
+          "key": "",
           "name": "初見さんへの挨拶4",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": ""
             },
             {
-              "characterKey": "marisa",
-              "iconKey": "excited",
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "excited",
               "messageContent": "<<user>>さん、ようこそ!コメント助かるぜ～!"
             }
           ]
@@ -2697,68 +3190,96 @@
     },
     "FirstCounterAgain": {
       "id": "FirstCounterAgain",
+      "key": "",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 21,
-      "editorColor": "#F97316",
       "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
       "omikuji": [
         {
           "id": "af807dcd-6c95-40a7-aa4d-6b9cf16b5fe6",
+          "key": "",
           "name": "久しぶり1",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さん、久しぶり!また会えたね。"
             }
           ]
         },
         {
           "id": "c789f1a5-39f7-46e4-aae9-019b41b001a7",
+          "key": "",
           "name": "久しぶり2",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "<<user>>さんが久々に来たよ。挨拶しなきゃ!"
             }
           ]
         },
         {
           "id": "47c773a9-9102-45f3-bb58-265b92a304a6",
+          "key": "",
           "name": "久しぶり3",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 2,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!"
             }
           ]
         },
         {
           "id": "09d98b5d-5804-4af2-abd8-cba10e43b636",
+          "key": "",
           "name": "久しぶり4",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
               "messageContent": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。"
             }
           ]
@@ -2791,68 +3312,96 @@
     },
     "FirstCounterFirstVisit": {
       "id": "FirstCounterFirstVisit",
+      "key": "",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
       "order": 22,
-      "editorColor": "#F97316",
       "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
       "omikuji": [
         {
           "id": "1feb7730-8f21-4bac-8161-1b374be925dc",
+          "key": "",
           "name": "挨拶1",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。"
             }
           ]
         },
         {
           "id": "1f76e29e-003f-41a8-9773-90f5dc8ce584",
+          "key": "",
           "name": "挨拶2",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 3,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "<<user>>さん、また来てくれたね。ようこそ。"
             }
           ]
         },
         {
           "id": "f495caa0-0bc4-4807-9cf7-8e9274f18238",
+          "key": "",
           "name": "挨拶3",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 2,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ"
             }
           ]
         },
         {
           "id": "08a4332a-a591-42ec-9589-4c8529179bbe",
+          "key": "",
           "name": "挨拶4",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。"
             }
           ]
@@ -2887,23 +3436,33 @@
   "timers": {
     "ViewCountDisplay": {
       "id": "ViewCountDisplay",
+      "key": "",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 1,
-      "editorColor": "#3B82F6",
       "isEnabled": true,
+      "editorColor": "#3B82F6",
+      "tags": [],
       "omikuji": [
         {
           "id": "a8820c1d-8c84-480f-8660-4b8fb928d07e",
+          "key": "",
           "name": "閲覧数:霊夢",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 4,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が視聴中だよ"
             }
@@ -2911,15 +3470,21 @@
         },
         {
           "id": "a790c9e0-2a49-4158-ab35-01237cbc2d7d",
+          "key": "",
           "name": "閲覧数:魔理沙",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が視聴中だぜ"
             }
@@ -2932,23 +3497,33 @@
     },
     "PromotionToast": {
       "id": "PromotionToast",
+      "key": "",
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 2,
-      "editorColor": "#3B82F6",
       "isEnabled": true,
+      "editorColor": "#3B82F6",
+      "tags": [],
       "omikuji": [
         {
           "id": "383e1830-8cab-4fc7-ba7f-1dff89070718",
+          "key": "",
           "name": "チャンネル登録告知",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 24,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "",
               "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。"
             }
@@ -2956,15 +3531,21 @@
         },
         {
           "id": "5467faf0-b53f-4c48-a966-98f10c4ea96d",
+          "key": "",
           "name": "Twitter告知",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 18,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "wink",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "wink",
               "messageContent": "",
               "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。"
             }
@@ -2972,15 +3553,21 @@
         },
         {
           "id": "52daafd4-0e26-4eea-813f-36a2ec167259",
+          "key": "",
           "name": "ショート動画告知",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 20,
           "postActions": [
             {
-              "characterKey": "reimu",
-              "iconKey": "happy",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "happy",
               "messageContent": "",
               "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！"
             }
@@ -2988,15 +3575,21 @@
         },
         {
           "id": "299ac651-4df2-4dbc-8801-1ed6e80029e4",
+          "key": "",
           "name": "discord告知",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 16,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "excited",
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "excited",
               "messageContent": "",
               "messageToast": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ"
             }
@@ -3004,15 +3597,21 @@
         },
         {
           "id": "ad8f7cd2-3892-46d5-80bd-dcda187b21a7",
+          "key": "",
           "name": "おみくじBOT告知",
           "description": "",
+          "createdAt": "2025-08-11T03:50:57.710Z",
+          "updatedAt": "2025-08-11T03:50:57.710Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "marisa",
-              "iconKey": "wink",
               "delaySeconds": 0,
               "wordParty": "!間抜け1",
+              "characterKey": "marisa",
+              "iconKey": "wink",
               "messageContent": "",
               "messageToast": "このおみくじBOT、配信者さんに使って欲しいんだぜ…"
             }
@@ -3027,9 +3626,13 @@
   "placeholders": {
     "StageRandom": {
       "id": "StageRandom",
+      "key": "",
       "name": "クリエサバイバル用",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 1,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 4,
@@ -3627,9 +4230,13 @@
     },
     "ReimuOmikuji01": {
       "id": "ReimuOmikuji01",
+      "key": "",
       "name": "霊夢のおみくじ:大吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 2,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3659,9 +4266,13 @@
     },
     "ReimuOmikuji02": {
       "id": "ReimuOmikuji02",
+      "key": "",
       "name": "霊夢のおみくじ:吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 3,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3691,9 +4302,13 @@
     },
     "ReimuOmikuji03": {
       "id": "ReimuOmikuji03",
+      "key": "",
       "name": "霊夢のおみくじ:中吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 4,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3723,9 +4338,13 @@
     },
     "ReimuOmikuji04": {
       "id": "ReimuOmikuji04",
+      "key": "",
       "name": "霊夢のおみくじ:小吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 5,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3755,9 +4374,13 @@
     },
     "ReimuOmikuji05": {
       "id": "ReimuOmikuji05",
+      "key": "",
       "name": "霊夢のおみくじ:末吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 6,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3787,9 +4410,13 @@
     },
     "ReimuOmikuji06": {
       "id": "ReimuOmikuji06",
+      "key": "",
       "name": "霊夢のおみくじ:凶",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 7,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3819,9 +4446,13 @@
     },
     "ReimuOmikuji07": {
       "id": "ReimuOmikuji07",
+      "key": "",
       "name": "霊夢のおみくじ:残念賞",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 8,
       "editorColor": "#EC4899",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3871,9 +4502,13 @@
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
+      "key": "",
       "name": "じゃんけん:名前",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 9,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3883,9 +4518,13 @@
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
+      "key": "",
       "name": "じゃんけん:名前(一人称)",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 10,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3895,9 +4534,13 @@
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
+      "key": "",
       "name": "じゃんけん:グー1",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 11,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3919,9 +4562,13 @@
     },
     "HondaJankenA2": {
       "id": "HondaJankenA2",
+      "key": "",
       "name": "じゃんけん:グー2",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 12,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3939,9 +4586,13 @@
     },
     "HondaJankenB1": {
       "id": "HondaJankenB1",
+      "key": "",
       "name": "じゃんけん:チョキ1",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 13,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3963,9 +4614,13 @@
     },
     "HondaJankenB2": {
       "id": "HondaJankenB2",
+      "key": "",
       "name": "じゃんけん:チョキ2",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 14,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -3983,9 +4638,13 @@
     },
     "HondaJankenC1": {
       "id": "HondaJankenC1",
+      "key": "",
       "name": "じゃんけん:パー1",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 15,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4007,9 +4666,13 @@
     },
     "HondaJankenC2": {
       "id": "HondaJankenC2",
+      "key": "",
       "name": "じゃんけん:パー2",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 16,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4027,9 +4690,13 @@
     },
     "HondaJankenV": {
       "id": "HondaJankenV",
+      "key": "",
       "name": "じゃんけん:勝利",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 17,
       "editorColor": "#3B82F6",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4051,9 +4718,13 @@
     },
     "flowerAllItem": {
       "id": "flowerAllItem",
+      "key": "",
       "name": "フラワー:通常色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 18,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4087,9 +4758,13 @@
     },
     "flowerWhite": {
       "id": "flowerWhite",
+      "key": "",
       "name": "フラワー:白色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 19,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4123,9 +4798,13 @@
     },
     "flowerRed": {
       "id": "flowerRed",
+      "key": "",
       "name": "フラワー:赤色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 20,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4159,9 +4838,13 @@
     },
     "flowerOrange": {
       "id": "flowerOrange",
+      "key": "",
       "name": "フラワー:オレンジ色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 21,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4195,9 +4878,13 @@
     },
     "flowerYellow": {
       "id": "flowerYellow",
+      "key": "",
       "name": "フラワー:黄色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 22,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4231,9 +4918,13 @@
     },
     "flowerGreen": {
       "id": "flowerGreen",
+      "key": "",
       "name": "フラワー:緑色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 23,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4267,9 +4958,13 @@
     },
     "flowerBlue": {
       "id": "flowerBlue",
+      "key": "",
       "name": "フラワー:青色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 24,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4303,9 +4998,13 @@
     },
     "flowerPurple": {
       "id": "flowerPurple",
+      "key": "",
       "name": "フラワー:紫色",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 25,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4339,9 +5038,13 @@
     },
     "flowerKinoko": {
       "id": "flowerKinoko",
+      "key": "",
       "name": "フラワー:キノコ",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 26,
       "editorColor": "#F59E0B",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4387,9 +5090,13 @@
     },
     "zundaOmikuji01": {
       "id": "zundaOmikuji01",
+      "key": "",
       "name": "ずんだもんのおみくじ:大吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 27,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4419,9 +5126,13 @@
     },
     "zundaOmikuji02": {
       "id": "zundaOmikuji02",
+      "key": "",
       "name": "ずんだもんのおみくじ:吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 28,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4451,9 +5162,13 @@
     },
     "zundaOmikuji03": {
       "id": "zundaOmikuji03",
+      "key": "",
       "name": "ずんだもんのおみくじ:中吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 29,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4483,9 +5198,13 @@
     },
     "zundaOmikuji04": {
       "id": "zundaOmikuji04",
+      "key": "",
       "name": "ずんだもんのおみくじ:小吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 30,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4515,9 +5234,13 @@
     },
     "zundaOmikuji05": {
       "id": "zundaOmikuji05",
+      "key": "",
       "name": "ずんだもんのおみくじ:末吉",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 31,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4547,9 +5270,13 @@
     },
     "zundaOmikuji06": {
       "id": "zundaOmikuji06",
+      "key": "",
       "name": "ずんだもんのおみくじ:凶",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 32,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4579,9 +5306,13 @@
     },
     "zundaOmikuji07": {
       "id": "zundaOmikuji07",
+      "key": "",
       "name": "ずんだもんのおみくじ:残念賞",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 33,
       "editorColor": "#10B981",
+      "tags": [],
       "values": [
         {
           "weight": 1,
@@ -4613,18 +5344,20 @@
   "characters": {
     "reimu": {
       "id": "reimu",
+      "key": "",
       "name": "ゆっくり霊夢",
       "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "version": "0.0.1",
-      "author": "Pintocuru",
       "tags": [
         "Yukkuri",
         "Reimu"
       ],
+      "version": "0.0.1",
+      "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
-      "path": "",
       "displayName": "ゆっくり霊夢",
       "frameId": "OmikenReimu",
       "displayOption": {
@@ -4635,7 +5368,8 @@
       "color": {
         "nameColor": "#FFC107",
         "textColor": "#ECEFF1",
-        "backgroundColor": "#FF4081"
+        "backgroundColor": "#FF4081",
+        "customClasses": ""
       },
       "image": {
         "default": "reimu/default.webp",
@@ -4650,22 +5384,25 @@
         "wink": "reimu/wink.webp",
         "singing": "reimu/singing.webp",
         "sleepy": "reimu/sleepy.webp"
-      }
+      },
+      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAABnlJREFUSEuNlltsFNcZx39z2dmb7bW9vsTGVxwbGxc7NJCkBAIIlEAMCn2IklZKIkVpm0ipRJTXViGplAdaJSr0pU0I7QNNA2pcNUIoRIZyNZgYsMGwhhgbe31Z27u29747M2eqWRtIlEbqjObMw9H8f3PO933/70jWpnctli4DC1VRsOxbWFiWhYJ0b/r/ei+KLY6SqiDdA0ybKV5Te+j8cD+T4XGOn+xi5Hg/u51tFMgahiwhy0twywIhUC1QFBkk+ycskGQCiRkmjARezUV7554HALPAxfxvOyjUwix8/DkyAlsnHp5jYDTEZX8hy5pbmIvHCCdiWJOTbE4maamvwVnkw0on8RQ/RDQcIq+kAu/O7Rx/6c1FgCXBXKWXiY56msuKmfnkYyLBEDPVlQyvXkmx7CY4NoWiqlhCR84K9EwKU+ggQBsa4kk9Q5kN0bw466sQDY1kjn21CDCdKjdfaUM7eITKl7dwZt9+usvKad+wiXQ6QyabRvb4GA1OoWLhtsBKx5FVe2sWn5SRpOFygHY9S4VTwVA0hLtgEaBLFieUSarDo6Rf3cbR/5yiff1mpqdCOFQHsgyJhShmJoNpGAhL5ESNrI6sqsiKkguqJgSu/uvsEgK3bJDxVy4BnAonX3kY7+8/IrT9KYoba7jefxN/YRHpVIpkPIGZzSKEiWQHJpdnEpHZOTweNy6P636GRQskXr94jYzPRzwyuxTkPBepA69y/YOPaH1xJ72Xexm5M0I6lUFPptANHcsSueST7UFaBCAkZElC2IGQchM5UOvVbtY808H1K9eWAF4n2UO/InylF4fswrQMes5dIqsbTI9PopuGrZUTkGyMvUWSrSmjIOPz+ygq9nFr8DaWJBPs7+M3L7/AQCT+AGAcegNxZ5hgcIzqqiqSCwkS6SSDg7dZmJ8na+gUFxXnVmKzhLAYGxljYWaOuuZ6amurOXPqLJasoMoKL5RWMOhdKjQ7iwZ+/RgePc3ymhq7hghPTbOQmMedV8Dgjevo2QxlZeW43XnIqkIsusBA3wBDgSE8xfk4PU4kS805gRBZttWtQnmiaXEFWcni70XTOJYXsKKxERkHsWiUWCZOVVMjvSdOoSkysXiCutZW4skko4EAeU4PUxNhPMV5OPNd2GUhZQ3iTgV/10V+0X9qEWBYgtOpMfpXguZwIlImsxOTlDbVUl5ShGJ/aAoyuo5T83L7doDR4SEK/SVozjwKSn1ImoPxsQkKNTdXQndp+GaU3733FySxaY91PjbG8lWlHMtMkHY7yaYNmjdvYH4iyOXP/sGPt+9g7dYt3Om5SiyapKiqnK7PO7kRCNBSt5ya1mYMTSUciuAw4eyZr9hd7GdrzYtI5sY91h+nzvPSzzdy5Nw5ZqMJ2rZsou35Do688x7TF76m+bmf8tof3mdi8BsszUHpyASf7d3L4f5LrG1aTV1bG2JujvZt27nU8zVfHjnEvroaSn6yy17Bu9ZAcoqiRoXufJPSnm7KW9fgfnINV45+StWWNjztu2ha92guPVVLJv3BQcbHv+Bu4woWvgxROD6NX7Zo2vch//zXv7nYd4G32ldy+MKNe25qEVHjfNGi0z4dpHz1I4TTgtqHl5G3thnxUBPSzCzoWeSKSsy+AERuQmEpPQeO4woO4cg4GF7dzngmQUyk+KVey80bww/sOiYb7PcNU1tdwcYdz9J58G+UuApweFxUtrWw5qkn0LxecLgZPN9N4ORp9FiG+fko83oUNWoQUxTya8pJaBZvD1fgEvK3AKrgT/URPHZlyk7uBoZwoKABLl8ej25fT8NyN7HJGIPXwty62kc8k6GgugTLBXPBMGbKxFNRyPr5Atbp/lw3vN/RbCuYdppkjCxuISNMgSTZ1gCDfkFqp4NNj6sMH50klGmgctJB3rUQKUUgZAvJsNg7dpY3lj3GCqkQl7TosPcB9+zQtjT52314XRPBFo3ESBf1W70kD/cyq68i8vgG6k9P4L8VyZmg3TVn9CR+1Y0qyffd9XuA73T2tQ2Yb3cwcLaLuz2drKz3o0bSJJwN+J/exdT8HBWfdFM2Ev3BA8EPAx6pg/d/RmwyROjAX/GcOIaUTmAYFtlCH/lv7sa341lENo32TifKtbH/CfkeIJavMPJcIyue30J2Tmf2aBfe3tOYF8+jyg4kRc7FxvjRBvLfeh1HYzVyKMKNP3dSfyWM1/juMee/G+wb6chW6cAAAAAASUVORK5CYII="
     },
     "marisa": {
       "id": "marisa",
+      "key": "",
       "name": "ゆっくり魔理沙",
       "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 2,
       "editorColor": "#84CC16",
-      "version": "0.0.1",
-      "author": "Pintocuru",
       "tags": [
         "Yukkuri",
         "Marisa"
       ],
+      "version": "0.0.1",
+      "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
-      "path": "",
       "displayName": "ゆっくり魔理沙",
       "frameId": "OmikenMarisa",
       "displayOption": {
@@ -4674,9 +5411,10 @@
         "isVoice": true
       },
       "color": {
-        "nameColor": "#FFE082",
-        "textColor": "#333333",
-        "backgroundColor": "#FF8F00"
+        "nameColor": "#FFC107",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#FF4081",
+        "customClasses": ""
       },
       "image": {
         "default": "marisa/default.webp",
@@ -4691,23 +5429,26 @@
         "wink": "marisa/wink.webp",
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
-      }
+      },
+      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAABuBJREFUSEuNlWtsk9cdxn/n9etb4thxLnauDiEkJEBCUkgCBNpuoqVFq0Cp2nQDxmATG2Ot2Kppa3fR2FRt+9BtH0Da1q5bt0mIqsDUliVdSEq5BjoGtOTCxbkQJ8Rx4sSOX9uvL+87EZgomzT1fDgfjo7O7zz/85znL/Rfo/MZh3Znp5DuTPyyW2LhM7+joqGFcEih54972Fb6EaWO1AOnic8C0IWRlDBz8CIMuXfgrGjkmtdLYNLP3FwY0gJZljEYJF6tfQeXMYjNrCPuXOX/AXSDBc3kJOj+Aj2WrVy52sfgTS9TU35SukZa04mEwsiyEYvJhEE2gBAEb5zmrbYAnqzoXYCuw6wqk+EswmgyzS9oaY1w9iqSD+/HbrcRU1SO/b2d0+fOoEsyaWB8fII1Tc18Zftz7Hv5h4wGZpBN5vkSSXqKo0/9C3HtRxl6Mi04NOCm9ftHqK5bQjgSJ3B7gonbAWrra9H0FEoohEgksNvtOAvdKPE4Pp8fpy2T/Hwn3/jaLm5Nh5HNFjylxRiE4JVX9iEa6xt1WTfisNn48YvfZVlzPcODQwQmhrGYHLgrF3HTN8SZs+fJz3dTU11FUaGbhH+Wf3z4AfXV1bSsaOJXrx8gkNAwmsy89J3ncTidaAjEqrpm3YCBzAwLe57dSnlxAT2jF3mksYiOzvOULF3Bpo2b0WJGOjo66TrXQ2AmTG1tDdu2tVFUUED8xjgmt5O0I5NUfJakP4zdU8Slq733AdnZdg784GdYi21klfqwiKk7lSQRiZOOZ6GJYsa8fgzGXC723eRKXz8rV63EtaAECQkRUcl1G7EZVdITUxStfpzdz7+IWL28WRe6dFfB9l2s2rIBl96OQJr3vK7pxMIK6lwUr/c2BnsF+cUNiEQGp0/20DtwnV7fCPFEgiqPxOqlDdTk3CRc9hIDx19F/OKZcl1NSXT6Clm/cRO79u7EpR3DIJvRhI6maSjBMKl4gpxiF5qq0tc/hd1dzexoEovk4uz1fmaUKJLRzJFDv2XDSgf98S1sFV+/a1M1LfH6QB0tO/6Mq6YMe+oUFj1FChnUIKZMA1LyjvkEyalpkCXkfAcXLw9j10pZsHgFwxMRiitqONzZTjyoEpyYYEn0T/c/WsKQx5XF71HU3IAhMkIqfAuLliKV0LEWWJGTaSRhwX/5PEarnfwlVSRlH+HOc2TUrGckFMQt27FaZC4MpalZWsvOvXs/BZAc9JX8nAXrGpgbG8F7PcBDD7WQUBOgj2GSBQkVJm8MkeWqBmsu/snz2Md6cTc/SobbiHJjECml0n0llxlh4LU37ynQJBNjBW0M3RhmedvTdB7upvvEJFVrN1JiGqMwM0rT2jpUJconfWGmE3aGbvkYnwiSK4d5dsdjFC0uRld0ZKPGgf1ejr7/AdFk/F5UCJmgcw3h8WsUtu2j7/I4Xf9McryzgzXL3eTlutj9wm7UmWmGfBHeP9XF8Y5jTIZgfZ2Lb367lWFfiNr6zdidw7R+8U380xFAfzDsFD2Dj2xP0dCwju7Tg8xK18grdqEEqmjb8lXSsRiaMDHiPUj/9eOcPBPl8YZFtHxuGb5LWVhLy8krH+XC/p+izoX4eFw8CJgTGZy2b6RxQS2RqIYtu5JUXjZC85CXTBEPBJEryojpA/j620lFDZSVlkA8ztUTCpWPVeGssmI68i1EdIbJuf8ChHU7x23bebLBw+y5cRJmDyVPPIHIcqDdGiMViWJcvJB0Yo7o9UuoQ33YyxwYHGZunfVS8kgNhmIb8uEX5gHzxv5PP4in4OxUIdXbf0NefIqJo+fRNAlzTi5pIdCjaTR7OUGrEXNoCEdCIa1GyXu0moxFhfhPDOBsWojIMyK/vfd/AWmLg+CGn5BjdBHr6mNueAw1GpuPDEtNPZ9ITmYViZCqYNcUVllVzvb2k9m8ECk6i7AU0rLMQ5bHwsgf9uAxB5HEpxToGQUkWk8i+buY7fKSDAVRFYXM6kbGy5t47eBhhkYnkPQk27/cRkkkwFsdH9K6ZzfLyst5r72TtdlBSj9fQjwWIPPYy4hk7J5NjZnMPvkGIz295GnTEEijRVS0WBJ5YT3K8of569vvcvLCJXQ9TYvLytYtT6PnuEmLIL6BXnoHE2z2mCnbVIlskzH8ZScklHtvYMpA/dLv8Z0aZuTKx1Rm5xAYnKGkbi1KzWKi4zOUNq5jsn+YVCiKb+QinppSFq1ZS2/7IdwLbKS84/NNyN3WhMVh4urVUZZd+N59gPbcfua6fQT9McyZJRRuakWLKkyP3SaoGSgsKCUzP49YLI6WTqKceJesikXYqioJ/+0d4sGbYIScTfUY7SY0KY30xlb+DQ3uMOL8Y9TvAAAAAElFTkSuQmCC"
     },
     "zunda": {
       "id": "zunda",
+      "key": "",
       "name": "ずんだもん",
       "description": "ずんだもんなのだ!みんなの笑顔が僕の元気!頑張るのだ!",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 3,
       "editorColor": "#10B981",
-      "version": "0.0.2",
-      "author": "Pintocuru",
       "tags": [
         "touhokuZunko",
         "voicevox",
         "zunda"
       ],
+      "version": "0.0.2",
+      "author": "Pintocuru",
       "url": "https://www.pixiv.net/artworks/92641351",
-      "path": "",
       "displayName": "ずんだもん",
       "frameId": "voicevoxZunda",
       "displayOption": {
