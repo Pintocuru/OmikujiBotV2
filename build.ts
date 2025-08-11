@@ -1,15 +1,15 @@
 // build.ts
-import { webpackBuild } from '../../buildRoot/buildMain.ts';
-import { RecordBuildConfig, CommonBuildData } from '../../buildRoot/buildTypes.ts';
+import { WebpackBuilder } from '../../buildRoot/buildMain.ts';
+import { RecordBuildConfig, SystemCommonData } from '../../buildRoot/buildTypes.ts';
 import { alias } from './vite.config.ts';
 import packageJson from './package.json';
+import { createShimsVue } from './tools/CreateOmikujiData.ts';
 
 // 各設定ファイルをインポート
 import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0.ts';
-import { createShimsVue } from './tools/CreateOmikujiData.ts';
 
-// 共通データ
-const commonData: CommonBuildData = {
+// システム共通データ
+const systemCommonData: SystemCommonData = {
  alias,
  author: packageJson.author,
  description: packageJson.description,
@@ -17,14 +17,23 @@ const commonData: CommonBuildData = {
  generatorVersion: packageJson.version
 };
 
-// 各設定を統合
+// ビルド設定を統合
 const buildConfigs: RecordBuildConfig = {
  [ReimuMarisaConfig.configKey]: ReimuMarisaConfig
- // [OtherVariantConfig.configKey]: OtherVariantConfig.buildConfig,
 };
 
+// ビルド実行
 (async () => {
- // 並行で実行
- createShimsVue();
- webpackBuild(buildConfigs, commonData);
+ try {
+  // 並行で実行
+  createShimsVue();
+
+  const builder = new WebpackBuilder(systemCommonData);
+  await builder.build(buildConfigs);
+
+  console.log('[Build] All builds completed successfully!');
+ } catch (error) {
+  console.error('[Build] Build failed:', error);
+  process.exit(1);
+ }
 })();
