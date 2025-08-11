@@ -63,13 +63,8 @@ const textSizeClass = computed(() => TEXT_SIZE_CLASSES[props.textSize]);
 // 吹き出しのスタイル
 const bubbleStyles = computed(() => {
  const baseStyles: Record<string, string> = {};
-
- // カスタムクラスが指定されていない場合のみ、色とフィルターを適用
- if (!props.customClasses) {
-  baseStyles.backgroundColor = props.color?.backgroundColor || '#212121';
-  baseStyles.filter = `brightness(${props.brightness}%)`;
- }
-
+ baseStyles.backgroundColor = props.color?.backgroundColor || '#212121';
+ baseStyles.filter = `brightness(${props.brightness}%)`;
  return baseStyles;
 });
 

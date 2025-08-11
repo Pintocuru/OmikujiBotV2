@@ -40,7 +40,7 @@
    <SettingItem
     label="カスタムTailwindクラス"
     description="グラデーション背景、ボーダー、影などを追加できます"
-    @reset="resetCustomClasses"
+    @reset="localColor.customClasses = 'border-2 border-white'"
    >
     <input
      type="text"
@@ -133,12 +133,6 @@ const handlePreviewClick = () => {
  currentPreview.value = getRandomPreview();
 };
 
-// カスタムクラスリセット処理（nextTickでリアクティブ更新を強制）
-const resetCustomClasses = async () => {
- localColor.value.customClasses =
-  'bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white';
-};
-
 // ランダム色設定の処理
 const handleRandomColor = () => {
  const result = drawOmikuji(DEFAULT_COLOR_THEMES);
@@ -151,9 +145,4 @@ const handleRandomColor = () => {
  // カラーシャッフル時にプレビューも変更
  currentPreview.value = getRandomPreview();
 };
-
-// 初期化
-onMounted(() => {
- currentPreview.value = getRandomPreview();
-});
 </script>
