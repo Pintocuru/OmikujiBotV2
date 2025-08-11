@@ -21,38 +21,14 @@
     }"
    >
     <!-- コメント吹き出し -->
-    <div
-     class="absolute left-1/2 -translate-x-1/2 transform w-full max-w-3xl p-4 rounded-xl"
-     :style="{
-      backgroundColor: message.color?.backgroundColor || '#ccc',
-      filter: `brightness(${getBrightness(index)}%)`
-     }"
-    >
-     <div
-      v-if="message.name !== ''"
-      class="mb-0"
-      :class="sizeConfig.text"
-      :style="{ color: message.color?.nameColor || '#212121' }"
-     >
-      {{ message.name }}
-     </div>
-     <div
-      class="break-words"
-      :class="sizeConfig.text"
-      :style="{ color: message.color?.textColor || '#212121' }"
-     >
-      {{ message.comment }}
-     </div>
-
-     <!-- 吹き出しの矢印 -->
-     <div
-      class="absolute w-0 h-0 -bottom-5 left-1/2 -translate-x-1/2 transform"
-      :style="{
-       borderLeft: '20px solid transparent',
-       borderRight: '20px solid transparent',
-       borderTop: `20px solid ${message.color?.backgroundColor || '#ccc'}`,
-       filter: `brightness(${getBrightness(index)}%)`
-      }"
+    <div class="absolute left-1/2 -translate-x-1/2 transform">
+     <CommentBubble
+      :name="message.name"
+      :comment="message.comment"
+      :color="message.color"
+      :text-size="displaySize"
+      :brightness="getBrightness(index)"
+      :custom-classes="message.color?.customClasses"
      />
     </div>
 
@@ -87,6 +63,7 @@ import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCo
 import type { AnimationType } from '@/types/BotComponents/animation';
 import { useAppStore, useDisplayStore } from '@/MainGenerator/stores';
 import { storeToRefs } from 'pinia';
+import CommentBubble from './CommentBubble.vue';
 
 // サイズ設定の定数
 const SIZE_CONFIG = {

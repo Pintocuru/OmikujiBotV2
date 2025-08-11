@@ -22,13 +22,15 @@
     class="p-2 bg-warning text-warning-content rounded-md"
    >
     <SettingItem
-     label="ID"
-     description="Q.なぜ変更できる? A.データの見た目が良くなる"
+     label="Key"
+     description="Q.なぜ変更できる? A.マージの時に困らない"
      :showReset="false"
      containerClass="form-control"
     >
      <div class="flex gap-2 items-center">
-      <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
+      <div
+       class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 overflow-x-auto whitespace-nowrap"
+      >
        {{ id }}
       </div>
       <!-- 編集ボタン -->

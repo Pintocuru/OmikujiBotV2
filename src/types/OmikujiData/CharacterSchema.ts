@@ -41,11 +41,17 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
  wink: 'おふざけ'
 };
 
-// TODO:カラープリセットを作成
+// カラー
 export const CharacterColorScheme = z.object({
  nameColor: z.string().default('#212121').catch('#212121'),
  textColor: z.string().default('#212121').catch('#212121'),
- backgroundColor: z.string().default('#FAFAFA').catch('#FAFAFA')
+ backgroundColor: z.string().default('#FAFAFA').catch('#FAFAFA'),
+ customClasses: z
+  .string()
+  .optional()
+  .describe(
+   '吹き出しに適用するカスタムTailwindクラス（例: "bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white shadow-lg"）'
+  )
 });
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>;
 

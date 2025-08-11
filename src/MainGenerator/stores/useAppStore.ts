@@ -7,7 +7,7 @@ import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
 import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';
-import { CharacterCollector } from '@MainScripts/omikujiProcess/CharacterCollector';
+import { CharacterCollector } from '@/MainGenerator/scripts/BotCharacter/CharacterCollector';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { useDisplayStore } from './useDisplayStore';
 

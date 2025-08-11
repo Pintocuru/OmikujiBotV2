@@ -6,7 +6,7 @@ import { GameScriptManager } from './GameScriptManager';
 import { CommentContextManager } from './CommentContextManager';
 import { PlaceProcess } from './PlaceProcess';
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage';
-import { BotMessageGenerator } from './BotMessageGenerator';
+import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost';
 

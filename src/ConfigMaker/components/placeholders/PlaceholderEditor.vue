@@ -14,8 +14,8 @@
    <div class="card-body space-y-3">
     <!-- ID表示とコピー -->
     <SettingItem
-     label="ID"
-     description="プレースホルダーの一意識別子"
+     label="Key"
+     description="<<プレースホルダー名>>"
      :showReset="false"
      containerClass="form-control"
     >

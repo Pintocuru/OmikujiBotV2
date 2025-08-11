@@ -8,10 +8,10 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
-   <!-- ID表示 -->
+   <!-- Key表示 -->
    <SettingItem
-    label="ID"
-    description="キャラクターの一意識別子"
+    label="Key"
+    description="キャラクターのキー名"
     :showReset="false"
     containerClass="form-control"
    >

@@ -17,8 +17,8 @@
     "license": "個人利用のみ"
   },
   "comments": {
-    "1754775625812": {
-      "id": "1754775625812",
+    "dorachan": {
+      "id": "dorachan",
       "key": "",
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
@@ -171,13 +171,15 @@
     }
   },
   "timers": {
-    "1754858341283": {
-      "id": "1754858341283",
+    "dorachanTimer": {
+      "id": "dorachanTimer",
       "key": "",
       "name": "ドラちゃん(定期)",
+      "description": "ドラちゃんです。30分に1回自動で発動します",
       "createdAt": "2025-08-10T20:39:01.283Z",
-      "updatedAt": "2025-08-10T20:47:13.661Z",
+      "updatedAt": "2025-08-10T22:21:46.671Z",
       "order": 1,
+      "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
       "omikuji": [
@@ -193,26 +195,26 @@
           "weight": 380,
           "postActions": [
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!5percent_dora_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!5percent_dora_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1.5,
               "wordParty": "",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "はぁーい、<<5percent_Dora>>～",
               "messageToast": ""
             }
@@ -230,34 +232,34 @@
           "weight": 19,
           "postActions": [
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!5percent_dora_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!5percent_dora_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1.5,
               "wordParty": "!5percent_dora_2",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 5,
               "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "オンボロがオンボロをボロンしてしまいました。大変失礼いたしました。"
             }
@@ -275,18 +277,18 @@
           "weight": 1,
           "postActions": [
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 0,
               "wordParty": "!5percent_dora_Konjac_0",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             },
             {
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
               "delaySeconds": 1,
               "wordParty": "!5percent_dora_Konjac_1",
+              "characterKey": "5percent_Dora",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
             }
@@ -295,9 +297,7 @@
       ],
       "ruleType": "timers",
       "intervalSeconds": 1800,
-      "isBaseZero": true,
-      "description": "ドラちゃんです。30分に1回自動で発動します",
-      "isEnabled": true
+      "isBaseZero": true
     }
   },
   "placeholders": {
@@ -306,7 +306,7 @@
       "key": "",
       "name": "ひみつ道具",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-10T20:48:19.094Z",
+      "updatedAt": "2025-08-10T22:30:50.571Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -5877,7 +5877,7 @@
       "defaultScriptKey": null,
       "availableGameScripts": [],
       "enabledGameScriptSettings": true,
-      "showTemplateButton": true
+      "showTemplateButton": false
     }
   },
   "wordPartySettings": []

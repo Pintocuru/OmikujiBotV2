@@ -1,40 +1,7 @@
 // src\MainGenerator\scripts\omikujiProcess\BotMessageDefaultCharacter.ts
-import { type CharacterType, type CharacterColorType, CharacterSchema } from '@/types/';
+import { CharacterType, CharacterSchema } from '@/types/';
 import MersenneTwister from 'mersenne-twister';
-
-// デフォルトキャラクター用のカラーテーマ
-const DEFAULT_COLOR_THEMES: CharacterColorType[] = [
- // 1. ソフトブルー
- {
-  nameColor: '#1565C0',
-  textColor: '#0D47A1',
-  backgroundColor: '#E3F2FD'
- },
- // 2. ウォームオレンジ
- {
-  nameColor: '#E65100',
-  textColor: '#BF360C',
-  backgroundColor: '#FFF3E0'
- },
- // 3. フレッシュグリーン
- {
-  nameColor: '#2E7D32',
-  textColor: '#1B5E20',
-  backgroundColor: '#E8F5E8'
- },
- // 4. エレガントパープル
- {
-  nameColor: '#7B1FA2',
-  textColor: '#4A148C',
-  backgroundColor: '#F3E5F5'
- },
- // 5. クラシックグレー
- {
-  nameColor: '#424242',
-  textColor: '#212121',
-  backgroundColor: '#F5F5F5'
- }
-];
+import { DEFAULT_COLOR_THEMES } from './CharacterColorPreset';
 
 // デフォルトキャラクターデータの生成
 export const createDefaultCharacters = (): CharacterType[] => {

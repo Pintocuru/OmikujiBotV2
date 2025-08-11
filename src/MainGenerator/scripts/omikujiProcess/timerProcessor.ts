@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/
 import { BotMessage, OmikujiDataType, TimerRuleType } from '@/types/';
-import { BotMessageGenerator } from './BotMessageGenerator';
+import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator';
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { PlaceProcess } from './PlaceProcess';
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage';
