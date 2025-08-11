@@ -1,7 +1,5 @@
 // assets/config.js
-// @ts-check
 
-/** @type {import('../../../shared/types/ConfigUserSchema').ConfigUserType} */
 const userConfig = {
  isDiffMode: true, // 差分モードにするか(true:'diff',false:'all')
  threshold: {
@@ -14,5 +12,4 @@ const userConfig = {
  }
 };
 
-// @ts-ignore
 if (typeof window !== 'undefined') window.userConfig = userConfig;

@@ -2,6 +2,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { BuildConfig } from '../../../buildRoot/buildTypes.ts';
+import { generateJsContent } from '../src/configMaker/components/presets/generateContent';
 
 // このファイル専用の設定
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +18,10 @@ const buildConfig: BuildConfig = {
  templateBoothURL: 'https://pintocuru.booth.pm/items/5471598',
  templateDescription: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
  templateReadmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
+
+ //
+ configJsonPath: 'ReimuDX-250724.json',
+ generateJsContent: generateJsContent,
 
  filesToCopy: [
   { from: 'assets/config.js', to: 'config.js' },

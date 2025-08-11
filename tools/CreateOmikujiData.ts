@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, '../');
 
-const targetFolder = path.resolve(packageRoot, 'server/dev-configs/');
+const targetFolder = path.resolve(packageRoot, 'server/omikujiDatas/');
 const omikujiDatasFolder = path.resolve(packageRoot, 'assets/OmikujiDatas/');
 const shimsPath = path.resolve(packageRoot, 'src/types/shims-vue.d.ts');
 

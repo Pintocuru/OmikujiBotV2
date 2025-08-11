@@ -22,7 +22,7 @@ export default defineConfig(() => {
   server: {
    watch: {
     // server フォルダは更新してもホットリロードしない
-    ignored: [path.resolve(__dirname, 'server/dev-configs/**')]
+    ignored: [path.resolve(__dirname, 'server/omikujiDatas/**')]
    }
   }
  });

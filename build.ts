@@ -11,7 +11,9 @@ import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0.ts';
 const commonData: CommonBuildData = {
  alias,
  author: packageJson.author,
- description: packageJson.description
+ description: packageJson.description,
+ generatorName: packageJson.name,
+ generatorVersion: packageJson.version
 };
 
 // 各設定を統合
@@ -20,5 +22,7 @@ const buildConfigs: RecordBuildConfig = {
  // [OtherVariantConfig.configKey]: OtherVariantConfig.buildConfig,
 };
 
-// 実行
-webpackBuild(buildConfigs, commonData);
+(async () => {
+ // 並行で実行
+ webpackBuild(buildConfigs, commonData);
+})();
