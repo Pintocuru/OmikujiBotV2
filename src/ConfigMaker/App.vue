@@ -6,7 +6,7 @@
    :class="
     data.displaySettings.developer.godModeEnabled
      ? ['text-warning']
-     : data.displaySettings.developer.showTemplateButton
+     : data.displaySettings.developer.proModeEnabled
        ? ['text-secondary']
        : ['text-primary']
    "
@@ -23,7 +23,7 @@
     </span>
     <!-- GOD-MODEバッジ -->
     <span
-     v-if="data.displaySettings.developer.showTemplateButton"
+     v-if="data.displaySettings.developer.proModeEnabled"
      class="badge badge-secondary tooltip tooltip-bottom"
      data-tip="テンプレート出力が可能な、有料版です!"
     >
@@ -38,7 +38,7 @@
   <!-- 設定読み込み・書き出し -->
   <div class="flex flex-wrap justify-between items-center mb-2 gap-4 min-w-0">
    <ConfigImport />
-   <ConfigExport :showTemplateButton="data.displaySettings.developer.showTemplateButton" />
+   <ConfigExport :proModeEnabled="data.displaySettings.developer.proModeEnabled" />
   </div>
 
   <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->

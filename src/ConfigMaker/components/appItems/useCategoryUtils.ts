@@ -9,9 +9,9 @@ export const useCategoryUtils = () => {
  const { data } = storeToRefs(omikujiStore);
 
  const getCategoryItemCount = (category: CategoryType): number => {
-  const { availableGameScripts } = data.value.displaySettings.developer;
+  const { gameScripts } = data.value.displaySettings.developer.visibility;
 
-  if (category === 'scriptSettings') return availableGameScripts.length;
+  if (category === 'scriptSettings') return gameScripts.length;
   if (category === 'displaySettings') return 0;
   if (category === 'meta') return 0;
 
@@ -25,18 +25,18 @@ export const useCategoryUtils = () => {
  const filteredCategoryLabels = computed<
   Record<CategoryType, (typeof categoryLabels)[CategoryType]>
  >(() => {
-  const { enabledGameScriptSettings, availableGameScripts, showTemplateButton } =
-   data.value.displaySettings.developer;
+  const { proModeEnabled } = data.value.displaySettings.developer;
+  const { gameScriptSettings, gameScripts } = data.value.displaySettings.developer.visibility;
 
   const excludeKeys: CategoryType[] = [];
 
   // scriptSettingsを除外
-  if (!enabledGameScriptSettings || availableGameScripts.length === 0) {
+  if (!gameScriptSettings || gameScripts.length === 0) {
    excludeKeys.push('scriptSettings');
   }
 
   // showTemplateButtonがfalseならmetaを除外
-  if (!showTemplateButton) {
+  if (!proModeEnabled) {
    excludeKeys.push('meta');
   }
 

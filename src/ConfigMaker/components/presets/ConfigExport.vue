@@ -27,7 +27,7 @@
    </button>
   </div>
 
-  <div v-if="showTemplateButton">
+  <div v-if="proModeEnabled">
    <button
     @click="() => handleExport('template')"
     class="btn btn-secondary btn-soft tooltip tooltip-top"
@@ -50,7 +50,7 @@ import { storeToRefs } from 'pinia';
 import { Download, FileText, Edit, Save } from 'lucide-vue-next';
 
 const props = defineProps<{
- showTemplateButton: boolean;
+ proModeEnabled: boolean;
 }>();
 
 const { isExporting, exportFile } = useConfigExport();

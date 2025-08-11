@@ -1,11 +1,12 @@
 // src\MainGenerator\scripts\DisplayMode\useDisplayModeSwitcher.ts
 import { nextTick } from 'vue';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
+import { DisplaySettingsType } from '@/types';
 
 export function useDisplayModeSwitcher(
  currentModeIndex: { value: number },
  availableScriptKeys: { value: (string | null)[] },
- displaySettings: any,
+ displaySettings: DisplaySettingsType,
  scriptManager: GameScriptManager,
  forceUpdate: () => void
 ) {
@@ -33,12 +34,12 @@ export function useDisplayModeSwitcher(
 
  // 初期化処理
  const initialize = () => {
-  const selectedComponent = displaySettings.developer.selectComponent;
+  const selectedComponent = displaySettings.developer.startup.component;
 
   if (selectedComponent === 'omikujiBot') {
    currentModeIndex.value = 0; // BOTモード
   } else if (selectedComponent === 'gameScript') {
-   const defaultKey = displaySettings.developer.defaultScriptKey;
+   const defaultKey = displaySettings.developer.startup.scriptKey;
    const activeScripts = scriptManager.getActiveScripts();
 
    if (defaultKey && activeScripts.includes(defaultKey)) {

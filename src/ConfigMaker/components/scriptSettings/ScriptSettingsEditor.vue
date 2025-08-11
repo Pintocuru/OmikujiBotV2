@@ -2,7 +2,7 @@
 <template>
  <div v-if="hasScripts">
   <ScriptCard
-   v-for="scriptId in availableGameScripts.filter((key) => key in gameScriptMap)"
+   v-for="scriptId in gameScripts.filter((key) => key in gameScriptMap)"
    :key="scriptId"
    :script-id="scriptId"
    :script-preset="gameScriptMap[scriptId]"
@@ -34,9 +34,9 @@ import { storeToRefs } from 'pinia';
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);
 
-const availableGameScripts = data.value.displaySettings.developer.availableGameScripts ?? [];
+const { gameScripts } = data.value.displaySettings.developer.visibility ?? [];
 
-const hasScripts = computed(() => availableGameScripts.some((key) => key in gameScriptMap));
+const hasScripts = computed(() => gameScripts.some((key) => key in gameScriptMap));
 
 onMounted(() => {
  useScriptSettingsCleanup().cleanupScriptSettings();

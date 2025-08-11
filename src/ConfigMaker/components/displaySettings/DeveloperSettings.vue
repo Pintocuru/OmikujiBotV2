@@ -27,11 +27,11 @@
    <SettingItem
     label="プロ版モード"
     description="有料版の機能を表示するか"
-    @reset="developerSettings.showTemplateButton = false"
+    @reset="developerSettings.proModeEnabled = false"
    >
     <label class="label cursor-pointer justify-start gap-3">
      <input
-      v-model="developerSettings.showTemplateButton"
+      v-model="developerSettings.proModeEnabled"
       type="checkbox"
       class="toggle toggle-secondary"
      />

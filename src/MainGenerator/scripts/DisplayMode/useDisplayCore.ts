@@ -12,7 +12,7 @@ export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: Game
 
  // コンポーネント選択設定
  const selectedComponent = computed(() => {
-  return displaySettings.developer.selectComponent;
+  return displaySettings.developer.startup.component;
  });
 
  // 有効なscriptKey配列を動的に構築

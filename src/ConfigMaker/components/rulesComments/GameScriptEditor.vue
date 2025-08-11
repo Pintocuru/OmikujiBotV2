@@ -2,7 +2,7 @@
 <template>
  <div
   v-if="
-   (data.displaySettings.developer.enabledGameScriptSettings && isScriptEnabled) ||
+   (data.displaySettings.developer.visibility.gameScriptSettings && isScriptEnabled) ||
    data.displaySettings.developer.godModeEnabled
   "
   class="card bg-base-300 mt-4"
@@ -59,7 +59,7 @@
      :showReset="false"
     >
      <select
-      :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
+      :disabled="!data.displaySettings.developer.visibility.gameScriptSettings"
       v-model="scriptId"
       class="select select-bordered w-full"
      >
@@ -82,7 +82,7 @@
       <!-- 文字列入力 -->
       <input
        v-if="setting.inputType === 'string'"
-       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
+       :disabled="!data.displaySettings.developer.visibility.gameScriptSettings"
        type="text"
        v-model="scriptParams[setting.key]"
        class="input input-bordered w-full"
@@ -92,7 +92,7 @@
       <!-- 数値入力 -->
       <input
        v-else-if="setting.inputType === 'number'"
-       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
+       :disabled="!data.displaySettings.developer.visibility.gameScriptSettings"
        type="number"
        v-model.number="scriptParams[setting.key]"
        :min="setting.min"
@@ -103,7 +103,7 @@
       <!-- セレクト -->
       <select
        v-else-if="setting.inputType === 'select'"
-       :disabled="!data.displaySettings.developer.enabledGameScriptSettings"
+       :disabled="!data.displaySettings.developer.visibility.gameScriptSettings"
        v-model="scriptParams[setting.key]"
        class="select select-bordered w-full"
       >

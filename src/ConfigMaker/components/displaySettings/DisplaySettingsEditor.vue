@@ -21,42 +21,25 @@
         type="checkbox"
         class="toggle toggle-warning"
        />
-       <span class="label-text">この項目は、isDev がtrueの時のみ表示されます</span></label
-      >
+       <span class="label-text">この項目は、isDev がtrueの時のみ表示されます</span>
+      </label>
      </SettingItem>
     </div>
    </div>
   </div>
 
   <div v-if="data.displaySettings.developer.godModeEnabled" class="space-y-4">
-   <!-- 開発者モード: -->
-   <DeveloperSettings />
+   <!-- 開発者モード設定 -->
+   <DeveloperModeSettings />
 
-   <!-- コンフィグエディター機能の有効・無効設定: -->
-   <AvailableConfigEdit />
+   <!-- 起動設定 -->
+   <StartupSettings />
 
-   <!-- ゲームスクリプトの表示設定: -->
-   <AvailableGameScripts />
+   <!-- 可視性設定 -->
+   <VisibilitySettings />
 
    <!-- 補足説明 -->
-   <div class="flex flex-wrap gap-4 p-4">
-    <div class="alert alert-warning w-full">
-     <Info class="w-5 h-5 mt-0.5 shrink-0" />
-     <div class="space-y-1">
-      <p>開発者でもないのにこの開発者モードを見ている方へ：</p>
-      <p>やあ(´・ω・｀) このモードを見つけてくれて、ありがとう。</p>
-      <p>どうやって見つけたかはわからないけど、自由に設定してみるといい。</p>
-      <p>黄色い箇所が【GOD-MODE】で設定できる箇所だ。</p>
-      <p>もちろん、君は詳しいだろうから、ノークレーム・ノーリターンで頼むよ。</p>
-      <p>...</p>
-      <p>あ、そうそう。</p>
-      <p>ゲームスクリプト自体の開発は、開発者にしかできないんだ。</p>
-      <p>もしも「こういうゲームスクリプトが欲しい」という希望があるなら…</p>
-      <p>開発者のPintocuruに要望を出すと良い。</p>
-      <p>では、注文を聞こうか。</p>
-     </div>
-    </div>
-   </div>
+   <DeveloperModeInfo />
   </div>
  </div>
 </template>
@@ -64,9 +47,10 @@
 <script setup lang="ts">
 import { isDev } from '@/types/';
 import DisplaySettingsCard from './DisplaySettingsCard.vue';
-import DeveloperSettings from './DeveloperSettings.vue';
-import AvailableConfigEdit from './AvailableConfigEdit.vue';
-import AvailableGameScripts from './AvailableGameScripts.vue';
+import DeveloperModeSettings from './DeveloperModeSettings.vue';
+import StartupSettings from './StartupSettings.vue';
+import VisibilitySettings from './VisibilitySettings.vue';
+import DeveloperModeInfo from './DeveloperModeInfo.vue';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { storeToRefs } from 'pinia';

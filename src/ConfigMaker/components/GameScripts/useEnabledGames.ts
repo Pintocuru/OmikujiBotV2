@@ -10,9 +10,9 @@ export function useEnabledGames() {
  const { data } = storeToRefs(omikujiStore);
 
  const enabledGameScriptMap = computed(() => {
-  const { availableGameScripts } = data.value.displaySettings.developer;
+  const { gameScripts } = data.value.displaySettings.developer.visibility;
   return Object.entries(gameScriptMap)
-   .filter(([scriptId]) => availableGameScripts.includes(scriptId))
+   .filter(([scriptId]) => gameScripts.includes(scriptId))
    .map(([, scriptPreset]) => scriptPreset);
  });
 

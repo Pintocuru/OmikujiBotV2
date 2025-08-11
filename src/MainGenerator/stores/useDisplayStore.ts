@@ -20,7 +20,7 @@ export const useDisplayStore = defineStore('display', () => {
 
  // コンポーネント選択設定
  const selectedComponent = computed(() => {
-  return displaySettings.developer.selectComponent;
+  return displaySettings.developer.startup.component;
  });
 
  /**
@@ -136,12 +136,12 @@ export const useDisplayStore = defineStore('display', () => {
   * 初期化処理
   */
  const initializeDisplayMode = () => {
-  const selectedComp = displaySettings.developer.selectComponent;
+  const selectedComp = displaySettings.developer.startup.component;
 
   if (selectedComp === 'omikujiBot') {
    currentModeIndex.value = 0; // BOTモード
   } else if (selectedComp === 'gameScript') {
-   const defaultKey = displaySettings.developer.defaultScriptKey;
+   const defaultKey = displaySettings.developer.startup.scriptKey;
    const activeScripts = appStore.scriptManager.getActiveScripts();
 
    if (defaultKey && activeScripts.includes(defaultKey)) {
