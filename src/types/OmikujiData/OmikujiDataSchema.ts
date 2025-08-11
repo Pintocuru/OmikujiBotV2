@@ -46,7 +46,6 @@ export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>;
 export type CommentRuleType = z.infer<typeof CommentRuleSchema>;
 export type TimerRuleType = z.infer<typeof TimerRuleSchema>;
 export type RuleType = CommentRuleType | TimerRuleType;
-export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>;
 export type ScriptSettings = z.infer<typeof scriptSettingsSchema>;
 
 // カテゴリ更新用のスキーママップ

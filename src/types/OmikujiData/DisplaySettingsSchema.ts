@@ -7,12 +7,19 @@ import { displaySize } from '@shared/types/';
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
- // 通常の表示設定
+ // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
  base: z
   .object({
    // 文字・画像の大きさ指定
    displaySize: z.enum(displaySize).default('md').catch('md'),
-   // キャラクターサムネイルを表示するか
+   // 音を鳴らすか(将来、おみくじBOTで音を採用するときに使う)
+   // TODO:実装
+   // フォントの指定(プリセットされているものだけ)
+   // TODO:実装
+
+   // ! 下記は、omikujiBot に移行
+   // キャラクターサムネイルを表示するか(個別はしてもいいかもね)
+   // ! プロパティ名は変更したほうがいいかも
    modeSwitchEnabled: z.boolean().default(true).catch(true),
    // トーストを表示するか
    toastEnabled: z.boolean().default(true).catch(true)
@@ -22,6 +29,11 @@ export const DisplaySettingsSchema = z.object({
    modeSwitchEnabled: true,
    toastEnabled: true
   }),
+
+ // おみくじBot専用の表示設定(ゲームスクリプトに影響のないもの)
+ omikujiBot: z.object({
+  // フキダシ・キャラクターの出現アニメーション
+ }),
 
  // 開発者モード（GOD-MODE）
  developer: z

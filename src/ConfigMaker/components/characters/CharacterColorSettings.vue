@@ -2,7 +2,7 @@
 <template>
  <div class="card bg-base-300 mt-4">
   <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex justify-between items-center">
-   <span>色設定</span>
+   <span>カラー設定</span>
    <!-- ランダムボタン -->
    <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
     <button @click="handleRandomColor" class="btn btn-ghost btn-sm">

@@ -8,6 +8,9 @@ export const useCategoryUtils = () => {
  const omikujiStore = useOmikujiStore();
  const { data } = storeToRefs(omikujiStore);
 
+ /**
+  * ナビゲーションのアイテム数バッジ表示
+  */
  const getCategoryItemCount = (category: CategoryType): number => {
   const { gameScripts } = data.value.displaySettings.developer.visibility;
 
@@ -25,20 +28,22 @@ export const useCategoryUtils = () => {
  const filteredCategoryLabels = computed<
   Record<CategoryType, (typeof categoryLabels)[CategoryType]>
  >(() => {
-  const { proModeEnabled } = data.value.displaySettings.developer;
-  const { gameScriptSettings, gameScripts } = data.value.displaySettings.developer.visibility;
+  const { proModeEnabled, visibility } = data.value.displaySettings.developer;
 
   const excludeKeys: CategoryType[] = [];
 
-  // scriptSettingsを除外
-  if (!gameScriptSettings || gameScripts.length === 0) {
+  // visibility の設定に基づいて非表示にするカテゴリを決定
+  if (!visibility.comments) excludeKeys.push('comments');
+  if (!visibility.timers) excludeKeys.push('timers');
+  if (!visibility.placeholders) excludeKeys.push('placeholders');
+  if (!visibility.characters) excludeKeys.push('characters');
+  if (!visibility.wordPartySettings) excludeKeys.push('wordPartySettings');
+  if (!visibility.gameScriptSettings || visibility.gameScripts.length === 0) {
    excludeKeys.push('scriptSettings');
   }
 
-  // showTemplateButtonがfalseならmetaを除外
-  if (!proModeEnabled) {
-   excludeKeys.push('meta');
-  }
+  // proModeEnabledがfalseならmetaを除外
+  if (!proModeEnabled) excludeKeys.push('meta');
 
   return Object.fromEntries(
    Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))

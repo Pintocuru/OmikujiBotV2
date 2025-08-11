@@ -7,17 +7,19 @@
   "
  >
   <div class="tabs gap-2">
-   <div v-for="(tab, key) in filteredCategoryLabels" class="p-4 pt-6 hover:bg-primary">
+   <div v-for="(tab, key) in filteredCategoryLabels">
     <button
-     class="tab w-16 h-16 tooltip tooltip-top tab-active"
+     class="tab w-full h-full p-4 pt-6 tooltip tooltip-top tab-active hover:bg-primary"
      :data-tip="tab.description"
      @click="omikujiStore.selectCategory(key)"
     >
-     <component :is="tab.icon" class="w-8 h-8" />
-     <span class="text-xs text-center whitespace-nowrap text-ellipsis">{{ tab.label }}</span>
+     <div class="flex flex-col items-center justify-center space-y-1">
+      <component :is="tab.icon" class="w-8 h-8" />
+      <span class="text-xs text-center whitespace-nowrap text-ellipsis">{{ tab.label }}</span>
+     </div>
      <span
       v-if="getCategoryItemCount(key) > 0"
-      class="badge badge-xs badge-primary absolute -top-1 -right-1"
+      class="badge badge-xs badge-primary absolute top-1 right-1"
      >
       {{ getCategoryItemCount(key) }}
      </span>
