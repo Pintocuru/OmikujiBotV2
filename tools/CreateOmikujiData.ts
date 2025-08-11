@@ -41,7 +41,7 @@ async function convertAllJsonFiles() {
 /*
  * shims-vue.d.ts を生成
  */
-async function createShimsVue() {
+export async function createShimsVue() {
  const content = `declare module '*.vue' {
   import type { DefineComponent } from 'vue';
   const component: DefineComponent<{}, {}, any>;
@@ -53,12 +53,7 @@ async function createShimsVue() {
 }
 
 (async () => {
- await convertAllJsonFiles();
- await createShimsVue();
-})();
-
-(async () => {
  // 並行で実行
- convertAllJsonFiles();
- createShimsVue();
+ // convertAllJsonFiles();
+ // createShimsVue();
 })();

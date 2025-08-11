@@ -1,11 +1,11 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "ReimuMarisa",
+    "name": "ReimuMarisaDX",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "0.8.0-bate06",
-    "generatorName": "unknown-generator",
-    "generatorVersion": "1.x.x",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "0.8.0-bate06",
     "author": "Pintocuru",
     "tags": [
       "おみくじBOT",

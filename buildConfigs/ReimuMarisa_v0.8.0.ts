@@ -25,10 +25,10 @@ const buildConfig: BuildConfig = {
 
  filesToCopy: [
   { from: 'assets/config.js', to: 'config.js' },
-  { from: 'assets/thumb.png', to: 'thumb.png' },
+  { from: 'assets/thumb/ReimuMarisaDX.png', to: 'thumb.png' },
   { from: 'assets/Characters/reimu/', to: 'Characters/reimu/' },
-  { from: 'assets/Characters/marisa/', to: 'Characters/marisa/' },
-  { from: 'assets/OmikujiDatas/ReimuDX-250724.js', to: 'omikujiData.js' }
+  { from: 'assets/Characters/marisa/', to: 'Characters/marisa/' }
+  //  { from: 'assets/OmikujiDatas/ReimuDX-250724.js', to: 'omikujiData.js' }
  ],
  packageRoot,
  entryPoints: {

@@ -6,6 +6,7 @@ import packageJson from './package.json';
 
 // 各設定ファイルをインポート
 import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0.ts';
+import { createShimsVue } from './tools/CreateOmikujiData.ts';
 
 // 共通データ
 const commonData: CommonBuildData = {
@@ -24,5 +25,6 @@ const buildConfigs: RecordBuildConfig = {
 
 (async () => {
  // 並行で実行
+ createShimsVue();
  webpackBuild(buildConfigs, commonData);
 })();
