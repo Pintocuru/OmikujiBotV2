@@ -1,5 +1,5 @@
 // buildConfigs/ReimuMarisa_v0.8.0.ts
-import { BuildConfig } from '../../../buildRoot/buildTypes';
+import { BuildConfig } from '@omiken/shared/utils/webpackBuild/buildTypes';
 import { commonBuildConfig } from './base/baseSettings';
 
 /**
