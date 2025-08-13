@@ -76,43 +76,43 @@ export const categoryLabels: Record<
  { label: string; description: string; icon: any }
 > = {
  comments: {
-  label: 'コメントルール', // チャットの内容やユーザー情報でおみくじを発火
-  description: 'チャットの内容やユーザー情報でおみくじを発火します',
+  label: 'コメントルール', // チャットの内容やユーザー情報でおみくじを発動
+  description: 'チャット内容やユーザー情報を基におみくじを発動します',
   icon: MessageCircle
  },
  timers: {
-  label: 'タイマールール', // 時間経過で自動的におみくじを発火
-  description: '時間経過で自動的におみくじを発火します',
+  label: 'タイマールール', // 時間経過で自動的におみくじを発動
+  description: '指定した時間経過で、自動的におみくじを発動します',
   icon: Timer
  },
  placeholders: {
   label: 'プレースホルダー', // コメント・タイマーで補助的に使用
-  description: 'コメント・タイマーで補助的に使用する、高性能なプレースホルダー',
+  description: 'コメントやタイマーで利用できる、高性能なプレースホルダーを設定します',
   icon: Hash
  },
  characters: {
-  label: 'キャラクター', // BOTメッセージで使用するアイコンやカラー
-  description: 'BOTメッセージで使用するキャラクターアイコンや、カラーを設定します',
+  label: 'キャラクター(カラー設定)', // BOTメッセージで使用するアイコンやカラー
+  description: 'BOTメッセージのキャラクターや吹き出し・トーストの色を設定します',
   icon: Users
  },
  scriptSettings: {
   label: 'ゲームスクリプト', // 特殊なプレースホルダーを生成するための初期設定
-  description: 'ゲームスクリプトを動かし、特殊なプレースホルダーを生成するための初期設定',
+  description: 'ゲームのモードや、ランキングの上限回数等の初期設定を行います',
   icon: Settings
  },
  displaySettings: {
   label: '表示設定', // BOTメッセージやランキングの表示・非表示
-  description: 'BOTメッセージやランキングの表示・非表示を設定します',
+  description: 'メッセージの文字の大きさや、トーストの表示設定を行います',
   icon: Monitor
  },
  wordPartySettings: {
   label: 'WordPartyリスト', // コメント・タイマーの設定時に補助的に使える
-  description: 'コメント・タイマーの設定時に補助的に使える、WordPartyリスト。',
+  description: 'コメントやタイマー設定時に利用できる、WordPartyの発動リストを管理します',
   icon: ListChecks
  },
  meta: {
   label: 'Metaタグ',
-  description: 'おみくじデータのメタ情報を設定します',
+  description: 'このおみくじデータのメタ情報を設定します',
   icon: Tags
  }
 };
