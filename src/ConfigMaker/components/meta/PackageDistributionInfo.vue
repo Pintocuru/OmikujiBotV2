@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PackageMetaSchema } from '@shared/types';
+import { PackageMetaSchema } from '@omiken/shared/types';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { storeToRefs } from 'pinia';

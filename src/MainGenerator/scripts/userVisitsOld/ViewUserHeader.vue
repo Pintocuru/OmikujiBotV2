@@ -147,7 +147,7 @@ import {
  sortOptions,
  testUser
 } from './constants';
-import { UserVisitType } from '@shared/types/';
+import { UserVisitType } from '@omiken/shared/types/';
 
 // Props - 親から状態を受け取る
 const props = defineProps<{

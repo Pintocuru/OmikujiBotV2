@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { syokenConditionLabels, SyokenCondition } from '@shared/types';
+import { syokenConditionLabels, SyokenCondition } from '@omiken/shared/types';
 import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue';
 
 const props = defineProps<{ modelValue: SyokenCondition[] }>();

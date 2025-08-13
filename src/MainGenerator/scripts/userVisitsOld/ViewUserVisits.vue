@@ -116,7 +116,7 @@
 
 <script setup lang="ts">
 import { toRef, computed } from 'vue';
-import { ServiceVisitType } from '@shared/sdk/subscribe/GetUserVisits';
+import { ServiceVisitType } from '@omiken/shared/sdk/subscribe/GetUserVisits';
 import ViewUserCard from './ViewUserCard.vue';
 import ViewUserHeader from './ViewUserHeader.vue';
 import { useUserVisits } from './useUserVisits';

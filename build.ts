@@ -1,6 +1,6 @@
 // build.ts
-import { WebpackBuilder } from '../../buildRoot/buildMain';
-import { BuildConfig, SystemCommonData } from '../../buildRoot/buildTypes';
+import { WebpackBuilder } from '@omiken/shared/utils/webpackBuild/buildMain.ts';
+import { BuildConfig, SystemCommonData } from '@omiken/shared/utils/webpackBuild/buildTypes.ts';
 import { alias } from './vite.config';
 import packageJson from './package.json';
 

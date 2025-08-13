@@ -9,9 +9,9 @@ import {
  RuleType
 } from '@/types/';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
-import { MockComment } from '@shared/__mocks__/CreateMockComment';
+import { MockComment } from '@omiken/shared/__mocks__/CreateMockComment';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji';
+import { drawOmikuji, addWeightPercentages } from '@omiken/shared/utils/omikuji/DrawOmikuji';
 import { OmikujiProcessor } from '@MainScripts/omikujiProcess/OmikujiProcessor';
 import { toast } from 'vue-sonner';
 import { storeToRefs } from 'pinia';

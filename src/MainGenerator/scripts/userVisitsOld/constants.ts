@@ -1,6 +1,6 @@
 // src/MainGenerator/userVisits/constants.ts
 import { ServiceType } from '@onecomme.com/onesdk/types/Service';
-import { UserVisitType } from '@shared/types/';
+import { UserVisitType } from '@omiken/shared/types/';
 
 export const serviceLabels: Record<ServiceType, string> = {
  youtube: 'YouTube',

@@ -2,7 +2,7 @@
 // 250716_1 新規追加
 import { z } from 'zod';
 import { ScriptGameKey, scriptGameKeys } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
-import { displaySize } from '@shared/types/';
+import { displaySize } from '@omiken/shared/types/';
 
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定

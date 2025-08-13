@@ -2,8 +2,8 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { OmikujiDataSchema, BotMessage } from '@/types/';
-import { ConfigUserSchema } from '@shared/types';
-import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
+import { ConfigUserSchema } from '@omiken/shared/types';
+import { GetUserComments } from '@omiken/shared/sdk/subscribe/GetUserComments';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
 import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';

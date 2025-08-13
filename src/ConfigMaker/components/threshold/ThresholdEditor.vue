@@ -95,7 +95,7 @@ import {
  AccessCondition,
  GiftCondition,
  CountConditionType
-} from '@shared/types';
+} from '@omiken/shared/types';
 
 const props = defineProps<{
  modelValue: CommentThresholdType;

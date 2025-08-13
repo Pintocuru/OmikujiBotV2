@@ -44,7 +44,7 @@
 import { ref, markRaw, Ref, watch } from 'vue';
 import MainGenerator from './MainGenerator/App.vue';
 import ConfigMaker from './ConfigMaker/App.vue';
-import { themes, ThemeType } from '@shared/styles/DaisyUiTheme';
+import { themes, ThemeType } from '@omiken/shared/styles/DaisyUiTheme';
 import { Settings as SettingsIcon, Cpu, Palette } from 'lucide-vue-next';
 
 const showMain = ref(true);

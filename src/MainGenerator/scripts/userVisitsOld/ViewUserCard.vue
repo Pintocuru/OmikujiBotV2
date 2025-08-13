@@ -118,7 +118,7 @@
 import { defineProps, defineEmits, computed } from 'vue';
 import { Palette, Trophy, FileText, GripVertical, EyeOff } from 'lucide-vue-next';
 import ColorPicker from '@ConfigComponents/parts/ColorPicker.vue';
-import { UserVisitType } from '@shared/types/subscribe/UserVisitSchema';
+import { UserVisitType } from '@omiken/shared/types/subscribe/UserVisitSchema';
 import { ServiceType } from '@onecomme.com/onesdk/types/Service';
 import { serviceLabels } from './constants';
 

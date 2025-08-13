@@ -2,8 +2,8 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod';
 import { CharacterEmotionSchema } from './CharacterSchema';
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
-import { BaseRecordSchema } from '@shared/types';
+import { POST_SETTINGS } from '@omiken/shared/sdk/postMessage/PostSettings';
+import { BaseRecordSchema } from '@omiken/shared/types';
 
 // PostActionWordParty
 export const PostActionWordPartySchema = z.object({

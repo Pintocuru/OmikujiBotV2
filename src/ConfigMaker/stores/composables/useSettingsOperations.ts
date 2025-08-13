@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/stores/composables/useSettingsOperations.ts
 import { Ref } from 'vue';
 import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings } from '@/types/';
-import { PackageMetaType } from '@shared/types';
+import { PackageMetaType } from '@omiken/shared/types';
 
 /**
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）

@@ -1,8 +1,8 @@
 // src/MainGenerator/script/PostMessage/CommentRequestBuilder.ts
 import { PostActionType, CharacterType } from '@/types/';
-import { SendCommentType, SendCommentSchema } from '@shared/types/';
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost';
+import { SendCommentType, SendCommentSchema } from '@omiken/shared/types/';
+import { POST_SETTINGS } from '@omiken/shared/sdk/postMessage/PostSettings';
+import { ConsolePost } from '@omiken/shared/sdk/postMessage/ConsolePost';
 
 /**
  * コメントリクエスト作成を担当するクラス

@@ -1,7 +1,7 @@
 // src/MainGenerator/script/omikujiProcess/PlaceProcess.ts
 import { PlaceholderType, PostActionType } from '@/types/';
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
-import { DefaultTypes } from '@shared/types';
+import { drawOmikuji } from '@omiken/shared/utils/omikuji/DrawOmikuji';
+import { DefaultTypes } from '@omiken/shared/types';
 
 /**
  * プレースホルダー置換処理を行うクラス

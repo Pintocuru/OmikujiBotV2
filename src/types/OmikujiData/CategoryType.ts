@@ -4,7 +4,7 @@ import {
  countUnitConditionLabels,
  serviceMetaCondition,
  serviceMetaConditionLabels
-} from '@shared/types/';
+} from '@omiken/shared/types/';
 import {
  MessageCircle,
  Timer,

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ParameterInputType, ParameterItem } from '@/types/';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
-import { DefaultTypes } from '@shared/types';
+import { DefaultTypes } from '@omiken/shared/types';
 
 export const useScriptSettings = () => {
  const omikujiStore = useOmikujiStore();

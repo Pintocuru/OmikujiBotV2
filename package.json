@@ -14,7 +14,7 @@
  "main": "src/main.js",
  "type": "module",
  "dependencies": {
-  "@omiken-templates/shared": "workspace:*",
+  "@omiken/shared": "workspace:*",
   "@onecomme.com/onesdk": "^7.0.0",
   "@tailwindcss/vite": "^4.1.11",
   "@vitejs/plugin-vue": "^6.0.1",

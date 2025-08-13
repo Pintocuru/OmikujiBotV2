@@ -7,7 +7,7 @@ import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
 import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
 import { ensureUniqueIds, RecordCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
-import { PackageMetaSchema } from '@shared/types';
+import { PackageMetaSchema } from '@omiken/shared/types';
 
 // 再エクスポート
 export * from './CategoryType';

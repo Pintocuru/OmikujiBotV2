@@ -1,7 +1,7 @@
 // src/MainGenerator/userVisits/useUserVisits.ts
 import { computed, Ref, watch } from 'vue';
 import { ServiceType } from '@onecomme.com/onesdk/types/Service';
-import { ServiceVisitType, UserVisitType } from '@shared/types/';
+import { ServiceVisitType, UserVisitType } from '@omiken/shared/types/';
 import { useCustomProperties, UserVisitPlus } from './useCustomProperties';
 import { useUserManagement } from './useUserManagement';
 import { useUserFiltering } from './useUserFiltering';

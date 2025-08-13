@@ -1,7 +1,7 @@
 // src/stores/useDisplayStore.ts
 import { defineStore } from 'pinia';
 import { ref, computed, watch, nextTick } from 'vue';
-import { DisplaySize } from '@shared/types';
+import { DisplaySize } from '@omiken/shared/types';
 import { UserStatsType } from '@/types/';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { useAppStore } from './useAppStore';

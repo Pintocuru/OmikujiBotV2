@@ -1,6 +1,6 @@
 // src/types.ts
 import { OmikujiDataType } from './OmikujiData/OmikujiDataSchema';
-import { ConfigUserType } from '@shared/types/';
+import { ConfigUserType } from '@omiken/shared/types/';
 
 // 開発版・本番で値が異なるもの
 export const isDev = import.meta.env?.VITE_IS_DEV || false;

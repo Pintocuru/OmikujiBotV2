@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { DisplaySize, displaySizeLabels } from '@shared/types';
+import { DisplaySize, displaySizeLabels } from '@omiken/shared/types';
 import { useDisplayStore } from '@/MainGenerator/stores';
 import { storeToRefs } from 'pinia';
 

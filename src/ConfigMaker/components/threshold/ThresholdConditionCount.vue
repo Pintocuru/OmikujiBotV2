@@ -45,7 +45,7 @@ import {
  CountConditionType,
  CountUnitCondition,
  CountComparisonCondition
-} from '@shared/types/';
+} from '@omiken/shared/types/';
 import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue';
 
 const props = defineProps<{ modelValue: CountConditionType }>();

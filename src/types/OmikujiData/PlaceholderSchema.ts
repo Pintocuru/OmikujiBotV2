@@ -1,7 +1,7 @@
 // shared/types/OmikujiBot/PlaceholderSchema.ts
 // 250722_1 の新規作成
 import { z } from 'zod';
-import { BaseRecordSchema } from '@shared/types';
+import { BaseRecordSchema } from '@omiken/shared/types';
 
 // PlaceholderSchema // OmikujiSchema
 export const PlaceholderValueSchema = z.object({

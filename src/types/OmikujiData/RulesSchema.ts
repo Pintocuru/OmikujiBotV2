@@ -1,6 +1,6 @@
 // shared/types/OmikujiBot/RulesSchema.ts
 import { z } from 'zod';
-import { BaseRecordSchema, CommentThresholdSchema } from '@shared/types/';
+import { BaseRecordSchema, CommentThresholdSchema } from '@omiken/shared/types/';
 import { OmikujiSetSchema } from './OmikujiSchema';
 
 // おみくじ制限設定のスキーマ

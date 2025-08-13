@@ -3,7 +3,7 @@ import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType, RecordCategoryTypeMap } from '@/types';
 import type { useRuleState } from './useRuleState';
-import { BaseRecordType } from '@shared/types';
+import { BaseRecordType } from '@omiken/shared/types';
 
 /**
  * ルールの基本操作（追加、更新、削除、複製、移動）を管理

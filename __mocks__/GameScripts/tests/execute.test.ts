@@ -1,7 +1,7 @@
 // tests/execute.test.ts
 import { GameParamsSchema, GameSettingsSchema } from '@/GameScripts/BomberSpin/src/params';
 import { ExecuteScript } from '@/GameScripts/BomberSpin/src/execute';
-import { MockComment } from '@shared/__mocks__/CreateMockComment';
+import { MockComment } from '@omiken/shared/__mocks__/CreateMockComment';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // コメント
