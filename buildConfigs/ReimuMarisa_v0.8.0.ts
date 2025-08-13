@@ -1,6 +1,6 @@
 // buildConfigs/ReimuMarisa_v0.8.0.ts
-import { BuildConfig } from '../../../buildRoot/buildTypes.ts';
-import { commonBuildConfig } from './base/baseSettings.ts';
+import { BuildConfig } from '../../../buildRoot/buildTypes';
+import { commonBuildConfig } from './base/baseSettings';
 
 /**
  * おみくじBOT ゆっくり霊夢&魔理沙 のビルド設定

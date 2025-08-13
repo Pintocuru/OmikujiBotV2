@@ -1,12 +1,12 @@
 // build.ts
-import { WebpackBuilder } from '../../buildRoot/buildMain.ts';
-import { BuildConfig, SystemCommonData } from '../../buildRoot/buildTypes.ts';
-import { alias } from './vite.config.ts';
+import { WebpackBuilder } from '../../buildRoot/buildMain';
+import { BuildConfig, SystemCommonData } from '../../buildRoot/buildTypes';
+import { alias } from './vite.config';
 import packageJson from './package.json';
 
 // 各設定ファイルをインポート
-import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0.ts';
-import { createShimsVue } from './tools/CreateOmikujiData.ts';
+import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0';
+import { createShimsVue } from './tools/CreateOmikujiData';
 
 // システム共通データ
 const systemCommonData: SystemCommonData = {
