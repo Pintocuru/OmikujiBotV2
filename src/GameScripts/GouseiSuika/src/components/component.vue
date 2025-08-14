@@ -73,7 +73,7 @@
 import { computed } from 'vue';
 import { GameSettings } from '@/params';
 import { SIZE_CONFIG } from './componentConfig';
-import { useDelayedDisplay } from '@omiken/shared/utils/rankComponent/useDelayedDisplay';
+import { useDelayedDisplay } from '@shared/utils/rankComponent/useDelayedDisplay';
 import { ScriptComponentPropsType } from '@/types/';
 
 const props = defineProps<ScriptComponentPropsType<GameSettings>>();

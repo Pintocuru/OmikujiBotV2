@@ -4,7 +4,7 @@ import {
  countUnitConditionLabels,
  serviceMetaCondition,
  serviceMetaConditionLabels
-} from '@omiken/shared/types/';
+} from '@shared/types/';
 import {
  MessageCircle,
  Timer,
@@ -57,8 +57,6 @@ export const settingsCategoryType = [
  'meta'
 ] as const;
 export type SettingsCategoryType = (typeof settingsCategoryType)[number];
-
-
 
 /**
  * すべてのカテゴリタイプを定義する定数配列

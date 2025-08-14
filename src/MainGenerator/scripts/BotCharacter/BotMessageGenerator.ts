@@ -6,7 +6,7 @@ import {
  CharacterType,
  PostActionType
 } from '@/types/';
-import { POST_SETTINGS } from '@omiken/shared/sdk/postMessage/PostSettings';
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings';
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter';
 
 export class BotMessageGenerator {

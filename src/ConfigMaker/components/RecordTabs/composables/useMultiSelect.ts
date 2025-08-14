@@ -4,7 +4,7 @@ import { toast } from 'vue-sonner';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
 import { RecordCategoryType } from '@/types';
 import type { useRuleState } from './useRuleState';
-import { BaseRecordType } from '@omiken/shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * マルチセレクト機能の管理

@@ -1,5 +1,5 @@
 // shared/types/GameComponentSchema.ts
-import { DefaultTypes, DisplaySize } from '@omiken/shared/types/';
+import { DefaultTypes, DisplaySize } from '@shared/types/';
 import { UserStatsType } from '../GameScript/GameScriptSchema';
 import { GameComponentConfig } from './GameRankingTypes';
 

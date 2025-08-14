@@ -2,7 +2,7 @@
 import { defineConfig, mergeConfig } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { baseViteConfig, rootAlias } from '@omiken/shared/utils/webpackBuild/viteConfigBase.ts';
+import { baseViteConfig, rootAlias } from '@shared/utils/webpackBuild/viteConfigBase';
 import tsconfig from './tsconfig.json';
 
 // __dirname の設定
@@ -37,7 +37,8 @@ export function createViteAliases(baseDir: string): Record<string, string> {
  if (!paths) return aliases;
 
  // tsconfig.json のパスを Vite の形式に変換
- for (const alias in paths) {
+ type PathsType = typeof tsconfig.compilerOptions.paths;
+ for (const alias of Object.keys(paths) as (keyof PathsType)[]) {
   const value = paths[alias][0];
   const key = alias.replace('/*', '');
   // `/*` を取り除き、`path.resolve` で絶対パスに変換

@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { WordPartySettings } from '@/types/';
-import { postWordParty } from '@omiken/shared/sdk/postMessage/PostOneComme';
+import { postWordParty } from '@shared/sdk/postMessage/PostOneComme';
 
 defineProps<{
  settings: WordPartySettings[];

@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CharacterColorType } from '@/types/';
-import { DisplaySize } from '@omiken/shared/types';
+import { DisplaySize } from '@shared/types';
 
 interface Props {
  name?: string;

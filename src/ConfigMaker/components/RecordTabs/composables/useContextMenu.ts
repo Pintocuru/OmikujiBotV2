@@ -1,7 +1,7 @@
 // src/configMaker/components/RecordTabs/composables/useContextMenu.ts
 import { ref, computed } from 'vue';
 import type { useRuleState } from './useRuleState';
-import { BaseRecordType } from '@omiken/shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /** コンテキストメニューの状態 */
 export interface ContextMenuState {

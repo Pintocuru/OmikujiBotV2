@@ -1,7 +1,7 @@
 // src/configMaker/components/scriptSettings/useScriptSettingsCleanup.ts -->
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
-import { DefaultTypes } from '@omiken/shared/types';
+import { DefaultTypes } from '@shared/types';
 
 export const useScriptSettingsCleanup = () => {
  const omikujiStore = useOmikujiStore();

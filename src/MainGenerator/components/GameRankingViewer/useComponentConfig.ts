@@ -1,5 +1,5 @@
 // components/useComponentConfig.ts
-import { DisplaySize } from '@omiken/shared/types';
+import { DisplaySize } from '@shared/types';
 
 export interface SizeConfig {
  explosionText: string;

@@ -81,7 +81,7 @@ import ContentArea from './components/appItems/ContentArea.vue';
 import FloatingElements from './components/appItems/FloatingElements.vue';
 import { storeToRefs } from 'pinia';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
-import { ThemeType } from '@omiken/shared/styles/DaisyUiTheme';
+import { ThemeType } from '@shared/styles/DaisyUiTheme';
 
 const omikujiStore = useOmikujiStore();
 const { data } = storeToRefs(omikujiStore);

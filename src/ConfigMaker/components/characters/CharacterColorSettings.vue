@@ -62,7 +62,7 @@ import { CharacterColorType } from '@/types/';
 import SettingItem from '@ConfigComponents/parts/SettingItem.vue';
 import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset';
 import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue';
-import { drawOmikuji } from '@omiken/shared/utils/omikuji/DrawOmikuji';
+import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji';
 import { Dices } from 'lucide-vue-next';
 
 const props = defineProps<{

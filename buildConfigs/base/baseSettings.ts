@@ -2,7 +2,7 @@
 // buildConfigs の共通項目
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { generateJsContent } from '../../src/configMaker/components/presets/generateContent';
+import { generateJsContent } from '@ConfigComponents/presets/generateContent';
 
 // このファイル専用の設定
 const __filename = fileURLToPath(import.meta.url);

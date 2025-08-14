@@ -1,6 +1,6 @@
 // src/types/OmikujiDataNormalize.ts
 import { z } from 'zod';
-import { BaseRecordType } from '@omiken/shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * id/orderの型

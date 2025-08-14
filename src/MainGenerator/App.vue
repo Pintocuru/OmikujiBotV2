@@ -29,7 +29,7 @@ import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue';
 import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue';
 import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue';
 import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue';
-import ErrorInitComponent from '@omiken/shared/components/error/ErrorInitComponent.vue';
+import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue';
 import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue';
 import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/';
 

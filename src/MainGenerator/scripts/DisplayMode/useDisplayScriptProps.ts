@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\DisplayMode\useDisplayScriptProps.ts
 import { computed } from 'vue';
 import { OmikujiDataType, ScriptComponentPropsType, UserStatsType } from '@/types/';
-import { DisplaySize } from '@omiken/shared/types';
+import { DisplaySize } from '@shared/types';
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 

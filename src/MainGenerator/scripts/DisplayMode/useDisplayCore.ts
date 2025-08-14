@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\DisplayMode\useDisplayCore.ts
 import { ref, computed } from 'vue';
 import { OmikujiDataType } from '@/types/';
-import { DisplaySize } from '@omiken/shared/types';
+import { DisplaySize } from '@shared/types';
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
 
 export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {

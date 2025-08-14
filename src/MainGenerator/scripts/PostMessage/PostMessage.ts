@@ -1,11 +1,11 @@
 // src/MainGenerator/script/PostMessage.ts
 // 250709_エイリアス変更
 import { PostActionType, PostActionWordPartyType, CharacterType } from '@/types/';
-import { postWordParty, postComment, postSpeech } from '@omiken/shared/sdk/postMessage/PostOneComme';
+import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme';
 import { ServiceManager } from './ServiceManager';
 import { CommentRequestBuilder } from './CommentRequestBuilder';
-import { ServiceAPI } from '@omiken/shared/sdk/service/ServiceAPI';
-import { ConsolePost } from '@omiken/shared/sdk/postMessage/ConsolePost';
+import { ServiceAPI } from '@shared/sdk/service/ServiceAPI';
+import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost';
 
 /**
  * メッセージ投稿を管理するクラス

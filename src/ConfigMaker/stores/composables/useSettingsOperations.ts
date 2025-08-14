@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/stores/composables/useSettingsOperations.ts
 import { Ref } from 'vue';
 import { OmikujiDataType, DisplaySettingsType, WordPartySettings, ScriptSettings } from '@/types/';
-import { PackageMetaType } from '@omiken/shared/types';
+import { PackageMetaType } from '@shared/types';
 
 /**
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
@@ -10,7 +10,7 @@ import { PackageMetaType } from '@omiken/shared/types';
 export function useSettingsOperations(data: Ref<OmikujiDataType>) {
  // scriptSettingsを更新する関数
  const updateScriptSettings = (updates: Partial<ScriptSettings>) => {
-  data.value.scriptSettings = { ...data.value.scriptSettings, ...updates }as ScriptSettings;;
+  data.value.scriptSettings = { ...data.value.scriptSettings, ...updates } as ScriptSettings;
  };
 
  // displaySettingsを更新する関数

@@ -2,7 +2,7 @@
 import { ref, computed, Ref } from 'vue';
 import type { useRuleState } from './useRuleState';
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
-import { BaseRecordType } from '@omiken/shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * ドラッグ&ドロップによる並び替え機能

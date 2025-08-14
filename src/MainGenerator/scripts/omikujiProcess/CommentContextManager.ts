@@ -3,8 +3,8 @@
 import { DefaultPlaceholders } from '@/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service';
-import { createGetMetas } from '@omiken/shared/sdk/subscribe/GetMetas';
-import { ServiceMetaCondition } from '@omiken/shared/types';
+import { createGetMetas } from '@shared/sdk/subscribe/GetMetas';
+import { ServiceMetaCondition } from '@shared/types';
 
 export class CommentContextManager {
  private serviceMeta: ServiceMeta | null = null;

@@ -5,7 +5,7 @@ import { GameScriptManager } from './GameScriptManager';
 import { CommentRestrictionChecker } from './CommentRestrictionChecker';
 import { OmikujiProcessor } from './OmikujiProcessor';
 import { CooldownManager } from './CooldownManager';
-import { checkAllConditions } from '@omiken/shared/utils/threshold/ThresholdChecker';
+import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker';
 
 interface RuleProcessResult {
  isCommentTriggered: boolean; // コメントによって起動したかをチェック

@@ -1,6 +1,6 @@
 // src/configMaker/components/RecordTabs/composables/useInlineEdit.ts
 import { ref, nextTick, ComponentPublicInstance } from 'vue';
-import { BaseRecordType } from '@omiken/shared/types';
+import { BaseRecordType } from '@shared/types';
 
 /**
  * インライン編集機能の管理

@@ -5,7 +5,7 @@ import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
 import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
 import { ensureUniqueIds, RecordCategoryItem, normalizeOrders } from './OmikujiDataNormalize';
-import { PackageMetaSchema } from '@omiken/shared/types';
+import { PackageMetaSchema } from '@shared/types';
 
 // 再エクスポート
 export * from './CategoryType';
@@ -23,7 +23,10 @@ export const PlaceholderRecordSchema = createRecordWithNormalization(Placeholder
 export const CharacterRecordSchema = createRecordWithNormalization(CharacterSchema);
 
 // scriptSettings用
-const scriptSettingsSchema = z.record(z.string(), z.record(z.string(), z.any())).default({}).catch({});
+const scriptSettingsSchema = z
+ .record(z.string(), z.record(z.string(), z.any()))
+ .default({})
+ .catch({});
 
 /**
  * おみくじデータ全体のメインスキーマ

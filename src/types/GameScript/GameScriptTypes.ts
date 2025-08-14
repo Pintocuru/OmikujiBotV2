@@ -3,7 +3,7 @@
 import { GameState } from './GameScriptSchema';
 import { PostActionType, PostActionWordPartyType } from '../OmikujiData/OmikujiSchema';
 import { GameComponentConfig } from '../GameComponent/GameRankingTypes';
-import { DefaultTypes, PresetMetadata } from '@omiken/shared/types/';
+import { DefaultTypes, PresetMetadata } from '@shared/types/';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
 
 // スクリプトプリセット

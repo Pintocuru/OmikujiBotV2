@@ -1,7 +1,7 @@
 // shared/types/CharacterSchema.ts
 // 250714_1　全編改変
 import { z } from 'zod';
-import { PresetMetadataSchema } from '@omiken/shared/types';
+import { PresetMetadataSchema } from '@shared/types';
 
 /**
  * 各種 Threshold

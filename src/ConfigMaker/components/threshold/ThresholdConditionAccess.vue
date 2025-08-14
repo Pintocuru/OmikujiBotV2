@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue';
-import { accessConditionLabels, type AccessCondition } from '@omiken/shared/types';
+import { accessConditionLabels, type AccessCondition } from '@shared/types';
 
 const props = defineProps<{ modelValue: AccessCondition[] }>();
 const emit = defineEmits<{ 'update:modelValue': [value: AccessCondition[]] }>();
