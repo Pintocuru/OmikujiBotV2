@@ -1,4 +1,4 @@
-// [Package] eslint.config.mjs - ESLint v9対応版
+// [Package] eslint.config.mjs
 import pluginVue from 'eslint-plugin-vue'
 import vueTsEslintConfig from '@vue/eslint-config-typescript'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'

@@ -13,5 +13,8 @@
   "author": "Pintocuru(せすじピンとしてます)",
   "license": "Apache-2.0",
   "main": "src/main.js",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "vite-plugin-circular-dependency": "^0.5.0"
+  }
 }
