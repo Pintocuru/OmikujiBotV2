@@ -3,6 +3,7 @@
   "version": "0.8.0-bate06",
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
+    "zyu:omikujiBot": "npx eslint src/**/*.ts --format compact --output-file eslint-errors.txt",
     "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
     "devHot:omikujiBot": "vite",
     "devApi:omikujiBot": "tsx server/start-dev-server.ts",
@@ -13,8 +14,5 @@
   "author": "Pintocuru(せすじピンとしてます)",
   "license": "Apache-2.0",
   "main": "src/main.js",
-  "type": "module",
-  "devDependencies": {
-    "vite-plugin-circular-dependency": "^0.5.0"
-  }
+  "type": "module"
 }

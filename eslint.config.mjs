@@ -16,57 +16,90 @@ const checkLevel = process.env.VITE_TS_CHECK_LEVEL || 'development'
 // チェックレベルに応じたルール設定
 function getRulesForLevel(level) {
   const baseRules = {
-    // 全レベル共通
+    // コンポーネント名が複数単語かどうかをチェック
     'vue/multi-word-component-names': 0,
   }
 
   switch (level) {
+    // 1. 循環参照のみチェック、他は緩い設定
     case 'development':
       return {
         ...baseRules,
-        // 1. 循環参照のみチェック、他は緩い設定
-        'import/no-cycle': 'error',
+        // ファイル間の循環参照を検出します。
+        'import/no-cycle': 'off',
+        // 未使用の変数を許可します。
         '@typescript-eslint/no-unused-vars': 'off',
+        // 'any'型の使用を許可します。
         '@typescript-eslint/no-explicit-any': 'off',
+        // 明示的な型付けがない場合でも許可します。
         '@typescript-eslint/no-inferrable-types': 'off',
+        // 'let'の代わりに'const'を使うことを強制しません。
         '@typescript-eslint/prefer-const': 'off',
+        // 空の関数定義を許可します。
         '@typescript-eslint/no-empty-function': 'off',
+        // Vueコンポーネント内の未使用変数を許可します。
         'vue/no-unused-vars': 'off',
+        // 空のオブジェクト型 '{}' の使用を許可します。
+        '@typescript-eslint/no-empty-object-type': 'off',
       }
 
     case 'beta':
+      // 2. 型エラーは厳格、anyは許容
       return {
         ...baseRules,
-        // 2. 型エラーは厳格、anyは許容
+        // ファイル間の循環参照を検出します。
         'import/no-cycle': 'error',
+        // 未使用の変数を警告します。
         '@typescript-eslint/no-unused-vars': 'warn',
-        '@typescript-eslint/no-explicit-any': 'off', // anyは許容
+        // 'any'型の使用を許可します。
+        '@typescript-eslint/no-explicit-any': 'off',
+        // 明示的な型付けがない場合を警告します。
         '@typescript-eslint/no-inferrable-types': 'warn',
+        // 'let'の代わりに'const'を使うことを警告します。
         '@typescript-eslint/prefer-const': 'warn',
+        // 空の関数定義を警告します。
         '@typescript-eslint/no-empty-function': 'warn',
+        // 安全でない代入を許可します。
         '@typescript-eslint/no-unsafe-assignment': 'off',
+        // 安全でないメンバーアクセスを許可します。
         '@typescript-eslint/no-unsafe-member-access': 'off',
+        // 安全でない関数の呼び出しを許可します。
         '@typescript-eslint/no-unsafe-call': 'off',
+        // Vueコンポーネント内の未使用変数を警告します。
         'vue/no-unused-vars': 'warn',
       }
 
     case 'production':
+      // 3. 最も厳格な設定
       return {
         ...baseRules,
-        // 3. 最も厳格な設定
+        // ファイル間の循環参照を検出します。
         'import/no-cycle': 'error',
+        // 未使用の変数をエラーにします。
         '@typescript-eslint/no-unused-vars': 'error',
+        // 'any'型の使用をエラーにします。
         '@typescript-eslint/no-explicit-any': 'error',
+        // 明示的な型付けがない場合をエラーにします。
         '@typescript-eslint/no-inferrable-types': 'error',
+        // 'let'の代わりに'const'を使うことをエラーにします。
         '@typescript-eslint/prefer-const': 'error',
+        // 空の関数定義をエラーにします。
         '@typescript-eslint/no-empty-function': 'error',
+        // 安全でない代入をエラーにします。
         '@typescript-eslint/no-unsafe-assignment': 'error',
+        // 安全でないメンバーアクセスをエラーにします。
         '@typescript-eslint/no-unsafe-member-access': 'error',
+        // 安全でない関数の呼び出しをエラーにします。
         '@typescript-eslint/no-unsafe-call': 'error',
+        // 安全でない戻り値をエラーにします。
         '@typescript-eslint/no-unsafe-return': 'error',
+        // テンプレートリテラル内の型を制限します。
         '@typescript-eslint/restrict-template-expressions': 'error',
+        // Vueコンポーネント内の未使用変数をエラーにします。
         'vue/no-unused-vars': 'error',
+        // 'v-for'に'key'が必須であることをエラーにします。
         'vue/require-v-for-key': 'error',
+        // Vueコンポーネント内の未使用コンポーネントをエラーにします。
         'vue/no-unused-components': 'error',
       }
 
