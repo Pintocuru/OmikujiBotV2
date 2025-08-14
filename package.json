@@ -1,16 +1,17 @@
 {
- "name": "omikuji-bot",
- "version": "0.8.0-bate06",
- "description": "おみくじ付きBOTジェネレーター",
- "scripts": {
-  "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
-  "devHot:omikujiBot": "vite",
-  "devApi:omikujiBot": "tsx server/start-dev-server.ts",
-  "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
-  "build:omikujiBot": "tsx build.ts"
- },
- "author": "Pintocuru(せすじピンとしてます)",
- "license": "Apache-2.0",
- "main": "src/main.js",
- "type": "module"
+  "name": "omikuji-bot",
+  "version": "0.8.0-bate06",
+  "description": "おみくじ付きBOTジェネレーター",
+  "scripts": {
+    "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
+    "devHot:omikujiBot": "vite",
+    "devApi:omikujiBot": "tsx server/start-dev-server.ts",
+    "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
+    "lint": "eslint .",
+    "build:omikujiBot": "tsx build.ts"
+  },
+  "author": "Pintocuru(せすじピンとしてます)",
+  "license": "Apache-2.0",
+  "main": "src/main.js",
+  "type": "module"
 }
