@@ -182,6 +182,14 @@ export const useDisplayStore = defineStore('display', () => {
 
  // ===== ウォッチャー =====
 
+ // 強制更新（displayStoreから呼び出される）
+ watch(
+  () => appStore.botMessages,
+  () => {
+   triggerUpdate();
+  },
+  { deep: true, immediate: false }
+ );
  // currentScriptKeyが変更されたときに自動更新
  watch(
   currentScriptKey,

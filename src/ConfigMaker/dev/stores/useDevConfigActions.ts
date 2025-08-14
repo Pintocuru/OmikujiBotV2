@@ -5,9 +5,9 @@ import { useFileActions } from './useApiFileActions';
 import { useSaveActions } from './useApiSaveActions';
 import { useLoadActions } from './useApiLoadActions';
 
-import { DevConfigState } from './useDevConfigState';
+import { DevConfigStateType } from '../devTypes';
 
-export function useDevConfigActions(state: DevConfigState) {
+export function useDevConfigActions(state: DevConfigStateType) {
  const stateActions = useDevConfigStateActions(state);
  const { handleAsyncAction } = useApiCore(state);
  const fileActions = useFileActions(state, handleAsyncAction);

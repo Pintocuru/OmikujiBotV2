@@ -1,4 +1,17 @@
 // src/configMaker/dev/devTypes.ts
+import { Ref } from 'vue';
+
+export interface DevConfigStateType {
+ saveFileName: Ref<string>;
+ availableFiles: Ref<FileItem[]>;
+ isSaving: Ref<boolean>;
+ isLoading: Ref<boolean>;
+ isDeleting: Ref<boolean>;
+ isLoadingFileList: Ref<boolean>;
+ isExecutingConfirm: Ref<boolean>;
+ isServerConnected: Ref<boolean>;
+ isDeletingFileMap: Map<string, boolean>;
+}
 
 export interface FileItem {
  name: string;

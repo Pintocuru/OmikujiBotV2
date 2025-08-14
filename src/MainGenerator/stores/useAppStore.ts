@@ -1,4 +1,4 @@
-// src\MainGenerator\stores\index.ts
+// src\MainGenerator\stores\useAppStore.ts
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { OmikujiDataSchema, BotMessage } from '@/types/';
@@ -9,7 +9,6 @@ import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
 import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';
 import { CharacterCollector } from '@/MainGenerator/scripts/BotCharacter/CharacterCollector';
 import { Comment } from '@onecomme.com/onesdk/types/Comment';
-import { useDisplayStore } from './useDisplayStore';
 
 export const useAppStore = defineStore('app', () => {
  // 基本設定
@@ -35,7 +34,6 @@ export const useAppStore = defineStore('app', () => {
   try {
    const isInit = await GetUserComments(config).fetchComments((comments) => {
     updateBotMessages(comments);
-    forceUpdate();
    });
    isInitialized.value = isInit;
    if (isInit) startTimers();
@@ -108,15 +106,6 @@ export const useAppStore = defineStore('app', () => {
   botMessages.value = [];
  };
 
- /**
-  * 強制更新（displayStoreから呼び出される）
-  */
- const forceUpdate = () => {
-  // displayStoreの更新をトリガー
-  const displayStore = useDisplayStore();
-  displayStore.triggerUpdate();
- };
-
  return {
   // 状態
   omikujiData,
@@ -135,7 +124,6 @@ export const useAppStore = defineStore('app', () => {
   processTimerMessages,
   startTimers,
   stopTimers,
-  clearMessages,
-  forceUpdate
+  clearMessages
  };
 });

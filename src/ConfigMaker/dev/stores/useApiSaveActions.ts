@@ -3,11 +3,14 @@ import { devConfigApi } from '../services/apiService';
 import { generateDateFileName } from '../services/devConfigUtils';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
-import { DevConfigState } from './useDevConfigState';
+import { DevConfigStateType } from '../devTypes';
 
 export function useSaveActions(
- state: DevConfigState,
- handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigState) => Promise<any>
+ state: DevConfigStateType,
+ handleAsyncAction: (
+  action: () => Promise<any>,
+  loadingKey: keyof DevConfigStateType
+ ) => Promise<any>
 ) {
  // ファイル一覧取得（他のファイルとの共通処理）
  const fetchFileList = async () => {

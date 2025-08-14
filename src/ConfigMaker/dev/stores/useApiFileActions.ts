@@ -1,11 +1,14 @@
 // src/configMaker/dev/stores/api/useFileActions.ts
 import { devConfigApi } from '../services/apiService';
 import { toast } from 'vue-sonner';
-import { DevConfigState } from './useDevConfigState';
+import { DevConfigStateType } from '../devTypes';
 
 export function useFileActions(
- state: DevConfigState,
- handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigState) => Promise<any>
+ state: DevConfigStateType,
+ handleAsyncAction: (
+  action: () => Promise<any>,
+  loadingKey: keyof DevConfigStateType
+ ) => Promise<any>
 ) {
  // ファイル一覧取得
  const fetchFileList = async () => {

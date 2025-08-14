@@ -1,8 +1,8 @@
 // src/configMaker/dev/stores/useDevConfigGetters.ts
 import { computed } from 'vue';
-import { DevConfigState } from './useDevConfigState';
+import { DevConfigStateType } from '../devTypes';
 
-export function useDevConfigGetters(state: DevConfigState) {
+export function useDevConfigGetters(state: DevConfigStateType) {
  // ソート済みファイル一覧
  const sortedFiles = computed(() => {
   return [...state.availableFiles.value].sort(

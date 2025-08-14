@@ -2,22 +2,26 @@
 import { devConfigApi } from '../services/apiService';
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore';
 import { toast } from 'vue-sonner';
-import { DevConfigState } from './useDevConfigState';
 import { OmikujiDataType } from '@/types/';
-import { useDevStore } from './useDevStore';
+import { DevConfigStateType } from '../devTypes';
 
 export function useLoadActions(
- state: DevConfigState,
- handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigState) => Promise<any>
+ state: DevConfigStateType,
+ handleAsyncAction: (
+  action: () => Promise<any>,
+  loadingKey: keyof DevConfigStateType
+ ) => Promise<any>
 ) {
  // 設定読み込み
  const loadConfig = async (fileName: string) => {
   const omikujiStore = useOmikujiStore();
-  const devStore = useDevStore();
   return await handleAsyncAction(async () => {
    const configData = await devConfigApi.loadConfig(fileName);
    omikujiStore.loadData(configData);
-   devStore.saveFileName = fileName;
+
+   // saveFileNameを直接stateから更新
+   state.saveFileName.value = fileName;
+
    toast.success('読み込み完了', {
     description: `設定 "${fileName.replace('.json', '')}" を読み込みました`,
     duration: 3000

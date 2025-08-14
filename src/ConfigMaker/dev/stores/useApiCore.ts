@@ -1,8 +1,8 @@
 // src/configMaker/dev/stores/api/useApiCore.ts
 import { toast } from 'vue-sonner';
-import { DevConfigState } from './useDevConfigState';
+import { DevConfigStateType } from '../devTypes';
 
-export function useApiCore(state: DevConfigState) {
+export function useApiCore(state: DevConfigStateType) {
  // エラーハンドリング
  const handleApiError = (error: Error) => {
   console.error('API Error:', error);
@@ -18,7 +18,7 @@ export function useApiCore(state: DevConfigState) {
  // 非同期アクションのラッパー
  const handleAsyncAction = async <T>(
   action: () => Promise<T>,
-  loadingKey: keyof DevConfigState
+  loadingKey: keyof DevConfigStateType
  ): Promise<T | null> => {
   const target = state[loadingKey];
   if (!('value' in target)) {

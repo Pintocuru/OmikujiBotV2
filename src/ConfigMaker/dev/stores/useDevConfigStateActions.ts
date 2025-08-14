@@ -1,8 +1,7 @@
 // src/configMaker/dev/stores/useDevConfigStateActions.ts
-import { FileItem } from '../devTypes';
-import { DevConfigState } from './useDevConfigState';
+import { FileItem, DevConfigStateType } from '../devTypes';
 
-export function useDevConfigStateActions(state: DevConfigState) {
+export function useDevConfigStateActions(state: DevConfigStateType) {
  // ファイル管理
  const setFiles = (files: FileItem[]) => {
   state.availableFiles.value = files;
