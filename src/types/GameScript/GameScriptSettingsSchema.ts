@@ -6,7 +6,7 @@ import { ParameterItem, ScriptPreset } from './GameScriptTypes';
  * scriptGameMapから動的にスキーマを生成する関数
  * デフォルト値の生成に必要
  */
-export function createScriptSettingsSchema<T extends Record<string, ScriptPreset>>(
+function createScriptSettingsSchema<T extends Record<string, ScriptPreset>>(
  gameScriptMap: T
 ): z.ZodObject<{ [K in keyof T]: z.ZodTypeAny }> {
  const schemaShape: any = {};

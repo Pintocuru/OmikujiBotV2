@@ -10,7 +10,7 @@ import { PackageMetaType } from '@omiken/shared/types';
 export function useSettingsOperations(data: Ref<OmikujiDataType>) {
  // scriptSettingsを更新する関数
  const updateScriptSettings = (updates: Partial<ScriptSettings>) => {
-  data.value.scriptSettings = { ...data.value.scriptSettings, ...updates };
+  data.value.scriptSettings = { ...data.value.scriptSettings, ...updates }as ScriptSettings;;
  };
 
  // displaySettingsを更新する関数

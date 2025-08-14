@@ -1,8 +1,6 @@
 // src/types/OmikujiDataSchema.ts
 import { z } from 'zod';
 import { DisplaySettingsSchema } from './DisplaySettingsSchema';
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap';
-import { createScriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema';
 import { PlaceholderSchema } from './PlaceholderSchema';
 import { CharacterSchema } from './CharacterSchema';
 import { BaseCommentRuleSchema, BaseTimerRuleSchema, WordPartySettingsSchema } from './RulesSchema';
@@ -25,7 +23,7 @@ export const PlaceholderRecordSchema = createRecordWithNormalization(Placeholder
 export const CharacterRecordSchema = createRecordWithNormalization(CharacterSchema);
 
 // scriptSettings用
-const scriptSettingsSchema = createScriptSettingsSchema(gameScriptMap);
+const scriptSettingsSchema = z.record(z.string(), z.record(z.string(), z.any())).default({}).catch({});
 
 /**
  * おみくじデータ全体のメインスキーマ
@@ -56,9 +54,20 @@ export const categorySchemaMap = {
  placeholders: PlaceholderSchema,
  characters: CharacterSchema,
  wordPartySettings: z.array(WordPartySettingsSchema),
- scriptSettings: createScriptSettingsSchema(gameScriptMap),
+ scriptSettings: scriptSettingsSchema,
  displaySettings: DisplaySettingsSchema
 } as const;
+
+export type CategoryTypeMap = {
+ comments: OmikujiDataType['comments'];
+ timers: OmikujiDataType['timers'];
+ placeholders: OmikujiDataType['placeholders'];
+ characters: OmikujiDataType['characters'];
+ scriptSettings: OmikujiDataType['scriptSettings'];
+ displaySettings: OmikujiDataType['displaySettings'];
+ wordPartySettings: OmikujiDataType['wordPartySettings'];
+ meta: OmikujiDataType['meta'];
+};
 
 /**
  * 生データを解析して正規化されたおみくじデータを返す

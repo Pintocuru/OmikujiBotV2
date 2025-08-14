@@ -1,5 +1,5 @@
 // src/services/UserStatsService.ts
-import { UserStatsType, UserStatsTypeSchema } from '@/types/';
+import { UserStatsType, UserStatsTypeSchema } from '@/types/GameScript/GameScriptSchema';
 import { GameContext } from '../GameContext';
 
 export class UserStatsService {

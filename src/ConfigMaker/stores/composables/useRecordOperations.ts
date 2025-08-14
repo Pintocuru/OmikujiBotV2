@@ -3,6 +3,7 @@ import { nextTick, Ref } from 'vue';
 import {
  categorySchemaMap,
  CategoryType,
+ CategoryTypeMap,
  OmikujiDataType,
  RecordCategoryType,
  RecordCategoryTypeMap
@@ -23,12 +24,12 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * カテゴリ全体のデータを更新
   */
- const updateCategoryData = <C extends CategoryType>(
-  category: C,
-  newData: Record<string, OmikujiDataType[C]>
- ) => {
-  data.value[category] = newData as OmikujiDataType[C];
- };
+const updateCategoryData = <C extends CategoryType>(
+ category: C,
+ newData: OmikujiDataType[C]
+) => {
+ data.value[category] = newData;
+};
 
  /**
   * カテゴリに新しいアイテムを追加
@@ -73,46 +74,46 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
  /**
   * RecordCategoryのプロパティを更新
   */
- const updateRuleNestedProperty = <
+const updateRuleNestedProperty = <
   C extends RecordCategoryType,
-  K extends keyof RecordCategoryTypeMap[C]
- >(
+  K extends keyof OmikujiDataType[C][string] // <- ここを修正
+>(
   category: C,
   id: string,
   key: K,
-  value: RecordCategoryTypeMap[C][K]
- ) => {
-  const currentCategory = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
-  if (currentCategory[id]) {
-   const updatedItem = {
-    ...currentCategory[id],
-    [key]: value,
-    updatedAt: new Date().toISOString()
-   };
-   const updatedCategory = {
-    ...currentCategory,
-    [id]: updatedItem
-   };
-   updateCategoryData(category, updatedCategory as Record<string, OmikujiDataType[C]>);
+  value: OmikujiDataType[C][string][K]
+) => {
+  const currentCategory = data.value[category] as OmikujiDataType[C];
+
+  if (currentCategory && currentCategory[id]) {
+    const updatedItem = {
+      ...currentCategory[id],
+      [key]: value,
+      updatedAt: new Date().toISOString()
+    };
+    const updatedCategory = {
+      ...currentCategory,
+      [id]: updatedItem
+    } as OmikujiDataType[C];
+
+    updateCategoryData(category, updatedCategory);
   }
- };
+};
 
  /**
   * カテゴリからアイテムを削除
   */
- const removeItem = (category: RecordCategoryType, id: string) => {
-  const categoryData = data.value[category] as Record<string, any>;
+const removeItem = (category: RecordCategoryType, id: string) => {
+  const categoryData = data.value[category] as Record<string, OmikujiDataType[typeof category][string]>;
 
   if (categoryData && categoryData[id] !== undefined) {
-   const updatedCategory = Object.fromEntries(
-    Object.entries(categoryData).filter(([key]) => key !== id)
-   );
-   updateCategoryData(
-    category,
-    updatedCategory as Record<string, OmikujiDataType[typeof category]>
-   );
+    const updatedCategory = Object.fromEntries(
+      Object.entries(categoryData).filter(([key]) => key !== id)
+    ) as OmikujiDataType[typeof category]; 
+
+    updateCategoryData(category, updatedCategory);
   }
- };
+};
 
  /**
   * カテゴリ内のアイテムを複製

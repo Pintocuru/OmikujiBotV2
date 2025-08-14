@@ -43,7 +43,7 @@ export const DeveloperSettingsSchema = z.object({
   startup: z.object({
     component: z.enum(['omikujiBot', 'gameScript']).default('omikujiBot'),
     // defaultComponent === 'script' のときのみ利用
-    scriptKey: z.enum(scriptGameKeys as [ScriptGameKey, ...ScriptGameKey[]])
+    scriptKey: z.string().nullable().default(null)
       .nullable()
       .default(null)
   }),

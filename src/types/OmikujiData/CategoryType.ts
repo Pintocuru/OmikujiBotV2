@@ -40,8 +40,6 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
 
 // 選択可能なカテゴリタイプの定数配列
 export const recordCategoryLabel = ['comments', 'timers', 'placeholders', 'characters'] as const;
-
-// 選択可能なカテゴリタイプの型定義
 export type RecordCategoryType = (typeof recordCategoryLabel)[number];
 export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType;
 export type RecordCategoryTypeMap = {
@@ -59,6 +57,8 @@ export const settingsCategoryType = [
  'meta'
 ] as const;
 export type SettingsCategoryType = (typeof settingsCategoryType)[number];
+
+
 
 /**
  * すべてのカテゴリタイプを定義する定数配列
