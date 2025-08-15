@@ -44,6 +44,9 @@
   }
  },
  "include": [
+  "../../shared/**/*.ts",
+  "../../shared/**/*.d.ts",
+  "../../shared/**/*.vue",
   "src/**/*.ts",
   "src/**/*.d.ts",
   "src/**/*.vue",

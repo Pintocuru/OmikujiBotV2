@@ -1,6 +1,6 @@
 {
   "name": "omikuji-bot",
-  "version": "0.8.0-bate06",
+  "version": "0.8.0-beta06",
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
     "zyu:omikujiBot": "npx eslint src/**/*.ts --format compact --output-file eslint-errors.txt",

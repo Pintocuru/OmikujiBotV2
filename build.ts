@@ -3,10 +3,11 @@ import { WebpackBuilder } from '@shared/utils/webpackBuild/buildMain'
 import { BuildConfig, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
 import { alias } from './vite.config'
 import packageJson from './package.json'
+import { createShimsVue } from './tools/CreateOmikujiData'
 
 // 各設定ファイルをインポート
 import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0'
-import { createShimsVue } from './tools/CreateOmikujiData'
+import percent_Dora from './buildConfigs/5percent_Dora'
 
 // システム共通データ
 const systemCommonData: SystemCommonData = {
@@ -30,9 +31,8 @@ const systemCommonData: SystemCommonData = {
  */
 const buildConfigs: BuildConfig[] = [
   ReimuMarisaConfig,
+  percent_Dora,
   // 新しい設定はここに追加
-  // AnotherBotConfig,
-  // YetAnotherBotConfig
 ]
 
 // ビルド実行

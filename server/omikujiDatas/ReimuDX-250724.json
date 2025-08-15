@@ -3,9 +3,9 @@
     "id": "1754926464640-roopmp",
     "name": "ReimuMarisaDX",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "0.8.0-bate06",
+    "version": "0.8.0-beta06",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-bate06",
+    "generatorVersion": "0.8.0-beta06",
     "author": "Pintocuru",
     "tags": [
       "おみくじBOT",
@@ -14,7 +14,8 @@
       "ゆっくり霊夢",
       "ゆっくり魔理沙"
     ],
-    "license": "CC-BY 4.0"
+    "license": "個人利用のみ",
+    "url": "https://booth.pm/ja/items/5471598"
   },
   "comments": {
     "omikujiReimu": {
@@ -3461,7 +3462,7 @@
       "key": "",
       "name": "霊夢のおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-08-15T11:22:58.681Z",
       "order": 1,
       "editorColor": "#EC4899",
       "tags": [],
@@ -4429,7 +4430,7 @@
       "toastEnabled": true
     },
     "developer": {
-      "godModeEnabled": true,
+      "godModeEnabled": false,
       "proModeEnabled": true,
       "startup": {
         "component": "omikujiBot",
@@ -4440,7 +4441,11 @@
         "timers": true,
         "placeholders": true,
         "characters": true,
-        "gameScripts": [],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "gameScriptSettings": true,
         "wordPartySettings": true
       }
