@@ -2,8 +2,8 @@
   "meta": {
     "id": "1754823565389-7x2yib",
     "name": "5percent_Dora",
-    "description": "Twitterで人気の「5％の確率で性器を露出するドラちゃん」を模したおみくじBOTです",
-    "version": "0.1.0",
+    "description": "Twitterで人気の某有名BOTを模したおみくじBOTです",
+    "version": "2025.8.16",
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta06",
     "author": "Pintocuru",
@@ -159,7 +159,7 @@
           "^ドラちゃん",
           "^どらちゃん",
           "^dorachan",
-          "5percent_dora"
+          "^5percent_dora"
         ]
       },
       "scriptId": null,
@@ -307,7 +307,7 @@
       "key": "",
       "name": "ひみつ道具",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-16T02:37:56.360Z",
+      "updatedAt": "2025-08-16T09:43:36.294Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],

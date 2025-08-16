@@ -3,10 +3,10 @@
   "version": "0.8.0-beta06",
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
-    "zyu:omikujiBot": "npx eslint src/**/*.ts --format compact --output-file eslint-errors.txt",
     "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
     "devHot:omikujiBot": "vite",
     "devApi:omikujiBot": "tsx server/start-dev-server.ts",
+    "zyu:omikujiBot": "npx eslint src/**/*.ts --format compact --output-file eslint-errors.txt",
     "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
     "lint": "eslint .",
     "build:omikujiBot": "tsx build.ts"
