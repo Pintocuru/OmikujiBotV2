@@ -6,7 +6,7 @@ import packageJson from './package.json'
 import { createShimsVue } from './tools/CreateOmikujiData'
 
 // 各設定ファイルをインポート
-import ReimuMarisaConfig from './buildConfigs/ReimuMarisa_v0.8.0'
+import ReimuMarisaConfig from './buildConfigs/ReimuMarisa'
 import percent_Dora from './buildConfigs/5percent_Dora'
 
 // システム共通データ
