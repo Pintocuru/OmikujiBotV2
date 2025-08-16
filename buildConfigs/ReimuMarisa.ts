@@ -1,4 +1,4 @@
-// buildConfigs/ReimuMarisa_v0.8.0.ts
+// buildConfigs/ReimuMarisa.ts
 import { BuildConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { commonBuildConfig } from './base/baseSettings'
 
@@ -9,7 +9,7 @@ const buildConfig: BuildConfig = {
   ...commonBuildConfig, // 共通項目
   // プロジェクト識別情報
   name: 'ReimuMarisa',
-  version: '0.8.0-beta06',
+  version: '2025.8.16',
 
   // テンプレート情報（わんコメ用）
   template: {

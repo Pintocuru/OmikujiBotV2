@@ -9,13 +9,13 @@ const buildConfig: BuildConfig = {
   ...commonBuildConfig, // 共通項目
   // プロジェクト識別情報
   name: '5percent_Dora',
-  version: '0.1.0',
+  version: '2025.8.16',
 
   // テンプレート情報（わんコメ用）
   template: {
-    name: 'どこでもドラちゃんBot 1.0.0',
-    boothURL: 'https://pintocuru.booth.pm/items/5471598',
-    readmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
+    name: 'どこでもドラちゃんBot 2025.8.16',
+    boothURL: 'https://pintocuru.booth.pm/items/7291931',
+    readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBot5percent_Dora/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
   },
 
@@ -28,7 +28,7 @@ const buildConfig: BuildConfig = {
   // リソースファイル
   filesToCopy: [
     { from: 'assets/config.js', to: 'config.js' },
-    { from: 'assets/exported/thumb/ReimuMarisaDX.png', to: 'thumb.png' },
+    { from: 'assets/exported/thumb/5percent_Dora.gif', to: 'thumb.gif' },
     { from: 'assets/exported/Characters/5percent_Dora/', to: 'Characters/5percent_Dora/' },
   ],
 }
