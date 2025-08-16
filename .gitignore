@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .obsidian
 zipped
+assets/source/*
 
 # Editor directories and files
 .vscode/*

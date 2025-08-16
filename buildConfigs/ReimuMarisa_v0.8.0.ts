@@ -28,9 +28,9 @@ const buildConfig: BuildConfig = {
   // リソースファイル
   filesToCopy: [
     { from: 'assets/config.js', to: 'config.js' },
-    { from: 'assets/thumb/ReimuMarisaDX.png', to: 'thumb.png' },
-    { from: 'assets/Characters/reimu/', to: 'Characters/reimu/' },
-    { from: 'assets/Characters/marisa/', to: 'Characters/marisa/' },
+    { from: 'assets/exported/thumb/ReimuMarisaDX.png', to: 'thumb.png' },
+    { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
+    { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
   ],
 }
 
