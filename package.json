@@ -6,10 +6,9 @@
     "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
     "devHot:omikujiBot": "vite",
     "devApi:omikujiBot": "tsx server/start-dev-server.ts",
-    "lint": "eslint src/**/*.{ts,vue}",
-    "lintLevel2": "VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
-    "lintLevel3": "VITE_TS_CHECK_LEVEL=production eslint src/**/*.{ts,vue}",
-    "zyu:omikujiBot": "npx eslint src/**/*.ts --format compact --output-file eslint-errors.txt",
+    "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
+    "lintLevel2:omikujiBot": "VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
+    "lintLevel3:omikujiBot": "VITE_TS_CHECK_LEVEL=production eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
     "build:omikujiBot": "tsx build.ts"
   },
