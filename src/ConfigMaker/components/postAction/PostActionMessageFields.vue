@@ -1,21 +1,23 @@
 <!-- src/configMaker/components/postAction/PostActionMessageFields.vue -->
 <template>
   <div class="space-y-2 mb-2">
+    <!-- コメント -->
     <div class="flex items-center gap-2">
       <label class="w-24 text-xs flex-shrink-0">💬 コメント</label>
       <input
         type="text"
-        v-model="messageModel"
+        v-model="messageContent"
         class="input input-bordered input-sm w-2/3"
         placeholder="コメントの投稿"
       />
     </div>
 
+    <!-- トースト -->
     <div class="flex items-center gap-2">
       <label class="w-24 text-xs flex-shrink-0">🍞 トースト</label>
       <input
         type="text"
-        v-model="messageModel"
+        v-model="messageToast"
         class="input input-bordered input-sm w-2/3"
         placeholder="トーストの表示"
       />
@@ -38,11 +40,18 @@
   const emit = defineEmits(['update:action'])
 
   // コメント用のcomputedプロパティ
-  const messageModel = computed({
+  const messageContent = computed({
     get: () => props.action.messageContent,
     set: (value) => {
-      // 親コンポーネントに新しい値を渡して、更新を依頼する
       emit('update:action', { ...props.action, messageContent: value })
+    },
+  })
+
+  // トースト用のcomputedプロパティ
+  const messageToast = computed({
+    get: () => props.action.messageToast,
+    set: (value) => {
+      emit('update:action', { ...props.action, messageToast: value })
     },
   })
 </script>
