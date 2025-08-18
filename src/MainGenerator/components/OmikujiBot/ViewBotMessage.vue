@@ -7,7 +7,6 @@
       tag="div"
       appear
       move-class="comment-move"
-      @before-enter="onBeforeEnter"
       @enter="onEnter"
       @leave="onLeave"
     >
@@ -59,13 +58,13 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
-  import { getImagePath } from '@/types/'
-  import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage'
-  import { useCommentAnimation } from '@/MainGenerator/components/OmikujiBot/useCommentAnimation'
-  import type { AnimationType } from '@/types/BotComponents/animation'
+  import { getImagePath } from '@/types/env'
+  import { AnimationType } from '@/types/BotComponents/animation'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
-  import { storeToRefs } from 'pinia'
   import CommentBubble from './CommentBubble.vue'
+  import { useBotCommentDisplay } from '@MainComponents/OmikujiBot/useBotMessage'
+  import { useCommentAnimation } from '@MainComponents/OmikujiBot/useCommentAnimation'
+  import { storeToRefs } from 'pinia'
 
   // サイズ設定の定数
   const SIZE_CONFIG = {
@@ -99,17 +98,8 @@
   const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
 
   // アニメーションイベントハンドラー
-  const onBeforeEnter = (el: Element) => {
-    // 初期状態の設定（必要に応じて）
-  }
-
-  const onEnter = (el: Element, done: () => void) => {
-    animateEnter(el, done)
-  }
-
-  const onLeave = (el: Element, done: () => void) => {
-    animateLeave(el, done)
-  }
+  const onEnter = (el: Element, done: () => void) => animateEnter(el, done)
+  const onLeave = (el: Element, done: () => void) => animateLeave(el, done)
 
   onMounted(start)
   onUnmounted(stop)
@@ -119,10 +109,5 @@
   /* CSS Transitionは削除、Anime.jsが代替 */
   .comment-move {
     transition: transform 0.3s ease;
-  }
-
-  .avatar {
-    will-change: transform, opacity;
-    transition: opacity 0.4s ease-in-out;
   }
 </style>
