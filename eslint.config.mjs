@@ -26,7 +26,7 @@ function getRulesForLevel(level) {
       return {
         ...baseRules,
         // ファイル間の循環参照を検出します。
-        'import/no-cycle': 'off',
+        'import/no-cycle': ['warn', { maxDepth: 3 }],
         // 未使用の変数を許可します。
         '@typescript-eslint/no-unused-vars': 'off',
         // 'any'型の使用を許可します。
@@ -48,7 +48,7 @@ function getRulesForLevel(level) {
       return {
         ...baseRules,
         // ファイル間の循環参照を検出します。
-        'import/no-cycle': 'error',
+        'import/no-cycle': ['error', { maxDepth: 3 }],
         // 未使用の変数を警告します。
         '@typescript-eslint/no-unused-vars': 'warn',
         // 'any'型の使用を許可します。
@@ -140,7 +140,11 @@ export default [
     settings: {
       'import/resolver': {
         typescript: {
-          project: './tsconfig.json',
+          project: ['./tsconfig.json'],
+          alwaysTryTypes: true,
+        },
+        node: {
+          extensions: ['.js', '.ts', '.vue'],
         },
       },
     },
