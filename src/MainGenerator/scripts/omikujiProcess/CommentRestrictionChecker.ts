@@ -2,23 +2,23 @@
 // 制限チェッカー
 import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/types/Comment'
-import { CooldownManager } from './CooldownManager'
+import { useAppStore } from '@/MainGenerator/stores'
 
 interface RestrictionCheckResult {
   isBlocked: boolean
   toastMessages: BotMessage[]
+  seed?: string
 }
 
 export class CommentRestrictionChecker {
-  constructor(
-    private readonly cooldownManager: CooldownManager,
-    private readonly firstCharacter: CharacterType | null
-  ) {}
+  constructor(private readonly firstCharacter: CharacterType | null) {}
 
   /**
    * 制限チェック（重複チェック、クールダウンチェック）
    */
   checkRestrictions(comment: Comment, rule: CommentRuleType): RestrictionCheckResult {
+    const { cooldownManager } = useAppStore()
+
     const isCommentBased = rule.threshold.conditions.includes('comment')
     const userName = comment.data.displayName || comment.data.name
 
@@ -53,9 +53,14 @@ export class CommentRestrictionChecker {
           )
           return { isBlocked: true, toastMessages: this.createErrorToast(message) }
         case 'showLastResult':
-          // 最後の有効な結果を取得・表示するロジックをここに実装する
-          // 例: return { isBlocked: false, toastMessages: this.createLastResultToast(...) };
-          return { isBlocked: false, toastMessages: [] } // 例として一旦メッセージなし
+          // 最後の有効な結果(sessionId+userId+最後の回数)を返す
+          const userDrawCount = rule.limits.drawLimit
+          const sessionId = cooldownManager.getSessionId()
+          return {
+            isBlocked: false,
+            toastMessages: [],
+            seed: `${sessionId}-${comment.data.userId}-${userDrawCount}`,
+          }
         case 'doNothing':
         default:
           return { isBlocked: true, toastMessages: [] }
@@ -63,23 +68,33 @@ export class CommentRestrictionChecker {
     }
 
     // すべての制限をクリア
-    return { isBlocked: false, toastMessages: [] }
+    // seedをsessionId+userId+おみくじ回数にする
+    const currentDrawCount = cooldownManager.getUserDrawCount(comment.data.userId, rule.id)
+    const sessionId = cooldownManager.getSessionId()
+    return {
+      isBlocked: false,
+      toastMessages: [],
+      seed: `${sessionId}-${comment.data.userId}-${currentDrawCount}`,
+    }
   }
 
   // 連投制限
   private isRepeatBlocked(comment: Comment, rule: CommentRuleType): boolean {
-    return this.cooldownManager.isRepeatBlocked(comment.data.userId, rule.limits.isRepeatAllowed)
+    const { cooldownManager } = useAppStore()
+    return cooldownManager.isRepeatBlocked(comment.data.userId, rule.limits.isRepeatAllowed)
   }
 
   // クールダウン制限
   private isCooldownBlocked(rule: CommentRuleType): boolean {
+    const { cooldownManager } = useAppStore()
     const cooldownSeconds = rule.limits.cooldownSeconds
-    return this.cooldownManager.isCooldownBlocked(cooldownSeconds)
+    return cooldownManager.isCooldownBlocked(cooldownSeconds)
   }
 
   // 回数制限
   private isDrawLimitExceeded(comment: Comment, rule: CommentRuleType): boolean {
-    return this.cooldownManager.isDrawLimitExceeded(comment.data.userId, rule.id, rule.limits.drawLimit)
+    const { cooldownManager } = useAppStore()
+    return cooldownManager.isDrawLimitExceeded(comment.data.userId, rule.id, rule.limits.drawLimit)
   }
 
   /**

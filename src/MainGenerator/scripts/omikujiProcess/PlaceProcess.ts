@@ -31,13 +31,13 @@ export class PlaceProcess {
   /**
    * PostAction配列のプレースホルダーを置換して返す
    */
-  processPostActions(postActions: PostActionType[]): PostActionType[] {
+  processPostActions(postActions: PostActionType[], seed?: string): PostActionType[] {
     // 使用されているプレースホルダーIDを収集
     const usedPlaceholderIds = this.collectUsedPlaceholderIds(postActions)
 
     // 収集したプレースホルダーを解決
     if (usedPlaceholderIds.length > 0) {
-      this.resolvePlaceholders(usedPlaceholderIds)
+      this.resolvePlaceholders(usedPlaceholderIds, seed)
     }
 
     return postActions.map((action) => ({
@@ -112,11 +112,11 @@ export class PlaceProcess {
   /**
    * 指定されたプレースホルダーIDリストを解決
    */
-  private resolvePlaceholders(placeholderIds: string[]): void {
+  private resolvePlaceholders(placeholderIds: string[], seed?: string): void {
     const visitedIds = new Set<string>()
 
     for (const placeholderId of placeholderIds) {
-      this.resolvePlaceholderRecursively(placeholderId, visitedIds)
+      this.resolvePlaceholderRecursively(placeholderId, visitedIds, seed)
     }
   }
 
@@ -124,7 +124,7 @@ export class PlaceProcess {
    * 単一のプレースホルダーを再帰的に解決
    * 循環参照を防ぐため、visitedセットを使用
    */
-  private resolvePlaceholderRecursively(placeholderId: string, visitedIds: Set<string>): void {
+  private resolvePlaceholderRecursively(placeholderId: string, visitedIds: Set<string>, seed?: string): void {
     // 循環参照チェック
     if (visitedIds.has(placeholderId)) {
       console.warn(`循環参照を検出: ${placeholderId}`)
@@ -158,7 +158,7 @@ export class PlaceProcess {
 
       // 値を抽選して解決
       if (normalizedValues.length > 0) {
-        const selectedValue = drawOmikuji(normalizedValues)
+        const selectedValue = drawOmikuji(normalizedValues, seed)
         if (selectedValue?.content !== undefined) {
           // プレースホルダーIDをキーとして解決済み値を保存
           this.resolvedValues[placeholderId] = selectedValue.content

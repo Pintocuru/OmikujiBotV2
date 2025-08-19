@@ -19,9 +19,12 @@ export class CooldownManager {
   private lastUserId: string = '' // 最後に抽選したユーザーID（連投チェック用）
   // ユーザーごとの抽選記録 - キー: "userId:ruleId", 値: UserDrawCount
   private userDrawCounts: Record<string, UserDrawCount> = {}
+  private sessionId: string // 配信セッションの一意ID
 
   // コンストラクタをprivateにして、外部からnewできないようにする
-  private constructor() {}
+  private constructor() {
+    this.sessionId = this.generateSessionId()
+  }
 
   // 唯一のインスタンスを取得する静的メソッド
   public static getInstance(): CooldownManager {
@@ -29,6 +32,34 @@ export class CooldownManager {
       CooldownManager.instance = new CooldownManager()
     }
     return CooldownManager.instance
+  }
+
+  /**
+   * 配信セッション用の一意IDを生成
+   * @returns 生成された一意ID
+   */
+  private generateSessionId(): string {
+    const timestamp = Date.now()
+    const randomSuffix = Math.random().toString(36).substring(2, 8)
+    return `session_${timestamp}_${randomSuffix}`
+  }
+
+  /**
+   * 現在のセッションIDを取得
+   * @returns セッションID
+   */
+  getSessionId(): string {
+    return this.sessionId
+  }
+
+  /**
+   * セッションIDをリセット（新しい配信開始時などに使用）
+   */
+  resetSession(): void {
+    this.sessionId = this.generateSessionId()
+    this.resetAllDrawCounts()
+    this.lastProcessedTime = 0
+    this.lastUserId = ''
   }
 
   /**

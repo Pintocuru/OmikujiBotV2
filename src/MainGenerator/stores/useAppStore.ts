@@ -1,129 +1,132 @@
 // src\MainGenerator\stores\useAppStore.ts
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import { OmikujiDataSchema, BotMessage } from '@/types/';
-import { ConfigUserSchema } from '@shared/types';
-import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments';
-import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager';
-import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor';
-import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor';
-import { CharacterCollector } from '@/MainGenerator/scripts/BotCharacter/CharacterCollector';
-import { Comment } from '@onecomme.com/onesdk/types/Comment';
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { OmikujiDataSchema, BotMessage } from '@/types/'
+import { ConfigUserSchema } from '@shared/types'
+import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
+import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
+import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor'
+import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor'
+import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
+import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
 
 export const useAppStore = defineStore('app', () => {
- // 基本設定
- const omikujiData = OmikujiDataSchema.parse(window.omikujiData);
- const config = ConfigUserSchema.parse(window.userConfig);
+  // 基本設定
+  const omikujiData = OmikujiDataSchema.parse(window.omikujiData)
+  const config = ConfigUserSchema.parse(window.userConfig)
 
- // 初期化状態
- const isInitialized = ref(true);
+  // 初期化状態
+  const isInitialized = ref(true)
 
- // メッセージ関連
- const botMessages = ref<BotMessage[]>([]);
+  // メッセージ関連
+  const botMessages = ref<BotMessage[]>([])
 
- // インスタンス
- const scriptManager = new GameScriptManager(omikujiData);
- const commentProcessor = new CommentProcessor(omikujiData, scriptManager);
- const timerProcessor = new TimerProcessor(omikujiData);
- const characterCollector = new CharacterCollector(omikujiData);
+  // インスタンス
+  const scriptManager = new GameScriptManager(omikujiData)
+  const cooldownManager = CooldownManager.getInstance()
+  const commentProcessor = new CommentProcessor(omikujiData, scriptManager)
+  const timerProcessor = new TimerProcessor(omikujiData)
+  const characterCollector = new CharacterCollector(omikujiData)
 
- /**
-  * アプリケーションの初期化
-  */
- const initializeApp = async (): Promise<boolean> => {
-  try {
-   const isInit = await GetUserComments(config).fetchComments((comments) => {
-    updateBotMessages(comments);
-   });
-   isInitialized.value = isInit;
-   if (isInit) startTimers();
+  /**
+   * アプリケーションの初期化
+   */
+  const initializeApp = async (): Promise<boolean> => {
+    try {
+      const isInit = await GetUserComments(config).fetchComments((comments) => {
+        updateBotMessages(comments)
+      })
+      isInitialized.value = isInit
+      if (isInit) startTimers()
 
-   return isInit;
-  } catch (error) {
-   console.error('初期化エラー:', error);
-   isInitialized.value = false;
-   return false;
-  }
- };
-
- /**
-  * メッセージ処理の共通ロジック
-  */
- const scheduleBotMessages = (processedMessages: BotMessage[]) => {
-  if (!processedMessages.length) return;
-
-  Promise.all(
-   processedMessages.map((message) => {
-    const delay = message.delaySeconds * 1000;
-    return new Promise<void>((resolve) => {
-     setTimeout(() => {
-      if (!botMessages.value.some((c) => c.id === message.id)) {
-       botMessages.value = [...botMessages.value, message];
-      }
-      resolve();
-     }, delay);
-    });
-   })
-  );
- };
-
- // botMessageを追加
- const addBotMessage = (message: BotMessage) => {
-  botMessages.value = [...botMessages.value, message];
- };
-
- /**
-  * コメントでのおみくじ処理
-  */
- const updateBotMessages = (comments: Comment[]) => {
-  if (!comments.length) {
-   botMessages.value = [];
-   return;
+      return isInit
+    } catch (error) {
+      console.error('初期化エラー:', error)
+      isInitialized.value = false
+      return false
+    }
   }
 
-  const processedMessages = commentProcessor.respondToComments(comments);
-  scheduleBotMessages(processedMessages);
- };
+  /**
+   * メッセージ処理の共通ロジック
+   */
+  const scheduleBotMessages = (processedMessages: BotMessage[]) => {
+    if (!processedMessages.length) return
 
- /**
-  * タイマーでのおみくじ処理
-  */
- const processTimerMessages = (processedMessages: BotMessage[]) => {
-  scheduleBotMessages(processedMessages);
- };
+    Promise.all(
+      processedMessages.map((message) => {
+        const delay = message.delaySeconds * 1000
+        return new Promise<void>((resolve) => {
+          setTimeout(() => {
+            if (!botMessages.value.some((c) => c.id === message.id)) {
+              botMessages.value = [...botMessages.value, message]
+            }
+            resolve()
+          }, delay)
+        })
+      })
+    )
+  }
 
- // タイマー開始
- const startTimers = () => {
-  timerProcessor.startTimers(processTimerMessages);
- };
- //  タイマー停止
- const stopTimers = () => {
-  timerProcessor.stopTimers();
- };
+  // botMessageを追加
+  const addBotMessage = (message: BotMessage) => {
+    botMessages.value = [...botMessages.value, message]
+  }
 
- // メッセージクリア
- const clearMessages = () => {
-  botMessages.value = [];
- };
+  /**
+   * コメントでのおみくじ処理
+   */
+  const updateBotMessages = (comments: Comment[]) => {
+    if (!comments.length) {
+      botMessages.value = []
+      return
+    }
 
- return {
-  // 状態
-  omikujiData,
-  config,
-  isInitialized,
-  botMessages,
-  scriptManager,
-  commentProcessor,
-  timerProcessor,
-  characterCollector,
-  addBotMessage,
+    const processedMessages = commentProcessor.respondToComments(comments)
+    scheduleBotMessages(processedMessages)
+  }
 
-  // アクション
-  initializeApp,
-  updateBotMessages,
-  processTimerMessages,
-  startTimers,
-  stopTimers,
-  clearMessages
- };
-});
+  /**
+   * タイマーでのおみくじ処理
+   */
+  const processTimerMessages = (processedMessages: BotMessage[]) => {
+    scheduleBotMessages(processedMessages)
+  }
+
+  // タイマー開始
+  const startTimers = () => {
+    timerProcessor.startTimers(processTimerMessages)
+  }
+  //  タイマー停止
+  const stopTimers = () => {
+    timerProcessor.stopTimers()
+  }
+
+  // メッセージクリア
+  const clearMessages = () => {
+    botMessages.value = []
+  }
+
+  return {
+    // 状態
+    omikujiData,
+    config,
+    isInitialized,
+    botMessages,
+    scriptManager,
+    cooldownManager,
+    commentProcessor,
+    timerProcessor,
+    characterCollector,
+    addBotMessage,
+
+    // アクション
+    initializeApp,
+    updateBotMessages,
+    processTimerMessages,
+    startTimers,
+    stopTimers,
+    clearMessages,
+  }
+})
