@@ -41,6 +41,7 @@
   import { displaySize, displaySizeLabels, DisplaySize } from '@shared/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
   // Store

@@ -34,6 +34,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
 
   const props = defineProps<{
     modelValue: {

@@ -1,8 +1,11 @@
 <!-- src/configMaker/components/comments/ThresholdEditor.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary p-2 pl-4 rounded-t flex items-center">発動条件設定</div>
-    <div class="card-body space-y-4">
+  <SectionCard>
+    <template #header>
+      <div>発動条件設定</div>
+    </template>
+
+    <template #body>
       <!-- 条件設定の説明 -->
       <div class="alert alert-info w-full">
         <Info class="w-5 h-5 mt-0.5 shrink-0" />
@@ -52,8 +55,8 @@
         <!-- カウント条件 -->
         <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
@@ -63,6 +66,7 @@
   import ThresholdConditionGift from './ThresholdConditionGift.vue'
   import ThresholdConditionCount from './ThresholdConditionCount.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { Info } from 'lucide-vue-next'
 
   import { commentThresholdConditionLabels, CommentThresholdCondition, CommentThresholdType } from '@shared/types'

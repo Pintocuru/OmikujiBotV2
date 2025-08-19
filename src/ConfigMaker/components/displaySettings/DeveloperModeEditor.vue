@@ -44,6 +44,7 @@
   import VisibilitySettings from './VisibilitySettings.vue'
   import DeveloperModeInfo from './DeveloperModeInfo.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { Info } from 'lucide-vue-next'

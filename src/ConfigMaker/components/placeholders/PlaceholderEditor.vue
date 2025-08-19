@@ -3,11 +3,12 @@
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <!-- プレースホルダー編集エリア -->
   <div v-if="selectedItem">
-    <div class="card bg-base-300 mt-4">
-      <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">基本設定</div>
-      <div class="card-body space-y-4 p-4">
+    <!-- 基本設定 -->
+    <SectionCard :isGild="true">
+      <template #header>基本設定 </template>
+
+      <template #body>
         <!-- ID表示とコピー -->
         <SettingItem label="Key" description="<<プレースホルダー名>>" :showReset="false" containerClass="form-control">
           <div class="flex gap-2 items-center">
@@ -30,20 +31,21 @@
             class="input input-bordered w-full"
           />
         </SettingItem>
-      </div>
-    </div>
-    <!-- プレースホルダー設定セクション -->
-    <div class="card bg-base-300 mt-4">
-      <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex justify-between items-center">
-        <div class="flex items-center">プレースホルダー設定</div>
+      </template>
+    </SectionCard>
+
+    <!-- プレースホルダー設定 -->
+    <SectionCard>
+      <template #header>
+        <div>プレースホルダー設定</div>
         <!-- 抽選テストボタン -->
         <PlaceholderPreview v-if="selectedItem.values.length > 0" :id="selectedItem.id" :values="selectedItem.values" />
-      </div>
-      <!-- エディター -->
-      <div class="card-body">
+      </template>
+
+      <template #body>
         <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
-      </div>
-    </div>
+      </template>
+    </SectionCard>
   </div>
 </template>
 
@@ -57,6 +59,7 @@
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
   // ストアを使用

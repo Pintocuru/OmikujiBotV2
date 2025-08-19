@@ -18,7 +18,7 @@
     <ScriptGameEditor v-model="selectedItem" />
 
     <!-- おみくじ設定セクション -->
-    <OmikujiSetEditor v-model="selectedItem.omikuji" category="comments" />
+    <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
   </div>
 </template>
 

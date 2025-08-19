@@ -2,12 +2,7 @@
 <template>
   <div class="flex items-center gap-4">
     <!-- ドラッグハンドル -->
-    <div
-      class="cursor-move text-base-content/50 hover:text-base-content"
-      draggable="true"
-      @dragstart="$emit('dragstart', $event)"
-      @dragend="$emit('dragend')"
-    >
+    <div class="drag-handle cursor-move text-base-content/50 hover:text-base-content">
       <GripVertical class="w-5 h-5" />
     </div>
 
@@ -62,8 +57,6 @@
   }>()
 
   defineEmits<{
-    dragstart: [event: DragEvent]
-    dragend: []
     'update:name': [value: string]
     'update:weight': [value: number]
     duplicate: []

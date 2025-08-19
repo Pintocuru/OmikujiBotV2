@@ -1,13 +1,11 @@
 <!-- src/configMaker/components/comments/OmikujiLimitsEditor.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span>おみくじ制限設定</span>
-      </div>
-    </div>
+  <SectionCard>
+    <template #header>
+      <div>おみくじ制限設定</div>
+    </template>
 
-    <div class="card-body p-4">
+    <template #body>
       <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
         <h3 class="font-semibold border-b pb-1">重複処理 - 前回の発動からその時間内に発動するおみくじを無効にします</h3>
         <SettingItem
@@ -102,14 +100,15 @@
           />
         </SettingItem>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { OmikujiLimitsType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{

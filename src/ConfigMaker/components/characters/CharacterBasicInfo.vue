@@ -35,6 +35,7 @@
   import { CharacterType } from '@/types/'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
 
   const props = defineProps<{
     modelValue: CharacterType

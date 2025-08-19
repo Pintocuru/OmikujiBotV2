@@ -57,6 +57,7 @@
   import { computed } from 'vue'
   import { DisplayOptionType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
 
   const props = defineProps<{
     modelValue: DisplayOptionType

@@ -9,6 +9,7 @@
   import { computed } from 'vue'
   import { ParameterItem } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useScriptSettings } from './useScriptSettings'
 
   interface Props {

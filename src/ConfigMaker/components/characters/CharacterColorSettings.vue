@@ -60,6 +60,7 @@
   import { ref, watch } from 'vue'
   import { CharacterColorType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'

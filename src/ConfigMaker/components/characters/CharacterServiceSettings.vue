@@ -42,6 +42,7 @@
   import { computed } from 'vue'
   import type { CharacterType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { Info } from 'lucide-vue-next'
 
   const props = defineProps<{

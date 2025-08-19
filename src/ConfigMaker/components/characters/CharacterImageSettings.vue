@@ -70,6 +70,7 @@
   import { computed, ref } from 'vue'
   import { CharacterEmotionType, CharacterType, emotionLabels, getImagePath } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { Info, RotateCcw } from 'lucide-vue-next'
 
   const props = defineProps<{

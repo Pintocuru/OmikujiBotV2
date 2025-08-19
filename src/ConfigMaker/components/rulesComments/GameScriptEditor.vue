@@ -1,14 +1,16 @@
 <!-- src/configMaker/components/comments/GameScriptEditor.vue -->
 <template>
-  <div
+  <SectionCard
     v-if="
       (data.displaySettings.developer.visibility.gameScriptSettings && isScriptEnabled) ||
       data.displaySettings.developer.godModeEnabled
     "
-    class="card bg-base-300 mt-4"
   >
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ゲームスクリプト設定</div>
-    <div class="card-body space-y-4">
+    <template #header>
+      <div>ゲームスクリプト設定</div>
+    </template>
+
+    <template #body>
       <!-- ゲームスクリプトの説明 -->
       <div class="alert alert-info w-full">
         <Info class="w-5 h-5 mt-0.5 shrink-0" />
@@ -119,8 +121,8 @@
         </div>
         <div v-else class="text-base-content/60">このスクリプトには設定可能なパラメータがありません</div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
@@ -129,6 +131,7 @@
   import { DefaultTypes } from '@shared/types'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { Info } from 'lucide-vue-next'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
