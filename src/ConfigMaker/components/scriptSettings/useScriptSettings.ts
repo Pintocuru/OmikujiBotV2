@@ -1,6 +1,6 @@
 // src/configMaker/components/scriptSettings/useScriptSettings.ts
 import { computed } from 'vue'
-import { ParameterInputType, ParameterItem } from '@/types/'
+import { ParameterInputType, ParameterItem } from '@/types/GameScript/GameScriptTypes'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
 import { DefaultTypes } from '@shared/types'
@@ -10,7 +10,7 @@ export const useScriptSettings = () => {
 
   const scriptSettings = computed(() => omikujiStore.data.scriptSettings)
 
-  const updateItem = (category: 'scriptSettings', scriptId: string, settings: Record<string, any>) => {
+  const updateItem = (scriptId: string, settings: Record<string, any>) => {
     omikujiStore.updateScriptSettings({ [scriptId]: settings })
   }
 
@@ -72,7 +72,7 @@ export const useScriptSettings = () => {
   const updateScriptSetting = (scriptId: string, settingId: string, value: any) => {
     const currentSettings = { ...(scriptSettings.value[scriptId] as DefaultTypes) }
     currentSettings[settingId] = value
-    updateItem('scriptSettings', scriptId, currentSettings)
+    updateItem(scriptId, currentSettings)
   }
 
   const resetScriptSetting = (scriptId: string, settingId: string) => {
@@ -88,7 +88,7 @@ export const useScriptSettings = () => {
     } else {
       delete currentSettings[settingId]
     }
-    updateItem('scriptSettings', scriptId, currentSettings)
+    updateItem(scriptId, currentSettings)
   }
 
   return {

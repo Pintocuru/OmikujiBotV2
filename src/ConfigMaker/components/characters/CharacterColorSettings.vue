@@ -1,8 +1,8 @@
 <!-- src/configMaker/components/characters/CharacterColorSettings.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex justify-between items-center">
-      <span>カラー設定</span>
+  <SectionCard>
+    <template #header>
+      <div>カラー設定</div>
       <!-- ランダムボタン -->
       <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
         <button @click="handleRandomColor" class="btn btn-ghost btn-sm">
@@ -10,9 +10,9 @@
           カラーシャッフル
         </button>
       </div>
-    </div>
+    </template>
 
-    <div class="p-4 space-y-6">
+    <template #body>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
         <div @click="handlePreviewClick" class="cursor-pointer">
@@ -52,17 +52,17 @@
           <span class="label-text-alt"></span>
         </label>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { CharacterColorType } from '@/types/'
+  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
+  import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { Dices } from 'lucide-vue-next'
 

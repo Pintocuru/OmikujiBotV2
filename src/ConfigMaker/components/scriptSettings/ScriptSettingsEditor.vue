@@ -9,25 +9,21 @@
     />
   </div>
   <div v-else>
-    <div class="flex flex-wrap gap-4 p-4">
-      <div class="alert alert-info w-full">
-        <Settings class="w-5 h-5 mt-0.5 shrink-0" />
-        <div class="space-y-1">
-          <p>利用可能なゲームスクリプトがありません</p>
-        </div>
-      </div>
+    <div class="alert alert-info w-full">
+      <Settings class="w-5 h-5 mt-0.5 shrink-0" />
+      <div class="space-y-1">利用可能なゲームスクリプトがありません</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import ScriptCard from './ScriptCard.vue'
-  import { Settings } from 'lucide-vue-next'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
+  import { DefaultTypes } from '@shared/types'
   import { storeToRefs } from 'pinia'
-  import { DefaultTypes } from '@shared/types' // Import DefaultTypes if needed
+  import { Settings } from 'lucide-vue-next'
 
   // Store
   const omikujiStore = useOmikujiStore()

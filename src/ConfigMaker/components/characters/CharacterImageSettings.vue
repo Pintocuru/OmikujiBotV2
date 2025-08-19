@@ -1,10 +1,12 @@
 <!-- src/configMaker/components/characters/CharacterImageSettings.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">ジェネレーター用画像設定</div>
+  <SectionCard>
+    <template #header>
+      <div>ジェネレーター用画像設定</div>
+    </template>
 
-    <!-- 補足説明 -->
-    <div class="flex flex-wrap gap-4 p-4">
+    <template #body>
+      <!-- 補足説明 -->
       <div class="alert alert-info w-full">
         <Info class="w-5 h-5 mt-0.5 shrink-0" />
         <div class="space-y-1">
@@ -35,35 +37,30 @@
           </p>
         </div>
       </div>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-4">
-      <div v-for="(emotion, key) in emotionLabels" :key="key" class="form-control">
-        <SettingItem
-          :label="emotion"
-          :description="`(${key})`"
-          containerClass="form-control flex-row items-center gap-2 mt-2"
-          @reset="resetImagePath(key)"
-        >
-          <input
-            type="url"
-            class="input input-bordered input-sm w-full"
-            :placeholder="`${emotion}の画像URL`"
-            v-model="localImages[key]"
-          />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+        <div v-for="(emotion, key) in emotionLabels" :key="key" class="form-control">
+          <SettingItem :label="emotion" :description="`(${key})`" @reset="resetImagePath(key)">
+            <input
+              type="url"
+              class="input input-sm w-full"
+              :placeholder="`${emotion}の画像URL`"
+              v-model="localImages[key]"
+            />
 
-          <!-- プレビュー表示 -->
-          <img
-            v-if="localImages[key]"
-            :src="getImagePath(localImages[key])"
-            :alt="`${emotion}の画像プレビュー`"
-            class="avatar max-h-24 rounded border"
-            loading="lazy"
-          />
-        </SettingItem>
+            <!-- プレビュー表示 -->
+            <img
+              v-if="localImages[key]"
+              :src="getImagePath(localImages[key])"
+              :alt="`${emotion}の画像プレビュー`"
+              class="avatar max-h-16 rounded border"
+              loading="lazy"
+            />
+          </SettingItem>
+        </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
@@ -75,7 +72,7 @@
 
   const props = defineProps<{
     modelValue: CharacterType['image']
-    id: string
+    selectedRuleId: string | null
   }>()
 
   const emit = defineEmits<{
@@ -109,7 +106,7 @@
 
     // 新しいパスを設定
     const nextExt = imageExtensions[currentIndex]
-    newImages[key] = `${props.id}/${key}.${nextExt}`
+    newImages[key] = `${props.selectedRuleId}/${key}.${nextExt}`
     localImages.value = newImages
   }
 </script>

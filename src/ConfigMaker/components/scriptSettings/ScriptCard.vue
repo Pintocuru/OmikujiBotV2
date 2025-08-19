@@ -1,43 +1,82 @@
 <!-- src/configMaker/components/scriptSettings/ScriptCard.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">
-      {{ scriptPreset.name }} <span class="text-base">(id:{{ scriptPreset.id }})</span>
-      <span class="ml-2 cursor-help" :title="scriptPreset.description"> ℹ️ </span>
-    </div>
-
-    <div class="card-body">
-      <div class="flex justify-between items-start">
-        <div class="flex-1">
-          <div v-if="!hasSettings" class="text-gray-500 italic">このスクリプトには設定可能な項目がありません</div>
-
-          <div v-else class="space-y-3">
-            <ScriptSettingItem
-              v-for="settingDef in scriptPreset.settings"
-              :key="settingDef.key"
-              :script-id="scriptId"
-              :setting-def="settingDef"
-            />
-          </div>
-        </div>
+  <SectionCard>
+    <template #header>
+      <div>
+        {{ scriptPreset.name }} <span class="text-base">(id:{{ scriptPreset.id }})</span>
       </div>
-    </div>
-  </div>
+      <div class="text-sm pr-2">{{ scriptPreset.description }}</div>
+    </template>
+
+    <template #body>
+      <div v-if="hasSettings">
+        <SettingItem
+          v-for="settingDef in scriptPreset.settings"
+          :key="settingDef.key"
+          :label="settingDef.name"
+          :description="settingDef.description"
+          @reset="resetSetting(settingDef.key)"
+        >
+          <component
+            :is="getInputComponent(settingDef.inputType)"
+            v-bind="getInputProps(scriptId, settingDef)"
+            @input="handleInput($event, settingDef.key)"
+            @change="handleChange($event, settingDef.key)"
+          />
+        </SettingItem>
+      </div>
+      <div v-else class="text-gray-500 italic">このスクリプトには設定可能な項目がありません</div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { ScriptPreset } from '@/types/'
-  import ScriptSettingItem from './ScriptSettingItem.vue'
+  import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import { useScriptSettings } from './useScriptSettings'
 
-  interface Props {
+  const props = defineProps<{
     scriptId: string
     scriptPreset: ScriptPreset
-  }
+  }>()
 
-  const props = defineProps<Props>()
+  const { updateScriptSetting, resetScriptSetting, getInputComponent, getInputProps } = useScriptSettings()
 
   const hasSettings = computed(() => {
     return props.scriptPreset.settings && props.scriptPreset.settings.length > 0
   })
+
+  const handleInput = (event: Event, settingKey: string) => {
+    const target = event.target as HTMLInputElement
+    let value
+
+    if (target.type === 'checkbox') {
+      value = target.checked
+    } else if (target.type === 'number') {
+      value = parseFloat(target.value) || 0
+    } else {
+      value = target.value
+    }
+
+    updateScriptSetting(props.scriptId, settingKey, value)
+  }
+
+  const handleChange = (event: Event, settingKey: string) => {
+    const target = event.target as HTMLInputElement | HTMLSelectElement
+    let value
+
+    if (target.type === 'checkbox') {
+      value = (target as HTMLInputElement).checked
+    } else {
+      value = target.value
+    }
+
+    updateScriptSetting(props.scriptId, settingKey, value)
+  }
+
+  const resetSetting = (settingKey: string) => {
+    resetScriptSetting(props.scriptId, settingKey)
+  }
 </script>

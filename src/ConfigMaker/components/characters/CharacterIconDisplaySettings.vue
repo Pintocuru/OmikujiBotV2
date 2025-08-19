@@ -1,9 +1,11 @@
 <!-- src/configMaker/components/characters/CharacterIconDisplaySettings.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">キャラクター表示設定</div>
+  <SectionCard>
+    <template #header>
+      <div>キャラクター表示設定</div>
+    </template>
 
-    <div class="card-body gap-4 p-4">
+    <template #body>
       <!-- isIconDisplay  -->
       <SettingItem
         label="キャラクター表示"
@@ -32,25 +34,19 @@
 
       <!-- isVoice  -->
       <SettingItem
+        v-if="!localData.isOneCommePost"
         label="BOTコメントの読み上げ"
         description="BOTコメントをわんコメで鳴らすか"
         :showReset="false"
         containerClass="form-control flex-row items-center gap-2 mt-2"
       >
         <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :disabled="localData.isOneCommePost"
-            type="checkbox"
-            class="checkbox checkbox-primary"
-            v-model="localData.isVoice"
-          />
-          <span class="label-text font-medium"
-            >「BOTコメントをわんコメに投稿」がONの場合、そちらが優先されます。<br />読み上げの声は「わんコメの標準設定」が使われます</span
-          >
+          <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isVoice" />
+          <span class="label-text font-medium">読み上げの声は「わんコメの標準設定」が使われます</span>
         </label>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

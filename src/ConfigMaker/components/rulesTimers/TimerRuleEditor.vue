@@ -12,7 +12,7 @@
     <TimerIntervalEditor v-model="selectedItem" />
 
     <!-- おみくじ設定セクション -->
-    <OmikujiSetEditor v-model="selectedItem.omikuji" category="timers" />
+    <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
   </div>
 </template>
 

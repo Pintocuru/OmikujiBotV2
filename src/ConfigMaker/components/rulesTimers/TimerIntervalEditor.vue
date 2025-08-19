@@ -1,9 +1,11 @@
 <!-- src/configMaker/components/timers/TimerIntervalEditor.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">タイマー設定</div>
+  <SectionCard :isGild="true">
+    <template #header>
+      <div>タイマー設定</div>
+    </template>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
+    <template #body>
       <!-- プリセット選択 -->
       <SettingItem
         label="実行間隔(30秒～1時間)"
@@ -27,8 +29,8 @@
       >
         <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

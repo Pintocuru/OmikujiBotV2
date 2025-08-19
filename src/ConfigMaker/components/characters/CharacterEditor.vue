@@ -6,42 +6,33 @@
   <!-- 選択されたキャラクターの編集フォーム -->
   <div v-if="selectedItem">
     <!-- 基本情報 -->
-    <CharacterBasicInfo v-model="selectedItem" />
+    <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
 
     <!-- 色設定 -->
     <CharacterColorSettings v-model="selectedItem.color" />
 
-    <!-- 表示設定 -->
+    <!-- キャラクター表示設定 -->
     <CharacterIconDisplaySettings v-model="selectedItem.displayOption" />
 
-    <!-- 枠指定設定 -->
-    <CharacterServiceSettings v-if="selectedItem.displayOption.isOneCommePost" v-model="selectedItem" />
-
-    <!-- わんコメ投稿用画像設定 -->
-    <CharacterBase64Settings
-      v-if="selectedItem.displayOption.isOneCommePost"
-      v-model="selectedItem.imageBase64"
-      :id="selectedItem.id"
-      :backgroundColor="selectedItem.color.backgroundColor"
-    />
+    <!-- キャラクター用枠設定 -->
+    <CharacterServiceSettings v-if="selectedItem.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
 
     <!-- ジェネレーター用画像設定 -->
     <CharacterImageSettings
       v-if="selectedItem.displayOption.isIconDisplay"
       v-model="selectedItem.image"
-      :id="selectedItem.id"
+      :selectedRuleId="selectedRuleId"
     />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterType } from '@/types/'
+  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CharacterBasicInfo from './CharacterBasicInfo.vue'
   import CharacterColorSettings from './CharacterColorSettings.vue'
-  import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import CharacterImageSettings from './CharacterImageSettings.vue'
   import CharacterServiceSettings from './CharacterServiceSettings.vue'
   import CharacterIconDisplaySettings from './CharacterIconDisplaySettings.vue'
