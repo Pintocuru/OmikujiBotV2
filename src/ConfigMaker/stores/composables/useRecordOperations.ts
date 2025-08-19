@@ -1,6 +1,14 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
 import { nextTick, Ref } from 'vue'
-import { categorySchemaMap, CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/'
+import {
+  categorySchemaMap,
+  CategoryType,
+  OmikujiDataType,
+  PlaceholderValuesSchema,
+  PlaceholderValueType,
+  RecordCategoryType,
+  RecordCategoryTypeMap,
+} from '@/types/'
 
 // categorySchemaMapの型安全性を向上
 interface TypedSchema<T> {
@@ -85,6 +93,19 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   }
 
   /**
+   * Placeholder専用の更新
+   */
+  const updatePlaceholderValues = (placeholderId: string, rawValues: Array<PlaceholderValueType | string>) => {
+    if (data.value.placeholders[placeholderId]) {
+      // Zodスキーマで値をパースし、同時に最適化された値を取得
+      const parsedAndOptimizedValues = PlaceholderValuesSchema.parse(rawValues)
+
+      // 汎用的な更新関数を使って、最適化された値を設定
+      updateRecordProperty('placeholders', placeholderId, 'values', parsedAndOptimizedValues)
+    }
+  }
+
+  /**
    * カテゴリからアイテムを削除
    */
   const removeItem = (category: RecordCategoryType, id: string) => {
@@ -164,6 +185,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     removeItem,
     duplicateItem,
     updateRecordProperty,
+    updatePlaceholderValues,
     getItem,
     getCategoryMap,
     getCategoryArray,

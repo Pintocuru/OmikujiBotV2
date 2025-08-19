@@ -69,7 +69,7 @@ export function useTextModeParser() {
   }
 
   // テキストから値に変換
-  const convertTextToValues = (): Array<PlaceholderValueType> => {
+  const convertTextToValues = (): Array<PlaceholderValueType | string> => {
     return previewItems.value.filter((item) => !item.hasError).map(({ weight, content }) => ({ weight, content }))
   }
 

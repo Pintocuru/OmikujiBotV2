@@ -30,9 +30,7 @@
 
   // 抽選結果
   const drawnValue = ref<PlaceholderValueType | null>(null)
-  // PlaceProcess2による処理結果
   const processedContent = ref<string>('')
-  // デバッグ情報
   const debugInfo = ref<Record<string, string | number>>({})
 
   const handleDraw = () => {

@@ -40,7 +40,6 @@
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { PlaceholderValueType } from '@/types/'
   import { usePlaceholderValues } from './composables/usePlaceholderValues'
   import { useTextModeParser } from './composables/useTextModeParser'
   import PlaceholderInputMode from './PlaceholderInputMode.vue'
@@ -49,10 +48,6 @@
 
   const props = defineProps<{
     placeholderId: string
-  }>()
-
-  const emit = defineEmits<{
-    valuesChanged: [values: Array<PlaceholderValueType>]
   }>()
 
   // ストアを使用
@@ -98,7 +93,7 @@
     if (hasErrors.value || validItemsCount.value === 0) return
 
     const newValues = convertTextToValues()
-    omikujiStore.updateRecordProperty('placeholders', props.placeholderId, 'values', newValues)
+    omikujiStore.updatePlaceholderValues(props.placeholderId, newValues)
     toggleEditMode()
   }
 

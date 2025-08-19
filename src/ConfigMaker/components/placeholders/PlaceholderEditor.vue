@@ -39,6 +39,7 @@
         <!-- 抽選テストボタン -->
         <PlaceholderPreview v-if="selectedItem.values.length > 0" :id="selectedItem.id" :values="selectedItem.values" />
       </div>
+      <!-- エディター -->
       <div class="card-body">
         <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
       </div>
