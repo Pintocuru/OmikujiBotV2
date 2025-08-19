@@ -1,13 +1,22 @@
 // shared/types/OmikujiBot/RulesSchema.ts
 import { z } from 'zod'
 import { BaseRecordSchema, CommentThresholdSchema } from '@shared/types/'
-import { ArrayOmikujiSetSchema, OmikujiSetSchema } from './OmikujiSchema'
+import { ArrayOmikujiSetSchema } from './OmikujiSchema'
 
 // おみくじ制限設定のスキーマ
 export const OmikujiLimitsSchema = z.object({
-  processCooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
+  // 重複処理
+  cooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
+  cooldownMessage: z.string().optional(),
+
+  // 回数制限
   drawLimit: z.number().default(0).catch(0), // 今回のおみくじはこの回数以下か
+  drawLimitExceeded: z.enum(['doNothing', 'showMessage', 'showLastResult']).default('showMessage').catch('showMessage'),
+  drawLimitMessage: z.string().optional(),
+
+  // 連投制限
   isRepeatAllowed: z.boolean().default(true).catch(true), // 連投を許可するか
+  repeatMessage: z.string().optional(),
 })
 
 // WordParty設定のスキーマ

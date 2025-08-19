@@ -7,13 +7,7 @@
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta06",
     "author": "Pintocuru",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "じゃんけん",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙"
-    ],
+    "tags": ["おみくじBOT", "おみくじ", "じゃんけん", "ゆっくり霊夢", "ゆっくり魔理沙"],
     "license": "個人利用のみ",
     "url": "https://booth.pm/ja/items/5471598"
   },
@@ -299,9 +293,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -310,17 +302,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^御神籤"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -432,9 +419,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -443,21 +428,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^フラワー",
-          "^ふらわー",
-          "^flower",
-          "🌷",
-          "🌹",
-          "🌺",
-          "🌻",
-          "🌼"
-        ]
+        "comment": ["^フラワー", "^ふらわー", "^flower", "🌷", "🌹", "🌺", "🌻", "🌼"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -507,9 +483,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -518,21 +492,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
         "mode": "スイカゲーム"
       },
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -582,9 +549,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -593,20 +558,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -656,9 +613,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -667,20 +622,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi"]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -1344,9 +1291,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1355,15 +1300,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^じゃんけん",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^janken"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -1567,9 +1509,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1578,17 +1518,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -1792,9 +1727,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1803,16 +1736,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2016,9 +1945,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2027,17 +1954,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2185,10 +2107,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2197,16 +2116,12 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 3,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2286,10 +2201,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2298,16 +2210,12 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2401,9 +2309,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2412,14 +2318,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "コメント"
-        ]
+        "comment": ["コメント"]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2515,16 +2419,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
+        "gift": ["blue", "lightBlue", "green"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2535,7 +2433,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2593,14 +2491,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow"
-        ],
+        "gift": ["yellow"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2611,7 +2505,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2669,17 +2563,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
+        "gift": ["orange", "pink", "red", "purple"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2690,7 +2577,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2754,9 +2641,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2770,7 +2655,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2834,9 +2719,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2850,7 +2733,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -2990,12 +2873,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -3008,7 +2887,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -3116,12 +2995,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -3134,7 +3009,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -3242,12 +3117,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -3260,7 +3131,7 @@
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "processCooldownSeconds": 0,
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "isRepeatAllowed": true
       }
@@ -4328,10 +4199,7 @@
       "updatedAt": "2025-08-11T15:34:29.298Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -4373,10 +4241,7 @@
       "updatedAt": "2025-08-11T15:34:29.298Z",
       "order": 2,
       "editorColor": "#84CC16",
-      "tags": [
-        "Yukkuri",
-        "Marisa"
-      ],
+      "tags": ["Yukkuri", "Marisa"],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -4445,11 +4310,7 @@
         "timers": true,
         "placeholders": true,
         "characters": true,
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "gameScriptSettings": true,
         "wordPartySettings": true
       }
