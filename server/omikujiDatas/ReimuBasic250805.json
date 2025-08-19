@@ -17,7 +17,7 @@
       "name": "おみくじ",
       "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "createdAt": "2025-08-19T00:53:05.621Z",
-      "updatedAt": "2025-08-19T00:53:05.621Z",
+      "updatedAt": "2025-08-19T10:03:31.632Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -285,7 +285,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -294,13 +296,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "cooldownSeconds": 3,
+        "cooldownSeconds": 10,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -949,7 +957,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -958,13 +968,17 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^じゃんけん", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^janken"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1163,7 +1177,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1172,13 +1188,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1377,7 +1399,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1386,13 +1410,18 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1591,7 +1620,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1600,13 +1631,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1749,7 +1786,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1758,13 +1798,18 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1841,7 +1886,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1850,13 +1898,18 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1946,7 +1999,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1955,13 +2010,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["コメント"]
+        "comment": [
+          "コメント"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2054,10 +2112,16 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2070,6 +2134,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2125,10 +2190,14 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["yellow"],
+        "gift": [
+          "yellow"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2141,6 +2210,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2196,10 +2266,17 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["orange", "pink", "red", "purple"],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2212,6 +2289,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2272,7 +2350,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2288,6 +2368,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": false
       }
     },
@@ -2348,7 +2429,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2364,6 +2447,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2498,8 +2582,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2514,6 +2602,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2616,8 +2705,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2632,6 +2725,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2734,8 +2828,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2750,6 +2848,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     }
@@ -3078,7 +3177,9 @@
       "order": 8,
       "editorColor": "#3B82F6",
       "tags": [],
-      "values": ["マリサ キリサメ"]
+      "values": [
+        "マリサ キリサメ"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -3089,7 +3190,9 @@
       "order": 9,
       "editorColor": "#3B82F6",
       "tags": [],
-      "values": ["俺"]
+      "values": [
+        "俺"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -3211,7 +3314,10 @@
       "updatedAt": "2025-08-19T00:53:05.623Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -3251,7 +3357,10 @@
       "updatedAt": "2025-08-19T00:53:05.623Z",
       "order": 2,
       "editorColor": "#84CC16",
-      "tags": ["Yukkuri", "Marisa"],
+      "tags": [
+        "Yukkuri",
+        "Marisa"
+      ],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
