@@ -15,7 +15,6 @@
         :editing-actions="editingActions"
         :character-options="characterOptions"
         @add-action="addAction"
-        @sort-by-delay="sortByDelay"
         @update:editing-actions="editingActions = $event"
       />
 
@@ -76,15 +75,6 @@
     const characterId = props.charactersArray[0]?.id ?? ''
     const newAction = PostActionSchema.parse({ characterKey: characterId })
     editingActions.value.push(newAction)
-  }
-
-  // 遅延秒数でソートする機能
-  const sortByDelay = () => {
-    editingActions.value.sort((a, b) => {
-      const delayA = a.delaySeconds || 0
-      const delayB = b.delaySeconds || 0
-      return delayA - delayB
-    })
   }
 
   // Expose open method for parent component

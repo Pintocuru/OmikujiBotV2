@@ -1,37 +1,34 @@
 <!-- src/configMaker/components/parts/CharacterIcon.vue -->
 <template>
- <div
-  class="tooltip tooltip-top"
-  :data-tip="`${charactersMap[props.characterKey]?.name} (${altText})`"
- >
-  <img v-if="showImage" :src="iconSrc" :alt="altText" :class="imgClass" @error="onImageError" />
-  <div v-else :class="fallbackClass">画像なし</div>
- </div>
+  <div class="tooltip tooltip-top" :data-tip="`${charactersMap[props.characterKey]?.name} (${altText})`">
+    <img v-if="showImage" :src="iconSrc" :alt="altText" :class="imgClass" @error="onImageError" />
+    <div v-else :class="fallbackClass">画像なし</div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { emotionLabels, CharacterEmotionType, getImagePath } from '@/types/';
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore';
+  import { ref, computed } from 'vue'
+  import { emotionLabels, CharacterEmotionType, getImagePath } from '@/types/'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
-const props = defineProps<{
- characterKey: string;
- iconKey: CharacterEmotionType;
- imgClass?: string;
- fallbackClass?: string;
-}>();
-// ストアを使用
-const omikujiStore = useOmikujiStore();
-const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'));
+  const props = defineProps<{
+    characterKey: string
+    iconKey: CharacterEmotionType
+    imgClass?: string
+    fallbackClass?: string
+  }>()
+  // ストアを使用
+  const omikujiStore = useOmikujiStore()
+  const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'))
 
-const iconSrc = computed(() => {
- const imagePath = charactersMap.value[props.characterKey]?.image?.[props.iconKey];
- return imagePath ? getImagePath(imagePath) : '';
-});
-const altText = computed(() => emotionLabels[props.iconKey]);
+  const iconSrc = computed(() => {
+    const imagePath = charactersMap.value[props.characterKey]?.image?.[props.iconKey]
+    return imagePath ? getImagePath(imagePath) : ''
+  })
+  const altText = computed(() => emotionLabels[props.iconKey])
 
-const showImage = ref(true);
-const onImageError = () => {
- showImage.value = false;
-};
+  const showImage = ref(true)
+  const onImageError = () => {
+    showImage.value = false
+  }
 </script>

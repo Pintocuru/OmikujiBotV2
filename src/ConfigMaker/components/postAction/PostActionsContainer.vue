@@ -2,15 +2,19 @@
 <template>
   <div class="card bg-base-300 mt-4">
     <!-- タイトルバー -->
-    <PostActionsHeader @add-action="$emit('add-action')" @sort-by-delay="$emit('sort-by-delay')" />
+    <div class="flex justify-between items-center bg-primary text-white rounded-t px-4 py-2">
+      <h3 class="text-lg font-semibold">Post Actions 編集</h3>
+      <div class="flex gap-2">
+        <button @click="emit('add-action')" class="btn btn-sm btn-secondary">
+          <Plus class="w-4 h-4" />
+          追加
+        </button>
+      </div>
+    </div>
 
     <!-- 本体 -->
     <div class="card-body p-2">
-      <div v-if="editingActions.length === 0" class="text-center text-gray-500 py-8">
-        Post Actions がありません。「➕ 追加」ボタンで追加してください。
-      </div>
-
-      <div v-else class="space-y-4">
+      <div v-if="editingActions.length > 0" class="space-y-4">
         <PostActionItem
           v-for="(postAction, index) in editingActions"
           :key="index"
@@ -22,15 +26,25 @@
           @update:action="updateAction(index, $event)"
         />
       </div>
+
+      <!-- アクションが0のとき -->
+      <div v-else class="text-center text-gray-500 py-8">
+        Post Actions がありません。「➕ 追加」ボタンで追加してください。
+      </div>
+
+      <button @click="emit('add-action')" class="btn btn-primary w-full mt-4">
+        <Plus class="w-4 h-4" />
+        アクションの追加
+      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue' // `computed`をインポート
+  import { reactive } from 'vue'
   import { PostActionType } from '@/types/'
-  import PostActionsHeader from './PostActionsHeader.vue'
   import PostActionItem from './PostActionItem.vue'
+  import { Plus } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -41,8 +55,7 @@
   // Emits
   const emit = defineEmits<{
     'add-action': []
-    'sort-by-delay': []
-    'update:editingActions': [actions: PostActionType[]] // `update:editingActions` イベントを追加
+    'update:editingActions': [actions: PostActionType[]]
   }>()
 
   // WordParty入力モード管理
@@ -56,14 +69,10 @@
 
   // Action management methods
   const removeAction = (index: number) => {
-    // 新しい配列を生成して、要素を削除する
     const newActions = [...props.editingActions]
     newActions.splice(index, 1)
-
-    // 親コンポーネントに新しい配列をemitして更新を依頼する
     emit('update:editingActions', newActions)
 
-    // WordParty入力モードも削除し、インデックスを再調整
     const newModes: Record<number, 'select' | 'manual'> = {}
     Object.keys(wordPartyInputModes).forEach((key) => {
       const keyNum = Number(key)
@@ -81,16 +90,13 @@
   }
 
   const duplicateAction = (index: number) => {
-    // 新しい配列を生成して、要素を複製する
     const newActions = [...props.editingActions]
     const original = newActions[index]
     const duplicated = JSON.parse(JSON.stringify(original))
     newActions.splice(index + 1, 0, duplicated)
 
-    // 親コンポーネントに新しい配列をemitして更新を依頼する
     emit('update:editingActions', newActions)
 
-    // WordParty入力モードも複製し、インデックスを再調整
     const newModes: Record<number, 'select' | 'manual'> = {}
     Object.keys(wordPartyInputModes).forEach((key) => {
       const keyNum = Number(key)
@@ -101,7 +107,6 @@
       }
     })
 
-    // 複製されたアクションの入力モードを設定
     newModes[index + 1] = wordPartyInputModes[index] || 'select'
 
     Object.keys(wordPartyInputModes).forEach((key) => {

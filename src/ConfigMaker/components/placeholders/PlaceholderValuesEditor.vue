@@ -30,7 +30,6 @@
       :has-errors="hasErrors"
       :valid-items-count="validItemsCount"
       :error-count="errorCount"
-      :is-modal="isModal"
       @update:text-content="textContent = $event"
       @update-line-count="updateLineCount"
       @save="saveTextContent"
@@ -40,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue'
+  import { ref, watch } from 'vue'
   import { PlaceholderValueType } from '@/types/'
   import { usePlaceholderValues } from './composables/usePlaceholderValues'
   import { useTextModeParser } from './composables/useTextModeParser'
@@ -50,7 +49,6 @@
 
   const props = defineProps<{
     placeholderId: string
-    isModal?: boolean
   }>()
 
   const emit = defineEmits<{
@@ -62,8 +60,9 @@
 
   // コンポーザブルの使用
   // これ専用
-  const { localValues, placeholderName, initializeValues, addValue, removeValue, duplicateValue } =
-    usePlaceholderValues(props.placeholderId, props.isModal)
+  const { localValues, initializeValues, addValue, removeValue, duplicateValue } = usePlaceholderValues(
+    props.placeholderId
+  )
 
   // これ専用
   const {
@@ -94,16 +93,7 @@
     isTextMode.value = !isTextMode.value
   }
 
-  // 保存可能かどうか
-  const canSave = computed(() => {
-    if (isTextMode.value) {
-      return !hasErrors.value && validItemsCount.value > 0
-    } else {
-      return localValues.value.length > 0
-    }
-  })
-
-  // テキストコンテンツの保存（直接編集版のみ）
+  // テキストコンテンツの保存
   const saveTextContent = () => {
     if (hasErrors.value || validItemsCount.value === 0) return
 
@@ -117,26 +107,8 @@
     isTextMode.value = false
   }
 
-  // 現在の値を取得（モーダル版で使用）
-  const getCurrentValues = () => {
-    if (isTextMode.value) {
-      if (hasErrors.value || validItemsCount.value === 0) return null
-      return convertTextToValues()
-    } else {
-      return localValues.value.length > 0 ? localValues.value : null
-    }
-  }
-
   // 監視
   watch(textContent, updateLineCount)
-
-  // 外部からアクセス可能な関数
-  defineExpose({
-    initializeValues,
-    getCurrentValues,
-    canSave,
-    placeholderName,
-  })
 
   // 初期化
   initializeValues()

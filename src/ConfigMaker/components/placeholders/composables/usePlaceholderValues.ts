@@ -1,15 +1,14 @@
 // src/configMaker/components/placeholders/usePlaceholderValues.ts
 import { ref, computed, watch } from 'vue'
-import { PlaceholderValueSchema, PlaceholderValueType } from '@/types/'
+import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
-export function usePlaceholderValues(placeholderId: string, isModal = false) {
+export function usePlaceholderValues(placeholderId: string) {
   // ストアを使用
   const omikujiStore = useOmikujiStore()
 
   // リアクティブデータ
-  const localValues = ref<Array<PlaceholderValueType>>([])
-  const placeholderName = ref('')
+  const localValues = ref<Array<PlaceholderValueType | string>>([])
 
   // 現在のプレースホルダーデータ
   const currentPlaceholder = computed(() => omikujiStore.getCategoryMap('placeholders')[placeholderId])
@@ -17,18 +16,17 @@ export function usePlaceholderValues(placeholderId: string, isModal = false) {
   // 初期化
   const initializeValues = () => {
     const placeholder = currentPlaceholder.value
-    placeholderName.value = placeholder?.name || ''
 
     if (placeholder?.values) {
       localValues.value = JSON.parse(JSON.stringify(placeholder.values))
     } else {
-      localValues.value = [PlaceholderValueSchema.parse({})]
+      localValues.value = [PlaceholderValueObjectSchema.parse({})]
     }
   }
 
   // 値の操作
   const addValue = () => {
-    localValues.value.push(PlaceholderValueSchema.parse({}))
+    localValues.value.push(PlaceholderValueObjectSchema.parse({}))
   }
 
   const removeValue = (index: number) => {
@@ -38,25 +36,27 @@ export function usePlaceholderValues(placeholderId: string, isModal = false) {
 
   const duplicateValue = (index: number) => {
     const original = localValues.value[index]
-    const duplicated = JSON.parse(JSON.stringify(original))
-    duplicated.content = `${original.content} (コピー)`
-    localValues.value.splice(index + 1, 0, duplicated)
+    if (typeof original === 'string') {
+      const duplicated = `${original} (コピー)`
+      localValues.value.splice(index + 1, 0, duplicated)
+    } else {
+      const duplicated = JSON.parse(JSON.stringify(original))
+      duplicated.content = `${original.content} (コピー)`
+      localValues.value.splice(index + 1, 0, duplicated)
+    }
   }
 
-  // 直接編集版の場合、localValuesの変更をリアルタイム更新
-  if (!isModal) {
-    watch(
-      localValues,
-      (newValues) => {
-        omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', newValues)
-      },
-      { deep: true }
-    )
-  }
+  // localValuesの変更をリアルタイム更新
+  watch(
+    localValues,
+    (newValues) => {
+      omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', newValues)
+    },
+    { deep: true }
+  )
 
   return {
     localValues,
-    placeholderName,
     currentPlaceholder,
     initializeValues,
     addValue,
