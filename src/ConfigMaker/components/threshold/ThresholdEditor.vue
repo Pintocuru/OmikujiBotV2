@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/comments/ThresholdEditor.vue -->
 <template>
   <div class="card bg-base-300 mt-4">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t flex items-center gap-2">発動条件設定</div>
+    <div class="card-title bg-secondary p-2 pl-4 rounded-t flex items-center">発動条件設定</div>
     <div class="card-body space-y-4">
       <!-- 条件設定の説明 -->
       <div class="alert alert-info w-full">

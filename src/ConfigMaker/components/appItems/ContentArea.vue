@@ -1,12 +1,12 @@
 <!-- src/configMaker/components/ContentArea.vue -->
 <template>
   <div class="card bg-base-200">
-    <div class="card-title bg-primary text-lg p-2 pl-4 rounded-t flex items-center gap-2">
+    <div class="card-title bg-primary p-2 pl-4 rounded-t">
       <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
       {{ categoryLabels[selectedCategory].label }}
     </div>
 
-    <div class="card-body">
+    <div class="card-body p-4">
       <!-- コメントルール -->
       <CommentRuleEditor v-if="selectedCategory === 'comments'" />
 
@@ -53,5 +53,5 @@
   import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue'
 
   const omikujiStore = useOmikujiStore()
-  const { data, selectedCategory } = storeToRefs(omikujiStore)
+  const { selectedCategory } = storeToRefs(omikujiStore)
 </script>

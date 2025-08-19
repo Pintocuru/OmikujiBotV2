@@ -36,7 +36,7 @@
       </div>
 
       <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
-        <h3 class="font-semibold border-b pb-1">回数制限</h3>
+        <h3 class="font-semibold border-b pb-1">回数制限 - 1回の配信における回数を制限します</h3>
         <SettingItem
           label="引ける回数"
           description="今回のおみくじを引ける最大回数 (0で無制限)"
@@ -77,7 +77,7 @@
       </div>
 
       <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
-        <h3 class="font-semibold border-b pb-1">連投制限</h3>
+        <h3 class="font-semibold border-b pb-1">連投制限 - そのおみくじが同じユーザーで発動する場合、制限します</h3>
         <SettingItem
           label="連投を許可"
           description="続けておみくじを引くことを許可するか"

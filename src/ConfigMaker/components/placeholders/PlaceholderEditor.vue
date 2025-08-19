@@ -7,7 +7,7 @@
   <div v-if="selectedItem">
     <div class="card bg-base-300 mt-4">
       <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">基本設定</div>
-      <div class="card-body space-y-3">
+      <div class="card-body space-y-4 p-4">
         <!-- ID表示とコピー -->
         <SettingItem label="Key" description="<<プレースホルダー名>>" :showReset="false" containerClass="form-control">
           <div class="flex gap-2 items-center">
