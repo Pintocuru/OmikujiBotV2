@@ -23,13 +23,14 @@
       />
     </div>
 
+    <!-- WordParty -->
     <WordPartyField :action="action" :index="index" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/'
+  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import WordPartyField from './WordPartyField.vue'
 
   const props = defineProps<{

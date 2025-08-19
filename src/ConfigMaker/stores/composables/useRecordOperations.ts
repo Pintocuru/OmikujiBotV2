@@ -1,196 +1,172 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
-import { nextTick, Ref } from 'vue';
-import {
- categorySchemaMap,
- CategoryType,
- CategoryTypeMap,
- OmikujiDataType,
- RecordCategoryType,
- RecordCategoryTypeMap
-} from '@/types/';
+import { nextTick, Ref } from 'vue'
+import { categorySchemaMap, CategoryType, OmikujiDataType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/'
 
 // categorySchemaMapの型安全性を向上
 interface TypedSchema<T> {
- parse(input: unknown): T & { id: string };
+  parse(input: unknown): T & { id: string }
 }
 const typedCategorySchemaMap: {
- [K in RecordCategoryType]: TypedSchema<RecordCategoryTypeMap[K]>;
-} = categorySchemaMap as any;
+  [K in RecordCategoryType]: TypedSchema<RecordCategoryTypeMap[K]>
+} = categorySchemaMap as any
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
  */
 export function useRecordOperations(data: Ref<OmikujiDataType>) {
- /**
-  * カテゴリ全体のデータを更新
-  */
-const updateCategoryData = <C extends CategoryType>(
- category: C,
- newData: OmikujiDataType[C]
-) => {
- data.value[category] = newData;
-};
-
- /**
-  * カテゴリに新しいアイテムを追加
-  */
- const addItem = <C extends RecordCategoryType>(
-  category: C,
-  item: Partial<RecordCategoryTypeMap[C]> = {}
- ) => {
-  const schema = typedCategorySchemaMap[category];
-  let parseItem = item;
-
-  // 重複check
-  if (typeof parseItem.id === 'string' && data.value[category][parseItem.id]) {
-   parseItem = { ...parseItem, id: undefined };
+  /**
+   * カテゴリ全体のデータを更新
+   */
+  const updateCategoryData = <C extends CategoryType>(category: C, newData: OmikujiDataType[C]) => {
+    data.value[category] = newData
   }
 
-  const newItem = schema.parse(parseItem);
-  const id = newItem.id;
+  /**
+   * カテゴリに新しいアイテムを追加
+   */
+  const addItem = <C extends RecordCategoryType>(category: C, item: Partial<RecordCategoryTypeMap[C]> = {}) => {
+    const schema = typedCategorySchemaMap[category]
+    let parseItem = item
 
-  data.value[category] = { ...data.value[category], [id]: newItem };
- };
+    // 重複check
+    if (typeof parseItem.id === 'string' && data.value[category][parseItem.id]) {
+      parseItem = { ...parseItem, id: undefined }
+    }
 
- /**
-  * カテゴリ内のアイテムを更新（存在しない場合は追加）
-  */
- const updateItem = <C extends RecordCategoryType>(
-  category: C,
-  id: string,
-  updates: Partial<RecordCategoryTypeMap[C]>
- ) => {
-  const categoryData = data.value[category] as Record<string, RecordCategoryTypeMap[C]>;
+    const newItem = schema.parse(parseItem)
+    const id = newItem.id
 
-  if (categoryData && categoryData[id] !== undefined) {
-   const updatedItem = { ...categoryData[id], ...updates, updatedAt: new Date().toISOString() };
-   const updatedCategory = { ...categoryData, [id]: updatedItem };
-   data.value[category] = updatedCategory as any;
-  } else {
-   addItem(category, updates);
+    data.value[category] = { ...data.value[category], [id]: newItem }
   }
- };
 
- /**
-  * RecordCategoryのプロパティを更新
-  */
-const updateRuleNestedProperty = <
-  C extends RecordCategoryType,
-  K extends keyof OmikujiDataType[C][string] // <- ここを修正
->(
-  category: C,
-  id: string,
-  key: K,
-  value: OmikujiDataType[C][string][K]
-) => {
-  const currentCategory = data.value[category] as OmikujiDataType[C];
+  /**
+   * カテゴリ内のアイテムを更新（存在しない場合は追加）
+   */
+  const updateItem = <C extends RecordCategoryType>(
+    category: C,
+    id: string,
+    updates: Partial<RecordCategoryTypeMap[C]>
+  ) => {
+    const categoryData = data.value[category] as Record<string, RecordCategoryTypeMap[C]>
 
-  if (currentCategory && currentCategory[id]) {
-    const updatedItem = {
-      ...currentCategory[id],
-      [key]: value,
-      updatedAt: new Date().toISOString()
-    };
-    const updatedCategory = {
-      ...currentCategory,
-      [id]: updatedItem
-    } as OmikujiDataType[C];
-
-    updateCategoryData(category, updatedCategory);
+    if (categoryData && categoryData[id] !== undefined) {
+      const updatedItem = { ...categoryData[id], ...updates, updatedAt: new Date().toISOString() }
+      const updatedCategory = { ...categoryData, [id]: updatedItem }
+      data.value[category] = updatedCategory as any
+    } else {
+      addItem(category, updates)
+    }
   }
-};
 
- /**
-  * カテゴリからアイテムを削除
-  */
-const removeItem = (category: RecordCategoryType, id: string) => {
-  const categoryData = data.value[category] as Record<string, OmikujiDataType[typeof category][string]>;
+  /**
+   * RecordCategoryのプロパティを更新
+   */
+  const updateRecordProperty = <C extends RecordCategoryType, K extends keyof OmikujiDataType[C][string]>(
+    category: C,
+    id: string,
+    key: K,
+    value: OmikujiDataType[C][string][K]
+  ) => {
+    const currentCategory = data.value[category] as OmikujiDataType[C]
 
-  if (categoryData && categoryData[id] !== undefined) {
-    const updatedCategory = Object.fromEntries(
-      Object.entries(categoryData).filter(([key]) => key !== id)
-    ) as OmikujiDataType[typeof category]; 
+    if (currentCategory && currentCategory[id]) {
+      const updatedItem = {
+        ...currentCategory[id],
+        [key]: value,
+        updatedAt: new Date().toISOString(),
+      }
+      const updatedCategory = {
+        ...currentCategory,
+        [id]: updatedItem,
+      } as OmikujiDataType[C]
 
-    updateCategoryData(category, updatedCategory);
+      updateCategoryData(category, updatedCategory)
+    }
   }
-};
 
- /**
-  * カテゴリ内のアイテムを複製
-  */
- const duplicateItem = <C extends RecordCategoryType>(category: C, id: string): string | null => {
-  const item = getItem<RecordCategoryTypeMap[C]>(category, id);
-  if (!item) return null;
+  /**
+   * カテゴリからアイテムを削除
+   */
+  const removeItem = (category: RecordCategoryType, id: string) => {
+    const categoryData = data.value[category] as Record<string, OmikujiDataType[typeof category][string]>
 
-  const newId = `${id}_copy`;
-  const now = new Date().toISOString();
-  const duplicatedItem = { ...item, id: newId, createdAt: now, updatedAt: now };
+    if (categoryData && categoryData[id] !== undefined) {
+      const updatedCategory = Object.fromEntries(
+        Object.entries(categoryData).filter(([key]) => key !== id)
+      ) as OmikujiDataType[typeof category]
 
-  addItem(category, duplicatedItem);
-  return newId;
- };
+      updateCategoryData(category, updatedCategory)
+    }
+  }
 
- /**
-  * カテゴリから特定のアイテムを取得
-  */
- const getItem = <T>(category: RecordCategoryType, id: string): T | undefined => {
-  return (data.value[category] as Record<string, T>)?.[id];
- };
+  /**
+   * カテゴリ内のアイテムを複製
+   */
+  const duplicateItem = <C extends RecordCategoryType>(category: C, id: string): string | null => {
+    const item = getItem<RecordCategoryTypeMap[C]>(category, id)
+    if (!item) return null
 
- /**
-  * カテゴリの全アイテムを取得
-  */
- const getCategoryMap = <K extends RecordCategoryType>(
-  category: K
- ): Record<string, RecordCategoryTypeMap[K]> => {
-  return (data.value[category] as Record<string, RecordCategoryTypeMap[K]>) || {};
- };
+    const newId = `${id}_copy`
+    const now = new Date().toISOString()
+    const duplicatedItem = { ...item, id: newId, createdAt: now, updatedAt: now }
 
- /**
-  * カテゴリのアイテム配列を取得
-  */
- const getCategoryArray = <K extends RecordCategoryType>(
-  category: K
- ): RecordCategoryTypeMap[K][] => {
-  return Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
- };
+    addItem(category, duplicatedItem)
+    return newId
+  }
 
- /**
-  * カテゴリ内のアイテム順序(order)を移動
-  */
- const reorderItem = async <K extends RecordCategoryType>(
-  category: K,
-  fromIndex: number,
-  toIndex: number
- ) => {
-  const rulesArray = getCategoryArray(category);
+  /**
+   * カテゴリから特定のアイテムを取得
+   */
+  const getItem = <T>(category: RecordCategoryType, id: string): T | undefined => {
+    return (data.value[category] as Record<string, T>)?.[id]
+  }
 
-  const ids = rulesArray.map((rule) => rule.id);
-  const [movedId] = ids.splice(fromIndex, 1);
-  ids.splice(toIndex, 0, movedId);
+  /**
+   * カテゴリの全アイテムを取得
+   */
+  const getCategoryMap = <K extends RecordCategoryType>(category: K): Record<string, RecordCategoryTypeMap[K]> => {
+    return (data.value[category] as Record<string, RecordCategoryTypeMap[K]>) || {}
+  }
 
-  const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {};
-  ids.forEach((id, index) => {
-   const item = getItem<RecordCategoryTypeMap[K]>(category, id);
-   if (item) {
-    updatedRules[id] = { ...item, order: index + 1 };
-   }
-  });
+  /**
+   * カテゴリのアイテム配列を取得
+   */
+  const getCategoryArray = <K extends RecordCategoryType>(category: K): RecordCategoryTypeMap[K][] => {
+    return Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  }
 
-  await nextTick();
-  updateCategoryData(category as CategoryType, updatedRules);
- };
+  /**
+   * カテゴリ内のアイテム順序(order)を移動
+   */
+  const reorderItem = async <K extends RecordCategoryType>(category: K, fromIndex: number, toIndex: number) => {
+    const rulesArray = getCategoryArray(category)
 
- return {
-  updateCategoryData,
-  addItem,
-  updateItem,
-  removeItem,
-  duplicateItem,
-  updateRuleNestedProperty,
-  getItem,
-  getCategoryMap,
-  getCategoryArray,
-  reorderItem
- };
+    const ids = rulesArray.map((rule) => rule.id)
+    const [movedId] = ids.splice(fromIndex, 1)
+    ids.splice(toIndex, 0, movedId)
+
+    const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {}
+    ids.forEach((id, index) => {
+      const item = getItem<RecordCategoryTypeMap[K]>(category, id)
+      if (item) {
+        updatedRules[id] = { ...item, order: index + 1 }
+      }
+    })
+
+    await nextTick()
+    updateCategoryData(category as CategoryType, updatedRules)
+  }
+
+  return {
+    updateCategoryData,
+    addItem,
+    updateItem,
+    removeItem,
+    duplicateItem,
+    updateRecordProperty,
+    getItem,
+    getCategoryMap,
+    getCategoryArray,
+    reorderItem,
+  }
 }
