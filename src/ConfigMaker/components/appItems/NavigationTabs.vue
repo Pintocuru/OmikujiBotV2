@@ -8,6 +8,7 @@
       <div v-for="(tab, key) in filteredCategoryLabels" :key="key">
         <button
           class="tab w-full h-full p-4 pt-6 tooltip tooltip-top tab-active hover:bg-primary"
+          :class="{ 'bg-primary': selectedCategory === key }"
           :data-tip="tab.description"
           @click="omikujiStore.selectCategory(key)"
         >
@@ -30,6 +31,6 @@
   import { useCategoryUtils } from './useCategoryUtils'
 
   const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { data, selectedCategory } = storeToRefs(omikujiStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
 </script>

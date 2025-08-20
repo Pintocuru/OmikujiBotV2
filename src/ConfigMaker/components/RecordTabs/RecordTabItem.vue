@@ -14,10 +14,10 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
+  import { RecordCategoryUnion } from '@/types/OmikujiData/CategoryType'
   import RecordTabButton from './RecordTabButton.vue'
   import RecordHoverPreview from './RecordHoverPreview.vue'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import { RecordCategoryUnion } from '@/types'
 
   // Props（最小限に）
   const props = defineProps<{

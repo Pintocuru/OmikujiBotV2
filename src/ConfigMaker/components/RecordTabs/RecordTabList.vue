@@ -58,6 +58,6 @@
   import { Plus } from 'lucide-vue-next'
   import { useRecordTabsStore } from './RecordTabsStore'
 
-  // ストアを使用（propsは不要）
+  // ストアを使用
   const store = useRecordTabsStore()
 </script>

@@ -45,6 +45,16 @@
         </button>
       </div>
 
+      <!-- AccessLevel フィルター(GOD-MODE専用) -->
+      <div v-if="data.displaySettings.developer.godModeEnabled" class="flex items-center gap-2">
+        <span class="text-sm font-medium">アクセスレベル:</span>
+        <select v-model="store.filterOptions.accessFilter" class="select select-bordered select-sm w-40">
+          <option value="basic">basic</option>
+          <option value="pro">PRO版</option>
+          <option value="experimental">開発版を含む</option>
+        </select>
+      </div>
+
       <!-- 検索結果の統計と選択状態 -->
       <div class="mt-2 flex">
         <div class="mt-2 text-xs text-base-content/60">
@@ -103,9 +113,13 @@
 
 <script setup lang="ts">
   import { useRecordTabsStore } from './RecordTabsStore'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   // Store
   const store = useRecordTabsStore()
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
 
   // メソッド
   const clearSearch = () => {

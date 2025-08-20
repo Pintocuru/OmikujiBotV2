@@ -1,13 +1,15 @@
 // src/configMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue'
-import { recordCategoryLabel, RecordCategoryType, RecordCategoryTypeMap } from '@/types/'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
+import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
 /** フィルター設定の型定義 */
 export interface FilterOptions {
   enabledOnly: boolean // 有効なルールのみ表示
   colorFilter: string | null // 特定の色でフィルター
+  accessFilter: AccessLevelType // AccessLevelでフィルター(開発用)
 }
 
 /**
@@ -47,6 +49,7 @@ export const useRuleState = () => {
   const filterOptions = ref<FilterOptions>({
     enabledOnly: false,
     colorFilter: null,
+    accessFilter: 'experimental',
   })
 
   const searchQuery = ref('')
@@ -70,6 +73,18 @@ export const useRuleState = () => {
     // カラーフィルター
     if (filterOptions.value.colorFilter) {
       filtered = filtered.filter((rule) => rule.editorColor === filterOptions.value.colorFilter)
+    }
+
+    // AccessLevelフィルター
+    if (filterOptions.value.accessFilter) {
+      const selectedIndex = AccessLevelLabels.indexOf(filterOptions.value.accessFilter)
+
+      filtered = filtered.filter((rule) => {
+        // undefined は basic として扱う
+        const level = rule.accessLevel ?? 'basic'
+        const ruleIndex = AccessLevelLabels.indexOf(level)
+        return ruleIndex <= selectedIndex
+      })
     }
 
     // 検索クエリでフィルター（名前による部分一致）
