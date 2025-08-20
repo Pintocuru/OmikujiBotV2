@@ -22,6 +22,5 @@
 
 <script setup lang="ts">
   import { useSettingMode } from '@/types/SettingMode'
-
   const { isPro, isGod } = useSettingMode()
 </script>

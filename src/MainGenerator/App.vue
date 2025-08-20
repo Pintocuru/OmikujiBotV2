@@ -30,7 +30,7 @@
   import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
   import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
-  import { useFontFamily } from './scripts/useFontFamily'
+  import { useFontFamily } from '../types/BotComponents/useFontFamily'
 
   // Piniaストアの使用
   const appStore = useAppStore()

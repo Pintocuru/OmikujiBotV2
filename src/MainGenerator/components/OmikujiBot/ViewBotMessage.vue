@@ -1,15 +1,7 @@
 <!-- src/MainGenerator/components/ViewBotMessage.vue -->
 <template>
   <div class="relative w-full h-screen overflow-hidden">
-    <transition-group
-      class="comment-container"
-      name="comment"
-      tag="div"
-      appear
-      move-class="comment-move"
-      @enter="onEnter"
-      @leave="onLeave"
-    >
+    <div class="comment-container">
       <div
         v-for="(message, index) in displayedComments"
         :key="message.id"
@@ -20,8 +12,11 @@
           top: `${index * sizeConfig.spacing}px`,
           zIndex: displayedComments.length - index,
         }"
+        v-motion
+        :initial="animationVariants[animationType].initial"
+        :enter="animationVariants[animationType].enter"
+        :leave="animationVariants[animationType].leave"
       >
-        <!-- コメント吹き出し -->
         <div class="flex justify-center">
           <CommentBubble
             :name="message.name"
@@ -33,7 +28,6 @@
           />
         </div>
 
-        <!-- キャラクターアイコン -->
         <div
           v-if="message.profileImage && message.profileImage !== ''"
           class="absolute left-1/2 -translate-x-1/2 transform rounded-full overflow-hidden z-40"
@@ -52,18 +46,17 @@
           />
         </div>
       </div>
-    </transition-group>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { getImagePath } from '@/types/env'
-  import { AnimationType } from '@/types/BotComponents/animation'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import CommentBubble from './CommentBubble.vue'
   import { useBotCommentDisplay } from '@MainComponents/OmikujiBot/useBotMessage'
-  import { useCommentAnimation } from '@MainComponents/OmikujiBot/useCommentAnimation'
+  import { animationVariants } from '@MainComponents/OmikujiBot/useCommentAnimation'
   import { storeToRefs } from 'pinia'
 
   // サイズ設定の定数
@@ -83,13 +76,9 @@
   const { botMessages } = storeToRefs(appStore)
   const displaySize = computed(() => displayStore.displaySize)
 
-  // TODO:実装
-  const animationType = computed(() => 'slideUp')
+  const animationType = computed(() => appStore.omikujiData.displaySettings.base.bubbleAnimation)
 
   const { displayedComments, handleImageError, start, stop } = useBotCommentDisplay(botMessages, 'comment')
-
-  // アニメーション関連
-  const { animateEnter, animateLeave } = useCommentAnimation(animationType.value as AnimationType)
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
@@ -97,17 +86,6 @@
   // brightness計算
   const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
 
-  // アニメーションイベントハンドラー
-  const onEnter = (el: Element, done: () => void) => animateEnter(el, done)
-  const onLeave = (el: Element, done: () => void) => animateLeave(el, done)
-
   onMounted(start)
   onUnmounted(stop)
 </script>
-
-<style scoped>
-  /* CSS Transitionは削除、Anime.jsが代替 */
-  .comment-move {
-    transition: transform 0.3s ease;
-  }
-</style>

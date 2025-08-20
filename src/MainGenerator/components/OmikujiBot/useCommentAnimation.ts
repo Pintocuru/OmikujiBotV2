@@ -1,136 +1,67 @@
-// src\MainGenerator\components\OmikujiBot\useCommentAnimation.ts
-import anime from 'animejs';
-import type { AnimationType, AnimationConfig } from '@/types/BotComponents/animation';
+// src/MainGenerator/components/OmikujiBot/useCommentAnimation.ts
+import type { MotionVariants, MotionProperties } from '@vueuse/motion'
+import type { AnimationType } from '@/types/BotComponents/animation'
 
-export function useCommentAnimation(animationType: AnimationType = 'slideUp') {
- const animationConfig: Record<AnimationType, AnimationConfig> = {
+// アニメーション設定を、VueUse Motionの variants 形式で定義
+export const animationVariants: Record<AnimationType, MotionVariants<AnimationType>> = {
   slideUp: {
-   enter: { duration: 800, easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)' },
-   leave: { duration: 600, easing: 'cubicBezier(0.55, 0.055, 0.675, 0.19)' }
+    initial: { opacity: 0, y: 150 } as MotionProperties,
+    enter: { opacity: 1, y: 0, transition: { duration: 800, ease: [0.25, 0.46, 0.45, 0.94] } } as MotionProperties,
+    leave: { opacity: 0, y: -150, transition: { duration: 600, ease: [0.55, 0.055, 0.675, 0.19] } } as MotionProperties,
   },
   slideDown: {
-   enter: { duration: 700, easing: 'easeOutQuart' },
-   leave: { duration: 500, easing: 'easeInQuart' }
+    initial: { opacity: 0, y: -150 } as MotionProperties,
+    enter: { opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOutQuart' } } as MotionProperties,
+    leave: { opacity: 0, y: 150, transition: { duration: 500, ease: 'easeInQuart' } } as MotionProperties,
   },
   slideLeft: {
-   enter: { duration: 600, easing: 'easeOutBack' },
-   leave: { duration: 400, easing: 'easeInBack' }
+    initial: { opacity: 0, x: 300 } as MotionProperties,
+    enter: { opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOutBack' } } as MotionProperties,
+    leave: { opacity: 0, x: -300, transition: { duration: 400, ease: 'easeInBack' } } as MotionProperties,
   },
   slideRight: {
-   enter: { duration: 600, easing: 'easeOutBack' },
-   leave: { duration: 400, easing: 'easeInBack' }
+    initial: { opacity: 0, x: -300 } as MotionProperties,
+    enter: { opacity: 1, x: 0, transition: { duration: 600, ease: 'easeOutBack' } } as MotionProperties,
+    leave: { opacity: 0, x: 300, transition: { duration: 400, ease: 'easeInBack' } } as MotionProperties,
   },
   flipY: {
-   enter: { duration: 900, easing: 'easeOutElastic(1, .8)' },
-   leave: { duration: 400, easing: 'easeInQuart' }
+    initial: { opacity: 0, rotateY: 90, y: 50 } as MotionProperties,
+    enter: { opacity: 1, rotateY: 0, y: 0, transition: { duration: 900, ease: 'easeOutElastic' } } as MotionProperties,
+    leave: { opacity: 0, rotateY: -90, y: -50, transition: { duration: 400, ease: 'easeInQuart' } } as MotionProperties,
   },
   flipX: {
-   enter: { duration: 900, easing: 'easeOutElastic(1, .8)' },
-   leave: { duration: 400, easing: 'easeInQuart' }
+    initial: { opacity: 0, rotateX: 90, z: 100 } as MotionProperties,
+    enter: { opacity: 1, rotateX: 0, z: 0, transition: { duration: 900, ease: 'easeOutElastic' } } as MotionProperties,
+    leave: {
+      opacity: 0,
+      rotateX: -90,
+      z: -100,
+      transition: { duration: 400, ease: 'easeInQuart' },
+    } as MotionProperties,
   },
   scale: {
-   enter: { duration: 500, easing: 'easeOutBack' },
-   leave: { duration: 300, easing: 'easeInBack' }
+    initial: { opacity: 0, scale: 0.3, y: 30 } as MotionProperties,
+    enter: { opacity: 1, scale: 1, y: 0, transition: { duration: 500, ease: 'easeOutBack' } } as MotionProperties,
+    leave: { opacity: 0, scale: 0.3, y: -30, transition: { duration: 300, ease: 'easeInBack' } } as MotionProperties,
   },
   rotate: {
-   enter: { duration: 800, easing: 'easeOutBack' },
-   leave: { duration: 400, easing: 'easeInQuart' }
+    initial: { opacity: 0, rotate: 180, scale: 0.5 } as MotionProperties,
+    enter: { opacity: 1, rotate: 0, scale: 1, transition: { duration: 800, ease: 'easeOutBack' } } as MotionProperties,
+    leave: {
+      opacity: 0,
+      rotate: -180,
+      scale: 0.5,
+      transition: { duration: 400, ease: 'easeInQuart' },
+    } as MotionProperties,
   },
   bounce: {
-   enter: { duration: 1000, easing: 'easeOutBounce' },
-   leave: { duration: 300, easing: 'easeInQuart' }
+    initial: { opacity: 0, y: 200, scale: 0.8 } as MotionProperties,
+    enter: { opacity: 1, y: 0, scale: 1, transition: { duration: 1000, ease: 'easeOutBounce' } } as MotionProperties,
+    leave: { opacity: 0, y: -100, scale: 0.8, transition: { duration: 300, ease: 'easeInQuart' } } as MotionProperties,
   },
   fade: {
-   enter: { duration: 600, easing: 'easeOutQuart' },
-   leave: { duration: 400, easing: 'easeInQuart' }
-  }
- };
-
- const getEnterAnimation = (element: Element) => {
-  const baseProps = {
-   targets: element,
-   duration: animationConfig[animationType].enter.duration,
-   easing: animationConfig[animationType].enter.easing,
-   opacity: [0, 1]
-  };
-
-  switch (animationType) {
-   case 'slideUp':
-    return { ...baseProps, translateY: [150, 0] };
-   case 'slideDown':
-    return { ...baseProps, translateY: [-150, 0] };
-   case 'slideLeft':
-    return { ...baseProps, translateX: [300, 0] };
-   case 'slideRight':
-    return { ...baseProps, translateX: [-300, 0] };
-   case 'flipY':
-    return { ...baseProps, rotateY: [90, 0], translateY: [50, 0] };
-   case 'flipX':
-    return { ...baseProps, rotateX: [90, 0], translateZ: [100, 0] };
-   case 'scale':
-    return { ...baseProps, scale: [0.3, 1], translateY: [30, 0] };
-   case 'rotate':
-    return { ...baseProps, rotate: [180, 0], scale: [0.5, 1] };
-   case 'bounce':
-    return { ...baseProps, translateY: [200, 0], scale: [0.8, 1] };
-   case 'fade':
-    return { ...baseProps };
-   default:
-    return { ...baseProps, translateY: [150, 0] };
-  }
- };
-
- const getLeaveAnimation = (element: Element) => {
-  const baseProps = {
-   targets: element,
-   duration: animationConfig[animationType].leave.duration,
-   easing: animationConfig[animationType].leave.easing,
-   opacity: [1, 0]
-  };
-
-  switch (animationType) {
-   case 'slideUp':
-    return { ...baseProps, translateY: [0, -150] };
-   case 'slideDown':
-    return { ...baseProps, translateY: [0, 150] };
-   case 'slideLeft':
-    return { ...baseProps, translateX: [0, -300] };
-   case 'slideRight':
-    return { ...baseProps, translateX: [0, 300] };
-   case 'flipY':
-    return { ...baseProps, rotateY: [0, -90], translateY: [0, -50] };
-   case 'flipX':
-    return { ...baseProps, rotateX: [0, -90], translateZ: [0, -100] };
-   case 'scale':
-    return { ...baseProps, scale: [1, 0.3], translateY: [0, -30] };
-   case 'rotate':
-    return { ...baseProps, rotate: [0, -180], scale: [1, 0.5] };
-   case 'bounce':
-    return { ...baseProps, translateY: [0, -100], scale: [1, 0.8] };
-   case 'fade':
-    return { ...baseProps };
-   default:
-    return { ...baseProps, translateY: [0, -150] };
-  }
- };
-
- const animateEnter = (element: Element, done?: () => void) => {
-  anime({
-   ...getEnterAnimation(element),
-   complete: done
-  });
- };
-
- const animateLeave = (element: Element, done?: () => void) => {
-  anime({
-   ...getLeaveAnimation(element),
-   complete: done
-  });
- };
-
- return {
-  animateEnter,
-  animateLeave,
-  animationConfig: animationConfig[animationType]
- };
+    initial: { opacity: 0 } as MotionProperties,
+    enter: { opacity: 1, transition: { duration: 600, ease: 'easeOutQuart' } } as MotionProperties,
+    leave: { opacity: 0, transition: { duration: 400, ease: 'easeInQuart' } } as MotionProperties,
+  },
 }

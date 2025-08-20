@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { displaySize } from '@shared/types/'
 import { animationLabel } from '../BotComponents/animation'
 import { themes } from '@shared/styles/DaisyUiTheme'
-import { fontFamilyLabel } from '@/MainGenerator/scripts/useFontFamily'
+import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
 // BaseSettingsSchema
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
@@ -15,7 +15,7 @@ export const BaseSettingsSchema = z
     // フキダシのアニメーション
     bubbleAnimation: z.enum(animationLabel).default('slideUp').catch('slideUp'),
     // フォントの指定(プリセットされているものだけ)
-    fontFamily: z.enum(fontFamilyLabel).optional(),
+    fontFamily: z.enum(fontFamilyOptions).optional(),
 
     // showCharacterIcon キャラクターサムネイルを表示するか(個別はしてもいいかもね)
     showCharacterIcon: z.boolean().default(true).catch(true),
