@@ -120,6 +120,7 @@ export default [
       parserOptions: {
         project: ['./tsconfig.json'],
         tsconfigRootDir: path.resolve(__dirname),
+        extraFileExtensions: ['.vue'],
       },
     },
   },
@@ -152,6 +153,13 @@ export default [
   },
 
   // TypeScript用の設定をマージ
+  /**
+   * 'vueTsEslintConfig' のシグネチャ '({ extends: configNamesToExtend, supportedScriptLangs, rootDir, }?: ConfigOptions | undefined): ConfigArray' は非推奨です。ts(6387)
+index.d.mts(90, 4): この宣言はここで非推奨とマークされました。
+(alias) vueTsEslintConfig({ extends: configNamesToExtend, supportedScriptLangs, rootDir, }?: ConfigOptions): FlatConfig.ConfigArray
+import vueTsEslintConfig
+@deprecated — Use defineConfigWithVueTs + vueTsConfigs instead.
+   */
   ...vueTsEslintConfig(),
 
   {

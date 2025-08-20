@@ -3319,6 +3319,7 @@
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "omikuji": [
         {
           "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
@@ -3367,8 +3368,7 @@
       ],
       "ruleType": "timers",
       "intervalSeconds": 60,
-      "isBaseZero": true,
-      "accessLevel": "basic"
+      "isBaseZero": true
     },
     "PromotionToast": {
       "id": "PromotionToast",
@@ -3381,6 +3381,7 @@
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "omikuji": [
         {
           "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
@@ -3495,8 +3496,7 @@
       ],
       "ruleType": "timers",
       "intervalSeconds": 300,
-      "isBaseZero": false,
-      "accessLevel": "basic"
+      "isBaseZero": false
     }
   },
   "placeholders": {
@@ -3509,6 +3509,7 @@
       "order": 1,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
         "健康運が特に好調ね。心身ともに充実した日々になるわ。",
@@ -3516,8 +3517,7 @@
         "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。",
         "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。",
         "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji02": {
       "id": "ReimuOmikuji02",
@@ -3528,6 +3528,7 @@
       "order": 2,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
         "周囲の人々に感謝の気持ちを忘れずにね。",
@@ -3535,8 +3536,7 @@
         "仲間との協力が成功への鍵よ。チームワークを大切にしてね。",
         "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。",
         "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji03": {
       "id": "ReimuOmikuji03",
@@ -3547,6 +3547,7 @@
       "order": 3,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "思いがけない幸運があるかも。チャンスを逃さないようにね。",
         "周囲の人との協力が大切よ。助けを求めることを恐れないで。",
@@ -3554,8 +3555,7 @@
         "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。",
         "楽しい出来事が増えるわ。笑顔を忘れずにね。",
         "計画をしっかり立てることで、成功への道が開けるわ。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji04": {
       "id": "ReimuOmikuji04",
@@ -3566,6 +3566,7 @@
       "order": 4,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
         "いまは慎重に行動が必要な時。きっと吉へと導かれるわ。慌てない事が大切よ。",
@@ -3573,8 +3574,7 @@
         "周囲のサポートを受け入れることで、運気が上昇するわ。",
         "小さな喜びを大切にね。それが大きな幸せに繋がるわ。",
         "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji05": {
       "id": "ReimuOmikuji05",
@@ -3585,6 +3585,7 @@
       "order": 5,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "油断が思わぬ結果に繋がるわ。慎重に行動して。",
         "今は試練の時期ね。乗り越えれば、大きな成長が待ってるわ。",
@@ -3592,8 +3593,7 @@
         "計画を練り直すことで、より良い結果が得られるわ。",
         "周囲の意見に耳を傾けることが、成功の鍵になるわ。",
         "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji06": {
       "id": "ReimuOmikuji06",
@@ -3604,6 +3604,7 @@
       "order": 6,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "運気はやや下がり気味。慎重に行動するといいわ。",
         "周囲の人とのトラブルに注意して。喧嘩になったら、頭を冷やすことね。",
@@ -3611,8 +3612,7 @@
         "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。",
         "信頼できる人に相談すると、助け舟が出るわよ。",
         "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "ReimuOmikuji07": {
       "id": "ReimuOmikuji07",
@@ -3623,6 +3623,7 @@
       "order": 7,
       "editorColor": "#EC4899",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
         "終わったわ、風が強すぎるぜ。強すぎてお亡くなりだぜ。",
@@ -3635,8 +3636,7 @@
         "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。",
         "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。",
         "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
@@ -3647,10 +3647,10 @@
       "order": 8,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "マリサ キリサメ"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -3661,10 +3661,10 @@
       "order": 9,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "俺"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -3675,13 +3675,13 @@
       "order": 10,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "負けは次につながるチャンスです!ネバーギブアップ!",
         "じゃんけんの向こう側に何があるか、考えてみてください。",
         "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
         "何事も準備がすべて。それを怠っている事がバレてますよ。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenA2": {
       "id": "HondaJankenA2",
@@ -3692,12 +3692,12 @@
       "order": 11,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
         "ちゃんと分析してます?じっくり結果に向き合ってください。",
         "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenB1": {
       "id": "HondaJankenB1",
@@ -3708,13 +3708,13 @@
       "order": 12,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
         "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
         "運を味方につけるのは、地道な努力ですよ。",
         "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenB2": {
       "id": "HondaJankenB2",
@@ -3725,12 +3725,12 @@
       "order": 13,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
         "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
         "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenC1": {
       "id": "HondaJankenC1",
@@ -3741,13 +3741,13 @@
       "order": 14,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
         "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
         "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
         "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenC2": {
       "id": "HondaJankenC2",
@@ -3758,12 +3758,12 @@
       "order": 15,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
         "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
         "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "HondaJankenV": {
       "id": "HondaJankenV",
@@ -3774,13 +3774,13 @@
       "order": 16,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
         "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
         "明日、<<HondaJankenOre>>が勝つからまたやろう!",
         "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-      ],
-      "accessLevel": "basic"
+      ]
     },
     "flowerAllItem": {
       "id": "flowerAllItem",
@@ -3791,6 +3791,7 @@
       "order": 17,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "【白色】<<flowerWhite>>",
         "【赤色】<<flowerRed>>",
@@ -3799,8 +3800,7 @@
         "【緑色】<<flowerGreen>>",
         "【青色】<<flowerBlue>>",
         "【紫色】<<flowerPurple>>"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerWhite": {
       "id": "flowerWhite",
@@ -3811,6 +3811,7 @@
       "order": 18,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "白いカサブランカは、純潔と高貴の象徴だぜ。あなたの心の中にも、そんな美しさがあるかもしれないぜ。",
         "白いバラは、尊敬と誠実の気持ちを表すぜ。誰かに感謝の気持ちを伝える良い機会かもしれないぜ。",
@@ -3819,8 +3820,7 @@
         "白いカーネーションは、深い愛情と尊敬を表すぜ。大切な人への感謝を忘れずにだぜ。",
         "白いヒヤシンスは、思いやりと共感を意味するぜ。周りの人を大切にすることで、あなたも幸せになれるぜ。",
         "白いデイジーは、無邪気さと希望を象徴するぜ。あなたの純粋な心が、周りに良い影響を与えるぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerRed": {
       "id": "flowerRed",
@@ -3831,6 +3831,7 @@
       "order": 19,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "赤いバラは情熱と愛の象徴だぜ。あなたの中にある熱い思いを大切にして欲しいぜ。",
         "赤いポインセチアは、冬の寒さの中でも鮮やかに咲く強さがあるぜ。あなただって、困難を乗り越える力があるんだぜ。",
@@ -3839,8 +3840,7 @@
         "赤いゼラニウムは、元気と活力の象徴だぜ。新しいことに挑戦する勇気を与えてくれるぜ。",
         "赤いコスモスは、秋の空の下、風に揺られて咲いているぜ。あなたの心も、自由で穏やかな気持ちで満たされて欲しいぜ。",
         "赤いポピーは、感謝の気持ちを伝える花だぜ。いつもありがとうだぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerOrange": {
       "id": "flowerOrange",
@@ -3851,6 +3851,7 @@
       "order": 20,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "オレンジ色のマリーゴールドは、情熱と創造性の象徴だぜ。新しいアイデアが湧いてくるかもしれないぜ。",
         "オレンジ色のカレンデュラは、喜びと温かさを表すぜ。周りの人を明るい気持ちにできそうだぜ。",
@@ -3859,8 +3860,7 @@
         "オレンジ色のハイビスカスは、情熱と魅力を象徴するぜ。あなたの魅力が輝く瞬間が訪れるぜ。",
         "オレンジ色のガーベラは、エネルギーと活力を意味するぜ。元気いっぱいの一日を過ごせるぜ。",
         "オレンジ色のルドベキアは、楽しい冒険を予感させるぜ。新しい経験に心を開いてみるといいぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerYellow": {
       "id": "flowerYellow",
@@ -3871,6 +3871,7 @@
       "order": 21,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "黄色いヒマワリは、太陽のように明るく輝く花だぜ。あなたも周りを明るく照らす存在かもしれないぜ。",
         "黄色いフリージアは、友情と信頼を表すぜ。大切な友人との絆を深める良い機会かもしれないぜ。",
@@ -3879,8 +3880,7 @@
         "黄色いアカシアは、隠された美しさを表すぜ。あなたの中にある才能が花開くかもしれないぜ。",
         "黄色いカレンデュラは、友情の証だぜ。大切な友達との絆を大切にするんだぜ。",
         "黄色いキンモクセイの香りは、懐かしい思い出を呼び覚ますぜ。大切な人と良い時間を過ごして欲しいぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerGreen": {
       "id": "flowerGreen",
@@ -3891,6 +3891,7 @@
       "order": 22,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "緑のクローバーは、幸運と希望の象徴だぜ。小さな幸せに気づける日になりそうだぜ。",
         "緑のベルガモットは、繁栄と豊かさを表すぜ。あなたの努力が実を結ぶ時期かもしれないぜ。",
@@ -3899,8 +3900,7 @@
         "緑のアンスリウムは、もてなしの心を表すぜ。人との交流を大切にする日になりそうだぜ。",
         "緑のシダは、生命力と復活を象徴するぜ。何か新しいことに挑戦するチャンスかもしれないぜ。",
         "緑のマートルは、愛と幸福の象徴だぜ。あなたの愛情が周りに良い影響を与えるぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerBlue": {
       "id": "flowerBlue",
@@ -3911,6 +3911,7 @@
       "order": 23,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "青い朝顔は、夏の朝を美しく彩るぜ。清々しい一日の始まりを感じさせてくれるんだぜ。",
         "青いデルフィニウムは、高貴さと優雅さの象徴だぜ。あなたの中にも、そんな魅力が隠れているかもしれないぜ。",
@@ -3919,8 +3920,7 @@
         "青いコーンフラワーは、希望と幸福を象徴するぜ。明るい未来が待っているはずだぜ。",
         "青いスミレは、春の息吹を感じさせてくれる、可憐な花だぜ。あなたの心も、きっと温かくて優しいはずだぜ。",
         "青いリンドウは、厳しい冬を乗り越えて咲く花だぜ。あなたは、どんな困難にも立ち向かえる、強い心の持ち主なんだぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerPurple": {
       "id": "flowerPurple",
@@ -3931,6 +3931,7 @@
       "order": 24,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "紫のラベンダーは、優雅さと洗練を象徴するぜ。あなたの中にある美しさが輝く時かもしれないぜ。",
         "紫のアイリスは、知恵と勇気を表すぜ。難しい決断を迫られても、自信を持って進んでいけるぜ。",
@@ -3939,8 +3940,7 @@
         "紫のアリウムは、統一と調和を表すぜ。周りの人々との良い関係を築けそうだぜ。",
         "紫陽花は、たくさんの小さな花が集まって一輪の花を咲かせるぜ。あなたも周りの人たちと力を合わせれば、大きなことができるぜ。",
         "紫のバラは、高貴な印象を与えるぜ。あなたは、特別な存在だぜ。本当だぜ？"
-      ],
-      "accessLevel": "internal"
+      ]
     },
     "flowerKinoko": {
       "id": "flowerKinoko",
@@ -3951,6 +3951,7 @@
       "order": 25,
       "editorColor": "#F59E0B",
       "tags": [],
+      "accessLevel": "internal",
       "values": [
         "シイタケは「仙人のキノコ」と呼ばれるほど長寿の象徴だぜ。健康運が高まりそうだぜ。",
         "マツタケは「松の寿」という意味があるぜ。あなたの人生も香り高いものになりそうだぜ。",
@@ -3962,8 +3963,7 @@
         "キクラゲは「木耳」と書くぜ。耳のように、周りの声にも耳を傾けると良いことがありそうだぜ。",
         "ヒラタケは平べったい形から名付けられたぜ。謙虚な姿勢が大切になりそうだぜ。",
         "マッシュルームは英語で「きのこ」だけど、マッシュと言えば髪型だよな。マッシュの似合う男の子って可愛いぜ。"
-      ],
-      "accessLevel": "internal"
+      ]
     }
   },
   "characters": {
@@ -4082,7 +4082,7 @@
       "toastEnabled": true
     },
     "developer": {
-      "godModeEnabled": true,
+      "godModeEnabled": false,
       "proModeEnabled": true,
       "startup": {
         "component": "omikujiBot",

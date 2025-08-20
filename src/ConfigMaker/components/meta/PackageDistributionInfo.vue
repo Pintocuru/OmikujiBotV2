@@ -27,14 +27,14 @@
       <!-- URL -->
       <SettingItem
         label="配布サイトURL"
-        description="パッケージの配布サイトやプロジェクトページのURL（任意）"
+        description="パッケージの配布サイトやプロジェクトページのURL"
         @reset="resetMap.url"
       >
         <div class="flex gap-2">
           <input
             v-model="meta.url"
             type="url"
-            class="input input-bordered flex-1 max-w-md"
+            class="input input-bordered flex-1 w-full"
             placeholder="https://example.com"
           />
           <button
