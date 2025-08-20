@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div v-if="appStore.isInitialized" class="main-container">
+  <div v-if="appStore.isInitialized" class="main-container" :class="['main-container', fontClass]">
     <!-- BOTメッセージ表示 -->
     <ViewBotMessage v-if="displayStore.currentScriptKey === null" />
 
@@ -8,20 +8,20 @@
     <GameRankingViewer v-else-if="displayStore.currentScriptKey !== null" :key="displayStore.currentComponentKey" />
 
     <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
-    <DisplayControlPanel v-if="developer.godModeEnabled" />
+    <DisplayControlPanel v-if="licenseKeyHash === '5d41402abc4b2a76b9719d911017c592'" />
 
     <!-- トースト表示 -->
-    <ViewBotToast v-if="base.toastEnabled" />
+    <ViewBotToast v-if="base.showToasts" />
 
     <!-- キャラクターサムネイル -->
-    <CharacterThumbnails v-if="base.modeSwitchEnabled" />
+    <CharacterThumbnails v-if="base.showCharacterIcon" />
   </div>
   <!-- わんコメが起動されていない場合のエラー表示 -->
   <ErrorInitComponent v-else :pluginUid="null" />
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  import { computed, onMounted } from 'vue'
   import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue'
   import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue'
   import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue'
@@ -30,12 +30,16 @@
   import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
   import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
+  import { useFontFamily } from './scripts/useFontFamily'
 
   // Piniaストアの使用
   const appStore = useAppStore()
   const ruleProcessor = useRuleProcessor()
   const displayStore = useDisplayStore()
-  const { base, developer } = appStore.omikujiData.displaySettings
+  const { base, licenseKeyHash } = appStore.omikujiData.displaySettings
+
+  // フォントの指定
+  const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'system'))
 
   // 初期化処理
   onMounted(async () => {
@@ -68,6 +72,5 @@
   .main-container {
     height: 100vh;
     overflow: hidden;
-    font-family: 'Zen Maru Gothic', sans-serif;
   }
 </style>

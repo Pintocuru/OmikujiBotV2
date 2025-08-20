@@ -9,7 +9,7 @@
 
     <!-- config.js 読み込み機能 -->
     <DeveloperMode
-      v-if="godModeEnabled"
+      v-if="isGod"
       :agreed="developerModeAgreed"
       :load-status="loadStatus"
       @agree="developerModeAgreed = true"
@@ -28,10 +28,12 @@
   import FireList from '@ConfigComponents/wordPartySettings/FireList.vue'
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
   import { storeToRefs } from 'pinia'
+  import { useSettingMode } from '@/types/SettingMode'
 
   // 設定管理
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
 
   // WordParty設定の参照 (computed with get/set)
   const wordPartySettings = computed({
@@ -44,9 +46,7 @@
     },
   })
 
-  // GODモードの有効状態
-  const godModeEnabled = computed(() => data.value.displaySettings.developer.godModeEnabled)
-  // 開発者モード機能
+  // 読み込み機能
   const developerModeAgreed = ref(false)
 
   // 設定更新関数

@@ -26,7 +26,7 @@ export const useCategoryUtils = () => {
    * ナビゲーションの表示・非表示設定
    */
   const filteredCategoryLabels = computed<Record<CategoryType, (typeof categoryLabels)[CategoryType]>>(() => {
-    const { proModeEnabled, visibility } = data.value.displaySettings.developer
+    const { visibility } = data.value.displaySettings.developer
 
     const excludeKeys: CategoryType[] = []
 
@@ -39,9 +39,6 @@ export const useCategoryUtils = () => {
     if (!visibility.gameScriptSettings || visibility.gameScripts.length === 0) {
       excludeKeys.push('scriptSettings')
     }
-
-    // proModeEnabledがfalseならmetaを除外
-    if (!proModeEnabled) excludeKeys.push('meta')
 
     return Object.fromEntries(
       Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))

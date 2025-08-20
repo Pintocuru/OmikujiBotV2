@@ -1,12 +1,10 @@
 // src/types/DisplaySettingsSchema.ts
 // 250716_1 新規追加
 import { z } from 'zod'
-import { ScriptGameKey, scriptGameKeys } from '@ConfigComponents/GameScripts/GameScriptsMap'
 import { displaySize } from '@shared/types/'
-
-// ------------------------------------
-// 個別のスキーマに分割
-// ------------------------------------
+import { animationLabel } from '../BotComponents/animation'
+import { themes } from '@shared/styles/DaisyUiTheme'
+import { fontFamilyLabel } from '@/MainGenerator/scripts/useFontFamily'
 
 // BaseSettingsSchema
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
@@ -14,22 +12,26 @@ export const BaseSettingsSchema = z
   .object({
     // 文字・画像の大きさ指定
     displaySize: z.enum(displaySize).default('md').catch('md'),
-    // 音を鳴らすか(将来、おみくじBOTで音を採用するときに使う)
-    // TODO:実装
+    // フキダシのアニメーション
+    bubbleAnimation: z.enum(animationLabel).default('slideUp').catch('slideUp'),
     // フォントの指定(プリセットされているものだけ)
-    // TODO:実装
+    fontFamily: z.enum(fontFamilyLabel).optional(),
 
-    // ! 下記は、omikujiBot に移行
-    // キャラクターサムネイルを表示するか(個別はしてもいいかもね)
-    // ! プロパティ名は変更したほうがいいかも
-    modeSwitchEnabled: z.boolean().default(true).catch(true),
-    // トーストを表示するか
-    toastEnabled: z.boolean().default(true).catch(true),
+    // showCharacterIcon キャラクターサムネイルを表示するか(個別はしてもいいかもね)
+    showCharacterIcon: z.boolean().default(true).catch(true),
+    //  showToasts トーストを表示するか
+    showToasts: z.boolean().default(true).catch(true),
+
+    // DaisyUiのテーマカラー
+    daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
   })
   .catch({
     displaySize: 'md',
-    modeSwitchEnabled: true,
-    toastEnabled: true,
+    bubbleAnimation: 'slideUp',
+    fontFamily: 'system',
+    showCharacterIcon: true,
+    showToasts: true,
+    daisyUiTheme: 'dark',
   })
 
 /*
@@ -37,9 +39,6 @@ export const BaseSettingsSchema = z
  */
 export const DeveloperSettingsSchema = z
   .object({
-    // ライセンス(GOD-MODE / PRO / basic の3種)
-    licenseKeyHash: z.string().default('').catch(''),
-
     // 開発者モードの有効化
     godModeEnabled: z.boolean().default(false).catch(false),
     // プロ版モード (有料版の機能を表示するか)
@@ -52,6 +51,7 @@ export const DeveloperSettingsSchema = z
       scriptKey: z.string().nullable().default(null).nullable().default(null),
     }),
 
+    // 各表示・非表示機能
     visibility: z.object({
       comments: z.boolean().default(true).catch(true), // comments
       timers: z.boolean().default(true).catch(true), // timers
@@ -65,7 +65,6 @@ export const DeveloperSettingsSchema = z
     }),
   })
   .catch({
-    licenseKeyHash: '',
     godModeEnabled: false,
     proModeEnabled: false,
     startup: {
@@ -83,13 +82,11 @@ export const DeveloperSettingsSchema = z
     },
   })
 
-// ------------------------------------
-// 分割したスキーマを結合
-// ------------------------------------
-
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
+  // ライセンス(GOD-MODE / PRO / basic の3種)
+  licenseKeyHash: z.string().default('').catch(''),
   base: BaseSettingsSchema,
   developer: DeveloperSettingsSchema,
 })

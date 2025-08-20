@@ -5356,8 +5356,8 @@
   "displaySettings": {
     "base": {
       "displaySize": "md",
-      "modeSwitchEnabled": true,
-      "toastEnabled": true
+      "showCharacterIcon": true,
+      "showToasts": true
     },
     "developer": {
       "godModeEnabled": true,

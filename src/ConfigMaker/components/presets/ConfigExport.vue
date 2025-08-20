@@ -27,7 +27,7 @@
       </button>
     </div>
 
-    <div v-if="proModeEnabled">
+    <div v-if="isPro">
       <button
         @click="() => handleExport('template')"
         class="btn btn-secondary btn-soft tooltip tooltip-top"
@@ -48,16 +48,14 @@
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { Save } from 'lucide-vue-next'
-
-  const props = defineProps<{
-    proModeEnabled: boolean
-  }>()
+  import { useSettingMode } from '@/types/SettingMode'
 
   const { isExporting, exportFile } = useConfigExport()
   const omikujiStore = useOmikujiStore()
   const devStore = useDevStore()
   const { hasChanged } = storeToRefs(omikujiStore)
   const { saveFileName } = storeToRefs(devStore)
+  const { isPro } = useSettingMode()
 
   const handleExport = async (type: 'config' | 'template') => {
     await exportFile(type)

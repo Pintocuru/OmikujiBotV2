@@ -144,9 +144,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -155,12 +153,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ドラちゃん",
-          "^どらちゃん",
-          "^dorachan",
-          "^5percent_dora"
-        ]
+        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1751,8 +1744,8 @@
   "displaySettings": {
     "base": {
       "displaySize": "md",
-      "modeSwitchEnabled": false,
-      "toastEnabled": true
+      "showCharacterIcon": false,
+      "showToasts": true
     },
     "developer": {
       "godModeEnabled": false,

@@ -17,7 +17,7 @@ export function useSettingMode() {
 
   // computedを使ってリアクティブにキャッシュ
   const settingMode = computed((): SettingMode => {
-    const { licenseKeyHash } = data.value.displaySettings.developer
+    const { licenseKeyHash } = data.value.displaySettings
     return KEY_MAP[licenseKeyHash] ?? 'basic'
   })
 

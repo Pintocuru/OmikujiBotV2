@@ -47,7 +47,7 @@
   import { RecordCategoryUnion, isDev } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
+  import { useSettingMode } from '@/types/SettingMode'
 
   const props = defineProps<{
     rule: RecordCategoryUnion
@@ -55,7 +55,7 @@
 
   // Store
   const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
   const store = useRecordTabsStore()
 
   // Computed
@@ -85,7 +85,7 @@
   }
 
   const nameWrapperClasses = computed(() => {
-    if (data.value.displaySettings.developer.godModeEnabled) {
+    if (isGod.value) {
       const baseClasses = ['badge', 'badge-outline', 'truncate', 'max-w-24']
       const level = props.rule.accessLevel
       switch (level) {

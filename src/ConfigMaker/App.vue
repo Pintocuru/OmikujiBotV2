@@ -1,24 +1,8 @@
 <!-- src/configMaker/App.vue -->
 <template>
   <div class="p-4 max-w-6xl pb-24 overflow-x-hidden">
-    <h1
-      class="flex justify-center text-2xl font-bold mb-6 text-center"
-      :class="isGod ? ['text-warning'] : isPro ? ['text-secondary'] : ['text-primary']"
-    >
-      <div class="flex items-center gap-2">
-        おみくじBot コンフィグエディター
-        <!-- GOD-MODEバッジ -->
-        <span v-if="isGod" class="badge badge-warning tooltip tooltip-bottom" data-tip="私が神です!"> GOD-MODE </span>
-        <!-- GOD-MODEバッジ -->
-        <span
-          v-if="isPro"
-          class="badge badge-secondary tooltip tooltip-bottom"
-          data-tip="テンプレート出力が可能な、有料版です!"
-        >
-          PRO
-        </span>
-      </div>
-    </h1>
+    <!-- タイトル -->
+    <AppHeader />
 
     <!-- 開発者用プリセット管理 -->
     <component :is="devToolsComponent" v-if="devToolsComponent" />
@@ -26,7 +10,7 @@
     <!-- 設定読み込み・書き出し -->
     <div class="flex flex-wrap justify-between items-center mb-2 gap-4 min-w-0">
       <ConfigImport />
-      <ConfigExport :proModeEnabled="isPro" />
+      <ConfigExport />
     </div>
 
     <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
@@ -64,15 +48,13 @@
   import NavigationTabs from './components/appItems/NavigationTabs.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import FloatingElements from './components/appItems/FloatingElements.vue'
+  import AppHeader from './components/appItems/AppHeader.vue'
   import { storeToRefs } from 'pinia'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { ThemeType } from '@shared/styles/DaisyUiTheme'
-  import { useSettingMode } from '@/types/SettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-
-  const { isPro, isGod } = useSettingMode()
 
   // 開発者ツール
   const devToolsComponent = ref<any | null>(null)
@@ -83,14 +65,16 @@
   }
 
   // テーマを <html data-theme=""> に反映（DaisyUI 用）
-  const themeValue: Ref<ThemeType> = ref('dark')
   watch(
-    themeValue,
+    () => data.value.displaySettings.base.daisyUiTheme,
     (newTheme) => {
-      document.documentElement.setAttribute('data-theme', newTheme)
+      if (newTheme) {
+        document.documentElement.setAttribute('data-theme', newTheme)
+      }
     },
     { immediate: true }
   )
+
   // スクロール動作
   useScrollBehavior()
 </script>
