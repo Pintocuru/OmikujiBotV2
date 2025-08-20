@@ -116,6 +116,7 @@ export default [
     name: 'app/files-to-lint',
     files: ['**/*.{ts,js,mts,tsx,vue}'],
     languageOptions: {
+      parser: require.resolve('vue-eslint-parser'),
       parserOptions: {
         project: ['./tsconfig.json'],
         tsconfigRootDir: path.resolve(__dirname),

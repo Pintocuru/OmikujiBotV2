@@ -1,14 +1,9 @@
-// src\MainGenerator\stores\useAppStore.ts
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { OmikujiDataSchema, BotMessage } from '@/types/'
 import { ConfigUserSchema } from '@shared/types'
-import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
-import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor'
-import { TimerProcessor } from '@MainScripts/omikujiProcess/timerProcessor'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
 import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
 
 export const useAppStore = defineStore('app', () => {
@@ -17,40 +12,21 @@ export const useAppStore = defineStore('app', () => {
   const config = ConfigUserSchema.parse(window.userConfig)
 
   // 初期化状態
-  const isInitialized = ref(true)
+  const isInitialized = ref(false)
 
   // メッセージ関連
   const botMessages = ref<BotMessage[]>([])
 
-  // インスタンス
+  // 必要な管理オブジェクト
   const scriptManager = new GameScriptManager(omikujiData)
   const cooldownManager = CooldownManager.getInstance()
-  const commentProcessor = new CommentProcessor(omikujiData, scriptManager)
-  const timerProcessor = new TimerProcessor(omikujiData)
   const characterCollector = new CharacterCollector(omikujiData)
 
-  /**
-   * アプリケーションの初期化
-   */
-  const initializeApp = async (): Promise<boolean> => {
-    try {
-      const isInit = await GetUserComments(config).fetchComments((comments) => {
-        updateBotMessages(comments)
-      })
-      isInitialized.value = isInit
-      if (isInit) startTimers()
-
-      return isInit
-    } catch (error) {
-      console.error('初期化エラー:', error)
-      isInitialized.value = false
-      return false
-    }
+  // 状態操作のアクション
+  const addBotMessage = (message: BotMessage) => {
+    botMessages.value = [...botMessages.value, message]
   }
 
-  /**
-   * メッセージ処理の共通ロジック
-   */
   const scheduleBotMessages = (processedMessages: BotMessage[]) => {
     if (!processedMessages.length) return
 
@@ -69,43 +45,12 @@ export const useAppStore = defineStore('app', () => {
     )
   }
 
-  // botMessageを追加
-  const addBotMessage = (message: BotMessage) => {
-    botMessages.value = [...botMessages.value, message]
-  }
-
-  /**
-   * コメントでのおみくじ処理
-   */
-  const updateBotMessages = (comments: Comment[]) => {
-    if (!comments.length) {
-      botMessages.value = []
-      return
-    }
-
-    const processedMessages = commentProcessor.respondToComments(comments)
-    scheduleBotMessages(processedMessages)
-  }
-
-  /**
-   * タイマーでのおみくじ処理
-   */
-  const processTimerMessages = (processedMessages: BotMessage[]) => {
-    scheduleBotMessages(processedMessages)
-  }
-
-  // タイマー開始
-  const startTimers = () => {
-    timerProcessor.startTimers(processTimerMessages)
-  }
-  //  タイマー停止
-  const stopTimers = () => {
-    timerProcessor.stopTimers()
-  }
-
-  // メッセージクリア
   const clearMessages = () => {
     botMessages.value = []
+  }
+
+  const setInitialized = (value: boolean) => {
+    isInitialized.value = value
   }
 
   return {
@@ -116,17 +61,12 @@ export const useAppStore = defineStore('app', () => {
     botMessages,
     scriptManager,
     cooldownManager,
-    commentProcessor,
-    timerProcessor,
     characterCollector,
-    addBotMessage,
 
-    // アクション
-    initializeApp,
-    updateBotMessages,
-    processTimerMessages,
-    startTimers,
-    stopTimers,
+    // 状態操作アクション
+    addBotMessage,
+    scheduleBotMessages,
     clearMessages,
+    setInitialized,
   }
 })
