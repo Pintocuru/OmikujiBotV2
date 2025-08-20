@@ -2,7 +2,7 @@
 <template>
   <div
     class="flex w-full justify-center my-4 rounded-md"
-    :class="data.displaySettings.developer.godModeEnabled ? ['bg-warning text-warning-content'] : ['border']"
+    :class="isGod ? ['bg-warning text-warning-content'] : ['border']"
   >
     <div class="tabs gap-2">
       <div v-for="(tab, key) in filteredCategoryLabels" :key="key">
@@ -29,8 +29,10 @@
   import { storeToRefs } from 'pinia'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
+  import { useSettingMode } from '@/types/SettingMode'
 
   const omikujiStore = useOmikujiStore()
-  const { data, selectedCategory } = storeToRefs(omikujiStore)
+  const { selectedCategory } = storeToRefs(omikujiStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
+  const { isGod } = useSettingMode()
 </script>

@@ -11,7 +11,7 @@
 
     <template #body>
       <!-- ID表示(開発モード専用) -->
-      <div v-if="data.displaySettings.developer.godModeEnabled" class="alert alert-warning">
+      <div v-if="isGod" class="alert alert-warning">
         <SettingItem
           label="Access Level"
           description="製品のアクセスレベルを選択してください"
@@ -27,7 +27,7 @@
       </div>
 
       <!-- ID表示(開発モード専用) -->
-      <div v-if="data.displaySettings.developer.godModeEnabled" class="p-2 bg-warning text-warning-content rounded-md">
+      <div v-if="isGod" class="p-2 bg-warning text-warning-content rounded-md">
         <SettingItem
           label="Key"
           description="Q.なぜ変更できる? A.マージの時に困らない"
@@ -60,9 +60,8 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
   import { AccessLevelLabels } from '@shared/types'
+  import { useSettingMode } from '@/types/SettingMode'
 
   const props = defineProps<{
     modelValue: RuleType
@@ -74,8 +73,7 @@
   }>()
 
   // Store
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
 
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof RuleType>(key: T) =>

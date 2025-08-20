@@ -1,11 +1,6 @@
 <!-- src/configMaker/components/comments/GameScriptEditor.vue -->
 <template>
-  <SectionCard
-    v-if="
-      (data.displaySettings.developer.visibility.gameScriptSettings && isScriptEnabled) ||
-      data.displaySettings.developer.godModeEnabled
-    "
-  >
+  <SectionCard v-if="(data.displaySettings.developer.visibility.gameScriptSettings && isScriptEnabled) || isGod">
     <template #header>
       <div>ゲームスクリプト設定</div>
     </template>
@@ -31,10 +26,7 @@
       </InformationCard>
 
       <!-- スクリプト有効化チェックボックス -->
-      <div
-        v-if="data.displaySettings.developer.godModeEnabled"
-        class="card-body bg-warning text-warning-content rounded-md"
-      >
+      <div v-if="isGod" class="card-body bg-warning text-warning-content rounded-md">
         <SettingItem label="ゲームスクリプトを使用" description="好きなゲームを選んでね!" :showReset="false">
           <label class="label cursor-pointer justify-start gap-3">
             <input type="checkbox" v-model="isScriptEnabled" class="toggle toggle-warning" />
@@ -133,6 +125,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'
+  import { useSettingMode } from '@/types/SettingMode'
 
   const props = defineProps<{
     modelValue: CommentRuleType
@@ -145,6 +138,7 @@
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
   const { enabledGameScriptMap } = useEnabledGames()
 
   // スクリプト有効化フラグ

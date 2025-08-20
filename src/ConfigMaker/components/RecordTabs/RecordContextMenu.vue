@@ -16,7 +16,7 @@
     <div class="divider my-1"></div>
 
     <!-- AccessLevel 設定(GOD-MODE専用) -->
-    <div v-if="data.displaySettings.developer.godModeEnabled" class="px-4">
+    <div v-if="isGod" class="px-4">
       <div class="text-sm text-base-content/70 mb-2">アクセスレベル</div>
       <div class="flex flex-col">
         <button
@@ -83,13 +83,11 @@
   import ColorPicker from './ColorPicker.vue'
   import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
   import { AccessLevelType, AccessLevelLabels } from '@shared/types'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
+  import { useSettingMode } from '@/types/SettingMode'
 
   // Store
   const store = useRecordTabsStore()
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
 
   // 有効/無効切り替え
   const handleToggleEnabled = () => {
