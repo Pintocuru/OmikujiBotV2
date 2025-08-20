@@ -24,10 +24,10 @@
   import { useTextEditor } from './useTextEditor'
   import { useFileLoader } from './useFileLoader'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
   import TextEditor from '@ConfigComponents/wordPartySettings/TextEditor.vue'
   import FireList from '@ConfigComponents/wordPartySettings/FireList.vue'
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
+  import { storeToRefs } from 'pinia'
 
   // 設定管理
   const omikujiStore = useOmikujiStore()

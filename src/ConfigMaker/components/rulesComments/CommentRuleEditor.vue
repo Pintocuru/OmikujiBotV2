@@ -7,18 +7,24 @@
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <BaseSettingsEditor v-model="selectedItem" category="comments" />
+    <div v-if="selectedItem.isEnabled !== false">
+      <!-- 条件設定セクション -->
+      <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
 
-    <!-- 条件設定セクション -->
-    <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
+      <!-- おみくじ制限設定セクション -->
+      <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
 
-    <!-- おみくじ制限設定セクション -->
-    <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
+      <!-- ゲームスクリプト設定セクション -->
+      <ScriptGameEditor v-model="selectedItem" />
 
-    <!-- ゲームスクリプト設定セクション -->
-    <ScriptGameEditor v-model="selectedItem" />
-
-    <!-- おみくじ設定セクション -->
-    <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
+      <!-- おみくじ設定セクション -->
+      <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
+    </div>
+    <!-- 無効のときのメッセージ -->
+    <InformationCard v-else class="mt-4 p-4">
+      現在、このルールは無効になっています。<br />
+      編集を行うには、まずルールを有効にしてください。
+    </InformationCard>
   </div>
 </template>
 
@@ -29,6 +35,7 @@
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'

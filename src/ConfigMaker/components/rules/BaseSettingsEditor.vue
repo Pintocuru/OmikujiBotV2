@@ -11,6 +11,22 @@
 
     <template #body>
       <!-- ID表示(開発モード専用) -->
+      <div v-if="data.displaySettings.developer.godModeEnabled" class="alert alert-warning">
+        <SettingItem
+          label="Access Level"
+          description="製品のアクセスレベルを選択してください"
+          :showReset="false"
+          containerClass="form-control"
+        >
+          <select v-model="accessLevel" class="select select-bordered text-base-content w-full">
+            <option v-for="level in AccessLevelLabels" :key="level" :value="level">
+              {{ level }}
+            </option>
+          </select>
+        </SettingItem>
+      </div>
+
+      <!-- ID表示(開発モード専用) -->
       <div v-if="data.displaySettings.developer.godModeEnabled" class="p-2 bg-warning text-warning-content rounded-md">
         <SettingItem
           label="Key"
@@ -28,11 +44,11 @@
         </SettingItem>
       </div>
       <SettingItem label="ルール名" description="識別しやすい名前" :showReset="false" containerClass="form-control">
-        <input type="text" v-model="name" class="input input-bordered w-full" />
+        <input type="text" v-model="name" class="input w-full" />
       </SettingItem>
 
       <SettingItem label="説明" description="ルールの紹介文" :showReset="false" containerClass="form-control">
-        <input type="text" v-model="description" class="input input-bordered w-full" />
+        <input type="text" v-model="description" class="input w-full" />
       </SettingItem>
     </template>
   </SectionCard>
@@ -46,6 +62,7 @@
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { AccessLevelLabels } from '@shared/types'
 
   const props = defineProps<{
     modelValue: RuleType
@@ -71,5 +88,5 @@
   const name = createComputed('name')
   const description = createComputed('description')
   const isEnabled = createComputed('isEnabled')
-  const editorColor = createComputed('editorColor')
+  const accessLevel = createComputed('accessLevel')
 </script>

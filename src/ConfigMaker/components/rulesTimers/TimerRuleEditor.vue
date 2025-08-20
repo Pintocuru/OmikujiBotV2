@@ -7,12 +7,18 @@
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <BaseSettingsEditor v-model="selectedItem" category="timers" />
+    <div v-if="selectedItem.isEnabled !== false">
+      <!-- タイマー設定セクション -->
+      <TimerIntervalEditor v-model="selectedItem" />
 
-    <!-- タイマー設定セクション -->
-    <TimerIntervalEditor v-model="selectedItem" />
-
-    <!-- おみくじ設定セクション -->
-    <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
+      <!-- おみくじ設定セクション -->
+      <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
+    </div>
+    <!-- 無効のときのメッセージ -->
+    <InformationCard v-else class="mt-4 p-4">
+      現在、このルールは無効になっています。<br />
+      編集を行うには、まずルールを有効にしてください。
+    </InformationCard>
   </div>
 </template>
 
@@ -23,6 +29,7 @@
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
