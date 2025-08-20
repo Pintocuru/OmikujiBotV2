@@ -23,6 +23,7 @@ const buildConfig: BuildConfig = {
   json: {
     ...commonBuildConfig.json,
     jsonPath: 'ReimuDX-250724.json',
+    targetAccessLevel: 'pro',
   },
 
   // リソースファイル
