@@ -1,8 +1,17 @@
 <!-- src/ConfigMaker/components/display/DisplaySettingsCard.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">表示設定</div>
-    <div class="card-body space-y-4">
+  <SectionCard>
+    <template #header>
+      <div>フキダシ設定</div>
+    </template>
+
+    <template #body>
+      <!-- 補足説明 -->
+      <InformationCard>
+        フキダシのカラー設定は
+        <code class="label bg-accent text-accent-content">キャラクター(カラー設定)</code>で設定してください
+      </InformationCard>
+
       <!-- 表示サイズ -->
       <SettingItem label="表示サイズ" description="コンテンツの表示サイズを設定します" @reset="resetMap.displaySize">
         <select v-model="base.displaySize" class="select select-bordered w-full max-w-xs">
@@ -11,7 +20,15 @@
           </option>
         </select>
       </SettingItem>
+    </template>
+  </SectionCard>
 
+  <SectionCard>
+    <template #header>
+      <div>表示設定</div>
+    </template>
+
+    <template #body>
       <!-- トースト表示 -->
       <SettingItem label="トースト通知" description="通知メッセージを表示するかどうか" @reset="resetMap.toastEnabled">
         <label class="label cursor-pointer justify-start gap-3">
@@ -31,8 +48,8 @@
           <span class="label-text">キャラクターサムネイルを表示する</span>
         </label>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
@@ -42,6 +59,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { storeToRefs } from 'pinia'
 
   // Store

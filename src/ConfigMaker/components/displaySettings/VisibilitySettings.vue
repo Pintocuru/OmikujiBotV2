@@ -1,8 +1,11 @@
 <!-- src/ConfigMaker/components/display/VisibilitySettings.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-warning text-warning-content text-lg p-2 pl-4 rounded-t">コンポーネント可視性設定</div>
-    <div class="card-body space-y-4">
+  <SectionCard variant="warning">
+    <template #header>
+      <div>コンポーネント可視性設定</div>
+    </template>
+
+    <template #body>
       <!-- 基本コンポーネントの可視性 -->
       <SettingItem
         label="基本コンポーネント表示"
@@ -74,8 +77,8 @@
           <span class="label-text">WordPartyリスト</span>
         </label>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

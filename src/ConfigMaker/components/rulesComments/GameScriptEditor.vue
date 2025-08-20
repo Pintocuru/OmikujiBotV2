@@ -12,26 +12,23 @@
 
     <template #body>
       <!-- ゲームスクリプトの説明 -->
-      <div class="alert alert-info w-full">
-        <Info class="w-5 h-5 mt-0.5 shrink-0" />
-        <div class="space-y-1">
-          <p>
-            <code class="label bg-accent text-accent-content"> ゲームスクリプト </code
-            >とは、該当するルール適用時に起動し、複雑なおみくじを行うための機能です。
-          </p>
-          <p>
-            ゲーム結果は
-            <code class="label bg-accent text-accent-content">プレースホルダー</code>の形で出力されます。
-          </p>
-          <p>
-            下記の
-            <code class="label bg-accent text-accent-content"> ゲームスクリプトを使用</code>
-            を押すと、おみくじ設定 の 詳細編集にある
-            <code class="label bg-accent text-accent-content">プレースホルダー一覧</code>
-            に項目が増えます。
-          </p>
-        </div>
-      </div>
+      <InformationCard>
+        <p>
+          <code class="label bg-accent text-accent-content"> ゲームスクリプト </code
+          >とは、該当するルール適用時に起動し、複雑なおみくじを行うための機能です。
+        </p>
+        <p>
+          ゲーム結果は
+          <code class="label bg-accent text-accent-content">プレースホルダー</code>の形で出力されます。
+        </p>
+        <p>
+          下記の
+          <code class="label bg-accent text-accent-content"> ゲームスクリプトを使用</code>
+          を押すと、おみくじ設定 の 詳細編集にある
+          <code class="label bg-accent text-accent-content">プレースホルダー一覧</code>
+          に項目が増えます。
+        </p>
+      </InformationCard>
 
       <!-- スクリプト有効化チェックボックス -->
       <div
@@ -132,7 +129,7 @@
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import { Info } from 'lucide-vue-next'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'

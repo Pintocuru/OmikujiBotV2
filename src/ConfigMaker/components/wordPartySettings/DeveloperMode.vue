@@ -1,52 +1,43 @@
 <!-- src/configMaker/components/wordPartySettings/DeveloperMode.vue -->
 <template>
-  <div>
-    <!-- 開発者モード同意確認 -->
-    <div v-if="!agreed" class="card bg-base-300 shadow-lg">
-      <div class="card-title bg-warning text-warning-content text-lg p-2 pl-4 rounded-t">
-        開発者モード (config.js読み込み)
-      </div>
-      <div class="card-body">
-        <div class="alert alert-warning w-full mb-4">
-          <Info class="w-5 h-5 mt-0.5 shrink-0" />
-          <div class="space-y-1">
-            <h4 class="font-semibold">⚠️ 開発者モードについて</h4>
-            <p class="text-sm mt-2">
-              この機能はWordPartyのconfig.jsファイルを読み込みます。<br />
-              JavaScriptコードを実行するため、信頼できるファイルのみを使用してください。<br />
-              悪意のあるコードが含まれている可能性があります。
-            </p>
-          </div>
-        </div>
-        <div class="flex justify-center">
-          <button @click="$emit('agree')" class="btn btn-warning">理解して開発者モードを有効にする</button>
-        </div>
-      </div>
-    </div>
+  <SectionCard variant="warning">
+    <template #header>
+      <div>WordParty config.js読み込み機能</div>
+    </template>
 
-    <!-- WordPartyの config.js 読み込み(開発者モード用) -->
-    <div v-if="agreed" class="card bg-base-300 shadow-lg">
-      <div class="card-title bg-warning text-warning-content text-lg p-2 pl-4 rounded-t">
-        WordParty config.js 読み込み
+    <template #body v-if="!agreed">
+      <!-- 読み込み機能同意確認 -->
+      <InformationCard>
+        <h4 class="font-semibold">⚠️ 読み込み機能について</h4>
+        <p class="text-sm mt-2">
+          この機能はWordPartyのconfig.jsファイルを読み込みます。<br />
+          JavaScriptコードを実行するため、信頼できるファイルのみを使用してください。<br />
+          悪意のあるコードが含まれている可能性があります。
+        </p>
+      </InformationCard>
+      <div class="flex justify-center">
+        <button @click="$emit('agree')" class="btn btn-warning">理解して読み込み機能を有効にする</button>
       </div>
-      <div class="card-body">
-        <div class="mb-4">
-          <input type="file" accept=".js" @change="handleFile" class="file-input file-input-bordered w-full" />
-        </div>
+    </template>
 
-        <!-- 読み込みステータス -->
-        <div v-if="loadStatus" class="mb-4">
-          <div :class="['alert', loadStatus.type === 'success' ? 'alert-success' : 'alert-error']">
-            {{ loadStatus.message }}
-          </div>
+    <template #body v-else>
+      <div class="mb-4">
+        <input type="file" accept=".js" @change="handleFile" class="file-input file-input-bordered w-full" />
+      </div>
+
+      <!-- 読み込みステータス -->
+      <div v-if="loadStatus" class="mb-4">
+        <div :class="['alert', loadStatus.type === 'success' ? 'alert-success' : 'alert-error']">
+          {{ loadStatus.message }}
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
-  import { Info } from 'lucide-vue-next'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
 
   defineProps<{
     agreed: boolean

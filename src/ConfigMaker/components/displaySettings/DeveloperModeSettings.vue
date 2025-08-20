@@ -1,8 +1,11 @@
 <!-- src/ConfigMaker/components/display/DeveloperModeSettings.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-warning text-warning-content text-lg p-2 pl-4 rounded-t">開発者設定 (GOD-MODE)</div>
-    <div class="card-body space-y-4">
+  <SectionCard variant="warning">
+    <template #header>
+      <div>開発者設定 (GOD-MODE)</div>
+    </template>
+
+    <template #body>
       <!-- 開発者モードの有効化 -->
       <SettingItem
         label="開発者モード"
@@ -26,8 +29,8 @@
           <span class="label-text"> テンプレート出力、Metaタグ編集が使えるようになります </span>
         </label>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

@@ -1,8 +1,11 @@
 <!-- src/ConfigMaker/components/display/StartupSettings.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-warning text-warning-content text-lg p-2 pl-4 rounded-t">起動時設定</div>
-    <div class="card-body space-y-4">
+  <SectionCard variant="warning">
+    <template #header>
+      <div>起動時設定</div>
+    </template>
+
+    <template #body>
       <!-- 起動時に表示するコンポーネント -->
       <SettingItem
         label="起動時コンポーネント"
@@ -27,8 +30,8 @@
           <option v-for="(value, key) in gameScriptMap" :key="key" :value="key">{{ value.name }}({{ key }})</option>
         </select>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

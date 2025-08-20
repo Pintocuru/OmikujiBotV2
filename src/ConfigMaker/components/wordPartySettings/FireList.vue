@@ -1,10 +1,11 @@
 <!-- src/configMaker/components/wordPartySettings/wordPartyFireList.vue -->
 <template>
-  <div class="card bg-base-300 shadow-lg">
-    <div class="card-title bg-secondary text-secondary-content text-lg p-2 pl-4 rounded-t">
-      WordParty発火リスト ({{ settings.length }}件)
-    </div>
-    <div class="card-body">
+  <SectionCard>
+    <template #header>
+      <div>WordParty発火リスト ({{ settings.length }}件)</div>
+    </template>
+
+    <template #body>
       <!-- リスト表示 -->
       <div v-if="settings.length > 0" class="mb-4">
         <!-- グリッドレイアウト -->
@@ -41,12 +42,13 @@
         <div class="text-base-content/50 text-lg">WordParty設定がありません</div>
         <div class="text-base-content/30 text-sm mt-2">上のテキストエディタから設定を追加してください</div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
-  import { WordPartySettings } from '@/types/'
+  import { WordPartySettings } from '@/types/OmikujiData/RulesSchema'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { postWordParty } from '@shared/sdk/postMessage/PostOneComme'
 
   defineProps<{
