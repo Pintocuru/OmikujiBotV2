@@ -46,8 +46,8 @@
       </div>
 
       <!-- AccessLevel フィルター(GOD-MODE専用) -->
-      <div v-if="data.displaySettings.developer.godModeEnabled" class="flex items-center gap-2">
-        <span class="text-sm font-medium">アクセスレベル:</span>
+      <div v-if="isDev" class="flex items-center gap-2">
+        <span class="text-sm font-medium">アクセスレベル(開発用):</span>
         <select v-model="store.filterOptions.accessFilter" class="select select-bordered select-sm w-40">
           <option value="basic">basic</option>
           <option value="pro">PRO版</option>
@@ -112,6 +112,7 @@
 </template>
 
 <script setup lang="ts">
+  import { isDev } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'

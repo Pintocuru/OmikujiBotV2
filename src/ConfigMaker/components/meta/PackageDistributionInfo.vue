@@ -1,8 +1,11 @@
 <!-- src/ConfigMaker/components/meta/PackageDistributionInfo.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">配布情報</div>
-    <div class="card-body space-y-4">
+  <SectionCard>
+    <template #header>
+      <div>配布情報</div>
+    </template>
+
+    <template #body>
       <!-- ライセンス -->
       <SettingItem label="ライセンス" description="パッケージのライセンス情報" @reset="resetMap.license">
         <div class="flex gap-2">
@@ -44,8 +47,8 @@
           </button>
         </div>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

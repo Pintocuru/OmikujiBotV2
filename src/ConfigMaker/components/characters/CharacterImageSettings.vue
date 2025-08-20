@@ -7,36 +7,30 @@
 
     <template #body>
       <!-- 補足説明 -->
-      <div class="alert alert-info w-full">
-        <Info class="w-5 h-5 mt-0.5 shrink-0" />
-        <div class="space-y-1">
-          <p>
-            画像ファイルは事前に
-            <code class="label bg-accent text-accent-content"> Characters/[キャラクターID] </code>
-            フォルダ内に配置してください。
-          </p>
-          <p>
-            ファイル名は固定で、例：
-            <code class="label bg-accent text-accent-content">default.png</code>、
-            <code class="label bg-accent text-accent-content">happy.png</code>、
-            <code class="label bg-accent text-accent-content">laughing.png</code>
-            など12種類です（png/jpg/jpeg/gif/webp対応）。
-          </p>
-          <p>
-            各項目の
-            <button
-              class="btn btn-ghost btn-xs px-1 py-0 h-auto min-h-0 text-xs"
-              title="クリックでデフォルトパスを設定"
-            >
-              <RotateCcw class="w-3 h-3 mr-1" />
-              リセット
-            </button>
-            ボタンをクリックすると、
-            <code class="label bg-accent text-accent-content"> [キャラクターID]/[感情名].png, gif, webp...</code
-            >といった画像の拡張子が順に切り替わります。目的の拡張子になるまでクリックしてください。
-          </p>
-        </div>
-      </div>
+      <InformationCard>
+        <p>
+          画像ファイルは事前に
+          <code class="label bg-accent text-accent-content"> Characters/[キャラクターID] </code>
+          フォルダ内に配置してください。
+        </p>
+        <p>
+          ファイル名は固定で、例：
+          <code class="label bg-accent text-accent-content">default.png</code>、
+          <code class="label bg-accent text-accent-content">happy.png</code>、
+          <code class="label bg-accent text-accent-content">laughing.png</code>
+          など12種類です（png/jpg/jpeg/gif/webp対応）。
+        </p>
+        <p>
+          各項目の
+          <button class="btn btn-ghost btn-xs px-1 py-0 h-auto min-h-0 text-xs" title="クリックでデフォルトパスを設定">
+            <RotateCcw class="w-3 h-3 mr-1" />
+            リセット
+          </button>
+          ボタンをクリックすると、
+          <code class="label bg-accent text-accent-content"> [キャラクターID]/[感情名].png, gif, webp...</code
+          >といった画像の拡張子が順に切り替わります。目的の拡張子になるまでクリックしてください。
+        </p>
+      </InformationCard>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         <div v-for="(emotion, key) in emotionLabels" :key="key" class="form-control">
@@ -68,6 +62,7 @@
   import { CharacterEmotionType, CharacterType, emotionLabels, getImagePath } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { Info, RotateCcw } from 'lucide-vue-next'
 
   const props = defineProps<{

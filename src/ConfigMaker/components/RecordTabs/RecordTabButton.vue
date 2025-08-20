@@ -98,7 +98,7 @@
         case 'experimental':
           return [...baseClasses, 'badge-error']
         default:
-          return [...baseClasses, 'badge-base']
+          return [...baseClasses, 'badge-primary']
       }
     }
     return ['truncate', 'max-w-24']

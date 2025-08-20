@@ -7,23 +7,20 @@
 
     <template #body>
       <!-- 補足説明 -->
-      <div class="alert alert-info w-full">
-        <Info class="w-5 h-5 mt-0.5 shrink-0" />
-        <div class="space-y-1">
-          キャラクター専用の枠を作成すると、各キャラクターごとに
-          <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
-          詳しくは
-          <a
-            href="https://onecomme.com/docs/guide/speech"
-            target="_blank"
-            rel="noopener"
-            class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
-          >
-            読み上げ機能を使う
-          </a>
-          をお読みください。
-        </div>
-      </div>
+      <InformationCard>
+        キャラクター専用の枠を作成すると、各キャラクターごとに
+        <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
+        詳しくは
+        <a
+          href="https://onecomme.com/docs/guide/speech"
+          target="_blank"
+          rel="noopener"
+          class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
+        >
+          読み上げ機能を使う
+        </a>
+        をお読みください。
+      </InformationCard>
 
       <!-- チェックボックス -->
       <SettingItem
@@ -47,6 +44,7 @@
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { Info } from 'lucide-vue-next'
 

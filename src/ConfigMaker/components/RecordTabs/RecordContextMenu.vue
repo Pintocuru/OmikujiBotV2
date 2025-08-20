@@ -39,9 +39,8 @@
           {{ level }}
         </button>
       </div>
+      <div class="divider my-1"></div>
     </div>
-
-    <div class="divider my-1"></div>
 
     <!-- 複製 -->
     <button

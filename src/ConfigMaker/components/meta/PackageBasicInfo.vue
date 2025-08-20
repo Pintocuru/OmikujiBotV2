@@ -1,8 +1,11 @@
 <!-- src/ConfigMaker/components/meta/PackageBasicInfo.vue -->
 <template>
-  <div class="card bg-base-300">
-    <div class="card-title bg-secondary text-lg p-2 pl-4 rounded-t">基本情報</div>
-    <div class="card-body space-y-4">
+  <SectionCard>
+    <template #header>
+      <div>基本情報</div>
+    </template>
+
+    <template #body>
       <!-- パッケージ名 -->
       <SettingItem label="パッケージ名" description="テンプレート出力する際に表示する名称" :showReset="false">
         <input
@@ -60,8 +63,8 @@
           placeholder="例:&#10;ゲーム&#10;エンターテイメント&#10;配信"
         ></textarea>
       </SettingItem>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

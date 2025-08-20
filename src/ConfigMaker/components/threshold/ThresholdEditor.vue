@@ -7,17 +7,17 @@
 
     <template #body>
       <!-- 条件設定の説明 -->
-      <div class="alert alert-info w-full">
-        <Info class="w-5 h-5 mt-0.5 shrink-0" />
-        <div class="space-y-1">
-          <p>
-            <code class="label bg-accent text-accent-content">発動条件設定</code>では、
-            コメントを送ったユーザーの「ギフトの有無」や「チャット数」などの情報をもとに、
-          </p>
-          <p>ルールを発動するかどうかを決めることができます。</p>
-          <p>発動条件を複数選んだ場合は、すべての条件を満たしたときだけルールが発動します。</p>
-        </div>
-      </div>
+      <InformationCard>
+        <p>
+          <code class="label bg-accent text-accent-content">発動条件設定</code>では、
+          コメントを送ったユーザーの「ギフトの有無」や「チャット数」などの情報をもとに、
+        </p>
+        <p>ルールを発動するかどうかを決めることができます。</p>
+        <p>
+          <code class="label bg-accent text-accent-content">発動条件が複数の場合は、すべての条件を満たしたときだけ</code
+          >ルールが発動します。
+        </p>
+      </InformationCard>
 
       <!-- 条件タイプ選択 -->
       <SettingItem label="適用する発動条件" description="トリガーの種類を選択" :show-reset="false">
@@ -67,6 +67,7 @@
   import ThresholdConditionCount from './ThresholdConditionCount.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { Info } from 'lucide-vue-next'
 
   import { commentThresholdConditionLabels, CommentThresholdCondition, CommentThresholdType } from '@shared/types'

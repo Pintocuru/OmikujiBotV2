@@ -6,7 +6,10 @@
   >
     <div class="space-y-2">
       <!-- ルール名 -->
-      <div class="font-medium text-base">{{ rule.name || '名前未設定' }}</div>
+      <div class="font-medium text-base">
+        {{ rule.name || '名前未設定' }}
+        <span v-if="isDev"> ( ID: {{ rule.id }} )</span>
+      </div>
 
       <!-- 説明 -->
       <div v-if="'description' in rule && rule.description" class="text-sm text-base-content/70">
@@ -42,7 +45,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RecordCategoryUnion } from '@/types'
+  import { isDev, RecordCategoryUnion } from '@/types'
 
   const props = defineProps<{
     rule: RecordCategoryUnion
