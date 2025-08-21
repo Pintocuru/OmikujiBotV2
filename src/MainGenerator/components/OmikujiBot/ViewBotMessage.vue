@@ -76,7 +76,7 @@
   const { botMessages } = storeToRefs(appStore)
   const displaySize = computed(() => displayStore.displaySize)
 
-  const animationType = computed(() => appStore.omikujiData.displaySettings.base.bubbleAnimation)
+  const animationType = computed(() => appStore.omikujiData.displaySettings.base.bubbleMotionEnter)
 
   const { displayedComments, handleImageError, start, stop } = useBotCommentDisplay(botMessages, 'comment')
 

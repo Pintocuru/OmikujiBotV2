@@ -1,7 +1,13 @@
 <!-- src/ConfigMaker/components/parts/CommentBubblePreview.vue -->
 <template>
-  <div class="cursor-pointer" :class="fontClass" @click="reloadAnimation">
-    <div v-if="shouldShowBubble" v-motion="animationConfig">
+  <div class="cursor-pointer" :class="fontClass" @click="reloadAnimation" @contextmenu.prevent="hideAnimation">
+    <div
+      v-if="shouldShowBubble"
+      v-motion="bubbleMotionEnter"
+      :initial="bubbleMotionEnter.initial"
+      :enter="bubbleMotionEnter.enter"
+      :leave="bubbleMotionLeave.leave"
+    >
       <CommentBubble
         name="テストユーザー"
         :comment="currentPreview"
@@ -9,6 +15,9 @@
         :text-size="textSize"
         :custom-classes="customClasses"
       />
+    </div>
+    <div class="flex justify-center mt-6">
+      <button class="btn btn-ghost btn-sm" @click.stop="reloadAnimation">再表示</button>
     </div>
   </div>
 </template>
@@ -24,22 +33,26 @@
   // Props定義
   interface Props {
     color: CharacterColorType
-    textSize: DisplaySize
+    textSize?: DisplaySize
     customClasses?: string | undefined
     fontFamily?: FontFamilyType
-    bubbleAnimation?: MotionType
+    bubbleMotionEnter?: MotionType
+    bubbleMotionLeave?: MotionType
   }
 
   const props = withDefaults(defineProps<Props>(), {
+    textSize: 'md',
     fontFamily: 'system',
-    bubbleAnimation: 'slideUp',
+    bubbleMotionEnter: 'slideUp',
+    bubbleMotionLeave: 'slideUp',
   })
 
   // フォントクラスの算出
   const fontClass = computed(() => useFontFamily(props.fontFamily))
 
   // アニメーション設定の算出
-  const animationConfig = computed(() => motionVariants[props.bubbleAnimation])
+  const bubbleMotionEnter = computed(() => motionVariants[props.bubbleMotionEnter])
+  const bubbleMotionLeave = computed(() => motionVariants[props.bubbleMotionLeave])
 
   // アニメーションのリロード用フラグ
   const shouldShowBubble = ref(true)
@@ -68,9 +81,9 @@
     shouldShowBubble.value = true
   }
 
-  // bubbleAnimation の変更を監視
+  // bubbleMotionEnter の変更を監視
   watch(
-    () => props.bubbleAnimation,
+    () => props.bubbleMotionEnter,
     async () => {
       // 変更があったときにアニメーションをリロード
       shouldShowBubble.value = false
@@ -78,6 +91,11 @@
       shouldShowBubble.value = true
     }
   )
+
+  // 右クリックでアニメーションを非表示にする関数
+  const hideAnimation = () => {
+    shouldShowBubble.value = false
+  }
 
   // プレビュー表示をランダムに切り替える関数
   const switchPreview = () => {

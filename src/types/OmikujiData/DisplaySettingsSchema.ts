@@ -12,8 +12,11 @@ export const BaseSettingsSchema = z
   .object({
     // 文字・画像の大きさ指定
     displaySize: z.enum(displaySize).default('md').catch('md'),
-    // フキダシのアニメーション
-    bubbleAnimation: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+    // フキダシのアニメーション(開始・表示中)
+    bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+    // フキダシのアニメーション(終了時)
+    bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+
     // フォントの指定(プリセットされているものだけ)
     fontFamily: z.enum(fontFamilyOptions).optional(),
 
@@ -27,7 +30,8 @@ export const BaseSettingsSchema = z
   })
   .catch({
     displaySize: 'md',
-    bubbleAnimation: 'slideUp',
+    bubbleMotionEnter: 'slideUp',
+    bubbleMotionLeave: 'slideUp',
     fontFamily: 'system',
     showCharacterIcon: true,
     showToasts: true,
@@ -39,11 +43,6 @@ export const BaseSettingsSchema = z
  */
 export const DeveloperSettingsSchema = z
   .object({
-    // 開発者モードの有効化
-    godModeEnabled: z.boolean().default(false).catch(false),
-    // プロ版モード (有料版の機能を表示するか)
-    proModeEnabled: z.boolean().default(true).catch(true),
-
     // 起動時に表示するコンポーネント
     startup: z.object({
       component: z.enum(['omikujiBot', 'gameScript']).default('omikujiBot'),
@@ -65,8 +64,6 @@ export const DeveloperSettingsSchema = z
     }),
   })
   .catch({
-    godModeEnabled: false,
-    proModeEnabled: false,
     startup: {
       component: 'omikujiBot',
       scriptKey: null,

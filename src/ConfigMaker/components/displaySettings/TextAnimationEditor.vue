@@ -13,7 +13,8 @@
         :text-size="base.displaySize"
         :custom-classes="localColor.customClasses"
         :font-family="base.fontFamily"
-        :bubble-animation="base.bubbleAnimation"
+        :bubbleMotionEnter="base.bubbleMotionEnter"
+        :bubbleMotionLeave="base.bubbleMotionLeave"
       />
 
       <!-- 表示サイズ -->
@@ -41,11 +42,23 @@
 
       <!-- フキダシアニメーション -->
       <SettingItem
-        label="フキダシアニメーション"
+        label="フキダシアニメーション(開始時)"
         description="フキダシの表示アニメーションを設定します"
-        @reset="resetMap.bubbleAnimation"
+        @reset="resetMap.bubbleMotionEnter"
       >
-        <select v-model="base.bubbleAnimation" class="select select-bordered w-full max-w-xs">
+        <select v-model="base.bubbleMotionEnter" class="select select-bordered w-full max-w-xs">
+          <option v-for="animation in motionLabel" :key="animation" :value="animation">
+            {{ animation }}
+          </option>
+        </select>
+      </SettingItem>
+
+      <SettingItem
+        label="フキダシアニメーション(終了時)"
+        description="フキダシの表示アニメーションを設定します"
+        @reset="resetMap.bubbleMotionEnter"
+      >
+        <select v-model="base.bubbleMotionLeave" class="select select-bordered w-full max-w-xs">
           <option v-for="animation in motionLabel" :key="animation" :value="animation">
             {{ animation }}
           </option>
@@ -101,7 +114,7 @@
   const resetMap = {
     displaySize: () => resetField('displaySize'),
     fontFamily: () => resetField('fontFamily'),
-    bubbleAnimation: () => resetField('bubbleAnimation'),
+    bubbleMotionEnter: () => resetField('bubbleMotionEnter'),
   }
 
   // キャラクターのカラー設定を取得

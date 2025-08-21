@@ -15,7 +15,7 @@
     <template #body>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
-        <CommentBubblePreview :color="localColor" text-size="md" :custom-classes="localColor.customClasses" />
+        <CommentBubblePreview :color="localColor" :custom-classes="localColor.customClasses" bubbleMotionEnter="none" />
       </div>
 
       <!-- カラーピッカー -->
