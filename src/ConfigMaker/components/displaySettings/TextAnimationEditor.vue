@@ -33,7 +33,6 @@
         @reset="resetMap.fontFamily"
       >
         <select v-model="base.fontFamily" class="select select-bordered w-full max-w-xs">
-          <option value="">デフォルト</option>
           <option v-for="font in fontFamilyOptions" :key="font" :value="font">
             {{ fontFamilyLabels[font] }}
           </option>
@@ -118,9 +117,6 @@
   }
 
   // キャラクターのカラー設定を取得
-  // TODO:charactersからランダムでデータを取得し、そのcolorを表示したい
-  // reimu は必ず存在するわけではないため、TypeError: Cannot read properties of undefined (reading 'color') が出ている
-  // characters が0である場合、DEFAULT_COLOR_THEMES からランダムで取得
   const localColor = computed(() => {
     const characters = data.value.characters
     const characterKeys = Object.keys(characters)

@@ -1,31 +1,42 @@
 /* assets/styles.css */
 
 /* Google Fonts 読み込み */
-@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Mochiy+Pop+P+One&family=Noto+Sans+JP:wght@400;700&family=RocknRoll+One&family=Zen+Maru+Gothic:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kaisei+Decol&family=Kosugi+Maru&family=M+PLUS+1p&family=Mochiy+Pop+One&family=Shippori+Mincho&family=WDXL+Lubrifont+JP+N&display=swap');
 
-/* 共通の container 用フォントクラス */
-.font-system {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    sans-serif;
+/* M PLUS 標準的なゴシック https://mplusfonts.github.io/ */
+.font-mplus-1p {
+  font-family: 'M PLUS 1p', sans-serif;
 }
 
-.font-noto-sans {
-  font-family: 'Noto Sans JP', sans-serif;
+/* しっぽり明朝 少し筆っぽいクセのある明朝 https://fontdasu.com/shippori-mincho/ */
+.font-shippori-mincho {
+  font-family: 'Shippori Mincho', serif;
 }
 
-.font-rounded {
-  font-family: 'Kosugi Maru', 'Zen Maru Gothic', sans-serif;
+/* 小杉丸 柔らかい丸ゴシック https://free-fonts.jp/kosugimaru/ */
+.font-kosugi-maru {
+  font-family: 'Kosugi Maru', sans-serif;
 }
 
-.font-gothic {
-  font-family: 'RocknRoll One', sans-serif;
+/* 解星デコール うろこ付きのどちらかというと明朝 https://goodfreefonts.com/595/ */
+/* M PLUS 標準的なゴシック */
+.font-kaisei-decol {
+  font-family: 'Kaisei Decol', serif;
 }
 
-.font-mochiy {
-  font-family: 'Mochiy Pop P One', sans-serif;
+/* ドットゴシック16 ドットだわー https://goodfreefonts.com/489/ */
+.font-dot-gothic {
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* 滑油字 縦に細長 https://goodfreefonts.com/2695/ */
+/* M PLUS 標準的なゴシック */
+.font-wdxl-lubrifont {
+  font-family: 'WDXL Lubrifont JP N', sans-serif;
+}
+
+/* モッチーポップ 創英角ポップ体のような踊る文字 https://f-font.com/jp/mochiypopone */
+/* M PLUS 標準的なゴシック */
+.font-mochiy-pop {
+  font-family: 'Mochiy Pop One', sans-serif;
 }
