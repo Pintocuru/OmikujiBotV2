@@ -15,15 +15,7 @@
     <template #body>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
-        <div @click="handlePreviewClick" class="cursor-pointer">
-          <CommentBubble
-            name="テストユーザー"
-            :comment="currentPreview"
-            :color="localColor"
-            text-size="md"
-            :custom-classes="localColor.customClasses"
-          />
-        </div>
+        <CommentBubblePreview :color="localColor" text-size="md" :custom-classes="localColor.customClasses" />
       </div>
 
       <!-- カラーピッカー -->
@@ -61,7 +53,7 @@
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
+  import CommentBubblePreview from '@ConfigComponents/displaySettings/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { Dices } from 'lucide-vue-next'
@@ -80,19 +72,6 @@
     { label: 'テキストの色', key: 'textColor' },
     { label: '背景色', key: 'backgroundColor' },
   ] as const
-
-  // プレビュー用のサンプルデータ配列
-  const previewDataList = [
-    'これはプレビュー表示です。実際のコメント表示と同じスタイルで確認できます。',
-    'カラー設定の確認をしています！文字の見やすさはいかがでしょうか？',
-    '背景色と文字色のコントラストがしっかりと取れているか確認してくださいね。',
-    'グラデーションやボーダーなど、カスタムクラスでさらにおしゃれにできます✨',
-    'クリックするたびに違うメッセージが表示されるよ！試してみてね♪',
-    'この吹き出しのデザインは本番環境と同じものです。安心してお使いください。',
-  ]
-
-  // 現在表示中のプレビューデータ
-  const currentPreview = ref(previewDataList[0])
 
   // v-modelを使用したlocalColorの実装
   const localColor = ref<CharacterColorType>({
@@ -124,16 +103,6 @@
     { deep: true }
   )
 
-  // ランダムプレビューを取得する関数
-  const getRandomPreview = () => {
-    return drawOmikuji(previewDataList) || previewDataList[0]
-  }
-
-  // プレビュークリック時の処理
-  const handlePreviewClick = () => {
-    currentPreview.value = getRandomPreview()
-  }
-
   // ランダム色設定の処理
   const handleRandomColor = () => {
     const result = drawOmikuji(DEFAULT_COLOR_THEMES)
@@ -143,7 +112,5 @@
         customClasses: localColor.value.customClasses,
       }
     }
-    // カラーシャッフル時にプレビューも変更
-    currentPreview.value = getRandomPreview()
   }
 </script>

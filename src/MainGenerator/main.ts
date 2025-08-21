@@ -1,6 +1,7 @@
 // src/main.ts
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import '../../assets/styles/styles.css'
 import '../../assets/styles/TailwindCSS.css'
@@ -20,6 +21,7 @@ function initApp() {
   try {
     // OneSDK > App の順にマウント
     app.use(pinia)
+    app.use(MotionPlugin)
     OneSDK.ready().then(() => app.mount('#App'))
   } catch (err) {
     console.error('アプリケーションの初期化に失敗:', err)

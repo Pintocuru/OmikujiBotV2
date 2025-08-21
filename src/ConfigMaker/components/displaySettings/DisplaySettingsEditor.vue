@@ -1,10 +1,14 @@
 <!-- src/ConfigMaker/components/display/DisplaySettingsEditor.vue -->
 <template>
   <div class="space-y-4">
-    <!-- 表示設定 -->
-    <DisplaySettingsCard />
+    <!-- 文字・アニメーション設定 -->
+    <TextAnimationEditor />
 
-    <!-- おみくじBOT設定 -->
+    <!-- 表示オプション設定 -->
+    <DisplayOptionsEditor />
+
+    <!-- エディター設定 -->
+    <EditorSettingsEditor />
 
     <!-- 開発者用設定 -->
     <DeveloperModeEditor />
@@ -12,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
-  import DisplaySettingsCard from './DisplaySettingsCard.vue'
+  import TextAnimationEditor from './TextAnimationEditor.vue'
+  import DisplayOptionsEditor from './DisplayOptionsEditor.vue'
+  import EditorSettingsEditor from './EditorSettingsEditor.vue'
   import DeveloperModeEditor from './DeveloperModeEditor.vue'
 </script>
