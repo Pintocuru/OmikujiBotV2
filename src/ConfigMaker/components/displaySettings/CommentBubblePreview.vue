@@ -1,13 +1,7 @@
 <!-- src/ConfigMaker/components/parts/CommentBubblePreview.vue -->
 <template>
   <div class="cursor-pointer" :class="fontClass" @click="reloadAnimation">
-    <div
-      v-if="shouldShowBubble"
-      v-motion
-      :initial="animationConfig.initial"
-      :enter="animationConfig.enter"
-      :leave="animationConfig.leave"
-    >
+    <div v-if="shouldShowBubble" v-motion="animationConfig">
       <CommentBubble
         name="テストユーザー"
         :comment="currentPreview"
@@ -22,11 +16,10 @@
 <script setup lang="ts">
   import { ref, computed, nextTick, watch } from 'vue'
   import { FontFamilyType, useFontFamily } from '@/types/BotComponents/useFontFamily'
-  import { animationVariants } from '@MainComponents/OmikujiBot/useCommentAnimation'
+  import { MotionType, motionVariants } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
   import type { DisplaySize } from '@shared/types'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
-  import { AnimationType } from '@/types/BotComponents/animation'
 
   // Props定義
   interface Props {
@@ -34,7 +27,7 @@
     textSize: DisplaySize
     customClasses?: string | undefined
     fontFamily?: FontFamilyType
-    bubbleAnimation?: AnimationType
+    bubbleAnimation?: MotionType
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -46,7 +39,7 @@
   const fontClass = computed(() => useFontFamily(props.fontFamily))
 
   // アニメーション設定の算出
-  const animationConfig = computed(() => animationVariants[props.bubbleAnimation])
+  const animationConfig = computed(() => motionVariants[props.bubbleAnimation])
 
   // アニメーションのリロード用フラグ
   const shouldShowBubble = ref(true)

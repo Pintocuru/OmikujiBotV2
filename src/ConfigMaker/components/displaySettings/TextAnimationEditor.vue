@@ -46,7 +46,7 @@
         @reset="resetMap.bubbleAnimation"
       >
         <select v-model="base.bubbleAnimation" class="select select-bordered w-full max-w-xs">
-          <option v-for="animation in animationLabel" :key="animation" :value="animation">
+          <option v-for="animation in motionLabel" :key="animation" :value="animation">
             {{ animation }}
           </option>
         </select>
@@ -65,9 +65,9 @@
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
-  import { animationLabel } from '@/types/BotComponents/animation'
   import { fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
+  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   // Store
   const omikujiStore = useOmikujiStore()

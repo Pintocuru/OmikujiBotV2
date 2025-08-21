@@ -2,7 +2,7 @@
 // 250716_1 新規追加
 import { z } from 'zod'
 import { displaySize } from '@shared/types/'
-import { animationLabel } from '../BotComponents/animation'
+import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
@@ -13,7 +13,7 @@ export const BaseSettingsSchema = z
     // 文字・画像の大きさ指定
     displaySize: z.enum(displaySize).default('md').catch('md'),
     // フキダシのアニメーション
-    bubbleAnimation: z.enum(animationLabel).default('slideUp').catch('slideUp'),
+    bubbleAnimation: z.enum(motionLabel).default('slideUp').catch('slideUp'),
     // フォントの指定(プリセットされているものだけ)
     fontFamily: z.enum(fontFamilyOptions).optional(),
 

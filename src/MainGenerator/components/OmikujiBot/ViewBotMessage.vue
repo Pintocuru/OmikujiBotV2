@@ -13,9 +13,9 @@
           zIndex: displayedComments.length - index,
         }"
         v-motion
-        :initial="animationVariants[animationType].initial"
-        :enter="animationVariants[animationType].enter"
-        :leave="animationVariants[animationType].leave"
+        :initial="motionVariants[animationType].initial"
+        :enter="motionVariants[animationType].enter"
+        :leave="motionVariants[animationType].leave"
       >
         <div class="flex justify-center">
           <CommentBubble
@@ -56,7 +56,7 @@
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import CommentBubble from './CommentBubble.vue'
   import { useBotCommentDisplay } from '@MainComponents/OmikujiBot/useBotMessage'
-  import { animationVariants } from '@MainComponents/OmikujiBot/useCommentAnimation'
+  import { motionVariants } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { storeToRefs } from 'pinia'
 
   // サイズ設定の定数
