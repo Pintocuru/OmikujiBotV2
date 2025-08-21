@@ -18,7 +18,7 @@ export const BaseSettingsSchema = z
     bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
 
     // フォントの指定(プリセットされているものだけ)
-    fontFamily: z.enum(fontFamilyOptions).optional(),
+    fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
 
     // showCharacterIcon キャラクターサムネイルを表示するか(個別はしてもいいかもね)
     showCharacterIcon: z.boolean().default(true).catch(true),
@@ -32,7 +32,7 @@ export const BaseSettingsSchema = z
     displaySize: 'md',
     bubbleMotionEnter: 'slideUp',
     bubbleMotionLeave: 'slideUp',
-    fontFamily: 'system',
+    fontFamily: 'default',
     showCharacterIcon: true,
     showToasts: true,
     daisyUiTheme: 'dark',

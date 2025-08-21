@@ -1,11 +1,10 @@
 <!-- src/configMaker/components/presets/ConfigImport.vue -->
 <template>
-  <div class="flex-1">
-    <span class="font-medium mr-2">設定読み込み:</span>
+  <div v-if="isPro" class="flex-1">
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />
     <button
       @click="openFileDialog"
-      class="btn btn-secondary tooltip tooltip-top"
+      class="btn btn-success tooltip tooltip-top"
       data-tip="ダウンロード、またはテンプレート出力したjsonファイルを読み込みます"
       :disabled="isLoading"
     >
@@ -34,9 +33,11 @@
   import type { ImportMode } from './useImportPreviewManager'
   import { useJsonImporter } from './useJsonImporter'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useSettingMode } from '@/types/SettingMode'
 
   // Store
   const omikujiStore = useOmikujiStore()
+  const { isPro } = useSettingMode()
 
   // Composables
   const jsonImporter = useJsonImporter()

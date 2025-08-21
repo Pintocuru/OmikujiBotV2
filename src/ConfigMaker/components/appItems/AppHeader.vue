@@ -10,9 +10,9 @@
       <span v-if="isGod" class="badge badge-warning tooltip tooltip-bottom" data-tip="私が神です!"> GOD-MODE </span>
       <!-- PRO-MODEバッジ -->
       <span
-        v-if="isPro"
+        v-if="isPro && !isGod"
         class="badge badge-secondary tooltip tooltip-bottom"
-        data-tip="テンプレート出力が可能な、有料版です!"
+        data-tip="テンプレートが扱える、有料版です!"
       >
         PRO
       </span>

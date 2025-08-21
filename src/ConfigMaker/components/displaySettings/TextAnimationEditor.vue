@@ -7,16 +7,17 @@
     </template>
 
     <template #body>
-      <!-- プレビュー表示 -->
-      <CommentBubblePreview
-        :color="localColor"
-        :text-size="base.displaySize"
-        :custom-classes="localColor.customClasses"
-        :font-family="base.fontFamily"
-        :bubbleMotionEnter="base.bubbleMotionEnter"
-        :bubbleMotionLeave="base.bubbleMotionLeave"
-      />
-
+      <div class="mx-auto">
+        <!-- プレビュー表示 -->
+        <CommentBubblePreview
+          :color="localColor"
+          :text-size="base.displaySize"
+          :custom-classes="localColor.customClasses"
+          :font-family="base.fontFamily"
+          :bubbleMotionEnter="base.bubbleMotionEnter"
+          :bubbleMotionLeave="base.bubbleMotionLeave"
+        />
+      </div>
       <!-- 表示サイズ -->
       <SettingItem label="表示サイズ" description="コンテンツの表示サイズを設定します" @reset="resetMap.displaySize">
         <select v-model="base.displaySize" class="select select-bordered w-full max-w-xs">

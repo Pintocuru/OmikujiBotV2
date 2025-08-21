@@ -30,7 +30,7 @@
     <div v-if="isPro">
       <button
         @click="() => handleExport('template')"
-        class="btn btn-secondary btn-soft tooltip tooltip-top"
+        class="btn btn-success tooltip tooltip-top"
         data-tip="テンプレート(JSONファイル)を出力します"
         :disabled="isExporting"
       >
