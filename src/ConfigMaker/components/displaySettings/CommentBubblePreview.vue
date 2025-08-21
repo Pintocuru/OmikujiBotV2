@@ -1,21 +1,25 @@
 <!-- src/ConfigMaker/components/parts/CommentBubblePreview.vue -->
 <template>
   <div class="cursor-pointer" :class="fontClass" @click="reloadAnimation" @contextmenu.prevent="hideAnimation">
-    <div
-      v-if="shouldShowBubble"
-      v-motion="bubbleMotionEnter"
-      :initial="bubbleMotionEnter.initial"
-      :enter="bubbleMotionEnter.enter"
-      :leave="bubbleMotionLeave.leave"
-    >
-      <CommentBubble
-        name="テストユーザー"
-        :comment="currentPreview"
-        :color="color"
-        :text-size="textSize"
-        :custom-classes="customClasses"
-      />
-    </div>
+    <Transition :css="false" @leave="onLeave">
+      <div
+        v-if="shouldShowBubble"
+        ref="bubbleElement"
+        v-motion="'bubble'"
+        :initial="bubbleMotionEnter.initial"
+        :enter="bubbleMotionEnter.enter"
+        :leave="bubbleMotionLeave.leave"
+      >
+        <CommentBubble
+          name="テストユーザー"
+          :comment="currentPreview"
+          :color="color"
+          :text-size="textSize"
+          :custom-classes="customClasses"
+        />
+      </div>
+    </Transition>
+
     <div class="flex justify-center mt-6">
       <button class="btn btn-ghost btn-sm" @click.stop="reloadAnimation">再表示</button>
     </div>
@@ -23,12 +27,13 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, nextTick, watch } from 'vue'
+  import { ref, computed, nextTick, watch, onMounted } from 'vue'
   import { FontFamilyType, useFontFamily } from '@/types/BotComponents/useFontFamily'
   import { MotionType, motionVariants } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
   import type { DisplaySize } from '@shared/types'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { useMotion } from '@vueuse/motion'
 
   // Props定義
   interface Props {
@@ -54,8 +59,35 @@
   const bubbleMotionEnter = computed(() => motionVariants[props.bubbleMotionEnter])
   const bubbleMotionLeave = computed(() => motionVariants[props.bubbleMotionLeave])
 
+  // 要素の参照
+  const bubbleElement = ref<HTMLElement>()
+
   // アニメーションのリロード用フラグ
   const shouldShowBubble = ref(true)
+
+  // Motion Instanceの初期化
+  let motionInstance: ReturnType<typeof useMotion> | null = null
+
+  // Motion Instanceを初期化する関数
+  const initializeMotion = () => {
+    if (bubbleElement.value) {
+      /**
+       * 型 'MotionInstance<string, { initial: Variant | undefined; enter: Variant | undefined; leave: Variant | undefined; }>' を型 'MotionInstance<string, MotionVariants<string>>' に割り当てることはできません。
+  プロパティ 'apply' の型に互換性がありません。
+    型 '(variant: Variant | "initial" | "leave" | "enter") => Promise<void[]> | undefined' を型 '(variant: string | Variant) => Promise<void[]> | undefined' に割り当てることはできません。
+      パラメーター 'variant' および 'variant' は型に互換性がありません。
+        型 'string | Variant' を型 'Variant | "initial" | "leave" | "enter"' に割り当てることはできません。
+          型 'string' を型 'Variant | "initial" | "leave" | "enter"' に割り当てることはできません。ts-plugin(2322)
+let motionInstance: MotionInstance<string, MotionVariants<string>> | null
+       */
+      // @ts-ignore
+      motionInstance = useMotion(bubbleElement.value, {
+        initial: bubbleMotionEnter.value.initial,
+        enter: bubbleMotionEnter.value.enter,
+        leave: bubbleMotionLeave.value.leave,
+      })
+    }
+  }
 
   // プレビュー用のサンプルデータ配列
   const previewDataList = [
@@ -70,6 +102,19 @@
   // 現在表示中のプレビューデータ
   const currentPreview = ref(previewDataList[0])
 
+  // Transitionのleaveイベントハンドラー
+  const onLeave = async (el: Element, done: () => void) => {
+    try {
+      if (motionInstance?.apply) {
+        await motionInstance.apply('leave')
+      }
+      done()
+    } catch (error) {
+      console.warn('Leave animation failed:', error)
+      done()
+    }
+  }
+
   // アニメーションのリロード関数
   const reloadAnimation = async () => {
     // メッセージも切り替え
@@ -79,22 +124,38 @@
     shouldShowBubble.value = false
     await nextTick()
     shouldShowBubble.value = true
+
+    // 次のフレームでMotion Instanceを再初期化
+    await nextTick()
+    initializeMotion()
   }
 
   // bubbleMotionEnter の変更を監視
-  watch(
-    () => props.bubbleMotionEnter,
-    async () => {
-      // 変更があったときにアニメーションをリロード
-      shouldShowBubble.value = false
-      await nextTick()
-      shouldShowBubble.value = true
-    }
-  )
+  watch([() => props.bubbleMotionEnter, () => props.bubbleMotionLeave], async () => {
+    // 変更があったときにアニメーションをリロード
+    shouldShowBubble.value = false
+    await nextTick()
+    shouldShowBubble.value = true
+
+    // Motion Instanceを再初期化
+    await nextTick()
+    initializeMotion()
+  })
 
   // 右クリックでアニメーションを非表示にする関数
-  const hideAnimation = () => {
-    shouldShowBubble.value = false
+  const hideAnimation = async () => {
+    if (shouldShowBubble.value && motionInstance?.apply) {
+      try {
+        // Motion Instanceを使ってleaveアニメーションを実行
+        await motionInstance.apply('leave')
+        // アニメーション完了後に要素を非表示
+        shouldShowBubble.value = false
+      } catch (error) {
+        console.warn('Hide animation failed:', error)
+        // エラーが発生した場合でも非表示にする
+        shouldShowBubble.value = false
+      }
+    }
   }
 
   // プレビュー表示をランダムに切り替える関数
@@ -110,6 +171,13 @@
 
     currentPreview.value = previewDataList[newIndex]
   }
+
+  // コンポーネントマウント時の初期化
+  onMounted(() => {
+    nextTick(() => {
+      initializeMotion()
+    })
+  })
 </script>
 
 <style scoped>
