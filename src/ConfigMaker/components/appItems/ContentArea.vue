@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/ContentArea.vue -->
 <template>
   <div class="card bg-base-200">
-    <div class="card-title bg-primary p-2 pl-4 rounded-t">
+    <div class="card-title bg-primary text-primary-content p-2 pl-4 rounded-t">
       <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
       {{ categoryLabels[selectedCategory].label }}
     </div>

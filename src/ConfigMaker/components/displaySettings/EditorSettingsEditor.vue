@@ -7,11 +7,7 @@
 
     <template #body>
       <!-- DaisyUIテーマ -->
-      <SettingItem
-        label="カラーテーマ"
-        description="アプリケーションのカラーテーマを設定します"
-        @reset="resetMap.daisyUiTheme"
-      >
+      <SettingItem label="エディターテーマ" description="DaisyUiを使ってます" @reset="resetMap.daisyUiTheme">
         <select v-model="base.daisyUiTheme" class="select select-bordered w-full max-w-xs">
           <option v-for="theme in themes" :key="theme" :value="theme">
             {{ theme }}

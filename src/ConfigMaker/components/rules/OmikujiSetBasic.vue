@@ -12,7 +12,7 @@
         <input
           type="text"
           :value="omikuji.name"
-          @input="$emit('update:name', ($event.target as HTMLInputElement).value)"
+          @input="updateName(($event.target as HTMLInputElement).value)"
           placeholder="おみくじ名"
           class="input input-bordered input-sm w-full"
         />
@@ -29,7 +29,7 @@
         <input
           type="number"
           :value="omikuji.weight"
-          @input="$emit('update:weight', parseFloat(($event.target as HTMLInputElement).value))"
+          @input="updateWeight(parseFloat(($event.target as HTMLInputElement).value))"
           min="0"
           class="input input-bordered input-sm w-full"
         />
@@ -38,7 +38,7 @@
 
     <!-- メニュー -->
     <div class="ml-auto">
-      <MenuDropdown :disable-delete="disableDelete" @duplicate="$emit('duplicate')" @delete="$emit('delete')" />
+      <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
     </div>
   </div>
 </template>
@@ -49,19 +49,17 @@
   import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
   import { GripVertical } from 'lucide-vue-next'
   import { computed } from 'vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{
     allOmikuji: OmikujiSetType[]
     omikuji: OmikujiSetType
-    disableDelete: boolean
+    category: 'comments' | 'timers'
+    selectedRuleId: string | null
   }>()
 
-  defineEmits<{
-    'update:name': [value: string]
-    'update:weight': [value: number]
-    duplicate: []
-    delete: []
-  }>()
+  // Pinia ストアを使用
+  const omikujiStore = useOmikujiStore()
 
   // 全体の重みの合計を計算
   const totalWeight = computed(() => {
@@ -73,4 +71,47 @@
     if (totalWeight.value === 0) return '0.00'
     return ((props.omikuji.weight / totalWeight.value) * 100).toFixed(2)
   })
+
+  // 共通の更新関数
+  const updateOmikujiSets = (updateFn: (sets: OmikujiSetType[], index: number) => OmikujiSetType[]) => {
+    if (!props.selectedRuleId) return
+    const index = props.allOmikuji.findIndex((item) => item.id === props.omikuji.id)
+    if (index === -1) return
+    omikujiStore.updateRecordProperty(
+      props.category,
+      props.selectedRuleId,
+      'omikuji',
+      updateFn([...props.allOmikuji], index)
+    )
+  }
+
+  const updateName = (value: string) =>
+    updateOmikujiSets((sets, index) => {
+      sets[index] = { ...sets[index], name: value }
+      return sets
+    })
+
+  const updateWeight = (value: number) =>
+    updateOmikujiSets((sets, index) => {
+      sets[index] = { ...sets[index], weight: value }
+      return sets
+    })
+
+  const duplicateOmikuji = () =>
+    updateOmikujiSets((sets, index) => {
+      const duplicated = {
+        ...JSON.parse(JSON.stringify(props.omikuji)),
+        id: crypto.randomUUID(),
+        name: `${props.omikuji.name} (コピー)`,
+      }
+      sets.splice(index + 1, 0, duplicated)
+      return sets
+    })
+
+  const removeOmikuji = () => {
+    updateOmikujiSets((sets, index) => {
+      sets.splice(index, 1)
+      return sets
+    })
+  }
 </script>

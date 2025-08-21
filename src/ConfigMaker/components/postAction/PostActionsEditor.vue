@@ -7,10 +7,22 @@
         <span class="badge badge-sm badge-outline ml-2">{{ modelValue.length }}</span>
       </label>
       <div class="flex gap-2">
+        <button
+          @click="() => useTestPost().postTestOmikujiItem(modelValue)"
+          class="btn btn-sm btn-info tooltip tooltip-top"
+          data-tip="わんコメを起動すると、投稿の確認ができます"
+          :disabled="modelValue.length === 0"
+        >
+          テスト投稿
+        </button>
+
+        <!-- Json/GUI編集切り替えボタン -->
         <button @click="toggleEditMode" class="btn btn-sm btn-secondary" type="button">
           <span class="text-sm">{{ isJsonMode ? '📝' : '💾' }}</span>
           {{ isJsonMode ? 'GUI編集' : 'JSON編集' }}
         </button>
+
+        <!-- 詳細編集ボタン -->
         <button @click="openDialog" class="btn btn-sm btn-primary" type="button">
           <span class="text-sm">⚙️</span>
           詳細編集
@@ -27,7 +39,7 @@
     />
 
     <!-- 通常のプレビュー表示 -->
-    <PostActionsPreview v-else :actions="modelValue" />
+    <PostActionsPreview v-else :modelValue="modelValue" />
 
     <!-- 編集ダイアログ -->
     <PostActionsEditDialog
@@ -45,7 +57,8 @@
   import PostActionsPreview from './PostActionsPreview.vue'
   import PostActionsEditDialog from './PostActionsEditDialog.vue'
   import PostActionsEditorJson from './PostActionsEditorJson.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   // ストアを使用
   const omikujiStore = useOmikujiStore()

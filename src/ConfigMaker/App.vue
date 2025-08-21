@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-  import { markRaw, Ref, ref, watch } from 'vue'
+  import { markRaw, ref, watch } from 'vue'
   import { isDev } from '@/types/'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
   import ConfigImport from '@ConfigComponents/presets/ConfigImport.vue'
@@ -51,7 +51,6 @@
   import AppHeader from './components/appItems/AppHeader.vue'
   import { storeToRefs } from 'pinia'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { ThemeType } from '@shared/styles/DaisyUiTheme'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -67,7 +66,7 @@
   // テーマを <html data-theme=""> に反映（DaisyUI 用）
   watch(
     () => data.value.displaySettings.base.daisyUiTheme,
-    (newTheme) => {
+    async (newTheme) => {
       if (newTheme) {
         document.documentElement.setAttribute('data-theme', newTheme)
       }

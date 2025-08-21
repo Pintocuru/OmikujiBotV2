@@ -1,24 +1,7 @@
 <!-- src/configMaker/components/postAction/PostActionBasicSettings.vue -->
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2 max-w-screen-md">
-    <div v-if="action.messageContent !== '' || action.messageToast !== ''" class="form-control">
-      <label class="label py-0">
-        <span class="label-text text-xs">👤 キャラクター</span>
-      </label>
-      <select v-model="characterKey" class="select select-bordered select-sm w-full">
-        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
-          {{ char.label }}
-        </option>
-      </select>
-    </div>
-
-    <IconSelector
-      v-if="action.messageContent !== '' || action.messageToast !== ''"
-      :character-key="action.characterKey"
-      :icon-key="action.iconKey"
-      @update:icon-key="updateProp($event as CharacterEmotionType)"
-    />
-
+    <!-- 遅延秒数 -->
     <div class="form-control">
       <label class="label py-0">
         <span class="label-text text-xs">⏱️ 遅延秒数</span>
@@ -32,6 +15,26 @@
         placeholder="0"
       />
     </div>
+
+    <!-- キャラクター -->
+    <div v-if="action.messageContent !== '' || action.messageToast !== ''" class="form-control">
+      <label class="label py-0">
+        <span class="label-text text-xs">👤 キャラクター</span>
+      </label>
+      <select v-model="characterKey" class="select select-bordered select-sm w-full">
+        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
+          {{ char.label }}
+        </option>
+      </select>
+    </div>
+
+    <!-- アイコン -->
+    <IconSelector
+      v-if="action.messageContent !== '' || action.messageToast !== ''"
+      :character-key="action.characterKey"
+      :icon-key="action.iconKey"
+      @update:icon-key="updateProp($event as CharacterEmotionType)"
+    />
   </div>
 </template>
 

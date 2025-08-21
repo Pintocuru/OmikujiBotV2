@@ -19,7 +19,7 @@
           title="アイコンプレビュー"
           :disabled="availableEmotions.length === 0"
         >
-          <Eye class="w-4 h-4" />
+          <User class="w-4 h-4" />
         </button>
 
         <div
@@ -53,7 +53,7 @@
   import { emotionLabels, CharacterEmotionType } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
   import IconPreviewModal from '@ConfigComponents/postAction/IconPreviewModal.vue'
-  import { Eye } from 'lucide-vue-next'
+  import { User } from 'lucide-vue-next'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
 
   const props = defineProps<{

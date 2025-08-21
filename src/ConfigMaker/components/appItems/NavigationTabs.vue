@@ -7,8 +7,8 @@
     <div class="tabs gap-2">
       <div v-for="(tab, key) in filteredCategoryLabels" :key="key">
         <button
-          class="tab w-full h-full p-4 pt-6 tooltip tooltip-top tab-active hover:bg-primary"
-          :class="{ 'bg-primary': selectedCategory === key }"
+          class="tab w-full h-full p-4 pt-6 tooltip tooltip-top tab-active hover:bg-primary hover:text-primary-content"
+          :class="{ 'bg-primary  text-primary-content': selectedCategory === key }"
           :data-tip="tab.description"
           @click="omikujiStore.selectCategory(key)"
         >

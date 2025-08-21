@@ -1,8 +1,9 @@
 <!-- src/configMaker/components/presets/ConfigImport.vue -->
 <template>
-  <div v-if="isPro" class="flex-1">
+  <div class="flex-1">
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />
     <button
+      v-if="isPro"
       @click="openFileDialog"
       class="btn btn-success tooltip tooltip-top"
       data-tip="ダウンロード、またはテンプレート出力したjsonファイルを読み込みます"
