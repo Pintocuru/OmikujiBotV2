@@ -3,7 +3,6 @@ import { computed, ref } from 'vue'
 import {
   DefaultPlaceholders,
   defaultPlaceholdersLabels,
-  handelNormalizedValues,
   PlaceholderSchema,
   PlaceholderType,
   PostActionType,
@@ -11,7 +10,7 @@ import {
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
-export function usePlaceholders(actions: PostActionType[]) {
+export function usePlaceholders(actions?: PostActionType[]) {
   const omikujiStore = useOmikujiStore()
   const searchQuery = ref('')
 
@@ -74,6 +73,7 @@ export function usePlaceholders(actions: PostActionType[]) {
 
   // プレースホルダーが使用されているかを判定
   const isPlaceholderUsed = (placeholderId: string): boolean => {
+    if (!actions?.length) return false
     const placeholderPattern = `<<${placeholderId}>>`
     return actions.some(
       (action) =>

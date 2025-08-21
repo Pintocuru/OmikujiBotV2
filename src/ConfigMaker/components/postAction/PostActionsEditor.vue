@@ -17,52 +17,24 @@
         </button>
 
         <!-- Json/GUI編集切り替えボタン -->
-        <button @click="toggleEditMode" class="btn btn-sm btn-secondary" type="button">
-          <span class="text-sm">{{ isJsonMode ? '📝' : '💾' }}</span>
-          {{ isJsonMode ? 'GUI編集' : 'JSON編集' }}
+        <button @click="$emit('toggleJson')" class="btn btn-sm btn-secondary" type="button">
+          <span class="text-sm">📝</span>
+          JSON編集
         </button>
 
         <!-- 詳細編集ボタン -->
-        <button @click="openDialog" class="btn btn-sm btn-primary" type="button">
+        <button @click="$emit('toggleEdit')" class="btn btn-sm btn-primary" type="button">
           <span class="text-sm">⚙️</span>
           詳細編集
         </button>
       </div>
     </div>
-
-    <!-- JSON編集モード -->
-    <PostActionsEditorJson
-      v-if="isJsonMode"
-      :modelValue="modelValue"
-      @update:modelValue="handleUpdate"
-      @close="isJsonMode = false"
-    />
-
-    <!-- 通常のプレビュー表示 -->
-    <PostActionsPreview v-else :modelValue="modelValue" />
-
-    <!-- 編集ダイアログ -->
-    <PostActionsEditDialog
-      ref="dialog"
-      :actions="modelValue"
-      :charactersArray="charactersArray"
-      @update:actions="handleUpdate"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, Ref } from 'vue'
-  import { PostActionType } from '@/types/'
-  import PostActionsPreview from './PostActionsPreview.vue'
-  import PostActionsEditDialog from './PostActionsEditDialog.vue'
-  import PostActionsEditorJson from './PostActionsEditorJson.vue'
+  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-
-  // ストアを使用
-  const omikujiStore = useOmikujiStore()
-  const charactersArray = computed(() => omikujiStore.getCategoryArray('characters'))
 
   // Props
   const props = defineProps<{
@@ -70,24 +42,5 @@
   }>()
 
   // Emits
-  const emit = defineEmits<{
-    'update:modelValue': [value: PostActionType[]]
-  }>()
-
-  // Refs
-  const dialog: Ref<InstanceType<typeof PostActionsEditDialog> | null> = ref(null)
-  const isJsonMode = ref(false)
-
-  // Methods
-  const openDialog = () => {
-    dialog.value?.open()
-  }
-
-  const handleUpdate = (actions: PostActionType[]) => {
-    emit('update:modelValue', actions)
-  }
-
-  const toggleEditMode = () => {
-    isJsonMode.value = !isJsonMode.value
-  }
+  const emit = defineEmits(['toggleEdit', 'toggleJson'])
 </script>

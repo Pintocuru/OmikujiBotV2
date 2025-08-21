@@ -33,7 +33,7 @@
 
   // Props
   const props = defineProps<{
-    actions: PostActionType[]
+    modelValue: PostActionType[]
     charactersArray: CharacterType[]
   }>()
 
@@ -56,7 +56,7 @@
 
   // Dialog methods
   const open = () => {
-    editingActions.value = JSON.parse(JSON.stringify(props.actions))
+    editingActions.value = JSON.parse(JSON.stringify(props.modelValue))
     dialogRef.value?.showModal()
   }
 

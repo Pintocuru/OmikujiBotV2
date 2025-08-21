@@ -1,9 +1,11 @@
 <!-- src/configMaker/components/placeholders/PlaceholderList.vue -->
 <template>
-  <div class="card bg-base-300">
-    <h3 class="card-title bg-primary text-lg p-2 pl-4 rounded-t text-white">プレースホルダー一覧</h3>
+  <SectionCard>
+    <template #header>
+      <div>プレースホルダー一覧</div>
+    </template>
 
-    <div class="card-body p-2">
+    <template #body>
       <!-- 検索バー -->
       <div class="form-control">
         <input
@@ -32,18 +34,19 @@
         <div v-if="searchQuery" class="text-sm">「{{ searchQuery }}」に一致するプレースホルダーが見つかりません</div>
         <div v-else class="text-sm">プレースホルダーがありません</div>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { PostActionType } from '@/types/'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { usePlaceholders } from './composables/usePlaceholders'
   import PlaceholderItem from './PlaceholderItem.vue'
 
   // Props
   const props = defineProps<{
-    actions: PostActionType[]
+    actions?: PostActionType[]
   }>()
 
   // Composable
