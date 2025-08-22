@@ -1,12 +1,6 @@
 <!-- src/configMaker/components/postAction/PostActionsEditorJson.vue -->
 <template>
   <div class="space-y-2">
-    <div class="flex gap-2 mb-2">
-      <button @click="exportToClipboard" class="btn btn-xs btn-outline">📋 クリップボードにコピー</button>
-      <button @click="importFromClipboard" class="btn btn-xs btn-outline">📥 クリップボードから読込</button>
-      <button @click="prettifyJson" class="btn btn-xs btn-outline">✨ 整形</button>
-    </div>
-
     <textarea
       v-model="jsonText"
       class="textarea textarea-bordered w-full font-mono text-sm"
@@ -19,11 +13,8 @@
       <span>⚠️ JSONエラー: {{ jsonError }}</span>
     </div>
 
-    <!-- TODO:保存ボタンは右側で統一 -->
-    <div class="flex gap-2">
-      <button @click="applyJson" class="btn btn-sm btn-success">✅ 適用</button>
-      <button @click="resetJson" class="btn btn-sm btn-ghost">🔄 リセット</button>
-    </div>
+    <!-- 保存ボタン -->
+    <ModalFooterActions :on-cancel="resetJson" :on-save="applyJson" />
   </div>
 </template>
 
@@ -32,6 +23,7 @@
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { toast } from 'vue-sonner'
 
   // Props
@@ -46,7 +38,7 @@
     close: []
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // Refs

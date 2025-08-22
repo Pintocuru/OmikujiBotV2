@@ -52,7 +52,7 @@
     selectedRuleId: string | null
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   const localData = computed<CharacterType | undefined>({

@@ -65,7 +65,7 @@
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import { AccessLevelLabels } from '@shared/types'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{
     modelValue: RuleType

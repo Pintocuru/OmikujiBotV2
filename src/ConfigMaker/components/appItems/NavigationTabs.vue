@@ -52,7 +52,7 @@
   import { storeToRefs } from 'pinia'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { selectedCategory } = storeToRefs(omikujiStore)

@@ -47,9 +47,10 @@
 
         <!-- モーダルアクション -->
         <ModalFooterActions
+          class="mt-4"
           :on-cancel="closeModal"
           :on-save="changeAllCharacters"
-          :saveName="'変更実行'"
+          saveName="変更する"
           :disabled="!selectedCharacterId"
         />
       </div>
@@ -59,20 +60,17 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { Users, AlertTriangle } from 'lucide-vue-next'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
-    modelValue: OmikujiItemType[]
+    category: RulesCategoryType
+    selectedRuleId: string
   }>()
 
-  const emit = defineEmits<{
-    'update:modelValue': [value: OmikujiItemType[]]
-  }>()
-
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const charactersArray = computed(() => omikujiStore.getCategoryArray('characters').sort((a, b) => a.order - b.order))
 
@@ -80,10 +78,16 @@
   const isModalOpen = ref(false)
   const selectedCharacterId = ref('')
 
+  // 現在のおみくじデータを取得
+  const currentOmikujiSets = computed(() => {
+    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+    return record?.omikuji || []
+  })
+
   // 現在使用されているキャラクターキーを取得
   const uniqueCharacterKeys = computed(() => {
     const keys = new Set<string>()
-    props.modelValue.forEach((omikuji) => {
+    currentOmikujiSets.value.forEach((omikuji) => {
       omikuji.postActions?.forEach((action) => {
         if (action.characterKey) {
           keys.add(action.characterKey)
@@ -114,7 +118,7 @@
   const changeAllCharacters = () => {
     if (!selectedCharacterId.value) return
 
-    const newValue = props.modelValue.map((omikuji) => ({
+    const newOmikujiSets = currentOmikujiSets.value.map((omikuji) => ({
       ...omikuji,
       postActions:
         omikuji.postActions?.map((action) => ({
@@ -123,7 +127,8 @@
         })) || [],
     }))
 
-    emit('update:modelValue', newValue)
+    // ストアを使って直接更新
+    omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', newOmikujiSets)
     closeModal()
   }
 </script>

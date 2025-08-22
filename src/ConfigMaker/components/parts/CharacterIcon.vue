@@ -17,7 +17,7 @@
     imgClass?: string
     fallbackClass?: string
   }>()
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const charactersMap = computed(() => omikujiStore.getCategoryMap('characters'))
 

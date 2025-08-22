@@ -24,12 +24,8 @@
           <input type="password" class="input input-bordered flex-1" v-model="licenseKeyHash" placeholder="****" />
           <span v-if="isDev">
             <button class="btn btn-sm btn-primary mr-2" @click="licenseKeyHash = ''">basic</button>
-            <button class="btn btn-sm btn-success mr-2" @click="licenseKeyHash = '2c26b46b68ffc68ff99b453c1d304134'">
-              PRO
-            </button>
-            <button class="btn btn-sm btn-warning" @click="licenseKeyHash = '5d41402abc4b2a76b9719d911017c592'">
-              GOD-MODE
-            </button>
+            <button class="btn btn-sm btn-success mr-2" @click="licenseKeyHash = getKey('pro')">PRO</button>
+            <button class="btn btn-sm btn-warning" @click="licenseKeyHash = getKey('godMode')">GOD-MODE</button>
           </span>
         </div>
       </SettingItem>
@@ -53,7 +49,8 @@
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { isDev } from '@/types'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { getKey } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
 
   // Store

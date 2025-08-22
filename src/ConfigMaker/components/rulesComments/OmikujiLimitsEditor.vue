@@ -117,7 +117,7 @@
     selectedRuleId: string | null
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // 各プロパティのcomputed getter/setter

@@ -24,7 +24,7 @@
     values: (PlaceholderValueType | string)[]
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const placeholdersMap = computed(() => omikujiStore.getCategoryMap('placeholders'))
 

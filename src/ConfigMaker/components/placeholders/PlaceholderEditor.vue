@@ -63,7 +63,7 @@
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
 

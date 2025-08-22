@@ -48,7 +48,7 @@
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { Save } from 'lucide-vue-next'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const { isExporting, exportFile } = useConfigExport()
   const omikujiStore = useOmikujiStore()

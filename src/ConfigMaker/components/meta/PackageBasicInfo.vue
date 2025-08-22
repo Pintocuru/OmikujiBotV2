@@ -84,7 +84,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'
 
   // Store

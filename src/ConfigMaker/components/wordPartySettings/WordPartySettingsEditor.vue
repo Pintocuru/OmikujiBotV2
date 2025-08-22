@@ -28,7 +28,7 @@
   import FireList from '@ConfigComponents/wordPartySettings/FireList.vue'
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
   import { storeToRefs } from 'pinia'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // 設定管理
   const omikujiStore = useOmikujiStore()

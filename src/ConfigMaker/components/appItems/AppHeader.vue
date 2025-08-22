@@ -21,6 +21,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   const { isPro, isGod } = useSettingMode()
 </script>

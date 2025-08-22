@@ -56,7 +56,7 @@
     placeholderId: string
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 

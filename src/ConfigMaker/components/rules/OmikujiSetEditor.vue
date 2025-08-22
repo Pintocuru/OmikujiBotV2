@@ -12,10 +12,15 @@
       <!-- 便利なボタン群 -->
       <div class="flex justify-end gap-2">
         <!-- キャラクター一括変更ボタン -->
-        <CharacterBulkChanger :model-value="omikujiSets" @update:model-value="omikujiSets = $event" />
+        <CharacterBulkChanger v-if="selectedRuleId" :category="category" :selected-rule-id="selectedRuleId" />
+
         <!-- おみくじテストボタン -->
         <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-          <button class="btn btn-info" @click="postTestOmikuji(omikujiSets)" :disabled="omikujiSets.length === 0">
+          <button
+            class="btn btn-info"
+            @click="useTestPost().postTestOmikuji(omikujiSets)"
+            :disabled="omikujiSets.length === 0"
+          >
             <Dices class="w-4 h-4" />
             抽選テスト
           </button>
@@ -66,7 +71,7 @@
     selectedRuleId: string | null
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // Computed
@@ -81,8 +86,6 @@
       omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
     },
   })
-
-  const { postTestOmikuji } = useTestPost()
 
   // 合計重みの計算
   const totalWeight = computed(() => {

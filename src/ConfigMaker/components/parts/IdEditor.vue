@@ -94,7 +94,6 @@
   import { RecordCategoryType } from '@/types/'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useIdEditor } from './useIdEditor'
 
   const props = defineProps<{

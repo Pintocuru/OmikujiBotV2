@@ -71,7 +71,7 @@
     'update:modelValue': [value?: string]
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   const localData = computed<CharacterType | undefined>({

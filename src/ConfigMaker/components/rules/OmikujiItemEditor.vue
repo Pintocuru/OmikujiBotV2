@@ -60,7 +60,7 @@
     index: number // カードの色分け用
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // Refs for PostActions functionality

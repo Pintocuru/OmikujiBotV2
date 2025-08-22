@@ -16,7 +16,7 @@
   import StartupSettings from './StartupSettings.vue'
   import VisibilitySettings from './VisibilitySettings.vue'
   import DeveloperModeInfo from './DeveloperModeInfo.vue'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
 

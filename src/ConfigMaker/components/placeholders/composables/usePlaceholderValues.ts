@@ -4,7 +4,7 @@ import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
 export function usePlaceholderValues(placeholderId: string) {
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // リアクティブデータ

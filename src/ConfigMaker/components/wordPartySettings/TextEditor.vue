@@ -43,7 +43,7 @@
       ></textarea>
 
       <!-- 保存ボタン -->
-      <ModalFooterActions :on-cancel="() => $emit('reset')" :on-save="() => $emit('save')" saveName="💾 保存" />
+      <ModalFooterActions :on-cancel="() => $emit('reset')" :on-save="() => $emit('save')" />
     </template>
   </SectionCard>
 </template>

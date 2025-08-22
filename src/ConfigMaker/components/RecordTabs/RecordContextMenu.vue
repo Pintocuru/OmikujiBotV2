@@ -83,7 +83,7 @@
   import ColorPicker from './ColorPicker.vue'
   import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
   import { AccessLevelType, AccessLevelLabels } from '@shared/types'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
   const store = useRecordTabsStore()

@@ -3,9 +3,7 @@
   <dialog ref="dialogRef" class="modal">
     <div class="modal-box max-w-max">
       <!-- 保存・キャンセルボタン -->
-      <div class="mb-4">
-        <ModalFooterActions :on-cancel="closeDialog" :on-save="saveActions" />
-      </div>
+      <ModalFooterActions class="mb-4" :on-cancel="closeDialog" :on-save="saveActions" />
 
       <!-- プレースホルダーリスト表示 -->
       <PlaceholderList :actions="editingActions" />
@@ -19,7 +17,7 @@
       />
 
       <!-- 保存・キャンセルボタン -->
-      <ModalFooterActions :on-cancel="closeDialog" :on-save="saveActions" />
+      <ModalFooterActions class="mt-4" :on-cancel="closeDialog" :on-save="saveActions" />
     </div>
   </dialog>
 </template>
@@ -40,7 +38,7 @@
     omikujiIndex: number
   }>()
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
 
   // キャラクター配列を取得

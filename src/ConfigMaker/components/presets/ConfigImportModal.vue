@@ -105,7 +105,7 @@
       <ModalFooterActions
         :on-cancel="() => $emit('cancel')"
         :on-save="() => $emit('confirm')"
-        :saveName="'読み込み実行'"
+        saveName="読み込む"
         :disabled="!hasEnabledCategories || !previewData"
       />
     </div>

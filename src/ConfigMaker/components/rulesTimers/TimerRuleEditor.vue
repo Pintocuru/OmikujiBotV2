@@ -33,7 +33,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
-  // ストアを使用
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
 

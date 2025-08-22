@@ -34,7 +34,7 @@
   import type { ImportMode } from './useImportPreviewManager'
   import { useJsonImporter } from './useJsonImporter'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { useSettingMode } from '@/types/SettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
   const omikujiStore = useOmikujiStore()
