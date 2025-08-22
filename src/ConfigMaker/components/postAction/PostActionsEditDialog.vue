@@ -26,16 +26,16 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
+  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import { PostActionSchema, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import PostActionsContainer from './PostActionsContainer.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
+  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   // Props
   const props = defineProps<{
-    category: 'comments' | 'timers'
+    category: RulesCategoryType
     selectedRuleId: string | null
     omikujiIndex: number
   }>()

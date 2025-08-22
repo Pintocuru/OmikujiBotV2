@@ -49,8 +49,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemSchema, OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
-  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
+  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+  import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import CharacterBulkChanger from './CharacterBulkChanger.vue'
   import OmikujiItemEditor from './OmikujiItemEditor.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
@@ -60,7 +60,7 @@
   import { Dices, Plus } from 'lucide-vue-next'
 
   const props = defineProps<{
-    category: 'comments' | 'timers'
+    category: RulesCategoryType
     selectedRuleId: string | null
   }>()
 
@@ -74,7 +74,7 @@
       const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
       return record?.omikuji || []
     },
-    set: (value: OmikujiSetType[]) => {
+    set: (value: OmikujiItemType[]) => {
       if (!props.selectedRuleId) return
       omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
     },

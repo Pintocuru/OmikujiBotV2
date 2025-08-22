@@ -88,7 +88,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
-  import { categoryLabels, CategoryType, recordCategoryLabel } from '@/types'
+  import { categoryLabels, CategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 
   // Store
   const omikujiStore = useOmikujiStore()

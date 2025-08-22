@@ -1,12 +1,8 @@
 // src/composables/usePlaceholders.ts
 import { computed, ref } from 'vue'
-import {
-  DefaultPlaceholders,
-  defaultPlaceholdersLabels,
-  PlaceholderSchema,
-  PlaceholderType,
-  PostActionType,
-} from '@/types/'
+import { DefaultPlaceholders, defaultPlaceholdersLabels } from '@/types/OmikujiData/CategoryType'
+import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PlaceholderSchema, PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 

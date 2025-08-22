@@ -29,14 +29,14 @@
 
 <script setup lang="ts">
   import { ref, watch, computed } from 'vue'
+  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
-  import { toast } from 'vue-sonner'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
+  import { toast } from 'vue-sonner'
 
   // Props
   const props = defineProps<{
-    category: 'comments' | 'timers'
+    category: RulesCategoryType
     selectedRuleId: string | null
     omikujiIndex: number
   }>()

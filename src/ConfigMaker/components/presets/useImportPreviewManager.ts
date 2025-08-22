@@ -1,6 +1,7 @@
 // src/configMaker/components/presets/useImportPreviewManager.ts
 import { ref, computed } from 'vue'
-import { OmikujiDataType, CategoryType, OmikujiDataSchema, recordCategoryLabel } from '@/types/'
+import { CategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
+import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
 export type ImportMode = 'replace' | 'merge'
 

@@ -1,12 +1,13 @@
 // src/configMaker/components/parts/strategies/idUpdateStrategies.ts
-import { RecordCategoryType } from '@/types/'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import { IdUpdateStrategy } from './idEditorTypes'
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
 /**
  * 汎用ルールID更新処理
  */
-function updateRuleId(category: 'comments' | 'timers', oldId: string, newId: string): boolean {
+function updateRuleId(category: RulesCategoryType, oldId: string, newId: string): boolean {
   try {
     const omikujiStore = useOmikujiStore()
     const categoryMap = omikujiStore.getCategoryMap(category)

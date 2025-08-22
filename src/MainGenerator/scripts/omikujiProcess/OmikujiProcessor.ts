@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/OmikujiProcessor.ts
 // おみくじ処理クラス
-import { BotMessage, RuleType, OmikujiDataType, OmikujiSetType, ScriptResult } from '@/types/'
+import { BotMessage, RuleType, OmikujiDataType, OmikujiItemType, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/types/Comment'
 import { GameScriptManager } from './GameScriptManager'
 import { CommentContextManager } from './CommentContextManager'
@@ -39,7 +39,7 @@ export class OmikujiProcessor {
    * おみくじの実行（おみくじアイテムを直接指定）
    * scriptManagerが不要な場合に使用
    */
-  executeOmikujiDirect(omikujiItem: OmikujiSetType, comment?: Comment): BotMessage[] {
+  executeOmikujiDirect(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
     try {
       if (comment) {
         const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
@@ -56,7 +56,7 @@ export class OmikujiProcessor {
   /**
    * おみくじプロセスの実行
    */
-  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiSetType, seed?: string): BotMessage[] {
+  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
     try {
       const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
@@ -93,7 +93,7 @@ export class OmikujiProcessor {
   /**
    * プレースホルダー処理（スクリプト結果付き）
    */
-  private processWithScript(scriptResult: ScriptResult, omikujiItem: OmikujiSetType, seed?: string): BotMessage[] {
+  private processWithScript(scriptResult: ScriptResult, omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
     try {
       // scriptのプレースホルダーをClassに追加
       this.placeProcess.updateResolvedValues(scriptResult.placeholders)
@@ -114,7 +114,7 @@ export class OmikujiProcessor {
   /**
    * おみくじのみ処理（スクリプトなし）
    */
-  private processOmikujiOnly(omikujiItem: OmikujiSetType, seed?: string): BotMessage[] {
+  private processOmikujiOnly(omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
     try {
       const postActions = this.placeProcess.processPostActions(omikujiItem.postActions, seed)
       this.postMessage.post(postActions)

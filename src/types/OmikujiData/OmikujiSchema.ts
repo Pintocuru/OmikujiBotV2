@@ -5,7 +5,9 @@ import { CharacterEmotionSchema } from './CharacterSchema'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 
-// PostActionWordParty
+/**
+ * PostAction WordParty用
+ */
 export const PostActionWordPartySchema = z.object({
   delaySeconds: z
     .number()
@@ -15,7 +17,9 @@ export const PostActionWordPartySchema = z.object({
   wordParty: z.string().default('').catch(''),
 })
 
-// PostAction
+/**
+ * PostAction わんコメ・BOTちゃんに投稿する型定義
+ */
 export const PostActionSchema = z.object({
   ...PostActionWordPartySchema.shape,
   characterKey: z.string().default('').catch(''),
@@ -24,7 +28,9 @@ export const PostActionSchema = z.object({
   messageToast: z.string().optional().catch(undefined),
 })
 
-// Omikuji
+/**
+ * OmikujiItem 抽選用重さ付きおみくじデータ
+ */
 export const OmikujiItemSchema = z.object({
   ...BaseRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
@@ -38,6 +44,9 @@ export const OmikujiItemSchema = z.object({
     }),
 })
 
+/**
+ * OmikujiSet おみくじ
+ */
 export const OmikujiSetSchema = z
   .array(OmikujiItemSchema)
   .default([
@@ -56,4 +65,5 @@ export const OmikujiSetSchema = z
 
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
-export type OmikujiSetType = z.infer<typeof OmikujiItemSchema>
+export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
+export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>

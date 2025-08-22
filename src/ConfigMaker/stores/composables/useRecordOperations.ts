@@ -1,9 +1,10 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
+import { nextTick, Ref } from 'vue'
 import { CategoryType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/OmikujiData/CategoryType'
-import { categorySchemaMap, OmikujiDataType, RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { categorySchemaMap, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
-import { nextTick, Ref } from 'vue'
+import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 
 // categorySchemaMapの型安全性を向上
 interface TypedSchema<T> {
@@ -91,7 +92,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
    * omikuji.PostActions専用の更新
    */
   const updateOmikujiPostActions = (
-    category: 'comments' | 'timers',
+    category: RulesCategoryType,
     ruleId: string,
     omikujiIndex: number,
     postActions: PostActionType[]

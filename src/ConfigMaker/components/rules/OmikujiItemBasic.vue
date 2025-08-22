@@ -44,17 +44,18 @@
 </template>
 
 <script setup lang="ts">
-  import { OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
   import { GripVertical } from 'lucide-vue-next'
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
 
   const props = defineProps<{
-    allOmikuji: OmikujiSetType[]
-    omikuji: OmikujiSetType
-    category: 'comments' | 'timers'
+    allOmikuji: OmikujiItemType[]
+    omikuji: OmikujiItemType
+    category: RulesCategoryType
     selectedRuleId: string | null
   }>()
 
@@ -73,7 +74,7 @@
   })
 
   // 共通の更新関数
-  const updateOmikujiSets = (updateFn: (sets: OmikujiSetType[], index: number) => OmikujiSetType[]) => {
+  const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
     if (!props.selectedRuleId) return
     const index = props.allOmikuji.findIndex((item) => item.id === props.omikuji.id)
     if (index === -1) return

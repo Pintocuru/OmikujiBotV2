@@ -59,17 +59,17 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { Users, AlertTriangle } from 'lucide-vue-next'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
-    modelValue: OmikujiSetType[]
+    modelValue: OmikujiItemType[]
   }>()
 
   const emit = defineEmits<{
-    'update:modelValue': [value: OmikujiSetType[]]
+    'update:modelValue': [value: OmikujiItemType[]]
   }>()
 
   // ストアを使用

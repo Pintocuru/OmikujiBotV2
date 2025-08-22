@@ -22,6 +22,12 @@ export const OmikujiLimitsSchema = z.object({
 })
 
 /**
+ * Rules のカテゴリ定数セット
+ */
+export const rulesCategoryLabel = ['comments', 'timers'] as const
+export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
+
+/**
  * Rules 共通部分のスキーマ
  */
 export const BaseRuleSchema = z.object({

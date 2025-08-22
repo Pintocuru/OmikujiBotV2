@@ -114,7 +114,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { categoryLabels, type CategoryType } from '@/types/'
+  import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
   import type { ImportMode, ImportPreview } from './useImportPreviewManager'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
 

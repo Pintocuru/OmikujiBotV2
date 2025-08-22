@@ -45,17 +45,17 @@
 
 <script setup lang="ts">
   import { computed, ref, Ref } from 'vue'
-  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
   import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
   import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import PostActionsEditDialog from '@ConfigComponents/postAction/PostActionsEditDialog.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 
   const props = defineProps<{
-    category: 'comments' | 'timers'
+    category: RulesCategoryType
     selectedRuleId: string | null
     index: number // カードの色分け用
   }>()
@@ -74,7 +74,7 @@
       const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
       return record?.omikuji || []
     },
-    set: (value: OmikujiSetType[]) => {
+    set: (value: OmikujiItemType[]) => {
       if (!props.selectedRuleId) return
       omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
     },

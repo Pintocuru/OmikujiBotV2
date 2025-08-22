@@ -93,7 +93,13 @@
 
 <script setup lang="ts">
   import { ref, onMounted, computed } from 'vue'
-  import { categoryLabels, CategoryType, OmikujiDataType, recordCategoryLabel, RecordCategoryType } from '@/types/'
+  import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+  import {
+    categoryLabels,
+    CategoryType,
+    recordCategoryLabel,
+    RecordCategoryType,
+  } from '@/types/OmikujiData/CategoryType'
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 

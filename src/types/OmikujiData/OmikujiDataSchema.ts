@@ -9,11 +9,6 @@ import { PackageMetaSchema } from '@shared/types'
 import { WordPartySettingsSchema } from './WordPartySettings'
 import { scriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema'
 
-// 再エクスポート
-export * from './CategoryType'
-export * from './RulesSchema'
-export * from './CategoryType'
-
 // 正規化機能付きRecordスキーマ
 export const CommentRuleRecordSchema = createRecordWithNormalization(CommentRuleSchema)
 export const TimerRuleRecordSchema = createRecordWithNormalization(TimerRuleSchema)

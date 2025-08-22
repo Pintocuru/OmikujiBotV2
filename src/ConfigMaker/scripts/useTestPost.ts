@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/useTestPost.ts - テスト投稿用
 import { computed } from 'vue'
-import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiSetType, OmikujiDataType, RuleType } from '@/types/'
+import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiItemType, OmikujiDataType, RuleType } from '@/types/'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
 import { MockComment } from '@shared/__mocks__/CreateMockComment'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
@@ -42,10 +42,10 @@ export function useTestPost() {
   }
 
   // 抽選結果の詳細トーストを表示
-  const showOmikujiResultToast = (drawnOmikuji: OmikujiSetType, actions: PostActionType[]) => {
-    const weight = drawnOmikuji.weight || 1
-    const weightPercent = (drawnOmikuji as any).weightPercent || 0
-    const omikujiName = drawnOmikuji.name || 'おみくじ'
+  const showOmikujiResultToast = (drawOmikuji: OmikujiItemType, actions: PostActionType[]) => {
+    const weight = drawOmikuji.weight || 1
+    const weightPercent = (drawOmikuji as any).weightPercent || 0
+    const omikujiName = drawOmikuji.name || 'おみくじ'
 
     const firstMessageAction = actions.find((action) => action.messageContent)
     const messageContent = firstMessageAction?.messageContent || 'メッセージなし'
@@ -60,7 +60,7 @@ export function useTestPost() {
     })
   }
 
-  const postTestOmikujiItem = (actions: PostActionType[], drawnOmikuji?: OmikujiSetType) => {
+  const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
     const rule = selectedRule.value
     if (!rule) {
       toast.error('テスト投稿の対象となるルールが選択されていません。')
@@ -77,15 +77,15 @@ export function useTestPost() {
     )
 
     // 抽選結果がある場合はトーストで表示
-    if (drawnOmikuji) {
-      showOmikujiResultToast(drawnOmikuji, actions)
+    if (drawOmikuji) {
+      showOmikujiResultToast(drawOmikuji, actions)
     }
 
     executeTestPostDelays(botMessageArray)
   }
 
-  const postTestOmikuji = (omikujis: OmikujiSetType[]) => {
-    const omikujisWithPercent = addWeightPercentages(omikujis)
+  const postTestOmikuji = (omikujiSet: OmikujiItemType[]) => {
+    const omikujisWithPercent = addWeightPercentages(omikujiSet)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 
     if (!omikujiItem) {
