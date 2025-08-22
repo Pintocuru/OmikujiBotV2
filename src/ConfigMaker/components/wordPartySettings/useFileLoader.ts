@@ -1,6 +1,6 @@
 // src/composables/useFileLoader.ts
 import { ref } from 'vue'
-import { WordPartySettings } from '@/types/OmikujiData/RulesSchema'
+import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
 
 export function useFileLoader(
   currentSettings: { value: WordPartySettings[] },

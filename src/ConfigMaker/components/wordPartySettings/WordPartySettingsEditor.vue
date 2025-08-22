@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { WordPartySettings } from '@/types/OmikujiData/RulesSchema'
+  import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
   import { useTextEditor } from './useTextEditor'
   import { useFileLoader } from './useFileLoader'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'

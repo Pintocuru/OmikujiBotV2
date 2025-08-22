@@ -1,6 +1,6 @@
 // src/composables/useTextEditor.ts
 import { ref, watch } from 'vue'
-import { WordPartySettings } from '@/types/OmikujiData/RulesSchema'
+import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
 
 export function useTextEditor(
   wordPartySettings: { value: WordPartySettings[] },

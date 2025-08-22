@@ -9,7 +9,7 @@ const buildConfig: BuildConfig = {
   ...commonBuildConfig, // 共通項目
   // プロジェクト識別情報
   name: 'ReimuMarisa',
-  version: '2025.8.16',
+  version: '2025.8.22',
 
   // テンプレート情報（わんコメ用）
   template: {
@@ -23,7 +23,7 @@ const buildConfig: BuildConfig = {
   json: {
     ...commonBuildConfig.json,
     jsonPath: 'ReimuDX-250724.json',
-    targetAccessLevel: 'pro',
+    targetAccessLevel: 'internal',
   },
 
   // リソースファイル

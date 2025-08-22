@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { TimerRuleType } from '@/types/'
+  import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

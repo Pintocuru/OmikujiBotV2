@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CommentRuleType } from '@/types/'
+  import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
   import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue'
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'

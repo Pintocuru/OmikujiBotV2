@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-  import { WordPartySettings } from '@/types/OmikujiData/RulesSchema'
+  import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { postWordParty } from '@shared/sdk/postMessage/PostOneComme'
 

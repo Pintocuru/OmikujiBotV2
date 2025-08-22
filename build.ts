@@ -31,7 +31,7 @@ const systemCommonData: SystemCommonData = {
  */
 const buildConfigs: BuildConfig[] = [
   ReimuMarisaConfig,
-  percent_Dora,
+  // percent_Dora,
   // 新しい設定はここに追加
 ]
 

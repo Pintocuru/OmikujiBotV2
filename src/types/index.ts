@@ -15,6 +15,8 @@ export * from './GameScript/GameScriptSchema'
 export * from './GameScript/GameScriptSettingsSchema'
 export * from './GameScript/GameScriptTypes'
 
+export * from './OmikujiData/CategoryType'
+export * from './OmikujiData/RulesSchema'
 export * from './OmikujiData/CharacterSchema'
 export * from './OmikujiData/OmikujiSchema'
 export * from './OmikujiData/PlaceholderSchema'

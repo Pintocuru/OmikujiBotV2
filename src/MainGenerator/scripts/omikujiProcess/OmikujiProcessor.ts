@@ -1,14 +1,18 @@
 // src/MainGenerator/utils/commentProcessor/OmikujiProcessor.ts
 // おみくじ処理クラス
-import { BotMessage, RuleType, OmikujiDataType, OmikujiItemType, ScriptResult } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { RuleType } from '@/types/OmikujiData/RulesSchema'
+import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
+import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { GameScriptManager } from './GameScriptManager'
 import { CommentContextManager } from './CommentContextManager'
 import { PlaceProcess } from './PlaceProcess'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
-import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator'
+import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { Comment } from '@onecomme.com/onesdk/types/Comment'
 
 export class OmikujiProcessor {
   private readonly placeProcess: PlaceProcess

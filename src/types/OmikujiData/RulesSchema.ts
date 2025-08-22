@@ -1,4 +1,4 @@
-// shared/types/OmikujiBot/RulesSchema.ts
+// src\types\OmikujiData\RulesSchema.ts
 import { z } from 'zod'
 import { BaseRecordSchema, CommentThresholdSchema } from '@shared/types/'
 import { OmikujiSetSchema } from './OmikujiSchema'
