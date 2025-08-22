@@ -6,7 +6,7 @@
     :class="{ 'tooltip tooltip-bottom': true, 'btn-disabled': disabled || isLoading }"
     :data-tip="dataTip"
   >
-    <span class="btn btn-sm btn-outline hover:btn-primary transition-colors">
+    <span class="btn btn-sm btn-outline hover:btn-primary transition-colors min-w-fit whitespace-nowrap">
       <span v-if="isLoading">⏳コピー中…</span>
       <span v-else-if="copied">✓コピー済み</span>
       <span v-else>📋 コピー</span>

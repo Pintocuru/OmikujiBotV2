@@ -32,8 +32,8 @@
       </span>
     </div>
 
-    <!-- order(Dev) : order がエラー起きたときのために残しておきます  -->
-    <span v-if="isDev">({{ rule.order != null ? rule.order : 'order:error!' }})</span>
+    <!-- order 判定する順番 --> 
+    <div>[{{ rule.order != null ? rule.order : 'order:error!' }}]</div>
 
     <!-- 状態インジケーター -->
     <div class="flex items-center gap-1 text-xs">

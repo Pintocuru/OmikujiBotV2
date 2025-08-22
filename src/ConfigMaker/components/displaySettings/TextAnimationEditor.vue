@@ -12,6 +12,7 @@
         <!-- プレビュー表示 -->
         <CommentBubblePreview
           :color="localColor"
+          :is-slider="true"
           :text-size="base.displaySize"
           :custom-classes="localColor.customClasses"
           :font-family="base.fontFamily"

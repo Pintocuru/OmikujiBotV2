@@ -1,25 +1,56 @@
 <!-- src/ConfigMaker/components/parts/CommentBubblePreview.vue -->
 <template>
-  <div class="cursor-pointer" :class="fontClass" @click="reloadAnimation" @contextmenu.prevent="hideAnimation">
-    <!-- MotionWrapperを使用してシンプルに -->
-    <MotionWrapper
-      ref="motionWrapper"
-      v-model:visible="shouldShowBubble"
-      :enter-motion="bubbleMotionEnter"
-      :leave-motion="bubbleMotionLeave"
-      :auto-hide="false"
-    >
-      <CommentBubble
-        name="テストユーザー"
-        :comment="currentPreview"
-        :color="color"
-        :text-size="textSize"
-        :custom-classes="customClasses"
-      />
-    </MotionWrapper>
+  <div class="space-y-4">
+    <!-- 横幅調整スライダー -->
+    <div v-if="isSlider" class="flex items-center gap-4 p-3 bg-base-200 rounded-lg">
+      <label class="text-sm font-medium min-w-0 flex-shrink-0">横幅:</label>
+      <input type="range" :min="minWidth" :max="maxWidth" v-model="currentWidth" class="range range-primary flex-1" />
+      <span class="text-sm font-mono min-w-0 flex-shrink-0">{{ currentWidth }}px</span>
+    </div>
 
-    <div class="flex justify-center mt-6">
-      <button class="btn btn-ghost btn-sm" @click.stop="reloadAnimation">再表示</button>
+    <!-- プレビュー表示エリア（横幅制限付き） -->
+    <div
+      class="cursor-pointer border-2 border-dashed border-base-300 rounded-lg p-4"
+      :class="fontClass"
+      :style="{ width: currentWidth + 'px' }"
+      @click="reloadAnimation"
+      @contextmenu.prevent="hideAnimation"
+    >
+      <!-- MotionWrapperを使用してシンプルに -->
+      <MotionWrapper
+        ref="motionWrapper"
+        v-model:visible="shouldShowBubble"
+        :enter-motion="bubbleMotionEnter"
+        :leave-motion="bubbleMotionLeave"
+        :auto-hide="false"
+      >
+        <CommentBubble
+          name="テストユーザー"
+          :comment="currentPreview"
+          :color="color"
+          :text-size="textSize"
+          :custom-classes="customClasses"
+        />
+      </MotionWrapper>
+
+      <div class="flex justify-center mt-6">
+        <button class="btn btn-ghost btn-sm" @click.stop="reloadAnimation">
+          再表示 (右クリックで消失アニメーション)
+        </button>
+      </div>
+    </div>
+
+    <!-- 幅プリセットボタン -->
+    <div v-if="isSlider" class="flex gap-2 justify-center flex-wrap">
+      <button
+        v-for="preset in widthPresets"
+        :key="preset.name"
+        class="btn btn-xs"
+        :class="{ 'btn-primary': currentWidth === preset.value, 'btn-outline': currentWidth !== preset.value }"
+        @click="currentWidth = preset.value"
+      >
+        {{ preset.name }}
+      </button>
     </div>
   </div>
 </template>
@@ -38,6 +69,7 @@
     color: CharacterColorType
     textSize?: DisplaySize
     customClasses?: string | undefined
+    isSlider?: boolean
     fontFamily?: FontFamilyType
     bubbleMotionEnter?: MotionType
     bubbleMotionLeave?: MotionType
@@ -46,6 +78,7 @@
   const props = withDefaults(defineProps<Props>(), {
     textSize: 'md',
     fontFamily: 'default',
+    isSlider: false,
     bubbleMotionEnter: 'slideUp',
     bubbleMotionLeave: 'slideUp',
   })
@@ -58,6 +91,21 @@
 
   // アニメーション表示フラグ
   const shouldShowBubble = ref(true)
+
+  // 横幅設定（TailwindCSSのmax-w-*を参考）
+  const minWidth = 160 // max-w-28 (112px) 相当
+  const maxWidth = 576 // max-w-xl (576px) 相当
+  const currentWidth = ref(320) // デフォルトは max-w-sm (320px) 相当
+
+  // 横幅プリセット（TailwindCSSの値を参考）
+  const widthPresets = [
+    { name: 'XS', value: 160 }, // max-w-xs 相当
+    { name: 'SM', value: 256 }, // max-w-sm 相当
+    { name: 'MD', value: 320 }, // max-w-md 相当
+    { name: 'LG', value: 384 }, // max-w-lg 相当
+    { name: 'XL', value: 448 }, // max-w-xl 相当
+    { name: '最大', value: maxWidth },
+  ]
 
   // プレビュー用のサンプルデータ配列
   const previewDataList = [
