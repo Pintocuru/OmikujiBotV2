@@ -1,8 +1,9 @@
 <!-- src/configMaker/components/wordPartySettings/TextEditor.vue -->
 <template>
-  <SectionCard>
+  <SectionCard :isOpen="false">
     <template #header>
-      <div>リストのテキスト編集</div>
+      <div>テキスト編集</div>
+      <div class="text-sm pr-2">あらかじめデータは入れてますが、手動入力も可能です</div>
     </template>
 
     <template #body>

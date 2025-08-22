@@ -1,11 +1,11 @@
 <!-- src/configMaker/components/wordPartySettings/WordPartySettingsEditor.vue -->
 <template>
   <div class="space-y-4">
-    <!-- テキストエディタ -->
-    <TextEditor v-model="textEditorContent" :settings="wordPartySettings" @save="saveTextEdit" @reset="resetTextEdit" />
-
     <!-- WordParty発火リスト -->
     <FireList :settings="wordPartySettings" />
+
+    <!-- テキストエディタ -->
+    <TextEditor v-model="textEditorContent" :settings="wordPartySettings" @save="saveTextEdit" @reset="resetTextEdit" />
 
     <!-- config.js 読み込み機能 -->
     <DeveloperMode

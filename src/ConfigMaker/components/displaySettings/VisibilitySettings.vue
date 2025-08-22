@@ -3,6 +3,7 @@
   <SectionCard variant="warning">
     <template #header>
       <div>コンポーネント可視性設定</div>
+      <div class="text-sm pr-2">見えるのか…私が…！</div>
     </template>
 
     <template #body>

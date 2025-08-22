@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>ジェネレーター用画像設定</div>
+      <div class="text-sm pr-2">ジェネレーターで表示する画像の設定です</div>
     </template>
 
     <template #body>

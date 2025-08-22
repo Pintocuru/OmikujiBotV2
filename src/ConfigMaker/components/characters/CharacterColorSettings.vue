@@ -3,16 +3,19 @@
   <SectionCard>
     <template #header>
       <div>カラー設定</div>
-      <!-- ランダムボタン -->
-      <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
-        <button @click="handleRandomColor" class="btn btn-ghost btn-sm">
-          <Dices class="w-4 h-4" />
-          カラーシャッフル
-        </button>
-      </div>
+      <div class="text-sm pr-2">フキダシのカラーの編集を行います。</div>
     </template>
 
     <template #body>
+      <div class="flex justify-end gap-2">
+        <!-- ランダムボタン -->
+        <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
+          <button @click="handleRandomColor" class="btn btn-primary">
+            <Dices class="w-4 h-4" />
+            カラーシャッフル
+          </button>
+        </div>
+      </div>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
         <CommentBubblePreview :color="localData" :custom-classes="localData.customClasses" bubbleMotionEnter="none" />

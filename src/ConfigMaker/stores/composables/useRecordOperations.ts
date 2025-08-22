@@ -201,6 +201,32 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     updateCategoryData(category as CategoryType, updatedRules)
   }
 
+  /**
+   * draggable で移動の際に不具合があるため追加
+   */
+  const batchUpdateOrder = async <K extends RecordCategoryType>(
+    category: K,
+    updates: Array<{ id: string; newOrder: number }>
+  ) => {
+    const rulesArray = getCategoryArray(category)
+    const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {}
+
+    // 既存のルールをコピー
+    rulesArray.forEach((rule) => {
+      updatedRules[rule.id] = { ...rule }
+    })
+
+    // order値を一括更新
+    updates.forEach(({ id, newOrder }) => {
+      if (updatedRules[id]) {
+        updatedRules[id] = { ...updatedRules[id], order: newOrder }
+      }
+    })
+
+    await nextTick()
+    updateCategoryData(category as CategoryType, updatedRules)
+  }
+
   return {
     updateCategoryData,
     addItem,
@@ -214,5 +240,6 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     getCategoryMap,
     getCategoryArray,
     reorderItem,
+    batchUpdateOrder,
   }
 }

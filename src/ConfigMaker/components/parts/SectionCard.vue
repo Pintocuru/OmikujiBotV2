@@ -33,6 +33,8 @@
     switch (props.variant) {
       case 'primary':
         return 'bg-primary text-primary-content'
+      case 'info':
+        return 'bg-info text-success-info'
       case 'success':
         return 'bg-success text-success-content'
       case 'warning':
@@ -44,6 +46,8 @@
         return 'border border-primary text-primary'
       case 'outline-secondary':
         return 'border border-secondary text-secondary'
+      case 'outline-info':
+        return 'border border-info text-info'
       case 'outline-success':
         return 'border border-success text-success'
       case 'outline-warning':
@@ -58,11 +62,12 @@
     }
   })
 
-  type BaseVariant = 'primary' | 'secondary' | 'success' | 'warning' | 'error'
+  type BaseVariant = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'
 
   type OutlineVariant =
     | 'outline-primary'
     | 'outline-secondary'
+    | 'outline-info'
     | 'outline-success'
     | 'outline-warning'
     | 'outline-error'

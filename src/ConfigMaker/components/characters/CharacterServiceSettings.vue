@@ -3,6 +3,7 @@
   <SectionCard v-if="localData">
     <template #header>
       <div>キャラクター用枠設定</div>
+      <div class="text-sm pr-2">わんコメの投稿で必要な設定を行います。</div>
     </template>
 
     <template #body>

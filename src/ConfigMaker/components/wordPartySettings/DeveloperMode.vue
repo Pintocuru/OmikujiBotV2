@@ -1,8 +1,9 @@
 <!-- src/configMaker/components/wordPartySettings/DeveloperMode.vue -->
 <template>
-  <SectionCard variant="warning">
+  <SectionCard :variant="agreed ? 'success' : 'outline-success'">
     <template #header>
       <div>WordParty config.js読み込み機能</div>
+      <div class="text-sm pr-2">config.jsファイルを読み込み、上記のリストに追加します</div>
     </template>
 
     <template #body v-if="!agreed">
@@ -16,7 +17,7 @@
         </p>
       </InformationCard>
       <div class="flex justify-center">
-        <button @click="$emit('agree')" class="btn btn-warning">理解して読み込み機能を有効にする</button>
+        <button @click="$emit('agree')" class="btn btn-success">理解して読み込み機能を有効にする</button>
       </div>
     </template>
 

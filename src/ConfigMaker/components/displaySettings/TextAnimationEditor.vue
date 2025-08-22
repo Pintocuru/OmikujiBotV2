@@ -4,6 +4,7 @@
   <SectionCard>
     <template #header>
       <div>文字・アニメーション</div>
+      <div class="text-sm pr-2">フキダシの文字とアニメーションに関する設定です</div>
     </template>
 
     <template #body>

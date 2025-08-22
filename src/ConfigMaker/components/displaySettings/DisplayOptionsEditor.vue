@@ -4,6 +4,7 @@
   <SectionCard>
     <template #header>
       <div>表示オプション</div>
+      <div class="text-sm pr-2">ジェネレーターで表示する、フキダシ以外の表示設定です</div>
     </template>
 
     <template #body>

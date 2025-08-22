@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>エディター設定</div>
+      <div class="text-sm pr-2">エディター自体の見た目とライセンスの設定です</div>
     </template>
 
     <template #body>

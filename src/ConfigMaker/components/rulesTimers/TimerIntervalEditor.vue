@@ -3,6 +3,7 @@
   <SectionCard :isGild="true">
     <template #header>
       <div>タイマー設定</div>
+      <div class="text-sm pr-2">発動する間隔やタイミングの設定です</div>
     </template>
 
     <template #body>

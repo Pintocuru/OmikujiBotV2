@@ -3,6 +3,7 @@
   <SectionCard variant="warning">
     <template #header>
       <div>起動時設定</div>
+      <div class="text-sm pr-2">作られたコンポーネントって、まるで育てた自分の子供みたいね。</div>
     </template>
 
     <template #body>

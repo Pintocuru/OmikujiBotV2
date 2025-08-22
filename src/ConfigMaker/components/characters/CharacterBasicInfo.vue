@@ -3,6 +3,7 @@
   <SectionCard v-if="localData" :isGild="true">
     <template #header>
       <div>基本設定</div>
+      <div class="text-sm pr-2">キャラクター、またはカラー設定名の編集を行います。</div>
     </template>
 
     <template #body>

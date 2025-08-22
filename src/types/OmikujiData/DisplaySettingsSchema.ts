@@ -45,12 +45,14 @@ export const DeveloperSettingsSchema = z
   .object({
     // 起動時に表示するコンポーネント
     startup: z.object({
+      // TODO:コンポーネントの種類を別ファイルで管理したい
       component: z.enum(['omikujiBot', 'gameScript']).default('omikujiBot'),
       // defaultComponent === 'script' のときのみ利用
       scriptKey: z.string().nullable().default(null).nullable().default(null),
     }),
 
     // 各表示・非表示機能
+    // TODO:boolean ではなく、 accessLevel にしたい(basic/proと、internal:配布で見せてもいい場所 experimental:配布でも見せちゃ駄目な場所)
     visibility: z.object({
       comments: z.boolean().default(true).catch(true), // comments
       timers: z.boolean().default(true).catch(true), // timers

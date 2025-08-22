@@ -1,11 +1,14 @@
 <!-- src/configMaker/components/placeholders/PlaceholderValuesEditor.vue -->
 <template>
   <div class="space-y-4">
-    <!-- 編集モード切り替えボタン -->
-    <div class="flex justify-end">
+    <div v-if="selectedItem" class="flex justify-end gap-2">
+      <!-- 抽選テストボタン -->
+      <PlaceholderPreview v-if="selectedItem.values.length > 0" :id="selectedItem.id" :values="selectedItem.values" />
+
+      <!-- 編集モード切り替えボタン -->
       <button
         @click="toggleEditMode"
-        class="btn btn-sm bg-secondary"
+        class="btn bg-primary"
         :class="{ 'btn-active': isTextMode }"
         title="編集モードを切り替え"
       >
@@ -39,12 +42,15 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { usePlaceholderValues } from './composables/usePlaceholderValues'
   import { useTextModeParser } from './composables/useTextModeParser'
   import PlaceholderInputMode from './PlaceholderInputMode.vue'
   import PlaceholderTextMode from './PlaceholderTextMode.vue'
+  import PlaceholderPreview from './PlaceholderPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
+  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
     placeholderId: string
@@ -52,6 +58,7 @@
 
   // ストアを使用
   const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
 
   // コンポーザブルの使用
   // これ専用
@@ -73,6 +80,17 @@
 
   // リアクティブデータ
   const isTextMode = ref(false)
+
+  // v-modelを使用したselectedCharacterの実装
+  const selectedItem = computed({
+    get: () => {
+      if (!props.placeholderId) return null
+      return data.value.placeholders[props.placeholderId]
+    },
+    set: (value: PlaceholderType) => {
+      omikujiStore.updateItem('placeholders', value.id, value)
+    },
+  })
 
   // 編集モード切り替え
   const toggleEditMode = () => {

@@ -38,19 +38,24 @@ export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>, isMul
 
     const originalOrder = [...categoryArray.value]
 
-    // 新しい順序の各アイテムについて位置を更新
-    for (let newIndex = 0; newIndex < newOrder.length; newIndex++) {
-      const rule = newOrder[newIndex]
+    // 方法1: 一括でorder値を更新する方式（推奨）
+    const orderUpdates: Array<{ id: string; newOrder: number }> = []
+
+    newOrder.forEach((rule, newIndex) => {
       const currentIndex = originalOrder.findIndex((r: BaseRecordType) => r.id === rule.id)
 
-      // 位置が変更された場合のみ更新
+      // 位置が変更された場合、新しいorder値を記録
       if (currentIndex !== -1 && currentIndex !== newIndex) {
-        omikujiStore.reorderItem(validCategory.value, currentIndex, newIndex)
-
-        // ローカルの配列も同期して更新
-        const [movedRule] = originalOrder.splice(currentIndex, 1)
-        originalOrder.splice(newIndex, 0, movedRule)
+        orderUpdates.push({
+          id: rule.id,
+          newOrder: newIndex + 1, // orderは1から始まる
+        })
       }
+    })
+
+    // 一括更新を実行
+    if (orderUpdates.length > 0) {
+      omikujiStore.batchUpdateOrder(validCategory.value, orderUpdates)
     }
   }
 

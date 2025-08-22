@@ -1,15 +1,25 @@
 <!-- src/ConfigMaker/components/meta/PackageDistributionInfo.vue -->
 <template>
-  <SectionCard>
+  <SectionCard :variant="isPro ? 'secondary' : 'outline-secondary'">
     <template #header>
       <div>配布情報</div>
     </template>
 
     <template #body>
       <!-- ライセンス -->
-      <SettingItem label="ライセンス" description="パッケージのライセンス情報" @reset="resetMap.license">
+      <SettingItem
+        label="ライセンス"
+        description="パッケージのライセンス情報"
+        :showReset="isPro"
+        @reset="resetMap.license"
+      >
         <div class="flex gap-2">
-          <select v-model="meta.license" class="select select-bordered flex-1 max-w-xs">
+          <select
+            v-model="meta.license"
+            class="select select-bordered flex-1 max-w-xs w-full"
+            :class="{ 'select-disabled': !isPro }"
+            :disabled="!isPro"
+          >
             <option v-for="license in licenseOptions" :key="license.value" :value="license.value">
               {{ license.label }}
             </option>
@@ -19,6 +29,8 @@
             v-model="customLicense"
             type="text"
             class="input input-bordered flex-1 max-w-xs"
+            :class="{ 'input-disabled': !isPro }"
+            :disabled="!isPro"
             placeholder="カスタムライセンスを入力"
           />
         </div>
@@ -28,6 +40,7 @@
       <SettingItem
         label="配布サイトURL"
         description="パッケージの配布サイトやプロジェクトページのURL"
+        :showReset="isPro"
         @reset="resetMap.url"
       >
         <div class="flex gap-2">
@@ -35,12 +48,16 @@
             v-model="meta.url"
             type="url"
             class="input input-bordered flex-1 w-full"
+            :class="{ 'input-disabled': !isPro }"
+            :disabled="!isPro"
             placeholder="https://example.com"
           />
           <button
             v-if="meta.url && isValidUrl(meta.url)"
             @click="openUrl"
             class="btn btn-primary btn-outline"
+            :class="{ 'btn-disabled': !isPro }"
+            :disabled="!isPro"
             title="サイトを開く"
           >
             <ExternalLink class="w-4 h-4" />
@@ -53,16 +70,19 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PackageMetaSchema } from '@shared/types'
+  import { useSettingMode } from '@/types/SettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import { PackageMetaSchema } from '@shared/types'
   import { storeToRefs } from 'pinia'
   import { ExternalLink } from 'lucide-vue-next'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  //
+  const { isPro } = useSettingMode()
 
   // ライセンス選択肢（BOOTHでよく使われるもの）
   const licenseOptions = [

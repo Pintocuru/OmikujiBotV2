@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>キャラクター表示設定</div>
+      <div class="text-sm pr-2">キャラクターアイコン(画像)に関する編集を行います。</div>
     </template>
 
     <template #body>

@@ -1,8 +1,9 @@
 <!-- src/ConfigMaker/components/meta/PackageBasicInfo.vue -->
 <template>
-  <SectionCard>
+  <SectionCard :variant="isPro ? 'secondary' : 'outline-secondary'">
     <template #header>
       <div>基本情報</div>
+      <div class="text-sm pr-2">このおみくじパッケージに関する情報です</div>
     </template>
 
     <template #body>
@@ -12,6 +13,8 @@
           v-model="meta.name"
           type="text"
           class="input input-bordered w-full max-w-md"
+          :class="{ 'input-disabled': !isPro }"
+          :disabled="!isPro"
           placeholder="パッケージ名を入力"
         />
       </SettingItem>
@@ -22,6 +25,8 @@
           v-model="meta.description"
           type="text"
           class="input input-bordered w-full max-w-md"
+          :class="{ 'input-disabled': !isPro }"
+          :disabled="!isPro"
           placeholder="パッケージの説明を入力"
         />
       </SettingItem>
@@ -32,6 +37,8 @@
           v-model="meta.version"
           type="text"
           class="input input-bordered w-full max-w-md"
+          :class="{ 'input-disabled': !isPro }"
+          :disabled="!isPro"
           placeholder="例: 1.0.0"
         />
       </SettingItem>
@@ -40,13 +47,15 @@
       <SettingItem
         label="作者"
         description="パッケージの作成者名"
-        :showReset="isDev"
+        :showReset="isPro"
         @reset="meta.author = 'Pintocuru'"
       >
         <input
           v-model="meta.author"
           type="text"
           class="input input-bordered w-full max-w-md"
+          :class="{ 'input-disabled': !isPro }"
+          :disabled="!isPro"
           placeholder="作者名を入力"
         />
       </SettingItem>
@@ -55,11 +64,14 @@
       <SettingItem
         label="タグ"
         description="パッケージの分類に使用されるタグ（改行区切りで入力）"
+        :showReset="isPro"
         @reset="meta.tags = ['おみくじBOT']"
       >
         <textarea
           v-model="tagsInput"
           class="textarea textarea-bordered w-full max-w-md h-20"
+          :class="{ 'textarea-disabled': !isPro }"
+          :disabled="!isPro"
           placeholder="例:&#10;ゲーム&#10;エンターテイメント&#10;配信"
         ></textarea>
       </SettingItem>
@@ -72,12 +84,15 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import { useSettingMode } from '@/types/SettingMode'
   import { storeToRefs } from 'pinia'
-  import { isDev } from '@/types'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+
+  //
+  const { isPro } = useSettingMode()
 
   // メタ情報の参照
   const meta = computed({

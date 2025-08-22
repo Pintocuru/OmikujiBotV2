@@ -8,7 +8,7 @@
     <SectionCard :isGild="true">
       <template #header
         ><div>基本設定</div>
-        <div>基本設定</div>
+        <div class="text-sm pr-2">プレースホルダー名の設定を行います</div>
       </template>
 
       <template #body>
@@ -41,8 +41,7 @@
     <SectionCard>
       <template #header>
         <div>プレースホルダー設定</div>
-        <!-- 抽選テストボタン -->
-        <PlaceholderPreview v-if="selectedItem.values.length > 0" :id="selectedItem.id" :values="selectedItem.values" />
+        <div class="text-sm pr-2">抽選するプレースホルダーを編集します</div>
       </template>
 
       <template #body>
@@ -56,7 +55,6 @@
   import { computed } from 'vue'
   import { PlaceholderType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import PlaceholderPreview from './PlaceholderPreview.vue'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

@@ -2,7 +2,7 @@
 <template>
   <!-- おみくじテストボタン -->
   <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-    <button @click="handleDraw" class="btn btn-ghost btn-sm" :disabled="!values.length">
+    <button @click="handleDraw" class="btn btn-info" :disabled="!values.length">
       <Dices class="w-4 h-4" />
       抽選テスト
     </button>

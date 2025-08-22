@@ -1,8 +1,9 @@
 <!-- src/ConfigMaker/components/meta/PackageSystemInfo.vue -->
 <template>
-  <SectionCard>
+  <SectionCard variant="outline-secondary" :isOpen="false">
     <template #header>
       <div>システム情報</div>
+      <div class="text-sm pr-2">このアプリ「おみくじBOT」の情報です</div>
     </template>
 
     <template #body>

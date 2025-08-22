@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>WordParty発火リスト ({{ settings.length }}件)</div>
+      <div class="text-sm pr-2">デフォルトでは、「おみくじBOT用 word-party」のデータが入っています</div>
     </template>
 
     <template #body>
