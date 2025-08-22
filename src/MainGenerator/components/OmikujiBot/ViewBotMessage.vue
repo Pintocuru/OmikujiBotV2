@@ -1,21 +1,23 @@
 <!-- src/MainGenerator/components/ViewBotMessage.vue -->
 <template>
   <div class="relative w-full h-screen overflow-hidden">
-    <div class="comment-container">
-      <div
-        v-for="(message, index) in displayedComments"
-        :key="message.id"
-        class="absolute w-full max-w-3xl mx-auto"
-        :style="{
-          left: '0',
-          right: '0',
-          top: `${index * sizeConfig.spacing}px`,
-          zIndex: displayedComments.length - index,
-        }"
-        v-motion
-        :initial="motionVariants[animationType].initial"
-        :enter="motionVariants[animationType].enter"
-        :leave="motionVariants[animationType].leave"
+    <div
+      v-for="(message, index) in displayedComments"
+      :key="message.id"
+      class="absolute w-full max-w-3xl mx-auto"
+      :style="{
+        left: '0',
+        right: '0',
+        top: `${index * sizeConfig.spacing}px`,
+        zIndex: displayedComments.length - index,
+      }"
+    >
+      <MotionWrapper
+        v-model:visible="message.visible"
+        :enter-motion="enterMotion"
+        :leave-motion="leaveMotion"
+        :auto-hide="false"
+        @after-leave="() => removeComment(message.id)"
       >
         <div class="flex justify-center">
           <CommentBubble
@@ -45,7 +47,7 @@
             class="w-full h-full object-cover"
           />
         </div>
-      </div>
+      </MotionWrapper>
     </div>
   </div>
 </template>
@@ -56,8 +58,8 @@
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import CommentBubble from './CommentBubble.vue'
   import { useBotCommentDisplay } from '@MainComponents/OmikujiBot/useBotMessage'
-  import { motionVariants } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { storeToRefs } from 'pinia'
+  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
 
   // サイズ設定の定数
   const SIZE_CONFIG = {
@@ -74,11 +76,24 @@
 
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
+  // omikujiDataは直接appStoreから参照（storeToRefsで取得できないため）
+  const omikujiData = computed(() => appStore.omikujiData)
+
   const displaySize = computed(() => displayStore.displaySize)
 
-  const animationType = computed(() => appStore.omikujiData.displaySettings.base.bubbleMotionEnter)
+  // omikujiDataの深い参照用computed
+  const enterMotion = computed(() => {
+    return omikujiData.value?.displaySettings?.base?.bubbleMotionEnter
+  })
 
-  const { displayedComments, handleImageError, start, stop } = useBotCommentDisplay(botMessages, 'comment')
+  const leaveMotion = computed(() => {
+    return omikujiData.value?.displaySettings?.base?.bubbleMotionLeave
+  })
+
+  const { displayedComments, handleImageError, removeComment, start, stop } = useBotCommentDisplay(
+    botMessages,
+    'comment'
+  )
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
@@ -86,6 +101,8 @@
   // brightness計算
   const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
 
-  onMounted(start)
+  onMounted(() => {
+    start()
+  })
   onUnmounted(stop)
 </script>

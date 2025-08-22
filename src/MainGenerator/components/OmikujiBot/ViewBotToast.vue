@@ -1,35 +1,46 @@
 <!-- src/MainGenerator/components/ViewBotToast.vue -->
 <template>
-  <div class="toast-container fixed right-4 z-999" :class="[sizeConfig.bottom]">
-    <transition-group name="toast" tag="div" appear>
-      <div
-        v-for="message in displayedComments.slice().reverse()"
-        :key="message.id"
-        class="flex flex-row-reverse items-start w-full p-2 mt-1 rounded-sm shadow-lg backdrop-blur-sm cursor-pointer hover:opacity-80 transition-opacity"
-        :style="{
-          backgroundColor: message.color?.backgroundColor || '#ffffff',
-          maxWidth: sizeConfig.width,
-          width: '100%',
-        }"
-        @click="removeItem(message.id)"
+  <div class="fixed right-4 z-999" :class="[sizeConfig.bottom]">
+    <div
+      v-for="(message, index) in displayedComments.slice().reverse()"
+      :key="message.id"
+      class="relative mt-1"
+      :style="{ zIndex: displayedComments.length - index }"
+    >
+      <MotionWrapper
+        v-model:visible="message.visible"
+        :enter-motion="'slideLeft'"
+        :leave-motion="'slideRight'"
+        :auto-hide="false"
+        @after-leave="() => removeComment(message.id)"
       >
-        <!-- メッセージ内容 -->
-        <div class="flex-1 min-w-0 px-1 overflow-hidden">
-          <div
-            class="break-words"
-            :class="[sizeConfig.text]"
-            :style="{
-              color: message.color?.textColor || '#000000',
-              wordBreak: 'break-word',
-              overflowWrap: 'break-word',
-              hyphens: 'auto',
-            }"
-          >
-            {{ message.comment }}
+        <div
+          class="flex flex-row-reverse items-start w-full p-2 rounded-sm shadow-lg backdrop-blur-sm cursor-pointer hover:opacity-80 transition-opacity"
+          :style="{
+            backgroundColor: message.color?.backgroundColor || '#ffffff',
+            maxWidth: sizeConfig.width,
+            width: '100%',
+          }"
+          @click="hideComment(message.id)"
+        >
+          <!-- メッセージ内容 -->
+          <div class="flex-1 min-w-0 px-1 overflow-hidden">
+            <div
+              class="break-words"
+              :class="[sizeConfig.text]"
+              :style="{
+                color: message.color?.textColor || '#000000',
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                hyphens: 'auto',
+              }"
+            >
+              {{ message.comment }}
+            </div>
           </div>
         </div>
-      </div>
-    </transition-group>
+      </MotionWrapper>
+    </div>
   </div>
 </template>
 
@@ -38,6 +49,7 @@
   import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import { storeToRefs } from 'pinia'
+  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
@@ -55,7 +67,7 @@
   } as const
 
   // コメント表示ロジック（トースト用）
-  const { displayedComments, removeItem, start, stop } = useBotCommentDisplay(botMessages, 'toast')
+  const { displayedComments, removeComment, hideComment, start, stop } = useBotCommentDisplay(botMessages, 'toast')
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
@@ -63,47 +75,3 @@
   onMounted(start)
   onUnmounted(stop)
 </script>
-
-<style scoped>
-  /* トーストアニメーション */
-  .toast-container {
-    display: flex;
-    flex-direction: column-reverse; /* 新しいトーストを下に表示 */
-    max-width: 100vw; /* ビューポート幅を超えないように制限 */
-    box-sizing: border-box;
-  }
-
-  .toast-enter-active {
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .toast-leave-active {
-    transition: all 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-
-  .toast-move {
-    transition: transform 0.2s ease;
-  }
-
-  /* 右からスライドイン */
-  .toast-enter-from {
-    opacity: 0;
-    transform: translateX(100%) scale(0.9);
-  }
-
-  .toast-enter-to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-
-  /* 右へスライドアウト */
-  .toast-leave-from {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-
-  .toast-leave-to {
-    opacity: 0;
-    transform: translateX(100%) scale(0.9);
-  }
-</style>

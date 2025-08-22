@@ -54,7 +54,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -63,13 +65,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^ステージ"]
+        "comment": [
+          "^ステージ"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -333,7 +338,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -342,13 +349,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -612,7 +625,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -621,13 +636,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^ずんだ"]
+        "comment": [
+          "^ずんだ"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -730,7 +748,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -739,13 +759,23 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^フラワー", "^ふらわー", "^flower", "🌷", "🌹", "🌺", "🌻", "🌼"]
+        "comment": [
+          "^フラワー",
+          "^ふらわー",
+          "^flower",
+          "🌷",
+          "🌹",
+          "🌺",
+          "🌻",
+          "🌼"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -793,7 +823,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -802,7 +834,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉"
+        ]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
@@ -811,6 +850,7 @@
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -858,7 +898,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -867,13 +909,22 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -921,7 +972,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -930,13 +983,22 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi"]
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi"
+        ]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1543,7 +1605,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1552,13 +1616,17 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^じゃんけん", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^janken"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1745,7 +1813,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1754,13 +1824,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -1947,7 +2023,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1956,13 +2034,18 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2149,7 +2232,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2158,13 +2243,19 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2304,7 +2395,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2313,13 +2407,18 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2394,7 +2493,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2403,13 +2505,18 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2502,7 +2609,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2511,13 +2620,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["コメント"]
+        "comment": [
+          "コメント"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2606,10 +2718,16 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2622,6 +2740,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2675,10 +2794,14 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["yellow"],
+        "gift": [
+          "yellow"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2691,6 +2814,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2744,10 +2868,17 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["orange", "pink", "red", "purple"],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2760,6 +2891,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2822,7 +2954,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2838,6 +2972,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -2900,7 +3035,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2916,6 +3053,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -3046,8 +3184,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -3062,6 +3204,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -3164,8 +3307,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -3180,6 +3327,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
@@ -3282,8 +3430,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -3298,6 +3450,7 @@
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     }
@@ -4039,62 +4192,20 @@
           "weight": 2,
           "content": "6399-5679-6968:COCOA CLASH"
         },
-        {
-          "weight": 1,
-          "content": "9123-1342-8604:振り子の支点"
-        },
-        {
-          "weight": 1,
-          "content": "4151-8305-0408:Killer Vs Survivor"
-        },
-        {
-          "weight": 1,
-          "content": "2122-9878-9929:BLAST CAVERN"
-        },
-        {
-          "weight": 1,
-          "content": "0079-0691-0096:ジャンプクラブ？"
-        },
-        {
-          "weight": 1,
-          "content": "6679-4238-9153:ぷにぷにじごく"
-        },
-        {
-          "weight": 1,
-          "content": "7593-9797-0140:マイムマイム"
-        },
-        {
-          "weight": 1,
-          "content": "2038-3785-4888:タイムロック クレート"
-        },
-        {
-          "weight": 1,
-          "content": "6863-2771-6831:Fan Survival"
-        },
-        {
-          "weight": 1,
-          "content": "1047-2162-6725:Haunted Doomspire"
-        },
-        {
-          "weight": 1,
-          "content": "3946-1752-1174:サンザンダーランティス"
-        },
-        {
-          "weight": 1,
-          "content": "6221-0517-9460:Oh Shoot!"
-        },
-        {
-          "weight": 1,
-          "content": "5695-4354-0286:Squid Game - Season2"
-        },
-        {
-          "weight": 1,
-          "content": "5400-6810-8096:Neutral Jump Survival [32 Players]"
-        },
-        {
-          "weight": 1,
-          "content": "0554-2897-0984:ピンボールポインター"
-        }
+        "9123-1342-8604:振り子の支点",
+        "4151-8305-0408:Killer Vs Survivor",
+        "2122-9878-9929:BLAST CAVERN",
+        "0079-0691-0096:ジャンプクラブ？",
+        "6679-4238-9153:ぷにぷにじごく",
+        "7593-9797-0140:マイムマイム",
+        "2038-3785-4888:タイムロック クレート",
+        "6863-2771-6831:Fan Survival",
+        "1047-2162-6725:Haunted Doomspire",
+        "3946-1752-1174:サンザンダーランティス",
+        "6221-0517-9460:Oh Shoot!",
+        "5695-4354-0286:Squid Game - Season2",
+        "5400-6810-8096:Neutral Jump Survival [32 Players]",
+        "0554-2897-0984:ピンボールポインター"
       ]
     },
     "ReimuOmikuji01": {
@@ -4107,30 +4218,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。"
-        },
-        {
-          "weight": 1,
-          "content": "健康運が特に好調ね。心身ともに充実した日々になるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "努力が実を結び、幸運が訪れるって。積極的に行動すると良いことがあるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。"
-        },
-        {
-          "weight": 1,
-          "content": "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。"
-        },
-        {
-          "weight": 1,
-          "content": "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。"
-        }
+        "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
+        "健康運が特に好調ね。心身ともに充実した日々になるわ。",
+        "努力が実を結び、幸運が訪れるって。積極的に行動すると良いことがあるわ。",
+        "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。",
+        "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。",
+        "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。"
       ]
     },
     "ReimuOmikuji02": {
@@ -4143,30 +4236,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。"
-        },
-        {
-          "weight": 1,
-          "content": "周囲の人々に感謝の気持ちを忘れずにね。"
-        },
-        {
-          "weight": 1,
-          "content": "今後の展望は明るめね。夢に向かって突き進めばいいことがあるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "仲間との協力が成功への鍵よ。チームワークを大切にしてね。"
-        },
-        {
-          "weight": 1,
-          "content": "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。"
-        },
-        {
-          "weight": 1,
-          "content": "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。"
-        }
+        "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
+        "周囲の人々に感謝の気持ちを忘れずにね。",
+        "今後の展望は明るめね。夢に向かって突き進めばいいことがあるわ。",
+        "仲間との協力が成功への鍵よ。チームワークを大切にしてね。",
+        "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。",
+        "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。"
       ]
     },
     "ReimuOmikuji03": {
@@ -4179,30 +4254,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "思いがけない幸運があるかも。チャンスを逃さないようにね。"
-        },
-        {
-          "weight": 1,
-          "content": "周囲の人との協力が大切よ。助けを求めることを恐れないで。"
-        },
-        {
-          "weight": 1,
-          "content": "自分の直感を信じていいわ。大きな成長が待ってるそうよ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。"
-        },
-        {
-          "weight": 1,
-          "content": "楽しい出来事が増えるわ。笑顔を忘れずにね。"
-        },
-        {
-          "weight": 1,
-          "content": "計画をしっかり立てることで、成功への道が開けるわ。"
-        }
+        "思いがけない幸運があるかも。チャンスを逃さないようにね。",
+        "周囲の人との協力が大切よ。助けを求めることを恐れないで。",
+        "自分の直感を信じていいわ。大きな成長が待ってるそうよ。",
+        "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。",
+        "楽しい出来事が増えるわ。笑顔を忘れずにね。",
+        "計画をしっかり立てることで、成功への道が開けるわ。"
       ]
     },
     "ReimuOmikuji04": {
@@ -4215,30 +4272,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。"
-        },
-        {
-          "weight": 1,
-          "content": "いまは慎重に行動が必要な時。きっと吉へと導かれるわ。慌てない事が大切よ。"
-        },
-        {
-          "weight": 1,
-          "content": "健康面に注意して。規則正しい生活が運気を呼び込むわ。"
-        },
-        {
-          "weight": 1,
-          "content": "周囲のサポートを受け入れることで、運気が上昇するわ。"
-        },
-        {
-          "weight": 1,
-          "content": "小さな喜びを大切にね。それが大きな幸せに繋がるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。"
-        }
+        "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
+        "いまは慎重に行動が必要な時。きっと吉へと導かれるわ。慌てない事が大切よ。",
+        "健康面に注意して。規則正しい生活が運気を呼び込むわ。",
+        "周囲のサポートを受け入れることで、運気が上昇するわ。",
+        "小さな喜びを大切にね。それが大きな幸せに繋がるわ。",
+        "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。"
       ]
     },
     "ReimuOmikuji05": {
@@ -4251,30 +4290,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "油断が思わぬ結果に繋がるわ。慎重に行動して。"
-        },
-        {
-          "weight": 1,
-          "content": "今は試練の時期ね。乗り越えれば、大きな成長が待ってるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しいことより、今の事を見直すといい事があるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "計画を練り直すことで、より良い結果が得られるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "周囲の意見に耳を傾けることが、成功の鍵になるわ。"
-        },
-        {
-          "weight": 1,
-          "content": "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。"
-        }
+        "油断が思わぬ結果に繋がるわ。慎重に行動して。",
+        "今は試練の時期ね。乗り越えれば、大きな成長が待ってるわ。",
+        "新しいことより、今の事を見直すといい事があるわ。",
+        "計画を練り直すことで、より良い結果が得られるわ。",
+        "周囲の意見に耳を傾けることが、成功の鍵になるわ。",
+        "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。"
       ]
     },
     "ReimuOmikuji06": {
@@ -4287,30 +4308,12 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "運気はやや下がり気味。慎重に行動するといいわ。"
-        },
-        {
-          "weight": 1,
-          "content": "周囲の人とのトラブルに注意して。喧嘩になったら、頭を冷やすことね。"
-        },
-        {
-          "weight": 1,
-          "content": "健康面に注意が必要ね。体調管理をしっかり。乳酸菌とってるぅ？"
-        },
-        {
-          "weight": 1,
-          "content": "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。"
-        },
-        {
-          "weight": 1,
-          "content": "信頼できる人に相談すると、助け舟が出るわよ。"
-        },
-        {
-          "weight": 1,
-          "content": "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。"
-        }
+        "運気はやや下がり気味。慎重に行動するといいわ。",
+        "周囲の人とのトラブルに注意して。喧嘩になったら、頭を冷やすことね。",
+        "健康面に注意が必要ね。体調管理をしっかり。乳酸菌とってるぅ？",
+        "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。",
+        "信頼できる人に相談すると、助け舟が出るわよ。",
+        "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。"
       ]
     },
     "ReimuOmikuji07": {
@@ -4323,50 +4326,17 @@
       "editorColor": "#EC4899",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "終わったわ、風が強すぎるぜ。強すぎてお亡くなりだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "高嶋ちさ子さんも、長嶋一茂さんも、石原良純さんも、残念！"
-        },
-        {
-          "weight": 1,
-          "content": "波田ニューヨークが古くなったら、波田ヨークだぜ。残念ッ！"
-        },
-        {
-          "weight": 1,
-          "content": "剥いても剥いても中身がない野菜？答えは玉ねぎだぜ。残念でした。また来てね。"
-        },
-        {
-          "weight": 1,
-          "content": "知ってる？「コンクリート」っていう漢字があるんだぜ。しかも1文字で。"
-        },
-        {
-          "weight": 1,
-          "content": "バスケ中にゴリラが横切っても誰も気づかないぜ。インビジブル・ゴリラ実験って言うぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "ベネット！？殺されたんじゃ！？ 残念だったな、トリックだよ"
-        },
-        {
-          "weight": 1,
-          "content": "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
-        }
+        "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
+        "終わったわ、風が強すぎるぜ。強すぎてお亡くなりだぜ。",
+        "高嶋ちさ子さんも、長嶋一茂さんも、石原良純さんも、残念！",
+        "波田ニューヨークが古くなったら、波田ヨークだぜ。残念ッ！",
+        "剥いても剥いても中身がない野菜？答えは玉ねぎだぜ。残念でした。また来てね。",
+        "知ってる？「コンクリート」っていう漢字があるんだぜ。しかも1文字で。",
+        "バスケ中にゴリラが横切っても誰も気づかないぜ。インビジブル・ゴリラ実験って言うぜ。",
+        "ベネット！？殺されたんじゃ！？ 残念だったな、トリックだよ",
+        "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。",
+        "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。",
+        "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
       ]
     },
     "HondaJankenName": {
@@ -4379,10 +4349,7 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "マリサ キリサメ"
-        }
+        "マリサ キリサメ"
       ]
     },
     "HondaJankenOre": {
@@ -4395,10 +4362,7 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "俺"
-        }
+        "俺"
       ]
     },
     "HondaJankenA1": {
@@ -4411,22 +4375,10 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "負けは次につながるチャンスです!ネバーギブアップ!"
-        },
-        {
-          "weight": 1,
-          "content": "じゃんけんの向こう側に何があるか、考えてみてください。"
-        },
-        {
-          "weight": 1,
-          "content": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。"
-        },
-        {
-          "weight": 1,
-          "content": "何事も準備がすべて。それを怠っている事がバレてますよ。"
-        }
+        "負けは次につながるチャンスです!ネバーギブアップ!",
+        "じゃんけんの向こう側に何があるか、考えてみてください。",
+        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+        "何事も準備がすべて。それを怠っている事がバレてますよ。"
       ]
     },
     "HondaJankenA2": {
@@ -4439,18 +4391,9 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。"
-        },
-        {
-          "weight": 1,
-          "content": "ちゃんと分析してます?じっくり結果に向き合ってください。"
-        },
-        {
-          "weight": 1,
-          "content": "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-        }
+        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
+        "ちゃんと分析してます?じっくり結果に向き合ってください。",
+        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
       ]
     },
     "HondaJankenB1": {
@@ -4463,22 +4406,10 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。"
-        },
-        {
-          "weight": 1,
-          "content": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。"
-        },
-        {
-          "weight": 1,
-          "content": "運を味方につけるのは、地道な努力ですよ。"
-        },
-        {
-          "weight": 1,
-          "content": "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-        }
+        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
+        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
+        "運を味方につけるのは、地道な努力ですよ。",
+        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
       ]
     },
     "HondaJankenB2": {
@@ -4491,18 +4422,9 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。"
-        },
-        {
-          "weight": 1,
-          "content": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?"
-        },
-        {
-          "weight": 1,
-          "content": "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-        }
+        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
+        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
+        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
       ]
     },
     "HondaJankenC1": {
@@ -4515,22 +4437,10 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。"
-        },
-        {
-          "weight": 1,
-          "content": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。"
-        },
-        {
-          "weight": 1,
-          "content": "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!"
-        },
-        {
-          "weight": 1,
-          "content": "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-        }
+        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
+        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
+        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
+        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
       ]
     },
     "HondaJankenC2": {
@@ -4543,18 +4453,9 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。"
-        },
-        {
-          "weight": 1,
-          "content": "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!"
-        },
-        {
-          "weight": 1,
-          "content": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-        }
+        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
+        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
+        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
       ]
     },
     "HondaJankenV": {
@@ -4567,22 +4468,10 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。"
-        },
-        {
-          "weight": 1,
-          "content": "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!"
-        },
-        {
-          "weight": 1,
-          "content": "明日、<<HondaJankenOre>>が勝つからまたやろう!"
-        },
-        {
-          "weight": 1,
-          "content": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-        }
+        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
+        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
+        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
+        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
       ]
     },
     "flowerAllItem": {
@@ -4595,34 +4484,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "【白色】<<flowerWhite>>"
-        },
-        {
-          "weight": 1,
-          "content": "【赤色】<<flowerRed>>"
-        },
-        {
-          "weight": 1,
-          "content": "【オレンジ色】<<flowerOrange>>"
-        },
-        {
-          "weight": 1,
-          "content": "【黄色】<<flowerYellow>>"
-        },
-        {
-          "weight": 1,
-          "content": "【緑色】<<flowerGreen>>"
-        },
-        {
-          "weight": 1,
-          "content": "【青色】<<flowerBlue>>"
-        },
-        {
-          "weight": 1,
-          "content": "【紫色】<<flowerPurple>>"
-        }
+        "【白色】<<flowerWhite>>",
+        "【赤色】<<flowerRed>>",
+        "【オレンジ色】<<flowerOrange>>",
+        "【黄色】<<flowerYellow>>",
+        "【緑色】<<flowerGreen>>",
+        "【青色】<<flowerBlue>>",
+        "【紫色】<<flowerPurple>>"
       ]
     },
     "flowerWhite": {
@@ -4635,34 +4503,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "白いカサブランカは、純潔と高貴の象徴だぜ。あなたの心の中にも、そんな美しさがあるかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いバラは、尊敬と誠実の気持ちを表すぜ。誰かに感謝の気持ちを伝える良い機会かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いスズランは、幸福と再生を意味するぜ。新しいスタートを切るのにぴったりの時期かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いチューリップは、純粋な愛と感謝を象徴するぜ。大切な人との絆を深めるチャンスかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いカーネーションは、深い愛情と尊敬を表すぜ。大切な人への感謝を忘れずにだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いヒヤシンスは、思いやりと共感を意味するぜ。周りの人を大切にすることで、あなたも幸せになれるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "白いデイジーは、無邪気さと希望を象徴するぜ。あなたの純粋な心が、周りに良い影響を与えるぜ。"
-        }
+        "白いカサブランカは、純潔と高貴の象徴だぜ。あなたの心の中にも、そんな美しさがあるかもしれないぜ。",
+        "白いバラは、尊敬と誠実の気持ちを表すぜ。誰かに感謝の気持ちを伝える良い機会かもしれないぜ。",
+        "白いスズランは、幸福と再生を意味するぜ。新しいスタートを切るのにぴったりの時期かもしれないぜ。",
+        "白いチューリップは、純粋な愛と感謝を象徴するぜ。大切な人との絆を深めるチャンスかもしれないぜ。",
+        "白いカーネーションは、深い愛情と尊敬を表すぜ。大切な人への感謝を忘れずにだぜ。",
+        "白いヒヤシンスは、思いやりと共感を意味するぜ。周りの人を大切にすることで、あなたも幸せになれるぜ。",
+        "白いデイジーは、無邪気さと希望を象徴するぜ。あなたの純粋な心が、周りに良い影響を与えるぜ。"
       ]
     },
     "flowerRed": {
@@ -4675,34 +4522,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "赤いバラは情熱と愛の象徴だぜ。あなたの中にある熱い思いを大切にして欲しいぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いポインセチアは、冬の寒さの中でも鮮やかに咲く強さがあるぜ。あなただって、困難を乗り越える力があるんだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いカーネーションは、深い愛情と尊敬の気持ちを表すぜ。大切な人への感謝を忘れずにな。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いチューリップは、愛の告白を意味するぜ。自分の気持ちを素直に伝えることも大切だぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いゼラニウムは、元気と活力の象徴だぜ。新しいことに挑戦する勇気を与えてくれるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いコスモスは、秋の空の下、風に揺られて咲いているぜ。あなたの心も、自由で穏やかな気持ちで満たされて欲しいぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "赤いポピーは、感謝の気持ちを伝える花だぜ。いつもありがとうだぜ。"
-        }
+        "赤いバラは情熱と愛の象徴だぜ。あなたの中にある熱い思いを大切にして欲しいぜ。",
+        "赤いポインセチアは、冬の寒さの中でも鮮やかに咲く強さがあるぜ。あなただって、困難を乗り越える力があるんだぜ。",
+        "赤いカーネーションは、深い愛情と尊敬の気持ちを表すぜ。大切な人への感謝を忘れずにな。",
+        "赤いチューリップは、愛の告白を意味するぜ。自分の気持ちを素直に伝えることも大切だぜ。",
+        "赤いゼラニウムは、元気と活力の象徴だぜ。新しいことに挑戦する勇気を与えてくれるぜ。",
+        "赤いコスモスは、秋の空の下、風に揺られて咲いているぜ。あなたの心も、自由で穏やかな気持ちで満たされて欲しいぜ。",
+        "赤いポピーは、感謝の気持ちを伝える花だぜ。いつもありがとうだぜ。"
       ]
     },
     "flowerOrange": {
@@ -4715,34 +4541,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "オレンジ色のマリーゴールドは、情熱と創造性の象徴だぜ。新しいアイデアが湧いてくるかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のカレンデュラは、喜びと温かさを表すぜ。周りの人を明るい気持ちにできそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のナスタチウムは、勝利と征服を意味するぜ。困難を乗り越える力強さがあなたにはあるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のポピーは、想像力と楽観主義の花だぜ。前向きな姿勢が良い結果を招くぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のハイビスカスは、情熱と魅力を象徴するぜ。あなたの魅力が輝く瞬間が訪れるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のガーベラは、エネルギーと活力を意味するぜ。元気いっぱいの一日を過ごせるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "オレンジ色のルドベキアは、楽しい冒険を予感させるぜ。新しい経験に心を開いてみるといいぜ。"
-        }
+        "オレンジ色のマリーゴールドは、情熱と創造性の象徴だぜ。新しいアイデアが湧いてくるかもしれないぜ。",
+        "オレンジ色のカレンデュラは、喜びと温かさを表すぜ。周りの人を明るい気持ちにできそうだぜ。",
+        "オレンジ色のナスタチウムは、勝利と征服を意味するぜ。困難を乗り越える力強さがあなたにはあるぜ。",
+        "オレンジ色のポピーは、想像力と楽観主義の花だぜ。前向きな姿勢が良い結果を招くぜ。",
+        "オレンジ色のハイビスカスは、情熱と魅力を象徴するぜ。あなたの魅力が輝く瞬間が訪れるぜ。",
+        "オレンジ色のガーベラは、エネルギーと活力を意味するぜ。元気いっぱいの一日を過ごせるぜ。",
+        "オレンジ色のルドベキアは、楽しい冒険を予感させるぜ。新しい経験に心を開いてみるといいぜ。"
       ]
     },
     "flowerYellow": {
@@ -4755,34 +4560,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "黄色いヒマワリは、太陽のように明るく輝く花だぜ。あなたも周りを明るく照らす存在かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いフリージアは、友情と信頼を表すぜ。大切な友人との絆を深める良い機会かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いスイセンは、新たな始まりを象徴するぜ。何か新しいことを始めるのにぴったりの時期かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いチューリップは、希望に満ちた愛を意味するぜ。明るい未来への期待を持ち続けて欲しいぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いアカシアは、隠された美しさを表すぜ。あなたの中にある才能が花開くかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いカレンデュラは、友情の証だぜ。大切な友達との絆を大切にするんだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "黄色いキンモクセイの香りは、懐かしい思い出を呼び覚ますぜ。大切な人と良い時間を過ごして欲しいぜ。"
-        }
+        "黄色いヒマワリは、太陽のように明るく輝く花だぜ。あなたも周りを明るく照らす存在かもしれないぜ。",
+        "黄色いフリージアは、友情と信頼を表すぜ。大切な友人との絆を深める良い機会かもしれないぜ。",
+        "黄色いスイセンは、新たな始まりを象徴するぜ。何か新しいことを始めるのにぴったりの時期かもしれないぜ。",
+        "黄色いチューリップは、希望に満ちた愛を意味するぜ。明るい未来への期待を持ち続けて欲しいぜ。",
+        "黄色いアカシアは、隠された美しさを表すぜ。あなたの中にある才能が花開くかもしれないぜ。",
+        "黄色いカレンデュラは、友情の証だぜ。大切な友達との絆を大切にするんだぜ。",
+        "黄色いキンモクセイの香りは、懐かしい思い出を呼び覚ますぜ。大切な人と良い時間を過ごして欲しいぜ。"
       ]
     },
     "flowerGreen": {
@@ -4795,34 +4579,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "緑のクローバーは、幸運と希望の象徴だぜ。小さな幸せに気づける日になりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のベルガモットは、繁栄と豊かさを表すぜ。あなたの努力が実を結ぶ時期かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のユーカリは、保護と癒しを意味するぜ。心身ともにリラックスできる時間を作ってみるといいぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のモスは、母性的な愛と優しさを象徴するぜ。周りの人への思いやりの心が、あなたを豊かにするぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のアンスリウムは、もてなしの心を表すぜ。人との交流を大切にする日になりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のシダは、生命力と復活を象徴するぜ。何か新しいことに挑戦するチャンスかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "緑のマートルは、愛と幸福の象徴だぜ。あなたの愛情が周りに良い影響を与えるぜ。"
-        }
+        "緑のクローバーは、幸運と希望の象徴だぜ。小さな幸せに気づける日になりそうだぜ。",
+        "緑のベルガモットは、繁栄と豊かさを表すぜ。あなたの努力が実を結ぶ時期かもしれないぜ。",
+        "緑のユーカリは、保護と癒しを意味するぜ。心身ともにリラックスできる時間を作ってみるといいぜ。",
+        "緑のモスは、母性的な愛と優しさを象徴するぜ。周りの人への思いやりの心が、あなたを豊かにするぜ。",
+        "緑のアンスリウムは、もてなしの心を表すぜ。人との交流を大切にする日になりそうだぜ。",
+        "緑のシダは、生命力と復活を象徴するぜ。何か新しいことに挑戦するチャンスかもしれないぜ。",
+        "緑のマートルは、愛と幸福の象徴だぜ。あなたの愛情が周りに良い影響を与えるぜ。"
       ]
     },
     "flowerBlue": {
@@ -4835,34 +4598,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "青い朝顔は、夏の朝を美しく彩るぜ。清々しい一日の始まりを感じさせてくれるんだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いデルフィニウムは、高貴さと優雅さの象徴だぜ。あなたの中にも、そんな魅力が隠れているかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いアジサイは、移り気な心を表すと言われているぜ。でも、それは柔軟性があるということだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いルピナスは、想像力と創造性を刺激してくれるぜ。新しいアイデアが湧いてくるかもだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いコーンフラワーは、希望と幸福を象徴するぜ。明るい未来が待っているはずだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いスミレは、春の息吹を感じさせてくれる、可憐な花だぜ。あなたの心も、きっと温かくて優しいはずだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "青いリンドウは、厳しい冬を乗り越えて咲く花だぜ。あなたは、どんな困難にも立ち向かえる、強い心の持ち主なんだぜ。"
-        }
+        "青い朝顔は、夏の朝を美しく彩るぜ。清々しい一日の始まりを感じさせてくれるんだぜ。",
+        "青いデルフィニウムは、高貴さと優雅さの象徴だぜ。あなたの中にも、そんな魅力が隠れているかもしれないぜ。",
+        "青いアジサイは、移り気な心を表すと言われているぜ。でも、それは柔軟性があるということだぜ。",
+        "青いルピナスは、想像力と創造性を刺激してくれるぜ。新しいアイデアが湧いてくるかもだぜ。",
+        "青いコーンフラワーは、希望と幸福を象徴するぜ。明るい未来が待っているはずだぜ。",
+        "青いスミレは、春の息吹を感じさせてくれる、可憐な花だぜ。あなたの心も、きっと温かくて優しいはずだぜ。",
+        "青いリンドウは、厳しい冬を乗り越えて咲く花だぜ。あなたは、どんな困難にも立ち向かえる、強い心の持ち主なんだぜ。"
       ]
     },
     "flowerPurple": {
@@ -4875,34 +4617,13 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "紫のラベンダーは、優雅さと洗練を象徴するぜ。あなたの中にある美しさが輝く時かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫のアイリスは、知恵と勇気を表すぜ。難しい決断を迫られても、自信を持って進んでいけるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫のクレマチスは、精神的な美しさを象徴するぜ。内面の成長に目を向けるいい機会かもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫のリラは、初恋の思い出を意味するぜ。過去の美しい思い出が、今のあなたを支えてくれるかもしれないぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫のアリウムは、統一と調和を表すぜ。周りの人々との良い関係を築けそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫陽花は、たくさんの小さな花が集まって一輪の花を咲かせるぜ。あなたも周りの人たちと力を合わせれば、大きなことができるぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "紫のバラは、高貴な印象を与えるぜ。あなたは、特別な存在だぜ。本当だぜ？"
-        }
+        "紫のラベンダーは、優雅さと洗練を象徴するぜ。あなたの中にある美しさが輝く時かもしれないぜ。",
+        "紫のアイリスは、知恵と勇気を表すぜ。難しい決断を迫られても、自信を持って進んでいけるぜ。",
+        "紫のクレマチスは、精神的な美しさを象徴するぜ。内面の成長に目を向けるいい機会かもしれないぜ。",
+        "紫のリラは、初恋の思い出を意味するぜ。過去の美しい思い出が、今のあなたを支えてくれるかもしれないぜ。",
+        "紫のアリウムは、統一と調和を表すぜ。周りの人々との良い関係を築けそうだぜ。",
+        "紫陽花は、たくさんの小さな花が集まって一輪の花を咲かせるぜ。あなたも周りの人たちと力を合わせれば、大きなことができるぜ。",
+        "紫のバラは、高貴な印象を与えるぜ。あなたは、特別な存在だぜ。本当だぜ？"
       ]
     },
     "flowerKinoko": {
@@ -4915,46 +4636,16 @@
       "editorColor": "#F59E0B",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "シイタケは「仙人のキノコ」と呼ばれるほど長寿の象徴だぜ。健康運が高まりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "マツタケは「松の寿」という意味があるぜ。あなたの人生も香り高いものになりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "エノキタケは「榎木茸」と書くぜ。大きな木のように、あなたも周りを支える存在になれそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "ナメコは「滑子」と書くけど、逆に人生でつまずかないよう注意が必要かもしれないぜ？おさわり探偵のようにな"
-        },
-        {
-          "weight": 1,
-          "content": "マイタケは「舞茸」。まるで踊るように、人生を楽しく過ごしたいぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "エリンギはイタリア語で「小さな杏」という意味があるぜ。小さな幸せを見つけられそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "ブナシメジは「椪締茸」と書くぜ。「椪」は「結ぶ」という意味があるから、人との縁が深まりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "キクラゲは「木耳」と書くぜ。耳のように、周りの声にも耳を傾けると良いことがありそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "ヒラタケは平べったい形から名付けられたぜ。謙虚な姿勢が大切になりそうだぜ。"
-        },
-        {
-          "weight": 1,
-          "content": "マッシュルームは英語で「きのこ」だけど、マッシュと言えば髪型だよな。マッシュの似合う男の子って可愛いぜ。"
-        }
+        "シイタケは「仙人のキノコ」と呼ばれるほど長寿の象徴だぜ。健康運が高まりそうだぜ。",
+        "マツタケは「松の寿」という意味があるぜ。あなたの人生も香り高いものになりそうだぜ。",
+        "エノキタケは「榎木茸」と書くぜ。大きな木のように、あなたも周りを支える存在になれそうだぜ。",
+        "ナメコは「滑子」と書くけど、逆に人生でつまずかないよう注意が必要かもしれないぜ？おさわり探偵のようにな",
+        "マイタケは「舞茸」。まるで踊るように、人生を楽しく過ごしたいぜ。",
+        "エリンギはイタリア語で「小さな杏」という意味があるぜ。小さな幸せを見つけられそうだぜ。",
+        "ブナシメジは「椪締茸」と書くぜ。「椪」は「結ぶ」という意味があるから、人との縁が深まりそうだぜ。",
+        "キクラゲは「木耳」と書くぜ。耳のように、周りの声にも耳を傾けると良いことがありそうだぜ。",
+        "ヒラタケは平べったい形から名付けられたぜ。謙虚な姿勢が大切になりそうだぜ。",
+        "マッシュルームは英語で「きのこ」だけど、マッシュと言えば髪型だよな。マッシュの似合う男の子って可愛いぜ。"
       ]
     },
     "zundaOmikuji01": {
@@ -4967,30 +4658,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "人との縁がすごく良さそうなのだ!感謝の気持ちを忘れずにいるといいのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "健康運がバッチリなのだ!元気いっぱいで過ごせそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "頑張ってきたことが報われそうなのだ!積極的に行動するといいことがあるのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しいことに挑戦すると、うまくいきそうなのだ!勇気を出して頑張るのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "良いお知らせが来そうなのだ!前向きな気持ちでいるといいのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "難しいことも乗り越えられそうなのだ!自信を持って進むといいのだ。"
-        }
+        "人との縁がすごく良さそうなのだ!感謝の気持ちを忘れずにいるといいのだ。",
+        "健康運がバッチリなのだ!元気いっぱいで過ごせそうなのだ。",
+        "頑張ってきたことが報われそうなのだ!積極的に行動するといいことがあるのだ。",
+        "新しいことに挑戦すると、うまくいきそうなのだ!勇気を出して頑張るのだ。",
+        "良いお知らせが来そうなのだ!前向きな気持ちでいるといいのだ。",
+        "難しいことも乗り越えられそうなのだ!自信を持って進むといいのだ。"
       ]
     },
     "zundaOmikuji02": {
@@ -5003,30 +4676,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "積極的に行動すると運気が上がりそうなのだ!新しいことにチャレンジするといいのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "周りの人に感謝する気持ちを忘れないでいるのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "これからの未来は明るそうなのだ!夢に向かって頑張るといいことがあるのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "みんなで協力すると成功しやすそうなのだ!仲間を大切にするのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "小さな努力が大きな成果になりそうなのだ!コツコツ続けることが大事なのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "前向きに考えると良い結果になりそうなのだ!ポジティブでいるのだ。"
-        }
+        "積極的に行動すると運気が上がりそうなのだ!新しいことにチャレンジするといいのだ。",
+        "周りの人に感謝する気持ちを忘れないでいるのだ。",
+        "これからの未来は明るそうなのだ!夢に向かって頑張るといいことがあるのだ。",
+        "みんなで協力すると成功しやすそうなのだ!仲間を大切にするのだ。",
+        "小さな努力が大きな成果になりそうなのだ!コツコツ続けることが大事なのだ。",
+        "前向きに考えると良い結果になりそうなのだ!ポジティブでいるのだ。"
       ]
     },
     "zundaOmikuji03": {
@@ -5039,30 +4694,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "思わぬ幸運があるかもしれないのだ!チャンスを見逃さないようにするのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "周りの人と協力すると良いことがありそうなのだ!助けを求めるのも大事なのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "自分の気持ちを信じるといいのだ!大きく成長できそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しいことを学ぶと良さそうなのだ!自分を磨くチャンスなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "楽しいことが増えそうなのだ!笑顔を忘れずにいるのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "しっかり計画を立てると、うまくいきそうなのだ!"
-        }
+        "思わぬ幸運があるかもしれないのだ!チャンスを見逃さないようにするのだ。",
+        "周りの人と協力すると良いことがありそうなのだ!助けを求めるのも大事なのだ。",
+        "自分の気持ちを信じるといいのだ!大きく成長できそうなのだ。",
+        "新しいことを学ぶと良さそうなのだ!自分を磨くチャンスなのだ。",
+        "楽しいことが増えそうなのだ!笑顔を忘れずにいるのだ。",
+        "しっかり計画を立てると、うまくいきそうなのだ!"
       ]
     },
     "zundaOmikuji04": {
@@ -5075,30 +4712,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "焦らずに一歩ずつ進むといいのだ!頑張れば願いは叶いそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "慎重に行動すると良さそうなのだ!きっと良いことがあるのだ。慌てないのが大切なのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "健康に気をつけるといいのだ!規則正しい生活をすると運気が上がりそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "周りの人の助けを受け入れると、運気が上がりそうなのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "小さな喜びを大切にするのだ!それが大きな幸せになるかもしれないのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "ゆっくりと良くなっていきそうなのだ!焦らずに自分のペースで進むといいのだ。"
-        }
+        "焦らずに一歩ずつ進むといいのだ!頑張れば願いは叶いそうなのだ。",
+        "慎重に行動すると良さそうなのだ!きっと良いことがあるのだ。慌てないのが大切なのだ。",
+        "健康に気をつけるといいのだ!規則正しい生活をすると運気が上がりそうなのだ。",
+        "周りの人の助けを受け入れると、運気が上がりそうなのだ!",
+        "小さな喜びを大切にするのだ!それが大きな幸せになるかもしれないのだ。",
+        "ゆっくりと良くなっていきそうなのだ!焦らずに自分のペースで進むといいのだ。"
       ]
     },
     "zundaOmikuji05": {
@@ -5111,30 +4730,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "油断しないように気をつけるのだ!慎重に行動するといいのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "今は少し大変かもしれないのだ。でも、乗り越えると大きく成長できそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "新しいことより、今やっていることを見直すと良いことがありそうなのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "計画を立て直すと、もっと良くなりそうなのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "周りの人の意見を聞くと、うまくいきそうなのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "自分を良くしようと努力すると、運が開けそうなのだ!自分のことをよく考えてみるのだ。"
-        }
+        "油断しないように気をつけるのだ!慎重に行動するといいのだ。",
+        "今は少し大変かもしれないのだ。でも、乗り越えると大きく成長できそうなのだ。",
+        "新しいことより、今やっていることを見直すと良いことがありそうなのだ。",
+        "計画を立て直すと、もっと良くなりそうなのだ!",
+        "周りの人の意見を聞くと、うまくいきそうなのだ!",
+        "自分を良くしようと努力すると、運が開けそうなのだ!自分のことをよく考えてみるのだ。"
       ]
     },
     "zundaOmikuji06": {
@@ -5147,30 +4748,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "運気が少し下がっているかもしれないのだ。でも、慎重に行動すれば大丈夫なのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "周りの人とケンカしないように気をつけるのだ!もし喧嘩になっても、落ち着いて考えるのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "健康に気をつけるといいのだ!体調管理をしっかりするのだ。ずんだもち1個贈呈なのだ。"
-        },
-        {
-          "weight": 1,
-          "content": "計画通りにいかないかもしれないのだ。でも、焦らずに柔軟に対応するといいのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "信頼できる人に相談すると、助けてくれるかもしれないのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "無理をしないで、休むことも大切なのだ!リラックスする時間を作るといいのだ。"
-        }
+        "運気が少し下がっているかもしれないのだ。でも、慎重に行動すれば大丈夫なのだ!",
+        "周りの人とケンカしないように気をつけるのだ!もし喧嘩になっても、落ち着いて考えるのだ。",
+        "健康に気をつけるといいのだ!体調管理をしっかりするのだ。ずんだもち1個贈呈なのだ。",
+        "計画通りにいかないかもしれないのだ。でも、焦らずに柔軟に対応するといいのだ!",
+        "信頼できる人に相談すると、助けてくれるかもしれないのだ!",
+        "無理をしないで、休むことも大切なのだ!リラックスする時間を作るといいのだ。"
       ]
     },
     "zundaOmikuji07": {
@@ -5183,30 +4766,12 @@
       "editorColor": "#10B981",
       "tags": [],
       "values": [
-        {
-          "weight": 1,
-          "content": "やらかしたのだ、こんな格好で来ちゃったのだ…でもそんなの関係ねぇ!おっぱっぴーなのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "安心してくださいなのだ、穿いているのだ…いやいや、ぱんつは穿いてない、水着の下にぱんつは穿かないのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "なーにー!やっちまったのだ。男は…女は黙って、鳥羽一郎、GO!ペンギンゲットなのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "ドキッ!僕だけ水着…VOICEVOX大会。ポロリ!？ポロリなんて絶対ないのだ、にこにこぷん!"
-        },
-        {
-          "weight": 1,
-          "content": "僕にお盆を持たせないで欲しいのだ、何が100%なのだ、100%は評価値だけでいいのだ!"
-        },
-        {
-          "weight": 1,
-          "content": "何がドーン!なのだ、水着はそんなに伸びない…チャンネル登録100万人!？それは伸び過ぎなのだ!アタオカ!"
-        }
+        "やらかしたのだ、こんな格好で来ちゃったのだ…でもそんなの関係ねぇ!おっぱっぴーなのだ!",
+        "安心してくださいなのだ、穿いているのだ…いやいや、ぱんつは穿いてない、水着の下にぱんつは穿かないのだ!",
+        "なーにー!やっちまったのだ。男は…女は黙って、鳥羽一郎、GO!ペンギンゲットなのだ!",
+        "ドキッ!僕だけ水着…VOICEVOX大会。ポロリ!？ポロリなんて絶対ないのだ、にこにこぷん!",
+        "僕にお盆を持たせないで欲しいのだ、何が100%なのだ、100%は評価値だけでいいのだ!",
+        "何がドーン!なのだ、水着はそんなに伸びない…チャンネル登録100万人!？それは伸び過ぎなのだ!アタオカ!"
       ]
     }
   },
@@ -5220,7 +4785,10 @@
       "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -5262,7 +4830,10 @@
       "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 2,
       "editorColor": "#84CC16",
-      "tags": ["Yukkuri", "Marisa"],
+      "tags": [
+        "Yukkuri",
+        "Marisa"
+      ],
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -5304,7 +4875,11 @@
       "updatedAt": "2025-08-11T03:50:57.710Z",
       "order": 3,
       "editorColor": "#10B981",
-      "tags": ["touhokuZunko", "voicevox", "zunda"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "zunda"
+      ],
       "version": "0.0.2",
       "author": "Pintocuru",
       "url": "https://www.pixiv.net/artworks/92641351",
@@ -5354,14 +4929,17 @@
     }
   },
   "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
+      "bubbleMotionEnter": "flipInY",
+      "bubbleMotionLeave": "flipInY",
+      "fontFamily": "wdxlLubrifont",
       "showCharacterIcon": true,
-      "showToasts": true
+      "showToasts": true,
+      "daisyUiTheme": "dark"
     },
     "developer": {
-      "godModeEnabled": true,
-      "proModeEnabled": true,
       "startup": {
         "component": "omikujiBot",
         "scriptKey": null
@@ -5371,7 +4949,11 @@
         "timers": true,
         "placeholders": true,
         "characters": true,
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "gameScriptSettings": true,
         "wordPartySettings": true
       }

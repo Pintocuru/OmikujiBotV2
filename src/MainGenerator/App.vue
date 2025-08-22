@@ -30,7 +30,7 @@
   import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
   import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
-  import { useFontFamily } from '../types/BotComponents/useFontFamily'
+  import { useFontFamily } from '@/types/BotComponents/useFontFamily'
 
   // Piniaストアの使用
   const appStore = useAppStore()
@@ -39,7 +39,7 @@
   const { base, licenseKeyHash } = appStore.omikujiData.displaySettings
 
   // フォントの指定
-  const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'system'))
+  const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'default'))
 
   // 初期化処理
   onMounted(async () => {

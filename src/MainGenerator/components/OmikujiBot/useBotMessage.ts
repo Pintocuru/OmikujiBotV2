@@ -1,4 +1,4 @@
-// src\MainGenerator\components\OmikujiBot\useBotMessage.ts
+// src/MainGenerator/components/OmikujiBot/useBotMessage.ts
 import { ref, computed, Ref } from 'vue'
 import { BotMessage, getImagePath } from '@/types/'
 
@@ -7,12 +7,20 @@ const DISPLAY_CONFIG = {
   BASE_LIFE_TIME: 10000,
   THRESHOLD: 30,
   EXTRA_TIME_PER_CHAR: 100,
+  LEAVE_ANIMATION_DELAY: 200, // Leave アニメーション開始前の遅延
 } as const
 
 export type DisplayMode = 'comment' | 'toast'
 
+// 表示用の拡張BotMessage型
+interface DisplayBotMessage extends BotMessage {
+  visible: boolean
+  hideTimeout?: number
+}
+
+// 新しい拡張版composable（MotionWrapperに完全対応）
 export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode = 'comment') => {
-  const displayedComments = ref<BotMessage[]>([])
+  const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 
   const comments = computed(() =>
@@ -28,16 +36,31 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
     })
   }
 
-  const removeItem = (messageId: number) => {
+  // MotionWrapperのafter-leaveイベントから呼ばれる関数
+  const removeComment = (messageId: number) => {
     const index = displayedComments.value.findIndex((item) => item.id === messageId)
-    if (index > -1) displayedComments.value.splice(index, 1)
+    if (index > -1) {
+      const comment = displayedComments.value[index]
+      // hideTimeoutをクリア
+      if (comment.hideTimeout) {
+        clearTimeout(comment.hideTimeout)
+      }
+      displayedComments.value.splice(index, 1)
+    }
+  }
+
+  // コメントのvisibleをfalseにしてLeaveアニメーションを開始
+  const hideComment = (messageId: number) => {
+    const comment = displayedComments.value.find((item) => item.id === messageId)
+    if (comment) {
+      comment.visible = false
+    }
   }
 
   // 表示制御ロジック
-  const useCommentDisplayControl = () => {
+  const useEnhancedDisplayControl = () => {
     let lastTime = 0
     const processedMessageIds = new Set<number>()
-    const commentTimers = new Map<number, number>()
 
     const processNewComments = (now: number) => {
       if (now - lastTime <= DISPLAY_CONFIG.INTERVAL) return
@@ -50,44 +73,49 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
       newComments.forEach((nextComment) => {
         let totalLifeTime: number
 
-        // displaySecondsが設定されている場合はそれを使用、そうでなければDISPLAY_CONFIGを使用
         if (nextComment.displaySeconds !== undefined) {
-          // displaySecondsは0-60秒の範囲でミリ秒に変換
           totalLifeTime = nextComment.displaySeconds * 1000
         } else {
-          // 従来の計算方法
           const commentLength = nextComment.comment?.length ?? 0
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }
 
-        displayedComments.value.unshift(nextComment)
-        commentTimers.set(nextComment.id, Date.now() + totalLifeTime)
-        processedMessageIds.add(nextComment.id)
-      })
-    }
-
-    const removeExpiredComments = (now: number) => {
-      displayedComments.value = displayedComments.value.filter((comment) => {
-        const expireTime = commentTimers.get(comment.id)
-        if (expireTime && now > expireTime) {
-          commentTimers.delete(comment.id)
-          return false
+        // DisplayBotMessageとして作成
+        const displayMessage: DisplayBotMessage = {
+          ...nextComment,
+          visible: true, // 表示開始時はtrue
         }
-        return true
+
+        // Enterアニメーション用に少し遅延してvisibleをtrueに
+        setTimeout(() => {
+          displayMessage.visible = true
+        }, 50)
+
+        // 指定時間後にLeaveアニメーションを開始
+        displayMessage.hideTimeout = setTimeout(() => {
+          hideComment(nextComment.id)
+        }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
+
+        displayedComments.value.unshift(displayMessage)
+        processedMessageIds.add(nextComment.id)
       })
     }
 
     const update = () => {
       const now = Date.now()
       processNewComments(now)
-      removeExpiredComments(now)
       animationFrameId.value = requestAnimationFrame(update)
     }
 
     const start = () => {
       processedMessageIds.clear()
-      commentTimers.clear()
+      // 既存のタイムアウトをすべてクリア
+      displayedComments.value.forEach((comment) => {
+        if (comment.hideTimeout) {
+          clearTimeout(comment.hideTimeout)
+        }
+      })
       displayedComments.value = []
       update()
     }
@@ -96,19 +124,26 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
       if (animationFrameId.value) {
         cancelAnimationFrame(animationFrameId.value)
       }
-      commentTimers.clear()
+      // すべてのタイムアウトをクリア
+      displayedComments.value.forEach((comment) => {
+        if (comment.hideTimeout) {
+          clearTimeout(comment.hideTimeout)
+        }
+      })
       processedMessageIds.clear()
+      displayedComments.value = []
     }
 
     return { start, stop }
   }
 
-  const displayControl = useCommentDisplayControl()
+  const displayControl = useEnhancedDisplayControl()
 
   return {
     displayedComments,
     handleImageError,
-    removeItem,
+    removeComment,
+    hideComment,
     start: displayControl.start,
     stop: displayControl.stop,
   }

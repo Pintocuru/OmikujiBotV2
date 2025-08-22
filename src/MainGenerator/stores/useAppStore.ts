@@ -12,7 +12,7 @@ export const useAppStore = defineStore('app', () => {
   const config = ConfigUserSchema.parse(window.userConfig)
 
   // 初期化状態
-  const isInitialized = ref(false)
+  const isInitialized = ref(true)
 
   // メッセージ関連
   const botMessages = ref<BotMessage[]>([])
