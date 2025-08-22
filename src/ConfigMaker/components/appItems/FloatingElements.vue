@@ -1,12 +1,12 @@
 <!-- src/configMaker/components/FloatingElements.vue -->
 <template>
   <div>
-    <!-- スクロールで表示されるDock（下部） -->
+    <!-- スクロールで表示されるDock（下部） 
     <div v-if="showDock" class="fixed bottom-0 w-full flex justify-center z-99">
       <div class="card bg-base-100/70 shadow backdrop-blur-sm mx-auto">
         <NavigationTabs />
       </div>
-    </div>
+    </div>-->
 
     <!-- スクロールトップボタン -->
     <button

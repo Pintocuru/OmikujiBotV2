@@ -1,8 +1,10 @@
 <!-- src/configMaker/components/NavigationTabs.vue -->
 <template>
   <div
-    class="flex w-full justify-center my-4 rounded-md"
-    :class="isGod ? ['bg-warning text-warning-content'] : ['border']"
+    class="flex w-full justify-center my-4 rounded-md border"
+    :class="
+      isGod ? ['border-warning text-warning'] : isPro ? ['border-success text-success'] : ['border text-base-content']
+    "
   >
     <div class="tabs gap-2">
       <div v-for="(tab, key) in filteredCategoryLabels" :key="key">
@@ -23,6 +25,27 @@
       </div>
     </div>
   </div>
+
+  <div
+    class="dock dock-bottom"
+    :class="isGod ? ['bg-warning text-warning-content'] : isPro ? ['bg-success text-success-content'] : ['']"
+  >
+    <div
+      v-for="(tab, key) in filteredCategoryLabels"
+      :key="key"
+      class="dock-item tooltip tooltip-top"
+      :class="[selectedCategory === key ? 'bg-primary text-primary-content' : '']"
+      :data-tip="`${tab.label} - ${tab.description}`"
+      @click="omikujiStore.selectCategory(key)"
+    >
+      <div class="relative">
+        <component :is="tab.icon" class="w-8 h-8" />
+        <span v-if="getCategoryItemCount(key) > 0" class="badge badge-xs badge-error absolute -top-2 -right-2">
+          {{ getCategoryItemCount(key) }}
+        </span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -34,5 +57,5 @@
   const omikujiStore = useOmikujiStore()
   const { selectedCategory } = storeToRefs(omikujiStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
-  const { isGod } = useSettingMode()
+  const { isPro, isGod } = useSettingMode()
 </script>

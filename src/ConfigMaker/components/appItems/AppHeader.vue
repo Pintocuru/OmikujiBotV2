@@ -2,7 +2,7 @@
 <template>
   <h1
     class="flex justify-center text-2xl font-bold mb-6 text-center"
-    :class="isGod ? ['text-warning'] : isPro ? ['text-secondary'] : ['text-primary']"
+    :class="isGod ? ['text-warning'] : isPro ? ['text-success'] : ['text-primary']"
   >
     <div class="flex items-center gap-2">
       おみくじBot コンフィグエディター
@@ -11,7 +11,7 @@
       <!-- PRO-MODEバッジ -->
       <span
         v-if="isPro && !isGod"
-        class="badge badge-secondary tooltip tooltip-bottom"
+        class="badge badge-success tooltip tooltip-bottom"
         data-tip="テンプレートが扱える、有料版です!"
       >
         PRO
