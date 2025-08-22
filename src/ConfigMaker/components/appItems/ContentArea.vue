@@ -1,12 +1,17 @@
 <!-- src/configMaker/components/ContentArea.vue -->
 <template>
-  <div class="card bg-base-200">
-    <div class="card-title bg-primary text-primary-content p-2 pl-4 rounded-t">
-      <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
-      {{ categoryLabels[selectedCategory].label }}
-    </div>
+  <SectionCard variant="primary" :alwaysOpen="true">
+    <template #header>
+      <div class="flex items-center gap-2">
+        <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
+        {{ categoryLabels[selectedCategory].label }}
+      </div>
+      <div class="text-sm pr-2">
+        {{ categoryLabels[selectedCategory].description }}
+      </div>
+    </template>
 
-    <div class="card-body p-4">
+    <template #body>
       <!-- コメントルール -->
       <CommentRuleEditor v-if="selectedCategory === 'comments'" />
 
@@ -35,13 +40,14 @@
       <div v-else>
         <p class="text-gray-600">不明なカテゴリ: {{ selectedCategory }}</p>
       </div>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
   import { categoryLabels } from '@/types/OmikujiData/CategoryType'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import CommentRuleEditor from '@ConfigComponents/rulesComments/CommentRuleEditor.vue'
   import TimerRuleEditor from '@ConfigComponents/rulesTimers/TimerRuleEditor.vue'

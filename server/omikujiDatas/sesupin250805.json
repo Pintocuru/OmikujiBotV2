@@ -4782,7 +4782,7 @@
       "name": "ゆっくり霊夢",
       "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-22T09:35:43.722Z",
       "order": 1,
       "editorColor": "#EC4899",
       "tags": [
@@ -4819,7 +4819,8 @@
         "singing": "reimu/singing.webp",
         "sleepy": "reimu/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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"
+      "imageBase64": "data:image/png;base64,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",
+      "accessLevel": "basic"
     },
     "marisa": {
       "id": "marisa",
@@ -4827,7 +4828,7 @@
       "name": "ゆっくり魔理沙",
       "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-22T09:35:45.318Z",
       "order": 2,
       "editorColor": "#84CC16",
       "tags": [
@@ -4845,9 +4846,9 @@
         "isVoice": true
       },
       "color": {
-        "nameColor": "#FFC107",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#FF4081",
+        "nameColor": "#FFD54F",
+        "textColor": "#FFFDE7",
+        "backgroundColor": "#FF8F00",
         "customClasses": ""
       },
       "image": {
@@ -4864,7 +4865,8 @@
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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"
+      "imageBase64": "data:image/png;base64,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",
+      "accessLevel": "basic"
     },
     "zunda": {
       "id": "zunda",
@@ -4872,7 +4874,7 @@
       "name": "ずんだもん",
       "description": "ずんだもんなのだ!みんなの笑顔が僕の元気!頑張るのだ!",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-22T09:35:47.126Z",
       "order": 3,
       "editorColor": "#10B981",
       "tags": [
@@ -4893,7 +4895,8 @@
       "color": {
         "nameColor": "#E8F5E9",
         "textColor": "#212121",
-        "backgroundColor": "#4CAF50"
+        "backgroundColor": "#4CAF50",
+        "customClasses": ""
       },
       "image": {
         "default": "zunda/default.webp",
@@ -4908,7 +4911,8 @@
         "wink": "zunda/wink.webp",
         "singing": "zunda/singing.webp",
         "sleepy": "zunda/sleepy.webp"
-      }
+      },
+      "accessLevel": "internal"
     }
   },
   "scriptSettings": {

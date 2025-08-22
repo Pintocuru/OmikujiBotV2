@@ -15,7 +15,7 @@
     <template #body>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
-        <CommentBubblePreview :color="localColor" :custom-classes="localColor.customClasses" bubbleMotionEnter="none" />
+        <CommentBubblePreview :color="localData" :custom-classes="localData.customClasses" bubbleMotionEnter="none" />
       </div>
 
       <!-- カラーピッカー -->
@@ -24,7 +24,7 @@
           <label class="label">
             <span class="label-text">{{ label }}</span>
           </label>
-          <input type="color" class="input input-bordered h-12 w-full" v-model="localColor[key]" />
+          <input type="color" class="input input-bordered h-12 w-full" v-model="localData[key]" />
         </div>
       </div>
 
@@ -32,13 +32,13 @@
       <SettingItem
         label="カスタムTailwindクラス"
         description="グラデーション背景、ボーダー、影などを追加できます"
-        @reset="localColor.customClasses = 'border-2 border-white'"
+        @reset="localData.customClasses = 'border-2 border-white'"
       >
         <input
           type="text"
           placeholder="例: bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white"
           class="input input-bordered w-full"
-          v-model="localColor.customClasses"
+          v-model="localData.customClasses"
         />
         <label class="label">
           <span class="label-text-alt"></span>
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
@@ -74,9 +74,11 @@
   ] as const
 
   // v-modelを使用したlocalColorの実装
-  const localColor = ref<CharacterColorType>({
-    ...props.modelValue,
-    customClasses: props.modelValue.customClasses || '',
+  const localData = computed({
+    get: () => props.modelValue,
+    set: (value: CharacterColorType) => {
+      emit('update:modelValue', value)
+    },
   })
 
   // propsからlocalColorを更新
@@ -85,10 +87,10 @@
     (newValue) => {
       // ここで全体を置き換えず、フィールドごとに更新
       for (const key in newValue) {
-        ;(localColor.value as any)[key] = (newValue as any)[key]
+        ;(localData.value as any)[key] = (newValue as any)[key]
       }
       if (!newValue.customClasses) {
-        localColor.value.customClasses = ''
+        localData.value.customClasses = ''
       }
     },
     { deep: true }
@@ -96,7 +98,7 @@
 
   // localColorの変更を親に通知
   watch(
-    localColor,
+    localData,
     (newValue) => {
       emit('update:modelValue', newValue)
     },
@@ -107,9 +109,9 @@
   const handleRandomColor = () => {
     const result = drawOmikuji(DEFAULT_COLOR_THEMES)
     if (result) {
-      localColor.value = {
+      localData.value = {
         ...result,
-        customClasses: localColor.value.customClasses,
+        customClasses: localData.value.customClasses,
       }
     }
   }

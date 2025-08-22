@@ -1,6 +1,6 @@
 <!-- src/configMaker/App.vue -->
 <template>
-  <div class="p-4 max-w-6xl pb-64 overflow-x-hidden mx-auto">
+  <div class="p-4 max-w-6xl min-w-xl pb-64 overflow-x-hidden mx-auto">
     <!-- タイトル -->
     <AppHeader />
 
