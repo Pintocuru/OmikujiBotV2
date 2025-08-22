@@ -7,7 +7,7 @@
 
     <template #body>
       <!-- Key表示 -->
-      <SettingItem label="Key" description="キャラクターのキー名" :showReset="false" containerClass="form-control">
+      <SettingItem label="Key" description="キャラクターのキー名" :showReset="false">
         <div class="flex gap-2 items-center">
           <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
             {{ localData.id }}
@@ -25,7 +25,6 @@
         :label="field.label"
         :description="field.description"
         :showReset="false"
-        containerClass="form-control"
       >
         <input type="text" class="input input-bordered w-full" v-model="localData[field.key]" />
       </SettingItem>

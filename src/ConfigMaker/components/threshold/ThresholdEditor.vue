@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>発動条件設定</div>
+      <div class="text-sm pr-2">コメントの情報から「おみくじを引く」かどうかを決めます</div>
     </template>
 
     <template #body>
@@ -39,22 +40,20 @@
       </SettingItem>
 
       <!-- 各条件の詳細設定 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- チャットワード条件 -->
-        <ThresholdConditionComment v-if="conditions.includes('comment')" v-model="comment" />
+      <!-- チャットワード条件 -->
+      <ThresholdConditionComment v-if="conditions.includes('comment')" v-model="comment" />
 
-        <!-- 初見条件 -->
-        <ThresholdConditionSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
+      <!-- 初見条件 -->
+      <ThresholdConditionSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
 
-        <!-- アクセスレベル条件 -->
-        <ThresholdConditionAccess v-if="conditions.includes('access')" v-model="access" />
+      <!-- アクセスレベル条件 -->
+      <ThresholdConditionAccess v-if="conditions.includes('access')" v-model="access" />
 
-        <!-- ギフト条件 -->
-        <ThresholdConditionGift v-if="conditions.includes('gift')" v-model="gift" />
+      <!-- ギフト条件 -->
+      <ThresholdConditionGift v-if="conditions.includes('gift')" v-model="gift" />
 
-        <!-- カウント条件 -->
-        <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
-      </div>
+      <!-- カウント条件 -->
+      <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
     </template>
   </SectionCard>
 </template>

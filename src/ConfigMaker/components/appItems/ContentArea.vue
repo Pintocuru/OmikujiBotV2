@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/ContentArea.vue -->
 <template>
-  <SectionCard variant="primary" :alwaysOpen="true">
-    <template #header>
+  <div class="card bg-base-200 mt-4">
+    <div class="card-title p-4 rounded-t justify-between bg-primary text-primary-content">
       <div class="flex items-center gap-2">
         <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
         {{ categoryLabels[selectedCategory].label }}
@@ -9,9 +9,8 @@
       <div class="text-sm pr-2">
         {{ categoryLabels[selectedCategory].description }}
       </div>
-    </template>
-
-    <template #body>
+    </div>
+    <div class="card-body space-y-4">
       <!-- コメントルール -->
       <CommentRuleEditor v-if="selectedCategory === 'comments'" />
 
@@ -40,8 +39,8 @@
       <div v-else>
         <p class="text-gray-600">不明なカテゴリ: {{ selectedCategory }}</p>
       </div>
-    </template>
-  </SectionCard>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

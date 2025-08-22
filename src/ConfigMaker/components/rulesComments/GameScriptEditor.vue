@@ -3,6 +3,7 @@
   <SectionCard v-if="(data.displaySettings.developer.visibility.gameScriptSettings && isScriptEnabled) || isGod">
     <template #header>
       <div>ゲームスクリプト設定</div>
+      <div class="text-sm pr-2">Javascriptを使ったミニゲーム。結果はプレースホルダーの形で出力します</div>
     </template>
 
     <template #body>
@@ -26,8 +27,13 @@
       </InformationCard>
 
       <!-- スクリプト有効化チェックボックス -->
-      <div v-if="isGod" class="card-body bg-warning text-warning-content rounded-md">
-        <SettingItem label="ゲームスクリプトを使用" description="好きなゲームを選んでね!" :showReset="false">
+      <div v-if="isGod">
+        <SettingItem
+          label="ゲームスクリプトを使用"
+          description="好きなゲームを選んでね!"
+          :showReset="false"
+          variant="warning"
+        >
           <label class="label cursor-pointer justify-start gap-3">
             <input type="checkbox" v-model="isScriptEnabled" class="toggle toggle-warning" />
             <span class="label-text font-medium"
@@ -42,7 +48,7 @@
         <!-- スクリプト選択 -->
         <SettingItem
           label="ゲームスクリプト"
-          description="ゲーム結果は、おみくじ設定＞プレースホルダー一覧で出力"
+          description="ゲーム結果は、おみくじ設定＞プレースホルダーから"
           :showReset="false"
         >
           <select
@@ -108,7 +114,9 @@
             </div>
           </SettingItem>
         </div>
-        <div v-else class="text-base-content/60">このスクリプトには設定可能なパラメータがありません</div>
+        <div v-else>
+          <NoParamsCard message="このスクリプトには設定可能なパラメータがありません" />
+        </div>
       </div>
     </template>
   </SectionCard>
@@ -122,10 +130,12 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'
   import { useSettingMode } from '@/types/SettingMode'
+  import { LucideAlertCircle } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue: CommentRuleType

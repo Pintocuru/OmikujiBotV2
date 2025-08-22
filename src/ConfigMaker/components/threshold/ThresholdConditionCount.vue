@@ -1,37 +1,35 @@
 <!-- src/configMaker/components/comments/ThresholdConditionCount.vue -->
 <template>
-  <div class="form-control bg-base-100 p-3 rounded-lg">
-    <SettingItem label="チャット数条件" description="配信枠・個人の総合チャット数で判定" :show-reset="false">
-      <div class="flex gap-2">
-        <select
-          :value="modelValue.unit"
-          @change="updateField('unit', $event)"
-          class="select select-bordered select-sm flex-1"
-        >
-          <option v-for="option in unitOptions" :key="option.value" :value="option.value">
-            {{ option.label }}
-          </option>
-        </select>
-        <select
-          :value="modelValue.comparison"
-          @change="updateField('comparison', $event)"
-          class="select select-bordered select-sm flex-1"
-        >
-          <option v-for="option in comparisonOptions" :key="option.value" :value="option.value">
-            {{ option.label }}
-          </option>
-        </select>
-        <input
-          type="number"
-          :value="modelValue.value"
-          @input="updateField('value', $event)"
-          min="0"
-          class="input input-bordered input-sm flex-1"
-          placeholder="数値"
-        />
-      </div>
-    </SettingItem>
-  </div>
+  <SettingItem label="チャット数条件" description="配信枠・個人の総合チャット数で判定" :show-reset="false">
+    <div class="flex gap-2">
+      <select
+        :value="modelValue.unit"
+        @change="updateField('unit', $event)"
+        class="select select-bordered select-sm flex-1"
+      >
+        <option v-for="option in unitOptions" :key="option.value" :value="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <select
+        :value="modelValue.comparison"
+        @change="updateField('comparison', $event)"
+        class="select select-bordered select-sm flex-1"
+      >
+        <option v-for="option in comparisonOptions" :key="option.value" :value="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <input
+        type="number"
+        :value="modelValue.value"
+        @input="updateField('value', $event)"
+        min="0"
+        class="input input-bordered input-sm flex-1"
+        placeholder="数値"
+      />
+    </div>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
-  <div v-if="!alwaysOpen" class="card bg-base-300 mt-4">
+  <div class="card bg-base-300 mt-4">
     <div class="collapse collapse-arrow">
       <!-- v-modelで開閉管理 -->
       <input type="checkbox" v-model="isOpen" />
@@ -8,21 +8,10 @@
         <slot name="header" />
       </div>
       <div class="collapse-content">
-        <div class="card-body space-y-4">
+        <div class="card-body space-y-2 px-2">
           <slot name="body" />
         </div>
       </div>
-    </div>
-  </div>
-
-  <div v-else class="card bg-base-300 mt-4">
-    <!-- ヘッダー -->
-    <div class="card-title p-4 rounded-t justify-between" :class="headerClass">
-      <slot name="header" />
-    </div>
-    <!-- 本体 -->
-    <div class="card-body space-y-4">
-      <slot name="body" />
     </div>
   </div>
 </template>
@@ -34,9 +23,8 @@
     defineProps<{
       variant?: Variant
       isOpen?: boolean
-      alwaysOpen?: boolean
     }>(),
-    { variant: 'secondary', isOpen: true, alwaysOpen: false }
+    { variant: 'secondary', isOpen: true }
   )
 
   const isOpen = ref(props.isOpen)

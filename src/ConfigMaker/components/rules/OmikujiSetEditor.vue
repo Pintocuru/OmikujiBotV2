@@ -5,25 +5,27 @@
       <div>
         おみくじ設定 <span class="text-base pl-2">( {{ omikujiSets.length }} item / 総重量: {{ totalWeight }} )</span>
       </div>
+      <div class="text-sm pr-2">おみくじの抽選設定や、おみくじの内容です。</div>
+    </template>
 
-      <div class="flex items-center gap-2">
+    <template #body>
+      <!-- 便利なボタン群 -->
+      <div class="flex justify-end gap-2">
         <!-- キャラクター一括変更ボタン -->
         <CharacterBulkChanger :model-value="omikujiSets" @update:model-value="omikujiSets = $event" />
         <!-- おみくじテストボタン -->
         <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-          <button
-            @click="postTestOmikuji(omikujiSets)"
-            class="btn btn-ghost btn-sm"
-            :disabled="omikujiSets.length === 0"
-          >
+          <button class="btn btn-info" @click="postTestOmikuji(omikujiSets)" :disabled="omikujiSets.length === 0">
             <Dices class="w-4 h-4" />
             抽選テスト
           </button>
         </div>
-      </div>
-    </template>
 
-    <template #body>
+        <button @click="addOmikuji" class="btn btn-primary">
+          <Plus class="w-4 h-4" />
+          おみくじを追加
+        </button>
+      </div>
       <!-- vuedraggable を使用したドラッグアンドドロップ -->
       <draggable
         v-model="omikujiSets"
@@ -39,9 +41,9 @@
         </template>
       </draggable>
 
-      <button @click="addOmikuji" class="btn btn-primary btn-sm w-full">
+      <button @click="addOmikuji" class="btn btn-primary w-full">
         <Plus class="w-4 h-4" />
-        おみくじセットを追加
+        おみくじを追加
       </button>
     </template>
   </SectionCard>

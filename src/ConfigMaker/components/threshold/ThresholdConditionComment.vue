@@ -1,22 +1,17 @@
 <!-- src/configMaker/components/comments/ThresholdConditionComment.vue -->
 <template>
-  <div class="form-control bg-base-100 p-3 rounded-lg">
-    <SettingItem label="適用するチャットワード" description="正規表現対応。複数指定できます" :show-reset="false">
-      <div class="space-y-2">
-        <textarea
-          v-model="textValue"
-          @input="updateModelValue"
-          placeholder="例:
+  <SettingItem label="適用するチャットワード" description="正規表現対応。改行で複数指定できます" :show-reset="false">
+    <textarea
+      v-model="textValue"
+      @input="updateModelValue"
+      placeholder="例:
 ^こんにちは|おはよう$
 テスト.*
 ^ありがとう"
-          class="textarea textarea-bordered w-full min-h-[120px]"
-          rows="6"
-        />
-        <div class="text-xs text-base-content/60">各行に1つずつ条件を記入してください。空行は無視されます。</div>
-      </div>
-    </SettingItem>
-  </div>
+      class="textarea textarea-bordered w-full min-h-[120px]"
+      rows="6"
+    />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">

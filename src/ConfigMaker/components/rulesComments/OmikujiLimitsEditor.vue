@@ -3,6 +3,7 @@
   <SectionCard>
     <template #header>
       <div>おみくじ制限設定</div>
+      <div class="text-sm pr-2">重複時や回数超過時におみくじを無効にします</div>
     </template>
 
     <template #body>

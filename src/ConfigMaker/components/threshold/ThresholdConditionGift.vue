@@ -1,24 +1,22 @@
 <!-- src/configMaker/components/comments/ThresholdConditionGift.vue -->
 <template>
-  <div class="form-control bg-base-100 p-3 rounded-lg">
-    <SettingItem label="ギフト条件" description="金額や種類で発動を変更できます" :show-reset="false">
-      <div class="flex flex-wrap gap-2">
-        <label
-          v-for="option in giftOptions"
-          :key="option.value"
-          class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer text-sm"
-        >
-          <input
-            type="checkbox"
-            class="checkbox checkbox-sm"
-            :checked="modelValue.includes(option.value)"
-            @change="toggleOption(option.value)"
-          />
-          <span>{{ option.label }}</span>
-        </label>
-      </div>
-    </SettingItem>
-  </div>
+  <SettingItem label="ギフト条件" description="金額や種類で発動を変更できます" :show-reset="false">
+    <div class="flex flex-wrap gap-2">
+      <label
+        v-for="option in giftOptions"
+        :key="option.value"
+        class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer text-sm"
+      >
+        <input
+          type="checkbox"
+          class="checkbox checkbox-sm"
+          :checked="modelValue.includes(option.value)"
+          @change="toggleOption(option.value)"
+        />
+        <span>{{ option.label }}</span>
+      </label>
+    </div>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
