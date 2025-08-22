@@ -28,37 +28,50 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import { ref, watch, computed } from 'vue'
+  import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
   import { toast } from 'vue-sonner'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
+    category: 'comments' | 'timers'
+    selectedRuleId: string | null
+    omikujiIndex: number
   }>()
 
   // Emits
   const emit = defineEmits<{
-    'update:modelValue': [value: PostActionType[]]
     close: []
   }>()
+
+  // ストアを使用
+  const omikujiStore = useOmikujiStore()
 
   // Refs
   const jsonText = ref('')
   const jsonError = ref('')
 
+  // 現在のPostActionsを取得するcomputed
+  const currentPostActions = computed(() => {
+    if (!props.selectedRuleId) return []
+    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+    return record?.omikuji?.[props.omikujiIndex]?.postActions || []
+  })
+
   // JSON関連の処理
   const updateJsonText = () => {
     try {
-      jsonText.value = JSON.stringify(props.modelValue, null, 2)
+      jsonText.value = JSON.stringify(currentPostActions.value, null, 2)
       jsonError.value = ''
     } catch (error) {
       jsonError.value = error instanceof Error ? error.message : 'JSONの生成に失敗しました'
     }
   }
 
-  // プロパティが変更されたときにJSONテキストを更新
-  watch(() => props.modelValue, updateJsonText, { immediate: true, deep: true })
+  // PostActionsが変更されたときにJSONテキストを更新
+  watch(currentPostActions, updateJsonText, { immediate: true, deep: true })
 
   // Methods
   const validateAndApplyJson = () => {
@@ -68,21 +81,14 @@
         throw new Error('配列である必要があります')
       }
 
-      // 基本的な構造チェック
+      // PostActionSchemaを使用してバリデーション
       const validatedActions: PostActionType[] = parsed.map((action, index) => {
-        if (typeof action !== 'object' || action === null) {
-          throw new Error(`${index + 1}番目の要素がオブジェクトではありません`)
-        }
-
-        // TODO:action.delaySeconds はbasicDaisyの影響を受ける
-        // TODO:そもそもスキーマを使え
-        return {
-          characterKey: typeof action.characterKey === 'string' ? action.characterKey : '',
-          iconKey: typeof action.iconKey === 'string' ? action.iconKey : '',
-          delaySeconds: typeof action.delaySeconds === 'number' && action.delaySeconds >= -1 ? action.delaySeconds : 0,
-          wordParty: typeof action.wordParty === 'string' ? action.wordParty : '',
-          messageContent: typeof action.messageContent === 'string' ? action.messageContent : '',
-          messageToast: typeof action.messageToast === 'string' ? action.messageToast : '',
+        try {
+          return PostActionSchema.parse(action)
+        } catch (error) {
+          throw new Error(
+            `${index + 1}番目の要素のバリデーションエラー: ${error instanceof Error ? error.message : '不明なエラー'}`
+          )
         }
       })
 
@@ -96,8 +102,9 @@
 
   const applyJson = () => {
     const validatedActions = validateAndApplyJson()
-    if (validatedActions) {
-      emit('update:modelValue', validatedActions)
+    if (validatedActions && props.selectedRuleId) {
+      // ストアを通じて直接更新（updateRecordPropertyを使用）
+      omikujiStore.updateOmikujiPostActions(props.category, props.selectedRuleId, props.omikujiIndex, validatedActions)
       toast.success('Json形式で保存しました')
       emit('close')
     }

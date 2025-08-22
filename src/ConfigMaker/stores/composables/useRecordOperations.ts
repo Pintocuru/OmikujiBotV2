@@ -1,14 +1,9 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
+import { CategoryType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/OmikujiData/CategoryType'
+import { categorySchemaMap, OmikujiDataType, RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
 import { nextTick, Ref } from 'vue'
-import {
-  categorySchemaMap,
-  CategoryType,
-  OmikujiDataType,
-  PlaceholderValuesSchema,
-  PlaceholderValueType,
-  RecordCategoryType,
-  RecordCategoryTypeMap,
-} from '@/types/'
 
 // categorySchemaMapの型安全性を向上
 interface TypedSchema<T> {
@@ -90,6 +85,33 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
 
       updateCategoryData(category, updatedCategory)
     }
+  }
+
+  /**
+   * omikuji.PostActions専用の更新
+   */
+  const updateOmikujiPostActions = (
+    category: 'comments' | 'timers',
+    ruleId: string,
+    omikujiIndex: number,
+    postActions: PostActionType[]
+  ) => {
+    const record = getItem(category, ruleId) as RuleType
+    if (!record || !record.omikuji || !record.omikuji[omikujiIndex]) {
+      console.error('指定されたおみくじが見つかりません')
+      return
+    }
+
+    // 指定されたインデックスのpostActionsを更新
+    const updatedOmikuji = [...record.omikuji]
+    const sortedPostActions = postActions.sort((a, b) => a.delaySeconds - b.delaySeconds)
+    updatedOmikuji[omikujiIndex] = {
+      ...updatedOmikuji[omikujiIndex],
+      postActions: sortedPostActions,
+    }
+
+    // updateRecordPropertyを使用して更新
+    updateRecordProperty(category, ruleId, 'omikuji', updatedOmikuji)
   }
 
   /**
@@ -185,6 +207,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     removeItem,
     duplicateItem,
     updateRecordProperty,
+    updateOmikujiPostActions,
     updatePlaceholderValues,
     getItem,
     getCategoryMap,

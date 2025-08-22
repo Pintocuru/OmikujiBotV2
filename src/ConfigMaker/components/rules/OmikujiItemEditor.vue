@@ -9,16 +9,16 @@
     }"
   >
     <div class="space-y-2">
-      <!-- OmikujiSetBasic コンポーネント -->
-      <OmikujiSetBasic
+      <!-- OmikujiItemBasic コンポーネント -->
+      <OmikujiItemBasic
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
         :category="category"
         :selected-rule-id="selectedRuleId"
       />
 
-      <!-- Post Actions Editor コンポーネント with 子コンポーネント -->
-      <PostActionsEditor :modelValue="omikujiItem.postActions" @toggleJson="toggleEditMode" @toggleEdit="openDialog" />
+      <!-- ツールバー -->
+      <OmikujiItemToolbar :modelValue="omikujiItem.postActions" @toggleJson="toggleEditMode" @toggleEdit="openDialog" />
 
       <!-- プレビュー表示 -->
       <PostActionsPreview v-if="!isJsonMode" :modelValue="omikujiItem.postActions" />
@@ -26,26 +26,33 @@
       <!-- JSON編集モード -->
       <PostActionsEditorJson
         v-else
-        v-model="omikujiItem.postActions"
-        :charactersArray="charactersArray"
+        :category="category"
+        :selected-rule-id="selectedRuleId"
+        :omikuji-index="index"
         @close="isJsonMode = false"
       />
     </div>
 
     <!-- 編集ダイアログ -->
-    <PostActionsEditDialog ref="dialog" v-model="omikujiItem.postActions" :charactersArray="charactersArray" />
+    <PostActionsEditDialog
+      ref="dialog"
+      :category="category"
+      :selected-rule-id="selectedRuleId"
+      :omikuji-index="index"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, ref, Ref } from 'vue'
   import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
-  import OmikujiSetBasic from './OmikujiSetBasic.vue'
-  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
+  import OmikujiItemBasic from './OmikujiItemBasic.vue'
+  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
   import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import PostActionsEditDialog from '@ConfigComponents/postAction/PostActionsEditDialog.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
 
   const props = defineProps<{
     category: 'comments' | 'timers'
@@ -56,22 +63,21 @@
   // ストアを使用
   const omikujiStore = useOmikujiStore()
 
-  // キャラクター配列を取得
-  const charactersArray = computed(() => omikujiStore.getCategoryArray('characters'))
-
   // Refs for PostActions functionality
   const dialog: Ref<InstanceType<typeof PostActionsEditDialog> | null> = ref(null)
   const isJsonMode = ref(false)
 
-  // ストアからデータを取得
-  const ruleData = computed(() => {
-    if (!props.selectedRuleId) return null
-    return omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType | null
-  })
-
-  // 全てのおみくじセット
-  const allOmikujiSets = computed(() => {
-    return ruleData.value?.omikuji || []
+  // Computed
+  const allOmikujiSets = computed({
+    get: () => {
+      if (!props.selectedRuleId) return []
+      const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+      return record?.omikuji || []
+    },
+    set: (value: OmikujiSetType[]) => {
+      if (!props.selectedRuleId) return
+      omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
+    },
   })
 
   // 現在のインデックスのおみくじアイテム

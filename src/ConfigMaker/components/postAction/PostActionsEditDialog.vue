@@ -26,29 +26,40 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { CharacterType, PostActionSchema, PostActionType } from '@/types/'
+  import { PostActionSchema, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import PostActionsContainer from './PostActionsContainer.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
-    charactersArray: CharacterType[]
+    category: 'comments' | 'timers'
+    selectedRuleId: string | null
+    omikujiIndex: number
   }>()
 
-  // Emits
-  const emit = defineEmits<{
-    'update:actions': [value: PostActionType[]]
-  }>()
+  // ストアを使用
+  const omikujiStore = useOmikujiStore()
+
+  // キャラクター配列を取得
+  const charactersArray = computed(() => omikujiStore.getCategoryArray('characters'))
 
   // Refs
   const dialogRef: Ref<HTMLDialogElement | null> = ref(null)
   const editingActions: Ref<PostActionType[]> = ref([])
 
+  // 現在のPostActionsを取得
+  const currentPostActions = computed(() => {
+    if (!props.selectedRuleId) return []
+    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+    return record?.omikuji?.[props.omikujiIndex]?.postActions || []
+  })
+
   // キャラクター選択肢
   const characterOptions = computed(() => {
-    return props.charactersArray.map((character) => ({
+    return charactersArray.value.map((character) => ({
       value: character.id,
       label: character.name,
     }))
@@ -56,7 +67,7 @@
 
   // Dialog methods
   const open = () => {
-    editingActions.value = JSON.parse(JSON.stringify(props.modelValue))
+    editingActions.value = JSON.parse(JSON.stringify(currentPostActions.value))
     dialogRef.value?.showModal()
   }
 
@@ -66,13 +77,18 @@
   }
 
   const saveActions = () => {
-    emit('update:actions', [...editingActions.value])
+    if (props.selectedRuleId) {
+      // ストアを通じて直接更新
+      omikujiStore.updateOmikujiPostActions(props.category, props.selectedRuleId, props.omikujiIndex, [
+        ...editingActions.value,
+      ])
+    }
     closeDialog()
   }
 
   // Action management methods
   const addAction = () => {
-    const characterId = props.charactersArray[0]?.id ?? ''
+    const characterId = charactersArray.value[0]?.id ?? ''
     const newAction = PostActionSchema.parse({ characterKey: characterId })
     editingActions.value.push(newAction)
   }

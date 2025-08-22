@@ -25,7 +25,7 @@ export const PostActionSchema = z.object({
 })
 
 // Omikuji
-export const OmikujiSetSchema = z.object({
+export const OmikujiItemSchema = z.object({
   ...BaseRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
   postActions: z
@@ -38,10 +38,10 @@ export const OmikujiSetSchema = z.object({
     }),
 })
 
-export const ArrayOmikujiSetSchema = z
-  .array(OmikujiSetSchema)
+export const OmikujiSetSchema = z
+  .array(OmikujiItemSchema)
   .default([
-    OmikujiSetSchema.parse({
+    OmikujiItemSchema.parse({
       postActions: [
         {
           characterKey: '',
@@ -56,4 +56,4 @@ export const ArrayOmikujiSetSchema = z
 
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
-export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
+export type OmikujiSetType = z.infer<typeof OmikujiItemSchema>

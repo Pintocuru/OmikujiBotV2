@@ -13,18 +13,19 @@
           data-tip="わんコメを起動すると、投稿の確認ができます"
           :disabled="modelValue.length === 0"
         >
+          <Send :size="16" />
           テスト投稿
         </button>
 
         <!-- Json/GUI編集切り替えボタン -->
         <button @click="$emit('toggleJson')" class="btn btn-sm btn-secondary" type="button">
-          <span class="text-sm">📝</span>
+          <FileJson :size="16" />
           JSON編集
         </button>
 
         <!-- 詳細編集ボタン -->
         <button @click="$emit('toggleEdit')" class="btn btn-sm btn-primary" type="button">
-          <span class="text-sm">⚙️</span>
+          <Settings :size="16" />
           詳細編集
         </button>
       </div>
@@ -35,6 +36,7 @@
 <script setup lang="ts">
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
+  import { Send, FileJson, Settings } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{

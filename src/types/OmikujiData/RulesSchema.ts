@@ -1,9 +1,11 @@
 // shared/types/OmikujiBot/RulesSchema.ts
 import { z } from 'zod'
 import { BaseRecordSchema, CommentThresholdSchema } from '@shared/types/'
-import { ArrayOmikujiSetSchema } from './OmikujiSchema'
+import { OmikujiSetSchema } from './OmikujiSchema'
 
-// おみくじ制限設定のスキーマ
+/**
+ * おみくじ制限設定のスキーマ
+ */
 export const OmikujiLimitsSchema = z.object({
   // 重複処理
   cooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
@@ -19,22 +21,19 @@ export const OmikujiLimitsSchema = z.object({
   repeatMessage: z.string().optional(),
 })
 
-// WordParty設定のスキーマ
-export const WordPartySettingsSchema = z.object({
-  name: z.string().default('').catch(''), // WordPartyの名前
-  pattern: z.string().default('').catch(''), // WordPartyのパターン
-})
-
-// ルール共通部分の基本スキーマ
-export const BaseRuleCommonSchema = z.object({
+/**
+ * Rules 共通部分のスキーマ
+ */
+export const BaseRuleSchema = z.object({
   ...BaseRecordSchema.shape,
-  // おみくじセット配列
-  omikuji: ArrayOmikujiSetSchema,
+  omikuji: OmikujiSetSchema,
 })
 
-// コメントルールの基本スキーマ
-export const BaseCommentRuleSchema = z.object({
-  ...BaseRuleCommonSchema.shape,
+/**
+ * comments スキーマ
+ */
+export const CommentRuleSchema = z.object({
+  ...BaseRuleSchema.shape,
   ruleType: z.literal('comments').default('comments').catch('comments'), // ルールタイプ（コメント）
   threshold: CommentThresholdSchema.default(
     CommentThresholdSchema.parse({
@@ -47,9 +46,11 @@ export const BaseCommentRuleSchema = z.object({
   limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})), // おみくじ実行制限設定
 })
 
-// タイマールールの基本スキーマ
-export const BaseTimerRuleSchema = z.object({
-  ...BaseRuleCommonSchema.shape,
+/**
+ * timers スキーマ
+ */
+export const TimerRuleSchema = z.object({
+  ...BaseRuleSchema.shape,
   ruleType: z.literal('timers').default('timers').catch('timers'), // ルールタイプ（タイマー）
   // 間隔時間（秒）
   intervalSeconds: z
@@ -65,4 +66,6 @@ export const BaseTimerRuleSchema = z.object({
  * 型
  */
 export type OmikujiLimitsType = z.infer<typeof OmikujiLimitsSchema>
-export type WordPartySettings = z.infer<typeof WordPartySettingsSchema>
+export type CommentRuleType = z.infer<typeof CommentRuleSchema>
+export type TimerRuleType = z.infer<typeof TimerRuleSchema>
+export type RuleType = CommentRuleType | TimerRuleType

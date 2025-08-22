@@ -49,11 +49,10 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiSetSchema, OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemSchema, OmikujiSetType } from '@/types/OmikujiData/OmikujiSchema'
   import { RuleType } from '@/types/OmikujiData/OmikujiDataSchema'
   import CharacterBulkChanger from './CharacterBulkChanger.vue'
   import OmikujiItemEditor from './OmikujiItemEditor.vue'
-  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
@@ -68,7 +67,7 @@
   // ストアを使用
   const omikujiStore = useOmikujiStore()
 
-  // createComputedを使用してPiniaストアとの双方向バインディングを作成
+  // Computed
   const omikujiSets = computed({
     get: () => {
       if (!props.selectedRuleId) return []
@@ -89,7 +88,7 @@
   })
 
   const addOmikuji = () => {
-    const newOmikuji = OmikujiSetSchema.parse({})
+    const newOmikuji = OmikujiItemSchema.parse({})
     omikujiSets.value = [...omikujiSets.value, newOmikuji]
   }
 </script>
