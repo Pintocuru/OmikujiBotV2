@@ -1,6 +1,11 @@
-// src/ConfigMaker/script/stores/composables/useDataOperations.ts
+// src/ConfigMaker/script/stores/composables/useDataOperations.ts (更新版)
 import { Ref } from 'vue'
-import { CategoryType } from '@/types/OmikujiData/CategoryType'
+import {
+  CategoryType,
+  RecordCategoryType,
+  RecordCategoryTypeMap,
+  RecordCategoryUnion,
+} from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { ImportPreview, ImportMode } from '@ConfigComponents/presets/useImportPreviewManager'
 import { toast } from 'vue-sonner'
@@ -54,24 +59,37 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
    */
   const mergeDataSets = (importedData: OmikujiDataType, preview: ImportPreview): boolean => {
     try {
-      const result: OmikujiDataType = { ...data.value }
+      let result: OmikujiDataType
 
-      Object.entries(preview.categories).forEach(([categoryKey, config]) => {
-        if (!config.enabled) return
+      if (preview.importMode === 'full') {
+        // 全体上書きモード - 単純にインポートデータを使用
+        result = { ...importedData }
+        toast.success('データの上書きが完了しました。')
+      } else {
+        // 部分更新モード
+        // TODO: orderの数値が既存のデータと被るため、
+        // 必ず既存の orderよりも高い数値をあらかじめ入れること。
+        result = { ...data.value }
 
-        const category = categoryKey as CategoryType
-        const currentItems = result[category] as Record<string, unknown>
-        const importItems = importedData[category] as Record<string, unknown>
-        const mergedItems = mergeCategoryData(currentItems, importItems, config.mode)
+        // Record型カテゴリのみ処理
+        Object.entries(preview.recordCategories).forEach(([categoryKey, config]) => {
+          if (!config.enabled) return
 
-        result[category] = mergedItems as any
-      })
+          const category = categoryKey as RecordCategoryType
+          const currentItems = result[category]
+          const importItems = importedData[category]
+          const mergedItems = mergeCategoryData(currentItems, importItems, config.mode)
+          result[category] = mergedItems
+        })
+
+        // Object型カテゴリは変更しない（既存データを保持）
+        toast.success('データの部分更新が完了しました。')
+      }
 
       data.value = result
-      toast.success('データのマージが完了しました。')
       return true
     } catch (error) {
-      toast.error('データのマージ中にエラーが発生しました。')
+      toast.error('データの更新中にエラーが発生しました。')
       console.error('Merge error:', error)
       return false
     }
@@ -80,16 +98,29 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
   /**
    * カテゴリごとのデータマージ処理
    */
-  const mergeCategoryData = (
-    currentItems: Record<string, unknown>,
-    importItems: Record<string, unknown>,
+  const mergeCategoryData = <C extends RecordCategoryType>(
+    currentItems: RecordCategoryTypeMap[C],
+    importItems: RecordCategoryTypeMap[C],
     mode: ImportMode
-  ): Record<string, unknown> => {
+  ): RecordCategoryTypeMap[C] => {
     switch (mode) {
-      case 'replace':
+      case 'full-replace':
+        // 全体上書き（全データ置き換え）
         return importItems
-      case 'merge':
-        return { ...currentItems, ...importItems }
+
+      case 'partial-replace':
+        // 部分置き換え（カテゴリ内の既存データを削除して新しいデータのみ）
+        return importItems
+
+      case 'partial-merge':
+        // 部分マージ（同じIDがある場合はJSONデータを優先）
+        if (typeof currentItems === 'object' && typeof importItems === 'object') {
+          return { ...currentItems, ...importItems }
+        }
+        return importItems
+
+      default:
+        return currentItems
     }
   }
 

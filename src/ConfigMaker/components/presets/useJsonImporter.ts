@@ -55,6 +55,11 @@ export const useJsonImporter = () => {
     return omikujiStore.mergeDataSets(importedJsonData.value, previewManager.previewData.value)
   }
 
+  // グローバルインポートモードの設定
+  const setGlobalImportMode = (mode: 'full' | 'partial') => {
+    previewManager.setGlobalImportMode(mode)
+  }
+
   // カテゴリ設定の更新
   const updateImportCategoryConfig = (category: CategoryType, config: Partial<CategoryImportConfig>) => {
     previewManager.updateCategorySettings(category, config)
@@ -103,6 +108,7 @@ export const useJsonImporter = () => {
     handleServerLoad,
     createImportPreview,
     executeDataImport,
+    setGlobalImportMode,
     updateImportCategoryConfig,
     resetImportProcess,
   }

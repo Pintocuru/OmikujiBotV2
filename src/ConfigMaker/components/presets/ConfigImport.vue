@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/presets/ConfigImport.vue -->
+<!-- src/configMaker/components/presets/ConfigImport.vue (更新版) -->
 <template>
   <div class="flex-1">
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />
@@ -23,6 +23,7 @@
     @confirm="executeImportProcess"
     @category-enabled-change="handleCategoryEnabledChange"
     @category-mode-change="handleCategoryModeChange"
+    @global-mode-change="handleGlobalModeChange"
   />
 </template>
 
@@ -66,7 +67,12 @@
     }
   }
 
-  // カテゴリ有効/無効切り替え - 引数を修正
+  // グローバルインポートモード変更
+  const handleGlobalModeChange = (mode: 'full' | 'partial') => {
+    jsonImporter.setGlobalImportMode(mode)
+  }
+
+  // カテゴリ有効/無効切り替え
   const handleCategoryEnabledChange = (category: CategoryType, enabled: boolean) => {
     jsonImporter.updateImportCategoryConfig(category, { enabled })
   }

@@ -1,9 +1,10 @@
-// src/configMaker/components/presets/useImportPreviewManager.ts
+// src/configMaker/components/presets/useImportPreviewManager.ts (効率化版)
 import { ref, computed } from 'vue'
-import { CategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
+import { CategoryType, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
-export type ImportMode = 'replace' | 'merge'
+// インポートモードを簡素化
+export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'
 
 // 競合情報を表すインターフェース
 export interface ConflictInfo {
@@ -14,14 +15,16 @@ export interface ConflictInfo {
 export interface CategoryImportConfig {
   enabled: boolean
   mode: ImportMode
-  count: number // インポートされる項目数
-  conflicts: ConflictInfo[] // 競合する項目のキーと名前
+  count: number
+  conflicts: ConflictInfo[]
 }
 
 export interface ImportPreview {
-  categories: Record<CategoryType, CategoryImportConfig>
+  recordCategories: Record<CategoryType, CategoryImportConfig> // Record型カテゴリのみ
   totalItems: number
   hasConflicts: boolean
+  importMode: 'full' | 'partial'
+  hasValidObjectCategories: boolean // object型カテゴリが有効かどうか
 }
 
 /**
@@ -29,14 +32,7 @@ export interface ImportPreview {
  */
 export const useImportPreviewManager = () => {
   const previewData = ref<ImportPreview | null>(null)
-
-  // デフォルトの読み込み設定
-  const createDefaultConfig = (): CategoryImportConfig => ({
-    enabled: true,
-    mode: 'merge',
-    count: 0,
-    conflicts: [],
-  })
+  const globalImportMode = ref<'full' | 'partial'>('partial')
 
   // アイテムから名前を取得するヘルパー関数
   const getItemName = (item: any): string => {
@@ -46,66 +42,112 @@ export const useImportPreviewManager = () => {
     return ''
   }
 
-  // 現在のデータとインポートデータの比較・プレビュー生成
-  const buildPreview = (currentData: OmikujiDataType, importedData: OmikujiDataType): ImportPreview => {
-    // バリデーション済みデータを取得
-    const validatedImportData = OmikujiDataSchema.parse(window.omikujiData)
+  // Record型カテゴリの競合チェック
+  const checkRecordConflicts = (
+    currentData: OmikujiDataType,
+    importedData: OmikujiDataType,
+    category: CategoryType
+  ): ConflictInfo[] => {
+    const currentItems = currentData[category] ?? {}
+    const importItems = importedData[category] ?? {}
 
-    // 初期設定
-    const categories: Record<CategoryType, CategoryImportConfig> = {
-      comments: createDefaultConfig(),
-      timers: createDefaultConfig(),
-      placeholders: createDefaultConfig(),
-      scriptSettings: createDefaultConfig(),
-      characters: createDefaultConfig(),
-      displaySettings: createDefaultConfig(),
-      wordPartySettings: createDefaultConfig(),
-      meta: createDefaultConfig(),
+    if (typeof currentItems !== 'object' || typeof importItems !== 'object') {
+      return []
     }
 
+    const importKeys = Object.keys(importItems)
+    const currentKeys = Object.keys(currentItems)
+    const conflictKeys = importKeys.filter((key) => currentKeys.includes(key))
+
+    return conflictKeys.map((key) => ({
+      key,
+      /**
+       * 型 'string' の式を使用して型 '{ id: string; name: string; description: string; version: string; generatorName: string; generatorVersion: string; author: string; tags: string[]; license: string; url?: string | undefined; } | Record<...> | ... 5 more ... | { ...; }[]' にインデックスを付けることはできないため、要素は暗黙的に 'any' 型になります。
+  型 'string' のパラメーターを持つインデックス シグネチャが型 '{ id: string; name: string; description: string; version: string; generatorName: string; generatorVersion: string; author: string; tags: string[]; license: string; url?: string | undefined; } | Record<...> | ... 5 more ... | { ...; }[]' に見つかりませんでした。ts(7053)
+const importItems: {
+    id: string;
+    name: string;
+    description: string;
+    version: string;
+    generatorName: string;
+    generatorVersion: string;
+    author: string;
+    tags: string[];
+    license: string;
+    url?: string | undefined;
+} | Record<string, {
+    ruleType: "comments";
+    threshold: {
+        conditions: ("comment" | "syoken" | "access" | "gift" | "count")[];
+        syoken: ("syoken" | "again" | "firstVisit")[];
+        access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[];
+        gift: ("all" | "blue" | "lightBlue" | "green" | "yellow" | "orange" | "pink" | "red" | "purple")[];
+        count: {
+            comparison: "lowerBound" | "upperBound" | "equal" | "loop";
+            unit: "lc" | "tc";
+            value: number;
+        };
+        comment: string[];
+    };
+    ... 14 more ...;
+    description?: string | undefined;
+}> | ... 5 more ... | {
+    ...;
+}[]
+       */
+      name: getItemName(importItems[key]),
+    }))
+  }
+
+  // Object型カテゴリの有効性チェック
+  const checkObjectCategoryValidity = (importedData: OmikujiDataType): boolean => {
+    try {
+      const validatedData = OmikujiDataSchema.parse(importedData)
+      // 基本的にスキーマを通ればOK
+      return !!(
+        validatedData.scriptSettings ||
+        validatedData.displaySettings ||
+        validatedData.wordPartySettings ||
+        validatedData.meta
+      )
+    } catch {
+      return false
+    }
+  }
+
+  // プレビュー生成
+  const buildPreview = (currentData: OmikujiDataType, importedData: OmikujiDataType): ImportPreview => {
+    const validatedImportData = OmikujiDataSchema.parse(importedData)
+
+    const recordCategories: Record<CategoryType, CategoryImportConfig> = {} as any
     let totalItems = 0
     let hasConflicts = false
 
     // Record型カテゴリのみ処理
     recordCategoryLabel.forEach((category) => {
-      const config = categories[category]
-
-      const currentItems = currentData[category] ?? {}
       const importItems = validatedImportData[category] ?? {}
+      const importCount = Object.keys(importItems).length
+      const conflicts = checkRecordConflicts(currentData, validatedImportData, category)
 
-      const importKeys = Object.keys(importItems)
-      const currentKeys = Object.keys(currentItems)
-      const conflictKeys = importKeys.filter((key) => currentKeys.includes(key))
-
-      const conflicts: ConflictInfo[] = conflictKeys.map((key) => ({
-        key,
-        name: getItemName(importItems[key]),
-      }))
-
-      config.count = importKeys.length
-      config.conflicts = conflicts
       if (conflicts.length > 0) hasConflicts = true
-      totalItems += importKeys.length
+      totalItems += importCount
+
+      const isPartialTarget = recordCategoryLabel.includes(category)
+
+      recordCategories[category] = {
+        enabled: globalImportMode.value === 'full' ? true : isPartialTarget,
+        mode: globalImportMode.value === 'full' ? 'full-replace' : 'partial-merge',
+        count: importCount,
+        conflicts,
+      }
     })
 
-    // 特別カテゴリの処理
-    // scriptSettings: object
-    categories.scriptSettings.count = 1
-    categories.scriptSettings.conflicts = []
-
-    // displaySettings: object
-    categories.displaySettings.count = 1
-    categories.displaySettings.conflicts = []
-
-    // wordPartySettings: array
-    const wordPartyData = validatedImportData.wordPartySettings ?? []
-    categories.wordPartySettings.count = wordPartyData.length
-    categories.wordPartySettings.conflicts = []
-
     return {
-      categories,
+      recordCategories,
       totalItems,
       hasConflicts,
+      importMode: globalImportMode.value,
+      hasValidObjectCategories: checkObjectCategoryValidity(validatedImportData),
     }
   }
 
@@ -116,12 +158,36 @@ export const useImportPreviewManager = () => {
     return preview
   }
 
+  // 全体インポートモードの変更
+  const setGlobalImportMode = (mode: 'full' | 'partial') => {
+    globalImportMode.value = mode
+
+    if (previewData.value) {
+      // モード変更時に各カテゴリの設定を更新
+      Object.keys(previewData.value.recordCategories).forEach((categoryKey) => {
+        const category = categoryKey as RecordCategoryType
+        const config = previewData.value!.recordCategories[category]
+        const isPartialTarget = recordCategoryLabel.includes(category)
+
+        if (mode === 'full') {
+          config.enabled = true
+          config.mode = 'full-replace'
+        } else {
+          config.enabled = isPartialTarget
+          config.mode = isPartialTarget ? 'partial-merge' : 'partial-replace'
+        }
+      })
+
+      previewData.value.importMode = mode
+    }
+  }
+
   // カテゴリ設定の更新
   const updateCategorySettings = (category: CategoryType, config: Partial<CategoryImportConfig>) => {
-    if (!previewData.value) return
+    if (!previewData.value || !previewData.value.recordCategories[category]) return
 
-    previewData.value.categories[category] = {
-      ...previewData.value.categories[category],
+    previewData.value.recordCategories[category] = {
+      ...previewData.value.recordCategories[category],
       ...config,
     }
   }
@@ -135,7 +201,7 @@ export const useImportPreviewManager = () => {
   const hasPreviewData = computed(() => !!previewData.value)
   const enabledCategories = computed(() => {
     if (!previewData.value) return []
-    return Object.entries(previewData.value.categories)
+    return Object.entries(previewData.value.recordCategories)
       .filter(([, config]) => config.enabled)
       .map(([category]) => category as CategoryType)
   })
@@ -143,6 +209,7 @@ export const useImportPreviewManager = () => {
   return {
     // State
     previewData,
+    globalImportMode,
 
     // Computed
     hasPreviewData,
@@ -151,6 +218,7 @@ export const useImportPreviewManager = () => {
     // Actions
     generatePreview,
     updateCategorySettings,
+    setGlobalImportMode,
     clearPreview,
   }
 }
