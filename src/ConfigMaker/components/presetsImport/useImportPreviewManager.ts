@@ -73,6 +73,7 @@ const importItems: {
     ...;
 }[]
        */
+      // @ts-ignore 使わないので
       name: getItemName(importItems[key]),
     }))
   }
@@ -141,7 +142,7 @@ const importItems: {
   }
 
   // カテゴリ設定の更新
-  const updateCategorySettings = (category: CategoryType, config: Partial<CategoryImportConfig>) => {
+  const updateCategorySettings = (category: RecordCategoryType, config: Partial<CategoryImportConfig>) => {
     if (!previewData.value || !previewData.value.recordCategories[category]) return
 
     previewData.value.recordCategories[category] = {

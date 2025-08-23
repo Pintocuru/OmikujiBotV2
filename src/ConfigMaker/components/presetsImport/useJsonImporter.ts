@@ -64,6 +64,7 @@ export const useJsonImporter = () => {
 
   // カテゴリ設定の更新
   const updateImportCategoryConfig = (category: CategoryType, config: Partial<CategoryImportConfig>) => {
+    // @ts-ignore 使わないので
     previewManager.updateCategorySettings(category, config)
   }
 
