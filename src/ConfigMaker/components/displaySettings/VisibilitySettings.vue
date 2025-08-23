@@ -8,11 +8,7 @@
 
     <template #body>
       <!-- 基本コンポーネントの可視性 -->
-      <SettingItem
-        label="基本コンポーネント表示"
-        description="各種コンポーネントの表示・非表示を制御"
-        @reset="resetBasicVisibility"
-      >
+      <SettingItem label="基本コンポーネント表示" description="各種コンポーネントの表示・非表示を制御">
         <div class="grid grid-cols-1 gap-2">
           <div v-for="category in recordCategoryLabel" :key="category" class="bg-base-200 p-3 rounded">
             <div class="flex items-center justify-between mb-2">
@@ -34,11 +30,7 @@
       </SettingItem>
 
       <!-- コンポーネント固有の可視性設定 -->
-      <SettingItem
-        label="コンポーネント固有設定"
-        description="特定コンポーネント内の要素の表示制御"
-        @reset="resetComponentSpecificSettings"
-      >
+      <SettingItem label="コンポーネント固有設定" description="特定コンポーネント内の要素の表示制御">
         <div class="space-y-3">
           <!-- characterVisible設定 -->
           <div class="bg-base-200 p-3 rounded">
@@ -61,7 +53,7 @@
           <!-- wordPartyLoading設定 -->
           <div class="bg-base-200 p-3 rounded">
             <div class="flex items-center justify-between mb-2">
-              <span class="label-text font-medium">WordPartyローディング (wordPartyLoading)</span>
+              <span class="label-text font-medium">WordParty読み込み機能 (wordPartyLoading)</span>
             </div>
             <div class="flex gap-2 flex-wrap">
               <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
@@ -79,11 +71,7 @@
       </SettingItem>
 
       <!-- ゲームスクリプト関連設定 -->
-      <SettingItem
-        label="ゲームスクリプト設定"
-        description="ゲームスクリプト関連の表示制御"
-        @reset="resetGameScriptSettings"
-      >
+      <SettingItem label="ゲームスクリプト設定" description="ゲームスクリプト関連の表示制御">
         <div class="space-y-3">
           <!-- ゲームスクリプト設定UI表示制御 -->
           <div class="bg-base-200 p-3 rounded">
@@ -128,7 +116,7 @@
       </SettingItem>
 
       <!-- その他設定 -->
-      <SettingItem label="ツール系設定" description="便利系コンポーネントの表示制御" @reset="resetToolSettings">
+      <SettingItem label="ツール系設定" description="便利系コンポーネントの表示制御">
         <div class="bg-base-200 p-3 rounded">
           <div class="flex items-center justify-between mb-2">
             <span class="label-text font-medium">WordPartyリスト</span>
@@ -191,37 +179,5 @@
   // カテゴリ表示名の取得
   function getCategoryDisplayName(category: CategoryType): string {
     return `${categoryLabels[category].label} (${category})`
-  }
-
-  // リセット関数
-  function resetBasicVisibility() {
-    const resetVisibility = { ...visibilitySettings.value }
-    recordCategoryLabel.forEach((category) => {
-      resetVisibility[category] = 'basic' as AccessLevelType
-    })
-    visibilitySettings.value = resetVisibility
-  }
-
-  function resetComponentSpecificSettings() {
-    visibilitySettings.value = {
-      ...visibilitySettings.value,
-      characterVisible: 'basic' as AccessLevelType,
-      wordPartyLoading: 'basic' as AccessLevelType,
-    }
-  }
-
-  function resetGameScriptSettings() {
-    visibilitySettings.value = {
-      ...visibilitySettings.value,
-      gameScripts: [],
-      gameScriptSettings: 'basic' as AccessLevelType,
-    }
-  }
-
-  function resetToolSettings() {
-    visibilitySettings.value = {
-      ...visibilitySettings.value,
-      wordPartySettings: 'basic' as AccessLevelType,
-    }
   }
 </script>
