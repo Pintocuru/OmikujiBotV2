@@ -134,7 +134,7 @@ export const useImportStore = defineStore('import', () => {
     }
   }
 
-  const updateCategoryConfig = (category: CategoryType, config: Partial<CategoryImportConfig>) => {
+  const updateCategoryConfig = (category: RecordCategoryType, config: Partial<CategoryImportConfig>) => {
     if (!previewData.value?.recordCategories[category]) return
 
     previewData.value.recordCategories[category] = {
@@ -149,9 +149,7 @@ export const useImportStore = defineStore('import', () => {
     const omikujiStore = useOmikujiStore()
     const result = omikujiStore.mergeDataSets(importedData.value, previewData.value)
 
-    if (result) {
-      resetImportProcess()
-    }
+    if (result) resetImportProcess()
 
     return result
   }

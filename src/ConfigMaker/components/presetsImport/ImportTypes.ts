@@ -1,5 +1,5 @@
-// src\ConfigMaker\components\presetsImport\ImportTypes.ts
-import { CategoryType } from '@/types/OmikujiData/CategoryType'
+// src\ConfigMaker\components\presetsImport\ImportTypes.ts (修正版)
+import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 
 //
 export type JsonDataSource = 'file' | 'server'
@@ -21,7 +21,7 @@ export interface CategoryImportConfig {
 }
 
 export interface ImportPreview {
-  recordCategories: Record<CategoryType, CategoryImportConfig> // Record型カテゴリのみ
+  recordCategories: Record<RecordCategoryType, CategoryImportConfig> // Record型カテゴリのみに修正
   totalItems: number
   importMode: 'full' | 'partial'
 }

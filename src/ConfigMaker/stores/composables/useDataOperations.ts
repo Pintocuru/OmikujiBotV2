@@ -1,11 +1,6 @@
-// src/ConfigMaker/script/stores/composables/useDataOperations.ts (更新版)
+// src/ConfigMaker/script/stores/composables/useDataOperations.ts (修正版 v2)
 import { Ref } from 'vue'
-import {
-  CategoryType,
-  RecordCategoryType,
-  RecordCategoryTypeMap,
-  RecordCategoryUnion,
-} from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryDataMap, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { ImportPreview, ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
 import { toast } from 'vue-sonner'
@@ -55,6 +50,54 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
   }
 
   /**
+   * BaseRecordSchemaを含むアイテムかどうかを判定
+   */
+  const hasOrderProperty = (item: any): item is { order: number } => {
+    return item && typeof item === 'object' && 'order' in item && typeof item.order === 'number'
+  }
+
+  /**
+   * 指定されたカテゴリの最大order値を取得
+   */
+  const getMaxOrder = (categoryData: Record<string, any>): number => {
+    if (!categoryData || typeof categoryData !== 'object') {
+      return 0
+    }
+
+    const orders = Object.values(categoryData)
+      .filter(hasOrderProperty)
+      .map((item) => item.order)
+
+    return orders.length > 0 ? Math.max(...orders) : 0
+  }
+
+  /**
+   * インポートデータのorder値を調整
+   */
+  const adjustOrderValues = <T extends Record<string, any>>(importItems: T, baseOrder: number): T => {
+    if (!importItems || typeof importItems !== 'object') {
+      return importItems
+    }
+
+    const result = {} as T
+    let currentOffset = 0
+
+    Object.entries(importItems).forEach(([key, item]) => {
+      if (hasOrderProperty(item)) {
+        result[key as keyof T] = {
+          ...item,
+          order: baseOrder + currentOffset + 1,
+        } as T[keyof T]
+        currentOffset++
+      } else {
+        result[key as keyof T] = item
+      }
+    })
+
+    return result
+  }
+
+  /**
    * インポートされたデータを既存データにマージ
    */
   const mergeDataSets = (importedData: OmikujiDataType, preview: ImportPreview): boolean => {
@@ -67,51 +110,27 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
         toast.success('データの上書きが完了しました。')
       } else {
         // 部分更新モード
-        // TODO: orderの数値が既存のデータと被るため、
-        // 必ず既存の orderよりも高い数値をあらかじめ入れること。
         result = { ...data.value }
 
         // Record型カテゴリのみ処理
-        Object.entries(preview.recordCategories).forEach(([categoryKey, config]) => {
-          if (!config.enabled) return
+        recordCategoryLabel.forEach(<K extends RecordCategoryType>(category: K) => {
+          const config = preview.recordCategories[category]
+          if (!config?.enabled) return
 
-          const category = categoryKey as RecordCategoryType
           const currentItems = result[category]
           const importItems = importedData[category]
-          /**
-           * 型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' の引数を型 '{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: string[]; }...' のパラメーターに割り当てることはできません。
-  型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' を型 '{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: string[]; }...' に割り当てることはできません。
-    型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' には 型 '{ displayName: string; displayOption: { isIconDisplay: boolean; isOneCommePost: boolean; isVoice: boolean; }; color: { nameColor: string; textColor: string; backgroundColor: string; customClasses?: string | undefined; }; ... 17 more ...; description?: string | undefined; }' からの次のプロパティがありません: displayName, displayOption, color, version、7 など。ts(2345)
-const currentItems: Record<string, {
-    ruleType: "comments";
-    threshold: {
-        conditions: ("comment" | "syoken" | "access" | "gift" | "count")[];
-        syoken: ("syoken" | "again" | "firstVisit")[];
-        access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[];
-        gift: ("all" | "blue" | "lightBlue" | "green" | "yellow" | "orange" | "pink" | "red" | "purple")[];
-        count: {
-            comparison: "lowerBound" | "upperBound" | "equal" | "loop";
-            unit: "lc" | "tc";
-            value: number;
-        };
-        comment: string[];
-    };
-    scriptId: string | null;
-    scriptParams: Record<string, any> | null;
-    limits: {
-        cooldownSeconds: number;
-        ... 5 more ...;
-        repeatMessage?: string | undefined;
-    };
-    ... 11 more ...;
-    description?: string | undefined;
-}> | Record<...> | Record<...> | Record<...>
-           */
-          const mergedItems = mergeCategoryData(currentItems, importItems, config.mode)
-          result[category] = mergedItems
+
+          let adjustedImportItems = importItems
+          if (config.mode === 'partial-merge') {
+            const maxOrder = getMaxOrder(currentItems)
+            adjustedImportItems = adjustOrderValues(importItems, maxOrder)
+          }
+
+          const mergedItems = mergeCategoryData(currentItems, adjustedImportItems, config.mode)
+
+          result[category] = mergedItems as OmikujiDataType[typeof category]
         })
 
-        // Object型カテゴリは変更しない（既存データを保持）
         toast.success('データの部分更新が完了しました。')
       }
 
@@ -128,10 +147,10 @@ const currentItems: Record<string, {
    * カテゴリごとのデータマージ処理
    */
   const mergeCategoryData = <C extends RecordCategoryType>(
-    currentItems: RecordCategoryTypeMap[C],
-    importItems: RecordCategoryTypeMap[C],
+    currentItems: RecordCategoryDataMap[C],
+    importItems: RecordCategoryDataMap[C],
     mode: ImportMode
-  ): RecordCategoryTypeMap[C] => {
+  ): RecordCategoryDataMap[C] => {
     switch (mode) {
       case 'full-replace':
         // 全体上書き（全データ置き換え）
@@ -143,10 +162,7 @@ const currentItems: Record<string, {
 
       case 'partial-merge':
         // 部分マージ（同じIDがある場合はJSONデータを優先）
-        if (typeof currentItems === 'object' && typeof importItems === 'object') {
-          return { ...currentItems, ...importItems }
-        }
-        return importItems
+        return { ...currentItems, ...importItems }
 
       default:
         return currentItems

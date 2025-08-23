@@ -1,4 +1,5 @@
 // src/configMaker/components/presets/useJsonFileLoader.ts
+// ! 使わないかも
 import { ref } from 'vue'
 import type { OmikujiDataType } from '@/types/'
 import { useJsonDataSource } from './useJsonDataSource'

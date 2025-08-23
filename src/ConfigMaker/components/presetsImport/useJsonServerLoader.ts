@@ -1,4 +1,5 @@
-// src/configMaker/components/presets/useJsonServerLoader.ts (新規)
+// src/configMaker/components/presets/useJsonServerLoader.ts
+// ! 使わないかも
 import { useJsonDataSource } from './useJsonDataSource'
 import type { OmikujiDataType } from '@/types/'
 

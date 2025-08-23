@@ -4,7 +4,7 @@ import {
   CategoryType,
   recordCategoryLabel,
   RecordCategoryType,
-  RecordCategoryTypeMap,
+  RecordCategoryItemTypeMap,
 } from '@/types/OmikujiData/CategoryType'
 
 /**
@@ -30,7 +30,7 @@ export function useNavigationState() {
     }
 
     // 最初のルールを自動選択（order順または最初のアイテム）
-    const items = getCategoryMap<RecordCategoryTypeMap[(typeof recordCategoryLabel)[number]]>(
+    const items = getCategoryMap<RecordCategoryItemTypeMap[(typeof recordCategoryLabel)[number]]>(
       category as RecordCategoryType
     )
     const firstId =

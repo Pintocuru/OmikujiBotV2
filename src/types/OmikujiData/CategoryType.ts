@@ -17,7 +17,13 @@ import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks, Tags 
 export const recordCategoryLabel = [...rulesCategoryLabel, 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
 export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
-export type RecordCategoryTypeMap = {
+export type RecordCategoryDataMap = {
+  comments: Record<string, CommentRuleType>
+  timers: Record<string, TimerRuleType>
+  placeholders: Record<string, PlaceholderType>
+  characters: Record<string, CharacterType>
+}
+export type RecordCategoryItemTypeMap = {
   comments: CommentRuleType
   timers: TimerRuleType
   placeholders: PlaceholderType

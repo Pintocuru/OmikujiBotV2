@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { toast } from 'vue-sonner'
   import ConfigImportModal from './ConfigImportModal.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useImportStore } from './useImportStore'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { toast } from 'vue-sonner'
 
   const { isPro } = useSettingMode()
   const importStore = useImportStore()

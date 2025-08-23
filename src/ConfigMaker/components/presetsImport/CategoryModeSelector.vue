@@ -1,0 +1,51 @@
+<!-- src\ConfigMaker\components\presetsImport\CategoryModeSelector.vue -->
+<template>
+  <div class="flex items-center gap-4">
+    <span class="text-sm">読み込み方法:</span>
+    <div class="flex gap-2">
+      <label class="flex items-center gap-1">
+        <input
+          type="radio"
+          :name="`mode-${category}`"
+          value="partial-replace"
+          :checked="config.mode === 'partial-replace'"
+          @change="() => handleModeChange('partial-replace')"
+          class="radio radio-sm"
+        />
+        <span class="text-sm">置き換え</span>
+      </label>
+      <label class="flex items-center gap-1">
+        <input
+          type="radio"
+          :name="`mode-${category}`"
+          value="partial-merge"
+          :checked="config.mode === 'partial-merge'"
+          @change="() => handleModeChange('partial-merge')"
+          class="radio radio-sm"
+        />
+        <span class="text-sm">マージ</span>
+      </label>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { CategoryType } from '@/types/OmikujiData/CategoryType'
+  import { ImportMode } from './ImportTypes'
+  import { useImportStore } from './useImportStore'
+
+  interface Props {
+    category: CategoryType
+    config: {
+      mode: ImportMode
+    }
+  }
+
+  const props = defineProps<Props>()
+
+  const importStore = useImportStore()
+
+  const handleModeChange = (mode: ImportMode) => {
+    importStore.updateCategoryConfig(props.category, { mode })
+  }
+</script>

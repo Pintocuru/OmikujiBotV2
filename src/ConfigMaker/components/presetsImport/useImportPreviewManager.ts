@@ -1,4 +1,5 @@
 // src/configMaker/components/presets/useImportPreviewManager.ts (効率化版)
+// ! 使わないかも
 import { ref, computed } from 'vue'
 import { CategoryType, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'

@@ -4,7 +4,7 @@ import {
   CategoryType,
   RecordCategorySchemaMap,
   RecordCategoryType,
-  RecordCategoryTypeMap,
+  RecordCategoryItemTypeMap,
 } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
@@ -25,7 +25,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   /**
    * カテゴリに新しいアイテムを追加
    */
-  const addItem = <C extends RecordCategoryType>(category: C, item: Partial<RecordCategoryTypeMap[C]> = {}) => {
+  const addItem = <C extends RecordCategoryType>(category: C, item: Partial<RecordCategoryItemTypeMap[C]> = {}) => {
     const schema = RecordCategorySchemaMap[category]
     let parseItem = item
 
@@ -46,9 +46,9 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   const updateItem = <C extends RecordCategoryType>(
     category: C,
     id: string,
-    updates: Partial<RecordCategoryTypeMap[C]>
+    updates: Partial<RecordCategoryItemTypeMap[C]>
   ) => {
-    const categoryData = data.value[category] as Record<string, RecordCategoryTypeMap[C]>
+    const categoryData = data.value[category] as Record<string, RecordCategoryItemTypeMap[C]>
 
     if (categoryData && categoryData[id] !== undefined) {
       const updatedItem = { ...categoryData[id], ...updates, updatedAt: new Date().toISOString() }
@@ -144,7 +144,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
    * カテゴリ内のアイテムを複製
    */
   const duplicateItem = <C extends RecordCategoryType>(category: C, id: string): string | null => {
-    const item = getItem<RecordCategoryTypeMap[C]>(category, id)
+    const item = getItem<RecordCategoryItemTypeMap[C]>(category, id)
     if (!item) return null
 
     const newId = `${id}_copy`
@@ -165,14 +165,14 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   /**
    * カテゴリの全アイテムを取得
    */
-  const getCategoryMap = <K extends RecordCategoryType>(category: K): Record<string, RecordCategoryTypeMap[K]> => {
-    return (data.value[category] as Record<string, RecordCategoryTypeMap[K]>) || {}
+  const getCategoryMap = <K extends RecordCategoryType>(category: K): Record<string, RecordCategoryItemTypeMap[K]> => {
+    return (data.value[category] as Record<string, RecordCategoryItemTypeMap[K]>) || {}
   }
 
   /**
    * カテゴリのアイテム配列を取得
    */
-  const getCategoryArray = <K extends RecordCategoryType>(category: K): RecordCategoryTypeMap[K][] => {
+  const getCategoryArray = <K extends RecordCategoryType>(category: K): RecordCategoryItemTypeMap[K][] => {
     return Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
   }
 
@@ -186,9 +186,9 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     const [movedId] = ids.splice(fromIndex, 1)
     ids.splice(toIndex, 0, movedId)
 
-    const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {}
+    const updatedRules: Record<string, RecordCategoryItemTypeMap[K]> = {}
     ids.forEach((id, index) => {
-      const item = getItem<RecordCategoryTypeMap[K]>(category, id)
+      const item = getItem<RecordCategoryItemTypeMap[K]>(category, id)
       if (item) {
         updatedRules[id] = { ...item, order: index + 1 }
       }
@@ -206,7 +206,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     updates: Array<{ id: string; newOrder: number }>
   ) => {
     const rulesArray = getCategoryArray(category)
-    const updatedRules: Record<string, RecordCategoryTypeMap[K]> = {}
+    const updatedRules: Record<string, RecordCategoryItemTypeMap[K]> = {}
 
     // 既存のルールをコピー
     rulesArray.forEach((rule) => {
