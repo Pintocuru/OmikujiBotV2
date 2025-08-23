@@ -13,7 +13,7 @@ const buildConfig: BuildConfig = {
 
   // テンプレート情報（わんコメ用）
   template: {
-    name: 'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa(プレビュー版) 0.8.0-beta06',
+    name: 'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa 2025.8.23',
     boothURL: 'https://pintocuru.booth.pm/items/5471598',
     readmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',

@@ -37,7 +37,7 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
   }
 
   // MotionWrapperのafter-leaveイベントから呼ばれる関数
-  const removeComment = (messageId: number) => {
+  const removeComment = (messageId: string) => {
     const index = displayedComments.value.findIndex((item) => item.id === messageId)
     if (index > -1) {
       const comment = displayedComments.value[index]
@@ -50,7 +50,7 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
   }
 
   // コメントのvisibleをfalseにしてLeaveアニメーションを開始
-  const hideComment = (messageId: number) => {
+  const hideComment = (messageId: string) => {
     const comment = displayedComments.value.find((item) => item.id === messageId)
     if (comment) {
       comment.visible = false
@@ -60,7 +60,7 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
   // 表示制御ロジック
   const useEnhancedDisplayControl = () => {
     let lastTime = 0
-    const processedMessageIds = new Set<number>()
+    const processedMessageIds = new Set<string>()
 
     const processNewComments = (now: number) => {
       if (now - lastTime <= DISPLAY_CONFIG.INTERVAL) return
