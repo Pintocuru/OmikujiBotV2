@@ -2,7 +2,7 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
 import fs from 'fs/promises'
-import { generateJsContent } from '@ConfigComponents/presets/generateContent'
+import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
 
 // ESModuleでの__dirname取得
 const __filename = fileURLToPath(import.meta.url)

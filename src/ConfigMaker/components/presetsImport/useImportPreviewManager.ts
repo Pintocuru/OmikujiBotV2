@@ -2,30 +2,7 @@
 import { ref, computed } from 'vue'
 import { CategoryType, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-
-// インポートモードを簡素化
-export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'
-
-// 競合情報を表すインターフェース
-export interface ConflictInfo {
-  key: string
-  name: string
-}
-
-export interface CategoryImportConfig {
-  enabled: boolean
-  mode: ImportMode
-  count: number
-  conflicts: ConflictInfo[]
-}
-
-export interface ImportPreview {
-  recordCategories: Record<CategoryType, CategoryImportConfig> // Record型カテゴリのみ
-  totalItems: number
-  hasConflicts: boolean
-  importMode: 'full' | 'partial'
-  hasValidObjectCategories: boolean // object型カテゴリが有効かどうか
-}
+import { CategoryImportConfig, ConflictInfo, ImportPreview } from './ImportTypes'
 
 /**
  * インポートプレビューの生成と管理を担当するComposable
@@ -99,29 +76,12 @@ const importItems: {
     }))
   }
 
-  // Object型カテゴリの有効性チェック
-  const checkObjectCategoryValidity = (importedData: OmikujiDataType): boolean => {
-    try {
-      const validatedData = OmikujiDataSchema.parse(importedData)
-      // 基本的にスキーマを通ればOK
-      return !!(
-        validatedData.scriptSettings ||
-        validatedData.displaySettings ||
-        validatedData.wordPartySettings ||
-        validatedData.meta
-      )
-    } catch {
-      return false
-    }
-  }
-
   // プレビュー生成
   const buildPreview = (currentData: OmikujiDataType, importedData: OmikujiDataType): ImportPreview => {
     const validatedImportData = OmikujiDataSchema.parse(importedData)
 
     const recordCategories: Record<CategoryType, CategoryImportConfig> = {} as any
     let totalItems = 0
-    let hasConflicts = false
 
     // Record型カテゴリのみ処理
     recordCategoryLabel.forEach((category) => {
@@ -129,7 +89,6 @@ const importItems: {
       const importCount = Object.keys(importItems).length
       const conflicts = checkRecordConflicts(currentData, validatedImportData, category)
 
-      if (conflicts.length > 0) hasConflicts = true
       totalItems += importCount
 
       const isPartialTarget = recordCategoryLabel.includes(category)
@@ -145,9 +104,7 @@ const importItems: {
     return {
       recordCategories,
       totalItems,
-      hasConflicts,
       importMode: globalImportMode.value,
-      hasValidObjectCategories: checkObjectCategoryValidity(validatedImportData),
     }
   }
 

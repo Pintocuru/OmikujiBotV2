@@ -1,9 +1,9 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
   <div class="card bg-base-300 mt-4">
-    <div class="collapse collapse-arrow">
+    <div class="collapse" :class="{ 'collapse-arrow': !alwaysOpen }">
       <!-- v-modelで開閉管理 -->
-      <input type="checkbox" v-model="isOpen" />
+      <input type="checkbox" v-model="isOpen" :disabled="alwaysOpen" />
       <div class="collapse-title card-title justify-between" :class="headerClass">
         <slot name="header" />
       </div>
@@ -23,8 +23,9 @@
     defineProps<{
       variant?: Variant
       isOpen?: boolean
+      alwaysOpen?: boolean
     }>(),
-    { variant: 'secondary', isOpen: true }
+    { variant: 'secondary', isOpen: true, alwaysOpen: false }
   )
 
   const isOpen = ref(props.isOpen)

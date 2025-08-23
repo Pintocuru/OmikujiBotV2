@@ -32,7 +32,7 @@
   import { toast } from 'vue-sonner'
   import { type CategoryType } from '@/types/'
   import ConfigImportModal from './ConfigImportModal.vue'
-  import type { ImportMode } from './useImportPreviewManager'
+  import type { ImportMode } from './ImportTypes'
   import { useJsonImporter } from './useJsonImporter'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'

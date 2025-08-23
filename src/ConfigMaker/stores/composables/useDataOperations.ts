@@ -7,7 +7,7 @@ import {
   RecordCategoryUnion,
 } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { ImportPreview, ImportMode } from '@ConfigComponents/presets/useImportPreviewManager'
+import { ImportPreview, ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
 import { toast } from 'vue-sonner'
 
 /**
@@ -78,6 +78,35 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
           const category = categoryKey as RecordCategoryType
           const currentItems = result[category]
           const importItems = importedData[category]
+          /**
+           * 型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' の引数を型 '{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: string[]; }...' のパラメーターに割り当てることはできません。
+  型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' を型 '{ ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comment: string[]; }...' に割り当てることはできません。
+    型 'Record<string, { ruleType: "comments"; threshold: { conditions: ("comment" | "syoken" | "access" | "gift" | "count")[]; syoken: ("syoken" | "again" | "firstVisit")[]; access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[]; gift: ("all" | ... 7 more ... | "purple")[]; count: { ...; }; comme...' には 型 '{ displayName: string; displayOption: { isIconDisplay: boolean; isOneCommePost: boolean; isVoice: boolean; }; color: { nameColor: string; textColor: string; backgroundColor: string; customClasses?: string | undefined; }; ... 17 more ...; description?: string | undefined; }' からの次のプロパティがありません: displayName, displayOption, color, version、7 など。ts(2345)
+const currentItems: Record<string, {
+    ruleType: "comments";
+    threshold: {
+        conditions: ("comment" | "syoken" | "access" | "gift" | "count")[];
+        syoken: ("syoken" | "again" | "firstVisit")[];
+        access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[];
+        gift: ("all" | "blue" | "lightBlue" | "green" | "yellow" | "orange" | "pink" | "red" | "purple")[];
+        count: {
+            comparison: "lowerBound" | "upperBound" | "equal" | "loop";
+            unit: "lc" | "tc";
+            value: number;
+        };
+        comment: string[];
+    };
+    scriptId: string | null;
+    scriptParams: Record<string, any> | null;
+    limits: {
+        cooldownSeconds: number;
+        ... 5 more ...;
+        repeatMessage?: string | undefined;
+    };
+    ... 11 more ...;
+    description?: string | undefined;
+}> | Record<...> | Record<...> | Record<...>
+           */
           const mergedItems = mergeCategoryData(currentItems, importItems, config.mode)
           result[category] = mergedItems
         })

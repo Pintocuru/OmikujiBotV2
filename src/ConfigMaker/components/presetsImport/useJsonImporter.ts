@@ -3,8 +3,9 @@ import { ref, computed } from 'vue'
 import type { OmikujiDataType, CategoryType } from '@/types/'
 import { useJsonFileLoader } from './useJsonFileLoader'
 import { useJsonServerLoader } from './useJsonServerLoader'
-import { useImportPreviewManager, CategoryImportConfig } from './useImportPreviewManager'
+import { useImportPreviewManager } from './useImportPreviewManager'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { CategoryImportConfig } from './ImportTypes'
 
 /**
  * JSONインポート全体を統括するComposable（ファイル・サーバー両対応）

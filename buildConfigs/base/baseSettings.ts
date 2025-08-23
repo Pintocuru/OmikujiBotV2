@@ -2,7 +2,7 @@
 // buildConfigs の共通項目
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { generateJsContent } from '@ConfigComponents/presets/generateContent'
+import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
 import { generateAccessLevelData } from '../../tools/processJsonData'
 
 // このファイル専用の設定

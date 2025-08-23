@@ -2,8 +2,6 @@
 import { ref } from 'vue'
 import { OmikujiDataSchema, type OmikujiDataType } from '@/types/'
 
-export type JsonDataSource = 'file' | 'server'
-
 /**
  * JSON データの読み込み元を抽象化するComposable
  */
@@ -12,11 +10,10 @@ export const useJsonDataSource = () => {
   const loadError = ref('')
 
   // JSONデータを検証・パースする共通メソッド
-  const validateJsonData = async (jsonData: any): Promise<OmikujiDataType> => {
+  const validateJsonData = async (jsonData: unknown): Promise<OmikujiDataType> => {
     try {
       // スキーマ検証
-      const validatedData = OmikujiDataSchema.parse(jsonData)
-      return validatedData
+      return OmikujiDataSchema.parse(jsonData)
     } catch (error) {
       console.error('JSON validation error:', error)
       throw new Error('JSONデータの形式が正しくありません。')
