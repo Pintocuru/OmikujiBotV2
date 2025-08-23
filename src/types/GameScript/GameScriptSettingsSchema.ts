@@ -33,6 +33,7 @@ function createScriptSettingsSchema<T extends Record<string, ScriptPreset>>(
  * createScriptSettingsSchema の簡易版
  */
 export const scriptSettingsSchema = z.record(z.string(), z.record(z.string(), z.any())).default({}).catch({})
+export type ScriptSettingsType = z.infer<typeof scriptSettingsSchema>
 
 /**
  * 単一の scriptId に対応する ScriptParams のスキーマを生成

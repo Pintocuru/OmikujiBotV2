@@ -8,7 +8,7 @@
     <component :is="devToolsComponent" v-if="devToolsComponent" />
 
     <!-- 設定読み込み・書き出し -->
-    <div class="flex flex-wrap justify-between items-center mb-2 gap-4 min-w-0">
+    <div class="flex justify-between">
       <ConfigImport />
       <ConfigExport />
     </div>

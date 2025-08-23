@@ -20,3 +20,5 @@ export * from './OmikujiData/RulesSchema'
 export * from './OmikujiData/CharacterSchema'
 export * from './OmikujiData/OmikujiSchema'
 export * from './OmikujiData/PlaceholderSchema'
+
+export * from './OmikujiProcess/DefaultPlaceholders'

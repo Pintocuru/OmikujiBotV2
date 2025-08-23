@@ -1,30 +1,19 @@
 // types\OmikujiData\CategoryType.ts
-import { PlaceholderType } from './PlaceholderSchema'
-import { CharacterType } from './CharacterSchema'
-import { CommentRuleType, rulesCategoryLabel, RuleType, TimerRuleType } from './RulesSchema'
+import { PlaceholderSchema, PlaceholderType } from './PlaceholderSchema'
+import { CharacterSchema, CharacterType } from './CharacterSchema'
 import {
-  countUnitCondition,
-  countUnitConditionLabels,
-  serviceMetaCondition,
-  serviceMetaConditionLabels,
-} from '@shared/types/'
+  CommentRuleSchema,
+  CommentRuleType,
+  rulesCategoryLabel,
+  RuleType,
+  TimerRuleSchema,
+  TimerRuleType,
+} from './RulesSchema'
 import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks, Tags } from 'lucide-vue-next'
 
-// デフォルトで利用可能なプレースホルダーの定数配列
-export const defaultPlaceholders = ['user', 'price', ...countUnitCondition, ...serviceMetaCondition] as const
-
-// デフォルトプレースホルダーの型定義
-export type DefaultPlaceholders = (typeof defaultPlaceholders)[number]
-
-// デフォルトプレースホルダーの日本語ラベル定義
-export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
-  user: 'コメントしたユーザー',
-  price: 'ギフト金額',
-  ...countUnitConditionLabels,
-  ...serviceMetaConditionLabels,
-}
-
-// 選択可能なカテゴリタイプの定数配列
+/**
+ * RecordCategory
+ */
 export const recordCategoryLabel = [...rulesCategoryLabel, 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
 export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
@@ -35,21 +24,27 @@ export type RecordCategoryTypeMap = {
   characters: CharacterType
 }
 
-// settingsCategory なカテゴリタイプの型定義
+// カテゴリ更新用のスキーママップ
+export const RecordCategorySchemaMap = {
+  comments: CommentRuleSchema,
+  timers: TimerRuleSchema,
+  placeholders: PlaceholderSchema,
+  characters: CharacterSchema,
+} as const
+
+/**
+ * settingsCategory
+ */
 export const settingsCategoryType = ['scriptSettings', 'displaySettings', 'wordPartySettings', 'meta'] as const
 export type SettingsCategoryType = (typeof settingsCategoryType)[number]
 
 /**
- * すべてのカテゴリタイプを定義する定数配列
- * @description RecordCategoryTypeにscriptSettings, displaySettings, wordPartySettingsを追加
+ * CategoryType
  */
 export const categoryType = [...recordCategoryLabel, ...settingsCategoryType] as const
 export type CategoryType = (typeof categoryType)[number]
 
-/**
- * 各カテゴリのラベル、説明、アイコンを定義するオブジェクト
- * @description コメントルール、タイマールールなどの設定項目を定義
- */
+// 各カテゴリのラベル、説明、アイコンを定義
 export const categoryLabels: Record<CategoryType, { label: string; description: string; icon: any }> = {
   comments: {
     label: 'コメントルール', // チャットの内容やユーザー情報でおみくじを発動

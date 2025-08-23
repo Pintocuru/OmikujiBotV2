@@ -1,18 +1,15 @@
 // src/ConfigMaker/script/stores/composables/useRecordOperations.ts
 import { nextTick, Ref } from 'vue'
-import { CategoryType, RecordCategoryType, RecordCategoryTypeMap } from '@/types/OmikujiData/CategoryType'
-import { categorySchemaMap, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import {
+  CategoryType,
+  RecordCategorySchemaMap,
+  RecordCategoryType,
+  RecordCategoryTypeMap,
+} from '@/types/OmikujiData/CategoryType'
+import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
-
-// categorySchemaMapの型安全性を向上
-interface TypedSchema<T> {
-  parse(input: unknown): T & { id: string }
-}
-const typedCategorySchemaMap: {
-  [K in RecordCategoryType]: TypedSchema<RecordCategoryTypeMap[K]>
-} = categorySchemaMap as any
 
 /**
  * カテゴリ内のアイテム操作機能を提供するコンポーザブル
@@ -29,7 +26,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
    * カテゴリに新しいアイテムを追加
    */
   const addItem = <C extends RecordCategoryType>(category: C, item: Partial<RecordCategoryTypeMap[C]> = {}) => {
-    const schema = typedCategorySchemaMap[category]
+    const schema = RecordCategorySchemaMap[category]
     let parseItem = item
 
     // 重複check

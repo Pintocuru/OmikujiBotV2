@@ -1,6 +1,7 @@
 <!-- src/configMaker/components/presets/ConfigExport.vue -->
 <template>
-  <div class="flex flex-wrap gap-2">
+  <div class="flex gap-2">
+    <!-- Dev jsonファイルの保存(Server利用) -->
     <div v-if="isDev && saveFileName">
       <button
         @click="() => devStore.overwriteConfig(saveFileName)"
@@ -13,10 +14,12 @@
         {{ saveFileName.replace('.json', '') || 'ないよ' }} の保存
       </button>
     </div>
+
+    <!-- 設定を出力(js)-->
     <div class="indicator">
       <span v-if="hasChanged" class="indicator-item badge badge-secondary badge-sm"> 変更あり </span>
       <button
-        @click="() => handleExport('config')"
+        @click="exportFile('config')"
         class="btn btn-primary tooltip tooltip-top"
         :class="!hasChanged ? 'btn-soft' : ''"
         data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
@@ -27,9 +30,10 @@
       </button>
     </div>
 
+    <!-- Pro テンプレートを出力(json) -->
     <div v-if="isPro">
       <button
-        @click="() => handleExport('template')"
+        @click="exportFile('template')"
         class="btn btn-success tooltip tooltip-top"
         data-tip="テンプレート(JSONファイル)を出力します"
         :disabled="isExporting"
@@ -43,21 +47,20 @@
 
 <script setup lang="ts">
   import { isDev } from '@/types'
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
   import { useConfigExport } from './useConfigExport'
+  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'
   import { Save } from 'lucide-vue-next'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
-  const { isExporting, exportFile } = useConfigExport()
+  // Pinia store
   const omikujiStore = useOmikujiStore()
   const devStore = useDevStore()
   const { hasChanged } = storeToRefs(omikujiStore)
   const { saveFileName } = storeToRefs(devStore)
-  const { isPro } = useSettingMode()
 
-  const handleExport = async (type: 'config' | 'template') => {
-    await exportFile(type)
-  }
+  // コンポーザブル
+  const { isPro } = useSettingMode()
+  const { isExporting, exportFile } = useConfigExport()
 </script>
