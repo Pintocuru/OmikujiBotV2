@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { CategoryType } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { ImportPreview, ImportMode } from '../../components/presets/useImportPreviewManager'
+import { ImportPreview, ImportMode } from '@ConfigComponents/presets/useImportPreviewManager'
 import { toast } from 'vue-sonner'
 
 /**
@@ -93,18 +93,10 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
     }
   }
 
-  /**
-   * データ全体を更新
-   */
-  const updateData = (newData: OmikujiDataType) => {
-    data.value = newData
-  }
-
   return {
     loadData,
     validateData,
     exportData,
     mergeDataSets,
-    updateData,
   }
 }

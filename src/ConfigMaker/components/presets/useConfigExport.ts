@@ -4,7 +4,7 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { toast } from 'vue-sonner'
 import { generateJsContent, generateJsonContent } from './generateContent'
 
-export type ExportType = 'config' | 'template'
+type ExportType = 'config' | 'template'
 
 interface ExportConfig {
   filename: string

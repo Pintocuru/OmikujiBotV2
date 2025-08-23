@@ -17,18 +17,7 @@ if (typeof window !== 'undefined') window.omikujiData = omikujiData;
 
 // .json での出力テンプレート
 export const generateJsonContent = (configData: string) => {
-  const timestamp = new Date().toISOString()
   const parsedData = JSON.parse(configData)
-
-  const templateData = {
-    _metadata: {
-      type: 'omikuji-template',
-      version: '1.0.0',
-      generatedAt: timestamp,
-      description: 'Omikuji設定テンプレート - 他のプロジェクトのベースとしてご利用ください',
-    },
-    ...parsedData,
-  }
-
+  const templateData = { ...parsedData }
   return JSON.stringify(templateData, null, 2)
 }
