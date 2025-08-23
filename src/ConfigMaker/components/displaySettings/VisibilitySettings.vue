@@ -14,14 +14,67 @@
         @reset="resetBasicVisibility"
       >
         <div class="grid grid-cols-1 gap-2">
-          <label
-            v-for="category in recordCategoryLabel"
-            :key="category"
-            class="label cursor-pointer justify-start gap-3 bg-base-200 p-2 rounded"
-          >
-            <input v-model="visibilitySettings[category]" type="checkbox" class="toggle toggle-warning toggle-sm" />
-            <span class="label-text capitalize">{{ getCategoryDisplayName(category) }}</span>
-          </label>
+          <div v-for="category in recordCategoryLabel" :key="category" class="bg-base-200 p-3 rounded">
+            <div class="flex items-center justify-between mb-2">
+              <span class="label-text font-medium capitalize">{{ getCategoryDisplayName(category) }}</span>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+                <input
+                  v-model="visibilitySettings[category]"
+                  :value="level"
+                  type="radio"
+                  class="radio radio-warning radio-sm"
+                />
+                <span class="label-text capitalize">{{ level }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </SettingItem>
+
+      <!-- コンポーネント固有の可視性設定 -->
+      <SettingItem
+        label="コンポーネント固有設定"
+        description="特定コンポーネント内の要素の表示制御"
+        @reset="resetComponentSpecificSettings"
+      >
+        <div class="space-y-3">
+          <!-- characterVisible設定 -->
+          <div class="bg-base-200 p-3 rounded">
+            <div class="flex items-center justify-between mb-2">
+              <span class="label-text font-medium">キャラクター表示 (characterVisible)</span>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+                <input
+                  v-model="visibilitySettings.characterVisible"
+                  :value="level"
+                  type="radio"
+                  class="radio radio-warning radio-sm"
+                />
+                <span class="label-text capitalize">{{ level }}</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- wordPartyLoading設定 -->
+          <div class="bg-base-200 p-3 rounded">
+            <div class="flex items-center justify-between mb-2">
+              <span class="label-text font-medium">WordPartyローディング (wordPartyLoading)</span>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+                <input
+                  v-model="visibilitySettings.wordPartyLoading"
+                  :value="level"
+                  type="radio"
+                  class="radio radio-warning radio-sm"
+                />
+                <span class="label-text capitalize">{{ level }}</span>
+              </label>
+            </div>
+          </div>
         </div>
       </SettingItem>
 
@@ -33,22 +86,33 @@
       >
         <div class="space-y-3">
           <!-- ゲームスクリプト設定UI表示制御 -->
-          <label class="label cursor-pointer justify-start gap-3 bg-base-200 p-3 rounded w-full">
-            <input
-              v-model="visibilitySettings.gameScriptSettings"
-              type="checkbox"
-              class="toggle toggle-warning toggle-sm"
-            />
-            <span class="label-text">ゲームスクリプトの設定UI</span>
-          </label>
+          <div class="bg-base-200 p-3 rounded">
+            <div class="flex items-center justify-between mb-2">
+              <span class="label-text font-medium">ゲームスクリプトの設定UI</span>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+                <input
+                  v-model="visibilitySettings.gameScriptSettings"
+                  :value="level"
+                  type="radio"
+                  class="radio radio-warning radio-sm"
+                />
+                <span class="label-text capitalize">{{ level }}</span>
+              </label>
+            </div>
+          </div>
 
           <!-- 利用可能なゲームスクリプト -->
           <div class="bg-base-200 p-3 rounded">
+            <div class="mb-2">
+              <span class="label-text font-medium">利用可能なゲームスクリプト</span>
+            </div>
             <div class="grid grid-cols-1 gap-2">
               <label
                 v-for="(scriptPreset, scriptId) in gameScriptMap"
                 :key="scriptId"
-                class="label cursor-pointer justify-between p-2 rounded text-sm"
+                class="label cursor-pointer justify-between p-2 rounded text-sm bg-base-300"
               >
                 <span class="font-mono">{{ scriptPreset.name }} / {{ scriptId }}</span>
                 <input
@@ -64,19 +128,23 @@
       </SettingItem>
 
       <!-- その他設定 -->
-      <SettingItem
-        label="ツール系設定"
-        description="便利系コンポーネントの表示制御"
-        @reset="visibilitySettings.wordPartySettings = true"
-      >
-        <label class="label cursor-pointer justify-start gap-3 bg-base-200 p-3 rounded w-full">
-          <input
-            v-model="visibilitySettings.wordPartySettings"
-            type="checkbox"
-            class="toggle toggle-warning toggle-sm"
-          />
-          <span class="label-text">WordPartyリスト</span>
-        </label>
+      <SettingItem label="ツール系設定" description="便利系コンポーネントの表示制御" @reset="resetToolSettings">
+        <div class="bg-base-200 p-3 rounded">
+          <div class="flex items-center justify-between mb-2">
+            <span class="label-text font-medium">WordPartyリスト</span>
+          </div>
+          <div class="flex gap-2 flex-wrap">
+            <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+              <input
+                v-model="visibilitySettings.wordPartySettings"
+                :value="level"
+                type="radio"
+                class="radio radio-warning radio-sm"
+              />
+              <span class="label-text capitalize">{{ level }}</span>
+            </label>
+          </div>
+        </div>
       </SettingItem>
     </template>
   </SectionCard>
@@ -90,6 +158,7 @@
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
   import { categoryLabels, CategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
+  import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -128,16 +197,31 @@
   function resetBasicVisibility() {
     const resetVisibility = { ...visibilitySettings.value }
     recordCategoryLabel.forEach((category) => {
-      resetVisibility[category] = true
+      resetVisibility[category] = 'basic' as AccessLevelType
     })
     visibilitySettings.value = resetVisibility
+  }
+
+  function resetComponentSpecificSettings() {
+    visibilitySettings.value = {
+      ...visibilitySettings.value,
+      characterVisible: 'basic' as AccessLevelType,
+      wordPartyLoading: 'basic' as AccessLevelType,
+    }
   }
 
   function resetGameScriptSettings() {
     visibilitySettings.value = {
       ...visibilitySettings.value,
       gameScripts: [],
-      gameScriptSettings: true,
+      gameScriptSettings: 'basic' as AccessLevelType,
+    }
+  }
+
+  function resetToolSettings() {
+    visibilitySettings.value = {
+      ...visibilitySettings.value,
+      wordPartySettings: 'basic' as AccessLevelType,
     }
   }
 </script>

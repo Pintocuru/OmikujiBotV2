@@ -27,6 +27,7 @@
       <SettingItem
         label="枠のID名"
         description="わんコメに同じIDの枠がなければ新規作成されます"
+        :showReset="true"
         @reset="localData.frameId = localData.id"
       >
         <input type="text" class="input w-full" v-model="localData.frameId" />
@@ -46,7 +47,6 @@
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { Info } from 'lucide-vue-next'
 
   const props = defineProps<{
     selectedRuleId: string | null

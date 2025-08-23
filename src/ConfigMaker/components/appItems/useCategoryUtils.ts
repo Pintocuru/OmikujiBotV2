@@ -1,8 +1,9 @@
-// src/configMaker/composables/useCategoryUtils.ts
+// src\ConfigMaker\components\appItems\useCategoryUtils.ts
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { computed } from 'vue'
+import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
 export const useCategoryUtils = () => {
   const omikujiStore = useOmikujiStore()
@@ -31,12 +32,12 @@ export const useCategoryUtils = () => {
     const excludeKeys: CategoryType[] = []
 
     // visibility の設定に基づいて非表示にするカテゴリを決定
-    if (!visibility.comments) excludeKeys.push('comments')
-    if (!visibility.timers) excludeKeys.push('timers')
-    if (!visibility.placeholders) excludeKeys.push('placeholders')
-    if (!visibility.characters) excludeKeys.push('characters')
-    if (!visibility.wordPartySettings) excludeKeys.push('wordPartySettings')
-    if (!visibility.gameScriptSettings || visibility.gameScripts.length === 0) {
+    if (!hasAccess(visibility.comments)) excludeKeys.push('comments')
+    if (!hasAccess(visibility.timers)) excludeKeys.push('timers')
+    if (!hasAccess(visibility.placeholders)) excludeKeys.push('placeholders')
+    if (!hasAccess(visibility.characters)) excludeKeys.push('characters')
+    if (!hasAccess(visibility.wordPartySettings)) excludeKeys.push('wordPartySettings')
+    if (!hasAccess(visibility.gameScriptSettings) || visibility.gameScripts.length === 0) {
       excludeKeys.push('scriptSettings')
     }
 

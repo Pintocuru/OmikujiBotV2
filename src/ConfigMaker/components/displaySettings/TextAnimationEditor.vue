@@ -21,7 +21,12 @@
         />
       </div>
       <!-- 表示サイズ -->
-      <SettingItem label="表示サイズ" description="コンテンツの表示サイズを設定します" @reset="resetMap.displaySize">
+      <SettingItem
+        label="表示サイズ"
+        description="コンテンツの表示サイズを設定します"
+        :showReset="true"
+        @reset="resetMap.displaySize"
+      >
         <select v-model="base.displaySize" class="select select-bordered w-full max-w-xs">
           <option v-for="size in displaySize" :key="size" :value="size">
             {{ displaySizeLabels[size] }}
@@ -33,9 +38,11 @@
       <SettingItem
         label="フォントファミリー"
         description="表示に使用するフォントを設定します"
+        variant="success"
+        :showReset="true"
         @reset="resetMap.fontFamily"
       >
-        <select v-model="base.fontFamily" class="select select-bordered w-full max-w-xs">
+        <select v-model="base.fontFamily" class="select select-bordered w-full max-w-xs" :disabled="!isPro">
           <option v-for="font in fontFamilyOptions" :key="font" :value="font">
             {{ fontFamilyLabels[font] }}
           </option>
@@ -46,6 +53,7 @@
       <SettingItem
         label="フキダシアニメーション(開始時)"
         description="フキダシの表示アニメーションを設定します"
+        :showReset="true"
         @reset="resetMap.bubbleMotionEnter"
       >
         <select v-model="base.bubbleMotionEnter" class="select select-bordered w-full max-w-xs">
@@ -58,6 +66,7 @@
       <SettingItem
         label="フキダシアニメーション(終了時)"
         description="フキダシの表示アニメーションを設定します"
+        :showReset="true"
         @reset="resetMap.bubbleMotionEnter"
       >
         <select v-model="base.bubbleMotionLeave" class="select select-bordered w-full max-w-xs">
@@ -83,11 +92,12 @@
   import { fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-
+  const { isPro } = useSettingMode()
   // 基本設定の参照
   const base = computed({
     get: () => data.value.displaySettings.base,

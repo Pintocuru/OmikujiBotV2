@@ -2,7 +2,10 @@
 <template>
   <div class="flex items-center gap-4 px-4 py-2 rounded-md" :class="headerClass">
     <div class="flex flex-col gap-1 min-w-1/3 sm:min-w-1/4">
-      <label class="label-text font-bold">{{ label }}</label>
+      <label class="label-text font-bold">
+        {{ label }}
+        <span v-if="devMemo && isDev" class="badge badge-error badge-sm">{{ devMemo }}</span>
+      </label>
       <span v-if="description" class="text-xs">
         {{ description }}
       </span>
@@ -17,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+  import { isDev } from '@/types'
   import { RotateCcw } from 'lucide-vue-next'
   import { computed } from 'vue'
 
@@ -26,9 +30,10 @@
       description?: string
       variant?: Variant
       showReset?: boolean
+      devMemo?: string
     }>(),
     {
-      showReset: true,
+      showReset: false,
       variant: 'none',
     }
   )

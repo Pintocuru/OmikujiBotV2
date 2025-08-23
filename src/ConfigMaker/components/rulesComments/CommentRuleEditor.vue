@@ -15,7 +15,7 @@
       <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
 
       <!-- ゲームスクリプト設定セクション -->
-      <ScriptGameEditor v-model="selectedItem" />
+      <ScriptGameEditor v-if="canShow('gameScriptSettings')" v-model="selectedItem" />
 
       <!-- おみくじ設定セクション -->
       <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
@@ -40,10 +40,13 @@
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
+
+  const { canShow } = useVisibilityAccess()
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({

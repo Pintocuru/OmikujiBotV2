@@ -10,8 +10,11 @@
     <template #body>
       <!-- キャラクターアイコン表示 -->
       <SettingItem
+        v-if="useVisibilityAccess().canShow('characterVisible')"
         label="キャラクターアイコン"
         description="右下にキャラクターのサムネイルを表示します"
+        devMemo="characterVisible"
+        :showReset="true"
         @reset="resetMap.showCharacterIcon"
       >
         <label class="label cursor-pointer justify-start gap-3">
@@ -38,6 +41,7 @@
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
   const omikujiStore = useOmikujiStore()

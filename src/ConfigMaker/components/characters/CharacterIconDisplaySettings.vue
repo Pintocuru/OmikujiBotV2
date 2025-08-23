@@ -9,10 +9,10 @@
     <template #body>
       <!-- isIconDisplay  -->
       <SettingItem
+        v-if="useVisibilityAccess().canShow('characterVisible')"
         label="キャラクター表示"
         description="ONで画像とフキダシを表示、OFFでフキダシのみ表示"
-        :showReset="false"
-        containerClass="form-control flex-row items-center gap-2 mt-2"
+        devMemo="characterVisible"
       >
         <label class="label cursor-pointer justify-start gap-3">
           <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isIconDisplay" />
@@ -25,7 +25,6 @@
         label="BOTコメントをわんコメに投稿"
         description="わんコメにBOTコメントとして表示させるか"
         :showReset="false"
-        containerClass="form-control flex-row items-center gap-2 mt-2"
       >
         <label class="label cursor-pointer justify-start gap-3">
           <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isOneCommePost" />
@@ -39,7 +38,6 @@
         label="BOTコメントの読み上げ"
         description="BOTコメントをわんコメで鳴らすか"
         :showReset="false"
-        containerClass="form-control flex-row items-center gap-2 mt-2"
       >
         <label class="label cursor-pointer justify-start gap-3">
           <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isVoice" />
@@ -52,9 +50,10 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { DisplayOptionType } from '@/types/'
+  import { DisplayOptionType, isDev } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{
     modelValue: DisplayOptionType

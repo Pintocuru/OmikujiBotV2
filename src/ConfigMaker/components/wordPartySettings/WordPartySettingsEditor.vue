@@ -9,7 +9,7 @@
 
     <!-- config.js 読み込み機能 -->
     <DeveloperMode
-      v-if="isGod"
+      v-if="useVisibilityAccess().canShow('wordPartyLoading')"
       :agreed="developerModeAgreed"
       :load-status="loadStatus"
       @agree="developerModeAgreed = true"
@@ -29,6 +29,7 @@
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
   import { storeToRefs } from 'pinia'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // 設定管理
   const omikujiStore = useOmikujiStore()
