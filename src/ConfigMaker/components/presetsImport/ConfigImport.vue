@@ -4,102 +4,48 @@
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />
     <button
       v-if="isPro"
-      @click="openFileDialog"
+      @click="fileInputRef?.click()"
       class="btn btn-success tooltip tooltip-top"
       data-tip="ダウンロード、またはテンプレート出力したjsonファイルを読み込みます"
-      :disabled="isLoading"
+      :disabled="importStore.isLoading"
     >
-      <span v-if="isLoading" class="loading loading-spinner loading-sm mr-2"></span>
+      <span v-if="importStore.isLoading" class="loading loading-spinner loading-sm mr-2"></span>
       テンプレート読み込み(JSON)
     </button>
   </div>
 
   <!-- インポートプレビューモーダル -->
-  <ConfigImportModal
-    v-if="showPreviewModal"
-    :previewData="previewData"
-    :enabledCategories="jsonImporter.enabledCategories.value"
-    @cancel="cancelImportProcess"
-    @confirm="executeImportProcess"
-    @category-enabled-change="handleCategoryEnabledChange"
-    @category-mode-change="handleCategoryModeChange"
-    @global-mode-change="handleGlobalModeChange"
-  />
+  <ConfigImportModal v-if="importStore.showPreviewModal" />
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
   import { toast } from 'vue-sonner'
-  import { type CategoryType } from '@/types/'
   import ConfigImportModal from './ConfigImportModal.vue'
-  import type { ImportMode } from './ImportTypes'
-  import { useJsonImporter } from './useJsonImporter'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useImportStore } from './useImportStore'
 
-  // Store
-  const omikujiStore = useOmikujiStore()
   const { isPro } = useSettingMode()
+  const importStore = useImportStore()
+  const fileInputRef = ref<HTMLInputElement | null>(null)
 
-  // Composables
-  const jsonImporter = useJsonImporter()
-  // Expose refs and methods for template
-  const { fileInputRef, isLoading, previewData, openFileDialog } = jsonImporter
-
-  // State
-  const showPreviewModal = ref(false)
-
-  // ファイル選択処理
   const handleFileSelection = async (event: Event) => {
-    const data = await jsonImporter.handleFileSelection(event)
+    const file = (event.target as HTMLInputElement).files?.[0]
+    if (!file) return
 
-    if (jsonImporter.loadError.value) {
-      toast.error(jsonImporter.loadError.value)
+    const success = await importStore.loadFromFile(file)
+
+    if (importStore.loadError) {
+      toast.error(importStore.loadError)
       return
     }
 
-    if (data) {
-      // プレビュー生成
-      const preview = jsonImporter.createImportPreview(omikujiStore.data)
-      if (preview) {
-        showPreviewModal.value = true
-      }
+    if (success) {
+      importStore.generatePreview()
+      importStore.openPreviewModal()
     }
-  }
 
-  // グローバルインポートモード変更
-  const handleGlobalModeChange = (mode: 'full' | 'partial') => {
-    jsonImporter.setGlobalImportMode(mode)
-  }
-
-  // カテゴリ有効/無効切り替え
-  const handleCategoryEnabledChange = (category: CategoryType, enabled: boolean) => {
-    jsonImporter.updateImportCategoryConfig(category, { enabled })
-  }
-
-  // カテゴリモード変更
-  const handleCategoryModeChange = (category: CategoryType, mode: ImportMode) => {
-    jsonImporter.updateImportCategoryConfig(category, { mode })
-  }
-
-  // インポート実行
-  const executeImportProcess = () => {
-    try {
-      // ストアのデータを更新
-      const result = jsonImporter.executeDataImport()
-      if (result) {
-        showPreviewModal.value = false
-        jsonImporter.resetImportProcess()
-      }
-    } catch (error) {
-      console.error('Import error:', error)
-      toast.error('設定の読み込みに失敗しました。')
-    }
-  }
-
-  // インポートキャンセル
-  const cancelImportProcess = () => {
-    showPreviewModal.value = false
-    jsonImporter.resetImportProcess()
+    // ファイル入力をリセット
+    ;(event.target as HTMLInputElement).value = ''
   }
 </script>
