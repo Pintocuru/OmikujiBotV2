@@ -5,7 +5,7 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "2025.8.16",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-beta07",
+    "generatorVersion": "0.8.0-beta08",
     "author": "Pintocuru",
     "tags": [
       "おみくじBOT",
@@ -3505,7 +3505,7 @@
       "key": "",
       "name": "霊夢のおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-20T06:08:29.665Z",
+      "updatedAt": "2025-08-23T02:24:19.227Z",
       "order": 1,
       "editorColor": "#EC4899",
       "tags": [],
@@ -4076,30 +4076,35 @@
     }
   },
   "displaySettings": {
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "base": {
       "displaySize": "md",
+      "bubbleMotionEnter": "slideUp",
+      "bubbleMotionLeave": "slideUp",
+      "fontFamily": "default",
       "showCharacterIcon": true,
-      "showToasts": true
+      "showToasts": true,
+      "daisyUiTheme": "dark"
     },
     "developer": {
-      "godModeEnabled": false,
-      "proModeEnabled": true,
       "startup": {
         "component": "omikujiBot",
         "scriptKey": null
       },
       "visibility": {
-        "comments": true,
-        "timers": true,
-        "placeholders": true,
-        "characters": true,
+        "comments": "basic",
+        "timers": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "internal",
+        "gameScriptSettings": "pro",
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "gameScriptSettings": true,
-        "wordPartySettings": true
+        "wordPartySettings": "basic"
       }
     }
   },

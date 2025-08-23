@@ -2895,87 +2895,6 @@
         "isRepeatAllowed": true
       }
     },
-    "UserCountTrigger": {
-      "id": "UserCountTrigger",
-      "key": "",
-      "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-11T03:50:57.709Z",
-      "updatedAt": "2025-08-11T03:50:57.709Z",
-      "order": 22,
-      "isEnabled": true,
-      "editorColor": "#F97316",
-      "tags": [],
-      "omikuji": [
-        {
-          "id": "82695bf6-f2fd-48bd-956c-1363c5930da0",
-          "key": "",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T03:50:57.709Z",
-          "updatedAt": "2025-08-11T03:50:57.709Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
-            }
-          ]
-        },
-        {
-          "id": "2d4e279b-41c1-4ef5-b06f-223fb5708661",
-          "key": "",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T03:50:57.709Z",
-          "updatedAt": "2025-08-11T03:50:57.709Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "FirstCounterSyoken": {
       "id": "FirstCounterSyoken",
       "key": "",
@@ -3441,6 +3360,87 @@
         "count": {
           "comparison": "loop",
           "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTrigger": {
+      "id": "UserCountTrigger",
+      "key": "",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T03:50:57.709Z",
+      "updatedAt": "2025-08-11T03:50:57.709Z",
+      "order": 22,
+      "isEnabled": true,
+      "editorColor": "#F97316",
+      "tags": [],
+      "omikuji": [
+        {
+          "id": "82695bf6-f2fd-48bd-956c-1363c5930da0",
+          "key": "",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+            }
+          ]
+        },
+        {
+          "id": "2d4e279b-41c1-4ef5-b06f-223fb5708661",
+          "key": "",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T03:50:57.709Z",
+          "updatedAt": "2025-08-11T03:50:57.709Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
           "value": 100
         },
         "comment": []
@@ -4941,7 +4941,7 @@
       "fontFamily": "default",
       "showCharacterIcon": true,
       "showToasts": true,
-      "daisyUiTheme": "pastel"
+      "daisyUiTheme": "dark"
     },
     "developer": {
       "startup": {
@@ -4949,17 +4949,19 @@
         "scriptKey": null
       },
       "visibility": {
-        "comments": true,
-        "timers": true,
-        "placeholders": true,
-        "characters": true,
+        "comments": "basic",
+        "timers": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "basic",
+        "gameScriptSettings": "basic",
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "gameScriptSettings": true,
-        "wordPartySettings": true
+        "wordPartySettings": "basic"
       }
     }
   },
