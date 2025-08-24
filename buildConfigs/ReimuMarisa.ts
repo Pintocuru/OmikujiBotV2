@@ -1,19 +1,24 @@
 // buildConfigs/ReimuMarisa.ts
 import { BuildConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { commonBuildConfig } from './base/baseSettings'
+import { AccessLevelType } from '@shared/types/CommonSchema'
 
 /**
  * おみくじBOT ゆっくり霊夢&魔理沙 のビルド設定
  */
+const name = 'ReimuMarisa'
+const version = '2025.8.23'
+const targetAccessLevel: AccessLevelType = 'pro'
+
 const buildConfig: BuildConfig = {
   ...commonBuildConfig, // 共通項目
   // プロジェクト識別情報
-  name: 'ReimuMarisa',
-  version: '2025.8.23',
+  name,
+  version,
 
   // テンプレート情報（わんコメ用）
   template: {
-    name: 'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot Reimu & Marisa 2025.8.23',
+    name: `おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ${name} ${version} ${targetAccessLevel}`,
     boothURL: 'https://pintocuru.booth.pm/items/5471598',
     readmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
@@ -22,8 +27,8 @@ const buildConfig: BuildConfig = {
   // JSON設定（おみくじデータ）
   json: {
     ...commonBuildConfig.json,
-    jsonPath: 'ReimuDX-250724.json',
-    targetAccessLevel: 'pro',
+    jsonPath: 'ReimuMarisa.json',
+    targetAccessLevel,
   },
 
   // リソースファイル

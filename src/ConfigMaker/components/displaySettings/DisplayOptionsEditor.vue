@@ -8,17 +8,32 @@
     </template>
 
     <template #body>
-      <!-- キャラクターアイコン表示 -->
+      <!-- キャラクター背景色の使用 -->
       <SettingItem
         v-if="useVisibilityAccess().canShow('characterVisible')"
-        label="キャラクターアイコン"
+        label="キャラクター画像の背景色"
+        description="キャラ画像の背景に色を付けるかを設定します"
+        devMemo="characterVisible"
+        :showReset="true"
+        @reset="resetMap.useCharacterBgColor"
+      >
+        <label class="label cursor-pointer justify-start gap-3">
+          <input v-model="base.useCharacterBgColor" type="checkbox" class="toggle toggle-primary" />
+          <span class="label-text">背景色を付ける</span>
+        </label>
+      </SettingItem>
+
+      <!-- キャラクターサムネイル表示 -->
+      <SettingItem
+        v-if="useVisibilityAccess().canShow('characterVisible')"
+        label="キャラクターサムネイル"
         description="右下にキャラクターのサムネイルを表示します"
         devMemo="characterVisible"
         :showReset="true"
-        @reset="resetMap.showCharacterIcon"
+        @reset="resetMap.showCharacterThumbnail"
       >
         <label class="label cursor-pointer justify-start gap-3">
-          <input v-model="base.showCharacterIcon" type="checkbox" class="toggle toggle-primary" />
+          <input v-model="base.showCharacterThumbnail" type="checkbox" class="toggle toggle-primary" />
           <span class="label-text">キャラクターアイコンを表示する</span>
         </label>
       </SettingItem>
@@ -78,7 +93,8 @@
 
   // フィールドごとのリセット関数マップ
   const resetMap = {
-    showCharacterIcon: () => resetField('showCharacterIcon'),
+    useCharacterBgColor: () => resetField('useCharacterBgColor'),
+    showCharacterThumbnail: () => resetField('showCharacterThumbnail'),
     showToasts: () => resetField('showToasts'),
   }
 </script>

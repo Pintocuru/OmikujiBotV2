@@ -14,7 +14,7 @@
     <ViewBotToast v-if="base.showToasts" />
 
     <!-- キャラクターサムネイル -->
-    <CharacterThumbnails v-if="base.showCharacterIcon" />
+    <CharacterThumbnails v-if="base.showCharacterThumbnail" />
   </div>
   <!-- わんコメが起動されていない場合のエラー表示 -->
   <ErrorInitComponent v-else :pluginUid="null" />

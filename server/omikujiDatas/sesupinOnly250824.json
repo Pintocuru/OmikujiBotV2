@@ -1,0 +1,1214 @@
+{
+  "meta": {
+    "id": "1754884254510-shoywq",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "1.x.x",
+    "author": "Pintocuru",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
+  "comments": {
+    "StageSelect": {
+      "id": "StageSelect",
+      "key": "",
+      "name": "ステージ",
+      "description": "FallGuysクリエサバイバル用",
+      "createdAt": "2025-08-11T03:50:57.708Z",
+      "updatedAt": "2025-08-24T12:00:56.682Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3B82F6",
+      "tags": [],
+      "accessLevel": "pro",
+      "omikuji": [
+        {
+          "id": "e446aa2d-b9d5-4a6d-96fe-c9bd9a8887be",
+          "key": "",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T03:50:57.708Z",
+          "updatedAt": "2025-08-11T03:50:57.708Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!抽選回す",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "今回のステージは…<<StageRandom>>!"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^ステージ"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {},
+  "placeholders": {
+    "StageRandom": {
+      "id": "StageRandom",
+      "key": "",
+      "name": "クリエサバイバル用",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-24T12:05:11.687Z",
+      "order": 1,
+      "editorColor": "#3B82F6",
+      "tags": [],
+      "values": [
+        {
+          "weight": 4,
+          "content": "5342-2333-9383:PYRAMID CHAOS"
+        },
+        {
+          "weight": 4,
+          "content": "8666-7932-6204:Preickly Ring"
+        },
+        {
+          "weight": 4,
+          "content": "2339-0972-0569:Jungle is Massive"
+        },
+        {
+          "weight": 4,
+          "content": "8375-9941-7502:dark wark"
+        },
+        {
+          "weight": 4,
+          "content": "7547-6979-5814:ドアダッシュサバイバル"
+        },
+        {
+          "weight": 4,
+          "content": "8541-5253-0290:サイクルスライム"
+        },
+        {
+          "weight": 4,
+          "content": "1599-0002-5734:Forest Walk"
+        },
+        {
+          "weight": 4,
+          "content": "8432-7885-0636:今日のコッコ占い"
+        },
+        {
+          "weight": 4,
+          "content": "1368-9060-1768:PUNCH"
+        },
+        {
+          "weight": 4,
+          "content": "7855-3360-4913:氷のバトル・ロワイアル"
+        },
+        {
+          "weight": 4,
+          "content": "4958-0222-6626:チキンストーム"
+        },
+        {
+          "weight": 4,
+          "content": "3298-6726-4118:スライムボール・ショーダウン"
+        },
+        {
+          "weight": 4,
+          "content": "4041-9276-8107:古代のカオスな倉庫"
+        },
+        {
+          "weight": 4,
+          "content": "2247-7565-4476:super Volcano"
+        },
+        {
+          "weight": 4,
+          "content": "7131-6385-2520:Jenga Tower Survival"
+        },
+        {
+          "weight": 4,
+          "content": "3613-4797-9449:スライムロデオ"
+        },
+        {
+          "weight": 4,
+          "content": "2890-3698-4965:WormHole"
+        },
+        {
+          "weight": 4,
+          "content": "2426-2077-1977:ホップドローム"
+        },
+        {
+          "weight": 4,
+          "content": "6068-3654-4416:LASER TRACER"
+        },
+        {
+          "weight": 4,
+          "content": "3515-9668-9362:Death Laser Panic"
+        },
+        {
+          "weight": 4,
+          "content": "6237-2627-3605:ホロビタセイ 救出編"
+        },
+        {
+          "weight": 4,
+          "content": "1425-8061-6325:ROLL'N' SURVIVE"
+        },
+        {
+          "weight": 4,
+          "content": "3323-7766-3284:THE TUMBLE TANK"
+        },
+        {
+          "weight": 4,
+          "content": "8557-4535-7173:スライム飛び交うこっこ"
+        },
+        {
+          "weight": 4,
+          "content": "3455-1690-1506:Survival Project 3"
+        },
+        {
+          "weight": 4,
+          "content": "7341-7088-7129:Virtual Ring"
+        },
+        {
+          "weight": 4,
+          "content": "4841-5974-2295:20秒障害物競走"
+        },
+        {
+          "weight": 4,
+          "content": "7510-8787-6879:20秒障害物競走2"
+        },
+        {
+          "weight": 4,
+          "content": "7025-6757-8636:20秒障害物競走7"
+        },
+        {
+          "weight": 4,
+          "content": "1932-2481-0193:20秒障害物競走8"
+        },
+        {
+          "weight": 4,
+          "content": "2682-8506-3899:20秒障害物競走9"
+        },
+        {
+          "weight": 4,
+          "content": "1005-0144-3855:20秒障害物競走10"
+        },
+        {
+          "weight": 4,
+          "content": "0446-5394-4406:Chicken Tournament"
+        },
+        {
+          "weight": 4,
+          "content": "5041-0026-9700:Itachi - Boss Fight"
+        },
+        {
+          "weight": 4,
+          "content": "7054-1491-3823:20秒障害物競走3"
+        },
+        {
+          "weight": 4,
+          "content": "5340-3992-8947:20秒障害物競走4"
+        },
+        {
+          "weight": 4,
+          "content": "9576-0593-1926:20秒障害物競走5"
+        },
+        {
+          "weight": 4,
+          "content": "4660-3809-2718:20秒障害物競走6"
+        },
+        {
+          "weight": 4,
+          "content": "0688-7186-0681:20秒障害物競走11"
+        },
+        {
+          "weight": 4,
+          "content": "4075-5124-3056:20秒障害物競走12"
+        },
+        {
+          "weight": 4,
+          "content": "6731-9061-2270:ほうかい！？こっこ・ふぉ～とれす！！(さいげん)"
+        },
+        {
+          "weight": 4,
+          "content": "4652-9380-6758:とってとってとっちゃってX"
+        },
+        {
+          "weight": 3,
+          "content": "2822-1455-5547:ピラミッドアウトレインボー"
+        },
+        {
+          "weight": 3,
+          "content": "9366-4247-3382:トマきけこっこ"
+        },
+        {
+          "weight": 3,
+          "content": "1789-1303-4446:CIRCULAR MAYHEM"
+        },
+        {
+          "weight": 3,
+          "content": "1128-4503-8590:Aura Wall"
+        },
+        {
+          "weight": 3,
+          "content": "0755-9730-6093:チャッキーのスピードサーキット"
+        },
+        {
+          "weight": 3,
+          "content": "4829-9277-8859:DESLIZATE AL LIMITE"
+        },
+        {
+          "weight": 3,
+          "content": "1332-6215-3485:て リングスピナー かんたん"
+        },
+        {
+          "weight": 3,
+          "content": "0589-7502-2033:フォールガイズ版勝ち抜き格闘"
+        },
+        {
+          "weight": 3,
+          "content": "1676-7546-9087:ブラストラクション"
+        },
+        {
+          "weight": 3,
+          "content": "5469-4667-5804:ポップコーンBONBON"
+        },
+        {
+          "weight": 3,
+          "content": "8853-5574-5215:たこやきパーティー"
+        },
+        {
+          "weight": 3,
+          "content": "7369-6327-5989:ROTATE & ELIMINATE"
+        },
+        {
+          "weight": 3,
+          "content": "1996-0003-9362:すらいむにおちるな!"
+        },
+        {
+          "weight": 3,
+          "content": "5633-3820-9483:Blunder Blocks"
+        },
+        {
+          "weight": 3,
+          "content": "9720-5488-7978:Rubber Chicken Simple"
+        },
+        {
+          "weight": 3,
+          "content": "6697-0375-9371:Chicken Champ Legends"
+        },
+        {
+          "weight": 3,
+          "content": "8992-3057-5604:Chick N Field"
+        },
+        {
+          "weight": 3,
+          "content": "4440-8104-9591:CHAIR GAME"
+        },
+        {
+          "weight": 3,
+          "content": "4693-3037-1041:Traapeza Cliffhanger"
+        },
+        {
+          "weight": 3,
+          "content": "8344-1519-0900:椅子取り"
+        },
+        {
+          "weight": 3,
+          "content": "3303-7150-3607:explosive Eruption"
+        },
+        {
+          "weight": 3,
+          "content": "0266-0140-2295:CASTLE IN THE SKY"
+        },
+        {
+          "weight": 3,
+          "content": "9005-7701-6604:Torre Tambaleante"
+        },
+        {
+          "weight": 3,
+          "content": "8696-9975-7168:ライドバトロ・ステラ"
+        },
+        {
+          "weight": 3,
+          "content": "3948-9689-4123:Minecraft Zombi"
+        },
+        {
+          "weight": 3,
+          "content": "0575-3771-3041:Castle Siege"
+        },
+        {
+          "weight": 3,
+          "content": "0377-4139-9791:マーブルバランス"
+        },
+        {
+          "weight": 3,
+          "content": "8234-5154-2299:Laser Challemge"
+        },
+        {
+          "weight": 3,
+          "content": "4130-2056-8814:ドッジ・ダイブ・サバイバル"
+        },
+        {
+          "weight": 3,
+          "content": "5571-9797-6268:Paniwue Sur La Place Gommeuse"
+        },
+        {
+          "weight": 3,
+          "content": "2180-1400-9294:ウォールパニックこっこ"
+        },
+        {
+          "weight": 3,
+          "content": "8650-5695-6803:Disc-o Laser Show"
+        },
+        {
+          "weight": 3,
+          "content": "4572-7468-9717:ICE MOUNT"
+        },
+        {
+          "weight": 3,
+          "content": "8105-2043-2901:海洋アリーナ"
+        },
+        {
+          "weight": 3,
+          "content": "4482-5479-9581:海洋アリーナ(Hard)"
+        },
+        {
+          "weight": 3,
+          "content": "2504-6275-8989:ボックスパニックファイナル"
+        },
+        {
+          "weight": 3,
+          "content": "2671-6726-0734:Project Boss Fight"
+        },
+        {
+          "weight": 3,
+          "content": "5289-4446-0558:bad colors"
+        },
+        {
+          "weight": 3,
+          "content": "6038-9512-4209:SHIP PANIC"
+        },
+        {
+          "weight": 3,
+          "content": "4174-2695-2869:Rolling Survival"
+        },
+        {
+          "weight": 3,
+          "content": "5114-7626-1329:End Sweep Official Rule"
+        },
+        {
+          "weight": 3,
+          "content": "2765-7017-6317:Slime Rod Survival"
+        },
+        {
+          "weight": 3,
+          "content": "1337-4699-0946:Lava Walk"
+        },
+        {
+          "weight": 3,
+          "content": "4000-3478-1717:止まるなキケン・雲海"
+        },
+        {
+          "weight": 3,
+          "content": "9585-4220-8610:Hex-Spinner"
+        },
+        {
+          "weight": 3,
+          "content": "9970-6677-9108:Cuartel Digital"
+        },
+        {
+          "weight": 3,
+          "content": "1849-7293-6429:Stop&GO Jump Club"
+        },
+        {
+          "weight": 3,
+          "content": "9741-5278-7219:リニューアルブラストボール"
+        },
+        {
+          "weight": 3,
+          "content": "6487-3411-6029:Chicken Demolition"
+        },
+        {
+          "weight": 3,
+          "content": "0376-2298-6306:Wrecking Ball Roulette"
+        },
+        {
+          "weight": 3,
+          "content": "9147-5285-0097:ミニスペース2025Ver"
+        },
+        {
+          "weight": 3,
+          "content": "8133-5596-9781:Hex-A-Showdown"
+        },
+        {
+          "weight": 3,
+          "content": "6930-4744-3699:Space Tunnel"
+        },
+        {
+          "weight": 3,
+          "content": "2501-1378-5714:Log Jam Redux"
+        },
+        {
+          "weight": 3,
+          "content": "1611-5006-9838:CityWark"
+        },
+        {
+          "weight": 3,
+          "content": "9970-6677-9108:Cuartel Digital"
+        },
+        {
+          "weight": 3,
+          "content": "5409-5451-3971:ぽよぱに"
+        },
+        {
+          "weight": 3,
+          "content": "0225-9522-7517:くらやみこっこ"
+        },
+        {
+          "weight": 3,
+          "content": "5063-6188-8174:Block Rush"
+        },
+        {
+          "weight": 3,
+          "content": "2415-6851-6329:ピンポールサバイバー"
+        },
+        {
+          "weight": 3,
+          "content": "3280-9164-2802:ボンバーガイズ"
+        },
+        {
+          "weight": 3,
+          "content": "2699-1971-7273:Random Medusa"
+        },
+        {
+          "weight": 3,
+          "content": "9809-9354-4326:The Getaway"
+        },
+        {
+          "weight": 3,
+          "content": "8222-5854-3151:デスカウントダウン"
+        },
+        {
+          "weight": 3,
+          "content": "5090-7518-2604:火山島で窃盗"
+        },
+        {
+          "weight": 2,
+          "content": "6874-4369-5869:BIG RACE"
+        },
+        {
+          "weight": 2,
+          "content": "8363-6397-5099:Re:イニG"
+        },
+        {
+          "weight": 2,
+          "content": "6355-9028-9493:トマきけスペースこっこ"
+        },
+        {
+          "weight": 2,
+          "content": "1797-6605-5095:FIELD TEST 006"
+        },
+        {
+          "weight": 2,
+          "content": "1679-7058-5575:BICHO"
+        },
+        {
+          "weight": 2,
+          "content": "0577-9489-8052:BLAST FALL"
+        },
+        {
+          "weight": 2,
+          "content": "3850-8723-0291:JUNGLE CRUISE"
+        },
+        {
+          "weight": 2,
+          "content": "8533-4534-8937:ぐるぐるまわる"
+        },
+        {
+          "weight": 2,
+          "content": "5682-0882-9627:ポコポコサバイバル"
+        },
+        {
+          "weight": 2,
+          "content": "5262-9825-8649:ローラーダービー"
+        },
+        {
+          "weight": 2,
+          "content": "5682-0882-9627:ポコポコサバイバル"
+        },
+        {
+          "weight": 2,
+          "content": "2712-0443-0096:CHAOS SURVIVAL1"
+        },
+        {
+          "weight": 2,
+          "content": "2525-2599-0122:OIL PIT"
+        },
+        {
+          "weight": 2,
+          "content": "5075-2414-6578:ぐらさば"
+        },
+        {
+          "weight": 2,
+          "content": "0004-1036-9716:ふわコロバトル"
+        },
+        {
+          "weight": 2,
+          "content": "6374-4149-6756:Avocado"
+        },
+        {
+          "weight": 2,
+          "content": "2786-5346-1849:積み木サバイバル"
+        },
+        {
+          "weight": 2,
+          "content": "1016-4881-7070:ヘキササークル"
+        },
+        {
+          "weight": 2,
+          "content": "0359-2749-0206:ジャンプ・ロー・パニック"
+        },
+        {
+          "weight": 2,
+          "content": "6247-2496-3636:Hex-A-Rumble(5th anniv ver)"
+        },
+        {
+          "weight": 2,
+          "content": "9983-9123-4746:スモークランティス"
+        },
+        {
+          "weight": 2,
+          "content": "0359-2749-0206:ジャンプ・ロー・パニック"
+        },
+        {
+          "weight": 2,
+          "content": "0262-1240-5727:Plataforma Giratoria"
+        },
+        {
+          "weight": 2,
+          "content": "6807-1202-3933:止まるなキケンスペースWithブラスト"
+        },
+        {
+          "weight": 2,
+          "content": "9852-3881-6656:Bean Highway"
+        },
+        {
+          "weight": 2,
+          "content": "9531-5562-7005:DOMINANCE FIGHT"
+        },
+        {
+          "weight": 2,
+          "content": "6399-5679-6968:COCOA CLASH"
+        },
+        "9123-1342-8604:振り子の支点",
+        "4151-8305-0408:Killer Vs Survivor",
+        "2122-9878-9929:BLAST CAVERN",
+        "0079-0691-0096:ジャンプクラブ？",
+        "6679-4238-9153:ぷにぷにじごく",
+        "7593-9797-0140:マイムマイム",
+        "2038-3785-4888:タイムロック クレート",
+        "6863-2771-6831:Fan Survival",
+        "1047-2162-6725:Haunted Doomspire",
+        "3946-1752-1174:サンザンダーランティス",
+        "6221-0517-9460:Oh Shoot!",
+        "5695-4354-0286:Squid Game - Season2",
+        "5400-6810-8096:Neutral Jump Survival [32 Players]",
+        "0554-2897-0984:ピンボールポインター"
+      ],
+      "accessLevel": "pro"
+    }
+  },
+  "characters": {
+    "reimu": {
+      "id": "reimu",
+      "key": "",
+      "name": "ゆっくり霊夢",
+      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-08-22T09:35:43.722Z",
+      "order": 1,
+      "editorColor": "#EC4899",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "https://nagipon-sozai.studio.site/",
+      "displayName": "ゆっくり霊夢",
+      "frameId": "OmikenReimu",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFC107",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#FF4081",
+        "customClasses": ""
+      },
+      "image": {
+        "default": "reimu/default.webp",
+        "happy": "reimu/happy.webp",
+        "excited": "reimu/excited.webp",
+        "laughing": "reimu/laughing.webp",
+        "blushing": "reimu/blushing.webp",
+        "surprised": "reimu/surprised.webp",
+        "sad": "reimu/sad.webp",
+        "angry": "reimu/angry.webp",
+        "thinking": "reimu/thinking.webp",
+        "wink": "reimu/wink.webp",
+        "singing": "reimu/singing.webp",
+        "sleepy": "reimu/sleepy.webp"
+      },
+      "imageBase64": "data:image/png;base64,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"
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "md",
+      "fontFamily": "default",
+      "bubbleMotionEnter": "scale",
+      "bubbleMotionLeave": "scale",
+      "useCharacterBgColor": true,
+      "showCharacterThumbnail": true,
+      "showToasts": true,
+      "daisyUiTheme": "halloween"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "basic",
+        "gameScriptSettings": "experimental",
+        "gameScripts": [],
+        "wordPartySettings": "experimental"
+      }
+    }
+  },
+  "wordPartySettings": [
+    {
+      "name": "効果音:ドアチャイム1",
+      "pattern": "!ドアチャイム1"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:シーン切り替え1",
+      "pattern": "!シーン切り替え1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示1",
+      "pattern": "!ニュースタイトル表示1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示3",
+      "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:ビシッとツッコミ1",
+      "pattern": "!ビシッとツッコミ1"
+    },
+    {
+      "name": "効果音:チーン1",
+      "pattern": "!チーン1"
+    },
+    {
+      "name": "効果音:間抜け1",
+      "pattern": "!間抜け1"
+    },
+    {
+      "name": "効果音:間抜け5",
+      "pattern": "!間抜け5"
+    },
+    {
+      "name": "効果音:呪いの旋律",
+      "pattern": "!呪いの旋律"
+    },
+    {
+      "name": "効果音:不安（ピアノ演奏）",
+      "pattern": "!不安（ピアノ演奏）"
+    },
+    {
+      "name": "効果音:ジャン！",
+      "pattern": "!ジャン！"
+    },
+    {
+      "name": "効果音:クイズ出題1",
+      "pattern": "!クイズ出題1"
+    },
+    {
+      "name": "効果音:クイズ不正解1",
+      "pattern": "!クイズ不正解1"
+    },
+    {
+      "name": "効果音:クイズ正解1",
+      "pattern": "!クイズ正解1"
+    },
+    {
+      "name": "効果音:金額表示",
+      "pattern": "!金額表示"
+    },
+    {
+      "name": "効果音:消える音",
+      "pattern": "!パッ"
+    },
+    {
+      "name": "効果音:出てくる音",
+      "pattern": "!パパッ"
+    },
+    {
+      "name": "初見",
+      "pattern": "!初見"
+    },
+    {
+      "name": "挑戦者が現れました",
+      "pattern": "!挑戦者"
+    },
+    {
+      "name": "ギフト:霊夢賽銭",
+      "pattern": "!saisen_hako"
+    },
+    {
+      "name": "ギフト:魔理沙キノコ",
+      "pattern": "!kinoko"
+    },
+    {
+      "name": "おみくじ:大吉",
+      "pattern": "!omikuji_01"
+    },
+    {
+      "name": "おみくじ:吉",
+      "pattern": "!omikuji_02"
+    },
+    {
+      "name": "おみくじ:中吉",
+      "pattern": "!omikuji_03"
+    },
+    {
+      "name": "おみくじ:小吉",
+      "pattern": "!omikuji_04"
+    },
+    {
+      "name": "おみくじ:末吉",
+      "pattern": "!omikuji_05"
+    },
+    {
+      "name": "おみくじ:凶",
+      "pattern": "!omikuji_06"
+    },
+    {
+      "name": "おみくじ:残念賞",
+      "pattern": "!omikuji_07"
+    },
+    {
+      "name": "おみくじエフェクト",
+      "pattern": "!omikuji_huru"
+    },
+    {
+      "name": "じゃんけん:グー",
+      "pattern": "!janken_1"
+    },
+    {
+      "name": "じゃんけん:チョキ",
+      "pattern": "!janken_2"
+    },
+    {
+      "name": "じゃんけん:パー",
+      "pattern": "!janken_3"
+    },
+    {
+      "name": "じゃんけん:I Love You",
+      "pattern": "!janken_4"
+    },
+    {
+      "name": "じゃんけん結果:勝ち",
+      "pattern": "!janken_win"
+    },
+    {
+      "name": "じゃんけん結果:負け",
+      "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
+    },
+    {
+      "name": "桃鉄カード:登場ノーマル",
+      "pattern": "!card_00"
+    },
+    {
+      "name": "桃鉄カード:登場ナイス",
+      "pattern": "!card_01"
+    },
+    {
+      "name": "桃鉄カード:登場デビル",
+      "pattern": "!card_02"
+    },
+    {
+      "name": "桃鉄カード:結果ノーマル",
+      "pattern": "!card_10"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_11"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_12"
+    },
+    {
+      "name": "桃鉄カード:結果デビル",
+      "pattern": "!card_13"
+    },
+    {
+      "name": "ゆびをふる:指",
+      "pattern": "!yubiwo_01"
+    },
+    {
+      "name": "パルプンテ",
+      "pattern": "!パルプンテ"
+    },
+    {
+      "name": "Splatoon:インキ黄色",
+      "pattern": "!Spla_01"
+    },
+    {
+      "name": "Splatoon:インキマゼンダ",
+      "pattern": "!Spla_02"
+    },
+    {
+      "name": "Splatoon:インキシアン",
+      "pattern": "!Spla_03"
+    },
+    {
+      "name": "ドラちゃん:背景",
+      "pattern": "!5percent_dora_0"
+    },
+    {
+      "name": "ドラちゃん:手",
+      "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
+      "pattern": "!gacha_00A"
+    },
+    {
+      "name": "幻獣ガチャ:フラッシュ",
+      "pattern": "!gacha_00B"
+    },
+    {
+      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
+      "pattern": "!gacha_A1"
+    },
+    {
+      "name": "幻獣ガチャ:激レアカプセル",
+      "pattern": "!gacha_B1"
+    },
+    {
+      "name": "幻獣ガチャ:激レア表示",
+      "pattern": "!gacha_B2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レアカプセル",
+      "pattern": "!gacha_C1"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア表示",
+      "pattern": "!gacha_C2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
+      "pattern": "!gacha_C3"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombcherry"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombCherry"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bomborange"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bombOrange"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombplam"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombPlum"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombmelon"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombMelon"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombbell"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombBell"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombhut"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombHat"
+    },
+    {
+      "name": "ボンバースロット:BAR",
+      "pattern": "!bombBAR"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombseven"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombSeven"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombback"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombBack"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombfire"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombFire"
+    },
+    {
+      "name": "うさぎスロット:TNTうさぎ",
+      "pattern": "!dwarfBombRabbit"
+    },
+    {
+      "name": "うさぎスロット:ダイナマイト",
+      "pattern": "!dwarfBombDynamite"
+    },
+    {
+      "name": "うさぎスロット:ツルハシ",
+      "pattern": "!dwarfBombPickaxe"
+    },
+    {
+      "name": "うさぎスロット:ダイヤモンド",
+      "pattern": "!dwarfBombDiamond"
+    },
+    {
+      "name": "うさぎスロット:金塊",
+      "pattern": "!dwarfBombGold"
+    },
+    {
+      "name": "うさぎスロット:宝箱",
+      "pattern": "!dwarfBombTreasure"
+    },
+    {
+      "name": "うさぎスロット:ちいさなうさぎ",
+      "pattern": "!dwarfBombDaysBunny"
+    },
+    {
+      "name": "スイカジェネレーター:カボチャ",
+      "pattern": "🎃"
+    },
+    {
+      "name": "スイカジェネレーター:キャンディ",
+      "pattern": "🍬"
+    },
+    {
+      "name": "スイカジェネレーター:スイカ",
+      "pattern": "🍉"
+    },
+    {
+      "name": "スイカジェネレーター:メロン",
+      "pattern": "🍈"
+    },
+    {
+      "name": "スイカジェネレーター:もも",
+      "pattern": "🍑"
+    },
+    {
+      "name": "スイカジェネレーター:パイナップル",
+      "pattern": "🍍"
+    },
+    {
+      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
+      "pattern": "🍐"
+    },
+    {
+      "name": "スイカジェネレーター:りんご",
+      "pattern": "🍎"
+    },
+    {
+      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
+      "pattern": "🦪"
+    },
+    {
+      "name": "スイカジェネレーター:デコポン",
+      "pattern": "🍊"
+    },
+    {
+      "name": "スイカジェネレーター:ぶどう",
+      "pattern": "🍇"
+    },
+    {
+      "name": "スイカジェネレーター:いちご",
+      "pattern": "🍓"
+    },
+    {
+      "name": "スイカジェネレーター:チェリー",
+      "pattern": "🍒"
+    },
+    {
+      "name": "スイカジェネレーター:クジラ",
+      "pattern": "!クジラ"
+    },
+    {
+      "name": "スイカジェネレーター:シャチ",
+      "pattern": "!シャチ"
+    },
+    {
+      "name": "スイカジェネレーター:ジンベエザメ",
+      "pattern": "!ジンベエザメ"
+    },
+    {
+      "name": "スイカジェネレーター:マンボウ",
+      "pattern": "!マンボウ"
+    },
+    {
+      "name": "スイカジェネレーター:ウミガメ",
+      "pattern": "!ウミガメ"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、撮影開始"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、二夜連続"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、ご期待ください"
+    },
+    {
+      "name": "スイカジェネレーター:カニ",
+      "pattern": "!カニ"
+    },
+    {
+      "name": "スイカジェネレーター:フグ",
+      "pattern": "!フグ"
+    },
+    {
+      "name": "スイカジェネレーター:クラゲ",
+      "pattern": "!クラゲ"
+    },
+    {
+      "name": "スイカジェネレーター:クマノミ",
+      "pattern": "!クマノミ"
+    },
+    {
+      "name": "スイカジェネレーター:マリモ",
+      "pattern": "!マリモ"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "初見なのにモデレーター"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "モデレーターなのに初見"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "ここまで見てくれてありがと。"
+    }
+  ]
+}

@@ -54,9 +54,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -65,9 +63,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ステージ"
-        ]
+        "comment": ["^ステージ"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -338,9 +334,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -349,12 +343,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^御神籤"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -625,9 +614,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -636,9 +623,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ずんだ"
-        ]
+        "comment": ["^ずんだ"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -748,9 +733,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -759,16 +742,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^フラワー",
-          "^ふらわー",
-          "^flower",
-          "🌷",
-          "🌹",
-          "🌺",
-          "🌻",
-          "🌼"
-        ]
+        "comment": ["^フラワー", "^ふらわー", "^flower", "🌷", "🌹", "🌺", "🌻", "🌼"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -823,9 +797,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -834,14 +806,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
@@ -898,9 +863,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -909,15 +872,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
@@ -972,9 +927,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -983,15 +936,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi"]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
@@ -1605,9 +1550,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1616,10 +1559,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^じゃんけん",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^janken"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1813,9 +1753,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1824,12 +1762,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2023,9 +1956,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2034,11 +1965,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2232,9 +2159,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2243,12 +2168,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2395,10 +2315,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2407,11 +2324,7 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2493,10 +2406,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2505,11 +2415,7 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2609,9 +2515,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2620,9 +2524,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "コメント"
-        ]
+        "comment": ["コメント"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2718,16 +2620,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
+        "gift": ["blue", "lightBlue", "green"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2794,14 +2690,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow"
-        ],
+        "gift": ["yellow"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2868,17 +2760,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
+        "gift": ["orange", "pink", "red", "purple"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -3022,12 +2907,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -3145,12 +3026,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -3268,12 +3145,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -3351,9 +3224,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -3432,9 +3303,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -4348,9 +4217,7 @@
       "order": 9,
       "editorColor": "#3B82F6",
       "tags": [],
-      "values": [
-        "マリサ キリサメ"
-      ]
+      "values": ["マリサ キリサメ"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -4361,9 +4228,7 @@
       "order": 10,
       "editorColor": "#3B82F6",
       "tags": [],
-      "values": [
-        "俺"
-      ]
+      "values": ["俺"]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -4785,10 +4650,7 @@
       "updatedAt": "2025-08-22T09:35:43.722Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -4831,10 +4693,7 @@
       "updatedAt": "2025-08-22T09:35:45.318Z",
       "order": 2,
       "editorColor": "#84CC16",
-      "tags": [
-        "Yukkuri",
-        "Marisa"
-      ],
+      "tags": ["Yukkuri", "Marisa"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -4877,11 +4736,7 @@
       "updatedAt": "2025-08-22T09:35:47.126Z",
       "order": 3,
       "editorColor": "#10B981",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "zunda"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "zunda"],
       "accessLevel": "internal",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -4939,7 +4794,7 @@
       "bubbleMotionEnter": "scale",
       "bubbleMotionLeave": "scale",
       "fontFamily": "default",
-      "showCharacterIcon": true,
+      "showCharacterThumbnail": true,
       "showToasts": true,
       "daisyUiTheme": "dark"
     },
@@ -4956,11 +4811,7 @@
         "characterVisible": "basic",
         "wordPartyLoading": "basic",
         "gameScriptSettings": "basic",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic"
       }
     }

@@ -6,21 +6,14 @@
   >
     <div class="flex items-center gap-2">
       おみくじBot コンフィグエディター
-      <!-- GOD-MODEバッジ -->
-      <span v-if="isGod" class="badge badge-warning tooltip tooltip-bottom" data-tip="私が神です!"> GOD-MODE </span>
-      <!-- PRO-MODEバッジ -->
-      <span
-        v-if="isPro && !isGod"
-        class="badge badge-success tooltip tooltip-bottom"
-        data-tip="テンプレートが扱える、有料版です!"
-      >
-        PRO
-      </span>
+      <!-- Licenseバッジ -->
+      <LicenseBadge godTip="私が神です!" proTip="テンプレートが扱える、有料版です!" />
     </div>
   </h1>
 </template>
 
 <script setup lang="ts">
+  import LicenseBadge from '@ConfigComponents/parts/LicenseBadge.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   const { isPro, isGod } = useSettingMode()
 </script>

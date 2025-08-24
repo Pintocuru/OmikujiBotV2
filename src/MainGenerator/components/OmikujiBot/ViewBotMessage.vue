@@ -37,7 +37,9 @@
           :style="{
             opacity: index === 0 ? '100%' : '0%',
             top: sizeConfig.avatarTop,
-            backgroundColor: message.color?.backgroundColor || '#ccc',
+            ...(useCharacterBgColor && {
+              backgroundColor: message.color?.backgroundColor || '#ccc',
+            }),
           }"
         >
           <img
@@ -88,6 +90,11 @@
 
   const leaveMotion = computed(() => {
     return omikujiData.value?.displaySettings?.base?.bubbleMotionLeave
+  })
+
+  // 画像の背景色に色を付与するか
+  const useCharacterBgColor = computed(() => {
+    return omikujiData.value?.displaySettings?.base?.useCharacterBgColor
   })
 
   const { displayedComments, handleImageError, removeComment, start, stop } = useBotCommentDisplay(

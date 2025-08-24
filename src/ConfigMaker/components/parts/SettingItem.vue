@@ -4,7 +4,15 @@
     <div class="flex flex-col gap-1 min-w-1/3 sm:min-w-1/4">
       <label class="label-text font-bold">
         {{ label }}
+        <!-- Licenseバッジ -->
         <span v-if="devMemo && isDev" class="badge badge-error badge-sm">{{ devMemo }}</span>
+        <!-- Licenseバッジ -->
+        <LicenseBadge
+          v-if="!!forceMode"
+          :forceMode="forceMode"
+          godTip="貴様!神の力を使えるのか!?"
+          proTip="PRO版のみの機能です"
+        />
       </label>
       <span v-if="description" class="text-xs">
         {{ description }}
@@ -20,10 +28,11 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types'
-  import { RotateCcw } from 'lucide-vue-next'
   import { computed } from 'vue'
+  import { isDev } from '@/types'
   import { VariantType } from './ItemVariantTypes'
+  import LicenseBadge from '@ConfigComponents/parts/LicenseBadge.vue'
+  import { RotateCcw } from 'lucide-vue-next'
 
   const props = withDefaults(
     defineProps<{
@@ -32,6 +41,7 @@
       variant?: VariantType
       showReset?: boolean
       devMemo?: string
+      forceMode?: 'god' | 'pro'
     }>(),
     {
       showReset: false,

@@ -10,7 +10,6 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
-import { name } from '@vue/eslint-config-prettier'
 
 /**
  * 純粋なデータ操作のみ（UI状態管理なし）
@@ -36,6 +35,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     const existingItems = Object.values(data.value[category])
     const maxOrder = Math.max(0, ...existingItems.map((item) => item.order ?? 0))
     parseItem.order = maxOrder + 1
+    parseItem.isEnabled = true // optionalなのでtrueはここで入れる
 
     const newItem = schema.parse(parseItem) as RecordCategoryItemTypeMap[C]
     const id = newItem.id

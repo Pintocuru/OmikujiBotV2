@@ -38,7 +38,7 @@
       <SettingItem
         label="フォントファミリー"
         description="表示に使用するフォントを設定します"
-        variant="success"
+        forceMode="pro"
         :showReset="true"
         @reset="resetMap.fontFamily"
       >

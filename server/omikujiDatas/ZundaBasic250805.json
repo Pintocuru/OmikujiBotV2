@@ -1953,7 +1953,7 @@
   "displaySettings": {
     "base": {
       "displaySize": "md",
-      "showCharacterIcon": true,
+      "showCharacterThumbnail": true,
       "showToasts": true
     },
     "developer": {

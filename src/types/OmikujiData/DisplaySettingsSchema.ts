@@ -9,21 +9,31 @@ import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 // BaseSettingsSchema
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
 export const BaseSettingsSchema = z.object({
+  /**
+   * 文字・アニメーション
+   */
   // 文字・画像の大きさ指定
   displaySize: z.enum(displaySize).default('md').catch('md'),
+  // フォントの指定(プリセットされているものだけ)
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   // フキダシのアニメーション(開始・表示中)
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
   // フキダシのアニメーション(終了時)
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
 
-  // フォントの指定(プリセットされているものだけ)
-  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
-
-  // showCharacterIcon キャラクターサムネイルを表示するか(個別はしてもいいかもね)
-  showCharacterIcon: z.boolean().default(true).catch(true),
+  /**
+   * 表示オプション
+   */
+  // キャラクターの背景に色を付与するか(キャラクターサムネイルは標準で色が付きます)
+  useCharacterBgColor: z.boolean().default(true).catch(true),
+  // showCharacterThumbnail キャラクターサムネイルを表示するか(個別はしてもいいかもね)
+  showCharacterThumbnail: z.boolean().default(true).catch(true),
   //  showToasts トーストを表示するか
   showToasts: z.boolean().default(true).catch(true),
 
+  /**
+   * エディター設定
+   */
   // DaisyUiのテーマカラー
   daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
 })
