@@ -18,10 +18,11 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
+  import { VariantType } from './ItemVariantTypes'
 
   const props = withDefaults(
     defineProps<{
-      variant?: Variant
+      variant?: VariantType
       isOpen?: boolean
       alwaysOpen?: boolean
     }>(),
@@ -62,16 +63,4 @@
         return 'bg-secondary text-secondary-content'
     }
   })
-
-  type BaseVariant = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error'
-
-  type OutlineVariant =
-    | 'outline-primary'
-    | 'outline-secondary'
-    | 'outline-info'
-    | 'outline-success'
-    | 'outline-warning'
-    | 'outline-error'
-
-  type Variant = BaseVariant | OutlineVariant
 </script>

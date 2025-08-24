@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/parts/ModalFooterActions.vue -->
 <template>
   <div class="flex justify-end gap-2">
-    <button @click="onCancel" class="btn btn-ghost flex items-center gap-1">
+    <button @click="onCancel" class="btn btn-ghost text-base-content flex items-center gap-1">
       <X class="w-4 h-4" />
       キャンセル
     </button>

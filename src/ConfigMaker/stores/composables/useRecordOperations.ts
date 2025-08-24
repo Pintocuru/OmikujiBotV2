@@ -25,19 +25,26 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
   /**
    * カテゴリに新しいアイテムを追加
    */
-  const addItem = <C extends RecordCategoryType>(category: C, item: Partial<RecordCategoryItemTypeMap[C]> = {}) => {
+  const addItem = <C extends RecordCategoryType>(
+    category: C,
+    item: Partial<RecordCategoryItemTypeMap[C]> = {}
+  ): string => {
     const schema = RecordCategorySchemaMap[category]
     let parseItem = item
 
-    // 重複check
     if (typeof parseItem.id === 'string' && data.value[category][parseItem.id]) {
       parseItem = { ...parseItem, id: undefined }
     }
+    // orderはこの関数で管理する
+    const newOrder = getCategoryArray(category).length + 1
+    parseItem.order = newOrder
 
-    const newItem = schema.parse(parseItem)
+    const newItem = schema.parse(parseItem) as RecordCategoryItemTypeMap[C]
     const id = newItem.id
 
     data.value[category] = { ...data.value[category], [id]: newItem }
+
+    return id
   }
 
   /**
@@ -127,16 +134,61 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
 
   /**
    * カテゴリからアイテムを削除
+   * selectedRuleIdが削除される場合は、適切な代替アイテムを選択する
    */
-  const removeItem = (category: RecordCategoryType, id: string) => {
+  const removeItem = (
+    category: RecordCategoryType,
+    id: string,
+    selectRule?: (id: string) => void,
+    clearSelection?: () => void,
+    selectedRuleId?: string | null
+  ) => {
     const categoryData = data.value[category] as Record<string, OmikujiDataType[typeof category][string]>
 
     if (categoryData && categoryData[id] !== undefined) {
+      const isSelectedItem = selectedRuleId === id
+
+      // 削除前に代替選択肢を準備
+      let alternativeId: string | null = null
+
+      if (isSelectedItem && selectRule) {
+        // 現在のアイテムのorder値を取得
+        const currentOrder = categoryData[id]?.order ?? 0
+
+        // order順でソートされたアイテム配列を取得
+        const sortedItems = Object.entries(categoryData)
+          .filter(([key]) => key !== id) // 削除対象を除外
+          .map(([key, item]) => ({ id: key, order: item.order ?? 0 }))
+          .sort((a, b) => a.order - b.order)
+
+        if (sortedItems.length > 0) {
+          // 1. 削除するアイテムより1つ小さいorder値のアイテムを探す
+          const previousItem = sortedItems.reverse().find((item) => item.order < currentOrder)
+
+          if (previousItem) {
+            alternativeId = previousItem.id
+          } else {
+            // 2. 前のアイテムがない場合は、最初のアイテムを選択
+            alternativeId = sortedItems[sortedItems.length - 1]?.id || null
+          }
+        }
+      }
+
+      // アイテムを削除
       const updatedCategory = Object.fromEntries(
         Object.entries(categoryData).filter(([key]) => key !== id)
       ) as OmikujiDataType[typeof category]
 
       updateCategoryData(category, updatedCategory)
+
+      // 選択されているアイテムが削除された場合の処理
+      if (isSelectedItem) {
+        if (alternativeId && selectRule) {
+          selectRule(alternativeId)
+        } else if (clearSelection) {
+          clearSelection()
+        }
+      }
     }
   }
 

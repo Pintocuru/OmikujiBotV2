@@ -42,7 +42,7 @@
         :showReset="true"
         @reset="resetMap.fontFamily"
       >
-        <select v-model="base.fontFamily" class="select select-bordered w-full max-w-xs" :disabled="!isPro">
+        <select v-model="base.fontFamily" class="select bg-base text-base-content w-full max-w-xs" :disabled="!isPro">
           <option v-for="font in fontFamilyOptions" :key="font" :value="font">
             {{ fontFamilyLabels[font] }}
           </option>

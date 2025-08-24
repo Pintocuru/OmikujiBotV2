@@ -2,15 +2,21 @@
 <template>
   <div
     class="flex w-full justify-center my-4 rounded-md border"
-    :class="
-      isGod ? ['border-warning text-warning'] : isPro ? ['border-success text-success'] : ['border text-base-content']
-    "
+    :class="isGod ? ['border-warning'] : isPro ? ['border-success'] : []"
   >
     <div class="tabs gap-2">
       <div v-for="(tab, key) in filteredCategoryLabels" :key="key">
         <button
-          class="tab w-full h-full p-4 pt-6 tooltip tooltip-top tab-active hover:bg-primary hover:text-primary-content"
-          :class="{ 'bg-primary  text-primary-content': selectedCategory === key }"
+          class="tab w-full h-full p-4 pt-6 tooltip tooltip-top"
+          :class="[
+            selectedCategory === key
+              ? isGod
+                ? 'bg-warning text-warning-content tab-active'
+                : isPro
+                  ? 'bg-success text-success-content tab-active'
+                  : 'bg-primary text-primary-content tab-active'
+              : '',
+          ]"
           :data-tip="tab.description"
           @click="omikujiStore.selectCategory(key)"
         >
@@ -40,7 +46,7 @@
     >
       <div class="relative">
         <component :is="tab.icon" class="w-8 h-8" />
-        <span v-if="getCategoryItemCount(key) > 0" class="badge badge-xs badge-error absolute -top-2 -right-2">
+        <span v-if="getCategoryItemCount(key) > 0" class="badge badge-xs badge-primary absolute -top-2 -right-2">
           {{ getCategoryItemCount(key) }}
         </span>
       </div>

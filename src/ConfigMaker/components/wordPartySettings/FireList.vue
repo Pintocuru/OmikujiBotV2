@@ -2,7 +2,7 @@
 <template>
   <SectionCard>
     <template #header>
-      <div>WordParty発火リスト ({{ settings.length }}件)</div>
+      <div>WordParty発動リスト ({{ settings.length }}件)</div>
       <div class="text-sm pr-2">デフォルトでは、「おみくじBOT用 word-party」のデータが入っています</div>
     </template>
 
@@ -17,21 +17,17 @@
             class="flex items-center gap-2 border-b border-base-200 text-sm py-1 px-2 hover:bg-base-200"
           >
             <!-- 名前 -->
-            <div class="w-32 truncate text-primary">
+            <div class="w-32 truncate text-primary-content">
               {{ item.name || '名前未設定' }}
             </div>
 
             <!-- パターン -->
-            <div class="flex-1 font-mono text-base-content/80 truncate">
+            <div class="flex-1 font-mono text-base-content truncate">
               {{ item.pattern || 'パターン未設定' }}
             </div>
 
             <!-- テストボタン -->
-            <button
-              @click="testWordParty(item.pattern)"
-              :disabled="!item.pattern"
-              class="btn btn-xs btn-outline btn-primary"
-            >
+            <button @click="testWordParty(item.pattern)" :disabled="!item.pattern" class="btn btn-xs btn-primary">
               テスト実行
             </button>
           </div>
@@ -39,9 +35,8 @@
       </div>
 
       <!-- 空の場合の表示 -->
-      <div v-else class="text-center py-8">
-        <div class="text-base-content/50 text-lg">WordParty設定がありません</div>
-        <div class="text-base-content/30 text-sm mt-2">上のテキストエディタから設定を追加してください</div>
+      <div v-else>
+        <NoParamsCard message="WordParty設定がありません" sub="テキスト編集から追加してください" />
       </div>
     </template>
   </SectionCard>
@@ -50,6 +45,7 @@
 <script setup lang="ts">
   import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import { postWordParty } from '@shared/sdk/postMessage/PostOneComme'
 
   defineProps<{

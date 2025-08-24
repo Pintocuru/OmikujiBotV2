@@ -28,7 +28,7 @@
     />
     <div v-else :class="nameWrapperClasses">
       <span class="truncate">
-        {{ rule.name || 'Error' }}
+        {{ rule.name || '名称未設定' }}
       </span>
     </div>
 

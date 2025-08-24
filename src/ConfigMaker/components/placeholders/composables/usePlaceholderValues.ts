@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { toast } from 'vue-sonner'
 
 export function usePlaceholderValues(placeholderId: string) {
   // Pinia store
@@ -30,7 +31,7 @@ export function usePlaceholderValues(placeholderId: string) {
   }
 
   const removeValue = (index: number) => {
-    if (localValues.value.length <= 1) return
+    if (!localValues.value.length) return
     localValues.value.splice(index, 1)
   }
 

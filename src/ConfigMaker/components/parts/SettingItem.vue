@@ -23,12 +23,13 @@
   import { isDev } from '@/types'
   import { RotateCcw } from 'lucide-vue-next'
   import { computed } from 'vue'
+  import { VariantType } from './ItemVariantTypes'
 
   const props = withDefaults(
     defineProps<{
       label: string
       description?: string
-      variant?: Variant
+      variant?: VariantType
       showReset?: boolean
       devMemo?: string
     }>(),
@@ -48,6 +49,8 @@
         return 'bg-primary text-primary-content'
       case 'secondary':
         return 'bg-secondary text-secondary-content'
+      case 'info':
+        return 'bg-info text-success-info'
       case 'success':
         return 'bg-success text-success-content'
       case 'warning':
@@ -59,6 +62,8 @@
         return 'border border-primary text-primary'
       case 'outline-secondary':
         return 'border border-secondary text-secondary'
+      case 'outline-info':
+        return 'border border-info text-info'
       case 'outline-success':
         return 'border border-success text-success'
       case 'outline-warning':
@@ -71,15 +76,4 @@
         return 'bg-base-200 text-base-content'
     }
   })
-
-  type BaseVariant = 'none' | 'primary' | 'secondary' | 'success' | 'warning' | 'error'
-
-  type OutlineVariant =
-    | 'outline-primary'
-    | 'outline-secondary'
-    | 'outline-success'
-    | 'outline-warning'
-    | 'outline-error'
-
-  type Variant = BaseVariant | OutlineVariant
 </script>

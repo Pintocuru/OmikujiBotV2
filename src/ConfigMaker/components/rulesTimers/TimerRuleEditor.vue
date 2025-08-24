@@ -15,7 +15,7 @@
       <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
     </div>
     <!-- 無効のときのメッセージ -->
-    <InformationCard v-else class="mt-4 p-4">
+    <InformationCard v-else variant="error" class="mt-4 p-4">
       現在、このルールは無効になっています。<br />
       編集を行うには、まずルールを有効にしてください。
     </InformationCard>

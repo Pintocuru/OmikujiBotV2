@@ -29,7 +29,8 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   // 新しいルールを追加
   const handleAddItem = () => {
     withValidCategory((category) => {
-      omikujiStore.addItem?.(category)
+      const newId = omikujiStore.addItem?.(category)
+      omikujiStore.selectRule(newId)
       toast.success('新しいルールを追加しました', {
         description: 'ルールの設定を行ってください',
         duration: 3000,

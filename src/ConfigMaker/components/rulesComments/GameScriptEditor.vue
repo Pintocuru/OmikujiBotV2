@@ -127,7 +127,6 @@
   import { storeToRefs } from 'pinia'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { LucideAlertCircle } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue: CommentRuleType

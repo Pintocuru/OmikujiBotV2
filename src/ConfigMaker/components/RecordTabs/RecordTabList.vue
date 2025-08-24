@@ -35,8 +35,9 @@
 
   <!-- フィルター結果が空の場合のメッセージ -->
   <div v-else>
-    <div class="text-center py-8 text-base-content/60">
-      <p class="text-lg">一致するルールが見つかりませんでした。</p>
+    <NoParamsCard message="一致するルールが見つかりませんでした。" />
+
+    <div class="text-center">
       <!-- 新規追加タブ -->
       <button
         class="btn border-primary mt-4 transition-all duration-200 hover:btn-primary"
@@ -54,9 +55,10 @@
 
 <script setup lang="ts">
   import RecordTabItem from './RecordTabItem.vue'
+  import { useRecordTabsStore } from './RecordTabsStore'
+  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import draggable from 'vuedraggable'
   import { Plus } from 'lucide-vue-next'
-  import { useRecordTabsStore } from './RecordTabsStore'
 
   // Pinia store
   const store = useRecordTabsStore()

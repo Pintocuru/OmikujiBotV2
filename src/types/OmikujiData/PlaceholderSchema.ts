@@ -24,7 +24,7 @@ export const PlaceholderValuesSchema = z
       return value
     })
   )
-  .default([])
+  .default([PlaceholderValueObjectSchema.parse({})])
   .catch([])
 
 // PlaceholderSchema: 新設した PlaceholderValuesSchema を使用

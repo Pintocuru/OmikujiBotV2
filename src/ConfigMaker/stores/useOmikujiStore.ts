@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts
-import { nextTick, readonly, ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
@@ -34,7 +34,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   // カテゴリ(rules/placeholder/character)操作機能
   const recordOperations = useRecordOperations(data)
 
-  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings)操作機能
+  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings/meta)操作機能
   const settingsOperations = useSettingsOperations(data)
 
   // カテゴリ選択のラッパー関数（依存関係のため）
