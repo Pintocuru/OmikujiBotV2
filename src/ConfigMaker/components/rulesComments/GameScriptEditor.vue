@@ -28,12 +28,7 @@
 
       <!-- スクリプト有効化チェックボックス -->
       <div v-if="isGod">
-        <SettingItem
-          label="ゲームスクリプトを使用"
-          description="好きなゲームを選んでね!"
-          :showReset="false"
-          variant="warning"
-        >
+        <SettingItem label="ゲームスクリプトを使用" description="好きなゲームを選んでね!" variant="warning">
           <label class="label cursor-pointer justify-start gap-3">
             <input type="checkbox" v-model="isScriptEnabled" class="toggle toggle-warning" />
             <span class="label-text font-medium"
@@ -46,11 +41,7 @@
       <!-- スクリプト選択とパラメータ設定 -->
       <div v-if="isScriptEnabled" class="mt-6 space-y-4">
         <!-- スクリプト選択 -->
-        <SettingItem
-          label="ゲームスクリプト"
-          description="ゲーム結果は、おみくじ設定＞プレースホルダーから"
-          :showReset="false"
-        >
+        <SettingItem label="ゲームスクリプト" description="ゲーム結果は、おみくじ設定＞プレースホルダーから">
           <select
             :disabled="!data.displaySettings.developer.visibility.gameScriptSettings"
             v-model="scriptId"
@@ -70,6 +61,7 @@
             :key="setting.key"
             :label="setting.name"
             :description="setting.description"
+            :showReset="true"
             @reset="resetParam(setting.key, setting.defaultValue)"
           >
             <!-- 文字列入力 -->

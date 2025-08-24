@@ -13,7 +13,7 @@
 
       <template #body>
         <!-- ID表示とコピー -->
-        <SettingItem label="Key" description="<<プレースホルダー名>>" :showReset="false">
+        <SettingItem label="Key" description="<<プレースホルダー名>>">
           <div class="flex gap-2 items-center">
             <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
               {{ selectedItem.id }}
@@ -26,7 +26,7 @@
         </SettingItem>
 
         <!-- プレースホルダー名 -->
-        <SettingItem label="設定名" description="識別しやすい名前" :showReset="false">
+        <SettingItem label="設定名" description="識別しやすい名前">
           <input
             type="text"
             v-model="selectedItem.name"

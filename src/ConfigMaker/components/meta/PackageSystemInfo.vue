@@ -8,7 +8,7 @@
 
     <template #body>
       <!-- ID (読み取り専用) -->
-      <SettingItem label="パッケージID" description="パッケージの一意識別子" :showReset="false">
+      <SettingItem label="パッケージID" description="パッケージの一意識別子">
         <div class="flex items-center gap-3">
           <Code class="w-4 h-4 text-base-content/50" />
           <span class="font-mono text-sm text-base-content/60 select-all">{{ meta.id }}</span>
@@ -16,7 +16,7 @@
       </SettingItem>
 
       <!-- ジェネレータ名 (読み取り専用) -->
-      <SettingItem label="対応アプリ名" description="このパッケージを生成したアプリケーション名" :showReset="false">
+      <SettingItem label="対応アプリ名" description="このパッケージを生成したアプリケーション名">
         <div class="flex items-center gap-3">
           <Settings class="w-4 h-4 text-base-content/50" />
           <span class="text-sm text-base-content/60">{{ meta.generatorName }}</span>
@@ -24,7 +24,7 @@
       </SettingItem>
 
       <!-- ジェネレータバージョン (読み取り専用) -->
-      <SettingItem label="アプリバージョン" description="対応アプリケーションのバージョン" :showReset="false">
+      <SettingItem label="アプリバージョン" description="対応アプリケーションのバージョン">
         <div class="flex items-center gap-3">
           <Tag class="w-4 h-4 text-base-content/50" />
           <span class="text-sm text-base-content/60">{{ meta.generatorVersion }}</span>

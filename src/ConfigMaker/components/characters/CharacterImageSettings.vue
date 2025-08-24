@@ -35,7 +35,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         <div v-for="(emotion, key) in emotionLabels" :key="key" class="form-control">
-          <SettingItem :label="emotion" :description="`(${key})`" @reset="resetImagePath(key)">
+          <SettingItem :label="emotion" :description="`(${key})`" :showReset="true" @reset="resetImagePath(key)">
             <input
               type="url"
               class="input input-sm w-full"

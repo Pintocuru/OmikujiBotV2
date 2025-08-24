@@ -35,6 +35,7 @@
       <SettingItem
         label="カスタムTailwindクラス"
         description="グラデーション背景、ボーダー、影などを追加できます"
+        :showReset="true"
         @reset="localData.customClasses = 'border-2 border-white'"
       >
         <input

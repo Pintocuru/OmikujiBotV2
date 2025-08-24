@@ -21,11 +21,7 @@
       </SettingItem>
 
       <!-- isOneCommePost -->
-      <SettingItem
-        label="BOTコメントをわんコメに投稿"
-        description="わんコメにBOTコメントとして表示させるか"
-        :showReset="false"
-      >
+      <SettingItem label="BOTコメントをわんコメに投稿" description="わんコメにBOTコメントとして表示させるか">
         <label class="label cursor-pointer justify-start gap-3">
           <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isOneCommePost" />
           <span class="label-text font-medium">有効にすると「キャラクター用枠設定」の設定ができます</span>
@@ -37,7 +33,6 @@
         v-if="!localData.isOneCommePost"
         label="BOTコメントの読み上げ"
         description="BOTコメントをわんコメで鳴らすか"
-        :showReset="false"
       >
         <label class="label cursor-pointer justify-start gap-3">
           <input type="checkbox" class="checkbox checkbox-primary" v-model="localData.isVoice" />

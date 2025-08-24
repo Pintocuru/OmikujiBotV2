@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/comments/ThresholdConditionCount.vue -->
 <template>
-  <SettingItem label="チャット数条件" description="配信枠・個人の総合チャット数で判定" :show-reset="false">
+  <SettingItem label="チャット数条件" description="配信枠・個人の総合チャット数で判定">
     <div class="flex gap-2">
       <select
         :value="modelValue.unit"

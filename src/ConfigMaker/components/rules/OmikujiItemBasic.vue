@@ -8,7 +8,7 @@
 
     <!-- 名前 -->
     <div class="form-control flex-1">
-      <SettingItem label="おみくじ名" description="識別しやすい名前を入力" :show-reset="false">
+      <SettingItem label="おみくじ名" description="識別しやすい名前を入力">
         <input
           type="text"
           :value="omikuji.name"
@@ -21,11 +21,7 @@
 
     <!-- 重み -->
     <div class="form-control flex-1">
-      <SettingItem
-        :label="`重み (${weightPercentage}%)`"
-        description="数値が高いほど出やすくなります"
-        :show-reset="false"
-      >
+      <SettingItem :label="`重み (${weightPercentage}%)`" description="数値が高いほど出やすくなります">
         <input
           type="number"
           :value="omikuji.weight"

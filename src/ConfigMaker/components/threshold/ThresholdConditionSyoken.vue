@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/comments/ThresholdConditionSyoken.vue -->
 <template>
-  <SettingItem label="初見判定ちゃん" description="初見ユーザー、または配信枠の1コメを判定" :show-reset="false">
+  <SettingItem label="初見判定ちゃん" description="初見ユーザー、または配信枠の1コメを判定">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="option in syokenOptions"

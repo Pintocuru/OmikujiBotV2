@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/comments/ThresholdConditionGift.vue -->
 <template>
-  <SettingItem label="ギフト条件" description="金額や種類で発動を変更できます" :show-reset="false">
+  <SettingItem label="ギフト条件" description="金額や種類で発動を変更できます">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="option in giftOptions"

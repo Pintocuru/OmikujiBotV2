@@ -8,11 +8,7 @@
 
     <template #body>
       <!-- プリセット選択 -->
-      <SettingItem
-        label="実行間隔(30秒～1時間)"
-        description="設定した間隔で自動的におみくじが実行されます"
-        :showReset="false"
-      >
+      <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">
         <select v-model="intervalSeconds" class="select select-bordered w-full">
           <option v-for="preset in intervalPresets" :key="preset.value" :value="preset.value">
             {{ preset.label }}
@@ -21,7 +17,7 @@
       </SettingItem>
 
       <!-- isBaseZero トグル -->
-      <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます" :showReset="false">
+      <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます">
         <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
       </SettingItem>
     </template>

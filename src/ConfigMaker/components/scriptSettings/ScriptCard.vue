@@ -15,6 +15,7 @@
           :key="settingDef.key"
           :label="settingDef.name"
           :description="settingDef.description"
+          :showReset="true"
           @reset="resetSetting(settingDef.key)"
         >
           <component

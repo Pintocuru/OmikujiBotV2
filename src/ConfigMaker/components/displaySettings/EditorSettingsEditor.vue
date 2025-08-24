@@ -8,7 +8,12 @@
 
     <template #body>
       <!-- DaisyUIテーマ -->
-      <SettingItem label="エディターテーマ" description="DaisyUiを使ってます" @reset="resetMap.daisyUiTheme">
+      <SettingItem
+        label="エディターテーマ"
+        description="DaisyUiを使ってます"
+        :showReset="true"
+        @reset="resetMap.daisyUiTheme"
+      >
         <select v-model="base.daisyUiTheme" class="select select-bordered w-full max-w-xs">
           <option v-for="theme in themes" :key="theme" :value="theme">
             {{ theme }}
@@ -17,7 +22,7 @@
       </SettingItem>
 
       <!-- ライセンスキー -->
-      <SettingItem label="ライセンスキー" description="入力したハッシュでモードを判定します" :showReset="false">
+      <SettingItem label="ライセンスキー" description="入力したハッシュでモードを判定します">
         <div class="flex gap-2 items-center">
           <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
           <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>

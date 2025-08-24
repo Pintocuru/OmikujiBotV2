@@ -8,7 +8,7 @@
 
     <template #body>
       <!-- パッケージ名 -->
-      <SettingItem label="パッケージ名" description="テンプレート出力する際に表示する名称" :showReset="false">
+      <SettingItem label="パッケージ名" description="テンプレート出力する際に表示する名称">
         <input
           v-model="meta.name"
           type="text"
@@ -20,7 +20,7 @@
       </SettingItem>
 
       <!-- パッケージ説明 -->
-      <SettingItem label="パッケージ説明" description="どんな内容を表示できるかを端的に説明" :showReset="false">
+      <SettingItem label="パッケージ説明" description="どんな内容を表示できるかを端的に説明">
         <input
           v-model="meta.description"
           type="text"
@@ -32,7 +32,7 @@
       </SettingItem>
 
       <!-- バージョン -->
-      <SettingItem label="バージョン" description="パッケージのバージョン情報" :showReset="false">
+      <SettingItem label="バージョン" description="パッケージのバージョン情報">
         <input
           v-model="meta.version"
           type="text"

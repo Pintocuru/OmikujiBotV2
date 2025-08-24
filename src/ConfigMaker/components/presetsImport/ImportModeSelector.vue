@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\presetsImport\ImportModeSelector.vue -->
 <template>
-  <SettingItem label="読み込みモード" :show-reset="false">
+  <SettingItem label="読み込みモード">
     <div class="flex flex-col gap-3">
       <label class="flex items-start gap-3 cursor-pointer">
         <input

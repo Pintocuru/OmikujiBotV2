@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/comments/ThresholdConditionAccess.vue -->
 <template>
-  <SettingItem label="ユーザーの役職" description="メンバー限定の発動条件はここです!" :show-reset="false">
+  <SettingItem label="ユーザーの役職" description="メンバー限定の発動条件はここです!">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="option in accessOptions"

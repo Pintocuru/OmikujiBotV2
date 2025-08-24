@@ -11,6 +11,7 @@
       <SettingItem
         label="起動時コンポーネント"
         description="アプリケーション起動時に表示するコンポーネント"
+        :showReset="true"
         @reset="startupSettings.component = 'omikujiBot'"
       >
         <select v-model="startupSettings.component" class="select select-bordered w-full max-w-xs">
@@ -24,6 +25,7 @@
         v-if="startupSettings.component === 'gameScript'"
         label="デフォルトスクリプト"
         description="gameScript選択時のデフォルトスクリプト"
+        :showReset="true"
         @reset="startupSettings.scriptKey = null"
       >
         <select v-model="startupSettings.scriptKey" class="select select-bordered w-full max-w-xs">

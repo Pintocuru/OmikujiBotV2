@@ -8,7 +8,7 @@
 
     <template #body>
       <!-- Key表示 -->
-      <SettingItem label="Key" description="キャラクターのキー名" :showReset="false">
+      <SettingItem label="Key" description="キャラクターのキー名">
         <div class="flex gap-2 items-center">
           <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
             {{ localData.id }}
@@ -20,13 +20,7 @@
       </SettingItem>
 
       <!-- id以外のテキストフィールドループ -->
-      <SettingItem
-        v-for="field in fields"
-        :key="field.key"
-        :label="field.label"
-        :description="field.description"
-        :showReset="false"
-      >
+      <SettingItem v-for="field in fields" :key="field.key" :label="field.label" :description="field.description">
         <input type="text" class="input input-bordered w-full" v-model="localData[field.key]" />
       </SettingItem>
     </template>

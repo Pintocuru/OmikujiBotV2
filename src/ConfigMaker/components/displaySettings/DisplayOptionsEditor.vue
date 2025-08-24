@@ -24,7 +24,12 @@
       </SettingItem>
 
       <!-- トースト表示 -->
-      <SettingItem label="トースト通知" description="画面上部に通知メッセージを表示します" @reset="resetMap.showToasts">
+      <SettingItem
+        label="トースト通知"
+        description="画面上部に通知メッセージを表示します"
+        :showReset="true"
+        @reset="resetMap.showToasts"
+      >
         <label class="label cursor-pointer justify-start gap-3">
           <input v-model="base.showToasts" type="checkbox" class="toggle toggle-primary" />
           <span class="label-text">トースト通知を表示する</span>

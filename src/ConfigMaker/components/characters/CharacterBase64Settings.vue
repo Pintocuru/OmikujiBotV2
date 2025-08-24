@@ -5,7 +5,6 @@
     v-if="false"
     label="画像サイズ"
     description="リサイズ後の画像サイズを選択してください"
-    :showReset="false"
     containerClass="form-control flex-row items-center gap-2 mt-2"
   >
     <select v-model="imageSize" class="select select-bordered select-primary">
@@ -19,7 +18,6 @@
   <SettingItem
     label="わんコメ表示用画像"
     :description="`${imageSize}×${imageSize}にリサイズし、Base64として保存されます`"
-    :showReset="false"
     containerClass="form-control flex-row items-center gap-2 mt-2"
   >
     <div class="flex flex-col sm:flex-row gap-4 items-start">

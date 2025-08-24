@@ -21,7 +21,7 @@
       </InformationCard>
 
       <!-- 条件タイプ選択 -->
-      <SettingItem label="適用する発動条件" description="トリガーの種類を選択" :show-reset="false">
+      <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
         <div class="flex flex-wrap gap-2">
           <label
             v-for="condition in conditionTypes"

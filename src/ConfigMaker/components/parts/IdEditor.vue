@@ -17,13 +17,13 @@
         <h3 class="font-bold text-lg text-primary">{{ dialogTitle }}ID編集</h3>
 
         <div class="py-4">
-          <SettingItem label="現在のID" :showReset="false">
+          <SettingItem label="現在のID">
             <div class="input input-bordered bg-neutral text-neutral-content select-all">
               {{ currentId }}
             </div>
           </SettingItem>
 
-          <SettingItem label="新しいID" :showReset="false" class="form-control mt-4">
+          <SettingItem label="新しいID" class="form-control mt-4">
             <input
               type="text"
               v-model="newId"

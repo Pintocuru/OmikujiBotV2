@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/comments/ThresholdConditionComment.vue -->
 <template>
-  <SettingItem label="適用するチャットワード" description="正規表現対応。改行で複数指定できます" :show-reset="false">
+  <SettingItem label="適用するチャットワード" description="正規表現対応。改行で複数指定できます">
     <textarea
       v-model="textValue"
       @input="updateModelValue"
@@ -40,11 +40,7 @@
 
   // textareaの値が変更された時にmodelValueを更新
   const updateModelValue = () => {
-    const lines = textValue.value
-      .split('\n')
-      .map((line) => line.trim())
-      .filter((line) => line.length > 0) // 空行を除外
-
+    const lines = textValue.value.split('\n')
     emit('update:modelValue', lines)
   }
 </script>
