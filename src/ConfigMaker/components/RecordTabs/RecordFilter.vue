@@ -106,13 +106,9 @@
 <script setup lang="ts">
   import { isDev } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
 
   // Store
   const store = useRecordTabsStore()
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
 
   // メソッド
   const clearSearch = () => {

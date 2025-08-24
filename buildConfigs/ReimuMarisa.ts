@@ -7,7 +7,7 @@ import { AccessLevelType } from '@shared/types/CommonSchema'
  * おみくじBOT ゆっくり霊夢&魔理沙 のビルド設定
  */
 const name = 'ReimuMarisa'
-const version = '2025.8.23'
+const version = '2025.8.24(ベータ版)'
 const targetAccessLevel: AccessLevelType = 'pro'
 
 const buildConfig: BuildConfig = {
@@ -18,7 +18,7 @@ const buildConfig: BuildConfig = {
 
   // テンプレート情報（わんコメ用）
   template: {
-    name: `おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ${name} ${version} ${targetAccessLevel}`,
+    name: `おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ${name} ${version}`,
     boothURL: 'https://pintocuru.booth.pm/items/5471598',
     readmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',

@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "ReimuMarisaDX",
+    "name": "ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "2025.8.16",
     "generatorName": "omikuji-bot",
@@ -472,7 +472,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-24T12:08:07.566Z",
+      "updatedAt": "2025-08-24T14:29:45.822Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -538,7 +538,7 @@
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
+        "drawLimit": 10,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
@@ -549,7 +549,7 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:15.095Z",
+      "updatedAt": "2025-08-24T14:29:57.840Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -614,7 +614,7 @@
       "scriptParams": {},
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
+        "drawLimit": 10,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
@@ -625,7 +625,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T13:31:50.924Z",
+      "updatedAt": "2025-08-24T14:30:12.646Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -690,7 +690,7 @@
       "scriptParams": {},
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
+        "drawLimit": 10,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
@@ -701,7 +701,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:20.982Z",
+      "updatedAt": "2025-08-24T14:30:29.992Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1368,6 +1368,7 @@
         },
         "comment": [
           "^じゃんけん",
+          "^ジャンケン",
           "^janken"
         ]
       },
@@ -3505,7 +3506,7 @@
       "key": "",
       "name": "霊夢のおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:19:42.710Z",
+      "updatedAt": "2025-08-24T14:37:05.715Z",
       "order": 1,
       "editorColor": "#F44336",
       "tags": [],
@@ -3524,7 +3525,7 @@
       "key": "",
       "name": "霊夢のおみくじ:吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:10:58.884Z",
+      "updatedAt": "2025-08-24T14:27:43.815Z",
       "order": 2,
       "editorColor": "#F44336",
       "tags": [],
@@ -3643,7 +3644,7 @@
       "key": "",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:12.496Z",
+      "updatedAt": "2025-08-24T14:27:54.066Z",
       "order": 8,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3657,7 +3658,7 @@
       "key": "",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:14.664Z",
+      "updatedAt": "2025-08-24T14:27:58.430Z",
       "order": 9,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3671,7 +3672,7 @@
       "key": "",
       "name": "じゃんけん:グー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:16.846Z",
+      "updatedAt": "2025-08-24T14:28:14.947Z",
       "order": 10,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3688,7 +3689,7 @@
       "key": "",
       "name": "じゃんけん:グー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:18.826Z",
+      "updatedAt": "2025-08-24T14:28:19.303Z",
       "order": 11,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3704,7 +3705,7 @@
       "key": "",
       "name": "じゃんけん:チョキ1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:20.911Z",
+      "updatedAt": "2025-08-24T14:28:18.680Z",
       "order": 12,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3721,7 +3722,7 @@
       "key": "",
       "name": "じゃんけん:チョキ2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:24.143Z",
+      "updatedAt": "2025-08-24T14:28:17.765Z",
       "order": 13,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3737,7 +3738,7 @@
       "key": "",
       "name": "じゃんけん:パー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:26.903Z",
+      "updatedAt": "2025-08-24T14:28:17.159Z",
       "order": 14,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3754,7 +3755,7 @@
       "key": "",
       "name": "じゃんけん:パー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:30.368Z",
+      "updatedAt": "2025-08-24T14:28:16.019Z",
       "order": 15,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3770,7 +3771,7 @@
       "key": "",
       "name": "じゃんけん:勝利",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:32.843Z",
+      "updatedAt": "2025-08-24T14:28:22.006Z",
       "order": 16,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3787,7 +3788,7 @@
       "key": "",
       "name": "フラワー:通常色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:19:44.410Z",
+      "updatedAt": "2025-08-24T14:28:21.088Z",
       "order": 17,
       "editorColor": "#FF9800",
       "tags": [],
@@ -4087,7 +4088,7 @@
       "useCharacterBgColor": true,
       "showCharacterThumbnail": true,
       "showToasts": true,
-      "daisyUiTheme": "dark"
+      "daisyUiTheme": "cmyk"
     },
     "developer": {
       "startup": {
