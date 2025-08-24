@@ -56,7 +56,7 @@
       </div>
 
       <!-- 検索結果の統計と選択状態 -->
-      <div class="mt-2 flex">
+      <div class="flex gap-4">
         <div class="mt-2 text-xs text-base-content/60">
           <span v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
             >{{ store.filteredSortedItems.length }} /</span
@@ -65,7 +65,7 @@
           <button
             v-if="store.filterOptions.enabledOnly || store.filterOptions.colorFilter"
             @click="clearSearch"
-            class="ml-2 text-primary hover:text-primary-focus underline"
+            class="text-primary hover:text-primary-focus underline"
           >
             すべて表示
           </button>
@@ -74,7 +74,7 @@
         <div>
           <!-- 複数選択モード切り替えボタン -->
           <button
-            class="tab tab-bordered pl-4 pt-2 text-sm hover:bg-base-200 transition-all duration-200"
+            class="tab tab-bordered pt-2 text-sm hover:bg-base-200 transition-all duration-200"
             @click="store.toggleMultiSelectMode"
             title="複数選択モード"
           >
@@ -86,26 +86,18 @@
         </div>
 
         <!-- 選択状態の表示 -->
-        <div v-if="store.isMultiSelectMode" class="pl-2 gap-4">
-          {{ store.selectedRuleIds.size }}件選択中
+        <template v-if="store.isMultiSelectMode">
+          <div class="mt-2 text-base-content/60">{{ store.selectedRuleIds.size }}件選択中</div>
           <button
-            class="btn btn-sm btn-ghost"
+            class="btn btn-sm btn-primary"
             @click="store.selectAll"
             :disabled="store.selectedRuleIds.size === store.filteredSortedItems.length"
           >
             すべて選択
           </button>
 
-          <button @click="store.clearSelection" class="btn btn-sm btn-ghost">選択解除</button>
-
-          <button
-            class="btn btn-sm btn-error"
-            @click="store.handleBulkDelete"
-            :disabled="store.selectedRuleIds.size === 0"
-          >
-            選択したルールを削除
-          </button>
-        </div>
+          <button @click="store.clearSelection" class="btn btn-sm btn-secondary">選択解除</button>
+        </template>
       </div>
     </div>
   </div>

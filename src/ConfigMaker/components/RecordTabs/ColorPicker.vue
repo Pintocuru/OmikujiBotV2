@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import { useRecordTabsStore } from './RecordTabsStore'
 
   const props = defineProps<{
@@ -64,9 +65,16 @@
     '#212121', // Gray 900
   ]
 
-  // カラー更新
+  // マルチセレクトモードかどうかを判定
+  const isMultiSelectActive = computed(() => tabsStore.isMultiSelectMode && tabsStore.selectedRuleIds.size > 0)
+
+  // カラー更新（単体 or 一括を自動判定）
   const updateColor = (color: string) => {
-    if (tabsStore.contextMenu.rule) {
+    if (isMultiSelectActive.value) {
+      // マルチセレクト時：一括更新
+      tabsStore.handleBulkColorChange(color)
+    } else if (tabsStore.contextMenu.rule) {
+      // 単体選択時：個別更新
       tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
         ...tabsStore.contextMenu.rule,
         editorColor: color,

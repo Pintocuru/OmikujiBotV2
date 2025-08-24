@@ -333,10 +333,10 @@
       "name": "フラワー占い",
       "description": "1日1回限定、ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-24T12:16:24.352Z",
+      "updatedAt": "2025-08-24T13:31:47.811Z",
       "order": 2,
       "isEnabled": true,
-      "editorColor": "#FF9800",
+      "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "pro",
       "omikuji": [
@@ -625,10 +625,10 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:13:37.153Z",
+      "updatedAt": "2025-08-24T13:31:50.924Z",
       "order": 5,
       "isEnabled": true,
-      "editorColor": "#FF9800",
+      "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "pro",
       "omikuji": [
@@ -2455,10 +2455,10 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:17.554Z",
+      "updatedAt": "2025-08-24T13:32:00.328Z",
       "order": 13,
       "isEnabled": true,
-      "editorColor": "#FFCC80",
+      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -2573,10 +2573,10 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:21.079Z",
+      "updatedAt": "2025-08-24T13:32:02.879Z",
       "order": 14,
       "isEnabled": true,
-      "editorColor": "#FFCC80",
+      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -2651,10 +2651,10 @@
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:23.718Z",
+      "updatedAt": "2025-08-24T13:32:05.617Z",
       "order": 15,
       "isEnabled": true,
-      "editorColor": "#FFCC80",
+      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -2714,170 +2714,6 @@
           "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "StreamCountTrigger": {
-      "id": "StreamCountTrigger",
-      "key": "",
-      "name": "配信内コメント数チェック:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:36.288Z",
-      "order": 19,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
-          "key": "",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
-            }
-          ]
-        },
-        {
-          "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
-          "key": "",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 100
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "UserCountTrigger": {
-      "id": "UserCountTrigger",
-      "key": "",
-      "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:39.295Z",
-      "order": 20,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
-          "key": "",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
-            }
-          ]
-        },
-        {
-          "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
-          "key": "",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
         },
         "comment": []
       },
@@ -3305,6 +3141,170 @@
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
+    },
+    "StreamCountTrigger": {
+      "id": "StreamCountTrigger",
+      "key": "",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-24T12:09:36.288Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
+          "key": "",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
+            }
+          ]
+        },
+        {
+          "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
+          "key": "",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTrigger": {
+      "id": "UserCountTrigger",
+      "key": "",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-24T12:09:39.295Z",
+      "order": 20,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
+          "key": "",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+            }
+          ]
+        },
+        {
+          "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
+          "key": "",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
     }
   },
   "timers": {
@@ -3505,7 +3505,7 @@
       "key": "",
       "name": "霊夢のおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:40.033Z",
+      "updatedAt": "2025-08-24T12:19:42.710Z",
       "order": 1,
       "editorColor": "#F44336",
       "tags": [],
@@ -3787,7 +3787,7 @@
       "key": "",
       "name": "フラワー:通常色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:43.724Z",
+      "updatedAt": "2025-08-24T12:19:44.410Z",
       "order": 17,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3980,6 +3980,7 @@
         "Yukkuri",
         "Reimu"
       ],
+      "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -4010,8 +4011,7 @@
         "singing": "reimu/singing.webp",
         "sleepy": "reimu/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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",
-      "accessLevel": "basic"
+      "imageBase64": "data:image/png;base64,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"
     },
     "marisa": {
       "id": "marisa",
@@ -4026,6 +4026,7 @@
         "Yukkuri",
         "Marisa"
       ],
+      "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
@@ -4056,8 +4057,7 @@
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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",
-      "accessLevel": "basic"
+      "imageBase64": "data:image/png;base64,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"
     }
   },
   "scriptSettings": {
@@ -4078,7 +4078,7 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",

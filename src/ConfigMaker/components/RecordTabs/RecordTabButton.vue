@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/RecordTabs/RecordTabButton.vue -->
 <template>
   <button
-    class="tab tab-bordered px-4 py-2 text-sm font-medium transition-all duration-200 flex items-center gap-2 relative overflow-hidden"
+    class="tab tab-bordered p-2 text-sm font-medium transition-all duration-200 flex items-center gap-2 relative overflow-hidden"
     :class="tabClasses"
     @click="handleClick"
     @dblclick="handleDblClick"
@@ -11,8 +11,14 @@
       <input type="checkbox" :checked="store.selectedRuleIds.has(rule.id)" class="checkbox checkbox-sm" readonly />
     </div>
 
-    <!-- ルール色インジケーター -->
+    <!-- order 判定する順番 --> 
+    <div class="badge badge-sm" :style="{ backgroundColor: rule.editorColor }">
+      {{ rule.order != null ? rule.order : 'order:error!' }}
+    </div>
+
+    <!-- ルール色インジケーター 
     <div class="w-3 h-3 rounded-full border border-white/20" :style="{ backgroundColor: rule.editorColor }" />
+    -->
 
     <!-- ルール名（インライン編集対応） -->
     <input
@@ -31,9 +37,6 @@
         {{ rule.name || '名称未設定' }}
       </span>
     </div>
-
-    <!-- order 判定する順番 --> 
-    <div>[{{ rule.order != null ? rule.order : 'order:error!' }}]</div>
 
     <!-- 状態インジケーター -->
     <div class="flex items-center gap-1 text-xs">

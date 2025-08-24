@@ -4,7 +4,7 @@ import { toast } from 'vue-sonner'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 import { RecordCategoryType } from '@/types'
 import type { useRuleState } from './useRuleState'
-import { BaseRecordType } from '@shared/types'
+import { BaseRecordType, AccessLevelType } from '@shared/types'
 
 /**
  * マルチセレクト機能の管理
@@ -83,17 +83,107 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     isMultiSelectMode.value = false
   }
 
+  /** 選択されたルールを取得 */
+  const getSelectedRules = (): BaseRecordType[] => {
+    return Array.from(selectedRuleIds.value)
+      .map((id) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.id === id))
+      .filter(Boolean) as BaseRecordType[]
+  }
+
   /** 一括削除の実行 */
   const handleBulkDelete = () => {
     if (selectedRuleIds.value.size === 0) return
 
-    const rulesToDelete = Array.from(selectedRuleIds.value)
-      .map((id) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.id === id))
-      .filter(Boolean) as BaseRecordType[]
-
+    const rulesToDelete = getSelectedRules()
     handleBulkDeleteRules(rulesToDelete)
     selectedRuleIds.value.clear()
     isMultiSelectMode.value = false
+  }
+
+  /** 一括有効/無効切り替え */
+  const handleBulkToggleEnabled = (enabled: boolean) => {
+    if (selectedRuleIds.value.size === 0) return
+
+    const selectedRules = getSelectedRules()
+    const category = validCategory.value as RecordCategoryType
+
+    selectedRules.forEach((rule) => {
+      omikujiStore.updateItem(category, rule.id, {
+        ...rule,
+        isEnabled: enabled,
+      })
+    })
+
+    const count = selectedRules.length
+    const action = enabled ? '有効' : '無効'
+    toast.success(`${count}件のルールを${action}にしました`, {
+      description: `一括${action}化が完了しました`,
+      duration: 3000,
+    })
+  }
+
+  /** 一括アクセスレベル変更 */
+  const handleBulkAccessLevelChange = (accessLevel: AccessLevelType) => {
+    if (selectedRuleIds.value.size === 0) return
+
+    const selectedRules = getSelectedRules()
+    const category = validCategory.value as RecordCategoryType
+
+    selectedRules.forEach((rule) => {
+      omikujiStore.updateItem(category, rule.id, {
+        ...rule,
+        accessLevel,
+      })
+    })
+
+    const count = selectedRules.length
+    toast.success(`${count}件のルールのアクセスレベルを「${accessLevel}」に変更しました`, {
+      description: '一括変更が完了しました',
+      duration: 3000,
+    })
+  }
+
+  /** 一括カラー設定 */
+  const handleBulkColorChange = (color: string) => {
+    if (selectedRuleIds.value.size === 0) return
+
+    const selectedRules = getSelectedRules()
+    const category = validCategory.value as RecordCategoryType
+
+    selectedRules.forEach((rule) => {
+      omikujiStore.updateItem(category, rule.id, {
+        ...rule,
+        editorColor: color,
+      })
+    })
+
+    const count = selectedRules.length
+    toast.success(`${count}件のルールのカラーを変更しました`, {
+      description: '一括カラー変更が完了しました',
+      duration: 3000,
+    })
+  }
+
+  /** 一括複製 */
+  const handleBulkDuplicate = () => {
+    if (selectedRuleIds.value.size === 0) return
+
+    const selectedRules = getSelectedRules()
+    const category = validCategory.value as RecordCategoryType
+
+    // 選択を解除してから複製実行
+    const originalSelection = new Set(selectedRuleIds.value)
+    selectedRuleIds.value.clear()
+
+    selectedRules.forEach((rule) => {
+      omikujiStore.duplicateItem(category, rule.id)
+    })
+
+    const count = selectedRules.length
+    toast.success(`${count}件のルールを複製しました`, {
+      description: '一括複製が完了しました',
+      duration: 3000,
+    })
   }
 
   /** 一括削除の確認ダイアログ */
@@ -142,5 +232,12 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     clearSelection,
     handleBulkDelete,
     handleBulkDeleteRules,
+    getSelectedRules,
+
+    // 新しい一括操作メソッド
+    handleBulkToggleEnabled,
+    handleBulkAccessLevelChange,
+    handleBulkColorChange,
+    handleBulkDuplicate,
   }
 }
