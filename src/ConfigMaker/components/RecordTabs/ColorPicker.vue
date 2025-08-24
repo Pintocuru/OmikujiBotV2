@@ -1,75 +1,76 @@
 <!-- src/configMaker/components/RecordTabs/ColorPicker.vue -->
 <template>
-  <div class="w-full">
+  <div class="px-4 py-2">
+    <div class="text-sm text-base-content/70 mb-2">カラー設定</div>
+
     <!-- カラーパレット（プリセットカラー） -->
     <div class="grid grid-cols-8 gap-2 mb-3">
       <button
         v-for="color in presetColors"
         :key="color"
         class="w-6 h-6 rounded-full border-2 hover:scale-110 transition-transform"
-        :class="[modelValue === color ? 'border-white shadow-lg' : 'border-gray-400', 'hover:border-white']"
+        :class="[
+          modelValue === color ? 'border-3 scale-110 border-white shadow-lg' : 'border-gray-400',
+          'hover:border-white',
+        ]"
         :style="{ backgroundColor: color }"
         :title="`カラー: ${color}`"
         @click="updateColor(color)"
       />
     </div>
-
-    <!-- カスタムカラー選択 -->
-    <div class="flex items-center gap-2">
-      <label class="text-xs text-base-content/70 flex-shrink-0">カスタム:</label>
-      <input
-        type="color"
-        :value="modelValue || '#3B82F6'"
-        @input="updateColor(($event.target as HTMLInputElement)?.value)"
-        class="w-8 h-6 rounded border border-base-300 cursor-pointer hover:border-base-400"
-      />
-      <span class="text-xs font-mono text-base-content/50">{{ modelValue || '#3B82F6' }}</span>
-    </div>
-
-    <!-- クリア/リセットボタン -->
-    <div class="flex gap-2 mt-2">
-      <button
-        @click="updateColor(defaultColor)"
-        class="btn btn-xs btn-outline flex-1"
-        :disabled="modelValue === defaultColor"
-      >
-        デフォルト
-      </button>
-      <button v-if="modelValue" @click="updateColor('')" class="btn btn-xs btn-ghost flex-1">クリア</button>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { useRecordTabsStore } from './RecordTabsStore'
+
   const props = defineProps<{
     modelValue?: string
   }>()
 
-  const emit = defineEmits<{
-    'update:modelValue': [value: string]
-  }>()
-
-  // デフォルトカラー
-  const defaultColor = '#3B82F6'
+  // Store
+  const tabsStore = useRecordTabsStore()
 
   // プリセットカラー（よく使用される色を厳選）
   const presetColors = [
-    '#3B82F6', // Blue - デフォルト
-    '#EF4444', // Red - エラー/重要
-    '#10B981', // Green - 成功/完了
-    '#F59E0B', // Yellow - 警告/注意
-    '#8B5CF6', // Purple - 特別/上級
-    '#EC4899', // Pink - 強調
-    '#06B6D4', // Cyan - 情報
-    '#84CC16', // Lime - 新規/追加
-    '#F97316', // Orange - アクション
-    '#6366F1', // Indigo - プライマリ
-    '#6B7280', // Gray - 無効/通常
-    '#1F2937', // Dark Gray - システム
+    // Normal (500)
+    '#F44336', // Red 500
+    '#FF9800', // Orange 500
+    '#4CAF50', // Green 500
+    '#00BCD4', // Cyan 500
+    '#2196F3', // Blue 500
+    '#3F51B5', // Indigo 500
+    '#9C27B0', // Purple 500
+    '#9E9E9E', // Gray 500
+
+    // Light (200)
+    '#EF9A9A', // Red 200
+    '#FFCC80', // Orange 200
+    '#A5D6A7', // Green 200
+    '#80DEEA', // Cyan 200
+    '#90CAF9', // Blue 200
+    '#9FA8DA', // Indigo 200
+    '#CE93D8', // Purple 200
+    '#E0E0E0', // Gray 200
+
+    // Dark (900)
+    '#B71C1C', // Red 900
+    '#E65100', // Orange 900
+    '#1B5E20', // Green 900
+    '#006064', // Cyan 900
+    '#0D47A1', // Blue 900
+    '#1A237E', // Indigo 900
+    '#4A148C', // Purple 900
+    '#212121', // Gray 900
   ]
 
   // カラー更新
   const updateColor = (color: string) => {
-    emit('update:modelValue', color)
+    if (tabsStore.contextMenu.rule) {
+      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
+        ...tabsStore.contextMenu.rule,
+        editorColor: color,
+      })
+    }
   }
 </script>

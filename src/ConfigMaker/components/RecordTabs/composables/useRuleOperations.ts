@@ -26,7 +26,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     return callback(category)
   }
 
-  /** 新しいルールを追加 */
+  // 新しいルールを追加
   const handleAddItem = () => {
     withValidCategory((category) => {
       omikujiStore.addItem?.(category)
@@ -37,7 +37,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     })
   }
 
-  /** ルールの内容を更新 */
+  // ルールの内容を更新
   const handleUpdateRule = <C extends RecordCategoryType>(
     ruleId: string,
     updates: Partial<RecordCategoryItemTypeMap[C]>

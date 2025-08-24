@@ -2,15 +2,15 @@
 <template>
   <!-- 右クリックコンテキストメニュー -->
   <div
-    v-if="store.contextMenu.show"
-    :style="{ top: store.contextMenu.y + 'px', left: store.contextMenu.x + 'px' }"
+    v-if="tabsStore.contextMenu.show"
+    :style="{ top: tabsStore.contextMenu.y + 'px', left: tabsStore.contextMenu.x + 'px' }"
     class="fixed z-50 bg-base-100 border border-base-300 rounded-lg shadow-xl py-2 min-w-48"
     @click.stop
   >
     <!-- 有効/無効切り替え -->
     <button @click="handleToggleEnabled" class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2">
-      <component :is="store.contextMenu.rule?.isEnabled === false ? EyeOff : Eye" class="w-4 h-4" />
-      {{ store.contextMenu.rule?.isEnabled === false ? '有効にする' : '無効にする' }}
+      <component :is="tabsStore.contextMenu.rule?.isEnabled === false ? EyeOff : Eye" class="w-4 h-4" />
+      {{ tabsStore.contextMenu.rule?.isEnabled === false ? '有効にする' : '無効にする' }}
     </button>
 
     <div class="divider my-1"></div>
@@ -25,7 +25,7 @@
           @click="handleAccessLevelChange(level)"
           class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
           :class="[
-            store.contextMenu.rule?.accessLevel === level
+            tabsStore.contextMenu.rule?.accessLevel === level
               ? level === 'basic'
                 ? 'bg-primary text-primary-content'
                 : level === 'pro'
@@ -44,7 +44,7 @@
 
     <!-- 複製 -->
     <button
-      @click="store.handleContextDuplicate"
+      @click="tabsStore.handleContextDuplicate"
       class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
     >
       <Copy class="w-4 h-4" />
@@ -53,7 +53,7 @@
 
     <!-- 削除 -->
     <button
-      @click="store.handleContextDelete"
+      @click="tabsStore.handleContextDelete"
       class="w-full px-4 py-2 text-left hover:bg-error hover:text-error-content flex items-center gap-2 text-error"
     >
       <Trash2 class="w-4 h-4" />
@@ -63,18 +63,11 @@
     <div class="divider my-1"></div>
 
     <!-- カラー設定 -->
-    <div class="px-4 py-2">
-      <div class="text-sm text-base-content/70 mb-2">カラー設定</div>
-      <ColorPicker
-        v-if="store.contextMenu.rule"
-        v-model="store.contextMenu.rule.editorColor"
-        @update:model-value="handleColorChange"
-      />
-    </div>
+    <ColorPicker v-if="tabsStore.contextMenu.rule" v-model="tabsStore.contextMenu.rule.editorColor" />
   </div>
 
   <!-- コンテキストメニューを閉じるためのオーバーレイ -->
-  <div v-if="store.contextMenu.show" @click="store.hideContextMenu" class="fixed inset-0 z-40"></div>
+  <div v-if="tabsStore.contextMenu.show" @click="tabsStore.hideContextMenu" class="fixed inset-0 z-40"></div>
 </template>
 
 <script setup lang="ts">
@@ -86,46 +79,36 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
-  const store = useRecordTabsStore()
+  const tabsStore = useRecordTabsStore()
   const { isGod } = useSettingMode()
 
   // 有効/無効切り替え
   const handleToggleEnabled = () => {
-    if (store.contextMenu.rule) {
-      const currentEnabled = store.contextMenu.rule.isEnabled !== false
-      store.handleUpdateRule(store.contextMenu.rule.id, {
-        ...store.contextMenu.rule,
+    if (tabsStore.contextMenu.rule) {
+      const currentEnabled = tabsStore.contextMenu.rule.isEnabled !== false
+      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
+        ...tabsStore.contextMenu.rule,
         isEnabled: !currentEnabled,
       })
     }
-    store.hideContextMenu()
-  }
-
-  // カラー変更
-  const handleColorChange = (color: string) => {
-    if (store.contextMenu.rule) {
-      store.handleUpdateRule(store.contextMenu.rule.id, {
-        ...store.contextMenu.rule,
-        editorColor: color,
-      })
-    }
+    tabsStore.hideContextMenu()
   }
 
   // AccessLevel変更
   const handleAccessLevelChange = (level: AccessLevelType) => {
-    if (store.contextMenu.rule) {
-      store.handleUpdateRule(store.contextMenu.rule.id, {
-        ...store.contextMenu.rule,
+    if (tabsStore.contextMenu.rule) {
+      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
+        ...tabsStore.contextMenu.rule,
         accessLevel: level,
       })
     }
-    store.hideContextMenu()
+    tabsStore.hideContextMenu()
   }
 
   // ESCキーでメニューを閉じる
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      store.hideContextMenu()
+      tabsStore.hideContextMenu()
     }
   }
 
