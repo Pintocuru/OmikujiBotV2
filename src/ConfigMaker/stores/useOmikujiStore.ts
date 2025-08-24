@@ -1,11 +1,11 @@
-// src/ConfigMaker/script/stores/useOmikujiStore.ts
+// src/ConfigMaker/script/stores/useOmikujiStore.ts (メインストア - 大幅簡素化)
 import { nextTick, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { CategoryType } from '@/types/OmikujiData/CategoryType'
 import { useDataOperations } from './composables/useDataOperations'
-import { useNavigationState } from './composables/useNavigationState'
+import { useNavigationManager } from './composables/useNavigationManager'
+import { useItemManager } from './composables/useItemManager'
 import { useRecordOperations } from './composables/useRecordOperations'
 import { useSettingsOperations } from './composables/useSettingsOperations'
 
@@ -13,42 +13,34 @@ import { useSettingsOperations } from './composables/useSettingsOperations'
 const omikujiData = OmikujiDataSchema.parse(window.omikujiData)
 
 export const useOmikujiStore = defineStore('omikuji', () => {
-  // コアデータ
-  // isDev の時は、開発者用プリセット管理 を使うために初期値にする(omikujiData.jsを編集させない)
+  // === コアデータ ===
   const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}))
 
-  // 変更があったかどうかを追跡するフラグ
+  // 変更追跡
   const hasChanged = ref(false)
   let isInitializing = true
   useOmikujiStore().$subscribe(() => {
     if (!isInitializing) hasChanged.value = true
   })
-  nextTick(() => (isInitializing = false)) // 初期化完了後
+  nextTick(() => (isInitializing = false))
 
-  // ナビゲーション状態管理
-  const navigationState = useNavigationState()
-
-  // データ操作機能
-  const dataOperations = useDataOperations(data)
-
-  // カテゴリ(rules/placeholder/character)操作機能
-  const recordOperations = useRecordOperations(data)
-
-  // カテゴリ外(scriptSettings/displaySettings/wordPartySettings/meta)操作機能
-  const settingsOperations = useSettingsOperations(data)
-
-  // カテゴリ選択のラッパー関数（依存関係のため）
-  const selectCategory = (category: CategoryType) => {
-    navigationState.selectCategory(category, (cat: any) => recordOperations.getCategoryMap(cat))
-  }
+  // === 各機能モジュール ===
+  const dataOps = useDataOperations(data)
+  const recordOps = useRecordOperations(data)
+  const settingsOps = useSettingsOperations(data)
+  const navigation = useNavigationManager(recordOps)
+  const itemManager = useItemManager(recordOps, navigation)
 
   return {
+    // コアデータ
     data,
-    hasChanged, // 変更追跡
-    ...navigationState, // ナビゲーション状態
-    ...dataOperations, // データ操作
-    ...recordOperations, // カテゴリ操作
-    ...settingsOperations, // カテゴリ外操作
-    selectCategory, // ナビゲーション
+    hasChanged,
+
+    // 各機能モジュールを展開
+    ...dataOps,
+    ...recordOps,
+    ...settingsOps,
+    ...navigation,
+    ...itemManager,
   }
 })
