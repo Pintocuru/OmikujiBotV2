@@ -7,7 +7,7 @@
 
       <!-- 編集モード切り替えボタン -->
       <button
-        @click="toggleEditMode"
+        @click="toggleMode"
         class="btn bg-primary"
         :class="{ 'btn-active': isTextMode }"
         title="編集モードを切り替え"
@@ -17,71 +17,36 @@
     </div>
 
     <!-- 入力モード -->
-    <PlaceholderInputMode
-      v-if="!isTextMode"
-      :local-values="localValues"
-      @add-value="addValue"
-      @remove-value="removeValue"
-      @duplicate-value="duplicateValue"
-    />
+    <div v-if="!isTextMode && selectedItem">
+      <PlaceholderInputMode :placeholderId="props.placeholderId" :values="selectedItem.values" />
+    </div>
 
     <!-- テキストモード -->
-    <PlaceholderTextMode
-      v-else
-      :text-content="textContent"
-      :line-count="lineCount"
-      :has-errors="hasErrors"
-      :valid-items-count="validItemsCount"
-      :error-count="errorCount"
-      @update:text-content="textContent = $event"
-      @update-line-count="updateLineCount"
-      @save="saveTextContent"
-      @cancel="handleCancelTextMode"
-    />
+    <div v-else-if="selectedItem">
+      <PlaceholderTextMode :initialValues="selectedItem.values" @save="handleTextSave" @cancel="isTextMode = false" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
-  import { usePlaceholderValues } from './composables/usePlaceholderValues'
-  import { useTextModeParser } from './composables/useTextModeParser'
+  import { computed, ref } from 'vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { PlaceholderType, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
   import PlaceholderInputMode from './PlaceholderInputMode.vue'
   import PlaceholderTextMode from './PlaceholderTextMode.vue'
   import PlaceholderPreview from './PlaceholderPreview.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
   import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
     placeholderId: string
   }>()
 
-  // Pinia store
+  // store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-
-  // コンポーザブルの使用
-  // これ専用
-  const { localValues, initializeValues, addValue, removeValue, duplicateValue } = usePlaceholderValues(
-    props.placeholderId
-  )
-
-  // これ専用
-  const {
-    textContent,
-    lineCount,
-    hasErrors,
-    validItemsCount,
-    errorCount,
-    updateLineCount,
-    convertValuesToText,
-    convertTextToValues,
-  } = useTextModeParser()
-
-  // リアクティブデータ
   const isTextMode = ref(false)
 
-  // v-modelを使用したselectedCharacterの実装
+  // ストアから直接データを取得
   const selectedItem = computed({
     get: () => {
       if (!props.placeholderId) return null
@@ -92,37 +57,14 @@
     },
   })
 
-  // 編集モード切り替え
-  const toggleEditMode = () => {
-    if (!isTextMode.value) {
-      // 入力モードからテキストモードへ
-      convertValuesToText(localValues.value)
-    } else {
-      // テキストモードから入力モードへ
-      if (!hasErrors.value && validItemsCount.value > 0) {
-        localValues.value = convertTextToValues()
-      }
-    }
+  // モード切り替え
+  const toggleMode = () => {
     isTextMode.value = !isTextMode.value
   }
 
-  // テキストコンテンツの保存
-  const saveTextContent = () => {
-    if (hasErrors.value || validItemsCount.value === 0) return
-
-    const newValues = convertTextToValues()
-    omikujiStore.updatePlaceholderValues(props.placeholderId, newValues)
-    toggleEditMode()
-  }
-
-  // キャンセル時の処理（テキストモードから入力モードへ戻る）
-  const handleCancelTextMode = () => {
+  // テキストモードからの保存
+  const handleTextSave = (values: Array<PlaceholderValueType | string>) => {
+    omikujiStore.updatePlaceholderValues(props.placeholderId, values)
     isTextMode.value = false
   }
-
-  // 監視
-  watch(textContent, updateLineCount)
-
-  // 初期化
-  initializeValues()
 </script>

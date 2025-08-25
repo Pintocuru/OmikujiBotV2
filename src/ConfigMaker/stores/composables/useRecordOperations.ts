@@ -124,6 +124,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
     updateRecordProperty(category, ruleId, 'omikuji', updatedOmikuji)
   }
 
+  // 特殊ケース
   const updatePlaceholderValues = (placeholderId: string, rawValues: Array<PlaceholderValueType | string>) => {
     if (data.value.placeholders[placeholderId]) {
       const parsedValues = PlaceholderValuesSchema.parse(rawValues)

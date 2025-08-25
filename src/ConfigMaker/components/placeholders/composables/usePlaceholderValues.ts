@@ -10,6 +10,9 @@ export function usePlaceholderValues(placeholderId: string) {
 
   // リアクティブデータ
   const localValues = ref<Array<PlaceholderValueType | string>>([])
+  const updateValues = () => {
+    omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', localValues.value)
+  }
 
   // 現在のプレースホルダーデータ
   const currentPlaceholder = computed(() => omikujiStore.getCategoryMap('placeholders')[placeholderId])
@@ -28,11 +31,13 @@ export function usePlaceholderValues(placeholderId: string) {
   // 値の操作
   const addValue = () => {
     localValues.value.push(PlaceholderValueObjectSchema.parse({}))
+    updateValues()
   }
 
   const removeValue = (index: number) => {
     if (!localValues.value.length) return
     localValues.value.splice(index, 1)
+    updateValues()
   }
 
   const duplicateValue = (index: number) => {
@@ -40,21 +45,14 @@ export function usePlaceholderValues(placeholderId: string) {
     if (typeof original === 'string') {
       const duplicated = `${original} (コピー)`
       localValues.value.splice(index + 1, 0, duplicated)
+      updateValues()
     } else {
       const duplicated = JSON.parse(JSON.stringify(original))
       duplicated.content = `${original.content} (コピー)`
       localValues.value.splice(index + 1, 0, duplicated)
+      updateValues()
     }
   }
-
-  // localValuesの変更をリアルタイム更新
-  watch(
-    localValues,
-    (newValues) => {
-      omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', newValues)
-    },
-    { deep: true }
-  )
 
   return {
     localValues,

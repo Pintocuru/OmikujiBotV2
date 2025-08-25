@@ -20,8 +20,7 @@
         <span class="label-text-alt">{{ lineCount }}行</span>
       </label>
       <textarea
-        :value="textContent"
-        @input="handleInput"
+        v-model="textContent"
         class="textarea textarea-bordered h-64 font-mono text-sm resize-none w-full"
         placeholder="3,重要な内容&#10;1,普通の内容&#10;5,とても重要な内容&#10;単純なテキスト（重み1）"
       />
@@ -38,35 +37,109 @@
 
     <!-- 保存ボタン -->
     <ModalFooterActions
-      :on-cancel="() => $emit('cancel')"
-      :on-save="() => $emit('save')"
+      :on-cancel="handleCancel"
+      :on-save="handleSave"
       :disabled="hasErrors || validItemsCount === 0"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ref, computed, onMounted } from 'vue'
+  import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
 
-  defineProps<{
-    textContent: string
-    lineCount: number
-    hasErrors: boolean
-    validItemsCount: number
-    errorCount: number
+  const props = defineProps<{
+    initialValues: Array<PlaceholderValueType | string>
   }>()
 
   const emit = defineEmits<{
-    'update:textContent': [value: string]
-    'update-line-count': []
-    save: []
+    save: [values: Array<PlaceholderValueType | string>]
     cancel: []
   }>()
 
-  function handleInput(event: Event) {
-    const value = (event.target as HTMLTextAreaElement).value
-    emit('update:textContent', value)
-    emit('update-line-count')
+  const textContent = ref('')
+
+  // 初期値をテキストに変換
+  const initializeText = () => {
+    textContent.value = props.initialValues
+      .map((value) => {
+        if (typeof value === 'string') {
+          return value
+        }
+        return value.weight === 1 ? value.content : `${value.weight},${value.content}`
+      })
+      .join('\n')
   }
+
+  // 行数計算
+  const lineCount = computed(() => {
+    return textContent.value.split('\n').length
+  })
+
+  // 行をパースしてバリデーション
+  const parseAndValidateLine = (line: string) => {
+    const trimmed = line.trim()
+    if (!trimmed) return null
+
+    const parts = trimmed.split(',')
+    const candidate =
+      parts.length === 2 && !isNaN(parseInt(parts[0].trim()))
+        ? { weight: parseInt(parts[0].trim()), content: parts[1].trim() }
+        : { weight: 1, content: trimmed }
+
+    const result = PlaceholderValueObjectSchema.safeParse(candidate)
+
+    return {
+      ...candidate,
+      hasError: !result.success,
+      error: result.success ? '' : getErrorMessage(result.error),
+    }
+  }
+
+  // エラーメッセージを日本語化
+  const getErrorMessage = (error: any) => {
+    const issue = error.issues?.[0]
+    if (issue?.path?.[0] === 'weight') return '重みは1以上の整数である必要があります'
+    if (issue?.path?.[0] === 'content') return '内容が必要です'
+    return '不正な値です'
+  }
+
+  // プレビューアイテム
+  const previewItems = computed(() => {
+    return textContent.value
+      .split('\n')
+      .map(parseAndValidateLine)
+      .filter((item) => item !== null)
+  })
+
+  // バリデーション状態
+  const hasErrors = computed(() => previewItems.value.some((item) => item.hasError))
+  const validItemsCount = computed(() => previewItems.value.filter((item) => !item.hasError).length)
+  const errorCount = computed(() => previewItems.value.filter((item) => item.hasError).length)
+
+  // テキストから値に変換
+  const convertTextToValues = (): Array<PlaceholderValueType | string> => {
+    return previewItems.value
+      .filter((item) => !item.hasError)
+      .map(({ weight, content }) => {
+        // 重みが1の場合は文字列として返す（スキーマの変換ロジックに合わせる）
+        return weight === 1 ? content : { weight, content }
+      })
+  }
+
+  const handleSave = () => {
+    if (hasErrors.value || validItemsCount.value === 0) return
+    const values = convertTextToValues()
+    emit('save', values)
+  }
+
+  const handleCancel = () => {
+    emit('cancel')
+  }
+
+  onMounted(() => {
+    initializeText()
+  })
 </script>
