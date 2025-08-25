@@ -32,7 +32,7 @@ const systemCommonData: SystemCommonData = {
  */
 const buildConfigs: BuildConfig[] = [
   /* ReimuMarisa */
-  // ReimuMarisaBasic,
+  ReimuMarisaBasic,
   ReimuMarisaPro,
 
   // percent_Dora,
