@@ -38,7 +38,7 @@ export function useSaveActions(
         description: `設定を "${trimmedFileName}" として保存しました`,
         duration: 3000,
       })
-
+      omikujiStore.resetChangeState()
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
@@ -66,6 +66,7 @@ export function useSaveActions(
               duration: 3000,
             })
 
+            omikujiStore.resetChangeState()
             state.isServerConnected.value = true
             return null
           }, 'isSaving')

@@ -23,6 +23,7 @@ export function useLoadActions(
         description: `設定 "${fileName.replace('.json', '')}" を読み込みました`,
         duration: 3000,
       })
+      omikujiStore.resetChangeState()
 
       state.isServerConnected.value = true
       return configData

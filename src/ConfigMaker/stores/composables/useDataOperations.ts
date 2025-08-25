@@ -8,7 +8,7 @@ import { toast } from 'vue-sonner'
 /**
  * データの読み込み、保存、マージ機能を提供するコンポーザブル
  */
-export function useDataOperations(data: Ref<OmikujiDataType>) {
+export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   /**
    * データを読み込み、バリデーションを行う
    */
@@ -17,6 +17,7 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
       const parsed = OmikujiDataSchema.safeParse(loadData)
       if (parsed.success) {
         data.value = parsed.data
+        hasChanged.value = false
         toast.success('データを正常に読み込みました。')
         return true
       } else {
@@ -135,6 +136,7 @@ export function useDataOperations(data: Ref<OmikujiDataType>) {
       }
 
       data.value = result
+      hasChanged.value = true
       return true
     } catch (error) {
       toast.error('データの更新中にエラーが発生しました。')

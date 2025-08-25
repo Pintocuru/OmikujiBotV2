@@ -124,13 +124,12 @@ export function useItemManager(
     batchUpdateOrder,
 
     // 直接アクセス（必要に応じて）
-    // !たぶん要らない
-    // getItem: recordOps.getItem,
-    // getCategoryMap: recordOps.getCategoryMap,
-    // getCategoryArray: recordOps.getCategoryArray,
+    getItem: recordOps.getItem,
+    getCategoryMap: recordOps.getCategoryMap,
+    getCategoryArray: recordOps.getCategoryArray,
 
     // 特殊操作
-    // updateOmikujiPostActions: recordOps.updateOmikujiPostActions,
-    // updatePlaceholderValues: recordOps.updatePlaceholderValues,
+    updateOmikujiPostActions: recordOps.updateOmikujiPostActions,
+    updatePlaceholderValues: recordOps.updatePlaceholderValues,
   }
 }

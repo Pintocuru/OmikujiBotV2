@@ -14,9 +14,10 @@ import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 /**
  * 純粋なデータ操作のみ（UI状態管理なし）
  */
-export function useRecordOperations(data: Ref<OmikujiDataType>) {
+export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   const updateCategoryData = <C extends CategoryType>(category: C, newData: OmikujiDataType[C]) => {
     data.value[category] = newData
+    hasChanged.value = true
   }
 
   const addItem = <C extends RecordCategoryType>(
@@ -41,6 +42,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     const id = newItem.id
 
     data.value[category] = { ...data.value[category], [id]: newItem }
+    hasChanged.value = true
     return id
   }
 
@@ -61,6 +63,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
         ...categoryData,
         [id]: updatedItem,
       } as any
+      hasChanged.value = true
     }
   }
 
@@ -80,7 +83,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     const timestamp = new Date().toISOString()
     const duplicatedItem = {
       ...item,
-      id: `${baseId(id)}_copy_${Date.now()}`,
+      id: `${id.replace(/_copy_\d+$/, '')}_copy_${Date.now()}`,
       name: `${item.name} (コピー)`,
       createdAt: timestamp,
       updatedAt: timestamp,
@@ -89,51 +92,13 @@ export function useRecordOperations(data: Ref<OmikujiDataType>) {
     return addItem(category, duplicatedItem)
   }
 
-  // ちょっとしたヘルパー
-  function baseId(id: string): string {
-    return id.replace(/_copy_\d+$/, '')
-  }
-
   const updateRecordProperty = <C extends RecordCategoryType, K extends keyof RecordCategoryItemTypeMap[C]>(
     category: C,
     id: string,
     key: K,
     value: RecordCategoryItemTypeMap[C][K]
   ) => {
-    // TODO:ここはエラーになるかも
-    /**
-     * 型 '{ [x: string]: RecordCategoryItemTypeMap[C][K]; }' から型 'Partial<RecordCategoryItemTypeMap[C]>' への変換は、互いに十分に重複できないため間違っている可能性があります。意図的にそうする場合は、まず式を 'unknown' に変換してください。ts(2352)
-(alias) type RecordCategoryItemTypeMap = {
-    comments: {
-        ruleType: "comments";
-        threshold: {
-            conditions: ("comment" | "syoken" | "access" | "gift" | "count")[];
-            syoken: ("syoken" | "again" | "firstVisit")[];
-            access: ("basic" | "member" | "subscriber" | "premium" | "moderator" | "owner")[];
-            gift: ("all" | "blue" | "lightBlue" | "green" | "yellow" | "orange" | "pink" | "red" | "purple")[];
-            count: {
-                comparison: "lowerBound" | "upperBound" | "equal" | "loop";
-                unit: "lc" | "tc";
-                value: number;
-            };
-            comment: string[];
-        };
-        scriptId: string | null;
-        scriptParams: Record<string, any> | null;
-        limits: {
-            cooldownSeconds: number;
-            ... 5 more ...;
-            repeatMessage?: string | undefined;
-        };
-        ... 11 more ...;
-        description?: string | undefined;
-    };
-    timers: TimerRuleType;
-    placeholders: PlaceholderType;
-    characters: CharacterType;
-}
-import RecordCategoryItemTypeMap
-     */
+    // Partial使ってるのでダブルキャスト
     updateItem(category, id, { [key]: value } as unknown as Partial<RecordCategoryItemTypeMap[C]>)
   }
 

@@ -18,20 +18,12 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
   // 変更追跡
   const hasChanged = ref(false)
-  let isInitializing = true
-  watch(
-    () => data.value,
-    () => {
-      if (!isInitializing) hasChanged.value = true
-    },
-    { deep: true }
-  )
-  nextTick(() => (isInitializing = false))
+  const resetChangeState = () => (hasChanged.value = false)
 
   // === 各機能モジュール ===
-  const dataOps = useDataOperations(data)
-  const recordOps = useRecordOperations(data)
-  const settingsOps = useSettingsOperations(data)
+  const dataOps = useDataOperations(data, hasChanged)
+  const recordOps = useRecordOperations(data, hasChanged)
+  const settingsOps = useSettingsOperations(data, hasChanged)
   const navigation = useNavigationManager(recordOps)
   const itemManager = useItemManager(recordOps, navigation)
 
@@ -39,6 +31,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     // コアデータ
     data,
     hasChanged,
+    resetChangeState,
 
     // 各機能モジュールを展開
     ...dataOps,
