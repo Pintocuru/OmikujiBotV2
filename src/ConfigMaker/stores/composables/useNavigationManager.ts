@@ -1,11 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useNavigationManager.ts (ナビゲーション専用)
 import { ref, computed } from 'vue'
-import {
-  CategoryType,
-  RecordCategoryType,
-  recordCategoryLabel,
-  RecordCategoryItemTypeMap,
-} from '@/types/OmikujiData/CategoryType'
+import { CategoryType, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import type { useRecordOperations } from './useRecordOperations'
 
 /**

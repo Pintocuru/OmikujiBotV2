@@ -112,34 +112,6 @@ export function useItemManager(
     await recordOps.batchUpdateOrder(category, updates)
   }
 
-  /**
-   * プロパティ更新（簡易版）
-   */
-  const updateProperty = <C extends RecordCategoryType>(
-    category: C,
-    id: string,
-    key: keyof RecordCategoryItemTypeMap[C],
-    value: any
-  ) => {
-    recordOps.updateRecordProperty(category, id, key, value)
-  }
-
-  /**
-   * 現在選択中のアイテムを更新（よく使うパターン）
-   */
-  const updateCurrentItem = (updates: Partial<any>) => {
-    if (!navigation.selectedRuleId.value || !navigation.isRecordCategory.value) {
-      return false
-    }
-
-    recordOps.updateItem(
-      navigation.selectedCategory.value as RecordCategoryType,
-      navigation.selectedRuleId.value,
-      updates
-    )
-    return true
-  }
-
   return {
     // CRUD操作
     addItem,
@@ -151,17 +123,14 @@ export function useItemManager(
     reorderItems,
     batchUpdateOrder,
 
-    // ヘルパー
-    updateProperty,
-    updateCurrentItem,
-
     // 直接アクセス（必要に応じて）
-    getItem: recordOps.getItem,
-    getCategoryMap: recordOps.getCategoryMap,
-    getCategoryArray: recordOps.getCategoryArray,
+    // !たぶん要らない
+    // getItem: recordOps.getItem,
+    // getCategoryMap: recordOps.getCategoryMap,
+    // getCategoryArray: recordOps.getCategoryArray,
 
     // 特殊操作
-    updateOmikujiPostActions: recordOps.updateOmikujiPostActions,
-    updatePlaceholderValues: recordOps.updatePlaceholderValues,
+    // updateOmikujiPostActions: recordOps.updateOmikujiPostActions,
+    // updatePlaceholderValues: recordOps.updatePlaceholderValues,
   }
 }
