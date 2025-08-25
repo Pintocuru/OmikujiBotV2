@@ -15,12 +15,12 @@ const shimsPath = path.resolve(packageRoot, 'src/types/shims-vue.d.ts')
 
 /*
  * OmikujiData のjsonデータをjsファイルにする
- * たぶんもう要らない
  */
 async function convertAllJsonFiles() {
   try {
     const files = await fs.readdir(targetFolder)
 
+    // FIXME:全部ではなく引数で受け取った特定のファイルのみをjs化させる
     for (const file of files) {
       if (file.endsWith('.json')) {
         const inputPath = path.join(targetFolder, file)

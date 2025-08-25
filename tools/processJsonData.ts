@@ -1,5 +1,6 @@
 // tools\processJsonData.ts
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { getKey } from '@/types/SettingMode'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
 /**
@@ -18,6 +19,10 @@ export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: Acc
     timers: filterItems(data.timers, targetIndex),
     placeholders: filterItems(data.placeholders, targetIndex),
     characters: filterItems(data.characters, targetIndex),
+    displaySettings: {
+      ...data.displaySettings,
+      licenseKeyHash: getLicenseKeyHash(targetLevel),
+    },
   }
 }
 
@@ -31,4 +36,15 @@ const filterItems = <T extends Record<string, any>>(data: T, targetIndex: number
     if (itemIndex <= targetIndex) filteredData[key] = item
   }
   return filteredData
+}
+
+// License書き換え
+const getLicenseKeyHash = (targetLevel?: AccessLevelType): string => {
+  // 未記入ならbasic
+  if (!targetLevel) return ''
+
+  if (targetLevel === 'pro') return getKey('pro')
+  if (targetLevel === 'internal') return getKey('godMode')
+
+  return ''
 }

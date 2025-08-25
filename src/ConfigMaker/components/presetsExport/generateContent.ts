@@ -1,4 +1,4 @@
-// src/configMaker/components/presets/generateContent.ts
+//src\ConfigMaker\components\presetsExport\generateContent.ts
 
 // .js での出力テンプレート
 export const generateJsContent = (configData: string) => {

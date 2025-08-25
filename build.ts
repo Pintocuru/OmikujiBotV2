@@ -6,7 +6,8 @@ import packageJson from './package.json'
 import { createShimsVue } from './tools/CreateOmikujiData'
 
 // 各設定ファイルをインポート
-import ReimuMarisaConfig from './buildConfigs/ReimuMarisa'
+import ReimuMarisaBasic from './buildConfigs/ReimuMarisaBasic'
+import ReimuMarisaPro from './buildConfigs/ReimuMarisaPro'
 import percent_Dora from './buildConfigs/5percent_Dora'
 
 // システム共通データ
@@ -30,7 +31,10 @@ const systemCommonData: SystemCommonData = {
  * 出力フォルダ名: {name}_{version}
  */
 const buildConfigs: BuildConfig[] = [
-  ReimuMarisaConfig,
+  /* ReimuMarisa */
+  // ReimuMarisaBasic,
+  ReimuMarisaPro,
+
   // percent_Dora,
   // 新しい設定はここに追加
 ]
@@ -38,7 +42,7 @@ const buildConfigs: BuildConfig[] = [
 // ビルド実行
 ;(async () => {
   try {
-    // 前処理
+    // 前処理:shims-vue.d.ts を生成
     createShimsVue()
 
     // メインビルド処理
