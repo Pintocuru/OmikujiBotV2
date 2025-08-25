@@ -33,7 +33,7 @@ const buildConfig: BuildConfig = {
   // リソースファイル
   filesToCopy: [{ from: 'assets/exported/thumb/ReimuMarisaDX.png', to: 'thumb.png' }],
 
-  name,
+  name: `${name}-${accessName}`,
   version,
   skipWebpack: targetAccessLevel !== 'basic',
   outputJson: targetAccessLevel !== 'basic',
