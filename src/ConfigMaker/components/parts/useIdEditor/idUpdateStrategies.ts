@@ -110,11 +110,10 @@ function updatePlaceholderReferences(oldId: string, newId: string): void {
   // プレースホルダー内容の更新
   const placeholders = omikujiStore.getCategoryMap('placeholders')
   Object.entries(placeholders).forEach(([id, placeholder]) => {
-    const updatedValues = (placeholder as any).values.map((value: any) =>
-      value.content.includes(oldPlaceholder)
-        ? { ...value, content: value.content.replace(regex, newPlaceholder) }
-        : value
-    )
+    const updatedValues = placeholder.values.map((value: any) => {
+      const v = typeof value === 'string' ? { content: value, weight: 1 } : value
+      return v.content.includes(oldPlaceholder) ? { ...v, content: v.content.replace(regex, newPlaceholder) } : v
+    })
     omikujiStore.updateItem('placeholders', id, { ...placeholder, values: updatedValues })
   })
 

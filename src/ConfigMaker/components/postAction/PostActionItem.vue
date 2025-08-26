@@ -13,11 +13,11 @@
     <PostActionBasicSettings
       :action="action"
       :character-options="characterOptions"
-      @update:action="$emit('update:action', $event)"
+      @update:action="handleActionUpdate"
     />
 
     <!-- メッセージ系フィールド -->
-    <PostActionMessageFields :action="action" :index="index" />
+    <PostActionMessageFields :action="action" :index="index" @update:action="handleActionUpdate" />
   </div>
 </template>
 
@@ -40,4 +40,9 @@
     remove: [index: number]
     'update:action': [value: PostActionType]
   }>()
+
+  // アクション更新のハンドラー
+  const handleActionUpdate = (updatedAction: PostActionType) => {
+    emit('update:action', updatedAction)
+  }
 </script>
