@@ -3,7 +3,7 @@ import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { commonBuildConfig } from './base/baseSettings'
 
 const doraProject: ProjectConfig = {
-  ...commonBuildConfig(),
+  ...commonBuildConfig,
 
   name: '5percent_Dora',
   version: 'v2025.8.16',
@@ -16,7 +16,7 @@ const doraProject: ProjectConfig = {
   },
 
   json: {
-    ...commonBuildConfig().json,
+    ...commonBuildConfig.json,
     jsonPath: '5percent_Dora.json',
   },
 

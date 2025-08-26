@@ -6,7 +6,7 @@ import { commonBuildConfig } from './base/baseSettings'
  * ReimuMarisaプロジェクト設定
  */
 const reimuMarisaProject: ProjectConfig = {
-  ...commonBuildConfig(),
+  ...commonBuildConfig,
 
   name: 'ReimuMarisa',
   version: 'v2025.8.25(プレビュー版)',
@@ -19,7 +19,7 @@ const reimuMarisaProject: ProjectConfig = {
   },
 
   json: {
-    ...commonBuildConfig().json,
+    ...commonBuildConfig.json,
     jsonPath: 'ReimuMarisa.json',
   },
 
