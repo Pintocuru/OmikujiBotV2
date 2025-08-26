@@ -71,10 +71,6 @@
     modelValue: DisplayOptionType
   }>()
 
-  const emit = defineEmits<{
-    'update:modelValue': [value: DisplayOptionType]
-  }>()
-
   // Pinia store
   const omikujiStore = useOmikujiStore()
   const { selectedRuleId } = storeToRefs(omikujiStore)

@@ -28,7 +28,6 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CharacterBasicInfo from './CharacterBasicInfo.vue'

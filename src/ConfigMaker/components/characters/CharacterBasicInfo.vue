@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/characters/CharacterBasicInfo.vue -->
 <template>
-  <SectionCard v-if="localData" :isGild="true">
+  <SectionCard v-if="currentData" :isGild="true">
     <template #header>
       <div>基本設定</div>
       <div class="text-sm pr-2">キャラクター、またはカラー設定名の編集を行います。</div>
@@ -11,17 +11,22 @@
       <SettingItem label="Key" description="キャラクターのキー名">
         <div class="flex gap-2 items-center">
           <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
-            {{ localData.id }}
+            {{ currentData.id }}
           </div>
 
           <!-- 編集ボタン -->
-          <IdEditor :currentId="localData.id" category="characters" />
+          <IdEditor :currentId="currentData.id" category="characters" />
         </div>
       </SettingItem>
 
       <!-- id以外のテキストフィールドループ -->
       <SettingItem v-for="field in fields" :key="field.key" :label="field.label" :description="field.description">
-        <input type="text" class="input input-bordered w-full" v-model="localData[field.key]" />
+        <input
+          type="text"
+          class="input input-bordered w-full"
+          :value="currentData[field.key] || ''"
+          @input="updateField(field.key, ($event.target as HTMLInputElement).value)"
+        />
       </SettingItem>
     </template>
   </SectionCard>
@@ -42,17 +47,19 @@
   // Pinia store
   const omikujiStore = useOmikujiStore()
 
-  const localData = computed<CharacterType | undefined>({
-    get: () => {
-      if (!props.selectedRuleId) return
-      return omikujiStore.getItem<CharacterType>('characters', props.selectedRuleId) ?? undefined
-    },
-
-    set: (value?: CharacterType) => {
-      if (!props.selectedRuleId || !value) return
-      omikujiStore.updateItem('characters', props.selectedRuleId, value)
-    },
+  // 現在のキャラクターデータを取得（読み取り専用）
+  const currentData = computed<CharacterType | undefined>(() => {
+    if (!props.selectedRuleId) return undefined
+    return omikujiStore.getItem<CharacterType>('characters', props.selectedRuleId) ?? undefined
   })
+
+  // フィールドを個別に更新する関数
+  const updateField = (key: keyof CharacterType, value: string) => {
+    if (!props.selectedRuleId) return
+
+    // updateRecordPropertyを使用して特定のフィールドのみ更新
+    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, key, value)
+  }
 
   const fields = [
     { key: 'name', label: '設定名', description: '識別しやすい名前' },

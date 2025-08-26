@@ -29,8 +29,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
   return {
     // コアデータ
-    data: readonly(data), // readonlyにして直接編集を防ぐが、厳格すぎるのでチェック時のみ
-    // data,
+    // data: readonly(data), // readonlyにして直接編集を防ぐが、厳格すぎるのでチェック時のみ
+    data,
     hasChanged,
     resetChangeState,
 
