@@ -7,25 +7,37 @@
     :data-tip="dataTip"
   >
     <span class="btn btn-sm btn-outline hover:btn-primary transition-colors min-w-fit whitespace-nowrap">
-      <span v-if="isLoading">⏳コピー中…</span>
-      <span v-else-if="copied">✓コピー済み</span>
-      <span v-else>📋 コピー</span>
+      <span v-if="isLoading" class="flex items-center gap-1">
+        <Loader2Icon class="h-4 w-4 animate-spin" />
+        <span v-if="!small">コピー中…</span>
+      </span>
+      <span v-else-if="copied" class="flex items-center gap-1">
+        <CheckIcon class="h-4 w-4" />
+        <span v-if="!small">コピー済み</span>
+      </span>
+      <span v-else class="flex items-center gap-1">
+        <CopyIcon class="h-4 w-4" />
+        <span v-if="!small">コピー</span>
+      </span>
     </span>
   </button>
 </template>
 
 <script setup lang="ts">
   import { ref, onUnmounted } from 'vue'
+  import { CopyIcon, CheckIcon, Loader2Icon } from 'lucide-vue-next'
 
   interface Props {
     value: string // コピーする値（必須）
     dataTip?: string // タイトル（ツールチップ）
     disabled?: boolean // 無効化フラグ
+    small?: boolean // 小さなモード（テキスト非表示）
   }
 
   const props = withDefaults(defineProps<Props>(), {
     dataTip: 'クリックしてコピー',
     disabled: false,
+    small: false,
   })
 
   // 状態管理

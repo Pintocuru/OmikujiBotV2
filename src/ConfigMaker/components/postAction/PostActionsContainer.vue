@@ -1,19 +1,23 @@
 <!-- src/configMaker/components/postAction/PostActionsContainer.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
-    <!-- タイトルバー -->
-    <div class="flex justify-between items-center bg-primary text-white rounded-t px-4 py-2">
-      <h3 class="text-lg font-semibold">Post Actions 編集</h3>
-      <div class="flex gap-2">
-        <button @click="emit('add-action')" class="btn btn-sm btn-secondary">
-          <Plus class="w-4 h-4" />
-          追加
-        </button>
-      </div>
-    </div>
+  <SectionCard variant="primary">
+    <template #header>
+      <div>PostActions 編集</div>
+    </template>
 
-    <!-- 本体 -->
-    <div class="card-body p-2">
+    <template #body>
+      <!-- 追加ボタン -->
+      <div class="flex justify-between rounded-t">
+        <div></div>
+        <div>
+          <button @click="emit('add-action')" class="btn btn-sm btn-secondary">
+            <Plus class="w-4 h-4" />
+            追加
+          </button>
+        </div>
+      </div>
+
+      <!-- 本体 -->
       <div v-if="editingActions.length > 0" class="space-y-4">
         <PostActionItem
           v-for="(postAction, index) in editingActions"
@@ -36,13 +40,14 @@
         <Plus class="w-4 h-4" />
         アクションの追加
       </button>
-    </div>
-  </div>
+    </template>
+  </SectionCard>
 </template>
 
 <script setup lang="ts">
   import { reactive } from 'vue'
   import { PostActionType } from '@/types/'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import PostActionItem from './PostActionItem.vue'
   import { Plus } from 'lucide-vue-next'
 
