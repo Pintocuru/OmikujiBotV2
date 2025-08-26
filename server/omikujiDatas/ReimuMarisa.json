@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "ReimuMarisa-PRO",
+    "name": "ReimuMarisa",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "2025.8.16",
     "generatorName": "omikuji-bot",
@@ -24,7 +24,7 @@
       "name": "おみくじ",
       "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-25T19:24:46.633Z",
+      "updatedAt": "2025-08-26T01:17:13.534Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",

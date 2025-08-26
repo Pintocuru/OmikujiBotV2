@@ -40,13 +40,14 @@
               type="url"
               class="input input-sm w-full"
               :placeholder="`${emotion}の画像URL`"
-              v-model="localImages[key]"
+              :value="currentImages[key] || ''"
+              @input="updateImagePath(key, ($event.target as HTMLInputElement).value)"
             />
 
             <!-- プレビュー表示 -->
             <img
-              v-if="localImages[key]"
-              :src="getImagePath(localImages[key])"
+              v-if="currentImages[key]"
+              :src="getImagePath(currentImages[key])"
               :alt="`${emotion}の画像プレビュー`"
               class="avatar max-h-16 rounded border"
               loading="lazy"
@@ -65,6 +66,8 @@
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { Info, RotateCcw } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
     modelValue: CharacterType['image']
@@ -75,13 +78,21 @@
     'update:modelValue': [value: CharacterType['image']]
   }>()
 
-  // v-modelを使用したlocalImagesの実装
-  const localImages = computed({
-    get: () => props.modelValue ?? {},
-    set: (value: CharacterType['image']) => {
-      emit('update:modelValue', value)
-    },
-  })
+  // Pinia store
+  const omikujiStore = useOmikujiStore()
+
+  // 現在の画像設定を取得
+  const currentImages = computed(() => props.modelValue ?? {})
+
+  // 画像パスを更新する関数
+  const updateImagePath = (key: CharacterEmotionType, value: string) => {
+    if (!props.selectedRuleId) return
+
+    const newImages = { ...currentImages.value, [key]: value }
+
+    // storeを使って更新
+    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, 'image', newImages)
+  }
 
   // 拡張子のリスト（検索順序）
   const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg']
@@ -91,7 +102,7 @@
 
   // 画像パスのリセット（トグル機能付き）
   const resetImagePath = (key: CharacterEmotionType) => {
-    const newImages = { ...localImages.value }
+    if (!props.selectedRuleId) return
 
     // 現在の拡張子のインデックスを取得
     const currentIndex = currentExtensions.value.get(key) || 0
@@ -102,7 +113,10 @@
 
     // 新しいパスを設定
     const nextExt = imageExtensions[currentIndex]
-    newImages[key] = `${props.selectedRuleId}/${key}.${nextExt}`
-    localImages.value = newImages
+    const newPath = `${props.selectedRuleId}/${key}.${nextExt}`
+
+    // storeを使って更新
+    const newImages = { ...currentImages.value, [key]: newPath }
+    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, 'image', newImages)
   }
 </script>

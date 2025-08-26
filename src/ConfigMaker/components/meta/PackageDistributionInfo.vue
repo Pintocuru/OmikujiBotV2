@@ -15,17 +15,17 @@
       >
         <div class="flex gap-2">
           <select
-            v-model="meta.license"
+            v-model="license"
             class="select select-bordered flex-1 max-w-xs w-full"
             :class="{ 'select-disabled': !isPro }"
             :disabled="!isPro"
           >
-            <option v-for="license in licenseOptions" :key="license.value" :value="license.value">
-              {{ license.label }}
+            <option v-for="licenseOption in licenseOptions" :key="licenseOption.value" :value="licenseOption.value">
+              {{ licenseOption.label }}
             </option>
           </select>
           <input
-            v-if="meta.license === 'custom'"
+            v-if="license === 'custom'"
             v-model="customLicense"
             type="text"
             class="input input-bordered flex-1 max-w-xs"
@@ -45,7 +45,7 @@
       >
         <div class="flex gap-2">
           <input
-            v-model="meta.url"
+            v-model="url"
             type="url"
             class="input input-bordered flex-1 w-full"
             :class="{ 'input-disabled': !isPro }"
@@ -53,11 +53,9 @@
             placeholder="https://example.com"
           />
           <button
-            v-if="meta.url && isValidUrl(meta.url)"
+            v-if="url && isValidUrl(url)"
             @click="openUrl"
             class="btn btn-primary btn-outline"
-            :class="{ 'btn-disabled': !isPro }"
-            :disabled="!isPro"
             title="サイトを開く"
           >
             <ExternalLink class="w-4 h-4" />
@@ -91,43 +89,48 @@
     { value: 'CC-BY-NC 4.0', label: 'CC-BY-NC 4.0 (表示-非営利)' },
     { value: 'CC-BY-NC-SA 4.0', label: 'CC-BY-NC-SA 4.0 (表示-非営利-継承)' },
     { value: 'CC-BY-NC-ND 4.0', label: 'CC-BY-NC-ND 4.0 (表示-非営利-改変禁止)' },
-    { value: 'CC0 1.0', label: 'CC0 1.0 (パブリックドメイン)' },
     { value: '利用規約に従う', label: '利用規約に従う' },
     { value: '個人利用のみ', label: '個人利用のみ' },
     { value: '商用利用可', label: '商用利用可' },
     { value: '改変禁止', label: '改変禁止' },
-    { value: '要相談', label: '要相談' },
     { value: 'custom', label: 'カスタム' },
   ]
 
-  // メタ情報の参照
-  const meta = computed({
-    get: () => data.value.meta,
-    set: (newValue) => {
-      omikujiStore.updateMeta(newValue)
-    },
-  })
+  // メタデータのプロパティ用computedを生成するヘルパー関数
+  const createMetaProperty = <T,>(key: keyof typeof data.value.meta) => {
+    return computed({
+      get: () => data.value.meta[key] as T,
+      set: (value: T) => {
+        omikujiStore.updateMeta({
+          ...data.value.meta,
+          [key]: value,
+        })
+      },
+    })
+  }
+
+  // 各プロパティのcomputed
+  const license = createMetaProperty<string>('license')
+  const url = createMetaProperty<string | undefined>('url')
 
   // カスタムライセンス用の入力
   const customLicense = computed({
     get: () => {
-      if (!licenseOptions.some((option) => option.value === meta.value.license)) {
-        return meta.value.license
+      if (!licenseOptions.some((option) => option.value === license.value)) {
+        return license.value
       }
       return ''
     },
     set: (value: string) => {
-      meta.value = {
-        ...meta.value,
-        license: value,
-      }
+      license.value = value
     },
   })
 
   // URL検証
-  const isValidUrl = (url: string): boolean => {
+  const isValidUrl = (urlValue: string | undefined): boolean => {
+    if (!urlValue) return false
     try {
-      new URL(url)
+      new URL(urlValue)
       return true
     } catch {
       return false
@@ -136,13 +139,13 @@
 
   // URLを開く
   const openUrl = () => {
-    if (meta.value.url && isValidUrl(meta.value.url)) {
-      window.open(meta.value.url, '_blank', 'noopener,noreferrer')
+    if (url.value && isValidUrl(url.value)) {
+      window.open(url.value, '_blank', 'noopener,noreferrer')
     }
   }
 
   // 共通リセット関数
-  const resetField = (field: keyof typeof meta.value) => {
+  const resetField = (field: keyof typeof data.value.meta) => {
     let defaultValue
 
     if (field === 'url') {
@@ -151,10 +154,10 @@
       defaultValue = PackageMetaSchema.shape[field].parse(undefined)
     }
 
-    meta.value = {
-      ...meta.value,
+    omikujiStore.updateMeta({
+      ...data.value.meta,
       [field]: defaultValue,
-    }
+    })
   }
 
   // フィールドごとのショートカット

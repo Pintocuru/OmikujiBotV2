@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/useOmikujiStore.ts (メインストア - 大幅簡素化)
-import { nextTick, ref, watch } from 'vue'
+import { readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
@@ -29,7 +29,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
 
   return {
     // コアデータ
-    data,
+    data: readonly(data), // readonlyにして直接編集を防ぐが、厳格すぎるのでチェック時のみ
+    // data,
     hasChanged,
     resetChangeState,
 

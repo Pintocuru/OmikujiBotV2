@@ -9,18 +9,18 @@
     <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
 
     <!-- 色設定 -->
-    <CharacterColorSettings v-model="selectedItem.color" />
+    <CharacterColorSettings :modelValue="selectedItem.color" />
 
     <!-- キャラクター表示設定 -->
-    <CharacterIconDisplaySettings v-model="selectedItem.displayOption" />
+    <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption" />
 
     <!-- キャラクター用枠設定 -->
-    <CharacterServiceSettings v-if="selectedItem.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
+    <CharacterServiceSettings v-if="selectedItem.displayOption?.isOneCommePost" :selectedRuleId="selectedRuleId" />
 
     <!-- ジェネレーター用画像設定 -->
     <CharacterImageSettings
-      v-if="selectedItem.displayOption.isIconDisplay"
-      v-model="selectedItem.image"
+      v-if="selectedItem.displayOption?.isIconDisplay"
+      :modelValue="selectedItem.image"
       :selectedRuleId="selectedRuleId"
     />
   </div>
@@ -42,14 +42,9 @@
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
 
-  // v-modelを使用したselectedCharacterの実装
-  const selectedItem = computed({
-    get: () => {
-      if (!selectedRuleId.value) return null
-      return data.value.characters[selectedRuleId.value]
-    },
-    set: (value: CharacterType) => {
-      omikujiStore.updateItem('characters', value.id, value)
-    },
+  // 選択されたキャラクターを取得（読み取り専用）
+  const selectedItem = computed(() => {
+    if (!selectedRuleId.value) return null
+    return data.value.characters[selectedRuleId.value]
   })
 </script>

@@ -27,12 +27,7 @@
 
         <!-- プレースホルダー名 -->
         <SettingItem label="設定名" description="識別しやすい名前">
-          <input
-            type="text"
-            v-model="selectedItem.name"
-            placeholder="設定名を入力"
-            class="input input-bordered w-full"
-          />
+          <input type="text" v-model="itemName" placeholder="設定名を入力" class="input input-bordered w-full" />
         </SettingItem>
       </template>
     </SectionCard>
@@ -67,14 +62,30 @@
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
 
-  // v-modelを使用したselectedCharacterの実装
-  const selectedItem = computed({
-    get: () => {
-      if (!selectedRuleId.value) return null
-      return data.value.placeholders[selectedRuleId.value]
-    },
-    set: (value: PlaceholderType) => {
-      omikujiStore.updateItem('placeholders', value.id, value)
-    },
+  // 選択されたアイテムの取得（読み取り専用）
+  const selectedItem = computed(() => {
+    if (!selectedRuleId.value) return null
+    return data.value.placeholders[selectedRuleId.value]
   })
+
+  // プレースホルダーのプロパティ用computedを生成するヘルパー関数
+  const createPlaceholderProperty = <T,>(key: keyof PlaceholderType) => {
+    return computed({
+      get: () => {
+        if (!selectedItem.value) return '' as T
+        return selectedItem.value[key] as T
+      },
+      set: (value: T) => {
+        if (!selectedItem.value) return
+        const updatedItem = {
+          ...selectedItem.value,
+          [key]: value,
+        }
+        omikujiStore.updateItem('placeholders', selectedItem.value.id, updatedItem)
+      },
+    })
+  }
+
+  // 各プロパティのcomputed
+  const itemName = createPlaceholderProperty<string>('name')
 </script>

@@ -18,7 +18,11 @@
       </div>
       <!-- プレビュー -->
       <div class="relative flex justify-center">
-        <CommentBubblePreview :color="localData" :custom-classes="localData.customClasses" bubbleMotionEnter="none" />
+        <CommentBubblePreview
+          :color="currentColor"
+          :custom-classes="currentColor.customClasses"
+          bubbleMotionEnter="none"
+        />
       </div>
 
       <!-- カラーピッカー -->
@@ -27,7 +31,12 @@
           <label class="label">
             <span class="label-text">{{ label }}</span>
           </label>
-          <input type="color" class="input input-bordered h-12 w-full" v-model="localData[key]" />
+          <input
+            type="color"
+            class="input input-bordered h-12 w-full"
+            :value="currentColor[key]"
+            @input="updateColorField(key, ($event.target as HTMLInputElement).value)"
+          />
         </div>
       </div>
 
@@ -36,13 +45,14 @@
         label="カスタムTailwindクラス"
         description="グラデーション背景、ボーダー、影などを追加できます"
         :showReset="true"
-        @reset="localData.customClasses = 'border-2 border-white'"
+        @reset="updateColorField('customClasses', 'border-2 border-white')"
       >
         <input
           type="text"
           placeholder="例: bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white"
           class="input input-bordered w-full"
-          v-model="localData.customClasses"
+          :value="currentColor.customClasses"
+          @input="updateColorField('customClasses', ($event.target as HTMLInputElement).value)"
         />
         <label class="label">
           <span class="label-text-alt"></span>
@@ -53,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
@@ -61,14 +71,20 @@
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { Dices } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
-    modelValue: CharacterColorType
+    modelValue?: CharacterColorType
   }>()
 
   const emit = defineEmits<{
     'update:modelValue': [value: CharacterColorType]
   }>()
+
+  // Pinia store
+  const omikujiStore = useOmikujiStore()
+  const { selectedRuleId } = storeToRefs(omikujiStore)
 
   // labelとキーを配列で管理
   const colorFields = [
@@ -77,46 +93,38 @@
     { label: '背景色', key: 'backgroundColor' },
   ] as const
 
-  // v-modelを使用したlocalColorの実装
-  const localData = computed({
-    get: () => props.modelValue,
-    set: (value: CharacterColorType) => {
-      emit('update:modelValue', value)
-    },
-  })
-
-  // propsからlocalColorを更新
-  watch(
-    () => props.modelValue,
-    (newValue) => {
-      // ここで全体を置き換えず、フィールドごとに更新
-      for (const key in newValue) {
-        ;(localData.value as any)[key] = (newValue as any)[key]
+  // 現在の色設定を取得
+  const currentColor = computed(
+    () =>
+      props.modelValue ?? {
+        nameColor: '#000000',
+        textColor: '#000000',
+        backgroundColor: '#ffffff',
+        customClasses: '',
       }
-      if (!newValue.customClasses) {
-        localData.value.customClasses = ''
-      }
-    },
-    { deep: true }
   )
 
-  // localColorの変更を親に通知
-  watch(
-    localData,
-    (newValue) => {
-      emit('update:modelValue', newValue)
-    },
-    { deep: true }
-  )
+  // 色フィールドを更新する関数
+  const updateColorField = (key: keyof CharacterColorType, value: string) => {
+    if (!selectedRuleId.value) return
+
+    // storeを使って更新
+    omikujiStore.updateRecordProperty('characters', selectedRuleId.value, 'color', {
+      ...currentColor.value,
+      [key]: value,
+    })
+  }
 
   // ランダム色設定の処理
   const handleRandomColor = () => {
+    if (!selectedRuleId.value) return
+
     const result = drawOmikuji(DEFAULT_COLOR_THEMES)
     if (result) {
-      localData.value = {
+      omikujiStore.updateRecordProperty('characters', selectedRuleId.value, 'color', {
         ...result,
-        customClasses: localData.value.customClasses,
-      }
+        customClasses: currentColor.value.customClasses,
+      })
     }
   }
 </script>

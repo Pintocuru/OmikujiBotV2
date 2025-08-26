@@ -10,7 +10,7 @@
       <!-- パッケージ名 -->
       <SettingItem label="パッケージ名" description="テンプレート出力する際に表示する名称">
         <input
-          v-model="meta.name"
+          v-model="name"
           type="text"
           class="input input-bordered w-full max-w-md"
           :class="{ 'input-disabled': !isPro }"
@@ -22,7 +22,7 @@
       <!-- パッケージ説明 -->
       <SettingItem label="パッケージ説明" description="どんな内容を表示できるかを端的に説明">
         <input
-          v-model="meta.description"
+          v-model="description"
           type="text"
           class="input input-bordered w-full max-w-md"
           :class="{ 'input-disabled': !isPro }"
@@ -34,7 +34,7 @@
       <!-- バージョン -->
       <SettingItem label="バージョン" description="パッケージのバージョン情報">
         <input
-          v-model="meta.version"
+          v-model="version"
           type="text"
           class="input input-bordered w-full max-w-md"
           :class="{ 'input-disabled': !isPro }"
@@ -44,14 +44,9 @@
       </SettingItem>
 
       <!-- 作者 -->
-      <SettingItem
-        label="作者"
-        description="パッケージの作成者名"
-        :showReset="isPro"
-        @reset="meta.author = 'Pintocuru'"
-      >
+      <SettingItem label="作者" description="パッケージの作成者名" :showReset="isPro" @reset="author = 'Pintocuru'">
         <input
-          v-model="meta.author"
+          v-model="author"
           type="text"
           class="input input-bordered w-full max-w-md"
           :class="{ 'input-disabled': !isPro }"
@@ -65,7 +60,7 @@
         label="タグ"
         description="パッケージの分類に使用されるタグ（改行区切りで入力）"
         :showReset="isPro"
-        @reset="meta.tags = ['おみくじBOT']"
+        @reset="tags = ['おみくじBOT']"
       >
         <textarea
           v-model="tagsInput"
@@ -94,26 +89,35 @@
   //
   const { isPro } = useSettingMode()
 
-  // メタ情報の参照
-  const meta = computed({
-    get: () => data.value.meta,
-    set: (newValue) => {
-      omikujiStore.updateMeta(newValue)
-    },
-  })
+  // メタデータのプロパティ用computedを生成するヘルパー関数
+  const createMetaProperty = <T,>(key: keyof typeof data.value.meta) => {
+    return computed({
+      get: () => data.value.meta[key] as T,
+      set: (value: T) => {
+        omikujiStore.updateMeta({
+          ...data.value.meta,
+          [key]: value,
+        })
+      },
+    })
+  }
+
+  // 各プロパティのcomputed
+  const name = createMetaProperty<string>('name')
+  const description = createMetaProperty<string>('description')
+  const version = createMetaProperty<string>('version')
+  const author = createMetaProperty<string>('author')
+  const tags = createMetaProperty<string[]>('tags')
 
   // タグの配列とテキストエリア入力の相互変換（改行区切り）
   const tagsInput = computed({
-    get: () => meta.value.tags.join('\n'),
+    get: () => tags.value.join('\n'),
     set: (value: string) => {
-      const tags = value
+      const newTags = value
         .split('\n')
         .map((tag) => tag.trim())
         .filter((tag) => tag.length > 0)
-      meta.value = {
-        ...meta.value,
-        tags,
-      }
+      tags.value = newTags
     },
   })
 </script>

@@ -64,6 +64,7 @@
   const { isPro, isGod } = useSettingMode()
 
   // 基本設定の参照
+  // FIXME:dataを直接編集しているため修正が必要
   const base = computed({
     get: () => data.value.displaySettings.base,
     set: (newValue) => {
