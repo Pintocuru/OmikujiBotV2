@@ -14,7 +14,7 @@ const reimuMarisaProject: ProjectConfig = {
   template: {
     name: 'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa',
     boothURL: 'https://pintocuru.booth.pm/items/5471598',
-    readmeURL: 'https://github.com/pintocuru/OmikujiBot/blob/main/README.md',
+    readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotReimuMarisa/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
   },
 

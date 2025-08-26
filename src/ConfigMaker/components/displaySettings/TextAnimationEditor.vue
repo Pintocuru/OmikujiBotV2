@@ -27,7 +27,11 @@
         :showReset="true"
         @reset="resetMap.displaySize"
       >
-        <select v-model="base.displaySize" class="select select-bordered w-full max-w-xs">
+        <select
+          :value="base.displaySize"
+          @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
+          class="select select-bordered w-full max-w-xs"
+        >
           <option v-for="size in displaySize" :key="size" :value="size">
             {{ displaySizeLabels[size] }}
           </option>
@@ -42,7 +46,12 @@
         :showReset="true"
         @reset="resetMap.fontFamily"
       >
-        <select v-model="base.fontFamily" class="select bg-base text-base-content w-full max-w-xs" :disabled="!isPro">
+        <select
+          :value="base.fontFamily"
+          @change="(e) => updateBaseField('fontFamily', (e.target as HTMLSelectElement).value)"
+          class="select bg-base text-base-content w-full max-w-xs"
+          :disabled="!isPro"
+        >
           <option v-for="font in fontFamilyOptions" :key="font" :value="font">
             {{ fontFamilyLabels[font] }}
           </option>
@@ -56,7 +65,11 @@
         :showReset="true"
         @reset="resetMap.bubbleMotionEnter"
       >
-        <select v-model="base.bubbleMotionEnter" class="select select-bordered w-full max-w-xs">
+        <select
+          :value="base.bubbleMotionEnter"
+          @change="(e) => updateBaseField('bubbleMotionEnter', (e.target as HTMLSelectElement).value)"
+          class="select select-bordered w-full max-w-xs"
+        >
           <option v-for="animation in motionLabel" :key="animation" :value="animation">
             {{ animation }}
           </option>
@@ -67,9 +80,13 @@
         label="フキダシアニメーション(終了時)"
         description="フキダシの表示アニメーションを設定します"
         :showReset="true"
-        @reset="resetMap.bubbleMotionEnter"
+        @reset="resetMap.bubbleMotionLeave"
       >
-        <select v-model="base.bubbleMotionLeave" class="select select-bordered w-full max-w-xs">
+        <select
+          :value="base.bubbleMotionLeave"
+          @change="(e) => updateBaseField('bubbleMotionLeave', (e.target as HTMLSelectElement).value)"
+          class="select select-bordered w-full max-w-xs"
+        >
           <option v-for="animation in motionLabel" :key="animation" :value="animation">
             {{ animation }}
           </option>
@@ -98,29 +115,25 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
-  // 基本設定の参照
-  // FIXME:dataを直接編集しているため修正が必要
-  const base = computed({
-    get: () => data.value.displaySettings.base,
-    set: (newValue) => {
-      omikujiStore.updateDisplaySettings({
-        base: {
-          ...data.value.displaySettings.base,
-          ...newValue,
-        },
-      })
-    },
-  })
+
+  // 個別のcomputed値（読み取り専用）
+  const base = computed(() => data.value.displaySettings.base)
+
+  // 汎用的な更新関数
+  const updateBaseField = (field: keyof typeof base.value, value: any) => {
+    omikujiStore.updateDisplaySettings({
+      base: {
+        ...base.value,
+        [field]: value,
+      },
+    })
+  }
 
   // 共通リセット関数
   const resetField = (field: keyof typeof base.value) => {
     const schemaDefaults = BaseSettingsSchema.parse({})
     const defaultValue = schemaDefaults[field]
-
-    base.value = {
-      ...base.value,
-      [field]: defaultValue,
-    }
+    updateBaseField(field, defaultValue)
   }
 
   // フィールドごとのリセット関数マップ
@@ -128,6 +141,7 @@
     displaySize: () => resetField('displaySize'),
     fontFamily: () => resetField('fontFamily'),
     bubbleMotionEnter: () => resetField('bubbleMotionEnter'),
+    bubbleMotionLeave: () => resetField('bubbleMotionLeave'),
   }
 
   // キャラクターのカラー設定を取得

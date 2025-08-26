@@ -14,7 +14,11 @@
         :showReset="true"
         @reset="resetMap.daisyUiTheme"
       >
-        <select v-model="base.daisyUiTheme" class="select select-bordered w-full max-w-xs">
+        <select
+          :value="base.daisyUiTheme"
+          @change="(e) => updateBaseField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
+          class="select select-bordered w-full max-w-xs"
+        >
           <option v-for="theme in themes" :key="theme" :value="theme">
             {{ theme }}
           </option>
@@ -26,11 +30,17 @@
         <div class="flex gap-2 items-center">
           <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
           <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>
-          <input type="password" class="input input-bordered flex-1" v-model="licenseKeyHash" placeholder="****" />
+          <input
+            type="password"
+            class="input input-bordered flex-1"
+            :value="licenseKeyHash"
+            @input="(e) => updateLicenseKeyHash((e.target as HTMLInputElement).value)"
+            placeholder="****"
+          />
           <span v-if="isDev">
-            <button class="btn btn-sm btn-primary mr-2" @click="licenseKeyHash = ''">basic</button>
-            <button class="btn btn-sm btn-success mr-2" @click="licenseKeyHash = getKey('pro')">PRO</button>
-            <button class="btn btn-sm btn-warning" @click="licenseKeyHash = getKey('godMode')">GOD-MODE</button>
+            <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
+            <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>
+            <button class="btn btn-sm btn-warning" @click="updateLicenseKeyHash(getKey('godMode'))">GOD-MODE</button>
           </span>
         </div>
       </SettingItem>
@@ -63,38 +73,31 @@
   const { data } = storeToRefs(omikujiStore)
   const { isPro, isGod } = useSettingMode()
 
-  // 基本設定の参照
-  // FIXME:dataを直接編集しているため修正が必要
-  const base = computed({
-    get: () => data.value.displaySettings.base,
-    set: (newValue) => {
-      omikujiStore.updateDisplaySettings({
-        base: {
-          ...data.value.displaySettings.base,
-          ...newValue,
-        },
-      })
-    },
-  })
+  // 個別のcomputed値（読み取り専用）
+  const base = computed(() => data.value.displaySettings.base)
+  const licenseKeyHash = computed(() => data.value.displaySettings.licenseKeyHash)
 
-  const licenseKeyHash = computed({
-    get: () => data.value.displaySettings.licenseKeyHash,
-    set: (newValue) => {
-      omikujiStore.updateDisplaySettings({
-        licenseKeyHash: newValue,
-      })
-    },
-  })
+  // 汎用的な更新関数
+  const updateBaseField = (field: keyof typeof base.value, value: any) => {
+    omikujiStore.updateDisplaySettings({
+      base: {
+        ...base.value,
+        [field]: value,
+      },
+    })
+  }
+
+  const updateLicenseKeyHash = (value: string) => {
+    omikujiStore.updateDisplaySettings({
+      licenseKeyHash: value,
+    })
+  }
 
   // 共通リセット関数
   const resetField = (field: keyof typeof base.value) => {
     const schemaDefaults = BaseSettingsSchema.parse({})
     const defaultValue = schemaDefaults[field]
-
-    base.value = {
-      ...base.value,
-      [field]: defaultValue,
-    }
+    updateBaseField(field, defaultValue)
   }
 
   // フィールドごとのリセット関数マップ

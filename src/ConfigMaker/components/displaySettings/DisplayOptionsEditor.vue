@@ -18,7 +18,12 @@
         @reset="resetMap.useCharacterBgColor"
       >
         <label class="label cursor-pointer justify-start gap-3">
-          <input v-model="base.useCharacterBgColor" type="checkbox" class="toggle toggle-primary" />
+          <input
+            :checked="base.useCharacterBgColor"
+            @change="(e) => updateBaseField('useCharacterBgColor', (e.target as HTMLInputElement).checked)"
+            type="checkbox"
+            class="toggle toggle-primary"
+          />
           <span class="label-text">背景色を付ける</span>
         </label>
       </SettingItem>
@@ -33,7 +38,12 @@
         @reset="resetMap.showCharacterThumbnail"
       >
         <label class="label cursor-pointer justify-start gap-3">
-          <input v-model="base.showCharacterThumbnail" type="checkbox" class="toggle toggle-primary" />
+          <input
+            :checked="base.showCharacterThumbnail"
+            @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
+            type="checkbox"
+            class="toggle toggle-primary"
+          />
           <span class="label-text">キャラクターアイコンを表示する</span>
         </label>
       </SettingItem>
@@ -46,7 +56,12 @@
         @reset="resetMap.showToasts"
       >
         <label class="label cursor-pointer justify-start gap-3">
-          <input v-model="base.showToasts" type="checkbox" class="toggle toggle-primary" />
+          <input
+            :checked="base.showToasts"
+            @change="(e) => updateBaseField('showToasts', (e.target as HTMLInputElement).checked)"
+            type="checkbox"
+            class="toggle toggle-primary"
+          />
           <span class="label-text">トースト通知を表示する</span>
         </label>
       </SettingItem>
@@ -67,29 +82,24 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  // 基本設定の参照
-  // FIXME:dataを直接編集しているため修正が必要
-  const base = computed({
-    get: () => data.value.displaySettings.base,
-    set: (newValue) => {
-      omikujiStore.updateDisplaySettings({
-        base: {
-          ...data.value.displaySettings.base,
-          ...newValue,
-        },
-      })
-    },
-  })
+  // 個別のcomputed値（読み取り専用）
+  const base = computed(() => data.value.displaySettings.base)
+
+  // 汎用的な更新関数
+  const updateBaseField = (field: keyof typeof base.value, value: any) => {
+    omikujiStore.updateDisplaySettings({
+      base: {
+        ...base.value,
+        [field]: value,
+      },
+    })
+  }
 
   // 共通リセット関数
   const resetField = (field: keyof typeof base.value) => {
     const schemaDefaults = BaseSettingsSchema.parse({})
     const defaultValue = schemaDefaults[field]
-
-    base.value = {
-      ...base.value,
-      [field]: defaultValue,
-    }
+    updateBaseField(field, defaultValue)
   }
 
   // フィールドごとのリセット関数マップ
