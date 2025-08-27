@@ -26,7 +26,7 @@ const doraProject: ProjectConfig = {
    * 改変禁止
    */
   license: {
-    basic: 'CC-BY-NC-SA 4.0',
+    basic: '個人利用のみ',
   },
 
   template: {

@@ -625,7 +625,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T14:30:12.646Z",
+      "updatedAt": "2025-08-27T14:18:35.128Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -683,7 +683,9 @@
           "^どわーふ",
           "^rabbit",
           "^dwarf",
-          "^usagi"
+          "^usagi",
+          "🐰",
+          "🐇"
         ]
       },
       "scriptId": "DwarfBomb",
@@ -2342,7 +2344,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:02.486Z",
+      "updatedAt": "2025-08-27T15:13:55.428Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2438,7 +2440,7 @@
           "value": 1
         },
         "comment": [
-          "コメント"
+          "^コメント$"
         ]
       },
       "scriptId": null,
@@ -2456,7 +2458,7 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T13:32:00.328Z",
+      "updatedAt": "2025-08-27T15:16:15.484Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2485,7 +2487,7 @@
             },
             {
               "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
+              "wordParty": "!ジャン！",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -2523,7 +2525,7 @@
             },
             {
               "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
+              "wordParty": "!ジャン！",
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
@@ -2574,7 +2576,7 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T13:32:02.879Z",
+      "updatedAt": "2025-08-27T15:16:58.086Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2603,7 +2605,7 @@
             },
             {
               "delaySeconds": 0.3,
-              "wordParty": "!saisen_hako",
+              "wordParty": "!ジャン！",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -2652,7 +2654,7 @@
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T13:32:05.617Z",
+      "updatedAt": "2025-08-27T15:17:38.854Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2681,7 +2683,7 @@
             },
             {
               "delaySeconds": 0.3,
-              "wordParty": "!kinoko",
+              "wordParty": "!ジャン！",
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
