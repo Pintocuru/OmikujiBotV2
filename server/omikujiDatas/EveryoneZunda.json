@@ -1,14 +1,15 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.0",
-    "generatorName": "unknown-generator",
-    "generatorVersion": "1.x.x",
-    "author": "unknown",
+    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "0.8.0-beta09",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "0.8.0-beta09",
+    "author": "Pintocuru(せすじピンとしてます)",
     "tags": [],
-    "license": "CC-BY 4.0"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/6053855"
   },
   "comments": {
     "OmikujiZunda": {

@@ -12,9 +12,12 @@ async function initApp() {
     const app = createApp(App)
     // グローバルエラーハンドリング
     app.config.errorHandler = (err, instance, info) => {
-      console.error('グローバルエラー:', err)
-      console.error('コンポーネント:', instance)
-      console.error('エラー情報:', info)
+      console.error('エラー:', err)
+      if (instance) {
+        console.log('props:', instance.$props)
+        console.log('data:', instance.$data)
+        console.log('el:', instance.$el)
+      }
     }
     // アプリをマウント
     app.use(pinia)

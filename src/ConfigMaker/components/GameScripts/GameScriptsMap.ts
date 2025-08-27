@@ -6,9 +6,9 @@ import DwarfBomb from '@/GameScripts/DwarfBomb/src/main'
 
 // gameScriptMap
 export const gameScriptMap: Record<string, ScriptPreset<any, any, any>> = {
-  BomberSpin,
-  GouseiSuika,
-  DwarfBomb,
+  [BomberSpin.key]: BomberSpin,
+  [GouseiSuika.key]: GouseiSuika,
+  [DwarfBomb.key]: DwarfBomb,
   // GachaOmikuji,
   // StealEmAll
 } as const
