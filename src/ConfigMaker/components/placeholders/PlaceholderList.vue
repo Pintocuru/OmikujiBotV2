@@ -47,15 +47,13 @@
       </div>
 
       <!-- プレースホルダーリスト -->
-      <div class="grid grid-cols-2 gap-2 max-h-64 overflow-y-auto overflow-x-hidden mx-auto">
+      <div class="grid grid-cols-2 gap-2 h-64 overflow-x-hidden content-start">
         <PlaceholderItem
           v-for="(placeholder, index) in filteredPlaceholders"
           :key="`${placeholder.id}-${index}`"
           :placeholder="placeholder"
           :is-used="usedPlaceholderIds.has(placeholder.id)"
           :is-default="defaultPlaceholders.includes(placeholder.id)"
-          :random-value="getRandomValue(placeholder)"
-          @click="refreshRandomValue(placeholder.id)"
         />
       </div>
 
@@ -68,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, toRef } from 'vue'
+  import { toRef } from 'vue'
   import { PostActionType } from '@/types/'
   import { usePlaceholders } from './composables/usePlaceholders'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
@@ -80,14 +78,12 @@
     actions?: PostActionType[]
   }>()
 
-  // Composable
+  // Composable（ランダム値関連の機能を除外）
   const {
     selectedEditorColor,
     filteredPlaceholders,
     usedPlaceholderIds,
     editorColorOptions,
-    getRandomValue,
-    refreshRandomValue,
     defaultPlaceholders,
     stats,
     selectEditorColor,

@@ -3,7 +3,7 @@
   <button
     @click="handleCopy"
     :disabled="disabled || isLoading"
-    :class="{ 'tooltip tooltip-bottom': true, 'btn-disabled': disabled || isLoading }"
+    :class="{ 'tooltip tooltip-top': true, 'btn-disabled': disabled || isLoading }"
     :data-tip="dataTip"
   >
     <span class="btn btn-sm btn-outline hover:btn-primary transition-colors min-w-fit whitespace-nowrap">
