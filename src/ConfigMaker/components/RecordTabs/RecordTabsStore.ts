@@ -22,14 +22,15 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule)
   const dragAndDrop = useDragAndDrop(ruleState, multiSelect.isMultiSelectMode)
 
-  // === コンテキストメニューのアクション統合 ===
-
+  /**
+   * コンテキストメニューのアクション統合
+   */
   /** コンテキストメニューから「上に移動」を実行 */
   const handleContextMoveUp = () => {
     const { rule } = contextMenu.contextMenu.value
     if (rule && contextMenu.canMoveUp.value) {
-      const originalIndex = ruleOperations.getOriginalIndex(rule.id)
-      ruleOperations.handleMoveRuleUp(rule.id, originalIndex)
+      const originalIndex = ruleOperations.getRuleIndex(rule.id)
+      ruleOperations.handleMoveRuleUp(originalIndex)
     }
     contextMenu.hideContextMenu()
   }
@@ -38,8 +39,8 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   const handleContextMoveDown = () => {
     const { rule } = contextMenu.contextMenu.value
     if (rule && contextMenu.canMoveDown.value) {
-      const originalIndex = ruleOperations.getOriginalIndex(rule.id)
-      ruleOperations.handleMoveRuleDown(rule.id, originalIndex, ruleState.categoryArray.value?.length || 0)
+      const originalIndex = ruleOperations.getRuleIndex(rule.id)
+      ruleOperations.handleMoveRuleDown(originalIndex, ruleState.categoryArray.value?.length || 0)
     }
     contextMenu.hideContextMenu()
   }

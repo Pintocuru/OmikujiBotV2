@@ -20,8 +20,9 @@ export const useRuleState = () => {
   const omikujiStore = useOmikujiStore()
   const { selectedCategory } = storeToRefs(omikujiStore)
 
-  // === 基本状態 ===
-
+  /**
+   * 基本状態
+   */
   /** 選択中のカテゴリ（型安全な変換） */
   const validCategory = computed(() => toRecordCategory(selectedCategory.value))
 
@@ -44,8 +45,9 @@ export const useRuleState = () => {
     return omikujiStore.getItem(validCategory.value, selectedRuleId.value)
   })
 
-  // === フィルター・検索状態 ===
-
+  /**
+   * フィルター・検索状態
+   */
   const filterOptions = ref<FilterOptions>({
     enabledOnly: false,
     colorFilter: null,
@@ -54,8 +56,19 @@ export const useRuleState = () => {
 
   const searchQuery = ref('')
 
-  // === 計算プロパティ ===
+  // フィルタリングをリセットする
+  const resetFilterOptions = () => {
+    filterOptions.value = {
+      enabledOnly: false,
+      colorFilter: null,
+      accessFilter: 'experimental',
+    }
+    searchQuery.value = ''
+  }
 
+  /**
+   * 計算プロパティ
+   */
   /** orderでソート済みのルール一覧 */
   const sortedItems = computed(() =>
     Array.isArray(categoryArray.value) ? [...categoryArray.value].sort((a, b) => a.order - b.order) : []
@@ -114,6 +127,7 @@ export const useRuleState = () => {
     categoryArray,
     selectedRuleId,
     selectedItem,
+    resetFilterOptions,
 
     // フィルター・検索
     filterOptions,

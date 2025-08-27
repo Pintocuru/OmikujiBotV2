@@ -92,7 +92,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   }
 
   /** ルールを上に移動 */
-  const handleMoveRuleUp = (ruleId: string, currentIndex: number) => {
+  const handleMoveRuleUp = (currentIndex: number) => {
     withValidCategory((category) => {
       if (currentIndex > 0) {
         omikujiStore.reorderItem(category, currentIndex, currentIndex - 1)
@@ -101,7 +101,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   }
 
   /** ルールを下に移動 */
-  const handleMoveRuleDown = (ruleId: string, currentIndex: number, totalLength: number) => {
+  const handleMoveRuleDown = (currentIndex: number, totalLength: number) => {
     withValidCategory((category) => {
       if (currentIndex < totalLength - 1) {
         omikujiStore.reorderItem(category, currentIndex, currentIndex + 1)
@@ -121,12 +121,6 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     return categoryArray.value.findIndex((rule: BaseRecordType) => rule.id === ruleId)
   }
 
-  // 元のインデックスを取得（現在はgetDisplayIndexと同じ実装）
-  const getOriginalIndex = getRuleIndex
-
-  // 表示用インデックスを取得
-  const getDisplayIndex = getRuleIndex
-
   return {
     handleAddItem,
     handleUpdateRule,
@@ -134,7 +128,6 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     handleDeleteRule,
     handleMoveRuleUp,
     handleMoveRuleDown,
-    getOriginalIndex,
-    getDisplayIndex,
+    getRuleIndex,
   }
 }

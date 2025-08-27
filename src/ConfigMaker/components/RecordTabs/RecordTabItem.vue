@@ -40,7 +40,7 @@
 
   // コンテキストメニューハンドラー
   const handleContextMenu = (event: MouseEvent) => {
-    const index = store.getDisplayIndex(props.rule.id)
+    const index = store.getRuleIndex(props.rule.id)
     store.showContextMenu(event, props.rule, index)
   }
 </script>

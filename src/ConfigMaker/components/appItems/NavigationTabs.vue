@@ -18,7 +18,7 @@
               : '',
           ]"
           :data-tip="tab.description"
-          @click="omikujiStore.selectCategory(key)"
+          @click="navigateCategory(key)"
         >
           <div class="flex flex-col items-center justify-center space-y-1">
             <component :is="tab.icon" class="w-8 h-8" />
@@ -42,7 +42,7 @@
       class="dock-item tooltip tooltip-top"
       :class="[selectedCategory === key ? 'bg-primary text-primary-content' : '']"
       :data-tip="`${tab.label} - ${tab.description}`"
-      @click="omikujiStore.selectCategory(key)"
+      @click="navigateCategory(key)"
     >
       <div class="relative">
         <component :is="tab.icon" class="w-8 h-8" />
@@ -59,9 +59,20 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useRecordTabsStore } from '../RecordTabs/RecordTabsStore'
+  import { CategoryType } from '@/types/OmikujiData/CategoryType'
 
+  // Store
+  const tabsStore = useRecordTabsStore()
   const omikujiStore = useOmikujiStore()
+
   const { selectedCategory } = storeToRefs(omikujiStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
   const { isPro, isGod } = useSettingMode()
+
+  // カテゴリ移動（フィルターをリセットしてから遷移）
+  const navigateCategory = (key: CategoryType) => {
+    tabsStore.resetFilterOptions()
+    omikujiStore.selectCategory(key)
+  }
 </script>

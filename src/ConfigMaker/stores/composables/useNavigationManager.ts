@@ -7,11 +7,13 @@ import type { useRecordOperations } from './useRecordOperations'
  * ナビゲーション状態とカテゴリ/アイテム選択を管理
  */
 export function useNavigationManager(recordOps: ReturnType<typeof useRecordOperations>) {
-  // === 状態 ===
+  // 状態
   const selectedCategory = ref<CategoryType>('comments')
   const selectedRuleId = ref<string | null>(null)
 
-  // === 計算プロパティ ===
+  /**
+   * 計算プロパティ
+   */
   const isRecordCategory = computed(() => recordCategoryLabel.includes(selectedCategory.value as RecordCategoryType))
 
   const currentCategoryItems = computed(() => {
@@ -30,7 +32,9 @@ export function useNavigationManager(recordOps: ReturnType<typeof useRecordOpera
 
   const hasItems = computed(() => orderedCategoryItems.value.length > 0)
 
-  // === 操作 ===
+  /**
+   * 操作
+   */
   const selectCategory = (category: CategoryType) => {
     selectedCategory.value = category
 
