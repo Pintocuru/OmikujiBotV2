@@ -10,6 +10,28 @@ const reimuMarisaProject: ProjectConfig = {
 
   name: 'ReimuMarisa',
   version: 'v2025.8.25(プレビュー版)',
+  tags: [
+    'おみくじBOT',
+    'ドラちゃん',
+    '#よくやった青狸',
+    '#話が違うぞ青狸',
+    'https://www.tv-asahi.co.jp/doraemon/tool/',
+  ],
+  /**
+   * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
+   * CC-BY-SA 4.0 (表示-継承) : 継承義務 再配布OK
+   * CC-BY-NC 4.0 (表示-非営利) : 表示義務 非営利
+   * CC-BY-NC-SA 4.0 (表示-非営利-継承) : 非営利 継承 再配布OK
+   * CC-BY-NC-ND 4.0 (表示-非営利-改変禁止)
+   * 利用規約に従う
+   * 個人利用のみ
+   * 商用利用可
+   * 改変禁止
+   */
+  license: {
+    basic: 'CC-BY 4.0',
+    pro: '利用規約に従う',
+  },
 
   template: {
     name: 'おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa',

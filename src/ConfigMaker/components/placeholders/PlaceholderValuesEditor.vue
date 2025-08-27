@@ -8,7 +8,7 @@
       <!-- 編集モード切り替えボタン -->
       <button
         @click="toggleMode"
-        class="btn bg-primary"
+        class="btn bg-primary text-primary-content"
         :class="{ 'btn-active': isTextMode }"
         title="編集モードを切り替え"
       >

@@ -82,17 +82,13 @@
   //
   const { isPro } = useSettingMode()
 
-  // ライセンス選択肢（BOOTHでよく使われるもの）
+  // ライセンス選択肢(ユーザー向け)
   const licenseOptions = [
     { value: 'CC-BY 4.0', label: 'CC-BY 4.0 (表示)' },
     { value: 'CC-BY-SA 4.0', label: 'CC-BY-SA 4.0 (表示-継承)' },
     { value: 'CC-BY-NC 4.0', label: 'CC-BY-NC 4.0 (表示-非営利)' },
     { value: 'CC-BY-NC-SA 4.0', label: 'CC-BY-NC-SA 4.0 (表示-非営利-継承)' },
-    { value: 'CC-BY-NC-ND 4.0', label: 'CC-BY-NC-ND 4.0 (表示-非営利-改変禁止)' },
     { value: '利用規約に従う', label: '利用規約に従う' },
-    { value: '個人利用のみ', label: '個人利用のみ' },
-    { value: '商用利用可', label: '商用利用可' },
-    { value: '改変禁止', label: '改変禁止' },
     { value: 'custom', label: 'カスタム' },
   ]
 

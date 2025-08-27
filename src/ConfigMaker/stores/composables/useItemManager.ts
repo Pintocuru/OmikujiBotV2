@@ -28,7 +28,8 @@ export function useItemManager(
       targetCategory = navigation.selectedCategory.value as C
       itemData = categoryOrItem || {}
     }
-
+    // accessLevel はoptionalなので、ここで値を入れる
+    itemData.accessLevel = itemData.accessLevel || 'basic'
     const newId = recordOps.addItem(targetCategory, itemData)
 
     // 追加したカテゴリが現在選択中の場合、新しいアイテムを選択
