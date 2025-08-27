@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
-  <div class="card bg-base-300 mt-4">
+  <div class="card bg-base-300 mt-4 z-0">
     <div class="collapse" :class="{ 'collapse-arrow': !alwaysOpen }">
       <!-- v-modelで開閉管理 -->
       <input type="checkbox" v-model="isOpen" :disabled="alwaysOpen" />

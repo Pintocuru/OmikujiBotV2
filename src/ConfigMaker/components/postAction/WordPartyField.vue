@@ -12,7 +12,7 @@
         </button>
       </div>
 
-      <select v-if="inputMode === 'select'" v-model="wordParty" class="select select-bordered select-sm flex-1">
+      <select v-if="inputMode === 'select'" v-model="wordPartyModel" class="select select-bordered select-sm flex-1">
         <option value="">選択してください</option>
         <option v-for="setting in wordPartySetting" :key="setting.pattern" :value="setting.pattern">
           {{ setting.name }} ({{ setting.pattern }})
@@ -22,7 +22,7 @@
       <input
         v-if="inputMode === 'manual'"
         type="text"
-        v-model="wordParty"
+        v-model="wordPartyModel"
         class="input input-bordered input-sm flex-1"
         placeholder="WordParty"
       />
@@ -38,49 +38,47 @@
 
   // Props
   const props = defineProps<{
+    wordParty: string
     action: PostActionType
     index: number
   }>()
 
-  // emitsを定義
-  const emit = defineEmits(['update:action'])
+  // v-modelのemitsを定義
+  const emit = defineEmits<{
+    'update:wordParty': [value: string]
+  }>()
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   // 表示設定の参照
+  // FIXME:手動→選択時、テキストがあると選択にならずinputが消えた後に手動になる
   const wordPartySetting = computed(() => data.value.wordPartySettings)
 
   // 入力モード管理
   const inputMode = ref<'select' | 'manual'>('select')
 
-  // propsのwordPartyをget/setで扱うcomputedプロパティ
-  const wordParty = computed({
-    get: () => props.action.wordParty,
-    set: (value) => {
-      emit('update:action', { ...props.action, wordParty: value })
-    },
+  // v-model用のcomputedプロパティ
+  const wordPartyModel = computed({
+    get: () => props.wordParty,
+    set: (value) => emit('update:wordParty', value),
   })
 
   // 初期化：既存の値がsettingに含まれているかチェック
   const initializeInputMode = () => {
-    const isSelectMode = wordPartySetting.value.some((setting) => setting.pattern === props.action.wordParty)
+    const isSelectMode = wordPartySetting.value.some((setting) => setting.pattern === props.wordParty)
     inputMode.value = isSelectMode ? 'select' : 'manual'
   }
 
   // コンポーネント初期化時に実行
   initializeInputMode()
 
-  // actionが変更された際の監視
-  watch(() => props.action.wordParty, initializeInputMode)
+  // wordPartyが変更された際の監視
+  watch(() => props.wordParty, initializeInputMode)
 
   // 入力モード切り替え
   const setInputMode = (mode: 'select' | 'manual') => {
     inputMode.value = mode
-    if (mode === 'select') {
-      // 親コンポーネントに空の値をemit
-      emit('update:action', { ...props.action, wordParty: '' })
-    }
   }
 </script>

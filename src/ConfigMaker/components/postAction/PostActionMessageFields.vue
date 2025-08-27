@@ -24,7 +24,7 @@
     </div>
 
     <!-- WordParty -->
-    <WordPartyField :action="action" :index="index" />
+    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="index" />
   </div>
 </template>
 
@@ -40,19 +40,26 @@
 
   const emit = defineEmits(['update:action'])
 
+  // 共通のupdateAction関数
+  const updateAction = (updates: Partial<PostActionType>) => {
+    emit('update:action', { ...props.action, ...updates })
+  }
+
   // コメント用のcomputedプロパティ
   const messageContent = computed({
     get: () => props.action.messageContent,
-    set: (value) => {
-      emit('update:action', { ...props.action, messageContent: value })
-    },
+    set: (value) => updateAction({ messageContent: value }),
   })
 
   // トースト用のcomputedプロパティ
   const messageToast = computed({
     get: () => props.action.messageToast,
-    set: (value) => {
-      emit('update:action', { ...props.action, messageToast: value })
-    },
+    set: (value) => updateAction({ messageToast: value }),
+  })
+
+  // WordParty用のcomputedプロパティ
+  const wordPartyValue = computed({
+    get: () => props.action.wordParty,
+    set: (value) => updateAction({ wordParty: value }),
   })
 </script>

@@ -10,7 +10,7 @@
         <div class="flex items-center gap-2 flex-shrink-0">
           <span class="badge badge-primary badge-sm">{{ index + 1 }}</span>
           <span
-            class="bg-accent text-accent-content text-xs px-1 rounded tooltip tooltip-top"
+            class="bg-accent text-accent-content text-xs px-1 rounded tooltip tooltip-right"
             data-tip="チャットを受け取ってから発動するまでの遅延時間(秒)"
           >
             {{ action.delaySeconds }}s
@@ -28,9 +28,9 @@
 
         <div class="flex-1 min-w-0">
           <div class="flex flex-wrap gap-1 items-center">
-            <span v-if="action.messageContent" class="tooltip tooltip-top" data-tip="BOTコメント"> 💬 </span>
-            <span v-if="action.messageToast" class="tooltip tooltip-top" data-tip="トースト"> 🍞 </span>
-            <span v-if="action.wordParty" class="tooltip tooltip-top" data-tip="WordParty"> 🎉 </span>
+            <span v-if="action.messageContent" class="tooltip tooltip-right" data-tip="BOTコメント"> 💬 </span>
+            <span v-if="action.messageToast" class="tooltip tooltip-right" data-tip="トースト"> 🍞 </span>
+            <span v-if="action.wordParty" class="tooltip tooltip-right" data-tip="WordParty"> 🎉 </span>
             <span class="text-base-content truncate">
               {{ action.messageContent || action.messageToast || action.wordParty }}
             </span>
