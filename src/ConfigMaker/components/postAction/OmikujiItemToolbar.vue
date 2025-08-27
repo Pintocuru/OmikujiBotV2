@@ -1,11 +1,32 @@
-<!-- src/configMaker/components/postAction/PostActionsEditor.vue -->
+<!-- src\ConfigMaker\components\postAction\OmikujiItemToolbar.vue -->
 <template>
   <div class="form-control">
     <div class="flex justify-between items-center mb-1">
-      <label class="label py-1">
-        <span class="label-text text-sm font-medium">わんコメへの投稿</span>
-        <span class="badge badge-sm badge-outline ml-2">{{ modelValue.length }}</span>
+      <label class="label">
+        <span class="label-text font-medium">わんコメへの投稿</span>
+        <div class="relative">
+          <span
+            class="badge badge-outline ml-2 cursor-pointer flex items-center gap-1 transition-colors hover:bg-primary hover:text-white"
+            @mouseenter="showPreview = true"
+            @mouseleave="showPreview = false"
+            @click="$emit('toggleEdit')"
+          >
+            <List class="h-4 w-4" />
+            <span class="pl-1"> {{ modelValue.length }} </span>
+          </span>
+
+          <!-- ホバー時のプレビュー表示 -->
+          <div
+            v-if="showPreview && modelValue.length > 0"
+            class="absolute top-8 left-0 z-50 bg-base-100 shadow-lg rounded-lg border w-96 sm:w-160 max-h-64 overflow-y-auto"
+            @mouseenter="showPreview = true"
+            @mouseleave="showPreview = false"
+          >
+            <PostActionsPreview :modelValue="modelValue" />
+          </div>
+        </div>
       </label>
+
       <div class="flex gap-2">
         <button
           @click="() => useTestPost().postTestOmikujiItem(modelValue)"
@@ -17,13 +38,11 @@
           テスト投稿
         </button>
 
-        <!-- Json/GUI編集切り替えボタン -->
         <button @click="$emit('toggleJson')" class="btn btn-sm btn-secondary" type="button">
           <FileJson :size="16" />
           JSON編集
         </button>
 
-        <!-- 詳細編集ボタン -->
         <button @click="$emit('toggleEdit')" class="btn btn-sm btn-primary" type="button">
           <Settings :size="16" />
           詳細編集
@@ -34,9 +53,11 @@
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { Send, FileJson, Settings } from 'lucide-vue-next'
+  import { List, Send, FileJson, Settings } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -45,4 +66,7 @@
 
   // Emits
   const emit = defineEmits(['toggleEdit', 'toggleJson'])
+
+  // ホバー状態管理
+  const showPreview = ref(false)
 </script>

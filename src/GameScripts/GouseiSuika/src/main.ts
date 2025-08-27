@@ -9,7 +9,7 @@ const pluginConfig = {
   version: '0.0.3',
   displayName: 'スイカジェネレーター',
   description: '米兜科技 合成大西瓜風のおみくじ',
-  editorColor: '#4CAF50',
+  editorColor: '#388E3C',
   keywords: ['ポイント', 'ランキング', 'スイカ'],
   url: '',
   banner: '',

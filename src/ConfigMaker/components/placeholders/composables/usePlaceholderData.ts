@@ -65,6 +65,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
             id: item.key,
             name: item.name,
             order: 0,
+            editorColor: script.editorColor ?? '#FEFEFE',
             values: [{ content: item.value }],
           })
       ) || []

@@ -20,12 +20,9 @@
       <!-- ツールバー -->
       <OmikujiItemToolbar :modelValue="omikujiItem.postActions" @toggleJson="toggleEditMode" @toggleEdit="openDialog" />
 
-      <!-- プレビュー表示 -->
-      <PostActionsPreview v-if="!isJsonMode" :modelValue="omikujiItem.postActions" />
-
       <!-- JSON編集モード -->
       <PostActionsEditorJson
-        v-else
+        v-if="isJsonMode"
         :category="category"
         :selected-rule-id="selectedRuleId"
         :omikuji-index="index"

@@ -32,17 +32,17 @@
         </button>
       </div>
       <!-- vuedraggable を使用したドラッグアンドドロップ -->
-      <draggable
-        v-model="omikujiSets"
-        item-key="id"
-        handle=".drag-handle"
-        ghost-class="opacity-50"
-        chosen-class="opacity-75"
-        drag-class="opacity-25"
-        animation="200"
-      >
+      <draggable v-model="omikujiSets" item-key="id" handle=".drag-handle" animation="200">
         <template #item="{ element, index }">
-          <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
+          <div :key="element.id || `omikuji-${index}`" class="draggable-item">
+            <!-- エラーバウンダリー的な処理 -->
+            <div v-if="element && typeof element === 'object'">
+              <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
+            </div>
+            <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
+              <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
+            </div>
+          </div>
         </template>
       </draggable>
 
