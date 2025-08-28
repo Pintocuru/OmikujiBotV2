@@ -11,7 +11,13 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { handelNormalizedValues, PlaceholderValueType, PostActionSchema, PostActionType } from '@/types/'
+  import {
+    DefaultPlaceholdersCommentSchema,
+    handelNormalizedValues,
+    PlaceholderValueType,
+    PostActionSchema,
+    PostActionType,
+  } from '@/types/'
   import { PlaceProcess } from '@MainScripts/omikujiProcess/PlaceProcess'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
@@ -42,6 +48,9 @@
     if (drawnValue.value?.content) {
       // プレースホルダー置換
       const placeProcess = new PlaceProcess(placeholdersMap.value)
+
+      // userなどのデフォルトを入れる
+      placeProcess.updateResolvedValues(DefaultPlaceholdersCommentSchema.parse({}))
       const testPost: PostActionType = PostActionSchema.parse({
         messageContent: drawnValue.value.content,
       })

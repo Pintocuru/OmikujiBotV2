@@ -1,4 +1,5 @@
 // src\types\OmikujiProcess\DefaultPlaceholders.ts
+import z from 'zod'
 import {
   countUnitCondition,
   countUnitConditionLabels,
@@ -11,6 +12,20 @@ export const defaultPlaceholders = ['user', 'price', ...countUnitCondition, ...s
 
 // デフォルトプレースホルダーの型定義
 export type DefaultPlaceholders = (typeof defaultPlaceholders)[number]
+
+// Zod スキーマ
+export const DefaultPlaceholdersMetaSchema = z.object({
+  viewer: z.number().default(0).catch(0),
+  upVote: z.number().default(0).catch(0),
+})
+
+export const DefaultPlaceholdersCommentSchema = z.object({
+  user: z.string().default('テストユーザー').catch('テストユーザー'),
+  price: z.number().default(0).catch(0),
+  lc: z.number().default(0).catch(0),
+  tc: z.number().default(0).catch(0),
+  ...DefaultPlaceholdersMetaSchema.shape,
+})
 
 // デフォルトプレースホルダーの日本語ラベル定義
 export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {

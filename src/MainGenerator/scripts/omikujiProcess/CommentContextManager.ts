@@ -1,6 +1,10 @@
 // src/MainGenerator/utils/commentProcessor/CommentContextManager.ts
 // コメント処理のコンテキスト管理
-import { DefaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
+import {
+  DefaultPlaceholders,
+  DefaultPlaceholdersCommentSchema,
+  DefaultPlaceholdersMetaSchema,
+} from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { Comment } from '@onecomme.com/onesdk/types/Comment'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
@@ -26,22 +30,22 @@ export class CommentContextManager {
    * comment用デフォルトのプレースホルダー情報を設定
    */
   setupDefaultPlaceholdersComment(comment: Comment): Record<DefaultPlaceholders, string | number> {
-    return {
-      user: comment.data.displayName || comment.data.name || 'テストユーザー',
-      price: (comment.data as { price?: number })?.price ?? 0,
-      lc: comment.meta?.lc ?? 0,
-      tc: comment.meta?.tc ?? 0,
+    return DefaultPlaceholdersCommentSchema.parse({
+      user: comment.data.displayName || comment.data.name,
+      price: (comment.data as { price?: number })?.price,
+      lc: comment.meta?.lc,
+      tc: comment.meta?.tc,
       ...this.setupDefaultPlaceholders(),
-    }
+    })
   }
 
   /**
    * timer用デフォルトのプレースホルダー情報を設定
    */
   setupDefaultPlaceholders(): Record<ServiceMetaCondition, string | number> {
-    return {
-      viewer: this.serviceMeta?.viewer ?? 0,
-      upVote: this.serviceMeta?.upVote ?? 0,
-    }
+    return DefaultPlaceholdersMetaSchema.parse({
+      viewer: this.serviceMeta?.viewer,
+      upVote: this.serviceMeta?.upVote,
+    })
   }
 }

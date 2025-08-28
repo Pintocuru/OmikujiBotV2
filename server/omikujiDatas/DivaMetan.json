@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda-PRO",
+    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneMetan-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "0.8.0-beta09",
     "generatorName": "omikuji-bot",
@@ -1919,13 +1919,206 @@
         "isRepeatAllowed": true
       }
     },
-    "GiftLowZunda": {
-      "id": "GiftLowZunda",
+    "SyokenSagiMetan": {
+      "id": "SyokenSagiMetan",
+      "key": "",
+      "name": "初見詐欺",
+      "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T05:38:11.663Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "key": "",
+          "name": "初見詐欺(見抜き)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!間抜け5",
+              "characterKey": "metan",
+              "iconKey": "singing",
+              "messageContent": "<<MetanSyokenSagi>>",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
+          "key": "",
+          "name": "ああ初見だと思ったら騙された高校校歌",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "metan",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "metan",
+              "iconKey": "sad",
+              "messageContent": "",
+              "messageToast": "<<MetanSyokenSagiFake>>"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        },
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 5,
+        "drawLimitExceeded": "showMessage",
+        "drawLimitMessage": "騙され過ぎなめたんが可愛そうです。また次回の配信で試してね。",
+        "isRepeatAllowed": true
+      }
+    },
+    "SyokenHontoMetan": {
+      "id": "SyokenHontoMetan",
+      "key": "",
+      "name": "ホントの初見",
+      "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T05:37:46.042Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
+          "key": "",
+          "name": "ホントの初見1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "metan",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "metan",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "ほ、本当の初見の人だった…良かった…"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftLowMetan": {
+      "id": "GiftLowMetan",
       "key": "",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T04:00:03.343Z",
+      "updatedAt": "2025-08-28T06:01:39.402Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1964,8 +2157,8 @@
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<GiftLowZunda>>",
+              "iconKey": "excited",
+              "messageContent": "<<GiftLowMetan>>",
               "messageToast": ""
             }
           ]
@@ -1999,13 +2192,13 @@
         "isRepeatAllowed": true
       }
     },
-    "GiftMiddleZunda": {
-      "id": "GiftMiddleZunda",
+    "GiftMiddleMetan": {
+      "id": "GiftMiddleMetan",
       "key": "",
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T04:00:03.343Z",
+      "updatedAt": "2025-08-28T06:07:13.503Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2044,8 +2237,8 @@
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<GiftMiddleZunda>>",
+              "iconKey": "blushing",
+              "messageContent": "<<GiftMiddleMetan>>",
               "messageToast": ""
             }
           ]
@@ -2077,13 +2270,13 @@
         "isRepeatAllowed": true
       }
     },
-    "GiftHighZunda": {
-      "id": "GiftHighZunda",
+    "GiftHighMetan": {
+      "id": "GiftHighMetan",
       "key": "",
       "name": "ギフト(2000円-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T04:00:03.344Z",
+      "updatedAt": "2025-08-28T06:00:35.233Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2122,8 +2315,8 @@
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "blushing",
-              "messageContent": "<<GiftHighZunda>>",
+              "iconKey": "surprised",
+              "messageContent": "<<GiftHighMetan>>",
               "messageToast": ""
             }
           ]
@@ -2158,8 +2351,8 @@
         "isRepeatAllowed": true
       }
     },
-    "CheckNumberZunda": {
-      "id": "CheckNumberZunda",
+    "CheckNumberMetan": {
+      "id": "CheckNumberMetan",
       "key": "",
       "name": "コメント数表示",
       "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
@@ -2221,8 +2414,8 @@
         "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
       }
     },
-    "FirstCounterSyokenZunda": {
-      "id": "FirstCounterSyokenZunda",
+    "FirstCounterSyokenMetan": {
+      "id": "FirstCounterSyokenMetan",
       "key": "",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
@@ -2291,8 +2484,8 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterAgainZunda": {
-      "id": "FirstCounterAgainZunda",
+    "FirstCounterAgainMetan": {
+      "id": "FirstCounterAgainMetan",
       "key": "",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
@@ -2321,7 +2514,7 @@
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
               "iconKey": "excited",
-              "messageContent": "<<FirstCounterAgainZunda>>",
+              "messageContent": "<<FirstCounterAgainMetan>>",
               "messageToast": ""
             }
           ]
@@ -2353,8 +2546,8 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterFirstVisitZunda": {
-      "id": "FirstCounterFirstVisitZunda",
+    "FirstCounterFirstVisitMetan": {
+      "id": "FirstCounterFirstVisitMetan",
       "key": "",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
@@ -2481,8 +2674,8 @@
         "isRepeatAllowed": true
       }
     },
-    "StreamCountTriggerZunda": {
-      "id": "StreamCountTriggerZunda",
+    "StreamCountTriggerMetan": {
+      "id": "StreamCountTriggerMetan",
       "key": "",
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
@@ -2541,8 +2734,8 @@
         "isRepeatAllowed": true
       }
     },
-    "UserCountTriggerZunda": {
-      "id": "UserCountTriggerZunda",
+    "UserCountTriggerMetan": {
+      "id": "UserCountTriggerMetan",
       "key": "",
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
@@ -2622,204 +2815,11 @@
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
-    },
-    "SyokenSagiMetan": {
-      "id": "SyokenSagiMetan",
-      "key": "",
-      "name": "初見詐欺",
-      "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T04:56:00.695Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
-          "key": "",
-          "name": "初見詐欺(見抜き)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!間抜け5",
-              "characterKey": "metan",
-              "iconKey": "singing",
-              "messageContent": "<<MetanSyokenSagi>>",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "key": "",
-          "name": "ああ初見だと思ったら騙された高校校歌",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenMetan>>",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "!呪いの旋律",
-              "characterKey": "metan",
-              "iconKey": "sad",
-              "messageContent": "",
-              "messageToast": "<<MetanSyokenSagiFake>>"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 5,
-        "drawLimitExceeded": "showMessage",
-        "drawLimitMessage": "騙され過ぎなめたんが可愛そうです。また次回の配信で試してね。",
-        "isRepeatAllowed": true
-      }
-    },
-    "SyokenHontoMetan": {
-      "id": "SyokenHontoMetan",
-      "key": "",
-      "name": "ホントの初見",
-      "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T04:59:18.972Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "key": "",
-          "name": "ホントの初見1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "metan",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "messageToast": "ほ、本当の初見の人だった…良かった…"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenMetan>>",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
     }
   },
   "timers": {
-    "ViewCountDisplayZunda": {
-      "id": "ViewCountDisplayZunda",
+    "ViewCountDisplayMetan": {
+      "id": "ViewCountDisplayMetan",
       "key": "",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
@@ -2889,7 +2889,7 @@
               "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "<<PromotionToastsZunda>>"
+              "messageToast": "<<PromotionToastsMetan>>"
             }
           ]
         },
@@ -2934,34 +2934,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
-          "weight": 1
-        },
-        {
-          "content": "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
-          "weight": 1
-        },
-        {
-          "content": "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
-          "weight": 1
-        },
-        {
-          "content": "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
-          "weight": 1
-        },
-        {
-          "content": "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
-          "weight": 1
-        },
-        {
-          "content": "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
-          "weight": 1
-        },
-        {
-          "content": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
-          "weight": 1
-        }
+        "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
+        "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
+        "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
+        "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
+        "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
+        "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
+        "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！"
       ]
     },
     "metanOmikuji02": {
@@ -2975,34 +2954,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
-          "weight": 1
-        },
-        {
-          "content": "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
-          "weight": 1
-        },
-        {
-          "content": "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
-          "weight": 1
-        },
-        {
-          "content": "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
-          "weight": 1
-        },
-        {
-          "content": "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
-          "weight": 1
-        },
-        {
-          "content": "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。",
-          "weight": 1
-        }
+        "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
+        "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
+        "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
+        "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
+        "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
+        "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
+        "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。"
       ]
     },
     "metanOmikuji03": {
@@ -3016,34 +2974,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
-          "weight": 1
-        },
-        {
-          "content": "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
-          "weight": 1
-        },
-        {
-          "content": "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
-          "weight": 1
-        },
-        {
-          "content": "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
-          "weight": 1
-        },
-        {
-          "content": "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
-          "weight": 1
-        },
-        {
-          "content": "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
-          "weight": 1
-        },
-        {
-          "content": "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。",
-          "weight": 1
-        }
+        "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
+        "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
+        "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
+        "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
+        "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
+        "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
+        "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。"
       ]
     },
     "metanOmikuji04": {
@@ -3057,34 +2994,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
-          "weight": 1
-        },
-        {
-          "content": "慎重に行動すれば、きっと良いことがあるわ。慌てず騒がず、冷静に状況を見極めることが大切よ。",
-          "weight": 1
-        },
-        {
-          "content": "健康に気をつけなさい。規則正しい生活は、運気上昇の儀式。体調管理は最強の魔術なのよ。お肌にもいいわ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの人の助けを受け入れることで、運気は上昇するわ。謙虚さもまた、強さの一つ。覚えておきなさい。",
-          "weight": 1
-        },
-        {
-          "content": "小さな喜びを大切にするのよ。それらが積み重なって、やがて大きな幸せとなって現れるのだから。",
-          "weight": 1
-        },
-        {
-          "content": "じわじわと良くなっていく予感...焦らず自分のペースを守れば、必ず道は開けるわ。",
-          "weight": 1
-        },
-        {
-          "content": "隠された才能が目覚める時かもしれないわ。日々の鍛錬を怠らず、己の力を信じるのよ！",
-          "weight": 1
-        }
+        "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
+        "慎重に行動すれば、きっと良いことがあるわ。慌てず騒がず、冷静に状況を見極めることが大切よ。",
+        "健康に気をつけなさい。規則正しい生活は、運気上昇の儀式。体調管理は最強の魔術なのよ。お肌にもいいわ。",
+        "周りの人の助けを受け入れることで、運気は上昇するわ。謙虚さもまた、強さの一つ。覚えておきなさい。",
+        "小さな喜びを大切にするのよ。それらが積み重なって、やがて大きな幸せとなって現れるのだから。",
+        "じわじわと良くなっていく予感...焦らず自分のペースを守れば、必ず道は開けるわ。",
+        "隠された才能が目覚める時かもしれないわ。日々の鍛錬を怠らず、己の力を信じるのよ！"
       ]
     },
     "metanOmikuji05": {
@@ -3098,34 +3014,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
-          "weight": 1
-        },
-        {
-          "content": "今は少し大変かもしれないけど、乗り越えれば大きく成長できるわ。試練こそ、真の強さを引き出す鍵なのよ。",
-          "weight": 1
-        },
-        {
-          "content": "新しいことより、今やっていることを見直すのが賢明ね。そこに隠された秘密の力を見出せるかもしれないわ。",
-          "weight": 1
-        },
-        {
-          "content": "計画を立て直せば、運命の歯車も回り始めるわ。今一度、自分の道を見つめ直すのよ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの人の意見に耳を傾けるのも大切よ。そこに、運命を変える鍵が隠されているかもしれないわ。",
-          "weight": 1
-        },
-        {
-          "content": "自分を高めようとする努力が、運を開く魔法となるわ。己の内なる力を信じて、前進あるのみよ！",
-          "weight": 1
-        },
-        {
-          "content": "闇夜こそ、星の輝きが際立つもの。今の困難も、やがて汝を輝かせる糧となるわ。",
-          "weight": 1
-        }
+        "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
+        "今は少し大変かもしれないけど、乗り越えれば大きく成長できるわ。試練こそ、真の強さを引き出す鍵なのよ。",
+        "新しいことより、今やっていることを見直すのが賢明ね。そこに隠された秘密の力を見出せるかもしれないわ。",
+        "計画を立て直せば、運命の歯車も回り始めるわ。今一度、自分の道を見つめ直すのよ。",
+        "周りの人の意見に耳を傾けるのも大切よ。そこに、運命を変える鍵が隠されているかもしれないわ。",
+        "自分を高めようとする努力が、運を開く魔法となるわ。己の内なる力を信じて、前進あるのみよ！",
+        "闇夜こそ、星の輝きが際立つもの。今の困難も、やがて汝を輝かせる糧となるわ。"
       ]
     },
     "metanOmikuji06": {
@@ -3139,34 +3034,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの者とケンカしないように気をつけなさい。もし争いになっても、冷静さを失わず事態を見極めるのよ。",
-          "weight": 1
-        },
-        {
-          "content": "計画通りにいかなくとも、柔軟に対応するの。予期せぬ事態こそ、新たな力を引き出すチャンスなのだから。",
-          "weight": 1
-        },
-        {
-          "content": "信頼できる者に相談するのも一つの手ね。彼らの言葉が、運命を変える鍵となるかもしれないわ。",
-          "weight": 1
-        },
-        {
-          "content": "無理は禁物よ。休息もまた、力を蓄える大切な儀式。それが次なる飛躍への準備となるのだから。",
-          "weight": 1
-        },
-        {
-          "content": "逆境こそ、真の力を引き出す試練。今を乗り越えれば、想像もつかないほどの力を手に入れられるわ。",
-          "weight": 1
-        },
-        {
-          "content": "暗闇の中にこそ、光は輝くもの。今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。",
-          "weight": 1
-        }
+        "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
+        "周りの者とケンカしないように気をつけなさい。もし争いになっても、冷静さを失わず事態を見極めるのよ。",
+        "計画通りにいかなくとも、柔軟に対応するの。予期せぬ事態こそ、新たな力を引き出すチャンスなのだから。",
+        "信頼できる者に相談するのも一つの手ね。彼らの言葉が、運命を変える鍵となるかもしれないわ。",
+        "無理は禁物よ。休息もまた、力を蓄える大切な儀式。それが次なる飛躍への準備となるのだから。",
+        "逆境こそ、真の力を引き出す試練。今を乗り越えれば、想像もつかないほどの力を手に入れられるわ。",
+        "暗闇の中にこそ、光は輝くもの。今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。"
       ]
     },
     "metanOmikuji07": {
@@ -3180,66 +3054,21 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
-          "weight": 1
-        },
-        {
-          "content": "耳たぶへのキス…なかなか感度が高いのよ。でも、くすぐったがる人もいるから注意ね。",
-          "weight": 1
-        },
-        {
-          "content": "額へのキスは、優しさや愛情を表現する方法なの。親愛の情を込めて、ってやつね。",
-          "weight": 1
-        },
-        {
-          "content": "手の甲へのキスは、相手への敬意を表すジェスチャーだそう。海外ではよく見るわね。",
-          "weight": 1
-        },
-        {
-          "content": "頬へのキスは、挨拶代わりに使う文化もあるの。日本じゃあんまり一般的じゃないわね。",
-          "weight": 1
-        },
-        {
-          "content": "首筋へのキスは、ちょっとドキドキするかも。でも、人前でやるのはNGよ。TPOをわきまえなきゃね。",
-          "weight": 1
-        },
-        {
-          "content": "目元へのキスは、繊細で優しい感じがするわね。相手を大切に思う気持ちを込められるんだって。",
-          "weight": 1
-        },
-        {
-          "content": "エスキモーキスってのを知ってる？鼻と鼻をこすりあわせるの。寒い地域の挨拶なんだって。",
-          "weight": 1
-        },
-        {
-          "content": "フレンチキスは唇を使った深いキスのことよ。稀に「軽いキス」なんて誤用してる人もいるけど。知識を改めなさい。",
-          "weight": 1
-        },
-        {
-          "content": "バタフライキスって聞いたことある？まつ毛で相手の頬や手をくすぐるの。私の能力は唇限定だけどね。",
-          "weight": 1
-        },
-        {
-          "content": "「逆さまの状態でキスする」スパイダーマンキスってのもあるの。映画から来てるんだって。",
-          "weight": 1
-        },
-        {
-          "content": "額にする「おでこキス」は、純粋な愛情表現なの。親が子供にするイメージが強いわね。",
-          "weight": 1
-        },
-        {
-          "content": "キスマークって知ってるでしょ？あれ、吸引キスの一種なんだって。でも、人前に出られなくなるから気をつけなさいよ。",
-          "weight": 1
-        },
-        {
-          "content": "「ハグ＆キス」っていう挨拶、海外ドラマでよく見るわね。抱擁しながら頬にキス。ハグはちょっと恥ずかしいかも…",
-          "weight": 1
-        },
-        {
-          "content": "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。",
-          "weight": 1
-        }
+        "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
+        "耳たぶへのキス…なかなか感度が高いのよ。でも、くすぐったがる人もいるから注意ね。",
+        "額へのキスは、優しさや愛情を表現する方法なの。親愛の情を込めて、ってやつね。",
+        "手の甲へのキスは、相手への敬意を表すジェスチャーだそう。海外ではよく見るわね。",
+        "頬へのキスは、挨拶代わりに使う文化もあるの。日本じゃあんまり一般的じゃないわね。",
+        "首筋へのキスは、ちょっとドキドキするかも。でも、人前でやるのはNGよ。TPOをわきまえなきゃね。",
+        "目元へのキスは、繊細で優しい感じがするわね。相手を大切に思う気持ちを込められるんだって。",
+        "エスキモーキスってのを知ってる？鼻と鼻をこすりあわせるの。寒い地域の挨拶なんだって。",
+        "フレンチキスは唇を使った深いキスのことよ。稀に「軽いキス」なんて誤用してる人もいるけど。知識を改めなさい。",
+        "バタフライキスって聞いたことある？まつ毛で相手の頬や手をくすぐるの。私の能力は唇限定だけどね。",
+        "「逆さまの状態でキスする」スパイダーマンキスってのもあるの。映画から来てるんだって。",
+        "額にする「おでこキス」は、純粋な愛情表現なの。親が子供にするイメージが強いわね。",
+        "キスマークって知ってるでしょ？あれ、吸引キスの一種なんだって。でも、人前に出られなくなるから気をつけなさいよ。",
+        "「ハグ＆キス」っていう挨拶、海外ドラマでよく見るわね。抱擁しながら頬にキス。ハグはちょっと恥ずかしいかも…",
+        "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。"
       ]
     },
     "HondaJankenName": {
@@ -3253,10 +3082,7 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "漆黒のめたん",
-          "weight": 1
-        }
+        "漆黒のめたん"
       ]
     },
     "HondaJankenOre": {
@@ -3270,10 +3096,7 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "私",
-          "weight": 1
-        }
+        "私"
       ]
     },
     "HondaJankenA1": {
@@ -3287,22 +3110,10 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "負けは次につながるチャンスです!ネバーギブアップ!",
-          "weight": 1
-        },
-        {
-          "content": "じゃんけんの向こう側に何があるか、考えてみてください。",
-          "weight": 1
-        },
-        {
-          "content": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-          "weight": 1
-        },
-        {
-          "content": "何事も準備がすべて。それを怠っている事がバレてますよ。",
-          "weight": 1
-        }
+        "負けは次につながるチャンスです!ネバーギブアップ!",
+        "じゃんけんの向こう側に何があるか、考えてみてください。",
+        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+        "何事も準備がすべて。それを怠っている事がバレてますよ。"
       ]
     },
     "HondaJankenA2": {
@@ -3316,18 +3127,9 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
-          "weight": 1
-        },
-        {
-          "content": "ちゃんと分析してます?じっくり結果に向き合ってください。",
-          "weight": 1
-        },
-        {
-          "content": "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。",
-          "weight": 1
-        }
+        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
+        "ちゃんと分析してます?じっくり結果に向き合ってください。",
+        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
       ]
     },
     "HondaJankenB1": {
@@ -3341,22 +3143,10 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
-          "weight": 1
-        },
-        {
-          "content": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-          "weight": 1
-        },
-        {
-          "content": "運を味方につけるのは、地道な努力ですよ。",
-          "weight": 1
-        },
-        {
-          "content": "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。",
-          "weight": 1
-        }
+        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
+        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
+        "運を味方につけるのは、地道な努力ですよ。",
+        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
       ]
     },
     "HondaJankenB2": {
@@ -3370,18 +3160,9 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
-          "weight": 1
-        },
-        {
-          "content": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-          "weight": 1
-        },
-        {
-          "content": "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。",
-          "weight": 1
-        }
+        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
+        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
+        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
       ]
     },
     "HondaJankenC1": {
@@ -3395,22 +3176,10 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
-          "weight": 1
-        },
-        {
-          "content": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-          "weight": 1
-        },
-        {
-          "content": "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
-          "weight": 1
-        },
-        {
-          "content": "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!",
-          "weight": 1
-        }
+        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
+        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
+        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
+        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
       ]
     },
     "HondaJankenC2": {
@@ -3424,18 +3193,9 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
-          "weight": 1
-        },
-        {
-          "content": "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
-          "weight": 1
-        },
-        {
-          "content": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
-          "weight": 1
-        }
+        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
+        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
+        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
       ]
     },
     "HondaJankenV": {
@@ -3449,201 +3209,135 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
-          "weight": 1
-        },
-        {
-          "content": "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
-          "weight": 1
-        },
-        {
-          "content": "明日、<<HondaJankenOre>>が勝つからまたやろう!",
-          "weight": 1
-        },
-        {
-          "content": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-          "weight": 1
-        }
+        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
+        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
+        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
+        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
       ]
     },
-    "ZundaSyokenSagiSurprise": {
-      "id": "ZundaSyokenSagiSurprise",
+    "MetanSyokenSagi": {
+      "id": "MetanSyokenSagi",
       "key": "",
-      "name": "ずんだもんの初見詐欺(驚き)",
+      "name": "めたんの初見詐欺",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-08-28T05:39:49.113Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "ふふん、<<user>>、私を騙せるとでも思ったの？そんな手、私には通用しないわ。",
+        "<<user>>、初めまして…って、あれ？どこかで見かけたわね。まあいいわ、今日だけは見逃してあげる。",
+        "<<user>>、私、ちゃんと覚えてるんだから。<<tc>>回もコメントしてるって事もね。",
+        "<<user>>、初めてのふりで驚かせようって？ふふ、甘いわね。私の記憶は完璧よ。",
+        "<<user>>、私を騙せるとでも思ったの？フフン、私の記憶力はずば抜けているのよ。",
+        "えっ？<<user>>が初めて？それは私に対する挑戦状ね。ふふ、面白いわ。"
+      ]
+    },
+    "MetanSyokenSagiFake": {
+      "id": "MetanSyokenSagiFake",
+      "key": "",
+      "name": "めたんの初見詐欺(騙され)",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 18,
+      "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "values": [
         {
-          "weight": 6,
-          "content": "<<user>>、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。"
+          "weight": 3,
+          "content": "うわっ！ダマされた大賞！"
         },
-        {
-          "weight": 5,
-          "content": "<<user>>、オマエは初めてのふりをして僕をびっくりさせようとしたのだ？"
-        },
-        {
-          "weight": 4,
-          "content": "えっ？<<user>>が初めて？夢でも見てるのだ？パチパチ…目が覚めないのだ！"
-        }
+        "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+        "え、嘘だったの！？私が！？この私が！？……いや、これは演出。そう、演出だから。",
+        "うわ、やられた…！私が見抜けないなんて…いや、これは高度な心理戦だった。そういうことにしよう。",
+        "ちょっと待って、私が騙されたってこと！？……いや、これは逆に私が試されてた説あるな。そうだ、そうに違いない。",
+        "え、嘘！？私が信じちゃった！？……くっ、まず自分のログ精査しよ…"
       ]
     },
-    "ZundaSyokenSagiSwing": {
-      "id": "ZundaSyokenSagiSwing",
-      "key": "",
-      "name": "ずんだもんの初見詐欺(歌)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 19,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "オマエ、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>、僕とのお友達期間をリセットしたいのだ？でも、僕の気持ちはリセットできないのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "僕の記憶力に挑むなんて、<<user>>もなかなか大胆なのだ。でも、僕に勝てる日は…来ないのだ！"
-        }
-      ]
-    },
-    "GiftLowZunda": {
-      "id": "GiftLowZunda",
+    "GiftLowMetan": {
+      "id": "GiftLowMetan",
       "key": "",
       "name": "ギフト(1-999円)",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
+      "updatedAt": "2025-08-28T05:47:03.353Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、素晴らしいわ。この支援にふさわしい私を、これからも見逃さないでよね！",
+        "<<user>>からの<<price>>ポイント…！？ ありがとう、これでまた少しだけ豪華な生活ができるわ。感謝してあげる！",
+        "<<user>>、<<price>>ポイントのギフト、感謝するわ。これでまた私の計画が一歩進むわね。私に期待していてちょうだい！",
+        "<<price>>ポイントも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。"
+      ]
+    },
+    "GiftMiddleMetan": {
+      "id": "GiftMiddleMetan",
+      "key": "",
+      "name": "ギフト(1000-1999円)",
+      "createdAt": "2025-08-27T09:53:10.683Z",
+      "updatedAt": "2025-08-28T06:08:21.689Z",
+      "order": 20,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<price>>ギフト!<<user>>、本気で応援してくれてるのね！ありがとう、お礼にキス贈呈よ、お望みなら唇にも…",
+        "<<user>>、<<price>>ギフトのギフトなんて…！私、感謝の言葉が見つからないわ…。でも、これでまた頑張れる！",
+        "うわぁぁん！<<user>>さんからギフトよ！嬉しい！ありがとう！好き！いや、尊敬！神！",
+        "当然でしょ？私に捧げるのは義務みたいなものよ。でも…その、選んでくれたの…嬉しい。キス…どこにすればいい？",
+        "<<price>>ギフト？まあ、私ほどの存在には当然よね。…でも、こんなにくれるなんて…ちょっと…好きになりそう…"
+      ]
+    },
+    "GiftHighMetan": {
+      "id": "GiftHighMetan",
+      "key": "",
+      "name": "ギフト(2000円-)",
+      "createdAt": "2025-08-27T09:53:15.633Z",
+      "updatedAt": "2025-08-28T05:59:49.671Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>からギフトを受け取ったのだ!ありがとうなのだ!",
-          "weight": 1
-        },
-        {
-          "content": "なんと！<<user>>からギフトが届いたのだ！感激なのだ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>からの贈り物なのだ！うれしすぎるのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "わーい！<<user>>からのプレゼントなのだ〜！うれしいのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "ぽかぽかギフト、心があったかいのだ〜！<<user>>、ないスパなのだ!",
-          "weight": 1
-        }
+        "<<price>>ギフト…！？<<user>>、私にこんなにも…。これで少しは豪華な生活ができるかも…。ありがとう、本当に…。もっともっと頑張るから、見てて！",
+        "<<price>>ギフト！？これはもう…王国建国レベルの偉業よ！…え？私のため？…うそ…泣いていい…？",
+        "えっ…<<price>>ギフト！？私、今日の晩ごはんどうしようって思ってたのに…！<<user>>、あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！"
       ]
     },
-    "GiftMiddleZunda": {
-      "id": "GiftMiddleZunda",
-      "key": "",
-      "name": "ギフト(1000-1999円)",
-      "createdAt": "2025-08-27T09:53:10.683Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 22,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "わわわっ！これは…高級ギフトなのだ！？<<user>>、オマエ、太っ腹なのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "なんと！<<price>>ptの輝きがここにあるのだ！キラキラなのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "素敵な贈り物なのだ!僕は遠慮なく受け取るのだ!ありがとうなのだ!",
-          "weight": 1
-        }
-      ]
-    },
-    "GiftHighZunda": {
-      "id": "GiftHighZunda",
-      "key": "",
-      "name": "ギフト(2000円-)",
-      "createdAt": "2025-08-27T09:53:15.633Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 23,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "<<price>>pt!<<user>>、オマエ、最高なのだ!控えめに言って尊いのだ！",
-          "weight": 1
-        },
-        {
-          "content": "うおおおっ！豪華すぎて目が回るのだ！<<user>>、ありがとうなのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！",
-          "weight": 1
-        }
-      ]
-    },
-    "FirstCounterAgainZunda": {
-      "id": "FirstCounterAgainZunda",
+    "FirstCounterAgainMetan": {
+      "id": "FirstCounterAgainMetan",
       "key": "",
       "name": "久しぶり",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 25,
+      "order": 22,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
-          "weight": 1
-        },
-        {
-          "content": "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～",
-          "weight": 1
-        }
+        "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
+        "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
+        "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
+        "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
+        "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～"
       ]
     },
-    "FirstCounterFirstVisitZunda": {
-      "id": "FirstCounterFirstVisitZunda",
+    "FirstCounterFirstVisitMetan": {
+      "id": "FirstCounterFirstVisitMetan",
       "key": "",
       "name": "こんにちは",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 26,
+      "order": 23,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3679,122 +3373,28 @@
         }
       ]
     },
-    "PromotionToastsZunda": {
-      "id": "PromotionToastsZunda",
+    "PromotionToastsMetan": {
+      "id": "PromotionToastsMetan",
       "key": "",
       "name": "告知用トースト",
       "createdAt": "2025-08-26T07:00:06.947Z",
       "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 27,
+      "order": 24,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
-          "weight": 1
-        },
-        {
-          "content": "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
-          "weight": 1
-        },
-        {
-          "content": "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！",
-          "weight": 1
-        }
-      ]
-    },
-    "MetanSyokenSagi": {
-      "id": "MetanSyokenSagi",
-      "key": "",
-      "name": "めたんの初見詐欺",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "<<user>>…オマエは本当は初めてじゃないのだ。僕にはわかるのだ。"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "あれ？<<user>>、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
-        }
-      ]
-    },
-    "MetanSyokenSagiFake": {
-      "id": "MetanSyokenSagiFake",
-      "key": "",
-      "name": "めたんの初見詐欺(騙され)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 28,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 3,
-          "content": "うわっ！ダマされた大賞！"
-        },
-        {
-          "content": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
-          "weight": 1
-        },
-        {
-          "content": "え、嘘だったの！？私が！？この私が！？……いや、これは演出。そう、演出だから。",
-          "weight": 1
-        },
-        {
-          "content": "うわ、やられた…！私が見抜けないなんて…いや、これは高度な心理戦だった。そういうことにしよう。",
-          "weight": 1
-        },
-        {
-          "content": "ちょっと待って、私が騙されたってこと！？……いや、これは逆に私が試されてた説あるな。そうだ、そうに違いない。",
-          "weight": 1
-        },
-        {
-          "content": "え、嘘！？私が信じちゃった！？……くっ、まず自分のログ精査しよ…",
-          "weight": 1
-        }
+        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
+        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
+        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
+        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
+        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
+        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
+        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
+        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
+        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
+        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
       ]
     },
     "FirstCounterSyokenMetan": {
@@ -3803,7 +3403,7 @@
       "name": "初見",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2025-08-28T04:01:18.049Z",
-      "order": 29,
+      "order": 25,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3834,7 +3434,7 @@
       "tags": [
         "touhokuZunko",
         "voicevox",
-        "zunda"
+        "Metan"
       ],
       "accessLevel": "basic",
       "version": "0.0.2",
@@ -3880,7 +3480,7 @@
       "tags": [
         "touhokuZunko",
         "voicevox",
-        "zunda"
+        "Metan"
       ],
       "accessLevel": "basic",
       "version": "0.0.2",
