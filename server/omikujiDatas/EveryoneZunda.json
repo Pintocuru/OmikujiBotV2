@@ -2506,7 +2506,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:56:26.188Z",
+      "updatedAt": "2025-08-28T02:35:23.233Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2638,7 +2638,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:55:50.552Z",
+      "updatedAt": "2025-08-28T02:35:02.271Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2648,7 +2648,7 @@
         {
           "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
           "key": "",
-          "name": "挨拶1",
+          "name": "挨拶",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2661,74 +2661,8 @@
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
               "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
-          "key": "",
-          "name": "挨拶2",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 3,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "9ddd25aa-beb3-46a5-b2b8-fa3555bca81d",
-          "key": "",
-          "name": "挨拶3",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "a6933c94-0db5-4f07-b531-9310a5dc5648",
-          "key": "",
-          "name": "挨拶4",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
+              "iconKey": "thinking",
+              "messageContent": "<<FirstCounterFirstVisitZunda>>",
               "messageToast": ""
             }
           ]
@@ -2826,7 +2760,7 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:55:59.885Z",
+      "updatedAt": "2025-08-28T02:33:56.795Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2836,14 +2770,14 @@
         {
           "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
           "key": "",
-          "name": "100回コメント:霊夢",
+          "name": "100回コメント",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 4,
+          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2851,21 +2785,21 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+              "messageToast": "すごいのだ!<<user>>のコメントが<<tc>>回になったのだ!"
             }
           ]
         },
         {
-          "id": "aa66e525-7b37-4512-bf32-d6b699027f18",
+          "id": "77edaa73-12a7-4697-bcab-bf15ba6a323e",
           "key": "",
-          "name": "100回コメント:魔理沙",
+          "name": "100回コメント2",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "weight": 2,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2873,7 +2807,7 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+              "messageToast": "<<user>>は<<tc>>回目のコメントなのだ。オマエは配信の常連なのだ!"
             }
           ]
         }
@@ -3438,30 +3372,6 @@
         "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！"
       ]
     },
-    "PromotionToastsZunda": {
-      "id": "PromotionToastsZunda",
-      "key": "",
-      "name": "告知用トースト",
-      "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
-      "order": 27,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
-        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
-        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
-        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
-        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
-        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
-        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
-        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
-        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
-        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
-      ]
-    },
     "FirstCounterSyokenZunda": {
       "id": "FirstCounterSyokenZunda",
       "key": "",
@@ -3547,6 +3457,30 @@
           "weight": 6,
           "content": "<<user>>、いらっしゃいなのだ。今日も楽しい時間を過ごそうなのだ！"
         }
+      ]
+    },
+    "PromotionToastsZunda": {
+      "id": "PromotionToastsZunda",
+      "key": "",
+      "name": "告知用トースト",
+      "createdAt": "2025-08-26T07:00:06.947Z",
+      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "order": 27,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
+        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
+        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
+        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
+        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
+        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
+        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
+        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
+        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
+        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
       ]
     }
   },

@@ -28,22 +28,27 @@
   import FireList from '@ConfigComponents/wordPartySettings/FireList.vue'
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
   import { storeToRefs } from 'pinia'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // 設定管理
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isGod } = useSettingMode()
 
   // WordParty設定の参照 (computed with get/set)
   const wordPartySettings = computed({
-    get: () => data.value.wordPartySettings,
+    get: (): WordPartySettings[] => {
+      const settings = data.value.wordPartySettings
+      return Array.isArray(settings) ? settings : []
+    },
     set: (newValue: WordPartySettings[]) => {
-      omikujiStore.updateWordPartySettings({
-        ...data.value.wordPartySettings,
-        ...newValue,
-      })
+      if (!Array.isArray(newValue)) {
+        console.warn('WordPartySettings must be an array')
+        return
+      }
+
+      // updateWordPartySettingsメソッドに配列を渡す
+      // 元のコードでは spread演算子を使っていたが、直接配列を渡すように修正
+      omikujiStore.data.wordPartySettings = newValue
     },
   })
 
@@ -51,7 +56,9 @@
   const developerModeAgreed = ref(false)
 
   // 設定更新関数
-  const updateSettings = (data: WordPartySettings[]) => (wordPartySettings.value = data)
+  const updateSettings = (newSettings: WordPartySettings[]) => {
+    wordPartySettings.value = newSettings
+  }
 
   // テキストエディタ機能
   const { textEditorContent, saveTextEdit, resetTextEdit } = useTextEditor(wordPartySettings, updateSettings)

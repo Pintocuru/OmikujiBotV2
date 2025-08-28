@@ -1,86 +1,113 @@
 // src/composables/useFileLoader.ts
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
 
 export function useFileLoader(
-  currentSettings: { value: WordPartySettings[] },
+  currentSettings: Ref<WordPartySettings[]>,
   updateSettings: (settings: WordPartySettings[]) => void
 ) {
   const loadStatus = ref<{ type: 'success' | 'error'; message: string } | null>(null)
 
-  // 正規表現の前後のメタ文字（^ や $、空白文字など）を除去するヘルパー関数
-  function cleanPatternBoundaries(rawPattern: string): string {
-    // 文字列の先頭にある '^' や空白文字、および文字列の末尾にある '$' や空白文字を除去
+  // 正規表現の前後のメタ文字を除去するヘルパー関数
+  function cleanPattern(rawPattern: string): string {
     return rawPattern.replace(/^[\^\s]+|[\$\s]+$/g, '')
   }
 
   // ファイル読み込み処理
   function handleFileLoad(content: string) {
-    const tempLoadedSettings: { name: string; pattern: string[] | string }[] = []
+    const loadedConfigs: any[] = []
 
-    // WordParty の setup をハイジャック
+    // WordPartyのセットアップをハイジャック
+    const originalWordParty = (window as any).WordParty
+
     ;(window as any).WordParty = {
       init(config: any) {
         return {
           setup(setups: any[]) {
-            tempLoadedSettings.push(
-              ...setups.map((s) => ({
-                name: s.name ?? '',
-                pattern: s.pattern ?? [],
-              }))
-            )
-            return { start() {} }
+            loadedConfigs.push(...setups)
+            return {
+              start() {
+                // 何もしない
+              },
+            }
           },
         }
       },
     }
 
     try {
-      new Function(content)() // eval 相当
+      // JavaScriptコードを実行
+      new Function(content)()
 
-      if (tempLoadedSettings.length > 0) {
-        // string[]をstringに変換して即時適用
-        const settings = [...currentSettings.value]
+      if (loadedConfigs.length > 0) {
+        // 既存設定を配列として取得
+        const currentArray = Array.isArray(currentSettings.value) ? [...currentSettings.value] : []
 
-        tempLoadedSettings.forEach((loaded) => {
-          const patterns = Array.isArray(loaded.pattern) ? loaded.pattern : [loaded.pattern]
+        // 新しい設定を追加
+        loadedConfigs.forEach((config) => {
+          const name = config.name || ''
+          const patterns = config.pattern || []
 
-          patterns.forEach((pattern) => {
-            // 正規表現の前後のメタ文字と空白文字を除去
-            const cleanedPattern = cleanPatternBoundaries(pattern)
+          // パターンが配列の場合、各パターンを個別のWordPartySettingsとして追加
+          if (Array.isArray(patterns)) {
+            patterns.forEach((pattern) => {
+              const cleanedPattern = cleanPattern(pattern)
+              if (cleanedPattern) {
+                // 重複チェック
+                const exists = currentArray.some(
+                  (existing) => existing.name === name && existing.pattern === cleanedPattern
+                )
 
-            const existingIndex = settings.findIndex(
-              (existing) => existing.name === loaded.name && existing.pattern === cleanedPattern
-            )
-            const newSetting: WordPartySettings = {
-              name: loaded.name,
-              pattern: cleanedPattern, // クリーンアップされたパターンを使用
+                if (!exists) {
+                  currentArray.push({
+                    name: name,
+                    pattern: cleanedPattern,
+                  })
+                }
+              }
+            })
+          } else if (typeof patterns === 'string') {
+            // パターンが文字列の場合
+            const cleanedPattern = cleanPattern(patterns)
+            if (cleanedPattern) {
+              const exists = currentArray.some(
+                (existing) => existing.name === name && existing.pattern === cleanedPattern
+              )
+
+              if (!exists) {
+                currentArray.push({
+                  name: name,
+                  pattern: cleanedPattern,
+                })
+              }
             }
-
-            if (existingIndex === -1) {
-              // 新しい設定を追加（重複チェック）
-              settings.push(newSetting)
-            }
-          })
+          }
         })
 
         // 設定を更新
-        updateSettings(settings)
+        updateSettings(currentArray)
 
         loadStatus.value = {
           type: 'success',
-          message: `${tempLoadedSettings.length}件の設定を読み込み、適用しました`,
+          message: `${loadedConfigs.length}件の設定を読み込みました`,
         }
       } else {
         loadStatus.value = {
           type: 'error',
-          message: '読み込めませんでした - 有効な設定が見つかりません',
+          message: '有効なWordParty設定が見つかりませんでした',
         }
       }
-    } catch (e) {
+    } catch (error) {
       loadStatus.value = {
         type: 'error',
-        message: `読み込めませんでした - ${e}`,
+        message: `読み込みエラー: ${error instanceof Error ? error.message : String(error)}`,
+      }
+    } finally {
+      // WordPartyオブジェクトを復元
+      if (originalWordParty) {
+        ;(window as any).WordParty = originalWordParty
+      } else {
+        delete (window as any).WordParty
       }
     }
   }
