@@ -12,13 +12,13 @@
     "url": "https://pintocuru.booth.pm/items/6053855"
   },
   "comments": {
-    "OmikujiZunda": {
-      "id": "OmikujiZunda",
+    "OmikujiMetan": {
+      "id": "OmikujiMetan",
       "key": "",
-      "name": "ずんだもんのおみくじ",
-      "description": "みんなの運勢はすごくいいのだ！ずん子もそう言ってるのだ！",
+      "name": "漆黒のおみくじ",
+      "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "updatedAt": "2025-08-28T01:55:59.270Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -40,7 +40,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -48,7 +48,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_01",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -56,9 +56,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!レベルアップ",
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "messageContent": "<<user>>の運勢は【大吉】<<zundaOmikuji01>>",
+              "characterKey": "metanBlack",
+              "iconKey": "excited",
+              "messageContent": "<<user>>よ、汝の運命は【大吉】<<metanOmikuji01>>",
               "messageToast": ""
             }
           ]
@@ -78,7 +78,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -86,7 +86,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_02",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -94,9 +94,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シャキーン2",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
-              "messageContent": "<<user>>の運勢は【吉】<<zundaOmikuji02>>",
+              "messageContent": "<<user>>よ、汝の運命は【吉】<<metanOmikuji02>>",
               "messageToast": ""
             }
           ]
@@ -116,7 +116,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -124,7 +124,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_03",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -132,9 +132,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
-              "messageContent": "<<user>>の運勢は【中吉】<<zundaOmikuji03>>",
+              "messageContent": "<<user>>よ、汝の運命は【中吉】<<metanOmikuji03>>",
               "messageToast": ""
             }
           ]
@@ -154,7 +154,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -162,7 +162,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_04",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -170,9 +170,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
-              "messageContent": "<<user>>の運勢は【小吉】<<zundaOmikuji04>>",
+              "messageContent": "<<user>>よ、汝の運命は【小吉】<<metanOmikuji04>>",
               "messageToast": ""
             }
           ]
@@ -192,7 +192,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -200,7 +200,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_05",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -208,9 +208,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!間抜け1",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
-              "messageContent": "<<user>>の運勢は【末吉】<<zundaOmikuji05>>",
+              "messageContent": "<<user>>よ、汝の運命は【末吉】<<metanOmikuji05>>",
               "messageToast": ""
             }
           ]
@@ -230,7 +230,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -238,7 +238,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_06",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -246,9 +246,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!呪いの旋律",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
-              "messageContent": "<<user>>の運勢は【凶】<<zundaOmikuji06>>",
+              "messageContent": "<<user>>よ、汝の運命は【凶】<<metanOmikuji06>>",
               "messageToast": ""
             }
           ]
@@ -256,7 +256,7 @@
         {
           "id": "ce0ca2e5-5b3a-46a7-a238-e507b61da9da",
           "key": "",
-          "name": "おみくじ:残念賞",
+          "name": "おみくじ:めたんとの接吻賞",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -268,7 +268,7 @@
             {
               "delaySeconds": -1,
               "wordParty": "!omikuji_huru",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -276,7 +276,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!omikuji_07",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -284,9 +284,9 @@
             {
               "delaySeconds": 1,
               "wordParty": "!ビシッとツッコミ1",
-              "characterKey": "zunda",
+              "characterKey": "metanBlack",
               "iconKey": "sleepy",
-              "messageContent": "<<user>>の運勢は【残念賞】<<zundaOmikuji07>>",
+              "messageContent": "<<user>>よ、汝の運命は【残念賞】<<metanOmikuji07>>",
               "messageToast": ""
             }
           ]
@@ -328,7 +328,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -350,7 +350,7 @@
             {
               "delaySeconds": 3.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": ""
@@ -358,7 +358,7 @@
             {
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
@@ -405,7 +405,7 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -427,7 +427,7 @@
             {
               "delaySeconds": 2.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": ""
@@ -435,7 +435,7 @@
             {
               "delaySeconds": 7,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
@@ -481,7 +481,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -503,7 +503,7 @@
             {
               "delaySeconds": 3.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": ""
@@ -511,7 +511,7 @@
             {
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>"
@@ -559,7 +559,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -581,7 +581,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -589,7 +589,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -597,7 +597,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -605,7 +605,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": ""
@@ -627,7 +627,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -635,7 +635,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -643,7 +643,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -651,7 +651,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": ""
@@ -673,7 +673,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -681,7 +681,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -689,7 +689,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -697,7 +697,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": ""
@@ -719,7 +719,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -727,7 +727,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -735,7 +735,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -743,7 +743,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": ""
@@ -765,7 +765,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -773,7 +773,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -781,7 +781,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -789,7 +789,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": ""
@@ -811,7 +811,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -819,7 +819,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -827,7 +827,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -835,7 +835,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": ""
@@ -857,7 +857,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -865,7 +865,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -873,7 +873,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -881,7 +881,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -903,7 +903,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -911,7 +911,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -919,7 +919,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -927,7 +927,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -949,7 +949,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -957,7 +957,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -965,7 +965,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -973,7 +973,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -995,7 +995,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1003,7 +1003,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1011,7 +1011,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1019,7 +1019,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1041,7 +1041,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1049,7 +1049,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1057,7 +1057,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1065,7 +1065,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1087,7 +1087,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1095,7 +1095,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1103,7 +1103,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1111,7 +1111,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1133,7 +1133,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1141,7 +1141,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1149,7 +1149,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1157,7 +1157,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1179,7 +1179,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1187,7 +1187,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1195,7 +1195,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1203,7 +1203,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1245,7 +1245,7 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1267,7 +1267,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1275,7 +1275,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1283,7 +1283,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1291,7 +1291,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": ""
@@ -1313,7 +1313,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1321,7 +1321,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1329,7 +1329,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1337,7 +1337,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": ""
@@ -1359,7 +1359,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1367,7 +1367,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1375,7 +1375,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1383,7 +1383,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1405,7 +1405,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1413,7 +1413,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1421,7 +1421,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1429,7 +1429,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1472,7 +1472,7 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1494,7 +1494,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1502,7 +1502,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1510,7 +1510,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1518,7 +1518,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": ""
@@ -1540,7 +1540,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1548,7 +1548,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1556,7 +1556,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1564,7 +1564,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": ""
@@ -1586,7 +1586,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1594,7 +1594,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1602,7 +1602,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1610,7 +1610,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1632,7 +1632,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1640,7 +1640,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1648,7 +1648,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1656,7 +1656,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1698,7 +1698,7 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1720,7 +1720,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1728,7 +1728,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1736,7 +1736,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1744,7 +1744,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": ""
@@ -1766,7 +1766,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1774,7 +1774,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1782,7 +1782,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1790,7 +1790,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": ""
@@ -1812,7 +1812,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1820,7 +1820,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1828,7 +1828,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1836,7 +1836,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1858,7 +1858,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1866,7 +1866,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1874,7 +1874,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1882,7 +1882,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1925,7 +1925,7 @@
       "name": "初見詐欺",
       "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T15:09:51.050Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -1947,7 +1947,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1955,7 +1955,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!間抜け5",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "<<ZundaSyokenSagiThinking>>",
               "messageToast": ""
@@ -1977,7 +1977,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1985,7 +1985,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!チーン1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSurprise>>",
               "messageToast": ""
@@ -2007,7 +2007,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2015,7 +2015,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!間抜け1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSwing>>",
               "messageToast": ""
@@ -2037,7 +2037,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2045,7 +2045,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!間抜け1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSad>>",
               "messageToast": ""
@@ -2067,7 +2067,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2075,7 +2075,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
               "messageToast": ""
@@ -2083,7 +2083,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!呪いの旋律",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "angry",
               "messageContent": "<<user>>、オマエ、僕をだましたのだ？ひどいのだ！ずん姉に言いつけるのだ！",
               "messageToast": ""
@@ -2126,7 +2126,7 @@
       "name": "ホントの初見",
       "description": "「初見」って言ったら配信画面に「参戦！」って出るのだ！",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T15:08:25.051Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -2148,7 +2148,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2156,7 +2156,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
               "messageToast": ""
@@ -2199,7 +2199,7 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2221,7 +2221,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2229,7 +2229,7 @@
             {
               "delaySeconds": 0.3,
               "wordParty": "!ジャン！",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2237,7 +2237,7 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<GiftLowZunda>>",
               "messageToast": ""
@@ -2279,7 +2279,7 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:07:01.774Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2317,7 +2317,7 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<GiftMiddleZunda>>",
               "messageToast": ""
@@ -2357,7 +2357,7 @@
       "name": "ギフト(2000円-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:06:47.134Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2379,7 +2379,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!金額表示",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2387,7 +2387,7 @@
             {
               "delaySeconds": 0.3,
               "wordParty": "!ジャン！",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2395,7 +2395,7 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "blushing",
               "messageContent": "<<GiftHighZunda>>",
               "messageToast": ""
@@ -2438,7 +2438,7 @@
       "name": "コメント数表示",
       "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:30:56.380Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -2460,7 +2460,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!"
@@ -2501,7 +2501,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:56:26.188Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2523,7 +2523,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!初見",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -2531,7 +2531,7 @@
             {
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
               "messageToast": ""
@@ -2571,7 +2571,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:36:49.729Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2593,7 +2593,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "excited",
               "messageContent": "<<FirstCounterAgainZunda>>",
               "messageToast": ""
@@ -2633,7 +2633,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:55:50.552Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2655,7 +2655,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
               "messageToast": ""
@@ -2677,7 +2677,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
               "messageToast": ""
@@ -2699,7 +2699,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
               "messageToast": ""
@@ -2721,7 +2721,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
               "messageToast": ""
@@ -2761,7 +2761,7 @@
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:55:55.444Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2783,7 +2783,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "thinking",
               "messageContent": "",
               "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。"
@@ -2821,7 +2821,7 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:55:59.885Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2843,7 +2843,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
@@ -2865,7 +2865,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
@@ -2905,7 +2905,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:30:56.381Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -2927,7 +2927,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が見てくれているのだ"
@@ -2945,7 +2945,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.381Z",
+      "updatedAt": "2025-08-28T01:43:41.357Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -2967,7 +2967,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "",
               "messageToast": "<<PromotionToastsZunda>>"
@@ -2989,7 +2989,7 @@
             {
               "delaySeconds": 0,
               "wordParty": "!間抜け1",
-              "characterKey": "zunda",
+              "characterKey": "metan",
               "iconKey": "thinking",
               "messageContent": "",
               "messageToast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…"
@@ -3003,69 +3003,52 @@
     }
   },
   "placeholders": {
-    "zundaOmikuji01": {
-      "id": "zundaOmikuji01",
+    "metanOmikuji02": {
+      "id": "metanOmikuji02",
       "key": "",
-      "name": "ずんだもんのおみくじ:大吉",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
-      "order": 1,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "人との縁がすごく良さそうなのだ!感謝の気持ちを忘れずにいるといいのだ。",
-        "健康運がバッチリなのだ!元気いっぱいで過ごせそうなのだ。",
-        "頑張ってきたことが報われそうなのだ!積極的に行動するといいことがあるのだ。",
-        "新しいことに挑戦すると、うまくいきそうなのだ!勇気を出して頑張るのだ。",
-        "良いお知らせが来そうなのだ!前向きな気持ちでいるといいのだ。",
-        "難しいことも乗り越えられそうなのだ!自信を持って進むといいのだ。"
-      ]
-    },
-    "zundaOmikuji02": {
-      "id": "zundaOmikuji02",
-      "key": "",
-      "name": "ずんだもんのおみくじ:吉",
+      "name": "漆黒のおみくじ:吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:57:11.949Z",
       "order": 2,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "積極的に行動すると運気が上がりそうなのだ!新しいことにチャレンジするといいのだ。",
-        "周りの人に感謝する気持ちを忘れないでいるのだ。",
-        "これからの未来は明るそうなのだ!夢に向かって頑張るといいことがあるのだ。",
-        "みんなで協力すると成功しやすそうなのだ!仲間を大切にするのだ。",
-        "小さな努力が大きな成果になりそうなのだ!コツコツ続けることが大事なのだ。",
-        "前向きに考えると良い結果になりそうなのだ!ポジティブでいるのだ。"
+        "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
+        "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
+        "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
+        "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
+        "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
+        "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
+        "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。"
       ]
     },
-    "zundaOmikuji03": {
-      "id": "zundaOmikuji03",
+    "metanOmikuji03": {
+      "id": "metanOmikuji03",
       "key": "",
-      "name": "ずんだもんのおみくじ:中吉",
+      "name": "漆黒のおみくじ:中吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:58:11.461Z",
       "order": 3,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "思わぬ幸運があるかもしれないのだ!チャンスを見逃さないようにするのだ。",
-        "周りの人と協力すると良いことがありそうなのだ!助けを求めるのも大事なのだ。",
-        "自分の気持ちを信じるといいのだ!大きく成長できそうなのだ。",
-        "新しいことを学ぶと良さそうなのだ!自分を磨くチャンスなのだ。",
-        "楽しいことが増えそうなのだ!笑顔を忘れずにいるのだ。",
-        "しっかり計画を立てると、うまくいきそうなのだ!"
+        "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
+        "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
+        "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
+        "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
+        "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
+        "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
+        "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。"
       ]
     },
-    "zundaOmikuji04": {
-      "id": "zundaOmikuji04",
+    "metanOmikuji04": {
+      "id": "metanOmikuji04",
       "key": "",
-      "name": "ずんだもんのおみくじ:小吉",
+      "name": "漆黒のおみくじ:小吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 4,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -3079,12 +3062,12 @@
         "ゆっくりと良くなっていきそうなのだ!焦らずに自分のペースで進むといいのだ。"
       ]
     },
-    "zundaOmikuji05": {
-      "id": "zundaOmikuji05",
+    "metanOmikuji05": {
+      "id": "metanOmikuji05",
       "key": "",
-      "name": "ずんだもんのおみくじ:末吉",
+      "name": "漆黒のおみくじ:末吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 5,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -3098,12 +3081,12 @@
         "自分を良くしようと努力すると、運が開けそうなのだ!自分のことをよく考えてみるのだ。"
       ]
     },
-    "zundaOmikuji06": {
-      "id": "zundaOmikuji06",
+    "metanOmikuji06": {
+      "id": "metanOmikuji06",
       "key": "",
-      "name": "ずんだもんのおみくじ:凶",
+      "name": "漆黒のおみくじ:凶",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 6,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -3117,12 +3100,12 @@
         "無理をしないで、休むことも大切なのだ!リラックスする時間を作るといいのだ。"
       ]
     },
-    "zundaOmikuji07": {
-      "id": "zundaOmikuji07",
+    "metanOmikuji07": {
+      "id": "metanOmikuji07",
       "key": "",
-      "name": "ずんだもんのおみくじ:残念賞",
+      "name": "漆黒のおみくじ:めたんとの接吻賞",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:49:36.709Z",
       "order": 7,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -3141,7 +3124,7 @@
       "key": "",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 8,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3155,7 +3138,7 @@
       "key": "",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 9,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3169,7 +3152,7 @@
       "key": "",
       "name": "じゃんけん:グー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 10,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3186,7 +3169,7 @@
       "key": "",
       "name": "じゃんけん:グー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 11,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3202,7 +3185,7 @@
       "key": "",
       "name": "じゃんけん:チョキ1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 12,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3219,7 +3202,7 @@
       "key": "",
       "name": "じゃんけん:チョキ2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 13,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3235,7 +3218,7 @@
       "key": "",
       "name": "じゃんけん:パー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 14,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3252,7 +3235,7 @@
       "key": "",
       "name": "じゃんけん:パー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 15,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3268,7 +3251,7 @@
       "key": "",
       "name": "じゃんけん:勝利",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 16,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3285,7 +3268,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(考え中)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 17,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3310,7 +3293,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(驚き)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 18,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3335,7 +3318,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(歌)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 19,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3360,7 +3343,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(悲しみ)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 20,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3385,7 +3368,7 @@
       "key": "",
       "name": "ギフト(1-999円)",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -3404,7 +3387,7 @@
       "key": "",
       "name": "ギフト(1000-1999円)",
       "createdAt": "2025-08-27T09:53:10.683Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -3421,7 +3404,7 @@
       "key": "",
       "name": "ギフト(2000円-)",
       "createdAt": "2025-08-27T09:53:15.633Z",
-      "updatedAt": "2025-08-27T14:30:56.378Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 23,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -3438,7 +3421,7 @@
       "key": "",
       "name": "初見",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-08-27T14:40:34.988Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 24,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3464,7 +3447,7 @@
       "key": "",
       "name": "久しぶり",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-08-27T14:59:35.149Z",
+      "updatedAt": "2025-08-28T01:43:41.355Z",
       "order": 25,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3483,7 +3466,7 @@
       "key": "",
       "name": "こんにちは",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-08-27T15:03:02.706Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 26,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3525,7 +3508,7 @@
       "key": "",
       "name": "告知用トースト",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-08-27T14:30:56.379Z",
+      "updatedAt": "2025-08-28T01:43:41.356Z",
       "order": 27,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3543,18 +3526,40 @@
         "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
         "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
       ]
+    },
+    "metanOmikuji01": {
+      "id": "metanOmikuji01",
+      "key": "",
+      "name": "漆黒のおみくじ:大吉",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T01:45:05.881Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
+        "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
+        "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
+        "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
+        "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
+        "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
+        "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！"
+      ]
     }
   },
   "characters": {
-    "zunda": {
-      "id": "zunda",
+    "metan": {
+      "id": "metan",
       "key": "",
-      "name": "ずんだもん",
-      "description": "ずんだもんなのだ!みんなの笑顔が僕の元気!頑張るのだ!",
+      "name": "四国めたん",
+      "description": "配信に全集中よ。これからもついて来なさい！後悔させないわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-27T10:22:35.504Z",
+      "updatedAt": "2025-08-28T01:36:12.822Z",
       "order": 1,
-      "editorColor": "#10B981",
+      "isEnabled": true,
+      "editorColor": "#EF9A9A",
       "tags": [
         "touhokuZunko",
         "voicevox",
@@ -3563,34 +3568,79 @@
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
-      "url": "https://www.pixiv.net/artworks/92641351",
-      "displayName": "ずんだもん",
-      "frameId": "voicevoxZunda",
+      "url": "https://seiga.nicovideo.jp/seiga/im11022280",
+      "displayName": "四国めたん",
+      "frameId": "voicevoxMetan",
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
         "isVoice": true
       },
       "color": {
-        "nameColor": "#AED581",
-        "textColor": "#F9FBE7",
-        "backgroundColor": "#689F38"
+        "nameColor": "#fdd835",
+        "textColor": "#fce4ec",
+        "backgroundColor": "#d81b60"
       },
       "image": {
-        "default": "zunda/default.webp",
-        "happy": "zunda/happy.webp",
-        "excited": "zunda/excited.webp",
-        "laughing": "zunda/laughing.webp",
-        "blushing": "zunda/blushing.webp",
-        "surprised": "zunda/surprised.webp",
-        "sad": "zunda/sad.webp",
-        "angry": "zunda/angry.webp",
-        "thinking": "zunda/thinking.webp",
-        "wink": "zunda/wink.webp",
-        "singing": "zunda/singing.webp",
-        "sleepy": "zunda/sleepy.webp"
+        "default": "metan/default.webp",
+        "happy": "metan/happy.webp",
+        "excited": "metan/excited.webp",
+        "laughing": "metan/laughing.webp",
+        "blushing": "metan/blushing.webp",
+        "surprised": "metan/surprised.webp",
+        "sad": "metan/sad.webp",
+        "angry": "metan/angry.webp",
+        "thinking": "metan/thinking.webp",
+        "wink": "metan/wink.webp",
+        "singing": "metan/singing.webp",
+        "sleepy": "metan/sleepy.webp"
+      }
+    },
+    "metanBlack": {
+      "id": "metanBlack",
+      "key": "",
+      "name": "漆黒のめたん",
+      "description": "勝負しましょう！じゃんけんの猛者・本田三角形の真の力、見せてあげる！",
+      "createdAt": "2025-08-28T01:37:05.867Z",
+      "updatedAt": "2025-08-28T01:40:48.941Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#212121",
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "zunda"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.2",
+      "author": "Pintocuru",
+      "url": "https://seiga.nicovideo.jp/seiga/im11022280",
+      "displayName": "漆黒のめたん",
+      "frameId": "voicevoxMetan",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
       },
-      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAFoUlEQVR4AXyU+W8bxxXHP7vLJXdJUbx02UpsSDYtyYcEFXF8KLWFNLLjJnHl2GlRtCkK9Jf8EKPpb0H7HxQF+kP/hga9EjeoiyZN6iR2W8vOocSOYV2UZB2WSPGmxGuXuxmKtiQmih/mzbzZ+c77zrw3++TnLw3bG/rmsH327+dqc2E/X9Wt69vZbw3bZy+ds18Q44afLTiZh5K3CL1f4Gcn+nBmbBx/SqG8m0OVZSTrIWjLaFNbuxrnQmsXfYs6npKES3WsK6YACLgsdL01BDV+/vtnCLkbufiTAV774/f55R9OcW53J82LNqqloDu0ddVkMa4qnOnaw69+e5ZdTwQYeqWPV84f5eLpJ3n19GEcI3kQHBsEVgWS0QqFjI5iqjjzEmtZmZ1dLZwc6OFwsZPz+wa50PU0p1qG+Okzg/TsacLMa0gVGb8EKhAQY6UAyqAPJJB5IHmjzN/ujpJXYiTTCrMxHadLIhfX8DbtpmfwMVo7M7R0pAg/EaexOY8pPDhcYIkwTs3nScVtJmOrfHGjQOXrIary5PIl/vzRJGNjtrhdAduS8QXKNPlNWlo3ziKgklAoFRQsuwSyyY2/Rvj/P3K8celLPsiMCvLKOmbrLsSBKMirjCxf5ea1BZYjEunlNB6XjwZaoQoA1u7nSc+ukph3Uco7xRc481ofa7sSmDvEVJFEV2v1BNVv4mo+y83AyR50KcbctShZZYmkPSNWRdZEH3nnHuPvzOENxNHd5WqMcEshus1+XLYmEJvtGwSq6aC14EeTLJpLIZ46eJhKsea4uk3KOmkOdhBsb0J2SNiGWBPP2COHUDURFlnMq8AHWk9QtnEnZHqPdZOeVtDjrayu6iQnRJzFBskWSR+vsMO5h/RYhaWxFLJbOHRYrFjjSI4IkngsIoECXWt1BC5J4ZA/iNsbZ2Fsgli2xPitBB+/Pc3n706RuWMSm8hw9d/vE52IESjsRLc8DzKDyIdRu1HN93pfR+BwKTQ9HiC9pGMUC1Bc46C2xF7bIhTfxY5cJ2rWTcibJry3kQ5XF/P/yZEWSa8YTm5fi1C0DDYYgToCs1xh9k6MybtZjp38LkNH+ti/v4sfnRvmxy+cp/9AL/39BxgafpHB40fY6ZSgZJBabiA67adnoButofaqhO/1VkcgyxKiCjBhjjOVmcepyHgOPY32WA+RyRmufjhCU3OQzn1HCId7yYgkJ0sW6aiX5H2drFfBUgQpm1JHUJYsZqwMhftpRhY+5fJHI6IM5FEUsJM5ip9PUVqKi4mJrWvcjqZYiDmZHZ1m8n/XGJ2epmSam96FVUdQkWxSXgMpqJJUi7wljfKv+zcEDHaFO3jy2ROE2tuILSe4PjVHXlYJ+gOkAivMBWYx3AZb44+QOgIxB6eM1C7i6JFJthR4c/5DfnflDf5y8zOi4nSu+Xka5iYwEkki0gy3tVFyO1cxd6vY1ZysO9ns5E1zeytRynDduMN70//lg8vvsTw1TtrQ+PRehDu3bhItL2Mo4uTbb69/RdthrHtljMtZghk//r29zLQc5HbCxcwni3SXemhzVovPN3faUYMTDf2PJggVg5x2P8eJ7/yAttZ9BHuDfFa8xWw+hjfQxJHew7w+cJGwr7OOofmuh6Ntp/HQySND5NX9yEWL0ev/ZCVyi/RYlKOPH8OnOah4JsmaK7grXrpTPbhFSXlYIsL7j+N3N2PZ6iMIFk2kK0VCHQ5++OpxXv/Nr3n2zHMc2H+Ishyn4Figua0BXXeRnUtwUDmK622wMxVkUdMekn3rDdrbOzg1dAGjbFIRRdLnExXWraM4HDTuUNEDEr5GFy6Xg1+8/DLh3WGeeulFvtf2Em5fCCSJqsjVbjuVFRnVqWLbtlBLHEhUTWriUBE/n8TC4grZ3BqaU+OLy1coCluVncK3VAMCXwEAAP//1jEhgAAAAAZJREFUAwAcG1CpqW+JwAAAAABJRU5ErkJggg=="
+      "color": {
+        "nameColor": "#f8bbd0",
+        "textColor": "#d7ccc8",
+        "backgroundColor": "#212121"
+      },
+      "image": {
+        "default": "metan/default.webp",
+        "happy": "metan/happy.webp",
+        "excited": "metan/excited.webp",
+        "laughing": "metan/laughing.webp",
+        "blushing": "metan/blushing.webp",
+        "surprised": "metan/surprised.webp",
+        "sad": "metan/sad.webp",
+        "angry": "metan/angry.webp",
+        "thinking": "metan/thinking.webp",
+        "wink": "metan/wink.webp",
+        "singing": "metan/singing.webp",
+        "sleepy": "metan/sleepy.webp"
+      }
     }
   },
   "scriptSettings": {
