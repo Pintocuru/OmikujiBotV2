@@ -6,7 +6,7 @@
       <ModalFooterActions class="mb-4" :on-cancel="closeDialog" :on-save="saveActions" />
 
       <!-- プレースホルダーリスト表示 -->
-      <PlaceholderList :actions="editingActions" />
+      <PlaceholderList :actions="editingActions" @openPlaceholder="openPlaceholder" />
 
       <!-- Post編集ダイアログ -->
       <PostActionsContainer
@@ -82,6 +82,15 @@
       ])
     }
     closeDialog()
+  }
+
+  // プレースホルダーを開く
+  const openPlaceholder = (key: string, editorColor: string) => {
+    // 標準プレースホルダーはデータが存在しないのでreturn
+    if (editorColor === '#FEFEFE') return
+    omikujiStore.selectCategory('placeholders')
+    omikujiStore.selectRule(key)
+    saveActions()
   }
 
   // Action management methods

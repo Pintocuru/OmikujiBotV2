@@ -54,6 +54,7 @@
           :placeholder="placeholder"
           :is-used="usedPlaceholderIds.has(placeholder.id)"
           :is-default="defaultPlaceholders.includes(placeholder.id)"
+          @dblclick="emit('openPlaceholder', placeholder.id, placeholder.editorColor)"
         />
       </div>
 
@@ -77,6 +78,8 @@
   const props = defineProps<{
     actions?: PostActionType[]
   }>()
+
+  const emit = defineEmits(['openPlaceholder'])
 
   // Composable（ランダム値関連の機能を除外）
   const {
