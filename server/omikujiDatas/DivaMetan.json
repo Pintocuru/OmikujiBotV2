@@ -18,7 +18,7 @@
       "name": "漆黒のおみくじ",
       "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-08-28T02:08:33.331Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -283,7 +283,7 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "!女衆「おう！」",
               "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<user>>よ、汝の運命は【接吻賞】<<metanOmikuji07>>",
@@ -328,7 +328,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -405,7 +405,7 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T04:00:03.343Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -481,7 +481,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T04:00:03.343Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -559,7 +559,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T05:00:22.768Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -581,7 +581,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -589,7 +589,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -597,7 +597,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -605,7 +605,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": ""
@@ -627,7 +627,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -635,7 +635,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -643,7 +643,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -651,7 +651,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": ""
@@ -673,7 +673,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -681,7 +681,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -689,7 +689,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -697,7 +697,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": ""
@@ -719,7 +719,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -727,7 +727,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -735,7 +735,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -743,7 +743,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": ""
@@ -765,7 +765,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -773,7 +773,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -781,7 +781,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -789,7 +789,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": ""
@@ -811,7 +811,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -819,7 +819,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -827,7 +827,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -835,7 +835,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": ""
@@ -857,7 +857,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -865,7 +865,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -873,7 +873,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -881,7 +881,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -903,7 +903,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -911,7 +911,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -919,7 +919,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -927,7 +927,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -949,7 +949,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -957,7 +957,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -965,7 +965,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -973,7 +973,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -995,7 +995,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1003,7 +1003,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1011,7 +1011,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1019,7 +1019,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1041,7 +1041,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1049,7 +1049,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1057,7 +1057,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1065,7 +1065,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1087,7 +1087,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1095,7 +1095,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1103,7 +1103,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1111,7 +1111,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1133,7 +1133,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1141,7 +1141,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1149,7 +1149,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1157,7 +1157,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1179,7 +1179,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1187,7 +1187,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_4",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1195,7 +1195,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1203,7 +1203,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1245,7 +1245,7 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T05:00:37.441Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1267,7 +1267,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1275,7 +1275,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1283,7 +1283,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1291,7 +1291,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": ""
@@ -1313,7 +1313,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1321,7 +1321,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1329,7 +1329,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1337,7 +1337,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": ""
@@ -1359,7 +1359,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1367,7 +1367,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1375,7 +1375,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1383,7 +1383,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1405,7 +1405,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1413,7 +1413,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1421,7 +1421,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1429,7 +1429,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1472,7 +1472,7 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T05:00:45.226Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1494,7 +1494,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1502,7 +1502,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1510,7 +1510,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1518,7 +1518,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": ""
@@ -1540,7 +1540,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1548,7 +1548,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1556,7 +1556,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1564,7 +1564,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": ""
@@ -1586,7 +1586,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1594,7 +1594,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1602,7 +1602,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1610,7 +1610,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1632,7 +1632,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1640,7 +1640,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_3",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1648,7 +1648,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1656,7 +1656,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1698,7 +1698,7 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T05:00:50.861Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1720,7 +1720,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1728,7 +1728,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1736,7 +1736,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1744,7 +1744,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": ""
@@ -1766,7 +1766,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1774,7 +1774,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_2",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1782,7 +1782,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_lose",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1790,7 +1790,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": ""
@@ -1812,7 +1812,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1820,7 +1820,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1828,7 +1828,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1836,7 +1836,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1858,7 +1858,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": ""
@@ -1866,7 +1866,7 @@
             {
               "delaySeconds": 1.4,
               "wordParty": "!janken_1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1874,7 +1874,7 @@
             {
               "delaySeconds": 2.9,
               "wordParty": "!janken_win",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": ""
@@ -1882,7 +1882,7 @@
             {
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
+              "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": ""
@@ -1919,287 +1919,13 @@
         "isRepeatAllowed": true
       }
     },
-    "SyokenSagiZunda": {
-      "id": "SyokenSagiZunda",
-      "key": "",
-      "name": "初見詐欺",
-      "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
-          "key": "",
-          "name": "初見詐欺(考え中)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 11,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!間抜け5",
-              "characterKey": "metan",
-              "iconKey": "singing",
-              "messageContent": "<<ZundaSyokenSagiThinking>>",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "e3034923-d727-4cb8-b44-0e0f11532ad",
-          "key": "",
-          "name": "初見詐欺(驚き)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 10,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!チーン1",
-              "characterKey": "metan",
-              "iconKey": "surprised",
-              "messageContent": "<<ZundaSyokenSagiSurprise>>",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "e30323-d727-4cb8-b4c4-0e0f114532ad",
-          "key": "",
-          "name": "初見詐欺(歌)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 8,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!間抜け1",
-              "characterKey": "metan",
-              "iconKey": "surprised",
-              "messageContent": "<<ZundaSyokenSagiSwing>>",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "e3034923-727-4b8-bc4-0e0f114532ad",
-          "key": "",
-          "name": "初見詐欺(悲しみ)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 7,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!間抜け1",
-              "characterKey": "metan",
-              "iconKey": "surprised",
-              "messageContent": "<<ZundaSyokenSagiSad>>",
-              "messageToast": ""
-            }
-          ]
-        },
-        {
-          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "key": "",
-          "name": "ああ初見だと思ったら騙された高校校歌",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!呪いの旋律",
-              "characterKey": "metan",
-              "iconKey": "angry",
-              "messageContent": "<<user>>、オマエ、僕をだましたのだ？ひどいのだ！ずん姉に言いつけるのだ！",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "SyokenHontoZunda": {
-      "id": "SyokenHontoZunda",
-      "key": "",
-      "name": "ホントの初見",
-      "description": "「初見」って言ったら配信画面に「参戦！」って出るのだ！",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "key": "",
-          "name": "ホントの初見1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": ""
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "GiftLowZunda": {
       "id": "GiftLowZunda",
       "key": "",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.343Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2279,7 +2005,7 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.343Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2357,7 +2083,7 @@
       "name": "ギフト(2000円-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2438,7 +2164,7 @@
       "name": "コメント数表示",
       "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -2501,7 +2227,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2533,7 +2259,7 @@
               "wordParty": "!レベルアップ",
               "characterKey": "metan",
               "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
               "messageToast": ""
             }
           ]
@@ -2571,7 +2297,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2633,7 +2359,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2761,7 +2487,7 @@
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2821,7 +2547,7 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2896,6 +2622,199 @@
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
+    },
+    "SyokenSagiMetan": {
+      "id": "SyokenSagiMetan",
+      "key": "",
+      "name": "初見詐欺",
+      "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T04:56:00.695Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "key": "",
+          "name": "初見詐欺(見抜き)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!間抜け5",
+              "characterKey": "metan",
+              "iconKey": "singing",
+              "messageContent": "<<MetanSyokenSagi>>",
+              "messageToast": ""
+            }
+          ]
+        },
+        {
+          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
+          "key": "",
+          "name": "ああ初見だと思ったら騙された高校校歌",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "metan",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "metan",
+              "iconKey": "sad",
+              "messageContent": "",
+              "messageToast": "<<MetanSyokenSagiFake>>"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        },
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 5,
+        "drawLimitExceeded": "showMessage",
+        "drawLimitMessage": "騙され過ぎなめたんが可愛そうです。また次回の配信で試してね。",
+        "isRepeatAllowed": true
+      }
+    },
+    "SyokenHontoMetan": {
+      "id": "SyokenHontoMetan",
+      "key": "",
+      "name": "ホントの初見",
+      "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T04:59:18.972Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
+          "key": "",
+          "name": "ホントの初見1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": ""
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "metan",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "ほ、本当の初見の人だった…良かった…"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "metan",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
     }
   },
   "timers": {
@@ -2905,7 +2824,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -2945,7 +2864,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.357Z",
+      "updatedAt": "2025-08-28T04:00:03.344Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3003,24 +2922,87 @@
     }
   },
   "placeholders": {
+    "metanOmikuji01": {
+      "id": "metanOmikuji01",
+      "key": "",
+      "name": "漆黒のおみくじ:大吉",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
+          "weight": 1
+        },
+        {
+          "content": "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
+          "weight": 1
+        },
+        {
+          "content": "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
+          "weight": 1
+        },
+        {
+          "content": "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
+          "weight": 1
+        },
+        {
+          "content": "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
+          "weight": 1
+        },
+        {
+          "content": "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
+          "weight": 1
+        },
+        {
+          "content": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
+          "weight": 1
+        }
+      ]
+    },
     "metanOmikuji02": {
       "id": "metanOmikuji02",
       "key": "",
       "name": "漆黒のおみくじ:吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:57:11.949Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 2,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
-        "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
-        "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
-        "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
-        "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
-        "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
-        "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。"
+        {
+          "content": "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
+          "weight": 1
+        },
+        {
+          "content": "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
+          "weight": 1
+        },
+        {
+          "content": "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
+          "weight": 1
+        },
+        {
+          "content": "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
+          "weight": 1
+        },
+        {
+          "content": "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
+          "weight": 1
+        },
+        {
+          "content": "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
+          "weight": 1
+        },
+        {
+          "content": "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。",
+          "weight": 1
+        }
       ]
     },
     "metanOmikuji03": {
@@ -3028,19 +3010,40 @@
       "key": "",
       "name": "漆黒のおみくじ:中吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:58:11.461Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 3,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
-        "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
-        "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
-        "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
-        "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
-        "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
-        "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。"
+        {
+          "content": "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
+          "weight": 1
+        },
+        {
+          "content": "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
+          "weight": 1
+        },
+        {
+          "content": "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
+          "weight": 1
+        },
+        {
+          "content": "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
+          "weight": 1
+        },
+        {
+          "content": "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
+          "weight": 1
+        },
+        {
+          "content": "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
+          "weight": 1
+        },
+        {
+          "content": "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。",
+          "weight": 1
+        }
       ]
     },
     "metanOmikuji04": {
@@ -3048,19 +3051,40 @@
       "key": "",
       "name": "漆黒のおみくじ:小吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T02:00:04.715Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 4,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
-        "慎重に行動すれば、きっと良いことがあるわ。慌てず騒がず、冷静に状況を見極めることが大切よ。",
-        "健康に気をつけなさい。規則正しい生活は、運気上昇の儀式。体調管理は最強の魔術なのよ。お肌にもいいわ。",
-        "周りの人の助けを受け入れることで、運気は上昇するわ。謙虚さもまた、強さの一つ。覚えておきなさい。",
-        "小さな喜びを大切にするのよ。それらが積み重なって、やがて大きな幸せとなって現れるのだから。",
-        "じわじわと良くなっていく予感...焦らず自分のペースを守れば、必ず道は開けるわ。",
-        "隠された才能が目覚める時かもしれないわ。日々の鍛錬を怠らず、己の力を信じるのよ！"
+        {
+          "content": "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
+          "weight": 1
+        },
+        {
+          "content": "慎重に行動すれば、きっと良いことがあるわ。慌てず騒がず、冷静に状況を見極めることが大切よ。",
+          "weight": 1
+        },
+        {
+          "content": "健康に気をつけなさい。規則正しい生活は、運気上昇の儀式。体調管理は最強の魔術なのよ。お肌にもいいわ。",
+          "weight": 1
+        },
+        {
+          "content": "周りの人の助けを受け入れることで、運気は上昇するわ。謙虚さもまた、強さの一つ。覚えておきなさい。",
+          "weight": 1
+        },
+        {
+          "content": "小さな喜びを大切にするのよ。それらが積み重なって、やがて大きな幸せとなって現れるのだから。",
+          "weight": 1
+        },
+        {
+          "content": "じわじわと良くなっていく予感...焦らず自分のペースを守れば、必ず道は開けるわ。",
+          "weight": 1
+        },
+        {
+          "content": "隠された才能が目覚める時かもしれないわ。日々の鍛錬を怠らず、己の力を信じるのよ！",
+          "weight": 1
+        }
       ]
     },
     "metanOmikuji05": {
@@ -3068,19 +3092,40 @@
       "key": "",
       "name": "漆黒のおみくじ:末吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T02:00:36.424Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 5,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
-        "今は少し大変かもしれないけど、乗り越えれば大きく成長できるわ。試練こそ、真の強さを引き出す鍵なのよ。",
-        "新しいことより、今やっていることを見直すのが賢明ね。そこに隠された秘密の力を見出せるかもしれないわ。",
-        "計画を立て直せば、運命の歯車も回り始めるわ。今一度、自分の道を見つめ直すのよ。",
-        "周りの人の意見に耳を傾けるのも大切よ。そこに、運命を変える鍵が隠されているかもしれないわ。",
-        "自分を高めようとする努力が、運を開く魔法となるわ。己の内なる力を信じて、前進あるのみよ！",
-        "闇夜こそ、星の輝きが際立つもの。今の困難も、やがて汝を輝かせる糧となるわ。"
+        {
+          "content": "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
+          "weight": 1
+        },
+        {
+          "content": "今は少し大変かもしれないけど、乗り越えれば大きく成長できるわ。試練こそ、真の強さを引き出す鍵なのよ。",
+          "weight": 1
+        },
+        {
+          "content": "新しいことより、今やっていることを見直すのが賢明ね。そこに隠された秘密の力を見出せるかもしれないわ。",
+          "weight": 1
+        },
+        {
+          "content": "計画を立て直せば、運命の歯車も回り始めるわ。今一度、自分の道を見つめ直すのよ。",
+          "weight": 1
+        },
+        {
+          "content": "周りの人の意見に耳を傾けるのも大切よ。そこに、運命を変える鍵が隠されているかもしれないわ。",
+          "weight": 1
+        },
+        {
+          "content": "自分を高めようとする努力が、運を開く魔法となるわ。己の内なる力を信じて、前進あるのみよ！",
+          "weight": 1
+        },
+        {
+          "content": "闇夜こそ、星の輝きが際立つもの。今の困難も、やがて汝を輝かせる糧となるわ。",
+          "weight": 1
+        }
       ]
     },
     "metanOmikuji06": {
@@ -3088,19 +3133,40 @@
       "key": "",
       "name": "漆黒のおみくじ:凶",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T02:01:13.000Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 6,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
-        "周りの者とケンカしないように気をつけなさい。もし争いになっても、冷静さを失わず事態を見極めるのよ。",
-        "計画通りにいかなくとも、柔軟に対応するの。予期せぬ事態こそ、新たな力を引き出すチャンスなのだから。",
-        "信頼できる者に相談するのも一つの手ね。彼らの言葉が、運命を変える鍵となるかもしれないわ。",
-        "無理は禁物よ。休息もまた、力を蓄える大切な儀式。それが次なる飛躍への準備となるのだから。",
-        "逆境こそ、真の力を引き出す試練。今を乗り越えれば、想像もつかないほどの力を手に入れられるわ。",
-        "暗闇の中にこそ、光は輝くもの。今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。"
+        {
+          "content": "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
+          "weight": 1
+        },
+        {
+          "content": "周りの者とケンカしないように気をつけなさい。もし争いになっても、冷静さを失わず事態を見極めるのよ。",
+          "weight": 1
+        },
+        {
+          "content": "計画通りにいかなくとも、柔軟に対応するの。予期せぬ事態こそ、新たな力を引き出すチャンスなのだから。",
+          "weight": 1
+        },
+        {
+          "content": "信頼できる者に相談するのも一つの手ね。彼らの言葉が、運命を変える鍵となるかもしれないわ。",
+          "weight": 1
+        },
+        {
+          "content": "無理は禁物よ。休息もまた、力を蓄える大切な儀式。それが次なる飛躍への準備となるのだから。",
+          "weight": 1
+        },
+        {
+          "content": "逆境こそ、真の力を引き出す試練。今を乗り越えれば、想像もつかないほどの力を手に入れられるわ。",
+          "weight": 1
+        },
+        {
+          "content": "暗闇の中にこそ、光は輝くもの。今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。",
+          "weight": 1
+        }
       ]
     },
     "metanOmikuji07": {
@@ -3108,27 +3174,72 @@
       "key": "",
       "name": "漆黒のおみくじ:接吻賞",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T02:02:40.322Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 7,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
-        "耳たぶへのキス…なかなか感度が高いのよ。でも、くすぐったがる人もいるから注意ね。",
-        "額へのキスは、優しさや愛情を表現する方法なの。親愛の情を込めて、ってやつね。",
-        "手の甲へのキスは、相手への敬意を表すジェスチャーだそう。海外ではよく見るわね。",
-        "頬へのキスは、挨拶代わりに使う文化もあるの。日本じゃあんまり一般的じゃないわね。",
-        "首筋へのキスは、ちょっとドキドキするかも。でも、人前でやるのはNGよ。TPOをわきまえなきゃね。",
-        "目元へのキスは、繊細で優しい感じがするわね。相手を大切に思う気持ちを込められるんだって。",
-        "エスキモーキスってのを知ってる？鼻と鼻をこすりあわせるの。寒い地域の挨拶なんだって。",
-        "フレンチキスは唇を使った深いキスのことよ。稀に「軽いキス」なんて誤用してる人もいるけど。知識を改めなさい。",
-        "バタフライキスって聞いたことある？まつ毛で相手の頬や手をくすぐるの。私の能力は唇限定だけどね。",
-        "「逆さまの状態でキスする」スパイダーマンキスってのもあるの。映画から来てるんだって。",
-        "額にする「おでこキス」は、純粋な愛情表現なの。親が子供にするイメージが強いわね。",
-        "キスマークって知ってるでしょ？あれ、吸引キスの一種なんだって。でも、人前に出られなくなるから気をつけなさいよ。",
-        "「ハグ＆キス」っていう挨拶、海外ドラマでよく見るわね。抱擁しながら頬にキス。ハグはちょっと恥ずかしいかも…",
-        "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。"
+        {
+          "content": "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
+          "weight": 1
+        },
+        {
+          "content": "耳たぶへのキス…なかなか感度が高いのよ。でも、くすぐったがる人もいるから注意ね。",
+          "weight": 1
+        },
+        {
+          "content": "額へのキスは、優しさや愛情を表現する方法なの。親愛の情を込めて、ってやつね。",
+          "weight": 1
+        },
+        {
+          "content": "手の甲へのキスは、相手への敬意を表すジェスチャーだそう。海外ではよく見るわね。",
+          "weight": 1
+        },
+        {
+          "content": "頬へのキスは、挨拶代わりに使う文化もあるの。日本じゃあんまり一般的じゃないわね。",
+          "weight": 1
+        },
+        {
+          "content": "首筋へのキスは、ちょっとドキドキするかも。でも、人前でやるのはNGよ。TPOをわきまえなきゃね。",
+          "weight": 1
+        },
+        {
+          "content": "目元へのキスは、繊細で優しい感じがするわね。相手を大切に思う気持ちを込められるんだって。",
+          "weight": 1
+        },
+        {
+          "content": "エスキモーキスってのを知ってる？鼻と鼻をこすりあわせるの。寒い地域の挨拶なんだって。",
+          "weight": 1
+        },
+        {
+          "content": "フレンチキスは唇を使った深いキスのことよ。稀に「軽いキス」なんて誤用してる人もいるけど。知識を改めなさい。",
+          "weight": 1
+        },
+        {
+          "content": "バタフライキスって聞いたことある？まつ毛で相手の頬や手をくすぐるの。私の能力は唇限定だけどね。",
+          "weight": 1
+        },
+        {
+          "content": "「逆さまの状態でキスする」スパイダーマンキスってのもあるの。映画から来てるんだって。",
+          "weight": 1
+        },
+        {
+          "content": "額にする「おでこキス」は、純粋な愛情表現なの。親が子供にするイメージが強いわね。",
+          "weight": 1
+        },
+        {
+          "content": "キスマークって知ってるでしょ？あれ、吸引キスの一種なんだって。でも、人前に出られなくなるから気をつけなさいよ。",
+          "weight": 1
+        },
+        {
+          "content": "「ハグ＆キス」っていう挨拶、海外ドラマでよく見るわね。抱擁しながら頬にキス。ハグはちょっと恥ずかしいかも…",
+          "weight": 1
+        },
+        {
+          "content": "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenName": {
@@ -3136,13 +3247,16 @@
       "key": "",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 8,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "ズンダモン＝トウホク"
+        {
+          "content": "漆黒のめたん",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenOre": {
@@ -3150,13 +3264,16 @@
       "key": "",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 9,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "僕"
+        {
+          "content": "私",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenA1": {
@@ -3164,16 +3281,28 @@
       "key": "",
       "name": "じゃんけん:グー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.341Z",
       "order": 10,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "負けは次につながるチャンスです!ネバーギブアップ!",
-        "じゃんけんの向こう側に何があるか、考えてみてください。",
-        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-        "何事も準備がすべて。それを怠っている事がバレてますよ。"
+        {
+          "content": "負けは次につながるチャンスです!ネバーギブアップ!",
+          "weight": 1
+        },
+        {
+          "content": "じゃんけんの向こう側に何があるか、考えてみてください。",
+          "weight": 1
+        },
+        {
+          "content": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+          "weight": 1
+        },
+        {
+          "content": "何事も準備がすべて。それを怠っている事がバレてますよ。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenA2": {
@@ -3181,15 +3310,24 @@
       "key": "",
       "name": "じゃんけん:グー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 11,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
-        "ちゃんと分析してます?じっくり結果に向き合ってください。",
-        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
+        {
+          "content": "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
+          "weight": 1
+        },
+        {
+          "content": "ちゃんと分析してます?じっくり結果に向き合ってください。",
+          "weight": 1
+        },
+        {
+          "content": "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenB1": {
@@ -3197,16 +3335,28 @@
       "key": "",
       "name": "じゃんけん:チョキ1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 12,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
-        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-        "運を味方につけるのは、地道な努力ですよ。",
-        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
+        {
+          "content": "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
+          "weight": 1
+        },
+        {
+          "content": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
+          "weight": 1
+        },
+        {
+          "content": "運を味方につけるのは、地道な努力ですよ。",
+          "weight": 1
+        },
+        {
+          "content": "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenB2": {
@@ -3214,15 +3364,24 @@
       "key": "",
       "name": "じゃんけん:チョキ2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 13,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
-        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
+        {
+          "content": "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
+          "weight": 1
+        },
+        {
+          "content": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
+          "weight": 1
+        },
+        {
+          "content": "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenC1": {
@@ -3230,16 +3389,28 @@
       "key": "",
       "name": "じゃんけん:パー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 14,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
-        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
-        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
+        {
+          "content": "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
+          "weight": 1
+        },
+        {
+          "content": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
+          "weight": 1
+        },
+        {
+          "content": "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
+          "weight": 1
+        },
+        {
+          "content": "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenC2": {
@@ -3247,15 +3418,24 @@
       "key": "",
       "name": "じゃんけん:パー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 15,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
-        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
-        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
+        {
+          "content": "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
+          "weight": 1
+        },
+        {
+          "content": "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
+          "weight": 1
+        },
+        {
+          "content": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
+          "weight": 1
+        }
       ]
     },
     "HondaJankenV": {
@@ -3263,40 +3443,27 @@
       "key": "",
       "name": "じゃんけん:勝利",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 16,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
-        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
-        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
-        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-      ]
-    },
-    "ZundaSyokenSagiThinking": {
-      "id": "ZundaSyokenSagiThinking",
-      "key": "",
-      "name": "ずんだもんの初見詐欺(考え中)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
-      "order": 17,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
         {
-          "weight": 6,
-          "content": "<<user>>…オマエは本当は初めてじゃないのだ。僕にはわかるのだ。"
+          "content": "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
+          "weight": 1
         },
         {
-          "weight": 5,
-          "content": "<<user>>、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
+          "content": "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
+          "weight": 1
         },
         {
-          "weight": 4,
-          "content": "あれ？<<user>>、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
+          "content": "明日、<<HondaJankenOre>>が勝つからまたやろう!",
+          "weight": 1
+        },
+        {
+          "content": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+          "weight": 1
         }
       ]
     },
@@ -3305,7 +3472,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(驚き)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 18,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3330,7 +3497,7 @@
       "key": "",
       "name": "ずんだもんの初見詐欺(歌)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 19,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3350,48 +3517,38 @@
         }
       ]
     },
-    "ZundaSyokenSagiSad": {
-      "id": "ZundaSyokenSagiSad",
-      "key": "",
-      "name": "ずんだもんの初見詐欺(悲しみ)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
-      "order": 20,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 5,
-          "content": "あれ？<<user>>、もしかして記憶喪失になったのだ？僕が看病するのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "<<user>>、ずんだもんを忘れちゃったのだ？悲しくなってきたのだ…"
-        },
-        {
-          "weight": 3,
-          "content": "ある日、<<user>>はずんだもんの記憶を失ってしまったのだ…。僕はその記憶を取り戻すため、旅に出るのだ！"
-        }
-      ]
-    },
     "GiftLowZunda": {
       "id": "GiftLowZunda",
       "key": "",
       "name": "ギフト(1-999円)",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "<<user>>からギフトを受け取ったのだ!ありがとうなのだ!",
-        "なんと！<<user>>からギフトが届いたのだ！感激なのだ！",
-        "<<user>>からの贈り物なのだ！うれしすぎるのだ〜！",
-        "わーい！<<user>>からのプレゼントなのだ〜！うれしいのだ〜！",
-        "ぽかぽかギフト、心があったかいのだ〜！<<user>>、ないスパなのだ!"
+        {
+          "content": "<<user>>からギフトを受け取ったのだ!ありがとうなのだ!",
+          "weight": 1
+        },
+        {
+          "content": "なんと！<<user>>からギフトが届いたのだ！感激なのだ！",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>からの贈り物なのだ！うれしすぎるのだ〜！",
+          "weight": 1
+        },
+        {
+          "content": "わーい！<<user>>からのプレゼントなのだ〜！うれしいのだ〜！",
+          "weight": 1
+        },
+        {
+          "content": "ぽかぽかギフト、心があったかいのだ〜！<<user>>、ないスパなのだ!",
+          "weight": 1
+        }
       ]
     },
     "GiftMiddleZunda": {
@@ -3399,16 +3556,25 @@
       "key": "",
       "name": "ギフト(1000-1999円)",
       "createdAt": "2025-08-27T09:53:10.683Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "わわわっ！これは…高級ギフトなのだ！？<<user>>、オマエ、太っ腹なのだ〜！",
-        "なんと！<<price>>ptの輝きがここにあるのだ！キラキラなのだ〜！",
-        "素敵な贈り物なのだ!僕は遠慮なく受け取るのだ!ありがとうなのだ!"
+        {
+          "content": "わわわっ！これは…高級ギフトなのだ！？<<user>>、オマエ、太っ腹なのだ〜！",
+          "weight": 1
+        },
+        {
+          "content": "なんと！<<price>>ptの輝きがここにあるのだ！キラキラなのだ〜！",
+          "weight": 1
+        },
+        {
+          "content": "素敵な贈り物なのだ!僕は遠慮なく受け取るのだ!ありがとうなのだ!",
+          "weight": 1
+        }
       ]
     },
     "GiftHighZunda": {
@@ -3416,41 +3582,24 @@
       "key": "",
       "name": "ギフト(2000円-)",
       "createdAt": "2025-08-27T09:53:15.633Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 23,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "<<price>>pt!<<user>>、オマエ、最高なのだ!控えめに言って尊いのだ！",
-        "うおおおっ！豪華すぎて目が回るのだ！<<user>>、ありがとうなのだ〜！",
-        "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！"
-      ]
-    },
-    "FirstCounterSyokenZunda": {
-      "id": "FirstCounterSyokenZunda",
-      "key": "",
-      "name": "初見",
-      "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
-      "order": 24,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
         {
-          "weight": 6,
-          "content": "<<user>>、初めましてなのだ！オマエ、僕と友達になるのだ!"
+          "content": "<<price>>pt!<<user>>、オマエ、最高なのだ!控えめに言って尊いのだ！",
+          "weight": 1
         },
         {
-          "weight": 5,
-          "content": "<<user>>、コメントありがとうなのだ！とってもうれしいのだ！"
+          "content": "うおおおっ！豪華すぎて目が回るのだ！<<user>>、ありがとうなのだ〜！",
+          "weight": 1
         },
         {
-          "weight": 4,
-          "content": "わぁい、<<user>>の初めてのコメントなのだ！ようこそなのだ～"
+          "content": "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！",
+          "weight": 1
         }
       ]
     },
@@ -3459,18 +3608,33 @@
       "key": "",
       "name": "久しぶり",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-08-28T01:43:41.355Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 25,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
-        "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
-        "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
-        "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
-        "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～"
+        {
+          "content": "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
+          "weight": 1
+        },
+        {
+          "content": "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～",
+          "weight": 1
+        }
       ]
     },
     "FirstCounterFirstVisitZunda": {
@@ -3478,7 +3642,7 @@
       "key": "",
       "name": "こんにちは",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 26,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3520,44 +3684,139 @@
       "key": "",
       "name": "告知用トースト",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-08-28T01:43:41.356Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
       "order": 27,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
-        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
-        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
-        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
-        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
-        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
-        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
-        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
-        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
-        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
+        {
+          "content": "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
+          "weight": 1
+        },
+        {
+          "content": "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
+          "weight": 1
+        },
+        {
+          "content": "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
+          "weight": 1
+        },
+        {
+          "content": "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
+          "weight": 1
+        },
+        {
+          "content": "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
+          "weight": 1
+        },
+        {
+          "content": "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
+          "weight": 1
+        },
+        {
+          "content": "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
+          "weight": 1
+        },
+        {
+          "content": "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
+          "weight": 1
+        },
+        {
+          "content": "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
+          "weight": 1
+        },
+        {
+          "content": "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！",
+          "weight": 1
+        }
       ]
     },
-    "metanOmikuji01": {
-      "id": "metanOmikuji01",
+    "MetanSyokenSagi": {
+      "id": "MetanSyokenSagi",
       "key": "",
-      "name": "漆黒のおみくじ:大吉",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T01:45:05.881Z",
-      "order": 1,
+      "name": "めたんの初見詐欺",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
+      "order": 17,
       "isEnabled": true,
-      "editorColor": "#4CAF50",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
-        "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
-        "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
-        "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
-        "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
-        "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
-        "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！"
+        {
+          "weight": 6,
+          "content": "<<user>>…オマエは本当は初めてじゃないのだ。僕にはわかるのだ。"
+        },
+        {
+          "weight": 5,
+          "content": "<<user>>、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
+        },
+        {
+          "weight": 4,
+          "content": "あれ？<<user>>、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
+        }
+      ]
+    },
+    "MetanSyokenSagiFake": {
+      "id": "MetanSyokenSagiFake",
+      "key": "",
+      "name": "めたんの初見詐欺(騙され)",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-08-28T04:00:03.342Z",
+      "order": 28,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 3,
+          "content": "うわっ！ダマされた大賞！"
+        },
+        {
+          "content": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+          "weight": 1
+        },
+        {
+          "content": "え、嘘だったの！？私が！？この私が！？……いや、これは演出。そう、演出だから。",
+          "weight": 1
+        },
+        {
+          "content": "うわ、やられた…！私が見抜けないなんて…いや、これは高度な心理戦だった。そういうことにしよう。",
+          "weight": 1
+        },
+        {
+          "content": "ちょっと待って、私が騙されたってこと！？……いや、これは逆に私が試されてた説あるな。そうだ、そうに違いない。",
+          "weight": 1
+        },
+        {
+          "content": "え、嘘！？私が信じちゃった！？……くっ、まず自分のログ精査しよ…",
+          "weight": 1
+        }
+      ]
+    },
+    "FirstCounterSyokenMetan": {
+      "id": "FirstCounterSyokenMetan",
+      "key": "",
+      "name": "初見",
+      "createdAt": "2025-08-27T14:29:25.367Z",
+      "updatedAt": "2025-08-28T04:01:18.049Z",
+      "order": 29,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 3,
+          "content": "ふふん、<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。"
+        },
+        "おっと、<<user>>、初めてコメントしたのね。まあ、私に会えて嬉しいだろうけど、気軽に楽しんでいきなさい。",
+        "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい！",
+        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。",
+        "おっと、<<user>>が初めて来てくれたわね。まあ、私の魅力に惹かれるのも無理はない、か。"
       ]
     }
   },
@@ -3673,12 +3932,12 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",
-      "bubbleMotionEnter": "flipInY",
-      "bubbleMotionLeave": "flipInY",
+      "bubbleMotionEnter": "zoomIn",
+      "bubbleMotionLeave": "zoomIn",
       "useCharacterBgColor": true,
       "showCharacterThumbnail": true,
       "showToasts": true,
@@ -3712,14 +3971,6 @@
       "pattern": "!ドアチャイム1"
     },
     {
-      "name": "効果音:レベルアップ",
-      "pattern": "!レベルアップ"
-    },
-    {
-      "name": "効果音:シャキーン2",
-      "pattern": "!シャキーン2"
-    },
-    {
       "name": "効果音:シーン切り替え1",
       "pattern": "!シーン切り替え1"
     },
@@ -3730,6 +3981,34 @@
     {
       "name": "効果音:ニュースタイトル表示3",
       "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
     },
     {
       "name": "効果音:ビシッとツッコミ1",
@@ -3790,14 +4069,6 @@
     {
       "name": "挑戦者が現れました",
       "pattern": "!挑戦者"
-    },
-    {
-      "name": "ギフト:霊夢賽銭",
-      "pattern": "!saisen_hako"
-    },
-    {
-      "name": "ギフト:魔理沙キノコ",
-      "pattern": "!kinoko"
     },
     {
       "name": "おみくじ:大吉",
@@ -3922,6 +4193,18 @@
     {
       "name": "ドラちゃん:手",
       "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
     },
     {
       "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
