@@ -55,9 +55,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -66,9 +64,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ステージ"
-        ]
+        "comment": ["^ステージ"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -657,10 +653,7 @@
       "updatedAt": "2025-08-28T09:38:05.931Z",
       "order": 1,
       "editorColor": "#EC4899",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -720,7 +713,7 @@
       "fontFamily": "default",
       "bubbleMotionEnter": "scale",
       "bubbleMotionLeave": "scale",
-      "useCharacterBgColor": true,
+      "showCharacterFrame": true,
       "showCharacterThumbnail": true,
       "showToasts": true,
       "daisyUiTheme": "halloween"

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref, watchEffect } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import { DisplaySize } from '@shared/types'
 
@@ -29,6 +29,8 @@
     brightness?: number
     showArrow?: boolean
     customClasses?: string
+    animatedText?: boolean
+    animatedTextSpeed?: number
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -38,6 +40,8 @@
     brightness: 100,
     showArrow: true,
     customClasses: '',
+    animatedText: false,
+    animatedTextSpeed: 50,
   })
 
   // テキストサイズのクラス定義
@@ -49,6 +53,9 @@
     xl: 'text-3xl',
   } as const
 
+  // アニメーション用のテキスト
+  const displayed = ref(props.animatedText ? '' : props.comment)
+  // テキストの大きさ
   const textSizeClass = computed(() => TEXT_SIZE_CLASSES[props.textSize])
 
   // 吹き出しのスタイル
@@ -66,4 +73,19 @@
     borderTop: `20px solid ${props.color?.backgroundColor || '#212121'}`,
     filter: `brightness(${props.brightness}%)`,
   }))
+
+  // 文字送り用
+  watchEffect(() => {
+    if (!props.animatedText) {
+      displayed.value = props.comment
+      return
+    }
+
+    displayed.value = ''
+    let i = 0
+    const timer = setInterval(() => {
+      displayed.value = props.comment.substring(0, i++)
+      if (i > props.comment.length) clearInterval(timer)
+    }, props.animatedTextSpeed) // ← 速度調整
+  })
 </script>

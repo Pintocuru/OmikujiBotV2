@@ -1,4 +1,4 @@
-// src/MainGenerator/components/OmikujiBot/useBotMessage.ts
+// src/MainGenerator/components/OmikujiBot/useBotDisplayBase.ts
 import { ref, computed, Ref } from 'vue'
 import { BotMessage, getImagePath } from '@/types/'
 
@@ -7,19 +7,19 @@ const DISPLAY_CONFIG = {
   BASE_LIFE_TIME: 10000,
   THRESHOLD: 30,
   EXTRA_TIME_PER_CHAR: 100,
-  LEAVE_ANIMATION_DELAY: 200, // Leave アニメーション開始前の遅延
+  LEAVE_ANIMATION_DELAY: 200,
 } as const
 
 export type DisplayMode = 'comment' | 'toast'
 
 // 表示用の拡張BotMessage型
-interface DisplayBotMessage extends BotMessage {
+export interface DisplayBotMessage extends BotMessage {
   visible: boolean
   hideTimeout?: number
 }
 
-// 新しい拡張版composable（MotionWrapperに完全対応）
-export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode = 'comment') => {
+// 共通の基底composable
+export const useBotDisplayBase = (botMessages: Ref<BotMessage[]>, mode: DisplayMode) => {
   const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 
@@ -84,7 +84,7 @@ export const useBotCommentDisplay = (botMessages: Ref<BotMessage[]>, mode: Displ
         // DisplayBotMessageとして作成
         const displayMessage: DisplayBotMessage = {
           ...nextComment,
-          visible: true, // 表示開始時はtrue
+          visible: true,
         }
 
         // Enterアニメーション用に少し遅延してvisibleをtrueに

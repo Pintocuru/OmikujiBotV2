@@ -24,8 +24,10 @@ export const BaseSettingsSchema = z.object({
   /**
    * 表示オプション
    */
-  // キャラクターの背景に色を付与するか(キャラクターサムネイルは標準で色が付きます)
-  useCharacterBgColor: z.boolean().default(true).catch(true),
+  // キャラクターにフレーム（円形の背景）を表示するか
+  showCharacterFrame: z.boolean().default(true).catch(true),
+  // キャラクターを常時表示するか（コメント消失後も表示継続）
+  showCharacterPersistent: z.boolean().default(false).catch(false),
   // showCharacterThumbnail キャラクターサムネイルを表示するか(個別はしてもいいかもね)
   showCharacterThumbnail: z.boolean().default(true).catch(true),
   //  showToasts トーストを表示するか

@@ -45,11 +45,12 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
-  import { useBotCommentDisplay } from '@/MainGenerator/components/OmikujiBot/useBotMessage'
+  import { computed, onMounted, onUnmounted, Ref } from 'vue'
+  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+  import { useBotDisplayBase } from './composables/useBotDisplayBase'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
-  import { storeToRefs } from 'pinia'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
+  import { storeToRefs } from 'pinia'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
@@ -66,8 +67,11 @@
     xl: { bottom: 'bottom-26', text: 'text-xl leading-tight', avatar: 'w-14 h-14', width: '420px' },
   } as const
 
-  // コメント表示ロジック（トースト用）
-  const { displayedComments, removeComment, hideComment, start, stop } = useBotCommentDisplay(botMessages, 'toast')
+  // コメント表示ロジック（トースト専用、modeパラメータ不要）
+  const useBotToastDisplay = (botMessages: Ref<BotMessage[]>) => {
+    return useBotDisplayBase(botMessages, 'toast')
+  }
+  const { displayedComments, removeComment, hideComment, start, stop } = useBotToastDisplay(botMessages)
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
