@@ -36,7 +36,7 @@ const project: ProjectConfig = {
 
   json: {
     ...commonBuildConfig.json,
-    jsonPath: 'EveryoneZunda.json',
+    jsonPath: 'DivaMetan.json',
   },
 
   // アクセスレベル別設定

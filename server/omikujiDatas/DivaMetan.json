@@ -1,15 +1,20 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneMetan-PRO",
+    "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "0.8.0-beta09",
+    "version": "v2025.8.28",
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta09",
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [],
-    "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/6053855"
+    "tags": [
+      "おみくじBOT",
+      "VOICEVOX",
+      "四国めたん",
+      "（ず・ω・きょ）"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/6058829"
   },
   "comments": {
     "OmikujiMetan": {

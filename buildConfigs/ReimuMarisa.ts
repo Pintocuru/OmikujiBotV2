@@ -50,7 +50,7 @@ const reimuMarisaProject: ProjectConfig = {
     basic: {
       filesToCopy: [
         { from: 'assets/config.js', to: 'config.js' },
-        { from: 'assets/exported/thumb/ReimuMarisaDX.png', to: 'thumb.png' },
+        { from: 'assets/exported/thumb/ReimuMarisa.png', to: 'thumb.png' },
         { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
         { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
       ],
