@@ -51,7 +51,7 @@ const project: ProjectConfig = {
       outputJson: false,
     },
     pro: {
-      filesToCopy: [{ from: 'assets/exported/thumb/ReimuMarisaDX.png', to: 'thumb.png' }],
+      filesToCopy: [],
       skipWebpack: true,
       outputJson: true,
     },
