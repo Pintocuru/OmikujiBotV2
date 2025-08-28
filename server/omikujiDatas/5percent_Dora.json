@@ -20,15 +20,16 @@
   "comments": {
     "dorachan": {
       "id": "dorachan",
-      "key": "",
+      "key": "dorachan",
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-27T12:57:25.001Z",
+      "updatedAt": "2025-08-28T09:35:48.347Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "omikuji": [
         {
           "id": "a411a12c-bdbc-43fd-b2e9-a1be0de50560",
@@ -170,22 +171,22 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      },
-      "accessLevel": "basic"
+      }
     }
   },
   "timers": {
     "dorachanTimer": {
       "id": "dorachanTimer",
-      "key": "",
+      "key": "dorachanTimer",
       "name": "ドラちゃん(定期)",
       "description": "ドラちゃんです。3分に1回、自動で性器を露出します。",
       "createdAt": "2025-08-10T20:39:01.283Z",
-      "updatedAt": "2025-08-27T12:57:30.490Z",
+      "updatedAt": "2025-08-28T09:35:52.022Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "omikuji": [
         {
           "id": "1754855691056",
@@ -301,20 +302,20 @@
       ],
       "ruleType": "timers",
       "intervalSeconds": 180,
-      "isBaseZero": true,
-      "accessLevel": "basic"
+      "isBaseZero": true
     }
   },
   "placeholders": {
     "5percent_Dora": {
       "id": "5percent_Dora",
-      "key": "",
+      "key": "5percent_Dora",
       "name": "ひみつ道具",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-08-27T12:57:36.291Z",
+      "updatedAt": "2025-08-28T09:36:03.247Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "values": [
         "あいあいパラソル",
         "あいこグローブ",
@@ -1690,20 +1691,21 @@
         "わたがし雲メーカ",
         "わりこみビデオ"
       ],
-      "accessLevel": "basic"
+      "isEnabled": true
     }
   },
   "characters": {
     "5percent_Dora": {
       "id": "5percent_Dora",
-      "key": "",
+      "key": "5percent_Dora",
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
       "createdAt": "2025-08-10T10:59:27.245Z",
-      "updatedAt": "2025-08-27T13:02:00.679Z",
+      "updatedAt": "2025-08-28T09:36:10.621Z",
       "order": 1,
       "editorColor": "#3B82F6",
       "tags": [],
+      "accessLevel": "basic",
       "version": "0.0.0",
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
@@ -1734,7 +1736,7 @@
         "sleepy": ""
       },
       "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAfBJREFUSEvtk01IVFEUx3/3vTfKcyLC6GNyCnERIVKQWg4F0YetGqrFMC2DQsJNA5FBEUVBBC4SplxpgtDC2tiQUtC2mSAqNaJctQlmaqpZlDb65s6rZzBkjt6r1c67Pf9zfvf8zzki0DHm8h+fWAao3F22SOUQS7NITkNRgs/+t4CKp500bigSv3UTyzLJpDMcCR8mf3RgXpBWB8bHV7TtDRAJ1RDcGJxT7Hb/AP2pHOm1rXNiWoD2hiynIy0L2pH7kmNXxxCyJjRLpwT4Utd52Hup7M//JHbG++j5EALTVwopAfuzcbq7u5TD9ASpJ0lOPKpGCl2AM8nI5XrsClML4LoujbEEE6sa9DoQ39K8vNaCXWlpATxR06EYk/5a5JbwTI7SotSZANUrq7QAjuOwrcvPd0ewInGQwvaTaoA9eIyR0WdagMTgfWJjYVzr1wFamaQa4Amv1L8gGo0oIftO9fJuU/vi1tRTB9/f43HPOYQQ80Iunr/AHfMsrr1u8QAvwx6/S1trHTu21tHU3DxTRErJ8IMh+pJTjPoOUKxav7RLLmVJB9MA//MbGNnX5Hde5euaPSXPy7Wn3KIFjS8WMMaHmd58vOzvtdZUOdmfS2B8fkuB1RQCu0HMPsq/6+A3uvHpDW5+gqnaKJiVpcgPOou95FDza+YAAAAASUVORK5CYII=",
-      "accessLevel": "basic"
+      "isEnabled": true
     }
   },
   "scriptSettings": {

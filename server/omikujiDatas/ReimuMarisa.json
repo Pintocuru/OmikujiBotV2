@@ -20,11 +20,11 @@
   "comments": {
     "omikujiReimu": {
       "id": "omikujiReimu",
-      "key": "",
+      "key": "omikujiReimu",
       "name": "おみくじ",
       "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-28T03:37:03.816Z",
+      "updatedAt": "2025-08-28T09:33:40.482Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -329,11 +329,11 @@
     },
     "FortuneMarisa": {
       "id": "FortuneMarisa",
-      "key": "",
+      "key": "FortuneMarisa",
       "name": "フラワー占い",
       "description": "1日1回限定、ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-24T13:31:47.811Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -468,11 +468,11 @@
     },
     "GouseiSuika": {
       "id": "GouseiSuika",
-      "key": "",
+      "key": "GouseiSuika",
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-24T14:29:45.822Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -545,11 +545,11 @@
     },
     "BomberSpin": {
       "id": "BomberSpin",
-      "key": "",
+      "key": "BomberSpin",
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T14:29:57.840Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -621,11 +621,11 @@
     },
     "DwarfBomb": {
       "id": "DwarfBomb",
-      "key": "",
+      "key": "DwarfBomb",
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T14:18:35.128Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -699,11 +699,11 @@
     },
     "HondaJanken": {
       "id": "HondaJanken",
-      "key": "",
+      "key": "HondaJanken",
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T14:30:29.992Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1385,11 +1385,11 @@
     },
     "HondaJankenRock": {
       "id": "HondaJankenRock",
-      "key": "",
+      "key": "HondaJankenRock",
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:24.034Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1612,11 +1612,11 @@
     },
     "HondaJankenScissors": {
       "id": "HondaJankenScissors",
-      "key": "",
+      "key": "HondaJankenScissors",
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:28.099Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1838,11 +1838,11 @@
     },
     "HondaJankenPaper": {
       "id": "HondaJankenPaper",
-      "key": "",
+      "key": "HondaJankenPaper",
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:31.121Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2065,11 +2065,11 @@
     },
     "WelcomeSagi": {
       "id": "WelcomeSagi",
-      "key": "",
+      "key": "WelcomeSagi",
       "name": "初見詐欺",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:40.879Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2237,11 +2237,11 @@
     },
     "WelcomeHonto": {
       "id": "WelcomeHonto",
-      "key": "",
+      "key": "WelcomeHonto",
       "name": "ホントの初見",
       "description": "初めてから5回までは歓迎してくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:08:44.036Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2340,11 +2340,11 @@
     },
     "CheckNumber": {
       "id": "CheckNumber",
-      "key": "",
+      "key": "CheckNumber",
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:13:55.428Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2454,11 +2454,11 @@
     },
     "ReimuGiftLow": {
       "id": "ReimuGiftLow",
-      "key": "",
+      "key": "ReimuGiftLow",
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:16:15.484Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2572,11 +2572,11 @@
     },
     "ReimuGiftMiddle": {
       "id": "ReimuGiftMiddle",
-      "key": "",
+      "key": "ReimuGiftMiddle",
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:16:58.086Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2650,11 +2650,11 @@
     },
     "ReimuGiftHigh": {
       "id": "ReimuGiftHigh",
-      "key": "",
+      "key": "ReimuGiftHigh",
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-27T15:17:38.854Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2731,11 +2731,11 @@
     },
     "FirstCounterSyoken": {
       "id": "FirstCounterSyoken",
-      "key": "",
+      "key": "FirstCounterSyoken",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:29.628Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -2891,11 +2891,11 @@
     },
     "FirstCounterAgain": {
       "id": "FirstCounterAgain",
-      "key": "",
+      "key": "FirstCounterAgain",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:31.833Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3019,11 +3019,11 @@
     },
     "FirstCounterFirstVisit": {
       "id": "FirstCounterFirstVisit",
-      "key": "",
+      "key": "FirstCounterFirstVisit",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:34.278Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3147,11 +3147,11 @@
     },
     "StreamCountTrigger": {
       "id": "StreamCountTrigger",
-      "key": "",
+      "key": "StreamCountTrigger",
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:36.288Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3229,11 +3229,11 @@
     },
     "UserCountTrigger": {
       "id": "UserCountTrigger",
-      "key": "",
+      "key": "UserCountTrigger",
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:09:39.295Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3313,11 +3313,11 @@
   "timers": {
     "ViewCountDisplay": {
       "id": "ViewCountDisplay",
-      "key": "",
+      "key": "ViewCountDisplay",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-24T12:10:10.869Z",
+      "updatedAt": "2025-08-28T09:33:52.190Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -3375,11 +3375,11 @@
     },
     "PromotionToast": {
       "id": "PromotionToast",
-      "key": "",
+      "key": "PromotionToast",
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:10:13.180Z",
+      "updatedAt": "2025-08-28T09:33:52.190Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -3505,10 +3505,10 @@
   "placeholders": {
     "ReimuOmikuji01": {
       "id": "ReimuOmikuji01",
-      "key": "",
+      "key": "ReimuOmikuji01",
       "name": "霊夢のおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-25T19:47:53.533Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 1,
       "editorColor": "#F44336",
       "tags": [],
@@ -3520,14 +3520,15 @@
         "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。",
         "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。",
         "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji02": {
       "id": "ReimuOmikuji02",
-      "key": "",
+      "key": "ReimuOmikuji02",
       "name": "霊夢のおみくじ:吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-25T19:47:55.258Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 2,
       "editorColor": "#F44336",
       "tags": [],
@@ -3539,14 +3540,15 @@
         "仲間との協力が成功への鍵よ。チームワークを大切にしてね。",
         "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。",
         "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji03": {
       "id": "ReimuOmikuji03",
-      "key": "",
+      "key": "ReimuOmikuji03",
       "name": "霊夢のおみくじ:中吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:00.534Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 3,
       "editorColor": "#F44336",
       "tags": [],
@@ -3558,14 +3560,15 @@
         "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。",
         "楽しい出来事が増えるわ。笑顔を忘れずにね。",
         "計画をしっかり立てることで、成功への道が開けるわ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji04": {
       "id": "ReimuOmikuji04",
-      "key": "",
+      "key": "ReimuOmikuji04",
       "name": "霊夢のおみくじ:小吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-25T19:47:43.881Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 4,
       "editorColor": "#F44336",
       "tags": [],
@@ -3577,14 +3580,15 @@
         "周囲のサポートを受け入れることで、運気が上昇するわ。",
         "小さな喜びを大切にね。それが大きな幸せに繋がるわ。",
         "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji05": {
       "id": "ReimuOmikuji05",
-      "key": "",
+      "key": "ReimuOmikuji05",
       "name": "霊夢のおみくじ:末吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:04.944Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 5,
       "editorColor": "#F44336",
       "tags": [],
@@ -3596,14 +3600,15 @@
         "計画を練り直すことで、より良い結果が得られるわ。",
         "周囲の意見に耳を傾けることが、成功の鍵になるわ。",
         "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji06": {
       "id": "ReimuOmikuji06",
-      "key": "",
+      "key": "ReimuOmikuji06",
       "name": "霊夢のおみくじ:凶",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:07.426Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 6,
       "editorColor": "#F44336",
       "tags": [],
@@ -3615,14 +3620,15 @@
         "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。",
         "信頼できる人に相談すると、助け舟が出るわよ。",
         "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。"
-      ]
+      ],
+      "isEnabled": true
     },
     "ReimuOmikuji07": {
       "id": "ReimuOmikuji07",
-      "key": "",
+      "key": "ReimuOmikuji07",
       "name": "霊夢のおみくじ:残念賞",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:11:09.361Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 7,
       "editorColor": "#F44336",
       "tags": [],
@@ -3639,42 +3645,45 @@
         "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。",
         "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。",
         "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
-      "key": "",
+      "key": "HondaJankenName",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:27:54.066Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 8,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
         "マリサ キリサメ"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
-      "key": "",
+      "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:27:58.430Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 9,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
         "俺"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
-      "key": "",
+      "key": "HondaJankenA1",
       "name": "じゃんけん:グー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-25T19:47:57.919Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 10,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3684,14 +3693,15 @@
         "じゃんけんの向こう側に何があるか、考えてみてください。",
         "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
         "何事も準備がすべて。それを怠っている事がバレてますよ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenA2": {
       "id": "HondaJankenA2",
-      "key": "",
+      "key": "HondaJankenA2",
       "name": "じゃんけん:グー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-25T19:48:01.272Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 11,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3700,14 +3710,15 @@
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
         "ちゃんと分析してます?じっくり結果に向き合ってください。",
         "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenB1": {
       "id": "HondaJankenB1",
-      "key": "",
+      "key": "HondaJankenB1",
       "name": "じゃんけん:チョキ1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:18.680Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 12,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3717,14 +3728,15 @@
         "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
         "運を味方につけるのは、地道な努力ですよ。",
         "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenB2": {
       "id": "HondaJankenB2",
-      "key": "",
+      "key": "HondaJankenB2",
       "name": "じゃんけん:チョキ2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:17.765Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 13,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3733,14 +3745,15 @@
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
         "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
         "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenC1": {
       "id": "HondaJankenC1",
-      "key": "",
+      "key": "HondaJankenC1",
       "name": "じゃんけん:パー1",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:17.159Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 14,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3750,14 +3763,15 @@
         "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
         "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
         "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenC2": {
       "id": "HondaJankenC2",
-      "key": "",
+      "key": "HondaJankenC2",
       "name": "じゃんけん:パー2",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:16.019Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 15,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3766,14 +3780,15 @@
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
         "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
         "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-      ]
+      ],
+      "isEnabled": true
     },
     "HondaJankenV": {
       "id": "HondaJankenV",
-      "key": "",
+      "key": "HondaJankenV",
       "name": "じゃんけん:勝利",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:22.006Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 16,
       "editorColor": "#2196F3",
       "tags": [],
@@ -3783,14 +3798,15 @@
         "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
         "明日、<<HondaJankenOre>>が勝つからまたやろう!",
         "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerAllItem": {
       "id": "flowerAllItem",
-      "key": "",
+      "key": "flowerAllItem",
       "name": "フラワー:通常色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T14:28:21.088Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 17,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3803,14 +3819,15 @@
         "【緑色】<<flowerGreen>>",
         "【青色】<<flowerBlue>>",
         "【紫色】<<flowerPurple>>"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerWhite": {
       "id": "flowerWhite",
-      "key": "",
+      "key": "flowerWhite",
       "name": "フラワー:白色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:45.305Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 18,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3823,14 +3840,15 @@
         "白いカーネーションは、深い愛情と尊敬を表すぜ。大切な人への感謝を忘れずにだぜ。",
         "白いヒヤシンスは、思いやりと共感を意味するぜ。周りの人を大切にすることで、あなたも幸せになれるぜ。",
         "白いデイジーは、無邪気さと希望を象徴するぜ。あなたの純粋な心が、周りに良い影響を与えるぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerRed": {
       "id": "flowerRed",
-      "key": "",
+      "key": "flowerRed",
       "name": "フラワー:赤色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:46.910Z",
+      "updatedAt": "2025-08-28T09:34:01.985Z",
       "order": 19,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3843,14 +3861,15 @@
         "赤いゼラニウムは、元気と活力の象徴だぜ。新しいことに挑戦する勇気を与えてくれるぜ。",
         "赤いコスモスは、秋の空の下、風に揺られて咲いているぜ。あなたの心も、自由で穏やかな気持ちで満たされて欲しいぜ。",
         "赤いポピーは、感謝の気持ちを伝える花だぜ。いつもありがとうだぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerOrange": {
       "id": "flowerOrange",
-      "key": "",
+      "key": "flowerOrange",
       "name": "フラワー:オレンジ色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:48.523Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 20,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3863,14 +3882,15 @@
         "オレンジ色のハイビスカスは、情熱と魅力を象徴するぜ。あなたの魅力が輝く瞬間が訪れるぜ。",
         "オレンジ色のガーベラは、エネルギーと活力を意味するぜ。元気いっぱいの一日を過ごせるぜ。",
         "オレンジ色のルドベキアは、楽しい冒険を予感させるぜ。新しい経験に心を開いてみるといいぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerYellow": {
       "id": "flowerYellow",
-      "key": "",
+      "key": "flowerYellow",
       "name": "フラワー:黄色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:14:00.252Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 21,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3883,14 +3903,15 @@
         "黄色いアカシアは、隠された美しさを表すぜ。あなたの中にある才能が花開くかもしれないぜ。",
         "黄色いカレンデュラは、友情の証だぜ。大切な友達との絆を大切にするんだぜ。",
         "黄色いキンモクセイの香りは、懐かしい思い出を呼び覚ますぜ。大切な人と良い時間を過ごして欲しいぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerGreen": {
       "id": "flowerGreen",
-      "key": "",
+      "key": "flowerGreen",
       "name": "フラワー:緑色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:14:07.475Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 22,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3903,14 +3924,15 @@
         "緑のアンスリウムは、もてなしの心を表すぜ。人との交流を大切にする日になりそうだぜ。",
         "緑のシダは、生命力と復活を象徴するぜ。何か新しいことに挑戦するチャンスかもしれないぜ。",
         "緑のマートルは、愛と幸福の象徴だぜ。あなたの愛情が周りに良い影響を与えるぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerBlue": {
       "id": "flowerBlue",
-      "key": "",
+      "key": "flowerBlue",
       "name": "フラワー:青色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:56.450Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 23,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3923,14 +3945,15 @@
         "青いコーンフラワーは、希望と幸福を象徴するぜ。明るい未来が待っているはずだぜ。",
         "青いスミレは、春の息吹を感じさせてくれる、可憐な花だぜ。あなたの心も、きっと温かくて優しいはずだぜ。",
         "青いリンドウは、厳しい冬を乗り越えて咲く花だぜ。あなたは、どんな困難にも立ち向かえる、強い心の持ち主なんだぜ。"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerPurple": {
       "id": "flowerPurple",
-      "key": "",
+      "key": "flowerPurple",
       "name": "フラワー:紫色",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:13:55.025Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 24,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3943,14 +3966,15 @@
         "紫のアリウムは、統一と調和を表すぜ。周りの人々との良い関係を築けそうだぜ。",
         "紫陽花は、たくさんの小さな花が集まって一輪の花を咲かせるぜ。あなたも周りの人たちと力を合わせれば、大きなことができるぜ。",
         "紫のバラは、高貴な印象を与えるぜ。あなたは、特別な存在だぜ。本当だぜ？"
-      ]
+      ],
+      "isEnabled": true
     },
     "flowerKinoko": {
       "id": "flowerKinoko",
-      "key": "",
+      "key": "flowerKinoko",
       "name": "フラワー:キノコ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:14:10.407Z",
+      "updatedAt": "2025-08-28T09:34:01.986Z",
       "order": 25,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3966,17 +3990,18 @@
         "キクラゲは「木耳」と書くぜ。耳のように、周りの声にも耳を傾けると良いことがありそうだぜ。",
         "ヒラタケは平べったい形から名付けられたぜ。謙虚な姿勢が大切になりそうだぜ。",
         "マッシュルームは英語で「きのこ」だけど、マッシュと言えば髪型だよな。マッシュの似合う男の子って可愛いぜ。"
-      ]
+      ],
+      "isEnabled": true
     }
   },
   "characters": {
     "reimu": {
       "id": "reimu",
-      "key": "",
+      "key": "reimu",
       "name": "ゆっくり霊夢",
       "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:12:40.282Z",
+      "updatedAt": "2025-08-28T09:34:14.554Z",
       "order": 1,
       "editorColor": "#F44336",
       "tags": [
@@ -4014,15 +4039,16 @@
         "singing": "reimu/singing.webp",
         "sleepy": "reimu/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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"
+      "imageBase64": "data:image/png;base64,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",
+      "isEnabled": true
     },
     "marisa": {
       "id": "marisa",
-      "key": "",
+      "key": "marisa",
       "name": "ゆっくり魔理沙",
       "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-24T12:12:41.646Z",
+      "updatedAt": "2025-08-28T09:34:14.554Z",
       "order": 2,
       "editorColor": "#FF9800",
       "tags": [
@@ -4060,7 +4086,8 @@
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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"
+      "imageBase64": "data:image/png;base64,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",
+      "isEnabled": true
     }
   },
   "scriptSettings": {
