@@ -2112,6 +2112,79 @@
         "isRepeatAllowed": true
       }
     },
+    "CheckNumberPriceMetan": {
+      "id": "CheckNumberPriceMetan",
+      "key": "",
+      "name": "コメント数表示 (有料版)",
+      "description": "えっ…わざわざギフトまでして…!?",
+      "createdAt": "2025-08-28T07:06:58.691Z",
+      "updatedAt": "2025-08-28T07:16:00.799Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "key": "",
+          "name": "ギフトで教える",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "metanBlack",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "metanBlack",
+              "iconKey": "surprised",
+              "messageContent": "",
+              "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment",
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "all"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "コメント"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true,
+        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
+      }
+    },
     "GiftLowMetan": {
       "id": "GiftLowMetan",
       "key": "",
@@ -2119,7 +2192,7 @@
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T06:01:39.402Z",
-      "order": 11,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2199,7 +2272,7 @@
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T06:07:13.503Z",
-      "order": 12,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2277,7 +2350,7 @@
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T06:00:35.233Z",
-      "order": 13,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2355,10 +2428,10 @@
       "id": "CheckNumberMetan",
       "key": "",
       "name": "コメント数表示",
-      "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
+      "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 14,
+      "updatedAt": "2025-08-28T07:14:46.723Z",
+      "order": 15,
       "isEnabled": true,
       "editorColor": "#10B981",
       "tags": [],
@@ -2367,7 +2440,29 @@
         {
           "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
           "key": "",
-          "name": "霊夢",
+          "name": "無料じゃ教えてくれない",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "metan",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。"
+            }
+          ]
+        },
+        {
+          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "key": "",
+          "name": "特別に教えてあげる",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2380,9 +2475,17 @@
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
               "characterKey": "metan",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!"
+              "messageToast": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。"
             }
           ]
         }
@@ -2401,7 +2504,7 @@
           "value": 1
         },
         "comment": [
-          "コメント"
+          "^コメント$"
         ]
       },
       "scriptId": null,
@@ -2410,7 +2513,7 @@
         "cooldownSeconds": 0,
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": false,
+        "isRepeatAllowed": true,
         "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
       }
     },
@@ -2421,7 +2524,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 15,
+      "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2491,7 +2594,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 16,
+      "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2553,7 +2656,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 17,
+      "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2680,8 +2783,8 @@
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 18,
+      "updatedAt": "2025-08-28T07:18:29.879Z",
+      "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2690,7 +2793,7 @@
         {
           "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
           "key": "",
-          "name": "100回コメント:霊夢",
+          "name": "100回コメント",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2703,9 +2806,9 @@
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
               "characterKey": "metan",
-              "iconKey": "thinking",
+              "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>よ。"
             }
           ]
         }
@@ -2741,7 +2844,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T04:00:03.344Z",
-      "order": 19,
+      "order": 20,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2750,7 +2853,7 @@
         {
           "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
           "key": "",
-          "name": "100回コメント:霊夢",
+          "name": "100回コメント",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2824,7 +2927,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T04:00:03.344Z",
+      "updatedAt": "2025-08-28T07:24:52.587Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -2849,7 +2952,27 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が見てくれているのだ"
+              "messageToast": "<<viewer>>人が視聴中よ"
+            }
+          ]
+        },
+        {
+          "id": "1756365824013",
+          "key": "",
+          "name": "高評価数",
+          "createdAt": "2025-08-28T07:23:44.013Z",
+          "updatedAt": "2025-08-28T07:23:44.013Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "metan",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "高評価数は<<upVote>>よ。押すなら今のうちね。"
             }
           ]
         }
@@ -2864,7 +2987,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T04:00:03.344Z",
+      "updatedAt": "2025-08-28T06:57:06.683Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -2887,7 +3010,7 @@
               "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
               "characterKey": "metan",
-              "iconKey": "happy",
+              "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<PromotionToastsMetan>>"
             }
@@ -2909,9 +3032,9 @@
               "delaySeconds": 0,
               "wordParty": "!間抜け1",
               "characterKey": "metan",
-              "iconKey": "thinking",
+              "iconKey": "singing",
               "messageContent": "",
-              "messageToast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…"
+              "messageToast": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。"
             }
           ]
         }
@@ -3263,7 +3386,7 @@
       "key": "",
       "name": "ギフト(1-999円)",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-08-28T05:47:03.353Z",
+      "updatedAt": "2025-08-28T06:45:14.004Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -3271,9 +3394,9 @@
       "accessLevel": "basic",
       "values": [
         "<<user>>、素晴らしいわ。この支援にふさわしい私を、これからも見逃さないでよね！",
-        "<<user>>からの<<price>>ポイント…！？ ありがとう、これでまた少しだけ豪華な生活ができるわ。感謝してあげる！",
-        "<<user>>、<<price>>ポイントのギフト、感謝するわ。これでまた私の計画が一歩進むわね。私に期待していてちょうだい！",
-        "<<price>>ポイントも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。"
+        "<<user>>からの<<price>>ギフト…！？ ありがとう、これでまた少しだけ豪華な生活ができるわ。感謝してあげる！",
+        "<<user>>、<<price>>ギフト、感謝するわ。これでまた私の計画が一歩進むわね。私に期待していてちょうだい！",
+        "<<price>>ギフトも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。"
       ]
     },
     "GiftMiddleMetan": {
@@ -3312,98 +3435,13 @@
         "えっ…<<price>>ギフト！？私、今日の晩ごはんどうしようって思ってたのに…！<<user>>、あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！"
       ]
     },
-    "FirstCounterAgainMetan": {
-      "id": "FirstCounterAgainMetan",
-      "key": "",
-      "name": "久しぶり",
-      "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 22,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
-        "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
-        "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
-        "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
-        "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～"
-      ]
-    },
-    "FirstCounterFirstVisitMetan": {
-      "id": "FirstCounterFirstVisitMetan",
-      "key": "",
-      "name": "こんにちは",
-      "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 23,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "<<user>>、また来てくれたのだ。ようこそなのだ！"
-        },
-        {
-          "weight": 10,
-          "content": "わぁい、<<user>>なのだ。オマエは<<tc>>回目のコメントなのだ！"
-        },
-        {
-          "weight": 6,
-          "content": "<<user>>、いらっしゃいなのだ！ずんだもん、待ってたのだ～"
-        },
-        {
-          "weight": 6,
-          "content": "やったー！<<user>>が来てくれたのだ。一緒に楽しもうなのだ！"
-        },
-        {
-          "weight": 6,
-          "content": "<<user>>、こんにちわなのだ。今日もよろしくなのだ～"
-        },
-        {
-          "weight": 6,
-          "content": "あっ、<<user>>だ！来てくれてうれしいのだ。ずんだもち1個贈呈なのだ。"
-        },
-        {
-          "weight": 6,
-          "content": "<<user>>、いらっしゃいなのだ。今日も楽しい時間を過ごそうなのだ！"
-        }
-      ]
-    },
-    "PromotionToastsMetan": {
-      "id": "PromotionToastsMetan",
-      "key": "",
-      "name": "告知用トースト",
-      "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-08-28T04:00:03.342Z",
-      "order": 24,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
-        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
-        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
-        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
-        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
-        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
-        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
-        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
-        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
-        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
-      ]
-    },
     "FirstCounterSyokenMetan": {
       "id": "FirstCounterSyokenMetan",
       "key": "",
       "name": "初見",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2025-08-28T04:01:18.049Z",
-      "order": 25,
+      "order": 22,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3417,6 +3455,72 @@
         "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい！",
         "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。",
         "おっと、<<user>>が初めて来てくれたわね。まあ、私の魅力に惹かれるのも無理はない、か。"
+      ]
+    },
+    "FirstCounterAgainMetan": {
+      "id": "FirstCounterAgainMetan",
+      "key": "",
+      "name": "久しぶり",
+      "createdAt": "2025-08-27T14:30:15.661Z",
+      "updatedAt": "2025-08-28T06:51:28.472Z",
+      "order": 23,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、久しぶりじゃない。私がまた会えることを予感してたわ。ま、当然よね。",
+        "<<user>>が久々に来たわね。ずんだもん、ちゃんと挨拶しなさいよ。ここにいるのは私の選ばれし仲間なんだから。",
+        "<<user>>じゃない。久しぶりね。まあ、私と一緒に楽しむ資格はまだ残ってるみたいね。ゆっくりしていきなさいよ。",
+        "<<user>>！また来てくれたのね。まさかここまで私に会いたかったなんて…な、泣いてなんかないわよ！",
+        "<<user>>、久しぶりね。寂しくなんてなかったけど…また一緒に楽しんであげるわ！",
+        "<<user>>、やっと戻ってきたのね。私のこと、そんなに忘れられなかったの？ふふ、やっぱり私って特別よね。",
+        "<<user>>、また来てくれたわね。ふふ、私のことを忘れさせるなんて無理に決まってるじゃない。"
+      ]
+    },
+    "FirstCounterFirstVisitMetan": {
+      "id": "FirstCounterFirstVisitMetan",
+      "key": "",
+      "name": "こんにちは",
+      "createdAt": "2025-08-27T14:30:51.900Z",
+      "updatedAt": "2025-08-28T06:52:44.271Z",
+      "order": 24,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、ようこそ。また私に会いに来るなんて、見る目があるじゃない。",
+        "<<user>>、また来たのね。私の魅力に惹かれるのも無理はないわ。",
+        "<<user>>、これで<<tc>>回目よ。やっぱり私って特別でしょ？",
+        "<<user>>、こんにちは。今日も私と過ごす準備はできてる？",
+        "<<user>>、お待たせね。さあ、楽しい時間を始めましょ。",
+        "<<user>>、また顔を出してくれたのね。私の存在感、さすがに無視できないでしょ？",
+        "<<user>>、待ってたわ。さあ、私と一緒に特別な時間を過ごしましょ。",
+        "<<user>>、会えて嬉しいわ。私と一緒にいることが、最高の選択だって教えてあげる。"
+      ]
+    },
+    "PromotionToastsMetan": {
+      "id": "PromotionToastsMetan",
+      "key": "",
+      "name": "告知用トースト",
+      "createdAt": "2025-08-26T07:00:06.947Z",
+      "updatedAt": "2025-08-28T06:55:37.555Z",
+      "order": 25,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "神託!漆黒の【御神籤】やってみなよ。私が選んだ運勢、外れるわけないでしょ？ま、試してみたら？",
+        "【じゃんけん】勝負しましょう！じゃんけんの猛者・本田三角形の真の力、見せてあげる！",
+        "チャンネル登録と高評価、当然してくれるよね？私の力をもっと見たいなら、するしかないでしょ。",
+        "主は今、配信に全集中よ。これからもついて来なさい！後悔させないわ。",
+        "discordにいる子たち、ちゃんと盛り上がってる？私が行けば、もっと盛り上がるんじゃない？",
+        "今日のおやつは抹茶スイーツで決まりね。君たちは何を選ぶ？私のセンスを超えられるかしら！",
+        "好きなゲームは？私の冒険に匹敵するようなものがあれば教えてよ。テント暮らしはエキサイティングよ。",
+        "この配信を見てるなんて、君たちもなかなかやるじゃない。私の応援、引き続き頼んだわよ！",
+        "四国の名物？あたしの一番はもちろん讃岐うどん。君のオススメも聞いてあげてもいいけどね。"
       ]
     }
   },

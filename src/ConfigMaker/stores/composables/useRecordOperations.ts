@@ -57,6 +57,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
       const updatedItem = {
         ...categoryData[id],
         ...updates,
+        key: id, // FIXME:製品版になる前に、すべてのKEYにidを入れておく
         updatedAt: new Date().toISOString(),
       }
       data.value[category] = {
