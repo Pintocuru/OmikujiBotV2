@@ -27,7 +27,7 @@
         <!-- コメント表示 -->
         <CommentDisplay
           :displayed-comments="getCharacterComments(character.key)"
-          :remove-comment="removeComment"
+          :remove-comment="(messageId) => removeCommentWithIconReset(messageId, character.key)"
           :enter-motion="enterMotion"
           :leave-motion="leaveMotion"
           :text-size="displaySize"
@@ -41,8 +41,8 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, ref } from 'vue'
-  import type { CharacterType } from '@/types/'
+  import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+  import type { CharacterType, CharacterEmotionType } from '@/types/'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import { useBotDisplayBase } from './composables/useBotDisplayBase'
   import CommentDisplay from './CommentDisplay.vue'
@@ -57,6 +57,9 @@
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
   const displaySize = computed(() => displayStore.displaySize)
+
+  // キャラクターごとの現在のアイコン状態を管理
+  const characterIconStates = ref<Record<string, CharacterEmotionType>>({})
 
   // 基底composableを使用
   const { displayedComments, removeComment, start, stop } = useBotDisplayBase(botMessages, 'comment')
@@ -79,11 +82,22 @@
     }))
   })
 
-  // 指定されたキャラクターの画像を取得
+  // 指定されたキャラクターの感情に応じた画像を取得
   const getCharacterImage = (character: { key: string; data: CharacterType }) => {
     const imageSet = character.data.image
-    if (!imageSet || !imageSet.default) return null
-    return imageSet.default
+    if (!imageSet) return null
+
+    // 現在のアイコン状態を確認
+    const currentIconKey = characterIconStates.value[character.key] || 'default'
+
+    // 指定された感情の画像があるかチェック
+    const emotionImage = imageSet[currentIconKey]
+    if (emotionImage) {
+      return emotionImage
+    }
+
+    // 指定された感情の画像がない場合はdefaultを使用
+    return imageSet.default || null
   }
 
   // 指定されたキャラクターのコメントを取得
@@ -98,6 +112,45 @@
     return latestComment?.characterKey
   })
 
+  // キャラクターアイコンの状態を更新
+  const updateCharacterIconState = () => {
+    // 各キャラクターの最新のコメントをチェック
+    availableCharacters.value.forEach((character) => {
+      const characterComments = getCharacterComments(character.key)
+
+      if (characterComments.length > 0) {
+        // 最新のコメント（配列の最初の要素）を取得
+        const latestComment = characterComments[0]
+        const iconKey = latestComment.iconKey || 'default'
+
+        // アイコン状態を更新（defaultでない場合のみでなく、常に更新）
+        characterIconStates.value[character.key] = iconKey
+      } else {
+        // コメントがない場合はdefaultに戻す
+        characterIconStates.value[character.key] = 'default'
+      }
+    })
+  }
+
+  // コメント削除時にアイコンをリセット
+  const removeCommentWithIconReset = (messageId: string, characterKey: string) => {
+    // まず通常のremoveCommentを実行
+    removeComment(messageId)
+
+    // そのキャラクターの残りのコメントをチェック
+    const remainingComments = getCharacterComments(characterKey)
+
+    if (remainingComments.length === 0) {
+      // 残りのコメントがない場合、defaultに戻す
+      characterIconStates.value[characterKey] = 'default'
+    } else {
+      // 残りのコメントがある場合、最新のコメントのiconKeyを適用
+      const latestComment = remainingComments[0]
+      const iconKey = latestComment.iconKey || 'default'
+      characterIconStates.value[characterKey] = iconKey
+    }
+  }
+
   // 画像エラーハンドリング
   const handleImageError = (character: { key: string; data: CharacterType }) => {
     console.error(`キャラクター画像が読み込めません: ${character.key}`, {
@@ -106,6 +159,15 @@
       imagePath: getCharacterImage(character),
     })
   }
+
+  // displayedCommentsの変化を監視してアイコン状態を更新
+  watch(
+    displayedComments,
+    () => {
+      updateCharacterIconState()
+    },
+    { deep: true, immediate: true }
+  )
 
   onMounted(() => start())
   onUnmounted(() => stop())
