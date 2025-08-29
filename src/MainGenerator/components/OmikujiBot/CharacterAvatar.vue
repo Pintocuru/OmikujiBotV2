@@ -2,11 +2,15 @@
 <template>
   <div
     v-if="profileImage && profileImage !== ''"
-    class="absolute left-1/2 -translate-x-1/2 transform overflow-hidden z-40"
-    :class="[sizeConfig.avatar, { 'rounded-full': showCharacterFrame }]"
+    :class="[
+      sizeConfig.avatar,
+      {
+        'rounded-full': showCharacterFrame,
+        'overflow-hidden': showCharacterFrame,
+      },
+    ]"
     :style="{
       opacity: isVisible ? '100%' : '0%',
-      top: sizeConfig.avatarTop,
       ...(showCharacterFrame && {
         backgroundColor: backgroundColor || '#ccc',
       }),

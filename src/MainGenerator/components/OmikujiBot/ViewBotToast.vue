@@ -60,8 +60,8 @@
 
   // サイズ設定の定数
   const SIZE_CONFIG = {
-    xs: { bottom: 'bottom-10', text: 'text-xs leading-tight', avatar: 'w-6 h-6', width: '250px' },
-    sm: { bottom: 'bottom-14', text: 'text-sm leading-tight', avatar: 'w-8 h-8', width: '300px' },
+    xs: { bottom: 'bottom-14', text: 'text-xs leading-tight', avatar: 'w-6 h-6', width: '250px' },
+    sm: { bottom: 'bottom-16', text: 'text-sm leading-tight', avatar: 'w-8 h-8', width: '300px' },
     md: { bottom: 'bottom-18', text: 'text-base leading-tight', avatar: 'w-10 h-10', width: '340px' },
     lg: { bottom: 'bottom-22', text: 'text-lg leading-tight', avatar: 'w-12 h-12', width: '380px' },
     xl: { bottom: 'bottom-26', text: 'text-xl leading-tight', avatar: 'w-14 h-14', width: '420px' },

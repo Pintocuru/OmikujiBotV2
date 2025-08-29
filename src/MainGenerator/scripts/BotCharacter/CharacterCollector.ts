@@ -65,7 +65,11 @@ export class CharacterCollector {
 
     return BotMessageSchema.parse({
       name: character?.name,
+      characterKey: postAction.characterKey,
+      iconKey: postAction.iconKey,
       profileImage: character?.image?.[postAction.iconKey] || character?.image?.default || null,
+      enterMotion: postAction.enterMotion,
+      sound: postAction.sound,
       comment: postAction.messageContent,
       isToast,
       color: character?.color,

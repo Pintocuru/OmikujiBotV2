@@ -12,7 +12,7 @@
     <GameRankingViewer v-else-if="displayStore.currentScriptKey !== null" :key="displayStore.currentComponentKey" />
 
     <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
-    <DisplayControlPanel v-if="licenseKeyHash === '5d41402abc4b2a76b9719d911017c592'" />
+    <DisplayControlPanel />
 
     <!-- トースト表示 -->
     <ViewBotToast v-if="base.showToasts" />
@@ -80,8 +80,9 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap');
 
+  /**
+    overflow: hidden; */
   .main-container {
     height: 100vh;
-    overflow: hidden;
   }
 </style>

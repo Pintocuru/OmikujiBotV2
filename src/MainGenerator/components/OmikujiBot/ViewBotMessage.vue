@@ -35,6 +35,7 @@
         <!-- キャラクター（通常表示モードのみ） -->
         <CharacterAvatar
           v-if="!showCharacterPersistent"
+          class="absolute left-1/2 -translate-x-1/2 transform z-40"
           :profile-image="message.profileImage"
           :character-name="message.name"
           :background-color="message.color?.backgroundColor"
@@ -42,6 +43,9 @@
           :is-visible="index === 0"
           :display-size="displaySize"
           @image-error="handleImageError(message)"
+          :style="{
+            top: sizeConfig.avatarTop,
+          }"
         />
       </MotionWrapper>
     </div>
@@ -56,15 +60,7 @@
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
-
-  // サイズ設定の定数
-  const SIZE_CONFIG = {
-    xs: { text: 'text-md', avatar: 'w-32 h-32', avatarTop: '160px', spacing: 20 },
-    sm: { text: 'text-lg', avatar: 'w-48 h-48', avatarTop: '200px', spacing: 40 },
-    md: { text: 'text-xl', avatar: 'w-64 h-64', avatarTop: '240px', spacing: 60 },
-    lg: { text: 'text-2xl', avatar: 'w-80 h-80', avatarTop: '280px', spacing: 80 },
-    xl: { text: 'text-3xl', avatar: 'w-96 h-96', avatarTop: '320px', spacing: 100 },
-  } as const
+  import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
 
   // Piniaストアの使用
   const appStore = useAppStore()

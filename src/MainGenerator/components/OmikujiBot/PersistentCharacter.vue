@@ -1,51 +1,50 @@
 <!-- src/MainGenerator/components/OmikujiBot/PersistentCharacter.vue -->
 <template>
-  <div class="fixed inset-0 w-full h-screen overflow-hidden pointer-events-none">
+  <div class="relative w-full h-screen">
     <!-- キャラクター横並び表示 -->
     <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end gap-8 p-4">
-      <div
-        v-for="character in availableCharacters"
-        :key="character.key"
-        class="relative flex flex-col items-center pointer-events-auto"
-      >
-        <!-- キャラクターのコメント表示 -->
-        <div
-          v-for="(comment, commentIndex) in getCharacterComments(character.key)"
-          :key="comment.id"
-          class="absolute mb-4"
-          :style="{
-            bottom: `${(commentIndex + 1) * sizeConfig.spacing + 120}px`,
-            zIndex: 1000 - commentIndex,
-          }"
-        >
-          <MotionWrapper
-            v-model:visible="comment.visible"
-            :enter-motion="enterMotion"
-            :leave-motion="leaveMotion"
-            :auto-hide="false"
-            @after-leave="() => removeComment(comment.id)"
-          >
-            <CommentBubble
-              :name="comment.name"
-              :comment="comment.comment"
-              :color="comment.color"
-              :text-size="displaySize"
-              :brightness="100"
-              :custom-classes="comment.color?.customClasses"
-            />
-          </MotionWrapper>
-        </div>
-
+      <div v-for="character in availableCharacters" :key="character.key" class="relative pointer-events-auto">
         <!-- キャラクターアバター -->
-        <CharacterAvatar
-          :profile-image="getCharacterImage(character)"
-          :character-name="character.data.displayName || character.key"
-          :background-color="character.data.color?.backgroundColor"
-          :show-character-frame="showCharacterFrame"
-          :is-visible="true"
-          :display-size="displaySize"
-          @image-error="handleImageError(character)"
-        />
+        <div class="relative flex flex-col items-center">
+          <CharacterAvatar
+            class="flex justify-center items-end"
+            :profile-image="getCharacterImage(character)"
+            :character-name="character.data.displayName || character.key"
+            :background-color="character.data.color?.backgroundColor"
+            :show-character-frame="showCharacterFrame"
+            :is-visible="true"
+            :display-size="displaySize"
+            @image-error="handleImageError(character)"
+          />
+
+          <!-- キャラクターのコメント表示 -->
+          <div
+            v-for="(comment, commentIndex) in getCharacterComments(character.key)"
+            :key="comment.id"
+            class="absolute left-1/2 transform -translate-x-1/2 w-max"
+            :style="{
+              bottom: `${Number(sizeConfig.avatarTop.replace('px', '')) + commentIndex * sizeConfig.spacing + 20}px`,
+              zIndex: 1000 - commentIndex,
+            }"
+          >
+            <MotionWrapper
+              v-model:visible="comment.visible"
+              :enter-motion="enterMotion"
+              :leave-motion="leaveMotion"
+              :auto-hide="false"
+              @after-leave="() => removeComment(comment.id)"
+            >
+              <CommentBubble
+                :name="comment.name"
+                :comment="comment.comment"
+                :color="comment.color"
+                :text-size="displaySize"
+                :brightness="getBrightness(commentIndex)"
+                :custom-classes="comment.color?.customClasses"
+              />
+            </MotionWrapper>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -60,16 +59,7 @@
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
   import type { BotMessage, CharacterType } from '@/types/'
-  import { getImagePath } from '@/types/'
-
-  // サイズ設定の定数
-  const SIZE_CONFIG = {
-    xs: { text: 'text-md', avatar: 'w-32 h-32', avatarTop: '160px', spacing: 20 },
-    sm: { text: 'text-lg', avatar: 'w-48 h-48', avatarTop: '200px', spacing: 40 },
-    md: { text: 'text-xl', avatar: 'w-64 h-64', avatarTop: '240px', spacing: 60 },
-    lg: { text: 'text-2xl', avatar: 'w-80 h-80', avatarTop: '280px', spacing: 80 },
-    xl: { text: 'text-3xl', avatar: 'w-96 h-96', avatarTop: '320px', spacing: 100 },
-  } as const
+  import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
 
   // Piniaストアの使用
   const appStore = useAppStore()
@@ -113,13 +103,15 @@
   const getCharacterImage = (character: { key: string; data: CharacterType }) => {
     const imageSet = character.data.image
     if (!imageSet || !imageSet.default) return null
-    return getImagePath(imageSet.default)
+    return imageSet.default // getImagePathは不要（CharacterAvatar内で処理される）
   }
 
   // 指定されたキャラクターのコメントを取得
   const getCharacterComments = (characterKey: string) => {
     return displayedComments.value.filter((comment) => comment.characterKey === characterKey && comment.visible)
   }
+  // brightness計算
+  const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
 
   // 画像エラーハンドリング
   const handleImageError = (character: { key: string; data: CharacterType }) => {

@@ -53,7 +53,7 @@
   }
 
   // サイズ設定の定数
-  const SIZE_CONFIG = {
+  const SIZE_CONFIG2 = {
     xs: { primaryAvatar: 'w-8 h-8', secondaryAvatar: 'w-8 h-8' },
     sm: { primaryAvatar: 'w-10 h-10', secondaryAvatar: 'w-10 h-10' },
     md: { primaryAvatar: 'w-12 h-12', secondaryAvatar: 'w-12 h-12' },
@@ -61,7 +61,7 @@
     xl: { primaryAvatar: 'w-20 h-20', secondaryAvatar: 'w-20 h-20' },
   } as const
 
-  const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
+  const sizeConfig = computed(() => SIZE_CONFIG2[displaySize.value])
 
   // 初期化
   onMounted(() => {

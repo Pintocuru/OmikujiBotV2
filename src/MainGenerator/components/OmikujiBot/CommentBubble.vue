@@ -1,6 +1,6 @@
 <!-- src/components/common/CommentBubble.vue -->
 <template>
-  <div class="w-full max-w-3xl" :class="customClasses" :style="bubbleStyles">
+  <div class="relative inline-block max-w-3xl w-full" :class="customClasses" :style="bubbleStyles">
     <!-- 名前表示 -->
     <div v-if="name && name !== ''" class="mb-0" :class="textSizeClass" :style="{ color: color?.nameColor || '#ccc' }">
       {{ name }}
