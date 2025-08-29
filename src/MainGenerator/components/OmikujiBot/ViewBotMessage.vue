@@ -1,41 +1,21 @@
 <!-- src/MainGenerator/components/OmikujiBot/ViewBotMessage.vue -->
 <template>
-  <div class="relative w-full h-screen overflow-hidden">
-    <!-- コメント表示部分 -->
-    <div
-      v-for="(message, index) in displayedComments"
-      :key="message.id"
-      class="absolute w-full max-w-3xl mx-auto"
-      :style="{
-        left: '0',
-        right: '0',
-        top: `${index * sizeConfig.spacing}px`,
-        zIndex: displayedComments.length - index,
-      }"
-    >
-      <MotionWrapper
-        v-model:visible="message.visible"
-        :enter-motion="enterMotion"
-        :leave-motion="leaveMotion"
-        :auto-hide="false"
-        @after-leave="() => removeComment(message.id)"
-      >
-        <div class="flex justify-center">
-          <!-- コメント表示 -->
-          <CommentBubble
-            :name="message.name"
-            :comment="message.comment"
-            :color="message.color"
-            :text-size="displaySize"
-            :brightness="getBrightness(index)"
-            :custom-classes="message.color?.customClasses"
-          />
-        </div>
-
-        <!-- キャラクター（通常表示モードのみ） -->
+  <!-- コメント表示 -->
+  <CommentDisplay
+    :displayed-comments="displayedComments"
+    :remove-comment="removeComment"
+    :enter-motion="enterMotion"
+    :leave-motion="leaveMotion"
+    :text-size="displaySize"
+    mode="stack"
+    :spacing="sizeConfig.spacing"
+  >
+    <template #default="{ message, index }">
+      <!-- キャラクター（通常表示モードのみ） -->
+      <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
         <CharacterAvatar
           v-if="!showCharacterPersistent"
-          class="absolute left-1/2 -translate-x-1/2 transform z-40"
+          class="absolute left-1/2 -translate-x-1/2 transform"
           :profile-image="message.profileImage"
           :character-name="message.name"
           :background-color="message.color?.backgroundColor"
@@ -48,15 +28,15 @@
           }"
         />
       </MotionWrapper>
-    </div>
-  </div>
+    </template>
+  </CommentDisplay>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import { useBotDisplayBase } from './composables/useBotDisplayBase'
-  import CommentBubble from './CommentBubble.vue'
+  import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'

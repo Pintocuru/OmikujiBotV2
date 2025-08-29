@@ -1,50 +1,40 @@
 <!-- src/MainGenerator/components/OmikujiBot/PersistentCharacter.vue -->
 <template>
-  <div class="relative w-full h-screen">
-    <!-- キャラクター横並び表示 -->
-    <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end gap-8 p-4">
-      <div v-for="character in availableCharacters" :key="character.key" class="relative pointer-events-auto">
-        <!-- キャラクターアバター -->
-        <div class="relative flex flex-col items-center">
-          <CharacterAvatar
-            class="flex justify-center items-end"
-            :profile-image="getCharacterImage(character)"
-            :character-name="character.data.displayName || character.key"
-            :background-color="character.data.color?.backgroundColor"
-            :show-character-frame="showCharacterFrame"
-            :is-visible="true"
-            :display-size="displaySize"
-            @image-error="handleImageError(character)"
-          />
+  <!-- キャラクター横並び表示 -->
+  <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end">
+    <div
+      v-for="character in availableCharacters"
+      :key="character.key"
+      class="relative pointer-events-auto -mx-12"
+      :style="{
+        zIndex: character.key === lastCommenterKey ? 50 : 0,
+        filter: character.key === lastCommenterKey ? 'brightness(100%)' : 'brightness(60%)',
+      }"
+    >
+      <!-- キャラクターアバター -->
+      <div class="relative flex flex-col items-center">
+        <CharacterAvatar
+          class="flex justify-center items-end"
+          :profile-image="getCharacterImage(character)"
+          :character-name="character.data.displayName || character.key"
+          :background-color="character.data.color?.backgroundColor"
+          :show-character-frame="showCharacterFrame"
+          :is-visible="true"
+          :display-size="displaySize"
+          @image-error="handleImageError(character)"
+        />
 
-          <!-- キャラクターのコメント表示 -->
-          <div
-            v-for="(comment, commentIndex) in getCharacterComments(character.key)"
-            :key="comment.id"
-            class="absolute left-1/2 transform -translate-x-1/2 w-max"
-            :style="{
-              bottom: `${Number(sizeConfig.avatarTop.replace('px', '')) + commentIndex * sizeConfig.spacing + 20}px`,
-              zIndex: 1000 - commentIndex,
-            }"
-          >
-            <MotionWrapper
-              v-model:visible="comment.visible"
-              :enter-motion="enterMotion"
-              :leave-motion="leaveMotion"
-              :auto-hide="false"
-              @after-leave="() => removeComment(comment.id)"
-            >
-              <CommentBubble
-                :name="comment.name"
-                :comment="comment.comment"
-                :color="comment.color"
-                :text-size="displaySize"
-                :brightness="getBrightness(commentIndex)"
-                :custom-classes="comment.color?.customClasses"
-              />
-            </MotionWrapper>
-          </div>
-        </div>
+        <!-- コメント表示 -->
+        <CommentDisplay
+          :displayed-comments="getCharacterComments(character.key)"
+          :remove-comment="removeComment"
+          :enter-motion="enterMotion"
+          :leave-motion="leaveMotion"
+          :text-size="displaySize"
+          mode="persistent"
+          :spacing="sizeConfig.spacing"
+          :avatar-top="sizeConfig.avatarTop"
+        />
       </div>
     </div>
   </div>
@@ -54,11 +44,11 @@
   import { computed, onMounted, onUnmounted, ref } from 'vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import { useBotDisplayBase } from './composables/useBotDisplayBase'
-  import CommentBubble from './CommentBubble.vue'
+  import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
-  import type { BotMessage, CharacterType } from '@/types/'
+  import type { CharacterType } from '@/types/'
   import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
 
   // Piniaストアの使用
@@ -73,26 +63,17 @@
   const { displayedComments, removeComment, start, stop } = useBotDisplayBase(botMessages, 'comment')
 
   // omikujiDataの設定取得
-  const omikujiData = computed(() => appStore.omikujiData)
-
-  const enterMotion = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.bubbleMotionEnter
-  })
-
-  const leaveMotion = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.bubbleMotionLeave
-  })
-
-  const showCharacterFrame = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.showCharacterFrame
-  })
+  const displayBase = computed(() => appStore.omikujiData.displaySettings?.base || {})
+  const enterMotion = computed(() => displayBase.value.bubbleMotionEnter)
+  const leaveMotion = computed(() => displayBase.value.bubbleMotionLeave)
+  const showCharacterFrame = computed(() => displayBase.value.showCharacterFrame)
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
 
   // storeから利用可能なキャラクターを取得
   const availableCharacters = computed(() => {
-    const charactersRecord = omikujiData.value?.characters || {}
+    const charactersRecord = appStore.characterCollector.getUsedCharacterData() || {}
     return Object.entries(charactersRecord).map(([key, data]) => ({
       key,
       data,
@@ -110,8 +91,13 @@
   const getCharacterComments = (characterKey: string) => {
     return displayedComments.value.filter((comment) => comment.characterKey === characterKey && comment.visible)
   }
-  // brightness計算
-  const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
+
+  // 最後にコメントしたキャラクターのキー
+  const lastCommenterKey = computed(() => {
+    const visibleComments = displayedComments.value.filter((c) => c.visible)
+    const latestComment = visibleComments[0]
+    return latestComment?.characterKey
+  })
 
   // 画像エラーハンドリング
   const handleImageError = (character: { key: string; data: CharacterType }) => {
@@ -122,11 +108,6 @@
     })
   }
 
-  onMounted(() => {
-    start()
-  })
-
-  onUnmounted(() => {
-    stop()
-  })
+  onMounted(() => start())
+  onUnmounted(() => stop())
 </script>

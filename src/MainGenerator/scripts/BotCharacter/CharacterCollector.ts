@@ -51,7 +51,7 @@ export class CharacterCollector {
   /**
    * 使用されているキャラクターのプリセットを配列で取得する
    */
-  getUsedCharacterPresets(): CharacterType[] {
+  getUsedCharacterArray(): CharacterType[] {
     const usedCharacterData = this.getUsedCharacterData()
     if (!usedCharacterData) return []
     return Object.values(usedCharacterData).sort((a, b) => a.order - b.order)

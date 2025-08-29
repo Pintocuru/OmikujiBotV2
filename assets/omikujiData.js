@@ -3981,7 +3981,7 @@ const omikujiData = {
       fontFamily: 'default',
       bubbleMotionEnter: 'slideUp',
       bubbleMotionLeave: 'slideUp',
-      showCharacterFrame: true,
+      showCharacterFrame: false,
       showCharacterPersistent: true,
       showCharacterThumbnail: true,
       showToasts: true,

@@ -38,7 +38,7 @@
   const displayStore = useDisplayStore()
 
   // リアクティブ変数
-  const characters = computed(() => appStore.characterCollector.getUsedCharacterPresets())
+  const characters = computed(() => appStore.characterCollector.getUsedCharacterArray())
   const displaySize = computed(() => displayStore.displaySize)
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
@@ -106,6 +106,7 @@
       const postAction = PostActionSchema.parse({
         characterKey: character.id,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
+        enterMotion: 'pulse',
         messageContent: `${character.name}の${messageType}です！`,
       })
 

@@ -12,7 +12,7 @@
     <GameRankingViewer v-else-if="displayStore.currentScriptKey !== null" :key="displayStore.currentComponentKey" />
 
     <!-- コントロールパネル（中央ホバーで表示:GODモードでのみ表示） -->
-    <DisplayControlPanel />
+    <DisplayControlPanel v-if="isDev" />
 
     <!-- トースト表示 -->
     <ViewBotToast v-if="base.showToasts" />
@@ -36,6 +36,7 @@
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
   import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
   import { useFontFamily } from '@/types/BotComponents/useFontFamily'
+  import { isDev } from '@/types'
 
   // Piniaストアの使用
   const appStore = useAppStore()
