@@ -8,6 +8,26 @@
     </template>
 
     <template #body>
+      <!-- キャラクターの常時表示 -->
+      <SettingItem
+        v-if="useVisibilityAccess().canShow('characterVisible')"
+        label="キャラクターの常時表示"
+        description="キャラを常時表示するかを設定します"
+        devMemo="characterVisible"
+        :showReset="true"
+        @reset="resetMap.showCharacterPersistent"
+      >
+        <label class="label cursor-pointer justify-start gap-3">
+          <input
+            :checked="base.showCharacterPersistent"
+            @change="(e) => updateBaseField('showCharacterPersistent', (e.target as HTMLInputElement).checked)"
+            type="checkbox"
+            class="toggle toggle-primary"
+          />
+          <span class="label-text">キャラクターを常時表示する</span>
+        </label>
+      </SettingItem>
+
       <!-- キャラクターフレームの使用 -->
       <SettingItem
         v-if="useVisibilityAccess().canShow('characterVisible')"
@@ -25,26 +45,6 @@
             class="toggle toggle-primary"
           />
           <span class="label-text">背景色を付ける</span>
-        </label>
-      </SettingItem>
-
-      <!-- キャラクターの常時表示 -->
-      <SettingItem
-        v-if="useVisibilityAccess().canShow('characterVisible')"
-        label="キャラクターの常時表示"
-        description="キャラを常時表示するかを設定します"
-        devMemo="characterVisible"
-        :showReset="true"
-        @reset="resetMap.showCharacterPersistent"
-      >
-        <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :checked="base.showCharacterPersistent"
-            @change="(e) => updateBaseField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
-            type="checkbox"
-            class="toggle toggle-primary"
-          />
-          <span class="label-text">キャラクターを常時表示する</span>
         </label>
       </SettingItem>
 

@@ -31,7 +31,7 @@ export class PlaceProcess {
   /**
    * PostAction配列のプレースホルダーを置換して返す
    */
-  processPostActions(postActions: PostActionType[], seed?: string): PostActionType[] {
+  processPostActions(postActions: PostActionType[], seed?: number): PostActionType[] {
     // 使用されているプレースホルダーIDを収集
     const usedPlaceholderIds = this.collectUsedPlaceholderIds(postActions)
 
@@ -112,7 +112,7 @@ export class PlaceProcess {
   /**
    * 指定されたプレースホルダーIDリストを解決
    */
-  private resolvePlaceholders(placeholderIds: string[], seed?: string): void {
+  private resolvePlaceholders(placeholderIds: string[], seed?: number): void {
     const visitedIds = new Set<string>()
 
     for (const placeholderId of placeholderIds) {
@@ -124,7 +124,7 @@ export class PlaceProcess {
    * 単一のプレースホルダーを再帰的に解決
    * 循環参照を防ぐため、visitedセットを使用
    */
-  private resolvePlaceholderRecursively(placeholderId: string, visitedIds: Set<string>, seed?: string): void {
+  private resolvePlaceholderRecursively(placeholderId: string, visitedIds: Set<string>, seed?: number): void {
     // 循環参照チェック
     if (visitedIds.has(placeholderId)) {
       console.warn(`循環参照を検出: ${placeholderId}`)

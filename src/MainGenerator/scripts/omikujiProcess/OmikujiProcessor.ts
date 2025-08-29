@@ -32,7 +32,7 @@ export class OmikujiProcessor {
   /**
    * おみくじの実行（コメント＋ルール指定）
    */
-  executeOmikuji(comment: Comment, rule: RuleType, seed?: string): BotMessage[] {
+  executeOmikuji(comment: Comment, rule: RuleType, seed?: number): BotMessage[] {
     const omikujiItem = drawOmikuji(rule.omikuji, seed)
     if (!omikujiItem) return []
 
@@ -60,7 +60,7 @@ export class OmikujiProcessor {
   /**
    * おみくじプロセスの実行
    */
-  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
+  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType, seed?: number): BotMessage[] {
     try {
       const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
@@ -98,7 +98,7 @@ export class OmikujiProcessor {
   private processOmikuji(
     omikujiItem: OmikujiItemType,
     scriptResult?: ScriptResult | null,
-    seed?: string
+    seed?: number
   ): BotMessage[] {
     try {
       // スクリプト結果がある場合は先に処理

@@ -7,7 +7,7 @@ import { useAppStore } from '@/MainGenerator/stores'
 interface RestrictionCheckResult {
   isBlocked: boolean
   toastMessages: BotMessage[]
-  seed?: string
+  seed?: number
 }
 
 export class CommentRestrictionChecker {
@@ -56,10 +56,12 @@ export class CommentRestrictionChecker {
           // 最後の有効な結果(sessionId+userId+最後の回数)を返す
           const userDrawCount = rule.limits.drawLimit
           const sessionId = cooldownManager.getSessionId()
+          const seedStr = `${sessionId}-${comment.data.userId}-${userDrawCount}`
+          const seed = stringToSeed(seedStr)
           return {
             isBlocked: false,
             toastMessages: [],
-            seed: `${sessionId}-${comment.data.userId}-${userDrawCount}`,
+            seed,
           }
         case 'doNothing':
         default:
@@ -71,10 +73,14 @@ export class CommentRestrictionChecker {
     // seedをsessionId+userId+おみくじ回数にする
     const currentDrawCount = cooldownManager.getUserDrawCount(comment.data.userId, rule.id)
     const sessionId = cooldownManager.getSessionId()
+    // seed生成は回数制限がある時だけ
+    const seed =
+      rule.limits.drawLimit > 0 ? stringToSeed(`${sessionId}-${comment.data.userId}-${currentDrawCount}`) : undefined
+
     return {
       isBlocked: false,
       toastMessages: [],
-      seed: `${sessionId}-${comment.data.userId}-${currentDrawCount}`,
+      seed,
     }
   }
 
@@ -127,4 +133,17 @@ export class CommentRestrictionChecker {
  */
 export function getMessageOrDefault(configuredMessage: string | undefined, defaultMessage: string): string {
   return configuredMessage && configuredMessage.trim() !== '' ? configuredMessage : defaultMessage
+}
+
+/**
+ * 任意の文字列から32bit整数のseedを作成
+ * @param str 任意の文字列
+ * @returns 0〜2^32-1 の整数
+ */
+export function stringToSeed(str: string): number {
+  let seed = 0
+  for (let i = 0; i < str.length; i++) {
+    seed = (seed * 31 + str.charCodeAt(i)) >>> 0
+  }
+  return seed
 }
