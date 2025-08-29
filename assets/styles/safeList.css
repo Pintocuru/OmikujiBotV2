@@ -1,0 +1,6 @@
+/* assets/styles/safeList.css */
+@source inline("p{x,y,t,b,l,r}-{1..12}");
+@source inline("m{x,y,t,b,l,r}-{1..12}");
+@source inline("shadow shadow-md shadow-lg shadow-xl");
+@source inline("border border-2 border-4 border-8");
+@source inline("rounded rounded-md rounded-xl rounded-full");

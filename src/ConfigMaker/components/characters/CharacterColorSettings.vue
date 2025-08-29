@@ -2,8 +2,8 @@
 <template>
   <SectionCard>
     <template #header>
-      <div>カラー設定</div>
-      <div class="text-sm pr-2">フキダシのカラーの編集を行います。</div>
+      <div>フキダシ設定</div>
+      <div class="text-sm pr-2">フキダシの編集を行います</div>
     </template>
 
     <template #body>
@@ -41,23 +41,10 @@
       </div>
 
       <!-- カスタムクラス設定 -->
-      <SettingItem
-        label="カスタムTailwindクラス"
-        description="グラデーション背景、ボーダー、影などを追加できます"
-        :showReset="true"
-        @reset="updateColorField('customClasses', 'border-2 border-white')"
-      >
-        <input
-          type="text"
-          placeholder="例: bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white"
-          class="input input-bordered w-full"
-          :value="currentColor.customClasses"
-          @input="updateColorField('customClasses', ($event.target as HTMLInputElement).value)"
-        />
-        <label class="label">
-          <span class="label-text-alt"></span>
-        </label>
-      </SettingItem>
+      <CustomClassSelector
+        v-model="currentColor.customClasses"
+        @update:modelValue="updateColorField('customClasses', $event)"
+      />
     </template>
   </SectionCard>
 </template>
@@ -65,7 +52,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import CustomClassSelector from './CustomClassSelector.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import CommentBubblePreview from '@ConfigComponents/displaySettings/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'

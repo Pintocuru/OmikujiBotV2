@@ -1,5 +1,7 @@
-/* shared/styles/DaisyUiAll.css */
+/* assets\styles\DaisyUiAll.css */
 @import 'tailwindcss';
+@import './safeList.css';
+
 @plugin "daisyui" {
- themes: all;
+  themes: all;
 }

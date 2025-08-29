@@ -1,6 +1,6 @@
 <!-- src/components/common/CommentBubble.vue -->
 <template>
-  <div class="w-full max-w-3xl p-4 rounded-xl" :class="customClasses" :style="bubbleStyles">
+  <div class="w-full max-w-3xl" :class="customClasses" :style="bubbleStyles">
     <!-- 名前表示 -->
     <div v-if="name && name !== ''" class="mb-0" :class="textSizeClass" :style="{ color: color?.nameColor || '#ccc' }">
       {{ name }}
@@ -39,7 +39,7 @@
     textSize: 'md',
     brightness: 100,
     showArrow: true,
-    customClasses: '',
+    customClasses: 'p-4 rounded-xl',
     animatedText: false,
     animatedTextSpeed: 50,
   })

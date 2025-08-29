@@ -1,2 +1,3 @@
-/* shared/styles/TailwindCSS.css */
+/* assets\styles\TailwindCSS.css */
 @import 'tailwindcss';
+@import './safeList.css';
