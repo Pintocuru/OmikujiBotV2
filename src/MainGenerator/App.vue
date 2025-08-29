@@ -1,9 +1,13 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
   <div v-if="appStore.isInitialized" class="main-container" :class="['main-container', fontClass]">
-    <!-- BOTメッセージ表示 -->
-    <ViewBotMessage v-if="displayStore.currentScriptKey === null" />
+    <div v-if="displayStore.currentScriptKey === null">
+      <!-- BOTメッセージ表示 -->
+      <ViewBotMessage v-if="!showCharacterPersistent" />
 
+      <!-- 常時表示キャラクター -->
+      <PersistentCharacter v-else />
+    </div>
     <!-- Scriptsゲーム表示 -->
     <GameRankingViewer v-else-if="displayStore.currentScriptKey !== null" :key="displayStore.currentComponentKey" />
 
@@ -24,6 +28,7 @@
   import { computed, onMounted } from 'vue'
   import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue'
   import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue'
+  import PersistentCharacter from '@MainComponents/OmikujiBot/PersistentCharacter.vue'
   import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue'
   import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
@@ -40,6 +45,12 @@
 
   // フォントの指定
   const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'default'))
+
+  // キャラクター常時表示設定
+  const showCharacterPersistent = computed(() => {
+    console.log(appStore.omikujiData?.displaySettings?.base?.showCharacterPersistent)
+    return appStore.omikujiData?.displaySettings?.base?.showCharacterPersistent
+  })
 
   // 初期化処理
   onMounted(async () => {

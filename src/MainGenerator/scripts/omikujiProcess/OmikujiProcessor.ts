@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/commentProcessor/OmikujiProcessor.ts
 // おみくじ処理クラス
-import { RuleType } from '@/types/OmikujiData/RulesSchema'
+import { CommentRuleType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
@@ -50,7 +50,7 @@ export class OmikujiProcessor {
         this.placeProcess.updateResolvedValues(defaultPlaceholders)
       }
 
-      return this.processOmikujiOnly(omikujiItem)
+      return this.processOmikuji(omikujiItem)
     } catch (error) {
       ConsolePost('error', `おみくじ直接実行エラー`, error)
       return []
@@ -67,15 +67,13 @@ export class OmikujiProcessor {
 
       // scriptIdが存在し、scriptManagerが存在する場合のみスクリプトを実行
       const shouldExecuteScript = this.hasValidScript(rule) && this.scriptManager
+      let scriptResult: ScriptResult | null = null
 
       if (shouldExecuteScript) {
-        const scriptResult = this.scriptManager!.executeScript(comment, rule as any)
-        return scriptResult
-          ? this.processWithScript(scriptResult, omikujiItem, seed)
-          : this.processOmikujiOnly(omikujiItem, seed)
-      } else {
-        return this.processOmikujiOnly(omikujiItem, seed)
+        scriptResult = this.scriptManager!.executeScript(comment, rule as CommentRuleType)
       }
+
+      return this.processOmikuji(omikujiItem, scriptResult, seed)
     } catch (error) {
       ConsolePost('error', `おみくじプロセス実行エラー`, error)
       return []
@@ -95,32 +93,25 @@ export class OmikujiProcessor {
   }
 
   /**
-   * プレースホルダー処理（スクリプト結果付き）
+   * おみくじ処理
    */
-  private processWithScript(scriptResult: ScriptResult, omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
+  private processOmikuji(
+    omikujiItem: OmikujiItemType,
+    scriptResult?: ScriptResult | null,
+    seed?: string
+  ): BotMessage[] {
     try {
-      // scriptのプレースホルダーをClassに追加
-      this.placeProcess.updateResolvedValues(scriptResult.placeholders)
-      // scriptのpostActionsを投稿する
-      this.postMessage.post(scriptResult.postActions)
+      // スクリプト結果がある場合は先に処理
+      if (scriptResult) {
+        // scriptのプレースホルダーをClassに追加
+        this.placeProcess.updateResolvedValues(scriptResult.placeholders)
+        // scriptのpostActionsを投稿する
+        this.postMessage.post(scriptResult.postActions)
+      }
 
       // プレースホルダー処理
       const postActions = this.placeProcess.processPostActions(omikujiItem.postActions, seed)
       // おみくじのpostActionsを投稿する
-      this.postMessage.post(postActions)
-
-      return this.botMessageGenerator.generateMessages(postActions)
-    } finally {
-      this.placeProcess.clearResolvedValues()
-    }
-  }
-
-  /**
-   * おみくじのみ処理（スクリプトなし）
-   */
-  private processOmikujiOnly(omikujiItem: OmikujiItemType, seed?: string): BotMessage[] {
-    try {
-      const postActions = this.placeProcess.processPostActions(omikujiItem.postActions, seed)
       this.postMessage.post(postActions)
 
       return this.botMessageGenerator.generateMessages(postActions)

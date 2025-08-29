@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
   import { ref, computed, nextTick, watch, onMounted, onBeforeUnmount } from 'vue'
-  import { useMotion } from '@vueuse/motion'
+  import { MotionVariants, useMotion } from '@vueuse/motion'
   import { MotionType, motionVariants } from './MotionVariants'
 
   // Props定義
@@ -64,21 +64,11 @@
   // Motion Instanceを初期化する関数
   const initializeMotion = () => {
     if (motionElement.value) {
-      /**
-       * 型 'MotionInstance<string, { initial: Variant | undefined; enter: Variant | undefined; leave: Variant | undefined; }>' を型 'MotionInstance<string, MotionVariants<string>>' に割り当てることはできません。
-  プロパティ 'apply' の型に互換性がありません。
-    型 '(variant: Variant | "initial" | "leave" | "enter") => Promise<void[]> | undefined' を型 '(variant: string | Variant) => Promise<void[]> | undefined' に割り当てることはできません。
-      パラメーター 'variant' および 'variant' は型に互換性がありません。
-        型 'string | Variant' を型 'Variant | "initial" | "leave" | "enter"' に割り当てることはできません。
-          型 'string' を型 'Variant | "initial" | "leave" | "enter"' に割り当てることはできません。ts-plugin(2322)
-let motionInstance: MotionInstance<string, MotionVariants<string>> | null
-       */
-      // @ts-ignore
       motionInstance = useMotion(motionElement.value, {
         initial: enterVariant.value.initial,
         enter: enterVariant.value.enter,
         leave: leaveVariant.value.leave,
-      })
+      } as MotionVariants<string>)
     }
   }
 

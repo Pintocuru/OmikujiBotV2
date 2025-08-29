@@ -1,12 +1,18 @@
-//
+// src\types\BotComponents\BotMessageSchema.ts
 import { z } from 'zod'
-import { CharacterColorScheme } from '../OmikujiData/CharacterSchema'
+import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
+import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
 // BotMessage : Commentを大幅に略したもの
 export const BotMessageSchema = z.object({
   id: z.string().default(() => `${Date.now()}-${Math.random().toString(36).slice(2)}`), // ID
   name: z.string().catch('error'), // 名前
+  characterKey: z.string().catch(''), // キャラクターキー
+  iconKey: CharacterEmotionSchema.default('default').catch('default'), // アイコンキー(必要かどうかはわからん…)
   profileImage: z.string().nullable().catch(null), // アイコン
+  enterMotion: z.enum(motionLabel).optional(), // 入場アニメーション
+  // TODO:村きつね実装時にサウンドも実装(WordPartyなしでも音を出すためのプロパティ)
+  sound: z.string().optional().catch(''), // サウンド
   timestamp: z.string().default(() => new Date().toISOString()), // 投稿日時
   comment: z.string().catch('error'), // コメント
   isToast: z.boolean().catch(false), // 通常表示かトースト表示か

@@ -20,9 +20,13 @@ export class BotMessageGenerator {
     const createMessage = (content: string, isToast: boolean): BotMessage => {
       return BotMessageSchema.parse({
         name: character.name,
+        characterKey: postAction.characterKey,
+        iconKey: postAction.iconKey,
         profileImage: character.displayOption.isIconDisplay
           ? this.getCharacterIcon(character, postAction.iconKey)
           : null,
+        enterMotion: postAction.enterMotion,
+        sound: postAction.sound,
         comment: content,
         isToast,
         color: character.color,
@@ -49,9 +53,7 @@ export class BotMessageGenerator {
   generateMessages(postActions: PostActionType[]): BotMessage[] {
     // messageContent または messageToast のいずれかが存在するアクションをフィルタリング
     const validActions = postActions.filter((action) => action.messageContent?.trim() || action.messageToast?.trim())
-
     if (validActions.length === 0) return []
-    // flatMapを使用して、各アクションから生成される複数のメッセージを平坦化
     return validActions.flatMap((action) => this.generateMessage(action))
   }
 

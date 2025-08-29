@@ -1,4 +1,4 @@
-// src/MainGenerator/components/OmikujiBot/useBotDisplayBase.ts
+// src\MainGenerator\components\OmikujiBot\composables\useBotDisplayBase.ts
 import { ref, computed, Ref } from 'vue'
 import { BotMessage, getImagePath } from '@/types/'
 

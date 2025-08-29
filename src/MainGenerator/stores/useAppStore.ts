@@ -1,3 +1,4 @@
+// src\MainGenerator\stores\useAppStore.ts
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { OmikujiDataSchema, BotMessage } from '@/types/'

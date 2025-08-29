@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/ViewBotMessage.vue -->
+<!-- src/MainGenerator/components/OmikujiBot/ViewBotMessage.vue -->
 <template>
   <div class="relative w-full h-screen overflow-hidden">
     <!-- コメント表示部分 -->
@@ -32,7 +32,7 @@
           />
         </div>
 
-        <!-- キャラクター（通常表示モード） -->
+        <!-- キャラクター（通常表示モードのみ） -->
         <CharacterAvatar
           v-if="!showCharacterPersistent"
           :profile-image="message.profileImage"
@@ -45,25 +45,13 @@
         />
       </MotionWrapper>
     </div>
-
-    <!-- 常時表示キャラクター -->
-    <CharacterAvatar
-      v-if="showCharacterPersistent && currentCharacter"
-      :profile-image="currentCharacter.profileImage"
-      :character-name="currentCharacter.name"
-      :background-color="currentCharacter.color?.backgroundColor"
-      :show-character-frame="showCharacterFrame"
-      :is-visible="true"
-      :display-size="displaySize"
-      @image-error="handleImageError(currentCharacter)"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
-  import { usePersistentCharacterDisplay } from './composables/usePersistentCharacterDisplay'
+  import { useBotDisplayBase } from './composables/useBotDisplayBase'
   import CommentBubble from './CommentBubble.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
@@ -106,12 +94,8 @@
     return omikujiData.value?.displaySettings?.base?.showCharacterPersistent
   })
 
-  // 常時表示機能対応の表示時間管理（modeパラメータ不要）
-  const { displayedComments, getCurrentCharacter, handleImageError, removeComment, start, stop } =
-    usePersistentCharacterDisplay(botMessages, showCharacterPersistent)
-
-  // 現在のキャラクター情報
-  const currentCharacter = getCurrentCharacter
+  // 基底composableを直接使用
+  const { displayedComments, handleImageError, removeComment, start, stop } = useBotDisplayBase(botMessages, 'comment')
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])

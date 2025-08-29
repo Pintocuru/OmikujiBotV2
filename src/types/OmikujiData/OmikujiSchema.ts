@@ -2,6 +2,7 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
+import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 
@@ -26,6 +27,8 @@ export const PostActionSchema = z.object({
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   messageContent: z.string().default('').catch(''),
   messageToast: z.string().optional().catch(undefined),
+  enterMotion: z.enum(motionLabel).optional().catch(undefined),
+  sound: z.string().optional().catch(undefined),
 })
 
 /**
