@@ -6,7 +6,7 @@
       <ViewBotMessage v-if="!showCharacterPersistent" />
 
       <!-- 常時表示キャラクター -->
-      <PersistentCharacter v-else />
+      <ViewBotCharacter v-else />
     </div>
     <!-- Scriptsゲーム表示 -->
     <GameRankingViewer v-else-if="displayStore.currentScriptKey !== null" :key="displayStore.currentComponentKey" />
@@ -28,7 +28,7 @@
   import { computed, onMounted } from 'vue'
   import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue'
   import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue'
-  import PersistentCharacter from '@MainComponents/OmikujiBot/PersistentCharacter.vue'
+  import ViewBotCharacter from '@MainComponents/OmikujiBot/ViewBotCharacter.vue'
   import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue'
   import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'

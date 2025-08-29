@@ -3,8 +3,7 @@
   <div
     v-for="(message, index) in displayedComments"
     :key="message.id"
-    class="absolute"
-    :class="containerClass"
+    class="absolute w-full"
     :style="getCommentStyle(index)"
   >
     <MotionWrapper
@@ -22,7 +21,7 @@
           :text-size="textSize"
           :brightnessLevel="index"
           :custom-classes="message.color?.customClasses"
-          :style="{ zIndex: props.mode === 'stack' ? props.displayedComments.length - index : 1000 - index }"
+          :style="{ zIndex: props.mode === 'stack' ? 1000 - index : 1000 - index }"
         />
       </div>
 
@@ -38,12 +37,13 @@
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import type { DisplaySize } from '@shared/types'
   import { DisplayBotMessage } from './composables/useBotDisplayBase'
+  import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   interface Props {
     displayedComments: DisplayBotMessage[]
     removeComment: (id: string) => void
-    enterMotion?: any
-    leaveMotion?: any
+    enterMotion?: MotionType
+    leaveMotion?: MotionType
     textSize: DisplaySize
     mode: 'stack' | 'persistent' // 表示モード
     spacing: number
@@ -53,12 +53,9 @@
   const props = defineProps<Props>()
 
   // 表示モードに応じたクラス
-  const containerClass = computed(() => {
-    return props.mode === 'stack' ? 'w-full max-w-3xl mx-auto left-0 right-0' : 'w-max left-1/2 -translate-x-1/2'
-  })
 
   const wrapperClass = computed(() => {
-    return props.mode === 'stack' ? 'flex justify-center' : ''
+    return props.mode === 'stack' ? 'flex justify-center' : 'flex justify-center'
   })
 
   // コメントのスタイル計算

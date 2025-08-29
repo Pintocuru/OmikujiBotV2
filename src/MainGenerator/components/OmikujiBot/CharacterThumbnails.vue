@@ -106,7 +106,7 @@
       const postAction = PostActionSchema.parse({
         characterKey: character.id,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
-        enterMotion: 'pulse',
+        // enterMotion: 'pulse',
         messageContent: `${character.name}の${messageType}です！`,
       })
 

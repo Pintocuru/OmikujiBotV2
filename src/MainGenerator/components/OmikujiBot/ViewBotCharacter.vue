@@ -1,11 +1,11 @@
-<!-- src/MainGenerator/components/OmikujiBot/PersistentCharacter.vue -->
+<!-- src/MainGenerator/components/OmikujiBot/ViewBotCharacter.vue -->
 <template>
   <!-- キャラクター横並び表示 -->
   <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end">
     <div
       v-for="character in availableCharacters"
       :key="character.key"
-      class="relative pointer-events-auto -mx-12"
+      class="relative pointer-events-auto -mx-4"
       :style="{
         zIndex: character.key === lastCommenterKey ? 50 : 0,
         filter: character.key === lastCommenterKey ? 'brightness(100%)' : 'brightness(60%)',
@@ -42,14 +42,13 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref } from 'vue'
+  import type { CharacterType } from '@/types/'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import { useBotDisplayBase } from './composables/useBotDisplayBase'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import { storeToRefs } from 'pinia'
-  import type { CharacterType } from '@/types/'
   import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
+  import { storeToRefs } from 'pinia'
 
   // Piniaストアの使用
   const appStore = useAppStore()
@@ -84,7 +83,7 @@
   const getCharacterImage = (character: { key: string; data: CharacterType }) => {
     const imageSet = character.data.image
     if (!imageSet || !imageSet.default) return null
-    return imageSet.default // getImagePathは不要（CharacterAvatar内で処理される）
+    return imageSet.default
   }
 
   // 指定されたキャラクターのコメントを取得

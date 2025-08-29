@@ -29,15 +29,7 @@
   import { computed } from 'vue'
   import { getImagePath } from '@/types/env'
   import type { DisplaySize } from '@shared/types'
-
-  // サイズ設定の定数
-  const SIZE_CONFIG = {
-    xs: { text: 'text-md', avatar: 'w-32 h-32', avatarTop: '160px', spacing: 20 },
-    sm: { text: 'text-lg', avatar: 'w-48 h-48', avatarTop: '200px', spacing: 40 },
-    md: { text: 'text-xl', avatar: 'w-64 h-64', avatarTop: '240px', spacing: 60 },
-    lg: { text: 'text-2xl', avatar: 'w-80 h-80', avatarTop: '280px', spacing: 80 },
-    xl: { text: 'text-3xl', avatar: 'w-96 h-96', avatarTop: '320px', spacing: 100 },
-  } as const
+  import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
 
   interface Props {
     profileImage: string | null
