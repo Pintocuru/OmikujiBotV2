@@ -60,7 +60,7 @@ export const useDisplayStore = defineStore('display', () => {
   // 現在のコンポーネントキー
   const currentComponentKey = computed((): string => {
     // updateTriggerを参照することで強制更新に対応
-    updateTrigger.value // eslint-disable-line no-unused-expressions
+    void updateTrigger.value
 
     const scriptKey = currentScriptKey.value
     return scriptKey ? `game-${scriptKey}` : 'bot-mode'
@@ -69,7 +69,7 @@ export const useDisplayStore = defineStore('display', () => {
   // 現在のコンポーネント設定
   const currentComponentConfig = computed(() => {
     // updateTriggerを参照することで強制更新に対応
-    updateTrigger.value // eslint-disable-line no-unused-expressions
+    void updateTrigger.value
 
     const scriptKey = currentScriptKey.value
     return scriptKey && gameScriptMap[scriptKey] ? gameScriptMap[scriptKey].componentConfig : null
@@ -78,7 +78,7 @@ export const useDisplayStore = defineStore('display', () => {
   // 現在のスクリプト設定
   const currentScriptSettings = computed(() => {
     // updateTriggerを参照することで強制更新に対応
-    updateTrigger.value // eslint-disable-line no-unused-expressions
+    void updateTrigger.value
 
     const scriptKey = currentScriptKey.value
     return scriptKey ? { ...(appStore.omikujiData.scriptSettings?.[scriptKey] || {}) } : {}
@@ -87,7 +87,7 @@ export const useDisplayStore = defineStore('display', () => {
   // 現在のユーザーランキング
   const currentUserRankings = computed((): UserStatsType[] => {
     // updateTriggerを参照することで強制更新に対応
-    updateTrigger.value // eslint-disable-line no-unused-expressions
+    void updateTrigger.value
 
     return getCurrentRankings(currentScriptKey.value)
   })
