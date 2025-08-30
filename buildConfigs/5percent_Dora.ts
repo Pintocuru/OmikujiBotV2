@@ -6,7 +6,7 @@ const doraProject: ProjectConfig = {
   ...commonBuildConfig,
 
   name: '5percent_Dora',
-  version: 'v2025.8.16',
+  version: 'v2025.8.30',
   tags: [
     'おみくじBOT',
     'ドラちゃん',

@@ -82,8 +82,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap');
 
   /**
-    overflow: hidden; */
+   * overflow: hidden;
+   */
   .main-container {
     height: 100vh;
+    overflow: hidden;
   }
 </style>

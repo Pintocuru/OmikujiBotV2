@@ -1,12 +1,12 @@
 {
   "meta": {
     "id": "1754823565389-7x2yib",
-    "name": "5percent_Dora",
-    "description": "Twitterで人気の某有名BOTを模したおみくじBOTです",
-    "version": "2025.8.16",
+    "name": "どこでもドラちゃんBot",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "v2025.8.30",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-beta07",
-    "author": "Pintocuru",
+    "generatorVersion": "0.8.0-beta10",
+    "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
       "ドラちゃん",
@@ -14,7 +14,7 @@
       "#話が違うぞ青狸",
       "https://www.tv-asahi.co.jp/doraemon/tool/"
     ],
-    "license": "CC-BY 4.0",
+    "license": "個人利用のみ",
     "url": "https://pintocuru.booth.pm/items/7291931"
   },
   "comments": {
@@ -1757,7 +1757,7 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "kosugiMaru",

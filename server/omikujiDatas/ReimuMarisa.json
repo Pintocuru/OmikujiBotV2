@@ -3,18 +3,20 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "0.8.0-beta09",
+    "version": "v2025.8.30(プレビュー版)",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-beta09",
+    "generatorVersion": "0.8.0-beta10",
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
       "おみくじ",
-      "じゃんけん",
+      "占い",
+      "ゆっくり",
       "ゆっくり霊夢",
-      "ゆっくり魔理沙"
+      "ゆっくり魔理沙",
+      "じゃんけん"
     ],
-    "license": "個人利用のみ",
+    "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
   "comments": {
@@ -4106,7 +4108,7 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",

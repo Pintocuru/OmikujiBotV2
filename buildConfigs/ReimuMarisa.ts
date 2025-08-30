@@ -9,7 +9,7 @@ const reimuMarisaProject: ProjectConfig = {
   ...commonBuildConfig,
 
   name: 'ReimuMarisa',
-  version: 'v2025.8.25(プレビュー版)',
+  version: 'v2025.8.30(プレビュー版)',
   tags: ['おみくじBOT', 'おみくじ', '占い', 'ゆっくり', 'ゆっくり霊夢', 'ゆっくり魔理沙', 'じゃんけん'],
   /**
    * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK

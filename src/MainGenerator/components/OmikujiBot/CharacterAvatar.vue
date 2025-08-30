@@ -29,7 +29,7 @@
   import { computed } from 'vue'
   import { getImagePath } from '@/types/env'
   import type { DisplaySize } from '@shared/types'
-  import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
+  import { SIZE_CONFIG } from './composables/SizeConfig'
 
   interface Props {
     profileImage: string | null

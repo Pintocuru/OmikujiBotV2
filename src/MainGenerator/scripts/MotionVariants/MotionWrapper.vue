@@ -1,20 +1,18 @@
 <!-- src/components/common/MotionWrapper.vue -->
 <template>
-  <div>
-    <Transition :css="false" @leave="onLeave">
-      <div
-        v-if="visible"
-        ref="motionElement"
-        v-motion="motionKey"
-        :initial="enterVariant.initial"
-        :enter="enterVariant.enter"
-        :leave="leaveVariant.leave"
-        v-bind="$attrs"
-      >
-        <slot />
-      </div>
-    </Transition>
-  </div>
+  <Transition :css="false" @leave="onLeave">
+    <div
+      v-if="visible"
+      ref="motionElement"
+      v-motion="motionKey"
+      :initial="enterVariant.initial"
+      :enter="enterVariant.enter"
+      :leave="leaveVariant.leave"
+      v-bind="$attrs"
+    >
+      <slot />
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">

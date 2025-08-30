@@ -4,7 +4,10 @@
     v-for="(message, index) in displayedComments"
     :key="message.id"
     class="absolute w-full"
-    :style="getCommentStyle(index)"
+    :style="{
+      top: `${index * spacing}px`,
+      zIndex: 1000 - index,
+    }"
   >
     <MotionWrapper
       v-model:visible="message.visible"
@@ -13,7 +16,7 @@
       :auto-hide="false"
       @after-leave="() => removeComment(message.id)"
     >
-      <div :class="wrapperClass">
+      <div class="flex justify-center">
         <CommentBubble
           :name="message.name"
           :comment="message.comment"
@@ -21,7 +24,7 @@
           :text-size="textSize"
           :brightnessLevel="index"
           :custom-classes="message.color?.customClasses"
-          :style="{ zIndex: props.mode === 'stack' ? 1000 - index : 1000 - index }"
+          :style="{ zIndex: index }"
         />
       </div>
 
@@ -51,12 +54,6 @@
   }
 
   const props = defineProps<Props>()
-
-  // 表示モードに応じたクラス
-
-  const wrapperClass = computed(() => {
-    return props.mode === 'stack' ? 'flex justify-center' : 'flex justify-center'
-  })
 
   // コメントのスタイル計算
   const getCommentStyle = (index: number) => {

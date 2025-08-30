@@ -1,34 +1,35 @@
 <!-- src/MainGenerator/components/OmikujiBot/ViewBotMessage.vue -->
 <template>
-  <!-- コメント表示 -->
-  <CommentDisplay
-    :displayed-comments="displayedComments"
-    :remove-comment="removeComment"
-    :enter-motion="enterMotion"
-    :leave-motion="leaveMotion"
-    :text-size="displaySize"
-    mode="stack"
-    :spacing="sizeConfig.spacing"
-  >
-    <template #default="{ message, index }">
-      <!-- キャラクター（通常表示モードのみ） -->
-      <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
-        <CharacterAvatar
-          class="absolute left-1/2 -translate-x-1/2 transform"
-          :profile-image="message.profileImage"
-          :character-name="message.name"
-          :background-color="message.color?.backgroundColor"
-          :show-character-frame="showCharacterFrame"
-          :is-visible="index === 0"
-          :display-size="displaySize"
-          @image-error="handleImageError(message)"
-          :style="{
-            top: sizeConfig.avatarTop,
-          }"
-        />
-      </MotionWrapper>
-    </template>
-  </CommentDisplay>
+  <div class="relative h-screen">
+    <div class="absolute w-full" :style="{ bottom: sizeConfig.avatarTop }">
+      <!-- コメント表示 -->
+      <CommentDisplay
+        :displayed-comments="displayedComments"
+        :remove-comment="removeComment"
+        :enter-motion="enterMotion"
+        :leave-motion="leaveMotion"
+        :text-size="displaySize"
+        mode="stack"
+        :spacing="sizeConfig.spacing"
+      >
+        <template #default="{ message, index }">
+          <!-- キャラクター（通常表示モードのみ） -->
+          <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
+            <CharacterAvatar
+              class="absolute top-[80px] top-1/2 left-1/2 -translate-x-1/2 transform"
+              :profile-image="message.profileImage"
+              :character-name="message.name"
+              :background-color="message.color?.backgroundColor"
+              :show-character-frame="showCharacterFrame"
+              :is-visible="index === 0"
+              :display-size="displaySize"
+              @image-error="handleImageError(message)"
+            />
+          </MotionWrapper>
+        </template>
+      </CommentDisplay>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -39,7 +40,7 @@
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
-  import { SIZE_CONFIG } from './composables/SIZE_CONFIG'
+  import { SIZE_CONFIG } from './composables/SizeConfig'
 
   // Piniaストアの使用
   const appStore = useAppStore()

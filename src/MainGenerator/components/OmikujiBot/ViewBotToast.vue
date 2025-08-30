@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/components/ViewBotToast.vue -->
 <template>
-  <div class="fixed right-4 z-999" :class="[sizeConfig.bottom]">
+  <div class="fixed right-0 bottom-0" :class="[sizeConfig.bottom]">
     <div
       v-for="(message, index) in displayedComments.slice().reverse()"
       :key="message.id"
