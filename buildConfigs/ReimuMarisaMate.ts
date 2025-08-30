@@ -9,7 +9,7 @@ const reimuMarisaProject: ProjectConfig = {
   ...commonBuildConfig,
 
   name: 'ReimuMarisaMate',
-  version: 'v2025.8.30',
+  version: 'v2025.8.30(プレビュー版)',
   tags: ['おみくじBOT', 'おみくじ', '占い', 'ゆっくり', 'ゆっくり霊夢', 'ゆっくり魔理沙', 'じゃんけん'],
   /**
    * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
@@ -28,8 +28,8 @@ const reimuMarisaProject: ProjectConfig = {
   },
 
   template: {
-    name: 'おみくじBOT ちょこんと!ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisaMate',
-    boothURL: 'https://pintocuru.booth.pm/items/5471598',
+    name: 'おみくじBOT ゆっくり霊夢&魔理沙 ちょこんとバージョン OmikujiBot ReimuMarisaMate',
+    boothURL: 'https://pintocuru.booth.pm/items/7366004',
     readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotReimuMarisa/README.md',
     description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
   },
@@ -44,7 +44,7 @@ const reimuMarisaProject: ProjectConfig = {
     basic: {
       filesToCopy: [
         { from: 'assets/config.js', to: 'config.js' },
-        { from: 'assets/exported/thumb/ReimuMarisa.png', to: 'thumb.png' },
+        { from: 'assets/exported/thumb/ReimuMarisaMate.gif', to: 'thumb.gif' },
         { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
         { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
       ],
