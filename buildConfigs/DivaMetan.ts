@@ -1,4 +1,4 @@
-// buildConfigs\EveryoneZunda.ts
+// buildConfigs\DivaMetan.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { commonBuildConfig } from './base/baseSettings'
 

@@ -14,7 +14,6 @@
       <!-- キャラクター（通常表示モードのみ） -->
       <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
         <CharacterAvatar
-          v-if="!showCharacterPersistent"
           class="absolute left-1/2 -translate-x-1/2 transform"
           :profile-image="message.profileImage"
           :character-name="message.name"
@@ -33,9 +32,9 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
-  import { useBotDisplayBase } from './composables/useBotDisplayBase'
+  import { useBotDisplay } from './composables/useBotDisplay'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
@@ -48,39 +47,21 @@
 
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
-  const omikujiData = computed(() => appStore.omikujiData)
-  const displaySize = computed(() => displayStore.displaySize)
+  const { displaySize } = storeToRefs(displayStore)
+  const base = computed(() => appStore.omikujiData.displaySettings?.base || {})
 
-  // omikujiDataの深い参照用computed
-  const enterMotion = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.bubbleMotionEnter
-  })
-
-  const leaveMotion = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.bubbleMotionLeave
-  })
-
-  // キャラクター表示設定
-  const showCharacterFrame = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.showCharacterFrame
-  })
-
-  // キャラクター常時表示設定
-  const showCharacterPersistent = computed(() => {
-    return omikujiData.value?.displaySettings?.base?.showCharacterPersistent
-  })
-
-  // 基底composableを直接使用
-  const { displayedComments, handleImageError, removeComment, start, stop } = useBotDisplayBase(botMessages, 'comment')
-
-  // サイズ設定の取得
+  // サイズ設定
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
 
-  // brightness計算
-  const getBrightness = (index: number) => Math.max(100 - index * 15, 30)
+  // アニメーション設定
+  const enterMotion = computed(() => base.value?.bubbleMotionEnter)
+  const leaveMotion = computed(() => base.value?.bubbleMotionLeave)
 
-  onMounted(() => {
-    start()
-  })
-  onUnmounted(stop)
+  // キャラクター表示設定
+  const showCharacterFrame = computed(() => base.value?.showCharacterFrame)
+
+  // 基底composableを直接使用
+  const { displayedComments, handleImageError, removeComment, start } = useBotDisplay(botMessages, 'comment')
+
+  onMounted(() => start())
 </script>

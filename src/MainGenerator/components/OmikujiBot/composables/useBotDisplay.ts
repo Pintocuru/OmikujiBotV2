@@ -1,4 +1,4 @@
-// src\MainGenerator\components\OmikujiBot\composables\useBotDisplayBase.ts
+// src\MainGenerator\components\OmikujiBot\composables\useBotDisplay.ts
 import { ref, computed, Ref } from 'vue'
 import { BotMessage, getImagePath } from '@/types/'
 
@@ -19,7 +19,7 @@ export interface DisplayBotMessage extends BotMessage {
 }
 
 // 共通の基底composable
-export const useBotDisplayBase = (botMessages: Ref<BotMessage[]>, mode: DisplayMode) => {
+export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode) => {
   const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 

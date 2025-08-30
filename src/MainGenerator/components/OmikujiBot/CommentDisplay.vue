@@ -36,7 +36,7 @@
   import CommentBubble from './CommentBubble.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import type { DisplaySize } from '@shared/types'
-  import { DisplayBotMessage } from './composables/useBotDisplayBase'
+  import { DisplayBotMessage } from './composables/useBotDisplay'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   interface Props {

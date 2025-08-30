@@ -7,6 +7,7 @@ import { createShimsVue } from './tools/CreateOmikujiData'
 
 // 各設定ファイルをインポート
 import reimuMarisaProject from './buildConfigs/ReimuMarisa'
+import ReimuMarisaMateProject from './buildConfigs/ReimuMarisaMate'
 import EveryoneZundaProject from './buildConfigs/EveryoneZunda'
 import DivaMetanProject from './buildConfigs/DivaMetan'
 import percent_DoraProject from './buildConfigs/5percent_Dora'
@@ -16,8 +17,9 @@ import percent_DoraProject from './buildConfigs/5percent_Dora'
  */
 const buildTargets: BuildTarget[] = [
   //  { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
+  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
   //  { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
-  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
+  //  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
   //  { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
 ]
 
@@ -41,6 +43,7 @@ const buildTargets: BuildTarget[] = [
 
     // 新しいバージョンができた場合、ここに記載すること
     builder.registerProject(reimuMarisaProject)
+    builder.registerProject(ReimuMarisaMateProject)
     builder.registerProject(EveryoneZundaProject)
     builder.registerProject(DivaMetanProject)
     builder.registerProject(percent_DoraProject)

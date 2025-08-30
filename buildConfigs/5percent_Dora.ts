@@ -1,4 +1,4 @@
-// buildConfigs/5percent_Dora.ts (新形式)
+// buildConfigs/5percent_Dora.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { commonBuildConfig } from './base/baseSettings'
 

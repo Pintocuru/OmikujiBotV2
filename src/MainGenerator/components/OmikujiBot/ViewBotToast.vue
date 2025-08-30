@@ -47,7 +47,7 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, Ref } from 'vue'
   import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-  import { useBotDisplayBase } from './composables/useBotDisplayBase'
+  import { useBotDisplay } from './composables/useBotDisplay'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
@@ -69,7 +69,7 @@
 
   // コメント表示ロジック（トースト専用、modeパラメータ不要）
   const useBotToastDisplay = (botMessages: Ref<BotMessage[]>) => {
-    return useBotDisplayBase(botMessages, 'toast')
+    return useBotDisplay(botMessages, 'toast')
   }
   const { displayedComments, removeComment, hideComment, start, stop } = useBotToastDisplay(botMessages)
 

@@ -7,12 +7,7 @@
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta09",
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "VOICEVOX",
-      "四国めたん",
-      "（ず・ω・きょ）"
-    ],
+    "tags": ["おみくじBOT", "VOICEVOX", "四国めたん", "（ず・ω・きょ）"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/6058829"
   },
@@ -299,9 +294,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -310,13 +303,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^fortune",
-          "🥠"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^fortune", "🥠"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -373,9 +360,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -384,14 +369,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
@@ -450,9 +428,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -461,15 +437,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
@@ -526,9 +494,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -537,17 +503,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
@@ -1218,9 +1174,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1229,11 +1183,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1444,9 +1394,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1455,12 +1403,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1671,9 +1614,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1682,11 +1623,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1897,9 +1834,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1908,12 +1843,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2008,10 +1938,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2020,11 +1947,7 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2090,10 +2013,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2102,11 +2022,7 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2162,23 +2078,16 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment",
-          "gift"
-        ],
+        "conditions": ["comment", "gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "コメント"
-        ]
+        "comment": ["コメント"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2244,16 +2153,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
+        "gift": ["blue", "lightBlue", "green"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2324,14 +2227,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow"
-        ],
+        "gift": ["yellow"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2402,17 +2301,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
+        "gift": ["orange", "pink", "red", "purple"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2497,9 +2389,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2508,9 +2398,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2568,12 +2456,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -2630,12 +2514,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -2758,12 +2638,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -2820,9 +2696,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2902,9 +2776,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -3216,9 +3088,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "漆黒のめたん"
-      ]
+      "values": ["漆黒のめたん"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -3231,9 +3101,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "私"
-      ]
+      "values": ["私"]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -3555,11 +3423,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "Metan"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "Metan"],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -3601,11 +3465,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "Metan"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "Metan"],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -3613,7 +3473,7 @@
       "displayName": "漆黒のめたん",
       "frameId": "voicevoxMetan",
       "displayOption": {
-        "isIconDisplay": true,
+        "isIconDisplay": false,
         "isOneCommePost": true,
         "isVoice": true
       },
@@ -3681,11 +3541,7 @@
         "characterVisible": "basic",
         "wordPartyLoading": "internal",
         "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic"
       }
     }
