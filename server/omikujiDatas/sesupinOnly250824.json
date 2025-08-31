@@ -11,14 +11,338 @@
     "license": "CC-BY 4.0"
   },
   "comments": {
+    "CardStation": {
+      "id": "CardStation",
+      "key": "CardStation",
+      "name": "カード駅",
+      "description": "社長!駅ではカードが貰えますぞ!総数約64兆800億通り!",
+      "createdAt": "2025-08-31T19:33:46.945Z",
+      "updatedAt": "2025-08-31T20:44:21.374Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1756666545244",
+          "key": "",
+          "name": "カード駅:通常",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 700,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_10",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>"
+            }
+          ]
+        },
+        {
+          "id": "2f431cf1-bcdb-46d8-9ca1-6a8a3b866dc6",
+          "key": "",
+          "name": "カード駅:ナイス",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 150,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_11",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～"
+            }
+          ]
+        },
+        {
+          "id": "918d4067-023a-4dfe-8664-8c7825339a6b",
+          "key": "",
+          "name": "カード駅:スペシャル",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 50,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_11",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～"
+            }
+          ]
+        },
+        {
+          "id": "cf3f6f59-e9a3-438e-9db5-de5c9d70312a",
+          "key": "",
+          "name": "カード駅:ボンビラス",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 77,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_13",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】"
+            }
+          ]
+        },
+        {
+          "id": "7b7aca02-a5aa-4d43-9811-d59a0a74a97d",
+          "key": "",
+          "name": "カード駅:…に行けカード詰め合わせ",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 20,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_13",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!間抜け5",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】"
+            }
+          ]
+        },
+        {
+          "id": "96d7b85c-f59e-4194-99b4-4d94987cc243",
+          "key": "",
+          "name": "カード駅:ボンビュラス",
+          "createdAt": "2025-08-31T18:55:45.244Z",
+          "updatedAt": "2025-08-31T18:55:45.244Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!card_00",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!card_01",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!card_02",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!card_13",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": ""
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!チーン1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^カード",
+          "^かーど",
+          "^card",
+          "^station"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
     "StageSelect": {
       "id": "StageSelect",
       "key": "StageSelect",
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 1,
+      "updatedAt": "2025-08-31T19:47:34.941Z",
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -87,7 +411,7 @@
       "key": "StageRandom",
       "name": "クリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-08-31T17:28:24.760Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -630,3460 +954,20 @@
           "weight": 2,
           "content": "6399-5679-6968:COCOA CLASH"
         },
-        {
-          "content": "9123-1342-8604:振り子の支点",
-          "weight": 1
-        },
-        {
-          "content": "4151-8305-0408:Killer Vs Survivor",
-          "weight": 1
-        },
-        {
-          "content": "2122-9878-9929:BLAST CAVERN",
-          "weight": 1
-        },
-        {
-          "content": "0079-0691-0096:ジャンプクラブ？",
-          "weight": 1
-        },
-        {
-          "content": "6679-4238-9153:ぷにぷにじごく",
-          "weight": 1
-        },
-        {
-          "content": "7593-9797-0140:マイムマイム",
-          "weight": 1
-        },
-        {
-          "content": "2038-3785-4888:タイムロック クレート",
-          "weight": 1
-        },
-        {
-          "content": "6863-2771-6831:Fan Survival",
-          "weight": 1
-        },
-        {
-          "content": "1047-2162-6725:Haunted Doomspire",
-          "weight": 1
-        },
-        {
-          "content": "3946-1752-1174:サンザンダーランティス",
-          "weight": 1
-        },
-        {
-          "content": "6221-0517-9460:Oh Shoot!",
-          "weight": 1
-        },
-        {
-          "content": "5695-4354-0286:Squid Game - Season2",
-          "weight": 1
-        },
-        {
-          "content": "5400-6810-8096:Neutral Jump Survival [32 Players]",
-          "weight": 1
-        },
-        {
-          "content": "0554-2897-0984:ピンボールポインター",
-          "weight": 1
-        }
-      ]
-    },
-    "CardRole": {
-      "id": "CardRole",
-      "key": "CardRole",
-      "name": "カード駅:役職選択",
-      "createdAt": "2025-08-31T16:43:33.489Z",
-      "updatedAt": "2025-08-31T17:28:24.760Z",
-      "order": 10,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 12,
-          "content": "社長"
-        },
-        {
-          "weight": 3,
-          "content": "<<CardRoleUncommon>>"
-        },
-        {
-          "content": "<<CardRoleRare>>",
-          "weight": 1
-        }
-      ]
-    },
-    "CardRoleUncommon": {
-      "id": "CardRoleUncommon",
-      "key": "CardRoleUncommon",
-      "name": "カード駅:選択できる役職",
-      "createdAt": "2025-08-31T16:45:19.889Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 11,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "会長",
-          "weight": 1
-        },
-        {
-          "content": "専務",
-          "weight": 1
-        },
-        {
-          "content": "部長",
-          "weight": 1
-        },
-        {
-          "content": "課長",
-          "weight": 1
-        },
-        {
-          "content": "次長",
-          "weight": 1
-        },
-        {
-          "content": "係長",
-          "weight": 1
-        },
-        {
-          "content": "店長",
-          "weight": 1
-        },
-        {
-          "content": "主任",
-          "weight": 1
-        },
-        {
-          "content": "代理",
-          "weight": 1
-        },
-        {
-          "content": "補佐",
-          "weight": 1
-        },
-        {
-          "content": "局長",
-          "weight": 1
-        },
-        {
-          "content": "名人",
-          "weight": 1
-        },
-        {
-          "content": "鉄人",
-          "weight": 1
-        },
-        {
-          "content": "超人",
-          "weight": 1
-        },
-        {
-          "content": "星人",
-          "weight": 1
-        },
-        {
-          "content": "大臣",
-          "weight": 1
-        },
-        {
-          "content": "国王",
-          "weight": 1
-        },
-        {
-          "content": "将軍",
-          "weight": 1
-        },
-        {
-          "content": "大帝",
-          "weight": 1
-        },
-        {
-          "content": "隊長",
-          "weight": 1
-        },
-        {
-          "content": "村長",
-          "weight": 1
-        },
-        {
-          "content": "所長",
-          "weight": 1
-        },
-        {
-          "content": "刑事",
-          "weight": 1
-        },
-        {
-          "content": "館長",
-          "weight": 1
-        },
-        {
-          "content": "総理",
-          "weight": 1
-        },
-        {
-          "content": "博士",
-          "weight": 1
-        },
-        {
-          "content": "機長",
-          "weight": 1
-        },
-        {
-          "content": "監督",
-          "weight": 1
-        },
-        {
-          "content": "魔王",
-          "weight": 1
-        },
-        {
-          "content": "皇帝",
-          "weight": 1
-        },
-        {
-          "content": "騎士",
-          "weight": 1
-        },
-        {
-          "content": "組長",
-          "weight": 1
-        },
-        {
-          "content": "親方",
-          "weight": 1
-        },
-        {
-          "content": "団長",
-          "weight": 1
-        },
-        {
-          "content": "議員",
-          "weight": 1
-        },
-        {
-          "content": "市長",
-          "weight": 1
-        },
-        {
-          "content": "知事",
-          "weight": 1
-        },
-        {
-          "content": "公爵",
-          "weight": 1
-        },
-        {
-          "content": "大使",
-          "weight": 1
-        },
-        {
-          "content": "園長",
-          "weight": 1
-        },
-        {
-          "content": "院長",
-          "weight": 1
-        },
-        {
-          "content": "先生",
-          "weight": 1
-        },
-        {
-          "content": "親分",
-          "weight": 1
-        },
-        {
-          "content": "船長",
-          "weight": 1
-        },
-        {
-          "content": "代表",
-          "weight": 1
-        },
-        {
-          "content": "閣下",
-          "weight": 1
-        },
-        {
-          "content": "殿下",
-          "weight": 1
-        },
-        {
-          "content": "大将",
-          "weight": 1
-        },
-        {
-          "content": "大佐",
-          "weight": 1
-        },
-        {
-          "content": "番長",
-          "weight": 1
-        },
-        {
-          "content": "警部",
-          "weight": 1
-        },
-        {
-          "content": "選手",
-          "weight": 1
-        },
-        {
-          "content": "師匠",
-          "weight": 1
-        },
-        {
-          "content": "秘書",
-          "weight": 1
-        },
-        {
-          "content": "達人",
-          "weight": 1
-        }
-      ]
-    },
-    "CardRoleRare": {
-      "id": "CardRoleRare",
-      "key": "CardRoleRare",
-      "name": "カード駅:選択できる役職(レア)",
-      "createdAt": "2025-08-31T16:47:11.449Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 12,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "殿",
-          "weight": 1
-        },
-        {
-          "content": "若様",
-          "weight": 1
-        },
-        {
-          "content": "技師",
-          "weight": 1
-        },
-        {
-          "content": "歌人",
-          "weight": 1
-        },
-        {
-          "content": "詩人",
-          "weight": 1
-        },
-        {
-          "content": "棋士",
-          "weight": 1
-        },
-        {
-          "content": "探偵",
-          "weight": 1
-        },
-        {
-          "content": "パパ",
-          "weight": 1
-        },
-        {
-          "content": "関白",
-          "weight": 1
-        },
-        {
-          "content": "足軽",
-          "weight": 1
-        },
-        {
-          "content": "男爵",
-          "weight": 1
-        },
-        {
-          "content": "親父",
-          "weight": 1
-        },
-        {
-          "content": "仮面",
-          "weight": 1
-        },
-        {
-          "content": "子分",
-          "weight": 1
-        },
-        {
-          "content": "太郎",
-          "weight": 1
-        },
-        {
-          "content": "兄貴",
-          "weight": 1
-        },
-        {
-          "content": "一番",
-          "weight": 1
-        },
-        {
-          "content": "参上",
-          "weight": 1
-        },
-        {
-          "content": "野郎",
-          "weight": 1
-        },
-        {
-          "content": "です",
-          "weight": 1
-        },
-        {
-          "content": "っス",
-          "weight": 1
-        },
-        {
-          "content": "っち",
-          "weight": 1
-        },
-        {
-          "content": "ラー",
-          "weight": 1
-        },
-        {
-          "content": "ピー",
-          "weight": 1
-        },
-        {
-          "content": "マン",
-          "weight": 1
-        },
-        {
-          "content": "ロボ",
-          "weight": 1
-        },
-        {
-          "content": "坊主",
-          "weight": 1
-        },
-        {
-          "content": "の父",
-          "weight": 1
-        },
-        {
-          "content": "の鬼",
-          "weight": 1
-        },
-        {
-          "content": "騎手",
-          "weight": 1
-        },
-        {
-          "content": "号機",
-          "weight": 1
-        },
-        {
-          "content": "改",
-          "weight": 1
-        },
-        {
-          "content": "改二",
-          "weight": 1
-        },
-        {
-          "content": "改三",
-          "weight": 1
-        },
-        {
-          "content": "投手",
-          "weight": 1
-        },
-        {
-          "content": "捕手",
-          "weight": 1
-        },
-        {
-          "content": "宗家",
-          "weight": 1
-        },
-        {
-          "content": "女王",
-          "weight": 1
-        },
-        {
-          "content": "女史",
-          "weight": 1
-        },
-        {
-          "content": "女帝",
-          "weight": 1
-        },
-        {
-          "content": "夫人",
-          "weight": 1
-        },
-        {
-          "content": "姫",
-          "weight": 1
-        },
-        {
-          "content": "嬢",
-          "weight": 1
-        },
-        {
-          "content": "奥様",
-          "weight": 1
-        },
-        {
-          "content": "側室",
-          "weight": 1
-        },
-        {
-          "content": "王妃",
-          "weight": 1
-        },
-        {
-          "content": "アナ",
-          "weight": 1
-        },
-        {
-          "content": "の母",
-          "weight": 1
-        },
-        {
-          "content": "歌姫",
-          "weight": 1
-        },
-        {
-          "content": "ママ",
-          "weight": 1
-        },
-        {
-          "content": "魔女",
-          "weight": 1
-        },
-        {
-          "content": "姐御",
-          "weight": 1
-        },
-        {
-          "content": "の姉",
-          "weight": 1
-        },
-        {
-          "content": "の妹",
-          "weight": 1
-        },
-        {
-          "content": "公女",
-          "weight": 1
-        },
-        {
-          "content": "舞妓",
-          "weight": 1
-        },
-        {
-          "content": "大物",
-          "weight": 1
-        },
-        {
-          "content": "報酬",
-          "weight": 1
-        },
-        {
-          "content": "怪獣",
-          "weight": 1
-        },
-        {
-          "content": "忍者",
-          "weight": 1
-        },
-        {
-          "content": "富豪",
-          "weight": 1
-        },
-        {
-          "content": "出現",
-          "weight": 1
-        },
-        {
-          "content": "画伯",
-          "weight": 1
-        },
-        {
-          "content": "温泉",
-          "weight": 1
-        }
-      ]
-    },
-    "CardStation": {
-      "id": "CardStation",
-      "key": "CardStation",
-      "name": "カード駅:駅選択（ルールへ移動）",
-      "createdAt": "2025-08-31T16:58:02.428Z",
-      "updatedAt": "2025-08-31T17:44:08.036Z",
-      "order": 13,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 97,
-          "content": "ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】"
-        },
-        {
-          "weight": 3,
-          "content": "ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード"
-        },
-        {
-          "weight": 600,
-          "content": "<<CardStationDomestic>>駅のカードですぞ!<<CardType>>"
-        },
-        {
-          "weight": 300,
-          "content": "<<CardStationAbroad>>駅のカードですぞ!<<CardType>>"
-        }
-      ]
-    },
-    "CardStationDomestic": {
-      "id": "CardStationDomestic",
-      "key": "CardStationDomestic",
-      "name": "カード駅:地名国内",
-      "createdAt": "2025-08-31T17:00:49.068Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 14,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "稚内",
-          "weight": 1
-        },
-        {
-          "content": "礼文",
-          "weight": 1
-        },
-        {
-          "content": "利尻",
-          "weight": 1
-        },
-        {
-          "content": "浜頓別",
-          "weight": 1
-        },
-        {
-          "content": "天塩",
-          "weight": 1
-        },
-        {
-          "content": "名寄",
-          "weight": 1
-        },
-        {
-          "content": "興部",
-          "weight": 1
-        },
-        {
-          "content": "紋別",
-          "weight": 1
-        },
-        {
-          "content": "留萌",
-          "weight": 1
-        },
-        {
-          "content": "和寒",
-          "weight": 1
-        },
-        {
-          "content": "北見",
-          "weight": 1
-        },
-        {
-          "content": "羅臼",
-          "weight": 1
-        },
-        {
-          "content": "増毛",
-          "weight": 1
-        },
-        {
-          "content": "旭川",
-          "weight": 1
-        },
-        {
-          "content": "上川",
-          "weight": 1
-        },
-        {
-          "content": "遠軽",
-          "weight": 1
-        },
-        {
-          "content": "美幌",
-          "weight": 1
-        },
-        {
-          "content": "網走",
-          "weight": 1
-        },
-        {
-          "content": "斜里",
-          "weight": 1
-        },
-        {
-          "content": "美瑛",
-          "weight": 1
-        },
-        {
-          "content": "富良野",
-          "weight": 1
-        },
-        {
-          "content": "陸別",
-          "weight": 1
-        },
-        {
-          "content": "阿寒",
-          "weight": 1
-        },
-        {
-          "content": "摩周",
-          "weight": 1
-        },
-        {
-          "content": "中標津",
-          "weight": 1
-        },
-        {
-          "content": "砂川",
-          "weight": 1
-        },
-        {
-          "content": "別海",
-          "weight": 1
-        },
-        {
-          "content": "余市",
-          "weight": 1
-        },
-        {
-          "content": "小樽",
-          "weight": 1
-        },
-        {
-          "content": "札幌",
-          "weight": 1
-        },
-        {
-          "content": "足寄",
-          "weight": 1
-        },
-        {
-          "content": "ススキノ",
-          "weight": 1
-        },
-        {
-          "content": "夕張",
-          "weight": 1
-        },
-        {
-          "content": "定山渓",
-          "weight": 1
-        },
-        {
-          "content": "根室",
-          "weight": 1
-        },
-        {
-          "content": "ニセコ",
-          "weight": 1
-        },
-        {
-          "content": "釧路",
-          "weight": 1
-        },
-        {
-          "content": "厚岸",
-          "weight": 1
-        },
-        {
-          "content": "長万部",
-          "weight": 1
-        },
-        {
-          "content": "洞爺湖",
-          "weight": 1
-        },
-        {
-          "content": "芽室",
-          "weight": 1
-        },
-        {
-          "content": "帯広",
-          "weight": 1
-        },
-        {
-          "content": "池田",
-          "weight": 1
-        },
-        {
-          "content": "登別",
-          "weight": 1
-        },
-        {
-          "content": "苫小牧",
-          "weight": 1
-        },
-        {
-          "content": "中札内",
-          "weight": 1
-        },
-        {
-          "content": "室蘭",
-          "weight": 1
-        },
-        {
-          "content": "八雲",
-          "weight": 1
-        },
-        {
-          "content": "森",
-          "weight": 1
-        },
-        {
-          "content": "襟裳",
-          "weight": 1
-        },
-        {
-          "content": "江差",
-          "weight": 1
-        },
-        {
-          "content": "函館",
-          "weight": 1
-        },
-        {
-          "content": "松前",
-          "weight": 1
-        },
-        {
-          "content": "大間",
-          "weight": 1
-        },
-        {
-          "content": "竜飛",
-          "weight": 1
-        },
-        {
-          "content": "むつ",
-          "weight": 1
-        },
-        {
-          "content": "五所川原",
-          "weight": 1
-        },
-        {
-          "content": "菜の花",
-          "weight": 1
-        },
-        {
-          "content": "金木",
-          "weight": 1
-        },
-        {
-          "content": "青森",
-          "weight": 1
-        },
-        {
-          "content": "弘前",
-          "weight": 1
-        },
-        {
-          "content": "黒石",
-          "weight": 1
-        },
-        {
-          "content": "三沢",
-          "weight": 1
-        },
-        {
-          "content": "田子",
-          "weight": 1
-        },
-        {
-          "content": "八戸",
-          "weight": 1
-        },
-        {
-          "content": "三戸",
-          "weight": 1
-        },
-        {
-          "content": "久慈",
-          "weight": 1
-        },
-        {
-          "content": "秋田",
-          "weight": 1
-        },
-        {
-          "content": "盛岡",
-          "weight": 1
-        },
-        {
-          "content": "角館",
-          "weight": 1
-        },
-        {
-          "content": "花巻",
-          "weight": 1
-        },
-        {
-          "content": "遠野",
-          "weight": 1
-        },
-        {
-          "content": "釜石",
-          "weight": 1
-        },
-        {
-          "content": "横手",
-          "weight": 1
-        },
-        {
-          "content": "平泉",
-          "weight": 1
-        },
-        {
-          "content": "大船渡",
-          "weight": 1
-        },
-        {
-          "content": "気仙沼",
-          "weight": 1
-        },
-        {
-          "content": "酒田",
-          "weight": 1
-        },
-        {
-          "content": "鳴子",
-          "weight": 1
-        },
-        {
-          "content": "鶴岡",
-          "weight": 1
-        },
-        {
-          "content": "登米",
-          "weight": 1
-        },
-        {
-          "content": "石巻",
-          "weight": 1
-        },
-        {
-          "content": "女川",
-          "weight": 1
-        },
-        {
-          "content": "天童",
-          "weight": 1
-        },
-        {
-          "content": "仙台",
-          "weight": 1
-        },
-        {
-          "content": "松島",
-          "weight": 1
-        },
-        {
-          "content": "山形",
-          "weight": 1
-        },
-        {
-          "content": "名取",
-          "weight": 1
-        },
-        {
-          "content": "米沢",
-          "weight": 1
-        },
-        {
-          "content": "福島",
-          "weight": 1
-        },
-        {
-          "content": "喜多方",
-          "weight": 1
-        },
-        {
-          "content": "会津若松",
-          "weight": 1
-        },
-        {
-          "content": "郡山",
-          "weight": 1
-        },
-        {
-          "content": "いわき",
-          "weight": 1
-        },
-        {
-          "content": "那須",
-          "weight": 1
-        },
-        {
-          "content": "北茨城",
-          "weight": 1
-        },
-        {
-          "content": "宇都宮",
-          "weight": 1
-        },
-        {
-          "content": "草津",
-          "weight": 1
-        },
-        {
-          "content": "沼田",
-          "weight": 1
-        },
-        {
-          "content": "ひたちなか",
-          "weight": 1
-        },
-        {
-          "content": "高崎",
-          "weight": 1
-        },
-        {
-          "content": "前橋",
-          "weight": 1
-        },
-        {
-          "content": "桐生",
-          "weight": 1
-        },
-        {
-          "content": "栃木",
-          "weight": 1
-        },
-        {
-          "content": "笠間",
-          "weight": 1
-        },
-        {
-          "content": "水戸",
-          "weight": 1
-        },
-        {
-          "content": "深谷",
-          "weight": 1
-        },
-        {
-          "content": "熊谷",
-          "weight": 1
-        },
-        {
-          "content": "さいたま",
-          "weight": 1
-        },
-        {
-          "content": "土浦",
-          "weight": 1
-        },
-        {
-          "content": "秩父",
-          "weight": 1
-        },
-        {
-          "content": "上野",
-          "weight": 1
-        },
-        {
-          "content": "浅草",
-          "weight": 1
-        },
-        {
-          "content": "大久保",
-          "weight": 1
-        },
-        {
-          "content": "秋葉原",
-          "weight": 1
-        },
-        {
-          "content": "八王子",
-          "weight": 1
-        },
-        {
-          "content": "新宿",
-          "weight": 1
-        },
-        {
-          "content": "後楽園",
-          "weight": 1
-        },
-        {
-          "content": "東京",
-          "weight": 1
-        },
-        {
-          "content": "日本橋",
-          "weight": 1
-        },
-        {
-          "content": "船橋",
-          "weight": 1
-        },
-        {
-          "content": "佐原",
-          "weight": 1
-        },
-        {
-          "content": "千駄ヶ谷",
-          "weight": 1
-        },
-        {
-          "content": "銀座",
-          "weight": 1
-        },
-        {
-          "content": "幕張",
-          "weight": 1
-        },
-        {
-          "content": "原宿",
-          "weight": 1
-        },
-        {
-          "content": "渋谷",
-          "weight": 1
-        },
-        {
-          "content": "品川",
-          "weight": 1
-        },
-        {
-          "content": "お台場",
-          "weight": 1
-        },
-        {
-          "content": "千葉",
-          "weight": 1
-        },
-        {
-          "content": "銚子",
-          "weight": 1
-        },
-        {
-          "content": "中華街",
-          "weight": 1
-        },
-        {
-          "content": "横浜",
-          "weight": 1
-        },
-        {
-          "content": "川崎",
-          "weight": 1
-        },
-        {
-          "content": "箱根",
-          "weight": 1
-        },
-        {
-          "content": "鎌倉",
-          "weight": 1
-        },
-        {
-          "content": "小田原",
-          "weight": 1
-        },
-        {
-          "content": "横須賀",
-          "weight": 1
-        },
-        {
-          "content": "鴨川",
-          "weight": 1
-        },
-        {
-          "content": "湯河原",
-          "weight": 1
-        },
-        {
-          "content": "館山",
-          "weight": 1
-        },
-        {
-          "content": "伊豆大島",
-          "weight": 1
-        },
-        {
-          "content": "八丈島",
-          "weight": 1
-        },
-        {
-          "content": "佐渡",
-          "weight": 1
-        },
-        {
-          "content": "村上",
-          "weight": 1
-        },
-        {
-          "content": "新潟",
-          "weight": 1
-        },
-        {
-          "content": "長岡",
-          "weight": 1
-        },
-        {
-          "content": "魚沼",
-          "weight": 1
-        },
-        {
-          "content": "和倉温泉",
-          "weight": 1
-        },
-        {
-          "content": "上越",
-          "weight": 1
-        },
-        {
-          "content": "湯沢",
-          "weight": 1
-        },
-        {
-          "content": "糸魚川",
-          "weight": 1
-        },
-        {
-          "content": "長野",
-          "weight": 1
-        },
-        {
-          "content": "小布施",
-          "weight": 1
-        },
-        {
-          "content": "氷見",
-          "weight": 1
-        },
-        {
-          "content": "射水",
-          "weight": 1
-        },
-        {
-          "content": "高岡",
-          "weight": 1
-        },
-        {
-          "content": "富山",
-          "weight": 1
-        },
-        {
-          "content": "白馬",
-          "weight": 1
-        },
-        {
-          "content": "千曲",
-          "weight": 1
-        },
-        {
-          "content": "軽井沢",
-          "weight": 1
-        },
-        {
-          "content": "東尋坊",
-          "weight": 1
-        },
-        {
-          "content": "金沢",
-          "weight": 1
-        },
-        {
-          "content": "香林坊",
-          "weight": 1
-        },
-        {
-          "content": "茶屋街",
-          "weight": 1
-        },
-        {
-          "content": "上田",
-          "weight": 1
-        },
-        {
-          "content": "福井",
-          "weight": 1
-        },
-        {
-          "content": "小松",
-          "weight": 1
-        },
-        {
-          "content": "松本",
-          "weight": 1
-        },
-        {
-          "content": "鯖江",
-          "weight": 1
-        },
-        {
-          "content": "高山",
-          "weight": 1
-        },
-        {
-          "content": "小淵沢",
-          "weight": 1
-        },
-        {
-          "content": "小浜",
-          "weight": 1
-        },
-        {
-          "content": "敦賀",
-          "weight": 1
-        },
-        {
-          "content": "郡上",
-          "weight": 1
-        },
-        {
-          "content": "駒ヶ根",
-          "weight": 1
-        },
-        {
-          "content": "甲府",
-          "weight": 1
-        },
-        {
-          "content": "富士吉田",
-          "weight": 1
-        },
-        {
-          "content": "岐阜",
-          "weight": 1
-        },
-        {
-          "content": "土岐",
-          "weight": 1
-        },
-        {
-          "content": "中津川",
-          "weight": 1
-        },
-        {
-          "content": "名古屋",
-          "weight": 1
-        },
-        {
-          "content": "栄",
-          "weight": 1
-        },
-        {
-          "content": "豊田",
-          "weight": 1
-        },
-        {
-          "content": "瀬戸",
-          "weight": 1
-        },
-        {
-          "content": "名古屋港",
-          "weight": 1
-        },
-        {
-          "content": "安城",
-          "weight": 1
-        },
-        {
-          "content": "岡崎",
-          "weight": 1
-        },
-        {
-          "content": "静岡",
-          "weight": 1
-        },
-        {
-          "content": "富士宮",
-          "weight": 1
-        },
-        {
-          "content": "三島",
-          "weight": 1
-        },
-        {
-          "content": "熱海",
-          "weight": 1
-        },
-        {
-          "content": "常滑",
-          "weight": 1
-        },
-        {
-          "content": "修善寺",
-          "weight": 1
-        },
-        {
-          "content": "豊橋",
-          "weight": 1
-        },
-        {
-          "content": "浜松",
-          "weight": 1
-        },
-        {
-          "content": "松崎",
-          "weight": 1
-        },
-        {
-          "content": "伊豆高原",
-          "weight": 1
-        },
-        {
-          "content": "下田",
-          "weight": 1
-        },
-        {
-          "content": "城崎",
-          "weight": 1
-        },
-        {
-          "content": "舞鶴",
-          "weight": 1
-        },
-        {
-          "content": "出石",
-          "weight": 1
-        },
-        {
-          "content": "長浜",
-          "weight": 1
-        },
-        {
-          "content": "福知山",
-          "weight": 1
-        },
-        {
-          "content": "彦根",
-          "weight": 1
-        },
-        {
-          "content": "大津",
-          "weight": 1
-        },
-        {
-          "content": "近江八幡",
-          "weight": 1
-        },
-        {
-          "content": "嵐山",
-          "weight": 1
-        },
-        {
-          "content": "京都",
-          "weight": 1
-        },
-        {
-          "content": "祇園",
-          "weight": 1
-        },
-        {
-          "content": "姫路",
-          "weight": 1
-        },
-        {
-          "content": "三田",
-          "weight": 1
-        },
-        {
-          "content": "吹田",
-          "weight": 1
-        },
-        {
-          "content": "赤穂",
-          "weight": 1
-        },
-        {
-          "content": "有馬",
-          "weight": 1
-        },
-        {
-          "content": "明石",
-          "weight": 1
-        },
-        {
-          "content": "神戸",
-          "weight": 1
-        },
-        {
-          "content": "大阪",
-          "weight": 1
-        },
-        {
-          "content": "門真",
-          "weight": 1
-        },
-        {
-          "content": "四日市",
-          "weight": 1
-        },
-        {
-          "content": "淡路島",
-          "weight": 1
-        },
-        {
-          "content": "天保山",
-          "weight": 1
-        },
-        {
-          "content": "なんば",
-          "weight": 1
-        },
-        {
-          "content": "北浜",
-          "weight": 1
-        },
-        {
-          "content": "京橋",
-          "weight": 1
-        },
-        {
-          "content": "伊賀",
-          "weight": 1
-        },
-        {
-          "content": "天王寺",
-          "weight": 1
-        },
-        {
-          "content": "鶴橋",
-          "weight": 1
-        },
-        {
-          "content": "奈良",
-          "weight": 1
-        },
-        {
-          "content": "津",
-          "weight": 1
-        },
-        {
-          "content": "堺",
-          "weight": 1
-        },
-        {
-          "content": "橿原",
-          "weight": 1
-        },
-        {
-          "content": "松阪",
-          "weight": 1
-        },
-        {
-          "content": "岸和田",
-          "weight": 1
-        },
-        {
-          "content": "五條",
-          "weight": 1
-        },
-        {
-          "content": "伊勢",
-          "weight": 1
-        },
-        {
-          "content": "鳥羽",
-          "weight": 1
-        },
-        {
-          "content": "和歌山",
-          "weight": 1
-        },
-        {
-          "content": "新宮",
-          "weight": 1
-        },
-        {
-          "content": "御坊",
-          "weight": 1
-        },
-        {
-          "content": "白浜",
-          "weight": 1
-        },
-        {
-          "content": "出雲",
-          "weight": 1
-        },
-        {
-          "content": "大根島",
-          "weight": 1
-        },
-        {
-          "content": "境港",
-          "weight": 1
-        },
-        {
-          "content": "松江",
-          "weight": 1
-        },
-        {
-          "content": "安来",
-          "weight": 1
-        },
-        {
-          "content": "鳥取",
-          "weight": 1
-        },
-        {
-          "content": "蒜山",
-          "weight": 1
-        },
-        {
-          "content": "石見銀山",
-          "weight": 1
-        },
-        {
-          "content": "仙崎",
-          "weight": 1
-        },
-        {
-          "content": "萩",
-          "weight": 1
-        },
-        {
-          "content": "浜田",
-          "weight": 1
-        },
-        {
-          "content": "津和野",
-          "weight": 1
-        },
-        {
-          "content": "倉敷",
-          "weight": 1
-        },
-        {
-          "content": "岡山",
-          "weight": 1
-        },
-        {
-          "content": "下関",
-          "weight": 1
-        },
-        {
-          "content": "湯田温泉",
-          "weight": 1
-        },
-        {
-          "content": "日生",
-          "weight": 1
-        },
-        {
-          "content": "山口",
-          "weight": 1
-        },
-        {
-          "content": "宮島",
-          "weight": 1
-        },
-        {
-          "content": "広島",
-          "weight": 1
-        },
-        {
-          "content": "尾道",
-          "weight": 1
-        },
-        {
-          "content": "福山",
-          "weight": 1
-        },
-        {
-          "content": "宇部",
-          "weight": 1
-        },
-        {
-          "content": "柳井",
-          "weight": 1
-        },
-        {
-          "content": "岩国",
-          "weight": 1
-        },
-        {
-          "content": "呉",
-          "weight": 1
-        },
-        {
-          "content": "鞆の浦",
-          "weight": 1
-        },
-        {
-          "content": "生口島",
-          "weight": 1
-        },
-        {
-          "content": "坂出",
-          "weight": 1
-        },
-        {
-          "content": "高松",
-          "weight": 1
-        },
-        {
-          "content": "さぬき",
-          "weight": 1
-        },
-        {
-          "content": "大三島",
-          "weight": 1
-        },
-        {
-          "content": "今治",
-          "weight": 1
-        },
-        {
-          "content": "四国中央",
-          "weight": 1
-        },
-        {
-          "content": "鳴門",
-          "weight": 1
-        },
-        {
-          "content": "松山",
-          "weight": 1
-        },
-        {
-          "content": "道後",
-          "weight": 1
-        },
-        {
-          "content": "徳島",
-          "weight": 1
-        },
-        {
-          "content": "宇和島",
-          "weight": 1
-        },
-        {
-          "content": "須崎",
-          "weight": 1
-        },
-        {
-          "content": "高知",
-          "weight": 1
-        },
-        {
-          "content": "安芸",
-          "weight": 1
-        },
-        {
-          "content": "四万十川",
-          "weight": 1
-        },
-        {
-          "content": "土佐清水",
-          "weight": 1
-        },
-        {
-          "content": "対馬",
-          "weight": 1
-        },
-        {
-          "content": "壱岐",
-          "weight": 1
-        },
-        {
-          "content": "糸島",
-          "weight": 1
-        },
-        {
-          "content": "門司港",
-          "weight": 1
-        },
-        {
-          "content": "唐津",
-          "weight": 1
-        },
-        {
-          "content": "中洲",
-          "weight": 1
-        },
-        {
-          "content": "博多",
-          "weight": 1
-        },
-        {
-          "content": "小倉",
-          "weight": 1
-        },
-        {
-          "content": "佐世保",
-          "weight": 1
-        },
-        {
-          "content": "伊万里",
-          "weight": 1
-        },
-        {
-          "content": "太宰府",
-          "weight": 1
-        },
-        {
-          "content": "飯塚",
-          "weight": 1
-        },
-        {
-          "content": "中津",
-          "weight": 1
-        },
-        {
-          "content": "有田",
-          "weight": 1
-        },
-        {
-          "content": "小城",
-          "weight": 1
-        },
-        {
-          "content": "佐賀",
-          "weight": 1
-        },
-        {
-          "content": "鳥栖",
-          "weight": 1
-        },
-        {
-          "content": "秋月",
-          "weight": 1
-        },
-        {
-          "content": "別府",
-          "weight": 1
-        },
-        {
-          "content": "五島",
-          "weight": 1
-        },
-        {
-          "content": "諫早",
-          "weight": 1
-        },
-        {
-          "content": "久留米",
-          "weight": 1
-        },
-        {
-          "content": "日田",
-          "weight": 1
-        },
-        {
-          "content": "湯布院",
-          "weight": 1
-        },
-        {
-          "content": "大分",
-          "weight": 1
-        },
-        {
-          "content": "長崎",
-          "weight": 1
-        },
-        {
-          "content": "茂木",
-          "weight": 1
-        },
-        {
-          "content": "竹田",
-          "weight": 1
-        },
-        {
-          "content": "熊本",
-          "weight": 1
-        },
-        {
-          "content": "天草",
-          "weight": 1
-        },
-        {
-          "content": "八代",
-          "weight": 1
-        },
-        {
-          "content": "水俣",
-          "weight": 1
-        },
-        {
-          "content": "人吉",
-          "weight": 1
-        },
-        {
-          "content": "西都",
-          "weight": 1
-        },
-        {
-          "content": "宮崎",
-          "weight": 1
-        },
-        {
-          "content": "鹿児島",
-          "weight": 1
-        },
-        {
-          "content": "都城",
-          "weight": 1
-        },
-        {
-          "content": "知覧",
-          "weight": 1
-        },
-        {
-          "content": "桜島",
-          "weight": 1
-        },
-        {
-          "content": "枕崎",
-          "weight": 1
-        },
-        {
-          "content": "鹿屋",
-          "weight": 1
-        },
-        {
-          "content": "屋久島",
-          "weight": 1
-        },
-        {
-          "content": "種子島",
-          "weight": 1
-        },
-        {
-          "content": "大宜味",
-          "weight": 1
-        },
-        {
-          "content": "久米島",
-          "weight": 1
-        },
-        {
-          "content": "本部",
-          "weight": 1
-        },
-        {
-          "content": "名護",
-          "weight": 1
-        },
-        {
-          "content": "奄美大島",
-          "weight": 1
-        },
-        {
-          "content": "金武",
-          "weight": 1
-        },
-        {
-          "content": "うるま",
-          "weight": 1
-        },
-        {
-          "content": "那覇",
-          "weight": 1
-        },
-        {
-          "content": "石垣島",
-          "weight": 1
-        },
-        {
-          "content": "宮古島",
-          "weight": 1
-        }
-      ]
-    },
-    "CardStationAbroad": {
-      "id": "CardStationAbroad",
-      "key": "CardStationAbroad",
-      "name": "カード駅:地名海外",
-      "createdAt": "2025-08-31T17:03:32.741Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 15,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "アシガバット",
-          "weight": 1
-        },
-        {
-          "content": "アスタナ",
-          "weight": 1
-        },
-        {
-          "content": "アルマティ",
-          "weight": 1
-        },
-        {
-          "content": "イスラマバード",
-          "weight": 1
-        },
-        {
-          "content": "ウランバートル",
-          "weight": 1
-        },
-        {
-          "content": "オラル",
-          "weight": 1
-        },
-        {
-          "content": "カトマンズ",
-          "weight": 1
-        },
-        {
-          "content": "カブール",
-          "weight": 1
-        },
-        {
-          "content": "カラコル",
-          "weight": 1
-        },
-        {
-          "content": "カラチ",
-          "weight": 1
-        },
-        {
-          "content": "クアラルンプール",
-          "weight": 1
-        },
-        {
-          "content": "グジュラーンワーラ",
-          "weight": 1
-        },
-        {
-          "content": "コルタカ",
-          "weight": 1
-        },
-        {
-          "content": "ジャカルタ",
-          "weight": 1
-        },
-        {
-          "content": "シンガポール",
-          "weight": 1
-        },
-        {
-          "content": "ソウル",
-          "weight": 1
-        },
-        {
-          "content": "タシケント",
-          "weight": 1
-        },
-        {
-          "content": "ダッカ",
-          "weight": 1
-        },
-        {
-          "content": "ダランザドガド",
-          "weight": 1
-        },
-        {
-          "content": "チェンマイ",
-          "weight": 1
-        },
-        {
-          "content": "ディリ",
-          "weight": 1
-        },
-        {
-          "content": "ティンプー",
-          "weight": 1
-        },
-        {
-          "content": "デリー",
-          "weight": 1
-        },
-        {
-          "content": "ドゥシャンベ",
-          "weight": 1
-        },
-        {
-          "content": "トルクメナバート",
-          "weight": 1
-        },
-        {
-          "content": "ヌクス",
-          "weight": 1
-        },
-        {
-          "content": "ハイデラバード",
-          "weight": 1
-        },
-        {
-          "content": "バグラム",
-          "weight": 1
-        },
-        {
-          "content": "ハノイ",
-          "weight": 1
-        },
-        {
-          "content": "バリ島",
-          "weight": 1
-        },
-        {
-          "content": "ハルビン",
-          "weight": 1
-        },
-        {
-          "content": "バンコク",
-          "weight": 1
-        },
-        {
-          "content": "バンダルスリブガワン",
-          "weight": 1
-        },
-        {
-          "content": "ビエンチャン",
-          "weight": 1
-        },
-        {
-          "content": "ビシュケク",
-          "weight": 1
-        },
-        {
-          "content": "プノンペン",
-          "weight": 1
-        },
-        {
-          "content": "ベンガルール",
-          "weight": 1
-        },
-        {
-          "content": "ホーチミン",
-          "weight": 1
-        },
-        {
-          "content": "マカオ",
-          "weight": 1
-        },
-        {
-          "content": "マニラ",
-          "weight": 1
-        },
-        {
-          "content": "マレ",
-          "weight": 1
-        },
-        {
-          "content": "ムンバイ",
-          "weight": 1
-        },
-        {
-          "content": "ヤンゴン",
-          "weight": 1
-        },
-        {
-          "content": "ラホール",
-          "weight": 1
-        },
-        {
-          "content": "京都",
-          "weight": 1
-        },
-        {
-          "content": "広州",
-          "weight": 1
-        },
-        {
-          "content": "杭州",
-          "weight": 1
-        },
-        {
-          "content": "香港",
-          "weight": 1
-        },
-        {
-          "content": "高雄",
-          "weight": 1
-        },
-        {
-          "content": "昆明",
-          "weight": 1
-        },
-        {
-          "content": "済南",
-          "weight": 1
-        },
-        {
-          "content": "札幌",
-          "weight": 1
-        },
-        {
-          "content": "重慶",
-          "weight": 1
-        },
-        {
-          "content": "上海",
-          "weight": 1
-        },
-        {
-          "content": "深圳",
-          "weight": 1
-        },
-        {
-          "content": "成都",
-          "weight": 1
-        },
-        {
-          "content": "西安",
-          "weight": 1
-        },
-        {
-          "content": "青島",
-          "weight": 1
-        },
-        {
-          "content": "石家荘",
-          "weight": 1
-        },
-        {
-          "content": "台北",
-          "weight": 1
-        },
-        {
-          "content": "大阪",
-          "weight": 1
-        },
-        {
-          "content": "大連",
-          "weight": 1
-        },
-        {
-          "content": "長沙",
-          "weight": 1
-        },
-        {
-          "content": "長春",
-          "weight": 1
-        },
-        {
-          "content": "天津",
-          "weight": 1
-        },
-        {
-          "content": "東京",
-          "weight": 1
-        },
-        {
-          "content": "那覇",
-          "weight": 1
-        },
-        {
-          "content": "南京",
-          "weight": 1
-        },
-        {
-          "content": "福州",
-          "weight": 1
-        },
-        {
-          "content": "平壌",
-          "weight": 1
-        },
-        {
-          "content": "北京",
-          "weight": 1
-        },
-        {
-          "content": "瀋陽",
-          "weight": 1
-        },
-        {
-          "content": "アダムスタウン",
-          "weight": 1
-        },
-        {
-          "content": "アデレード",
-          "weight": 1
-        },
-        {
-          "content": "アバルア",
-          "weight": 1
-        },
-        {
-          "content": "アピア",
-          "weight": 1
-        },
-        {
-          "content": "ウェイパ",
-          "weight": 1
-        },
-        {
-          "content": "ウェスト島",
-          "weight": 1
-        },
-        {
-          "content": "ウェリントン",
-          "weight": 1
-        },
-        {
-          "content": "ウルル平和公園",
-          "weight": 1
-        },
-        {
-          "content": "オークランド",
-          "weight": 1
-        },
-        {
-          "content": "ケアンズ",
-          "weight": 1
-        },
-        {
-          "content": "ゴールドコースト",
-          "weight": 1
-        },
-        {
-          "content": "シドニー",
-          "weight": 1
-        },
-        {
-          "content": "スバ",
-          "weight": 1
-        },
-        {
-          "content": "ダーウィン",
-          "weight": 1
-        },
-        {
-          "content": "タラワ",
-          "weight": 1
-        },
-        {
-          "content": "ヌーメア",
-          "weight": 1
-        },
-        {
-          "content": "ヌクアロファ",
-          "weight": 1
-        },
-        {
-          "content": "パース",
-          "weight": 1
-        },
-        {
-          "content": "パペエテ",
-          "weight": 1
-        },
-        {
-          "content": "パリキール",
-          "weight": 1
-        },
-        {
-          "content": "フナフティ",
-          "weight": 1
-        },
-        {
-          "content": "ブリズベン",
-          "weight": 1
-        },
-        {
-          "content": "ポートヘッドランド",
-          "weight": 1
-        },
-        {
-          "content": "ポートモレスビー",
-          "weight": 1
-        },
-        {
-          "content": "ホニアラ",
-          "weight": 1
-        },
-        {
-          "content": "メルボルン",
-          "weight": 1
-        },
-        {
-          "content": "アテネ",
-          "weight": 1
-        },
-        {
-          "content": "アムステルダム",
-          "weight": 1
-        },
-        {
-          "content": "アルハンゲリスク",
-          "weight": 1
-        },
-        {
-          "content": "アンドララベリャ",
-          "weight": 1
-        },
-        {
-          "content": "イルクーツク",
-          "weight": 1
-        },
-        {
-          "content": "ウィーン",
-          "weight": 1
-        },
-        {
-          "content": "ウラジオストク",
-          "weight": 1
-        },
-        {
-          "content": "エカテリンブルク",
-          "weight": 1
-        },
-        {
-          "content": "エレバン",
-          "weight": 1
-        },
-        {
-          "content": "オスロ",
-          "weight": 1
-        },
-        {
-          "content": "オデーサ",
-          "weight": 1
-        },
-        {
-          "content": "オムスク",
-          "weight": 1
-        },
-        {
-          "content": "オレンブルク",
-          "weight": 1
-        },
-        {
-          "content": "カザン",
-          "weight": 1
-        },
-        {
-          "content": "キーウ",
-          "weight": 1
-        },
-        {
-          "content": "キシナウ",
-          "weight": 1
-        },
-        {
-          "content": "クラスノダール",
-          "weight": 1
-        },
-        {
-          "content": "コペンハーゲン",
-          "weight": 1
-        },
-        {
-          "content": "ザグレブ",
-          "weight": 1
-        },
-        {
-          "content": "サマーラ",
-          "weight": 1
-        },
-        {
-          "content": "サンクトペテルブルク",
-          "weight": 1
-        },
-        {
-          "content": "サンマリノ",
-          "weight": 1
-        },
-        {
-          "content": "ジュネーブ",
-          "weight": 1
-        },
-        {
-          "content": "ストックホルム",
-          "weight": 1
-        },
-        {
-          "content": "スモレンスク",
-          "weight": 1
-        },
-        {
-          "content": "ソチ",
-          "weight": 1
-        },
-        {
-          "content": "ソフィア",
-          "weight": 1
-        },
-        {
-          "content": "ダブリン",
-          "weight": 1
-        },
-        {
-          "content": "タリン",
-          "weight": 1
-        },
-        {
-          "content": "チェリャビンスク",
-          "weight": 1
-        },
-        {
-          "content": "ティラナ",
-          "weight": 1
-        },
-        {
-          "content": "テッサロニキ",
-          "weight": 1
-        },
-        {
-          "content": "トースハウン",
-          "weight": 1
-        },
-        {
-          "content": "トビリシ",
-          "weight": 1
-        },
-        {
-          "content": "ナポリ",
-          "weight": 1
-        },
-        {
-          "content": "ナルヴァ",
-          "weight": 1
-        },
-        {
-          "content": "ニジニーノヴゴロド",
-          "weight": 1
-        },
-        {
-          "content": "ヌーク",
-          "weight": 1
-        },
-        {
-          "content": "ノボシビルスク",
-          "weight": 1
-        },
-        {
-          "content": "ノリリスク",
-          "weight": 1
-        },
-        {
-          "content": "バクー",
-          "weight": 1
-        },
-        {
-          "content": "バス＝テール",
-          "weight": 1
-        },
-        {
-          "content": "パリ",
-          "weight": 1
-        },
-        {
-          "content": "バルセロナ",
-          "weight": 1
-        },
-        {
-          "content": "バレッタ",
-          "weight": 1
-        },
-        {
-          "content": "バレンシア",
-          "weight": 1
-        },
-        {
-          "content": "ビリニュス",
-          "weight": 1
-        },
-        {
-          "content": "ファドーツ",
-          "weight": 1
-        },
-        {
-          "content": "フィレンツェ",
-          "weight": 1
-        },
-        {
-          "content": "ブカレスト",
-          "weight": 1
-        },
-        {
-          "content": "ブダペスト",
-          "weight": 1
-        },
-        {
-          "content": "プラハ",
-          "weight": 1
-        },
-        {
-          "content": "フランクフルト",
-          "weight": 1
-        },
-        {
-          "content": "ブリュッセル",
-          "weight": 1
-        },
-        {
-          "content": "ベオグラード",
-          "weight": 1
-        },
-        {
-          "content": "ベネツィア",
-          "weight": 1
-        },
-        {
-          "content": "ベルゴロド",
-          "weight": 1
-        },
-        {
-          "content": "ヘルシンキ",
-          "weight": 1
-        },
-        {
-          "content": "ベルリン",
-          "weight": 1
-        },
-        {
-          "content": "ホメリ",
-          "weight": 1
-        },
-        {
-          "content": "ボルゴグラード",
-          "weight": 1
-        },
-        {
-          "content": "マドリード",
-          "weight": 1
-        },
-        {
-          "content": "マンチェスター",
-          "weight": 1
-        },
-        {
-          "content": "ミュンヘン",
-          "weight": 1
-        },
-        {
-          "content": "ミラノ",
-          "weight": 1
-        },
-        {
-          "content": "ミンスク",
-          "weight": 1
-        },
-        {
-          "content": "モスクワ",
-          "weight": 1
-        },
-        {
-          "content": "ヤクーツク",
-          "weight": 1
-        },
-        {
-          "content": "リガ",
-          "weight": 1
-        },
-        {
-          "content": "リスボン",
-          "weight": 1
-        },
-        {
-          "content": "リヨン",
-          "weight": 1
-        },
-        {
-          "content": "レイキャビク",
-          "weight": 1
-        },
-        {
-          "content": "ロヴァニエミ",
-          "weight": 1
-        },
-        {
-          "content": "ローマ",
-          "weight": 1
-        },
-        {
-          "content": "ロンドン",
-          "weight": 1
-        },
-        {
-          "content": "ワルシャワ",
-          "weight": 1
-        },
-        {
-          "content": "アデン",
-          "weight": 1
-        },
-        {
-          "content": "アブダビ",
-          "weight": 1
-        },
-        {
-          "content": "アル・アイン",
-          "weight": 1
-        },
-        {
-          "content": "アルビール",
-          "weight": 1
-        },
-        {
-          "content": "アンカラ",
-          "weight": 1
-        },
-        {
-          "content": "アンマン",
-          "weight": 1
-        },
-        {
-          "content": "イスタンブール",
-          "weight": 1
-        },
-        {
-          "content": "エルサレム",
-          "weight": 1
-        },
-        {
-          "content": "クウェート",
-          "weight": 1
-        },
-        {
-          "content": "シーラーズ",
-          "weight": 1
-        },
-        {
-          "content": "ダマスカス",
-          "weight": 1
-        },
-        {
-          "content": "テヘラン",
-          "weight": 1
-        },
-        {
-          "content": "テルアヴィヴ",
-          "weight": 1
-        },
-        {
-          "content": "ドーハ",
-          "weight": 1
-        },
-        {
-          "content": "ドバイ",
-          "weight": 1
-        },
-        {
-          "content": "バグダッド",
-          "weight": 1
-        },
-        {
-          "content": "マナーマ",
-          "weight": 1
-        },
-        {
-          "content": "メッカ",
-          "weight": 1
-        },
-        {
-          "content": "メディナ",
-          "weight": 1
-        },
-        {
-          "content": "リヤド",
-          "weight": 1
-        },
-        {
-          "content": "アクラ",
-          "weight": 1
-        },
-        {
-          "content": "アスマラ",
-          "weight": 1
-        },
-        {
-          "content": "アディスアベバ",
-          "weight": 1
-        },
-        {
-          "content": "アビジャン",
-          "weight": 1
-        },
-        {
-          "content": "アベシェ",
-          "weight": 1
-        },
-        {
-          "content": "アルーシャ",
-          "weight": 1
-        },
-        {
-          "content": "アルジェ",
-          "weight": 1
-        },
-        {
-          "content": "アンタナナリボ",
-          "weight": 1
-        },
-        {
-          "content": "イレラ",
-          "weight": 1
-        },
-        {
-          "content": "ウィントフック",
-          "weight": 1
-        },
-        {
-          "content": "オラン",
-          "weight": 1
-        },
-        {
-          "content": "カイロ",
-          "weight": 1
-        },
-        {
-          "content": "カサブランカ",
-          "weight": 1
-        },
-        {
-          "content": "カンパラ",
-          "weight": 1
-        },
-        {
-          "content": "キガリ",
-          "weight": 1
-        },
-        {
-          "content": "キンシャサ",
-          "weight": 1
-        },
-        {
-          "content": "コナクリ",
-          "weight": 1
-        },
-        {
-          "content": "サン＝ドニ",
-          "weight": 1
-        },
-        {
-          "content": "ザンデール",
-          "weight": 1
-        },
-        {
-          "content": "サントメ",
-          "weight": 1
-        },
-        {
-          "content": "ジェームズタウン",
-          "weight": 1
-        },
-        {
-          "content": "ジブチ",
-          "weight": 1
-        },
-        {
-          "content": "ジュバ",
-          "weight": 1
-        },
-        {
-          "content": "ダーバン",
-          "weight": 1
-        },
-        {
-          "content": "ダカール",
-          "weight": 1
-        },
-        {
-          "content": "チュニス",
-          "weight": 1
-        },
-        {
-          "content": "トリポリ",
-          "weight": 1
-        },
-        {
-          "content": "ナイロビ",
-          "weight": 1
-        },
-        {
-          "content": "ニアメ",
-          "weight": 1
-        },
-        {
-          "content": "ヌアクショット",
-          "weight": 1
-        },
-        {
-          "content": "バヒルダル",
-          "weight": 1
-        },
-        {
-          "content": "ハボローネ",
-          "weight": 1
-        },
-        {
-          "content": "バマコ",
-          "weight": 1
-        },
-        {
-          "content": "ハラレ",
-          "weight": 1
-        },
-        {
-          "content": "バルダイ",
-          "weight": 1
-        },
-        {
-          "content": "ハルツーム",
-          "weight": 1
-        },
-        {
-          "content": "バンギ",
-          "weight": 1
-        },
-        {
-          "content": "ビクトリア",
-          "weight": 1
-        },
-        {
-          "content": "ビサウ",
-          "weight": 1
-        },
-        {
-          "content": "プライア",
-          "weight": 1
-        },
-        {
-          "content": "ブラザビル",
-          "weight": 1
-        },
-        {
-          "content": "フリータウン",
-          "weight": 1
-        },
-        {
-          "content": "ベンガジ",
-          "weight": 1
-        },
-        {
-          "content": "ポートエリザベス",
-          "weight": 1
-        },
-        {
-          "content": "ポートルイス",
-          "weight": 1
-        },
-        {
-          "content": "マセル",
-          "weight": 1
-        },
-        {
-          "content": "マプト",
-          "weight": 1
-        },
-        {
-          "content": "マムズ",
-          "weight": 1
-        },
-        {
-          "content": "マラケシ",
-          "weight": 1
-        },
-        {
-          "content": "マラボ",
-          "weight": 1
-        },
-        {
-          "content": "マンジニ",
-          "weight": 1
-        },
-        {
-          "content": "モガディッシュ",
-          "weight": 1
-        },
-        {
-          "content": "モンゴ",
-          "weight": 1
-        },
-        {
-          "content": "モンロビア",
-          "weight": 1
-        },
-        {
-          "content": "ヤウンデ",
-          "weight": 1
-        },
-        {
-          "content": "ヨハネスバーグ",
-          "weight": 1
-        },
-        {
-          "content": "ラゴス",
-          "weight": 1
-        },
-        {
-          "content": "リーブルビル",
-          "weight": 1
-        },
-        {
-          "content": "リロングウェ",
-          "weight": 1
-        },
-        {
-          "content": "ルアンダ",
-          "weight": 1
-        },
-        {
-          "content": "ルクソル",
-          "weight": 1
-        },
-        {
-          "content": "ルサカ",
-          "weight": 1
-        },
-        {
-          "content": "ルブンバシ",
-          "weight": 1
-        },
-        {
-          "content": "ロメ",
-          "weight": 1
-        },
-        {
-          "content": "ワガドゥグー",
-          "weight": 1
-        },
-        {
-          "content": "ンジャメナ",
-          "weight": 1
-        },
-        {
-          "content": "アトランタ",
-          "weight": 1
-        },
-        {
-          "content": "アンカレジ",
-          "weight": 1
-        },
-        {
-          "content": "イエローナイフ",
-          "weight": 1
-        },
-        {
-          "content": "インディアナポリス",
-          "weight": 1
-        },
-        {
-          "content": "ウィニペグ",
-          "weight": 1
-        },
-        {
-          "content": "エドモントン",
-          "weight": 1
-        },
-        {
-          "content": "オクラホマシティ",
-          "weight": 1
-        },
-        {
-          "content": "オタワ",
-          "weight": 1
-        },
-        {
-          "content": "ガラパン",
-          "weight": 1
-        },
-        {
-          "content": "カルガリー",
-          "weight": 1
-        },
-        {
-          "content": "ケベック",
-          "weight": 1
-        },
-        {
-          "content": "コロンバス",
-          "weight": 1
-        },
-        {
-          "content": "サンディエゴ",
-          "weight": 1
-        },
-        {
-          "content": "サンフランシスコ",
-          "weight": 1
-        },
-        {
-          "content": "シアトル",
-          "weight": 1
-        },
-        {
-          "content": "シカゴ",
-          "weight": 1
-        },
-        {
-          "content": "セントジョンズ",
-          "weight": 1
-        },
-        {
-          "content": "ソルトレークシティ",
-          "weight": 1
-        },
-        {
-          "content": "ダラス",
-          "weight": 1
-        },
-        {
-          "content": "デトロイト",
-          "weight": 1
-        },
-        {
-          "content": "デンバー",
-          "weight": 1
-        },
-        {
-          "content": "トロント",
-          "weight": 1
-        },
-        {
-          "content": "ナシュビル",
-          "weight": 1
-        },
-        {
-          "content": "ニューヨーク",
-          "weight": 1
-        },
-        {
-          "content": "ハミルトン",
-          "weight": 1
-        },
-        {
-          "content": "ハリファクス",
-          "weight": 1
-        },
-        {
-          "content": "バンクーバー",
-          "weight": 1
-        },
-        {
-          "content": "ヒューストン",
-          "weight": 1
-        },
-        {
-          "content": "フェニックス",
-          "weight": 1
-        },
-        {
-          "content": "ヘレナ",
-          "weight": 1
-        },
-        {
-          "content": "ボストン",
-          "weight": 1
-        },
-        {
-          "content": "ホノルル",
-          "weight": 1
-        },
-        {
-          "content": "マイアミ",
-          "weight": 1
-        },
-        {
-          "content": "ミネアポリス",
-          "weight": 1
-        },
-        {
-          "content": "ミルウォーキー",
-          "weight": 1
-        },
-        {
-          "content": "モントリオール",
-          "weight": 1
-        },
-        {
-          "content": "リンカーン",
-          "weight": 1
-        },
-        {
-          "content": "ロサンゼルス",
-          "weight": 1
-        },
-        {
-          "content": "ワシントンD.C.",
-          "weight": 1
-        },
-        {
-          "content": "アスンシオン",
-          "weight": 1
-        },
-        {
-          "content": "アラカジュ",
-          "weight": 1
-        },
-        {
-          "content": "アリーカ",
-          "weight": 1
-        },
-        {
-          "content": "アレキパ",
-          "weight": 1
-        },
-        {
-          "content": "イースター",
-          "weight": 1
-        },
-        {
-          "content": "イキトス",
-          "weight": 1
-        },
-        {
-          "content": "ウィレムシュタット",
-          "weight": 1
-        },
-        {
-          "content": "ウユニ",
-          "weight": 1
-        },
-        {
-          "content": "カラカス",
-          "weight": 1
-        },
-        {
-          "content": "カラジャス",
-          "weight": 1
-        },
-        {
-          "content": "ガラパゴス諸島",
-          "weight": 1
-        },
-        {
-          "content": "カルタヘナ",
-          "weight": 1
-        },
-        {
-          "content": "キト",
-          "weight": 1
-        },
-        {
-          "content": "キングストン",
-          "weight": 1
-        },
-        {
-          "content": "クイアバ",
-          "weight": 1
-        },
-        {
-          "content": "ククタ",
-          "weight": 1
-        },
-        {
-          "content": "クスコ",
-          "weight": 1
-        },
-        {
-          "content": "クリアカン",
-          "weight": 1
-        },
-        {
-          "content": "クリチーバ",
-          "weight": 1
-        },
-        {
-          "content": "ゴイアニア",
-          "weight": 1
-        },
-        {
-          "content": "コルドバ",
-          "weight": 1
-        },
-        {
-          "content": "サルタ",
-          "weight": 1
-        },
-        {
-          "content": "サルバドル",
-          "weight": 1
-        },
-        {
-          "content": "サンティアゴ",
-          "weight": 1
-        },
-        {
-          "content": "サントドミンゴ",
-          "weight": 1
-        },
-        {
-          "content": "サンパウロ",
-          "weight": 1
-        },
-        {
-          "content": "サンフアン",
-          "weight": 1
-        },
-        {
-          "content": "サンホセ",
-          "weight": 1
-        },
-        {
-          "content": "シウダーグアジャナ",
-          "weight": 1
-        },
-        {
-          "content": "シウダーデルエステ",
-          "weight": 1
-        },
-        {
-          "content": "シウダーファレス",
-          "weight": 1
-        },
-        {
-          "content": "ジョージタウン",
-          "weight": 1
-        },
-        {
-          "content": "スクレ",
-          "weight": 1
-        },
-        {
-          "content": "セントジョージズ",
-          "weight": 1
-        },
-        {
-          "content": "チンボテ",
-          "weight": 1
-        },
-        {
-          "content": "テグシガルパ",
-          "weight": 1
-        },
-        {
-          "content": "テムコ",
-          "weight": 1
-        },
-        {
-          "content": "トゥクマン",
-          "weight": 1
-        },
-        {
-          "content": "パナマシティ",
-          "weight": 1
-        },
-        {
-          "content": "ハバナ",
-          "weight": 1
-        },
-        {
-          "content": "パラマリボ",
-          "weight": 1
-        },
-        {
-          "content": "ピウラ",
-          "weight": 1
-        },
-        {
-          "content": "フィリップスブルフ",
-          "weight": 1
-        },
-        {
-          "content": "ブエノスアイレス",
-          "weight": 1
-        },
-        {
-          "content": "プエルトモント",
-          "weight": 1
-        },
-        {
-          "content": "フォルタレーザ",
-          "weight": 1
-        },
-        {
-          "content": "ブラジリア",
-          "weight": 1
-        },
-        {
-          "content": "フランカ",
-          "weight": 1
-        },
-        {
-          "content": "ベリーズシティ",
-          "weight": 1
-        },
-        {
-          "content": "ベレン",
-          "weight": 1
-        },
-        {
-          "content": "ボゴタ",
-          "weight": 1
-        },
-        {
-          "content": "ポルトアレグレ",
-          "weight": 1
-        },
-        {
-          "content": "ポルトヴェーリョ",
-          "weight": 1
-        },
-        {
-          "content": "マカパ",
-          "weight": 1
-        },
-        {
-          "content": "マチャラ",
-          "weight": 1
-        },
-        {
-          "content": "マナオス",
-          "weight": 1
-        },
-        {
-          "content": "マナグア",
-          "weight": 1
-        },
-        {
-          "content": "マラカイボ",
-          "weight": 1
-        },
-        {
-          "content": "メキシコシティ",
-          "weight": 1
-        },
-        {
-          "content": "メデジン",
-          "weight": 1
-        },
-        {
-          "content": "モンテゴベイ",
-          "weight": 1
-        },
-        {
-          "content": "モンテビデオ",
-          "weight": 1
-        },
-        {
-          "content": "モンテレー",
-          "weight": 1
-        },
-        {
-          "content": "ラパス",
-          "weight": 1
-        },
-        {
-          "content": "リオデジャネイロ",
-          "weight": 1
-        },
-        {
-          "content": "リマ",
-          "weight": 1
-        },
-        {
-          "content": "南極基地",
-          "weight": 1
-        }
+        "9123-1342-8604:振り子の支点",
+        "4151-8305-0408:Killer Vs Survivor",
+        "2122-9878-9929:BLAST CAVERN",
+        "0079-0691-0096:ジャンプクラブ？",
+        "6679-4238-9153:ぷにぷにじごく",
+        "7593-9797-0140:マイムマイム",
+        "2038-3785-4888:タイムロック クレート",
+        "6863-2771-6831:Fan Survival",
+        "1047-2162-6725:Haunted Doomspire",
+        "3946-1752-1174:サンザンダーランティス",
+        "6221-0517-9460:Oh Shoot!",
+        "5695-4354-0286:Squid Game - Season2",
+        "5400-6810-8096:Neutral Jump Survival [32 Players]",
+        "0554-2897-0984:ピンボールポインター"
       ]
     },
     "CardTypeNormal": {
@@ -4091,16 +975,17 @@
       "key": "CardTypeNormal",
       "name": "カード駅:通常カード",
       "createdAt": "2025-08-31T16:31:34.221Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 3,
+      "updatedAt": "2025-08-31T19:50:36.538Z",
+      "order": 2,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
       "values": [
         {
-          "content": "1000億円カード",
-          "weight": 1
+          "weight": 3,
+          "content": "<<CardStation>>に行け!カード"
         },
+        "1000億円カード",
         {
           "weight": 3,
           "content": "100億円カード"
@@ -4109,10 +994,7 @@
           "weight": 8,
           "content": "10億円カード"
         },
-        {
-          "content": "たいらのまさカード",
-          "weight": 1
-        },
+        "たいらのまさカード",
         {
           "weight": 2,
           "content": "ベビキュラーカード"
@@ -4121,22 +1003,13 @@
           "weight": 5,
           "content": "一攫千金カード"
         },
-        {
-          "content": "虎に翼x2カード",
-          "weight": 1
-        },
+        "虎に翼x2カード",
         {
           "weight": 5,
           "content": "虎に翼カード"
         },
-        {
-          "content": "坊主丸儲けカード",
-          "weight": 1
-        },
-        {
-          "content": "連帯保証人カード",
-          "weight": 1
-        },
+        "坊主丸儲けカード",
+        "連帯保証人カード",
         {
           "weight": 8,
           "content": "うんちカード"
@@ -4149,34 +1022,16 @@
           "weight": 2,
           "content": "キングに！カード"
         },
-        {
-          "content": "シャッフルカード",
-          "weight": 1
-        },
-        {
-          "content": "デビルカード",
-          "weight": 1
-        },
-        {
-          "content": "とりかえしカード",
-          "weight": 1
-        },
-        {
-          "content": "ナマハーゲンカード",
-          "weight": 1
-        },
+        "シャッフルカード",
+        "デビルカード",
+        "とりかえしカード",
+        "ナマハーゲンカード",
         {
           "weight": 2,
           "content": "ばちあたりカード"
         },
-        {
-          "content": "ボンバーマンカード",
-          "weight": 1
-        },
-        {
-          "content": "リトルデビルカード",
-          "weight": 1
-        },
+        "ボンバーマンカード",
+        "リトルデビルカード",
         {
           "weight": 2,
           "content": "海老で鯛をカード"
@@ -4193,46 +1048,22 @@
           "weight": 2,
           "content": "空港うんちカード"
         },
-        {
-          "content": "孤軍奮闘カード",
-          "weight": 1
-        },
-        {
-          "content": "指定うんち！カード",
-          "weight": 1
-        },
-        {
-          "content": "時限爆弾カード",
-          "weight": 1
-        },
-        {
-          "content": "順番変更カード",
-          "weight": 1
-        },
-        {
-          "content": "場所混ぜカード",
-          "weight": 1
-        },
+        "孤軍奮闘カード",
+        "指定うんち！カード",
+        "時限爆弾カード",
+        "順番変更カード",
+        "場所混ぜカード",
         {
           "weight": 4,
           "content": "絶好調くずしカード"
         },
-        {
-          "content": "絶不調カード",
-          "weight": 1
-        },
+        "絶不調カード",
         {
           "weight": 2,
           "content": "地球の裏側カード"
         },
-        {
-          "content": "秘境探検カード",
-          "weight": 1
-        },
-        {
-          "content": "偏西風カード",
-          "weight": 1
-        },
+        "秘境探検カード",
+        "偏西風カード",
         {
           "weight": 2,
           "content": "目的地変更カード"
@@ -4321,10 +1152,7 @@
           "weight": 5,
           "content": "銀河鉄道カード"
         },
-        {
-          "content": "空港飛びカード",
-          "weight": 1
-        },
+        "空港飛びカード",
         {
           "weight": 2,
           "content": "西へ！カード"
@@ -4337,18 +1165,12 @@
           "weight": 2,
           "content": "東へ！カード"
         },
-        {
-          "content": "熱気球カード",
-          "weight": 1
-        },
+        "熱気球カード",
         {
           "weight": 5,
           "content": "物件飛びカード"
         },
-        {
-          "content": "落下傘カード",
-          "weight": 1
-        },
+        "落下傘カード",
         {
           "weight": 3,
           "content": "いただきますカード"
@@ -4377,10 +1199,7 @@
           "weight": 3,
           "content": "ダビングカード"
         },
-        {
-          "content": "とっかえっこカード",
-          "weight": 1
-        },
+        "とっかえっこカード",
         {
           "weight": 4,
           "content": "バキュームカード"
@@ -4397,10 +1216,7 @@
           "weight": 6,
           "content": "一獲千金カード"
         },
-        {
-          "content": "一頭地を抜くカード",
-          "weight": 1
-        },
+        "一頭地を抜くカード",
         {
           "weight": 3,
           "content": "期間延長カード"
@@ -4441,30 +1257,11 @@
           "weight": 4,
           "content": "超音速カード"
         },
-        {
-          "content": "…に行け！カード",
-          "weight": 1
-        },
-        {
-          "content": "128カード",
-          "weight": 1
-        },
-        {
-          "content": "1が出るまでカード",
-          "weight": 1
-        },
-        {
-          "content": "キングデビルカード",
-          "weight": 1
-        },
-        {
-          "content": "うんち突入カード",
-          "weight": 1
-        },
-        {
-          "content": "スペシャルズカード",
-          "weight": 1
-        },
+        "128カード",
+        "1が出るまでカード",
+        "キングデビルカード",
+        "うんち突入カード",
+        "スペシャルズカード",
         {
           "weight": 4,
           "content": "のぞみカード"
@@ -4477,10 +1274,7 @@
           "weight": 2,
           "content": "リニアカード"
         },
-        {
-          "content": "リニア周遊カード",
-          "weight": 1
-        },
+        "リニア周遊カード",
         {
           "weight": 2,
           "content": "ロイヤルEXカード"
@@ -4517,14 +1311,8 @@
           "weight": 5,
           "content": "特急周遊カード"
         },
-        {
-          "content": "ゴールドカード",
-          "weight": 1
-        },
-        {
-          "content": "シンデレラカード",
-          "weight": 1
-        },
+        "ゴールドカード",
+        "シンデレラカード",
         {
           "weight": 2,
           "content": "引換券カード"
@@ -4545,10 +1333,7 @@
           "weight": 3,
           "content": "おはらいカード"
         },
-        {
-          "content": "お役ごめんカード",
-          "weight": 1
-        },
+        "お役ごめんカード",
         {
           "weight": 2,
           "content": "ぴったりカード"
@@ -4597,34 +1382,22 @@
           "weight": 5,
           "content": "ふういんカード"
         },
-        {
-          "content": "もれちゃうぞカード",
-          "weight": 1
-        },
+        "もれちゃうぞカード",
         {
           "weight": 5,
           "content": "豪速球カード"
         },
-        {
-          "content": "最果てカード",
-          "weight": 1
-        },
+        "最果てカード",
         {
           "weight": 2,
           "content": "持ち金ゼロカード"
         },
-        {
-          "content": "周遊禁止カード",
-          "weight": 1
-        },
+        "周遊禁止カード",
         {
           "weight": 4,
           "content": "乗っ取りカード"
         },
-        {
-          "content": "乗っ取り放題カード",
-          "weight": 1
-        },
+        "乗っ取り放題カード",
         {
           "weight": 3,
           "content": "場所がえカード"
@@ -4633,13 +1406,28 @@
           "weight": 5,
           "content": "冬眠カード"
         },
-        {
-          "content": "屯田兵カード",
-          "weight": 1
-        },
+        "屯田兵カード",
         {
           "weight": 3,
           "content": "武器よさらばカード"
+        }
+      ]
+    },
+    "CardTypeNormalAdd": {
+      "id": "CardTypeNormalAdd",
+      "key": "CardTypeNormalAdd",
+      "name": "カード駅:通常カード追加抽選",
+      "createdAt": "2025-08-31T17:26:59.968Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 3,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "【<<CardTypeNormal>>!】",
+        {
+          "weight": 2,
+          "content": "<<null>>"
         }
       ]
     },
@@ -4648,16 +1436,13 @@
       "key": "CardTypeNice",
       "name": "カード駅:ナイスカード",
       "createdAt": "2025-08-31T16:33:34.598Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 5,
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 4,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "1000億円カード",
-          "weight": 1
-        },
+        "1000億円カード",
         {
           "weight": 2,
           "content": "100億円カード"
@@ -4666,62 +1451,26 @@
           "weight": 3,
           "content": "10億円カード"
         },
-        {
-          "content": "たいらのまさカード",
-          "weight": 1
-        },
-        {
-          "content": "ベビキュラーカード",
-          "weight": 1
-        },
+        "たいらのまさカード",
+        "ベビキュラーカード",
         {
           "weight": 2,
           "content": "一攫千金カード"
         },
-        {
-          "content": "虎に翼x2カード",
-          "weight": 1
-        },
+        "虎に翼x2カード",
         {
           "weight": 2,
           "content": "虎に翼カード"
         },
-        {
-          "content": "坊主丸儲けカード",
-          "weight": 1
-        },
-        {
-          "content": "うんちカード",
-          "weight": 1
-        },
-        {
-          "content": "キングに！カード",
-          "weight": 1
-        },
-        {
-          "content": "シャッフルカード",
-          "weight": 1
-        },
-        {
-          "content": "ばちあたりカード",
-          "weight": 1
-        },
-        {
-          "content": "牛歩カード",
-          "weight": 1
-        },
-        {
-          "content": "指定うんち！カード",
-          "weight": 1
-        },
-        {
-          "content": "絶好調くずしカード",
-          "weight": 1
-        },
-        {
-          "content": "目的地変更カード",
-          "weight": 1
-        },
+        "坊主丸儲けカード",
+        "うんちカード",
+        "キングに！カード",
+        "シャッフルカード",
+        "ばちあたりカード",
+        "牛歩カード",
+        "指定うんち！カード",
+        "絶好調くずしカード",
+        "目的地変更カード",
         {
           "weight": 3,
           "content": "☆飛びカード"
@@ -4730,14 +1479,8 @@
           "weight": 4,
           "content": "ぶっとびカード"
         },
-        {
-          "content": "強奪飛びカード",
-          "weight": 1
-        },
-        {
-          "content": "最寄りの駅でカード",
-          "weight": 1
-        },
+        "強奪飛びカード",
+        "最寄りの駅でカード",
         {
           "weight": 2,
           "content": "千載一遇カード"
@@ -4754,26 +1497,14 @@
           "weight": 2,
           "content": "里帰りカード"
         },
-        {
-          "content": "オール6カード",
-          "weight": 1
-        },
-        {
-          "content": "サミットカード",
-          "weight": 1
-        },
+        "オール6カード",
+        "サミットカード",
         {
           "weight": 3,
           "content": "スペシャルカード"
         },
-        {
-          "content": "テレポートカード",
-          "weight": 1
-        },
-        {
-          "content": "ブックマークカード",
-          "weight": 1
-        },
+        "テレポートカード",
+        "ブックマークカード",
         {
           "weight": 2,
           "content": "銀河鉄道カード"
@@ -4786,34 +1517,13 @@
           "weight": 3,
           "content": "エンジェルカード"
         },
-        {
-          "content": "ミカエルカード",
-          "weight": 1
-        },
-        {
-          "content": "お殿様カード",
-          "weight": 1
-        },
-        {
-          "content": "カードバンクカード",
-          "weight": 1
-        },
-        {
-          "content": "シュレッダーカード",
-          "weight": 1
-        },
-        {
-          "content": "ダビングカード",
-          "weight": 1
-        },
-        {
-          "content": "とっかえっこカード",
-          "weight": 1
-        },
-        {
-          "content": "バキュームカード",
-          "weight": 1
-        },
+        "ミカエルカード",
+        "お殿様カード",
+        "カードバンクカード",
+        "シュレッダーカード",
+        "ダビングカード",
+        "とっかえっこカード",
+        "バキュームカード",
         {
           "weight": 2,
           "content": "パトカード"
@@ -4822,18 +1532,12 @@
           "weight": 2,
           "content": "一獲千金カード"
         },
-        {
-          "content": "一頭地を抜くカード",
-          "weight": 1
-        },
+        "一頭地を抜くカード",
         {
           "weight": 2,
           "content": "絶好調カード"
         },
-        {
-          "content": "うんち突入カード",
-          "weight": 1
-        },
+        "うんち突入カード",
         {
           "weight": 2,
           "content": "のぞみカード"
@@ -4858,34 +1562,16 @@
           "weight": 3,
           "content": "新幹線カード"
         },
-        {
-          "content": "足踏みカード",
-          "weight": 1
-        },
-        {
-          "content": "猪突猛進カード",
-          "weight": 1
-        },
+        "足踏みカード",
+        "猪突猛進カード",
         {
           "weight": 4,
           "content": "特急カード"
         },
-        {
-          "content": "特急周遊カード",
-          "weight": 1
-        },
-        {
-          "content": "ゴールドカード",
-          "weight": 1
-        },
-        {
-          "content": "シンデレラカード",
-          "weight": 1
-        },
-        {
-          "content": "シルバーカード",
-          "weight": 1
-        },
+        "特急周遊カード",
+        "ゴールドカード",
+        "シンデレラカード",
+        "シルバーカード",
         {
           "weight": 2,
           "content": "イエローカード"
@@ -4894,18 +1580,9 @@
           "weight": 2,
           "content": "おはらいカード"
         },
-        {
-          "content": "ぴったりカード",
-          "weight": 1
-        },
-        {
-          "content": "刀狩りカード",
-          "weight": 1
-        },
-        {
-          "content": "福袋カード",
-          "weight": 1
-        },
+        "ぴったりカード",
+        "刀狩りカード",
+        "福袋カード",
         {
           "weight": 2,
           "content": "あっちいけカード"
@@ -4914,14 +1591,8 @@
           "weight": 2,
           "content": "オナラカード"
         },
-        {
-          "content": "スリの銀次カード",
-          "weight": 1
-        },
-        {
-          "content": "デビル派遣カード",
-          "weight": 1
-        },
+        "スリの銀次カード",
+        "デビル派遣カード",
         {
           "weight": 2,
           "content": "ふういんカード"
@@ -4930,306 +1601,102 @@
           "weight": 2,
           "content": "豪速球カード"
         },
-        {
-          "content": "持ち金ゼロカード",
-          "weight": 1
-        },
+        "持ち金ゼロカード",
         {
           "weight": 3,
           "content": "乗っ取りカード"
         },
-        {
-          "content": "冬眠カード",
-          "weight": 1
-        },
+        "冬眠カード",
         {
           "weight": 2,
           "content": "武器よさらばカード"
         },
-        {
-          "content": "歴史ヒーローエジソン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローアインシュタイン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローエリザベス1世",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマルコ・ポーロ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー葛飾北斎",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロージャンヌダルク",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローライト兄弟",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマルクス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローガンディー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローフォード",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローヘレン・ケラー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローシェイクスピア",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロークランプラー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローニュートン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー朱熹",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー范寬",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローメネリク2世",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローリンカン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローキュリー夫人",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローエンクルマ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローメンデル",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローボリバル",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロータロとジロ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローサン・マルティン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローシュヴァイツァー博士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローコペルニクス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローナイチンゲール",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー鄭和",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローダーウィン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローヴァスコ・ダ・ガマ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・バットゥータ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローチンギス・ハン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・ハルドゥーン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローキャプテン・クック",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローガリレオ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローコロンブス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・スィーナー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロールーミー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマゼラン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー上杉謙信",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー明智光秀",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー赤穂浪士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー井伊直弼",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー石田三成",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー伊藤博文",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー井上聞多",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー大久保利通",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー織田信長",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー桂小五郎",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー加藤清正",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー紀伊国屋文左衛門",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロークラーク博士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー黒田勘兵衛",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー西郷隆盛",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー坂本竜馬",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー渋沢栄一",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー聖徳太子",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー清少納言",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー高杉晋作",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー武田信玄",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー伊達政宗",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー徳川家康",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー豊臣秀吉",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー那須与一",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー土方歳三",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー平賀源内",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー福沢諭吉",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローペリー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー水戸黄門",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー源義経",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー武蔵坊弁慶",
-          "weight": 1
-        }
+        "歴史ヒーローエジソン",
+        "歴史ヒーローアインシュタイン",
+        "歴史ヒーローエリザベス1世",
+        "歴史ヒーローマルコ・ポーロ",
+        "歴史ヒーロー葛飾北斎",
+        "歴史ヒーロージャンヌダルク",
+        "歴史ヒーローライト兄弟",
+        "歴史ヒーローマルクス",
+        "歴史ヒーローガンディー",
+        "歴史ヒーローフォード",
+        "歴史ヒーローヘレン・ケラー",
+        "歴史ヒーローシェイクスピア",
+        "歴史ヒーロークランプラー",
+        "歴史ヒーローニュートン",
+        "歴史ヒーロー朱熹",
+        "歴史ヒーロー范寬",
+        "歴史ヒーローメネリク2世",
+        "歴史ヒーローリンカン",
+        "歴史ヒーローキュリー夫人",
+        "歴史ヒーローエンクルマ",
+        "歴史ヒーローメンデル",
+        "歴史ヒーローボリバル",
+        "歴史ヒーロータロとジロ",
+        "歴史ヒーローサン・マルティン",
+        "歴史ヒーローシュヴァイツァー博士",
+        "歴史ヒーローコペルニクス",
+        "歴史ヒーローナイチンゲール",
+        "歴史ヒーロー鄭和",
+        "歴史ヒーローダーウィン",
+        "歴史ヒーローヴァスコ・ダ・ガマ",
+        "歴史ヒーローイブン・バットゥータ",
+        "歴史ヒーローチンギス・ハン",
+        "歴史ヒーローイブン・ハルドゥーン",
+        "歴史ヒーローキャプテン・クック",
+        "歴史ヒーローガリレオ",
+        "歴史ヒーローコロンブス",
+        "歴史ヒーローイブン・スィーナー",
+        "歴史ヒーロールーミー",
+        "歴史ヒーローマゼラン",
+        "歴史ヒーロー上杉謙信",
+        "歴史ヒーロー明智光秀",
+        "歴史ヒーロー赤穂浪士",
+        "歴史ヒーロー井伊直弼",
+        "歴史ヒーロー石田三成",
+        "歴史ヒーロー伊藤博文",
+        "歴史ヒーロー井上聞多",
+        "歴史ヒーロー大久保利通",
+        "歴史ヒーロー織田信長",
+        "歴史ヒーロー桂小五郎",
+        "歴史ヒーロー加藤清正",
+        "歴史ヒーロー紀伊国屋文左衛門",
+        "歴史ヒーロークラーク博士",
+        "歴史ヒーロー黒田勘兵衛",
+        "歴史ヒーロー西郷隆盛",
+        "歴史ヒーロー坂本竜馬",
+        "歴史ヒーロー渋沢栄一",
+        "歴史ヒーロー聖徳太子",
+        "歴史ヒーロー清少納言",
+        "歴史ヒーロー高杉晋作",
+        "歴史ヒーロー武田信玄",
+        "歴史ヒーロー伊達政宗",
+        "歴史ヒーロー徳川家康",
+        "歴史ヒーロー豊臣秀吉",
+        "歴史ヒーロー那須与一",
+        "歴史ヒーロー土方歳三",
+        "歴史ヒーロー平賀源内",
+        "歴史ヒーロー福沢諭吉",
+        "歴史ヒーローペリー",
+        "歴史ヒーロー水戸黄門",
+        "歴史ヒーロー源義経",
+        "歴史ヒーロー武蔵坊弁慶"
+      ]
+    },
+    "CardTypeNiceAdd": {
+      "id": "CardTypeNiceAdd",
+      "key": "CardTypeNiceAdd",
+      "name": "カード駅:ナイスカード追加抽選",
+      "createdAt": "2025-08-31T17:27:45.814Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 5,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "【<<CardTypeNice>>!】",
+        "<<null>>"
       ]
     },
     "CardTypeSpecial": {
@@ -5237,8 +1704,8 @@
       "key": "CardTypeSpecial",
       "name": "カード駅:スペシャルカード",
       "createdAt": "2025-08-31T16:35:26.084Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 7,
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 6,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -5247,10 +1714,7 @@
           "weight": 2,
           "content": "1000億円カード"
         },
-        {
-          "content": "たいらのまさカード",
-          "weight": 1
-        },
+        "たいらのまさカード",
         {
           "weight": 2,
           "content": "ベビキュラーカード"
@@ -5263,26 +1727,14 @@
           "weight": 2,
           "content": "坊主丸儲けカード"
         },
-        {
-          "content": "キングに！カード",
-          "weight": 1
-        },
-        {
-          "content": "シャッフルカード",
-          "weight": 1
-        },
+        "キングに！カード",
+        "シャッフルカード",
         {
           "weight": 2,
           "content": "牛歩カード"
         },
-        {
-          "content": "絶不調カード",
-          "weight": 1
-        },
-        {
-          "content": "目的地変更カード",
-          "weight": 1
-        },
+        "絶不調カード",
+        "目的地変更カード",
         {
           "weight": 2,
           "content": "☆飛び周遊カード"
@@ -5291,42 +1743,21 @@
           "weight": 2,
           "content": "ぶっとび周遊カード"
         },
-        {
-          "content": "強奪飛び周遊カード",
-          "weight": 1
-        },
+        "強奪飛び周遊カード",
         {
           "weight": 2,
           "content": "千載一遇カード"
         },
-        {
-          "content": "地方へ！周遊カード",
-          "weight": 1
-        },
-        {
-          "content": "物件飛び周遊カード",
-          "weight": 1
-        },
-        {
-          "content": "オール6カード",
-          "weight": 1
-        },
-        {
-          "content": "サミットカード",
-          "weight": 1
-        },
-        {
-          "content": "テレポートカード",
-          "weight": 1
-        },
+        "地方へ！周遊カード",
+        "物件飛び周遊カード",
+        "オール6カード",
+        "サミットカード",
+        "テレポートカード",
         {
           "weight": 2,
           "content": "銀河鉄道カード"
         },
-        {
-          "content": "いただきますカード",
-          "weight": 1
-        },
+        "いただきますカード",
         {
           "weight": 2,
           "content": "エンジェルカード"
@@ -5335,22 +1766,13 @@
           "weight": 3,
           "content": "ミカエルカード"
         },
-        {
-          "content": "お殿様カード",
-          "weight": 1
-        },
-        {
-          "content": "シュレッダーカード",
-          "weight": 1
-        },
+        "お殿様カード",
+        "シュレッダーカード",
         {
           "weight": 2,
           "content": "ダビングカード"
         },
-        {
-          "content": "とっかえっこカード",
-          "weight": 1
-        },
+        "とっかえっこカード",
         {
           "weight": 2,
           "content": "パトカード"
@@ -5371,18 +1793,9 @@
           "weight": 2,
           "content": "のぞみ周遊カード"
         },
-        {
-          "content": "リニアカード",
-          "weight": 1
-        },
-        {
-          "content": "リニア周遊カード",
-          "weight": 1
-        },
-        {
-          "content": "ロイヤルEXカード",
-          "weight": 1
-        },
+        "リニアカード",
+        "リニア周遊カード",
+        "ロイヤルEXカード",
         {
           "weight": 2,
           "content": "新幹線周遊カード"
@@ -5399,26 +1812,14 @@
           "weight": 2,
           "content": "シンデレラカード"
         },
-        {
-          "content": "おはらいカード",
-          "weight": 1
-        },
+        "おはらいカード",
         {
           "weight": 2,
           "content": "刀狩りカード"
         },
-        {
-          "content": "福袋カード",
-          "weight": 1
-        },
-        {
-          "content": "スリの銀次カード",
-          "weight": 1
-        },
-        {
-          "content": "デビル派遣カード",
-          "weight": 1
-        },
+        "福袋カード",
+        "スリの銀次カード",
+        "デビル派遣カード",
         {
           "weight": 2,
           "content": "ふういんカード"
@@ -5439,402 +1840,79 @@
           "weight": 2,
           "content": "冬眠カード"
         },
-        {
-          "content": "ダイヤモンドカード",
-          "weight": 1
-        },
-        {
-          "content": "プラチナカード",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローエジソン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローアインシュタイン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローエリザベス1世",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマルコ・ポーロ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー葛飾北斎",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロージャンヌダルク",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローライト兄弟",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマルクス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローガンディー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローフォード",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローヘレン・ケラー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローシェイクスピア",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロークランプラー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローニュートン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー朱熹",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー范寬",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローメネリク2世",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローリンカン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローキュリー夫人",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローエンクルマ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローメンデル",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローボリバル",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロータロとジロ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローサン・マルティン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローシュヴァイツァー博士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローコペルニクス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローナイチンゲール",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー鄭和",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローダーウィン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローヴァスコ・ダ・ガマ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・バットゥータ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローチンギス・ハン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・ハルドゥーン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローキャプテン・クック",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローガリレオ",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローコロンブス",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローイブン・スィーナー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロールーミー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローマゼラン",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー上杉謙信",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー明智光秀",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー赤穂浪士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー井伊直弼",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー石田三成",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー伊藤博文",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー井上聞多",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー大久保利通",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー織田信長",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー桂小五郎",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー加藤清正",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー紀伊国屋文左衛門",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロークラーク博士",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー黒田勘兵衛",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー西郷隆盛",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー坂本竜馬",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー渋沢栄一",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー聖徳太子",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー清少納言",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー高杉晋作",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー武田信玄",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー伊達政宗",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー徳川家康",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー豊臣秀吉",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー那須与一",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー土方歳三",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー平賀源内",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー福沢諭吉",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーローペリー",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー水戸黄門",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー源義経",
-          "weight": 1
-        },
-        {
-          "content": "歴史ヒーロー武蔵坊弁慶",
-          "weight": 1
-        }
-      ]
-    },
-    "CardTypeDevil": {
-      "id": "CardTypeDevil",
-      "key": "CardTypeDevil",
-      "name": "カード駅:ボンビラス",
-      "createdAt": "2025-08-31T16:36:51.995Z",
-      "updatedAt": "2025-08-31T17:28:24.761Z",
-      "order": 9,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 23,
-          "content": "デビルカード"
-        },
-        {
-          "weight": 7,
-          "content": "とりかえしカード"
-        },
-        {
-          "weight": 23,
-          "content": "リトルデビルカード"
-        },
-        {
-          "weight": 10,
-          "content": "時限爆弾カード"
-        },
-        {
-          "weight": 4,
-          "content": "…に行け！カード"
-        },
-        {
-          "weight": 4,
-          "content": "128カード"
-        },
-        {
-          "weight": 4,
-          "content": "1が出るまでカード"
-        },
-        {
-          "weight": 24,
-          "content": "キングデビルカード"
-        },
-        {
-          "content": "ダイヤモンドカード",
-          "weight": 1
-        }
-      ]
-    },
-    "CardType": {
-      "id": "CardType",
-      "key": "CardType",
-      "name": "カード駅:カードタイプ選択",
-      "createdAt": "2025-08-31T17:19:47.380Z",
-      "updatedAt": "2025-08-31T17:33:12.408Z",
-      "order": 2,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 12,
-          "content": "【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>"
-        },
-        {
-          "weight": 3,
-          "content": "【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～"
-        },
-        "【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～"
-      ]
-    },
-    "CardTypeNormalAdd": {
-      "id": "CardTypeNormalAdd",
-      "key": "CardTypeNormalAdd",
-      "name": "カード駅:通常カード追加抽選",
-      "createdAt": "2025-08-31T17:26:59.968Z",
-      "updatedAt": "2025-08-31T17:37:08.094Z",
-      "order": 4,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNormal>>!】",
-        {
-          "weight": 2,
-          "content": ","
-        }
-      ]
-    },
-    "CardTypeNiceAdd": {
-      "id": "CardTypeNiceAdd",
-      "key": "CardTypeNiceAdd",
-      "name": "カード駅:ナイスカード追加抽選",
-      "createdAt": "2025-08-31T17:27:45.814Z",
-      "updatedAt": "2025-08-31T17:37:14.502Z",
-      "order": 6,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNice>>!】",
-        ","
+        "ダイヤモンドカード",
+        "プラチナカード",
+        "歴史ヒーローエジソン",
+        "歴史ヒーローアインシュタイン",
+        "歴史ヒーローエリザベス1世",
+        "歴史ヒーローマルコ・ポーロ",
+        "歴史ヒーロー葛飾北斎",
+        "歴史ヒーロージャンヌダルク",
+        "歴史ヒーローライト兄弟",
+        "歴史ヒーローマルクス",
+        "歴史ヒーローガンディー",
+        "歴史ヒーローフォード",
+        "歴史ヒーローヘレン・ケラー",
+        "歴史ヒーローシェイクスピア",
+        "歴史ヒーロークランプラー",
+        "歴史ヒーローニュートン",
+        "歴史ヒーロー朱熹",
+        "歴史ヒーロー范寬",
+        "歴史ヒーローメネリク2世",
+        "歴史ヒーローリンカン",
+        "歴史ヒーローキュリー夫人",
+        "歴史ヒーローエンクルマ",
+        "歴史ヒーローメンデル",
+        "歴史ヒーローボリバル",
+        "歴史ヒーロータロとジロ",
+        "歴史ヒーローサン・マルティン",
+        "歴史ヒーローシュヴァイツァー博士",
+        "歴史ヒーローコペルニクス",
+        "歴史ヒーローナイチンゲール",
+        "歴史ヒーロー鄭和",
+        "歴史ヒーローダーウィン",
+        "歴史ヒーローヴァスコ・ダ・ガマ",
+        "歴史ヒーローイブン・バットゥータ",
+        "歴史ヒーローチンギス・ハン",
+        "歴史ヒーローイブン・ハルドゥーン",
+        "歴史ヒーローキャプテン・クック",
+        "歴史ヒーローガリレオ",
+        "歴史ヒーローコロンブス",
+        "歴史ヒーローイブン・スィーナー",
+        "歴史ヒーロールーミー",
+        "歴史ヒーローマゼラン",
+        "歴史ヒーロー上杉謙信",
+        "歴史ヒーロー明智光秀",
+        "歴史ヒーロー赤穂浪士",
+        "歴史ヒーロー井伊直弼",
+        "歴史ヒーロー石田三成",
+        "歴史ヒーロー伊藤博文",
+        "歴史ヒーロー井上聞多",
+        "歴史ヒーロー大久保利通",
+        "歴史ヒーロー織田信長",
+        "歴史ヒーロー桂小五郎",
+        "歴史ヒーロー加藤清正",
+        "歴史ヒーロー紀伊国屋文左衛門",
+        "歴史ヒーロークラーク博士",
+        "歴史ヒーロー黒田勘兵衛",
+        "歴史ヒーロー西郷隆盛",
+        "歴史ヒーロー坂本竜馬",
+        "歴史ヒーロー渋沢栄一",
+        "歴史ヒーロー聖徳太子",
+        "歴史ヒーロー清少納言",
+        "歴史ヒーロー高杉晋作",
+        "歴史ヒーロー武田信玄",
+        "歴史ヒーロー伊達政宗",
+        "歴史ヒーロー徳川家康",
+        "歴史ヒーロー豊臣秀吉",
+        "歴史ヒーロー那須与一",
+        "歴史ヒーロー土方歳三",
+        "歴史ヒーロー平賀源内",
+        "歴史ヒーロー福沢諭吉",
+        "歴史ヒーローペリー",
+        "歴史ヒーロー水戸黄門",
+        "歴史ヒーロー源義経",
+        "歴史ヒーロー武蔵坊弁慶"
       ]
     },
     "CardTypeSpecialAdd": {
@@ -5842,8 +1920,8 @@
       "key": "CardTypeSpecialAdd",
       "name": "カード駅:スペシャルカード追加抽選",
       "createdAt": "2025-08-31T17:28:14.486Z",
-      "updatedAt": "2025-08-31T17:37:17.148Z",
-      "order": 8,
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 7,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -5854,8 +1932,988 @@
         },
         {
           "weight": 2,
-          "content": ","
+          "content": "<<null>>"
         }
+      ]
+    },
+    "CardTypeDevil": {
+      "id": "CardTypeDevil",
+      "key": "CardTypeDevil",
+      "name": "カード駅:ボンビラス",
+      "createdAt": "2025-08-31T16:36:51.995Z",
+      "updatedAt": "2025-08-31T19:51:45.792Z",
+      "order": 8,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 4,
+          "content": "<<CardStation>>に行け!カード"
+        },
+        {
+          "weight": 23,
+          "content": "リトルデビルカード"
+        },
+        {
+          "weight": 23,
+          "content": "デビルカード"
+        },
+        {
+          "weight": 24,
+          "content": "キングデビルカード"
+        },
+        {
+          "weight": 7,
+          "content": "とりかえしカード"
+        },
+        {
+          "weight": 10,
+          "content": "時限爆弾カード"
+        },
+        {
+          "weight": 4,
+          "content": "128カード"
+        },
+        {
+          "weight": 4,
+          "content": "1が出るまでカード"
+        },
+        "ダイヤモンドカード"
+      ]
+    },
+    "CardTypeDevilGoto": {
+      "id": "CardTypeDevilGoto",
+      "key": "CardTypeDevilGoto",
+      "name": "カード駅:ボンビラス …に行けカードの詰め合わせ",
+      "createdAt": "2025-08-31T19:10:44.563Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 9,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 2,
+          "content": "<<CardStationDomestic>>に行け!カード"
+        },
+        "<<CardStationAbroad>>に行け!カード"
+      ]
+    },
+    "CardRole": {
+      "id": "CardRole",
+      "key": "CardRole",
+      "name": "カード駅:役職選択",
+      "createdAt": "2025-08-31T16:43:33.489Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 10,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 12,
+          "content": "社長"
+        },
+        {
+          "weight": 3,
+          "content": "<<CardRoleUncommon>>"
+        },
+        "<<CardRoleRare>>"
+      ]
+    },
+    "CardRoleUncommon": {
+      "id": "CardRoleUncommon",
+      "key": "CardRoleUncommon",
+      "name": "カード駅:選択できる役職",
+      "createdAt": "2025-08-31T16:45:19.889Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 11,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "会長",
+        "専務",
+        "部長",
+        "課長",
+        "次長",
+        "係長",
+        "店長",
+        "主任",
+        "代理",
+        "補佐",
+        "局長",
+        "名人",
+        "鉄人",
+        "超人",
+        "星人",
+        "大臣",
+        "国王",
+        "将軍",
+        "大帝",
+        "隊長",
+        "村長",
+        "所長",
+        "刑事",
+        "館長",
+        "総理",
+        "博士",
+        "機長",
+        "監督",
+        "魔王",
+        "皇帝",
+        "騎士",
+        "組長",
+        "親方",
+        "団長",
+        "議員",
+        "市長",
+        "知事",
+        "公爵",
+        "大使",
+        "園長",
+        "院長",
+        "先生",
+        "親分",
+        "船長",
+        "代表",
+        "閣下",
+        "殿下",
+        "大将",
+        "大佐",
+        "番長",
+        "警部",
+        "選手",
+        "師匠",
+        "秘書",
+        "達人"
+      ]
+    },
+    "CardRoleRare": {
+      "id": "CardRoleRare",
+      "key": "CardRoleRare",
+      "name": "カード駅:選択できる役職(レア)",
+      "createdAt": "2025-08-31T16:47:11.449Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 12,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "殿",
+        "若様",
+        "技師",
+        "歌人",
+        "詩人",
+        "棋士",
+        "探偵",
+        "パパ",
+        "関白",
+        "足軽",
+        "男爵",
+        "親父",
+        "仮面",
+        "子分",
+        "太郎",
+        "兄貴",
+        "一番",
+        "参上",
+        "野郎",
+        "です",
+        "っス",
+        "っち",
+        "ラー",
+        "ピー",
+        "マン",
+        "ロボ",
+        "坊主",
+        "の父",
+        "の鬼",
+        "騎手",
+        "号機",
+        "改",
+        "改二",
+        "改三",
+        "投手",
+        "捕手",
+        "宗家",
+        "女王",
+        "女史",
+        "女帝",
+        "夫人",
+        "姫",
+        "嬢",
+        "奥様",
+        "側室",
+        "王妃",
+        "アナ",
+        "の母",
+        "歌姫",
+        "ママ",
+        "魔女",
+        "姐御",
+        "の姉",
+        "の妹",
+        "公女",
+        "舞妓",
+        "大物",
+        "報酬",
+        "怪獣",
+        "忍者",
+        "富豪",
+        "出現",
+        "画伯",
+        "温泉"
+      ]
+    },
+    "CardStation": {
+      "id": "CardStation",
+      "key": "CardStation",
+      "name": "カード駅:駅選択",
+      "createdAt": "2025-08-31T19:47:22.722Z",
+      "updatedAt": "2025-08-31T20:12:18.628Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 2,
+          "content": "<<CardStationDomestic>>"
+        },
+        "<<CardStationAbroad>>"
+      ]
+    },
+    "CardStationDomestic": {
+      "id": "CardStationDomestic",
+      "key": "CardStationDomestic",
+      "name": "カード駅:地名国内",
+      "createdAt": "2025-08-31T17:00:49.068Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 14,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "稚内",
+        "礼文",
+        "利尻",
+        "浜頓別",
+        "天塩",
+        "名寄",
+        "興部",
+        "紋別",
+        "留萌",
+        "和寒",
+        "北見",
+        "羅臼",
+        "増毛",
+        "旭川",
+        "上川",
+        "遠軽",
+        "美幌",
+        "網走",
+        "斜里",
+        "美瑛",
+        "富良野",
+        "陸別",
+        "阿寒",
+        "摩周",
+        "中標津",
+        "砂川",
+        "別海",
+        "余市",
+        "小樽",
+        "札幌",
+        "足寄",
+        "ススキノ",
+        "夕張",
+        "定山渓",
+        "根室",
+        "ニセコ",
+        "釧路",
+        "厚岸",
+        "長万部",
+        "洞爺湖",
+        "芽室",
+        "帯広",
+        "池田",
+        "登別",
+        "苫小牧",
+        "中札内",
+        "室蘭",
+        "八雲",
+        "森",
+        "襟裳",
+        "江差",
+        "函館",
+        "松前",
+        "大間",
+        "竜飛",
+        "むつ",
+        "五所川原",
+        "菜の花",
+        "金木",
+        "青森",
+        "弘前",
+        "黒石",
+        "三沢",
+        "田子",
+        "八戸",
+        "三戸",
+        "久慈",
+        "秋田",
+        "盛岡",
+        "角館",
+        "花巻",
+        "遠野",
+        "釜石",
+        "横手",
+        "平泉",
+        "大船渡",
+        "気仙沼",
+        "酒田",
+        "鳴子",
+        "鶴岡",
+        "登米",
+        "石巻",
+        "女川",
+        "天童",
+        "仙台",
+        "松島",
+        "山形",
+        "名取",
+        "米沢",
+        "福島",
+        "喜多方",
+        "会津若松",
+        "郡山",
+        "いわき",
+        "那須",
+        "北茨城",
+        "宇都宮",
+        "草津",
+        "沼田",
+        "ひたちなか",
+        "高崎",
+        "前橋",
+        "桐生",
+        "栃木",
+        "笠間",
+        "水戸",
+        "深谷",
+        "熊谷",
+        "さいたま",
+        "土浦",
+        "秩父",
+        "上野",
+        "浅草",
+        "大久保",
+        "秋葉原",
+        "八王子",
+        "新宿",
+        "後楽園",
+        "東京",
+        "日本橋",
+        "船橋",
+        "佐原",
+        "千駄ヶ谷",
+        "銀座",
+        "幕張",
+        "原宿",
+        "渋谷",
+        "品川",
+        "お台場",
+        "千葉",
+        "銚子",
+        "中華街",
+        "横浜",
+        "川崎",
+        "箱根",
+        "鎌倉",
+        "小田原",
+        "横須賀",
+        "鴨川",
+        "湯河原",
+        "館山",
+        "伊豆大島",
+        "八丈島",
+        "佐渡",
+        "村上",
+        "新潟",
+        "長岡",
+        "魚沼",
+        "和倉温泉",
+        "上越",
+        "湯沢",
+        "糸魚川",
+        "長野",
+        "小布施",
+        "氷見",
+        "射水",
+        "高岡",
+        "富山",
+        "白馬",
+        "千曲",
+        "軽井沢",
+        "東尋坊",
+        "金沢",
+        "香林坊",
+        "茶屋街",
+        "上田",
+        "福井",
+        "小松",
+        "松本",
+        "鯖江",
+        "高山",
+        "小淵沢",
+        "小浜",
+        "敦賀",
+        "郡上",
+        "駒ヶ根",
+        "甲府",
+        "富士吉田",
+        "岐阜",
+        "土岐",
+        "中津川",
+        "名古屋",
+        "栄",
+        "豊田",
+        "瀬戸",
+        "名古屋港",
+        "安城",
+        "岡崎",
+        "静岡",
+        "富士宮",
+        "三島",
+        "熱海",
+        "常滑",
+        "修善寺",
+        "豊橋",
+        "浜松",
+        "松崎",
+        "伊豆高原",
+        "下田",
+        "城崎",
+        "舞鶴",
+        "出石",
+        "長浜",
+        "福知山",
+        "彦根",
+        "大津",
+        "近江八幡",
+        "嵐山",
+        "京都",
+        "祇園",
+        "姫路",
+        "三田",
+        "吹田",
+        "赤穂",
+        "有馬",
+        "明石",
+        "神戸",
+        "大阪",
+        "門真",
+        "四日市",
+        "淡路島",
+        "天保山",
+        "なんば",
+        "北浜",
+        "京橋",
+        "伊賀",
+        "天王寺",
+        "鶴橋",
+        "奈良",
+        "津",
+        "堺",
+        "橿原",
+        "松阪",
+        "岸和田",
+        "五條",
+        "伊勢",
+        "鳥羽",
+        "和歌山",
+        "新宮",
+        "御坊",
+        "白浜",
+        "出雲",
+        "大根島",
+        "境港",
+        "松江",
+        "安来",
+        "鳥取",
+        "蒜山",
+        "石見銀山",
+        "仙崎",
+        "萩",
+        "浜田",
+        "津和野",
+        "倉敷",
+        "岡山",
+        "下関",
+        "湯田温泉",
+        "日生",
+        "山口",
+        "宮島",
+        "広島",
+        "尾道",
+        "福山",
+        "宇部",
+        "柳井",
+        "岩国",
+        "呉",
+        "鞆の浦",
+        "生口島",
+        "坂出",
+        "高松",
+        "さぬき",
+        "大三島",
+        "今治",
+        "四国中央",
+        "鳴門",
+        "松山",
+        "道後",
+        "徳島",
+        "宇和島",
+        "須崎",
+        "高知",
+        "安芸",
+        "四万十川",
+        "土佐清水",
+        "対馬",
+        "壱岐",
+        "糸島",
+        "門司港",
+        "唐津",
+        "中洲",
+        "博多",
+        "小倉",
+        "佐世保",
+        "伊万里",
+        "太宰府",
+        "飯塚",
+        "中津",
+        "有田",
+        "小城",
+        "佐賀",
+        "鳥栖",
+        "秋月",
+        "別府",
+        "五島",
+        "諫早",
+        "久留米",
+        "日田",
+        "湯布院",
+        "大分",
+        "長崎",
+        "茂木",
+        "竹田",
+        "熊本",
+        "天草",
+        "八代",
+        "水俣",
+        "人吉",
+        "西都",
+        "宮崎",
+        "鹿児島",
+        "都城",
+        "知覧",
+        "桜島",
+        "枕崎",
+        "鹿屋",
+        "屋久島",
+        "種子島",
+        "大宜味",
+        "久米島",
+        "本部",
+        "名護",
+        "奄美大島",
+        "金武",
+        "うるま",
+        "那覇",
+        "石垣島",
+        "宮古島"
+      ]
+    },
+    "CardStationAbroad": {
+      "id": "CardStationAbroad",
+      "key": "CardStationAbroad",
+      "name": "カード駅:地名海外",
+      "createdAt": "2025-08-31T17:03:32.741Z",
+      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "order": 15,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "アシガバット",
+        "アスタナ",
+        "アルマティ",
+        "イスラマバード",
+        "ウランバートル",
+        "オラル",
+        "カトマンズ",
+        "カブール",
+        "カラコル",
+        "カラチ",
+        "クアラルンプール",
+        "グジュラーンワーラ",
+        "コルタカ",
+        "ジャカルタ",
+        "シンガポール",
+        "ソウル",
+        "タシケント",
+        "ダッカ",
+        "ダランザドガド",
+        "チェンマイ",
+        "ディリ",
+        "ティンプー",
+        "デリー",
+        "ドゥシャンベ",
+        "トルクメナバート",
+        "ヌクス",
+        "ハイデラバード",
+        "バグラム",
+        "ハノイ",
+        "バリ島",
+        "ハルビン",
+        "バンコク",
+        "バンダルスリブガワン",
+        "ビエンチャン",
+        "ビシュケク",
+        "プノンペン",
+        "ベンガルール",
+        "ホーチミン",
+        "マカオ",
+        "マニラ",
+        "マレ",
+        "ムンバイ",
+        "ヤンゴン",
+        "ラホール",
+        "京都",
+        "広州",
+        "杭州",
+        "香港",
+        "高雄",
+        "昆明",
+        "済南",
+        "札幌",
+        "重慶",
+        "上海",
+        "深圳",
+        "成都",
+        "西安",
+        "青島",
+        "石家荘",
+        "台北",
+        "大阪",
+        "大連",
+        "長沙",
+        "長春",
+        "天津",
+        "東京",
+        "那覇",
+        "南京",
+        "福州",
+        "平壌",
+        "北京",
+        "瀋陽",
+        "アダムスタウン",
+        "アデレード",
+        "アバルア",
+        "アピア",
+        "ウェイパ",
+        "ウェスト島",
+        "ウェリントン",
+        "ウルル平和公園",
+        "オークランド",
+        "ケアンズ",
+        "ゴールドコースト",
+        "シドニー",
+        "スバ",
+        "ダーウィン",
+        "タラワ",
+        "ヌーメア",
+        "ヌクアロファ",
+        "パース",
+        "パペエテ",
+        "パリキール",
+        "フナフティ",
+        "ブリズベン",
+        "ポートヘッドランド",
+        "ポートモレスビー",
+        "ホニアラ",
+        "メルボルン",
+        "アテネ",
+        "アムステルダム",
+        "アルハンゲリスク",
+        "アンドララベリャ",
+        "イルクーツク",
+        "ウィーン",
+        "ウラジオストク",
+        "エカテリンブルク",
+        "エレバン",
+        "オスロ",
+        "オデーサ",
+        "オムスク",
+        "オレンブルク",
+        "カザン",
+        "キーウ",
+        "キシナウ",
+        "クラスノダール",
+        "コペンハーゲン",
+        "ザグレブ",
+        "サマーラ",
+        "サンクトペテルブルク",
+        "サンマリノ",
+        "ジュネーブ",
+        "ストックホルム",
+        "スモレンスク",
+        "ソチ",
+        "ソフィア",
+        "ダブリン",
+        "タリン",
+        "チェリャビンスク",
+        "ティラナ",
+        "テッサロニキ",
+        "トースハウン",
+        "トビリシ",
+        "ナポリ",
+        "ナルヴァ",
+        "ニジニーノヴゴロド",
+        "ヌーク",
+        "ノボシビルスク",
+        "ノリリスク",
+        "バクー",
+        "バス＝テール",
+        "パリ",
+        "バルセロナ",
+        "バレッタ",
+        "バレンシア",
+        "ビリニュス",
+        "ファドーツ",
+        "フィレンツェ",
+        "ブカレスト",
+        "ブダペスト",
+        "プラハ",
+        "フランクフルト",
+        "ブリュッセル",
+        "ベオグラード",
+        "ベネツィア",
+        "ベルゴロド",
+        "ヘルシンキ",
+        "ベルリン",
+        "ホメリ",
+        "ボルゴグラード",
+        "マドリード",
+        "マンチェスター",
+        "ミュンヘン",
+        "ミラノ",
+        "ミンスク",
+        "モスクワ",
+        "ヤクーツク",
+        "リガ",
+        "リスボン",
+        "リヨン",
+        "レイキャビク",
+        "ロヴァニエミ",
+        "ローマ",
+        "ロンドン",
+        "ワルシャワ",
+        "アデン",
+        "アブダビ",
+        "アル・アイン",
+        "アルビール",
+        "アンカラ",
+        "アンマン",
+        "イスタンブール",
+        "エルサレム",
+        "クウェート",
+        "シーラーズ",
+        "ダマスカス",
+        "テヘラン",
+        "テルアヴィヴ",
+        "ドーハ",
+        "ドバイ",
+        "バグダッド",
+        "マナーマ",
+        "メッカ",
+        "メディナ",
+        "リヤド",
+        "アクラ",
+        "アスマラ",
+        "アディスアベバ",
+        "アビジャン",
+        "アベシェ",
+        "アルーシャ",
+        "アルジェ",
+        "アンタナナリボ",
+        "イレラ",
+        "ウィントフック",
+        "オラン",
+        "カイロ",
+        "カサブランカ",
+        "カンパラ",
+        "キガリ",
+        "キンシャサ",
+        "コナクリ",
+        "サン＝ドニ",
+        "ザンデール",
+        "サントメ",
+        "ジェームズタウン",
+        "ジブチ",
+        "ジュバ",
+        "ダーバン",
+        "ダカール",
+        "チュニス",
+        "トリポリ",
+        "ナイロビ",
+        "ニアメ",
+        "ヌアクショット",
+        "バヒルダル",
+        "ハボローネ",
+        "バマコ",
+        "ハラレ",
+        "バルダイ",
+        "ハルツーム",
+        "バンギ",
+        "ビクトリア",
+        "ビサウ",
+        "プライア",
+        "ブラザビル",
+        "フリータウン",
+        "ベンガジ",
+        "ポートエリザベス",
+        "ポートルイス",
+        "マセル",
+        "マプト",
+        "マムズ",
+        "マラケシ",
+        "マラボ",
+        "マンジニ",
+        "モガディッシュ",
+        "モンゴ",
+        "モンロビア",
+        "ヤウンデ",
+        "ヨハネスバーグ",
+        "ラゴス",
+        "リーブルビル",
+        "リロングウェ",
+        "ルアンダ",
+        "ルクソル",
+        "ルサカ",
+        "ルブンバシ",
+        "ロメ",
+        "ワガドゥグー",
+        "ンジャメナ",
+        "アトランタ",
+        "アンカレジ",
+        "イエローナイフ",
+        "インディアナポリス",
+        "ウィニペグ",
+        "エドモントン",
+        "オクラホマシティ",
+        "オタワ",
+        "ガラパン",
+        "カルガリー",
+        "ケベック",
+        "コロンバス",
+        "サンディエゴ",
+        "サンフランシスコ",
+        "シアトル",
+        "シカゴ",
+        "セントジョンズ",
+        "ソルトレークシティ",
+        "ダラス",
+        "デトロイト",
+        "デンバー",
+        "トロント",
+        "ナシュビル",
+        "ニューヨーク",
+        "ハミルトン",
+        "ハリファクス",
+        "バンクーバー",
+        "ヒューストン",
+        "フェニックス",
+        "ヘレナ",
+        "ボストン",
+        "ホノルル",
+        "マイアミ",
+        "ミネアポリス",
+        "ミルウォーキー",
+        "モントリオール",
+        "リンカーン",
+        "ロサンゼルス",
+        "ワシントンD.C.",
+        "アスンシオン",
+        "アラカジュ",
+        "アリーカ",
+        "アレキパ",
+        "イースター",
+        "イキトス",
+        "ウィレムシュタット",
+        "ウユニ",
+        "カラカス",
+        "カラジャス",
+        "ガラパゴス諸島",
+        "カルタヘナ",
+        "キト",
+        "キングストン",
+        "クイアバ",
+        "ククタ",
+        "クスコ",
+        "クリアカン",
+        "クリチーバ",
+        "ゴイアニア",
+        "コルドバ",
+        "サルタ",
+        "サルバドル",
+        "サンティアゴ",
+        "サントドミンゴ",
+        "サンパウロ",
+        "サンフアン",
+        "サンホセ",
+        "シウダーグアジャナ",
+        "シウダーデルエステ",
+        "シウダーファレス",
+        "ジョージタウン",
+        "スクレ",
+        "セントジョージズ",
+        "チンボテ",
+        "テグシガルパ",
+        "テムコ",
+        "トゥクマン",
+        "パナマシティ",
+        "ハバナ",
+        "パラマリボ",
+        "ピウラ",
+        "フィリップスブルフ",
+        "ブエノスアイレス",
+        "プエルトモント",
+        "フォルタレーザ",
+        "ブラジリア",
+        "フランカ",
+        "ベリーズシティ",
+        "ベレン",
+        "ボゴタ",
+        "ポルトアレグレ",
+        "ポルトヴェーリョ",
+        "マカパ",
+        "マチャラ",
+        "マナオス",
+        "マナグア",
+        "マラカイボ",
+        "メキシコシティ",
+        "メデジン",
+        "モンテゴベイ",
+        "モンテビデオ",
+        "モンテレー",
+        "ラパス",
+        "リオデジャネイロ",
+        "リマ",
+        "南極基地"
       ]
     }
   },
@@ -5962,14 +3020,6 @@
       "pattern": "!ドアチャイム1"
     },
     {
-      "name": "効果音:レベルアップ",
-      "pattern": "!レベルアップ"
-    },
-    {
-      "name": "効果音:シャキーン2",
-      "pattern": "!シャキーン2"
-    },
-    {
       "name": "効果音:シーン切り替え1",
       "pattern": "!シーン切り替え1"
     },
@@ -5980,6 +3030,34 @@
     {
       "name": "効果音:ニュースタイトル表示3",
       "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
     },
     {
       "name": "効果音:ビシッとツッコミ1",
@@ -6040,14 +3118,6 @@
     {
       "name": "挑戦者が現れました",
       "pattern": "!挑戦者"
-    },
-    {
-      "name": "ギフト:霊夢賽銭",
-      "pattern": "!saisen_hako"
-    },
-    {
-      "name": "ギフト:魔理沙キノコ",
-      "pattern": "!kinoko"
     },
     {
       "name": "おみくじ:大吉",
@@ -6172,6 +3242,18 @@
     {
       "name": "ドラちゃん:手",
       "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
     },
     {
       "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",

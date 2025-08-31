@@ -33,7 +33,7 @@ export class OmikujiProcessor {
    * おみくじの実行（コメント＋ルール指定）
    */
   executeOmikuji(comment: Comment, rule: RuleType, seed?: number): BotMessage[] {
-    const omikujiItem = drawOmikuji(rule.omikuji, seed)
+    const omikujiItem = drawOmikuji(rule.omikuji)
     if (!omikujiItem) return []
 
     return this.executeOmikujiProcess(comment, rule, omikujiItem, seed)
@@ -89,6 +89,7 @@ export class OmikujiProcessor {
       return !!rule.scriptId
     }
     // TimerRuleTypeの場合はscriptIdが存在しない
+    // TODO:TimerでもscriptIdをもたせる予定
     return false
   }
 
