@@ -1,8 +1,8 @@
 <!-- src/MainGenerator/components/OmikujiBot/ViewBotMessage.vue -->
 <template>
   <div class="relative h-screen">
-    <div class="absolute w-full" :style="{ bottom: sizeConfig.avatarTop }">
-      <!-- コメント表示 -->
+    <!-- コメント表示エリア（元の位置と同じ） -->
+    <div class="absolute w-full" :style="{ bottom: sizeConfig.avatarBottom }">
       <CommentDisplay
         :displayed-comments="displayedComments"
         :remove-comment="removeComment"
@@ -13,7 +13,7 @@
         :spacing="sizeConfig.spacing"
       >
         <template #default="{ message, index }">
-          <!-- キャラクター（通常表示モードのみ） -->
+          <!-- キャラクター（元の配置方法と同じ） -->
           <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
             <CharacterAvatar
               class="absolute top-[80px] top-1/2 left-1/2 -translate-x-1/2 transform"
@@ -51,7 +51,7 @@
   const { displaySize } = storeToRefs(displayStore)
   const base = computed(() => appStore.omikujiData.displaySettings?.base || {})
 
-  // サイズ設定
+  // サイズ設定（計算ベース）
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
 
   // アニメーション設定
