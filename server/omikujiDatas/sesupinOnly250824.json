@@ -17,7 +17,7 @@
       "name": "カード駅",
       "description": "社長!駅ではカードが貰えますぞ!総数約64兆800億通り!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-08-31T20:44:21.374Z",
+      "updatedAt": "2025-09-01T17:33:56.032Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -43,28 +43,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_10",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>"
             }
@@ -90,28 +90,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_11",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!レベルアップ",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～"
             }
@@ -137,28 +137,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_11",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!レベルアップ",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～"
             }
@@ -184,28 +184,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!呪いの旋律",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】"
             }
@@ -231,28 +231,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!間抜け5",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】"
             }
@@ -278,28 +278,28 @@
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!チーン1",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード"
             }
@@ -308,7 +308,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -317,7 +319,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^カード", "^かーど", "^card", "^station"]
+        "comment": [
+          "^カード",
+          "^かーど",
+          "^card",
+          "^station"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -326,7 +333,8 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      }
+      },
+      "editorColor": "#00BCD4"
     },
     "StageSelect": {
       "id": "StageSelect",
@@ -334,7 +342,7 @@
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
-      "updatedAt": "2025-08-31T19:47:34.941Z",
+      "updatedAt": "2025-09-01T17:26:53.635Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -356,14 +364,14 @@
             {
               "delaySeconds": 0,
               "wordParty": "!抽選回す",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": ""
             },
             {
               "delaySeconds": 2,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "今回のステージは…<<StageRandom>>!"
             }
@@ -372,7 +380,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -381,7 +391,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^ステージ"]
+        "comment": [
+          "^ステージ"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -964,7 +976,7 @@
       "key": "CardTypeNormal",
       "name": "カード駅:通常カード",
       "createdAt": "2025-08-31T16:31:34.221Z",
-      "updatedAt": "2025-08-31T19:50:36.538Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 2,
       "isEnabled": true,
       "tags": [],
@@ -1400,14 +1412,15 @@
           "weight": 3,
           "content": "武器よさらばカード"
         }
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeNormalAdd": {
       "id": "CardTypeNormalAdd",
       "key": "CardTypeNormalAdd",
       "name": "カード駅:通常カード追加抽選",
       "createdAt": "2025-08-31T17:26:59.968Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 3,
       "isEnabled": true,
       "tags": [],
@@ -1418,14 +1431,15 @@
           "weight": 2,
           "content": "<<null>>"
         }
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeNice": {
       "id": "CardTypeNice",
       "key": "CardTypeNice",
       "name": "カード駅:ナイスカード",
       "createdAt": "2025-08-31T16:33:34.598Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 4,
       "isEnabled": true,
       "tags": [],
@@ -1671,26 +1685,31 @@
         "歴史ヒーロー水戸黄門",
         "歴史ヒーロー源義経",
         "歴史ヒーロー武蔵坊弁慶"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeNiceAdd": {
       "id": "CardTypeNiceAdd",
       "key": "CardTypeNiceAdd",
       "name": "カード駅:ナイスカード追加抽選",
       "createdAt": "2025-08-31T17:27:45.814Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 5,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
-      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
+      "values": [
+        "【<<CardTypeNice>>!】",
+        "<<null>>"
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
       "key": "CardTypeSpecial",
       "name": "カード駅:スペシャルカード",
       "createdAt": "2025-08-31T16:35:26.084Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 6,
       "isEnabled": true,
       "tags": [],
@@ -1899,14 +1918,15 @@
         "歴史ヒーロー水戸黄門",
         "歴史ヒーロー源義経",
         "歴史ヒーロー武蔵坊弁慶"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeSpecialAdd": {
       "id": "CardTypeSpecialAdd",
       "key": "CardTypeSpecialAdd",
       "name": "カード駅:スペシャルカード追加抽選",
       "createdAt": "2025-08-31T17:28:14.486Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 7,
       "isEnabled": true,
       "tags": [],
@@ -1920,14 +1940,15 @@
           "weight": 2,
           "content": "<<null>>"
         }
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardTypeDevil": {
       "id": "CardTypeDevil",
       "key": "CardTypeDevil",
       "name": "カード駅:ボンビラス",
       "createdAt": "2025-08-31T16:36:51.995Z",
-      "updatedAt": "2025-08-31T19:51:45.792Z",
+      "updatedAt": "2025-09-01T17:34:08.977Z",
       "order": 8,
       "isEnabled": true,
       "tags": [],
@@ -1966,15 +1987,16 @@
           "content": "1が出るまでカード"
         },
         "ダイヤモンドカード"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardRole": {
       "id": "CardRole",
       "key": "CardRole",
       "name": "カード駅:役職選択",
       "createdAt": "2025-08-31T16:43:33.489Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 10,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 9,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -1988,15 +2010,16 @@
           "content": "<<CardRoleUncommon>>"
         },
         "<<CardRoleRare>>"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardRoleUncommon": {
       "id": "CardRoleUncommon",
       "key": "CardRoleUncommon",
       "name": "カード駅:選択できる役職",
       "createdAt": "2025-08-31T16:45:19.889Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 11,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 10,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -2056,15 +2079,16 @@
         "師匠",
         "秘書",
         "達人"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardRoleRare": {
       "id": "CardRoleRare",
       "key": "CardRoleRare",
       "name": "カード駅:選択できる役職(レア)",
       "createdAt": "2025-08-31T16:47:11.449Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 12,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 11,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -2133,17 +2157,18 @@
         "出現",
         "画伯",
         "温泉"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardStation": {
       "id": "CardStation",
       "key": "CardStation",
       "name": "カード駅:駅選択",
       "createdAt": "2025-08-31T19:47:22.722Z",
-      "updatedAt": "2025-08-31T20:12:18.628Z",
-      "order": 13,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 12,
       "isEnabled": true,
-      "editorColor": "#FF9800",
+      "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
       "values": [
@@ -2159,8 +2184,8 @@
       "key": "CardStationDomestic",
       "name": "カード駅:地名国内",
       "createdAt": "2025-08-31T17:00:49.068Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 14,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 13,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -2503,15 +2528,16 @@
         "那覇",
         "石垣島",
         "宮古島"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     },
     "CardStationAbroad": {
       "id": "CardStationAbroad",
       "key": "CardStationAbroad",
       "name": "カード駅:地名海外",
       "createdAt": "2025-08-31T17:03:32.741Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 15,
+      "updatedAt": "2025-09-01T17:34:08.977Z",
+      "order": 14,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -2882,53 +2908,57 @@
         "リオデジャネイロ",
         "リマ",
         "南極基地"
-      ]
+      ],
+      "editorColor": "#00BCD4"
     }
   },
   "characters": {
-    "reimu": {
-      "id": "reimu",
-      "key": "reimu",
-      "name": "ゆっくり霊夢",
-      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
+    "chocolat": {
+      "id": "chocolat",
+      "key": "chocolat",
+      "name": "ストロベリーショコラ",
+      "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-08-31T16:30:09.410Z",
+      "updatedAt": "2025-09-01T17:31:06.454Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#EC4899",
-      "tags": ["Yukkuri", "Reimu"],
+      "editorColor": "#F44336",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
-      "url": "https://nagipon-sozai.studio.site/",
-      "displayName": "ゆっくり霊夢",
-      "frameId": "OmikenReimu",
+      "url": "https://pintocuru.booth.pm/items/5471598",
+      "displayName": "ショコラ",
+      "frameId": "StrawberryChocolat",
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
         "isVoice": true
       },
       "color": {
-        "nameColor": "#FFC107",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#FF4081",
+        "nameColor": "#EF5350",
+        "textColor": "#FFEBEE",
+        "backgroundColor": "#D32F2F",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "reimu/default.webp",
-        "happy": "reimu/happy.webp",
-        "excited": "reimu/excited.webp",
-        "laughing": "reimu/laughing.webp",
-        "blushing": "reimu/blushing.webp",
-        "surprised": "reimu/surprised.webp",
-        "sad": "reimu/sad.webp",
-        "angry": "reimu/angry.webp",
-        "thinking": "reimu/thinking.webp",
-        "wink": "reimu/wink.webp",
-        "singing": "reimu/singing.webp",
-        "sleepy": "reimu/sleepy.webp"
+        "default": "chocolat/default.webp",
+        "happy": "chocolat/happy.webp",
+        "excited": "chocolat/excited.webp",
+        "laughing": "chocolat/laughing.webp",
+        "blushing": "chocolat/blushing.webp",
+        "surprised": "chocolat/surprised.webp",
+        "sad": "chocolat/sad.webp",
+        "angry": "chocolat/angry.webp",
+        "thinking": "chocolat/thinking.webp",
+        "wink": "chocolat/wink.webp",
+        "singing": "chocolat/singing.webp",
+        "sleepy": "chocolat/sleepy.webp"
       },
-      "imageBase64": "data:image/png;base64,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"
+      "imageBase64": "data:image/png;base64,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"
     }
   },
   "scriptSettings": {
@@ -2952,14 +2982,14 @@
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
-      "fontFamily": "default",
+      "fontFamily": "kosugiMaru",
       "bubbleMotionEnter": "scale",
       "bubbleMotionLeave": "scale",
       "showCharacterFrame": true,
       "showCharacterPersistent": false,
       "showCharacterThumbnail": true,
       "showToasts": true,
-      "daisyUiTheme": "halloween"
+      "daisyUiTheme": "coffee"
     },
     "developer": {
       "startup": {
