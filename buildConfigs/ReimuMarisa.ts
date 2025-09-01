@@ -9,7 +9,7 @@ const reimuMarisaProject: ProjectConfig = {
   ...commonBuildConfig,
 
   name: 'ReimuMarisa',
-  version: 'v2025.8.30(プレビュー版)',
+  version: 'v2025.09.01',
   tags: ['おみくじBOT', 'おみくじ', '占い', 'ゆっくり', 'ゆっくり霊夢', 'ゆっくり魔理沙', 'じゃんけん'],
   /**
    * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
@@ -44,7 +44,7 @@ const reimuMarisaProject: ProjectConfig = {
     basic: {
       filesToCopy: [
         { from: 'assets/config.js', to: 'config.js' },
-        { from: 'assets/exported/thumb/ReimuMarisa.png', to: 'thumb.png' },
+        { from: 'assets/exported/thumb/ReimuMarisa.gif', to: 'thumb.gif' },
         { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
         { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
       ],

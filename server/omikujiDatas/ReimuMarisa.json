@@ -3,9 +3,9 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "v2025.8.30(プレビュー版)",
+    "version": "v2025.09.01",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-beta10",
+    "generatorVersion": "1.0.0",
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",

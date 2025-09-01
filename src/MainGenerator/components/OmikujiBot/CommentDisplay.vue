@@ -6,7 +6,7 @@
     class="absolute w-full"
     :style="{
       top: `${index * spacing}px`,
-      zIndex: 1000 - index,
+      zIndex: 20 - index,
     }"
   >
     <MotionWrapper
@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import CommentBubble from './CommentBubble.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import type { DisplaySize } from '@shared/types'
@@ -48,31 +47,8 @@
     enterMotion?: MotionType
     leaveMotion?: MotionType
     textSize: DisplaySize
-    mode: 'stack' | 'persistent' // 表示モード
     spacing: number
-    avatarTop?: string // PersistentCharacter用
   }
 
   const props = defineProps<Props>()
-
-  // コメントのスタイル計算
-  const getCommentStyle = (index: number) => {
-    const baseStyle = {
-      zIndex: props.mode === 'stack' ? props.displayedComments.length - index : 1000 - index,
-    }
-
-    if (props.mode === 'stack') {
-      return {
-        ...baseStyle,
-        top: `${index * props.spacing}px`,
-      }
-    } else {
-      // PersistentCharacter用
-      const avatarTopPx = Number(props.avatarTop?.replace('px', '') || '0')
-      return {
-        ...baseStyle,
-        bottom: `${avatarTopPx + index * props.spacing + 20}px`,
-      }
-    }
-  }
 </script>

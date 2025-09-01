@@ -17,10 +17,10 @@ import percent_DoraProject from './buildConfigs/5percent_Dora'
  */
 const buildTargets: BuildTarget[] = [
   { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
-  //  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
+  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
   //  { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
   //  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
-  //  { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
+  { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
 ]
 
 /**

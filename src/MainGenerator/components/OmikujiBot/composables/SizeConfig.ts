@@ -5,7 +5,7 @@
  */
 export const LAYOUT_BASE = {
   // 画面下部からの基本オフセット（各サイズの基準点）
-  baseBottomOffset: 200, // 基準となる下部からの距離
+  baseBottomOffset: 200,
   // サイズごとの追加オフセット
   sizeOffsets: {
     xs: 100, // baseBottomOffset + 100 = 300px
@@ -36,82 +36,49 @@ export const AVATAR_CONFIG = {
 } as const
 
 /**
- * 計算ベースのサイズ設定
- * avatarTop の意図：画面下部から指定距離上に配置
+ * 計算ベースのサイズ設定（ViewBotCharacter対応版）
  */
 export const SIZE_CONFIG = {
   xs: {
     text: 'text-sm',
     avatar: AVATAR_CONFIG.xs.class,
     spacing: LAYOUT_BASE.commentSpacing.xs,
-    // 画面下部からの距離（元の avatarTop と同じ概念）
-    get avatarBottomDistance() {
-      return LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.xs
-    },
-    // CSS用の値
-    get avatarBottom() {
-      return `${this.avatarBottomDistance}px`
-    },
-    // コメントエリアは画面上部からアバター位置まで
-    get commentAreaBottom() {
-      return `${this.avatarBottomDistance + 50}px` // アバターの少し上
-    },
+    avatarBottom: `${LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.xs}px`,
+    // ViewBotCharacter用の追加設定
+    commentAreaBottom: `${AVATAR_CONFIG.xs.size + 60}px`, // アバターサイズ + 余白
+    characterMargin: '-8px', // キャラクター間の重なり調整（小さいサイズ）
   },
   sm: {
     text: 'text-md',
     avatar: AVATAR_CONFIG.sm.class,
     spacing: LAYOUT_BASE.commentSpacing.sm,
-    get avatarBottomDistance() {
-      return LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.sm
-    },
-    get avatarBottom() {
-      return `${this.avatarBottomDistance}px`
-    },
-    get commentAreaBottom() {
-      return `${this.avatarBottomDistance + 50}px`
-    },
+    avatarBottom: `${LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.sm}px`,
+    commentAreaBottom: `${AVATAR_CONFIG.sm.size + 80}px`,
+    characterMargin: '-12px',
   },
   md: {
     text: 'text-lg',
     avatar: AVATAR_CONFIG.md.class,
     spacing: LAYOUT_BASE.commentSpacing.md,
-    get avatarBottomDistance() {
-      return LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.md
-    },
-    get avatarBottom() {
-      return `${this.avatarBottomDistance}px`
-    },
-    get commentAreaBottom() {
-      return `${this.avatarBottomDistance + 50}px`
-    },
+    avatarBottom: `${LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.md}px`,
+    commentAreaBottom: `${AVATAR_CONFIG.md.size + 100}px`,
+    characterMargin: '-16px',
   },
   lg: {
     text: 'text-xl',
     avatar: AVATAR_CONFIG.lg.class,
     spacing: LAYOUT_BASE.commentSpacing.lg,
-    get avatarBottomDistance() {
-      return LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.lg
-    },
-    get avatarBottom() {
-      return `${this.avatarBottomDistance}px`
-    },
-    get commentAreaBottom() {
-      return `${this.avatarBottomDistance + 50}px`
-    },
+    avatarBottom: `${LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.lg}px`,
+    commentAreaBottom: `${AVATAR_CONFIG.lg.size + 120}px`,
+    characterMargin: '-20px',
   },
   xl: {
     text: 'text-2xl',
     avatar: AVATAR_CONFIG.xl.class,
     spacing: LAYOUT_BASE.commentSpacing.xl,
-    get avatarBottomDistance() {
-      return LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.xl
-    },
-    get avatarBottom() {
-      return `${this.avatarBottomDistance}px`
-    },
-    get commentAreaBottom() {
-      return `${this.avatarBottomDistance + 50}px`
-    },
+    avatarBottom: `${LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets.xl}px`,
+    commentAreaBottom: `${AVATAR_CONFIG.xl.size + 140}px`,
+    characterMargin: '-24px',
   },
 } as const
 
@@ -142,10 +109,12 @@ export const updateLayoutBase = (newBaseOffset: number) => {
  */
 export const getCalculatedValues = (size: DisplaySize) => {
   const config = SIZE_CONFIG[size]
+  const avatarBottomDistance = LAYOUT_BASE.baseBottomOffset + LAYOUT_BASE.sizeOffsets[size]
   return {
-    avatarBottomDistance: config.avatarBottomDistance,
-    avatarBottom: config.avatarBottom,
-    commentAreaBottom: config.commentAreaBottom,
+    avatarBottomDistance,
+    avatarBottom: `${avatarBottomDistance}px`,
     spacing: config.spacing,
+    text: config.text,
+    avatar: config.avatar,
   }
 }

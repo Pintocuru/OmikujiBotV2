@@ -13,6 +13,19 @@
     >
       <!-- キャラクターアバター -->
       <div class="relative flex flex-col items-center">
+        <!-- コメント表示（アバターより上に配置） -->
+        <div class="absolute bottom-full mb-[200px] w-full">
+          <CommentDisplay
+            :displayed-comments="getCharacterComments(key)"
+            :remove-comment="(messageId) => removeCommentWithIconReset(messageId, key)"
+            :enter-motion="enterMotion"
+            :leave-motion="leaveMotion"
+            :text-size="displaySize"
+            :spacing="sizeConfig.spacing"
+          />
+        </div>
+
+        <!-- キャラクターアバター（下層） -->
         <CharacterAvatar
           class="flex justify-center items-end"
           :profile-image="getCharacterImage(character)"
@@ -22,18 +35,6 @@
           :is-visible="true"
           :display-size="displaySize"
           @image-error="handleImageError(character)"
-        />
-
-        <!-- コメント表示 -->
-        <CommentDisplay
-          :displayed-comments="getCharacterComments(key)"
-          :remove-comment="(messageId) => removeCommentWithIconReset(messageId, key)"
-          :enter-motion="enterMotion"
-          :leave-motion="leaveMotion"
-          :text-size="displaySize"
-          mode="persistent"
-          :spacing="sizeConfig.spacing"
-          :avatar-top="sizeConfig.avatarTop"
         />
       </div>
     </div>

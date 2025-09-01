@@ -9,7 +9,6 @@
         :enter-motion="enterMotion"
         :leave-motion="leaveMotion"
         :text-size="displaySize"
-        mode="stack"
         :spacing="sizeConfig.spacing"
       >
         <template #default="{ message, index }">
