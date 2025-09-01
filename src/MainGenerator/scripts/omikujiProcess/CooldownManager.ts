@@ -8,6 +8,7 @@ interface UserDrawCount {
   ruleId: string // ルールID（おみくじの種類など）
   draws: number // 抽選回数
   lastDrawTime: number // 最後の抽選時刻（UNIX timestamp）
+  lastBotMessages: string // 最後のBOTの返答コメント
 }
 
 /**
@@ -36,7 +37,6 @@ export class CooldownManager {
 
   /**
    * 配信セッション用の一意IDを生成
-   * @returns 生成された一意ID
    */
   private generateSessionId(): string {
     const timestamp = Date.now()
@@ -46,7 +46,6 @@ export class CooldownManager {
 
   /**
    * 現在のセッションIDを取得
-   * @returns セッションID
    */
   getSessionId(): string {
     return this.sessionId
@@ -75,7 +74,6 @@ export class CooldownManager {
 
   /**
    * 最後の処理時刻を更新
-   * @param time 更新する時刻
    */
   updateLastProcessedTime(): void {
     this.lastProcessedTime = Date.now()
@@ -83,7 +81,6 @@ export class CooldownManager {
 
   /**
    * 最後の処理時刻を取得
-   * @returns 最後の処理時刻
    */
   getLastProcessedTime(): number {
     return this.lastProcessedTime
@@ -91,9 +88,6 @@ export class CooldownManager {
 
   /**
    * 連投チェック（同じユーザーが連続で抽選することを防ぐ）
-   * @param userId チェック対象のユーザーID
-   * @param isRepeatAllowed 連投許可フラグ
-   * @returns 連投でブロックすべきならtrue
    */
   isRepeatBlocked(userId: string, isRepeatAllowed: boolean = true): boolean {
     // 連投が許可されている場合はブロックしない
@@ -105,20 +99,25 @@ export class CooldownManager {
 
   /**
    * ユーザーIDを更新し、抽選回数をインクリメント
-   * @param userId ユーザーID
-   * @param ruleId ルールID
    */
-  updateUserId(userId: string, ruleId: string): void {
+  updateUserId(userId: string, ruleId: string, lastBotMessages: string): void {
     this.lastUserId = userId
-    this.incrementUserDrawCount(userId, ruleId)
+    this.incrementUserDrawCount(userId, ruleId, lastBotMessages)
+  }
+
+  /**
+   * ユーザーIDを更新し、抽選回数をインクリメント
+   */
+  getLastBotMessages(userId: string, ruleId: string): string {
+    const key = `${userId}:${ruleId}`
+    const record = this.userDrawCounts[key]
+    return record ? record.lastBotMessages : 'error'
   }
 
   /**
    * 指定ユーザー・ルールの抽選回数を1増やす
-   * @param userId ユーザーID
-   * @param ruleId ルールID
    */
-  private incrementUserDrawCount(userId: string, ruleId: string): void {
+  private incrementUserDrawCount(userId: string, ruleId: string, lastBotMessages: string): void {
     const currentTime = Date.now()
     const key = `${userId}:${ruleId}` // 複合キーを生成
 
@@ -135,15 +134,13 @@ export class CooldownManager {
         ruleId,
         draws: 1,
         lastDrawTime: currentTime,
+        lastBotMessages,
       }
     }
   }
 
   /**
    * 指定ユーザー・ルールの抽選回数を取得
-   * @param userId ユーザーID
-   * @param ruleId ルールID
-   * @returns 抽選回数（記録がなければ0）
    */
   getUserDrawCount(userId: string, ruleId: string): number {
     const key = `${userId}:${ruleId}`
@@ -153,10 +150,6 @@ export class CooldownManager {
 
   /**
    * 抽選回数制限チェック
-   * @param userId ユーザーID
-   * @param ruleId ルールID
-   * @param drawLimit 制限回数
-   * @returns 制限を超えているならtrue
    */
   isDrawLimitExceeded(userId: string, ruleId: string, drawLimit: number): boolean {
     // 制限が0以下の場合は制限なし
@@ -168,7 +161,6 @@ export class CooldownManager {
 
   /**
    * 全抽選記録をruleId別にグループ化して取得
-   * @returns ruleIdをキーとしたUserDrawCount配列のオブジェクト
    */
   getDrawCountsStatus(): Record<string, UserDrawCount[]> {
     const result: Record<string, UserDrawCount[]> = {}
@@ -186,8 +178,6 @@ export class CooldownManager {
 
   /**
    * 指定ルールの抽選記録一覧を取得
-   * @param ruleId ルールID
-   * @returns 該当する抽選記録の配列
    */
   getDrawCountsStatusByRuleId(ruleId: string): UserDrawCount[] {
     return Object.values(this.userDrawCounts).filter((record) => record.ruleId === ruleId)
@@ -195,8 +185,6 @@ export class CooldownManager {
 
   /**
    * 指定ルールの総抽選回数を取得
-   * @param ruleId ルールID
-   * @returns 総抽選回数
    */
   getTotalDrawsByRuleId(ruleId: string): number {
     return Object.values(this.userDrawCounts)
@@ -206,8 +194,6 @@ export class CooldownManager {
 
   /**
    * 指定ユーザー・ルールの記録を削除
-   * @param userId ユーザーID
-   * @param ruleId ルールID
    */
   resetUserDrawCount(userId: string, ruleId: string): void {
     const key = `${userId}:${ruleId}`

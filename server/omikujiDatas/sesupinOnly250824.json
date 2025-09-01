@@ -308,9 +308,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -319,12 +317,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^カード",
-          "^かーど",
-          "^card",
-          "^station"
-        ]
+        "comment": ["^カード", "^かーど", "^card", "^station"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -379,9 +372,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -390,9 +381,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ステージ"
-        ]
+        "comment": ["^ステージ"]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1694,10 +1683,7 @@
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNice>>!】",
-        "<<null>>"
-      ]
+      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -1980,24 +1966,6 @@
           "content": "1が出るまでカード"
         },
         "ダイヤモンドカード"
-      ]
-    },
-    "CardTypeDevilGoto": {
-      "id": "CardTypeDevilGoto",
-      "key": "CardTypeDevilGoto",
-      "name": "カード駅:ボンビラス …に行けカードの詰め合わせ",
-      "createdAt": "2025-08-31T19:10:44.563Z",
-      "updatedAt": "2025-08-31T19:47:34.940Z",
-      "order": 9,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 2,
-          "content": "<<CardStationDomestic>>に行け!カード"
-        },
-        "<<CardStationAbroad>>に行け!カード"
       ]
     },
     "CardRole": {
@@ -2928,10 +2896,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EC4899",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

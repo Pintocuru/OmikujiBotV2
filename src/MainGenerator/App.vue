@@ -42,14 +42,13 @@
   const appStore = useAppStore()
   const ruleProcessor = useRuleProcessor()
   const displayStore = useDisplayStore()
-  const { base, licenseKeyHash } = appStore.omikujiData.displaySettings
+  const { base } = appStore.omikujiData.displaySettings
 
   // フォントの指定
   const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'default'))
 
   // キャラクター常時表示設定
   const showCharacterPersistent = computed(() => {
-    console.log(appStore.omikujiData?.displaySettings?.base?.showCharacterPersistent)
     return appStore.omikujiData?.displaySettings?.base?.showCharacterPersistent
   })
 

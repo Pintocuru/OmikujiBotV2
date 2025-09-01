@@ -39,6 +39,8 @@ export class UserCommentProcessor {
 
         // ルールが成功し、botメッセージが生成された場合はここで終了
         if (result.botMessages.length > 0) {
+          // コメントでの発動なら、クールダウンを設定する
+          // (100回目のコメント等、コメントが条件でないおみくじはこれをスルーする)
           if (result.isCommentTriggered) {
             cooldownManager.updateLastProcessedTime()
           }
@@ -75,10 +77,10 @@ export class UserCommentProcessor {
     }
 
     // 3. おみくじ実行
-    const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule, restrictionResult.seed)
+    const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule)
 
     // 4. ユーザー情報の更新
-    cooldownManager.updateUserId(comment.data.userId, rule.id)
+    cooldownManager.updateUserId(comment.data.userId, rule.id, omikujiMessages.map((m) => m.comment).join(','))
 
     // チャットワード起動かどうかを判定
     const isCommentTriggered = rule.threshold.conditions.includes('comment')

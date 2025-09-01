@@ -7,7 +7,6 @@ import { useAppStore } from '@/MainGenerator/stores'
 interface RestrictionCheckResult {
   isBlocked: boolean
   toastMessages: BotMessage[]
-  seed?: number
 }
 
 export class CommentRestrictionChecker {
@@ -45,6 +44,7 @@ export class CommentRestrictionChecker {
 
     // 3. 回数制限チェック
     if (isCommentBased && this.isDrawLimitExceeded(comment, rule)) {
+      console.log(rule.limits.drawLimitExceeded)
       switch (rule.limits.drawLimitExceeded) {
         case 'showMessage':
           const message = getMessageOrDefault(
@@ -53,15 +53,14 @@ export class CommentRestrictionChecker {
           )
           return { isBlocked: true, toastMessages: this.createErrorToast(message) }
         case 'showLastResult':
-          // 最後の有効な結果(sessionId+userId+最後の回数)を返す
-          const userDrawCount = rule.limits.drawLimit
-          const sessionId = cooldownManager.getSessionId()
-          const seedStr = `${sessionId}-${comment.data.userId}-${userDrawCount}`
-          const seed = stringToSeed(seedStr)
+          // 最後の有効な結果(sessionId+userId+最後の回数)をトーストで返す
+          const lastBotMessages = cooldownManager.getLastBotMessages(comment.data.userId, rule.id)
+
           return {
-            isBlocked: false,
-            toastMessages: [],
-            seed,
+            isBlocked: true,
+            toastMessages: this.createErrorToast(
+              `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。 最後の結果:${lastBotMessages}`
+            ),
           }
         case 'doNothing':
         default:
@@ -70,17 +69,9 @@ export class CommentRestrictionChecker {
     }
 
     // すべての制限をクリア
-    // seedをsessionId+userId+おみくじ回数にする
-    const currentDrawCount = cooldownManager.getUserDrawCount(comment.data.userId, rule.id)
-    const sessionId = cooldownManager.getSessionId()
-    // seed生成は回数制限がある時だけ
-    const seed =
-      rule.limits.drawLimit > 0 ? stringToSeed(`${sessionId}-${comment.data.userId}-${currentDrawCount}`) : undefined
-
     return {
       isBlocked: false,
       toastMessages: [],
-      seed,
     }
   }
 

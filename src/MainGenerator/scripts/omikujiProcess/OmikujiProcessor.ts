@@ -32,11 +32,11 @@ export class OmikujiProcessor {
   /**
    * おみくじの実行（コメント＋ルール指定）
    */
-  executeOmikuji(comment: Comment, rule: RuleType, seed?: number): BotMessage[] {
+  executeOmikuji(comment: Comment, rule: RuleType): BotMessage[] {
     const omikujiItem = drawOmikuji(rule.omikuji)
     if (!omikujiItem) return []
 
-    return this.executeOmikujiProcess(comment, rule, omikujiItem, seed)
+    return this.executeOmikujiProcess(comment, rule, omikujiItem)
   }
 
   /**
@@ -60,7 +60,7 @@ export class OmikujiProcessor {
   /**
    * おみくじプロセスの実行
    */
-  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType, seed?: number): BotMessage[] {
+  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType): BotMessage[] {
     try {
       const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
@@ -73,7 +73,7 @@ export class OmikujiProcessor {
         scriptResult = this.scriptManager!.executeScript(comment, rule as CommentRuleType)
       }
 
-      return this.processOmikuji(omikujiItem, scriptResult, seed)
+      return this.processOmikuji(omikujiItem, scriptResult)
     } catch (error) {
       ConsolePost('error', `おみくじプロセス実行エラー`, error)
       return []
@@ -96,11 +96,7 @@ export class OmikujiProcessor {
   /**
    * おみくじ処理
    */
-  private processOmikuji(
-    omikujiItem: OmikujiItemType,
-    scriptResult?: ScriptResult | null,
-    seed?: number
-  ): BotMessage[] {
+  private processOmikuji(omikujiItem: OmikujiItemType, scriptResult?: ScriptResult | null): BotMessage[] {
     try {
       // スクリプト結果がある場合は先に処理
       if (scriptResult) {
@@ -111,7 +107,7 @@ export class OmikujiProcessor {
       }
 
       // プレースホルダー処理
-      const postActions = this.placeProcess.processPostActions(omikujiItem.postActions, seed)
+      const postActions = this.placeProcess.processPostActions(omikujiItem.postActions)
       // おみくじのpostActionsを投稿する
       this.postMessage.post(postActions)
 
