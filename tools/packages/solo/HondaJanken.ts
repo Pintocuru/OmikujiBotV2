@@ -1,6 +1,6 @@
-// buildConfigs\EveryoneZunda.ts
+// buildConfigs/ReimuMarisa.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
-import { createCommonBuildConfig } from './base/baseSettings'
+import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 
 /**
  * プロジェクト設定
@@ -9,9 +9,9 @@ function project(packageRoot: string): ProjectConfig {
   return {
     ...createCommonBuildConfig(packageRoot),
 
-    name: 'EveryoneZunda',
-    version: 'v2025.8.27(プレビュー版)',
-    tags: ['おみくじBOT', 'VOICEVOX', 'ずんだもん', '（ず・ω・きょ）'],
+    name: 'HondaJanken',
+    version: 'v2025.09.01',
+    tags: ['おみくじBOT', 'じゃんけん'],
     /**
      * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
      * CC-BY-SA 4.0 (表示-継承) : 継承義務 再配布OK
@@ -25,19 +25,19 @@ function project(packageRoot: string): ProjectConfig {
      */
     license: {
       basic: 'CC-BY 4.0',
-      pro: '利用規約に従う',
+      pro: 'CC-BY 4.0',
     },
 
     template: {
-      name: 'おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda',
-      boothURL: 'https://pintocuru.booth.pm/items/6053855',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotEveryoneZunda/README.md',
+      name: 'おみくじBOT じゃんけん OmikujiBot HondaJanken',
+      boothURL: 'https://pintocuru.booth.pm/items/5471598',
+      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotReimuMarisa/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
     json: {
       ...createCommonBuildConfig(packageRoot).json,
-      jsonPath: 'EveryoneZunda.json',
+      jsonPath: 'ReimuMarisa.json',
     },
 
     // アクセスレベル別設定
@@ -45,8 +45,9 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/EveryoneZunda.png', to: 'thumb.png' },
-          { from: 'assets/exported/Characters/zunda/', to: 'Characters/zunda/' },
+          { from: 'assets/exported/thumb/ReimuMarisa.gif', to: 'thumb.gif' },
+          { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
+          { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
         ],
         skipWebpack: false,
         outputJson: false,

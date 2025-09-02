@@ -8,11 +8,11 @@ import path from 'path'
 import dotenv from 'dotenv'
 
 // 各設定ファイルをインポート
-import ReimuMarisaProject from './package/ReimuMarisa'
-import ReimuMarisaMateProject from './package/ReimuMarisaMate'
-import EveryoneZundaProject from './package/EveryoneZunda'
-import DivaMetanProject from './package/DivaMetan'
-import percent_DoraProject from './package/5percent_Dora'
+import ReimuMarisaProject from './packages/full/ReimuMarisa'
+import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
+import EveryoneZundaProject from './packages/full/EveryoneZunda'
+import DivaMetanProject from './packages/full/DivaMetan'
+import percent_DoraProject from './packages/solo/5percent_Dora'
 
 // .env からrootを取得
 const envPath = path.resolve(__dirname, '../.env')

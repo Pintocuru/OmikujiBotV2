@@ -1,6 +1,6 @@
 // buildConfigs\ReimuMarisaMate.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
-import { createCommonBuildConfig } from './base/baseSettings'
+import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 
 /**
  * ReimuMarisaプロジェクト設定

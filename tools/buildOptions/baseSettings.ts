@@ -2,7 +2,7 @@
 import path from 'path'
 import { getKey } from '@/types/SettingMode'
 import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
-import { generateAccessLevelData } from '../../buildOptions/processJsonData'
+import { generateAccessLevelData } from './processJsonData'
 
 export function createCommonBuildConfig(packageRoot: string) {
   return {
