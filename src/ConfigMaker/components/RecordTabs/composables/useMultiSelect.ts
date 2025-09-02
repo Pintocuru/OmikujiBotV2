@@ -1,10 +1,11 @@
 // src/configMaker/components/RecordTabs/composables/useMultiSelect.ts
-import { ref } from 'vue'
-import { toast } from 'vue-sonner'
+import { ref, watch } from 'vue'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-import { RecordCategoryType } from '@/types'
+import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import type { useRuleState } from './useRuleState'
 import { BaseRecordType, AccessLevelType } from '@shared/types'
+import { storeToRefs } from 'pinia'
+import { toast } from 'vue-sonner'
 
 /**
  * マルチセレクト機能の管理
@@ -12,20 +13,25 @@ import { BaseRecordType, AccessLevelType } from '@shared/types'
  */
 export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
-  const { validCategory, filteredSortedItems } = ruleState
+  const { selectedCategory } = storeToRefs(omikujiStore)
+  const { validCategory, filteredSortedItems, isMultiSelectMode } = ruleState
 
-  const isMultiSelectMode = ref(false)
   const selectedRuleIds = ref(new Set<string>())
 
-  /** マルチセレクトモードの切り替え */
-  const toggleMultiSelectMode = () => {
-    isMultiSelectMode.value = !isMultiSelectMode.value
-    if (!isMultiSelectMode.value) {
-      selectedRuleIds.value.clear()
-    }
+  // マルチセレクトモードの切り替え
+  const toggleMultiSelectMode = (state?: boolean) => {
+    if (typeof state === 'boolean') isMultiSelectMode.value = state
+    else isMultiSelectMode.value = !isMultiSelectMode.value
+
+    if (!isMultiSelectMode.value) selectedRuleIds.value.clear()
   }
 
-  /** マルチセレクト処理（Ctrl、Shift、通常クリック対応） */
+  // selectedCategory を監視して変化したら isMultiSelectMode をfalse
+  watch(selectedCategory, () => {
+    isMultiSelectMode.value = false
+  })
+
+  // マルチセレクト処理（Ctrl、Shift、通常クリック対応）
   const handleMultiSelect = (ruleId: string, event: MouseEvent) => {
     if (!isMultiSelectMode.value) return
 
@@ -172,7 +178,6 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const category = validCategory.value as RecordCategoryType
 
     // 選択を解除してから複製実行
-    const originalSelection = new Set(selectedRuleIds.value)
     selectedRuleIds.value.clear()
 
     selectedRules.forEach((rule) => {

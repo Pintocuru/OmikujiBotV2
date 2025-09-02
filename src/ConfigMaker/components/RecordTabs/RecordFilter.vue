@@ -75,7 +75,7 @@
           <!-- 複数選択モード切り替えボタン -->
           <button
             class="tab tab-bordered pt-2 text-sm hover:bg-base-200 transition-all duration-200"
-            @click="store.toggleMultiSelectMode"
+            @click="store.toggleMultiSelectMode()"
             title="複数選択モード"
           >
             <span class="flex items-center gap-2">

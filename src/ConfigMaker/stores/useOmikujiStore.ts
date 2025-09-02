@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/useOmikujiStore.ts (メインストア - 大幅簡素化)
+// src/ConfigMaker/script/stores/useOmikujiStore.ts
 import { readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'

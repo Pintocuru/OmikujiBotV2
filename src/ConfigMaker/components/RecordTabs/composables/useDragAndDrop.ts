@@ -1,5 +1,5 @@
 // src/configMaker/components/RecordTabs/composables/useDragAndDrop.ts
-import { ref, computed, Ref } from 'vue'
+import { ref, computed } from 'vue'
 import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
@@ -8,9 +8,9 @@ import { BaseRecordType } from '@shared/types'
  * ドラッグ&ドロップによる並び替え機能
  * Vuedraggableライブラリとの統合、順序変更の管理を提供
  */
-export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>, isMultiSelectMode: Ref<boolean>) => {
+export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
-  const { filteredSortedItems, categoryArray, validCategory } = ruleState
+  const { filteredSortedItems, categoryArray, validCategory, isMultiSelectMode } = ruleState
 
   /** ドラッグ操作中フラグ */
   const isDragging = ref(false)

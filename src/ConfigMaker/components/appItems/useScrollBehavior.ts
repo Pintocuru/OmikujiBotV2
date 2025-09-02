@@ -5,6 +5,7 @@ export const useScrollBehavior = () => {
   const showScrollTopButton = ref(false)
   const showDock = ref(false)
 
+  // 下部に行った際上部へ戻るボタンを表示
   const handleScroll = () => {
     const SCROLL_THRESHOLD = 500
     const scrollY = window.scrollY

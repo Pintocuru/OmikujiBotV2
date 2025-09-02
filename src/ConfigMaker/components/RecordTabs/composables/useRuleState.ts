@@ -46,6 +46,11 @@ export const useRuleState = () => {
   })
 
   /**
+   * マルチセレクトモード
+   */
+  const isMultiSelectMode = ref(false)
+
+  /**
    * フィルター・検索状態
    */
   const filterOptions = ref<FilterOptions>({
@@ -128,6 +133,9 @@ export const useRuleState = () => {
     selectedRuleId,
     selectedItem,
     resetFilterOptions,
+
+    // マルチセレクトモード
+    isMultiSelectMode,
 
     // フィルター・検索
     filterOptions,

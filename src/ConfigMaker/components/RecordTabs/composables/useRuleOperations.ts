@@ -1,9 +1,9 @@
 // src/configMaker/components/RecordTabs/composables/useRuleOperations.ts
-import { toast } from 'vue-sonner'
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 import type { useRuleState } from './useRuleState'
-import { AccessLevelType, BaseRecordType } from '@shared/types'
+import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { BaseRecordType } from '@shared/types'
+import { toast } from 'vue-sonner'
 
 /**
  * ルールの基本操作（追加、更新、削除、複製、移動）を管理
@@ -11,7 +11,7 @@ import { AccessLevelType, BaseRecordType } from '@shared/types'
  */
 export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
-  const { validCategory, categoryArray } = ruleState
+  const { validCategory, categoryArray, filterOptions } = ruleState
 
   /**
    * カテゴリ操作の共通処理
@@ -29,7 +29,9 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   // 新しいルールを追加
   const handleAddItem = () => {
     withValidCategory((category) => {
-      const newId = omikujiStore.addItem?.(category)
+      // colorFilter が入っているなら、新しいデータも色を付ける
+      const editorColor = filterOptions.value.colorFilter ? filterOptions.value.colorFilter : undefined
+      const newId = omikujiStore.addItem?.(category, { editorColor })
       omikujiStore.selectRule(newId)
       toast.success('新しいルールを追加しました', {
         description: 'ルールの設定を行ってください',
