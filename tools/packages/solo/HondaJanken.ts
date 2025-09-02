@@ -25,7 +25,6 @@ function project(packageRoot: string): ProjectConfig {
      */
     license: {
       basic: 'CC-BY 4.0',
-      pro: 'CC-BY 4.0',
     },
 
     template: {
@@ -37,7 +36,7 @@ function project(packageRoot: string): ProjectConfig {
 
     json: {
       ...createCommonBuildConfig(packageRoot).json,
-      jsonPath: 'ReimuMarisa.json',
+      jsonPath: 'HondaJanken.json',
     },
 
     // アクセスレベル別設定
@@ -46,15 +45,8 @@ function project(packageRoot: string): ProjectConfig {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
           { from: 'assets/exported/thumb/ReimuMarisa.gif', to: 'thumb.gif' },
-          { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
-          { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
         ],
         skipWebpack: false,
-        outputJson: false,
-      },
-      pro: {
-        filesToCopy: [],
-        skipWebpack: true,
         outputJson: true,
       },
     },

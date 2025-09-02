@@ -50,7 +50,7 @@
   "src/**/*.ts",
   "src/**/*.d.ts",
   "src/**/*.vue",
-  "tools/**/*.ts",
+  "tools/**/*.ts"
  ],
  "exclude": [
   "node_modules",
