@@ -51,8 +51,6 @@
   "src/**/*.d.ts",
   "src/**/*.vue",
   "tools/**/*.ts",
-  "buildConfigs/**/*.ts",
-  "build.ts"
  ],
  "exclude": [
   "node_modules",

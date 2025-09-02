@@ -1,16 +1,24 @@
 // build.ts
 import { WebpackBuilder } from '@shared/utils/webpackBuild/buildMain'
 import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
-import { alias } from './vite.config'
-import packageJson from './package.json'
-import { createShimsVue } from './tools/CreateOmikujiData'
+import { alias } from '../vite.config'
+import packageJson from '../package.json'
+import { createShimsVue } from './buildOptions/CreateOmikujiData'
+import path from 'path'
+import dotenv from 'dotenv'
 
 // 各設定ファイルをインポート
-import ReimuMarisaProject from './buildConfigs/ReimuMarisa'
-import ReimuMarisaMateProject from './buildConfigs/ReimuMarisaMate'
-import EveryoneZundaProject from './buildConfigs/EveryoneZunda'
-import DivaMetanProject from './buildConfigs/DivaMetan'
-import percent_DoraProject from './buildConfigs/5percent_Dora'
+import ReimuMarisaProject from './package/ReimuMarisa'
+import ReimuMarisaMateProject from './package/ReimuMarisaMate'
+import EveryoneZundaProject from './package/EveryoneZunda'
+import DivaMetanProject from './package/DivaMetan'
+import percent_DoraProject from './package/5percent_Dora'
+
+// .env からrootを取得
+const envPath = path.resolve(__dirname, '../.env')
+dotenv.config({ path: envPath })
+if (!process.env.PACKAGE_ROOT) throw new Error('.envファイルが読めないみたい')
+const packageRoot = process.env.PACKAGE_ROOT
 
 /**
  * ビルド設定リスト
@@ -29,7 +37,7 @@ const buildTargets: BuildTarget[] = [
 ;(async () => {
   try {
     // 前処理:shims-vue.d.ts を生成
-    createShimsVue()
+    createShimsVue(packageRoot)
 
     // メインビルド処理
     const systemCommonData: SystemCommonData = {
@@ -42,11 +50,11 @@ const buildTargets: BuildTarget[] = [
     const builder = new WebpackBuilder(systemCommonData)
 
     // 新しいバージョンができた場合、ここに記載すること
-    builder.registerProject(ReimuMarisaProject)
-    builder.registerProject(ReimuMarisaMateProject)
-    builder.registerProject(EveryoneZundaProject)
-    builder.registerProject(DivaMetanProject)
-    builder.registerProject(percent_DoraProject)
+    builder.registerProject(ReimuMarisaProject(packageRoot))
+    builder.registerProject(ReimuMarisaMateProject(packageRoot))
+    builder.registerProject(EveryoneZundaProject(packageRoot))
+    builder.registerProject(DivaMetanProject(packageRoot))
+    builder.registerProject(percent_DoraProject(packageRoot))
 
     // ビルド
     await builder.buildTargets(buildTargets)

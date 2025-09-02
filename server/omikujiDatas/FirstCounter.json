@@ -587,7 +587,7 @@
       "name": "カラー1",
       "description": "",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T11:02:25.451Z",
+      "updatedAt": "2025-09-02T12:24:01.072Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -610,7 +610,7 @@
         "nameColor": "#42A5F5",
         "textColor": "#E3F2FD",
         "backgroundColor": "#1976D2",
-        "customClasses": "px-8 py-2 rounded-full"
+        "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
         "default": "",
