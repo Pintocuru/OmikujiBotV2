@@ -3,86 +3,32 @@
   <!-- 右クリックコンテキストメニュー -->
   <div
     v-if="tabsStore.contextMenu.show"
-    :style="{ top: tabsStore.contextMenu.y + 'px', left: tabsStore.contextMenu.x + 'px' }"
+    :style="menuPosition"
     class="fixed z-50 bg-base-100 border border-base-300 rounded-lg shadow-xl py-2 min-w-48"
     @click.stop
+    ref="menuRef"
   >
-    <!-- マルチセレクト時のヘッダー -->
-    <div v-if="isMultiSelectActive" class="px-4 py-2 text-sm text-base-content/70 border-b border-base-300">
-      {{ selectedCount }}件選択中
-    </div>
-
-    <!-- 有効/無効切り替え -->
-    <div v-if="isMultiSelectActive">
-      <!-- マルチセレクト時：有効/無効の一括切り替え -->
-      <button
-        @click="handleBulkToggleEnabled(true)"
-        class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
-      >
-        <Eye class="w-4 h-4" />
-        選択中のルールを有効にする
-      </button>
-      <button
-        @click="handleBulkToggleEnabled(false)"
-        class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
-      >
-        <EyeOff class="w-4 h-4" />
-        選択中のルールを無効にする
-      </button>
-    </div>
-    <div v-else>
-      <!-- 単体選択時：個別の有効/無効切り替え -->
-      <button @click="handleToggleEnabled" class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2">
-        <component :is="tabsStore.contextMenu.rule?.isEnabled === false ? EyeOff : Eye" class="w-4 h-4" />
-        {{ tabsStore.contextMenu.rule?.isEnabled === false ? '有効にする' : '無効にする' }}
-      </button>
-    </div>
-
-    <div class="divider my-1"></div>
-
     <!-- AccessLevel 設定(GOD-MODE専用) -->
     <div v-if="isGod" class="px-4">
-      <div class="text-sm text-base-content/70 mb-2">
-        {{ isMultiSelectActive ? '選択中のルールの' : '' }}アクセスレベル
-      </div>
-      <div class="flex flex-col">
+      <div class="flex">
         <button
           v-for="level in AccessLevelLabels"
           :key="level"
           @click="handleAccessLevelChange(level)"
-          class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2"
-          :class="[
-            !isMultiSelectActive && tabsStore.contextMenu.rule?.accessLevel === level
-              ? level === 'basic'
-                ? 'bg-primary text-primary-content'
-                : level === 'pro'
-                  ? 'bg-secondary text-secondary-content'
-                  : level === 'internal'
-                    ? 'bg-warning text-warning-content'
-                    : 'bg-error text-error-content'
-              : '',
-          ]"
+          class="btn btn-ghost btn-xs px-2 py-2 mr-1 hover:bg-secondary"
         >
-          {{ isMultiSelectActive ? `選択中のルールを「${level}」にする` : level }}
+          {{ level }}
         </button>
       </div>
       <div class="divider my-1"></div>
     </div>
 
-    <!-- 複製 -->
-    <button @click="handleDuplicate" class="w-full px-4 py-2 text-left hover:bg-base-200 flex items-center gap-2">
-      <Copy class="w-4 h-4" />
-      {{ isMultiSelectActive ? '選択中のルールを複製' : '複製' }}
-    </button>
-
-    <!-- 削除 -->
-    <button
-      @click="handleDelete"
-      class="w-full px-4 py-2 text-left hover:bg-error hover:text-error-content flex items-center gap-2 text-error"
-    >
-      <Trash2 class="w-4 h-4" />
-      {{ isMultiSelectActive ? '選択中のルールを削除' : '削除' }}
-    </button>
+    <!-- アクションボタン群（子コンポーネントに分離） -->
+    <RecordContextMenuActions
+      :rule="tabsStore.contextMenu.rule"
+      :is-multi-select-active="isMultiSelectActive"
+      @close="tabsStore.hideContextMenu"
+    />
 
     <div class="divider my-1"></div>
 
@@ -95,39 +41,52 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted, ref } from 'vue'
   import { useRecordTabsStore } from './RecordTabsStore'
   import ColorPicker from './ColorPicker.vue'
+  import RecordContextMenuActions from './RecordContextMenuActions.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
   import { AccessLevelType, AccessLevelLabels } from '@shared/types'
 
   // Store
   const tabsStore = useRecordTabsStore()
   const { isGod } = useSettingMode()
 
+  // Refs
+  const menuRef = ref<HTMLElement>()
+
   // マルチセレクト状態の計算プロパティ
   const isMultiSelectActive = computed(() => tabsStore.isMultiSelectMode && tabsStore.selectedRuleIds.size > 0)
-
   const selectedCount = computed(() => tabsStore.selectedRuleIds.size)
 
-  // 有効/無効切り替え
-  const handleToggleEnabled = () => {
-    if (tabsStore.contextMenu.rule) {
-      const currentEnabled = tabsStore.contextMenu.rule.isEnabled !== false
-      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
-        ...tabsStore.contextMenu.rule,
-        isEnabled: !currentEnabled,
-      })
-    }
-    tabsStore.hideContextMenu()
-  }
+  // メニュー位置の計算（画面端での調整）
+  const menuPosition = computed(() => {
+    const { x, y } = tabsStore.contextMenu
+    const menuWidth = 200 // 推定メニュー幅
+    const menuHeight = 300 // 推定メニュー高さ
 
-  // 一括有効/無効切り替え
-  const handleBulkToggleEnabled = (enabled: boolean) => {
-    tabsStore.handleBulkToggleEnabled(enabled)
-    tabsStore.hideContextMenu()
-  }
+    let adjustedX = x
+    let adjustedY = y
+
+    // 画面右端を超える場合は左側に表示
+    if (x + menuWidth > window.innerWidth) {
+      adjustedX = x - menuWidth
+    }
+
+    // 画面下端を超える場合は上側に表示
+    if (y + menuHeight > window.innerHeight) {
+      adjustedY = y - menuHeight
+    }
+
+    // 最小値制限（画面外に出ないように）
+    adjustedX = Math.max(0, adjustedX)
+    adjustedY = Math.max(0, adjustedY)
+
+    return {
+      top: `${adjustedY}px`,
+      left: `${adjustedX}px`,
+    }
+  })
 
   // AccessLevel変更
   const handleAccessLevelChange = (level: AccessLevelType) => {
@@ -140,30 +99,6 @@
         ...tabsStore.contextMenu.rule,
         accessLevel: level,
       })
-    }
-    tabsStore.hideContextMenu()
-  }
-
-  // 複製処理
-  const handleDuplicate = () => {
-    if (isMultiSelectActive.value) {
-      // マルチセレクト時：一括複製
-      tabsStore.handleBulkDuplicate()
-    } else {
-      // 単体選択時：個別複製
-      tabsStore.handleContextDuplicate()
-    }
-    tabsStore.hideContextMenu()
-  }
-
-  // 削除処理
-  const handleDelete = () => {
-    if (isMultiSelectActive.value) {
-      // マルチセレクト時：一括削除
-      tabsStore.handleBulkDelete()
-    } else {
-      // 単体選択時：個別削除
-      tabsStore.handleContextDelete()
     }
     tabsStore.hideContextMenu()
   }

@@ -46,12 +46,41 @@ export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
     return getOriginalIndex(contextMenu.value.rule.id) < categoryArray.value.length - 1
   })
 
+  /** メニュー位置を画面内に調整 */
+  const adjustMenuPosition = (x: number, y: number) => {
+    const menuWidth = 200 // 推定メニュー幅
+    const menuHeight = 300 // 推定メニュー高さ
+
+    let adjustedX = x
+    let adjustedY = y
+
+    // 画面右端を超える場合は左側に表示
+    if (x + menuWidth > window.innerWidth) {
+      adjustedX = Math.max(0, x - menuWidth)
+    }
+
+    // 画面下端を超える場合は上側に表示
+    if (y + menuHeight > window.innerHeight) {
+      adjustedY = Math.max(0, y - menuHeight)
+    }
+
+    // 最小値制限（画面外に出ないように）
+    adjustedX = Math.max(0, Math.min(adjustedX, window.innerWidth - menuWidth))
+    adjustedY = Math.max(0, Math.min(adjustedY, window.innerHeight - menuHeight))
+
+    return { x: adjustedX, y: adjustedY }
+  }
+
   /** コンテキストメニューを表示 */
   const showContextMenu = (event: MouseEvent, rule: BaseRecordType, index: number) => {
     event.preventDefault()
+
+    // 位置を画面内に調整
+    const { x, y } = adjustMenuPosition(event.clientX, event.clientY)
+
     contextMenu.value = {
-      x: event.clientX,
-      y: event.clientY,
+      x,
+      y,
       rule,
       index,
       show: true,
