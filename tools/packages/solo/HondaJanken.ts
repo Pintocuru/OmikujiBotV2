@@ -1,4 +1,4 @@
-// buildConfigs/ReimuMarisa.ts
+// tools\packages\solo\HondaJanken.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 
@@ -10,7 +10,7 @@ function project(packageRoot: string): ProjectConfig {
     ...createCommonBuildConfig(packageRoot),
 
     name: 'HondaJanken',
-    version: 'v2025.09.01',
+    version: 'v2025.09.03',
     tags: ['おみくじBOT', 'じゃんけん'],
     /**
      * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
@@ -29,8 +29,8 @@ function project(packageRoot: string): ProjectConfig {
 
     template: {
       name: 'おみくじBOT じゃんけん OmikujiBot HondaJanken',
-      boothURL: 'https://pintocuru.booth.pm/items/5471598',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotReimuMarisa/README.md',
+      boothURL: 'https://pintocuru.booth.pm/items/7383088',
+      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBot/solo/HondaJanken/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
@@ -44,7 +44,7 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/ReimuMarisa.gif', to: 'thumb.gif' },
+          { from: 'assets/exported/thumb/HondaJanken.png', to: 'thumb.png' },
         ],
         skipWebpack: false,
         outputJson: true,
