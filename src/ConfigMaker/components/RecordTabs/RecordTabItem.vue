@@ -7,8 +7,9 @@
     @mouseleave="hoveredRule = null"
   >
     <RecordTabButton :rule="rule" />
-
+    <!--
     <RecordHoverPreview v-if="shouldShowPreview" :rule="rule" @mouseenter="hoveredRule = rule" />
+    -->
   </div>
 </template>
 

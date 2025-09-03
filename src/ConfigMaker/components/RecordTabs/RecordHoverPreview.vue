@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/RecordTabs/RuleHoverPreview.vue -->
+<!-- !ホバー情報は不要かも -->
 <template>
   <div
     class="absolute top-full left-0 mt-2 z-30 bg-base-100 border border-base-300 rounded-lg shadow-xl p-4 w-72"
