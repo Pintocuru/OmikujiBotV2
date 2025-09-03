@@ -1,56 +1,38 @@
 <!-- src/configMaker/components/postAction/PostActionToastSettings.vue -->
 <template>
-  <div class="space-y-4">
-    <h3 class="text-sm font-medium flex items-center gap-2">
-      <span>🍞 トースト設定</span>
-    </h3>
+  <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
+    <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
+      <option v-for="char in characterOptions" :key="char.value" :value="char.value">
+        {{ char.label }}
+      </option>
+    </select>
+  </SettingItem>
 
-    <!-- キャラクター選択 -->
-    <div class="form-control">
-      <label class="label py-0">
-        <span class="label-text text-sm">👤 キャラクター</span>
-      </label>
-      <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
-        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
-          {{ char.label }}
-        </option>
-      </select>
-    </div>
+  <!-- トーストメッセージ -->
+  <SettingItem label="📝 トーストメッセージ" description="トーストに表示する内容">
+    <input
+      type="text"
+      v-model="messageToast"
+      class="input input-bordered input-sm"
+      placeholder="トーストとして表示するメッセージを入力してください"
+    />
+  </SettingItem>
 
-    <!-- トーストメッセージ -->
-    <div class="form-control">
-      <label class="label py-0">
-        <span class="label-text text-sm">📝 トーストメッセージ</span>
-      </label>
-      <input
-        type="text"
-        v-model="messageToast"
-        class="input input-bordered input-sm"
-        placeholder="トーストとして表示するメッセージを入力してください"
-      />
-    </div>
-
-    <!-- オプション設定 -->
-    <div class="divider text-xs">オプション設定</div>
-
-    <!-- サウンド -->
-    <div class="form-control">
-      <label class="label py-0">
-        <span class="label-text text-sm">🔊 サウンド</span>
-      </label>
-      <input
-        type="text"
-        v-model="sound"
-        class="input input-bordered input-sm"
-        placeholder="サウンドファイル名（オプション）"
-      />
-    </div>
-  </div>
+  <!-- サウンド -->
+  <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+    <input
+      type="text"
+      v-model="sound"
+      class="input input-bordered input-sm"
+      placeholder="サウンドファイル名（オプション）"
+    />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/'
+  import { isDev, PostActionType } from '@/types/'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   const props = defineProps<{
     action: PostActionType

@@ -1,7 +1,6 @@
 <!-- src/configMaker/components/postAction/WordPartyField.vue -->
 <template>
   <div class="flex items-center gap-2">
-    <label class="w-24 text-xs flex-shrink-0">🎉 WordParty</label>
     <div class="flex gap-1 w-2/3">
       <div class="tabs tabs-boxed tabs-sm">
         <button @click="setInputMode('select')" class="tab tab-sm" :class="{ 'tab-active': inputMode === 'select' }">
@@ -53,7 +52,6 @@
   const { data } = storeToRefs(omikujiStore)
 
   // 表示設定の参照
-  // FIXME:手動→選択時、テキストがあると選択にならずinputが消えた後に手動になる
   const wordPartySetting = computed(() => data.value.wordPartySettings)
 
   // 入力モード管理

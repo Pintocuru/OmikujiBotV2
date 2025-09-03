@@ -25,25 +25,6 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   /**
    * コンテキストメニューのアクション統合
    */
-  /** コンテキストメニューから「上に移動」を実行 */
-  const handleContextMoveUp = () => {
-    const { rule } = contextMenu.contextMenu.value
-    if (rule && contextMenu.canMoveUp.value) {
-      const originalIndex = ruleOperations.getRuleIndex(rule.id)
-      ruleOperations.handleMoveRuleUp(originalIndex)
-    }
-    contextMenu.hideContextMenu()
-  }
-
-  /** コンテキストメニューから「下に移動」を実行 */
-  const handleContextMoveDown = () => {
-    const { rule } = contextMenu.contextMenu.value
-    if (rule && contextMenu.canMoveDown.value) {
-      const originalIndex = ruleOperations.getRuleIndex(rule.id)
-      ruleOperations.handleMoveRuleDown(originalIndex, ruleState.categoryArray.value?.length || 0)
-    }
-    contextMenu.hideContextMenu()
-  }
 
   /** コンテキストメニューから「複製」を実行 */
   const handleContextDuplicate = () => {
@@ -76,8 +57,6 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
     ...dragAndDrop,
 
     // 統合されたコンテキストメニューハンドラー
-    handleContextMoveUp,
-    handleContextMoveDown,
     handleContextDuplicate,
     handleContextDelete,
   }

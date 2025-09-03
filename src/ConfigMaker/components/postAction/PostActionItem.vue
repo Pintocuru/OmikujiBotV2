@@ -1,17 +1,9 @@
 <!-- src/configMaker/components/postAction/PostActionItem.vue -->
 <template>
-  <div class="p-4 bg-base-200 relative">
-    <!-- 右下固定の操作ボタン -->
-    <div class="absolute top-2 right-2">
-      <MenuDropdown @duplicate="$emit('duplicate', index)" @delete="$emit('remove', index)" />
-    </div>
-
+  <div class="bg-base-200 relative">
     <!-- ActionType選択ボタン -->
-    <div class="mb-4">
-      <label class="label py-0">
-        <span class="label-text text-sm font-medium">📝 アクション種別</span>
-      </label>
-      <div class="btn-group">
+    <div class="mb-2 bg-base-300">
+      <div class="menu menu-horizontal gap-4">
         <button
           class="btn btn-sm"
           :class="{ 'btn-primary': action.actionType === 'message' }"
@@ -34,16 +26,13 @@
           🎉 WordParty
         </button>
       </div>
-      <div v-if="action.actionType === 'legacy'" class="alert alert-warning mt-2">
+      <div v-if="action.actionType === 'legacy'" class="alert alert-warning">
         <span class="text-xs">⚠️ このアクションは旧形式です。上のボタンで新形式に移行してください。</span>
       </div>
     </div>
 
     <!-- 遅延秒数（全タイプ共通） -->
-    <div class="form-control mb-4">
-      <label class="label py-0">
-        <span class="label-text text-sm">⏱️ 遅延秒数</span>
-      </label>
+    <SettingItem label="⏱️ 遅延秒数" description="この秒数後に下記のアクションを実行します">
       <input
         type="number"
         v-model.number="delaySeconds"
@@ -52,7 +41,7 @@
         class="input input-bordered input-sm w-32"
         placeholder="0"
       />
-    </div>
+    </SettingItem>
 
     <!-- メッセージタイプの設定 -->
     <PostActionMessageSettings
@@ -79,10 +68,6 @@
 
     <!-- レガシータイプ（既存の設定を表示） -->
     <div v-else-if="action.actionType === 'legacy'" class="space-y-4">
-      <div class="alert alert-info">
-        <span class="text-sm">🔄 レガシー形式: 新しい形式への移行をお勧めします</span>
-      </div>
-
       <!-- レガシー用の基本設定 -->
       <PostActionBasicSettings
         :action="action"
@@ -105,6 +90,7 @@
   import PostActionMessageSettings from './PostActionMessageSettings.vue'
   import PostActionToastSettings from './PostActionToastSettings.vue'
   import PostActionWordPartySettings from './PostActionWordPartySettings.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   // Props
   const props = defineProps<{

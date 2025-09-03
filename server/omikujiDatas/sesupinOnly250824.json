@@ -17,7 +17,7 @@
       "name": "カード駅",
       "description": "社長!駅ではカードが貰えますぞ!総数約64兆800億通り!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-09-02T04:05:01.904Z",
+      "updatedAt": "2025-09-03T22:51:41.116Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -39,35 +39,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_10",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>"
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
+              "actionType": "message"
             }
           ]
         },
@@ -86,35 +91,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_11",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!レベルアップ",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～"
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
+              "actionType": "message"
             }
           ]
         },
@@ -133,35 +143,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_11",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!レベルアップ",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～"
+              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
+              "actionType": "message"
             }
           ]
         },
@@ -180,35 +195,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!呪いの旋律",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】"
+              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
+              "actionType": "message"
             }
           ]
         },
@@ -227,35 +247,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!間抜け5",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】"
+              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
+              "actionType": "message"
             }
           ]
         },
@@ -274,35 +299,40 @@
               "wordParty": "!card_00",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!card_01",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
               "wordParty": "!card_02",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_13",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.5,
               "wordParty": "!チーン1",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード"
+              "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
+              "actionType": "message"
             }
           ]
         }
@@ -342,7 +372,7 @@
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
-      "updatedAt": "2025-09-02T04:05:01.904Z",
+      "updatedAt": "2025-09-03T23:39:03.326Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -366,14 +396,16 @@
               "wordParty": "!抽選回す",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2,
               "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "今回のステージは…<<StageRandom>>!"
+              "messageContent": "今回のステージは…<<StageRandom>>!",
+              "actionType": "message"
             }
           ]
         }
@@ -409,7 +441,7 @@
       "key": "EidolonGacha",
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
-      "updatedAt": "2025-09-02T07:37:41.309Z",
+      "updatedAt": "2025-09-03T23:40:53.858Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -431,21 +463,24 @@
               "wordParty": "EidolonGacha_Dragon",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.8,
               "wordParty": "EidolonGacha_Flash",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2,
               "wordParty": "EidolonGacha_CapsuleUncommon",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3.5,
@@ -453,7 +488,8 @@
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>【<<GachaRarityUncommon>>吉!】",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -472,28 +508,32 @@
               "wordParty": "EidolonGacha_Dragon",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.8,
               "wordParty": "EidolonGacha_Flash",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2,
               "wordParty": "EidolonGacha_CapsuleRare",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
               "wordParty": "EidolonGacha_CapsuleNameRare",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3.5,
@@ -501,7 +541,8 @@
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>激レア!!【<<GachaRarityRare>>吉!】",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -520,35 +561,40 @@
               "wordParty": "EidolonGacha_Dragon",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.8,
               "wordParty": "EidolonGacha_Flash",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2,
               "wordParty": "EidolonGacha_CapsuleSSR",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
               "wordParty": "EidolonGacha_CapsuleNameSSR",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
               "wordParty": "!バーン",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3.5,
@@ -556,7 +602,8 @@
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>超激レア!!!【<<GachaRaritySSR>>吉!】",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -575,35 +622,40 @@
               "wordParty": "EidolonGacha_Dragon",
               "characterKey": "",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.8,
               "wordParty": "EidolonGacha_Flash",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2,
               "wordParty": "EidolonGacha_CapsuleSecret",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
               "wordParty": "EidolonGacha_CapsuleNameSSR",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
               "wordParty": "!バーン",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3.5,
@@ -611,7 +663,8 @@
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>伝説の究極レア!!!!【福沢諭吉!】",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -675,7 +728,8 @@
               "characterKey": "",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "おみくじはしてないの～、ごめんなさいね。"
+              "messageToast": "おみくじはしてないの～、ごめんなさいね。",
+              "actionType": "legacy"
             }
           ]
         }
@@ -730,6 +784,130 @@
           "content": "【<<GachaRarityCommon>>吉】【<<GachaRarityUncommon>>吉】"
         },
         "【<<GachaRarityUncommon>>吉】【<<GachaRarityUncommon>>吉】"
+      ]
+    },
+    "GachaRarityCommon": {
+      "id": "GachaRarityCommon",
+      "key": "GachaRarityCommon",
+      "name": "幻獣ガチャ:RarityCommon",
+      "createdAt": "2025-09-02T03:49:10.566Z",
+      "updatedAt": "2025-09-02T04:40:36.329Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "ワン",
+        "バウ",
+        "モー",
+        "ピヨ",
+        "コケ",
+        "ケロ",
+        "ブー",
+        "モグ",
+        "チュン",
+        "メェー",
+        "チュー",
+        "ミャー",
+        "クワッ",
+        "キュイ",
+        "ヒヒン",
+        "キャン",
+        "クエッ",
+        "ガルル",
+        "ガオー"
+      ]
+    },
+    "GachaRarityUncommon": {
+      "id": "GachaRarityUncommon",
+      "key": "GachaRarityUncommon",
+      "name": "幻獣ガチャ:RarityUncommon",
+      "createdAt": "2025-09-02T03:50:10.003Z",
+      "updatedAt": "2025-09-02T04:40:41.689Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "ゲコゲコ",
+        "ホーホー",
+        "カッコー",
+        "ウキーッ",
+        "ブヒブヒ",
+        "ヒヒーン",
+        "パオーン",
+        "ギャオン",
+        "クルッポー",
+        "コケコッコー",
+        "キュルキュル",
+        "ホーホケキョ",
+        "ピィーヒョロロ"
+      ]
+    },
+    "GachaRarityRare": {
+      "id": "GachaRarityRare",
+      "key": "GachaRarityRare",
+      "name": "幻獣ガチャ:RarityRare",
+      "createdAt": "2025-09-02T04:04:15.778Z",
+      "updatedAt": "2025-09-02T04:40:27.349Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "紅鶴",
+        "黒豹",
+        "青鯨",
+        "銀狼",
+        "蒼鷹",
+        "虎狼",
+        "金熊",
+        "斑馬",
+        "黒熊",
+        "山猫",
+        "雪豹",
+        "銀狐",
+        "海豚",
+        "森鹿",
+        "雪熊",
+        "銀鯱",
+        "火狐",
+        "水獺",
+        "巨象",
+        "虎王",
+        "獅子",
+        "鷹目",
+        "稲荷",
+        "蝶舞",
+        "獏夢"
+      ]
+    },
+    "GachaRaritySSR": {
+      "id": "GachaRaritySSR",
+      "key": "GachaRaritySSR",
+      "name": "幻獣ガチャ:RaritySSR",
+      "createdAt": "2025-09-02T04:04:45.522Z",
+      "updatedAt": "2025-09-02T04:40:19.679Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "鳳凰王",
+        "麒麟聖",
+        "龍神帝",
+        "玄亀甲",
+        "白虎皇",
+        "朱雀炎",
+        "青龍天",
+        "仙狐霊",
+        "天狗翼",
+        "九狐幻",
+        "八蛇魔"
       ]
     },
     "StageRandom": {
@@ -1740,39 +1918,6 @@
         }
       ]
     },
-    "GachaRarityCommon": {
-      "id": "GachaRarityCommon",
-      "key": "GachaRarityCommon",
-      "name": "幻獣ガチャ:RarityCommon",
-      "createdAt": "2025-09-02T03:49:10.566Z",
-      "updatedAt": "2025-09-02T04:40:36.329Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "ワン",
-        "バウ",
-        "モー",
-        "ピヨ",
-        "コケ",
-        "ケロ",
-        "ブー",
-        "モグ",
-        "チュン",
-        "メェー",
-        "チュー",
-        "ミャー",
-        "クワッ",
-        "キュイ",
-        "ヒヒン",
-        "キャン",
-        "クエッ",
-        "ガルル",
-        "ガオー"
-      ]
-    },
     "CardTypeNormalAdd": {
       "id": "CardTypeNormalAdd",
       "key": "CardTypeNormalAdd",
@@ -1790,33 +1935,6 @@
           "weight": 2,
           "content": "<<null>>"
         }
-      ]
-    },
-    "GachaRarityUncommon": {
-      "id": "GachaRarityUncommon",
-      "key": "GachaRarityUncommon",
-      "name": "幻獣ガチャ:RarityUncommon",
-      "createdAt": "2025-09-02T03:50:10.003Z",
-      "updatedAt": "2025-09-02T04:40:41.689Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "ゲコゲコ",
-        "ホーホー",
-        "カッコー",
-        "ウキーッ",
-        "ブヒブヒ",
-        "ヒヒーン",
-        "パオーン",
-        "ギャオン",
-        "クルッポー",
-        "コケコッコー",
-        "キュルキュル",
-        "ホーホケキョ",
-        "ピィーヒョロロ"
       ]
     },
     "CardTypeNice": {
@@ -3294,70 +3412,6 @@
         "リオデジャネイロ",
         "リマ",
         "南極基地"
-      ]
-    },
-    "GachaRarityRare": {
-      "id": "GachaRarityRare",
-      "key": "GachaRarityRare",
-      "name": "幻獣ガチャ:RarityRare",
-      "createdAt": "2025-09-02T04:04:15.778Z",
-      "updatedAt": "2025-09-02T04:40:27.349Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "紅鶴",
-        "黒豹",
-        "青鯨",
-        "銀狼",
-        "蒼鷹",
-        "虎狼",
-        "金熊",
-        "斑馬",
-        "黒熊",
-        "山猫",
-        "雪豹",
-        "銀狐",
-        "海豚",
-        "森鹿",
-        "雪熊",
-        "銀鯱",
-        "火狐",
-        "水獺",
-        "巨象",
-        "虎王",
-        "獅子",
-        "鷹目",
-        "稲荷",
-        "蝶舞",
-        "獏夢"
-      ]
-    },
-    "GachaRaritySSR": {
-      "id": "GachaRaritySSR",
-      "key": "GachaRaritySSR",
-      "name": "幻獣ガチャ:RaritySSR",
-      "createdAt": "2025-09-02T04:04:45.522Z",
-      "updatedAt": "2025-09-02T04:40:19.679Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "鳳凰王",
-        "麒麟聖",
-        "龍神帝",
-        "玄亀甲",
-        "白虎皇",
-        "朱雀炎",
-        "青龍天",
-        "仙狐霊",
-        "天狗翼",
-        "九狐幻",
-        "八蛇魔"
       ]
     }
   },
