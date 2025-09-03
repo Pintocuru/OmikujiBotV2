@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/postAction/PostActionsEditDialog.vue -->
+<!-- !廃止予定 -->
 <template>
   <dialog ref="dialogRef" class="modal">
     <div class="modal-box max-w-max">

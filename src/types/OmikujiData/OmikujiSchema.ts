@@ -7,6 +7,56 @@ import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 
 /**
+
+// 将来実装したいやつ
+
+// PostAction delaySeconds
+const PostActionBaseSchema = z.object({
+  delaySeconds: z
+    .number()
+    .min(POST_SETTINGS.basicDelaySeconds * -1)
+    .default(0)
+    .catch(0),
+});
+
+// PostAction messageContent
+export const PostActionMessageSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal("message"),
+  characterKey: z.string().default("").catch(""),
+  iconKey: CharacterEmotionSchema.default("default").catch("default"),
+  messageContent: z.string().default("").catch(""),
+  wordParty: z.string().optional().catch(undefined),
+  sound: z.string().optional().catch(undefined),
+});
+
+// PostAction トースト
+export const PostActionToastSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal("toast"),
+  characterKey: z.string().default("").catch(""),
+  messageToast: z.string().default("").catch(""),
+  sound: z.string().optional().catch(undefined),
+});
+
+// PostAction WordParty
+export const PostActionWordPartySchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal("wordParty"),
+  wordParty: z.string().default("").catch(""),
+});
+
+
+// PostAction わんコメ・BOTちゃんに投稿する型定義
+export const PostActionSchema = z.discriminatedUnion("actionType", [
+  PostActionMessageSchema,
+  PostActionToastSchema,
+  PostActionWordPartySchema,
+]);
+
+ */
+
+/**
  * PostAction WordParty用
  */
 export const PostActionWordPartySchema = z.object({

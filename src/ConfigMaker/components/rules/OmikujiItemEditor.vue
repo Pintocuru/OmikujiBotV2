@@ -18,7 +18,21 @@
       />
 
       <!-- ツールバー -->
-      <OmikujiItemToolbar :modelValue="omikujiItem.postActions" @toggleJson="toggleEditMode" @toggleEdit="openDialog" />
+      <OmikujiItemToolbar
+        :modelValue="omikujiItem.postActions"
+        @toggleJson="toggleEditMode"
+        @toggleEdit="toggleTabEditor"
+      />
+
+      <!-- PostActionsタブエディター -->
+      <PostActionsTabEditor
+        v-if="isTabEditorOpen"
+        :actions="omikujiItem.postActions"
+        :category="category"
+        :selected-rule-id="selectedRuleId"
+        :omikuji-index="index"
+        @update:actions="updatePostActions"
+      />
 
       <!-- JSON編集モード -->
       <PostActionsEditorJson
@@ -29,14 +43,6 @@
         @close="isJsonMode = false"
       />
     </div>
-
-    <!-- 編集ダイアログ -->
-    <PostActionsEditDialog
-      ref="dialog"
-      :category="category"
-      :selected-rule-id="selectedRuleId"
-      :omikuji-index="index"
-    />
   </div>
 </template>
 
@@ -44,11 +50,10 @@
   import { computed, ref, Ref } from 'vue'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
   import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
-  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
-  import PostActionsEditDialog from '@ConfigComponents/postAction/PostActionsEditDialog.vue'
+  import PostActionsTabEditor from '@ConfigComponents/postAction/PostActionsTabEditor.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 
   const props = defineProps<{
@@ -61,8 +66,8 @@
   const omikujiStore = useOmikujiStore()
 
   // Refs for PostActions functionality
-  const dialog: Ref<InstanceType<typeof PostActionsEditDialog> | null> = ref(null)
   const isJsonMode = ref(false)
+  const isTabEditorOpen = ref(false)
 
   // Computed
   const allOmikujiSets = computed({
@@ -84,11 +89,33 @@
   })
 
   // PostActions methods
-  const openDialog = () => {
-    dialog.value?.open()
+  const toggleTabEditor = () => {
+    isTabEditorOpen.value = !isTabEditorOpen.value
+    // JSONモードが開いていたら閉じる
+    if (isTabEditorOpen.value) {
+      isJsonMode.value = false
+    }
   }
 
   const toggleEditMode = () => {
     isJsonMode.value = !isJsonMode.value
+    // タブエディターが開いていたら閉じる
+    if (isJsonMode.value) {
+      isTabEditorOpen.value = false
+    }
+  }
+
+  // PostActionsの更新
+  const updatePostActions = (newActions: PostActionType[]) => {
+    if (!props.selectedRuleId) return
+
+    const updatedOmikuji = [...allOmikujiSets.value]
+    if (updatedOmikuji[props.index]) {
+      updatedOmikuji[props.index] = {
+        ...updatedOmikuji[props.index],
+        postActions: newActions,
+      }
+      allOmikujiSets.value = updatedOmikuji
+    }
   }
 </script>
