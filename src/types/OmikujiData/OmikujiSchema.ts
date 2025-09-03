@@ -25,6 +25,7 @@ export const PostActionMessageSchema = z.object({
   actionType: z.literal("message"),
   characterKey: z.string().default("").catch(""),
   iconKey: CharacterEmotionSchema.default("default").catch("default"),
+  enterMotion: z.enum(motionLabel).optional().catch(undefined),
   messageContent: z.string().default("").catch(""),
   wordParty: z.string().optional().catch(undefined),
   sound: z.string().optional().catch(undefined),
@@ -44,6 +45,13 @@ export const PostActionWordPartySchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal("wordParty"),
   wordParty: z.string().default("").catch(""),
+});
+
+// PostAction actionSet
+export const PostActionActionSetSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal("actionSet"),
+  actionSetId: z.string().default("").catch(""),
 });
 
 
@@ -79,6 +87,18 @@ export const PostActionSchema = z.object({
   messageToast: z.string().optional().catch(undefined),
   enterMotion: z.enum(motionLabel).optional().catch(undefined),
   sound: z.string().optional().catch(undefined),
+
+  // actionType:
+  actionType: z
+    .union([
+      z.literal('legacy'), // legacy を付与し、PostAction のデータを効果的にする
+      z.literal('message'),
+      z.literal('toast'),
+      z.literal('wordParty'),
+      z.literal('actionSet'),
+    ])
+    .default('legacy')
+    .catch('legacy'),
 })
 
 /**

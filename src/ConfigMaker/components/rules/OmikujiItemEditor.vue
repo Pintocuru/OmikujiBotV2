@@ -92,17 +92,13 @@
   const toggleTabEditor = () => {
     isTabEditorOpen.value = !isTabEditorOpen.value
     // JSONモードが開いていたら閉じる
-    if (isTabEditorOpen.value) {
-      isJsonMode.value = false
-    }
+    if (isTabEditorOpen.value) isJsonMode.value = false
   }
 
   const toggleEditMode = () => {
     isJsonMode.value = !isJsonMode.value
     // タブエディターが開いていたら閉じる
-    if (isJsonMode.value) {
-      isTabEditorOpen.value = false
-    }
+    if (isJsonMode.value) isTabEditorOpen.value = false
   }
 
   // PostActionsの更新

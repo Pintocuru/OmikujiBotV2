@@ -10,7 +10,7 @@
         <div class="flex items-center gap-2 flex-shrink-0">
           <span class="badge badge-primary badge-sm">{{ index + 1 }}</span>
           <span
-            class="bg-accent text-accent-content text-xs px-1 rounded tooltip tooltip-right"
+            class="badge badge-accent badge-sm rounded tooltip tooltip-right"
             data-tip="チャットを受け取ってから発動するまでの遅延時間(秒)"
           >
             {{ action.delaySeconds }}s
