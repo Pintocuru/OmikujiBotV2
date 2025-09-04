@@ -1,38 +1,32 @@
 <!-- src/configMaker/components/wordPartySettings/DeveloperMode.vue -->
 <template>
-  <SectionCard
-    :variant="agreed ? 'success' : 'outline-success'"
-    title="WordParty config.js読み込み機能"
-    description="config.jsファイルを読み込み、上記のリストに追加します"
-  >
-    <div v-if="!agreed">
-      <!-- 読み込み機能同意確認 -->
-      <InformationCard>
-        <h4 class="font-semibold">⚠️ 読み込み機能について</h4>
-        <p class="text-sm mt-2">
-          この機能はWordPartyのconfig.jsファイルを読み込みます。<br />
-          JavaScriptコードを実行するため、信頼できるファイルのみを使用してください。<br />
-          悪意のあるコードが含まれている可能性があります。
-        </p>
-      </InformationCard>
-      <div class="flex justify-center">
-        <button @click="$emit('agree')" class="btn btn-success">理解して読み込み機能を有効にする</button>
-      </div>
+  <div v-if="!agreed">
+    <!-- 読み込み機能同意確認 -->
+    <InformationCard>
+      <h4 class="font-semibold">⚠️ 読み込み機能について</h4>
+      <p class="text-sm mt-2">
+        この機能はWordPartyのconfig.jsファイルを読み込みます。<br />
+        JavaScriptコードを実行するため、信頼できるファイルのみを使用してください。<br />
+        悪意のあるコードが含まれている可能性があります。
+      </p>
+    </InformationCard>
+    <div class="flex justify-center pt-4">
+      <button @click="$emit('agree')" class="btn btn-success">理解して読み込み機能を有効にする</button>
+    </div>
+  </div>
+
+  <div v-else>
+    <div class="mb-4">
+      <input type="file" accept=".js" @change="handleFile" class="file-input file-input-bordered w-full" />
     </div>
 
-    <div v-else>
-      <div class="mb-4">
-        <input type="file" accept=".js" @change="handleFile" class="file-input file-input-bordered w-full" />
-      </div>
-
-      <!-- 読み込みステータス -->
-      <div v-if="loadStatus" class="mb-4">
-        <div :class="['alert', loadStatus.type === 'success' ? 'alert-success' : 'alert-error']">
-          {{ loadStatus.message }}
-        </div>
+    <!-- 読み込みステータス -->
+    <div v-if="loadStatus" class="mb-4">
+      <div :class="['alert', loadStatus.type === 'success' ? 'alert-success' : 'alert-error']">
+        {{ loadStatus.message }}
       </div>
     </div>
-  </SectionCard>
+  </div>
 </template>
 
 <script setup lang="ts">

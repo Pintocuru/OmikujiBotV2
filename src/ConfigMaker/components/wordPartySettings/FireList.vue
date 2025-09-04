@@ -1,42 +1,37 @@
 <!-- src/configMaker/components/wordPartySettings/wordPartyFireList.vue -->
 <template>
-  <SectionCard
-    :title="`WordParty発動リスト ( ${settings.length}件)`"
-    description="デフォルトでは、「おみくじBOT用 word-party」のデータが入っています"
-  >
-    <!-- リスト表示 -->
-    <!-- FIXME:もうちょっと見た目良くならない？ -->
-    <div v-if="settings.length > 0">
-      <!-- グリッドレイアウト -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-1 max-h-96 overflow-y-auto">
-        <div
-          v-for="(item, index) in settings"
-          :key="index"
-          class="flex items-center gap-2 border-b border-base-200 text-sm py-1 px-2 hover:bg-base-200"
-        >
-          <!-- 名前 -->
-          <div class="badge badge-sm badge-primary w-32 truncate text-primary-content">
-            {{ item.name || '名前未設定' }}
-          </div>
-
-          <!-- パターン -->
-          <div class="flex-1 font-mono text-base-content truncate">
-            {{ item.pattern || 'パターン未設定' }}
-          </div>
-
-          <!-- テストボタン -->
-          <button @click="testWordParty(item.pattern)" :disabled="!item.pattern" class="btn btn-xs btn-primary">
-            テスト実行
-          </button>
+  <!-- リスト表示 -->
+  <!-- FIXME:もうちょっと見た目良くならない？ -->
+  <div v-if="settings.length > 0">
+    <!-- グリッドレイアウト -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-1 max-h-96 overflow-y-auto">
+      <div
+        v-for="(item, index) in settings"
+        :key="index"
+        class="flex items-center gap-2 border-b border-base-200 text-sm py-1 px-2 hover:bg-base-200"
+      >
+        <!-- 名前 -->
+        <div class="badge badge-sm badge-primary w-32 truncate text-primary-content">
+          {{ item.name || '名前未設定' }}
         </div>
+
+        <!-- パターン -->
+        <div class="flex-1 font-mono text-base-content truncate">
+          {{ item.pattern || 'パターン未設定' }}
+        </div>
+
+        <!-- テストボタン -->
+        <button @click="testWordParty(item.pattern)" :disabled="!item.pattern" class="btn btn-xs btn-primary">
+          テスト実行
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- 空の場合の表示 -->
-    <div v-else>
-      <NoParamsCard message="WordParty設定がありません" sub="テキスト編集から追加してください" />
-    </div>
-  </SectionCard>
+  <!-- 空の場合の表示 -->
+  <div v-else>
+    <NoParamsCard message="WordParty設定がありません" sub="テキスト編集から追加してください" />
+  </div>
 </template>
 
 <script setup lang="ts">

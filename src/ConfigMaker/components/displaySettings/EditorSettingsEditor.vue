@@ -1,47 +1,45 @@
 <!-- src/ConfigMaker/components/display/EditorSettingsEditor.vue -->
 <template>
-  <SectionCard title="エディター設定" description="エディター自体の見た目とライセンスの設定です">
-    <!-- DaisyUIテーマ -->
-    <SettingItem
-      label="エディターテーマ"
-      description="DaisyUiを使ってます"
-      :showReset="true"
-      @reset="resetMap.daisyUiTheme"
+  <!-- DaisyUIテーマ -->
+  <SettingItem
+    label="エディターテーマ"
+    description="DaisyUiを使ってます"
+    :showReset="true"
+    @reset="resetMap.daisyUiTheme"
+  >
+    <select
+      :value="base.daisyUiTheme"
+      @change="(e) => updateBaseField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
+      class="select select-bordered w-full max-w-xs"
     >
-      <select
-        :value="base.daisyUiTheme"
-        @change="(e) => updateBaseField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
-        class="select select-bordered w-full max-w-xs"
-      >
-        <option v-for="theme in themes" :key="theme" :value="theme">
-          {{ theme }}
-        </option>
-      </select>
-    </SettingItem>
+      <option v-for="theme in themes" :key="theme" :value="theme">
+        {{ theme }}
+      </option>
+    </select>
+  </SettingItem>
 
-    <!-- ライセンスキー -->
-    <SettingItem label="ライセンスキー" description="入力したハッシュでモードを判定します">
-      <div class="flex gap-2 items-center">
-        <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
-        <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>
-        <input
-          type="password"
-          class="input input-bordered flex-1"
-          :value="licenseKeyHash"
-          @input="(e) => updateLicenseKeyHash((e.target as HTMLInputElement).value)"
-          placeholder="****"
-        />
-        <span v-if="isDev">
-          <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
-          <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>
-          <button class="btn btn-sm btn-warning" @click="updateLicenseKeyHash(getKey('godMode'))">GOD-MODE</button>
-        </span>
-      </div>
-    </SettingItem>
-  </SectionCard>
+  <!-- ライセンスキー -->
+  <SettingItem label="ライセンスキー" description="入力したハッシュでモードを判定します">
+    <div class="flex gap-2 items-center">
+      <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
+      <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>
+      <input
+        type="password"
+        class="input input-bordered flex-1"
+        :value="licenseKeyHash"
+        @input="(e) => updateLicenseKeyHash((e.target as HTMLInputElement).value)"
+        placeholder="****"
+      />
+      <span v-if="isDev">
+        <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
+        <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>
+        <button class="btn btn-sm btn-warning" @click="updateLicenseKeyHash(getKey('godMode'))">GOD-MODE</button>
+      </span>
+    </div>
+  </SettingItem>
 
   <!-- 補足説明 -->
-  <InformationCard v-if="isPro && !isGod" class="mb-4">
+  <InformationCard v-if="isPro && !isGod">
     <p>PROライセンスキーを入力したあとは：</p>
     <p>ライセンスは即時適用されますが、保存を行わないと、リロード時にライセンスが戻ってしまいます。</p>
     <p>「設定を出力(js)」を押して、保存するのをお忘れなく。</p>
@@ -50,16 +48,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import { storeToRefs } from 'pinia'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { isDev } from '@/types'
   import { getKey } from '@/types/SettingMode'
+  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import { themes } from '@shared/styles/DaisyUiTheme'
+  import { storeToRefs } from 'pinia'
 
   // Store
   const omikujiStore = useOmikujiStore()

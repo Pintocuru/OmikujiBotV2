@@ -1,62 +1,51 @@
 <!-- src/ConfigMaker/components/meta/PackageDistributionInfo.vue -->
 <template>
-  <SectionCard
-    :variant="isPro ? 'secondary' : 'outline-secondary'"
-    title="配布情報"
-    description="おみくじパッケージのライセンスや配布先の表示です"
-  >
-    <!-- ライセンス -->
-    <SettingItem
-      label="ライセンス"
-      description="パッケージのライセンス情報"
-      :showReset="isPro"
-      @reset="resetMap.license"
-    >
-      <div class="flex gap-2">
-        <select
-          v-model="license"
-          class="select select-bordered flex-1 max-w-xs w-full"
-          :class="{ 'select-disabled': !isPro }"
-          :disabled="!isPro"
-        >
-          <option v-for="licenseOption in licenseOptions" :key="licenseOption.value" :value="licenseOption.value">
-            {{ licenseOption.label }}
-          </option>
-        </select>
-        <input
-          v-if="license === 'custom'"
-          v-model="customLicense"
-          type="text"
-          class="input input-bordered flex-1 max-w-xs"
-          :class="{ 'input-disabled': !isPro }"
-          :disabled="!isPro"
-          placeholder="カスタムライセンスを入力"
-        />
-      </div>
-    </SettingItem>
+  <!-- ライセンス -->
+  <SettingItem label="ライセンス" description="パッケージのライセンス情報" :showReset="isPro" @reset="resetMap.license">
+    <div class="flex gap-2">
+      <select
+        v-model="license"
+        class="select select-bordered flex-1 max-w-xs w-full"
+        :class="{ 'select-disabled': !isPro }"
+        :disabled="!isPro"
+      >
+        <option v-for="licenseOption in licenseOptions" :key="licenseOption.value" :value="licenseOption.value">
+          {{ licenseOption.label }}
+        </option>
+      </select>
+      <input
+        v-if="license === 'custom'"
+        v-model="customLicense"
+        type="text"
+        class="input input-bordered flex-1 max-w-xs"
+        :class="{ 'input-disabled': !isPro }"
+        :disabled="!isPro"
+        placeholder="カスタムライセンスを入力"
+      />
+    </div>
+  </SettingItem>
 
-    <!-- URL -->
-    <SettingItem
-      label="配布サイトURL"
-      description="パッケージの配布サイトやプロジェクトページのURL"
-      :showReset="isPro"
-      @reset="resetMap.url"
-    >
-      <div class="flex gap-2">
-        <input
-          v-model="url"
-          type="url"
-          class="input input-bordered flex-1 w-full"
-          :class="{ 'input-disabled': !isPro }"
-          :disabled="!isPro"
-          placeholder="https://example.com"
-        />
-        <button v-if="url && isValidUrl(url)" @click="openUrl" class="btn btn-primary btn-outline" title="サイトを開く">
-          <ExternalLink class="w-4 h-4" />
-        </button>
-      </div>
-    </SettingItem>
-  </SectionCard>
+  <!-- URL -->
+  <SettingItem
+    label="配布サイトURL"
+    description="パッケージの配布サイトやプロジェクトページのURL"
+    :showReset="isPro"
+    @reset="resetMap.url"
+  >
+    <div class="flex gap-2">
+      <input
+        v-model="url"
+        type="url"
+        class="input input-bordered flex-1 w-full"
+        :class="{ 'input-disabled': !isPro }"
+        :disabled="!isPro"
+        placeholder="https://example.com"
+      />
+      <button v-if="url && isValidUrl(url)" @click="openUrl" class="btn btn-primary btn-outline" title="サイトを開く">
+        <ExternalLink class="w-4 h-4" />
+      </button>
+    </div>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +53,6 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { PackageMetaSchema } from '@shared/types'
   import { storeToRefs } from 'pinia'
   import { ExternalLink } from 'lucide-vue-next'
