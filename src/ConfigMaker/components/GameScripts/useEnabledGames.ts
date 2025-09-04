@@ -4,11 +4,11 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
 import { gameScriptMap } from './GameScriptsMap'
 
-// コンポーザブル関数として定義
 export function useEnabledGames() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
+  // gameScripts に入っているゲームをリスト表示
   const enabledGameScriptMap = computed(() => {
     const { gameScripts } = data.value.displaySettings.developer.visibility
     return Object.entries(gameScriptMap)

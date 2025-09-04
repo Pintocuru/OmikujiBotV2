@@ -2,7 +2,7 @@
 <template>
   <div class="tooltip tooltip-right" :data-tip="`${charactersMap[props.characterKey]?.name} (${altText})`">
     <img v-if="showImage" :src="iconSrc" :alt="altText" :class="imgClass" @error="onImageError" />
-    <div v-else :class="fallbackClass">画像なし</div>
+    <div v-else class="avatar avatar-placeholder w-6 rounded-full text-xs bg-base-200 text-base-content">画像なし</div>
   </div>
 </template>
 

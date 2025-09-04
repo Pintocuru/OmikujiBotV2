@@ -1,29 +1,28 @@
 <!-- src/configMaker/components/postAction/IconPreviewModal.vue -->
 <template>
   <dialog ref="modalRef" class="modal">
-    <div class="modal-box max-w-4xl">
-      <h3 class="font-bold text-lg mb-4 text-base-content">{{ characterName }} - アイコン選択</h3>
+    <div class="modal-box max-w-4xl space-y-4">
+      <h3 class="font-bold text-lg text-base-content">{{ characterName }} - アイコン選択</h3>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <div
           v-for="emotion in availableEmotions"
           :key="emotion"
           @click="selectEmotion(emotion)"
-          class="cursor-pointer p-3 rounded-lg border-2 transition-all hover:shadow-lg"
+          class="cursor-pointer rounded-lg border-2 transition-all hover:shadow-lg"
           :class="[
             currentIconKey === emotion ? 'border-primary bg-primary-focus/10' : 'border-base-200 hover:border-base-300',
           ]"
         >
           <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center">
+            <div class="w-32 h-32 mx-auto rounded-full items-center justify-center">
               <CharacterIcon
                 :characterKey="characterKey"
                 :iconKey="emotion"
-                imgClass="max-w-full max-h-full object-contain rounded-full"
-                fallbackClass="text-gray-400"
+                imgClass="max-w-full max-h-full object-contain rounded-full hover:scale-110 transition-all"
               />
             </div>
-            <p class="text-base-content">{{ emotionLabels[emotion] }}</p>
+            <p class="text-sm text-base-content mt-4">{{ emotionLabels[emotion] }}</p>
           </div>
         </div>
       </div>

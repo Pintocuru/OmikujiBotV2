@@ -1,40 +1,18 @@
-<!-- src/configMaker/components/postAction/PostActionItem.vue -->
 <template>
   <div class="bg-base-200 relative">
     <!-- ActionType選択ボタン -->
-    <div class="mb-2 bg-base-300 flex justify-center py-2">
+    <div class="mb-2 flex justify-center py-2 transition-colors duration-300" :class="actionTypeBackgroundClass">
       <div class="flex gap-4">
-        <!-- メッセージ -->
         <button
+          v-for="actionType in actionTypes"
+          :key="actionType.type"
           class="btn btn-sm tooltip flex items-center gap-1"
-          data-tip="メッセージ"
-          :class="{ 'btn-primary': action.actionType === 'message' }"
-          @click="updateActionType('message')"
+          :data-tip="actionType.label"
+          :class="{ 'btn-primary': action.actionType === actionType.type }"
+          @click="updateActionType(actionType.type)"
         >
-          <MessageSquare class="w-4 h-4" />
-          <span>メッセージ</span>
-        </button>
-
-        <!-- トースト -->
-        <button
-          class="btn btn-sm tooltip flex items-center gap-1"
-          data-tip="トースト"
-          :class="{ 'btn-primary': action.actionType === 'toast' }"
-          @click="updateActionType('toast')"
-        >
-          <Bell class="w-4 h-4" />
-          <span>トースト</span>
-        </button>
-
-        <!-- WordParty -->
-        <button
-          class="btn btn-sm tooltip flex items-center gap-1"
-          data-tip="WordParty"
-          :class="{ 'btn-primary': action.actionType === 'wordParty' }"
-          @click="updateActionType('wordParty')"
-        >
-          <PartyPopper class="w-4 h-4" />
-          <span>WordParty</span>
+          <component :is="actionType.icon" class="w-4 h-4" />
+          <span>{{ actionType.label }}</span>
         </button>
       </div>
     </div>
@@ -51,48 +29,21 @@
       />
     </SettingItem>
 
-    <!-- メッセージタイプの設定 -->
-    <PostActionMessageSettings
-      v-if="action.actionType === 'message'"
+    <!-- 動的コンポーネント表示 -->
+    <component
+      v-if="currentComponent"
+      :is="currentComponent"
       :action="action"
       :character-options="characterOptions"
+      :index="index"
       @update:action="handleActionUpdate"
     />
-
-    <!-- トーストタイプの設定 -->
-    <PostActionToastSettings
-      v-else-if="action.actionType === 'toast'"
-      :action="action"
-      :character-options="characterOptions"
-      @update:action="handleActionUpdate"
-    />
-
-    <!-- WordPartyタイプの設定 -->
-    <PostActionWordPartySettings
-      v-else-if="action.actionType === 'wordParty'"
-      :action="action"
-      @update:action="handleActionUpdate"
-    />
-
-    <!-- レガシータイプ（既存の設定を表示） -->
-    <div v-else-if="action.actionType === 'legacy'" class="space-y-4">
-      <!-- レガシー用の基本設定 -->
-      <PostActionBasicSettings
-        :action="action"
-        :character-options="characterOptions"
-        @update:action="handleActionUpdate"
-      />
-
-      <!-- レガシー用のメッセージフィールド -->
-      <PostActionMessageFields :action="action" :index="index" @update:action="handleActionUpdate" />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
-  import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
   import PostActionBasicSettings from './PostActionBasicSettings.vue'
   import PostActionMessageFields from './PostActionMessageFields.vue'
   import PostActionMessageSettings from './PostActionMessageSettings.vue'
@@ -115,6 +66,37 @@
     'update:action': [value: PostActionType]
   }>()
 
+  // アクションタイプの定義
+  const actionTypes = [
+    { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
+    { type: 'toast' as const, label: 'トースト', icon: Bell },
+    { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
+  ]
+
+  // 選択されたアクションタイプに応じた背景色
+  const actionTypeBackgroundClass = computed(() => {
+    const backgroundColors = {
+      message: 'bg-yellow-700',
+      toast: 'bg-green-700',
+      wordParty: 'bg-purple-700',
+      legacy: 'bg-gray-700',
+    }
+    return backgroundColors[props.action.actionType] || 'bg-base-300'
+  })
+
+  // 現在表示すべきコンポーネントの決定
+  const currentComponent = computed(() => {
+    const componentMap = {
+      message: PostActionMessageSettings,
+      toast: PostActionToastSettings,
+      wordParty: PostActionWordPartySettings,
+      legacy: 'legacy',
+    }
+
+    const component = componentMap[props.action.actionType]
+    return component === 'legacy' ? null : component
+  })
+
   // 遅延秒数のcomputed
   const delaySeconds = computed({
     get: () => props.action.delaySeconds,
@@ -129,7 +111,6 @@
       ...props.action,
       actionType: newType,
     }
-
     emit('update:action', updatedAction)
   }
 

@@ -1,67 +1,69 @@
 <!-- src/configMaker/components/postAction/PostActionMessageSettings.vue -->
 <template>
-  <div>
-    <!-- キャラクター選択 -->
-    <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
-      <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
-        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
-          {{ char.label }}
-        </option>
-      </select>
-    </SettingItem>
+  <!-- キャラクター選択 -->
+  <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
+    <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
+      <option v-for="char in characterOptions" :key="char.value" :value="char.value">
+        {{ char.label }}
+      </option>
+    </select>
+  </SettingItem>
 
-    <!-- アイコン選択 -->
-    <SettingItem label="🎨 アイコン" description="表示する画像を選択">
-      <IconSelector :character-key="action.characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
-    </SettingItem>
+  <!-- アイコン選択 -->
+  <SettingItem v-if="isDev && characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
+    <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
+  </SettingItem>
 
-    <!-- エンターモーション -->
-    <!-- FIXME:motionLabel を使って欲しい -->
-    <SettingItem v-if="isDev" label="✨ 表示アニメーション" description="キャラクターにかかるアニメーションを選択">
-      <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
-        <option value="">なし</option>
-        <option value="slideUp">スライドアップ</option>
-        <option value="slideDown">スライドダウン</option>
-        <option value="slideLeft">スライド左</option>
-        <option value="slideRight">スライド右</option>
-        <option value="flipInY">縦フリップ</option>
-        <option value="flipX">横フリップ</option>
-        <option value="zoomIn">ズームイン</option>
-        <option value="pulse">パルス</option>
-        <option value="scale">スケール</option>
-        <option value="rotateIn">回転イン</option>
-        <option value="bounce">バウンス</option>
-        <option value="rubberBand">ラバーバンド</option>
-        <option value="jello">ジェロ</option>
-        <option value="fade">フェード</option>
-      </select>
-    </SettingItem>
+  <!-- エンターモーション -->
+  <!-- FIXME:motionLabel を使って欲しい -->
+  <SettingItem
+    v-if="isDev && characterKey !== ''"
+    label="✨ 表示アニメーション"
+    description="キャラクターにかかるアニメーションを選択"
+  >
+    <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
+      <option value="">なし</option>
+      <option value="slideUp">スライドアップ</option>
+      <option value="slideDown">スライドダウン</option>
+      <option value="slideLeft">スライド左</option>
+      <option value="slideRight">スライド右</option>
+      <option value="flipInY">縦フリップ</option>
+      <option value="flipX">横フリップ</option>
+      <option value="zoomIn">ズームイン</option>
+      <option value="pulse">パルス</option>
+      <option value="scale">スケール</option>
+      <option value="rotateIn">回転イン</option>
+      <option value="bounce">バウンス</option>
+      <option value="rubberBand">ラバーバンド</option>
+      <option value="jello">ジェロ</option>
+      <option value="fade">フェード</option>
+    </select>
+  </SettingItem>
 
-    <!-- メッセージ内容 -->
-    <SettingItem label="📝 メッセージ内容" description="フキダシに表示する内容">
-      <input
-        type="text"
-        v-model="messageContent"
-        class="input input-bordered input-sm w-full"
-        placeholder="投稿するメッセージを入力してください"
-      />
-    </SettingItem>
+  <!-- メッセージ内容 -->
+  <SettingItem label="📝 メッセージ内容" description="フキダシに表示する内容">
+    <input
+      type="text"
+      v-model="messageContent"
+      class="input input-bordered input-sm w-full"
+      placeholder="投稿するメッセージを入力してください"
+    />
+  </SettingItem>
 
-    <!-- WordParty -->
-    <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
-      <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
-    </SettingItem>
+  <!-- WordParty -->
+  <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
+    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
+  </SettingItem>
 
-    <!-- サウンド -->
-    <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
-      <input
-        type="text"
-        v-model="sound"
-        class="input input-bordered input-sm"
-        placeholder="サウンドファイル名（オプション）"
-      />
-    </SettingItem>
-  </div>
+  <!-- サウンド -->
+  <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+    <input
+      type="text"
+      v-model="sound"
+      class="input input-bordered input-sm"
+      placeholder="サウンドファイル名（オプション）"
+    />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">

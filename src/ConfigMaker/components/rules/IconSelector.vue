@@ -1,40 +1,35 @@
 <!-- src/configMaker/components/comments/IconSelector.vue -->
 <template>
-  <div class="form-control">
-    <label class="label py-0">
-      <span class="label-text text-xs">🎨 アイコン</span>
-    </label>
-    <div class="flex gap-1">
-      <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-        <option v-for="emotion in availableEmotions" :key="emotion" :value="emotion">
-          {{ emotionLabels[emotion] }}
-        </option>
-      </select>
-      <div class="relative">
-        <button
-          @click="showIconPreview"
-          @mouseenter="showHoverPreview = true"
-          @mouseleave="showHoverPreview = false"
-          class="btn btn-sm btn-outline"
-          title="アイコンプレビュー"
-          :disabled="availableEmotions.length === 0"
-        >
-          <User class="w-4 h-4" />
-        </button>
+  <div class="flex gap-1">
+    <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
+      <option v-for="emotion in availableEmotions" :key="emotion" :value="emotion">
+        {{ emotionLabels[emotion] }}
+      </option>
+    </select>
+    <div class="relative">
+      <button
+        @click="showIconPreview"
+        @mouseenter="showHoverPreview = true"
+        @mouseleave="showHoverPreview = false"
+        class="btn btn-sm btn-outline"
+        :disabled="availableEmotions.length === 0"
+      >
+        <User class="w-4 h-4" />
+      </button>
 
-        <div
-          v-if="showHoverPreview && hasEmotion(characterKey, localIconKey)"
-          class="absolute top-full right-0 mt-1 p-2 bg-white border rounded shadow-lg z-10 pointer-events-none"
-        >
-          <div class="text-center">
-            <p class="text-sm text-gray-600 mb-2">{{ characterName }}</p>
-            <p class="text-xs text-gray-500 mb-2">{{ emotionLabels[localIconKey] }}</p>
-            <CharacterIcon
-              :characterKey="characterKey"
-              :iconKey="localIconKey"
-              imgClass="max-w-16 max-h-16 object-contain rounded-full"
-            />
-          </div>
+      <!-- アイコンプレビューボタン -->
+      <div
+        v-if="showHoverPreview && hasEmotion(characterKey, localIconKey)"
+        class="absolute right-0 p-4 bg-base-100 border rounded shadow-lg z-10 pointer-events-none"
+      >
+        <!-- アイコン表示 -->
+        <div class="text-center">
+          <CharacterIcon
+            :characterKey="characterKey"
+            :iconKey="localIconKey"
+            imgClass="max-w-32 max-h-32 object-contain rounded-full"
+          />
+          <p class="text-sm text-base-content mt-4">{{ emotionLabels[localIconKey] }}</p>
         </div>
       </div>
     </div>

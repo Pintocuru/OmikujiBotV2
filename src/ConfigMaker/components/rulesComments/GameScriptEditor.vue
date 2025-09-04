@@ -19,20 +19,8 @@
     </p>
   </InformationCard>
 
-  <!-- スクリプト有効化チェックボックス -->
-  <div v-if="isGod">
-    <SettingItem label="ゲームスクリプトを使用" description="好きなゲームを選んでね!" variant="warning">
-      <label class="label cursor-pointer justify-start gap-3">
-        <input type="checkbox" v-model="isScriptEnabled" class="toggle toggle-warning" />
-        <span class="label-text font-medium"
-          >ゲームスクリプトを選択することで、使用できるプレースホルダーが増えます</span
-        >
-      </label>
-    </SettingItem>
-  </div>
-
   <!-- スクリプト選択とパラメータ設定 -->
-  <div v-if="isScriptEnabled" class="mt-6 space-y-4">
+  <div v-if="isScriptEnabled" class="space-y-4">
     <!-- スクリプト選択 -->
     <SettingItem label="ゲームスクリプト" description="ゲーム結果は、おみくじ設定＞プレースホルダーから">
       <select
@@ -48,7 +36,7 @@
     </SettingItem>
 
     <!-- スクリプト設定パラメータ -->
-    <div v-if="isScriptEnabled && selectedScript?.params?.length" class="space-y-4">
+    <div v-if="selectedScript?.params?.length">
       <SettingItem
         v-for="setting in selectedScript.params"
         :key="setting.key"
@@ -99,8 +87,15 @@
         </div>
       </SettingItem>
     </div>
+
+    <!-- スクリプトのパラメータがない場合 -->
+    <div v-else-if="selectedScript && selectedScript?.params?.length <= 0">
+      <NoParamsCard message="このスクリプトには設定可能なパラメータがありません" iconName="LucidePackageOpen" />
+    </div>
+
+    <!-- スクリプトが選択されていない場合 -->
     <div v-else>
-      <NoParamsCard message="このスクリプトには設定可能なパラメータがありません" />
+      <NoParamsCard message="スクリプトが選択されていません" iconName="LucideFileX" />
     </div>
   </div>
 </template>
@@ -134,8 +129,8 @@
 
   // スクリプト有効化フラグ
   const isScriptEnabled = computed({
-    // FIXME:ここは gameScriptSettingsを 参照して
-    get: () => props.modelValue.scriptId !== null,
+    // FIXME:ここは gameScriptSettings を 参照して
+    get: () => enabledGameScriptMap.value.length > 0,
     set: (enabled: boolean) => {
       if (enabled) {
         emit('update:modelValue', {

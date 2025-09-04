@@ -13,7 +13,7 @@
     <input
       type="text"
       v-model="messageToast"
-      class="input input-bordered input-sm"
+      class="input input-bordered input-sm w-full"
       placeholder="トーストとして表示するメッセージを入力してください"
     />
   </SettingItem>
