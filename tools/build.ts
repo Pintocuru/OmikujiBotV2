@@ -51,6 +51,7 @@ const buildTargets: BuildTarget[] = [
       description: packageJson.description,
       generatorName: packageJson.name,
       generatorVersion: packageJson.version,
+      dataVersion: packageJson.dataVersion,
     }
     const builder = new WebpackBuilder(systemCommonData)
 
