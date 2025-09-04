@@ -10,7 +10,7 @@ import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
 export const BaseSettingsSchema = z.object({
   /**
-   * 文字・アニメーション
+   * フキダシ
    */
   // 文字・画像の大きさ指定
   displaySize: z.enum(displaySize).default('md').catch('md'),
@@ -22,16 +22,24 @@ export const BaseSettingsSchema = z.object({
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
 
   /**
-   * 表示オプション
+   * トースト
+   * TODO:トースト表示にバリエーションの必要性とは？
+   * トースト、電光掲示板、2つ目のフキダシなど。
+   */
+  //  showToasts トーストを表示するか
+  showToasts: z.boolean().default(true).catch(true),
+
+  /**
+   * キャラクターオプション
    */
   // キャラクターにフレーム（円形の背景）を表示するか
   showCharacterFrame: z.boolean().default(true).catch(true),
   // キャラクターを常時表示するか（コメント消失後も表示継続）
   showCharacterPersistent: z.boolean().default(false).catch(false),
-  // showCharacterThumbnail キャラクターサムネイルを表示するか(個別はしてもいいかもね)
+  // キャラクターサムネイルを表示するか
   showCharacterThumbnail: z.boolean().default(true).catch(true),
-  //  showToasts トーストを表示するか
-  showToasts: z.boolean().default(true).catch(true),
+  // 複数のキャラクターを1箇所にまとめるか / 常時表示時やサムネイルは、Character のorder1のみを表示させる
+  // TODO:実装、プロパティ名は何がいい？
 
   /**
    * エディター設定
@@ -56,13 +64,13 @@ const visibilitySchema = z.object({
   placeholders: AccessLevelSchema.default('basic').catch('basic'), // placeholders
   characters: AccessLevelSchema.default('basic').catch('basic'), // characters
   // コンポーネントの特定の箇所
-  characterVisible: AccessLevelSchema.default('basic').catch('basic'), // characterのキャラクター表示&表示オプションのキャラクターアイコン
-  wordPartyLoading: AccessLevelSchema.default('basic').catch('basic'), // characterのキャラクター表示&表示オプションのキャラクターアイコン
+  characterVisible: AccessLevelSchema.default('basic').catch('basic'),
+  wordPartyLoading: AccessLevelSchema.default('basic').catch('basic'),
   // ゲームスクリプト
   gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
-  gameScripts: z.array(z.string()).default([]).catch([]), // 参加ユーザーの履歴（時系列順）
+  gameScripts: z.array(z.string()).default([]).catch([]), //
   // ツール系
-  wordPartySettings: AccessLevelSchema.default('basic').catch('basic'), // wordPartySettings
+  wordPartySettings: AccessLevelSchema.default('basic').catch('basic'),
 })
 
 /*
