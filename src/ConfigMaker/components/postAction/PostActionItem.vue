@@ -2,32 +2,40 @@
 <template>
   <div class="bg-base-200 relative">
     <!-- ActionType選択ボタン -->
-    <div class="mb-2 bg-base-300">
-      <div class="menu menu-horizontal gap-4">
+    <div class="mb-2 bg-base-300 flex justify-center py-2">
+      <div class="flex gap-4">
+        <!-- メッセージ -->
         <button
-          class="btn btn-sm"
+          class="btn btn-sm tooltip flex items-center gap-1"
+          data-tip="メッセージ"
           :class="{ 'btn-primary': action.actionType === 'message' }"
           @click="updateActionType('message')"
         >
-          💬 メッセージ
+          <MessageSquare class="w-4 h-4" />
+          <span>メッセージ</span>
         </button>
+
+        <!-- トースト -->
         <button
-          class="btn btn-sm"
+          class="btn btn-sm tooltip flex items-center gap-1"
+          data-tip="トースト"
           :class="{ 'btn-primary': action.actionType === 'toast' }"
           @click="updateActionType('toast')"
         >
-          🍞 トースト
+          <Bell class="w-4 h-4" />
+          <span>トースト</span>
         </button>
+
+        <!-- WordParty -->
         <button
-          class="btn btn-sm"
+          class="btn btn-sm tooltip flex items-center gap-1"
+          data-tip="WordParty"
           :class="{ 'btn-primary': action.actionType === 'wordParty' }"
           @click="updateActionType('wordParty')"
         >
-          🎉 WordParty
+          <PartyPopper class="w-4 h-4" />
+          <span>WordParty</span>
         </button>
-      </div>
-      <div v-if="action.actionType === 'legacy'" class="alert alert-warning">
-        <span class="text-xs">⚠️ このアクションは旧形式です。上のボタンで新形式に移行してください。</span>
       </div>
     </div>
 
@@ -91,6 +99,7 @@
   import PostActionToastSettings from './PostActionToastSettings.vue'
   import PostActionWordPartySettings from './PostActionWordPartySettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { MessageSquare, Bell, PartyPopper } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{

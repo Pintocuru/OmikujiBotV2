@@ -2,10 +2,10 @@
 <template>
   <!-- 左端に色を付ける -->
   <div
-    class="card bg-base-100 p-4 border-l-4 mb-4"
+    class="card bg-base-100 p-2 border-x-4 mb-4"
     :class="{
-      'border-l-primary': index % 2 === 0,
-      'border-l-secondary': index % 2 === 1,
+      'border-x-primary': index % 2 === 0,
+      'border-x-secondary': index % 2 === 1,
     }"
   >
     <div class="space-y-2">

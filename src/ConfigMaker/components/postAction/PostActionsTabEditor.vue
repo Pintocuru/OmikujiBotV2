@@ -2,41 +2,54 @@
 <template>
   <!-- タブヘッダー -->
   <div class="tabs">
+    <!-- プレースホルダータブ（固定） -->
+    <button
+      class="tab tab-sm rounded"
+      :class="{ 'tab-active bg-info text-info-content': activeTab === -1 }"
+      @click="setActiveTab(-1)"
+    >
+      📝 プレースホルダー
+    </button>
+
+    <!-- PostActionタブ -->
     <button
       v-for="(action, index) in props.actions"
       :key="`action-${index}`"
-      class="tab tab-sm"
-      :class="{ 'tab-active bg-base-200': activeTab === index }"
+      class="tab tab-sm rounded"
+      :class="{ 'tab-active bg-info text-info-content': activeTab === index }"
       @click="setActiveTab(index)"
     >
-      <span class="flex gap-2">
-        <span class="badge badge-primary badge-sm">{{ index + 1 }}</span>
-        <span class="badge badge-accent badge-sm rounded"> {{ action.delaySeconds }}s </span>
-        <span v-if="action.actionType === 'legacy'" class="badge badge-sm badge-error">!</span>
-      </span>
+      <!-- アイコンやバッジ部分 -->
+      <PostActionRow :action="action" />
     </button>
 
-    <button class="tab tab-sm" @click="addNewAction">
-      <span class="text-lg">+</span>
-    </button>
+    <button class="tab tab-sm" @click="addNewAction">＋ 追加</button>
   </div>
 
   <!-- タブコンテンツ -->
-  <div v-if="props.actions.length > 0">
-    <PostActionItem
-      :action="currentAction"
-      :index="activeTab"
-      :character-options="characterOptions"
-      @update:action="updateCurrentAction"
-      @duplicate="duplicateAction"
-      @remove="removeAction"
-    />
-  </div>
+  <div>
+    <!-- プレースホルダーリストタブの内容 -->
+    <div v-if="activeTab === -1">
+      <PlaceholderList :actions="props.actions" @open-placeholder="handleOpenPlaceholder" />
+    </div>
 
-  <!-- アクションが空の場合 -->
-  <div v-else>
-    <NoParamsCard message="PostActionがありません" />
-    <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
+    <!-- PostActionタブの内容 -->
+    <div v-else-if="props.actions.length > 0 && activeTab >= 0">
+      <PostActionItem
+        :action="currentAction"
+        :index="activeTab"
+        :character-options="characterOptions"
+        @update:action="updateCurrentAction"
+        @duplicate="duplicateAction"
+        @remove="removeAction"
+      />
+    </div>
+
+    <!-- アクションが空の場合 -->
+    <div v-else-if="props.actions.length === 0">
+      <NoParamsCard message="PostActionがありません" />
+      <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
+    </div>
   </div>
 </template>
 
@@ -46,6 +59,8 @@
   import PostActionItem from './PostActionItem.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import PostActionRow from './PostActionRow.vue'
+  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
 
   const props = defineProps<{
     actions: PostActionType[]
@@ -56,6 +71,7 @@
 
   const emit = defineEmits<{
     'update:actions': [actions: PostActionType[]]
+    'open-placeholder': [placeholderId: string, editorColor?: string | null]
   }>()
 
   // キャラクターオプションの取得
@@ -67,8 +83,8 @@
     }))
   })
 
-  // アクティブなタブのインデックス
-  const activeTab = ref(0)
+  // アクティブなタブのインデックス（-1はプレースホルダータブ）
+  const activeTab = ref(-1)
 
   // 現在選択されているアクション
   const currentAction = computed(() => {
@@ -77,9 +93,18 @@
 
   // タブの切り替え
   const setActiveTab = (index: number) => {
-    if (index >= 0 && index < props.actions.length) {
+    if (index === -1) {
+      // プレースホルダータブ
+      activeTab.value = -1
+    } else if (index >= 0 && index < props.actions.length) {
+      // PostActionタブ
       activeTab.value = index
     }
+  }
+
+  // プレースホルダーを開く処理
+  const handleOpenPlaceholder = (placeholderId: string, editorColor?: string | null) => {
+    emit('open-placeholder', placeholderId, editorColor)
   }
 
   // アクションの更新
@@ -129,7 +154,7 @@
 
       // アクティブタブの調整
       if (activeTab.value >= newActions.length) {
-        activeTab.value = Math.max(0, newActions.length - 1)
+        activeTab.value = Math.max(-1, newActions.length - 1)
       }
     }
   }
@@ -138,10 +163,21 @@
   watch(
     () => props.actions.length,
     (newLength) => {
-      if (newLength === 0) {
+      if (newLength === 0 && activeTab.value >= 0) {
         activeTab.value = -1 // プレースホルダータブに戻る
       } else if (activeTab.value >= newLength) {
         activeTab.value = newLength - 1
+      }
+    },
+    { immediate: true }
+  )
+
+  // 初期状態でプレースホルダータブを表示
+  watch(
+    () => props.actions.length,
+    (newLength) => {
+      if (newLength === 0) {
+        activeTab.value = -1
       }
     },
     { immediate: true }

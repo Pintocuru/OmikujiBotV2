@@ -96,8 +96,8 @@ export const PostActionSchema = z
         z.literal('wordParty'),
         z.literal('actionSet'),
       ])
-      .default('legacy')
-      .catch('legacy'),
+      .default('message')
+      .catch('message'),
   })
   .transform((data) => {
     let actionType: typeof data.actionType = 'legacy'
