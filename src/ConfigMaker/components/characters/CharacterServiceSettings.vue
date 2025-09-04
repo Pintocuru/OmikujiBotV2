@@ -1,41 +1,34 @@
 <!-- src/configMaker/components/characters/CharacterServiceSettings.vue -->
 <template>
-  <SectionCard v-if="localData">
-    <template #header>
-      <div>キャラクター用枠設定</div>
-      <div class="text-sm pr-2">わんコメの投稿で必要な設定を行います。</div>
-    </template>
-
-    <template #body>
-      <!-- 補足説明 -->
-      <InformationCard>
-        キャラクター専用の枠を作成すると、各キャラクターごとに
-        <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
-        詳しくは
-        <a
-          href="https://onecomme.com/docs/guide/speech"
-          target="_blank"
-          rel="noopener"
-          class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
-        >
-          読み上げ機能を使う
-        </a>
-        をお読みください。
-      </InformationCard>
-
-      <!-- チェックボックス -->
-      <SettingItem
-        label="枠のID名"
-        description="わんコメに同じIDの枠がなければ新規作成されます"
-        :showReset="true"
-        @reset="localData.frameId = localData.id"
+  <SectionCard v-if="localData" title="キャラクター用枠設定" description="わんコメの投稿で必要な設定を行います">
+    <!-- 補足説明 -->
+    <InformationCard>
+      キャラクター専用の枠を作成すると、各キャラクターごとに
+      <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
+      詳しくは
+      <a
+        href="https://onecomme.com/docs/guide/speech"
+        target="_blank"
+        rel="noopener"
+        class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
       >
-        <input type="text" class="input w-full" v-model="localData.frameId" />
-      </SettingItem>
+        読み上げ機能を使う
+      </a>
+      をお読みください。
+    </InformationCard>
 
-      <!-- わんコメ投稿用画像設定 -->
-      <CharacterBase64Settings v-if="localData.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
-    </template>
+    <!-- チェックボックス -->
+    <SettingItem
+      label="枠のID名"
+      description="わんコメに同じIDの枠がなければ新規作成されます"
+      :showReset="true"
+      @reset="localData.frameId = localData.id"
+    >
+      <input type="text" class="input w-full" v-model="localData.frameId" />
+    </SettingItem>
+
+    <!-- わんコメ投稿用画像設定 -->
+    <CharacterBase64Settings v-if="localData.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
   </SectionCard>
 </template>
 

@@ -1,34 +1,27 @@
 <!-- src/configMaker/components/characters/CharacterBasicInfo.vue -->
 <template>
-  <SectionCard v-if="currentData" :isGild="true">
-    <template #header>
-      <div>基本設定</div>
-      <div class="text-sm pr-2">キャラクター、またはカラー設定名の編集を行います。</div>
-    </template>
-
-    <template #body>
-      <!-- Key表示 -->
-      <SettingItem label="Key" description="キャラクターのキー名">
-        <div class="flex gap-2 items-center">
-          <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
-            {{ currentData.id }}
-          </div>
-
-          <!-- 編集ボタン -->
-          <IdEditor :currentId="currentData.id" category="characters" />
+  <SectionCard v-if="currentData" title="基本設定" description="キャラクター、またはカラー設定名の編集を行います">
+    <!-- Key表示 -->
+    <SettingItem label="Key" description="キャラクターのキー名">
+      <div class="flex gap-2 items-center">
+        <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
+          {{ currentData.id }}
         </div>
-      </SettingItem>
 
-      <!-- id以外のテキストフィールドループ -->
-      <SettingItem v-for="field in fields" :key="field.key" :label="field.label" :description="field.description">
-        <input
-          type="text"
-          class="input input-bordered w-full"
-          :value="currentData[field.key] || ''"
-          @input="updateField(field.key, ($event.target as HTMLInputElement).value)"
-        />
-      </SettingItem>
-    </template>
+        <!-- 編集ボタン -->
+        <IdEditor :currentId="currentData.id" category="characters" />
+      </div>
+    </SettingItem>
+
+    <!-- id以外のテキストフィールドループ -->
+    <SettingItem v-for="field in fields" :key="field.key" :label="field.label" :description="field.description">
+      <input
+        type="text"
+        class="input input-bordered w-full"
+        :value="currentData[field.key] || ''"
+        @input="updateField(field.key, ($event.target as HTMLInputElement).value)"
+      />
+    </SettingItem>
   </SectionCard>
 </template>
 

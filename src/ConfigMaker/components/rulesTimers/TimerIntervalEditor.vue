@@ -1,26 +1,19 @@
 <!-- src/configMaker/components/timers/TimerIntervalEditor.vue -->
 <template>
-  <SectionCard :isGild="true">
-    <template #header>
-      <div>タイマー設定</div>
-      <div class="text-sm pr-2">発動する間隔やタイミングの設定です</div>
-    </template>
+  <SectionCard title="タイマー設定" description="発動する間隔やタイミングの設定です">
+    <!-- プリセット選択 -->
+    <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">
+      <select v-model="intervalSeconds" class="select select-bordered w-full">
+        <option v-for="preset in intervalPresets" :key="preset.value" :value="preset.value">
+          {{ preset.label }}
+        </option>
+      </select>
+    </SettingItem>
 
-    <template #body>
-      <!-- プリセット選択 -->
-      <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">
-        <select v-model="intervalSeconds" class="select select-bordered w-full">
-          <option v-for="preset in intervalPresets" :key="preset.value" :value="preset.value">
-            {{ preset.label }}
-          </option>
-        </select>
-      </SettingItem>
-
-      <!-- isBaseZero トグル -->
-      <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます">
-        <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
-      </SettingItem>
-    </template>
+    <!-- isBaseZero トグル -->
+    <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます">
+      <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
+    </SettingItem>
   </SectionCard>
 </template>
 

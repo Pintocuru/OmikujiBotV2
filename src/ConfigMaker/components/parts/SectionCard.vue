@@ -2,14 +2,15 @@
 <template>
   <div class="card bg-base-300 mt-4 z-0">
     <div class="collapse" :class="{ 'collapse-arrow': !alwaysOpen }">
-      <!-- v-modelで開閉管理 -->
-      <input type="checkbox" v-model="isOpen" :disabled="alwaysOpen" />
+      <!-- 親から制御される開閉状態 -->
+      <input type="checkbox" :checked="isOpen" @change="handleToggle" :disabled="alwaysOpen" />
       <div class="collapse-title card-title justify-between" :class="headerClass">
-        <slot name="header" />
+        <div>{{ title }}</div>
+        <div v-if="description" class="text-sm pr-2">{{ description }}</div>
       </div>
       <div class="collapse-content">
         <div class="card-body space-y-2 px-2">
-          <slot name="body" />
+          <slot />
         </div>
       </div>
     </div>
@@ -17,19 +18,35 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
   import { VariantType } from './ItemVariantTypes'
 
   const props = withDefaults(
     defineProps<{
+      title: string
+      description?: string
       variant?: VariantType
       isOpen?: boolean
       alwaysOpen?: boolean
     }>(),
-    { variant: 'secondary', isOpen: true, alwaysOpen: false }
+    {
+      description: '',
+      variant: 'secondary',
+      isOpen: false,
+      alwaysOpen: false,
+    }
   )
 
-  const isOpen = ref(props.isOpen)
+  // 親コンポーネントに開閉の切り替えを通知
+  const emit = defineEmits<{
+    toggle: []
+  }>()
+
+  const handleToggle = () => {
+    if (!props.alwaysOpen) {
+      emit('toggle')
+    }
+  }
 
   const headerClass = computed(() => {
     switch (props.variant) {

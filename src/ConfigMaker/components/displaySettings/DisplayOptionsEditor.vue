@@ -1,91 +1,84 @@
 <!-- src/ConfigMaker/components/display/DisplayOptionsEditor.vue -->
 <template>
   <!-- 表示オプション -->
-  <SectionCard>
-    <template #header>
-      <div>表示オプション</div>
-      <div class="text-sm pr-2">ジェネレーターで表示する、フキダシ以外の表示設定です</div>
-    </template>
+  <SectionCard title="表示オプション" description="ジェネレーターで表示する、フキダシ以外の表示設定です">
+    <!-- キャラクターの常時表示 -->
+    <SettingItem
+      v-if="useVisibilityAccess().canShow('characterVisible')"
+      label="キャラクターの常時表示"
+      description="キャラを常時表示するかを設定します"
+      devMemo="characterVisible"
+      :showReset="true"
+      @reset="resetMap.showCharacterPersistent"
+    >
+      <label class="label cursor-pointer justify-start gap-3">
+        <input
+          :checked="base.showCharacterPersistent"
+          @change="(e) => updateBaseField('showCharacterPersistent', (e.target as HTMLInputElement).checked)"
+          type="checkbox"
+          class="toggle toggle-primary"
+        />
+        <span class="label-text">キャラクターを常時表示する</span>
+      </label>
+    </SettingItem>
 
-    <template #body>
-      <!-- キャラクターの常時表示 -->
-      <SettingItem
-        v-if="useVisibilityAccess().canShow('characterVisible')"
-        label="キャラクターの常時表示"
-        description="キャラを常時表示するかを設定します"
-        devMemo="characterVisible"
-        :showReset="true"
-        @reset="resetMap.showCharacterPersistent"
-      >
-        <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :checked="base.showCharacterPersistent"
-            @change="(e) => updateBaseField('showCharacterPersistent', (e.target as HTMLInputElement).checked)"
-            type="checkbox"
-            class="toggle toggle-primary"
-          />
-          <span class="label-text">キャラクターを常時表示する</span>
-        </label>
-      </SettingItem>
+    <!-- キャラクターフレームの使用 -->
+    <SettingItem
+      v-if="useVisibilityAccess().canShow('characterVisible')"
+      label="キャラクター画像の背景色"
+      description="キャラ画像の背景に色を付けるかを設定します"
+      devMemo="characterVisible"
+      :showReset="true"
+      @reset="resetMap.showCharacterFrame"
+    >
+      <label class="label cursor-pointer justify-start gap-3">
+        <input
+          :checked="base.showCharacterFrame"
+          @change="(e) => updateBaseField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
+          type="checkbox"
+          class="toggle toggle-primary"
+        />
+        <span class="label-text">背景色を付ける</span>
+      </label>
+    </SettingItem>
 
-      <!-- キャラクターフレームの使用 -->
-      <SettingItem
-        v-if="useVisibilityAccess().canShow('characterVisible')"
-        label="キャラクター画像の背景色"
-        description="キャラ画像の背景に色を付けるかを設定します"
-        devMemo="characterVisible"
-        :showReset="true"
-        @reset="resetMap.showCharacterFrame"
-      >
-        <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :checked="base.showCharacterFrame"
-            @change="(e) => updateBaseField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
-            type="checkbox"
-            class="toggle toggle-primary"
-          />
-          <span class="label-text">背景色を付ける</span>
-        </label>
-      </SettingItem>
+    <!-- キャラクターサムネイル表示 -->
+    <SettingItem
+      v-if="useVisibilityAccess().canShow('characterVisible')"
+      label="キャラクターサムネイル"
+      description="右下にキャラクターのサムネイルを表示します"
+      devMemo="characterVisible"
+      :showReset="true"
+      @reset="resetMap.showCharacterThumbnail"
+    >
+      <label class="label cursor-pointer justify-start gap-3">
+        <input
+          :checked="base.showCharacterThumbnail"
+          @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
+          type="checkbox"
+          class="toggle toggle-primary"
+        />
+        <span class="label-text">キャラクターサムネイルを表示する</span>
+      </label>
+    </SettingItem>
 
-      <!-- キャラクターサムネイル表示 -->
-      <SettingItem
-        v-if="useVisibilityAccess().canShow('characterVisible')"
-        label="キャラクターサムネイル"
-        description="右下にキャラクターのサムネイルを表示します"
-        devMemo="characterVisible"
-        :showReset="true"
-        @reset="resetMap.showCharacterThumbnail"
-      >
-        <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :checked="base.showCharacterThumbnail"
-            @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
-            type="checkbox"
-            class="toggle toggle-primary"
-          />
-          <span class="label-text">キャラクターサムネイルを表示する</span>
-        </label>
-      </SettingItem>
-
-      <!-- トースト表示 -->
-      <SettingItem
-        label="トースト通知"
-        description="画面上部に通知メッセージを表示します"
-        :showReset="true"
-        @reset="resetMap.showToasts"
-      >
-        <label class="label cursor-pointer justify-start gap-3">
-          <input
-            :checked="base.showToasts"
-            @change="(e) => updateBaseField('showToasts', (e.target as HTMLInputElement).checked)"
-            type="checkbox"
-            class="toggle toggle-primary"
-          />
-          <span class="label-text">トースト通知を表示する</span>
-        </label>
-      </SettingItem>
-    </template>
+    <!-- トースト表示 -->
+    <SettingItem
+      label="トースト通知"
+      description="画面上部に通知メッセージを表示します"
+      :showReset="true"
+      @reset="resetMap.showToasts"
+    >
+      <label class="label cursor-pointer justify-start gap-3">
+        <input
+          :checked="base.showToasts"
+          @change="(e) => updateBaseField('showToasts', (e.target as HTMLInputElement).checked)"
+          type="checkbox"
+          class="toggle toggle-primary"
+        />
+        <span class="label-text">トースト通知を表示する</span>
+      </label>
+    </SettingItem>
   </SectionCard>
 </template>
 

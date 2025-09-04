@@ -1,33 +1,24 @@
 <!-- src/configMaker/components/scriptSettings/ScriptCard.vue -->
 <template>
-  <SectionCard>
-    <template #header>
-      <div>
-        {{ scriptPreset.name }} <span class="text-base">(id:{{ scriptPreset.id }})</span>
-      </div>
-      <div class="text-sm pr-2">{{ scriptPreset.description }}</div>
-    </template>
-
-    <template #body>
-      <div v-if="hasSettings">
-        <SettingItem
-          v-for="settingDef in scriptPreset.settings"
-          :key="settingDef.key"
-          :label="settingDef.name"
-          :description="settingDef.description"
-          :showReset="true"
-          @reset="resetSetting(settingDef.key)"
-        >
-          <component
-            :is="getInputComponent(settingDef.inputType)"
-            v-bind="getInputProps(scriptId, settingDef)"
-            @input="handleInput($event, settingDef.key)"
-            @change="handleChange($event, settingDef.key)"
-          />
-        </SettingItem>
-      </div>
-      <div v-else class="text-gray-500 italic">このスクリプトには設定可能な項目がありません</div>
-    </template>
+  <SectionCard :title="`${scriptPreset.name} (id:${scriptPreset.id})`" :description="`${scriptPreset.description}`">
+    <div v-if="hasSettings">
+      <SettingItem
+        v-for="settingDef in scriptPreset.settings"
+        :key="settingDef.key"
+        :label="settingDef.name"
+        :description="settingDef.description"
+        :showReset="true"
+        @reset="resetSetting(settingDef.key)"
+      >
+        <component
+          :is="getInputComponent(settingDef.inputType)"
+          v-bind="getInputProps(scriptId, settingDef)"
+          @input="handleInput($event, settingDef.key)"
+          @change="handleChange($event, settingDef.key)"
+        />
+      </SettingItem>
+    </div>
+    <div v-else class="text-gray-500 italic">このスクリプトには設定可能な項目がありません</div>
   </SectionCard>
 </template>
 

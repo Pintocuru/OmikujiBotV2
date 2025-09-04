@@ -5,49 +5,46 @@
 
   <div v-if="selectedItem">
     <!-- 基本設定 -->
-    <SectionCard :isGild="true">
-      <template #header
-        ><div>基本設定</div>
-        <div class="text-sm pr-2">プレースホルダー名の設定を行います</div>
-      </template>
-
-      <template #body>
-        <!-- ID表示とコピー -->
-        <SettingItem label="Key" description="<<プレースホルダー名>>">
-          <div class="flex gap-2 items-center">
-            <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
-              {{ selectedItem.id }}
-            </div>
-            <!-- コピーボタン -->
-            <CopyButton :value="`<<${selectedItem.id}>>`" dataTip="<<プレースホルダー>>の形式で文字列をコピーします" />
-            <!-- 編集ボタン -->
-            <IdEditor :currentId="selectedItem.id" category="placeholders" />
+    <SectionCard
+      :isGild="true"
+      :isOpen="activeSection === 'basic'"
+      @toggle="toggleSection('basic')"
+      title="基本設定"
+      description="プレースホルダー名の設定を行います"
+    >
+      <!-- ID表示とコピー -->
+      <SettingItem label="Key" description="<<プレースホルダー名>>">
+        <div class="flex gap-2 items-center">
+          <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
+            {{ selectedItem.id }}
           </div>
-        </SettingItem>
+          <!-- コピーボタン -->
+          <CopyButton :value="`<<${selectedItem.id}>>`" dataTip="<<プレースホルダー>>の形式で文字列をコピーします" />
+          <!-- 編集ボタン -->
+          <IdEditor :currentId="selectedItem.id" category="placeholders" />
+        </div>
+      </SettingItem>
 
-        <!-- プレースホルダー名 -->
-        <SettingItem label="設定名" description="識別しやすい名前">
-          <input type="text" v-model="itemName" placeholder="設定名を入力" class="input input-bordered w-full" />
-        </SettingItem>
-      </template>
+      <!-- プレースホルダー名 -->
+      <SettingItem label="設定名" description="識別しやすい名前">
+        <input type="text" v-model="itemName" placeholder="設定名を入力" class="input input-bordered w-full" />
+      </SettingItem>
     </SectionCard>
 
     <!-- プレースホルダー設定 -->
-    <SectionCard>
-      <template #header>
-        <div>プレースホルダー設定</div>
-        <div class="text-sm pr-2">抽選するプレースホルダーを編集します</div>
-      </template>
-
-      <template #body>
-        <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
-      </template>
+    <SectionCard
+      :isOpen="activeSection === 'placeholder'"
+      @toggle="toggleSection('placeholder')"
+      title="プレースホルダー設定"
+      description="抽選するプレースホルダーを編集します"
+    >
+      <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
     </SectionCard>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { PlaceholderType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
@@ -57,6 +54,16 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+
+  // アクティブなセクションの管理
+  type SectionType = 'basic' | 'placeholder' | null
+  const activeSection = ref<SectionType>('basic') // 初期状態で基本設定を開く
+
+  // セクションの切り替え
+  const toggleSection = (section: SectionType) => {
+    // 同じセクションをクリックした場合は閉じる、違うセクションの場合は切り替える
+    activeSection.value = activeSection.value === section ? null : section
+  }
 
   // Pinia store
   const omikujiStore = useOmikujiStore()

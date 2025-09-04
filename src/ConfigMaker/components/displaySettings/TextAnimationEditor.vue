@@ -1,98 +1,91 @@
 <!-- src/ConfigMaker/components/display/TextAnimationEditor.vue -->
 <template>
   <!-- 基本表示設定 -->
-  <SectionCard>
-    <template #header>
-      <div>文字・アニメーション</div>
-      <div class="text-sm pr-2">フキダシの文字とアニメーションに関する設定です</div>
-    </template>
-
-    <template #body>
-      <div class="mx-auto">
-        <!-- プレビュー表示 -->
-        <CommentBubblePreview
-          :color="localColor"
-          :is-slider="true"
-          :text-size="base.displaySize"
-          :custom-classes="localColor.customClasses"
-          :font-family="base.fontFamily"
-          :bubbleMotionEnter="base.bubbleMotionEnter"
-          :bubbleMotionLeave="base.bubbleMotionLeave"
-        />
-      </div>
-      <!-- 表示サイズ -->
-      <SettingItem
-        label="表示サイズ"
-        description="コンテンツの表示サイズを設定します"
-        :showReset="true"
-        @reset="resetMap.displaySize"
+  <SectionCard title="文字・アニメーション" description="フキダシの文字とアニメーションに関する設定です">
+    <div class="mx-auto">
+      <!-- プレビュー表示 -->
+      <CommentBubblePreview
+        :color="localColor"
+        :is-slider="true"
+        :text-size="base.displaySize"
+        :custom-classes="localColor.customClasses"
+        :font-family="base.fontFamily"
+        :bubbleMotionEnter="base.bubbleMotionEnter"
+        :bubbleMotionLeave="base.bubbleMotionLeave"
+      />
+    </div>
+    <!-- 表示サイズ -->
+    <SettingItem
+      label="表示サイズ"
+      description="コンテンツの表示サイズを設定します"
+      :showReset="true"
+      @reset="resetMap.displaySize"
+    >
+      <select
+        :value="base.displaySize"
+        @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
+        class="select select-bordered w-full max-w-xs"
       >
-        <select
-          :value="base.displaySize"
-          @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
-          class="select select-bordered w-full max-w-xs"
-        >
-          <option v-for="size in displaySize" :key="size" :value="size">
-            {{ displaySizeLabels[size] }}
-          </option>
-        </select>
-      </SettingItem>
+        <option v-for="size in displaySize" :key="size" :value="size">
+          {{ displaySizeLabels[size] }}
+        </option>
+      </select>
+    </SettingItem>
 
-      <!-- フォントファミリー -->
-      <SettingItem
-        label="フォントファミリー"
-        description="表示に使用するフォントを設定します"
-        forceMode="pro"
-        :showReset="true"
-        @reset="resetMap.fontFamily"
+    <!-- フォントファミリー -->
+    <SettingItem
+      label="フォントファミリー"
+      description="表示に使用するフォントを設定します"
+      forceMode="pro"
+      :showReset="true"
+      @reset="resetMap.fontFamily"
+    >
+      <select
+        :value="base.fontFamily"
+        @change="(e) => updateBaseField('fontFamily', (e.target as HTMLSelectElement).value)"
+        class="select bg-base text-base-content w-full max-w-xs"
+        :disabled="!isPro"
       >
-        <select
-          :value="base.fontFamily"
-          @change="(e) => updateBaseField('fontFamily', (e.target as HTMLSelectElement).value)"
-          class="select bg-base text-base-content w-full max-w-xs"
-          :disabled="!isPro"
-        >
-          <option v-for="font in fontFamilyOptions" :key="font" :value="font">
-            {{ fontFamilyLabels[font] }}
-          </option>
-        </select>
-      </SettingItem>
+        <option v-for="font in fontFamilyOptions" :key="font" :value="font">
+          {{ fontFamilyLabels[font] }}
+        </option>
+      </select>
+    </SettingItem>
 
-      <!-- フキダシアニメーション -->
-      <SettingItem
-        label="フキダシアニメーション(開始時)"
-        description="フキダシの表示アニメーションを設定します"
-        :showReset="true"
-        @reset="resetMap.bubbleMotionEnter"
+    <!-- フキダシアニメーション -->
+    <SettingItem
+      label="フキダシアニメーション(開始時)"
+      description="フキダシの表示アニメーションを設定します"
+      :showReset="true"
+      @reset="resetMap.bubbleMotionEnter"
+    >
+      <select
+        :value="base.bubbleMotionEnter"
+        @change="(e) => updateBaseField('bubbleMotionEnter', (e.target as HTMLSelectElement).value)"
+        class="select select-bordered w-full max-w-xs"
       >
-        <select
-          :value="base.bubbleMotionEnter"
-          @change="(e) => updateBaseField('bubbleMotionEnter', (e.target as HTMLSelectElement).value)"
-          class="select select-bordered w-full max-w-xs"
-        >
-          <option v-for="animation in motionLabel" :key="animation" :value="animation">
-            {{ animation }}
-          </option>
-        </select>
-      </SettingItem>
+        <option v-for="animation in motionLabel" :key="animation" :value="animation">
+          {{ animation }}
+        </option>
+      </select>
+    </SettingItem>
 
-      <SettingItem
-        label="フキダシアニメーション(終了時)"
-        description="フキダシの表示アニメーションを設定します"
-        :showReset="true"
-        @reset="resetMap.bubbleMotionLeave"
+    <SettingItem
+      label="フキダシアニメーション(終了時)"
+      description="フキダシの表示アニメーションを設定します"
+      :showReset="true"
+      @reset="resetMap.bubbleMotionLeave"
+    >
+      <select
+        :value="base.bubbleMotionLeave"
+        @change="(e) => updateBaseField('bubbleMotionLeave', (e.target as HTMLSelectElement).value)"
+        class="select select-bordered w-full max-w-xs"
       >
-        <select
-          :value="base.bubbleMotionLeave"
-          @change="(e) => updateBaseField('bubbleMotionLeave', (e.target as HTMLSelectElement).value)"
-          class="select select-bordered w-full max-w-xs"
-        >
-          <option v-for="animation in motionLabel" :key="animation" :value="animation">
-            {{ animation }}
-          </option>
-        </select>
-      </SettingItem>
-    </template>
+        <option v-for="animation in motionLabel" :key="animation" :value="animation">
+          {{ animation }}
+        </option>
+      </select>
+    </SettingItem>
   </SectionCard>
 </template>
 

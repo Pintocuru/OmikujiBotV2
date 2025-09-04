@@ -1,51 +1,44 @@
 <!-- src/configMaker/components/characters/CharacterColorSettings.vue -->
 <template>
-  <SectionCard>
-    <template #header>
-      <div>フキダシ設定</div>
-      <div class="text-sm pr-2">フキダシの編集を行います</div>
-    </template>
-
-    <template #body>
-      <div class="flex justify-end gap-2">
-        <!-- ランダムボタン -->
-        <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
-          <button @click="handleRandomColor" class="btn btn-primary">
-            <Dices class="w-4 h-4" />
-            カラーシャッフル
-          </button>
-        </div>
+  <SectionCard title="フキダシ設定" description="フキダシの編集を行います">
+    <div class="flex justify-end gap-2">
+      <!-- ランダムボタン -->
+      <div class="tooltip tooltip-bottom" data-tip="ランダムな色テーマに変更">
+        <button @click="handleRandomColor" class="btn btn-primary">
+          <Dices class="w-4 h-4" />
+          カラーシャッフル
+        </button>
       </div>
-      <!-- プレビュー -->
-      <div class="relative flex justify-center">
-        <CommentBubblePreview
-          :color="currentColor"
-          :custom-classes="currentColor.customClasses"
-          bubbleMotionEnter="none"
+    </div>
+    <!-- プレビュー -->
+    <div class="relative flex justify-center">
+      <CommentBubblePreview
+        :color="currentColor"
+        :custom-classes="currentColor.customClasses"
+        bubbleMotionEnter="none"
+      />
+    </div>
+
+    <!-- カラーピッカー -->
+    <div class="flex flex-wrap gap-4">
+      <div v-for="{ label, key } in colorFields" :key="key" class="form-control flex-1 min-w-32">
+        <label class="label">
+          <span class="label-text">{{ label }}</span>
+        </label>
+        <input
+          type="color"
+          class="input input-bordered h-12 w-full"
+          :value="currentColor[key]"
+          @input="updateColorField(key, ($event.target as HTMLInputElement).value)"
         />
       </div>
+    </div>
 
-      <!-- カラーピッカー -->
-      <div class="flex flex-wrap gap-4">
-        <div v-for="{ label, key } in colorFields" :key="key" class="form-control flex-1 min-w-32">
-          <label class="label">
-            <span class="label-text">{{ label }}</span>
-          </label>
-          <input
-            type="color"
-            class="input input-bordered h-12 w-full"
-            :value="currentColor[key]"
-            @input="updateColorField(key, ($event.target as HTMLInputElement).value)"
-          />
-        </div>
-      </div>
-
-      <!-- カスタムクラス設定 -->
-      <CustomClassSelector
-        v-model="currentColor.customClasses"
-        @update:modelValue="updateColorField('customClasses', $event)"
-      />
-    </template>
+    <!-- カスタムクラス設定 -->
+    <CustomClassSelector
+      v-model="currentColor.customClasses"
+      @update:modelValue="updateColorField('customClasses', $event)"
+    />
   </SectionCard>
 </template>
 

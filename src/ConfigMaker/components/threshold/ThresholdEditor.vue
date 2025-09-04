@@ -1,60 +1,53 @@
 <!-- src/configMaker/components/comments/ThresholdEditor.vue -->
 <template>
-  <SectionCard>
-    <template #header>
-      <div>発動条件設定</div>
-      <div class="text-sm pr-2">コメントの情報から「おみくじを引く」かどうかを決めます</div>
-    </template>
+  <SectionCard title="発動条件設定" description="機能のON/コメントの情報から「おみくじを引く」かどうかを決めます">
+    <!-- 条件設定の説明 -->
+    <InformationCard>
+      <p>
+        <code class="label bg-accent text-accent-content">発動条件設定</code>では、
+        コメントを送ったユーザーの「ギフトの有無」や「チャット数」などの情報をもとに、
+      </p>
+      <p>ルールを発動するかどうかを決めることができます。</p>
+      <p>
+        <code class="label bg-accent text-accent-content">発動条件が複数の場合は、すべての条件を満たしたときだけ</code
+        >ルールが発動します。
+      </p>
+    </InformationCard>
 
-    <template #body>
-      <!-- 条件設定の説明 -->
-      <InformationCard>
-        <p>
-          <code class="label bg-accent text-accent-content">発動条件設定</code>では、
-          コメントを送ったユーザーの「ギフトの有無」や「チャット数」などの情報をもとに、
-        </p>
-        <p>ルールを発動するかどうかを決めることができます。</p>
-        <p>
-          <code class="label bg-accent text-accent-content">発動条件が複数の場合は、すべての条件を満たしたときだけ</code
-          >ルールが発動します。
-        </p>
-      </InformationCard>
+    <!-- 条件タイプ選択 -->
+    <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
+      <div class="flex flex-wrap gap-2">
+        <label
+          v-for="condition in conditionTypes"
+          :key="condition.value"
+          class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
+        >
+          <input
+            type="checkbox"
+            class="checkbox checkbox-primary"
+            :checked="conditions.includes(condition.value)"
+            @change="toggleCondition(condition.value)"
+          />
+          <span class="text-sm">{{ condition.label }}</span>
+        </label>
+      </div>
+    </SettingItem>
 
-      <!-- 条件タイプ選択 -->
-      <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
-        <div class="flex flex-wrap gap-2">
-          <label
-            v-for="condition in conditionTypes"
-            :key="condition.value"
-            class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
-          >
-            <input
-              type="checkbox"
-              class="checkbox checkbox-primary"
-              :checked="conditions.includes(condition.value)"
-              @change="toggleCondition(condition.value)"
-            />
-            <span class="text-sm">{{ condition.label }}</span>
-          </label>
-        </div>
-      </SettingItem>
+    <!-- 各条件の詳細設定 -->
+    <!-- チャットワード条件 -->
+    <ThresholdConditionComment v-if="conditions.includes('comment')" v-model="comment" />
 
-      <!-- 各条件の詳細設定 -->
-      <!-- チャットワード条件 -->
-      <ThresholdConditionComment v-if="conditions.includes('comment')" v-model="comment" />
+    <!-- 初見条件 -->
+    <ThresholdConditionSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
 
-      <!-- 初見条件 -->
-      <ThresholdConditionSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
+    <!-- アクセスレベル条件 -->
+    <ThresholdConditionAccess v-if="conditions.includes('access')" v-model="access" />
 
-      <!-- アクセスレベル条件 -->
-      <ThresholdConditionAccess v-if="conditions.includes('access')" v-model="access" />
+    <!-- ギフト条件 -->
+    <ThresholdConditionGift v-if="conditions.includes('gift')" v-model="gift" />
 
-      <!-- ギフト条件 -->
-      <ThresholdConditionGift v-if="conditions.includes('gift')" v-model="gift" />
-
-      <!-- カウント条件 -->
-      <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
-    </template>
+    <!-- カウント条件 -->
+    <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
   </SectionCard>
 </template>
 

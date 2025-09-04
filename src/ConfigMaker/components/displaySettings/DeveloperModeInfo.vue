@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/display/DeveloperModeInfo.vue -->
 <template>
   <!-- 補足説明 -->
-  <InformationCard class="mb-8">
+  <InformationCard>
     <p>開発者でもないのにこの開発者モードを見ている方へ：</p>
     <p>やあ(´・ω・｀) このモードを見つけてくれて、ありがとう。</p>
     <p>どうやって見つけたかはわからないけど、自由に設定してみるといい。</p>

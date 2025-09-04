@@ -1,56 +1,47 @@
 <!-- src/configMaker/components/comments/OmikujiSetEditor.vue -->
 <template>
-  <SectionCard>
-    <template #header>
-      <div>
-        おみくじ設定 <span class="text-base pl-2">( {{ omikujiSets.length }} item / 総重量: {{ totalWeight }} )</span>
-      </div>
-      <div class="text-sm pr-2">おみくじの抽選設定や、おみくじの内容です。</div>
-    </template>
+  <SectionCard title="おみくじ設定" description="おみくじの抽選設定や、おみくじの内容です">
+    <!-- 便利なボタン群 -->
+    <div class="flex justify-end gap-2">
+      <!-- キャラクター一括変更ボタン -->
+      <CharacterBulkChanger v-if="selectedRuleId" :category="category" :selected-rule-id="selectedRuleId" />
 
-    <template #body>
-      <!-- 便利なボタン群 -->
-      <div class="flex justify-end gap-2">
-        <!-- キャラクター一括変更ボタン -->
-        <CharacterBulkChanger v-if="selectedRuleId" :category="category" :selected-rule-id="selectedRuleId" />
-
-        <!-- おみくじテストボタン -->
-        <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-          <button
-            class="btn btn-info"
-            @click="useTestPost().postTestOmikuji(omikujiSets)"
-            :disabled="omikujiSets.length === 0"
-          >
-            <Dices class="w-4 h-4" />
-            抽選テスト
-          </button>
-        </div>
-
-        <button @click="addOmikuji" class="btn btn-primary">
-          <Plus class="w-4 h-4" />
-          おみくじを追加
+      <!-- おみくじテストボタン -->
+      <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
+        <button
+          class="btn btn-info"
+          @click="useTestPost().postTestOmikuji(omikujiSets)"
+          :disabled="omikujiSets.length === 0"
+        >
+          <Dices class="w-4 h-4" />
+          抽選テスト
         </button>
       </div>
-      <!-- vuedraggable を使用したドラッグアンドドロップ -->
-      <draggable v-model="omikujiSets" item-key="id" handle=".drag-handle" animation="200">
-        <template #item="{ element, index }">
-          <div :key="element.id || `omikuji-${index}`" class="draggable-item">
-            <!-- エラーバウンダリー的な処理 -->
-            <div v-if="element && typeof element === 'object'">
-              <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
-            </div>
-            <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
-              <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
-            </div>
-          </div>
-        </template>
-      </draggable>
 
-      <button @click="addOmikuji" class="btn btn-primary w-full">
+      <button @click="addOmikuji" class="btn btn-primary">
         <Plus class="w-4 h-4" />
         おみくじを追加
       </button>
-    </template>
+    </div>
+    <!-- vuedraggable を使用したドラッグアンドドロップ -->
+    <draggable v-model="omikujiSets" item-key="id" handle=".drag-handle" animation="200">
+      <template #item="{ element, index }">
+        <div :key="element.id || `omikuji-${index}`" class="draggable-item">
+          <!-- エラーバウンダリー的な処理 -->
+          <div v-if="element && typeof element === 'object'">
+            <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
+          </div>
+          <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
+            <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
+          </div>
+        </div>
+      </template>
+    </draggable>
+
+    <button @click="addOmikuji" class="btn btn-primary w-full">
+      <Plus class="w-4 h-4" />
+      おみくじを追加
+    </button>
   </SectionCard>
 </template>
 
