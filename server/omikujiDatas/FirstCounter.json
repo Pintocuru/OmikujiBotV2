@@ -26,7 +26,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-02T12:02:48.859Z",
+      "updatedAt": "2025-09-04T00:31:15.748Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -51,7 +51,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ"
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
+              "actionType": "toast"
             }
           ]
         }
@@ -113,7 +114,8 @@
               "characterKey": "color",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -175,7 +177,8 @@
               "characterKey": "color",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、久しぶり!また会えたね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -237,7 +240,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -299,7 +303,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
+              "actionType": "toast"
             }
           ]
         }
@@ -359,7 +364,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。たくさんのコメント、ありがとう！"
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。たくさんのコメント、ありがとう！",
+              "actionType": "toast"
             }
           ]
         }
@@ -421,7 +427,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中だよ"
+              "messageToast": "<<viewer>>人が視聴中だよ",
+              "actionType": "toast"
             }
           ]
         },
@@ -441,7 +448,8 @@
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "高評価数は<<upVote>> だよ"
+              "messageToast": "高評価数は<<upVote>> だよ",
+              "actionType": "toast"
             }
           ]
         }
@@ -481,7 +489,8 @@
               "characterKey": "color",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。"
+              "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。",
+              "actionType": "toast"
             }
           ]
         },
@@ -503,7 +512,8 @@
               "characterKey": "color",
               "iconKey": "wink",
               "messageContent": "",
-              "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。"
+              "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。",
+              "actionType": "toast"
             }
           ]
         },
@@ -525,7 +535,8 @@
               "characterKey": "color",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！"
+              "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！",
+              "actionType": "toast"
             }
           ]
         },
@@ -547,7 +558,8 @@
               "characterKey": "color",
               "iconKey": "excited",
               "messageContent": "",
-              "messageToast": "discordで活動中!主は配信中はいつも入っているよ"
+              "messageToast": "discordで活動中!主は配信中はいつも入っているよ",
+              "actionType": "toast"
             }
           ]
         },
@@ -569,7 +581,8 @@
               "characterKey": "color",
               "iconKey": "wink",
               "messageContent": "",
-              "messageToast": "このおみくじBOT、配信者さんに使って欲しいな…"
+              "messageToast": "このおみくじBOT、配信者さんに使って欲しいな…",
+              "actionType": "toast"
             }
           ]
         }

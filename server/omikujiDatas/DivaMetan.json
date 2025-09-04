@@ -7,7 +7,12 @@
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta09",
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "VOICEVOX", "四国めたん", "（ず・ω・きょ）"],
+    "tags": [
+      "おみくじBOT",
+      "VOICEVOX",
+      "四国めたん",
+      "（ず・ω・きょ）"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/6058829"
   },
@@ -18,7 +23,7 @@
       "name": "漆黒のおみくじ",
       "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-04T00:39:55.555Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -43,7 +48,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -51,7 +57,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -59,7 +66,8 @@
               "characterKey": "metanBlack",
               "iconKey": "excited",
               "messageContent": "<<user>>よ、汝の運命は【大吉】<<metanOmikuji01>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -81,7 +89,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -89,7 +98,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -97,7 +107,8 @@
               "characterKey": "metanBlack",
               "iconKey": "laughing",
               "messageContent": "<<user>>よ、汝の運命は【吉】<<metanOmikuji02>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -119,7 +130,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -127,7 +139,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -135,7 +148,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "<<user>>よ、汝の運命は【中吉】<<metanOmikuji03>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -157,7 +171,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -165,7 +180,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -173,7 +189,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "<<user>>よ、汝の運命は【小吉】<<metanOmikuji04>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -195,7 +212,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -203,7 +221,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -211,7 +230,8 @@
               "characterKey": "metanBlack",
               "iconKey": "thinking",
               "messageContent": "<<user>>よ、汝の運命は【末吉】<<metanOmikuji05>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -233,7 +253,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -241,7 +262,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -249,7 +271,8 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<user>>よ、汝の運命は【凶】<<metanOmikuji06>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -271,7 +294,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -279,7 +303,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -287,14 +312,17 @@
               "characterKey": "metan",
               "iconKey": "wink",
               "messageContent": "<<user>>よ、汝の運命は【接吻賞】<<metanOmikuji07>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -303,7 +331,13 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^fortune", "🥠"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^fortune",
+          "🥠"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -345,7 +379,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -353,14 +388,17 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -369,7 +407,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉"
+        ]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
@@ -413,7 +458,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 7,
@@ -421,14 +467,17 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -437,7 +486,15 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
@@ -479,7 +536,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -487,14 +545,17 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -503,7 +564,17 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi",
+          "🐰",
+          "🐇"
+        ]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
@@ -545,7 +616,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -553,7 +625,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -561,7 +634,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -569,7 +643,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -591,7 +666,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -599,7 +675,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -607,7 +684,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -615,7 +693,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -637,7 +716,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -645,7 +725,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -653,7 +734,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -661,7 +743,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -683,7 +766,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -691,7 +775,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -699,7 +784,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -707,7 +793,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -729,7 +816,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -737,7 +825,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -745,7 +834,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -753,7 +843,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -775,7 +866,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -783,7 +875,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -791,7 +884,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -799,7 +893,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -821,7 +916,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -829,7 +925,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -837,7 +934,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -845,7 +943,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -867,7 +966,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -875,7 +975,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -883,7 +984,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -891,7 +993,8 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -913,7 +1016,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -921,7 +1025,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -929,7 +1034,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -937,7 +1043,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -959,7 +1066,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -967,7 +1075,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -975,7 +1084,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -983,7 +1093,8 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1005,7 +1116,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1013,7 +1125,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1021,7 +1134,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1029,7 +1143,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1051,7 +1166,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1059,7 +1175,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1067,7 +1184,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1075,7 +1193,8 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1097,7 +1216,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1105,7 +1225,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1113,7 +1234,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1121,7 +1243,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1143,7 +1266,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1151,7 +1275,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1159,7 +1284,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1167,14 +1293,17 @@
               "characterKey": "metanBlack",
               "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1183,7 +1312,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1225,7 +1358,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1233,7 +1367,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1241,7 +1376,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1249,7 +1385,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1271,7 +1408,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1279,7 +1417,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1287,7 +1426,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1295,7 +1435,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1317,7 +1458,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1325,7 +1467,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1333,7 +1476,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1341,7 +1485,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1363,7 +1508,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1371,7 +1517,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1379,7 +1526,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1387,14 +1535,17 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1403,7 +1554,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1445,7 +1601,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1453,7 +1610,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1461,7 +1619,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1469,7 +1628,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1491,7 +1651,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1499,7 +1660,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1507,7 +1669,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1515,7 +1678,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1537,7 +1701,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1545,7 +1710,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1553,7 +1719,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1561,7 +1728,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1583,7 +1751,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1591,7 +1760,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1599,7 +1769,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1607,14 +1778,17 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1623,7 +1797,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1665,7 +1843,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1673,7 +1852,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1681,7 +1861,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1689,7 +1870,8 @@
               "characterKey": "metanBlack",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1711,7 +1893,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1719,7 +1902,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1727,7 +1911,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1735,7 +1920,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1757,7 +1943,8 @@
               "characterKey": "metanBlack",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1765,7 +1952,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1773,7 +1961,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1781,7 +1970,8 @@
               "characterKey": "metanBlack",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1803,7 +1993,8 @@
               "characterKey": "metanBlack",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1811,7 +2002,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1819,7 +2011,8 @@
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1827,14 +2020,17 @@
               "characterKey": "metanBlack",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1843,7 +2039,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1885,7 +2086,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1893,7 +2095,8 @@
               "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "<<MetanSyokenSagi>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1915,7 +2118,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1923,7 +2127,8 @@
               "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 7,
@@ -1931,14 +2136,18 @@
               "characterKey": "metan",
               "iconKey": "sad",
               "messageContent": "",
-              "messageToast": "<<MetanSyokenSagiFake>>"
+              "messageToast": "<<MetanSyokenSagiFake>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1947,7 +2156,11 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1990,7 +2203,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1998,7 +2212,8 @@
               "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 7,
@@ -2006,14 +2221,18 @@
               "characterKey": "metan",
               "iconKey": "blushing",
               "messageContent": "",
-              "messageToast": "ほ、本当の初見の人だった…良かった…"
+              "messageToast": "ほ、本当の初見の人だった…良かった…",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2022,7 +2241,11 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2063,7 +2286,8 @@
               "wordParty": "!金額表示",
               "characterKey": "metanBlack",
               "iconKey": "default",
-              "messageContent": ""
+              "messageContent": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2071,23 +2295,31 @@
               "characterKey": "metanBlack",
               "iconKey": "surprised",
               "messageContent": "",
-              "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…"
+              "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment", "gift"],
+        "conditions": [
+          "comment",
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["all"],
+        "gift": [
+          "all"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
-        "comment": ["コメント"]
+        "comment": [
+          "コメント"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2130,7 +2362,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2138,7 +2371,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2146,17 +2380,24 @@
               "characterKey": "metan",
               "iconKey": "excited",
               "messageContent": "<<GiftLowMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2204,7 +2445,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2212,7 +2454,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2220,17 +2463,22 @@
               "characterKey": "metan",
               "iconKey": "blushing",
               "messageContent": "<<GiftMiddleMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["yellow"],
+        "gift": [
+          "yellow"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2278,7 +2526,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2286,7 +2535,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2294,17 +2544,25 @@
               "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "<<GiftHighMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["orange", "pink", "red", "purple"],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2352,7 +2610,8 @@
               "characterKey": "metan",
               "iconKey": "thinking",
               "messageContent": "",
-              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。"
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+              "actionType": "toast"
             }
           ]
         },
@@ -2374,7 +2633,8 @@
               "characterKey": "metan",
               "iconKey": "thinking",
               "messageContent": "",
-              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。"
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+              "actionType": "toast"
             },
             {
               "delaySeconds": 4,
@@ -2382,14 +2642,17 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。"
+              "messageToast": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2398,7 +2661,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^コメント$"]
+        "comment": [
+          "^コメント$"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2441,7 +2706,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2449,15 +2715,20 @@
               "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2507,15 +2778,20 @@
               "characterKey": "metan",
               "iconKey": "excited",
               "messageContent": "<<FirstCounterAgainMetan>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2565,7 +2841,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2587,7 +2864,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2609,7 +2887,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2631,15 +2910,20 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2689,14 +2973,17 @@
               "characterKey": "metan",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>よ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>よ。",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2747,7 +3034,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+              "actionType": "toast"
             }
           ]
         },
@@ -2769,14 +3057,17 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2829,7 +3120,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中よ"
+              "messageToast": "<<viewer>>人が視聴中よ",
+              "actionType": "toast"
             }
           ]
         },
@@ -2849,7 +3141,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "高評価数は<<upVote>>よ。押すなら今のうちね。"
+              "messageToast": "高評価数は<<upVote>>よ。押すなら今のうちね。",
+              "actionType": "toast"
             }
           ]
         }
@@ -2889,7 +3182,8 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<PromotionToastsMetan>>"
+              "messageToast": "<<PromotionToastsMetan>>",
+              "actionType": "toast"
             }
           ]
         },
@@ -2911,7 +3205,8 @@
               "characterKey": "metan",
               "iconKey": "singing",
               "messageContent": "",
-              "messageToast": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。"
+              "messageToast": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。",
+              "actionType": "toast"
             }
           ]
         }
@@ -3088,7 +3383,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["漆黒のめたん"]
+      "values": [
+        "漆黒のめたん"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -3101,7 +3398,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["私"]
+      "values": [
+        "私"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -3423,7 +3722,11 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
-      "tags": ["touhokuZunko", "voicevox", "Metan"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -3465,7 +3768,11 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
-      "tags": ["touhokuZunko", "voicevox", "Metan"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -3541,7 +3848,11 @@
         "characterVisible": "basic",
         "wordPartyLoading": "internal",
         "gameScriptSettings": "pro",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "basic"
       }
     }

@@ -9,7 +9,11 @@
     <template #body>
       <!-- isIconDisplay  -->
       <SettingItem
-        v-if="useVisibilityAccess().canShow('characterVisible')"
+        v-if="
+          useVisibilityAccess().canShow('characterVisible') ||
+          (isDev && currentDisplayOption.isIconDisplay && !useVisibilityAccess().canShow('characterVisible'))
+        "
+        :variant="!useVisibilityAccess().canShow('characterVisible') ? 'error' : 'none'"
         label="キャラクター表示"
         description="ONで画像とフキダシを表示、OFFでフキダシのみ表示"
         devMemo="characterVisible"

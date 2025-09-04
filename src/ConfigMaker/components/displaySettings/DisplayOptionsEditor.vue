@@ -64,7 +64,7 @@
             type="checkbox"
             class="toggle toggle-primary"
           />
-          <span class="label-text">キャラクターアイコンを表示する</span>
+          <span class="label-text">キャラクターサムネイルを表示する</span>
         </label>
       </SettingItem>
 

@@ -763,7 +763,7 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-02T21:42:49.155Z",
+      "updatedAt": "2025-09-04T00:28:21.871Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -789,7 +789,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -798,7 +798,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -807,7 +807,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -816,7 +816,7 @@
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -839,7 +839,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -848,7 +848,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -857,7 +857,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -866,7 +866,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -889,7 +889,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -898,7 +898,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -907,7 +907,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -916,7 +916,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -939,7 +939,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -948,7 +948,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -957,7 +957,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -966,7 +966,7 @@
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         }
@@ -1032,7 +1032,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1041,7 +1041,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1050,7 +1050,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1059,7 +1059,7 @@
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1082,7 +1082,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1091,7 +1091,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1100,7 +1100,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1109,7 +1109,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1132,7 +1132,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1141,7 +1141,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1150,7 +1150,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1159,7 +1159,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1182,7 +1182,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1191,7 +1191,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1200,7 +1200,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1209,7 +1209,7 @@
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         }
@@ -1274,7 +1274,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1283,7 +1283,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1292,7 +1292,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1301,7 +1301,7 @@
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1324,7 +1324,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1333,7 +1333,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1342,7 +1342,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1351,7 +1351,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1374,7 +1374,7 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1383,7 +1383,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1392,7 +1392,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1401,7 +1401,7 @@
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         },
@@ -1424,7 +1424,7 @@
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1433,7 +1433,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1442,7 +1442,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1451,7 +1451,7 @@
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
-              "actionType": "legacy"
+              "actionType": "message"
             }
           ]
         }

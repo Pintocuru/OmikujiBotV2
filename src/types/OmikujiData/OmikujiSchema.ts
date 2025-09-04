@@ -79,28 +79,42 @@ export const PostActionWordPartySchema = z.object({
 /**
  * PostAction わんコメ・BOTちゃんに投稿する型定義
  */
-export const PostActionSchema = z.object({
-  ...PostActionWordPartySchema.shape,
-  characterKey: z.string().default('').catch(''),
-  iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  messageContent: z.string().default('').catch(''),
-  messageToast: z.string().optional().catch(undefined),
-  enterMotion: z.enum(motionLabel).optional().catch(undefined),
-  sound: z.string().optional().catch(undefined),
+export const PostActionSchema = z
+  .object({
+    ...PostActionWordPartySchema.shape,
+    characterKey: z.string().default('').catch(''),
+    iconKey: CharacterEmotionSchema.default('default').catch('default'),
+    messageContent: z.string().default('').catch(''),
+    messageToast: z.string().optional().catch(undefined),
+    enterMotion: z.enum(motionLabel).optional().catch(undefined),
+    sound: z.string().optional().catch(undefined),
+    actionType: z
+      .union([
+        z.literal('legacy'),
+        z.literal('message'),
+        z.literal('toast'),
+        z.literal('wordParty'),
+        z.literal('actionSet'),
+      ])
+      .default('legacy')
+      .catch('legacy'),
+  })
+  .transform((data) => {
+    let actionType: typeof data.actionType = 'legacy'
 
-  // actionType:
-  actionType: z
-    .union([
-      z.literal('legacy'), // legacy を付与し、PostAction のデータを効果的にする
-      z.literal('message'),
-      z.literal('toast'),
-      z.literal('wordParty'),
-      z.literal('actionSet'),
-    ])
-    .default('legacy')
-    .catch('legacy'),
-})
+    if (data.messageContent && data.messageContent.trim() !== '') {
+      actionType = 'message'
+    } else if (data.messageToast && data.messageToast.trim() !== '') {
+      actionType = 'toast'
+    } else if (data.wordParty && data.wordParty.trim() !== '') {
+      actionType = 'wordParty'
+    }
 
+    return {
+      ...data,
+      actionType,
+    }
+  })
 /**
  * OmikujiItem 抽選用重さ付きおみくじデータ
  */

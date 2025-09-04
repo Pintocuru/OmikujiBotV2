@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/CharacterImageSettings.vue -->
+<!-- src\ConfigMaker\components\characters\CharacterBase64Settings.vue -->
 <template>
   <!-- サイズ設定エリア(未使用) -->
   <SettingItem

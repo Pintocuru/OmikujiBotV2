@@ -23,7 +23,7 @@
       "name": "ずんだもんのおみくじ",
       "description": "みんなの運勢はすごくいいのだ！ずん子もそう言ってるのだ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-08-28T07:59:24.555Z",
+      "updatedAt": "2025-09-04T00:39:10.587Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -48,7 +48,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -56,7 +57,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -64,7 +66,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<user>>の運勢は【大吉】<<zundaOmikuji01>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -86,7 +89,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -94,7 +98,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -102,7 +107,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<user>>の運勢は【吉】<<zundaOmikuji02>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -124,7 +130,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -132,7 +139,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -140,7 +148,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "<<user>>の運勢は【中吉】<<zundaOmikuji03>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -162,7 +171,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -170,7 +180,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -178,7 +189,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "<<user>>の運勢は【小吉】<<zundaOmikuji04>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -200,7 +212,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -208,7 +221,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -216,7 +230,8 @@
               "characterKey": "zunda",
               "iconKey": "wink",
               "messageContent": "<<user>>の運勢は【末吉】<<zundaOmikuji05>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -238,7 +253,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -246,7 +262,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -254,7 +271,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<user>>の運勢は【凶】<<zundaOmikuji06>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -276,7 +294,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -284,7 +303,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -292,7 +312,8 @@
               "characterKey": "zunda",
               "iconKey": "sleepy",
               "messageContent": "<<user>>の運勢は【残念賞】<<zundaOmikuji07>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -358,7 +379,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -366,7 +388,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
@@ -435,7 +458,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 7,
@@ -443,7 +467,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
@@ -511,7 +536,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -519,7 +545,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
@@ -589,7 +616,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -597,7 +625,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -605,7 +634,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -613,7 +643,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -635,7 +666,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -643,7 +675,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -651,7 +684,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -659,7 +693,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -681,7 +716,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -689,7 +725,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -697,7 +734,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -705,7 +743,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -727,7 +766,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -735,7 +775,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -743,7 +784,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -751,7 +793,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -773,7 +816,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -781,7 +825,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -789,7 +834,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -797,7 +843,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -819,7 +866,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -827,7 +875,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -835,7 +884,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -843,7 +893,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -865,7 +916,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -873,7 +925,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -881,7 +934,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -889,7 +943,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -911,7 +966,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -919,7 +975,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -927,7 +984,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -935,7 +993,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -957,7 +1016,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -965,7 +1025,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -973,7 +1034,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -981,7 +1043,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1003,7 +1066,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1011,7 +1075,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1019,7 +1084,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1027,7 +1093,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1049,7 +1116,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1057,7 +1125,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1065,7 +1134,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1073,7 +1143,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1095,7 +1166,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1103,7 +1175,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1111,7 +1184,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1119,7 +1193,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1141,7 +1216,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1149,7 +1225,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1157,7 +1234,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1165,7 +1243,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -1229,7 +1308,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1237,7 +1317,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1245,7 +1326,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1253,7 +1335,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1275,7 +1358,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1283,7 +1367,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1291,7 +1376,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1299,7 +1385,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1321,7 +1408,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1329,7 +1417,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1337,7 +1426,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1345,7 +1435,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -1410,7 +1501,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1418,7 +1510,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1426,7 +1519,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1434,7 +1528,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1456,7 +1551,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1464,7 +1560,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1472,7 +1569,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1480,7 +1578,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1502,7 +1601,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1510,7 +1610,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1518,7 +1619,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1526,7 +1628,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -1590,7 +1693,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1598,7 +1702,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1606,7 +1711,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1614,7 +1720,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1636,7 +1743,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1644,7 +1752,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1652,7 +1761,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1660,7 +1770,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1682,7 +1793,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1690,7 +1802,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1698,7 +1811,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1706,7 +1820,8 @@
               "characterKey": "zunda",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -1771,7 +1886,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1779,7 +1895,8 @@
               "characterKey": "zunda",
               "iconKey": "singing",
               "messageContent": "<<ZundaSyokenSagiThinking>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1801,7 +1918,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1809,7 +1927,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSurprise>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1831,7 +1950,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1839,7 +1959,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSwing>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1861,7 +1982,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1869,7 +1991,8 @@
               "characterKey": "zunda",
               "iconKey": "surprised",
               "messageContent": "<<ZundaSyokenSagiSad>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1891,7 +2014,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1899,7 +2023,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 5,
@@ -1907,7 +2032,8 @@
               "characterKey": "zunda",
               "iconKey": "angry",
               "messageContent": "<<user>>、オマエ、僕をだましたのだ？ひどいのだ！ずん姉に言いつけるのだ！",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -1972,7 +2098,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -1980,7 +2107,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2045,7 +2173,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2053,7 +2182,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2061,7 +2191,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<GiftLowZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2125,7 +2256,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2133,7 +2265,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2141,7 +2274,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<GiftMiddleZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2203,7 +2337,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2211,7 +2346,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2219,7 +2355,8 @@
               "characterKey": "zunda",
               "iconKey": "blushing",
               "messageContent": "<<GiftHighZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2284,7 +2421,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!"
+              "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!",
+              "actionType": "toast"
             }
           ]
         }
@@ -2347,7 +2485,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2355,7 +2494,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2417,7 +2557,8 @@
               "characterKey": "zunda",
               "iconKey": "excited",
               "messageContent": "<<FirstCounterAgainZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2479,7 +2620,8 @@
               "characterKey": "zunda",
               "iconKey": "thinking",
               "messageContent": "<<FirstCounterFirstVisitZunda>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
@@ -2541,7 +2683,8 @@
               "characterKey": "zunda",
               "iconKey": "thinking",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。",
+              "actionType": "toast"
             }
           ]
         }
@@ -2601,7 +2744,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "すごいのだ!<<user>>のコメントが<<tc>>回になったのだ!"
+              "messageToast": "すごいのだ!<<user>>のコメントが<<tc>>回になったのだ!",
+              "actionType": "toast"
             }
           ]
         },
@@ -2623,7 +2767,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>は<<tc>>回目のコメントなのだ。オマエは配信の常連なのだ!"
+              "messageToast": "<<user>>は<<tc>>回目のコメントなのだ。オマエは配信の常連なのだ!",
+              "actionType": "toast"
             }
           ]
         }
@@ -2685,7 +2830,8 @@
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が見てくれているのだ"
+              "messageToast": "<<viewer>>人が見てくれているのだ",
+              "actionType": "toast"
             }
           ]
         }
@@ -2725,7 +2871,8 @@
               "characterKey": "zunda",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "<<PromotionToastsZunda>>"
+              "messageToast": "<<PromotionToastsZunda>>",
+              "actionType": "toast"
             }
           ]
         },
@@ -2747,7 +2894,8 @@
               "characterKey": "zunda",
               "iconKey": "thinking",
               "messageContent": "",
-              "messageToast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…"
+              "messageToast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…",
+              "actionType": "toast"
             }
           ]
         }

@@ -17,7 +17,7 @@
       "name": "カード駅",
       "description": "社長!駅ではカードが貰えますぞ!総数約64兆800億通り!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-09-03T22:51:41.116Z",
+      "updatedAt": "2025-09-04T00:30:49.356Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -729,7 +729,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "おみくじはしてないの～、ごめんなさいね。",
-              "actionType": "legacy"
+              "actionType": "toast"
             }
           ]
         }

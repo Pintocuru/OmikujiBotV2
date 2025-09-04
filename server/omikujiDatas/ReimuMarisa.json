@@ -7,7 +7,15 @@
     "generatorName": "omikuji-bot",
     "generatorVersion": "1.0.0",
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -43,7 +51,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -51,7 +60,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -59,7 +69,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<ReimuOmikuji01>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -81,7 +92,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -89,7 +101,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -97,7 +110,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<ReimuOmikuji02>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -119,7 +133,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -127,7 +142,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -135,7 +151,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<ReimuOmikuji03>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -157,7 +174,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -165,7 +183,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -173,7 +192,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<ReimuOmikuji04>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -195,7 +215,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -203,7 +224,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -211,7 +233,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<ReimuOmikuji05>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -233,7 +256,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -241,7 +265,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -249,7 +274,8 @@
               "characterKey": "reimu",
               "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<ReimuOmikuji06>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -271,7 +297,8 @@
               "characterKey": "marisa",
               "iconKey": "sleepy",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0,
@@ -279,7 +306,8 @@
               "characterKey": "marisa",
               "iconKey": "sleepy",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -287,14 +315,17 @@
               "characterKey": "marisa",
               "iconKey": "sleepy",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<ReimuOmikuji07>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -303,7 +334,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -345,7 +381,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -353,7 +390,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -361,7 +399,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
@@ -369,7 +408,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "<<user>>さんは<<flowerAllItem>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -391,7 +431,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1,
@@ -399,7 +440,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -407,7 +449,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 3,
@@ -415,14 +458,17 @@
               "characterKey": "marisa",
               "iconKey": "thinking",
               "messageContent": "<<user>>さんは【キノコ色】<<flowerKinoko>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -431,7 +477,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^フラワー", "^ふらわー", "^flower", "🌷", "🌹", "🌺", "🌻", "🌼"]
+        "comment": [
+          "^フラワー",
+          "^ふらわー",
+          "^flower",
+          "🌷",
+          "🌹",
+          "🌺",
+          "🌻",
+          "🌼"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -473,7 +528,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -481,14 +537,17 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -497,7 +556,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉"
+        ]
       },
       "scriptId": "GouseiSuika",
       "scriptParams": {
@@ -541,7 +607,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 7,
@@ -549,14 +616,17 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -565,7 +635,15 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
       },
       "scriptId": "BomberSpin",
       "scriptParams": {},
@@ -607,7 +685,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<message>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 8,
@@ -615,14 +694,17 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>"
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -631,7 +713,17 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi",
+          "🐰",
+          "🐇"
+        ]
       },
       "scriptId": "DwarfBomb",
       "scriptParams": {},
@@ -673,7 +765,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -681,7 +774,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -689,7 +783,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -697,7 +792,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -719,7 +815,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -727,7 +824,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -735,7 +833,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -743,7 +842,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -765,7 +865,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -773,7 +874,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -781,7 +883,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -789,7 +892,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -811,7 +915,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -819,7 +924,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -827,7 +933,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -835,7 +942,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -857,7 +965,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -865,7 +974,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -873,7 +983,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -881,7 +992,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -903,7 +1015,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -911,7 +1024,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -919,7 +1033,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -927,7 +1042,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -949,7 +1065,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -957,7 +1074,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -965,7 +1083,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -973,7 +1092,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -995,7 +1115,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1003,7 +1124,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1011,7 +1133,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1019,7 +1142,8 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1041,7 +1165,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1049,7 +1174,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1057,7 +1183,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1065,7 +1192,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1087,7 +1215,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1095,7 +1224,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1103,7 +1233,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1111,7 +1242,8 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1133,7 +1265,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1141,7 +1274,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1149,7 +1283,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1157,7 +1292,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1179,7 +1315,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1187,7 +1324,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1195,7 +1333,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1203,7 +1342,8 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1225,7 +1365,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1233,7 +1374,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1241,7 +1383,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1249,7 +1392,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1271,7 +1415,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1279,7 +1424,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1287,7 +1433,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1295,14 +1442,17 @@
               "characterKey": "marisa",
               "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1311,7 +1461,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1353,7 +1507,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1361,7 +1516,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1369,7 +1525,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1377,7 +1534,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1399,7 +1557,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1407,7 +1566,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1415,7 +1575,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1423,7 +1584,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1445,7 +1607,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1453,7 +1616,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1461,7 +1625,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1469,7 +1634,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1491,7 +1657,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1499,7 +1666,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1507,7 +1675,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1515,14 +1684,17 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1531,7 +1703,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1573,7 +1750,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1581,7 +1759,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1589,7 +1768,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1597,7 +1777,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1619,7 +1800,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1627,7 +1809,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1635,7 +1818,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1643,7 +1827,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1665,7 +1850,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1673,7 +1859,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1681,7 +1868,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1689,7 +1877,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1711,7 +1900,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1719,7 +1909,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1727,7 +1918,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1735,14 +1927,17 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1751,7 +1946,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -1793,7 +1992,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1801,7 +2001,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1809,7 +2010,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1817,7 +2019,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1839,7 +2042,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1847,7 +2051,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1855,7 +2060,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1863,7 +2069,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1885,7 +2092,8 @@
               "characterKey": "reimu",
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1893,7 +2101,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1901,7 +2110,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1909,7 +2119,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -1931,7 +2142,8 @@
               "characterKey": "marisa",
               "iconKey": "angry",
               "messageContent": "じゃんけんぽん!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 1.4,
@@ -1939,7 +2151,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 2.9,
@@ -1947,7 +2160,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 5,
@@ -1955,14 +2169,17 @@
               "characterKey": "marisa",
               "iconKey": "sad",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1971,7 +2188,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2013,7 +2235,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2021,7 +2244,8 @@
               "characterKey": "reimu",
               "iconKey": "angry",
               "messageContent": "<<user>>さん…あなた初見じゃないでしょ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2043,7 +2267,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2051,7 +2276,8 @@
               "characterKey": "reimu",
               "iconKey": "sleepy",
               "messageContent": "<<user>>さん、初めまし…あなた初見ではないわね?",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2073,7 +2299,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2081,7 +2308,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             },
             {
               "delaySeconds": 5,
@@ -2089,7 +2317,8 @@
               "characterKey": "reimu",
               "iconKey": "angry",
               "messageContent": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2111,7 +2340,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2119,14 +2349,18 @@
               "characterKey": "marisa",
               "iconKey": "surprised",
               "messageContent": "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2135,7 +2369,11 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2178,7 +2416,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2186,7 +2425,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2208,7 +2448,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2216,14 +2457,18 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2232,7 +2477,11 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2249,7 +2498,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "updatedAt": "2025-09-04T00:32:05.765Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -2274,7 +2523,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ"
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
+              "actionType": "toast"
             }
           ]
         },
@@ -2296,7 +2546,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ"
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ",
+              "actionType": "toast"
             }
           ]
         },
@@ -2318,7 +2569,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)"
+              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)",
+              "actionType": "toast"
             },
             {
               "delaySeconds": 5,
@@ -2326,14 +2578,17 @@
               "characterKey": "reimu",
               "iconKey": "angry",
               "messageContent": "",
-              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。"
+              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2342,7 +2597,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^コメント$"]
+        "comment": [
+          "^コメント$"
+        ]
       },
       "scriptId": null,
       "scriptParams": null,
@@ -2384,7 +2641,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2392,7 +2650,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2400,7 +2659,8 @@
               "characterKey": "reimu",
               "iconKey": "blushing",
               "messageContent": "<<user>>さん、ギフトありがとう!これからも配信続けていくわ、応援してね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2422,7 +2682,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2430,7 +2691,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2438,17 +2700,24 @@
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2496,7 +2765,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2504,7 +2774,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2512,17 +2783,22 @@
               "characterKey": "reimu",
               "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["yellow"],
+        "gift": [
+          "yellow"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2570,7 +2846,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -2578,7 +2855,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -2586,17 +2864,25 @@
               "characterKey": "marisa",
               "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["orange", "pink", "red", "purple"],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2644,7 +2930,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2652,7 +2939,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2674,7 +2962,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2682,7 +2971,8 @@
               "characterKey": "reimu",
               "iconKey": "excited",
               "messageContent": "初見の<<user>>さん、コメントありがとう!とっても嬉しいわ!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2704,7 +2994,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2712,7 +3003,8 @@
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "おっ、<<user>>さんが初めてのコメントだぜ!ようこそだぜ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2734,7 +3026,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 1.5,
@@ -2742,15 +3035,20 @@
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "<<user>>さん、ようこそ!コメント助かるぜ～!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2800,7 +3098,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、久しぶり!また会えたね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2822,7 +3121,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2844,7 +3144,8 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2866,15 +3167,20 @@
               "characterKey": "marisa",
               "iconKey": "happy",
               "messageContent": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -2924,7 +3230,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2946,7 +3253,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2968,7 +3276,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         },
@@ -2990,15 +3299,20 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
-              "messageToast": ""
+              "messageToast": "",
+              "actionType": "message"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -3048,7 +3362,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
+              "actionType": "toast"
             }
           ]
         },
@@ -3070,14 +3385,17 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。"
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -3128,7 +3446,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！"
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+              "actionType": "toast"
             }
           ]
         },
@@ -3150,14 +3469,17 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！"
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+              "actionType": "toast"
             }
           ]
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -3210,7 +3532,8 @@
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中だよ"
+              "messageToast": "<<viewer>>人が視聴中だよ",
+              "actionType": "toast"
             }
           ]
         },
@@ -3232,7 +3555,8 @@
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中だぜ"
+              "messageToast": "<<viewer>>人が視聴中だぜ",
+              "actionType": "toast"
             }
           ]
         }
@@ -3272,7 +3596,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。"
+              "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。",
+              "actionType": "toast"
             }
           ]
         },
@@ -3294,7 +3619,8 @@
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "",
-              "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。"
+              "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。",
+              "actionType": "toast"
             }
           ]
         },
@@ -3316,7 +3642,8 @@
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "",
-              "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！"
+              "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！",
+              "actionType": "toast"
             }
           ]
         },
@@ -3338,7 +3665,8 @@
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "",
-              "messageToast": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ"
+              "messageToast": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ",
+              "actionType": "toast"
             }
           ]
         },
@@ -3360,7 +3688,8 @@
               "characterKey": "marisa",
               "iconKey": "wink",
               "messageContent": "",
-              "messageToast": "このおみくじBOT、配信者さんに使って欲しいんだぜ…"
+              "messageToast": "このおみくじBOT、配信者さんに使って欲しいんだぜ…",
+              "actionType": "toast"
             }
           ]
         }
@@ -3527,7 +3856,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["マリサ キリサメ"]
+      "values": [
+        "マリサ キリサメ"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -3540,7 +3871,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["俺"]
+      "values": [
+        "俺"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -3869,7 +4202,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3912,7 +4248,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": ["Yukkuri", "Marisa"],
+      "tags": [
+        "Yukkuri",
+        "Marisa"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3989,7 +4328,11 @@
         "characterVisible": "basic",
         "wordPartyLoading": "internal",
         "gameScriptSettings": "pro",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "basic"
       }
     }
