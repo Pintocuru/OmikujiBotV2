@@ -1,8 +1,8 @@
 <!-- src/configMaker/components/characters/CharacterServiceSettings.vue -->
 <template>
-  <SectionCard v-if="localData" title="キャラクター用枠設定" description="わんコメの投稿で必要な設定を行います">
+  <div v-if="localData">
     <!-- 補足説明 -->
-    <InformationCard>
+    <InformationCard class="mb-4">
       キャラクター専用の枠を作成すると、各キャラクターごとに
       <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
       詳しくは
@@ -29,7 +29,7 @@
 
     <!-- わんコメ投稿用画像設定 -->
     <CharacterBase64Settings v-if="localData.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
-  </SectionCard>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -37,7 +37,6 @@
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 

@@ -6,20 +6,58 @@
   <!-- ルール編集エリア -->
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
-    <BaseSettingsEditor v-model="selectedItem" category="comments" />
+    <SectionCard
+      :isOpen="activeSection === 'baseSettings'"
+      @toggle="toggleSection('baseSettings')"
+      title="基本設定"
+      description="コメントルールの基本的な設定"
+    >
+      <BaseSettingsEditor v-model="selectedItem" category="comments" />
+    </SectionCard>
+
     <div v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
-      <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
+      <SectionCard
+        :isOpen="activeSection === 'threshold'"
+        @toggle="toggleSection('threshold')"
+        title="発動条件設定"
+        description="機能のON/コメントの情報から「おみくじを引く」かどうかを決めます"
+      >
+        <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
+      </SectionCard>
 
       <!-- おみくじ制限設定セクション -->
-      <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
+      <SectionCard
+        :isOpen="activeSection === 'limits'"
+        @toggle="toggleSection('limits')"
+        title="おみくじ制限設定"
+        description="重複時や回数超過時におみくじを無効にします"
+      >
+        <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
+      </SectionCard>
 
       <!-- ゲームスクリプト設定セクション -->
-      <ScriptGameEditor v-if="canShow('gameScriptSettings')" v-model="selectedItem" />
+      <SectionCard
+        v-if="canShow('gameScriptSettings') || isGod"
+        :isOpen="activeSection === 'scriptGame'"
+        @toggle="toggleSection('scriptGame')"
+        title="ゲームスクリプト設定"
+        description="Javascriptを使ったミニゲーム。結果はプレースホルダーの形で出力します"
+      >
+        <ScriptGameEditor v-model="selectedItem" />
+      </SectionCard>
 
       <!-- おみくじ設定セクション -->
-      <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
+      <SectionCard
+        :isOpen="activeSection === 'omikujiSet'"
+        @toggle="toggleSection('omikujiSet')"
+        title="おみくじ設定"
+        description="コメントで実行するおみくじの設定"
+      >
+        <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
+      </SectionCard>
     </div>
+
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
       現在、このルールは無効になっています。<br />
@@ -29,7 +67,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
   import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue'
   import ScriptGameEditor from './GameScriptEditor.vue'
@@ -38,14 +76,26 @@
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+
+  // アクティブなセクションの管理
+  type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null
+  const activeSection = ref<SectionType>('baseSettings') // 初期状態で基本設定を開く
+
+  // セクションの切り替え
+  const toggleSection = (section: SectionType) => {
+    activeSection.value = activeSection.value === section ? null : section
+  }
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data, selectedRuleId } = storeToRefs(omikujiStore)
 
+  const { isGod } = useSettingMode()
   const { canShow } = useVisibilityAccess()
 
   // v-modelを使用したselectedCharacterの実装

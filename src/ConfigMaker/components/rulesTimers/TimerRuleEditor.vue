@@ -6,14 +6,38 @@
   <!-- ルール編集エリア -->
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
-    <BaseSettingsEditor v-model="selectedItem" category="timers" />
+    <SectionCard
+      :isOpen="activeSection === 'baseSettings'"
+      @toggle="toggleSection('baseSettings')"
+      :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
+      title="基本設定"
+      description="機能のON/OFFや名称の設定を行います"
+    >
+      <BaseSettingsEditor v-model="selectedItem" category="timers" />
+    </SectionCard>
+
     <div v-if="selectedItem.isEnabled !== false">
       <!-- タイマー設定セクション -->
-      <TimerIntervalEditor v-model="selectedItem" />
+      <SectionCard
+        :isOpen="activeSection === 'timerInterval'"
+        @toggle="toggleSection('timerInterval')"
+        title="タイマー設定"
+        description="発動する間隔やタイミングの設定です"
+      >
+        <TimerIntervalEditor v-model="selectedItem" />
+      </SectionCard>
 
       <!-- おみくじ設定セクション -->
-      <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
+      <SectionCard
+        :isOpen="activeSection === 'omikujiSet'"
+        @toggle="toggleSection('omikujiSet')"
+        title="おみくじ設定"
+        description="おみくじの抽選設定や、おみくじの内容です"
+      >
+        <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
+      </SectionCard>
     </div>
+
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
       現在、このルールは無効になっています。<br />
@@ -23,15 +47,25 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+
+  // アクティブなセクションの管理
+  type SectionType = 'baseSettings' | 'timerInterval' | 'omikujiSet' | null
+  const activeSection = ref<SectionType>('baseSettings') // 初期状態で基本設定を開く
+
+  // セクションの切り替え
+  const toggleSection = (section: SectionType) => {
+    activeSection.value = activeSection.value === section ? null : section
+  }
 
   // Pinia store
   const omikujiStore = useOmikujiStore()

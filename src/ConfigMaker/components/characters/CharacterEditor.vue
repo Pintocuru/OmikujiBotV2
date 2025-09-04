@@ -4,30 +4,63 @@
   <RecordTabs />
 
   <!-- 選択されたキャラクターの編集フォーム -->
-  <div v-if="selectedItem">
+  <div v-if="selectedRuleId && selectedItem">
     <!-- 基本情報 -->
-    <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
+    <SectionCard
+      :isOpen="activeSection === 'basicInfo'"
+      @toggle="toggleSection('basicInfo')"
+      title="基本設定"
+      description="キャラクター、またはカラー設定名の編集を行います"
+    >
+      <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
+    </SectionCard>
 
-    <!-- 色設定 -->
-    <CharacterColorSettings :modelValue="selectedItem.color" />
+    <!-- フキダシ設定 -->
+    <SectionCard
+      :isOpen="activeSection === 'colorSettings'"
+      @toggle="toggleSection('colorSettings')"
+      title="フキダシ設定"
+      description="フキダシの編集を行います"
+    >
+      <CharacterColorSettings :modelValue="selectedItem.color" />
+    </SectionCard>
 
     <!-- キャラクター表示設定 -->
-    <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption" />
+    <SectionCard
+      :isOpen="activeSection === 'displaySettings'"
+      @toggle="toggleSection('displaySettings')"
+      title="キャラクター表示設定"
+      description="キャラクターアイコン(画像)に関する編集を行います"
+    >
+      <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption" />
+    </SectionCard>
 
     <!-- キャラクター用枠設定 -->
-    <CharacterServiceSettings v-if="selectedItem.displayOption?.isOneCommePost" :selectedRuleId="selectedRuleId" />
+    <SectionCard
+      v-if="selectedItem.displayOption?.isOneCommePost"
+      :isOpen="activeSection === 'serviceSettings'"
+      @toggle="toggleSection('serviceSettings')"
+      title="キャラクター用枠設定"
+      description="わんコメの投稿で必要な設定を行います"
+    >
+      <CharacterServiceSettings :selectedRuleId="selectedRuleId" />
+    </SectionCard>
 
     <!-- ジェネレーター用画像設定 -->
-    <CharacterImageSettings
+    <SectionCard
       v-if="selectedItem.displayOption?.isIconDisplay"
-      :modelValue="selectedItem.image"
-      :selectedRuleId="selectedRuleId"
-    />
+      :isOpen="activeSection === 'imageSettings'"
+      @toggle="toggleSection('imageSettings')"
+      title="ジェネレーター用画像設定"
+      description="ジェネレーターで表示する画像の設定です"
+    >
+      <CharacterImageSettings :modelValue="selectedItem.image" :selectedRuleId="selectedRuleId" />
+    </SectionCard>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CharacterBasicInfo from './CharacterBasicInfo.vue'
@@ -35,7 +68,17 @@
   import CharacterImageSettings from './CharacterImageSettings.vue'
   import CharacterServiceSettings from './CharacterServiceSettings.vue'
   import CharacterIconDisplaySettings from './CharacterIconDisplaySettings.vue'
+  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+
+  // アクティブなセクションの管理
+  type SectionType = 'basicInfo' | 'colorSettings' | 'displaySettings' | 'serviceSettings' | 'imageSettings' | null
+  const activeSection = ref<SectionType>('basicInfo') // 初期状態で基本情報を開く
+
+  // セクションの切り替え
+  const toggleSection = (section: SectionType) => {
+    activeSection.value = activeSection.value === section ? null : section
+  }
 
   // Pinia store
   const omikujiStore = useOmikujiStore()

@@ -1,6 +1,6 @@
 <!-- src/configMaker/components/characters/CharacterBasicInfo.vue -->
 <template>
-  <SectionCard v-if="currentData" title="基本設定" description="キャラクター、またはカラー設定名の編集を行います">
+  <div v-if="currentData">
     <!-- Key表示 -->
     <SettingItem label="Key" description="キャラクターのキー名">
       <div class="flex gap-2 items-center">
@@ -22,7 +22,7 @@
         @input="updateField(field.key, ($event.target as HTMLInputElement).value)"
       />
     </SettingItem>
-  </SectionCard>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -30,11 +30,10 @@
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{
-    selectedRuleId: string | null
+    selectedRuleId: string
   }>()
 
   // Pinia store

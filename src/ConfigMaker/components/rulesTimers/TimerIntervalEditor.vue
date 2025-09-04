@@ -1,26 +1,23 @@
 <!-- src/configMaker/components/timers/TimerIntervalEditor.vue -->
 <template>
-  <SectionCard title="タイマー設定" description="発動する間隔やタイミングの設定です">
-    <!-- プリセット選択 -->
-    <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">
-      <select v-model="intervalSeconds" class="select select-bordered w-full">
-        <option v-for="preset in intervalPresets" :key="preset.value" :value="preset.value">
-          {{ preset.label }}
-        </option>
-      </select>
-    </SettingItem>
+  <!-- プリセット選択 -->
+  <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">
+    <select v-model="intervalSeconds" class="select select-bordered w-full">
+      <option v-for="preset in intervalPresets" :key="preset.value" :value="preset.value">
+        {{ preset.label }}
+      </option>
+    </select>
+  </SettingItem>
 
-    <!-- isBaseZero トグル -->
-    <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます">
-      <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
-    </SettingItem>
-  </SectionCard>
+  <!-- isBaseZero トグル -->
+  <SettingItem label="基準時刻を0分0秒に固定" description="時報などで使えます">
+    <input type="checkbox" class="toggle toggle-primary" v-model="isBaseZero" />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
 
   const props = defineProps<{
     modelValue: {
@@ -58,24 +55,4 @@
       emit('update:modelValue', { ...props.modelValue, isBaseZero: value })
     },
   })
-
-  const formatInterval = (seconds: number) => {
-    if (seconds < 60) {
-      return `${seconds}秒`
-    } else if (seconds < 3600) {
-      const minutes = Math.floor(seconds / 60)
-      const remainingSeconds = seconds % 60
-      return remainingSeconds > 0 ? `${minutes}分${remainingSeconds}秒` : `${minutes}分`
-    } else {
-      const hours = Math.floor(seconds / 3600)
-      const remainingMinutes = Math.floor((seconds % 3600) / 60)
-      const remainingSeconds = seconds % 60
-
-      let result = `${hours}時間`
-      if (remainingMinutes > 0) result += `${remainingMinutes}分`
-      if (remainingSeconds > 0) result += `${remainingSeconds}秒`
-
-      return result
-    }
-  }
 </script>
