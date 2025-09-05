@@ -1,6 +1,6 @@
 // src/params.ts
 import { z } from 'zod'
-import { ScriptPlaceholderItem, ParameterItem } from '@/types/'
+import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@/types/'
 import {
   GamePlaceholder as LogGamePlaceholder,
   placeholders as logPlaceholders,
@@ -61,6 +61,15 @@ export const params: ParameterItem<GameParams>[] = [
     values: ['スイカゲーム', 'カボチャゲーム', 'クジラゲーム'], // 選択肢
     defaultValue: 'スイカゲーム', // デフォルト値
   },
+]
+
+/**
+ * postActions
+ */
+export const postActions: PostActionWordPartyType[] = [
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: '🍒 か !マリモ' },
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: '<<fruits>> または <<魚群>>' },
+  { actionType: 'wordParty', delaySeconds: 8.5, wordParty: '!パパッ(得点表示用)' },
 ]
 
 /**

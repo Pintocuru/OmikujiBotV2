@@ -44,8 +44,12 @@ export class GachaGame {
    */
   private initializeEffects(): void {
     this.postArray = [
-      { delaySeconds: GAME_CONSTANTS.EMOJI_DELAY, wordParty: this.mode === 'クジラゲーム' ? '!マリモ' : '🍒' },
-      { delaySeconds: GAME_CONSTANTS.SPECIAL_EFFECT_DELAY, wordParty: '!パパッ' },
+      {
+        actionType: 'wordParty',
+        delaySeconds: GAME_CONSTANTS.EMOJI_DELAY,
+        wordParty: this.mode === 'クジラゲーム' ? '!マリモ' : '🍒',
+      },
+      { actionType: 'wordParty', delaySeconds: GAME_CONSTANTS.SPECIAL_EFFECT_DELAY, wordParty: '!パパッ' },
     ]
   }
 
@@ -123,10 +127,7 @@ export class GachaGame {
    * エフェクトを追加
    */
   private addEffect(party: string): void {
-    this.postArray.push({
-      delaySeconds: GAME_CONSTANTS.EMOJI_DELAY,
-      wordParty: party,
-    })
+    this.postArray.push({ actionType: 'wordParty', delaySeconds: GAME_CONSTANTS.EMOJI_DELAY, wordParty: party })
   }
 
   /**
@@ -159,7 +160,6 @@ export class ItemLottery {
         wins++
       }
     }
-
     return { pointsEarned, wins }
   }
 

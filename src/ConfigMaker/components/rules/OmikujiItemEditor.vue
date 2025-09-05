@@ -19,7 +19,9 @@
 
       <!-- ツールバー -->
       <OmikujiItemToolbar
-        :modelValue="omikujiItem.postActions"
+        :actions="omikujiItem.postActions"
+        :category="category"
+        :selected-rule-id="selectedRuleId"
         @toggleJson="toggleEditMode"
         @toggleEdit="toggleTabEditor"
       />
@@ -28,9 +30,6 @@
       <PostActionsTabEditor
         v-if="isTabEditorOpen"
         :actions="omikujiItem.postActions"
-        :category="category"
-        :selected-rule-id="selectedRuleId"
-        :omikuji-index="index"
         @update:actions="updatePostActions"
       />
 

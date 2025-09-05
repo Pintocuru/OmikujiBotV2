@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState } from '@/types/'
+import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/types/Comment'
 import { GAME_CONFIGS, GameResult } from './gameConfigs'
 import { GachaGame } from './game'
@@ -21,7 +21,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams) {
+  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
     // パラメータ
     const { isParty } = this.settings
     const { mode } = GameParamsSchema.parse(params)

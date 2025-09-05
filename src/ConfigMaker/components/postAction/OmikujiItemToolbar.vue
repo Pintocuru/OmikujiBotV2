@@ -12,27 +12,37 @@
             @click="$emit('toggleEdit')"
           >
             <List class="h-4 w-4" />
-            <span class="pl-1"> {{ modelValue.length }} </span>
+            <span class="pl-1"> {{ actions.length }} </span>
           </span>
 
           <!-- ホバー時のプレビュー表示 -->
           <div
-            v-if="showPreview && modelValue.length > 0"
-            class="absolute top-8 left-0 z-50 bg-base-100 shadow-lg rounded-lg border w-96 sm:w-160 max-h-64 overflow-y-auto"
+            v-if="showPreview && actions.length > 0"
+            class="absolute top-6 left-0 z-50 bg-base-100 shadow-lg rounded-lg border w-96 sm:w-160 max-h-64 overflow-y-auto"
             @mouseenter="showPreview = true"
             @mouseleave="showPreview = false"
           >
-            <PostActionsPreview :modelValue="modelValue" />
+            <div class="form-control bg-base-200 p-2 rounded-lg">
+              <h3 class="font-semibold border-b">アクション プレビュー</h3>
+              <PostActionsPreview :actions="actions" />
+            </div>
+
+            <div v-if="selectedScript">
+              <div class="form-control bg-base-200 p-2 rounded-lg">
+                <h3 class="font-semibold border-b">GameScripts で追加されるアクション</h3>
+                <PostActionsPreview :actions="selectedScript.postActions as PostActionType[]" />
+              </div>
+            </div>
           </div>
         </div>
       </label>
 
       <div class="flex gap-2">
         <button
-          @click="() => useTestPost().postTestOmikujiItem(modelValue)"
+          @click="() => useTestPost().postTestOmikujiItem(actions)"
           class="btn btn-sm btn-info tooltip tooltip-top"
           data-tip="わんコメを起動すると、投稿の確認ができます"
-          :disabled="modelValue.length === 0"
+          :disabled="actions.length === 0"
         >
           <Send :size="16" />
           テスト投稿
@@ -53,20 +63,43 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { List, Send, FileJson, Settings } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { CommentRuleType, RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+  import { gameScriptMap } from '../GameScripts/GameScriptsMap'
+  import { ScriptPreset } from '@/types'
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
+    actions: PostActionType[]
+    category: RulesCategoryType
+    selectedRuleId: string | null
   }>()
 
   // Emits
   const emit = defineEmits(['toggleEdit', 'toggleJson'])
 
+  // Pinia store
+  const omikujiStore = useOmikujiStore()
+
   // ホバー状態管理
   const showPreview = ref(false)
+
+  // currentScriptIdの取得
+  // TODO:将来TimerにもGameScriptsを入れる予定です
+  const currentScriptId = computed(() => {
+    if (!props.selectedRuleId) return null
+    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as CommentRuleType
+    return record.scriptId ? record.scriptId : null
+  })
+
+  // 選択されたスクリプト
+  const selectedScript = computed((): ScriptPreset | null => {
+    if (!currentScriptId.value) return null
+    return gameScriptMap[currentScriptId.value] || null
+  })
 </script>

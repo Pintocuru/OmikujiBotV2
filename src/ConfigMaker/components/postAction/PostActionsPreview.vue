@@ -1,8 +1,8 @@
 <!-- src/configMaker/components/postAction/PostActionsPreview.vue -->
 <template>
   <div class="bg-base-200 rounded p-3 text-sm relative">
-    <div v-if="modelValue.length !== 0" class="space-y-0">
-      <div v-for="(action, index) in modelValue" :key="index" class="flex-1 min-w-0 flex">
+    <div v-if="actions.length !== 0" class="space-y-0">
+      <div v-for="(action, index) in actions" :key="index" class="flex-1 min-w-0 flex">
         <!-- アイコンやバッジ部分 -->
         <PostActionRow :action="action" />
 
@@ -25,7 +25,7 @@
   import PostActionRow from './PostActionRow.vue'
 
   const props = defineProps<{
-    modelValue: PostActionType[]
+    actions: PostActionType[]
   }>()
 
   const displayText = (action: PostActionType) => {

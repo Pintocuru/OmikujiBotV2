@@ -1,10 +1,18 @@
 <!-- src/configMaker/components/comments/GameScriptEditor.vue -->
 <template>
-  <!-- ゲームスクリプトの説明 -->
-  <div v-if="selectedScript">
+  <!-- ゲームスクリプトによる追加の要素 -->
+  <div v-if="selectedScript" class="space-y-4">
+    <!-- 追加のプレースホルダー -->
     <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
       <h3 class="font-semibold border-b pb-1">使用可能な追加のプレースホルダー</h3>
       <PlaceholderList :editorColor="selectedScript.editorColor" />
+    </div>
+    <!-- 追加のWordPartyの演出 -->
+    <div v-if="selectedScript">
+      <div class="form-control bg-base-200 p-2 rounded-lg">
+        <h3 class="font-semibold border-b">GameScripts で追加されるアクション</h3>
+        <PostActionsPreview :actions="selectedScript.postActions as PostActionType[]" />
+      </div>
     </div>
   </div>
 
@@ -110,15 +118,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CommentRuleType, ScriptPreset, createScriptParamsSchema } from '@/types/'
+  import { CommentRuleType, PostActionType, ScriptPreset, createScriptParamsSchema } from '@/types/'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
+  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import { DefaultTypes } from '@shared/types'
   import { storeToRefs } from 'pinia'
 
@@ -133,7 +141,6 @@
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isGod } = useSettingMode()
   const { enabledGameScriptMap } = useEnabledGames()
 
   // スクリプト有効化フラグ

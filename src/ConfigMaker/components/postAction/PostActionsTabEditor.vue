@@ -67,9 +67,6 @@
 
   const props = defineProps<{
     actions: PostActionType[]
-    category: string
-    selectedRuleId: string | null
-    omikujiIndex: number
   }>()
 
   const emit = defineEmits<{

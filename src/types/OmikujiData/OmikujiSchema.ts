@@ -74,6 +74,7 @@ export const PostActionWordPartySchema = z.object({
     .default(0)
     .catch(0),
   wordParty: z.string().default('').catch(''),
+  actionType: z.literal('wordParty').default('wordParty'),
 })
 
 /**
@@ -81,7 +82,12 @@ export const PostActionWordPartySchema = z.object({
  */
 export const PostActionSchema = z
   .object({
-    ...PostActionWordPartySchema.shape,
+    delaySeconds: z
+      .number()
+      .min(POST_SETTINGS.basicDelaySeconds * -1)
+      .default(0)
+      .catch(0),
+    wordParty: z.string().default('').catch(''),
     characterKey: z.string().default('').catch(''),
     iconKey: CharacterEmotionSchema.default('default').catch('default'),
     messageContent: z.string().default('').catch(''),

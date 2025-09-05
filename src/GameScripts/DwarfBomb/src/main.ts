@@ -1,6 +1,6 @@
 // src/main.ts
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
-import { GameParams, GamePlaceholder, GameSettings, params, placeholders, settings } from './params'
+import { GameParams, GamePlaceholder, GameSettings, params, postActions, placeholders, settings } from './params'
 import execute from './execute'
 import { componentConfig } from './componentConfig'
 
@@ -32,6 +32,7 @@ const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
   execute,
   settings,
   params,
+  postActions,
   placeholders,
   componentConfig,
 }
