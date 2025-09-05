@@ -103,3 +103,41 @@ export const DisplaySettingsSchema = z.object({
 })
 
 export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>
+
+/**
+
+// フキダシ
+export const BubbleSettingsSchema = z.object({
+  displaySize: z.enum(displaySize).default('md'),
+  fontFamily: z.enum(fontFamilyOptions).default('default'),
+  bubbleMotionEnter: z.enum(motionLabel).default('slideUp'),
+  bubbleMotionLeave: z.enum(motionLabel).default('slideUp'),
+});
+
+// トースト
+export const ToastSettingsSchema = z.object({
+  showToasts: z.boolean().default(true),
+});
+
+// キャラクター
+export const CharacterOptionsSchema = z.object({
+  showCharacterFrame: z.boolean().default(true),
+  showCharacterPersistent: z.boolean().default(false),
+  showCharacterThumbnail: z.boolean().default(true),
+});
+
+// エディター
+export const EditorSettingsSchema = z.object({
+  daisyUiTheme: z.enum(themes).default('dark'),
+});
+
+// 元の BaseSettingsSchema を集約スキーマとして再定義
+export const BaseSettingsSchema = z.object({
+  bubble: BubbleSettingsSchema,
+  toast: ToastSettingsSchema,
+  character: CharacterOptionsSchema,
+  editor: EditorSettingsSchema,
+});
+
+
+ */

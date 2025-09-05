@@ -8,12 +8,15 @@ import { useNavigationManager } from './composables/useNavigationManager'
 import { useItemManager } from './composables/useItemManager'
 import { useRecordOperations } from './composables/useRecordOperations'
 import { useSettingsOperations } from './composables/useSettingsOperations'
+import { migrate } from '@/migrations'
 
 // グローバルデータの初期化
-const omikujiData = OmikujiDataSchema.parse(window.omikujiData)
+const rawData = window.omikujiData || {}
+const migratedData = migrate(rawData) // マイグレーション
+const omikujiData = OmikujiDataSchema.parse(migratedData)
 
 export const useOmikujiStore = defineStore('omikuji', () => {
-  // === コアデータ ===
+  // コアデータ
   const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}))
 
   // 変更追跡
