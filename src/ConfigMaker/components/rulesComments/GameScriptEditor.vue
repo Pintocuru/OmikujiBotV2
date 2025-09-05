@@ -1,23 +1,31 @@
 <!-- src/configMaker/components/comments/GameScriptEditor.vue -->
 <template>
   <!-- ゲームスクリプトの説明 -->
-  <InformationCard class="mb-4">
-    <p>
-      <code class="label bg-accent text-accent-content"> ゲームスクリプト </code
-      >とは、該当するルール適用時に起動し、複雑なおみくじを行うための機能です。
-    </p>
-    <p>
-      ゲーム結果は
-      <code class="label bg-accent text-accent-content">プレースホルダー</code>の形で出力されます。
-    </p>
-    <p>
-      下記の
-      <code class="label bg-accent text-accent-content"> ゲームスクリプトを使用</code>
-      を押すと、おみくじ設定 の 詳細編集にある
-      <code class="label bg-accent text-accent-content">プレースホルダー一覧</code>
-      に項目が増えます。
-    </p>
-  </InformationCard>
+  <div v-if="selectedScript">
+    <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
+      <h3 class="font-semibold border-b pb-1">使用可能な追加のプレースホルダー</h3>
+      <PlaceholderList :editorColor="selectedScript.editorColor" />
+    </div>
+  </div>
+
+  <!-- ゲームスクリプトの説明 -->
+  <div v-else>
+    <InformationCard class="mb-4">
+      <p>
+        <code class="label bg-accent text-accent-content">ゲームスクリプト</code
+        >とは、複雑なおみくじ処理を実行するための機能です。
+      </p>
+      <p>
+        ゲームの結果は、<code class="label bg-accent text-accent-content">プレースホルダー</code>として出力されます。
+      </p>
+      <p>
+        下記の<code class="label bg-accent text-accent-content">ゲームスクリプト</code>を選択すると、<code
+          class="label bg-accent text-accent-content"
+          >ゲームスクリプト専用のプレースホルダー</code
+        >が表示されます。
+      </p>
+    </InformationCard>
+  </div>
 
   <!-- スクリプト選択とパラメータ設定 -->
   <div v-if="isScriptEnabled" class="space-y-4">
@@ -110,6 +118,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import { DefaultTypes } from '@shared/types'
   import { storeToRefs } from 'pinia'
 
@@ -129,7 +138,6 @@
 
   // スクリプト有効化フラグ
   const isScriptEnabled = computed({
-    // FIXME:ここは gameScriptSettings を 参照して
     get: () => enabledGameScriptMap.value.length > 0,
     set: (enabled: boolean) => {
       if (enabled) {

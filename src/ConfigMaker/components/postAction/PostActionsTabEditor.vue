@@ -20,7 +20,10 @@
       @click="setActiveTab(index)"
     >
       <!-- アイコンやバッジ部分 -->
-      <PostActionRow :action="action" />
+      <div class="flex items-center">
+        <span class="badge badge-sm badge-primary">{{ index + 1 }}</span>
+        <PostActionRow :action="action" />
+      </div>
     </button>
 
     <button class="tab tab-sm" @click="addNewAction">＋ 追加</button>
@@ -84,7 +87,7 @@
   })
 
   // アクティブなタブのインデックス（-1はプレースホルダータブ）
-  const activeTab = ref(-1)
+  const activeTab = ref(0)
 
   // 現在選択されているアクション
   const currentAction = computed(() => {

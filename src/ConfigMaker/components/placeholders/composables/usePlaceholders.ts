@@ -7,13 +7,15 @@ import { usePlaceholderFilter } from './usePlaceholderFilter'
 /**
  * プレースホルダー機能の統合composable
  */
-export function usePlaceholders(actions: Ref<PostActionType[]>) {
+export function usePlaceholders(actions: Ref<PostActionType[]>, editorColor?: Ref<string | undefined>) {
   // データ管理
   const { allPlaceholders, usedPlaceholderIds, defaultPlaceholders } = usePlaceholderData(actions)
 
   // フィルター機能
-  const { selectedEditorColor, editorColorOptions, filteredPlaceholders, selectEditorColor } =
-    usePlaceholderFilter(allPlaceholders)
+  const { selectedEditorColor, editorColorOptions, filteredPlaceholders, selectEditorColor } = usePlaceholderFilter(
+    allPlaceholders,
+    editorColor
+  )
 
   // 統計情報
   const stats = computed(() => ({

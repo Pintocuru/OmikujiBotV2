@@ -1,8 +1,8 @@
 <!-- src/configMaker/components/placeholders/PlaceholderList.vue -->
 <template>
   <div class="card card-body p-4 bg-base-200">
-    <!-- カラーフィルター -->
-    <div v-if="editorColorOptions.length > 1" class="flex flex-wrap items-center gap-2">
+    <!-- カラーフィルター（editorColorが指定されていない場合のみ表示） -->
+    <div v-if="!editorColor && editorColorOptions.length > 1" class="flex flex-wrap items-center gap-2">
       <span class="text-sm font-medium">カラー:</span>
       <button
         @click="selectedEditorColor = null"
@@ -51,7 +51,14 @@
 
     <!-- プレースホルダーが見つからない場合 -->
     <div v-if="filteredPlaceholders.length === 0">
-      <NoParamsCard message="選択したカラーに一致するプレースホルダーがありません" iconName="Search" />
+      <NoParamsCard
+        :message="
+          editorColor
+            ? `指定されたカラー「${editorColor}」に一致するプレースホルダーがありません`
+            : '選択したカラーに一致するプレースホルダーがありません'
+        "
+        iconName="Search"
+      />
     </div>
   </div>
 </template>
@@ -60,18 +67,17 @@
   import { toRef } from 'vue'
   import { PostActionType } from '@/types/'
   import { usePlaceholders } from './composables/usePlaceholders'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import PlaceholderItem from './PlaceholderItem.vue'
+  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
 
   // Props
   const props = defineProps<{
     actions?: PostActionType[]
+    editorColor?: string // 新しく追加
   }>()
 
   const emit = defineEmits(['openPlaceholder'])
 
-  // Composable（ランダム値関連の機能を除外）
   const {
     selectedEditorColor,
     filteredPlaceholders,
@@ -80,5 +86,8 @@
     defaultPlaceholders,
     stats,
     selectEditorColor,
-  } = usePlaceholders(toRef(() => props.actions || []))
+  } = usePlaceholders(
+    toRef(() => props.actions || []),
+    toRef(() => props.editorColor)
+  )
 </script>

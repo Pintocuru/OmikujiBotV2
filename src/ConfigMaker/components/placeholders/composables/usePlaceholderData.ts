@@ -52,7 +52,6 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
   })
 
   // ゲームスクリプトのプレースホルダーを取得
-  // FIXME:editorColor はゲームスクリプトのものを使う
   const scriptPlaceholders = computed((): PlaceholderType[] => {
     const rulesComment = selectedRulesCommentData.value
     if (!rulesComment?.scriptId) return []
