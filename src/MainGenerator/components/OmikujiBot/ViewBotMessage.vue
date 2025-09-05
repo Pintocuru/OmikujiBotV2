@@ -48,7 +48,7 @@
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
   const { displaySize } = storeToRefs(displayStore)
-  const base = computed(() => appStore.omikujiData.displaySettings?.base || {})
+  const base = computed(() => appStore.data.displaySettings?.base || {})
 
   // サイズ設定（計算ベース）
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])

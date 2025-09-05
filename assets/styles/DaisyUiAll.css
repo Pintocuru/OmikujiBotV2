@@ -2,6 +2,14 @@
 @import 'tailwindcss';
 @import './safeList.css';
 
+
+[data-theme="transparent"] {
+  color-scheme: light;
+  --color-base-100: transparent;
+  --color-base-200: transparent;
+  --color-base-300: transparent;
+}
+
 @plugin "daisyui" {
   themes: all;
 }

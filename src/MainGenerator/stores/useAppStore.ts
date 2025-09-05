@@ -1,15 +1,23 @@
 // src\MainGenerator\stores\useAppStore.ts
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
-import { OmikujiDataSchema, BotMessage } from '@/types/'
+import { computed, ref } from 'vue'
+import { OmikujiDataSchema, BotMessage, OmikujiDataType } from '@/types/'
 import { ConfigUserSchema } from '@shared/types'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
+import { migrate } from '@/migrations'
+
+// グローバルデータの初期化
+const rawData = window.omikujiData || {}
+const migratedData = migrate(rawData) // マイグレーション
+const omikujiData = OmikujiDataSchema.parse(migratedData)
 
 export const useAppStore = defineStore('app', () => {
   // 基本設定
-  const omikujiData = OmikujiDataSchema.parse(window.omikujiData)
+  // コアデータ
+  const data = ref<OmikujiDataType>(omikujiData)
+
   const config = ConfigUserSchema.parse(window.userConfig)
 
   // 初期化状態
@@ -19,9 +27,9 @@ export const useAppStore = defineStore('app', () => {
   const botMessages = ref<BotMessage[]>([])
 
   // 必要な管理オブジェクト
-  const scriptManager = new GameScriptManager(omikujiData)
+  const scriptManager = computed(() => new GameScriptManager(data.value))
   const cooldownManager = CooldownManager.getInstance()
-  const characterCollector = new CharacterCollector(omikujiData)
+  const characterCollector = new CharacterCollector(data.value)
 
   // 状態操作のアクション
   const addBotMessage = (message: BotMessage) => {
@@ -56,7 +64,7 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     // 状態
-    omikujiData,
+    data,
     config,
     isInitialized,
     botMessages,

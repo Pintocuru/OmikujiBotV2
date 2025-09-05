@@ -26,36 +26,36 @@
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
+  import { isDev } from '@/types'
+  import { useFontFamily } from '@/types/BotComponents/useFontFamily'
   import ViewBotMessage from '@MainComponents/OmikujiBot/ViewBotMessage.vue'
   import ViewBotToast from '@/MainGenerator/components/OmikujiBot/ViewBotToast.vue'
   import ViewBotCharacter from '@MainComponents/OmikujiBot/ViewBotCharacter.vue'
   import CharacterThumbnails from '@MainComponents/OmikujiBot/CharacterThumbnails.vue'
   import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue'
-  import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
   import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
   import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
-  import { useFontFamily } from '@/types/BotComponents/useFontFamily'
-  import { isDev } from '@/types'
+  import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
 
   // Piniaストアの使用
   const appStore = useAppStore()
   const ruleProcessor = useRuleProcessor()
   const displayStore = useDisplayStore()
-  const { base } = appStore.omikujiData.displaySettings
+  const { base } = appStore.data.displaySettings
 
   // フォントの指定
   const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'default'))
 
   // キャラクター常時表示設定
   const showCharacterPersistent = computed(() => {
-    return appStore.omikujiData?.displaySettings?.base?.showCharacterPersistent
+    return appStore.data?.displaySettings?.base?.showCharacterPersistent
   })
 
   // 初期化処理
   onMounted(async () => {
     // processors を初期化
-    ruleProcessor.initializeProcessor(appStore.omikujiData, appStore.scriptManager)
+    ruleProcessor.initializeProcessor(appStore.data, appStore.scriptManager)
 
     // アプリ初期化
     const isInit = await ruleProcessor.initializeApp(appStore.config, (comments) => {

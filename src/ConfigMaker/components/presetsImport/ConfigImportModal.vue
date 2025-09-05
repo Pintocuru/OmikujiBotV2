@@ -2,42 +2,38 @@
 <template>
   <div class="modal modal-open">
     <div class="modal-box max-w-3xl">
-      <SectionCard variant="success" :alwaysOpen="true">
-        <template #header>
-          <div>設定読み込みプレビュー</div>
-          <div v-if="importStore.previewData" class="text-sm pr-2">
-            総項目数: {{ importStore.previewData.totalItems }}
-          </div>
-        </template>
+      <SectionCard
+        :is-open="true"
+        variant="success"
+        title="設定読み込みプレビュー"
+        :description="`総項目数: ${importStore.previewData ? importStore.previewData.totalItems : ''}`"
+      >
+        <div v-if="importStore.previewData" class="space-y-4">
+          <!-- 読み込みモード選択 -->
+          <ImportModeSelector />
 
-        <template #body>
-          <div v-if="importStore.previewData" class="space-y-4">
-            <!-- 読み込みモード選択 -->
-            <ImportModeSelector />
-
-            <!-- Record型カテゴリ別設定 -->
-            <template v-if="importStore.previewData.importMode !== 'full'">
-              <CategoryConfigSection
-                v-for="(config, category) in importStore.previewData.recordCategories"
-                :key="category"
-                :category="category"
-                :config="config"
-              />
-            </template>
-
-            <ModalFooterActions
-              class="pt-4"
-              :on-cancel="importStore.closePreviewModal"
-              :on-save="handleImportConfirm"
-              saveName="読み込む"
-              :disabled="!importStore.enabledCategories.length || !importStore.previewData"
+          <!-- Record型カテゴリ別設定 -->
+          <template v-if="importStore.previewData.importMode !== 'full'">
+            <CategoryConfigSection
+              v-for="(config, category) in importStore.previewData.recordCategories"
+              :key="category"
+              :category="category"
+              :config="config"
             />
-          </div>
+          </template>
 
-          <div v-else class="text-center py-8">
-            <div class="text-gray-500">プレビューデータを読み込み中...</div>
-          </div>
-        </template>
+          <ModalFooterActions
+            class="pt-4"
+            :on-cancel="importStore.closePreviewModal"
+            :on-save="handleImportConfirm"
+            saveName="読み込む"
+            :disabled="!importStore.enabledCategories.length || !importStore.previewData"
+          />
+        </div>
+
+        <div v-else class="text-center py-8">
+          <div class="text-gray-500">プレビューデータを読み込み中...</div>
+        </div>
       </SectionCard>
     </div>
   </div>

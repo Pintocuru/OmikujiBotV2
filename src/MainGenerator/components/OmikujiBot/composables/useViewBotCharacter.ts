@@ -22,7 +22,7 @@ export function useViewBotCharacter() {
   const { displayedComments, removeComment, start, stop } = useBotDisplay(botMessages, 'comment')
 
   // omikujiDataの設定取得
-  const base = computed(() => appStore.omikujiData.displaySettings?.base || {})
+  const base = computed(() => appStore.data.displaySettings?.base || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
   const leaveMotion = computed(() => base.value.bubbleMotionLeave)
   const showCharacterFrame = computed(() => base.value.showCharacterFrame)

@@ -75,6 +75,24 @@ export const useImportStore = defineStore('import', () => {
     }
   }
 
+  // Dev環境用：JSONデータから直接読み込み
+  const loadFromJsonData = async (jsonData: any): Promise<boolean> => {
+    isLoading.value = true
+    loadError.value = ''
+
+    try {
+      const validatedData = OmikujiDataSchema.parse(jsonData)
+      importedData.value = validatedData
+      return true
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'データ読み込みエラー'
+      loadError.value = message
+      return false
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   const generatePreview = () => {
     if (!importedData.value) return null
 
@@ -185,6 +203,7 @@ export const useImportStore = defineStore('import', () => {
 
     // Actions
     loadFromFile,
+    loadFromJsonData, // Dev環境用の追加メソッド
     generatePreview,
     setGlobalImportMode,
     updateCategoryConfig,

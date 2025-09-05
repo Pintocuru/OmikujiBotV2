@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/presets/ConfigImport.vue (更新版) -->
+<!-- src/configMaker/components/presets/ConfigImport.vue -->
 <template>
   <div class="flex-1">
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />
@@ -13,14 +13,10 @@
       テンプレート読み込み(JSON)
     </button>
   </div>
-
-  <!-- インポートプレビューモーダル -->
-  <ConfigImportModal v-if="importStore.showPreviewModal" />
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import ConfigImportModal from './ConfigImportModal.vue'
   import { useImportStore } from './useImportStore'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { toast } from 'vue-sonner'

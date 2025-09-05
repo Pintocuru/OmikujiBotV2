@@ -1,9 +1,9 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
   <div class="card bg-base-300 mt-4 z-0">
-    <div class="collapse" :class="{ 'collapse-arrow': !alwaysOpen }">
+    <div class="collapse">
       <!-- 親から制御される開閉状態 -->
-      <input type="checkbox" :checked="isOpen" @change="handleToggle" :disabled="alwaysOpen" />
+      <input type="checkbox" :checked="isOpen" @change="handleToggle" />
       <div class="collapse-title card-title justify-between" :class="headerClass">
         <div>{{ title }}</div>
         <div v-if="description" class="text-sm pr-2">{{ description }}</div>
@@ -27,13 +27,11 @@
       description?: string
       variant?: VariantType
       isOpen?: boolean
-      alwaysOpen?: boolean
     }>(),
     {
       description: '',
       variant: 'secondary',
       isOpen: false,
-      alwaysOpen: false,
     }
   )
 
@@ -43,9 +41,7 @@
   }>()
 
   const handleToggle = () => {
-    if (!props.alwaysOpen) {
-      emit('toggle')
-    }
+    emit('toggle')
   }
 
   const headerClass = computed(() => {

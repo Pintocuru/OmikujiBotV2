@@ -36,7 +36,7 @@
       <!-- 部分読み込み -->
       <button
         @click="handlePartialLoad"
-        :disabled="devStore.isLoading || devStore.isAnyLoading"
+        :disabled="devStore.isLoading || devStore.isAnyLoading || importStore.isLoading"
         class="btn btn-xs btn-secondary tooltip tooltip-bottom"
         data-tip="この設定を部分的に読み込み/マージ"
       >
@@ -60,41 +60,31 @@
         :disable-delete="devStore.isDeletingFile(file.name) || devStore.isAnyLoading"
       />
     </div>
-
-    <!-- 部分読み込みモーダル -->
-    <DevPartialImportModal
-      v-if="showPreviewModal"
-      :file-name="file.name"
-      @close="showPreviewModal = false"
-      @import="handlePartialImport"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref, nextTick } from 'vue'
-  import { OmikujiDataType } from '@/types/'
   import type { FileItem } from '../devTypes'
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
-  import DevPartialImportModal from './DevPartialImportModal.vue'
   import MenuDropdown from '@/ConfigMaker/components/parts/MenuDropdown.vue'
   import { Download, FileText, Edit } from 'lucide-vue-next'
+  import { toast } from 'vue-sonner'
+  import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
 
   const props = defineProps<{
     file: FileItem
     formatFileDate: (date: string) => string
   }>()
 
-  // store
+  // stores
   const devStore = useDevStore()
+  const importStore = useImportStore()
 
   // 名前編集関連
   const isEditing = ref(false)
   const editingName = ref('')
   const editInputRef = ref<HTMLInputElement>()
-
-  // 部分読み込み関連
-  const showPreviewModal = ref(false)
 
   // 名前変更開始
   const startRename = () => {
@@ -121,14 +111,29 @@
     editingName.value = ''
   }
 
-  // 部分読み込み開始
-  const handlePartialLoad = () => {
-    showPreviewModal.value = true
-  }
+  // 部分読み込み開始（loadFromJsonDataを使用）
+  const handlePartialLoad = async () => {
+    try {
+      // devStoreからファイルデータを取得
+      const fileData = await devStore.fetchFileData(props.file.name)
 
-  // 部分読み込み実行
-  const handlePartialImport = (result: { data: OmikujiDataType; mode: 'replace' | 'merge' }) => {
-    devStore.loadPartialConfig(props.file.name, result.data, result.mode)
-    showPreviewModal.value = false
+      // useImportStoreで直接JSONデータを読み込み
+      const success = await importStore.loadFromJsonData(fileData)
+
+      if (importStore.loadError) {
+        toast.error(importStore.loadError)
+        return
+      }
+
+      if (success) {
+        // デフォルトを部分読み込みに設定
+        importStore.setGlobalImportMode('partial')
+        importStore.generatePreview()
+        importStore.openPreviewModal()
+      }
+    } catch (error) {
+      toast.error('ファイルの読み込みに失敗しました')
+      console.error('Partial load error:', error)
+    }
   }
 </script>

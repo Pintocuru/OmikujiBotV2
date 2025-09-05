@@ -1,6 +1,9 @@
 <!-- src/configMaker/App.vue -->
 <template>
-  <div class="p-4 max-w-6xl min-w-xl pb-64 overflow-x-hidden mx-auto">
+  <div
+    class="p-4 max-w-6xl min-w-xl pb-64 overflow-x-hidden mx-auto"
+    :data-theme="data.displaySettings.base.daisyUiTheme"
+  >
     <!-- タイトル -->
     <AppHeader />
 
@@ -11,6 +14,9 @@
     <div class="flex justify-between">
       <ConfigImport />
       <ConfigExport />
+
+      <!-- インポートプレビューモーダル -->
+      <ConfigImportModal v-if="importStore.showPreviewModal" />
     </div>
 
     <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
@@ -23,7 +29,7 @@
             深淵もまた等しくおまえを見返すのだ。<br />
             …で、どうやって君はこのコメントを見つけたんだ？
           </p>
-          <button class="btn btn-primary">押したって何もねえよ</button>
+          <button class="btn btn-primary" @click="openLocalOmikujiData">omikujiData.js を開く</button>
         </div>
       </div>
     </div>
@@ -40,19 +46,22 @@
 </template>
 
 <script setup lang="ts">
-  import { markRaw, ref, watch } from 'vue'
+  import { markRaw, ref } from 'vue'
   import { isDev } from '@/types/'
+  import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
-  import ConfigImport from '@ConfigComponents/presetsImport/ConfigImport.vue'
-  import ConfigExport from '@ConfigComponents/presetsExport/ConfigExport.vue'
   import NavigationTabs from './components/appItems/NavigationTabs.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import FloatingElements from './components/appItems/FloatingElements.vue'
-  import AppHeader from './components/appItems/AppHeader.vue'
-  import { storeToRefs } from 'pinia'
+  import ConfigImport from '@ConfigComponents/presetsImport/ConfigImport.vue'
+  import ConfigExport from '@ConfigComponents/presetsExport/ConfigExport.vue'
+  import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
+  import { storeToRefs } from 'pinia'
 
   const omikujiStore = useOmikujiStore()
+  const importStore = useImportStore()
   const { data } = storeToRefs(omikujiStore)
 
   // 開発者ツール
@@ -63,16 +72,10 @@
     })
   }
 
-  // テーマを <html data-theme=""> に反映（DaisyUI 用）
-  watch(
-    () => data.value.displaySettings.base.daisyUiTheme,
-    async (newTheme) => {
-      if (newTheme) {
-        document.documentElement.setAttribute('data-theme', newTheme)
-      }
-    },
-    { immediate: true }
-  )
+  // assets の omikujiData.js を開く
+  const openLocalOmikujiData = () => {
+    omikujiStore.loadData(window.omikujiData)
+  }
 
   // スクロール動作
   useScrollBehavior()

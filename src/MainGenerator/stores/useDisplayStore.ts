@@ -11,7 +11,7 @@ export const useDisplayStore = defineStore('display', () => {
   const appStore = useAppStore()
 
   // ===== 表示設定 =====
-  const displaySettings = appStore.omikujiData.displaySettings
+  const displaySettings = appStore.data.displaySettings
   const displaySize = ref<DisplaySize>(displaySettings.base.displaySize)
   const currentModeIndex = ref(0)
   const updateTrigger = ref(0)
@@ -81,7 +81,7 @@ export const useDisplayStore = defineStore('display', () => {
     void updateTrigger.value
 
     const scriptKey = currentScriptKey.value
-    return scriptKey ? { ...(appStore.omikujiData.scriptSettings?.[scriptKey] || {}) } : {}
+    return scriptKey ? { ...(appStore.data.scriptSettings?.[scriptKey] || {}) } : {}
   })
 
   // 現在のユーザーランキング
