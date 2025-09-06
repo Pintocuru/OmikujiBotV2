@@ -36,12 +36,13 @@
   const props = withDefaults(
     defineProps<{
       characters: CharacterType[]
-      displaySize: DisplaySize
+      displaySize?: DisplaySize
       clickable?: boolean
       imageClass?: string
       getImageSrc?: (character: CharacterType, index: number) => string | undefined
     }>(),
     {
+      displaySize: 'md',
       clickable: false,
       imageClass: '',
       getImageSrc: (character: CharacterType) =>

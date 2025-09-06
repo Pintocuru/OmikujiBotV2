@@ -41,7 +41,6 @@ export function useViewBotCharacter() {
     const imageSet = character.image
     if (!imageSet) return null
     // 現在のアイコン状態を確認
-    // FIXME:currentIconKey は必ずundefinedになる
     const currentIconKey = characterIconStates.value[character.key] || 'default'
 
     // 指定された感情の画像があるかチェック

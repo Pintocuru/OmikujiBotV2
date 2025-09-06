@@ -22,10 +22,14 @@
     <!-- 右下UI要素コンテナ -->
     <div class="fixed bottom-4 right-4 z-20 flex flex-col">
       <!-- トースト表示 -->
-      <ViewBotToast v-if="base.showToasts" class="self-end" />
+      <div class="self-end">
+        <ViewBotToast v-if="base.showToasts" />
+      </div>
 
       <!-- キャラクターサムネイル -->
-      <CharacterThumbnails v-if="base.showCharacterThumbnail" class="self-end" />
+      <div class="self-end">
+        <CharacterThumbnails v-if="base.showCharacterThumbnail" />
+      </div>
     </div>
   </div>
   <!-- わんコメが起動されていない場合のエラー表示 -->
