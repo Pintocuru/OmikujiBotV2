@@ -10,11 +10,11 @@ import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
 export const BaseSettingsSchema = z.object({
   /**
-   * フキダシ
+   * フキダシ設定 commentBubble
    */
-  // 文字・画像の大きさ指定
+  // 表示サイズ
   displaySize: z.enum(displaySize).default('md').catch('md'),
-  // フォントの指定(プリセットされているものだけ)
+  // フォントファミリー
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   // フキダシのアニメーション(開始・表示中)
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
@@ -22,7 +22,7 @@ export const BaseSettingsSchema = z.object({
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
 
   /**
-   * トースト
+   * トースト設定 toastBubble
    * TODO:トースト表示にバリエーションの必要性とは？
    * トースト、電光掲示板、2つ目のフキダシなど。
    */
@@ -30,7 +30,7 @@ export const BaseSettingsSchema = z.object({
   showToasts: z.boolean().default(true).catch(true),
 
   /**
-   * キャラクターオプション
+   * キャラクター設定 showCharacter
    */
   // キャラクターにフレーム（円形の背景）を表示するか
   showCharacterFrame: z.boolean().default(true).catch(true),
@@ -38,8 +38,8 @@ export const BaseSettingsSchema = z.object({
   showCharacterPersistent: z.boolean().default(false).catch(false),
   // キャラクターサムネイルを表示するか
   showCharacterThumbnail: z.boolean().default(true).catch(true),
-  // 複数のキャラクターを1箇所にまとめるか / 常時表示時やサムネイルは、Character のorder1のみを表示させる
-  // TODO:実装、プロパティ名は何がいい？
+  // キャラクター統合モード / 常時表示時やサムネイルは、Character のorder1のみを表示させる
+  bundleCharacters: z.boolean().default(false).catch(false),
 
   /**
    * エディター設定

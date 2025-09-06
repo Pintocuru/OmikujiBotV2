@@ -1,24 +1,35 @@
-<!-- src/ConfigMaker/components/display/DisplaySettingsEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\DisplaySettingsEditor.vue -->
 <template>
   <div class="space-y-4">
-    <!-- 文字・アニメーション設定 -->
+    <!-- フキダシ設定 -->
     <SectionCard
-      :isOpen="activeSection === 'textAnimation'"
-      @toggle="toggleSection('textAnimation')"
-      title="文字・アニメーション"
-      description="フキダシの文字とアニメーションに関する設定です"
+      :isOpen="activeSection === 'commentBubble'"
+      @toggle="toggleSection('commentBubble')"
+      title="フキダシ設定"
+      description="フキダシの文字とアニメーションに関する設定"
     >
-      <TextAnimationEditor />
+      <CommentBubbleEditor />
     </SectionCard>
 
-    <!-- 表示オプション設定 -->
+    <!-- トースト設定 -->
     <SectionCard
-      :isOpen="activeSection === 'displayOptions'"
-      @toggle="toggleSection('displayOptions')"
-      title="表示オプション"
+      :isOpen="activeSection === 'toastBubble'"
+      @toggle="toggleSection('toastBubble')"
+      title="トースト設定"
+      description="ジェネレーターで表示する、フキダシ以外の表示設定"
+    >
+      <ToastBubbleEditor />
+    </SectionCard>
+
+    <!-- キャラクター設定 -->
+    <SectionCard
+      v-if="useVisibilityAccess().canShow('characterVisible')"
+      :isOpen="activeSection === 'showCharacter'"
+      @toggle="toggleSection('showCharacter')"
+      title="キャラクター設定"
       description="ジェネレーターで表示する、フキダシ以外の表示設定です"
     >
-      <DisplayOptionsEditor />
+      <ShowCharacterEditor />
     </SectionCard>
 
     <!-- エディター設定 -->
@@ -63,24 +74,27 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import TextAnimationEditor from './TextAnimationEditor.vue'
-  import DisplayOptionsEditor from './DisplayOptionsEditor.vue'
+  import CommentBubbleEditor from './CommentBubbleEditor.vue'
+  import ToastBubbleEditor from './ToastBubbleEditor.vue'
+  import ShowCharacterEditor from './ShowCharacterEditor.vue'
   import EditorSettingsEditor from './EditorSettingsEditor.vue'
   import StartupSettings from './StartupSettings.vue'
   import VisibilitySettings from './VisibilitySettings.vue'
   import DeveloperModeInfo from './DeveloperModeInfo.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // アクティブなセクションの管理
   type SectionType =
-    | 'textAnimation'
-    | 'displayOptions'
+    | 'commentBubble'
+    | 'toastBubble'
+    | 'showCharacter'
     | 'editorSettings'
     | 'startupSettings'
     | 'visibilitySettings'
     | null
-  const activeSection = ref<SectionType>('textAnimation') // 初期状態で文字・アニメーション設定を開く
+  const activeSection = ref<SectionType>('commentBubble') // 初期状態で文字・アニメーション設定を開く
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

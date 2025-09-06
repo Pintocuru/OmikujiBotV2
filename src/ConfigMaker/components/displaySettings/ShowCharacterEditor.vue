@@ -1,11 +1,9 @@
-<!-- src/ConfigMaker/components/display/DisplayOptionsEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\ShowCharacterEditor.vue -->
 <template>
-  <!-- キャラクターの常時表示 -->
+  <!-- キャラクター画像の常時表示 -->
   <SettingItem
-    v-if="useVisibilityAccess().canShow('characterVisible')"
-    label="キャラクターの常時表示"
-    description="キャラを常時表示するかを設定します"
-    devMemo="characterVisible"
+    label="キャラクター画像の常時表示"
+    description="起動時にキャラクター画像を表示するか"
     :showReset="true"
     @reset="resetMap.showCharacterPersistent"
   >
@@ -22,10 +20,8 @@
 
   <!-- キャラクターフレームの使用 -->
   <SettingItem
-    v-if="useVisibilityAccess().canShow('characterVisible')"
     label="キャラクター画像の背景色"
     description="キャラ画像の背景に色を付けるかを設定します"
-    devMemo="characterVisible"
     :showReset="true"
     @reset="resetMap.showCharacterFrame"
   >
@@ -42,10 +38,8 @@
 
   <!-- キャラクターサムネイル表示 -->
   <SettingItem
-    v-if="useVisibilityAccess().canShow('characterVisible')"
     label="キャラクターサムネイル"
     description="右下にキャラクターのサムネイルを表示します"
-    devMemo="characterVisible"
     :showReset="true"
     @reset="resetMap.showCharacterThumbnail"
   >
@@ -62,19 +56,19 @@
 
   <!-- トースト表示 -->
   <SettingItem
-    label="トースト通知"
-    description="画面上部に通知メッセージを表示します"
+    label="キャラクター統合モード"
+    description="複数のキャラクターを1箇所にまとめるかを設定します"
     :showReset="true"
-    @reset="resetMap.showToasts"
+    @reset="resetMap.bundleCharacters"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
-        :checked="base.showToasts"
-        @change="(e) => updateBaseField('showToasts', (e.target as HTMLInputElement).checked)"
+        :checked="base.bundleCharacters"
+        @change="(e) => updateBaseField('bundleCharacters', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
-      <span class="label-text">トースト通知を表示する</span>
+      <span class="label-text">キャラクターを1つにまとめる</span>
     </label>
   </SettingItem>
 </template>
@@ -85,7 +79,6 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -116,6 +109,6 @@
     showCharacterFrame: () => resetField('showCharacterFrame'),
     showCharacterPersistent: () => resetField('showCharacterPersistent'),
     showCharacterThumbnail: () => resetField('showCharacterThumbnail'),
-    showToasts: () => resetField('showToasts'),
+    bundleCharacters: () => resetField('bundleCharacters'),
   }
 </script>
