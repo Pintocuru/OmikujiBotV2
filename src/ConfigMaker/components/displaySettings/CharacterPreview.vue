@@ -15,7 +15,7 @@
           />
         </template>
         <template v-else>
-          <div v-for="character in displayCharacters" :key="character.id" class="-mx-8">
+          <div v-for="character in displayCharacters" :key="character.id" class="-mx-4">
             <CharacterAvatar
               :profile-image="character?.image?.default"
               :character-name="character?.displayName"
@@ -74,9 +74,7 @@
       .slice(0, props.maxDisplayCount)
   )
 
-  const thumbnailCharacters = computed(() =>
-    props.bundleCharacters ? (firstCharacter.value ? [firstCharacter.value] : []) : displayCharacters.value
-  )
+  const thumbnailCharacters = computed(() => displayCharacters.value)
 
   const brightnessFilter = computed(() => (props.showCharacterPersistent ? 'brightness(60%)' : 'brightness(100%)'))
 

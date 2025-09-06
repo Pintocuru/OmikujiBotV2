@@ -6,6 +6,7 @@
     "version": "v2025.8.28",
     "generatorName": "omikuji-bot",
     "generatorVersion": "0.8.0-beta09",
+    "dataVersion": 1,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -3829,10 +3830,11 @@
       "fontFamily": "default",
       "bubbleMotionEnter": "zoomIn",
       "bubbleMotionLeave": "zoomIn",
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "showCharacterThumbnail": true,
       "showToasts": true,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
+      "showCharacterThumbnail": true,
+      "bundleCharacters": true,
       "daisyUiTheme": "sunset"
     },
     "developer": {

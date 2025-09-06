@@ -26,25 +26,27 @@ export function useViewBotCharacter() {
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
   const leaveMotion = computed(() => base.value.bubbleMotionLeave)
   const showCharacterFrame = computed(() => base.value.showCharacterFrame)
+  const bundleCharacters = computed(() => base.value.bundleCharacters)
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
 
   // storeから利用可能なキャラクターを取得
   const availableCharacters = computed(() => {
-    return appStore.characterCollector.getUsedCharacterData() || {}
+    return appStore.characterCollector.getUsedCharacterArray() || []
   })
 
   // 指定されたキャラクターの感情に応じた画像を取得
   const getCharacterImage = (character: CharacterType) => {
     const imageSet = character.image
     if (!imageSet) return null
-
     // 現在のアイコン状態を確認
+    // FIXME:currentIconKey は必ずundefinedになる
     const currentIconKey = characterIconStates.value[character.key] || 'default'
 
     // 指定された感情の画像があるかチェック
     const emotionImage = imageSet[currentIconKey]
+
     if (emotionImage) return emotionImage
 
     // 指定された感情の画像がない場合はdefaultを使用
@@ -64,42 +66,40 @@ export function useViewBotCharacter() {
   })
 
   // キャラクターアイコンの状態を更新
+  const toList = <T>(v: T[] | Record<string, T> | null | undefined): T[] => {
+    return Array.isArray(v) ? v : Object.values(v ?? {})
+  }
   const updateCharacterIconState = () => {
-    // 各キャラクターの最新のコメントをチェック
-    const characters = availableCharacters.value
-    Object.entries(characters).forEach(([key, character]) => {
-      const characterComments = getCharacterComments(key)
-
-      if (characterComments.length > 0) {
-        // 最新のコメント（配列の最初の要素）を取得
-        const latestComment = characterComments[0]
-        const iconKey = latestComment.iconKey || 'default'
-
-        // アイコン状態を更新（defaultでない場合のみでなく、常に更新）
-        characterIconStates.value[key] = iconKey
-      } else {
-        // コメントがない場合はdefaultに戻す
-        characterIconStates.value[key] = 'default'
-      }
+    const list = toList(availableCharacters.value)
+    list.forEach((ch: CharacterType) => {
+      const key = ch.key
+      const latest = getCharacterComments(key)[0]
+      characterIconStates.value[key] = latest?.iconKey ?? 'default'
     })
   }
 
   // コメント削除時にアイコンをリセット
-  const removeCommentWithIconReset = (messageId: string, characterKey: string) => {
+  const removeCommentWithIconReset = (messageId: string, characterKey?: string) => {
     // まず通常のremoveCommentを実行
     removeComment(messageId)
 
-    // そのキャラクターの残りのコメントをチェック
-    const remainingComments = getCharacterComments(characterKey)
+    // characterKeyが指定されている場合のみアイコンリセット処理を実行
+    if (characterKey) {
+      // そのキャラクターの残りのコメントをチェック
+      const remainingComments = getCharacterComments(characterKey)
 
-    if (remainingComments.length === 0) {
-      // 残りのコメントがない場合、defaultに戻す
-      characterIconStates.value[characterKey] = 'default'
+      if (remainingComments.length === 0) {
+        // 残りのコメントがない場合、defaultに戻す
+        characterIconStates.value[characterKey] = 'default'
+      } else {
+        // 残りのコメントがある場合、最新のコメントのiconKeyを適用
+        const latestComment = remainingComments[0]
+        const iconKey = latestComment.iconKey || 'default'
+        characterIconStates.value[characterKey] = iconKey
+      }
     } else {
-      // 残りのコメントがある場合、最新のコメントのiconKeyを適用
-      const latestComment = remainingComments[0]
-      const iconKey = latestComment.iconKey || 'default'
-      characterIconStates.value[characterKey] = iconKey
+      // characterKeyが指定されていない場合（統合モード）、すべてのキャラクターの状態を更新
+      updateCharacterIconState()
     }
   }
 
@@ -122,6 +122,7 @@ export function useViewBotCharacter() {
     enterMotion,
     leaveMotion,
     showCharacterFrame,
+    bundleCharacters,
     sizeConfig,
 
     // 計算済みプロパティ

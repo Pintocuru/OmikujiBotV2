@@ -1,6 +1,11 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div v-if="appStore.isInitialized" class="main-container" :class="['main-container', fontClass]">
+  <div
+    v-if="appStore.isInitialized"
+    class="main-container"
+    :class="['main-container', fontClass]"
+    data-theme="transparent"
+  >
     <div v-if="displayStore.currentScriptKey === null">
       <!-- BOTメッセージ表示 -->
       <ViewBotMessage v-if="!showCharacterPersistent" />
@@ -80,9 +85,6 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&display=swap');
 
-  /**
-   * overflow: hidden;
-   */
   .main-container {
     height: 100vh;
     overflow: hidden;

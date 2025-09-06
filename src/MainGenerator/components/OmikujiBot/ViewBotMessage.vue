@@ -12,7 +12,7 @@
         :spacing="sizeConfig.spacing"
       >
         <template #default="{ message, index }">
-          <!-- キャラクター（元の配置方法と同じ） -->
+          <!-- キャラクター -->
           <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
             <CharacterAvatar
               class="absolute top-[80px] top-1/2 left-1/2 -translate-x-1/2 transform"

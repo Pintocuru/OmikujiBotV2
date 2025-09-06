@@ -1,33 +1,27 @@
 <!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\CharacterThumbnailsPreview.vue -->
 <template>
-  <div class="flex items-end gap-3">
+  <div class="avatar-group -space-x-6 rtl:space-x-reverse">
     <div
       v-for="(character, index) in characters"
       :key="character.id"
-      class="relative transition-all duration-300"
-      :class="{ 'cursor-pointer hover:scale-120': clickable }"
-      :style="{ zIndex: characters.length - index }"
+      class="avatar cursor-pointer transition-transform hover:scale-110"
       @click="handleClick(character, false)"
       @contextmenu.prevent="clickable && handleClick(character, true)"
     >
       <div
-        :class="['flex items-center justify-center rounded-full overflow-hidden shadow-lg border-white/20', avatarSize]"
+        :class="[avatarSize, 'rounded-full border border-base-100 shadow-lg']"
         :style="{ backgroundColor: character.color?.backgroundColor }"
       >
         <img
           v-if="getImageSrc(character, index)"
           :src="getImageSrc(character, index)"
           :alt="`${character.displayName || character.name}のアイコン`"
-          class="w-full h-full object-cover"
+          class="object-cover"
           :class="imageClass"
         />
-        <div
-          v-else
-          class="w-full h-full flex items-center justify-center text-white font-bold"
-          :style="{ backgroundColor: character.color?.backgroundColor }"
-        >
+        <span v-else class="w-full h-full flex items-center justify-center text-white font-bold">
           {{ (character.displayName || character.name)?.charAt(0) || '?' }}
-        </div>
+        </span>
       </div>
     </div>
   </div>
@@ -39,20 +33,21 @@
   import { getImagePath } from '@/types/env'
   import { DisplaySize } from '@shared/types/CommonSchema'
 
-  interface Props {
-    characters: CharacterType[]
-    displaySize: DisplaySize
-    clickable?: boolean
-    imageClass?: string
-    getImageSrc?: (character: CharacterType, index: number) => string | undefined
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    clickable: false,
-    imageClass: '',
-    getImageSrc: (character: CharacterType) =>
-      character.image?.default ? getImagePath(character.image.default) : undefined,
-  })
+  const props = withDefaults(
+    defineProps<{
+      characters: CharacterType[]
+      displaySize: DisplaySize
+      clickable?: boolean
+      imageClass?: string
+      getImageSrc?: (character: CharacterType, index: number) => string | undefined
+    }>(),
+    {
+      clickable: false,
+      imageClass: '',
+      getImageSrc: (character: CharacterType) =>
+        character.image?.default ? getImagePath(character.image.default) : undefined,
+    }
+  )
 
   const emit = defineEmits<{
     characterClick: [character: CharacterType, isRightClick: boolean]
