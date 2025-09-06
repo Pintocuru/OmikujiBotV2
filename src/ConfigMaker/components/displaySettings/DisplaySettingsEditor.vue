@@ -11,7 +11,7 @@
       <CommentBubbleEditor />
     </SectionCard>
 
-    <!-- トースト設定 -->
+    <!-- トースト・サムネイル設定 -->
     <SectionCard
       :isOpen="activeSection === 'toastBubble'"
       @toggle="toggleSection('toastBubble')"

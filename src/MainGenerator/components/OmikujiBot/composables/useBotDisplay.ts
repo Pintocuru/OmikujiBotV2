@@ -1,6 +1,6 @@
 // src\MainGenerator\components\OmikujiBot\composables\useBotDisplay.ts
 import { ref, computed, Ref } from 'vue'
-import { BotMessage, getImagePath } from '@/types/'
+import { BotMessage } from '@/types/'
 
 const DISPLAY_CONFIG = {
   INTERVAL: 250,

@@ -1,15 +1,14 @@
 <!-- src\MainGenerator\components\OmikujiBot\CharacterThumbnails.vue -->
 <template>
-  <div v-if="characters.length > 0" class="fixed bottom-4 right-4 z-50">
-    <CharacterThumbnailsPreview
-      :characters="characters"
-      :displaySize="displaySize"
-      :clickable="true"
-      :imageClass="'transition-all duration-500'"
-      :getImageSrc="getImageSrc"
-      @character-click="handleCharacterClick"
-    />
-  </div>
+  <CharacterThumbnailsPreview
+    v-if="characters.length > 0"
+    :characters="characters"
+    :displaySize="displaySize"
+    :clickable="true"
+    :imageClass="'transition-all duration-500'"
+    :getImageSrc="getImageSrc"
+    @character-click="handleCharacterClick"
+  />
 </template>
 
 <script setup lang="ts">

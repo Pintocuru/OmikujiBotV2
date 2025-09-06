@@ -34,7 +34,8 @@
       </div>
 
       <!-- サムネイル表示 -->
-      <div v-if="showCharacterThumbnail" class="absolute bottom-4 right-4 z-50">
+      <!-- FIXME:「トースト設定」での表示に変更 -->
+      <div v-if="0" class="absolute bottom-4 right-4 z-50">
         <CharacterThumbnailsPreview :characters="thumbnailCharacters" :displaySize="displaySize" />
       </div>
     </div>

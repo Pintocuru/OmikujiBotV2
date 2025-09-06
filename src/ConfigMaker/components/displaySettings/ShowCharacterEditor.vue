@@ -47,24 +47,6 @@
     </label>
   </SettingItem>
 
-  <!-- キャラクターサムネイル表示 -->
-  <SettingItem
-    label="キャラクターサムネイル"
-    description="右下にキャラクターのサムネイルを表示します"
-    :showReset="true"
-    @reset="resetMap.showCharacterThumbnail"
-  >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.showCharacterThumbnail"
-        @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">キャラクターサムネイルを表示する</span>
-    </label>
-  </SettingItem>
-
   <!-- キャラクター統合モード -->
   <SettingItem
     label="キャラクター統合モード"
@@ -120,7 +102,6 @@
   const resetMap = {
     showCharacterFrame: () => resetField('showCharacterFrame'),
     showCharacterPersistent: () => resetField('showCharacterPersistent'),
-    showCharacterThumbnail: () => resetField('showCharacterThumbnail'),
     bundleCharacters: () => resetField('bundleCharacters'),
   }
 </script>

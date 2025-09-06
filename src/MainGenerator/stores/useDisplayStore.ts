@@ -7,16 +7,16 @@ import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
 import { DisplaySize } from '@shared/types'
 
 export const useDisplayStore = defineStore('display', () => {
-  // ===== 依存関係 =====
+  //  依存関係
   const appStore = useAppStore()
 
-  // ===== 表示設定 =====
+  //  表示設定
   const displaySettings = appStore.data.displaySettings
   const displaySize = ref<DisplaySize>(displaySettings.base.displaySize)
   const currentModeIndex = ref(0)
   const updateTrigger = ref(0)
 
-  // ===== 計算されたプロパティ =====
+  //  計算されたプロパティ
 
   // コンポーネント選択設定
   const selectedComponent = computed(() => {
@@ -92,7 +92,7 @@ export const useDisplayStore = defineStore('display', () => {
     return getCurrentRankings(currentScriptKey.value)
   })
 
-  // ===== アクション =====
+  //  アクション
 
   /**
    * 表示サイズ変更
@@ -180,7 +180,7 @@ export const useDisplayStore = defineStore('display', () => {
     }
   }
 
-  // ===== ウォッチャー =====
+  //  ウォッチャー
 
   // 強制更新（displayStoreから呼び出される）
   watch(

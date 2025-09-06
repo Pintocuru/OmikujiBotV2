@@ -592,7 +592,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-06T16:14:32.654Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -615,7 +615,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -642,7 +642,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": "",
               "actionType": "message"
@@ -665,7 +665,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -692,7 +692,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": "",
               "actionType": "message"
@@ -715,7 +715,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -742,7 +742,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": "",
               "actionType": "message"
@@ -765,7 +765,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -792,7 +792,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": "",
               "actionType": "message"
@@ -815,7 +815,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -842,7 +842,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": "",
               "actionType": "message"
@@ -865,7 +865,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -892,7 +892,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": "",
               "actionType": "message"
@@ -915,7 +915,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -942,7 +942,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -965,7 +965,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -992,7 +992,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1015,7 +1015,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1042,7 +1042,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1065,7 +1065,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1092,7 +1092,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1115,7 +1115,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1142,7 +1142,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1165,7 +1165,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1192,7 +1192,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1215,7 +1215,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1242,7 +1242,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1265,7 +1265,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1334,7 +1334,7 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-06T16:16:20.682Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1357,7 +1357,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1384,7 +1384,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
               "messageToast": "",
               "actionType": "message"
@@ -1407,7 +1407,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1434,7 +1434,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
               "messageToast": "",
               "actionType": "message"
@@ -1457,7 +1457,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1484,7 +1484,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1507,7 +1507,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1534,7 +1534,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1577,7 +1577,7 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-06T16:17:28.674Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1600,7 +1600,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1627,7 +1627,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
               "messageToast": "",
               "actionType": "message"
@@ -1650,7 +1650,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1677,7 +1677,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
               "messageToast": "",
               "actionType": "message"
@@ -1700,7 +1700,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1727,7 +1727,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1750,7 +1750,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1777,7 +1777,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1819,7 +1819,7 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-06T16:18:08.542Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1842,7 +1842,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1869,7 +1869,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "wink",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
               "messageToast": "",
               "actionType": "message"
@@ -1892,7 +1892,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1919,7 +1919,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "singing",
               "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
               "messageToast": "",
               "actionType": "message"
@@ -1942,7 +1942,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "singing",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -1969,7 +1969,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "happy",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -1992,7 +1992,7 @@
               "delaySeconds": 1,
               "wordParty": "",
               "characterKey": "metanBlack",
-              "iconKey": "angry",
+              "iconKey": "excited",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
               "actionType": "message"
@@ -2019,7 +2019,7 @@
               "delaySeconds": 5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metanBlack",
-              "iconKey": "sad",
+              "iconKey": "blushing",
               "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
               "messageToast": "",
               "actionType": "message"
@@ -2263,7 +2263,7 @@
       "name": "コメント数表示 (有料版)",
       "description": "えっ…わざわざギフトまでして…!?",
       "createdAt": "2025-08-28T07:06:58.691Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-06T16:09:27.912Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2293,7 +2293,7 @@
             {
               "delaySeconds": 0.3,
               "wordParty": "!ジャン！",
-              "characterKey": "metanBlack",
+              "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "",
               "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…",

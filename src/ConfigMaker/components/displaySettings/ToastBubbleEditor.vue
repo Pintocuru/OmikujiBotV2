@@ -1,5 +1,7 @@
 <!-- src\ConfigMaker\components\displaySettings\ToastBubbleEditor.vue -->
 <template>
+  <!-- トースト・サムネイルサンプル表示 -->
+
   <!-- トースト表示 -->
   <SettingItem
     label="トースト通知"
@@ -15,6 +17,24 @@
         class="toggle toggle-primary"
       />
       <span class="label-text">トースト通知を表示する</span>
+    </label>
+  </SettingItem>
+
+  <!-- キャラクターサムネイル表示 -->
+  <SettingItem
+    label="キャラクターサムネイル"
+    description="右下にキャラクターのサムネイルを表示します"
+    :showReset="true"
+    @reset="resetMap.showCharacterThumbnail"
+  >
+    <label class="label cursor-pointer justify-start gap-3">
+      <input
+        :checked="base.showCharacterThumbnail"
+        @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
+        type="checkbox"
+        class="toggle toggle-primary"
+      />
+      <span class="label-text">キャラクターサムネイルを表示する</span>
     </label>
   </SettingItem>
 </template>
@@ -54,5 +74,6 @@
   // フィールドごとのリセット関数マップ
   const resetMap = {
     showToasts: () => resetField('showToasts'),
+    showCharacterThumbnail: () => resetField('showCharacterThumbnail'),
   }
 </script>

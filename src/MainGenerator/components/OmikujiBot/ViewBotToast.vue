@@ -1,52 +1,47 @@
 <!-- src/MainGenerator/components/ViewBotToast.vue -->
 <template>
-  <div class="fixed right-0 bottom-0 z-9999" :class="[sizeConfig.bottom]">
-    <div
-      v-for="(message, index) in displayedComments.slice().reverse()"
-      :key="message.id"
-      class="relative mt-1"
-      :style="{ zIndex: displayedComments.length - index }"
+  <div v-for="(message, index) in displayedComments.slice().reverse()" :key="message.id">
+    <MotionWrapper
+      v-model:visible="message.visible"
+      :enter-motion="'slideLeft'"
+      :leave-motion="'slideRight'"
+      :auto-hide="false"
+      @after-leave="() => removeComment(message.id)"
     >
-      <MotionWrapper
-        v-model:visible="message.visible"
-        :enter-motion="'slideLeft'"
-        :leave-motion="'slideRight'"
-        :auto-hide="false"
-        @after-leave="() => removeComment(message.id)"
-      >
-        <div
-          class="flex flex-row-reverse items-start w-full p-2 rounded-sm shadow-lg backdrop-blur-sm cursor-pointer hover:opacity-80 transition-opacity"
-          :style="{
-            backgroundColor: message.color?.backgroundColor || '#ffffff',
-            maxWidth: sizeConfig.width,
-            width: '100%',
-          }"
-          @click="hideComment(message.id)"
-        >
-          <!-- メッセージ内容 -->
-          <div class="flex-1 min-w-0 px-1 overflow-hidden">
-            <div
-              class="break-words"
-              :class="[sizeConfig.text]"
-              :style="{
-                color: message.color?.textColor || '#000000',
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-                hyphens: 'auto',
-              }"
-            >
-              {{ message.comment }}
-            </div>
+      <div class="chat chat-end w-sm mx-auto" @click="hideComment(message.id)">
+        <!-- アイコン -->
+        <div class="chat-image avatar">
+          <div class="w-10 rounded-full">
+            <img
+              alt="Tailwind CSS chat bubble component"
+              :src="getImagePath(characters?.[message.characterKey]?.image?.default)"
+            />
           </div>
         </div>
-      </MotionWrapper>
-    </div>
+
+        <!-- メッセージ内容 -->
+        <div
+          class="chat-bubble"
+          :style="{
+            backgroundColor: message.color?.backgroundColor || '#CCC',
+          }"
+        >
+          <div
+            class="leading-tight"
+            :class="[sizeConfig.text]"
+            :style="{ color: message.color?.textColor || '#212121' }"
+          >
+            {{ message.comment }}
+          </div>
+        </div>
+      </div>
+    </MotionWrapper>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, Ref } from 'vue'
-  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+  import { computed, onMounted, onUnmounted } from 'vue'
+  import { getImagePath } from '@/types/'
   import { useBotDisplay } from './composables/useBotDisplay'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
@@ -58,20 +53,19 @@
   const { botMessages } = storeToRefs(appStore)
   const { displaySize } = storeToRefs(displayStore)
 
+  const characters = computed(() => appStore.characterCollector.getUsedCharacterData())
+
   // サイズ設定の定数
   const SIZE_CONFIG = {
-    xs: { bottom: 'bottom-14', text: 'text-xs leading-tight', avatar: 'w-6 h-6', width: '250px' },
-    sm: { bottom: 'bottom-16', text: 'text-sm leading-tight', avatar: 'w-8 h-8', width: '300px' },
-    md: { bottom: 'bottom-18', text: 'text-base leading-tight', avatar: 'w-10 h-10', width: '340px' },
-    lg: { bottom: 'bottom-22', text: 'text-lg leading-tight', avatar: 'w-12 h-12', width: '380px' },
-    xl: { bottom: 'bottom-26', text: 'text-xl leading-tight', avatar: 'w-14 h-14', width: '420px' },
+    xs: { text: 'text-xs', avatar: 'w-6 h-6' },
+    sm: { text: 'text-sm', avatar: 'w-8 h-8' },
+    md: { text: 'text-base', avatar: 'w-10 h-10' },
+    lg: { text: 'text-lg', avatar: 'w-12 h-12' },
+    xl: { text: 'text-xl', avatar: 'w-14 h-14' },
   } as const
 
-  // コメント表示ロジック（トースト専用、modeパラメータ不要）
-  const useBotToastDisplay = (botMessages: Ref<BotMessage[]>) => {
-    return useBotDisplay(botMessages, 'toast')
-  }
-  const { displayedComments, removeComment, hideComment, start, stop } = useBotToastDisplay(botMessages)
+  // コメント表示ロジック
+  const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(botMessages, 'toast')
 
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
