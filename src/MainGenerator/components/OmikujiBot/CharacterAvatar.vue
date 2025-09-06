@@ -12,15 +12,15 @@
     :style="{
       opacity: isVisible ? '100%' : '0%',
       ...(showCharacterFrame && {
-        backgroundColor: backgroundColor || '#ccc',
+        backgroundColor: backgroundColor,
       }),
     }"
   >
     <img
       :src="getImagePath(profileImage)"
-      :alt="`${characterName}のアバター`"
-      @error="$emit('imageError')"
+      :alt="`${characterName}のキャラクター画像`"
       class="w-full h-full object-cover"
+      @error="handleImageError"
     />
   </div>
 </template>
@@ -31,21 +31,33 @@
   import type { DisplaySize } from '@shared/types'
   import { SIZE_CONFIG } from './composables/SizeConfig'
 
-  interface Props {
-    profileImage: string | null
-    characterName?: string
-    backgroundColor?: string
-    showCharacterFrame: boolean
-    isVisible: boolean
-    displaySize: DisplaySize
-  }
+  const props = withDefaults(
+    defineProps<{
+      profileImage?: string | null
+      characterName?: string
+      backgroundColor?: string
+      showCharacterFrame?: boolean
+      isVisible?: boolean
+      displaySize?: DisplaySize
+    }>(),
+    {
+      profileImage: null,
+      characterName: 'おみくじBOT',
+      backgroundColor: '#ccc',
+      showCharacterFrame: true,
+      isVisible: true,
+      displaySize: 'md',
+    }
+  )
 
-  const props = defineProps<Props>()
-
-  defineEmits<{
-    imageError: []
-  }>()
-
-  // サイズ設定の取得
+  // サイズ設定
   const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize])
+
+  // 画像読み込みエラーハンドラー
+  const handleImageError = () => {
+    console.error(`キャラクター画像が読み込めません: ${props.characterName}`, {
+      characterName: props.characterName,
+      imagePath: props.profileImage,
+    })
+  }
 </script>

@@ -1,5 +1,17 @@
 <!-- src\ConfigMaker\components\displaySettings\ShowCharacterEditor.vue -->
 <template>
+  <!-- キャラクターサンプル表示 -->
+  <!-- TODO:画像は中央揃えにする -->
+  <!-- TODO:キャラは2人以上いる場合は2人以上並べる -->
+  <!-- TODO:bundleCharacters の影響を受けるようにする -->
+  <CharacterAvatar
+    :profile-image="firstCharacter?.image?.default"
+    :character-name="firstCharacter?.displayName"
+    :background-color="firstCharacter?.color?.backgroundColor"
+    :showCharacterFrame="base.showCharacterFrame"
+    :displaySize="base.displaySize"
+  />
+
   <!-- キャラクター画像の常時表示 -->
   <SettingItem
     label="キャラクター画像の常時表示"
@@ -79,6 +91,7 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import CharacterAvatar from '@/MainGenerator/components/OmikujiBot/CharacterAvatar.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -86,6 +99,10 @@
 
   // 個別のcomputed値（読み取り専用）
   const base = computed(() => data.value.displaySettings.base)
+
+  // 最初のキャラクターを取得
+  // TODO:ない場合ってどうすればいいん？
+  const firstCharacter = computed(() => data.value.characters[Object.keys(data.value.characters)[0]])
 
   // 汎用的な更新関数
   const updateBaseField = (field: keyof typeof base.value, value: any) => {

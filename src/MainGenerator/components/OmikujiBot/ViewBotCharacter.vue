@@ -34,7 +34,6 @@
           :show-character-frame="showCharacterFrame"
           :is-visible="true"
           :display-size="displaySize"
-          @image-error="handleImageError(character)"
         />
       </div>
     </div>
@@ -64,7 +63,6 @@
     getCharacterImage,
     getCharacterComments,
     removeCommentWithIconReset,
-    handleImageError,
     start,
     stop,
   } = useViewBotCharacter()

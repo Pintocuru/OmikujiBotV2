@@ -30,7 +30,7 @@ export function useViewBotCharacter() {
   // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
 
-  // storeから利用可能なキャラクターを取得（データ変換不要）
+  // storeから利用可能なキャラクターを取得
   const availableCharacters = computed(() => {
     return appStore.characterCollector.getUsedCharacterData() || {}
   })
@@ -103,15 +103,6 @@ export function useViewBotCharacter() {
     }
   }
 
-  // 画像エラーハンドリング
-  const handleImageError = (character: CharacterType) => {
-    console.error(`キャラクター画像が読み込めません: ${character.key}`, {
-      characterKey: character.key,
-      characterName: character.displayName,
-      imagePath: getCharacterImage(character),
-    })
-  }
-
   // displayedCommentsの変化を監視してアイコン状態を更新
   watch(
     displayedComments,
@@ -140,7 +131,6 @@ export function useViewBotCharacter() {
     getCharacterImage,
     getCharacterComments,
     removeCommentWithIconReset,
-    handleImageError,
     start,
     stop,
   }

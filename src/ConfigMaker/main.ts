@@ -1,4 +1,4 @@
-// src/apps/editor/main.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\main.ts
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'

@@ -1,19 +1,23 @@
-// src/main.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\main.ts
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import '../../assets/styles/styles.css'
-import '../../assets/styles/TailwindCSS.css'
+import '../../assets/styles/DaisyUiAll.css'
 import OneSDK from '@onecomme.com/onesdk'
 
 // createApp
 const pinia = createPinia()
 const app = createApp(App)
+// グローバルエラーハンドリング
 app.config.errorHandler = (err, instance, info) => {
-  console.error('グローバルエラー:', err)
-  console.error('コンポーネント:', instance)
-  console.error('エラー情報:', info)
+  console.error('エラー:', err)
+  if (instance) {
+    console.log('props:', instance.$props)
+    console.log('data:', instance.$data)
+    console.log('el:', instance.$el)
+  }
 }
 
 // アプリケーションの初期化

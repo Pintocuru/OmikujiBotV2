@@ -22,7 +22,6 @@
               :show-character-frame="showCharacterFrame"
               :is-visible="index === 0"
               :display-size="displaySize"
-              @image-error="handleImageError(message)"
             />
           </MotionWrapper>
         </template>
@@ -61,7 +60,7 @@
   const showCharacterFrame = computed(() => base.value?.showCharacterFrame)
 
   // 基底composableを直接使用
-  const { displayedComments, handleImageError, removeComment, start } = useBotDisplay(botMessages, 'comment')
+  const { displayedComments, removeComment, start } = useBotDisplay(botMessages, 'comment')
 
   onMounted(() => start())
 </script>

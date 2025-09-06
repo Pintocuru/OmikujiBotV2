@@ -27,15 +27,6 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
     botMessages.value.filter((message) => (mode === 'comment' ? !message.isToast : message.isToast))
   )
 
-  const handleImageError = (message: BotMessage) => {
-    console.error(`画像が読み込めません: ${message.profileImage}`, {
-      name: message.name,
-      id: message.id,
-      originalPath: message.profileImage,
-      processedPath: getImagePath(message.profileImage ?? ''),
-    })
-  }
-
   // MotionWrapperのafter-leaveイベントから呼ばれる関数
   const removeComment = (messageId: string) => {
     const index = displayedComments.value.findIndex((item) => item.id === messageId)
@@ -141,7 +132,6 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
 
   return {
     displayedComments,
-    handleImageError,
     removeComment,
     hideComment,
     start: displayControl.start,
