@@ -67,6 +67,7 @@ const visibilitySchema = z.object({
   characterVisible: AccessLevelSchema.default('basic').catch('basic'),
   wordPartyLoading: AccessLevelSchema.default('basic').catch('basic'),
   // ゲームスクリプト
+  // TODO:gameScriptSettings は廃止 (gameScripts のみで十分)
   gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
   gameScripts: z.array(z.string()).default([]).catch([]), //
   // ツール系
