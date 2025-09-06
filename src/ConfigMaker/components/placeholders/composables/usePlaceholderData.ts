@@ -22,15 +22,6 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
     ['upVote', '(高評価数)'],
   ])
 
-  const priorityOrder: Record<DefaultPlaceholders, number> = {
-    user: 1,
-    price: 2,
-    lc: 3,
-    tc: 4,
-    viewer: 5,
-    upVote: 6,
-  }
-
   // 選択されたルールデータを取得
   const selectedRulesCommentData = computed(() => {
     if (omikujiStore.selectedCategory !== 'comments') return null
@@ -98,35 +89,19 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
     const customPlaceholders = omikujiStore.getCategoryArray('placeholders')
     const placeholders = [...defaultPlaceholders.value, ...scriptPlaceholders.value, ...customPlaceholders]
 
-    const scriptPlaceholderIds = new Set(scriptPlaceholders.value.map((p) => p.id))
-
     return placeholders.sort((a, b) => {
       const aUsed = usedPlaceholderIds.value.has(a.id)
       const bUsed = usedPlaceholderIds.value.has(b.id)
-      const aIsScript = scriptPlaceholderIds.has(a.id)
-      const bIsScript = scriptPlaceholderIds.has(b.id)
 
       // 1. 使用中のものが最優先
       if (aUsed !== bUsed) return aUsed ? -1 : 1
 
-      // FIXME:使用中のもの 以外は、editorColor > id の順でソートするように変更
-      // 2. 使用中でない場合、スクリプトプレースホルダーが優先
-      if (!aUsed && !bUsed && aIsScript !== bIsScript) {
-        return aIsScript ? -1 : 1
-      }
+      // 2. 使用中以外は editorColor > id の順でソート
+      const aColor = a.editorColor ?? ''
+      const bColor = b.editorColor ?? ''
+      if (aColor !== bColor) return aColor.localeCompare(bColor, 'ja')
 
-      // 3. 優先順位（デフォルトプレースホルダー）
-      const aPriority = priorityOrder[a.id as DefaultPlaceholders] ?? Number.MAX_SAFE_INTEGER
-      const bPriority = priorityOrder[b.id as DefaultPlaceholders] ?? Number.MAX_SAFE_INTEGER
-
-      if (aPriority !== bPriority) {
-        return aPriority - bPriority
-      }
-
-      // 4. 名前順
-      const aName = a.name || a.id
-      const bName = b.name || b.id
-      return aName.localeCompare(bName, 'ja')
+      return a.id.localeCompare(b.id, 'ja')
     })
   })
 

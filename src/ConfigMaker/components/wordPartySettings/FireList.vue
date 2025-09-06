@@ -1,14 +1,13 @@
 <!-- src/configMaker/components/wordPartySettings/wordPartyFireList.vue -->
 <template>
   <!-- リスト表示 -->
-  <!-- FIXME:もうちょっと見た目良くならない？ -->
   <div v-if="settings.length > 0">
     <!-- グリッドレイアウト -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-1 max-h-96 overflow-y-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 max-h-96 overflow-y-auto">
       <div
         v-for="(item, index) in settings"
         :key="index"
-        class="flex items-center gap-2 border-b border-base-200 text-sm py-1 px-2 hover:bg-base-200"
+        class="flex items-center gap-2 border-base-200 text-sm py-1 px-2 hover:bg-base-100"
       >
         <!-- 名前 -->
         <div class="badge badge-sm badge-primary w-32 truncate text-primary-content">
@@ -21,7 +20,7 @@
         </div>
 
         <!-- テストボタン -->
-        <button @click="testWordParty(item.pattern)" :disabled="!item.pattern" class="btn btn-xs btn-primary">
+        <button @click="testWordParty(item.pattern)" :disabled="!item.pattern" class="btn btn-xs btn-secondary">
           テスト実行
         </button>
       </div>
@@ -36,7 +35,6 @@
 
 <script setup lang="ts">
   import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import { postWordParty } from '@shared/sdk/postMessage/PostOneComme'
 

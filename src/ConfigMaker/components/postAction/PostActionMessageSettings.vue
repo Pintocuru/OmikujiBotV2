@@ -15,7 +15,6 @@
   </SettingItem>
 
   <!-- エンターモーション -->
-  <!-- FIXME:motionLabel を使って欲しい -->
   <SettingItem
     v-if="isDev && characterKey !== ''"
     label="✨ 表示アニメーション"
@@ -23,20 +22,9 @@
   >
     <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
       <option value="">なし</option>
-      <option value="slideUp">スライドアップ</option>
-      <option value="slideDown">スライドダウン</option>
-      <option value="slideLeft">スライド左</option>
-      <option value="slideRight">スライド右</option>
-      <option value="flipInY">縦フリップ</option>
-      <option value="flipX">横フリップ</option>
-      <option value="zoomIn">ズームイン</option>
-      <option value="pulse">パルス</option>
-      <option value="scale">スケール</option>
-      <option value="rotateIn">回転イン</option>
-      <option value="bounce">バウンス</option>
-      <option value="rubberBand">ラバーバンド</option>
-      <option value="jello">ジェロ</option>
-      <option value="fade">フェード</option>
+      <option v-for="animation in motionLabel" :key="animation" :value="animation">
+        {{ animation }}
+      </option>
     </select>
   </SettingItem>
 
@@ -69,9 +57,10 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType, CharacterEmotionType, isDev } from '@/types/'
-  import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
   import WordPartyField from './WordPartyField.vue'
+  import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   const props = defineProps<{
     action: PostActionType

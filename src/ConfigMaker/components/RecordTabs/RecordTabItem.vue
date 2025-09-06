@@ -1,6 +1,5 @@
 <!-- src/configMaker/components/RecordTabs/RecordTabItem.vue -->
 <template>
-  <!-- FIXME:右クリック検知とか面倒なことしないで、 dropdown 使って欲しい -->
   <div
     class="relative group"
     @contextmenu.prevent="handleContextMenu"

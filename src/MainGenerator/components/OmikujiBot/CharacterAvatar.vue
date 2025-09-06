@@ -2,6 +2,7 @@
 <template>
   <div
     v-if="profileImage && profileImage !== ''"
+    class="avatar"
     :class="[
       sizeConfig.avatar,
       {
@@ -16,12 +17,7 @@
       }),
     }"
   >
-    <img
-      :src="getImagePath(profileImage)"
-      :alt="`${characterName}のキャラクター画像`"
-      class="w-full h-full object-cover"
-      @error="handleImageError"
-    />
+    <img :src="getImagePath(profileImage)" @error="handleImageError" />
   </div>
 </template>
 
