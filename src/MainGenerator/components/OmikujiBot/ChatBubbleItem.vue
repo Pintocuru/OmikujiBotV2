@@ -1,8 +1,8 @@
 <!-- src/MainGenerator/components/ChatBubbleItem.vue -->
 <template>
-  <div v-if="message" class="chat chat-end w-sm mx-auto" @click="handleClick">
+  <div v-if="showToasts" class="w-sm mx-auto" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
-    <div class="chat-image avatar">
+    <div v-if="character" class="chat-image avatar">
       <div class="rounded-full" :class="[SIZE_CONFIG[displaySize].avatar]">
         <img :src="getImagePath(character?.image?.default)" />
       </div>
@@ -12,11 +12,15 @@
     <div
       class="chat-bubble"
       :style="{
-        backgroundColor: message.color?.backgroundColor || '#CCC',
+        backgroundColor: botMessage?.color?.backgroundColor || '#CCC',
       }"
     >
-      <div class="leading-tight" :class="[sizeConfig.text]" :style="{ color: message.color?.textColor || '#212121' }">
-        {{ message.comment }}
+      <div
+        class="leading-tight"
+        :class="[sizeConfig.text]"
+        :style="{ color: botMessage?.color?.textColor || '#212121' }"
+      >
+        {{ botMessage?.comment || simpleMessage }}
       </div>
     </div>
   </div>
@@ -29,20 +33,25 @@
 
   const props = withDefaults(
     defineProps<{
-      message: BotMessage | null
-      character?: CharacterType
+      botMessage?: BotMessage
+      simpleMessage?: string
+      showToastsOnRight?: boolean
+      showToasts?: boolean
+      character?: CharacterType | null
       displaySize?: DisplaySize
       clickable?: boolean
     }>(),
     {
-      clickable: false,
+      simpleMessage: 'error',
+      showToastsOnRight: true,
+      showToasts: true,
       displaySize: 'md',
+      clickable: false,
     }
   )
 
   const emit = defineEmits(['click'])
 
-  // サイズ設定の定数
   const SIZE_CONFIG = {
     xs: { text: 'text-xs', avatar: 'w-6 h-6' },
     sm: { text: 'text-sm', avatar: 'w-8 h-8' },
@@ -51,12 +60,17 @@
     xl: { text: 'text-xl', avatar: 'w-14 h-14' },
   } as const
 
-  // サイズ設定の取得
   const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize])
 
+  // toastPosition に応じたクラスを返す
+  const chatPositionClass = computed(() => {
+    if (!props.showToastsOnRight) return 'chat chat-start'
+    else return 'chat chat-end'
+  })
+
   const handleClick = () => {
-    if (props.clickable && props.message) {
-      emit('click', props.message.id)
+    if (props.clickable && props.botMessage) {
+      emit('click', props.botMessage.id)
     }
   }
 </script>

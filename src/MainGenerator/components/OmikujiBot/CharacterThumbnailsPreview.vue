@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\CharacterThumbnailsPreview.vue -->
+<!-- src\MainGenerator\components\OmikujiBot\CharacterThumbnailsPreview.vue -->
 <template>
   <div class="avatar-group -space-x-6 rtl:space-x-reverse">
     <div

@@ -28,7 +28,7 @@ export function migrate(data: unknown): OmikujiDataType {
 
   // 将来的なバージョンアップのために、ここに処理を追加できる
   // if (currentDataVersion < 3) {
-  //   migratedData = migrateV2ToV3(migratedData);
+  //  migratedData = migrateV2ToV3(migratedData);
   // }
 
   return migratedData as OmikujiDataType

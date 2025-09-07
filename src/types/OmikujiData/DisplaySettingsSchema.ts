@@ -23,11 +23,16 @@ export const BaseSettingsSchema = z.object({
 
   /**
    * トースト設定 toastBubble
-   * TODO:トースト表示にバリエーションの必要性とは？
-   * トースト、電光掲示板、2つ目のフキダシなど。
    */
-  //  showToasts トーストを表示するか
+  // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsOnRight: z.boolean().default(true).catch(true),
+  // トースト表示
   showToasts: z.boolean().default(true).catch(true),
+  // トースト表示時、キャラクターを表示するか
+  showToastsCharacter: z.boolean().default(false).catch(false),
+  // キャラクターサムネイルを表示するか
+  // TODO:showCharacterThumbnail -> showThumbnail に移行
+  showCharacterThumbnail: z.boolean().default(true).catch(true),
 
   /**
    * キャラクター設定 showCharacter
@@ -36,8 +41,6 @@ export const BaseSettingsSchema = z.object({
   showCharacterFrame: z.boolean().default(true).catch(true),
   // キャラクターを常時表示するか（コメント消失後も表示継続）
   showCharacterPersistent: z.boolean().default(false).catch(false),
-  // キャラクターサムネイルを表示するか
-  showCharacterThumbnail: z.boolean().default(true).catch(true),
   // キャラクター統合モード / 常時表示時やサムネイルは、Character のorder1のみを表示させる
   bundleCharacters: z.boolean().default(false).catch(false),
 

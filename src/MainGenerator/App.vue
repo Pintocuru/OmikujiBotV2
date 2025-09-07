@@ -20,15 +20,15 @@
     <DisplayControlPanel v-if="isDev" />
 
     <!-- 右下UI要素コンテナ -->
-    <div class="fixed bottom-4 right-4 z-20 flex flex-col">
+    <div class="fixed bottom-4 z-20 flex flex-col" :class="!base.showToastsOnRight ? 'left-4' : 'right-4'">
       <!-- トースト表示 -->
-      <div class="self-end">
-        <ViewBotToast v-if="base.showToasts" />
+      <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+        <ViewBotToast />
       </div>
 
       <!-- キャラクターサムネイル -->
-      <div class="self-end">
-        <CharacterThumbnails v-if="base.showCharacterThumbnail" />
+      <div v-if="base.showCharacterThumbnail" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+        <CharacterThumbnails />
       </div>
     </div>
   </div>
@@ -54,10 +54,11 @@
   const appStore = useAppStore()
   const ruleProcessor = useRuleProcessor()
   const displayStore = useDisplayStore()
-  const { base } = appStore.data.displaySettings
+
+  const base = computed(() => appStore.data.displaySettings.base)
 
   // フォントの指定
-  const fontClass = computed(() => useFontFamily(base.fontFamily ?? 'default'))
+  const fontClass = computed(() => useFontFamily(base.value.fontFamily ?? 'default'))
 
   // キャラクター常時表示設定
   const showCharacterPersistent = computed(() => {

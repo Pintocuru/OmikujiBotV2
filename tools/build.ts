@@ -28,10 +28,10 @@ const packageRoot = process.env.PACKAGE_ROOT
  * ビルド設定リスト
  */
 const buildTargets: BuildTarget[] = [
-  //  { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
-  //  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
-  //  { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
-  //  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
+  // { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
+  // { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
+  // { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
+  // { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
   { project: 'HondaJanken', accessLevels: ['basic'] }, // HondaJanken
   // { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
 ]
