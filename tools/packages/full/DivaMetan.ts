@@ -1,6 +1,7 @@
 // tools\packages\full\DivaMetan.ts
-import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { APP_VERSION, BUILD_DATE } from '@/config/version'
+import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 
 /**
  * プロジェクト設定
@@ -10,7 +11,7 @@ function project(packageRoot: string): ProjectConfig {
     ...createCommonBuildConfig(packageRoot),
 
     name: 'DivaMetan',
-    version: 'v2025.8.28',
+    version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: ['おみくじBOT', 'VOICEVOX', '四国めたん', '（ず・ω・きょ）'],
     /**
      * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK

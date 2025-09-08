@@ -1,13 +1,14 @@
 // tools\packages\solo\5percent_Dora.ts
-import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { APP_VERSION, BUILD_DATE } from '@/config/version'
+import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 
 function project(packageRoot: string): ProjectConfig {
   return {
     ...createCommonBuildConfig(packageRoot),
 
     name: '5percent_Dora',
-    version: 'v2025.09.01',
+    version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: [
       'おみくじBOT',
       'ドラちゃん',

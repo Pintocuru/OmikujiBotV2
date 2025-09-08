@@ -3,9 +3,9 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "v2025.09.01",
+    "version": "ver2025.09.09-v1.1.0-rc1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.0.0",
+    "generatorVersion": "1.1.0-beta1",
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -17,7 +17,8 @@
       "じゃんけん"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/5471598"
+    "url": "https://pintocuru.booth.pm/items/5471598",
+    "dataVersion": 1.1
   },
   "comments": {
     "omikujiReimu": {

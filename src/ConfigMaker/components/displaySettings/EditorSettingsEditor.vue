@@ -1,16 +1,12 @@
 <!-- src/ConfigMaker/components/display/EditorSettingsEditor.vue -->
 <template>
   <!-- DaisyUIテーマ -->
-  <SettingItem
-    label="エディターテーマ"
-    description="DaisyUiを使ってます"
-    :showReset="true"
-    @reset="resetMap.daisyUiTheme"
-  >
+  <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
       :value="base.daisyUiTheme"
       @change="(e) => updateBaseField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
+      :disabled="!isPro"
     >
       <option v-for="theme in themes" :key="theme" :value="theme">
         {{ theme }}

@@ -1,6 +1,7 @@
 // tools\packages\full\ReimuMarisaMate.ts
-import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { APP_VERSION, BUILD_DATE } from '@/config/version'
+import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 
 /**
  * ReimuMarisaプロジェクト設定
@@ -10,7 +11,7 @@ function project(packageRoot: string): ProjectConfig {
     ...createCommonBuildConfig(packageRoot),
 
     name: 'ReimuMarisaMate',
-    version: 'v2025.09.01',
+    version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: ['おみくじBOT', 'おみくじ', '占い', 'ゆっくり', 'ゆっくり霊夢', 'ゆっくり魔理沙', 'じゃんけん'],
     /**
      * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
