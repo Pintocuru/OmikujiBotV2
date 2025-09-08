@@ -13,7 +13,11 @@
     <div class="flex items-center gap-3">
       <Tag class="w-4 h-4 text-base-content/50" />
       <span class="text-sm text-base-content/60">{{ meta.generatorVersion }}</span>
-      <button @click="omikujiStore.openLatestRelease" class="btn btn-primary btn-outline" title="サイトを開く">
+      <button
+        @click="omikujiStore.openLatestRelease"
+        class="btn btn-primary btn-outline"
+        title="最新バージョンを入手する"
+      >
         <ExternalLink class="w-4 h-4" />
       </button>
     </div>
