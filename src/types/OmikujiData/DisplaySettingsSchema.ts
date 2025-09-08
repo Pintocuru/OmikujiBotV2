@@ -73,7 +73,7 @@ const visibilitySchema = z.object({
   characters: AccessLevelSchema.default('basic').catch('basic'), // characters
   // コンポーネントの特定の箇所
   characterVisible: AccessLevelSchema.default('basic').catch('basic'),
-  wordPartyLoading: AccessLevelSchema.default('basic').catch('basic'),
+  wordPartyLoading: AccessLevelSchema.default('internal').catch('internal'),
   // ゲームスクリプト
   gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
   gameScripts: z.array(z.string()).default([]).catch([]), //

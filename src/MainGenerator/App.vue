@@ -71,7 +71,7 @@
     ruleProcessor.initializeProcessor(appStore.data, appStore.scriptManager)
 
     // アプリ初期化
-    const isInit = await ruleProcessor.initializeApp(appStore.config, (comments) => {
+    const isInit = await ruleProcessor.initializeApp(appStore.userConfig, (comments) => {
       // コメント処理
       const processedMessages = ruleProcessor.processComments(comments)
       appStore.scheduleBotMessages(processedMessages)

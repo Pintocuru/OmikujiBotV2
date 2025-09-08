@@ -24,7 +24,7 @@ function project(packageRoot: string): ProjectConfig {
     // アクセスレベル別設定
     accessLevels: {
       basic: {
-        filesToCopy: [{ from: 'assets/config.js', to: 'config.js' }],
+        filesToCopy: [],
         skipWebpack: false,
         outputJson: false,
       },

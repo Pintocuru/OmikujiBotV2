@@ -2,7 +2,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { OmikujiDataSchema, BotMessage, OmikujiDataType } from '@/types/'
-import { ConfigUserSchema } from '@shared/types'
+import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
@@ -13,12 +13,13 @@ const rawData = window.omikujiData || {}
 const migratedData = normalizeData(rawData) // マイグレーション
 const omikujiData = OmikujiDataSchema.parse(migratedData)
 
+// わんコメの購読用設定の初期化
+const userConfig: ConfigUserType = ConfigUserSchema.parse(window.userConfig)
+
 export const useAppStore = defineStore('app', () => {
   // 基本設定
   // コアデータ
   const data = ref<OmikujiDataType>(omikujiData)
-
-  const config = ConfigUserSchema.parse(window.userConfig)
 
   // 初期化状態
   const isInitialized = ref(true)
@@ -65,7 +66,7 @@ export const useAppStore = defineStore('app', () => {
   return {
     // 状態
     data,
-    config,
+    userConfig,
     isInitialized,
     botMessages,
     scriptManager,

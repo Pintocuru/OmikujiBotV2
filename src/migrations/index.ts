@@ -11,6 +11,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
     // OmikujiDataSchemaのデフォルト値を返す
     return OmikujiDataSchema.parse({
       meta: {
+        generatorName: 'omikuji-bot',
         generatorVersion: APP_VERSION,
         dataVersion: DATA_VERSION,
       },
