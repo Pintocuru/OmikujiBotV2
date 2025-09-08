@@ -15,12 +15,12 @@
       <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
     </SectionCard>
 
-    <!-- フキダシ設定 -->
+    <!-- フキダシカラー設定 -->
     <SectionCard
       :isOpen="activeSection === 'colorSettings'"
       @toggle="toggleSection('colorSettings')"
-      title="フキダシ設定"
-      description="フキダシの編集を行います"
+      title="フキダシカラー設定"
+      description="フキダシのカラー編集を行います"
     >
       <CharacterColorSettings :modelValue="selectedItem.color" />
     </SectionCard>

@@ -20,6 +20,11 @@ export const BaseSettingsSchema = z.object({
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
   // フキダシのアニメーション(終了時)
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+  // フキダシの文字表示をアニメーションさせるか
+  bubbleTextAnimate: z.boolean().default(true).catch(true),
+  // 文字送りの速度
+  // 10-200 までで、Sliderを使って調整
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
 
   /**
    * トースト設定 toastBubble

@@ -18,7 +18,7 @@
         :checked="currentDisplayOption.isIconDisplay"
         @change="updateDisplayField('isIconDisplay', ($event.target as HTMLInputElement).checked)"
       />
-      <span class="label-text font-medium">有効にするとアイコン画像の設定が可能になります</span>
+      <span class="label-text font-medium">有効にするとジェネレーター用画像の設定が可能になります</span>
     </label>
   </SettingItem>
 

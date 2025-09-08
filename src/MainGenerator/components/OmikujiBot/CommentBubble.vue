@@ -3,7 +3,10 @@
   <div
     class="relative inline-block max-w-3xl min-w-[16rem]"
     :class="[customClasses, brightnessClass]"
-    :style="bubbleStyles"
+    :style="{
+      backgroundColor: props.color?.backgroundColor || '#212121',
+      '--bubble-bg': props.color?.backgroundColor || '#212121',
+    }"
   >
     <!-- 名前表示 -->
     <div v-if="name && name !== ''" class="mb-0" :class="textSizeClass" :style="{ color: color?.nameColor || '#ccc' }">
@@ -16,12 +19,7 @@
     </div>
 
     <!-- 吹き出しの矢印 -->
-    <div
-      v-if="showArrow"
-      class="absolute w-0 h-0 -bottom-5 left-1/2 -translate-x-1/2 transform"
-      :class="brightnessClass"
-      :style="arrowStyles"
-    />
+    <div :class="[customArrowClasses, brightnessClass]" :style="{ borderTopColor: 'var(--bubble-bg)' }" />
   </div>
 </template>
 
@@ -30,28 +28,30 @@
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import { DisplaySize } from '@shared/types'
 
-  interface Props {
-    name?: string
-    comment: string
-    color?: CharacterColorType
-    textSize?: DisplaySize
-    brightnessLevel?: number // brightness値をレベルとして受け取る
-    showArrow?: boolean
-    customClasses?: string
-    animatedText?: boolean
-    animatedTextSpeed?: number
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    name: '',
-    comment: '',
-    textSize: 'md',
-    brightnessLevel: 0, // デフォルトは最も明るい
-    showArrow: true,
-    customClasses: 'p-4 rounded-xl',
-    animatedText: false,
-    animatedTextSpeed: 50,
-  })
+  const props = withDefaults(
+    defineProps<{
+      name?: string
+      comment: string
+      color?: CharacterColorType
+      textSize?: DisplaySize
+      brightnessLevel?: number // brightness値をレベルとして受け取る
+      customClasses?: string
+      customArrowClasses?: string
+      animatedText?: boolean
+      animatedTextSpeed?: number
+    }>(),
+    {
+      name: '',
+      comment: '',
+      textSize: 'md',
+      brightnessLevel: 0, // デフォルトは最も明るい
+      customClasses: 'p-4 rounded-xl',
+      customArrowClasses:
+        'absolute w-0 h-0 -bottom-5 left-1/2 -translate-x-1/2 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent',
+      animatedText: false,
+      animatedTextSpeed: 50,
+    }
+  )
 
   // テキストサイズのクラス定義
   const TEXT_SIZE_CLASSES = {
@@ -82,20 +82,6 @@
     const level = Math.min(props.brightnessLevel, BRIGHTNESS_CLASSES.length - 1)
     return BRIGHTNESS_CLASSES[level]
   })
-
-  // 吹き出しのスタイル（brightnessを除去）
-  const bubbleStyles = computed(() => {
-    const baseStyles: Record<string, string> = {}
-    baseStyles.backgroundColor = props.color?.backgroundColor || '#212121'
-    return baseStyles
-  })
-
-  // 矢印のスタイル（brightnessを除去）
-  const arrowStyles = computed(() => ({
-    borderLeft: '20px solid transparent',
-    borderRight: '20px solid transparent',
-    borderTop: `20px solid ${props.color?.backgroundColor || '#212121'}`,
-  }))
 
   // 文字送り用
   watchEffect(() => {

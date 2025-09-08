@@ -4,17 +4,17 @@
     <!-- トースト・サムネイルサンプル表示 -->
     <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
       <ChatBubbleItem
-        :botMessage="firstMessage"
+        :botMessage="createMessage(0, 'テストコメントです')"
         :showToastsOnRight="base.showToastsOnRight"
-        :character="base.showToastsCharacter ? firstCharacter : null"
+        :character="base.showToastsCharacter ? getCharacterByIndex(0) : null"
         :displaySize="base.displaySize"
       />
     </div>
     <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
       <ChatBubbleItem
-        :botMessage="secondMessage"
+        :botMessage="createMessage(1, 'テストユーザーの運勢は【大吉】長文のテストコメントです。')"
         :showToastsOnRight="base.showToastsOnRight"
-        :character="base.showToastsCharacter ? secondCharacter : null"
+        :character="base.showToastsCharacter ? getCharacterByIndex(1) : null"
         :displaySize="base.displaySize"
       />
     </div>
@@ -28,12 +28,12 @@
     label="トースト・サムネイル位置"
     description="画面上部に通知メッセージを表示します"
     :showReset="true"
-    @reset="resetMap.showToastsOnRight"
+    @reset="() => resetField('showToastsOnRight')"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
         :checked="base.showToastsOnRight"
-        @change="(e) => updateBaseField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
+        @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
@@ -46,12 +46,12 @@
     label="トースト表示"
     description="トーストの表示・非表示を切り替えます"
     :showReset="true"
-    @reset="resetMap.showToasts"
+    @reset="() => resetField('showToasts')"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
         :checked="base.showToasts"
-        @change="(e) => updateBaseField('showToasts', (e.target as HTMLInputElement).checked)"
+        @change="(e) => updateField('showToasts', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
@@ -61,20 +61,17 @@
 
   <!-- トーストにキャラクターを表示するか -->
   <SettingItem
-    v-if="
-      useVisibilityAccess().canShow('characterVisible') ||
-      (isDev && !useVisibilityAccess().canShow('characterVisible') && base.showToastsCharacter)
-    "
+    v-if="canShowCharacterSettings || (isDev && base.showToastsCharacter)"
     devMemo="characterVisible"
     label="トーストのキャラクター表示"
-    description="キャラクターアイコンは default のみです"
+    description="表示できるキャラクターは default のみです"
     :showReset="true"
-    @reset="resetMap.showToastsCharacter"
+    @reset="() => resetField('showToastsCharacter')"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
         :checked="base.showToastsCharacter"
-        @change="(e) => updateBaseField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
+        @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
@@ -84,20 +81,17 @@
 
   <!-- キャラクターサムネイル表示 -->
   <SettingItem
-    v-if="
-      useVisibilityAccess().canShow('characterVisible') ||
-      (isDev && !useVisibilityAccess().canShow('characterVisible') && base.showCharacterThumbnail)
-    "
+    v-if="canShowCharacterSettings || (isDev && base.showCharacterThumbnail)"
     devMemo="characterVisible"
     label="キャラクターサムネイル"
     description="右下にキャラクターのサムネイルを表示します"
     :showReset="true"
-    @reset="resetMap.showCharacterThumbnail"
+    @reset="() => resetField('showCharacterThumbnail')"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
         :checked="base.showCharacterThumbnail"
-        @change="(e) => updateBaseField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
+        @change="(e) => updateField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
@@ -108,75 +102,51 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { storeToRefs } from 'pinia'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
-  import ChatBubbleItem from '@/MainGenerator/components/OmikujiBot/ChatBubbleItem.vue'
-  import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
-  import CharacterThumbnailsPreview from '@/MainGenerator/components/OmikujiBot/CharacterThumbnailsPreview.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { isDev } from '@/types'
+  import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import ChatBubbleItem from '@/MainGenerator/components/OmikujiBot/ChatBubbleItem.vue'
+  import CharacterThumbnailsPreview from '@/MainGenerator/components/OmikujiBot/CharacterThumbnailsPreview.vue'
+  import { storeToRefs } from 'pinia'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   const characters = computed(() => data.value.characters)
-
-  // 個別のcomputed値（読み取り専用）
   const base = computed(() => data.value.displaySettings.base)
-
-  // 汎用的な更新関数
-  const updateBaseField = (field: keyof typeof base.value, value: any) => {
-    omikujiStore.updateDisplaySettings({
-      base: {
-        ...base.value,
-        [field]: value,
-      },
-    })
-  }
-
-  // キャラクターの配列を取得
   const characterArray = computed(() => Object.values(characters.value))
 
-  // 最初のキャラクターを取得
-  // TODO:設定によりON/OFFを可能にさせる
-  const firstCharacter = computed(() => characterArray.value[0] || null)
+  // 条件式の抽出
+  const canShowCharacterSettings = computed(() => useVisibilityAccess().canShow('characterVisible'))
 
-  // 2番目のキャラクター（存在しない場合は最初のキャラクターを使用）
-  const secondCharacter = computed(() => characterArray.value[1] || characterArray.value[0] || null)
-
-  // 1つ目のメッセージ
-  const firstMessage = computed(() => {
-    if (!firstCharacter.value) return
-    return BotMessageSchema.parse({
-      color: firstCharacter.value.color,
-      comment: 'テストコメントです',
+  // 汎用的な更新・リセット関数
+  const updateField = (field: keyof typeof base.value, value: any) => {
+    omikujiStore.updateDisplaySettings({
+      base: { ...base.value, [field]: value },
     })
-  })
-
-  // 2つ目のメッセージ（指定された内容）
-  const secondMessage = computed(() => {
-    if (!secondCharacter.value) return
-    return BotMessageSchema.parse({
-      color: secondCharacter.value.color,
-      comment: 'テストユーザーの運勢は【大吉】長文のテストコメントです。',
-    })
-  })
-
-  // 共通リセット関数
-  const resetField = (field: keyof typeof base.value) => {
-    const schemaDefaults = BaseSettingsSchema.parse({})
-    const defaultValue = schemaDefaults[field]
-    updateBaseField(field, defaultValue)
   }
 
-  // フィールドごとのリセット関数マップ
-  const resetMap = {
-    showToastsOnRight: () => resetField('showToastsOnRight'),
-    showToasts: () => resetField('showToasts'),
-    showToastsCharacter: () => resetField('showToastsCharacter'),
-    showCharacterThumbnail: () => resetField('showCharacterThumbnail'),
+  const resetField = (field: keyof typeof base.value) => {
+    const schemaDefaults = BaseSettingsSchema.parse({})
+    updateField(field, schemaDefaults[field])
+  }
+
+  // キャラクター取得の統合
+  const getCharacterByIndex = (index: number) => {
+    return characterArray.value[index] || characterArray.value[0] || null
+  }
+
+  // メッセージ作成の共通化
+  const createMessage = (characterIndex: number, comment: string) => {
+    const character = getCharacterByIndex(characterIndex)
+    if (!character) return undefined
+    return BotMessageSchema.parse({
+      color: character.color,
+      comment,
+    })
   }
 </script>

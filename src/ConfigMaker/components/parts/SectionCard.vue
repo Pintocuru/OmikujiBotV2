@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
   <div class="card bg-base-300 mt-4 z-0">
-    <div class="collapse">
+    <div class="collapse collapse-arrow">
       <!-- 親から制御される開閉状態 -->
       <input type="checkbox" :checked="isOpen" @change="handleToggle" />
       <div class="collapse-title card-title justify-between" :class="headerClass">
