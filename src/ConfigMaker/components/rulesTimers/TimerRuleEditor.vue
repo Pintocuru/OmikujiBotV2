@@ -10,7 +10,8 @@
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
-      title="基本設定"
+      :title="selectedItem.name"
+      :subTitle="` : ${selectedItem.description}`"
       description="機能のON/OFFや名称の設定を行います"
     >
       <BaseSettingsEditor v-model="selectedItem" category="timers" />
@@ -22,6 +23,7 @@
         :isOpen="activeSection === 'timerInterval'"
         @toggle="toggleSection('timerInterval')"
         title="タイマー設定"
+        :subTitle="`(${selectedItem.intervalSeconds}秒毎${selectedItem.isBaseZero ? '、基準調整あり' : ''})`"
         description="発動する間隔やタイミングの設定です"
       >
         <TimerIntervalEditor v-model="selectedItem" />
@@ -32,6 +34,7 @@
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"
+        :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
         description="おみくじの抽選設定や、おみくじの内容です"
       >
         <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />

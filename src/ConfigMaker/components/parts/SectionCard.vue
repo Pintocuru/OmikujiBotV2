@@ -1,11 +1,14 @@
 <!-- src/ConfigMaker/components/parts/SectionCard.vue -->
 <template>
-  <div class="card bg-base-300 mt-4 z-0">
+  <div class="card bg-base-300 mt-4">
     <div class="collapse collapse-arrow">
       <!-- 親から制御される開閉状態 -->
-      <input type="checkbox" :checked="isOpen" @change="handleToggle" />
+      <input type="checkbox" :checked="isOpen" @change="$emit('toggle')" />
       <div class="collapse-title card-title justify-between" :class="headerClass">
-        <div>{{ title }}</div>
+        <div>
+          {{ title }}
+          <span class="text-sm pr-2">{{ subTitle }}</span>
+        </div>
         <div v-if="description" class="text-sm pr-2">{{ description }}</div>
       </div>
       <div class="collapse-content">
@@ -24,6 +27,7 @@
   const props = withDefaults(
     defineProps<{
       title: string
+      subTitle?: string
       description?: string
       variant?: VariantType
       isOpen?: boolean
@@ -39,10 +43,6 @@
   const emit = defineEmits<{
     toggle: []
   }>()
-
-  const handleToggle = () => {
-    emit('toggle')
-  }
 
   const headerClass = computed(() => {
     switch (props.variant) {

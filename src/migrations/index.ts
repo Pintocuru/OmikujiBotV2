@@ -4,11 +4,8 @@ import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
- * @param data マイグレーション前のデータ
- * @returns マイグレーション後のデータ
  */
-// TODO: normalizeData って関数名はどうだろう?(バリデーションも行ってるので)
-export function migrate(data: unknown): OmikujiDataType {
+export function normalizeData(data: unknown): OmikujiDataType {
   // データにメタ情報がなければ、初期データとして扱う
   if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す

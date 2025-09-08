@@ -3,7 +3,7 @@ import { Ref } from 'vue'
 import { RecordCategoryDataMap, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { ImportPreview, ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
-import { migrate } from '@/migrations'
+import { normalizeData } from '@/migrations'
 import { toast } from 'vue-sonner'
 
 /**
@@ -16,7 +16,7 @@ export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<bo
   const loadData = (loadData: unknown): boolean => {
     try {
       // 1. マイグレーションとバリデーションを兼ねる
-      const migratedData = migrate(loadData)
+      const migratedData = normalizeData(loadData)
       data.value = migratedData
       return true
     } catch (error) {
@@ -99,7 +99,7 @@ export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<bo
   const mergeDataSets = (importedRawData: unknown, preview: ImportPreview): boolean => {
     try {
       // インポートデータにもマイグレーションを適用
-      const importedData = migrate(importedRawData)
+      const importedData = normalizeData(importedRawData)
 
       // マイグレーション後のデータをバリデーション
       const validation = OmikujiDataSchema.safeParse(importedData)

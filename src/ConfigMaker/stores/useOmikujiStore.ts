@@ -9,15 +9,15 @@ import { useItemManager } from './composables/useItemManager'
 import { useRecordOperations } from './composables/useRecordOperations'
 import { useSettingsOperations } from './composables/useSettingsOperations'
 import { useVersionCheck } from './composables/useVersionCheck'
-import { migrate } from '@/migrations'
+import { normalizeData } from '@/migrations'
 
 // グローバルデータの初期化
 const rawData = window.omikujiData || {}
-const omikujiData = migrate(rawData) // マイグレーション（バージョン更新を含む）
+const omikujiData = normalizeData(rawData) // マイグレーション（バージョン更新を含む）
 
 export const useOmikujiStore = defineStore('omikuji', () => {
   // コアデータ
-  const data = ref<OmikujiDataType>(omikujiData)
+  const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}))
 
   // 変更追跡
   const hasChanged = ref(false)

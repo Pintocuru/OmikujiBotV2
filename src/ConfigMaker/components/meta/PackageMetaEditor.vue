@@ -14,6 +14,7 @@
 
     <!-- 配布情報 -->
     <SectionCard
+      :variant="isPro ? 'secondary' : 'outline-secondary'"
       :isOpen="activeSection === 'distribution'"
       @toggle="toggleSection('distribution')"
       title="配布情報"
@@ -24,6 +25,7 @@
 
     <!-- システム情報 -->
     <SectionCard
+      variant="outline-secondary"
       :isOpen="activeSection === 'system'"
       @toggle="toggleSection('system')"
       title="システム情報"

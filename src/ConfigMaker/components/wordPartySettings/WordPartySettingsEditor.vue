@@ -5,7 +5,8 @@
     <SectionCard
       :isOpen="activeSection === 'fireList'"
       @toggle="toggleSection('fireList')"
-      :title="`WordParty発動リスト ( ${wordPartySettings.length}件)`"
+      title="WordParty発動リスト"
+      :sub-title="` ( ${wordPartySettings.length}件)`"
       description="デフォルトでは、「おみくじBOT用 word-party」のデータが入っています"
     >
       <FireList :settings="wordPartySettings" />

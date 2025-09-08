@@ -9,7 +9,7 @@
       :isGild="true"
       :isOpen="activeSection === 'basic'"
       @toggle="toggleSection('basic')"
-      title="基本設定"
+      :title="selectedItem.name"
       description="プレースホルダー名の設定を行います"
     >
       <!-- ID表示とコピー -->
@@ -36,6 +36,7 @@
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
       title="プレースホルダー設定"
+      :subTitle="`(プレースホルダー数:${selectedItem.values.length})`"
       description="抽選するプレースホルダーを編集します"
     >
       <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />

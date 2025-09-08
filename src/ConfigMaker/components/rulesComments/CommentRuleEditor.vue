@@ -9,7 +9,8 @@
     <SectionCard
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      title="基本設定"
+      :title="selectedItem.name"
+      :subTitle="` : ${selectedItem.description}`"
       description="コメントルールの基本的な設定"
     >
       <BaseSettingsEditor v-model="selectedItem" category="comments" />
@@ -20,8 +21,9 @@
       <SectionCard
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
-        title="発動条件設定"
-        description="機能のON/コメントの情報から「おみくじを引く」かどうかを決めます"
+        :title="`発動条件設定`"
+        :subTitle="thresholdSubTitle"
+        description="「おみくじを引く」発動条件の設定"
       >
         <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
       </SectionCard>
@@ -30,7 +32,8 @@
       <SectionCard
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
-        title="おみくじ制限設定"
+        :title="`おみくじ制限設定`"
+        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, ${selectedItem.limits.drawLimit > 0 ? `回数:${selectedItem.limits.drawLimit},` : ''}連投:${selectedItem.limits.isRepeatAllowed ? '可' : '不可'})`"
         description="重複時や回数超過時におみくじを無効にします"
       >
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
@@ -42,7 +45,8 @@
         :isOpen="activeSection === 'scriptGame'"
         @toggle="toggleSection('scriptGame')"
         title="ゲームスクリプト設定"
-        description="Javascriptを使ったミニゲーム。結果はプレースホルダーの形で出力します"
+        :subTitle="`(${selectedItem.scriptId !== null ? `ID : ${selectedItem.scriptId}` : '未選択'})`"
+        description="Javascriptを使ったミニゲーム"
       >
         <ScriptGameEditor v-model="selectedItem" />
       </SectionCard>
@@ -52,6 +56,7 @@
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"
+        :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
         description="コメントで実行するおみくじの設定"
       >
         <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
@@ -107,5 +112,21 @@
     set: (value: CommentRuleType) => {
       omikujiStore.updateItem('comments', value.id, value)
     },
+  })
+
+  // 発動条件セクションのサブタイトル
+  const thresholdSubTitle = computed(() => {
+    if (!selectedItem.value) return ''
+
+    const conditions = selectedItem.value.threshold.conditions
+    const icons = []
+
+    if (conditions.includes('comment')) icons.push('💬')
+    if (conditions.includes('syoken')) icons.push('🆕')
+    if (conditions.includes('access')) icons.push('🚶')
+    if (conditions.includes('gift')) icons.push('🎁')
+    if (conditions.includes('count')) icons.push('🔢')
+
+    return icons.join('')
   })
 </script>

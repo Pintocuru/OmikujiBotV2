@@ -6,11 +6,11 @@ import { ConfigUserSchema } from '@shared/types'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
-import { migrate } from '@/migrations'
+import { normalizeData } from '@/migrations'
 
 // グローバルデータの初期化
 const rawData = window.omikujiData || {}
-const migratedData = migrate(rawData) // マイグレーション
+const migratedData = normalizeData(rawData) // マイグレーション
 const omikujiData = OmikujiDataSchema.parse(migratedData)
 
 export const useAppStore = defineStore('app', () => {

@@ -1,7 +1,11 @@
 <!-- src/configMaker/components/scriptSettings/ScriptCard.vue -->
 <template>
-  <SectionCard :title="`${scriptPreset.name} (id:${scriptPreset.id})`" :description="`${scriptPreset.description}`">
-    <div v-if="hasSettings">
+  <SectionCard
+    :title="scriptPreset.name"
+    :subTitle="`(id:${scriptPreset.id})`"
+    :description="`${scriptPreset.description}`"
+  >
+    <div v-if="hasSettings" class="space-y-4">
       <SettingItem
         v-for="settingDef in scriptPreset.settings"
         :key="settingDef.key"

@@ -9,8 +9,9 @@
     <SectionCard
       :isOpen="activeSection === 'basicInfo'"
       @toggle="toggleSection('basicInfo')"
-      title="基本設定"
-      description="キャラクター、またはカラー設定名の編集を行います"
+      :title="selectedItem.name"
+      :subTitle="` : ${selectedItem.description}`"
+      description="キャラクター、またはカラー設定名の編集"
     >
       <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
     </SectionCard>
@@ -30,6 +31,7 @@
       :isOpen="activeSection === 'displaySettings'"
       @toggle="toggleSection('displaySettings')"
       title="キャラクター表示設定"
+      :subTitle="`(キャラ画像表示:${selectedItem.displayOption.isIconDisplay ? 'ON' : 'OFF'}${selectedItem.displayOption.isOneCommePost ? ',わんコメ投稿' : selectedItem.displayOption.isVoice ? ',ボイス読み上げ' : ''})`"
       description="キャラクターアイコン(画像)に関する編集を行います"
     >
       <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption" />
@@ -41,6 +43,7 @@
       :isOpen="activeSection === 'serviceSettings'"
       @toggle="toggleSection('serviceSettings')"
       title="キャラクター用枠設定"
+      :subTitle="` わんコメ投稿用画像 : ${selectedItem.imageBase64 ? 'あり' : 'なし'}`"
       description="わんコメの投稿で必要な設定を行います"
     >
       <CharacterServiceSettings :selectedRuleId="selectedRuleId" />
@@ -52,6 +55,7 @@
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
       title="ジェネレーター用画像設定"
+      :subTitle="`画像数 : ${imageCount}`"
       description="ジェネレーターで表示する画像の設定です"
     >
       <CharacterImageSettings :modelValue="selectedItem.image" :selectedRuleId="selectedRuleId" />
@@ -88,5 +92,11 @@
   const selectedItem = computed(() => {
     if (!selectedRuleId.value) return null
     return data.value.characters[selectedRuleId.value]
+  })
+
+  // 画像数カウント
+  const imageCount = computed(() => {
+    if (!selectedItem.value?.image) return 0
+    return Object.values(selectedItem.value.image).filter((v) => v && v.trim() !== '').length
   })
 </script>
