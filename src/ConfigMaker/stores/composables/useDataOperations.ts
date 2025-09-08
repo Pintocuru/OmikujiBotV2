@@ -1,8 +1,9 @@
-// src/ConfigMaker/script/stores/composables/useDataOperations.ts (修正版 v2)
+// src/ConfigMaker/script/stores/composables/useDataOperations.ts (修正版 v3)
 import { Ref } from 'vue'
 import { RecordCategoryDataMap, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { ImportPreview, ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
+import { migrate } from '@/migrations'
 import { toast } from 'vue-sonner'
 
 /**
@@ -10,21 +11,14 @@ import { toast } from 'vue-sonner'
  */
 export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   /**
-   * データを読み込み、バリデーションを行う
+   * データを読み込み、マイグレーションとバリデーションを行う
    */
   const loadData = (loadData: unknown): boolean => {
     try {
-      const parsed = OmikujiDataSchema.safeParse(loadData)
-      if (parsed.success) {
-        data.value = parsed.data
-        hasChanged.value = false
-        toast.success('データを正常に読み込みました。')
-        return true
-      } else {
-        toast.error('データの形式が正しくありません。')
-        console.error('Validation errors:', parsed.error)
-        return false
-      }
+      // 1. マイグレーションとバリデーションを兼ねる
+      const migratedData = migrate(loadData)
+      data.value = migratedData
+      return true
     } catch (error) {
       toast.error('データの読み込み中にエラーが発生しました。')
       console.error('Load data error:', error)
@@ -100,14 +94,26 @@ export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<bo
 
   /**
    * インポートされたデータを既存データにマージ
+   * インポートデータにもマイグレーションを適用
    */
-  const mergeDataSets = (importedData: OmikujiDataType, preview: ImportPreview): boolean => {
+  const mergeDataSets = (importedRawData: unknown, preview: ImportPreview): boolean => {
     try {
+      // インポートデータにもマイグレーションを適用
+      const importedData = migrate(importedRawData)
+
+      // マイグレーション後のデータをバリデーション
+      const validation = OmikujiDataSchema.safeParse(importedData)
+      if (!validation.success) {
+        toast.error('インポートデータの形式が正しくありません。')
+        console.error('Import data validation errors:', validation.error)
+        return false
+      }
+
       let result: OmikujiDataType
 
       if (preview.importMode === 'full') {
         // 全体上書きモード - 単純にインポートデータを使用
-        result = { ...importedData }
+        result = { ...validation.data }
         toast.success('データの上書きが完了しました。')
       } else {
         // 部分更新モード
@@ -119,7 +125,7 @@ export function useDataOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<bo
           if (!config?.enabled) return
 
           const currentItems = result[category]
-          const importItems = importedData[category]
+          const importItems = validation.data[category]
 
           let adjustedImportItems = importItems
           if (config.mode === 'partial-merge') {

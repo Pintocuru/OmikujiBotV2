@@ -1,35 +1,46 @@
-// src\migrations\index.ts
+// src/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
  * @param data マイグレーション前のデータ
  * @returns マイグレーション後のデータ
  */
+// TODO: normalizeData って関数名はどうだろう?(バリデーションも行ってるので)
 export function migrate(data: unknown): OmikujiDataType {
-  let migratedData = data
-
   // データにメタ情報がなければ、初期データとして扱う
-  if (!migratedData || typeof migratedData !== 'object' || !('meta' in migratedData)) {
+  if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す
-    return OmikujiDataSchema.parse({})
+    return OmikujiDataSchema.parse({
+      meta: {
+        generatorVersion: APP_VERSION,
+        dataVersion: DATA_VERSION,
+      },
+    })
   }
 
   // dataVersionを数値として取得。存在しない場合はv1と見なす。
-  const currentDataVersion = (migratedData as any)?.meta?.dataVersion ?? 1
+  const currentDataVersion = (data as any)?.meta?.dataVersion ?? 1
+
+  // メタ情報を最新バージョンに更新
+  const parsedData = OmikujiDataSchema.parse(data)
+  const updatedData: OmikujiDataType = {
+    ...parsedData,
+    meta: {
+      ...parsedData.meta,
+      generatorVersion: APP_VERSION,
+      dataVersion: DATA_VERSION,
+    },
+  }
 
   /*
-  // v1からv2へのマイグレーションを実行
+  // 将来的なマイグレーション処理
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1 to v2...')
-    migratedData = migrateV1ToV2(migratedData)
+    updatedData = migrateV1ToV2(updatedData)
   }
   */
 
-  // 将来的なバージョンアップのために、ここに処理を追加できる
-  // if (currentDataVersion < 3) {
-  //  migratedData = migrateV2ToV3(migratedData);
-  // }
-
-  return migratedData as OmikujiDataType
+  return updatedData
 }

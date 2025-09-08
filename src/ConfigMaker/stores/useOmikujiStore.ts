@@ -13,18 +13,17 @@ import { migrate } from '@/migrations'
 
 // グローバルデータの初期化
 const rawData = window.omikujiData || {}
-const migratedData = migrate(rawData) // マイグレーション
-const omikujiData = OmikujiDataSchema.parse(migratedData)
+const omikujiData = migrate(rawData) // マイグレーション（バージョン更新を含む）
 
 export const useOmikujiStore = defineStore('omikuji', () => {
   // コアデータ
-  const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}))
+  const data = ref<OmikujiDataType>(omikujiData)
 
   // 変更追跡
   const hasChanged = ref(false)
   const resetChangeState = () => (hasChanged.value = false)
 
-  // === 各機能モジュール ===
+  // 各機能モジュール
   const dataOps = useDataOperations(data, hasChanged)
   const recordOps = useRecordOperations(data, hasChanged)
   const settingsOps = useSettingsOperations(data, hasChanged)
