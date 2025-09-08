@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\config\version.ts
+// src\config\version.ts
 /**
  * アプリケーションのバージョン情報
  */

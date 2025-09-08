@@ -13,6 +13,9 @@
     <div class="flex items-center gap-3">
       <Tag class="w-4 h-4 text-base-content/50" />
       <span class="text-sm text-base-content/60">{{ meta.generatorVersion }}</span>
+      <button @click="omikujiStore.openLatestRelease" class="btn btn-primary btn-outline" title="サイトを開く">
+        <ExternalLink class="w-4 h-4" />
+      </button>
     </div>
   </SettingItem>
 
@@ -30,7 +33,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { storeToRefs } from 'pinia'
-  import { Code, Settings, Tag } from 'lucide-vue-next'
+  import { Code, Settings, Tag, ExternalLink } from 'lucide-vue-next'
 
   // Store
   const omikujiStore = useOmikujiStore()
