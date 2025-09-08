@@ -1,4 +1,4 @@
-// buildConfigs/ReimuMarisa.ts
+// tools\packages\full\ReimuMarisa.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 

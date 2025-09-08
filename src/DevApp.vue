@@ -4,7 +4,7 @@
   <MainGenerator v-else data-theme="transparent" />
 
   <!-- 表示トグルボタン -->
-  <label class="swap swap-rotate fixed top-6 right-6 z-9999">
+  <label class="swap swap-rotate fixed top-12 right-6 z-9999">
     <input type="checkbox" v-model="showMain" />
 
     <!-- ON: MainGenerator 表示中 (Settingsアイコン) -->

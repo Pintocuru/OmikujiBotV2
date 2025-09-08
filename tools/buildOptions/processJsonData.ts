@@ -1,4 +1,4 @@
-// tools\processJsonData.ts
+// tools\buildOptions\processJsonData.ts
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { getKey } from '@/types/SettingMode'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'

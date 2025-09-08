@@ -1,4 +1,4 @@
-// buildConfigs\DivaMetan.ts
+// tools\packages\full\DivaMetan.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 

@@ -1,4 +1,4 @@
-// buildConfigs/5percent_Dora.ts
+// tools\packages\solo\5percent_Dora.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 

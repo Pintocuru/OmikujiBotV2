@@ -1,4 +1,4 @@
-// tools/CreateOmikujiData.ts
+// tools\buildOptions\CreateOmikujiData.ts
 import path from 'path'
 import fs from 'fs/promises'
 

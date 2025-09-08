@@ -1,4 +1,4 @@
-// buildConfigs\EveryoneZunda.ts
+// tools\packages\full\EveryoneZunda.ts
 import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 

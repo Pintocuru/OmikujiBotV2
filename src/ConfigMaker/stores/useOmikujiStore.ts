@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/useOmikujiStore.ts
+// src/ConfigMaker/stores/useOmikujiStore.ts
 import { readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'
@@ -8,6 +8,7 @@ import { useNavigationManager } from './composables/useNavigationManager'
 import { useItemManager } from './composables/useItemManager'
 import { useRecordOperations } from './composables/useRecordOperations'
 import { useSettingsOperations } from './composables/useSettingsOperations'
+import { useVersionCheck } from './composables/useVersionCheck'
 import { migrate } from '@/migrations'
 
 // グローバルデータの初期化
@@ -29,6 +30,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   const settingsOps = useSettingsOperations(data, hasChanged)
   const navigation = useNavigationManager(recordOps)
   const itemManager = useItemManager(recordOps, navigation)
+  const versionCheck = useVersionCheck(data)
 
   return {
     // コアデータ
@@ -43,5 +45,6 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     ...settingsOps,
     ...navigation,
     ...itemManager,
+    ...versionCheck,
   }
 })

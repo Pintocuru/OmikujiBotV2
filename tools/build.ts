@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
 
 // 各設定ファイルをインポート
+import OmikujiBotProject from './packages/OmikujiBot'
 import ReimuMarisaProject from './packages/full/ReimuMarisa'
 import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
 import EveryoneZundaProject from './packages/full/EveryoneZunda'
@@ -28,11 +29,12 @@ const packageRoot = process.env.PACKAGE_ROOT
  * ビルド設定リスト
  */
 const buildTargets: BuildTarget[] = [
+  { project: 'OmikujiBot', accessLevels: ['basic'] },
   // { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
   // { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
   // { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
   // { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
-  { project: 'HondaJanken', accessLevels: ['basic'] }, // HondaJanken
+  //  { project: 'HondaJanken', accessLevels: ['basic'] }, // HondaJanken
   // { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
 ]
 
@@ -56,6 +58,7 @@ const buildTargets: BuildTarget[] = [
     const builder = new WebpackBuilder(systemCommonData)
 
     // 新しいバージョンができた場合、ここに記載すること
+    builder.registerProject(OmikujiBotProject(packageRoot))
     builder.registerProject(ReimuMarisaProject(packageRoot))
     builder.registerProject(ReimuMarisaMateProject(packageRoot))
     builder.registerProject(EveryoneZundaProject(packageRoot))
