@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/components/ChatBubbleItem.vue -->
 <template>
-  <div v-if="showToasts" class="w-sm mx-auto" :class="chatPositionClass" @click="handleClick">
+  <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
     <div v-if="character" class="chat-image avatar">
       <div class="rounded-full" :class="[SIZE_CONFIG[displaySize].avatar]">
@@ -10,7 +10,7 @@
 
     <!-- メッセージ内容 -->
     <div
-      class="chat-bubble"
+      class="chat-bubble max-w-xs"
       :style="{
         backgroundColor: botMessage?.color?.backgroundColor || '#CCC',
       }"

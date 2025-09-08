@@ -9,6 +9,8 @@ interface RestrictionCheckResult {
   toastMessages: BotMessage[]
 }
 
+type DrawLimitAction = 'showMessage' | 'showLastResult' | 'doNothing'
+
 export class CommentRestrictionChecker {
   constructor(private readonly firstCharacter: CharacterType | null) {}
 
@@ -17,78 +19,87 @@ export class CommentRestrictionChecker {
    */
   checkRestrictions(comment: Comment, rule: CommentRuleType): RestrictionCheckResult {
     const { cooldownManager } = useAppStore()
-
     const isCommentBased = rule.threshold.conditions.includes('comment')
     const userName = comment.data.displayName || comment.data.name
 
-    // 1. 重複処理（クールダウン）チェック
+    // 1. クールダウンチェック
     if (this.isCooldownBlocked(rule)) {
-      const message = getMessageOrDefault(
+      return this.createBlockedResult(
         rule.limits.cooldownMessage,
         `コメントが被って、「${rule.name}」ができなかったよ。またコメントしてね。`
       )
-      return { isBlocked: true, toastMessages: this.createErrorToast(message) }
+    }
+
+    if (!isCommentBased) {
+      return { isBlocked: false, toastMessages: [] }
     }
 
     // 2. 連投制限チェック（コメントベースのルールのみ）
-    if (isCommentBased && this.isRepeatBlocked(comment, rule)) {
+    if (this.isRepeatBlocked(comment, rule)) {
       if (!rule.limits.isRepeatAllowed) {
-        const message = getMessageOrDefault(
+        return this.createBlockedResult(
           rule.limits.repeatMessage,
           `${userName}さんは、連投制限で「${rule.name}」ができなかったよ。`
         )
-        return { isBlocked: true, toastMessages: this.createErrorToast(message) }
       }
-      return { isBlocked: false, toastMessages: [] } // 重複が許可されている場合はブロックしない
+      return { isBlocked: false, toastMessages: [] }
     }
 
     // 3. 回数制限チェック
-    if (isCommentBased && this.isDrawLimitExceeded(comment, rule)) {
-      console.log(rule.limits.drawLimitExceeded)
-      switch (rule.limits.drawLimitExceeded) {
-        case 'showMessage':
-          const message = getMessageOrDefault(
-            rule.limits.drawLimitMessage,
-            `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。`
-          )
-          return { isBlocked: true, toastMessages: this.createErrorToast(message) }
-        case 'showLastResult':
-          // 最後の有効な結果(sessionId+userId+最後の回数)をトーストで返す
-          const lastBotMessages = cooldownManager.getLastBotMessages(comment.data.userId, rule.id)
-
-          return {
-            isBlocked: true,
-            toastMessages: this.createErrorToast(
-              `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。 最後の結果:${lastBotMessages}`
-            ),
-          }
-        case 'doNothing':
-        default:
-          return { isBlocked: true, toastMessages: [] }
-      }
+    if (this.isDrawLimitExceeded(comment, rule)) {
+      return this.handleDrawLimitExceeded(comment, rule, userName)
     }
 
-    // すべての制限をクリア
-    return {
-      isBlocked: false,
-      toastMessages: [],
+    return { isBlocked: false, toastMessages: [] }
+  }
+
+  private handleDrawLimitExceeded(comment: Comment, rule: CommentRuleType, userName: string): RestrictionCheckResult {
+    const { cooldownManager } = useAppStore()
+    const action = rule.limits.drawLimitExceeded as DrawLimitAction
+
+    switch (action) {
+      case 'showMessage': {
+        const message = getMessageOrDefault(
+          rule.limits.drawLimitMessage,
+          `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。`
+        )
+        return this.createBlockedResult(message)
+      }
+
+      case 'showLastResult': {
+        const lastBotMessages = cooldownManager.getLastBotMessages(comment.data.userId, rule.id)
+        const message = `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。 最後の結果:${lastBotMessages}`
+        return this.createBlockedResult(message)
+      }
+
+      case 'doNothing':
+      default:
+        return { isBlocked: true, toastMessages: [] }
     }
   }
 
-  // 連投制限
+  private createBlockedResult(configuredMessage?: string, defaultMessage?: string): RestrictionCheckResult {
+    const message = configuredMessage || defaultMessage
+    if (!message) {
+      return { isBlocked: true, toastMessages: [] }
+    }
+
+    return {
+      isBlocked: true,
+      toastMessages: this.createErrorToast(message),
+    }
+  }
+
   private isRepeatBlocked(comment: Comment, rule: CommentRuleType): boolean {
     const { cooldownManager } = useAppStore()
-    return cooldownManager.isRepeatBlocked(comment.data.userId, rule.limits.isRepeatAllowed)
+    return cooldownManager.isRepeatBlocked(comment.data.userId, rule.id, rule.limits.isRepeatAllowed)
   }
 
-  // クールダウン制限
   private isCooldownBlocked(rule: CommentRuleType): boolean {
     const { cooldownManager } = useAppStore()
-    const cooldownSeconds = rule.limits.cooldownSeconds
-    return cooldownManager.isCooldownBlocked(cooldownSeconds)
+    return cooldownManager.isCooldownBlocked(rule.limits.cooldownSeconds)
   }
 
-  // 回数制限
   private isDrawLimitExceeded(comment: Comment, rule: CommentRuleType): boolean {
     const { cooldownManager } = useAppStore()
     return cooldownManager.isDrawLimitExceeded(comment.data.userId, rule.id, rule.limits.drawLimit)
@@ -98,7 +109,6 @@ export class CommentRestrictionChecker {
    * エラー用のトーストメッセージを作成
    */
   private createErrorToast(message: string): BotMessage[] {
-    // firstCharacterが存在する場合はその値を使用し、存在しない場合はBotMessageSchemaのデフォルト値を使用
     const botMessageData = this.firstCharacter
       ? {
           name: this.firstCharacter.name,
@@ -118,18 +128,13 @@ export class CommentRestrictionChecker {
 
 /**
  * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
- * @param configuredMessage 設定されたメッセージ
- * @param defaultMessage デフォルトメッセージ
- * @returns 最終的なメッセージ
  */
 export function getMessageOrDefault(configuredMessage: string | undefined, defaultMessage: string): string {
-  return configuredMessage && configuredMessage.trim() !== '' ? configuredMessage : defaultMessage
+  return configuredMessage?.trim() || defaultMessage
 }
 
 /**
  * 任意の文字列から32bit整数のseedを作成
- * @param str 任意の文字列
- * @returns 0〜2^32-1 の整数
  */
 export function stringToSeed(str: string): number {
   let seed = 0

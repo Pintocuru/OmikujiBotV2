@@ -9,7 +9,6 @@
     :getImageSrc="getImageSrc"
     @character-click="handleCharacterClick"
   />
-  <!-- TODO:非表示時、動作テストのために何らかの透明なボタンを用意したい -->
 </template>
 
 <script setup lang="ts">
