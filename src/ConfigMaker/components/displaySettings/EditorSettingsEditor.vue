@@ -51,7 +51,6 @@
   import { computed } from 'vue'
   import { isDev } from '@/types'
   import { getKey } from '@/types/SettingMode'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
@@ -83,17 +82,5 @@
     omikujiStore.updateDisplaySettings({
       licenseKeyHash: value,
     })
-  }
-
-  // 共通リセット関数
-  const resetField = (field: keyof typeof base.value) => {
-    const schemaDefaults = BaseSettingsSchema.parse({})
-    const defaultValue = schemaDefaults[field]
-    updateBaseField(field, defaultValue)
-  }
-
-  // フィールドごとのリセット関数マップ
-  const resetMap = {
-    daisyUiTheme: () => resetField('daisyUiTheme'),
   }
 </script>

@@ -31,7 +31,7 @@ export class PlaceholderResolver {
    * プレースホルダーを解決する
    * 毎回新しい値を生成（キャッシュしない）
    */
-  resolve(placeholderId: string, seed?: number, depth: number = 0): string {
+  resolve(placeholderId: string, depth: number = 0): string {
     // 無限再帰防止
     if (depth > PlaceholderResolver.MAX_RECURSION_DEPTH) {
       console.warn(`プレースホルダー解決の最大深度に達しました: ${placeholderId}`)
@@ -68,18 +68,18 @@ export class PlaceholderResolver {
     }
 
     // 選択された値内のプレースホルダーを再帰的に解決
-    return this.replaceInText(selectedValue.content, seed, depth + 1)
+    return this.replaceInText(selectedValue.content, depth + 1)
   }
 
   /**
    * テキスト内のプレースホルダーを置換
    */
-  private replaceInText(text: string, seed?: number, depth: number = 0): string {
+  private replaceInText(text: string, depth: number = 0): string {
     const placeholderPattern = /<<([^>]+)>>/g
 
     return text.replace(placeholderPattern, (match, placeholderId) => {
       const trimmedId = placeholderId.trim()
-      return this.resolve(trimmedId, seed, depth)
+      return this.resolve(trimmedId, depth)
     })
   }
 

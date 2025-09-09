@@ -7,8 +7,8 @@
     "devHot:omikujiBot": "vite",
     "devApi:omikujiBot": "tsx server/start-dev-server.ts",
     "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
-    "lintLevel2:omikujiBot": "VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
-    "lintLevel3:omikujiBot": "VITE_TS_CHECK_LEVEL=production eslint src/**/*.{ts,vue}",
+    "lintLevel2:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
+    "lintLevel3:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=production eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "jest --testPathPatterns UserCommentProcessor",
     "build:omikujiBot": "tsx tools/build.ts"
   },

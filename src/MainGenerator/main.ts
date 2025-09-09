@@ -11,7 +11,7 @@ import OneSDK from '@onecomme.com/onesdk'
 const pinia = createPinia()
 const app = createApp(App)
 // グローバルエラーハンドリング
-app.config.errorHandler = (err, instance, info) => {
+app.config.errorHandler = (err, instance) => {
   console.error('エラー:', err)
   if (instance) {
     console.log('props:', instance.$props)

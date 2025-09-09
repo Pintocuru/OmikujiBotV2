@@ -25,15 +25,15 @@ export class PlaceProcess {
    * PostAction配列のプレースホルダーを置換して返す
    * 同じプレースホルダーIDでも毎回新しい値が生成される
    */
-  processPostActions(postActions: PostActionType[], seed?: number): PostActionType[] {
-    return this.processor.processPostActions(postActions, seed)
+  processPostActions(postActions: PostActionType[]): PostActionType[] {
+    return this.processor.processPostActions(postActions)
   }
 
   /**
    * 単一のテキストのプレースホルダーを処理
    */
-  processText(text: string, seed?: number): string {
-    return this.processor.processText(text, seed)
+  processText(text: string): string {
+    return this.processor.processText(text)
   }
 
   /**

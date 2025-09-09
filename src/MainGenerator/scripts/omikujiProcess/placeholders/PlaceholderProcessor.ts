@@ -1,5 +1,5 @@
 // src/MainGenerator/script/omikujiProcess/placeholders/PlaceholderProcessor.ts
-import { PostActionType } from '@/types/'
+import { PlaceholderType, PostActionType } from '@/types/'
 import { PlaceholderResolver } from './PlaceholderResolver'
 import { PlaceholderContext } from './PlaceholderContext'
 
@@ -12,7 +12,7 @@ export class PlaceholderProcessor {
   private readonly context: PlaceholderContext
   private static readonly PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
-  constructor(placeholderSources: Record<string, any>) {
+  constructor(placeholderSources: Record<string, PlaceholderType>) {
     this.resolver = new PlaceholderResolver(placeholderSources)
     this.context = new PlaceholderContext()
   }
@@ -21,7 +21,6 @@ export class PlaceholderProcessor {
    * コンテキスト値を更新
    */
   updateContext(values: Record<string, string | number>): void {
-    console.log(values)
     this.context.updateValues(values)
   }
 
@@ -29,19 +28,19 @@ export class PlaceholderProcessor {
    * PostAction配列のプレースホルダーを置換
    * 各プレースホルダーは毎回新しく解決される
    */
-  processPostActions(postActions: PostActionType[], seed?: number): PostActionType[] {
+  processPostActions(postActions: PostActionType[]): PostActionType[] {
     return postActions.map((action) => ({
       ...action,
-      messageContent: this.processText(action.messageContent, seed),
-      messageToast: this.processText(action.messageToast, seed),
-      wordParty: this.processText(action.wordParty, seed),
+      messageContent: this.processText(action.messageContent),
+      messageToast: this.processText(action.messageToast),
+      wordParty: this.processText(action.wordParty),
     }))
   }
 
   /**
    * テキスト内のプレースホルダーを処理
    */
-  processText(text: string | undefined, seed?: number): string {
+  processText(text?: string): string {
     if (!text) return ''
 
     // resolverにコンテキスト値を渡す
@@ -57,7 +56,7 @@ export class PlaceholderProcessor {
       }
 
       // プレースホルダー解決エンジンで処理
-      return this.resolver.resolve(trimmedId, seed)
+      return this.resolver.resolve(trimmedId)
     })
   }
 

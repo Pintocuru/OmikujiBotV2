@@ -5,6 +5,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { TimerProcessor } from '../omikujiProcess/timerProcessor'
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
+import { ConfigUserType } from '@shared/types'
 
 export function useRuleProcessor() {
   /**
@@ -17,7 +18,10 @@ export function useRuleProcessor() {
     timerProcessor = new TimerProcessor(omikujiData)
   }
 
-  const initializeApp = async (config: any, onCommentsReceived: (comments: Comment[]) => void): Promise<boolean> => {
+  const initializeApp = async (
+    config: ConfigUserType,
+    onCommentsReceived: (comments: Comment[]) => void
+  ): Promise<boolean> => {
     try {
       const isInit = await GetUserComments(config).fetchComments(onCommentsReceived)
       return isInit

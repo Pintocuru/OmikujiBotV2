@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, Ref } from 'vue'
+  import { computed, ref } from 'vue'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
   import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
   import PostActionsTabEditor from '@ConfigComponents/postAction/PostActionsTabEditor.vue'

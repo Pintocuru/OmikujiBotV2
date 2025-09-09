@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType, PostActionWordPartyType } from '@/types/'
+  import { PostActionType } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
   import { MessageSquare, Bell, PartyPopper } from 'lucide-vue-next'
 

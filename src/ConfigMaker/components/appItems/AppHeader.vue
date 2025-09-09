@@ -37,7 +37,7 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, versionInfo } = storeToRefs(omikujiStore)
+  const { versionInfo } = storeToRefs(omikujiStore)
   const { checkVersion } = omikujiStore
 
   // マウント時にバージョンチェック実行

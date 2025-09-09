@@ -17,7 +17,7 @@ export class BomberSpinGame {
       const dwarf = dwarfs[Math.floor(Math.random() * GAME_CONFIG.DWARF_COUNT)]
       const rewardType = this.selectReward()
 
-      items += this.applyReward(dwarf, dwarfs, rewardType, life)
+      items += this.applyReward(dwarf, dwarfs, rewardType)
 
       // 緑宝箱でライフ回復
       if (rewardType === RewardType.GREEN_CHEST) {
@@ -99,7 +99,7 @@ export class BomberSpinGame {
     return index as RewardType
   }
 
-  private applyReward(dwarf: Dwarf, dwarfs: Dwarf[], rewardType: RewardType, life: number): string {
+  private applyReward(dwarf: Dwarf, dwarfs: Dwarf[], rewardType: RewardType): string {
     switch (rewardType) {
       case RewardType.UNKO:
         dwarf.gold += 1

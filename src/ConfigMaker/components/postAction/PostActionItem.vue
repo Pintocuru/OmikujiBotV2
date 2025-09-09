@@ -44,8 +44,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
-  import PostActionBasicSettings from './PostActionBasicSettings.vue'
-  import PostActionMessageFields from './PostActionMessageFields.vue'
   import PostActionMessageSettings from './PostActionMessageSettings.vue'
   import PostActionToastSettings from './PostActionToastSettings.vue'
   import PostActionWordPartySettings from './PostActionWordPartySettings.vue'

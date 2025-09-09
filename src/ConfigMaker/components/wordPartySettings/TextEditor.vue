@@ -41,7 +41,6 @@
 
 <script setup lang="ts">
   import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
 

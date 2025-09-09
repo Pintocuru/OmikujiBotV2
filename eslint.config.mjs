@@ -34,7 +34,7 @@ function getRulesForLevel(level) {
         // 明示的な型付けがない場合でも許可します。
         '@typescript-eslint/no-inferrable-types': 'off',
         // 'let'の代わりに'const'を使うことを強制しません。
-        '@typescript-eslint/prefer-const': 'off',
+        'prefer-const': 'off',
         // 空の関数定義を許可します。
         '@typescript-eslint/no-empty-function': 'off',
         // Vueコンポーネント内の未使用変数を許可します。
@@ -52,19 +52,19 @@ function getRulesForLevel(level) {
         // 未使用の変数を警告します。
         '@typescript-eslint/no-unused-vars': 'warn',
         // 'any'型の使用を許可します。
-        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }],
         // 明示的な型付けがない場合を警告します。
         '@typescript-eslint/no-inferrable-types': 'warn',
         // 'let'の代わりに'const'を使うことを警告します。
-        '@typescript-eslint/prefer-const': 'warn',
+        'prefer-const': 'warn',
         // 空の関数定義を警告します。
         '@typescript-eslint/no-empty-function': 'warn',
         // 安全でない代入を許可します。
-        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'warn',
         // 安全でないメンバーアクセスを許可します。
-        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'warn',
         // 安全でない関数の呼び出しを許可します。
-        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-call': 'warn',
         // Vueコンポーネント内の未使用変数を警告します。
         'vue/no-unused-vars': 'warn',
       }
@@ -82,7 +82,7 @@ function getRulesForLevel(level) {
         // 明示的な型付けがない場合をエラーにします。
         '@typescript-eslint/no-inferrable-types': 'error',
         // 'let'の代わりに'const'を使うことをエラーにします。
-        '@typescript-eslint/prefer-const': 'error',
+        'prefer-const': 'error',
         // 空の関数定義をエラーにします。
         '@typescript-eslint/no-empty-function': 'error',
         // 安全でない代入をエラーにします。

@@ -45,18 +45,6 @@
         </button>
       </div>
 
-      <!-- AccessLevel フィルター(GOD-MODE専用) : 特に要らないかも… -->
-      <!--
-      <div v-if="isDev" class="flex items-center gap-2">
-        <span class="text-sm font-medium">アクセスレベル(開発用):</span>
-        <select v-model="store.filterOptions.accessFilter" class="select select-bordered select-sm w-40">
-          <option value="basic">basic</option>
-          <option value="pro">PRO版</option>
-          <option value="experimental">開発版を含む</option>
-        </select>
-      </div>
-      -->
-
       <!-- 検索結果の統計と選択状態 -->
       <div class="flex gap-4">
         <div class="mt-2 text-xs text-base-content/60">
@@ -106,7 +94,6 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
 
   // Store

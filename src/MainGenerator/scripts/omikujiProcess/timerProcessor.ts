@@ -135,7 +135,7 @@ export class TimerProcessor {
    * すべてのタイマーを停止
    */
   stopTimers(): void {
-    this.activeTimers.forEach((timerState, ruleId) => {
+    this.activeTimers.forEach((timerState) => {
       this.clearTimer(timerState)
     })
     this.activeTimers.clear()
