@@ -3,9 +3,9 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "v2025.8.28",
+    "version": "ver2025.09.09-v1.1.0-rc1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.1.0",
+    "generatorVersion": "1.1.0-beta1",
     "dataVersion": 1.1,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [

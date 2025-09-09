@@ -32,7 +32,7 @@ function project(packageRoot: string): ProjectConfig {
     template: {
       name: 'おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan',
       boothURL: 'https://pintocuru.booth.pm/items/6058829',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotDivaMetan/README.md',
+      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/full/DivaMetan/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 

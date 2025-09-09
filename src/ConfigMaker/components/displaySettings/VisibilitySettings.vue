@@ -25,7 +25,7 @@
   <!-- コンポーネント固有の可視性設定 -->
   <SettingItem label="コンポーネント固有設定" description="特定コンポーネント内の要素の表示制御">
     <div class="space-y-3">
-      <!-- characterVisible設定 -->
+      <!-- characterVisible 設定 -->
       <div class="bg-base-200 p-3 rounded">
         <div class="flex items-center justify-between mb-2">
           <span class="label-text font-medium">キャラクター表示 (characterVisible)</span>
@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <!-- wordPartyLoading設定 -->
+      <!-- wordPartyLoading 設定 -->
       <div class="bg-base-200 p-3 rounded">
         <div class="flex items-center justify-between mb-2">
           <span class="label-text font-medium">WordParty読み込み機能 (wordPartyLoading)</span>
@@ -52,6 +52,24 @@
           <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
             <input
               v-model="visibilitySettings.wordPartyLoading"
+              :value="level"
+              type="radio"
+              class="radio radio-warning radio-sm"
+            />
+            <span class="label-text capitalize">{{ level }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- licenseVisible 設定 -->
+      <div class="bg-base-200 p-3 rounded">
+        <div class="flex items-center justify-between mb-2">
+          <span class="label-text font-medium">ライセンス記入表示 (licenseVisible)</span>
+        </div>
+        <div class="flex gap-2 flex-wrap">
+          <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+            <input
+              v-model="visibilitySettings.licenseVisible"
               :value="level"
               type="radio"
               class="radio radio-warning radio-sm"
@@ -143,6 +161,8 @@
   const { data } = storeToRefs(omikujiStore)
 
   // 可視性設定の参照
+  // FIXME:直接編集の疑いあり
+  // TODO:updateNestedDisplaySettings を使用すること
   const visibilitySettings = computed({
     get: () => data.value.displaySettings.developer.visibility,
     set: (newValue) => {
@@ -159,10 +179,15 @@
   const gameScriptsArray = computed({
     get: () => visibilitySettings.value.gameScripts,
     set: (newValue: string[]) => {
-      visibilitySettings.value = {
-        ...visibilitySettings.value,
-        gameScripts: newValue,
-      }
+      omikujiStore.updateDisplaySettings({
+        developer: {
+          ...data.value.displaySettings.developer,
+          visibility: {
+            ...data.value.displaySettings.developer.visibility,
+            gameScripts: newValue,
+          },
+        },
+      })
     },
   })
 

@@ -32,7 +32,7 @@ function project(packageRoot: string): ProjectConfig {
     template: {
       name: 'おみくじBOT ゆっくり霊夢&魔理沙 ちょこんとバージョン OmikujiBot ReimuMarisaMate',
       boothURL: 'https://pintocuru.booth.pm/items/7366004',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotReimuMarisa/README.md',
+      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/full/ReimuMarisaMate/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 

@@ -3,9 +3,9 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "v2025.8.27(プレビュー版)",
+    "version": "ver2025.09.09-v1.1.0-rc1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "0.8.0-beta09",
+    "generatorVersion": "1.1.0-beta1",
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -14,7 +14,8 @@
       "（ず・ω・きょ）"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/6053855"
+    "url": "https://pintocuru.booth.pm/items/6053855",
+    "dataVersion": 1.1
   },
   "comments": {
     "OmikujiZunda": {

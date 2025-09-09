@@ -15,7 +15,12 @@
   </SettingItem>
 
   <!-- ライセンスキー -->
-  <SettingItem label="ライセンスキー" description="入力したハッシュでモードを判定します">
+  <SettingItem
+    v-if="isDev || useVisibilityAccess().canShow('licenseVisible')"
+    devMemo="licenseVisible"
+    label="ライセンスキー"
+    description="入力したハッシュでモードを判定します"
+  >
     <div class="flex gap-2 items-center">
       <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
       <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>
@@ -52,6 +57,7 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'
 
   // Store

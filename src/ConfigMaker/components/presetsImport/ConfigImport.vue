@@ -10,7 +10,7 @@
       :disabled="importStore.isLoading"
     >
       <span v-if="importStore.isLoading" class="loading loading-spinner loading-sm mr-2"></span>
-      テンプレート読み込み(JSON)
+      テンプレート読み込み(json)
     </button>
   </div>
 </template>

@@ -32,7 +32,7 @@ function project(packageRoot: string): ProjectConfig {
     template: {
       name: 'おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda',
       boothURL: 'https://pintocuru.booth.pm/items/6053855',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBotEveryoneZunda/README.md',
+      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/full/EveryoneZunda/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 

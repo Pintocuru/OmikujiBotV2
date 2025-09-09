@@ -5,7 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.x.x",
+    "generatorVersion": "v1.1.0-rc1",
+    "dataVersion": 1.091,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -3488,10 +3489,15 @@
       "fontFamily": "kosugiMaru",
       "bubbleMotionEnter": "scale",
       "bubbleMotionLeave": "scale",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToastsOnRight": true,
+      "showToasts": true,
+      "showToastsCharacter": false,
+      "showCharacterThumbnail": true,
       "showCharacterFrame": true,
       "showCharacterPersistent": false,
-      "showCharacterThumbnail": true,
-      "showToasts": true,
+      "bundleCharacters": false,
       "daisyUiTheme": "coffee"
     },
     "developer": {
@@ -3506,6 +3512,7 @@
         "characters": "basic",
         "characterVisible": "basic",
         "wordPartyLoading": "basic",
+        "licenseVisible": "experimental",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
         "wordPartySettings": "experimental"

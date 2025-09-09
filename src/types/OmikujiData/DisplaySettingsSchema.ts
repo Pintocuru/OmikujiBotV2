@@ -1,5 +1,4 @@
 // src/types/DisplaySettingsSchema.ts
-// 250716_1 新規追加
 import { z } from 'zod'
 import { AccessLevelSchema, displaySize } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
@@ -74,6 +73,7 @@ const visibilitySchema = z.object({
   // コンポーネントの特定の箇所
   characterVisible: AccessLevelSchema.default('basic').catch('basic'),
   wordPartyLoading: AccessLevelSchema.default('internal').catch('internal'),
+  licenseVisible: AccessLevelSchema.default('basic').catch('basic'),
   // ゲームスクリプト
   gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
   gameScripts: z.array(z.string()).default([]).catch([]), //

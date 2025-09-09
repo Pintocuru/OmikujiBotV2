@@ -17,9 +17,21 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
-  // displaySettingsを更新する関数
+  // displaySettings を更新する関数
   const updateDisplaySettings = (updates: Partial<DisplaySettingsType>) => {
     data.value.displaySettings = { ...data.value.displaySettings, ...updates }
+    hasChanged.value = true
+  }
+
+  // displaySettings のネストされたプロパティを安全に更新する汎用関数
+  const updateNestedDisplaySettings = <T extends keyof Omit<DisplaySettingsType, 'licenseKeyHash'>>(
+    key: T,
+    updates: Partial<DisplaySettingsType[T]>
+  ) => {
+    data.value.displaySettings[key] = {
+      ...data.value.displaySettings[key],
+      ...updates,
+    } as DisplaySettingsType[T]
     hasChanged.value = true
   }
 
@@ -29,15 +41,16 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
-  // wordPartySettingsを更新する関数
+  // meta を更新する関数
   const updateMeta = (newSettings: PackageMetaType) => {
     data.value.meta = newSettings
     hasChanged.value = true
   }
 
   return {
-    updateDisplaySettings,
     updateScriptSettings,
+    updateDisplaySettings,
+    updateNestedDisplaySettings,
     updateWordPartySettings,
     updateMeta,
   }
