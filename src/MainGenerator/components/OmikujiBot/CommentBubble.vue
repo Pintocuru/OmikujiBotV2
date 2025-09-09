@@ -1,7 +1,7 @@
 <!-- src/components/common/CommentBubble.vue -->
 <template>
   <div
-    class="relative inline-block max-w-3xl min-w-[16rem]"
+    class="relative inline-block max-w-2xl min-w-[10rem]"
     :class="[customClasses, brightnessClass]"
     :style="{
       backgroundColor: props.color?.backgroundColor || '#212121',
@@ -9,7 +9,12 @@
     }"
   >
     <!-- 名前表示 -->
-    <div v-if="name && name !== ''" class="mb-0" :class="textSizeClass" :style="{ color: color?.nameColor || '#ccc' }">
+    <div
+      v-if="name && name !== ''"
+      class="font-semibold"
+      :class="textSizeClass"
+      :style="{ color: color?.nameColor || '#ccc' }"
+    >
       {{ name }}
     </div>
 

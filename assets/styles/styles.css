@@ -1,16 +1,20 @@
 /* assets/styles.css */
 
+/* TODO:Kiwi Maru　Hachi Maru Pop の2つを追加したいです */
+
 /* Google Fonts 読み込み */
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kaisei+Decol&family=Kosugi+Maru&family=M+PLUS+1p&family=Mochiy+Pop+One&family=Shippori+Mincho&family=WDXL+Lubrifont+JP+N&display=swap');
 
 /* M PLUS 標準的なゴシック https://mplusfonts.github.io/ */
 .font-mplus-1p {
   font-family: 'M PLUS 1p', sans-serif;
+  font-weight: 600;
 }
 
 /* しっぽり明朝 少し筆っぽいクセのある明朝 https://fontdasu.com/shippori-mincho/ */
 .font-shippori-mincho {
   font-family: 'Shippori Mincho', serif;
+  font-weight: 600;
 }
 
 /* 小杉丸 柔らかい丸ゴシック https://free-fonts.jp/kosugimaru/ */
@@ -22,6 +26,7 @@
 /* M PLUS 標準的なゴシック */
 .font-kaisei-decol {
   font-family: 'Kaisei Decol', serif;
+  font-weight: 500;
 }
 
 /* ドットゴシック16 ドットだわー https://goodfreefonts.com/489/ */
