@@ -9,8 +9,8 @@
     <SectionCard
       :isOpen="activeSection === 'basicInfo'"
       @toggle="toggleSection('basicInfo')"
-      :title="selectedItem.name"
-      :subTitle="` : ${selectedItem.description}`"
+      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
+      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="キャラクター、またはカラー設定名の編集"
     >
       <CharacterBasicInfo :selectedRuleId="selectedRuleId" />

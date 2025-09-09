@@ -9,7 +9,7 @@
       :isGild="true"
       :isOpen="activeSection === 'basic'"
       @toggle="toggleSection('basic')"
-      :title="selectedItem.name"
+      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       description="プレースホルダー名の設定を行います"
     >
       <!-- ID表示とコピー -->

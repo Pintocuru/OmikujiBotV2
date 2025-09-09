@@ -5,7 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "v2025.09.03",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.0.1",
+    "generatorVersion": "v1.1.0-rc2",
+    "dataVersion": 1.092,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -21,7 +22,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-03T23:45:29.469Z",
+      "updatedAt": "2025-09-09T11:33:57.744Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1662,7 +1663,7 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "omiken",
+      "frameId": "OmikujiBot",
       "displayOption": {
         "isIconDisplay": false,
         "isOneCommePost": true,
@@ -1714,10 +1715,15 @@
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
       "bubbleMotionLeave": "slideUp",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToastsOnRight": true,
+      "showToasts": true,
+      "showToastsCharacter": false,
+      "showCharacterThumbnail": false,
       "showCharacterFrame": false,
       "showCharacterPersistent": false,
-      "showCharacterThumbnail": false,
-      "showToasts": true,
+      "bundleCharacters": false,
       "daisyUiTheme": "corporate"
     },
     "developer": {
@@ -1732,6 +1738,7 @@
         "characters": "basic",
         "characterVisible": "pro",
         "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
         "gameScriptSettings": "internal",
         "gameScripts": [
           "BomberSpin",

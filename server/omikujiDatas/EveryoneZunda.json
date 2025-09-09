@@ -3,9 +3,10 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.09-v1.1.0-rc1",
+    "version": "ver2025.09.09-v1.1.0-rc2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.1.0-beta1",
+    "generatorVersion": "v1.1.0-rc2",
+    "dataVersion": 1.092,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -14,8 +15,7 @@
       "（ず・ω・きょ）"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/6053855",
-    "dataVersion": 1.1
+    "url": "https://pintocuru.booth.pm/items/6053855"
   },
   "comments": {
     "OmikujiZunda": {
@@ -3535,16 +3535,21 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",
       "bubbleMotionEnter": "flipInY",
       "bubbleMotionLeave": "flipInY",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToastsOnRight": true,
+      "showToasts": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": true,
       "showCharacterFrame": true,
       "showCharacterPersistent": false,
-      "showCharacterThumbnail": true,
-      "showToasts": true,
+      "bundleCharacters": false,
       "daisyUiTheme": "corporate"
     },
     "developer": {
@@ -3559,6 +3564,7 @@
         "characters": "basic",
         "characterVisible": "basic",
         "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
         "gameScriptSettings": "pro",
         "gameScripts": [
           "BomberSpin",

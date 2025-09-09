@@ -9,8 +9,8 @@
     <SectionCard
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :title="selectedItem.name"
-      :subTitle="` : ${selectedItem.description}`"
+      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
+      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="コメントルールの基本的な設定"
     >
       <BaseSettingsEditor v-model="selectedItem" category="comments" />

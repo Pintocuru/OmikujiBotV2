@@ -1,9 +1,8 @@
 // build.ts
+import { createShimsVue } from './buildOptions/CreateOmikujiData'
+import { alias } from '../vite.config'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/buildMain'
 import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
-import { alias } from '../vite.config'
-import packageJson from '../package.json'
-import { createShimsVue } from './buildOptions/CreateOmikujiData'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
@@ -16,6 +15,7 @@ import EveryoneZundaProject from './packages/full/EveryoneZunda'
 import DivaMetanProject from './packages/full/DivaMetan'
 import HondaJankenProject from './packages/solo/HondaJanken'
 import percent_DoraProject from './packages/solo/5percent_Dora'
+import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 // .env からrootを取得
 const __filename = fileURLToPath(import.meta.url)
@@ -30,10 +30,10 @@ const packageRoot = process.env.PACKAGE_ROOT
  */
 const buildTargets: BuildTarget[] = [
   { project: 'OmikujiBot', accessLevels: ['basic'] },
-  { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
-  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
-  { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
-  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
+  //  { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
+  //  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
+  // { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
+  //{ project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
   //  { project: 'HondaJanken', accessLevels: ['basic'] }, // HondaJanken
   // { project: '5percent_Dora', accessLevels: ['basic'] }, // 5percent_Dora
 ]
@@ -49,11 +49,11 @@ const buildTargets: BuildTarget[] = [
     // メインビルド処理
     const systemCommonData: SystemCommonData = {
       alias,
-      author: packageJson.author,
-      description: packageJson.description,
-      generatorName: packageJson.name,
-      generatorVersion: packageJson.version,
-      dataVersion: packageJson.dataVersion,
+      author: 'Pintocuru(せすじピンとしてます)',
+      description: 'おみくじ付きBOTジェネレーター',
+      generatorName: 'omikuji-bot',
+      generatorVersion: APP_VERSION,
+      dataVersion: DATA_VERSION,
     }
     const builder = new WebpackBuilder(systemCommonData)
 

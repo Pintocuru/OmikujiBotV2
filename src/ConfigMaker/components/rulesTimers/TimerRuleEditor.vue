@@ -10,8 +10,8 @@
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
-      :title="selectedItem.name"
-      :subTitle="` : ${selectedItem.description}`"
+      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
+      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="機能のON/OFFや名称の設定を行います"
     >
       <BaseSettingsEditor v-model="selectedItem" category="timers" />

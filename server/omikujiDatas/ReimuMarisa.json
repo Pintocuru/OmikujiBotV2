@@ -3,9 +3,10 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.09-v1.1.0-rc1",
+    "version": "ver2025.09.09-v1.1.0-rc2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "1.1.0-beta1",
+    "generatorVersion": "v1.1.0-rc2",
+    "dataVersion": 1.092,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -17,8 +18,7 @@
       "じゃんけん"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/5471598",
-    "dataVersion": 1.1
+    "url": "https://pintocuru.booth.pm/items/5471598"
   },
   "comments": {
     "omikujiReimu": {
@@ -357,7 +357,7 @@
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "updatedAt": "2025-09-09T11:27:14.726Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -4310,10 +4310,15 @@
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
       "bubbleMotionLeave": "slideUp",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToastsOnRight": true,
+      "showToasts": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": true,
       "showCharacterFrame": true,
       "showCharacterPersistent": false,
-      "showCharacterThumbnail": true,
-      "showToasts": true,
+      "bundleCharacters": false,
       "daisyUiTheme": "cmyk"
     },
     "developer": {
@@ -4328,6 +4333,7 @@
         "characters": "basic",
         "characterVisible": "basic",
         "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
         "gameScriptSettings": "pro",
         "gameScripts": [
           "BomberSpin",
