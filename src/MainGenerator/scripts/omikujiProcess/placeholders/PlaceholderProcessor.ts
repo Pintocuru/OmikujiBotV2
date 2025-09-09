@@ -21,6 +21,7 @@ export class PlaceholderProcessor {
    * コンテキスト値を更新
    */
   updateContext(values: Record<string, string | number>): void {
+    console.log(values)
     this.context.updateValues(values)
   }
 
@@ -42,6 +43,9 @@ export class PlaceholderProcessor {
    */
   processText(text: string | undefined, seed?: number): string {
     if (!text) return ''
+
+    // resolverにコンテキスト値を渡す
+    this.resolver.setContextValues(this.context.getAllValues())
 
     return text.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
       const trimmedId = placeholderId.trim()

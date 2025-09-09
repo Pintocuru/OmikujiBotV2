@@ -8,6 +8,7 @@ import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
  */
 export class PlaceholderResolver {
   private readonly placeholderMap: Map<string, PlaceholderType>
+  private contextValues: Map<string, string | number> = new Map()
   private static readonly MAX_RECURSION_DEPTH = 10 // 無限再帰防止
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
@@ -16,6 +17,13 @@ export class PlaceholderResolver {
       // keyが空の場合はidをフォールバックとして使用
       const lookupKey = placeholder.key
       this.placeholderMap.set(lookupKey, placeholder)
+    }
+  }
+
+  setContextValues(values: Record<string, string | number>): void {
+    this.contextValues.clear()
+    for (const [key, value] of Object.entries(values)) {
+      this.contextValues.set(key, value)
     }
   }
 
@@ -33,6 +41,12 @@ export class PlaceholderResolver {
     // 特殊プレースホルダー処理
     if (placeholderId === 'null') {
       return ''
+    }
+
+    // コンテキスト値チェックを追加
+    if (this.contextValues.has(placeholderId)) {
+      const value = this.contextValues.get(placeholderId)
+      return String(value)
     }
 
     // 通常のプレースホルダー解決
