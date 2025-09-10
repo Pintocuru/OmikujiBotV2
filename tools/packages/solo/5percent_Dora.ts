@@ -34,7 +34,7 @@ function project(packageRoot: string): ProjectConfig {
     template: {
       name: 'どこでもドラちゃんBot',
       boothURL: 'https://pintocuru.booth.pm/items/7291931',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBot5percent_Dora/README.md',
+      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/5percent_Dora/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 

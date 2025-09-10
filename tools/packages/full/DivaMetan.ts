@@ -46,7 +46,7 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/DivaMetan.png', to: 'thumb.png' },
+          { from: 'assets/exported/thumb/thumb_DivaMetan.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/metan/', to: 'Characters/metan/' },
         ],
         skipWebpack: false,
