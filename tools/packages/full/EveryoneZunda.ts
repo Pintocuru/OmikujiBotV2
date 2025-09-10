@@ -1,7 +1,7 @@
 // tools\packages\full\EveryoneZunda.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { APP_VERSION, BUILD_DATE } from '@/config/version'
-import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
+import { ProjectConfig } from '@shared/utils/webpackBuild/config/buildTypes'
 
 /**
  * プロジェクト設定

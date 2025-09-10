@@ -1,8 +1,8 @@
 // build.ts
 import { createShimsVue } from './buildOptions/CreateOmikujiData'
 import { alias } from '../vite.config'
-import { WebpackBuilder } from '@shared/utils/webpackBuild/buildMain'
-import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
+import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
+import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/config/buildTypes'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
@@ -30,11 +30,11 @@ const packageRoot = process.env.PACKAGE_ROOT
  */
 const buildTargets: BuildTarget[] = [
   //  { project: 'OmikujiBot', accessLevels: ['basic'] },
-  //  { project: 'ReimuMarisa', accessLevels: ['basic', 'pro'] },
-  //{ project: 'ReimuMarisaMate', accessLevels: ['basic', 'pro'] },
-  { project: 'EveryoneZunda', accessLevels: ['basic', 'pro'] },
-  { project: 'DivaMetan', accessLevels: ['basic', 'pro'] },
-  //{ project: 'HondaJanken', accessLevels: ['basic'] },
+  //  { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'] },
+  //{ project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'EveryoneZunda', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'DivaMetan', accessLevels: ['basic', 'basicJson', 'pro'] },
+  //{ project: 'HondaJanken', accessLevels: ['basic', 'basicJson'] },
   //{ project: '5percent_Dora', accessLevels: ['basic'] },
 ]
 

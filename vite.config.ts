@@ -2,7 +2,7 @@
 import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { baseViteConfig, rootAlias } from '../../shared/utils/webpackBuild/viteConfigBase'
+import { baseViteConfig, rootAlias } from '../../shared/utils/ViteConfig/viteConfigBase'
 import tsconfig from './tsconfig.json'
 
 // __dirname の設定
