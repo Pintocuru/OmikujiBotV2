@@ -5,8 +5,8 @@ import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
-import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
+import { Comment } from '@onecomme.com/onesdk/'
+import { ServiceMeta } from '@onecomme.com/onesdk/'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMetaCondition } from '@shared/types'
 

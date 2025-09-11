@@ -7,7 +7,7 @@ import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { PlaceProcess } from './PlaceProcess'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
-import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
+import { ServiceMeta } from '@onecomme.com/onesdk/'
 import { ServiceMetaCondition } from '@shared/types'
 
 interface TimerState {

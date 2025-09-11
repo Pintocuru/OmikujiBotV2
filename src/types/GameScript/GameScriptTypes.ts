@@ -4,7 +4,7 @@ import { GameState } from './GameScriptSchema'
 import { PostActionWordPartyType } from '../OmikujiData/OmikujiSchema'
 import { GameComponentConfig } from '../GameComponent/GameRankingTypes'
 import { DefaultTypes, PresetMetadata } from '@shared/types/'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 
 // スクリプトプリセット
 export interface ScriptPreset<

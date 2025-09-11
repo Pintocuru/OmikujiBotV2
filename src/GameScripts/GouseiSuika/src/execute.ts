@@ -1,7 +1,7 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 import { GAME_CONFIGS, GameResult } from './gameConfigs'
 import { GachaGame } from './game'
 import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute'

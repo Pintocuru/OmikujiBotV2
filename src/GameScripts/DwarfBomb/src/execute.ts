@@ -2,7 +2,7 @@
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { BomberSpinGame } from './game'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute'
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {

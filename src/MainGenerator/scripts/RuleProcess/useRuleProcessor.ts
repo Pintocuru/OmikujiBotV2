@@ -1,6 +1,6 @@
 // composables/useRuleProcessor.ts
 import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { TimerProcessor } from '../omikujiProcess/timerProcessor'

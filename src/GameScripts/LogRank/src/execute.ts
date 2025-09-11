@@ -1,7 +1,7 @@
 // src/execute.ts
 // ユーザーの勝敗・ポイント・ランキングを管理するゲームシステム
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 
 // Services
 import { UserStatsService } from './services/UserStatsService'

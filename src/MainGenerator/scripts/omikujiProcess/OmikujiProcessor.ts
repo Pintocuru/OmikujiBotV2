@@ -12,7 +12,7 @@ import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 
 export class OmikujiProcessor {
   private readonly placeProcess: PlaceProcess

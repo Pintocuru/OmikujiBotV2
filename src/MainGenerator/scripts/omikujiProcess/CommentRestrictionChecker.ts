@@ -1,7 +1,7 @@
 // src/MainGenerator/utils/commentProcessor/CommentRestrictionChecker.ts
 // 制限チェッカー
 import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 import { useAppStore } from '@/MainGenerator/stores'
 
 interface RestrictionCheckResult {

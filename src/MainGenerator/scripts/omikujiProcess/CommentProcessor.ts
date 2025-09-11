@@ -4,7 +4,7 @@ import { OmikujiDataType } from '@/types/'
 import { UserCommentProcessor } from '@MainScripts/omikujiProcess/UserCommentProcessor'
 import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { Comment } from '@onecomme.com/onesdk/types/Comment'
+import { Comment } from '@onecomme.com/onesdk/'
 
 export class CommentProcessor {
   private readonly timeThreshold = 5000 // これ以上経過した古いコメントは判定しない
