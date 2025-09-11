@@ -19,7 +19,7 @@ export class BotMessageGenerator {
     // 共通のメッセージ作成ロジック
     const createMessage = (content: string, isToast: boolean): BotMessage => {
       return BotMessageSchema.parse({
-        name: character.name,
+        name: character.displayName,
         characterKey: postAction.characterKey,
         iconKey: postAction.iconKey,
         profileImage: character.displayOption.isIconDisplay

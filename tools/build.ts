@@ -30,11 +30,11 @@ const packageRoot = process.env.PACKAGE_ROOT
  */
 const buildTargets: BuildTarget[] = [
   //  { project: 'OmikujiBot', accessLevels: ['basic'] },
-  //  { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'] },
-  //{ project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'] },
   { project: 'EveryoneZunda', accessLevels: ['basic', 'basicJson', 'pro'] },
   { project: 'DivaMetan', accessLevels: ['basic', 'basicJson', 'pro'] },
-  //{ project: 'HondaJanken', accessLevels: ['basic', 'basicJson'] },
+  { project: 'HondaJanken', accessLevels: ['basic', 'basicJson'] },
   //{ project: '5percent_Dora', accessLevels: ['basic'] },
 ]
 

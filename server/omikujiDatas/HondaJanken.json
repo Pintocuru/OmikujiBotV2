@@ -1709,7 +1709,7 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",
@@ -1733,19 +1733,15 @@
       },
       "visibility": {
         "comments": "basic",
-        "timers": "pro",
+        "timers": "experimental",
         "placeholders": "basic",
         "characters": "basic",
-        "characterVisible": "pro",
-        "wordPartyLoading": "internal",
-        "licenseVisible": "basic",
-        "gameScriptSettings": "internal",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
-        "wordPartySettings": "pro"
+        "characterVisible": "experimental",
+        "wordPartyLoading": "experimental",
+        "licenseVisible": "experimental",
+        "gameScriptSettings": "experimental",
+        "gameScripts": [],
+        "wordPartySettings": "experimental"
       }
     }
   },
