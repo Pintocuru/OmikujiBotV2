@@ -31,7 +31,7 @@ function project(packageRoot: string): ProjectConfig {
     template: {
       name: 'おみくじBOT じゃんけん OmikujiBot HondaJanken',
       boothURL: 'https://pintocuru.booth.pm/items/7383088',
-      readmeURL: 'https://github.com/Pintocuru/OmikenReadme/blob/main/docs/OmikujiBot/solo/HondaJanken/README.md',
+      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/HondaJanken/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
@@ -47,8 +47,6 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/config.js', to: 'config.js' },
           { from: 'assets/exported/thumb/HondaJanken.png', to: 'thumb.png' },
         ],
-        skipWebpack: false,
-        outputJson: true,
       },
     },
   }

@@ -1,15 +1,19 @@
 {
   "meta": {
     "id": "1754884254510-shoywq",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.1",
+    "name": "おみくじBOT カード駅 OmikujiBot CardStation",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.1.0",
-    "dataVersion": 1.1,
-    "author": "Pintocuru",
-    "tags": [],
-    "license": "CC-BY 4.0"
+    "generatorVersion": "v1.1.1",
+    "dataVersion": 1.11,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "じゃんけん"
+    ],
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7412886"
   },
   "comments": {
     "StationCard": {

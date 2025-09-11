@@ -13,8 +13,10 @@ import ReimuMarisaProject from './packages/full/ReimuMarisa'
 import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
 import EveryoneZundaProject from './packages/full/EveryoneZunda'
 import DivaMetanProject from './packages/full/DivaMetan'
-import HondaJankenProject from './packages/solo/HondaJanken'
+
 import percent_DoraProject from './packages/solo/5percent_Dora'
+import HondaJankenProject from './packages/solo/HondaJanken'
+import CardStationProject from './packages/solo/CardStation'
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 // .env からrootを取得
@@ -29,13 +31,16 @@ const packageRoot = process.env.PACKAGE_ROOT
  * ビルド設定リスト
  */
 const buildTargets: BuildTarget[] = [
-  //  { project: 'OmikujiBot', accessLevels: ['basic'] },
-  { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'EveryoneZunda', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'DivaMetan', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'HondaJanken', accessLevels: ['basic', 'basicJson'] },
+  // { project: 'OmikujiBot', accessLevels: ['basic'] },
+
+  // { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'] },
+  //{ project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'] },
+  //{ project: 'EveryoneZunda', accessLevels: ['basic', 'basicJson', 'pro'] },
+  //{ project: 'DivaMetan', accessLevels: ['basic', 'basicJson', 'pro'] },
+
   //{ project: '5percent_Dora', accessLevels: ['basic'] },
+  { project: 'HondaJanken', accessLevels: ['basic', 'basicJson'] },
+  { project: 'CardStation', accessLevels: ['basic', 'basicJson'] },
 ]
 
 /**
@@ -59,12 +64,15 @@ const buildTargets: BuildTarget[] = [
 
     // 新しいバージョンができた場合、ここに記載すること
     builder.registerProject(OmikujiBotProject(packageRoot))
+
     builder.registerProject(ReimuMarisaProject(packageRoot))
     builder.registerProject(ReimuMarisaMateProject(packageRoot))
     builder.registerProject(EveryoneZundaProject(packageRoot))
     builder.registerProject(DivaMetanProject(packageRoot))
-    builder.registerProject(HondaJankenProject(packageRoot))
+
     builder.registerProject(percent_DoraProject(packageRoot))
+    builder.registerProject(HondaJankenProject(packageRoot))
+    builder.registerProject(CardStationProject(packageRoot))
 
     // ビルド
     await builder.buildTargets(buildTargets)
