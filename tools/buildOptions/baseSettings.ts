@@ -32,6 +32,7 @@ export function createCommonBuildConfig(packageRoot: string) {
 
     // JSON設定（おみくじデータ）
     json: {
+      jsonPathRoot: path.resolve(packageRoot, 'server/omikujiDatas/'),
       generateAccessLevelData,
       generateJsContent,
     },
