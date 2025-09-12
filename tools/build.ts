@@ -1,8 +1,8 @@
 // build.ts - 改良版
 import { createShimsVue } from './buildOptions/CreateOmikujiData'
 import { alias } from '../vite.config'
-import { ImprovedWebpackBuilder } from '@shared/utils/webpackBuild/ImprovedWebpackBuilder'
-import { BuildTarget, SystemCommonData, ProjectType } from '@shared/utils/webpackBuild/config/buildTypes'
+import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
+import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
@@ -34,22 +34,22 @@ const buildTargets: BuildTarget[] = [
   /**
    * core - 常にWebpackビルドが必要
    */
-  { project: 'OmikujiBot', accessLevels: ['basic'], type: 'core' },
+  { project: 'OmikujiBot', type: 'CORE', accessLevels: ['basic'] },
 
   /**
    * full
    */
-  { project: 'EveryoneZunda', accessLevels: ['basic', 'basicJson', 'pro'], type: 'extension' },
-  // { project: 'ReimuMarisa', accessLevels: ['basic', 'basicJson', 'pro'], type: 'extension' },
-  // { project: 'ReimuMarisaMate', accessLevels: ['basic', 'basicJson', 'pro'], type: 'extension' },
-  // { project: 'DivaMetan', accessLevels: ['basic', 'basicJson', 'pro'], type: 'extension' },
+  { project: 'EveryoneZunda', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'ReimuMarisa', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'ReimuMarisaMate', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
+  { project: 'DivaMetan', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
 
   /**
    * solo
    */
-  // { project: '5percent_Dora', accessLevels: ['basic'], type: 'extension' },
-  // { project: 'HondaJanken', accessLevels: ['basic', 'basicJson'], type: 'extension' },
-  // { project: 'CardStation', accessLevels: ['basic', 'basicJson'], type: 'extension' },
+  // { project: '5percent_Dora',type: 'FULL', accessLevels: ['basic'],  },
+  // { project: 'HondaJanken', type: 'FULL',accessLevels: ['basic', 'basicJson'],  },
+  // { project: 'CardStation',type: 'FULL', accessLevels: ['basic', 'basicJson'],  },
 ]
 
 /**
@@ -70,20 +70,22 @@ const buildTargets: BuildTarget[] = [
       dataVersion: DATA_VERSION,
     }
 
-    const builder = new ImprovedWebpackBuilder(systemCommonData)
+    const builder = new WebpackBuilder(systemCommonData)
 
     // プロジェクト登録
-    builder.registerProject(OmikujiBotProject(packageRoot))
-    builder.registerProject(ReimuMarisaProject(packageRoot))
-    builder.registerProject(ReimuMarisaMateProject(packageRoot))
-    builder.registerProject(EveryoneZundaProject(packageRoot))
-    builder.registerProject(DivaMetanProject(packageRoot))
-    builder.registerProject(percent_DoraProject(packageRoot))
-    builder.registerProject(HondaJankenProject(packageRoot))
-    builder.registerProject(CardStationProject(packageRoot))
+    builder.registerProject([
+      OmikujiBotProject(packageRoot),
+      ReimuMarisaProject(packageRoot),
+      ReimuMarisaMateProject(packageRoot),
+      EveryoneZundaProject(packageRoot),
+      DivaMetanProject(packageRoot),
+      percent_DoraProject(packageRoot),
+      HondaJankenProject(packageRoot),
+      CardStationProject(packageRoot),
+    ])
 
     // 改良されたビルドを実行
-    await builder.buildTargetsOptimized(buildTargets)
+    await builder.buildTargets(buildTargets)
 
     console.log('[Build] All builds completed successfully!')
   } catch (error) {

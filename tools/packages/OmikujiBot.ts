@@ -1,5 +1,5 @@
 // tools\packages\OmikujiBot.ts
-import { ProjectConfig } from '@shared/utils/webpackBuild/config/buildTypes'
+import { ProjectConfig } from '@shared/utils/webpackBuild/buildTypes'
 import { createCommonBuildConfig } from '../buildOptions/baseSettings'
 import { APP_VERSION } from '@/config/version'
 
