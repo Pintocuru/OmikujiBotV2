@@ -37,6 +37,7 @@ export const PostActionToastSchema = z.object({
   actionType: z.literal("toast"),
   characterKey: z.string().default("").catch(""),
   messageToast: z.string().default("").catch(""),
+  wordParty: z.string().optional().catch(undefined),
   sound: z.string().optional().catch(undefined),
 });
 

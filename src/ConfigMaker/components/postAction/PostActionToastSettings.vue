@@ -18,6 +18,11 @@
     />
   </SettingItem>
 
+  <!-- WordParty -->
+  <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
+    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
+  </SettingItem>
+
   <!-- サウンド -->
   <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <input
@@ -33,6 +38,7 @@
   import { computed } from 'vue'
   import { isDev, PostActionType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import WordPartyField from './WordPartyField.vue'
 
   const props = defineProps<{
     action: PostActionType
@@ -57,6 +63,11 @@
   const messageToast = computed({
     get: () => props.action.messageToast || '',
     set: (value) => updateAction({ messageToast: value || undefined }),
+  })
+
+  const wordPartyValue = computed({
+    get: () => props.action.wordParty || '',
+    set: (value) => updateAction({ wordParty: value || undefined }),
   })
 
   const sound = computed({

@@ -34,22 +34,30 @@ const buildTargets: BuildTarget[] = [
   /**
    * core - 常にWebpackビルドが必要
    */
-  { project: 'OmikujiBot', type: 'CORE', accessLevels: ['basic'] },
-
+  //   { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
   /**
    * full
    */
-  { project: 'EveryoneZunda', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'ReimuMarisa', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'ReimuMarisaMate', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
-  { project: 'DivaMetan', type: 'FULL', accessLevels: ['basic', 'basicJson', 'pro'] },
-
+  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
+  { project: 'ReimuMarisa', type: 'PATCH', accessLevel: 'pro' },
+  { project: 'ReimuMarisaMate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisaMate', type: 'JSON', accessLevel: 'basic' },
+  { project: 'ReimuMarisaMate', type: 'PATCH', accessLevel: 'pro' },
+  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
+  { project: 'EveryoneZunda', type: 'PATCH', accessLevel: 'pro' },
+  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
+  { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
   /**
    * solo
    */
-  // { project: '5percent_Dora',type: 'FULL', accessLevels: ['basic'],  },
-  // { project: 'HondaJanken', type: 'FULL',accessLevels: ['basic', 'basicJson'],  },
-  // { project: 'CardStation',type: 'FULL', accessLevels: ['basic', 'basicJson'],  },
+  //  { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  //  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  //{ project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
+  //  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  //{ project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
