@@ -1,10 +1,10 @@
-// src/MainGenerator/utils/
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\omikujiProcess\TimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { PlaceProcess } from './PlaceProcess'
+import { PlaceProcess } from '../PlaceholderProcess/PlaceProcess'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/'

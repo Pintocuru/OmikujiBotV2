@@ -5,7 +5,7 @@ import { OmikujiDataSchema, BotMessage, OmikujiDataType } from '@/types/'
 import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
-import { CooldownManager } from '@MainScripts/omikujiProcess/CooldownManager'
+import { CooldownManager } from '@/MainGenerator/scripts/CooldownManager/CooldownManager'
 import { normalizeData } from '@/migrations'
 
 // グローバルデータの初期化

@@ -3,7 +3,7 @@ import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor'
 import { Comment } from '@onecomme.com/onesdk/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { TimerProcessor } from '../omikujiProcess/timerProcessor'
+import { TimerProcessor } from './TimerProcessor'
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
 import { ConfigUserType } from '@shared/types'
 

@@ -18,7 +18,7 @@
     PostActionSchema,
     PostActionType,
   } from '@/types/'
-  import { PlaceProcess } from '@MainScripts/omikujiProcess/PlaceProcess'
+  import { PlaceProcess } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceProcess'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'

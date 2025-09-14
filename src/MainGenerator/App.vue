@@ -47,7 +47,7 @@
   import DisplayControlPanel from '@MainComponents/OmikujiBot/DisplayControlPanel.vue'
   import GameRankingViewer from '@MainComponents/GameRankingViewer/GameRankingViewer.vue'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
-  import { useRuleProcessor } from './scripts/RuleProcess/useRuleProcessor'
+  import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
   import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
 
   // Piniaストアの使用

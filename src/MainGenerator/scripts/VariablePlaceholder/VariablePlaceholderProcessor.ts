@@ -1,4 +1,4 @@
-// src/MainGenerator/script/omikujiProcess/VariablePlaceholderProcessor.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\VariablePlaceholder\VariablePlaceholderProcessor.ts
 
 /**
  * 変数プレースホルダー処理エンジン

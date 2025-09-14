@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/omikujiProcess/placeholders/PlaceholderResolver.ts
 import { handelNormalizedValues, PlaceholderType, PlaceholderValueType } from '@/types/'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { VariablePlaceholderProcessor } from '../VariablePlaceholderProcessor'
+import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariablePlaceholderProcessor'
 import { MapBasedResolver } from './MapBasedResolver'
 import { PlaceholderAnalyzer } from './PlaceholderAnalyzer'
 

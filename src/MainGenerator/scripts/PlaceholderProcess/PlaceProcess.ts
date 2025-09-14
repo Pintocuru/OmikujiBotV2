@@ -1,7 +1,7 @@
-// src/MainGenerator/script/omikujiProcess/PlaceProcess.ts
+// src\MainGenerator\scripts\PlaceholderProcess\PlaceProcess.ts
 import { PostActionType, PlaceholderType } from '@/types/'
 import { DefaultTypes } from '@shared/types'
-import { PlaceholderProcessor } from './placeholders/PlaceholderProcessor'
+import { PlaceholderProcessor } from './PlaceholderProcessor'
 
 /**
  * プレースホルダー置換処理を行うメインクラス

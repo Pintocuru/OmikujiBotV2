@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/omikujiProcess/placeholders/MapBasedResolver.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PlaceholderProcess\MapBasedResolver.ts
 import { PlaceholderType, PlaceholderValueType } from '@/types/'
 
 /**
