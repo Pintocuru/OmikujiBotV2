@@ -2,6 +2,7 @@
 import { PlaceholderType, PostActionType } from '@/types/'
 import { PlaceholderResolver } from './PlaceholderResolver'
 import { PlaceholderContext } from './PlaceholderContext'
+import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
 
 /**
  * プレースホルダー処理のメインクラス
@@ -10,6 +11,7 @@ import { PlaceholderContext } from './PlaceholderContext'
 export class PlaceholderProcessor {
   private readonly resolver: PlaceholderResolver
   private readonly context: PlaceholderContext
+  private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
   private static readonly PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
@@ -46,9 +48,14 @@ export class PlaceholderProcessor {
     // resolverにコンテキスト値を渡す
     this.resolver.setContextValues(this.context.getAllValues())
 
-    return text.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
-      const trimmedId = placeholderId.trim()
+    // 動的プレースホルダーを処理
+    this.variableProcessor.clearVariables() // 初期化
+    // messageContent は プレースホルダーではないので、 rank計算ができない
+    // 変数プレースホルダーを処理
+    const content = this.variableProcessor.process(text)
 
+    return content.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
+      const trimmedId = placeholderId.trim()
       // コンテキスト値を優先的にチェック
       if (this.context.hasValue(trimmedId)) {
         const contextValue = this.context.getValue(trimmedId)

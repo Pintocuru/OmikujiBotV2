@@ -10,22 +10,19 @@ import { PlaceholderAnalyzer } from './PlaceholderAnalyzer'
  * 各プレースホルダーの解決ロジックを管理
  */
 export class PlaceholderResolver {
-  private readonly placeholderMap: Map<string, PlaceholderType>
+  private readonly placeholderMap: Map<string, PlaceholderType> = new Map()
   private contextValues: Map<string, string | number> = new Map()
   private currentUserId?: string
-  private readonly variableProcessor: VariablePlaceholderProcessor
-  private readonly mapResolver: MapBasedResolver
+  private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
+  private readonly mapResolver: MapBasedResolver = new MapBasedResolver()
   private readonly analyzer: PlaceholderAnalyzer
   private static readonly MAX_RECURSION_DEPTH = 10
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
-    this.placeholderMap = new Map()
     for (const placeholder of Object.values(placeholderSources)) {
       const lookupKey = placeholder.key
       this.placeholderMap.set(lookupKey, placeholder)
     }
-    this.variableProcessor = new VariablePlaceholderProcessor()
-    this.mapResolver = new MapBasedResolver()
     this.analyzer = new PlaceholderAnalyzer(this.placeholderMap)
   }
 

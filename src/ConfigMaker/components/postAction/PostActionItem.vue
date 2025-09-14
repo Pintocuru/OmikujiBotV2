@@ -35,7 +35,6 @@
       :is="currentComponent"
       :action="action"
       :character-options="characterOptions"
-      :index="index"
       @update:action="handleActionUpdate"
     />
   </div>
