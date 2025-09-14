@@ -1,6 +1,6 @@
 // src\MainGenerator\stores\useAppStore.ts
-import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { defineStore } from 'pinia'
 import { OmikujiDataSchema, BotMessage, OmikujiDataType } from '@/types/'
 import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PlaceholderProcess\PlaceholderAnalyzer.ts
+// src\MainGenerator\scripts\PlaceholderProcess\PlaceholderAnalyzer.ts
 import { PlaceholderType, handelNormalizedValues } from '@/types/'
 
 /**

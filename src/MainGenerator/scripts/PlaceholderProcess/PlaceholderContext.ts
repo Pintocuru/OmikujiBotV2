@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PlaceholderProcess\PlaceholderContext.ts
+// src\MainGenerator\scripts\PlaceholderProcess\PlaceholderContext.ts
 import { DefaultTypes } from '@shared/types'
 
 /**

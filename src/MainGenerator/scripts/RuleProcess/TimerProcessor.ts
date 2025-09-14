@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\omikujiProcess\TimerProcessor.ts
+// src\MainGenerator\scripts\omikujiProcess\TimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
