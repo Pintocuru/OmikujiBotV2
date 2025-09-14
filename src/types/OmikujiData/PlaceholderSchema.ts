@@ -31,6 +31,8 @@ export const PlaceholderValuesSchema = z
 export const PlaceholderSchema = z.object({
   ...BaseRecordSchema.shape,
   values: PlaceholderValuesSchema,
+  // TODO:v1.2で実装
+  mapType: z.enum(['mapDaily', 'mapHourly', 'mapWeekly', 'mapMonthly']).optional(),
 })
 
 export type PlaceholderType = z.infer<typeof PlaceholderSchema>

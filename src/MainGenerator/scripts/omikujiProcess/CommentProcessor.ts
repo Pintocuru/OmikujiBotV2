@@ -2,7 +2,7 @@
 import { BotMessage } from '@/types/'
 import { OmikujiDataType } from '@/types/'
 import { UserCommentProcessor } from '@MainScripts/omikujiProcess/UserCommentProcessor'
-import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
+import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Comment } from '@onecomme.com/onesdk/'
 

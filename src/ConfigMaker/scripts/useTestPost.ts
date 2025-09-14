@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/useTestPost.ts - テスト投稿用
 import { computed } from 'vue'
 import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiItemType, OmikujiDataType, RuleType } from '@/types/'
-import { GameScriptManager } from '@MainScripts/omikujiProcess/GameScriptManager'
+import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { MockComment } from '@shared/__mocks__/CreateMockComment'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'

@@ -1,7 +1,7 @@
 // src/MainGenerator/script/omikujiProcess/UserCommentProcessor.ts
 import { BotMessage, CommentRuleType, OmikujiDataType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { GameScriptManager } from './GameScriptManager'
+import { GameScriptManager } from '../GameScript/GameScriptManager'
 import { CommentRestrictionChecker } from './CommentRestrictionChecker'
 import { OmikujiProcessor } from './OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores'

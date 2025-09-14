@@ -1,0 +1,67 @@
+// src/MainGenerator/utils/processors/GameScript/ScriptInstanceManager.ts
+import { OmikujiDataType, ScriptClass } from '@/types/'
+import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
+
+export class ScriptInstanceManager {
+  private readonly scriptInstances: Record<string, ScriptClass> = {}
+  private readonly omikujiData: OmikujiDataType
+
+  constructor(omikujiData: OmikujiDataType) {
+    this.omikujiData = omikujiData
+  }
+
+  /**
+   * ゲームスクリプトの初期化
+   */
+  initializeScripts(): void {
+    try {
+      for (const scriptId of this.getAvailableScriptIds()) {
+        if (this.scriptInstances[scriptId]) continue
+
+        const scriptInstance = gameScriptMap[scriptId].execute
+        scriptInstance.setup(this.omikujiData.scriptSettings[scriptId])
+        this.scriptInstances[scriptId] = scriptInstance
+      }
+    } catch (error) {
+      console.error('スクリプト初期化エラー:', error)
+    }
+  }
+
+  /**
+   * omikujiData 内で使用されている有効な scriptId の一覧を返す
+   */
+  getAvailableScriptIds(): string[] {
+    const scriptIds = new Set<string>()
+
+    Object.values(this.omikujiData.comments).forEach((comment) => {
+      if (comment.scriptId && gameScriptMap[comment.scriptId]) {
+        scriptIds.add(comment.scriptId)
+      }
+    })
+
+    return Array.from(scriptIds)
+  }
+
+  /**
+   * スクリプトインスタンスを取得
+   */
+  getScriptInstance(scriptId: string): ScriptClass | null {
+    return this.scriptInstances[scriptId] || null
+  }
+
+  /**
+   * アクティブなスクリプトのリストを取得
+   */
+  getActiveScripts(): string[] {
+    return Object.keys(this.scriptInstances)
+  }
+
+  /**
+   * クリーンアップ処理
+   */
+  cleanup(): void {
+    Object.keys(this.scriptInstances).forEach((key) => {
+      delete this.scriptInstances[key]
+    })
+  }
+}

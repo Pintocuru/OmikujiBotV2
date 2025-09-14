@@ -1,6 +1,9 @@
-// src/MainGenerator/script/omikujiProcess/placeholders/PlaceholderResolver.ts
-import { handelNormalizedValues, PlaceholderType } from '@/types/'
+// src/MainGenerator/scripts/omikujiProcess/placeholders/PlaceholderResolver.ts
+import { handelNormalizedValues, PlaceholderType, PlaceholderValueType } from '@/types/'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
+import { VariablePlaceholderProcessor } from '../VariablePlaceholderProcessor'
+import { MapBasedResolver } from './MapBasedResolver'
+import { PlaceholderAnalyzer } from './PlaceholderAnalyzer'
 
 /**
  * プレースホルダー解決エンジン
@@ -9,15 +12,21 @@ import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 export class PlaceholderResolver {
   private readonly placeholderMap: Map<string, PlaceholderType>
   private contextValues: Map<string, string | number> = new Map()
-  private static readonly MAX_RECURSION_DEPTH = 10 // 無限再帰防止
+  private currentUserId?: string
+  private readonly variableProcessor: VariablePlaceholderProcessor
+  private readonly mapResolver: MapBasedResolver
+  private readonly analyzer: PlaceholderAnalyzer
+  private static readonly MAX_RECURSION_DEPTH = 10
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
     this.placeholderMap = new Map()
     for (const placeholder of Object.values(placeholderSources)) {
-      // keyが空の場合はidをフォールバックとして使用
       const lookupKey = placeholder.key
       this.placeholderMap.set(lookupKey, placeholder)
     }
+    this.variableProcessor = new VariablePlaceholderProcessor()
+    this.mapResolver = new MapBasedResolver()
+    this.analyzer = new PlaceholderAnalyzer(this.placeholderMap)
   }
 
   setContextValues(values: Record<string, string | number>): void {
@@ -27,29 +36,33 @@ export class PlaceholderResolver {
     }
   }
 
+  setUserId(userId: string): void {
+    this.currentUserId = userId
+  }
+
   /**
    * プレースホルダーを解決する
    * 毎回新しい値を生成（キャッシュしない）
    */
   resolve(placeholderId: string, depth: number = 0): string {
-    // 無限再帰防止
     if (depth > PlaceholderResolver.MAX_RECURSION_DEPTH) {
       console.warn(`プレースホルダー解決の最大深度に達しました: ${placeholderId}`)
       return `<<${placeholderId}>>`
     }
 
-    // 特殊プレースホルダー処理
-    if (placeholderId === 'null') {
-      return ''
-    }
+    // 新しい解決サイクルの開始時（depth=0）で変数をクリア
+    if (depth === 0) this.variableProcessor.clearVariables()
 
-    // コンテキスト値チェックを追加
+    // <<null>> なら値を入れずに返す
+    if (placeholderId === 'null') return ''
+
+    // コンテキスト値をチェック
     if (this.contextValues.has(placeholderId)) {
       const value = this.contextValues.get(placeholderId)
       return String(value)
     }
 
-    // 通常のプレースホルダー解決
+    // プレースホルダーの取得
     const placeholder = this.placeholderMap.get(placeholderId)
     if (!placeholder) {
       console.warn(`プレースホルダーが見つかりません: ${placeholderId}`)
@@ -61,14 +74,49 @@ export class PlaceholderResolver {
       return ''
     }
 
-    // 値を抽選
-    const selectedValue = drawOmikuji(normalizedValues)
+    // 値の選択とランク計算
+    const { selectedValue, rank } = this.selectValue(placeholder, normalizedValues)
+
     if (!selectedValue?.content) {
       return normalizedValues[0].content || ''
     }
 
-    // 選択された値内のプレースホルダーを再帰的に解決
-    return this.replaceInText(selectedValue.content, depth + 1)
+    // コンテンツの処理
+    return this.processContent(selectedValue.content, rank, normalizedValues.length, depth)
+  }
+
+  /**
+   * 値の選択とランク計算
+   */
+  private selectValue(
+    placeholder: PlaceholderType,
+    normalizedValues: PlaceholderValueType[]
+  ): { selectedValue: PlaceholderValueType; rank?: number } {
+    // mapType が設定されている場合の特殊処理
+    if (placeholder.mapType && this.currentUserId) {
+      const selectedValue = this.mapResolver.resolveWithMap(placeholder, normalizedValues, this.currentUserId)
+      const rank = this.mapResolver.calculateRankForUser(placeholder, normalizedValues, this.currentUserId)
+      return { selectedValue, rank }
+    } else {
+      // 従来通りのランダム抽選
+      const drawnValue = drawOmikuji(normalizedValues)
+      const selectedValue = drawnValue || normalizedValues[0]
+      return { selectedValue }
+    }
+  }
+
+  /**
+   * コンテンツの処理（変数処理 + プレースホルダー置換）
+   */
+  private processContent(content: string, rank: number | undefined, totalCount: number, depth: number): string {
+    // コンテキストを設定
+    this.variableProcessor.setContext(rank, totalCount)
+
+    // 変数プレースホルダーを処理
+    content = this.variableProcessor.process(content)
+
+    // 他のプレースホルダーを再帰的に解決（変数処理後に実行）
+    return this.replaceInText(content, depth + 1)
   }
 
   /**
@@ -83,49 +131,21 @@ export class PlaceholderResolver {
     })
   }
 
-  /**
-   * テキスト内で使用されているプレースホルダーIDを収集
-   */
+  // 分析機能のデリゲート
   extractPlaceholderIds(text: string): string[] {
-    const placeholderPattern = /<<([^>]+)>>/g
-    const ids: string[] = []
-    let match
-
-    while ((match = placeholderPattern.exec(text)) !== null) {
-      const placeholderId = match[1].trim()
-      if (placeholderId && !ids.includes(placeholderId)) {
-        ids.push(placeholderId)
-      }
-    }
-
-    return ids
+    return this.analyzer.extractPlaceholderIds(text)
   }
 
-  /**
-   * プレースホルダーの依存関係を再帰的に収集
-   */
   collectDependencies(placeholderId: string, visited: Set<string> = new Set()): string[] {
-    if (visited.has(placeholderId)) {
-      return [] // 循環参照防止
-    }
+    return this.analyzer.collectDependencies(placeholderId, visited)
+  }
 
-    visited.add(placeholderId)
-    const dependencies: string[] = [placeholderId]
+  // 変数プレースホルダー関連のデリゲート
+  analyzeVariablePlaceholders(text: string) {
+    return this.variableProcessor.extractVariablePlaceholders(text)
+  }
 
-    const placeholder = this.placeholderMap.get(placeholderId)
-    if (!placeholder) {
-      return dependencies
-    }
-
-    const normalizedValues = handelNormalizedValues(placeholder.values)
-    for (const value of normalizedValues) {
-      const childIds = this.extractPlaceholderIds(value.content)
-      for (const childId of childIds) {
-        const childDependencies = this.collectDependencies(childId, new Set(visited))
-        dependencies.push(...childDependencies.filter((id) => !dependencies.includes(id)))
-      }
-    }
-
-    return dependencies
+  getCurrentVariables() {
+    return this.variableProcessor.getVariables()
   }
 }
