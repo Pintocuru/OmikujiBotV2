@@ -5,7 +5,7 @@ import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
-import { CommentContextManager } from './CommentContextManager'
+import { DefaultPlaceholderService } from './DefaultPlaceholderService'
 import { PlaceProcess } from '../PlaceholderProcess/PlaceProcess'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
@@ -17,7 +17,7 @@ export class OmikujiProcessor {
   private readonly placeProcess: PlaceProcess
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
-  private readonly contextManager = new CommentContextManager()
+  private readonly defaultManager = new DefaultPlaceholderService()
 
   constructor(
     private readonly omikujiData: OmikujiDataType,
@@ -40,12 +40,12 @@ export class OmikujiProcessor {
 
   /**
    * おみくじの実行（おみくじアイテムを直接指定）
-   * scriptManagerが不要な場合に使用
+   * コンフィグエディターからの呼び出しなど、 scriptManagerが不要な場合に使用
    */
   executeOmikujiDirect(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
     try {
       if (comment) {
-        const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
+        const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
         this.placeProcess.updateResolvedValues(defaultPlaceholders)
       }
 
@@ -61,7 +61,7 @@ export class OmikujiProcessor {
    */
   executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType): BotMessage[] {
     try {
-      const defaultPlaceholders = this.contextManager.setupDefaultPlaceholdersComment(comment)
+      const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
 
       // scriptIdが存在し、scriptManagerが存在する場合のみスクリプトを実行
