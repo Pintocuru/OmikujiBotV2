@@ -1,9 +1,9 @@
-// src/MainGenerator/script/omikujiProcess/UserCommentProcessor.ts
+// src/MainGenerator/script/RuleProcess/RuleCommentExecutor.ts
 import { BotMessage, CommentRuleType, OmikujiDataType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
-import { CommentRestrictionChecker } from './CommentRestrictionChecker'
-import { OmikujiProcessor } from './OmikujiProcessor'
+import { CommentRestrictionChecker } from '../OmikujiProcess/CommentRestrictionChecker'
+import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores'
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
 
@@ -12,7 +12,7 @@ interface RuleProcessResult {
   botMessages: BotMessage[]
 }
 
-export class UserCommentProcessor {
+export class RuleCommentExecutor {
   private readonly restrictionChecker: CommentRestrictionChecker
   private readonly omikujiProcessor: OmikujiProcessor
 

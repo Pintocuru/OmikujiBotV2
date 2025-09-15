@@ -5,7 +5,7 @@ import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScript
 import { MockComment } from '@shared/__mocks__/CreateMockComment'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
-import { OmikujiProcessor } from '@MainScripts/omikujiProcess/OmikujiProcessor'
+import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'
 import { toast } from 'vue-sonner'
 import { storeToRefs } from 'pinia'
 

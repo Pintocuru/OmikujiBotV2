@@ -1,9 +1,9 @@
-// composables/useRuleProcessor.ts
-import { CommentProcessor } from '@MainScripts/omikujiProcess/CommentProcessor'
+// src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
+import { RuleCommentProcessor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentProcessor'
 import { Comment } from '@onecomme.com/onesdk/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { TimerProcessor } from './TimerProcessor'
+import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
 import { ConfigUserType } from '@shared/types'
 
@@ -11,11 +11,11 @@ export function useRuleProcessor() {
   /**
    * 初期化
    */
-  let commentProcessor: CommentProcessor | null = null
-  let timerProcessor: TimerProcessor | null = null
+  let commentProcessor: RuleCommentProcessor | null = null
+  let timerProcessor: RuleTimerProcessor | null = null
   const initializeProcessor = (omikujiData: OmikujiDataType, scriptManager: any) => {
-    commentProcessor = new CommentProcessor(omikujiData, scriptManager)
-    timerProcessor = new TimerProcessor(omikujiData)
+    commentProcessor = new RuleCommentProcessor(omikujiData, scriptManager)
+    timerProcessor = new RuleTimerProcessor(omikujiData)
   }
 
   const initializeApp = async (

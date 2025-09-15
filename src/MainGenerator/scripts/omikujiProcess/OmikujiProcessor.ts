@@ -1,5 +1,4 @@
-// src/MainGenerator/utils/commentProcessor/OmikujiProcessor.ts
-// おみくじ処理クラス
+// src\MainGenerator\scripts\OmikujiProcess\OmikujiProcessor.ts
 import { CommentRuleType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'

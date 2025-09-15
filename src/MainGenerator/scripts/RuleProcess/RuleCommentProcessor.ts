@@ -1,17 +1,17 @@
-// src/MainGenerator/script/omikujiProcess/CommentProcessor.ts
+// src/MainGenerator/script/RuleProcess/RuleCommentProcessor.ts
 import { BotMessage } from '@/types/'
 import { OmikujiDataType } from '@/types/'
-import { UserCommentProcessor } from '@MainScripts/omikujiProcess/UserCommentProcessor'
+import { RuleCommentExecutor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentExecutor'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Comment } from '@onecomme.com/onesdk/'
 
-export class CommentProcessor {
+export class RuleCommentProcessor {
   private readonly timeThreshold = 5000 // これ以上経過した古いコメントは判定しない
-  private readonly userCommentProcessor: UserCommentProcessor
+  private readonly userCommentProcessor: RuleCommentExecutor
 
   constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
-    this.userCommentProcessor = new UserCommentProcessor(omikujiData, scriptManager)
+    this.userCommentProcessor = new RuleCommentExecutor(omikujiData, scriptManager)
   }
 
   /**

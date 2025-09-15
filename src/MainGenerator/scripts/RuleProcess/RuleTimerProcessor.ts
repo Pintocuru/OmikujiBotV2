@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\omikujiProcess\TimerProcessor.ts
+// src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
@@ -17,7 +17,7 @@ interface TimerState {
   isActive: boolean
 }
 
-export class TimerProcessor {
+export class RuleTimerProcessor {
   private serviceMeta: ServiceMeta | null = null
   private readonly timerRules: Record<string, TimerRuleType>
   private readonly activeTimers = new Map<string, TimerState>()

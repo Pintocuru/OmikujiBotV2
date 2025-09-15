@@ -1,5 +1,4 @@
-// src/MainGenerator/utils/commentProcessor/CommentRestrictionChecker.ts
-// 制限チェッカー
+// src\MainGenerator\scripts\OmikujiProcess\CommentRestrictionChecker.ts
 import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { useAppStore } from '@/MainGenerator/stores'

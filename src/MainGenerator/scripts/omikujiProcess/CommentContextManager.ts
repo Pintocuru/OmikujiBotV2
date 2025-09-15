@@ -1,4 +1,4 @@
-// src/MainGenerator/utils/commentProcessor/CommentContextManager.ts
+// src\MainGenerator\scripts\OmikujiProcess\CommentContextManager.ts
 // コメント処理のコンテキスト管理
 import {
   DefaultPlaceholders,
