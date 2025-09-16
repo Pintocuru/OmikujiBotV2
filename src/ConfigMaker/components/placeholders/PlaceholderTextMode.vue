@@ -83,11 +83,23 @@
     const trimmed = line.trim()
     if (!trimmed) return null
 
-    const parts = trimmed.split(',')
-    const candidate =
-      parts.length === 2 && !isNaN(parseInt(parts[0].trim()))
-        ? { weight: parseInt(parts[0].trim()), content: parts[1].trim() }
-        : { weight: 1, content: trimmed }
+    // 最初のカンマだけを分割対象にする
+    const firstCommaIndex = trimmed.indexOf(',')
+    let candidate
+
+    if (firstCommaIndex > -1) {
+      const weightStr = trimmed.slice(0, firstCommaIndex).trim()
+      const contentStr = trimmed.slice(firstCommaIndex + 1).trim()
+      const weight = parseInt(weightStr, 10)
+
+      if (!isNaN(weight)) {
+        candidate = { weight, content: contentStr }
+      } else {
+        candidate = { weight: 1, content: trimmed }
+      }
+    } else {
+      candidate = { weight: 1, content: trimmed }
+    }
 
     const result = PlaceholderValueObjectSchema.safeParse(candidate)
 

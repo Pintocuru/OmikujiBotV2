@@ -437,72 +437,13 @@
         "isRepeatAllowed": true
       }
     },
-    "1756799276888": {
-      "id": "1756799276888",
-      "key": "1756799276888",
-      "name": "おみくじの案内",
-      "createdAt": "2025-09-02T07:47:56.888Z",
-      "updatedAt": "2025-09-14T12:18:33.422Z",
-      "order": 3,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "1756795088121",
-          "key": "",
-          "name": "",
-          "createdAt": "2025-09-02T06:38:08.121Z",
-          "updatedAt": "2025-09-02T06:38:08.121Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "おみくじはしてないの～、ごめんなさいね。",
-              "actionType": "toast"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^おみくじ"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "1757800956595": {
-      "id": "1757800956595",
-      "key": "1757800956595",
+    "TarotCard": {
+      "id": "TarotCard",
+      "key": "TarotCard",
       "name": "タロット占い",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-09-14T12:18:33.422Z",
+      "updatedAt": "2025-09-16T06:45:43.328Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -520,12 +461,20 @@
           "weight": 1,
           "postActions": [
             {
-              "delaySeconds": 0,
-              "wordParty": "",
+              "delaySeconds": 3.5,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>さんは<<TarotCard>>",
               "actionType": "message"
+            },
+            {
+              "actionType": "wordParty",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "delaySeconds": 0,
+              "wordParty": "!TarotCard_direction"
             }
           ]
         }
@@ -544,7 +493,10 @@
           "value": 1
         },
         "comment": [
-          "おみくじ"
+          "^タロット",
+          "^たろっと",
+          "^tarot",
+          "タロットカード"
         ]
       },
       "scriptId": null,
@@ -561,7 +513,7 @@
       "key": "BigBangFortune",
       "name": "超おみくじ",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-09-14T12:18:33.422Z",
+      "updatedAt": "2025-09-16T07:01:48.680Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -603,7 +555,9 @@
           "value": 1
         },
         "comment": [
-          "おみくじ"
+          "^超$",
+          "^超おみくじ",
+          "^BigBang"
         ]
       },
       "scriptId": null,
@@ -620,7 +574,7 @@
       "key": "EidolonGacha",
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
-      "updatedAt": "2025-09-14T12:18:33.422Z",
+      "updatedAt": "2025-09-16T06:59:49.915Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -863,9 +817,8 @@
         },
         "comment": [
           "^連$",
-          "^3連",
-          "^３連",
-          "^3ren",
+          "^幻獣",
+          "^げんじゅう",
           "^がちゃ",
           "^ガチャ",
           "^gacha"
@@ -886,7 +839,7 @@
       "name": "フルーツ占い",
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
-      "updatedAt": "2025-09-14T15:31:37.190Z",
+      "updatedAt": "2025-09-16T07:08:49.531Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -908,7 +861,7 @@
               "wordParty": "",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは<<FruitFortune>>",
+              "messageContent": "<<user>>さんは<<FruitFortune>> ",
               "actionType": "message"
             }
           ]
@@ -4969,60 +4922,12 @@
         "惜しいところでつまずく暗示。柔軟な姿勢が完成へ導きます。"
       ]
     },
-    "BigBangNum": {
-      "id": "BigBangNum",
-      "key": "BigBangNum",
-      "name": "超おみくじ:数値(0を含む)",
-      "createdAt": "2025-09-13T11:08:07.979Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 60,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
-      ]
-    },
-    "BigBangNumZero": {
-      "id": "BigBangNumZero",
-      "key": "BigBangNumZero",
-      "name": "超おみくじ:数値(0を含まない)",
-      "createdAt": "2025-09-13T11:09:21.282Z",
-      "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 61,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "0",
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
-      ]
-    },
     "BigBangRarity": {
       "id": "BigBangRarity",
       "key": "BigBangRarity",
       "name": "超おみくじ:希少値",
       "createdAt": "2025-09-13T11:10:40.279Z",
-      "updatedAt": "2025-09-14T12:18:33.421Z",
+      "updatedAt": "2025-09-16T07:29:55.454Z",
       "order": 62,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -5035,227 +4940,227 @@
         },
         {
           "weight": 6,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0無量大数"
+          "content": "{{rand(100,999)}}0無量大数"
         },
         {
           "weight": 7,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>無量大数"
+          "content": "{{rand(100,999)}}無量大数"
         },
         {
           "weight": 8,
-          "content": "<<BigBangNum>><<BigBangNumZero>>無量大数<<BigBangNum>>000不可思議"
+          "content": "{{rand(10,99)}}無量大数{{rand(1,9)}}000不可思議"
         },
         {
           "weight": 9,
-          "content": "<<BigBangNum>>無量大数<<BigBangNum>><<BigBangNumZero>>00不可思議"
+          "content": "{{rand(1,9)}}無量大数{{rand(10,99)}}00不可思議"
         },
         {
           "weight": 10,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0不可思議"
+          "content": "{{rand(100,999)}}0不可思議"
         },
         {
           "weight": 11,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>不可思議"
+          "content": "{{rand(100,999)}}不可思議"
         },
         {
           "weight": 12,
-          "content": "<<BigBangNum>><<BigBangNumZero>>不可思議<<BigBangNum>>000那由他"
+          "content": "{{rand(10,99)}}不可思議{{rand(1,9)}}000那由他"
         },
         {
           "weight": 13,
-          "content": "<<BigBangNum>>不可思議<<BigBangNum>><<BigBangNumZero>>00那由他"
+          "content": "{{rand(1,9)}}不可思議{{rand(10,99)}}00那由他"
         },
         {
           "weight": 14,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0那由他"
+          "content": "{{rand(100,999)}}0那由他"
         },
         {
           "weight": 15,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>那由他"
+          "content": "{{rand(100,999)}}那由他"
         },
         {
           "weight": 16,
-          "content": "<<BigBangNum>><<BigBangNumZero>>那由他<<BigBangNum>>000阿僧祇"
+          "content": "{{rand(10,99)}}那由他{{rand(1,9)}}000阿僧祇"
         },
         {
           "weight": 17,
-          "content": "<<BigBangNum>>那由他<<BigBangNum>><<BigBangNumZero>>00阿僧祇"
+          "content": "{{rand(1,9)}}那由他{{rand(10,99)}}00阿僧祇"
         },
         {
           "weight": 18,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0阿僧祇"
+          "content": "{{rand(100,999)}}0阿僧祇"
         },
         {
           "weight": 19,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>阿僧祇"
+          "content": "{{rand(100,999)}}阿僧祇"
         },
         {
           "weight": 20,
-          "content": "<<BigBangNum>><<BigBangNumZero>>阿僧祇<<BigBangNum>>000恒河沙"
+          "content": "{{rand(10,99)}}阿僧祇{{rand(1,9)}}000恒河沙"
         },
         {
           "weight": 21,
-          "content": "<<BigBangNum>>阿僧祇<<BigBangNum>><<BigBangNumZero>>00恒河沙"
+          "content": "{{rand(1,9)}}阿僧祇{{rand(10,99)}}00恒河沙"
         },
         {
           "weight": 22,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0恒河沙"
+          "content": "{{rand(100,999)}}0恒河沙"
         },
         {
           "weight": 23,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>恒河沙"
+          "content": "{{rand(100,999)}}恒河沙"
         },
         {
           "weight": 24,
-          "content": "<<BigBangNum>><<BigBangNumZero>>恒河沙<<BigBangNum>>000極"
+          "content": "{{rand(10,99)}}恒河沙{{rand(1,9)}}000極"
         },
         {
           "weight": 25,
-          "content": "<<BigBangNum>>恒河沙<<BigBangNum>><<BigBangNumZero>>00極"
+          "content": "{{rand(1,9)}}恒河沙{{rand(10,99)}}00極"
         },
         {
           "weight": 26,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0極"
+          "content": "{{rand(100,999)}}0極"
         },
         {
           "weight": 27,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>極"
+          "content": "{{rand(100,999)}}極"
         },
         {
           "weight": 28,
-          "content": "<<BigBangNum>><<BigBangNumZero>>極<<BigBangNum>>000載"
+          "content": "{{rand(10,99)}}極{{rand(1,9)}}000載"
         },
         {
           "weight": 29,
-          "content": "<<BigBangNum>>極<<BigBangNum>><<BigBangNumZero>>00載"
+          "content": "{{rand(1,9)}}極{{rand(10,99)}}00載"
         },
         {
           "weight": 30,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0載"
+          "content": "{{rand(100,999)}}0載"
         },
         {
           "weight": 31,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>載"
+          "content": "{{rand(100,999)}}載"
         },
         {
           "weight": 32,
-          "content": "<<BigBangNum>><<BigBangNumZero>>載<<BigBangNum>>000正"
+          "content": "{{rand(10,99)}}載{{rand(1,9)}}000正"
         },
         {
           "weight": 33,
-          "content": "<<BigBangNum>>載<<BigBangNum>><<BigBangNumZero>>00正"
+          "content": "{{rand(1,9)}}載{{rand(10,99)}}00正"
         },
         {
           "weight": 34,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0正"
+          "content": "{{rand(100,999)}}0正"
         },
         {
           "weight": 35,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>正"
+          "content": "{{rand(100,999)}}正"
         },
         {
           "weight": 36,
-          "content": "<<BigBangNum>><<BigBangNumZero>>正<<BigBangNum>>000澗"
+          "content": "{{rand(10,99)}}正{{rand(1,9)}}000澗"
         },
         {
           "weight": 37,
-          "content": "<<BigBangNum>>正<<BigBangNum>><<BigBangNumZero>>00澗"
+          "content": "{{rand(1,9)}}正{{rand(10,99)}}00澗"
         },
         {
           "weight": 38,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0澗"
+          "content": "{{rand(100,999)}}0澗"
         },
         {
           "weight": 39,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>澗"
+          "content": "{{rand(100,999)}}澗"
         },
         {
           "weight": 40,
-          "content": "<<BigBangNum>><<BigBangNumZero>>澗<<BigBangNum>>000溝"
+          "content": "{{rand(10,99)}}澗{{rand(1,9)}}000溝"
         },
         {
           "weight": 41,
-          "content": "<<BigBangNum>>澗<<BigBangNum>><<BigBangNumZero>>00溝"
+          "content": "{{rand(1,9)}}澗{{rand(10,99)}}00溝"
         },
         {
           "weight": 42,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0溝"
+          "content": "{{rand(100,999)}}0溝"
         },
         {
           "weight": 43,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>溝"
+          "content": "{{rand(100,999)}}溝"
         },
         {
           "weight": 44,
-          "content": "<<BigBangNum>><<BigBangNumZero>>溝<<BigBangNum>>000穣"
+          "content": "{{rand(10,99)}}溝{{rand(1,9)}}000穣"
         },
         {
           "weight": 45,
-          "content": "<<BigBangNum>>溝<<BigBangNum>><<BigBangNumZero>>00穣"
+          "content": "{{rand(1,9)}}溝{{rand(10,99)}}00穣"
         },
         {
           "weight": 46,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0穣"
+          "content": "{{rand(100,999)}}0穣"
         },
         {
           "weight": 47,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>穣"
+          "content": "{{rand(100,999)}}穣"
         },
         {
           "weight": 48,
-          "content": "<<BigBangNum>><<BigBangNumZero>>穣<<BigBangNum>>000𥝱"
+          "content": "{{rand(10,99)}}穣{{rand(1,9)}}000𥝱"
         },
         {
           "weight": 49,
-          "content": "<<BigBangNum>>穣<<BigBangNum>><<BigBangNumZero>>00𥝱"
+          "content": "{{rand(1,9)}}穣{{rand(10,99)}}00𥝱"
         },
         {
           "weight": 50,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0𥝱"
+          "content": "{{rand(100,999)}}0𥝱"
         },
         {
           "weight": 51,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>𥝱"
+          "content": "{{rand(100,999)}}𥝱"
         },
         {
           "weight": 52,
-          "content": "<<BigBangNum>><<BigBangNumZero>>𥝱<<BigBangNum>>000垓"
+          "content": "{{rand(10,99)}}𥝱{{rand(1,9)}}000垓"
         },
         {
           "weight": 53,
-          "content": "<<BigBangNum>>𥝱<<BigBangNum>><<BigBangNumZero>>00垓"
+          "content": "{{rand(1,9)}}𥝱{{rand(10,99)}}00垓"
         },
         {
           "weight": 54,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0垓"
+          "content": "{{rand(100,999)}}0垓"
         },
         {
           "weight": 55,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>垓"
+          "content": "{{rand(100,999)}}垓"
         },
         {
           "weight": 56,
-          "content": "<<BigBangNum>><<BigBangNumZero>>垓<<BigBangNum>>000京"
+          "content": "{{rand(10,99)}}垓{{rand(1,9)}}000京"
         },
         {
           "weight": 57,
-          "content": "<<BigBangNum>>垓<<BigBangNum>><<BigBangNumZero>>00京"
+          "content": "{{rand(1,9)}}垓{{rand(10,99)}}00京"
         },
         {
           "weight": 58,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0京"
+          "content": "{{rand(100,999)}}0京"
         },
         {
           "weight": 59,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>京"
+          "content": "{{rand(100,999)}}京"
         },
         {
           "weight": 60,
-          "content": "<<BigBangNum>><<BigBangNumZero>>京<<BigBangNum>>000兆"
+          "content": "{{rand(10,99)}}京{{rand(1,9)}}000兆"
         },
         {
           "weight": 61,
-          "content": "<<BigBangNum>>京<<BigBangNum>><<BigBangNumZero>>00兆"
+          "content": "{{rand(1,9)}}京{{rand(10,99)}}00兆"
         },
         {
           "weight": 62,
@@ -5263,135 +5168,135 @@
         },
         {
           "weight": 61,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0兆"
+          "content": "{{rand(100,999)}}0兆"
         },
         {
           "weight": 60,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>兆"
+          "content": "{{rand(100,999)}}兆"
         },
         {
           "weight": 59,
-          "content": "<<BigBangNum>><<BigBangNumZero>>兆<<BigBangNum>>000億"
+          "content": "{{rand(10,99)}}兆{{rand(1,9)}}000億"
         },
         {
           "weight": 58,
-          "content": "<<BigBangNum>>兆<<BigBangNum>><<BigBangNumZero>>00億"
+          "content": "{{rand(1,9)}}兆{{rand(10,99)}}00億"
         },
         {
           "weight": 57,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0億"
+          "content": "{{rand(100,999)}}0億"
         },
         {
           "weight": 56,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>億"
+          "content": "{{rand(100,999)}}億"
         },
         {
           "weight": 55,
-          "content": "<<BigBangNum>><<BigBangNumZero>>億<<BigBangNum>>000万"
+          "content": "{{rand(10,99)}}億{{rand(1,9)}}000万"
         },
         {
           "weight": 54,
-          "content": "<<BigBangNum>>億<<BigBangNum>><<BigBangNumZero>>00万"
+          "content": "{{rand(1,9)}}億{{rand(10,99)}}00万"
         },
         {
           "weight": 53,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0万"
+          "content": "{{rand(100,999)}}0万"
         },
         {
           "weight": 52,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>万"
+          "content": "{{rand(100,999)}}万"
         },
         {
           "weight": 51,
-          "content": "<<BigBangNum>><<BigBangNumZero>>万<<BigBangNum>>000"
+          "content": "{{rand(10,99)}}万{{rand(1,9)}}000"
         },
         {
           "weight": 50,
-          "content": "<<BigBangNum>>万<<BigBangNum>><<BigBangNumZero>>00"
+          "content": "{{rand(1,9)}}万{{rand(10,99)}}00"
         },
         {
           "weight": 49,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>0"
+          "content": "{{rand(100,999)}}0"
         },
         {
           "weight": 48,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>"
+          "content": "{{rand(100,999)}}"
         },
         {
           "weight": 47,
-          "content": "<<BigBangNum>><<BigBangNumZero>><<BigBangNumZero>>分"
+          "content": "{{rand(10,99)}}.{{rand(1,9)}}"
         },
         {
           "weight": 46,
-          "content": "<<BigBangNum>><<BigBangNumZero>>分<<BigBangNum>>厘"
+          "content": "{{rand(1,9)}}.{{rand(10,99)}}"
         },
         {
           "weight": 45,
-          "content": "<<BigBangNum>>分<<BigBangNum>>厘<<BigBangNum>>毛"
+          "content": "{{rand(1,9)}}割{{rand(1,9)}}厘{{rand(1,9)}}毛"
         },
         {
           "weight": 44,
-          "content": "<<BigBangNum>>厘<<BigBangNum>>毛<<BigBangNum>>糸"
+          "content": "{{rand(1,9)}}厘{{rand(1,9)}}毛{{rand(1,9)}}糸"
         },
         {
           "weight": 43,
-          "content": "<<BigBangNum>>毛<<BigBangNum>>糸<<BigBangNum>>忽"
+          "content": "{{rand(1,9)}}毛{{rand(1,9)}}糸{{rand(1,9)}}忽"
         },
         {
           "weight": 42,
-          "content": "<<BigBangNum>>糸<<BigBangNum>>忽<<BigBangNum>>微"
+          "content": "{{rand(1,9)}}糸{{rand(1,9)}}忽{{rand(1,9)}}微"
         },
         {
           "weight": 41,
-          "content": "<<BigBangNum>>忽<<BigBangNum>>微<<BigBangNum>>繊"
+          "content": "{{rand(1,9)}}忽{{rand(1,9)}}微{{rand(1,9)}}繊"
         },
         {
           "weight": 40,
-          "content": "<<BigBangNum>>微<<BigBangNum>>繊<<BigBangNum>>沙"
+          "content": "{{rand(1,9)}}微{{rand(1,9)}}繊{{rand(1,9)}}沙"
         },
         {
           "weight": 39,
-          "content": "<<BigBangNum>>繊<<BigBangNum>>沙<<BigBangNum>>塵"
+          "content": "{{rand(1,9)}}繊{{rand(1,9)}}沙{{rand(1,9)}}塵"
         },
         {
           "weight": 38,
-          "content": "<<BigBangNum>>沙<<BigBangNum>>塵<<BigBangNum>>漠"
+          "content": "{{rand(1,9)}}沙{{rand(1,9)}}塵{{rand(1,9)}}漠"
         },
         {
           "weight": 37,
-          "content": "<<BigBangNum>>塵<<BigBangNum>>漠<<BigBangNum>>模糊"
+          "content": "{{rand(1,9)}}塵{{rand(1,9)}}漠{{rand(1,9)}}模糊"
         },
         {
           "weight": 36,
-          "content": "<<BigBangNum>>漠<<BigBangNum>>模糊<<BigBangNum>>逡巡"
+          "content": "{{rand(1,9)}}漠{{rand(1,9)}}模糊{{rand(1,9)}}逡巡"
         },
         {
           "weight": 35,
-          "content": "<<BigBangNum>>模糊<<BigBangNum>>逡巡<<BigBangNum>>須臾"
+          "content": "{{rand(1,9)}}模糊{{rand(1,9)}}逡巡{{rand(1,9)}}須臾"
         },
         {
           "weight": 34,
-          "content": "<<BigBangNum>>逡巡<<BigBangNum>>須臾<<BigBangNum>>瞬息"
+          "content": "{{rand(1,9)}}逡巡{{rand(1,9)}}須臾{{rand(1,9)}}瞬息"
         },
         {
           "weight": 33,
-          "content": "<<BigBangNum>>須臾<<BigBangNum>>瞬息<<BigBangNum>>弾指"
+          "content": "{{rand(1,9)}}須臾{{rand(1,9)}}瞬息{{rand(1,9)}}弾指"
         },
         {
           "weight": 32,
-          "content": "<<BigBangNum>>瞬息<<BigBangNum>>弾指<<BigBangNum>>刹那"
+          "content": "{{rand(1,9)}}瞬息{{rand(1,9)}}弾指{{rand(1,9)}}刹那"
         },
         {
           "weight": 31,
-          "content": "<<BigBangNum>>弾指<<BigBangNum>>刹那<<BigBangNum>>六徳"
+          "content": "{{rand(1,9)}}弾指{{rand(1,9)}}刹那{{rand(1,9)}}六徳"
         },
         {
           "weight": 30,
-          "content": "<<BigBangNum>>刹那<<BigBangNum>>六徳<<BigBangNum>>虚空"
+          "content": "{{rand(1,9)}}刹那{{rand(1,9)}}六徳{{rand(1,9)}}虚空"
         },
         {
           "weight": 29,
-          "content": "<<BigBangNum>>六徳<<BigBangNum>>虚空<<BigBangNum>>清浄"
+          "content": "{{rand(1,9)}}六徳{{rand(1,9)}}虚空{{rand(1,9)}}清浄"
         }
       ]
     },
@@ -5565,7 +5470,7 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-02T04:42:07.060Z",
+      "updatedAt": "2025-09-16T06:54:45.364Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -5588,7 +5493,7 @@
         "nameColor": "#eed84f",
         "textColor": "#FFEBEE",
         "backgroundColor": "#D32F2F",
-        "customClasses": "px-4 py-4 rounded-xl"
+        "customClasses": "px-6 py-6 border border-white rounded-md"
       },
       "image": {
         "default": "chocolat/default.webp",
