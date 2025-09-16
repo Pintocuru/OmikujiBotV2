@@ -2682,7 +2682,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-16T00:20:10.641Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2714,7 +2714,7 @@
               "delaySeconds": 1.5,
               "wordParty": "!レベルアップ",
               "characterKey": "metan",
-              "iconKey": "happy",
+              "iconKey": "excited",
               "messageContent": "<<FirstCounterSyokenMetan>>",
               "messageToast": "",
               "actionType": "message"
@@ -2754,7 +2754,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-16T00:19:31.696Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2764,7 +2764,7 @@
         {
           "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
           "key": "",
-          "name": "久しぶり1",
+          "name": "久しぶり(嬉しい)",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2777,7 +2777,30 @@
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "excited",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterAgainMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "100f8fda-aea0-4b59-9f8b-46dc2497bc96",
+          "key": "",
+          "name": "久しぶり(照れ)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "metan",
+              "iconKey": "blushing",
               "messageContent": "<<FirstCounterAgainMetan>>",
               "messageToast": "",
               "actionType": "message"
@@ -2817,7 +2840,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-16T00:18:01.980Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2834,14 +2857,14 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 4,
+          "weight": 5,
           "postActions": [
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitMetan>>",
               "messageToast": "",
               "actionType": "message"
             }
@@ -2857,60 +2880,14 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "9ddd25aa-beb3-46a5-b2b8-fa3555bca81d",
-          "key": "",
-          "name": "挨拶3",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
           "weight": 2,
           "postActions": [
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "a6933c94-0db5-4f07-b531-9310a5dc5648",
-          "key": "",
-          "name": "挨拶4",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
+              "iconKey": "laughing",
+              "messageContent": "<<FirstCounterFirstVisitMetan>>",
               "messageToast": "",
               "actionType": "message"
             }
@@ -3628,7 +3605,7 @@
       "key": "FirstCounterSyokenMetan",
       "name": "初見",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-08-28T07:43:10.833Z",
+      "updatedAt": "2025-09-16T00:21:59.540Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3637,12 +3614,11 @@
       "values": [
         {
           "weight": 3,
-          "content": "ふふん、<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。"
+          "content": "<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。"
         },
-        "おっと、<<user>>、初めてコメントしたのね。まあ、私に会えて嬉しいだろうけど、気軽に楽しんでいきなさい。",
-        "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい！",
-        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。",
-        "おっと、<<user>>が初めて来てくれたわね。まあ、私の魅力に惹かれるのも無理はない、か。"
+        "<<user>>、初めてコメントしたのね。私に会えて嬉しいだろうけど、浮かれず楽しんでいきなさい。",
+        "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい。",
+        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。"
       ]
     },
     "FirstCounterAgainMetan": {
@@ -3693,7 +3669,7 @@
       "key": "PromotionToastsMetan",
       "name": "告知用トースト",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-08-28T07:43:10.833Z",
+      "updatedAt": "2025-09-16T00:22:47.890Z",
       "order": 25,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -3702,7 +3678,7 @@
       "values": [
         "神託!漆黒の【御神籤】やってみなよ。私が選んだ運勢、外れるわけないでしょ？ま、試してみたら？",
         "【じゃんけん】勝負しましょう！じゃんけんの猛者・本田三角形の真の力、見せてあげる！",
-        "チャンネル登録と高評価、当然してくれるよね？私の力をもっと見たいなら、するしかないでしょ。",
+        "チャンネル登録と高評価、当然してくれるよね？漆黒の力をもっと見たいなら、するしかないでしょ。",
         "主は今、配信に全集中よ。これからもついて来なさい！後悔させないわ。",
         "discordにいる子たち、ちゃんと盛り上がってる？私が行けば、もっと盛り上がるんじゃない？",
         "今日のおやつは抹茶スイーツで決まりね。君たちは何を選ぶ？私のセンスを超えられるかしら！",
