@@ -18,12 +18,13 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-09-16T15:27:41.399Z",
+      "updatedAt": "2025-09-17T02:07:42.371Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
+      "rankMapEnabled": false,
       "omikuji": [
         {
           "id": "1756666545244",
@@ -41,7 +42,7 @@
               "characterKey": "",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "message"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.5,
@@ -839,17 +840,18 @@
       "name": "フルーツ占い",
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
-      "updatedAt": "2025-09-16T07:08:49.531Z",
+      "updatedAt": "2025-09-17T02:19:07.291Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
+      "rankMapEnabled": true,
       "omikuji": [
         {
           "id": "1757806025003",
           "key": "",
-          "name": "",
+          "name": "スイカ",
           "createdAt": "2025-09-13T23:27:05.003Z",
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
@@ -861,7 +863,87 @@
               "wordParty": "",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは<<FruitFortune>> ",
+              "messageContent": "<<user>>さんのスイカは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "6421b292-505b-4f08-986d-bf22162a8ea1",
+          "key": "",
+          "name": "メロン",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのメロンは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "98186699-9024-4a93-9a4c-1391828b606a",
+          "key": "",
+          "name": "もも",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのももは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "27d3c13c-9f3e-4025-987a-69e05e2de900",
+          "key": "",
+          "name": "パイナップル",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのパイナップルは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "a2581c8c-a775-47ba-a2bb-9295ccb81720",
+          "key": "",
+          "name": "イチゴ",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのイチゴは{{rank}}位",
               "actionType": "message"
             }
           ]
@@ -881,7 +963,7 @@
           "value": 1
         },
         "comment": [
-          "おみくじ"
+          "フルーツ"
         ]
       },
       "scriptId": null,

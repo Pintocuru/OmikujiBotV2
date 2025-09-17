@@ -34,7 +34,7 @@ export class OmikujiProcessor {
    */
   executeOmikuji(comment: Comment, rule: RuleType): BotMessage[] {
     // ランキング機能が有効な場合は、事前にランクを設定
-    const processedOmikuji = rule.rankMapEnabled ? RankingManager.assignRanks(rule.id, rule.omikuji) : rule.omikuji
+    const processedOmikuji = RankingManager.assignRanks(rule.id, rule.omikuji)
 
     const omikujiItem = drawOmikuji(processedOmikuji) as OmikujiItemType
     if (!omikujiItem) return []
@@ -69,10 +69,8 @@ export class OmikujiProcessor {
       const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
 
-      // ランキング機能が有効な場合は、ランク情報を設定
-      if (rule.rankMapEnabled) {
-        this.setupRankingContext(rule, omikujiItem)
-      }
+      // ランク情報を設定
+      this.setupRankingContext(rule, omikujiItem)
 
       // scriptIdが存在し、scriptManagerが存在する場合のみスクリプトを実行
       const shouldExecuteScript = this.hasValidScript(rule) && this.scriptManager

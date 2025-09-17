@@ -1,46 +1,51 @@
 <!-- src/configMaker/components/comments/OmikujiSetEditor.vue -->
 <template>
-  <!-- 便利なボタン群 -->
-  <div class="flex justify-end gap-2">
-    <!-- キャラクター一括変更ボタン -->
-    <CharacterBulkChanger v-if="selectedRuleId" :category="category" :selected-rule-id="selectedRuleId" />
+  <div v-if="selectedRuleId">
+    <!-- rankMapEnabled -->
+    <!-- TODO:rankMapEnabled が必要かどうかをあとで検証 -->
+    <OmikujiItemRankMap v-if="false" :category="category" :selected-rule-id="selectedRuleId" />
+    <!-- 便利なボタン群 -->
+    <div class="flex justify-end gap-2">
+      <!-- キャラクター一括変更ボタン -->
+      <CharacterBulkChanger :category="category" :selected-rule-id="selectedRuleId" />
 
-    <!-- おみくじテストボタン -->
-    <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-      <button
-        class="btn btn-info"
-        @click="useTestPost().postTestOmikuji(omikujiSets)"
-        :disabled="omikujiSets.length === 0"
-      >
-        <Dices class="w-4 h-4" />
-        抽選テスト
+      <!-- おみくじテストボタン -->
+      <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
+        <button
+          class="btn btn-info"
+          @click="useTestPost().postTestOmikuji(omikujiSets)"
+          :disabled="omikujiSets.length === 0"
+        >
+          <Dices class="w-4 h-4" />
+          抽選テスト
+        </button>
+      </div>
+
+      <button @click="addOmikuji" class="btn btn-primary">
+        <Plus class="w-4 h-4" />
+        おみくじを追加
       </button>
     </div>
+    <!-- vuedraggable を使用したドラッグアンドドロップ -->
+    <draggable v-model="omikujiSets" item-key="id" handle=".drag-handle" animation="200">
+      <template #item="{ element, index }">
+        <div :key="element.id || `omikuji-${index}`" class="draggable-item">
+          <!-- エラーバウンダリー的な処理 -->
+          <div v-if="element && typeof element === 'object'">
+            <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
+          </div>
+          <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
+            <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
+          </div>
+        </div>
+      </template>
+    </draggable>
 
-    <button @click="addOmikuji" class="btn btn-primary">
+    <button @click="addOmikuji" class="btn btn-primary w-full">
       <Plus class="w-4 h-4" />
       おみくじを追加
     </button>
   </div>
-  <!-- vuedraggable を使用したドラッグアンドドロップ -->
-  <draggable v-model="omikujiSets" item-key="id" handle=".drag-handle" animation="200">
-    <template #item="{ element, index }">
-      <div :key="element.id || `omikuji-${index}`" class="draggable-item">
-        <!-- エラーバウンダリー的な処理 -->
-        <div v-if="element && typeof element === 'object'">
-          <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
-        </div>
-        <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
-          <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
-        </div>
-      </div>
-    </template>
-  </draggable>
-
-  <button @click="addOmikuji" class="btn btn-primary w-full">
-    <Plus class="w-4 h-4" />
-    おみくじを追加
-  </button>
 </template>
 
 <script setup lang="ts">
@@ -49,6 +54,7 @@
   import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import CharacterBulkChanger from './CharacterBulkChanger.vue'
   import OmikujiItemEditor from './OmikujiItemEditor.vue'
+  import OmikujiItemRankMap from './OmikujiItemRankMap.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import draggable from 'vuedraggable'

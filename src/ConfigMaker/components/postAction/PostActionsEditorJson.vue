@@ -107,33 +107,4 @@
     jsonError.value = ''
     emit('close')
   }
-
-  const prettifyJson = () => {
-    try {
-      const parsed = JSON.parse(jsonText.value)
-      jsonText.value = JSON.stringify(parsed, null, 2)
-      jsonError.value = ''
-    } catch (error) {
-      jsonError.value = 'JSONの整形に失敗しました'
-    }
-  }
-
-  const exportToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(jsonText.value)
-      toast.success('クリップボードにコピーしました')
-    } catch (error) {
-      console.error('クリップボードへのコピーに失敗:', error)
-    }
-  }
-
-  const importFromClipboard = async () => {
-    try {
-      const text = await navigator.clipboard.readText()
-      jsonText.value = text
-      jsonError.value = ''
-    } catch (error) {
-      console.error('クリップボードからの読み込みに失敗:', error)
-    }
-  }
 </script>

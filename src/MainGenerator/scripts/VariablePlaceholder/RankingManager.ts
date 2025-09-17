@@ -76,11 +76,6 @@ export class RankingManager {
     // ランキングをキャッシュに保存
     this.rankingCache.set(ruleId, newRanking)
 
-    ConsolePost('info', `新しいランキングを生成しました (ルールID: ${ruleId})`, {
-      itemCount,
-      ranking: Object.fromEntries(newRanking),
-    })
-
     return rankedItems
   }
 

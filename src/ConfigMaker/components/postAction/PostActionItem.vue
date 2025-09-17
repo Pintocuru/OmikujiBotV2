@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\postAction\PostActionItem.vue -->
+<!-- src\ConfigMaker\components\postAction\PostActionItem.vue -->
 <template>
   <div class="bg-base-200 relative">
     <!-- ActionType選択ボタン -->

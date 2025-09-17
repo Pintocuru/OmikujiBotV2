@@ -32,7 +32,7 @@ export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
  */
 export const BaseRuleSchema = z.object({
   ...BaseRecordSchema.shape,
-  rankMapEnabled: z.boolean().optional().catch(undefined), // rank機能
+  // rankMapEnabled: z.boolean().optional().catch(undefined), // rank機能(不要にして常時ONにしてみる)
   omikuji: OmikujiSetSchema,
 })
 
