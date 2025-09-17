@@ -32,6 +32,7 @@ export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
  */
 export const BaseRuleSchema = z.object({
   ...BaseRecordSchema.shape,
+  rankMapEnabled: z.boolean().optional().catch(undefined), // rank機能
   omikuji: OmikujiSetSchema,
 })
 
@@ -47,6 +48,7 @@ export const CommentRuleSchema = z.object({
       comment: ['おみくじ'],
     })
   ).catch(CommentThresholdSchema.parse({})), // コメント発火条件
+  // TODO:GameScript は将来Rules共通に
   scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
   scriptParams: z.record(z.string(), z.any()).nullable().default(null).catch(null), // スクリプトパラメータ
   limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})), // おみくじ実行制限設定

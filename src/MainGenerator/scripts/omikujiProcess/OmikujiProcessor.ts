@@ -6,7 +6,7 @@ import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
 import { DefaultPlaceholderService } from './DefaultPlaceholderService'
-import { PlaceProcess } from '../PlaceholderProcess/PlaceProcess'
+import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
@@ -14,7 +14,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { Comment } from '@onecomme.com/onesdk/'
 
 export class OmikujiProcessor {
-  private readonly placeProcess: PlaceProcess
+  private readonly placeProcess: PlaceholderProcessor
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
   private readonly defaultManager = new DefaultPlaceholderService()
@@ -23,7 +23,7 @@ export class OmikujiProcessor {
     private readonly omikujiData: OmikujiDataType,
     private readonly scriptManager?: GameScriptManager
   ) {
-    this.placeProcess = new PlaceProcess(omikujiData.placeholders)
+    this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
     this.postMessage = new PostMessage(omikujiData.characters)
     this.botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
   }
@@ -61,6 +61,7 @@ export class OmikujiProcessor {
    */
   executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType): BotMessage[] {
     try {
+      // Defaultのプレースホルダーを設定
       const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
 
@@ -84,9 +85,8 @@ export class OmikujiProcessor {
    */
   private hasValidScript(rule: RuleType): boolean {
     // CommentRuleTypeの場合のみscriptIdをチェック
-    if (rule.ruleType === 'comments') {
-      return !!rule.scriptId
-    }
+    if (rule.ruleType === 'comments') return !!rule.scriptId
+
     // TimerRuleTypeの場合はscriptIdが存在しない
     // TODO:TimerでもscriptIdをもたせる予定
     return false

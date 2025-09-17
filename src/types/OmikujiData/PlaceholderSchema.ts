@@ -27,12 +27,9 @@ export const PlaceholderValuesSchema = z
   .default([PlaceholderValueObjectSchema.parse({})])
   .catch([])
 
-// PlaceholderSchema: 新設した PlaceholderValuesSchema を使用
 export const PlaceholderSchema = z.object({
   ...BaseRecordSchema.shape,
   values: PlaceholderValuesSchema,
-  // TODO:v1.2で実装
-  mapType: z.enum(['mapDaily', 'mapHourly', 'mapWeekly', 'mapMonthly']).optional(),
 })
 
 export type PlaceholderType = z.infer<typeof PlaceholderSchema>
@@ -41,10 +38,7 @@ export type PlaceholderValueType = z.infer<typeof PlaceholderValueObjectSchema>
 // PlaceholderValueType に修正する関数
 export function handelNormalizedValues(values: Array<PlaceholderValueType | string>): PlaceholderValueType[] {
   return values.map((item) => {
-    if (typeof item === 'string') {
-      return { content: item, weight: 1 }
-    } else {
-      return item
-    }
+    if (typeof item === 'string') return { content: item, weight: 1 }
+    else return item
   })
 }

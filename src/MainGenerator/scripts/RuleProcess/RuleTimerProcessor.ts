@@ -4,7 +4,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { PlaceProcess } from '../PlaceholderProcess/PlaceProcess'
+import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/'
@@ -22,13 +22,13 @@ export class RuleTimerProcessor {
   private readonly timerRules: Record<string, TimerRuleType>
   private readonly activeTimers = new Map<string, TimerState>()
   private readonly messageHandler: PostMessage
-  private readonly placeholderProcessor: PlaceProcess
+  private readonly placeProcess: PlaceholderProcessor
   private readonly botMessageGenerator: BotMessageGenerator
 
   constructor(omikujiData: OmikujiDataType) {
     this.timerRules = omikujiData.timers
     this.messageHandler = new PostMessage(omikujiData.characters)
-    this.placeholderProcessor = new PlaceProcess(omikujiData.placeholders)
+    this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
     this.botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
     this.initializeMetaFetcher()
   }
@@ -112,11 +112,11 @@ export class RuleTimerProcessor {
     this.setupDefaultPlaceholders()
 
     try {
-      const postActions = this.placeholderProcessor.processPostActions(omikujiItem.postActions)
+      const postActions = this.placeProcess.processPostActions(omikujiItem.postActions)
       this.messageHandler.post(postActions)
       return this.botMessageGenerator.generateMessages(postActions)
     } finally {
-      this.placeholderProcessor.clearResolvedValues()
+      this.placeProcess.clearResolvedValues()
     }
   }
 
@@ -128,7 +128,7 @@ export class RuleTimerProcessor {
       viewer: this.serviceMeta?.viewer ?? 0,
       upVote: this.serviceMeta?.upVote ?? 0,
     }
-    this.placeholderProcessor.updateResolvedValues(defaultPlaceholders)
+    this.placeProcess.updateResolvedValues(defaultPlaceholders)
   }
 
   /**

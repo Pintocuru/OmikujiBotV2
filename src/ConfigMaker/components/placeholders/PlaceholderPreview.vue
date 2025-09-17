@@ -18,7 +18,7 @@
     PostActionSchema,
     PostActionType,
   } from '@/types/'
-  import { PlaceProcess } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceProcess'
+  import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
@@ -47,7 +47,7 @@
 
     if (drawnValue.value?.content) {
       // プレースホルダー置換
-      const placeProcess = new PlaceProcess(placeholdersMap.value)
+      const placeProcess = new PlaceholderProcessor(placeholdersMap.value)
 
       // userなどのデフォルトを入れる
       placeProcess.updateResolvedValues(DefaultPlaceholdersCommentSchema.parse({}))

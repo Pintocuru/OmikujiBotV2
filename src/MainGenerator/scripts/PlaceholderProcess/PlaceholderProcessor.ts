@@ -1,12 +1,14 @@
-// src/MainGenerator/script/omikujiProcess/placeholders/PlaceholderProcessor.ts
-import { PlaceholderType, PostActionType } from '@/types/'
+// src/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor.ts
+import { PostActionType, PlaceholderType } from '@/types/'
+import { DefaultTypes } from '@shared/types'
 import { PlaceholderResolver } from './PlaceholderResolver'
 import { PlaceholderContext } from './PlaceholderContext'
 import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
 
 /**
  * プレースホルダー処理のメインクラス
- * リアルタイム置換とコンテキスト値の管理を行う
+ * プレースホルダー置換処理とコンテキスト値の管理を統合して行う
+ * リファクタリング版：各プレースホルダーは毎回新しく解決される
  */
 export class PlaceholderProcessor {
   private readonly resolver: PlaceholderResolver
@@ -20,14 +22,14 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * コンテキスト値を更新
+   * コンテキスト値を更新（ユーザー名、日付など）
    */
-  updateContext(values: Record<string, string | number>): void {
-    this.context.updateValues(values)
+  updateResolvedValues(data: DefaultTypes): void {
+    this.context.updateValues(data)
   }
 
   /**
-   * PostAction配列のプレースホルダーを置換
+   * PostAction配列のプレースホルダーを置換して返す
    * 各プレースホルダーは毎回新しく解決される
    */
   processPostActions(postActions: PostActionType[]): PostActionType[] {
@@ -40,7 +42,7 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * テキスト内のプレースホルダーを処理
+   * 単一のテキストのプレースホルダーを処理
    */
   processText(text?: string): string {
     if (!text) return ''
@@ -48,10 +50,8 @@ export class PlaceholderProcessor {
     // resolverにコンテキスト値を渡す
     this.resolver.setContextValues(this.context.getAllValues())
 
-    // 動的プレースホルダーを処理
-    this.variableProcessor.clearVariables() // 初期化
-    // messageContent は プレースホルダーではないので、 rank計算ができない
     // 変数プレースホルダーを処理
+    this.variableProcessor.clearVariables() // 初期化
     const content = this.variableProcessor.process(text)
 
     return content.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
@@ -100,16 +100,16 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * コンテキストをクリア
+   * デバッグ用: コンテキスト値の一覧を取得
    */
-  clearContext(): void {
-    this.context.clear()
+  getResolvedValues(): Record<string, string | number> {
+    return this.context.getAllValues()
   }
 
   /**
-   * デバッグ用: コンテキスト値の一覧を取得
+   * コンテキスト値をクリア
    */
-  getContextValues(): Record<string, string | number> {
-    return this.context.getAllValues()
+  clearResolvedValues(): void {
+    this.context.clear()
   }
 }

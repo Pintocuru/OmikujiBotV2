@@ -1,4 +1,5 @@
 // src\MainGenerator\scripts\PlaceholderProcess\MapBasedResolver.ts
+// ! 使用しない
 import { PlaceholderType, PlaceholderValueType } from '@/types/'
 
 /**

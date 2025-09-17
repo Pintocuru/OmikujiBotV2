@@ -18,7 +18,7 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-09-14T12:18:33.422Z",
+      "updatedAt": "2025-09-16T15:27:41.399Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -41,7 +41,7 @@
               "characterKey": "",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "message"
             },
             {
               "delaySeconds": 0.5,
@@ -72,7 +72,7 @@
               "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
+              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
               "actionType": "message"
             }
           ]
@@ -124,7 +124,7 @@
               "wordParty": "!レベルアップ",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
+              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
               "actionType": "message"
             }
           ]
@@ -176,7 +176,7 @@
               "wordParty": "!レベルアップ",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStationDomestic>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
+              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
               "actionType": "message"
             }
           ]
@@ -444,7 +444,7 @@
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
       "updatedAt": "2025-09-16T06:45:43.328Z",
-      "order": 4,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -461,20 +461,20 @@
           "weight": 1,
           "postActions": [
             {
+              "delaySeconds": 0,
+              "wordParty": "!TarotCard_direction",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
               "delaySeconds": 3.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>さんは<<TarotCard>>",
               "actionType": "message"
-            },
-            {
-              "actionType": "wordParty",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 0,
-              "wordParty": "!TarotCard_direction"
             }
           ]
         }
@@ -514,7 +514,7 @@
       "name": "超おみくじ",
       "createdAt": "2025-09-13T09:36:31.634Z",
       "updatedAt": "2025-09-16T07:01:48.680Z",
-      "order": 5,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
@@ -575,7 +575,7 @@
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
       "updatedAt": "2025-09-16T06:59:49.915Z",
-      "order": 6,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -840,7 +840,7 @@
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
       "updatedAt": "2025-09-16T07:08:49.531Z",
-      "order": 7,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -4928,7 +4928,7 @@
       "name": "超おみくじ:希少値",
       "createdAt": "2025-09-13T11:10:40.279Z",
       "updatedAt": "2025-09-16T07:29:55.454Z",
-      "order": 62,
+      "order": 60,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
@@ -5306,7 +5306,7 @@
       "name": "幻獣ガチャ:FirstScond抽選",
       "createdAt": "2025-09-02T03:46:43.065Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 63,
+      "order": 61,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5329,7 +5329,7 @@
       "name": "幻獣ガチャ:RarityCommon",
       "createdAt": "2025-09-02T03:49:10.566Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 64,
+      "order": 62,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5362,7 +5362,7 @@
       "name": "幻獣ガチャ:RarityUncommon",
       "createdAt": "2025-09-02T03:50:10.003Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 65,
+      "order": 63,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5389,7 +5389,7 @@
       "name": "幻獣ガチャ:RarityRare",
       "createdAt": "2025-09-02T04:04:15.778Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 66,
+      "order": 64,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5428,7 +5428,7 @@
       "name": "幻獣ガチャ:RaritySSR",
       "createdAt": "2025-09-02T04:04:45.522Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 67,
+      "order": 65,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5453,7 +5453,7 @@
       "name": "フルーツ占い:",
       "createdAt": "2025-09-13T23:33:38.800Z",
       "updatedAt": "2025-09-14T15:33:17.467Z",
-      "order": 68,
+      "order": 66,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
