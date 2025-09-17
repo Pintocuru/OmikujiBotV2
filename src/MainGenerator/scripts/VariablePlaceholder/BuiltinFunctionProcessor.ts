@@ -10,8 +10,8 @@ export class BuiltinFunctionProcessor {
   /**
    * コンテキストを設定
    */
-  setContext(rank?: number, valuesLength?: number): void {
-    this.currentRank = rank
+  setContext(rankingScore?: number, valuesLength?: number): void {
+    this.currentRank = rankingScore
     this.valuesLength = valuesLength
   }
 

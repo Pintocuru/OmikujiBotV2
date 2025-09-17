@@ -11,6 +11,7 @@ import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { RankingManager } from '../VariablePlaceholder/RankingManager'
 import { Comment } from '@onecomme.com/onesdk/'
 
 export class OmikujiProcessor {
@@ -20,7 +21,7 @@ export class OmikujiProcessor {
   private readonly defaultManager = new DefaultPlaceholderService()
 
   constructor(
-    private readonly omikujiData: OmikujiDataType,
+    omikujiData: OmikujiDataType,
     private readonly scriptManager?: GameScriptManager
   ) {
     this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
@@ -32,7 +33,10 @@ export class OmikujiProcessor {
    * おみくじの実行（コメント＋ルール指定）
    */
   executeOmikuji(comment: Comment, rule: RuleType): BotMessage[] {
-    const omikujiItem = drawOmikuji(rule.omikuji)
+    // ランキング機能が有効な場合は、事前にランクを設定
+    const processedOmikuji = rule.rankMapEnabled ? RankingManager.assignRanks(rule.id, rule.omikuji) : rule.omikuji
+
+    const omikujiItem = drawOmikuji(processedOmikuji) as OmikujiItemType
     if (!omikujiItem) return []
 
     return this.executeOmikujiProcess(comment, rule, omikujiItem)
@@ -65,6 +69,11 @@ export class OmikujiProcessor {
       const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
       this.placeProcess.updateResolvedValues(defaultPlaceholders)
 
+      // ランキング機能が有効な場合は、ランク情報を設定
+      if (rule.rankMapEnabled) {
+        this.setupRankingContext(rule, omikujiItem)
+      }
+
       // scriptIdが存在し、scriptManagerが存在する場合のみスクリプトを実行
       const shouldExecuteScript = this.hasValidScript(rule) && this.scriptManager
       let scriptResult: ScriptResult | null = null
@@ -78,6 +87,18 @@ export class OmikujiProcessor {
       ConsolePost('error', `おみくじプロセス実行エラー`, error)
       return []
     }
+  }
+
+  /**
+   * ランキング機能のコンテキストを設定
+   */
+  private setupRankingContext(rule: RuleType, omikujiItem: OmikujiItemType): void {
+    // おみくじアイテムに rank が設定されている場合
+    const rankingScore = omikujiItem.rankingScore
+    const totalItems = rule.omikuji.length
+
+    // PlaceholderProcessorにランキング情報を設定
+    this.placeProcess.setVariableContext(rankingScore, totalItems)
   }
 
   /**
@@ -114,5 +135,33 @@ export class OmikujiProcessor {
     } finally {
       this.placeProcess.clearResolvedValues()
     }
+  }
+
+  /**
+   * デバッグ用：特定ルールのランキング情報を取得
+   */
+  getRanking(ruleId: string): Record<string, number> | null {
+    return RankingManager.getRanking(ruleId)
+  }
+
+  /**
+   * デバッグ用：全ランキング情報を取得
+   */
+  getAllRankings(): Record<string, Record<string, number>> {
+    return RankingManager.getAllRankings()
+  }
+
+  /**
+   * 特定ルールのランキングをクリア
+   */
+  clearRanking(ruleId: string): void {
+    RankingManager.clearRanking(ruleId)
+  }
+
+  /**
+   * 全ランキングをクリア
+   */
+  clearAllRankings(): void {
+    RankingManager.clearAllRankings()
   }
 }

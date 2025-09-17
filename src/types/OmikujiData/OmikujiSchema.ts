@@ -128,7 +128,7 @@ export const PostActionSchema = z
 export const OmikujiItemSchema = z.object({
   ...BaseRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
-  rank: z.number().optional(),
+  rankingScore: z.number().optional(),
   postActions: z
     .array(PostActionSchema)
     .default([])

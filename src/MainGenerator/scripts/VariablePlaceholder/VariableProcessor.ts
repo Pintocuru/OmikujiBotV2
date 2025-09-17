@@ -17,8 +17,8 @@ export class VariablePlaceholderProcessor {
   /**
    * コンテキストを設定
    */
-  setContext(rank?: number, valuesLength?: number): void {
-    this.builtinProcessor.setContext(rank, valuesLength)
+  setContext(rankingScore?: number, valuesLength?: number): void {
+    this.builtinProcessor.setContext(rankingScore, valuesLength)
   }
 
   /**

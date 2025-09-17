@@ -29,6 +29,13 @@ export class PlaceholderProcessor {
   }
 
   /**
+   * 変数プレースホルダー用のコンテキストを設定（ランキング機能など）
+   */
+  setVariableContext(rankingScore?: number, valuesLength?: number): void {
+    this.variableProcessor.setContext(rankingScore, valuesLength)
+  }
+
+  /**
    * PostAction配列のプレースホルダーを置換して返す
    * 各プレースホルダーは毎回新しく解決される
    */
@@ -111,5 +118,7 @@ export class PlaceholderProcessor {
    */
   clearResolvedValues(): void {
     this.context.clear()
+    // 変数プレースホルダーもクリア
+    this.variableProcessor.clearVariables()
   }
 }
