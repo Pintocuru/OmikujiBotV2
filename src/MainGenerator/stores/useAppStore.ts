@@ -7,7 +7,7 @@ import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScript
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@/MainGenerator/scripts/CooldownManager/CooldownManager'
 import { normalizeData } from '@/migrations'
-import { useBotMessageActions } from './BotMessageActions'
+import { useBotMessageActions } from './useBotMessageActions'
 
 // グローバルデータの初期化
 const rawData = window.omikujiData || {}

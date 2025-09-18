@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
 import App from './DevApp.vue'
 import 'vue-sonner/style.css'
-import '../assets/styles/styles.css'
+import '../assets/styles/font.css'
 import '../assets/styles/DaisyUiAll.css'
 import OneSDK from '@onecomme.com/onesdk'
 

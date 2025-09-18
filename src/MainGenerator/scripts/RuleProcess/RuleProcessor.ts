@@ -32,8 +32,7 @@ export function useRuleProcessor() {
     onCommentsReceived: (comments: Comment[]) => void
   ): Promise<boolean> => {
     try {
-      const isInit = await GetUserComments(config).fetchComments(onCommentsReceived)
-      return isInit
+      return await GetUserComments(config).fetchComments(onCommentsReceived)
     } catch (error) {
       console.error('初期化エラー:', error)
       return false
@@ -42,7 +41,6 @@ export function useRuleProcessor() {
 
   /**
    * comment Rules
-   * 常に最新のprocessorを使用
    */
   const processComments = (comments: Comment[]): BotMessage[] => {
     return commentProcessor.value.respondToComments(comments)
@@ -50,7 +48,6 @@ export function useRuleProcessor() {
 
   /**
    * Timer Rules
-   * 常に最新のprocessorを使用
    */
   const startTimers = (callback: (messages: BotMessage[]) => void) => {
     timerProcessor.value.startTimers(callback)

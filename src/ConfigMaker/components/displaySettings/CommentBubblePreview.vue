@@ -149,5 +149,5 @@
 </script>
 
 <style scoped>
-  @import url('../../../../assets/styles/styles.css');
+  @import url('../../../../assets/styles/font.css');
 </style>
