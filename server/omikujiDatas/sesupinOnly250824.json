@@ -531,28 +531,28 @@
           "weight": 1,
           "postActions": [
             {
+              "delaySeconds": 0,
+              "wordParty": "BigBang_back",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "!bombFire",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
               "delaySeconds": 3,
               "wordParty": "!シーン切り替え1",
               "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "<<user>>の運勢は<<BigBangLottery>>",
               "actionType": "message"
-            },
-            {
-              "actionType": "wordParty",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 0,
-              "wordParty": "BigBang_back"
-            },
-            {
-              "actionType": "wordParty",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 2,
-              "wordParty": "!bombFire"
             }
           ]
         }
@@ -5482,7 +5482,7 @@
       "key": "BigBangG4",
       "name": "超おみくじ:吉x4",
       "createdAt": "2025-09-18T06:32:46.031Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2025-09-18T14:55:07.336Z",
       "order": 72,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -5492,6 +5492,10 @@
         {
           "weight": 54,
           "content": "{{rand(100,999)}}0垓"
+        },
+        {
+          "weight": 55,
+          "content": "602垓2140京7600兆"
         },
         {
           "weight": 55,
@@ -5777,7 +5781,7 @@
       "name": "幻獣ガチャ:FirstScond抽選",
       "createdAt": "2025-09-02T03:46:43.065Z",
       "updatedAt": "2025-09-18T06:50:30.386Z",
-      "order": 78,
+      "order": 77,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5800,7 +5804,7 @@
       "name": "幻獣ガチャ:RarityCommon",
       "createdAt": "2025-09-02T03:49:10.566Z",
       "updatedAt": "2025-09-18T06:50:30.386Z",
-      "order": 79,
+      "order": 78,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5833,7 +5837,7 @@
       "name": "幻獣ガチャ:RarityUncommon",
       "createdAt": "2025-09-02T03:50:10.003Z",
       "updatedAt": "2025-09-18T06:50:30.386Z",
-      "order": 80,
+      "order": 79,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5860,7 +5864,7 @@
       "name": "幻獣ガチャ:RarityRare",
       "createdAt": "2025-09-02T04:04:15.778Z",
       "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 81,
+      "order": 80,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -5921,7 +5925,7 @@
       "name": "幻獣ガチャ:RaritySSR",
       "createdAt": "2025-09-02T04:04:45.522Z",
       "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 82,
+      "order": 81,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
