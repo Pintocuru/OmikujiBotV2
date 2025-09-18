@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
+  import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, PostActionSchema, getImagePath } from '@/types/'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
-  import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
 
   const appStore = useAppStore()
   const displayStore = useDisplayStore()

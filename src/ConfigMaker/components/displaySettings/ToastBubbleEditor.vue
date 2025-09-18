@@ -108,8 +108,8 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ChatBubbleItem from '@/MainGenerator/components/OmikujiBot/ChatBubbleItem.vue'
-  import CharacterThumbnailsPreview from '@/MainGenerator/components/OmikujiBot/CharacterThumbnailsPreview.vue'
+  import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
+  import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { storeToRefs } from 'pinia'
 
   // Store

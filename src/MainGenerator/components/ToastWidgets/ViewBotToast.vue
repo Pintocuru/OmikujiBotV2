@@ -8,7 +8,7 @@
       :auto-hide="false"
       @after-leave="() => removeComment(message.id)"
     >
-      <ChatBubbleItem
+      <ToastBubbleItem
         :botMessage="message"
         :showToastsOnRight="base.showToastsOnRight"
         :showToasts="base.showToasts"
@@ -23,8 +23,8 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
-  import ChatBubbleItem from './ChatBubbleItem.vue'
-  import { useBotDisplay } from './composables/useBotDisplay'
+  import ToastBubbleItem from './ToastBubbleItem.vue'
+  import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'

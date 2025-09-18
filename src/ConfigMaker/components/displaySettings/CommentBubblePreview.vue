@@ -59,7 +59,7 @@
   import { ref, computed } from 'vue'
   import { FontFamilyType, useFontFamily } from '@/types/BotComponents/useFontFamily'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import CommentBubble from '@MainComponents/OmikujiBot/CommentBubble.vue'
+  import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import type { DisplaySize } from '@shared/types'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'

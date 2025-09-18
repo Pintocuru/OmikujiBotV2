@@ -17,7 +17,7 @@
       @after-leave="() => removeComment(message.id)"
     >
       <div class="flex justify-center">
-        <CommentBubble
+        <CommentBubbleItem
           :name="message.name"
           :comment="message.comment"
           :color="message.color"
@@ -35,11 +35,11 @@
 </template>
 
 <script setup lang="ts">
-  import CommentBubble from './CommentBubble.vue'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import type { DisplaySize } from '@shared/types'
+  import CommentBubbleItem from './CommentBubbleItem.vue'
   import { DisplayBotMessage } from './composables/useBotDisplay'
+  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { DisplaySize } from '@shared/types'
 
   interface Props {
     displayedComments: DisplayBotMessage[]

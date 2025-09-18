@@ -32,13 +32,13 @@
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
-  import { useBotDisplay } from './composables/useBotDisplay'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
+  import { useBotDisplay } from './composables/useBotDisplay'
+  import { SIZE_CONFIG } from './composables/SizeConfig'
+  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
-  import { SIZE_CONFIG } from './composables/SizeConfig'
 
   // Piniaストアの使用
   const appStore = useAppStore()

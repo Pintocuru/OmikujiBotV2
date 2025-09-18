@@ -23,9 +23,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { SIZE_CONFIG } from './composables/SizeConfig'
   import { getImagePath } from '@/types/env'
   import type { DisplaySize } from '@shared/types'
-  import { SIZE_CONFIG } from './composables/SizeConfig'
 
   const props = withDefaults(
     defineProps<{

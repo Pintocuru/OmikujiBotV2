@@ -45,8 +45,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import CharacterAvatar from '@/MainGenerator/components/OmikujiBot/CharacterAvatar.vue'
-  import CharacterThumbnailsPreview from '@/MainGenerator/components/OmikujiBot/CharacterThumbnailsPreview.vue'
+  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { DisplaySize } from '@shared/types/CommonSchema'
 
   const props = withDefaults(

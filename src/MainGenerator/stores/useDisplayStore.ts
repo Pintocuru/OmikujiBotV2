@@ -13,6 +13,7 @@ export const useDisplayStore = defineStore('display', () => {
   // 表示設定
   const displaySettings = appStore.data.displaySettings
   const displaySize = ref<DisplaySize>(displaySettings.base.displaySize)
+
   const currentModeIndex = ref(0)
   const updateTrigger = ref(0)
 

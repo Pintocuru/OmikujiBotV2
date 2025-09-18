@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/ChatBubbleItem.vue -->
+<!-- src/MainGenerator/components/ToastBubbleItem.vue -->
 <template>
   <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
