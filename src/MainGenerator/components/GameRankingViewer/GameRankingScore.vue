@@ -39,7 +39,7 @@
   import { computed } from 'vue'
   import { ANIMATION_CONFIGS } from './composables/useScoreAnimation'
   import { COMPONENT_SIZE_CONFIG } from './composables/useComponentConfig'
-  import { useDisplayStore } from '@/MainGenerator/stores'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { storeToRefs } from 'pinia'
   import * as LucideIcons from 'lucide-vue-next'
 

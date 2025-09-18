@@ -29,7 +29,7 @@
   import GameRankingList from './GameRankingList.vue'
   import { COMPONENT_SIZE_CONFIG } from './composables/useComponentConfig'
   import { useDelayedDisplay } from './composables/useDelayedDisplay'
-  import { useDisplayStore } from '@/MainGenerator/stores'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { storeToRefs } from 'pinia'
 
   // Piniaストアの使用

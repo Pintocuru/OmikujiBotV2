@@ -52,7 +52,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { DisplaySize, displaySizeLabels } from '@shared/types'
-  import { useDisplayStore } from '@/MainGenerator/stores'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { storeToRefs } from 'pinia'
 
   // ストアから状態と関数を取得

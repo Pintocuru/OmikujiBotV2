@@ -71,7 +71,7 @@
 
 <script setup lang="ts">
   import { SizeConfig } from './composables/useComponentConfig'
-  import { useDisplayStore } from '@/MainGenerator/stores'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { useGameRanking } from './composables/useGameRanking'
 
   // Props
