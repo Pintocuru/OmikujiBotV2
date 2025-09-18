@@ -1,15 +1,21 @@
 {
   "meta": {
     "id": "1754884254510-shoywq",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.1",
+    "name": "おみくじ BOT タロットカード OmikujiBot TarotCard",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.09.18-v1.2.0-beta3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.1.1",
-    "dataVersion": 1.11,
-    "author": "Pintocuru",
-    "tags": [],
-    "license": "CC-BY 4.0"
+    "generatorVersion": "v1.2.0-beta3",
+    "dataVersion": 1.903,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "タロット",
+      "tarot",
+      "Fortune"
+    ],
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7432682"
   },
   "comments": {
     "TarotCard": {

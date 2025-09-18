@@ -17,6 +17,7 @@ import DivaMetanProject from './packages/full/DivaMetan'
 import percent_DoraProject from './packages/solo/5percent_Dora'
 import HondaJankenProject from './packages/solo/HondaJanken'
 import CardStationProject from './packages/solo/CardStation'
+import TarotCardProject from './packages/solo/TarotCard'
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 // .env からrootを取得
@@ -34,6 +35,7 @@ const buildTargets: BuildTarget[] = [
   /**
    * core - 常にWebpackビルドが必要
    */
+  // { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
   { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
   /**
    * full
@@ -56,8 +58,12 @@ const buildTargets: BuildTarget[] = [
   { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
   { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
+  { project: 'CardStation', type: 'JSON', accessLevel: 'basic',},
+  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
@@ -90,6 +96,7 @@ const buildTargets: BuildTarget[] = [
       percent_DoraProject(packageRoot),
       HondaJankenProject(packageRoot),
       CardStationProject(packageRoot),
+      TarotCardProject(packageRoot),
     ])
 
     // 改良されたビルドを実行
