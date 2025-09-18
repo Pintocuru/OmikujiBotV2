@@ -36,7 +36,7 @@
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
       title="プレースホルダー設定"
-      :subTitle="`(プレースホルダー数:${selectedItem.values.length})`"
+      :subTitle="`(プレースホルダー数:${selectedItem.values.length}, 総重量:${totalWeight})`"
       description="抽選するプレースホルダーを編集します"
     >
       <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
@@ -74,6 +74,15 @@
   const selectedItem = computed(() => {
     if (!selectedRuleId.value) return null
     return data.value.placeholders[selectedRuleId.value]
+  })
+
+  // 総重量を計算するcomputed
+  const totalWeight = computed(() => {
+    if (!selectedItem.value) return 0
+    return selectedItem.value.values.reduce((sum, v) => {
+      if (typeof v === 'string') return sum
+      return sum + (v.weight ?? 0)
+    }, 0)
   })
 
   // プレースホルダーのプロパティ用computedを生成するヘルパー関数
