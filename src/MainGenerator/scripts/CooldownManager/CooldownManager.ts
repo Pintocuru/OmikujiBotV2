@@ -25,6 +25,7 @@ export class CooldownManager {
     this.sessionId = this.generateSessionId()
   }
 
+  // シングルトンモード
   public static getInstance(): CooldownManager {
     if (!CooldownManager.instance) {
       CooldownManager.instance = new CooldownManager()

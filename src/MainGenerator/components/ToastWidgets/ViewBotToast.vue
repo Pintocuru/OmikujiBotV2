@@ -25,7 +25,8 @@
   import { computed, onMounted, onUnmounted } from 'vue'
   import ToastBubbleItem from './ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
-  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
 

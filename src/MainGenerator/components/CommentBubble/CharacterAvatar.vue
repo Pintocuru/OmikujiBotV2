@@ -25,7 +25,7 @@
   import { computed } from 'vue'
   import { SIZE_CONFIG } from './composables/SizeConfig'
   import { getImagePath } from '@/types/env'
-  import type { DisplaySize } from '@shared/types'
+  import { DisplaySize } from '@shared/types'
 
   const props = withDefaults(
     defineProps<{

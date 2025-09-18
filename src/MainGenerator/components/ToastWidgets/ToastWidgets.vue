@@ -17,7 +17,7 @@
   import { computed } from 'vue'
   import ViewBotToast from './ViewBotToast.vue'
   import CharacterThumbnails from './CharacterThumbnails.vue'
-  import { useAppStore } from '@/MainGenerator/stores/'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const appStore = useAppStore()
   const base = computed(() => appStore.data.displaySettings.base)

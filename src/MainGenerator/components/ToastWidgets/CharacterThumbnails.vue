@@ -15,7 +15,8 @@
   import { computed, ref, onMounted, onUnmounted } from 'vue'
   import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, PostActionSchema, getImagePath } from '@/types/'
-  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
 
   const appStore = useAppStore()
   const displayStore = useDisplayStore()

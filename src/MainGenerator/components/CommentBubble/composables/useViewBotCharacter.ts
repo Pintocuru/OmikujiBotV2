@@ -1,7 +1,8 @@
 // src/MainGenerator/components/OmikujiBot/composables/useViewBotCharacter.ts
 import { computed, ref, watch } from 'vue'
 import type { CharacterType, CharacterEmotionType } from '@/types/'
-import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
 import { useBotDisplay } from './useBotDisplay'
 import { SIZE_CONFIG } from './SizeConfig'
 import { storeToRefs } from 'pinia'

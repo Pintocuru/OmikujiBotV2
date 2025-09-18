@@ -1,22 +1,31 @@
 // src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
+import { computed, watch } from 'vue'
 import { RuleCommentProcessor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentProcessor'
 import { Comment } from '@onecomme.com/onesdk/'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
 import { ConfigUserType } from '@shared/types'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { storeToRefs } from 'pinia'
 
 export function useRuleProcessor() {
+  // Pinia Store
+  const appStore = useAppStore()
+  const { data, scriptManager } = storeToRefs(appStore)
+
   /**
-   * 初期化
+   * dataが変更されると自動的に新しいインスタンスが作成される
    */
-  let commentProcessor: RuleCommentProcessor | null = null
-  let timerProcessor: RuleTimerProcessor | null = null
-  const initializeProcessor = (omikujiData: OmikujiDataType, scriptManager: any) => {
-    commentProcessor = new RuleCommentProcessor(omikujiData, scriptManager)
-    timerProcessor = new RuleTimerProcessor(omikujiData)
-  }
+  const commentProcessor = computed(() => new RuleCommentProcessor(data.value, scriptManager.value))
+  const timerProcessor = computed(() => new RuleTimerProcessor(data.value))
+
+  // 必要に応じて、プロセッサーの変更を監視して追加処理を実行
+  watch([commentProcessor, timerProcessor], ([], [, oldTimerProcessor]) => {
+    // 古いタイマーを停止
+    if (oldTimerProcessor) oldTimerProcessor.stopTimers()
+    console.log('プロセッサーが更新されました')
+  })
 
   const initializeApp = async (
     config: ConfigUserType,
@@ -33,27 +42,25 @@ export function useRuleProcessor() {
 
   /**
    * comment Rules
+   * 常に最新のprocessorを使用
    */
-
   const processComments = (comments: Comment[]): BotMessage[] => {
-    if (!commentProcessor) return []
-    return commentProcessor.respondToComments(comments)
+    return commentProcessor.value.respondToComments(comments)
   }
 
   /**
    * Timer Rules
+   * 常に最新のprocessorを使用
    */
-
   const startTimers = (callback: (messages: BotMessage[]) => void) => {
-    if (timerProcessor) timerProcessor.startTimers(callback)
+    timerProcessor.value.startTimers(callback)
   }
 
   const stopTimers = () => {
-    if (timerProcessor) timerProcessor.stopTimers()
+    timerProcessor.value.stopTimers()
   }
 
   return {
-    initializeProcessor,
     initializeApp,
     processComments,
     startTimers,

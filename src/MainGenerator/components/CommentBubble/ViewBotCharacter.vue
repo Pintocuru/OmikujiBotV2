@@ -85,8 +85,8 @@
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import { useViewBotCharacter } from './composables/useViewBotCharacter'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { storeToRefs } from 'pinia'
-  import { useDisplayStore } from '@/MainGenerator/stores'
 
   // ディスプレイストアからdisplaySizeを取得
   const displayStore = useDisplayStore()

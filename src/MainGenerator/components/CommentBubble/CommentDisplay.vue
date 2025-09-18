@@ -41,14 +41,12 @@
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { DisplaySize } from '@shared/types'
 
-  interface Props {
+  const props = defineProps<{
     displayedComments: DisplayBotMessage[]
     removeComment: (id: string) => void
     enterMotion?: MotionType
     leaveMotion?: MotionType
     textSize: DisplaySize
     spacing: number
-  }
-
-  const props = defineProps<Props>()
+  }>()
 </script>

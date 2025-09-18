@@ -4,7 +4,7 @@ import { Comment } from '@onecomme.com/onesdk/'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
 import { CommentRestrictionChecker } from '../OmikujiProcess/CommentRestrictionChecker'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { useAppStore } from '@/MainGenerator/stores'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
 
 interface RuleProcessResult {

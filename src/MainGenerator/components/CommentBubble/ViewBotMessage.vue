@@ -36,7 +36,8 @@
   import CharacterAvatar from './CharacterAvatar.vue'
   import { useBotDisplay } from './composables/useBotDisplay'
   import { SIZE_CONFIG } from './composables/SizeConfig'
-  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
 

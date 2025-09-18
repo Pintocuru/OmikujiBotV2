@@ -12,7 +12,8 @@
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
   import { useFontFamily } from '@/types/BotComponents/useFontFamily'
-  import { useAppStore, useDisplayStore } from '@/MainGenerator/stores/'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
   import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
 
@@ -30,8 +31,6 @@
 
   // 初期化処理
   onMounted(async () => {
-    ruleProcessor.initializeProcessor(appStore.data, appStore.scriptManager)
-
     const isInit = await ruleProcessor.initializeApp(appStore.userConfig, (comments) => {
       // コメント処理
       const processedMessages = ruleProcessor.processComments(comments)

@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\OmikujiProcess\CommentRestrictionChecker.ts
 import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { useAppStore } from '@/MainGenerator/stores'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 interface RestrictionCheckResult {
   isBlocked: boolean

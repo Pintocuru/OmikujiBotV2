@@ -6,7 +6,7 @@
       class="relative mx-auto whitespace-nowrap flex flex-col justify-center items-center -mb-8 min-h-[120px] z-999"
       :class="[theme.fontStyles.scoreText]"
     >
-      <!-- Background Icon/SVG -->
+      <!-- lucide Icon -->
       <component
         v-if="scoreDisplay?.scoreIcon?.iconName"
         :is="getIconComponent(scoreDisplay.scoreIcon.iconName)"
@@ -37,11 +37,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import * as LucideIcons from 'lucide-vue-next'
+  import { ANIMATION_CONFIGS } from './composables/useScoreAnimation'
+  import { COMPONENT_SIZE_CONFIG } from './composables/useComponentConfig'
   import { useDisplayStore } from '@/MainGenerator/stores'
   import { storeToRefs } from 'pinia'
-  import { ANIMATION_CONFIGS } from './useScoreAnimation'
-  import { COMPONENT_SIZE_CONFIG } from './useComponentConfig'
+  import * as LucideIcons from 'lucide-vue-next'
 
   const displayStore = useDisplayStore()
   const { displaySize, currentUserRankings, currentComponentConfig } = storeToRefs(displayStore)
