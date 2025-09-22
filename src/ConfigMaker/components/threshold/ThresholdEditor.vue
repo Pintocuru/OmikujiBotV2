@@ -58,9 +58,13 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
 
-  import { commentThresholdConditionLabels, CommentThresholdCondition, CommentThresholdType } from '@shared/types'
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import {
+    CommentThresholdCondition,
+    commentThresholdConditionLabels,
+    CommentThresholdType,
+  } from '@/types/OmikujiProcess/CommentThresholdSchema'
 
   const props = defineProps<{
     modelValue: CommentThresholdType

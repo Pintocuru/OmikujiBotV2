@@ -2937,1190 +2937,1080 @@
       "key": "StageRandom",
       "name": "クリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-18T06:50:30.383Z",
+      "updatedAt": "2025-09-19T15:49:39.966Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
       "accessLevel": "pro",
       "values": [
-        {
-          "weight": 0,
-          "content": "2707-8927-3519\t:\tハリケーンこっこDX"
-        },
-        {
-          "weight": 0,
-          "content": "4364-1153-7173\t:\tばうんどこっこ"
-        },
-        {
-          "weight": 0,
-          "content": "6941-5988-5526\t:"
-        },
-        {
-          "weight": 0,
-          "content": "7373-4535-6827\t:\tハムスターこっこ"
-        },
-        {
-          "weight": 3,
-          "content": "2236-8466-1035\t:\tYamiチキンパニック!"
-        },
-        {
-          "weight": 0,
-          "content": "2668-2205-2102\t:\tJumping On The Clock"
-        },
-        {
-          "weight": 0,
-          "content": "3115 9137 4961\t:\tFALLKE 2stステージ"
-        },
-        {
-          "weight": 0,
-          "content": "0114-56813038\t:\tファイナルスタジアム"
-        },
-        {
-          "weight": 0,
-          "content": "9366-8666-4895\t:\tこっこ記念ステージ"
-        },
-        {
-          "weight": 0,
-          "content": "​​3400 8510 5677\t:\tBomb!!!"
-        },
-        {
-          "weight": 0,
-          "content": "​​8124 2534 6235 \t:\tほしぷにさく　げきむず"
-        },
-        "1189-3365-5503\t:\t縄跳びこっこ",
-        {
-          "weight": 0,
-          "content": "2756-6991-9095\t:\tチキンなしの腕立て"
-        },
-        "4394-1289-0030\t:\tシン・こっこ",
-        "4823-4835-4406\t:\tロールオフこっこ",
-        "6056-0055-7214\t:\tCracking Ball",
-        {
-          "weight": 0,
-          "content": "6466-1275-0281\t:\tスライム・デジトリック"
-        },
-        {
-          "weight": 0,
-          "content": "769241411427\t:\t卓キチ鬼スライダー"
-        },
-        {
-          "weight": 0,
-          "content": "9850の3969の4302\t:\tつば目の挑戦状2"
-        },
-        "0039-4956-9152\t:\tBlastFest!",
-        "2985-0672-3977\t:\tTheBottom",
-        "5354-7805-9592\t:\tリングスピナーこっこ",
-        "6783-9973-8283\t:\tブルーステージサバイバル",
-        {
-          "weight": 0,
-          "content": "0004-3016-2061\t:\tThe Kessel Run"
-        },
-        "0079-0691-0096\t:\tジャンプクラブ？",
-        "0554-2897-0984\t:\tピンボールポインター",
-        {
-          "weight": 0,
-          "content": "0864-2013-5656\t:\tコース"
-        },
-        "1047-2162-6725\t:\tHaunted Doomspire",
-        {
-          "weight": 0,
-          "content": "1558-1841-6236\t:\tコース"
-        },
-        "2038-3785-4888\t:\tタイムロック クレート",
-        "2122-9878-9929\t:\tBLAST CAVERN",
-        {
-          "weight": 0,
-          "content": "3565-2948-1507\t:\tコース"
-        },
-        "3946-1752-1174\t:\tサンザンダーランティス",
-        "4151-8305-0408\t:\tKiller Vs Survivor",
-        {
-          "weight": 0,
-          "content": "5088-3455-5417\t:\tコース"
-        },
-        {
-          "weight": 0,
-          "content": "5245-2222-4305\t:\tコース"
-        },
-        "5400-6810-8096\t:\tNeutral Jump Survival [32 Players]",
-        {
-          "weight": 0,
-          "content": "5551-4232-3394\t:\tコース"
-        },
-        "5695-4354-0286\t:\tSquid Game - Season2",
-        "6221-0517-9460\t:\tOh Shoot!",
-        {
-          "weight": 0,
-          "content": "6241-5989-1193\t:\tVision103"
-        },
-        {
-          "weight": 0,
-          "content": "6256-8973-2264\t:\tHexa Nigitmares"
-        },
-        "6679-4238-9153\t:\tぷにぷにじごく",
-        "6863-2771-6831\t:\tFan Survival",
-        {
-          "weight": 0,
-          "content": "7247-7667-4734\t:\tコース"
-        },
-        "7593-9797-0140\t:\tマイムマイム",
-        {
-          "weight": 0,
-          "content": "8332-2008-7137\t:\tコース"
-        },
-        {
-          "weight": 0,
-          "content": "8441-4840-2472\t:\tコース"
-        },
-        "9123-1342-8604\t:\t振り子の支点",
-        {
-          "weight": 0,
-          "content": "9497-5996-6659\t:\tコース"
-        },
-        "3358-6213-6040\t:\tLostTemple",
-        {
-          "weight": 0,
-          "content": "1613の3915の5795\t:\tSqidGame"
-        },
-        "1688-1774-7113\t:",
-        "6863-2771-6831\t:\tFan Survival",
-        {
-          "weight": 0,
-          "content": "7043-1627-5738\t:\tバトルリバイバル-ソロ-Ver2"
-        },
+        "2668-2205-2102:Jumping On The Clock",
+        "1189-3365-5503:縄跳びこっこ",
+        "4394-1289-0030:シン・こっこ",
+        "4823-4835-4406:ロールオフこっこ",
+        "6056-0055-7214:Cracking Ball",
+        "0039-4956-9152:BlastFest!",
+        "2985-0672-3977:TheBottom",
+        "5354-7805-9592:リングスピナーこっこ",
+        "6783-9973-8283:ブルーステージサバイバル",
+        "0079-0691-0096:ジャンプクラブ？",
+        "0554-2897-0984:ピンボールポインター",
+        "1047-2162-6725:Haunted Doomspire",
+        "2038-3785-4888:タイムロック クレート",
+        "2122-9878-9929:BLAST CAVERN",
+        "3946-1752-1174:サンザンダーランティス",
+        "4151-8305-0408:Killer Vs Survivor",
+        "5400-6810-8096:Neutral Jump Survival [32 Players]",
+        "5695-4354-0286:Squid Game - Season2",
+        "6221-0517-9460:Oh Shoot!",
+        "6679-4238-9153:ぷにぷにじごく",
+        "6863-2771-6831:Fan Survival",
+        "7593-9797-0140:マイムマイム",
+        "9123-1342-8604:振り子の支点",
+        "3358-6213-6040:LostTemple",
+        "1688-1774-7113:",
+        "6863-2771-6831:Fan Survival",
         "1754-5234-1042",
-        ":\tビーチウィーリクデット",
-        "6143-1698-0795\t:\tMath in The Jungle",
-        "​7970-2961-8736\t:\tNチキ",
-        {
-          "weight": 0,
-          "content": "5074 8936 7718\t:\tTough Kitties"
-        },
-        "2832-5326-5515\t:\tコッコサッカー",
+        ":ビーチウィーリクデット",
+        "6143-1698-0795:Math in The Jungle",
+        "​7970-2961-8736:Nチキ",
+        "2832-5326-5515:コッコサッカー",
+        "7217-8163-2051:Alubia Solteto",
         {
           "weight": 2,
-          "content": "5805-7422-0193\t:\tばねこっこ"
+          "content": "7373-4535-6827:ハムスターこっこ"
         },
         {
           "weight": 2,
-          "content": "8247-6347-2295\t:\tこっこ３"
+          "content": "0114-56813038:ファイナルスタジアム"
         },
         {
           "weight": 2,
-          "content": "​​2015 1054 5348\t:\tBest Best And Best!!!"
-        },
-        {
-          "weight": 0,
-          "content": "​​8000 1533 9633\t:\tChallenging Game"
-        },
-        {
-          "weight": 0,
-          "content": "​​5552 4755 2481 \t:\tBlue Bridge"
+          "content": "5805-7422-0193:ばねこっこ"
         },
         {
           "weight": 2,
-          "content": "0369-1203-1177\t:\tぬけがけこっこ"
+          "content": "8247-6347-2295:こっこ３"
         },
         {
           "weight": 2,
-          "content": "1305-5188-8037\t:\tトマキケこっこ2"
+          "content": "​​2015 1054 5348:Best Best And Best!!!"
         },
         {
           "weight": 2,
-          "content": "1798-6311-4448\t:\t海辺こっこ"
+          "content": "0369-1203-1177:ぬけがけこっこ"
         },
         {
           "weight": 2,
-          "content": "1896-9888-5826\t:\tブロックこっこ"
+          "content": "1305-5188-8037:トマキケこっこ2"
         },
         {
           "weight": 2,
-          "content": "3105-1818-3746\t:\tとまきけこっこ"
+          "content": "1798-6311-4448:海辺こっこ"
         },
         {
           "weight": 2,
-          "content": "3449-5351-3324\t:\t高重力こっこ"
+          "content": "1896-9888-5826:ブロックこっこ"
         },
         {
           "weight": 2,
-          "content": "3925-3205-2282\t:\t雲隠れこっこ"
+          "content": "3105-1818-3746:とまきけこっこ"
         },
         {
           "weight": 2,
-          "content": "4345-9693-4109\t:\tDigital Blast Ball"
+          "content": "3449-5351-3324:高重力こっこ"
         },
         {
           "weight": 2,
-          "content": "4728-8687-2075\t:\t雨宿りこっこ"
+          "content": "3925-3205-2282:雲隠れこっこ"
         },
         {
           "weight": 2,
-          "content": "4915-0379-3422\t:\tKingamond Arena"
+          "content": "4345-9693-4109:Digital Blast Ball"
         },
         {
           "weight": 2,
-          "content": "5609-3719-8831\t:\tいすとりこっこ"
+          "content": "4728-8687-2075:雨宿りこっこ"
         },
         {
           "weight": 2,
-          "content": "9635-1439-1604\t:\tカイテンこっこ2"
+          "content": "4915-0379-3422:Kingamond Arena"
         },
         {
           "weight": 2,
-          "content": "2812-9870-5605\t:\tばいきんぐこっこ"
+          "content": "5609-3719-8831:いすとりこっこ"
         },
         {
           "weight": 2,
-          "content": "7593-5334-6559\t:\tCar Survival"
+          "content": "9635-1439-1604:カイテンこっこ2"
         },
         {
           "weight": 2,
-          "content": "9850-2594-6081\t:\tSnowStorm"
+          "content": "2812-9870-5605:ばいきんぐこっこ"
         },
         {
           "weight": 2,
-          "content": "0004-1036-9716\t:\tふわコロバトル"
+          "content": "7593-5334-6559:Car Survival"
         },
         {
           "weight": 2,
-          "content": "0262-1240-5727\t:\tPlataforma Giratoria"
+          "content": "9850-2594-6081:SnowStorm"
         },
         {
           "weight": 2,
-          "content": "0359-2749-0206\t:\tジャンプ・ロー・パニック"
+          "content": "0004-1036-9716:ふわコロバトル"
         },
         {
           "weight": 2,
-          "content": "0577-9489-8052\t:\tBLAST FALL"
+          "content": "0262-1240-5727:Plataforma Giratoria"
         },
         {
           "weight": 2,
-          "content": "1016-4881-7070\t:\tヘキササークル"
+          "content": "0359-2749-0206:ジャンプ・ロー・パニック"
         },
         {
           "weight": 2,
-          "content": "1679-7058-5575\t:\tBICHO"
+          "content": "0577-9489-8052:BLAST FALL"
         },
         {
           "weight": 2,
-          "content": "1797-6605-5095\t:\tFIELD TEST 006"
+          "content": "1016-4881-7070:ヘキササークル"
         },
         {
           "weight": 2,
-          "content": "2525-2599-0122\t:\tOIL PIT"
+          "content": "1679-7058-5575:BICHO"
         },
         {
           "weight": 2,
-          "content": "2712-0443-0096\t:\tCHAOS SURVIVAL1"
+          "content": "2525-2599-0122:OIL PIT"
         },
         {
           "weight": 2,
-          "content": "2786-5346-1849\t:\t積み木サバイバル"
+          "content": "2712-0443-0096:CHAOS SURVIVAL1"
         },
         {
           "weight": 2,
-          "content": "3850-8723-0291\t:\tJUNGLE CRUISE"
+          "content": "2786-5346-1849:積み木サバイバル"
         },
         {
           "weight": 2,
-          "content": "5075-2414-6578\t:\tぐらさば"
+          "content": "3850-8723-0291:JUNGLE CRUISE"
         },
         {
           "weight": 2,
-          "content": "5262-9825-8649\t:\tローラーダービー"
+          "content": "5075-2414-6578:ぐらさば"
         },
         {
           "weight": 2,
-          "content": "5682-0882-9627\t:\tポコポコサバイバル"
+          "content": "5262-9825-8649:ローラーダービー"
         },
         {
           "weight": 2,
-          "content": "6247-2496-3636\t:\tHex-A-Rumble(5th anniv ver)"
+          "content": "5682-0882-9627:ポコポコサバイバル"
         },
         {
           "weight": 2,
-          "content": "6355-9028-9493\t:\tトマきけスペースこっこ"
+          "content": "6247-2496-3636:Hex-A-Rumble(5th anniv ver)"
         },
         {
           "weight": 2,
-          "content": "6374-4149-6756\t:\tAvocado"
+          "content": "6355-9028-9493:トマきけスペースこっこ"
         },
         {
           "weight": 2,
-          "content": "6399-5679-6968\t:\tCOCOA CLASH"
+          "content": "6374-4149-6756:Avocado"
         },
         {
           "weight": 2,
-          "content": "6807-1202-3933\t:\t止まるなキケンスペースWithブラスト"
-        },
-        {
-          "weight": 0,
-          "content": "6874-4369-5869\t:\tBIG RACE"
+          "content": "6399-5679-6968:COCOA CLASH"
         },
         {
           "weight": 2,
-          "content": "8363-6397-5099\t:\tRe:イニG"
+          "content": "6807-1202-3933:止まるなキケンスペースWithブラスト"
         },
         {
           "weight": 2,
-          "content": "8533-4534-8937\t:\tぐるぐるまわる"
+          "content": "8363-6397-5099:Re:イニG"
         },
         {
           "weight": 2,
-          "content": "9531-5562-7005\t:\tDOMINANCE FIGHT"
+          "content": "8533-4534-8937:ぐるぐるまわる"
         },
         {
           "weight": 2,
-          "content": "9852-3881-6656\t:\tBean Highway"
+          "content": "9531-5562-7005:DOMINANCE FIGHT"
         },
         {
           "weight": 2,
-          "content": "9983-9123-4746\t:\tスモークランティス"
+          "content": "9852-3881-6656:Bean Highway"
         },
         {
           "weight": 2,
-          "content": "5203-1748-1746\t:\tバトルリバイバルソロ"
+          "content": "9983-9123-4746:スモークランティス"
         },
         {
           "weight": 2,
-          "content": "​​6807-1202-3933 \t:\t止まるなキケンスペースWithブラスト"
+          "content": "5203-1748-1746:バトルリバイバルソロ"
         },
         {
           "weight": 2,
-          "content": "3218-0753-5846\t:\t喉の乾きを癒す飲み物"
-        },
-        {
-          "weight": 0,
-          "content": "4230-1274-0098\t:\tどろぼうけんちく　コンベアーアスレチック"
+          "content": "​​6807-1202-3933 :止まるなキケンスペースWithブラスト"
         },
         {
           "weight": 2,
-          "content": "2447-7334-0804\t:\tHole In The Wall"
+          "content": "3218-0753-5846:喉の乾きを癒す飲み物"
         },
         {
           "weight": 2,
-          "content": "5663-5434-9928\t:\tゆきだまこっこ"
+          "content": "2447-7334-0804:Hole In The Wall"
         },
         {
           "weight": 2,
-          "content": "1522-4822-0180\t:\tHelipierto TorreBBVA"
+          "content": "5663-5434-9928:ゆきだまこっこ"
         },
         {
           "weight": 2,
-          "content": "3218-0753-5846\t:\tThirst Quenching Drinks"
-        },
-        {
-          "weight": 0,
-          "content": "1972 2869 9163 \t:\tFALLKE 1stステージ"
+          "content": "1522-4822-0180:Helipierto TorreBBVA"
         },
         {
           "weight": 2,
-          "content": "7103-8778-9439\t:\tホログラサバイバルスペース"
+          "content": "3218-0753-5846:Thirst Quenching Drinks"
         },
         {
           "weight": 2,
-          "content": "970006859393\t:\tドアこっこ"
+          "content": "7103-8778-9439:ホログラサバイバルスペース"
         },
         {
           "weight": 2,
-          "content": "9941-1708-4748\t:\tkodak"
+          "content": "970006859393:ドアこっこ"
         },
         {
           "weight": 2,
-          "content": "6598-9209-5714\t:\tTemple Tumble"
+          "content": "9941-1708-4748:kodak"
         },
         {
           "weight": 2,
-          "content": "7263-2225-4585\t:\t1ふんダッシュ"
+          "content": "6598-9209-5714:Temple Tumble"
         },
         {
-          "weight": 0,
-          "content": "8007-9379-8370\t:"
+          "weight": 2,
+          "content": "7263-2225-4585:1ふんダッシュ"
         },
         {
+          "weight": 2,
+          "content": "403768318260:1しゅうねんこっこ"
+        },
+        {
+          "weight": 2,
+          "content": "0457-0680-1340:Snow Lantis!"
+        },
+        {
+          "weight": 2,
+          "content": "1520-8158-3506:D Rex Boss Fight"
+        },
+        {
           "weight": 3,
-          "content": "1532-4223-0118\t:\tジャンプこっこ"
+          "content": "4364-1153-7173:ばうんどこっこ"
         },
         {
           "weight": 3,
-          "content": "3946-0142-2192\t:\tこっこたわー"
+          "content": "2707-8927-3519:ハリケーンこっこDX"
         },
         {
           "weight": 3,
-          "content": "5431-2245-5061\t:\tドラムこっこ"
+          "content": "2236-8466-1035:Yamiチキンパニック!"
         },
         {
           "weight": 3,
-          "content": "5827-5742-1385\t:\tハチャメチャこっこ"
+          "content": "1797-6605-5095:FIELD TEST 006"
         },
         {
           "weight": 3,
-          "content": "6634-4315-8791\t:\tきけんこっこ"
+          "content": "1532-4223-0118:ジャンプこっこ"
         },
         {
           "weight": 3,
-          "content": "7583-5895-0141\t:\t崩壊こっこふぉ〜とれすリメイク版"
+          "content": "3946-0142-2192:こっこたわー"
         },
         {
           "weight": 3,
-          "content": "7600-3465-0913\t:\tレーザーこっこ"
+          "content": "5431-2245-5061:ドラムこっこ"
         },
         {
           "weight": 3,
-          "content": "8057-8675-9350\t:\tやまこっこ"
+          "content": "5827-5742-1385:ハチャメチャこっこ"
         },
         {
           "weight": 3,
-          "content": "9214-6315-1193\t:\tドアに次ぐドアこっこ"
+          "content": "6634-4315-8791:きけんこっこ"
         },
         {
           "weight": 3,
-          "content": "0654 4880 2223\t:\tSwamp Of Forest"
+          "content": "7583-5895-0141:崩壊こっこふぉ〜とれすリメイク版"
         },
         {
           "weight": 3,
-          "content": "0312-7994-7621\t:\tよけかわすこっこ2"
+          "content": "7600-3465-0913:レーザーこっこ"
         },
         {
           "weight": 3,
-          "content": "1101-3950-3260\t:\t歯こっこ"
+          "content": "8057-8675-9350:やまこっこ"
         },
         {
           "weight": 3,
-          "content": "1587-4018-0877\t:\tリアルタイム翻訳こっこ"
+          "content": "9214-6315-1193:ドアに次ぐドアこっこ"
         },
         {
           "weight": 3,
-          "content": "1666-7578-6203\t:\tブランこっこ"
+          "content": "0654 4880 2223:Swamp Of Forest"
         },
         {
           "weight": 3,
-          "content": "1909-6534-8814\t:\tまるたこっこ"
+          "content": "0312-7994-7621:よけかわすこっこ2"
         },
         {
           "weight": 3,
-          "content": "2589-9142-2639\t:\tパキパキこっこ"
+          "content": "1101-3950-3260:歯こっこ"
         },
         {
           "weight": 3,
-          "content": "2987-4032-8985\t:\tTHE LORD OF THE"
+          "content": "1587-4018-0877:リアルタイム翻訳こっこ"
         },
         {
           "weight": 3,
-          "content": "3585-4721-7813\t:\tはかいこっこ"
+          "content": "1666-7578-6203:ブランこっこ"
         },
         {
           "weight": 3,
-          "content": "4178-8753-5007\t:\tタイルこっこ"
+          "content": "1909-6534-8814:まるたこっこ"
         },
         {
           "weight": 3,
-          "content": "4283-2367-6171\t:\tファンこっこ"
+          "content": "2589-9142-2639:パキパキこっこ"
         },
         {
           "weight": 3,
-          "content": "4582-6475-1806\t:\tFlooded Factory"
+          "content": "2987-4032-8985:THE LORD OF THE"
         },
         {
           "weight": 3,
-          "content": "5251-0301-3045\t:\tこっこタイム"
+          "content": "3585-4721-7813:はかいこっこ"
         },
         {
           "weight": 3,
-          "content": "6708-1069-9372\t:\tKingamond Arena(Chicen)"
+          "content": "4178-8753-5007:タイルこっこ"
         },
         {
           "weight": 3,
-          "content": "7565-7711-1309\t:\tガリガリなキツネザルこっこ"
+          "content": "4283-2367-6171:ファンこっこ"
         },
         {
-          "weight": 0,
-          "content": "408834636280\t:\tスキルアップステージ"
+          "weight": 3,
+          "content": "4582-6475-1806:Flooded Factory"
         },
         {
           "weight": 3,
-          "content": "0024-3669-2428\t:\tこっこ"
+          "content": "5251-0301-3045:こっこタイム"
         },
         {
           "weight": 3,
-          "content": "1228-2279-5958\t:\tHEX A GON&KOKKO"
+          "content": "6708-1069-9372:Kingamond Arena(Chicen)"
         },
         {
           "weight": 3,
-          "content": "1952-9750-5289\t:\tバンパーチキン　はねちき"
+          "content": "7565-7711-1309:ガリガリなキツネザルこっこ"
         },
         {
           "weight": 3,
-          "content": "2118-8445-5589\t:\tAIRこっこ"
+          "content": "0024-3669-2428:こっこ"
         },
         {
           "weight": 3,
-          "content": "2432-8934-3570\t:\tふるてぃるとこっこ"
+          "content": "1228-2279-5958:HEX A GON&KOKKO"
         },
         {
           "weight": 3,
-          "content": "6145-4420-6345\t:\tロールこっこ"
+          "content": "1952-9750-5289:バンパーチキン　はねちき"
         },
         {
           "weight": 3,
-          "content": "9157-5570-8782\t:\tおじゃまシンロールファン"
+          "content": "2118-8445-5589:AIRこっこ"
         },
         {
           "weight": 3,
-          "content": "9801-3043-7095\t:\tこっこ２(ブラボあり)"
+          "content": "2432-8934-3570:ふるてぃるとこっこ"
         },
         {
           "weight": 3,
-          "content": "0225-9522-7517\t:\tくらやみこっこ"
+          "content": "6145-4420-6345:ロールこっこ"
         },
         {
           "weight": 3,
-          "content": "0266-0140-2295\t:\tCASTLE IN THE SKY"
+          "content": "9157-5570-8782:おじゃまシンロールファン"
         },
         {
           "weight": 3,
-          "content": "0376-2298-6306\t:\tWrecking Ball Roulette"
+          "content": "9801-3043-7095:こっこ２(ブラボあり)"
         },
         {
           "weight": 3,
-          "content": "0377-4139-9791\t:\tマーブルバランス"
+          "content": "0225-9522-7517:くらやみこっこ"
         },
         {
           "weight": 3,
-          "content": "0575-3771-3041\t:\tCastle Siege"
+          "content": "0266-0140-2295:CASTLE IN THE SKY"
         },
         {
           "weight": 3,
-          "content": "0589-7502-2033\t:\tフォールガイズ版勝ち抜き格闘"
+          "content": "0376-2298-6306:Wrecking Ball Roulette"
         },
         {
           "weight": 3,
-          "content": "0755-9730-6093\t:\tチャッキーのスピードサーキット"
+          "content": "0377-4139-9791:マーブルバランス"
         },
         {
           "weight": 3,
-          "content": "1128-4503-8590\t:\tAura Wall"
+          "content": "0575-3771-3041:Castle Siege"
         },
         {
           "weight": 3,
-          "content": "1332-6215-3485\t:\tて リングスピナー かんたん"
+          "content": "0589-7502-2033:フォールガイズ版勝ち抜き格闘"
         },
         {
           "weight": 3,
-          "content": "1337-4699-0946\t:\tLava Walk"
+          "content": "0755-9730-6093:チャッキーのスピードサーキット"
         },
         {
           "weight": 3,
-          "content": "1611-5006-9838\t:\tCityWark"
+          "content": "1128-4503-8590:Aura Wall"
         },
         {
           "weight": 3,
-          "content": "1676-7546-9087\t:\tブラストラクション"
+          "content": "1332-6215-3485:て リングスピナー かんたん"
         },
         {
           "weight": 3,
-          "content": "1789-1303-4446\t:\tCIRCULAR MAYHEM"
+          "content": "1337-4699-0946:Lava Walk"
         },
         {
           "weight": 3,
-          "content": "1849-7293-6429\t:\tStop&GO Jump Club"
+          "content": "1611-5006-9838:CityWark"
         },
         {
           "weight": 3,
-          "content": "1996-0003-9362\t:\tすらいむにおちるな!"
+          "content": "1676-7546-9087:ブラストラクション"
         },
         {
           "weight": 3,
-          "content": "2180-1400-9294\t:\tウォールパニックこっこ"
+          "content": "1789-1303-4446:CIRCULAR MAYHEM"
         },
         {
           "weight": 3,
-          "content": "2415-6851-6329\t:\tピンポールサバイバー"
+          "content": "1849-7293-6429:Stop&GO Jump Club"
         },
         {
           "weight": 3,
-          "content": "2501-1378-5714\t:\tLog Jam Redux"
+          "content": "1996-0003-9362:すらいむにおちるな!"
         },
         {
           "weight": 3,
-          "content": "2504-6275-8989\t:\tボックスパニックファイナル"
+          "content": "2180-1400-9294:ウォールパニックこっこ"
         },
         {
           "weight": 3,
-          "content": "2671-6726-0734\t:\tProject Boss Fight"
+          "content": "2415-6851-6329:ピンポールサバイバー"
         },
         {
           "weight": 3,
-          "content": "2699-1971-7273\t:\tRandom Medusa"
+          "content": "2501-1378-5714:Log Jam Redux"
         },
         {
           "weight": 3,
-          "content": "2765-7017-6317\t:\tSlime Rod Survival"
+          "content": "2504-6275-8989:ボックスパニックファイナル"
         },
         {
           "weight": 3,
-          "content": "2822-1455-5547\t:\tピラミッドアウトレインボー"
+          "content": "2671-6726-0734:Project Boss Fight"
         },
         {
           "weight": 3,
-          "content": "3303-7150-3607\t:\texplosive Eruption"
+          "content": "2699-1971-7273:Random Medusa"
         },
         {
           "weight": 3,
-          "content": "3948-9689-4123\t:\tMinecraft Zombi"
+          "content": "2765-7017-6317:Slime Rod Survival"
         },
         {
           "weight": 3,
-          "content": "4000-3478-1717\t:\t止まるなキケン・雲海"
+          "content": "2822-1455-5547:ピラミッドアウトレインボー"
         },
         {
           "weight": 3,
-          "content": "4130-2056-8814\t:\tドッジ・ダイブ・サバイバル"
+          "content": "3303-7150-3607:explosive Eruption"
         },
         {
           "weight": 3,
-          "content": "4174-2695-2869\t:\tRolling Survival"
+          "content": "3948-9689-4123:Minecraft Zombi"
         },
         {
           "weight": 3,
-          "content": "4440-8104-9591\t:\tCHAIR GAME"
+          "content": "4000-3478-1717:止まるなキケン・雲海"
         },
         {
           "weight": 3,
-          "content": "4482-5479-9581\t:\t海洋アリーナ(Hard)"
+          "content": "4130-2056-8814:ドッジ・ダイブ・サバイバル"
         },
         {
           "weight": 3,
-          "content": "4572-7468-9717\t:\tICE MOUNT"
+          "content": "4174-2695-2869:Rolling Survival"
         },
         {
           "weight": 3,
-          "content": "4693-3037-1041\t:\tTraapeza Cliffhanger"
+          "content": "4440-8104-9591:CHAIR GAME"
         },
         {
           "weight": 3,
-          "content": "4829-9277-8859\t:\tDESLIZATE AL LIMITE"
+          "content": "4482-5479-9581:海洋アリーナ(Hard)"
         },
         {
           "weight": 3,
-          "content": "5063-6188-8174\t:\tBlock Rush"
+          "content": "4572-7468-9717:ICE MOUNT"
         },
         {
           "weight": 3,
-          "content": "5090-7518-2604\t:\t火山島で窃盗"
+          "content": "4693-3037-1041:Traapeza Cliffhanger"
         },
         {
           "weight": 3,
-          "content": "5114-7626-1329\t:\tEnd Sweep Official Rule"
+          "content": "4829-9277-8859:DESLIZATE AL LIMITE"
         },
         {
           "weight": 3,
-          "content": "5289-4446-0558\t:\tbad colors"
+          "content": "5063-6188-8174:Block Rush"
         },
         {
           "weight": 3,
-          "content": "5409-5451-3971\t:\tぽよぱに"
+          "content": "5090-7518-2604:火山島で窃盗"
         },
         {
           "weight": 3,
-          "content": "5469-4667-5804\t:\tポップコーンBONBON"
+          "content": "5114-7626-1329:End Sweep Official Rule"
         },
         {
           "weight": 3,
-          "content": "5571-9797-6268\t:\tPaniwue Sur La Place Gommeuse"
+          "content": "5289-4446-0558:bad colors"
         },
         {
           "weight": 3,
-          "content": "5633-3820-9483\t:\tBlunder Blocks"
+          "content": "5409-5451-3971:ぽよぱに"
         },
         {
           "weight": 3,
-          "content": "6038-9512-4209\t:\tSHIP PANIC"
+          "content": "5469-4667-5804:ポップコーンBONBON"
         },
         {
           "weight": 3,
-          "content": "6487-3411-6029\t:\tChicken Demolition"
+          "content": "5571-9797-6268:Paniwue Sur La Place Gommeuse"
         },
         {
           "weight": 3,
-          "content": "6697-0375-9371\t:\tChicken Champ Legends"
+          "content": "5633-3820-9483:Blunder Blocks"
         },
         {
           "weight": 3,
-          "content": "6930-4744-3699\t:\tSpace Tunnel"
+          "content": "6038-9512-4209:SHIP PANIC"
         },
         {
           "weight": 3,
-          "content": "7369-6327-5989\t:\tROTATE & ELIMINATE"
+          "content": "6487-3411-6029:Chicken Demolition"
         },
         {
           "weight": 3,
-          "content": "8105-2043-2901\t:\t海洋アリーナ"
+          "content": "6697-0375-9371:Chicken Champ Legends"
         },
         {
           "weight": 3,
-          "content": "8133-5596-9781\t:\tHex-A-Showdown"
+          "content": "6930-4744-3699:Space Tunnel"
         },
         {
           "weight": 3,
-          "content": "8222-5854-3151\t:\tデスカウントダウン"
+          "content": "7369-6327-5989:ROTATE & ELIMINATE"
         },
         {
           "weight": 3,
-          "content": "8234-5154-2299\t:\tLaser Challemge"
+          "content": "8105-2043-2901:海洋アリーナ"
         },
         {
           "weight": 3,
-          "content": "8344-1519-0900\t:\t椅子取り"
+          "content": "8133-5596-9781:Hex-A-Showdown"
         },
         {
           "weight": 3,
-          "content": "8650-5695-6803\t:\tDisc-o Laser Show"
+          "content": "8222-5854-3151:デスカウントダウン"
         },
         {
           "weight": 3,
-          "content": "8696-9975-7168\t:\tライドバトロ・ステラ"
+          "content": "8234-5154-2299:Laser Challemge"
         },
         {
           "weight": 3,
-          "content": "8853-5574-5215\t:\tたこやきパーティー"
+          "content": "8344-1519-0900:椅子取り"
         },
         {
           "weight": 3,
-          "content": "8992-3057-5604\t:\tChick N Field"
+          "content": "8650-5695-6803:Disc-o Laser Show"
         },
         {
           "weight": 3,
-          "content": "9005-7701-6604\t:\tTorre Tambaleante"
+          "content": "8696-9975-7168:ライドバトロ・ステラ"
         },
         {
           "weight": 3,
-          "content": "9147-5285-0097\t:\tミニスペース2025Ver"
+          "content": "8853-5574-5215:たこやきパーティー"
         },
         {
           "weight": 3,
-          "content": "9366-4247-3382\t:\tトマきけこっこ"
+          "content": "8992-3057-5604:Chick N Field"
         },
         {
           "weight": 3,
-          "content": "9585-4220-8610\t:\tHex-Spinner"
+          "content": "9005-7701-6604:Torre Tambaleante"
         },
         {
           "weight": 3,
-          "content": "9720-5488-7978\t:\tRubber Chicken Simple"
+          "content": "9147-5285-0097:ミニスペース2025Ver"
         },
         {
           "weight": 3,
-          "content": "9741-5278-7219\t:\tリニューアルブラストボール"
+          "content": "9366-4247-3382:トマきけこっこ"
         },
         {
           "weight": 3,
-          "content": "9809-9354-4326\t:\tThe Getaway"
+          "content": "9585-4220-8610:Hex-Spinner"
         },
         {
           "weight": 3,
-          "content": "9970-6677-9108\t:\tCuartel Digital"
+          "content": "9720-5488-7978:Rubber Chicken Simple"
         },
         {
-          "weight": 0,
-          "content": "​6874 4369 5869\t:\tBigRace"
+          "weight": 3,
+          "content": "9741-5278-7219:リニューアルブラストボール"
         },
         {
-          "weight": 0,
-          "content": "7368 2760 8140\t:\tFlight Guys"
+          "weight": 3,
+          "content": "9809-9354-4326:The Getaway"
         },
         {
-          "weight": 0,
-          "content": "​​0469の7540の8779\t:\t癒しガイズ"
+          "weight": 3,
+          "content": "9970-6677-9108:Cuartel Digital"
         },
         {
           "weight": 3,
-          "content": "1441-3230-7937\t:\tJump Rope"
+          "content": "1441-3230-7937:Jump Rope"
         },
         {
           "weight": 3,
-          "content": "7572-8742-5326\t:\tSF76-Discothewue V2"
+          "content": "7572-8742-5326:SF76-Discothewue V2"
         },
         {
           "weight": 3,
-          "content": "8365-0671-2044\t:\tBuilders Revenge"
+          "content": "8365-0671-2044:Builders Revenge"
         },
         {
           "weight": 3,
-          "content": "9336-9070-5404\t:\tSword Swing"
+          "content": "9336-9070-5404:Sword Swing"
         },
         {
-          "weight": 0,
-          "content": "6884-1281-9937\t:\tRoll Zone"
+          "weight": 3,
+          "content": "6078-6234-4159:Snowy Knockout"
         },
         {
           "weight": 3,
-          "content": "6078-6234-4159\t:\tSnowy Knockout"
+          "content": "5713-2308-8529:ツリークライム"
         },
         {
           "weight": 3,
-          "content": "5713-2308-8529\t:\tツリークライム"
+          "content": "7252-6787-7802:Top Of The Trash"
         },
         {
           "weight": 3,
-          "content": "7252-6787-7802\t:\tTop Of The Trash"
+          "content": "0105-8744-9937:April Fools Dodge Dive Survive"
         },
         {
           "weight": 3,
-          "content": "0105-8744-9937\t:\tApril Fools Dodge Dive Survive"
+          "content": "1698-5024-9390:Beach Liege"
         },
         {
-          "weight": 0,
-          "content": "3525の4400の1328\t:\tSASUKE2nd"
+          "weight": 3,
+          "content": "0930-1346-2839:Disco Diver"
         },
         {
           "weight": 3,
-          "content": "1698-5024-9390\t:\tBeach Liege"
+          "content": "1025-0210-4986:Rotation Yeetropolis The Semi Final"
         },
         {
           "weight": 3,
-          "content": "0930-1346-2839\t:\tDisco Diver"
+          "content": "3809-7218-2913:Mini Bouncy Castle Park"
         },
         {
           "weight": 3,
-          "content": "1025-0210-4986\t:\tRotation Yeetropolis The Semi Final"
+          "content": "0918-9148-9180:Virtual Dash"
         },
         {
           "weight": 3,
-          "content": "3809-7218-2913\t:\tMini Bouncy Castle Park"
+          "content": "​​9168-1881-8241:Laser Festival"
         },
         {
           "weight": 3,
-          "content": "0918-9148-9180\t:\tVirtual Dash"
+          "content": "5475 1341 2182:Black Or White"
         },
         {
           "weight": 3,
-          "content": "​​9168-1881-8241\t:\tLaser Festival"
+          "content": "​​3808-2915-3846:未テスト"
         },
         {
           "weight": 3,
-          "content": "5475 1341 2182\t:\tBlack Or White"
+          "content": "9543-3488-6040:HEX-A-CONE"
         },
         {
           "weight": 3,
-          "content": "​​3808-2915-3846\t:\t未テスト"
+          "content": "704580099802:Slime Climb V2"
         },
         {
           "weight": 3,
-          "content": "9543-3488-6040\t:\tHEX-A-CONE"
+          "content": "​​1950-1399-4552:バトルリバイバルver3"
         },
         {
-          "weight": 0,
-          "content": "562011437438\t:"
+          "weight": 3,
+          "content": "7584の7344の6004:スライムの壁"
         },
         {
           "weight": 3,
-          "content": "704580099802\t:\tSlime Climb V2"
+          "content": "9530-0362-9393:Lizard Champ"
         },
         {
           "weight": 3,
-          "content": "​​1950-1399-4552\t:\tバトルリバイバルver3"
+          "content": "​3527-9726-0494:みそボンこっこ"
         },
         {
           "weight": 3,
-          "content": "7584の7344の6004\t:\tスライムの壁"
+          "content": "2755-5270-8947:無差別こっこ"
         },
         {
-          "weight": 4,
-          "content": "9114-6610-1043\t:\t増水こつこ"
+          "weight": 3,
+          "content": "1597の5538の0217:Bowling Survival!"
         },
         {
-          "weight": 4,
-          "content": "9404-0558-8948\t:\tシーソーこっこ"
+          "weight": 3,
+          "content": "0264-2299-7118:チキンバースト"
         },
         {
-          "weight": 0,
-          "content": "​9543-3488-6040\t:\tHEX-A=CONE"
+          "weight": 3,
+          "content": "0962-4793-6733:Tempo Of Time"
         },
         {
           "weight": 4,
-          "content": "0552-9569-3257\t:\tウォールこっこ"
+          "content": "9114-6610-1043:増水こつこ"
         },
         {
           "weight": 4,
-          "content": "1238-4120-2361\t:\t四国こっこ"
+          "content": "9404-0558-8948:シーソーこっこ"
         },
         {
           "weight": 4,
-          "content": "1488-8514-0849\t:\t勝ち抜きこっこ"
+          "content": "​9543-3488-6040:HEX-A=CONE"
         },
         {
           "weight": 4,
-          "content": "4594-1640-9989\t:\t穴のあくランニングマシンこっこ"
+          "content": "0552-9569-3257:ウォールこっこ"
         },
         {
           "weight": 4,
-          "content": "5142-6503-7470\t:\tすぴーどこっこ"
+          "content": "1238-4120-2361:四国こっこ"
         },
         {
           "weight": 4,
-          "content": "3280-9164-2802\t:\tボンバーガイズ"
+          "content": "1488-8514-0849:勝ち抜きこっこ"
         },
         {
           "weight": 4,
-          "content": "2558-0535-0145\t:\tピアノこっこ"
+          "content": "4594-1640-9989:穴のあくランニングマシンこっこ"
         },
         {
           "weight": 4,
-          "content": "6693-5354-3900\t:\tカイヘイこっこ"
+          "content": "5142-6503-7470:すぴーどこっこ"
         },
         {
           "weight": 4,
-          "content": "9992-8700-4091\t:\tかんらんしゃこっこ(FERRIS"
+          "content": "3280-9164-2802:ボンバーガイズ"
         },
         {
           "weight": 4,
-          "content": "0446-5394-4406\t:\tChicken Tournament"
+          "content": "2558-0535-0145:ピアノこっこ"
         },
         {
           "weight": 4,
-          "content": "0688-7186-0681\t:\t20秒障害物競走11"
+          "content": "6693-5354-3900:カイヘイこっこ"
         },
         {
           "weight": 4,
-          "content": "1005-0144-3855\t:\t20秒障害物競走10"
+          "content": "9992-8700-4091:かんらんしゃこっこ(FERRIS"
         },
         {
           "weight": 4,
-          "content": "1368-9060-1768\t:\tPUNCH"
+          "content": "0446-5394-4406:Chicken Tournament"
         },
         {
           "weight": 4,
-          "content": "1425-8061-6325\t:\tROLL'N' SURVIVE"
+          "content": "0688-7186-0681:20秒障害物競走11"
         },
         {
           "weight": 4,
-          "content": "1599-0002-5734\t:\tForest Walk"
+          "content": "1005-0144-3855:20秒障害物競走10"
         },
         {
           "weight": 4,
-          "content": "1932-2481-0193\t:\t20秒障害物競走8"
+          "content": "1368-9060-1768:PUNCH"
         },
         {
           "weight": 4,
-          "content": "2130-6704-3778\t:"
+          "content": "1425-8061-6325:ROLL'N' SURVIVE"
         },
         {
           "weight": 4,
-          "content": "2247-7565-4476\t:\tsuper Volcano"
+          "content": "1599-0002-5734:Forest Walk"
         },
         {
           "weight": 4,
-          "content": "2339-0972-0569\t:\tJungle is Massive"
+          "content": "1932-2481-0193:20秒障害物競走8"
         },
         {
           "weight": 4,
-          "content": "2426-2077-1977\t:\tホップドローム"
+          "content": "2130-6704-3778:HEX-A-DIWINDLE さきぼそりヘキサ"
         },
         {
           "weight": 4,
-          "content": "2682-8506-3899\t:\t20秒障害物競走9"
+          "content": "2247-7565-4476:super Volcano スーパーボルケーノ"
         },
         {
           "weight": 4,
-          "content": "2890-3698-4965\t:\tWormHole"
+          "content": "2339-0972-0569:Jungle is Massive"
         },
         {
           "weight": 4,
-          "content": "3298-6726-4118\t:\tスライムボール・ショーダウン"
+          "content": "2426-2077-1977:ホップドローム"
         },
         {
           "weight": 4,
-          "content": "3323-7766-3284\t:\tTHE TUMBLE TANK"
+          "content": "2682-8506-3899:20秒障害物競走9"
         },
         {
           "weight": 4,
-          "content": "3455-1690-1506\t:\tSurvival Project 3"
+          "content": "2890-3698-4965:WormHole"
         },
         {
           "weight": 4,
-          "content": "3515-9668-9362\t:\tDeath Laser Panic"
+          "content": "3298-6726-4118:スライムボール・ショーダウン"
         },
         {
           "weight": 4,
-          "content": "3613-4797-9449\t:\tスライムロデオ"
+          "content": "3323-7766-3284:THE TUMBLE TANK"
         },
         {
           "weight": 4,
-          "content": "4041-9276-8107\t:\t古代のカオスな倉庫"
+          "content": "3455-1690-1506:Survival Project 3"
         },
         {
           "weight": 4,
-          "content": "4075-5124-3056\t:\t20秒障害物競走12"
+          "content": "3515-9668-9362:Death Laser Panic"
         },
         {
           "weight": 4,
-          "content": "4652-9380-6758\t:\tとってとってとっちゃってX"
+          "content": "3613-4797-9449:スライムロデオ"
         },
         {
           "weight": 4,
-          "content": "4660-3809-2718\t:\t20秒障害物競走6"
+          "content": "4041-9276-8107:古代のカオスな倉庫"
         },
         {
           "weight": 4,
-          "content": "4841-5974-2295\t:\t20秒障害物競走"
+          "content": "4075-5124-3056:20秒障害物競走12"
         },
         {
           "weight": 4,
-          "content": "4958-0222-6626\t:\tチキンストーム"
+          "content": "4652-9380-6758:とってとってとっちゃってX"
         },
         {
           "weight": 4,
-          "content": "5041-0026-9700\t:\tItachi - Boss Fight"
+          "content": "4660-3809-2718:20秒障害物競走6"
         },
         {
           "weight": 4,
-          "content": "5340-3992-8947\t:\t20秒障害物競走4"
+          "content": "4841-5974-2295:20秒障害物競走"
         },
         {
           "weight": 4,
-          "content": "5342-2333-9383\t:\tPYRAMID CHAOS"
+          "content": "4958-0222-6626:チキンストーム"
         },
         {
           "weight": 4,
-          "content": "5719-8071-4943\t:\tTrrWall"
+          "content": "5340-3992-8947:20秒障害物競走4"
         },
         {
           "weight": 4,
-          "content": "6068-3654-4416\t:\tLASER TRACER"
+          "content": "5719-8071-4943:TrrWall"
         },
         {
           "weight": 4,
-          "content": "6237-2627-3605\t:\tホロビタセイ 救出編"
+          "content": "6068-3654-4416:LASER TRACER"
         },
         {
           "weight": 4,
-          "content": "6731-9061-2270\t:\tほうかい！？こっこ・ふぉ～とれす！！(さいげん)"
+          "content": "6237-2627-3605:ホロビタセイ 救出編"
         },
         {
           "weight": 4,
-          "content": "7025-6757-8636\t:\t20秒障害物競走7"
+          "content": "6731-9061-2270:ほうかい！？こっこ・ふぉ～とれす！！(さいげん)"
         },
         {
           "weight": 4,
-          "content": "7054-1491-3823\t:\t20秒障害物競走3"
+          "content": "7025-6757-8636:20秒障害物競走7"
         },
         {
           "weight": 4,
-          "content": "7131-6385-2520\t:\tJenga Tower Survival"
+          "content": "7054-1491-3823:20秒障害物競走3"
         },
         {
           "weight": 4,
-          "content": "7341-7088-7129\t:\tVirtual Ring"
+          "content": "7131-6385-2520:Jenga Tower Survival"
         },
         {
           "weight": 4,
-          "content": "7510-8787-6879\t:\t20秒障害物競走2"
+          "content": "7341-7088-7129:Virtual Ring"
         },
         {
           "weight": 4,
-          "content": "7547-6979-5814\t:\tドアダッシュサバイバル"
+          "content": "7510-8787-6879:20秒障害物競走2"
         },
         {
           "weight": 4,
-          "content": "7855-3360-4913\t:\t氷のバトル・ロワイアル"
+          "content": "7547-6979-5814:ドアダッシュサバイバル"
         },
         {
           "weight": 4,
-          "content": "8375-9941-7502\t:\tdark wark"
+          "content": "7855-3360-4913:氷のバトル・ロワイアル"
         },
         {
           "weight": 4,
-          "content": "8432-7885-0636\t:\t今日のコッコ占い"
+          "content": "8375-9941-7502:dark wark"
         },
         {
           "weight": 4,
-          "content": "8541-5253-0290\t:\tサイクルスライム"
+          "content": "8541-5253-0290:サイクルスライム"
         },
         {
           "weight": 4,
-          "content": "8557-4535-7173\t:\tスライム飛び交うこっこ"
+          "content": "8557-4535-7173:スライム飛び交うこっこ"
         },
         {
           "weight": 4,
-          "content": "8666-7932-6204\t:\tPreickly Ring"
+          "content": "8666-7932-6204:Preickly Ring"
         },
         {
           "weight": 4,
-          "content": "9576-0593-1926\t:\t20秒障害物競走5"
+          "content": "9576-0593-1926:20秒障害物競走5"
         },
         {
-          "weight": 0,
-          "content": "333729510275\t:\tminislimeClimb"
+          "weight": 4,
+          "content": "759403373295:Slimeball Survival7"
         },
         {
           "weight": 4,
-          "content": "759403373295\t:\tSlimeball Survival7"
+          "content": "4717-1544-5415:Jungle Jumpers"
         },
         {
           "weight": 4,
-          "content": "4717-1544-5415\t:\tJungle Jumpers"
+          "content": "5462-1197-4897:クエスト屋今日は休んでヴァカンスなインフィニティーメダルがぉ！"
         },
         {
           "weight": 4,
-          "content": "5462-1197-4897\t:\tクエスト屋今日は休んでヴァカンスなインフィニティーメダルがぉ！"
+          "content": "1347-0984-4467:Ice Walk"
         },
         {
           "weight": 4,
-          "content": "1347-0984-4467\t:\tIce Walk"
+          "content": "1465-5103-9890:Disco LaserShow"
         },
         {
           "weight": 4,
-          "content": "1465-5103-9890\t:\tDisco LaserShow"
+          "content": "6410 ​​3027 ​​3712:Falling Block"
         },
         {
           "weight": 4,
-          "content": "8783-6379-2561\t:\tものを避けて走ってスライム来たら物に乗って"
+          "content": "0883-1909-2083:Deluxe Circle Of Chicken!"
         },
         {
           "weight": 4,
-          "content": "6410 ​​3027 ​​3712\t:\tFalling Block"
+          "content": "8000-7002-6909:Color Show"
         },
         {
           "weight": 4,
-          "content": "0883-1909-2083\t:\tDeluxe Circle Of Chicken!"
+          "content": "9543-9243-5354:Bridge Traffic"
         },
         {
           "weight": 4,
-          "content": "9530-0362-9393\t:\tLizard Champ"
+          "content": "4003-6438-0955:スライム・ショード・クライシス"
         },
         {
           "weight": 4,
-          "content": "8000-7002-6909\t:\tColor Show"
+          "content": "2502の9804の1856:Naval Destruction Battle"
         },
         {
           "weight": 4,
-          "content": "9543-9243-5354\t:\tBridge Traffic"
+          "content": "7594の0337の3295:Slimeball Survival 7"
         },
         {
           "weight": 4,
-          "content": "7217-8163-2051\t:\tAlubia Solteto"
+          "content": "4240の2874の9249:Wild BlastBall X"
         },
         {
           "weight": 4,
-          "content": "4003-6438-0955\t:\tスライム・ショード・クライシス"
+          "content": "1019-4138-3022:Fruit Fight!"
         },
         {
           "weight": 4,
-          "content": "2502の9804の1856\t:\tNaval Destruction Battle"
+          "content": "0202-8286-2041:Train Rush"
         },
         {
           "weight": 4,
-          "content": "7594の0337の3295\t:\tSlimeball Survival 7"
+          "content": "8740-5550-5909:Whack My Balls"
         },
         {
           "weight": 4,
-          "content": "4240の2874の9249\t:\tWild BlastBall X"
+          "content": "5706-5981-8230:LavaLand"
         },
         {
           "weight": 5,
-          "content": "6410-3027-3712\t:\tFalling Blocs"
+          "content": "5041-0026-9700:Itachi - Boss Fight"
+        },
+        {
+          "weight": 5,
+          "content": "5342-2333-9383:PYRAMID CHAOS"
+        },
+        {
+          "weight": 5,
+          "content": "8432-7885-0636:今日のコッコ占い"
+        },
+        {
+          "weight": 5,
+          "content": "8783-6379-2561:ものを避けて走ってスライム来たら物に乗って"
+        },
+        {
+          "weight": 5,
+          "content": "6410-3027-3712:Falling Blocs"
+        },
+        {
+          "weight": 5,
+          "content": "9664-2138-5675:Jungle Wall"
         }
       ]
     },
