@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiItemType, OmikujiDataType, RuleType } from '@/types/'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
-import { MockComment } from '@shared/__mocks__/CreateMockComment'
+import { MockComment } from '@shared/test-utils/CreateMockComment'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'

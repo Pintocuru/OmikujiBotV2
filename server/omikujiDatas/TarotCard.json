@@ -3,10 +3,10 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじ BOT タロットカード OmikujiBot TarotCard",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.18-v1.2.0-beta3",
+    "version": "ver2025.09.22-v1.2.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0-beta3",
-    "dataVersion": 1.903,
+    "generatorVersion": "v1.2.0-beta4",
+    "dataVersion": 1.904,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",

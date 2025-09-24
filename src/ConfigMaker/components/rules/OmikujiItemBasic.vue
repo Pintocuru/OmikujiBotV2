@@ -40,13 +40,13 @@
 </template>
 
 <script setup lang="ts">
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
-  import { GripVertical } from 'lucide-vue-next'
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import { GripVertical } from 'lucide-vue-next'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]

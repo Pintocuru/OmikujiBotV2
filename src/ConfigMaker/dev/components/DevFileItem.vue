@@ -67,10 +67,10 @@
   import { ref, nextTick } from 'vue'
   import type { FileItem } from '../devTypes'
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
-  import MenuDropdown from '@/ConfigMaker/components/parts/MenuDropdown.vue'
-  import { Download, FileText, Edit } from 'lucide-vue-next'
-  import { toast } from 'vue-sonner'
   import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import { toast } from 'vue-sonner'
+  import { Download, FileText, Edit } from 'lucide-vue-next'
 
   const props = defineProps<{
     file: FileItem

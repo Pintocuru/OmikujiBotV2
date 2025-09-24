@@ -53,7 +53,7 @@
     PlaceholderValueObjectSchema,
   } from '@/types/OmikujiData/PlaceholderSchema'
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
-  import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{
     placeholderId: string

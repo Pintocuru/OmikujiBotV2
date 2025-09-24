@@ -75,7 +75,7 @@
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import PostActionRow from './PostActionRow.vue'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
-  import MenuDropdown from '@ConfigComponents/parts/MenuDropdown.vue'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { usePostActionsTab } from './composables/usePostActionsTab'
 
   const props = defineProps<{
