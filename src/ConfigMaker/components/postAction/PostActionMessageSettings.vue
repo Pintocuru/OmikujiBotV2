@@ -59,7 +59,7 @@
   import { PostActionType, CharacterEmotionType, isDev } from '@/types/'
   import WordPartyField from './WordPartyField.vue'
   import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   const props = defineProps<{

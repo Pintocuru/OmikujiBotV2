@@ -69,7 +69,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CharacterPreview from './CharacterPreview.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'

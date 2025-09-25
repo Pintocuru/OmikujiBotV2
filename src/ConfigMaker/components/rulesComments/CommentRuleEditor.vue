@@ -78,14 +78,14 @@
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null

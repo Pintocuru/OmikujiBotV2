@@ -52,7 +52,7 @@
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 

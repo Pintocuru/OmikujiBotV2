@@ -52,7 +52,7 @@
   import { computed } from 'vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { PackageMetaSchema } from '@shared/types'
   import { storeToRefs } from 'pinia'
   import { ExternalLink } from 'lucide-vue-next'

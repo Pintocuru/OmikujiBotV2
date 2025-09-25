@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { giftConditionLabels, GiftCondition } from '@shared/types'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   const props = defineProps<{ modelValue: GiftCondition[] }>()
   const emit = defineEmits<{ 'update:modelValue': [value: GiftCondition[]] }>()

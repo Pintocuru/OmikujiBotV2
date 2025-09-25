@@ -16,7 +16,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
@@ -42,5 +42,8 @@
       },
     })
 
+  /**
+   * 型 '"rankMapEnabled"' の引数を型 '"id" | "omikuji" | "name" | "description" | "tags" | "key" | "createdAt" | "updatedAt" | "order" | "isEnabled" | "editorColor" | "accessLevel" | "ruleType"' のパラメーターに割り当てることはできません。ts-plugin(2345)
+   */
   const rankMapEnabled = createComputed('rankMapEnabled')
 </script>

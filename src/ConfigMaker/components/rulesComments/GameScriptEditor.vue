@@ -120,7 +120,7 @@
   import { computed } from 'vue'
   import { CommentRuleType, PostActionType, ScriptPreset, createScriptParamsSchema } from '@/types/'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'

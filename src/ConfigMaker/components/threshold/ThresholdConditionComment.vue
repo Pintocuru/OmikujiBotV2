@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   const props = defineProps<{ modelValue: string[] }>()
   const emit = defineEmits<{ 'update:modelValue': [value: string[]] }>()

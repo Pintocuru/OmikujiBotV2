@@ -112,7 +112,7 @@
 <script setup lang="ts">
   import { reactive, watch, onMounted } from 'vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   interface Preset {
     label: string

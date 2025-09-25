@@ -91,7 +91,7 @@
   import { displaySize, displaySizeLabels } from '@shared/types'
   import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { storeToRefs } from 'pinia'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'

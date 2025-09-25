@@ -47,7 +47,7 @@
   import PostActionMessageSettings from './PostActionMessageSettings.vue'
   import PostActionToastSettings from './PostActionToastSettings.vue'
   import PostActionWordPartySettings from './PostActionWordPartySettings.vue'
-  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { MessageSquare, Bell, PartyPopper } from 'lucide-vue-next'
 
   // Props
