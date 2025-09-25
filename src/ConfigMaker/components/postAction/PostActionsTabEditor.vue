@@ -72,7 +72,7 @@
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import PostActionItem from './PostActionItem.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import PostActionRow from './PostActionRow.vue'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'

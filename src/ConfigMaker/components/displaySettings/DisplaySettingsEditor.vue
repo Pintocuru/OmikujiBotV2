@@ -81,7 +81,7 @@
   import StartupSettings from './StartupSettings.vue'
   import VisibilitySettings from './VisibilitySettings.vue'
   import DeveloperModeInfo from './DeveloperModeInfo.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 

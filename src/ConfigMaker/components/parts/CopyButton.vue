@@ -27,18 +27,19 @@
   import { ref, onUnmounted } from 'vue'
   import { CopyIcon, CheckIcon, Loader2Icon } from 'lucide-vue-next'
 
-  interface Props {
-    value: string // コピーする値（必須）
-    dataTip?: string // タイトル（ツールチップ）
-    disabled?: boolean // 無効化フラグ
-    small?: boolean // 小さなモード（テキスト非表示）
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    dataTip: 'クリックしてコピー',
-    disabled: false,
-    small: false,
-  })
+  const props = withDefaults(
+    defineProps<{
+      value: string // コピーする値（必須）
+      dataTip?: string // タイトル（ツールチップ）
+      disabled?: boolean // 無効化フラグ
+      small?: boolean // 小さなモード（テキスト非表示）
+    }>(),
+    {
+      dataTip: 'クリックしてコピー',
+      disabled: false,
+      small: false,
+    }
+  )
 
   // 状態管理
   const copied = ref(false)

@@ -35,7 +35,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { storeToRefs } from 'pinia'
   import { Code, Settings, Tag, ExternalLink } from 'lucide-vue-next'
 

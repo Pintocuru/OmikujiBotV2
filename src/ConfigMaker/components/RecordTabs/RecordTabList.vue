@@ -48,7 +48,7 @@
   import RecordTabItem from './RecordTabItem.vue'
   import RecordSortActions from './RecordSortActions.vue'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import draggable from 'vuedraggable'
   import { Plus } from 'lucide-vue-next'
 

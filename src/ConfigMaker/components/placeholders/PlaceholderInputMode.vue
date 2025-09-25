@@ -52,7 +52,7 @@
     handelNormalizedValues,
     PlaceholderValueObjectSchema,
   } from '@/types/OmikujiData/PlaceholderSchema'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{

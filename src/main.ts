@@ -3,28 +3,18 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
 import App from './DevApp.vue'
+import ErrorHandler from '@shared/utils/ErrorHandler/ErrorHandler'
 import 'vue-sonner/style.css'
 import '../assets/styles/font.css'
 import '../assets/styles/DaisyUiAllObs.css'
 import OneSDK from '@onecomme.com/onesdk'
 
-// createApp
-const pinia = createPinia()
-const app = createApp(App)
-// グローバルエラーハンドリング
-app.config.errorHandler = (err, instance) => {
-  console.error('エラー:', err)
-  if (instance) {
-    console.log('props:', instance.$props)
-    console.log('data:', instance.$data)
-    console.log('el:', instance.$el)
-  }
-}
-
-// アプリケーションの初期化
 function initApp() {
   try {
-    // OneSDK > App の順にマウント
+    const pinia = createPinia()
+    const app = createApp(App)
+
+    app.use(ErrorHandler)
     app.use(pinia)
     app.use(MotionPlugin)
     OneSDK.ready().then(() => app.mount('#App'))

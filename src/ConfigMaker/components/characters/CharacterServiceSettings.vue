@@ -36,7 +36,7 @@
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 

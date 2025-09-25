@@ -55,7 +55,7 @@
   import ThresholdConditionAccess from './ThresholdConditionAccess.vue'
   import ThresholdConditionGift from './ThresholdConditionGift.vue'
   import ThresholdConditionCount from './ThresholdConditionCount.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   import { computed } from 'vue'

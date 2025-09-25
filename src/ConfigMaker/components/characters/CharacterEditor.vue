@@ -72,7 +72,7 @@
   import CharacterImageSettings from './CharacterImageSettings.vue'
   import CharacterServiceSettings from './CharacterServiceSettings.vue'
   import CharacterIconDisplaySettings from './CharacterIconDisplaySettings.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理

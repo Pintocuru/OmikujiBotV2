@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   defineProps<{

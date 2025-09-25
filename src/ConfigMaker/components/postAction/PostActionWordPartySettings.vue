@@ -10,7 +10,7 @@
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
   import WordPartyField from './WordPartyField.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
 
   const props = defineProps<{
     action: PostActionType

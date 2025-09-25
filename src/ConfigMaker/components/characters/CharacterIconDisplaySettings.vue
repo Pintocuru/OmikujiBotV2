@@ -56,7 +56,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { DisplayOptionType, isDev } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'

@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
   import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import { postWordParty } from '@shared/sdk/postMessage/PostOneComme'
 
   defineProps<{

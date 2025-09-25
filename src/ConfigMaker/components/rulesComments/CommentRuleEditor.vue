@@ -81,7 +81,7 @@
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'

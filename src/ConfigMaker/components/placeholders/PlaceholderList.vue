@@ -68,7 +68,7 @@
   import { PostActionType } from '@/types/'
   import { usePlaceholders } from './composables/usePlaceholders'
   import PlaceholderItem from './PlaceholderItem.vue'
-  import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   // Props
   const props = defineProps<{

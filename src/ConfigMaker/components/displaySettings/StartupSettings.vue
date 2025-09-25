@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'

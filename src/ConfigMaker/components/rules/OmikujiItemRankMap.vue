@@ -16,7 +16,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 

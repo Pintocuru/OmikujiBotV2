@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-  import SettingItem from '@/ConfigMaker/components/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { accessConditionLabels, type AccessCondition } from '@shared/types'
 
   const props = defineProps<{ modelValue: AccessCondition[] }>()

@@ -57,7 +57,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
 

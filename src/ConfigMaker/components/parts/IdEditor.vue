@@ -91,7 +91,7 @@
 <script setup lang="ts">
   import { RecordCategoryType } from '@/types/'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useIdEditor } from './useIdEditor'
 
   const props = defineProps<{

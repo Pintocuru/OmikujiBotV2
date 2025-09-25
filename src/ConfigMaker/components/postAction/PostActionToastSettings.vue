@@ -37,7 +37,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { isDev, PostActionType } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import WordPartyField from './WordPartyField.vue'
 
   const props = defineProps<{

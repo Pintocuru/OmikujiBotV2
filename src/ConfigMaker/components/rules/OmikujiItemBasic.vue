@@ -43,7 +43,7 @@
   import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { GripVertical } from 'lucide-vue-next'

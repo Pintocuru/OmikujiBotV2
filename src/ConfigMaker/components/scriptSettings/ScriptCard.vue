@@ -29,8 +29,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useScriptSettings } from './useScriptSettings'
 
   const props = defineProps<{

@@ -55,7 +55,7 @@
   import TextEditor from '@ConfigComponents/wordPartySettings/TextEditor.vue'
   import FireList from '@ConfigComponents/wordPartySettings/FireList.vue'
   import DeveloperMode from '@ConfigComponents/wordPartySettings/DeveloperMode.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 

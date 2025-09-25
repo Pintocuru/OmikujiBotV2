@@ -41,7 +41,7 @@
   import PackageBasicInfo from './PackageBasicInfo.vue'
   import PackageDistributionInfo from './PackageDistributionInfo.vue'
   import PackageSystemInfo from './PackageSystemInfo.vue'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const { isPro } = useSettingMode()

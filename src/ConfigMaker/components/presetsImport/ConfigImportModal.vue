@@ -42,7 +42,7 @@
 <script setup lang="ts">
   import { toast } from 'vue-sonner'
   import { useImportStore } from './useImportStore'
-  import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import ImportModeSelector from './ImportModeSelector.vue'
   import CategoryConfigSection from './CategoryConfigSection.vue'

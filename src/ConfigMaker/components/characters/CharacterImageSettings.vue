@@ -53,10 +53,10 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CharacterEmotionType, CharacterType, emotionLabels, getImagePath } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { RotateCcw } from 'lucide-vue-next'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{
     modelValue: CharacterType['image']

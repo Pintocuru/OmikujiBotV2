@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
   import { useImportStore } from './useImportStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
 
   const importStore = useImportStore()
 </script>

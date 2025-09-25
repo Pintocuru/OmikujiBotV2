@@ -42,7 +42,7 @@
   import { computed } from 'vue'
   import { RuleType } from '@/types/OmikujiData/RulesSchema'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@shared/components/parts/SettingItem.vue'
   import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
   import { AccessLevelLabels } from '@shared/types'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
