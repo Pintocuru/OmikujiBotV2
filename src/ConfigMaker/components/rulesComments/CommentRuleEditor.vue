@@ -78,7 +78,7 @@
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'

@@ -56,7 +56,7 @@
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'

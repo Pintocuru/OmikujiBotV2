@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
   import SectionCard from '@ConfigComponents/parts/SectionCard.vue'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   defineProps<{
     agreed: boolean

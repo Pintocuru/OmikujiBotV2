@@ -17,5 +17,5 @@
 </template>
 
 <script setup lang="ts">
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 </script>

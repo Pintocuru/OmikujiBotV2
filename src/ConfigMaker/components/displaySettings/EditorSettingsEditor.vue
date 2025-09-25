@@ -54,7 +54,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'

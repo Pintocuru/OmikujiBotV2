@@ -121,7 +121,7 @@
   import { CommentRuleType, PostActionType, ScriptPreset, createScriptParamsSchema } from '@/types/'
   import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import NoParamsCard from '@ConfigComponents/parts/NoParamsCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useEnabledGames } from '../GameScripts/useEnabledGames'

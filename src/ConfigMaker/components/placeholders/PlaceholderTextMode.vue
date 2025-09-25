@@ -48,7 +48,7 @@
   import { ref, computed, onMounted } from 'vue'
   import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     initialValues: Array<PlaceholderValueType | string>

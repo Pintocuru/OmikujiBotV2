@@ -18,7 +18,7 @@
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import InformationCard from '@ConfigComponents/parts/InformationCard.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     category: RulesCategoryType
