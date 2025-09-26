@@ -34,30 +34,22 @@
 
   <!-- 各条件の詳細設定 -->
   <!-- チャットワード条件 -->
-  <ThresholdConditionComment v-if="conditions.includes('comment')" v-model="comment" />
+  <ThresholdComment v-if="conditions.includes('comment')" v-model="comment" />
 
   <!-- 初見条件 -->
-  <ThresholdConditionSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
+  <ThresholdSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
 
   <!-- アクセスレベル条件 -->
-  <ThresholdConditionAccess v-if="conditions.includes('access')" v-model="access" />
+  <ThresholdAccess v-if="conditions.includes('access')" v-model="access" />
 
   <!-- ギフト条件 -->
-  <ThresholdConditionGift v-if="conditions.includes('gift')" v-model="gift" />
+  <ThresholdGift v-if="conditions.includes('gift')" v-model="gift" />
 
   <!-- カウント条件 -->
-  <ThresholdConditionCount v-if="conditions.includes('count')" v-model="count" />
+  <ThresholdCount v-if="conditions.includes('count')" v-model="count" />
 </template>
 
 <script setup lang="ts">
-  import ThresholdConditionComment from './ThresholdConditionComment.vue'
-  import ThresholdConditionSyoken from './ThresholdConditionSyoken.vue'
-  import ThresholdConditionAccess from './ThresholdConditionAccess.vue'
-  import ThresholdConditionGift from './ThresholdConditionGift.vue'
-  import ThresholdConditionCount from './ThresholdConditionCount.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
-
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import {
@@ -65,6 +57,14 @@
     commentThresholdConditionLabels,
     CommentThresholdType,
   } from '@/types/OmikujiProcess/CommentThresholdSchema'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+
+  import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
+  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
+  import ThresholdAccess from '@shared/components/threshold/ThresholdAccess.vue'
+  import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
+  import ThresholdCount from '@shared/components/threshold/ThresholdCount.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     modelValue: CommentThresholdType
