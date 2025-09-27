@@ -1,11 +1,11 @@
 // build.ts - 改良版
-import { createShimsVue } from './buildOptions/CreateOmikujiData'
-import { alias } from '../vite.config'
-import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
-import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
+import { alias } from '../vite.config'
+import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
+import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
+import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
 
 // 各設定ファイルをインポート
 import OmikujiBotProject from './packages/OmikujiBot'
@@ -72,7 +72,7 @@ const buildTargets: BuildTarget[] = [
 ;(async () => {
   try {
     // 前処理:shims-vue.d.ts を生成
-    createShimsVue(packageRoot)
+    CreateShimsVue(packageRoot)
 
     // メインビルド処理
     const systemCommonData: SystemCommonData = {
