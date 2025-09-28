@@ -14,7 +14,7 @@
   import { useFontFamily } from '@/types/BotComponents/useFontFamily'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
-  import ErrorInitComponent from '@shared/components/error/ErrorInitComponent.vue'
+  import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
 
   // 新規分割したコンポーネント
   import OmikujiBot from './packages/OmikujiBot/OmikujiBot.vue'

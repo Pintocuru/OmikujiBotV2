@@ -6,7 +6,6 @@
   <div v-if="selectedItem">
     <!-- 基本設定 -->
     <SectionCard
-      :isGild="true"
       :isOpen="activeSection === 'basic'"
       @toggle="toggleSection('basic')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
