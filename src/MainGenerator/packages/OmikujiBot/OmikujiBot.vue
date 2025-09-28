@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\packages\OmikujiBot\OmikujiBot.vue -->
+<!-- templates\OmikujiBot\src\MainGenerator\packages\OmikujiBot\OmikujiBot.vue -->
 <template>
   <div>
     <!-- コメントフキダシ表示 -->

@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\ToastWidgets\ToastWidgets.vue -->
+<!-- templates\OmikujiBot\src\MainGenerator\components\ToastWidgets\ToastWidgets.vue -->
 <template>
   <div class="fixed bottom-4 z-20 flex flex-col" :class="!base.showToastsOnRight ? 'left-4' : 'right-4'">
     <!-- トースト表示 -->

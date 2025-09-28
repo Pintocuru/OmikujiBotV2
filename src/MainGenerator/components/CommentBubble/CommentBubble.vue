@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
+<!-- templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
 <template>
   <!-- BOTメッセージ表示 -->
   <ViewBotMessage v-if="!showCharacterPersistent" />

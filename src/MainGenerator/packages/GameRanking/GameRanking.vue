@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\packages\GameRanking\GameRanking.vue -->
+<!-- templates\OmikujiBot\src\MainGenerator\packages\GameRanking\GameRanking.vue -->
 <template>
   <div>
     <!-- Scriptsゲーム表示 -->

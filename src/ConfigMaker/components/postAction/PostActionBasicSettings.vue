@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\postAction\PostActionBasicSettings.vue -->
+<!-- templates\OmikujiBot\src\ConfigMaker\components\postAction\PostActionBasicSettings.vue -->
 <!-- ! 使用されてない? -->
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2 max-w-screen-md">
