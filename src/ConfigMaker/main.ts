@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import 'vue-sonner/style.css'
-import '../../assets/styles/DaisyUiAll.css'
+import '../../assets/styles/DaisyUiAllObs.css'
 
 async function initApp() {
   try {

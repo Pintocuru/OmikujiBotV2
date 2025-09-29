@@ -52,6 +52,10 @@ const buildTargets: BuildTarget[] = [
   { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
   { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
    */
+  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
+  { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
+
   /**
    * solo
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -62,8 +66,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
