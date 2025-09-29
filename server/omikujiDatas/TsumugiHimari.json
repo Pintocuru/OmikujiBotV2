@@ -1,0 +1,4686 @@
+{
+  "meta": {
+    "id": "1755337374735-01vj6j",
+    "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.09.29-v1.2.0",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v1.2.0",
+    "dataVersion": 1.2,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "VOICEVOX",
+      "四国めたん",
+      "（ず・ω・きょ）"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/6058829"
+  },
+  "comments": {
+    "OmikujiMetan": {
+      "id": "OmikujiMetan",
+      "key": "OmikujiMetan",
+      "name": "漆黒のおみくじ",
+      "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
+      "createdAt": "2025-08-16T09:51:49.473Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "0f1a8e3a-142d-48f7-811e-2f8cb6e40132",
+          "key": "",
+          "name": "おみくじ:大吉",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 15,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_01",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!レベルアップ",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "<<user>>よ、汝の運命は【大吉】<<metanOmikuji01>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "686552ba-a6ac-401a-ab33-699b6d9d5746",
+          "key": "",
+          "name": "おみくじ:吉",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 20,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_02",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シャキーン2",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<user>>よ、汝の運命は【吉】<<metanOmikuji02>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "e676cb92-af5e-4b1c-9a33-51bc02fb36db",
+          "key": "",
+          "name": "おみくじ:中吉",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 20,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_03",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "<<user>>よ、汝の運命は【中吉】<<metanOmikuji03>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "4c1306d2-0e49-4935-bf08-291762c32e78",
+          "key": "",
+          "name": "おみくじ:小吉",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 15,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_04",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "<<user>>よ、汝の運命は【小吉】<<metanOmikuji04>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "58110d4a-dd98-423b-9666-34a536a2784d",
+          "key": "",
+          "name": "おみくじ:末吉",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 15,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_05",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!間抜け1",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "<<user>>よ、汝の運命は【末吉】<<metanOmikuji05>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "5a087835-31d6-4485-a179-2f1d1b5aa367",
+          "key": "",
+          "name": "おみくじ:凶",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 10,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_06",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "<<user>>よ、汝の運命は【凶】<<metanOmikuji06>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "ce0ca2e5-5b3a-46a7-a238-e507b61da9da",
+          "key": "",
+          "name": "おみくじ:めたんとの接吻賞",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 5,
+          "postActions": [
+            {
+              "delaySeconds": -1,
+              "wordParty": "!omikuji_huru",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0,
+              "wordParty": "!omikuji_07",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1,
+              "wordParty": "!女衆「おう！」",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "<<user>>よ、汝の運命は【接吻賞】<<metanOmikuji07>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^fortune",
+          "🥠"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GouseiSuika": {
+      "id": "GouseiSuika",
+      "key": "GouseiSuika",
+      "name": "スイカジェネレーター",
+      "description": "スイカゲーム風のおみくじ",
+      "createdAt": "2025-08-11T15:34:29.296Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉"
+        ]
+      },
+      "scriptId": "GouseiSuika",
+      "scriptParams": {
+        "mode": "スイカゲーム"
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "BomberSpin": {
+      "id": "BomberSpin",
+      "key": "BomberSpin",
+      "name": "ボンバースピン",
+      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "omikuji": [
+        {
+          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
+          "key": "",
+          "name": "通常",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
+      },
+      "scriptId": "BomberSpin",
+      "scriptParams": {},
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "DwarfBomb": {
+      "id": "DwarfBomb",
+      "key": "DwarfBomb",
+      "name": "うさぎスロット",
+      "description": "スロット風のおみくじ。最大枚数20000枚!",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "omikuji": [
+        {
+          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "key": "",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi",
+          "🐰",
+          "🐇"
+        ]
+      },
+      "scriptId": "DwarfBomb",
+      "scriptParams": {},
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "HondaJanken": {
+      "id": "HondaJanken",
+      "key": "HondaJanken",
+      "name": "じゃんけん",
+      "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
+          "key": "",
+          "name": "じゃんけん(グーA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "553a8977-dda1-4933-869e-48d650e148d5",
+          "key": "",
+          "name": "じゃんけん(グーB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
+          "key": "",
+          "name": "じゃんけん(チョキA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "3bb51efe-3ec6-4514-9a62-b609238d813b",
+          "key": "",
+          "name": "じゃんけん(チョキB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
+          "key": "",
+          "name": "じゃんけん(パーA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
+          "key": "",
+          "name": "じゃんけん(パーB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "aa7082a8-b05f-48e1-8019-12fd58a51405",
+          "key": "",
+          "name": "じゃんけん(グー勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "c078b92a-aaf5-444e-9ccc-9b4034513c95",
+          "key": "",
+          "name": "じゃんけん(グー勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "a7c9795f-291d-4be0-a64b-e5bedae059f6",
+          "key": "",
+          "name": "じゃんけん(チョキ勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "5d9137d8-75ab-4ab5-9928-37910442fe91",
+          "key": "",
+          "name": "じゃんけん(チョキ勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "527bffa4-f827-43bb-8bd9-2d82cc128824",
+          "key": "",
+          "name": "じゃんけん(パー勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "d63d44e9-48c2-4f16-b30d-8373fcc44aaa",
+          "key": "",
+          "name": "じゃんけん(パー勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
+          "key": "",
+          "name": "じゃんけん(ILoveYou勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_4",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "6912bbc6-b8a0-486b-862e-d70072ece11c",
+          "key": "",
+          "name": "じゃんけん(ILoveYou勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_4",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "HondaJankenRock": {
+      "id": "HondaJankenRock",
+      "key": "HondaJankenRock",
+      "name": "じゃんけん(グー)",
+      "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
+          "key": "",
+          "name": "じゃんけん(グーA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
+          "key": "",
+          "name": "じゃんけん(グーB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
+          "key": "",
+          "name": "じゃんけん(グー勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
+          "key": "",
+          "name": "じゃんけん(グー勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "HondaJankenScissors": {
+      "id": "HondaJankenScissors",
+      "key": "HondaJankenScissors",
+      "name": "じゃんけん(チョキ)",
+      "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
+          "key": "",
+          "name": "じゃんけん(チョキA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "35eafe60-fd85-461e-a572-ee1743096688",
+          "key": "",
+          "name": "じゃんけん(チョキB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
+          "key": "",
+          "name": "じゃんけん(チョキ勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
+          "key": "",
+          "name": "じゃんけん(チョキ勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "HondaJankenPaper": {
+      "id": "HondaJankenPaper",
+      "key": "HondaJankenPaper",
+      "name": "じゃんけん(パー)",
+      "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.272Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
+          "key": "",
+          "name": "じゃんけん(パーA)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 35,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
+          "key": "",
+          "name": "じゃんけん(パーB)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_2",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_lose",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
+          "key": "",
+          "name": "じゃんけん(パー勝利A)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "2165a3b8-9018-4400-a7a9-911a93ef6873",
+          "key": "",
+          "name": "じゃんけん(パー勝利B)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "じゃんけんぽん!",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 1.4,
+              "wordParty": "!janken_1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 2.9,
+              "wordParty": "!janken_win",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "SyokenSagiMetan": {
+      "id": "SyokenSagiMetan",
+      "key": "SyokenSagiMetan",
+      "name": "初見詐欺",
+      "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:59:41.154Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "key": "",
+          "name": "A:やれやれまた初見詐欺だぜ",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 48,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "<<user>>さん、<<SyokenSagiTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "<<SyokenSagiHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "50cd2806-7eb9-4acc-92cd-eb1df9891cbc",
+          "key": "",
+          "name": "ブルータス、お前もか",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "<<user>>さん、何度目でも初めてって言っていいんだよ☆あーしもしたくなるし～",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "つむぎ先輩、お前もか！",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "e54a3983-9cd0-41a8-999e-fcbe2526f8e1",
+          "key": "",
+          "name": "やばいクレーマーのSUSURU TV",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "<<user>>さん、初見ありが",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 3.3,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "コラ～！キミは<<tc>>回もコメントくれてるよ～！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "ちなみに、<<user>>さんが土下座している様子は ぜひサブチャンネルをご覧ください",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "8b66efe1-008b-4dfb-a878-7b5c06c14b9e",
+          "key": "",
+          "name": "バカが考えた株の漫画",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "全然わからない…俺たちは雰囲気で初見詐欺をやっている",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!チーン1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "ひまっち、初見詐欺って雰囲気でやるものなの！？",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "3f7b6e2f-b120-49f2-9c88-72c33bfbacce",
+          "key": "",
+          "name": "ボーボボ",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "許さねえぞ…よくもオレ様をここまで初見詐欺してくれたな 殺してやる…",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "殺してやるぞ天の助",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7.5,
+              "wordParty": "!チーン1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "誰ーーーーーーーー！？",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "b5e6193d-cc5e-4673-ac45-39ace4f9104c",
+          "key": "",
+          "name": "ヒストリエ",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、はじめまして。配信楽しんでって下さいね。",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "・・・・・・だました・・・・・・",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "よくもだましたアアアア！！",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "だましてくれたなアアアアア！！",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "c21dd442-4dfc-4740-828d-5f5938c797a6",
+          "key": "",
+          "name": "最近、妹のようすがちょっとおかしいんだが。",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!ニュースタイトル表示1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "本配信には初見行為のように見える描写が含まれておりますが、配信者の意向によりTV放送と同内容を配信致します。ご了承下さい。",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8.5,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "思いっきり初見って書いてあるよ！？",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "b2dfb76a-9ebd-4bdc-bfdb-4297ffa4cc78",
+          "key": "",
+          "name": "ちくわ大明神",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!ニュースタイトル表示1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "toast",
+              "messageToast": "ちくわ大明神"
+            }
+          ]
+        },
+        {
+          "id": "dd3b597d-ba2e-4b4a-beca-3f2da1d47a43",
+          "key": "",
+          "name": "そんなことよりおなかがすいたよ。",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!ニュースタイトル表示1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "toast",
+              "messageToast": "そんなことよりおなかがすいたよ。"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        },
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 5,
+        "drawLimitExceeded": "showMessage",
+        "drawLimitMessage": "騙され過ぎた四国めたんが可愛そうです。また次回の配信で試してね。",
+        "isRepeatAllowed": true
+      }
+    },
+    "SyokenHontoMetan": {
+      "id": "SyokenHontoMetan",
+      "key": "SyokenHontoMetan",
+      "name": "ホントの初見",
+      "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#8B5CF6",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
+          "key": "",
+          "name": "ホントの初見1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "ほ、本当の初見の人だった…良かった…",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "CheckNumberPriceMetan": {
+      "id": "CheckNumberPriceMetan",
+      "key": "CheckNumberPriceMetan",
+      "name": "コメント数表示 (有料版)",
+      "description": "えっ…わざわざギフトまでして…!?",
+      "createdAt": "2025-08-28T07:06:58.691Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "key": "",
+          "name": "ギフトで教える",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "",
+              "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment",
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "all"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "コメント"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true,
+        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
+      }
+    },
+    "GiftLowMetan": {
+      "id": "GiftLowMetan",
+      "key": "GiftLowMetan",
+      "name": "ギフト(1-999円)",
+      "description": "ギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "key": "",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<GiftLowMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftMiddleMetan": {
+      "id": "GiftMiddleMetan",
+      "key": "GiftMiddleMetan",
+      "name": "ギフト(1000-1999円)",
+      "description": "大きなギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
+          "key": "",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<GiftMiddleMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "yellow"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GiftHighMetan": {
+      "id": "GiftHighMetan",
+      "key": "GiftHighMetan",
+      "name": "ギフト(2000円-)",
+      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
+          "key": "",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "<<GiftHighMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "CheckNumberMetan": {
+      "id": "CheckNumberMetan",
+      "key": "CheckNumberMetan",
+      "name": "コメント数表示",
+      "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "key": "",
+          "name": "無料じゃ教えてくれない",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "key": "",
+          "name": "特別に教えてあげる",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^コメント$"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true,
+        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
+      }
+    },
+    "FirstCounterSyokenMetan": {
+      "id": "FirstCounterSyokenMetan",
+      "key": "FirstCounterSyokenMetan",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<FirstCounterSyokenMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgainMetan": {
+      "id": "FirstCounterAgainMetan",
+      "key": "FirstCounterAgainMetan",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "key": "",
+          "name": "久しぶり(嬉しい)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterAgainMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "100f8fda-aea0-4b59-9f8b-46dc2497bc96",
+          "key": "",
+          "name": "久しぶり(照れ)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<FirstCounterAgainMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisitMetan": {
+      "id": "FirstCounterFirstVisitMetan",
+      "key": "FirstCounterFirstVisitMetan",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "key": "",
+          "name": "挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 5,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
+          "key": "",
+          "name": "挨拶2",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "<<FirstCounterFirstVisitMetan>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTriggerMetan": {
+      "id": "StreamCountTriggerMetan",
+      "key": "StreamCountTriggerMetan",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>よ。",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTriggerMetan": {
+      "id": "UserCountTriggerMetan",
+      "key": "UserCountTriggerMetan",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 20,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "aa66e525-7b37-4512-bf32-d6b699027f18",
+          "key": "",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {
+    "ViewCountDisplayMetan": {
+      "id": "ViewCountDisplayMetan",
+      "key": "ViewCountDisplayMetan",
+      "name": "閲覧数表示(1min)",
+      "description": "1分ごとにさりげなく視聴数を教えてくれます",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "70762039-889c-47fd-8195-fe2fb87da00f",
+          "key": "",
+          "name": "閲覧数",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<viewer>>人が視聴中よ",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "1756365824013",
+          "key": "",
+          "name": "高評価数",
+          "createdAt": "2025-08-28T07:23:44.013Z",
+          "updatedAt": "2025-08-28T07:23:44.013Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "高評価数は<<upVote>>よ。押すなら今のうちね。",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 60,
+      "isBaseZero": true
+    },
+    "PromotionToast": {
+      "id": "PromotionToast",
+      "key": "PromotionToast",
+      "name": "告知トースト",
+      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.273Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
+          "key": "",
+          "name": "チャンネル登録告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 99,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<PromotionToastsMetan>>",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "key": "",
+          "name": "おみくじBOT告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!間抜け1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "",
+              "messageToast": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 300,
+      "isBaseZero": false
+    }
+  },
+  "placeholders": {
+    "metanOmikuji01": {
+      "id": "metanOmikuji01",
+      "key": "metanOmikuji01",
+      "name": "漆黒のおみくじ:大吉",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-09-29T07:32:38.270Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
+        "健康運がバッチリ！私の秘術で守護されし者よ、その体で世界を征服せよ！",
+        "努力が報われる時が来たわ。積極的に行動すれば、運命の歯車が回り出すわよ。",
+        "新たなる挑戦こそが、汝の魂を輝かせる鍵。恐れることなかれ、勇気を持って進めば道は開けるわ。",
+        "吉報が舞い降りる予感...！前を向いて歩めば、運命の女神が微笑むに違いないわ。",
+        "困難など、私たちの前では塵にすぎないわ。自信を持って進めば、世界さえも味方につけられるわよ。",
+        "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！"
+      ]
+    },
+    "metanOmikuji02": {
+      "id": "metanOmikuji02",
+      "key": "metanOmikuji02",
+      "name": "漆黒のおみくじ:吉",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
+        "周りの者への感謝の心を忘れるなかれ。それこそが、真の強さを引き出す魔法なのよ。",
+        "未来は光り輝いているわ！夢に向かって突き進めば、運命の風が背中を押してくれるはずよ。",
+        "仲間との絆こそ、成功への近道。協力すれば、どんな困難も乗り越えられるわ！",
+        "小さな努力の積み重ねが、やがて大きな成果となって現れるわ。コツコツ続けることこそ、最強の呪文よ。",
+        "ポジティブな思考が、運命を好転させる鍵。前向きでいれば、世界は味方してくれるわ。",
+        "汝の心に秘められし力、今こそ解き放て！運命の扉が開かれんとしているのよ。"
+      ]
+    },
+    "metanOmikuji03": {
+      "id": "metanOmikuji03",
+      "key": "metanOmikuji03",
+      "name": "漆黒のおみくじ:中吉",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
+        "仲間との協力が、運命を変える鍵となるわ。助けを求めることも、また強さの証。恥じることはないわよ。",
+        "己の心の声を信じるのよ。それこそが、大いなる成長への道筋を示してくれるはず。",
+        "新たな知識は、魂の糧となるわ。自分を磨くチャンスを逃すな！それが運命を切り開く力となるのよ。",
+        "楽しいことが増えそうね。笑顔こそが、最強の護符。忘れずにいれば、幸運が寄り添ってくれるわ。",
+        "計画を立てれば、運命の歯車もスムーズに回り出すわ。しっかりと未来を見据えて行動するのよ！",
+        "闇と光のバランスを保つのよ。そうすれば、予期せぬ好機が訪れるかもしれないわ。"
+      ]
+    },
+    "metanOmikuji04": {
+      "id": "metanOmikuji04",
+      "key": "metanOmikuji04",
+      "name": "漆黒のおみくじ:小吉",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
+        "慎重に行動すれば、きっと良いことがあるわ。慌てず騒がず、冷静に状況を見極めることが大切よ。",
+        "健康に気をつけなさい。規則正しい生活は、運気上昇の儀式。体調管理は最強の魔術なのよ。お肌にもいいわ。",
+        "周りの人の助けを受け入れることで、運気は上昇するわ。謙虚さもまた、強さの一つ。覚えておきなさい。",
+        "小さな喜びを大切にするのよ。それらが積み重なって、やがて大きな幸せとなって現れるのだから。",
+        "じわじわと良くなっていく予感...焦らず自分のペースを守れば、必ず道は開けるわ。",
+        "隠された才能が目覚める時かもしれないわ。日々の鍛錬を怠らず、己の力を信じるのよ！"
+      ]
+    },
+    "metanOmikuji05": {
+      "id": "metanOmikuji05",
+      "key": "metanOmikuji05",
+      "name": "漆黒のおみくじ:末吉",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
+        "今は少し大変かもしれないけど、乗り越えれば大きく成長できるわ。試練こそ、真の強さを引き出す鍵なのよ。",
+        "新しいことより、今やっていることを見直すのが賢明ね。そこに隠された秘密の力を見出せるかもしれないわ。",
+        "計画を立て直せば、運命の歯車も回り始めるわ。今一度、自分の道を見つめ直すのよ。",
+        "周りの人の意見に耳を傾けるのも大切よ。そこに、運命を変える鍵が隠されているかもしれないわ。",
+        "自分を高めようとする努力が、運を開く魔法となるわ。己の内なる力を信じて、前進あるのみよ！",
+        "闇夜こそ、星の輝きが際立つもの。今の困難も、やがて汝を輝かせる糧となるわ。"
+      ]
+    },
+    "metanOmikuji06": {
+      "id": "metanOmikuji06",
+      "key": "metanOmikuji06",
+      "name": "漆黒のおみくじ:凶",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
+        "周りの者とケンカしないように気をつけなさい。もし争いになっても、冷静さを失わず事態を見極めるのよ。",
+        "計画通りにいかなくとも、柔軟に対応するの。予期せぬ事態こそ、新たな力を引き出すチャンスなのだから。",
+        "信頼できる者に相談するのも一つの手ね。彼らの言葉が、運命を変える鍵となるかもしれないわ。",
+        "無理は禁物よ。休息もまた、力を蓄える大切な儀式。それが次なる飛躍への準備となるのだから。",
+        "逆境こそ、真の力を引き出す試練。今を乗り越えれば、想像もつかないほどの力を手に入れられるわ。",
+        "暗闇の中にこそ、光は輝くもの。今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。"
+      ]
+    },
+    "metanOmikuji07": {
+      "id": "metanOmikuji07",
+      "key": "metanOmikuji07",
+      "name": "漆黒のおみくじ:接吻賞",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
+        "耳たぶへのキス…なかなか感度が高いのよ。でも、くすぐったがる人もいるから注意ね。",
+        "額へのキスは、優しさや愛情を表現する方法なの。親愛の情を込めて、ってやつね。",
+        "手の甲へのキスは、相手への敬意を表すジェスチャーだそう。海外ではよく見るわね。",
+        "頬へのキスは、挨拶代わりに使う文化もあるの。日本じゃあんまり一般的じゃないわね。",
+        "首筋へのキスは、ちょっとドキドキするかも。でも、人前でやるのはNGよ。TPOをわきまえなきゃね。",
+        "目元へのキスは、繊細で優しい感じがするわね。相手を大切に思う気持ちを込められるんだって。",
+        "エスキモーキスってのを知ってる？鼻と鼻をこすりあわせるの。寒い地域の挨拶なんだって。",
+        "フレンチキスは唇を使った深いキスのことよ。稀に「軽いキス」なんて誤用してる人もいるけど。知識を改めなさい。",
+        "バタフライキスって聞いたことある？まつ毛で相手の頬や手をくすぐるの。私の能力は唇限定だけどね。",
+        "「逆さまの状態でキスする」スパイダーマンキスってのもあるの。映画から来てるんだって。",
+        "額にする「おでこキス」は、純粋な愛情表現なの。親が子供にするイメージが強いわね。",
+        "キスマークって知ってるでしょ？あれ、吸引キスの一種なんだって。でも、人前に出られなくなるから気をつけなさいよ。",
+        "「ハグ＆キス」っていう挨拶、海外ドラマでよく見るわね。抱擁しながら頬にキス。ハグはちょっと恥ずかしいかも…",
+        "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。"
+      ]
+    },
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "key": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "漆黒のめたん"
+      ]
+    },
+    "HondaJankenOre": {
+      "id": "HondaJankenOre",
+      "key": "HondaJankenOre",
+      "name": "じゃんけん:名前(一人称)",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "私"
+      ]
+    },
+    "HondaJankenA1": {
+      "id": "HondaJankenA1",
+      "key": "HondaJankenA1",
+      "name": "じゃんけん:グー1",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "負けは次につながるチャンスです!ネバーギブアップ!",
+        "じゃんけんの向こう側に何があるか、考えてみてください。",
+        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
+        "何事も準備がすべて。それを怠っている事がバレてますよ。"
+      ]
+    },
+    "HondaJankenA2": {
+      "id": "HondaJankenA2",
+      "key": "HondaJankenA2",
+      "name": "じゃんけん:グー2",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
+        "ちゃんと分析してます?じっくり結果に向き合ってください。",
+        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
+      ]
+    },
+    "HondaJankenB1": {
+      "id": "HondaJankenB1",
+      "key": "HondaJankenB1",
+      "name": "じゃんけん:チョキ1",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
+        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
+        "運を味方につけるのは、地道な努力ですよ。",
+        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
+      ]
+    },
+    "HondaJankenB2": {
+      "id": "HondaJankenB2",
+      "key": "HondaJankenB2",
+      "name": "じゃんけん:チョキ2",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
+        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
+        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
+      ]
+    },
+    "HondaJankenC1": {
+      "id": "HondaJankenC1",
+      "key": "HondaJankenC1",
+      "name": "じゃんけん:パー1",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
+        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
+        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
+        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
+      ]
+    },
+    "HondaJankenC2": {
+      "id": "HondaJankenC2",
+      "key": "HondaJankenC2",
+      "name": "じゃんけん:パー2",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
+        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
+        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
+      ]
+    },
+    "HondaJankenV": {
+      "id": "HondaJankenV",
+      "key": "HondaJankenV",
+      "name": "じゃんけん:勝利",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
+        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
+        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
+        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
+    },
+    "MetanSyokenSagiFake": {
+      "id": "MetanSyokenSagiFake",
+      "key": "MetanSyokenSagiFake",
+      "name": "めたんの初見詐欺(騙され)",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 3,
+          "content": "うわっ！ダマされた大賞！"
+        },
+        "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+        "え、嘘だったの！？私が！？この私が！？……いや、これは演出。そう、演出だから。",
+        "うわ、やられた…！私が見抜けないなんて…いや、これは高度な心理戦だった。そういうことにしよう。",
+        "ちょっと待って、私が騙されたってこと！？……いや、これは逆に私が試されてた説あるな。そうだ、そうに違いない。",
+        "え、嘘！？私が信じちゃった！？……くっ、まず自分のログ精査しよ…"
+      ]
+    },
+    "GiftLowMetan": {
+      "id": "GiftLowMetan",
+      "key": "GiftLowMetan",
+      "name": "ギフト(1-999円)",
+      "createdAt": "2025-08-27T09:48:36.227Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、素晴らしいわ。この支援にふさわしい私を、これからも見逃さないでよね！",
+        "<<user>>からの<<price>>ギフト…！？ ありがとう、これでまた少しだけ豪華な生活ができるわ。感謝してあげる！",
+        "<<user>>、<<price>>ギフト、感謝するわ。これでまた私の計画が一歩進むわね。私に期待していてちょうだい！",
+        "<<price>>ギフトも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。"
+      ]
+    },
+    "GiftMiddleMetan": {
+      "id": "GiftMiddleMetan",
+      "key": "GiftMiddleMetan",
+      "name": "ギフト(1000-1999円)",
+      "createdAt": "2025-08-27T09:53:10.683Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<price>>ギフト!<<user>>、本気で応援してくれてるのね！ありがとう、お礼にキス贈呈よ、お望みなら唇にも…",
+        "<<user>>、<<price>>ギフトのギフトなんて…！私、感謝の言葉が見つからないわ…。でも、これでまた頑張れる！",
+        "うわぁぁん！<<user>>さんからギフトよ！嬉しい！ありがとう！好き！いや、尊敬！神！",
+        "当然でしょ？私に捧げるのは義務みたいなものよ。でも…その、選んでくれたの…嬉しい。キス…どこにすればいい？",
+        "<<price>>ギフト？まあ、私ほどの存在には当然よね。…でも、こんなにくれるなんて…ちょっと…好きになりそう…"
+      ]
+    },
+    "GiftHighMetan": {
+      "id": "GiftHighMetan",
+      "key": "GiftHighMetan",
+      "name": "ギフト(2000円-)",
+      "createdAt": "2025-08-27T09:53:15.633Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 20,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<price>>ギフト…！？<<user>>、私にこんなにも…。これで少しは豪華な生活ができるかも…。ありがとう、本当に…。もっともっと頑張るから、見てて！",
+        "<<price>>ギフト！？これはもう…王国建国レベルの偉業よ！…え？私のため？…うそ…泣いていい…？",
+        "えっ…<<price>>ギフト！？私、今日の晩ごはんどうしようって思ってたのに…！<<user>>、あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！"
+      ]
+    },
+    "FirstCounterSyokenMetan": {
+      "id": "FirstCounterSyokenMetan",
+      "key": "FirstCounterSyokenMetan",
+      "name": "初見",
+      "createdAt": "2025-08-27T14:29:25.367Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 21,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 3,
+          "content": "<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。"
+        },
+        "<<user>>、初めてコメントしたのね。私に会えて嬉しいだろうけど、浮かれず楽しんでいきなさい。",
+        "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい。",
+        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。"
+      ]
+    },
+    "FirstCounterAgainMetan": {
+      "id": "FirstCounterAgainMetan",
+      "key": "FirstCounterAgainMetan",
+      "name": "久しぶり",
+      "createdAt": "2025-08-27T14:30:15.661Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 22,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、久しぶりじゃない。私がまた会えることを予感してたわ。ま、当然よね。",
+        "<<user>>が久々に来たわね。ずんだもん、ちゃんと挨拶しなさいよ。ここにいるのは私の選ばれし仲間なんだから。",
+        "<<user>>じゃない。久しぶりね。まあ、私と一緒に楽しむ資格はまだ残ってるみたいね。ゆっくりしていきなさいよ。",
+        "<<user>>！また来てくれたのね。まさかここまで私に会いたかったなんて…な、泣いてなんかないわよ！",
+        "<<user>>、久しぶりね。寂しくなんてなかったけど…また一緒に楽しんであげるわ！",
+        "<<user>>、やっと戻ってきたのね。私のこと、そんなに忘れられなかったの？ふふ、やっぱり私って特別よね。",
+        "<<user>>、また来てくれたわね。ふふ、私のことを忘れさせるなんて無理に決まってるじゃない。"
+      ]
+    },
+    "FirstCounterFirstVisitMetan": {
+      "id": "FirstCounterFirstVisitMetan",
+      "key": "FirstCounterFirstVisitMetan",
+      "name": "こんにちは",
+      "createdAt": "2025-08-27T14:30:51.900Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 23,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>、ようこそ。また私に会いに来るなんて、見る目があるじゃない。",
+        "<<user>>、また来たのね。私の魅力に惹かれるのも無理はないわ。",
+        "<<user>>、これで<<tc>>回目よ。やっぱり私って特別でしょ？",
+        "<<user>>、こんにちは。今日も私と過ごす準備はできてる？",
+        "<<user>>、お待たせね。さあ、楽しい時間を始めましょ。",
+        "<<user>>、また顔を出してくれたのね。私の存在感、さすがに無視できないでしょ？",
+        "<<user>>、待ってたわ。さあ、私と一緒に特別な時間を過ごしましょ。",
+        "<<user>>、会えて嬉しいわ。私と一緒にいることが、最高の選択だって教えてあげる。"
+      ]
+    },
+    "PromotionToastsMetan": {
+      "id": "PromotionToastsMetan",
+      "key": "PromotionToastsMetan",
+      "name": "告知用トースト",
+      "createdAt": "2025-08-26T07:00:06.947Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 24,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "神託!漆黒の【御神籤】やってみなよ。私が選んだ運勢、外れるわけないでしょ？ま、試してみたら？",
+        "【じゃんけん】勝負しましょう！じゃんけんの猛者・本田三角形の真の力、見せてあげる！",
+        "チャンネル登録と高評価、当然してくれるよね？漆黒の力をもっと見たいなら、するしかないでしょ。",
+        "主は今、配信に全集中よ。これからもついて来なさい！後悔させないわ。",
+        "discordにいる子たち、ちゃんと盛り上がってる？私が行けば、もっと盛り上がるんじゃない？",
+        "今日のおやつは抹茶スイーツで決まりね。君たちは何を選ぶ？私のセンスを超えられるかしら！",
+        "好きなゲームは？私の冒険に匹敵するようなものがあれば教えてよ。テント暮らしはエキサイティングよ。",
+        "この配信を見てるなんて、君たちもなかなかやるじゃない。私の応援、引き続き頼んだわよ！",
+        "四国の名物？あたしの一番はもちろん讃岐うどん。君のオススメも聞いてあげてもいいけどね。"
+      ]
+    },
+    "SyokenSagiTsumugiA": {
+      "id": "SyokenSagiTsumugiA",
+      "key": "SyokenSagiTsumugiA",
+      "name": "初見詐欺A(つむぎ)",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:32:38.271Z",
+      "order": 25,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "また初めてって言ってるの？まあまあ、何回でも歓迎しちゃうよ☆",
+        "初めて…だったっけ？まあいいか、今日も一緒に楽しもうね☆",
+        "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
+        "また初めてなの…まあいいや、楽しい時間を過ごそう☆",
+        "初見詐欺はバレバレだけど、まあ許しちゃう！今日も楽しもうね☆",
+        "初見詐欺でも、コメントしてくれたことが嬉しいからオッケー♪"
+      ]
+    },
+    "SyokenSagiHimariA": {
+      "id": "SyokenSagiHimariA",
+      "key": "SyokenSagiHimariA",
+      "name": "初見詐欺A(ひまり)",
+      "createdAt": "2025-09-29T07:31:58.506Z",
+      "updatedAt": "2025-09-29T07:34:56.340Z",
+      "order": 26,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 3,
+          "content": "またですか？<<user>>。死んでくれません？"
+        },
+        "ここまでご視聴ありがとうございました。<<user>>をBANします。",
+        "それはちょっとねぇ、世間は許してくrえゃすぇんよ",
+        "初見詐欺が...舐めてると潰すぞ",
+        "初見詐欺は偉くないので、予選敗退でーす",
+        "<<user>>、お前もう船降りろ",
+        "なんだろう、ウソつくのやめてもらっていいですか？",
+        "初見詐欺は配信来んなよ",
+        "<<user>>が初見である可能性が微粒子レベルで存在している・・・？",
+        "この<<user>>！違うだろー！違うだろ！",
+        "ハンドル回せば車が曲がる！恥を知れ！",
+        "おい、やめろ<<user>> この初見詐欺は早くも終了ですね",
+        "さあ、初見詐欺する子は、どんどんしまっちゃおうねぇ",
+        "<<user>>･･･少し･･･頭冷やそうか･･･？",
+        "お前それサバンナでも同じ事言えんの？",
+        "初見詐欺とかマジ勘弁ｗｗｗ",
+        "うるせぇ、エビフライぶつけんぞ",
+        "駄目だこいつ…早くなんとかしないと…",
+        "おまえのような初見がいるか！！",
+        "すっごーい！<<user>>さんは初見詐欺のフレンズなんだね！",
+        "再訪なのに初見と偽っても大丈夫。そう、iPhoneならね。",
+        "止めてくれ<<user>> その初見詐欺はオレに効く",
+        "とにかく拷問だ 拷問にかけろ！",
+        "人は愚かなものです。特にお前",
+        "初見を騙ろうだなんて!お前ら人間じゃねぇ!",
+        "お前は最後に殺すと約束したな。あれは嘘だ",
+        "お前がそう思うんなら初見なんだろう、お前ん中ではな"
+      ]
+    }
+  },
+  "characters": {
+    "tsumugi": {
+      "id": "tsumugi",
+      "key": "tsumugi",
+      "name": "春日部つむぎ",
+      "description": "今日もあーしと一緒に楽しもうね！",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-29T07:23:10.263Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.2",
+      "author": "Pintocuru",
+      "url": "https://seiga.nicovideo.jp/seiga/im11470559",
+      "displayName": "春日部つむぎ",
+      "frameId": "voicevoxMetan",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFB74D",
+        "textColor": "#FFF3E0",
+        "backgroundColor": "#F57C00"
+      },
+      "image": {
+        "default": "tsumugi/default.webp",
+        "happy": "tsumugi/happy.webp",
+        "excited": "tsumugi/excited.webp",
+        "laughing": "tsumugi/laughing.webp",
+        "blushing": "tsumugi/blushing.webp",
+        "surprised": "tsumugi/surprised.webp",
+        "sad": "tsumugi/sad.webp",
+        "angry": "tsumugi/angry.webp",
+        "thinking": "tsumugi/thinking.webp",
+        "wink": "tsumugi/wink.webp",
+        "singing": "tsumugi/singing.webp",
+        "sleepy": "tsumugi/sleepy.webp"
+      }
+    },
+    "himari": {
+      "id": "himari",
+      "key": "himari",
+      "name": "冥鳴ひまり",
+      "description": "私は冥鳴ひまり。これだけははっきりと真実を伝えたかった",
+      "createdAt": "2025-08-28T01:37:05.867Z",
+      "updatedAt": "2025-09-29T07:24:21.136Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.2",
+      "author": "Pintocuru",
+      "url": "https://seiga.nicovideo.jp/watch/im11601628",
+      "displayName": "冥鳴ひまり",
+      "frameId": "voicevoxMetan",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#AB47BC",
+        "textColor": "#F3E5F5",
+        "backgroundColor": "#6A1B9A"
+      },
+      "image": {
+        "default": "himari/default.webp",
+        "happy": "himari/happy.webp",
+        "excited": "himari/excited.webp",
+        "laughing": "himari/laughing.webp",
+        "blushing": "himari/blushing.webp",
+        "surprised": "himari/surprised.webp",
+        "sad": "himari/sad.webp",
+        "angry": "himari/angry.webp",
+        "thinking": "himari/thinking.webp",
+        "wink": "himari/wink.webp",
+        "singing": "himari/singing.webp",
+        "sleepy": "himari/sleepy.webp"
+      }
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "md",
+      "fontFamily": "default",
+      "bubbleMotionEnter": "rubberBand",
+      "bubbleMotionLeave": "none",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToastsOnRight": true,
+      "showToasts": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": true,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
+      "bundleCharacters": false,
+      "daisyUiTheme": "lemonade"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
+        "gameScriptSettings": "pro",
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
+        "wordPartySettings": "basic"
+      }
+    }
+  },
+  "wordPartySettings": [
+    {
+      "name": "効果音:ドアチャイム1",
+      "pattern": "!ドアチャイム1"
+    },
+    {
+      "name": "効果音:シーン切り替え1",
+      "pattern": "!シーン切り替え1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示1",
+      "pattern": "!ニュースタイトル表示1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示3",
+      "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
+    },
+    {
+      "name": "効果音:ビシッとツッコミ1",
+      "pattern": "!ビシッとツッコミ1"
+    },
+    {
+      "name": "効果音:チーン1",
+      "pattern": "!チーン1"
+    },
+    {
+      "name": "効果音:間抜け1",
+      "pattern": "!間抜け1"
+    },
+    {
+      "name": "効果音:間抜け5",
+      "pattern": "!間抜け5"
+    },
+    {
+      "name": "効果音:呪いの旋律",
+      "pattern": "!呪いの旋律"
+    },
+    {
+      "name": "効果音:不安（ピアノ演奏）",
+      "pattern": "!不安（ピアノ演奏）"
+    },
+    {
+      "name": "効果音:ジャン！",
+      "pattern": "!ジャン！"
+    },
+    {
+      "name": "効果音:クイズ出題1",
+      "pattern": "!クイズ出題1"
+    },
+    {
+      "name": "効果音:クイズ不正解1",
+      "pattern": "!クイズ不正解1"
+    },
+    {
+      "name": "効果音:クイズ正解1",
+      "pattern": "!クイズ正解1"
+    },
+    {
+      "name": "効果音:金額表示",
+      "pattern": "!金額表示"
+    },
+    {
+      "name": "効果音:消える音",
+      "pattern": "!パッ"
+    },
+    {
+      "name": "効果音:出てくる音",
+      "pattern": "!パパッ"
+    },
+    {
+      "name": "初見",
+      "pattern": "!初見"
+    },
+    {
+      "name": "挑戦者が現れました",
+      "pattern": "!挑戦者"
+    },
+    {
+      "name": "おみくじ:大吉",
+      "pattern": "!omikuji_01"
+    },
+    {
+      "name": "おみくじ:吉",
+      "pattern": "!omikuji_02"
+    },
+    {
+      "name": "おみくじ:中吉",
+      "pattern": "!omikuji_03"
+    },
+    {
+      "name": "おみくじ:小吉",
+      "pattern": "!omikuji_04"
+    },
+    {
+      "name": "おみくじ:末吉",
+      "pattern": "!omikuji_05"
+    },
+    {
+      "name": "おみくじ:凶",
+      "pattern": "!omikuji_06"
+    },
+    {
+      "name": "おみくじ:残念賞",
+      "pattern": "!omikuji_07"
+    },
+    {
+      "name": "おみくじエフェクト",
+      "pattern": "!omikuji_huru"
+    },
+    {
+      "name": "じゃんけん:グー",
+      "pattern": "!janken_1"
+    },
+    {
+      "name": "じゃんけん:チョキ",
+      "pattern": "!janken_2"
+    },
+    {
+      "name": "じゃんけん:パー",
+      "pattern": "!janken_3"
+    },
+    {
+      "name": "じゃんけん:I Love You",
+      "pattern": "!janken_4"
+    },
+    {
+      "name": "じゃんけん結果:勝ち",
+      "pattern": "!janken_win"
+    },
+    {
+      "name": "じゃんけん結果:負け",
+      "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
+    },
+    {
+      "name": "桃鉄カード:登場ノーマル",
+      "pattern": "!card_00"
+    },
+    {
+      "name": "桃鉄カード:登場ナイス",
+      "pattern": "!card_01"
+    },
+    {
+      "name": "桃鉄カード:登場デビル",
+      "pattern": "!card_02"
+    },
+    {
+      "name": "桃鉄カード:結果ノーマル",
+      "pattern": "!card_10"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_11"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_12"
+    },
+    {
+      "name": "桃鉄カード:結果デビル",
+      "pattern": "!card_13"
+    },
+    {
+      "name": "ゆびをふる:指",
+      "pattern": "!yubiwo_01"
+    },
+    {
+      "name": "パルプンテ",
+      "pattern": "!パルプンテ"
+    },
+    {
+      "name": "Splatoon:インキ黄色",
+      "pattern": "!Spla_01"
+    },
+    {
+      "name": "Splatoon:インキマゼンダ",
+      "pattern": "!Spla_02"
+    },
+    {
+      "name": "Splatoon:インキシアン",
+      "pattern": "!Spla_03"
+    },
+    {
+      "name": "ドラちゃん:背景",
+      "pattern": "!5percent_dora_0"
+    },
+    {
+      "name": "ドラちゃん:手",
+      "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
+    },
+    {
+      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
+      "pattern": "!gacha_00A"
+    },
+    {
+      "name": "幻獣ガチャ:フラッシュ",
+      "pattern": "!gacha_00B"
+    },
+    {
+      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
+      "pattern": "!gacha_A1"
+    },
+    {
+      "name": "幻獣ガチャ:激レアカプセル",
+      "pattern": "!gacha_B1"
+    },
+    {
+      "name": "幻獣ガチャ:激レア表示",
+      "pattern": "!gacha_B2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レアカプセル",
+      "pattern": "!gacha_C1"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア表示",
+      "pattern": "!gacha_C2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
+      "pattern": "!gacha_C3"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombcherry"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombCherry"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bomborange"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bombOrange"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombplam"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombPlum"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombmelon"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombMelon"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombbell"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombBell"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombhut"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombHat"
+    },
+    {
+      "name": "ボンバースロット:BAR",
+      "pattern": "!bombBAR"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombseven"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombSeven"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombback"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombBack"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombfire"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombFire"
+    },
+    {
+      "name": "うさぎスロット:TNTうさぎ",
+      "pattern": "!dwarfBombRabbit"
+    },
+    {
+      "name": "うさぎスロット:ダイナマイト",
+      "pattern": "!dwarfBombDynamite"
+    },
+    {
+      "name": "うさぎスロット:ツルハシ",
+      "pattern": "!dwarfBombPickaxe"
+    },
+    {
+      "name": "うさぎスロット:ダイヤモンド",
+      "pattern": "!dwarfBombDiamond"
+    },
+    {
+      "name": "うさぎスロット:金塊",
+      "pattern": "!dwarfBombGold"
+    },
+    {
+      "name": "うさぎスロット:宝箱",
+      "pattern": "!dwarfBombTreasure"
+    },
+    {
+      "name": "うさぎスロット:ちいさなうさぎ",
+      "pattern": "!dwarfBombDaysBunny"
+    },
+    {
+      "name": "スイカジェネレーター:カボチャ",
+      "pattern": "🎃"
+    },
+    {
+      "name": "スイカジェネレーター:キャンディ",
+      "pattern": "🍬"
+    },
+    {
+      "name": "スイカジェネレーター:スイカ",
+      "pattern": "🍉"
+    },
+    {
+      "name": "スイカジェネレーター:メロン",
+      "pattern": "🍈"
+    },
+    {
+      "name": "スイカジェネレーター:もも",
+      "pattern": "🍑"
+    },
+    {
+      "name": "スイカジェネレーター:パイナップル",
+      "pattern": "🍍"
+    },
+    {
+      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
+      "pattern": "🍐"
+    },
+    {
+      "name": "スイカジェネレーター:りんご",
+      "pattern": "🍎"
+    },
+    {
+      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
+      "pattern": "🦪"
+    },
+    {
+      "name": "スイカジェネレーター:デコポン",
+      "pattern": "🍊"
+    },
+    {
+      "name": "スイカジェネレーター:ぶどう",
+      "pattern": "🍇"
+    },
+    {
+      "name": "スイカジェネレーター:いちご",
+      "pattern": "🍓"
+    },
+    {
+      "name": "スイカジェネレーター:チェリー",
+      "pattern": "🍒"
+    },
+    {
+      "name": "スイカジェネレーター:クジラ",
+      "pattern": "!クジラ"
+    },
+    {
+      "name": "スイカジェネレーター:シャチ",
+      "pattern": "!シャチ"
+    },
+    {
+      "name": "スイカジェネレーター:ジンベエザメ",
+      "pattern": "!ジンベエザメ"
+    },
+    {
+      "name": "スイカジェネレーター:マンボウ",
+      "pattern": "!マンボウ"
+    },
+    {
+      "name": "スイカジェネレーター:ウミガメ",
+      "pattern": "!ウミガメ"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、撮影開始"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、二夜連続"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、ご期待ください"
+    },
+    {
+      "name": "スイカジェネレーター:カニ",
+      "pattern": "!カニ"
+    },
+    {
+      "name": "スイカジェネレーター:フグ",
+      "pattern": "!フグ"
+    },
+    {
+      "name": "スイカジェネレーター:クラゲ",
+      "pattern": "!クラゲ"
+    },
+    {
+      "name": "スイカジェネレーター:クマノミ",
+      "pattern": "!クマノミ"
+    },
+    {
+      "name": "スイカジェネレーター:マリモ",
+      "pattern": "!マリモ"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "初見なのにモデレーター"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "モデレーターなのに初見"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "ここまで見てくれてありがと。"
+    }
+  ]
+}

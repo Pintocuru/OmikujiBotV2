@@ -18,6 +18,8 @@ import percent_DoraProject from './packages/solo/5percent_Dora'
 import HondaJankenProject from './packages/solo/HondaJanken'
 import CardStationProject from './packages/solo/CardStation'
 import TarotCardProject from './packages/solo/TarotCard'
+import BigBangFortuneProject from './packages/solo/BigBangFortune'
+
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 
 // .env からrootを取得
@@ -52,9 +54,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
   { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
    */
-  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
-  { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
 
   /**
    * solo
@@ -65,7 +64,11 @@ const buildTargets: BuildTarget[] = [
   { project: 'CardStation', type: 'JSON', accessLevel: 'basic',},
   { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
+  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
@@ -99,6 +102,7 @@ const buildTargets: BuildTarget[] = [
       HondaJankenProject(packageRoot),
       CardStationProject(packageRoot),
       TarotCardProject(packageRoot),
+      BigBangFortuneProject(packageRoot),
     ])
 
     // 改良されたビルドを実行
