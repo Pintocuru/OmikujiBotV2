@@ -2987,7 +2987,7 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
+      "updatedAt": "2025-09-30T07:54:10.111Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3004,29 +3004,6 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
-              "actionType": "toast"
-            }
-          ]
-        },
-        {
-          "id": "aa66e525-7b37-4512-bf32-d6b699027f18",
-          "key": "",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
           "weight": 1,
           "postActions": [
             {
@@ -3035,7 +3012,7 @@
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+              "messageToast": "<<user>>のコメントが<<tc>>回になったわ。ふふ、さすがね。",
               "actionType": "toast"
             }
           ]
