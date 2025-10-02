@@ -24,8 +24,8 @@
       "name": "タロット占い",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 1,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -94,8 +94,8 @@
       "key": "BigBangFortune",
       "name": "超おみくじ",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 2,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
@@ -172,8 +172,8 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 3,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -251,8 +251,8 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 4,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -329,8 +329,8 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 5,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -409,8 +409,8 @@
       "name": "初見詐欺",
       "description": "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 6,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -615,7 +615,7 @@
             },
             {
               "delaySeconds": 6,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "!足首がグキッ",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "殺してやるぞ天の助",
@@ -720,7 +720,7 @@
               "actionType": "message"
             },
             {
-              "delaySeconds": 8.5,
+              "delaySeconds": 9.5,
               "wordParty": "!ビシッとツッコミ1",
               "characterKey": "tsumugi",
               "iconKey": "laughing",
@@ -753,7 +753,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!ニュースタイトル表示1",
+              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
@@ -785,7 +785,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!ニュースタイトル表示1",
+              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
@@ -831,8 +831,8 @@
       "name": "ホントの初見",
       "description": "いい初見だ。感動的だな……だが無意味だ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 7,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -914,8 +914,8 @@
       "name": "ギフトLow(1-499円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 8,
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1074,8 +1074,8 @@
       "name": "ギフトMiddle(500円-)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 9,
+      "updatedAt": "2025-10-02T01:31:26.537Z",
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1129,35 +1129,1746 @@
               "actionType": "message"
             }
           ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "yellow"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "CheckNumberTsumugi": {
+      "id": "CheckNumberTsumugi",
+      "key": "CheckNumberTsumugi",
+      "name": "コメント数表示",
+      "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#10B981",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "key": "",
+          "name": "コメント数(つむぎ)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 4,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>は[<<tc>>] 回コメントしてるよ☆",
+              "actionType": "toast"
+            }
+          ]
         },
         {
-          "id": "1759214006732",
+          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "key": "",
+          "name": "コメント数(ひまり)",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "",
+              "messageToast": "<<user>>は[<<tc>>] 回です。<<CheckNumberHimari>>",
+              "actionType": "toast"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^コメント$"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterSyokenTsumugi": {
+      "id": "FirstCounterSyokenTsumugi",
+      "key": "FirstCounterSyokenTsumugi",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-02T01:27:09.408Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgainTsumugi": {
+      "id": "FirstCounterAgainTsumugi",
+      "key": "FirstCounterAgainTsumugi",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "key": "",
+          "name": "久しぶり",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterAgainTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "<<FirstCounterAgainHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisitTsumugi": {
+      "id": "FirstCounterFirstVisitTsumugi",
+      "key": "FirstCounterFirstVisitTsumugi",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "key": "",
+          "name": "挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTriggerTsumugi": {
+      "id": "UserCountTriggerTsumugi",
+      "key": "UserCountTriggerTsumugi",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-02T01:40:20.182Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<UserCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<CountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "da66894a-83b9-4a9c-9831-3bb547ddc19c",
+          "key": "",
+          "name": "100回コメントB",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<UserCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<UserCountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": [
+          "test"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTriggerTsumugi": {
+      "id": "StreamCountTriggerTsumugi",
+      "key": "StreamCountTriggerTsumugi",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.598Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 5,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<StreamCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<CountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "a03da291-a272-4c62-ab98-2af8bcf32915",
+          "key": "",
+          "name": "100回コメントB",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<StreamCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<StreamCountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759298004824",
+          "key": "",
+          "name": "パインアメ",
+          "createdAt": "2025-10-01T05:53:24.824Z",
+          "updatedAt": "2025-10-01T05:53:24.824Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "…… きこえますか… きこえますか…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "みなさん… 冥鳴ひまりです…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "私は今… みなさんの心に…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "直接… 呼びかけています…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<lc>>回目のコメントは…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さん…でした",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "1759298246775",
+          "key": "",
+          "name": "メタルギアソリッドⅤ",
+          "createdAt": "2025-10-01T05:57:26.775Z",
+          "updatedAt": "2025-10-01T05:57:26.775Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "いいですか、落ち着いて聞いてください",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "<<lc>>回目のコメントは<<user>>さんです、つむぎ先輩ではありません",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5.5,
+              "wordParty": "!ひらめく1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "…!!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "surprised",
+              "messageContent": "まずい！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "νοσοκόμα! νοσοκόμα! νοσοκόμα!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "ナース!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 9.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "大丈夫、大丈夫",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 11,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "落ち着いて、大丈夫です 休んで…",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "sketchTsumugi": {
+      "id": "sketchTsumugi",
+      "key": "sketchTsumugi",
+      "name": "コント:つむぎ",
+      "createdAt": "2025-10-01T04:39:05.252Z",
+      "updatedAt": "2025-10-02T01:51:20.119Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1759292043766",
+          "key": "",
+          "name": "RTA動画1",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "つむぎ先輩、楽しそうですね～！",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "2f48c6de-4cca-4077-8f1d-ff5a36a59feb",
+          "key": "",
+          "name": "RTA動画2",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sleepy",
+              "messageContent": "この配信はbiim兄貴リスペクトです",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7.5,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "tsumugi",
+              "iconKey": "angry",
+              "messageContent": "ひまっち、違うからね!?",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "8fa14c40-1983-4164-b299-a922120b1fb5",
+          "key": "",
+          "name": "RTA動画3",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "ではさっそく始めていきます",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "名前は入力速度を考慮してホモとします",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 9,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "tsumugi",
+              "iconKey": "angry",
+              "messageContent": "いまはひまっちのRTA配信じゃないからね!?",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "dbd49473-667b-4824-b847-4d29592d6e83",
+          "key": "",
+          "name": "RTA動画4",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "私のRTA動画をつむぎ先輩が見てくれてた…",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!女衆「おう！」",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "くやしい…!でも…感じちゃう!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 10.5,
+              "wordParty": "!間抜け5",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "ひまっちー、心の声が漏れてるぞー",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "e8f93143-f5a2-4a87-a8fa-608246d8434c",
+          "key": "",
+          "name": "ボカロ曲1",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "<<sketchTsumugiVOCALOID>>～",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "651476f5-5eb3-462c-bd7b-081a3963cd15",
+          "key": "",
+          "name": "ボカロ曲2",
+          "createdAt": "2025-10-01T04:14:03.766Z",
+          "updatedAt": "2025-10-01T04:14:03.766Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4.2,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4.4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4.6,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4.8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 5.2,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 5.4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "",
+              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!クイズ不正解1",
+              "characterKey": "tsumugi",
+              "iconKey": "angry",
+              "messageContent": "ひまっち、ここで弾幕貼っちゃダメだよ!?",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759360803392",
+          "key": "",
+          "name": "埼玉:秩父",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "秩父夜祭、マジで華やかでド迫力〜‼冬の埼玉って言ったらコレっしょ🎆",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "わらじカツ丼も有名ですよ！",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "b9466fdd-2759-4c9e-b8a4-b8cccfa059ca",
+          "key": "",
+          "name": "埼玉:狭山",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "狭山茶って飲んだことある〜？埼玉の特産で香りヤバいし、めっちゃ美味しみ〜🍵",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "日本三大銘茶の一つですね！ちょっと一服狭山茶～",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "c68a7feb-cc46-413f-8172-69dff416a29c",
+          "key": "",
+          "name": "埼玉:大宮",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "鉄道博物館、大宮にあるの知ってた〜？鉄オタっちにはたまんないスポットだよん🚃",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "氷川神社は大宮の地名の元になったんですよ～",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "a776a185-c760-4fa2-b60f-04064559bfc6",
+          "key": "",
+          "name": "埼玉:羽生",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "羽生の水郷公園、水族館に淡水魚いっぱいいるし〜🐟癒しスポットって感じ〜✨",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "羽生はゆるキャラも有名です！ギネス記録も持ってますよ",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "27980315-3084-4061-932b-f7ae8a5eabfa",
+          "key": "",
+          "name": "埼玉:長瀞",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "長瀞のライン下り、夏の風物詩って感じで荒川の清流がバチ気持ちいい〜🌊",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "大トロは美味しいですよね！",
+              "delaySeconds": 5,
+              "wordParty": ""
+            },
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "ながとろだよ、ひまっち！",
+              "delaySeconds": 7,
+              "wordParty": "!間抜け5"
+            }
+          ]
+        },
+        {
+          "id": "dcd3dd33-c78a-4263-abbd-3e56b7012d6c",
+          "key": "",
+          "name": "埼玉:熊谷",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "熊谷うちわ祭り、暑さぶっ飛ばす勢いでテンアゲ〜‼迫力マジ満点🔥",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "2019年にラグビーワールドカップもありましたね～",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "000500fc-cef4-4075-84dc-20a01be159d3",
+          "key": "",
+          "name": "埼玉:川越",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "川越の古い町並み、ギャルでも風情感じちゃうレベルで素敵すぎ〜🎀",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "小江戸とも呼ばれてます！戦火を免れたんですね。",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "2c0da8ee-c279-4b53-82b9-37850de3a0ac",
+          "key": "",
+          "name": "埼玉:川越 (コピー)",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "川越の古い町並み、ギャルでも風情感じちゃうレベルで素敵すぎ〜🎀",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "ぶっぽるぎゃるぴるぎゃっぽっぱぁーっ!",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "00ffb113-8b6b-42ce-839c-672b1dfb248a",
+          "key": "",
+          "name": "埼玉:所沢",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "所沢航空記念公園、日本の航空のはじまりってエモすぎ〜✈️飛行機好きは絶対チェック〜‼",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "surprised",
+              "messageContent": "ベルーナドームは雨で濡れます！",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "3b57e9ab-4357-4448-b895-ef5e91a8eeef",
+          "key": "",
+          "name": "埼玉:越谷",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "越谷レイクタウン、行ったことある〜？人工湖デカすぎてギャルもびっくりだし〜🏞️",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "逃走中のロケ地でも有名ですね～",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "075320ee-6ff6-4de1-a8aa-b9194907b5df",
+          "key": "",
+          "name": "埼玉:深谷",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "深谷ねぎ、太くて立派すぎて鍋に入れたら優勝〜‼埼玉の冬はこれで決まり〜🍲",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "多種多様な百合も有名です(つむぎ先輩…♡)",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        },
+        {
+          "id": "dd2d4f49-ff7b-4ac2-9810-43fbc3f8a3bf",
+          "key": "",
+          "name": "埼玉:行田",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
+              "delaySeconds": 5,
+              "wordParty": "!呪いの旋律"
+            }
+          ]
+        },
+        {
+          "id": "36fa545e-4241-4be9-a5ba-df49bc05e518",
+          "key": "",
+          "name": "埼玉:行田 (コピー)",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
+              "delaySeconds": 5,
+              "wordParty": "!呪いの旋律"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "で、春日部には「そこらへんの草天丼」っていう人気商品あるんだなーこれが🌿",
+              "delaySeconds": 8.5,
+              "wordParty": ""
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "sleepy",
+              "messageContent": "いや草、つむぎ先輩、マジでそれ草です",
+              "delaySeconds": 12.5,
+              "wordParty": "!チーン1"
+            }
+          ]
+        },
+        {
+          "id": "b7e105b1-7f31-42c5-acaa-3079868af58b",
+          "key": "",
+          "name": "埼玉:日高",
+          "createdAt": "2025-10-01T23:20:03.392Z",
+          "updatedAt": "2025-10-01T23:20:03.392Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "actionType": "message",
+              "characterKey": "tsumugi",
+              "iconKey": "wink",
+              "messageContent": "日高の巾着田曼珠沙華公園！秋には真っ赤な彼岸花が咲き乱れるの‼映えすぎてヤバい〜📸",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1"
+            },
+            {
+              "actionType": "message",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "「豚のテーマパーク」もあって、ハム・ベーコンはギフトに良いですよ～",
+              "delaySeconds": 5,
+              "wordParty": ""
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "つむぎ",
+          "春日部",
+          "tumugi",
+          "tsumugi"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 5,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "sketchHimari": {
+      "id": "sketchHimari",
+      "key": "sketchHimari",
+      "name": "コント:ひまり",
+      "createdAt": "2025-10-01T05:15:26.841Z",
+      "updatedAt": "2025-10-02T01:49:02.365Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1759295780713",
+          "key": "",
+          "name": "ずん子の太もも写真集",
+          "createdAt": "2025-10-01T05:16:20.713Z",
+          "updatedAt": "2025-10-01T05:16:20.713Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "皆さん、チャンネル登録と高評価すると、つむぎ先輩の太もも写真集がプレゼントされます!お早めに!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!間抜け1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "ひまっち、いつの間にそんな写真集を…！？",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759297189462",
+          "key": "",
+          "name": "ワッフルワッフル",
+          "createdAt": "2025-10-01T05:39:49.462Z",
+          "updatedAt": "2025-10-01T05:39:49.462Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "駅で階段見上げたら女子中学生がいてさ、スカートの中見ちゃったんだよ。",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "そんでその女子中学生にいきなり",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7.5,
+              "wordParty": "!女衆「おう！」",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "全てを読むにはワッフルワッフルと書き込んでください",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "あー、あーしは別にいいかな…",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759298992347",
+          "key": "",
+          "name": "水素の音ォ〜！！",
+          "createdAt": "2025-10-01T06:09:52.347Z",
+          "updatedAt": "2025-10-01T06:09:52.347Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "ほら！これ！すごいでしょ！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "sleepy",
+              "messageContent": "なんですかこれぇ？",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "パンパンでそ！パンパン！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5.5,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "laughing",
+              "messageContent": "すごい全然違うホラ～！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "開けてみたいでしょぉ～？",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8.5,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "ｳﾝ見た～い！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 9.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "行きますよぉ～！せーのっ！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 11.5,
+              "wordParty": "!bombfire",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 12.4,
+              "wordParty": "!クイズ正解1",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "あぁ～！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 13,
+              "wordParty": "",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "水素の音ォ〜！！",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759304301811",
+          "key": "",
+          "name": "示談の条件",
+          "createdAt": "2025-10-01T07:38:21.811Z",
+          "updatedAt": "2025-10-01T07:38:21.811Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "試合を終えて家路へ向かう<<user>>。疲れからか、不幸にも黒塗りの高級車に追突してしまう。",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6.8,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "wink",
+              "messageContent": "後輩をかばいすべての責任を負った三浦に対し、車の主、暴力団員谷岡が言い渡した示談の条件とは…。",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759368543552",
+          "key": "",
+          "name": "城之内死す",
+          "createdAt": "2025-10-02T01:29:03.552Z",
+          "updatedAt": "2025-10-02T01:29:03.552Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "surprised",
+              "messageContent": "やめて！ラーの翼神竜の特殊能力で、ギルフォード・ザ・ライトニングを焼き払われたら、",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "surprised",
+              "messageContent": "闇のゲームでモンスターと繋がってる城之内の精神まで燃え尽きちゃう！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "お願い、死なないで城之内！あんたが今ここで倒れたら、舞さんや遊戯との約束はどうなっちゃうの？",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 15.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "ライフはまだ残ってる。ここを耐えれば、マリクに勝てるんだから！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 19.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "次回、「城之内死す」。デュエルスタンバイ！",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759369059189",
+          "key": "",
+          "name": "速 さ が 足 り な い",
+          "createdAt": "2025-10-02T01:37:39.189Z",
+          "updatedAt": "2025-10-02T01:37:39.189Z",
+          "order": 0,
+          "tags": [],
+          "weight": 3,
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "それがお前が向こう側で得た力か!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "だが足りない、足りないぞ!!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "配信に足りないものは、それは――",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "情熱思想理念頭脳気品優雅さ勤勉さ!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "angry",
+              "messageContent": "そして何よりも ――",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 11,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "速さが足りない!!",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759368661016",
           "key": "",
           "name": "ルイズコピペ",
-          "createdAt": "2025-09-30T06:33:26.732Z",
-          "updatedAt": "2025-09-30T06:33:26.732Z",
+          "createdAt": "2025-10-02T01:31:01.016Z",
+          "updatedAt": "2025-10-02T01:31:01.016Z",
           "order": 0,
           "tags": [],
           "weight": 0,
           "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
             {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
@@ -1303,90 +3014,24 @@
               "actionType": "message"
             }
           ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "yellow"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "CheckNumberTsumugi": {
-      "id": "CheckNumberTsumugi",
-      "key": "CheckNumberTsumugi",
-      "name": "コメント数表示",
-      "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#10B981",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
-          "key": "",
-          "name": "コメント数(つむぎ)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 4,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "tsumugi",
-              "iconKey": "thinking",
-              "messageContent": "",
-              "messageToast": "<<user>>は[<<tc>>] 回コメントしてるよ☆",
-              "actionType": "toast"
-            }
-          ]
         },
         {
-          "id": "fe628691-b50a-4415-b253-079d0a62a999",
+          "id": "1759304090945",
           "key": "",
-          "name": "コメント数(ひまり)",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "name": "なぜかキレる(「冥鳴ひまりexVOICE」収録音声一覧より)",
+          "createdAt": "2025-10-01T07:34:50.945Z",
+          "updatedAt": "2025-10-01T07:34:50.945Z",
           "order": 0,
-          "editorColor": "#3B82F6",
           "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "delaySeconds": 0,
+              "delaySeconds": 1,
               "wordParty": "!ニュースタイトル表示3",
               "characterKey": "himari",
-              "iconKey": "thinking",
-              "messageContent": "",
-              "messageToast": "<<user>>は[<<tc>>] 回です。<<CheckNumberHimari>>",
-              "actionType": "toast"
+              "iconKey": "angry",
+              "messageContent": "あ？なんだ？やるか？",
+              "actionType": "message"
             }
           ]
         }
@@ -1405,875 +3050,9 @@
           "value": 1
         },
         "comment": [
-          "^コメント$"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterSyokenTsumugi": {
-      "id": "FirstCounterSyokenTsumugi",
-      "key": "FirstCounterSyokenTsumugi",
-      "name": "初見",
-      "description": "初めてコメントをした方への挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "key": "",
-          "name": "初見さんへの挨拶1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 9,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 6.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "ce75680c-08c7-4cbc-bdff-3c8ad2cb3e3e",
-          "key": "",
-          "name": "示談の条件",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<user>>さん、<<FirstCounterSyokenTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 6.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "試合を終えて家路へ向かう<<user>>。疲れからか、不幸にも黒塗りの高級車に追突してしまう。",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 12.2,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "wink",
-              "messageContent": "後輩をかばいすべての責任を負った三浦に対し、車の主、暴力団員谷岡が言い渡した示談の条件とは…。",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterAgainTsumugi": {
-      "id": "FirstCounterAgainTsumugi",
-      "key": "FirstCounterAgainTsumugi",
-      "name": "久しぶり",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "key": "",
-          "name": "久しぶり",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterAgainTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "excited",
-              "messageContent": "<<FirstCounterAgainHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterFirstVisitTsumugi": {
-      "id": "FirstCounterFirstVisitTsumugi",
-      "key": "FirstCounterFirstVisitTsumugi",
-      "name": "こんにちは",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "key": "",
-          "name": "挨拶1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterFirstVisitTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterFirstVisitHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "UserCountTriggerTsumugi": {
-      "id": "UserCountTriggerTsumugi",
-      "key": "UserCountTriggerTsumugi",
-      "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#9E9E9E",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "key": "",
-          "name": "100回コメント",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<UserCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<UserCountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        },
-        "comment": [
-          "test"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "StreamCountTriggerTsumugi": {
-      "id": "StreamCountTriggerTsumugi",
-      "key": "StreamCountTriggerTsumugi",
-      "name": "配信内コメント数チェック:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T06:02:07.144Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#9E9E9E",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
-          "key": "",
-          "name": "100回コメント",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 5,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<StreamCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<UserCountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "1759298004824",
-          "key": "",
-          "name": "パインアメ",
-          "createdAt": "2025-10-01T05:53:24.824Z",
-          "updatedAt": "2025-10-01T05:53:24.824Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "…… きこえますか… きこえますか…"
-            },
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 2,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "みなさん… 冥鳴ひまりです…"
-            },
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 4,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "私は今… みなさんの心に…"
-            },
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 6,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "直接… 呼びかけています…"
-            },
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "<<lc>>回目のコメントは…"
-            },
-            {
-              "actionType": "toast",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "delaySeconds": 10,
-              "wordParty": "!ニュースタイトル表示3",
-              "messageToast": "<<user>>さん…でした"
-            }
-          ]
-        },
-        {
-          "id": "1759298246775",
-          "key": "",
-          "name": "メタルギアソリッドⅤ",
-          "createdAt": "2025-10-01T05:57:26.775Z",
-          "updatedAt": "2025-10-01T05:57:26.775Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "いいですか、落ち着いて聞いてください",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "<<lc>>回目のコメントは<<user>>さんです、つむぎ先輩ではありません",
-              "delaySeconds": 2.5,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "tsumugi",
-              "iconKey": "surprised",
-              "messageContent": "…!!",
-              "delaySeconds": 5.5,
-              "wordParty": "!ひらめく1"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "surprised",
-              "messageContent": "まずい！",
-              "delaySeconds": 6,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "νοσοκόμα! νοσοκόμα! νοσοκόμα!",
-              "delaySeconds": 7,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "ナース!",
-              "delaySeconds": 8.5,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "大丈夫、大丈夫",
-              "delaySeconds": 9.5,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "落ち着いて、大丈夫です 休んで…",
-              "delaySeconds": 11,
-              "wordParty": ""
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 100
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "sketchTsumugi": {
-      "id": "sketchTsumugi",
-      "key": "sketchTsumugi",
-      "name": "コント:つむぎ",
-      "createdAt": "2025-10-01T04:39:05.252Z",
-      "updatedAt": "2025-10-01T05:14:27.323Z",
-      "order": 17,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "1759292043766",
-          "key": "",
-          "name": "RTA動画1",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "つむぎ先輩、楽しそうですね～！",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "2f48c6de-4cca-4077-8f1d-ff5a36a59feb",
-          "key": "",
-          "name": "RTA動画2",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "sleepy",
-              "messageContent": "この配信はbiim兄貴リスペクトです",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 6,
-              "wordParty": "!ビシッとツッコミ1",
-              "characterKey": "tsumugi",
-              "iconKey": "angry",
-              "messageContent": "ひまっち、違うからね!?",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "8fa14c40-1983-4164-b299-a922120b1fb5",
-          "key": "",
-          "name": "RTA動画3",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "singing",
-              "messageContent": "ではさっそく始めていきます",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 5.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "名前は入力速度を考慮してホモとします",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7.5,
-              "wordParty": "!ビシッとツッコミ1",
-              "characterKey": "tsumugi",
-              "iconKey": "angry",
-              "messageContent": "いまはひまっちのRTA配信じゃないからね!?",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "dbd49473-667b-4824-b847-4d29592d6e83",
-          "key": "",
-          "name": "RTA動画4",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "私のRTA動画をつむぎ先輩が見てくれてた…",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "!女衆「おう！」",
-              "characterKey": "himari",
-              "iconKey": "wink",
-              "messageContent": "くやしい…!でも…感じちゃう!",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 9.5,
-              "wordParty": "!間抜け5",
-              "characterKey": "tsumugi",
-              "iconKey": "blushing",
-              "messageContent": "ひまっちー、心の声が漏れてるよー",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "e8f93143-f5a2-4a87-a8fa-608246d8434c",
-          "key": "",
-          "name": "ボカロ曲1",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "thinking",
-              "messageContent": "<<sketchTsumugiVOCALOID>>～",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "651476f5-5eb3-462c-bd7b-081a3963cd15",
-          "key": "",
-          "name": "ボカロ曲2",
-          "createdAt": "2025-10-01T04:14:03.766Z",
-          "updatedAt": "2025-10-01T04:14:03.766Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 5.5,
-              "wordParty": "!クイズ不正解1",
-              "characterKey": "tsumugi",
-              "iconKey": "angry",
-              "messageContent": "ひまっち、ここで弾幕貼っちゃダメだよ!?",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 3.7,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 3.9,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 4.1,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 4.3,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 4.5,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 4.7,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            },
-            {
-              "delaySeconds": 4.9,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "つむぎ"
+          "ひまり",
+          "冥鳴",
+          "himari"
         ]
       },
       "scriptId": null,
@@ -2283,90 +3062,38 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      },
-      "editorColor": "#FF9800"
+      }
     },
-    "sketchHimari": {
-      "id": "sketchHimari",
-      "key": "sketchHimari",
-      "name": "コント:ひまり",
-      "createdAt": "2025-10-01T05:15:26.841Z",
-      "updatedAt": "2025-10-01T05:43:32.424Z",
-      "order": 19,
+    "sketchHimariWaffle": {
+      "id": "sketchHimariWaffle",
+      "key": "sketchHimariWaffle",
+      "name": "コント:ひまり:ワッフルワッフル",
+      "createdAt": "2025-10-01T23:03:40.335Z",
+      "updatedAt": "2025-10-02T00:41:12.220Z",
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1759295780713",
+          "id": "c51b6693-b456-4733-87ec-9377e21df0c4",
           "key": "",
-          "name": "ずん子の太もも写真集",
-          "createdAt": "2025-10-01T05:16:20.713Z",
-          "updatedAt": "2025-10-01T05:16:20.713Z",
+          "name": "あーもうめちゃくちゃだよ",
+          "createdAt": "2025-10-01T22:30:26.236Z",
+          "updatedAt": "2025-10-01T22:30:26.237Z",
           "order": 0,
           "tags": [],
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "himari",
-              "iconKey": "wink",
-              "messageContent": "皆さん、チャンネル登録と高評価すると、つむぎ先輩の太もも写真集がプレゼントされます!お早めに!",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "tsumugi",
-              "iconKey": "surprised",
-              "messageContent": "ひまっち、いつの間にそんな写真集を…！？",
-              "delaySeconds": 5,
-              "wordParty": "!間抜け1"
-            }
-          ]
-        },
-        {
-          "id": "1759297189462",
-          "key": "",
-          "name": "ワッフルワッフル",
-          "createdAt": "2025-10-01T05:39:49.462Z",
-          "updatedAt": "2025-10-01T05:39:49.462Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "thinking",
-              "messageContent": "駅で階段見上げたら女子中学生がいてさ、スカートの中見ちゃったんだよ。",
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "thinking",
-              "messageContent": "そんでその女子中学生にいきなり",
-              "delaySeconds": 4,
-              "wordParty": ""
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "wink",
-              "messageContent": "全てを読むにはワッフルワッフルと書き込んでください",
-              "delaySeconds": 5.5,
-              "wordParty": "!女衆「おう！」"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "tsumugi",
-              "iconKey": "laughing",
-              "messageContent": "あー、あーしは別にいいかな…",
-              "delaySeconds": 8.5,
-              "wordParty": ""
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "toast",
+              "messageToast": "<<sketchHimariWaffle>>"
             }
           ]
         }
@@ -2385,13 +3112,13 @@
           "value": 1
         },
         "comment": [
-          "ひまり"
+          "ワッフルワッフル"
         ]
       },
       "scriptId": null,
       "scriptParams": null,
       "limits": {
-        "cooldownSeconds": 5,
+        "cooldownSeconds": 3,
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
@@ -2405,7 +3132,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
+      "updatedAt": "2025-10-01T23:08:11.598Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -2499,7 +3226,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T05:02:20.585Z",
+      "updatedAt": "2025-10-01T23:08:11.598Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -2606,7 +3333,7 @@
       "key": "GiftTsumugi",
       "name": "ギフト(つむぎ)",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-10-01T05:02:20.577Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2648,7 +3375,7 @@
       "key": "GiftLowHimari",
       "name": "ギフトLow(ひまり)",
       "createdAt": "2025-09-30T06:14:18.567Z",
-      "updatedAt": "2025-10-01T05:02:20.577Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2702,7 +3429,7 @@
       "key": "GiftHighHimari",
       "name": "ギフトMiddle(ひまり)",
       "createdAt": "2025-09-30T06:14:42.327Z",
-      "updatedAt": "2025-10-01T05:02:20.577Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2752,7 +3479,7 @@
       "key": "PromotionUpVoteTsugumi",
       "name": "告知トースト:高評価(つむぎ)",
       "createdAt": "2025-10-01T03:40:43.197Z",
-      "updatedAt": "2025-10-01T05:02:20.577Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -2786,7 +3513,7 @@
       "key": "PromotionUpVoteHimari",
       "name": "告知トースト:高評価(ひまり)",
       "createdAt": "2025-10-01T03:43:36.479Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -2824,7 +3551,7 @@
       "key": "FirstCounterFirstVisitTsumugiA",
       "name": "こんにちはA(つむぎ)",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2878,7 +3605,7 @@
       "key": "FirstCounterFirstVisitHimariA",
       "name": "こんにちはA(ひまり)",
       "createdAt": "2025-09-30T00:43:14.499Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2924,7 +3651,7 @@
       "key": "FirstCounterAgainTsumugiA",
       "name": "久しぶりA(つむぎ)",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.589Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2978,7 +3705,7 @@
       "key": "FirstCounterAgainHimariA",
       "name": "久しぶりA(ひまり)",
       "createdAt": "2025-09-30T00:30:43.111Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3016,7 +3743,7 @@
       "key": "FirstCounterSyokenTsumugiA",
       "name": "初見A(つむぎ)",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3046,7 +3773,7 @@
       "key": "FirstCounterSyokenHimariA",
       "name": "初見A(ひまり)",
       "createdAt": "2025-09-30T00:25:59.510Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3092,7 +3819,7 @@
       "key": "BigBangDecoG",
       "name": "超おみくじ:装飾吉",
       "createdAt": "2025-09-18T06:23:15.889Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3306,7 +4033,7 @@
       "key": "BigBangDecoB",
       "name": "超おみくじ:装飾凶",
       "createdAt": "2025-09-18T06:12:32.542Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3500,7 +4227,7 @@
       "key": "BigBangLottery",
       "name": "超おみくじ:抽選",
       "createdAt": "2025-09-18T06:38:25.113Z",
-      "updatedAt": "2025-10-01T05:02:20.578Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3570,7 +4297,7 @@
       "key": "BigBangB4",
       "name": "超おみくじ:凶x4",
       "createdAt": "2025-09-18T06:25:41.070Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3600,7 +4327,7 @@
       "key": "BigBangB3",
       "name": "超おみくじ:凶x3",
       "createdAt": "2025-09-18T06:26:35.570Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3630,7 +4357,7 @@
       "key": "BigBangB2",
       "name": "超おみくじ:凶x2",
       "createdAt": "2025-09-18T06:27:06.116Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3660,7 +4387,7 @@
       "key": "BigBangB1",
       "name": "超おみくじ:凶x1",
       "createdAt": "2025-09-18T06:27:32.561Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3694,7 +4421,7 @@
       "key": "BigBangG0",
       "name": "超おみくじ:大吉-大凶",
       "createdAt": "2025-09-18T06:28:34.367Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3736,7 +4463,7 @@
       "key": "BigBangG1",
       "name": "超おみくじ:吉x1",
       "createdAt": "2025-09-18T06:30:32.932Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3770,7 +4497,7 @@
       "key": "BigBangG2",
       "name": "超おみくじ:吉x2",
       "createdAt": "2025-09-18T06:30:57.869Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.590Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3804,7 +4531,7 @@
       "key": "BigBangG3",
       "name": "超おみくじ:吉x3",
       "createdAt": "2025-09-18T06:31:33.831Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3842,7 +4569,7 @@
       "key": "BigBangG4",
       "name": "超おみくじ:吉x4",
       "createdAt": "2025-09-18T06:32:46.031Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 23,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3892,7 +4619,7 @@
       "key": "BigBangG5",
       "name": "超おみくじ:吉x5",
       "createdAt": "2025-09-18T06:33:16.278Z",
-      "updatedAt": "2025-10-01T05:02:20.579Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 24,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -3954,7 +4681,7 @@
       "key": "BigBangG6",
       "name": "超おみくじ:吉x6",
       "createdAt": "2025-09-18T06:33:48.527Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 25,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -4016,7 +4743,7 @@
       "key": "BigBangG7",
       "name": "超おみくじ:吉x7",
       "createdAt": "2025-09-18T06:34:28.321Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 26,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -4078,7 +4805,7 @@
       "key": "BigBangG8",
       "name": "超おみくじ:吉x8",
       "createdAt": "2025-09-18T06:34:56.085Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 27,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -4140,7 +4867,7 @@
       "key": "ViewCountDisplayTsumugiA",
       "name": "閲覧数表示(つむぎ)",
       "createdAt": "2025-10-01T02:21:52.905Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 28,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -4174,7 +4901,7 @@
       "key": "ViewCountDisplayHimariA",
       "name": "閲覧数表示(ひまり)",
       "createdAt": "2025-10-01T02:25:48.827Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 29,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -4212,7 +4939,7 @@
       "key": "ViewCountDisplayTsumugiB",
       "name": "高評価数表示(つむぎ)",
       "createdAt": "2025-10-01T02:35:26.387Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 30,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -4246,7 +4973,7 @@
       "key": "ViewCountDisplayHimariB",
       "name": "高評価数表示(ひまり)",
       "createdAt": "2025-10-01T02:41:21.701Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.591Z",
       "order": 31,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -4288,7 +5015,7 @@
       "key": "StreamCountTriggerTsumugi",
       "name": "配信内コメント数チェック(つむぎ)",
       "createdAt": "2025-10-01T00:30:57.768Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.592Z",
       "order": 32,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
@@ -4322,7 +5049,7 @@
       "key": "UserCountTriggerTsumugi",
       "name": "個別コメント数チェック(つむぎ)",
       "createdAt": "2025-10-01T00:25:28.480Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.592Z",
       "order": 33,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
@@ -4351,12 +5078,12 @@
         }
       ]
     },
-    "UserCountTriggerHimari": {
-      "id": "UserCountTriggerHimari",
-      "key": "UserCountTriggerHimari",
+    "CountTriggerHimari": {
+      "id": "CountTriggerHimari",
+      "key": "CountTriggerHimari",
       "name": "チェックの合いの手(ひまり)",
       "createdAt": "2025-10-01T00:29:17.991Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
+      "updatedAt": "2025-10-01T23:08:11.592Z",
       "order": 34,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
@@ -4396,15 +5123,7 @@
           "weight": 1
         },
         {
-          "content": "白って<<lc>>色あんねん",
-          "weight": 1
-        },
-        {
           "content": "<<user>>ゥゥ!!何やってんだお前ェ!!",
-          "weight": 1
-        },
-        {
-          "content": "こりゃあ『<<lc>>回』でよいですね",
           "weight": 1
         },
         {
@@ -4416,15 +5135,79 @@
           "weight": 1
         },
         {
-          "content": "<<user>>の<<lc>>回気持ちよすぎだろ！",
-          "weight": 1
-        },
-        {
-          "content": "<<lc>>万！？うせやろ",
-          "weight": 1
-        },
-        {
           "content": "なんだこれはたまげたなぁ",
+          "weight": 1
+        }
+      ]
+    },
+    "UserCountTriggerHimari": {
+      "id": "UserCountTriggerHimari",
+      "key": "UserCountTriggerHimari",
+      "name": "個別コメント数チェック(ひまり)",
+      "createdAt": "2025-10-01T06:41:22.616Z",
+      "updatedAt": "2025-10-01T23:08:11.592Z",
+      "order": 35,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "こりゃあ『<<tc>>コメント』でよいですね！",
+          "weight": 1
+        },
+        {
+          "content": "<<tc>>コメ！？うせやろ",
+          "weight": 1
+        },
+        {
+          "content": "素晴らしい！！最高の<<tc>>回だとは思わんかね！？",
+          "weight": 1
+        },
+        {
+          "content": "祝福しろ <<user>>にはそれが必要だ",
+          "weight": 1
+        },
+        {
+          "content": "Congratulation! Congratulation! おめでとう……！",
+          "weight": 1
+        },
+        {
+          "content": "祝　っ　て　や　る",
+          "weight": 1
+        }
+      ]
+    },
+    "StreamCountTriggerHimari": {
+      "id": "StreamCountTriggerHimari",
+      "key": "StreamCountTriggerHimari",
+      "name": "配信内コメント数チェック(ひまり)",
+      "createdAt": "2025-10-01T06:37:02.657Z",
+      "updatedAt": "2025-10-01T23:08:11.592Z",
+      "order": 36,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "<<lc>>回踏んだのか、俺以外のヤツが…",
+          "weight": 1
+        },
+        {
+          "content": "<<lc>>回だ？貴様この野郎",
+          "weight": 1
+        },
+        {
+          "content": "<<lc>>回――　なんと聞こえのいい言葉か――！！",
+          "weight": 1
+        },
+        {
+          "content": "白って<<lc>>色あんねん",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>の<<lc>>回気持ちよすぎだろ！",
           "weight": 1
         }
       ]
@@ -4434,8 +5217,8 @@
       "key": "TarotCard",
       "name": "タロット:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
-      "order": 35,
+      "updatedAt": "2025-10-01T23:08:11.592Z",
+      "order": 37,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4624,8 +5407,8 @@
       "key": "TarotCardFool_U",
       "name": "【愚者】(正位置)",
       "createdAt": "2025-09-13T22:16:22.894Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
-      "order": 36,
+      "updatedAt": "2025-10-01T23:08:11.592Z",
+      "order": 38,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4658,8 +5441,8 @@
       "key": "TarotCardFool_R",
       "name": "【愚者】(逆位置)",
       "createdAt": "2025-09-13T22:24:43.051Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
-      "order": 37,
+      "updatedAt": "2025-10-01T23:08:11.592Z",
+      "order": 39,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4692,8 +5475,8 @@
       "key": "TarotCardMagician_U",
       "name": "【魔術師】(正位置)",
       "createdAt": "2025-09-13T22:25:10.590Z",
-      "updatedAt": "2025-10-01T05:02:20.580Z",
-      "order": 38,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 40,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4726,8 +5509,8 @@
       "key": "TarotCardMagician_R",
       "name": "【魔術師】(逆位置)",
       "createdAt": "2025-09-13T22:28:18.260Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 39,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 41,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4760,8 +5543,8 @@
       "key": "TarotCardHighPriestess_U",
       "name": "【女教皇】(正位置)",
       "createdAt": "2025-09-13T22:28:54.093Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 40,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 42,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4794,8 +5577,8 @@
       "key": "TarotCardHighPriestess_R",
       "name": "【女教皇】(逆位置) ",
       "createdAt": "2025-09-13T22:29:26.905Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 41,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 43,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4828,8 +5611,8 @@
       "key": "TarotCardEmpress_U",
       "name": "【女帝】(正位置) ",
       "createdAt": "2025-09-13T22:29:59.161Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 42,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 44,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4862,8 +5645,8 @@
       "key": "TarotCardEmpress_R",
       "name": "【女帝】(逆位置) ",
       "createdAt": "2025-09-13T22:30:31.785Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 43,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 45,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4896,8 +5679,8 @@
       "key": "TarotCardEmperor_U",
       "name": "【皇帝】(正位置) ",
       "createdAt": "2025-09-13T22:31:02.984Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 44,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 46,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4930,8 +5713,8 @@
       "key": "TarotCardEmperor_R",
       "name": "【皇帝】(逆位置)",
       "createdAt": "2025-09-13T22:31:30.126Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 45,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 47,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4964,8 +5747,8 @@
       "key": "TarotCardHierophant_U",
       "name": "【法王】(正位置)",
       "createdAt": "2025-09-13T22:32:48.041Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 46,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 48,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -4998,8 +5781,8 @@
       "key": "TarotCardHierophant_R",
       "name": "【法王】(逆位置)",
       "createdAt": "2025-09-13T22:34:16.344Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 47,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 49,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5032,8 +5815,8 @@
       "key": "TarotCardLovers_U",
       "name": "【恋人】(正位置)",
       "createdAt": "2025-09-13T22:34:50.903Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 48,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 50,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5066,8 +5849,8 @@
       "key": "TarotCardLovers_R",
       "name": "【恋人】(逆位置) ",
       "createdAt": "2025-09-13T22:35:22.822Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 49,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 51,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5100,8 +5883,8 @@
       "key": "TarotCardChariot_U",
       "name": "【戦車】(正位置)",
       "createdAt": "2025-09-13T22:36:04.753Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 50,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 52,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5134,8 +5917,8 @@
       "key": "TarotCardChariot_R",
       "name": "【戦車】(逆位置)",
       "createdAt": "2025-09-13T22:36:37.887Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 51,
+      "updatedAt": "2025-10-01T23:08:11.593Z",
+      "order": 53,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5168,8 +5951,8 @@
       "key": "TarotCardStrength_U",
       "name": "【力】(正位置) ",
       "createdAt": "2025-09-13T22:37:06.904Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 52,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 54,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5202,8 +5985,8 @@
       "key": "TarotCardStrength_R",
       "name": "【力】(逆位置)",
       "createdAt": "2025-09-13T22:37:42.040Z",
-      "updatedAt": "2025-10-01T05:02:20.581Z",
-      "order": 53,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 55,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5236,8 +6019,8 @@
       "key": "TarotCardHermit_U",
       "name": "【隠者】(正位置)",
       "createdAt": "2025-09-13T22:38:15.662Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 54,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 56,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5270,8 +6053,8 @@
       "key": "TarotCardHermit_R",
       "name": "【隠者】(逆位置)",
       "createdAt": "2025-09-13T22:38:47.948Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 55,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 57,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5304,8 +6087,8 @@
       "key": "TarotCardWheelOfFortune_U",
       "name": "【運命の輪】(正位置)",
       "createdAt": "2025-09-13T22:39:41.511Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 56,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 58,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5338,8 +6121,8 @@
       "key": "TarotCardWheelOfFortune_R",
       "name": "【運命の輪】(逆位置) ",
       "createdAt": "2025-09-13T22:40:17.525Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 57,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 59,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5372,8 +6155,8 @@
       "key": "TarotCardJustice_U",
       "name": "【正義】(正位置)",
       "createdAt": "2025-09-13T22:40:53.592Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 58,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 60,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5406,8 +6189,8 @@
       "key": "TarotCardJustice_R",
       "name": "【正義】(逆位置)",
       "createdAt": "2025-09-13T22:41:28.894Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 59,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 61,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5440,8 +6223,8 @@
       "key": "TarotCardHangedMan_U",
       "name": "【吊るされた男】(正位置)",
       "createdAt": "2025-09-13T22:42:18.909Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 60,
+      "updatedAt": "2025-10-01T23:08:11.594Z",
+      "order": 62,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5474,8 +6257,8 @@
       "key": "TarotCardHangedMan_R",
       "name": "【吊るされた男】(逆位置)",
       "createdAt": "2025-09-13T22:42:52.913Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 61,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 63,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5508,8 +6291,8 @@
       "key": "TarotCardDeath_U",
       "name": "【死神】(正位置)",
       "createdAt": "2025-09-13T22:43:24.157Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 62,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 64,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5542,8 +6325,8 @@
       "key": "TarotCardDeath_R",
       "name": "【死神】(逆位置)",
       "createdAt": "2025-09-13T22:43:57.186Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 63,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 65,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5576,8 +6359,8 @@
       "key": "TarotCardTemperance_U",
       "name": "【節制】(正位置)",
       "createdAt": "2025-09-13T22:44:45.664Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 64,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 66,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5610,8 +6393,8 @@
       "key": "TarotCardTemperance_R",
       "name": "【節制】(逆位置)",
       "createdAt": "2025-09-13T22:45:39.048Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 65,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 67,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5644,8 +6427,8 @@
       "key": "TarotCardDevil_U",
       "name": "【悪魔】(正位置)",
       "createdAt": "2025-09-13T22:46:08.800Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 66,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 68,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5678,8 +6461,8 @@
       "key": "TarotCardDevil_R",
       "name": "【悪魔】(逆位置)",
       "createdAt": "2025-09-13T22:46:34.891Z",
-      "updatedAt": "2025-10-01T05:02:20.582Z",
-      "order": 67,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 69,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5712,8 +6495,8 @@
       "key": "TarotCardTower_U",
       "name": "【塔】(正位置)",
       "createdAt": "2025-09-13T22:47:31.680Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 68,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 70,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5746,8 +6529,8 @@
       "key": "TarotCardTower_R",
       "name": "【塔】(逆位置)",
       "createdAt": "2025-09-13T22:48:02.811Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 69,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 71,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5780,8 +6563,8 @@
       "key": "TarotCardStar_U",
       "name": "【星】(正位置)",
       "createdAt": "2025-09-13T22:49:06.492Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 70,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 72,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5814,8 +6597,8 @@
       "key": "TarotCardStar_R",
       "name": "【星】(逆位置)",
       "createdAt": "2025-09-13T22:49:30.889Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 71,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 73,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5848,8 +6631,8 @@
       "key": "TarotCardMoon_U",
       "name": "【月】(正位置) ",
       "createdAt": "2025-09-13T22:49:54.792Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 72,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 74,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5882,8 +6665,8 @@
       "key": "TarotCardMoon_R",
       "name": "【月】(逆位置)",
       "createdAt": "2025-09-13T22:50:19.652Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 73,
+      "updatedAt": "2025-10-01T23:08:11.595Z",
+      "order": 75,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5916,8 +6699,8 @@
       "key": "TarotCardSun_U",
       "name": "【太陽】(正位置)",
       "createdAt": "2025-09-13T22:50:44.266Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 74,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 76,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5950,8 +6733,8 @@
       "key": "TarotCardSun_R",
       "name": "【太陽】(逆位置)",
       "createdAt": "2025-09-13T22:51:11.175Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 75,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 77,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -5984,8 +6767,8 @@
       "key": "TarotCardJudgement_U",
       "name": "【審判】(正位置)",
       "createdAt": "2025-09-13T22:51:42.360Z",
-      "updatedAt": "2025-10-01T05:02:20.583Z",
-      "order": 76,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 78,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -6018,8 +6801,8 @@
       "key": "TarotCardJudgement_R",
       "name": "【審判】(逆位置)",
       "createdAt": "2025-09-13T22:52:15.809Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 77,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 79,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -6052,8 +6835,8 @@
       "key": "TarotCardWorld_U",
       "name": "【世界】(正位置)",
       "createdAt": "2025-09-13T22:52:41.548Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 78,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 80,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -6086,8 +6869,8 @@
       "key": "TarotCardWorld_R",
       "name": "【世界】(逆位置)",
       "createdAt": "2025-09-13T22:53:06.146Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 79,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 81,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -6120,8 +6903,8 @@
       "key": "CheckNumberHimari",
       "name": "コメント数表示(ひまり)",
       "createdAt": "2025-09-30T05:14:26.896Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 80,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 82,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -6154,8 +6937,8 @@
       "key": "SyokenSagiTsumugiA",
       "name": "初見詐欺A(つむぎ)",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 81,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 83,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -6192,8 +6975,8 @@
       "key": "SyokenSagiHimariA",
       "name": "初見詐欺A(ひまり)",
       "createdAt": "2025-09-29T07:31:58.506Z",
-      "updatedAt": "2025-10-01T05:02:20.584Z",
-      "order": 82,
+      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "order": 84,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -6334,9 +7117,10 @@
       "key": "sketchTsumugiVOCALOID",
       "name": "コント:つむぎ、ボカロ曲",
       "createdAt": "2025-10-01T05:01:30.313Z",
-      "updatedAt": "2025-10-01T05:04:19.159Z",
-      "order": 84,
+      "updatedAt": "2025-10-02T01:21:22.328Z",
+      "order": 85,
       "isEnabled": true,
+      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
@@ -6349,7 +7133,10 @@
         "ロミオとシンデレラ",
         "強風オールバック",
         "いーあるふぁんくらぶ",
-        "命に嫌われている",
+        {
+          "weight": 3,
+          "content": "命に嫌われている"
+        },
         "アスノヨゾラ哨戒班",
         "からくりピエロ",
         "歌に形はないけれど",
@@ -6357,6 +7144,26 @@
         "宇宙刑事ギャバソ",
         "Hot knows...",
         "ココロジョジョル"
+      ]
+    },
+    "sketchHimariWaffle": {
+      "id": "sketchHimariWaffle",
+      "key": "sketchHimariWaffle",
+      "name": "コント:ひまり:ワッフルワッフル",
+      "createdAt": "2025-10-01T23:08:02.838Z",
+      "updatedAt": "2025-10-01T23:11:15.656Z",
+      "order": 87,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "人間の屑がこの野郎…",
+        "あーめんどくせーマジで",
+        "あほくさ",
+        "あーもうめちゃくちゃだよ",
+        "なんだこのオッサン！？",
+        "これもうわかんねぇな"
       ]
     }
   },
