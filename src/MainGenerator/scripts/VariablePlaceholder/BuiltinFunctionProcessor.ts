@@ -17,7 +17,7 @@ export class BuiltinFunctionProcessor {
 
   /**
    * 組み込み関数を処理
-   * {{rank}}, {{rand(min,max)}}など
+   * {{rank}}, {{rand(min,max)}}, {{select(選択肢1,選択肢2,...)}}
    */
   process(text: string): string {
     let processedText = text
@@ -25,6 +25,8 @@ export class BuiltinFunctionProcessor {
     // rank処理
     if (this.currentRank !== undefined) {
       processedText = processedText.replace(/\{\{rank\}\}/g, String(this.currentRank))
+    } else {
+      processedText = processedText.replace(/\{\{rank\}\}/g, '-')
     }
 
     // rand関数処理
@@ -38,6 +40,29 @@ export class BuiltinFunctionProcessor {
       }
 
       return String(this.randomInt(min, max))
+    })
+
+    // select関数処理（カンマ区切りの選択肢からランダムに1つ選ぶ）
+    processedText = processedText.replace(/\{\{select\(([^)]+)\)\}\}/g, (match, optionsStr) => {
+      try {
+        // カンマで分割して選択肢を取得
+        const options = optionsStr
+          .split(',')
+          .map((opt: string) => opt.trim())
+          .filter((opt: string) => opt.length > 0)
+
+        if (options.length === 0) {
+          console.warn(`select関数に有効な選択肢がありません: ${match}`)
+          return match
+        }
+
+        // ランダムに1つ選択
+        const selectedIndex = Math.floor(Math.random() * options.length)
+        return options[selectedIndex]
+      } catch (error) {
+        console.warn(`select関数の処理に失敗しました: ${match}`, error)
+        return match
+      }
     })
 
     return processedText

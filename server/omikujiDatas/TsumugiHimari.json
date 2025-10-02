@@ -25,7 +25,7 @@
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 2,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
@@ -95,7 +95,7 @@
       "name": "超おみくじ",
       "createdAt": "2025-09-13T09:36:31.634Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 3,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
@@ -173,7 +173,7 @@
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 4,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -252,7 +252,7 @@
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 5,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -330,7 +330,7 @@
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 6,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -410,7 +410,7 @@
       "description": "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 7,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -832,7 +832,7 @@
       "description": "いい初見だ。感動的だな……だが無意味だ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 8,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -915,7 +915,7 @@
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 9,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1075,7 +1075,7 @@
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-02T01:31:26.537Z",
-      "order": 10,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1164,7 +1164,7 @@
       "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 11,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#10B981",
       "tags": [],
@@ -1243,575 +1243,13 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterSyokenTsumugi": {
-      "id": "FirstCounterSyokenTsumugi",
-      "key": "FirstCounterSyokenTsumugi",
-      "name": "初見",
-      "description": "初めてコメントをした方への挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-02T01:27:09.408Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "key": "",
-          "name": "初見さんへの挨拶1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!初見",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 6.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterAgainTsumugi": {
-      "id": "FirstCounterAgainTsumugi",
-      "key": "FirstCounterAgainTsumugi",
-      "name": "久しぶり",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "key": "",
-          "name": "久しぶり",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterAgainTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "excited",
-              "messageContent": "<<FirstCounterAgainHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterFirstVisitTsumugi": {
-      "id": "FirstCounterFirstVisitTsumugi",
-      "key": "FirstCounterFirstVisitTsumugi",
-      "name": "こんにちは",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "key": "",
-          "name": "挨拶1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterFirstVisitTsumugiA>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterFirstVisitHimariA>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "UserCountTriggerTsumugi": {
-      "id": "UserCountTriggerTsumugi",
-      "key": "UserCountTriggerTsumugi",
-      "name": "個別コメント数チェック",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-02T01:40:20.182Z",
-      "order": 18,
-      "isEnabled": true,
-      "editorColor": "#9E9E9E",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "key": "",
-          "name": "100回コメント",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<UserCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<CountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "da66894a-83b9-4a9c-9831-3bb547ddc19c",
-          "key": "",
-          "name": "100回コメントB",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<UserCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<UserCountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        },
-        "comment": [
-          "test"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "StreamCountTriggerTsumugi": {
-      "id": "StreamCountTriggerTsumugi",
-      "key": "StreamCountTriggerTsumugi",
-      "name": "配信内コメント数チェック:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.598Z",
-      "order": 19,
-      "isEnabled": true,
-      "editorColor": "#9E9E9E",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
-          "key": "",
-          "name": "100回コメント",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 5,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<StreamCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<CountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "a03da291-a272-4c62-ab98-2af8bcf32915",
-          "key": "",
-          "name": "100回コメントB",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 2,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "excited",
-              "messageContent": "<<StreamCountTriggerTsumugi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "laughing",
-              "messageContent": "<<StreamCountTriggerHimari>>",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "1759298004824",
-          "key": "",
-          "name": "パインアメ",
-          "createdAt": "2025-10-01T05:53:24.824Z",
-          "updatedAt": "2025-10-01T05:53:24.824Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "…… きこえますか… きこえますか…",
-              "actionType": "toast"
-            },
-            {
-              "delaySeconds": 2,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "みなさん… 冥鳴ひまりです…",
-              "actionType": "toast"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "私は今… みなさんの心に…",
-              "actionType": "toast"
-            },
-            {
-              "delaySeconds": 6,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "直接… 呼びかけています…",
-              "actionType": "toast"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<lc>>回目のコメントは…",
-              "actionType": "toast"
-            },
-            {
-              "delaySeconds": 10,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さん…でした",
-              "actionType": "toast"
-            }
-          ]
-        },
-        {
-          "id": "1759298246775",
-          "key": "",
-          "name": "メタルギアソリッドⅤ",
-          "createdAt": "2025-10-01T05:57:26.775Z",
-          "updatedAt": "2025-10-01T05:57:26.775Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "いいですか、落ち着いて聞いてください",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 2.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "<<lc>>回目のコメントは<<user>>さんです、つむぎ先輩ではありません",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 5.5,
-              "wordParty": "!ひらめく1",
-              "characterKey": "tsumugi",
-              "iconKey": "surprised",
-              "messageContent": "…!!",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 6,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "surprised",
-              "messageContent": "まずい！",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "νοσοκόμα! νοσοκόμα! νοσοκόμα!",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "ナース!",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 9.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "大丈夫、大丈夫",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 11,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "blushing",
-              "messageContent": "落ち着いて、大丈夫です 休んで…",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 100
-        },
-        "comment": []
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "sketchTsumugi": {
       "id": "sketchTsumugi",
       "key": "sketchTsumugi",
       "name": "コント:つむぎ",
       "createdAt": "2025-10-01T04:39:05.252Z",
-      "updatedAt": "2025-10-02T01:51:20.119Z",
-      "order": 12,
+      "updatedAt": "2025-10-02T07:38:45.676Z",
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2108,20 +1546,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "秩父夜祭、マジで華やかでド迫力〜‼冬の埼玉って言ったらコレっしょ🎆",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "わらじカツ丼も有名ですよ！",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2136,20 +1574,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "singing",
               "messageContent": "狭山茶って飲んだことある〜？埼玉の特産で香りヤバいし、めっちゃ美味しみ〜🍵",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "日本三大銘茶の一つですね！ちょっと一服狭山茶～",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2164,20 +1602,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "鉄道博物館、大宮にあるの知ってた〜？鉄オタっちにはたまんないスポットだよん🚃",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "氷川神社は大宮の地名の元になったんですよ～",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2192,20 +1630,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "羽生の水郷公園、水族館に淡水魚いっぱいいるし〜🐟癒しスポットって感じ〜✨",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "羽生はゆるキャラも有名です！ギネス記録も持ってますよ",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2220,28 +1658,28 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "長瀞のライン下り、夏の風物詩って感じで荒川の清流がバチ気持ちいい〜🌊",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "大トロは美味しいですよね！",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 7,
+              "wordParty": "!間抜け5",
               "characterKey": "tsumugi",
               "iconKey": "surprised",
               "messageContent": "ながとろだよ、ひまっち！",
-              "delaySeconds": 7,
-              "wordParty": "!間抜け5"
+              "actionType": "message"
             }
           ]
         },
@@ -2256,20 +1694,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "熊谷うちわ祭り、暑さぶっ飛ばす勢いでテンアゲ〜‼迫力マジ満点🔥",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "2019年にラグビーワールドカップもありましたね～",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2284,48 +1722,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "川越の古い町並み、ギャルでも風情感じちゃうレベルで素敵すぎ〜🎀",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
-              "messageContent": "小江戸とも呼ばれてます！戦火を免れたんですね。",
-              "delaySeconds": 5,
-              "wordParty": ""
-            }
-          ]
-        },
-        {
-          "id": "2c0da8ee-c279-4b53-82b9-37850de3a0ac",
-          "key": "",
-          "name": "埼玉:川越 (コピー)",
-          "createdAt": "2025-10-01T23:20:03.392Z",
-          "updatedAt": "2025-10-01T23:20:03.392Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "actionType": "message",
-              "characterKey": "tsumugi",
-              "iconKey": "wink",
-              "messageContent": "川越の古い町並み、ギャルでも風情感じちゃうレベルで素敵すぎ〜🎀",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
-            },
-            {
-              "actionType": "message",
-              "characterKey": "himari",
-              "iconKey": "angry",
-              "messageContent": "ぶっぽるぎゃるぴるぎゃっぽっぱぁーっ!",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "messageContent": "{{select(小江戸とも呼ばれてます！戦火を免れたんですね。,ぶっぽるぎゃるぴるぎゃっぽっぱぁーっ!)}}",
+              "actionType": "message"
             }
           ]
         },
@@ -2340,20 +1750,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "所沢航空記念公園、日本の航空のはじまりってエモすぎ〜✈️飛行機好きは絶対チェック〜‼",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "surprised",
               "messageContent": "ベルーナドームは雨で濡れます！",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2368,20 +1778,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "laughing",
               "messageContent": "越谷レイクタウン、行ったことある〜？人工湖デカすぎてギャルもびっくりだし〜🏞️",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "逃走中のロケ地でも有名ですね～",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2396,20 +1806,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "深谷ねぎ、太くて立派すぎて鍋に入れたら優勝〜‼埼玉の冬はこれで決まり〜🍲",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "多種多様な百合も有名です(つむぎ先輩…♡)",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         },
@@ -2424,20 +1834,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "!呪いの旋律",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
-              "delaySeconds": 5,
-              "wordParty": "!呪いの旋律"
+              "actionType": "message"
             }
           ]
         },
@@ -2452,36 +1862,36 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "!呪いの旋律",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
-              "delaySeconds": 5,
-              "wordParty": "!呪いの旋律"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 8.5,
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "singing",
               "messageContent": "で、春日部には「そこらへんの草天丼」っていう人気商品あるんだなーこれが🌿",
-              "delaySeconds": 8.5,
-              "wordParty": ""
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 12.5,
+              "wordParty": "!チーン1",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "いや草、つむぎ先輩、マジでそれ草です",
-              "delaySeconds": 12.5,
-              "wordParty": "!チーン1"
+              "actionType": "message"
             }
           ]
         },
@@ -2496,20 +1906,20 @@
           "weight": 1,
           "postActions": [
             {
-              "actionType": "message",
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "日高の巾着田曼珠沙華公園！秋には真っ赤な彼岸花が咲き乱れるの‼映えすぎてヤバい〜📸",
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1"
+              "actionType": "message"
             },
             {
-              "actionType": "message",
+              "delaySeconds": 5,
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "「豚のテーマパーク」もあって、ハム・ベーコンはギフトに良いですよ～",
-              "delaySeconds": 5,
-              "wordParty": ""
+              "actionType": "message"
             }
           ]
         }
@@ -2549,7 +1959,7 @@
       "name": "コント:ひまり",
       "createdAt": "2025-10-01T05:15:26.841Z",
       "updatedAt": "2025-10-02T01:49:02.365Z",
-      "order": 13,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3069,8 +2479,8 @@
       "key": "sketchHimariWaffle",
       "name": "コント:ひまり:ワッフルワッフル",
       "createdAt": "2025-10-01T23:03:40.335Z",
-      "updatedAt": "2025-10-02T00:41:12.220Z",
-      "order": 14,
+      "updatedAt": "2025-10-02T07:36:05.666Z",
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3092,8 +2502,8 @@
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "toast",
-              "messageToast": "<<sketchHimariWaffle>>"
+              "messageToast": "{{select(人間の屑がこの野郎…,あーめんどくせーマジで,あほくさ,あーもうめちゃくちゃだよ,なんだこのオッサン！？,これもうわかんねぇな)}}",
+              "actionType": "toast"
             }
           ]
         }
@@ -3119,6 +2529,568 @@
       "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterSyokenTsumugi": {
+      "id": "FirstCounterSyokenTsumugi",
+      "key": "FirstCounterSyokenTsumugi",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-02T01:27:09.408Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterSyokenHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgainTsumugi": {
+      "id": "FirstCounterAgainTsumugi",
+      "key": "FirstCounterAgainTsumugi",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "key": "",
+          "name": "久しぶり",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterAgainTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "excited",
+              "messageContent": "<<FirstCounterAgainHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisitTsumugi": {
+      "id": "FirstCounterFirstVisitTsumugi",
+      "key": "FirstCounterFirstVisitTsumugi",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "key": "",
+          "name": "挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "tsumugi",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitTsumugiA>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "happy",
+              "messageContent": "<<FirstCounterFirstVisitHimariA>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTriggerTsumugi": {
+      "id": "UserCountTriggerTsumugi",
+      "key": "UserCountTriggerTsumugi",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-02T01:40:20.182Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<UserCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<CountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "da66894a-83b9-4a9c-9831-3bb547ddc19c",
+          "key": "",
+          "name": "100回コメントB",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<UserCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<UserCountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": [
+          "test"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTriggerTsumugi": {
+      "id": "StreamCountTriggerTsumugi",
+      "key": "StreamCountTriggerTsumugi",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-10-01T23:08:11.598Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#9E9E9E",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "key": "",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 5,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<StreamCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<CountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "a03da291-a272-4c62-ab98-2af8bcf32915",
+          "key": "",
+          "name": "100回コメントB",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "weight": 2,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ジャン！",
+              "characterKey": "tsumugi",
+              "iconKey": "excited",
+              "messageContent": "<<StreamCountTriggerTsumugi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "laughing",
+              "messageContent": "<<StreamCountTriggerHimari>>",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "1759298004824",
+          "key": "",
+          "name": "パインアメ",
+          "createdAt": "2025-10-01T05:53:24.824Z",
+          "updatedAt": "2025-10-01T05:53:24.824Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "…… きこえますか… きこえますか…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "みなさん… 冥鳴ひまりです…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "私は今… みなさんの心に…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "直接… 呼びかけています…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<lc>>回目のコメントは…",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 10,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さん…でした",
+              "actionType": "toast"
+            }
+          ]
+        },
+        {
+          "id": "1759298246775",
+          "key": "",
+          "name": "メタルギアソリッドⅤ",
+          "createdAt": "2025-10-01T05:57:26.775Z",
+          "updatedAt": "2025-10-01T05:57:26.775Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "いいですか、落ち着いて聞いてください",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "default",
+              "messageContent": "<<lc>>回目のコメントは<<user>>さんです、つむぎ先輩ではありません",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5.5,
+              "wordParty": "!ひらめく1",
+              "characterKey": "tsumugi",
+              "iconKey": "surprised",
+              "messageContent": "…!!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 6,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "surprised",
+              "messageContent": "まずい！",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "νοσοκόμα! νοσοκόμα! νοσοκόμα!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "sad",
+              "messageContent": "ナース!",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 9.5,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "大丈夫、大丈夫",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 11,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "blushing",
+              "messageContent": "落ち着いて、大丈夫です 休んで…",
+              "actionType": "message"
+            }
+          ]
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 0,
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
@@ -3340,34 +3312,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>っち、<<price>>ポイントのギフトまじありがと〜‼あーし達のこと、バチバチ応援よろ〜ん✨",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントのギフト、ガチ感謝〜🥺💖一緒にエンジョイしよ〜ねん🎶",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントありがとん💘あんたの応援、あーし達の元気の源って感じ〜☆",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントもくれてマジ泣ける〜😭いつも応援してくれて神すぎ‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントとかマジ嬉しすぎてテンアゲ〜🔥あーし達ももっと頑張っちゃうし〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントもらっちゃって超アゲ〜💓これからもずっと一緒に楽しも〜ねん🌈",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<price>>ポイントありがと〜‼これからの配信もギャルパワー全開で盛り上げてくから〜💥",
-          "weight": 1
-        }
+        "<<user>>っち、<<price>>ポイントのギフトまじありがと〜‼あーし達のこと、バチバチ応援よろ〜ん✨",
+        "<<user>>っち、<<price>>ポイントのギフト、ガチ感謝〜🥺💖一緒にエンジョイしよ〜ねん🎶",
+        "<<user>>っち、<<price>>ポイントありがとん💘あんたの応援、あーし達の元気の源って感じ〜☆",
+        "<<user>>っち、<<price>>ポイントもくれてマジ泣ける〜😭いつも応援してくれて神すぎ‼",
+        "<<user>>っち、<<price>>ポイントとかマジ嬉しすぎてテンアゲ〜🔥あーし達ももっと頑張っちゃうし〜‼",
+        "<<user>>っち、<<price>>ポイントもらっちゃって超アゲ〜💓これからもずっと一緒に楽しも〜ねん🌈",
+        "<<user>>っち、<<price>>ポイントありがと〜‼これからの配信もギャルパワー全開で盛り上げてくから〜💥"
       ]
     },
     "GiftLowHimari": {
@@ -3382,46 +3333,16 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "感謝感激雨あられ～!",
-          "weight": 1
-        },
-        {
-          "content": "世の中ゼニですね。",
-          "weight": 1
-        },
-        {
-          "content": "ヘブン状態!",
-          "weight": 1
-        },
-        {
-          "content": "ランランルー",
-          "weight": 1
-        },
-        {
-          "content": "おっぱいぷるんぷるん",
-          "weight": 1
-        },
-        {
-          "content": "フタエノキワミ、アッー!",
-          "weight": 1
-        },
-        {
-          "content": "ふーん、やるじゃん",
-          "weight": 1
-        },
-        {
-          "content": "びゃあ゛ぁ゛゛ぁうまひぃ゛ぃぃ゛ぃ゛",
-          "weight": 1
-        },
-        {
-          "content": "みwなwぎwっwてwきwたwww",
-          "weight": 1
-        },
-        {
-          "content": "この手に限る",
-          "weight": 1
-        }
+        "感謝感激雨あられ～!",
+        "世の中ゼニですね。",
+        "ヘブン状態!",
+        "ランランルー",
+        "おっぱいぷるんぷるん",
+        "フタエノキワミ、アッー!",
+        "ふーん、やるじゃん",
+        "びゃあ゛ぁ゛゛ぁうまひぃ゛ぃぃ゛ぃ゛",
+        "みwなwぎwっwてwきwたwww",
+        "この手に限る"
       ]
     },
     "GiftHighHimari": {
@@ -3440,38 +3361,14 @@
           "weight": 3,
           "content": "<<user>>さんありがと!みんなも、<<price>>ポイント払えば無料でギフトできるからね!"
         },
-        {
-          "content": "さらば諭吉ぃぃぃ",
-          "weight": 1
-        },
-        {
-          "content": "おそろしく速いギフト オレでなきゃ見逃しちゃうね",
-          "weight": 1
-        },
-        {
-          "content": "気持ち良かったですねえ。ほぼイキかけました。",
-          "weight": 1
-        },
-        {
-          "content": "まったく、<<price>>ポイントは最高だぜ!",
-          "weight": 1
-        },
-        {
-          "content": "親方、空から<<price>>ポイントが!",
-          "weight": 1
-        },
-        {
-          "content": "この<<price>>ギフト、頂き物なんです!",
-          "weight": 1
-        },
-        {
-          "content": "どう見ても<<price>>ポイントです。本当にありがとうございました",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>から<<price>>ポイントを貰った時も、僕は、ビックマックを食べた。",
-          "weight": 1
-        }
+        "さらば諭吉ぃぃぃ",
+        "おそろしく速いギフト オレでなきゃ見逃しちゃうね",
+        "気持ち良かったですねえ。ほぼイキかけました。",
+        "まったく、<<price>>ポイントは最高だぜ!",
+        "親方、空から<<price>>ポイントが!",
+        "この<<price>>ギフト、頂き物なんです!",
+        "どう見ても<<price>>ポイントです。本当にありがとうございました",
+        "<<user>>から<<price>>ポイントを貰った時も、僕は、ビックマックを食べた。"
       ]
     },
     "PromotionUpVoteTsugumi": {
@@ -3486,26 +3383,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "チャンネル登録＆高評価、まだの子は今すぐポチって〜💘お願いねん♪",
-          "weight": 1
-        },
-        {
-          "content": "チャンネル登録と高評価、押してくれたらマジ感謝〜💅",
-          "weight": 1
-        },
-        {
-          "content": "まだの子〜‼チャンネル登録＆高評価、ぜひお願いしちゃって〜🎀",
-          "weight": 1
-        },
-        {
-          "content": "登録＆高評価、してくれたら超うれしみ〜🌈ギャルパワーで盛り上げよ〜✨",
-          "weight": 1
-        },
-        {
-          "content": "チャンネル登録と高評価、まだなら今がチャンスだし〜🔥お願いねん💖",
-          "weight": 1
-        }
+        "チャンネル登録＆高評価、まだの子は今すぐポチって〜💘お願いねん♪",
+        "チャンネル登録と高評価、押してくれたらマジ感謝〜💅",
+        "まだの子〜‼チャンネル登録＆高評価、ぜひお願いしちゃって〜🎀",
+        "登録＆高評価、してくれたら超うれしみ〜🌈ギャルパワーで盛り上げよ〜✨",
+        "チャンネル登録と高評価、まだなら今がチャンスだし〜🔥お願いねん💖"
       ]
     },
     "PromotionUpVoteHimari": {
@@ -3528,22 +3410,10 @@
           "weight": 2,
           "content": "チャンネル登録と高評価、お願いします"
         },
-        {
-          "content": "せっかくだから、俺はこのチャンネルを選ぶぜ！",
-          "weight": 1
-        },
-        {
-          "content": "も！もり！もりあ！盛り上がりが足りない！",
-          "weight": 1
-        },
-        {
-          "content": "まだチャンネル登録してない？さてはアンチだなオメー",
-          "weight": 1
-        },
-        {
-          "content": "いい？あなた達がこの配信で楽しんでる間にも、アフリカでは1分間に60秒が過ぎているのよ！",
-          "weight": 1
-        }
+        "せっかくだから、俺はこのチャンネルを選ぶぜ！",
+        "も！もり！もりあ！盛り上がりが足りない！",
+        "まだチャンネル登録してない？さてはアンチだなオメー",
+        "いい？あなた達がこの配信で楽しんでる間にも、アフリカでは1分間に60秒が過ぎているのよ！"
       ]
     },
     "FirstCounterFirstVisitTsumugiA": {
@@ -3558,46 +3428,16 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>っち！おっかえり〜☆今日もあーしとバチバチ楽しも〜ねん💘",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち！また来てくれてありがとん🎀今日も全力でエンジョイしちゃお〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っちが来るの待ってたし〜💅今日は何して遊ぶ〜？テンアゲでいこ〜🔥",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち！また会えてマジうれしみ〜🌈今日も楽しいこといっぱい見つけよ〜ねん♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、おかえり〜✨今日も一緒にギャルパで盛り上がっちゃお〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、いつもありがとねん💖君が来るの楽しみにしてたんだよ〜♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、また来てくれて感激〜💘今日もギャルズタイム満喫しよ〜ねん‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、おかえりん🎀今日もテンションMAXで遊んじゃお〜🔥",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、また会えて超ハッピー💅今日も一緒に盛り盛りで楽しも〜ねん✨",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、来てくれてありがとん💖今日もギャルパワー全開でいくよ〜‼",
-          "weight": 1
-        }
+        "<<user>>っち！おっかえり〜☆今日もあーしとバチバチ楽しも〜ねん💘",
+        "<<user>>っち！また来てくれてありがとん🎀今日も全力でエンジョイしちゃお〜‼",
+        "<<user>>っちが来るの待ってたし〜💅今日は何して遊ぶ〜？テンアゲでいこ〜🔥",
+        "<<user>>っち！また会えてマジうれしみ〜🌈今日も楽しいこといっぱい見つけよ〜ねん♪",
+        "<<user>>っち、おかえり〜✨今日も一緒にギャルパで盛り上がっちゃお〜‼",
+        "<<user>>っち、いつもありがとねん💖君が来るの楽しみにしてたんだよ〜♪",
+        "<<user>>っち、また来てくれて感激〜💘今日もギャルズタイム満喫しよ〜ねん‼",
+        "<<user>>っち、おかえりん🎀今日もテンションMAXで遊んじゃお〜🔥",
+        "<<user>>っち、また会えて超ハッピー💅今日も一緒に盛り盛りで楽しも〜ねん✨",
+        "<<user>>っち、来てくれてありがとん💖今日もギャルパワー全開でいくよ〜‼"
       ]
     },
     "FirstCounterFirstVisitHimariA": {
@@ -3612,38 +3452,14 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "リスナー諸君、乙であります！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、にゃんぱすー",
-          "weight": 1
-        },
-        {
-          "content": "あじゃどう!",
-          "weight": 1
-        },
-        {
-          "content": "わはー",
-          "weight": 1
-        },
-        {
-          "content": "殺伐とした配信に<<user>>が!",
-          "weight": 1
-        },
-        {
-          "content": "あいさつができる人間は建設もできる！",
-          "weight": 1
-        },
-        {
-          "content": "今日も一日がんばるぞい！",
-          "weight": 1
-        },
-        {
-          "content": "ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!!",
-          "weight": 1
-        }
+        "リスナー諸君、乙であります！",
+        "<<user>>さん、にゃんぱすー",
+        "あじゃどう!",
+        "わはー",
+        "殺伐とした配信に<<user>>が!",
+        "あいさつができる人間は建設もできる！",
+        "今日も一日がんばるぞい！",
+        "ｷﾀ━━━━(ﾟ∀ﾟ)━━━━!!"
       ]
     },
     "FirstCounterAgainTsumugiA": {
@@ -3658,46 +3474,16 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>っち！おっかえり〜☆ずっと待ってたんだから〜💘安心して楽しも〜ねん♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、久しぶりじゃ〜ん‼今日もバチバチ盛り上がってこ〜🔥",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っちが戻ってきてくれて、あーし超ハッピー🎀今日は何して遊ぶ〜？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、久しぶりに会えてマジうれしみ〜💅最高の時間すごそ〜ねん✨",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、また会えてテンアゲ〜‼今日も楽しんじゃお〜🌈",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、帰ってきてくれて感激〜💖あーし達のこと忘れてなかったんだね〜♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、久々すぎて泣ける〜😭今日も一緒にエンジョイしよ〜ねん‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、また来てくれてマジ感謝〜💘あーし達の仲間に戻ってきてくれて嬉しすぎ‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、久しぶりの登場でテンション爆上げ〜🔥今日もいっぱい絡んでこ〜♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、また会えてうれしみMAX〜💅今日もギャルパワー全開でいくよ〜‼",
-          "weight": 1
-        }
+        "<<user>>っち！おっかえり〜☆ずっと待ってたんだから〜💘安心して楽しも〜ねん♪",
+        "<<user>>っち、久しぶりじゃ〜ん‼今日もバチバチ盛り上がってこ〜🔥",
+        "<<user>>っちが戻ってきてくれて、あーし超ハッピー🎀今日は何して遊ぶ〜？",
+        "<<user>>っち、久しぶりに会えてマジうれしみ〜💅最高の時間すごそ〜ねん✨",
+        "<<user>>っち、また会えてテンアゲ〜‼今日も楽しんじゃお〜🌈",
+        "<<user>>っち、帰ってきてくれて感激〜💖あーし達のこと忘れてなかったんだね〜♪",
+        "<<user>>っち、久々すぎて泣ける〜😭今日も一緒にエンジョイしよ〜ねん‼",
+        "<<user>>っち、また来てくれてマジ感謝〜💘あーし達の仲間に戻ってきてくれて嬉しすぎ‼",
+        "<<user>>っち、久しぶりの登場でテンション爆上げ〜🔥今日もいっぱい絡んでこ〜♪",
+        "<<user>>っち、また会えてうれしみMAX〜💅今日もギャルパワー全開でいくよ〜‼"
       ]
     },
     "FirstCounterAgainHimariA": {
@@ -3712,30 +3498,12 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さんが戻ってきたので再走します",
-          "weight": 1
-        },
-        {
-          "content": "とんでもねぇ、待ってたんだ",
-          "weight": 1
-        },
-        {
-          "content": "マジックカード「死者蘇生」を発動！<<user>>を特殊召喚する！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>。いま、ふたたびの配信へ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>!?破壊したはずでは...",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>、来日",
-          "weight": 1
-        }
+        "<<user>>さんが戻ってきたので再走します",
+        "とんでもねぇ、待ってたんだ",
+        "マジックカード「死者蘇生」を発動！<<user>>を特殊召喚する！",
+        "<<user>>。いま、ふたたびの配信へ。",
+        "<<user>>!?破壊したはずでは...",
+        "<<user>>、来日"
       ]
     },
     "FirstCounterSyokenTsumugiA": {
@@ -3750,22 +3518,10 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "はじめまして〜☆あーしは春日部つむぎっち💘一緒にバチバチ楽しい時間すごそ〜ねん♪",
-          "weight": 1
-        },
-        {
-          "content": "ようこそ〜☆あーしは春日部つむぎっち🌈今日はいっぱい楽しんでってくれたらマジ感謝〜‼",
-          "weight": 1
-        },
-        {
-          "content": "来てくれてありがとん♪あーしは春日部つむぎっち💅今日からあんたもあーし達の仲間だかんね〜✨",
-          "weight": 1
-        },
-        {
-          "content": "会えてうれしみ〜☆あーしは春日部つむぎっち🎀いっぱい遊んでくれたら超アゲ〜‼",
-          "weight": 1
-        }
+        "はじめまして〜☆あーしは春日部つむぎっち💘一緒にバチバチ楽しい時間すごそ〜ねん♪",
+        "ようこそ〜☆あーしは春日部つむぎっち🌈今日はいっぱい楽しんでってくれたらマジ感謝〜‼",
+        "来てくれてありがとん♪あーしは春日部つむぎっち💅今日からあんたもあーし達の仲間だかんね〜✨",
+        "会えてうれしみ〜☆あーしは春日部つむぎっち🎀いっぱい遊んでくれたら超アゲ〜‼"
       ]
     },
     "FirstCounterSyokenHimariA": {
@@ -3780,38 +3536,14 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "私は冥鳴ひまり。18歳、死神です",
-          "weight": 1
-        },
-        {
-          "content": "私は冥鳴ひまり。<<user>>は初見、はっきりわかんだね",
-          "weight": 1
-        },
-        {
-          "content": "私は冥鳴ひまり。これだけははっきりと真実を伝えたかった",
-          "weight": 1
-        },
-        {
-          "content": "うぃーーす！どうもーひまりでーす",
-          "weight": 1
-        },
-        {
-          "content": "可愛い女の子かと思った？ 残念！ 冥鳴ひまりでした！",
-          "weight": 1
-        },
-        {
-          "content": "私は冥鳴ひまり。すいません。三色チーズ牛丼の特盛りに温玉付きをお願いします",
-          "weight": 1
-        },
-        {
-          "content": "私は冥鳴ひまり。初見さん、私の好きな言葉です。",
-          "weight": 1
-        },
-        {
-          "content": "私は冥鳴ひまり。当配信は誰でもウェルカム",
-          "weight": 1
-        }
+        "私は冥鳴ひまり。18歳、死神です",
+        "私は冥鳴ひまり。<<user>>は初見、はっきりわかんだね",
+        "私は冥鳴ひまり。これだけははっきりと真実を伝えたかった",
+        "うぃーーす！どうもーひまりでーす",
+        "可愛い女の子かと思った？ 残念！ 冥鳴ひまりでした！",
+        "私は冥鳴ひまり。すいません。三色チーズ牛丼の特盛りに温玉付きをお願いします",
+        "私は冥鳴ひまり。初見さん、私の好きな言葉です。",
+        "私は冥鳴ひまり。当配信は誰でもウェルカム"
       ]
     },
     "BigBangDecoG": {
@@ -3826,206 +3558,56 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "光彩",
-          "weight": 1
-        },
-        {
-          "content": "星霜",
-          "weight": 1
-        },
-        {
-          "content": "金星",
-          "weight": 1
-        },
-        {
-          "content": "銀河",
-          "weight": 1
-        },
-        {
-          "content": "宝石",
-          "weight": 1
-        },
-        {
-          "content": "花火",
-          "weight": 1
-        },
-        {
-          "content": "流星",
-          "weight": 1
-        },
-        {
-          "content": "月光",
-          "weight": 1
-        },
-        {
-          "content": "朝陽",
-          "weight": 1
-        },
-        {
-          "content": "陽光",
-          "weight": 1
-        },
-        {
-          "content": "花園",
-          "weight": 1
-        },
-        {
-          "content": "春風",
-          "weight": 1
-        },
-        {
-          "content": "香気",
-          "weight": 1
-        },
-        {
-          "content": "彩雲",
-          "weight": 1
-        },
-        {
-          "content": "虹彩",
-          "weight": 1
-        },
-        {
-          "content": "星辰",
-          "weight": 1
-        },
-        {
-          "content": "花鳥",
-          "weight": 1
-        },
-        {
-          "content": "錦繍",
-          "weight": 1
-        },
-        {
-          "content": "絢爛",
-          "weight": 1
-        },
-        {
-          "content": "芳香",
-          "weight": 1
-        },
-        {
-          "content": "金銀",
-          "weight": 1
-        },
-        {
-          "content": "宝冠",
-          "weight": 1
-        },
-        {
-          "content": "花束",
-          "weight": 1
-        },
-        {
-          "content": "光輪",
-          "weight": 1
-        },
-        {
-          "content": "月華",
-          "weight": 1
-        },
-        {
-          "content": "瑞光",
-          "weight": 1
-        },
-        {
-          "content": "神託",
-          "weight": 1
-        },
-        {
-          "content": "法力",
-          "weight": 1
-        },
-        {
-          "content": "金剛",
-          "weight": 1
-        },
-        {
-          "content": "浄界",
-          "weight": 1
-        },
-        {
-          "content": "極光",
-          "weight": 1
-        },
-        {
-          "content": "宝玉",
-          "weight": 1
-        },
-        {
-          "content": "琉璃",
-          "weight": 1
-        },
-        {
-          "content": "水晶",
-          "weight": 1
-        },
-        {
-          "content": "輝星",
-          "weight": 1
-        },
-        {
-          "content": "瑞雲",
-          "weight": 1
-        },
-        {
-          "content": "霞光",
-          "weight": 1
-        },
-        {
-          "content": "金波",
-          "weight": 1
-        },
-        {
-          "content": "銀波",
-          "weight": 1
-        },
-        {
-          "content": "虹橋",
-          "weight": 1
-        },
-        {
-          "content": "星斗",
-          "weight": 1
-        },
-        {
-          "content": "瓊花",
-          "weight": 1
-        },
-        {
-          "content": "珠玉",
-          "weight": 1
-        },
-        {
-          "content": "紫雲",
-          "weight": 1
-        },
-        {
-          "content": "金輪",
-          "weight": 1
-        },
-        {
-          "content": "玉座",
-          "weight": 1
-        },
-        {
-          "content": "瑞穂",
-          "weight": 1
-        },
-        {
-          "content": "霊峰",
-          "weight": 1
-        },
-        {
-          "content": "慧光",
-          "weight": 1
-        },
-        {
-          "content": "琴瑟",
-          "weight": 1
-        }
+        "光彩",
+        "星霜",
+        "金星",
+        "銀河",
+        "宝石",
+        "花火",
+        "流星",
+        "月光",
+        "朝陽",
+        "陽光",
+        "花園",
+        "春風",
+        "香気",
+        "彩雲",
+        "虹彩",
+        "星辰",
+        "花鳥",
+        "錦繍",
+        "絢爛",
+        "芳香",
+        "金銀",
+        "宝冠",
+        "花束",
+        "光輪",
+        "月華",
+        "瑞光",
+        "神託",
+        "法力",
+        "金剛",
+        "浄界",
+        "極光",
+        "宝玉",
+        "琉璃",
+        "水晶",
+        "輝星",
+        "瑞雲",
+        "霞光",
+        "金波",
+        "銀波",
+        "虹橋",
+        "星斗",
+        "瓊花",
+        "珠玉",
+        "紫雲",
+        "金輪",
+        "玉座",
+        "瑞穂",
+        "霊峰",
+        "慧光",
+        "琴瑟"
       ]
     },
     "BigBangDecoB": {
@@ -4040,186 +3622,51 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "魑魅",
-          "weight": 1
-        },
-        {
-          "content": "魍魎",
-          "weight": 1
-        },
-        {
-          "content": "修羅",
-          "weight": 1
-        },
-        {
-          "content": "餓鬼",
-          "weight": 1
-        },
-        {
-          "content": "怨霊",
-          "weight": 1
-        },
-        {
-          "content": "狂気",
-          "weight": 1
-        },
-        {
-          "content": "呪詛",
-          "weight": 1
-        },
-        {
-          "content": "暴虐",
-          "weight": 1
-        },
-        {
-          "content": "魔境",
-          "weight": 1
-        },
-        {
-          "content": "暗黒",
-          "weight": 1
-        },
-        {
-          "content": "狂乱",
-          "weight": 1
-        },
-        {
-          "content": "邪道",
-          "weight": 1
-        },
-        {
-          "content": "冥界",
-          "weight": 1
-        },
-        {
-          "content": "地獄",
-          "weight": 1
-        },
-        {
-          "content": "暴走",
-          "weight": 1
-        },
-        {
-          "content": "狂騒",
-          "weight": 1
-        },
-        {
-          "content": "鬼哭",
-          "weight": 1
-        },
-        {
-          "content": "異才",
-          "weight": 1
-        },
-        {
-          "content": "鬼才",
-          "weight": 1
-        },
-        {
-          "content": "魔性",
-          "weight": 1
-        },
-        {
-          "content": "妖艶",
-          "weight": 1
-        },
-        {
-          "content": "毒舌",
-          "weight": 1
-        },
-        {
-          "content": "怪異",
-          "weight": 1
-        },
-        {
-          "content": "幻影",
-          "weight": 1
-        },
-        {
-          "content": "妖気",
-          "weight": 1
-        },
-        {
-          "content": "邪気",
-          "weight": 1
-        },
-        {
-          "content": "暗躍",
-          "weight": 1
-        },
-        {
-          "content": "異形",
-          "weight": 1
-        },
-        {
-          "content": "禍福",
-          "weight": 1
-        },
-        {
-          "content": "妖術",
-          "weight": 1
-        },
-        {
-          "content": "毒気",
-          "weight": 1
-        },
-        {
-          "content": "鬼面",
-          "weight": 1
-        },
-        {
-          "content": "羅刹",
-          "weight": 1
-        },
-        {
-          "content": "夜叉",
-          "weight": 1
-        },
-        {
-          "content": "阿鼻",
-          "weight": 1
-        },
-        {
-          "content": "怨念",
-          "weight": 1
-        },
-        {
-          "content": "凶悪",
-          "weight": 1
-        },
-        {
-          "content": "妖怪",
-          "weight": 1
-        },
-        {
-          "content": "魔物",
-          "weight": 1
-        },
-        {
-          "content": "凶暴",
-          "weight": 1
-        },
-        {
-          "content": "邪悪",
-          "weight": 1
-        },
-        {
-          "content": "禍々",
-          "weight": 1
-        },
-        {
-          "content": "驚愕",
-          "weight": 1
-        },
-        {
-          "content": "轟音",
-          "weight": 1
-        },
-        {
-          "content": "轟烈",
-          "weight": 1
-        }
+        "魑魅",
+        "魍魎",
+        "修羅",
+        "餓鬼",
+        "怨霊",
+        "狂気",
+        "呪詛",
+        "暴虐",
+        "魔境",
+        "暗黒",
+        "狂乱",
+        "邪道",
+        "冥界",
+        "地獄",
+        "暴走",
+        "狂騒",
+        "鬼哭",
+        "異才",
+        "鬼才",
+        "魔性",
+        "妖艶",
+        "毒舌",
+        "怪異",
+        "幻影",
+        "妖気",
+        "邪気",
+        "暗躍",
+        "異形",
+        "禍福",
+        "妖術",
+        "毒気",
+        "鬼面",
+        "羅刹",
+        "夜叉",
+        "阿鼻",
+        "怨念",
+        "凶悪",
+        "妖怪",
+        "魔物",
+        "凶暴",
+        "邪悪",
+        "禍々",
+        "驚愕",
+        "轟音",
+        "轟烈"
       ]
     },
     "BigBangLottery": {
@@ -4428,34 +3875,13 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "【大吉】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【吉】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【中吉】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【小吉】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【末吉】希少度は3.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【凶】希少度は2.{{rand(10,99)}}",
-          "weight": 1
-        },
-        {
-          "content": "【大凶】希少度は1.{{rand(10,99)}}",
-          "weight": 1
-        }
+        "【大吉】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
+        "【吉】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
+        "【中吉】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
+        "【小吉】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
+        "【末吉】希少度は3.{{rand(10,99)}}",
+        "【凶】希少度は2.{{rand(10,99)}}",
+        "【大凶】希少度は1.{{rand(10,99)}}"
       ]
     },
     "BigBangG1": {
@@ -4874,26 +4300,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "今<<viewer>>人が見てくれてる〜💘ありがとん♪みんな最高〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<viewer>>人も視聴中とかテンアゲすぎ〜🔥マジ感謝〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<viewer>>人が見てくれてて超うれしみ〜🎀ありがと〜‼",
-          "weight": 1
-        },
-        {
-          "content": "いま<<viewer>>人も見てくれてるよん💅ありがとんねん♪",
-          "weight": 1
-        },
-        {
-          "content": "<<viewer>>人が集まってくれて感激〜🌈ありがと〜‼",
-          "weight": 1
-        }
+        "今<<viewer>>人が見てくれてる〜💘ありがとん♪みんな最高〜‼",
+        "<<viewer>>人も視聴中とかテンアゲすぎ〜🔥マジ感謝〜‼",
+        "<<viewer>>人が見てくれてて超うれしみ〜🎀ありがと〜‼",
+        "いま<<viewer>>人も見てくれてるよん💅ありがとんねん♪",
+        "<<viewer>>人が集まってくれて感激〜🌈ありがと〜‼"
       ]
     },
     "ViewCountDisplayHimariA": {
@@ -4912,26 +4323,11 @@
           "weight": 3,
           "content": "<<viewer>>人が視聴中。チャンネル登録と高評価、お願いします。"
         },
-        {
-          "content": "<<viewer>>人が視聴中。ご視聴ありがとうございます。",
-          "weight": 1
-        },
-        {
-          "content": "<<viewer>>人が視聴中。きさま!見ているなッ!",
-          "weight": 1
-        },
-        {
-          "content": "そんな視聴数(<<viewer>>人)で大丈夫か？一番いい視聴数を頼む。",
-          "weight": 1
-        },
-        {
-          "content": "<<viewer>>人が視聴中。ﾅｽﾞｪﾐﾃﾙﾝﾃﾞｨｽ!!",
-          "weight": 1
-        },
-        {
-          "content": "うわっ！前からリスナー(<<viewer>>人)が！！",
-          "weight": 1
-        }
+        "<<viewer>>人が視聴中。ご視聴ありがとうございます。",
+        "<<viewer>>人が視聴中。きさま!見ているなッ!",
+        "そんな視聴数(<<viewer>>人)で大丈夫か？一番いい視聴数を頼む。",
+        "<<viewer>>人が視聴中。ﾅｽﾞｪﾐﾃﾙﾝﾃﾞｨｽ!!",
+        "うわっ！前からリスナー(<<viewer>>人)が！！"
       ]
     },
     "ViewCountDisplayTsumugiB": {
@@ -4946,26 +4342,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "高評価<<upVote>>だよ〜💘まだの子は今すぐポチって〜‼",
-          "weight": 1
-        },
-        {
-          "content": "いま<<upVote>>高評価もらってる〜🎀ありがとん♪押すなら今しかないっしょ〜‼",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>とかマジ感謝〜💅まだの子はポチってこ〜🔥",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>いってるよん🌈押してくれたら超うれしみ〜‼",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>ありがと〜✨今すぐポチってくれたらマジ感激〜💖",
-          "weight": 1
-        }
+        "高評価<<upVote>>だよ〜💘まだの子は今すぐポチって〜‼",
+        "いま<<upVote>>高評価もらってる〜🎀ありがとん♪押すなら今しかないっしょ〜‼",
+        "高評価<<upVote>>とかマジ感謝〜💅まだの子はポチってこ〜🔥",
+        "高評価<<upVote>>いってるよん🌈押してくれたら超うれしみ〜‼",
+        "高評価<<upVote>>ありがと〜✨今すぐポチってくれたらマジ感激〜💖"
       ]
     },
     "ViewCountDisplayHimariB": {
@@ -4980,30 +4361,12 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "ガバったので高評価<<upVote>>です。",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>、さすがにこれはドヤ顔です",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>、押してみよう…ポチッとな",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>、迷わず押せよ 押せばわかるさ",
-          "weight": 1
-        },
-        {
-          "content": "いいや!「限界」だッ!押すねッ!高評価<<upVote>>!",
-          "weight": 1
-        },
-        {
-          "content": "高評価<<upVote>>、押すなよ!押すなよ!絶対に押すなよ!",
-          "weight": 1
-        },
+        "ガバったので高評価<<upVote>>です。",
+        "高評価<<upVote>>、さすがにこれはドヤ顔です",
+        "高評価<<upVote>>、押してみよう…ポチッとな",
+        "高評価<<upVote>>、迷わず押せよ 押せばわかるさ",
+        "いいや!「限界」だッ!押すねッ!高評価<<upVote>>!",
+        "高評価<<upVote>>、押すなよ!押すなよ!絶対に押すなよ!",
         {
           "weight": 3,
           "content": "高評価<<upVote>>、推しと高評価は押せる時に押せ"
@@ -5022,26 +4385,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "この配信の<<lc>>コメ目は、<<user>>っちだよ〜ん💘ナイス絡みありがとん♪",
-          "weight": 1
-        },
-        {
-          "content": "<<lc>>回目のコメント、キメてくれたのは<<user>>っち〜‼マジ感謝〜💅",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っちが<<lc>>コメ目とか、テンアゲすぎ〜🔥あーし達の神サポって感じ〜✨",
-          "weight": 1
-        },
-        {
-          "content": "この配信の<<lc>>コメ目、バッチリ決めたのは<<user>>っち🎀いつもありがと〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<lc>>回目のコメントは<<user>>っち💖今日もギャルパワー全開で盛り上げてくれて感激〜🌈",
-          "weight": 1
-        }
+        "この配信の<<lc>>コメ目は、<<user>>っちだよ〜ん💘ナイス絡みありがとん♪",
+        "<<lc>>回目のコメント、キメてくれたのは<<user>>っち〜‼マジ感謝〜💅",
+        "<<user>>っちが<<lc>>コメ目とか、テンアゲすぎ〜🔥あーし達の神サポって感じ〜✨",
+        "この配信の<<lc>>コメ目、バッチリ決めたのは<<user>>っち🎀いつもありがと〜‼",
+        "<<lc>>回目のコメントは<<user>>っち💖今日もギャルパワー全開で盛り上げてくれて感激〜🌈"
       ]
     },
     "UserCountTriggerTsumugi": {
@@ -5056,26 +4404,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>っちのコメント、ついに<<tc>>回いっちゃったし〜‼マジありがとん💘",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、コメント<<tc>>回とかヤバすぎ〜🔥いつも絡んでくれて感謝しかない〜‼",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っちのコメント、もう<<tc>>回だよん🎀あーし達の神サポって感じ〜💅",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、<<tc>>回もコメントしてくれて超うれしみ〜🌈これからもいっぱい絡も〜ねん♪",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>っち、コメント<<tc>>回とかテンアゲすぎ〜✨いつもありがと〜‼",
-          "weight": 1
-        }
+        "<<user>>っちのコメント、ついに<<tc>>回いっちゃったし〜‼マジありがとん💘",
+        "<<user>>っち、コメント<<tc>>回とかヤバすぎ〜🔥いつも絡んでくれて感謝しかない〜‼",
+        "<<user>>っちのコメント、もう<<tc>>回だよん🎀あーし達の神サポって感じ〜💅",
+        "<<user>>っち、<<tc>>回もコメントしてくれて超うれしみ〜🌈これからもいっぱい絡も〜ねん♪",
+        "<<user>>っち、コメント<<tc>>回とかテンアゲすぎ〜✨いつもありがと〜‼"
       ]
     },
     "CountTriggerHimari": {
@@ -5102,42 +4435,18 @@
           "weight": 3,
           "content": "やったぜ。"
         },
-        {
-          "content": "あじゃどう！",
-          "weight": 1
-        },
-        {
-          "content": "税理士一発合格、早稲田卒、コメ<<tc>>、都内<<lc>>階タワマン住みですか？",
-          "weight": 1
-        },
-        {
-          "content": "実に面白い",
-          "weight": 1
-        },
+        "あじゃどう！",
+        "税理士一発合格、早稲田卒、コメ<<tc>>、都内<<lc>>階タワマン住みですか？",
+        "実に面白い",
         {
           "weight": 2,
           "content": "ふーん、やるじゃん"
         },
-        {
-          "content": "ふーん、えっちじゃん",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>ゥゥ!!何やってんだお前ェ!!",
-          "weight": 1
-        },
-        {
-          "content": "ブラボー！",
-          "weight": 1
-        },
-        {
-          "content": "話は聞かせてもらった 人類は滅亡する!!",
-          "weight": 1
-        },
-        {
-          "content": "なんだこれはたまげたなぁ",
-          "weight": 1
-        }
+        "ふーん、えっちじゃん",
+        "<<user>>ゥゥ!!何やってんだお前ェ!!",
+        "ブラボー！",
+        "話は聞かせてもらった 人類は滅亡する!!",
+        "なんだこれはたまげたなぁ"
       ]
     },
     "UserCountTriggerHimari": {
@@ -5152,30 +4461,12 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "こりゃあ『<<tc>>コメント』でよいですね！",
-          "weight": 1
-        },
-        {
-          "content": "<<tc>>コメ！？うせやろ",
-          "weight": 1
-        },
-        {
-          "content": "素晴らしい！！最高の<<tc>>回だとは思わんかね！？",
-          "weight": 1
-        },
-        {
-          "content": "祝福しろ <<user>>にはそれが必要だ",
-          "weight": 1
-        },
-        {
-          "content": "Congratulation! Congratulation! おめでとう……！",
-          "weight": 1
-        },
-        {
-          "content": "祝　っ　て　や　る",
-          "weight": 1
-        }
+        "こりゃあ『<<tc>>コメント』でよいですね！",
+        "<<tc>>コメ！？うせやろ",
+        "素晴らしい！！最高の<<tc>>回だとは思わんかね！？",
+        "祝福しろ <<user>>にはそれが必要だ",
+        "Congratulation! Congratulation! おめでとう……！",
+        "祝　っ　て　や　る"
       ]
     },
     "StreamCountTriggerHimari": {
@@ -5190,26 +4481,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<lc>>回踏んだのか、俺以外のヤツが…",
-          "weight": 1
-        },
-        {
-          "content": "<<lc>>回だ？貴様この野郎",
-          "weight": 1
-        },
-        {
-          "content": "<<lc>>回――　なんと聞こえのいい言葉か――！！",
-          "weight": 1
-        },
-        {
-          "content": "白って<<lc>>色あんねん",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>の<<lc>>回気持ちよすぎだろ！",
-          "weight": 1
-        }
+        "<<lc>>回踏んだのか、俺以外のヤツが…",
+        "<<lc>>回だ？貴様この野郎",
+        "<<lc>>回――　なんと聞こえのいい言葉か――！！",
+        "白って<<lc>>色あんねん",
+        "<<user>>の<<lc>>回気持ちよすぎだろ！"
       ]
     },
     "TarotCard": {
@@ -5224,182 +4500,50 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "【愚者】(正位置) <<TarotCardFool_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【愚者】(逆位置) <<TarotCardFool_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【魔術師】(正位置) <<TarotCardMagician_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【魔術師】(逆位置) <<TarotCardMagician_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【女教皇】(正位置) <<TarotCardHighPriestess_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【女教皇】(逆位置) <<TarotCardHighPriestess_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【女帝】(正位置) <<TarotCardEmpress_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【女帝】(逆位置) <<TarotCardEmpress_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【皇帝】(正位置) <<TarotCardEmperor_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【皇帝】(逆位置) <<TarotCardEmperor_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【法王】(正位置) <<TarotCardHierophant_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【法王】(逆位置) <<TarotCardHierophant_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【恋人】(正位置) <<TarotCardLovers_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【恋人】(逆位置) <<TarotCardLovers_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【戦車】(正位置) <<TarotCardChariot_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【戦車】(逆位置) <<TarotCardChariot_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【力】(正位置) <<TarotCardStrength_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【力】(逆位置) <<TarotCardStrength_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【隠者】(正位置) <<TarotCardHermit_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【隠者】(逆位置) <<TarotCardHermit_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【運命の輪】(正位置) <<TarotCardWheelOfFortune_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【運命の輪】(逆位置) <<TarotCardWheelOfFortune_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【正義】(正位置) <<TarotCardJustice_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【正義】(逆位置) <<TarotCardJustice_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【吊るされた男】(正位置) <<TarotCardHangedMan_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【吊るされた男】(逆位置) <<TarotCardHangedMan_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【死神】(正位置) <<TarotCardDeath_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【死神】(逆位置) <<TarotCardDeath_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【節制】(正位置) <<TarotCardTemperance_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【節制】(逆位置) <<TarotCardTemperance_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【悪魔】(正位置) <<TarotCardDevil_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【悪魔】(逆位置) <<TarotCardDevil_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【塔】(正位置) <<TarotCardTower_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【塔】(逆位置) <<TarotCardTower_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【星】(正位置) <<TarotCardStar_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【星】(逆位置) <<TarotCardStar_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【月】(正位置) <<TarotCardMoon_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【月】(逆位置) <<TarotCardMoon_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【太陽】(正位置) <<TarotCardSun_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【太陽】(逆位置) <<TarotCardSun_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【審判】(正位置) <<TarotCardJudgement_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【審判】(逆位置) <<TarotCardJudgement_R>>",
-          "weight": 1
-        },
-        {
-          "content": "【世界】(正位置) <<TarotCardWorld_U>>",
-          "weight": 1
-        },
-        {
-          "content": "【世界】(逆位置) <<TarotCardWorld_R>>",
-          "weight": 1
-        }
+        "【愚者】(正位置) <<TarotCardFool_U>>",
+        "【愚者】(逆位置) <<TarotCardFool_R>>",
+        "【魔術師】(正位置) <<TarotCardMagician_U>>",
+        "【魔術師】(逆位置) <<TarotCardMagician_R>>",
+        "【女教皇】(正位置) <<TarotCardHighPriestess_U>>",
+        "【女教皇】(逆位置) <<TarotCardHighPriestess_R>>",
+        "【女帝】(正位置) <<TarotCardEmpress_U>>",
+        "【女帝】(逆位置) <<TarotCardEmpress_R>>",
+        "【皇帝】(正位置) <<TarotCardEmperor_U>>",
+        "【皇帝】(逆位置) <<TarotCardEmperor_R>>",
+        "【法王】(正位置) <<TarotCardHierophant_U>>",
+        "【法王】(逆位置) <<TarotCardHierophant_R>>",
+        "【恋人】(正位置) <<TarotCardLovers_U>>",
+        "【恋人】(逆位置) <<TarotCardLovers_R>>",
+        "【戦車】(正位置) <<TarotCardChariot_U>>",
+        "【戦車】(逆位置) <<TarotCardChariot_R>>",
+        "【力】(正位置) <<TarotCardStrength_U>>",
+        "【力】(逆位置) <<TarotCardStrength_R>>",
+        "【隠者】(正位置) <<TarotCardHermit_U>>",
+        "【隠者】(逆位置) <<TarotCardHermit_R>>",
+        "【運命の輪】(正位置) <<TarotCardWheelOfFortune_U>>",
+        "【運命の輪】(逆位置) <<TarotCardWheelOfFortune_R>>",
+        "【正義】(正位置) <<TarotCardJustice_U>>",
+        "【正義】(逆位置) <<TarotCardJustice_R>>",
+        "【吊るされた男】(正位置) <<TarotCardHangedMan_U>>",
+        "【吊るされた男】(逆位置) <<TarotCardHangedMan_R>>",
+        "【死神】(正位置) <<TarotCardDeath_U>>",
+        "【死神】(逆位置) <<TarotCardDeath_R>>",
+        "【節制】(正位置) <<TarotCardTemperance_U>>",
+        "【節制】(逆位置) <<TarotCardTemperance_R>>",
+        "【悪魔】(正位置) <<TarotCardDevil_U>>",
+        "【悪魔】(逆位置) <<TarotCardDevil_R>>",
+        "【塔】(正位置) <<TarotCardTower_U>>",
+        "【塔】(逆位置) <<TarotCardTower_R>>",
+        "【星】(正位置) <<TarotCardStar_U>>",
+        "【星】(逆位置) <<TarotCardStar_R>>",
+        "【月】(正位置) <<TarotCardMoon_U>>",
+        "【月】(逆位置) <<TarotCardMoon_R>>",
+        "【太陽】(正位置) <<TarotCardSun_U>>",
+        "【太陽】(逆位置) <<TarotCardSun_R>>",
+        "【審判】(正位置) <<TarotCardJudgement_U>>",
+        "【審判】(逆位置) <<TarotCardJudgement_R>>",
+        "【世界】(正位置) <<TarotCardWorld_U>>",
+        "【世界】(逆位置) <<TarotCardWorld_R>>"
       ]
     },
     "TarotCardFool_U": {
@@ -5414,26 +4558,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
-          "weight": 1
-        },
-        {
-          "content": "好奇心が運を導くとき。小さな冒険心が大きな成果へつながり、笑顔の輪を広げます。",
-          "weight": 1
-        },
-        {
-          "content": "今は自由な発想が吉。常識を超えた選択が、あなたの未来をより豊かに彩るでしょう。",
-          "weight": 1
-        },
-        {
-          "content": "固定観念を外すほどに道は開けます。未知を楽しむ姿勢が幸運を引き寄せるでしょう。",
-          "weight": 1
-        },
-        {
-          "content": "軽やかに歩み出せば幸運到来。小さな無鉄砲さも新たな可能性の扉を開いてくれます。",
-          "weight": 1
-        }
+        "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
+        "好奇心が運を導くとき。小さな冒険心が大きな成果へつながり、笑顔の輪を広げます。",
+        "今は自由な発想が吉。常識を超えた選択が、あなたの未来をより豊かに彩るでしょう。",
+        "固定観念を外すほどに道は開けます。未知を楽しむ姿勢が幸運を引き寄せるでしょう。",
+        "軽やかに歩み出せば幸運到来。小さな無鉄砲さも新たな可能性の扉を開いてくれます。"
       ]
     },
     "TarotCardFool_R": {
@@ -5448,26 +4577,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
-          "weight": 1
-        },
-        {
-          "content": "誘いに流されると後悔しやすいとき。自分の直感を信じ、軽はずみな決断を避けましょう。",
-          "weight": 1
-        },
-        {
-          "content": "現実を見失いやすいとき。夢や理想に溺れず、足元を固めることで運気が整います。",
-          "weight": 1
-        },
-        {
-          "content": "不安定な計画は挫折の元。小さな確認を怠らないことが、未来を守る力になります。",
-          "weight": 1
-        },
-        {
-          "content": "思いつきで動けば混乱を招く恐れ。慎重な姿勢が新たなトラブルを防ぐでしょう。",
-          "weight": 1
-        }
+        "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
+        "誘いに流されると後悔しやすいとき。自分の直感を信じ、軽はずみな決断を避けましょう。",
+        "現実を見失いやすいとき。夢や理想に溺れず、足元を固めることで運気が整います。",
+        "不安定な計画は挫折の元。小さな確認を怠らないことが、未来を守る力になります。",
+        "思いつきで動けば混乱を招く恐れ。慎重な姿勢が新たなトラブルを防ぐでしょう。"
       ]
     },
     "TarotCardMagician_U": {
@@ -5482,26 +4596,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
-          "weight": 1
-        },
-        {
-          "content": "今は言葉と行動が力になる時期。自信を持てば、新しい出会いや好機を呼び込みます。",
-          "weight": 1
-        },
-        {
-          "content": "眠っていた能力が花開く兆し。学んだことを活かせば、成果がすぐ目に見えてきます。",
-          "weight": 1
-        },
-        {
-          "content": "意欲と工夫が成功の鍵。小さな工夫を積み重ねるほど、運気が着実に高まります。",
-          "weight": 1
-        },
-        {
-          "content": "始める勇気が幸運を招くとき。思い切りのよい行動が未来を切り拓いていきます。",
-          "weight": 1
-        }
+        "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
+        "今は言葉と行動が力になる時期。自信を持てば、新しい出会いや好機を呼び込みます。",
+        "眠っていた能力が花開く兆し。学んだことを活かせば、成果がすぐ目に見えてきます。",
+        "意欲と工夫が成功の鍵。小さな工夫を積み重ねるほど、運気が着実に高まります。",
+        "始める勇気が幸運を招くとき。思い切りのよい行動が未来を切り拓いていきます。"
       ]
     },
     "TarotCardMagician_R": {
@@ -5516,26 +4615,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
-          "weight": 1
-        },
-        {
-          "content": "話がすれ違いやすい時期。言葉の使い方に注意しないと、誤解から信頼を失います。",
-          "weight": 1
-        },
-        {
-          "content": "実力不足が露呈しやすい兆し。準備不足を補えば、挽回のチャンスは訪れます。",
-          "weight": 1
-        },
-        {
-          "content": "器用貧乏になりがちです。焦らず、一つのことを丁寧に磨けば運は安定します。",
-          "weight": 1
-        },
-        {
-          "content": "計画の甘さに注意。思いつきの行動より、地道な努力が未来を守るでしょう。",
-          "weight": 1
-        }
+        "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
+        "話がすれ違いやすい時期。言葉の使い方に注意しないと、誤解から信頼を失います。",
+        "実力不足が露呈しやすい兆し。準備不足を補えば、挽回のチャンスは訪れます。",
+        "器用貧乏になりがちです。焦らず、一つのことを丁寧に磨けば運は安定します。",
+        "計画の甘さに注意。思いつきの行動より、地道な努力が未来を守るでしょう。"
       ]
     },
     "TarotCardHighPriestess_U": {
@@ -5550,26 +4634,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
-          "weight": 1
-        },
-        {
-          "content": "心を落ち着ければ道が見えるとき。周囲に流されず、内なる声に耳を傾けましょう。",
-          "weight": 1
-        },
-        {
-          "content": "学びや探求が実を結ぶ兆し。小さな努力が積み重なり、確かな実力に変わります。",
-          "weight": 1
-        },
-        {
-          "content": "冷静な視点が吉。感情を抑えて観察すれば、真実が自然と浮かび上がります。",
-          "weight": 1
-        },
-        {
-          "content": "今は慎重さが幸運の鍵。焦らず待つ姿勢が、最善のチャンスを引き寄せるでしょう。",
-          "weight": 1
-        }
+        "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
+        "心を落ち着ければ道が見えるとき。周囲に流されず、内なる声に耳を傾けましょう。",
+        "学びや探求が実を結ぶ兆し。小さな努力が積み重なり、確かな実力に変わります。",
+        "冷静な視点が吉。感情を抑えて観察すれば、真実が自然と浮かび上がります。",
+        "今は慎重さが幸運の鍵。焦らず待つ姿勢が、最善のチャンスを引き寄せるでしょう。"
       ]
     },
     "TarotCardHighPriestess_R": {
@@ -5584,26 +4653,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "疑い深さが運を遠ざける兆し。人を信じることで思わぬ助けを得られるでしょう。",
-          "weight": 1
-        },
-        {
-          "content": "孤立しやすい時期。自分の世界に閉じこもらず、交流を大切にすれば運が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "知識を振りかざすと誤解を招きます。柔らかな言葉が信頼を守ってくれます。",
-          "weight": 1
-        },
-        {
-          "content": "迷いに足を取られやすいとき。小さな行動が霧を晴らし、進むべき道を示します。",
-          "weight": 1
-        }
+        "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
+        "疑い深さが運を遠ざける兆し。人を信じることで思わぬ助けを得られるでしょう。",
+        "孤立しやすい時期。自分の世界に閉じこもらず、交流を大切にすれば運が開けます。",
+        "知識を振りかざすと誤解を招きます。柔らかな言葉が信頼を守ってくれます。",
+        "迷いに足を取られやすいとき。小さな行動が霧を晴らし、進むべき道を示します。"
       ]
     },
     "TarotCardEmpress_U": {
@@ -5618,26 +4672,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
-          "weight": 1
-        },
-        {
-          "content": "努力が実りやすい時期。温かな気持ちで接するほど、成果と信頼が集まります。",
-          "weight": 1
-        },
-        {
-          "content": "美や感性が磨かれるとき。小さな楽しみが心を潤し、幸運の芽を育てます。",
-          "weight": 1
-        },
-        {
-          "content": "家庭や仲間との調和が吉。優しさを惜しまなければ、安心できる場が広がります。",
-          "weight": 1
-        },
-        {
-          "content": "豊かな実りの兆し。育んできたことが花開き、嬉しい結果として戻ってきます。",
-          "weight": 1
-        }
+        "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
+        "努力が実りやすい時期。温かな気持ちで接するほど、成果と信頼が集まります。",
+        "美や感性が磨かれるとき。小さな楽しみが心を潤し、幸運の芽を育てます。",
+        "家庭や仲間との調和が吉。優しさを惜しまなければ、安心できる場が広がります。",
+        "豊かな実りの兆し。育んできたことが花開き、嬉しい結果として戻ってきます。"
       ]
     },
     "TarotCardEmpress_R": {
@@ -5652,26 +4691,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
-          "weight": 1
-        },
-        {
-          "content": "期待に依存すると失望が増えやすい兆し。自ら動けば運気は回復します。",
-          "weight": 1
-        },
-        {
-          "content": "余裕を失いやすい時期。焦らず小さな楽しみを大切にすると心が安らぎます。",
-          "weight": 1
-        },
-        {
-          "content": "人間関係で気疲れしやすいとき。無理に合わせず、境界を保つことが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "物質的な満足に偏ると空虚さが残ります。心の豊かさを求める姿勢が必要です。",
-          "weight": 1
-        }
+        "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
+        "期待に依存すると失望が増えやすい兆し。自ら動けば運気は回復します。",
+        "余裕を失いやすい時期。焦らず小さな楽しみを大切にすると心が安らぎます。",
+        "人間関係で気疲れしやすいとき。無理に合わせず、境界を保つことが吉です。",
+        "物質的な満足に偏ると空虚さが残ります。心の豊かさを求める姿勢が必要です。"
       ]
     },
     "TarotCardEmperor_U": {
@@ -5686,26 +4710,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
-          "weight": 1
-        },
-        {
-          "content": "規律と計画が幸運の鍵。堅実な姿勢が未来を安定させ、成功を後押しします。",
-          "weight": 1
-        },
-        {
-          "content": "リーダーシップを発揮できるとき。周囲を導けば、新たな信頼関係が築かれます。",
-          "weight": 1
-        },
-        {
-          "content": "基盤を固める好機。地道な積み重ねが揺るぎない力となり、安心をもたらします。",
-          "weight": 1
-        },
-        {
-          "content": "強い意志が運を開く兆し。迷いを断ち切れば、着実に目的地へ近づけます。",
-          "weight": 1
-        }
+        "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
+        "規律と計画が幸運の鍵。堅実な姿勢が未来を安定させ、成功を後押しします。",
+        "リーダーシップを発揮できるとき。周囲を導けば、新たな信頼関係が築かれます。",
+        "基盤を固める好機。地道な積み重ねが揺るぎない力となり、安心をもたらします。",
+        "強い意志が運を開く兆し。迷いを断ち切れば、着実に目的地へ近づけます。"
       ]
     },
     "TarotCardEmperor_R": {
@@ -5720,26 +4729,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "支配欲が強まると摩擦を生みます。相手の意見を尊重すれば関係が守られます。",
-          "weight": 1
-        },
-        {
-          "content": "計画の甘さで崩れやすい兆し。足元を固め直すことで流れを取り戻せます。",
-          "weight": 1
-        },
-        {
-          "content": "責任を避けると信頼を失う恐れ。小さな約束を守ることから始めましょう。",
-          "weight": 1
-        },
-        {
-          "content": "権威に振り回されやすいとき。自分の信念を守れば混乱を避けられます。",
-          "weight": 1
-        }
+        "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
+        "支配欲が強まると摩擦を生みます。相手の意見を尊重すれば関係が守られます。",
+        "計画の甘さで崩れやすい兆し。足元を固め直すことで流れを取り戻せます。",
+        "責任を避けると信頼を失う恐れ。小さな約束を守ることから始めましょう。",
+        "権威に振り回されやすいとき。自分の信念を守れば混乱を避けられます。"
       ]
     },
     "TarotCardHierophant_U": {
@@ -5754,26 +4748,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
-          "weight": 1
-        },
-        {
-          "content": "礼儀や常識を大切にすれば、自然と好運が舞い込み、良縁にも恵まれます。",
-          "weight": 1
-        },
-        {
-          "content": "学びの機会に恵まれるとき。知識を深めれば、人生の土台が強固になります。",
-          "weight": 1
-        },
-        {
-          "content": "誰かの導きが幸運を招く兆し。人との絆を信じれば、運が整っていきます。",
-          "weight": 1
-        },
-        {
-          "content": "真面目な姿勢が実を結ぶとき。誠実さが認められ、信頼と成果を得られます。",
-          "weight": 1
-        }
+        "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
+        "礼儀や常識を大切にすれば、自然と好運が舞い込み、良縁にも恵まれます。",
+        "学びの機会に恵まれるとき。知識を深めれば、人生の土台が強固になります。",
+        "誰かの導きが幸運を招く兆し。人との絆を信じれば、運が整っていきます。",
+        "真面目な姿勢が実を結ぶとき。誠実さが認められ、信頼と成果を得られます。"
       ]
     },
     "TarotCardHierophant_R": {
@@ -5788,26 +4767,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
-          "weight": 1
-        },
-        {
-          "content": "形だけの付き合いに注意。心のこもらない関係は次第に崩れていきます。",
-          "weight": 1
-        },
-        {
-          "content": "権威や常識に縛られやすい時期。自分の意思を持つことで運が回復します。",
-          "weight": 1
-        },
-        {
-          "content": "助言を誤解しやすいとき。鵜呑みにせず、自分の心で確かめることが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "無理に合わせると疲弊します。距離を取る勇気が運気を守ってくれます。",
-          "weight": 1
-        }
+        "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
+        "形だけの付き合いに注意。心のこもらない関係は次第に崩れていきます。",
+        "権威や常識に縛られやすい時期。自分の意思を持つことで運が回復します。",
+        "助言を誤解しやすいとき。鵜呑みにせず、自分の心で確かめることが大切です。",
+        "無理に合わせると疲弊します。距離を取る勇気が運気を守ってくれます。"
       ]
     },
     "TarotCardLovers_U": {
@@ -5822,26 +4786,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
-          "weight": 1
-        },
-        {
-          "content": "大切な選択が迫られるとき。誠実に向き合えば、最良の道を選べます。",
-          "weight": 1
-        },
-        {
-          "content": "出会いや縁に恵まれる兆し。互いの魅力を認め合い、調和が広がります。",
-          "weight": 1
-        },
-        {
-          "content": "協力が吉。信頼し合える関係が力となり、大きな成果を生み出します。",
-          "weight": 1
-        },
-        {
-          "content": "恋や友情が花開くとき。素直な言葉が心を結び、幸せを引き寄せます。",
-          "weight": 1
-        }
+        "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
+        "大切な選択が迫られるとき。誠実に向き合えば、最良の道を選べます。",
+        "出会いや縁に恵まれる兆し。互いの魅力を認め合い、調和が広がります。",
+        "協力が吉。信頼し合える関係が力となり、大きな成果を生み出します。",
+        "恋や友情が花開くとき。素直な言葉が心を結び、幸せを引き寄せます。"
       ]
     },
     "TarotCardLovers_R": {
@@ -5856,26 +4805,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
-          "weight": 1
-        },
-        {
-          "content": "誘惑に流されやすい兆し。大切なものを見失わないよう注意が必要です。",
-          "weight": 1
-        },
-        {
-          "content": "すれ違いや誤解が生じやすい時期。丁寧な対話が運を守ってくれます。",
-          "weight": 1
-        },
-        {
-          "content": "選択を先延ばしすると機会を逃します。勇気ある決断が未来を切り開きます。",
-          "weight": 1
-        },
-        {
-          "content": "執着や迷いが心を縛る兆し。思い切って手放せば、新しい可能性が生まれます。",
-          "weight": 1
-        }
+        "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
+        "誘惑に流されやすい兆し。大切なものを見失わないよう注意が必要です。",
+        "すれ違いや誤解が生じやすい時期。丁寧な対話が運を守ってくれます。",
+        "選択を先延ばしすると機会を逃します。勇気ある決断が未来を切り開きます。",
+        "執着や迷いが心を縛る兆し。思い切って手放せば、新しい可能性が生まれます。"
       ]
     },
     "TarotCardChariot_U": {
@@ -5890,26 +4824,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
-          "weight": 1
-        },
-        {
-          "content": "意志を貫けば成功間近。多少の困難も力強く突破できるでしょう。",
-          "weight": 1
-        },
-        {
-          "content": "チャレンジ精神が吉。勇気ある一歩が新しい扉を開き、運を引き寄せます。",
-          "weight": 1
-        },
-        {
-          "content": "集中力が高まるとき。目標を定めて進めば、望んだ結果をつかめます。",
-          "weight": 1
-        },
-        {
-          "content": "勝負運が上昇中。自信を持って挑めば、追い風が味方してくれるでしょう。",
-          "weight": 1
-        }
+        "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
+        "意志を貫けば成功間近。多少の困難も力強く突破できるでしょう。",
+        "チャレンジ精神が吉。勇気ある一歩が新しい扉を開き、運を引き寄せます。",
+        "集中力が高まるとき。目標を定めて進めば、望んだ結果をつかめます。",
+        "勝負運が上昇中。自信を持って挑めば、追い風が味方してくれるでしょう。"
       ]
     },
     "TarotCardChariot_R": {
@@ -5924,26 +4843,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "気持ちが空回りしやすい時期。力任せより計画性を意識しましょう。",
-          "weight": 1
-        },
-        {
-          "content": "方向性を見失いやすいとき。目標を見直すことで進む道が整います。",
-          "weight": 1
-        },
-        {
-          "content": "衝動的な決断が混乱を招く恐れ。慎重さが未来を守ります。",
-          "weight": 1
-        },
-        {
-          "content": "勝ち負けにこだわりすぎると孤立します。協調を忘れず進みましょう。",
-          "weight": 1
-        }
+        "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
+        "気持ちが空回りしやすい時期。力任せより計画性を意識しましょう。",
+        "方向性を見失いやすいとき。目標を見直すことで進む道が整います。",
+        "衝動的な決断が混乱を招く恐れ。慎重さが未来を守ります。",
+        "勝ち負けにこだわりすぎると孤立します。協調を忘れず進みましょう。"
       ]
     },
     "TarotCardStrength_U": {
@@ -5958,26 +4862,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
-          "weight": 1
-        },
-        {
-          "content": "辛抱強さが吉。焦らず歩めば、必ず望む成果に近づけます。",
-          "weight": 1
-        },
-        {
-          "content": "内面の強さが試される時期。自分を信じれば運が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "柔らかな対応が成功の鍵。思いやりが大きな力を生み出します。",
-          "weight": 1
-        },
-        {
-          "content": "心と体のバランスが整い、安心できる未来が形になっていきます。",
-          "weight": 1
-        }
+        "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
+        "辛抱強さが吉。焦らず歩めば、必ず望む成果に近づけます。",
+        "内面の強さが試される時期。自分を信じれば運が開けます。",
+        "柔らかな対応が成功の鍵。思いやりが大きな力を生み出します。",
+        "心と体のバランスが整い、安心できる未来が形になっていきます。"
       ]
     },
     "TarotCardStrength_R": {
@@ -5992,26 +4881,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
-          "weight": 1
-        },
-        {
-          "content": "感情に振り回されやすい兆し。冷静に向き合えば混乱を防げます。",
-          "weight": 1
-        },
-        {
-          "content": "怠け心が芽生えやすい時期。目標を再確認すれば軌道修正できます。",
-          "weight": 1
-        },
-        {
-          "content": "力を誇示すると逆効果。謙虚さが人の心を引き寄せます。",
-          "weight": 1
-        },
-        {
-          "content": "我慢が限界に達しやすいとき。無理をせず、休息を取ることが吉です。",
-          "weight": 1
-        }
+        "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
+        "感情に振り回されやすい兆し。冷静に向き合えば混乱を防げます。",
+        "怠け心が芽生えやすい時期。目標を再確認すれば軌道修正できます。",
+        "力を誇示すると逆効果。謙虚さが人の心を引き寄せます。",
+        "我慢が限界に達しやすいとき。無理をせず、休息を取ることが吉です。"
       ]
     },
     "TarotCardHermit_U": {
@@ -6026,26 +4900,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
-          "weight": 1
-        },
-        {
-          "content": "探求心が実を結ぶとき。学びや研究に力を注げば確かな成果が残ります。",
-          "weight": 1
-        },
-        {
-          "content": "内なる声に耳を傾ける時期。直感が正しい道を示してくれるでしょう。",
-          "weight": 1
-        },
-        {
-          "content": "一人の時間が運気を整えます。心を整理すれば迷いが消えていきます。",
-          "weight": 1
-        },
-        {
-          "content": "慎重な姿勢が吉。小さな確認を重ねるほど、安定した結果が得られます。",
-          "weight": 1
-        }
+        "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
+        "探求心が実を結ぶとき。学びや研究に力を注げば確かな成果が残ります。",
+        "内なる声に耳を傾ける時期。直感が正しい道を示してくれるでしょう。",
+        "一人の時間が運気を整えます。心を整理すれば迷いが消えていきます。",
+        "慎重な姿勢が吉。小さな確認を重ねるほど、安定した結果が得られます。"
       ]
     },
     "TarotCardHermit_R": {
@@ -6060,26 +4919,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
-          "weight": 1
-        },
-        {
-          "content": "考え込みすぎて動けなくなる兆し。小さな行動で流れを変えましょう。",
-          "weight": 1
-        },
-        {
-          "content": "偏った考えに注意。柔らかい視点を持つことでバランスが整います。",
-          "weight": 1
-        },
-        {
-          "content": "過去にこだわると停滞します。未来を見据える勇気が運を呼びます。",
-          "weight": 1
-        },
-        {
-          "content": "消極的になりやすいとき。積極的な一歩が幸運を引き寄せます。",
-          "weight": 1
-        }
+        "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
+        "考え込みすぎて動けなくなる兆し。小さな行動で流れを変えましょう。",
+        "偏った考えに注意。柔らかい視点を持つことでバランスが整います。",
+        "過去にこだわると停滞します。未来を見据える勇気が運を呼びます。",
+        "消極的になりやすいとき。積極的な一歩が幸運を引き寄せます。"
       ]
     },
     "TarotCardWheelOfFortune_U": {
@@ -6094,26 +4938,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
-          "weight": 1
-        },
-        {
-          "content": "タイミングが味方する時期。自然な流れに身を任せれば良い方向へ進みます。",
-          "weight": 1
-        },
-        {
-          "content": "偶然の出会いや出来事が幸運の鍵。思わぬチャンスを大切にしましょう。",
-          "weight": 1
-        },
-        {
-          "content": "流れが好転する兆し。苦労してきたことが報われやすいときです。",
-          "weight": 1
-        },
-        {
-          "content": "幸運期到来。柔軟な心で受け止めれば運気がさらに高まります。",
-          "weight": 1
-        }
+        "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
+        "タイミングが味方する時期。自然な流れに身を任せれば良い方向へ進みます。",
+        "偶然の出会いや出来事が幸運の鍵。思わぬチャンスを大切にしましょう。",
+        "流れが好転する兆し。苦労してきたことが報われやすいときです。",
+        "幸運期到来。柔軟な心で受け止めれば運気がさらに高まります。"
       ]
     },
     "TarotCardWheelOfFortune_R": {
@@ -6128,26 +4957,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "思わぬトラブルに注意。冷静に対応すれば大事には至りません。",
-          "weight": 1
-        },
-        {
-          "content": "機会を逃しやすい兆し。準備を怠らずにいれば再び巡ってきます。",
-          "weight": 1
-        },
-        {
-          "content": "流れに逆らうと混乱を招きます。無理をせず現状維持が吉です。",
-          "weight": 1
-        },
-        {
-          "content": "変化を恐れると停滞します。受け入れる心が運を整えてくれます。",
-          "weight": 1
-        }
+        "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
+        "思わぬトラブルに注意。冷静に対応すれば大事には至りません。",
+        "機会を逃しやすい兆し。準備を怠らずにいれば再び巡ってきます。",
+        "流れに逆らうと混乱を招きます。無理をせず現状維持が吉です。",
+        "変化を恐れると停滞します。受け入れる心が運を整えてくれます。"
       ]
     },
     "TarotCardJustice_U": {
@@ -6162,26 +4976,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
-          "weight": 1
-        },
-        {
-          "content": "バランス感覚が冴える時期。冷静さを保てば物事が順調に進みます。",
-          "weight": 1
-        },
-        {
-          "content": "約束や契約が実を結ぶ兆し。正直な姿勢が運気を高めます。",
-          "weight": 1
-        },
-        {
-          "content": "正しい選択ができるとき。迷っても心の声に従えば道は開けます。",
-          "weight": 1
-        },
-        {
-          "content": "誠意が認められるとき。努力が公正に評価され、成果へとつながります。",
-          "weight": 1
-        }
+        "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
+        "バランス感覚が冴える時期。冷静さを保てば物事が順調に進みます。",
+        "約束や契約が実を結ぶ兆し。正直な姿勢が運気を高めます。",
+        "正しい選択ができるとき。迷っても心の声に従えば道は開けます。",
+        "誠意が認められるとき。努力が公正に評価され、成果へとつながります。"
       ]
     },
     "TarotCardJustice_R": {
@@ -6196,26 +4995,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
-          "weight": 1
-        },
-        {
-          "content": "判断が偏りやすい兆し。感情に流されず事実を見極めましょう。",
-          "weight": 1
-        },
-        {
-          "content": "不誠実な態度が信頼を失います。真摯な姿勢に戻ることが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "約束を軽視すると問題が拡大します。小さな義務を守ることが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "優柔不断が混乱を招きやすいとき。勇気ある決断が運を整えます。",
-          "weight": 1
-        }
+        "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
+        "判断が偏りやすい兆し。感情に流されず事実を見極めましょう。",
+        "不誠実な態度が信頼を失います。真摯な姿勢に戻ることが吉です。",
+        "約束を軽視すると問題が拡大します。小さな義務を守ることが大切です。",
+        "優柔不断が混乱を招きやすいとき。勇気ある決断が運を整えます。"
       ]
     },
     "TarotCardHangedMan_U": {
@@ -6230,26 +5014,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
-          "weight": 1
-        },
-        {
-          "content": "視点を変えることで幸運が訪れる兆し。逆境に学びを見つけましょう。",
-          "weight": 1
-        },
-        {
-          "content": "奉仕の心が吉。見返りを求めない行動が運を呼び込みます。",
-          "weight": 1
-        },
-        {
-          "content": "今は動かずに待つことが最善。時間が解決へ導いてくれます。",
-          "weight": 1
-        },
-        {
-          "content": "困難の中に成長の種があります。受け入れる姿勢が未来を拓きます。",
-          "weight": 1
-        }
+        "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
+        "視点を変えることで幸運が訪れる兆し。逆境に学びを見つけましょう。",
+        "奉仕の心が吉。見返りを求めない行動が運を呼び込みます。",
+        "今は動かずに待つことが最善。時間が解決へ導いてくれます。",
+        "困難の中に成長の種があります。受け入れる姿勢が未来を拓きます。"
       ]
     },
     "TarotCardHangedMan_R": {
@@ -6264,26 +5033,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
-          "weight": 1
-        },
-        {
-          "content": "停滞が長引きやすい兆し。状況を見直す勇気が必要です。",
-          "weight": 1
-        },
-        {
-          "content": "自己犠牲が過ぎると心身を消耗します。自分を守る選択をしましょう。",
-          "weight": 1
-        },
-        {
-          "content": "視野が狭まりやすいとき。柔軟な発想を心がければ流れが変わります。",
-          "weight": 1
-        },
-        {
-          "content": "無意味な我慢は損失を招きます。解放の一歩が幸運を取り戻します。",
-          "weight": 1
-        }
+        "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
+        "停滞が長引きやすい兆し。状況を見直す勇気が必要です。",
+        "自己犠牲が過ぎると心身を消耗します。自分を守る選択をしましょう。",
+        "視野が狭まりやすいとき。柔軟な発想を心がければ流れが変わります。",
+        "無意味な我慢は損失を招きます。解放の一歩が幸運を取り戻します。"
       ]
     },
     "TarotCardDeath_U": {
@@ -6298,26 +5052,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "不要な縁や習慣を整理する好機。心が軽くなり、新しい可能性が芽生えます。",
-          "weight": 1
-        },
-        {
-          "content": "大きな転換期。勇気を出して一区切りつければ運気が好転します。",
-          "weight": 1
-        },
-        {
-          "content": "過去を清算するほど幸運が舞い込みます。潔い決断が未来を呼びます。",
-          "weight": 1
-        },
-        {
-          "content": "変化を恐れないことが吉。終わりを受け入れると成長の扉が開きます。",
-          "weight": 1
-        }
+        "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
+        "不要な縁や習慣を整理する好機。心が軽くなり、新しい可能性が芽生えます。",
+        "大きな転換期。勇気を出して一区切りつければ運気が好転します。",
+        "過去を清算するほど幸運が舞い込みます。潔い決断が未来を呼びます。",
+        "変化を恐れないことが吉。終わりを受け入れると成長の扉が開きます。"
       ]
     },
     "TarotCardDeath_R": {
@@ -6332,26 +5071,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
-          "weight": 1
-        },
-        {
-          "content": "過去にしがみつくと停滞します。前を向く勇気が幸運を招きます。",
-          "weight": 1
-        },
-        {
-          "content": "惰性で続けることに注意。一区切りをつければ新しい道が現れます。",
-          "weight": 1
-        },
-        {
-          "content": "終わらせることを恐れると苦しみが長引きます。潔さが必要です。",
-          "weight": 1
-        },
-        {
-          "content": "無理にしがみつけば疲弊します。心を整理すれば再生が訪れます。",
-          "weight": 1
-        }
+        "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
+        "過去にしがみつくと停滞します。前を向く勇気が幸運を招きます。",
+        "惰性で続けることに注意。一区切りをつければ新しい道が現れます。",
+        "終わらせることを恐れると苦しみが長引きます。潔さが必要です。",
+        "無理にしがみつけば疲弊します。心を整理すれば再生が訪れます。"
       ]
     },
     "TarotCardTemperance_U": {
@@ -6366,26 +5090,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
-          "weight": 1
-        },
-        {
-          "content": "穏やかな流れの中で運が整います。焦らず歩むことが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "物事を中庸に保てば安定します。柔らかな心が人間関係を円滑にします。",
-          "weight": 1
-        },
-        {
-          "content": "小さな努力を積み重ねるほど成果が確実に育ちます。地道さが力になります。",
-          "weight": 1
-        },
-        {
-          "content": "心と体の調和が取れるとき。生活を整えれば運気も向上します。",
-          "weight": 1
-        }
+        "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
+        "穏やかな流れの中で運が整います。焦らず歩むことが吉です。",
+        "物事を中庸に保てば安定します。柔らかな心が人間関係を円滑にします。",
+        "小さな努力を積み重ねるほど成果が確実に育ちます。地道さが力になります。",
+        "心と体の調和が取れるとき。生活を整えれば運気も向上します。"
       ]
     },
     "TarotCardTemperance_R": {
@@ -6400,26 +5109,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "バランスを崩しやすい時期。無理な行動は運を乱します。",
-          "weight": 1
-        },
-        {
-          "content": "過不足に注意。極端な態度が誤解を招きます。",
-          "weight": 1
-        },
-        {
-          "content": "調整不足で停滞する兆し。小さな見直しが運を回復させます。",
-          "weight": 1
-        },
-        {
-          "content": "不摂生や偏りが運気を下げます。生活のリズムを整えることが必要です。",
-          "weight": 1
-        },
-        {
-          "content": "協調を欠くと孤立しやすいとき。歩み寄る姿勢が吉です。",
-          "weight": 1
-        }
+        "バランスを崩しやすい時期。無理な行動は運を乱します。",
+        "過不足に注意。極端な態度が誤解を招きます。",
+        "調整不足で停滞する兆し。小さな見直しが運を回復させます。",
+        "不摂生や偏りが運気を下げます。生活のリズムを整えることが必要です。",
+        "協調を欠くと孤立しやすいとき。歩み寄る姿勢が吉です。"
       ]
     },
     "TarotCardDevil_U": {
@@ -6434,26 +5128,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
-          "weight": 1
-        },
-        {
-          "content": "魅力が高まり、人を惹きつけます。誘惑に注意しつつ上手に活かしましょう。",
-          "weight": 1
-        },
-        {
-          "content": "物質的な喜びに恵まれる兆し。執着せず感謝すれば心が満たされます。",
-          "weight": 1
-        },
-        {
-          "content": "本能や衝動が強まるとき。うまくコントロールすれば力となります。",
-          "weight": 1
-        },
-        {
-          "content": "禁断の誘いが舞い込みやすい時期。理性を忘れなければ安全に楽しめます。",
-          "weight": 1
-        }
+        "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
+        "魅力が高まり、人を惹きつけます。誘惑に注意しつつ上手に活かしましょう。",
+        "物質的な喜びに恵まれる兆し。執着せず感謝すれば心が満たされます。",
+        "本能や衝動が強まるとき。うまくコントロールすれば力となります。",
+        "禁断の誘いが舞い込みやすい時期。理性を忘れなければ安全に楽しめます。"
       ]
     },
     "TarotCardDevil_R": {
@@ -6468,26 +5147,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "束縛から解放される兆し。執着を手放せば自由が訪れます。",
-          "weight": 1
-        },
-        {
-          "content": "悪習慣を断ち切る好機。心身が軽くなり運気も回復します。",
-          "weight": 1
-        },
-        {
-          "content": "執着や迷いから抜け出せます。新しい視野が開けるときです。",
-          "weight": 1
-        },
-        {
-          "content": "誘惑を断ち切る強さが芽生えます。自分を信じて進みましょう。",
-          "weight": 1
-        },
-        {
-          "content": "重荷を降ろすとき。勇気を出して縁を整理すれば未来が明るくなります。",
-          "weight": 1
-        }
+        "束縛から解放される兆し。執着を手放せば自由が訪れます。",
+        "悪習慣を断ち切る好機。心身が軽くなり運気も回復します。",
+        "執着や迷いから抜け出せます。新しい視野が開けるときです。",
+        "誘惑を断ち切る強さが芽生えます。自分を信じて進みましょう。",
+        "重荷を降ろすとき。勇気を出して縁を整理すれば未来が明るくなります。"
       ]
     },
     "TarotCardTower_U": {
@@ -6502,26 +5166,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
-          "weight": 1
-        },
-        {
-          "content": "思わぬ衝撃が古い殻を壊し、自由な未来を拓いていきます。",
-          "weight": 1
-        },
-        {
-          "content": "崩壊は再生の始まり。新しい可能性がそこから芽生えます。",
-          "weight": 1
-        },
-        {
-          "content": "大切なのは柔軟さ。予想外の展開も受け入れれば道が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "急なトラブルに見舞われやすいとき。冷静に乗り越えれば成長できます。",
-          "weight": 1
-        }
+        "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
+        "思わぬ衝撃が古い殻を壊し、自由な未来を拓いていきます。",
+        "崩壊は再生の始まり。新しい可能性がそこから芽生えます。",
+        "大切なのは柔軟さ。予想外の展開も受け入れれば道が開けます。",
+        "急なトラブルに見舞われやすいとき。冷静に乗り越えれば成長できます。"
       ]
     },
     "TarotCardTower_R": {
@@ -6536,26 +5185,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
-          "weight": 1
-        },
-        {
-          "content": "変化を恐れてしがみつくと停滞します。勇気を持って手放すことが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "危機を未然に防げる時期。小さなサインを見逃さないようにしましょう。",
-          "weight": 1
-        },
-        {
-          "content": "破壊の衝撃は和らぎますが、油断すると再燃します。慎重さが必要です。",
-          "weight": 1
-        },
-        {
-          "content": "過去の問題が表面化しやすいとき。向き合えば再建の道が整います。",
-          "weight": 1
-        }
+        "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
+        "変化を恐れてしがみつくと停滞します。勇気を持って手放すことが吉です。",
+        "危機を未然に防げる時期。小さなサインを見逃さないようにしましょう。",
+        "破壊の衝撃は和らぎますが、油断すると再燃します。慎重さが必要です。",
+        "過去の問題が表面化しやすいとき。向き合えば再建の道が整います。"
       ]
     },
     "TarotCardStar_U": {
@@ -6570,26 +5204,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
-          "weight": 1
-        },
-        {
-          "content": "純粋な気持ちが運を導きます。願いを信じれば幸運が舞い込みます。",
-          "weight": 1
-        },
-        {
-          "content": "癒しの力が強まる兆し。心身が整い、人間関係も和やかになります。",
-          "weight": 1
-        },
-        {
-          "content": "未来へのビジョンが明るく広がる時期。夢に向けて歩みを進めましょう。",
-          "weight": 1
-        },
-        {
-          "content": "信じる心が力となります。希望を胸に抱けば運が開けます。",
-          "weight": 1
-        }
+        "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
+        "純粋な気持ちが運を導きます。願いを信じれば幸運が舞い込みます。",
+        "癒しの力が強まる兆し。心身が整い、人間関係も和やかになります。",
+        "未来へのビジョンが明るく広がる時期。夢に向けて歩みを進めましょう。",
+        "信じる心が力となります。希望を胸に抱けば運が開けます。"
       ]
     },
     "TarotCardStar_R": {
@@ -6604,26 +5223,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "希望を見失いやすい兆し。小さな目標に集中すれば光が戻ります。",
-          "weight": 1
-        },
-        {
-          "content": "幻想に振り回されやすい時期。冷静な判断で迷いを払うことが必要です。",
-          "weight": 1
-        },
-        {
-          "content": "理想と現実の差に悩みやすいとき。焦らず少しずつ前進しましょう。",
-          "weight": 1
-        },
-        {
-          "content": "諦めの気持ちが芽生えやすい兆し。信じる力を取り戻すことが大切です。",
-          "weight": 1
-        }
+        "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
+        "希望を見失いやすい兆し。小さな目標に集中すれば光が戻ります。",
+        "幻想に振り回されやすい時期。冷静な判断で迷いを払うことが必要です。",
+        "理想と現実の差に悩みやすいとき。焦らず少しずつ前進しましょう。",
+        "諦めの気持ちが芽生えやすい兆し。信じる力を取り戻すことが大切です。"
       ]
     },
     "TarotCardMoon_U": {
@@ -6638,26 +5242,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
-          "weight": 1
-        },
-        {
-          "content": "不確かな状況の中に学びあり。恐れず進めば新しい気づきを得られます。",
-          "weight": 1
-        },
-        {
-          "content": "想像力が高まる時期。創作や表現活動に幸運が訪れます。",
-          "weight": 1
-        },
-        {
-          "content": "秘められたものが表に現れる兆し。真実を見抜く目を養いましょう。",
-          "weight": 1
-        },
-        {
-          "content": "心の奥にある願望を受け入れれば、未来が明るくなります。",
-          "weight": 1
-        }
+        "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
+        "不確かな状況の中に学びあり。恐れず進めば新しい気づきを得られます。",
+        "想像力が高まる時期。創作や表現活動に幸運が訪れます。",
+        "秘められたものが表に現れる兆し。真実を見抜く目を養いましょう。",
+        "心の奥にある願望を受け入れれば、未来が明るくなります。"
       ]
     },
     "TarotCardMoon_R": {
@@ -6672,26 +5261,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
-          "weight": 1
-        },
-        {
-          "content": "誤解や曖昧さが混乱を招く兆し。率直な対話が運を守ります。",
-          "weight": 1
-        },
-        {
-          "content": "悪い夢や思い込みに惑わされやすい時期。冷静に現実を見ましょう。",
-          "weight": 1
-        },
-        {
-          "content": "嘘や隠し事が露呈する兆し。正直さを大切にすれば難を逃れます。",
-          "weight": 1
-        },
-        {
-          "content": "不安定な感情に注意。心を落ち着ければ運気は整います。",
-          "weight": 1
-        }
+        "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
+        "誤解や曖昧さが混乱を招く兆し。率直な対話が運を守ります。",
+        "悪い夢や思い込みに惑わされやすい時期。冷静に現実を見ましょう。",
+        "嘘や隠し事が露呈する兆し。正直さを大切にすれば難を逃れます。",
+        "不安定な感情に注意。心を落ち着ければ運気は整います。"
       ]
     },
     "TarotCardSun_U": {
@@ -6706,26 +5280,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
-          "weight": 1
-        },
-        {
-          "content": "幸せな縁や良い出会いに恵まれます。素直な笑顔が運を呼びます。",
-          "weight": 1
-        },
-        {
-          "content": "努力が実を結び、評価される兆し。誇りを持って進みましょう。",
-          "weight": 1
-        },
-        {
-          "content": "健康や活力に恵まれ、心身が充実します。積極的に動くと吉。",
-          "weight": 1
-        },
-        {
-          "content": "明るい未来が照らされるとき。希望を胸に歩みを続けましょう。",
-          "weight": 1
-        }
+        "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
+        "幸せな縁や良い出会いに恵まれます。素直な笑顔が運を呼びます。",
+        "努力が実を結び、評価される兆し。誇りを持って進みましょう。",
+        "健康や活力に恵まれ、心身が充実します。積極的に動くと吉。",
+        "明るい未来が照らされるとき。希望を胸に歩みを続けましょう。"
       ]
     },
     "TarotCardSun_R": {
@@ -6740,26 +5299,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
-          "weight": 1
-        },
-        {
-          "content": "期待が空回りしやすいとき。無理せず自然体で過ごすことが吉です。",
-          "weight": 1
-        },
-        {
-          "content": "明るさの裏に隠された不安が顔を出すかも。心を整えましょう。",
-          "weight": 1
-        },
-        {
-          "content": "油断や慢心が運を曇らせます。謙虚さを忘れずに。",
-          "weight": 1
-        },
-        {
-          "content": "幸せを見落としやすい時期。感謝の気持ちが流れを好転させます。",
-          "weight": 1
-        }
+        "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
+        "期待が空回りしやすいとき。無理せず自然体で過ごすことが吉です。",
+        "明るさの裏に隠された不安が顔を出すかも。心を整えましょう。",
+        "油断や慢心が運を曇らせます。謙虚さを忘れずに。",
+        "幸せを見落としやすい時期。感謝の気持ちが流れを好転させます。"
       ]
     },
     "TarotCardJudgement_U": {
@@ -6774,26 +5318,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "過去の努力が報われるとき。新しい扉が開きます。",
-          "weight": 1
-        },
-        {
-          "content": "復縁や再会など、縁がよみがえる兆し。大切な関係が戻ります。",
-          "weight": 1
-        },
-        {
-          "content": "運命的な転機が訪れます。勇気を出せば再生の道が開けます。",
-          "weight": 1
-        },
-        {
-          "content": "正しい判断を下せる時期。迷いが晴れ、答えが見つかります。",
-          "weight": 1
-        },
-        {
-          "content": "人生の節目となる出来事が訪れる予感。誠実に向き合えば吉。",
-          "weight": 1
-        }
+        "過去の努力が報われるとき。新しい扉が開きます。",
+        "復縁や再会など、縁がよみがえる兆し。大切な関係が戻ります。",
+        "運命的な転機が訪れます。勇気を出せば再生の道が開けます。",
+        "正しい判断を下せる時期。迷いが晴れ、答えが見つかります。",
+        "人生の節目となる出来事が訪れる予感。誠実に向き合えば吉。"
       ]
     },
     "TarotCardJudgement_R": {
@@ -6808,26 +5337,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
-          "weight": 1
-        },
-        {
-          "content": "チャンスを逃しやすい兆し。慎重さより行動が鍵です。",
-          "weight": 1
-        },
-        {
-          "content": "誤った判断に注意。冷静さと第三者の助言が必要です。",
-          "weight": 1
-        },
-        {
-          "content": "後悔や未練が心を重くします。切り替えが運を救います。",
-          "weight": 1
-        },
-        {
-          "content": "再生の機会を見逃しやすい時期。視野を広げて流れをつかみましょう。",
-          "weight": 1
-        }
+        "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
+        "チャンスを逃しやすい兆し。慎重さより行動が鍵です。",
+        "誤った判断に注意。冷静さと第三者の助言が必要です。",
+        "後悔や未練が心を重くします。切り替えが運を救います。",
+        "再生の機会を見逃しやすい時期。視野を広げて流れをつかみましょう。"
       ]
     },
     "TarotCardWorld_U": {
@@ -6842,26 +5356,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
-          "weight": 1
-        },
-        {
-          "content": "良縁や成功に恵まれ、心が満たされます。次の旅立ちの準備も整います。",
-          "weight": 1
-        },
-        {
-          "content": "大きな成果を得られる時期。自信を持って胸を張りましょう。",
-          "weight": 1
-        },
-        {
-          "content": "周囲との調和が整い、物事がスムーズに進みます。安心して進めます。",
-          "weight": 1
-        },
-        {
-          "content": "夢が実現し、幸せを実感できるとき。感謝がさらに幸運を呼びます。",
-          "weight": 1
-        }
+        "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
+        "良縁や成功に恵まれ、心が満たされます。次の旅立ちの準備も整います。",
+        "大きな成果を得られる時期。自信を持って胸を張りましょう。",
+        "周囲との調和が整い、物事がスムーズに進みます。安心して進めます。",
+        "夢が実現し、幸せを実感できるとき。感謝がさらに幸運を呼びます。"
       ]
     },
     "TarotCardWorld_R": {
@@ -6876,26 +5375,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
-          "weight": 1
-        },
-        {
-          "content": "未完成のまま終わりやすいとき。努力を続ければ好転します。",
-          "weight": 1
-        },
-        {
-          "content": "課題を放置すると次に進めません。小さな改善を怠らないこと。",
-          "weight": 1
-        },
-        {
-          "content": "成果を独り占めすると不調和が生じます。分かち合いが吉。",
-          "weight": 1
-        },
-        {
-          "content": "惜しいところでつまずく暗示。柔軟な姿勢が完成へ導きます。",
-          "weight": 1
-        }
+        "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
+        "未完成のまま終わりやすいとき。努力を続ければ好転します。",
+        "課題を放置すると次に進めません。小さな改善を怠らないこと。",
+        "成果を独り占めすると不調和が生じます。分かち合いが吉。",
+        "惜しいところでつまずく暗示。柔軟な姿勢が完成へ導きます。"
       ]
     },
     "CheckNumberHimari": {
@@ -6910,26 +5394,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "ひまりちゃんかわいい？",
-          "weight": 1
-        },
-        {
-          "content": "知らんけど。",
-          "weight": 1
-        },
-        {
-          "content": "チャンネル登録と高評価、お願いします。",
-          "weight": 1
-        },
-        {
-          "content": "パワー",
-          "weight": 1
-        },
-        {
-          "content": "(ニチャァ…)",
-          "weight": 1
-        }
+        "ひまりちゃんかわいい？",
+        "知らんけど。",
+        "チャンネル登録と高評価、お願いします。",
+        "パワー",
+        "(ニチャァ…)"
       ]
     },
     "SyokenSagiTsumugiA": {
@@ -6944,30 +5413,12 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "また「初めて」って言ってる〜？まあまあ、何回でもウェルカムしちゃうし〜💘",
-          "weight": 1
-        },
-        {
-          "content": "初めて…だったっけ？まあいっか〜🎀今日も一緒に楽しも〜ねん♪",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺でもぜんぜんオッケーだよ〜💅だってコメントくれるの、マジうれしみ〜‼",
-          "weight": 1
-        },
-        {
-          "content": "また「初めて」なの〜？まあいいや🌈楽しい時間すごそ〜ねん✨",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺はバレバレだけど〜😏まあ許しちゃうし‼今日もテンアゲで楽しも〜🔥",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺でもコメントくれたの、ガチ感謝〜💖だからぜんぜんオッケーだよん♪",
-          "weight": 1
-        }
+        "また「初めて」って言ってる〜？まあまあ、何回でもウェルカムしちゃうし〜💘",
+        "初めて…だったっけ？まあいっか〜🎀今日も一緒に楽しも〜ねん♪",
+        "初見詐欺でもぜんぜんオッケーだよ〜💅だってコメントくれるの、マジうれしみ〜‼",
+        "また「初めて」なの〜？まあいいや🌈楽しい時間すごそ〜ねん✨",
+        "初見詐欺はバレバレだけど〜😏まあ許しちゃうし‼今日もテンアゲで楽しも〜🔥",
+        "初見詐欺でもコメントくれたの、ガチ感謝〜💖だからぜんぜんオッケーだよん♪"
       ]
     },
     "SyokenSagiHimariA": {
@@ -6986,130 +5437,37 @@
           "weight": 3,
           "content": "またですか？<<user>>。死んでくれません？"
         },
-        {
-          "content": "ここまでご視聴ありがとうございました。<<user>>をBANします。",
-          "weight": 1
-        },
-        {
-          "content": "それはちょっとねぇ、世間は許してくrえゃすぇんよ",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺が...舐めてると潰すぞ",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺は偉くないので、予選敗退でーす",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>、お前もう船降りろ",
-          "weight": 1
-        },
-        {
-          "content": "なんだろう、ウソつくのやめてもらっていいですか？",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺は配信来んなよ",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>が初見である可能性が微粒子レベルで存在している・・・？",
-          "weight": 1
-        },
-        {
-          "content": "この<<user>>！違うだろー！違うだろ！",
-          "weight": 1
-        },
-        {
-          "content": "ハンドル回せば車が曲がる！恥を知れ！",
-          "weight": 1
-        },
-        {
-          "content": "おい、やめろ<<user>> この初見詐欺は早くも終了ですね",
-          "weight": 1
-        },
-        {
-          "content": "さあ、初見詐欺する子は、どんどんしまっちゃおうねぇ",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>･･･少し･･･頭冷やそうか･･･？",
-          "weight": 1
-        },
-        {
-          "content": "お前それサバンナでも同じ事言えんの？",
-          "weight": 1
-        },
-        {
-          "content": "初見詐欺とかマジ勘弁ｗｗｗ",
-          "weight": 1
-        },
-        {
-          "content": "うるせぇ、エビフライぶつけんぞ",
-          "weight": 1
-        },
-        {
-          "content": "駄目だこいつ…早くなんとかしないと…",
-          "weight": 1
-        },
-        {
-          "content": "おまえのような初見がいるか！！",
-          "weight": 1
-        },
-        {
-          "content": "すっごーい！<<user>>さんは初見詐欺のフレンズなんだね！",
-          "weight": 1
-        },
-        {
-          "content": "再訪なのに初見と偽っても大丈夫。そう、iPhoneならね。",
-          "weight": 1
-        },
-        {
-          "content": "止めてくれ<<user>> その初見詐欺はオレに効く",
-          "weight": 1
-        },
-        {
-          "content": "とにかく拷問だ 拷問にかけろ！",
-          "weight": 1
-        },
-        {
-          "content": "人は愚かなものです。特にお前",
-          "weight": 1
-        },
-        {
-          "content": "初見を騙ろうだなんて!お前ら人間じゃねぇ!",
-          "weight": 1
-        },
-        {
-          "content": "お前は最後に殺すと約束したな。あれは嘘だ",
-          "weight": 1
-        },
-        {
-          "content": "お前がそう思うんなら初見なんだろう、お前ん中ではな",
-          "weight": 1
-        },
-        {
-          "content": "知るかバカ！そんなことより初見だ！",
-          "weight": 1
-        },
-        {
-          "content": "帰ってくれ<<user>>マン",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>なんか産むんじゃなかった……",
-          "weight": 1
-        },
-        {
-          "content": "もうめんどうみきれよう。",
-          "weight": 1
-        },
-        {
-          "content": "あなたを詐欺罪と器物損壊罪で訴えます！理由はもちろんお分かりですね？あなたが皆をこんな初見詐欺で騙し、セーブデータを破壊したからです！",
-          "weight": 1
-        }
+        "ここまでご視聴ありがとうございました。<<user>>をBANします。",
+        "それはちょっとねぇ、世間は許してくrえゃすぇんよ",
+        "初見詐欺が...舐めてると潰すぞ",
+        "初見詐欺は偉くないので、予選敗退でーす",
+        "<<user>>、お前もう船降りろ",
+        "なんだろう、ウソつくのやめてもらっていいですか？",
+        "初見詐欺は配信来んなよ",
+        "<<user>>が初見である可能性が微粒子レベルで存在している・・・？",
+        "この<<user>>！違うだろー！違うだろ！",
+        "ハンドル回せば車が曲がる！恥を知れ！",
+        "おい、やめろ<<user>> この初見詐欺は早くも終了ですね",
+        "さあ、初見詐欺する子は、どんどんしまっちゃおうねぇ",
+        "<<user>>･･･少し･･･頭冷やそうか･･･？",
+        "お前それサバンナでも同じ事言えんの？",
+        "初見詐欺とかマジ勘弁ｗｗｗ",
+        "うるせぇ、エビフライぶつけんぞ",
+        "駄目だこいつ…早くなんとかしないと…",
+        "おまえのような初見がいるか！！",
+        "すっごーい！<<user>>さんは初見詐欺のフレンズなんだね！",
+        "再訪なのに初見と偽っても大丈夫。そう、iPhoneならね。",
+        "止めてくれ<<user>> その初見詐欺はオレに効く",
+        "とにかく拷問だ 拷問にかけろ！",
+        "人は愚かなものです。特にお前",
+        "初見を騙ろうだなんて!お前ら人間じゃねぇ!",
+        "お前は最後に殺すと約束したな。あれは嘘だ",
+        "お前がそう思うんなら初見なんだろう、お前ん中ではな",
+        "知るかバカ！そんなことより初見だ！",
+        "帰ってくれ<<user>>マン",
+        "<<user>>なんか産むんじゃなかった……",
+        "もうめんどうみきれよう。",
+        "あなたを詐欺罪と器物損壊罪で訴えます！理由はもちろんお分かりですね？あなたが皆をこんな初見詐欺で騙し、セーブデータを破壊したからです！"
       ]
     },
     "sketchTsumugiVOCALOID": {
@@ -7144,26 +5502,6 @@
         "宇宙刑事ギャバソ",
         "Hot knows...",
         "ココロジョジョル"
-      ]
-    },
-    "sketchHimariWaffle": {
-      "id": "sketchHimariWaffle",
-      "key": "sketchHimariWaffle",
-      "name": "コント:ひまり:ワッフルワッフル",
-      "createdAt": "2025-10-01T23:08:02.838Z",
-      "updatedAt": "2025-10-01T23:11:15.656Z",
-      "order": 87,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "人間の屑がこの野郎…",
-        "あーめんどくせーマジで",
-        "あほくさ",
-        "あーもうめちゃくちゃだよ",
-        "なんだこのオッサン！？",
-        "これもうわかんねぇな"
       ]
     }
   },

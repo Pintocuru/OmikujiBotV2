@@ -14,11 +14,16 @@ export class PlaceholderResolver {
   private readonly analyzer: PlaceholderAnalyzer
   private static readonly MAX_RECURSION_DEPTH = 10
 
-  constructor(placeholderSources: Record<string, PlaceholderType>) {
+  constructor(
+    placeholderSources: Record<string, PlaceholderType>,
+    variableProcessor?: VariablePlaceholderProcessor // 追加
+  ) {
     for (const placeholder of Object.values(placeholderSources)) {
       const lookupKey = placeholder.key
       this.placeholderMap.set(lookupKey, placeholder)
     }
+    // 渡されたインスタンスを使用、なければ新規作成
+    this.variableProcessor = variableProcessor || new VariablePlaceholderProcessor()
     this.analyzer = new PlaceholderAnalyzer(this.placeholderMap)
   }
 
@@ -66,6 +71,13 @@ export class PlaceholderResolver {
 
     // コンテンツの処理
     return this.processContent(selectedValue.content, depth)
+  }
+
+  /**
+   *
+   */
+  setVariableContext(rankingScore?: number, valuesLength?: number): void {
+    this.variableProcessor.setContext(rankingScore, valuesLength)
   }
 
   /**

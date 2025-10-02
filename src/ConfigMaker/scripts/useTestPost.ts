@@ -8,6 +8,7 @@ import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmi
 import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'
 import { toast } from 'vue-sonner'
 import { storeToRefs } from 'pinia'
+import { RankingManager } from '@/MainGenerator/scripts/VariablePlaceholder/RankingManager'
 
 export function useTestPost() {
   const omikujiStore = useOmikujiStore()
@@ -70,13 +71,22 @@ export function useTestPost() {
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
     const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)
 
-    const botMessageArray = processor.executeOmikujiProcess(
-      MockComment('suika'),
-      rule,
-      OmikujiItemSchema.parse({ postActions: actions })
-    )
+    let testOmikujiItem: OmikujiItemType
 
-    // 抽選結果がある場合はトーストで表示
+    if (drawOmikuji) {
+      // 全体テストから呼ばれた場合
+      testOmikujiItem = drawOmikuji
+      testOmikujiItem.postActions = actions
+    } else {
+      // 個別テストの場合: ダミーのランク情報を設定
+      testOmikujiItem = OmikujiItemSchema.parse({
+        postActions: actions,
+        rankingScore: 1, // ダミーのランク（常に1位として扱う）
+      })
+    }
+
+    const botMessageArray = processor.executeOmikujiProcess(MockComment('suika'), rule, testOmikujiItem)
+
     if (drawOmikuji) {
       showOmikujiResultToast(drawOmikuji, actions)
     }
@@ -85,7 +95,15 @@ export function useTestPost() {
   }
 
   const postTestOmikuji = (omikujiSet: OmikujiItemType[]) => {
-    const omikujisWithPercent = addWeightPercentages(omikujiSet)
+    const rule = selectedRule.value
+    if (!rule) {
+      toast.error('テスト投稿の対象となるルールが選択されていません。')
+      return
+    }
+
+    // ★★★ ランク割り当て済みのおみくじセットを使用 ★★★
+    const processedOmikuji = RankingManager.assignRanks(rule.id, omikujiSet)
+    const omikujisWithPercent = addWeightPercentages(processedOmikuji)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 
     if (!omikujiItem) {

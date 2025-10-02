@@ -17,7 +17,8 @@ export class PlaceholderProcessor {
   private static readonly PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
-    this.resolver = new PlaceholderResolver(placeholderSources)
+    // variableProcessorを先に作成して共有
+    this.resolver = new PlaceholderResolver(placeholderSources, this.variableProcessor)
     this.context = new PlaceholderContext()
   }
 
@@ -33,6 +34,8 @@ export class PlaceholderProcessor {
    */
   setVariableContext(rankingScore?: number, valuesLength?: number): void {
     this.variableProcessor.setContext(rankingScore, valuesLength)
+    // ★★★ resolverのvariableProcessorにも設定 ★★★
+    this.resolver.setVariableContext(rankingScore, valuesLength)
   }
 
   /**

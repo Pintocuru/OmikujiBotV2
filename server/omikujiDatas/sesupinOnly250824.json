@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0-beta4",
-    "dataVersion": 1.904,
+    "generatorVersion": "v1.2.0",
+    "dataVersion": 1.2,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -82,50 +82,115 @@
         "isRepeatAllowed": true
       }
     },
-    "BigBangFortune": {
-      "id": "BigBangFortune",
-      "key": "BigBangFortune",
-      "name": "超おみくじ",
-      "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-09-18T09:26:25.087Z",
-      "order": 3,
+    "FruitFortune": {
+      "id": "FruitFortune",
+      "key": "FruitFortune",
+      "name": "フルーツ占い",
+      "description": "スイカのリベンジ",
+      "createdAt": "2025-09-13T23:27:51.403Z",
+      "updatedAt": "2025-09-18T06:50:30.389Z",
+      "order": 2,
       "isEnabled": true,
-      "editorColor": "#E0E0E0",
+      "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1757756121625",
+          "id": "1757806025003",
           "key": "",
-          "name": "超!",
-          "createdAt": "2025-09-13T09:35:21.625Z",
-          "updatedAt": "2025-09-13T09:35:21.625Z",
+          "name": "スイカ",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
           "weight": 1,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "BigBang_back",
+              "wordParty": "",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
+              "messageContent": "<<user>>さんのスイカは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "6421b292-505b-4f08-986d-bf22162a8ea1",
+          "key": "",
+          "name": "メロン",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
             {
-              "delaySeconds": 2,
-              "wordParty": "!bombFire",
+              "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
+              "messageContent": "<<user>>さんのメロンは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "98186699-9024-4a93-9a4c-1391828b606a",
+          "key": "",
+          "name": "もも",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
             {
-              "delaySeconds": 3,
-              "wordParty": "!シーン切り替え1",
+              "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "chocolat",
               "iconKey": "default",
-              "messageContent": "<<user>>の運勢は<<BigBangLottery>>",
+              "messageContent": "<<user>>さんのももは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "27d3c13c-9f3e-4025-987a-69e05e2de900",
+          "key": "",
+          "name": "パイナップル",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのパイナップルは{{rank}}位",
+              "actionType": "message"
+            }
+          ]
+        },
+        {
+          "id": "a2581c8c-a775-47ba-a2bb-9295ccb81720",
+          "key": "",
+          "name": "イチゴ",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "tags": [],
+          "weight": 1,
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんのイチゴは{{rank}}位",
               "actionType": "message"
             }
           ]
@@ -145,9 +210,7 @@
           "value": 1
         },
         "comment": [
-          "^超$",
-          "^超おみくじ",
-          "^BigBang"
+          "フルーツ"
         ]
       },
       "scriptId": null,
@@ -412,146 +475,6 @@
           "^がちゃ",
           "^ガチャ",
           "^gacha"
-        ]
-      },
-      "scriptId": null,
-      "scriptParams": null,
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FruitFortune": {
-      "id": "FruitFortune",
-      "key": "FruitFortune",
-      "name": "フルーツ占い",
-      "description": "スイカのリベンジ",
-      "createdAt": "2025-09-13T23:27:51.403Z",
-      "updatedAt": "2025-09-18T06:50:30.389Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "1757806025003",
-          "key": "",
-          "name": "スイカ",
-          "createdAt": "2025-09-13T23:27:05.003Z",
-          "updatedAt": "2025-09-13T23:27:05.003Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "<<user>>さんのスイカは{{rank}}位",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "6421b292-505b-4f08-986d-bf22162a8ea1",
-          "key": "",
-          "name": "メロン",
-          "createdAt": "2025-09-13T23:27:05.003Z",
-          "updatedAt": "2025-09-13T23:27:05.003Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "<<user>>さんのメロンは{{rank}}位",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "98186699-9024-4a93-9a4c-1391828b606a",
-          "key": "",
-          "name": "もも",
-          "createdAt": "2025-09-13T23:27:05.003Z",
-          "updatedAt": "2025-09-13T23:27:05.003Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "<<user>>さんのももは{{rank}}位",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "27d3c13c-9f3e-4025-987a-69e05e2de900",
-          "key": "",
-          "name": "パイナップル",
-          "createdAt": "2025-09-13T23:27:05.003Z",
-          "updatedAt": "2025-09-13T23:27:05.003Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "<<user>>さんのパイナップルは{{rank}}位",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "a2581c8c-a775-47ba-a2bb-9295ccb81720",
-          "key": "",
-          "name": "イチゴ",
-          "createdAt": "2025-09-13T23:27:05.003Z",
-          "updatedAt": "2025-09-13T23:27:05.003Z",
-          "order": 0,
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "<<user>>さんのイチゴは{{rank}}位",
-              "actionType": "message"
-            }
-          ]
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "フルーツ"
         ]
       },
       "scriptId": null,
@@ -1661,748 +1584,6 @@
       "accessLevel": "basic",
       "values": [
         "{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"
-      ]
-    },
-    "BigBangDecoG": {
-      "id": "BigBangDecoG",
-      "key": "BigBangDecoG",
-      "name": "超おみくじ:装飾吉",
-      "createdAt": "2025-09-18T06:23:15.889Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "光彩",
-        "星霜",
-        "金星",
-        "銀河",
-        "宝石",
-        "花火",
-        "流星",
-        "月光",
-        "朝陽",
-        "陽光",
-        "花園",
-        "春風",
-        "香気",
-        "彩雲",
-        "虹彩",
-        "星辰",
-        "花鳥",
-        "錦繍",
-        "絢爛",
-        "芳香",
-        "金銀",
-        "宝冠",
-        "花束",
-        "光輪",
-        "月華",
-        "瑞光",
-        "神託",
-        "法力",
-        "金剛",
-        "浄界",
-        "極光",
-        "宝玉",
-        "琉璃",
-        "水晶",
-        "輝星",
-        "瑞雲",
-        "霞光",
-        "金波",
-        "銀波",
-        "虹橋",
-        "星斗",
-        "瓊花",
-        "珠玉",
-        "紫雲",
-        "金輪",
-        "玉座",
-        "瑞穂",
-        "霊峰",
-        "慧光",
-        "琴瑟"
-      ]
-    },
-    "BigBangDecoB": {
-      "id": "BigBangDecoB",
-      "key": "BigBangDecoB",
-      "name": "超おみくじ:装飾凶",
-      "createdAt": "2025-09-18T06:12:32.542Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "魑魅",
-        "魍魎",
-        "修羅",
-        "餓鬼",
-        "怨霊",
-        "狂気",
-        "呪詛",
-        "暴虐",
-        "魔境",
-        "暗黒",
-        "狂乱",
-        "邪道",
-        "冥界",
-        "地獄",
-        "暴走",
-        "狂騒",
-        "鬼哭",
-        "異才",
-        "鬼才",
-        "魔性",
-        "妖艶",
-        "毒舌",
-        "怪異",
-        "幻影",
-        "妖気",
-        "邪気",
-        "暗躍",
-        "異形",
-        "禍福",
-        "妖術",
-        "毒気",
-        "鬼面",
-        "羅刹",
-        "夜叉",
-        "阿鼻",
-        "怨念",
-        "凶悪",
-        "妖怪",
-        "魔物",
-        "凶暴",
-        "邪悪",
-        "禍々",
-        "驚愕",
-        "轟音",
-        "轟烈"
-      ]
-    },
-    "BigBangLottery": {
-      "id": "BigBangLottery",
-      "key": "BigBangLottery",
-      "name": "超おみくじ:抽選",
-      "createdAt": "2025-09-18T06:38:25.113Z",
-      "updatedAt": "2025-09-18T09:25:51.523Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 122,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB4>>!!!!"
-        },
-        {
-          "weight": 138,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB3>>!!!"
-        },
-        {
-          "weight": 154,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB2>>!!"
-        },
-        {
-          "weight": 215,
-          "content": "【<<BigBangDecoB>>凶】、希少度は<<BigBangB1>>!"
-        },
-        {
-          "weight": 46,
-          "content": "<<BigBangG0>>"
-        },
-        {
-          "weight": 245,
-          "content": "【<<BigBangDecoG>>吉】、希少度は<<BigBangG1>>!"
-        },
-        {
-          "weight": 270,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG2>>!!"
-        },
-        {
-          "weight": 357,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG3>>!!!"
-        },
-        {
-          "weight": 460,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG4>>!!!!"
-        },
-        {
-          "weight": 570,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG5>>!!!!!"
-        },
-        {
-          "weight": 426,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG6>>!!!!!!"
-        },
-        {
-          "weight": 282,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG7>>!!!!!!!"
-        },
-        {
-          "weight": 138,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG8>>!!!!!!!!"
-        },
-        {
-          "weight": 5,
-          "content": "【完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻吉】、希少度は9999無量大数!!!!!!!!!"
-        }
-      ]
-    },
-    "BigBangB4": {
-      "id": "BigBangB4",
-      "key": "BigBangB4",
-      "name": "超おみくじ:凶x4",
-      "createdAt": "2025-09-18T06:25:41.070Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 32,
-          "content": "{{rand(1,9)}}瞬息{{rand(1,9)}}弾指{{rand(1,9)}}刹那"
-        },
-        {
-          "weight": 31,
-          "content": "{{rand(1,9)}}弾指{{rand(1,9)}}刹那{{rand(1,9)}}六徳"
-        },
-        {
-          "weight": 30,
-          "content": "{{rand(1,9)}}刹那{{rand(1,9)}}六徳{{rand(1,9)}}虚空"
-        },
-        {
-          "weight": 29,
-          "content": "{{rand(1,9)}}六徳{{rand(1,9)}}虚空{{rand(1,9)}}清浄"
-        }
-      ]
-    },
-    "BigBangB3": {
-      "id": "BigBangB3",
-      "key": "BigBangB3",
-      "name": "超おみくじ:凶x3",
-      "createdAt": "2025-09-18T06:26:35.570Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 36,
-          "content": "{{rand(1,9)}}漠{{rand(1,9)}}模糊{{rand(1,9)}}逡巡"
-        },
-        {
-          "weight": 35,
-          "content": "{{rand(1,9)}}模糊{{rand(1,9)}}逡巡{{rand(1,9)}}須臾"
-        },
-        {
-          "weight": 34,
-          "content": "{{rand(1,9)}}逡巡{{rand(1,9)}}須臾{{rand(1,9)}}瞬息"
-        },
-        {
-          "weight": 33,
-          "content": "{{rand(1,9)}}須臾{{rand(1,9)}}瞬息{{rand(1,9)}}弾指"
-        }
-      ]
-    },
-    "BigBangB2": {
-      "id": "BigBangB2",
-      "key": "BigBangB2",
-      "name": "超おみくじ:凶x2",
-      "createdAt": "2025-09-18T06:27:06.116Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 40,
-          "content": "{{rand(1,9)}}微{{rand(1,9)}}繊{{rand(1,9)}}沙"
-        },
-        {
-          "weight": 39,
-          "content": "{{rand(1,9)}}繊{{rand(1,9)}}沙{{rand(1,9)}}塵"
-        },
-        {
-          "weight": 38,
-          "content": "{{rand(1,9)}}沙{{rand(1,9)}}塵{{rand(1,9)}}漠"
-        },
-        {
-          "weight": 37,
-          "content": "{{rand(1,9)}}塵{{rand(1,9)}}漠{{rand(1,9)}}模糊"
-        }
-      ]
-    },
-    "BigBangB1": {
-      "id": "BigBangB1",
-      "key": "BigBangB1",
-      "name": "超おみくじ:凶x1",
-      "createdAt": "2025-09-18T06:27:32.561Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 45,
-          "content": "{{rand(1,9)}}割{{rand(1,9)}}厘{{rand(1,9)}}毛"
-        },
-        {
-          "weight": 44,
-          "content": "{{rand(1,9)}}厘{{rand(1,9)}}毛{{rand(1,9)}}糸"
-        },
-        {
-          "weight": 43,
-          "content": "{{rand(1,9)}}毛{{rand(1,9)}}糸{{rand(1,9)}}忽"
-        },
-        {
-          "weight": 42,
-          "content": "{{rand(1,9)}}糸{{rand(1,9)}}忽{{rand(1,9)}}微"
-        },
-        {
-          "weight": 41,
-          "content": "{{rand(1,9)}}忽{{rand(1,9)}}微{{rand(1,9)}}繊"
-        }
-      ]
-    },
-    "BigBangG0": {
-      "id": "BigBangG0",
-      "key": "BigBangG0",
-      "name": "超おみくじ:大吉-大凶",
-      "createdAt": "2025-09-18T06:28:34.367Z",
-      "updatedAt": "2025-09-18T07:06:29.587Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "【大吉】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
-        "【吉】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
-        "【中吉】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
-        "【小吉】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
-        "【末吉】希少度は3.{{rand(10,99)}}",
-        "【凶】希少度は2.{{rand(10,99)}}",
-        "【大凶】希少度は1.{{rand(10,99)}}"
-      ]
-    },
-    "BigBangG1": {
-      "id": "BigBangG1",
-      "key": "BigBangG1",
-      "name": "超おみくじ:吉x1",
-      "createdAt": "2025-09-18T06:30:32.932Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 51,
-          "content": "{{rand(10,99)}}万{{rand(1,9)}}000"
-        },
-        {
-          "weight": 50,
-          "content": "{{rand(1,9)}}万{{rand(10,99)}}00"
-        },
-        {
-          "weight": 49,
-          "content": "{{rand(100,999)}}0"
-        },
-        {
-          "weight": 48,
-          "content": "{{rand(100,999)}}"
-        },
-        {
-          "weight": 47,
-          "content": "{{rand(10,99)}}.{{rand(1,9)}}"
-        }
-      ]
-    },
-    "BigBangG2": {
-      "id": "BigBangG2",
-      "key": "BigBangG2",
-      "name": "超おみくじ:吉x2",
-      "createdAt": "2025-09-18T06:30:57.869Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 56,
-          "content": "{{rand(100,999)}}億"
-        },
-        {
-          "weight": 55,
-          "content": "{{rand(10,99)}}億{{rand(1,9)}}000万"
-        },
-        {
-          "weight": 54,
-          "content": "{{rand(1,9)}}億{{rand(10,99)}}00万"
-        },
-        {
-          "weight": 53,
-          "content": "{{rand(100,999)}}0万"
-        },
-        {
-          "weight": 52,
-          "content": "{{rand(100,999)}}万"
-        }
-      ]
-    },
-    "BigBangG3": {
-      "id": "BigBangG3",
-      "key": "BigBangG3",
-      "name": "超おみくじ:吉x3",
-      "createdAt": "2025-09-18T06:31:33.831Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 62,
-          "content": "5000兆"
-        },
-        {
-          "weight": 61,
-          "content": "{{rand(100,999)}}0兆"
-        },
-        {
-          "weight": 60,
-          "content": "{{rand(100,999)}}兆"
-        },
-        {
-          "weight": 59,
-          "content": "{{rand(10,99)}}兆{{rand(1,9)}}000億"
-        },
-        {
-          "weight": 58,
-          "content": "{{rand(1,9)}}兆{{rand(10,99)}}00億"
-        },
-        {
-          "weight": 57,
-          "content": "{{rand(100,999)}}0億"
-        }
-      ]
-    },
-    "BigBangG4": {
-      "id": "BigBangG4",
-      "key": "BigBangG4",
-      "name": "超おみくじ:吉x4",
-      "createdAt": "2025-09-18T06:32:46.031Z",
-      "updatedAt": "2025-09-18T14:55:07.336Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 54,
-          "content": "{{rand(100,999)}}0垓"
-        },
-        {
-          "weight": 55,
-          "content": "602垓2140京7600兆"
-        },
-        {
-          "weight": 55,
-          "content": "{{rand(100,999)}}垓"
-        },
-        {
-          "weight": 56,
-          "content": "{{rand(10,99)}}垓{{rand(1,9)}}000京"
-        },
-        {
-          "weight": 57,
-          "content": "{{rand(1,9)}}垓{{rand(10,99)}}00京"
-        },
-        {
-          "weight": 58,
-          "content": "{{rand(100,999)}}0京"
-        },
-        {
-          "weight": 59,
-          "content": "{{rand(100,999)}}京"
-        },
-        {
-          "weight": 60,
-          "content": "{{rand(10,99)}}京{{rand(1,9)}}000兆"
-        },
-        {
-          "weight": 61,
-          "content": "{{rand(1,9)}}京{{rand(10,99)}}00兆"
-        }
-      ]
-    },
-    "BigBangG5": {
-      "id": "BigBangG5",
-      "key": "BigBangG5",
-      "name": "超おみくじ:吉x5",
-      "createdAt": "2025-09-18T06:33:16.278Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 42,
-          "content": "{{rand(100,999)}}0溝"
-        },
-        {
-          "weight": 43,
-          "content": "{{rand(100,999)}}溝"
-        },
-        {
-          "weight": 44,
-          "content": "{{rand(10,99)}}溝{{rand(1,9)}}000穣"
-        },
-        {
-          "weight": 45,
-          "content": "{{rand(1,9)}}溝{{rand(10,99)}}00穣"
-        },
-        {
-          "weight": 46,
-          "content": "{{rand(100,999)}}0穣"
-        },
-        {
-          "weight": 47,
-          "content": "{{rand(100,999)}}穣"
-        },
-        {
-          "weight": 48,
-          "content": "{{rand(10,99)}}穣{{rand(1,9)}}000𥝱"
-        },
-        {
-          "weight": 49,
-          "content": "{{rand(1,9)}}穣{{rand(10,99)}}00𥝱"
-        },
-        {
-          "weight": 50,
-          "content": "{{rand(100,999)}}0𥝱"
-        },
-        {
-          "weight": 51,
-          "content": "{{rand(100,999)}}𥝱"
-        },
-        {
-          "weight": 52,
-          "content": "{{rand(10,99)}}𥝱{{rand(1,9)}}000垓"
-        },
-        {
-          "weight": 53,
-          "content": "{{rand(1,9)}}𥝱{{rand(10,99)}}00垓"
-        }
-      ]
-    },
-    "BigBangG6": {
-      "id": "BigBangG6",
-      "key": "BigBangG6",
-      "name": "超おみくじ:吉x6",
-      "createdAt": "2025-09-18T06:33:48.527Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 30,
-          "content": "{{rand(100,999)}}0載"
-        },
-        {
-          "weight": 31,
-          "content": "{{rand(100,999)}}載"
-        },
-        {
-          "weight": 32,
-          "content": "{{rand(10,99)}}載{{rand(1,9)}}000正"
-        },
-        {
-          "weight": 33,
-          "content": "{{rand(1,9)}}載{{rand(10,99)}}00正"
-        },
-        {
-          "weight": 34,
-          "content": "{{rand(100,999)}}0正"
-        },
-        {
-          "weight": 35,
-          "content": "{{rand(100,999)}}正"
-        },
-        {
-          "weight": 36,
-          "content": "{{rand(10,99)}}正{{rand(1,9)}}000澗"
-        },
-        {
-          "weight": 37,
-          "content": "{{rand(1,9)}}正{{rand(10,99)}}00澗"
-        },
-        {
-          "weight": 38,
-          "content": "{{rand(100,999)}}0澗"
-        },
-        {
-          "weight": 39,
-          "content": "{{rand(100,999)}}澗"
-        },
-        {
-          "weight": 40,
-          "content": "{{rand(10,99)}}澗{{rand(1,9)}}000溝"
-        },
-        {
-          "weight": 41,
-          "content": "{{rand(1,9)}}澗{{rand(10,99)}}00溝"
-        }
-      ]
-    },
-    "BigBangG7": {
-      "id": "BigBangG7",
-      "key": "BigBangG7",
-      "name": "超おみくじ:吉x7",
-      "createdAt": "2025-09-18T06:34:28.321Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 18,
-          "content": "{{rand(100,999)}}0阿僧祇"
-        },
-        {
-          "weight": 19,
-          "content": "{{rand(100,999)}}阿僧祇"
-        },
-        {
-          "weight": 20,
-          "content": "{{rand(10,99)}}阿僧祇{{rand(1,9)}}000恒河沙"
-        },
-        {
-          "weight": 21,
-          "content": "{{rand(1,9)}}阿僧祇{{rand(10,99)}}00恒河沙"
-        },
-        {
-          "weight": 22,
-          "content": "{{rand(100,999)}}0恒河沙"
-        },
-        {
-          "weight": 23,
-          "content": "{{rand(100,999)}}恒河沙"
-        },
-        {
-          "weight": 24,
-          "content": "{{rand(10,99)}}恒河沙{{rand(1,9)}}000極"
-        },
-        {
-          "weight": 25,
-          "content": "{{rand(1,9)}}恒河沙{{rand(10,99)}}00極"
-        },
-        {
-          "weight": 26,
-          "content": "{{rand(100,999)}}0極"
-        },
-        {
-          "weight": 27,
-          "content": "{{rand(100,999)}}極"
-        },
-        {
-          "weight": 28,
-          "content": "{{rand(10,99)}}極{{rand(1,9)}}000載"
-        },
-        {
-          "weight": 29,
-          "content": "{{rand(1,9)}}極{{rand(10,99)}}00載"
-        }
-      ]
-    },
-    "BigBangG8": {
-      "id": "BigBangG8",
-      "key": "BigBangG8",
-      "name": "超おみくじ:吉x8",
-      "createdAt": "2025-09-18T06:34:56.085Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
-      "order": 18,
-      "isEnabled": true,
-      "editorColor": "#E0E0E0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "{{rand(100,999)}}0無量大数"
-        },
-        {
-          "weight": 7,
-          "content": "{{rand(100,999)}}無量大数"
-        },
-        {
-          "weight": 8,
-          "content": "{{rand(10,99)}}無量大数{{rand(1,9)}}000不可思議"
-        },
-        {
-          "weight": 9,
-          "content": "{{rand(1,9)}}無量大数{{rand(10,99)}}00不可思議"
-        },
-        {
-          "weight": 10,
-          "content": "{{rand(100,999)}}0不可思議"
-        },
-        {
-          "weight": 11,
-          "content": "{{rand(100,999)}}不可思議"
-        },
-        {
-          "weight": 12,
-          "content": "{{rand(10,99)}}不可思議{{rand(1,9)}}000那由他"
-        },
-        {
-          "weight": 13,
-          "content": "{{rand(1,9)}}不可思議{{rand(10,99)}}00那由他"
-        },
-        {
-          "weight": 14,
-          "content": "{{rand(100,999)}}0那由他"
-        },
-        {
-          "weight": 15,
-          "content": "{{rand(100,999)}}那由他"
-        },
-        {
-          "weight": 16,
-          "content": "{{rand(10,99)}}那由他{{rand(1,9)}}000阿僧祇"
-        },
-        {
-          "weight": 17,
-          "content": "{{rand(1,9)}}那由他{{rand(10,99)}}00阿僧祇"
-        }
       ]
     },
     "GachaFirstSecond": {

@@ -78,7 +78,6 @@ export class VariablePlaceholderProcessor {
         return String(this.variableStore.get(varName))
       }
 
-      // 未定義変数は警告して元のまま返す
       console.warn(`未定義の変数が参照されました: ${varName}`)
       return match
     })

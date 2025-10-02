@@ -28,11 +28,11 @@ export const LAYOUT_BASE = {
  * アバターサイズの定義
  */
 export const AVATAR_CONFIG = {
-  xs: { class: 'w-24 h-24', size: 96 },
-  sm: { class: 'w-32 h-32', size: 128 },
-  md: { class: 'w-48 h-48', size: 192 },
-  lg: { class: 'w-64 h-64', size: 256 },
-  xl: { class: 'w-80 h-80', size: 320 },
+  xs: { class: 'w-24', size: 96 },
+  sm: { class: 'w-32', size: 128 },
+  md: { class: 'w-48', size: 192 },
+  lg: { class: 'w-64', size: 256 },
+  xl: { class: 'w-80', size: 320 },
 } as const
 
 /**
@@ -99,10 +99,7 @@ export const displaySizeLabels: Record<DisplaySize, string> = {
 /**
  * 設定変更時の影響を最小限に抑える関数
  */
-export const updateLayoutBase = (newBaseOffset: number) => {
-  // 基準値を変更すると全サイズに影響
-  // 例：基準を200から250に変更すると、全サイズが50px上に移動
-}
+export const updateLayoutBase = (newBaseOffset: number) => {}
 
 /**
  * デバッグ用：計算された値を確認
