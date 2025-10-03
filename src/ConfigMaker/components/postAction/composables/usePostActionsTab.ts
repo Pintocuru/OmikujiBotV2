@@ -8,7 +8,7 @@ export function usePostActionsTab(
   characterOptions: ComputedRef<{ value: string; label: string }[]>
 ) {
   // アクティブなタブのインデックス（-1はプレースホルダータブ）
-  const activeTab = ref(-1)
+  const activeTab = ref(0)
 
   // 現在選択されているアクション
   const currentAction = computed(() => {

@@ -20,7 +20,7 @@ export const BaseSettingsSchema = z.object({
   // フキダシのアニメーション(終了時)
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
   // フキダシの文字表示をアニメーションさせるか
-  bubbleTextAnimate: z.boolean().default(true).catch(true),
+  bubbleTextAnimate: z.boolean().default(false).catch(false),
   // 文字送りの速度
   // 10-200 までで、Sliderを使って調整
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
@@ -28,10 +28,10 @@ export const BaseSettingsSchema = z.object({
   /**
    * トースト設定 toastBubble
    */
-  // トースト・サムネイルを右側に表示するか(falseで左側)
-  showToastsOnRight: z.boolean().default(true).catch(true),
   // トースト表示
   showToasts: z.boolean().default(true).catch(true),
+  // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsOnRight: z.boolean().default(true).catch(true),
   // トースト表示時、キャラクターを表示するか
   showToastsCharacter: z.boolean().default(false).catch(false),
   // キャラクターサムネイルを表示するか
@@ -41,6 +41,7 @@ export const BaseSettingsSchema = z.object({
   /**
    * キャラクター設定 showCharacter
    */
+
   // キャラクターにフレーム（円形の背景）を表示するか
   showCharacterFrame: z.boolean().default(true).catch(true),
   // キャラクターを常時表示するか（コメント消失後も表示継続）
@@ -114,37 +115,53 @@ export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>
 
 /**
 
+// キャラクター
+export const CharacterSettingsSchema = z.object({ 
+  // キャラクターのkeyを並べる(新設)
+  showCharacters: z.array(z.array(z.string())).default([]).catch([]),
+  showCharacterFrame: z.boolean().default(true),  
+  // showCharacterPersistent , bundleCharacters は廃止
+  // showCharacters にいないキャラクターは、すべてポップアップで出る
+});
+
 // フキダシ
 export const BubbleSettingsSchema = z.object({
-  displaySize: z.enum(displaySize).default('md'),
+  // 文字の大きさ変更(displaySize)は廃止
+  widthSize: z.enum(displaySize).default('md').catch('md'), // フキダシの横幅(新設)
   fontFamily: z.enum(fontFamilyOptions).default('default'),
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'),
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp'),
+  bubbleTextAnimate: z.boolean().default(false).catch(false),
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
 });
 
 // トースト
 export const ToastSettingsSchema = z.object({
-  showToasts: z.boolean().default(true),
+  showToasts: z.boolean().default(true).catch(true),
+  showToastsOnRight: z.boolean().default(true).catch(true),
+  showToastsCharacter: z.boolean().default(false).catch(false),
 });
 
-// キャラクター
-export const CharacterOptionsSchema = z.object({
-  showCharacterFrame: z.boolean().default(true),
-  showCharacterPersistent: z.boolean().default(false),
-  showCharacterThumbnail: z.boolean().default(true),
+// サムネイル Thumbnail
+export const ThumbnailSettingsSchema = z.object({
+  // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
+  showThumbnail:  z.array(z.string()).default([]).catch([]),
+});
+
+
+
+// BaseSettingsSchema -> OmikujiBotSettingsとして再定義
+export const OmikujiBotSettingsSchema = z.object({
+  bubble: BubbleSettingsSchema,
+  toast: ToastSettingsSchema,
+  character: CharacterSettingsSchema,
 });
 
 // エディター
+// DisplaySettingsSchema.editor として再定義
 export const EditorSettingsSchema = z.object({
+  licenseKeyHash: z.string().default('').catch(''),
   daisyUiTheme: z.enum(themes).default('dark'),
-});
-
-// 元の BaseSettingsSchema を集約スキーマとして再定義
-export const BaseSettingsSchema = z.object({
-  bubble: BubbleSettingsSchema,
-  toast: ToastSettingsSchema,
-  character: CharacterOptionsSchema,
-  editor: EditorSettingsSchema,
 });
 
 

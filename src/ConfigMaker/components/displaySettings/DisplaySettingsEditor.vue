@@ -27,7 +27,7 @@
       :isOpen="activeSection === 'showCharacter'"
       @toggle="toggleSection('showCharacter')"
       title="キャラクター設定"
-      description="ジェネレーターで表示する、フキダシ以外の表示設定です"
+      description="ジェネレーターで表示する、フキダシ以外の表示設定"
     >
       <ShowCharacterEditor />
     </SectionCard>
@@ -37,7 +37,7 @@
       :isOpen="activeSection === 'editorSettings'"
       @toggle="toggleSection('editorSettings')"
       title="エディター設定"
-      description="エディター自体の見た目とライセンスの設定です"
+      description="エディター自体の見た目とライセンスの設定"
     >
       <EditorSettingsEditor />
     </SectionCard>

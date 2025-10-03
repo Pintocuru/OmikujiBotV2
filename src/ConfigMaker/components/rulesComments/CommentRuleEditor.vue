@@ -1,5 +1,10 @@
 <!-- src/configMaker/components/comments/CommentRuleEditor.vue -->
 <template>
+  <!-- 便利ボタン群 -->
+  <div class="flex justify-end gap-2">
+    <GlobalCharacterChanger category="comments" />
+  </div>
+
   <!-- タブ部分 -->
   <RecordTabs />
 
@@ -75,8 +80,9 @@
   import { computed, ref } from 'vue'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
   import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue'
-  import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'
+  import GlobalCharacterChanger from '../rules/GlobalCharacterChanger.vue'
+  import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

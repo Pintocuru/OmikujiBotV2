@@ -94,7 +94,7 @@
       "key": "BigBangFortune",
       "name": "超おみくじ",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-03T04:20:47.454Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -164,7 +164,8 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      }
+      },
+      "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!"
     },
     "GouseiSuika": {
       "id": "GouseiSuika",
@@ -5625,8 +5626,8 @@
       "bubbleMotionLeave": "none",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToastsOnRight": true,
       "showToasts": true,
+      "showToastsOnRight": true,
       "showToastsCharacter": true,
       "showCharacterThumbnail": true,
       "showCharacterFrame": false,

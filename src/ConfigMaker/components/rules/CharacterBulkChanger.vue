@@ -2,13 +2,21 @@
 <template>
   <div>
     <!-- トリガーボタン -->
-    <div class="tooltip tooltip-bottom" data-tip="このおみくじのキャラクターを変更する">
-      <button class="btn btn-info" @click="openModal"><Users class="w-4 h-4" />キャラ変更</button>
+    <div
+      class="tooltip tooltip-bottom"
+      :data-tip="
+        hasInvalidCharacters ? '存在しないキャラクターが使用されています！' : 'このおみくじのキャラクターを変更する'
+      "
+    >
+      <button :class="['btn', hasInvalidCharacters ? 'btn-error animate-pulse' : 'btn-info']" @click="openModal">
+        <Users class="w-4 h-4" />キャラ変更
+        <span v-if="hasInvalidCharacters" class="ml-1">⚠️</span>
+      </button>
     </div>
 
     <!-- モーダル -->
     <div v-if="isModalOpen" class="modal modal-open">
-      <div class="modal-box">
+      <div class="modal-box max-w-2xl">
         <h3 class="font-bold text-lg mb-4">キャラクター一括変更</h3>
 
         <div class="space-y-4">
@@ -16,32 +24,59 @@
           <div class="bg-base-200 p-3 rounded">
             <p class="text-sm text-gray-600 mb-2">現在使用されているキャラクター:</p>
             <div class="flex flex-wrap gap-2">
-              <span v-for="charKey in uniqueCharacterKeys" :key="charKey" class="badge badge-outline">
-                {{ getCharacterName(charKey) || charKey || '未設定' }}
+              <span
+                v-for="charKey in uniqueCharacterKeys"
+                :key="charKey"
+                :class="['badge', getCharacterName(charKey) ? 'badge-outline' : 'badge-error animate-pulse']"
+              >
+                {{ getCharacterName(charKey) || `⚠️ 未定義: ${charKey || '空欄'}` }}
               </span>
             </div>
           </div>
 
-          <!-- 変更先キャラクター選択 -->
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text">変更先のキャラクター</span>
-            </label>
-            <select v-model="selectedCharacterId" class="select select-bordered w-full">
-              <option value="">キャラクターを選択してください</option>
-              <option v-for="character in charactersArray" :key="character.id" :value="character.id">
-                {{ character.name || character.id }}
-              </option>
-            </select>
+          <!-- エラー警告 -->
+          <div v-if="hasInvalidCharacters" class="alert alert-error">
+            <AlertTriangle class="w-4 h-4" />
+            <span class="text-sm"> 存在しないキャラクターが使用されています。キャラクターを変更してください。 </span>
+          </div>
+
+          <!-- 個別変更セクション -->
+          <div class="space-y-3">
+            <h4 class="font-semibold text-md">キャラクターの変更</h4>
+            <div
+              v-for="charKey in uniqueCharacterKeys"
+              :key="charKey"
+              class="flex items-center gap-3 p-3 bg-base-100 rounded-lg border"
+              :class="getCharacterName(charKey) ? 'border-base-300' : 'border-error'"
+            >
+              <!-- 変更前 -->
+              <div class="flex-1">
+                <p class="text-xs text-gray-500 mb-1">変更前</p>
+                <div :class="['badge badge-lg', getCharacterName(charKey) ? 'badge-outline' : 'badge-error']">
+                  {{ getCharacterName(charKey) || `⚠️ ${charKey || '空欄'}` }}
+                </div>
+              </div>
+
+              <!-- 矢印 -->
+              <div class="text-2xl text-gray-400">→</div>
+
+              <!-- 変更後 -->
+              <div class="flex-1">
+                <p class="text-xs text-gray-500 mb-1">変更後</p>
+                <select v-model="characterMappings[charKey]" class="select select-bordered select-sm w-full">
+                  <option value="">変更しない</option>
+                  <option v-for="character in charactersArray" :key="character.id" :value="character.id">
+                    {{ character.name || character.id }}
+                  </option>
+                </select>
+              </div>
+            </div>
           </div>
 
           <!-- 確認メッセージ -->
-          <div v-if="selectedCharacterId" class="alert alert-warning">
+          <div v-if="hasChanges" class="alert alert-warning">
             <AlertTriangle class="w-4 h-4" />
-            <span class="text-sm">
-              すべてのおみくじセット内のキャラクターが「{{ getCharacterName(selectedCharacterId) }}」に変更されます。
-              この操作は元に戻せません。
-            </span>
+            <span class="text-sm"> 選択されたキャラクターが一括変更されます。この操作は元に戻せません。 </span>
           </div>
         </div>
 
@@ -51,7 +86,7 @@
           :on-cancel="closeModal"
           :on-save="changeAllCharacters"
           saveName="変更する"
-          :disabled="!selectedCharacterId"
+          :disabled="!hasChanges"
         />
       </div>
     </div>
@@ -59,11 +94,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { Users, AlertTriangle } from 'lucide-vue-next'
+  import { useCharacterChanger } from './composables/useCharacterChanger'
 
   const props = defineProps<{
     category: RulesCategoryType
@@ -72,11 +108,19 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const charactersArray = computed(() => omikujiStore.getCategoryArray('characters').sort((a, b) => a.order - b.order))
+
+  // コンポーザブル
+  const {
+    charactersArray,
+    getCharacterName,
+    extractCharacterKeys,
+    countInvalidCharacters,
+    applyCharacterMappings,
+    createModalState,
+  } = useCharacterChanger()
 
   // モーダル状態
-  const isModalOpen = ref(false)
-  const selectedCharacterId = ref('')
+  const { isModalOpen, characterMappings, openModal: openModalBase, closeModal, hasChanges } = createModalState()
 
   // 現在のおみくじデータを取得
   const currentOmikujiSets = computed(() => {
@@ -86,49 +130,53 @@
 
   // 現在使用されているキャラクターキーを取得
   const uniqueCharacterKeys = computed(() => {
-    const keys = new Set<string>()
-    currentOmikujiSets.value.forEach((omikuji) => {
-      omikuji.postActions?.forEach((action) => {
-        if (action.characterKey) {
-          keys.add(action.characterKey)
-        }
-      })
-    })
-    return Array.from(keys)
+    return extractCharacterKeys(currentOmikujiSets.value)
   })
 
-  // キャラクター名を取得
-  const getCharacterName = (characterId: string): string => {
-    const character = charactersArray.value.find((char) => char.id === characterId)
-    return character?.name || ''
-  }
+  // 存在しないキャラクターがあるかチェック
+  const hasInvalidCharacters = computed(() => {
+    return countInvalidCharacters(uniqueCharacterKeys.value) > 0
+  })
 
   // モーダル開閉
   const openModal = () => {
-    isModalOpen.value = true
-    selectedCharacterId.value = ''
-  }
-
-  const closeModal = () => {
-    isModalOpen.value = false
-    selectedCharacterId.value = ''
+    const initialMappings: Record<string, string> = {}
+    // 存在しないキャラクターの場合は、最初から選択を促す
+    uniqueCharacterKeys.value.forEach((charKey) => {
+      if (!getCharacterName(charKey)) {
+        initialMappings[charKey] = ''
+      }
+    })
+    openModalBase(initialMappings)
   }
 
   // キャラクター一括変更
   const changeAllCharacters = () => {
-    if (!selectedCharacterId.value) return
+    if (!hasChanges.value) return
 
-    const newOmikujiSets = currentOmikujiSets.value.map((omikuji) => ({
-      ...omikuji,
-      postActions:
-        omikuji.postActions?.map((action) => ({
-          ...action,
-          characterKey: selectedCharacterId.value,
-        })) || [],
-    }))
+    const newOmikujiSets = applyCharacterMappings(currentOmikujiSets.value, characterMappings.value)
 
     // ストアを使って直接更新
-    omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', newOmikujiSets)
+    omikujiStore.updateItem(props.category, props.selectedRuleId, {
+      omikuji: newOmikujiSets,
+    })
+
     closeModal()
   }
 </script>
+
+<style scoped>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style>

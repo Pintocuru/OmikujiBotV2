@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.1.1",
-    "dataVersion": 1.11,
+    "generatorVersion": "v1.2.0",
+    "dataVersion": 1.2,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -22,7 +22,7 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-09-16T02:24:08.457Z",
+      "updatedAt": "2025-10-03T05:38:08.869Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -230,7 +230,7 @@
             {
               "delaySeconds": 2.5,
               "wordParty": "!呪いの旋律",
-              "characterKey": "card02_copy_1757554699528",
+              "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
               "actionType": "message"
@@ -282,7 +282,7 @@
             {
               "delaySeconds": 2.5,
               "wordParty": "!間抜け5",
-              "characterKey": "card02_copy_1757554699528",
+              "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
               "actionType": "message"
@@ -334,7 +334,7 @@
             {
               "delaySeconds": 2.5,
               "wordParty": "!チーン1",
-              "characterKey": "card02_copy_1757554699528",
+              "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
               "actionType": "message"
@@ -2408,9 +2408,9 @@
         "sleepy": ""
       }
     },
-    "card02_copy_1757554699528": {
-      "id": "card02_copy_1757554699528",
-      "key": "card02_copy_1757554699528",
+    "card03": {
+      "id": "card03",
+      "key": "card03",
       "name": "ボンビラス",
       "description": "ボンビラス駅・ボンビュラス駅",
       "createdAt": "2025-09-11T01:38:19.528Z",
@@ -2481,8 +2481,8 @@
       "bubbleMotionLeave": "scale",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToastsOnRight": true,
       "showToasts": true,
+      "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showCharacterThumbnail": false,
       "showCharacterFrame": true,

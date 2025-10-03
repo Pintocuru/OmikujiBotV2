@@ -1,9 +1,6 @@
 <!-- src/configMaker/components/comments/OmikujiSetEditor.vue -->
 <template>
   <div v-if="selectedRuleId">
-    <!-- rankMapEnabled -->
-    <!-- TODO:rankMapEnabled が必要かどうかをあとで検証 -->
-    <OmikujiItemRankMap v-if="false" :category="category" :selected-rule-id="selectedRuleId" />
     <!-- 便利なボタン群 -->
     <div class="flex justify-end gap-2">
       <!-- キャラクター一括変更ボタン -->
@@ -54,7 +51,6 @@
   import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import CharacterBulkChanger from './CharacterBulkChanger.vue'
   import OmikujiItemEditor from './OmikujiItemEditor.vue'
-  import OmikujiItemRankMap from './OmikujiItemRankMap.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import draggable from 'vuedraggable'

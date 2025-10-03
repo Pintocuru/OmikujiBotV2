@@ -1,5 +1,10 @@
 <!-- src/configMaker/components/timers/TimerRuleEditor.vue -->
 <template>
+  <!-- 便利ボタン群 -->
+  <div class="flex justify-end gap-2">
+    <GlobalCharacterChanger category="timers" />
+  </div>
+
   <!-- タブ部分 -->
   <RecordTabs />
 
@@ -24,7 +29,7 @@
         @toggle="toggleSection('timerInterval')"
         title="タイマー設定"
         :subTitle="`(${selectedItem.intervalSeconds}秒毎${selectedItem.isBaseZero ? '、基準調整あり' : ''})`"
-        description="発動する間隔やタイミングの設定です"
+        description="発動する間隔やタイミングの設定"
       >
         <TimerIntervalEditor v-model="selectedItem" />
       </SectionCard>
@@ -52,6 +57,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
+  import GlobalCharacterChanger from '../rules/GlobalCharacterChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

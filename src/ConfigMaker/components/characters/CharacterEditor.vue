@@ -56,7 +56,7 @@
       @toggle="toggleSection('imageSettings')"
       title="ジェネレーター用画像設定"
       :subTitle="`画像数 : ${imageCount}`"
-      description="ジェネレーターで表示する画像の設定です"
+      description="ジェネレーターで表示する画像の設定"
     >
       <CharacterImageSettings :modelValue="selectedItem.image" :selectedRuleId="selectedRuleId" />
     </SectionCard>
