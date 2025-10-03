@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.29-v1.2.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0",
-    "dataVersion": 1.2,
+    "generatorVersion": "v1.2.1",
+    "dataVersion": 1.21,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -93,6 +93,7 @@
       "id": "BigBangFortune",
       "key": "BigBangFortune",
       "name": "超おみくじ",
+      "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
       "updatedAt": "2025-10-03T04:20:47.454Z",
       "order": 2,
@@ -164,8 +165,7 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      },
-      "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!"
+      }
     },
     "GouseiSuika": {
       "id": "GouseiSuika",
@@ -5427,7 +5427,7 @@
       "key": "SyokenSagiHimariA",
       "name": "初見詐欺A(ひまり)",
       "createdAt": "2025-09-29T07:31:58.506Z",
-      "updatedAt": "2025-10-01T23:08:11.596Z",
+      "updatedAt": "2025-10-03T06:20:47.264Z",
       "order": 84,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -5468,7 +5468,8 @@
         "帰ってくれ<<user>>マン",
         "<<user>>なんか産むんじゃなかった……",
         "もうめんどうみきれよう。",
-        "あなたを詐欺罪と器物損壊罪で訴えます！理由はもちろんお分かりですね？あなたが皆をこんな初見詐欺で騙し、セーブデータを破壊したからです！"
+        "あなたを詐欺罪と器物損壊罪で訴えます！理由はもちろんお分かりですね？あなたが皆をこんな初見詐欺で騙し、セーブデータを破壊したからです！",
+        "あれー？初見詐欺ごときが私にそんな口きいていいのかなー？死神ぞ？我、死神ぞ？"
       ]
     },
     "sketchTsumugiVOCALOID": {

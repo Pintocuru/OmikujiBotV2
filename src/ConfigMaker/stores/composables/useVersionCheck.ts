@@ -21,14 +21,18 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
   const currentVersion = computed(() => data.value.meta.generatorVersion)
 
   // バージョン比較
+  function normalizeVersion(v: string | null): string | null {
+    return v ? v.trim().replace(/^v/, '') : null
+  }
+
   const isLatest = computed(() => {
     if (!latestVersion.value) return true
-    return currentVersion.value === latestVersion.value
+    return normalizeVersion(currentVersion.value) === normalizeVersion(latestVersion.value)
   })
 
   const hasNewVersion = computed(() => {
     if (!latestVersion.value) return false
-    return currentVersion.value !== latestVersion.value
+    return normalizeVersion(currentVersion.value) !== normalizeVersion(latestVersion.value)
   })
 
   // バージョン情報オブジェクト

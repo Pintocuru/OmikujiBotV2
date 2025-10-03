@@ -3,10 +3,10 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじ BOT 超おみくじ OmikujiBot BigBangFortune",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.29-v1.2.0",
+    "version": "ver2025.10.03-v1.2.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0",
-    "dataVersion": 1.2,
+    "generatorVersion": "v1.2.1",
+    "dataVersion": 1.21,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
