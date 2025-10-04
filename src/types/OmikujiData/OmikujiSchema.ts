@@ -97,7 +97,7 @@ export const PostActionSchema = z
     sound: z.string().optional().catch(undefined),
     actionType: z
       .union([
-        z.literal('legacy'),
+        z.literal('legacy'), // 廃止
         z.literal('message'),
         z.literal('toast'),
         z.literal('wordParty'),
@@ -122,6 +122,19 @@ export const PostActionSchema = z
       actionType,
     }
   })
+
+/**
+ * PostActions わんコメ・BOTちゃんに投稿する型定義
+ */
+export const PostActionArraySchema = z
+  .array(PostActionSchema)
+  .default([])
+  .catch([])
+  .transform((actions) => {
+    // delaySecondsが小さい順に並べ替え
+    return actions.sort((a, b) => a.delaySeconds - b.delaySeconds)
+  })
+
 /**
  * OmikujiItem 抽選用重さ付きおみくじデータ
  */
@@ -129,14 +142,7 @@ export const OmikujiItemSchema = z.object({
   ...BaseRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
   rankingScore: z.number().optional(),
-  postActions: z
-    .array(PostActionSchema)
-    .default([])
-    .catch([])
-    .transform((actions) => {
-      // delaySecondsが小さい順に並べ替え
-      return actions.sort((a, b) => a.delaySeconds - b.delaySeconds)
-    }),
+  postActions: PostActionArraySchema,
 })
 
 /**
@@ -158,7 +164,17 @@ export const OmikujiSetSchema = z
   ])
   .catch([])
 
+/**
+ * PostActionSetSchema アクションセットデータ
+ */
+export const PostActionSetSchema = z
+  .record(z.string(), OmikujiItemSchema.omit({ weight: true }))
+  .default({})
+  .catch({})
+
+// 型定義
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
+export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>

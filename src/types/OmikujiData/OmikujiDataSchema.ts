@@ -16,6 +16,7 @@ export const OmikujiDataSchema = z.object({
   meta: PackageMetaSchema.catch(PackageMetaSchema.parse({})),
   comments: recordNormalization(CommentRuleSchema),
   timers: recordNormalization(TimerRuleSchema),
+  // actionSets:recordNormalization(PostActionSetSchema)
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),
   scriptSettings: scriptSettingsSchema.catch({}),
