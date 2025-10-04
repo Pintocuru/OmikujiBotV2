@@ -43,15 +43,17 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/'
+  import { PostActionType, RulesCategoryType } from '@/types/'
   import PostActionMessageSettings from './PostActionMessageSettings.vue'
   import PostActionToastSettings from './PostActionToastSettings.vue'
   import PostActionWordPartySettings from './PostActionWordPartySettings.vue'
+  import PostActionActionSetSettings from './PostActionActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { MessageSquare, Bell, PartyPopper } from 'lucide-vue-next'
+  import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
+    category: RulesCategoryType | 'actionSets'
     action: PostActionType
     index: number
     characterOptions: Array<{ value: string; label: string }>
@@ -69,6 +71,7 @@
     { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
     { type: 'toast' as const, label: 'トースト', icon: Bell },
     { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
+    { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
   ]
 
   // 選択されたアクションタイプに応じた背景色
@@ -77,6 +80,7 @@
       message: 'bg-yellow-700',
       toast: 'bg-green-700',
       wordParty: 'bg-purple-700',
+      actionSet: 'bg-red-700',
       legacy: 'bg-gray-700',
     }
     return backgroundColors[props.action.actionType] || 'bg-base-300'
@@ -88,11 +92,11 @@
       message: PostActionMessageSettings,
       toast: PostActionToastSettings,
       wordParty: PostActionWordPartySettings,
-      legacy: 'legacy',
+      actionSet: PostActionActionSetSettings,
+      legacy: null,
     }
 
-    const component = componentMap[props.action.actionType]
-    return component === 'legacy' ? null : component
+    return componentMap[props.action.actionType]
   })
 
   // 遅延秒数のcomputed
@@ -104,7 +108,7 @@
   })
 
   // アクションタイプの更新
-  const updateActionType = (newType: 'message' | 'toast' | 'wordParty') => {
+  const updateActionType = (newType: PostActionType['actionType']) => {
     const updatedAction: PostActionType = {
       ...props.action,
       actionType: newType,

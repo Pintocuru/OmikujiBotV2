@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/postAction/PostActionMessageFields.vue -->
+<!-- ! 使ってないかも -->
 <template>
   <div class="space-y-2 mb-2">
     <!-- コメント -->

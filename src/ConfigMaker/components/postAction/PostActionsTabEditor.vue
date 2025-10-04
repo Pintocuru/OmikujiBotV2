@@ -50,6 +50,7 @@
     <!-- PostActionタブの内容 -->
     <div v-else-if="props.actions.length > 0 && activeTab >= 0">
       <PostActionItem
+        :category="category"
         :action="currentAction"
         :index="activeTab"
         :character-options="characterOptions"
@@ -77,9 +78,11 @@
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { usePostActionsTab } from './composables/usePostActionsTab'
+  import { RulesCategoryType } from '@/types'
 
   const props = defineProps<{
     actions: PostActionType[]
+    category: RulesCategoryType | 'actionSets'
   }>()
 
   const emit = defineEmits<{

@@ -11,7 +11,12 @@
     />
 
     <!-- PostActionsタブエディター -->
-    <PostActionsTabEditor v-if="isTabEditorOpen" :actions="modelValue" @update:actions="updatePostActions" />
+    <PostActionsTabEditor
+      v-if="isTabEditorOpen"
+      :actions="modelValue"
+      :category="category"
+      @update:actions="updatePostActions"
+    />
 
     <!-- JSON編集モード -->
     <PostActionsEditorJson

@@ -52,7 +52,7 @@ export const PostActionWordPartySchema = z.object({
 export const PostActionActionSetSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal("actionSet"),
-  actionSetId: z.string().default("").catch(""),
+  actionSetKey : z.string().default("").catch(""),
 });
 
 
@@ -88,6 +88,7 @@ export const PostActionSchema = z
       .min(POST_SETTINGS.basicDelaySeconds * -1)
       .default(0)
       .catch(0),
+    actionSetKey: z.string().optional().catch(''),
     wordParty: z.string().default('').catch(''),
     characterKey: z.string().default('').catch(''),
     iconKey: CharacterEmotionSchema.default('default').catch('default'),
@@ -109,7 +110,9 @@ export const PostActionSchema = z
   .transform((data) => {
     let actionType: typeof data.actionType = 'legacy'
 
-    if (data.messageContent && data.messageContent.trim() !== '') {
+    if (data.actionSetKey && data.actionSetKey.trim() !== '') {
+      actionType = 'actionSet'
+    } else if (data.messageContent && data.messageContent.trim() !== '') {
       actionType = 'message'
     } else if (data.messageToast && data.messageToast.trim() !== '') {
       actionType = 'toast'
