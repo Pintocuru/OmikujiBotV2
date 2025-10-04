@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/OmikujiItemEditor.vue -->
+<!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
 <template>
   <!-- 左端に色を付ける -->
   <div
@@ -17,40 +17,16 @@
         :selected-rule-id="selectedRuleId"
       />
 
-      <!-- ツールバー -->
-      <OmikujiItemToolbar
-        :actions="omikujiItem.postActions"
-        :category="category"
-        :selected-rule-id="selectedRuleId"
-        @toggleJson="toggleEditMode"
-        @toggleEdit="toggleTabEditor"
-      />
-
-      <!-- PostActionsタブエディター -->
-      <PostActionsTabEditor
-        v-if="isTabEditorOpen"
-        :actions="omikujiItem.postActions"
-        @update:actions="updatePostActions"
-      />
-
-      <!-- JSON編集モード -->
-      <PostActionsEditorJson
-        v-if="isJsonMode"
-        :category="category"
-        :selected-rule-id="selectedRuleId"
-        :omikuji-index="index"
-        @close="isJsonMode = false"
-      />
+      <!-- PostActions編集コンポーネント -->
+      <PostActionsEditor v-model="postActions" :category="category" :selected-rule-id="selectedRuleId" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
-  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
-  import PostActionsTabEditor from '@ConfigComponents/postAction/PostActionsTabEditor.vue'
-  import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
+  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
@@ -63,10 +39,6 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-
-  // Refs for PostActions functionality
-  const isJsonMode = ref(false)
-  const isTabEditorOpen = ref(false)
 
   // Computed
   const allOmikujiSets = computed({
@@ -87,30 +59,22 @@
     return omikujiSets[props.index] || null
   })
 
-  // PostActions methods
-  const toggleTabEditor = () => {
-    isTabEditorOpen.value = !isTabEditorOpen.value
-    // JSONモードが開いていたら閉じる
-    if (isTabEditorOpen.value) isJsonMode.value = false
-  }
+  // postActionsのgetter/setter
+  const postActions = computed({
+    get: () => {
+      return omikujiItem.value?.postActions || []
+    },
+    set: (newActions: PostActionType[]) => {
+      if (!props.selectedRuleId) return
 
-  const toggleEditMode = () => {
-    isJsonMode.value = !isJsonMode.value
-    // タブエディターが開いていたら閉じる
-    if (isJsonMode.value) isTabEditorOpen.value = false
-  }
-
-  // PostActionsの更新
-  const updatePostActions = (newActions: PostActionType[]) => {
-    if (!props.selectedRuleId) return
-
-    const updatedOmikuji = [...allOmikujiSets.value]
-    if (updatedOmikuji[props.index]) {
-      updatedOmikuji[props.index] = {
-        ...updatedOmikuji[props.index],
-        postActions: newActions,
+      const updatedOmikuji = [...allOmikujiSets.value]
+      if (updatedOmikuji[props.index]) {
+        updatedOmikuji[props.index] = {
+          ...updatedOmikuji[props.index],
+          postActions: newActions,
+        }
+        allOmikujiSets.value = updatedOmikuji
       }
-      allOmikujiSets.value = updatedOmikuji
-    }
-  }
+    },
+  })
 </script>

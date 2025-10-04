@@ -136,13 +136,20 @@ export const PostActionArraySchema = z
   })
 
 /**
+ * PostActionSetSchema アクションセットデータ
+ */
+export const PostActionRecordSchema = z.object({
+  ...BaseRecordSchema.shape,
+  postActions: PostActionArraySchema,
+})
+
+/**
  * OmikujiItem 抽選用重さ付きおみくじデータ
  */
 export const OmikujiItemSchema = z.object({
-  ...BaseRecordSchema.shape,
+  ...PostActionRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
   rankingScore: z.number().optional(),
-  postActions: PostActionArraySchema,
 })
 
 /**
@@ -167,14 +174,12 @@ export const OmikujiSetSchema = z
 /**
  * PostActionSetSchema アクションセットデータ
  */
-export const PostActionSetSchema = z
-  .record(z.string(), OmikujiItemSchema.omit({ weight: true }))
-  .default({})
-  .catch({})
+export const PostActionSetSchema = z.record(z.string(), PostActionRecordSchema).default({}).catch({})
 
 // 型定義
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
+export type PostActionRecordType = z.infer<typeof PostActionRecordSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>

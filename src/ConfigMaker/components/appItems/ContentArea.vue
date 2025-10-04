@@ -18,6 +18,9 @@
       <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
 
       <!-- プレースホルダー -->
+      <ActionSetsEditor v-else-if="selectedCategory === 'actionSets'" />
+
+      <!-- プレースホルダー -->
       <PlaceholderEditor v-else-if="selectedCategory === 'placeholders'" />
 
       <!-- キャラクター設定 -->
@@ -49,6 +52,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import CommentRuleEditor from '@ConfigComponents/rulesComments/CommentRuleEditor.vue'
   import TimerRuleEditor from '@ConfigComponents/rulesTimers/TimerRuleEditor.vue'
+  import ActionSetsEditor from '@ConfigComponents/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue'
   import ScriptSettingsEditor from '@ConfigComponents/scriptSettings/ScriptSettingsEditor.vue'
   import WordPartySettingsEditor from '@ConfigComponents/wordPartySettings/WordPartySettingsEditor.vue'

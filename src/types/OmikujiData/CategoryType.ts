@@ -9,23 +9,26 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks, Tags } from 'lucide-vue-next'
+import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks, Tags, MessagesSquare } from 'lucide-vue-next'
+import { PostActionRecordSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
  * RecordCategory
  */
-export const recordCategoryLabel = [...rulesCategoryLabel, 'placeholders', 'characters'] as const
+export const recordCategoryLabel = [...rulesCategoryLabel, 'actionSets', 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
 export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
   comments: Record<string, CommentRuleType>
   timers: Record<string, TimerRuleType>
+  actionSets: Record<string, PostActionRecordType>
   placeholders: Record<string, PlaceholderType>
   characters: Record<string, CharacterType>
 }
 export type RecordCategoryItemTypeMap = {
   comments: CommentRuleType
   timers: TimerRuleType
+  actionSets: PostActionRecordType
   placeholders: PlaceholderType
   characters: CharacterType
 }
@@ -34,6 +37,7 @@ export type RecordCategoryItemTypeMap = {
 export const RecordCategorySchemaMap = {
   comments: CommentRuleSchema,
   timers: TimerRuleSchema,
+  actionSets: PostActionRecordSchema,
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,
 } as const
@@ -61,6 +65,11 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     label: 'タイマールール', // 時間経過で自動的におみくじを発動
     description: '指定した時間経過で、自動的におみくじを発動します',
     icon: Timer,
+  },
+  actionSets: {
+    label: 'アクションセット',
+    description: 'BOTのコメント・WordPartyの指定のプリセットを作成します',
+    icon: MessagesSquare,
   },
   placeholders: {
     label: 'プレースホルダー', // コメント・タイマーで補助的に使用

@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/OmikujiSetEditor.vue -->
+<!-- src\ConfigMaker\components\rules\OmikujiSetEditor.vue -->
 <template>
   <div v-if="selectedRuleId">
     <!-- 便利なボタン群 -->
@@ -49,8 +49,8 @@
   import { computed } from 'vue'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
-  import CharacterBulkChanger from './CharacterBulkChanger.vue'
-  import OmikujiItemEditor from './OmikujiItemEditor.vue'
+  import CharacterBulkChanger from '@ConfigComponents/rules/CharacterBulkChanger.vue'
+  import OmikujiItemEditor from '@ConfigComponents/rules/OmikujiItemEditor.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import draggable from 'vuedraggable'

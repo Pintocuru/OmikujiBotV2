@@ -6,7 +6,7 @@
       class="textarea textarea-bordered w-full font-mono text-sm"
       rows="12"
       placeholder="JSON形式でPostActionsを編集..."
-      @blur="validateAndApplyJson"
+      @blur="validateJson"
     ></textarea>
 
     <div v-if="jsonError" class="alert alert-error text-xs">
@@ -19,54 +19,41 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, computed } from 'vue'
-  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+  import { ref, watch } from 'vue'
   import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { toast } from 'vue-sonner'
 
   // Props
   const props = defineProps<{
-    category: RulesCategoryType
-    selectedRuleId: string | null
-    omikujiIndex: number
+    modelValue: PostActionType[]
   }>()
 
   // Emits
   const emit = defineEmits<{
+    'update:modelValue': [value: PostActionType[]]
     close: []
   }>()
-
-  // Pinia store
-  const omikujiStore = useOmikujiStore()
 
   // Refs
   const jsonText = ref('')
   const jsonError = ref('')
 
-  // 現在のPostActionsを取得するcomputed
-  const currentPostActions = computed(() => {
-    if (!props.selectedRuleId) return []
-    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
-    return record?.omikuji?.[props.omikujiIndex]?.postActions || []
-  })
-
   // JSON関連の処理
   const updateJsonText = () => {
     try {
-      jsonText.value = JSON.stringify(currentPostActions.value, null, 2)
+      jsonText.value = JSON.stringify(props.modelValue, null, 2)
       jsonError.value = ''
     } catch (error) {
       jsonError.value = error instanceof Error ? error.message : 'JSONの生成に失敗しました'
     }
   }
 
-  // PostActionsが変更されたときにJSONテキストを更新
-  watch(currentPostActions, updateJsonText, { immediate: true, deep: true })
+  // modelValueが変更されたときにJSONテキストを更新
+  watch(() => props.modelValue, updateJsonText, { immediate: true, deep: true })
 
   // Methods
-  const validateAndApplyJson = () => {
+  const validateJson = () => {
     try {
       const parsed = JSON.parse(jsonText.value)
       if (!Array.isArray(parsed)) {
@@ -93,10 +80,9 @@
   }
 
   const applyJson = () => {
-    const validatedActions = validateAndApplyJson()
-    if (validatedActions && props.selectedRuleId) {
-      // ストアを通じて直接更新（updateRecordPropertyを使用）
-      omikujiStore.updateOmikujiPostActions(props.category, props.selectedRuleId, props.omikujiIndex, validatedActions)
+    const validatedActions = validateJson()
+    if (validatedActions) {
+      emit('update:modelValue', validatedActions)
       toast.success('Json形式で保存しました')
       emit('close')
     }

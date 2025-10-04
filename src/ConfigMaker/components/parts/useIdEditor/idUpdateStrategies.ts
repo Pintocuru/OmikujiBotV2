@@ -144,6 +144,7 @@ function updatePlaceholderReferences(oldId: string, newId: string): void {
 /**
  * ID更新戦略マップ
  */
+// TODO:actionSets を書く
 export const updateStrategies: Record<RecordCategoryType, IdUpdateStrategy<RecordCategoryType>> = {
   characters: {
     updateId: updateCharacterId,

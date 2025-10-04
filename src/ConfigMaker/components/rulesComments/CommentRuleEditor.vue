@@ -79,9 +79,9 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
-  import BaseSettingsEditor from '../rules/BaseSettingsEditor.vue'
-  import OmikujiSetEditor from '../rules/OmikujiSetEditor.vue'
-  import GlobalCharacterChanger from '../rules/GlobalCharacterChanger.vue'
+  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
+  import GlobalCharacterChanger from '@ConfigComponents/rules/GlobalCharacterChanger.vue'
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
