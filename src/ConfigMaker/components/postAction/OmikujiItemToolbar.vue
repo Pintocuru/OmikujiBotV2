@@ -76,7 +76,7 @@
   // Props
   const props = defineProps<{
     actions: PostActionType[]
-    category: RulesCategoryType
+    category: RulesCategoryType | 'actionSets'
     selectedRuleId: string | null
   }>()
 

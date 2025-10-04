@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/GlobalCharacterChanger.vue -->
+<!-- src\ConfigMaker\components\rules\GlobalCharacterChanger.vue -->
 <template>
   <div>
     <!-- トリガーボタン -->
@@ -158,7 +158,7 @@
   import { useCharacterChanger } from './composables/useCharacterChanger'
 
   const props = defineProps<{
-    category: RulesCategoryType
+    category: RulesCategoryType | 'actionSets'
   }>()
 
   // Pinia store

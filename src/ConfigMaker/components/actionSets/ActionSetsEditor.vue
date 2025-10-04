@@ -1,10 +1,10 @@
 <!-- src\ConfigMaker\components\actionSets\ActionSetsEditor.vue -->
 <template>
-  <!-- 便利ボタン群 -->
+  <!-- 便利ボタン群:actionSets でも使えるよう改良したい
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="actionSets" />
   </div>
-
+-->
   <!-- タブ部分 -->
   <RecordTabs />
 
@@ -25,10 +25,10 @@
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
       title="おみくじ設定"
-      :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
+      :subTitle="`(おみくじ)`"
       description="コメントで実行するおみくじの設定"
     >
-      <OmikujiSetEditor category="actionSets" :selectedRuleId="selectedRuleId" />
+      <PostActionsEditor v-model="selectedItem.postActions" category="actionSets" :selectedRuleId="selectedRuleId" />
     </SectionCard>
   </div>
 </template>
@@ -38,7 +38,7 @@
   import { PostActionRecordType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
-  import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
+  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import GlobalCharacterChanger from '@ConfigComponents/rules/GlobalCharacterChanger.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
@@ -62,7 +62,7 @@
   const selectedItem = computed({
     get: () => {
       if (!selectedRuleId.value) return null
-      return data.value.comments[selectedRuleId.value]
+      return data.value.actionSets[selectedRuleId.value]
     },
     set: (value: PostActionRecordType) => {
       omikujiStore.updateItem('actionSets', value.id, value)

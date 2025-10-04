@@ -1,5 +1,5 @@
 // src/configMaker/composables/useCharacterChanger.ts
-import { computed, ref, Ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 

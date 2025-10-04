@@ -3,7 +3,7 @@
   <div class="space-y-2">
     <!-- ツールバー -->
     <OmikujiItemToolbar
-      :actions="localActions"
+      :actions="modelValue"
       :category="category"
       :selected-rule-id="selectedRuleId"
       @toggleJson="toggleEditMode"
@@ -11,15 +11,20 @@
     />
 
     <!-- PostActionsタブエディター -->
-    <PostActionsTabEditor v-if="isTabEditorOpen" :actions="localActions" @update:actions="updatePostActions" />
+    <PostActionsTabEditor v-if="isTabEditorOpen" :actions="modelValue" @update:actions="updatePostActions" />
 
     <!-- JSON編集モード -->
-    <PostActionsEditorJson v-if="isJsonMode" v-model="localActions" @close="isJsonMode = false" />
+    <PostActionsEditorJson
+      v-if="isJsonMode"
+      :model-value="modelValue"
+      @update:model-value="updatePostActions"
+      @close="isJsonMode = false"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { ref } from 'vue'
   import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
   import PostActionsTabEditor from '@ConfigComponents/postAction/PostActionsTabEditor.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
@@ -28,7 +33,7 @@
 
   const props = defineProps<{
     modelValue: PostActionType[]
-    category: RulesCategoryType
+    category: RulesCategoryType | 'actionSets'
     selectedRuleId: string | null
   }>()
 
@@ -39,25 +44,6 @@
   // Refs
   const isJsonMode = ref(false)
   const isTabEditorOpen = ref(false)
-  const localActions = ref<PostActionType[]>([...props.modelValue])
-
-  // localActionsの変更を親に伝播
-  watch(
-    localActions,
-    (newValue) => {
-      emit('update:modelValue', newValue)
-    },
-    { deep: true }
-  )
-
-  // 親のmodelValueが変更されたらlocalActionsも更新
-  watch(
-    () => props.modelValue,
-    (newValue) => {
-      localActions.value = [...newValue]
-    },
-    { deep: true }
-  )
 
   // Methods
   const toggleTabEditor = () => {
@@ -74,6 +60,6 @@
 
   // PostActionsの更新
   const updatePostActions = (newActions: PostActionType[]) => {
-    localActions.value = newActions
+    emit('update:modelValue', newActions)
   }
 </script>
