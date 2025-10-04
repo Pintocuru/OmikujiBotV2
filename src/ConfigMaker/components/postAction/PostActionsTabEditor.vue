@@ -13,7 +13,7 @@
 
     <!-- PostActionタブ -->
     <button
-      v-for="(action, index) in props.actions"
+      v-for="(action, index) in props.modelValue"
       :key="`action-${index}`"
       class="tab tab-sm rounded pr-1 flex items-center justify-between gap-2"
       :class="{ 'tab-active bg-info text-info-content': activeTab === index }"
@@ -25,11 +25,11 @@
         <PostActionRow :action="action" />
       </div>
 
-      <!-- 右側：メニュー（クリックイベントは伝播しないように） -->
+      <!-- 右側：メニュー -->
       <div @click.stop>
         <MenuDropdown
           v-if="activeTab === index"
-          :disable-delete="props.actions.length <= 1"
+          :disable-delete="props.modelValue.length <= 1"
           @duplicate="duplicateAction(index)"
           @delete="removeAction(index)"
         />
@@ -44,11 +44,11 @@
   <div>
     <!-- プレースホルダーリストタブの内容 -->
     <div v-if="activeTab === -1">
-      <PlaceholderList :actions="props.actions" @open-placeholder="handleOpenPlaceholder" />
+      <PlaceholderList :actions="props.modelValue" @open-placeholder="handleOpenPlaceholder" />
     </div>
 
     <!-- PostActionタブの内容 -->
-    <div v-else-if="props.actions.length > 0 && activeTab >= 0">
+    <div v-else-if="props.modelValue.length > 0 && activeTab >= 0">
       <PostActionItem
         :category="category"
         :action="currentAction"
@@ -61,7 +61,7 @@
     </div>
 
     <!-- アクションが空の場合 -->
-    <div v-else-if="props.actions.length === 0">
+    <div v-else-if="props.modelValue.length === 0">
       <NoParamsCard message="PostActionがありません" />
       <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
     </div>
@@ -81,7 +81,7 @@
   import { RulesCategoryType } from '@/types'
 
   const props = defineProps<{
-    actions: PostActionType[]
+    modelValue: PostActionType[]
     category: RulesCategoryType | 'actionSets'
   }>()
 
@@ -102,7 +102,7 @@
   // タブロジックをコンポーザブルから取得
   const { activeTab, currentAction, setActiveTab, updateCurrentAction, addNewAction, duplicateAction, removeAction } =
     usePostActionsTab(
-      computed(() => props.actions),
+      computed(() => props.modelValue),
       (event, actions) => emit(event, actions),
       characterOptions
     )

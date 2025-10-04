@@ -3,7 +3,7 @@
   <div class="form-control">
     <div class="flex justify-between items-center mb-1">
       <label class="label">
-        <span class="label-text font-medium">わんコメへの投稿</span>
+        <span class="label-text font-medium">アクション</span>
         <div class="relative">
           <span
             class="badge badge-outline ml-2 cursor-pointer flex items-center gap-1 transition-colors hover:bg-primary hover:text-white"
@@ -12,19 +12,19 @@
             @click="$emit('toggleEdit')"
           >
             <List class="h-4 w-4" />
-            <span class="pl-1"> {{ actions.length }} </span>
+            <span class="pl-1"> {{ modelValue.length }} </span>
           </span>
 
           <!-- ホバー時のプレビュー表示 -->
           <div
-            v-if="showPreview && actions.length > 0"
+            v-if="showPreview && modelValue.length > 0"
             class="absolute top-6 left-0 z-50 bg-base-100 shadow-lg rounded-lg border w-96 sm:w-160 max-h-64 overflow-y-auto"
             @mouseenter="showPreview = true"
             @mouseleave="showPreview = false"
           >
             <div class="form-control bg-base-200 p-2 rounded-lg">
               <h3 class="font-semibold border-b">アクション プレビュー</h3>
-              <PostActionsPreview :actions="actions" />
+              <PostActionsPreview :actions="modelValue" />
             </div>
 
             <div v-if="selectedScript">
@@ -38,11 +38,14 @@
       </label>
 
       <div class="flex gap-2">
+        <!-- delaySeconds調整コンポーネント -->
+        <DelaySecondsAdjuster :model-value="modelValue" @update:model-value="emit('update:modelValue', $event)" />
+
         <button
-          @click="() => useTestPost().postTestOmikujiItem(actions)"
+          @click="() => useTestPost().postTestOmikujiItem(modelValue)"
           class="btn btn-sm btn-info tooltip tooltip-top"
           data-tip="わんコメを起動すると、投稿の確認ができます"
-          :disabled="actions.length === 0"
+          :disabled="modelValue.length === 0"
         >
           <Send :size="16" />
           テスト投稿
@@ -55,7 +58,7 @@
 
         <button @click="$emit('toggleEdit')" class="btn btn-sm btn-primary" type="button">
           <Settings :size="16" />
-          詳細編集
+          アクション編集
         </button>
       </div>
     </div>
@@ -69,19 +72,20 @@
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { List, Send, FileJson, Settings } from 'lucide-vue-next'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { CommentRuleType, RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+  import { CommentRuleType, RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import { gameScriptMap } from '../GameScripts/GameScriptsMap'
   import { ScriptPreset } from '@/types'
+  import DelaySecondsAdjuster from '@ConfigComponents/postAction/DelaySecondsAdjuster.vue'
 
   // Props
   const props = defineProps<{
-    actions: PostActionType[]
+    modelValue: PostActionType[]
     category: RulesCategoryType | 'actionSets'
     selectedRuleId: string | null
   }>()
 
   // Emits
-  const emit = defineEmits(['toggleEdit', 'toggleJson'])
+  const emit = defineEmits(['update:modelValue', 'toggleEdit', 'toggleJson'])
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
@@ -93,6 +97,7 @@
   // TODO:将来TimerにもGameScriptsを入れる予定です
   const currentScriptId = computed(() => {
     if (!props.selectedRuleId) return null
+    if (props.category === 'actionSets') return null // actionSetsは script が存在しない
     const record = omikujiStore.getItem(props.category, props.selectedRuleId) as CommentRuleType
     return record.scriptId ? record.scriptId : null
   })

@@ -3,9 +3,10 @@
   <div class="space-y-2">
     <!-- ツールバー -->
     <OmikujiItemToolbar
-      :actions="modelValue"
+      :modelValue="modelValue"
       :category="category"
       :selected-rule-id="selectedRuleId"
+      @update:modelValue="updatePostActions"
       @toggleJson="toggleEditMode"
       @toggleEdit="toggleTabEditor"
     />
@@ -13,7 +14,7 @@
     <!-- PostActionsタブエディター -->
     <PostActionsTabEditor
       v-if="isTabEditorOpen"
-      :actions="modelValue"
+      :modelValue="modelValue"
       :category="category"
       @update:actions="updatePostActions"
     />
@@ -21,8 +22,8 @@
     <!-- JSON編集モード -->
     <PostActionsEditorJson
       v-if="isJsonMode"
-      :model-value="modelValue"
-      @update:model-value="updatePostActions"
+      :modelValue="modelValue"
+      @update:modelValue="updatePostActions"
       @close="isJsonMode = false"
     />
   </div>
@@ -48,7 +49,7 @@
 
   // Refs
   const isJsonMode = ref(false)
-  const isTabEditorOpen = ref(false)
+  const isTabEditorOpen = ref(props.category === 'actionSets' ? true : false)
 
   // Methods
   const toggleTabEditor = () => {
