@@ -1,14 +1,14 @@
-// src/main.ts
+// src\GameScripts\GoogolClover
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
 import { GameParams, GamePlaceholder, GameSettings, params, postActions, placeholders, settings } from './params'
 import execute from './execute'
 import { componentConfig } from './componentConfig'
 
 const pluginConfig = {
-  name: 'BomberSpin',
+  name: 'GoogolClover',
   version: '1.0.0',
-  displayName: 'ボンバースピン',
-  description: 'APPLI BOMBERSPIN2風のおみくじ',
+  displayName: 'グーゴルクローバー',
+  description: 'CloverPit風のおみくじ',
   editorColor: '#550000',
   keywords: ['ポイント', 'ランキング', 'スロット'],
   url: '',

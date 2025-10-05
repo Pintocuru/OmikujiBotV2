@@ -1,4 +1,4 @@
-// src/main.ts
+// src\GameScripts\BomberSpin\src\main.ts
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
 import { GameParams, GamePlaceholder, GameSettings, params, postActions, placeholders, settings } from './params'
 import execute from './execute'
