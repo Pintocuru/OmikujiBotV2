@@ -4,12 +4,12 @@
 export interface UserState {
   funds: number
   exp: number
+  successCount: number
 }
 
 /** ゲーム結果 */
 export interface SlotResult {
   message: string
-  symbol: string
   payout: number
   party: string
 }
@@ -17,16 +17,14 @@ export interface SlotResult {
 /** 報酬テーブルの定義 */
 export interface RewardEntry {
   name: string
-  rate: number
+  weight: number
   min: number
   max: number
-  symbol: string
 }
 
 /** スピン結果 */
 export interface SpinResult {
   isSuccess: boolean
   name: string
-  symbol: string
   multiplier: number
 }

@@ -2,16 +2,14 @@
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { SlotGame } from './game'
+import { playSlot } from './game'
 import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute'
+import { UserState } from './types'
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
-  private slotGame = new SlotGame()
-
-  // ★ userStatesをExecuteScriptで管理
-  private userStates = new Map<string, { funds: number; exp: number }>()
+  private userStates = new Map<string, UserState>()
 
   setup(settings: GameSettings): void {
     this.settings = GameSettingsSchema.parse(settings)
@@ -22,11 +20,11 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const { isParty } = this.settings
     const {} = GameParamsSchema.parse(params)
 
-    const userName = comment?.data.displayName ?? 'Unknown'
-    const userId = comment?.data.userId ?? 'unknown-id' // ★ userIdを取得
+    const userName = comment.data.displayName ?? comment.data.name
+    const userId = comment?.data.userId
 
-    // ★ userStatesとuserIdを引数として渡す
-    const result = this.slotGame.playSlot(this.userStates, userId)
+    // 純粋関数として呼び出し
+    const result = playSlot(this.userStates, userId, userName)
 
     return {
       postActions: isParty
@@ -38,7 +36,6 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
         : [],
       placeholders: {
         message: result.message,
-        symbol: result.symbol,
         payout: result.payout,
       },
     }

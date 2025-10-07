@@ -1,96 +1,93 @@
 // src/GameScripts/GoogolClover/game.ts
-import { GOAL_EXPONENT } from './constants'
+import {
+  GOAL_EXPONENT,
+  MIN_SPINS,
+  MAX_SPINS,
+  NORMALIZATION_THRESHOLD,
+  NORMALIZATION_DIVISOR,
+  CURRENCY_SYMBOL,
+} from './constants'
 import type { UserState, SlotResult } from './types'
 import { formatShort, spinSlot } from './utils'
 
-export class SlotGame {
-  /**
-   * メイン関数：スロットゲームを実行
-   * @param userStates ユーザー状態を管理するMap（ExecuteScriptから渡される）
-   * @param userId ユーザーID（comment.data.userIdから取得）
-   * @returns SlotResult 型の結果
-   */
-  playSlot(userStates: Map<string, UserState>, userId: string): SlotResult {
-    // 状態の取得または初期化
-    let state = userStates.get(userId)
+/**
+ * スロットゲームのメイン処理
+ * クラスではなく純粋関数として実装
+ */
+export function playSlot(userStates: Map<string, UserState>, userId: string, userName: string): SlotResult {
+  // 状態の取得または初期化
+  let state = userStates.get(userId) ?? { funds: 1.0, exp: 0, successCount: 0 }
 
-    if (!state) {
-      // 初回プレイ
-      state = { funds: 1.0, exp: 0 }
+  // ランダムにMIN_SPINS～MAX_SPINS回の抽選を一括実行
+  const spins = Math.floor(Math.random() * (MAX_SPINS - MIN_SPINS + 1)) + MIN_SPINS
+  let totalMultiplier = 1.0
+  let failedAt = -1
+  const multipliers: number[] = []
+
+  for (let i = 0; i < spins; i++) {
+    // このプレイセッションの開始時点での成功回数を使用
+    const result = spinSlot(state.successCount)
+
+    if (!result.isSuccess) {
+      failedAt = i + 1
+      multipliers.push(0)
+      break
     }
 
-    // ランダムに3～7回の抽選を一括実行
-    // TODO:ここは定数化
-    const spins = Math.floor(Math.random() * 6) + 10 // 3～7回
-    let totalMultiplier = 1.0
-    let failedAt = -1
-    let symbolsUsed: string[] = []
+    const currentMultiplier = 1 + result.multiplier
+    totalMultiplier *= currentMultiplier
+    multipliers.push(Math.round(result.multiplier))
+  }
 
-    for (let i = 0; i < spins; i++) {
-      const result = spinSlot()
+  // 全て成功した場合のみ、成功回数を1回増やす
+  if (failedAt < 0) {
+    state.successCount++
+  }
 
-      if (!result.isSuccess) {
-        // 失敗：ゲームオーバー
-        failedAt = i + 1
-        symbolsUsed.push(result.symbol)
-        break
-      }
+  const multipliersDisplay = multipliers.map((m) => `${m}倍`).join('/')
 
-      // 成功：倍率を累積
-      totalMultiplier *= 1 + result.multiplier
-      symbolsUsed.push(result.symbol)
-    }
-
-    // 失敗した場合
-    if (failedAt > 0) {
-      const finalDisplay = formatShort(state.funds, state.exp)
-      userStates.delete(userId) // 状態削除
-      const symbolDisplay = symbolsUsed.join('')
-
-      return {
-        message: `💣終了 ${finalDisplay} (${failedAt}回目失敗)`,
-        symbol: symbolDisplay,
-        payout: 0,
-        party: '!bombFail',
-      }
-    }
-
-    // 全て成功：資金を更新
-    state.funds *= totalMultiplier
-
-    // 正規化（funds を 1.0～10.0 の範囲に）
-    while (state.funds >= 10) {
-      state.funds /= 10
-      state.exp++
-    }
-
-    // 目標達成チェック
-    if (state.exp >= GOAL_EXPONENT) {
-      const finalDisplay = formatShort(state.funds, state.exp)
-      userStates.delete(userId) // クリア後は状態削除
-      const symbolDisplay = symbolsUsed.join('')
-
-      return {
-        message: `🌟達成! ${finalDisplay} ${spins}連勝でクリア!`,
-        symbol: symbolDisplay,
-        payout: Math.floor(state.funds * Math.pow(10, state.exp % 10)), // 適当なポイント値
-        party: '!bombWin',
-      }
-    }
-
-    // 状態を保存
-    userStates.set(userId, state)
-
-    // 結果表示（150文字以内）
-    const wonPercent = ((totalMultiplier - 1) * 100).toFixed(0)
-    const currentDisplay = formatShort(state.funds, state.exp)
-    const symbolDisplay = symbolsUsed.join('')
+  // 失敗した場合
+  if (failedAt > 0) {
+    const finalDisplay = formatShort(state.funds, state.exp)
+    userStates.delete(userId)
 
     return {
-      message: `🎊${spins}連勝 +${wonPercent}% 計${currentDisplay}`,
-      symbol: symbolDisplay,
-      payout: Math.floor((totalMultiplier - 1) * 1000), // 増加分をポイント化
-      party: '!bombSuccess',
+      message: `${userName}はサイコロを振る! ${multipliersDisplay}！userは奈落へと消えた。Result:${finalDisplay}${CURRENCY_SYMBOL}`,
+      payout: 0,
+      party: '!bombFail',
     }
+  }
+
+  // 全て成功：資金を更新
+  state.funds *= totalMultiplier
+
+  // 正規化（funds を 1.0～10.0 の範囲に）
+  while (state.funds >= NORMALIZATION_THRESHOLD) {
+    state.funds /= NORMALIZATION_DIVISOR
+    state.exp++
+  }
+
+  // 目標達成チェック
+  if (state.exp >= GOAL_EXPONENT) {
+    const finalDisplay = formatShort(state.funds, state.exp)
+    userStates.delete(userId)
+
+    return {
+      message: `${userName}はサイコロを振る! ${multipliersDisplay}！${finalDisplay}${CURRENCY_SYMBOL}獲得！出口への扉が開いた。`,
+      payout: Math.floor(state.funds * Math.pow(10, state.exp % 10)),
+      party: '!bombWin',
+    }
+  }
+
+  // 状態を保存
+  userStates.set(userId, state)
+
+  // 結果表示
+  const currentDisplay = formatShort(state.funds, state.exp)
+
+  return {
+    message: `${userName}はサイコロを振る! ${multipliersDisplay}！${currentDisplay}${CURRENCY_SYMBOL}獲得！`,
+    payout: Math.floor(totalMultiplier - 1),
+    party: '!bombSuccess',
   }
 }

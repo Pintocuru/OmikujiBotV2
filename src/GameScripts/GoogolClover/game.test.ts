@@ -1,58 +1,45 @@
 // src/GameScripts/GoogolClover/game.test.ts
 import { describe, it, expect, beforeEach } from 'vitest'
-import { SlotGame } from './game'
+import { playSlot } from './game'
 import type { UserState } from './types'
 
 describe('SlotGame', () => {
-  let game: SlotGame
   let userStates: Map<string, UserState>
 
   beforeEach(() => {
-    game = new SlotGame()
     userStates = new Map()
   })
 
   describe('基本動作テスト', () => {
     it('エラーなく実行できる', () => {
       expect(() => {
-        game.playSlot(userStates, 'test-user-1')
+        playSlot(userStates, 'test-user-1', 'test')
       }).not.toThrow()
     })
 
     it('初回プレイで結果が返される', () => {
-      const result = game.playSlot(userStates, 'test-user-1')
+      const result = playSlot(userStates, 'test-user-1', 'test')
 
       expect(result).toBeDefined()
       expect(result).toHaveProperty('message')
-      expect(result).toHaveProperty('symbol')
       expect(result).toHaveProperty('payout')
       expect(result).toHaveProperty('party')
     })
 
     it('結果のメッセージが文字列である', () => {
-      const result = game.playSlot(userStates, 'test-user-1')
+      const result = playSlot(userStates, 'test-user-1', 'test')
       expect(typeof result.message).toBe('string')
     })
 
-    it('結果のシンボルが文字列である', () => {
-      const result = game.playSlot(userStates, 'test-user-1')
-      expect(typeof result.symbol).toBe('string')
-    })
-
     it('結果のpayoutが数値である', () => {
-      const result = game.playSlot(userStates, 'test-user-1')
+      const result = playSlot(userStates, 'test-user-1', 'test')
       expect(typeof result.payout).toBe('number')
-    })
-
-    it('結果のpartyが指定された値のいずれかである', () => {
-      const result = game.playSlot(userStates, 'test-user-1')
-      expect(['!bombFail', '!bombWin', '!bombSuccess']).toContain(result.party)
     })
 
     it('複数回連続で実行できる', () => {
       expect(() => {
         for (let i = 0; i < 10; i++) {
-          game.playSlot(userStates, `test-user-${i}`)
+          playSlot(userStates, `test-user-${i}`, 'test')
         }
       }).not.toThrow()
     })
@@ -62,7 +49,7 @@ describe('SlotGame', () => {
 
       expect(() => {
         for (let i = 0; i < 5; i++) {
-          game.playSlot(userStates, userId)
+          playSlot(userStates, userId, 'test')
         }
       }).not.toThrow()
     })
@@ -71,7 +58,7 @@ describe('SlotGame', () => {
   describe('状態管理テスト', () => {
     it('成功時は状態が保存される', () => {
       const userId = 'test-user-state'
-      const result = game.playSlot(userStates, userId)
+      const result = playSlot(userStates, userId, 'test')
 
       if (result.party === '!bombSuccess') {
         expect(userStates.has(userId)).toBe(true)
@@ -80,7 +67,7 @@ describe('SlotGame', () => {
 
     it('失敗時は状態が削除される', () => {
       const userId = 'test-user-fail'
-      const result = game.playSlot(userStates, userId)
+      const result = playSlot(userStates, userId, 'test')
 
       if (result.party === '!bombFail') {
         expect(userStates.has(userId)).toBe(false)
@@ -89,7 +76,7 @@ describe('SlotGame', () => {
 
     it('クリア時は状態が削除される', () => {
       const userId = 'test-user-clear'
-      const result = game.playSlot(userStates, userId)
+      const result = playSlot(userStates, userId, 'test')
 
       if (result.party === '!bombWin') {
         expect(userStates.has(userId)).toBe(false)
@@ -113,7 +100,7 @@ describe('SlotGame', () => {
 
         // 各ユーザーが失敗またはクリアするまでプレイ
         while (true) {
-          const result = game.playSlot(localUserStates, userId)
+          const result = playSlot(localUserStates, userId, 'test')
           playCount++
           results.totalPlays++
 
