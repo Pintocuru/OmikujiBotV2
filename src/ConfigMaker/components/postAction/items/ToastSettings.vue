@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/postAction/PostActionToastSettings.vue -->
+<!-- src\ConfigMaker\components\postAction\items\ToastSettings.vue -->
 <template>
   <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
     <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">

@@ -41,12 +41,21 @@
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { DisplaySize } from '@shared/types'
 
-  const props = defineProps<{
-    displayedComments: DisplayBotMessage[]
-    removeComment: (id: string) => void
-    enterMotion?: MotionType
-    leaveMotion?: MotionType
-    textSize: DisplaySize
-    spacing: number
-  }>()
+  const props = withDefaults(
+    defineProps<{
+      displayedComments: DisplayBotMessage[]
+      removeComment: (id: string) => void
+      enterMotion?: MotionType
+      leaveMotion?: MotionType
+      textSize: DisplaySize
+      spacing: number
+    }>(),
+    {
+      removeComment: () => {},
+      enterMotion: 'slideUp',
+      leaveMotion: 'slideUp',
+      textSize: 'md',
+      spacing: 0,
+    }
+  )
 </script>

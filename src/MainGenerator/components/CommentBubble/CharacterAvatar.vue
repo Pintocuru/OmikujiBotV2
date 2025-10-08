@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/CharacterAvatar.vue -->
+<!-- src\MainGenerator\components\CommentBubble\CharacterAvatar.vue -->
 <template>
   <div
     v-if="profileImage && profileImage !== ''"

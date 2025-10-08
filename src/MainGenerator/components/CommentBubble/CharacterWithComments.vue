@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/OmikujiBot/CharacterWithComments.vue -->
+<!-- src\MainGenerator\components\CommentBubble\CharacterWithComments.vue -->
 <template>
   <div
     class="relative pointer-events-auto"

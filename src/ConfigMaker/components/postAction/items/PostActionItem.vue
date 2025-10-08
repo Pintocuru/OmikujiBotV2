@@ -1,43 +1,50 @@
-<!-- src\ConfigMaker\components\postAction\PostActionItem.vue -->
+<!-- src\ConfigMaker\components\postAction\items\PostActionItem.vue -->
 <template>
   <div class="bg-base-200 relative">
-    <!-- ActionType選択ボタン -->
-    <div class="mb-2 flex justify-center py-2 transition-colors duration-300" :class="actionTypeBackgroundClass">
-      <div class="flex gap-4">
-        <button
-          v-for="actionType in actionTypes"
-          :key="actionType.type"
-          class="btn btn-sm tooltip flex items-center gap-1"
-          :data-tip="actionType.label"
-          :class="{ 'btn-primary': action.actionType === actionType.type }"
-          @click="updateActionType(actionType.type)"
-        >
-          <component :is="actionType.icon" class="w-4 h-4" />
-          <span>{{ actionType.label }}</span>
-        </button>
+    <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
+    <div class="grid grid-cols-3 gap-4 p-4">
+      <!-- 左側: プレビューエリア -->
+      <div class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
+        <PostActionPreview :action="action" :characters="characters" :showToastsOnRight="base.showToastsOnRight" />
+      </div>
+
+      <!-- 右側: 設定エリア -->
+      <div class="col-span-2 space-y-2">
+        <!-- ActionType -->
+        <SettingItem label="🚀 アクションタイプ" description="種類を選択します">
+          <select
+            class="select select-sm w-full max-w-xs"
+            :value="action.actionType"
+            @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionType['actionType'])"
+          >
+            <option v-for="t in actionTypes" :key="t.type" :value="t.type">
+              {{ t.label }}
+            </option>
+          </select>
+        </SettingItem>
+
+        <!-- 遅延秒数（全タイプ共通） -->
+        <SettingItem label="⏱️ 遅延秒数" description="この秒数後に下記のアクションを実行します">
+          <input
+            type="number"
+            v-model.number="delaySeconds"
+            min="-1"
+            step="0.1"
+            class="input input-bordered input-sm w-32"
+            placeholder="0"
+          />
+        </SettingItem>
+
+        <!-- 動的コンポーネント表示 -->
+        <component
+          v-if="currentComponent"
+          :is="currentComponent"
+          :action="action"
+          :character-options="characterOptions"
+          @update:action="handleActionUpdate"
+        />
       </div>
     </div>
-
-    <!-- 遅延秒数（全タイプ共通） -->
-    <SettingItem label="⏱️ 遅延秒数" description="この秒数後に下記のアクションを実行します">
-      <input
-        type="number"
-        v-model.number="delaySeconds"
-        min="-1"
-        step="0.1"
-        class="input input-bordered input-sm w-32"
-        placeholder="0"
-      />
-    </SettingItem>
-
-    <!-- 動的コンポーネント表示 -->
-    <component
-      v-if="currentComponent"
-      :is="currentComponent"
-      :action="action"
-      :character-options="characterOptions"
-      @update:action="handleActionUpdate"
-    />
   </div>
 </template>
 
@@ -49,7 +56,10 @@
   import WordPartySettings from './WordPartySettings.vue'
   import ActionSetSettings from './ActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import PostActionPreview from './PostActionPreview.vue'
   import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   // Props
   const props = defineProps<{
@@ -65,6 +75,13 @@
     remove: [index: number]
     'update:action': [value: PostActionType]
   }>()
+
+  // Store
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+
+  const characters = computed(() => data.value.characters)
+  const base = computed(() => data.value.displaySettings.base)
 
   // アクションタイプの定義
   const actionTypes = [

@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/postAction/PostActionWordPartySettings.vue -->
+<!-- src\ConfigMaker\components\postAction\items\WordPartySettings.vue -->
 <template>
   <!-- WordParty -->
   <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">

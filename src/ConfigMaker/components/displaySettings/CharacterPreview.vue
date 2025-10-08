@@ -6,9 +6,9 @@
       <div class="flex justify-center">
         <template v-if="bundleCharacters || !showCharacterPersistent">
           <CharacterAvatar
-            :profile-image="firstCharacter?.image?.default"
-            :character-name="firstCharacter?.displayName"
-            :background-color="firstCharacter?.color?.backgroundColor"
+            :profile-image="character?.image?.default"
+            :character-name="character?.displayName"
+            :background-color="character?.color?.backgroundColor"
             :showCharacterFrame="showCharacterFrame"
             :displaySize="displaySize"
             :style="{ filter: brightnessFilter }"
@@ -32,12 +32,6 @@
       <div class="flex justify-center">
         <span>{{ statusText }}</span>
       </div>
-
-      <!-- サムネイル表示 -->
-      <!-- FIXME:「トースト設定」での表示に変更 -->
-      <div v-if="0" class="absolute bottom-4 right-4 z-50">
-        <CharacterThumbnailsPreview :characters="thumbnailCharacters" :displaySize="displaySize" />
-      </div>
     </div>
   </div>
 </template>
@@ -46,27 +40,38 @@
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
-  import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { DisplaySize } from '@shared/types/CommonSchema'
 
   const props = withDefaults(
     defineProps<{
       characters: Record<string, CharacterType>
-      bundleCharacters: boolean
-      showCharacterPersistent: boolean
-      showCharacterFrame: boolean
-      showCharacterThumbnail: boolean
-      displaySize: DisplaySize
+      characterKey?: string | null
+      bundleCharacters?: boolean
+      showCharacterPersistent?: boolean
+      showCharacterFrame?: boolean
+      showCharacterThumbnail?: boolean
+      displaySize?: DisplaySize
       maxDisplayCount?: number
     }>(),
     {
+      characterKeyNum: null,
+      bundleCharacters: false,
+      showCharacterPersistent: false,
+      showCharacterFrame: true,
+      showCharacterThumbnail: true,
+      displaySize: 'md',
       maxDisplayCount: 5,
     }
   )
 
-  const firstCharacter = computed(() => {
+  const character = computed(() => {
     const keys = Object.keys(props.characters)
-    return keys.length > 0 ? props.characters[keys[0]] : null
+    if (keys.length === 0) return null
+
+    const key =
+      typeof props.characterKey === 'string' && props.characterKey in props.characters ? props.characterKey : keys[0]
+
+    return props.characters[key]
   })
 
   const displayCharacters = computed(() =>
@@ -74,8 +79,6 @@
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
       .slice(0, props.maxDisplayCount)
   )
-
-  const thumbnailCharacters = computed(() => displayCharacters.value)
 
   const brightnessFilter = computed(() => (props.showCharacterPersistent ? 'brightness(60%)' : 'brightness(100%)'))
 

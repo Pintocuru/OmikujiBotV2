@@ -42,8 +42,14 @@
 
   <!-- タブコンテンツ -->
   <div>
+    <!-- アクションが空の場合 -->
+    <div v-if="props.modelValue.length === 0">
+      <NoParamsCard message="PostActionがありません" />
+      <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
+    </div>
+
     <!-- プレースホルダーリストタブの内容 -->
-    <div v-if="activeTab === -1">
+    <div v-else-if="activeTab === -1">
       <PlaceholderList :actions="props.modelValue" @open-placeholder="handleOpenPlaceholder" />
     </div>
 
@@ -58,12 +64,6 @@
         @duplicate="duplicateAction"
         @remove="removeAction"
       />
-    </div>
-
-    <!-- アクションが空の場合 -->
-    <div v-else-if="props.modelValue.length === 0">
-      <NoParamsCard message="PostActionがありません" />
-      <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
     </div>
   </div>
 </template>

@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/postAction/WordPartyField.vue -->
+<!-- src\ConfigMaker\components\postAction\items\WordPartyField.vue -->
 <template>
   <div class="flex items-center gap-2">
     <div class="flex gap-1 w-2/3">

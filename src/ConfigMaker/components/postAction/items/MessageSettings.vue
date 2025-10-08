@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/postAction/PostActionMessageSettings.vue -->
+<!-- src\ConfigMaker\components\postAction\items\MessageSettings.vue -->
 <template>
   <!-- キャラクター選択 -->
   <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
