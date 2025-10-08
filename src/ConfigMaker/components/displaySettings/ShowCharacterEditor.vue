@@ -1,15 +1,23 @@
 <!-- src\ConfigMaker\components\displaySettings\ShowCharacterEditor.vue -->
 <template>
-  <!-- キャラクターサンプル表示 -->
-  <CharacterPreview
-    :characters="data.characters"
-    :showCharacterPersistent="base.showCharacterPersistent"
-    :showCharacterFrame="base.showCharacterFrame"
-    :showCharacterThumbnail="base.showCharacterThumbnail"
-    :bundleCharacters="base.bundleCharacters"
-    :displaySize="base.displaySize"
-    :maxDisplayCount="5"
-  />
+  <div class="relative card bg-base-100">
+    <div class="card-body p-4 gap-4">
+      <!-- キャラクターサンプル表示 -->
+      <CharacterPreview
+        :characters="data.characters"
+        :showCharacterPersistent="base.showCharacterPersistent"
+        :showCharacterFrame="base.showCharacterFrame"
+        :showCharacterThumbnail="base.showCharacterThumbnail"
+        :bundleCharacters="base.bundleCharacters"
+        :displaySize="base.displaySize"
+        :maxDisplayCount="5"
+      />
+      <!-- 状態説明 -->
+      <div class="flex justify-center">
+        <span>{{ statusText }}</span>
+      </div>
+    </div>
+  </div>
 
   <!-- キャラクター画像の常時表示 -->
   <SettingItem
@@ -104,4 +112,8 @@
     showCharacterPersistent: () => resetField('showCharacterPersistent'),
     bundleCharacters: () => resetField('bundleCharacters'),
   }
+
+  const statusText = computed(() =>
+    base.value.showCharacterPersistent ? '喋る時に画像が明るくなります' : '喋る時のみ表示されます'
+  )
 </script>

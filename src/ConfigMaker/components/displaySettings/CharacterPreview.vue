@@ -1,38 +1,29 @@
 <!-- src\ConfigMaker\components\displaySettings\CharacterPreview.vue -->
 <template>
-  <div class="relative card bg-base-100">
-    <div class="card-body p-4 gap-4">
-      <!-- メインプレビュー -->
-      <div class="flex justify-center">
-        <template v-if="bundleCharacters || !showCharacterPersistent">
-          <CharacterAvatar
-            :profile-image="character?.image?.default"
-            :character-name="character?.displayName"
-            :background-color="character?.color?.backgroundColor"
-            :showCharacterFrame="showCharacterFrame"
-            :displaySize="displaySize"
-            :style="{ filter: brightnessFilter }"
-          />
-        </template>
-        <template v-else>
-          <div v-for="character in displayCharacters" :key="character.id" class="-mx-4">
-            <CharacterAvatar
-              :profile-image="character?.image?.default"
-              :character-name="character?.displayName"
-              :background-color="character?.color?.backgroundColor"
-              :showCharacterFrame="showCharacterFrame"
-              :displaySize="displaySize"
-              :style="{ filter: brightnessFilter }"
-            />
-          </div>
-        </template>
+  <!-- メインプレビュー -->
+  <div class="flex justify-center">
+    <template v-if="bundleCharacters || !showCharacterPersistent">
+      <CharacterAvatar
+        :profile-image="character?.image?.default"
+        :character-name="character?.displayName"
+        :background-color="character?.color?.backgroundColor"
+        :showCharacterFrame="showCharacterFrame"
+        :displaySize="displaySize"
+        :style="{ filter: brightnessFilter }"
+      />
+    </template>
+    <template v-else>
+      <div v-for="character in displayCharacters" :key="character.id" class="-mx-4">
+        <CharacterAvatar
+          :profile-image="character?.image?.default"
+          :character-name="character?.displayName"
+          :background-color="character?.color?.backgroundColor"
+          :showCharacterFrame="showCharacterFrame"
+          :displaySize="displaySize"
+          :style="{ filter: brightnessFilter }"
+        />
       </div>
-
-      <!-- 状態説明 -->
-      <div class="flex justify-center">
-        <span>{{ statusText }}</span>
-      </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -81,8 +72,4 @@
   )
 
   const brightnessFilter = computed(() => (props.showCharacterPersistent ? 'brightness(60%)' : 'brightness(100%)'))
-
-  const statusText = computed(() =>
-    props.showCharacterPersistent ? '喋る時に画像が明るくなります' : '喋る時のみ表示されます'
-  )
 </script>

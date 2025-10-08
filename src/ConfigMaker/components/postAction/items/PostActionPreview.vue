@@ -2,10 +2,9 @@
 <template>
   <div class="h-full flex items-center justify-center p-4">
     <!-- メッセージプレビュー -->
-    <div v-if="action.actionType === 'message'" class="w-full">
+    <div v-if="action.actionType === 'message'" class="w-full space-y-8">
       <!-- TODO:プレースホルダーの解決 -->
       <CommentBubbleItem :name="character.name" :comment="action.messageContent" :color="character.color" />
-      <!-- TODO:CharacterPreview ではなく新しいコンポーネントを作成したい -->
       <CharacterPreview :characters="characters" :characterKey="action.characterKey" />
     </div>
 
@@ -13,7 +12,7 @@
     <div v-if="action.actionType === 'toast'" class="w-full">
       <ChatBubbleItem
         :botMessage="createToastMessage()"
-        :showToastsOnRight="showToastsOnRight"
+        :showToastsOnRight="base.showToastsOnRight"
         :character="character"
       />
     </div>
@@ -34,22 +33,30 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessageSchema, CharacterType, PostActionType } from '@/types/'
-  import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
+  import { BotMessageSchema, PostActionType } from '@/types/'
   import CharacterPreview from '@/ConfigMaker/components/displaySettings/CharacterPreview.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
+  import { storeToRefs } from 'pinia'
 
   // Props
   const props = defineProps<{
     action: PostActionType
-    characters: Record<string, CharacterType>
-    showToastsOnRight: boolean
   }>()
+
+  // Store
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+
+  const characters = computed(() => data.value.characters)
+  const base = computed(() => data.value.displaySettings.base)
 
   // 現在のキャラクター
   const character = computed(() => {
-    return props.characters[props.action.characterKey] || Object.values(props.characters)[0]
+    const characterMap = characters.value
+    return characterMap[props.action.characterKey] || Object.values(characterMap)[0]
   })
 
   // トーストメッセージの作成

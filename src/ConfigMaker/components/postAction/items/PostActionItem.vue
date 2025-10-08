@@ -5,7 +5,7 @@
     <div class="grid grid-cols-3 gap-4 p-4">
       <!-- 左側: プレビューエリア -->
       <div class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
-        <PostActionPreview :action="action" :characters="characters" :showToastsOnRight="base.showToastsOnRight" />
+        <PostActionPreview :action="action" />
       </div>
 
       <!-- 右側: 設定エリア -->
@@ -58,8 +58,6 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PostActionPreview from './PostActionPreview.vue'
   import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
 
   // Props
   const props = defineProps<{
@@ -76,13 +74,6 @@
     'update:action': [value: PostActionType]
   }>()
 
-  // Store
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
-
-  const characters = computed(() => data.value.characters)
-  const base = computed(() => data.value.displaySettings.base)
-
   // アクションタイプの定義
   const actionTypes = [
     { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
@@ -90,18 +81,6 @@
     { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
     { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
   ]
-
-  // 選択されたアクションタイプに応じた背景色
-  const actionTypeBackgroundClass = computed(() => {
-    const backgroundColors = {
-      message: 'bg-yellow-700',
-      toast: 'bg-green-700',
-      wordParty: 'bg-purple-700',
-      actionSet: 'bg-red-700',
-      legacy: 'bg-gray-700',
-    }
-    return backgroundColors[props.action.actionType] || 'bg-base-300'
-  })
 
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {
