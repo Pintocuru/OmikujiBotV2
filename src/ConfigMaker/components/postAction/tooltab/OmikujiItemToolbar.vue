@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\OmikujiItemToolbar.vue -->
+<!-- src\ConfigMaker\components\postAction\tooltab\OmikujiItemToolbar.vue -->
 <template>
   <div class="form-control">
     <div class="flex justify-between items-center mb-1">
@@ -67,15 +67,15 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
-  import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { List, Send, FileJson, Settings } from 'lucide-vue-next'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { CommentRuleType, RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import { gameScriptMap } from '../GameScripts/GameScriptsMap'
   import { ScriptPreset } from '@/types'
-  import DelaySecondsAdjuster from '@ConfigComponents/postAction/DelaySecondsAdjuster.vue'
+  import { CommentRuleType, RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
+  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
+  import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
+  import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { List, Send, FileJson, Settings } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{

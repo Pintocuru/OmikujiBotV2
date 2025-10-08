@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\PostActionActionSetSettings.vue -->
+<!-- src\ConfigMaker\components\postAction\items\ActionSetSettings.vue -->
 <template>
   <SettingItem label="📦 アクションセット" description="定義されたセットを呼び出して、演出をまとめて実行します">
     <div class="space-y-2">

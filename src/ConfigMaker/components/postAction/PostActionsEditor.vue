@@ -12,7 +12,7 @@
     />
 
     <!-- PostActionsタブエディター -->
-    <PostActionsTabEditor
+    <PostActionsTabs
       v-if="isTabEditorOpen"
       :modelValue="modelValue"
       :category="category"
@@ -31,8 +31,8 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/OmikujiItemToolbar.vue'
-  import PostActionsTabEditor from '@ConfigComponents/postAction/PostActionsTabEditor.vue'
+  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/tooltab/OmikujiItemToolbar.vue'
+  import PostActionsTabs from './tooltab/PostActionsTabs.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'

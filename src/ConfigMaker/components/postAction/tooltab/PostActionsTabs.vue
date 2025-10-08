@@ -70,15 +70,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import PostActionItem from './PostActionItem.vue'
-  import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
-  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import PostActionRow from './PostActionRow.vue'
-  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
-  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
-  import { usePostActionsTab } from './composables/usePostActionsTab'
   import { RulesCategoryType } from '@/types'
+  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import PostActionRow from './PostActionRow.vue'
+  import { usePostActionsTab } from '../composables/usePostActionsTab'
+  import PostActionItem from '../items/PostActionItem.vue'
+  import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
+  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{
     modelValue: PostActionType[]

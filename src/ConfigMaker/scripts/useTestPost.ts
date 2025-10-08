@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/useTestPost.ts - テスト投稿用
+// src/ConfigMaker/script/useTestPost.ts
 import { computed } from 'vue'
 import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiItemType, OmikujiDataType, RuleType } from '@/types/'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'

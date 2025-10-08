@@ -47,7 +47,7 @@
   import { ref, computed, Ref, watch } from 'vue'
   import { emotionLabels, CharacterEmotionType } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
-  import IconPreviewModal from '@ConfigComponents/postAction/IconPreviewModal.vue'
+  import IconPreviewModal from '@/ConfigMaker/components/postAction/items/IconPreviewModal.vue'
   import { User } from 'lucide-vue-next'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
 

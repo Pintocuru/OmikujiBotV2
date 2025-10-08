@@ -44,10 +44,10 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType, RulesCategoryType } from '@/types/'
-  import PostActionMessageSettings from './PostActionMessageSettings.vue'
-  import PostActionToastSettings from './PostActionToastSettings.vue'
-  import PostActionWordPartySettings from './PostActionWordPartySettings.vue'
-  import PostActionActionSetSettings from './PostActionActionSetSettings.vue'
+  import MessageSettings from './MessageSettings.vue'
+  import ToastSettings from './ToastSettings.vue'
+  import WordPartySettings from './WordPartySettings.vue'
+  import ActionSetSettings from './ActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
@@ -89,10 +89,10 @@
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {
     const componentMap = {
-      message: PostActionMessageSettings,
-      toast: PostActionToastSettings,
-      wordParty: PostActionWordPartySettings,
-      actionSet: PostActionActionSetSettings,
+      message: MessageSettings,
+      toast: ToastSettings,
+      wordParty: WordPartySettings,
+      actionSet: ActionSetSettings,
       legacy: null,
     }
 

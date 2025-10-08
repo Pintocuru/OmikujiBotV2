@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
   import { PostActionType } from '@/types/'
-  import PostActionRow from './PostActionRow.vue'
+  import PostActionRow from './tooltab/PostActionRow.vue'
 
   const props = defineProps<{
     actions: PostActionType[]
