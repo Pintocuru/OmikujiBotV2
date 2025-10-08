@@ -144,7 +144,7 @@ function updatePlaceholderReferences(oldId: string, newId: string): void {
 /**
  * ID更新戦略マップ
  */
-// TODO:actionSets を書く
+// FIXME:actionSets を書く
 export const updateStrategies: Record<RecordCategoryType, IdUpdateStrategy<RecordCategoryType>> = {
   characters: {
     updateId: updateCharacterId,
@@ -153,6 +153,10 @@ export const updateStrategies: Record<RecordCategoryType, IdUpdateStrategy<Recor
   placeholders: {
     updateId: updatePlaceholderId,
     updateReferences: updatePlaceholderReferences,
+  },
+  actionSets: {
+    // @ts-ignore 未実装のため
+    updateId: (oldId, newId) => updateRuleId('actionSets', oldId, newId),
   },
   comments: {
     updateId: (oldId, newId) => updateRuleId('comments', oldId, newId),

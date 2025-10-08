@@ -1,4 +1,4 @@
-// src/execute.ts
+// src\GameScripts\GoogolClover\execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
@@ -27,13 +27,18 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const result = playSlot(this.userStates, userId, userName)
 
     return {
-      postActions: isParty
-        ? [
-            { actionType: 'wordParty', delaySeconds: 0, wordParty: '!bombBack' },
-            { actionType: 'wordParty', delaySeconds: 0, wordParty: result.party },
-            { actionType: 'wordParty', delaySeconds: 1.8, wordParty: '!bombFire' },
-          ]
-        : [],
+      postActions:
+        result.party === '!bombFail'
+          ? [
+              { actionType: 'wordParty', delaySeconds: -1, wordParty: '!omikuji_huru' },
+              { actionType: 'wordParty', delaySeconds: 0, wordParty: '!omikuji_07' },
+              { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
+            ]
+          : [
+              { actionType: 'wordParty', delaySeconds: -1, wordParty: '!omikuji_huru' },
+              { actionType: 'wordParty', delaySeconds: 0, wordParty: '!omikuji_01' },
+              { actionType: 'wordParty', delaySeconds: 1, wordParty: '!レベルアップ' },
+            ],
       placeholders: {
         message: result.message,
         payout: result.payout,

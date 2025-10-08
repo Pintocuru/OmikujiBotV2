@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\actionSets\ActionSetsEditor.vue -->
 <template>
-  <!-- 便利ボタン群:actionSets でも使えるよう改良したい
+  <!-- TODO:便利ボタン群:actionSets でも使えるよう改良したい
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="actionSets" />
   </div>

@@ -13,17 +13,11 @@ export const MIN_SPINS = 5
 /** スピン回数の最大値 */
 export const MAX_SPINS = 5
 
-/** 資金の正規化基準値 */
-export const NORMALIZATION_THRESHOLD = 10
-
-/** 資金の正規化除数 */
-export const NORMALIZATION_DIVISOR = 10
-
 /** 通貨単位 */
 export const CURRENCY_SYMBOL = '☘️'
 
 /** 小数点以下の表示桁数 */
-export const DECIMAL_PLACES = 5
+export const DECIMAL_PLACES = 2
 
 /** 成功役テーブル（重さベース） */
 export const REWARD_TABLE: RewardEntry[] = [

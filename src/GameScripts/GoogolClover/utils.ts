@@ -9,7 +9,7 @@ export function formatShort(funds: number, exp: number): string {
   if (exp <= 6) {
     return funds.toFixed(0).replace(/\.00$/, '')
   }
-  return `${funds.toFixed(DECIMAL_PLACES)}e${exp}`
+  return `${funds.toFixed(DECIMAL_PLACES)}の${exp}乗`
 }
 
 /**

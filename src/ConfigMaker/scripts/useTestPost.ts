@@ -64,6 +64,7 @@ export function useTestPost() {
   const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
     const rule = selectedRule.value
     if (!rule) {
+      console.log(actions)
       toast.error('テスト投稿の対象となるルールが選択されていません。')
       return
     }
@@ -85,7 +86,8 @@ export function useTestPost() {
       })
     }
 
-    const botMessageArray = processor.executeOmikujiProcess(MockComment('suika'), rule, testOmikujiItem)
+    const mockComment = MockComment('suika')
+    const botMessageArray = processor.executeOmikujiProcess(mockComment, rule, testOmikujiItem)
 
     if (drawOmikuji) {
       showOmikujiResultToast(drawOmikuji, actions)

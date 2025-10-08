@@ -26,23 +26,22 @@
   import { PostActionType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { checkCircularReference } from '@/MainGenerator/scripts/OmikujiProcess/ActionSetValidator'
   import { storeToRefs } from 'pinia'
   import { XCircle } from 'lucide-vue-next'
 
   const props = defineProps<{
     action: PostActionType
-    currentKey?: string // 現在編集中のアクションセットのキー
+    currentKey?: string
   }>()
 
   const emit = defineEmits<{
     'update:action': [action: PostActionType]
   }>()
 
-  // OmikujiDataをinject（親コンポーネントでprovideされている前提）
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  // 共通のupdateAction関数
   const updateAction = (updates: Partial<PostActionType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
@@ -52,48 +51,13 @@
     set: (value) => updateAction({ actionSetKey: value }),
   })
 
-  /**
-   * 循環参照をチェックする関数
-   */
-  const checkCircularReference = (targetKey: string, visited: Set<string> = new Set()): string[] | null => {
-    if (!data.value?.actionSets) return null
-    if (!targetKey) return null
-
-    // 自分自身を参照している場合
-    if (targetKey === props.currentKey) {
-      return [props.currentKey || '', targetKey]
-    }
-
-    // 既に訪問済みなら循環参照
-    if (visited.has(targetKey)) {
-      return [targetKey]
-    }
-
-    const actionSet = data.value.actionSets[targetKey]
-    if (!actionSet?.postActions) return null
-
-    visited.add(targetKey)
-
-    // このアクションセット内のすべてのアクションをチェック
-    for (const action of actionSet.postActions) {
-      if (action.actionType === 'actionSet' && action.actionSetKey) {
-        const circularPath = checkCircularReference(action.actionSetKey, new Set(visited))
-        if (circularPath) {
-          return [targetKey, ...circularPath]
-        }
-      }
-    }
-
-    return null
-  }
-
   // 利用可能なアクションセットのリスト
   const availableActionSets = computed(() => {
     if (!data.value?.actionSets) return []
 
     return Object.entries(data.value.actionSets).map(([key, actionSet]) => {
       const isSelf = key === props.currentKey
-      const circularPath = checkCircularReference(key)
+      const circularPath = checkCircularReference(key, data.value.actionSets, props.currentKey)
 
       return {
         key,
@@ -106,14 +70,14 @@
 
   // 循環参照があるかチェック
   const hasCircularReference = computed(() => {
-    if (!actionSetKey.value) return false
-    return checkCircularReference(actionSetKey.value) !== null
+    if (!actionSetKey.value || !data.value?.actionSets) return false
+    return checkCircularReference(actionSetKey.value, data.value.actionSets, props.currentKey) !== null
   })
 
   // 循環参照の経路を表示用に整形
   const circularReferencePath = computed(() => {
-    if (!actionSetKey.value) return ''
-    const path = checkCircularReference(actionSetKey.value)
+    if (!actionSetKey.value || !data.value?.actionSets) return ''
+    const path = checkCircularReference(actionSetKey.value, data.value.actionSets, props.currentKey)
     if (!path) return ''
 
     return path

@@ -1,12 +1,5 @@
 // src/GameScripts/GoogolClover/game.ts
-import {
-  GOAL_EXPONENT,
-  MIN_SPINS,
-  MAX_SPINS,
-  NORMALIZATION_THRESHOLD,
-  NORMALIZATION_DIVISOR,
-  CURRENCY_SYMBOL,
-} from './constants'
+import { GOAL_EXPONENT, MIN_SPINS, MAX_SPINS, CURRENCY_SYMBOL } from './constants'
 import type { UserState, SlotResult } from './types'
 import { formatShort, spinSlot } from './utils'
 
@@ -16,7 +9,7 @@ import { formatShort, spinSlot } from './utils'
  */
 export function playSlot(userStates: Map<string, UserState>, userId: string, userName: string): SlotResult {
   // 状態の取得または初期化
-  let state = userStates.get(userId) ?? { funds: 1.0, exp: 0, successCount: 0 }
+  let state = userStates.get(userId) ?? { funds: 1.0, exp: 0, successCount: 0, isGoogol: false }
 
   // ランダムにMIN_SPINS～MAX_SPINS回の抽選を一括実行
   const spins = Math.floor(Math.random() * (MAX_SPINS - MIN_SPINS + 1)) + MIN_SPINS
@@ -40,11 +33,9 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
   }
 
   // 全て成功した場合のみ、成功回数を1回増やす
-  if (failedAt < 0) {
-    state.successCount++
-  }
+  if (failedAt < 0) state.successCount++
 
-  const multipliersDisplay = multipliers.map((m) => `${m}倍`).join('/')
+  const multipliersDisplay = multipliers.map((m) => `${m}`).join('×')
 
   // 失敗した場合
   if (failedAt > 0) {
@@ -52,7 +43,7 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
     userStates.delete(userId)
 
     return {
-      message: `${userName}はサイコロを振る! ${multipliersDisplay}！userは奈落へと消えた。Result:${finalDisplay}${CURRENCY_SYMBOL}`,
+      message: `${userName}はサイコロを振る! ${multipliersDisplay}!${userName}は奈落へと消えた。`, // Result:${finalDisplay}${CURRENCY_SYMBOL}
       payout: 0,
       party: '!bombFail',
     }
@@ -62,6 +53,8 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
   state.funds *= totalMultiplier
 
   // 正規化（funds を 1.0～10.0 の範囲に）
+  const NORMALIZATION_THRESHOLD = 10 // 資金の正規化基準値
+  const NORMALIZATION_DIVISOR = 10 // 資金の正規化除数
   while (state.funds >= NORMALIZATION_THRESHOLD) {
     state.funds /= NORMALIZATION_DIVISOR
     state.exp++
@@ -69,11 +62,15 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
 
   // 目標達成チェック
   if (state.exp >= GOAL_EXPONENT) {
+    let exitVoice = ''
     const finalDisplay = formatShort(state.funds, state.exp)
-    userStates.delete(userId)
+    if (!state.isGoogol) {
+      exitVoice = '出口への扉が開いた。'
+      state.isGoogol = true
+    }
 
     return {
-      message: `${userName}はサイコロを振る! ${multipliersDisplay}！${finalDisplay}${CURRENCY_SYMBOL}獲得！出口への扉が開いた。`,
+      message: `${userName}はサイコロを振る! ${multipliersDisplay}!${finalDisplay}${CURRENCY_SYMBOL}獲得!${exitVoice}`,
       payout: Math.floor(state.funds * Math.pow(10, state.exp % 10)),
       party: '!bombWin',
     }
@@ -86,7 +83,7 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
   const currentDisplay = formatShort(state.funds, state.exp)
 
   return {
-    message: `${userName}はサイコロを振る! ${multipliersDisplay}！${currentDisplay}${CURRENCY_SYMBOL}獲得！`,
+    message: `${userName}はサイコロを振る! ${multipliersDisplay}!${currentDisplay}${CURRENCY_SYMBOL}獲得!`,
     payout: Math.floor(totalMultiplier - 1),
     party: '!bombSuccess',
   }

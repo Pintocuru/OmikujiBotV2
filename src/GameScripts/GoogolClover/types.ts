@@ -5,6 +5,7 @@ export interface UserState {
   funds: number
   exp: number
   successCount: number
+  isGoogol: boolean
 }
 
 /** ゲーム結果 */
