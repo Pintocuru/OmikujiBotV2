@@ -63,31 +63,32 @@ export function useTestPost() {
 
   const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
     const rule = selectedRule.value
-    if (!rule) {
-      console.log(actions)
-      toast.error('テスト投稿の対象となるルールが選択されていません。')
-      return
-    }
-
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
     const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)
 
-    let testOmikujiItem: OmikujiItemType
-
-    if (drawOmikuji) {
-      // 全体テストから呼ばれた場合
-      testOmikujiItem = drawOmikuji
-      testOmikujiItem.postActions = actions
-    } else {
-      // 個別テストの場合: ダミーのランク情報を設定
-      testOmikujiItem = OmikujiItemSchema.parse({
-        postActions: actions,
-        rankingScore: 1, // ダミーのランク（常に1位として扱う）
-      })
-    }
-
     const mockComment = MockComment('suika')
-    const botMessageArray = processor.executeOmikujiProcess(mockComment, rule, testOmikujiItem)
+    let botMessageArray: BotMessage[]
+
+    if (!rule) {
+      // ルールがない場合は簡易実行（アクションのみをテスト）
+      console.log('ルールなしでアクションのみをテスト実行します', actions)
+      botMessageArray = processor.executePostActionsOnly(actions, mockComment)
+    } else {
+      // ルールがある場合は完全な実行
+      let testOmikujiItem: OmikujiItemType
+
+      if (drawOmikuji) {
+        testOmikujiItem = drawOmikuji
+        testOmikujiItem.postActions = actions
+      } else {
+        testOmikujiItem = OmikujiItemSchema.parse({
+          postActions: actions,
+          rankingScore: 1,
+        })
+      }
+
+      botMessageArray = processor.executeOmikujiProcess(mockComment, rule, testOmikujiItem)
+    }
 
     if (drawOmikuji) {
       showOmikujiResultToast(drawOmikuji, actions)
