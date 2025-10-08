@@ -18,26 +18,28 @@
 <script setup lang="ts">
   import { ref, computed, nextTick, watch, onMounted, onBeforeUnmount } from 'vue'
   import { MotionVariants, useMotion } from '@vueuse/motion'
-  import { MotionType, motionVariants } from './MotionVariants'
+  import { LoopMotionType, MotionType, motionVariants } from './MotionVariants'
 
   // Props定義
-  interface Props {
-    visible?: boolean
-    enterMotion?: MotionType
-    leaveMotion?: MotionType
-    motionKey?: string
-    autoHide?: boolean
-    hideDelay?: number
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    visible: true,
-    enterMotion: 'slideUp',
-    leaveMotion: 'slideUp',
-    motionKey: 'motion',
-    autoHide: false,
-    hideDelay: 3000,
-  })
+  // TODO: LoopMotionType も許可したい
+  const props = withDefaults(
+    defineProps<{
+      visible?: boolean
+      enterMotion?: MotionType
+      leaveMotion?: MotionType
+      motionKey?: string
+      autoHide?: boolean
+      hideDelay?: number
+    }>(),
+    {
+      visible: true,
+      enterMotion: 'none',
+      leaveMotion: 'none',
+      motionKey: 'motion',
+      autoHide: false,
+      hideDelay: 3000,
+    }
+  )
 
   // Emits定義
   const emit = defineEmits<{

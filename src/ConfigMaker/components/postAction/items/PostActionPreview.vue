@@ -1,11 +1,23 @@
 <!-- src\ConfigMaker\components\postAction\items\PostActionPreview.vue -->
 <template>
-  <div class="h-full flex items-center justify-center p-4">
+  <div class="h-full flex items-center justify-center">
     <!-- メッセージプレビュー -->
     <div v-if="action.actionType === 'message'" class="w-full space-y-8">
-      <!-- TODO:プレースホルダーの解決 -->
-      <CommentBubbleItem :name="character.name" :comment="action.messageContent" :color="character.color" />
-      <CharacterPreview :characters="characters" :characterKey="action.characterKey" />
+      <CommentBubbleItem
+        :name="character.name"
+        :comment="displayedMessage"
+        :color="character.color"
+        @click="handleCommentClick"
+        class="cursor-pointer"
+      />
+      <MotionWrapper :enter-motion="action.enterMotion" :auto-hide="false">
+        <CharacterPreview
+          :characters="characters"
+          :characterKey="action.characterKey"
+          :iconKey="action.iconKey"
+          :showCharacterFrame="base.showCharacterFrame"
+        />
+      </MotionWrapper>
     </div>
 
     <!-- トーストプレビュー -->
@@ -32,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { BotMessageSchema, PostActionType } from '@/types/'
   import CharacterPreview from '@/ConfigMaker/components/displaySettings/CharacterPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
@@ -40,6 +52,8 @@
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
   import { storeToRefs } from 'pinia'
+  import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
+  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
 
   // Props
   const props = defineProps<{
@@ -52,6 +66,22 @@
 
   const characters = computed(() => data.value.characters)
   const base = computed(() => data.value.displaySettings.base)
+
+  const refreshKey = ref(0)
+  const displayedMessage = computed(() => {
+    void refreshKey.value // 再計算を強制
+    return processMessage()
+  })
+
+  // プレースホルダー置換
+  const processMessage = () => {
+    const placeProcess = new PlaceholderProcessor(data.value.placeholders)
+    return placeProcess.processText(props.action.messageContent)
+  }
+
+  const handleCommentClick = () => {
+    refreshKey.value++ // 再計算を強制
+  }
 
   // 現在のキャラクター
   const character = computed(() => {

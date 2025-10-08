@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\MotionVariants\MotionVariantsBase.ts
 import { MotionVariants } from '@vueuse/motion'
-import { MotionType } from './MotionVariants'
+import { MotionType } from '../MotionVariants'
 
 // スケール・ズーム系
 export const scaleVariants = {

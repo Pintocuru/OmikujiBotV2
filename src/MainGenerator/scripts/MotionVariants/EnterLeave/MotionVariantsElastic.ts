@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\MotionVariants\MotionVariantsBase.ts
 import { MotionVariants } from '@vueuse/motion'
-import { MotionType } from './MotionVariants'
+import { MotionType } from '../MotionVariants'
 
 // 弾性・特殊系
 export const elasticVariants = {

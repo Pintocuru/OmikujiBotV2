@@ -4,7 +4,7 @@
   <div class="flex justify-center">
     <template v-if="bundleCharacters || !showCharacterPersistent">
       <CharacterAvatar
-        :profile-image="character?.image?.default"
+        :profile-image="character?.image?.[iconKey]"
         :character-name="character?.displayName"
         :background-color="character?.color?.backgroundColor"
         :showCharacterFrame="showCharacterFrame"
@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import { DisplaySize } from '@shared/types/CommonSchema'
 
@@ -37,6 +37,7 @@
     defineProps<{
       characters: Record<string, CharacterType>
       characterKey?: string | null
+      iconKey?: CharacterEmotionType
       bundleCharacters?: boolean
       showCharacterPersistent?: boolean
       showCharacterFrame?: boolean
@@ -45,7 +46,8 @@
       maxDisplayCount?: number
     }>(),
     {
-      characterKeyNum: null,
+      characterKey: null,
+      iconKey: 'default',
       bundleCharacters: false,
       showCharacterPersistent: false,
       showCharacterFrame: true,
