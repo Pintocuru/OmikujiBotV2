@@ -5,7 +5,7 @@
     <div v-if="action.actionType === 'message'" class="w-full space-y-8">
       <CommentBubbleItem
         :name="character.name"
-        :comment="displayedMessage"
+        :comment="messageDisplay"
         :color="character.color"
         @click="handleCommentClick"
         class="cursor-pointer"
@@ -26,6 +26,8 @@
         :botMessage="createToastMessage()"
         :showToastsOnRight="base.showToastsOnRight"
         :character="character"
+        @click="handleCommentClick"
+        class="cursor-pointer"
       />
     </div>
 
@@ -74,20 +76,33 @@
   const base = computed(() => data.value.displaySettings.base)
 
   const refreshKey = ref(0)
-  const displayedMessage = computed(() => {
+
+  // メッセージのプレビュー
+  const messageDisplay = computed(() => {
     void refreshKey.value // 再計算を強制
-    return processMessage()
+    return processMessage(props.action.messageContent)
+  })
+
+  // FIXME:クリックしても再表示されないので修正
+  const toastDisplay = computed(() => {
+    void refreshKey.value // 再計算を強制
+    return processMessage(props.action.messageToast ?? '未記入')
   })
 
   // プレースホルダー置換
-  const processMessage = () => {
+  const processMessage = (message: string) => {
     const placeProcess = new PlaceholderProcessor(data.value.placeholders)
-    return placeProcess.processText(props.action.messageContent)
+    placeProcess.updateResolvedValues({
+      user: 'テストユーザー',
+      tc: '[個人コメント数]',
+      lc: '[配信コメント数]',
+      viewer: '[視聴者数]',
+      upVote: '[高評価数]',
+    })
+    return placeProcess.processText(message)
   }
 
-  const handleCommentClick = () => {
-    refreshKey.value++ // 再計算を強制
-  }
+  const handleCommentClick = () => refreshKey.value++
 
   // 現在のキャラクター
   const character = computed(() => {
@@ -100,7 +115,7 @@
     if (!character.value) return undefined
     return BotMessageSchema.parse({
       color: character.value.color,
-      comment: props.action.messageToast ?? '未記入',
+      comment: toastDisplay.value,
     })
   }
 </script>

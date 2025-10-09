@@ -560,7 +560,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-08T02:57:17.672Z",
+      "updatedAt": "2025-10-09T03:48:20.133Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1215,7 +1215,7 @@
       "key": "HondaJankenReadyB",
       "name": "じゃんけん:出す前の動作(キャラB)",
       "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2025-10-08T01:19:50.596Z",
+      "updatedAt": "2025-10-09T04:38:49.771Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1231,14 +1231,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。"
     },
     "HondaJankenRockA": {
       "id": "HondaJankenRockA",
       "key": "HondaJankenRockA",
       "name": "じゃんけん:グーA",
       "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2025-10-08T01:09:12.814Z",
+      "updatedAt": "2025-10-09T04:39:34.537Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1282,14 +1283,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。"
     },
     "HondaJankenRockB": {
       "id": "HondaJankenRockB",
       "key": "HondaJankenRockB",
       "name": "じゃんけん:グーB",
       "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2025-10-08T01:20:30.270Z",
+      "updatedAt": "2025-10-09T04:39:58.511Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1333,14 +1335,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。"
     },
     "HondaJankenScissorsA": {
       "id": "HondaJankenScissorsA",
       "key": "HondaJankenScissorsA",
       "name": "じゃんけん:チョキA",
       "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2025-10-08T01:28:55.730Z",
+      "updatedAt": "2025-10-09T04:41:04.735Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1384,14 +1387,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。"
     },
     "HondaJankenScissorsB": {
       "id": "HondaJankenScissorsB",
       "key": "HondaJankenScissorsB",
       "name": "じゃんけん:チョキB",
       "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2025-10-08T01:31:24.013Z",
+      "updatedAt": "2025-10-09T04:40:42.565Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1435,14 +1439,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?"
     },
     "HondaJankenPaperA": {
       "id": "HondaJankenPaperA",
       "key": "HondaJankenPaperA",
       "name": "じゃんけん:パーA",
       "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2025-10-08T01:37:25.598Z",
+      "updatedAt": "2025-10-09T04:41:23.948Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1486,14 +1491,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。"
     },
     "HondaJankenPaperB": {
       "id": "HondaJankenPaperB",
       "key": "HondaJankenPaperB",
       "name": "じゃんけん:パーB",
       "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2025-10-08T01:35:26.802Z",
+      "updatedAt": "2025-10-09T04:41:42.408Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1537,14 +1543,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
     },
     "HondaJankenVictoryA": {
       "id": "HondaJankenVictoryA",
       "key": "HondaJankenVictoryA",
       "name": "じゃんけん:勝利A",
       "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2025-10-08T01:38:25.621Z",
+      "updatedAt": "2025-10-09T04:42:15.068Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1588,14 +1595,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryB": {
       "id": "HondaJankenVictoryB",
       "key": "HondaJankenVictoryB",
       "name": "じゃんけん:勝利B",
       "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2025-10-08T01:41:56.095Z",
+      "updatedAt": "2025-10-09T04:42:16.620Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1639,14 +1647,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryRockA": {
       "id": "HondaJankenVictoryRockA",
       "key": "HondaJankenVictoryRockA",
       "name": "じゃんけん:グー勝利A",
       "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2025-10-08T01:42:35.026Z",
+      "updatedAt": "2025-10-09T04:42:18.539Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1690,14 +1699,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryRockB": {
       "id": "HondaJankenVictoryRockB",
       "key": "HondaJankenVictoryRockB",
       "name": "じゃんけん:グー勝利B",
       "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2025-10-08T01:48:59.123Z",
+      "updatedAt": "2025-10-09T04:42:20.302Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1741,14 +1751,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryScissorsA": {
       "id": "HondaJankenVictoryScissorsA",
       "key": "HondaJankenVictoryScissorsA",
       "name": "じゃんけん:チョキ勝利A",
       "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2025-10-08T01:50:00.409Z",
+      "updatedAt": "2025-10-09T04:42:22.156Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1792,14 +1803,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryScissorsB": {
       "id": "HondaJankenVictoryScissorsB",
       "key": "HondaJankenVictoryScissorsB",
       "name": "じゃんけん:チョキ勝利B",
       "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2025-10-08T01:50:36.010Z",
+      "updatedAt": "2025-10-09T04:42:23.948Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1843,14 +1855,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryPaperA": {
       "id": "HondaJankenVictoryPaperA",
       "key": "HondaJankenVictoryPaperA",
       "name": "じゃんけん:パー勝利A",
       "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2025-10-08T01:51:52.768Z",
+      "updatedAt": "2025-10-09T04:42:26.302Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1894,14 +1907,15 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     },
     "HondaJankenVictoryPaperB": {
       "id": "HondaJankenVictoryPaperB",
       "key": "HondaJankenVictoryPaperB",
       "name": "じゃんけん:パー勝利B",
       "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2025-10-08T01:52:33.099Z",
+      "updatedAt": "2025-10-09T04:42:28.275Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1945,7 +1959,8 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ]
+      ],
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
     }
   },
   "placeholders": {
@@ -3501,6 +3516,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "basic",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "basic",
