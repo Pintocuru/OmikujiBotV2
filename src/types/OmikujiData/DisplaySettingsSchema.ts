@@ -69,6 +69,7 @@ const visibilitySchema = z.object({
   // 基本コンポーネント
   comments: AccessLevelSchema.default('basic').catch('basic'), // comments
   timers: AccessLevelSchema.default('basic').catch('basic'), // timers
+  actionSets: AccessLevelSchema.default('basic').catch('basic'), // actionSets
   placeholders: AccessLevelSchema.default('basic').catch('basic'), // placeholders
   characters: AccessLevelSchema.default('basic').catch('basic'), // characters
   // コンポーネントの特定の箇所

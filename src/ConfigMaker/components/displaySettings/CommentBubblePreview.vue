@@ -65,23 +65,24 @@
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
 
   // Props定義（元のコンポーネントと同じ）
-  interface Props {
-    color: CharacterColorType
-    textSize?: DisplaySize
-    customClasses?: string | undefined
-    isSlider?: boolean
-    fontFamily?: FontFamilyType
-    bubbleMotionEnter?: MotionType
-    bubbleMotionLeave?: MotionType
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    textSize: 'md',
-    fontFamily: 'default',
-    isSlider: false,
-    bubbleMotionEnter: 'slideUp',
-    bubbleMotionLeave: 'slideUp',
-  })
+  const props = withDefaults(
+    defineProps<{
+      color: CharacterColorType
+      textSize?: DisplaySize
+      customClasses?: string | undefined
+      isSlider?: boolean
+      fontFamily?: FontFamilyType
+      bubbleMotionEnter?: MotionType
+      bubbleMotionLeave?: MotionType
+    }>(),
+    {
+      textSize: 'md',
+      fontFamily: 'default',
+      isSlider: false,
+      bubbleMotionEnter: 'slideUp',
+      bubbleMotionLeave: 'slideUp',
+    }
+  )
 
   // フォントクラスの算出
   const fontClass = computed(() => useFontFamily(props.fontFamily))
