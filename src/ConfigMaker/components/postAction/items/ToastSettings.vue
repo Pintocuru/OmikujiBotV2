@@ -24,7 +24,7 @@
   </SettingItem>
 
   <!-- サウンド -->
-  <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+  <SettingItem v-if="isDev" label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
     <input
       type="text"
       v-model="sound"

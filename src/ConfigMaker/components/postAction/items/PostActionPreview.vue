@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\postAction\items\PostActionPreview.vue -->
 <template>
-  <div class="h-full flex items-center justify-center">
+  <div class="h-full items-center justify-center space-y-4">
     <!-- メッセージプレビュー -->
     <div v-if="action.actionType === 'message'" class="w-full space-y-8">
       <CommentBubbleItem
@@ -40,6 +40,11 @@
       <MessagesSquare :size="80" class="mx-auto text-red-500" />
       <p class="text-sm opacity-70 mt-2">アクションセット</p>
     </div>
+
+    <!-- WordPartyボタン -->
+    <div v-if="action.actionType !== 'actionSet' && action.wordParty !== ''" class="w-full text-center">
+      <WordPartyTestButton label="WordPartyのテスト実行" :pattern="action.wordParty" />
+    </div>
   </div>
 </template>
 
@@ -50,6 +55,7 @@
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
+  import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
   import { storeToRefs } from 'pinia'
   import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'

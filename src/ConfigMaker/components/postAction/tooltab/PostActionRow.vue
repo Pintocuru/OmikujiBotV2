@@ -29,7 +29,7 @@
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
-  import { MessageSquare, Bell, PartyPopper } from 'lucide-vue-next'
+  import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{
     action: PostActionType
@@ -48,6 +48,9 @@
         break
       case 'wordParty':
         list.push(PartyPopper)
+        break
+      case 'actionSet':
+        list.push(MessagesSquare)
         break
     }
     return list

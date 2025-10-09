@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\postAction\items\WordPartyField.vue -->
 <template>
   <div class="flex items-center gap-2">
-    <div class="flex gap-1 w-2/3">
+    <div class="flex gap-1 w-full">
       <div class="tabs tabs-boxed tabs-sm">
         <button @click="setInputMode('select')" class="tab tab-sm" :class="{ 'tab-active': inputMode === 'select' }">
           選択

@@ -17,7 +17,7 @@
   <!-- エンターモーション -->
   <SettingItem
     v-if="isDev && characterKey !== ''"
-    label="✨ 表示アニメーション"
+    label="✨ 表示アニメーション(dev)"
     description="キャラクターにかかるアニメーションを選択"
   >
     <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
@@ -44,7 +44,7 @@
   </SettingItem>
 
   <!-- サウンド -->
-  <SettingItem v-if="isDev" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+  <SettingItem v-if="isDev" label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
     <input
       type="text"
       v-model="sound"
