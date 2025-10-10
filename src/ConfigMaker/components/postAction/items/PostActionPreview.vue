@@ -4,7 +4,7 @@
     <!-- メッセージプレビュー -->
     <div v-if="action.actionType === 'message'" class="w-full space-y-8">
       <CommentBubbleItem
-        :name="character.name"
+        :name="character.displayName"
         :comment="messageDisplay"
         :color="character.color"
         @click="handleCommentClick"

@@ -5,4 +5,4 @@
  */
 export const BUILD_DATE = 'ver2025.10.10'
 export const APP_VERSION = 'v1.3.0-beta.1'
-export const DATA_VERSION = 1.2901
+export const DATA_VERSION = 1.29012
