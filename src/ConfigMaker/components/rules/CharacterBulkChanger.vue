@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/comments/CharacterBulkChanger.vue -->
+<!-- !使用しない(移行) -->
 <template>
   <div>
     <!-- トリガーボタン -->
@@ -99,7 +100,7 @@
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { Users, AlertTriangle } from 'lucide-vue-next'
-  import { useCharacterChanger } from './composables/useCharacterChanger'
+  import { useCharacterChanger } from './CharacterChanger/useCharacterChanger'
 
   const props = defineProps<{
     category: RulesCategoryType

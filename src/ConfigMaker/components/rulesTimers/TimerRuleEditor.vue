@@ -57,7 +57,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
-  import GlobalCharacterChanger from '../rules/GlobalCharacterChanger.vue'
+  import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

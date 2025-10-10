@@ -2,11 +2,11 @@
 import { ref, computed, readonly } from 'vue'
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-import { validateId as validateIdUtil } from './useIdEditor/idEditorValidation'
-import { updateStrategies } from './useIdEditor/idUpdateStrategies'
-import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './useIdEditor/idEditorTypes'
+import { validateId as validateIdUtil } from './keyEditorValidation'
+import { updateStrategies } from './keyUpdateStrategies'
+import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './keyEditorTypes'
 
-export function useIdEditor() {
+export function useKeyEditor() {
   const omikujiStore = useOmikujiStore()
 
   // リアクティブ状態

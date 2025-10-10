@@ -7,7 +7,7 @@
     data-tip="IDを変更します。参照している他の設定も影響を受ける可能性があります。"
   >
     <span class="inline">📝</span>
-    <span class="hidden sm:inline ml-1">ID編集</span>
+    <span class="hidden sm:inline ml-1">Key編集</span>
   </button>
 
   <!-- ダイアログ -->
@@ -90,9 +90,9 @@
 
 <script setup lang="ts">
   import { RecordCategoryType } from '@/types/'
+  import { useKeyEditor } from './useKeyEditor'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useIdEditor } from './useIdEditor'
 
   const props = defineProps<{
     category: RecordCategoryType
@@ -111,5 +111,5 @@
     closeDialog,
     saveId,
     getItemTypeLabel,
-  } = useIdEditor()
+  } = useKeyEditor()
 </script>

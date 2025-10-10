@@ -81,7 +81,7 @@
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
-  import GlobalCharacterChanger from '@ConfigComponents/rules/GlobalCharacterChanger.vue'
+  import GlobalCharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
   import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'

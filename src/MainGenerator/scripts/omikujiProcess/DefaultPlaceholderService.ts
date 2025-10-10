@@ -1,4 +1,5 @@
 // src\MainGenerator\scripts\OmikujiProcess\DefaultPlaceholderService.ts
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import {
   DefaultPlaceholders,
   DefaultPlaceholdersCommentSchema,
@@ -8,7 +9,7 @@ import { Comment } from '@onecomme.com/onesdk/'
 import { ServiceMeta } from '@onecomme.com/onesdk/'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { GetUserVisits } from '@shared/sdk/subscribe/GetUserVisits'
-import { ServiceMetaCondition, ServiceVisitType } from '@shared/types'
+import { ConfigUserSchema, ServiceMetaCondition, ServiceVisitType } from '@shared/types'
 
 export class DefaultPlaceholderService {
   private serviceMeta: ServiceMeta | null = null
@@ -22,10 +23,22 @@ export class DefaultPlaceholderService {
    * 定期的にAPIから取得
    */
   private initializeServiceMeta(): void {
+    const { userConfig } = useAppStore()
+
     createGetMetas().fetchMeta((meta) => {
       this.serviceMeta = meta
     })
-    GetUserVisits().fetchComments((userVisits) => {
+    // userVisits
+    GetUserVisits(
+      ConfigUserSchema.parse({
+        isDiffMode: false,
+        threshold: {
+          ...userConfig.threshold,
+          conditions: [...userConfig.threshold.conditions, 'service'],
+          service: ['platforms'],
+        },
+      })
+    ).fetchComments((userVisits) => {
       this.userVisits = userVisits
     })
   }
@@ -34,11 +47,9 @@ export class DefaultPlaceholderService {
    * comment用デフォルトのプレースホルダー情報を設定
    */
   getDefaultComments(comment: Comment): Record<DefaultPlaceholders, string | number> {
-    // TODO:v1.2に向けて、下記の実装
     const userList = Object.values(this.userVisits ?? {}).flatMap((v) => Object.values(v.user))
     const commenter = userList.length
     const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].name : ''
-    console.log(this.userVisits)
     return DefaultPlaceholdersCommentSchema.parse({
       ...this.getDefaultPlaceholders(),
       user: comment.data.displayName || comment.data.name,

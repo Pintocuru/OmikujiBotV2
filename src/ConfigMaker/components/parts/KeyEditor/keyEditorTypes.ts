@@ -1,4 +1,4 @@
-// src/configMaker/components/parts/types/idEditor.ts
+// src\ConfigMaker\components\parts\useKeyEditor\keyEditorTypes.ts
 import { RecordCategoryType } from '@/types/'
 
 export type CharacterUsage = {

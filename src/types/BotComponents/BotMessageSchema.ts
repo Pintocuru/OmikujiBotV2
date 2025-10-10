@@ -11,7 +11,7 @@ export const BotMessageSchema = z.object({
   iconKey: CharacterEmotionSchema.default('default').catch('default'), // アイコンキー(必要かどうかはわからん…)
   profileImage: z.string().nullable().catch(null), // アイコン
   enterMotion: z.enum(motionLabel).optional(), // 入場アニメーション
-  // TODO:村きつね実装時にサウンドも実装(WordPartyなしでも音を出すためのプロパティ)
+  // TODO:v2.0で村きつね実装時にサウンドも実装(WordPartyなしでも音を出すためのプロパティ)
   sound: z.string().optional().catch(''), // サウンド
   timestamp: z.string().default(() => new Date().toISOString()), // 投稿日時
   comment: z.string().catch('error'), // コメント

@@ -1,4 +1,4 @@
-// src/configMaker/components/parts/utils/idEditorValidation.ts
+// src\ConfigMaker\components\parts\useKeyEditor\keyEditorValidation.ts
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 

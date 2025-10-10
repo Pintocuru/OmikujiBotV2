@@ -48,7 +48,7 @@
   import { PlaceholderType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
-  import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
+  import IdEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'

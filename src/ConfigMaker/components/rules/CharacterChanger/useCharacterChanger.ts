@@ -1,4 +1,4 @@
-// src/configMaker/composables/useCharacterChanger.ts
+// src\ConfigMaker\components\rules\CharacterChanger\useCharacterChanger.ts
 import { computed, ref } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'

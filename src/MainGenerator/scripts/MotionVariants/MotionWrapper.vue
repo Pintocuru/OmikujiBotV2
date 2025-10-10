@@ -21,7 +21,7 @@
   import { LoopMotionType, MotionType, motionVariants } from './MotionVariants'
 
   // Props定義
-  // TODO: LoopMotionType も許可したい
+  // TODO: v2.0でLoopMotionType も許可したい
   const props = withDefaults(
     defineProps<{
       visible?: boolean

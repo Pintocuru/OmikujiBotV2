@@ -39,7 +39,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
     parseItem.isEnabled = true // optionalなのでtrueはここで入れる
 
     const newItem = schema.parse(parseItem) as RecordCategoryItemTypeMap[C]
-    newItem.key = newItem.id // TODO:次のバージョンアップで困らないよう、すべてのKEYにidを入れておく
+    newItem.key = newItem.id
     const id = newItem.id
 
     data.value[category] = { ...data.value[category], [id]: newItem }
@@ -58,7 +58,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
       const updatedItem = {
         ...categoryData[key],
         ...updates,
-        key: key, // TODO:次のバージョンアップで困らないよう、すべてのKEYにidを入れておく
+        key: key,
         updatedAt: new Date().toISOString(),
       }
       data.value[category] = {

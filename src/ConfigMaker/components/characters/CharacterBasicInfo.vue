@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import IdEditor from '@ConfigComponents/parts/IdEditor.vue'
+  import IdEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 

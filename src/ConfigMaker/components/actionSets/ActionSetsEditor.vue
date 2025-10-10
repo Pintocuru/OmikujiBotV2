@@ -1,10 +1,9 @@
 <!-- src\ConfigMaker\components\actionSets\ActionSetsEditor.vue -->
 <template>
-  <!-- TODO:便利ボタン群:actionSets でも使えるよう改良したい
+  <!-- TODO:便利ボタン群:actionSets でも使えるよう改良したい-->
   <div class="flex justify-end gap-2">
-    <GlobalCharacterChanger category="actionSets" />
+    <CharacterChanger category="actionSets" />
   </div>
--->
   <!-- タブ部分 -->
   <RecordTabs />
 
@@ -39,7 +38,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
-  import GlobalCharacterChanger from '@ConfigComponents/rules/GlobalCharacterChanger.vue'
+  import CharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'

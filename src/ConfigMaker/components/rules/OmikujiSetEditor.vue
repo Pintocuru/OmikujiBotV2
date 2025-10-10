@@ -4,7 +4,7 @@
     <!-- 便利なボタン群 -->
     <div class="flex justify-end gap-2">
       <!-- キャラクター一括変更ボタン -->
-      <CharacterBulkChanger :category="category" :selected-rule-id="selectedRuleId" />
+      <CharacterChanger :category="category" :selectedId="selectedRuleId" />
 
       <!-- おみくじテストボタン -->
       <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
@@ -49,7 +49,7 @@
   import { computed } from 'vue'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
   import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
-  import CharacterBulkChanger from '@ConfigComponents/rules/CharacterBulkChanger.vue'
+  import CharacterChanger from '@ConfigComponents/rules/CharacterChanger/CharacterChanger.vue'
   import OmikujiItemEditor from '@ConfigComponents/rules/OmikujiItemEditor.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
