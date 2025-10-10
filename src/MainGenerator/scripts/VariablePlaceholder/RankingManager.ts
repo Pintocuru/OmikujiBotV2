@@ -43,14 +43,14 @@ export class RankingManager {
   ): OmikujiItemType[] {
     return omikujiItems.map((item) => ({
       ...item,
-      rankingScore: existingRanking.get(item.id) || undefined,
+      rankingScore: existingRanking.get(item.key) || undefined,
     }))
   }
 
   /**
    * 新しいランキングを生成
    */
-  private static generateNewRanks(ruleId: string, omikujiItems: OmikujiItemType[]): OmikujiItemType[] {
+  private static generateNewRanks(ruleKey: string, omikujiItems: OmikujiItemType[]): OmikujiItemType[] {
     const itemCount = omikujiItems.length
 
     // 1位から最下位までのランクを生成
@@ -65,7 +65,7 @@ export class RankingManager {
     // 各アイテムにランクを割り当て
     const rankedItems = omikujiItems.map((item, index) => {
       const assignedRank = ranks[index]
-      newRanking.set(item.id, assignedRank)
+      newRanking.set(item.key, assignedRank)
 
       return {
         ...item,
@@ -74,7 +74,7 @@ export class RankingManager {
     })
 
     // ランキングをキャッシュに保存
-    this.rankingCache.set(ruleId, newRanking)
+    this.rankingCache.set(ruleKey, newRanking)
 
     return rankedItems
   }

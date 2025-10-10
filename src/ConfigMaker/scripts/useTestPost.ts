@@ -105,7 +105,7 @@ export function useTestPost() {
     }
 
     // ★★★ ランク割り当て済みのおみくじセットを使用 ★★★
-    const processedOmikuji = RankingManager.assignRanks(rule.id, omikujiSet)
+    const processedOmikuji = RankingManager.assignRanks(rule.key, omikujiSet)
     const omikujisWithPercent = addWeightPercentages(processedOmikuji)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 

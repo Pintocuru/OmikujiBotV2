@@ -22,7 +22,7 @@
       label="枠のID名"
       description="わんコメに同じIDの枠がなければ新規作成されます"
       :showReset="true"
-      @reset="localData.frameId = localData.id"
+      @reset="localData.frameId = localData.key"
     >
       <input type="text" class="input w-full" v-model="localData.frameId" />
     </SettingItem>

@@ -3,7 +3,7 @@
   <div class="space-y-4">
     <div v-if="selectedItem" class="flex justify-end gap-2">
       <!-- 抽選テストボタン -->
-      <PlaceholderPreview v-if="selectedItem.values.length > 0" :id="selectedItem.id" :values="selectedItem.values" />
+      <PlaceholderPreview v-if="selectedItem.values.length > 0" :values="selectedItem.values" />
 
       <!-- 編集モード切り替えボタン -->
       <button
@@ -18,7 +18,7 @@
 
     <!-- 入力モード -->
     <div v-if="!isTextMode && selectedItem">
-      <PlaceholderInputMode :placeholderId="props.placeholderId" :values="selectedItem.values" />
+      <PlaceholderInputMode :placeholderId="props.placeholderKey" :values="selectedItem.values" />
     </div>
 
     <!-- テキストモード -->
@@ -38,7 +38,7 @@
   import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
-    placeholderId: string
+    placeholderKey: string
   }>()
 
   // store
@@ -49,11 +49,11 @@
   // ストアから直接データを取得
   const selectedItem = computed({
     get: () => {
-      if (!props.placeholderId) return null
-      return data.value.placeholders[props.placeholderId]
+      if (!props.placeholderKey) return null
+      return data.value.placeholders[props.placeholderKey]
     },
     set: (value: PlaceholderType) => {
-      omikujiStore.updateItem('placeholders', value.id, value)
+      omikujiStore.updateItem('placeholders', value.key, value)
     },
   })
 
@@ -64,7 +64,7 @@
 
   // テキストモードからの保存
   const handleTextSave = (values: Array<PlaceholderValueType | string>) => {
-    omikujiStore.updatePlaceholderValues(props.placeholderId, values)
+    omikujiStore.updatePlaceholderValues(props.placeholderKey, values)
     isTextMode.value = false
   }
 </script>

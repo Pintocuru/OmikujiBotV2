@@ -45,7 +45,7 @@
         class="select select-bordered w-full"
       >
         <option value="">スクリプトを選択してください</option>
-        <option v-for="(script, id) in enabledGameScriptMap" :key="id" :value="script.id">
+        <option v-for="(script, id) in enabledGameScriptMap" :key="id" :value="script.key">
           {{ script.name }}
         </option>
       </select>

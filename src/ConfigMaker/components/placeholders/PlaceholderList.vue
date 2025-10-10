@@ -41,11 +41,11 @@
     <div class="grid grid-cols-2 gap-2 h-64 overflow-x-hidden content-start">
       <PlaceholderItem
         v-for="(placeholder, index) in filteredPlaceholders"
-        :key="`${placeholder.id}-${index}`"
+        :key="placeholder.id"
         :placeholder="placeholder"
-        :is-used="usedPlaceholderIds.has(placeholder.id)"
-        :is-default="defaultPlaceholders.includes(placeholder.id)"
-        @dblclick="emit('openPlaceholder', placeholder.id, placeholder.editorColor)"
+        :is-used="usedPlaceholderIds.has(placeholder.key)"
+        :is-default="defaultPlaceholders.includes(placeholder.key)"
+        @dblclick="emit('openPlaceholder', placeholder.key, placeholder.editorColor)"
       />
     </div>
 

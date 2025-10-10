@@ -28,7 +28,7 @@ export class OmikujiExecutor {
   executeWithRule(comment: Comment, rule: RuleType): OmikujiItemType | null {
     try {
       // ランキング機能が有効な場合は、事前にランクを設定
-      const processedOmikuji = RankingManager.assignRanks(rule.id, rule.omikuji)
+      const processedOmikuji = RankingManager.assignRanks(rule.key, rule.omikuji)
 
       const omikujiItem = drawOmikuji(processedOmikuji) as OmikujiItemType
       if (!omikujiItem) return null

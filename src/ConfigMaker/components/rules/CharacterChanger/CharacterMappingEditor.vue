@@ -38,8 +38,8 @@
           :class="characterMappings[charKey] ? 'select-primary' : ''"
         >
           <option value="">変更しない</option>
-          <option v-for="character in charactersArray" :key="character.id" :value="character.id">
-            {{ character.name || character.id }}
+          <option v-for="character in charactersArray" :key="character.key" :value="character.key">
+            {{ character.name || character.key }}
           </option>
         </select>
       </div>
@@ -48,10 +48,11 @@
 </template>
 
 <script setup lang="ts">
+  // FIXME
   defineProps<{
     characterKeys: string[]
     characterMappings: Record<string, string>
-    charactersArray: Array<{ id: string; name: string; order: number }>
+    charactersArray: Array<{ key: string; name: string; order: number }>
     usageCount: Record<string, number>
     getCharacterName: (id: string) => string
     hasChanges: boolean

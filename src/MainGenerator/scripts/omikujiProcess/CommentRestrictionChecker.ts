@@ -66,7 +66,7 @@ export class CommentRestrictionChecker {
       }
 
       case 'showLastResult': {
-        const lastBotMessages = cooldownManager.getLastBotMessages(comment.data.userId, rule.id)
+        const lastBotMessages = cooldownManager.getLastBotMessages(comment.data.userId, rule.key)
         const message = `${userName}さんの「${rule.name}」は上限の${rule.limits.drawLimit}回を超えているよ。 最後の結果:${lastBotMessages}`
         return this.createBlockedResult(message)
       }
@@ -91,7 +91,7 @@ export class CommentRestrictionChecker {
 
   private isRepeatBlocked(comment: Comment, rule: CommentRuleType): boolean {
     const { cooldownManager } = useAppStore()
-    return cooldownManager.isRepeatBlocked(comment.data.userId, rule.id, rule.limits.isRepeatAllowed)
+    return cooldownManager.isRepeatBlocked(comment.data.userId, rule.key, rule.limits.isRepeatAllowed)
   }
 
   private isCooldownBlocked(rule: CommentRuleType): boolean {
@@ -101,7 +101,7 @@ export class CommentRestrictionChecker {
 
   private isDrawLimitExceeded(comment: Comment, rule: CommentRuleType): boolean {
     const { cooldownManager } = useAppStore()
-    return cooldownManager.isDrawLimitExceeded(comment.data.userId, rule.id, rule.limits.drawLimit)
+    return cooldownManager.isDrawLimitExceeded(comment.data.userId, rule.key, rule.limits.drawLimit)
   }
 
   /**

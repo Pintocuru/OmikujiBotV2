@@ -22,17 +22,17 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
   // 選択されたルールデータを取得
   const selectedRulesCommentData = computed(() => {
     if (omikujiStore.selectedCategory !== 'comments') return null
-    const ruleId = omikujiStore.selectedItemKey
-    return ruleId ? omikujiStore.getCategoryMap('comments')[ruleId] : null
+    const ruleKey = omikujiStore.selectedItemKey
+    return ruleKey ? omikujiStore.getCategoryMap('comments')[ruleKey] : null
   })
 
   // デフォルトプレースホルダーを生成
   const defaultPlaceholders = computed((): PlaceholderType[] => {
-    return (Object.keys(defaultPlaceholdersLabels) as DefaultPlaceholders[]).map((id) => {
-      const contentValue = placeholderContentMap.get(id) ?? ''
+    return (Object.keys(defaultPlaceholdersLabels) as DefaultPlaceholders[]).map((key) => {
+      const contentValue = placeholderContentMap.get(key) ?? ''
       return PlaceholderSchema.parse({
-        id,
-        name: defaultPlaceholdersLabels[id],
+        key,
+        name: defaultPlaceholdersLabels[key],
         editorColor: '#FEFEFE',
         values: [{ content: contentValue }],
       })
@@ -49,7 +49,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
       script.placeholders?.map(
         (item): PlaceholderType =>
           PlaceholderSchema.parse({
-            id: item.key,
+            key: item.key,
             name: item.name,
             order: 0,
             editorColor: script.editorColor ?? '#FEFEFE',
@@ -87,24 +87,24 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
     const placeholders = [...defaultPlaceholders.value, ...scriptPlaceholders.value, ...customPlaceholders]
 
     return placeholders.sort((a, b) => {
-      const aUsed = usedPlaceholderIds.value.has(a.id)
-      const bUsed = usedPlaceholderIds.value.has(b.id)
+      const aUsed = usedPlaceholderIds.value.has(a.key)
+      const bUsed = usedPlaceholderIds.value.has(b.key)
 
       // 1. 使用中のものが最優先
       if (aUsed !== bUsed) return aUsed ? -1 : 1
 
-      // 2. 使用中以外は editorColor > id の順でソート
+      // 2. 使用中以外は editorColor > key の順でソート
       const aColor = a.editorColor ?? ''
       const bColor = b.editorColor ?? ''
       if (aColor !== bColor) return aColor.localeCompare(bColor, 'ja')
 
-      return a.id.localeCompare(b.id, 'ja')
+      return a.key.localeCompare(b.key, 'ja')
     })
   })
 
   return {
     allPlaceholders,
     usedPlaceholderIds,
-    defaultPlaceholders: computed(() => defaultPlaceholders.value.map((p) => p.id)),
+    defaultPlaceholders: computed(() => defaultPlaceholders.value.map((p) => p.key)),
   }
 }

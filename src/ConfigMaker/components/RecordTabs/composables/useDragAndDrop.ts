@@ -39,15 +39,15 @@ export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>) => {
     const originalOrder = [...categoryArray.value]
 
     // 方法1: 一括でorder値を更新する方式（推奨）
-    const orderUpdates: Array<{ id: string; newOrder: number }> = []
+    const orderUpdates: Array<{ key: string; newOrder: number }> = []
 
     newOrder.forEach((rule, newIndex) => {
-      const currentIndex = originalOrder.findIndex((r: BaseRecordType) => r.id === rule.id)
+      const currentIndex = originalOrder.findIndex((r: BaseRecordType) => r.key === rule.key)
 
       // 位置が変更された場合、新しいorder値を記録
       if (currentIndex !== -1 && currentIndex !== newIndex) {
         orderUpdates.push({
-          id: rule.id,
+          key: rule.key,
           newOrder: newIndex + 1, // orderは1から始まる
         })
       }

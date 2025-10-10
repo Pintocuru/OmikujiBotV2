@@ -115,12 +115,12 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
    * ルールのインデックス取得の共通処理
    * 配列とカテゴリの両方をチェックし、見つからない場合は0を返す
    */
-  const getRuleIndex = (ruleId: string): number => {
+  const getRuleIndex = (ruleKey: string): number => {
     if (!categoryArray.value || !validCategory.value) {
       console.error('Invalid category:', validCategory.value)
       return 0
     }
-    return categoryArray.value.findIndex((rule: BaseRecordType) => rule.id === ruleId)
+    return categoryArray.value.findIndex((rule: BaseRecordType) => rule.key === ruleKey)
   }
 
   return {

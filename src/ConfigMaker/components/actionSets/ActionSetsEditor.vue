@@ -64,7 +64,7 @@
       return data.value.actionSets[selectedItemKey.value]
     },
     set: (value: PostActionRecordType) => {
-      omikujiStore.updateItem('actionSets', value.id, value)
+      omikujiStore.updateItem('actionSets', value.key, value)
     },
   })
 </script>

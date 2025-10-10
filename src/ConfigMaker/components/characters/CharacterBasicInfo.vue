@@ -5,11 +5,11 @@
     <SettingItem label="Key" description="キャラクターのキー名">
       <div class="flex gap-2 items-center">
         <div class="flex-grow px-4 py-2 rounded bg-base-200 text-gray-600 whitespace-nowrap overflow-x-auto">
-          {{ currentData.id }}
+          {{ currentData.key }}
         </div>
 
         <!-- 編集ボタン -->
-        <IdEditor :currentId="currentData.id" category="characters" />
+        <KeyEditor :currentKey="currentData.key" category="characters" />
       </div>
     </SettingItem>
 
@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import IdEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 

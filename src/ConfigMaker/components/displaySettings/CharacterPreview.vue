@@ -13,7 +13,7 @@
       />
     </template>
     <template v-else>
-      <div v-for="character in displayCharacters" :key="character.id" class="-mx-4">
+      <div v-for="character in displayCharacters" :key="character.key" class="-mx-4">
         <CharacterAvatar
           :profile-image="character?.image?.default"
           :character-name="character?.displayName"

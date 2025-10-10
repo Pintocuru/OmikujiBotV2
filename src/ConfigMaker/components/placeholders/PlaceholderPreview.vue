@@ -26,7 +26,6 @@
   import { Dices } from 'lucide-vue-next'
 
   const props = defineProps<{
-    id: string
     values: (PlaceholderValueType | string)[]
   }>()
 

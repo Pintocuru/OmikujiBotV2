@@ -5,14 +5,14 @@ import { BaseRecordType } from '@shared/types'
 /**
  * インライン編集機能の管理
  */
-export const useInlineEdit = (handleUpdateRule: (id: string, updates: Partial<BaseRecordType>) => void) => {
-  const editingRuleId = ref<string | null>(null)
+export const useInlineEdit = (handleUpdateRule: (key: string, updates: Partial<BaseRecordType>) => void) => {
+  const editingRuleKey = ref<string | null>(null)
   const editingName = ref('')
   const editInput = ref<HTMLInputElement | null>(null)
 
   // インライン編集を開始
   const startInlineEdit = async (rule: BaseRecordType) => {
-    editingRuleId.value = rule.id
+    editingRuleKey.value = rule.key
     editingName.value = rule.name || ''
 
     await nextTick()
@@ -24,8 +24,8 @@ export const useInlineEdit = (handleUpdateRule: (id: string, updates: Partial<Ba
 
   // 名前を更新
   const finishInlineEdit = () => {
-    if (editingRuleId.value && editingName.value.trim()) {
-      handleUpdateRule(editingRuleId.value, {
+    if (editingRuleKey.value && editingName.value.trim()) {
+      handleUpdateRule(editingRuleKey.value, {
         name: editingName.value.trim(),
       })
     }
@@ -34,7 +34,7 @@ export const useInlineEdit = (handleUpdateRule: (id: string, updates: Partial<Ba
 
   // 編集をキャンセル
   const cancelInlineEdit = () => {
-    editingRuleId.value = null
+    editingRuleKey.value = null
     editingName.value = ''
     editInput.value = null
   }
@@ -62,11 +62,11 @@ export const useInlineEdit = (handleUpdateRule: (id: string, updates: Partial<Ba
   }
 
   // 編集中かどうかを判定
-  const isEditing = (ruleId: string) => editingRuleId.value === ruleId
+  const isEditing = (ruleId: string) => editingRuleKey.value === ruleId
 
   return {
     // 状態
-    editingRuleId,
+    editingRuleId: editingRuleKey,
     editingName,
     editInput,
 

@@ -65,7 +65,7 @@
       const messageType = isRightClick ? 'トーストメッセージ' : 'テストメッセージ'
 
       const postAction = PostActionSchema.parse({
-        characterKey: character.id,
+        characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
         messageContent: `${character.name}の${messageType}です！`,
       })

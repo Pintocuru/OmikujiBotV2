@@ -35,7 +35,7 @@ export class DefaultCharacterManager {
     const charactersArray = Object.values(availableCharacters)
 
     if (charactersArray.length > 0) {
-      const foundCharacter = charactersArray.find((char) => char.id === characterKey)
+      const foundCharacter = charactersArray.find((char) => char.key === characterKey)
       if (foundCharacter) {
         return foundCharacter
       }

@@ -27,7 +27,7 @@ export function useCharacterUpdater(
       const items = allItems.value as PostActionRecordType[]
       items.forEach((item) => {
         const newPostActions = applyCharacterMappings(item.postActions, mappings)
-        omikujiStore.updateItem('actionSets', item.id, {
+        omikujiStore.updateItem('actionSets', item.key, {
           postActions: newPostActions,
         })
       })
@@ -40,7 +40,7 @@ export function useCharacterUpdater(
           postActions: applyCharacterMappings(omikuji.postActions, mappings),
         }))
 
-        omikujiStore.updateItem(category, rule.id, {
+        omikujiStore.updateItem(category, rule.key, {
           omikuji: newOmikujiSets,
         })
       })

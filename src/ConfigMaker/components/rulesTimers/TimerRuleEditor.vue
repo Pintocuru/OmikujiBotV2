@@ -86,7 +86,7 @@
       return data.value.timers[selectedItemKey.value]
     },
     set: (value: TimerRuleType) => {
-      omikujiStore.updateItem('timers', value.id, value)
+      omikujiStore.updateItem('timers', value.key, value)
     },
   })
 </script>

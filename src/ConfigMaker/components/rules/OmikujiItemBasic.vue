@@ -72,7 +72,7 @@
   // 共通の更新関数
   const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
     if (!props.selectedItemKey) return
-    const index = props.allOmikuji.findIndex((item) => item.id === props.omikuji.id)
+    const index = props.allOmikuji.findIndex((item) => item.key === props.omikuji.key)
     if (index === -1) return
     omikujiStore.updateRecordProperty(
       props.category,

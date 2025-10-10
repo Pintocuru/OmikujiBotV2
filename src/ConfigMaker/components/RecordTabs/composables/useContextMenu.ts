@@ -29,21 +29,21 @@ export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
   })
 
   /** ルールのインデックスを取得 */
-  const getOriginalIndex = (ruleId: string): number => {
+  const getOriginalIndex = (ruleKey: string): number => {
     if (!categoryArray.value) return 0
-    return categoryArray.value.findIndex((rule: BaseRecordType) => rule.id === ruleId)
+    return categoryArray.value.findIndex((rule: BaseRecordType) => rule.key === ruleKey)
   }
 
   /** 上に移動可能かどうか */
   const canMoveUp = computed(() => {
     if (!contextMenu.value.rule) return false
-    return getOriginalIndex(contextMenu.value.rule.id) > 0
+    return getOriginalIndex(contextMenu.value.rule.key) > 0
   })
 
   /** 下に移動可能かどうか */
   const canMoveDown = computed(() => {
     if (!contextMenu.value.rule || !categoryArray.value) return false
-    return getOriginalIndex(contextMenu.value.rule.id) < categoryArray.value.length - 1
+    return getOriginalIndex(contextMenu.value.rule.key) < categoryArray.value.length - 1
   })
 
   /** メニュー位置を画面内に調整 */

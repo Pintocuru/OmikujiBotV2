@@ -20,7 +20,7 @@
   import RecordHoverPreview from './RecordHoverPreview.vue'
   import { useRecordTabsStore } from './RecordTabsStore'
 
-  // Props（最小限に）
+  // Props
   const props = defineProps<{
     rule: RecordCategoryUnion
   }>()
@@ -33,15 +33,15 @@
 
   // プレビュー表示の判定
   const shouldShowPreview = computed(
-    () => hoveredRule.value?.id === props.rule.id && !store.isMultiSelectMode && !isEditing.value
+    () => hoveredRule.value?.key === props.rule.key && !store.isMultiSelectMode && !isEditing.value
   )
 
   // 編集中かどうか
-  const isEditing = computed(() => store.editingRuleId === props.rule.id)
+  const isEditing = computed(() => store.editingRuleId === props.rule.key)
 
   // コンテキストメニューハンドラー
   const handleContextMenu = (event: MouseEvent) => {
-    const index = store.getRuleIndex(props.rule.id)
+    const index = store.getRuleIndex(props.rule.key)
     store.showContextMenu(event, props.rule, index)
   }
 </script>

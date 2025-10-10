@@ -9,7 +9,7 @@
       <!-- ルール名 -->
       <div class="font-medium text-base">
         {{ rule.name || '名前未設定' }}
-        <span v-if="isDev"> ( ID: {{ rule.id }} )</span>
+        <span v-if="isDev"> ( Key: {{ rule.key }} )</span>
       </div>
 
       <!-- 説明 -->

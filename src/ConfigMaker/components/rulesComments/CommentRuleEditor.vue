@@ -50,7 +50,7 @@
         :isOpen="activeSection === 'scriptGame'"
         @toggle="toggleSection('scriptGame')"
         title="ゲームスクリプト設定"
-        :subTitle="`(${selectedItem.scriptId !== null ? `ID : ${selectedItem.scriptId}` : '未選択'})`"
+        :subTitle="`(${selectedItem.scriptId !== null ? `Key : ${selectedItem.scriptId}` : '未選択'})`"
         description="Javascriptを使ったミニゲーム"
       >
         <ScriptGameEditor v-model="selectedItem" />
@@ -116,7 +116,7 @@
       return data.value.comments[selectedItemKey.value]
     },
     set: (value: CommentRuleType) => {
-      omikujiStore.updateItem('comments', value.id, value)
+      omikujiStore.updateItem('comments', value.key, value)
     },
   })
 

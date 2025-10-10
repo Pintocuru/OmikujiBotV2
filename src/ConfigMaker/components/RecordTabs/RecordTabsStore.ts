@@ -30,7 +30,7 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   const handleContextDuplicate = () => {
     const { rule } = contextMenu.contextMenu.value
     if (rule) {
-      ruleOperations.handleDuplicateRule(rule.id)
+      ruleOperations.handleDuplicateRule(rule.key)
     }
     contextMenu.hideContextMenu()
   }
@@ -39,7 +39,7 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   const handleContextDelete = () => {
     const { rule } = contextMenu.contextMenu.value
     if (rule) {
-      ruleOperations.handleDeleteRule(rule.id, rule.name)
+      ruleOperations.handleDeleteRule(rule.key, rule.name)
     }
     contextMenu.hideContextMenu()
   }

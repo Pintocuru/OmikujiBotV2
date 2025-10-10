@@ -33,7 +33,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
         params: GameParamsSchema.parse(params),
         gameState: this.gameState,
         currentUser: {
-          id: comment.data.userId,
+          userId: comment.data.userId,
           name: comment.data.name,
         },
       }
@@ -52,7 +52,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
       const userRankings = RankingService.generateRankings(updatedContext)
 
       // 上限チェック
-      const currentUserStats = updatedUserStats[context.currentUser.id]
+      const currentUserStats = updatedUserStats[context.currentUser.userId]
       const isOverLimit = this.settings.enableCount > 0 && (currentUserStats?.draws || 0) > this.settings.enableCount
 
       if (!isOverLimit) {

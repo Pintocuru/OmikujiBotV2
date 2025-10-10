@@ -59,19 +59,21 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   }
 
   /** 範囲選択の処理 */
-  const handleRangeSelect = (ruleId: string) => {
+  const handleRangeSelect = (ruleKey: string) => {
     const currentRules = filteredSortedItems.value
     const lastSelectedIndex = Math.max(
-      ...Array.from(selectedRuleIds.value).map((id) => currentRules.findIndex((rule: BaseRecordType) => rule.id === id))
+      ...Array.from(selectedRuleIds.value).map((key) =>
+        currentRules.findIndex((rule: BaseRecordType) => rule.key === key)
+      )
     )
-    const clickedIndex = currentRules.findIndex((rule: BaseRecordType) => rule.id === ruleId)
+    const clickedIndex = currentRules.findIndex((rule: BaseRecordType) => rule.key === ruleKey)
 
     const start = Math.min(lastSelectedIndex, clickedIndex)
     const end = Math.max(lastSelectedIndex, clickedIndex)
 
     for (let i = start; i <= end; i++) {
       if (currentRules[i]) {
-        selectedRuleIds.value.add(currentRules[i].id)
+        selectedRuleIds.value.add(currentRules[i].key)
       }
     }
   }
@@ -79,7 +81,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   /** 全選択 */
   const selectAll = () => {
     filteredSortedItems.value.forEach((rule: BaseRecordType) => {
-      selectedRuleIds.value.add(rule.id)
+      selectedRuleIds.value.add(rule.key)
     })
   }
 
@@ -92,7 +94,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   /** 選択されたルールを取得 */
   const getSelectedRules = (): BaseRecordType[] => {
     return Array.from(selectedRuleIds.value)
-      .map((id) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.id === id))
+      .map((key) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.key === key))
       .filter(Boolean) as BaseRecordType[]
   }
 
@@ -114,7 +116,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const category = validCategory.value as RecordCategoryType
 
     selectedRules.forEach((rule) => {
-      omikujiStore.updateItem(category, rule.id, {
+      omikujiStore.updateItem(category, rule.key, {
         ...rule,
         isEnabled: enabled,
       })
@@ -136,7 +138,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const category = validCategory.value as RecordCategoryType
 
     selectedRules.forEach((rule) => {
-      omikujiStore.updateItem(category, rule.id, {
+      omikujiStore.updateItem(category, rule.key, {
         ...rule,
         accessLevel,
       })
@@ -157,7 +159,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const category = validCategory.value as RecordCategoryType
 
     selectedRules.forEach((rule) => {
-      omikujiStore.updateItem(category, rule.id, {
+      omikujiStore.updateItem(category, rule.key, {
         ...rule,
         editorColor: color,
       })
@@ -181,7 +183,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     selectedRuleIds.value.clear()
 
     selectedRules.forEach((rule) => {
-      omikujiStore.duplicateItem(category, rule.id)
+      omikujiStore.duplicateItem(category, rule.key)
     })
 
     const count = selectedRules.length
@@ -205,13 +207,13 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
         label: `${count}件削除する`,
         onClick: () => {
           const sortedRules = [...rulesToDelete].sort((a, b) => {
-            const indexA = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.id === a.id) ?? -1
-            const indexB = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.id === b.id) ?? -1
+            const indexA = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.key === a.key) ?? -1
+            const indexB = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.key === b.key) ?? -1
             return indexB - indexA
           })
 
           sortedRules.forEach((rule) => {
-            omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.id)
+            omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.key)
           })
 
           toast.success(`${count}件のルールを削除しました`, {

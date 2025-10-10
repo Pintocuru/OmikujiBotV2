@@ -74,7 +74,7 @@ export class RuleTimerProcessor {
       }, intervalMs)
 
       // タイマー状態を更新
-      const timerState = this.activeTimers.get(rule.id)
+      const timerState = this.activeTimers.get(rule.key)
       if (timerState) {
         timerState.timerId = intervalTimerId
         timerState.initialTimerId = undefined
@@ -82,7 +82,7 @@ export class RuleTimerProcessor {
     }, initialDelay)
 
     // タイマー状態を記録
-    this.activeTimers.set(rule.id, {
+    this.activeTimers.set(rule.key, {
       timerId: 0, // 後で更新される
       initialTimerId,
       intervalMs,
@@ -98,7 +98,7 @@ export class RuleTimerProcessor {
       const messages = this.processTimerRule(rule)
       onTimerTrigger(messages)
     } catch (error) {
-      console.error(`Timer ${rule.id} execution error:`, error)
+      console.error(`Timer ${rule.key} execution error:`, error)
     }
   }
 

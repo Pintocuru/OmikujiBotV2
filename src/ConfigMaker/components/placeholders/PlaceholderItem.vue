@@ -21,9 +21,9 @@
           <div v-else class="w-3 h-3 rounded-full border border-base-content/20 flex-shrink-0" title="カラーなし" />
 
           <span class="font-medium text-sm truncate">
-            {{ placeholder.name || placeholder.id }}
+            {{ placeholder.name || placeholder.key }}
           </span>
-          <code class="badge badge-xs bg-base-200 whitespace-nowrap"> ID: {{ placeholder.id }} </code>
+          <code class="badge badge-xs bg-base-200 whitespace-nowrap"> Key: {{ placeholder.key }} </code>
           <div class="badge badge-outline badge-xs">
             {{ placeholder.values.length }}
           </div>
@@ -39,7 +39,7 @@
 
       <!-- アクションボタン -->
       <div class="flex items-center gap-1" @click.stop>
-        <CopyButton :value="`<<${placeholder.id}>>`" data-tip="IDをコピー" :small="true" />
+        <CopyButton :value="`<<${placeholder.key}>>`" data-tip="IDをコピー" :small="true" />
       </div>
     </div>
 

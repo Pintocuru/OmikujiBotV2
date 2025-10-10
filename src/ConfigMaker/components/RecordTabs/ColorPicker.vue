@@ -75,7 +75,7 @@
       tabsStore.handleBulkColorChange(color)
     } else if (tabsStore.contextMenu.rule) {
       // 単体選択時：個別更新
-      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
+      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.key, {
         ...tabsStore.contextMenu.rule,
         editorColor: color,
       })

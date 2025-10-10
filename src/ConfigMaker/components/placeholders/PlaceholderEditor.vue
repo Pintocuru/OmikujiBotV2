@@ -15,12 +15,12 @@
       <SettingItem label="Key" description="<<プレースホルダー名>>">
         <div class="flex gap-2 items-center">
           <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
-            {{ selectedItem.id }}
+            {{ selectedItem.key }}
           </div>
           <!-- コピーボタン -->
-          <CopyButton :value="`<<${selectedItem.id}>>`" dataTip="<<プレースホルダー>>の形式で文字列をコピーします" />
+          <CopyButton :value="`<<${selectedItem.key}>>`" dataTip="<<プレースホルダー>>の形式で文字列をコピーします" />
           <!-- 編集ボタン -->
-          <IdEditor :currentId="selectedItem.id" category="placeholders" />
+          <KeyEditor :currentKey="selectedItem.key" category="placeholders" />
         </div>
       </SettingItem>
 
@@ -38,7 +38,7 @@
       :subTitle="`(プレースホルダー数:${selectedItem.values.length}, 総重量:${totalWeight})`"
       description="抽選するプレースホルダーを編集します"
     >
-      <PlaceholderValuesEditor :key="selectedItem.id" :placeholderId="selectedItem.id" />
+      <PlaceholderValuesEditor :key="selectedItem.id" :placeholderKey="selectedItem.key" />
     </SectionCard>
   </div>
 </template>
@@ -48,7 +48,7 @@
   import { PlaceholderType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
-  import IdEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
@@ -97,7 +97,7 @@
           ...selectedItem.value,
           [key]: value,
         }
-        omikujiStore.updateItem('placeholders', selectedItem.value.id, updatedItem)
+        omikujiStore.updateItem('placeholders', selectedItem.value.key, updatedItem)
       },
     })
   }

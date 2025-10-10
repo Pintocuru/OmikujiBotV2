@@ -118,7 +118,7 @@
     if (!store.validCategory) return
 
     const orderUpdates = sortedItems.map((item, index) => ({
-      id: item.id,
+      key: item.key,
       newOrder: index + 1, // orderは1から始まる
     }))
 

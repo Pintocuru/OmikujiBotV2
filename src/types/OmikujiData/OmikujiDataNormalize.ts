@@ -16,7 +16,7 @@ export const normalizeOrders = <T extends RecordCategoryItem>(items: T[]): T[] =
   if (!Array.isArray(items) || items.length === 0) return items
 
   const sortedItems = [...items].sort((a, b) => {
-    if (a.order === b.order) return a.id.localeCompare(b.id)
+    if (a.order === b.order) return a.key.localeCompare(b.key)
     return a.order - b.order
   })
 
@@ -60,7 +60,7 @@ export const recordNormalization = <T extends z.ZodType<RecordCategoryItem>>(ite
 
       const result: Record<string, z.infer<T>> = {}
       orderNormalizedItems.forEach((item) => {
-        result[item.id] = item
+        result[item.key] = item
       })
       return result
     })

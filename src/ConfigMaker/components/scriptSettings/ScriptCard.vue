@@ -2,7 +2,7 @@
 <template>
   <SectionCard
     :title="scriptPreset.name"
-    :subTitle="`(id:${scriptPreset.id})`"
+    :subTitle="`(Key:${scriptPreset.key})`"
     :description="`${scriptPreset.description}`"
   >
     <div v-if="hasSettings" class="space-y-4">

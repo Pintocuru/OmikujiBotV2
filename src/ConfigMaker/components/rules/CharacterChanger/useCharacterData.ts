@@ -16,8 +16,8 @@ export function useCharacterData() {
   /**
    * キャラクター名を取得
    */
-  const getCharacterName = (characterId: string): string => {
-    const character = charactersArray.value.find((char) => char.id === characterId)
+  const getCharacterName = (characterKey: string): string => {
+    const character = charactersArray.value.find((char) => char.key === characterKey)
     return character?.name || ''
   }
 

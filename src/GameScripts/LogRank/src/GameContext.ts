@@ -8,7 +8,7 @@ export interface GameContext {
   params: GameParams
   gameState: GameState
   currentUser: {
-    id: string
+    userId: string
     name: string
   }
 }

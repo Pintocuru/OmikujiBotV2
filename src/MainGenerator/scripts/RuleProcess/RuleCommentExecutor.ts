@@ -80,7 +80,7 @@ export class RuleCommentExecutor {
     const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule)
 
     // 4. ユーザー情報の更新
-    cooldownManager.updateUserId(comment.data.userId, rule.id, omikujiMessages.map((m) => m.comment).join(','))
+    cooldownManager.updateUserId(comment.data.userId, rule.key, omikujiMessages.map((m) => m.comment).join(','))
 
     // チャットワード起動かどうかを判定
     const isCommentTriggered = rule.threshold.conditions.includes('comment')

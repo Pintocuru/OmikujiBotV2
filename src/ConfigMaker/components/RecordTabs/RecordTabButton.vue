@@ -8,7 +8,7 @@
   >
     <!-- 複数選択モード時のチェックボックス -->
     <div v-if="store.isMultiSelectMode" class="pointer-events-none">
-      <input type="checkbox" :checked="store.selectedRuleIds.has(rule.id)" class="checkbox checkbox-sm" readonly />
+      <input type="checkbox" :checked="store.selectedRuleIds.has(rule.key)" class="checkbox checkbox-sm" readonly />
     </div>
 
     <!-- order 判定する順番 --> 
@@ -58,9 +58,9 @@
   const store = useRecordTabsStore()
 
   // Computed
-  const isEditing = computed(() => store.editingRuleId === props.rule.id)
-  const isSelected = computed(() => omikujiStore.selectedItemKey === props.rule.id)
-  const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.id))
+  const isEditing = computed(() => store.editingRuleId === props.rule.key)
+  const isSelected = computed(() => omikujiStore.selectedItemKey === props.rule.key)
+  const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.key))
   const getRuleEnabledState = computed(() => props.rule.isEnabled !== false)
 
   const showDragHandle = computed(() => !store.searchQuery && !isEditing.value && !store.isMultiSelectMode)

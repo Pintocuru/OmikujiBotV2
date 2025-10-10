@@ -80,7 +80,7 @@
   const handleToggleEnabled = () => {
     if (props.rule) {
       const currentEnabled = props.rule.isEnabled !== false
-      tabsStore.handleUpdateRule(props.rule.id, {
+      tabsStore.handleUpdateRule(props.rule.key, {
         ...props.rule,
         isEnabled: !currentEnabled,
       })

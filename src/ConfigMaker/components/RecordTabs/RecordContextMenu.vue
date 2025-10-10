@@ -95,7 +95,7 @@
       tabsStore.handleBulkAccessLevelChange(level)
     } else if (tabsStore.contextMenu.rule) {
       // 単体選択時：個別変更
-      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.id, {
+      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.key, {
         ...tabsStore.contextMenu.rule,
         accessLevel: level,
       })
