@@ -82,6 +82,20 @@ const visibilitySchema = z.object({
   // ツール系
   wordPartySettings: AccessLevelSchema.default('basic').catch('basic'),
 })
+export const visibilityKeys = [
+  'comments',
+  'timers',
+  'actionSets',
+  'placeholders',
+  'characters',
+  'characterVisible',
+  'wordPartyLoading',
+  'licenseVisible',
+  'gameScriptSettings',
+  'wordPartySettings',
+] as const
+
+export type VisibilityKey = (typeof visibilityKeys)[number]
 
 /*
  * DeveloperSettingsSchema

@@ -10,6 +10,8 @@ import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor
 import { RankingManager } from '../VariablePlaceholder/RankingManager'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { PostMessage } from '../PostMessage/PostMessage'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 /**
  * おみくじの実行ロジックを担当するクラス
@@ -40,7 +42,7 @@ export class OmikujiExecutor {
       this.setupRanking(rule, omikujiItem)
 
       // スクリプト実行
-      const scriptResult = this.executeScript(comment, rule)
+      this.executeScript(comment, rule)
 
       return omikujiItem
     } catch (error) {
@@ -89,7 +91,15 @@ export class OmikujiExecutor {
 
     // スクリプト結果のプレースホルダーを追加
     if (scriptResult) {
+      // scriptのプレースホルダーをClassに追加
       this.placeProcess.updateResolvedValues(scriptResult.placeholders)
+      // scriptのpostActionsを投稿する
+      const appStore = useAppStore()
+      const characters = appStore.characterCollector.getUsedCharacterData()
+      if (characters) {
+        const postMessage = new PostMessage(characters)
+        postMessage.post(scriptResult.postActions)
+      }
     }
 
     return scriptResult

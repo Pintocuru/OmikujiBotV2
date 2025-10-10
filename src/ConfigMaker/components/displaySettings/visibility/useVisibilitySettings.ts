@@ -1,8 +1,8 @@
 // src\ConfigMaker\components\displaySettings\visibility\useVisibilitySettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { VisibilityKey } from '@/types'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import type { CategoryType } from '@/types/OmikujiData/CategoryType'
 import type { AccessLevelType } from '@shared/types'
 
 export function useVisibilitySettings() {
@@ -10,7 +10,7 @@ export function useVisibilitySettings() {
   const { data } = storeToRefs(omikujiStore)
 
   // 基本コンポーネントのカテゴリごとの可視性設定
-  const categoryVisibility = (category: CategoryType) =>
+  const categoryVisibility = (category: VisibilityKey) =>
     computed({
       get: () => data.value.displaySettings.developer.visibility[category],
       set: (newValue: AccessLevelType) => {

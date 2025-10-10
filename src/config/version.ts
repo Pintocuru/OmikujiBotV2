@@ -3,6 +3,6 @@
 /**
  * アプリケーションのバージョン情報
  */
-export const BUILD_DATE = 'ver2025.10.03'
-export const APP_VERSION = 'v1.2.1'
-export const DATA_VERSION = 1.21
+export const BUILD_DATE = 'ver2025.10.10'
+export const APP_VERSION = 'v1.3.0-beta.1'
+export const DATA_VERSION = 1.2901

@@ -18,12 +18,14 @@
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
-      "updatedAt": "2025-10-08T00:56:02.484Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
       "accessLevel": "pro",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "e446aa2d-b9d5-4a6d-96fe-c9bd9a8887be",
@@ -73,8 +75,6 @@
           "^ステージ"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 10,
@@ -88,12 +88,14 @@
       "name": "フルーツ占い",
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
-      "updatedAt": "2025-10-08T00:56:02.484Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757806025003",
@@ -213,8 +215,6 @@
           "フルーツ"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -227,12 +227,14 @@
       "key": "EidolonGacha",
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
-      "updatedAt": "2025-10-08T00:56:02.484Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
@@ -477,8 +479,6 @@
           "^gacha"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -492,12 +492,14 @@
       "name": "グーゴルクローバー",
       "description": "19個の大吉と、1個の大凶",
       "createdAt": "2025-10-05T14:14:24.331Z",
-      "updatedAt": "2025-10-08T00:56:02.484Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": "GoogolClover",
+      "scriptParams": {},
       "omikuji": [
         {
           "id": "1759673656457",
@@ -545,8 +547,6 @@
           "🎲"
         ]
       },
-      "scriptId": "GoogolClover",
-      "scriptParams": {},
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -560,12 +560,14 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-09T03:48:20.133Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
@@ -771,8 +773,6 @@
           "^janken"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -786,12 +786,14 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-08T02:58:53.347Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
@@ -906,8 +908,6 @@
           "👊"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -921,12 +921,14 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-08T03:03:58.578Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
@@ -1040,8 +1042,6 @@
           "✌️"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1055,12 +1055,14 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-08T03:04:45.633Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
@@ -1175,8 +1177,6 @@
           "🖐️"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1189,11 +1189,13 @@
       "key": "1760054141011",
       "name": "test",
       "createdAt": "2025-10-09T23:55:41.011Z",
-      "updatedAt": "2025-10-09T23:57:25.315Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 9,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1760054123675",
@@ -1233,8 +1235,6 @@
           "test"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1250,7 +1250,7 @@
       "key": "HondaJankenReadyA",
       "name": "じゃんけん:出す前の動作(キャラA)",
       "createdAt": "2025-10-08T00:59:17.768Z",
-      "updatedAt": "2025-10-08T01:04:37.817Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1274,7 +1274,7 @@
       "name": "じゃんけん:出す前の動作(キャラB)",
       "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
       "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2025-10-09T04:38:49.771Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1298,7 +1298,7 @@
       "name": "じゃんけん:グーA",
       "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
       "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2025-10-09T04:39:34.537Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1350,7 +1350,7 @@
       "name": "じゃんけん:グーB",
       "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
       "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2025-10-09T04:39:58.511Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1402,7 +1402,7 @@
       "name": "じゃんけん:チョキA",
       "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
       "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2025-10-09T04:41:04.735Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1454,7 +1454,7 @@
       "name": "じゃんけん:チョキB",
       "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
       "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2025-10-09T04:40:42.565Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1506,7 +1506,7 @@
       "name": "じゃんけん:パーA",
       "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
       "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2025-10-09T04:41:23.948Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1558,7 +1558,7 @@
       "name": "じゃんけん:パーB",
       "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
       "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2025-10-09T04:41:42.408Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1610,7 +1610,7 @@
       "name": "じゃんけん:勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2025-10-09T04:42:15.068Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1662,7 +1662,7 @@
       "name": "じゃんけん:勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2025-10-09T04:42:16.620Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1714,7 +1714,7 @@
       "name": "じゃんけん:グー勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2025-10-09T04:42:18.539Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1766,7 +1766,7 @@
       "name": "じゃんけん:グー勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2025-10-09T04:42:20.302Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1818,7 +1818,7 @@
       "name": "じゃんけん:チョキ勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2025-10-09T04:42:22.156Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1870,7 +1870,7 @@
       "name": "じゃんけん:チョキ勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2025-10-09T04:42:23.948Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1922,7 +1922,7 @@
       "name": "じゃんけん:パー勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2025-10-09T04:42:26.302Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1974,7 +1974,7 @@
       "name": "じゃんけん:パー勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2025-10-09T04:42:28.275Z",
+      "updatedAt": "2025-10-10T07:35:51.744Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -3533,6 +3533,52 @@
       "createdAt": "2025-08-11T03:50:57.710Z",
       "updatedAt": "2025-10-09T22:04:37.277Z",
       "order": 3,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
