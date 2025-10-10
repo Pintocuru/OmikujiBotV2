@@ -19,7 +19,7 @@
         {{ key }}
       </div>
       <!-- 編集ボタン -->
-      <IdEditor :currentId="key" :category="category" />
+      <KeyEditor :currentKey="key" :category="category" />
     </div>
   </SettingItem>
 
@@ -42,7 +42,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-  import IdEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { AccessLevelLabels, BaseRecordType } from '@shared/types'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'

@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useRecordOperations.ts (純粋データ操作のみ - 簡素化)
+// src/ConfigMaker/script/stores/composables/useRecordOperations.ts
 import { nextTick, Ref } from 'vue'
 import {
   CategoryType,
@@ -134,6 +134,35 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
     }
   }
 
+  /**
+   * Keyを変更する専用関数（参照更新は含まない、純粋なKey変更のみ）
+   * 参照更新は keyUpdateStrategies の updateReferences を使用すること
+   */
+  const updateItemKey = <C extends RecordCategoryType>(category: C, oldKey: string, newKey: string): boolean => {
+    const categoryData = data.value[category] as Record<string, RecordCategoryItemTypeMap[C]>
+
+    if (!categoryData?.[oldKey] || categoryData?.[newKey]) {
+      return false // 旧keyが存在しない、または新keyが既に存在
+    }
+
+    const item = categoryData[oldKey]
+    const { [oldKey]: removed, ...remaining } = categoryData
+
+    const updatedItem = {
+      ...item,
+      key: newKey,
+      updatedAt: new Date().toISOString(),
+    }
+
+    data.value[category] = {
+      ...remaining,
+      [newKey]: updatedItem,
+    } as any
+
+    hasChanged.value = true
+    return true
+  }
+
   // データアクセス
   const getItem = <T>(category: RecordCategoryType, id: string): T | undefined => {
     return (data.value[category] as Record<string, T>)?.[id]
@@ -187,6 +216,7 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
     updateRecordProperty,
     updateOmikujiPostActions,
     updatePlaceholderValues,
+    updateItemKey,
     getItem,
     getCategoryMap,
     getCategoryArray,

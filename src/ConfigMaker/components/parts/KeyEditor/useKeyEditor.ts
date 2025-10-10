@@ -1,8 +1,8 @@
-// src/configMaker/components/parts/useIdEditor.ts
+// src\ConfigMaker\components\parts\KeyEditor\useKeyEditor.ts
 import { ref, computed, readonly } from 'vue'
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-import { validateId as validateIdUtil } from './keyEditorValidation'
+import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
 import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './keyEditorTypes'
 
@@ -11,7 +11,7 @@ export function useKeyEditor() {
 
   // リアクティブ状態
   const isDialogOpen = ref(false)
-  const newId = ref('')
+  const newKey = ref('')
   const errorMessage = ref('')
   const characterUsage = ref<CharacterUsage | null>(null)
 
@@ -24,19 +24,19 @@ export function useKeyEditor() {
   /**
    * キャラクター使用箇所の取得
    */
-  function getCharacterUsage(characterId: string): CharacterUsage {
+  function getCharacterUsage(characterKey: string): CharacterUsage {
     const usage: CharacterUsage = { comments: [], timers: [] }
 
     ;(['comments', 'timers'] as const).forEach((category) => {
       const categoryData = omikujiStore.getCategoryMap(category)
 
-      Object.entries(categoryData).forEach(([ruleId, rule]) => {
+      Object.entries(categoryData).forEach(([ruleKey, rule]) => {
         const hasUsage = rule.omikuji.some((omikujiSet) =>
-          omikujiSet.postActions.some((action) => action.characterKey === characterId)
+          omikujiSet.postActions.some((action) => action.characterKey === characterKey)
         )
 
         if (hasUsage) {
-          usage[category].push(ruleId)
+          usage[category].push(ruleKey)
         }
       })
     })
@@ -45,10 +45,10 @@ export function useKeyEditor() {
   }
 
   /**
-   * ID更新の実行
+   * Key更新の実行
    */
-  function executeIdUpdate(currentId: string, newId: string, category: RecordCategoryType): UpdateResult {
-    const trimmedNewId = newId.trim()
+  function executeKeyUpdate(currentKey: string, newKey: string, category: RecordCategoryType): UpdateResult {
+    const trimmedNewKey = newKey.trim()
     const strategy = updateStrategies[category]
 
     if (!strategy) {
@@ -56,37 +56,37 @@ export function useKeyEditor() {
     }
 
     try {
-      const success = strategy.updateId(currentId, trimmedNewId)
+      const success = strategy.updateKey(currentKey, trimmedNewKey)
 
       if (success && strategy.updateReferences) {
-        strategy.updateReferences(currentId, trimmedNewId)
+        strategy.updateReferences(currentKey, trimmedNewKey)
       }
 
-      return success ? { success: true } : { success: false, error: 'ID更新に失敗しました' }
+      return success ? { success: true } : { success: false, error: 'Key更新に失敗しました' }
     } catch (error) {
-      console.error('ID更新エラー:', error)
-      return { success: false, error: 'ID更新中にエラーが発生しました' }
+      console.error('Key更新エラー:', error)
+      return { success: false, error: 'Key更新中にエラーが発生しました' }
     }
   }
 
   /**
-   * IDバリデーション（エラーメッセージをセット）
+   * Keyバリデーション（エラーメッセージをセット）
    */
-  function validateId(id: string, category: RecordCategoryType, currentId: string): void {
-    errorMessage.value = validateIdUtil(id, category, currentId)
+  function validateKey(key: string, category: RecordCategoryType, currentKey: string): void {
+    errorMessage.value = validateKeyUtil(key, category, currentKey)
   }
 
   /**
    * ダイアログを開く
    */
-  function openDialog(currentId: string, category: RecordCategoryType): void {
-    newId.value = currentId
+  function openDialog(currentKey: string, category: RecordCategoryType): void {
+    newKey.value = currentKey
     errorMessage.value = ''
     currentCategory.value = category
     isDialogOpen.value = true
 
     if (category === 'characters') {
-      characterUsage.value = getCharacterUsage(currentId)
+      characterUsage.value = getCharacterUsage(currentKey)
     }
   }
 
@@ -95,26 +95,26 @@ export function useKeyEditor() {
    */
   function closeDialog(): void {
     isDialogOpen.value = false
-    newId.value = ''
+    newKey.value = ''
     errorMessage.value = ''
     characterUsage.value = null
   }
 
   /**
-   * IDを保存
+   * Keyを保存
    */
-  function saveId(currentId: string, category: RecordCategoryType): boolean {
-    if (hasError.value || !newId.value.trim() || newId.value === currentId) {
+  function saveKey(currentKey: string, category: RecordCategoryType): boolean {
+    if (hasError.value || !newKey.value.trim() || newKey.value === currentKey) {
       return false
     }
 
-    const result = executeIdUpdate(currentId, newId.value, category)
+    const result = executeKeyUpdate(currentKey, newKey.value, category)
 
     if (result.success) {
       closeDialog()
       return true
     } else {
-      errorMessage.value = result.error || 'ID更新に失敗しました'
+      errorMessage.value = result.error || 'Key更新に失敗しました'
       return false
     }
   }
@@ -130,17 +130,17 @@ export function useKeyEditor() {
   return {
     // リアクティブ状態
     isDialogOpen: readonly(isDialogOpen),
-    newId,
+    newKey,
     errorMessage: readonly(errorMessage),
     characterUsage: readonly(characterUsage),
     hasError,
     dialogTitle,
 
     // メソッド
-    validateId,
+    validateKey,
     openDialog,
     closeDialog,
-    saveId,
+    saveKey,
     getItemTypeLabel,
   }
 }

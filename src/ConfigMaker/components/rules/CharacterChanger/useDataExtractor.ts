@@ -31,10 +31,6 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
   /**
    * カテゴリに応じたラベルを取得
    */
-  /**
-   * Expected to return a value in computed function.eslintvue/return-in-computed-property
-function(): "コメント" | "タイマー" | "アクションセット"
-   */
   const categoryLabel = computed(() => {
     switch (category) {
       case 'comments':
@@ -43,6 +39,8 @@ function(): "コメント" | "タイマー" | "アクションセット"
         return 'タイマー'
       case 'actionSets':
         return 'アクションセット'
+      default:
+        return '不明なカテゴリ'
     }
   })
 

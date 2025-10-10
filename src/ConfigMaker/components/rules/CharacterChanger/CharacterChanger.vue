@@ -87,18 +87,18 @@
 </template>
 
 <script setup lang="ts">
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import { Users } from 'lucide-vue-next'
-  import { TargetCategoryType, useDataExtractor } from './useDataExtractor'
-  import { useCharacterData } from './useCharacterData'
-  import { useCharacterStats } from './useCharacterStats'
-  import { useModalState } from './useModalState'
-  import { useCharacterUpdater } from './useCharacterUpdater'
   import CharacterStatistics from './CharacterStatistics.vue'
   import CurrentCharacterList from './CurrentCharacterList.vue'
   import InvalidCharacterAlert from './InvalidCharacterAlert.vue'
   import CharacterMappingEditor from './CharacterMappingEditor.vue'
   import MappingPreview from './MappingPreview.vue'
+  import { TargetCategoryType, useDataExtractor } from './useDataExtractor'
+  import { useCharacterData } from './useCharacterData'
+  import { useCharacterStats } from './useCharacterStats'
+  import { useModalState } from './useModalState'
+  import { useCharacterUpdater } from './useCharacterUpdater'
+  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import { Users } from 'lucide-vue-next'
 
   const props = withDefaults(
     defineProps<{
@@ -113,7 +113,7 @@
   )
 
   // データ抽出（selectedIdがある場合は単一ルールのみ対象）
-  const { changeScope, categoryLabel, scopeLabel, allItems, allPostActions, totalItems } = useDataExtractor(
+  const { changeScope, scopeLabel, allItems, allPostActions, totalItems } = useDataExtractor(
     props.category,
     props.selectedId
   )

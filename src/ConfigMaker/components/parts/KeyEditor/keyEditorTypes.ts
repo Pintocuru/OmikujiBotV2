@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\parts\useKeyEditor\keyEditorTypes.ts
+// src\ConfigMaker\components\parts\KeyEditor\keyEditorTypes.ts
 import { RecordCategoryType } from '@/types/'
 
 export type CharacterUsage = {
@@ -11,9 +11,9 @@ export type UpdateResult = {
   error?: string
 }
 
-export interface IdUpdateStrategy<T extends RecordCategoryType> {
-  updateId(oldId: string, newId: string): boolean
-  updateReferences?(oldId: string, newId: string): void
+export interface KeyUpdateStrategy<T extends RecordCategoryType> {
+  updateKey(oldKey: string, newKey: string): boolean
+  updateReferences?(oldKey: string, newKey: string): void
 }
 
 export const CATEGORY_TITLES: Record<RecordCategoryType, string> = {

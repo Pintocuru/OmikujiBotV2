@@ -1,45 +1,45 @@
-// src\ConfigMaker\components\parts\useKeyEditor\keyEditorValidation.ts
+// src\ConfigMaker\components\parts\KeyEditor\keyEditorValidation.ts
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
 /**
- * IDの基本フォーマットバリデーション
+ * Keyの基本フォーマットバリデーション
  */
-export function validateIdFormat(id: string): string | null {
-  const trimmedId = id.trim()
+export function validateKeyFormat(key: string): string | null {
+  const trimmedKey = key.trim()
 
-  if (!trimmedId) return 'IDを入力してください'
-  if (!/^[a-zA-Z0-9_-]+$/.test(trimmedId)) {
-    return 'IDは英数字、アンダースコア(_)、ハイフン(-)のみ使用可能です'
+  if (!trimmedKey) return 'Keyを入力してください'
+  if (!/^[a-zA-Z0-9_-]+$/.test(trimmedKey)) {
+    return 'Keyは英数字、アンダースコア(_)、ハイフン(-)のみ使用可能です'
   }
 
   return null
 }
 
 /**
- * ID重複チェック
+ * Key重複チェック
  */
-export function validateIdDuplication(id: string, category: RecordCategoryType, currentId: string): string | null {
-  if (id === currentId) return null
+export function validateKeyDuplication(key: string, category: RecordCategoryType, currentKey: string): string | null {
+  if (key === currentKey) return null
 
   const omikujiStore = useOmikujiStore()
-  const existingIds = Object.keys(omikujiStore.getCategoryMap(category)).filter(
-    (existingId) => existingId !== currentId
+  const existingKeys = Object.keys(omikujiStore.getCategoryMap(category)).filter(
+    (existingKey) => existingKey !== currentKey
   )
 
-  return existingIds.includes(id) ? 'このIDは既に使用されています' : null
+  return existingKeys.includes(key) ? 'このKeyは既に使用されています' : null
 }
 
 /**
- * 統合IDバリデーション
+ * 統合Keyバリデーション
  */
-export function validateId(id: string, category: RecordCategoryType, currentId: string): string {
-  const trimmedId = id.trim()
+export function validateKey(key: string, category: RecordCategoryType, currentKey: string): string {
+  const trimmedKey = key.trim()
 
-  const formatError = validateIdFormat(trimmedId)
+  const formatError = validateKeyFormat(trimmedKey)
   if (formatError) return formatError
 
-  const duplicateError = validateIdDuplication(trimmedId, category, currentId)
+  const duplicateError = validateKeyDuplication(trimmedKey, category, currentKey)
   if (duplicateError) return duplicateError
 
   return ''

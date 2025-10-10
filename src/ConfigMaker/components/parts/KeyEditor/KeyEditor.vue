@@ -1,10 +1,10 @@
-<!-- src/configMaker/components/parts/IdEditor.vue -->
+<!-- src\ConfigMaker\components\parts\KeyEditor\KeyEditor.vue -->
 <template>
-  <!-- IDエディタボタン -->
+  <!-- Keyエディタボタン -->
   <button
-    @click="openDialog(currentId, category)"
+    @click="openDialog(currentKey, category)"
     class="btn btn-sm btn-outline btn-primary tooltip tooltip-bottom min-w-fit whitespace-nowrap"
-    data-tip="IDを変更します。参照している他の設定も影響を受ける可能性があります。"
+    data-tip="Keyを変更します。参照している他の設定も影響を受ける可能性があります。"
   >
     <span class="inline">📝</span>
     <span class="hidden sm:inline ml-1">Key編集</span>
@@ -13,23 +13,23 @@
   <!-- ダイアログ -->
   <div v-if="isDialogOpen" class="modal modal-open">
     <div class="modal-box">
-      <h3 class="font-bold text-lg text-primary">{{ dialogTitle }}ID編集</h3>
+      <h3 class="font-bold text-lg text-primary">{{ dialogTitle }}Key編集</h3>
 
       <div class="py-4">
-        <SettingItem label="現在のID">
+        <SettingItem label="現在のKey">
           <div class="input input-bordered bg-neutral text-neutral-content select-all">
-            {{ currentId }}
+            {{ currentKey }}
           </div>
         </SettingItem>
 
-        <SettingItem label="新しいID" class="form-control mt-4">
+        <SettingItem label="新しいKey" class="form-control mt-4">
           <input
             type="text"
-            v-model="newId"
-            placeholder="新しいIDを入力"
+            v-model="newKey"
+            placeholder="新しいKeyを入力"
             class="input input-bordered focus:input-primary"
             :class="{ 'input-error': hasError }"
-            @input="validateId(newId, category, currentId)"
+            @input="validateKey(newKey, category, currentKey)"
           />
           <label class="label" v-if="hasError">
             <span class="label-text-alt text-error font-bold">{{ errorMessage }}</span>
@@ -67,7 +67,7 @@
             <span class="text-2xl mr-3">⚠️</span>
             <span class="text-sm">
               <span class="font-bold">
-                IDを変更すると、この{{
+                Keyを変更すると、この{{
                   getItemTypeLabel(category)
                 }}を参照している他の設定も影響を受ける可能性があります。
               </span>
@@ -81,8 +81,8 @@
 
       <ModalFooterActions
         :on-cancel="closeDialog"
-        :on-save="() => saveId(currentId, category)"
-        :disabled="hasError || !newId.trim() || newId === currentId"
+        :on-save="() => saveKey(currentKey, category)"
+        :disabled="hasError || !newKey.trim() || newKey === currentKey"
       />
     </div>
   </div>
@@ -96,20 +96,20 @@
 
   const props = defineProps<{
     category: RecordCategoryType
-    currentId: string
+    currentKey: string
   }>()
 
   const {
     isDialogOpen,
-    newId,
+    newKey,
     errorMessage,
     characterUsage,
     hasError,
     dialogTitle,
-    validateId,
+    validateKey,
     openDialog,
     closeDialog,
-    saveId,
+    saveKey,
     getItemTypeLabel,
   } = useKeyEditor()
 </script>
