@@ -30,7 +30,7 @@
         :subTitle="thresholdSubTitle"
         description="「おみくじを引く」発動条件の設定"
       >
-        <CommentThresholdEditor v-model="selectedItem.threshold" :selectedRuleId="selectedRuleId" />
+        <CommentThresholdEditor v-model="selectedItem.threshold" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- おみくじ制限設定セクション -->
@@ -41,7 +41,7 @@
         :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, ${selectedItem.limits.drawLimit > 0 ? `回数:${selectedItem.limits.drawLimit},` : ''}連投:${selectedItem.limits.isRepeatAllowed ? '可' : '不可'})`"
         description="重複時や回数超過時におみくじを無効にします"
       >
-        <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedRuleId="selectedRuleId" />
+        <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- ゲームスクリプト設定セクション -->
@@ -64,7 +64,7 @@
         :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
         description="コメントで実行するおみくじの設定"
       >
-        <OmikujiSetEditor category="comments" :selectedRuleId="selectedRuleId" />
+        <OmikujiSetEditor category="comments" :selectedItemKey="selectedItemKey" />
       </SectionCard>
     </div>
 
@@ -104,7 +104,7 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   const { isGod } = useSettingMode()
   const { canShow } = useVisibilityAccess()
@@ -112,8 +112,8 @@
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({
     get: () => {
-      if (!selectedRuleId.value) return null
-      return data.value.comments[selectedRuleId.value]
+      if (!selectedItemKey.value) return null
+      return data.value.comments[selectedItemKey.value]
     },
     set: (value: CommentRuleType) => {
       omikujiStore.updateItem('comments', value.id, value)

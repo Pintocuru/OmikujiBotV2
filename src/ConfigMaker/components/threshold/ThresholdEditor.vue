@@ -68,7 +68,7 @@
 
   const props = defineProps<{
     modelValue: CommentThresholdType
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Pinia store
@@ -79,9 +79,9 @@
     computed({
       get: () => props.modelValue[key],
       set: (value) => {
-        if (!props.selectedRuleId) return
+        if (!props.selectedItemKey) return
         const updated = { ...props.modelValue, [key]: value }
-        omikujiStore.updateRecordProperty('comments', props.selectedRuleId, 'threshold', updated)
+        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'threshold', updated)
       },
     })
 

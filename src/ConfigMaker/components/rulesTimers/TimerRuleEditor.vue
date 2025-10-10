@@ -42,7 +42,7 @@
         :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
         description="おみくじの抽選設定や、おみくじの内容です"
       >
-        <OmikujiSetEditor category="timers" :selectedRuleId="selectedRuleId" />
+        <OmikujiSetEditor category="timers" :selectedItemKey="selectedItemKey" />
       </SectionCard>
     </div>
 
@@ -78,12 +78,12 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   const selectedItem = computed({
     get: () => {
-      if (!selectedRuleId.value) return null
-      return data.value.timers[selectedRuleId.value]
+      if (!selectedItemKey.value) return null
+      return data.value.timers[selectedItemKey.value]
     },
     set: (value: TimerRuleType) => {
       omikujiStore.updateItem('timers', value.id, value)

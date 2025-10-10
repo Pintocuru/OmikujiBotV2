@@ -60,7 +60,7 @@
 
   const props = defineProps<{
     modelValue: CharacterType['image']
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   const emit = defineEmits<{
@@ -75,12 +75,12 @@
 
   // 画像パスを更新する関数
   const updateImagePath = (key: CharacterEmotionType, value: string) => {
-    if (!props.selectedRuleId) return
+    if (!props.selectedItemKey) return
 
     const newImages = { ...currentImages.value, [key]: value }
 
     // storeを使って更新
-    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, 'image', newImages)
+    omikujiStore.updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
   }
 
   // 拡張子のリスト（検索順序）
@@ -91,7 +91,7 @@
 
   // 画像パスのリセット（トグル機能付き）
   const resetImagePath = (key: CharacterEmotionType) => {
-    if (!props.selectedRuleId) return
+    if (!props.selectedItemKey) return
 
     // 現在の拡張子のインデックスを取得
     const currentIndex = currentExtensions.value.get(key) || 0
@@ -102,10 +102,10 @@
 
     // 新しいパスを設定
     const nextExt = imageExtensions[currentIndex]
-    const newPath = `${props.selectedRuleId}/${key}.${nextExt}`
+    const newPath = `${props.selectedItemKey}/${key}.${nextExt}`
 
     // storeを使って更新
     const newImages = { ...currentImages.value, [key]: newPath }
-    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, 'image', newImages)
+    omikujiStore.updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
   }
 </script>

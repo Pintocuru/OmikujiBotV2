@@ -1,10 +1,10 @@
 <!-- src\ConfigMaker\components\rules\OmikujiSetEditor.vue -->
 <template>
-  <div v-if="selectedRuleId">
+  <div v-if="selectedItemKey">
     <!-- 便利なボタン群 -->
     <div class="flex justify-end gap-2">
       <!-- キャラクター一括変更ボタン -->
-      <CharacterChanger :category="category" :selectedId="selectedRuleId" />
+      <CharacterChanger :category="category" :selectedId="selectedItemKey" />
 
       <!-- おみくじテストボタン -->
       <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
@@ -29,7 +29,7 @@
         <div :key="element.id || `omikuji-${index}`" class="draggable-item">
           <!-- エラーバウンダリー的な処理 -->
           <div v-if="element && typeof element === 'object'">
-            <OmikujiItemEditor :category="category" :selected-rule-id="selectedRuleId" :index="index" />
+            <OmikujiItemEditor :category="category" :selectedItemKey="selectedItemKey" :index="index" />
           </div>
           <div v-else class="p-4 bg-red-50 border border-red-200 rounded">
             <p class="text-red-600">アイテムの読み込みでエラーが発生しました</p>
@@ -58,7 +58,7 @@
 
   const props = defineProps<{
     category: RulesCategoryType
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Pinia store
@@ -67,13 +67,13 @@
   // Computed
   const omikujiSets = computed({
     get: () => {
-      if (!props.selectedRuleId) return []
-      const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+      if (!props.selectedItemKey) return []
+      const record = omikujiStore.getItem(props.category, props.selectedItemKey) as RuleType
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {
-      if (!props.selectedRuleId) return
-      omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
+      if (!props.selectedItemKey) return
+      omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
     },
   })
 

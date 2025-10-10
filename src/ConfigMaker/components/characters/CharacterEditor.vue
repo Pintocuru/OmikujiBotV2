@@ -4,7 +4,7 @@
   <RecordTabs />
 
   <!-- 選択されたキャラクターの編集フォーム -->
-  <div v-if="selectedRuleId && selectedItem">
+  <div v-if="selectedItemKey && selectedItem">
     <!-- 基本情報 -->
     <SectionCard
       :isOpen="activeSection === 'basicInfo'"
@@ -13,7 +13,7 @@
       :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="キャラクター、またはカラー設定名の編集"
     >
-      <CharacterBasicInfo :selectedRuleId="selectedRuleId" />
+      <CharacterBasicInfo :selectedItemKey="selectedItemKey" />
     </SectionCard>
 
     <!-- フキダシカラー設定 -->
@@ -46,7 +46,7 @@
       :subTitle="` わんコメ投稿用画像 : ${selectedItem.imageBase64 ? 'あり' : 'なし'}`"
       description="わんコメの投稿で必要な設定を行います"
     >
-      <CharacterServiceSettings :selectedRuleId="selectedRuleId" />
+      <CharacterServiceSettings :selectedItemKey="selectedItemKey" />
     </SectionCard>
 
     <!-- ジェネレーター用画像設定 -->
@@ -58,7 +58,7 @@
       :subTitle="`画像数 : ${imageCount}`"
       description="ジェネレーターで表示する画像の設定"
     >
-      <CharacterImageSettings :modelValue="selectedItem.image" :selectedRuleId="selectedRuleId" />
+      <CharacterImageSettings :modelValue="selectedItem.image" :selectedItemKey="selectedItemKey" />
     </SectionCard>
   </div>
 </template>
@@ -86,12 +86,12 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   // 選択されたキャラクターを取得（読み取り専用）
   const selectedItem = computed(() => {
-    if (!selectedRuleId.value) return null
-    return data.value.characters[selectedRuleId.value]
+    if (!selectedItemKey.value) return null
+    return data.value.characters[selectedItemKey.value]
   })
 
   // 画像数カウント

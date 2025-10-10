@@ -104,7 +104,7 @@
 
   const props = defineProps<{
     modelValue: OmikujiLimitsType
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Pinia store
@@ -115,9 +115,9 @@
     computed({
       get: () => props.modelValue[key],
       set: (value) => {
-        if (!props.selectedRuleId) return
+        if (!props.selectedItemKey) return
         const updatedLimits = { ...props.modelValue, [key]: value }
-        omikujiStore.updateRecordProperty('comments', props.selectedRuleId, 'limits', updatedLimits)
+        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'limits', updatedLimits)
       },
     })
 

@@ -5,7 +5,7 @@
     <OmikujiItemToolbar
       :modelValue="modelValue"
       :category="category"
-      :selected-rule-id="selectedRuleId"
+      :selectedItemKey="selectedItemKey"
       @update:modelValue="updatePostActions"
       @toggleJson="toggleEditMode"
       @toggleEdit="toggleTabEditor"
@@ -40,7 +40,7 @@
   const props = defineProps<{
     modelValue: PostActionType[]
     category: RulesCategoryType | 'actionSets'
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   const emit = defineEmits<{

@@ -57,7 +57,7 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { selectedRuleId } = storeToRefs(omikujiStore)
+  const { selectedItemKey } = storeToRefs(omikujiStore)
 
   // labelとキーを配列で管理
   const colorFields = [
@@ -79,10 +79,10 @@
 
   // 色フィールドを更新する関数
   const updateColorField = (key: keyof CharacterColorType, value: string) => {
-    if (!selectedRuleId.value) return
+    if (!selectedItemKey.value) return
 
     // storeを使って更新
-    omikujiStore.updateRecordProperty('characters', selectedRuleId.value, 'color', {
+    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
       ...currentColor.value,
       [key]: value,
     })
@@ -90,11 +90,11 @@
 
   // ランダム色設定の処理
   const handleRandomColor = () => {
-    if (!selectedRuleId.value) return
+    if (!selectedItemKey.value) return
 
     const result = drawOmikuji(DEFAULT_COLOR_THEMES)
     if (result) {
-      omikujiStore.updateRecordProperty('characters', selectedRuleId.value, 'color', {
+      omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
         ...result,
         customClasses: currentColor.value.customClasses,
       })

@@ -67,17 +67,17 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { selectedRuleId } = storeToRefs(omikujiStore)
+  const { selectedItemKey } = storeToRefs(omikujiStore)
 
   // 現在の表示オプションを取得
   const currentDisplayOption = computed(() => props.modelValue)
 
   // 表示オプションフィールドを更新する関数
   const updateDisplayField = (key: keyof DisplayOptionType, value: any) => {
-    if (!selectedRuleId.value) return
+    if (!selectedItemKey.value) return
 
     // storeを使って更新
-    omikujiStore.updateRecordProperty('characters', selectedRuleId.value, 'displayOption', {
+    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'displayOption', {
       ...currentDisplayOption.value,
       [key]: value,
     })

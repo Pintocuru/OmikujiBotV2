@@ -52,7 +52,7 @@
     allOmikuji: OmikujiItemType[]
     omikuji: OmikujiItemType
     category: RulesCategoryType
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Pinia ストアを使用
@@ -71,12 +71,12 @@
 
   // 共通の更新関数
   const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
-    if (!props.selectedRuleId) return
+    if (!props.selectedItemKey) return
     const index = props.allOmikuji.findIndex((item) => item.id === props.omikuji.id)
     if (index === -1) return
     omikujiStore.updateRecordProperty(
       props.category,
-      props.selectedRuleId,
+      props.selectedItemKey,
       'omikuji',
       updateFn([...props.allOmikuji], index)
     )

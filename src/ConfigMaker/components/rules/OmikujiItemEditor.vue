@@ -14,11 +14,11 @@
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
         :category="category"
-        :selected-rule-id="selectedRuleId"
+        :selectedItemKey="selectedItemKey"
       />
 
       <!-- PostActions編集コンポーネント -->
-      <PostActionsEditor v-model="postActions" :category="category" :selected-rule-id="selectedRuleId" />
+      <PostActionsEditor v-model="postActions" :category="category" :selectedItemKey="selectedItemKey" />
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@
 
   const props = defineProps<{
     category: RulesCategoryType
-    selectedRuleId: string | null
+    selectedItemKey: string | null
     index: number // カードの色分け用
   }>()
 
@@ -43,13 +43,13 @@
   // Computed
   const allOmikujiSets = computed({
     get: () => {
-      if (!props.selectedRuleId) return []
-      const record = omikujiStore.getItem(props.category, props.selectedRuleId) as RuleType
+      if (!props.selectedItemKey) return []
+      const record = omikujiStore.getItem(props.category, props.selectedItemKey) as RuleType
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {
-      if (!props.selectedRuleId) return
-      omikujiStore.updateRecordProperty(props.category, props.selectedRuleId, 'omikuji', value)
+      if (!props.selectedItemKey) return
+      omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
     },
   })
 
@@ -65,7 +65,7 @@
       return omikujiItem.value?.postActions || []
     },
     set: (newActions: PostActionType[]) => {
-      if (!props.selectedRuleId) return
+      if (!props.selectedItemKey) return
 
       const updatedOmikuji = [...allOmikujiSets.value]
       if (updatedOmikuji[props.index]) {

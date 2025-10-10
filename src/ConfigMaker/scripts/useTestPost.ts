@@ -12,17 +12,17 @@ import { RankingManager } from '@/MainGenerator/scripts/VariablePlaceholder/Rank
 
 export function useTestPost() {
   const omikujiStore = useOmikujiStore()
-  const { data, selectedCategory, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedCategory, selectedItemKey } = storeToRefs(omikujiStore)
 
   // 選択されているルールを取得（型安全性を確保）
   const selectedRule = computed((): RuleType | null => {
-    if (!selectedRuleId.value) return null
+    if (!selectedItemKey.value) return null
 
     const ruleData =
       selectedCategory.value === 'comments'
-        ? data.value.comments[selectedRuleId.value]
+        ? data.value.comments[selectedItemKey.value]
         : selectedCategory.value === 'timers'
-          ? data.value.timers[selectedRuleId.value]
+          ? data.value.timers[selectedItemKey.value]
           : null
 
     // readonlyを取り除くためにディープコピー

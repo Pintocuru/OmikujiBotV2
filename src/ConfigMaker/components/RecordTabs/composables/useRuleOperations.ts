@@ -32,7 +32,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
       // colorFilter が入っているなら、新しいデータも色を付ける
       const editorColor = filterOptions.value.colorFilter ? filterOptions.value.colorFilter : undefined
       const newId = omikujiStore.addItem?.(category, { editorColor })
-      omikujiStore.selectRule(newId)
+      omikujiStore.selectItem(newId)
       toast.success('新しいルールを追加しました', {
         description: 'ルールの設定を行ってください',
         duration: 3000,

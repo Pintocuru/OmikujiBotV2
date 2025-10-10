@@ -81,7 +81,7 @@
   const props = defineProps<{
     modelValue: PostActionType[]
     category: RulesCategoryType | 'actionSets'
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Emits
@@ -96,9 +96,9 @@
   // currentScriptIdの取得
   // TODO:将来TimerにもGameScriptsを入れる予定です
   const currentScriptId = computed(() => {
-    if (!props.selectedRuleId) return null
+    if (!props.selectedItemKey) return null
     if (props.category === 'actionSets') return null // actionSetsは script が存在しない
-    const record = omikujiStore.getItem(props.category, props.selectedRuleId) as CommentRuleType
+    const record = omikujiStore.getItem(props.category, props.selectedItemKey) as CommentRuleType
     return record.scriptId ? record.scriptId : null
   })
 

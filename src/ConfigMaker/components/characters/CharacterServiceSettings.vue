@@ -28,7 +28,7 @@
     </SettingItem>
 
     <!-- わんコメ投稿用画像設定 -->
-    <CharacterBase64Settings v-if="localData.displayOption.isOneCommePost" :selectedRuleId="selectedRuleId" />
+    <CharacterBase64Settings v-if="localData.displayOption.isOneCommePost" :selectedItemKey="selectedItemKey" />
   </div>
 </template>
 
@@ -41,7 +41,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   // Pinia store
@@ -49,13 +49,13 @@
 
   const localData = computed<CharacterType | undefined>({
     get: () => {
-      if (!props.selectedRuleId) return
-      return omikujiStore.getItem<CharacterType>('characters', props.selectedRuleId) ?? undefined
+      if (!props.selectedItemKey) return
+      return omikujiStore.getItem<CharacterType>('characters', props.selectedItemKey) ?? undefined
     },
 
     set: (value?: CharacterType) => {
-      if (!props.selectedRuleId || !value) return
-      omikujiStore.updateItem('characters', props.selectedRuleId, value)
+      if (!props.selectedItemKey || !value) return
+      omikujiStore.updateItem('characters', props.selectedItemKey, value)
     },
   })
 </script>

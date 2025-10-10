@@ -27,7 +27,7 @@
       :subTitle="`(おみくじ)`"
       description="コメントで実行するおみくじの設定"
     >
-      <PostActionsEditor v-model="selectedItem.postActions" category="actionSets" :selectedRuleId="selectedRuleId" />
+      <PostActionsEditor v-model="selectedItem.postActions" category="actionSets" :selectedItemKey="selectedItemKey" />
     </SectionCard>
   </div>
 </template>
@@ -55,13 +55,13 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({
     get: () => {
-      if (!selectedRuleId.value) return null
-      return data.value.actionSets[selectedRuleId.value]
+      if (!selectedItemKey.value) return null
+      return data.value.actionSets[selectedItemKey.value]
     },
     set: (value: PostActionRecordType) => {
       omikujiStore.updateItem('actionSets', value.id, value)

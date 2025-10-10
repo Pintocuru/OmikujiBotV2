@@ -33,7 +33,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 
   const props = defineProps<{
-    selectedRuleId: string
+    selectedItemKey: string
   }>()
 
   // Pinia store
@@ -41,16 +41,16 @@
 
   // 現在のキャラクターデータを取得（読み取り専用）
   const currentData = computed<CharacterType | undefined>(() => {
-    if (!props.selectedRuleId) return undefined
-    return omikujiStore.getItem<CharacterType>('characters', props.selectedRuleId) ?? undefined
+    if (!props.selectedItemKey) return undefined
+    return omikujiStore.getItem<CharacterType>('characters', props.selectedItemKey) ?? undefined
   })
 
   // フィールドを個別に更新する関数
   const updateField = (key: keyof CharacterType, value: string) => {
-    if (!props.selectedRuleId) return
+    if (!props.selectedItemKey) return
 
     // updateRecordPropertyを使用して特定のフィールドのみ更新
-    omikujiStore.updateRecordProperty('characters', props.selectedRuleId, key, value)
+    omikujiStore.updateRecordProperty('characters', props.selectedItemKey, key, value)
   }
 
   const fields = [

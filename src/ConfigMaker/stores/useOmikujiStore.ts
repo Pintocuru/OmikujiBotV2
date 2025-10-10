@@ -3,10 +3,15 @@ import { readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { isDev } from '@/types/env'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { useDataOperations } from './composables/useDataOperations'
+import { useDataIO } from './composables/useDataIO'
+import { useDataMerge } from './composables/useDataMerge'
 import { useNavigationManager } from './composables/useNavigationManager'
 import { useItemManager } from './composables/useItemManager'
-import { useRecordOperations } from './composables/useRecordOperations'
+import { useRecordCRUD } from './composables/useRecordCRUD'
+import { useRecordDataAccess } from './composables/useRecordDataAccess'
+import { useRecordProperties } from './composables/useRecordProperties'
+import { useRecordSort } from './composables/useRecordSort'
+
 import { useSettingsOperations } from './composables/useSettingsOperations'
 import { useVersionCheck } from './composables/useVersionCheck'
 import { normalizeData } from '@/migrations'
@@ -24,11 +29,17 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   const resetChangeState = () => (hasChanged.value = false)
 
   // 各機能モジュール
-  const dataOps = useDataOperations(data, hasChanged)
-  const recordOps = useRecordOperations(data, hasChanged)
+  const dataIO = useDataIO(data)
+  const dataMerge = useDataMerge(data, hasChanged)
+
+  const recordDataAccess = useRecordDataAccess(data)
+  const recordCRUD = useRecordCRUD(data, hasChanged)
+  const recordProperties = useRecordProperties(data, recordCRUD, recordDataAccess)
+  const recordSort = useRecordSort(data, hasChanged, recordDataAccess)
+
   const settingsOps = useSettingsOperations(data, hasChanged)
-  const navigation = useNavigationManager(recordOps)
-  const itemManager = useItemManager(recordOps, navigation)
+  const navigation = useNavigationManager(recordDataAccess)
+  const itemManager = useItemManager(recordDataAccess, recordCRUD, recordProperties, recordSort, navigation)
   const versionCheck = useVersionCheck(data)
 
   return {
@@ -39,8 +50,15 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     resetChangeState,
 
     // 各機能モジュールを展開
-    ...dataOps,
-    ...recordOps,
+
+    ...dataIO, // データ入出力
+    ...dataMerge, // データマージ
+
+    ...recordDataAccess, // データアクセス
+    ...recordCRUD, // CRUD操作
+    ...recordProperties, // プロパティ更新
+    ...recordSort, // 並び替え
+
     ...settingsOps,
     ...navigation,
     ...itemManager,

@@ -22,7 +22,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
   // 選択されたルールデータを取得
   const selectedRulesCommentData = computed(() => {
     if (omikujiStore.selectedCategory !== 'comments') return null
-    const ruleId = omikujiStore.selectedRuleId
+    const ruleId = omikujiStore.selectedItemKey
     return ruleId ? omikujiStore.getCategoryMap('comments')[ruleId] : null
   })
 

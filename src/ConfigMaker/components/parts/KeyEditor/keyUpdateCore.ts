@@ -16,7 +16,7 @@ export function updateRecordKey(category: RecordCategoryType, oldKey: string, ne
     // Key更新処理
     omikujiStore.addItem(category, { ...oldRecord, key: newKey })
     omikujiStore.removeItem(category, oldKey)
-    omikujiStore.selectRule(newKey)
+    omikujiStore.selectItem(newKey)
 
     return true
   } catch {
@@ -39,8 +39,8 @@ export function updateCharacterKey(oldKey: string, newKey: string): boolean {
     omikujiStore.addItem('characters', { ...character, key: newKey })
 
     // 選択状態の更新
-    if (omikujiStore.selectedCategory === 'characters' && omikujiStore.selectedRuleId === oldKey) {
-      omikujiStore.selectRule(newKey)
+    if (omikujiStore.selectedCategory === 'characters' && omikujiStore.selectedItemKey === oldKey) {
+      omikujiStore.selectItem(newKey)
     }
 
     return true
@@ -64,8 +64,8 @@ export function updatePlaceholderKey(oldKey: string, newKey: string): boolean {
     omikujiStore.addItem('placeholders', { ...placeholderData, key: newKey })
     omikujiStore.removeItem('placeholders', oldKey)
 
-    if (omikujiStore.selectedRuleId === oldKey) {
-      omikujiStore.selectRule(newKey)
+    if (omikujiStore.selectedItemKey === oldKey) {
+      omikujiStore.selectItem(newKey)
     }
 
     return true

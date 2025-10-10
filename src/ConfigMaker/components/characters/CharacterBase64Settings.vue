@@ -62,7 +62,7 @@
   import { X, ImageIcon } from 'lucide-vue-next'
 
   const props = defineProps<{
-    selectedRuleId: string | null
+    selectedItemKey: string | null
   }>()
 
   const emit = defineEmits<{
@@ -74,13 +74,13 @@
 
   const localData = computed<CharacterType | undefined>({
     get: () => {
-      if (!props.selectedRuleId) return
-      return omikujiStore.getItem<CharacterType>('characters', props.selectedRuleId) ?? undefined
+      if (!props.selectedItemKey) return
+      return omikujiStore.getItem<CharacterType>('characters', props.selectedItemKey) ?? undefined
     },
 
     set: (value?: CharacterType) => {
-      if (!props.selectedRuleId || !value) return
-      omikujiStore.updateItem('characters', props.selectedRuleId, value)
+      if (!props.selectedItemKey || !value) return
+      omikujiStore.updateItem('characters', props.selectedItemKey, value)
     },
   })
 

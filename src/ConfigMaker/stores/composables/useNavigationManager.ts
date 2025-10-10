@@ -1,29 +1,32 @@
-// src/ConfigMaker/script/stores/composables/useNavigationManager.ts (ナビゲーション専用)
+// src/ConfigMaker/script/stores/composables/useNavigationManager.ts
 import { ref, computed } from 'vue'
 import { CategoryType, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
-import type { useRecordOperations } from './useRecordOperations'
+import { useRecordDataAccess } from './useRecordDataAccess'
 
 /**
  * ナビゲーション状態とカテゴリ/アイテム選択を管理
+ * keyベースでの選択に統一
  */
-export function useNavigationManager(recordOps: ReturnType<typeof useRecordOperations>) {
+export function useNavigationManager(recordDataAccess: ReturnType<typeof useRecordDataAccess>) {
+  // ========================================
   // 状態
+  // ========================================
   const selectedCategory = ref<CategoryType>('comments')
-  const selectedRuleId = ref<string | null>(null)
+  const selectedItemKey = ref<string | null>(null)
 
-  /**
-   * 計算プロパティ
-   */
+  // ========================================
+  // 計算プロパティ
+  // ========================================
   const isRecordCategory = computed(() => recordCategoryLabel.includes(selectedCategory.value as RecordCategoryType))
 
   const currentCategoryItems = computed(() => {
     if (!isRecordCategory.value) return {}
-    return recordOps.getCategoryMap(selectedCategory.value as RecordCategoryType)
+    return recordDataAccess.getCategoryMap(selectedCategory.value as RecordCategoryType)
   })
 
   const currentSelectedItem = computed(() => {
-    if (!selectedRuleId.value || !isRecordCategory.value) return null
-    return currentCategoryItems.value[selectedRuleId.value] || null
+    if (!selectedItemKey.value || !isRecordCategory.value) return null
+    return currentCategoryItems.value[selectedItemKey.value] || null
   })
 
   const orderedCategoryItems = computed(() => {
@@ -32,50 +35,57 @@ export function useNavigationManager(recordOps: ReturnType<typeof useRecordOpera
 
   const hasItems = computed(() => orderedCategoryItems.value.length > 0)
 
-  /**
-   * 操作
-   */
+  // ========================================
+  // カテゴリ選択
+  // ========================================
   const selectCategory = (category: CategoryType) => {
     selectedCategory.value = category
 
     if (!recordCategoryLabel.includes(category as RecordCategoryType)) {
-      selectedRuleId.value = null
+      selectedItemKey.value = null
       return
     }
 
     // 最初のアイテムを自動選択
     const firstItem = orderedCategoryItems.value[0]
-    selectedRuleId.value = firstItem?.id || null
+    selectedItemKey.value = firstItem?.key || null
   }
 
-  const selectRule = (id: string) => {
-    selectedRuleId.value = id
+  // ========================================
+  // アイテム選択
+  // ========================================
+  const selectItem = (key: string) => {
+    selectedItemKey.value = key
   }
 
   const clearSelection = () => {
-    selectedRuleId.value = null
+    selectedItemKey.value = null
   }
 
+  // ========================================
+  // アイテム削除後の選択更新
+  // ========================================
   /**
-   * アイテム削除後の選択更新
+   * アイテム削除後に適切なアイテムを選択する
+   * 削除されたアイテムより前のアイテムを優先的に選択
    */
-  const selectItemAfterDeletion = (deletedId: string, category: RecordCategoryType) => {
-    if (selectedRuleId.value !== deletedId || category !== selectedCategory.value) {
+  const selectItemAfterDeletion = (deletedKey: string, category: RecordCategoryType) => {
+    if (selectedItemKey.value !== deletedKey || category !== selectedCategory.value) {
       return // 削除対象が選択中でない、または別カテゴリの場合は何もしない
     }
 
-    const items = recordOps.getCategoryMap(category)
-    const deletedItem = items[deletedId]
+    const items = recordDataAccess.getCategoryMap(category)
+    const deletedItem = items[deletedKey]
     const currentOrder = deletedItem?.order ?? 0
 
     // 利用可能なアイテムを取得（削除対象を除外）
     const availableItems = Object.entries(items)
-      .filter(([key]) => key !== deletedId)
-      .map(([key, item]) => ({ id: key, order: item.order ?? 0 }))
+      .filter(([key]) => key !== deletedKey)
+      .map(([key, item]) => ({ key, order: item.order ?? 0 }))
       .sort((a, b) => a.order - b.order)
 
     if (availableItems.length === 0) {
-      selectedRuleId.value = null
+      selectedItemKey.value = null
       return
     }
 
@@ -85,13 +95,13 @@ export function useNavigationManager(recordOps: ReturnType<typeof useRecordOpera
       .reverse()
       .find((item) => item.order < currentOrder)
 
-    selectedRuleId.value = previousItem?.id || availableItems[0]?.id || null
+    selectedItemKey.value = previousItem?.key || availableItems[0]?.key || null
   }
 
   return {
     // 状態
     selectedCategory,
-    selectedRuleId,
+    selectedItemKey,
 
     // 計算プロパティ
     isRecordCategory,
@@ -102,7 +112,7 @@ export function useNavigationManager(recordOps: ReturnType<typeof useRecordOpera
 
     // 操作
     selectCategory,
-    selectRule,
+    selectItem,
     clearSelection,
     selectItemAfterDeletion,
   }

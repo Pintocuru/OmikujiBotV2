@@ -59,7 +59,7 @@
 
   // Computed
   const isEditing = computed(() => store.editingRuleId === props.rule.id)
-  const isSelected = computed(() => omikujiStore.selectedRuleId === props.rule.id)
+  const isSelected = computed(() => omikujiStore.selectedItemKey === props.rule.id)
   const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.id))
   const getRuleEnabledState = computed(() => props.rule.isEnabled !== false)
 
@@ -77,9 +77,9 @@
   // Event Handlers
   const handleClick = (event: MouseEvent) => {
     if (store.isMultiSelectMode) {
-      store.handleMultiSelect(props.rule.id, event)
+      store.handleMultiSelect(props.rule.key, event)
     } else {
-      omikujiStore.selectRule(props.rule.id)
+      omikujiStore.selectItem(props.rule.key)
     }
   }
 

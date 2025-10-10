@@ -37,12 +37,12 @@ export const useRuleState = () => {
   })
 
   /** 単一選択されているルールのID */
-  const selectedRuleId = ref<string | null>(null)
+  const selectedItemKey = ref<string | null>(null)
 
   /** 選択されているルールの詳細データ */
   const selectedItem = computed(() => {
-    if (!validCategory.value || !selectedRuleId.value) return null
-    return omikujiStore.getItem(validCategory.value, selectedRuleId.value)
+    if (!validCategory.value || !selectedItemKey.value) return null
+    return omikujiStore.getItem(validCategory.value, selectedItemKey.value)
   })
 
   /**
@@ -130,7 +130,7 @@ export const useRuleState = () => {
     // 基本状態
     validCategory,
     categoryArray,
-    selectedRuleId,
+    selectedItemKey,
     selectedItem,
     resetFilterOptions,
 

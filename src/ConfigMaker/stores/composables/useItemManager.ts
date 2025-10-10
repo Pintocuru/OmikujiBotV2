@@ -1,13 +1,20 @@
-// src/ConfigMaker/script/stores/composables/useItemManager.ts (アイテム操作専用)
+// src/ConfigMaker/script/stores/composables/useItemManager.ts
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
-import type { useRecordOperations } from './useRecordOperations'
 import type { useNavigationManager } from './useNavigationManager'
+import { useRecordCRUD } from './useRecordCRUD'
+import { useRecordProperties } from './useRecordProperties'
+import { useRecordDataAccess } from './useRecordDataAccess'
+import { useRecordSort } from './useRecordSort'
 
 /**
  * アイテムのCRUD操作とUIとの連携を管理
+ * keyベースでの操作に統一
  */
 export function useItemManager(
-  recordOps: ReturnType<typeof useRecordOperations>,
+  recordDataAccess: ReturnType<typeof useRecordDataAccess>,
+  recordCRUD: ReturnType<typeof useRecordCRUD>,
+  recordProperties: ReturnType<typeof useRecordProperties>,
+  recordSort: ReturnType<typeof useRecordSort>,
   navigation: ReturnType<typeof useNavigationManager>
 ) {
   /**
@@ -28,16 +35,17 @@ export function useItemManager(
       targetCategory = navigation.selectedCategory.value as C
       itemData = categoryOrItem || {}
     }
+
     // accessLevel はoptionalなので、ここで値を入れる
     itemData.accessLevel = itemData.accessLevel || 'basic'
-    const newId = recordOps.addItem(targetCategory, itemData)
+    const newKey = recordCRUD.addItem(targetCategory, itemData)
 
     // 追加したカテゴリが現在選択中の場合、新しいアイテムを選択
     if (targetCategory === navigation.selectedCategory.value) {
-      navigation.selectRule(newId)
+      navigation.selectItem(newKey)
     }
 
-    return newId
+    return newKey
   }
 
   /**
@@ -45,72 +53,72 @@ export function useItemManager(
    */
   const updateItem = <C extends RecordCategoryType>(
     category: C,
-    id: string,
+    key: string,
     updates: Partial<RecordCategoryItemTypeMap[C]>
   ) => {
-    recordOps.updateItem(category, id, updates)
+    recordCRUD.updateItem(category, key, updates)
   }
 
   /**
    * アイテム削除（選択状態も自動更新）
    */
-  const removeItem = (categoryOrId: RecordCategoryType | string, id?: string) => {
+  const removeItem = (categoryOrKey: RecordCategoryType | string, key?: string) => {
     let targetCategory: RecordCategoryType
-    let targetId: string
+    let targetKey: string
 
     // 引数の解析（オーバーロード対応）
-    if (typeof categoryOrId === 'string' && id) {
-      targetCategory = categoryOrId as RecordCategoryType
-      targetId = id
+    if (typeof categoryOrKey === 'string' && key) {
+      targetCategory = categoryOrKey as RecordCategoryType
+      targetKey = key
     } else {
       targetCategory = navigation.selectedCategory.value as RecordCategoryType
-      targetId = categoryOrId as string
+      targetKey = categoryOrKey as string
     }
 
     // 削除前に選択状態を更新
-    navigation.selectItemAfterDeletion(targetId, targetCategory)
+    navigation.selectItemAfterDeletion(targetKey, targetCategory)
 
     // アイテム削除実行
-    recordOps.removeItem(targetCategory, targetId)
+    recordCRUD.removeItem(targetCategory, targetKey)
   }
 
   /**
    * アイテム複製（新しいアイテムを自動選択）
    */
-  const duplicateItem = (categoryOrId: RecordCategoryType | string, id?: string) => {
+  const duplicateItem = (categoryOrKey: RecordCategoryType | string, key?: string) => {
     let targetCategory: RecordCategoryType
-    let targetId: string
+    let targetKey: string
 
     // 引数の解析
-    if (typeof categoryOrId === 'string' && id) {
-      targetCategory = categoryOrId as RecordCategoryType
-      targetId = id
+    if (typeof categoryOrKey === 'string' && key) {
+      targetCategory = categoryOrKey as RecordCategoryType
+      targetKey = key
     } else {
       targetCategory = navigation.selectedCategory.value as RecordCategoryType
-      targetId = categoryOrId as string
+      targetKey = categoryOrKey as string
     }
 
-    const newId = recordOps.duplicateItem(targetCategory, targetId)
+    const newKey = recordCRUD.duplicateItem(targetCategory, targetKey)
 
-    if (newId && targetCategory === navigation.selectedCategory.value) {
-      navigation.selectRule(newId)
+    if (newKey && targetCategory === navigation.selectedCategory.value) {
+      navigation.selectItem(newKey)
     }
 
-    return newId
+    return newKey
   }
 
   /**
    * アイテム並び替え
    */
   const reorderItems = async (category: RecordCategoryType, fromIndex: number, toIndex: number) => {
-    await recordOps.reorderItem(category, fromIndex, toIndex)
+    await recordSort.reorderItem(category, fromIndex, toIndex)
   }
 
   /**
    * 一括order更新
    */
-  const batchUpdateOrder = async (category: RecordCategoryType, updates: Array<{ id: string; newOrder: number }>) => {
-    await recordOps.batchUpdateOrder(category, updates)
+  const batchUpdateOrder = async (category: RecordCategoryType, updates: Array<{ key: string; newOrder: number }>) => {
+    await recordSort.batchUpdateOrder(category, updates)
   }
 
   return {
@@ -125,12 +133,12 @@ export function useItemManager(
     batchUpdateOrder,
 
     // 直接アクセス（必要に応じて）
-    getItem: recordOps.getItem,
-    getCategoryMap: recordOps.getCategoryMap,
-    getCategoryArray: recordOps.getCategoryArray,
+    getItem: recordDataAccess.getItem,
+    getCategoryMap: recordDataAccess.getCategoryMap,
+    getCategoryArray: recordDataAccess.getCategoryArray,
 
     // 特殊操作
-    updateOmikujiPostActions: recordOps.updateOmikujiPostActions,
-    updatePlaceholderValues: recordOps.updatePlaceholderValues,
+    updateOmikujiPostActions: recordProperties.updateOmikujiPostActions,
+    updatePlaceholderValues: recordProperties.updatePlaceholderValues,
   }
 }

@@ -67,12 +67,12 @@
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
-  const { data, selectedRuleId } = storeToRefs(omikujiStore)
+  const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   // 選択されたアイテムの取得（読み取り専用）
   const selectedItem = computed(() => {
-    if (!selectedRuleId.value) return null
-    return data.value.placeholders[selectedRuleId.value]
+    if (!selectedItemKey.value) return null
+    return data.value.placeholders[selectedItemKey.value]
   })
 
   // 総重量を計算するcomputed
