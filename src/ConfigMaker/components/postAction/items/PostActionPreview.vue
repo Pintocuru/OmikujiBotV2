@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { BotMessageSchema, PostActionType } from '@/types/'
+  import { BotMessageSchema, defaultPlaceholdersShortLabels, PostActionType } from '@/types/'
   import CharacterPreview from '@/ConfigMaker/components/displaySettings/CharacterPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
@@ -92,13 +92,7 @@
   // プレースホルダー置換
   const processMessage = (message: string) => {
     const placeProcess = new PlaceholderProcessor(data.value.placeholders)
-    placeProcess.updateResolvedValues({
-      user: 'テストユーザー',
-      tc: '[個人コメント数]',
-      lc: '[配信コメント数]',
-      viewer: '[視聴者数]',
-      upVote: '[高評価数]',
-    })
+    placeProcess.updateResolvedValues(defaultPlaceholdersShortLabels)
     return placeProcess.processText(message)
   }
 

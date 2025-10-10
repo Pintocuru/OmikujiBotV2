@@ -1,6 +1,10 @@
 // src/configMaker/components/placeholders/composables/usePlaceholderData.ts
 import { computed, Ref } from 'vue'
-import { DefaultPlaceholders, defaultPlaceholdersLabels } from '@/types/OmikujiProcess/DefaultPlaceholders'
+import {
+  DefaultPlaceholders,
+  defaultPlaceholdersLabels,
+  defaultPlaceholdersShortLabels,
+} from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderSchema, PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
 import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
@@ -13,14 +17,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
   const omikujiStore = useOmikujiStore()
 
   // デフォルトプレースホルダーの設定
-  const placeholderContentMap = new Map<DefaultPlaceholders, string>([
-    ['user', '(ユーザー名)'],
-    ['price', '(ギフト金額)'],
-    ['lc', '(コメント番号)'],
-    ['tc', '(個人コメント数)'],
-    ['viewer', '(視聴ユーザー数)'],
-    ['upVote', '(高評価数)'],
-  ])
+  const placeholderContentMap = new Map(Object.entries(defaultPlaceholdersShortLabels))
 
   // 選択されたルールデータを取得
   const selectedRulesCommentData = computed(() => {

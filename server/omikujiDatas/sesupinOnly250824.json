@@ -1183,6 +1183,64 @@
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
+    },
+    "1760054141011": {
+      "id": "1760054141011",
+      "key": "1760054141011",
+      "name": "test",
+      "createdAt": "2025-10-09T23:55:41.011Z",
+      "updatedAt": "2025-10-09T23:57:25.315Z",
+      "order": 9,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1760054123675",
+          "key": "",
+          "name": "",
+          "createdAt": "2025-10-09T23:55:23.675Z",
+          "updatedAt": "2025-10-09T23:55:23.675Z",
+          "order": 0,
+          "tags": [],
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "happy",
+              "messageContent": "<<commenter>>,<<winner>>",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "test"
+        ]
+      },
+      "scriptId": null,
+      "scriptParams": null,
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
     }
   },
   "timers": {},
@@ -1214,6 +1272,7 @@
       "id": "HondaJankenReadyB",
       "key": "HondaJankenReadyB",
       "name": "じゃんけん:出す前の動作(キャラB)",
+      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
       "createdAt": "2025-10-08T01:19:38.144Z",
       "updatedAt": "2025-10-09T04:38:49.771Z",
       "order": 2,
@@ -1231,13 +1290,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。"
+      ]
     },
     "HondaJankenRockA": {
       "id": "HondaJankenRockA",
       "key": "HondaJankenRockA",
       "name": "じゃんけん:グーA",
+      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
       "createdAt": "2025-10-08T01:07:31.634Z",
       "updatedAt": "2025-10-09T04:39:34.537Z",
       "order": 3,
@@ -1283,13 +1342,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。"
+      ]
     },
     "HondaJankenRockB": {
       "id": "HondaJankenRockB",
       "key": "HondaJankenRockB",
       "name": "じゃんけん:グーB",
+      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
       "createdAt": "2025-10-08T01:20:19.514Z",
       "updatedAt": "2025-10-09T04:39:58.511Z",
       "order": 4,
@@ -1335,13 +1394,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。"
+      ]
     },
     "HondaJankenScissorsA": {
       "id": "HondaJankenScissorsA",
       "key": "HondaJankenScissorsA",
       "name": "じゃんけん:チョキA",
+      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
       "createdAt": "2025-10-08T01:28:24.530Z",
       "updatedAt": "2025-10-09T04:41:04.735Z",
       "order": 5,
@@ -1387,13 +1446,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。"
+      ]
     },
     "HondaJankenScissorsB": {
       "id": "HondaJankenScissorsB",
       "key": "HondaJankenScissorsB",
       "name": "じゃんけん:チョキB",
+      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
       "createdAt": "2025-10-08T01:31:02.784Z",
       "updatedAt": "2025-10-09T04:40:42.565Z",
       "order": 6,
@@ -1439,13 +1498,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?"
+      ]
     },
     "HondaJankenPaperA": {
       "id": "HondaJankenPaperA",
       "key": "HondaJankenPaperA",
       "name": "じゃんけん:パーA",
+      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
       "createdAt": "2025-10-08T01:34:21.906Z",
       "updatedAt": "2025-10-09T04:41:23.948Z",
       "order": 7,
@@ -1491,13 +1550,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。"
+      ]
     },
     "HondaJankenPaperB": {
       "id": "HondaJankenPaperB",
       "key": "HondaJankenPaperB",
       "name": "じゃんけん:パーB",
+      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
       "createdAt": "2025-10-08T01:35:19.910Z",
       "updatedAt": "2025-10-09T04:41:42.408Z",
       "order": 8,
@@ -1543,13 +1602,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
+      ]
     },
     "HondaJankenVictoryA": {
       "id": "HondaJankenVictoryA",
       "key": "HondaJankenVictoryA",
       "name": "じゃんけん:勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:37:27.617Z",
       "updatedAt": "2025-10-09T04:42:15.068Z",
       "order": 9,
@@ -1595,13 +1654,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryB": {
       "id": "HondaJankenVictoryB",
       "key": "HondaJankenVictoryB",
       "name": "じゃんけん:勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:41:25.959Z",
       "updatedAt": "2025-10-09T04:42:16.620Z",
       "order": 10,
@@ -1647,13 +1706,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryRockA": {
       "id": "HondaJankenVictoryRockA",
       "key": "HondaJankenVictoryRockA",
       "name": "じゃんけん:グー勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:42:27.410Z",
       "updatedAt": "2025-10-09T04:42:18.539Z",
       "order": 11,
@@ -1699,13 +1758,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryRockB": {
       "id": "HondaJankenVictoryRockB",
       "key": "HondaJankenVictoryRockB",
       "name": "じゃんけん:グー勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:48:42.302Z",
       "updatedAt": "2025-10-09T04:42:20.302Z",
       "order": 12,
@@ -1751,13 +1810,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryScissorsA": {
       "id": "HondaJankenVictoryScissorsA",
       "key": "HondaJankenVictoryScissorsA",
       "name": "じゃんけん:チョキ勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:49:23.722Z",
       "updatedAt": "2025-10-09T04:42:22.156Z",
       "order": 13,
@@ -1803,13 +1862,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryScissorsB": {
       "id": "HondaJankenVictoryScissorsB",
       "key": "HondaJankenVictoryScissorsB",
       "name": "じゃんけん:チョキ勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:50:18.283Z",
       "updatedAt": "2025-10-09T04:42:23.948Z",
       "order": 14,
@@ -1855,13 +1914,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryPaperA": {
       "id": "HondaJankenVictoryPaperA",
       "key": "HondaJankenVictoryPaperA",
       "name": "じゃんけん:パー勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:51:25.819Z",
       "updatedAt": "2025-10-09T04:42:26.302Z",
       "order": 15,
@@ -1907,13 +1966,13 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     },
     "HondaJankenVictoryPaperB": {
       "id": "HondaJankenVictoryPaperB",
       "key": "HondaJankenVictoryPaperB",
       "name": "じゃんけん:パー勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:52:21.730Z",
       "updatedAt": "2025-10-09T04:42:28.275Z",
       "order": 16,
@@ -1959,8 +2018,7 @@
           "messageToast": "",
           "actionType": "message"
         }
-      ],
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
+      ]
     }
   },
   "placeholders": {
@@ -3466,6 +3524,52 @@
         "default": "cafelatte/default.webp"
       },
       "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEm0lEQVR4AZSVW2xURRjHf+eyl7O77W4vUNldWlpsuFhablpurSCJqFSMXH2QADEqBqMPPhgjJugbxoQQSHggJsSEByWoNGoUolRLW0hMKkhTWgpt09Ze6AXa7nZv54yztPWB7jY4ObNzZub7/r+Z830zq4YOI5K1+aMF4pOta8QXOyrF59srxMdbVojPqmT/tUpx6a2AGDpsiGun3hfd1WdF5MrPovOH06Lvypfi7w8LHvonNVJVlamSr3VwoLiRjt4BEqbA43ZhWnEQKhc7snAygdV7lfHxQWKRMA5VQSgwGolOKaRu/gMkp/M8UfaW3qN/eBRVCicVxsbC+NzZjNmDlFrX6O5q4sGDYdDtWKaFmTCTrmmr+uhMSe4QB1fcZiyUICyd2zvbUe0JTtRl0BZ4h1xjiPM/nUPR5Q4w5W7/JyAJzM+cYM+y2xTluTF0g3jYxO3LY1A1yFxcye69u+RO2tARuB06s5UZO5g2LjIG2ZbfRFFRAaHxEOs2PENZyVK8Xg92J+Qv9KMqFtmZsjPtlKJNC0jadvdHMU0Tn89L261mLE3GXFjJKTSbjiZJdRMlD/vpfmYF/Ni3AofhxGbXqNpZhZZMG2TqSDVTmWw3vfgCjeFiOZL6SQv4vm8VWR6V4ZEh4pbA6bBx7usLHP30OD2dvRJjyQjI2Mh0DpZvS60uR9MCBgZidPXcIxyaIBKNkVAiLF9VRlXVFu4PjNHadFcCJt1Ddh/9EbeUm/lMWswcJyvDSeCJAIFAEK98N02VwoIgxUsWsqA4SMA/DxkgCbFk4LNkluWkUIG0ACEg5vTwz3BUnokoqmqjof4vXIWVVDf0cH/UhRgbRZEn2TBkqq56k7hj7gxISkDM1PHGwO/K5OCRI7jsNpR4gnXrl/PtmROUL5pPRu8tFPmpGI+imAp48mgalrt6BJESMB5xoZkusgY7+OPoEZ7dsH4yLbHYVl7MAmuQDJcdRZMrV1SEiFFzsYGgV14hjwNQtQlGlAQPUIkaGrV19dRcvordIcG+bDT/XBR/LuR4UTPd3GltodxRT26i6xF5pMKMIfA54+xaWsfN0X4S8mCtrVjLk0uWElEMmvvuYfMHUOdkY0nx787X8FT7SeZEWlIopQFMWx4qa2dlfpzffq2l8Woj2QWLeHp9BTbdTjSWQLt5lipX9bR5ylZNOTo1mGNEWWlc40BJO91NDdz4vYbaC7/IQJ/lbnMrzs7LeNTQlHXqZlbAtItP9NKreDh97CS3b1yntm2Yk+f/5HRP5bRJ2vaxAKDQMuLgejSTr+rbaekb5wl5dWzdsYsOx3JmK48FOH7rOZmKOqvnutm35yWIx1i7rghfro2civ2cubMmLWNWwKnOzZxo2Yhhs9iSr7NpYyn79u/m0Bvb2fyyvF1VFc1wsfPd12ldfJgu3/OEhRPk2WCqzAoY6OmXtgKhCHRNZdmGjWhOB6/ufgXPHL/83zblx7PknM78hUG6jVKOjrzNpbJvqF9dzTH5nhYwogbkhZaHXQqriiIhYOk6yH5ycbrDjalqIFcrZEVVsBsO5i0rwSPPia+wkD3vfcC/AAAA//+01SleAAAABklEQVQDACgFrc/FXTPRAAAAAElFTkSuQmCC"
+    },
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
     }
   },
   "scriptSettings": {

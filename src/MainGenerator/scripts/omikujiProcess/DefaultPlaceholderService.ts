@@ -35,16 +35,18 @@ export class DefaultPlaceholderService {
    */
   getDefaultComments(comment: Comment): Record<DefaultPlaceholders, string | number> {
     // TODO:v1.2に向けて、下記の実装
-    const userList = Object.values(this.userVisits?.user ?? [])
+    const userList = Object.values(this.userVisits ?? {}).flatMap((v) => Object.values(v.user))
     const commenter = userList.length
     const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].name : ''
-
+    console.log(this.userVisits)
     return DefaultPlaceholdersCommentSchema.parse({
+      ...this.getDefaultPlaceholders(),
       user: comment.data.displayName || comment.data.name,
       price: (comment.data as { price?: number })?.price,
       lc: comment.meta?.lc,
       tc: comment.meta?.tc,
-      ...this.getDefaultPlaceholders(),
+      commenter,
+      winner,
     })
   }
 

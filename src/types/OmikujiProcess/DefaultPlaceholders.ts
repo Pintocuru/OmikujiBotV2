@@ -11,9 +11,8 @@ import {
 export const defaultPlaceholders = [
   'user', // ユーザー名
   'price', // 金額
-  // TODO:v1.2に向けて、下記の実装
-  // commenter: 配信枠のコメントをしたユーザー数
-  // winner: 配信枠のコメントをしたランダムなユーザー
+  'commenter', //  配信枠のコメントをしたユーザー数
+  'winner', //  配信枠のコメントをしたランダムなユーザー
   ...countUnitCondition, // lc:配信枠のコメント数 tc:個人の総コメント数
   ...serviceMetaCondition, // viewer:配信枠の視聴者数 upVote:配信枠の高評価数
 ] as const
@@ -23,15 +22,17 @@ export type DefaultPlaceholders = (typeof defaultPlaceholders)[number]
 
 // Zod スキーマ
 export const DefaultPlaceholdersMetaSchema = z.object({
-  viewer: z.number().default(0).catch(0),
-  upVote: z.number().default(0).catch(0),
+  viewer: z.coerce.number().default(0),
+  upVote: z.coerce.number().default(0),
 })
 
 export const DefaultPlaceholdersCommentSchema = z.object({
-  user: z.string().default('テストユーザー').catch('テストユーザー'),
-  price: z.number().default(0).catch(0), //
-  lc: z.number().default(0).catch(0),
-  tc: z.number().default(0).catch(0),
+  user: z.string().default('テストユーザー'),
+  price: z.coerce.number().default(0), //
+  lc: z.coerce.number().default(0),
+  tc: z.coerce.number().default(0),
+  commenter: z.coerce.number().default(0),
+  winner: z.string().default('テストユーザー'),
   ...DefaultPlaceholdersMetaSchema.shape,
 })
 
@@ -39,6 +40,20 @@ export const DefaultPlaceholdersCommentSchema = z.object({
 export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
   user: 'コメントしたユーザー',
   price: 'ギフト金額',
+  commenter: 'コメントをしたユーザー数',
+  winner: 'コメントをしたランダムなユーザー',
   ...countUnitConditionLabels,
   ...serviceMetaConditionLabels,
+}
+
+// 省略形（短い）ラベル
+export const defaultPlaceholdersShortLabels: Record<DefaultPlaceholders, string> = {
+  user: '[ユーザー名]',
+  price: '[ギフト金額]',
+  lc: '[配信コメント数]',
+  tc: '[個人コメント数]',
+  commenter: '[コメントしたユーザー数]',
+  winner: '[ランダムユーザー]',
+  viewer: '[視聴者数]',
+  upVote: '[高評価数]',
 }

@@ -49,43 +49,43 @@ export function useRecordOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<
 
   const updateItem = <C extends RecordCategoryType>(
     category: C,
-    id: string,
+    key: string,
     updates: Partial<RecordCategoryItemTypeMap[C]>
   ) => {
     const categoryData = data.value[category] as Record<string, RecordCategoryItemTypeMap[C]>
 
-    if (categoryData?.[id]) {
+    if (categoryData?.[key]) {
       const updatedItem = {
-        ...categoryData[id],
+        ...categoryData[key],
         ...updates,
-        key: id, // TODO:次のバージョンアップで困らないよう、すべてのKEYにidを入れておく
+        key: key, // TODO:次のバージョンアップで困らないよう、すべてのKEYにidを入れておく
         updatedAt: new Date().toISOString(),
       }
       data.value[category] = {
         ...categoryData,
-        [id]: updatedItem,
+        [key]: updatedItem,
       } as any
       hasChanged.value = true
     }
   }
 
-  const removeItem = (category: RecordCategoryType, id: string) => {
+  const removeItem = (category: RecordCategoryType, key: string) => {
     const categoryData = data.value[category] as Record<string, any>
 
-    if (categoryData?.[id]) {
-      const { [id]: deleted, ...remaining } = categoryData
+    if (categoryData?.[key]) {
+      const { [key]: deleted, ...remaining } = categoryData
       updateCategoryData(category, remaining as any)
     }
   }
 
-  const duplicateItem = <C extends RecordCategoryType>(category: C, id: string): string | null => {
-    const item = getItem<RecordCategoryItemTypeMap[C]>(category, id)
+  const duplicateItem = <C extends RecordCategoryType>(category: C, key: string): string | null => {
+    const item = getItem<RecordCategoryItemTypeMap[C]>(category, key)
     if (!item) return null
 
     const timestamp = new Date().toISOString()
     const duplicatedItem = {
       ...item,
-      id: `${id.replace(/_copy_\d+$/, '')}_copy_${Date.now()}`,
+      id: `${key.replace(/_copy_\d+$/, '')}_copy_${Date.now()}`,
       name: `${item.name} (コピー)`,
       createdAt: timestamp,
       updatedAt: timestamp,
