@@ -2,7 +2,7 @@
 <template>
   <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
-    <div v-if="character" class="chat-image avatar">
+    <div v-if="character && character.image?.default" class="chat-image avatar">
       <div class="rounded-full" :class="[SIZE_CONFIG[displaySize].avatar]">
         <img :src="getImagePath(character?.image?.default)" />
       </div>

@@ -47,7 +47,7 @@
     }>(),
     {
       name: '',
-      comment: '',
+      comment: '(未記入)',
       textSize: 'md',
       brightnessLevel: 0, // デフォルトは最も明るい
       customClasses: 'p-4 rounded-xl',

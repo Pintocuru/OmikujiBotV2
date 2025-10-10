@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.1.1",
-    "dataVersion": 1.11,
+    "generatorVersion": "v1.3.0-beta.1",
+    "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -22,712 +22,198 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-09T11:33:57.744Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
           "key": "",
-          "name": "じゃんけん(グーA)",
+          "name": "グーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenRockA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "553a8977-dda1-4933-869e-48d650e148d5",
           "key": "",
-          "name": "じゃんけん(グーB)",
+          "name": "グーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenRockB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
           "key": "",
-          "name": "じゃんけん(チョキA)",
+          "name": "チョキA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenScissorsA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "3bb51efe-3ec6-4514-9a62-b609238d813b",
           "key": "",
-          "name": "じゃんけん(チョキB)",
+          "name": "チョキB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenScissorsB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
           "key": "",
-          "name": "じゃんけん(パーA)",
+          "name": "パーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenPaperA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
           "key": "",
-          "name": "じゃんけん(パーB)",
+          "name": "パーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenPaperB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
-        },
-        {
-          "id": "aa7082a8-b05f-48e1-8019-12fd58a51405",
-          "key": "",
-          "name": "じゃんけん(グー勝利A)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "c078b92a-aaf5-444e-9ccc-9b4034513c95",
-          "key": "",
-          "name": "じゃんけん(グー勝利B)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "a7c9795f-291d-4be0-a64b-e5bedae059f6",
-          "key": "",
-          "name": "じゃんけん(チョキ勝利A)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "5d9137d8-75ab-4ab5-9928-37910442fe91",
-          "key": "",
-          "name": "じゃんけん(チョキ勝利B)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "527bffa4-f827-43bb-8bd9-2d82cc128824",
-          "key": "",
-          "name": "じゃんけん(パー勝利A)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
-        },
-        {
-          "id": "d63d44e9-48c2-4f16-b30d-8373fcc44aaa",
-          "key": "",
-          "name": "じゃんけん(パー勝利B)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "weight": 1,
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
           "key": "",
-          "name": "じゃんけん(ILoveYou勝利A)",
+          "name": "勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_4",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "6912bbc6-b8a0-486b-862e-d70072ece11c",
           "key": "",
-          "name": "じゃんけん(ILoveYou勝利B)",
+          "name": "勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_4",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "blushing",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         }
       ],
       "ruleType": "comments",
@@ -749,8 +235,6 @@
           "^janken"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -764,212 +248,106 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-04T00:28:21.871Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
           "key": "",
-          "name": "じゃんけん(グーA)",
+          "name": "グーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenRockA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
           "key": "",
-          "name": "じゃんけん(グーB)",
+          "name": "グーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenRockB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
           "key": "",
-          "name": "じゃんけん(グー勝利A)",
+          "name": "グー勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryRockA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         },
         {
           "id": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
           "key": "",
-          "name": "じゃんけん(グー勝利B)",
+          "name": "グー勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryRockB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -992,8 +370,6 @@
           "👊"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1007,212 +383,106 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-02T21:42:49.155Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
           "key": "",
-          "name": "じゃんけん(チョキA)",
+          "name": "チョキA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenScissorsA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "35eafe60-fd85-461e-a572-ee1743096688",
           "key": "",
-          "name": "じゃんけん(チョキB)",
+          "name": "チョキB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenScissorsB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
           "key": "",
-          "name": "じゃんけん(チョキ勝利A)",
+          "name": "チョキ勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryScissorsA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         },
         {
           "id": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
           "key": "",
-          "name": "じゃんけん(チョキ勝利B)",
+          "name": "チョキ勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryScissorsB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_3",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -1234,8 +504,6 @@
           "✌️"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1249,212 +517,106 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-02T21:42:49.155Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
           "key": "",
-          "name": "じゃんけん(パーA)",
+          "name": "パーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 35,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenPaperA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "wink",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 35
         },
         {
           "id": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
           "key": "",
-          "name": "じゃんけん(パーB)",
+          "name": "パーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenPaperB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_2",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
           "key": "",
-          "name": "じゃんけん(パー勝利A)",
+          "name": "パー勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryPaperA",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "singing",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "happy",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         },
         {
           "id": "2165a3b8-9018-4400-a7a9-911a93ef6873",
           "key": "",
-          "name": "じゃんけん(パー勝利B)",
+          "name": "パー勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 1,
+              "actionSetKey": "HondaJankenVictoryPaperB",
               "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "angry",
-              "messageContent": "じゃんけんぽん!",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 1.4,
-              "wordParty": "!janken_1",
-              "characterKey": "omiken",
+              "characterKey": "chocolat",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 2.9,
-              "wordParty": "!janken_win",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "omiken",
-              "iconKey": "sad",
-              "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-              "messageToast": "",
-              "actionType": "message"
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -1477,8 +639,6 @@
           "🖐️"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -1488,6 +648,783 @@
     }
   },
   "timers": {},
+  "actionSets": {
+    "HondaJankenReadyA": {
+      "id": "HondaJankenReadyA",
+      "key": "HondaJankenReadyA",
+      "name": "じゃんけん:出す前の動作(キャラA)",
+      "createdAt": "2025-10-08T00:59:17.768Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenReadyB": {
+      "id": "HondaJankenReadyB",
+      "key": "HondaJankenReadyB",
+      "name": "じゃんけん:出す前の動作(キャラB)",
+      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
+      "createdAt": "2025-10-08T01:19:38.144Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenRockA": {
+      "id": "HondaJankenRockA",
+      "key": "HondaJankenRockA",
+      "name": "じゃんけん:グーA",
+      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
+      "createdAt": "2025-10-08T01:07:31.634Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_3",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "wink",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenRockB": {
+      "id": "HondaJankenRockB",
+      "key": "HondaJankenRockB",
+      "name": "じゃんけん:グーB",
+      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
+      "createdAt": "2025-10-08T01:20:19.514Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_3",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenScissorsA": {
+      "id": "HondaJankenScissorsA",
+      "key": "HondaJankenScissorsA",
+      "name": "じゃんけん:チョキA",
+      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
+      "createdAt": "2025-10-08T01:28:24.530Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_1",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "wink",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenScissorsB": {
+      "id": "HondaJankenScissorsB",
+      "key": "HondaJankenScissorsB",
+      "name": "じゃんけん:チョキB",
+      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
+      "createdAt": "2025-10-08T01:31:02.784Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_1",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenPaperA": {
+      "id": "HondaJankenPaperA",
+      "key": "HondaJankenPaperA",
+      "name": "じゃんけん:パーA",
+      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
+      "createdAt": "2025-10-08T01:34:21.906Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_2",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "wink",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenPaperB": {
+      "id": "HondaJankenPaperB",
+      "key": "HondaJankenPaperB",
+      "name": "じゃんけん:パーB",
+      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
+      "createdAt": "2025-10-08T01:35:19.910Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_2",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_lose",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryA": {
+      "id": "HondaJankenVictoryA",
+      "key": "HondaJankenVictoryA",
+      "name": "じゃんけん:勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:37:27.617Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_{{rand(1,4)}}",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "happy",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryB": {
+      "id": "HondaJankenVictoryB",
+      "key": "HondaJankenVictoryB",
+      "name": "じゃんけん:勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:41:25.959Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_{{rand(1,4)}}",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryRockA": {
+      "id": "HondaJankenVictoryRockA",
+      "key": "HondaJankenVictoryRockA",
+      "name": "じゃんけん:グー勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:42:27.410Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_2",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "happy",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryRockB": {
+      "id": "HondaJankenVictoryRockB",
+      "key": "HondaJankenVictoryRockB",
+      "name": "じゃんけん:グー勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:48:42.302Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_2",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryScissorsA": {
+      "id": "HondaJankenVictoryScissorsA",
+      "key": "HondaJankenVictoryScissorsA",
+      "name": "じゃんけん:チョキ勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:49:23.722Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_3",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "happy",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryScissorsB": {
+      "id": "HondaJankenVictoryScissorsB",
+      "key": "HondaJankenVictoryScissorsB",
+      "name": "じゃんけん:チョキ勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:50:18.283Z",
+      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_3",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryPaperA": {
+      "id": "HondaJankenVictoryPaperA",
+      "key": "HondaJankenVictoryPaperA",
+      "name": "じゃんけん:パー勝利A",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:51:25.819Z",
+      "updatedAt": "2025-10-10T15:11:14.790Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyA",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_1",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken",
+          "iconKey": "happy",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    },
+    "HondaJankenVictoryPaperB": {
+      "id": "HondaJankenVictoryPaperB",
+      "key": "HondaJankenVictoryPaperB",
+      "name": "じゃんけん:パー勝利B",
+      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
+      "createdAt": "2025-10-08T01:52:21.730Z",
+      "updatedAt": "2025-10-10T15:11:14.790Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionSetKey": "HondaJankenReadyB",
+          "wordParty": "",
+          "characterKey": "chocolat",
+          "iconKey": "singing",
+          "messageContent": "じゃんけんぽん!",
+          "messageToast": "",
+          "actionType": "actionSet"
+        },
+        {
+          "delaySeconds": 0.4,
+          "wordParty": "!janken_1",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.9,
+          "wordParty": "!janken_win",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 4,
+          "wordParty": "!シーン切り替え1",
+          "characterKey": "omiken_2",
+          "iconKey": "default",
+          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+          "messageToast": "",
+          "actionType": "message"
+        }
+      ]
+    }
+  },
   "placeholders": {
     "HondaJankenName": {
       "id": "HondaJankenName",
@@ -1650,10 +1587,56 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-02T21:47:20.457Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#F44336",
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
       "tags": [
         "Yukkuri",
         "Reimu"
@@ -1717,8 +1700,8 @@
       "bubbleMotionLeave": "slideUp",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToastsOnRight": true,
       "showToasts": true,
+      "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showCharacterThumbnail": false,
       "showCharacterFrame": false,
@@ -1734,6 +1717,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "experimental",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "experimental",

@@ -1,17 +1,19 @@
 <!-- src\ConfigMaker\components\postAction\items\PostActionPreview.vue -->
 <template>
-  <div class="h-full items-center justify-center space-y-4">
+  <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージプレビュー -->
-    <div v-if="action.actionType === 'message'" class="w-full space-y-8">
+    <div v-if="action.actionType === 'message'" class="w-full space-y-8 flex flex-col items-center">
       <CommentBubbleItem
+        :key="`message-${messageRefreshKey}`"
         :name="character.displayName"
-        :comment="messageDisplay"
+        :comment="processedMessage"
         :color="character.color"
-        @click="handleCommentClick"
+        @click="handleMessageClick"
         class="cursor-pointer"
       />
-      <MotionWrapper :enter-motion="action.enterMotion" :auto-hide="false">
+      <MotionWrapper :key="`motion-${messageRefreshKey}`" :enter-motion="action.enterMotion" :auto-hide="false">
         <CharacterPreview
+          v-if="character.image?.default"
           :characters="characters"
           :characterKey="action.characterKey"
           :iconKey="action.iconKey"
@@ -22,13 +24,14 @@
 
     <!-- トーストプレビュー -->
     <div v-if="action.actionType === 'toast'" class="w-full">
-      <ChatBubbleItem
-        :botMessage="createToastMessage()"
-        :showToastsOnRight="base.showToastsOnRight"
-        :character="character"
-        @click="handleCommentClick"
-        class="cursor-pointer"
-      />
+      <div class="cursor-pointer" @click="handleToastClick">
+        <ChatBubbleItem
+          :key="`toast-${toastRefreshKey}`"
+          :botMessage="processedToastMessage"
+          :showToastsOnRight="base.showToastsOnRight"
+          :character="character"
+        />
+      </div>
     </div>
 
     <!-- WordPartyプレビュー -->
@@ -75,28 +78,9 @@
   const characters = computed(() => data.value.characters)
   const base = computed(() => data.value.displaySettings.base)
 
-  const refreshKey = ref(0)
-
-  // メッセージのプレビュー
-  const messageDisplay = computed(() => {
-    void refreshKey.value // 再計算を強制
-    return processMessage(props.action.messageContent)
-  })
-
-  // FIXME:クリックしても再表示されないので修正
-  const toastDisplay = computed(() => {
-    void refreshKey.value // 再計算を強制
-    return processMessage(props.action.messageToast ?? '未記入')
-  })
-
-  // プレースホルダー置換
-  const processMessage = (message: string) => {
-    const placeProcess = new PlaceholderProcessor(data.value.placeholders)
-    placeProcess.updateResolvedValues(defaultPlaceholdersShortLabels)
-    return placeProcess.processText(message)
-  }
-
-  const handleCommentClick = () => refreshKey.value++
+  // 各プレビュー用の独立したリフレッシュキー
+  const messageRefreshKey = ref(0)
+  const toastRefreshKey = ref(0)
 
   // 現在のキャラクター
   const character = computed(() => {
@@ -104,12 +88,40 @@
     return characterMap[props.action.characterKey] || Object.values(characterMap)[0]
   })
 
-  // トーストメッセージの作成
-  const createToastMessage = () => {
+  // プレースホルダー置換処理（毎回新しいインスタンスを作成）
+  const processMessage = (message: string) => {
+    const placeProcess = new PlaceholderProcessor(data.value.placeholders)
+    placeProcess.updateResolvedValues(defaultPlaceholdersShortLabels)
+    return placeProcess.processText(message)
+  }
+
+  // メッセージプレビュー用の処理済みテキスト
+  const processedMessage = computed(() => {
+    void messageRefreshKey.value // 依存関係を明示
+    const content = props.action.messageContent !== '' ? props.action.messageContent : '(未記入)'
+    return processMessage(content)
+  })
+
+  // トーストプレビュー用の処理済みメッセージオブジェクト
+  const processedToastMessage = computed(() => {
+    void toastRefreshKey.value // 依存関係を明示
     if (!character.value) return undefined
+
+    const content = props.action.messageToast ?? '(未記入)'
+    const processedContent = processMessage(content)
+
     return BotMessageSchema.parse({
       color: character.value.color,
-      comment: toastDisplay.value,
+      comment: processedContent,
     })
+  })
+
+  // クリックハンドラー（それぞれ独立）
+  const handleMessageClick = () => {
+    messageRefreshKey.value++
+  }
+
+  const handleToastClick = () => {
+    toastRefreshKey.value++
   }
 </script>
