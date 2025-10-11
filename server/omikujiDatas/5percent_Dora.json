@@ -1849,12 +1849,12 @@
         "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
-        "characterVisible": "internal",
-        "wordPartyLoading": "internal",
-        "licenseVisible": "internal",
-        "gameScriptSettings": "internal",
+        "characterVisible": "experimental",
+        "wordPartyLoading": "experimental",
+        "licenseVisible": "experimental",
+        "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "internal"
+        "wordPartySettings": "experimental"
       }
     }
   },

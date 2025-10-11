@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.22-v1.2.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0-beta4",
-    "dataVersion": 1.904,
+    "generatorVersion": "v1.3.0-beta.1",
+    "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -24,12 +24,14 @@
       "name": "タロット占い",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-09-16T07:52:39.606Z",
+      "updatedAt": "2025-10-11T01:57:58.669Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757800562314",
@@ -39,7 +41,6 @@
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -57,7 +58,8 @@
               "messageContent": "<<user>>さんは<<TarotCard>>",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -80,8 +82,6 @@
           "タロットカード"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -91,6 +91,7 @@
     }
   },
   "timers": {},
+  "actionSets": {},
   "placeholders": {
     "TarotCard": {
       "id": "TarotCard",
@@ -1061,8 +1062,8 @@
       "bubbleMotionLeave": "flipX",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToastsOnRight": true,
       "showToasts": true,
+      "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showCharacterThumbnail": false,
       "showCharacterFrame": true,
@@ -1078,6 +1079,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "experimental",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "experimental",

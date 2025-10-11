@@ -13,7 +13,7 @@
       />
       <MotionWrapper :key="`motion-${messageRefreshKey}`" :enter-motion="action.enterMotion" :auto-hide="false">
         <CharacterPreview
-          v-if="character.image?.default"
+          v-if="character.image?.default && character.displayOption.isIconDisplay"
           :characters="characters"
           :characterKey="action.characterKey"
           :iconKey="action.iconKey"
@@ -30,6 +30,7 @@
           :botMessage="processedToastMessage"
           :showToastsOnRight="base.showToastsOnRight"
           :character="character"
+          :isCharacterDisplay="base.showCharacterThumbnail"
         />
       </div>
     </div>

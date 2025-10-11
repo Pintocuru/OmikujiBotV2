@@ -24,7 +24,6 @@
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
       title="おみくじ設定"
-      :subTitle="`(おみくじ)`"
       description="コメントで実行するおみくじの設定"
     >
       <PostActionsEditor v-model="selectedItem.postActions" category="actionSets" :selectedItemKey="selectedItemKey" />
