@@ -27,7 +27,7 @@
       "name": "おみくじ",
       "description": "本職巫女さん手製。ゆっくり霊夢の、真面目なおみくじ。時々ゆっくり魔理沙も占います。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-08T11:47:26.773Z",
+      "updatedAt": "2025-10-11T11:29:25.577Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -3009,7 +3009,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
           "messageToast": "",
           "actionType": "message"
@@ -3113,7 +3113,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
           "messageToast": "",
           "actionType": "message"
@@ -3217,7 +3217,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
           "messageToast": "",
           "actionType": "message"
@@ -3321,7 +3321,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
           "messageToast": "",
           "actionType": "message"
@@ -3425,7 +3425,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
           "messageToast": "",
           "actionType": "message"
@@ -3529,7 +3529,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
           "messageToast": "",
           "actionType": "message"
@@ -3633,7 +3633,7 @@
           "delaySeconds": 4,
           "wordParty": "!シーン切り替え1",
           "characterKey": "marisa",
-          "iconKey": "default",
+          "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
           "messageToast": "",
           "actionType": "message"
@@ -4224,98 +4224,6 @@
         "wink": "marisa/wink.webp",
         "singing": "marisa/singing.webp",
         "sleepy": "marisa/sleepy.webp"
-      }
-    },
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
-      },
-      "color": {
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
-      }
-    },
-    "omiken_2": {
-      "id": "omiken_2",
-      "key": "omiken_2",
-      "name": "おみくじBOT2",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-10-10T07:35:47.624Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
-      },
-      "color": {
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
       }
     }
   },
