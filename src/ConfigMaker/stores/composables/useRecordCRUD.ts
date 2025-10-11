@@ -31,6 +31,17 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
       delete parseItem.key
     }
 
+    // idとkeyの補完（現行仕様では同一にする）
+    if (!parseItem.id && !parseItem.key) {
+      const unique = String(Date.now())
+      parseItem.id = unique
+      parseItem.key = unique
+    } else if (!parseItem.id && parseItem.key) {
+      parseItem.id = parseItem.key
+    } else if (!parseItem.key && parseItem.id) {
+      parseItem.key = parseItem.id
+    }
+
     // order値を自動設定
     const existingItems = Object.values(data.value[category])
     const maxOrder = Math.max(0, ...existingItems.map((item) => item.order ?? 0))

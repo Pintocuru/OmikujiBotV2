@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiItemType, PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
@@ -14,6 +14,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
  */
 export class OmikujiResultProcessor {
   constructor(
+    private readonly actionSets: Record<string, PostActionRecordType>,
     private readonly placeProcess: PlaceholderProcessor,
     private readonly postMessage: PostMessage,
     private readonly botMessageGenerator: BotMessageGenerator
@@ -60,11 +61,8 @@ export class OmikujiResultProcessor {
    * おみくじアクションの処理
    */
   private processOmikujiActions(omikujiItem: OmikujiItemType): PostActionType[] {
-    const appStore = useAppStore()
-    const actionSets = appStore.data.actionSets
-
     // アクションセットを展開
-    const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, actionSets)
+    const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 
     // プレースホルダー処理
     return this.placeProcess.processPostActions(expandedActions)

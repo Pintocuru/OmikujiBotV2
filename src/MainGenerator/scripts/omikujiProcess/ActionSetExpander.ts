@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 /**
@@ -18,7 +18,7 @@ export class ActionSetExpander {
    */
   static expand(
     actions: PostActionType[],
-    actionSets: Record<string, { postActions: PostActionType[] }>,
+    actionSets: Record<string, PostActionRecordType>,
     depth: number = 0,
     visited: Set<string> = new Set()
   ): PostActionType[] {
@@ -48,7 +48,7 @@ export class ActionSetExpander {
    */
   private static expandSingleActionSet(
     action: PostActionType,
-    actionSets: Record<string, { postActions: PostActionType[] }>,
+    actionSets: Record<string, PostActionRecordType>,
     depth: number,
     visited: Set<string>
   ): PostActionType[] {
@@ -62,7 +62,6 @@ export class ActionSetExpander {
     }
 
     const targetActionSet = actionSets[targetKey]
-
     if (!targetActionSet) {
       ConsolePost('warn', `アクションセット "${targetKey}" が見つかりません`)
       return []

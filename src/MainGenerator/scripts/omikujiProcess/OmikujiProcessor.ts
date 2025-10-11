@@ -32,7 +32,12 @@ export class OmikujiProcessor {
 
     // 専門クラスの初期化
     this.executor = new OmikujiExecutor(this.placeProcess, scriptManager)
-    this.resultProcessor = new OmikujiResultProcessor(this.placeProcess, postMessage, botMessageGenerator)
+    this.resultProcessor = new OmikujiResultProcessor(
+      omikujiData.actionSets,
+      this.placeProcess,
+      postMessage,
+      botMessageGenerator
+    )
   }
 
   /**
