@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.2.0",
-    "dataVersion": 1.2,
+    "generatorVersion": "v1.3.0-beta.2",
+    "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -22,47 +22,24 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-10-03T05:38:08.869Z",
+      "updatedAt": "2025-10-11T11:18:58.982Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1756666545244",
-          "key": "",
+          "key": "1756666545244",
           "name": "カード駅:通常",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 700,
           "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!card_00",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
             {
               "delaySeconds": 1.5,
               "wordParty": "!card_10",
@@ -78,42 +55,36 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
               "actionType": "message"
+            },
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
+              "characterKey": "card01",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
             }
-          ]
+          ],
+          "weight": 700
         },
         {
           "id": "2f431cf1-bcdb-46d8-9ca1-6a8a3b866dc6",
-          "key": "",
+          "key": "2f431cf1-bcdb-46d8-9ca1-6a8a3b866dc6",
           "name": "カード駅:ナイス",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 150,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!card_00",
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 1.5,
@@ -131,41 +102,26 @@
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 150
         },
         {
           "id": "918d4067-023a-4dfe-8664-8c7825339a6b",
-          "key": "",
+          "key": "918d4067-023a-4dfe-8664-8c7825339a6b",
           "name": "カード駅:スペシャル",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 50,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!card_00",
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 1.5,
@@ -183,41 +139,26 @@
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 50
         },
         {
           "id": "cf3f6f59-e9a3-438e-9db5-de5c9d70312a",
-          "key": "",
+          "key": "cf3f6f59-e9a3-438e-9db5-de5c9d70312a",
           "name": "カード駅:ボンビラス",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 77,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!card_00",
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 1.5,
@@ -235,41 +176,26 @@
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 77
         },
         {
           "id": "7b7aca02-a5aa-4d43-9811-d59a0a74a97d",
-          "key": "",
+          "key": "7b7aca02-a5aa-4d43-9811-d59a0a74a97d",
           "name": "カード駅:…に行けカード詰め合わせ",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 20,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!card_00",
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 1.5,
@@ -287,41 +213,26 @@
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 20
         },
         {
           "id": "96d7b85c-f59e-4194-99b4-4d94987cc243",
-          "key": "",
+          "key": "96d7b85c-f59e-4194-99b4-4d94987cc243",
           "name": "カード駅:ボンビュラス",
           "createdAt": "2025-08-31T18:55:45.244Z",
           "updatedAt": "2025-08-31T18:55:45.244Z",
           "order": 0,
           "tags": [],
-          "weight": 3,
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!card_00",
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!card_01",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1,
-              "wordParty": "!card_02",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 1.5,
@@ -339,7 +250,8 @@
               "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 3
         }
       ],
       "ruleType": "comments",
@@ -362,8 +274,6 @@
           "^station"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
@@ -373,6 +283,46 @@
     }
   },
   "timers": {},
+  "actionSets": {
+    "StationCardFirst": {
+      "id": "StationCardFirst",
+      "key": "StationCardFirst",
+      "name": "カード駅:イントロ",
+      "createdAt": "2025-10-11T11:16:21.472Z",
+      "updatedAt": "2025-10-11T11:21:24.801Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#00BCD4",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "!card_00",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.5,
+          "wordParty": "!card_01",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1,
+          "wordParty": "!card_02",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        }
+      ]
+    }
+  },
   "placeholders": {
     "CardTypeNormal": {
       "id": "CardTypeNormal",
@@ -2498,6 +2448,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "experimental",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "experimental",

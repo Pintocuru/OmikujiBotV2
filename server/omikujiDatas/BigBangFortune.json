@@ -3,9 +3,9 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじ BOT 超おみくじ OmikujiBot BigBangFortune",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.10.10-v1.3.0-beta.1",
+    "version": "ver2025.10.10-v1.3.0-beta.2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.1",
+    "generatorVersion": "v1.3.0-beta.2",
     "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
@@ -21,23 +21,25 @@
       "id": "BigBangFortune",
       "key": "BigBangFortune",
       "name": "超おみくじ",
+      "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-10-03T04:18:57.796Z",
+      "updatedAt": "2025-10-11T06:42:47.631Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757756121625",
-          "key": "",
+          "key": "1757756121625",
           "name": "超!",
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
           "tags": [],
-          "weight": 1,
           "postActions": [
             {
               "delaySeconds": 0,
@@ -63,7 +65,8 @@
               "messageContent": "<<user>>の運勢は<<BigBangLottery>>",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -85,18 +88,16 @@
           "^BigBang"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
-      },
-      "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!"
+      }
     }
   },
   "timers": {},
+  "actionSets": {},
   "placeholders": {
     "BigBangDecoG": {
       "id": "BigBangDecoG",
@@ -932,6 +933,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "experimental",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "basic",

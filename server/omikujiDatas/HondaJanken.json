@@ -5,7 +5,7 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.1",
+    "generatorVersion": "v1.3.0-beta.2",
     "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
@@ -22,7 +22,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
+      "updatedAt": "2025-10-11T06:44:43.960Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -33,7 +33,7 @@
       "omikuji": [
         {
           "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
-          "key": "",
+          "key": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
           "name": "グーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -56,7 +56,7 @@
         },
         {
           "id": "553a8977-dda1-4933-869e-48d650e148d5",
-          "key": "",
+          "key": "553a8977-dda1-4933-869e-48d650e148d5",
           "name": "グーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -79,7 +79,7 @@
         },
         {
           "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
-          "key": "",
+          "key": "d7546009-ad4c-4808-830e-222ecf1d1b64",
           "name": "チョキA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -102,7 +102,7 @@
         },
         {
           "id": "3bb51efe-3ec6-4514-9a62-b609238d813b",
-          "key": "",
+          "key": "3bb51efe-3ec6-4514-9a62-b609238d813b",
           "name": "チョキB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -125,7 +125,7 @@
         },
         {
           "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
-          "key": "",
+          "key": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
           "name": "パーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -148,7 +148,7 @@
         },
         {
           "id": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
-          "key": "",
+          "key": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
           "name": "パーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -171,7 +171,7 @@
         },
         {
           "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
-          "key": "",
+          "key": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
           "name": "勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -194,7 +194,7 @@
         },
         {
           "id": "6912bbc6-b8a0-486b-862e-d70072ece11c",
-          "key": "",
+          "key": "6912bbc6-b8a0-486b-862e-d70072ece11c",
           "name": "勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -259,7 +259,7 @@
       "omikuji": [
         {
           "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
-          "key": "",
+          "key": "12857c74-9b42-4191-b548-9028fc82e1e8",
           "name": "グーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -282,7 +282,7 @@
         },
         {
           "id": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
-          "key": "",
+          "key": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
           "name": "グーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -305,7 +305,7 @@
         },
         {
           "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
-          "key": "",
+          "key": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
           "name": "グー勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -328,7 +328,7 @@
         },
         {
           "id": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
-          "key": "",
+          "key": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
           "name": "グー勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -394,7 +394,7 @@
       "omikuji": [
         {
           "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
-          "key": "",
+          "key": "958e6f84-07c2-4422-8fb0-dc81306a0799",
           "name": "チョキA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -417,7 +417,7 @@
         },
         {
           "id": "35eafe60-fd85-461e-a572-ee1743096688",
-          "key": "",
+          "key": "35eafe60-fd85-461e-a572-ee1743096688",
           "name": "チョキB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -440,7 +440,7 @@
         },
         {
           "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
-          "key": "",
+          "key": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
           "name": "チョキ勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -463,7 +463,7 @@
         },
         {
           "id": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
-          "key": "",
+          "key": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
           "name": "チョキ勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -528,7 +528,7 @@
       "omikuji": [
         {
           "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
-          "key": "",
+          "key": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
           "name": "パーA",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -551,7 +551,7 @@
         },
         {
           "id": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
-          "key": "",
+          "key": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
           "name": "パーB",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -574,7 +574,7 @@
         },
         {
           "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
-          "key": "",
+          "key": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
           "name": "パー勝利A",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -597,7 +597,7 @@
         },
         {
           "id": "2165a3b8-9018-4400-a7a9-911a93ef6873",
-          "key": "",
+          "key": "2165a3b8-9018-4400-a7a9-911a93ef6873",
           "name": "パー勝利B",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
