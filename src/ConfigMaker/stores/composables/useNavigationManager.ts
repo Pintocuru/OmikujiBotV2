@@ -8,15 +8,11 @@ import { useRecordDataAccess } from './useRecordDataAccess'
  * keyベースでの選択に統一
  */
 export function useNavigationManager(recordDataAccess: ReturnType<typeof useRecordDataAccess>) {
-  // ========================================
   // 状態
-  // ========================================
   const selectedCategory = ref<CategoryType>('comments')
   const selectedItemKey = ref<string | null>(null)
 
-  // ========================================
   // 計算プロパティ
-  // ========================================
   const isRecordCategory = computed(() => recordCategoryLabel.includes(selectedCategory.value as RecordCategoryType))
 
   const currentCategoryItems = computed(() => {
@@ -35,9 +31,7 @@ export function useNavigationManager(recordDataAccess: ReturnType<typeof useReco
 
   const hasItems = computed(() => orderedCategoryItems.value.length > 0)
 
-  // ========================================
   // カテゴリ選択
-  // ========================================
   const selectCategory = (category: CategoryType) => {
     selectedCategory.value = category
 
@@ -51,9 +45,7 @@ export function useNavigationManager(recordDataAccess: ReturnType<typeof useReco
     selectedItemKey.value = firstItem?.key || null
   }
 
-  // ========================================
   // アイテム選択
-  // ========================================
   const selectItem = (key: string) => {
     selectedItemKey.value = key
   }
@@ -62,9 +54,8 @@ export function useNavigationManager(recordDataAccess: ReturnType<typeof useReco
     selectedItemKey.value = null
   }
 
-  // ========================================
   // アイテム削除後の選択更新
-  // ========================================
+
   /**
    * アイテム削除後に適切なアイテムを選択する
    * 削除されたアイテムより前のアイテムを優先的に選択

@@ -36,6 +36,7 @@
       class="input input-bordered input-sm w-full"
       placeholder="投稿するメッセージを入力してください"
     />
+    <PlaceholderChecker :text="messageContent" />
   </SettingItem>
 
   <!-- WordParty -->
@@ -60,6 +61,7 @@
   import WordPartyField from './WordPartyField.vue'
   import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import PlaceholderChecker from './PlaceholderChecker.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   const props = defineProps<{

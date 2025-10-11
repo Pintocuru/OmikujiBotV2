@@ -6,7 +6,7 @@
     :class="{ 'tooltip tooltip-top': true, 'btn-disabled': disabled || isLoading }"
     :data-tip="dataTip"
   >
-    <span class="btn btn-sm btn-outline hover:btn-primary transition-colors min-w-fit whitespace-nowrap">
+    <span class="btn btn-xs btn-outline hover:btn-primary transition-colors min-w-fit whitespace-nowrap">
       <span v-if="isLoading" class="flex items-center gap-1">
         <Loader2Icon class="h-4 w-4 animate-spin" />
         <span v-if="!small">コピー中…</span>

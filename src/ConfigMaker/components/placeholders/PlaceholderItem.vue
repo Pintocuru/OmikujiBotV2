@@ -39,7 +39,18 @@
 
       <!-- アクションボタン -->
       <div class="flex items-center gap-1" @click.stop>
+        <!-- プレースホルダーの文字列をコピー -->
         <CopyButton :value="`<<${placeholder.key}>>`" data-tip="IDをコピー" :small="true" />
+
+        <!-- プレースホルダーへ移動 -->
+        <button
+          v-if="!isDefault"
+          class="btn btn-outline btn-xs tooltip"
+          data-tip="プレースホルダーへ移動"
+          @click="selectPlaceholderItem(placeholder.key)"
+        >
+          <ArrowRight class="w-4 h-4" />
+        </button>
       </div>
     </div>
 
@@ -75,6 +86,8 @@
   import { computed, ref, onMounted } from 'vue'
   import { PlaceholderType } from '@/types/'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { ArrowRight } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -88,9 +101,18 @@
     click: [placeholderId: string]
   }>()
 
+  // ストアを使用
+  const omikujiStore = useOmikujiStore()
+
   // State
   const currentRandomValue = ref<string>('')
   const showDetails = ref(false)
+
+  // Computed
+  const cardClasses = computed(() => [
+    'card card-compact transition-colors hover:shadow-sm',
+    props.isUsed ? 'bg-primary/20 border border-primary/40 hover:bg-primary/30' : 'bg-base-100 hover:bg-base-200',
+  ])
 
   // PlaceholderItem内でランダム値を管理
   const generateRandomValue = (): string => {
@@ -114,9 +136,9 @@
     refreshRandomValue()
   })
 
-  // Computed
-  const cardClasses = computed(() => [
-    'card card-compact transition-colors hover:shadow-sm',
-    props.isUsed ? 'bg-primary/20 border border-primary/40 hover:bg-primary/30' : 'bg-base-100 hover:bg-base-200',
-  ])
+  // アイテム選択
+  const selectPlaceholderItem = (key: string) => {
+    omikujiStore.selectCategory('placeholders')
+    omikujiStore.selectItem(key)
+  }
 </script>
