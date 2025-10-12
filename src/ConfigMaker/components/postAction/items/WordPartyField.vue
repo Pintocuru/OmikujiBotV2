@@ -27,12 +27,14 @@
       />
     </div>
   </div>
+  <PlaceholderChecker v-if="inputMode === 'manual'" :text="wordPartyModel" />
 </template>
 
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import PlaceholderChecker from './PlaceholderChecker.vue'
   import { storeToRefs } from 'pinia'
 
   // Props

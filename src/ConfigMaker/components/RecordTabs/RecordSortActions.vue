@@ -11,6 +11,12 @@
 
     <!-- ソート機能 -->
     <div class="flex items-center gap-1">
+      <!--  orderを詰める機能 -->
+      <button class="btn btn-sm btn-outline" @click="handleCompactOrder" title="order番号を詰める">
+        <ListChecks class="w-4 h-4" />
+        詰める
+      </button>
+
       <!-- エディターカラーでソート -->
       <button
         class="btn btn-sm btn-outline"
@@ -32,7 +38,7 @@
         :class="{ 'btn-active': lastSortType === 'name' }"
       >
         <span class="flex items-center gap-2">
-          <AlphabeticalIcon class="w-4 h-4" />
+          <Type class="w-4 h-4" />
           名前順
         </span>
       </button>
@@ -48,7 +54,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import { Plus, Palette, Palette as AlphabeticalIcon } from 'lucide-vue-next'
+  import { Plus, Palette, Type, ListChecks } from 'lucide-vue-next'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import type { BaseRecordType } from '@shared/types'
 
@@ -85,6 +91,22 @@
 
     // 新しい順序を適用
     await applySortedOrder(sortedItems)
+  }
+
+  /**
+   * order番号を詰める（1,2,3,...で再採番）
+   */
+  const handleCompactOrder = async () => {
+    if (!store.validCategory || !store.categoryArray) return
+
+    const compactedItems = [...store.categoryArray]
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map((item, index) => ({
+        key: item.key,
+        newOrder: index + 1,
+      }))
+
+    await omikujiStore.batchUpdateOrder(store.validCategory, compactedItems)
   }
 
   /**

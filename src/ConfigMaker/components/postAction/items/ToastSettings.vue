@@ -16,6 +16,7 @@
       class="input input-bordered input-sm w-full"
       placeholder="トーストとして表示するメッセージを入力してください"
     />
+    <PlaceholderChecker :text="messageToast" />
   </SettingItem>
 
   <!-- WordParty -->
@@ -38,6 +39,7 @@
   import { computed } from 'vue'
   import { isDev, PostActionType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import PlaceholderChecker from './PlaceholderChecker.vue'
   import WordPartyField from './WordPartyField.vue'
 
   const props = defineProps<{
