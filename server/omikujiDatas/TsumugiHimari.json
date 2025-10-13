@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.29-v1.2.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.3.0-beta.3",
+    "dataVersion": 1.29013,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -24,7 +24,7 @@
       "name": "タロット占い",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -95,7 +95,7 @@
       "name": "超おみくじ",
       "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-10-09T05:12:11.986Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -173,7 +173,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -207,7 +207,7 @@
             {
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "tsumugi",
+              "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
@@ -252,7 +252,7 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -284,7 +284,7 @@
             {
               "delaySeconds": 7,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "tsumugi",
+              "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
@@ -330,7 +330,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -362,7 +362,7 @@
             {
               "delaySeconds": 8,
               "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "tsumugi",
+              "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
@@ -410,7 +410,7 @@
       "name": "初見詐欺",
       "description": "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-09T05:42:23.196Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -800,7 +800,7 @@
       "name": "ホントの初見",
       "description": "いい初見だ。感動的だな……だが無意味だ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.827Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -883,7 +883,7 @@
       "name": "ギフトLow(1-499円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:57:40.261Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -895,7 +895,7 @@
         {
           "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
           "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
-          "name": "ギフト",
+          "name": "ギフトLow(1-499円)",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -905,21 +905,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!金額表示",
+              "actionSetKey": "GiftIntro",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -940,76 +931,6 @@
             }
           ],
           "weight": 9
-        },
-        {
-          "id": "1759215405922",
-          "key": "1759215405922",
-          "name": "城之内死す",
-          "createdAt": "2025-09-30T06:56:45.922Z",
-          "updatedAt": "2025-09-30T06:56:45.922Z",
-          "order": 0,
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "himari",
-              "iconKey": "surprised",
-              "messageContent": "やめて！ラーの翼神竜の特殊能力で、ギルフォード・ザ・ライトニングを焼き払われたら、",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 5.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "surprised",
-              "messageContent": "闇のゲームでモンスターと繋がってる城之内の精神まで燃え尽きちゃう！",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 10,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "お願い、死なないで城之内！あんたが今ここで倒れたら、舞さんや遊戯との約束はどうなっちゃうの？",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 15.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "sad",
-              "messageContent": "ライフはまだ残ってる。ここを耐えれば、マリクに勝てるんだから！",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 19.5,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "happy",
-              "messageContent": "次回、「城之内死す」。デュエルスタンバイ！",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -1043,7 +964,7 @@
       "name": "ギフトMiddle(500円-)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-02T01:31:26.537Z",
+      "updatedAt": "2025-10-12T03:58:21.879Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1055,7 +976,7 @@
         {
           "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
           "key": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
-          "name": "ギフト",
+          "name": "ギフトMiddle(500円-)",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1065,21 +986,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!金額表示",
-              "characterKey": "reimu",
+              "actionSetKey": "GiftIntro",
+              "wordParty": "",
+              "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -1132,7 +1044,7 @@
       "name": "コメント数表示",
       "description": "コメント数、マジ気になるよね～☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-04T15:31:34.800Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -1218,7 +1130,7 @@
       "name": "コント:つむぎ",
       "description": "あーしを呼んでくれた？マジ感謝だよっ",
       "createdAt": "2025-10-01T04:39:05.252Z",
-      "updatedAt": "2025-10-09T05:01:44.495Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1929,7 +1841,7 @@
       "name": "コント:ひまり",
       "description": "なおガ",
       "createdAt": "2025-10-01T05:15:26.841Z",
-      "updatedAt": "2025-10-10T16:27:58.562Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2787,7 +2699,7 @@
       "name": "コント:ひまり:ワッフルワッフル",
       "description": "いなりが入ってないやん",
       "createdAt": "2025-10-01T23:03:40.335Z",
-      "updatedAt": "2025-10-04T15:29:50.423Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2848,7 +2760,7 @@
       "name": "じゃんけん:ひまり",
       "description": "お前等やる気ないだろ。本気でかかってきやがれ",
       "createdAt": "2025-10-04T15:11:23.941Z",
-      "updatedAt": "2025-10-09T04:44:14.719Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2937,7 +2849,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-02T01:27:09.408Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3017,7 +2929,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3088,7 +3000,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.597Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3159,7 +3071,7 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-02T01:40:20.182Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
@@ -3259,7 +3171,7 @@
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.598Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
@@ -3501,7 +3413,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-01T23:08:11.598Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -3597,7 +3509,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-01T23:08:11.598Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -3700,7 +3612,40 @@
       "isBaseZero": true
     }
   },
-  "actionSets": {},
+  "actionSets": {
+    "GiftIntro": {
+      "id": "GiftIntro",
+      "key": "GiftIntro",
+      "name": "ギフト:イントロ",
+      "description": "ギフトの際に流すWordPartyの演出です",
+      "createdAt": "2025-10-12T03:56:00.109Z",
+      "updatedAt": "2025-10-12T03:57:10.275Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "!金額表示",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.3,
+          "wordParty": "!ジャン！",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        }
+      ]
+    }
+  },
   "placeholders": {
     "GiftTsumugi": {
       "id": "GiftTsumugi",
