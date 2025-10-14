@@ -53,7 +53,7 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { PackageMetaSchema } from '@shared/types'
+  import { MetaDataSchema } from '@shared/types'
   import { storeToRefs } from 'pinia'
   import { ExternalLink } from 'lucide-vue-next'
 
@@ -128,7 +128,7 @@
     if (field === 'url') {
       defaultValue = undefined
     } else {
-      defaultValue = PackageMetaSchema.shape[field].parse(undefined)
+      defaultValue = MetaDataSchema.shape[field].parse(undefined)
     }
 
     omikujiStore.updateMeta({

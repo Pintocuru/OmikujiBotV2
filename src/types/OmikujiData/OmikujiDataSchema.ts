@@ -5,7 +5,7 @@ import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'
 import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'
 import { recordNormalization } from './OmikujiDataNormalize'
-import { PackageMetaSchema } from '@shared/types'
+import { PackageJsonSchema } from '@shared/types'
 import { WordPartySettingsSchema } from './WordPartySettings'
 import { scriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema'
 import { PostActionRecordSchema } from './OmikujiSchema'
@@ -15,8 +15,8 @@ import { JsonMergeSchema } from './JsonMergeType'
  * おみくじデータ全体のメインスキーマ
  */
 export const OmikujiDataSchema = z.object({
+  ...PackageJsonSchema.shape,
   jsonMerge: JsonMergeSchema.catch([]),
-  meta: PackageMetaSchema.catch(PackageMetaSchema.parse({})),
   comments: recordNormalization(CommentRuleSchema),
   timers: recordNormalization(TimerRuleSchema),
   actionSets: recordNormalization(PostActionRecordSchema),

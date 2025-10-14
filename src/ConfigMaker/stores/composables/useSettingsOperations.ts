@@ -4,7 +4,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { DisplaySettingsType } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
 import { ScriptSettingsType } from '@/types/GameScript/GameScriptSettingsSchema'
-import { PackageMetaType } from '@shared/types'
+import { MetaDataType } from '@shared/types'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
 
 /**
@@ -43,7 +43,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   }
 
   // meta を更新する関数
-  const updateMeta = (newSettings: PackageMetaType) => {
+  const updateMeta = (newSettings: MetaDataType) => {
     data.value.meta = newSettings
     hasChanged.value = true
   }

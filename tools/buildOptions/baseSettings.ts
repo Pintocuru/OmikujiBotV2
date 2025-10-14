@@ -3,6 +3,7 @@ import path from 'path'
 import { getKey } from '@/types/SettingMode'
 import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
 import { generateAccessLevelData } from './processJsonData'
+import { processMerge } from '../JsonMerge/JsonMergeProcessor'
 
 export function createCommonBuildConfig(packageRoot: string) {
   return {
@@ -35,6 +36,7 @@ export function createCommonBuildConfig(packageRoot: string) {
       jsonPathRoot: path.resolve(packageRoot, 'server/omikujiDatas/'),
       generateAccessLevelData,
       generateJsContent,
+      assembleJsonData: processMerge,
     },
   }
 }
