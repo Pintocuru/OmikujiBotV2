@@ -9,7 +9,18 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageCircle, Timer, Hash, Settings, Users, Monitor, ListChecks, Tags, MessagesSquare } from 'lucide-vue-next'
+import {
+  MessageCircle,
+  Timer,
+  Hash,
+  Settings,
+  Users,
+  Monitor,
+  ListChecks,
+  Tags,
+  MessagesSquare,
+  Layers,
+} from 'lucide-vue-next'
 import { PostActionRecordSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
@@ -45,17 +56,28 @@ export const RecordCategorySchemaMap = {
 /**
  * settingsCategory
  */
-export const settingsCategoryType = ['scriptSettings', 'displaySettings', 'wordPartySettings', 'meta'] as const
-export type SettingsCategoryType = (typeof settingsCategoryType)[number]
+export const settingsCategoryLabel = [
+  'jsonMerge',
+  'scriptSettings',
+  'displaySettings',
+  'wordPartySettings',
+  'meta',
+] as const
+export type SettingsCategoryType = (typeof settingsCategoryLabel)[number]
 
 /**
  * CategoryType
  */
-export const categoryType = [...recordCategoryLabel, ...settingsCategoryType] as const
+export const categoryType = [...recordCategoryLabel, ...settingsCategoryLabel] as const
 export type CategoryType = (typeof categoryType)[number]
 
 // 各カテゴリのラベル、説明、アイコンを定義
 export const categoryLabels: Record<CategoryType, { label: string; description: string; icon: any }> = {
+  jsonMerge: {
+    label: 'JSONマージ(開発者専用)',
+    description: 'ビルド時、jsonファイルをマージして出力します',
+    icon: Layers,
+  },
   comments: {
     label: 'コメントルール', // チャットの内容やユーザー情報でおみくじを発動
     description: 'チャット内容やユーザー情報を基におみくじを発動します',

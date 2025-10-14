@@ -9,11 +9,13 @@ import { PackageMetaSchema } from '@shared/types'
 import { WordPartySettingsSchema } from './WordPartySettings'
 import { scriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema'
 import { PostActionRecordSchema } from './OmikujiSchema'
+import { JsonMergeSchema } from './JsonMergeType'
 
 /**
  * おみくじデータ全体のメインスキーマ
  */
 export const OmikujiDataSchema = z.object({
+  jsonMerge: JsonMergeSchema.catch([]),
   meta: PackageMetaSchema.catch(PackageMetaSchema.parse({})),
   comments: recordNormalization(CommentRuleSchema),
   timers: recordNormalization(TimerRuleSchema),

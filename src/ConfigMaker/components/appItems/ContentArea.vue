@@ -12,6 +12,9 @@
     </div>
     <div class="card-body space-y-4">
       <!-- コメントルール -->
+      <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
+
+      <!-- コメントルール -->
       <CommentRuleEditor v-if="selectedCategory === 'comments'" />
 
       <!-- タイマールール -->
@@ -59,6 +62,7 @@
   import CharacterEditor from '@ConfigComponents/characters/CharacterEditor.vue'
   import DisplaySettingsEditor from '@ConfigComponents/displaySettings/DisplaySettingsEditor.vue'
   import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue'
+  import JsonMergeEditor from '@ConfigComponents/JsonMerge/JsonMergeEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { selectedCategory } = storeToRefs(omikujiStore)

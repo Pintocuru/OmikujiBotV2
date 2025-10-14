@@ -5,6 +5,7 @@ import { DisplaySettingsType } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
 import { ScriptSettingsType } from '@/types/GameScript/GameScriptSettingsSchema'
 import { PackageMetaType } from '@shared/types'
+import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
 
 /**
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
@@ -47,11 +48,18 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
+  // jsonMerge を更新する関数
+  const updateJsonMerge = (newMerge: JsonMergeType) => {
+    data.value.jsonMerge = newMerge
+    hasChanged.value = true
+  }
+
   return {
     updateScriptSettings,
     updateDisplaySettings,
     updateNestedDisplaySettings,
     updateWordPartySettings,
     updateMeta,
+    updateJsonMerge,
   }
 }

@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+import { isDev } from '@/types'
 
 export const useCategoryUtils = () => {
   const omikujiStore = useOmikujiStore()
@@ -32,6 +33,7 @@ export const useCategoryUtils = () => {
     const excludeKeys: CategoryType[] = []
 
     // visibility の設定に基づいて非表示にするカテゴリを決定
+    if (!isDev) excludeKeys.push('jsonMerge') // 開発者のみの機能
     if (!hasAccess(visibility.comments)) excludeKeys.push('comments')
     if (!hasAccess(visibility.timers)) excludeKeys.push('timers')
     if (!hasAccess(visibility.placeholders)) excludeKeys.push('placeholders')
