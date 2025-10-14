@@ -61,6 +61,7 @@
             :get-character-name="getCharacterName"
             :has-changes="hasChanges"
             @clear-all="clearAllMappings"
+            @update-mapping="updateCharacterMapping"
           />
 
           <!-- 変更内容のプレビュー -->
@@ -158,6 +159,9 @@
     if (!hasChanges.value) return
     applyMappingsToAllItems(characterMappings.value)
     closeModal()
+  }
+  const updateCharacterMapping = (charKey: string, value: string) => {
+    characterMappings.value[charKey] = value
   }
 </script>
 

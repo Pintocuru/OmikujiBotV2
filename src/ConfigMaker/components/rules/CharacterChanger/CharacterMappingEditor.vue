@@ -33,9 +33,10 @@
       <div class="flex-1 min-w-0">
         <p class="text-xs text-gray-500 mb-1">変更後</p>
         <select
-          v-model="characterMappings[charKey]"
+          :value="getMappingValue(charKey)"
+          @input="updateMapping(charKey, ($event.target as HTMLSelectElement).value)"
           class="select select-bordered w-full"
-          :class="characterMappings[charKey] ? 'select-primary' : ''"
+          :class="getMappingValue(charKey) ? 'select-primary' : ''"
         >
           <option value="">変更しない</option>
           <option v-for="character in charactersArray" :key="character.key" :value="character.key">
@@ -48,8 +49,7 @@
 </template>
 
 <script setup lang="ts">
-  // FIXME
-  defineProps<{
+  const props = defineProps<{
     characterKeys: string[]
     characterMappings: Record<string, string>
     charactersArray: Array<{ key: string; name: string; order: number }>
@@ -58,7 +58,22 @@
     hasChanges: boolean
   }>()
 
-  defineEmits<{
+  const emit = defineEmits<{
     clearAll: []
+    updateMapping: [charKey: string, value: string]
   }>()
+
+  /**
+   * マッピング値を取得するcomputed
+   */
+  const getMappingValue = (charKey: string) => {
+    return props.characterMappings[charKey] || ''
+  }
+
+  /**
+   * マッピング値を更新（イベント発行）
+   */
+  const updateMapping = (charKey: string, value: string) => {
+    emit('updateMapping', charKey, value)
+  }
 </script>

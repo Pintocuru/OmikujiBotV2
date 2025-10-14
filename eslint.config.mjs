@@ -127,7 +127,7 @@ export default [
   {
     // 除外対象（ビルド後のファイルなど）
     name: 'app/files-to-ignore',
-    ignores: ['**/node_modules/**', '**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/*.test.ts'],
   },
 
   // Vue の基本的なルールセット（Flat Config用）
