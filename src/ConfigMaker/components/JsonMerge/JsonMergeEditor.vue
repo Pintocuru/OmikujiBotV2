@@ -37,58 +37,15 @@
 
           <div v-if="item.remaps.length === 0" class="text-gray-500 text-sm py-2">リマップ設定がありません</div>
 
-          <div
+          <JsonMergeRemapEditor
             v-for="(remap, j) in item.remaps"
             :key="j"
-            class="border-l-4 border-primary pl-4 py-2 mb-3 bg-base-200 rounded"
-          >
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-sm font-medium">リマップ {{ j + 1 }}</span>
-              <button @click="removeRemap(i, j)" class="btn btn-xs btn-ghost" title="このリマップを削除">✕</button>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-              <SettingItem label="元キャラキー">
-                <input
-                  type="text"
-                  v-model="merge[i].remaps[j].fromCharacterKey"
-                  @input="update"
-                  class="input input-sm input-bordered w-full"
-                  placeholder="old_character"
-                />
-              </SettingItem>
-
-              <SettingItem label="新キャラキー">
-                <input
-                  type="text"
-                  v-model="merge[i].remaps[j].toCharacterKey"
-                  @input="update"
-                  class="input input-sm input-bordered w-full"
-                  placeholder="new_character"
-                />
-              </SettingItem>
-
-              <SettingItem label="元アイコンキー">
-                <input
-                  type="text"
-                  v-model="merge[i].remaps[j].fromIconKey"
-                  @input="update"
-                  class="input input-sm input-bordered w-full"
-                  placeholder="old_icon"
-                />
-              </SettingItem>
-
-              <SettingItem label="新アイコンキー">
-                <input
-                  type="text"
-                  v-model="merge[i].remaps[j].toIconKey"
-                  @input="update"
-                  class="input input-sm input-bordered w-full"
-                  placeholder="new_icon"
-                />
-              </SettingItem>
-            </div>
-          </div>
+            :model-value="remap"
+            :remap-index="j"
+            :characters="characters"
+            @update:model-value="updateRemap(i, j, $event)"
+            @remove="removeRemap(i, j)"
+          />
         </div>
       </div>
 
@@ -99,11 +56,14 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
   import { storeToRefs } from 'pinia'
+  import { JsonMergeRemapSchema } from '@/types/OmikujiData/JsonMergeType'
+  import { CharacterType } from '@/types'
 
   const store = useOmikujiStore()
   const { data } = storeToRefs(store)
@@ -111,13 +71,22 @@
   const merge = ref(data.value.jsonMerge ?? [])
   const jsonFiles = ref<string[]>([])
 
+  // Characterデータを計算プロパティで取得
+  const characters = computed(() => {
+    return data.value.characters ?? ({} as Record<string, CharacterType>)
+  })
+
   // JSONファイルリストを取得
   onMounted(async () => {
     try {
-      const res = await fetch('/api/dev-configs/list')
+      const apiUrl = 'http://localhost:3001/api/dev-configs/list'
+
+      const res = await fetch(apiUrl)
       if (res.ok) {
         const files = await res.json()
         jsonFiles.value = files.map((f: any) => f.name || f)
+      } else {
+        console.error('API Error:', res.status, res.statusText)
       }
     } catch (err) {
       console.error('JSONファイル取得エラー:', err)
@@ -146,12 +115,13 @@
 
   // リマップを追加
   const addRemap = (i: number) => {
-    merge.value[i].remaps.push({
-      fromCharacterKey: '',
-      toCharacterKey: '',
-      fromIconKey: '',
-      toIconKey: '',
-    })
+    merge.value[i].remaps.push(JsonMergeRemapSchema.parse({}))
+    update()
+  }
+
+  // リマップを更新
+  const updateRemap = (i: number, j: number, remap: any) => {
+    merge.value[i].remaps[j] = remap
     update()
   }
 

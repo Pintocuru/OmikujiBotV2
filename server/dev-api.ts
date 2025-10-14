@@ -1,5 +1,5 @@
 // server/dev-api.ts
-import express, { Request, Response, Application } from 'express'
+import express, { Request, Response, Application, NextFunction } from 'express'
 import cors from 'cors'
 import { Server } from 'http'
 import { CONFIG_DIR } from './fileService.js'
@@ -15,13 +15,7 @@ import {
 let server: Server | null = null
 
 // ログ用ミドルウェア
-/**
- * The `Function` type accepts any function-like value.
-Prefer explicitly defining any function parameters and return type.eslint@typescript-eslint/no-unsafe-function-type
-interface Function
-Creates a new function.
- */
-function logMiddleware(req: Request, res: Response, next: Function): void {
+function logMiddleware(req: Request, res: Response, next: NextFunction): void {
   console.log(`[DEV API] ${req.method} ${req.path}`)
   next()
 }
