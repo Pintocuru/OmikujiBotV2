@@ -61,7 +61,7 @@
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
-  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'

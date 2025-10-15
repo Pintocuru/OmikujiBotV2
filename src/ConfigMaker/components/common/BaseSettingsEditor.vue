@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/BaseSettingsEditor.vue -->
+<!-- src\ConfigMaker\components\common\BaseSettingsEditor.vue -->
 <template>
   <!-- 開発モード専用 -->
   <div v-if="isGod" class="flex flex-col gap-4">
@@ -51,7 +51,6 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { AccessLevelLabels, BaseRecordType } from '@shared/types'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { is } from 'zod/v4/locales'
 
   const props = withDefaults(
     defineProps<{

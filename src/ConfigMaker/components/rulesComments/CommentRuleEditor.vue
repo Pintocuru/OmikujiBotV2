@@ -79,7 +79,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
-  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import GlobalCharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
   import ScriptGameEditor from './GameScriptEditor.vue'

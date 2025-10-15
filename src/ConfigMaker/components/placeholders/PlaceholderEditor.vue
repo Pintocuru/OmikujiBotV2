@@ -11,23 +11,7 @@
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       description="プレースホルダー名の設定を行います"
     >
-      <!-- ID表示とコピー -->
-      <SettingItem label="Key" description="<<プレースホルダー名>>">
-        <div class="flex gap-2 items-center">
-          <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 break-all">
-            {{ selectedItem.key }}
-          </div>
-          <!-- コピーボタン -->
-          <CopyButton :value="`<<${selectedItem.key}>>`" dataTip="<<プレースホルダー>>の形式で文字列をコピーします" />
-          <!-- 編集ボタン -->
-          <KeyEditor :currentKey="selectedItem.key" category="placeholders" />
-        </div>
-      </SettingItem>
-
-      <!-- プレースホルダー名 -->
-      <SettingItem label="設定名" description="識別しやすい名前">
-        <input type="text" v-model="itemName" placeholder="設定名を入力" class="input input-bordered w-full" />
-      </SettingItem>
+      <BaseSettingsEditor v-model="selectedItem" category="placeholders" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
 
     <!-- プレースホルダー設定 -->
@@ -48,7 +32,7 @@
   import { PlaceholderType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
-  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'

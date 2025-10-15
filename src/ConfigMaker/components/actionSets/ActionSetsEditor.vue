@@ -15,7 +15,7 @@
       :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="コメントルールの基本的な設定"
     >
-      <BaseSettingsEditor v-model="selectedItem" category="actionSets" />
+      <BaseSettingsEditor v-model="selectedItem" category="actionSets" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
 
     <!-- おみくじ設定セクション -->
@@ -34,7 +34,7 @@
   import { computed, ref } from 'vue'
   import { PostActionRecordType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import CharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

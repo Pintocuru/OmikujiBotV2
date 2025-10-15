@@ -4,11 +4,17 @@ import path from 'path'
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
 import type { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { AccessLevelType } from '@shared/types'
+import { CharacterEmotionType } from '@/types'
 
 /**
  * メイン処理：jsonMergeがある場合にマージ処理を実行
  */
-export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: string): Promise<OmikujiDataType> {
+export async function processMerge(
+  jsonData: OmikujiDataType,
+  jsonPathRoot: string,
+  targetAccessLevel: AccessLevelType
+): Promise<OmikujiDataType> {
   if (!jsonData.jsonMerge || jsonData.jsonMerge.length === 0) {
     return jsonData
   }
@@ -24,7 +30,7 @@ export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: stri
     const remappedData = applyRemaps(sourceData, mergeItem.remaps)
 
     // 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
-    const processedSourceData = await processMerge(remappedData, jsonPathRoot)
+    const processedSourceData = await processMerge(remappedData, jsonPathRoot, targetAccessLevel)
 
     dataToMerge.push(processedSourceData)
   }
@@ -76,7 +82,7 @@ function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapT
         if (remappedAction.iconKey === remap.fromIconKey) {
           remappedAction = {
             ...remappedAction,
-            iconKey: remap.toIconKey as PostActionType['iconKey'],
+            iconKey: remap.toIconKey as CharacterEmotionType,
           }
         }
       }

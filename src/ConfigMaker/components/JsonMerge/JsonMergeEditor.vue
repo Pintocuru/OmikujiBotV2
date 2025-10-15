@@ -70,7 +70,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
