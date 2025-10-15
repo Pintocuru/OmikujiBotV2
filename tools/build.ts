@@ -13,6 +13,7 @@ import ReimuMarisaProject from './packages/full/ReimuMarisa'
 import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
 import EveryoneZundaProject from './packages/full/EveryoneZunda'
 import DivaMetanProject from './packages/full/DivaMetan'
+import TsumugiHimariProject from './packages/full/TsumugiHimari'
 import TossedKotaroProject from './packages/full/TossedKotaro'
 
 import percent_DoraProject from './packages/solo/5percent_Dora'
@@ -54,11 +55,14 @@ const buildTargets: BuildTarget[] = [
   { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
   { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
+  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
+  { project: 'TsumugiHimari', type: 'PATCH', accessLevel: 'pro' },
   { project: 'TossedKotaro', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TossedKotaro', type: 'JSON', accessLevel: 'basic' },
   { project: 'TossedKotaro', type: 'PATCH', accessLevel: 'pro' },
    */
-  { project: 'TossedKotaro', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * solo
@@ -101,6 +105,7 @@ const buildTargets: BuildTarget[] = [
       ReimuMarisaMateProject(packageRoot),
       EveryoneZundaProject(packageRoot),
       DivaMetanProject(packageRoot),
+      TsumugiHimariProject(packageRoot),
       TossedKotaroProject(packageRoot),
       percent_DoraProject(packageRoot),
       HondaJankenProject(packageRoot),

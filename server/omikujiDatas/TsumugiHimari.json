@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.29-v1.2.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.3",
-    "dataVersion": 1.29013,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -17,6 +17,30 @@
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/6058829"
   },
+  "jsonMerge": [
+    {
+      "sourceFile": "TarotCard.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "himari",
+          "fromIconKey": "",
+          "toIconKey": "thinking"
+        }
+      ]
+    },
+    {
+      "sourceFile": "BigBangFortune.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "",
+          "fromIconKey": "",
+          "toIconKey": "excited"
+        }
+      ]
+    }
+  ],
   "comments": {
     "TarotCard": {
       "id": "TarotCard",
