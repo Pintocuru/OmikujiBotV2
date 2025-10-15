@@ -4,8 +4,38 @@ import path from 'path'
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
 import type { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { PackageJsonType } from '@shared/types'
-import { ResolvedBuildConfig } from '@shared/utils/webpackBuild/buildTypes'
+
+/**
+ * メイン処理：jsonMergeがある場合にマージ処理を実行
+ */
+export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: string): Promise<OmikujiDataType> {
+  if (!jsonData.jsonMerge || jsonData.jsonMerge.length === 0) {
+    return jsonData
+  }
+
+  // マージ対象となるデータ配列を収集
+  const dataToMerge: OmikujiDataType[] = []
+
+  for (const mergeItem of jsonData.jsonMerge) {
+    // ソースファイルを読み込み
+    const sourceData = loadSourceFile(mergeItem.sourceFile, jsonPathRoot)
+
+    // リマップ処理を適用
+    const remappedData = applyRemaps(sourceData, mergeItem.remaps)
+
+    // 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
+    const processedSourceData = await processMerge(remappedData, jsonPathRoot)
+
+    dataToMerge.push(processedSourceData)
+  }
+
+  // 最後にupdatedJsonDataを追加（jsonMergeは除外）
+  const { jsonMerge, ...dataWithoutMerge } = jsonData
+  dataToMerge.push({ ...dataWithoutMerge, jsonMerge: [] })
+
+  // すべてをマージ
+  return mergeOmikujiData(...dataToMerge)
+}
 
 /**
  * ソースファイルを読み込む
@@ -130,36 +160,4 @@ function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataType {
   }
 
   return result
-}
-
-/**
- * メイン処理：jsonMergeがある場合にマージ処理を実行
- */
-export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: string): Promise<OmikujiDataType> {
-  if (!jsonData.jsonMerge || jsonData.jsonMerge.length === 0) {
-    return jsonData
-  }
-
-  // マージ対象となるデータ配列を収集
-  const dataToMerge: OmikujiDataType[] = []
-
-  for (const mergeItem of jsonData.jsonMerge) {
-    // ソースファイルを読み込み
-    const sourceData = loadSourceFile(mergeItem.sourceFile, jsonPathRoot)
-
-    // リマップ処理を適用
-    const remappedData = applyRemaps(sourceData, mergeItem.remaps)
-
-    // 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
-    const processedSourceData = await processMerge(remappedData, jsonPathRoot)
-
-    dataToMerge.push(processedSourceData)
-  }
-
-  // 最後にupdatedJsonDataを追加（jsonMergeは除外）
-  const { jsonMerge, ...dataWithoutMerge } = jsonData
-  dataToMerge.push({ ...dataWithoutMerge, jsonMerge: [] })
-
-  // すべてをマージ
-  return mergeOmikujiData(...dataToMerge)
 }
