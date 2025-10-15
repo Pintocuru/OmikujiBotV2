@@ -149,13 +149,15 @@ function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataType {
     result.timers = { ...result.timers, ...data.timers }
     result.actionSets = { ...result.actionSets, ...data.actionSets }
     result.placeholders = { ...result.placeholders, ...data.placeholders }
-    result.characters = { ...result.characters, ...data.characters }
+
+    // charactersは上書き
+    result.characters = data.characters
 
     // その他は上書き
     result.wordPartySettings = result.wordPartySettings = data.wordPartySettings
-    if (data.meta) result.meta = data.meta
-    if (data.scriptSettings) result.scriptSettings = data.scriptSettings
-    if (data.displaySettings) result.displaySettings = data.displaySettings
+    result.meta = data.meta
+    result.scriptSettings = data.scriptSettings
+    result.displaySettings = data.displaySettings
     if (data.jsonMerge) result.jsonMerge = data.jsonMerge
   }
 

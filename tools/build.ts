@@ -58,6 +58,7 @@ const buildTargets: BuildTarget[] = [
   { project: 'TossedKotaro', type: 'JSON', accessLevel: 'basic' },
   { project: 'TossedKotaro', type: 'PATCH', accessLevel: 'pro' },
    */
+  { project: 'TossedKotaro', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * solo
@@ -71,8 +72,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
