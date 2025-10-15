@@ -1,32 +1,39 @@
 <!-- src/configMaker/components/characters/CharacterEditor.vue -->
 <template>
-  <SectionCard
-    :isOpen="true"
-    title="JSONマージ（開発者専用）"
-    description="ビルド時、jsonファイルをマージして出力します"
-  >
+  <SectionCard :isOpen="true" title="JSONマージ" description="ビルド時、jsonファイルをマージして出力します">
     <div class="space-y-4">
       <!-- マージ設定がない場合のメッセージ -->
       <div v-if="merge.length === 0" class="text-gray-500 text-center py-8">
-        マージ設定がありません。下のボタンから追加してください。
+        <NoParamsCard message="マージ設定がありません。" sub="下のボタンから追加してください。" />
       </div>
 
       <!-- 各マージ設定 -->
       <div v-for="(item, i) in merge" :key="i" class="border rounded-lg p-4 bg-base-100">
         <div class="flex justify-between items-center mb-4">
-          <h3 class="font-semibold text-lg">マージ設定 {{ i + 1 }}</h3>
+          <h3 class="font-semibold text-lg">{{ merge[i].name }}</h3>
           <button @click="removeMerge(i)" class="btn btn-sm btn-error" title="この設定を削除">削除</button>
         </div>
 
-        <!-- ファイル選択 -->
-        <SettingItem label="マージ元ファイル">
-          <select v-model="merge[i].sourceFile" @change="update" class="select select-bordered w-full">
-            <option value="">ファイルを選択してください</option>
-            <option v-for="file in jsonFiles" :key="file" :value="file">
-              {{ file }}
-            </option>
-          </select>
-        </SettingItem>
+        <div class="space-y-4">
+          <!-- 基本設定セクション -->
+          <BaseSettingsEditor
+            v-model="merge[i]"
+            :category="null"
+            :isKey="false"
+            :isIsEnabled="false"
+            :isDescription="false"
+          />
+
+          <!-- ファイル選択 -->
+          <SettingItem label="マージ元ファイル">
+            <select v-model="merge[i].sourceFile" @change="update" class="select select-bordered w-full">
+              <option value="">ファイルを選択してください</option>
+              <option v-for="file in jsonFiles" :key="file" :value="file">
+                {{ file }}
+              </option>
+            </select>
+          </SettingItem>
+        </div>
 
         <!-- リマップ設定 -->
         <div class="mt-4">
@@ -57,13 +64,15 @@
 
 <script setup lang="ts">
   import { ref, onMounted, computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
-  import { storeToRefs } from 'pinia'
-  import { JsonMergeRemapSchema } from '@/types/OmikujiData/JsonMergeType'
   import { CharacterType } from '@/types'
+  import { JsonMergeItemSchema, JsonMergeRemapSchema, JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
+  import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import BaseSettingsEditor from '@ConfigComponents/rules/BaseSettingsEditor.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import { storeToRefs } from 'pinia'
 
   const store = useOmikujiStore()
   const { data } = storeToRefs(store)
@@ -100,10 +109,7 @@
 
   // マージ設定を追加
   const addMerge = () => {
-    merge.value.push({
-      sourceFile: '',
-      remaps: [],
-    })
+    merge.value.push(JsonMergeItemSchema.parse({}))
     update()
   }
 
@@ -120,7 +126,7 @@
   }
 
   // リマップを更新
-  const updateRemap = (i: number, j: number, remap: any) => {
+  const updateRemap = (i: number, j: number, remap: JsonMergeRemapType) => {
     merge.value[i].remaps[j] = remap
     update()
   }

@@ -61,12 +61,10 @@
   import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
 
   // Props
-  interface Props {
-    rule?: any // 必要に応じて適切な型に変更
+  const props = defineProps<{
+    rule?: any
     isMultiSelectActive: boolean
-  }
-
-  const props = defineProps<Props>()
+  }>()
 
   // Emits
   const emit = defineEmits<{

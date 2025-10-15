@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import { alias } from '../vite.config'
 import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
-import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/buildTypes'
+import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
 
 // 各設定ファイルをインポート
 import OmikujiBotProject from './packages/OmikujiBot'

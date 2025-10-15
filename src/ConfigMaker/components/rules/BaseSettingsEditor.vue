@@ -3,7 +3,12 @@
   <!-- 開発モード専用 -->
   <div v-if="isGod" class="flex flex-col gap-4">
     <!-- アクセスレベル -->
-    <SettingItem label="Access Level" description="製品のアクセスレベルを選択してください" variant="warning">
+    <SettingItem
+      v-if="isAccessLevel"
+      label="Access Level"
+      description="製品のアクセスレベルを選択してください"
+      variant="warning"
+    >
       <select v-model="accessLevel" class="select select-bordered text-base-content w-full">
         <option v-for="level in AccessLevelLabels" :key="level" :value="level">
           {{ level }}
@@ -13,18 +18,18 @@
   </div>
 
   <!-- ID表示 -->
-  <SettingItem label="キーの名前を変更する" description="他のデータと区別できるよう名前を付けます">
+  <SettingItem v-if="isKey" label="キーの名前を変更する" description="他のデータと区別できるよう名前を付けます">
     <div class="flex gap-2 items-center">
       <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 overflow-x-auto whitespace-nowrap">
         {{ key }}
       </div>
       <!-- 編集ボタン -->
-      <KeyEditor :currentKey="key" :category="category" />
+      <KeyEditor v-if="category" :currentKey="key" :category="category" />
     </div>
   </SettingItem>
 
   <!-- 有効・無効の切り替えボタン -->
-  <SettingItem label="ルールを有効にする" description="有効にすると、おみくじができます">
+  <SettingItem v-if="isIsEnabled" label="ルールを有効にする" description="有効にすると、おみくじができます">
     <input type="checkbox" v-model="isEnabled" class="toggle toggle-primary" />
   </SettingItem>
 
@@ -34,7 +39,7 @@
   </SettingItem>
 
   <!-- 説明 -->
-  <SettingItem label="説明" description="ルールの紹介文">
+  <SettingItem v-if="isDescription" label="説明" description="ルールの紹介文">
     <input type="text" v-model="description" class="input w-full" />
   </SettingItem>
 </template>
@@ -46,11 +51,24 @@
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { AccessLevelLabels, BaseRecordType } from '@shared/types'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { is } from 'zod/v4/locales'
 
-  const props = defineProps<{
-    modelValue: BaseRecordType
-    category: RecordCategoryType
-  }>()
+  const props = withDefaults(
+    defineProps<{
+      modelValue: BaseRecordType
+      category: RecordCategoryType | null
+      isKey?: boolean
+      isIsEnabled?: boolean
+      isDescription?: boolean
+      isAccessLevel?: boolean
+    }>(),
+    {
+      isKey: true,
+      isIsEnabled: true,
+      isDescription: true,
+      isAccessLevel: true,
+    }
+  )
 
   const emit = defineEmits<{
     'update:modelValue': [value: BaseRecordType]

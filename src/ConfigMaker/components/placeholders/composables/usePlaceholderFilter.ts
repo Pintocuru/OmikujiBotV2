@@ -44,16 +44,16 @@ export function usePlaceholderFilter(allPlaceholders: Ref<PlaceholderType[]>, ed
 
   // フィルタリングされたプレースホルダー
   const filteredPlaceholders = computed(() => {
-    // propsでeditorColorが指定されている場合は、そのカラーでフィルタリング
     const targetColor = editorColor?.value || selectedEditorColor.value
-
-    if (targetColor === null || targetColor === undefined) {
-      return allPlaceholders.value
-    }
+    const seenIds = new Set<string>()
 
     return allPlaceholders.value.filter((placeholder) => {
       const placeholderColor = placeholder.editorColor || null
-      return placeholderColor === targetColor
+      if (targetColor != null && placeholderColor !== targetColor) return false
+
+      if (seenIds.has(placeholder.id)) return false
+      seenIds.add(placeholder.id)
+      return true
     })
   })
 

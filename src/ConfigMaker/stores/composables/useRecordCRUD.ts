@@ -33,7 +33,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
 
     // idとkeyの補完（現行仕様では同一にする）
     if (!parseItem.id && !parseItem.key) {
-      const unique = String(Date.now())
+      const unique = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
       parseItem.id = unique
       parseItem.key = unique
     } else if (!parseItem.id && parseItem.key) {
