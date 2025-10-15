@@ -26,6 +26,7 @@
       "updatedAt": "2025-10-15T05:23:35.078Z",
       "order": 0,
       "tags": [],
+      "accessLevel": "basic",
       "sourceFile": "TarotCard.json",
       "remaps": [
         {
@@ -34,8 +35,7 @@
           "fromIconKey": "",
           "toIconKey": "thinking"
         }
-      ],
-      "accessLevel": "basic"
+      ]
     },
     {
       "id": "1760505815078",
@@ -4258,7 +4258,8 @@
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "wordPartySettings": "basic"
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
       }
     }
   },

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -15,6 +15,7 @@
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7412886"
   },
+  "jsonMerge": [],
   "comments": {
     "StationCard": {
       "id": "StationCard",
@@ -41,6 +42,15 @@
           "tags": [],
           "postActions": [
             {
+              "delaySeconds": 0,
+              "actionSetKey": "StationCardFirst",
+              "wordParty": "",
+              "characterKey": "card01",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
               "delaySeconds": 1.5,
               "wordParty": "!card_10",
               "characterKey": "card01",
@@ -55,15 +65,6 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
               "actionType": "message"
-            },
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
             }
           ],
           "weight": 700
@@ -2456,7 +2457,8 @@
         "licenseVisible": "experimental",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "experimental"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "experimental"
       }
     }
   },

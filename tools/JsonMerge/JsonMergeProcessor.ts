@@ -23,6 +23,12 @@ export async function processMerge(
   const dataToMerge: OmikujiDataType[] = []
 
   for (const mergeItem of jsonData.jsonMerge) {
+    // TODO:AccessLevelの扱いをどうするか？
+    // 1:マージ対象のデータをすべて jsonData.jsonMerge　の accessLevel にしてしまう
+    // 2:jsonData.jsonMerge　の accessLevel と、targetAccessLevelを照らし合わせて省く
+
+    // TODO:orderの番号を、forのたびに+100するのはどうか？
+
     // ソースファイルを読み込み
     const sourceData = loadSourceFile(mergeItem.sourceFile, jsonPathRoot)
 

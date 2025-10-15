@@ -19,6 +19,7 @@ export const useCategoryUtils = () => {
     if (category === 'scriptSettings') return gameScripts.length
     if (category === 'displaySettings') return 0
     if (category === 'meta') return 0
+    if (category === 'jsonMerge') return data.value.jsonMerge.length
 
     const items = data.value[category]
     return items ? Object.keys(items).length : 0
@@ -33,7 +34,7 @@ export const useCategoryUtils = () => {
     const excludeKeys: CategoryType[] = []
 
     // visibility の設定に基づいて非表示にするカテゴリを決定
-    if (!isDev) excludeKeys.push('jsonMerge') // 開発者のみの機能
+    if (!isDev || !hasAccess(visibility.jsonMergeSettings)) excludeKeys.push('jsonMerge') // 開発者のみの機能
     if (!hasAccess(visibility.comments)) excludeKeys.push('comments')
     if (!hasAccess(visibility.timers)) excludeKeys.push('timers')
     if (!hasAccess(visibility.placeholders)) excludeKeys.push('placeholders')

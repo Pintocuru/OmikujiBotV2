@@ -81,6 +81,7 @@ const visibilitySchema = z.object({
   gameScripts: z.array(z.string()).default([]).catch([]), //
   // ツール系
   wordPartySettings: AccessLevelSchema.default('basic').catch('basic'),
+  jsonMergeSettings: AccessLevelSchema.default('basic').catch('basic'),
 })
 export const visibilityKeys = [
   'comments',
@@ -93,6 +94,7 @@ export const visibilityKeys = [
   'licenseVisible',
   'gameScriptSettings',
   'wordPartySettings',
+  'jsonMergeSettings',
 ] as const
 
 export type VisibilityKey = (typeof visibilityKeys)[number]
