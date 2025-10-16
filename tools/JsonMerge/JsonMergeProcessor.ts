@@ -1,177 +1,54 @@
-// tools\JsonMerge\jsonMergeProcessor.ts
-import fs from 'fs'
-import path from 'path'
+// tools/JsonMerge/jsonMergeProcessor.ts
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
-import type { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { AccessLevelType } from '@shared/types'
-import { CharacterEmotionType } from '@/types'
+import { applyAccessLevel, applyOrderOffset } from './transforms'
+import { applyRemaps } from './remaps'
+import { loadSourceFile } from './fileLoader'
+import { mergeOmikujiData } from './merger'
 
 /**
- * メイン処理：jsonMergeがある場合にマージ処理を実行
+ * jsonMergeがある場合にマージ処理を実行
+ * 複数のソースファイルを読み込み、リマップして、accessLevelとorderを統一した上でマージする
+ *
+ * @param jsonData - マージ設定を含むメインのOmikujiData
+ * @param jsonPathRoot - ソースファイルの相対パスの基準ディレクトリ
+ * @returns マージ後のOmikujiData
  */
-export async function processMerge(
-  jsonData: OmikujiDataType,
-  jsonPathRoot: string,
-  targetAccessLevel: AccessLevelType
-): Promise<OmikujiDataType> {
+export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: string): Promise<OmikujiDataType> {
+  // マージ設定がない場合はそのまま返す
   if (!jsonData.jsonMerge || jsonData.jsonMerge.length === 0) {
     return jsonData
   }
 
-  // マージ対象となるデータ配列を収集
   const dataToMerge: OmikujiDataType[] = []
+  let orderOffset = 0
 
+  // 各マージアイテムについて、ファイル読み込み→リマップ→順序付与→accessLevel統一を実行
   for (const mergeItem of jsonData.jsonMerge) {
-    // TODO:AccessLevelの扱いをどうするか？
-    // 1:マージ対象のデータをすべて jsonData.jsonMerge　の accessLevel にしてしまう
-    // 2:jsonData.jsonMerge　の accessLevel と、targetAccessLevelを照らし合わせて省く
-
-    // TODO:orderの番号を、forのたびに+100するのはどうか？
-
-    // ソースファイルを読み込み
+    // 1. ソースファイルを読み込む
     const sourceData = loadSourceFile(mergeItem.sourceFile, jsonPathRoot)
 
-    // リマップ処理を適用
+    // 2. リマップ処理を適用（characterKey, iconKeyの置き換え）
     const remappedData = applyRemaps(sourceData, mergeItem.remaps)
 
-    // 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
-    const processedSourceData = await processMerge(remappedData, jsonPathRoot, targetAccessLevel)
+    // 3. 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
+    const processedSourceData = await processMerge(remappedData, jsonPathRoot)
 
-    dataToMerge.push(processedSourceData)
+    // 4. accessLevelを強制統一
+    const unifiedAccessLevelData = applyAccessLevel(processedSourceData, mergeItem.accessLevel)
+
+    // 5. orderに +100 * index を付与して競合を防止
+    orderOffset += 100
+    const shiftedOrderData = applyOrderOffset(unifiedAccessLevelData, orderOffset)
+
+    dataToMerge.push(shiftedOrderData)
   }
 
-  // 最後にupdatedJsonDataを追加（jsonMergeは除外）
+  // メインデータの order も最後にずらす
   const { jsonMerge, ...dataWithoutMerge } = jsonData
-  dataToMerge.push({ ...dataWithoutMerge, jsonMerge: [] })
+  const shiftedMainData = applyOrderOffset({ ...dataWithoutMerge, jsonMerge: [] }, orderOffset)
+
+  dataToMerge.push({ ...shiftedMainData, jsonMerge: [] })
 
   // すべてをマージ
   return mergeOmikujiData(...dataToMerge)
-}
-
-/**
- * ソースファイルを読み込む
- */
-function loadSourceFile(sourceFile: string, jsonPathRoot: string): OmikujiDataType {
-  const filePath = path.resolve(jsonPathRoot, sourceFile)
-
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8')
-    const jsonData = JSON.parse(content) as OmikujiDataType
-    console.log(`[JsonMerge] Loaded source file: ${filePath}`)
-    return jsonData
-  } catch (error) {
-    throw new Error(`Failed to load source file: ${filePath}. Error: ${error}`)
-  }
-}
-
-/**
- * PostActionの配列に対してリマップを適用
- */
-function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapType[]): PostActionType[] {
-  return postActions.map((action) => {
-    let remappedAction: PostActionType = { ...action }
-
-    for (const remap of remaps) {
-      // characterKeyの置き換え
-      if (remap.fromCharacterKey && remap.toCharacterKey) {
-        if (remappedAction.characterKey === remap.fromCharacterKey) {
-          remappedAction = {
-            ...remappedAction,
-            characterKey: remap.toCharacterKey,
-          }
-        }
-      }
-
-      // iconKeyの置き換え
-      if (remap.fromIconKey && remap.toIconKey) {
-        if (remappedAction.iconKey === remap.fromIconKey) {
-          remappedAction = {
-            ...remappedAction,
-            iconKey: remap.toIconKey as CharacterEmotionType,
-          }
-        }
-      }
-    }
-
-    return remappedAction
-  })
-}
-
-/**
- * リマップ処理を適用
- */
-function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[]): OmikujiDataType {
-  if (!remaps || remaps.length === 0) {
-    return data
-  }
-
-  const clonedData: OmikujiDataType = JSON.parse(JSON.stringify(data))
-
-  // comments のリマップ
-  if (clonedData.comments) {
-    for (const key in clonedData.comments) {
-      const comment = clonedData.comments[key]
-      if (comment.omikuji) {
-        comment.omikuji = comment.omikuji.map((item) => ({
-          ...item,
-          postActions: item.postActions ? remapPostActions(item.postActions, remaps) : [],
-        }))
-      }
-    }
-  }
-
-  // timers のリマップ
-  if (clonedData.timers) {
-    for (const key in clonedData.timers) {
-      const timer = clonedData.timers[key]
-      if (timer.omikuji) {
-        timer.omikuji = timer.omikuji.map((item) => ({
-          ...item,
-          postActions: item.postActions ? remapPostActions(item.postActions, remaps) : [],
-        }))
-      }
-    }
-  }
-
-  // actionSets のリマップ
-  if (clonedData.actionSets) {
-    for (const key in clonedData.actionSets) {
-      const actionSet = clonedData.actionSets[key]
-      if (actionSet.postActions) {
-        actionSet.postActions = remapPostActions(actionSet.postActions, remaps)
-      }
-    }
-  }
-
-  console.log(`[JsonMerge] Applied ${remaps.length} remap(s)`)
-  return clonedData
-}
-
-/**
- * 複数のOmikujiDataをマージ
- * Record型のプロパティはキーをマージ、その他は上書き
- */
-function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataType {
-  const result: OmikujiDataType = {} as OmikujiDataType
-
-  for (const data of dataArray) {
-    // Record型のプロパティはキーをマージ
-    result.comments = { ...result.comments, ...data.comments }
-    result.timers = { ...result.timers, ...data.timers }
-    result.actionSets = { ...result.actionSets, ...data.actionSets }
-    result.placeholders = { ...result.placeholders, ...data.placeholders }
-
-    // charactersは上書き
-    result.characters = data.characters
-
-    // その他は上書き
-    result.wordPartySettings = result.wordPartySettings = data.wordPartySettings
-    result.meta = data.meta
-    result.scriptSettings = data.scriptSettings
-    result.displaySettings = data.displaySettings
-    if (data.jsonMerge) result.jsonMerge = data.jsonMerge
-  }
-
-  return result
 }
