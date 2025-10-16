@@ -3143,105 +3143,6 @@
     }
   },
   "timers": {
-    "PromotionToast": {
-      "id": "PromotionToast",
-      "key": "PromotionToast",
-      "name": "告知トースト",
-      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#EF9A9A",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
-          "key": "33d7982c-d477-4975-989e-0f010a5fc0a6",
-          "name": "チャンネル登録告知",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "tsumugi",
-              "iconKey": "blushing",
-              "messageContent": "<<PromotionUpVoteTsugumi>>",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 4,
-              "wordParty": "",
-              "characterKey": "himari",
-              "iconKey": "thinking",
-              "messageContent": "<<PromotionUpVoteHimari>>",
-              "actionType": "message"
-            }
-          ],
-          "weight": 98
-        },
-        {
-          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
-          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
-          "name": "おみくじBOT告知(つむぎ)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!間抜け1",
-              "characterKey": "tsumugi",
-              "iconKey": "singing",
-              "messageContent": "",
-              "messageToast": "この「おみくじBOT」、配信者っちにガチ使ってほしみ〜💘絶対盛り上がるし〜‼",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "id": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
-          "key": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
-          "name": "おみくじBOT告知(ひまり)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!間抜け1",
-              "characterKey": "himari",
-              "iconKey": "singing",
-              "messageContent": "",
-              "messageToast": "「おみくじBOT」って何…？",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "timers",
-      "intervalSeconds": 300,
-      "isBaseZero": false
-    },
     "ViewCountDisplayTsumugi": {
       "id": "ViewCountDisplayTsumugi",
       "key": "ViewCountDisplayTsumugi",
@@ -3249,7 +3150,7 @@
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 2,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
@@ -3353,6 +3254,105 @@
       "ruleType": "timers",
       "intervalSeconds": 60,
       "isBaseZero": true
+    },
+    "PromotionToastTsumugi": {
+      "id": "PromotionToastTsumugi",
+      "key": "PromotionToastTsumugi",
+      "name": "告知トースト",
+      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#EF9A9A",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
+          "key": "33d7982c-d477-4975-989e-0f010a5fc0a6",
+          "name": "チャンネル登録告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "tsumugi",
+              "iconKey": "blushing",
+              "messageContent": "<<PromotionUpVoteTsugumi>>",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 4,
+              "wordParty": "",
+              "characterKey": "himari",
+              "iconKey": "thinking",
+              "messageContent": "<<PromotionUpVoteHimari>>",
+              "actionType": "message"
+            }
+          ],
+          "weight": 98
+        },
+        {
+          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "name": "おみくじBOT告知(つむぎ)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!間抜け1",
+              "characterKey": "tsumugi",
+              "iconKey": "singing",
+              "messageContent": "",
+              "messageToast": "この「おみくじBOT」、配信者っちにガチ使ってほしみ〜💘絶対盛り上がるし〜‼",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        },
+        {
+          "id": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
+          "key": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
+          "name": "おみくじBOT告知(ひまり)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!間抜け1",
+              "characterKey": "himari",
+              "iconKey": "singing",
+              "messageContent": "",
+              "messageToast": "「おみくじBOT」って何…？",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 300,
+      "isBaseZero": false
     }
   },
   "actionSets": {
