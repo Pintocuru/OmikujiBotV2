@@ -2,7 +2,7 @@
 <template>
   <div class="flex gap-1">
     <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-      <option v-for="emotion in availableEmotions" :key="emotion" :value="emotion">
+      <option v-for="emotion in characterEmotions" :key="emotion" :value="emotion">
         {{ emotionLabels[emotion] }}
       </option>
     </select>
@@ -12,7 +12,6 @@
         @mouseenter="showHoverPreview = true"
         @mouseleave="showHoverPreview = false"
         class="btn btn-sm btn-outline"
-        :disabled="availableEmotions.length === 0"
       >
         <User class="w-4 h-4" />
       </button>
@@ -44,12 +43,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, Ref, watch } from 'vue'
-  import { emotionLabels, CharacterEmotionType } from '@/types/'
+  import { ref, computed, Ref } from 'vue'
+  import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
   import IconPreviewModal from '@/ConfigMaker/components/postAction/items/IconPreviewModal.vue'
-  import { User } from 'lucide-vue-next'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
+  import { User } from 'lucide-vue-next'
 
   const props = defineProps<{
     characterKey: string
@@ -81,17 +80,6 @@
     const character = charactersMap.value[props.characterKey]
     return character?.name || ''
   })
-
-  // 現在選択されているアイコンが利用不可能な場合、利用可能な最初のものに変更
-  watch(
-    [availableEmotions, () => props.iconKey],
-    ([emotions, currentIcon]) => {
-      if (emotions.length > 0 && !emotions.includes(currentIcon)) {
-        emit('update:iconKey', emotions[0])
-      }
-    },
-    { immediate: true }
-  )
 
   const showIconPreview = () => {
     iconPreviewModalRef.value?.showModal()

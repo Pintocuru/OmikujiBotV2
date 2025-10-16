@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/CharacterEditor.vue -->
+<!-- src\ConfigMaker\components\JsonMerge\JsonMergeEditor.vue -->
 <template>
   <SectionCard :isOpen="true" title="JSONマージ" description="ビルド時、jsonファイルをマージして出力します">
     <div class="space-y-4">
@@ -17,7 +17,8 @@
         <div class="space-y-4">
           <!-- 基本設定セクション -->
           <BaseSettingsEditor
-            v-model="merge[i]"
+            :model-value="merge[i]"
+            @update:model-value="updateBaseSettings(i, $event)"
             :category="null"
             :isKey="false"
             :isIsEnabled="false"
@@ -25,14 +26,10 @@
           />
 
           <!-- ファイル選択 -->
-          <SettingItem label="マージ元ファイル">
-            <select v-model="merge[i].sourceFile" @change="update" class="select select-bordered w-full">
-              <option value="">ファイルを選択してください</option>
-              <option v-for="file in jsonFiles" :key="file" :value="file">
-                {{ file }}
-              </option>
-            </select>
-          </SettingItem>
+          <JsonMergeSourceFileSelector
+            :model-value="merge[i].sourceFile"
+            @update:model-value="updateSourceFile(i, $event)"
+          />
         </div>
 
         <!-- リマップ設定 -->
@@ -63,12 +60,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, computed } from 'vue'
+  import { ref, computed } from 'vue'
   import { CharacterType } from '@/types'
   import { JsonMergeItemSchema, JsonMergeRemapSchema, JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
   import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
+  import JsonMergeSourceFileSelector from './JsonMergeSourceFileSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
@@ -78,33 +75,27 @@
   const { data } = storeToRefs(store)
 
   const merge = ref(data.value.jsonMerge ?? [])
-  const jsonFiles = ref<string[]>([])
 
   // Characterデータを計算プロパティで取得
   const characters = computed(() => {
     return data.value.characters ?? ({} as Record<string, CharacterType>)
   })
 
-  // JSONファイルリストを取得
-  onMounted(async () => {
-    try {
-      const apiUrl = 'http://localhost:3001/api/dev-configs/list'
-
-      const res = await fetch(apiUrl)
-      if (res.ok) {
-        const files = await res.json()
-        jsonFiles.value = files.map((f: any) => f.name || f)
-      } else {
-        console.error('API Error:', res.status, res.statusText)
-      }
-    } catch (err) {
-      console.error('JSONファイル取得エラー:', err)
-    }
-  })
-
   // 更新をストアに反映
   const update = () => {
     store.updateJsonMerge([...merge.value])
+  }
+
+  // BaseSettingsEditorからの更新を処理
+  const updateBaseSettings = (i: number, newSettings: any) => {
+    merge.value[i] = { ...merge.value[i], ...newSettings }
+    update()
+  }
+
+  // ソースファイルの更新
+  const updateSourceFile = (i: number, newFile: string) => {
+    merge.value[i].sourceFile = newFile
+    update()
   }
 
   // マージ設定を追加

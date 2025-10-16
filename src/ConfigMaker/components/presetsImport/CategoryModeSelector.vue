@@ -30,18 +30,16 @@
 </template>
 
 <script setup lang="ts">
-  import { CategoryType } from '@/types/OmikujiData/CategoryType'
+  import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
   import { ImportMode } from './ImportTypes'
   import { useImportStore } from './useImportStore'
 
-  interface Props {
-    category: CategoryType
+  const props = defineProps<{
+    category: RecordCategoryType
     config: {
       mode: ImportMode
     }
-  }
-
-  const props = defineProps<Props>()
+  }>()
 
   const importStore = useImportStore()
 

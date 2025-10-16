@@ -6,7 +6,7 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <div
-          v-for="emotion in availableEmotions"
+          v-for="emotion in characterEmotions"
           :key="emotion"
           @click="selectEmotion(emotion)"
           class="cursor-pointer rounded-lg border-2 transition-all hover:shadow-lg"
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { emotionLabels, CharacterEmotionType } from '@/types/'
+  import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
 

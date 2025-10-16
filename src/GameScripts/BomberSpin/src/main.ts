@@ -22,6 +22,7 @@ const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
   description: pluginConfig.description, // 説明
   createdAt: '2025/08/10 16:45',
   updatedAt: '2025/08/10 16:45',
+  accessLevel: 'basic',
   order: 0,
   editorColor: pluginConfig.editorColor, // 編集画面の色,
   version: pluginConfig.version, // バージョン

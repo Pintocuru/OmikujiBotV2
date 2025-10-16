@@ -1,12 +1,12 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan-PRO",
+    "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.29-v1.2.0",
+    "version": "ver2025.10.14-v1.4.0-beta01",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -14,9 +14,60 @@
       "四国めたん",
       "（ず・ω・きょ）"
     ],
-    "license": "利用規約に従う",
+    "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/6058829"
   },
+  "jsonMerge": [
+    {
+      "id": "1760544069848",
+      "key": "1760544069848",
+      "name": "じゃんけん",
+      "createdAt": "2025-10-15T16:01:09.848Z",
+      "updatedAt": "2025-10-15T16:01:09.848Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "basic",
+      "sourceFile": "HondaJanken.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "metanBlack",
+          "fromIconKey": "default",
+          "toIconKey": "excited"
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "metan",
+          "fromIconKey": "default",
+          "toIconKey": "excited"
+        },
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "metanBlack",
+          "fromIconKey": "happy",
+          "toIconKey": "singing"
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "metan",
+          "fromIconKey": "happy",
+          "toIconKey": "singing"
+        },
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "metanBlack",
+          "fromIconKey": "sad",
+          "toIconKey": "sad"
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "metan",
+          "fromIconKey": "sad",
+          "toIconKey": "sad"
+        }
+      ]
+    }
+  ],
   "comments": {
     "OmikujiMetan": {
       "id": "OmikujiMetan",
@@ -43,6 +94,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -84,6 +136,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -125,6 +178,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -166,6 +220,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -207,6 +262,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -248,6 +304,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -289,6 +346,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -376,6 +434,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 3.5,
@@ -453,6 +512,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 2.5,
@@ -531,6 +591,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 3.5,
@@ -586,636 +647,6 @@
         "isRepeatAllowed": true
       }
     },
-    "HondaJanken": {
-      "id": "HondaJanken",
-      "key": "HondaJanken",
-      "name": "じゃんけん",
-      "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-11T06:44:43.960Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
-          "key": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
-          "name": "グーA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenRockA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "553a8977-dda1-4933-869e-48d650e148d5",
-          "key": "553a8977-dda1-4933-869e-48d650e148d5",
-          "name": "グーB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenRockB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
-          "key": "d7546009-ad4c-4808-830e-222ecf1d1b64",
-          "name": "チョキA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenScissorsA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "3bb51efe-3ec6-4514-9a62-b609238d813b",
-          "key": "3bb51efe-3ec6-4514-9a62-b609238d813b",
-          "name": "チョキB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenScissorsB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
-          "key": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
-          "name": "パーA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenPaperA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
-          "key": "8f2931a1-46f5-4c84-848e-f0b7f11bccf7",
-          "name": "パーB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenPaperB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
-          "key": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
-          "name": "勝利A",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "6912bbc6-b8a0-486b-862e-d70072ece11c",
-          "key": "6912bbc6-b8a0-486b-862e-d70072ece11c",
-          "name": "勝利B",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "HondaJankenRock": {
-      "id": "HondaJankenRock",
-      "key": "HondaJankenRock",
-      "name": "じゃんけん(グー)",
-      "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
-          "key": "12857c74-9b42-4191-b548-9028fc82e1e8",
-          "name": "グーA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenRockA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
-          "key": "1b49ca45-3a6b-4061-8e4f-7a13f938a755",
-          "name": "グーB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenRockB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
-          "key": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
-          "name": "グー勝利A",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryRockA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "id": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
-          "key": "2d4bda54-5dc3-4171-8864-e186c15f5b8a",
-          "name": "グー勝利B",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryRockB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "HondaJankenScissors": {
-      "id": "HondaJankenScissors",
-      "key": "HondaJankenScissors",
-      "name": "じゃんけん(チョキ)",
-      "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
-          "key": "958e6f84-07c2-4422-8fb0-dc81306a0799",
-          "name": "チョキA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenScissorsA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "35eafe60-fd85-461e-a572-ee1743096688",
-          "key": "35eafe60-fd85-461e-a572-ee1743096688",
-          "name": "チョキB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenScissorsB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
-          "key": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
-          "name": "チョキ勝利A",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryScissorsA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "id": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
-          "key": "abb2d6fe-13e2-4d6b-9fc7-535dd8bb6db8",
-          "name": "チョキ勝利B",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryScissorsB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "HondaJankenPaper": {
-      "id": "HondaJankenPaper",
-      "key": "HondaJankenPaper",
-      "name": "じゃんけん(パー)",
-      "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
-          "key": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
-          "name": "パーA",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenPaperA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
-          "key": "ee5735bf-f70a-43b3-a76d-9536752a7e6b",
-          "name": "パーB",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenPaperB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
-          "key": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
-          "name": "パー勝利A",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryPaperA",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "id": "2165a3b8-9018-4400-a7a9-911a93ef6873",
-          "key": "2165a3b8-9018-4400-a7a9-911a93ef6873",
-          "name": "パー勝利B",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "actionSetKey": "HondaJankenVictoryPaperB",
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "SyokenSagiMetan": {
       "id": "SyokenSagiMetan",
       "key": "SyokenSagiMetan",
@@ -1223,7 +654,7 @@
       "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-09-13T21:57:01.769Z",
-      "order": 9,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -1241,6 +672,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1273,6 +705,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1340,7 +773,7 @@
       "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 10,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -1358,6 +791,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1423,8 +857,8 @@
       "name": "コメント数表示 (有料版)",
       "description": "えっ…わざわざギフトまでして…!?",
       "createdAt": "2025-08-28T07:06:58.691Z",
-      "updatedAt": "2025-09-06T16:09:27.912Z",
-      "order": 11,
+      "updatedAt": "2025-10-16T01:35:44.133Z",
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1442,18 +876,20 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 0,
+              "delaySeconds": 1,
               "wordParty": "!金額表示",
               "characterKey": "metanBlack",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKey": "GiftIntro"
             },
             {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
+              "delaySeconds": 1.5,
+              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "metan",
               "iconKey": "surprised",
               "messageContent": "",
@@ -1498,8 +934,8 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 12,
+      "updatedAt": "2025-10-16T01:33:51.706Z",
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1517,27 +953,20 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 0,
+              "delaySeconds": 1,
               "wordParty": "!金額表示",
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKey": "GiftIntro"
             },
             {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
+              "delaySeconds": 1.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
               "iconKey": "excited",
@@ -1581,8 +1010,8 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 13,
+      "updatedAt": "2025-10-16T01:34:38.759Z",
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1600,27 +1029,20 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 0,
+              "delaySeconds": 1,
               "wordParty": "!金額表示",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKey": "GiftIntro"
             },
             {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
+              "delaySeconds": 1.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
               "iconKey": "blushing",
@@ -1662,8 +1084,8 @@
       "name": "ギフト(2000円-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 14,
+      "updatedAt": "2025-10-16T01:34:53.226Z",
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1681,27 +1103,20 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 0,
+              "delaySeconds": 1,
               "wordParty": "!金額表示",
               "characterKey": "metan",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKey": "GiftIntro"
             },
             {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.5,
+              "delaySeconds": 1.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "metan",
               "iconKey": "surprised",
@@ -1747,7 +1162,7 @@
       "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 15,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#10B981",
       "tags": [],
@@ -1765,6 +1180,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1788,6 +1204,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1843,7 +1260,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-09-16T00:20:10.641Z",
-      "order": 16,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1861,6 +1278,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1915,7 +1333,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-09-16T00:19:31.696Z",
-      "order": 17,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1933,6 +1351,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1956,6 +1375,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2001,7 +1421,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-09-16T00:18:01.980Z",
-      "order": 18,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2019,6 +1439,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2042,6 +1463,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2087,7 +1509,7 @@
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-08-28T07:41:13.752Z",
-      "order": 19,
+      "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2105,6 +1527,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2148,7 +1571,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-09-30T07:54:10.111Z",
-      "order": 20,
+      "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2166,6 +1589,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2229,6 +1653,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2250,6 +1675,7 @@
           "updatedAt": "2025-08-28T07:23:44.013Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2293,6 +1719,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2316,6 +1743,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2336,780 +1764,38 @@
     }
   },
   "actionSets": {
-    "HondaJankenReadyA": {
-      "id": "HondaJankenReadyA",
-      "key": "HondaJankenReadyA",
-      "name": "じゃんけん:出す前の動作(キャラA)",
-      "createdAt": "2025-10-08T00:59:17.768Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
+    "GiftIntro": {
+      "id": "GiftIntro",
+      "key": "GiftIntro",
+      "name": "ギフト:イントロ",
+      "description": "ギフトの際に流すWordPartyの演出です",
+      "createdAt": "2025-10-12T03:56:00.109Z",
+      "updatedAt": "2025-10-16T01:32:47.979Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "",
-          "characterKey": "metanBlack",
+          "wordParty": "!金額表示",
+          "characterKey": "tsumugi",
           "iconKey": "default",
-          "messageContent": "じゃんけんぽん!",
+          "messageContent": "",
           "messageToast": "",
-          "actionType": "message"
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.3,
+          "wordParty": "!ジャン！",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
         }
-      ]
-    },
-    "HondaJankenReadyB": {
-      "id": "HondaJankenReadyB",
-      "key": "HondaJankenReadyB",
-      "name": "じゃんけん:出す前の動作(キャラB)",
-      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
-      "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "wordParty": "",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenRockA": {
-      "id": "HondaJankenRockA",
-      "key": "HondaJankenRockA",
-      "name": "じゃんけん:グーA",
-      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
-      "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_3",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "wink",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenRockB": {
-      "id": "HondaJankenRockB",
-      "key": "HondaJankenRockB",
-      "name": "じゃんけん:グーB",
-      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
-      "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_3",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenScissorsA": {
-      "id": "HondaJankenScissorsA",
-      "key": "HondaJankenScissorsA",
-      "name": "じゃんけん:チョキA",
-      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-      "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_1",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "wink",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenScissorsB": {
-      "id": "HondaJankenScissorsB",
-      "key": "HondaJankenScissorsB",
-      "name": "じゃんけん:チョキB",
-      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-      "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_1",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenPaperA": {
-      "id": "HondaJankenPaperA",
-      "key": "HondaJankenPaperA",
-      "name": "じゃんけん:パーA",
-      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-      "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_2",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "wink",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenPaperB": {
-      "id": "HondaJankenPaperB",
-      "key": "HondaJankenPaperB",
-      "name": "じゃんけん:パーB",
-      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
-      "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_2",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_lose",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryA": {
-      "id": "HondaJankenVictoryA",
-      "key": "HondaJankenVictoryA",
-      "name": "じゃんけん:勝利A",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_{{rand(1,4)}}",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "happy",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryB": {
-      "id": "HondaJankenVictoryB",
-      "key": "HondaJankenVictoryB",
-      "name": "じゃんけん:勝利B",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_{{rand(1,4)}}",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryRockA": {
-      "id": "HondaJankenVictoryRockA",
-      "key": "HondaJankenVictoryRockA",
-      "name": "じゃんけん:グー勝利A",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_2",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "happy",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryRockB": {
-      "id": "HondaJankenVictoryRockB",
-      "key": "HondaJankenVictoryRockB",
-      "name": "じゃんけん:グー勝利B",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_2",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryScissorsA": {
-      "id": "HondaJankenVictoryScissorsA",
-      "key": "HondaJankenVictoryScissorsA",
-      "name": "じゃんけん:チョキ勝利A",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_3",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "happy",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryScissorsB": {
-      "id": "HondaJankenVictoryScissorsB",
-      "key": "HondaJankenVictoryScissorsB",
-      "name": "じゃんけん:チョキ勝利B",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_3",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryPaperA": {
-      "id": "HondaJankenVictoryPaperA",
-      "key": "HondaJankenVictoryPaperA",
-      "name": "じゃんけん:パー勝利A",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyA",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_1",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metanBlack",
-          "iconKey": "happy",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
-    },
-    "HondaJankenVictoryPaperB": {
-      "id": "HondaJankenVictoryPaperB",
-      "key": "HondaJankenVictoryPaperB",
-      "name": "じゃんけん:パー勝利B",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2025-10-11T11:40:24.674Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionSetKey": "HondaJankenReadyB",
-          "wordParty": "",
-          "characterKey": "chocolat",
-          "iconKey": "singing",
-          "messageContent": "じゃんけんぽん!",
-          "messageToast": "",
-          "actionType": "actionSet"
-        },
-        {
-          "delaySeconds": 0.4,
-          "wordParty": "!janken_1",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.9,
-          "wordParty": "!janken_win",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
-          "characterKey": "metan",
-          "iconKey": "default",
-          "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-          "messageToast": "",
-          "actionType": "message"
-        }
-      ]
+      ],
+      "editorColor": "#212121"
     }
   },
   "placeholders": {
@@ -3268,166 +1954,13 @@
         "キスには唾液が交換されるから、風邪やインフルエンザにも気をつけなきゃいけないの。衛生面も大事よ。"
       ]
     },
-    "HondaJankenName": {
-      "id": "HondaJankenName",
-      "key": "HondaJankenName",
-      "name": "じゃんけん:名前",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T11:39:44.310Z",
-      "order": 26,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "漆黒のめたん"
-      ]
-    },
-    "HondaJankenOre": {
-      "id": "HondaJankenOre",
-      "key": "HondaJankenOre",
-      "name": "じゃんけん:名前(一人称)",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T11:39:39.859Z",
-      "order": 27,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "私"
-      ]
-    },
-    "HondaJankenA1": {
-      "id": "HondaJankenA1",
-      "key": "HondaJankenA1",
-      "name": "じゃんけん:グー1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 28,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "負けは次につながるチャンスです!ネバーギブアップ!",
-        "じゃんけんの向こう側に何があるか、考えてみてください。",
-        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-        "何事も準備がすべて。それを怠っている事がバレてますよ。"
-      ]
-    },
-    "HondaJankenA2": {
-      "id": "HondaJankenA2",
-      "key": "HondaJankenA2",
-      "name": "じゃんけん:グー2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 29,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
-        "ちゃんと分析してます?じっくり結果に向き合ってください。",
-        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-      ]
-    },
-    "HondaJankenB1": {
-      "id": "HondaJankenB1",
-      "key": "HondaJankenB1",
-      "name": "じゃんけん:チョキ1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 30,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
-        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-        "運を味方につけるのは、地道な努力ですよ。",
-        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-      ]
-    },
-    "HondaJankenB2": {
-      "id": "HondaJankenB2",
-      "key": "HondaJankenB2",
-      "name": "じゃんけん:チョキ2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 31,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
-        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-      ]
-    },
-    "HondaJankenC1": {
-      "id": "HondaJankenC1",
-      "key": "HondaJankenC1",
-      "name": "じゃんけん:パー1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 32,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
-        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
-        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-      ]
-    },
-    "HondaJankenC2": {
-      "id": "HondaJankenC2",
-      "key": "HondaJankenC2",
-      "name": "じゃんけん:パー2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 33,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
-        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
-        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-      ]
-    },
-    "HondaJankenV": {
-      "id": "HondaJankenV",
-      "key": "HondaJankenV",
-      "name": "じゃんけん:勝利",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 34,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
-        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
-        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
-        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-      ]
-    },
     "MetanSyokenSagi": {
       "id": "MetanSyokenSagi",
       "key": "MetanSyokenSagi",
       "name": "めたんの初見詐欺",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 17,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3447,7 +1980,7 @@
       "name": "めたんの初見詐欺(騙され)",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 18,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -3470,7 +2003,7 @@
       "name": "ギフト(1-999円)",
       "createdAt": "2025-08-27T09:48:36.227Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 19,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3488,7 +2021,7 @@
       "name": "ギフト(1000-1999円)",
       "createdAt": "2025-08-27T09:53:10.683Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 20,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3507,7 +2040,7 @@
       "name": "ギフト(2000円-)",
       "createdAt": "2025-08-27T09:53:15.633Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 21,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -3524,7 +2057,7 @@
       "name": "初見",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2025-09-16T00:21:59.540Z",
-      "order": 22,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3545,7 +2078,7 @@
       "name": "久しぶり",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 23,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3566,7 +2099,7 @@
       "name": "こんにちは",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2025-08-28T07:43:10.833Z",
-      "order": 24,
+      "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -3588,7 +2121,7 @@
       "name": "告知用トースト",
       "createdAt": "2025-08-26T07:00:06.947Z",
       "updatedAt": "2025-09-16T00:22:47.890Z",
-      "order": 25,
+      "order": 16,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -3603,6 +2136,36 @@
         "好きなゲームは？私の冒険に匹敵するようなものがあれば教えてよ。テント暮らしはエキサイティングよ。",
         "この配信を見てるなんて、君たちもなかなかやるじゃない。私の応援、引き続き頼んだわよ！",
         "四国の名物？あたしの一番はもちろん讃岐うどん。君のオススメも聞いてあげてもいいけどね。"
+      ]
+    },
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "key": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-11T11:39:44.310Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "漆黒のめたん"
+      ]
+    },
+    "HondaJankenOre": {
+      "id": "HondaJankenOre",
+      "key": "HondaJankenOre",
+      "name": "じゃんけん:名前(一人称)",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-11T11:39:39.859Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "私"
       ]
     }
   },
@@ -3755,7 +2318,8 @@
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "wordPartySettings": "basic"
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
       }
     }
   },

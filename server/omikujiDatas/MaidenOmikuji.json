@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -20,6 +20,7 @@
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
+  "jsonMerge": [],
   "comments": {
     "MaidenOmikuji": {
       "id": "MaidenOmikuji",
@@ -27,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-11T15:37:38.340Z",
+      "updatedAt": "2025-10-16T02:33:15.761Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -46,6 +47,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -68,7 +70,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!レベルアップ",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<MaidenOmikuji01>>",
               "messageToast": "",
@@ -87,6 +89,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -109,7 +112,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シャキーン2",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
               "messageToast": "",
@@ -128,6 +131,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -150,7 +154,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
               "messageToast": "",
@@ -169,6 +173,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -191,7 +196,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
               "messageToast": "",
@@ -210,6 +215,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -232,7 +238,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!間抜け1",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
               "messageToast": "",
@@ -251,6 +257,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -273,7 +280,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!呪いの旋律",
-              "characterKey": "reimu",
+              "characterKey": "omiken",
               "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
               "messageToast": "",
@@ -292,6 +299,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -314,7 +322,7 @@
             {
               "delaySeconds": 1,
               "wordParty": "!ビシッとツッコミ1",
-              "characterKey": "marisa",
+              "characterKey": "omiken_2",
               "iconKey": "thinking",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
               "messageToast": "",
@@ -526,16 +534,16 @@
     }
   },
   "characters": {
-    "reimu": {
-      "id": "reimu",
-      "key": "reimu",
-      "name": "ゆっくり霊夢",
-      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-29T06:49:15.048Z",
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#F44336",
+      "editorColor": "#2196F3",
       "tags": [
         "Yukkuri",
         "Reimu"
@@ -543,79 +551,79 @@
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
-      "url": "https://nagipon-sozai.studio.site/",
-      "displayName": "ゆっくり霊夢",
-      "frameId": "OmikenReimu",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": true,
+        "isIconDisplay": false,
         "isOneCommePost": true,
         "isVoice": true
       },
       "color": {
-        "nameColor": "#FFC107",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#FF4081",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "reimu/default.webp",
-        "happy": "reimu/happy.webp",
-        "excited": "reimu/excited.webp",
-        "laughing": "reimu/laughing.webp",
-        "blushing": "reimu/blushing.webp",
-        "surprised": "reimu/surprised.webp",
-        "sad": "reimu/sad.webp",
-        "angry": "reimu/angry.webp",
-        "thinking": "reimu/thinking.webp",
-        "wink": "reimu/wink.webp",
-        "singing": "reimu/singing.webp",
-        "sleepy": "reimu/sleepy.webp"
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
       }
     },
-    "marisa": {
-      "id": "marisa",
-      "key": "marisa",
-      "name": "ゆっくり魔理沙",
-      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-29T06:49:19.720Z",
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-10-10T07:35:47.624Z",
       "order": 2,
       "isEnabled": true,
-      "editorColor": "#FF9800",
+      "editorColor": "#2196F3",
       "tags": [
         "Yukkuri",
-        "Marisa"
+        "Reimu"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
-      "url": "https://nagipon-sozai.studio.site/",
-      "displayName": "ゆっくり魔理沙",
-      "frameId": "OmikenMarisa",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": true,
+        "isIconDisplay": false,
         "isOneCommePost": true,
         "isVoice": true
       },
       "color": {
-        "nameColor": "#FFE082",
-        "textColor": "#333333",
-        "backgroundColor": "#FF8F00",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "marisa/default.webp",
-        "happy": "marisa/happy.webp",
-        "excited": "marisa/excited.webp",
-        "laughing": "marisa/laughing.webp",
-        "blushing": "marisa/blushing.webp",
-        "surprised": "marisa/surprised.webp",
-        "sad": "marisa/sad.webp",
-        "angry": "marisa/angry.webp",
-        "thinking": "marisa/thinking.webp",
-        "wink": "marisa/wink.webp",
-        "singing": "marisa/singing.webp",
-        "sleepy": "marisa/sleepy.webp"
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
       }
     }
   },
@@ -661,20 +669,21 @@
       },
       "visibility": {
         "comments": "basic",
-        "timers": "basic",
+        "timers": "experimental",
         "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "basic",
-        "wordPartyLoading": "internal",
+        "wordPartyLoading": "experimental",
         "licenseVisible": "basic",
-        "gameScriptSettings": "pro",
+        "gameScriptSettings": "experimental",
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "wordPartySettings": "basic"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "experimental"
       }
     }
   },

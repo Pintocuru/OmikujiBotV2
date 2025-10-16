@@ -31,18 +31,21 @@
 </template>
 
 <script setup lang="ts">
-  import { CategoryType, categoryLabels, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
+  import {
+    CategoryType,
+    RecordCategoryType,
+    categoryLabels,
+    recordCategoryLabel,
+  } from '@/types/OmikujiData/CategoryType'
   import { CategoryImportConfig } from './ImportTypes'
   import { useImportStore } from './useImportStore'
   import CategoryModeSelector from './CategoryModeSelector.vue'
   import ConflictsList from './ConflictsList.vue'
 
-  interface Props {
-    category: CategoryType
+  const props = defineProps<{
+    category: RecordCategoryType
     config: CategoryImportConfig
-  }
-
-  const props = defineProps<Props>()
+  }>()
 
   const importStore = useImportStore()
   const partialUpdateTargets: CategoryType[] = [...recordCategoryLabel]

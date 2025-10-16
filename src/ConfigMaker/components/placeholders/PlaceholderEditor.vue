@@ -54,9 +54,15 @@
   const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   // 選択されたアイテムの取得（読み取り専用）
-  const selectedItem = computed(() => {
-    if (!selectedItemKey.value) return null
-    return data.value.placeholders[selectedItemKey.value]
+  const selectedItem = computed({
+    get: () => {
+      if (!selectedItemKey.value) return null
+      return data.value.placeholders[selectedItemKey.value]
+    },
+    set: (value) => {
+      if (!selectedItemKey.value || !value) return
+      omikujiStore.updateItem('placeholders', selectedItemKey.value, value)
+    },
   })
 
   // 総重量を計算するcomputed

@@ -11,7 +11,7 @@ export const JsonMergeRemapSchema = z.object({
 
 export const JsonMergeItemSchema = z.object({
   ...BaseRecordSchema.shape,
-  sourceFile: z.string(),
+  sourceFile: z.string().default(''),
   remaps: z.array(JsonMergeRemapSchema).default([]),
 })
 
