@@ -113,249 +113,34 @@
           "toIconKey": "sad"
         }
       ]
+    },
+    {
+      "id": "1760595218337",
+      "key": "1760595218337",
+      "name": "ゲームスクリプト",
+      "createdAt": "2025-10-16T06:13:38.337Z",
+      "updatedAt": "2025-10-16T06:13:38.337Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "pro",
+      "sourceFile": "GameScripts.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "reimu",
+          "fromIconKey": "",
+          "toIconKey": ""
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "reimu",
+          "fromIconKey": "",
+          "toIconKey": ""
+        }
+      ]
     }
   ],
   "comments": {
-    "GouseiSuika": {
-      "id": "GouseiSuika",
-      "key": "GouseiSuika",
-      "name": "スイカジェネレーター",
-      "description": "スイカゲーム風のおみくじ",
-      "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "スイカゲーム"
-      },
-      "omikuji": [
-        {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.296Z",
-          "updatedAt": "2025-08-11T15:34:29.296Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "BomberSpin": {
-      "id": "BomberSpin",
-      "key": "BomberSpin",
-      "name": "ボンバースピン",
-      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "BomberSpin",
-      "scriptParams": {},
-      "omikuji": [
-        {
-          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "name": "通常",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 2.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "DwarfBomb": {
-      "id": "DwarfBomb",
-      "key": "DwarfBomb",
-      "name": "うさぎスロット",
-      "description": "スロット風のおみくじ。最大枚数20000枚!",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "DwarfBomb",
-      "scriptParams": {},
-      "omikuji": [
-        {
-          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "WelcomeSagi": {
       "id": "WelcomeSagi",
       "key": "WelcomeSagi",
@@ -363,7 +148,7 @@
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 4,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -548,7 +333,7 @@
       "description": "初めてから5回までは歓迎してくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 5,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -657,7 +442,7 @@
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-09-04T00:32:05.765Z",
-      "order": 6,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -777,8 +562,8 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 7,
+      "updatedAt": "2025-10-16T06:24:50.491Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -800,21 +585,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
               "wordParty": "!金額表示",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -842,21 +619,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
               "wordParty": "!金額表示",
-              "characterKey": "marisa",
+              "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -903,8 +672,8 @@
       "name": "ギフト(1000-1999円)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 8,
+      "updatedAt": "2025-10-16T06:25:03.369Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -926,21 +695,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
               "wordParty": "!金額表示",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -985,8 +746,8 @@
       "name": "ギフト(2000-)",
       "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 9,
+      "updatedAt": "2025-10-16T06:25:12.615Z",
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -997,7 +758,7 @@
         {
           "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
           "key": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
-          "name": "ギフト:霊夢",
+          "name": "ギフト:魔理沙",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1008,21 +769,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
               "wordParty": "!金額表示",
-              "characterKey": "marisa",
+              "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 0.3,
-              "wordParty": "!ジャン！",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
@@ -1071,7 +824,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 10,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1243,7 +996,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 11,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1379,7 +1132,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 12,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1515,7 +1268,7 @@
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 13,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1601,7 +1354,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-08-28T09:33:40.483Z",
-      "order": 14,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1891,7 +1644,41 @@
       "isBaseZero": false
     }
   },
-  "actionSets": {},
+  "actionSets": {
+    "GiftIntro": {
+      "id": "GiftIntro",
+      "key": "GiftIntro",
+      "name": "ギフト:イントロ",
+      "description": "ギフトの際に流すWordPartyの演出です",
+      "createdAt": "2025-10-12T03:56:00.109Z",
+      "updatedAt": "2025-10-16T06:24:17.679Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "!金額表示",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.3,
+          "wordParty": "!ジャン！",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        }
+      ]
+    }
+  },
   "placeholders": {
     "HondaJankenName": {
       "id": "HondaJankenName",

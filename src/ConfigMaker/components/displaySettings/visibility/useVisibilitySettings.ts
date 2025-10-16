@@ -31,7 +31,7 @@ export function useVisibilitySettings() {
   const gameScriptSettings = createVisibilityRef<AccessLevelType>('gameScriptSettings')
   const wordPartySettings = createVisibilityRef<AccessLevelType>('wordPartySettings')
   const jsonMergeSettings = createVisibilityRef<AccessLevelType>('jsonMergeSettings')
-  const gameScripts = createVisibilityRef<string[]>('gameScriptSettings')
+  const gameScripts = createVisibilityRef<string[]>('gameScripts')
 
   /** 任意カテゴリを取得できる関数も残す */
   const categoryVisibility = (key: VisibilityKey) => createVisibilityRef(key)

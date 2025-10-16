@@ -45,6 +45,7 @@
       "updatedAt": "2025-10-15T05:23:35.078Z",
       "order": 0,
       "tags": [],
+      "accessLevel": "basic",
       "sourceFile": "BigBangFortune.json",
       "remaps": [
         {
@@ -54,246 +55,34 @@
           "toIconKey": "excited"
         }
       ]
+    },
+    {
+      "id": "1760595218337",
+      "key": "1760595218337",
+      "name": "ゲームスクリプト",
+      "createdAt": "2025-10-16T06:13:38.337Z",
+      "updatedAt": "2025-10-16T06:13:38.337Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "pro",
+      "sourceFile": "GameScripts.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "tsumugi",
+          "fromIconKey": "",
+          "toIconKey": ""
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "himari",
+          "fromIconKey": "",
+          "toIconKey": ""
+        }
+      ]
     }
   ],
   "comments": {
-    "GouseiSuika": {
-      "id": "GouseiSuika",
-      "key": "GouseiSuika",
-      "name": "スイカジェネレーター",
-      "description": "スイカゲーム風のおみくじ",
-      "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-15T05:37:19.366Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "スイカゲーム"
-      },
-      "omikuji": [
-        {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.296Z",
-          "updatedAt": "2025-08-11T15:34:29.296Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "BomberSpin": {
-      "id": "BomberSpin",
-      "key": "BomberSpin",
-      "name": "ボンバースピン",
-      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-12T03:56:48.827Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "BomberSpin",
-      "scriptParams": {},
-      "omikuji": [
-        {
-          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "name": "通常",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 2.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "DwarfBomb": {
-      "id": "DwarfBomb",
-      "key": "DwarfBomb",
-      "name": "うさぎスロット",
-      "description": "スロット風のおみくじ。最大枚数20000枚!",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-12T03:56:48.827Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "DwarfBomb",
-      "scriptParams": {},
-      "omikuji": [
-        {
-          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "tsumugi",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "himari",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
     "SyokenSagiTsumugi": {
       "id": "SyokenSagiTsumugi",
       "key": "SyokenSagiTsumugi",
@@ -301,7 +90,7 @@
       "description": "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.827Z",
-      "order": 4,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -319,6 +108,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -359,6 +149,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -399,6 +190,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -447,6 +239,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -487,6 +280,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -535,6 +329,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -593,6 +388,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -633,6 +429,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -691,7 +488,7 @@
       "description": "いい初見だ。感動的だな……だが無意味だ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.827Z",
-      "order": 5,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
       "tags": [],
@@ -709,6 +506,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -774,7 +572,7 @@
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-12T03:57:40.261Z",
-      "order": 6,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -792,6 +590,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -855,7 +654,7 @@
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-12T03:58:21.879Z",
-      "order": 7,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -873,6 +672,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -935,7 +735,7 @@
       "description": "コメント数、マジ気になるよね～☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 8,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#10B981",
       "tags": [],
@@ -953,6 +753,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -976,6 +777,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1021,7 +823,7 @@
       "description": "あーしを呼んでくれた？マジ感謝だよっ",
       "createdAt": "2025-10-01T04:39:05.252Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 9,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1037,6 +839,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1065,6 +868,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1101,6 +905,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1145,6 +950,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1189,6 +995,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1217,6 +1024,7 @@
           "updatedAt": "2025-10-01T04:14:03.766Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1317,6 +1125,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1345,6 +1154,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1373,6 +1183,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1401,6 +1212,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1429,6 +1241,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1465,6 +1278,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1493,6 +1307,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1521,6 +1336,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1549,6 +1365,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1577,6 +1394,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1605,6 +1423,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1633,6 +1452,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1677,6 +1497,7 @@
           "updatedAt": "2025-10-01T23:20:03.392Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1732,7 +1553,7 @@
       "description": "なおガ",
       "createdAt": "2025-10-01T05:15:26.841Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 10,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -1748,6 +1569,7 @@
           "updatedAt": "2025-10-01T05:16:20.713Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1776,6 +1598,7 @@
           "updatedAt": "2025-10-01T05:39:49.462Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1820,6 +1643,7 @@
           "updatedAt": "2025-10-01T06:09:52.347Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1912,6 +1736,7 @@
           "updatedAt": "2025-10-01T07:38:21.811Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1940,6 +1765,7 @@
           "updatedAt": "2025-10-02T01:29:03.552Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0.5,
@@ -1992,6 +1818,7 @@
           "updatedAt": "2025-10-02T01:37:39.189Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2052,6 +1879,7 @@
           "updatedAt": "2025-10-02T01:37:39.189Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2096,6 +1924,7 @@
           "updatedAt": "2025-10-02T01:37:39.189Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2132,6 +1961,7 @@
           "updatedAt": "2025-10-01T06:09:52.347Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2216,6 +2046,7 @@
           "updatedAt": "2025-10-01T06:09:52.347Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2276,6 +2107,7 @@
           "updatedAt": "2025-10-01T06:09:52.347Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2344,6 +2176,7 @@
           "updatedAt": "2025-10-01T06:09:52.347Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2388,6 +2221,7 @@
           "updatedAt": "2025-10-02T01:31:01.016Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0.5,
@@ -2544,6 +2378,7 @@
           "updatedAt": "2025-10-01T07:34:50.945Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2590,7 +2425,7 @@
       "description": "いなりが入ってないやん",
       "createdAt": "2025-10-01T23:03:40.335Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 11,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2606,6 +2441,7 @@
           "updatedAt": "2025-10-01T22:30:26.237Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2651,7 +2487,7 @@
       "description": "お前等やる気ないだろ。本気でかかってきやがれ",
       "createdAt": "2025-10-04T15:11:23.941Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 12,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2667,6 +2503,7 @@
           "updatedAt": "2025-10-04T15:00:55.723Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -2740,7 +2577,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 13,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2758,6 +2595,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2820,7 +2658,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 14,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2838,6 +2676,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2891,7 +2730,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 15,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2909,6 +2748,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2962,7 +2802,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 16,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
       "tags": [],
@@ -2980,6 +2820,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3010,6 +2851,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3062,7 +2904,7 @@
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 17,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
       "tags": [],
@@ -3080,6 +2922,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3110,6 +2953,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3138,6 +2982,7 @@
           "updatedAt": "2025-10-01T05:53:24.824Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3204,6 +3049,7 @@
           "updatedAt": "2025-10-01T05:57:26.775Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3322,6 +3168,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3352,6 +3199,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3375,6 +3223,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3418,6 +3267,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3441,6 +3291,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3462,6 +3313,7 @@
           "updatedAt": "2025-08-28T07:23:44.013Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3483,6 +3335,7 @@
           "updatedAt": "2025-08-28T07:23:44.013Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -3509,7 +3362,7 @@
       "name": "ギフト:イントロ",
       "description": "ギフトの際に流すWordPartyの演出です",
       "createdAt": "2025-10-12T03:56:00.109Z",
-      "updatedAt": "2025-10-12T03:57:10.275Z",
+      "updatedAt": "2025-10-16T06:37:46.145Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -3533,7 +3386,8 @@
           "messageToast": "",
           "actionType": "wordParty"
         }
-      ]
+      ],
+      "editorColor": "#FF9800"
     }
   },
   "placeholders": {

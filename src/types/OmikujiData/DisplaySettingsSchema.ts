@@ -95,6 +95,7 @@ export const visibilityKeys = [
   'gameScriptSettings',
   'wordPartySettings',
   'jsonMergeSettings',
+  'gameScripts',
 ] as const
 
 export type VisibilityKey = (typeof visibilityKeys)[number]

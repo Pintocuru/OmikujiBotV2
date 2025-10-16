@@ -8,12 +8,7 @@
     "generatorVersion": "v1.4.0-beta01",
     "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "VOICEVOX",
-      "ずんだもん",
-      "（ず・ω・きょ）"
-    ],
+    "tags": ["おみくじBOT", "VOICEVOX", "ずんだもん", "（ず・ω・きょ）"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/6053855"
   },
@@ -64,6 +59,31 @@
           "toCharacterKey": "zunda",
           "fromIconKey": "sad",
           "toIconKey": "sad"
+        }
+      ]
+    },
+    {
+      "id": "1760595218337",
+      "key": "1760595218337",
+      "name": "ゲームスクリプト",
+      "createdAt": "2025-10-16T06:13:38.337Z",
+      "updatedAt": "2025-10-16T06:13:38.337Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "pro",
+      "sourceFile": "GameScripts.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "reimu",
+          "fromIconKey": "",
+          "toIconKey": ""
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "reimu",
+          "fromIconKey": "",
+          "toIconKey": ""
         }
       ]
     }
@@ -381,9 +401,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -392,13 +410,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^fortune",
-          "🥠"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^fortune", "🥠"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -460,9 +472,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -471,14 +481,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -538,9 +541,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -549,15 +550,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -617,9 +610,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -628,17 +619,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -839,10 +820,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -851,11 +829,7 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -915,10 +889,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -927,11 +898,7 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -992,16 +959,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
+        "gift": ["blue", "lightBlue", "green"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -1068,14 +1029,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow"
-        ],
+        "gift": ["yellow"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -1142,17 +1099,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
+        "gift": ["orange", "pink", "red", "purple"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -1209,9 +1159,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1220,9 +1168,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -1283,12 +1229,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -1347,12 +1289,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -1411,12 +1349,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -1475,9 +1409,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1561,9 +1493,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2408,11 +2338,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "zunda"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "zunda"],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -2495,11 +2421,7 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }
