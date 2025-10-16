@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -20,6 +20,33 @@
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
+  "jsonMerge": [
+    {
+      "id": "1760583218383",
+      "key": "1760583218383",
+      "name": "おみくじ",
+      "createdAt": "2025-10-16T02:53:38.383Z",
+      "updatedAt": "2025-10-16T02:53:38.383Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "basic",
+      "sourceFile": "MaidenOmikuji.json",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "reimu",
+          "fromIconKey": "",
+          "toIconKey": ""
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "marisa",
+          "fromIconKey": "default",
+          "toIconKey": "thinking"
+        }
+      ]
+    }
+  ],
   "comments": {
     "omikujiReimu": {
       "id": "omikujiReimu",
@@ -46,6 +73,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -87,6 +115,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -128,6 +157,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -169,6 +199,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -210,6 +241,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -251,6 +283,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -292,6 +325,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": -1,
@@ -376,6 +410,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0.5,
@@ -426,6 +461,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0.5,
@@ -525,6 +561,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 3.5,
@@ -602,6 +639,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 2.5,
@@ -680,6 +718,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 3.5,
@@ -760,6 +799,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -783,6 +823,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -806,6 +847,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -829,6 +871,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -852,6 +895,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -875,6 +919,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -898,6 +943,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -921,6 +967,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -986,6 +1033,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1009,6 +1057,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1032,6 +1081,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1055,6 +1105,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1121,6 +1172,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1144,6 +1196,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1167,6 +1220,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1190,6 +1244,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1255,6 +1310,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1278,6 +1334,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1301,6 +1358,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1324,6 +1382,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -1390,6 +1449,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1422,6 +1482,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1454,6 +1515,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1495,6 +1557,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1571,6 +1634,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1603,6 +1667,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1678,6 +1743,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1701,6 +1767,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1724,6 +1791,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1796,6 +1864,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1837,6 +1906,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -1920,6 +1990,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2001,6 +2072,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2085,6 +2157,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2117,6 +2190,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2149,6 +2223,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2181,6 +2256,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2253,6 +2329,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2276,6 +2353,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2299,6 +2377,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2322,6 +2401,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2385,6 +2465,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2408,6 +2489,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2431,6 +2513,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2454,6 +2537,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2517,6 +2601,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2540,6 +2625,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2601,6 +2687,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2624,6 +2711,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2687,6 +2775,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2710,6 +2799,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2753,6 +2843,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2776,6 +2867,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2799,6 +2891,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2822,6 +2915,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -2845,6 +2939,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -4282,7 +4377,8 @@
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "wordPartySettings": "basic"
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
       }
     }
   },

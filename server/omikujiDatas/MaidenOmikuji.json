@@ -28,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-16T02:33:15.761Z",
+      "updatedAt": "2025-10-16T02:52:42.148Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -323,7 +323,7 @@
               "delaySeconds": 1,
               "wordParty": "!ビシッとツッコミ1",
               "characterKey": "omiken_2",
-              "iconKey": "thinking",
+              "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
               "messageToast": "",
               "actionType": "message"
