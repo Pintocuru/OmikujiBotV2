@@ -1,0 +1,1181 @@
+{
+  "meta": {
+    "id": "1754926464640-roopmp",
+    "name": "おみくじBOT ゆっくり霊夢&魔理沙 ちょこんとバージョン OmikujiBot ReimuMarisaMate-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.09.11-v1.1.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/7366004"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "FlowerFortune": {
+      "id": "FlowerFortune",
+      "key": "FlowerFortune",
+      "name": "フラワー占い",
+      "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
+      "createdAt": "2025-08-11T15:34:29.296Z",
+      "updatedAt": "2025-10-16T05:35:19.902Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "daccba76-9c92-466b-bb58-217734027c5b",
+          "key": "daccba76-9c92-466b-bb58-217734027c5b",
+          "name": "フラワー:通常色",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 3,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんは<<FlowerAllItem>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 0.5,
+              "actionSetKey": "FlowerFirst",
+              "wordParty": "",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            }
+          ],
+          "weight": 7
+        },
+        {
+          "id": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
+          "key": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
+          "name": "フラワー:キノコ",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0.5,
+              "actionSetKey": "FlowerFirst",
+              "wordParty": "",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "!間抜け1",
+              "characterKey": "omiken",
+              "iconKey": "thinking",
+              "messageContent": "<<user>>さんは【キノコ色】<<FlowerKinoko>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 3
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^フラワー",
+          "^ふらわー",
+          "^flower",
+          "🌷",
+          "🌹",
+          "🌺",
+          "🌻",
+          "🌼"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showLastResult",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {},
+  "actionSets": {
+    "FlowerFirst": {
+      "id": "FlowerFirst",
+      "key": "FlowerFirst",
+      "name": "フラワー:イントロ",
+      "createdAt": "2025-10-11T11:16:21.472Z",
+      "updatedAt": "2025-10-16T05:37:11.326Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "!FortuneMarisaRed",
+          "characterKey": "reimu",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.5,
+          "wordParty": "!FortuneMarisaYellow",
+          "characterKey": "reimu",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1,
+          "wordParty": "!FortuneMarisaWhite",
+          "characterKey": "reimu",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        }
+      ],
+      "description": "WordPartyの演出イントロ"
+    }
+  },
+  "placeholders": {
+    "FlowerAllItem": {
+      "id": "FlowerAllItem",
+      "key": "FlowerAllItem",
+      "name": "フラワー:通常色の抽選",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "【白色】<<FlowerWhite>>",
+          "weight": 1
+        },
+        {
+          "content": "【赤色】<<FlowerRed>>",
+          "weight": 1
+        },
+        {
+          "content": "【オレンジ色】<<FlowerOrange>>",
+          "weight": 1
+        },
+        {
+          "content": "【黄色】<<FlowerYellow>>",
+          "weight": 1
+        },
+        {
+          "content": "【緑色】<<FlowerGreen>>",
+          "weight": 1
+        },
+        {
+          "content": "【青色】<<FlowerBlue>>",
+          "weight": 1
+        },
+        {
+          "content": "【紫色】<<FlowerPurple>>",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerWhite": {
+      "id": "FlowerWhite",
+      "key": "FlowerWhite",
+      "name": "フラワー:白色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "白いカサブランカは、純潔と高貴の象徴だぜ。あなたの心の中にも、そんな美しさがあるかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いバラは、尊敬と誠実の気持ちを表すぜ。誰かに感謝の気持ちを伝える良い機会かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いスズランは、幸福と再生を意味するぜ。新しいスタートを切るのにぴったりの時期かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いチューリップは、純粋な愛と感謝を象徴するぜ。大切な人との絆を深めるチャンスかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いカーネーションは、深い愛情と尊敬を表すぜ。大切な人への感謝を忘れずにだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いヒヤシンスは、思いやりと共感を意味するぜ。周りの人を大切にすることで、あなたも幸せになれるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "白いデイジーは、無邪気さと希望を象徴するぜ。あなたの純粋な心が、周りに良い影響を与えるぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerRed": {
+      "id": "FlowerRed",
+      "key": "FlowerRed",
+      "name": "フラワー:赤色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "赤いバラは情熱と愛の象徴だぜ。あなたの中にある熱い思いを大切にして欲しいぜ。",
+          "weight": 1
+        },
+        {
+          "content": "赤いポインセチアは、冬の寒さの中でも鮮やかに咲く強さがあるぜ。あなただって、困難を乗り越える力があるんだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "赤いカーネーションは、深い愛情と尊敬の気持ちを表すぜ。大切な人への感謝を忘れずにな。",
+          "weight": 1
+        },
+        {
+          "content": "赤いチューリップは、愛の告白を意味するぜ。自分の気持ちを素直に伝えることも大切だぜ。",
+          "weight": 1
+        },
+        {
+          "content": "赤いゼラニウムは、元気と活力の象徴だぜ。新しいことに挑戦する勇気を与えてくれるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "赤いコスモスは、秋の空の下、風に揺られて咲いているぜ。あなたの心も、自由で穏やかな気持ちで満たされて欲しいぜ。",
+          "weight": 1
+        },
+        {
+          "content": "赤いポピーは、感謝の気持ちを伝える花だぜ。いつもありがとうだぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerOrange": {
+      "id": "FlowerOrange",
+      "key": "FlowerOrange",
+      "name": "フラワー:オレンジ色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "オレンジ色のマリーゴールドは、情熱と創造性の象徴だぜ。新しいアイデアが湧いてくるかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のカレンデュラは、喜びと温かさを表すぜ。周りの人を明るい気持ちにできそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のナスタチウムは、勝利と征服を意味するぜ。困難を乗り越える力強さがあなたにはあるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のポピーは、想像力と楽観主義の花だぜ。前向きな姿勢が良い結果を招くぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のハイビスカスは、情熱と魅力を象徴するぜ。あなたの魅力が輝く瞬間が訪れるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のガーベラは、エネルギーと活力を意味するぜ。元気いっぱいの一日を過ごせるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "オレンジ色のルドベキアは、楽しい冒険を予感させるぜ。新しい経験に心を開いてみるといいぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerYellow": {
+      "id": "FlowerYellow",
+      "key": "FlowerYellow",
+      "name": "フラワー:黄色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "黄色いヒマワリは、太陽のように明るく輝く花だぜ。あなたも周りを明るく照らす存在かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いフリージアは、友情と信頼を表すぜ。大切な友人との絆を深める良い機会かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いスイセンは、新たな始まりを象徴するぜ。何か新しいことを始めるのにぴったりの時期かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いチューリップは、希望に満ちた愛を意味するぜ。明るい未来への期待を持ち続けて欲しいぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いアカシアは、隠された美しさを表すぜ。あなたの中にある才能が花開くかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いカレンデュラは、友情の証だぜ。大切な友達との絆を大切にするんだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "黄色いキンモクセイの香りは、懐かしい思い出を呼び覚ますぜ。大切な人と良い時間を過ごして欲しいぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerGreen": {
+      "id": "FlowerGreen",
+      "key": "FlowerGreen",
+      "name": "フラワー:緑色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "緑のクローバーは、幸運と希望の象徴だぜ。小さな幸せに気づける日になりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のベルガモットは、繁栄と豊かさを表すぜ。あなたの努力が実を結ぶ時期かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のユーカリは、保護と癒しを意味するぜ。心身ともにリラックスできる時間を作ってみるといいぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のモスは、母性的な愛と優しさを象徴するぜ。周りの人への思いやりの心が、あなたを豊かにするぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のアンスリウムは、もてなしの心を表すぜ。人との交流を大切にする日になりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のシダは、生命力と復活を象徴するぜ。何か新しいことに挑戦するチャンスかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "緑のマートルは、愛と幸福の象徴だぜ。あなたの愛情が周りに良い影響を与えるぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerBlue": {
+      "id": "FlowerBlue",
+      "key": "FlowerBlue",
+      "name": "フラワー:青色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "青い朝顔は、夏の朝を美しく彩るぜ。清々しい一日の始まりを感じさせてくれるんだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いデルフィニウムは、高貴さと優雅さの象徴だぜ。あなたの中にも、そんな魅力が隠れているかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いアジサイは、移り気な心を表すと言われているぜ。でも、それは柔軟性があるということだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いルピナスは、想像力と創造性を刺激してくれるぜ。新しいアイデアが湧いてくるかもだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いコーンフラワーは、希望と幸福を象徴するぜ。明るい未来が待っているはずだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いスミレは、春の息吹を感じさせてくれる、可憐な花だぜ。あなたの心も、きっと温かくて優しいはずだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "青いリンドウは、厳しい冬を乗り越えて咲く花だぜ。あなたは、どんな困難にも立ち向かえる、強い心の持ち主なんだぜ。",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerPurple": {
+      "id": "FlowerPurple",
+      "key": "FlowerPurple",
+      "name": "フラワー:紫色",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "紫のラベンダーは、優雅さと洗練を象徴するぜ。あなたの中にある美しさが輝く時かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫のアイリスは、知恵と勇気を表すぜ。難しい決断を迫られても、自信を持って進んでいけるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫のクレマチスは、精神的な美しさを象徴するぜ。内面の成長に目を向けるいい機会かもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫のリラは、初恋の思い出を意味するぜ。過去の美しい思い出が、今のあなたを支えてくれるかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫のアリウムは、統一と調和を表すぜ。周りの人々との良い関係を築けそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫陽花は、たくさんの小さな花が集まって一輪の花を咲かせるぜ。あなたも周りの人たちと力を合わせれば、大きなことができるぜ。",
+          "weight": 1
+        },
+        {
+          "content": "紫のバラは、高貴な印象を与えるぜ。あなたは、特別な存在だぜ。本当だぜ？",
+          "weight": 1
+        }
+      ]
+    },
+    "FlowerKinoko": {
+      "id": "FlowerKinoko",
+      "key": "FlowerKinoko",
+      "name": "フラワー:キノコ",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:29:26.538Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "シイタケは「仙人のキノコ」と呼ばれるほど長寿の象徴だぜ。健康運が高まりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "マツタケは「松の寿」という意味があるぜ。あなたの人生も香り高いものになりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "エノキタケは「榎木茸」と書くぜ。大きな木のように、あなたも周りを支える存在になれそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "ナメコは「滑子」と書くけど、逆に人生でつまずかないよう注意が必要かもしれないぜ？おさわり探偵のようにな",
+          "weight": 1
+        },
+        {
+          "content": "マイタケは「舞茸」。まるで踊るように、人生を楽しく過ごしたいぜ。",
+          "weight": 1
+        },
+        {
+          "content": "エリンギはイタリア語で「小さな杏」という意味があるぜ。小さな幸せを見つけられそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "ブナシメジは「椪締茸」と書くぜ。「椪」は「結ぶ」という意味があるから、人との縁が深まりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "キクラゲは「木耳」と書くぜ。耳のように、周りの声にも耳を傾けると良いことがありそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "ヒラタケは平べったい形から名付けられたぜ。謙虚な姿勢が大切になりそうだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "マッシュルームは英語で「きのこ」だけど、マッシュと言えば髪型だよな。マッシュの似合う男の子って可愛いぜ。",
+          "weight": 1
+        }
+      ]
+    }
+  },
+  "characters": {
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "sm",
+      "fontFamily": "default",
+      "bubbleMotionEnter": "slideUp",
+      "bubbleMotionLeave": "slideUp",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToasts": true,
+      "showToastsOnRight": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": false,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
+      "bundleCharacters": false,
+      "daisyUiTheme": "halloween"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "basic",
+        "actionSets": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
+        "gameScriptSettings": "pro",
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
+      }
+    }
+  },
+  "wordPartySettings": [
+    {
+      "name": "効果音:ドアチャイム1",
+      "pattern": "!ドアチャイム1"
+    },
+    {
+      "name": "効果音:シーン切り替え1",
+      "pattern": "!シーン切り替え1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示1",
+      "pattern": "!ニュースタイトル表示1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示3",
+      "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
+    },
+    {
+      "name": "効果音:ビシッとツッコミ1",
+      "pattern": "!ビシッとツッコミ1"
+    },
+    {
+      "name": "効果音:チーン1",
+      "pattern": "!チーン1"
+    },
+    {
+      "name": "効果音:間抜け1",
+      "pattern": "!間抜け1"
+    },
+    {
+      "name": "効果音:間抜け5",
+      "pattern": "!間抜け5"
+    },
+    {
+      "name": "効果音:呪いの旋律",
+      "pattern": "!呪いの旋律"
+    },
+    {
+      "name": "効果音:不安（ピアノ演奏）",
+      "pattern": "!不安（ピアノ演奏）"
+    },
+    {
+      "name": "効果音:ジャン！",
+      "pattern": "!ジャン！"
+    },
+    {
+      "name": "効果音:クイズ出題1",
+      "pattern": "!クイズ出題1"
+    },
+    {
+      "name": "効果音:クイズ不正解1",
+      "pattern": "!クイズ不正解1"
+    },
+    {
+      "name": "効果音:クイズ正解1",
+      "pattern": "!クイズ正解1"
+    },
+    {
+      "name": "効果音:金額表示",
+      "pattern": "!金額表示"
+    },
+    {
+      "name": "効果音:消える音",
+      "pattern": "!パッ"
+    },
+    {
+      "name": "効果音:出てくる音",
+      "pattern": "!パパッ"
+    },
+    {
+      "name": "初見",
+      "pattern": "!初見"
+    },
+    {
+      "name": "挑戦者が現れました",
+      "pattern": "!挑戦者"
+    },
+    {
+      "name": "おみくじ:大吉",
+      "pattern": "!omikuji_01"
+    },
+    {
+      "name": "おみくじ:吉",
+      "pattern": "!omikuji_02"
+    },
+    {
+      "name": "おみくじ:中吉",
+      "pattern": "!omikuji_03"
+    },
+    {
+      "name": "おみくじ:小吉",
+      "pattern": "!omikuji_04"
+    },
+    {
+      "name": "おみくじ:末吉",
+      "pattern": "!omikuji_05"
+    },
+    {
+      "name": "おみくじ:凶",
+      "pattern": "!omikuji_06"
+    },
+    {
+      "name": "おみくじ:残念賞",
+      "pattern": "!omikuji_07"
+    },
+    {
+      "name": "おみくじエフェクト",
+      "pattern": "!omikuji_huru"
+    },
+    {
+      "name": "じゃんけん:グー",
+      "pattern": "!janken_1"
+    },
+    {
+      "name": "じゃんけん:チョキ",
+      "pattern": "!janken_2"
+    },
+    {
+      "name": "じゃんけん:パー",
+      "pattern": "!janken_3"
+    },
+    {
+      "name": "じゃんけん:I Love You",
+      "pattern": "!janken_4"
+    },
+    {
+      "name": "じゃんけん結果:勝ち",
+      "pattern": "!janken_win"
+    },
+    {
+      "name": "じゃんけん結果:負け",
+      "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
+    },
+    {
+      "name": "桃鉄カード:登場ノーマル",
+      "pattern": "!card_00"
+    },
+    {
+      "name": "桃鉄カード:登場ナイス",
+      "pattern": "!card_01"
+    },
+    {
+      "name": "桃鉄カード:登場デビル",
+      "pattern": "!card_02"
+    },
+    {
+      "name": "桃鉄カード:結果ノーマル",
+      "pattern": "!card_10"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_11"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_12"
+    },
+    {
+      "name": "桃鉄カード:結果デビル",
+      "pattern": "!card_13"
+    },
+    {
+      "name": "ゆびをふる:指",
+      "pattern": "!yubiwo_01"
+    },
+    {
+      "name": "パルプンテ",
+      "pattern": "!パルプンテ"
+    },
+    {
+      "name": "Splatoon:インキ黄色",
+      "pattern": "!Spla_01"
+    },
+    {
+      "name": "Splatoon:インキマゼンダ",
+      "pattern": "!Spla_02"
+    },
+    {
+      "name": "Splatoon:インキシアン",
+      "pattern": "!Spla_03"
+    },
+    {
+      "name": "ドラちゃん:背景",
+      "pattern": "!5percent_dora_0"
+    },
+    {
+      "name": "ドラちゃん:手",
+      "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
+    },
+    {
+      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
+      "pattern": "!gacha_00A"
+    },
+    {
+      "name": "幻獣ガチャ:フラッシュ",
+      "pattern": "!gacha_00B"
+    },
+    {
+      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
+      "pattern": "!gacha_A1"
+    },
+    {
+      "name": "幻獣ガチャ:激レアカプセル",
+      "pattern": "!gacha_B1"
+    },
+    {
+      "name": "幻獣ガチャ:激レア表示",
+      "pattern": "!gacha_B2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レアカプセル",
+      "pattern": "!gacha_C1"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア表示",
+      "pattern": "!gacha_C2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
+      "pattern": "!gacha_C3"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombcherry"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombCherry"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bomborange"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bombOrange"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombplam"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombPlum"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombmelon"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombMelon"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombbell"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombBell"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombhut"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombHat"
+    },
+    {
+      "name": "ボンバースロット:BAR",
+      "pattern": "!bombBAR"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombseven"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombSeven"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombback"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombBack"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombfire"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombFire"
+    },
+    {
+      "name": "うさぎスロット:TNTうさぎ",
+      "pattern": "!dwarfBombRabbit"
+    },
+    {
+      "name": "うさぎスロット:ダイナマイト",
+      "pattern": "!dwarfBombDynamite"
+    },
+    {
+      "name": "うさぎスロット:ツルハシ",
+      "pattern": "!dwarfBombPickaxe"
+    },
+    {
+      "name": "うさぎスロット:ダイヤモンド",
+      "pattern": "!dwarfBombDiamond"
+    },
+    {
+      "name": "うさぎスロット:金塊",
+      "pattern": "!dwarfBombGold"
+    },
+    {
+      "name": "うさぎスロット:宝箱",
+      "pattern": "!dwarfBombTreasure"
+    },
+    {
+      "name": "うさぎスロット:ちいさなうさぎ",
+      "pattern": "!dwarfBombDaysBunny"
+    },
+    {
+      "name": "スイカジェネレーター:カボチャ",
+      "pattern": "🎃"
+    },
+    {
+      "name": "スイカジェネレーター:キャンディ",
+      "pattern": "🍬"
+    },
+    {
+      "name": "スイカジェネレーター:スイカ",
+      "pattern": "🍉"
+    },
+    {
+      "name": "スイカジェネレーター:メロン",
+      "pattern": "🍈"
+    },
+    {
+      "name": "スイカジェネレーター:もも",
+      "pattern": "🍑"
+    },
+    {
+      "name": "スイカジェネレーター:パイナップル",
+      "pattern": "🍍"
+    },
+    {
+      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
+      "pattern": "🍐"
+    },
+    {
+      "name": "スイカジェネレーター:りんご",
+      "pattern": "🍎"
+    },
+    {
+      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
+      "pattern": "🦪"
+    },
+    {
+      "name": "スイカジェネレーター:デコポン",
+      "pattern": "🍊"
+    },
+    {
+      "name": "スイカジェネレーター:ぶどう",
+      "pattern": "🍇"
+    },
+    {
+      "name": "スイカジェネレーター:いちご",
+      "pattern": "🍓"
+    },
+    {
+      "name": "スイカジェネレーター:チェリー",
+      "pattern": "🍒"
+    },
+    {
+      "name": "スイカジェネレーター:クジラ",
+      "pattern": "!クジラ"
+    },
+    {
+      "name": "スイカジェネレーター:シャチ",
+      "pattern": "!シャチ"
+    },
+    {
+      "name": "スイカジェネレーター:ジンベエザメ",
+      "pattern": "!ジンベエザメ"
+    },
+    {
+      "name": "スイカジェネレーター:マンボウ",
+      "pattern": "!マンボウ"
+    },
+    {
+      "name": "スイカジェネレーター:ウミガメ",
+      "pattern": "!ウミガメ"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、撮影開始"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、二夜連続"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、ご期待ください"
+    },
+    {
+      "name": "スイカジェネレーター:カニ",
+      "pattern": "!カニ"
+    },
+    {
+      "name": "スイカジェネレーター:フグ",
+      "pattern": "!フグ"
+    },
+    {
+      "name": "スイカジェネレーター:クラゲ",
+      "pattern": "!クラゲ"
+    },
+    {
+      "name": "スイカジェネレーター:クマノミ",
+      "pattern": "!クマノミ"
+    },
+    {
+      "name": "スイカジェネレーター:マリモ",
+      "pattern": "!マリモ"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "初見なのにモデレーター"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "モデレーターなのに初見"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "ここまで見てくれてありがと。"
+    }
+  ]
+}

@@ -1,0 +1,2466 @@
+{
+  "meta": {
+    "id": "1754926464640-roopmp",
+    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.09.11-v1.1.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/5471598"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "GouseiSuika": {
+      "id": "GouseiSuika",
+      "key": "GouseiSuika",
+      "name": "スイカジェネレーター",
+      "description": "スイカゲーム風のおみくじ",
+      "createdAt": "2025-08-11T15:34:29.296Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "scriptId": "GouseiSuika",
+      "scriptParams": {
+        "mode": "スイカゲーム"
+      },
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "BomberSpin": {
+      "id": "BomberSpin",
+      "key": "BomberSpin",
+      "name": "ボンバースピン",
+      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "scriptId": "BomberSpin",
+      "scriptParams": {},
+      "omikuji": [
+        {
+          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
+          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
+          "name": "通常",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 2.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 7,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "DwarfBomb": {
+      "id": "DwarfBomb",
+      "key": "DwarfBomb",
+      "name": "うさぎスロット",
+      "description": "スロット風のおみくじ。最大枚数20000枚!",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "scriptId": "DwarfBomb",
+      "scriptParams": {},
+      "omikuji": [
+        {
+          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi",
+          "🐰",
+          "🐇"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "WelcomeSagi": {
+      "id": "WelcomeSagi",
+      "key": "WelcomeSagi",
+      "name": "初見詐欺",
+      "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
+          "key": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
+          "name": "初見詐欺1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!間抜け5",
+              "characterKey": "reimu",
+              "iconKey": "angry",
+              "messageContent": "<<user>>さん…あなた初見じゃないでしょ。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 7
+        },
+        {
+          "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
+          "key": "e3b96d09-df98-4ee7-910c-951acc587fa8",
+          "name": "初見詐欺2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!チーン1",
+              "characterKey": "reimu",
+              "iconKey": "sleepy",
+              "messageContent": "<<user>>さん、初めまし…あなた初見ではないわね?",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 6
+        },
+        {
+          "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
+          "key": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
+          "name": "ああ初見だと思ったら騙された高校校歌",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
+              "messageToast": "",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!呪いの旋律",
+              "characterKey": "reimu",
+              "iconKey": "angry",
+              "messageContent": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "id": "352ea94d-dd73-41a8-abb7-bab726c205f6",
+          "key": "352ea94d-dd73-41a8-abb7-bab726c205f6",
+          "name": "初見詐欺魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "marisa",
+              "iconKey": "surprised",
+              "messageContent": "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        },
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": false,
+        "repeatMessage": "初見詐欺は連投するものではない。"
+      }
+    },
+    "WelcomeHonto": {
+      "id": "WelcomeHonto",
+      "key": "WelcomeHonto",
+      "name": "ホントの初見",
+      "description": "初めてから5回までは歓迎してくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
+          "key": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
+          "name": "ホントの初見1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "c7fa3746-f34c-4620-96a7-a3f7057ef2a7",
+          "key": "c7fa3746-f34c-4620-96a7-a3f7057ef2a7",
+          "name": "ホントの初見2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "happy",
+              "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "CheckNumber": {
+      "id": "CheckNumber",
+      "key": "CheckNumber",
+      "name": "コメント数表示",
+      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-09-04T00:32:05.765Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
+          "key": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
+          "name": "霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 14
+        },
+        {
+          "id": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
+          "key": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
+          "name": "魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "id": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
+          "key": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
+          "name": "魔理沙 (おふざけ)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)",
+              "actionType": "toast"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "!ビシッとツッコミ1",
+              "characterKey": "reimu",
+              "iconKey": "angry",
+              "messageContent": "",
+              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^コメント$"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "ReimuGiftLow": {
+      "id": "ReimuGiftLow",
+      "key": "ReimuGiftLow",
+      "name": "ギフト(1-999円)",
+      "description": "ギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "blushing",
+              "messageContent": "<<user>>さん、ギフトありがとう!これからも配信続けていくわ、応援してね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        },
+        {
+          "id": "67cb8edc-3fdb-44b2-9b5a-b88a78680745",
+          "key": "67cb8edc-3fdb-44b2-9b5a-b88a78680745",
+          "name": "ギフト:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "excited",
+              "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "ReimuGiftMiddle": {
+      "id": "ReimuGiftMiddle",
+      "key": "ReimuGiftMiddle",
+      "name": "ギフト(1000-1999円)",
+      "description": "大きなギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
+          "key": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "blushing",
+              "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "yellow"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "ReimuGiftHigh": {
+      "id": "ReimuGiftHigh",
+      "key": "ReimuGiftHigh",
+      "name": "ギフト(2000-)",
+      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
+          "key": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
+          "name": "ギフト:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!金額表示",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!ジャン！",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "blushing",
+              "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterSyoken": {
+      "id": "FirstCounterSyoken",
+      "key": "FirstCounterSyoken",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
+          "key": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 9
+        },
+        {
+          "id": "33f283d4-5e09-49a4-ad6a-ea1ff97462fb",
+          "key": "33f283d4-5e09-49a4-ad6a-ea1ff97462fb",
+          "name": "初見さんへの挨拶2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "reimu",
+              "iconKey": "excited",
+              "messageContent": "初見の<<user>>さん、コメントありがとう!とっても嬉しいわ!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 8
+        },
+        {
+          "id": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
+          "key": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
+          "name": "初見さんへの挨拶3",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "excited",
+              "messageContent": "おっ、<<user>>さんが初めてのコメントだぜ!ようこそだぜ。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "id": "c6a82039-cb28-4311-a8de-58724fcedefb",
+          "key": "c6a82039-cb28-4311-a8de-58724fcedefb",
+          "name": "初見さんへの挨拶4",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "marisa",
+              "iconKey": "excited",
+              "messageContent": "<<user>>さん、ようこそ!コメント助かるぜ～!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgain": {
+      "id": "FirstCounterAgain",
+      "key": "FirstCounterAgain",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "19bb44c2-92e2-4761-b577-caed879dcdc7",
+          "key": "19bb44c2-92e2-4761-b577-caed879dcdc7",
+          "name": "久しぶり1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、久しぶり!また会えたね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
+          "key": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
+          "name": "久しぶり2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "id": "c383530d-30fd-48ad-89c5-7b486de885ed",
+          "key": "c383530d-30fd-48ad-89c5-7b486de885ed",
+          "name": "久しぶり3",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
+              "messageContent": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "id": "2c902efa-2397-45c9-8f75-89c24c11c0ba",
+          "key": "2c902efa-2397-45c9-8f75-89c24c11c0ba",
+          "name": "久しぶり4",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisit": {
+      "id": "FirstCounterFirstVisit",
+      "key": "FirstCounterFirstVisit",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
+          "key": "83b66e65-adee-4e2a-a921-951d4e792f9a",
+          "name": "挨拶1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
+          "key": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
+          "name": "挨拶2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 3
+        },
+        {
+          "id": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
+          "key": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
+          "name": "挨拶3",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 2
+        },
+        {
+          "id": "898ba322-99ba-4e3c-929b-c8b8794b378a",
+          "key": "898ba322-99ba-4e3c-929b-c8b8794b378a",
+          "name": "挨拶4",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTrigger": {
+      "id": "StreamCountTrigger",
+      "key": "StreamCountTrigger",
+      "name": "配信内コメント数チェック:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
+          "key": "934d91f0-82d1-4b54-b8be-3252e3149a08",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
+          "key": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTrigger": {
+      "id": "UserCountTrigger",
+      "key": "UserCountTrigger",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:40.483Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
+          "key": "25bbf670-ffd8-4646-b1e2-de04313df2de",
+          "name": "100回コメント:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
+          "key": "624558c1-e666-4d8b-ba58-6406fd24cd89",
+          "name": "100回コメント:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {
+    "ViewCountDisplay": {
+      "id": "ViewCountDisplay",
+      "key": "ViewCountDisplay",
+      "name": "閲覧数表示(1min)",
+      "description": "1分ごとにさりげなく視聴数を教えてくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-08-28T09:33:52.190Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
+          "key": "0636470c-29c0-4f74-af36-549dc7c247b2",
+          "name": "閲覧数:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<viewer>>人が視聴中だよ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
+          "key": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
+          "name": "閲覧数:魔理沙",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<viewer>>人が視聴中だぜ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 60,
+      "isBaseZero": true
+    },
+    "PromotionToast": {
+      "id": "PromotionToast",
+      "key": "PromotionToast",
+      "name": "告知トースト",
+      "description": "チャンネル登録や高評価をトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-08-28T09:33:52.190Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
+          "key": "33d7982c-d477-4975-989e-0f010a5fc0a6",
+          "name": "チャンネル登録告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "",
+              "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 24
+        },
+        {
+          "id": "3a2b5e96-b79a-4bdb-b4a7-c9c7d9afebde",
+          "key": "3a2b5e96-b79a-4bdb-b4a7-c9c7d9afebde",
+          "name": "Twitter告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "wink",
+              "messageContent": "",
+              "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 18
+        },
+        {
+          "id": "a5cd85d8-666e-4107-8e90-744f92deabbd",
+          "key": "a5cd85d8-666e-4107-8e90-744f92deabbd",
+          "name": "ショート動画告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "messageContent": "",
+              "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 20
+        },
+        {
+          "id": "9dea8c40-0801-4523-93e2-dc3049fe1814",
+          "key": "9dea8c40-0801-4523-93e2-dc3049fe1814",
+          "name": "discord告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!ニュースタイトル表示3",
+              "characterKey": "marisa",
+              "iconKey": "excited",
+              "messageContent": "",
+              "messageToast": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 16
+        },
+        {
+          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "name": "おみくじBOT告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!間抜け1",
+              "characterKey": "marisa",
+              "iconKey": "wink",
+              "messageContent": "",
+              "messageToast": "このおみくじBOT、配信者さんに使って欲しいんだぜ…",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 300,
+      "isBaseZero": false
+    }
+  },
+  "actionSets": {},
+  "placeholders": {
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "key": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-10-16T05:46:15.333Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "マリサ キリサメ"
+      ]
+    }
+  },
+  "characters": {
+    "reimu": {
+      "id": "reimu",
+      "key": "reimu",
+      "name": "ゆっくり霊夢",
+      "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-08-29T06:49:15.048Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "https://nagipon-sozai.studio.site/",
+      "displayName": "ゆっくり霊夢",
+      "frameId": "OmikenReimu",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFC107",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#FF4081",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "reimu/default.webp",
+        "happy": "reimu/happy.webp",
+        "excited": "reimu/excited.webp",
+        "laughing": "reimu/laughing.webp",
+        "blushing": "reimu/blushing.webp",
+        "surprised": "reimu/surprised.webp",
+        "sad": "reimu/sad.webp",
+        "angry": "reimu/angry.webp",
+        "thinking": "reimu/thinking.webp",
+        "wink": "reimu/wink.webp",
+        "singing": "reimu/singing.webp",
+        "sleepy": "reimu/sleepy.webp"
+      }
+    },
+    "marisa": {
+      "id": "marisa",
+      "key": "marisa",
+      "name": "ゆっくり魔理沙",
+      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-08-29T06:49:19.720Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "Yukkuri",
+        "Marisa"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "https://nagipon-sozai.studio.site/",
+      "displayName": "ゆっくり魔理沙",
+      "frameId": "OmikenMarisa",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFE082",
+        "textColor": "#333333",
+        "backgroundColor": "#FF8F00",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "marisa/default.webp",
+        "happy": "marisa/happy.webp",
+        "excited": "marisa/excited.webp",
+        "laughing": "marisa/laughing.webp",
+        "blushing": "marisa/blushing.webp",
+        "surprised": "marisa/surprised.webp",
+        "sad": "marisa/sad.webp",
+        "angry": "marisa/angry.webp",
+        "thinking": "marisa/thinking.webp",
+        "wink": "marisa/wink.webp",
+        "singing": "marisa/singing.webp",
+        "sleepy": "marisa/sleepy.webp"
+      }
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "md",
+      "fontFamily": "default",
+      "bubbleMotionEnter": "slideUp",
+      "bubbleMotionLeave": "slideUp",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToasts": true,
+      "showToastsOnRight": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": true,
+      "showCharacterFrame": true,
+      "showCharacterPersistent": false,
+      "bundleCharacters": false,
+      "daisyUiTheme": "cmyk"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "basic",
+        "actionSets": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "internal",
+        "licenseVisible": "basic",
+        "gameScriptSettings": "pro",
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
+      }
+    }
+  },
+  "wordPartySettings": [
+    {
+      "name": "効果音:ドアチャイム1",
+      "pattern": "!ドアチャイム1"
+    },
+    {
+      "name": "効果音:シーン切り替え1",
+      "pattern": "!シーン切り替え1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示1",
+      "pattern": "!ニュースタイトル表示1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示3",
+      "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
+    },
+    {
+      "name": "効果音:ビシッとツッコミ1",
+      "pattern": "!ビシッとツッコミ1"
+    },
+    {
+      "name": "効果音:チーン1",
+      "pattern": "!チーン1"
+    },
+    {
+      "name": "効果音:間抜け1",
+      "pattern": "!間抜け1"
+    },
+    {
+      "name": "効果音:間抜け5",
+      "pattern": "!間抜け5"
+    },
+    {
+      "name": "効果音:呪いの旋律",
+      "pattern": "!呪いの旋律"
+    },
+    {
+      "name": "効果音:不安（ピアノ演奏）",
+      "pattern": "!不安（ピアノ演奏）"
+    },
+    {
+      "name": "効果音:ジャン！",
+      "pattern": "!ジャン！"
+    },
+    {
+      "name": "効果音:クイズ出題1",
+      "pattern": "!クイズ出題1"
+    },
+    {
+      "name": "効果音:クイズ不正解1",
+      "pattern": "!クイズ不正解1"
+    },
+    {
+      "name": "効果音:クイズ正解1",
+      "pattern": "!クイズ正解1"
+    },
+    {
+      "name": "効果音:金額表示",
+      "pattern": "!金額表示"
+    },
+    {
+      "name": "効果音:消える音",
+      "pattern": "!パッ"
+    },
+    {
+      "name": "効果音:出てくる音",
+      "pattern": "!パパッ"
+    },
+    {
+      "name": "初見",
+      "pattern": "!初見"
+    },
+    {
+      "name": "挑戦者が現れました",
+      "pattern": "!挑戦者"
+    },
+    {
+      "name": "おみくじ:大吉",
+      "pattern": "!omikuji_01"
+    },
+    {
+      "name": "おみくじ:吉",
+      "pattern": "!omikuji_02"
+    },
+    {
+      "name": "おみくじ:中吉",
+      "pattern": "!omikuji_03"
+    },
+    {
+      "name": "おみくじ:小吉",
+      "pattern": "!omikuji_04"
+    },
+    {
+      "name": "おみくじ:末吉",
+      "pattern": "!omikuji_05"
+    },
+    {
+      "name": "おみくじ:凶",
+      "pattern": "!omikuji_06"
+    },
+    {
+      "name": "おみくじ:残念賞",
+      "pattern": "!omikuji_07"
+    },
+    {
+      "name": "おみくじエフェクト",
+      "pattern": "!omikuji_huru"
+    },
+    {
+      "name": "じゃんけん:グー",
+      "pattern": "!janken_1"
+    },
+    {
+      "name": "じゃんけん:チョキ",
+      "pattern": "!janken_2"
+    },
+    {
+      "name": "じゃんけん:パー",
+      "pattern": "!janken_3"
+    },
+    {
+      "name": "じゃんけん:I Love You",
+      "pattern": "!janken_4"
+    },
+    {
+      "name": "じゃんけん結果:勝ち",
+      "pattern": "!janken_win"
+    },
+    {
+      "name": "じゃんけん結果:負け",
+      "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
+    },
+    {
+      "name": "桃鉄カード:登場ノーマル",
+      "pattern": "!card_00"
+    },
+    {
+      "name": "桃鉄カード:登場ナイス",
+      "pattern": "!card_01"
+    },
+    {
+      "name": "桃鉄カード:登場デビル",
+      "pattern": "!card_02"
+    },
+    {
+      "name": "桃鉄カード:結果ノーマル",
+      "pattern": "!card_10"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_11"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_12"
+    },
+    {
+      "name": "桃鉄カード:結果デビル",
+      "pattern": "!card_13"
+    },
+    {
+      "name": "ゆびをふる:指",
+      "pattern": "!yubiwo_01"
+    },
+    {
+      "name": "パルプンテ",
+      "pattern": "!パルプンテ"
+    },
+    {
+      "name": "Splatoon:インキ黄色",
+      "pattern": "!Spla_01"
+    },
+    {
+      "name": "Splatoon:インキマゼンダ",
+      "pattern": "!Spla_02"
+    },
+    {
+      "name": "Splatoon:インキシアン",
+      "pattern": "!Spla_03"
+    },
+    {
+      "name": "ドラちゃん:背景",
+      "pattern": "!5percent_dora_0"
+    },
+    {
+      "name": "ドラちゃん:手",
+      "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
+    },
+    {
+      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
+      "pattern": "!gacha_00A"
+    },
+    {
+      "name": "幻獣ガチャ:フラッシュ",
+      "pattern": "!gacha_00B"
+    },
+    {
+      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
+      "pattern": "!gacha_A1"
+    },
+    {
+      "name": "幻獣ガチャ:激レアカプセル",
+      "pattern": "!gacha_B1"
+    },
+    {
+      "name": "幻獣ガチャ:激レア表示",
+      "pattern": "!gacha_B2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レアカプセル",
+      "pattern": "!gacha_C1"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア表示",
+      "pattern": "!gacha_C2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
+      "pattern": "!gacha_C3"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombcherry"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombCherry"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bomborange"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bombOrange"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombplam"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombPlum"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombmelon"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombMelon"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombbell"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombBell"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombhut"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombHat"
+    },
+    {
+      "name": "ボンバースロット:BAR",
+      "pattern": "!bombBAR"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombseven"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombSeven"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombback"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombBack"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombfire"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombFire"
+    },
+    {
+      "name": "うさぎスロット:TNTうさぎ",
+      "pattern": "!dwarfBombRabbit"
+    },
+    {
+      "name": "うさぎスロット:ダイナマイト",
+      "pattern": "!dwarfBombDynamite"
+    },
+    {
+      "name": "うさぎスロット:ツルハシ",
+      "pattern": "!dwarfBombPickaxe"
+    },
+    {
+      "name": "うさぎスロット:ダイヤモンド",
+      "pattern": "!dwarfBombDiamond"
+    },
+    {
+      "name": "うさぎスロット:金塊",
+      "pattern": "!dwarfBombGold"
+    },
+    {
+      "name": "うさぎスロット:宝箱",
+      "pattern": "!dwarfBombTreasure"
+    },
+    {
+      "name": "うさぎスロット:ちいさなうさぎ",
+      "pattern": "!dwarfBombDaysBunny"
+    },
+    {
+      "name": "スイカジェネレーター:カボチャ",
+      "pattern": "🎃"
+    },
+    {
+      "name": "スイカジェネレーター:キャンディ",
+      "pattern": "🍬"
+    },
+    {
+      "name": "スイカジェネレーター:スイカ",
+      "pattern": "🍉"
+    },
+    {
+      "name": "スイカジェネレーター:メロン",
+      "pattern": "🍈"
+    },
+    {
+      "name": "スイカジェネレーター:もも",
+      "pattern": "🍑"
+    },
+    {
+      "name": "スイカジェネレーター:パイナップル",
+      "pattern": "🍍"
+    },
+    {
+      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
+      "pattern": "🍐"
+    },
+    {
+      "name": "スイカジェネレーター:りんご",
+      "pattern": "🍎"
+    },
+    {
+      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
+      "pattern": "🦪"
+    },
+    {
+      "name": "スイカジェネレーター:デコポン",
+      "pattern": "🍊"
+    },
+    {
+      "name": "スイカジェネレーター:ぶどう",
+      "pattern": "🍇"
+    },
+    {
+      "name": "スイカジェネレーター:いちご",
+      "pattern": "🍓"
+    },
+    {
+      "name": "スイカジェネレーター:チェリー",
+      "pattern": "🍒"
+    },
+    {
+      "name": "スイカジェネレーター:クジラ",
+      "pattern": "!クジラ"
+    },
+    {
+      "name": "スイカジェネレーター:シャチ",
+      "pattern": "!シャチ"
+    },
+    {
+      "name": "スイカジェネレーター:ジンベエザメ",
+      "pattern": "!ジンベエザメ"
+    },
+    {
+      "name": "スイカジェネレーター:マンボウ",
+      "pattern": "!マンボウ"
+    },
+    {
+      "name": "スイカジェネレーター:ウミガメ",
+      "pattern": "!ウミガメ"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、撮影開始"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、二夜連続"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、ご期待ください"
+    },
+    {
+      "name": "スイカジェネレーター:カニ",
+      "pattern": "!カニ"
+    },
+    {
+      "name": "スイカジェネレーター:フグ",
+      "pattern": "!フグ"
+    },
+    {
+      "name": "スイカジェネレーター:クラゲ",
+      "pattern": "!クラゲ"
+    },
+    {
+      "name": "スイカジェネレーター:クマノミ",
+      "pattern": "!クマノミ"
+    },
+    {
+      "name": "スイカジェネレーター:マリモ",
+      "pattern": "!マリモ"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "初見なのにモデレーター"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "モデレーターなのに初見"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "ここまで見てくれてありがと。"
+    }
+  ]
+}
