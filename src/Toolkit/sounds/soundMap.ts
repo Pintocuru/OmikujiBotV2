@@ -1,9 +1,7 @@
-import s0 from '@assets/sound/SoundeffectLab/「おめでとうございます」.mp3'
+import s0 from '@assets/source/sounds/SoundeffectLab/「おめでとうございます」.mp3'
 
-// soundMap.ts
-export const soundMap = {
-  "「おめでとうございます」": new Audio(s0),
-} as const
+export const soundMap: Record<string, string> = {
+  '「おめでとうございます」': s0,
+}
 
 export const soundList = Object.keys(soundMap)
-

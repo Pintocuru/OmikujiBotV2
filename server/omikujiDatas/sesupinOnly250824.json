@@ -5,12 +5,13 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
   },
+  "jsonMerge": [],
   "comments": {
     "StageSelect": {
       "id": "StageSelect",
@@ -37,6 +38,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -82,6 +84,66 @@
         "isRepeatAllowed": true
       }
     },
+    "1760054141011": {
+      "id": "1760054141011",
+      "key": "1760054141011",
+      "name": "test",
+      "createdAt": "2025-10-09T23:55:41.011Z",
+      "updatedAt": "2025-10-17T02:33:14.942Z",
+      "order": 2,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "1760054123675",
+          "key": "1760054123675",
+          "name": "",
+          "createdAt": "2025-10-09T23:55:23.675Z",
+          "updatedAt": "2025-10-09T23:55:23.675Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "happy",
+              "messageContent": "「おめでとうございます」",
+              "actionType": "message",
+              "sound": "「おめでとうございます」"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "test"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
     "FruitFortune": {
       "id": "FruitFortune",
       "key": "FruitFortune",
@@ -105,6 +167,7 @@
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -125,6 +188,7 @@
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -145,6 +209,7 @@
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -165,6 +230,7 @@
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -185,6 +251,7 @@
           "updatedAt": "2025-09-13T23:27:05.003Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -222,6 +289,75 @@
         "isRepeatAllowed": true
       }
     },
+    "GoogolClover": {
+      "id": "GoogolClover",
+      "key": "GoogolClover",
+      "name": "グーゴルクローバー",
+      "description": "19個の大吉と、1個の大凶",
+      "createdAt": "2025-10-05T14:14:24.331Z",
+      "updatedAt": "2025-10-10T07:35:51.743Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": "GoogolClover",
+      "scriptParams": {},
+      "omikuji": [
+        {
+          "id": "1759673656457",
+          "key": "1759673656457",
+          "name": "",
+          "createdAt": "2025-10-05T14:14:16.457Z",
+          "updatedAt": "2025-10-05T14:14:16.457Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "cafelatte",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^クローバー",
+          "^グーゴル",
+          "^ダイス",
+          "^Clover",
+          "^Googol",
+          "^Google$",
+          "^dice",
+          "☘",
+          "🎲"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
     "EidolonGacha": {
       "id": "EidolonGacha",
       "key": "EidolonGacha",
@@ -244,6 +380,7 @@
           "updatedAt": "2025-09-02T03:45:59.053Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -289,6 +426,7 @@
           "updatedAt": "2025-09-02T03:45:59.053Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -342,6 +480,7 @@
           "updatedAt": "2025-09-02T03:45:59.053Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -403,6 +542,7 @@
           "updatedAt": "2025-09-02T03:45:59.053Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -477,132 +617,6 @@
           "^がちゃ",
           "^ガチャ",
           "^gacha"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "GoogolClover": {
-      "id": "GoogolClover",
-      "key": "GoogolClover",
-      "name": "グーゴルクローバー",
-      "description": "19個の大吉と、1個の大凶",
-      "createdAt": "2025-10-05T14:14:24.331Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#A5D6A7",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": "GoogolClover",
-      "scriptParams": {},
-      "omikuji": [
-        {
-          "id": "1759673656457",
-          "key": "1759673656457",
-          "name": "",
-          "createdAt": "2025-10-05T14:14:16.457Z",
-          "updatedAt": "2025-10-05T14:14:16.457Z",
-          "order": 0,
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "cafelatte",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^クローバー",
-          "^グーゴル",
-          "^ダイス",
-          "^Clover",
-          "^Googol",
-          "^Google$",
-          "^dice",
-          "☘",
-          "🎲"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "1760054141011": {
-      "id": "1760054141011",
-      "key": "1760054141011",
-      "name": "test",
-      "createdAt": "2025-10-09T23:55:41.011Z",
-      "updatedAt": "2025-10-10T07:35:51.743Z",
-      "order": 2,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "1760054123675",
-          "key": "1760054123675",
-          "name": "",
-          "createdAt": "2025-10-09T23:55:23.675Z",
-          "updatedAt": "2025-10-09T23:55:23.675Z",
-          "order": 0,
-          "tags": [],
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "chocolat",
-              "iconKey": "happy",
-              "messageContent": "<<commenter>>,<<winner>>",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "test"
         ]
       },
       "limits": {
@@ -2120,7 +2134,8 @@
           "DwarfBomb",
           "GoogolClover"
         ],
-        "wordPartySettings": "basic"
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
       }
     }
   },

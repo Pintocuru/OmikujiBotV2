@@ -37,17 +37,17 @@ const files = getAllSoundFiles(dir)
 
 // 例: ['決定ボタンを押す12.mp3', 'sub/bgm1.mp3', 'se/click.mp3']
 
-const imports = files.map((f, i) => `import s${i} from '@assets/sound/${f}'`).join('\n')
+const imports = files.map((f, i) => `import s${i} from '@assets/source/sounds/${f}'`).join('\n')
 
 const exports = `
-export const soundMap = {
+export const soundMap: Record<string, string> = {
 ${files
   .map((f, i) => {
     const base = path.basename(f, path.extname(f))
-    return `  ${JSON.stringify(base)}: new Audio(s${i}),`
+    return `  ${JSON.stringify(base)}: s${i},`
   })
   .join('\n')}
-} as const
+}
 
 export const soundList = Object.keys(soundMap)
 `
