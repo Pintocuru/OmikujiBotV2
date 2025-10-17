@@ -41,18 +41,21 @@ export function useVisibilitySettings() {
    */
   const setFullVisibility = () => {
     const fullSettings = {
-      comments: 'pro' as const,
-      timers: 'pro' as const,
-      actionSets: 'pro' as const,
-      placeholders: 'pro' as const,
-      characters: 'pro' as const,
-      characterVisible: 'pro' as const,
-      wordPartyLoading: 'pro' as const,
-      licenseVisible: 'pro' as const,
+      comments: 'basic' as const,
+      timers: 'basic' as const,
+      actionSets: 'basic' as const,
+      placeholders: 'basic' as const,
+      characters: 'basic' as const,
+
+      characterVisible: 'basic' as const,
+      wordPartyLoading: 'internal' as const,
+      licenseVisible: 'basic' as const,
+
       gameScriptSettings: 'pro' as const,
-      wordPartySettings: 'pro' as const,
-      jsonMergeSettings: 'pro' as const,
-      gameScripts: [] as string[],
+      gameScripts: ['GouseiSuika', 'BomberSpin', 'DwarfBomb'] as string[],
+
+      jsonMergeSettings: 'basic' as const,
+      wordPartySettings: 'basic' as const,
     }
 
     omikujiStore.updateNestedDisplaySettings('developer', {
@@ -66,17 +69,20 @@ export function useVisibilitySettings() {
   const setSoloVisibility = () => {
     const soloSettings = {
       comments: 'basic' as const,
-      timers: 'basic' as const,
+      timers: 'experimental' as const,
       actionSets: 'basic' as const,
       placeholders: 'basic' as const,
       characters: 'basic' as const,
-      characterVisible: 'basic' as const,
-      wordPartyLoading: 'internal' as const,
-      licenseVisible: 'basic' as const,
-      gameScriptSettings: 'basic' as const,
-      wordPartySettings: 'basic' as const,
-      jsonMergeSettings: 'basic' as const,
+
+      characterVisible: 'experimental' as const,
+      wordPartyLoading: 'experimental' as const,
+      licenseVisible: 'experimental' as const,
+
+      gameScriptSettings: 'experimental' as const,
       gameScripts: [] as string[],
+
+      jsonMergeSettings: 'experimental' as const,
+      wordPartySettings: 'experimental' as const,
     }
 
     omikujiStore.updateNestedDisplaySettings('developer', {
@@ -93,7 +99,6 @@ export function useVisibilitySettings() {
     gameScripts,
     wordPartySettings,
     jsonMergeSettings,
-    // 新しい関数を追加
     setFullVisibility,
     setSoloVisibility,
   }

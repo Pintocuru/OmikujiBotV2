@@ -32,7 +32,7 @@
         {
           "fromCharacterKey": "omiken",
           "toCharacterKey": "himari",
-          "fromIconKey": "",
+          "fromIconKey": "default",
           "toIconKey": "thinking"
         }
       ]
@@ -50,8 +50,8 @@
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "",
-          "fromIconKey": "",
+          "toCharacterKey": "tsumugi",
+          "fromIconKey": "default",
           "toIconKey": "excited"
         }
       ]
@@ -822,7 +822,7 @@
       "name": "コント:つむぎ",
       "description": "あーしを呼んでくれた？マジ感謝だよっ",
       "createdAt": "2025-10-01T04:39:05.252Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-10-16T13:52:41.344Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -919,7 +919,7 @@
               "delaySeconds": 5,
               "wordParty": "",
               "characterKey": "himari",
-              "iconKey": "default",
+              "iconKey": "happy",
               "messageContent": "ではさっそく始めていきます",
               "actionType": "message"
             },
@@ -970,14 +970,14 @@
             },
             {
               "delaySeconds": 8,
-              "wordParty": "!女衆「おう！」",
+              "wordParty": "!シャキーン2",
               "characterKey": "himari",
-              "iconKey": "wink",
-              "messageContent": "くやしい…!でも…感じちゃう!",
+              "iconKey": "excited",
+              "messageContent": "濡れるッ!",
               "actionType": "message"
             },
             {
-              "delaySeconds": 10.5,
+              "delaySeconds": 10,
               "wordParty": "!間抜け5",
               "characterKey": "tsumugi",
               "iconKey": "blushing",
@@ -1014,7 +1014,7 @@
               "actionType": "message"
             }
           ],
-          "weight": 2
+          "weight": 3
         },
         {
           "id": "651476f5-5eb3-462c-bd7b-081a3963cd15",
@@ -3365,6 +3365,7 @@
       "updatedAt": "2025-10-16T06:37:46.145Z",
       "order": 1,
       "isEnabled": true,
+      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
@@ -3386,8 +3387,7 @@
           "messageToast": "",
           "actionType": "wordParty"
         }
-      ],
-      "editorColor": "#FF9800"
+      ]
     }
   },
   "placeholders": {

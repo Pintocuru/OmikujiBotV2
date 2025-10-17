@@ -407,22 +407,21 @@
       },
       "visibility": {
         "comments": "basic",
-        "timers": "basic",
+        "timers": "experimental",
         "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
-        "characterVisible": "basic",
+        "characterVisible": "experimental",
         "wordPartyLoading": "experimental",
         "licenseVisible": "experimental",
         "gameScriptSettings": "basic",
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
-          "DwarfBomb",
-          "GoogolClover"
+          "DwarfBomb"
         ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+        "jsonMergeSettings": "experimental",
+        "wordPartySettings": "experimental"
       }
     }
   },

@@ -41,6 +41,7 @@
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -937,13 +938,13 @@
         "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
-        "characterVisible": "basic",
-        "wordPartyLoading": "basic",
+        "characterVisible": "experimental",
+        "wordPartyLoading": "experimental",
         "licenseVisible": "experimental",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+        "jsonMergeSettings": "experimental",
+        "wordPartySettings": "experimental"
       }
     }
   },
