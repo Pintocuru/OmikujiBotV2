@@ -14,7 +14,7 @@ import { useRecordSort } from './composables/useRecordSort'
 
 import { useSettingsOperations } from './composables/useSettingsOperations'
 import { useVersionCheck } from './composables/useVersionCheck'
-import { normalizeData } from '@/migrations'
+import { normalizeData } from '@/Toolkit/migrations'
 
 // グローバルデータの初期化
 const rawData = window.omikujiData || {}

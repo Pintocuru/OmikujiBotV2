@@ -3,7 +3,7 @@ import { Ref } from 'vue'
 import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { ImportPreview } from '@/ConfigMaker/components/presetsImport/ImportTypes'
-import { normalizeData } from '@/migrations'
+import { normalizeData } from '@/Toolkit/migrations'
 import { toast } from 'vue-sonner'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
 

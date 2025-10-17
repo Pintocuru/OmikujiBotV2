@@ -6,7 +6,7 @@ import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@/MainGenerator/scripts/CooldownManager/CooldownManager'
-import { normalizeData } from '@/migrations'
+import { normalizeData } from '@/Toolkit/migrations'
 import { useBotMessageActions } from './useBotMessageActions'
 
 // グローバルデータの初期化

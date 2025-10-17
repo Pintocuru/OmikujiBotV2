@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/stores/composables/useDataIO.ts
 import { Ref } from 'vue'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { normalizeData } from '@/migrations'
+import { normalizeData } from '@/Toolkit/migrations'
 import { toast } from 'vue-sonner'
 
 /**
