@@ -13,13 +13,45 @@ if (!process.env.PACKAGE_ROOT) throw new Error('.envファイルが読めない�
 const packageRoot = process.env.PACKAGE_ROOT
 
 const dir = path.resolve(packageRoot, 'assets/source/sounds')
-const files = fs.readdirSync(dir).filter((f) => /\.(mp3|ogg|wav)$/.test(f))
+const outPath = path.resolve(packageRoot, 'src/Toolkit/sounds/soundMap.ts')
+
+// ✅ 再帰的にファイルを収集
+function getAllSoundFiles(baseDir: string): string[] {
+  const entries = fs.readdirSync(baseDir, { withFileTypes: true })
+  const files: string[] = []
+
+  for (const entry of entries) {
+    const fullPath = path.join(baseDir, entry.name)
+    if (entry.isDirectory()) {
+      files.push(...getAllSoundFiles(fullPath))
+    } else if (/\.(mp3|ogg|wav)$/i.test(entry.name)) {
+      const relPath = path.relative(dir, fullPath).replace(/\\/g, '/')
+      files.push(relPath)
+    }
+  }
+
+  return files
+}
+
+const files = getAllSoundFiles(dir)
+
+// 例: ['決定ボタンを押す12.mp3', 'sub/bgm1.mp3', 'se/click.mp3']
 
 const imports = files.map((f, i) => `import s${i} from '@assets/sound/${f}'`).join('\n')
 
-const exports = `export const soundMap = {\n${files
-  .map((f, i) => `  "${f.replace(/\.\w+$/, '')}": s${i},`)
-  .join('\n')}\n}`
+const exports = `
+export const soundMap = {
+${files
+  .map((f, i) => {
+    const base = path.basename(f, path.extname(f))
+    return `  ${JSON.stringify(base)}: new Audio(s${i}),`
+  })
+  .join('\n')}
+} as const
 
-fs.writeFileSync('src/Toolkit/sounds/index.ts', `${imports}\n\n${exports}\n`)
+export const soundList = Object.keys(soundMap)
+`
+
+fs.mkdirSync(path.dirname(outPath), { recursive: true })
+fs.writeFileSync(outPath, `${imports}\n\n${exports}\n`)
 console.log('✅ sound index generated.')
