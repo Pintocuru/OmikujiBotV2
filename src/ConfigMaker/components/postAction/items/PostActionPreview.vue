@@ -47,9 +47,14 @@
       <p class="text-sm opacity-70 mt-2">アクションセット</p>
     </div>
 
-    <!-- WordPartyボタン -->
+    <!-- WordPartyテストボタン -->
     <div v-if="action.actionType !== 'actionSet' && action.wordParty !== ''" class="w-full text-center">
       <WordPartyTestButton label="WordPartyのテスト実行" :pattern="action.wordParty" />
+    </div>
+
+    <!-- サウンドテストボタン -->
+    <div v-if="action.actionType !== 'actionSet' && action.sound && action.sound !== ''" class="w-full text-center">
+      <SoundTestButton label="サウンドのテスト実行" :pattern="action.sound" />
     </div>
   </div>
 </template>
@@ -62,6 +67,7 @@
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
+  import SoundTestButton from '@/ConfigMaker/components/wordPartySettings/SoundTestButton.vue'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
   import { storeToRefs } from 'pinia'
   import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'

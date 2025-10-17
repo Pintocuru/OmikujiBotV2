@@ -25,13 +25,13 @@
   </SettingItem>
 
   <!-- サウンド -->
-  <SettingItem v-if="isDev" label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
-    <input
-      type="text"
-      v-model="sound"
-      class="input input-bordered input-sm"
-      placeholder="サウンドファイル名（オプション）"
-    />
+  <SettingItem label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
+    <select v-model="sound" class="select select-bordered select-sm w-full">
+      <option value="">（なし）</option>
+      <option v-for="s in soundList" :key="s" :value="s">
+        {{ s }}
+      </option>
+    </select>
   </SettingItem>
 </template>
 
@@ -41,6 +41,7 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from './PlaceholderChecker.vue'
   import WordPartyField from './WordPartyField.vue'
+  import { soundList } from '@/Toolkit/sounds/soundMap'
 
   const props = defineProps<{
     action: PostActionType
