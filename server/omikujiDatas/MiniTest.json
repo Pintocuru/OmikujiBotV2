@@ -1,0 +1,1220 @@
+{
+  "meta": {
+    "id": "1754884254510-shoywq",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v1.4.0-beta01",
+    "dataVersion": 1.30901,
+    "author": "Pintocuru",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "CheckNumber": {
+      "id": "CheckNumber",
+      "key": "CheckNumber",
+      "name": "コメント数表示",
+      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T05:02:08.446Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
+          "key": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
+          "name": "コメント数",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<userBase>>のコメント数は [<<tc>>] <<charaTail>>",
+              "sound": "パッ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 14
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^コメント$"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "ReimuGiftLow": {
+      "id": "ReimuGiftLow",
+      "key": "ReimuGiftLow",
+      "name": "ギフト(1-999円)",
+      "description": "ギフトを貰ったときの感謝コメント",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T05:01:59.237Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "sound": "金額表示",
+              "actionType": "legacy"
+            },
+            {
+              "delaySeconds": 1.3,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "blushing",
+              "messageContent": "<<userBase>>、ギフトありがとう!",
+              "messageToast": "",
+              "sound": "ジャン！",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "all"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterSyoken": {
+      "id": "FirstCounterSyoken",
+      "key": "FirstCounterSyoken",
+      "name": "初見",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:44:15.335Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
+          "key": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
+          "name": "初見さんへの挨拶",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 1,
+              "wordParty": "!レベルアップ",
+              "characterKey": "chocolat",
+              "iconKey": "happy",
+              "messageContent": "<<userBase>>、初めまして!",
+              "messageToast": "",
+              "sound": "成功音",
+              "actionType": "message"
+            }
+          ],
+          "weight": 9
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterAgain": {
+      "id": "FirstCounterAgain",
+      "key": "FirstCounterAgain",
+      "name": "久しぶり",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:44:22.799Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "19bb44c2-92e2-4761-b577-caed879dcdc7",
+          "key": "19bb44c2-92e2-4761-b577-caed879dcdc7",
+          "name": "久しぶり1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "chocolat",
+              "iconKey": "happy",
+              "messageContent": "<<userBase>>、久しぶり!また会えたね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisit": {
+      "id": "FirstCounterFirstVisit",
+      "key": "FirstCounterFirstVisit",
+      "name": "こんにちは",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:44:31.564Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
+          "key": "83b66e65-adee-4e2a-a921-951d4e792f9a",
+          "name": "挨拶1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "chocolat",
+              "iconKey": "happy",
+              "messageContent": "<<userBase>>、こんにちは!ゆっくりしていってね。",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "StreamCountTrigger": {
+      "id": "StreamCountTrigger",
+      "key": "StreamCountTrigger",
+      "name": "配信内コメント数:100回毎",
+      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:44:39.674Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
+          "key": "934d91f0-82d1-4b54-b8be-3252e3149a08",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<lc>>回目のコメントは、<<userBase>>だよ。",
+              "sound": "パッ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "lc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "UserCountTrigger": {
+      "id": "UserCountTrigger",
+      "key": "UserCountTrigger",
+      "name": "個別コメント数チェック",
+      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:44:46.079Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
+          "key": "25bbf670-ffd8-4646-b1e2-de04313df2de",
+          "name": "100回コメント",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<userBase>>のコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+              "sound": "パッ",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "loop",
+          "unit": "tc",
+          "value": 100
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {
+    "ViewCountDisplay": {
+      "id": "ViewCountDisplay",
+      "key": "ViewCountDisplay",
+      "name": "閲覧数・高評価数表示(1min)",
+      "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-17T07:51:08.344Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
+          "key": "0636470c-29c0-4f74-af36-549dc7c247b2",
+          "name": "閲覧数:霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<viewer>>人が視聴中<<charaTail>>",
+              "actionType": "toast",
+              "sound": "パッ"
+            }
+          ],
+          "weight": 1
+        },
+        {
+          "id": "1760687268551",
+          "key": "1760687268551",
+          "name": "高評価数",
+          "createdAt": "2025-10-17T07:47:48.551Z",
+          "updatedAt": "2025-10-17T07:47:48.551Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "actionType": "toast",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "delaySeconds": 0,
+              "wordParty": "",
+              "messageToast": "高評価<<upVote>>です。推してくれたら嬉しいな。",
+              "sound": "パッ"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "timers",
+      "intervalSeconds": 60,
+      "isBaseZero": true
+    }
+  },
+  "actionSets": {
+    "GiftIntro": {
+      "id": "GiftIntro",
+      "key": "GiftIntro",
+      "name": "ギフト:イントロ",
+      "description": "ギフトの際に流すWordPartyの演出です",
+      "createdAt": "2025-10-12T03:56:00.109Z",
+      "updatedAt": "2025-10-17T03:35:19.997Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "!金額表示",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 0.3,
+          "wordParty": "!ジャン！",
+          "characterKey": "tsumugi",
+          "iconKey": "default",
+          "messageContent": "",
+          "messageToast": "",
+          "actionType": "wordParty"
+        }
+      ]
+    }
+  },
+  "placeholders": {
+    "userBase": {
+      "id": "userBase",
+      "key": "userBase",
+      "name": "ユーザーの呼び方",
+      "createdAt": "2025-10-17T03:35:10.951Z",
+      "updatedAt": "2025-10-17T03:35:37.754Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>さん"
+      ]
+    },
+    "charaTail": {
+      "id": "charaTail",
+      "key": "charaTail",
+      "name": "キャラクターの語尾",
+      "createdAt": "2025-10-17T04:42:02.035Z",
+      "updatedAt": "2025-10-17T04:49:08.503Z",
+      "order": 2,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "です"
+      ]
+    }
+  },
+  "characters": {
+    "chocolat": {
+      "id": "chocolat",
+      "key": "chocolat",
+      "name": "ストロベリーショコラ",
+      "description": "おみくじBOTのキャラクターです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-09-16T06:54:45.364Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "https://pintocuru.booth.pm/items/5471598",
+      "displayName": "ショコラ",
+      "frameId": "StrawberryChocolat",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#eed84f",
+        "textColor": "#FFEBEE",
+        "backgroundColor": "#D32F2F",
+        "customClasses": "px-6 py-6 border border-white rounded-md"
+      },
+      "image": {
+        "default": "chocolat/default.webp",
+        "happy": "chocolat/happy.webp",
+        "excited": "chocolat/excited.webp",
+        "laughing": "chocolat/laughing.webp",
+        "blushing": "chocolat/blushing.webp",
+        "surprised": "chocolat/surprised.webp",
+        "sad": "chocolat/sad.webp",
+        "angry": "chocolat/angry.webp",
+        "thinking": "chocolat/thinking.webp",
+        "wink": "chocolat/wink.webp",
+        "singing": "chocolat/singing.webp",
+        "sleepy": "chocolat/sleepy.webp"
+      },
+      "imageBase64": "data:image/png;base64,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"
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GoogolClover": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "md",
+      "fontFamily": "default",
+      "bubbleMotionEnter": "scale",
+      "bubbleMotionLeave": "scale",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToasts": true,
+      "showToastsOnRight": true,
+      "showToastsCharacter": true,
+      "showCharacterThumbnail": true,
+      "showCharacterFrame": true,
+      "showCharacterPersistent": false,
+      "bundleCharacters": false,
+      "daisyUiTheme": "coffee"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "basic",
+        "actionSets": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "basic",
+        "wordPartyLoading": "basic",
+        "licenseVisible": "experimental",
+        "gameScriptSettings": "basic",
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb",
+          "GoogolClover"
+        ],
+        "wordPartySettings": "basic",
+        "jsonMergeSettings": "basic"
+      }
+    }
+  },
+  "wordPartySettings": [
+    {
+      "name": "効果音:ドアチャイム1",
+      "pattern": "!ドアチャイム1"
+    },
+    {
+      "name": "効果音:シーン切り替え1",
+      "pattern": "!シーン切り替え1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示1",
+      "pattern": "!ニュースタイトル表示1"
+    },
+    {
+      "name": "効果音:ニュースタイトル表示3",
+      "pattern": "!ニュースタイトル表示3"
+    },
+    {
+      "name": "効果音:レベルアップ",
+      "pattern": "!レベルアップ"
+    },
+    {
+      "name": "効果音:ひらめく1",
+      "pattern": "!ひらめく1"
+    },
+    {
+      "name": "効果音:可愛い動作",
+      "pattern": "!可愛い動作"
+    },
+    {
+      "name": "効果音:シャキーン2",
+      "pattern": "!シャキーン2"
+    },
+    {
+      "name": "効果音:足首がグキッ",
+      "pattern": "!足首がグキッ"
+    },
+    {
+      "name": "効果音:男衆「オウ！」",
+      "pattern": "!男衆「オウ！」"
+    },
+    {
+      "name": "効果音:女衆「おう！」",
+      "pattern": "!女衆「おう！」"
+    },
+    {
+      "name": "効果音:ビシッとツッコミ1",
+      "pattern": "!ビシッとツッコミ1"
+    },
+    {
+      "name": "効果音:チーン1",
+      "pattern": "!チーン1"
+    },
+    {
+      "name": "効果音:間抜け1",
+      "pattern": "!間抜け1"
+    },
+    {
+      "name": "効果音:間抜け5",
+      "pattern": "!間抜け5"
+    },
+    {
+      "name": "効果音:呪いの旋律",
+      "pattern": "!呪いの旋律"
+    },
+    {
+      "name": "効果音:不安（ピアノ演奏）",
+      "pattern": "!不安（ピアノ演奏）"
+    },
+    {
+      "name": "効果音:ジャン！",
+      "pattern": "!ジャン！"
+    },
+    {
+      "name": "効果音:クイズ出題1",
+      "pattern": "!クイズ出題1"
+    },
+    {
+      "name": "効果音:クイズ不正解1",
+      "pattern": "!クイズ不正解1"
+    },
+    {
+      "name": "効果音:クイズ正解1",
+      "pattern": "!クイズ正解1"
+    },
+    {
+      "name": "効果音:金額表示",
+      "pattern": "!金額表示"
+    },
+    {
+      "name": "効果音:消える音",
+      "pattern": "!パッ"
+    },
+    {
+      "name": "効果音:出てくる音",
+      "pattern": "!パパッ"
+    },
+    {
+      "name": "初見",
+      "pattern": "!初見"
+    },
+    {
+      "name": "挑戦者が現れました",
+      "pattern": "!挑戦者"
+    },
+    {
+      "name": "おみくじ:大吉",
+      "pattern": "!omikuji_01"
+    },
+    {
+      "name": "おみくじ:吉",
+      "pattern": "!omikuji_02"
+    },
+    {
+      "name": "おみくじ:中吉",
+      "pattern": "!omikuji_03"
+    },
+    {
+      "name": "おみくじ:小吉",
+      "pattern": "!omikuji_04"
+    },
+    {
+      "name": "おみくじ:末吉",
+      "pattern": "!omikuji_05"
+    },
+    {
+      "name": "おみくじ:凶",
+      "pattern": "!omikuji_06"
+    },
+    {
+      "name": "おみくじ:残念賞",
+      "pattern": "!omikuji_07"
+    },
+    {
+      "name": "おみくじエフェクト",
+      "pattern": "!omikuji_huru"
+    },
+    {
+      "name": "じゃんけん:グー",
+      "pattern": "!janken_1"
+    },
+    {
+      "name": "じゃんけん:チョキ",
+      "pattern": "!janken_2"
+    },
+    {
+      "name": "じゃんけん:パー",
+      "pattern": "!janken_3"
+    },
+    {
+      "name": "じゃんけん:I Love You",
+      "pattern": "!janken_4"
+    },
+    {
+      "name": "じゃんけん結果:勝ち",
+      "pattern": "!janken_win"
+    },
+    {
+      "name": "じゃんけん結果:負け",
+      "pattern": "!janken_lose"
+    },
+    {
+      "name": "フラワー占い:赤い花",
+      "pattern": "!FortuneMarisaRed"
+    },
+    {
+      "name": "フラワー占い:黄色い花",
+      "pattern": "!FortuneMarisaYellow"
+    },
+    {
+      "name": "フラワー占い:白い花",
+      "pattern": "!FortuneMarisaWhite"
+    },
+    {
+      "name": "桃鉄カード:登場ノーマル",
+      "pattern": "!card_00"
+    },
+    {
+      "name": "桃鉄カード:登場ナイス",
+      "pattern": "!card_01"
+    },
+    {
+      "name": "桃鉄カード:登場デビル",
+      "pattern": "!card_02"
+    },
+    {
+      "name": "桃鉄カード:結果ノーマル",
+      "pattern": "!card_10"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_11"
+    },
+    {
+      "name": "桃鉄カード:結果ナイス・スペシャル",
+      "pattern": "!card_12"
+    },
+    {
+      "name": "桃鉄カード:結果デビル",
+      "pattern": "!card_13"
+    },
+    {
+      "name": "ゆびをふる:指",
+      "pattern": "!yubiwo_01"
+    },
+    {
+      "name": "パルプンテ",
+      "pattern": "!パルプンテ"
+    },
+    {
+      "name": "Splatoon:インキ黄色",
+      "pattern": "!Spla_01"
+    },
+    {
+      "name": "Splatoon:インキマゼンダ",
+      "pattern": "!Spla_02"
+    },
+    {
+      "name": "Splatoon:インキシアン",
+      "pattern": "!Spla_03"
+    },
+    {
+      "name": "ドラちゃん:背景",
+      "pattern": "!5percent_dora_0"
+    },
+    {
+      "name": "ドラちゃん:手",
+      "pattern": "!5percent_dora_1"
+    },
+    {
+      "name": "ドラちゃん:赤背景",
+      "pattern": "!5percent_dora_konjac_0"
+    },
+    {
+      "name": "ドラちゃん:どこでもしずちゃん",
+      "pattern": "!5percent_dora_konjac_1"
+    },
+    {
+      "name": "ドラちゃん:ボロン",
+      "pattern": "!5percent_dora_2"
+    },
+    {
+      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
+      "pattern": "!gacha_00A"
+    },
+    {
+      "name": "幻獣ガチャ:フラッシュ",
+      "pattern": "!gacha_00B"
+    },
+    {
+      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
+      "pattern": "!gacha_A1"
+    },
+    {
+      "name": "幻獣ガチャ:激レアカプセル",
+      "pattern": "!gacha_B1"
+    },
+    {
+      "name": "幻獣ガチャ:激レア表示",
+      "pattern": "!gacha_B2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レアカプセル",
+      "pattern": "!gacha_C1"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア表示",
+      "pattern": "!gacha_C2"
+    },
+    {
+      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
+      "pattern": "!gacha_C3"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombcherry"
+    },
+    {
+      "name": "ボンバースロット:cherry",
+      "pattern": "!bombCherry"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bomborange"
+    },
+    {
+      "name": "ボンバースロット:orange",
+      "pattern": "!bombOrange"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombplam"
+    },
+    {
+      "name": "ボンバースロット:plum",
+      "pattern": "!bombPlum"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombmelon"
+    },
+    {
+      "name": "ボンバースロット:melon",
+      "pattern": "!bombMelon"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombbell"
+    },
+    {
+      "name": "ボンバースロット:bell",
+      "pattern": "!bombBell"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombhut"
+    },
+    {
+      "name": "ボンバースロット:hat",
+      "pattern": "!bombHat"
+    },
+    {
+      "name": "ボンバースロット:BAR",
+      "pattern": "!bombBAR"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombseven"
+    },
+    {
+      "name": "ボンバースロット:seven",
+      "pattern": "!bombSeven"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombback"
+    },
+    {
+      "name": "ボンバースロット:背景",
+      "pattern": "!bombBack"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombfire"
+    },
+    {
+      "name": "ボンバースロット:爆発",
+      "pattern": "!bombFire"
+    },
+    {
+      "name": "うさぎスロット:TNTうさぎ",
+      "pattern": "!dwarfBombRabbit"
+    },
+    {
+      "name": "うさぎスロット:ダイナマイト",
+      "pattern": "!dwarfBombDynamite"
+    },
+    {
+      "name": "うさぎスロット:ツルハシ",
+      "pattern": "!dwarfBombPickaxe"
+    },
+    {
+      "name": "うさぎスロット:ダイヤモンド",
+      "pattern": "!dwarfBombDiamond"
+    },
+    {
+      "name": "うさぎスロット:金塊",
+      "pattern": "!dwarfBombGold"
+    },
+    {
+      "name": "うさぎスロット:宝箱",
+      "pattern": "!dwarfBombTreasure"
+    },
+    {
+      "name": "うさぎスロット:ちいさなうさぎ",
+      "pattern": "!dwarfBombDaysBunny"
+    },
+    {
+      "name": "スイカジェネレーター:カボチャ",
+      "pattern": "🎃"
+    },
+    {
+      "name": "スイカジェネレーター:キャンディ",
+      "pattern": "🍬"
+    },
+    {
+      "name": "スイカジェネレーター:スイカ",
+      "pattern": "🍉"
+    },
+    {
+      "name": "スイカジェネレーター:メロン",
+      "pattern": "🍈"
+    },
+    {
+      "name": "スイカジェネレーター:もも",
+      "pattern": "🍑"
+    },
+    {
+      "name": "スイカジェネレーター:パイナップル",
+      "pattern": "🍍"
+    },
+    {
+      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
+      "pattern": "🍐"
+    },
+    {
+      "name": "スイカジェネレーター:りんご",
+      "pattern": "🍎"
+    },
+    {
+      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
+      "pattern": "🦪"
+    },
+    {
+      "name": "スイカジェネレーター:デコポン",
+      "pattern": "🍊"
+    },
+    {
+      "name": "スイカジェネレーター:ぶどう",
+      "pattern": "🍇"
+    },
+    {
+      "name": "スイカジェネレーター:いちご",
+      "pattern": "🍓"
+    },
+    {
+      "name": "スイカジェネレーター:チェリー",
+      "pattern": "🍒"
+    },
+    {
+      "name": "スイカジェネレーター:クジラ",
+      "pattern": "!クジラ"
+    },
+    {
+      "name": "スイカジェネレーター:シャチ",
+      "pattern": "!シャチ"
+    },
+    {
+      "name": "スイカジェネレーター:ジンベエザメ",
+      "pattern": "!ジンベエザメ"
+    },
+    {
+      "name": "スイカジェネレーター:マンボウ",
+      "pattern": "!マンボウ"
+    },
+    {
+      "name": "スイカジェネレーター:ウミガメ",
+      "pattern": "!ウミガメ"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、撮影開始"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、二夜連続"
+    },
+    {
+      "name": "スイカジェネレーター:マグロ",
+      "pattern": "!マグロ、ご期待ください"
+    },
+    {
+      "name": "スイカジェネレーター:カニ",
+      "pattern": "!カニ"
+    },
+    {
+      "name": "スイカジェネレーター:フグ",
+      "pattern": "!フグ"
+    },
+    {
+      "name": "スイカジェネレーター:クラゲ",
+      "pattern": "!クラゲ"
+    },
+    {
+      "name": "スイカジェネレーター:クマノミ",
+      "pattern": "!クマノミ"
+    },
+    {
+      "name": "スイカジェネレーター:マリモ",
+      "pattern": "!マリモ"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "初見なのにモデレーター"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "モデレーターなのに初見"
+    },
+    {
+      "name": "初見モデレーター",
+      "pattern": "ここまで見てくれてありがと。"
+    }
+  ]
+}

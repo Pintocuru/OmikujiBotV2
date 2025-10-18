@@ -110,12 +110,12 @@
    * 新しいプレースホルダーを作成
    */
   const createPlaceholder = (placeholderKey: string) => {
-    omikujiStore.addItem(
-      PlaceholderSchema.parse({
-        key: placeholderKey,
-        name: placeholderKey,
-      })
-    )
+    const parsedItem = PlaceholderSchema.parse({
+      key: placeholderKey,
+      name: placeholderKey,
+    })
+
+    omikujiStore.addItem('placeholders', parsedItem)
     selectPlaceholderItem(placeholderKey)
   }
 </script>
