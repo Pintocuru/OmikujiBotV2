@@ -2,6 +2,7 @@
 import { BotMessage, BotMessageSchema, CharacterEmotionType, CharacterType, PostActionType } from '@/types/'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 export class BotMessageGenerator {
   constructor(private readonly characters: Record<string, CharacterType>) {}
@@ -10,6 +11,9 @@ export class BotMessageGenerator {
    * 単一のPostActionからBotMessageを生成（複数の場合もあり）
    */
   generateMessage(postAction: PostActionType): BotMessage[] {
+    const appStore = useAppStore()
+    const showToasts = appStore.data.displaySettings.base.showToasts
+
     // 安全にキャラクターを取得（存在しない場合はデフォルトキャラクターを使用）
     const character = this.getSafeCharacter(postAction.characterKey)
 
@@ -28,7 +32,7 @@ export class BotMessageGenerator {
         enterMotion: postAction.enterMotion,
         sound: postAction.sound,
         comment: content,
-        isToast,
+        isToast: showToasts ? isToast : false,
         color: character.color,
         delaySeconds: baseDelaySeconds,
       })

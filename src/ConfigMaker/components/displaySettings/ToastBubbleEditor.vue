@@ -2,106 +2,53 @@
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
     <!-- トースト・サムネイルサンプル表示 -->
-    <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+    <div v-if="base.showToasts">
       <ChatBubbleItem
-        :botMessage="createMessage(0, 'テストコメントです')"
+        v-for="(message, i) in previewMessages"
+        :key="i"
+        :botMessage="message"
         :showToastsOnRight="base.showToastsOnRight"
-        :character="base.showToastsCharacter ? getCharacterByIndex(0) : null"
+        :character="base.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
         :displaySize="base.displaySize"
+        :class="!base.showToastsOnRight ? 'self-start' : 'self-end'"
       />
     </div>
-    <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
-      <ChatBubbleItem
-        :botMessage="createMessage(1, 'テストユーザーの運勢は【大吉】長文のテストコメントです。')"
-        :showToastsOnRight="base.showToastsOnRight"
-        :character="base.showToastsCharacter ? getCharacterByIndex(1) : null"
-        :displaySize="base.displaySize"
-      />
+    <div v-else class="p-2" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+      (トーストの代わりにフキダシで表示されます)
     </div>
-    <div v-if="base.showCharacterThumbnail" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
-      <CharacterThumbnailsPreview :characters="Object.values(characters)" :displaySize="base.displaySize" />
-    </div>
+    <CharacterThumbnailsPreview
+      v-if="base.showCharacterThumbnail"
+      :characters="characterArray"
+      :displaySize="base.displaySize"
+      :class="!base.showToastsOnRight ? 'self-start' : 'self-end'"
+    />
   </div>
 
-  <!-- トースト・サムネイル位置 -->
+  <!-- 設定項目 -->
   <SettingItem
-    label="トースト・サムネイル位置"
-    description="画面上部に通知メッセージを表示します"
+    v-for="setting in settings"
+    :key="setting.field"
+    :label="setting.label"
+    :description="setting.description"
     :showReset="true"
-    @reset="() => resetField('showToastsOnRight')"
+    :devMemo="setting.devMemo"
+    @reset="() => resetField(setting.field)"
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
-        :checked="base.showToastsOnRight"
-        @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
+        :checked="base[setting.field] as boolean"
+        @change="(e) => updateField(setting.field, (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
-      <span class="label-text">OFFで左側、ONで右側に表示します</span>
-    </label>
-  </SettingItem>
-
-  <!-- トースト表示 -->
-  <SettingItem
-    label="トースト表示"
-    description="トーストの表示・非表示を切り替えます"
-    :showReset="true"
-    @reset="() => resetField('showToasts')"
-  >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.showToasts"
-        @change="(e) => updateField('showToasts', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">トーストを表示する</span>
-    </label>
-  </SettingItem>
-
-  <!-- トーストにキャラクターを表示するか -->
-  <SettingItem
-    v-if="canShowCharacterSettings || (isDev && base.showToastsCharacter)"
-    devMemo="characterVisible"
-    label="トーストのキャラクター表示"
-    description="表示できるキャラクターは default のみです"
-    :showReset="true"
-    @reset="() => resetField('showToastsCharacter')"
-  >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.showToastsCharacter"
-        @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">トーストの隣にキャラクターアイコンを表示する</span>
-    </label>
-  </SettingItem>
-
-  <!-- キャラクターサムネイル表示 -->
-  <SettingItem
-    v-if="canShowCharacterSettings || (isDev && base.showCharacterThumbnail)"
-    devMemo="characterVisible"
-    label="キャラクターサムネイル"
-    description="右下にキャラクターのサムネイルを表示します"
-    :showReset="true"
-    @reset="() => resetField('showCharacterThumbnail')"
-  >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.showCharacterThumbnail"
-        @change="(e) => updateField('showCharacterThumbnail', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">キャラクターサムネイルを表示する</span>
+      <span class="label-text">{{ setting.text }}</span>
     </label>
   </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { z } from 'zod'
   import { isDev } from '@/types'
   import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
   import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
@@ -112,41 +59,82 @@
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { storeToRefs } from 'pinia'
 
-  // Store
+  type BaseSettingsKey = keyof z.infer<typeof BaseSettingsSchema>
+
+  interface SettingConfig {
+    field: BaseSettingsKey
+    label: string
+    description: string
+    text: string
+    devMemo?: string
+    show?: () => boolean
+  }
+
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const characters = computed(() => data.value.characters)
+  const characterArray = computed(() => Object.values(data.value.characters))
   const base = computed(() => data.value.displaySettings.base)
-  const characterArray = computed(() => Object.values(characters.value))
 
-  // 条件式の抽出
   const canShowCharacterSettings = computed(() => useVisibilityAccess().canShow('characterVisible'))
 
-  // 汎用的な更新・リセット関数
-  const updateField = (field: keyof typeof base.value, value: any) => {
+  // 設定項目の配列化
+  const settings = computed<SettingConfig[]>(() => {
+    const allSettings: SettingConfig[] = [
+      {
+        field: 'showToastsOnRight',
+        label: 'トースト・サムネイル位置',
+        description: '画面上部に通知メッセージを表示します',
+        text: 'OFFで左側、ONで右側に表示します',
+      },
+      {
+        field: 'showToasts',
+        label: 'トースト表示',
+        description: 'OFFの場合、すべてフキダシで表示します',
+        text: 'トーストを表示する',
+      },
+      {
+        field: 'showToastsCharacter',
+        label: 'トーストのキャラクター表示',
+        description: '表示できるキャラクターは default のみです',
+        text: 'トーストの隣にキャラクターアイコンを表示する',
+        devMemo: 'characterVisible',
+        show: () =>
+          (canShowCharacterSettings.value && base.value.showToasts) || (isDev && base.value.showToastsCharacter),
+      },
+      {
+        field: 'showCharacterThumbnail',
+        label: 'キャラクターサムネイル',
+        description: '右下にキャラクターのサムネイルを表示します',
+        text: 'キャラクターサムネイルを表示する',
+        devMemo: 'characterVisible',
+        show: () => canShowCharacterSettings.value || (isDev && base.value.showCharacterThumbnail),
+      },
+    ]
+    return allSettings.filter((s) => !s.show || s.show())
+  })
+
+  // 修正後の previewMessages
+  const previewMessages = computed(() => {
+    return Array(2)
+      .fill(null)
+      .map((_, i) => {
+        const charIndex = i < characterArray.value.length ? i : 0
+        const character = characterArray.value[charIndex]
+        return BotMessageSchema.parse({
+          color: character?.color,
+          comment: i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。',
+        })
+      })
+  })
+
+  const updateField = (field: BaseSettingsKey, value: any) => {
     omikujiStore.updateDisplaySettings({
       base: { ...base.value, [field]: value },
     })
   }
 
-  const resetField = (field: keyof typeof base.value) => {
-    const schemaDefaults = BaseSettingsSchema.parse({})
-    updateField(field, schemaDefaults[field])
-  }
-
-  // キャラクター取得の統合
-  const getCharacterByIndex = (index: number) => {
-    return characterArray.value[index] || characterArray.value[0] || null
-  }
-
-  // メッセージ作成の共通化
-  const createMessage = (characterIndex: number, comment: string) => {
-    const character = getCharacterByIndex(characterIndex)
-    if (!character) return undefined
-    return BotMessageSchema.parse({
-      color: character.color,
-      comment,
-    })
+  const resetField = (field: BaseSettingsKey) => {
+    updateField(field, BaseSettingsSchema.parse({})[field])
   }
 </script>

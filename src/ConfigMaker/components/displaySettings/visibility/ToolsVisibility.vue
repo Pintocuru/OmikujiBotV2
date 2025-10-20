@@ -28,7 +28,7 @@
   const { wordPartySettings, jsonMergeSettings } = useVisibilitySettings()
 
   const settings = [
-    { key: 'jsonMergeSettings', label: 'Jsonマージ機能', model: jsonMergeSettings },
+    { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev)', model: jsonMergeSettings },
     { key: 'wordPartySettings', label: 'WordPartyリスト', model: wordPartySettings },
   ]
 </script>

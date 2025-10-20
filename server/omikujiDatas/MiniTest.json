@@ -13,13 +13,13 @@
   },
   "jsonMerge": [],
   "comments": {
-    "CheckNumber": {
-      "id": "CheckNumber",
-      "key": "CheckNumber",
+    "NumComments": {
+      "id": "NumComments",
+      "key": "NumComments",
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T05:02:08.446Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -43,15 +43,15 @@
             {
               "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<userBase>>のコメント数は [<<tc>>] <<charaTail>>",
+              "messageToast": "<<user>>さんのコメント数は【<<tc>>】です",
               "sound": "パッ",
               "actionType": "toast"
             }
           ],
-          "weight": 14
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -75,16 +75,16 @@
         "cooldownSeconds": 0,
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "isRepeatAllowed": false
       }
     },
-    "ReimuGiftLow": {
-      "id": "ReimuGiftLow",
-      "key": "ReimuGiftLow",
-      "name": "ギフト(1-999円)",
+    "GiftMessage": {
+      "id": "GiftMessage",
+      "key": "GiftMessage",
+      "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T05:01:59.237Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -106,20 +106,20 @@
           "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 1,
+              "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
               "sound": "金額表示",
               "actionType": "legacy"
             },
             {
-              "delaySeconds": 1.3,
+              "delaySeconds": 0.3,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "blushing",
-              "messageContent": "<<userBase>>、ギフトありがとう!",
+              "messageContent": "<<user>>さん、ギフトありがとう!",
               "messageToast": "",
               "sound": "ジャン！",
               "actionType": "message"
@@ -152,13 +152,13 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterSyoken": {
-      "id": "FirstCounterSyoken",
-      "key": "FirstCounterSyoken",
+    "FirstSyoken": {
+      "id": "FirstSyoken",
+      "key": "FirstSyoken",
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:44:15.335Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -180,17 +180,26 @@
           "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 1,
-              "wordParty": "!レベルアップ",
-              "characterKey": "chocolat",
-              "iconKey": "happy",
-              "messageContent": "<<userBase>>、初めまして!",
-              "messageToast": "",
+              "delaySeconds": 0,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "",
               "sound": "成功音",
+              "actionType": "legacy"
+            },
+            {
+              "delaySeconds": 0.3,
+              "wordParty": "!レベルアップ",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、初めまして!",
+              "messageToast": "",
+              "sound": "レベルアップ",
               "actionType": "message"
             }
           ],
-          "weight": 9
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -217,13 +226,13 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterAgain": {
-      "id": "FirstCounterAgain",
-      "key": "FirstCounterAgain",
+    "FirstComeback": {
+      "id": "FirstComeback",
+      "key": "FirstComeback",
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:44:22.799Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -235,7 +244,7 @@
         {
           "id": "19bb44c2-92e2-4761-b577-caed879dcdc7",
           "key": "19bb44c2-92e2-4761-b577-caed879dcdc7",
-          "name": "久しぶり1",
+          "name": "久しぶりの方への挨拶",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -246,15 +255,16 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "chocolat",
+              "wordParty": "",
+              "characterKey": "chocolate",
               "iconKey": "happy",
-              "messageContent": "<<userBase>>、久しぶり!また会えたね。",
+              "messageContent": "<<user>>さん、久しぶり!また会えたね。",
               "messageToast": "",
+              "sound": "きらーん2",
               "actionType": "message"
             }
           ],
-          "weight": 4
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -281,13 +291,13 @@
         "isRepeatAllowed": true
       }
     },
-    "FirstCounterFirstVisit": {
-      "id": "FirstCounterFirstVisit",
-      "key": "FirstCounterFirstVisit",
+    "FirstVisit": {
+      "id": "FirstVisit",
+      "key": "FirstVisit",
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:44:31.564Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -299,7 +309,7 @@
         {
           "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
           "key": "83b66e65-adee-4e2a-a921-951d4e792f9a",
-          "name": "挨拶1",
+          "name": "挨拶",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -311,14 +321,14 @@
             {
               "delaySeconds": 0,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "happy",
-              "messageContent": "<<userBase>>、こんにちは!ゆっくりしていってね。",
+              "messageContent": "<<user>>さん、こんにちは!",
               "messageToast": "",
               "actionType": "message"
             }
           ],
-          "weight": 4
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -345,13 +355,13 @@
         "isRepeatAllowed": true
       }
     },
-    "StreamCountTrigger": {
-      "id": "StreamCountTrigger",
-      "key": "StreamCountTrigger",
-      "name": "配信内コメント数:100回毎",
+    "CountStream": {
+      "id": "CountStream",
+      "key": "CountStream",
+      "name": "配信内コメント:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:44:39.674Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -375,15 +385,15 @@
             {
               "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<lc>>回目のコメントは、<<userBase>>だよ。",
-              "sound": "パッ",
+              "messageToast": "<<lc>>回目のコメントは、<<user>>さんだよ。",
+              "sound": "ジャン！",
               "actionType": "toast"
             }
           ],
-          "weight": 4
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -408,13 +418,13 @@
         "isRepeatAllowed": true
       }
     },
-    "UserCountTrigger": {
-      "id": "UserCountTrigger",
-      "key": "UserCountTrigger",
-      "name": "個別コメント数チェック",
+    "CountUser": {
+      "id": "CountUser",
+      "key": "CountUser",
+      "name": "個別コメント:100回毎",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:44:46.079Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -438,15 +448,15 @@
             {
               "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<userBase>>のコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
-              "sound": "パッ",
+              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。",
+              "sound": "ジャン！",
               "actionType": "toast"
             }
           ],
-          "weight": 4
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -479,7 +489,7 @@
       "name": "閲覧数・高評価数表示(1min)",
       "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-17T07:51:08.344Z",
+      "updatedAt": "2025-10-20T05:50:45.105Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -491,7 +501,7 @@
         {
           "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
           "key": "0636470c-29c0-4f74-af36-549dc7c247b2",
-          "name": "閲覧数:霊夢",
+          "name": "閲覧数",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -503,12 +513,12 @@
             {
               "delaySeconds": 0,
               "wordParty": "",
-              "characterKey": "chocolat",
+              "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中<<charaTail>>",
-              "actionType": "toast",
-              "sound": "パッ"
+              "messageToast": "<<viewer>>人が視聴中です",
+              "sound": "パッ",
+              "actionType": "toast"
             }
           ],
           "weight": 1
@@ -524,14 +534,14 @@
           "accessLevel": "basic",
           "postActions": [
             {
-              "actionType": "toast",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
               "delaySeconds": 0,
               "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "",
               "messageToast": "高評価<<upVote>>です。推してくれたら嬉しいな。",
-              "sound": "パッ"
+              "sound": "パッ",
+              "actionType": "toast"
             }
           ],
           "weight": 1
@@ -549,7 +559,7 @@
       "name": "ギフト:イントロ",
       "description": "ギフトの際に流すWordPartyの演出です",
       "createdAt": "2025-10-12T03:56:00.109Z",
-      "updatedAt": "2025-10-17T03:35:19.997Z",
+      "updatedAt": "2025-10-20T05:45:38.280Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -577,45 +587,15 @@
       ]
     }
   },
-  "placeholders": {
-    "userBase": {
-      "id": "userBase",
-      "key": "userBase",
-      "name": "ユーザーの呼び方",
-      "createdAt": "2025-10-17T03:35:10.951Z",
-      "updatedAt": "2025-10-17T03:35:37.754Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "<<user>>さん"
-      ]
-    },
-    "charaTail": {
-      "id": "charaTail",
-      "key": "charaTail",
-      "name": "キャラクターの語尾",
-      "createdAt": "2025-10-17T04:42:02.035Z",
-      "updatedAt": "2025-10-17T04:49:08.503Z",
-      "order": 2,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "です"
-      ]
-    }
-  },
+  "placeholders": {},
   "characters": {
-    "chocolat": {
-      "id": "chocolat",
-      "key": "chocolat",
+    "chocolate": {
+      "id": "chocolate",
+      "key": "chocolate",
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-16T06:54:45.364Z",
+      "updatedAt": "2025-10-20T05:48:13.046Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -626,7 +606,7 @@
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
-      "url": "https://pintocuru.booth.pm/items/5471598",
+      "url": "https://pintocuru.booth.pm/",
       "displayName": "ショコラ",
       "frameId": "StrawberryChocolat",
       "displayOption": {
@@ -638,7 +618,7 @@
         "nameColor": "#eed84f",
         "textColor": "#FFEBEE",
         "backgroundColor": "#D32F2F",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
+        "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
         "default": "chocolat/default.webp",
@@ -691,9 +671,9 @@
       "showToasts": true,
       "showToastsOnRight": true,
       "showToastsCharacter": true,
-      "showCharacterThumbnail": true,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
+      "showCharacterThumbnail": false,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
       "bundleCharacters": false,
       "daisyUiTheme": "coffee"
     },
@@ -709,15 +689,10 @@
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "basic",
-        "wordPartyLoading": "basic",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "basic",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb",
-          "GoogolClover"
-        ],
+        "wordPartyLoading": "experimental",
+        "licenseVisible": "basic",
+        "gameScriptSettings": "experimental",
+        "gameScripts": [],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }

@@ -6,7 +6,6 @@ import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { ActionSetExpander } from './ActionSetExpander'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 /**
