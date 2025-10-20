@@ -84,7 +84,7 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-20T07:31:38.038Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -112,7 +112,7 @@
               "iconKey": "default",
               "messageContent": "",
               "sound": "金額表示",
-              "actionType": "legacy"
+              "actionType": "wordParty"
             },
             {
               "delaySeconds": 0.3,
@@ -158,7 +158,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-20T07:17:35.224Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -190,7 +190,7 @@
             },
             {
               "delaySeconds": 0.3,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "chocolate",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!",
@@ -297,7 +297,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-20T06:58:49.550Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -320,11 +320,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "chocolate",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、こんにちは!",
               "messageToast": "",
+              "sound": "シーン切り替え1",
               "actionType": "message"
             }
           ],
@@ -573,7 +574,7 @@
           "iconKey": "default",
           "messageContent": "",
           "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "legacy"
         },
         {
           "delaySeconds": 0.3,
@@ -582,7 +583,7 @@
           "iconKey": "default",
           "messageContent": "",
           "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "legacy"
         }
       ]
     }
@@ -668,7 +669,7 @@
       "bubbleMotionLeave": "scale",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "showToasts": false,
       "showToastsOnRight": true,
       "showToastsCharacter": true,
       "showCharacterThumbnail": false,

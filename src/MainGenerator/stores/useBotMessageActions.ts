@@ -14,22 +14,21 @@ export const useBotMessageActions = () => {
   const scheduleBotMessages = (processedMessages: BotMessage[]) => {
     if (!processedMessages.length) return
 
-    Promise.all(
-      processedMessages.map((m) => {
-        const delay = m.delaySeconds * 1000
-        return new Promise<void>((resolve) => {
-          setTimeout(() => {
-            if (!botMessages.value.some((c) => c.id === m.id)) {
-              botMessages.value = [...botMessages.value, m]
+    const delayPromises = processedMessages.map((m) => {
+      const delay = m.delaySeconds * 1000
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          if (!botMessages.value.some((c) => c.id === m.id)) {
+            botMessages.value = [...botMessages.value, m]
 
-              // 🎵 sound再生
-              if (m.sound) playSound(m.sound)
-            }
-            resolve()
-          }, delay)
-        })
+            // 🎵 sound再生
+            if (m.sound) playSound(m.sound)
+          }
+          resolve()
+        }, delay)
       })
-    )
+    })
+    Promise.all(delayPromises)
   }
 
   const addBotMessage = (message: BotMessage) => (botMessages.value = [...botMessages.value, message])

@@ -116,7 +116,7 @@ export const PostActionSchema = z
       actionType = 'message'
     } else if (data.messageToast && data.messageToast.trim() !== '') {
       actionType = 'toast'
-    } else if (data.wordParty && data.wordParty.trim() !== '') {
+    } else if ((data.wordParty && data.wordParty.trim() !== '') || (data.sound && data.sound.trim() !== '')) {
       actionType = 'wordParty'
     }
 

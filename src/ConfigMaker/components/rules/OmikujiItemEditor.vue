@@ -2,7 +2,7 @@
 <template>
   <!-- 左端に色を付ける -->
   <div
-    class="card bg-base-100 p-2 border-x-4 mb-4"
+    class="bg-base-100 p-2 border-l-6 mb-4"
     :class="{
       'border-x-primary': index % 2 === 0,
       'border-x-secondary': index % 2 === 1,
@@ -18,7 +18,7 @@
       />
 
       <!-- PostActions編集コンポーネント -->
-      <PostActionsEditor v-model="postActions" :category="category" :selectedItemKey="selectedItemKey" />
+      <PostActionsEditor v-model="postActions" :category="category" :selectedItemKey="selectedItemKey" :index="index" />
     </div>
   </div>
 </template>

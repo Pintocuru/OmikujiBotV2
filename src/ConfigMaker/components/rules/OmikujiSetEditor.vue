@@ -2,7 +2,7 @@
 <template>
   <div v-if="selectedItemKey">
     <!-- 便利なボタン群 -->
-    <div class="flex justify-end gap-2">
+    <div class="flex justify-end gap-2 space-y-4">
       <!-- キャラクター一括変更ボタン -->
       <CharacterChanger :category="category" :selectedId="selectedItemKey" />
 

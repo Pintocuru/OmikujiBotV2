@@ -41,6 +41,7 @@
     modelValue: PostActionType[]
     category: RulesCategoryType | 'actionSets'
     selectedItemKey: string | null
+    index: number
   }>()
 
   const emit = defineEmits<{
@@ -49,7 +50,7 @@
 
   // Refs
   const isJsonMode = ref(false)
-  const isTabEditorOpen = ref(props.category === 'actionSets' ? true : false)
+  const isTabEditorOpen = ref(props.category === 'actionSets' ? true : props.index === 0 ? true : false)
 
   // Methods
   const toggleTabEditor = () => {

@@ -9,6 +9,7 @@ import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/Omikuji
 import { toast } from 'vue-sonner'
 import { storeToRefs } from 'pinia'
 import { RankingManager } from '@/MainGenerator/scripts/VariablePlaceholder/RankingManager'
+import { playSound } from '@/Toolkit/sounds'
 
 export function useTestPost() {
   const omikujiStore = useOmikujiStore()
@@ -33,7 +34,14 @@ export function useTestPost() {
   const executeTestPostDelays = async (posts: BotMessage[]): Promise<void> => {
     try {
       const delayPromises = posts.map(
-        (post) => new Promise<void>((resolve) => setTimeout(resolve, post.delaySeconds * 1000))
+        (post) =>
+          new Promise<void>((resolve) => {
+            setTimeout(() => {
+              // 🎵 sound再生
+              if (post.sound) playSound(post.sound)
+              resolve()
+            }, post.delaySeconds * 1000)
+          })
       )
       await Promise.all(delayPromises)
     } catch (error) {
@@ -62,6 +70,7 @@ export function useTestPost() {
   }
 
   const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
+    console.log(actions)
     const rule = selectedRule.value
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
     const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)
@@ -93,7 +102,7 @@ export function useTestPost() {
     if (drawOmikuji) {
       showOmikujiResultToast(drawOmikuji, actions)
     }
-
+    console.log(botMessageArray)
     executeTestPostDelays(botMessageArray)
   }
 
