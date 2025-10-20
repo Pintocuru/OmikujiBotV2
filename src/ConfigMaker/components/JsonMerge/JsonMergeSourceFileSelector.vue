@@ -1,30 +1,52 @@
 <!-- src/configMaker/components/jsonMerge/JsonMergeSourceFileSelector.vue -->
 <template>
-  <SettingItem label="マージ元ファイル">
-    <select :value="modelValue" @change="handleChange" class="select select-bordered w-full">
-      <option value="">ファイルを選択してください</option>
-      <option v-for="file in jsonFiles" :key="file" :value="file">
-        {{ file }}
-      </option>
-    </select>
-  </SettingItem>
+  <div class="space-y-3">
+    <!-- マージ元ファイル -->
+    <SettingItem label="マージ元ファイル">
+      <select
+        :value="currentMergeItem.sourceFile"
+        @change="handleSourceFileChange"
+        class="select select-bordered w-full"
+      >
+        <option value="">ファイルを選択してください</option>
+        <option v-for="file in jsonFiles" :key="file" :value="file">
+          {{ file }}
+        </option>
+      </select>
+    </SettingItem>
+
+    <!-- キーサフィックス -->
+    <SettingItem label="複数用のキーサフィックス" description="マージ時に元のキーに付加する接尾辞">
+      <input
+        type="text"
+        :value="currentMergeItem.keySuffix"
+        @input="handleKeySuffixChange"
+        class="input input-bordered w-full"
+        placeholder="キャラクターキーを入力(1文字目は自動で大文字になります)"
+      />
+    </SettingItem>
+  </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, computed } from 'vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
-  // Props
   const props = defineProps<{
-    modelValue: string
+    mergeIndex: number
   }>()
 
-  // Emits
-  const emit = defineEmits<{
-    'update:modelValue': [value: string]
-  }>()
+  const store = useOmikujiStore()
+  const { data } = storeToRefs(store)
 
   const jsonFiles = ref<string[]>([])
+
+  // 現在のマージアイテムを取得
+  const currentMergeItem = computed(() => {
+    return data.value.jsonMerge?.[props.mergeIndex] ?? { sourceFile: '', keySuffix: '' }
+  })
 
   // JSONファイルリストを取得
   onMounted(async () => {
@@ -43,8 +65,28 @@
     }
   })
 
-  const handleChange = (event: Event) => {
+  // ソースファイル変更時の処理
+  const handleSourceFileChange = (event: Event) => {
     const target = event.target as HTMLSelectElement
-    emit('update:modelValue', target.value)
+    updateMergeItem({ sourceFile: target.value })
+  }
+
+  // キーサフィックス変更時の処理
+  const handleKeySuffixChange = (event: Event) => {
+    const target = event.target as HTMLInputElement
+    updateMergeItem({ keySuffix: target.value })
+  }
+
+  // マージアイテムを更新
+  const updateMergeItem = (updates: Partial<typeof currentMergeItem.value>) => {
+    if (!data.value.jsonMerge) return
+
+    const newMerge = [...data.value.jsonMerge]
+    newMerge[props.mergeIndex] = {
+      ...newMerge[props.mergeIndex],
+      ...updates,
+    }
+
+    store.updateJsonMerge(newMerge)
   }
 </script>

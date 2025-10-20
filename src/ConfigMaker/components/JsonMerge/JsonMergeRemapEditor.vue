@@ -11,7 +11,7 @@
       <SettingItem label="元キャラキー">
         <input
           type="text"
-          :value="modelValue.fromCharacterKey"
+          :value="currentRemap.fromCharacterKey"
           @input="updateField('fromCharacterKey', ($event.target as HTMLInputElement).value)"
           class="input input-sm input-bordered w-full"
           placeholder="old_character"
@@ -21,7 +21,7 @@
       <!-- 新キャラキー（選択） -->
       <SettingItem label="新キャラキー">
         <select
-          :value="modelValue.toCharacterKey"
+          :value="currentRemap.toCharacterKey"
           @change="updateField('toCharacterKey', ($event.target as HTMLInputElement).value)"
           class="select select-sm select-bordered w-full"
         >
@@ -35,7 +35,7 @@
       <!-- 元アイコンキー（入力） -->
       <SettingItem label="元アイコンキー">
         <select
-          :value="modelValue.fromIconKey"
+          :value="currentRemap.fromIconKey"
           @change="updateField('fromIconKey', ($event.target as HTMLInputElement).value)"
           class="select select-sm select-bordered w-full"
         >
@@ -49,7 +49,7 @@
       <!-- 新アイコンキー（選択） -->
       <SettingItem label="新アイコンキー">
         <select
-          :value="modelValue.toIconKey"
+          :value="currentRemap.toIconKey"
           @change="updateField('toIconKey', ($event.target as HTMLInputElement).value)"
           class="select select-sm select-bordered w-full"
         >
@@ -68,25 +68,57 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
   import { characterEmotions, CharacterEmotionType, CharacterType, emotionLabels } from '@/types'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
-    modelValue: JsonMergeRemapType
+    mergeIndex: number
     remapIndex: number
     characters: Record<string, CharacterType>
   }>()
 
-  const emit = defineEmits(['update:modelValue', 'remove'])
+  const store = useOmikujiStore()
+  const { data } = storeToRefs(store)
 
   const emotionOptions = computed(() => characterEmotions as readonly CharacterEmotionType[])
 
+  // 現在のリマップを取得
+  const currentRemap = computed(() => {
+    return (
+      data.value.jsonMerge?.[props.mergeIndex]?.remaps?.[props.remapIndex] ?? {
+        fromCharacterKey: '',
+        toCharacterKey: '',
+        fromIconKey: '',
+        toIconKey: '',
+      }
+    )
+  })
+
+  // フィールドを更新
   const updateField = (field: keyof JsonMergeRemapType, value: string) => {
-    emit('update:modelValue', {
-      ...props.modelValue,
+    if (!data.value.jsonMerge) return
+
+    const newMerge = [...data.value.jsonMerge]
+    const newRemaps = [...newMerge[props.mergeIndex].remaps]
+    newRemaps[props.remapIndex] = {
+      ...newRemaps[props.remapIndex],
       [field]: value,
-    })
+    }
+    newMerge[props.mergeIndex] = {
+      ...newMerge[props.mergeIndex],
+      remaps: newRemaps,
+    }
+
+    store.updateJsonMerge(newMerge)
   }
 
+  // リマップを削除
   const removeRemap = () => {
-    emit('remove')
+    if (!data.value.jsonMerge) return
+
+    const newMerge = [...data.value.jsonMerge]
+    newMerge[props.mergeIndex].remaps.splice(props.remapIndex, 1)
+
+    store.updateJsonMerge(newMerge)
   }
 </script>

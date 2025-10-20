@@ -25,11 +25,8 @@
             :isDescription="false"
           />
 
-          <!-- ファイル選択 -->
-          <JsonMergeSourceFileSelector
-            :model-value="merge[i].sourceFile"
-            @update:model-value="updateSourceFile(i, $event)"
-          />
+          <!-- ファイル選択 & キーサフィックス -->
+          <JsonMergeSourceFileSelector :merge-index="i" />
         </div>
 
         <!-- リマップ設定 -->
@@ -44,11 +41,9 @@
           <JsonMergeRemapEditor
             v-for="(remap, j) in item.remaps"
             :key="j"
-            :model-value="remap"
+            :merge-index="i"
             :remap-index="j"
             :characters="characters"
-            @update:model-value="updateRemap(i, j, $event)"
-            @remove="removeRemap(i, j)"
           />
         </div>
       </div>
@@ -62,7 +57,7 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { CharacterType } from '@/types'
-  import { JsonMergeItemSchema, JsonMergeRemapSchema, JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
+  import { JsonMergeItemSchema, JsonMergeRemapSchema } from '@/types/OmikujiData/JsonMergeType'
   import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
   import JsonMergeSourceFileSelector from './JsonMergeSourceFileSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
@@ -86,15 +81,9 @@
     store.updateJsonMerge([...merge.value])
   }
 
-  // BaseSettingsEditorからの更新を処理
+  // BaseSettingsEditorからの更新を処理（共通コンポーネントなので親で処理）
   const updateBaseSettings = (i: number, newSettings: any) => {
     merge.value[i] = { ...merge.value[i], ...newSettings }
-    update()
-  }
-
-  // ソースファイルの更新
-  const updateSourceFile = (i: number, newFile: string) => {
-    merge.value[i].sourceFile = newFile
     update()
   }
 
@@ -113,18 +102,6 @@
   // リマップを追加
   const addRemap = (i: number) => {
     merge.value[i].remaps.push(JsonMergeRemapSchema.parse({}))
-    update()
-  }
-
-  // リマップを更新
-  const updateRemap = (i: number, j: number, remap: JsonMergeRemapType) => {
-    merge.value[i].remaps[j] = remap
-    update()
-  }
-
-  // リマップを削除
-  const removeRemap = (i: number, j: number) => {
-    merge.value[i].remaps.splice(j, 1)
     update()
   }
 </script>

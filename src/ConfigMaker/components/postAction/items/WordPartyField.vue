@@ -2,7 +2,8 @@
 <template>
   <div class="flex items-center gap-2">
     <div class="flex gap-1 w-full">
-      <div class="tabs tabs-boxed tabs-sm">
+      <!-- wordPartySettingsが空でない場合のみタブを表示 -->
+      <div v-if="wordPartySetting.length > 0" class="tabs tabs-boxed tabs-sm">
         <button @click="setInputMode('select')" class="tab tab-sm" :class="{ 'tab-active': inputMode === 'select' }">
           選択
         </button>
@@ -11,15 +12,21 @@
         </button>
       </div>
 
-      <select v-if="inputMode === 'select'" v-model="wordPartyModel" class="select select-bordered select-sm flex-1">
+      <!-- 選択モード（wordPartySettingsが空でない場合のみ） -->
+      <select
+        v-if="wordPartySetting.length > 0 && inputMode === 'select'"
+        v-model="wordPartyModel"
+        class="select select-bordered select-sm flex-1"
+      >
         <option value="">選択してください</option>
         <option v-for="setting in wordPartySetting" :key="setting.pattern" :value="setting.pattern">
           {{ setting.name }} ({{ setting.pattern }})
         </option>
       </select>
 
+      <!-- 手動入力モード（常に表示されるが、settingsが空の場合は単独表示） -->
       <input
-        v-if="inputMode === 'manual'"
+        v-if="wordPartySetting.length === 0 || inputMode === 'manual'"
         type="text"
         v-model="wordPartyModel"
         class="input input-bordered input-sm flex-1"
@@ -27,7 +34,7 @@
       />
     </div>
   </div>
-  <PlaceholderChecker v-if="inputMode === 'manual'" :text="wordPartyModel" />
+  <PlaceholderChecker v-if="wordPartySetting.length === 0 || inputMode === 'manual'" :text="wordPartyModel" />
 </template>
 
 <script setup lang="ts">
@@ -67,6 +74,12 @@
 
   // 初期化：既存の値がsettingに含まれているかチェック
   const initializeInputMode = () => {
+    // wordPartySettingsが空の場合は常にmanualモード
+    if (wordPartySetting.value.length === 0) {
+      inputMode.value = 'manual'
+      return
+    }
+
     const isSelectMode = wordPartySetting.value.some((setting) => setting.pattern === props.wordParty)
     inputMode.value = isSelectMode ? 'select' : 'manual'
   }
@@ -76,6 +89,9 @@
 
   // wordPartyが変更された際の監視
   watch(() => props.wordParty, initializeInputMode)
+
+  // wordPartySettingの変更を監視
+  watch(() => wordPartySetting.value.length, initializeInputMode)
 
   // 入力モード切り替え
   const setInputMode = (mode: 'select' | 'manual') => {

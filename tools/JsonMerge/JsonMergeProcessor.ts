@@ -4,6 +4,7 @@ import { applyAccessLevel, applyOrderOffset } from './transforms'
 import { applyRemaps } from './remaps'
 import { loadSourceFile } from './fileLoader'
 import { mergeOmikujiData } from './merger'
+import { applyKeySuffix } from './KeySuffix'
 
 /**
  * jsonMergeがある場合にマージ処理を実行
@@ -30,8 +31,11 @@ export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: stri
     // 2. リマップ処理を適用（characterKey, iconKeyの置き換え）
     const remappedData = applyRemaps(sourceData, mergeItem.remaps)
 
+    // 各キーに接尾辞を付与
+    const suffixedData = applyKeySuffix(remappedData, mergeItem.keySuffix)
+
     // 3. 再帰的にマージ処理（ソースファイルにもjsonMergeがある場合）
-    const processedSourceData = await processMerge(remappedData, jsonPathRoot)
+    const processedSourceData = await processMerge(suffixedData, jsonPathRoot)
 
     // 4. accessLevelを強制統一
     const unifiedAccessLevelData = applyAccessLevel(processedSourceData, mergeItem.accessLevel)
