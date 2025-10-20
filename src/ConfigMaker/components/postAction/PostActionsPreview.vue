@@ -36,6 +36,8 @@
         return action.messageToast
       case 'wordParty':
         return action.wordParty
+      case 'sounds':
+        return action.sound
       case 'actionSet':
         return `アクションセット: ${action.actionSetKey}`
       default:

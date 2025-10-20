@@ -70,7 +70,6 @@ export function useTestPost() {
   }
 
   const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
-    console.log(actions)
     const rule = selectedRule.value
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
     const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)

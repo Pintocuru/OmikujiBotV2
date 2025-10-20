@@ -84,7 +84,7 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T07:31:38.038Z",
+      "updatedAt": "2025-10-20T08:58:34.863Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -112,7 +112,7 @@
               "iconKey": "default",
               "messageContent": "",
               "sound": "金額表示",
-              "actionType": "wordParty"
+              "actionType": "message"
             },
             {
               "delaySeconds": 0.3,
@@ -186,7 +186,7 @@
               "iconKey": "default",
               "messageContent": "",
               "sound": "成功音",
-              "actionType": "legacy"
+              "actionType": "sounds"
             },
             {
               "delaySeconds": 0.3,
@@ -574,7 +574,7 @@
           "iconKey": "default",
           "messageContent": "",
           "messageToast": "",
-          "actionType": "legacy"
+          "actionType": "wordParty"
         },
         {
           "delaySeconds": 0.3,
@@ -583,7 +583,7 @@
           "iconKey": "default",
           "messageContent": "",
           "messageToast": "",
-          "actionType": "legacy"
+          "actionType": "wordParty"
         }
       ]
     }

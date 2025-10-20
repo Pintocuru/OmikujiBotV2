@@ -38,14 +38,20 @@ export class BotMessageGenerator {
       })
     }
 
-    // messageContentが存在する場合
-    if (postAction.messageContent?.trim()) {
+    const hasContent = postAction.messageContent?.trim()
+    const hasToast = postAction.messageToast?.trim()
+    const hasSound = postAction.sound?.trim()
+
+    if (hasContent) {
       messages.push(createMessage(postAction.messageContent, false))
     }
 
-    // messageToastが存在する場合
-    if (postAction.messageToast?.trim()) {
-      messages.push(createMessage(postAction.messageToast, true))
+    if (hasToast) {
+      messages.push(createMessage(postAction.messageToast!, true))
+    }
+    // 🎵 sound
+    if (!hasContent && !hasToast && hasSound) {
+      messages.push(createMessage('', false))
     }
 
     return messages
@@ -56,7 +62,9 @@ export class BotMessageGenerator {
    */
   generateMessages(postActions: PostActionType[]): BotMessage[] {
     // messageContent または messageToast のいずれかが存在するアクションをフィルタリング
-    const validActions = postActions.filter((action) => action.messageContent?.trim() || action.messageToast?.trim())
+    const validActions = postActions.filter(
+      (action) => action.messageContent?.trim() || action.messageToast?.trim() || action.sound?.trim()
+    )
     if (validActions.length === 0) return []
     return validActions.flatMap((action) => this.generateMessage(action))
   }

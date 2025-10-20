@@ -53,11 +53,12 @@
   import { PostActionType, RulesCategoryType } from '@/types/'
   import MessageSettings from './MessageSettings.vue'
   import ToastSettings from './ToastSettings.vue'
+  import SoundSettings from './SoundSettings.vue'
   import WordPartySettings from './WordPartySettings.vue'
   import ActionSetSettings from './ActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PostActionPreview from './PostActionPreview.vue'
-  import { MessageSquare, Bell, PartyPopper, MessagesSquare } from 'lucide-vue-next'
+  import { MessageSquare, Bell, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -79,6 +80,7 @@
     { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
     { type: 'toast' as const, label: 'トースト', icon: Bell },
     { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
+    { type: 'sounds' as const, label: 'サウンド', icon: Music },
     { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
   ]
 
@@ -88,6 +90,7 @@
       message: MessageSettings,
       toast: ToastSettings,
       wordParty: WordPartySettings,
+      sounds: SoundSettings,
       actionSet: ActionSetSettings,
       legacy: null,
     }

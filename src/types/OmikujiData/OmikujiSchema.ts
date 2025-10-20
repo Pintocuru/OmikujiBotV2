@@ -102,6 +102,7 @@ export const PostActionSchema = z
         z.literal('message'),
         z.literal('toast'),
         z.literal('wordParty'),
+        z.literal('sounds'),
         z.literal('actionSet'),
       ])
       .default('message')
@@ -116,8 +117,10 @@ export const PostActionSchema = z
       actionType = 'message'
     } else if (data.messageToast && data.messageToast.trim() !== '') {
       actionType = 'toast'
-    } else if ((data.wordParty && data.wordParty.trim() !== '') || (data.sound && data.sound.trim() !== '')) {
+    } else if (data.wordParty && data.wordParty.trim() !== '') {
       actionType = 'wordParty'
+    } else if (data.sound && data.sound.trim() !== '') {
+      actionType = 'sounds'
     }
 
     return {
