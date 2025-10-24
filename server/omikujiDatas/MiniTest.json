@@ -5,7 +5,7 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
+    "generatorVersion": "v1.4.0-beta1",
     "dataVersion": 1.30901,
     "author": "Pintocuru",
     "tags": [],
@@ -19,7 +19,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T15:09:45.080Z",
+      "updatedAt": "2025-10-24T00:32:08.607Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -47,7 +47,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は【<<tc>>】です",
-              "sound": "ニュースタイトル表示3",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
@@ -84,7 +84,7 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T15:07:10.853Z",
+      "updatedAt": "2025-10-24T02:11:32.592Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -111,7 +111,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "sound": "金額表示",
+              "sound": "cash_register",
               "actionType": "sounds"
             },
             {
@@ -121,7 +121,7 @@
               "iconKey": "blushing",
               "messageContent": "<<user>>さん、<<price>>ギフトありがとう!",
               "messageToast": "",
-              "sound": "ジャン！",
+              "sound": "reveal",
               "actionType": "message"
             }
           ],
@@ -158,7 +158,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T07:17:35.224Z",
+      "updatedAt": "2025-10-24T02:33:44.163Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -185,7 +185,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "sound": "成功音",
+              "sound": "success_chime",
               "actionType": "sounds"
             },
             {
@@ -195,7 +195,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!",
               "messageToast": "",
-              "sound": "レベルアップ",
+              "sound": "ta_da",
               "actionType": "message"
             }
           ],
@@ -232,7 +232,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-24T02:18:36.006Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -260,7 +260,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、久しぶり!また会えたね。",
               "messageToast": "",
-              "sound": "きらーん2",
+              "sound": "success_chime",
               "actionType": "message"
             }
           ],
@@ -297,7 +297,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T06:58:49.550Z",
+      "updatedAt": "2025-10-24T02:32:16.901Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -325,7 +325,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、こんにちは!",
               "messageToast": "",
-              "sound": "シーン切り替え1",
+              "sound": "success_chime",
               "actionType": "message"
             }
           ],
@@ -362,7 +362,7 @@
       "name": "配信内コメント:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-24T02:32:30.152Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -390,7 +390,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<lc>>回目のコメントは、<<user>>さんだよ。",
-              "sound": "ジャン！",
+              "sound": "ta_da",
               "actionType": "toast"
             }
           ],
@@ -425,7 +425,7 @@
       "name": "個別コメント:100回毎",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T05:45:38.280Z",
+      "updatedAt": "2025-10-24T02:32:39.383Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -453,7 +453,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。",
-              "sound": "ジャン！",
+              "sound": "ta_da",
               "actionType": "toast"
             }
           ],
@@ -490,7 +490,7 @@
       "name": "閲覧数・高評価数表示(1min)",
       "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-20T15:09:06.538Z",
+      "updatedAt": "2025-10-24T02:34:56.182Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -518,7 +518,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が視聴中です",
-              "sound": "ニュースタイトル表示3",
+              "sound": "pop",
               "actionType": "toast"
             }
           ],
@@ -541,7 +541,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "高評価<<upVote>>です。推してくれたら嬉しいな。",
-              "sound": "ニュースタイトル表示3",
+              "sound": "pop",
               "actionType": "toast"
             }
           ],

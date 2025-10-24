@@ -17,7 +17,7 @@
     </SettingItem>
   </div>
 
-  <!-- ID表示 -->
+  <!-- Key表示 -->
   <SettingItem v-if="isKey" label="キーの名前を変更する" description="他のデータと区別できるよう名前を付けます">
     <div class="flex gap-2 items-center">
       <div class="w-full px-4 py-2 rounded bg-base-200 text-gray-600 overflow-x-auto whitespace-nowrap">
@@ -39,7 +39,7 @@
   </SettingItem>
 
   <!-- 説明 -->
-  <SettingItem v-if="isDescription" label="説明" description="ルールの紹介文">
+  <SettingItem v-if="isDescription" label="説明" description="このデータの紹介文">
     <input type="text" v-model="description" class="input w-full" />
   </SettingItem>
 </template>

@@ -3,9 +3,22 @@ import { BotMessage, BotMessageSchema, CharacterEmotionType, CharacterType, Post
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { playSoundDelay } from '@/Toolkit/sounds/PlaySound'
 
 export class BotMessageGenerator {
   constructor(private readonly characters: Record<string, CharacterType>) {}
+
+  /**
+   * 複数のPostActionからBotMessageの配列を生成
+   */
+  generateMessages(postActions: PostActionType[]): BotMessage[] {
+    // messageContent または messageToast のいずれかが存在するアクションをフィルタリング
+    const validActions = postActions.filter(
+      (action) => action.messageContent?.trim() || action.messageToast?.trim() || action.sound?.trim()
+    )
+    if (validActions.length === 0) return []
+    return validActions.flatMap((action) => this.generateMessage(action))
+  }
 
   /**
    * 単一のPostActionからBotMessageを生成（複数の場合もあり）
@@ -42,31 +55,15 @@ export class BotMessageGenerator {
     const hasToast = postAction.messageToast?.trim()
     const hasSound = postAction.sound?.trim()
 
-    if (hasContent) {
-      messages.push(createMessage(postAction.messageContent, false))
-    }
+    // メッセージ
+    if (hasContent) messages.push(createMessage(postAction.messageContent, false))
+    // トースト
+    if (hasToast) messages.push(createMessage(postAction.messageToast!, true))
 
-    if (hasToast) {
-      messages.push(createMessage(postAction.messageToast!, true))
-    }
-    // 🎵 sound
-    if (!hasContent && !hasToast && hasSound) {
-      messages.push(createMessage('', false))
-    }
+    // 🎵 sound はここで鳴らす
+    if (hasSound) playSoundDelay(postAction.sound!, baseDelaySeconds)
 
     return messages
-  }
-
-  /**
-   * 複数のPostActionからBotMessageの配列を生成
-   */
-  generateMessages(postActions: PostActionType[]): BotMessage[] {
-    // messageContent または messageToast のいずれかが存在するアクションをフィルタリング
-    const validActions = postActions.filter(
-      (action) => action.messageContent?.trim() || action.messageToast?.trim() || action.sound?.trim()
-    )
-    if (validActions.length === 0) return []
-    return validActions.flatMap((action) => this.generateMessage(action))
   }
 
   /**

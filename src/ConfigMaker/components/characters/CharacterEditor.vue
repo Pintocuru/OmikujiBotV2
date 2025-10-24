@@ -13,7 +13,7 @@
       :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
       description="キャラクター、またはカラー設定名の編集"
     >
-      <CharacterBasicInfo :selectedItemKey="selectedItemKey" />
+      <CharacterBasicInfo :selectedItemKey="selectedItemKey" class="space-y-2" />
     </SectionCard>
 
     <!-- フキダシカラー設定 -->

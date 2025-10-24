@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/CharacterBasicInfo.vue -->
+<!-- src\ConfigMaker\components\characters\CharacterBasicInfo.vue -->
 <template>
   <div v-if="currentData">
     <!-- Key表示 -->
@@ -56,11 +56,7 @@
   const fields = [
     { key: 'name', label: '設定名', description: '識別しやすい名前' },
     { key: 'description', label: '説明', description: 'キャラクターの紹介文' },
-    {
-      key: 'displayName',
-      label: 'ジェネレーターでの表示名',
-      description: 'BOTちゃんで表示される名前',
-    },
+    { key: 'displayName', label: '表示名', description: 'ジェネレーターで表示される名前' },
     { key: 'author', label: '作者', description: 'キャラクターの設定者名' },
     { key: 'url', label: 'Webサイト', description: 'キャラクターに関連するURL' },
   ] as const
