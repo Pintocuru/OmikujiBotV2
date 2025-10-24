@@ -36,9 +36,7 @@ export class DefaultCharacterManager {
 
     if (charactersArray.length > 0) {
       const foundCharacter = charactersArray.find((char) => char.key === characterKey)
-      if (foundCharacter) {
-        return foundCharacter
-      }
+      if (foundCharacter) return foundCharacter
     }
 
     // 見つからない場合は日替わりデフォルトキャラ

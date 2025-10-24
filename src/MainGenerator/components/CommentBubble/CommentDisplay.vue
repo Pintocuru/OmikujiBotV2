@@ -21,6 +21,7 @@
           :name="message.name"
           :comment="message.comment"
           :color="message.color"
+          :animated-text="animatedText"
           :text-size="textSize"
           :brightnessLevel="index"
           :custom-classes="message.color?.customClasses"
@@ -47,6 +48,7 @@
       removeComment: (id: string) => void
       enterMotion?: MotionType
       leaveMotion?: MotionType
+      animatedText?: boolean
       textSize: DisplaySize
       spacing: number
     }>(),
@@ -54,6 +56,7 @@
       removeComment: () => {},
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
+      animatedText: false,
       textSize: 'md',
       spacing: 0,
     }

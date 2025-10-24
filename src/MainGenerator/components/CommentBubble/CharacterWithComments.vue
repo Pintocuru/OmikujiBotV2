@@ -15,6 +15,7 @@
           :remove-comment="handleRemoveComment"
           :enter-motion="enterMotion"
           :leave-motion="leaveMotion"
+          :animated-text="character?.displayOption.isRpgVoice"
           :text-size="displaySize"
           :spacing="sizeConfig.spacing"
         />

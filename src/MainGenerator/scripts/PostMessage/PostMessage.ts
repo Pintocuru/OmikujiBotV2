@@ -83,8 +83,8 @@ export class PostMessage {
       } catch (error) {
         ConsolePost('error', `キャラクターコメント投稿エラー: ${chara.name}`, error)
       }
-    } else {
-      // frameId がない、または isOneCommePost が false の場合はスピーチで投稿
+    } else if (chara && chara.displayOption.isVoice) {
+      // frameId がない、または isOneCommePost が false で、isVoiceがtrue の場合はスピーチで投稿
       postSpeech(post.messageContent, delaySeconds)
     }
   }

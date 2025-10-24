@@ -51,6 +51,23 @@
       <span class="label-text font-medium">読み上げの声は「わんコメの標準設定」が使われます</span>
     </label>
   </SettingItem>
+
+  <!-- isRpgVoice  -->
+  <SettingItem
+    v-if="!currentDisplayOption.isOneCommePost && !currentDisplayOption.isVoice"
+    label="文字送り&RPG風の読み上げ"
+    description="BOTコメントを音入りで表示するか"
+  >
+    <label class="label cursor-pointer justify-start gap-3">
+      <input
+        type="checkbox"
+        class="checkbox checkbox-primary"
+        :checked="currentDisplayOption.isRpgVoice"
+        @change="updateDisplayField('isRpgVoice', ($event.target as HTMLInputElement).checked)"
+      />
+      <span class="label-text font-medium">読み上げの声は「わんコメの標準設定」が使われます</span>
+    </label>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">

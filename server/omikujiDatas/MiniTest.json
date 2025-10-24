@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta1",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0-beta2",
+    "dataVersion": 1.30902,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -490,7 +490,7 @@
       "name": "閲覧数・高評価数表示(1min)",
       "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:34:56.182Z",
+      "updatedAt": "2025-10-24T04:01:42.631Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -518,7 +518,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が視聴中です",
-              "sound": "pop",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
@@ -541,7 +541,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "高評価<<upVote>>です。推してくれたら嬉しいな。",
-              "sound": "pop",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
