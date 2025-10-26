@@ -2,19 +2,28 @@
 <template>
   <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
-    <div v-if="isCharacterDisplay && character && character.image?.default" class="chat-image avatar">
-      <div class="rounded-full" :class="[SIZE_CONFIG[displaySize].avatar]">
-        <img :src="getImagePath(character?.image?.default)" />
-      </div>
+    <div
+      v-if="isCharacterDisplay && character && character.image?.default"
+      class="chat-image avatar relative"
+      :class="[SIZE_CONFIG[displaySize].avatar]"
+    >
+      <!-- 画像が文字列配列なら重ねて表示 -->
+      <template v-if="Array.isArray(character.image.default)">
+        <img
+          v-for="(img, i) in character.image.default"
+          :key="i"
+          class="absolute inset-0 w-full h-full object-contain"
+          :src="getImagePath(img)"
+        />
+      </template>
+      <!-- 単一画像 -->
+      <template v-else>
+        <img class="w-full h-full object-contain" :src="getImagePath(character.image.default)" />
+      </template>
     </div>
 
     <!-- メッセージ内容 -->
-    <div
-      class="chat-bubble max-w-xs"
-      :style="{
-        backgroundColor: botMessage?.color?.backgroundColor || '#CCC',
-      }"
-    >
+    <div class="chat-bubble max-w-xs" :style="{ backgroundColor: botMessage?.color?.backgroundColor || '#CCC' }">
       <div
         class="leading-tight"
         :class="[sizeConfig.text]"
@@ -64,15 +73,18 @@
 
   const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize])
 
-  // toastPosition に応じたクラスを返す
-  const chatPositionClass = computed(() => {
-    if (!props.showToastsOnRight) return 'chat chat-start'
-    else return 'chat chat-end'
-  })
+  const chatPositionClass = computed(() => (props.showToastsOnRight ? 'chat chat-end' : 'chat chat-start'))
 
   const handleClick = () => {
-    if (props.clickable && props.botMessage) {
-      emit('click', props.botMessage.id)
-    }
+    if (props.clickable && props.botMessage) emit('click', props.botMessage.id)
   }
 </script>
+
+<style scoped>
+  .avatar {
+    position: relative;
+  }
+  .avatar img {
+    object-fit: contain;
+  }
+</style>

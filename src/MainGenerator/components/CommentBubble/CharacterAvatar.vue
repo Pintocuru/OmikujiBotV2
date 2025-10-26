@@ -17,21 +17,14 @@
       }),
     }"
   >
-    <img
-      v-for="(img, index) in normalizedImages"
-      :key="index"
-      :src="getImagePath(img)"
-      @error="handleImageError"
-      class="absolute top-0 left-0 w-full h-full object-cover"
-      :style="{ zIndex: index }"
-    />
+    <LayerImage :layers="normalizedImages" :size="48" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { SIZE_CONFIG } from './composables/SizeConfig'
-  import { getImagePath } from '@/types/env'
+  import LayerImage from '@/common/LayerImage.vue'
   import { DisplaySize } from '@shared/types'
 
   const props = withDefaults(

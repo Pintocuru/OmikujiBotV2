@@ -69,7 +69,7 @@
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import CharacterBasicInfo from './CharacterBasicInfo.vue'
   import CharacterColorSettings from './CharacterColorSettings.vue'
-  import CharacterImageSettings from './CharacterImageSettings.vue'
+  import CharacterImageSettings from './CharacterImage/CharacterImageSettings.vue'
   import CharacterServiceSettings from './CharacterServiceSettings.vue'
   import CharacterIconDisplaySettings from './CharacterIconDisplaySettings.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
@@ -97,6 +97,12 @@
   // 画像数カウント
   const imageCount = computed(() => {
     if (!selectedItem.value?.image) return 0
-    return Object.values(selectedItem.value.image).filter((v) => v && v.trim() !== '').length
+
+    return Object.values(selectedItem.value.image).filter((v) => {
+      if (!v) return false
+      if (typeof v === 'string') return v.trim() !== ''
+      if (Array.isArray(v)) return v.some((s) => typeof s === 'string' && s.trim() !== '')
+      return false
+    }).length
   })
 </script>
