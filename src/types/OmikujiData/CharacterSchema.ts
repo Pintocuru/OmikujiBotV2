@@ -54,20 +54,26 @@ export const CharacterColorScheme = z.object({
 })
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 
+//
+const LayerSchema = z.union([
+  z.string(), // 単一画像（従来の互換性）
+  z.array(z.string()), // レイヤー構成（順序で重ねる）
+])
+
 // 画像セットのスキーマ
 export const CharacterImageSetSchema = z.object({
-  default: z.string().optional(),
-  happy: z.string().optional(),
-  excited: z.string().optional(),
-  laughing: z.string().optional(),
-  blushing: z.string().optional(),
-  surprised: z.string().optional(),
-  sad: z.string().optional(),
-  angry: z.string().optional(),
-  thinking: z.string().optional(),
-  wink: z.string().optional(),
-  singing: z.string().optional(),
-  sleepy: z.string().optional(),
+  default: LayerSchema.optional(),
+  happy: LayerSchema.optional(),
+  excited: LayerSchema.optional(),
+  laughing: LayerSchema.optional(),
+  blushing: LayerSchema.optional(),
+  surprised: LayerSchema.optional(),
+  sad: LayerSchema.optional(),
+  angry: LayerSchema.optional(),
+  thinking: LayerSchema.optional(),
+  wink: LayerSchema.optional(),
+  singing: LayerSchema.optional(),
+  sleepy: LayerSchema.optional(),
 })
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>
 
@@ -88,7 +94,7 @@ export const CharacterSchema = z.object({
   frameId: z.string().optional().catch(undefined),
   displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
   color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
-  image: CharacterImageSetSchema.optional().catch(CharacterImageSetSchema.parse({})),
+  image: CharacterImageSetSchema.optional().catch(undefined),
   imageBase64: z.string().optional().catch(undefined), // わんコメのジェネレーター用Base64画像
 })
 export type CharacterType = z.infer<typeof CharacterSchema>

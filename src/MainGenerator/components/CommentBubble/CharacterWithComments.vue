@@ -48,7 +48,7 @@
     character: CharacterType | null
     comments: DisplayBotMessage[]
     isActive: boolean
-    profileImage: string | null
+    profileImage: string[] | string | null
   }>()
 
   const emit = defineEmits<{

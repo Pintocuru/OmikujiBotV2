@@ -126,7 +126,7 @@ export class BotMessageGenerator {
   /**
    * キャラクターアイコンの取得
    */
-  private getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionType): string | null {
+  private getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionType): string[] | string | null {
     const iconMap = character?.image
     if (!iconMap) return null
 

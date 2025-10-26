@@ -1,7 +1,7 @@
 <!-- src\MainGenerator\components\CommentBubble\CharacterAvatar.vue -->
 <template>
   <div
-    v-if="profileImage && profileImage !== ''"
+    v-if="hasProfileImage"
     class="avatar"
     :class="[
       sizeConfig.avatar,
@@ -17,7 +17,14 @@
       }),
     }"
   >
-    <img :src="getImagePath(profileImage)" @error="handleImageError" />
+    <img
+      v-for="(img, index) in normalizedImages"
+      :key="index"
+      :src="getImagePath(img)"
+      @error="handleImageError"
+      class="absolute top-0 left-0 w-full h-full object-cover"
+      :style="{ zIndex: index }"
+    />
   </div>
 </template>
 
@@ -29,7 +36,7 @@
 
   const props = withDefaults(
     defineProps<{
-      profileImage?: string | null
+      profileImage?: string[] | string | null
       characterName?: string
       backgroundColor?: string
       showCharacterFrame?: boolean
@@ -49,7 +56,14 @@
   // サイズ設定
   const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize])
 
-  // 画像読み込みエラーハンドラー
+  // 単一 or 配列を統一的に扱う
+  const normalizedImages = computed(() =>
+    Array.isArray(props.profileImage) ? props.profileImage : props.profileImage ? [props.profileImage] : []
+  )
+
+  const hasProfileImage = computed(() => normalizedImages.value.length > 0)
+
+  // エラーハンドラー
   const handleImageError = () => {
     console.error(`キャラクター画像が読み込めません: ${props.characterName}`, {
       characterName: props.characterName,

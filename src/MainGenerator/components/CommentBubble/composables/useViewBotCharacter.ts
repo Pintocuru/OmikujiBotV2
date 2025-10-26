@@ -38,7 +38,7 @@ export function useViewBotCharacter() {
   })
 
   // 指定されたキャラクターの感情に応じた画像を取得
-  const getCharacterImage = (character: CharacterType) => {
+  const getCharacterImage = (character: CharacterType): string[] | string | null => {
     const imageSet = character.image
     if (!imageSet) return null
     // 現在のアイコン状態を確認
