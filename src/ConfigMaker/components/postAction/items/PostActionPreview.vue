@@ -23,7 +23,7 @@
     </div>
 
     <!-- トーストプレビュー -->
-    <div v-if="action.actionType === 'toast'" class="w-full">
+    <div v-if="action.actionType === 'toast' && base.showToasts" class="w-full">
       <div class="cursor-pointer" @click="handleToastClick">
         <ChatBubbleItem
           :key="`toast-${toastRefreshKey}`"
@@ -33,6 +33,27 @@
           :isCharacterDisplay="base.showCharacterThumbnail"
         />
       </div>
+    </div>
+
+    <div v-if="action.actionType === 'toast' && !base.showToasts" class="w-full space-y-8 flex flex-col items-center">
+      <CommentBubbleItem
+        :key="`message-${messageRefreshKey}`"
+        :name="character.displayName"
+        :comment="processedToastMessage?.comment ?? '(未記入)'"
+        :color="character.color"
+        @click="handleMessageClick"
+        class="cursor-pointer"
+      />
+      <MotionWrapper :key="`motion-${messageRefreshKey}`" :enter-motion="action.enterMotion" :auto-hide="false">
+        <CharacterPreview
+          v-if="character.image?.default && character.displayOption.isIconDisplay"
+          :characters="characters"
+          :characterKey="action.characterKey"
+          iconKey="default"
+          :showCharacterFrame="base.showCharacterFrame"
+        />
+      </MotionWrapper>
+      (設定により、トーストはフキダシに置き換えされます)
     </div>
 
     <!-- WordPartyプレビュー -->

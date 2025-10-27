@@ -7,19 +7,7 @@
       class="chat-image avatar relative"
       :class="[SIZE_CONFIG[displaySize].avatar]"
     >
-      <!-- 画像が文字列配列なら重ねて表示 -->
-      <template v-if="Array.isArray(character.image.default)">
-        <img
-          v-for="(img, i) in character.image.default"
-          :key="i"
-          class="absolute inset-0 w-full h-full object-contain"
-          :src="getImagePath(img)"
-        />
-      </template>
-      <!-- 単一画像 -->
-      <template v-else>
-        <img class="w-full h-full object-contain" :src="getImagePath(character.image.default)" />
-      </template>
+      <LayerImage :layers="character.image?.default" />
     </div>
 
     <!-- メッセージ内容 -->
@@ -39,6 +27,7 @@
   import { computed } from 'vue'
   import { BotMessage, CharacterType, getImagePath } from '@/types/'
   import { DisplaySize } from '@shared/types'
+  import LayerImage from '@/common/LayerImage.vue'
 
   const props = withDefaults(
     defineProps<{

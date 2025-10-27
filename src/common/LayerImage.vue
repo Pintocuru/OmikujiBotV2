@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/characters/CharacterImage/LayerImage.vue -->
+<!-- src\common\LayerImage.vue -->
 <template>
   <div
     class="relative overflow-hidden rounded"

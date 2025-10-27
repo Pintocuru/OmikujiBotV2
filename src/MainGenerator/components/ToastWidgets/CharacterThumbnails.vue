@@ -6,7 +6,6 @@
     :displaySize="displaySize"
     :clickable="true"
     :imageClass="'transition-all duration-500'"
-    :getImageSrc="getImageSrc"
     @character-click="handleCharacterClick"
   />
 </template>
@@ -25,13 +24,6 @@
   const displaySize = computed(() => displayStore.displaySize)
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
-
-  const getImageSrc = (character: CharacterType, index: number): string | undefined => {
-    if (!character?.image) return undefined
-    const expr = currentExpressions.value[index]
-    const imagePath = character.image[expr]
-    return imagePath ? getImagePath(imagePath) : undefined
-  }
 
   onMounted(() => {
     currentExpressions.value = characters.value.map(() => 'default')

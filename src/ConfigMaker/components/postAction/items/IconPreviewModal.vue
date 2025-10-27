@@ -19,6 +19,7 @@
               <CharacterIcon
                 :characterKey="characterKey"
                 :iconKey="emotion"
+                :size="32"
                 imgClass="max-w-full max-h-full object-contain rounded-full hover:scale-110 transition-all"
               />
             </div>

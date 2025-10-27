@@ -12,16 +12,14 @@
         :class="[avatarSize, 'rounded-full border border-base-100 shadow-lg']"
         :style="{ backgroundColor: character.color?.backgroundColor }"
       >
-        <img
-          v-if="getImageSrc(character, index)"
-          :src="getImageSrc(character, index)"
-          :alt="`${character.displayName || character.name}のアイコン`"
+        <LayerImage
+          :isPreview="true"
+          :layers="character.image?.default"
+          :size="12"
+          :border="true"
           class="object-cover"
           :class="imageClass"
         />
-        <span v-else class="w-full h-full flex items-center justify-center text-white font-bold">
-          {{ (character.displayName || character.name)?.charAt(0) || '?' }}
-        </span>
       </div>
     </div>
   </div>
@@ -29,8 +27,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { getImagePath, CharacterType } from '@/types'
+  import { CharacterType } from '@/types'
   import { DisplaySize } from '@shared/types/CommonSchema'
+  import LayerImage from '@/common/LayerImage.vue'
 
   const props = withDefaults(
     defineProps<{
@@ -38,14 +37,11 @@
       displaySize?: DisplaySize
       clickable?: boolean
       imageClass?: string
-      getImageSrc?: (character: CharacterType, index: number) => string | undefined
     }>(),
     {
       displaySize: 'md',
       clickable: false,
       imageClass: '',
-      getImageSrc: (character: CharacterType) =>
-        character.image?.default ? getImagePath(character.image.default) : undefined,
     }
   )
 

@@ -26,6 +26,7 @@
           <CharacterIcon
             :characterKey="characterKey"
             :iconKey="localIconKey"
+            :size="32"
             imgClass="max-w-32 max-h-32 object-contain rounded-full"
           />
           <p class="text-sm text-base-content mt-4">{{ emotionLabels[localIconKey] }}</p>

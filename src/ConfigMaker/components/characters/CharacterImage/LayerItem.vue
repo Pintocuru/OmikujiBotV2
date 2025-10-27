@@ -3,7 +3,6 @@
   <div class="border rounded p-2 bg-base-200">
     <div class="flex items-center gap-2 mb-1">
       <span class="badge badge-sm">{{ index + 1 }}</span>
-      <span v-if="index === 0" class="text-xs text-base-content/60">(最前面)</span>
       <div class="flex-1"></div>
       <button
         type="button"

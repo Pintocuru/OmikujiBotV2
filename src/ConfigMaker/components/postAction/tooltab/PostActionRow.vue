@@ -11,6 +11,7 @@
       <CharacterIcon
         :character-key="action.characterKey"
         :icon-key="action.iconKey"
+        :size="6"
         img-class="w-6 h-6 rounded-full"
         fallback-class="w-6 h-6 rounded-full bg-base-300 flex items-center justify-center text-xs"
       />
