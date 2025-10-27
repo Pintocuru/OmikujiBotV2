@@ -19,7 +19,7 @@
     </button>
     <div class="mt-2">
       <div class="text-xs text-base-content/60 mb-1">合成プレビュー:</div>
-      <LayerImage v-if="layers.length > 0" :layers="layers" />
+      <LayerImage v-if="layers.length > 0" :isPreview="true" :layers="layers" />
     </div>
   </div>
 </template>

@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta3",
-    "dataVersion": 1.30903,
+    "generatorVersion": "v1.4.0-beta4",
+    "dataVersion": 1.30904,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -562,7 +562,7 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-26T10:21:28.826Z",
+      "updatedAt": "2025-10-27T04:32:45.344Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -588,16 +588,46 @@
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
-        "default": "chocolate/default.webp",
-        "happy": "chocolate/happy.webp",
-        "excited": "chocolate/excited.webp",
-        "laughing": "chocolate/laughing.webp",
-        "blushing": "chocolate/blushing.webp",
-        "surprised": "chocolate/surprised.webp",
-        "sad": "chocolate/sad.webp",
-        "angry": "chocolate/angry.webp",
-        "thinking": "chocolate/thinking.webp",
-        "wink": "chocolate/wink.webp",
+        "default": [
+          "chocolate/default.webp",
+          "chocolate/face.webp"
+        ],
+        "happy": [
+          "chocolate/happy.webp",
+          "chocolate/face.webp"
+        ],
+        "excited": [
+          "chocolate/excited.webp",
+          "chocolate/face.webp"
+        ],
+        "laughing": [
+          "chocolate/laughing.webp",
+          "chocolate/face.webp"
+        ],
+        "blushing": [
+          "chocolate/blushing.webp",
+          "chocolate/face.webp"
+        ],
+        "surprised": [
+          "chocolate/surprised.webp",
+          "chocolate/face.webp"
+        ],
+        "sad": [
+          "chocolate/sad.webp",
+          "chocolate/face.webp"
+        ],
+        "angry": [
+          "chocolate/angry.webp",
+          "chocolate/face.webp"
+        ],
+        "thinking": [
+          "chocolate/thinking.webp",
+          "chocolate/face.webp"
+        ],
+        "wink": [
+          "chocolate/wink.webp",
+          "chocolate/face.webp"
+        ],
         "singing": "chocolate/singing.webp",
         "sleepy": "chocolate/sleepy.webp"
       },

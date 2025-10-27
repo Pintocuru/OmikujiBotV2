@@ -35,12 +35,12 @@
       :value="layer"
       @input="emit('update', ($event.target as HTMLInputElement).value)"
     />
-    <LayerImage :layers="layer" :size="12" :border="true" />
+    <LayerImage :isPreview="true" :layers="layer" :size="12" :border="true" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import LayerImage from '../../../../common/LayerImage.vue'
+  import LayerImage from '@/common/LayerImage.vue'
   import { ChevronUp, ChevronDown, X } from 'lucide-vue-next'
 
   defineProps<{

@@ -7,7 +7,7 @@
     :value="value"
     @input="emit('update', ($event.target as HTMLInputElement).value)"
   />
-  <LayerImage :layers="value" />
+  <LayerImage :isPreview="true" :layers="value" />
 </template>
 
 <script setup lang="ts">

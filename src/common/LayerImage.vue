@@ -17,7 +17,7 @@
   <!-- 拡大プレビュー -->
   <Transition name="fade">
     <div
-      v-if="showPreview"
+      v-if="isPreview && showPreview"
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
       @click.self="showPreview = false"
     >
@@ -44,9 +44,10 @@
       layers?: string[] | string
       size?: number
       border?: boolean
+      isPreview?: boolean
     }>(),
     {
-      border: false,
+      isPreview: false,
     }
   )
 
