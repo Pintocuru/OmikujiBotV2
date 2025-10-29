@@ -52,8 +52,9 @@ export class GameScriptManager {
       // ランキングデータの更新
       const rankingList = scriptInstance.getGameState()?.userRankings
       if (rankingList) {
+        const { userId } = comment.data
         this.rankingDataManager.updateRankingData(scriptId, rankingList)
-        this.gameStateManager.updateGameState(scriptId, rankingList)
+        this.gameStateManager.updateGameState(scriptId, rankingList, userId)
       }
 
       return result

@@ -19,25 +19,15 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 });
 
-// PostAction messageContent
+// PostAction message
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal("message"),
   characterKey: z.string().default("").catch(""),
   iconKey: CharacterEmotionSchema.default("default").catch("default"),
   enterMotion: z.enum(motionLabel).optional().catch(undefined),
-  messageContent: z.string().default("").catch(""),
-  wordParty: z.string().optional().catch(undefined),
-  sound: z.string().optional().catch(undefined),
-});
-
-// PostAction トースト
-export const PostActionToastSchema = z.object({
-  ...PostActionBaseSchema.shape,
-  actionType: z.literal("toast"),
-  characterKey: z.string().default("").catch(""),
-  messageToast: z.string().default("").catch(""),
-  wordParty: z.string().optional().catch(undefined),
+  componentType: z.number().int().min(0).max(9).default(0),
+  message: z.string().default("").catch(""),
   sound: z.string().optional().catch(undefined),
 });
 

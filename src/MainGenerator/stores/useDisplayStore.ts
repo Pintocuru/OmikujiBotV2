@@ -1,4 +1,5 @@
 // src/stores/useDisplayStore.ts
+// !廃止
 import { ref, computed, watch, nextTick } from 'vue'
 import { defineStore } from 'pinia'
 import { UserStatsType } from '@/types/GameScript/GameScriptSchema'

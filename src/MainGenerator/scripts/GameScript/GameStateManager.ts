@@ -28,7 +28,7 @@ export class GameStateManager {
   /**
    * ゲーム状態の更新
    */
-  updateGameState(scriptId: string, rankingList: UserStatsType[]): void {
+  updateGameState(scriptId: string, rankingList: UserStatsType[], recentUserId?: string): void {
     const gameState = this.gameStates[scriptId]
     if (!gameState) return
 
@@ -40,12 +40,17 @@ export class GameStateManager {
       const userId = userStat.userId
 
       // 新規ユーザーの場合は履歴に追加
-      if (!gameState.currentUserIds.includes(userId)) {
+      const index = gameState.currentUserIds.indexOf(userId)
+      if (index === -1) {
         gameState.currentUserIds.push(userId)
       }
 
       // ユーザー統計の更新
       gameState.userStats[userId] = userStat
+    }
+    // 直近ユーザーを先頭に
+    if (recentUserId) {
+      gameState.currentUserIds = [recentUserId, ...gameState.currentUserIds.filter((id) => id !== recentUserId)]
     }
   }
 

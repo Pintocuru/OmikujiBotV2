@@ -359,10 +359,10 @@
     "CountStream": {
       "id": "CountStream",
       "key": "CountStream",
-      "name": "配信内コメント:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
+      "name": "配信内コメント:50回毎",
+      "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:32:30.152Z",
+      "updatedAt": "2025-10-27T07:34:56.025Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -408,7 +408,7 @@
         "count": {
           "comparison": "loop",
           "unit": "lc",
-          "value": 100
+          "value": 50
         },
         "comment": []
       },

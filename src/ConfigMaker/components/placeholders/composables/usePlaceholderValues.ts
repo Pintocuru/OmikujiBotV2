@@ -42,12 +42,12 @@ export function usePlaceholderValues(placeholderId: string) {
   const duplicateValue = (index: number) => {
     const original = localValues.value[index]
     if (typeof original === 'string') {
-      const duplicated = `${original} (コピー)`
+      const duplicated = `${original}(コピー)`
       localValues.value.splice(index + 1, 0, duplicated)
       updateValues()
     } else {
       const duplicated = JSON.parse(JSON.stringify(original))
-      duplicated.content = `${original.content} (コピー)`
+      duplicated.content = `${original.content}(コピー)`
       localValues.value.splice(index + 1, 0, duplicated)
       updateValues()
     }

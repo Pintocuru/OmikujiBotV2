@@ -112,9 +112,9 @@
     let duplicated: PlaceholderValueType | string
 
     if (typeof original === 'string') {
-      duplicated = `${original} (コピー)`
+      duplicated = `${original}(コピー)`
     } else {
-      duplicated = { ...original, content: `${original.content} (コピー)` }
+      duplicated = { ...original, content: `${original.content}(コピー)` }
     }
 
     const updatedValues = [...props.values]

@@ -26,18 +26,18 @@ export const CharacterEmotionSchema = z.enum(characterEmotions)
 
 // 感情ラベルマップ
 export const emotionLabels: Record<CharacterEmotionType, string> = {
-  default: 'デフォルト',
-  happy: '嬉しい',
-  excited: 'ワクワク',
-  laughing: '笑い',
-  blushing: '照れ',
-  surprised: '驚き',
-  sad: '悲しみ',
-  angry: '怒り',
-  thinking: '考え中',
-  singing: '誇らしげ',
-  sleepy: '退屈',
-  wink: 'おふざけ',
+  default: 'デフォルト(default)',
+  happy: '嬉しい(happy)',
+  excited: 'ワクワク(excited)',
+  laughing: '笑い(laughing)',
+  blushing: '照れ(blushing)',
+  surprised: '驚き(surprised)',
+  sad: '悲しみ(sad)',
+  angry: '怒り(angry)',
+  thinking: '考え中(thinking)',
+  singing: '誇らしげ(singing)',
+  sleepy: '退屈(sleepy)',
+  wink: 'おふざけ(wink)',
 }
 
 // カラー

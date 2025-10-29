@@ -97,10 +97,12 @@
 
   const duplicateOmikuji = () =>
     updateOmikujiSets((sets, index) => {
+      const id = crypto.randomUUID()
       const duplicated = {
         ...JSON.parse(JSON.stringify(props.omikuji)),
-        id: crypto.randomUUID(),
-        name: `${props.omikuji.name} (コピー)`,
+        id,
+        key: id,
+        name: `${props.omikuji.name}(コピー)`,
       }
       sets.splice(index + 1, 0, duplicated)
       return sets

@@ -1,7 +1,6 @@
 // templates\OmikujiBot\src\MainGenerator\stores\useBotMessageActions.ts
 import { ref } from 'vue'
 import type { BotMessage } from '@/types/'
-import { playSound } from '@/Toolkit/sounds'
 
 /**
  * appストア用の状態とアクション
@@ -20,9 +19,6 @@ export const useBotMessageActions = () => {
         setTimeout(() => {
           if (!botMessages.value.some((c) => c.id === m.id)) {
             botMessages.value = [...botMessages.value, m]
-
-            // 🎵 sound再生
-            if (m.sound) playSound(m.sound)
           }
           resolve()
         }, delay)

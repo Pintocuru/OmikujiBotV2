@@ -99,7 +99,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     const duplicatedItem = {
       ...item,
       key: `${key.replace(/_copy_\d+$/, '')}_copy_${Date.now()}`,
-      name: `${item.name} (コピー)`,
+      name: `${item.name}(コピー)`,
       createdAt: timestamp,
       updatedAt: timestamp,
     }

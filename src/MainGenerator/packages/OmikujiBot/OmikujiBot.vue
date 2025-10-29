@@ -1,12 +1,10 @@
 <!-- templates\OmikujiBot\src\MainGenerator\packages\OmikujiBot\OmikujiBot.vue -->
 <template>
-  <div>
-    <!-- コメントフキダシ表示 -->
-    <CommentBubble />
+  <!-- コメントフキダシ表示 -->
+  <CommentBubble />
 
-    <!-- 右下UI要素コンテナ -->
-    <ToastWidgets />
-  </div>
+  <!-- 右下UI要素コンテナ -->
+  <ToastWidgets />
 </template>
 
 <script setup lang="ts">
