@@ -8,12 +8,7 @@
     "generatorVersion": "v1.3.0-beta.2",
     "dataVersion": 1.29012,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "タロット",
-      "tarot",
-      "Fortune"
-    ],
+    "tags": ["おみくじBOT", "タロット", "tarot", "Fortune"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682"
   },
@@ -64,9 +59,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -75,12 +68,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^タロット",
-          "^たろっと",
-          "^tarot",
-          "タロットカード"
-        ]
+        "comment": ["^タロット", "^たろっと", "^tarot", "タロットカード"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -999,10 +987,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1190,7 +1175,7 @@
     },
     {
       "name": "初見",
-      "pattern": "!初見"
+      "pattern": "FirstSyoken"
     },
     {
       "name": "挑戦者が現れました",

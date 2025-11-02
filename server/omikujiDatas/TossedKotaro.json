@@ -8,11 +8,7 @@
     "generatorVersion": "v1.4.0-beta01",
     "dataVersion": 1.30901,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "VOICEVOX",
-      "白上虎太郎"
-    ],
+    "tags": ["おみくじBOT", "VOICEVOX", "白上虎太郎"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/6058829"
   },
@@ -67,9 +63,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -78,9 +72,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -153,9 +145,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -164,9 +154,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -227,9 +215,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -238,14 +224,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -304,9 +283,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -315,15 +292,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -382,9 +351,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -393,17 +360,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -440,7 +397,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -480,7 +437,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -520,7 +477,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -568,7 +525,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -608,7 +565,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -656,7 +613,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -714,7 +671,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -754,7 +711,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -786,7 +743,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -808,10 +765,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -820,11 +774,7 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -862,7 +812,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -892,10 +842,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -904,11 +851,7 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -995,9 +938,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1006,9 +947,7 @@
           "unit": "tc",
           "value": 100
         },
-        "comment": [
-          "test"
-        ]
+        "comment": ["test"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -1237,9 +1176,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1285,7 +1222,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -1315,12 +1252,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -1386,12 +1319,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -1457,12 +1386,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -1616,15 +1541,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue"
-        ],
+        "gift": ["blue", "lightBlue"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -1706,14 +1626,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow"
-        ],
+        "gift": ["yellow"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -2608,11 +2524,7 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic"
       }
     }
@@ -2716,7 +2628,7 @@
     },
     {
       "name": "初見",
-      "pattern": "!初見"
+      "pattern": "FirstSyoken"
     },
     {
       "name": "挑戦者が現れました",

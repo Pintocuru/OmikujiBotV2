@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "v2025.09.01",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.1.0-rc2",
-    "dataVersion": 1.092,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -20,6 +20,7 @@
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
+  "jsonMerge": [],
   "comments": {
     "CheckNumber": {
       "id": "CheckNumber",
@@ -27,16 +28,18 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-09T11:30:24.535Z",
+      "updatedAt": "2025-11-02T13:13:24.923Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
-          "key": "",
+          "key": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
           "name": "コメント表示",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -44,18 +47,19 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
               "characterKey": "color",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute_pop"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -75,8 +79,6 @@
           "^コメント$"
         ]
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 1,
@@ -90,16 +92,18 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-09-02T12:00:56.512Z",
+      "updatedAt": "2025-11-02T13:13:45.352Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
-          "key": "",
+          "key": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
           "name": "初見さんへの挨拶",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -107,7 +111,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -116,9 +120,11 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
               "messageToast": "",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "ta_da"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -138,8 +144,6 @@
         },
         "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
@@ -159,10 +163,12 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "19bb44c2-92e2-4761-b577-caed879dcdc7",
-          "key": "",
+          "key": "19bb44c2-92e2-4761-b577-caed879dcdc7",
           "name": "久しぶり",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -170,7 +176,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -181,7 +187,8 @@
               "messageToast": "",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -201,8 +208,6 @@
         },
         "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
@@ -222,10 +227,12 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
-          "key": "",
+          "key": "83b66e65-adee-4e2a-a921-951d4e792f9a",
           "name": "挨拶",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -233,7 +240,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -244,7 +251,8 @@
               "messageToast": "",
               "actionType": "message"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -264,8 +272,6 @@
         },
         "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
@@ -285,10 +291,12 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
-          "key": "",
+          "key": "934d91f0-82d1-4b54-b8be-3252e3149a08",
           "name": "100回コメント",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -296,7 +304,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -307,7 +315,8 @@
               "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -325,8 +334,6 @@
         },
         "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
@@ -346,10 +353,12 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
-          "key": "",
+          "key": "25bbf670-ffd8-4646-b1e2-de04313df2de",
           "name": "100回コメント",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -357,7 +366,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -368,7 +377,8 @@
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。たくさんのコメント、ありがとう！",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "comments",
@@ -386,8 +396,6 @@
         },
         "comment": []
       },
-      "scriptId": null,
-      "scriptParams": null,
       "limits": {
         "cooldownSeconds": 0,
         "drawLimit": 0,
@@ -409,10 +417,12 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
-          "key": "",
+          "key": "0636470c-29c0-4f74-af36-549dc7c247b2",
           "name": "閲覧数",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
@@ -420,7 +430,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 3,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -431,17 +441,18 @@
               "messageToast": "<<viewer>>人が視聴中だよ",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 3
         },
         {
           "id": "1756814585958",
-          "key": "",
+          "key": "1756814585958",
           "name": "高評価数",
           "createdAt": "2025-09-02T12:03:05.958Z",
           "updatedAt": "2025-09-02T12:03:05.958Z",
           "order": 0,
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -452,7 +463,8 @@
               "messageToast": "高評価数は<<upVote>> だよ",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "timers",
@@ -471,10 +483,12 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
           "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
-          "key": "",
+          "key": "33d7982c-d477-4975-989e-0f010a5fc0a6",
           "name": "チャンネル登録告知",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
@@ -482,7 +496,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 24,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -493,11 +507,12 @@
               "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 24
         },
         {
           "id": "3a2b5e96-b79a-4bdb-b4a7-c9c7d9afebde",
-          "key": "",
+          "key": "3a2b5e96-b79a-4bdb-b4a7-c9c7d9afebde",
           "name": "Twitter告知",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
@@ -505,7 +520,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 18,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -516,11 +531,12 @@
               "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 18
         },
         {
           "id": "a5cd85d8-666e-4107-8e90-744f92deabbd",
-          "key": "",
+          "key": "a5cd85d8-666e-4107-8e90-744f92deabbd",
           "name": "ショート動画告知",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
@@ -528,7 +544,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 20,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -539,11 +555,12 @@
               "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 20
         },
         {
           "id": "9dea8c40-0801-4523-93e2-dc3049fe1814",
-          "key": "",
+          "key": "9dea8c40-0801-4523-93e2-dc3049fe1814",
           "name": "discord告知",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
@@ -551,7 +568,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 16,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -562,11 +579,12 @@
               "messageToast": "discordで活動中!主は配信中はいつも入っているよ",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 16
         },
         {
           "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
-          "key": "",
+          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
           "name": "おみくじBOT告知",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
@@ -574,7 +592,7 @@
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
-          "weight": 1,
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -585,7 +603,8 @@
               "messageToast": "このおみくじBOT、配信者さんに使って欲しいな…",
               "actionType": "toast"
             }
-          ]
+          ],
+          "weight": 1
         }
       ],
       "ruleType": "timers",
@@ -593,6 +612,7 @@
       "isBaseZero": false
     }
   },
+  "actionSets": {},
   "placeholders": {},
   "characters": {
     "color": {
@@ -668,8 +688,8 @@
       "bubbleMotionLeave": "slideUp",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToastsOnRight": true,
       "showToasts": true,
+      "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showCharacterThumbnail": false,
       "showCharacterFrame": false,
@@ -685,6 +705,7 @@
       "visibility": {
         "comments": "basic",
         "timers": "basic",
+        "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "experimental",
@@ -692,7 +713,8 @@
         "licenseVisible": "basic",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "experimental"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "basic"
       }
     }
   },

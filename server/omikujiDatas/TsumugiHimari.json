@@ -107,7 +107,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -148,7 +148,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -189,7 +189,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -238,7 +238,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -279,7 +279,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -328,7 +328,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -387,7 +387,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -428,7 +428,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -498,7 +498,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -2545,7 +2545,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
@@ -4132,7 +4132,7 @@
     },
     {
       "name": "初見",
-      "pattern": "!初見"
+      "pattern": "FirstSyoken"
     },
     {
       "name": "挑戦者が現れました",

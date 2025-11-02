@@ -63,6 +63,8 @@ const buildTargets: BuildTarget[] = [
   { project: 'TossedKotaro', type: 'PATCH', accessLevel: 'pro' },
    */
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
+  { project: 'ReimuMarisa', type: 'PATCH', accessLevel: 'pro' },
 
   /**
    * solo

@@ -8,15 +8,7 @@
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -28,7 +20,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-02T07:41:01.798Z",
+      "updatedAt": "2025-11-02T09:22:17.495Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -77,9 +69,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -88,14 +78,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -111,7 +94,7 @@
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-10-30T02:08:36.481Z",
-      "order": 2,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -157,9 +140,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -168,15 +149,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -191,8 +164,8 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-30T03:29:19.590Z",
-      "order": 3,
+      "updatedAt": "2025-11-02T09:06:43.453Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -219,7 +192,7 @@
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": "",
-              "sound": "boing_bounce",
+              "sound": "success",
               "actionType": "message"
             },
             {
@@ -238,9 +211,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -249,17 +220,153 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GouseiSuikaWhale": {
+      "id": "GouseiSuikaWhale",
+      "key": "GouseiSuikaWhale",
+      "name": "クジラジェネレーター",
+      "description": "クジラゲームオンライン風のおみくじ",
+      "createdAt": "2025-11-02T09:21:18.863Z",
+      "updatedAt": "2025-11-02T09:23:51.155Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": "GouseiSuika",
+      "scriptParams": {
+        "mode": "クジラゲーム"
+      },
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "sound": "success",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "",
+              "characterKey": "omiken_2",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "sound": "cute_pop",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": ["comment"],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "GouseiSuikaPumpkin": {
+      "id": "GouseiSuikaPumpkin",
+      "key": "GouseiSuikaPumpkin",
+      "name": "カボチャジェネレーター",
+      "description": "スイカゲームのハロウィン仕様風のおみくじ",
+      "createdAt": "2025-11-02T09:18:35.762Z",
+      "updatedAt": "2025-11-02T09:23:38.012Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": "GouseiSuika",
+      "scriptParams": {
+        "mode": "カボチャゲーム"
+      },
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "<<message>>",
+              "messageToast": "",
+              "sound": "success",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 8,
+              "wordParty": "",
+              "characterKey": "omiken_2",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "<<announceMessage>>",
+              "sound": "cute_pop",
+              "actionType": "toast"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": ["comment"],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -283,10 +390,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -329,10 +433,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -421,11 +522,7 @@
         "wordPartyLoading": "experimental",
         "licenseVisible": "experimental",
         "gameScriptSettings": "basic",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"
       }
@@ -530,7 +627,7 @@
     },
     {
       "name": "初見",
-      "pattern": "!初見"
+      "pattern": "FirstSyoken"
     },
     {
       "name": "挑戦者が現れました",

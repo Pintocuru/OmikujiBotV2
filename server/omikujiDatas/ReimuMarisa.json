@@ -1,23 +1,15 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa",
+    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.10.29-v1.4.0-beta5",
     "generatorName": "omikuji-bot",
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
-    ],
-    "license": "CC-BY 4.0",
+    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
+    "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
   "jsonMerge": [
@@ -174,7 +166,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -208,7 +200,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -242,7 +234,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -286,7 +278,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
@@ -309,10 +301,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -321,11 +310,7 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -364,7 +349,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -398,7 +383,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
@@ -421,10 +406,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -433,11 +415,7 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -549,9 +527,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -560,9 +536,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -657,17 +631,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green",
-          "special"
-        ],
+        "gift": ["blue", "lightBlue", "green", "special"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -766,18 +733,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "yellow",
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
+        "gift": ["yellow", "orange", "pink", "red", "purple"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -821,7 +780,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -855,7 +814,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -889,7 +848,7 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!初見",
+              "wordParty": "FirstSyoken",
               "characterKey": "marisa",
               "iconKey": "default",
               "messageContent": "",
@@ -912,12 +871,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -1052,12 +1007,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -1192,12 +1143,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -1282,9 +1229,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1370,9 +1315,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1707,9 +1650,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "マリサ キリサメ"
-      ]
+      "values": ["マリサ キリサメ"]
     }
   },
   "characters": {
@@ -1723,10 +1664,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1745,54 +1683,18 @@
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": [
-          "reimu/default.webp",
-          "reimu/body_1.webp"
-        ],
-        "happy": [
-          "reimu/happy.webp",
-          "reimu/body_1.webp"
-        ],
-        "excited": [
-          "reimu/excited.webp",
-          "reimu/body_1.webp"
-        ],
-        "laughing": [
-          "reimu/laughing.webp",
-          "reimu/body_1.webp"
-        ],
-        "blushing": [
-          "reimu/blushing.webp",
-          "reimu/body_1.webp"
-        ],
-        "surprised": [
-          "reimu/surprised.webp",
-          "reimu/body_1.webp"
-        ],
-        "sad": [
-          "reimu/sad.webp",
-          "reimu/body_1.webp"
-        ],
-        "angry": [
-          "reimu/angry.webp",
-          "reimu/body_1.webp"
-        ],
-        "thinking": [
-          "reimu/thinking.webp",
-          "reimu/body_2.webp"
-        ],
-        "wink": [
-          "reimu/wink.webp",
-          "reimu/body_1.webp"
-        ],
-        "singing": [
-          "reimu/singing.webp",
-          "reimu/body_1.webp"
-        ],
-        "sleepy": [
-          "reimu/sleepy.webp",
-          "reimu/body_1.webp"
-        ]
+        "default": ["reimu/default.webp", "reimu/body_1.webp"],
+        "happy": ["reimu/happy.webp", "reimu/body_1.webp"],
+        "excited": ["reimu/excited.webp", "reimu/body_1.webp"],
+        "laughing": ["reimu/laughing.webp", "reimu/body_1.webp"],
+        "blushing": ["reimu/blushing.webp", "reimu/body_1.webp"],
+        "surprised": ["reimu/surprised.webp", "reimu/body_1.webp"],
+        "sad": ["reimu/sad.webp", "reimu/body_1.webp"],
+        "angry": ["reimu/angry.webp", "reimu/body_1.webp"],
+        "thinking": ["reimu/thinking.webp", "reimu/body_2.webp"],
+        "wink": ["reimu/wink.webp", "reimu/body_1.webp"],
+        "singing": ["reimu/singing.webp", "reimu/body_1.webp"],
+        "sleepy": ["reimu/sleepy.webp", "reimu/body_1.webp"]
       },
       "imageBase64": "data:image/png;base64,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"
     },
@@ -1806,10 +1708,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "Yukkuri",
-        "Marisa"
-      ],
+      "tags": ["Yukkuri", "Marisa"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1894,11 +1793,7 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }
@@ -2003,7 +1898,7 @@
     },
     {
       "name": "初見",
-      "pattern": "!初見"
+      "pattern": "FirstSyoken"
     },
     {
       "name": "挑戦者が現れました",
