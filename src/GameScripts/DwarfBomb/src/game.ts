@@ -53,24 +53,24 @@ export class BomberSpinGame {
     // 共通 push 用ヘルパー
     const addEffect = (wordParty: string, times = 1) => {
       for (let i = 0; i < times; i++) {
-        effects.push({ actionType: 'wordParty', delaySeconds: 3, wordParty })
+        effects.push({ actionType: 'wordParty', delaySeconds: 2.7, wordParty })
       }
     }
 
     // dwarfs 条件
-    if (dwarfs.some((d) => d.hasDynamite)) addEffect('!dwarfBombDynamite')
-    addEffect('!dwarfBombPickaxe', dwarfs.filter((d) => d.hasRed).length)
+    if (dwarfs.some((d) => d.hasDynamite)) addEffect('DwarfBombDynamite')
+    addEffect('DwarfBombPickaxe', dwarfs.filter((d) => d.hasRed).length)
 
     // items 条件
     const goldCount = (items.match(/💰/g) || []).length
     const diamondCount = (items.match(/💎/g) || []).length
     const treasureCount = (items.match(/🎁/g) || []).length
-    addEffect('!dwarfBombGold', goldCount)
-    addEffect('!dwarfBombDiamond', diamondCount)
-    addEffect('!dwarfBombTreasure', treasureCount)
+    addEffect('DwarfBombGold', goldCount)
+    addEffect('DwarfBombDiamond', diamondCount)
+    addEffect('DwarfBombTreasure', treasureCount)
 
     // day 条件
-    addEffect('!dwarfBombDaysBunny', day)
+    addEffect('DwarfBombDaysBunny', day)
 
     return effects
   }

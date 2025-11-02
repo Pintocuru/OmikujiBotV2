@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -23,7 +23,7 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-10-16T02:28:37.232Z",
+      "updatedAt": "2025-11-02T03:53:20.699Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -53,7 +53,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_10",
+              "wordParty": "CardStationNormal",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -61,11 +61,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "success"
             }
           ],
           "weight": 700
@@ -91,7 +92,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_11",
+              "wordParty": "CardStationNice",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -99,11 +100,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "card02",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "ta_da"
             }
           ],
           "weight": 150
@@ -129,7 +131,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_11",
+              "wordParty": "CardStationNice",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -137,11 +139,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "card02",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "ta_da"
             }
           ],
           "weight": 50
@@ -167,7 +170,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_13",
+              "wordParty": "CardStationDevil",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -175,11 +178,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!呪いの旋律",
+              "wordParty": "",
               "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "fail_sigh"
             }
           ],
           "weight": 77
@@ -205,7 +209,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_13",
+              "wordParty": "CardStationDevil",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -213,11 +217,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!間抜け5",
+              "wordParty": "",
               "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "fail_beeps"
             }
           ],
           "weight": 20
@@ -243,7 +248,7 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!card_13",
+              "wordParty": "CardStationDevil",
               "characterKey": "card01",
               "iconKey": "default",
               "messageContent": "",
@@ -251,11 +256,12 @@
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "!チーン1",
+              "wordParty": "",
               "characterKey": "card03",
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "impact_boom"
             }
           ],
           "weight": 3
@@ -305,23 +311,7 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "!card_00",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 0.5,
-          "wordParty": "!card_01",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1,
-          "wordParty": "!card_02",
+          "wordParty": "CardStationIntro",
           "characterKey": "card01",
           "iconKey": "default",
           "messageContent": "",

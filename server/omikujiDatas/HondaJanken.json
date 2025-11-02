@@ -5,13 +5,10 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "じゃんけん"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7383088"
   },
@@ -23,7 +20,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:07:01.998Z",
+      "updatedAt": "2025-10-31T04:07:52.651Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -227,9 +224,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -238,11 +233,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -365,9 +356,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -376,12 +365,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -504,9 +488,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -515,11 +497,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -642,9 +620,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -653,12 +629,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -760,12 +731,13 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
           "characterKey": "omiken",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
           "messageToast": "",
-          "actionType": "message"
+          "actionType": "message",
+          "sound": "success"
         }
       ]
     },
@@ -812,12 +784,13 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
           "characterKey": "omiken_2",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
           "messageToast": "",
-          "actionType": "message"
+          "actionType": "message",
+          "wordParty": "",
+          "sound": "success"
         }
       ]
     },
@@ -864,12 +837,13 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
           "characterKey": "omiken",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
           "messageToast": "",
-          "actionType": "message"
+          "actionType": "message",
+          "wordParty": "",
+          "sound": "success"
         }
       ]
     },
@@ -916,12 +890,13 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
           "characterKey": "omiken_2",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
           "messageToast": "",
-          "actionType": "message"
+          "actionType": "message",
+          "wordParty": "",
+          "sound": "success"
         }
       ]
     },
@@ -968,7 +943,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
@@ -1020,7 +996,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken_2",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
@@ -1072,7 +1049,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1124,7 +1102,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1176,7 +1155,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1228,7 +1208,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1280,7 +1261,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1332,7 +1314,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1384,7 +1367,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1436,7 +1420,8 @@
         },
         {
           "delaySeconds": 4,
-          "wordParty": "!シーン切り替え1",
+          "wordParty": "",
+          "sound": "success",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1458,9 +1443,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "ケイスケ ホンダ"
-      ]
+      "values": ["ケイスケ ホンダ"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -1473,9 +1456,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "俺"
-      ]
+      "values": ["俺"]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -1612,10 +1593,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1658,10 +1636,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

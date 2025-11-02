@@ -47,9 +47,8 @@ export class GachaGame {
       {
         actionType: 'wordParty',
         delaySeconds: GAME_CONSTANTS.EMOJI_DELAY,
-        wordParty: this.mode === 'クジラゲーム' ? '!マリモ' : '🍒',
+        wordParty: this.mode === 'クジラゲーム' ? 'GouseiSuikaMarimo' : 'GouseiSuikaCherry',
       },
-      { actionType: 'wordParty', delaySeconds: GAME_CONSTANTS.SPECIAL_EFFECT_DELAY, wordParty: '!パパッ' },
     ]
   }
 

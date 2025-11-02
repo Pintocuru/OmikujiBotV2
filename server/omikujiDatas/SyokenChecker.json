@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta4",
-    "dataVersion": 1.30904,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -19,8 +19,8 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T00:32:08.607Z",
-      "order": 1,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -84,8 +84,8 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:11:32.592Z",
-      "order": 2,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -158,8 +158,8 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:33:44.163Z",
-      "order": 3,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -232,8 +232,8 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:18:36.006Z",
-      "order": 4,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -297,8 +297,8 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:32:16.901Z",
-      "order": 5,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -362,8 +362,8 @@
       "name": "配信内コメント:50回毎",
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-27T07:34:56.025Z",
-      "order": 6,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -425,8 +425,8 @@
       "name": "個別コメント:100回毎",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-24T02:32:39.383Z",
-      "order": 7,
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -480,6 +480,273 @@
         "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
+      }
+    },
+    "FirstHontoReimu": {
+      "id": "FirstHontoReimu",
+      "key": "FirstHontoReimu",
+      "name": "ホントの初見",
+      "description": "初めてから5回までは歓迎してくれます",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
+          "key": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
+          "name": "ホントの初見1",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、ようこそ!何か聞きたいことがあったら、気軽にどうぞ。",
+              "messageToast": "",
+              "sound": "ta_da",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        },
+        {
+          "id": "c7fa3746-f34c-4620-96a7-a3f7057ef2a7",
+          "key": "c7fa3746-f34c-4620-96a7-a3f7057ef2a7",
+          "name": "ホントの初見2",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "marisa",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "messageContent": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
+              "messageToast": "",
+              "sound": "ta_da",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        },
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstSagi": {
+      "id": "FirstSagi",
+      "key": "FirstSagi",
+      "name": "初見詐欺",
+      "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2025-10-29T14:03:56.700Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
+          "key": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
+          "name": "初見詐欺(怒り):霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "angry",
+              "messageContent": "<<user>>さん…あなた初見じゃないでしょ。",
+              "messageToast": "",
+              "sound": "fail_sigh",
+              "actionType": "message"
+            }
+          ],
+          "weight": 7
+        },
+        {
+          "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
+          "key": "e3b96d09-df98-4ee7-910c-951acc587fa8",
+          "name": "初見詐欺(退屈):霊夢",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "sleepy",
+              "messageContent": "<<user>>さん、初めまし…あなた初見ではないわね?",
+              "messageToast": "",
+              "sound": "fail_beeps",
+              "actionType": "message"
+            }
+          ],
+          "weight": 6
+        },
+        {
+          "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
+          "key": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
+          "name": "ああ初見だと思ったら騙された高校校歌",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!初見",
+              "characterKey": "reimu",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "messageContent": "<<user>>さん、初めまして!ゆっくりしていってね。",
+              "messageToast": "",
+              "sound": "ta_da",
+              "actionType": "message"
+            },
+            {
+              "delaySeconds": 5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "angry",
+              "messageContent": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
+              "messageToast": "",
+              "sound": "fail_sigh",
+              "actionType": "message"
+            }
+          ],
+          "weight": 2
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "count",
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        },
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": false,
+        "repeatMessage": "初見詐欺は連投するものではない。"
       }
     }
   },
@@ -690,8 +957,8 @@
         "licenseVisible": "basic",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "basic",
-        "jsonMergeSettings": "basic"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "experimental"
       }
     }
   },

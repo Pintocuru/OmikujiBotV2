@@ -11,14 +11,14 @@ interface GameResult {
 // 設定データの統合
 const SLOT_CONFIG = {
   symbols: [
-    { name: 'チェリー', party: '!bombCherry', payouts: [0, 0, 1, 2, 10, 40, 200, 1000] },
-    { name: 'オレンジ', party: '!bombOrange', payouts: [0, 0, 1, 2, 15, 60, 300, 1500] },
-    { name: 'プラム', party: '!bombPlum', payouts: [0, 0, 1, 4, 20, 80, 400, 2000] },
-    { name: 'スイカ', party: '!bombMelon', payouts: [0, 0, 2, 6, 30, 120, 600, 3000] },
-    { name: 'ベル', party: '!bombBell', payouts: [0, 1, 2, 8, 40, 160, 800, 4000] },
-    { name: 'ハット', party: '!bombHat', payouts: [0, 1, 2, 10, 50, 200, 1000, 5000] },
-    { name: 'BAR', party: '!bombBAR', payouts: [0, 1, 3, 15, 60, 240, 1200, 6000] },
-    { name: 'セブン', party: '!bombSeven', payouts: [0, 1, 4, 30, 80, 320, 2000, 8000] },
+    { name: 'チェリー', party: 'BomberSpinCherry', payouts: [0, 0, 1, 2, 10, 40, 200, 1000] },
+    { name: 'オレンジ', party: 'BomberSpinOrange', payouts: [0, 0, 1, 2, 15, 60, 300, 1500] },
+    { name: 'ぶどう', party: 'BomberSpinPlum', payouts: [0, 0, 1, 4, 20, 80, 400, 2000] },
+    { name: 'スイカ', party: 'BomberSpinMelon', payouts: [0, 0, 2, 6, 30, 120, 600, 3000] },
+    { name: 'ベル', party: 'BomberSpinBell', payouts: [0, 1, 2, 8, 40, 160, 800, 4000] },
+    { name: 'ハット', party: 'BomberSpinHat', payouts: [0, 1, 2, 10, 50, 200, 1000, 5000] },
+    { name: 'コイン', party: 'BomberSpinBAR', payouts: [0, 1, 3, 15, 60, 240, 1200, 6000] },
+    { name: 'ダイヤモンド', party: 'BomberSpinSeven', payouts: [0, 1, 4, 30, 80, 320, 2000, 8000] },
   ],
   winMessages: [
     [10000, '👑JACKPOT👑'],

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -28,7 +28,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-16T05:58:57.739Z",
+      "updatedAt": "2025-11-02T07:41:01.798Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -53,20 +53,22 @@
           "postActions": [
             {
               "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": "",
+              "sound": "success",
               "actionType": "message"
             },
             {
               "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
+              "wordParty": "",
               "characterKey": "omiken_2",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
@@ -108,7 +110,7 @@
       "name": "ボンバースピン",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T05:58:59.593Z",
+      "updatedAt": "2025-10-30T02:08:36.481Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -131,20 +133,22 @@
           "postActions": [
             {
               "delaySeconds": 2.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": "",
+              "sound": "success",
               "actionType": "message"
             },
             {
               "delaySeconds": 7,
-              "wordParty": "!ニュースタイトル表示3",
+              "wordParty": "",
               "characterKey": "omiken_2",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
@@ -187,7 +191,7 @@
       "name": "うさぎスロット",
       "description": "スロット風のおみくじ。最大枚数20000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T05:59:00.665Z",
+      "updatedAt": "2025-10-30T03:29:19.590Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -210,20 +214,22 @@
           "postActions": [
             {
               "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<message>>",
               "messageToast": "",
+              "sound": "boing_bounce",
               "actionType": "message"
             },
             {
               "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
+              "wordParty": "",
               "characterKey": "omiken_2",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<announceMessage>>",
+              "sound": "cute_pop",
               "actionType": "toast"
             }
           ],
@@ -273,7 +279,7 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
+      "updatedAt": "2025-10-30T04:05:39.853Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -290,7 +296,7 @@
       "displayOption": {
         "isIconDisplay": false,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": false
       },
       "color": {
         "nameColor": "#64B5F6",
@@ -420,8 +426,8 @@
           "GouseiSuika",
           "DwarfBomb"
         ],
-        "jsonMergeSettings": "experimental",
-        "wordPartySettings": "experimental"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "experimental"
       }
     }
   },

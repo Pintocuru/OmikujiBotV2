@@ -56,9 +56,8 @@ export const params: ParameterItem<GameParams>[] = []
  * postActions
  */
 export const postActions: PostActionWordPartyType[] = [
-  { actionType: 'wordParty', delaySeconds: 0, wordParty: '!dwarfBombRabbit' },
-  { actionType: 'wordParty', delaySeconds: 3, wordParty: '!bombFire' },
-  { actionType: 'wordParty', delaySeconds: 3, wordParty: '<<rabbits & items>>' },
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit' },
+  { actionType: 'wordParty', delaySeconds: 2.7, wordParty: '<<rabbits & items>>' },
 ]
 
 /**

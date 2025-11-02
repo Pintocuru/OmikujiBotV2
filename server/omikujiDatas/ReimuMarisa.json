@@ -1,12 +1,12 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
+    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2025.10.29-v1.4.0-beta5",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta4",
-    "dataVersion": 1.30904,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -17,7 +17,7 @@
       "ゆっくり魔理沙",
       "じゃんけん"
     ],
-    "license": "利用規約に従う",
+    "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
   "jsonMerge": [
@@ -151,7 +151,7 @@
       "name": "初見詐欺",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T01:39:40.599Z",
+      "updatedAt": "2025-10-29T06:33:54.820Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -163,7 +163,7 @@
         {
           "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
           "key": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
-          "name": "初見詐欺1",
+          "name": "初見詐欺(怒り):霊夢",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -197,7 +197,7 @@
         {
           "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
           "key": "e3b96d09-df98-4ee7-910c-951acc587fa8",
-          "name": "初見詐欺2",
+          "name": "初見詐欺(退屈):霊夢",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -275,7 +275,7 @@
         {
           "id": "352ea94d-dd73-41a8-abb7-bab726c205f6",
           "key": "352ea94d-dd73-41a8-abb7-bab726c205f6",
-          "name": "初見詐欺魔理沙",
+          "name": "初見詐欺(驚き):魔理沙",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1546,8 +1546,8 @@
               "iconKey": "happy",
               "messageContent": "",
               "messageToast": "チャンネル登録・高評価押してくれると、主が喜ぶわ。ゆっくりしていってね。",
-              "actionType": "toast",
-              "sound": "cute_pop"
+              "sound": "cute_pop",
+              "actionType": "toast"
             }
           ],
           "weight": 30
@@ -1566,12 +1566,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "reimu",
               "iconKey": "wink",
               "messageContent": "",
               "messageToast": "主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。",
-              "actionType": "toast",
-              "sound": "cute_pop"
+              "sound": "cute_pop",
+              "actionType": "toast"
             }
           ],
           "weight": 24
@@ -1590,12 +1591,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "",
               "messageToast": "主はショート動画を積極的に作成してるの。見に来てね！",
-              "actionType": "toast",
-              "sound": "cute_pop"
+              "sound": "cute_pop",
+              "actionType": "toast"
             }
           ],
           "weight": 23
@@ -1614,12 +1616,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "",
               "messageToast": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ",
-              "actionType": "toast",
-              "sound": "cute_pop"
+              "sound": "cute_pop",
+              "actionType": "toast"
             }
           ],
           "weight": 22
@@ -1638,12 +1641,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "wordParty": "",
               "characterKey": "marisa",
               "iconKey": "wink",
               "messageContent": "",
               "messageToast": "このおみくじBOT、配信者さんに使って欲しいんだぜ…",
-              "actionType": "toast",
-              "sound": "boing_bounce"
+              "sound": "boing_bounce",
+              "actionType": "toast"
             }
           ],
           "weight": 1
@@ -1715,7 +1719,7 @@
       "name": "ゆっくり霊夢",
       "description": "優しい振る舞いで人気者のゆっくり霊夢。じゃんけんはとても強い。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-29T01:31:59.277Z",
+      "updatedAt": "2025-10-29T06:30:28.827Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -1742,7 +1746,7 @@
       },
       "image": {
         "default": [
-          "reimu/default1.webp",
+          "reimu/default.webp",
           "reimu/body_1.webp"
         ],
         "happy": [

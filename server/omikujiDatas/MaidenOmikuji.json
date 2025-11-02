@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0-beta5",
+    "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -28,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-16T02:52:42.148Z",
+      "updatedAt": "2025-10-31T00:11:18.664Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -51,7 +51,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -60,7 +60,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_01",
+              "wordParty": "MaidenOmikuji01",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -69,11 +69,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<MaidenOmikuji01>>",
               "messageToast": "",
+              "sound": "ta_da",
               "actionType": "message"
             }
           ],
@@ -93,7 +94,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -102,7 +103,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_02",
+              "wordParty": "MaidenOmikuji02",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -111,11 +112,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!シャキーン2",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
               "messageToast": "",
+              "sound": "sparkle_twinkle",
               "actionType": "message"
             }
           ],
@@ -135,7 +137,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -144,7 +146,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_03",
+              "wordParty": "MaidenOmikuji03",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -153,11 +155,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
               "messageToast": "",
+              "sound": "success_chime",
               "actionType": "message"
             }
           ],
@@ -177,7 +180,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -186,7 +189,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_04",
+              "wordParty": "MaidenOmikuji04",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -195,11 +198,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
               "messageToast": "",
+              "sound": "success_chime",
               "actionType": "message"
             }
           ],
@@ -219,7 +223,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -228,7 +232,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_05",
+              "wordParty": "MaidenOmikuji05",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -237,11 +241,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!間抜け1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
               "messageToast": "",
+              "sound": "boing_bounce",
               "actionType": "message"
             }
           ],
@@ -261,7 +266,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -270,7 +275,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_06",
+              "wordParty": "MaidenOmikuji06",
               "characterKey": "reimu",
               "iconKey": "default",
               "messageContent": "",
@@ -279,11 +284,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!呪いの旋律",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
               "messageToast": "",
+              "sound": "fail_sigh",
               "actionType": "message"
             }
           ],
@@ -303,7 +309,7 @@
           "postActions": [
             {
               "delaySeconds": -1,
-              "wordParty": "!omikuji_huru",
+              "wordParty": "MaidenOmikujiLottery",
               "characterKey": "marisa",
               "iconKey": "sleepy",
               "messageContent": "",
@@ -312,7 +318,7 @@
             },
             {
               "delaySeconds": 0,
-              "wordParty": "!omikuji_07",
+              "wordParty": "MaidenOmikuji07",
               "characterKey": "marisa",
               "iconKey": "sleepy",
               "messageContent": "",
@@ -321,11 +327,12 @@
             },
             {
               "delaySeconds": 1,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "omiken_2",
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
               "messageToast": "",
+              "sound": "impact_boom",
               "actionType": "message"
             }
           ],
