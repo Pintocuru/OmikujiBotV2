@@ -1,6 +1,5 @@
 // src/Toolkit/sounds/PlaySound.ts
 import { soundMap } from './soundMap'
-import rpgVoiceLoop from '@assets/source/sounds/rpgVoiceLoop.mp3'
 
 // 1文字あたりの再生時間（ミリ秒）
 const RPG_VOICE_MS_PER_CHARACTER = 50
@@ -41,7 +40,8 @@ export const playRpgVoiceLoop = (text: string, delaySeconds: number = 0) => {
   setTimeout(() => {
     const durationMs = text.length * RPG_VOICE_MS_PER_CHARACTER
 
-    const audio = new Audio(rpgVoiceLoop)
+    const rpgVoice = soundMap.rpg_voice_a5
+    const audio = new Audio(rpgVoice)
     audio.currentTime = 0
     audio.play().catch((e) => {
       console.warn('RPG voice sound failed to play:', e)

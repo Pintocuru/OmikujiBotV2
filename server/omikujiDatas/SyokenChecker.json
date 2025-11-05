@@ -158,7 +158,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-02T13:15:41.784Z",
+      "updatedAt": "2025-11-05T01:27:29.085Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -185,7 +185,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "sound": "sparkle_twinkle",
+              "sound": "cheer_applause",
               "actionType": "sounds"
             },
             {
@@ -195,7 +195,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!",
               "messageToast": "",
-              "sound": "ta_da",
+              "sound": "reveal_full",
               "actionType": "message"
             }
           ],
