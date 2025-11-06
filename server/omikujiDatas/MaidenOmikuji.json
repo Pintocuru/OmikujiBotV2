@@ -8,7 +8,15 @@
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -20,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-02T13:04:49.834Z",
+      "updatedAt": "2025-11-05T02:38:36.262Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -109,7 +117,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
               "messageToast": "",
-              "sound": "sparkle_twinkle",
+              "sound": "twinkle",
               "actionType": "message"
             }
           ],
@@ -333,7 +341,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -342,7 +352,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -536,7 +551,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -579,7 +597,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -663,7 +684,11 @@
         "wordPartyLoading": "experimental",
         "licenseVisible": "basic",
         "gameScriptSettings": "experimental",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"
       }

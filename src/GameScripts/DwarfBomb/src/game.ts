@@ -8,6 +8,7 @@ export class BomberSpinGame {
     let life: number = GAME_CONFIG.INITIAL_LIFE
     let items = ''
     let day = 0
+    let specialEffectCount = 0
 
     // ゲームループ
     while (this.getTotalGold(dwarfs) <= GAME_CONFIG.MAX_WIN && Math.random() * 10 < life) {
@@ -25,6 +26,10 @@ export class BomberSpinGame {
       }
 
       this.applySpecialEffects(dwarfs)
+      // 特殊効果を持つdwarfがいる場合のみカウント
+      if (dwarfs.some((d) => d.hasDynamite || d.hasRed)) {
+        specialEffectCount++
+      }
     }
 
     // ゲーム終了後、applySpecialEffects を2回行う
@@ -32,6 +37,10 @@ export class BomberSpinGame {
       // MAX_WIN を超えていないか都度判定
       if (this.getTotalGold(dwarfs) <= GAME_CONFIG.MAX_WIN) {
         this.applySpecialEffects(dwarfs)
+        // 特殊効果を持つdwarfがいる場合のみカウント
+        if (dwarfs.some((d) => d.hasDynamite || d.hasRed)) {
+          specialEffectCount++
+        }
       } else {
         break // 超えたら打ち切り
       }
@@ -40,14 +49,14 @@ export class BomberSpinGame {
     const payout = Math.min(this.getTotalGold(dwarfs), GAME_CONFIG.MAX_WIN)
     const message = this.createMessage(userName, day, dwarfs, items, payout)
 
-    return { day, payout, message, dwarfs, items }
+    return { day, payout, message, dwarfs, items, specialEffectCount }
   }
 
   /**
    * ゲーム結果に基づいて演出効果を生成する
    */
   generatePartyEffects(gameResult: GameResult): PostActionWordPartyType[] {
-    const { dwarfs, items, day } = gameResult
+    const { dwarfs, items, day, specialEffectCount } = gameResult
     const effects: PostActionWordPartyType[] = []
 
     // 共通 push 用ヘルパー
@@ -57,9 +66,15 @@ export class BomberSpinGame {
       }
     }
 
-    // dwarfs 条件
-    if (dwarfs.some((d) => d.hasDynamite)) addEffect('DwarfBombDynamite')
-    addEffect('DwarfBombPickaxe', dwarfs.filter((d) => d.hasRed).length)
+    // dwarfs 条件（specialEffectCount を加算）
+    if (dwarfs.some((d) => d.hasDynamite)) {
+      addEffect('DwarfBombDynamite', specialEffectCount)
+    }
+
+    const redDwarfCount = dwarfs.filter((d) => d.hasRed).length
+    if (redDwarfCount > 0) {
+      addEffect('DwarfBombPickaxe', redDwarfCount + specialEffectCount)
+    }
 
     // items 条件
     const goldCount = (items.match(/💰/g) || []).length
@@ -115,13 +130,23 @@ export class BomberSpinGame {
 
       case RewardType.GOLD_MULTIPLIER:
         const goldMultiplier = this.getGoldAmount('goldMultiplier')
+        const beforeGold = dwarf.gold
         dwarf.gold = Math.max(1, dwarf.gold * goldMultiplier)
-        return dwarf.gold > 1 ? '💰' : ''
+        if (dwarf.gold > beforeGold) {
+          const digits = Math.floor(Math.log10(dwarf.gold))
+          return '💰'.repeat(digits * digits)
+        }
+        return ''
 
       case RewardType.DIAMOND_MULTIPLIER:
         const diamondMultiplier = this.getGoldAmount('diamondMultiplier')
+        const beforeDiamond = dwarf.gold
         dwarf.gold = Math.max(1, dwarf.gold * diamondMultiplier)
-        return dwarf.gold > 1 ? '💎' : ''
+        if (dwarf.gold > beforeDiamond) {
+          const digits = Math.floor(Math.log10(dwarf.gold))
+          return '💎'.repeat(digits * digits)
+        }
+        return ''
 
       case RewardType.GREEN_CHEST: // 緑宝箱
         dwarfs.forEach((d) => {

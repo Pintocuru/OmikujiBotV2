@@ -3,12 +3,20 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.10.29-v1.4.0-beta5",
+    "version": "ver2025.11.05-v1.4.0-beta5",
     "generatorName": "omikuji-bot",
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -301,7 +309,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -310,7 +321,11 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -406,7 +421,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -415,7 +433,11 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -430,7 +452,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T01:47:54.944Z",
+      "updatedAt": "2025-11-05T02:12:44.996Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -458,7 +480,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
-              "sound": "cute_pop",
+              "sound": "transition",
               "actionType": "toast"
             }
           ],
@@ -483,7 +505,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ",
-              "sound": "cute_pop",
+              "sound": "transition",
               "actionType": "toast"
             }
           ],
@@ -527,7 +549,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -536,7 +560,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^コメント$"]
+        "comment": [
+          "^コメント$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -551,7 +577,7 @@
       "name": "ギフト(1-999円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T01:55:29.703Z",
+      "updatedAt": "2025-11-05T02:15:21.150Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -583,12 +609,13 @@
               "actionType": "actionSet"
             },
             {
-              "delaySeconds": 0.3,
+              "delaySeconds": 0.5,
               "wordParty": "",
               "characterKey": "reimu",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、ギフトありがとう!これからも配信続けていくわ、応援してね。",
               "messageToast": "",
+              "sound": "reveal",
               "actionType": "message"
             }
           ],
@@ -617,12 +644,13 @@
               "actionType": "actionSet"
             },
             {
-              "delaySeconds": 0.3,
+              "delaySeconds": 0.5,
               "wordParty": "",
               "characterKey": "marisa",
               "iconKey": "excited",
               "messageContent": "やったぜ!<<user>>さんからギフトを頂いたぜ。これを元手に配信に精を出すぜ。ありがとだぜ!",
               "messageToast": "",
+              "sound": "reveal",
               "actionType": "message"
             }
           ],
@@ -631,10 +659,17 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green", "special"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green",
+          "special"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -655,7 +690,7 @@
       "name": "ギフト(1000-)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T02:37:52.986Z",
+      "updatedAt": "2025-11-05T02:15:34.023Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -688,11 +723,12 @@
             },
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "reimu",
               "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!! <<user>>さん、こんなに貰っちゃっていいの!?もう私達頑張るしかないじゃない!",
               "messageToast": "",
+              "sound": "reveal",
               "actionType": "message"
             }
           ],
@@ -720,11 +756,12 @@
             },
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "marisa",
               "iconKey": "blushing",
               "messageContent": "<<price>>ポイント!!いいのか?<<user>>さん!あなたの心意気に感謝するぜ!",
               "messageToast": "",
+              "sound": "reveal",
               "actionType": "message"
             }
           ],
@@ -733,10 +770,18 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["yellow", "orange", "pink", "red", "purple"],
+        "gift": [
+          "yellow",
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -757,7 +802,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T02:11:12.987Z",
+      "updatedAt": "2025-11-05T02:07:22.999Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -837,7 +882,7 @@
         {
           "id": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
           "key": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
-          "name": "初見さん():魔理沙",
+          "name": "初見さん(ワクワク):魔理沙",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -871,8 +916,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -1007,8 +1056,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -1031,7 +1084,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T02:12:44.568Z",
+      "updatedAt": "2025-11-05T02:11:41.813Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -1043,7 +1096,7 @@
         {
           "id": "83b66e65-adee-4e2a-a921-951d4e792f9a",
           "key": "83b66e65-adee-4e2a-a921-951d4e792f9a",
-          "name": "挨拶():霊夢",
+          "name": "挨拶(嬉しい):霊夢",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1059,7 +1112,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、こんにちは!ゆっくりしていってね。",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "success_jingle",
               "actionType": "message"
             }
           ],
@@ -1068,7 +1121,7 @@
         {
           "id": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
           "key": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
-          "name": "挨拶():霊夢",
+          "name": "挨拶(笑い):霊夢",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1081,10 +1134,10 @@
               "delaySeconds": 0,
               "wordParty": "",
               "characterKey": "reimu",
-              "iconKey": "default",
+              "iconKey": "laughing",
               "messageContent": "<<user>>さん、また来てくれたね。ようこそ。",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "success_jingle",
               "actionType": "message"
             }
           ],
@@ -1093,7 +1146,7 @@
         {
           "id": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
           "key": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
-          "name": "挨拶():魔理沙",
+          "name": "挨拶(嬉しい):魔理沙",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1106,10 +1159,10 @@
               "delaySeconds": 0,
               "wordParty": "",
               "characterKey": "marisa",
-              "iconKey": "default",
+              "iconKey": "happy",
               "messageContent": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "success_jingle",
               "actionType": "message"
             }
           ],
@@ -1118,7 +1171,7 @@
         {
           "id": "898ba322-99ba-4e3c-929b-c8b8794b378a",
           "key": "898ba322-99ba-4e3c-929b-c8b8794b378a",
-          "name": "挨拶():魔理沙",
+          "name": "挨拶(笑い):魔理沙",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -1131,10 +1184,10 @@
               "delaySeconds": 0,
               "wordParty": "",
               "characterKey": "marisa",
-              "iconKey": "default",
+              "iconKey": "laughing",
               "messageContent": "今日もコメントありがとうだぜ、<<user>>さん。",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "success_jingle",
               "actionType": "message"
             }
           ],
@@ -1143,8 +1196,12 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
         "access": [],
         "gift": [],
         "count": {
@@ -1229,7 +1286,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1315,7 +1374,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1624,16 +1685,6 @@
           "messageToast": "",
           "sound": "cash_register",
           "actionType": "sounds"
-        },
-        {
-          "delaySeconds": 0.3,
-          "wordParty": "",
-          "characterKey": "tsumugi",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "sound": "reveal",
-          "actionType": "sounds"
         }
       ]
     }
@@ -1650,7 +1701,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["マリサ キリサメ"]
+      "values": [
+        "マリサ キリサメ"
+      ]
     }
   },
   "characters": {
@@ -1664,7 +1717,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1683,18 +1739,54 @@
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": ["reimu/default.webp", "reimu/body_1.webp"],
-        "happy": ["reimu/happy.webp", "reimu/body_1.webp"],
-        "excited": ["reimu/excited.webp", "reimu/body_1.webp"],
-        "laughing": ["reimu/laughing.webp", "reimu/body_1.webp"],
-        "blushing": ["reimu/blushing.webp", "reimu/body_1.webp"],
-        "surprised": ["reimu/surprised.webp", "reimu/body_1.webp"],
-        "sad": ["reimu/sad.webp", "reimu/body_1.webp"],
-        "angry": ["reimu/angry.webp", "reimu/body_1.webp"],
-        "thinking": ["reimu/thinking.webp", "reimu/body_2.webp"],
-        "wink": ["reimu/wink.webp", "reimu/body_1.webp"],
-        "singing": ["reimu/singing.webp", "reimu/body_1.webp"],
-        "sleepy": ["reimu/sleepy.webp", "reimu/body_1.webp"]
+        "default": [
+          "reimu/default.webp",
+          "reimu/body_1.webp"
+        ],
+        "happy": [
+          "reimu/happy.webp",
+          "reimu/body_1.webp"
+        ],
+        "excited": [
+          "reimu/excited.webp",
+          "reimu/body_1.webp"
+        ],
+        "laughing": [
+          "reimu/laughing.webp",
+          "reimu/body_1.webp"
+        ],
+        "blushing": [
+          "reimu/blushing.webp",
+          "reimu/body_1.webp"
+        ],
+        "surprised": [
+          "reimu/surprised.webp",
+          "reimu/body_1.webp"
+        ],
+        "sad": [
+          "reimu/sad.webp",
+          "reimu/body_1.webp"
+        ],
+        "angry": [
+          "reimu/angry.webp",
+          "reimu/body_1.webp"
+        ],
+        "thinking": [
+          "reimu/thinking.webp",
+          "reimu/body_2.webp"
+        ],
+        "wink": [
+          "reimu/wink.webp",
+          "reimu/body_1.webp"
+        ],
+        "singing": [
+          "reimu/singing.webp",
+          "reimu/body_1.webp"
+        ],
+        "sleepy": [
+          "reimu/sleepy.webp",
+          "reimu/body_1.webp"
+        ]
       },
       "imageBase64": "data:image/png;base64,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"
     },
@@ -1708,7 +1800,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": ["Yukkuri", "Marisa"],
+      "tags": [
+        "Yukkuri",
+        "Marisa"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1793,7 +1888,11 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }

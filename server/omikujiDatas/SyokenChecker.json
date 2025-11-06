@@ -19,7 +19,7 @@
       "name": "コメント数表示",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "updatedAt": "2025-11-05T02:14:26.059Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -47,7 +47,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメント数は【<<tc>>】です",
-              "sound": "cute_pop",
+              "sound": "transition",
               "actionType": "toast"
             }
           ],
@@ -84,7 +84,7 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-29T14:02:35.792Z",
+      "updatedAt": "2025-11-05T02:14:43.995Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -115,7 +115,7 @@
               "actionType": "sounds"
             },
             {
-              "delaySeconds": 0.3,
+              "delaySeconds": 0.5,
               "wordParty": "",
               "characterKey": "chocolate",
               "iconKey": "blushing",
