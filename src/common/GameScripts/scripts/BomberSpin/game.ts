@@ -33,79 +33,77 @@ const SLOT_CONFIG = {
   minPayout: 10,
 }
 
-export class SlotGame {
-  private weightedSelect(weights: number[]): number {
-    const total = weights.reduce((sum, w) => sum + w, 0)
-    let random = Math.random() * total
-    return weights.findIndex((w) => (random -= w) <= 0)
+function weightedSelect(weights: number[]): number {
+  const total = weights.reduce((sum, w) => sum + w, 0)
+  let random = Math.random() * total
+  return weights.findIndex((w) => (random -= w) <= 0)
+}
+
+function randomSpins(): number {
+  const base = weightedSelect(SLOT_CONFIG.spinWeights) + 1
+  return Math.max(2, Math.min(7, base - Math.floor(Math.random() * 4)))
+}
+
+function randomSymbol() {
+  const index = weightedSelect(SLOT_CONFIG.symbolWeights)
+  return SLOT_CONFIG.symbols[index]
+}
+
+function countWilds(filledSlots: number): number {
+  return Array(filledSlots)
+    .fill(0)
+    .reduce((wilds) => wilds + (Math.random() < SLOT_CONFIG.wildChance ? 1 : 0), 0)
+}
+
+function calculatePayout(payouts: number[], slots: number): number {
+  const wilds = countWilds(7 - slots)
+  const baseIndex = Math.min(7, 7 - slots + wilds)
+  const payout = payouts[baseIndex]
+  return payout < SLOT_CONFIG.minPayout ? payout + 1 : payout
+}
+
+function getHitRate(symbolData: any, remainingSpins: number): number {
+  const symbolIndex = SLOT_CONFIG.symbols.indexOf(symbolData)
+  return (20 - symbolIndex * 2 + 20 / remainingSpins) / 100
+}
+
+function countHits(slots: number, hitRate: number): number {
+  return Array(slots)
+    .fill(0)
+    .reduce((hits) => hits + (Math.random() < hitRate ? 1 : 0), 0)
+}
+
+function createMessage(user: string, symbol: string, payouts: number[], total: number): string {
+  const payoutText = payouts.map((p, i) => (i === payouts.length - 1 ? `${p}!` : `${p}/`)).join('')
+  const winMessage = SLOT_CONFIG.winMessages.find(([threshold]) => total >= threshold)?.[1] || ''
+  return `${user}の${symbol}スピン!${payoutText}${winMessage}合計${total}枚獲得!`
+}
+
+export function playSlot(user: string): GameResult {
+  // 基本パラメータの決定
+  const spins = randomSpins()
+  const symbolData = randomSymbol()
+  let slots = 7 - Math.floor(Math.random() * 3) // 5-7個の空きスロット
+
+  // 初回スピンの結果
+  let totalPayout = calculatePayout(symbolData.payouts, slots)
+  const payoutHistory = [totalPayout]
+
+  // 追加スピンの処理
+  for (let i = spins; i > 0; i--) {
+    const hitRate = getHitRate(symbolData, i)
+    const hits = countHits(slots, hitRate)
+    slots -= hits
+
+    const payout = calculatePayout(symbolData.payouts, slots)
+    payoutHistory.push(payout)
+    totalPayout += payout
   }
 
-  private randomSpins(): number {
-    const base = this.weightedSelect(SLOT_CONFIG.spinWeights) + 1
-    return Math.max(2, Math.min(7, base - Math.floor(Math.random() * 4)))
-  }
-
-  private randomSymbol() {
-    const index = this.weightedSelect(SLOT_CONFIG.symbolWeights)
-    return SLOT_CONFIG.symbols[index]
-  }
-
-  private calculatePayout(payouts: number[], slots: number): number {
-    const wilds = this.countWilds(7 - slots)
-    const baseIndex = Math.min(7, 7 - slots + wilds)
-    const payout = payouts[baseIndex]
-    return payout < SLOT_CONFIG.minPayout ? payout + 1 : payout
-  }
-
-  private getHitRate(symbolData: any, remainingSpins: number): number {
-    const symbolIndex = SLOT_CONFIG.symbols.indexOf(symbolData)
-    return (20 - symbolIndex * 2 + 20 / remainingSpins) / 100
-  }
-
-  private countHits(slots: number, hitRate: number): number {
-    return Array(slots)
-      .fill(0)
-      .reduce((hits) => hits + (Math.random() < hitRate ? 1 : 0), 0)
-  }
-
-  private countWilds(filledSlots: number): number {
-    return Array(filledSlots)
-      .fill(0)
-      .reduce((wilds) => wilds + (Math.random() < SLOT_CONFIG.wildChance ? 1 : 0), 0)
-  }
-
-  private createMessage(user: string, symbol: string, payouts: number[], total: number): string {
-    const payoutText = payouts.map((p, i) => (i === payouts.length - 1 ? `${p}!` : `${p}/`)).join('')
-    const winMessage = SLOT_CONFIG.winMessages.find(([threshold]) => total >= threshold)?.[1] || ''
-    return `${user}の${symbol}スピン!${payoutText}${winMessage}合計${total}枚獲得!`
-  }
-
-  public playSlot(user: string): GameResult {
-    // 基本パラメータの決定
-    const spins = this.randomSpins()
-    const symbolData = this.randomSymbol()
-    let slots = 7 - Math.floor(Math.random() * 3) // 5-7個の空きスロット
-
-    // 初回スピンの結果
-    let totalPayout = this.calculatePayout(symbolData.payouts, slots)
-    const payoutHistory = [totalPayout]
-
-    // 追加スピンの処理
-    for (let i = spins; i > 0; i--) {
-      const hitRate = this.getHitRate(symbolData, i)
-      const hits = this.countHits(slots, hitRate)
-      slots -= hits
-
-      const payout = this.calculatePayout(symbolData.payouts, slots)
-      payoutHistory.push(payout)
-      totalPayout += payout
-    }
-
-    return {
-      symbol: symbolData.name,
-      party: symbolData.party,
-      payout: totalPayout,
-      message: this.createMessage(user, symbolData.name, payoutHistory, totalPayout),
-    }
+  return {
+    symbol: symbolData.name,
+    party: symbolData.party,
+    payout: totalPayout,
+    message: createMessage(user, symbolData.name, payoutHistory, totalPayout),
   }
 }

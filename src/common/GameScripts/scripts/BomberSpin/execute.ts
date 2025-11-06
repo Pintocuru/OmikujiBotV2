@@ -1,14 +1,13 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/'
-import { SlotGame } from './game'
+import { playSlot } from './game'
 import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { Comment } from '@onecomme.com/onesdk/'
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
-  private slotGame = new SlotGame()
 
   /**
    * 設定を初期化する
@@ -30,7 +29,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const userName = comment?.data.displayName ?? 'Unknown'
 
     // ゲームの実行
-    const result = this.slotGame.playSlot(userName)
+    const result = playSlot(userName)
 
     // ランキングの生成
     const logResult = this.LogRank.run(comment, {
