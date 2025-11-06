@@ -1,11 +1,10 @@
 // src/params.ts
 import { z } from 'zod'
-import {
-  GamePlaceholderSchema as LogGamePlaceholderSchema,
-  placeholders as LogPlaceholders,
-  GamePlaceholder as LogGamePlaceholder,
-} from '@/GameScripts/LogRank/src/params'
 import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@/types/'
+import {
+  GamePlaceholder as LogGamePlaceholder,
+  placeholders as logPlaceholders,
+} from '@/common/GameScripts/scriptsEngine/LogRank/params'
 
 /**
  * settings
@@ -48,54 +47,63 @@ export const settings: ParameterItem<GameSettings>[] = [
 /**
  * params
  */
-export const GameParamsSchema = z.object({})
+export const suika = ['スイカゲーム', 'カボチャゲーム', 'クジラゲーム'] as const
+export const GameParamsSchema = z.object({
+  mode: z.enum(suika).default('スイカゲーム').catch('スイカゲーム'),
+})
 export type GameParams = z.infer<typeof GameParamsSchema>
-export const params: ParameterItem<GameParams>[] = []
+export const params: ParameterItem<GameParams>[] = [
+  {
+    key: 'mode', // キー名
+    name: 'モード', // ルール名
+    description: '降ってくるアイテムや得点が変わります', // 説明文
+    inputType: 'select', // 'select' | 'number' | 'string' | 'boolean'
+    values: ['スイカゲーム', 'カボチャゲーム', 'クジラゲーム'], // 選択肢
+    defaultValue: 'スイカゲーム', // デフォルト値
+  },
+]
 
 /**
  * postActions
  */
 export const postActions: PostActionWordPartyType[] = [
-  { actionType: 'wordParty', delaySeconds: 0, wordParty: '!bombBack' },
-  { actionType: 'wordParty', delaySeconds: 0, wordParty: '<<symbol>>' },
-  { actionType: 'wordParty', delaySeconds: 1.8, wordParty: '!bombFire' },
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: '🍒 か !マリモ' },
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: '<<fruits>> または <<魚群>>' },
+  { actionType: 'wordParty', delaySeconds: 8.5, wordParty: '!パパッ(得点表示用)' },
 ]
 
 /**
  * placeholders
  */
-export const GamePlaceholderSchema = z.object({
-  ...LogGamePlaceholderSchema.shape, // LogRank のプレースホルダーを継承
-  message: z.string().min(1, { message: 'message は必須です' }),
-  symbol: z.string().min(1, { message: 'symbol は必須です' }),
-  payout: z.number().min(1, { message: 'payout は必須です' }),
-})
-export type GamePlaceholder = z.infer<typeof GamePlaceholderSchema>
+export type GamePlaceholder = {
+  message: string
+  mode: string
+  points: number
+} & LogGamePlaceholder // LogRank のプレースホルダーを継承
 
-// LogPlaceholders から必要なプロパティを抜粋
+// logPlaceholders から必要なプロパティを抜粋
 const wantedLogPlaceholderIds = ['announceMessage', 'totalDraws', 'winsRank', 'totalPoints']
-const selectedLogPlaceholders: ScriptPlaceholderItem<LogGamePlaceholder>[] = LogPlaceholders.filter((item) =>
+const selectedLogPlaceholders: ScriptPlaceholderItem<LogGamePlaceholder>[] = logPlaceholders.filter((item) =>
   wantedLogPlaceholderIds.includes(item.key)
 )
-
 export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
   {
     key: 'message',
     name: '標準メッセージ',
-    description: 'デフォルトの返答',
-    value: 'userのセブンスピン!1/4/8000!合計$8004枚獲得!',
+    description: 'デフォルトのスイカジェネレーターの返答',
+    value: 'userの得点は1500!',
   },
   {
-    key: 'symbol',
-    name: 'シンボル',
-    description: '当選した図柄を返します',
-    value: 'セブン',
+    key: 'mode',
+    name: 'ゲームモード',
+    description: 'どのゲームモードだったかを返します',
+    value: '(スイカゲーム、カボチャゲーム等)',
   },
   {
-    key: 'payout',
-    name: '獲得したポイント',
-    description: '獲得したポイントを返します',
-    value: '8004',
+    key: 'points',
+    name: 'ポイント',
+    description: 'スイカジェネレーターの得点を返します',
+    value: '1500',
   },
   // LogRank のプレースホルダーを継承
   ...selectedLogPlaceholders,

@@ -4,7 +4,7 @@ import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@
 import {
   GamePlaceholder as LogGamePlaceholder,
   placeholders as logPlaceholders,
-} from '@/GameScripts/LogRank/src/params'
+} from '@/common/GameScripts/scriptsEngine/LogRank/params'
 
 /**
  * settings
@@ -61,7 +61,7 @@ export const postActions: PostActionWordPartyType[] = []
  */
 export type GamePlaceholder = {
   message: string
-  symbol: string
+  stage: number
   payout: number
 } & LogGamePlaceholder // LogRank のプレースホルダーを継承
 
@@ -70,13 +70,13 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
     key: 'message',
     name: '標準メッセージ',
     description: 'デフォルトの返答',
-    value: 'userのかけざんスピン!残念、配当0でした。',
+    value: 'userのダンジョン攻略!5/7/25/55/250!合計1000枚獲得!',
   },
   {
-    key: 'symbol',
-    name: 'シンボル',
-    description: '当選した図柄を返します',
-    value: '-',
+    key: 'stage',
+    name: '倒した敵の数',
+    description: '倒した敵の数です',
+    value: '5',
   },
   {
     key: 'payout',
@@ -96,10 +96,8 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
 
 // 支払いテーブルのインターフェース定義
 export interface GameResult {
-  symbolIdx: number
-  symbol: string
+  stage: number
   name: string
   ways: number[]
   payout: number
-  hasBoost: boolean
 }

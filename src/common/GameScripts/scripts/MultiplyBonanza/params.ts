@@ -4,7 +4,7 @@ import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@
 import {
   GamePlaceholder as LogGamePlaceholder,
   placeholders as logPlaceholders,
-} from '@/GameScripts/LogRank/src/params'
+} from '@/common/GameScripts/scriptsEngine/LogRank/params'
 
 /**
  * settings
@@ -47,64 +47,59 @@ export const settings: ParameterItem<GameSettings>[] = [
 /**
  * params
  */
-export const suika = ['スイカゲーム', 'カボチャゲーム', 'クジラゲーム'] as const
-export const GameParamsSchema = z.object({
-  mode: z.enum(suika).default('スイカゲーム').catch('スイカゲーム'),
-})
+export const GameParamsSchema = z.object({})
 export type GameParams = z.infer<typeof GameParamsSchema>
-export const params: ParameterItem<GameParams>[] = [
-  {
-    key: 'mode', // キー名
-    name: 'モード', // ルール名
-    description: '降ってくるアイテムや得点が変わります', // 説明文
-    inputType: 'select', // 'select' | 'number' | 'string' | 'boolean'
-    values: ['スイカゲーム', 'カボチャゲーム', 'クジラゲーム'], // 選択肢
-    defaultValue: 'スイカゲーム', // デフォルト値
-  },
-]
+export const params: ParameterItem<GameParams>[] = []
 
 /**
  * postActions
  */
-export const postActions: PostActionWordPartyType[] = [
-  { actionType: 'wordParty', delaySeconds: 1, wordParty: '🍒 か !マリモ' },
-  { actionType: 'wordParty', delaySeconds: 1, wordParty: '<<fruits>> または <<魚群>>' },
-  { actionType: 'wordParty', delaySeconds: 8.5, wordParty: '!パパッ(得点表示用)' },
-]
+export const postActions: PostActionWordPartyType[] = []
 
 /**
  * placeholders
  */
 export type GamePlaceholder = {
   message: string
-  mode: string
-  points: number
+  symbol: string
+  payout: number
 } & LogGamePlaceholder // LogRank のプレースホルダーを継承
 
-// logPlaceholders から必要なプロパティを抜粋
-const wantedLogPlaceholderIds = ['announceMessage', 'totalDraws', 'winsRank', 'totalPoints']
-const selectedLogPlaceholders: ScriptPlaceholderItem<LogGamePlaceholder>[] = logPlaceholders.filter((item) =>
-  wantedLogPlaceholderIds.includes(item.key)
-)
 export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
   {
     key: 'message',
     name: '標準メッセージ',
-    description: 'デフォルトのスイカジェネレーターの返答',
-    value: 'userの得点は1500!',
+    description: 'デフォルトの返答',
+    value: 'userのかけざんスピン!残念、配当0でした。',
   },
   {
-    key: 'mode',
-    name: 'ゲームモード',
-    description: 'どのゲームモードだったかを返します',
-    value: '(スイカゲーム、カボチャゲーム等)',
+    key: 'symbol',
+    name: 'シンボル',
+    description: '当選した図柄を返します',
+    value: '-',
   },
   {
-    key: 'points',
-    name: 'ポイント',
-    description: 'スイカジェネレーターの得点を返します',
-    value: '1500',
+    key: 'payout',
+    name: '獲得したポイント',
+    description: '獲得したポイントを返します',
+    value: '0',
   },
-  // LogRank のプレースホルダーを継承
-  ...selectedLogPlaceholders,
+  {
+    key: 'winsRank',
+    name: '順位',
+    description: '今回の順位を返します',
+    value: '1',
+  },
 ]
+
+// ---
+
+// 支払いテーブルのインターフェース定義
+export interface GameResult {
+  symbolIdx: number
+  symbol: string
+  name: string
+  ways: number[]
+  payout: number
+  hasBoost: boolean
+}

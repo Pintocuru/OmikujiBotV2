@@ -1,9 +1,9 @@
 // src/ConfigMaker/components/scriptGame/GameScriptsMap.ts
 import { ScriptPreset } from '@/types/'
-import BomberSpin from '@/GameScripts/BomberSpin/src/main'
-import GouseiSuika from '@/GameScripts/GouseiSuika/src/main'
-import DwarfBomb from '@/GameScripts/DwarfBomb/src/main'
-import GoogolClover from '@/GameScripts/GoogolClover/main'
+import BomberSpin from './scripts/BomberSpin/main'
+import GouseiSuika from './scripts/GouseiSuika/main'
+import DwarfBomb from './scripts/DwarfBomb/main'
+import GoogolClover from './scripts/GoogolClover/main'
 
 // gameScriptMap
 export const gameScriptMap: Record<string, ScriptPreset<any, any, any>> = {

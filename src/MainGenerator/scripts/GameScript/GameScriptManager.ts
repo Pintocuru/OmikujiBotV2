@@ -1,10 +1,11 @@
 // src\MainGenerator\scripts\omikujiProcess\GameScriptManager.ts
-import { CommentRuleType, OmikujiDataType } from '@/types/'
-import { ScriptClass, ScriptResult, UserStatsType, GameState } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikujiDataType, CommentRuleType } from '@/types/'
+import { ScriptClass, ScriptResult } from '@/types/GameScript/GameScriptTypes'
+import { GameState, UserStatsType } from '@/types/GameScript/GameScriptSchema'
 import { ScriptInstanceManager } from './ScriptInstanceManager'
 import { GameStateManager } from './GameStateManager'
 import { RankingDataManager } from './RankingDataManager'
+import { Comment } from '@onecomme.com/onesdk/'
 
 export class GameScriptManager {
   private readonly scriptInstanceManager: ScriptInstanceManager

@@ -1,16 +1,14 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { CommentRuleType, RuleType } from '@/types/OmikujiData/RulesSchema'
+import { CommentRuleType, OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType, RuleType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { GameScriptManager } from '../GameScript/GameScriptManager'
-import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
-import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
-import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
-import { RankingManager } from '../VariablePlaceholder/RankingManager'
-import { Comment } from '@onecomme.com/onesdk/'
 import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
+import { GameScriptManager } from '@MainScripts/GameScript/GameScriptManager'
+import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
+import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
+import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
+import { RankingManager } from '@MainScripts/VariablePlaceholder/RankingManager'
+import { Comment } from '@onecomme.com/onesdk/'
 
 /**
  * おみくじ処理の統合クラス

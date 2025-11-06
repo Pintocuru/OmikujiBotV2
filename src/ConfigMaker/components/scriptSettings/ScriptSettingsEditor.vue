@@ -20,7 +20,7 @@
   import { computed, onMounted } from 'vue'
   import ScriptCard from './ScriptCard.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
+  import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
   import { DefaultTypes } from '@shared/types'
   import { storeToRefs } from 'pinia'
   import { Settings } from 'lucide-vue-next'

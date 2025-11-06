@@ -41,9 +41,7 @@ export function checkCircularReference(
   for (const action of actionSet.postActions) {
     if (action.actionType === 'actionSet' && action.actionSetKey) {
       const circularPath = checkCircularReference(action.actionSetKey, actionSets, currentKey, new Set(visited))
-      if (circularPath) {
-        return [targetKey, ...circularPath]
-      }
+      if (circularPath) return [targetKey, ...circularPath]
     }
   }
 

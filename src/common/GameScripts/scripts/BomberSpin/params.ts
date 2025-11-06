@@ -4,7 +4,7 @@ import {
   GamePlaceholderSchema as LogGamePlaceholderSchema,
   placeholders as LogPlaceholders,
   GamePlaceholder as LogGamePlaceholder,
-} from '@/GameScripts/LogRank/src/params'
+} from '@/common/GameScripts/scriptsEngine/LogRank/params'
 import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@/types/'
 
 /**
@@ -56,8 +56,9 @@ export const params: ParameterItem<GameParams>[] = []
  * postActions
  */
 export const postActions: PostActionWordPartyType[] = [
-  { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit' },
-  { actionType: 'wordParty', delaySeconds: 2.7, wordParty: '<<rabbits & items>>' },
+  { actionType: 'wordParty', delaySeconds: 0, wordParty: '!bombBack' },
+  { actionType: 'wordParty', delaySeconds: 0, wordParty: '<<symbol>>' },
+  { actionType: 'wordParty', delaySeconds: 1.8, wordParty: '!bombFire' },
 ]
 
 /**
@@ -66,7 +67,7 @@ export const postActions: PostActionWordPartyType[] = [
 export const GamePlaceholderSchema = z.object({
   ...LogGamePlaceholderSchema.shape, // LogRank のプレースホルダーを継承
   message: z.string().min(1, { message: 'message は必須です' }),
-  day: z.number().min(1, { message: 'day は必須です' }),
+  symbol: z.string().min(1, { message: 'symbol は必須です' }),
   payout: z.number().min(1, { message: 'payout は必須です' }),
 })
 export type GamePlaceholder = z.infer<typeof GamePlaceholderSchema>
@@ -82,19 +83,19 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
     key: 'message',
     name: '標準メッセージ',
     description: 'デフォルトの返答',
-    value: 'userは🐰14匹とダイナマイト🧨と鉱山へ。1枚!5000枚!1枚!💎EPIC WIN💎5002枚獲得!',
+    value: 'userのセブンスピン!1/4/8000!合計$8004枚獲得!',
   },
   {
-    key: 'day',
-    name: 'うさぎの数',
-    description: '鉱山を掘ったうさぎの数を返します',
-    value: '14',
+    key: 'symbol',
+    name: 'シンボル',
+    description: '当選した図柄を返します',
+    value: 'セブン',
   },
   {
     key: 'payout',
     name: '獲得したポイント',
     description: '獲得したポイントを返します',
-    value: '5002',
+    value: '8004',
   },
   // LogRank のプレースホルダーを継承
   ...selectedLogPlaceholders,

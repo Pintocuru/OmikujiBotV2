@@ -1,21 +1,21 @@
 // src/execute.ts
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
+import { BomberSpinGame } from './game'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { SlotGame } from './game'
-import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute'
+import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
-  private slotGame = new SlotGame()
+  private game = new BomberSpinGame()
 
   /**
    * 設定を初期化する
    */
   setup(settings: GameSettings): void {
     this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'BomberSpin')
+    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'DwarfBomb')
   }
 
   /**
@@ -30,27 +30,27 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const userName = comment?.data.displayName ?? 'Unknown'
 
     // ゲームの実行
-    const result = this.slotGame.playSlot(userName)
+    const gameResult = this.game.playGame(userName)
+    const { day, payout, message } = gameResult
 
     // ランキングの生成
     const logResult = this.LogRank.run(comment, {
       isWin: false,
-      getPoint: result.payout,
+      getPoint: payout,
     })
+
+    // ゲーム結果に基づいて演出効果を生成
+    const partyEffects = this.game.generatePartyEffects(gameResult)
 
     return {
       postActions: isParty
-        ? [
-            { actionType: 'wordParty', delaySeconds: 0, wordParty: 'BomberSpinBack' },
-            { actionType: 'wordParty', delaySeconds: 0, wordParty: result.party },
-            { actionType: 'wordParty', delaySeconds: 1.8, wordParty: 'CommonBombFire' },
-          ]
+        ? [{ actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit' }, ...partyEffects]
         : [],
       placeholders: {
         ...logResult.placeholders,
-        message: result.message,
-        symbol: result.symbol,
-        payout: result.payout,
+        message,
+        day,
+        payout,
       },
     }
   }

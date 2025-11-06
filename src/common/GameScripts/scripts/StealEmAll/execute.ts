@@ -2,20 +2,21 @@
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { GAME_CONFIGS, GameResult } from './gameConfigs'
-import { GachaGame } from './game'
-import { ExecuteScript as LogExecuteScript } from '@/GameScripts/LogRank/src/execute'
+import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { GameEngine } from './game'
+import { type GameResult } from './gameConfig'
 
 export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
+  private gameEngine = new GameEngine()
 
   /**
    * 設定を初期化する
    */
   setup(settings: GameSettings): void {
     this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'GouseiSuika')
+    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'StealEmAll')
   }
 
   /**
@@ -24,27 +25,29 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
     // パラメータ
     const { isParty } = this.settings
-    const { mode } = GameParamsSchema.parse(params)
+    const {} = GameParamsSchema.parse(params)
 
     // 設定データ
     const userName = comment?.data.displayName ?? 'Unknown'
 
     // ゲームの実行
-    const gameResult = this.executeGame(mode)
+    const result = this.gameEngine.playGame()
+    const message = this.gameEngine.createMessage(userName, result)
 
     // ランキングの生成
     const logResult = this.LogRank.run(comment, {
       isWin: false,
-      getPoint: gameResult.points,
+      getPoint: result.payout,
     })
 
     return {
-      postActions: isParty ? gameResult.postArray : [],
+      // TODO:settings.isPartyの実装(まだWordPartyができてない)
+      postActions: isParty ? [] : [],
       placeholders: {
         ...logResult.placeholders,
-        message: `${userName}の得点は${gameResult.points}!`,
-        mode,
-        points: gameResult.points,
+        message,
+        stage: result.stage,
+        payout: result.payout,
       },
     }
   }
@@ -57,15 +60,12 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   }
 
   /**
-   * ゲームを実行し、結果を返す
+   * テスト用のゲーム実行
    */
-  private executeGame(mode: string): GameResult {
-    const gameConfig = GAME_CONFIGS[mode]
-    if (!gameConfig) throw new Error(`不明なゲームモード: ${mode}`)
-    return new GachaGame(gameConfig, mode).play()
+  public playGameForTest(): GameResult {
+    return this.gameEngine.playGame()
   }
 }
 
-// プリセットから利用できるようにインスタンス化してエクスポート
 const execute = new ExecuteScript()
 export default execute

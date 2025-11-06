@@ -7,7 +7,7 @@ import {
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderSchema, PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
+import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
 /**

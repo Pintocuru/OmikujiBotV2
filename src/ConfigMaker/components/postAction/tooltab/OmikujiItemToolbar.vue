@@ -72,7 +72,7 @@
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
-  import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
+  import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { List, Send, FileJson, Settings } from 'lucide-vue-next'

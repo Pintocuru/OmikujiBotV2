@@ -1,10 +1,11 @@
 // src/params.ts
 import { z } from 'zod'
-import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@/types/'
 import {
+  GamePlaceholderSchema as LogGamePlaceholderSchema,
+  placeholders as LogPlaceholders,
   GamePlaceholder as LogGamePlaceholder,
-  placeholders as logPlaceholders,
-} from '@/GameScripts/LogRank/src/params'
+} from '@/common/GameScripts/scriptsEngine/LogRank/params'
+import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@/types/'
 
 /**
  * settings
@@ -54,50 +55,47 @@ export const params: ParameterItem<GameParams>[] = []
 /**
  * postActions
  */
-export const postActions: PostActionWordPartyType[] = []
+export const postActions: PostActionWordPartyType[] = [
+  { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit' },
+  { actionType: 'wordParty', delaySeconds: 2.7, wordParty: '<<rabbits & items>>' },
+]
 
 /**
  * placeholders
  */
-export type GamePlaceholder = {
-  message: string
-  stage: number
-  payout: number
-} & LogGamePlaceholder // LogRank のプレースホルダーを継承
+export const GamePlaceholderSchema = z.object({
+  ...LogGamePlaceholderSchema.shape, // LogRank のプレースホルダーを継承
+  message: z.string().min(1, { message: 'message は必須です' }),
+  day: z.number().min(1, { message: 'day は必須です' }),
+  payout: z.number().min(1, { message: 'payout は必須です' }),
+})
+export type GamePlaceholder = z.infer<typeof GamePlaceholderSchema>
+
+// LogPlaceholders から必要なプロパティを抜粋
+const wantedLogPlaceholderIds = ['announceMessage', 'totalDraws', 'winsRank', 'totalPoints']
+const selectedLogPlaceholders: ScriptPlaceholderItem<LogGamePlaceholder>[] = LogPlaceholders.filter((item) =>
+  wantedLogPlaceholderIds.includes(item.key)
+)
 
 export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
   {
     key: 'message',
     name: '標準メッセージ',
     description: 'デフォルトの返答',
-    value: 'userのダンジョン攻略!5/7/25/55/250!合計1000枚獲得!',
+    value: 'userは🐰14匹とダイナマイト🧨と鉱山へ。1枚!5000枚!1枚!💎EPIC WIN💎5002枚獲得!',
   },
   {
-    key: 'stage',
-    name: '倒した敵の数',
-    description: '倒した敵の数です',
-    value: '5',
+    key: 'day',
+    name: 'うさぎの数',
+    description: '鉱山を掘ったうさぎの数を返します',
+    value: '14',
   },
   {
     key: 'payout',
     name: '獲得したポイント',
     description: '獲得したポイントを返します',
-    value: '0',
+    value: '5002',
   },
-  {
-    key: 'winsRank',
-    name: '順位',
-    description: '今回の順位を返します',
-    value: '1',
-  },
+  // LogRank のプレースホルダーを継承
+  ...selectedLogPlaceholders,
 ]
-
-// ---
-
-// 支払いテーブルのインターフェース定義
-export interface GameResult {
-  stage: number
-  name: string
-  ways: number[]
-  payout: number
-}

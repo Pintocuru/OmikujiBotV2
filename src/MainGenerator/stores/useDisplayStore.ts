@@ -4,7 +4,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { defineStore } from 'pinia'
 import { UserStatsType } from '@/types/GameScript/GameScriptSchema'
 import { useAppStore } from './useAppStore'
-import { gameScriptMap } from '@ConfigComponents/GameScripts/GameScriptsMap'
+import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
 import { DisplaySize } from '@shared/types'
 
 export const useDisplayStore = defineStore('display', () => {

@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/processors/GameScript/ScriptInstanceManager.ts
 import { OmikujiDataType, ScriptClass } from '@/types/'
-import { gameScriptMap } from '@/ConfigMaker/components/GameScripts/GameScriptsMap'
+import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
 
 export class ScriptInstanceManager {
   private readonly scriptInstances: Record<string, ScriptClass> = {}
