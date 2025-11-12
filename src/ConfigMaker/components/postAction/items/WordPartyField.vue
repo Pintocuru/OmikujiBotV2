@@ -2,8 +2,8 @@
 <template>
   <div class="flex items-center gap-2">
     <div class="flex gap-1 w-full">
-      <!-- wordPartySettingsが空でない場合のみタブを表示 -->
-      <div v-if="wordPartySetting.length > 0" class="tabs tabs-boxed tabs-sm">
+      <!-- GOD-MODEかつ、wordPartySettingsが空でない場合のみタブを表示 -->
+      <div v-if="isGod && wordPartySetting.length > 0" class="tabs tabs-boxed tabs-sm">
         <button @click="setInputMode('select')" class="tab tab-sm" :class="{ 'tab-active': inputMode === 'select' }">
           選択
         </button>
@@ -14,7 +14,7 @@
 
       <!-- 選択モード（wordPartySettingsが空でない場合のみ） -->
       <select
-        v-if="wordPartySetting.length > 0 && inputMode === 'select'"
+        v-if="isGod && wordPartySetting.length > 0 && inputMode === 'select'"
         v-model="wordPartyModel"
         class="select select-bordered select-sm flex-1"
       >
@@ -26,7 +26,7 @@
 
       <!-- 手動入力モード（常に表示されるが、settingsが空の場合は単独表示） -->
       <input
-        v-if="wordPartySetting.length === 0 || inputMode === 'manual'"
+        v-else
         type="text"
         v-model="wordPartyModel"
         class="input input-bordered input-sm flex-1"
@@ -43,6 +43,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import PlaceholderChecker from './PlaceholderChecker.vue'
   import { storeToRefs } from 'pinia'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Props
   const props = defineProps<{
@@ -59,6 +60,7 @@
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
 
   // 表示設定の参照
   const wordPartySetting = computed(() => data.value.wordPartySettings)

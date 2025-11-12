@@ -37,7 +37,7 @@ export function useVisibilitySettings() {
   const categoryVisibility = (key: VisibilityKey) => createVisibilityRef(key)
 
   /**
-   * 「full」プリセット: すべてのコンポーネントを「pro」に設定
+   * 「full」プリセット
    */
   const setFullVisibility = () => {
     const fullSettings = {
@@ -55,7 +55,7 @@ export function useVisibilitySettings() {
       gameScripts: ['GouseiSuika', 'BomberSpin', 'DwarfBomb'] as string[],
 
       jsonMergeSettings: 'basic' as const,
-      wordPartySettings: 'basic' as const,
+      wordPartySettings: 'internal' as const,
     }
 
     omikujiStore.updateNestedDisplaySettings('developer', {
@@ -64,7 +64,7 @@ export function useVisibilitySettings() {
   }
 
   /**
-   * 「solo」プリセット: すべてのコンポーネントを「basic」に設定
+   * 「solo」プリセット
    */
   const setSoloVisibility = () => {
     const soloSettings = {

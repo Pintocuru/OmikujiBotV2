@@ -8,15 +8,7 @@
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7366004"
   },
@@ -73,7 +65,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【赤色】<<FlowerRed>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -115,7 +107,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【白色】<<FlowerWhite>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -157,7 +149,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【黄色】<<FlowerYellow>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -199,7 +191,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【青色】<<FlowerBlue>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -241,7 +233,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【青色】<<FlowerBlue>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -283,7 +275,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【緑色】<<FlowerGreen>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -325,7 +317,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【オレンジ色】<<FlowerOrange>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -367,7 +359,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんは【紫色】<<FlowerPurple>>",
               "messageToast": "",
-              "sound": "success",
+              "sound": "decision",
               "actionType": "message"
             }
           ],
@@ -409,7 +401,7 @@
               "iconKey": "thinking",
               "messageContent": "<<user>>さんは【キノコ色】<<FlowerKinoko2>>",
               "messageToast": "",
-              "sound": "boing_bounce",
+              "sound": "bounce",
               "actionType": "message"
             }
           ],
@@ -451,7 +443,7 @@
               "iconKey": "thinking",
               "messageContent": "<<user>>さんは【毒キノコ色】<<FlowerKinoko1>>",
               "messageToast": "",
-              "sound": "boing_bounce",
+              "sound": "bounce",
               "actionType": "message"
             }
           ],
@@ -460,9 +452,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -471,16 +461,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^フラワー",
-          "^ふらわー",
-          "^flower",
-          "🌷",
-          "🌹",
-          "🌺",
-          "🌻",
-          "🌼"
-        ]
+        "comment": ["^フラワー", "^ふらわー", "^flower", "🌷", "🌹", "🌺", "🌻", "🌼"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -756,10 +737,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -843,11 +821,7 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }

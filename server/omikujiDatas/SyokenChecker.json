@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta5",
-    "dataVersion": 1.30905,
+    "generatorVersion": "v1.4.0-beta6",
+    "dataVersion": 1.30906,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -84,7 +84,7 @@
       "name": "ギフト",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-05T02:14:43.995Z",
+      "updatedAt": "2025-11-10T04:21:41.214Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -111,7 +111,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "sound": "cash_register",
+              "sound": "cash",
               "actionType": "sounds"
             },
             {
@@ -121,7 +121,7 @@
               "iconKey": "blushing",
               "messageContent": "<<user>>さん、<<price>>ギフトありがとう!",
               "messageToast": "",
-              "sound": "reveal",
+              "sound": "carnival",
               "actionType": "message"
             }
           ],
@@ -158,7 +158,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-05T01:27:29.085Z",
+      "updatedAt": "2025-11-10T04:19:47.169Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -185,7 +185,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "sound": "cheer_applause",
+              "sound": "applause",
               "actionType": "sounds"
             },
             {
@@ -195,7 +195,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、初めまして!",
               "messageToast": "",
-              "sound": "reveal_full",
+              "sound": "fanfare",
               "actionType": "message"
             }
           ],
@@ -260,7 +260,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、久しぶり!また会えたね。",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -297,7 +297,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-02T13:20:22.192Z",
+      "updatedAt": "2025-11-10T04:20:35.080Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -325,7 +325,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さん、こんにちは!",
               "messageToast": "",
-              "sound": "success_jingle",
+              "sound": "collect",
               "actionType": "message"
             }
           ],
@@ -390,7 +390,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<lc>>回目のコメントは、<<user>>さんだよ。",
-              "sound": "ta_da",
+              "sound": "baseball",
               "actionType": "toast"
             }
           ],
@@ -453,7 +453,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さんのコメントが、<<tc>>回になったよ。",
-              "sound": "ta_da",
+              "sound": "baseball",
               "actionType": "toast"
             }
           ],
@@ -518,7 +518,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<viewer>>人が視聴中です",
-              "sound": "cute_pop",
+              "sound": "cute",
               "actionType": "toast"
             }
           ],
@@ -541,7 +541,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "高評価<<upVote>>です。推してくれたら嬉しいな。",
-              "sound": "cute_pop",
+              "sound": "cute",
               "actionType": "toast"
             }
           ],
@@ -695,422 +695,5 @@
       }
     }
   },
-  "wordPartySettings": [
-    {
-      "name": "初見判定ちゃん:初見",
-      "pattern": "FirstSyoken"
-    },
-    {
-      "name": "初見判定ちゃん:初見なのにモデレーター",
-      "pattern": "初見なのにモデレーター"
-    },
-    {
-      "name": "初見判定ちゃん:初見なのにモデレーター",
-      "pattern": "ここまで見てくれてありがと。"
-    },
-    {
-      "name": "おみくじ:大吉",
-      "pattern": "MaidenOmikuji01"
-    },
-    {
-      "name": "おみくじ:吉",
-      "pattern": "MaidenOmikuji02"
-    },
-    {
-      "name": "おみくじ:中吉",
-      "pattern": "MaidenOmikuji03"
-    },
-    {
-      "name": "おみくじ:小吉",
-      "pattern": "MaidenOmikuji04"
-    },
-    {
-      "name": "おみくじ:末吉",
-      "pattern": "MaidenOmikuji05"
-    },
-    {
-      "name": "おみくじ:凶",
-      "pattern": "MaidenOmikuji06"
-    },
-    {
-      "name": "おみくじ:残念賞",
-      "pattern": "MaidenOmikuji07"
-    },
-    {
-      "name": "おみくじ:みくじ箱",
-      "pattern": "MaidenOmikujiLottery"
-    },
-    {
-      "name": "じゃんけん:グー",
-      "pattern": "!janken_1"
-    },
-    {
-      "name": "じゃんけん:チョキ",
-      "pattern": "!janken_2"
-    },
-    {
-      "name": "じゃんけん:パー",
-      "pattern": "!janken_3"
-    },
-    {
-      "name": "じゃんけん:I Love You",
-      "pattern": "!janken_4"
-    },
-    {
-      "name": "じゃんけん結果:勝ち",
-      "pattern": "!janken_win"
-    },
-    {
-      "name": "じゃんけん結果:負け",
-      "pattern": "!janken_lose"
-    },
-    {
-      "name": "フラワー占い:sound",
-      "pattern": "FlowerFortuneSound"
-    },
-    {
-      "name": "フラワー占い:クラッカー",
-      "pattern": "FlowerFortuneCracker"
-    },
-    {
-      "name": "フラワー占い:赤い花",
-      "pattern": "FlowerFortuneRed"
-    },
-    {
-      "name": "フラワー占い:白い花",
-      "pattern": "FlowerFortuneWhite"
-    },
-    {
-      "name": "フラワー占い:黄色い花",
-      "pattern": "FlowerFortuneYellow"
-    },
-    {
-      "name": "フラワー占い:青い花",
-      "pattern": "FlowerFortuneBlue"
-    },
-    {
-      "name": "フラワー占い:緑の花",
-      "pattern": "FlowerFortuneGreen"
-    },
-    {
-      "name": "フラワー占い:オレンジの花",
-      "pattern": "FirstSyokenwerFortuneOrange"
-    },
-    {
-      "name": "フラワー占い:紫の花",
-      "pattern": "FlowerFortunePurple"
-    },
-    {
-      "name": "フラワー占い:キノコ",
-      "pattern": "FlowerFortuneKinoko2"
-    },
-    {
-      "name": "フラワー占い:毒キノコ",
-      "pattern": "FlowerFortuneKinoko1"
-    },
-    {
-      "name": "カード駅:登場",
-      "pattern": "CardStationIntro"
-    },
-    {
-      "name": "カード駅:登場ノーマル",
-      "pattern": "CardStationIntro1"
-    },
-    {
-      "name": "カード駅:登場ナイス",
-      "pattern": "CardStationIntro2"
-    },
-    {
-      "name": "カード駅:登場デビル",
-      "pattern": "CardStationIntro3"
-    },
-    {
-      "name": "カード駅:結果ノーマル",
-      "pattern": "CardStationNormal"
-    },
-    {
-      "name": "カード駅:結果ナイス・スペシャル",
-      "pattern": "CardStationNice"
-    },
-    {
-      "name": "カード駅:結果デビル",
-      "pattern": "CardStationDevil"
-    },
-    {
-      "name": "パルプンテ",
-      "pattern": "!パルプンテ"
-    },
-    {
-      "name": "超おみくじ:超背景",
-      "pattern": "BigBang_back"
-    },
-    {
-      "name": "SplashSecond:インキ黄色",
-      "pattern": "SplashSecond01"
-    },
-    {
-      "name": "SplashSecond:インキマゼンダ",
-      "pattern": "SplashSecond02"
-    },
-    {
-      "name": "SplashSecond:インキシアン",
-      "pattern": "SplashSecond03"
-    },
-    {
-      "name": "ドラちゃん:背景",
-      "pattern": "!5percent_dora_0"
-    },
-    {
-      "name": "ドラちゃん:手",
-      "pattern": "!5percent_dora_1"
-    },
-    {
-      "name": "ドラちゃん:赤背景",
-      "pattern": "!5percent_dora_konjac_0"
-    },
-    {
-      "name": "ドラちゃん:どこでもしずちゃん",
-      "pattern": "!5percent_dora_konjac_1"
-    },
-    {
-      "name": "ドラちゃん:ボロン",
-      "pattern": "!5percent_dora_2"
-    },
-    {
-      "name": "幻獣ガチャ:金ドラゴン",
-      "pattern": "EidolonGacha_Dragon"
-    },
-    {
-      "name": "幻獣ガチャ:カプセルアンコモン",
-      "pattern": "EidolonGacha_CapsuleUncommon"
-    },
-    {
-      "name": "幻獣ガチャ:カプセルレア",
-      "pattern": "EidolonGacha_CapsuleRare"
-    },
-    {
-      "name": "幻獣ガチャ:カプセルSSR",
-      "pattern": "EidolonGacha_CapsuleSSR"
-    },
-    {
-      "name": "幻獣ガチャ:カプセルSecretRare",
-      "pattern": "EidolonGacha_CapsuleSecret"
-    },
-    {
-      "name": "幻獣ガチャ:激レア!",
-      "pattern": "EidolonGacha_CapsuleNameRare"
-    },
-    {
-      "name": "幻獣ガチャ:超激レアの銅鑼",
-      "pattern": "EidolonGacha_CapsuleNameSSRDora"
-    },
-    {
-      "name": "幻獣ガチャ:超激レア!",
-      "pattern": "EidolonGacha_CapsuleNameSSR"
-    },
-    {
-      "name": "タロット:起動時演出",
-      "pattern": "!TarotCard_direction"
-    },
-    {
-      "name": "タロット:背景魔法陣",
-      "pattern": "TarotCard_back"
-    },
-    {
-      "name": "タロット:カード1",
-      "pattern": "TarotCard_01"
-    },
-    {
-      "name": "タロット:カード2",
-      "pattern": "TarotCard_02"
-    },
-    {
-      "name": "タロット:カード3",
-      "pattern": "TarotCard_03"
-    },
-    {
-      "name": "ボンバースロット:cherry",
-      "pattern": "BomberSpinCherry"
-    },
-    {
-      "name": "ボンバースロット:orange",
-      "pattern": "BomberSpinOrange"
-    },
-    {
-      "name": "ボンバースロット:plum(grape)",
-      "pattern": "BomberSpinPlum"
-    },
-    {
-      "name": "ボンバースロット:melon",
-      "pattern": "BomberSpinMelon"
-    },
-    {
-      "name": "ボンバースロット:bell",
-      "pattern": "BomberSpinBell"
-    },
-    {
-      "name": "ボンバースロット:hat",
-      "pattern": "BomberSpinHat"
-    },
-    {
-      "name": "ボンバースロット:BAR(Coin)",
-      "pattern": "BomberSpinBAR"
-    },
-    {
-      "name": "ボンバースロット:seven(diamond)",
-      "pattern": "BomberSpinSeven"
-    },
-    {
-      "name": "ボンバースロット:背景",
-      "pattern": "BomberSpinBack"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ",
-      "pattern": "DwarfBombRabbit"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ1",
-      "pattern": "DwarfBombRabbit1"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ2",
-      "pattern": "DwarfBombRabbit2"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ3",
-      "pattern": "DwarfBombRabbit3"
-    },
-    {
-      "name": "うさぎスロット:ダイナマイト",
-      "pattern": "DwarfBombDynamite"
-    },
-    {
-      "name": "うさぎスロット:ツルハシ",
-      "pattern": "DwarfBombPickaxe"
-    },
-    {
-      "name": "うさぎスロット:ダイヤモンド",
-      "pattern": "DwarfBombDiamond"
-    },
-    {
-      "name": "うさぎスロット:金塊",
-      "pattern": "DwarfBombGold"
-    },
-    {
-      "name": "うさぎスロット:宝箱",
-      "pattern": "DwarfBombTreasure"
-    },
-    {
-      "name": "うさぎスロット:ちいさなうさぎ",
-      "pattern": "DwarfBombDaysBunny"
-    },
-    {
-      "name": "スイカジェネレーター:カボチャ",
-      "pattern": "GouseiSuikaPumpkin"
-    },
-    {
-      "name": "スイカジェネレーター:キャンディ",
-      "pattern": "GouseiSuikaCandy"
-    },
-    {
-      "name": "スイカジェネレーター:スイカ",
-      "pattern": "GouseiSuikaWatermelon"
-    },
-    {
-      "name": "スイカジェネレーター:メロン",
-      "pattern": "GouseiSuikaMelon"
-    },
-    {
-      "name": "スイカジェネレーター:もも",
-      "pattern": "GouseiSuikaPeach"
-    },
-    {
-      "name": "スイカジェネレーター:パイナップル",
-      "pattern": "GouseiSuikaPineapple"
-    },
-    {
-      "name": "スイカジェネレーター:なし",
-      "pattern": "GouseiSuikaPear"
-    },
-    {
-      "name": "スイカジェネレーター:りんご",
-      "pattern": "GouseiSuikaApple"
-    },
-    {
-      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
-      "pattern": "GouseiSuikaPresimmon"
-    },
-    {
-      "name": "スイカジェネレーター:デコポン",
-      "pattern": "GouseiSuikaDekopon"
-    },
-    {
-      "name": "スイカジェネレーター:ぶどう",
-      "pattern": "GouseiSuikaGrape"
-    },
-    {
-      "name": "スイカジェネレーター:いちご",
-      "pattern": "GouseiSuikaStrawberry"
-    },
-    {
-      "name": "スイカジェネレーター:チェリー",
-      "pattern": "GouseiSuikaCherry"
-    },
-    {
-      "name": "スイカジェネレーター:シャチ",
-      "pattern": "GouseiSuikaOrca"
-    },
-    {
-      "name": "スイカジェネレーター:クジラ",
-      "pattern": "GouseiSuikaWhale"
-    },
-    {
-      "name": "スイカジェネレーター:ジンベエザメ",
-      "pattern": "GouseiSuikaShark"
-    },
-    {
-      "name": "スイカジェネレーター:マンボウ",
-      "pattern": "GouseiSuikaSunfish"
-    },
-    {
-      "name": "スイカジェネレーター:ウミガメ",
-      "pattern": "GouseiSuikaTurtle"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "GouseiSuikaTuna"
-    },
-    {
-      "name": "スイカジェネレーター:カニ",
-      "pattern": "GouseiSuikaCrab"
-    },
-    {
-      "name": "スイカジェネレーター:フグ",
-      "pattern": "GouseiSuikaPufferfish"
-    },
-    {
-      "name": "スイカジェネレーター:クラゲ",
-      "pattern": "GouseiSuikaJellyfish"
-    },
-    {
-      "name": "スイカジェネレーター:クマノミ",
-      "pattern": "GouseiSuikaClownfish"
-    },
-    {
-      "name": "スイカジェネレーター:マリモ",
-      "pattern": "GouseiSuikaMarimo"
-    },
-    {
-      "name": "common:ニコニコ本社爆破",
-      "pattern": "CommonBombFire"
-    },
-    {
-      "name": "common:ニコニコ本社爆破",
-      "pattern": "ニコニコ本社爆破"
-    },
-    {
-      "name": "common:フラッシュ",
-      "pattern": "CommonFlash"
-    }
-  ]
+  "wordPartySettings": []
 }

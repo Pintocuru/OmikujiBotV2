@@ -737,7 +737,7 @@
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
           "messageToast": "",
           "actionType": "message",
-          "sound": "success"
+          "sound": "decision"
         }
       ]
     },
@@ -790,7 +790,7 @@
           "messageToast": "",
           "actionType": "message",
           "wordParty": "",
-          "sound": "success"
+          "sound": "decision"
         }
       ]
     },
@@ -843,7 +843,7 @@
           "messageToast": "",
           "actionType": "message",
           "wordParty": "",
-          "sound": "success"
+          "sound": "decision"
         }
       ]
     },
@@ -896,7 +896,7 @@
           "messageToast": "",
           "actionType": "message",
           "wordParty": "",
-          "sound": "success"
+          "sound": "decision"
         }
       ]
     },
@@ -944,7 +944,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
@@ -997,7 +997,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken_2",
           "iconKey": "happy",
           "messageContent": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
@@ -1050,7 +1050,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1103,7 +1103,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1156,7 +1156,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1209,7 +1209,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1262,7 +1262,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1315,7 +1315,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1368,7 +1368,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
@@ -1421,7 +1421,7 @@
         {
           "delaySeconds": 4,
           "wordParty": "",
-          "sound": "success",
+          "sound": "decision",
           "characterKey": "omiken_2",
           "iconKey": "sad",
           "messageContent": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",

@@ -63,7 +63,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
               "actionType": "message",
-              "sound": "success"
+              "sound": "decision"
             }
           ],
           "weight": 700
@@ -102,7 +102,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
               "actionType": "message",
-              "sound": "ta_da"
+              "sound": "baseball"
             }
           ],
           "weight": 150
@@ -141,7 +141,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
               "actionType": "message",
-              "sound": "ta_da"
+              "sound": "baseball"
             }
           ],
           "weight": 50
@@ -180,7 +180,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
               "actionType": "message",
-              "sound": "fail_sigh"
+              "sound": "fail"
             }
           ],
           "weight": 77
@@ -219,7 +219,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
               "actionType": "message",
-              "sound": "fail_beeps"
+              "sound": "negative"
             }
           ],
           "weight": 20
@@ -258,7 +258,7 @@
               "iconKey": "default",
               "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
               "actionType": "message",
-              "sound": "impact_boom"
+              "sound": "explosion"
             }
           ],
           "weight": 3

@@ -8,15 +8,7 @@
     "generatorVersion": "v1.4.0-beta5",
     "dataVersion": 1.30905,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -74,7 +66,7 @@
               "iconKey": "happy",
               "messageContent": "<<user>>さんの運勢は【大吉】<<MaidenOmikuji01>>",
               "messageToast": "",
-              "sound": "ta_da",
+              "sound": "baseball",
               "actionType": "message"
             }
           ],
@@ -160,7 +152,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -203,7 +195,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
               "messageToast": "",
-              "sound": "success_chime",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -246,7 +238,7 @@
               "iconKey": "wink",
               "messageContent": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
               "messageToast": "",
-              "sound": "boing_bounce",
+              "sound": "bounce",
               "actionType": "message"
             }
           ],
@@ -289,7 +281,7 @@
               "iconKey": "sad",
               "messageContent": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
               "messageToast": "",
-              "sound": "fail_sigh",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -332,7 +324,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
               "messageToast": "",
-              "sound": "impact_boom",
+              "sound": "explosion",
               "actionType": "message"
             }
           ],
@@ -341,9 +333,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -352,12 +342,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^御神籤"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -551,10 +536,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -597,10 +579,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -684,11 +663,7 @@
         "wordPartyLoading": "experimental",
         "licenseVisible": "basic",
         "gameScriptSettings": "experimental",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"
       }
