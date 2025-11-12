@@ -7,7 +7,7 @@
       class="chat-image avatar relative"
       :class="[SIZE_CONFIG[displaySize].avatar]"
     >
-      <LayerImage :layers="character.image?.default" />
+      <LayerImage :layers="character.image?.default" :size="10" :round="true" />
     </div>
 
     <!-- メッセージ内容 -->

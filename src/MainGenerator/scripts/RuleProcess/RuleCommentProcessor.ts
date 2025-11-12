@@ -7,7 +7,7 @@ import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Comment } from '@onecomme.com/onesdk/'
 
 export class RuleCommentProcessor {
-  private readonly timeThreshold = 5000 // これ以上経過した古いコメントは判定しない
+  private readonly timeThreshold = 15000 // これ以上経過した古いコメントは判定しない
   private readonly userCommentProcessor: RuleCommentExecutor
 
   constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {

@@ -1,37 +1,39 @@
 <!-- src\common\LayerImage.vue -->
 <template>
-  <div
-    class="relative overflow-hidden rounded"
-    :class="[sizeClass, border ? 'border' : '']"
-    @click="showPreview = true"
-  >
-    <img
-      v-for="(layer, index) in layerArray"
-      :key="index"
-      :src="getImagePath(layer)"
-      class="absolute inset-0 object-contain"
-      :style="{ zIndex: layerArray.length - index }"
-    />
-  </div>
-
-  <!-- 拡大プレビュー -->
-  <Transition name="fade">
+  <div>
     <div
-      v-if="isPreview && showPreview"
-      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
-      @click.self="showPreview = false"
+      class="relative overflow-hidden rounded"
+      :class="[sizeClass, border ? 'border' : '', round ? 'rounded-full' : '']"
+      @click="showPreview = true"
     >
-      <div class="relative w-[256px] h-[256px] bg-white rounded overflow-hidden">
-        <img
-          v-for="(layer, index) in layerArray"
-          :key="index"
-          :src="getImagePath(layer)"
-          class="absolute inset-0 object-contain"
-          :style="{ zIndex: layerArray.length - index }"
-        />
-      </div>
+      <img
+        v-for="(layer, index) in layerArray"
+        :key="index"
+        :src="getImagePath(layer)"
+        class="absolute inset-0 object-contain"
+        :style="{ zIndex: layerArray.length - index }"
+      />
     </div>
-  </Transition>
+
+    <!-- 拡大プレビュー -->
+    <Transition name="fade">
+      <div
+        v-if="isPreview && showPreview"
+        class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+        @click.self="showPreview = false"
+      >
+        <div class="relative w-[256px] h-[256px] bg-white rounded overflow-hidden">
+          <img
+            v-for="(layer, index) in layerArray"
+            :key="index"
+            :src="getImagePath(layer)"
+            class="absolute inset-0 object-contain"
+            :style="{ zIndex: layerArray.length - index }"
+          />
+        </div>
+      </div>
+    </Transition>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,6 +46,7 @@
       layers?: string[] | string
       size?: number
       border?: boolean
+      round?: boolean
       isPreview?: boolean
     }>(),
     {
