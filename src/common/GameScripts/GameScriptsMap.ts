@@ -4,6 +4,7 @@ import BomberSpin from './scripts/BomberSpin/main'
 import GouseiSuika from './scripts/GouseiSuika/main'
 import DwarfBomb from './scripts/DwarfBomb/main'
 import GoogolClover from './scripts/GoogolClover/main'
+import MarkovChain from './scripts/MarkovChain/main'
 
 // gameScriptMap
 export const gameScriptMap: Record<string, ScriptPreset<any, any, any>> = {
@@ -11,6 +12,7 @@ export const gameScriptMap: Record<string, ScriptPreset<any, any, any>> = {
   [GouseiSuika.key]: GouseiSuika,
   [DwarfBomb.key]: DwarfBomb,
   [GoogolClover.key]: GoogolClover,
+  [MarkovChain.key]: MarkovChain,
   // GachaOmikuji,
   // StealEmAll
 } as const

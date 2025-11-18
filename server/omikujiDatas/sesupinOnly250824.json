@@ -5,21 +5,265 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta5",
-    "dataVersion": 1.30905,
+    "generatorVersion": "v1.4.0-beta7",
+    "dataVersion": 1.30907,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
   },
   "jsonMerge": [],
   "comments": {
+    "EidolonGacha": {
+      "id": "EidolonGacha",
+      "key": "EidolonGacha",
+      "name": "幻獣ガチャ",
+      "createdAt": "2025-09-02T03:46:12.548Z",
+      "updatedAt": "2025-11-18T05:35:16.392Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
+          "key": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
+          "name": "幻獣ガチャ:アンコモン",
+          "createdAt": "2025-09-02T03:45:59.053Z",
+          "updatedAt": "2025-09-02T03:45:59.053Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "EidolonGachaDragon",
+              "wordParty": "EidolonGacha_Dragon",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "EidolonGacha_CapsuleUncommon",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>【<<GachaRarityUncommon>>吉!】",
+              "messageToast": "",
+              "sound": "decision",
+              "actionType": "message"
+            }
+          ],
+          "weight": 43
+        },
+        {
+          "id": "1756784759053",
+          "key": "1756784759053",
+          "name": "幻獣ガチャ:レア",
+          "createdAt": "2025-09-02T03:45:59.053Z",
+          "updatedAt": "2025-09-02T03:45:59.053Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "EidolonGachaDragon",
+              "wordParty": "EidolonGacha_Dragon",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "EidolonGacha_CapsuleRare",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "EidolonGacha_CapsuleNameRare",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>激レア!!【<<GachaRarityRare>>吉!】",
+              "messageToast": "",
+              "sound": "decision",
+              "actionType": "message"
+            }
+          ],
+          "weight": 35
+        },
+        {
+          "id": "51d3adb2-6a15-438b-9c80-a3327102a87b",
+          "key": "51d3adb2-6a15-438b-9c80-a3327102a87b",
+          "name": "幻獣ガチャ:SSR",
+          "createdAt": "2025-09-02T03:45:59.053Z",
+          "updatedAt": "2025-09-02T03:45:59.053Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "EidolonGachaDragon",
+              "wordParty": "EidolonGacha_Dragon",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "EidolonGacha_CapsuleSSR",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "EidolonGacha_CapsuleNameSSR",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "EidolonGacha_CapsuleNameSSRDora",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>超激レア!!!【<<GachaRaritySSR>>吉!】",
+              "messageToast": "",
+              "sound": "decision",
+              "actionType": "message"
+            }
+          ],
+          "weight": 20
+        },
+        {
+          "id": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
+          "key": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
+          "name": "幻獣ガチャ:SecretRare",
+          "createdAt": "2025-09-02T03:45:59.053Z",
+          "updatedAt": "2025-09-02T03:45:59.053Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "EidolonGachaDragon",
+              "wordParty": "EidolonGacha_Dragon",
+              "characterKey": "",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 2,
+              "wordParty": "EidolonGacha_CapsuleSecret",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "EidolonGacha_CapsuleNameSSR",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3,
+              "wordParty": "EidolonGacha_CapsuleNameSSRDora",
+              "characterKey": "chocolat",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>伝説の究極レア!!!!【福沢諭吉!】",
+              "messageToast": "",
+              "sound": "decision",
+              "actionType": "message"
+            }
+          ],
+          "weight": 2
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^連$",
+          "^幻獣",
+          "^げんじゅう",
+          "^がちゃ",
+          "^ガチャ",
+          "^gacha"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
     "StageSelect": {
       "id": "StageSelect",
       "key": "StageSelect",
       "name": "ステージ",
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
-      "updatedAt": "2025-11-02T10:33:44.870Z",
+      "updatedAt": "2025-11-18T05:35:23.147Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -51,7 +295,7 @@
             {
               "delaySeconds": 2,
               "wordParty": "!シーン切り替え1",
-              "characterKey": "chocolate",
+              "characterKey": "honjoFox",
               "iconKey": "default",
               "messageContent": "今回のステージは…<<StageRandom>>!",
               "actionType": "message"
@@ -62,7 +306,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -71,7 +317,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^ステージ"]
+        "comment": [
+          "^ステージ"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -85,7 +333,7 @@
       "key": "1760054141011",
       "name": "test",
       "createdAt": "2025-10-09T23:55:41.011Z",
-      "updatedAt": "2025-11-02T10:33:44.871Z",
+      "updatedAt": "2025-11-18T05:30:03.085Z",
       "order": 3,
       "isEnabled": true,
       "tags": [],
@@ -118,7 +366,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -127,7 +377,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["test"]
+        "comment": [
+          "test"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -142,7 +394,7 @@
       "name": "フルーツ占い",
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
-      "updatedAt": "2025-11-02T10:33:44.871Z",
+      "updatedAt": "2025-11-18T05:30:03.085Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -259,7 +511,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -268,7 +522,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["フルーツ"]
+        "comment": [
+          "フルーツ"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -283,7 +539,7 @@
       "name": "グーゴルクローバー",
       "description": "19個の大吉と、1個の大凶",
       "createdAt": "2025-10-05T14:14:24.331Z",
-      "updatedAt": "2025-11-02T10:33:44.871Z",
+      "updatedAt": "2025-11-18T05:30:03.085Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -316,7 +572,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -325,7 +583,17 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^クローバー", "^グーゴル", "^ダイス", "^Clover", "^Googol", "^Google$", "^dice", "☘", "🎲"]
+        "comment": [
+          "^クローバー",
+          "^グーゴル",
+          "^ダイス",
+          "^Clover",
+          "^Googol",
+          "^Google$",
+          "^dice",
+          "☘",
+          "🎲"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -334,224 +602,50 @@
         "isRepeatAllowed": true
       }
     },
-    "EidolonGacha": {
-      "id": "EidolonGacha",
-      "key": "EidolonGacha",
-      "name": "幻獣ガチャ",
-      "createdAt": "2025-09-02T03:46:12.548Z",
-      "updatedAt": "2025-11-02T10:48:02.459Z",
-      "order": 1,
+    "1763446909245-z4z5q1": {
+      "id": "1763446909245-z4z5q1",
+      "key": "1763446909245-z4z5q1",
+      "name": "村きつねテスト",
+      "description": "ちゃんと返ってくるか？",
+      "createdAt": "2025-11-18T06:21:49.245Z",
+      "updatedAt": "2025-11-18T06:22:56.674Z",
+      "order": 6,
       "isEnabled": true,
-      "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
+      "scriptId": "MarkovChain",
+      "scriptParams": {
+        "responseStyle": "友好的"
+      },
       "omikuji": [
         {
-          "id": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
-          "key": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
-          "name": "幻獣ガチャ:アンコモン",
-          "createdAt": "2025-09-02T03:45:59.053Z",
-          "updatedAt": "2025-09-02T03:45:59.053Z",
+          "id": "1763446870108",
+          "key": "1763446870108",
+          "name": "",
+          "createdAt": "2025-11-18T06:21:10.108Z",
+          "updatedAt": "2025-11-18T06:21:10.108Z",
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "EidolonGacha_Dragon",
-              "characterKey": "",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet",
-              "actionSetKey": "EidolonGachaDragon"
-            },
-            {
-              "delaySeconds": 2,
-              "wordParty": "EidolonGacha_CapsuleUncommon",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3.5,
               "wordParty": "",
-              "characterKey": "chocolate",
+              "characterKey": "honjoFox",
               "iconKey": "default",
-              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>【<<GachaRarityUncommon>>吉!】",
-              "messageToast": "",
-              "actionType": "message",
-              "sound": "decision"
+              "messageContent": "<<message>>",
+              "sound": "cute",
+              "actionType": "message"
             }
           ],
-          "weight": 43
-        },
-        {
-          "id": "1756784759053",
-          "key": "1756784759053",
-          "name": "幻獣ガチャ:レア",
-          "createdAt": "2025-09-02T03:45:59.053Z",
-          "updatedAt": "2025-09-02T03:45:59.053Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "EidolonGachaDragon",
-              "wordParty": "EidolonGacha_Dragon",
-              "characterKey": "",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            },
-            {
-              "delaySeconds": 2,
-              "wordParty": "EidolonGacha_CapsuleRare",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3,
-              "wordParty": "EidolonGacha_CapsuleNameRare",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "",
-              "characterKey": "chocolate",
-              "iconKey": "default",
-              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>激レア!!【<<GachaRarityRare>>吉!】",
-              "messageToast": "",
-              "actionType": "message",
-              "sound": "decision"
-            }
-          ],
-          "weight": 35
-        },
-        {
-          "id": "51d3adb2-6a15-438b-9c80-a3327102a87b",
-          "key": "51d3adb2-6a15-438b-9c80-a3327102a87b",
-          "name": "幻獣ガチャ:SSR",
-          "createdAt": "2025-09-02T03:45:59.053Z",
-          "updatedAt": "2025-09-02T03:45:59.053Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "EidolonGachaDragon",
-              "wordParty": "EidolonGacha_Dragon",
-              "characterKey": "",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            },
-            {
-              "delaySeconds": 2,
-              "wordParty": "EidolonGacha_CapsuleSSR",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3,
-              "wordParty": "EidolonGacha_CapsuleNameSSR",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3,
-              "wordParty": "EidolonGacha_CapsuleNameSSRDora",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "",
-              "characterKey": "chocolate",
-              "iconKey": "default",
-              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>超激レア!!!【<<GachaRaritySSR>>吉!】",
-              "messageToast": "",
-              "actionType": "message",
-              "sound": "decision"
-            }
-          ],
-          "weight": 20
-        },
-        {
-          "id": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
-          "key": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
-          "name": "幻獣ガチャ:SecretRare",
-          "createdAt": "2025-09-02T03:45:59.053Z",
-          "updatedAt": "2025-09-02T03:45:59.053Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "EidolonGachaDragon",
-              "wordParty": "EidolonGacha_Dragon",
-              "characterKey": "",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            },
-            {
-              "delaySeconds": 2,
-              "wordParty": "EidolonGacha_CapsuleSecret",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3,
-              "wordParty": "EidolonGacha_CapsuleNameSSR",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3,
-              "wordParty": "EidolonGacha_CapsuleNameSSRDora",
-              "characterKey": "chocolat",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "",
-              "characterKey": "chocolate",
-              "iconKey": "default",
-              "messageContent": "<<user>>の幻獣ガチャ!<<GachaFirstSecond>>伝説の究極レア!!!!【福沢諭吉!】",
-              "messageToast": "",
-              "actionType": "message",
-              "sound": "decision"
-            }
-          ],
-          "weight": 2
+          "weight": 1
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -560,7 +654,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^連$", "^幻獣", "^げんじゅう", "^がちゃ", "^ガチャ", "^gacha"]
+        "comment": [
+          "きつね"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -577,7 +673,7 @@
       "key": "EidolonGachaDragon",
       "name": "幻獣ガチャ:イントロ",
       "createdAt": "2025-11-02T10:33:34.145Z",
-      "updatedAt": "2025-11-02T10:34:02.876Z",
+      "updatedAt": "2025-11-18T05:30:03.085Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -1697,7 +1793,9 @@
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"]
+      "values": [
+        "{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"
+      ]
     },
     "GachaFirstSecond": {
       "id": "GachaFirstSecond",
@@ -1874,6 +1972,83 @@
     }
   },
   "characters": {
+    "chocolate": {
+      "id": "chocolate",
+      "key": "chocolate",
+      "name": "ストロベリーショコラ",
+      "description": "おみくじBOTのキャラクターです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-10-27T04:32:45.344Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "https://pintocuru.booth.pm/",
+      "displayName": "ショコラ",
+      "frameId": "StrawberryChocolat",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#eed84f",
+        "textColor": "#FFEBEE",
+        "backgroundColor": "#D32F2F",
+        "customClasses": "px-4 py-4 border border-white rounded-xl"
+      },
+      "image": {
+        "default": [
+          "chocolate/default.webp",
+          "chocolate/face.webp"
+        ],
+        "happy": [
+          "chocolate/happy.webp",
+          "chocolate/face.webp"
+        ],
+        "excited": [
+          "chocolate/excited.webp",
+          "chocolate/face.webp"
+        ],
+        "laughing": [
+          "chocolate/laughing.webp",
+          "chocolate/face.webp"
+        ],
+        "blushing": [
+          "chocolate/blushing.webp",
+          "chocolate/face.webp"
+        ],
+        "surprised": [
+          "chocolate/surprised.webp",
+          "chocolate/face.webp"
+        ],
+        "sad": [
+          "chocolate/sad.webp",
+          "chocolate/face.webp"
+        ],
+        "angry": [
+          "chocolate/angry.webp",
+          "chocolate/face.webp"
+        ],
+        "thinking": [
+          "chocolate/thinking.webp",
+          "chocolate/face.webp"
+        ],
+        "wink": [
+          "chocolate/wink.webp",
+          "chocolate/face.webp"
+        ],
+        "singing": "chocolate/singing.webp",
+        "sleepy": "chocolate/sleepy.webp"
+      },
+      "imageBase64": "data:image/png;base64,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"
+    },
     "cafelatte": {
       "id": "cafelatte",
       "key": "cafelatte",
@@ -1905,6 +2080,40 @@
       },
       "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEm0lEQVR4AZSVW2xURRjHf+eyl7O77W4vUNldWlpsuFhablpurSCJqFSMXH2QADEqBqMPPhgjJugbxoQQSHggJsSEByWoNGoUolRLW0hMKkhTWgpt09Ze6AXa7nZv54yztPWB7jY4ObNzZub7/r+Z830zq4YOI5K1+aMF4pOta8QXOyrF59srxMdbVojPqmT/tUpx6a2AGDpsiGun3hfd1WdF5MrPovOH06Lvypfi7w8LHvonNVJVlamSr3VwoLiRjt4BEqbA43ZhWnEQKhc7snAygdV7lfHxQWKRMA5VQSgwGolOKaRu/gMkp/M8UfaW3qN/eBRVCicVxsbC+NzZjNmDlFrX6O5q4sGDYdDtWKaFmTCTrmmr+uhMSe4QB1fcZiyUICyd2zvbUe0JTtRl0BZ4h1xjiPM/nUPR5Q4w5W7/JyAJzM+cYM+y2xTluTF0g3jYxO3LY1A1yFxcye69u+RO2tARuB06s5UZO5g2LjIG2ZbfRFFRAaHxEOs2PENZyVK8Xg92J+Qv9KMqFtmZsjPtlKJNC0jadvdHMU0Tn89L261mLE3GXFjJKTSbjiZJdRMlD/vpfmYF/Ni3AofhxGbXqNpZhZZMG2TqSDVTmWw3vfgCjeFiOZL6SQv4vm8VWR6V4ZEh4pbA6bBx7usLHP30OD2dvRJjyQjI2Mh0DpZvS60uR9MCBgZidPXcIxyaIBKNkVAiLF9VRlXVFu4PjNHadFcCJt1Ddh/9EbeUm/lMWswcJyvDSeCJAIFAEK98N02VwoIgxUsWsqA4SMA/DxkgCbFk4LNkluWkUIG0ACEg5vTwz3BUnokoqmqjof4vXIWVVDf0cH/UhRgbRZEn2TBkqq56k7hj7gxISkDM1PHGwO/K5OCRI7jsNpR4gnXrl/PtmROUL5pPRu8tFPmpGI+imAp48mgalrt6BJESMB5xoZkusgY7+OPoEZ7dsH4yLbHYVl7MAmuQDJcdRZMrV1SEiFFzsYGgV14hjwNQtQlGlAQPUIkaGrV19dRcvordIcG+bDT/XBR/LuR4UTPd3GltodxRT26i6xF5pMKMIfA54+xaWsfN0X4S8mCtrVjLk0uWElEMmvvuYfMHUOdkY0nx787X8FT7SeZEWlIopQFMWx4qa2dlfpzffq2l8Woj2QWLeHp9BTbdTjSWQLt5lipX9bR5ylZNOTo1mGNEWWlc40BJO91NDdz4vYbaC7/IQJ/lbnMrzs7LeNTQlHXqZlbAtItP9NKreDh97CS3b1yntm2Yk+f/5HRP5bRJ2vaxAKDQMuLgejSTr+rbaekb5wl5dWzdsYsOx3JmK48FOH7rOZmKOqvnutm35yWIx1i7rghfro2civ2cubMmLWNWwKnOzZxo2Yhhs9iSr7NpYyn79u/m0Bvb2fyyvF1VFc1wsfPd12ldfJgu3/OEhRPk2WCqzAoY6OmXtgKhCHRNZdmGjWhOB6/ufgXPHL/83zblx7PknM78hUG6jVKOjrzNpbJvqF9dzTH5nhYwogbkhZaHXQqriiIhYOk6yH5ycbrDjalqIFcrZEVVsBsO5i0rwSPPia+wkD3vfcC/AAAA//+01SleAAAABklEQVQDACgFrc/FXTPRAAAAAElFTkSuQmCC"
     },
+    "honjoFox": {
+      "id": "honjoFox",
+      "key": "honjoFox",
+      "name": "中仙道の村きつね",
+      "createdAt": "2025-11-18T05:28:00.617Z",
+      "updatedAt": "2025-11-18T05:34:16.566Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "version": "0.0.0",
+      "author": "Pintocuru",
+      "displayName": "きつね",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": false,
+        "isVoice": false,
+        "isRpgVoice": true
+      },
+      "color": {
+        "nameColor": "#90A4AE",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#455A64",
+        "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
+      },
+      "image": {
+        "default": [
+          "honjoFox/head-1.gif",
+          "honjoFox/body.gif",
+          "honjoFox/tail-1.gif"
+        ]
+      }
+    },
     "omiken": {
       "id": "omiken",
       "key": "omiken",
@@ -1912,10 +2121,13 @@
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
       "updatedAt": "2025-10-09T22:04:37.277Z",
-      "order": 3,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1955,10 +2167,13 @@
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
       "updatedAt": "2025-10-10T07:35:47.624Z",
-      "order": 4,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1990,50 +2205,6 @@
         "singing": "",
         "sleepy": ""
       }
-    },
-    "chocolate": {
-      "id": "chocolate",
-      "key": "chocolate",
-      "name": "ストロベリーショコラ",
-      "description": "おみくじBOTのキャラクターです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-27T04:32:45.344Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "https://pintocuru.booth.pm/",
-      "displayName": "ショコラ",
-      "frameId": "StrawberryChocolat",
-      "displayOption": {
-        "isIconDisplay": true,
-        "isOneCommePost": true,
-        "isVoice": true
-      },
-      "color": {
-        "nameColor": "#eed84f",
-        "textColor": "#FFEBEE",
-        "backgroundColor": "#D32F2F",
-        "customClasses": "px-4 py-4 border border-white rounded-xl"
-      },
-      "image": {
-        "default": ["chocolate/default.webp", "chocolate/face.webp"],
-        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
-        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
-        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
-        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
-        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
-        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
-        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
-        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
-        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
-        "singing": "chocolate/singing.webp",
-        "sleepy": "chocolate/sleepy.webp"
-      },
-      "imageBase64": "data:image/png;base64,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"
     }
   },
   "scriptSettings": {
@@ -2056,6 +2227,10 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MarkovChain": {
+      "maxRetries": 3,
+      "minLength": "50"
     }
   },
   "displaySettings": {
@@ -2071,8 +2246,8 @@
       "showToastsOnRight": true,
       "showToastsCharacter": true,
       "showCharacterThumbnail": true,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
       "bundleCharacters": false,
       "daisyUiTheme": "coffee"
     },
@@ -2091,9 +2266,15 @@
         "wordPartyLoading": "basic",
         "licenseVisible": "experimental",
         "gameScriptSettings": "basic",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb", "GoogolClover"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb",
+          "GoogolClover",
+          "MarkovChain"
+        ],
         "wordPartySettings": "basic",
-        "jsonMergeSettings": "basic"
+        "jsonMergeSettings": "experimental"
       }
     }
   },
