@@ -3,10 +3,10 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじBOT カード駅 OmikujiBot CardStation",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta7",
-    "dataVersion": 1.30907,
+    "generatorVersion": "v1.4.0",
+    "dataVersion": 1.4,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",

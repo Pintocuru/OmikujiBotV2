@@ -62,9 +62,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'TossedKotaro', type: 'JSON', accessLevel: 'basic' },
   { project: 'TossedKotaro', type: 'PATCH', accessLevel: 'pro' },
    */
-  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
-  { project: 'ReimuMarisa', type: 'PATCH', accessLevel: 'pro' },
 
   /**
    * solo
@@ -78,6 +75,16 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
+
+  { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
+  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
+  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
+  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**

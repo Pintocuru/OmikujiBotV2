@@ -3,12 +3,16 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじ BOT 超おみくじ OmikujiBot BigBangFortune",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.10.13-v1.3.0",
+    "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta5",
-    "dataVersion": 1.30905,
+    "generatorVersion": "v1.4.0",
+    "dataVersion": 1.4,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "超", "おみくじ"],
+    "tags": [
+      "おみくじBOT",
+      "超",
+      "おみくじ"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7440428"
   },
@@ -70,7 +74,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -79,7 +85,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^超$", "^超おみくじ", "^BigBang"]
+        "comment": [
+          "^超$",
+          "^超おみくじ",
+          "^BigBang"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -846,7 +856,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

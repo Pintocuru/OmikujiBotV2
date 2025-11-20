@@ -3,12 +3,17 @@
     "id": "1754884254510-shoywq",
     "name": "おみくじ BOT タロットカード OmikujiBot TarotCard",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.22-v1.2.0-beta4",
+    "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta7",
-    "dataVersion": 1.30907,
+    "generatorVersion": "v1.4.0",
+    "dataVersion": 1.4,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "タロット", "tarot", "Fortune"],
+    "tags": [
+      "おみくじBOT",
+      "タロット",
+      "tarot",
+      "Fortune"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682"
   },
@@ -63,7 +68,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -72,7 +79,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^タロット", "^たろっと", "^tarot", "タロットカード"]
+        "comment": [
+          "^タロット",
+          "^たろっと",
+          "^tarot",
+          "タロットカード"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1039,7 +1051,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

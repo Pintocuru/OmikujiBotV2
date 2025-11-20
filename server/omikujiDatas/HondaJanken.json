@@ -3,12 +3,15 @@
     "id": "1754926464640-roopmp",
     "name": "おみくじBOT じゃんけん OmikujiBot HondaJanken",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta5",
-    "dataVersion": 1.30905,
+    "generatorVersion": "v1.4.0",
+    "dataVersion": 1.4,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "じゃんけん"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7383088"
   },
@@ -224,7 +227,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -233,7 +238,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -356,7 +365,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -365,7 +376,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -488,7 +504,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -497,7 +515,11 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -620,7 +642,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -629,7 +653,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1443,7 +1472,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["ケイスケ ホンダ"]
+      "values": [
+        "ケイスケ ホンダ"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -1456,7 +1487,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["俺"]
+      "values": [
+        "俺"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -1593,7 +1626,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1636,7 +1672,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
