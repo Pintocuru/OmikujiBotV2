@@ -2467,7 +2467,7 @@
             },
             {
               "delaySeconds": 1.4,
-              "wordParty": "!janken_{{rand(1,3)}}",
+              "wordParty": "HondaJanken_{{rand(1,3)}}",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "",
@@ -2476,7 +2476,7 @@
             },
             {
               "delaySeconds": 2.9,
-              "wordParty": "!janken_lose",
+              "wordParty": "HondaJankenLose",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "",
@@ -4172,27 +4172,27 @@
     },
     {
       "name": "じゃんけん:グー",
-      "pattern": "!janken_1"
+      "pattern": "HondaJanken_1"
     },
     {
       "name": "じゃんけん:チョキ",
-      "pattern": "!janken_2"
+      "pattern": "HondaJanken_2"
     },
     {
       "name": "じゃんけん:パー",
-      "pattern": "!janken_3"
+      "pattern": "HondaJanken_3"
     },
     {
       "name": "じゃんけん:I Love You",
-      "pattern": "!janken_4"
+      "pattern": "HondaJanken_4"
     },
     {
       "name": "じゃんけん結果:勝ち",
-      "pattern": "!janken_win"
+      "pattern": "HondaJankenWin"
     },
     {
       "name": "じゃんけん結果:負け",
-      "pattern": "!janken_lose"
+      "pattern": "HondaJankenLose"
     },
     {
       "name": "フラワー占い:赤い花",

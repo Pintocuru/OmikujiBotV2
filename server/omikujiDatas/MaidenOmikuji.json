@@ -5,10 +5,18 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta5",
-    "dataVersion": 1.30905,
+    "generatorVersion": "v1.4.0-beta7",
+    "dataVersion": 1.30907,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "おみくじ",
+      "占い",
+      "ゆっくり",
+      "ゆっくり霊夢",
+      "ゆっくり魔理沙",
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -20,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-05T02:38:36.262Z",
+      "updatedAt": "2025-11-20T01:59:36.524Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -195,7 +203,7 @@
               "iconKey": "default",
               "messageContent": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
               "messageToast": "",
-              "sound": "congrats",
+              "sound": "jingle",
               "actionType": "message"
             }
           ],
@@ -333,7 +341,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -342,7 +352,12 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -536,7 +551,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -579,7 +597,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -663,504 +684,15 @@
         "wordPartyLoading": "experimental",
         "licenseVisible": "basic",
         "gameScriptSettings": "experimental",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"
       }
     }
   },
-  "wordPartySettings": [
-    {
-      "name": "効果音:ドアチャイム1",
-      "pattern": "!ドアチャイム1"
-    },
-    {
-      "name": "効果音:シーン切り替え1",
-      "pattern": "!シーン切り替え1"
-    },
-    {
-      "name": "効果音:ニュースタイトル表示1",
-      "pattern": "!ニュースタイトル表示1"
-    },
-    {
-      "name": "効果音:ニュースタイトル表示3",
-      "pattern": "!ニュースタイトル表示3"
-    },
-    {
-      "name": "効果音:レベルアップ",
-      "pattern": "!レベルアップ"
-    },
-    {
-      "name": "効果音:ひらめく1",
-      "pattern": "!ひらめく1"
-    },
-    {
-      "name": "効果音:可愛い動作",
-      "pattern": "!可愛い動作"
-    },
-    {
-      "name": "効果音:シャキーン2",
-      "pattern": "!シャキーン2"
-    },
-    {
-      "name": "効果音:足首がグキッ",
-      "pattern": "!足首がグキッ"
-    },
-    {
-      "name": "効果音:男衆「オウ！」",
-      "pattern": "!男衆「オウ！」"
-    },
-    {
-      "name": "効果音:女衆「おう！」",
-      "pattern": "!女衆「おう！」"
-    },
-    {
-      "name": "効果音:ビシッとツッコミ1",
-      "pattern": "!ビシッとツッコミ1"
-    },
-    {
-      "name": "効果音:チーン1",
-      "pattern": "!チーン1"
-    },
-    {
-      "name": "効果音:間抜け1",
-      "pattern": "!間抜け1"
-    },
-    {
-      "name": "効果音:間抜け5",
-      "pattern": "!間抜け5"
-    },
-    {
-      "name": "効果音:呪いの旋律",
-      "pattern": "!呪いの旋律"
-    },
-    {
-      "name": "効果音:不安（ピアノ演奏）",
-      "pattern": "!不安（ピアノ演奏）"
-    },
-    {
-      "name": "効果音:ジャン！",
-      "pattern": "!ジャン！"
-    },
-    {
-      "name": "効果音:クイズ出題1",
-      "pattern": "!クイズ出題1"
-    },
-    {
-      "name": "効果音:クイズ不正解1",
-      "pattern": "!クイズ不正解1"
-    },
-    {
-      "name": "効果音:クイズ正解1",
-      "pattern": "!クイズ正解1"
-    },
-    {
-      "name": "効果音:金額表示",
-      "pattern": "!金額表示"
-    },
-    {
-      "name": "効果音:消える音",
-      "pattern": "!パッ"
-    },
-    {
-      "name": "効果音:出てくる音",
-      "pattern": "!パパッ"
-    },
-    {
-      "name": "初見",
-      "pattern": "FirstSyoken"
-    },
-    {
-      "name": "挑戦者が現れました",
-      "pattern": "!挑戦者"
-    },
-    {
-      "name": "おみくじ:大吉",
-      "pattern": "!omikuji_01"
-    },
-    {
-      "name": "おみくじ:吉",
-      "pattern": "!omikuji_02"
-    },
-    {
-      "name": "おみくじ:中吉",
-      "pattern": "!omikuji_03"
-    },
-    {
-      "name": "おみくじ:小吉",
-      "pattern": "!omikuji_04"
-    },
-    {
-      "name": "おみくじ:末吉",
-      "pattern": "!omikuji_05"
-    },
-    {
-      "name": "おみくじ:凶",
-      "pattern": "!omikuji_06"
-    },
-    {
-      "name": "おみくじ:残念賞",
-      "pattern": "!omikuji_07"
-    },
-    {
-      "name": "おみくじエフェクト",
-      "pattern": "!omikuji_huru"
-    },
-    {
-      "name": "じゃんけん:グー",
-      "pattern": "!janken_1"
-    },
-    {
-      "name": "じゃんけん:チョキ",
-      "pattern": "!janken_2"
-    },
-    {
-      "name": "じゃんけん:パー",
-      "pattern": "!janken_3"
-    },
-    {
-      "name": "じゃんけん:I Love You",
-      "pattern": "!janken_4"
-    },
-    {
-      "name": "じゃんけん結果:勝ち",
-      "pattern": "!janken_win"
-    },
-    {
-      "name": "じゃんけん結果:負け",
-      "pattern": "!janken_lose"
-    },
-    {
-      "name": "フラワー占い:赤い花",
-      "pattern": "!FortuneMarisaRed"
-    },
-    {
-      "name": "フラワー占い:黄色い花",
-      "pattern": "!FortuneMarisaYellow"
-    },
-    {
-      "name": "フラワー占い:白い花",
-      "pattern": "!FortuneMarisaWhite"
-    },
-    {
-      "name": "桃鉄カード:登場ノーマル",
-      "pattern": "!card_00"
-    },
-    {
-      "name": "桃鉄カード:登場ナイス",
-      "pattern": "!card_01"
-    },
-    {
-      "name": "桃鉄カード:登場デビル",
-      "pattern": "!card_02"
-    },
-    {
-      "name": "桃鉄カード:結果ノーマル",
-      "pattern": "!card_10"
-    },
-    {
-      "name": "桃鉄カード:結果ナイス・スペシャル",
-      "pattern": "!card_11"
-    },
-    {
-      "name": "桃鉄カード:結果ナイス・スペシャル",
-      "pattern": "!card_12"
-    },
-    {
-      "name": "桃鉄カード:結果デビル",
-      "pattern": "!card_13"
-    },
-    {
-      "name": "ゆびをふる:指",
-      "pattern": "!yubiwo_01"
-    },
-    {
-      "name": "パルプンテ",
-      "pattern": "!パルプンテ"
-    },
-    {
-      "name": "Splatoon:インキ黄色",
-      "pattern": "!Spla_01"
-    },
-    {
-      "name": "Splatoon:インキマゼンダ",
-      "pattern": "!Spla_02"
-    },
-    {
-      "name": "Splatoon:インキシアン",
-      "pattern": "!Spla_03"
-    },
-    {
-      "name": "ドラちゃん:背景",
-      "pattern": "!5percent_dora_0"
-    },
-    {
-      "name": "ドラちゃん:手",
-      "pattern": "!5percent_dora_1"
-    },
-    {
-      "name": "ドラちゃん:赤背景",
-      "pattern": "!5percent_dora_konjac_0"
-    },
-    {
-      "name": "ドラちゃん:どこでもしずちゃん",
-      "pattern": "!5percent_dora_konjac_1"
-    },
-    {
-      "name": "ドラちゃん:ボロン",
-      "pattern": "!5percent_dora_2"
-    },
-    {
-      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
-      "pattern": "!gacha_00A"
-    },
-    {
-      "name": "幻獣ガチャ:フラッシュ",
-      "pattern": "!gacha_00B"
-    },
-    {
-      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
-      "pattern": "!gacha_A1"
-    },
-    {
-      "name": "幻獣ガチャ:激レアカプセル",
-      "pattern": "!gacha_B1"
-    },
-    {
-      "name": "幻獣ガチャ:激レア表示",
-      "pattern": "!gacha_B2"
-    },
-    {
-      "name": "幻獣ガチャ:超激レアカプセル",
-      "pattern": "!gacha_C1"
-    },
-    {
-      "name": "幻獣ガチャ:超激レア表示",
-      "pattern": "!gacha_C2"
-    },
-    {
-      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
-      "pattern": "!gacha_C3"
-    },
-    {
-      "name": "ボンバースロット:cherry",
-      "pattern": "!bombcherry"
-    },
-    {
-      "name": "ボンバースロット:cherry",
-      "pattern": "!bombCherry"
-    },
-    {
-      "name": "ボンバースロット:orange",
-      "pattern": "!bomborange"
-    },
-    {
-      "name": "ボンバースロット:orange",
-      "pattern": "!bombOrange"
-    },
-    {
-      "name": "ボンバースロット:plum",
-      "pattern": "!bombplam"
-    },
-    {
-      "name": "ボンバースロット:plum",
-      "pattern": "!bombPlum"
-    },
-    {
-      "name": "ボンバースロット:melon",
-      "pattern": "!bombmelon"
-    },
-    {
-      "name": "ボンバースロット:melon",
-      "pattern": "!bombMelon"
-    },
-    {
-      "name": "ボンバースロット:bell",
-      "pattern": "!bombbell"
-    },
-    {
-      "name": "ボンバースロット:bell",
-      "pattern": "!bombBell"
-    },
-    {
-      "name": "ボンバースロット:hat",
-      "pattern": "!bombhut"
-    },
-    {
-      "name": "ボンバースロット:hat",
-      "pattern": "!bombHat"
-    },
-    {
-      "name": "ボンバースロット:BAR",
-      "pattern": "!bombBAR"
-    },
-    {
-      "name": "ボンバースロット:seven",
-      "pattern": "!bombseven"
-    },
-    {
-      "name": "ボンバースロット:seven",
-      "pattern": "!bombSeven"
-    },
-    {
-      "name": "ボンバースロット:背景",
-      "pattern": "!bombback"
-    },
-    {
-      "name": "ボンバースロット:背景",
-      "pattern": "!bombBack"
-    },
-    {
-      "name": "ボンバースロット:爆発",
-      "pattern": "!bombfire"
-    },
-    {
-      "name": "ボンバースロット:爆発",
-      "pattern": "!bombFire"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ",
-      "pattern": "!dwarfBombRabbit"
-    },
-    {
-      "name": "うさぎスロット:ダイナマイト",
-      "pattern": "!dwarfBombDynamite"
-    },
-    {
-      "name": "うさぎスロット:ツルハシ",
-      "pattern": "!dwarfBombPickaxe"
-    },
-    {
-      "name": "うさぎスロット:ダイヤモンド",
-      "pattern": "!dwarfBombDiamond"
-    },
-    {
-      "name": "うさぎスロット:金塊",
-      "pattern": "!dwarfBombGold"
-    },
-    {
-      "name": "うさぎスロット:宝箱",
-      "pattern": "!dwarfBombTreasure"
-    },
-    {
-      "name": "うさぎスロット:ちいさなうさぎ",
-      "pattern": "!dwarfBombDaysBunny"
-    },
-    {
-      "name": "スイカジェネレーター:カボチャ",
-      "pattern": "🎃"
-    },
-    {
-      "name": "スイカジェネレーター:キャンディ",
-      "pattern": "🍬"
-    },
-    {
-      "name": "スイカジェネレーター:スイカ",
-      "pattern": "🍉"
-    },
-    {
-      "name": "スイカジェネレーター:メロン",
-      "pattern": "🍈"
-    },
-    {
-      "name": "スイカジェネレーター:もも",
-      "pattern": "🍑"
-    },
-    {
-      "name": "スイカジェネレーター:パイナップル",
-      "pattern": "🍍"
-    },
-    {
-      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
-      "pattern": "🍐"
-    },
-    {
-      "name": "スイカジェネレーター:りんご",
-      "pattern": "🍎"
-    },
-    {
-      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
-      "pattern": "🦪"
-    },
-    {
-      "name": "スイカジェネレーター:デコポン",
-      "pattern": "🍊"
-    },
-    {
-      "name": "スイカジェネレーター:ぶどう",
-      "pattern": "🍇"
-    },
-    {
-      "name": "スイカジェネレーター:いちご",
-      "pattern": "🍓"
-    },
-    {
-      "name": "スイカジェネレーター:チェリー",
-      "pattern": "🍒"
-    },
-    {
-      "name": "スイカジェネレーター:クジラ",
-      "pattern": "!クジラ"
-    },
-    {
-      "name": "スイカジェネレーター:シャチ",
-      "pattern": "!シャチ"
-    },
-    {
-      "name": "スイカジェネレーター:ジンベエザメ",
-      "pattern": "!ジンベエザメ"
-    },
-    {
-      "name": "スイカジェネレーター:マンボウ",
-      "pattern": "!マンボウ"
-    },
-    {
-      "name": "スイカジェネレーター:ウミガメ",
-      "pattern": "!ウミガメ"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、撮影開始"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、二夜連続"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、ご期待ください"
-    },
-    {
-      "name": "スイカジェネレーター:カニ",
-      "pattern": "!カニ"
-    },
-    {
-      "name": "スイカジェネレーター:フグ",
-      "pattern": "!フグ"
-    },
-    {
-      "name": "スイカジェネレーター:クラゲ",
-      "pattern": "!クラゲ"
-    },
-    {
-      "name": "スイカジェネレーター:クマノミ",
-      "pattern": "!クマノミ"
-    },
-    {
-      "name": "スイカジェネレーター:マリモ",
-      "pattern": "!マリモ"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "初見なのにモデレーター"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "モデレーターなのに初見"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "ここまで見てくれてありがと。"
-    }
-  ]
+  "wordPartySettings": []
 }

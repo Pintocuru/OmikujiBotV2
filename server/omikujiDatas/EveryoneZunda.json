@@ -2566,27 +2566,27 @@
     },
     {
       "name": "じゃんけん:グー",
-      "pattern": "!janken_1"
+      "pattern": "HondaJanken_1"
     },
     {
       "name": "じゃんけん:チョキ",
-      "pattern": "!janken_2"
+      "pattern": "HondaJanken_2"
     },
     {
       "name": "じゃんけん:パー",
-      "pattern": "!janken_3"
+      "pattern": "HondaJanken_3"
     },
     {
       "name": "じゃんけん:I Love You",
-      "pattern": "!janken_4"
+      "pattern": "HondaJanken_4"
     },
     {
       "name": "じゃんけん結果:勝ち",
-      "pattern": "!janken_win"
+      "pattern": "HondaJankenWin"
     },
     {
       "name": "じゃんけん結果:負け",
-      "pattern": "!janken_lose"
+      "pattern": "HondaJankenLose"
     },
     {
       "name": "フラワー占い:赤い花",

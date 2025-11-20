@@ -5,13 +5,14 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.22-v1.2.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.3.0-beta.2",
-    "dataVersion": 1.29012,
+    "generatorVersion": "v1.4.0-beta7",
+    "dataVersion": 1.30907,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": ["おみくじBOT", "タロット", "tarot", "Fortune"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682"
   },
+  "jsonMerge": [],
   "comments": {
     "TarotCard": {
       "id": "TarotCard",
@@ -19,7 +20,7 @@
       "name": "タロット占い",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-10-11T06:43:52.624Z",
+      "updatedAt": "2025-11-20T02:08:49.781Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -36,6 +37,7 @@
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
           "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -43,15 +45,17 @@
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKey": "TarotCardFirst"
             },
             {
               "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "omiken",
               "iconKey": "default",
               "messageContent": "<<user>>さんは<<TarotCard>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "collect"
             }
           ],
           "weight": 1
@@ -79,7 +83,55 @@
     }
   },
   "timers": {},
-  "actionSets": {},
+  "actionSets": {
+    "TarotCardFirst": {
+      "id": "TarotCardFirst",
+      "key": "TarotCardFirst",
+      "name": "タロット:イントロ",
+      "createdAt": "2025-10-11T11:16:21.472Z",
+      "updatedAt": "2025-11-20T02:04:13.427Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#9C27B0",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "TarotCard_back",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.5,
+          "wordParty": "TarotCard_02",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 2,
+          "wordParty": "TarotCard_03",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1,
+          "wordParty": "TarotCard_01",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        }
+      ],
+      "description": "稼働時の演出です"
+    }
+  },
   "placeholders": {
     "TarotCard": {
       "id": "TarotCard",
@@ -1072,7 +1124,8 @@
         "licenseVisible": "experimental",
         "gameScriptSettings": "experimental",
         "gameScripts": [],
-        "wordPartySettings": "experimental"
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "basic"
       }
     }
   },
@@ -1215,27 +1268,27 @@
     },
     {
       "name": "じゃんけん:グー",
-      "pattern": "!janken_1"
+      "pattern": "HondaJanken_1"
     },
     {
       "name": "じゃんけん:チョキ",
-      "pattern": "!janken_2"
+      "pattern": "HondaJanken_2"
     },
     {
       "name": "じゃんけん:パー",
-      "pattern": "!janken_3"
+      "pattern": "HondaJanken_3"
     },
     {
       "name": "じゃんけん:I Love You",
-      "pattern": "!janken_4"
+      "pattern": "HondaJanken_4"
     },
     {
       "name": "じゃんけん結果:勝ち",
-      "pattern": "!janken_win"
+      "pattern": "HondaJankenWin"
     },
     {
       "name": "じゃんけん結果:負け",
-      "pattern": "!janken_lose"
+      "pattern": "HondaJankenLose"
     },
     {
       "name": "フラワー占い:赤い花",

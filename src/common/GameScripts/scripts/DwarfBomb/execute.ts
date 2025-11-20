@@ -44,7 +44,13 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
 
     return {
       postActions: isParty
-        ? [{ actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit' }, ...partyEffects]
+        ? [
+            { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
+            { actionType: 'wordParty', delaySeconds: 1.5, wordParty: 'DwarfBombRabbit2' },
+            { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },
+            { actionType: 'wordParty', delaySeconds: 2.7, wordParty: 'CommonBombFire' },
+            ...partyEffects,
+          ]
         : [],
       placeholders: {
         ...logResult.placeholders,

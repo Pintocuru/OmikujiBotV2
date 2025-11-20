@@ -2,19 +2,19 @@
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { RESPONSE_CONFIGS } from './responseConfigs'
-import { MarkovBot } from './markovBot'
+import { RandomBot } from './randomBot'
 import { BotParams, BotParamsSchema, BotPlaceholder, BotSettings, BotSettingsSchema } from './params'
 
 export class ExecuteScript implements ScriptClass<BotSettings, BotParams, BotPlaceholder> {
   private settings!: BotSettings
-  private markovBot!: MarkovBot
+  private randomBot!: RandomBot
 
   /**
    * 設定を初期化する
    */
   setup(settings: BotSettings): void {
     this.settings = BotSettingsSchema.parse(settings)
-    this.markovBot = new MarkovBot()
+    this.randomBot = new RandomBot()
   }
 
   /**
@@ -31,8 +31,8 @@ export class ExecuteScript implements ScriptClass<BotSettings, BotParams, BotPla
     const corpus = RESPONSE_CONFIGS[responseStyle]
     if (!corpus) throw new Error(`不明な応答スタイル: ${responseStyle}`)
 
-    // マルコフ連鎖でテキスト生成
-    const generatedText = this.markovBot.generate(corpus, minLength)
+    // コーパスからランダムにテキスト生成
+    const generatedText = this.randomBot.generate(corpus, userName)
 
     return {
       postActions: [],
