@@ -25,7 +25,7 @@ function project(packageRoot: string): ProjectConfig {
      * 改変禁止
      */
     license: {
-      basic: 'CC-BY 4.0',
+      basic: '利用規約に従う',
     },
 
     template: {
