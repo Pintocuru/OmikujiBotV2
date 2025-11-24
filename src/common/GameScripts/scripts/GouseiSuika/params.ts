@@ -87,6 +87,8 @@ const selectedLogPlaceholders: ScriptPlaceholderItem<LogGamePlaceholder>[] = log
   wantedLogPlaceholderIds.includes(item.key)
 )
 export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
+  // LogRank のプレースホルダーを継承
+  ...selectedLogPlaceholders,
   {
     key: 'message',
     name: '標準メッセージ',
@@ -105,6 +107,4 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
     description: 'スイカジェネレーターの得点を返します',
     value: '1500',
   },
-  // LogRank のプレースホルダーを継承
-  ...selectedLogPlaceholders,
 ]
