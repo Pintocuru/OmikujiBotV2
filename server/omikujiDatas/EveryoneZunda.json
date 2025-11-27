@@ -5,10 +5,15 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta01",
-    "dataVersion": 1.30901,
+    "generatorVersion": "v1.4.0",
+    "dataVersion": 1.4,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "VOICEVOX", "ずんだもん", "（ず・ω・きょ）"],
+    "tags": [
+      "おみくじBOT",
+      "VOICEVOX",
+      "ずんだもん",
+      "（ず・ω・きょ）"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/6053855"
   },
@@ -23,6 +28,7 @@
       "tags": [],
       "accessLevel": "basic",
       "sourceFile": "HondaJanken.json",
+      "keySuffix": "",
       "remaps": [
         {
           "fromCharacterKey": "omiken",
@@ -72,16 +78,17 @@
       "tags": [],
       "accessLevel": "pro",
       "sourceFile": "GameScripts.json",
+      "keySuffix": "",
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "reimu",
+          "toCharacterKey": "zunda",
           "fromIconKey": "",
           "toIconKey": ""
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "reimu",
+          "toCharacterKey": "zunda",
           "fromIconKey": "",
           "toIconKey": ""
         }
@@ -95,7 +102,7 @@
       "name": "ずんだもんのおみくじ",
       "description": "みんなの運勢はすごくいいのだ！ずん子もそう言ってるのだ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:09:28.377Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -401,7 +408,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -410,7 +419,13 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^fortune", "🥠"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^fortune",
+          "🥠"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -419,96 +434,25 @@
         "isRepeatAllowed": true
       }
     },
-    "GouseiSuika": {
-      "id": "GouseiSuika",
-      "key": "GouseiSuika",
-      "name": "スイカジェネレーター",
-      "description": "スイカゲーム風のおみくじ",
-      "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "スイカゲーム"
-      },
-      "omikuji": [
-        {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "key": "y1",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.296Z",
-          "updatedAt": "2025-08-11T15:34:29.296Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["comment"],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉"]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "BomberSpin": {
-      "id": "BomberSpin",
-      "key": "BomberSpin",
-      "name": "ボンバースピン",
-      "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
+    "GiftMiddleZunda": {
+      "id": "GiftMiddleZunda",
+      "key": "GiftMiddleZunda",
+      "name": "ギフト(1000-1999円):Zunda",
+      "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 3,
+      "updatedAt": "2025-11-27T01:26:29.174Z",
+      "order": 6,
       "isEnabled": true,
-      "editorColor": "#4CAF50",
+      "editorColor": "#FF9800",
       "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "BomberSpin",
-      "scriptParams": {},
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
-          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "name": "通常",
+          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
+          "key": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
+          "name": "ギフト",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -518,22 +462,23 @@
           "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 2.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "!ニュースタイトル表示3",
+              "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
+              "wordParty": "!金額表示",
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "actionType": "toast"
+              "messageToast": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "messageContent": "<<GiftMiddleZunda>>",
+              "messageToast": "",
+              "actionType": "message"
             }
           ],
           "weight": 1
@@ -541,67 +486,139 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": [],
+        "gift": [
+          "yellow"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
+        "comment": []
       },
       "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
-    "DwarfBomb": {
-      "id": "DwarfBomb",
-      "key": "DwarfBomb",
-      "name": "うさぎスロット",
-      "description": "スロット風のおみくじ。最大枚数20000枚!",
+    "GiftHighZunda": {
+      "id": "GiftHighZunda",
+      "key": "GiftHighZunda",
+      "name": "ギフト(2000円-):Zunda",
+      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:26:30.972Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
+          "key": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
+              "wordParty": "!金額表示",
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 0.5,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "excited",
+              "messageContent": "<<GiftHighZunda>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "orange",
+          "pink",
+          "red",
+          "purple"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "CheckNumberZunda": {
+      "id": "CheckNumberZunda",
+      "key": "CheckNumberZunda",
+      "name": "コメント数表示:Zunda",
+      "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-11-27T01:26:24.944Z",
       "order": 4,
       "isEnabled": true,
-      "editorColor": "#4CAF50",
+      "editorColor": "#3F51B5",
       "tags": [],
-      "accessLevel": "pro",
-      "scriptId": "DwarfBomb",
-      "scriptParams": {},
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
       "omikuji": [
         {
-          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "key": "4d17c161-f7ce-48a1-a819-863431a8b73c",
           "name": "",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
+              "delaySeconds": 0,
               "wordParty": "!ニュースタイトル表示3",
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<announceMessage>>",
+              "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!",
               "actionType": "toast"
             }
           ],
@@ -610,7 +627,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -619,25 +638,229 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
+        "comment": [
+          "^コメント$"
+        ]
       },
       "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 10,
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": false,
+        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
+      }
+    },
+    "FirstCounterSyokenZunda": {
+      "id": "FirstCounterSyokenZunda",
+      "key": "FirstCounterSyokenZunda",
+      "name": "初見:Zunda",
+      "description": "初めてコメントをした方への挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-11-27T01:26:33.199Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "name": "初見さんへの挨拶1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "FirstSyoken",
+              "characterKey": "zunda",
+              "iconKey": "default",
+              "messageContent": "",
+              "messageToast": "",
+              "actionType": "wordParty"
+            },
+            {
+              "delaySeconds": 1.5,
+              "wordParty": "!レベルアップ",
+              "characterKey": "zunda",
+              "iconKey": "happy",
+              "messageContent": "<<FirstSyokenZunda>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "syoken"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
         "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": true
       }
     },
-    "SyokenSagiZunda": {
-      "id": "SyokenSagiZunda",
-      "key": "SyokenSagiZunda",
-      "name": "初見詐欺",
-      "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…",
+    "FirstCounterAgainZunda": {
+      "id": "FirstCounterAgainZunda",
+      "key": "FirstCounterAgainZunda",
+      "name": "久しぶり:Zunda",
+      "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:26:35.344Z",
       "order": 9,
       "isEnabled": true,
-      "editorColor": "#8B5CF6",
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "key": "96e9902f-8a5a-49b5-a1fe-998632148237",
+          "name": "久しぶり1",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "excited",
+              "messageContent": "<<FirstComebackZunda>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "again"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstCounterFirstVisitZunda": {
+      "id": "FirstCounterFirstVisitZunda",
+      "key": "FirstCounterFirstVisitZunda",
+      "name": "こんにちは:Zunda",
+      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-11-27T01:26:37.207Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "key": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
+          "name": "挨拶",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "wordParty": "!シーン切り替え1",
+              "characterKey": "zunda",
+              "iconKey": "thinking",
+              "messageContent": "<<FirstVisitZunda>>",
+              "messageToast": "",
+              "actionType": "message"
+            }
+          ],
+          "weight": 4
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "syoken"
+        ],
+        "syoken": [
+          "firstVisit"
+        ],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    },
+    "FirstSagiZunda": {
+      "id": "FirstSagiZunda",
+      "key": "FirstSagiZunda",
+      "name": "初見詐欺:Zunda",
+      "description": "初めてでもないのに「初めまして」?僕にはさっぱりわからないのだ…",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2025-11-27T01:26:17.587Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "scriptId": null,
@@ -801,7 +1024,7 @@
               "wordParty": "!レベルアップ",
               "characterKey": "zunda",
               "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
+              "messageContent": "<<FirstSyokenZunda>>",
               "messageToast": "",
               "actionType": "message"
             },
@@ -820,7 +1043,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -829,7 +1055,11 @@
           "unit": "tc",
           "value": 6
         },
-        "comment": ["初見(?!さん)", "所見", "はじめまして"]
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -838,16 +1068,16 @@
         "isRepeatAllowed": true
       }
     },
-    "SyokenHontoZunda": {
-      "id": "SyokenHontoZunda",
-      "key": "SyokenHontoZunda",
-      "name": "ホントの初見",
+    "FirstHontoZunda": {
+      "id": "FirstHontoZunda",
+      "key": "FirstHontoZunda",
+      "name": "ホントの初見:Zunda",
       "description": "「初見」って言ったら配信画面に「参戦！」って出るのだ！",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 10,
+      "updatedAt": "2025-11-27T01:26:22.640Z",
+      "order": 3,
       "isEnabled": true,
-      "editorColor": "#8B5CF6",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "scriptId": null,
@@ -879,7 +1109,7 @@
               "wordParty": "!レベルアップ",
               "characterKey": "zunda",
               "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
+              "messageContent": "<<FirstSyokenZunda>>",
               "messageToast": "",
               "actionType": "message"
             }
@@ -889,7 +1119,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -898,7 +1131,11 @@
           "unit": "tc",
           "value": 5
         },
-        "comment": ["初見", "所見", "はじめまして"]
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -907,14 +1144,14 @@
         "isRepeatAllowed": true
       }
     },
-    "GiftLowZunda": {
-      "id": "GiftLowZunda",
-      "key": "GiftLowZunda",
-      "name": "ギフト(1-999円)",
+    "GiftZunda": {
+      "id": "GiftZunda",
+      "key": "GiftZunda",
+      "name": "ギフト(1-999円):Zunda",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 11,
+      "updatedAt": "2025-11-27T01:26:27.097Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -936,20 +1173,20 @@
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionSetKey": "GiftIntro",
               "wordParty": "!金額表示",
               "characterKey": "zunda",
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "",
-              "actionType": "actionSet",
-              "actionSetKey": "GiftIntro"
+              "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
               "wordParty": "!シーン切り替え1",
               "characterKey": "zunda",
               "iconKey": "wink",
-              "messageContent": "<<GiftLowZunda>>",
+              "messageContent": "<<GiftZunda>>",
               "messageToast": "",
               "actionType": "message"
             }
@@ -959,10 +1196,16 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "syoken": [],
         "access": [],
-        "gift": ["blue", "lightBlue", "green"],
+        "gift": [
+          "blue",
+          "lightBlue",
+          "green"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -977,404 +1220,14 @@
         "isRepeatAllowed": true
       }
     },
-    "GiftMiddleZunda": {
-      "id": "GiftMiddleZunda",
-      "key": "GiftMiddleZunda",
-      "name": "ギフト(1000-1999円)",
-      "description": "大きなギフトを貰ったときの感謝コメント",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
-          "key": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
-          "name": "ギフト",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "GiftIntro",
-              "wordParty": "!金額表示",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "messageContent": "<<GiftMiddleZunda>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["gift"],
-        "syoken": [],
-        "access": [],
-        "gift": ["yellow"],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "GiftHighZunda": {
-      "id": "GiftHighZunda",
-      "key": "GiftHighZunda",
-      "name": "ギフト(2000円-)",
-      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
-          "key": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
-          "name": "ギフト",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionSetKey": "GiftIntro",
-              "wordParty": "!金額表示",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "excited",
-              "messageContent": "<<GiftHighZunda>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["gift"],
-        "syoken": [],
-        "access": [],
-        "gift": ["orange", "pink", "red", "purple"],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "CheckNumberZunda": {
-      "id": "CheckNumberZunda",
-      "key": "CheckNumberZunda",
-      "name": "コメント数表示",
-      "description": "コメント数を教えるのだ！オマエはどれだけコメントをしてきたのだ？",
+    "CountStreamZunda": {
+      "id": "CountStreamZunda",
+      "key": "CountStreamZunda",
+      "name": "配信内コメント数チェック:Zunda",
+      "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#10B981",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
-          "key": "4d17c161-f7ce-48a1-a819-863431a8b73c",
-          "name": "",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!ニュースタイトル表示3",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>は [<<tc>>] 回コメントしてるのだ!",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["comment"],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": ["^コメント$"]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": false,
-        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
-      }
-    },
-    "FirstCounterSyokenZunda": {
-      "id": "FirstCounterSyokenZunda",
-      "key": "FirstCounterSyokenZunda",
-      "name": "初見",
-      "description": "初めてコメントをした方への挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "key": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "name": "初見さんへの挨拶1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "zunda",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "zunda",
-              "iconKey": "happy",
-              "messageContent": "<<FirstCounterSyokenZunda>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["syoken"],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterAgainZunda": {
-      "id": "FirstCounterAgainZunda",
-      "key": "FirstCounterAgainZunda",
-      "name": "久しぶり",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "key": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "name": "久しぶり1",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "excited",
-              "messageContent": "<<FirstCounterAgainZunda>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["again"],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstCounterFirstVisitZunda": {
-      "id": "FirstCounterFirstVisitZunda",
-      "key": "FirstCounterFirstVisitZunda",
-      "name": "こんにちは",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "key": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "name": "挨拶",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
-              "characterKey": "zunda",
-              "iconKey": "thinking",
-              "messageContent": "<<FirstCounterFirstVisitZunda>>",
-              "messageToast": "",
-              "actionType": "message"
-            }
-          ],
-          "weight": 4
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": ["syoken"],
-        "syoken": ["firstVisit"],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "StreamCountTriggerZunda": {
-      "id": "StreamCountTriggerZunda",
-      "key": "StreamCountTriggerZunda",
-      "name": "配信内コメント数チェック:100回毎",
-      "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 18,
+      "updatedAt": "2025-11-27T01:27:14.383Z",
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1409,14 +1262,16 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
         "count": {
           "comparison": "loop",
           "unit": "lc",
-          "value": 100
+          "value": 50
         },
         "comment": []
       },
@@ -1427,14 +1282,14 @@
         "isRepeatAllowed": true
       }
     },
-    "UserCountTriggerZunda": {
-      "id": "UserCountTriggerZunda",
-      "key": "UserCountTriggerZunda",
-      "name": "個別コメント数チェック",
+    "CountUserZunda": {
+      "id": "CountUserZunda",
+      "key": "CountUserZunda",
+      "name": "個別コメント数チェック:Zunda",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
-      "order": 19,
+      "updatedAt": "2025-11-27T01:27:07.144Z",
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1493,7 +1348,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -1519,7 +1376,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
+      "updatedAt": "2025-11-27T01:09:28.378Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -1563,7 +1420,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
+      "updatedAt": "2025-11-27T01:09:28.378Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -1633,9 +1490,10 @@
       "name": "ギフト:イントロ",
       "description": "ギフトの際に流すWordPartyの演出です",
       "createdAt": "2025-10-12T03:56:00.109Z",
-      "updatedAt": "2025-10-16T01:59:40.347Z",
+      "updatedAt": "2025-11-27T01:09:28.378Z",
       "order": 1,
       "isEnabled": true,
+      "editorColor": "#9E9E9E",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
@@ -1657,8 +1515,7 @@
           "messageToast": "",
           "actionType": "wordParty"
         }
-      ],
-      "editorColor": "#9E9E9E"
+      ]
     }
   },
   "placeholders": {
@@ -1667,37 +1524,19 @@
       "key": "zundaOmikuji01",
       "name": "ずんだもんのおみくじ:大吉",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.375Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "人との縁がすごく良さそうなのだ!感謝の気持ちを忘れずにいるといいのだ。",
-          "weight": 1
-        },
-        {
-          "content": "健康運がバッチリなのだ!元気いっぱいで過ごせそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "頑張ってきたことが報われそうなのだ!積極的に行動するといいことがあるのだ。",
-          "weight": 1
-        },
-        {
-          "content": "新しいことに挑戦すると、うまくいきそうなのだ!勇気を出して頑張るのだ。",
-          "weight": 1
-        },
-        {
-          "content": "良いお知らせが来そうなのだ!前向きな気持ちでいるといいのだ。",
-          "weight": 1
-        },
-        {
-          "content": "難しいことも乗り越えられそうなのだ!自信を持って進むといいのだ。",
-          "weight": 1
-        }
+        "人との縁がすごく良さそうなのだ!感謝の気持ちを忘れずにいるといいのだ。",
+        "健康運がバッチリなのだ!元気いっぱいで過ごせそうなのだ。",
+        "頑張ってきたことが報われそうなのだ!積極的に行動するといいことがあるのだ。",
+        "新しいことに挑戦すると、うまくいきそうなのだ!勇気を出して頑張るのだ。",
+        "良いお知らせが来そうなのだ!前向きな気持ちでいるといいのだ。",
+        "難しいことも乗り越えられそうなのだ!自信を持って進むといいのだ。"
       ]
     },
     "zundaOmikuji02": {
@@ -1705,37 +1544,19 @@
       "key": "zundaOmikuji02",
       "name": "ずんだもんのおみくじ:吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "積極的に行動すると運気が上がりそうなのだ!新しいことにチャレンジするといいのだ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの人に感謝する気持ちを忘れないでいるのだ。",
-          "weight": 1
-        },
-        {
-          "content": "これからの未来は明るそうなのだ!夢に向かって頑張るといいことがあるのだ。",
-          "weight": 1
-        },
-        {
-          "content": "みんなで協力すると成功しやすそうなのだ!仲間を大切にするのだ。",
-          "weight": 1
-        },
-        {
-          "content": "小さな努力が大きな成果になりそうなのだ!コツコツ続けることが大事なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "前向きに考えると良い結果になりそうなのだ!ポジティブでいるのだ。",
-          "weight": 1
-        }
+        "積極的に行動すると運気が上がりそうなのだ!新しいことにチャレンジするといいのだ。",
+        "周りの人に感謝する気持ちを忘れないでいるのだ。",
+        "これからの未来は明るそうなのだ!夢に向かって頑張るといいことがあるのだ。",
+        "みんなで協力すると成功しやすそうなのだ!仲間を大切にするのだ。",
+        "小さな努力が大きな成果になりそうなのだ!コツコツ続けることが大事なのだ。",
+        "前向きに考えると良い結果になりそうなのだ!ポジティブでいるのだ。"
       ]
     },
     "zundaOmikuji03": {
@@ -1743,37 +1564,19 @@
       "key": "zundaOmikuji03",
       "name": "ずんだもんのおみくじ:中吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "思わぬ幸運があるかもしれないのだ!チャンスを見逃さないようにするのだ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの人と協力すると良いことがありそうなのだ!助けを求めるのも大事なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "自分の気持ちを信じるといいのだ!大きく成長できそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "新しいことを学ぶと良さそうなのだ!自分を磨くチャンスなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "楽しいことが増えそうなのだ!笑顔を忘れずにいるのだ。",
-          "weight": 1
-        },
-        {
-          "content": "しっかり計画を立てると、うまくいきそうなのだ!",
-          "weight": 1
-        }
+        "思わぬ幸運があるかもしれないのだ!チャンスを見逃さないようにするのだ。",
+        "周りの人と協力すると良いことがありそうなのだ!助けを求めるのも大事なのだ。",
+        "自分の気持ちを信じるといいのだ!大きく成長できそうなのだ。",
+        "新しいことを学ぶと良さそうなのだ!自分を磨くチャンスなのだ。",
+        "楽しいことが増えそうなのだ!笑顔を忘れずにいるのだ。",
+        "しっかり計画を立てると、うまくいきそうなのだ!"
       ]
     },
     "zundaOmikuji04": {
@@ -1781,37 +1584,19 @@
       "key": "zundaOmikuji04",
       "name": "ずんだもんのおみくじ:小吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "焦らずに一歩ずつ進むといいのだ!頑張れば願いは叶いそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "慎重に行動すると良さそうなのだ!きっと良いことがあるのだ。慌てないのが大切なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "健康に気をつけるといいのだ!規則正しい生活をすると運気が上がりそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "周りの人の助けを受け入れると、運気が上がりそうなのだ!",
-          "weight": 1
-        },
-        {
-          "content": "小さな喜びを大切にするのだ!それが大きな幸せになるかもしれないのだ。",
-          "weight": 1
-        },
-        {
-          "content": "ゆっくりと良くなっていきそうなのだ!焦らずに自分のペースで進むといいのだ。",
-          "weight": 1
-        }
+        "焦らずに一歩ずつ進むといいのだ!頑張れば願いは叶いそうなのだ。",
+        "慎重に行動すると良さそうなのだ!きっと良いことがあるのだ。慌てないのが大切なのだ。",
+        "健康に気をつけるといいのだ!規則正しい生活をすると運気が上がりそうなのだ。",
+        "周りの人の助けを受け入れると、運気が上がりそうなのだ!",
+        "小さな喜びを大切にするのだ!それが大きな幸せになるかもしれないのだ。",
+        "ゆっくりと良くなっていきそうなのだ!焦らずに自分のペースで進むといいのだ。"
       ]
     },
     "zundaOmikuji05": {
@@ -1819,37 +1604,19 @@
       "key": "zundaOmikuji05",
       "name": "ずんだもんのおみくじ:末吉",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "油断しないように気をつけるのだ!慎重に行動するといいのだ。",
-          "weight": 1
-        },
-        {
-          "content": "今は少し大変かもしれないのだ。でも、乗り越えると大きく成長できそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "新しいことより、今やっていることを見直すと良いことがありそうなのだ。",
-          "weight": 1
-        },
-        {
-          "content": "計画を立て直すと、もっと良くなりそうなのだ!",
-          "weight": 1
-        },
-        {
-          "content": "周りの人の意見を聞くと、うまくいきそうなのだ!",
-          "weight": 1
-        },
-        {
-          "content": "自分を良くしようと努力すると、運が開けそうなのだ!自分のことをよく考えてみるのだ。",
-          "weight": 1
-        }
+        "油断しないように気をつけるのだ!慎重に行動するといいのだ。",
+        "今は少し大変かもしれないのだ。でも、乗り越えると大きく成長できそうなのだ。",
+        "新しいことより、今やっていることを見直すと良いことがありそうなのだ。",
+        "計画を立て直すと、もっと良くなりそうなのだ!",
+        "周りの人の意見を聞くと、うまくいきそうなのだ!",
+        "自分を良くしようと努力すると、運が開けそうなのだ!自分のことをよく考えてみるのだ。"
       ]
     },
     "zundaOmikuji06": {
@@ -1857,37 +1624,19 @@
       "key": "zundaOmikuji06",
       "name": "ずんだもんのおみくじ:凶",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "運気が少し下がっているかもしれないのだ。でも、慎重に行動すれば大丈夫なのだ!",
-          "weight": 1
-        },
-        {
-          "content": "周りの人とケンカしないように気をつけるのだ!もし喧嘩になっても、落ち着いて考えるのだ。",
-          "weight": 1
-        },
-        {
-          "content": "健康に気をつけるといいのだ!体調管理をしっかりするのだ。ずんだもち1個贈呈なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "計画通りにいかないかもしれないのだ。でも、焦らずに柔軟に対応するといいのだ!",
-          "weight": 1
-        },
-        {
-          "content": "信頼できる人に相談すると、助けてくれるかもしれないのだ!",
-          "weight": 1
-        },
-        {
-          "content": "無理をしないで、休むことも大切なのだ!リラックスする時間を作るといいのだ。",
-          "weight": 1
-        }
+        "運気が少し下がっているかもしれないのだ。でも、慎重に行動すれば大丈夫なのだ!",
+        "周りの人とケンカしないように気をつけるのだ!もし喧嘩になっても、落ち着いて考えるのだ。",
+        "健康に気をつけるといいのだ!体調管理をしっかりするのだ。ずんだもち1個贈呈なのだ。",
+        "計画通りにいかないかもしれないのだ。でも、焦らずに柔軟に対応するといいのだ!",
+        "信頼できる人に相談すると、助けてくれるかもしれないのだ!",
+        "無理をしないで、休むことも大切なのだ!リラックスする時間を作るといいのだ。"
       ]
     },
     "zundaOmikuji07": {
@@ -1895,131 +1644,200 @@
       "key": "zundaOmikuji07",
       "name": "ずんだもんのおみくじ:残念賞",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "values": [
+        "やらかしたのだ、こんな格好で来ちゃったのだ…でもそんなの関係ねぇ!おっぱっぴーなのだ!",
+        "安心してくださいなのだ、穿いているのだ…いやいや、ぱんつは穿いてない、水着の下にぱんつは穿かないのだ!",
+        "なーにー!やっちまったのだ。男は…女は黙って、鳥羽一郎、GO!ペンギンゲットなのだ!",
+        "ドキッ!僕だけ水着…VOICEVOX大会。ポロリ!？ポロリなんて絶対ないのだ、にこにこぷん!",
+        "僕にお盆を持たせないで欲しいのだ、何が100%なのだ、100%は評価値だけでいいのだ!",
+        "何がドーン!なのだ、水着はそんなに伸びない…チャンネル登録100万人!？それは伸び過ぎなのだ!アタオカ!"
+      ]
+    },
+    "SyokenSagiZundaThinking": {
+      "id": "SyokenSagiZundaThinking",
+      "key": "SyokenSagiZundaThinking",
+      "name": "初見詐欺(Thinking):ずんだもん",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
         {
-          "content": "やらかしたのだ、こんな格好で来ちゃったのだ…でもそんなの関係ねぇ!おっぱっぴーなのだ!",
-          "weight": 1
+          "weight": 6,
+          "content": "<<user>>…オマエは本当は初めてじゃないのだ。僕にはわかるのだ。"
         },
         {
-          "content": "安心してくださいなのだ、穿いているのだ…いやいや、ぱんつは穿いてない、水着の下にぱんつは穿かないのだ!",
-          "weight": 1
+          "weight": 5,
+          "content": "<<user>>、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
         },
         {
-          "content": "なーにー!やっちまったのだ。男は…女は黙って、鳥羽一郎、GO!ペンギンゲットなのだ!",
-          "weight": 1
+          "weight": 4,
+          "content": "あれ？<<user>>、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
         },
         {
-          "content": "ドキッ!僕だけ水着…VOICEVOX大会。ポロリ!？ポロリなんて絶対ないのだ、にこにこぷん!",
-          "weight": 1
-        },
-        {
-          "content": "僕にお盆を持たせないで欲しいのだ、何が100%なのだ、100%は評価値だけでいいのだ!",
-          "weight": 1
-        },
-        {
-          "content": "何がドーン!なのだ、水着はそんなに伸びない…チャンネル登録100万人!？それは伸び過ぎなのだ!アタオカ!",
-          "weight": 1
+          "weight": 5,
+          "content": "ふふん、<<user>>のことは忘れないのだ！何度も来てくれてるの、僕は知ってるのだ～！"
         }
       ]
     },
-    "GiftLowZunda": {
-      "id": "GiftLowZunda",
-      "key": "GiftLowZunda",
-      "name": "ギフト(1-999円)",
+    "SyokenSagiZundaSurprise": {
+      "id": "SyokenSagiZundaSurprise",
+      "key": "SyokenSagiZundaSurprise",
+      "name": "初見詐欺(Surprise):ずんだもん",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 6,
+          "content": "<<user>>、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。"
+        },
+        {
+          "weight": 5,
+          "content": "<<user>>、オマエは初めてのふりをして僕をびっくりさせようとしたのだ？"
+        },
+        {
+          "weight": 4,
+          "content": "えっ？<<user>>が初めて？夢でも見てるのだ？パチパチ…目が覚めないのだ！"
+        }
+      ]
+    },
+    "SyokenSagiZundaSwing": {
+      "id": "SyokenSagiZundaSwing",
+      "key": "SyokenSagiZundaSwing",
+      "name": "初見詐欺(Swing):ずんだもん",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 6,
+          "content": "オマエ、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
+        },
+        {
+          "weight": 5,
+          "content": "<<user>>、僕とのお友達期間をリセットしたいのだ？でも、僕の気持ちはリセットできないのだ！"
+        },
+        {
+          "weight": 4,
+          "content": "僕の記憶力に挑むなんて、<<user>>もなかなか大胆なのだ。でも、僕に勝てる日は…来ないのだ！"
+        }
+      ]
+    },
+    "SyokenSagiZundaSad": {
+      "id": "SyokenSagiZundaSad",
+      "key": "SyokenSagiZundaSad",
+      "name": "初見詐欺(Sad):ずんだもん",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "weight": 5,
+          "content": "あれ？<<user>>、もしかして記憶喪失になったのだ？僕が看病するのだ！"
+        },
+        {
+          "weight": 3,
+          "content": "<<user>>、ずんだもんの名前を聞いてもピンとこないのだ…これは重症なのだ…"
+        },
+        {
+          "weight": 4,
+          "content": "<<user>>、ずんだもんを忘れちゃったのだ？悲しくなってきたのだ…"
+        },
+        {
+          "weight": 3,
+          "content": "ある日、<<user>>はずんだもんの記憶を失ってしまったのだ…。僕はその記憶を取り戻すため、旅に出るのだ！"
+        },
+        {
+          "weight": 5,
+          "content": "<<user>>が僕を忘れても、僕はずっと<<user>>のことを覚えているのだ…！"
+        },
+        {
+          "weight": 2,
+          "content": "<<user>>の記憶から僕が消えたのだ…でも僕は諦めないのだ！オマエの鼻に枝豆を押し込むのだ！"
+        }
+      ]
+    },
+    "GiftZunda": {
+      "id": "GiftZunda",
+      "key": "GiftZunda",
+      "name": "ギフト(1-999円):ずんだもん",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>からギフトを受け取ったのだ!ありがとうなのだ!",
-          "weight": 1
-        },
-        {
-          "content": "なんと！<<user>>からギフトが届いたのだ！感激なのだ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>からの贈り物なのだ！うれしすぎるのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "わーい！<<user>>からのプレゼントなのだ〜！うれしいのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "ぽかぽかギフト、心があったかいのだ〜！<<user>>、ないスパなのだ!",
-          "weight": 1
-        }
+        "<<user>>からギフトを受け取ったのだ!ありがとうなのだ!",
+        "なんと！<<user>>からギフトが届いたのだ！感激なのだ！",
+        "<<user>>からの贈り物なのだ！うれしすぎるのだ〜！",
+        "わーい！<<user>>からのプレゼントなのだ〜！うれしいのだ〜！",
+        "ぽかぽかギフト、心があったかいのだ〜！<<user>>、ないスパなのだ!"
       ]
     },
     "GiftMiddleZunda": {
       "id": "GiftMiddleZunda",
       "key": "GiftMiddleZunda",
-      "name": "ギフト(1000-1999円)",
+      "name": "ギフト(1000-1999円):ずんだもん",
       "createdAt": "2025-08-27T09:53:10.683Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "わわわっ！これは…高級ギフトなのだ！？<<user>>、オマエ、太っ腹なのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "なんと！<<price>>ptの輝きがここにあるのだ！キラキラなのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "素敵な贈り物なのだ!僕は遠慮なく受け取るのだ!ありがとうなのだ!",
-          "weight": 1
-        }
+        "わわわっ！これは…高級ギフトなのだ！？<<user>>、オマエ、太っ腹なのだ〜！",
+        "なんと！<<price>>ptの輝きがここにあるのだ！キラキラなのだ〜！",
+        "素敵な贈り物なのだ!僕は遠慮なく受け取るのだ!ありがとうなのだ!"
       ]
     },
     "GiftHighZunda": {
       "id": "GiftHighZunda",
       "key": "GiftHighZunda",
-      "name": "ギフト(2000円-)",
+      "name": "ギフト(2000円-):ずんだもん",
       "createdAt": "2025-08-27T09:53:15.633Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<price>>pt!<<user>>、オマエ、最高なのだ!控えめに言って尊いのだ！",
-          "weight": 1
-        },
-        {
-          "content": "うおおおっ！豪華すぎて目が回るのだ！<<user>>、ありがとうなのだ〜！",
-          "weight": 1
-        },
-        {
-          "content": "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！",
-          "weight": 1
-        }
+        "<<price>>pt!<<user>>、オマエ、最高なのだ!控えめに言って尊いのだ！",
+        "うおおおっ！豪華すぎて目が回るのだ！<<user>>、ありがとうなのだ〜！",
+        "これは…まさかのプレミアムギフトなのだ！？感謝の舞を捧げるのだ〜！"
       ]
     },
-    "FirstCounterSyokenZunda": {
-      "id": "FirstCounterSyokenZunda",
-      "key": "FirstCounterSyokenZunda",
-      "name": "初見",
+    "FirstSyokenZunda": {
+      "id": "FirstSyokenZunda",
+      "key": "FirstSyokenZunda",
+      "name": "初見:ずんだもん",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2040,46 +1858,31 @@
         }
       ]
     },
-    "FirstCounterAgainZunda": {
-      "id": "FirstCounterAgainZunda",
-      "key": "FirstCounterAgainZunda",
-      "name": "久しぶり",
+    "FirstComebackZunda": {
+      "id": "FirstComebackZunda",
+      "key": "FirstComebackZunda",
+      "name": "久しぶり:ずんだもん",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-10-16T01:59:40.345Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
-          "weight": 1
-        },
-        {
-          "content": "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～",
-          "weight": 1
-        }
+        "<<user>>、久しぶりなのだ！また会えて嬉しいのだ～",
+        "<<user>>、また来てくれて嬉しいのだ。ずんだもち1個贈呈なのだ。",
+        "<<user>>が久々に来たのだ。主は<<user>>に挨拶するのだ！",
+        "<<user>>!オマエ、また来てくれたのだ。嬉し泣きしちゃうのだ～",
+        "おっ、<<user>>なのだ！久しぶりなのだ。寂しかったのだ～"
       ]
     },
-    "FirstCounterFirstVisitZunda": {
-      "id": "FirstCounterFirstVisitZunda",
-      "key": "FirstCounterFirstVisitZunda",
-      "name": "こんにちは",
+    "FirstVisitZunda": {
+      "id": "FirstVisitZunda",
+      "key": "FirstVisitZunda",
+      "name": "こんにちは:ずんだもん",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2119,55 +1922,25 @@
     "PromotionToastsZunda": {
       "id": "PromotionToastsZunda",
       "key": "PromotionToastsZunda",
-      "name": "告知用トースト",
+      "name": "告知用トースト:ずんだもん",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
-          "weight": 1
-        },
-        {
-          "content": "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
-          "weight": 1
-        },
-        {
-          "content": "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
-          "weight": 1
-        },
-        {
-          "content": "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
-          "weight": 1
-        },
-        {
-          "content": "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
-          "weight": 1
-        },
-        {
-          "content": "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！",
-          "weight": 1
-        }
+        "チャンネル登録＆高評価すると、主がめちゃくちゃ喜ぶのだ！僕も嬉しいのだ！",
+        "忘れてないのだ？チャンネル登録と高評価は、主への愛の証なのだ！",
+        "そろそろいい頃合いなのだ…チャンネル登録、ぽちっとするのだ！",
+        "高評価を押すと、主のテンションが+10されるのだ！ずんだもち1個贈呈なのだ。",
+        "主の次の配信予定、気になるのだ？概要欄をチェックするのだ！",
+        "予告なのだ！次回は、主が禁断の設定ファイルに手を出すのだ…！",
+        "プレゼント企画、発動準備中なのだ！詳細は主のX（旧Twitter）をチェックするのだ！",
+        "コメントは主の栄養なのだ！どんどん投げてほしいのだ！",
+        "チャット欄が静かだと、僕のセンサーが寂しがるのだ…何か話しかけてほしいのだ！",
+        "主の過去配信、アーカイブで見られるのだ！知識と笑いの宝庫なのだ！"
       ]
     },
     "HondaJankenName": {
@@ -2175,17 +1948,14 @@
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "ずんだもん",
-          "weight": 1
-        }
+        "ずんだもん"
       ]
     },
     "HondaJankenOre": {
@@ -2193,137 +1963,14 @@
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
+      "updatedAt": "2025-11-27T01:09:28.376Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "僕",
-          "weight": 1
-        }
-      ]
-    },
-    "SyokenSagiZundaThinking": {
-      "id": "SyokenSagiZundaThinking",
-      "key": "SyokenSagiZundaThinking",
-      "name": "ずんだもんの初見詐欺(考え中)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "<<user>>…オマエは本当は初めてじゃないのだ。僕にはわかるのだ。"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "あれ？<<user>>、初めてじゃないのだ！<<tc>>回もコメントしてくれてるのだ！僕は覚えてるのだ～"
-        },
-        {
-          "weight": 5,
-          "content": "ふふん、<<user>>のことは忘れないのだ！何度も来てくれてるの、僕は知ってるのだ～！"
-        }
-      ]
-    },
-    "SyokenSagiZundaSurprise": {
-      "id": "SyokenSagiZundaSurprise",
-      "key": "SyokenSagiZundaSurprise",
-      "name": "ずんだもんの初見詐欺(驚き)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "<<user>>、初めま…あれ？初めてじゃないのだ？混乱してきたのだ。"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>、オマエは初めてのふりをして僕をびっくりさせようとしたのだ？"
-        },
-        {
-          "weight": 4,
-          "content": "えっ？<<user>>が初めて？夢でも見てるのだ？パチパチ…目が覚めないのだ！"
-        }
-      ]
-    },
-    "SyokenSagiZundaSwing": {
-      "id": "SyokenSagiZundaSwing",
-      "key": "SyokenSagiZundaSwing",
-      "name": "ずんだもんの初見詐欺(歌)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 6,
-          "content": "オマエ、僕をだませると思ったのだ？僕の記憶力は抜群なのだ！"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>、僕とのお友達期間をリセットしたいのだ？でも、僕の気持ちはリセットできないのだ！"
-        },
-        {
-          "weight": 4,
-          "content": "僕の記憶力に挑むなんて、<<user>>もなかなか大胆なのだ。でも、僕に勝てる日は…来ないのだ！"
-        }
-      ]
-    },
-    "SyokenSagiZundaSad": {
-      "id": "SyokenSagiZundaSad",
-      "key": "SyokenSagiZundaSad",
-      "name": "ずんだもんの初見詐欺(悲しみ)",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-10-16T01:59:40.346Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "weight": 5,
-          "content": "あれ？<<user>>、もしかして記憶喪失になったのだ？僕が看病するのだ！"
-        },
-        {
-          "weight": 3,
-          "content": "<<user>>、ずんだもんの名前を聞いてもピンとこないのだ…これは重症なのだ…"
-        },
-        {
-          "weight": 4,
-          "content": "<<user>>、ずんだもんを忘れちゃったのだ？悲しくなってきたのだ…"
-        },
-        {
-          "weight": 3,
-          "content": "ある日、<<user>>はずんだもんの記憶を失ってしまったのだ…。僕はその記憶を取り戻すため、旅に出るのだ！"
-        },
-        {
-          "weight": 5,
-          "content": "<<user>>が僕を忘れても、僕はずっと<<user>>のことを覚えているのだ…！"
-        },
-        {
-          "weight": 2,
-          "content": "<<user>>の記憶から僕が消えたのだ…でも僕は諦めないのだ！オマエの鼻に枝豆を押し込むのだ！"
-        }
+        "僕"
       ]
     }
   },
@@ -2338,7 +1985,11 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
-      "tags": ["touhokuZunko", "voicevox", "zunda"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "zunda"
+      ],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -2421,504 +2072,15 @@
         "wordPartyLoading": "internal",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
-        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb"],
+        "gameScripts": [
+          "BomberSpin",
+          "GouseiSuika",
+          "DwarfBomb"
+        ],
         "wordPartySettings": "basic",
         "jsonMergeSettings": "basic"
       }
     }
   },
-  "wordPartySettings": [
-    {
-      "name": "効果音:ドアチャイム1",
-      "pattern": "!ドアチャイム1"
-    },
-    {
-      "name": "効果音:シーン切り替え1",
-      "pattern": "!シーン切り替え1"
-    },
-    {
-      "name": "効果音:ニュースタイトル表示1",
-      "pattern": "!ニュースタイトル表示1"
-    },
-    {
-      "name": "効果音:ニュースタイトル表示3",
-      "pattern": "!ニュースタイトル表示3"
-    },
-    {
-      "name": "効果音:レベルアップ",
-      "pattern": "!レベルアップ"
-    },
-    {
-      "name": "効果音:ひらめく1",
-      "pattern": "!ひらめく1"
-    },
-    {
-      "name": "効果音:可愛い動作",
-      "pattern": "!可愛い動作"
-    },
-    {
-      "name": "効果音:シャキーン2",
-      "pattern": "!シャキーン2"
-    },
-    {
-      "name": "効果音:足首がグキッ",
-      "pattern": "!足首がグキッ"
-    },
-    {
-      "name": "効果音:男衆「オウ！」",
-      "pattern": "!男衆「オウ！」"
-    },
-    {
-      "name": "効果音:女衆「おう！」",
-      "pattern": "!女衆「おう！」"
-    },
-    {
-      "name": "効果音:ビシッとツッコミ1",
-      "pattern": "!ビシッとツッコミ1"
-    },
-    {
-      "name": "効果音:チーン1",
-      "pattern": "!チーン1"
-    },
-    {
-      "name": "効果音:間抜け1",
-      "pattern": "!間抜け1"
-    },
-    {
-      "name": "効果音:間抜け5",
-      "pattern": "!間抜け5"
-    },
-    {
-      "name": "効果音:呪いの旋律",
-      "pattern": "!呪いの旋律"
-    },
-    {
-      "name": "効果音:不安（ピアノ演奏）",
-      "pattern": "!不安（ピアノ演奏）"
-    },
-    {
-      "name": "効果音:ジャン！",
-      "pattern": "!ジャン！"
-    },
-    {
-      "name": "効果音:クイズ出題1",
-      "pattern": "!クイズ出題1"
-    },
-    {
-      "name": "効果音:クイズ不正解1",
-      "pattern": "!クイズ不正解1"
-    },
-    {
-      "name": "効果音:クイズ正解1",
-      "pattern": "!クイズ正解1"
-    },
-    {
-      "name": "効果音:金額表示",
-      "pattern": "!金額表示"
-    },
-    {
-      "name": "効果音:消える音",
-      "pattern": "!パッ"
-    },
-    {
-      "name": "効果音:出てくる音",
-      "pattern": "!パパッ"
-    },
-    {
-      "name": "初見",
-      "pattern": "FirstSyoken"
-    },
-    {
-      "name": "挑戦者が現れました",
-      "pattern": "!挑戦者"
-    },
-    {
-      "name": "おみくじ:大吉",
-      "pattern": "!omikuji_01"
-    },
-    {
-      "name": "おみくじ:吉",
-      "pattern": "!omikuji_02"
-    },
-    {
-      "name": "おみくじ:中吉",
-      "pattern": "!omikuji_03"
-    },
-    {
-      "name": "おみくじ:小吉",
-      "pattern": "!omikuji_04"
-    },
-    {
-      "name": "おみくじ:末吉",
-      "pattern": "!omikuji_05"
-    },
-    {
-      "name": "おみくじ:凶",
-      "pattern": "!omikuji_06"
-    },
-    {
-      "name": "おみくじ:残念賞",
-      "pattern": "!omikuji_07"
-    },
-    {
-      "name": "おみくじエフェクト",
-      "pattern": "!omikuji_huru"
-    },
-    {
-      "name": "じゃんけん:グー",
-      "pattern": "HondaJanken_1"
-    },
-    {
-      "name": "じゃんけん:チョキ",
-      "pattern": "HondaJanken_2"
-    },
-    {
-      "name": "じゃんけん:パー",
-      "pattern": "HondaJanken_3"
-    },
-    {
-      "name": "じゃんけん:I Love You",
-      "pattern": "HondaJanken_4"
-    },
-    {
-      "name": "じゃんけん結果:勝ち",
-      "pattern": "HondaJankenWin"
-    },
-    {
-      "name": "じゃんけん結果:負け",
-      "pattern": "HondaJankenLose"
-    },
-    {
-      "name": "フラワー占い:赤い花",
-      "pattern": "!FortuneMarisaRed"
-    },
-    {
-      "name": "フラワー占い:黄色い花",
-      "pattern": "!FortuneMarisaYellow"
-    },
-    {
-      "name": "フラワー占い:白い花",
-      "pattern": "!FortuneMarisaWhite"
-    },
-    {
-      "name": "桃鉄カード:登場ノーマル",
-      "pattern": "!card_00"
-    },
-    {
-      "name": "桃鉄カード:登場ナイス",
-      "pattern": "!card_01"
-    },
-    {
-      "name": "桃鉄カード:登場デビル",
-      "pattern": "!card_02"
-    },
-    {
-      "name": "桃鉄カード:結果ノーマル",
-      "pattern": "!card_10"
-    },
-    {
-      "name": "桃鉄カード:結果ナイス・スペシャル",
-      "pattern": "!card_11"
-    },
-    {
-      "name": "桃鉄カード:結果ナイス・スペシャル",
-      "pattern": "!card_12"
-    },
-    {
-      "name": "桃鉄カード:結果デビル",
-      "pattern": "!card_13"
-    },
-    {
-      "name": "ゆびをふる:指",
-      "pattern": "!yubiwo_01"
-    },
-    {
-      "name": "パルプンテ",
-      "pattern": "!パルプンテ"
-    },
-    {
-      "name": "Splatoon:インキ黄色",
-      "pattern": "!Spla_01"
-    },
-    {
-      "name": "Splatoon:インキマゼンダ",
-      "pattern": "!Spla_02"
-    },
-    {
-      "name": "Splatoon:インキシアン",
-      "pattern": "!Spla_03"
-    },
-    {
-      "name": "ドラちゃん:背景",
-      "pattern": "!5percent_dora_0"
-    },
-    {
-      "name": "ドラちゃん:手",
-      "pattern": "!5percent_dora_1"
-    },
-    {
-      "name": "ドラちゃん:赤背景",
-      "pattern": "!5percent_dora_konjac_0"
-    },
-    {
-      "name": "ドラちゃん:どこでもしずちゃん",
-      "pattern": "!5percent_dora_konjac_1"
-    },
-    {
-      "name": "ドラちゃん:ボロン",
-      "pattern": "!5percent_dora_2"
-    },
-    {
-      "name": "幻獣ガチャ:超おみくじ:みくじ筒光る",
-      "pattern": "!gacha_00A"
-    },
-    {
-      "name": "幻獣ガチャ:フラッシュ",
-      "pattern": "!gacha_00B"
-    },
-    {
-      "name": "幻獣ガチャ:ノーマル 伝説の究極レアカプセル",
-      "pattern": "!gacha_A1"
-    },
-    {
-      "name": "幻獣ガチャ:激レアカプセル",
-      "pattern": "!gacha_B1"
-    },
-    {
-      "name": "幻獣ガチャ:激レア表示",
-      "pattern": "!gacha_B2"
-    },
-    {
-      "name": "幻獣ガチャ:超激レアカプセル",
-      "pattern": "!gacha_C1"
-    },
-    {
-      "name": "幻獣ガチャ:超激レア表示",
-      "pattern": "!gacha_C2"
-    },
-    {
-      "name": "幻獣ガチャ:超激レア 伝説の究極レア銅鑼",
-      "pattern": "!gacha_C3"
-    },
-    {
-      "name": "ボンバースロット:cherry",
-      "pattern": "!bombcherry"
-    },
-    {
-      "name": "ボンバースロット:cherry",
-      "pattern": "!bombCherry"
-    },
-    {
-      "name": "ボンバースロット:orange",
-      "pattern": "!bomborange"
-    },
-    {
-      "name": "ボンバースロット:orange",
-      "pattern": "!bombOrange"
-    },
-    {
-      "name": "ボンバースロット:plum",
-      "pattern": "!bombplam"
-    },
-    {
-      "name": "ボンバースロット:plum",
-      "pattern": "!bombPlum"
-    },
-    {
-      "name": "ボンバースロット:melon",
-      "pattern": "!bombmelon"
-    },
-    {
-      "name": "ボンバースロット:melon",
-      "pattern": "!bombMelon"
-    },
-    {
-      "name": "ボンバースロット:bell",
-      "pattern": "!bombbell"
-    },
-    {
-      "name": "ボンバースロット:bell",
-      "pattern": "!bombBell"
-    },
-    {
-      "name": "ボンバースロット:hat",
-      "pattern": "!bombhut"
-    },
-    {
-      "name": "ボンバースロット:hat",
-      "pattern": "!bombHat"
-    },
-    {
-      "name": "ボンバースロット:BAR",
-      "pattern": "!bombBAR"
-    },
-    {
-      "name": "ボンバースロット:seven",
-      "pattern": "!bombseven"
-    },
-    {
-      "name": "ボンバースロット:seven",
-      "pattern": "!bombSeven"
-    },
-    {
-      "name": "ボンバースロット:背景",
-      "pattern": "!bombback"
-    },
-    {
-      "name": "ボンバースロット:背景",
-      "pattern": "!bombBack"
-    },
-    {
-      "name": "ボンバースロット:爆発",
-      "pattern": "!bombfire"
-    },
-    {
-      "name": "ボンバースロット:爆発",
-      "pattern": "!bombFire"
-    },
-    {
-      "name": "うさぎスロット:TNTうさぎ",
-      "pattern": "!dwarfBombRabbit"
-    },
-    {
-      "name": "うさぎスロット:ダイナマイト",
-      "pattern": "!dwarfBombDynamite"
-    },
-    {
-      "name": "うさぎスロット:ツルハシ",
-      "pattern": "!dwarfBombPickaxe"
-    },
-    {
-      "name": "うさぎスロット:ダイヤモンド",
-      "pattern": "!dwarfBombDiamond"
-    },
-    {
-      "name": "うさぎスロット:金塊",
-      "pattern": "!dwarfBombGold"
-    },
-    {
-      "name": "うさぎスロット:宝箱",
-      "pattern": "!dwarfBombTreasure"
-    },
-    {
-      "name": "うさぎスロット:ちいさなうさぎ",
-      "pattern": "!dwarfBombDaysBunny"
-    },
-    {
-      "name": "スイカジェネレーター:カボチャ",
-      "pattern": "🎃"
-    },
-    {
-      "name": "スイカジェネレーター:キャンディ",
-      "pattern": "🍬"
-    },
-    {
-      "name": "スイカジェネレーター:スイカ",
-      "pattern": "🍉"
-    },
-    {
-      "name": "スイカジェネレーター:メロン",
-      "pattern": "🍈"
-    },
-    {
-      "name": "スイカジェネレーター:もも",
-      "pattern": "🍑"
-    },
-    {
-      "name": "スイカジェネレーター:パイナップル",
-      "pattern": "🍍"
-    },
-    {
-      "name": "スイカジェネレーター:なし(絵文字は洋梨)",
-      "pattern": "🍐"
-    },
-    {
-      "name": "スイカジェネレーター:りんご",
-      "pattern": "🍎"
-    },
-    {
-      "name": "スイカジェネレーター:かき(その牡蠣ではない)",
-      "pattern": "🦪"
-    },
-    {
-      "name": "スイカジェネレーター:デコポン",
-      "pattern": "🍊"
-    },
-    {
-      "name": "スイカジェネレーター:ぶどう",
-      "pattern": "🍇"
-    },
-    {
-      "name": "スイカジェネレーター:いちご",
-      "pattern": "🍓"
-    },
-    {
-      "name": "スイカジェネレーター:チェリー",
-      "pattern": "🍒"
-    },
-    {
-      "name": "スイカジェネレーター:クジラ",
-      "pattern": "!クジラ"
-    },
-    {
-      "name": "スイカジェネレーター:シャチ",
-      "pattern": "!シャチ"
-    },
-    {
-      "name": "スイカジェネレーター:ジンベエザメ",
-      "pattern": "!ジンベエザメ"
-    },
-    {
-      "name": "スイカジェネレーター:マンボウ",
-      "pattern": "!マンボウ"
-    },
-    {
-      "name": "スイカジェネレーター:ウミガメ",
-      "pattern": "!ウミガメ"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、撮影開始"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、二夜連続"
-    },
-    {
-      "name": "スイカジェネレーター:マグロ",
-      "pattern": "!マグロ、ご期待ください"
-    },
-    {
-      "name": "スイカジェネレーター:カニ",
-      "pattern": "!カニ"
-    },
-    {
-      "name": "スイカジェネレーター:フグ",
-      "pattern": "!フグ"
-    },
-    {
-      "name": "スイカジェネレーター:クラゲ",
-      "pattern": "!クラゲ"
-    },
-    {
-      "name": "スイカジェネレーター:クマノミ",
-      "pattern": "!クマノミ"
-    },
-    {
-      "name": "スイカジェネレーター:マリモ",
-      "pattern": "!マリモ"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "初見なのにモデレーター"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "モデレーターなのに初見"
-    },
-    {
-      "name": "初見モデレーター",
-      "pattern": "ここまで見てくれてありがと。"
-    }
-  ]
+  "wordPartySettings": []
 }
