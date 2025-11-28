@@ -46,9 +46,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
   { project: 'ReimuMarisa', type: 'PATCH', accessLevel: 'pro' },
-  { project: 'ReimuMarisaMate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'ReimuMarisaMate', type: 'JSON', accessLevel: 'basic' },
-  { project: 'ReimuMarisaMate', type: 'PATCH', accessLevel: 'pro' },
   { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
   { project: 'EveryoneZunda', type: 'PATCH', accessLevel: 'pro' },
@@ -58,11 +55,10 @@ const buildTargets: BuildTarget[] = [
   { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
   { project: 'TsumugiHimari', type: 'PATCH', accessLevel: 'pro' },
-  { project: 'TossedKotaro', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TossedKotaro', type: 'JSON', accessLevel: 'basic' },
-  { project: 'TossedKotaro', type: 'PATCH', accessLevel: 'pro' },
    */
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * solo
@@ -77,15 +73,10 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
 
+  /**
+   * syoken
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
-  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
-  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
-  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
+   */
 ]
 
 /**

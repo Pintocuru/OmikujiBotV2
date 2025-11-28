@@ -1,12 +1,12 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa",
+    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.11.20-v1.4.0",
+    "version": "ver2025.11.27-v1.4.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0",
-    "dataVersion": 1.4,
+    "generatorVersion": "v1.4.1",
+    "dataVersion": 1.41,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -17,7 +17,7 @@
       "ゆっくり魔理沙",
       "じゃんけん"
     ],
-    "license": "CC-BY 4.0",
+    "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
   "jsonMerge": [
@@ -55,7 +55,7 @@
       "updatedAt": "2025-10-16T05:38:01.006Z",
       "order": 0,
       "tags": [],
-      "accessLevel": "pro",
+      "accessLevel": "basic",
       "sourceFile": "FlowerFortune.json",
       "keySuffix": "",
       "remaps": [
@@ -151,7 +151,7 @@
       "name": "初見詐欺:Reimu",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2025-11-27T07:32:49.383Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -231,7 +231,7 @@
         {
           "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
           "key": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
-          "name": "ああ初見だと思ったら騙された高校校歌",
+          "name": "ああ初見だと思ったら騙された高校校歌:reimu",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -618,7 +618,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 6,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -726,7 +726,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 7,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -816,7 +816,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 8,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -906,7 +906,7 @@
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 9,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -994,7 +994,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 10,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1077,9 +1077,9 @@
     }
   },
   "timers": {
-    "ViewCountDisplay": {
-      "id": "ViewCountDisplay",
-      "key": "ViewCountDisplay",
+    "ViewCountDisplayReimu": {
+      "id": "ViewCountDisplayReimu",
+      "key": "ViewCountDisplayReimu",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
@@ -1197,9 +1197,9 @@
       "intervalSeconds": 60,
       "isBaseZero": true
     },
-    "PromotionToast": {
-      "id": "PromotionToast",
-      "key": "PromotionToast",
+    "PromotionToastReimu": {
+      "id": "PromotionToastReimu",
+      "key": "PromotionToastReimu",
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
@@ -1274,6 +1274,7 @@
       "id": "FirstSagiReimuAngry",
       "key": "FirstSagiReimuAngry",
       "name": "初見詐欺(Angry):霊夢",
+      "description": "「初見詐欺」を本気で嫌がっているセリフのリスト",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-11-27T04:06:15.988Z",
       "order": 1,
@@ -1286,49 +1287,22 @@
           "weight": 9,
           "content": "<<user>>さん…あなた初見じゃないでしょ。"
         },
-        {
-          "content": "<<user>>さん、初見って書いていても、私達がカウントしてるから騙せないわよ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん。初見じゃないのに初見って言うのやめてもらえる？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、あなた本当に初見なのかしら？胸に手を当てて考え直すことね。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さんは、初見じゃない。それだけの話よ。認めなさい。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、こちらは記録してるの。嘘はすぐバレるって分からないのかしら？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見詐欺はやめなさい。見苦しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見と言い張るなら、それ相応の理由を説明してくれる？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん…嘘を重ねるより、正直に謝るほうが賢いわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、あなた自身のために、ここでやめておきなさい。",
-          "weight": 1
-        }
-      ],
-      "description": "「初見詐欺」を本気で嫌がっているセリフのリスト"
+        "<<user>>さん、初見って書いていても、私達がカウントしてるから騙せないわよ。",
+        "<<user>>さん。初見じゃないのに初見って言うのやめてもらえる？",
+        "<<user>>さん、あなた本当に初見なのかしら？胸に手を当てて考え直すことね。",
+        "<<user>>さんは、初見じゃない。それだけの話よ。認めなさい。",
+        "<<user>>さん、こちらは記録してるの。嘘はすぐバレるって分からないのかしら？",
+        "<<user>>さん、初見詐欺はやめなさい。見苦しいわ。",
+        "<<user>>さん、初見と言い張るなら、それ相応の理由を説明してくれる？",
+        "<<user>>さん…嘘を重ねるより、正直に謝るほうが賢いわ。",
+        "<<user>>さん、あなた自身のために、ここでやめておきなさい。"
+      ]
     },
     "FirstSagiReimuSleepy": {
       "id": "FirstSagiReimuSleepy",
       "key": "FirstSagiReimuSleepy",
       "name": "初見詐欺(sleepy):霊夢",
+      "description": "呆れつつも、コメント自体はしてくれるユーザーにかまっている",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-11-27T04:06:15.988Z",
       "order": 2,
@@ -1337,49 +1311,22 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、初めまし…あなた初見ではないわね?",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、あなた<<tc>>回もコメントしてるのよ。かまってちゃんなのね。",
-          "weight": 1
-        },
-        {
-          "content": "はいはい、<<user>>さん。はじめましてね。ようこそようこそ。お帰りはあちらよ。",
-          "weight": 1
-        },
-        {
-          "content": "はいはい、<<user>>さん。初見ごっこはもういいでしょ？でも来てくれるのは嬉しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、あなたの「初見です」ってネタ、もう定番になってるわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見じゃないのに初見って言うの、もうお約束ね。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、それ、何度目の「初見」かしらね？",
-          "weight": 1
-        },
-        {
-          "content": "初見の<<user>>さん、ようこそ。あなたのコメント、もう<<tc>>回よ。",
-          "weight": 1
-        },
-        {
-          "content": "はいはい、<<user>>さん。「初見」って言いたいだけでしょ？",
-          "weight": 1
-        }
-      ],
-      "description": "呆れつつも、コメント自体はしてくれるユーザーにかまっている"
+        "<<user>>さん、初めまし…あなた初見ではないわね?",
+        "<<user>>さん、あなた<<tc>>回もコメントしてるのよ。かまってちゃんなのね。",
+        "はいはい、<<user>>さん。はじめましてね。ようこそようこそ。お帰りはあちらよ。",
+        "はいはい、<<user>>さん。初見ごっこはもういいでしょ？でも来てくれるのは嬉しいわ。",
+        "<<user>>さん、あなたの「初見です」ってネタ、もう定番になってるわ。",
+        "<<user>>さん、初見じゃないのに初見って言うの、もうお約束ね。",
+        "<<user>>さん、それ、何度目の「初見」かしらね？",
+        "初見の<<user>>さん、ようこそ。あなたのコメント、もう<<tc>>回よ。",
+        "はいはい、<<user>>さん。「初見」って言いたいだけでしょ？"
+      ]
     },
     "FirstSagiReimuSurprise": {
       "id": "FirstSagiReimuSurprise",
       "key": "FirstSagiReimuSurprise",
       "name": "初見詐欺(surprised):魔理沙",
+      "description": "ノリでツッコミ、または一緒に悪乗りしている",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-11-27T04:06:15.988Z",
       "order": 3,
@@ -1388,40 +1335,15 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、はじめまして！実は私も初見なんだぜ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん初見だったのか！てっきり常連だと思ってたぜ…",
-          "weight": 1
-        },
-        {
-          "content": "初見さんいらっしゃい！…って、もう<<tc>>回目の初見だぜ。ギネス狙ってんだぜ？",
-          "weight": 1
-        },
-        {
-          "content": "おーっと！初見って言ったな! でも私のカウントではもう<<tc>>回目だぜ。どっちが正しいんだぜ？",
-          "weight": 1
-        },
-        {
-          "content": "いや〜、<<user>>さん。初見って言うのがクセになってるな？次回も待ってるぜ。",
-          "weight": 1
-        },
-        {
-          "content": "おいおい、<<user>>さん。これじゃあ「初見詐欺コンテスト」も開けるぜ。",
-          "weight": 1
-        },
-        {
-          "content": "おっと!? <<user>>さん、初見アピールしてるけど、もうあなたはこの配信のオリジナルメンバーだぜ。",
-          "weight": 1
-        }
-      ],
-      "description": "ノリでツッコミ、または一緒に悪乗りしている"
+        "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?",
+        "<<user>>さん、はじめまして！実は私も初見なんだぜ！",
+        "<<user>>さん初見だったのか！てっきり常連だと思ってたぜ…",
+        "初見さんいらっしゃい！…って、もう<<tc>>回目の初見だぜ。ギネス狙ってんだぜ？",
+        "おーっと！初見って言ったな! でも私のカウントではもう<<tc>>回目だぜ。どっちが正しいんだぜ？",
+        "いや〜、<<user>>さん。初見って言うのがクセになってるな？次回も待ってるぜ。",
+        "おいおい、<<user>>さん。これじゃあ「初見詐欺コンテスト」も開けるぜ。",
+        "おっと!? <<user>>さん、初見アピールしてるけど、もうあなたはこの配信のオリジナルメンバーだぜ。"
+      ]
     },
     "GiftReimu": {
       "id": "GiftReimu",
@@ -1435,46 +1357,16 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、お賽銭ありがとう。あなたの願いが叶いますように。",
-          "weight": 1
-        },
-        {
-          "content": "ありがたく頂戴したわ、<<user>>さん。ご加護がありますように。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さんからのお賽銭、確かに受け取ったわ。神様もきっと微笑んでるわ。",
-          "weight": 1
-        },
-        {
-          "content": "お賽銭をくださったのね！<<user>>さんの心遣いに感謝するわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、尊いお志をありがとう。あなたの道が清らかでありますように。",
-          "weight": 1
-        },
-        {
-          "content": "お賽銭を賜り、心よりお礼申し上げるわ。あなたの願い事、神様に届けるわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さんからのお賽銭、ありがたく受け取ったわ。日々が安らぎに満ちますように。",
-          "weight": 1
-        },
-        {
-          "content": "尊いお賽銭をありがとう、<<user>>さん。神社も私も、あなたを応援しているわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さんのお賽銭、確かにお預かりしたわ。ご縁に感謝ね。",
-          "weight": 1
-        },
-        {
-          "content": "お賽銭ありがとう、<<user>>さん。これからも神様と共に見守るわ。",
-          "weight": 1
-        }
+        "<<user>>さん、お賽銭ありがとう。あなたの願いが叶いますように。",
+        "ありがたく頂戴したわ、<<user>>さん。ご加護がありますように。",
+        "<<user>>さんからのお賽銭、確かに受け取ったわ。神様もきっと微笑んでるわ。",
+        "お賽銭をくださったのね！<<user>>さんの心遣いに感謝するわ。",
+        "<<user>>さん、尊いお志をありがとう。あなたの道が清らかでありますように。",
+        "お賽銭を賜り、心よりお礼申し上げるわ。あなたの願い事、神様に届けるわ。",
+        "<<user>>さんからのお賽銭、ありがたく受け取ったわ。日々が安らぎに満ちますように。",
+        "尊いお賽銭をありがとう、<<user>>さん。神社も私も、あなたを応援しているわ。",
+        "<<user>>さんのお賽銭、確かにお預かりしたわ。ご縁に感謝ね。",
+        "お賽銭ありがとう、<<user>>さん。これからも神様と共に見守るわ。"
       ]
     },
     "FirstSyokenReimu": {
@@ -1489,38 +1381,14 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、初めまして!ゆっくりしていってね。",
-          "weight": 1
-        },
-        {
-          "content": "初見の<<user>>さん、コメントありがとう！とっても嬉しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初めまして！何か気になることがあれば遠慮なく聞いてね。",
-          "weight": 1
-        },
-        {
-          "content": "初見の<<user>>さん、ようこそ！一緒に楽しんでくれると嬉しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "初見の<<user>>さん、来てくれて感謝するわ。仲良くしてね。",
-          "weight": 1
-        },
-        {
-          "content": "初見さん大歓迎！<<user>>さん、来てくれてありがとう。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初めて来てくれて嬉しいわ。これからもよろしくね。",
-          "weight": 1
-        },
-        {
-          "content": "初めて来てくれたのね、<<user>>さん。歓迎するわ。",
-          "weight": 1
-        }
+        "<<user>>さん、初めまして!ゆっくりしていってね。",
+        "初見の<<user>>さん、コメントありがとう！とっても嬉しいわ。",
+        "<<user>>さん、初めまして！何か気になることがあれば遠慮なく聞いてね。",
+        "初見の<<user>>さん、ようこそ！一緒に楽しんでくれると嬉しいわ。",
+        "初見の<<user>>さん、来てくれて感謝するわ。仲良くしてね。",
+        "初見さん大歓迎！<<user>>さん、来てくれてありがとう。",
+        "<<user>>さん、初めて来てくれて嬉しいわ。これからもよろしくね。",
+        "初めて来てくれたのね、<<user>>さん。歓迎するわ。"
       ]
     },
     "FirstSyokenMarisa": {
@@ -1535,26 +1403,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
-          "weight": 1
-        },
-        {
-          "content": "おっ、<<user>>さんが初めてのコメントだぜ!ようこそだぜ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見ありがとだぜ！一緒に盛り上げていこうぜ。",
-          "weight": 1
-        },
-        {
-          "content": "おー！初見の<<user>>さん、コメントナイスだぜ！歓迎するぜ！",
-          "weight": 1
-        },
-        {
-          "content": "おっと！初見の<<user>>さん登場だぜ！拍手〜！👏",
-          "weight": 1
-        }
+        "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
+        "おっ、<<user>>さんが初めてのコメントだぜ!ようこそだぜ。",
+        "<<user>>さん、初見ありがとだぜ！一緒に盛り上げていこうぜ。",
+        "おー！初見の<<user>>さん、コメントナイスだぜ！歓迎するぜ！",
+        "おっと！初見の<<user>>さん登場だぜ！拍手〜！👏"
       ]
     },
     "FirstComebackReimu": {
@@ -1569,38 +1422,14 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、久しぶり!また会えたね。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、来てくれてありがとう。ご縁が続いていることに感謝するわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、また来てくれたのね。久しぶりにお話できて嬉しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、久々に来てくれて心から感謝するわ。神様もきっと喜んでいるはずよ。",
-          "weight": 1
-        },
-        {
-          "content": "久しぶりね、<<user>>さん。再び会えたことを嬉しく思うわ。",
-          "weight": 1
-        },
-        {
-          "content": "お久しぶりね、<<user>>さん。再び会えるのもご縁の力だと思うわ。",
-          "weight": 1
-        },
-        {
-          "content": "あら、<<user>>さん。久しぶりね。元気そうで安心したわ。",
-          "weight": 1
-        }
+        "<<user>>さん、久しぶり!また会えたね。",
+        "<<user>>さんが久々に来たよ。挨拶しなきゃ!",
+        "<<user>>さん、来てくれてありがとう。ご縁が続いていることに感謝するわ。",
+        "<<user>>さん、また来てくれたのね。久しぶりにお話できて嬉しいわ。",
+        "<<user>>さん、久々に来てくれて心から感謝するわ。神様もきっと喜んでいるはずよ。",
+        "久しぶりね、<<user>>さん。再び会えたことを嬉しく思うわ。",
+        "お久しぶりね、<<user>>さん。再び会えるのもご縁の力だと思うわ。",
+        "あら、<<user>>さん。久しぶりね。元気そうで安心したわ。"
       ]
     },
     "FirstComebackMarisa": {
@@ -1615,26 +1444,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん！久しぶりすぎて忘れかけてたぜ…ウソだぜ、ちゃんと覚えてるぜ！",
-          "weight": 1
-        },
-        {
-          "content": "久しぶりにコメントくれたな、<<user>>さん！待ってたぜ、ほんとに！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、また来てくれたんだな！久しぶりに会えて嬉しいぜ～",
-          "weight": 1
-        }
+        "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
+        "<<user>>さん! また来てくれたんだぜ、会いたかったと配信者は嬉し涙だぜ。",
+        "<<user>>さん！久しぶりすぎて忘れかけてたぜ…ウソだぜ、ちゃんと覚えてるぜ！",
+        "久しぶりにコメントくれたな、<<user>>さん！待ってたぜ、ほんとに！",
+        "<<user>>さん、また来てくれたんだな！久しぶりに会えて嬉しいぜ～"
       ]
     },
     "FirstVisitReimu": {
@@ -1649,46 +1463,16 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、こんにちは!ゆっくりしていってね。",
-          "weight": 1
-        },
-        {
-          "content": "また来てくださったのね、<<user>>さん。常にご縁を感じているわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、毎日来てくれるから、もう家族のように思えるわ。ようこそ。",
-          "weight": 1
-        },
-        {
-          "content": "今日も来てくれて感謝するわ、<<user>>さん。あなたの日々が穏やかでありますように。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、また来てくれたのね。毎日の訪れに心からお礼をするわ。",
-          "weight": 1
-        },
-        {
-          "content": "毎日顔を見せてくれる<<user>>さん、本当にありがたいわ。神様も喜んでいるはずよ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、こんにちは。今日も来てくれて安心するわ。ゆっくりしていってね。",
-          "weight": 1
-        },
-        {
-          "content": "また来てくれたのね、<<user>>さん。毎日のご縁に感謝するわ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、毎日来てくれるから、ここがあなたの居場所になっているわね。",
-          "weight": 1
-        },
-        {
-          "content": "今日も来てくれてありがとう、<<user>>さん。心を込めて歓迎するわ。",
-          "weight": 1
-        }
+        "<<user>>さん、こんにちは!ゆっくりしていってね。",
+        "また来てくださったのね、<<user>>さん。常にご縁を感じているわ。",
+        "<<user>>さん、毎日来てくれるから、もう家族のように思えるわ。ようこそ。",
+        "今日も来てくれて感謝するわ、<<user>>さん。あなたの日々が穏やかでありますように。",
+        "<<user>>さん、また来てくれたのね。毎日の訪れに心からお礼をするわ。",
+        "毎日顔を見せてくれる<<user>>さん、本当にありがたいわ。神様も喜んでいるはずよ。",
+        "<<user>>さん、こんにちは。今日も来てくれて安心するわ。ゆっくりしていってね。",
+        "また来てくれたのね、<<user>>さん。毎日のご縁に感謝するわ。",
+        "<<user>>さん、毎日来てくれるから、ここがあなたの居場所になっているわね。",
+        "今日も来てくれてありがとう、<<user>>さん。心を込めて歓迎するわ。"
       ]
     },
     "FirstVisitMarisa": {
@@ -1703,26 +1487,11 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
-          "weight": 1
-        },
-        {
-          "content": "いつもコメントありがとう！<<user>>さんがいると安心するぜ。これで<<tc>>回目だぜ。",
-          "weight": 1
-        },
-        {
-          "content": "ヤッホー、<<user>>さん。これで<<tc>>回目って…もう皆勤賞だぜ！",
-          "weight": 1
-        },
-        {
-          "content": "よっ！<<user>>さん！いつもコメントしてくれてるから、もう配信仲間だぜ！",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、また来てくれたな。これで<<tc>>回目、愛を感じるぜ。",
-          "weight": 1
-        }
+        "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
+        "いつもコメントありがとう！<<user>>さんがいると安心するぜ。これで<<tc>>回目だぜ。",
+        "ヤッホー、<<user>>さん。これで<<tc>>回目って…もう皆勤賞だぜ！",
+        "よっ！<<user>>さん！いつもコメントしてくれてるから、もう配信仲間だぜ！",
+        "<<user>>さん、また来てくれたな。これで<<tc>>回目、愛を感じるぜ。"
       ]
     },
     "PromotionToastsReimu": {
@@ -1745,42 +1514,6 @@
         "コメントは配信主の力になるわ。遠慮なくコメントしてね。初見詐欺以外で…",
         "チャット欄が静かだと、少し寂しくなるわね。何か話しかけてほしいわ。",
         "配信主はTwitterで積極的に活動中!フォローして頂けると主の感激の涙で川ができるそうよ。"
-      ]
-    },
-    "HondaJankenName": {
-      "id": "HondaJankenName",
-      "key": "HondaJankenName",
-      "name": "じゃんけん:名前",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "マリサ キリサメ",
-          "weight": 1
-        }
-      ]
-    },
-    "HondaJankenOre": {
-      "id": "HondaJankenOre",
-      "key": "HondaJankenOre",
-      "name": "じゃんけん:名前(一人称)",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "私",
-          "weight": 1
-        }
       ]
     },
     "PromotionToastsMarisa": {
@@ -1816,6 +1549,36 @@
           "content": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ"
         },
         "このおみくじBOT、配信者さんに使って欲しいんだぜ…"
+      ]
+    },
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "key": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "マリサ キリサメ"
+      ]
+    },
+    "HondaJankenOre": {
+      "id": "HondaJankenOre",
+      "key": "HondaJankenOre",
+      "name": "じゃんけん:名前(一人称)",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "私"
       ]
     }
   },
@@ -1969,7 +1732,7 @@
     }
   },
   "displaySettings": {
-    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "base": {
       "displaySize": "md",
       "fontFamily": "default",
@@ -1977,12 +1740,12 @@
       "bubbleMotionLeave": "slideUp",
       "bubbleTextAnimate": true,
       "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "showToasts": false,
       "showToastsOnRight": true,
       "showToastsCharacter": true,
-      "showCharacterThumbnail": true,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
+      "showCharacterThumbnail": false,
+      "showCharacterFrame": false,
+      "showCharacterPersistent": true,
       "bundleCharacters": false,
       "daisyUiTheme": "cmyk"
     },
@@ -1998,7 +1761,7 @@
         "placeholders": "basic",
         "characters": "basic",
         "characterVisible": "basic",
-        "wordPartyLoading": "internal",
+        "wordPartyLoading": "experimental",
         "licenseVisible": "basic",
         "gameScriptSettings": "pro",
         "gameScripts": [
@@ -2006,7 +1769,7 @@
           "BomberSpin",
           "DwarfBomb"
         ],
-        "wordPartySettings": "internal",
+        "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"
       }
     }

@@ -30,13 +30,13 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
       postActions:
         result.party === '!bombFail'
           ? [
-              { actionType: 'wordParty', delaySeconds: -1, wordParty: '!omikuji_huru' },
-              { actionType: 'wordParty', delaySeconds: 0, wordParty: '!omikuji_07' },
+              { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
+              { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
               { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
             ]
           : [
-              { actionType: 'wordParty', delaySeconds: -1, wordParty: '!omikuji_huru' },
-              { actionType: 'wordParty', delaySeconds: 0, wordParty: '!omikuji_01' },
+              { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
+              { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
               { actionType: 'wordParty', delaySeconds: 1, wordParty: '!レベルアップ' },
             ],
       placeholders: {
