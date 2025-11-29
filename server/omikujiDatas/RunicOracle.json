@@ -1,0 +1,953 @@
+{
+  "meta": {
+    "id": "1754884254510-shoyss",
+    "name": "おみくじ BOT ルーン占い OmikujiBot RunicOracle",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.11.20-v1.4.0",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v1.4.1",
+    "dataVersion": 1.41,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ルーン",
+      "rune",
+      "Fortune"
+    ],
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7432682"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "RunicOracle": {
+      "id": "RunicOracle",
+      "key": "RunicOracle",
+      "name": "ルーン占い",
+      "description": "25個のルーンストーンを使ったルーン占い",
+      "createdAt": "2025-09-13T22:02:36.595Z",
+      "updatedAt": "2025-11-28T23:44:14.071Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#9C27B0",
+      "tags": [],
+      "accessLevel": "basic",
+      "scriptId": null,
+      "scriptParams": null,
+      "omikuji": [
+        {
+          "id": "1757800562314",
+          "key": "1757800562314",
+          "name": "",
+          "createdAt": "2025-09-13T21:56:02.314Z",
+          "updatedAt": "2025-09-13T21:56:02.314Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionSetKey": "RunicOracleFirst",
+              "wordParty": "!RunicOracle_direction",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "",
+              "actionType": "actionSet"
+            },
+            {
+              "delaySeconds": 3.5,
+              "wordParty": "",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "messageContent": "<<user>>さんは<<RunicOracle>>",
+              "sound": "collect",
+              "actionType": "message"
+            }
+          ],
+          "weight": 1
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^ルーン",
+          "^るーん",
+          "^rune",
+          "^runic",
+          "^うらな",
+          "^占"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": true
+      }
+    }
+  },
+  "timers": {},
+  "actionSets": {
+    "RunicOracleFirst": {
+      "id": "RunicOracleFirst",
+      "key": "RunicOracleFirst",
+      "name": "ルーン占い:イントロ",
+      "description": "稼働時の演出です",
+      "createdAt": "2025-10-11T11:16:21.472Z",
+      "updatedAt": "2025-11-28T23:44:14.071Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#9C27B0",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "wordParty": "RunicOracle_back",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1,
+          "wordParty": "RunicOracle_01",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 1.5,
+          "wordParty": "RunicOracle_02",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        },
+        {
+          "delaySeconds": 2,
+          "wordParty": "RunicOracle_03",
+          "characterKey": "card01",
+          "iconKey": "default",
+          "messageContent": "",
+          "actionType": "wordParty"
+        }
+      ]
+    }
+  },
+  "placeholders": {
+    "RunicOracle": {
+      "id": "RunicOracle",
+      "key": "RunicOracle",
+      "name": "ルーン:占い結果",
+      "createdAt": "2025-09-13T22:12:07.988Z",
+      "updatedAt": "2025-11-28T23:44:31.821Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "【ᚠフェオ】<<RunicOracleFehu>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚢウルズ】<<RunicOracleUruz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚦソーン】<<RunicOracleThurisaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚨアンスール】<<RunicOracleAnsuz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚱライドー】<<RunicOracleRaidho>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚲケナズ】<<RunicOracleKenaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚷゲボ】<<RunicOracleGebo>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚹヴンヨ】<<RunicOracleWunjo>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚺハガル】<<RunicOracleHagalaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᚾナウシズ】<<RunicOracleNauthiz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛁイサ】<<RunicOracleIsa>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛃイェラ】<<RunicOracleJera>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛇエイワズ】<<RunicOracleEihwaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛈペルソ】<<RunicOraclePerthro>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛉアルギズ】<<RunicOracleAlgiz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛊソウィロ】<<RunicOracleSowilo>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛏティワズ】<<RunicOracleTiwaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛒベルカナ】<<RunicOracleBerkana>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛖエワズ】<<RunicOracleEhwaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛗマンナズ】<<RunicOracleMannaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛚラグズ】<<RunicOracleLaguz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛜイングズ】<<RunicOracleIngwaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛞダガズ】<<RunicOracleDagaz>>",
+          "weight": 1
+        },
+        {
+          "content": "【ᛟオーサラ】<<RunicOracleOthala>>",
+          "weight": 1
+        },
+        {
+          "content": "【空白のルーン】<<RunicOracleWyrd>>",
+          "weight": 1
+        }
+      ]
+    },
+    "RunicOracleFehu": {
+      "id": "RunicOracleFehu",
+      "key": "RunicOracleFehu",
+      "name": "ᚠフェオ",
+      "createdAt": "2025-09-13T22:16:22.894Z",
+      "updatedAt": "2025-11-28T23:45:25.984Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "富と繁栄を象徴するルーン。物質的な豊かさが訪れる兆しがあります。感謝の心を忘れずに。",
+        "財産の流れを示すルーン。今は種まきの時。努力が実を結ぶ日は近いでしょう。",
+        "豊穣のしるし。新たな収入源や幸運な出会いが待っています。",
+        "富の循環を告げるルーン。与えることで、さらなる豊かさが巡ってきます。",
+        "財を得る導き。ただし浪費には注意が必要です。賢明な選択を。",
+        "物質的成功の予兆。今の努力が報われる時が来ています。",
+        "繁栄への扉。大切な人との絆が新たな豊かさをもたらすでしょう。",
+        "富の守護。今あるものを大切にすれば、さらなる祝福が訪れます。"
+      ],
+      "description": "ᚠ フェオ / Fehu(富・財産)"
+    },
+    "RunicOracleUruz": {
+      "id": "RunicOracleUruz",
+      "key": "RunicOracleUruz",
+      "name": "ᚢウルズ",
+      "createdAt": "2025-09-13T22:24:43.051Z",
+      "updatedAt": "2025-11-28T23:46:43.329Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "原始の力を象徴するルーン。内なる強さが目覚める時です。",
+        "生命力の高まり。健康と活力に満ちた日々が訪れるでしょう。",
+        "野生の勇気。困難に立ち向かう力が与えられています。",
+        "変革の力。古いものを手放し、新しい自分に生まれ変わる時です。",
+        "癒しのエネルギー。心身ともに回復し、前進できるでしょう。",
+        "持久力の試練。粘り強さが成功への鍵となります。",
+        "本能的な導き。直感を信じて行動すれば道が開けます。",
+        "力の制御。感情を適切に扱えば、望む結果が得られるでしょう。"
+      ],
+      "description": "ᚢ ウルズ / Uruz(力・生命力)"
+    },
+    "RunicOracleThurisaz": {
+      "id": "RunicOracleThurisaz",
+      "key": "RunicOracleThurisaz",
+      "name": "ᚦソーン",
+      "createdAt": "2025-09-13T22:25:10.590Z",
+      "updatedAt": "2025-11-28T23:47:32.438Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "試練と保護のルーン。困難は成長の機会です。守りを固めましょう。",
+        "防衛の必要性。慎重に進めば、危険を回避できます。",
+        "挑戦の兆し。障害があっても、乗り越える力はあなたの中にあります。",
+        "境界線を引く時。自分を守ることが今は最優先です。",
+        "破壊と再生。古い構造を壊すことで、新しい道が見えてきます。",
+        "警告のしるし。急ぎすぎず、状況を見極めることが大切です。",
+        "力の行使。正義のために立ち上がる勇気が求められています。",
+        "試練の先に光。困難を超えた先に、大きな報酬が待っています。"
+      ],
+      "description": "ᚦ ソーン / Thurisaz(試練・防衛)"
+    },
+    "RunicOracleAnsuz": {
+      "id": "RunicOracleAnsuz",
+      "key": "RunicOracleAnsuz",
+      "name": "ᚨアンスール",
+      "createdAt": "2025-09-13T22:28:18.260Z",
+      "updatedAt": "2025-11-28T23:48:19.164Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "神聖な知恵のルーン。重要なメッセージが届く予兆です。耳を傾けましょう。",
+        "コミュニケーションの祝福。言葉が道を開く鍵となります。",
+        "真実の啓示。隠されていたことが明らかになるでしょう。",
+        "学びの時。新しい知識があなたを導きます。",
+        "助言の到来。賢者の言葉に従えば、正しい道が見えてきます。",
+        "創造的表現。あなたの声が多くの人に届く時です。",
+        "霊的な導き。目に見えない力があなたを支えています。",
+        "洞察力の高まり。物事の本質が見えるようになるでしょう。"
+      ],
+      "description": " ᚨ アンスール / Ansuz(知恵・伝達)"
+    },
+    "RunicOracleRaidho": {
+      "id": "RunicOracleRaidho",
+      "key": "RunicOracleRaidho",
+      "name": "ᚱライドー",
+      "description": "ᚱ ライドー / Raidho(旅・進路)",
+      "createdAt": "2025-09-13T22:28:54.093Z",
+      "updatedAt": "2025-11-28T23:48:57.313Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "旅と秩序のルーン。新しい旅路が始まります。計画を立てて進みましょう。",
+        "正しい道のしるし。今の方向性は正しいと信じて進んでください。",
+        "移動の兆し。変化を恐れず、新天地へ向かう時です。",
+        "リズムと調和。自然な流れに身を任せれば、順調に進むでしょう。",
+        "人生の旅路。目的地よりも、その過程を楽しむことが大切です。",
+        "再会の予兆。大切な人との絆が深まる出来事が待っています。",
+        "決断の時。進むべき道を選ぶ勇気が求められています。",
+        "宇宙の秩序。すべては必然。信じて前に進みましょう。"
+      ]
+    },
+    "RunicOracleKenaz": {
+      "id": "RunicOracleKenaz",
+      "key": "RunicOracleKenaz",
+      "name": "ᚲケナズ",
+      "description": " ᚲ ケナズ / Kenaz(知識・創造)",
+      "createdAt": "2025-09-13T22:29:26.905Z",
+      "updatedAt": "2025-11-28T23:49:27.740Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "炎と創造のルーン。新しいアイデアが形になる兆しです。情熱を持って取り組みましょう。",
+        "内なる光。暗闇の中でも、あなたの知恵が道を照らします。",
+        "技術と技能。あなたの才能が認められる時が来ています。",
+        "変容の炎。古いものが燃え尽き、新しい可能性が生まれます。",
+        "啓発の時。学びと探求があなたを成長させるでしょう。",
+        "創造的エネルギー。芸術や表現活動に最適な時期です。",
+        "治癒の光。心の傷が癒され、希望が戻ってきます。",
+        "情熱の導き。熱意を持って進めば、成功が約束されています。"
+      ]
+    },
+    "RunicOracleGebo": {
+      "id": "RunicOracleGebo",
+      "key": "RunicOracleGebo",
+      "name": "ᚷゲボ",
+      "description": "ᚷ ゲボ / Gebo(贈り物・協力)",
+      "createdAt": "2025-09-13T22:29:59.161Z",
+      "updatedAt": "2025-11-28T23:50:02.854Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "贈り物と交換のルーン。予期せぬ幸運や好意が訪れるでしょう。",
+        "パートナーシップの祝福。協力関係が実を結ぶ時です。",
+        "与えることの喜び。惜しみなく分かち合えば、さらなる豊かさが巡ります。",
+        "バランスのしるし。give and takeが調和した関係を築きましょう。",
+        "愛の結びつき。深い絆が生まれる予兆です。",
+        "恩恵の到来。過去の善行が報われる時が来ました。",
+        "契約の成立。重要な約束や合意が良い結果をもたらします。",
+        "相互扶助。助け合うことで、困難を乗り越えられるでしょう。"
+      ]
+    },
+    "RunicOracleWunjo": {
+      "id": "RunicOracleWunjo",
+      "key": "RunicOracleWunjo",
+      "name": "ᚹヴンヨ",
+      "description": "ᚹ ヴンヨ / Wunjo(喜び・調和)",
+      "createdAt": "2025-09-13T22:30:31.785Z",
+      "updatedAt": "2025-11-28T23:50:39.325Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "喜びと成就のルーン。幸せな時期が訪れています。心から楽しみましょう。",
+        "調和の兆し。周囲との関係が良好になり、平和が訪れます。",
+        "願いの成就。長く望んでいたことが叶う時です。",
+        "祝福の時。感謝の気持ちが新たな幸運を呼び込みます。",
+        "家族の絆。愛する人々との時間が心を満たすでしょう。",
+        "満足感。今あるものに感謝すれば、さらなる喜びが訪れます。",
+        "成功の報酬。努力が実を結び、充実感に包まれるでしょう。",
+        "心の平安。内なる調和が外の世界にも反映されます。"
+      ]
+    },
+    "RunicOracleHagalaz": {
+      "id": "RunicOracleHagalaz",
+      "key": "RunicOracleHagalaz",
+      "name": "ᚺハガル",
+      "description": "ᚺ ハガル / Hagalaz(破壊・変革)",
+      "createdAt": "2025-09-13T22:31:02.984Z",
+      "updatedAt": "2025-11-28T23:50:59.004Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "破壊と変革のルーン。予期せぬ出来事が訪れますが、それは新しい始まりの前触れです。",
+        "自然の力。抗えない変化を受け入れることが成長への道です。",
+        "試練の嵐。困難な時期ですが、必ず晴れ間が訪れます。",
+        "浄化の雹。古いものが洗い流され、新たな可能性が生まれます。",
+        "運命の介入。計画が崩れても、より良い道が用意されています。",
+        "危機からの学び。この経験があなたを強くするでしょう。",
+        "限界の打破。制約から解放される時が来ました。",
+        "カオスの中の秩序。混乱の先に新しいパターンが見えてきます。"
+      ]
+    },
+    "RunicOracleNauthiz": {
+      "id": "RunicOracleNauthiz",
+      "key": "RunicOracleNauthiz",
+      "name": "ᚾナウシズ",
+      "description": "ᚾ ナウシズ / Nauthiz(必要・制約)",
+      "createdAt": "2025-09-13T22:31:30.126Z",
+      "updatedAt": "2025-11-28T23:51:16.434Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "必要性と制約のルーン。今は忍耐が求められています。困難が知恵を育てます。",
+        "欠乏の教え。足りないものが、本当に大切なものを教えてくれます。",
+        "試練の時。乗り越えた先に、大きな成長が待っています。",
+        "創造的な制限。制約の中にこそ、真の創造性が生まれます。",
+        "運命の必然。今の困難は避けられないものですが、意味があります。",
+        "内省の導き。外に求めず、内なる資源を見つめる時です。",
+        "耐久力の試験。粘り強さが最終的な成功をもたらすでしょう。",
+        "浄化の苦しみ。痛みを伴う変化が、より良い未来を約束します。"
+      ]
+    },
+    "RunicOracleIsa": {
+      "id": "RunicOracleIsa",
+      "key": "RunicOracleIsa",
+      "name": "ᛁイサ",
+      "description": "ᛁ イサ / Isa(停滞・静止)",
+      "createdAt": "2025-09-13T22:32:48.041Z",
+      "updatedAt": "2025-11-28T23:51:38.708Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "氷と静止のルーン。今は動かず、じっと待つ時です。焦りは禁物です。",
+        "凍結の期間。物事が進まなくても、内面では成長が起きています。",
+        "孤独と内省。一人の時間が新たな洞察をもたらすでしょう。",
+        "休息の必要性。エネルギーを蓄える時期です。春は必ず来ます。",
+        "明晰さの氷。感情を冷やして、冷静に状況を見つめましょう。",
+        "障害のしるし。今は進めない理由があります。タイミングを待ちましょう。",
+        "自己への集中。外の世界から離れ、自分と向き合う時です。",
+        "保存の知恵。今あるものを守り、温存することが賢明です。"
+      ]
+    },
+    "RunicOracleJera": {
+      "id": "RunicOracleJera",
+      "key": "RunicOracleJera",
+      "name": "ᛃイェラ",
+      "description": "ᛃ イェラ / Jera(収穫・循環)",
+      "createdAt": "2025-09-13T22:34:16.344Z",
+      "updatedAt": "2025-11-28T23:51:56.617Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "収穫と季節のルーン。努力が実を結ぶ時が来ました。豊かな収穫を楽しみましょう。",
+        "自然のサイクル。すべてには時があります。辛抱強く待てば報われます。",
+        "因果応報。過去の行いが今、結果として現れています。",
+        "繁栄の兆し。種まきの努力が、豊かな実りをもたらすでしょう。",
+        "正義の結果。公正な報いが訪れる時です。",
+        "循環の理解。与えたものが巡り巡って戻ってきます。",
+        "完成の時。プロジェクトや計画が成就する段階です。",
+        "平和な繁栄。調和の取れた成功が長く続くでしょう。"
+      ]
+    },
+    "RunicOracleEihwaz": {
+      "id": "RunicOracleEihwaz",
+      "key": "RunicOracleEihwaz",
+      "name": "ᛇエイワズ",
+      "description": "ᛇ エイワズ / Eihwaz(持久力・変容)",
+      "createdAt": "2025-09-13T22:34:50.903Z",
+      "updatedAt": "2025-11-28T23:52:12.307Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "イチイの木のルーン。持久力と変容を象徴します。困難に耐える力があなたにはあります。",
+        "生と死の境界。大きな変化の時ですが、恐れる必要はありません。",
+        "防衛の力。あなたを守る目に見えない力が働いています。",
+        "信頼の導き。信念を持ち続ければ、道は開けます。",
+        "霊的な移行。古い自分が死に、新しい自分が生まれる時です。",
+        "忍耐の試練。今は耐える時。やがて大きな成果が訪れます。",
+        "不屈の精神。どんな困難も乗り越える力があなたの中にあります。",
+        "深い根。しっかりとした基盤があれば、嵐も恐れることはありません。"
+      ]
+    },
+    "RunicOraclePerthro": {
+      "id": "RunicOraclePerthro",
+      "key": "RunicOraclePerthro",
+      "name": "ᛈペルソ",
+      "description": "ᛈ ペルソ / Perthro(運命・秘密)",
+      "createdAt": "2025-09-13T22:35:22.822Z",
+      "updatedAt": "2025-11-28T23:52:28.626Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "運命と神秘のルーン。隠された真実が明らかになる予兆です。直感を信じましょう。",
+        "偶然の幸運。予期せぬ幸せが訪れるでしょう。",
+        "秘密の開示。知らなかった情報が手に入る時です。",
+        "運命のサイコロ。結果は未知数ですが、冒険する価値があります。",
+        "女性的な力。受容性と直感が道を示します。",
+        "過去の回帰。忘れていた何かが再び重要になるでしょう。",
+        "驚きの展開。予想外の出来事が人生を変えるかもしれません。",
+        "神秘の扉。未知の世界への入り口が開かれています。"
+      ]
+    },
+    "RunicOracleAlgiz": {
+      "id": "RunicOracleAlgiz",
+      "key": "RunicOracleAlgiz",
+      "name": "ᛉアルギズ",
+      "description": "ᛉ アルギズ / Algiz(保護・防御)",
+      "createdAt": "2025-09-13T22:36:04.753Z",
+      "updatedAt": "2025-11-28T23:52:45.703Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "保護と防御のルーン。神聖な守りがあなたを包んでいます。安心して進みましょう。",
+        "高次の導き。スピリチュアルな力があなたを支えています。",
+        "警戒のしるし。周囲に注意を払えば、危険を避けられます。",
+        "聖域の祝福。あなたの空間は守られています。安らぎを感じてください。",
+        "友情の盾。仲間たちがあなたを守ってくれるでしょう。",
+        "直感の高まり。内なる声が正しい道を教えてくれます。",
+        "天との繋がり。祈りや瞑想が力を与えてくれる時です。",
+        "防御態勢。準備を怠らなければ、安全が保証されます。"
+      ]
+    },
+    "RunicOracleSowilo": {
+      "id": "RunicOracleSowilo",
+      "key": "RunicOracleSowilo",
+      "name": "ᛊソウィロ",
+      "description": " ᛊ ソウィロ / Sowilo(太陽・成功)",
+      "createdAt": "2025-09-13T22:36:37.887Z",
+      "updatedAt": "2025-11-28T23:52:59.758Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "太陽のルーン。勝利と成功が約束されています。自信を持って前進しましょう。",
+        "光の到来。暗闇が晴れ、希望に満ちた未来が見えてきます。",
+        "エネルギーの充填。活力が満ち溢れ、何でも成し遂げられる時です。",
+        "目標達成。あなたの努力が認められ、望む結果が得られるでしょう。",
+        "健康の祝福。心身ともに輝く時期です。",
+        "明晰さの光。真実が明らかになり、迷いが消えます。",
+        "指導者の役割。あなたが他者を導く立場になるでしょう。",
+        "完全なる勝利。すべてがあなたの味方です。自信を持ってください。"
+      ]
+    },
+    "RunicOracleTiwaz": {
+      "id": "RunicOracleTiwaz",
+      "key": "RunicOracleTiwaz",
+      "name": "ᛏティワズ",
+      "description": " ᛏ ティワズ / Tiwaz(正義・勇気)",
+      "createdAt": "2025-09-13T22:37:06.904Z",
+      "updatedAt": "2025-11-28T23:53:15.327Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "戦士と正義のルーン。勇気を持って正しい道を進めば、勝利が訪れます。",
+        "公正な裁き。真実があなたの味方となるでしょう。",
+        "リーダーシップの発揮。あなたの決断が周囲を導きます。",
+        "献身の時。目的のために自己犠牲も厭わない覚悟が求められます。",
+        "競争での勝利。正々堂々と戦えば、栄光を手にできるでしょう。",
+        "法的成功。契約や法的問題が有利に解決します。",
+        "倫理的な選択。道徳的に正しい道を選べば、祝福されます。",
+        "男性的な力。積極性と行動力が成功への鍵です。"
+      ]
+    },
+    "RunicOracleBerkana": {
+      "id": "RunicOracleBerkana",
+      "key": "RunicOracleBerkana",
+      "name": "ᛒベルカナ",
+      "description": "ᛒ ベルカナ / Berkana(成長・誕生)",
+      "createdAt": "2025-09-13T22:37:42.040Z",
+      "updatedAt": "2025-11-28T23:53:35.539Z",
+      "order": 19,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "白樺と誕生のルーン。新しい始まりや成長の兆しです。優しく育みましょう。",
+        "母性の祝福。愛と思いやりが豊かな実りをもたらします。",
+        "誕生の喜び。新しい命やプロジェクトが始まる時です。",
+        "癒しの時。心身が再生し、新鮮な気持ちになれるでしょう。",
+        "家族の幸せ。家庭に喜びと調和が訪れます。",
+        "成長の段階。少しずつ着実に前進することが大切です。",
+        "女性性の力。受容性と柔軟性が道を開きます。",
+        "繁殖力の象徴。アイデアや計画が豊かに育つでしょう。"
+      ]
+    },
+    "RunicOracleEhwaz": {
+      "id": "RunicOracleEhwaz",
+      "key": "RunicOracleEhwaz",
+      "name": "ᛖエワズ",
+      "description": "ᛖ エワズ / Ehwaz(動き・協力)",
+      "createdAt": "2025-09-13T22:38:15.662Z",
+      "updatedAt": "2025-11-28T23:54:11.477Z",
+      "order": 20,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "馬と動きのルーン。進歩と移動の時です。パートナーとの協力が成功をもたらします。",
+        "信頼の絆。協力関係が強化され、共に前進できるでしょう。",
+        "迅速な変化。物事が急速に進展する兆しです。",
+        "移動の祝福。旅行や引越しに良い時期です。",
+        "チームワーク。協調性が鍵となる状況です。",
+        "忠実な友。信頼できる仲間が現れるでしょう。",
+        "適応力。状況の変化に柔軟に対応できる時です。",
+        "調和のある進歩。バランスを保ちながら前進しましょう。"
+      ]
+    },
+    "RunicOracleMannaz": {
+      "id": "RunicOracleMannaz",
+      "key": "RunicOracleMannaz",
+      "name": "ᛗマンナズ",
+      "description": "ᛗ マンナズ / Mannaz(人間性・自己)",
+      "createdAt": "2025-09-13T22:38:47.948Z",
+      "updatedAt": "2025-11-28T23:54:37.989Z",
+      "order": 21,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "人間性と自己のルーン。自分自身を見つめ、成長する時です。謙虚さが鍵です。",
+        "社会との繋がり。人々との関わりが豊かさをもたらします。",
+        "自己認識。本当の自分を理解することで、道が開けます。",
+        "協力の精神。助け合うことで、すべてがうまくいくでしょう。",
+        "知性の活用。理性的な判断が求められています。",
+        "公平性。すべての人を平等に扱うことが大切です。",
+        "内省の時。自分の行動を振り返り、改善しましょう。",
+        "人類への貢献。あなたの行動が多くの人に良い影響を与えます。"
+      ]
+    },
+    "RunicOracleLaguz": {
+      "id": "RunicOracleLaguz",
+      "key": "RunicOracleLaguz",
+      "name": "ᛚラグズ",
+      "description": " ᛚ ラグズ / Laguz(水・直感)",
+      "createdAt": "2025-09-13T22:39:41.511Z",
+      "updatedAt": "2025-11-28T23:54:53.296Z",
+      "order": 22,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "水と流れのルーン。直感に従い、自然な流れに身を任せましょう。感情が導きます。",
+        "夢と想像力。創造的なインスピレーションが湧いてくる時です。",
+        "浄化の水。感情的な癒しが訪れるでしょう。",
+        "女性の知恵。直感と感受性が答えを教えてくれます。",
+        "適応の必要。状況に合わせて柔軟に変化しましょう。",
+        "深層心理。潜在意識からのメッセージに耳を傾けてください。",
+        "感情の波。揺れ動く気持ちを受け入れることが大切です。",
+        "海の恵み。豊かな感情が新たな可能性を生み出します。"
+      ]
+    },
+    "RunicOracleIngwaz": {
+      "id": "RunicOracleIngwaz",
+      "key": "RunicOracleIngwaz",
+      "name": "ᛜイングズ",
+      "description": "ᛜ イングズ / Ingwaz(豊穣・完成)",
+      "createdAt": "2025-09-13T22:40:17.525Z",
+      "updatedAt": "2025-11-28T23:55:10.290Z",
+      "order": 23,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "豊穣と完成のルーン。新しい段階への移行が訪れています。成就の時です。",
+        "内なる成長。見えないところで大きな変化が起きています。",
+        "潜在力の開花。隠れていた才能が現れる時です。",
+        "平和な結実。努力が静かに、しかし確実に実を結びます。",
+        "家庭の安定。安心と豊かさに満ちた生活が訪れるでしょう。",
+        "周期の完了。一つの章が終わり、新しい章が始まります。",
+        "男性性の成熟。力と優しさのバランスが取れた状態です。",
+        "種の保存。未来のために今を大切にする時です。"
+      ]
+    },
+    "RunicOracleDagaz": {
+      "id": "RunicOracleDagaz",
+      "key": "RunicOracleDagaz",
+      "name": "ᛞダガズ",
+      "description": "ᛞ ダガズ / Dagaz(変革・突破)",
+      "createdAt": "2025-09-13T22:40:53.592Z",
+      "updatedAt": "2025-11-28T23:55:26.467Z",
+      "order": 24,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "夜明けと変革のルーン。劇的な突破が訪れます。新しい時代の始まりです。",
+        "啓示の瞬間。すべてが明らかになる瞬間が訪れるでしょう。",
+        "逆転の幸運。状況が一変し、良い方向へ向かいます。",
+        "意識の飛躍。新しい理解が人生を変えるでしょう。",
+        "光と闇の統合。対立するものが調和する時です。",
+        "希望の夜明け。長い暗闇の後、ついに光が射します。",
+        "時間の超越。過去と未来が今この瞬間に集約されています。",
+        "完全な変容。古い自分が完全に変わる奇跡の時です。"
+      ]
+    },
+    "RunicOracleOthala": {
+      "id": "RunicOracleOthala",
+      "key": "RunicOracleOthala",
+      "name": "ᛟオーサラ",
+      "description": "ᛟ オーサラ / Othala(遺産・故郷)",
+      "createdAt": "2025-09-13T22:41:28.894Z",
+      "updatedAt": "2025-11-28T23:55:42.434Z",
+      "order": 25,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "遺産と故郷のルーン。ルーツに立ち返ることで、新たな力を得られます。",
+        "家族の絆。先祖からの祝福と守護があなたを支えています。",
+        "財産の継承。物質的または精神的な遺産が手に入るでしょう。",
+        "伝統の価値。古い知恵が現代に役立つ時です。",
+        "帰郷の時。心の故郷に戻ることで、安らぎが得られます。",
+        "不動産の幸運。土地や家に関する良い知らせがあるでしょう。",
+        "精神的な相続。先人の知恵があなたを導きます。",
+        "安定の基盤。しっかりとした土台の上に未来を築きましょう。"
+      ]
+    },
+    "RunicOracleWyrd": {
+      "id": "RunicOracleWyrd",
+      "key": "RunicOracleWyrd",
+      "name": "空白のルーン",
+      "description": "空白のルーン / Wyrd(運命・未知)",
+      "createdAt": "2025-09-13T22:42:18.909Z",
+      "updatedAt": "2025-11-28T23:57:48.658Z",
+      "order": 26,
+      "isEnabled": true,
+      "editorColor": "#4A148C",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        "運命と未知のルーン。すべてを宇宙に委ねる時です。信じて待ちましょう。",
+        "神秘の介入。人知を超えた力があなたを導いています。",
+        "完全な信頼。結果を手放し、流れに身を任せてください。",
+        "カルマの清算。過去が整理され、新たな運命が始まります。",
+        "無限の可能性。何が起こるかわかりませんが、それが最善です。",
+        "オーディンの意志。神々の計画を信じる時です。",
+        "運命の糸。見えない力があなたの道を紡いでいます。",
+        "答えのない問い。今は静かに待つことが最良の選択です。",
+        "運命と未知のルーン。オーディンの導きにより、予測不能な出来事が起こるでしょう。",
+        "神秘的な力の導き。目に見えない大きな力が働いている時期です。",
+        "放棄と受容の兆し。コントロールできないものを手放す時が来ています。",
+        "神聖な介入を示唆。高い次元からのメッセージに注意を向けましょう。",
+        "運命の試練。自分ではどうにもならない状況を受け入れることで成長できます。",
+        "新たな始まりのルーン。空白は無限の可能性を秘めています。",
+        "内面の静寂を促す導き。無の状態から、真の自分が見えてくるでしょう。",
+        "宇宙の神秘とのつながり。目に見えない世界からのサインを受け取る時期です。"
+      ]
+    }
+  },
+  "characters": {
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-09-16T07:53:23.473Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#AB47BC",
+        "textColor": "#F3E5F5",
+        "backgroundColor": "#6A1B9A",
+        "customClasses": "px-6 py-6 border border-white rounded-md"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    }
+  },
+  "scriptSettings": {
+    "BomberSpin": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "GouseiSuika": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    },
+    "DwarfBomb": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
+    }
+  },
+  "displaySettings": {
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "base": {
+      "displaySize": "md",
+      "fontFamily": "kaiseiDecol",
+      "bubbleMotionEnter": "flipX",
+      "bubbleMotionLeave": "flipX",
+      "bubbleTextAnimate": true,
+      "bubbleTextSpeed": 50,
+      "showToasts": true,
+      "showToastsOnRight": true,
+      "showToastsCharacter": false,
+      "showCharacterThumbnail": false,
+      "showCharacterFrame": true,
+      "showCharacterPersistent": false,
+      "bundleCharacters": false,
+      "daisyUiTheme": "aqua"
+    },
+    "developer": {
+      "startup": {
+        "component": "omikujiBot",
+        "scriptKey": null
+      },
+      "visibility": {
+        "comments": "basic",
+        "timers": "experimental",
+        "actionSets": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "experimental",
+        "wordPartyLoading": "experimental",
+        "licenseVisible": "experimental",
+        "gameScriptSettings": "experimental",
+        "gameScripts": [],
+        "wordPartySettings": "experimental",
+        "jsonMergeSettings": "basic"
+      }
+    }
+  },
+  "wordPartySettings": []
+}

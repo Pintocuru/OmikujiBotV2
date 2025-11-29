@@ -22,10 +22,10 @@
     "TarotCard": {
       "id": "TarotCard",
       "key": "TarotCard",
-      "name": "タロット占い",
+      "name": "タロットカード",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-11-20T02:08:49.781Z",
+      "updatedAt": "2025-11-28T03:32:08.960Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -83,6 +83,11 @@
           "^タロット",
           "^たろっと",
           "^tarot",
+          "^うらない",
+          "^うらなう",
+          "^占い",
+          "^占う",
+          "^fortune",
           "タロットカード"
         ]
       },
