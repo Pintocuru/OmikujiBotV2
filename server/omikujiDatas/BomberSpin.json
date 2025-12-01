@@ -270,10 +270,10 @@
     "BomberSpin": {
       "id": "BomberSpin",
       "key": "BomberSpin",
-      "name": "ボンバースピン",
+      "name": "ボンバースロット",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-30T02:08:36.481Z",
+      "updatedAt": "2025-11-30T01:02:39.720Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
