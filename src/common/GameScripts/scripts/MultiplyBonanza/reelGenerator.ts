@@ -20,9 +20,13 @@ export class ReelGenerator {
    */
   private generateSingleReel(attempt: number, boost: number): number[] {
     const symbolCounts = new Array(SYMBOLS.length).fill(0)
-    const maxSymbolsPerReel = 7 + attempt * attempt
+    const maxSymbolsPerReel = GAME_CONFIG.BASE_SYMBOLS_PER_REEL + 
+                               attempt * attempt * GAME_CONFIG.ATTEMPT_MULTIPLIER_SYMBOLS
     const numSymbols = Math.floor(Math.random() * maxSymbolsPerReel) + 1
-    const multiplier = Math.max(Math.floor(Math.random() * attempt * 2.5), 1)
+    const multiplier = Math.max(
+      Math.floor(Math.random() * attempt * GAME_CONFIG.MAX_MULTIPLIER_FACTOR), 
+      GAME_CONFIG.MIN_MULTIPLIER
+    )
 
     for (let i = 0; i < numSymbols; i++) {
       const selectedSymbolIdx = this.selectSymbolByWeight(boost)
