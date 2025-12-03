@@ -91,15 +91,3 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
     value: '1',
   },
 ]
-
-// ---
-
-// 支払いテーブルのインターフェース定義
-export interface GameResult {
-  symbolIdx: number
-  symbol: string
-  name: string
-  ways: number[]
-  payout: number
-  hasBoost: boolean
-}

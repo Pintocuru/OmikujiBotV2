@@ -7,8 +7,8 @@ import { componentConfig } from './componentConfig'
 const pluginConfig = {
   name: 'multiply-bonanza',
   version: '0.0.3',
-  displayName: 'さくらスロット',
-  description: 'Bonanza Megaways/Wing FURAIJIN風のおみくじ',
+  displayName: '桜吹雪スロット',
+  description: 'Wing FURAIJIN風のおみくじ',
   editorColor: '#333333',
   keywords: ['ポイント', 'ランキング', 'スロット'],
   url: '',
