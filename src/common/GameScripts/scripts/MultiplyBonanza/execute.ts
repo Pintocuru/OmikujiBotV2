@@ -17,10 +17,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
    */
   setup(settings: GameSettings): void {
     this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup(
-      { rankMode: 'point', enableCount: this.settings.enableCount },
-      'MultiplyBonanza'
-    )
+    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'MultiplyBonanza')
   }
 
   /**

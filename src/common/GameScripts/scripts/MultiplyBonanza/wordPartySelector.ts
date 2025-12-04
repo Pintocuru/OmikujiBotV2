@@ -8,19 +8,19 @@ import { PostActionWordPartyType } from '@/types/'
 export const WORD_PARTY_CONFIG = {
   // 配当の閾値
   THRESHOLDS: {
-    SMALL_WIN: 50,    // 小当たり開始
-    MEDIUM_WIN: 100,  // 中当たり開始
-    LARGE_WIN: 1000,  // 大当たり開始
-    MAX_WIN: 10000,   // MAX WIN開始
+    SMALL_WIN: 50, // 小当たり開始
+    MEDIUM_WIN: 100, // 中当たり開始
+    LARGE_WIN: 1000, // 大当たり開始
+    MAX_WIN: 10000, // MAX WIN開始
   },
-  
+
   // 確率計算の係数
   PROBABILITY_FACTORS: {
-    SMALL_FUJIN: 200,   // 小当たり時の風神確率 (payout/200)
+    SMALL_FUJIN: 200, // 小当たり時の風神確率 (payout/200)
     MEDIUM_FUJIN: 1000, // 中当たり時の風神確率 (payout/1000)
     LARGE_FUJIN: 10000, // 大当たり時の風神確率 (payout/10000)
   },
-  
+
   // 演出の遅延時間
   DELAY_SECONDS: {
     BASE_PARTY: 1,
@@ -31,7 +31,7 @@ export const WORD_PARTY_CONFIG = {
     RAIJIN: 3.5,
     MAX_WIN_EFFECTS: 3.8,
   },
-  
+
   // シンボル数に応じた演出の閾値
   SYMBOL_THRESHOLDS: {
     CRACKER2: 2, // Cracker2が出る最小シンボル数
@@ -76,12 +76,12 @@ export class WordPartySelector {
   private addSmallWinEffects(parties: PostActionWordPartyType[], payout: number): void {
     const { PROBABILITY_FACTORS, DELAY_SECONDS } = WORD_PARTY_CONFIG
     const fujinProbability = Math.min(Math.max(payout / PROBABILITY_FACTORS.SMALL_FUJIN, 0), 1)
-    
+
     if (Math.random() < fujinProbability) {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.FUJIN,
-        wordParty: 'MultiplyBonanzaFujin'
+        wordParty: 'MultiplyBonanzaFujin',
       })
     }
   }
@@ -97,7 +97,7 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.CRACKER2,
-        wordParty: 'MultiplyBonanzaCracker2'
+        wordParty: 'MultiplyBonanzaCracker2',
       })
     }
 
@@ -107,7 +107,7 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.FUJIN,
-        wordParty: 'MultiplyBonanzaFujin'
+        wordParty: 'MultiplyBonanzaFujin',
       })
     }
 
@@ -116,7 +116,7 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.RAIJIN,
-        wordParty: 'MultiplyBonanzaRaijin'
+        wordParty: 'MultiplyBonanzaRaijin',
       })
     }
   }
@@ -132,14 +132,14 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.CRACKER2,
-        wordParty: 'MultiplyBonanzaCracker2'
+        wordParty: 'MultiplyBonanzaCracker2',
       })
     }
     if (result.attempt >= SYMBOL_THRESHOLDS.CRACKER3) {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.CRACKER3,
-        wordParty: 'MultiplyBonanzaCracker3'
+        wordParty: 'MultiplyBonanzaCracker3',
       })
     }
 
@@ -148,7 +148,7 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.FUJIN,
-        wordParty: 'MultiplyBonanzaRaijin'
+        wordParty: 'MultiplyBonanzaRaijin',
       })
     }
 
@@ -158,7 +158,7 @@ export class WordPartySelector {
       parties.push({
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.RAIJIN,
-        wordParty: 'MultiplyBonanzaFujin'
+        wordParty: 'MultiplyBonanzaFujin',
       })
     }
   }
@@ -174,22 +174,22 @@ export class WordPartySelector {
       {
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.CRACKER2,
-        wordParty: 'MultiplyBonanzaCracker2'
+        wordParty: 'MultiplyBonanzaCracker2',
       },
       {
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.CRACKER3,
-        wordParty: 'MultiplyBonanzaCracker3'
+        wordParty: 'MultiplyBonanzaCracker3',
       },
       {
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.MAX_WIN_EFFECTS,
-        wordParty: 'MultiplyBonanzaFujin'
+        wordParty: 'MultiplyBonanzaFujin',
       },
       {
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.MAX_WIN_EFFECTS,
-        wordParty: 'MultiplyBonanzaRaijin'
+        wordParty: 'MultiplyBonanzaRaijin',
       }
     )
   }

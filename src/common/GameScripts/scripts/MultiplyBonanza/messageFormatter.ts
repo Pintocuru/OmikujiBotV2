@@ -29,11 +29,8 @@ export class MessageFormatter {
   /**
    * 基本配当を取得する
    */
-  private getBasePayout(symbol: typeof SYMBOLS[number], waysLength: number): number {
-    const payoutIdx = Math.min(
-      waysLength - GAME_CONFIG.MIN_REELS_FOR_WIN,
-      symbol.payouts.length - 1
-    )
+  private getBasePayout(symbol: (typeof SYMBOLS)[number], waysLength: number): number {
+    const payoutIdx = Math.min(waysLength - GAME_CONFIG.MIN_REELS_FOR_WIN, symbol.payouts.length - 1)
     return symbol.payouts[payoutIdx]
   }
 

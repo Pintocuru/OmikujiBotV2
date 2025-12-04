@@ -30,7 +30,7 @@ export class PayoutCalculator {
           name: SYMBOLS[symbolIdx].name,
           ways,
           payout,
-          hasBoost: false
+          hasBoost: false,
         }
       }
     }
@@ -64,10 +64,7 @@ export class PayoutCalculator {
    */
   private calculatePayout(symbolIdx: number, ways: number[]): number {
     const symbol = SYMBOLS[symbolIdx]
-    const payoutIdx = Math.min(
-      ways.length - GAME_CONFIG.MIN_REELS_FOR_WIN,
-      symbol.payouts.length - 1
-    )
+    const payoutIdx = Math.min(ways.length - GAME_CONFIG.MIN_REELS_FOR_WIN, symbol.payouts.length - 1)
     const basePayout = symbol.payouts[payoutIdx]
     const totalLines = ways.reduce((total, lineCount) => total * lineCount, 1)
 
@@ -93,7 +90,7 @@ export class PayoutCalculator {
       name: '',
       ways: [],
       payout: 0,
-      hasBoost: false
+      hasBoost: false,
     }
   }
 }

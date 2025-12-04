@@ -10,9 +10,7 @@ export class ReelGenerator {
    * 試行回数に応じてシンボル数と倍率が増加
    */
   generateReels(attempt: number, boost: number): number[][] {
-    return Array.from({ length: GAME_CONFIG.REEL_COUNT }, () =>
-      this.generateSingleReel(attempt, boost)
-    )
+    return Array.from({ length: GAME_CONFIG.REEL_COUNT }, () => this.generateSingleReel(attempt, boost))
   }
 
   /**
@@ -20,11 +18,11 @@ export class ReelGenerator {
    */
   private generateSingleReel(attempt: number, boost: number): number[] {
     const symbolCounts = new Array(SYMBOLS.length).fill(0)
-    const maxSymbolsPerReel = GAME_CONFIG.BASE_SYMBOLS_PER_REEL + 
-                               attempt * attempt * GAME_CONFIG.ATTEMPT_MULTIPLIER_SYMBOLS
+    const maxSymbolsPerReel =
+      GAME_CONFIG.BASE_SYMBOLS_PER_REEL + attempt * attempt * GAME_CONFIG.ATTEMPT_MULTIPLIER_SYMBOLS
     const numSymbols = Math.floor(Math.random() * maxSymbolsPerReel) + 1
     const multiplier = Math.max(
-      Math.floor(Math.random() * attempt * GAME_CONFIG.MAX_MULTIPLIER_FACTOR), 
+      Math.floor(Math.random() * attempt * GAME_CONFIG.MAX_MULTIPLIER_FACTOR),
       GAME_CONFIG.MIN_MULTIPLIER
     )
 
