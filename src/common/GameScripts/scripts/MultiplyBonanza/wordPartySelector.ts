@@ -190,6 +190,11 @@ export class WordPartySelector {
         actionType: 'wordParty',
         delaySeconds: DELAY_SECONDS.MAX_WIN_EFFECTS,
         wordParty: 'MultiplyBonanzaRaijin',
+      },
+      {
+        actionType: 'wordParty',
+        delaySeconds: DELAY_SECONDS.MAX_WIN_EFFECTS,
+        wordParty: 'MultiplyBonanzaSakura',
       }
     )
   }
