@@ -25,7 +25,7 @@ export class BomberSpinGame {
         life = GAME_CONFIG.GREEN_RECOVERY
       }
 
-      this.applySpecialEffects(dwarfs)
+      items += this.applySpecialEffects(dwarfs)
       // 特殊効果を持つdwarfがいる場合のみカウント
       if (dwarfs.some((d) => d.hasDynamite || d.hasRed)) {
         specialEffectCount++
@@ -36,7 +36,7 @@ export class BomberSpinGame {
     for (let i = 0; i < 2; i++) {
       // MAX_WIN を超えていないか都度判定
       if (this.getTotalGold(dwarfs) <= GAME_CONFIG.MAX_WIN) {
-        this.applySpecialEffects(dwarfs)
+        items += this.applySpecialEffects(dwarfs)
         // 特殊効果を持つdwarfがいる場合のみカウント
         if (dwarfs.some((d) => d.hasDynamite || d.hasRed)) {
           specialEffectCount++
@@ -66,23 +66,25 @@ export class BomberSpinGame {
       }
     }
 
-    // dwarfs 条件（specialEffectCount を加算）
-    if (dwarfs.some((d) => d.hasDynamite)) {
-      addEffect('DwarfBombDynamite', specialEffectCount)
-    }
-
-    const redDwarfCount = dwarfs.filter((d) => d.hasRed).length
-    if (redDwarfCount > 0) {
-      addEffect('DwarfBombPickaxe', redDwarfCount + specialEffectCount)
-    }
+    // items 条件
+    const coinCount = (items.match(/🪙/g) || []).length
+    addEffect('DwarfBombMediumGold', coinCount)
+    const dollCount = (items.match(/💴/g) || []).length
+    addEffect('DwarfBombLargeGold', dollCount)
 
     // items 条件
     const goldCount = (items.match(/💰/g) || []).length
     const diamondCount = (items.match(/💎/g) || []).length
-    const treasureCount = (items.match(/🎁/g) || []).length
+    const treasureCount = (items.match(/🥕/g) || []).length
     addEffect('DwarfBombGold', goldCount)
     addEffect('DwarfBombDiamond', diamondCount)
     addEffect('DwarfBombTreasure', treasureCount)
+
+    // dwarfs 条件
+    const pickaxeCount = (items.match(/⛏️/g) || []).length
+    addEffect('DwarfBombPickaxe', pickaxeCount)
+    const dynamiteCount = (items.match(/🧨/g) || []).length
+    addEffect('DwarfBombDynamite', dynamiteCount)
 
     // day 条件
     addEffect('DwarfBombDaysBunny', day)
@@ -122,11 +124,11 @@ export class BomberSpinGame {
 
       case RewardType.MEDIUM_GOLD:
         dwarf.gold += this.getGoldAmount('mediumGold')
-        break
+        return '🪙'
 
       case RewardType.LARGE_GOLD:
         dwarf.gold += this.getGoldAmount('largeGold')
-        break
+        return '💴'
 
       case RewardType.GOLD_MULTIPLIER:
         const goldMultiplier = this.getGoldAmount('goldMultiplier')
@@ -155,7 +157,7 @@ export class BomberSpinGame {
             d.gold = 0
           }
         })
-        return '🎁'
+        return '🥕'
 
       case RewardType.RED_CHEST: // 赤宝箱(ツルハシ)
         if (!dwarf.hasRed) {
@@ -165,7 +167,7 @@ export class BomberSpinGame {
         }
         break
 
-      case RewardType.DYNAMITE: // ダイナマイト
+      case RewardType.DYNAMITE: // TNT
         if (!dwarf.hasDynamite) {
           dwarf.hasDynamite = true
         } else {
@@ -189,19 +191,81 @@ export class BomberSpinGame {
     return weights.findIndex((w) => (sum += w) > rand)
   }
 
-  private applySpecialEffects(dwarfs: Dwarf[]): void {
-    dwarfs.forEach((dwarf, i) => {
+  // 桁数に応じた絵文字の文字列を生成するヘルパー関数
+  private getEmojiString = (increaseAmount: number, emoji: string): string => {
+    const digits = String(increaseAmount).length
+
+    if (digits === 1) {
+      return ' ' // 1桁なら空白
+    } else if (digits === 2) {
+      return emoji // 2桁なら1つ
+    } else if (digits === 3) {
+      return emoji + emoji // 3桁なら2つ
+    } else {
+      // 4桁以上なら4つ（ご要望に合わせて最大4つとします）
+      return emoji.repeat(4)
+    }
+  }
+
+  private applySpecialEffects(dwarfs: Dwarf[]): string {
+    // 1. 特殊効果適用前の値を保持
+    const initialStates = dwarfs.map((dwarf) => ({
+      initialRedChest: dwarf.redChest,
+      initialGold: dwarf.gold,
+    }))
+
+    // 2. 特殊効果を適用
+    //    dwarf.hasRed の処理を先に実行し、その増加値を計算
+    //    このループで dwarf.redChest が更新されます
+    dwarfs.forEach((dwarf) => {
       if (dwarf.hasRed) {
         dwarf.redChest += dwarf.gold
       }
+    })
+
+    // 3. hasRed による増加値を計算し、返り値の文字列を生成（前半）
+    let redEmojiString = ''
+    initialStates.forEach((initialState, i) => {
+      const currentDwarf = dwarfs[i]
+      // hasRed による redChest の増加量 = 適用後の値 - 適用前の値
+      const increaseRed = currentDwarf.redChest - initialState.initialRedChest
+      if (increaseRed > 0) {
+        // 増加があった場合にのみ、その増加量に基づいて絵文字を決定
+        redEmojiString += this.getEmojiString(increaseRed, '⛏️')
+      }
+      // hasRed の処理で gold は変化していませんが、hasDynamite の増加量計算のために
+      // gold の初期値を更新（この時点での currentDwarf.gold は initialState.initialGold と同じ）
+      initialState.initialGold = currentDwarf.gold
+    })
+
+    // ---
+
+    // 4. hasDynamite の特殊効果を適用
+    //    このループで dwarf.gold が更新されます
+    dwarfs.forEach((dwarf, i) => {
       if (dwarf.hasDynamite) {
         dwarfs.forEach((other, j) => {
           if (i !== j) {
-            dwarf.gold += other.gold
+            dwarf.gold += other.gold // other.gold は hasRed 適用前の値
           }
         })
       }
     })
+
+    // 5. hasDynamite による増加値を計算し、返り値の文字列を生成（後半）
+    let dynamiteEmojiString = ''
+    initialStates.forEach((initialState, i) => {
+      const currentDwarf = dwarfs[i]
+      // hasDynamite による gold の増加量 = 適用後の値 - hasRed適用後/hasDynamite適用前の値
+      const increaseDynamite = currentDwarf.gold - initialState.initialGold
+      if (increaseDynamite > 0) {
+        // 増加があった場合にのみ、その増加量に基づいて絵文字を決定
+        dynamiteEmojiString += this.getEmojiString(increaseDynamite, '🧨')
+      }
+    })
+
+    // 6. 2つの文字列を結合して返す
+    return redEmojiString + dynamiteEmojiString
   }
 
   private createMessage(user: string, day: number, dwarfs: Dwarf[], items: string, payout: number): string {
@@ -210,12 +274,15 @@ export class BomberSpinGame {
     const goldText = dwarfs.map((d, i) => (i === 2 ? `${d.gold + d.redChest}!` : `${d.gold + d.redChest}/`)).join('')
 
     let msg = `${user}は🐰${day}匹`
+    /**
+     * 消すかもしれない
     if (hasSpecial) {
       msg += 'と'
       if (dwarfs.some((d) => d.hasDynamite)) msg += 'TNT🧨'
       if (dwarfs.some((d) => d.hasDynamite && d.hasRed)) msg += 'と'
       if (dwarfs.some((d) => d.hasRed)) msg += 'ツルハシ⛏️'
     }
+    */
     msg += `と鉱山へ${items || '。'}${goldText}${winType}${payout}枚獲得!`
 
     return msg

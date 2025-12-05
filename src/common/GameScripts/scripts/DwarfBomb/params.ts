@@ -82,7 +82,7 @@ export const placeholders: ScriptPlaceholderItem<GamePlaceholder>[] = [
     key: 'message',
     name: '標準メッセージ',
     description: 'デフォルトの返答',
-    value: 'userは🐰14匹とダイナマイト🧨と鉱山へ。1枚!5000枚!1枚!💎EPIC WIN💎5002枚獲得!',
+    value: 'userは🐰14匹とTNT🧨と鉱山へ。1枚!5000枚!1枚!💎EPIC WIN💎5002枚獲得!',
   },
   {
     key: 'day',

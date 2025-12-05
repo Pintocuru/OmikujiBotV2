@@ -7,7 +7,7 @@ import { componentConfig } from './componentConfig'
 const pluginConfig = {
   name: 'BomberSpin',
   version: '1.0.0',
-  displayName: 'ボンバースピン',
+  displayName: 'ボンバースロット',
   description: 'APPLI BOMBERSPIN2風のおみくじ',
   editorColor: '#550000',
   keywords: ['ポイント', 'ランキング', 'スロット'],

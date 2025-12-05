@@ -64,9 +64,9 @@ export const GAME_CONFIG = {
     { name: 'largeGold', weight: 2, description: '大きな金塊（50-100枚）' },
     { name: 'goldMultiplier', weight: 2, emoji: '💰', description: '金塊倍増（2-5倍）' },
     { name: 'diamondMultiplier', weight: 1, emoji: '💎', description: '金塊倍増（10-25倍）' },
-    { name: 'greenChest', weight: 2, emoji: '🎁', description: '緑宝箱（他のうさぎの金を統合）' },
+    { name: 'greenChest', weight: 2, emoji: '🥕', description: '緑宝箱（他のうさぎの金を統合）' },
     { name: 'redChest', weight: 1, description: '赤宝箱（毎ターン金を貯蓄）' },
-    { name: 'dynamite', weight: 1, description: 'ダイナマイト（他のうさぎの金を毎ターン吸収）' },
+    { name: 'dynamite', weight: 1, description: 'TNT（他のうさぎの金を毎ターン吸収）' },
   ] as RewardItem[],
 
   // 金額報酬の設定
