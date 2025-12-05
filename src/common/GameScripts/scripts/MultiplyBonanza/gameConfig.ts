@@ -15,7 +15,7 @@ export interface GameResult {
 // ゲーム設定
 export const GAME_CONFIG = {
   MAX_WIN: 10000,
-  MAX_ATTEMPTS: 3, // ゲーム試行回数
+  MAX_ATTEMPTS: 7, // ゲーム試行回数
   BOOST_PROBABILITY: 0.2, // ブースト発生確率
   MIN_REELS_FOR_WIN: 3, // 勝利に必要な最小リール数
   REEL_COUNT: 5, // リール数
@@ -23,7 +23,7 @@ export const GAME_CONFIG = {
   // リール生成設定
   BASE_SYMBOLS_PER_REEL: 7, // 基本シンボル数
   ATTEMPT_MULTIPLIER_SYMBOLS: 1, // 試行回数ごとの増加量
-  MAX_MULTIPLIER_FACTOR: 2, // 倍率の最大係数
+  MAX_MULTIPLIER_FACTOR: 2.2, // 倍率の最大係数
   MIN_MULTIPLIER: 1, // 最小倍率
 } as const
 

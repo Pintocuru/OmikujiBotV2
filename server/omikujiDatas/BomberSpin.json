@@ -1,24 +1,23 @@
 {
   "meta": {
     "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
+    "name": "おみくじ BOT ボンバースロット OmikujiBot BomberSpin",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2025.12.04-v1.4.2",
     "generatorName": "omikuji-bot",
     "generatorVersion": "v1.4.2",
     "dataVersion": 1.42,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
+      "ゲーム",
+      "スロット",
+      "ボンバースロット",
+      "うさぎスロット",
+      "桜吹雪スロット"
     ],
-    "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/5471598"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7440428"
   },
   "jsonMerge": [],
   "comments": {
@@ -192,13 +191,13 @@
       "name": "桜吹雪スロット",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
-      "updatedAt": "2025-12-04T02:13:20.475Z",
+      "updatedAt": "2025-12-05T03:13:51.047Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "multiply-bonanza",
+      "scriptId": "MultiplyBonanza",
       "scriptParams": {},
       "omikuji": [
         {
@@ -255,6 +254,7 @@
           "^サクラ",
           "^桜",
           "^sakura",
+          "桜吹雪",
           "⛈️",
           "🌙",
           "🎍",
@@ -281,7 +281,7 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-30T04:05:39.853Z",
+      "updatedAt": "2025-12-05T03:20:34.877Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -301,9 +301,9 @@
         "isVoice": false
       },
       "color": {
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
+        "nameColor": "#A1887F",
+        "textColor": "#EFEBE9",
+        "backgroundColor": "#5D4037",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
@@ -327,7 +327,7 @@
       "name": "おみくじBOT2",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "updatedAt": "2025-12-05T03:20:41.857Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -347,9 +347,9 @@
         "isVoice": true
       },
       "color": {
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
+        "nameColor": "#FFB74D",
+        "textColor": "#FFF3E0",
+        "backgroundColor": "#F57C00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
@@ -393,6 +393,11 @@
       "isParty": true,
       "enableCount": 5,
       "rankingLimit": 10
+    },
+    "MultiplyBonanza": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
     }
   },
   "displaySettings": {
@@ -406,8 +411,8 @@
       "bubbleTextSpeed": 50,
       "showToasts": true,
       "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showCharacterThumbnail": true,
+      "showToastsCharacter": false,
+      "showCharacterThumbnail": false,
       "showCharacterFrame": true,
       "showCharacterPersistent": false,
       "bundleCharacters": false,
@@ -430,9 +435,9 @@
         "gameScriptSettings": "basic",
         "gameScripts": [
           "BomberSpin",
-          "GouseiSuika",
           "DwarfBomb",
-          "multiply-bonanza"
+          "multiply-bonanza",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"

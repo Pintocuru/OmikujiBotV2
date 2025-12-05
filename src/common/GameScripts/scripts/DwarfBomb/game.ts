@@ -35,7 +35,8 @@ export class BomberSpinGame {
     // ゲーム終了後、applySpecialEffects を2回行う
     for (let i = 0; i < 2; i++) {
       // MAX_WIN を超えていないか都度判定
-      if (this.getTotalGold(dwarfs) <= GAME_CONFIG.MAX_WIN) {
+      // 超えていてもずっと行っていい(上限は変わらないので)
+      if (this.getTotalGold(dwarfs) <= GAME_CONFIG.MAX_WIN || 1) {
         items += this.applySpecialEffects(dwarfs)
         // 特殊効果を持つdwarfがいる場合のみカウント
         if (dwarfs.some((d) => d.hasDynamite || d.hasRed)) {

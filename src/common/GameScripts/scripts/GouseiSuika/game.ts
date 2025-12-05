@@ -1,16 +1,6 @@
 // src/game.ts
 import { PostActionWordPartyType } from '@/types/'
-import { GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
-
-// ゲーム関連の定数
-const GAME_CONSTANTS = {
-  SCORE_MULTIPLIER: { MIN: 0.7, MAX: 1.3 },
-  INITIAL_LIFE: 3,
-  EMOJI_DELAY: 1,
-  SPECIAL_EFFECT_DELAY: 8.5,
-  HALF_DIVISOR: 2,
-  RANDOM_THRESHOLD: 6,
-} as const
+import { GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
 
 /**
  * ガチャゲームのロジックを管理するクラス
@@ -77,7 +67,6 @@ export class GachaGame {
       this.totalPoints += selectedItem.points
       life -= selectedItem.damage ?? 0
       this.addEffect(selectedItem.party)
-      this.addRandomEffects()
     }
   }
 
@@ -92,24 +81,6 @@ export class GachaGame {
     }
     // どれにも当選しなかった場合、最後のアイテムを返す
     return this.gameConfig.big[this.gameConfig.big.length - 1]
-  }
-
-  /**
-   * ランダムなエフェクトを追加
-   */
-  private addRandomEffects(): void {
-    for (const item of this.gameConfig.big) {
-      if (item.damage && this.shouldAddRandomEffect(item.damage)) {
-        this.addEffect(item.party)
-      }
-    }
-  }
-
-  /**
-   * ランダムエフェクトを追加するかどうかを判定
-   */
-  private shouldAddRandomEffect(damage: number): boolean {
-    return GAME_CONSTANTS.INITIAL_LIFE - damage > Math.random() * GAME_CONSTANTS.RANDOM_THRESHOLD
   }
 
   /**

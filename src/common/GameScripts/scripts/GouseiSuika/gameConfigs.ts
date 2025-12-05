@@ -25,6 +25,16 @@ export interface GameResult {
   postArray: PostActionWordPartyType[]
 }
 
+// ゲーム関連の定数
+export const GAME_CONSTANTS = {
+  SCORE_MULTIPLIER: { MIN: 1, MAX: 1 },
+  INITIAL_LIFE: 3,
+  EMOJI_DELAY: 1,
+  SPECIAL_EFFECT_DELAY: 8.5,
+  HALF_DIVISOR: 2,
+  RANDOM_THRESHOLD: 6,
+} as const
+
 // ---
 
 /**
@@ -47,7 +57,7 @@ export const GAME_CONFIGS: GameConfigs = {
       { chance: 33, points: 500, damage: 2, party: 'GouseiSuikaPeach' }, // もも
       { chance: 33, points: 700, damage: 2, party: 'GouseiSuikaMelon' }, // メロン
       { chance: 50, points: 1000, damage: 3, party: 'GouseiSuikaWatermelon' }, // スイカ
-      { chance: 100, points: 1000, damage: 0, party: 'GouseiSuikaWatermelon' }, // ダブル
+      { chance: 100, points: 1000, damage: -3, party: 'GouseiSuikaWatermelon' }, // ダブル
     ],
   },
 
@@ -61,14 +71,13 @@ export const GAME_CONFIGS: GameConfigs = {
       { chance: 67, times: 5, points: 50, party: 'GouseiSuikaApple' }, // りんご apple
     ],
     big: [
-      { chance: 33, points: 150, damage: 0, party: 'GouseiSuikaCandy' }, // キャンディー candy
+      { chance: 33, points: 200, damage: 0, party: 'GouseiSuikaCandy' }, // キャンディー candy
       { chance: 33, points: 300, damage: 1, party: 'GouseiSuikaPear' }, // なし pear
       { chance: 33, points: 400, damage: 1, party: 'GouseiSuikaPineapple' }, // パイナップル pineapple
       { chance: 33, points: 500, damage: 2, party: 'GouseiSuikaPeach' }, // もも peach
       { chance: 33, points: 700, damage: 2, party: 'GouseiSuikaMelon' }, // メロン melon
       { chance: 50, points: 1000, damage: 3, party: 'GouseiSuikaWatermelon' }, // スイカ watermelon
-      { chance: 67, points: 1000, damage: 0, party: 'GouseiSuikaWatermelon' }, // ダブル watermelon
-      { chance: 100, points: 1000, damage: -1, party: 'GouseiSuikaPumpkin' }, // カボチャ pumpkin
+      { chance: 100, points: 1000, damage: -3, party: 'GouseiSuikaPumpkin' }, // カボチャ pumpkin
     ],
   },
 

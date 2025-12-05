@@ -74,7 +74,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
   { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * syoken

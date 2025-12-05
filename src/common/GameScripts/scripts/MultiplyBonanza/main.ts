@@ -5,7 +5,7 @@ import { ScriptPreset } from '@/types/'
 import { componentConfig } from './componentConfig'
 
 const pluginConfig = {
-  name: 'multiply-bonanza',
+  name: 'MultiplyBonanza',
   version: '0.0.3',
   displayName: '桜吹雪スロット',
   description: 'Wing FURAIJIN風のおみくじ',
