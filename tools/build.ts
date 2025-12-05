@@ -16,6 +16,8 @@ import DivaMetanProject from './packages/full/DivaMetan'
 import TsumugiHimariProject from './packages/full/TsumugiHimari'
 import TossedKotaroProject from './packages/full/TossedKotaro'
 
+import BomberSpinProject from './packages/solo/BomberSpin'
+import GouseiSuikaProject from './packages/solo/GouseiSuika'
 import percent_DoraProject from './packages/solo/5percent_Dora'
 import HondaJankenProject from './packages/solo/HondaJanken'
 import CardStationProject from './packages/solo/CardStation'
@@ -56,12 +58,11 @@ const buildTargets: BuildTarget[] = [
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
   { project: 'TsumugiHimari', type: 'PATCH', accessLevel: 'pro' },
    */
-  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * solo
+  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
@@ -72,6 +73,8 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * syoken
@@ -108,6 +111,8 @@ const buildTargets: BuildTarget[] = [
       DivaMetanProject(packageRoot),
       TsumugiHimariProject(packageRoot),
       TossedKotaroProject(packageRoot),
+      BomberSpinProject(packageRoot),
+      GouseiSuikaProject(packageRoot),
       percent_DoraProject(packageRoot),
       HondaJankenProject(packageRoot),
       CardStationProject(packageRoot),
