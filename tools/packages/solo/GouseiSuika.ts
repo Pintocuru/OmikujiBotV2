@@ -29,8 +29,8 @@ function project(packageRoot: string): ProjectConfig {
     },
 
     template: {
-      name: 'おみくじ BOT スイカジェネレーター OmikujiBot GouseiSuika',
-      boothURL: 'https://pintocuru.booth.pm/items/7440428',
+      name: 'おみくじ BOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika',
+      boothURL: 'https://pintocuru.booth.pm/items/7730686',
       readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/GouseiSuika/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },

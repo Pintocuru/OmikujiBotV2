@@ -63,6 +63,9 @@ const buildTargets: BuildTarget[] = [
    * solo
   { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BomberSpin', type: 'JSON', accessLevel: 'basic',},
+  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic',},
+
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
@@ -74,6 +77,9 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
   { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BomberSpin', type: 'JSON', accessLevel: 'basic' },
+  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * syoken

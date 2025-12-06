@@ -5,10 +5,15 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "ルノルマンカード", "Lenormand", "Fortune"],
+    "tags": [
+      "おみくじBOT",
+      "ルノルマンカード",
+      "Lenormand",
+      "Fortune"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682"
   },
@@ -63,7 +68,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -72,7 +79,13 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^ルノルマン", "^るのるまん", "^Lenormand", "^うらな", "^占"]
+        "comment": [
+          "^ルノルマン",
+          "^るのるまん",
+          "^Lenormand",
+          "^うらな",
+          "^占"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -138,14 +151,14 @@
       "key": "LenormandOracle",
       "name": "ルーン:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-11-29T15:20:56.171Z",
+      "updatedAt": "2025-12-05T12:55:22.118Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "【🏇 騎士】<LenormandOracleRider>>",
+        "【🏇 騎士】<<LenormandOracleRider>>",
         "【🍀 クローバー】<<LenormandOracleClover>>",
         "【🚢 船】<<LenormandOracleShip>>",
         "【🏠 家】<<LenormandOracleHouse>>",
@@ -1023,7 +1036,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

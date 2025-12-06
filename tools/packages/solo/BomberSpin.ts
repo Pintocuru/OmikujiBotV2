@@ -30,7 +30,7 @@ function project(packageRoot: string): ProjectConfig {
 
     template: {
       name: 'おみくじ BOT ボンバースロット OmikujiBot BomberSpin',
-      boothURL: 'https://pintocuru.booth.pm/items/7440428',
+      boothURL: 'https://pintocuru.booth.pm/items/7730686',
       readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/BomberSpin/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
