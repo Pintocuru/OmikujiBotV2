@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -32,63 +32,109 @@
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "default",
           "toIconKey": "excited"
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "default",
           "toIconKey": "excited"
         },
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "happy",
           "toIconKey": "singing"
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "happy",
           "toIconKey": "singing"
         },
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "sad",
           "toIconKey": "sad"
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "sad",
           "toIconKey": "sad"
         }
       ]
     },
     {
-      "id": "1760595218337",
-      "key": "1760595218337",
-      "name": "ゲームスクリプト",
-      "createdAt": "2025-10-16T06:13:38.337Z",
-      "updatedAt": "2025-10-16T06:13:38.337Z",
+      "id": "1764984479468",
+      "key": "1764984479468",
+      "name": "タロットカード",
+      "createdAt": "2025-12-06T01:27:59.468Z",
+      "updatedAt": "2025-12-06T01:27:59.468Z",
       "order": 0,
       "tags": [],
-      "accessLevel": "pro",
-      "sourceFile": "GameScripts.json",
+      "accessLevel": "basic",
+      "sourceFile": "TarotCard.json",
       "keySuffix": "",
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "zunda",
-          "fromIconKey": "",
-          "toIconKey": ""
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
+        }
+      ]
+    },
+    {
+      "id": "1764985659592",
+      "key": "1764985659592",
+      "name": "スイカジェネレーター",
+      "createdAt": "2025-12-06T01:47:39.592Z",
+      "updatedAt": "2025-12-06T01:47:39.593Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "pro",
+      "sourceFile": "",
+      "keySuffix": "",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "zunda",
+          "toCharacterKey": "",
+          "fromIconKey": "",
+          "toIconKey": ""
+        }
+      ]
+    },
+    {
+      "id": "1764985786470",
+      "key": "1764985786470",
+      "name": "ボンバースロット",
+      "createdAt": "2025-12-06T01:49:46.470Z",
+      "updatedAt": "2025-12-06T01:49:46.470Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "pro",
+      "sourceFile": "",
+      "keySuffix": "",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "",
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "",
           "toIconKey": ""
         }
@@ -714,7 +760,7 @@
       "name": "配信内コメント数チェック:Chocolate",
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T01:13:03.942Z",
+      "updatedAt": "2025-12-06T03:32:55.645Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -741,7 +787,7 @@
               "characterKey": "chocolate",
               "iconKey": "thinking",
               "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんなのだ。",
+              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
               "sound": "baseball",
               "actionType": "toast"
             }
@@ -777,7 +823,7 @@
       "name": "個別コメント数チェック:Chocolate",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T01:13:03.942Z",
+      "updatedAt": "2025-12-06T03:33:38.781Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -804,7 +850,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "すごいのだ!<<user>>のコメントが<<tc>>回になったのだ!",
+              "messageToast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
               "sound": "baseball",
               "actionType": "toast"
             }
@@ -867,7 +913,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T01:13:08.667Z",
+      "updatedAt": "2025-12-06T02:52:56.980Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -894,7 +940,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "<<viewer>>人が見てくれているのだ",
+              "messageToast": "<<viewer>>人が見てくれているわ。ありがと♡",
               "sound": "cute",
               "actionType": "toast"
             }
@@ -919,7 +965,7 @@
               "characterKey": "chocolate",
               "iconKey": "default",
               "messageContent": "",
-              "messageToast": "高評価は<<upVote>>なのだ。みんなも押すのだ！",
+              "messageToast": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
               "sound": "cute",
               "actionType": "toast"
             }
@@ -1009,7 +1055,7 @@
       "key": "FirstSagiChocolateThinking",
       "name": "初見詐欺(Thinking):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T01:43:11.235Z",
+      "updatedAt": "2025-12-06T03:05:39.591Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1019,8 +1065,8 @@
         "あら？<<user>>さん、初見だったかしら？",
         "<<user>>さん、初見って言っているけど、この前来てくれたような…",
         "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
-        "もう〜、初見って言いたい気持ちはわかるけど、ちゃんと常連さんでしょ？",
-        "えっ、初見？…うーん、でもこの前も来てくれた気がするんだけどなぁ"
+        "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
+        "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ"
       ]
     },
     "FirstSagiChocolateSurprise": {
@@ -1086,7 +1132,7 @@
       "name": "初見:Chocolate",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2025-11-28T02:31:44.308Z",
-      "order": 7,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1105,7 +1151,7 @@
       "name": "久しぶり:Chocolate",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2025-11-28T03:20:36.914Z",
-      "order": 8,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1124,7 +1170,7 @@
       "name": "こんにちは:Chocolate",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2025-11-28T03:23:13.536Z",
-      "order": 9,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -1143,7 +1189,7 @@
       "name": "告知用トースト:Chocolate",
       "createdAt": "2025-08-26T07:00:06.947Z",
       "updatedAt": "2025-11-28T03:29:52.688Z",
-      "order": 10,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -1162,14 +1208,14 @@
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T07:34:36.171Z",
-      "order": 11,
+      "updatedAt": "2025-12-06T01:30:28.621Z",
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "ずんだもん"
+        "ショコラ"
       ]
     },
     "HondaJankenOre": {
@@ -1177,14 +1223,14 @@
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T07:34:36.172Z",
-      "order": 12,
+      "updatedAt": "2025-12-06T01:29:59.019Z",
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "僕"
+        "あたし"
       ]
     }
   },
@@ -1282,6 +1328,11 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MultiplyBonanza": {
+      "enableCount": 5,
+      "isParty": true,
+      "rankingLimit": 10
     }
   },
   "displaySettings": {
@@ -1320,7 +1371,8 @@
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
-          "DwarfBomb"
+          "DwarfBomb",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"

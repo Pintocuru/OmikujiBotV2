@@ -1,4 +1,6 @@
-// build.ts - 改良版
+// build.ts
+import { APP_VERSION, DATA_VERSION } from '@/config/version'
+
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
@@ -9,6 +11,12 @@ import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildT
 
 // 各設定ファイルをインポート
 import OmikujiBotProject from './packages/OmikujiBot'
+
+// sesupin
+import StrawberryChocolateProject from './packages/full/StrawberryChocolate'
+import OmikujiBotSpecialProject from './packages/full/OmikujiBotSpecial'
+
+// full
 import ReimuMarisaProject from './packages/full/ReimuMarisa'
 import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
 import EveryoneZundaProject from './packages/full/EveryoneZunda'
@@ -16,6 +24,7 @@ import DivaMetanProject from './packages/full/DivaMetan'
 import TsumugiHimariProject from './packages/full/TsumugiHimari'
 import TossedKotaroProject from './packages/full/TossedKotaro'
 
+// solo
 import BomberSpinProject from './packages/solo/BomberSpin'
 import GouseiSuikaProject from './packages/solo/GouseiSuika'
 import percent_DoraProject from './packages/solo/5percent_Dora'
@@ -24,7 +33,7 @@ import CardStationProject from './packages/solo/CardStation'
 import TarotCardProject from './packages/solo/TarotCard'
 import BigBangFortuneProject from './packages/solo/BigBangFortune'
 
-import { APP_VERSION, DATA_VERSION } from '@/config/version'
+// syoken
 
 // .env からrootを取得
 const __filename = fileURLToPath(import.meta.url)
@@ -43,6 +52,18 @@ const buildTargets: BuildTarget[] = [
    */
   // { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
   { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
+
+  /**
+   * Special (せすぴん用)
+  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  */
+
+  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+
   /**
    * full
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -76,10 +97,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BomberSpin', type: 'JSON', accessLevel: 'basic' },
-  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * syoken
@@ -109,13 +126,22 @@ const buildTargets: BuildTarget[] = [
 
     // プロジェクト登録
     builder.registerProject([
+      // Core
       OmikujiBotProject(packageRoot),
+
+      // sesupin
+      StrawberryChocolateProject(packageRoot),
+      OmikujiBotSpecialProject(packageRoot),
+
+      // Full
       ReimuMarisaProject(packageRoot),
       ReimuMarisaMateProject(packageRoot),
       EveryoneZundaProject(packageRoot),
       DivaMetanProject(packageRoot),
       TsumugiHimariProject(packageRoot),
       TossedKotaroProject(packageRoot),
+
+      // solo
       BomberSpinProject(packageRoot),
       GouseiSuikaProject(packageRoot),
       percent_DoraProject(packageRoot),
@@ -123,6 +149,8 @@ const buildTargets: BuildTarget[] = [
       CardStationProject(packageRoot),
       TarotCardProject(packageRoot),
       BigBangFortuneProject(packageRoot),
+
+      // syoken
     ])
 
     // 改良されたビルドを実行

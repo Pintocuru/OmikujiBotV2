@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.04-v1.4.2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.2",
-    "dataVersion": 1.42,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -114,32 +114,6 @@
           "toCharacterKey": "marisa",
           "fromIconKey": "sad",
           "toIconKey": "sad"
-        }
-      ]
-    },
-    {
-      "id": "1760595218337",
-      "key": "1760595218337",
-      "name": "ゲームスクリプト",
-      "createdAt": "2025-10-16T06:13:38.337Z",
-      "updatedAt": "2025-10-16T06:13:38.337Z",
-      "order": 0,
-      "tags": [],
-      "accessLevel": "pro",
-      "sourceFile": "GameScripts.json",
-      "keySuffix": "",
-      "remaps": [
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "reimu",
-          "fromIconKey": "",
-          "toIconKey": ""
-        },
-        {
-          "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "reimu",
-          "fromIconKey": "",
-          "toIconKey": ""
         }
       ]
     }
@@ -1350,7 +1324,7 @@
       "key": "GiftReimu",
       "name": "ギフト:霊夢",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2025-12-06T01:25:45.300Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1367,7 +1341,8 @@
         "尊いお賽銭をありがとう、<<user>>さん。神社も私も、あなたを応援しているわ。",
         "<<user>>さんのお賽銭、確かにお預かりしたわ。ご縁に感謝ね。",
         "お賽銭ありがとう、<<user>>さん。これからも神様と共に見守るわ。"
-      ]
+      ],
+      "description": "ギフト＝お賽銭としてお礼する"
     },
     "FirstSyokenReimu": {
       "id": "FirstSyokenReimu",
@@ -1729,6 +1704,11 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MultiplyBonanza": {
+      "isParty": true,
+      "rankingLimit": 10,
+      "enableCount": 5
     }
   },
   "displaySettings": {
@@ -1767,7 +1747,8 @@
         "gameScripts": [
           "GouseiSuika",
           "BomberSpin",
-          "DwarfBomb"
+          "DwarfBomb",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"
