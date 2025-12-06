@@ -40,7 +40,7 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/StrawberryChocolate.gif', to: 'thumb.gif' },
+          { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],
         skipWebpack: false,
@@ -49,7 +49,7 @@ function project(packageRoot: string): ProjectConfig {
       pro: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/StrawberryChocolate.gif', to: 'thumb.gif' },
+          { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],
         skipWebpack: false,

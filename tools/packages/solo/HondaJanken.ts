@@ -45,7 +45,7 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
-          { from: 'assets/exported/thumb/HondaJanken.png', to: 'thumb.png' },
+          { from: 'assets/exported/thumb/thumb_HondaJanken.png', to: 'thumb.png' },
         ],
       },
     },
