@@ -55,30 +55,31 @@ const buildTargets: BuildTarget[] = [
 
   /**
    * Special (せすぴん用)
-  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   */
-
-  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'OmikujiBotChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-  { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * full
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
-  { project: 'ReimuMarisa', type: 'PATCH', accessLevel: 'pro' },
   { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
-  { project: 'EveryoneZunda', type: 'PATCH', accessLevel: 'pro' },
   { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
-  { project: 'DivaMetan', type: 'PATCH', accessLevel: 'pro' },
   { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
-  { project: 'TsumugiHimari', type: 'PATCH', accessLevel: 'pro' },
    */
+  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
+  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
+  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
+  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * solo

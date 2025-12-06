@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.10.27-v1.4.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -57,32 +57,6 @@
           "toIconKey": "excited"
         }
       ]
-    },
-    {
-      "id": "1760595218337",
-      "key": "1760595218337",
-      "name": "ゲームスクリプト",
-      "createdAt": "2025-10-16T06:13:38.337Z",
-      "updatedAt": "2025-10-16T06:13:38.337Z",
-      "order": 0,
-      "tags": [],
-      "accessLevel": "pro",
-      "sourceFile": "GameScripts.json",
-      "keySuffix": "",
-      "remaps": [
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "tsumugi",
-          "fromIconKey": "",
-          "toIconKey": ""
-        },
-        {
-          "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "himari",
-          "fromIconKey": "",
-          "toIconKey": ""
-        }
-      ]
     }
   ],
   "comments": {
@@ -92,7 +66,7 @@
       "name": "初見詐欺",
       "description": "初見詐欺でもいいよ♪だって、コメントしてくれると嬉しいから☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.827Z",
+      "updatedAt": "2025-12-06T08:26:49.540Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -124,11 +98,12 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "laughing",
               "messageContent": "<<user>>っち、<<SyokenSagiTsumugiA>>",
               "messageToast": "",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
@@ -137,6 +112,7 @@
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "<<SyokenSagiHimariA>>",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -165,19 +141,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "<<user>>っち、何度目でも初めてって言っていいんだよ☆あーしもしたくなるし～",
               "messageToast": "",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
               "delaySeconds": 6,
-              "wordParty": "!呪いの旋律",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "blushing",
               "messageContent": "つむぎ先輩、お前もか！",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -206,19 +184,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "<<user>>っち、初見ありが",
               "messageToast": "",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
               "delaySeconds": 3.3,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "angry",
               "messageContent": "コラ～！キミは<<tc>>回もコメントくれてるよ～！",
+              "sound": "explosion",
               "actionType": "message"
             },
             {
@@ -227,6 +207,7 @@
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "ちなみに、<<user>>さんが土下座している様子は ぜひサブチャンネルをご覧ください",
+              "sound": "carnival",
               "actionType": "message"
             }
           ],
@@ -255,19 +236,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "全然わからない…俺たちは雰囲気で初見詐欺をやっている",
+              "sound": "negative",
               "actionType": "message"
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!チーン1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "thinking",
               "messageContent": "ひまっち、初見詐欺って雰囲気でやるものなの！？",
               "messageToast": "",
+              "sound": "transition",
               "actionType": "message"
             }
           ],
@@ -296,27 +279,30 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "許さねえぞ…よくもオレ様をここまで初見詐欺してくれたな 殺してやる…",
+              "sound": "bubble",
               "actionType": "message"
             },
             {
               "delaySeconds": 6,
-              "wordParty": "!足首がグキッ",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "殺してやるぞ天の助",
+              "sound": "explosion",
               "actionType": "message"
             },
             {
               "delaySeconds": 7.5,
-              "wordParty": "!チーン1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "surprised",
               "messageContent": "誰ーーーーーーーー！？",
               "messageToast": "",
+              "sound": "negative",
               "actionType": "message"
             }
           ],
@@ -345,10 +331,11 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "<<user>>さん、はじめまして。配信楽しんでって下さいね。",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
@@ -358,6 +345,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "・・・・・・だました・・・・・・",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -367,6 +355,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "よくもだましたアアアア！！",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -376,6 +365,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "だましてくれたなアアアアア！！",
+              "sound": "cute",
               "actionType": "toast"
             }
           ],
@@ -404,19 +394,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!ニュースタイトル表示1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "本配信には初見行為のように見える描写が含まれておりますが、配信者の意向によりTV放送と同内容を配信致します。ご了承下さい。",
+              "sound": "news",
               "actionType": "message"
             },
             {
               "delaySeconds": 9.5,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "laughing",
               "messageContent": "思いっきり初見って書いてあるよ！？",
               "messageToast": "",
+              "sound": "transition",
               "actionType": "message"
             }
           ],
@@ -450,6 +442,7 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "{{select(ちくわ大明神,そんなことよりおなかがすいたよ。)}}",
+              "sound": "bubble",
               "actionType": "toast"
             }
           ],
@@ -490,7 +483,7 @@
       "name": "ホントの初見",
       "description": "いい初見だ。感動的だな……だが無意味だ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.827Z",
+      "updatedAt": "2025-12-06T08:27:25.543Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#8B5CF6",
@@ -522,19 +515,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
               "messageToast": "",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
               "delaySeconds": 6.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenHimariA>>",
+              "sound": "fanfare",
               "actionType": "message"
             }
           ],
@@ -574,7 +569,7 @@
       "name": "ギフトLow(1-499円)",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-12T03:57:40.261Z",
+      "updatedAt": "2025-12-06T08:31:28.563Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -602,23 +597,26 @@
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
+              "sound": "cash",
               "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<GiftTsumugi>>",
               "messageToast": "",
+              "sound": "carnival",
               "actionType": "message"
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "<<GiftLowHimari>>",
+              "sound": "collect",
               "actionType": "message"
             }
           ],
@@ -656,7 +654,7 @@
       "name": "ギフトMiddle(500円-)",
       "description": "大きなギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-10-12T03:58:21.879Z",
+      "updatedAt": "2025-12-06T08:32:05.164Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -684,23 +682,26 @@
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "",
+              "sound": "cash",
               "actionType": "actionSet"
             },
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<GiftTsumugi>>",
               "messageToast": "",
+              "sound": "carnival",
               "actionType": "message"
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "<<GiftHighHimari>>",
+              "sound": "collect",
               "actionType": "message"
             }
           ],
@@ -737,7 +738,7 @@
       "name": "コメント数表示",
       "description": "コメント数、マジ気になるよね～☆",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:32:44.889Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -765,6 +766,7 @@
               "iconKey": "thinking",
               "messageContent": "",
               "messageToast": "<<user>>は[<<tc>>] 回コメントしてるよ☆",
+              "sound": "transition",
               "actionType": "toast"
             }
           ],
@@ -789,6 +791,7 @@
               "iconKey": "thinking",
               "messageContent": "",
               "messageToast": "<<user>>は[<<tc>>] 回です。<<CheckNumberHimari>>",
+              "sound": "transition",
               "actionType": "toast"
             }
           ],
@@ -825,7 +828,7 @@
       "name": "コント:つむぎ",
       "description": "あーしを呼んでくれた？マジ感謝だよっ",
       "createdAt": "2025-10-01T04:39:05.252Z",
-      "updatedAt": "2025-10-16T13:52:41.344Z",
+      "updatedAt": "2025-12-06T08:42:27.332Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -846,10 +849,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -858,6 +862,7 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "つむぎ先輩、楽しそうですね～！",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -875,10 +880,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -887,14 +893,16 @@
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "この配信はbiim兄貴リスペクトです",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
               "delaySeconds": 7.5,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "angry",
               "messageContent": "ひまっち、違うからね!?",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -912,10 +920,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -924,6 +933,7 @@
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "ではさっそく始めていきます",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
@@ -932,14 +942,16 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "名前は入力速度を考慮してホモとします",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
               "delaySeconds": 9,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "angry",
               "messageContent": "いまはひまっちのRTA配信じゃないからね!?",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -957,10 +969,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "今日はどんなことして過ごしてた？あーしは、RTA動画見てたよ～♪",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -969,22 +982,25 @@
               "characterKey": "himari",
               "iconKey": "blushing",
               "messageContent": "私のRTA動画をつむぎ先輩が見てくれてた…",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
               "delaySeconds": 8,
-              "wordParty": "!シャキーン2",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "濡れるッ!",
+              "sound": "nya",
               "actionType": "message"
             },
             {
               "delaySeconds": 10,
-              "wordParty": "!間抜け5",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "blushing",
               "messageContent": "ひまっちー、心の声が漏れてるぞー",
+              "sound": "bounce",
               "actionType": "message"
             }
           ],
@@ -1002,10 +1018,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1014,6 +1031,7 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "<<sketchTsumugiVOCALOID>>～",
+              "sound": "jingle",
               "actionType": "message"
             }
           ],
@@ -1031,10 +1049,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "最近お気に入りの曲ってある？あーしボカロ曲とか好き☆",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1044,6 +1063,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1053,6 +1073,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1062,6 +1083,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1071,6 +1093,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1089,6 +1112,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1098,6 +1122,7 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
@@ -1107,14 +1132,16 @@
               "iconKey": "blushing",
               "messageContent": "",
               "messageToast": "鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆鈍痛☆",
+              "sound": "cute",
               "actionType": "toast"
             },
             {
               "delaySeconds": 6,
-              "wordParty": "!クイズ不正解1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "angry",
               "messageContent": "ひまっち、ここで弾幕貼っちゃダメだよ!?",
+              "sound": "fail",
               "actionType": "message"
             }
           ],
@@ -1132,10 +1159,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "秩父夜祭、マジで華やかでド迫力〜‼冬の埼玉って言ったらコレっしょ🎆",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1144,6 +1172,7 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "わらじカツ丼も有名ですよ！",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1161,10 +1190,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "singing",
               "messageContent": "狭山茶って飲んだことある〜？埼玉の特産で香りヤバいし、めっちゃ美味しみ〜🍵",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1173,6 +1203,7 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "日本三大銘茶の一つですね！ちょっと一服狭山茶～",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1190,10 +1221,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "鉄道博物館、大宮にあるの知ってた〜？鉄オタっちにはたまんないスポットだよん🚃",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1202,6 +1234,7 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "氷川神社は大宮の地名の元になったんですよ～",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1219,10 +1252,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "羽生の水郷公園、水族館に淡水魚いっぱいいるし〜🐟癒しスポットって感じ〜✨",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1231,6 +1265,7 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "羽生はゆるキャラも有名です！ギネス記録も持ってますよ",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1248,10 +1283,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "長瀞のライン下り、夏の風物詩って感じで荒川の清流がバチ気持ちいい〜🌊",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1260,14 +1296,16 @@
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "大トロは美味しいですよね！",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
               "delaySeconds": 7,
-              "wordParty": "!間抜け5",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "surprised",
               "messageContent": "ながとろだよ、ひまっち！",
+              "sound": "negative",
               "actionType": "message"
             }
           ],
@@ -1285,10 +1323,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "熊谷うちわ祭り、暑さぶっ飛ばす勢いでテンアゲ〜‼迫力マジ満点🔥",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1297,6 +1336,7 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "2019年にラグビーワールドカップもありましたね～",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1314,10 +1354,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "川越の古い町並み、ギャルでも風情感じちゃうレベルで素敵すぎ〜🎀",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1326,6 +1367,7 @@
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "{{select(小江戸とも呼ばれてます！戦火を免れたんですね。,ぶっぽるぎゃるぴるぎゃっぽっぱぁーっ!)}}",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1343,10 +1385,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "所沢航空記念公園、日本の航空のはじまりってエモすぎ〜✈️飛行機好きは絶対チェック〜‼",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1355,6 +1398,7 @@
               "characterKey": "himari",
               "iconKey": "surprised",
               "messageContent": "ベルーナドームは雨で濡れます！",
+              "sound": "negative",
               "actionType": "message"
             }
           ],
@@ -1372,10 +1416,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "laughing",
               "messageContent": "越谷レイクタウン、行ったことある〜？人工湖デカすぎてギャルもびっくりだし〜🏞️",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1384,6 +1429,7 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "逃走中のロケ地でも有名ですね～",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1401,10 +1447,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "深谷ねぎ、太くて立派すぎて鍋に入れたら優勝〜‼埼玉の冬はこれで決まり〜🍲",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1413,6 +1460,7 @@
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "多種多様な百合も有名です(つむぎ先輩…♡)",
+              "sound": "nya",
               "actionType": "message"
             }
           ],
@@ -1430,18 +1478,20 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
+              "sound": "collect",
               "actionType": "message"
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!呪いの旋律",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
+              "sound": "explosion",
               "actionType": "message"
             }
           ],
@@ -1459,18 +1509,20 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "行田の蓮園、古代蓮の里ってロマンあるし〜🌸行田タワーも映えスポットだよん📸",
+              "sound": "collect",
               "actionType": "message"
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!呪いの旋律",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "埼玉県民にはそこらへんの草でも食わせておけ!",
+              "sound": "explosion",
               "actionType": "message"
             },
             {
@@ -1479,14 +1531,16 @@
               "characterKey": "tsumugi",
               "iconKey": "singing",
               "messageContent": "で、春日部には「そこらへんの草天丼」っていう人気商品あるんだなーこれが🌿",
+              "sound": "reveal_full",
               "actionType": "message"
             },
             {
               "delaySeconds": 12.5,
-              "wordParty": "!チーン1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "いや草、つむぎ先輩、マジでそれ草です",
+              "sound": "nya",
               "actionType": "message"
             }
           ],
@@ -1504,10 +1558,11 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "wink",
               "messageContent": "日高の巾着田曼珠沙華公園！秋には真っ赤な彼岸花が咲き乱れるの‼映えすぎてヤバい〜📸",
+              "sound": "collect",
               "actionType": "message"
             },
             {
@@ -1516,6 +1571,7 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "「豚のテーマパーク」もあって、ハム・ベーコンはギフトに良いですよ～",
+              "sound": "congrats",
               "actionType": "message"
             }
           ],
@@ -1555,7 +1611,7 @@
       "name": "コント:ひまり",
       "description": "なおガ",
       "createdAt": "2025-10-01T05:15:26.841Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:50:55.677Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1576,19 +1632,21 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "皆さん、チャンネル登録と高評価すると、つむぎ先輩の太もも写真集がプレゼントされます!お早めに!",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             },
             {
               "delaySeconds": 6,
-              "wordParty": "!間抜け1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "surprised",
               "messageContent": "ひまっち、いつの間にそんな写真集を…！？",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "negative"
             }
           ],
           "weight": 3
@@ -1605,11 +1663,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "駅で階段見上げたら女子中学生がいてさ、スカートの中見ちゃったんだよ。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 5,
@@ -1621,11 +1680,12 @@
             },
             {
               "delaySeconds": 7.5,
-              "wordParty": "!女衆「おう！」",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "wink",
               "messageContent": "全てを読むにはワッフルワッフルと書き込んでください",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             },
             {
               "delaySeconds": 10,
@@ -1633,7 +1693,8 @@
               "characterKey": "tsumugi",
               "iconKey": "laughing",
               "messageContent": "あー、あーしは別にいいかな…",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "negative"
             }
           ],
           "weight": 3
@@ -1650,11 +1711,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "ほら！これ！すごいでしょ！",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 2.5,
@@ -1662,7 +1724,8 @@
               "characterKey": "tsumugi",
               "iconKey": "sleepy",
               "messageContent": "なんですかこれぇ？",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "collect"
             },
             {
               "delaySeconds": 4,
@@ -1714,7 +1777,7 @@
             },
             {
               "delaySeconds": 12.4,
-              "wordParty": "!クイズ正解1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "あぁ～！",
@@ -1727,6 +1790,15 @@
               "iconKey": "singing",
               "messageContent": "水素の音ォ〜！！",
               "actionType": "message"
+            },
+            {
+              "actionType": "sounds",
+              "characterKey": "tsumugi",
+              "iconKey": "default",
+              "messageContent": "",
+              "delaySeconds": 12,
+              "wordParty": "",
+              "sound": "explosion"
             }
           ],
           "weight": 3
@@ -1743,11 +1815,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "試合を終えて家路へ向かう<<user>>。疲れからか、不幸にも黒塗りの高級車に追突してしまう。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 6.8,
@@ -1772,11 +1845,12 @@
           "postActions": [
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "surprised",
               "messageContent": "やめて！ラーの翼神竜の特殊能力で、ギルフォード・ザ・ライトニングを焼き払われたら、",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 5.5,
@@ -1825,11 +1899,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "それがお前が向こう側で得た力か!",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 3.5,
@@ -1865,11 +1940,12 @@
             },
             {
               "delaySeconds": 11,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "速さが足りない!!",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "warn"
             }
           ],
           "weight": 3
@@ -1886,11 +1962,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "よくもここまで来たものだ。貴様等は私のすべてを奪ってしまった。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 5,
@@ -1931,11 +2008,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "blushing",
               "messageContent": "もぅﾏﾁﾞ無理。彼氏が別れた。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 4,
@@ -1968,11 +2046,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "煙草吸ってもよろしいですか？",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 3,
@@ -1980,7 +2059,8 @@
               "characterKey": "tsumugi",
               "iconKey": "default",
               "messageContent": "どうぞ。ところで一日に何本くらいお吸いに？",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "collect"
             },
             {
               "delaySeconds": 5.7,
@@ -2032,11 +2112,12 @@
             },
             {
               "delaySeconds": 19,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "あれは私のベンツですけど。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 3
@@ -2053,11 +2134,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "すごい一体感を感じる。今までにない何か熱い一体感を。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 4.8,
@@ -2114,11 +2196,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "すごい一斗缶を感じる。今までにない何か便利な一斗缶を。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 4.8,
@@ -2183,11 +2266,12 @@
           "postActions": [
             {
               "delaySeconds": 1,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "良い子の諸君！",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 3.5,
@@ -2207,11 +2291,12 @@
             },
             {
               "delaySeconds": 8.5,
-              "wordParty": "!ビシッとツッコミ1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "寝てたほうがマシだな。",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 3
@@ -2228,11 +2313,12 @@
           "postActions": [
             {
               "delaySeconds": 0.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sad",
               "messageContent": "ルイズ!ルイズ!ルイズ!ルイズぅぅうううわぁああああああああああああああああああああああん!!!",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 6,
@@ -2389,7 +2475,8 @@
               "characterKey": "himari",
               "iconKey": "angry",
               "messageContent": "{{select(あ？なんだ？やるか？,はいクソ―,馬鹿がよお)}}",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "explosion"
             }
           ],
           "weight": 1
@@ -2427,7 +2514,7 @@
       "name": "コント:ひまり:ワッフルワッフル",
       "description": "いなりが入ってないやん",
       "createdAt": "2025-10-01T23:03:40.335Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:51:23.852Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2453,7 +2540,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "{{select(人間の屑がこの野郎…,あーめんどくせーマジで,あほくさ,あーもうめちゃくちゃだよ,なんだこのオッサン！？,これもうわかんねぇな)}}",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 1
@@ -2489,7 +2577,7 @@
       "name": "じゃんけん:ひまり",
       "description": "お前等やる気ないだろ。本気でかかってきやがれ",
       "createdAt": "2025-10-04T15:11:23.941Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:51:59.385Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -2515,7 +2603,8 @@
               "iconKey": "singing",
               "messageContent": "じゃんけんぽん!",
               "messageToast": "",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "carnival"
             },
             {
               "delaySeconds": 1.4,
@@ -2537,12 +2626,13 @@
             },
             {
               "delaySeconds": 5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "sleepy",
               "messageContent": "私の勝ち!なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
               "messageToast": "",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "decision"
             }
           ],
           "weight": 1
@@ -2579,7 +2669,7 @@
       "name": "初見",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:28:23.056Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2611,19 +2701,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "<<user>>っち、<<FirstCounterSyokenTsumugiA>>",
               "messageToast": "",
+              "sound": "baseball",
               "actionType": "message"
             },
             {
               "delaySeconds": 6.5,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterSyokenHimariA>>",
+              "sound": "fanfare",
               "actionType": "message"
             }
           ],
@@ -2660,7 +2752,7 @@
       "name": "久しぶり",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:29:18.790Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2683,19 +2775,21 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterAgainTsumugiA>>",
               "messageToast": "",
+              "sound": "congrats",
               "actionType": "message"
             },
             {
               "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "excited",
               "messageContent": "<<FirstCounterAgainHimariA>>",
+              "sound": "jingle",
               "actionType": "message"
             }
           ],
@@ -2732,7 +2826,7 @@
       "name": "こんにちは",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:30:09.270Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2755,19 +2849,21 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterFirstVisitTsumugiA>>",
               "messageToast": "",
+              "sound": "collect",
               "actionType": "message"
             },
             {
               "delaySeconds": 4,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "happy",
               "messageContent": "<<FirstCounterFirstVisitHimariA>>",
+              "sound": "notification",
               "actionType": "message"
             }
           ],
@@ -2804,8 +2900,8 @@
       "name": "個別コメント数チェック",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 13,
+      "updatedAt": "2025-12-06T08:55:13.551Z",
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
       "tags": [],
@@ -2816,7 +2912,7 @@
         {
           "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
           "key": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "name": "100回コメント",
+          "name": "100回コメントA",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -2827,11 +2923,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!ジャン！",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<UserCountTriggerTsumugi>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "baseball"
             },
             {
               "delaySeconds": 4,
@@ -2839,7 +2936,8 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "<<CountTriggerHimari>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 2
@@ -2858,11 +2956,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!ジャン！",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<UserCountTriggerTsumugi>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "baseball"
             },
             {
               "delaySeconds": 4,
@@ -2870,7 +2969,8 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "<<UserCountTriggerHimari>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 1
@@ -2906,8 +3006,8 @@
       "name": "配信内コメント数チェック:100回毎",
       "description": "配信でのコメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
-      "order": 14,
+      "updatedAt": "2025-12-06T08:56:37.310Z",
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#9E9E9E",
       "tags": [],
@@ -2929,11 +3029,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!ジャン！",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<StreamCountTriggerTsumugi>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "baseball"
             },
             {
               "delaySeconds": 4,
@@ -2941,7 +3042,8 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "<<CountTriggerHimari>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 5
@@ -2960,11 +3062,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!ジャン！",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "excited",
               "messageContent": "<<StreamCountTriggerTsumugi>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "baseball"
             },
             {
               "delaySeconds": 4,
@@ -2972,7 +3075,8 @@
               "characterKey": "himari",
               "iconKey": "laughing",
               "messageContent": "<<StreamCountTriggerHimari>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "nya"
             }
           ],
           "weight": 2
@@ -2994,7 +3098,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "…… きこえますか… きこえますか…",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             },
             {
               "delaySeconds": 2,
@@ -3003,7 +3108,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "みなさん… 冥鳴ひまりです…",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             },
             {
               "delaySeconds": 4,
@@ -3012,7 +3118,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "私は今… みなさんの心に…",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             },
             {
               "delaySeconds": 6,
@@ -3021,7 +3128,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "直接… 呼びかけています…",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             },
             {
               "delaySeconds": 8,
@@ -3030,7 +3138,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<lc>>回目のコメントは…",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             },
             {
               "delaySeconds": 10,
@@ -3039,7 +3148,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<user>>さん…でした",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 1
@@ -3056,11 +3166,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!シーン切り替え1",
+              "wordParty": "",
               "characterKey": "himari",
               "iconKey": "default",
               "messageContent": "いいですか、落ち着いて聞いてください",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             },
             {
               "delaySeconds": 2.5,
@@ -3072,11 +3183,12 @@
             },
             {
               "delaySeconds": 5.5,
-              "wordParty": "!ひらめく1",
+              "wordParty": "",
               "characterKey": "tsumugi",
               "iconKey": "surprised",
               "messageContent": "…!!",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "cancel"
             },
             {
               "delaySeconds": 6,
@@ -3152,7 +3264,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:57:57.640Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -3180,7 +3292,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<ViewCountDisplayTsumugiA>>",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 3
@@ -3204,7 +3317,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<ViewCountDisplayHimariA>>",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 2
@@ -3226,7 +3340,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<ViewCountDisplayTsumugiB>>",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 3
@@ -3248,7 +3363,8 @@
               "iconKey": "default",
               "messageContent": "",
               "messageToast": "<<ViewCountDisplayHimariB>>",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "cute"
             }
           ],
           "weight": 2
@@ -3264,7 +3380,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-12T03:56:48.828Z",
+      "updatedAt": "2025-12-06T08:59:28.564Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -3291,7 +3407,8 @@
               "characterKey": "tsumugi",
               "iconKey": "blushing",
               "messageContent": "<<PromotionUpVoteTsugumi>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "collect"
             },
             {
               "delaySeconds": 4,
@@ -3299,10 +3416,11 @@
               "characterKey": "himari",
               "iconKey": "thinking",
               "messageContent": "<<PromotionUpVoteHimari>>",
-              "actionType": "message"
+              "actionType": "message",
+              "sound": "congrats"
             }
           ],
-          "weight": 98
+          "weight": 99
         },
         {
           "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
@@ -3318,36 +3436,12 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "!間抜け1",
               "characterKey": "tsumugi",
               "iconKey": "singing",
               "messageContent": "",
               "messageToast": "この「おみくじBOT」、配信者っちにガチ使ってほしみ〜💘絶対盛り上がるし〜‼",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "id": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
-          "key": "ea76824e-6887-4641-9d04-b8c87ef76ad8",
-          "name": "おみくじBOT告知(ひまり)",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "!間抜け1",
-              "characterKey": "himari",
-              "iconKey": "singing",
-              "messageContent": "",
-              "messageToast": "「おみくじBOT」って何…？",
-              "actionType": "toast"
+              "actionType": "toast",
+              "sound": "bounce"
             }
           ],
           "weight": 1
@@ -3358,41 +3452,7 @@
       "isBaseZero": false
     }
   },
-  "actionSets": {
-    "GiftIntro": {
-      "id": "GiftIntro",
-      "key": "GiftIntro",
-      "name": "ギフト:イントロ",
-      "description": "ギフトの際に流すWordPartyの演出です",
-      "createdAt": "2025-10-12T03:56:00.109Z",
-      "updatedAt": "2025-10-16T06:37:46.145Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "wordParty": "!金額表示",
-          "characterKey": "tsumugi",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 0.3,
-          "wordParty": "!ジャン！",
-          "characterKey": "tsumugi",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
-        }
-      ]
-    }
-  },
+  "actionSets": {},
   "placeholders": {
     "GiftTsumugi": {
       "id": "GiftTsumugi",
@@ -4075,6 +4135,11 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MultiplyBonanza": {
+      "enableCount": 5,
+      "rankingLimit": 10,
+      "isParty": true
     }
   },
   "displaySettings": {
@@ -4113,7 +4178,8 @@
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
-          "DwarfBomb"
+          "DwarfBomb",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"

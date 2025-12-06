@@ -1,21 +1,21 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneChocolate-PRO",
+    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
     "generatorVersion": "v1.4.3",
     "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "VOICEVOX",
-      "ずんだもん",
-      "（ず・ω・きょ）"
+      "ストロベリーショコラ",
+      "占い",
+      "じゃんけん"
     ],
-    "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/6053855"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7733810"
   },
   "jsonMerge": [
     {
@@ -97,7 +97,7 @@
       "order": 0,
       "tags": [],
       "accessLevel": "pro",
-      "sourceFile": "",
+      "sourceFile": "GouseiSuika.json",
       "keySuffix": "",
       "remaps": [
         {
@@ -108,9 +108,9 @@
         },
         {
           "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "",
-          "fromIconKey": "",
-          "toIconKey": ""
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
         }
       ]
     },
@@ -123,20 +123,20 @@
       "order": 0,
       "tags": [],
       "accessLevel": "pro",
-      "sourceFile": "",
+      "sourceFile": "BomberSpin.json",
       "keySuffix": "",
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "",
+          "toCharacterKey": "chocolate",
           "fromIconKey": "default",
           "toIconKey": "laughing"
         },
         {
           "fromCharacterKey": "omiken_2",
           "toCharacterKey": "chocolate",
-          "fromIconKey": "",
-          "toIconKey": ""
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
         }
       ]
     }

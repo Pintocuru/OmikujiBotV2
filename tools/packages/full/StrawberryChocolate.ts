@@ -25,7 +25,7 @@ function project(packageRoot: string): ProjectConfig {
 
     template: {
       name: 'おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate',
-      boothURL: 'https://pintocuru.booth.pm/items/5471598',
+      boothURL: 'https://pintocuru.booth.pm/items/7733810',
       readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/full/StrawberryChocolate/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },

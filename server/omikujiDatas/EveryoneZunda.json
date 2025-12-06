@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -65,32 +65,6 @@
           "toCharacterKey": "zunda",
           "fromIconKey": "sad",
           "toIconKey": "sad"
-        }
-      ]
-    },
-    {
-      "id": "1760595218337",
-      "key": "1760595218337",
-      "name": "ゲームスクリプト",
-      "createdAt": "2025-10-16T06:13:38.337Z",
-      "updatedAt": "2025-10-16T06:13:38.337Z",
-      "order": 0,
-      "tags": [],
-      "accessLevel": "pro",
-      "sourceFile": "GameScripts.json",
-      "keySuffix": "",
-      "remaps": [
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "zunda",
-          "fromIconKey": "",
-          "toIconKey": ""
-        },
-        {
-          "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "zunda",
-          "fromIconKey": "",
-          "toIconKey": ""
         }
       ]
     }
@@ -2052,6 +2026,11 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MultiplyBonanza": {
+      "enableCount": 5,
+      "rankingLimit": 10,
+      "isParty": true
     }
   },
   "displaySettings": {
@@ -2090,7 +2069,8 @@
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
-          "DwarfBomb"
+          "DwarfBomb",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"

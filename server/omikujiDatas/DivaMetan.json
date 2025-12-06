@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.10.14-v1.4.0-beta01",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v1.4.3",
+    "dataVersion": 1.43,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -34,63 +34,37 @@
           "fromCharacterKey": "omiken",
           "toCharacterKey": "metanBlack",
           "fromIconKey": "default",
-          "toIconKey": "excited"
+          "toIconKey": "singing"
         },
         {
           "fromCharacterKey": "omiken_2",
           "toCharacterKey": "metan",
           "fromIconKey": "default",
-          "toIconKey": "excited"
+          "toIconKey": "angry"
         },
         {
           "fromCharacterKey": "omiken",
           "toCharacterKey": "metanBlack",
           "fromIconKey": "happy",
-          "toIconKey": "singing"
+          "toIconKey": "wink"
         },
         {
           "fromCharacterKey": "omiken_2",
           "toCharacterKey": "metan",
           "fromIconKey": "happy",
-          "toIconKey": "singing"
+          "toIconKey": "happy"
         },
         {
           "fromCharacterKey": "omiken",
           "toCharacterKey": "metanBlack",
           "fromIconKey": "sad",
-          "toIconKey": "sad"
+          "toIconKey": "happy"
         },
         {
           "fromCharacterKey": "omiken_2",
           "toCharacterKey": "metan",
           "fromIconKey": "sad",
           "toIconKey": "sad"
-        }
-      ]
-    },
-    {
-      "id": "1760595218337",
-      "key": "1760595218337",
-      "name": "ゲームスクリプト",
-      "createdAt": "2025-10-16T06:13:38.337Z",
-      "updatedAt": "2025-10-16T06:13:38.337Z",
-      "order": 0,
-      "tags": [],
-      "accessLevel": "pro",
-      "sourceFile": "GameScripts.json",
-      "keySuffix": "",
-      "remaps": [
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "metan",
-          "fromIconKey": "",
-          "toIconKey": ""
-        },
-        {
-          "fromCharacterKey": "omiken_2",
-          "toCharacterKey": "metanBlack",
-          "fromIconKey": "",
-          "toIconKey": ""
         }
       ]
     }
@@ -102,7 +76,7 @@
       "name": "漆黒のおみくじ",
       "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2025-12-06T08:08:50.662Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
@@ -2007,6 +1981,11 @@
       "isParty": true,
       "rankingLimit": 10,
       "enableCount": 5
+    },
+    "MultiplyBonanza": {
+      "enableCount": 5,
+      "rankingLimit": 10,
+      "isParty": true
     }
   },
   "displaySettings": {
@@ -2045,7 +2024,8 @@
         "gameScripts": [
           "BomberSpin",
           "GouseiSuika",
-          "DwarfBomb"
+          "DwarfBomb",
+          "MultiplyBonanza"
         ],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "basic"
