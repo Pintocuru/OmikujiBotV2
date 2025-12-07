@@ -25,35 +25,37 @@ import f23 from '@assets/source/sounds/FreeSound/twinkle.mp3'
 import f24 from '@assets/source/sounds/FreeSound/warn.mp3'
 import r0 from '@assets/source/sounds/RpgVoice/rpg_voice_a5.mp3'
 
-
 export const soundMap: Record<string, string> = {
-  "applause": f0,
-  "baseball": f1,
-  "bounce": f2,
-  "bubble": f3,
-  "cancel": f4,
-  "carnival": f5,
-  "cash": f6,
-  "collect": f7,
-  "congrats": f8,
-  "cute": f9,
-  "decision": f10,
-  "drum_hit": f11,
-  "explosion": f12,
-  "fail": f13,
-  "fanfare": f14,
-  "jingle": f15,
-  "negative": f16,
-  "news": f17,
-  "notification": f18,
-  "nya": f19,
-  "reveal": f20,
-  "reveal_full": f21,
-  "transition": f22,
-  "twinkle": f23,
-  "warn": f24,
-  "rpg_voice_a5": r0,
+  applause: f0,
+  baseball: f1,
+  bounce: f2,
+  bubble: f3,
+  cancel: f4,
+  carnival: f5,
+  cash: f6,
+  collect: f7,
+  congrats: f8,
+  cute: f9,
+  decision: f10,
+  drum_hit: f11,
+  explosion: f12,
+  fail: f13,
+  fanfare: f14,
+  jingle: f15,
+  negative: f16,
+  news: f17,
+  notification: f18,
+  nya: f19,
+  reveal: f20,
+  reveal_full: f21,
+  transition: f22,
+  twinkle: f23,
+  warn: f24,
+}
+
+export const rpgVoiceMap: Record<string, string> = {
+  rpg_voice_a5: r0,
 }
 
 export const soundList = Object.keys(soundMap)
-
+export const rpgVoiceList = Object.keys(rpgVoiceMap)

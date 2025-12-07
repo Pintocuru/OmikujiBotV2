@@ -2,42 +2,26 @@
 // 250726_1 PresetMetadata に合わせて編集
 import { GameState } from './GameScriptSchema'
 import { PostActionWordPartyType } from '../OmikujiData/OmikujiSchema'
-import { GameComponentConfig } from '../GameComponent/GameRankingTypes'
 import { DefaultTypes, PresetMetadata } from '@shared/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 
 // スクリプトプリセット
-export interface ScriptPreset<
-  TSettings extends object = DefaultTypes,
-  TParams extends object = DefaultTypes,
-  TPlaceholders extends object = DefaultTypes,
-> extends PresetMetadata {
-  execute: ScriptClass<TSettings, TParams, TPlaceholders> // メイン実行クラス
-  settings: ParameterItem<TSettings>[] // スクリプトの設定値
-  params: ParameterItem<TParams>[] // 実行時にユーザーが入力するパラメータ
-  postActions: PostActionWordPartyType[]
-  placeholders: ScriptPlaceholderItem<TPlaceholders>[] // 動的置換用プレースホルダー
-  componentConfig: GameComponentConfig | null // コンポーネント設定
+export interface ScriptPreset extends PresetMetadata {
+  execute: ScriptClass // メイン実行クラス
 }
 
-// ===== スクリプト実行クラス =====
-
 // スクリプトのメイン実行クラス
-export interface ScriptClass<
-  TSettings extends object = DefaultTypes,
-  TParams extends object = DefaultTypes,
-  TPlaceholders extends object = DefaultTypes,
-> {
+export interface ScriptClass<TSettings extends object = DefaultTypes> {
   setup(settings: TSettings, ruleId?: string): void // 初期化処理
-  run(comment: Comment, params: TParams): ScriptResult<TPlaceholders> // メイン実行関数
+  run(comment: Comment, charaId: string, params: string): ScriptResult // メイン実行関数
+  sampleRun?(): string // エディター用サンプルゲーム関数
   getGameState(): GameState | null // gameState取得
   cleanup?(gameState: GameState): void // 終了処理（オプション）
 }
 
 // スクリプト実行の結果
-export interface ScriptResult<TPlaceholders extends object = DefaultTypes> {
+export interface ScriptResult {
   postActions: PostActionWordPartyType[] // わんコメに投稿するWordParty
-  placeholders: TPlaceholders // runして出力されたプレースホルダー群
 }
 
 // ===== パラメータ関連 =====

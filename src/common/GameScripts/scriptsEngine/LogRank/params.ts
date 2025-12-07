@@ -7,7 +7,7 @@ import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@
  */
 export const GameSettingsSchema = z.object({
   rankMode: z.enum(['wins', 'rate', 'point']),
-  enableCount: z.number().int().min(0).max(100),
+  enableCount: z.number().int().min(0).max(100).default(5),
 })
 export type GameSettings = z.infer<typeof GameSettingsSchema>
 
@@ -35,51 +35,13 @@ export const settings: ParameterItem<GameSettings>[] = [
  * params
  */
 export const GameParamsSchema = z.object({
-  isWin: z.boolean(),
-  getPoint: z.number(),
-  itemValue1: z.string().optional(),
-  itemValue2: z.string().optional(),
-  itemValue3: z.string().optional(),
+  isWin: z.boolean(), // 勝利したか
+  getPoint: z.number(), // 獲得したポイント
+  itemValue1: z.string().optional(), // 任意の項目1
+  itemValue2: z.string().optional(), // 任意の項目2
+  itemValue3: z.string().optional(), // 任意の項目3
 })
 export type GameParams = z.infer<typeof GameParamsSchema>
-
-export const params: ParameterItem<GameParams>[] = [
-  {
-    key: 'isWin', // キー名
-    name: '勝利したか', // ルール名
-    description: '勝敗フラグ',
-    inputType: 'boolean', // 'select' | 'number' | 'string' | 'boolean'
-    defaultValue: false, // デフォルト値
-  },
-  {
-    key: 'getPoint', // キー名
-    name: '獲得したポイント', // ルール名
-    description: '入力した数値を、ポイントとして加算します',
-    inputType: 'number', // 'select' | 'number' | 'string' | 'boolean'
-    defaultValue: 0, // デフォルト値
-  },
-  {
-    key: 'itemValue1', // キー名
-    name: '任意の項目1', // ルール名
-    description: 'ランキングで補助的に使用したい要素を入れます',
-    inputType: 'string', // 'select' | 'number' | 'string' | 'boolean'
-    defaultValue: '', // デフォルト値
-  },
-  {
-    key: 'itemValue2', // キー名
-    name: '任意の項目2', // ルール名
-    description: 'ランキングで補助的に使用したい要素を入れます',
-    inputType: 'string', // 'select' | 'number' | 'string' | 'boolean'
-    defaultValue: '', // デフォルト値
-  },
-  {
-    key: 'itemValue3', // キー名
-    name: '任意の項目3', // ルール名
-    description: 'ランキングで補助的に使用したい要素を入れます',
-    inputType: 'string', // 'select' | 'number' | 'string' | 'boolean'
-    defaultValue: '', // デフォルト値
-  },
-]
 
 /**
  * postActions

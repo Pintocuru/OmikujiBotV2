@@ -37,7 +37,8 @@ const allFiles = getAllSoundFiles(dir).filter((f) => /^FreeSound\//.test(f) || /
 
 // import名生成
 const imports: string[] = []
-const entries: string[] = []
+const freeEntries: string[] = []
+const rpgEntries: string[] = []
 let fCount = 0
 let rCount = 0
 
@@ -50,15 +51,24 @@ for (const f of allFiles) {
   imports.push(`import ${varName} from '@assets/source/sounds/${f}'`)
 
   const base = path.basename(f, path.extname(f))
-  entries.push(`  ${JSON.stringify(base)}: ${varName},`)
+  if (isFree) {
+    freeEntries.push(`  ${JSON.stringify(base)}: ${varName},`)
+  } else {
+    rpgEntries.push(`  ${JSON.stringify(base)}: ${varName},`)
+  }
 }
 
 const exports = `
 export const soundMap: Record<string, string> = {
-${entries.join('\n')}
+${freeEntries.join('\n')}
+}
+
+export const rpgVoiceMap: Record<string, string> = {
+${rpgEntries.join('\n')}
 }
 
 export const soundList = Object.keys(soundMap)
+export const rpgVoiceList = Object.keys(rpgVoiceMap)
 `
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true })

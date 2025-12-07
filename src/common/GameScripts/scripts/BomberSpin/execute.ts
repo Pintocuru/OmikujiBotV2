@@ -5,7 +5,7 @@ import { playSlot } from './game'
 import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { Comment } from '@onecomme.com/onesdk/'
 
-export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
+export class ExecuteScript implements ScriptClass<GameSettings> {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
 
@@ -20,7 +20,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
+  run(comment: Comment, charaId: string, params: string): ScriptResult {
     // パラメータ
     const { isParty } = this.settings
     const {} = GameParamsSchema.parse(params)
@@ -45,12 +45,6 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
             { actionType: 'wordParty', delaySeconds: 1.8, wordParty: 'CommonBombFire' },
           ]
         : [],
-      placeholders: {
-        ...logResult.placeholders,
-        message: result.message,
-        symbol: result.symbol,
-        payout: result.payout,
-      },
     }
   }
 

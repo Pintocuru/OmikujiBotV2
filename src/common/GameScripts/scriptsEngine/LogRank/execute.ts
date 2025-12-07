@@ -1,16 +1,20 @@
 // src/execute.ts
 // ユーザーの勝敗・ポイント・ランキングを管理するゲームシステム
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { Comment } from '@onecomme.com/onesdk/'
+import { GameScript, GameScriptResult } from './GameScript'
+import { GameState, GameStateSchema } from '@/types'
+import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 
 // Services
 import { UserStatsService } from './services/UserStatsService'
 import { RankingService } from './services/RankingService'
 import { PlaceholderService } from './services/PlaceholderService'
 import { GameContext } from './GameContext'
-import { GameState, GameStateSchema, ScriptClass, ScriptResult } from '@/types'
 
-export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
+/**
+ * ゲームスクリプトの実装（ジェネリック不使用）
+ */
+export class ExecuteScript implements GameScript {
   private settings!: GameSettings
   private gameState!: GameState
 
@@ -25,7 +29,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
+  run(comment: Comment, params: GameParams): GameScriptResult {
     try {
       // コンテキストオブジェクトを作成
       const context: GameContext = {
@@ -59,14 +63,8 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
         this.gameState = { ...updatedGameState, userRankings }
       }
 
-      // プレースホルダーを生成
-      const finalContext = {
-        ...updatedContext,
-        gameState: { ...updatedGameState, userRankings },
-      }
-
+      // postActionsのみを返す
       return {
-        placeholders: PlaceholderService.createPlaceholders(finalContext),
         postActions: [],
       }
     } catch (error) {
@@ -80,6 +78,48 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
    */
   getGameState(): GameState {
     return this.gameState
+  }
+
+  /**
+   * エディター用のサンプル表示
+   */
+  sampleRun(): GamePlaceholder {
+    // デフォルト設定でサンプルコンテキストを作成
+    const sampleContext: GameContext = {
+      settings: this.settings || {
+        rankMode: 'wins',
+        enableCount: 5,
+      },
+      params: {
+        isWin: true,
+        getPoint: 100,
+      },
+      gameState: this.gameState || GameStateSchema.parse({ ruleId: 'sample' }),
+      currentUser: {
+        userId: 'sample-user',
+        name: 'サンプルユーザー',
+      },
+    }
+
+    // サンプルデータでプレースホルダーを生成
+    return PlaceholderService.createPlaceholders(sampleContext)
+  }
+
+  /**
+   * 現在のプレースホルダーを取得（内部用）
+   */
+  getCurrentPlaceholders(comment: Comment): GamePlaceholder {
+    const context: GameContext = {
+      settings: this.settings,
+      params: { isWin: false, getPoint: 0 }, // ダミー
+      gameState: this.gameState,
+      currentUser: {
+        userId: comment.data.userId,
+        name: comment.data.name,
+      },
+    }
+
+    return PlaceholderService.createPlaceholders(context)
   }
 }
 
