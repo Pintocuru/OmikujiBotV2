@@ -1,6 +1,7 @@
 // src/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
+import { migrateV100ToV130 } from './v1_to_v2/OmikujiDataV1/migrateV100ToV130'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -35,65 +36,16 @@ export function normalizeData(data: unknown): OmikujiDataType {
   // バージョン
   if (currentDataVersion < 1.3) {
     console.log('Migrating data from v1 to v1.3...')
-    updatedData = migrateV1ToV13(updatedData)
+    updatedData = migrateV100ToV130(updatedData)
   }
 
   /*
   // 将来的なマイグレーション処理
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1 to v2...')
-    updatedData = migrateV1ToV2(updatedData)
+    updatedData = migrateV130ToV200(updatedData)
   }
   */
 
   return updatedData
-}
-
-/**
- * v1からv1.3へのマイグレーション
- * omikuji配列内のオブジェクトのkeyが空文字の場合、idをコピーする
- */
-function migrateV1ToV13(data: OmikujiDataType): OmikujiDataType {
-  const migratedData = { ...data }
-
-  // comments のマイグレーション
-  if (migratedData.comments) {
-    Object.keys(migratedData.comments).forEach((commentKey) => {
-      const comment = migratedData.comments[commentKey]
-      if (comment?.omikuji && Array.isArray(comment.omikuji)) {
-        comment.omikuji = comment.omikuji.map((item) => {
-          // keyが空文字またはundefinedの場合、idをコピー
-          if (!item.key || item.key.trim() === '') {
-            return {
-              ...item,
-              key: item.id,
-            }
-          }
-          return item
-        })
-      }
-    })
-  }
-
-  // timers のマイグレーション
-  if (migratedData.timers) {
-    Object.keys(migratedData.timers).forEach((timerKey) => {
-      const timer = migratedData.timers[timerKey]
-      if (timer?.omikuji && Array.isArray(timer.omikuji)) {
-        timer.omikuji = timer.omikuji.map((item) => {
-          // keyが空文字またはundefinedの場合、idをコピー
-          if (!item.key || item.key.trim() === '') {
-            return {
-              ...item,
-              key: item.id,
-            }
-          }
-          return item
-        })
-      }
-    })
-  }
-
-  console.log('Migration to v1.3 completed: omikuji keys補完完了')
-  return migratedData
 }

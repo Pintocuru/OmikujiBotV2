@@ -133,54 +133,85 @@ export type DisplaySettingsType = z.infer<typeof DisplaySettingsSchema>
 
 /**
 
-// キャラクター
-export const CharacterSettingsSchema = z.object({ 
-  // キャラクターのkeyを並べる(新設)
-  showCharacters: z.array(z.array(z.string())).default([]).catch([]),
-  showCharacterFrame: z.boolean().default(true),  
-  // showCharacterPersistent , bundleCharacters は廃止
-  // showCharacters にいないキャラクターは、すべてポップアップで出る
-});
+// フキダシ・キャラクター
+export const SettingsBubbleSchema = z.object({
+  showCharacters: z.array(z.array(z.string())).default([]).catch([]),  // キャラクターのkeyを並べる(新設)
+  showCharacterFrame: z.boolean().default(true),    // キャラクターにフレーム（円形の背景）を表示するか
+  characterSize: z.number.default(320).catch(320), // キャラクターの横幅(新設)
 
-// フキダシ
-export const BubbleSettingsSchema = z.object({
-  // 文字の大きさ変更(displaySize)は廃止
-  widthSize: z.enum(displaySize).default('md').catch('md'), // フキダシの横幅(新設)
-  fontFamily: z.enum(fontFamilyOptions).default('default'),
-  bubbleMotionEnter: z.enum(motionLabel).default('slideUp'),
-  bubbleMotionLeave: z.enum(motionLabel).default('slideUp'),
-  bubbleTextAnimate: z.boolean().default(false).catch(false),
-  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
+  fontFamily: z.enum(fontFamilyOptions).default('default'),  // フォントファミリー
+  bubbleMotionEnter: z.enum(motionLabel).default('slideUp'),  // フキダシのアニメーション(開始・表示中)
+  bubbleMotionLeave: z.enum(motionLabel).default('slideUp'),  // フキダシのアニメーション(終了時)
+  bubbleTextAnimate: z.boolean().default(false).catch(false),  // フキダシの文字表示をアニメーションさせるか
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),  // 文字送りの速度
+  bubbleTextSound:z.string().optional(), // 文字送り時のサウンド
 });
 
 // トースト
-export const ToastSettingsSchema = z.object({
-  showToasts: z.boolean().default(true).catch(true),
-  showToastsOnRight: z.boolean().default(true).catch(true),
-  showToastsCharacter: z.boolean().default(false).catch(false),
+export const SettingsToastSchema = z.object({
+  showToastsOnRight: z.boolean().default(true).catch(true),  // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsCharacter: z.boolean().default(false).catch(false),  // トースト表示時、キャラクターを表示するか
 });
 
 // サムネイル Thumbnail
-export const ThumbnailSettingsSchema = z.object({
+export const SettingsThumbnailSchema = z.object({
   // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
   showThumbnail:  z.array(z.string()).default([]).catch([]),
 });
 
+// ランキング Ranking
+export const SettingsRankingSchema = z.object({
+  scriptId: z
+    .string()
+    .min(1)
+    .nullable()
+    .default(null)
+    .catch(null), // 対象のGameScript
+  title: z.string().default('Ranking').catch('Ranking'), // タイトル
+  limit: z.number().default(10).catch(10), // 表示するランキング数
+  showScore: z.boolean().default(true).catch(true),
+  showRankNumber: z.boolean().default(true).catch(true),
+  color: z.enum(themes).default('dark').catch('dark'),
+});
+
+// カウンター Counter
+// idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
+export const SettingsCounterSchema = z.object({
+  id: : z
+    .string()
+    .min(1)
+    .nullable()
+    .default(null)
+    .catch(null),                        // コンポーネント識別子
+    target: z.enum(['runCount','userCount','userName']).default('runCount').catch('runCount'),
+  label: z.string().default('Counter'),         // カウンターのラベル
+  value: z.number().default(0).catch(0),        // 現在のカウント値
+  color: z.enum(themes).default('primary'),     // DaisyUIテーマカラー
+  showLabel: z.boolean().default(true).catch(true), // ラベルを表示するか
+})
 
 
 // BaseSettingsSchema -> OmikujiBotSettingsとして再定義
-export const OmikujiBotSettingsSchema = z.object({
-  bubble: BubbleSettingsSchema,
-  toast: ToastSettingsSchema,
-  character: CharacterSettingsSchema,
+export const SettingsComponentsSchema = z.object({
+  bubble: SettingsBubbleSchema,
+  toast: SettingsToastSchema,
+  thumbnail: SettingsThumbnailSchema,
+  ranking:SettingsRankingSchema,
+  counter:SettingsCounterSchema,
 });
 
 // エディター
 // DisplaySettingsSchema.editor として再定義
-export const EditorSettingsSchema = z.object({
+export const SettingsEditorSchema = z.object({
   licenseKeyHash: z.string().default('').catch(''),
   daisyUiTheme: z.enum(themes).default('dark'),
 });
 
+
+export const DisplaySettingsSchema = z.object({
+  components:SettingsComponentsSchema,
+  editor:SettingsEditorSchema,
+  developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),
+})
 
  */
