@@ -78,8 +78,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
   { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
-  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * solo
