@@ -5,64 +5,68 @@ import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVarian
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
-// BaseSettingsSchema
-// 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
-export const BaseSettingsSchema = z.object({
-  /**
-   * フキダシ設定 commentBubble
-   */
-  // 表示サイズ
-  displaySize: z.enum(displaySize).default('md').catch('md'),
-  // フォントファミリー
-  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
-  // フキダシのアニメーション(開始・表示中)
-  bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
-  // フキダシのアニメーション(終了時)
-  bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
-  // フキダシの文字表示をアニメーションさせるか
-  bubbleTextAnimate: z.boolean().default(false).catch(false),
-  // 文字送りの速度
-  // 10-200 までで、Sliderを使って調整
-  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
+// フキダシ・キャラクター
+export const SettingsBubbleSchema = z.object({
+  showCharacters: z.array(z.array(z.string())).default([]).catch([]), // キャラクターのkeyを並べる(新設)
+  showCharacterFrame: z.boolean().default(true), // キャラクターにフレーム（円形の背景）を表示するか
+  characterSize: z.number().default(320).catch(320), // キャラクターの横幅(新設)
 
-  /**
-   * トースト設定 toastBubble
-   */
-  // トースト表示
-  showToasts: z.boolean().default(true).catch(true),
-  // トースト・サムネイルを右側に表示するか(falseで左側)
-  showToastsOnRight: z.boolean().default(true).catch(true),
-  // トースト表示時、キャラクターを表示するか
-  showToastsCharacter: z.boolean().default(false).catch(false),
-  // キャラクターサムネイルを表示するか
-  // TODO:showCharacterThumbnail -> showThumbnail に移行
-  showCharacterThumbnail: z.boolean().default(true).catch(true),
-
-  /**
-   * キャラクター設定 showCharacter
-   */
-
-  // キャラクターにフレーム（円形の背景）を表示するか
-  showCharacterFrame: z.boolean().default(true).catch(true),
-  // キャラクターを常時表示するか（コメント消失後も表示継続）
-  showCharacterPersistent: z.boolean().default(false).catch(false),
-  // キャラクター統合モード / 常時表示時やサムネイルは、Character のorder1のみを表示させる
-  bundleCharacters: z.boolean().default(false).catch(false),
-
-  /**
-   * エディター設定
-   */
-  // DaisyUiのテーマカラー
-  daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
+  fontFamily: z.enum(fontFamilyOptions).default('default'), // フォントファミリー
+  bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
+  bubbleMotionLeave: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(終了時)
+  bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
+  bubbleTextSound: z.string().optional(), // 文字送り時のサウンド
 })
 
-// 製品アクセスレベル
-export const componentSelectLabels = [
-  'omikujiBot', // おみくじBOT
-  'gameScript', // ゲームスクリプト
-] as const
-export type ComponentSelectType = (typeof componentSelectLabels)[number]
-export const ComponentSelectSchema = z.enum(componentSelectLabels)
+// トースト
+export const SettingsToastSchema = z.object({
+  showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
+})
+
+// サムネイル Thumbnail
+export const SettingsThumbnailSchema = z.object({
+  // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
+  showThumbnail: z.array(z.string()).default([]).catch([]),
+})
+
+// ランキング Ranking
+export const SettingsRankingSchema = z.object({
+  scriptId: z.string().min(1).nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
+  title: z.string().default('Ranking').catch('Ranking'), // タイトル
+  limit: z.number().default(10).catch(10), // 表示するランキング数
+  showScore: z.boolean().default(true).catch(true),
+  showRankNumber: z.boolean().default(true).catch(true),
+  color: z.enum(themes).default('dark').catch('dark'),
+})
+
+// カウンター Counter
+// idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
+export const SettingsCounterSchema = z.object({
+  id: z.string().min(1).nullable().default(null).catch(null), // コンポーネント識別子
+  target: z.enum(['runCount', 'userCount', 'userName']).default('runCount').catch('runCount'),
+  label: z.string().default('Counter'), // カウンターのラベル
+  value: z.number().default(0).catch(0), // 現在のカウント値
+  color: z.enum(themes).default('dark'), // DaisyUIテーマカラー
+  showLabel: z.boolean().default(true).catch(true), // ラベルを表示するか
+})
+
+// BaseSettingsSchema -> OmikujiBotSettingsとして再定義
+export const SettingsComponentsSchema = z.object({
+  bubble: SettingsBubbleSchema,
+  toast: SettingsToastSchema,
+  thumbnail: SettingsThumbnailSchema,
+  ranking: SettingsRankingSchema,
+  counter: SettingsCounterSchema,
+})
+
+// エディター
+// DisplaySettingsSchema.editor として再定義
+export const SettingsEditorSchema = z.object({
+  licenseKeyHash: z.string().default('').catch(''),
+  daisyUiTheme: z.enum(themes).default('dark'),
+})
 
 // 更新されたvisibilityスキーマ
 const visibilitySchema = z.object({
@@ -104,18 +108,6 @@ export type VisibilityKey = (typeof visibilityKeys)[number]
  * DeveloperSettingsSchema
  */
 export const DeveloperSettingsSchema = z.object({
-  // 起動時に表示するコンポーネント
-  startup: z
-    .object({
-      component: ComponentSelectSchema.default('omikujiBot'),
-      // defaultComponent === 'script' のときのみ利用
-      scriptKey: z.string().nullable().default(null).catch(null),
-    })
-    .catch({
-      component: 'omikujiBot',
-      scriptKey: null,
-    }),
-
   // 各表示・非表示機能
   visibility: visibilitySchema.catch(visibilitySchema.parse({})),
 })
@@ -123,9 +115,8 @@ export const DeveloperSettingsSchema = z.object({
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
-  // ライセンス(GOD-MODE / PRO / basic の3種)
-  licenseKeyHash: z.string().default('').catch(''),
-  base: BaseSettingsSchema.catch(BaseSettingsSchema.parse({})),
+  components: SettingsComponentsSchema,
+  editor: SettingsEditorSchema,
   developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),
 })
 
@@ -166,7 +157,7 @@ export const SettingsRankingSchema = z.object({
     .min(1)
     .nullable()
     .default(null)
-    .catch(null), // 対象のGameScript
+    .catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
   title: z.string().default('Ranking').catch('Ranking'), // タイトル
   limit: z.number().default(10).catch(10), // 表示するランキング数
   showScore: z.boolean().default(true).catch(true),
@@ -214,4 +205,64 @@ export const DisplaySettingsSchema = z.object({
   developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),
 })
 
+ */
+
+/**
+
+
+
+// BaseSettingsSchema
+// 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
+export const BaseSettingsSchema = z.object({
+
+   * フキダシ設定 commentBubble
+  // 表示サイズ
+  displaySize: z.enum(displaySize).default('md').catch('md'),
+  // フォントファミリー
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+  // フキダシのアニメーション(開始・表示中)
+  bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+  // フキダシのアニメーション(終了時)
+  bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+  // フキダシの文字表示をアニメーションさせるか
+  bubbleTextAnimate: z.boolean().default(false).catch(false),
+  // 文字送りの速度
+  // 10-200 までで、Sliderを使って調整
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50),
+
+   * トースト設定 toastBubble
+  // トースト表示
+  showToasts: z.boolean().default(true).catch(true),
+  // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsOnRight: z.boolean().default(true).catch(true),
+  // トースト表示時、キャラクターを表示するか
+  showToastsCharacter: z.boolean().default(false).catch(false),
+  // キャラクターサムネイルを表示するか
+  // TODO:showCharacterThumbnail -> showThumbnail に移行
+  showCharacterThumbnail: z.boolean().default(true).catch(true),
+
+   * キャラクター設定 showCharacter
+
+  // キャラクターにフレーム（円形の背景）を表示するか
+  showCharacterFrame: z.boolean().default(true).catch(true),
+  // キャラクターを常時表示するか（コメント消失後も表示継続）
+  showCharacterPersistent: z.boolean().default(false).catch(false),
+  // キャラクター統合モード / 常時表示時やサムネイルは、Character のorder1のみを表示させる
+  bundleCharacters: z.boolean().default(false).catch(false),
+
+   * エディター設定
+  // DaisyUiのテーマカラー
+  daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
+})
+
+// DisplaySettingsSchema
+// BOTの表示部分に関わる設定
+export const DisplaySettingsSchema = z.object({
+  // ライセンス(GOD-MODE / PRO / basic の3種)
+  licenseKeyHash: z.string().default('').catch(''),
+  base: BaseSettingsSchema.catch(BaseSettingsSchema.parse({})),
+  developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),
+})
+
+ * 
  */
