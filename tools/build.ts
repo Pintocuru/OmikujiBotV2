@@ -60,6 +60,7 @@ const buildTargets: BuildTarget[] = [
   { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   */
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * full
@@ -72,12 +73,6 @@ const buildTargets: BuildTarget[] = [
   { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
-  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
-  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * solo
