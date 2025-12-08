@@ -78,26 +78,42 @@ export const PostActionArraySchema = z
   })
 
 /**
+ * OmikujiItem 共通フィールド
+ */
+export const OmikujiItemCommonSchema = z.object({
+  weight: z.number().min(0).default(1).catch(1),
+  rank: z.number().min(0).default(1).catch(1),
+  criteria: CommentThresholdSchema.default(CommentThresholdSchema.parse({})).catch(CommentThresholdSchema.parse),
+})
+
+/**
  * PostActionSetSchema アクションセットデータ
  */
 export const PostActionRecordSchema = z.object({
   ...BaseRecordSchema.shape,
+  ...OmikujiItemCommonSchema.shape,
+  type: z.literal('postActions'),
   postActions: PostActionArraySchema,
+})
+
+/**
+ * OmikujiItem (gameScripts版)
+ */
+export const OmikujiGameScriptsSchema = z.object({
+  ...BaseRecordSchema.shape,
+  ...OmikujiItemCommonSchema.shape,
+  type: z.literal('gameScripts'),
+  gameScripts: z.object({
+    scriptId: z.union([z.string(), z.null()]).default(null).catch(null),
+    scriptParams: z.string().default('').catch(''),
+    characterKey: z.string().default('').catch(''),
+  }),
 })
 
 /**
  * OmikujiItem 抽選用重さ付きおみくじデータ
  */
-export const OmikujiItemSchema = z.object({
-  ...PostActionRecordSchema.shape,
-  weight: z.number().min(0).default(1).catch(1),
-  rank: z.number().min(0).default(1).catch(1), // 優先度。thresholdがある場合に効果を発揮
-  // TODO:timerやmetaの場合、どうするわけ？＞ないものは無視？
-  threshold: CommentThresholdSchema.default(CommentThresholdSchema.parse({})).catch(CommentThresholdSchema.parse({})), // 追加条件。defaultはnull,
-  scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
-  scriptParams: z.string().default('').catch(''), // スクリプトパラメータ
-  rankingScore: z.number().optional(),
-})
+export const OmikujiItemSchema = z.discriminatedUnion('type', [PostActionRecordSchema, OmikujiGameScriptsSchema])
 
 /**
  * OmikujiSet おみくじ

@@ -74,13 +74,6 @@ export class PlaceholderResolver {
   }
 
   /**
-   *
-   */
-  setVariableContext(rankingScore?: number, valuesLength?: number): void {
-    this.variableProcessor.setContext(rankingScore, valuesLength)
-  }
-
-  /**
    * ランダム抽選で値を選択
    */
   private selectValue(normalizedValues: PlaceholderValueType[]): PlaceholderValueType {

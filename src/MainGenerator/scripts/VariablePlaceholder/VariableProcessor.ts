@@ -6,20 +6,13 @@ import { PlaceholderExtractor } from './PlaceholderExtractor'
 
 /**
  * 変数プレースホルダー処理エンジン
- * {{rank}}, {{var}}, {{rand}}などの特殊プレースホルダーを処理
+ * {{var}}, {{rand}}などの特殊プレースホルダーを処理
  */
 export class VariablePlaceholderProcessor {
   private variableStore = new VariableStore()
   private expressionEvaluator = new ExpressionEvaluator(this.variableStore)
   private builtinProcessor = new BuiltinFunctionProcessor()
   private extractor = new PlaceholderExtractor()
-
-  /**
-   * コンテキストを設定
-   */
-  setContext(rankingScore?: number, valuesLength?: number): void {
-    this.builtinProcessor.setContext(rankingScore, valuesLength)
-  }
 
   /**
    * 変数をクリア（新しい解決サイクルの開始時に呼ぶ）
@@ -30,7 +23,7 @@ export class VariablePlaceholderProcessor {
 
   /**
    * テキスト内の変数プレースホルダーを処理
-   * 処理順序：var宣言 → その他の変数参照 → rank/rand
+   * 処理順序：var宣言 → その他の変数参照 → rand
    */
   process(text: string): string {
     let processedText = text
@@ -41,7 +34,7 @@ export class VariablePlaceholderProcessor {
     // 2. 変数参照を処理
     processedText = this.processVariableReferences(processedText)
 
-    // 3. rank, rand などの組み込み関数を処理
+    // 3. rand などの組み込み関数を処理
     processedText = this.builtinProcessor.process(processedText)
 
     return processedText

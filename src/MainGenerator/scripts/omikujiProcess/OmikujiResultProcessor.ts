@@ -25,9 +25,7 @@ export class OmikujiResultProcessor {
   process(omikujiItem: OmikujiItemType, scriptResult?: ScriptResult | null): BotMessage[] {
     try {
       // スクリプト結果の処理
-      if (scriptResult) {
-        this.processScriptResult(scriptResult)
-      }
+      if (scriptResult) this.processScriptResult(scriptResult)
 
       // おみくじアクションの処理
       const postActions = this.processOmikujiActions(omikujiItem)

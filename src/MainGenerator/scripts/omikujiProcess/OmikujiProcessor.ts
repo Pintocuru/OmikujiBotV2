@@ -83,11 +83,6 @@ export class OmikujiProcessor {
     // executorでプレースホルダーとスクリプトを設定
     this.executor.executeDirect(omikujiItem, comment)
 
-    // ランキング情報を設定
-    const rankingScore = omikujiItem.rankingScore
-    const totalItems = rule.omikuji.length
-    this.placeProcess.setVariableContext(rankingScore, totalItems)
-
     // スクリプトを実行（ルールにscriptIdがある場合）
     if (rule.ruleType === 'comments' && rule.scriptId && this.scriptManager) {
       const scriptResult = this.scriptManager.executeScript(comment, rule as CommentRuleType)

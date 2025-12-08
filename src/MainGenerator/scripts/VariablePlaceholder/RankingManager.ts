@@ -1,4 +1,5 @@
 // src\MainGenerator\scripts\RankingProcess\RankingManager.ts
+// ! 廃止(ランキング機能をGameScriptに移行)
 import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 

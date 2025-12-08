@@ -1,17 +1,17 @@
 // src/MainGenerator/script/RuleProcess/RuleCommentProcessor.ts
 import { BotMessage } from '@/types/'
 import { OmikujiDataType } from '@/types/'
-import { RuleCommentExecutor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentExecutor'
+import { UserCommentProcessor } from '@/MainGenerator/scripts/RuleProcess/UserCommentProcessor'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Comment } from '@onecomme.com/onesdk/'
 
 export class RuleCommentProcessor {
   private readonly timeThreshold = 15000 // これ以上経過した古いコメントは判定しない
-  private readonly userCommentProcessor: RuleCommentExecutor
+  private readonly userCommentProcessor: UserCommentProcessor
 
   constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
-    this.userCommentProcessor = new RuleCommentExecutor(omikujiData, scriptManager)
+    this.userCommentProcessor = new UserCommentProcessor(omikujiData, scriptManager)
   }
 
   /**
@@ -26,7 +26,7 @@ export class RuleCommentProcessor {
       // 除外条件をチェック（古いコメントまたはBotコメントは弾く）
       if (this.isOldComment(comment.data.timestamp) || this.isBotComment(comment.data.userId)) continue
 
-      const processedMessages = this.userCommentProcessor.generateBotMessages(comment)
+      const processedMessages = this.userCommentProcessor.process(comment)
       if (processedMessages) botMessages.push(...processedMessages)
     }
     return botMessages

@@ -36,8 +36,8 @@ export class GameScriptManager {
    * スクリプト実行
    */
   // TODO:rule からではなく、
-  executeScript(comment: Comment, rule: OmikujiItemType): ScriptResult | null {
-    const { scriptId } = rule
+  executeScript(comment: Comment, omikujiItem: OmikujiItemType): ScriptResult | null {
+    const { scriptId, scriptParams } = omikujiItem
 
     if (!scriptId) return null
 
@@ -50,7 +50,7 @@ export class GameScriptManager {
     try {
       // スクリプト実行
       // TODO: characterKey とparams(string)に変更
-      const result = scriptInstance.run(comment, rule.scriptParams || {})
+      const result = scriptInstance.run(comment, omikujiItem.scriptParams || {})
 
       // ランキングデータの更新
       const rankingList = scriptInstance.getGameState()?.userRankings

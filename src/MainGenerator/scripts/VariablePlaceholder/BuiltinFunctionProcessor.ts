@@ -4,30 +4,12 @@
  * 組み込み関数を処理するクラス
  */
 export class BuiltinFunctionProcessor {
-  private currentRank?: number
-  private valuesLength?: number
-
-  /**
-   * コンテキストを設定
-   */
-  setContext(rankingScore?: number, valuesLength?: number): void {
-    this.currentRank = rankingScore
-    this.valuesLength = valuesLength
-  }
-
   /**
    * 組み込み関数を処理
-   * {{rank}}, {{rand(min,max)}}, {{select(選択肢1,選択肢2,...)}}
+   *  {{rand(min,max)}}, {{select(選択肢1,選択肢2,...)}}
    */
   process(text: string): string {
     let processedText = text
-
-    // rank処理
-    if (this.currentRank !== undefined) {
-      processedText = processedText.replace(/\{\{rank\}\}/g, String(this.currentRank))
-    } else {
-      processedText = processedText.replace(/\{\{rank\}\}/g, '-')
-    }
 
     // rand関数処理
     processedText = processedText.replace(/\{\{rand\((\d+),(\d+)\)\}\}/g, (match, minStr, maxStr) => {

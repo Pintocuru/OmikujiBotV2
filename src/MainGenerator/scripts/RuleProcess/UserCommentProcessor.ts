@@ -1,4 +1,4 @@
-// src/MainGenerator/script/RuleProcess/RuleCommentExecutor.ts
+// src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
 import { BotMessage, CommentRuleType, OmikujiDataType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
@@ -12,7 +12,7 @@ interface RuleProcessResult {
   botMessages: BotMessage[]
 }
 
-export class RuleCommentExecutor {
+export class UserCommentProcessor {
   private readonly restrictionChecker: CommentRestrictionChecker
   private readonly omikujiProcessor: OmikujiProcessor
 
@@ -29,7 +29,7 @@ export class RuleCommentExecutor {
   /**
    * ユーザーコメントの処理
    */
-  generateBotMessages(comment: Comment): BotMessage[] {
+  process(comment: Comment): BotMessage[] {
     try {
       const { cooldownManager } = useAppStore()
       const sortedRules = this.getSortedEnabledRules()
