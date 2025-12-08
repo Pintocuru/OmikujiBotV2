@@ -21,23 +21,23 @@
 
   // Pinia Store
   const appStore = useAppStore()
-  const ruleProcessor = useRuleProcessor()
+  const { initializeApp, processComments, startTimers } = useRuleProcessor()
 
   // フォントの指定
-  const fontClass = computed(() => useFontFamily(appStore.data.displaySettings.base.fontFamily ?? 'default'))
+  const fontClass = computed(() => useFontFamily(appStore.data.displaySettings.global.fontFamily ?? 'default'))
 
   // 初期化処理
   onMounted(async () => {
-    const isInit = await ruleProcessor.initializeApp(appStore.userConfig, (comments) => {
+    const isInit = await initializeApp(appStore.userConfig, (comments) => {
       // コメント処理
-      const botMessages = ruleProcessor.processComments(comments)
+      const botMessages = processComments(comments)
       appStore.scheduleBotMessages(botMessages)
     })
     appStore.setInitialized(isInit)
 
     // タイマー開始
     if (isInit) {
-      ruleProcessor.startTimers((messages) => {
+      startTimers((messages) => {
         appStore.scheduleBotMessages(messages)
       })
     }

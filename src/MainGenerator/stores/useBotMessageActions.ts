@@ -10,6 +10,7 @@ export const useBotMessageActions = () => {
   const isInitialized = ref(true)
   const botMessages = ref<BotMessage[]>([])
 
+  // delaySeconds に合わせてメッセージを botMessages に入れる関数
   const scheduleBotMessages = (processedMessages: BotMessage[]) => {
     if (!processedMessages.length) return
 

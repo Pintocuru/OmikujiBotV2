@@ -47,6 +47,7 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
 }
 
 // 省略形（短い）ラベル
+// TODO:おみくじ発動回数を入れたい
 export const defaultPlaceholdersShortLabels: Record<DefaultPlaceholders, string> = {
   user: '[ユーザー名]',
   price: '[ギフト金額]',

@@ -6,8 +6,7 @@ import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVarian
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 import { soundList } from '@/Toolkit/sounds/soundMap'
-
-// 将来実装したいやつ
+import { CommentThresholdSchema } from '../OmikujiProcess/CommentThresholdSchema'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -92,6 +91,11 @@ export const PostActionRecordSchema = z.object({
 export const OmikujiItemSchema = z.object({
   ...PostActionRecordSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
+  rank: z.number().min(0).default(1).catch(1), // 優先度。thresholdがある場合に効果を発揮
+  // TODO:timerやmetaの場合、どうするわけ？＞ないものは無視？
+  threshold: CommentThresholdSchema.default(CommentThresholdSchema.parse({})).catch(CommentThresholdSchema.parse({})), // 追加条件。defaultはnull,
+  scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
+  scriptParams: z.string().default('').catch(''), // スクリプトパラメータ
   rankingScore: z.number().optional(),
 })
 

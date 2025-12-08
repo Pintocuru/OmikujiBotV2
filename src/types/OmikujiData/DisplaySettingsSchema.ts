@@ -5,13 +5,16 @@ import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVarian
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
+// ジェネレーター全体設定
+export const SettingsGlobalSchema = z.object({
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+})
+
 // フキダシ・キャラクター
 export const SettingsBubbleSchema = z.object({
   showCharacters: z.array(z.array(z.string())).default([]).catch([]), // キャラクターのkeyを並べる(新設)
   showCharacterFrame: z.boolean().default(true), // キャラクターにフレーム（円形の背景）を表示するか
   characterSize: z.number().default(320).catch(320), // キャラクターの横幅(新設)
-
-  fontFamily: z.enum(fontFamilyOptions).default('default'), // フォントファミリー
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleMotionLeave: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(終了時)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
@@ -115,8 +118,9 @@ export const DeveloperSettingsSchema = z.object({
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
-  components: SettingsComponentsSchema,
-  editor: SettingsEditorSchema,
+  global: SettingsGlobalSchema.catch(SettingsGlobalSchema.parse({})),
+  components: SettingsComponentsSchema.catch(SettingsComponentsSchema.parse({})),
+  editor: SettingsEditorSchema.catch(SettingsEditorSchema.parse({})),
   developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),
 })
 

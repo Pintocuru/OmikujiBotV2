@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\omikujiProcess\GameScriptManager.ts
-import { OmikujiDataType, CommentRuleType } from '@/types/'
+import { OmikujiDataType, CommentRuleType, OmikujiItemType } from '@/types/'
 import { ScriptClass, ScriptResult } from '@/types/GameScript/GameScriptTypes'
 import { GameState, UserStatsType } from '@/types/GameScript/GameScriptSchema'
 import { ScriptInstanceManager } from './ScriptInstanceManager'
@@ -35,7 +35,8 @@ export class GameScriptManager {
   /**
    * スクリプト実行
    */
-  executeScript(comment: Comment, rule: CommentRuleType): ScriptResult | null {
+  // TODO:rule からではなく、
+  executeScript(comment: Comment, rule: OmikujiItemType): ScriptResult | null {
     const { scriptId } = rule
 
     if (!scriptId) return null
@@ -48,6 +49,7 @@ export class GameScriptManager {
 
     try {
       // スクリプト実行
+      // TODO: characterKey とparams(string)に変更
       const result = scriptInstance.run(comment, rule.scriptParams || {})
 
       // ランキングデータの更新

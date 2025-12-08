@@ -10,11 +10,12 @@ import { normalizeData } from '@/Toolkit/migrations'
 import { useBotMessageActions } from './useBotMessageActions'
 
 // グローバルデータの初期化
-const migratedData = normalizeData(window.omikujiData)
+const { omikujiData: rawOmikujiData, userConfig: rawUserConfig } = window
+const migratedData = normalizeData(rawOmikujiData)
 const omikujiData = OmikujiDataSchema.parse(migratedData)
 
 // わんコメの購読用設定の初期化
-const userConfig: ConfigUserType = ConfigUserSchema.parse(window.userConfig)
+const userConfig: ConfigUserType = ConfigUserSchema.parse(rawUserConfig)
 
 export const useAppStore = defineStore('app', () => {
   // ref

@@ -13,7 +13,7 @@ export interface ScriptPreset extends PresetMetadata {
 // スクリプトのメイン実行クラス
 export interface ScriptClass<TSettings extends object = DefaultTypes> {
   setup(settings: TSettings, ruleId?: string): void // 初期化処理
-  run(comment: Comment, charaId: string, params: string): ScriptResult // メイン実行関数
+  run(comment: Comment, characterKey: string, params: string): ScriptResult // メイン実行関数
   sampleRun?(): string // エディター用サンプルゲーム関数
   getGameState(): GameState | null // gameState取得
   cleanup?(gameState: GameState): void // 終了処理（オプション）
