@@ -9,6 +9,7 @@ import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { RankingManager } from '@MainScripts/VariablePlaceholder/RankingManager'
 import { Comment } from '@onecomme.com/onesdk/'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 /**
  * おみくじ処理の統合クラス
@@ -29,7 +30,7 @@ export class OmikujiProcessor {
     const botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
 
     // 専門クラスの初期化
-    this.executor = new OmikujiExecutor(this.placeProcess, scriptManager)
+    this.executor = new OmikujiExecutor(this.placeProcess)
     this.resultProcessor = new OmikujiResultProcessor(
       omikujiData.actionSets,
       this.placeProcess,
@@ -45,7 +46,6 @@ export class OmikujiProcessor {
     const omikujiItem = this.executor.executeWithRule(comment, rule)
     if (!omikujiItem) return []
 
-    // スクリプト結果は executor 内で既に処理済み
     return this.resultProcessor.process(omikujiItem)
   }
 
@@ -83,14 +83,8 @@ export class OmikujiProcessor {
     // executorでプレースホルダーとスクリプトを設定
     this.executor.executeDirect(omikujiItem, comment)
 
-    // スクリプトを実行（ルールにscriptIdがある場合）
-    if (rule.ruleType === 'comments' && rule.scriptId && this.scriptManager) {
-      const scriptResult = this.scriptManager.executeScript(comment, rule as CommentRuleType)
-      return this.resultProcessor.process(omikujiItem, scriptResult)
-    }
-
-    // スクリプトなしで結果を処理
-    return this.resultProcessor.process(omikujiItem)
+    // omikujiItem を投稿
+    return this.resultProcessor.process(omikujiItem, comment)
   }
 
   // ==========================================

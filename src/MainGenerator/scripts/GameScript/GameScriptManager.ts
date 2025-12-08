@@ -36,8 +36,9 @@ export class GameScriptManager {
    * スクリプト実行
    */
   // TODO:rule からではなく、
-  executeScript(comment: Comment, omikujiItem: OmikujiItemType): ScriptResult | null {
-    const { scriptId, scriptParams } = omikujiItem
+  executeScript(omikujiItem: OmikujiItemType, comment?: Comment): ScriptResult | null {
+    if (omikujiItem.type !== 'gameScripts') return null
+    const { scriptId, scriptParams, characterKey } = omikujiItem.gameScripts
 
     if (!scriptId) return null
 
@@ -49,15 +50,16 @@ export class GameScriptManager {
 
     try {
       // スクリプト実行
-      // TODO: characterKey とparams(string)に変更
-      const result = scriptInstance.run(comment, omikujiItem.scriptParams || {})
+      const result = scriptInstance.run(scriptParams, characterKey, comment)
 
-      // ランキングデータの更新
-      const rankingList = scriptInstance.getGameState()?.userRankings
-      if (rankingList) {
-        const { userId } = comment.data
-        this.rankingDataManager.updateRankingData(scriptId, rankingList)
-        this.gameStateManager.updateGameState(scriptId, rankingList, userId)
+      if (comment) {
+        // ユーザーデータがある場合、ランキングデータの更新
+        const rankingList = scriptInstance.getGameState()?.userRankings
+        if (rankingList) {
+          const { userId } = comment.data
+          this.rankingDataManager.updateRankingData(scriptId, rankingList)
+          this.gameStateManager.updateGameState(scriptId, rankingList, userId)
+        }
       }
 
       return result

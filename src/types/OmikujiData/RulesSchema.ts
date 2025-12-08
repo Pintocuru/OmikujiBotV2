@@ -33,8 +33,6 @@ export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
  */
 export const BaseRuleSchema = z.object({
   ...BaseRecordSchema.shape,
-  scriptId: z.union([z.string(), z.null()]).default(null).catch(null), // 関連するスクリプトID
-  scriptParams: z.record(z.string(), z.any()).nullable().default(null).catch(null), // スクリプトパラメータ
   omikuji: OmikujiSetSchema,
 })
 

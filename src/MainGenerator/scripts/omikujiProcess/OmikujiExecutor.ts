@@ -18,10 +18,7 @@ import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 export class OmikujiExecutor {
   private readonly defaultManager = new DefaultPlaceholderService()
 
-  constructor(
-    private readonly placeProcess: PlaceholderProcessor,
-    private readonly scriptManager?: GameScriptManager
-  ) {}
+  constructor(private readonly placeProcess: PlaceholderProcessor) {}
 
   /**
    * おみくじの抽選と実行（コメント＋ルール指定）
@@ -37,9 +34,6 @@ export class OmikujiExecutor {
 
       // デフォルトプレースホルダー設定
       this.setupPlaceholders(comment)
-
-      // スクリプト実行
-      this.executeScript(comment, omikujiItem)
 
       return omikujiItem
     } catch (error) {
@@ -62,30 +56,5 @@ export class OmikujiExecutor {
   private setupPlaceholders(comment: Comment): void {
     const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
     this.placeProcess.updateResolvedValues(defaultPlaceholders)
-  }
-
-  /**
-   * スクリプトの実行
-   */
-  private executeScript(comment: Comment, omikujiItem: OmikujiItemType): ScriptResult | null {
-    // ルールが有効なスクリプトを持っているかチェック
-    const shouldExecute = !!omikujiItem.scriptId && this.scriptManager
-    if (!shouldExecute) return null
-
-    // Script稼働
-    const scriptResult = this.scriptManager.executeScript(comment, omikujiItem)
-
-    // スクリプト結果のプレースホルダーを追加
-    if (scriptResult) {
-      // scriptのpostActionsを投稿する
-      const appStore = useAppStore()
-      const characters = appStore.characterCollector.getUsedCharacterData()
-      if (characters) {
-        const postMessage = new PostMessage(characters)
-        postMessage.post(scriptResult.postActions)
-      }
-    }
-
-    return scriptResult
   }
 }

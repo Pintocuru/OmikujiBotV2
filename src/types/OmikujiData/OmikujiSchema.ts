@@ -143,6 +143,7 @@ export const PostActionSetSchema = z.record(z.string(), PostActionRecordSchema).
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 export type PostActionRecordType = z.infer<typeof PostActionRecordSchema>
+export type OmikujiGameScriptsType = z.infer<typeof OmikujiGameScriptsSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
