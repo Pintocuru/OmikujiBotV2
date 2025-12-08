@@ -1,5 +1,4 @@
 // src/MainGenerator/script/PostMessage.ts
-// 250709_エイリアス変更
 import { PostActionType, PostActionWordPartyType, CharacterType } from '@/types/'
 import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceManager } from './ServiceManager'
@@ -22,70 +21,68 @@ export class PostMessage {
   }
 
   /**
-   * 複数の投稿アクションを順次実行
+   * 複数の投稿アクションを並列実行
    */
   async post(posts: (PostActionType | PostActionWordPartyType)[]): Promise<void> {
     try {
-      // 投稿開始時に一度だけサービス情報を更新
       const services = await this.serviceAPI.getServices()
       this.serviceManager.updateServices(services ?? [])
 
-      await Promise.all(
-        posts.map(async (post) => {
-          const chara = this.getCharacterFromPost(post)
-          await this.processPost(post, chara)
-        })
-      )
+      await Promise.all(posts.map((post) => this.processPost(post)))
     } catch (error) {
       console.error('メッセージ投稿処理に失敗しました:', error)
       throw error
     }
   }
 
-  private getCharacterFromPost(post: PostActionType | PostActionWordPartyType): CharacterType | undefined {
-    if (!('characterKey' in post)) return undefined
-
-    const { characterKey } = post
-    return characterKey && characterKey !== '' ? this.charactersMap[characterKey] : undefined
-  }
-
-  private async processPost(post: PostActionType | PostActionWordPartyType, chara?: CharacterType): Promise<void> {
+  private async processPost(post: PostActionType): Promise<void> {
     const { delaySeconds = 0 } = post
 
-    const shouldPostMessage =
-      'messageContent' in post && post.messageContent !== undefined && post.messageContent !== ''
-
-    const shouldPostWordParty = post.wordParty !== undefined && post.wordParty !== ''
-
-    // frameId があり、枠に同じidがないなら、新しく枠を作成
-    if (chara && chara.frameId !== null) {
-      await this.serviceManager.ensureServiceExists(chara)
-    }
-
-    if (shouldPostMessage) {
-      await this.postMessage(post as PostActionType, chara, delaySeconds)
-    }
-
-    if (shouldPostWordParty && post.wordParty) {
+    // WordPartyの投稿
+    if (post.actionType === 'wordParty') {
       postWordParty(post.wordParty, delaySeconds)
+      return
+    }
+
+    // フキダシの投稿
+    if (post.actionType === 'message') {
+      const chara = this.getCharacter(post.characterKey)
+
+      if (chara && chara?.frameId !== null) {
+        await this.serviceManager.ensureServiceExists(chara)
+      }
+
+      if (post.message.bubble) {
+        this.postMessage(post.message.bubble, chara, delaySeconds)
+      }
     }
   }
 
-  private async postMessage(
-    post: PostActionType,
-    chara: CharacterType | undefined,
-    delaySeconds: number
-  ): Promise<void> {
-    if (chara && chara.displayOption.isOneCommePost && chara.frameId !== '') {
-      try {
-        const request = this.commentRequestBuilder.createCommentRequest(post, chara)
-        postComment(request, delaySeconds)
-      } catch (error) {
-        ConsolePost('error', `キャラクターコメント投稿エラー: ${chara.name}`, error)
-      }
-    } else if (chara && chara.displayOption.isVoice) {
-      // frameId がない、または isOneCommePost が false で、isVoiceがtrue の場合はスピーチで投稿
-      postSpeech(post.messageContent, delaySeconds)
+  private getCharacter(characterKey: string): CharacterType | undefined {
+    if (!characterKey || characterKey === '') return undefined
+    return this.charactersMap[characterKey]
+  }
+
+  private postMessage(bubble: string, chara: CharacterType | undefined, delaySeconds: number): void {
+    if (!chara) return
+
+    if (this.shouldPostAsComment(chara)) {
+      this.postAsComment(bubble, chara, delaySeconds)
+    } else if (chara.displayOption.isVoice) {
+      postSpeech(bubble, delaySeconds)
+    }
+  }
+
+  private shouldPostAsComment(chara: CharacterType): boolean {
+    return chara.displayOption.isOneCommePost && chara.frameId !== ''
+  }
+
+  private postAsComment(bubble: string, chara: CharacterType, delaySeconds: number): void {
+    try {
+      const request = this.commentRequestBuilder.createCommentRequest(bubble, chara)
+      postComment(request, delaySeconds)
+    } catch (error) {
+      ConsolePost('error', `キャラクターコメント投稿エラー: ${chara.name}`, error)
     }
   }
 }

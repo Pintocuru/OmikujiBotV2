@@ -11,7 +11,7 @@ export class CommentRequestBuilder {
   /**
    * わんコメ投稿用のリクエストオブジェクトを作成
    */
-  createCommentRequest(post: PostActionType, chara: CharacterType): SendCommentType {
+  createCommentRequest(bubble: string, chara: CharacterType): SendCommentType {
     this.validateCharacter(chara)
 
     return SendCommentSchema.parse({
@@ -19,7 +19,7 @@ export class CommentRequestBuilder {
       comment: {
         userId: POST_SETTINGS.botUserId,
         name: chara.displayName || 'おみくじBOT',
-        comment: post.messageContent,
+        comment: bubble,
         profileImage: chara.imageBase64,
         badges: [{ url: botIcon, label: 'おみくじBOT' }],
         nickname: ' ', // おみくじBOTでは名前を呼ばない

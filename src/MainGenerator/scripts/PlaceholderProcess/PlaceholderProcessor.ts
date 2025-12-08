@@ -34,12 +34,32 @@ export class PlaceholderProcessor {
    * 各プレースホルダーは毎回新しく解決される
    */
   processPostActions(postActions: PostActionType[]): PostActionType[] {
-    return postActions.map((action) => ({
-      ...action,
-      messageContent: this.processText(action.messageContent),
-      messageToast: this.processText(action.messageToast),
-      wordParty: this.processText(action.wordParty),
-    }))
+    return postActions.map((action) => {
+      // actionType: 'message' の場合、messageオブジェクト内の各プロパティを処理
+      if (action.actionType === 'message') {
+        return {
+          ...action,
+          message: {
+            ...action.message,
+            bubble: this.processText(action.message.bubble),
+            toast: this.processText(action.message.toast),
+            banner: this.processText(action.message.banner),
+            dialog: this.processText(action.message.dialog),
+          },
+        }
+      }
+
+      // actionType: 'wordParty' の場合、wordPartyプロパティを処理
+      if (action.actionType === 'wordParty') {
+        return {
+          ...action,
+          wordParty: this.processText(action.wordParty),
+        }
+      }
+
+      // その他のactionType（sound, actionSetなど）はそのまま返す
+      return action
+    })
   }
 
   /**
@@ -75,9 +95,16 @@ export class PlaceholderProcessor {
     const allIds = new Set<string>()
 
     postActions.forEach((action) => {
-      this.addPlaceholderIds(allIds, action.messageContent)
-      this.addPlaceholderIds(allIds, action.messageToast)
-      this.addPlaceholderIds(allIds, action.wordParty)
+      if (action.actionType === 'message') {
+        // messageオブジェクト内のすべてのテキストフィールドから収集
+        this.addPlaceholderIds(allIds, action.message.bubble)
+        this.addPlaceholderIds(allIds, action.message.toast)
+        this.addPlaceholderIds(allIds, action.message.banner)
+        this.addPlaceholderIds(allIds, action.message.dialog)
+      } else if (action.actionType === 'wordParty') {
+        // wordPartyから収集
+        this.addPlaceholderIds(allIds, action.wordParty)
+      }
     })
 
     // 依存関係も含めて収集

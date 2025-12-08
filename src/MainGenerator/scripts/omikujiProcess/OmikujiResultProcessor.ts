@@ -6,7 +6,6 @@ import {
   PostActionRecordType,
   PostActionType,
 } from '@/types/OmikujiData/OmikujiSchema'
-import { ScriptResult } from '@/types/GameScript/GameScriptTypes'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'

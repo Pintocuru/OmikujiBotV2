@@ -27,7 +27,7 @@ export const PostActionMessageSchema = z.object({
   sound: z.enum(soundList).optional().catch(undefined),
   message: z
     .object({
-      hukidasi: z.string().optional().catch(undefined), // 吹き出し用
+      bubble: z.string().optional().catch(undefined), // フキダシ(bubble)用
       toast: z.string().optional().catch(undefined), // トースト用
       banner: z.string().optional().catch(undefined), // 例: バナー用
       dialog: z.string().optional().catch(undefined), // 例: ダイアログ用
