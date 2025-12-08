@@ -2,13 +2,8 @@
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { BotMessageGenerator } from '../BotCharacter/BotMessageGenerator'
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
-import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
-import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
-import { ServiceMeta } from '@onecomme.com/onesdk/'
-import { ServiceMetaCondition } from '@shared/types'
+import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
+import { GameScriptManager } from '../GameScript/GameScriptManager'
 
 interface TimerState {
   timerId: number
@@ -18,19 +13,13 @@ interface TimerState {
 }
 
 export class RuleTimerProcessor {
-  private serviceMeta: ServiceMeta | null = null
   private readonly timerRules: Record<string, TimerRuleType>
   private readonly activeTimers = new Map<string, TimerState>()
-  private readonly messageHandler: PostMessage
-  private readonly placeProcess: PlaceholderProcessor
-  private readonly botMessageGenerator: BotMessageGenerator
+  private readonly omikujiProcessor: OmikujiProcessor
 
-  constructor(omikujiData: OmikujiDataType) {
+  constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
     this.timerRules = omikujiData.timers
-    this.messageHandler = new PostMessage(omikujiData.characters)
-    this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
-    this.botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
-    this.initializeMetaFetcher()
+    this.omikujiProcessor = new OmikujiProcessor(omikujiData, scriptManager)
   }
 
   /**
@@ -95,40 +84,11 @@ export class RuleTimerProcessor {
    */
   private executeTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessage[]) => void): void {
     try {
-      const messages = this.processTimerRule(rule)
-      onTimerTrigger(messages)
+      const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
+      onTimerTrigger(omikujiMessages)
     } catch (error) {
       console.error(`Timer ${rule.key} execution error:`, error)
     }
-  }
-
-  /**
-   * タイマールールを処理してBotMessageの配列を生成
-   */
-  private processTimerRule(rule: TimerRuleType): BotMessage[] {
-    const omikujiItem = drawOmikuji(rule.omikuji)
-    if (!omikujiItem) return []
-
-    this.setupDefaultPlaceholders()
-
-    try {
-      const postActions = this.placeProcess.processPostActions(omikujiItem.postActions)
-      this.messageHandler.post(postActions)
-      return this.botMessageGenerator.generateMessages(postActions)
-    } finally {
-      this.placeProcess.clearResolvedValues()
-    }
-  }
-
-  /**
-   * デフォルトのプレースホルダー情報を設定
-   */
-  private setupDefaultPlaceholders(): void {
-    const defaultPlaceholders: Record<ServiceMetaCondition, string | number> = {
-      viewer: this.serviceMeta?.viewer ?? 0,
-      upVote: this.serviceMeta?.upVote ?? 0,
-    }
-    this.placeProcess.updateResolvedValues(defaultPlaceholders)
   }
 
   /**
@@ -180,14 +140,5 @@ export class RuleTimerProcessor {
    */
   getTimerInfo(ruleId: string): TimerState | undefined {
     return this.activeTimers.get(ruleId)
-  }
-
-  /**
-   * メタデータフェッチャーの初期化とポーリング開始
-   */
-  private initializeMetaFetcher(): void {
-    createGetMetas().fetchMeta((meta) => {
-      this.serviceMeta = meta
-    })
   }
 }

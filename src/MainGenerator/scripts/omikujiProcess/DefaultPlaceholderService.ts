@@ -46,15 +46,27 @@ export class DefaultPlaceholderService {
   /**
    * comment用デフォルトのプレースホルダー情報を設定
    */
-  getDefaultComments(comment: Comment): Record<DefaultPlaceholders, string | number> {
+  getDefaultComments(comment?: Comment) {
     const userList = Object.values(this.userVisits ?? {}).flatMap((v) => Object.values(v.user))
     const commenter = userList.length
     const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].name : ''
 
+    const base = this.getDefaultPlaceholders()
+
     // TODO:おみくじ回数を追加すべきか？
 
+    // --- Comment がない場合は base に Comment依存の値を付けず返す ---
+    if (!comment) {
+      return {
+        ...base,
+        commenter,
+        winner,
+      }
+    }
+
+    // --- Comment がある場合は full スキーマで parse ---
     return DefaultPlaceholdersCommentSchema.parse({
-      ...this.getDefaultPlaceholders(),
+      ...base,
       user: comment.data.displayName || comment.data.name,
       price: (comment.data as { price?: number })?.price,
       lc: comment.meta?.lc,

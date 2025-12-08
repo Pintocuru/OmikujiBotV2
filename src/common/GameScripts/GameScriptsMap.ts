@@ -7,12 +7,12 @@ import GoogolClover from './scripts/GoogolClover/main'
 import MultiplyBonanza from './scripts/MultiplyBonanza/main'
 
 // gameScriptMap
-export const gameScriptMap: Record<string, ScriptPreset<any, any, any>> = {
-  [BomberSpin.key]: BomberSpin,
+export const gameScriptMap: Record<string, ScriptPreset> = {
   [GouseiSuika.key]: GouseiSuika,
+  [BomberSpin.key]: BomberSpin,
   [DwarfBomb.key]: DwarfBomb,
-  [GoogolClover.key]: GoogolClover,
   [MultiplyBonanza.key]: MultiplyBonanza,
+  [GoogolClover.key]: GoogolClover,
   // GachaOmikuji,
   // StealEmAll
 } as const

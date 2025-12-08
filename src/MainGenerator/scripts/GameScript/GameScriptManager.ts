@@ -6,6 +6,7 @@ import { ScriptInstanceManager } from './ScriptInstanceManager'
 import { GameStateManager } from './GameStateManager'
 import { RankingDataManager } from './RankingDataManager'
 import { Comment } from '@onecomme.com/onesdk/'
+import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
 
 export class GameScriptManager {
   private readonly scriptInstanceManager: ScriptInstanceManager
@@ -24,7 +25,7 @@ export class GameScriptManager {
    * 全体の初期化
    */
   private initializeAll(): void {
-    const scriptIds = this.scriptInstanceManager.getAvailableScriptIds()
+    const scriptIds = Object.keys(gameScriptMap)
 
     // 各マネージャーの初期化
     this.scriptInstanceManager.initializeScripts()
@@ -125,9 +126,5 @@ export class GameScriptManager {
 
   getActiveScripts(): string[] {
     return this.scriptInstanceManager.getActiveScripts()
-  }
-
-  getAvailableScriptIds(): string[] {
-    return this.scriptInstanceManager.getAvailableScriptIds()
   }
 }

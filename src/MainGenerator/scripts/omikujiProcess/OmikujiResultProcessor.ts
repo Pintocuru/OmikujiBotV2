@@ -1,5 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { OmikujiDataType } from '@/types'
 import {
   OmikujiGameScriptsType,
   OmikujiItemType,
@@ -11,19 +12,25 @@ import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { ActionSetExpander } from './ActionSetExpander'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { Comment } from '@onecomme.com/onesdk/'
+import { GameScriptManager } from '../GameScript/GameScriptManager'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
  */
 export class OmikujiResultProcessor {
+  private readonly postMessage: PostMessage
+  private readonly actionSets: Record<string, PostActionRecordType>
+
   constructor(
-    private readonly actionSets: Record<string, PostActionRecordType>,
+    omikujiData: OmikujiDataType,
     private readonly placeProcess: PlaceholderProcessor,
-    private readonly postMessage: PostMessage,
-    private readonly botMessageGenerator: BotMessageGenerator
-  ) {}
+    private readonly botMessageGenerator: BotMessageGenerator,
+    private readonly scriptManager: GameScriptManager
+  ) {
+    this.actionSets = omikujiData.actionSets
+    this.postMessage = new PostMessage(omikujiData.characters)
+  }
 
   /**
    * おみくじ結果を処理してBotMessageを生成
@@ -67,14 +74,12 @@ export class OmikujiResultProcessor {
    * スクリプトの実行
    */
   private executeScript(omikujiItem: OmikujiGameScriptsType, comment?: Comment): PostActionType[] | null {
-    const appStore = useAppStore()
-
     // ルールが有効なスクリプトを持っているかチェック
-    const shouldExecute = !!omikujiItem.gameScripts.scriptId && appStore.scriptManager
+    const shouldExecute = !!omikujiItem.gameScripts.scriptId && this.scriptManager
     if (!shouldExecute) return null
 
     // Script稼働
-    const scriptResult = appStore.scriptManager.executeScript(omikujiItem, comment)
+    const scriptResult = this.scriptManager.executeScript(omikujiItem, comment)
     return scriptResult ? scriptResult.postActions : null
   }
 }

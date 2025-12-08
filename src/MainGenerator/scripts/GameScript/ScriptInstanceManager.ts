@@ -1,6 +1,6 @@
 // src/MainGenerator/utils/processors/GameScript/ScriptInstanceManager.ts
 import { OmikujiDataType, ScriptClass } from '@/types/'
-import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
+import { gameScriptMap, scriptGameKeys } from '@/common/GameScripts/GameScriptsMap'
 
 export class ScriptInstanceManager {
   private readonly scriptInstances: Record<string, ScriptClass> = {}
@@ -15,7 +15,7 @@ export class ScriptInstanceManager {
    */
   initializeScripts(): void {
     try {
-      for (const scriptId of this.getAvailableScriptIds()) {
+      for (const scriptId of scriptGameKeys) {
         if (this.scriptInstances[scriptId]) continue
 
         const scriptInstance = gameScriptMap[scriptId].execute
@@ -25,21 +25,6 @@ export class ScriptInstanceManager {
     } catch (error) {
       console.error('スクリプト初期化エラー:', error)
     }
-  }
-
-  /**
-   * omikujiData 内で使用されている有効な scriptId の一覧を返す
-   */
-  getAvailableScriptIds(): string[] {
-    const scriptIds = new Set<string>()
-
-    Object.values(this.omikujiData.comments).forEach((comment) => {
-      if (comment.scriptId && gameScriptMap[comment.scriptId]) {
-        scriptIds.add(comment.scriptId)
-      }
-    })
-
-    return Array.from(scriptIds)
   }
 
   /**

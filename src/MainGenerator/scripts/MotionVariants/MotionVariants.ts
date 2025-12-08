@@ -26,7 +26,6 @@ export const motionLabel = [
   'rubberBand', // 表示時のゴム的変形
   'jello', // 表示時のゼリー的変形
   'fade', // フェード
-  'pulse', // ! TODO: v2では削除
 ] as const
 export type MotionType = (typeof motionLabel)[number]
 

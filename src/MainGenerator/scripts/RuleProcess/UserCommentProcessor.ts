@@ -77,7 +77,7 @@ export class UserCommentProcessor {
     }
 
     // 3. おみくじ実行
-    const omikujiMessages = this.omikujiProcessor.executeOmikuji(comment, rule)
+    const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji, comment)
 
     // 4. ユーザー情報の更新
     cooldownManager.updateUserId(comment.data.userId, rule.key, omikujiMessages.map((m) => m.comment).join(','))

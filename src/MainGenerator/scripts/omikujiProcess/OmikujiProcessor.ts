@@ -1,5 +1,13 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { CommentRuleType, OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType, RuleType } from '@/types'
+import {
+  CommentRuleType,
+  OmikujiDataType,
+  OmikujiItemSchema,
+  OmikujiItemType,
+  OmikujiSetType,
+  PostActionType,
+  RuleType,
+} from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
@@ -20,30 +28,26 @@ export class OmikujiProcessor {
   private readonly executor: OmikujiExecutor
   private readonly resultProcessor: OmikujiResultProcessor
 
-  constructor(
-    omikujiData: OmikujiDataType,
-    private readonly scriptManager?: GameScriptManager
-  ) {
+  constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
     // 依存関係の初期化
     this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
-    const postMessage = new PostMessage(omikujiData.characters)
     const botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
 
     // 専門クラスの初期化
     this.executor = new OmikujiExecutor(this.placeProcess)
     this.resultProcessor = new OmikujiResultProcessor(
-      omikujiData.actionSets,
+      omikujiData,
       this.placeProcess,
-      postMessage,
-      botMessageGenerator
+      botMessageGenerator,
+      scriptManager
     )
   }
 
   /**
    * おみくじの実行（コメント＋ルール指定）
    */
-  executeOmikuji(comment: Comment, rule: RuleType): BotMessage[] {
-    const omikujiItem = this.executor.executeWithRule(comment, rule)
+  executeOmikuji(omikujiSet: OmikujiSetType, comment?: Comment): BotMessage[] {
+    const omikujiItem = this.executor.executeWithRule(omikujiSet, comment)
     if (!omikujiItem) return []
 
     return this.resultProcessor.process(omikujiItem)
