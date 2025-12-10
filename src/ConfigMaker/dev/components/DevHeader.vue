@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\dev\DevHeader.vue -->
+<!-- src\ConfigMaker\dev\DevHeader.vue -->
 <template>
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-2">
