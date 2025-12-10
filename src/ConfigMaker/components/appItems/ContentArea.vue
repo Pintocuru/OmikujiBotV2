@@ -15,7 +15,7 @@
       <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
 
       <!-- コメントルール -->
-      <CommentRuleEditor v-if="selectedCategory === 'comments'" />
+      <CommentRuleEditor v-else-if="selectedCategory === 'comments'" />
 
       <!-- タイマールール -->
       <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
@@ -29,14 +29,12 @@
       <!-- キャラクター設定 -->
       <CharacterEditor v-else-if="selectedCategory === 'characters'" />
 
-      <!-- スクリプト設定 -->
-      <ScriptSettingsEditor v-else-if="selectedCategory === 'scriptSettings'" />
-
       <!-- 表示設定 -->
       <DisplaySettingsEditor v-else-if="selectedCategory === 'displaySettings'" />
 
-      <!-- WordParty設定 -->
-      <WordPartySettingsEditor v-else-if="selectedCategory === 'wordPartySettings'" />
+      <!-- WordParty設定 
+      <WordPartySettingsEditor v-else-if="selectedCategory === 'wordPartySettings'" />       
+      -->
 
       <!-- Meta設定 -->
       <PackageMetaEditor v-else-if="selectedCategory === 'meta'" />

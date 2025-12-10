@@ -12,7 +12,7 @@ export * from './GameComponent/GameComponentSchema'
 export * from './GameComponent/GameRankingTypes'
 
 export * from './GameScript/GameScriptSchema'
-export * from './GameScript/GameScriptSettingsSchema'
+// export * from './GameScript/GameScriptSettingsSchema'
 export * from './GameScript/GameScriptTypes'
 
 export * from './OmikujiData/CategoryType'

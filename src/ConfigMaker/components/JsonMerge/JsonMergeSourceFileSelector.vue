@@ -8,11 +8,14 @@
         @change="handleSourceFileChange"
         class="select select-bordered w-full"
       >
-        <option value="">ファイルを選択してください</option>
+        <option disabled value="">ファイルを選択してください</option>
         <option v-for="file in jsonFiles" :key="file" :value="file">
           {{ file }}
         </option>
       </select>
+
+      <!-- エラーメッセージ -->
+      <p v-if="!currentMergeItem.sourceFile" class="text-red-500 mt-2">入力されてません</p>
     </SettingItem>
 
     <!-- キーサフィックス -->

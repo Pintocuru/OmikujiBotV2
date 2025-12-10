@@ -58,9 +58,9 @@ export const RecordCategorySchemaMap = {
  */
 export const settingsCategoryLabel = [
   'jsonMerge',
-  'scriptSettings',
+  //  'scriptSettings',
   'displaySettings',
-  'wordPartySettings',
+  //  'wordPartySettings',
   'meta',
 ] as const
 export type SettingsCategoryType = (typeof settingsCategoryLabel)[number]
@@ -103,20 +103,10 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     description: 'BOTメッセージのキャラクターや吹き出し・トーストの色を設定します',
     icon: Users,
   },
-  scriptSettings: {
-    label: 'ゲームスクリプト', // 特殊なプレースホルダーを生成するための初期設定
-    description: 'ゲームのモードや、ランキングの上限回数等の初期設定を行います',
-    icon: Settings,
-  },
   displaySettings: {
     label: '表示設定', // BOTメッセージやランキングの表示・非表示
     description: 'メッセージの文字の大きさや、トーストの表示設定を行います',
     icon: Monitor,
-  },
-  wordPartySettings: {
-    label: 'WordPartyリスト', // コメント・タイマーの設定時に補助的に使える
-    description: 'コメントやタイマー設定時に利用できる、WordPartyの発動リストを管理します',
-    icon: ListChecks,
   },
   meta: {
     label: 'Metaタグ',
@@ -124,3 +114,18 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     icon: Tags,
   },
 }
+
+/**
+
+  scriptSettings: {
+    label: 'ゲームスクリプト', // 特殊なプレースホルダーを生成するための初期設定
+    description: 'ゲームのモードや、ランキングの上限回数等の初期設定を行います',
+    icon: Settings,
+  },
+  wordPartySettings: {
+    label: 'WordPartyリスト', // コメント・タイマーの設定時に補助的に使える
+    description: 'コメントやタイマー設定時に利用できる、WordPartyの発動リストを管理します',
+    icon: ListChecks,
+  },
+
+*/

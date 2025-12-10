@@ -81,27 +81,27 @@ const visibilitySchema = z.object({
   characters: AccessLevelSchema.default('basic').catch('basic'), // characters
   // コンポーネントの特定の箇所
   characterVisible: AccessLevelSchema.default('basic').catch('basic'),
-  wordPartyLoading: AccessLevelSchema.default('internal').catch('internal'),
+  //wordPartyLoading: AccessLevelSchema.default('internal').catch('internal'),
   licenseVisible: AccessLevelSchema.default('basic').catch('basic'),
   // ゲームスクリプト
-  gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
+  //gameScriptSettings: AccessLevelSchema.default('basic').catch('basic'),
   gameScripts: z.array(z.string()).default([]).catch([]), //
   // ツール系
-  wordPartySettings: AccessLevelSchema.default('basic').catch('basic'),
+  //wordPartySettings: AccessLevelSchema.default('basic').catch('basic'),
   jsonMergeSettings: AccessLevelSchema.default('basic').catch('basic'),
 })
 export const visibilityKeys = [
+  'jsonMergeSettings',
   'comments',
   'timers',
   'actionSets',
   'placeholders',
   'characters',
   'characterVisible',
-  'wordPartyLoading',
+  //'wordPartyLoading',
   'licenseVisible',
-  'gameScriptSettings',
-  'wordPartySettings',
-  'jsonMergeSettings',
+  //  'gameScriptSettings',
+  //  'wordPartySettings',
   'gameScripts',
 ] as const
 

@@ -7,53 +7,39 @@
     </div>
 
     <div class="grid grid-cols-2 gap-3">
-      <!-- 元キャラキー（入力） -->
+      <!-- 元キャラキー -->
       <SettingItem label="元キャラキー">
-        <input
-          type="text"
-          :value="currentRemap.fromCharacterKey"
-          @input="updateField('fromCharacterKey', ($event.target as HTMLInputElement).value)"
-          class="input input-sm input-bordered w-full"
-          placeholder="old_character"
-        />
+        <select v-model="localRemap.fromCharacterKey" class="select select-sm select-bordered w-full">
+          <option value="omiken">omiken</option>
+          <option value="omiken_2">omiken_2</option>
+        </select>
       </SettingItem>
 
-      <!-- 新キャラキー（選択） -->
+      <!-- 新キャラキー -->
       <SettingItem label="新キャラキー">
-        <select
-          :value="currentRemap.toCharacterKey"
-          @change="updateField('toCharacterKey', ($event.target as HTMLInputElement).value)"
-          class="select select-sm select-bordered w-full"
-        >
+        <select v-model="localRemap.toCharacterKey" class="select select-sm select-bordered w-full">
           <option value="">キャラクターを選択してください</option>
           <option v-for="(char, key) in characters" :key="key" :value="key">
             {{ char.displayName || key }}
           </option>
         </select>
+        <p v-if="!localRemap.toCharacterKey" class="text-red-500 mt-2">入力されてません</p>
       </SettingItem>
 
-      <!-- 元アイコンキー（入力） -->
+      <!-- 元アイコンキー -->
       <SettingItem label="元アイコンキー">
-        <select
-          :value="currentRemap.fromIconKey"
-          @change="updateField('fromIconKey', ($event.target as HTMLInputElement).value)"
-          class="select select-sm select-bordered w-full"
-        >
-          <option value="">感情を選択してください</option>
+        <select v-model="localRemap.fromIconKey" class="select select-sm select-bordered w-full">
+          <option value="">アイコンキーを選択…</option>
           <option v-for="emotion in emotionOptions" :key="emotion" :value="emotion">
             {{ emotionLabels[emotion] }}
           </option>
         </select>
       </SettingItem>
 
-      <!-- 新アイコンキー（選択） -->
+      <!-- 新アイコンキー -->
       <SettingItem label="新アイコンキー">
-        <select
-          :value="currentRemap.toIconKey"
-          @change="updateField('toIconKey', ($event.target as HTMLInputElement).value)"
-          class="select select-sm select-bordered w-full"
-        >
-          <option value="">感情を選択してください</option>
+        <select v-model="localRemap.toIconKey" class="select select-sm select-bordered w-full">
+          <option value="">アイコンキーを選択…</option>
           <option v-for="emotion in emotionOptions" :key="emotion" :value="emotion">
             {{ emotionLabels[emotion] }}
           </option>
@@ -65,11 +51,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
   import { characterEmotions, CharacterEmotionType, CharacterType, emotionLabels } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
     mergeIndex: number
@@ -82,43 +68,49 @@
 
   const emotionOptions = computed(() => characterEmotions as readonly CharacterEmotionType[])
 
-  // 現在のリマップを取得
-  const currentRemap = computed(() => {
-    return (
+  // 現在のリマップデータ
+  const currentRemap = computed(
+    () =>
       data.value.jsonMerge?.[props.mergeIndex]?.remaps?.[props.remapIndex] ?? {
         fromCharacterKey: '',
         toCharacterKey: '',
         fromIconKey: '',
         toIconKey: '',
       }
-    )
+  )
+
+  // v-modelで使用するローカルリマップ
+  const localRemap = computed({
+    get: () => currentRemap.value,
+    set: (newValue: JsonMergeRemapType) => {
+      if (!data.value.jsonMerge) return
+
+      const updatedMerge = data.value.jsonMerge.map((merge, idx) => {
+        if (idx !== props.mergeIndex) return merge
+
+        return {
+          ...merge,
+          remaps: merge.remaps.map((remap, remapIdx) => (remapIdx === props.remapIndex ? newValue : remap)),
+        }
+      })
+
+      store.updateJsonMerge(updatedMerge)
+    },
   })
-
-  // フィールドを更新
-  const updateField = (field: keyof JsonMergeRemapType, value: string) => {
-    if (!data.value.jsonMerge) return
-
-    const newMerge = [...data.value.jsonMerge]
-    const newRemaps = [...newMerge[props.mergeIndex].remaps]
-    newRemaps[props.remapIndex] = {
-      ...newRemaps[props.remapIndex],
-      [field]: value,
-    }
-    newMerge[props.mergeIndex] = {
-      ...newMerge[props.mergeIndex],
-      remaps: newRemaps,
-    }
-
-    store.updateJsonMerge(newMerge)
-  }
 
   // リマップを削除
   const removeRemap = () => {
     if (!data.value.jsonMerge) return
 
-    const newMerge = [...data.value.jsonMerge]
-    newMerge[props.mergeIndex].remaps.splice(props.remapIndex, 1)
+    const updatedMerge = data.value.jsonMerge.map((merge, idx) => {
+      if (idx !== props.mergeIndex) return merge
 
-    store.updateJsonMerge(newMerge)
+      return {
+        ...merge,
+        remaps: merge.remaps.filter((_, remapIdx) => remapIdx !== props.remapIndex),
+      }
+    })
+
+    store.updateJsonMerge(updatedMerge)
   }
 </script>
