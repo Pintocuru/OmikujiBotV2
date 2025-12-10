@@ -56,8 +56,12 @@ export function useTestPost() {
     const weightPercent = (drawOmikuji as any).weightPercent || 0
     const omikujiName = drawOmikuji.name || 'おみくじ'
 
-    const firstMessageAction = actions.find((action) => action.messageContent)
-    const messageContent = firstMessageAction?.messageContent || 'メッセージなし'
+    const firstMessageAction = actions.find((action) => action.actionType === 'message' && action.message?.bubble)
+
+    const messageContent =
+      firstMessageAction && firstMessageAction.actionType === 'message'
+        ? (firstMessageAction.message.bubble ?? 'メッセージなし')
+        : 'メッセージなし'
 
     toast.success('おみくじ抽選結果', {
       description: `おみくじ: ${omikujiName}\n内容: ${messageContent}\n重み: ${weight}\n確率: ${weightPercent.toFixed(2)}%`,

@@ -26,13 +26,6 @@
               <h3 class="font-semibold border-b">アクション プレビュー</h3>
               <PostActionsPreview :actions="modelValue" />
             </div>
-
-            <div v-if="selectedScript">
-              <div class="form-control bg-base-200 p-2 rounded-lg">
-                <h3 class="font-semibold border-b">GameScripts で追加されるアクション</h3>
-                <PostActionsPreview :actions="selectedScript.postActions as PostActionType[]" />
-              </div>
-            </div>
           </div>
         </div>
       </label>
@@ -66,15 +59,12 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
-  import { ScriptPreset } from '@/types'
-  import { CommentRuleType, RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { ref } from 'vue'
+  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
-  import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { List, Send, FileJson, Settings } from 'lucide-vue-next'
 
   // Props
@@ -87,24 +77,6 @@
   // Emits
   const emit = defineEmits(['update:modelValue', 'toggleEdit', 'toggleJson'])
 
-  // Pinia store
-  const omikujiStore = useOmikujiStore()
-
   // ホバー状態管理
   const showPreview = ref(false)
-
-  // currentScriptIdの取得
-  // TODO:将来TimerにもGameScriptsを入れる予定です
-  const currentScriptId = computed(() => {
-    if (!props.selectedItemKey) return null
-    if (props.category === 'actionSets') return null // actionSetsは script が存在しない
-    const record = omikujiStore.getItem(props.category, props.selectedItemKey) as CommentRuleType
-    return record.scriptId ? record.scriptId : null
-  })
-
-  // 選択されたスクリプト
-  const selectedScript = computed((): ScriptPreset | null => {
-    if (!currentScriptId.value) return null
-    return gameScriptMap[currentScriptId.value] || null
-  })
 </script>

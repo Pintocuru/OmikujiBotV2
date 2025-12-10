@@ -11,7 +11,7 @@ import { AccessLevelType } from '@shared/types'
 export function useSettingMode() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  return useSettingModeFromHash(computed(() => data.value.displaySettings.licenseKeyHash))
+  return useSettingModeFromHash(computed(() => data.value.displaySettings.editor.licenseKeyHash))
 }
 
 /**

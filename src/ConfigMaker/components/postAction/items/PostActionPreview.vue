@@ -17,25 +17,28 @@
           :characters="characters"
           :characterKey="action.characterKey"
           :iconKey="action.iconKey"
-          :showCharacterFrame="base.showCharacterFrame"
+          :showCharacterFrame="bubbleSettings.showCharacterFrame"
         />
       </MotionWrapper>
     </div>
 
     <!-- トーストプレビュー -->
-    <div v-if="action.actionType === 'toast' && base.showToasts" class="w-full">
+    <div v-if="action.actionType === 'toast' && toastSettings.showToastsOnRight" class="w-full">
       <div class="cursor-pointer" @click="handleToastClick">
         <ChatBubbleItem
           :key="`toast-${toastRefreshKey}`"
           :botMessage="processedToastMessage"
-          :showToastsOnRight="base.showToastsOnRight"
+          :showToastsOnRight="toastSettings.showToastsOnRight"
           :character="character"
-          :isCharacterDisplay="base.showCharacterThumbnail"
+          :isCharacterDisplay="toastSettings.showThumbnail.length > 0"
         />
       </div>
     </div>
 
-    <div v-if="action.actionType === 'toast' && !base.showToasts" class="w-full space-y-8 flex flex-col items-center">
+    <div
+      v-if="action.actionType === 'toast' && !toastSettings.showToastsOnRight"
+      class="w-full space-y-8 flex flex-col items-center"
+    >
       <CommentBubbleItem
         :key="`message-${messageRefreshKey}`"
         :botName="character.displayName"
@@ -50,7 +53,7 @@
           :characters="characters"
           :characterKey="action.characterKey"
           iconKey="default"
-          :showCharacterFrame="base.showCharacterFrame"
+          :showCharacterFrame="bubbleSettings.showCharacterFrame"
         />
       </MotionWrapper>
       (設定により、トーストはフキダシに置き換えされます)
@@ -69,12 +72,18 @@
     </div>
 
     <!-- WordPartyテストボタン -->
-    <div v-if="action.actionType !== 'actionSet' && action.wordParty !== ''" class="w-full text-center">
+    <div v-if="action.actionType === 'wordParty' && action.wordParty !== ''" class="w-full text-center">
       <WordPartyTestButton label="WordPartyのテスト実行" :pattern="action.wordParty" />
     </div>
 
     <!-- サウンドテストボタン -->
-    <div v-if="action.actionType !== 'actionSet' && action.sound && action.sound !== ''" class="w-full text-center">
+    <div
+      v-if="
+        (action.actionType === 'sound' && action.sound !== '') ||
+        (action.actionType === 'message' && action.sound !== '')
+      "
+      class="w-full text-center"
+    >
       <SoundTestButton label="サウンドのテスト実行" :pattern="action.sound" />
     </div>
   </div>
@@ -94,45 +103,39 @@
   import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
 
-  // Props
-  const props = defineProps<{
-    action: PostActionType
-  }>()
+  const props = defineProps<{ action: PostActionType }>()
 
-  // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   const characters = computed(() => data.value.characters)
-  const base = computed(() => data.value.displaySettings.base)
 
-  // 各プレビュー用の独立したリフレッシュキー
+  // 新しいスキーマに合わせて参照を変更
+  const bubbleSettings = computed(() => data.value.displaySettings.components.bubble)
+  const toastSettings = computed(() => data.value.displaySettings.components.toast)
+
   const messageRefreshKey = ref(0)
   const toastRefreshKey = ref(0)
 
-  // 現在のキャラクター
   const character = computed(() => {
     const characterMap = characters.value
     return characterMap[props.action.characterKey] || Object.values(characterMap)[0]
   })
 
-  // プレースホルダー置換処理（毎回新しいインスタンスを作成）
   const processMessage = (message: string) => {
     const placeProcess = new PlaceholderProcessor(data.value.placeholders)
     placeProcess.updateResolvedValues(defaultPlaceholdersShortLabels)
     return placeProcess.processText(message)
   }
 
-  // メッセージプレビュー用の処理済みテキスト
   const processedMessage = computed(() => {
-    void messageRefreshKey.value // 依存関係を明示
+    void messageRefreshKey.value
     const content = props.action.messageContent !== '' ? props.action.messageContent : '(未記入)'
     return processMessage(content)
   })
 
-  // トーストプレビュー用の処理済みメッセージオブジェクト
   const processedToastMessage = computed(() => {
-    void toastRefreshKey.value // 依存関係を明示
+    void toastRefreshKey.value
     if (!character.value) return undefined
 
     const content = props.action.messageToast ?? '(未記入)'
@@ -144,7 +147,6 @@
     })
   })
 
-  // クリックハンドラー（それぞれ独立）
   const handleMessageClick = () => {
     messageRefreshKey.value++
   }

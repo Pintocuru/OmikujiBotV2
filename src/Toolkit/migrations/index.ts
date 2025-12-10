@@ -8,7 +8,6 @@ import { migrateV130ToV200 } from './v1_to_v2/OmikujiDataV1/migrateV130ToV200'
  * データを現在のアプリのバージョンに合わせてマイグレーションする
  */
 export function normalizeData(data: unknown): OmikujiDataType {
-  console.log('ss')
   // データにメタ情報がなければ、初期データとして扱う
   if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す

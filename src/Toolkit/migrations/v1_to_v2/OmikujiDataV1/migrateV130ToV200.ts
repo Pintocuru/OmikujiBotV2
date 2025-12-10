@@ -25,7 +25,7 @@ export function migrateV130ToV200(data: any): OmikujiDataType {
     migratedData.displaySettings = migrateDisplaySettings(migratedData.displaySettings)
   }
 
-  console.log('Migration to v1.3 completed: omikuji keys補完完了')
+  console.log('Migration to v2.0 completed: omikuji keys補完完了')
   return migratedData
 }
 
