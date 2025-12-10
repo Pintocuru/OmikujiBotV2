@@ -1,4 +1,5 @@
 <!-- src\ConfigMaker\components\displaySettings\ShowCharacterEditor.vue -->
+<!-- ! 使用しない -->
 <template>
   <div class="relative card bg-base-100">
     <div class="card-body p-4 gap-4">

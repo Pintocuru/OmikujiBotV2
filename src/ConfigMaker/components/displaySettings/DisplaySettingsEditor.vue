@@ -7,12 +7,13 @@
       title="コンポーネント表示設定"
       description="ジェネレーターで表示するコンポーネントの設定"
     >
-      <ComponentsconditionEditor />
+      <ComponentConditionsEditor />
     </SectionCard>
 
     <!-- 各コンポーネント設定 -->
     <!-- フキダシコンポーネント -->
     <SectionCard
+      v-if="conditions.includes('bubble')"
       :isOpen="activeSection === 'bubbleComponent'"
       @toggle="toggleSection('bubbleComponent')"
       title="フキダシコンポーネント"
@@ -23,6 +24,7 @@
 
     <!-- フキダシコンポーネント：キャラクター -->
     <SectionCard
+      v-if="conditions.includes('bubble')"
       :isOpen="activeSection === 'bubbleComponent'"
       @toggle="toggleSection('bubbleComponent')"
       title="フキダシコンポーネント(キャラクター)"
@@ -33,6 +35,7 @@
 
     <!-- トーストコンポーネント -->
     <SectionCard
+      v-if="conditions.includes('toast')"
       :isOpen="activeSection === 'toastComponent'"
       @toggle="toggleSection('toastComponent')"
       title="トーストコンポーネント"
@@ -43,6 +46,7 @@
 
     <!-- サムネイルコンポーネント -->
     <SectionCard
+      v-if="conditions.includes('thumbnail')"
       :isOpen="activeSection === 'thumbnailComponent'"
       @toggle="toggleSection('thumbnailComponent')"
       title="サムネイルコンポーネント"
@@ -53,6 +57,7 @@
 
     <!-- ランキングコンポーネント -->
     <SectionCard
+      v-if="conditions.includes('ranking')"
       :isOpen="activeSection === 'rankingComponent'"
       @toggle="toggleSection('rankingComponent')"
       title="ランキングコンポーネント"
@@ -63,6 +68,7 @@
 
     <!-- カウンターコンポーネント -->
     <SectionCard
+      v-if="conditions.includes('counter')"
       :isOpen="activeSection === 'counterComponent'"
       @toggle="toggleSection('counterComponent')"
       title="カウンターコンポーネント"
@@ -108,44 +114,12 @@
       <!-- 補足説明(´・ω・｀) -->
       <DeveloperModeInfo />
     </template>
-
-    <!-- ！！！！！！ここからは分割！！！！！！！ -->
-
-    <!-- フキダシ設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'commentBubble'"
-      @toggle="toggleSection('commentBubble')"
-      title="フキダシ設定"
-      description="フキダシの文字とアニメーションに関する設定"
-    >
-      <CommentBubbleEditor />
-    </SectionCard>
-
-    <!-- トースト・サムネイル設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'toastBubble'"
-      @toggle="toggleSection('toastBubble')"
-      title="トースト設定"
-      description="ジェネレーターで表示する、フキダシ以外の表示設定"
-    >
-      <ToastBubbleEditor />
-    </SectionCard>
-
-    <!-- キャラクター設定 -->
-    <SectionCard
-      v-if="useVisibilityAccess().canShow('characterVisible')"
-      :isOpen="activeSection === 'showCharacter'"
-      @toggle="toggleSection('showCharacter')"
-      title="キャラクター設定"
-      description="ジェネレーターで表示する、フキダシ以外の表示設定"
-    >
-      <ShowCharacterEditor />
-    </SectionCard>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
+  import ComponentConditionsEditor from './components/ComponentConditionsEditor.vue'
   import BubbleComponentEditor from './components/BubbleComponentEditor.vue'
   import BubbleComponentCharacterEditor from './components/BubbleComponentCharacterEditor.vue'
   import ToastComponentEditor from './components/ToastComponentEditor.vue'
@@ -163,6 +137,8 @@
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理
   type SectionType =
@@ -186,5 +162,10 @@
   }
 
   // Store
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
   const { isGod } = useSettingMode()
+
+  //
+  const conditions = computed(() => data.value.displaySettings.components.conditions)
 </script>

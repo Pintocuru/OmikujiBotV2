@@ -1,4 +1,5 @@
 <!-- src\ConfigMaker\components\displaySettings\CommentBubbleEditor.vue -->
+<!-- ! 使用しない -->
 <template>
   <div class="mx-auto">
     <!-- プレビュー表示 -->

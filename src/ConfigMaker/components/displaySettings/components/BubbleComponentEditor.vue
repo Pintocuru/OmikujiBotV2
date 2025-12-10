@@ -9,28 +9,11 @@
       :font-family="global.fontFamily"
       :bubbleMotionEnter="bubble.bubbleMotionEnter"
       :bubbleMotionLeave="bubble.bubbleMotionLeave"
+      :bubbleTextAnimate="bubble.bubbleTextAnimate"
+      :bubbleTextSpeed="bubble.bubbleTextSpeed"
+      :bubbleTextSound="bubble.bubbleTextSound"
     />
   </div>
-  <!-- フォントファミリー -->
-  <!-- TODO:グローバルへ移行 -->
-  <SettingItem
-    label="フォントファミリー"
-    description="表示に使用するフォントを設定します"
-    forceMode="pro"
-    :showReset="true"
-    @reset="resetMap.fontFamily"
-  >
-    <select
-      :value="global.fontFamily"
-      @change="(e) => updateBaseField('fontFamily', (e.target as HTMLSelectElement).value)"
-      class="select bg-base text-base-content w-full max-w-xs"
-      :disabled="!isPro"
-    >
-      <option v-for="font in fontFamilyOptions" :key="font" :value="font">
-        {{ fontFamilyLabels[font] }}
-      </option>
-    </select>
-  </SettingItem>
 
   <!-- フキダシアニメーション -->
   <SettingItem
@@ -40,7 +23,7 @@
     @reset="resetMap.bubbleMotionEnter"
   >
     <select
-      :value="global.bubbleMotionEnter"
+      :value="bubble.bubbleMotionEnter"
       @change="(e) => updateBaseField('bubbleMotionEnter', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
@@ -52,12 +35,12 @@
 
   <SettingItem
     label="フキダシアニメーション(終了時)"
-    description="フキダシの表示アニメーションを設定します"
+    description="フキダシの非表示アニメーションを設定します"
     :showReset="true"
     @reset="resetMap.bubbleMotionLeave"
   >
     <select
-      :value="global.bubbleMotionLeave"
+      :value="bubble.bubbleMotionLeave"
       @change="(e) => updateBaseField('bubbleMotionLeave', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
@@ -67,85 +50,107 @@
     </select>
   </SettingItem>
 
-  <!-- キャラクターサイズ -->
+  <!-- 文字アニメーション有効化 -->
   <SettingItem
-    label="表示サイズ"
-    description="コンテンツの表示サイズを設定します"
+    label="文字アニメーション"
+    description="文字を一文字ずつ表示する演出を有効にします"
     :showReset="true"
-    @reset="resetMap.displaySize"
+    @reset="resetMap.bubbleTextAnimate"
+  >
+    <input
+      type="checkbox"
+      class="toggle toggle-primary"
+      :checked="bubble.bubbleTextAnimate"
+      @change="(e) => updateBaseField('bubbleTextAnimate', (e.target as HTMLInputElement).checked)"
+    />
+  </SettingItem>
+
+  <!-- 文字送り速度 -->
+  <SettingItem
+    label="文字送り速度"
+    description="文字が表示される速度を調整します (10〜200)"
+    :showReset="true"
+    @reset="resetMap.bubbleTextSpeed"
+  >
+    <input
+      type="range"
+      min="10"
+      max="200"
+      step="10"
+      class="range range-primary w-full max-w-xs"
+      :value="bubble.bubbleTextSpeed"
+      @input="(e) => updateBaseField('bubbleTextSpeed', Number((e.target as HTMLInputElement).value))"
+    />
+    <div class="mt-2 text-sm">現在値: {{ bubble.bubbleTextSpeed }}ms</div>
+  </SettingItem>
+
+  <!-- 文字送りサウンド -->
+  <!-- TODO:サウンドからリストを持ってくる -->
+  <SettingItem
+    label="文字送りサウンド"
+    description="文字送り時に再生するサウンドを選択します"
+    :showReset="true"
+    @reset="resetMap.bubbleTextSound"
   >
     <select
-      :value="global.displaySize"
-      @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
+      :value="bubble.bubbleTextSound || ''"
+      @change="(e) => updateBaseField('bubbleTextSound', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
-      <option v-for="size in displaySize" :key="size" :value="size">
-        {{ displaySizeLabels[size] }}
-      </option>
+      <option value="">なし</option>
+      <option value="typewriter">タイプライター</option>
     </select>
   </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { displaySize, displaySizeLabels } from '@shared/types'
-  import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CommentBubblePreview from './CommentBubblePreview.vue'
+  import CommentBubblePreview from '../CommentBubblePreview.vue'
   import { storeToRefs } from 'pinia'
-  import { fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
 
-  // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
 
-  // 個別のcomputed値（読み取り専用）
   const global = computed(() => data.value.displaySettings.global)
   const bubble = computed(() => data.value.displaySettings.components.bubble)
 
-  // 汎用的な更新関数
-  const updateBaseField = (field: keyof typeof global.value, value: any) => {
-    omikujiStore.updateDisplaySettings({
-      base: {
-        ...global.value,
+  const updateBaseField = (field: keyof typeof bubble.value, value: any) => {
+    omikujiStore.updateNestedDisplaySettings('components', {
+      bubble: {
+        ...bubble.value,
         [field]: value,
       },
     })
   }
 
-  // 共通リセット関数
-  const resetField = (field: keyof typeof global.value) => {
-    const schemaDefaults = BaseSettingsSchema.parse({})
-    const defaultValue = schemaDefaults[field]
-    updateBaseField(field, defaultValue)
+  const resetField = (field: keyof typeof bubble.value) => {
+    const schemaDefaults = SettingsBubbleSchema.parse({})
+    updateBaseField(field, schemaDefaults[field])
   }
 
-  // フィールドごとのリセット関数マップ
   const resetMap = {
-    fontFamily: () => resetField('fontFamily'),
     bubbleMotionEnter: () => resetField('bubbleMotionEnter'),
     bubbleMotionLeave: () => resetField('bubbleMotionLeave'),
+    bubbleTextAnimate: () => resetField('bubbleTextAnimate'),
+    bubbleTextSpeed: () => resetField('bubbleTextSpeed'),
+    bubbleTextSound: () => resetField('bubbleTextSound'),
   }
 
-  // キャラクターのカラー設定を取得
   const localColor = computed(() => {
     const characters = data.value.characters
-    const characterKeys = Object.keys(characters)
-
-    // キャラクターが存在する場合
-    if (characterKeys.length > 0) {
-      const randomKey = characterKeys[Math.floor(Math.random() * characterKeys.length)]
+    const keys = Object.keys(characters)
+    if (keys.length > 0) {
+      const randomKey = keys[Math.floor(Math.random() * keys.length)]
       return characters[randomKey].color
     }
-
-    // キャラクターが存在しない場合、デフォルトカラーからランダムに選択
-    const defaultColors = Object.values(DEFAULT_COLOR_THEMES)
-    const randomDefaultColor = defaultColors[Math.floor(Math.random() * defaultColors.length)]
-    return randomDefaultColor
+    const defaults = Object.values(DEFAULT_COLOR_THEMES)
+    return defaults[Math.floor(Math.random() * defaults.length)]
   })
 </script>
