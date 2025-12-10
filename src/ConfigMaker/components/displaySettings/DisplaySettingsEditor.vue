@@ -1,36 +1,7 @@
 <!-- src\ConfigMaker\components\displaySettings\DisplaySettingsEditor.vue -->
 <template>
   <div class="space-y-4">
-    <!-- フキダシ設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'commentBubble'"
-      @toggle="toggleSection('commentBubble')"
-      title="フキダシ設定"
-      description="フキダシの文字とアニメーションに関する設定"
-    >
-      <CommentBubbleEditor />
-    </SectionCard>
-
-    <!-- トースト・サムネイル設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'toastBubble'"
-      @toggle="toggleSection('toastBubble')"
-      title="トースト設定"
-      description="ジェネレーターで表示する、フキダシ以外の表示設定"
-    >
-      <ToastBubbleEditor />
-    </SectionCard>
-
-    <!-- キャラクター設定 -->
-    <SectionCard
-      v-if="useVisibilityAccess().canShow('characterVisible')"
-      :isOpen="activeSection === 'showCharacter'"
-      @toggle="toggleSection('showCharacter')"
-      title="キャラクター設定"
-      description="ジェネレーターで表示する、フキダシ以外の表示設定"
-    >
-      <ShowCharacterEditor />
-    </SectionCard>
+    <!-- 各コンポーネント設定 -->
 
     <!-- エディター設定 -->
     <SectionCard
@@ -69,6 +40,39 @@
       <!-- 補足説明(´・ω・｀) -->
       <DeveloperModeInfo />
     </template>
+
+    <!-- ！！！！！！ここからは分割！！！！！！！ -->
+
+    <!-- フキダシ設定 -->
+    <SectionCard
+      :isOpen="activeSection === 'commentBubble'"
+      @toggle="toggleSection('commentBubble')"
+      title="フキダシ設定"
+      description="フキダシの文字とアニメーションに関する設定"
+    >
+      <CommentBubbleEditor />
+    </SectionCard>
+
+    <!-- トースト・サムネイル設定 -->
+    <SectionCard
+      :isOpen="activeSection === 'toastBubble'"
+      @toggle="toggleSection('toastBubble')"
+      title="トースト設定"
+      description="ジェネレーターで表示する、フキダシ以外の表示設定"
+    >
+      <ToastBubbleEditor />
+    </SectionCard>
+
+    <!-- キャラクター設定 -->
+    <SectionCard
+      v-if="useVisibilityAccess().canShow('characterVisible')"
+      :isOpen="activeSection === 'showCharacter'"
+      @toggle="toggleSection('showCharacter')"
+      title="キャラクター設定"
+      description="ジェネレーターで表示する、フキダシ以外の表示設定"
+    >
+      <ShowCharacterEditor />
+    </SectionCard>
   </div>
 </template>
 

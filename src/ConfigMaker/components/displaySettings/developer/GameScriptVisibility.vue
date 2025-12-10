@@ -2,7 +2,7 @@
 <template>
   <SettingItem label="ゲームスクリプト設定" description="ゲームスクリプト関連の表示制御">
     <div class="space-y-3">
-      <!-- ゲームスクリプト設定UI表示制御 -->
+      <!-- ゲームスクリプト設定UI表示制御
       <div class="bg-base-200 p-3 rounded">
         <div class="flex items-center justify-between mb-2">
           <span class="label-text font-medium">ゲームスクリプトの設定UI</span>
@@ -14,6 +14,7 @@
           </label>
         </div>
       </div>
+       -->
 
       <!-- 利用可能なゲームスクリプト -->
       <div class="bg-base-200 p-3 rounded">
@@ -41,5 +42,5 @@
   import { AccessLevelLabels } from '@shared/types'
   import { useVisibilitySettings } from './useVisibilitySettings'
 
-  const { gameScriptSettings, gameScripts } = useVisibilitySettings()
+  const { gameScripts } = useVisibilitySettings()
 </script>

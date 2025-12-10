@@ -22,11 +22,11 @@
 </template>
 
 <script setup lang="ts">
-  import BasicComponentsVisibility from './visibility/BasicComponentsVisibility.vue'
-  import ComponentSpecificVisibility from './visibility/ComponentSpecificVisibility.vue'
-  import GameScriptVisibility from './visibility/GameScriptVisibility.vue'
-  import ToolsVisibility from './visibility/ToolsVisibility.vue'
-  import { useVisibilitySettings } from './visibility/useVisibilitySettings'
+  import BasicComponentsVisibility from './developer/BasicComponentsVisibility.vue'
+  import ComponentSpecificVisibility from './developer/ComponentSpecificVisibility.vue'
+  import GameScriptVisibility from './developer/GameScriptVisibility.vue'
+  import ToolsVisibility from './developer/ToolsVisibility.vue'
+  import { useVisibilitySettings } from './developer/useVisibilitySettings'
 
   const { setFullVisibility, setSoloVisibility } = useVisibilitySettings()
 </script>

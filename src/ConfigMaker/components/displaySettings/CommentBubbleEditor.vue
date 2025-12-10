@@ -1,36 +1,18 @@
-<!-- src/ConfigMaker/components/display/TextAnimationEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\CommentBubbleEditor.vue -->
 <template>
   <div class="mx-auto">
     <!-- プレビュー表示 -->
     <CommentBubblePreview
       :color="localColor"
       :is-slider="true"
-      :text-size="base.displaySize"
       :custom-classes="localColor.customClasses"
-      :font-family="base.fontFamily"
-      :bubbleMotionEnter="base.bubbleMotionEnter"
-      :bubbleMotionLeave="base.bubbleMotionLeave"
+      :font-family="global.fontFamily"
+      :bubbleMotionEnter="bubble.bubbleMotionEnter"
+      :bubbleMotionLeave="bubble.bubbleMotionLeave"
     />
   </div>
-  <!-- 表示サイズ -->
-  <SettingItem
-    label="表示サイズ"
-    description="コンテンツの表示サイズを設定します"
-    :showReset="true"
-    @reset="resetMap.displaySize"
-  >
-    <select
-      :value="base.displaySize"
-      @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
-      class="select select-bordered w-full max-w-xs"
-    >
-      <option v-for="size in displaySize" :key="size" :value="size">
-        {{ displaySizeLabels[size] }}
-      </option>
-    </select>
-  </SettingItem>
-
   <!-- フォントファミリー -->
+  <!-- TODO:グローバルへ移行 -->
   <SettingItem
     label="フォントファミリー"
     description="表示に使用するフォントを設定します"
@@ -39,7 +21,7 @@
     @reset="resetMap.fontFamily"
   >
     <select
-      :value="base.fontFamily"
+      :value="global.fontFamily"
       @change="(e) => updateBaseField('fontFamily', (e.target as HTMLSelectElement).value)"
       class="select bg-base text-base-content w-full max-w-xs"
       :disabled="!isPro"
@@ -58,7 +40,7 @@
     @reset="resetMap.bubbleMotionEnter"
   >
     <select
-      :value="base.bubbleMotionEnter"
+      :value="global.bubbleMotionEnter"
       @change="(e) => updateBaseField('bubbleMotionEnter', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
@@ -75,12 +57,30 @@
     @reset="resetMap.bubbleMotionLeave"
   >
     <select
-      :value="base.bubbleMotionLeave"
+      :value="global.bubbleMotionLeave"
       @change="(e) => updateBaseField('bubbleMotionLeave', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
       <option v-for="animation in motionLabel" :key="animation" :value="animation">
         {{ animation }}
+      </option>
+    </select>
+  </SettingItem>
+
+  <!-- キャラクターサイズ -->
+  <SettingItem
+    label="表示サイズ"
+    description="コンテンツの表示サイズを設定します"
+    :showReset="true"
+    @reset="resetMap.displaySize"
+  >
+    <select
+      :value="global.displaySize"
+      @change="(e) => updateBaseField('displaySize', (e.target as HTMLSelectElement).value)"
+      class="select select-bordered w-full max-w-xs"
+    >
+      <option v-for="size in displaySize" :key="size" :value="size">
+        {{ displaySizeLabels[size] }}
       </option>
     </select>
   </SettingItem>
@@ -94,7 +94,6 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { storeToRefs } from 'pinia'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
@@ -106,20 +105,21 @@
   const { isPro } = useSettingMode()
 
   // 個別のcomputed値（読み取り専用）
-  const base = computed(() => data.value.displaySettings.base)
+  const global = computed(() => data.value.displaySettings.global)
+  const bubble = computed(() => data.value.displaySettings.components.bubble)
 
   // 汎用的な更新関数
-  const updateBaseField = (field: keyof typeof base.value, value: any) => {
+  const updateBaseField = (field: keyof typeof global.value, value: any) => {
     omikujiStore.updateDisplaySettings({
       base: {
-        ...base.value,
+        ...global.value,
         [field]: value,
       },
     })
   }
 
   // 共通リセット関数
-  const resetField = (field: keyof typeof base.value) => {
+  const resetField = (field: keyof typeof global.value) => {
     const schemaDefaults = BaseSettingsSchema.parse({})
     const defaultValue = schemaDefaults[field]
     updateBaseField(field, defaultValue)
@@ -127,7 +127,6 @@
 
   // フィールドごとのリセット関数マップ
   const resetMap = {
-    displaySize: () => resetField('displaySize'),
     fontFamily: () => resetField('fontFamily'),
     bubbleMotionEnter: () => resetField('bubbleMotionEnter'),
     bubbleMotionLeave: () => resetField('bubbleMotionLeave'),

@@ -25,10 +25,10 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
 
-  const { wordPartySettings, jsonMergeSettings } = useVisibilitySettings()
+  const { jsonMergeSettings } = useVisibilitySettings()
 
   const settings = [
     { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev)', model: jsonMergeSettings },
-    { key: 'wordPartySettings', label: 'WordPartyリスト', model: wordPartySettings },
+    // { key: 'wordPartySettings', label: 'WordPartyリスト', model: wordPartySettings },
   ]
 </script>

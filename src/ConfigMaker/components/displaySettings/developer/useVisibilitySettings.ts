@@ -26,10 +26,9 @@ export function useVisibilitySettings() {
 
   /** 動的生成 */
   const characterVisible = createVisibilityRef<AccessLevelType>('characterVisible')
-  const wordPartyLoading = createVisibilityRef<AccessLevelType>('wordPartyLoading')
+  //  const wordPartyLoading = createVisibilityRef<AccessLevelType>('wordPartyLoading')
   const licenseVisible = createVisibilityRef<AccessLevelType>('licenseVisible')
-  const gameScriptSettings = createVisibilityRef<AccessLevelType>('gameScriptSettings')
-  const wordPartySettings = createVisibilityRef<AccessLevelType>('wordPartySettings')
+  //  const wordPartySettings = createVisibilityRef<AccessLevelType>('wordPartySettings')
   const jsonMergeSettings = createVisibilityRef<AccessLevelType>('jsonMergeSettings')
   const gameScripts = createVisibilityRef<string[]>('gameScripts')
 
@@ -52,7 +51,7 @@ export function useVisibilitySettings() {
       licenseVisible: 'basic' as const,
 
       gameScriptSettings: 'pro' as const,
-      gameScripts: ['GouseiSuika', 'BomberSpin', 'DwarfBomb'] as string[],
+      gameScripts: [] as string[],
 
       jsonMergeSettings: 'basic' as const,
       wordPartySettings: 'internal' as const,
@@ -93,11 +92,10 @@ export function useVisibilitySettings() {
   return {
     categoryVisibility,
     characterVisible,
-    wordPartyLoading,
     licenseVisible,
-    gameScriptSettings,
     gameScripts,
-    wordPartySettings,
+    // wordPartyLoading,
+    // wordPartySettings,
     jsonMergeSettings,
     setFullVisibility,
     setSoloVisibility,

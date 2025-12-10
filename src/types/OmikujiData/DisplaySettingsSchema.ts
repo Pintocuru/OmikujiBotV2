@@ -55,8 +55,15 @@ export const SettingsCounterSchema = z.object({
   showLabel: z.boolean().default(true).catch(true), // ラベルを表示するか
 })
 
-// BaseSettingsSchema -> OmikujiBotSettingsとして再定義
+//
+
+export const settingsComponentsCondition = ['bubble', 'toast', 'thumbnail', 'ranking', 'counter'] as const
+export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
+
+export const settingsComponentsConditionSchema = z.enum(settingsComponentsCondition).default('bubble').catch('bubble')
+
 export const SettingsComponentsSchema = z.object({
+  conditions: z.array(settingsComponentsConditionSchema).catch(['bubble', 'toast']),
   bubble: SettingsBubbleSchema,
   toast: SettingsToastSchema,
   thumbnail: SettingsThumbnailSchema,

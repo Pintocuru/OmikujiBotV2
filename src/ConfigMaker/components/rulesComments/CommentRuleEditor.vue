@@ -44,18 +44,6 @@
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
-      <!-- ゲームスクリプト設定セクション -->
-      <SectionCard
-        v-if="canShow('gameScriptSettings') || isGod"
-        :isOpen="activeSection === 'scriptGame'"
-        @toggle="toggleSection('scriptGame')"
-        title="ゲームスクリプト設定"
-        :subTitle="`(${selectedItem.scriptId !== null ? `Key : ${selectedItem.scriptId}` : '未選択'})`"
-        description="Javascriptを使ったミニゲーム"
-      >
-        <ScriptGameEditor v-model="selectedItem" />
-      </SectionCard>
-
       <!-- おみくじ設定セクション -->
       <SectionCard
         :isOpen="activeSection === 'omikujiSet'"
@@ -82,7 +70,6 @@
   import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
   import GlobalCharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
-  import ScriptGameEditor from './GameScriptEditor.vue'
   import OmikujiLimitsEditor from '@/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue'
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'

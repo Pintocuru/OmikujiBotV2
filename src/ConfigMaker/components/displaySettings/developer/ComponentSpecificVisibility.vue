@@ -24,11 +24,11 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
 
-  const { characterVisible, wordPartyLoading, licenseVisible } = useVisibilitySettings()
+  const { characterVisible, licenseVisible } = useVisibilitySettings()
 
   const settings = [
     { key: 'characterVisible', label: 'キャラクター表示 (characterVisible)', model: characterVisible },
-    { key: 'wordPartyLoading', label: 'WordParty読み込み機能 (wordPartyLoading)', model: wordPartyLoading },
+    // { key: 'wordPartyLoading', label: 'WordParty読み込み機能 (wordPartyLoading)', model: wordPartyLoading },
     { key: 'licenseVisible', label: 'ライセンス記入表示 (licenseVisible)', model: licenseVisible },
   ]
 </script>
