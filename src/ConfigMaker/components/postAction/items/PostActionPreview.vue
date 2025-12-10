@@ -5,7 +5,7 @@
     <div v-if="action.actionType === 'message'" class="w-full space-y-8 flex flex-col items-center">
       <CommentBubbleItem
         :key="`message-${messageRefreshKey}`"
-        :name="character.displayName"
+        :botName="character.displayName"
         :comment="processedMessage"
         :color="character.color"
         @click="handleMessageClick"
@@ -38,7 +38,7 @@
     <div v-if="action.actionType === 'toast' && !base.showToasts" class="w-full space-y-8 flex flex-col items-center">
       <CommentBubbleItem
         :key="`message-${messageRefreshKey}`"
-        :name="character.displayName"
+        :botName="character.displayName"
         :comment="processedToastMessage?.comment ?? '(未記入)'"
         :color="character.color"
         @click="handleMessageClick"

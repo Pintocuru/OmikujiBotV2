@@ -17,6 +17,17 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 })
 
+// PostAction MessageBody (独立スキーマ化)
+export const PostActionMessageBodySchema = z
+  .object({
+    bubble: z.string().optional().catch(undefined),
+    toast: z.string().optional().catch(undefined),
+    rankingRank: z.string().optional().catch(undefined),
+    dialog: z.string().optional().catch(undefined),
+  })
+  .default({})
+  .catch({})
+
 // PostAction message
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
@@ -25,15 +36,7 @@ export const PostActionMessageSchema = z.object({
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   enterMotion: z.enum(motionLabel).optional().catch(undefined),
   sound: z.enum(soundList).optional().catch(undefined),
-  message: z
-    .object({
-      bubble: z.string().optional().catch(undefined), // フキダシ(bubble)用
-      toast: z.string().optional().catch(undefined), // トースト用
-      banner: z.string().optional().catch(undefined), // 例: バナー用
-      dialog: z.string().optional().catch(undefined), // 例: ダイアログ用
-    })
-    .default({})
-    .catch({}),
+  message: PostActionMessageBodySchema,
 })
 
 // PostAction sound
@@ -141,6 +144,7 @@ export const PostActionSetSchema = z.record(z.string(), PostActionRecordSchema).
 
 // 型定義
 export type PostActionType = z.infer<typeof PostActionSchema>
+export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 export type PostActionRecordType = z.infer<typeof PostActionRecordSchema>
 export type OmikujiGameScriptsType = z.infer<typeof OmikujiGameScriptsSchema>

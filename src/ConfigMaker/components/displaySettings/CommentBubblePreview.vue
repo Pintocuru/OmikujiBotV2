@@ -25,7 +25,7 @@
         :auto-hide="false"
       >
         <CommentBubbleItem
-          name="テストユーザー"
+          botName="テストユーザー"
           :comment="currentPreview"
           :color="color"
           :text-size="textSize"

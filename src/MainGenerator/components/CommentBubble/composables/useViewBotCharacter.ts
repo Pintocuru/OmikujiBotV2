@@ -2,19 +2,15 @@
 import { computed, ref, watch } from 'vue'
 import type { CharacterType, CharacterEmotionType } from '@/types/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
 import { useBotDisplay } from './useBotDisplay'
-import { SIZE_CONFIG } from './SizeConfig'
 import { storeToRefs } from 'pinia'
 
 export function useViewBotCharacter() {
   // Piniaストアの使用
   const appStore = useAppStore()
-  const displayStore = useDisplayStore()
 
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
-  const { displaySize } = storeToRefs(displayStore)
 
   // キャラクターごとの現在のアイコン状態を管理
   const characterIconStates = ref<Record<string, CharacterEmotionType>>({})
@@ -23,14 +19,20 @@ export function useViewBotCharacter() {
   const { displayedComments, removeComment, start, stop } = useBotDisplay(botMessages, 'comment')
 
   // omikujiDataの設定取得
-  const base = computed(() => appStore.data.displaySettings?.base || {})
+  const base = computed(() => appStore.data.displaySettings?.components.bubble || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
   const leaveMotion = computed(() => base.value.bubbleMotionLeave)
   const showCharacterFrame = computed(() => base.value.showCharacterFrame)
-  const bundleCharacters = computed(() => base.value.bundleCharacters)
 
   // サイズ設定の取得
-  const sizeConfig = computed(() => SIZE_CONFIG[displaySize.value])
+  const sizeConfig = {
+    text: 'text-lg',
+    avatar: 'w-48',
+    spacing: 40,
+    avatarBottom: `${200 + 240}px`,
+    commentAreaBottom: `${192 + 100}px`,
+    characterMargin: '-16px',
+  }
 
   // storeから利用可能なキャラクターを取得
   const availableCharacters = computed(() => {
@@ -122,7 +124,6 @@ export function useViewBotCharacter() {
     enterMotion,
     leaveMotion,
     showCharacterFrame,
-    bundleCharacters,
     sizeConfig,
 
     // 計算済みプロパティ

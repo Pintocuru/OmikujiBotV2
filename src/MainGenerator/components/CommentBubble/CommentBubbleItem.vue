@@ -10,12 +10,12 @@
   >
     <!-- 名前表示 -->
     <div
-      v-if="name && name !== ''"
+      v-if="botName && botName !== ''"
       class="font-semibold"
       :class="textSizeClass"
       :style="{ color: color?.nameColor || '#ccc' }"
     >
-      {{ name }}
+      {{ botName }}
     </div>
 
     <!-- コメント内容 -->
@@ -31,14 +31,12 @@
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
-  import { DisplaySize } from '@shared/types'
 
   const props = withDefaults(
     defineProps<{
-      name?: string
+      botName?: string
       comment: string
       color?: CharacterColorType
-      textSize?: DisplaySize
       brightnessLevel?: number // brightness値をレベルとして受け取る
       customClasses?: string
       customArrowClasses?: string
@@ -46,9 +44,8 @@
       animatedTextSpeed?: number
     }>(),
     {
-      name: '',
+      botName: '',
       comment: '(未記入)',
-      textSize: 'md',
       brightnessLevel: 0, // デフォルトは最も明るい
       customClasses: 'p-4 rounded-xl',
       customArrowClasses:
@@ -57,15 +54,6 @@
       animatedTextSpeed: 50,
     }
   )
-
-  // テキストサイズのクラス定義
-  const TEXT_SIZE_CLASSES = {
-    xs: 'text-md',
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-2xl',
-    xl: 'text-3xl',
-  } as const
 
   // brightnessレベルに応じたクラス
   const BRIGHTNESS_CLASSES = [
@@ -79,8 +67,8 @@
   // アニメーション用のテキスト
   const displayed = ref(props.animatedText ? '' : props.comment)
 
-  // テキストの大きさ
-  const textSizeClass = computed(() => TEXT_SIZE_CLASSES[props.textSize])
+  // テキストの大きさ(固定に変更)
+  const textSizeClass = computed(() => 'text-xl')
 
   // brightnessクラス
   const brightnessClass = computed(() => {

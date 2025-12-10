@@ -18,7 +18,7 @@
     >
       <div class="flex justify-center">
         <CommentBubbleItem
-          :name="message.name"
+          :botName="message.name"
           :comment="message.comment"
           :color="message.color"
           :animated-text="animatedText"
