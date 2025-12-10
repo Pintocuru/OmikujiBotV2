@@ -22,16 +22,11 @@ export const SettingsBubbleSchema = z.object({
   bubbleTextSound: z.string().optional(), // 文字送り時のサウンド
 })
 
-// トースト
+// トースト・サムネイル
 export const SettingsToastSchema = z.object({
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
   showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
-})
-
-// サムネイル Thumbnail
-export const SettingsThumbnailSchema = z.object({
-  // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
-  showThumbnail: z.array(z.string()).default([]).catch([]),
+  showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
 })
 
 // ランキング Ranking
@@ -39,9 +34,9 @@ export const SettingsRankingSchema = z.object({
   scriptId: z.string().min(1).nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
   title: z.string().default('Ranking').catch('Ranking'), // タイトル
   limit: z.number().default(10).catch(10), // 表示するランキング数
-  showScore: z.boolean().default(true).catch(true),
-  showRankNumber: z.boolean().default(true).catch(true),
-  color: z.enum(themes).default('dark').catch('dark'),
+  showScore: z.boolean().default(true).catch(true), // スコア表示
+  showRankNumber: z.boolean().default(true).catch(true), // 順位の表示
+  color: z.enum(themes).default('dark').catch('dark'), // テーマカラー(DaisyUi)
 })
 
 // カウンター Counter
@@ -66,7 +61,6 @@ export const SettingsComponentsSchema = z.object({
   conditions: z.array(settingsComponentsConditionSchema).catch(['bubble', 'toast']),
   bubble: SettingsBubbleSchema,
   toast: SettingsToastSchema,
-  thumbnail: SettingsThumbnailSchema,
   ranking: SettingsRankingSchema,
   counter: SettingsCounterSchema,
 })

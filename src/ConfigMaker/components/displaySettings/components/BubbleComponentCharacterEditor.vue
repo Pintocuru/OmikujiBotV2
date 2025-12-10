@@ -5,13 +5,12 @@
       <!-- キャラクターサンプル表示 -->
       <CharacterPreview
         :characters="data.characters"
-        :showCharacterPersistent="base.showCharacterPersistent"
-        :showCharacterFrame="base.showCharacterFrame"
-        :showCharacterThumbnail="base.showCharacterThumbnail"
-        :bundleCharacters="base.bundleCharacters"
-        :displaySize="base.displaySize"
+        :showCharacters="bubble.showCharacters"
+        :showCharacterFrame="bubble.showCharacterFrame"
+        :characterSize="bubble.characterSize"
         :maxDisplayCount="5"
       />
+
       <!-- 状態説明 -->
       <div class="flex justify-center">
         <span>{{ statusText }}</span>
@@ -19,22 +18,14 @@
     </div>
   </div>
 
-  <!-- キャラクター画像の常時表示 -->
+  <!-- キャラクター選択 -->
   <SettingItem
-    label="キャラクター画像の常時表示"
-    description="起動時にキャラクター画像を表示するか"
+    label="表示するキャラクター"
+    description="表示対象のキャラクターを選択します"
     :showReset="true"
-    @reset="resetMap.showCharacterPersistent"
+    @reset="resetMap.showCharacters"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.showCharacterPersistent"
-        @change="(e) => updateBaseField('showCharacterPersistent', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">キャラクターを常時表示する</span>
-    </label>
+    <BubbleCharactersEditor />
   </SettingItem>
 
   <!-- キャラクターフレームの使用 -->
@@ -46,8 +37,8 @@
   >
     <label class="label cursor-pointer justify-start gap-3">
       <input
-        :checked="base.showCharacterFrame"
-        @change="(e) => updateBaseField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
+        :checked="bubble.showCharacterFrame"
+        @change="(e) => updateBubbleField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
         type="checkbox"
         class="toggle toggle-primary"
       />
@@ -55,65 +46,68 @@
     </label>
   </SettingItem>
 
-  <!-- キャラクター統合モード -->
+  <!-- キャラクターサイズ -->
   <SettingItem
-    label="キャラクター統合モード"
-    description="複数のキャラクターを1箇所にまとめるかを設定します"
+    label="キャラクターサイズ"
+    description="キャラクター画像の横幅(px)"
     :showReset="true"
-    @reset="resetMap.bundleCharacters"
+    @reset="resetMap.characterSize"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base.bundleCharacters"
-        @change="(e) => updateBaseField('bundleCharacters', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">キャラクターを1つにまとめる</span>
-    </label>
+    <input
+      type="range"
+      min="100"
+      max="600"
+      step="20"
+      :value="bubble.characterSize"
+      @input="(e) => updateBubbleField('characterSize', Number((e.target as HTMLInputElement).value))"
+      class="range range-primary w-full"
+    />
+    <div class="mt-2 text-sm">現在値: {{ bubble.characterSize }}px</div>
   </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import BubbleCharactersEditor from './BubbleCharactersEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CharacterPreview from './CharacterPreview.vue'
-  import { storeToRefs } from 'pinia'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import CharacterPreview from '../CharacterPreview.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   // 個別のcomputed値（読み取り専用）
-  const base = computed(() => data.value.displaySettings.base)
+  const bubble = computed(() => data.value.displaySettings.components.bubble)
+  const characters = computed(() => data.value.characters)
 
   // 汎用的な更新関数
-  const updateBaseField = (field: keyof typeof base.value, value: any) => {
-    omikujiStore.updateDisplaySettings({
-      base: {
-        ...base.value,
+  const updateBubbleField = (field: keyof typeof bubble.value, value: any) => {
+    omikujiStore.updateNestedDisplaySettings('components', {
+      bubble: {
+        ...bubble.value,
         [field]: value,
       },
     })
   }
 
   // 共通リセット関数
-  const resetField = (field: keyof typeof base.value) => {
-    const schemaDefaults = BaseSettingsSchema.parse({})
+  const resetField = (field: keyof typeof bubble.value) => {
+    const schemaDefaults = SettingsBubbleSchema.parse({})
     const defaultValue = schemaDefaults[field]
-    updateBaseField(field, defaultValue)
+    updateBubbleField(field, defaultValue)
   }
 
   // フィールドごとのリセット関数マップ
   const resetMap = {
+    showCharacters: () => resetField('showCharacters'),
     showCharacterFrame: () => resetField('showCharacterFrame'),
-    showCharacterPersistent: () => resetField('showCharacterPersistent'),
-    bundleCharacters: () => resetField('bundleCharacters'),
+    characterSize: () => resetField('characterSize'),
   }
 
   const statusText = computed(() =>
-    base.value.showCharacterPersistent ? '喋る時に画像が明るくなります' : '喋る時のみ表示されます'
+    bubble.value.showCharacterFrame ? '背景色ありで表示されます' : '背景色なしで表示されます'
   )
 </script>

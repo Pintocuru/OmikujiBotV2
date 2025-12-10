@@ -2,119 +2,116 @@
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
     <!-- トースト・サムネイルサンプル表示 -->
-    <div v-if="base.showToasts">
-      <ChatBubbleItem
-        v-for="(message, i) in previewMessages"
-        :key="i"
-        :botMessage="message"
-        :showToastsOnRight="base.showToastsOnRight"
-        :character="base.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
-        :displaySize="base.displaySize"
-        :class="!base.showToastsOnRight ? 'self-start' : 'self-end'"
-      />
-    </div>
-    <div v-else class="p-2" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
-      (トーストの代わりにフキダシで表示されます)
-    </div>
+    <ChatBubbleItem
+      v-for="(message, i) in previewMessages"
+      :key="i"
+      :botMessage="message"
+      :showToastsOnRight="toast.showToastsOnRight"
+      :character="toast.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
+      :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'"
+    />
     <CharacterThumbnailsPreview
-      v-if="base.showCharacterThumbnail"
+      v-if="toast.showThumbnail.length !== 0"
       :characters="characterArray"
-      :displaySize="base.displaySize"
-      :class="!base.showToastsOnRight ? 'self-start' : 'self-end'"
+      :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'"
     />
   </div>
 
   <!-- 設定項目 -->
   <SettingItem
-    v-for="setting in settings"
-    :key="setting.field"
-    :label="setting.label"
-    :description="setting.description"
+    label="トースト位置"
+    description="通知メッセージを右側に表示するかどうか"
     :showReset="true"
-    :devMemo="setting.devMemo"
-    @reset="() => resetField(setting.field)"
+    @reset="resetMap.showToastsOnRight"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="base[setting.field] as boolean"
-        @change="(e) => updateField(setting.field, (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">{{ setting.text }}</span>
-    </label>
+    <input
+      type="checkbox"
+      class="toggle toggle-primary"
+      :checked="toast.showToastsOnRight"
+      @change="(e) => updateToastField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
+    />
+    <span class="ml-2">右側に表示する</span>
+  </SettingItem>
+
+  <SettingItem
+    label="キャラクター表示"
+    description="トーストにキャラクターアイコンを表示するか"
+    :showReset="true"
+    @reset="resetMap.showToastsCharacter"
+  >
+    <input
+      type="checkbox"
+      class="toggle toggle-primary"
+      :checked="toast.showToastsCharacter"
+      @change="(e) => updateToastField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
+    />
+    <span class="ml-2">キャラクターを表示する</span>
+  </SettingItem>
+
+  <SettingItem
+    label="サムネイル表示キャラクター"
+    description="右下にサムネイルとして表示するキャラクターを選択します"
+    :showReset="true"
+    @reset="resetMap.showThumbnail"
+  >
+    <select
+      multiple
+      class="select select-bordered w-full"
+      :value="toast.showThumbnail"
+      @change="
+        (e) =>
+          updateToastField(
+            'showThumbnail',
+            Array.from((e.target as HTMLSelectElement).selectedOptions).map((o) => o.value)
+          )
+      "
+    >
+      <option v-for="charKey in Object.keys(data.characters)" :key="charKey" :value="charKey">
+        {{ data.characters[charKey].displayName }}
+      </option>
+    </select>
   </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { z } from 'zod'
-  import { isDev } from '@/types'
+  import { storeToRefs } from 'pinia'
+  import { SettingsToastSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
-  import { BaseSettingsSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
-  import { storeToRefs } from 'pinia'
-
-  type BaseSettingsKey = keyof z.infer<typeof BaseSettingsSchema>
-
-  interface SettingConfig {
-    field: BaseSettingsKey
-    label: string
-    description: string
-    text: string
-    devMemo?: string
-    show?: () => boolean
-  }
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
+  const toast = computed(() => data.value.displaySettings.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
-  const base = computed(() => data.value.displaySettings.base)
 
-  const canShowCharacterSettings = computed(() => useVisibilityAccess().canShow('characterVisible'))
+  // 更新関数
+  const updateToastField = (field: keyof typeof toast.value, value: any) => {
+    omikujiStore.updateNestedDisplaySettings('components', {
+      toast: {
+        ...toast.value,
+        [field]: value,
+      },
+    })
+  }
 
-  // 設定項目の配列化
-  const settings = computed<SettingConfig[]>(() => {
-    const allSettings: SettingConfig[] = [
-      {
-        field: 'showToastsOnRight',
-        label: 'トースト・サムネイル位置',
-        description: '画面上部に通知メッセージを表示します',
-        text: 'OFFで左側、ONで右側に表示します',
-      },
-      {
-        field: 'showToasts',
-        label: 'トースト表示',
-        description: 'OFFの場合、すべてフキダシで表示します',
-        text: 'トーストを表示する',
-      },
-      {
-        field: 'showToastsCharacter',
-        label: 'トーストのキャラクター表示',
-        description: '表示できるキャラクターは default のみです',
-        text: 'トーストの隣にキャラクターアイコンを表示する',
-        devMemo: 'characterVisible',
-        show: () =>
-          (canShowCharacterSettings.value && base.value.showToasts) || (isDev && base.value.showToastsCharacter),
-      },
-      {
-        field: 'showCharacterThumbnail',
-        label: 'キャラクターサムネイル',
-        description: '右下にキャラクターのサムネイルを表示します',
-        text: 'キャラクターサムネイルを表示する',
-        devMemo: 'characterVisible',
-        show: () => canShowCharacterSettings.value || (isDev && base.value.showCharacterThumbnail),
-      },
-    ]
-    return allSettings.filter((s) => !s.show || s.show())
-  })
+  // リセット関数
+  const resetField = (field: keyof typeof toast.value) => {
+    const defaults = SettingsToastSchema.parse({})
+    updateToastField(field, defaults[field])
+  }
 
-  // 修正後の previewMessages
+  const resetMap = {
+    showToastsOnRight: () => resetField('showToastsOnRight'),
+    showToastsCharacter: () => resetField('showToastsCharacter'),
+    showThumbnail: () => resetField('showThumbnail'),
+  }
+
+  // プレビュー用メッセージ
   const previewMessages = computed(() => {
     return Array(2)
       .fill(null)
@@ -127,14 +124,4 @@
         })
       })
   })
-
-  const updateField = (field: BaseSettingsKey, value: any) => {
-    omikujiStore.updateDisplaySettings({
-      base: { ...base.value, [field]: value },
-    })
-  }
-
-  const resetField = (field: BaseSettingsKey) => {
-    updateField(field, BaseSettingsSchema.parse({})[field])
-  }
 </script>

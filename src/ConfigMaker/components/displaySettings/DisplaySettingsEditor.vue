@@ -33,26 +33,15 @@
       <BubbleComponentCharacterEditor />
     </SectionCard>
 
-    <!-- トーストコンポーネント -->
+    <!-- トースト・サムネイルコンポーネント -->
     <SectionCard
       v-if="conditions.includes('toast')"
       :isOpen="activeSection === 'toastComponent'"
       @toggle="toggleSection('toastComponent')"
-      title="トーストコンポーネント"
+      title="トースト・サムネイルコンポーネント"
       description="お知らせとして表示されるチャット表示"
     >
       <ToastComponentEditor />
-    </SectionCard>
-
-    <!-- サムネイルコンポーネント -->
-    <SectionCard
-      v-if="conditions.includes('thumbnail')"
-      :isOpen="activeSection === 'thumbnailComponent'"
-      @toggle="toggleSection('thumbnailComponent')"
-      title="サムネイルコンポーネント"
-      description="テストでも使えるサムネイル型の画像表示"
-    >
-      <ThumbnailComponentEditor />
     </SectionCard>
 
     <!-- ランキングコンポーネント -->
@@ -123,7 +112,6 @@
   import BubbleComponentEditor from './components/BubbleComponentEditor.vue'
   import BubbleComponentCharacterEditor from './components/BubbleComponentCharacterEditor.vue'
   import ToastComponentEditor from './components/ToastComponentEditor.vue'
-  import ThumbnailComponentEditor from './components/ThumbnailComponentEditor.vue'
   import RankingComponentEditor from './components/RankingComponentEditor.vue'
   import CounterComponentEditor from './components/CounterComponentEditor.vue'
 
