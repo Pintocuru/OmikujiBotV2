@@ -2,11 +2,13 @@
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 import { migrateV100ToV130 } from './v1_to_v2/OmikujiDataV1/migrateV100ToV130'
+import { migrateV130ToV200 } from './v1_to_v2/OmikujiDataV1/migrateV130ToV200'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
  */
 export function normalizeData(data: unknown): OmikujiDataType {
+  console.log('ss')
   // データにメタ情報がなければ、初期データとして扱う
   if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す
@@ -39,13 +41,10 @@ export function normalizeData(data: unknown): OmikujiDataType {
     updatedData = migrateV100ToV130(updatedData)
   }
 
-  /*
-  // 将来的なマイグレーション処理
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1 to v2...')
     updatedData = migrateV130ToV200(updatedData)
   }
-  */
 
   return updatedData
 }

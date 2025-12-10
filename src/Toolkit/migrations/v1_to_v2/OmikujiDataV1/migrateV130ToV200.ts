@@ -7,21 +7,40 @@ import {
   SettingsComponentsSchema,
   SettingsCounterSchema,
   SettingsEditorSchema,
+  SettingsGlobalSchema,
   SettingsRankingSchema,
-  SettingsThumbnailSchema,
   SettingsToastSchema,
 } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+
+/**
+ * v1からv1.3へのマイグレーション
+ * omikuji配列内のオブジェクトのkeyが空文字の場合、idをコピーする
+ */
+export function migrateV130ToV200(data: any): OmikujiDataType {
+  const migratedData = { ...data }
+
+  // comments のマイグレーション
+  if (migratedData.displaySettings) {
+    migratedData.displaySettings = migrateDisplaySettings(migratedData.displaySettings)
+  }
+
+  console.log('Migration to v1.3 completed: omikuji keys補完完了')
+  return migratedData
+}
 
 // 新スキーマへのマイグレーション
 function migrateDisplaySettings(old: any): DisplaySettingsType {
   const base = old.base ?? {}
 
+  const global = SettingsGlobalSchema.parse({
+    fontFamily: base.fontFamily ?? 'default',
+  })
+
   const bubble = SettingsBubbleSchema.parse({
     showCharacters: [], // 新設 → 空配列
     showCharacterFrame: base.showCharacterFrame ?? true,
     characterSize: 320, // 新設 → デフォルト
-    fontFamily: base.fontFamily ?? 'default',
     bubbleMotionEnter: base.bubbleMotionEnter ?? 'slideUp',
     bubbleMotionLeave: base.bubbleMotionLeave ?? 'slideUp',
     bubbleTextAnimate: base.bubbleTextAnimate ?? false,
@@ -32,10 +51,7 @@ function migrateDisplaySettings(old: any): DisplaySettingsType {
   const toast = SettingsToastSchema.parse({
     showToastsOnRight: base.showToastsOnRight ?? true,
     showToastsCharacter: base.showToastsCharacter ?? false,
-  })
-
-  const thumbnail = SettingsThumbnailSchema.parse({
-    showThumbnail: base.showCharacterThumbnail ? ['default'] : [],
+    showThumbnail: [],
   })
 
   const ranking = SettingsRankingSchema.parse({
@@ -48,10 +64,11 @@ function migrateDisplaySettings(old: any): DisplaySettingsType {
   })
 
   const counter = SettingsCounterSchema.parse({
-    id: null,
+    ruleKey: null,
     target: 'runCount',
     label: 'Counter',
-    value: 0,
+    firstValue: 0,
+    isDirectionUp: true,
     color: 'dark',
     showLabel: true,
   })
@@ -59,7 +76,6 @@ function migrateDisplaySettings(old: any): DisplaySettingsType {
   const components = SettingsComponentsSchema.parse({
     bubble,
     toast,
-    thumbnail,
     ranking,
     counter,
   })
@@ -72,6 +88,7 @@ function migrateDisplaySettings(old: any): DisplaySettingsType {
   const developer = DeveloperSettingsSchema.parse(old.developer ?? {})
 
   return DisplaySettingsSchema.parse({
+    global,
     components,
     editor,
     developer,
