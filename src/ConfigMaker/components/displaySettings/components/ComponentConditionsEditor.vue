@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\displaySettings\components\ComponentConditionsEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\components\ComponentConditionsEditor.vue -->
 <template>
   <!-- コンポーネント表示設定 -->
   <SettingItem label="適用する発動条件" description="トリガーの種類を選択">

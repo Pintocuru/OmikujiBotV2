@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\displaySettings\components\RankingComponentEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\components\RankingComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- プレビュー -->
@@ -24,7 +24,7 @@
       <input
         type="text"
         class="input input-bordered w-full"
-        :value="ranking.scriptId || ''"
+        :value="ranking.scriptKey || ''"
         @input="(e) => updateRankingField('scriptId', (e.target as HTMLInputElement).value || null)"
       />
     </SettingItem>

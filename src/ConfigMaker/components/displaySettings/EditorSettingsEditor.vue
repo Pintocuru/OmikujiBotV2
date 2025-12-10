@@ -3,8 +3,8 @@
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
-      :value="base.daisyUiTheme"
-      @change="(e) => updateBaseField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
+      :value="editor.daisyUiTheme"
+      @change="(e) => updateEditorField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
       :disabled="!isPro"
     >
@@ -59,27 +59,26 @@
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'
 
-  // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro, isGod } = useSettingMode()
 
-  // 個別のcomputed値（読み取り専用）
-  const base = computed(() => data.value.displaySettings.base)
-  const licenseKeyHash = computed(() => data.value.displaySettings.licenseKeyHash)
+  // v2では editor を参照
+  const editor = computed(() => data.value.displaySettings.editor)
+  const licenseKeyHash = computed(() => editor.value.licenseKeyHash)
 
-  // 汎用的な更新関数
-  const updateBaseField = (field: keyof typeof base.value, value: any) => {
-    omikujiStore.updateDisplaySettings({
-      base: {
-        ...base.value,
-        [field]: value,
-      },
+  // DaisyUIテーマ更新
+  const updateEditorField = (field: keyof typeof editor.value, value: any) => {
+    omikujiStore.updateNestedDisplaySettings('editor', {
+      ...editor.value,
+      [field]: value,
     })
   }
 
+  // ライセンスキー更新
   const updateLicenseKeyHash = (value: string) => {
-    omikujiStore.updateDisplaySettings({
+    omikujiStore.updateNestedDisplaySettings('editor', {
+      ...editor.value,
       licenseKeyHash: value,
     })
   }

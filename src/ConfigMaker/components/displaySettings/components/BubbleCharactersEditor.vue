@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\displaySettings\components\BubbleCharactersEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\components\BubbleCharactersEditor.vue -->
 <template>
   <div class="card bg-base-100">
     <div class="card-body gap-4">

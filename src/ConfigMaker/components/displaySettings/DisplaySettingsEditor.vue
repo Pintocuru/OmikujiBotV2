@@ -66,6 +66,17 @@
       <CounterComponentEditor />
     </SectionCard>
 
+    <!-- ジェネレーター全体の設定 -->
+    <SectionCard
+      :isOpen="activeSection === 'globalSettings'"
+      @toggle="toggleSection('globalSettings')"
+      variant="warning"
+      title="ジェネレーター設定"
+      description="ジェネレーター全体の設定"
+    >
+      <SettingsGlobalEditor />
+    </SectionCard>
+
     <!-- エディター設定 -->
     <SectionCard
       :isOpen="activeSection === 'editorSettings'"
@@ -74,17 +85,6 @@
       description="エディター自体の見た目とライセンスの設定"
     >
       <EditorSettingsEditor />
-    </SectionCard>
-
-    <!-- グローバル設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'globalSettings'"
-      @toggle="toggleSection('globalSettings')"
-      variant="warning"
-      title="起動時設定"
-      description="作られたコンポーネントって、まるで育てた自分の子供みたいね。"
-    >
-      <StartupSettings />
     </SectionCard>
 
     <!-- 開発者用設定 -->
@@ -115,16 +115,13 @@
   import RankingComponentEditor from './components/RankingComponentEditor.vue'
   import CounterComponentEditor from './components/CounterComponentEditor.vue'
 
-  import CommentBubbleEditor from './CommentBubbleEditor.vue'
-  import ToastBubbleEditor from './ToastBubbleEditor.vue'
-  import ShowCharacterEditor from './ShowCharacterEditor.vue'
+  import SettingsGlobalEditor from './global/SettingsGlobalEditor.vue'
+
   import EditorSettingsEditor from './EditorSettingsEditor.vue'
-  import StartupSettings from './StartupSettings.vue'
   import VisibilitySettings from './VisibilitySettings.vue'
   import DeveloperModeInfo from './DeveloperModeInfo.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 

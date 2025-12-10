@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\displaySettings\components\ThumbnailComponentEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\components\ThumbnailComponentEditor.vue -->
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
     <!-- トースト・サムネイルサンプル表示 -->
