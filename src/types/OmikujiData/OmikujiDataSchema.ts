@@ -7,8 +7,7 @@ import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'
 import { recordNormalization } from './OmikujiDataNormalize'
 import { PackageJsonSchema } from '@shared/types'
 import { WordPartySettingsSchema } from './WordPartySettings'
-import { scriptSettingsSchema } from '../GameScript/GameScriptSettingsSchema'
-import { PostActionRecordSchema } from './OmikujiSchema'
+import { ActionSetSchema } from './OmikujiSchema'
 import { JsonMergeSchema } from './JsonMergeType'
 
 /**
@@ -19,10 +18,9 @@ export const OmikujiDataSchema = z.object({
   jsonMerge: JsonMergeSchema.catch([]),
   comments: recordNormalization(CommentRuleSchema),
   timers: recordNormalization(TimerRuleSchema),
-  actionSets: recordNormalization(PostActionRecordSchema),
+  actionSets: recordNormalization(ActionSetSchema),
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),
-  scriptSettings: scriptSettingsSchema.catch({}),
   displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
   wordPartySettings: z.array(WordPartySettingsSchema).catch([]),
 })

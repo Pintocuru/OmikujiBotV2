@@ -21,7 +21,7 @@ import {
   MessagesSquare,
   Layers,
 } from 'lucide-vue-next'
-import { PostActionRecordSchema, PostActionRecordType } from './OmikujiSchema'
+import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
  * RecordCategory
@@ -48,7 +48,7 @@ export type RecordCategoryItemTypeMap = {
 export const RecordCategorySchemaMap = {
   comments: CommentRuleSchema,
   timers: TimerRuleSchema,
-  actionSets: PostActionRecordSchema,
+  actionSets: ActionSetSchema,
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,
 } as const

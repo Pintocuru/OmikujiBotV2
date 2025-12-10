@@ -23,6 +23,9 @@ export const PostActionMessageBodySchema = z
     bubble: z.string().optional().catch(undefined),
     toast: z.string().optional().catch(undefined),
     rankingRank: z.string().optional().catch(undefined),
+    rankingName: z.string().optional().catch(undefined),
+    rankingPoint: z.string().optional().catch(undefined),
+    rankingSymbol: z.string().optional().catch(undefined),
     dialog: z.string().optional().catch(undefined),
   })
   .default({})
@@ -81,42 +84,32 @@ export const PostActionArraySchema = z
   })
 
 /**
- * OmikujiItem 共通フィールド
+ * GameScriptsSchema ゲームスクリプト用
  */
-export const OmikujiItemCommonSchema = z.object({
+export const GameScriptsSchema = z.object({
+  scriptId: z.union([z.string(), z.null()]).default(null).catch(null),
+  scriptParams: z.string().default('').catch(''),
+  characterKey: z.string().default('').catch(''),
+})
+
+/**
+ * PostActionRecordSchema
+ */
+export const ActionSetSchema = z.object({
+  ...BaseRecordSchema.shape,
+  postActions: PostActionArraySchema.default([]).catch([]),
+  gameScripts: z.union([GameScriptsSchema, z.null()]).default(null).catch(null),
+})
+
+/**
+ * OmikujiItemSchema
+ */
+export const OmikujiItemSchema = z.object({
+  ...ActionSetSchema.shape,
   weight: z.number().min(0).default(1).catch(1),
   rank: z.number().min(0).default(1).catch(1),
   criteria: CommentThresholdSchema.default(CommentThresholdSchema.parse({})).catch(CommentThresholdSchema.parse),
 })
-
-/**
- * PostActionSetSchema アクションセットデータ
- */
-export const PostActionRecordSchema = z.object({
-  ...BaseRecordSchema.shape,
-  ...OmikujiItemCommonSchema.shape,
-  type: z.literal('postActions'),
-  postActions: PostActionArraySchema,
-})
-
-/**
- * OmikujiItem (gameScripts版)
- */
-export const OmikujiGameScriptsSchema = z.object({
-  ...BaseRecordSchema.shape,
-  ...OmikujiItemCommonSchema.shape,
-  type: z.literal('gameScripts'),
-  gameScripts: z.object({
-    scriptId: z.union([z.string(), z.null()]).default(null).catch(null),
-    scriptParams: z.string().default('').catch(''),
-    characterKey: z.string().default('').catch(''),
-  }),
-})
-
-/**
- * OmikujiItem 抽選用重さ付きおみくじデータ
- */
-export const OmikujiItemSchema = z.discriminatedUnion('type', [PostActionRecordSchema, OmikujiGameScriptsSchema])
 
 /**
  * OmikujiSet おみくじ
@@ -140,14 +133,13 @@ export const OmikujiSetSchema = z
 /**
  * PostActionSetSchema アクションセットデータ
  */
-export const PostActionSetSchema = z.record(z.string(), PostActionRecordSchema).default({}).catch({})
+export const PostActionSetSchema = z.record(z.string(), OmikujiItemSchema).default({}).catch({})
 
 // 型定義
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
-export type PostActionRecordType = z.infer<typeof PostActionRecordSchema>
-export type OmikujiGameScriptsType = z.infer<typeof OmikujiGameScriptsSchema>
+export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
