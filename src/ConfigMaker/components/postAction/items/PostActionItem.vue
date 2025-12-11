@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType, RulesCategoryType } from '@/types/'
+  import { PostActionSchema, PostActionType, RulesCategoryType } from '@/types/'
   import MessageSettings from './MessageSettings.vue'
   import ToastSettings from './ToastSettings.vue'
   import SoundSettings from './SoundSettings.vue'
@@ -78,9 +78,8 @@
   // アクションタイプの定義
   const actionTypes = [
     { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
-    { type: 'toast' as const, label: 'トースト', icon: Bell },
+    { type: 'sound' as const, label: 'サウンド', icon: Music },
     { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
-    { type: 'sounds' as const, label: 'サウンド', icon: Music },
     { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
   ]
 
@@ -90,7 +89,7 @@
       message: MessageSettings,
       toast: ToastSettings,
       wordParty: WordPartySettings,
-      sounds: SoundSettings,
+      sound: SoundSettings,
       actionSet: ActionSetSettings,
       legacy: null,
     }
@@ -108,11 +107,14 @@
 
   // アクションタイプの更新
   const updateActionType = (newType: PostActionType['actionType']) => {
-    const updatedAction: PostActionType = {
-      ...props.action,
-      actionType: newType,
+    const basePayload = { ...props.action, actionType: newType }
+
+    try {
+      const newAction = PostActionSchema.parse(basePayload)
+      emit('update:action', newAction)
+    } catch (error) {
+      console.error(`Action type change failed Zod validation for type "${newType}":`, error)
     }
-    emit('update:action', updatedAction)
   }
 
   // アクション更新のハンドラー

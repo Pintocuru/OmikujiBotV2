@@ -8,6 +8,7 @@ import { migrateV130ToV200 } from './v1_to_v2/OmikujiDataV1/migrateV130ToV200'
  * データを現在のアプリのバージョンに合わせてマイグレーションする
  */
 export function normalizeData(data: unknown): OmikujiDataType {
+  
   // データにメタ情報がなければ、初期データとして扱う
   if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す
@@ -23,18 +24,9 @@ export function normalizeData(data: unknown): OmikujiDataType {
   // dataVersionを数値として取得。存在しない場合はv1と見なす。
   const currentDataVersion = (data as any)?.meta?.dataVersion ?? 1
 
-  // メタ情報を最新バージョンに更新
-  let parsedData = OmikujiDataSchema.parse(data)
-  let updatedData: OmikujiDataType = {
-    ...parsedData,
-    meta: {
-      ...parsedData.meta,
-      generatorVersion: APP_VERSION,
-      dataVersion: DATA_VERSION,
-    },
-  }
+  // まずは生データをそのまま使う
+  let updatedData: any = { ...data }
 
-  // バージョン
   if (currentDataVersion < 1.3) {
     console.log('Migrating data from v1 to v1.3...')
     updatedData = migrateV100ToV130(updatedData)
@@ -45,5 +37,13 @@ export function normalizeData(data: unknown): OmikujiDataType {
     updatedData = migrateV130ToV200(updatedData)
   }
 
-  return updatedData
+  // 最後にスキーマで保証
+  return OmikujiDataSchema.parse({
+    ...updatedData,
+    meta: {
+      ...updatedData.meta,
+      generatorVersion: APP_VERSION,
+      dataVersion: DATA_VERSION,
+    },
+  })
 }

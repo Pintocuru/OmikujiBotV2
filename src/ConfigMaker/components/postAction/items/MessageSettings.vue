@@ -14,34 +14,30 @@
     <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
   </SettingItem>
 
-  <!-- エンターモーション -->
-  <SettingItem
-    v-if="isDev && characterKey !== ''"
-    label="✨ 表示アニメーション(dev)"
-    description="キャラクターにかかるアニメーションを選択"
-  >
-    <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
-      <option value="">なし</option>
-      <option v-for="animation in motionLabel" :key="animation" :value="animation">
-        {{ animation }}
-      </option>
-    </select>
+  <!-- 表示形式の選択（単一） -->
+  <SettingItem label="表示形式" description="フキダシかトーストを選択してください">
+    <label class="mr-4">
+      <input type="radio" value="bubble" :checked="messageType === 'bubble'" @change="handleTypeChange" />
+      💬 フキダシ
+    </label>
+    <label>
+      <input type="radio" value="toast" :checked="messageType === 'toast'" @change="handleTypeChange" />
+      📝 トースト
+    </label>
   </SettingItem>
 
-  <!-- メッセージ内容 -->
-  <SettingItem label="📝 メッセージ内容" description="フキダシに表示する内容">
+  <!-- 単一の入力欄：messageType に応じてラベル／説明／プレースホルダ／バインド先を切替 -->
+  <SettingItem
+    :label="messageType === 'bubble' ? '💬 フキダシ内容' : '📝 トースト内容'"
+    :description="messageType === 'bubble' ? 'フキダシに表示する内容' : 'トーストに表示する内容'"
+  >
     <input
       type="text"
-      v-model="messageContent"
+      v-model="messageText"
       class="input input-bordered input-sm w-full"
-      placeholder="投稿するメッセージを入力してください"
+      :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
     />
-    <PlaceholderChecker :text="messageContent" />
-  </SettingItem>
-
-  <!-- WordParty -->
-  <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
-    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
+    <PlaceholderChecker v-if="messageText !== ''" :text="messageText" />
   </SettingItem>
 
   <!-- サウンド -->
@@ -56,56 +52,96 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { PostActionType, CharacterEmotionType, isDev } from '@/types/'
-  import WordPartyField from './WordPartyField.vue'
+  import { computed, ref } from 'vue'
+  import { CharacterEmotionType, PostActionMessageType } from '@/types/'
   import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from './PlaceholderChecker.vue'
-  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { soundList } from '@/Toolkit/sounds/soundMap'
 
   const props = defineProps<{
-    action: PostActionType
+    action: PostActionMessageType
     characterOptions: Array<{ value: string; label: string }>
   }>()
 
   const emit = defineEmits<{
-    'update:action': [action: PostActionType]
+    'update:action': [action: PostActionMessageType]
   }>()
 
-  // 共通のupdateAction関数
-  const updateAction = (updates: Partial<PostActionType>) => {
+  const updateAction = (updates: Partial<PostActionMessageType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
 
-  // Computed properties
   const characterKey = computed({
     get: () => props.action.characterKey,
     set: (value) => updateAction({ characterKey: value }),
   })
 
-  const messageContent = computed({
-    get: () => props.action.messageContent,
-    set: (value) => updateAction({ messageContent: value }),
+  // 既存値から初期選択を決定
+  const messageType = ref<'bubble' | 'toast'>(
+    props.action.message.bubble && props.action.message.bubble !== ''
+      ? 'bubble'
+      : props.action.message.toast && props.action.message.toast !== ''
+        ? 'toast'
+        : 'bubble'
+  )
+
+  // 単一 input の v-model 用（選択側の値だけを編集）
+  const messageText = computed<string>({
+    get: () =>
+      messageType.value === 'bubble' ? (props.action.message.bubble ?? '') : (props.action.message.toast ?? ''),
+    set: (value) => {
+      if (messageType.value === 'bubble') {
+        updateAction({
+          message: {
+            ...props.action.message,
+            bubble: value,
+          },
+        })
+      } else {
+        updateAction({
+          message: {
+            ...props.action.message,
+            toast: value,
+          },
+        })
+      }
+    },
   })
 
-  const wordPartyValue = computed({
-    get: () => props.action.wordParty,
-    set: (value) => updateAction({ wordParty: value }),
-  })
+  // ラジオ切替：選択を変えた瞬間に「選ばれた側へ内容を移し、元の側を空にする」
+  const handleTypeChange = (event: Event) => {
+    const newType = (event.target as HTMLInputElement).value as 'bubble' | 'toast'
+    const prevType = messageType.value
+
+    if (newType === 'toast' && prevType === 'bubble') {
+      // bubble → toast に移動
+      updateAction({
+        message: {
+          ...props.action.message,
+          toast: props.action.message.bubble ?? '',
+          bubble: '',
+        },
+      })
+    } else if (newType === 'bubble' && prevType === 'toast') {
+      // toast → bubble に移動
+      updateAction({
+        message: {
+          ...props.action.message,
+          bubble: props.action.message.toast ?? '',
+          toast: '',
+        },
+      })
+    }
+
+    messageType.value = newType
+  }
 
   const sound = computed({
     get: () => props.action.sound || '',
     set: (value) => updateAction({ sound: value || undefined }),
   })
 
-  const enterMotion = computed({
-    get: () => props.action.enterMotion || '',
-    set: (value) => updateAction({ enterMotion: value || undefined }),
-  })
-
-  // アイコン更新（型安全にするため）
   const updateIconKey = (value: string) => {
     updateAction({ iconKey: value as CharacterEmotionType })
   }

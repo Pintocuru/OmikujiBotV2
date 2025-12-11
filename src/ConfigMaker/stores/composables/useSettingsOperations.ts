@@ -3,7 +3,6 @@ import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { DisplaySettingsType } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { WordPartySettings } from '@/types/OmikujiData/WordPartySettings'
-import { ScriptSettingsType } from '@/types/GameScript/GameScriptSettingsSchema'
 import { MetaDataType } from '@shared/types'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
 
@@ -12,11 +11,7 @@ import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
  * の操作機能を提供するコンポーザブル
  */
 export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
-  // scriptSettingsを更新する関数
-  const updateScriptSettings = (updates: Partial<ScriptSettingsType>) => {
-    data.value.scriptSettings = { ...data.value.scriptSettings, ...updates } as ScriptSettingsType
-    hasChanged.value = true
-  }
+
 
   // displaySettings を更新する関数
   const updateDisplaySettings = (updates: Partial<DisplaySettingsType>) => {
@@ -55,7 +50,6 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   }
 
   return {
-    updateScriptSettings,
     updateDisplaySettings,
     updateNestedDisplaySettings,
     updateWordPartySettings,
