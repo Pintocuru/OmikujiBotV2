@@ -100,9 +100,7 @@
   // 遅延秒数のcomputed
   const delaySeconds = computed({
     get: () => props.action.delaySeconds,
-    set: (value) => {
-      emit('update:action', { ...props.action, delaySeconds: value })
-    },
+    set: (value) => emit('update:action', { ...props.action, delaySeconds: value }),
   })
 
   // アクションタイプの更新
