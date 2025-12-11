@@ -7,7 +7,7 @@ import ErrorHandler from '@shared/utils/ErrorHandler/ErrorHandler'
 import 'vue-sonner/style.css'
 import '../assets/styles/font.css'
 import '../assets/styles/DaisyUiAllObs.css'
-import OneSDK from '@onecomme.com/onesdk'
+import OneSDK from '@onecomme.com/onesdk/'
 
 function initApp() {
   try {
