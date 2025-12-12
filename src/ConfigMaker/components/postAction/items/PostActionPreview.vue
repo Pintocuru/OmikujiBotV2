@@ -10,7 +10,7 @@
           :simpleMessage="processedToastMessage"
           :showToastsOnRight="true"
           :character="character"
-          :isCharacterDisplay="toastSettings.showThumbnail.length > 0"
+          :isCharacterDisplay="toastSettings.showToastsCharacter"
         />
       </div>
 
