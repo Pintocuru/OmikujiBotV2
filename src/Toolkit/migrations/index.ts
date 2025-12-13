@@ -1,14 +1,14 @@
 // src/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
-import { migrateV100ToV130 } from './v1_to_v2/OmikujiDataV1/migrateV100ToV130'
-import { migrateV130ToV200 } from './v1_to_v2/OmikujiDataV1/migrateV130ToV200'
+import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
+import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
+import { OmikujiDataTypeV1 } from './v1_to_v2/OmikujiDataV1/OmikujiDataSchema'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
  */
 export function normalizeData(data: unknown): OmikujiDataType {
-  
   // データにメタ情報がなければ、初期データとして扱う
   if (!data || typeof data !== 'object' || !('meta' in data)) {
     // OmikujiDataSchemaのデフォルト値を返す

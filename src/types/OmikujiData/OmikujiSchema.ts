@@ -8,6 +8,8 @@ import { BaseRecordSchema } from '@shared/types'
 import { soundList } from '@/Toolkit/sounds/soundMap'
 import { CommentThresholdSchema } from '../OmikujiProcess/CommentThresholdSchema'
 
+import { PostActionType as OldPostActionType } from '@/Toolkit/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
+
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
   delaySeconds: z
@@ -97,7 +99,17 @@ export const GameScriptsSchema = z.object({
  */
 export const ActionSetSchema = z.object({
   ...BaseRecordSchema.shape,
-  postActions: PostActionArraySchema.default([]).catch([]),
+  postActions: z
+    .array(z.any()) // ★ ここで z.any() を使って古い型を受け入れ
+    .default([])
+    .catch([])
+    .transform((oldActions) => {
+      // 1. マイグレーション関数の適用
+      const migratedActions = oldActions.flatMap(migratePostAction)
+
+      // 2. delaySecondsでソートし、新しい型として返す
+      return migratedActions.sort((a, b) => a.delaySeconds - b.delaySeconds) as PostActionType[]
+    }),
   gameScripts: z.union([GameScriptsSchema, z.null()]).default(null).catch(null),
 })
 
@@ -146,3 +158,89 @@ export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
+
+// ---
+// マイグレーション用関数
+
+/**
+ * 古い PostAction オブジェクトを新しい判別共用体形式 (PostActionSchema) にマイグレーションする。
+ * messageContent/messageToast を message.bubble/message.toast に変換し、
+ * 古い単一のアクションから複数のアクションが生成される可能性があるため、配列を返します。
+ */
+function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
+  const newActions: PostActionType[] = []
+
+  const baseFields = {
+    delaySeconds: oldAction.delaySeconds ?? 0,
+  }
+
+  // 1. actionSet の移行 (最優先)
+  if (oldAction.actionSetKey && oldAction.actionSetKey.trim() !== '') {
+    newActions.push({
+      ...baseFields,
+      actionType: 'actionSet',
+      actionSetKey: oldAction.actionSetKey,
+    } as PostActionType)
+    /**
+     * 型 '({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } |...' を型 '{ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } | ...' に割り当てることはできません。ts(2322)
+     */
+    return newActions
+  }
+
+  // 2. message / toast の移行 (新しい 'message' actionTypeに集約)
+  const hasMessageOrToast =
+    (oldAction.messageContent && oldAction.messageContent.trim() !== '') ||
+    (oldAction.messageToast && oldAction.messageToast.trim() !== '')
+
+  if (hasMessageOrToast) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'message',
+      characterKey: oldAction.characterKey ?? '',
+      iconKey: oldAction.iconKey ?? 'default',
+      enterMotion: oldAction.enterMotion,
+      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
+      message: {
+        bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
+        toast: oldAction.messageToast, // ★ messageToast -> message.toast
+      },
+    } as PostActionType)
+  }
+
+  // 3. wordParty の移行
+  if (oldAction.wordParty && oldAction.wordParty.trim() !== '') {
+    newActions.push({
+      ...baseFields,
+      actionType: 'wordParty',
+      wordParty: oldAction.wordParty,
+    } as PostActionType)
+  }
+
+  // 4. sound の移行 (messageアクションに統合されなかった場合のみ)
+  const isSoundOnly = oldAction.sound && oldAction.sound.trim() !== '' && !hasMessageOrToast
+  if (isSoundOnly) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'sound',
+      sound: oldAction.sound as z.infer<typeof PostActionSoundSchema>['sound'],
+    } as PostActionType)
+  }
+
+  // 5. フォールバック (何も設定されていなかった場合)
+  if (newActions.length === 0) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'message',
+      characterKey: oldAction.characterKey ?? '',
+      iconKey: oldAction.iconKey ?? 'default',
+      enterMotion: oldAction.enterMotion,
+      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
+      message: {},
+    } as PostActionType)
+  }
+
+  /**
+   * 型 '({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } |...' を型 '{ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } | ...' に割り当てることはできません。ts(2322)
+   */
+  return newActions
+}

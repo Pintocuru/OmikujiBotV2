@@ -1,11 +1,11 @@
 // src\Toolkit\migrations\v1_to_v2\OmikujiDataV1\migrateV1ToV13.ts
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
 
 /**
  * v1からv1.3へのマイグレーション
  * omikuji配列内のオブジェクトのkeyが空文字の場合、idをコピーする
  */
-export function migrateV100ToV130(data: OmikujiDataType): OmikujiDataType {
+export function migrateV100ToV130(data: OmikujiDataTypeV1): OmikujiDataTypeV1 {
   const migratedData = { ...data }
 
   // comments のマイグレーション

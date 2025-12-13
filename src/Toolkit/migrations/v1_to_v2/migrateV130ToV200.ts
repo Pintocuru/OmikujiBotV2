@@ -13,13 +13,14 @@ import {
 } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
 
 /**
  * v1からv1.3へのマイグレーション
  * omikuji配列内のオブジェクトのkeyが空文字の場合、idをコピーする
  */
-export function migrateV130ToV200(data: any): OmikujiDataType {
-  const migratedData = { ...data }
+export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
+  const migratedData: any = { ...data }
 
   // comments のマイグレーション
   if (migratedData.displaySettings) {
@@ -41,7 +42,7 @@ export function migrateV130ToV200(data: any): OmikujiDataType {
 }
 
 // 新スキーマへのマイグレーション
-function migrateDisplaySettings(old: any): DisplaySettingsType {
+function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): DisplaySettingsType {
   const base = old.base ?? {}
 
   const global = SettingsGlobalSchema.parse({
