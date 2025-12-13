@@ -5,7 +5,7 @@
       v-if="visible"
       ref="motionElement"
       v-motion="motionKey"
-      :initial="enterVariant.initial"
+      :initial="initialVariant.initial"
       :enter="enterVariant.enter"
       :leave="leaveVariant.leave"
       v-bind="$attrs"
@@ -18,14 +18,15 @@
 <script setup lang="ts">
   import { ref, computed, nextTick, watch, onMounted, onBeforeUnmount } from 'vue'
   import { MotionVariants, useMotion } from '@vueuse/motion'
-  import { LoopMotionType, MotionType, motionVariants } from './MotionVariants'
+  import { LoopMotionType, loopMotionVariants, MotionType, motionVariants } from './MotionVariants'
 
   // Props定義
   // TODO: v2.0でLoopMotionType も許可したい
   const props = withDefaults(
     defineProps<{
       visible?: boolean
-      enterMotion?: MotionType
+      initialMotion?: MotionType
+      enterMotion?: LoopMotionType
       leaveMotion?: MotionType
       motionKey?: string
       autoHide?: boolean
@@ -33,6 +34,7 @@
     }>(),
     {
       visible: true,
+      initialMotion: 'none',
       enterMotion: 'none',
       leaveMotion: 'none',
       motionKey: 'motion',
@@ -51,7 +53,8 @@
   }>()
 
   // アニメーション設定の算出
-  const enterVariant = computed(() => motionVariants[props.enterMotion])
+  const initialVariant = computed(() => motionVariants[props.initialMotion])
+  const enterVariant = computed(() => loopMotionVariants[props.enterMotion])
   const leaveVariant = computed(() => motionVariants[props.leaveMotion])
 
   // 要素の参照
@@ -65,7 +68,7 @@
   const initializeMotion = () => {
     if (motionElement.value) {
       motionInstance = useMotion(motionElement.value, {
-        initial: enterVariant.value.initial,
+        initial: initialVariant.value.initial,
         enter: enterVariant.value.enter,
         leave: leaveVariant.value.leave,
       } as MotionVariants<string>)
@@ -162,7 +165,7 @@
   }
 
   // アニメーション設定の変更を監視
-  watch([() => props.enterMotion, () => props.leaveMotion], async () => {
+  watch([() => props.initialMotion, () => props.leaveMotion], async () => {
     if (props.visible) {
       emit('update:visible', false)
       await nextTick()

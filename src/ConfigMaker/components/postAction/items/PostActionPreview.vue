@@ -11,7 +11,7 @@
         @click="handleMessageClick"
         class="cursor-pointer"
       />
-      <MotionWrapper :key="`motion-${messageRefreshKey}`" :enter-motion="action.enterMotion" :auto-hide="false">
+      <MotionWrapper :key="`motion-${messageRefreshKey}`" :initialMotion="action.enterMotion" :auto-hide="false">
         <CharacterPreview
           v-if="character.image?.default && character.displayOption.isIconDisplay"
           :characters="characters"
@@ -47,7 +47,7 @@
         @click="handleMessageClick"
         class="cursor-pointer"
       />
-      <MotionWrapper :key="`motion-${messageRefreshKey}`" :enter-motion="action.enterMotion" :auto-hide="false">
+      <MotionWrapper :key="`motion-${messageRefreshKey}`" :initialMotion="action.enterMotion" :auto-hide="false">
         <CharacterPreview
           v-if="character.image?.default && character.displayOption.isIconDisplay"
           :characters="characters"

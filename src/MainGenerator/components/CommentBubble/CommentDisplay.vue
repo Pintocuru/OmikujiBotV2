@@ -11,7 +11,7 @@
   >
     <MotionWrapper
       v-model:visible="message.visible"
-      :enter-motion="enterMotion"
+      :initialMotion="enterMotion"
       :leave-motion="leaveMotion"
       :auto-hide="false"
       @after-leave="() => removeComment(message.id)"

@@ -15,14 +15,15 @@
   </SettingItem>
 
   <!-- エンターモーション -->
+  <!-- TODO: -->
   <SettingItem
     v-if="isDev && characterKey !== ''"
     label="✨ 表示アニメーション(dev)"
     description="キャラクターにかかるアニメーションを選択"
   >
     <select v-model="enterMotion" class="select select-bordered select-sm w-full max-w-xs">
-      <option value="">なし</option>
-      <option v-for="animation in motionLabel" :key="animation" :value="animation">
+      <option disabled value="">なし</option>
+      <option v-for="animation in loopMotionLabel" :key="animation" :value="animation">
         {{ animation }}
       </option>
     </select>
@@ -39,11 +40,6 @@
     <PlaceholderChecker :text="messageContent" />
   </SettingItem>
 
-  <!-- WordParty -->
-  <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
-    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
-  </SettingItem>
-
   <!-- サウンド -->
   <SettingItem label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
@@ -58,11 +54,10 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType, CharacterEmotionType, isDev } from '@/types/'
-  import WordPartyField from './WordPartyField.vue'
   import IconSelector from '@ConfigComponents/rules/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from './PlaceholderChecker.vue'
-  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { loopMotionLabel, motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { soundList } from '@/Toolkit/sounds/soundMap'
 
   const props = defineProps<{

@@ -3,7 +3,7 @@
   <div v-for="(message, index) in displayedComments.slice().reverse()" :key="message.id">
     <MotionWrapper
       v-model:visible="message.visible"
-      :enter-motion="!base.showToastsOnRight ? 'slideRight' : 'slideLeft'"
+      :initialMotion="!base.showToastsOnRight ? 'slideRight' : 'slideLeft'"
       :leave-motion="!base.showToastsOnRight ? 'slideLeft' : 'slideRight'"
       :auto-hide="false"
       @after-leave="() => removeComment(message.id)"

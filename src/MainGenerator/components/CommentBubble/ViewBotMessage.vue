@@ -13,7 +13,7 @@
       >
         <template #default="{ message, index }">
           <!-- キャラクター -->
-          <MotionWrapper :enter-motion="message.enterMotion" :auto-hide="false">
+          <MotionWrapper :initialMotion="message.enterMotion" :auto-hide="false">
             <CharacterAvatar
               class="absolute top-[80px] top-1/2 left-1/2 -translate-x-1/2 transform"
               :profile-image="message.profileImage"

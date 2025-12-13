@@ -31,12 +31,10 @@
   const displayText = (action: PostActionType) => {
     switch (action.actionType) {
       case 'message':
-        return action.messageContent
-      case 'toast':
-        return action.messageToast
+        return action.message.bubble || action.message.toast || 'error'
       case 'wordParty':
         return action.wordParty
-      case 'sounds':
+      case 'sound':
         return action.sound
       case 'actionSet':
         return `アクションセット: ${action.actionSetKey}`

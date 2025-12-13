@@ -17,6 +17,15 @@
         :selectedItemKey="selectedItemKey"
       />
 
+      <!-- GameScripts コンポーネント -->
+      <!-- TODO:新設 -->
+      <GameScriptsEditor
+        :allOmikuji="allOmikujiSets"
+        :omikuji="omikujiItem"
+        :category="category"
+        :selectedItemKey="selectedItemKey"
+      />
+
       <!-- PostActions編集コンポーネント -->
       <PostActionsEditor v-model="postActions" :category="category" :selectedItemKey="selectedItemKey" :index="index" />
     </div>
@@ -27,6 +36,7 @@
   import { computed } from 'vue'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
+  import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'

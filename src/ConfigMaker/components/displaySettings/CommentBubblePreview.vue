@@ -20,7 +20,7 @@
       <MotionWrapper
         ref="motionWrapper"
         v-model:visible="shouldShowBubble"
-        :enter-motion="bubbleMotionEnter"
+        :initialMotion="bubbleMotionEnter"
         :leave-motion="bubbleMotionLeave"
         :auto-hide="false"
       >

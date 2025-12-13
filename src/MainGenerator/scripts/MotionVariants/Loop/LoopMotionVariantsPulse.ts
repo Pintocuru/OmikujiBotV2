@@ -8,13 +8,23 @@ export const loopPulseVariants = {
     initial: {
       scale: 1,
     },
-    visible: {
+    enter: {
       scale: [1, 1.1, 1],
       transition: {
         type: 'keyframes',
         ease: 'easeInOut',
         duration: 1000,
+        delay: 0,
         repeat: Infinity,
+      },
+    },
+    leave: {
+      scale: 0,
+      opacity: 0,
+      transition: {
+        type: 'keyframes',
+        ease: 'easeIn',
+        duration: 300,
       },
     },
   },

@@ -1,5 +1,4 @@
-<!-- src/configMaker/components/comments/OmikujiSetBasic.vue -->
-<!-- !使われてないかも -->
+<!--src\ConfigMaker\components\rules\OmikujiItemBasic.vue -->
 <template>
   <div class="flex items-center gap-4">
     <!-- ドラッグハンドル -->
