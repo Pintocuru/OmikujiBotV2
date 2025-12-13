@@ -53,6 +53,11 @@ export function useRecordSort(
     })
 
     await nextTick()
+    // orderがない場合にエラーが起きている
+    /**
+     * 型 'Record<string, RecordCategoryItemTypeMap[K]>' の引数を型 '{ id: string; name: string; description: string; version: string; generatorName: string; generatorVersion: string; dataVersion: number; author: string; tags: string[]; license: string; url?: string | undefined; } | ... 6 more ... | { ...; }' のパラメーターに割り当てることはできません。
+  型 'Record<string, RecordCategoryItemTypeMap[K]>' には 型 '{ sourceFile: string; keySuffix: string; remaps: { fromCharacterKey: string; toCharacterKey: string; fromIconKey: string; toIconKey: string; }[]; order: number; tags: string[]; accessLevel: "basic" | "pro" | "internal" | "experimental"; ... 7 more ...; description?: string | undefined; }[]' からの次のプロパティがありません: length, pop, push, concat、28 など。ts(2345)
+     */
     updateCategoryData(category as CategoryType, updatedData)
   }
 

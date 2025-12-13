@@ -122,7 +122,10 @@ export const OmikujiSetSchema = z
         {
           characterKey: '',
           iconKey: 'default',
-          messageContent: '<<user>>さんの運勢は【大吉】',
+          actionType: 'message', // actionType を明示的に追加 (新しいスキーマに準拠)
+          message: {
+            bubble: '<<user>>さんの運勢は【大吉】', // 新しい形式
+          },
           delaySeconds: 0,
         },
       ],
