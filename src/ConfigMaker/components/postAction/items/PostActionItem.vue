@@ -39,8 +39,7 @@
         <component
           v-if="currentComponent"
           :is="currentComponent"
-          :action="action"
-          :character-options="characterOptions"
+          v-bind="{ action: action as any, 'character-options': characterOptions }"
           @update:action="handleActionUpdate"
         />
       </div>
@@ -52,13 +51,12 @@
   import { computed } from 'vue'
   import { PostActionSchema, PostActionType, RulesCategoryType } from '@/types/'
   import MessageSettings from './MessageSettings.vue'
-  import ToastSettings from './ToastSettings.vue'
   import SoundSettings from './SoundSettings.vue'
   import WordPartySettings from './WordPartySettings.vue'
   import ActionSetSettings from './ActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PostActionPreview from './PostActionPreview.vue'
-  import { MessageSquare, Bell, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
+  import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -87,11 +85,9 @@
   const currentComponent = computed(() => {
     const componentMap = {
       message: MessageSettings,
-      toast: ToastSettings,
-      wordParty: WordPartySettings,
       sound: SoundSettings,
+      wordParty: WordPartySettings,
       actionSet: ActionSetSettings,
-      legacy: null,
     }
 
     return componentMap[props.action.actionType]

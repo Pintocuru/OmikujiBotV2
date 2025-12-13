@@ -41,7 +41,7 @@
   </SettingItem>
 
   <!-- サウンド -->
-  <SettingItem label="🔊 サウンド(dev)" description="フキダシ表示時に鳴らす音">
+  <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
       <option value="">（なし）</option>
       <option v-for="s in soundList" :key="s" :value="s">

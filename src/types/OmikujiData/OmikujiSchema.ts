@@ -100,7 +100,7 @@ export const GameScriptsSchema = z.object({
 export const ActionSetSchema = z.object({
   ...BaseRecordSchema.shape,
   postActions: z
-    .array(z.any()) // ★ ここで z.any() を使って古い型を受け入れ
+    .array(z.any())
     .default([])
     .catch([])
     .transform((oldActions) => {
@@ -153,7 +153,10 @@ export const PostActionSetSchema = z.record(z.string(), OmikujiItemSchema).defau
 // 型定義
 export type PostActionType = z.infer<typeof PostActionSchema>
 export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
+export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
+export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
+
 export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
@@ -168,6 +171,11 @@ export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
  * 古い単一のアクションから複数のアクションが生成される可能性があるため、配列を返します。
  */
 function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
+  if (oldAction.messageContent === undefined || oldAction.messageContent === null) {
+    const parseResult = PostActionSchema.safeParse(oldAction)
+    if (parseResult.success) return [parseResult.data]
+  }
+
   const newActions: PostActionType[] = []
 
   const baseFields = {
@@ -180,10 +188,7 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       ...baseFields,
       actionType: 'actionSet',
       actionSetKey: oldAction.actionSetKey,
-    } as PostActionType)
-    /**
-     * 型 '({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } |...' を型 '{ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } | ...' に割り当てることはできません。ts(2322)
-     */
+    })
     return newActions
   }
 
@@ -204,7 +209,7 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
         bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
         toast: oldAction.messageToast, // ★ messageToast -> message.toast
       },
-    } as PostActionType)
+    })
   }
 
   // 3. wordParty の移行
@@ -213,7 +218,7 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       ...baseFields,
       actionType: 'wordParty',
       wordParty: oldAction.wordParty,
-    } as PostActionType)
+    })
   }
 
   // 4. sound の移行 (messageアクションに統合されなかった場合のみ)
@@ -223,7 +228,7 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       ...baseFields,
       actionType: 'sound',
       sound: oldAction.sound as z.infer<typeof PostActionSoundSchema>['sound'],
-    } as PostActionType)
+    })
   }
 
   // 5. フォールバック (何も設定されていなかった場合)
@@ -236,11 +241,8 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       enterMotion: oldAction.enterMotion,
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
       message: {},
-    } as PostActionType)
+    })
   }
 
-  /**
-   * 型 '({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } |...' を型 '{ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | undefined; } | ...' に割り当てることはできません。ts(2322)
-   */
   return newActions
 }

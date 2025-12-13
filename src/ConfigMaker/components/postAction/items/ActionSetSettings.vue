@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/'
+  import { PostActionActionSetType } from '@/types/'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { checkCircularReference } from '@/MainGenerator/scripts/OmikujiProcess/ActionSetValidator'
@@ -31,18 +31,18 @@
   import { XCircle } from 'lucide-vue-next'
 
   const props = defineProps<{
-    action: PostActionType
+    action: PostActionActionSetType
     currentKey?: string
   }>()
 
   const emit = defineEmits<{
-    'update:action': [action: PostActionType]
+    'update:action': [action: PostActionActionSetType]
   }>()
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const updateAction = (updates: Partial<PostActionType>) => {
+  const updateAction = (updates: Partial<PostActionActionSetType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
 

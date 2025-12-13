@@ -26,7 +26,7 @@
     defineProps<{
       visible?: boolean
       initialMotion?: MotionType
-      enterMotion?: LoopMotionType
+      enterMotion?: MotionType
       leaveMotion?: MotionType
       motionKey?: string
       autoHide?: boolean
@@ -54,7 +54,7 @@
 
   // アニメーション設定の算出
   const initialVariant = computed(() => motionVariants[props.initialMotion])
-  const enterVariant = computed(() => loopMotionVariants[props.enterMotion])
+  const enterVariant = computed(() => motionVariants[props.enterMotion])
   const leaveVariant = computed(() => motionVariants[props.leaveMotion])
 
   // 要素の参照
