@@ -19,7 +19,7 @@ export class CooldownManager {
   private lastProcessedTime = 0
   private readonly userDrawCounts = new Map<string, UserDrawCount>()
   private readonly sessionId: string
-  private lastUserRuleKey = ''
+  private lastUserRuleKeys: string[] = [] // string[] に変更
 
   private constructor() {
     this.sessionId = this.generateSessionId()
@@ -52,7 +52,7 @@ export class CooldownManager {
   resetSession(): void {
     this.userDrawCounts.clear()
     this.lastProcessedTime = 0
-    this.lastUserRuleKey = ''
+    this.lastUserRuleKeys = [] // 配列もクリア
   }
 
   /**
@@ -75,17 +75,42 @@ export class CooldownManager {
 
   /**
    * 連投チェック（同じユーザーが同じルールで連続で抽選することを防ぐ）
+   * @param userId - ユーザーID
+   * @param ruleId - ルールID
+   * @param isRepeatAllowed - 連投を許可するか
+   * @param blockCount - 直近何回の履歴をチェックするか（デフォルト: 1）
+   * @returns ブロックする場合はtrue
    */
-  isRepeatBlocked(userId: string, ruleId: string, isRepeatAllowed: boolean = true): boolean {
-    if (isRepeatAllowed) return false
-    return this.lastUserRuleKey === this.createKey(userId, ruleId)
+  isRepeatBlocked(userId: string, ruleId: string, blockCount: number = 0): boolean {
+    if (blockCount <= 0) return false
+
+    const key = this.createKey(userId, ruleId)
+    const checkRange = Math.min(blockCount, this.lastUserRuleKeys.length)
+
+    // 直近blockCount回の履歴に同じキーが含まれているかチェック
+    for (let i = 0; i < checkRange; i++) {
+      if (this.lastUserRuleKeys[i] === key) {
+        return true
+      }
+    }
+
+    return false
   }
 
   /**
    * ユーザーIDを更新し、抽選回数をインクリメント
    */
   updateUserId(userId: string, ruleId: string, lastBotMessages: string): void {
-    this.lastUserRuleKey = this.createKey(userId, ruleId)
+    const key = this.createKey(userId, ruleId)
+
+    // 配列の先頭に追加（最新の履歴が常に先頭）
+    this.lastUserRuleKeys.unshift(key)
+
+    // 履歴が長くなりすぎないよう制限（例: 最大100件）
+    if (this.lastUserRuleKeys.length > 100) {
+      this.lastUserRuleKeys.pop()
+    }
+
     this.incrementUserDrawCount(userId, ruleId, lastBotMessages)
   }
 
@@ -180,6 +205,13 @@ export class CooldownManager {
    */
   resetAllDrawCounts(): void {
     this.userDrawCounts.clear()
+  }
+
+  /**
+   * 履歴配列を取得（デバッグ用）
+   */
+  getHistoryKeys(): string[] {
+    return [...this.lastUserRuleKeys]
   }
 
   /**

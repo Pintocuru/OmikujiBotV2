@@ -9,6 +9,7 @@ import { soundList } from '@/Toolkit/sounds/soundMap'
 import { CommentThresholdSchema } from '../OmikujiProcess/CommentThresholdSchema'
 
 import { PostActionType as OldPostActionType } from '@/Toolkit/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
+import { CriteriaThresholdSchema } from '../OmikujiProcess/CriteriaThresholdSchema'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -118,9 +119,9 @@ export const ActionSetSchema = z.object({
  */
 export const OmikujiItemSchema = z.object({
   ...ActionSetSchema.shape,
-  weight: z.number().min(0).default(1).catch(1),
-  rank: z.number().min(0).default(1).catch(1),
-  criteria: CommentThresholdSchema.default(CommentThresholdSchema.parse({})).catch(CommentThresholdSchema.parse),
+  weight: z.number().min(0).default(1).catch(1), // 出現割合
+  priority: z.boolean().default(false).catch(false), // 優先 trueならrank=2
+  criteria: z.union([CriteriaThresholdSchema, z.null()]).default(null).catch(null),
 })
 
 /**

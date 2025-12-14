@@ -1,4 +1,5 @@
 // src/MainGenerator/utils/processors/GameScript/RankingDataManager.ts
+// ! ランキングは廃止(すべてscriptで処理するので)
 import { UserStatsType } from '@/types/'
 
 export class RankingDataManager {

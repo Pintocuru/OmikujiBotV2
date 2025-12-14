@@ -8,7 +8,7 @@ import { BaseRecordSchema } from '@shared/types/'
  * おみくじ制限設定のスキーマ
  */
 export const OmikujiLimitsSchema = z.object({
-  // 重複処理
+  // 重複制限
   cooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
   cooldownMessage: z.string().optional(),
 
@@ -18,7 +18,16 @@ export const OmikujiLimitsSchema = z.object({
   drawLimitMessage: z.string().optional(),
 
   // 連投制限
-  isRepeatAllowed: z.boolean().default(true).catch(true), // 連投を許可するか
+  isRepeatAllowed: z
+    .union([z.boolean(), z.number()])
+    .transform((val) => {
+      if (typeof val === 'boolean') {
+        return val ? 0 : 1 // true → 0, false → 1
+      }
+      return val // すでに number の場合はそのまま
+    })
+    .default(0)
+    .catch(0), // 連投を許可するか
   repeatMessage: z.string().optional(),
 })
 

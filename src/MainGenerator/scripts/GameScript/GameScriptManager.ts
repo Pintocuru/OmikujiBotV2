@@ -36,9 +36,8 @@ export class GameScriptManager {
   /**
    * スクリプト実行
    */
-  // TODO:rule からではなく、
   executeScript(omikujiItem: OmikujiItemType, comment?: Comment): ScriptResult | null {
-    if (omikujiItem.type !== 'gameScripts') return null
+    if (!omikujiItem.gameScripts) return null
     const { scriptId, scriptParams, characterKey } = omikujiItem.gameScripts
 
     if (!scriptId) return null
@@ -51,56 +50,11 @@ export class GameScriptManager {
 
     try {
       // スクリプト実行
-      const result = scriptInstance.run(scriptParams, characterKey, comment)
-
-      if (comment) {
-        // ユーザーデータがある場合、ランキングデータの更新
-        const rankingList = scriptInstance.getGameState()?.userRankings
-        if (rankingList) {
-          const { userId } = comment.data
-          this.rankingDataManager.updateRankingData(scriptId, rankingList)
-          this.gameStateManager.updateGameState(scriptId, rankingList, userId)
-        }
-      }
-
-      return result
+      return scriptInstance.run(scriptParams, characterKey, comment)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return null
     }
-  }
-
-  /**
-   * スクリプトの再初期化
-   */
-  reinitializeScripts(): void {
-    this.cleanup()
-
-    this.scriptInstanceManager.cleanup()
-    this.gameStateManager.cleanup()
-    this.rankingDataManager.cleanup()
-
-    this.initializeAll()
-  }
-
-  /**
-   * クリーンアップ処理
-   */
-  cleanup(): void {
-    const activeScripts = this.scriptInstanceManager.getActiveScripts()
-
-    activeScripts.forEach((scriptId) => {
-      const instance = this.scriptInstanceManager.getScriptInstance(scriptId)
-      const gameState = this.gameStateManager.getGameState(scriptId)
-
-      if (instance?.cleanup && gameState) {
-        try {
-          instance.cleanup(gameState)
-        } catch (error) {
-          console.error(`クリーンアップエラー (${scriptId}):`, error)
-        }
-      }
-    })
   }
 
   // 委譲メソッド群

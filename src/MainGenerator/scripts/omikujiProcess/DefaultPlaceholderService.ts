@@ -53,9 +53,7 @@ export class DefaultPlaceholderService {
 
     const base = this.getDefaultPlaceholders()
 
-    // TODO:おみくじ回数を追加すべきか？
-
-    // --- Comment がない場合は base に Comment依存の値を付けず返す ---
+    // Comment がない場合は base に Comment依存の値を付けず返す
     if (!comment) {
       return {
         ...base,
@@ -64,7 +62,7 @@ export class DefaultPlaceholderService {
       }
     }
 
-    // --- Comment がある場合は full スキーマで parse ---
+    // Comment がある場合は full スキーマで parse
     return DefaultPlaceholdersCommentSchema.parse({
       ...base,
       user: comment.data.displayName || comment.data.name,

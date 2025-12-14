@@ -1,19 +1,21 @@
 // src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
 import { BotMessage, CommentRuleType, OmikujiDataType } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
-import { CommentRestrictionChecker } from '../OmikujiProcess/CommentRestrictionChecker'
+import { RestrictionChecker } from '../OmikujiProcess/RestrictionChecker'
+import { RestrictionMessageBuilder } from '../RuleProcess/RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
+import { Comment } from '@onecomme.com/onesdk/'
 
 interface RuleProcessResult {
-  isCommentTriggered: boolean // コメントによって起動したかをチェック
+  isCommentTriggered: boolean
   botMessages: BotMessage[]
 }
 
 export class UserCommentProcessor {
-  private readonly restrictionChecker: CommentRestrictionChecker
+  private readonly restrictionChecker: RestrictionChecker
+  private readonly messageBuilder: RestrictionMessageBuilder
   private readonly omikujiProcessor: OmikujiProcessor
 
   constructor(
@@ -22,7 +24,9 @@ export class UserCommentProcessor {
   ) {
     const characters = Object.values(omikujiData.characters)
     const firstCharacter = characters.length > 0 ? characters[0] : null
-    this.restrictionChecker = new CommentRestrictionChecker(firstCharacter)
+
+    this.restrictionChecker = new RestrictionChecker()
+    this.messageBuilder = new RestrictionMessageBuilder(firstCharacter)
     this.omikujiProcessor = new OmikujiProcessor(omikujiData, scriptManager)
   }
 
@@ -40,7 +44,6 @@ export class UserCommentProcessor {
         // ルールが成功し、botメッセージが生成された場合はここで終了
         if (result.botMessages.length > 0) {
           // コメントでの発動なら、クールダウンを設定する
-          // (100回目のコメント等、コメントが条件でないおみくじはこれをスルーする)
           if (result.isCommentTriggered) {
             cooldownManager.updateLastProcessedTime()
           }
@@ -48,7 +51,6 @@ export class UserCommentProcessor {
         }
       }
 
-      // どのルールにもマッチしなかった場合
       return []
     } catch (error) {
       console.error('ユーザーコメント処理エラー:', error)
@@ -67,19 +69,22 @@ export class UserCommentProcessor {
       return { isCommentTriggered: false, botMessages: [] }
     }
 
-    // 2. 制限チェック（ユーザーID重複、クールダウンなど）
+    // 2. 制限チェック（純粋なチェックのみ）
     const restrictionResult = this.restrictionChecker.checkRestrictions(comment, rule)
+
     if (restrictionResult.isBlocked) {
+      // 3. 制限チェックの結果からメッセージを生成
+      const toastMessages = this.messageBuilder.buildMessages(restrictionResult, rule)
       return {
         isCommentTriggered: false,
-        botMessages: restrictionResult.toastMessages,
+        botMessages: toastMessages,
       }
     }
 
-    // 3. おみくじ実行
+    // 4. おみくじ実行
     const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji, comment)
 
-    // 4. ユーザー情報の更新
+    // 5. ユーザー情報の更新
     cooldownManager.updateUserId(comment.data.userId, rule.key, omikujiMessages.map((m) => m.comment).join(','))
 
     // チャットワード起動かどうかを判定

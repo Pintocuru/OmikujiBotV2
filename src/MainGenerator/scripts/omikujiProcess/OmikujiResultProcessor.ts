@@ -1,12 +1,7 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiDataType } from '@/types'
-import {
-  OmikujiGameScriptsType,
-  OmikujiItemType,
-  PostActionRecordType,
-  PostActionType,
-} from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiItemType, PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
@@ -37,11 +32,15 @@ export class OmikujiResultProcessor {
    */
   process(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
     try {
+      const postActions: PostActionType[] = []
+      // gameScripts 処理
+      if (omikujiItem.gameScripts) {
+        const scriptResult = this.scriptManager.executeScript(omikujiItem, comment)
+        if (scriptResult) postActions.push(...scriptResult.postActions)
+      }
+
       // おみくじアクションの処理
-      const postActions =
-        omikujiItem.type === 'gameScripts'
-          ? this.executeScript(omikujiItem, comment)
-          : this.processOmikujiActions(omikujiItem)
+      postActions.push(...this.processOmikujiActions(omikujiItem))
 
       if (postActions) {
         // メッセージ投稿
@@ -68,18 +67,5 @@ export class OmikujiResultProcessor {
 
     // プレースホルダー処理
     return this.placeProcess.processPostActions(expandedActions)
-  }
-
-  /**
-   * スクリプトの実行
-   */
-  private executeScript(omikujiItem: OmikujiGameScriptsType, comment?: Comment): PostActionType[] | null {
-    // ルールが有効なスクリプトを持っているかチェック
-    const shouldExecute = !!omikujiItem.gameScripts.scriptId && this.scriptManager
-    if (!shouldExecute) return null
-
-    // Script稼働
-    const scriptResult = this.scriptManager.executeScript(omikujiItem, comment)
-    return scriptResult ? scriptResult.postActions : null
   }
 }

@@ -18,7 +18,6 @@
       />
 
       <!-- GameScripts コンポーネント -->
-      <!-- TODO:新設 -->
       <GameScriptsEditor
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
