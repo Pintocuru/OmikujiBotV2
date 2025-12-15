@@ -5,7 +5,7 @@
     :key="message.id"
     class="absolute w-full"
     :style="{
-      top: `${index * 40}px`,
+      top: `${index * spacing}px`,
       zIndex: 20 - index,
     }"
   >
@@ -20,7 +20,7 @@
       <div class="flex justify-center">
         <CommentBubbleItem
           :botName="message.name"
-          :message="message.comment.toast ?? ''"
+          :message="displayMessage(message)"
           :color="message.color"
           :animated-text="animatedText"
           :brightnessLevel="index"
@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import CommentBubbleItem from './CommentBubbleItem.vue'
   import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
@@ -48,12 +49,38 @@
       enterMotion?: MotionType
       leaveMotion?: MotionType
       animatedText?: boolean
+      spacing?: number
+      showToastFallback?: boolean // ★ toastをフォールバック表示するか
     }>(),
     {
       removeComment: () => {},
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,
+      spacing: 40,
+      showToastFallback: false,
     }
   )
+
+  /**
+   * 表示するメッセージを決定
+   * 1. bubble が存在すれば bubble を表示
+   * 2. bubble が空で showToastFallback=true なら toast を表示
+   */
+  const displayMessage = (message: DisplayBotMessage): string => {
+    const bubble = message.comment?.bubble || ''
+    const toast = message.comment?.toast || ''
+
+    // bubble が存在する場合は bubble を優先
+    if (bubble) {
+      return bubble
+    }
+
+    // bubble が空で、フォールバックが有効な場合は toast を表示
+    if (props.showToastFallback && toast) {
+      return toast
+    }
+
+    return ''
+  }
 </script>

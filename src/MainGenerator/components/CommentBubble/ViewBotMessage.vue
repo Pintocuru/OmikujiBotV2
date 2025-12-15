@@ -1,7 +1,6 @@
-<!-- src/MainGenerator/components/OmikujiBot/ViewBotMessage.vue -->
 <template>
   <div class="relative h-screen">
-    <!-- コメント表示エリア（元の位置と同じ） -->
+    <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
     <div class="absolute w-full" :style="{ bottom: '440px' }">
       <CommentDisplay
         :displayed-comments="displayedComments"
@@ -9,16 +8,19 @@
         :enter-motion="enterMotion"
         :leave-motion="leaveMotion"
         :spacing="40"
+        :animated-text="animatedText"
+        :show-toast-fallback="showToastFallback"
       >
         <template #default="{ message, index }">
-          <!-- キャラクター -->
+          <!-- キャラクター（最新コメント時のみ表示） -->
           <CharacterAvatar
-            class="absolute top-[80px] top-1/2 left-1/2 -translate-x-1/2 transform"
+            v-if="index === 0"
+            class="absolute top-[80px] left-1/2 -translate-x-1/2 transform"
             :profile-image="message.profileImage"
             :character-name="message.name"
             :background-color="message.color?.backgroundColor"
-            :show-character-frame="true"
-            :is-visible="index === 0"
+            :show-character-frame="showCharacterFrame"
+            :is-visible="true"
           />
         </template>
       </CommentDisplay>
@@ -27,29 +29,32 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import { useBotDisplay } from './composables/useBotDisplay'
+  import { useMessageFilter } from './composables/useMessageFilter'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { storeToRefs } from 'pinia'
 
-  // Piniaストアの使用
   const appStore = useAppStore()
 
-  // リアクティブ変数
-  const { botMessages } = storeToRefs(appStore)
+  // 設定の取得
   const bubble = computed(() => appStore.data.displaySettings?.components.bubble || {})
-
-  // アニメーション設定
   const enterMotion = computed(() => bubble.value?.bubbleMotionEnter)
   const leaveMotion = computed(() => bubble.value?.bubbleMotionLeave)
-
-  // キャラクター表示設定
   const showCharacterFrame = computed(() => bubble.value?.showCharacterFrame)
+  const animatedText = computed(() => bubble.value?.bubbleTextAnimate)
 
-  // 基底composableを直接使用
-  const { displayedComments, removeComment, start } = useBotDisplay(botMessages, 'comment')
+  // ★ toast専用コンポーネントが無効な場合、toastをフォールバック表示 ★
+  const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
+  const showToastFallback = computed(() => !conditions.value.includes('toast'))
+
+  // ★ 新しいフィルタリングロジックを使用 ★
+  const { zeroIndexMessages } = useMessageFilter()
+
+  // ★ 既存のuseBotDisplayはそのまま使用 ★
+  const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages, 'comment')
 
   onMounted(() => start())
+  onUnmounted(() => stop())
 </script>

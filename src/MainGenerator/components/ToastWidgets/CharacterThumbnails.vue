@@ -14,6 +14,7 @@
   import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { resolveProfileImage } from '@/MainGenerator/scripts/BotCharacter/ProfileImageResolver'
 
   const appStore = useAppStore()
 
@@ -55,6 +56,7 @@
         name: character.name,
         characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
+        profileImage: resolveProfileImage(character, randomEmotion),
         color: character?.color,
         comment: {
           bubble: !isRightClick ? `${character.name}のテストメッセージです！` : '',

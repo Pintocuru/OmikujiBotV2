@@ -16,6 +16,7 @@
           :enter-motion="enterMotion"
           :leave-motion="leaveMotion"
           :animated-text="character?.displayOption.isRpgVoice"
+          :show-toast-fallback="showToastFallback"
         />
       </div>
 
@@ -33,11 +34,13 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import type { CharacterType } from '@/types/'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import { useViewBotCharacter } from './composables/useViewBotCharacter'
   import { DisplayBotMessage } from './composables/useBotDisplay'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const props = defineProps<{
     character: CharacterType | null
@@ -55,4 +58,9 @@
   const handleRemoveComment = (messageId: string) => {
     emit('removeComment', messageId)
   }
+
+  // ★ toast専用コンポーネントが無効な場合、toastをフォールバック表示 ★
+  const appStore = useAppStore()
+  const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
+  const showToastFallback = computed(() => !conditions.value.includes('toast'))
 </script>
