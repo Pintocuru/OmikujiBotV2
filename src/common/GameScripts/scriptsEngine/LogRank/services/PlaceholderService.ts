@@ -1,62 +1,58 @@
-// src/services/PlaceholderService.ts
-import { GamePlaceholder, GamePlaceholderSchema } from '../params'
-import { RankingService } from './RankingService'
-import { GameContext } from '../GameContext'
+// src\common\GameScripts\scriptsEngine\LogRank\services\PlaceholderService.ts
+import { GamePlaceholder, GamePlaceholderSchema, GameContext } from '../types'
+import { calculateRank } from './RankingService'
 
-export class PlaceholderService {
-  // 引数を1つのコンテキストオブジェクトに集約
-  static createPlaceholders(context: GameContext): GamePlaceholder {
-    const { settings, gameState, currentUser } = context
-    const userStats = gameState.userStats[currentUser.userId]
+export const createPlaceholders = (context: GameContext): GamePlaceholder => {
+  const { settings, gameState, currentUser } = context
+  const userStats = gameState.userStats[currentUser.userId]
 
-    const currentDraws = userStats?.draws ?? 0
-    const isOverLimit = settings.enableCount > 0 && currentDraws > settings.enableCount
+  const draws = userStats?.draws ?? 0
+  const isOverLimit = settings.enableCount > 0 && draws > settings.enableCount
 
-    return settings.rankMode === 'point'
-      ? this.createPointModePlaceholders(context, isOverLimit)
-      : this.createWinnerModePlaceholders(context, isOverLimit)
-  }
+  return settings.rankMode === 'point'
+    ? createPointModePlaceholders(context, isOverLimit)
+    : createWinnerModePlaceholders(context, isOverLimit)
+}
 
-  private static createPointModePlaceholders(context: GameContext, isOverLimit: boolean): GamePlaceholder {
-    const { gameState, currentUser } = context
-    const userRecords = gameState.userRecords?.[currentUser.userId] || []
-    const latestRecord = userRecords[userRecords.length - 1]
+const createPointModePlaceholders = (context: GameContext, isOverLimit: boolean): GamePlaceholder => {
+  const { gameState, currentUser } = context
+  const records = gameState.userRecords?.[currentUser.userId] || []
+  const latest = records[records.length - 1]
 
-    if (latestRecord) {
-      const rank = RankingService.calculateRank(context, latestRecord)
-
-      return {
-        announceMessage: isOverLimit
-          ? `${latestRecord.name}さんは上限を超えているから、参考記録だよ。`
-          : `${latestRecord.name}さんの${latestRecord.points}は、${rank}位だよ。`,
-        winsCount: latestRecord.wins ?? 0,
-        winsRank: rank,
-        winsRate: '0.0',
-        totalDraws: userRecords.length,
-        totalPoints: gameState.userStats[currentUser.userId]?.totalPoints ?? 0,
-      }
-    }
-
+  if (!latest) {
     return GamePlaceholderSchema.parse({})
   }
 
-  private static createWinnerModePlaceholders(context: GameContext, isOverLimit: boolean): GamePlaceholder {
-    const { gameState, currentUser } = context
-    const userStats = gameState.userStats[currentUser.userId]
-    const currentDraws = userStats?.draws ?? 0
+  const rank = calculateRank(context, latest)
 
-    const rank = RankingService.calculateRank(context, userStats)
-    const winRate = currentDraws > 0 ? (((userStats?.wins || 0) / currentDraws) * 100).toFixed(1) : '0.0'
+  return {
+    announceMessage: isOverLimit
+      ? `${latest.name}さんは上限を超えているから、参考記録だよ。`
+      : `${latest.name}さんの${latest.points}は、${rank}位だよ。`,
+    winsCount: latest.wins ?? 0,
+    winsRank: rank,
+    winsRate: '0.0',
+    totalDraws: records.length,
+    totalPoints: gameState.userStats[currentUser.userId]?.totalPoints ?? 0,
+  }
+}
 
-    return {
-      announceMessage: isOverLimit
-        ? `${userStats?.name}さんは上限を超えているから、参考記録だよ。`
-        : `${userStats?.name}さんの順位は、${rank}位だよ。`,
-      winsCount: userStats?.wins ?? 0,
-      winsRank: rank,
-      winsRate: winRate,
-      totalDraws: currentDraws,
-      totalPoints: userStats?.totalPoints ?? 0,
-    }
+const createWinnerModePlaceholders = (context: GameContext, isOverLimit: boolean): GamePlaceholder => {
+  const { gameState, currentUser } = context
+  const stats = gameState.userStats[currentUser.userId]
+
+  const draws = stats?.draws ?? 0
+  const rank = calculateRank(context, stats)
+  const winRate = draws > 0 ? (((stats?.wins || 0) / draws) * 100).toFixed(1) : '0.0'
+
+  return {
+    announceMessage: isOverLimit
+      ? `${stats?.name}さんは上限を超えているから、参考記録だよ。`
+      : `${stats?.name}さんの順位は、${rank}位だよ。`,
+    winsCount: stats?.wins ?? 0,
+    winsRank: rank,
+    winsRate: winRate,
+    totalDraws: draws,
+    totalPoints: stats?.totalPoints ?? 0,
   }
 }

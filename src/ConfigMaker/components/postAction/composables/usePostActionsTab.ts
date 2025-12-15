@@ -8,7 +8,7 @@ export function usePostActionsTab(
   characterOptions: ComputedRef<{ value: string; label: string }[]>
 ) {
   // アクティブなタブのインデックス（-1はプレースホルダータブ）
-  const activeTab = ref(0)
+  const activeTab = ref(-2)
 
   // 現在選択されているアクション
   const currentAction = computed(() => {
@@ -17,7 +17,10 @@ export function usePostActionsTab(
 
   // タブの切り替え
   const setActiveTab = (index: number) => {
-    if (index === -1) {
+    // 同じタブをクリックで閉じる
+    if (index === activeTab.value) {
+      activeTab.value = -2
+    } else if (index === -1) {
       // プレースホルダータブ
       activeTab.value = -1
     } else if (index >= 0 && index < actions.value.length) {
@@ -39,9 +42,8 @@ export function usePostActionsTab(
       actionType: 'message',
       characterKey: characterOptions.value[0]?.value || '',
       iconKey: 'default',
-      messageContent: '',
+      message: {},
       delaySeconds: actions.value.length > 0 ? Math.max(...actions.value.map((a) => a.delaySeconds)) + 1 : 0,
-      wordParty: '',
     }
 
     const newActions = [...actions.value, newAction]

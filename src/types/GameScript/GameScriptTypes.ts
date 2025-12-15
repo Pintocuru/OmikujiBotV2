@@ -11,7 +11,6 @@ export interface ScriptPreset extends PresetMetadata {
 
 // スクリプトのメイン実行クラス
 export interface ScriptClass<TSettings extends object = DefaultTypes> {
-  setup(settings: TSettings, ruleId?: string): void // 初期化処理
   run(params: string, characterKey: string, comment?: Comment): ScriptResult // メイン実行関数
   sampleRun?(): string // エディター用サンプルゲーム関数
 }

@@ -2,11 +2,9 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 import { soundList } from '@/Toolkit/sounds/soundMap'
-import { CommentThresholdSchema } from '../OmikujiProcess/CommentThresholdSchema'
 
 import { PostActionType as OldPostActionType } from '@/Toolkit/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
 import { CriteriaThresholdSchema } from '../OmikujiProcess/CriteriaThresholdSchema'
@@ -20,7 +18,7 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 })
 
-// PostAction MessageBody (独立スキーマ化)
+// PostAction MessageBody
 export const PostActionMessageBodySchema = z
   .object({
     bubble: z.string().optional().catch(undefined),
@@ -40,7 +38,6 @@ export const PostActionMessageSchema = z.object({
   actionType: z.literal('message'),
   characterKey: z.string().default('').catch(''),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  enterMotion: z.enum(motionLabel).optional().catch(undefined),
   sound: z.enum(soundList).optional().catch(undefined),
   message: PostActionMessageBodySchema,
 })
@@ -204,7 +201,6 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       actionType: 'message',
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
-      enterMotion: oldAction.enterMotion,
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
       message: {
         bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
@@ -239,7 +235,6 @@ function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
       actionType: 'message',
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
-      enterMotion: oldAction.enterMotion,
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
       message: {},
     })

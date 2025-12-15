@@ -8,15 +8,6 @@
       :selectedItemKey="selectedItemKey"
       @update:modelValue="updatePostActions"
       @toggleJson="toggleEditMode"
-      @toggleEdit="toggleTabEditor"
-    />
-
-    <!-- PostActionsタブエディター -->
-    <PostActionsTabs
-      v-if="isTabEditorOpen"
-      :modelValue="modelValue"
-      :category="category"
-      @update:actions="updatePostActions"
     />
 
     <!-- JSON編集モード -->
@@ -26,6 +17,9 @@
       @update:modelValue="updatePostActions"
       @close="isJsonMode = false"
     />
+
+    <!-- PostActionsタブエディター -->
+    <PostActionsTabs v-else :modelValue="modelValue" :category="category" @update:actions="updatePostActions" />
   </div>
 </template>
 
@@ -50,19 +44,9 @@
 
   // Refs
   const isJsonMode = ref(false)
-  const isTabEditorOpen = ref(props.category === 'actionSets' ? true : props.index === 0 ? true : false)
-
-  // Methods
-  const toggleTabEditor = () => {
-    isTabEditorOpen.value = !isTabEditorOpen.value
-    // JSONモードが開いていたら閉じる
-    if (isTabEditorOpen.value) isJsonMode.value = false
-  }
 
   const toggleEditMode = () => {
     isJsonMode.value = !isJsonMode.value
-    // タブエディターが開いていたら閉じる
-    if (isJsonMode.value) isTabEditorOpen.value = false
   }
 
   // PostActionsの更新

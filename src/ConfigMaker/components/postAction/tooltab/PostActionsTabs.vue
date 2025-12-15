@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/postAction/PostActionsTabEditor.vue -->
+<!-- src\ConfigMaker\components\postAction\tooltab\PostActionsTabs.vue -->
 <template>
   <!-- タブヘッダー -->
   <div class="tabs">
@@ -27,12 +27,7 @@
 
       <!-- 右側：メニュー -->
       <div @click.stop>
-        <MenuDropdown
-          v-if="activeTab === index"
-          :disable-delete="props.modelValue.length <= 1"
-          @duplicate="duplicateAction(index)"
-          @delete="removeAction(index)"
-        />
+        <MenuDropdown v-if="activeTab === index" @duplicate="duplicateAction(index)" @delete="removeAction(index)" />
       </div>
     </button>
 

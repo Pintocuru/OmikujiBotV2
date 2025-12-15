@@ -1,20 +1,13 @@
-// src/execute.ts
+// src\common\GameScripts\scriptsEngine\LogRank\execute.ts
 // ユーザーの勝敗・ポイント・ランキングを管理するゲームシステム
-import { Comment } from '@onecomme.com/onesdk/'
-import { GameScript, GameScriptResult } from './GameScript'
 import { GameState, GameStateSchema } from '@/types'
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
+import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema, GameContext, GameResult } from './types'
+import { updateUserStats } from './services/UserStatsService'
+import { generateRankings } from './services/RankingService'
+import { createPlaceholders } from './services/PlaceholderService'
+import { Comment } from '@onecomme.com/onesdk/'
 
-// Services
-import { UserStatsService } from './services/UserStatsService'
-import { RankingService } from './services/RankingService'
-import { PlaceholderService } from './services/PlaceholderService'
-import { GameContext } from './GameContext'
-
-/**
- * ゲームスクリプトの実装（ジェネリック不使用）
- */
-export class ExecuteScript implements GameScript {
+export class ExecuteScript {
   private settings!: GameSettings
   private gameState!: GameState
 
@@ -29,7 +22,7 @@ export class ExecuteScript implements GameScript {
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): GameScriptResult {
+  run(comment: Comment, characterKey: string, params: GameParams): GameResult {
     try {
       // コンテキストオブジェクトを作成
       const context: GameContext = {
@@ -43,7 +36,7 @@ export class ExecuteScript implements GameScript {
       }
 
       // ユーザー統計を更新
-      const updatedUserStats = UserStatsService.updateUserStats(context)
+      const updatedUserStats = updateUserStats(context)
 
       // ゲーム状態を更新
       const updatedGameState = {
@@ -53,7 +46,7 @@ export class ExecuteScript implements GameScript {
 
       // ランキングを生成
       const updatedContext = { ...context, gameState: updatedGameState }
-      const userRankings = RankingService.generateRankings(updatedContext)
+      const userRankings = generateRankings(updatedContext)
 
       // 上限チェック
       const currentUserStats = updatedUserStats[context.currentUser.userId]
@@ -63,9 +56,19 @@ export class ExecuteScript implements GameScript {
         this.gameState = { ...updatedGameState, userRankings }
       }
 
-      // postActionsのみを返す
       return {
-        postActions: [],
+        placeholder: createPlaceholders(),
+        postActions: [
+          {
+            actionType: 'message',
+            delaySeconds: 8,
+            characterKey,
+            iconKey: 'default',
+            message: {
+              bubble: '',
+            },
+          },
+        ],
       }
     } catch (error) {
       console.error('Game execution error:', error)
@@ -79,50 +82,4 @@ export class ExecuteScript implements GameScript {
   getGameState(): GameState {
     return this.gameState
   }
-
-  /**
-   * エディター用のサンプル表示
-   */
-  sampleRun(): GamePlaceholder {
-    // デフォルト設定でサンプルコンテキストを作成
-    const sampleContext: GameContext = {
-      settings: this.settings || {
-        rankMode: 'wins',
-        enableCount: 5,
-      },
-      params: {
-        isWin: true,
-        getPoint: 100,
-      },
-      gameState: this.gameState || GameStateSchema.parse({ ruleId: 'sample' }),
-      currentUser: {
-        userId: 'sample-user',
-        name: 'サンプルユーザー',
-      },
-    }
-
-    // サンプルデータでプレースホルダーを生成
-    return PlaceholderService.createPlaceholders(sampleContext)
-  }
-
-  /**
-   * 現在のプレースホルダーを取得（内部用）
-   */
-  getCurrentPlaceholders(comment: Comment): GamePlaceholder {
-    const context: GameContext = {
-      settings: this.settings,
-      params: { isWin: false, getPoint: 0 }, // ダミー
-      gameState: this.gameState,
-      currentUser: {
-        userId: comment.data.userId,
-        name: comment.data.name,
-      },
-    }
-
-    return PlaceholderService.createPlaceholders(context)
-  }
 }
-
-// プリセットから利用できるようにインスタンス化してエクスポート
-const execute = new ExecuteScript()
-export default execute

@@ -1,29 +1,24 @@
 // src/execute.ts
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
+import { GameSettings, GameParams, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { GAME_CONFIGS, GameResult } from './gameConfigs'
 import { GachaGame } from './game'
 import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 
-export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
-  private settings!: GameSettings
+export class ExecuteScript implements ScriptClass {
   private LogRank = new LogExecuteScript()
 
-  /**
-   * 設定を初期化する
-   */
-  setup(settings: GameSettings): void {
-    this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'GouseiSuika')
+  constructor() {
+    // LogRank
+    this.LogRank.setup({ rankMode: 'point', enableCount: 5 }, 'GouseiSuika')
   }
 
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
+  run(params: string, characterKey: string, comment?: Comment): ScriptResult {
     // パラメータ
-    const { isParty } = this.settings
     const { mode } = GameParamsSchema.parse(params)
 
     // 設定データ
@@ -33,15 +28,16 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const gameResult = this.executeGame(mode)
 
     // ランキングの生成
-    const logResult = this.LogRank.run(comment, {
-      isWin: false,
-      getPoint: gameResult.points,
-    })
+    const logResult = comment
+      ? this.LogRank.run(comment, characterKey, {
+          isWin: false,
+          getPoint: gameResult.points,
+        })
+      : null
 
     return {
-      postActions: isParty ? gameResult.postArray : [],
+      postActions: gameResult.postArray,
       placeholders: {
-        ...logResult.placeholders,
         message: `${userName}の得点は${gameResult.points}!`,
         mode,
         points: gameResult.points,

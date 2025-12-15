@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\displaySettings\global\SettingsGlobalEditor.vue -->
+<!-- src\ConfigMaker\components\displaySettings\global\SettingsGlobalEditor.vue -->
 <template>
   <!-- フォントファミリー -->
   <SettingItem

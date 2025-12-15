@@ -8,16 +8,16 @@ import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariablePro
 /**
  * プレースホルダー処理のメインクラス
  * プレースホルダー置換処理とコンテキスト値の管理を統合して行う
- * リファクタリング版：各プレースホルダーは毎回新しく解決される
+ * 各プレースホルダーは毎回新しく解決される
  */
 export class PlaceholderProcessor {
   private readonly resolver: PlaceholderResolver
   private readonly context: PlaceholderContext
-  private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
+  private readonly variableProcessor: VariablePlaceholderProcessor
   private static readonly PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
-    // variableProcessorを先に作成して共有
+    this.variableProcessor = new VariablePlaceholderProcessor()
     this.resolver = new PlaceholderResolver(placeholderSources, this.variableProcessor)
     this.context = new PlaceholderContext()
   }
@@ -31,35 +31,26 @@ export class PlaceholderProcessor {
 
   /**
    * PostAction配列のプレースホルダーを置換して返す
-   * 各プレースホルダーは毎回新しく解決される
    */
   processPostActions(postActions: PostActionType[]): PostActionType[] {
     return postActions.map((action) => {
-      // actionType: 'message' の場合、messageオブジェクト内の各プロパティを処理
       if (action.actionType === 'message') {
-        return {
-          ...action,
-          message: {
-            ...action.message,
-            bubble: this.processText(action.message.bubble),
-            toast: this.processText(action.message.toast),
-            banner: this.processText(action.message.banner),
-            dialog: this.processText(action.message.dialog),
-          },
-        }
+        return { ...action, message: this.processObject(action.message) }
       }
-
-      // actionType: 'wordParty' の場合、wordPartyプロパティを処理
       if (action.actionType === 'wordParty') {
-        return {
-          ...action,
-          wordParty: this.processText(action.wordParty),
-        }
+        return { ...action, wordParty: this.processText(action.wordParty) }
       }
-
-      // その他のactionType（sound, actionSetなど）はそのまま返す
       return action
     })
+  }
+
+  /**
+   * オブジェクト内の文字列プロパティを処理
+   */
+  private processObject<T extends Record<string, any>>(obj: T): T {
+    return Object.fromEntries(
+      Object.entries(obj).map(([key, value]) => [key, typeof value === 'string' ? this.processText(value) : value])
+    ) as T
   }
 
   /**
@@ -68,63 +59,71 @@ export class PlaceholderProcessor {
   processText(text?: string): string {
     if (!text) return ''
 
-    // resolverにコンテキスト値を渡す
     this.resolver.setContextValues(this.context.getAllValues())
+    this.variableProcessor.clearVariables()
 
-    // 変数プレースホルダーを処理
-    this.variableProcessor.clearVariables() // 初期化
-    const content = this.variableProcessor.process(text)
+    const processedText = this.variableProcessor.process(text)
 
-    return content.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
-      const trimmedId = placeholderId.trim()
-      // コンテキスト値を優先的にチェック
-      if (this.context.hasValue(trimmedId)) {
-        const contextValue = this.context.getValue(trimmedId)
-        return contextValue !== undefined ? String(contextValue) : match
-      }
+    return processedText.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) =>
+      this.resolvePlaceholder(match, placeholderId.trim())
+    )
+  }
 
-      // プレースホルダー解決エンジンで処理
-      return this.resolver.resolve(trimmedId)
-    })
+  /**
+   * プレースホルダーを解決
+   */
+  private resolvePlaceholder(originalMatch: string, placeholderId: string): string {
+    // コンテキスト値を優先
+    if (this.context.hasValue(placeholderId)) {
+      const value = this.context.getValue(placeholderId)
+      return value !== undefined ? String(value) : originalMatch
+    }
+
+    // プレースホルダー解決エンジンで処理
+    return this.resolver.resolve(placeholderId)
   }
 
   /**
    * PostActions内で使用されているプレースホルダーIDを収集
    */
   collectUsedPlaceholderIds(postActions: PostActionType[]): string[] {
-    const allIds = new Set<string>()
+    const placeholderIds = new Set<string>()
 
+    // 直接使用されているIDを収集
     postActions.forEach((action) => {
       if (action.actionType === 'message') {
-        // messageオブジェクト内のすべてのテキストフィールドから収集
-        this.addPlaceholderIds(allIds, action.message.bubble)
-        this.addPlaceholderIds(allIds, action.message.toast)
-        this.addPlaceholderIds(allIds, action.message.banner)
-        this.addPlaceholderIds(allIds, action.message.dialog)
+        this.extractIdsFromObject(action.message, placeholderIds)
       } else if (action.actionType === 'wordParty') {
-        // wordPartyから収集
-        this.addPlaceholderIds(allIds, action.wordParty)
+        this.extractIdsFromText(action.wordParty, placeholderIds)
       }
     })
 
-    // 依存関係も含めて収集
-    const finalIds = new Set<string>()
-    for (const id of allIds) {
-      const dependencies = this.resolver.collectDependencies(id)
-      dependencies.forEach((depId) => finalIds.add(depId))
-    }
+    // 依存関係を含めたIDを収集
+    const allIds = new Set<string>()
+    placeholderIds.forEach((id) => {
+      this.resolver.collectDependencies(id).forEach((depId) => allIds.add(depId))
+    })
 
-    return Array.from(finalIds)
+    return [...allIds]
   }
 
   /**
-   * テキストからプレースホルダーIDを抽出してSetに追加
+   * テキストからプレースホルダーIDを抽出
    */
-  private addPlaceholderIds(idSet: Set<string>, text: string | undefined): void {
+  private extractIdsFromText(text: string | undefined, idSet: Set<string>): void {
     if (!text) return
+    this.resolver.extractPlaceholderIds(text).forEach((id) => idSet.add(id))
+  }
 
-    const ids = this.resolver.extractPlaceholderIds(text)
-    ids.forEach((id) => idSet.add(id))
+  /**
+   * オブジェクトの文字列値からプレースホルダーIDを抽出
+   */
+  private extractIdsFromObject(obj: Record<string, unknown>, idSet: Set<string>): void {
+    Object.values(obj).forEach((value) => {
+      if (typeof value === 'string') {
+        this.extractIdsFromText(value, idSet)
+      }
+    })
   }
 
   /**
@@ -139,7 +138,6 @@ export class PlaceholderProcessor {
    */
   clearResolvedValues(): void {
     this.context.clear()
-    // 変数プレースホルダーもクリア
     this.variableProcessor.clearVariables()
   }
 }

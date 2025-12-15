@@ -4,7 +4,7 @@ import { ScriptPlaceholderItem, ParameterItem, PostActionWordPartyType } from '@
 import {
   GamePlaceholder as LogGamePlaceholder,
   placeholders as logPlaceholders,
-} from '@/common/GameScripts/scriptsEngine/LogRank/params'
+} from '@/common/GameScripts/scriptsEngine/LogRank/types'
 
 /**
  * settings
