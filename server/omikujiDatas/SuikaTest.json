@@ -1,0 +1,374 @@
+{
+  "meta": {
+    "id": "1754926464640-roopmp",
+    "name": "おみくじ BOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2025.12.05-v1.4.3",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "v2.0.0-alpha",
+    "dataVersion": 2.0000001,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ゲーム",
+      "スイカゲーム",
+      "カボチャゲーム",
+      "クジラゲームオンライン"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/7730686"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "GouseiSuika": {
+      "id": "GouseiSuika",
+      "key": "GouseiSuika",
+      "name": "スイカジェネレーター",
+      "description": "スイカゲーム風のおみくじ",
+      "createdAt": "2025-08-11T15:34:29.296Z",
+      "updatedAt": "2025-12-15T08:59:34.582Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "scriptParams": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "priority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉$"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": 0
+      }
+    },
+    "GouseiSuikaPumpkin": {
+      "id": "GouseiSuikaPumpkin",
+      "key": "GouseiSuikaPumpkin",
+      "name": "カボチャジェネレーター",
+      "description": "スイカゲームのハロウィン仕様風のおみくじ",
+      "createdAt": "2025-11-02T09:18:35.762Z",
+      "updatedAt": "2025-12-15T08:59:57.150Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "scriptParams": "mode=カボチャゲーム",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "priority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^pumpkin",
+          "^かぼちゃ",
+          "^カボチャ",
+          "^南瓜",
+          "^🎃$"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": 0
+      }
+    },
+    "GouseiSuikaWhale": {
+      "id": "GouseiSuikaWhale",
+      "key": "GouseiSuikaWhale",
+      "name": "クジラジェネレーター",
+      "description": "クジラゲームオンライン風のおみくじ",
+      "createdAt": "2025-11-02T09:21:18.863Z",
+      "updatedAt": "2025-12-15T09:00:16.307Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "name": "",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "scriptParams": "mode=クジラゲーム",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "priority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^whale",
+          "^くじら",
+          "^クジラ",
+          "^鯨",
+          "^🐋$",
+          "^🐳$"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 10,
+        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": 0
+      }
+    }
+  },
+  "timers": {},
+  "actionSets": {},
+  "placeholders": {},
+  "characters": {
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-12-05T06:19:51.828Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": false
+      },
+      "color": {
+        "nameColor": "#81C784",
+        "textColor": "#E8F5E8",
+        "backgroundColor": "#388E3C",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-12-05T06:20:02.906Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFB74D",
+        "textColor": "#FFF3E0",
+        "backgroundColor": "#F57C00",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    }
+  },
+  "displaySettings": {
+    "global": {
+      "fontFamily": "default"
+    },
+    "components": {
+      "conditions": [
+        "bubble",
+        "toast"
+      ],
+      "bubble": {
+        "showCharacters": [],
+        "showCharacterFrame": true,
+        "characterSize": 320,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleMotionLeave": "slideUp",
+        "bubbleTextAnimate": true,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "scriptKey": null,
+        "title": "Ranking",
+        "limit": 10,
+        "showScore": true,
+        "showRankNumber": true,
+        "color": "dark"
+      },
+      "counter": {
+        "ruleKey": null,
+        "target": "runCount",
+        "label": "Counter",
+        "firstValue": 0,
+        "isDirectionUp": true,
+        "color": "dark",
+        "showLabel": true
+      }
+    },
+    "editor": {
+      "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+      "daisyUiTheme": "emerald"
+    },
+    "developer": {
+      "visibility": {
+        "comments": "basic",
+        "timers": "experimental",
+        "actionSets": "basic",
+        "placeholders": "basic",
+        "characters": "basic",
+        "characterVisible": "experimental",
+        "licenseVisible": "experimental",
+        "gameScripts": [
+          "GouseiSuika"
+        ],
+        "jsonMergeSettings": "experimental"
+      }
+    }
+  },
+  "wordPartySettings": []
+}

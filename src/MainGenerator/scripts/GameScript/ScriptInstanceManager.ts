@@ -19,7 +19,6 @@ export class ScriptInstanceManager {
         if (this.scriptInstances[scriptId]) continue
 
         const scriptInstance = gameScriptMap[scriptId].execute
-        scriptInstance.setup(this.omikujiData.scriptSettings[scriptId])
         this.scriptInstances[scriptId] = scriptInstance
       }
     } catch (error) {

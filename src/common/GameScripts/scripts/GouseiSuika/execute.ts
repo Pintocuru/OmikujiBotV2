@@ -4,6 +4,7 @@ import { ScriptClass, GameState, ScriptResult, PostActionType } from '@/types/'
 import { GachaGame } from './game'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { Comment } from '@onecomme.com/onesdk/'
+import { GameResult } from './gameConfigs'
 
 const RANKING_KEY = 'GouseiSuika'
 const UNKNOWN_NAME = 'Unknown'
@@ -20,7 +21,7 @@ export class ExecuteScript implements ScriptClass {
     const { mode } = this.parseParams(params)
 
     const gameResult = new GachaGame(mode).play()
-    const rankingActions = this.buildRankingActions(gameResult.points, characterKey, comment)
+    const rankingActions = this.buildRankingActions(gameResult, characterKey, comment)
 
     return {
       postActions: [...gameResult.postArray, ...rankingActions],
@@ -39,7 +40,7 @@ export class ExecuteScript implements ScriptClass {
     return GameParamsSchema.parse(paramsObject)
   }
 
-  private buildRankingActions(points: number, characterKey: string, comment?: Comment): PostActionType[] {
+  private buildRankingActions(gameResult: GameResult, characterKey: string, comment?: Comment): PostActionType[] {
     if (!comment) return []
 
     const logResult = this.logRank.run({
@@ -49,21 +50,36 @@ export class ExecuteScript implements ScriptClass {
       rankMode: 'point',
       enableCount: 5,
       isWin: false,
-      getPoint: points,
+      getPoint: gameResult.points,
     })
 
-    if (logResult.currentUserStats.isOverLimit) return []
+    if (logResult.currentUserStats.isOverLimit)
+      return [
+        {
+          actionType: 'message',
+          delaySeconds: 3.5,
+          characterKey,
+          iconKey: 'default',
+          message: {
+            bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
+            rankingKey: RANKING_KEY,
+            rankingDisplayScore: String(gameResult.points),
+          },
+        },
+      ]
 
     const stats = logResult.currentUserStats
 
     return [
       {
         actionType: 'message',
-        delaySeconds: 8,
+        delaySeconds: 3.5,
         characterKey,
         iconKey: 'default',
         message: {
+          bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
           rankingKey: RANKING_KEY,
+          rankingDisplayScore: String(gameResult.points),
           rankingRank: stats.rank != null ? String(stats.rank) : undefined,
           rankingName: stats.name,
           rankingPoint: String(stats.totalPoints),
