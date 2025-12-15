@@ -11,10 +11,10 @@
         <DelaySecondsAdjuster :model-value="modelValue" @update:model-value="emit('update:modelValue', $event)" />
 
         <button
-          @click="() => useTestPost().postTestOmikujiItem(modelValue)"
+          @click="() => useTestPost().postTestOmikujiItem(modelValue, gameScripts)"
           class="btn btn-sm btn-info tooltip tooltip-top"
           data-tip="わんコメを起動すると、投稿の確認ができます"
-          :disabled="modelValue.length === 0"
+          :disabled="modelValue.length === 0 && !gameScripts"
         >
           <Send :size="16" />
           テスト投稿
@@ -35,24 +35,17 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
-  import PostActionsPreview from '@ConfigComponents/postAction/PostActionsPreview.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { List, Send, FileJson, Settings } from 'lucide-vue-next'
+  import { Send, FileJson } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
     modelValue: PostActionType[]
-    category: RulesCategoryType | 'actionSets'
-    selectedItemKey: string | null
+    gameScripts: GameScriptsType | null
   }>()
 
   // Emits
-  const emit = defineEmits(['update:modelValue', 'toggleEdit', 'toggleJson'])
-
-  // ホバー状態管理
-  const showPreview = ref(false)
+  const emit = defineEmits(['update:modelValue', 'toggleJson'])
 </script>

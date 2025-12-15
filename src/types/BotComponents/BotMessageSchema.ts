@@ -2,7 +2,6 @@
 import { z } from 'zod'
 import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { PostActionMessageBodySchema } from '../OmikujiData/OmikujiSchema'
-import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
 // BotMessage : Commentを大幅に略したもの
 export const BotMessageSchema = z.object({
@@ -14,13 +13,12 @@ export const BotMessageSchema = z.object({
   comment: PostActionMessageBodySchema, // コメント（messageにすること）
   characterKey: z.string().default(''), // キャラクターキー
   iconKey: CharacterEmotionSchema.default('default'), // アイコンキー(必要かどうかはわからん…)
-  enterMotion: z.enum(motionLabel).optional(), // 入場アニメーション
   displaySeconds: z.number().min(0).max(60).optional(), // 表示時間（秒）0-60秒の範囲
   sound: z.string().default(''), // サウンド
   profileImage: z
     .union([z.string(), z.array(z.string())])
     .nullable()
-    .catch(null), 
+    .catch(null),
   color: CharacterColorScheme.catch(CharacterColorScheme.parse({})), // カラー
 })
 export type BotMessage = z.infer<typeof BotMessageSchema>

@@ -1,6 +1,14 @@
 // src/ConfigMaker/script/useTestPost.ts
 import { computed } from 'vue'
-import { OmikujiItemSchema, PostActionType, BotMessage, OmikujiItemType, OmikujiDataType, RuleType } from '@/types/'
+import {
+  OmikujiItemSchema,
+  PostActionType,
+  BotMessage,
+  OmikujiItemType,
+  OmikujiDataType,
+  RuleType,
+  GameScriptsType,
+} from '@/types/'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { MockComment } from '@shared/test-utils/CreateMockComment'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
@@ -73,7 +81,11 @@ export function useTestPost() {
     })
   }
 
-  const postTestOmikujiItem = (actions: PostActionType[], drawOmikuji?: OmikujiItemType) => {
+  const postTestOmikujiItem = (
+    postActions: PostActionType[],
+    gameScripts?: GameScriptsType | null,
+    drawOmikuji?: OmikujiItemType
+  ) => {
     const rule = selectedRule.value
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
     const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)
@@ -83,29 +95,28 @@ export function useTestPost() {
 
     if (!rule) {
       // ルールがない場合は簡易実行（アクションのみをテスト）
-      console.log('ルールなしでアクションのみをテスト実行します', actions)
-      botMessageArray = processor.executePostActionsOnly(actions, mockComment)
+      console.log('ルールなしでアクションのみをテスト実行します', postActions)
+      botMessageArray = processor.executePostActionsOnly(postActions, mockComment)
     } else {
       // ルールがある場合は完全な実行
       let testOmikujiItem: OmikujiItemType
 
       if (drawOmikuji) {
         testOmikujiItem = drawOmikuji
-        testOmikujiItem.postActions = actions
+        testOmikujiItem.postActions = postActions
       } else {
         testOmikujiItem = OmikujiItemSchema.parse({
-          postActions: actions,
-          rankingScore: 1,
+          postActions,
+          gameScripts,
         })
       }
 
-      botMessageArray = processor.executeOmikujiProcess(mockComment, rule, testOmikujiItem)
+      botMessageArray = processor.executeOmikujiProcess(mockComment, testOmikujiItem)
     }
 
     if (drawOmikuji) {
-      showOmikujiResultToast(drawOmikuji, actions)
+      showOmikujiResultToast(drawOmikuji, postActions)
     }
-    console.log(botMessageArray)
     executeTestPostDelays(botMessageArray)
   }
 
@@ -129,7 +140,7 @@ export function useTestPost() {
       return
     }
 
-    postTestOmikujiItem(omikujiItem.postActions, omikujiItem)
+    postTestOmikujiItem(omikujiItem.postActions, omikujiItem.gameScripts, omikujiItem)
   }
 
   return {

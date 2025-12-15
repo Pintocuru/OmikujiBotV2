@@ -51,7 +51,6 @@
     <!-- PostActionタブの内容 -->
     <div v-else-if="props.modelValue.length > 0 && activeTab >= 0">
       <PostActionItem
-        :category="category"
         :action="currentAction"
         :index="activeTab"
         :character-options="characterOptions"
@@ -77,7 +76,6 @@
 
   const props = defineProps<{
     modelValue: PostActionType[]
-    category: RulesCategoryType | 'actionSets'
   }>()
 
   const emit = defineEmits<{

@@ -4,8 +4,7 @@
     <!-- ツールバー -->
     <OmikujiItemToolbar
       :modelValue="modelValue"
-      :category="category"
-      :selectedItemKey="selectedItemKey"
+      :gameScripts="gameScripts"
       @update:modelValue="updatePostActions"
       @toggleJson="toggleEditMode"
     />
@@ -19,7 +18,7 @@
     />
 
     <!-- PostActionsタブエディター -->
-    <PostActionsTabs v-else :modelValue="modelValue" :category="category" @update:actions="updatePostActions" />
+    <PostActionsTabs v-else :modelValue="modelValue" @update:actions="updatePostActions" />
   </div>
 </template>
 
@@ -28,14 +27,11 @@
   import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/tooltab/OmikujiItemToolbar.vue'
   import PostActionsTabs from './tooltab/PostActionsTabs.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 
   const props = defineProps<{
     modelValue: PostActionType[]
-    category: RulesCategoryType | 'actionSets'
-    selectedItemKey: string | null
-    index: number
+    gameScripts: GameScriptsType | null
   }>()
 
   const emit = defineEmits<{

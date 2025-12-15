@@ -26,7 +26,7 @@
       />
 
       <!-- PostActions編集コンポーネント -->
-      <PostActionsEditor v-model="postActions" :category="category" :selectedItemKey="selectedItemKey" :index="index" />
+      <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
     </div>
   </div>
 </template>
@@ -86,4 +86,5 @@
       }
     },
   })
+  const gameScripts = computed(() => omikujiItem.value?.gameScripts || null)
 </script>

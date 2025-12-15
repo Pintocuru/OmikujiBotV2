@@ -55,6 +55,7 @@ export class ExecuteScript implements ScriptClass {
 
     if (logResult.currentUserStats.isOverLimit)
       return [
+        ...logResult.postActions,
         {
           actionType: 'message',
           delaySeconds: 3.5,
@@ -65,12 +66,14 @@ export class ExecuteScript implements ScriptClass {
             rankingKey: RANKING_KEY,
             rankingDisplayScore: String(gameResult.points),
           },
+          sound: 'decision',
         },
       ]
 
     const stats = logResult.currentUserStats
 
     return [
+      ...logResult.postActions,
       {
         actionType: 'message',
         delaySeconds: 3.5,
@@ -85,6 +88,7 @@ export class ExecuteScript implements ScriptClass {
           rankingPoint: String(stats.totalPoints),
           rankingSymbol: stats.itemValue1,
         },
+        sound: 'decision',
       },
     ]
   }

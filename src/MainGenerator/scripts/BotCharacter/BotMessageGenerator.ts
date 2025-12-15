@@ -1,9 +1,10 @@
 // src/MainGenerator/utils/commentProcessor/BotMessageGenerator.ts
-import { BotMessage, BotMessageSchema, CharacterEmotionType, CharacterType, PostActionType } from '@/types/'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
+import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { playSoundDelay, playRpgVoiceLoop } from '@/Toolkit/sounds/PlaySound'
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 
 export class BotMessageGenerator {
   constructor(private readonly characters: Record<string, CharacterType>) {}
@@ -12,44 +13,55 @@ export class BotMessageGenerator {
    * 複数のPostActionからBotMessageの配列を生成
    */
   generateMessages(postActions: PostActionType[]): BotMessage[] {
-    const validActions = this.filterValidActions(postActions)
-    if (validActions.length === 0) return []
+    const messages: BotMessage[] = []
 
-    return validActions.flatMap((action) => this.generateMessage(action))
+    for (const action of postActions) {
+      // actionType で分岐処理
+      switch (action.actionType) {
+        case 'message':
+          messages.push(...this.generateMessageAction(action))
+          break
+        case 'sound':
+          this.handleSoundAction(action)
+          break
+        case 'wordParty':
+          // wordParty は別の処理系で処理されるため、ここではスキップ
+          break
+        case 'actionSet':
+          // actionSet は別の処理系で展開されるため、ここではスキップ
+          break
+        default:
+          // exhaustive check
+          const _exhaustiveCheck: never = action
+          console.warn('Unknown action type:', _exhaustiveCheck)
+      }
+    }
+
+    return messages
   }
 
   /**
-   * 有効なアクション（メッセージまたは音声が含まれる）をフィルタリング
+   * PostActionMessageType の処理
    */
-  private filterValidActions(postActions: PostActionType[]): PostActionType[] {
-    return postActions.filter(
-      (action) => action.messageContent?.trim() || action.messageToast?.trim() || action.sound?.trim()
-    )
-  }
-
-  /**
-   * 単一のPostActionからBotMessageを生成（複数の場合もあり）
-   */
-  private generateMessage(postAction: PostActionType): BotMessage[] {
+  private generateMessageAction(postAction: PostActionMessageType): BotMessage[] {
     const character = this.getSafeCharacter(postAction.characterKey)
     const baseDelaySeconds = this.calculateBaseDelay(postAction)
-    const showToasts = this.shouldShowToasts()
 
     const messages: BotMessage[] = []
 
-    // メッセージコンテンツの生成
-    if (postAction.messageContent?.trim()) {
-      messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, false, showToasts))
-      this.handleRpgVoice(character, postAction.messageContent, baseDelaySeconds)
+    // bubble メッセージの生成
+    if (postAction.message.bubble?.trim()) {
+      messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'bubble'))
+      this.handleRpgVoice(character, postAction.message.bubble, baseDelaySeconds)
     }
 
-    // トーストメッセージの生成
-    if (postAction.messageToast?.trim()) {
-      messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, true, showToasts))
-      if (!showToasts) this.handleRpgVoice(character, postAction.messageToast, baseDelaySeconds)
+    // toast メッセージの生成
+    if (postAction.message.toast?.trim()) {
+      messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'toast'))
+      this.handleRpgVoice(character, postAction.message.toast, baseDelaySeconds)
     }
 
-    // サウンド再生
+    // サウンド再生（message actionType に含まれる場合）
     if (postAction.sound?.trim()) {
       playSoundDelay(postAction.sound, baseDelaySeconds)
     }
@@ -58,33 +70,41 @@ export class BotMessageGenerator {
   }
 
   /**
+   * PostActionSoundType の処理
+   */
+  private handleSoundAction(postAction: PostActionSoundType): void {
+    if (!postAction.sound?.trim()) return
+
+    const delaySeconds = this.calculateBaseDelay(postAction)
+    playSoundDelay(postAction.sound, delaySeconds)
+  }
+
+  /**
    * BotMessageオブジェクトを作成
    */
   private createBotMessage(
-    postAction: PostActionType,
+    postAction: PostActionMessageType,
     character: CharacterType,
     delaySeconds: number,
-    isToast: boolean,
-    showToasts: boolean
+    messageType: 'bubble' | 'toast'
   ): BotMessage {
-    const content = isToast ? postAction.messageToast! : postAction.messageContent
-
     return BotMessageSchema.parse({
       name: character.displayName,
       characterKey: postAction.characterKey,
       iconKey: postAction.iconKey,
       profileImage: character.displayOption.isIconDisplay ? this.getCharacterIcon(character, postAction.iconKey) : null,
-      enterMotion: postAction.enterMotion,
       sound: postAction.sound,
-      comment: content,
-      isToast: showToasts ? isToast : false,
+      comment:
+        messageType === 'bubble'
+          ? { bubble: postAction.message.bubble, ...postAction.message }
+          : { toast: postAction.message.toast, ...postAction.message },
       color: character.color,
       delaySeconds,
     })
   }
 
   /**
-   * RPG風の音声ループを再生（条件に応じて）
+   * RPG風の音声ループを再生(条件に応じて)
    */
   private handleRpgVoice(character: CharacterType, messageContent: string, baseDelaySeconds: number): void {
     const { isOneCommePost, isVoice, isRpgVoice } = character.displayOption
@@ -101,15 +121,7 @@ export class BotMessageGenerator {
   }
 
   /**
-   * トースト表示設定を取得
-   */
-  private shouldShowToasts(): boolean {
-    const appStore = useAppStore()
-    return appStore.data.displaySettings.base.showToasts
-  }
-
-  /**
-   * キャラクターを安全に取得（エラー時はデフォルトを返す）
+   * キャラクターを安全に取得(エラー時はデフォルトを返す)
    */
   private getSafeCharacter(characterKey: string): CharacterType {
     try {

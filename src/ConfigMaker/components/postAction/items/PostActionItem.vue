@@ -60,7 +60,6 @@
 
   // Props
   const props = defineProps<{
-    category: RulesCategoryType | 'actionSets'
     action: PostActionType
     index: number
     characterOptions: Array<{ value: string; label: string }>

@@ -1,23 +1,13 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import {
-  CommentRuleType,
-  OmikujiDataType,
-  OmikujiItemSchema,
-  OmikujiItemType,
-  OmikujiSetType,
-  PostActionType,
-  RuleType,
-} from '@/types'
+import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, OmikujiSetType, PostActionType, RuleType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
 import { GameScriptManager } from '@MainScripts/GameScript/GameScriptManager'
 import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
-import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { RankingManager } from '@MainScripts/VariablePlaceholder/RankingManager'
 import { Comment } from '@onecomme.com/onesdk/'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 /**
  * おみくじ処理の統合クラス
@@ -83,7 +73,7 @@ export class OmikujiProcessor {
    * @param rule ルール情報
    * @param omikujiItem おみくじアイテム
    */
-  executeOmikujiProcess(comment: Comment, rule: RuleType, omikujiItem: OmikujiItemType): BotMessage[] {
+  executeOmikujiProcess(comment: Comment, omikujiItem: OmikujiItemType): BotMessage[] {
     // executorでプレースホルダーとスクリプトを設定
     this.executor.executeDirect(omikujiItem, comment)
 

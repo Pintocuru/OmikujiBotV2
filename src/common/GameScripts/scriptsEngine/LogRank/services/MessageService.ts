@@ -12,8 +12,9 @@ export const createPostActions = (characterKey: string, userStats: UserStatsType
       characterKey,
       iconKey: 'default',
       message: {
-        bubble: createMessage(userStats),
+        toast: createMessage(userStats),
       },
+      sound: 'cute',
     },
   ]
 }
