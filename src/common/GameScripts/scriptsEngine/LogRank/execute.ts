@@ -1,78 +1,58 @@
-// src\common\GameScripts\scriptsEngine\LogRank\execute.ts
-// ユーザーの勝敗・ポイント・ランキングを管理するゲームシステム
-import { GameState, GameStateSchema } from '@/types'
-import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema, GameContext, GameResult } from './types'
+// src/common/GameScripts/scriptsEngine/LogRank/execute.ts
+import { GameState, GameStateSchema, UserStatsType } from '@/types'
+import { GameParams, GameParamsSchema, GameContext, GameResult } from './types'
 import { updateUserStats } from './services/UserStatsService'
 import { generateRankings } from './services/RankingService'
-import { createPlaceholders } from './services/PlaceholderService'
-import { Comment } from '@onecomme.com/onesdk/'
+import { createCurrentUserStats } from './services/UserStatsResultService'
+import { createPostActions } from './services/MessageService'
 
-export class ExecuteScript {
-  private settings!: GameSettings
+export class LogRankScript {
   private gameState!: GameState
 
   /**
    * 設定を初期化する
    */
-  setup(settings: GameSettings, ruleId: string): void {
-    this.settings = GameSettingsSchema.parse(settings)
+  setup(ruleId: string): void {
     this.gameState = GameStateSchema.parse({ ruleId })
   }
 
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, characterKey: string, params: GameParams): GameResult {
+  run(params: GameParams): GameResult {
     try {
-      // コンテキストオブジェクトを作成
-      const context: GameContext = {
-        settings: this.settings,
-        params: GameParamsSchema.parse(params),
-        gameState: this.gameState,
-        currentUser: {
-          userId: comment.data.userId,
-          name: comment.data.name,
-        },
-      }
+      const validatedParams = GameParamsSchema.parse(params)
+      const context = this.createContext(validatedParams)
 
       // ユーザー統計を更新
       const updatedUserStats = updateUserStats(context)
-
-      // ゲーム状態を更新
       const updatedGameState = {
         ...context.gameState,
         userStats: updatedUserStats,
       }
 
-      // ランキングを生成
-      const updatedContext = { ...context, gameState: updatedGameState }
-      const userRankings = generateRankings(updatedContext)
-
       // 上限チェック
-      const currentUserStats = updatedUserStats[context.currentUser.userId]
-      const isOverLimit = this.settings.enableCount > 0 && (currentUserStats?.draws || 0) > this.settings.enableCount
+      const isOverLimit = this.checkDrawLimit(validatedParams.enableCount, updatedUserStats[context.params.userId])
 
+      // 上限内の場合のみランキング更新
       if (!isOverLimit) {
+        const updatedContext = { ...context, gameState: updatedGameState }
+        const userRankings = generateRankings(updatedContext)
         this.gameState = { ...updatedGameState, userRankings }
+      } else {
+        this.gameState = updatedGameState
       }
 
-      return {
-        placeholder: createPlaceholders(),
-        postActions: [
-          {
-            actionType: 'message',
-            delaySeconds: 8,
-            characterKey,
-            iconKey: 'default',
-            message: {
-              bubble: '',
-            },
-          },
-        ],
-      }
+      // 現在のユーザー統計と投稿アクションを作成
+      const finalContext = { ...context, gameState: this.gameState }
+      const currentUserStats = createCurrentUserStats(finalContext, isOverLimit)
+      const postActions = createPostActions(params.characterKey, currentUserStats)
+
+      return { currentUserStats, postActions }
     } catch (error) {
-      console.error('Game execution error:', error)
-      throw new Error('ゲーム実行中にエラーが発生しました')
+      const errorMessage = error instanceof Error ? error.message : '不明なエラー'
+      console.error('Game execution error:', errorMessage, error)
+      throw new Error(`ゲーム実行中にエラーが発生しました: ${errorMessage}`)
     }
   }
 
@@ -81,5 +61,24 @@ export class ExecuteScript {
    */
   getGameState(): GameState {
     return this.gameState
+  }
+
+  /**
+   * コンテキストを作成
+   */
+  private createContext(params: GameParams): GameContext {
+    return {
+      params,
+      gameState: this.gameState,
+    }
+  }
+
+  /**
+   * 試行回数が上限を超えているかチェック
+   */
+  private checkDrawLimit(enableCount: number, userStats: UserStatsType): boolean {
+    if (enableCount <= 0) return false
+    const draws = userStats?.draws ?? 0
+    return draws > enableCount
   }
 }

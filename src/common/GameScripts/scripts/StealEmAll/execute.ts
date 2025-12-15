@@ -2,7 +2,7 @@
 import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
 import { ScriptClass, GameState, ScriptResult } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
-import { ExecuteScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
 import { type GameResult } from './gameConfig'
 

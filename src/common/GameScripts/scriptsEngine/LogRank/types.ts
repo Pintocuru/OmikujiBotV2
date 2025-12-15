@@ -1,57 +1,49 @@
-// src\common\GameScripts\scriptsEngine\LogRank\params.ts
+// src/common/GameScripts/scriptsEngine/LogRank/types.ts
 import { z } from 'zod'
-import { GameState, PostActionType, PostActionWordPartyType } from '@/types/'
+import { GameState, PostActionType, UserStatsType } from '@/types/'
 
 /**
- * settings
- */
-export const GameSettingsSchema = z.object({
-  rankMode: z.enum(['wins', 'rate', 'point']).default('wins').catch('wins'),
-  enableCount: z.number().int().min(0).max(100).default(5).catch(5),
-})
-export type GameSettings = z.infer<typeof GameSettingsSchema>
-
-/**
- * params
+ * ゲーム実行時のパラメータ（設定を統合）
  */
 export const GameParamsSchema = z.object({
-  isWin: z.boolean(), // 勝利したか
-  getPoint: z.number(), // 獲得したポイント
-  itemValue1: z.string().optional(), // 任意の項目1
-  itemValue2: z.string().optional(), // 任意の項目2
-  itemValue3: z.string().optional(), // 任意の項目3
+  // ユーザーデータ
+  userId: z.string(),
+  name: z.string(),
+
+  // BOT用パラメータ
+  characterKey: z.string(),
+
+  // ゲーム設定
+  rankMode: z.enum(['wins', 'rate', 'point']).default('wins'),
+  enableCount: z.number().int().min(0).max(100).default(5),
+
+  // 実行時パラメータ
+  isWin: z.boolean(),
+  getPoint: z.number(),
+  itemValue1: z.string().optional(),
+  itemValue2: z.string().optional(),
+  itemValue3: z.string().optional(),
 })
 export type GameParams = z.infer<typeof GameParamsSchema>
 
 /**
- * postActions
+ * ゲームコンテキスト
  */
-export const postActions: PostActionWordPartyType[] = []
-
-/**
- * placeholders
- */
-export const GamePlaceholderSchema = z.object({
-  announceMessage: z.string().default(''),
-  totalDraws: z.number().default(0),
-  winsCount: z.number().default(0),
-  winsRank: z.union([z.number(), z.literal('ランキング外')]).default('ランキング外'),
-  winsRate: z.string().default('0.0'),
-  totalPoints: z.number().default(0),
-})
-export type GamePlaceholder = z.infer<typeof GamePlaceholderSchema>
-
 export interface GameContext {
-  settings: GameSettings
   params: GameParams
   gameState: GameState
-  currentUser: {
-    userId: string
-    name: string
-  }
 }
 
+/**
+ * ゲーム実行結果
+ */
 export interface GameResult {
-  placeholder: GamePlaceholder
+  currentUserStats: UserStatsType
   postActions: PostActionType[]
 }
+
+/**
+ * ランキングモードの判定
+ */
+export const isPointMode = (params: GameParams): boolean => params.rankMode === 'point'
+export const isWinnerMode = (params: GameParams): boolean => params.rankMode !== 'point'

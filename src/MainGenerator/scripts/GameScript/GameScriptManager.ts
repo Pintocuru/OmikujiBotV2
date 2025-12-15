@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\omikujiProcess\GameScriptManager.ts
 import { OmikujiDataType, CommentRuleType, OmikujiItemType } from '@/types/'
 import { ScriptClass, ScriptResult } from '@/types/GameScript/GameScriptTypes'
-import { GameState, UserStatsType } from '@/types/GameScript/GameScriptSchema'
+import { GameState, UserStatsType } from '@/common/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 import { ScriptInstanceManager } from './ScriptInstanceManager'
 import { GameStateManager } from './GameStateManager'
 import { RankingDataManager } from './RankingDataManager'

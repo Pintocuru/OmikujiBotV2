@@ -11,7 +11,7 @@ export * from './OmikujiData/DisplaySettingsSchema'
 export * from './GameComponent/GameComponentSchema'
 export * from './GameComponent/GameRankingTypes'
 
-export * from './GameScript/GameScriptSchema'
+export * from '../common/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 // export * from './GameScript/GameScriptSettingsSchema'
 export * from './GameScript/GameScriptTypes'
 

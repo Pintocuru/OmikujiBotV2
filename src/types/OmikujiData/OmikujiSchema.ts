@@ -23,6 +23,7 @@ export const PostActionMessageBodySchema = z
   .object({
     bubble: z.string().optional().catch(undefined),
     toast: z.string().optional().catch(undefined),
+    rankingKey: z.string().optional().catch(undefined), // コンポーネント用key
     rankingRank: z.string().optional().catch(undefined),
     rankingName: z.string().optional().catch(undefined),
     rankingPoint: z.string().optional().catch(undefined),

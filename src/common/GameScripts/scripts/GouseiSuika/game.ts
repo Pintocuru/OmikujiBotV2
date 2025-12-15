@@ -1,6 +1,6 @@
 // src/game.ts
 import { PostActionWordPartyType } from '@/types/'
-import { GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
+import { GAME_CONFIGS, GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
 
 /**
  * ガチャゲームのロジックを管理するクラス
@@ -8,11 +8,10 @@ import { GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from '.
 export class GachaGame {
   private totalPoints = 0
   private postArray: PostActionWordPartyType[] = []
+  private readonly gameConfig: GameConfigDetails
 
-  constructor(
-    private readonly gameConfig: GameConfigDetails,
-    private readonly mode: string
-  ) {
+  constructor(private readonly mode: string) {
+    this.gameConfig = GAME_CONFIGS[mode]
     this.initializeEffects()
   }
 
