@@ -26,7 +26,7 @@
       >
         <CommentBubbleItem
           botName="テストユーザー"
-          :comment="currentPreview"
+          :message="currentPreview"
           :color="color"
           :custom-classes="customClasses"
         />

@@ -1,10 +1,11 @@
 // src/MainGenerator/utils/commentProcessor/BotMessageGenerator.ts
 import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
-import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
+import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
 import { playSoundDelay, playRpgVoiceLoop } from '@/Toolkit/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { resolveProfileImage } from './ProfileImageResolver'
 
 export class BotMessageGenerator {
   constructor(private readonly characters: Record<string, CharacterType>) {}
@@ -92,7 +93,7 @@ export class BotMessageGenerator {
       name: character.displayName,
       characterKey: postAction.characterKey,
       iconKey: postAction.iconKey,
-      profileImage: character.displayOption.isIconDisplay ? this.getCharacterIcon(character, postAction.iconKey) : null,
+      profileImage: character.displayOption.isIconDisplay ? resolveProfileImage(character, postAction.iconKey) : null,
       sound: postAction.sound,
       comment:
         messageType === 'bubble'
@@ -133,21 +134,5 @@ export class BotMessageGenerator {
       })
       return DefaultCharacterManager.getDefaultCharacterByIndex(0)
     }
-  }
-
-  /**
-   * キャラクターアイコンの取得
-   */
-  private getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionType): string[] | string | null {
-    const iconMap = character?.image
-    if (!iconMap) return null
-
-    // 指定されたアイコンを優先
-    const iconValue = iconMap[iconKey]
-    if (iconValue && iconValue !== '') return iconValue
-
-    // デフォルトアイコンにフォールバック
-    const defaultIcon = iconMap['default']
-    return defaultIcon && defaultIcon !== '' ? defaultIcon : null
   }
 }

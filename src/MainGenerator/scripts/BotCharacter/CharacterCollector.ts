@@ -33,7 +33,6 @@ export class CharacterCollector {
       characterKey: postAction.characterKey,
       iconKey: postAction.iconKey,
       profileImage: character?.image?.[postAction.iconKey] || character?.image?.default || null,
-      enterMotion: postAction.enterMotion,
       sound: postAction.sound,
       comment: postAction.message.bubble,
       isToast,

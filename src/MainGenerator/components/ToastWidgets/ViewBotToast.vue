@@ -11,7 +11,6 @@
       <ToastBubbleItem
         :botMessage="message"
         :showToastsOnRight="base.showToastsOnRight"
-        :showToasts="base.showToasts"
         :character="characters?.[message.characterKey]"
         :clickable="true"
         @click="hideComment"
@@ -25,14 +24,13 @@
   import ToastBubbleItem from './ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { storeToRefs } from 'pinia'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
-  const base = computed(() => appStore.data.displaySettings.base)
+  const base = computed(() => appStore.data.displaySettings.components.toast)
 
   const characters = computed(() => appStore.characterCollector.getUsedCharacterData())
 

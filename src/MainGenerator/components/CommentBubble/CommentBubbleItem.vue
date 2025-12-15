@@ -35,7 +35,7 @@
   const props = withDefaults(
     defineProps<{
       botName?: string
-      comment: string
+      message: string
       color?: CharacterColorType
       brightnessLevel?: number // brightness値をレベルとして受け取る
       customClasses?: string
@@ -45,7 +45,7 @@
     }>(),
     {
       botName: '',
-      comment: '(未記入)',
+      message: '(未記入)',
       brightnessLevel: 0, // デフォルトは最も明るい
       customClasses: 'p-4 rounded-xl',
       customArrowClasses:
@@ -65,7 +65,7 @@
   ] as const
 
   // アニメーション用のテキスト
-  const displayed = ref(props.animatedText ? '' : props.comment)
+  const displayed = ref(props.animatedText ? '' : props.message)
 
   // テキストの大きさ(固定に変更)
   const textSizeClass = computed(() => 'text-xl')
@@ -79,15 +79,15 @@
   // 文字送り用
   watchEffect(() => {
     if (!props.animatedText) {
-      displayed.value = props.comment
+      displayed.value = props.message
       return
     }
 
     displayed.value = ''
     let i = 0
     const timer = setInterval(() => {
-      displayed.value = props.comment.substring(0, i++)
-      if (i > props.comment.length) clearInterval(timer)
+      displayed.value = props.message.substring(0, i++)
+      if (i > props.message.length) clearInterval(timer)
     }, props.animatedTextSpeed)
   })
 </script>

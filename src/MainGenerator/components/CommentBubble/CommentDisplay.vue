@@ -5,13 +5,14 @@
     :key="message.id"
     class="absolute w-full"
     :style="{
-      top: `${index * spacing}px`,
+      top: `${index * 40}px`,
       zIndex: 20 - index,
     }"
   >
     <MotionWrapper
       v-model:visible="message.visible"
       :initialMotion="enterMotion"
+      :enter-motion="enterMotion"
       :leave-motion="leaveMotion"
       :auto-hide="false"
       @after-leave="() => removeComment(message.id)"
@@ -19,7 +20,7 @@
       <div class="flex justify-center">
         <CommentBubbleItem
           :botName="message.name"
-          :comment="message.comment.bubble ?? ''"
+          :message="message.comment.toast ?? ''"
           :color="message.color"
           :animated-text="animatedText"
           :brightnessLevel="index"
@@ -39,7 +40,6 @@
   import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { DisplaySize } from '@shared/types'
 
   const props = withDefaults(
     defineProps<{
@@ -48,14 +48,12 @@
       enterMotion?: MotionType
       leaveMotion?: MotionType
       animatedText?: boolean
-      spacing: number
     }>(),
     {
       removeComment: () => {},
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,
-      spacing: 0,
     }
   )
 </script>

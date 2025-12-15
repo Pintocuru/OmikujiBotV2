@@ -12,7 +12,8 @@ export const SettingsGlobalSchema = z.object({
 
 // フキダシ・キャラクター
 export const SettingsBubbleSchema = z.object({
-  showCharacters: z.array(z.array(z.string())).default([]).catch([]), // キャラクターのkeyを並べる(新設)
+  // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
+  showCharacters: z.array(z.array(z.string())).default([]).catch([]),
   showCharacterFrame: z.boolean().default(true), // キャラクターにフレーム（円形の背景）を表示するか
   characterSize: z.number().default(320).catch(320), // キャラクターの横幅(新設)
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)

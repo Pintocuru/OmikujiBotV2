@@ -1,13 +1,13 @@
 <!-- templates\OmikujiBot\src\MainGenerator\components\ToastWidgets\ToastWidgets.vue -->
 <template>
-  <div class="fixed bottom-4 z-20 flex flex-col" :class="!base.showToastsOnRight ? 'left-4' : 'right-4'">
+  <div class="fixed bottom-4 z-20 flex flex-col" :class="!toast.showToastsOnRight ? 'left-4' : 'right-4'">
     <!-- トースト表示 -->
-    <div v-if="base.showToasts" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+    <div :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
       <ViewBotToast />
     </div>
 
     <!-- キャラクターサムネイル -->
-    <div v-if="base.showCharacterThumbnail" :class="!base.showToastsOnRight ? 'self-start' : 'self-end'">
+    <div v-if="toast.showThumbnail" :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
       <CharacterThumbnails />
     </div>
   </div>
@@ -20,5 +20,5 @@
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const appStore = useAppStore()
-  const base = computed(() => appStore.data.displaySettings.base)
+  const toast = computed(() => appStore.data.displaySettings.components.toast)
 </script>

@@ -23,9 +23,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
   const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 
-  const comments = computed(() =>
-    botMessages.value.filter((message) => (mode === 'comment' ? !message.isToast : message.isToast))
-  )
+  const comments = computed(() => botMessages.value)
 
   // MotionWrapperのafter-leaveイベントから呼ばれる関数
   const removeComment = (messageId: string) => {
@@ -67,7 +65,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
         if (nextComment.displaySeconds !== undefined) {
           totalLifeTime = nextComment.displaySeconds * 1000
         } else {
-          const commentLength = nextComment.comment?.length ?? 0
+          const commentLength =
+            mode === 'comment' ? (nextComment.comment?.bubble?.length ?? 0) : (nextComment.comment.toast?.length ?? 0)
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }

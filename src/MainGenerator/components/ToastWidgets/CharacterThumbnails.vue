@@ -3,7 +3,6 @@
   <CharacterThumbnailsPreview
     v-if="characters.length > 0"
     :characters="characters"
-    :displaySize="displaySize"
     :clickable="true"
     :imageClass="'transition-all duration-500'"
     @character-click="handleCharacterClick"
@@ -13,15 +12,12 @@
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
   import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
-  import { characterEmotions, CharacterEmotionType, CharacterType, PostActionSchema, getImagePath } from '@/types/'
+  import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
 
   const appStore = useAppStore()
-  const displayStore = useDisplayStore()
 
   const characters = computed(() => appStore.characterCollector.getUsedCharacterArray())
-  const displaySize = computed(() => displayStore.displaySize)
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
 
@@ -54,16 +50,18 @@
     try {
       const shouldChangeExpression = Math.random() < 0.5
       const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
-      const messageType = isRightClick ? 'トーストメッセージ' : 'テストメッセージ'
 
-      const postAction = PostActionSchema.parse({
+      const postAction: BotMessage = BotMessageSchema.parse({
+        name: character.name,
         characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
-        messageContent: `${character.name}の${messageType}です！`,
+        color: character?.color,
+        comment: {
+          bubble: !isRightClick ? `${character.name}のテストメッセージです！` : '',
+          toast: isRightClick ? `${character.name}のトーストメッセージです！` : '',
+        },
       })
-
-      const testMessage = appStore.characterCollector.generateTestMessage(postAction, isRightClick)
-      appStore.addBotMessage(testMessage)
+      appStore.addBotMessage(postAction)
     } catch (error) {
       console.error('テストメッセージの生成に失敗しました:', error)
     }

@@ -19,7 +19,7 @@
         <CommentBubbleItem
           :key="messageKey"
           :botName="character.displayName"
-          :comment="processedMessage"
+          :message="processedMessage"
           :color="character.color"
           @click="refreshMessage"
           class="cursor-pointer"

@@ -16,7 +16,6 @@
           :enter-motion="enterMotion"
           :leave-motion="leaveMotion"
           :animated-text="character?.displayOption.isRpgVoice"
-          :spacing="sizeConfig.spacing"
         />
       </div>
 
@@ -51,7 +50,7 @@
     removeComment: [messageId: string]
   }>()
 
-  const { enterMotion, leaveMotion, showCharacterFrame, sizeConfig } = useViewBotCharacter()
+  const { enterMotion, leaveMotion, showCharacterFrame } = useViewBotCharacter()
 
   const handleRemoveComment = (messageId: string) => {
     emit('removeComment', messageId)

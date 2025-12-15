@@ -124,7 +124,6 @@ export function useViewBotCharacter() {
     enterMotion,
     leaveMotion,
     showCharacterFrame,
-    sizeConfig,
 
     // 計算済みプロパティ
     lastCommenterKey,

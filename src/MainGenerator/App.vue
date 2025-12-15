@@ -6,6 +6,10 @@
 
     <!-- 右下UI要素コンテナ -->
     <ToastWidgets v-if="components.toast" />
+
+    <!-- ランキングリスト
+    <GameRankingViewer v-if="components.ranking" />
+     -->
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -21,6 +25,7 @@
 
   import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@/MainGenerator/components/ToastWidgets/ToastWidgets.vue'
+  import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue'
   import { storeToRefs } from 'pinia'
 
   // Pinia Store

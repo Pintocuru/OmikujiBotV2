@@ -24,10 +24,13 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import LayerImage from '@/common/LayerImage.vue'
+  import { CharacterEmotionType } from '@/types'
 
   const props = withDefaults(
     defineProps<{
       profileImage?: string[] | string | null
+      characterKey?: string | null
+      iconKey?: CharacterEmotionType
       characterName?: string
       backgroundColor?: string
       showCharacterFrame?: boolean
@@ -35,7 +38,9 @@
     }>(),
     {
       profileImage: null,
+      characterKey: null,
       characterName: 'おみくじBOT',
+      iconKey: 'default',
       backgroundColor: '#ccc',
       showCharacterFrame: true,
       isVisible: true,

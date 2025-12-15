@@ -116,15 +116,29 @@
     initializeMotion()
     emit('enter-start')
 
-    // enterアニメーション完了を待つ
+    // ★ 修正箇所: enterMotion が 'none' の場合はアニメーションをスキップ ★
+    const shouldSkipEnterAnimation = props.enterMotion === 'none' // enterアニメーション完了を待つ
+
     try {
-      if (motionInstance?.apply) {
+      if (motionInstance?.apply && !shouldSkipEnterAnimation) {
+        // <= 条件を追加
         await motionInstance.apply('enter')
+      } else if (motionInstance?.set && shouldSkipEnterAnimation) {
+        // 'none' の場合、initial (enterの初期値) を適用せずに、enterの最終状態を即座に適用する
+        // これにより、要素が initial 状態（見えない位置）のまま固定されることを防ぐ
+        motionInstance.set(enterVariant.value.enter ?? 'none')
       }
+
       emit('enter-complete')
       setAutoHideTimer()
     } catch (error) {
       console.warn('Enter animation failed:', error)
+
+      // エラー時も同様に、要素が見える状態にフォールバックさせる
+      if (motionInstance?.set) {
+        motionInstance.set(enterVariant.value.enter ?? 'none')
+      }
+
       emit('enter-complete')
       setAutoHideTimer()
     }

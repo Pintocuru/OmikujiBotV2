@@ -17,7 +17,7 @@
             :profile-image="message.profileImage"
             :character-name="message.name"
             :background-color="message.color?.backgroundColor"
-            :show-character-frame="showCharacterFrame"
+            :show-character-frame="true"
             :is-visible="index === 0"
           />
         </template>
@@ -39,14 +39,14 @@
 
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
-  const hoge = computed(() => appStore.data.displaySettings?.components.bubble || {})
+  const bubble = computed(() => appStore.data.displaySettings?.components.bubble || {})
 
   // アニメーション設定
-  const enterMotion = computed(() => hoge.value?.bubbleMotionEnter)
-  const leaveMotion = computed(() => hoge.value?.bubbleMotionLeave)
+  const enterMotion = computed(() => bubble.value?.bubbleMotionEnter)
+  const leaveMotion = computed(() => bubble.value?.bubbleMotionLeave)
 
   // キャラクター表示設定
-  const showCharacterFrame = computed(() => hoge.value?.showCharacterFrame)
+  const showCharacterFrame = computed(() => bubble.value?.showCharacterFrame)
 
   // 基底composableを直接使用
   const { displayedComments, removeComment, start } = useBotDisplay(botMessages, 'comment')

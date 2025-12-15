@@ -6,12 +6,11 @@
       v-if="scoreVisibility.isVisible.value && displayStore.currentUserRankings.length > 0"
       :player-data="displayStore.currentUserRankings[0]"
       :theme="displayStore.currentComponentConfig"
-      :size-config="sizeConfig"
       :score-display="displayStore.currentComponentConfig.scoreDisplay"
     />
 
     <!-- Ranking list -->
-    <GameRankingList :size-config="sizeConfig" />
+    <GameRankingList />
   </div>
 
   <!-- componentConfigがnullの場合はエラー表示 -->
@@ -24,20 +23,9 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import GameRankingScore from './GameRankingScore.vue'
   import GameRankingList from './GameRankingList.vue'
-  import { COMPONENT_SIZE_CONFIG } from './composables/useComponentConfig'
   import { useDelayedDisplay } from './composables/useDelayedDisplay'
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
-  import { storeToRefs } from 'pinia'
-
-  // Piniaストアの使用
-  const displayStore = useDisplayStore()
-  const { displaySize, currentUserRankings } = storeToRefs(displayStore)
-
-  // Size configuration
-  const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[displaySize.value])
 
   // Score display control
   const scoreVisibility = useDelayedDisplay(currentUserRankings, {

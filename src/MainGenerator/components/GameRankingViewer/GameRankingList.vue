@@ -13,7 +13,7 @@
       :class="[
         'text-center mb-2 font-bold drop-shadow-lg',
         displayStore.currentComponentConfig.textColors.accent,
-        sizeConfig.text.large,
+        'text-xl',
       ]"
     >
       {{ displayStore.currentComponentConfig.displaySettings.titleText }}
@@ -28,7 +28,7 @@
           :class="getRankingRowClass(index)"
         >
           <!-- 順位 -->
-          <span :class="getRankingNumberClass(index, sizeConfig.rankingNumber)">
+          <span :class="getRankingNumberClass(index, 'w-6 h-4 leading-4 text-sm')">
             {{ player.rank ?? index + 1 }}
           </span>
 
@@ -36,7 +36,7 @@
           <span class="flex justify-center items-center flex-1">
             <span
               class="font-bold drop-shadow-lg"
-              :class="[displayStore.currentComponentConfig.textColors.primary, sizeConfig.text.medium]"
+              :class="[displayStore.currentComponentConfig.textColors.primary, 'text-lg']"
               v-html="formatPlayerInfo(player, displayStore.currentComponentConfig.displaySettings.scoreFormat)"
             />
           </span>
@@ -49,7 +49,7 @@
       :class="[
         'p-0 m-0 flex justify-center items-center w-full mt-2',
         displayStore.currentComponentConfig.textColors.primary,
-        sizeConfig.text.small,
+        'text-xs',
       ]"
     >
       平均: {{ gameStatistics.averageScore }}pt ({{ gameStatistics.totalCount }}回 / 総計{{
@@ -58,9 +58,7 @@
     </div>
 
     <!-- スコアテンプレート表示（処理前） -->
-    <div
-      :class="['text-center mt-1', displayStore.currentComponentConfig.textColors.secondary, sizeConfig.text.small]"
-    ></div>
+    <div :class="['text-center mt-1', displayStore.currentComponentConfig.textColors.secondary, 'text-xs']"></div>
   </div>
 
   <!-- データがない場合 -->
@@ -70,14 +68,8 @@
 </template>
 
 <script setup lang="ts">
-  import { SizeConfig } from './composables/useComponentConfig'
   import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
   import { useGameRanking } from './composables/useGameRanking'
-
-  // Props
-  defineProps<{
-    sizeConfig: SizeConfig
-  }>()
 
   // Piniaストアの使用
   const displayStore = useDisplayStore()
