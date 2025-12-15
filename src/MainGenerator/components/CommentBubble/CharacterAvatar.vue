@@ -4,7 +4,7 @@
     v-if="hasProfileImage"
     class="avatar"
     :class="[
-      sizeConfig.avatar,
+      'w-48',
       {
         'rounded-full': showCharacterFrame,
         'overflow-hidden': showCharacterFrame,
@@ -23,9 +23,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { SIZE_CONFIG } from './composables/SizeConfig'
   import LayerImage from '@/common/LayerImage.vue'
-  import { DisplaySize } from '@shared/types'
 
   const props = withDefaults(
     defineProps<{
@@ -34,7 +32,6 @@
       backgroundColor?: string
       showCharacterFrame?: boolean
       isVisible?: boolean
-      displaySize?: DisplaySize
     }>(),
     {
       profileImage: null,
@@ -42,12 +39,8 @@
       backgroundColor: '#ccc',
       showCharacterFrame: true,
       isVisible: true,
-      displaySize: 'md',
     }
   )
-
-  // サイズ設定
-  const sizeConfig = computed(() => SIZE_CONFIG[props.displaySize])
 
   // 単一 or 配列を統一的に扱う
   const normalizedImages = computed(() =>

@@ -16,7 +16,6 @@
           :enter-motion="enterMotion"
           :leave-motion="leaveMotion"
           :animated-text="character?.displayOption.isRpgVoice"
-          :text-size="displaySize"
           :spacing="sizeConfig.spacing"
         />
       </div>
@@ -29,19 +28,16 @@
         :background-color="character?.color?.backgroundColor"
         :show-character-frame="showCharacterFrame"
         :is-visible="true"
-        :display-size="displaySize"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import type { CharacterType } from '@/types/'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterAvatar from './CharacterAvatar.vue'
   import { useViewBotCharacter } from './composables/useViewBotCharacter'
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
-  import { storeToRefs } from 'pinia'
-  import type { CharacterType } from '@/types/'
   import { DisplayBotMessage } from './composables/useBotDisplay'
 
   const props = defineProps<{
@@ -54,9 +50,6 @@
   const emit = defineEmits<{
     removeComment: [messageId: string]
   }>()
-
-  const displayStore = useDisplayStore()
-  const { displaySize } = storeToRefs(displayStore)
 
   const { enterMotion, leaveMotion, showCharacterFrame, sizeConfig } = useViewBotCharacter()
 

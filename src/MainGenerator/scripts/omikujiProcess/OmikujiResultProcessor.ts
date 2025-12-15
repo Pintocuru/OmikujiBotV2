@@ -7,8 +7,8 @@ import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { ActionSetExpander } from './ActionSetExpander'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { Comment } from '@onecomme.com/onesdk/'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
+import { Comment } from '@onecomme.com/onesdk/'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス

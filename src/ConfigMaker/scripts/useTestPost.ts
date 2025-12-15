@@ -16,7 +16,6 @@ import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmi
 import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'
 import { toast } from 'vue-sonner'
 import { storeToRefs } from 'pinia'
-import { RankingManager } from '@/MainGenerator/scripts/VariablePlaceholder/RankingManager'
 import { playSound } from '@/Toolkit/sounds'
 
 export function useTestPost() {
@@ -111,7 +110,7 @@ export function useTestPost() {
         })
       }
 
-      botMessageArray = processor.executeOmikujiProcess(mockComment, testOmikujiItem)
+      botMessageArray = processor.executeOmikujiDirect(testOmikujiItem, mockComment)
     }
 
     if (drawOmikuji) {
@@ -127,9 +126,7 @@ export function useTestPost() {
       return
     }
 
-    // ★★★ ランク割り当て済みのおみくじセットを使用 ★★★
-    const processedOmikuji = RankingManager.assignRanks(rule.key, omikujiSet)
-    const omikujisWithPercent = addWeightPercentages(processedOmikuji)
+    const omikujisWithPercent = addWeightPercentages(omikujiSet)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 
     if (!omikujiItem) {

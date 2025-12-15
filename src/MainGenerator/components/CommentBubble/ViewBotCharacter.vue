@@ -25,7 +25,6 @@
     getCharacterImage,
     getCharacterComments,
     removeCommentWithIconReset,
-    displayedComments,
     start,
     stop,
   } = useViewBotCharacter()

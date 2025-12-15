@@ -13,7 +13,6 @@
         :showToastsOnRight="base.showToastsOnRight"
         :showToasts="base.showToasts"
         :character="characters?.[message.characterKey]"
-        :displaySize="displaySize"
         :clickable="true"
         @click="hideComment"
       />
@@ -32,9 +31,7 @@
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
-  const displayStore = useDisplayStore()
   const { botMessages } = storeToRefs(appStore)
-  const { displaySize } = storeToRefs(displayStore)
   const base = computed(() => appStore.data.displaySettings.base)
 
   const characters = computed(() => appStore.characterCollector.getUsedCharacterData())

@@ -25,11 +25,12 @@
       title="おみくじ設定"
       description="コメントで実行するおみくじの設定"
     >
-      <!-- 型 '{ modelValue: ({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | ...' の引数を型 '{ readonly modelValue: ({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: ...' のパラメーターに割り当てることはできません。
-  プロパティ 'index' は型 '{ modelValue: ({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: string | ...' にありませんが、型 '{ readonly modelValue: ({ actionType: "message"; characterKey: string; iconKey: "default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"; message: { ...; }; delaySeconds: number; enterMotion?: "none" | ... 13 more ... | undefined; sound?: ...' では必須です。ts-plugin(2345)
-PostActionsEditor.vue(44, 5): 'index' はここで宣言されています。
-import PostActionsEditor -->
-      <PostActionsEditor v-model="selectedItem.postActions" category="actionSets" :selectedItemKey="selectedItemKey" />
+      <PostActionsEditor
+        v-model="selectedItem.postActions"
+        :gameScripts="selectedItem.gameScripts"
+        category="actionSets"
+        :selectedItemKey="selectedItemKey"
+      />
     </SectionCard>
   </div>
 </template>

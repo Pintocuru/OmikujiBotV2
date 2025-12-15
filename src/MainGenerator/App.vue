@@ -1,8 +1,11 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
-    <!-- OmikujiBot -->
-    <OmikujiBot />
+    <!-- コメントフキダシ表示 -->
+    <CommentBubble v-if="components.bubble" />
+
+    <!-- 右下UI要素コンテナ -->
+    <ToastWidgets v-if="components.toast" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -16,11 +19,16 @@
   import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
 
-  // 新規分割したコンポーネント
-  import OmikujiBot from './packages/OmikujiBot/OmikujiBot.vue'
+  import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
+  import ToastWidgets from '@/MainGenerator/components/ToastWidgets/ToastWidgets.vue'
+  import { storeToRefs } from 'pinia'
 
   // Pinia Store
   const appStore = useAppStore()
+  const { data } = storeToRefs(appStore)
+  const components = computed(() => data.value.displaySettings.components)
+
+  // comment/timerルール稼働
   const { initializeApp, processComments, startTimers } = useRuleProcessor()
 
   // フォントの指定

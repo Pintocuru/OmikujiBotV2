@@ -8,7 +8,6 @@
         :character-name="character?.displayName"
         :background-color="character?.color?.backgroundColor"
         :showCharacterFrame="showCharacterFrame"
-        :displaySize="displaySize"
         :style="{ filter: brightnessFilter }"
       />
     </template>
@@ -19,7 +18,6 @@
           :character-name="character?.displayName"
           :background-color="character?.color?.backgroundColor"
           :showCharacterFrame="showCharacterFrame"
-          :displaySize="displaySize"
           :style="{ filter: brightnessFilter }"
         />
       </div>
@@ -31,7 +29,6 @@
   import { computed } from 'vue'
   import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
-  import { DisplaySize } from '@shared/types/CommonSchema'
 
   const props = withDefaults(
     defineProps<{
@@ -42,7 +39,6 @@
       showCharacterPersistent?: boolean
       showCharacterFrame?: boolean
       showCharacterThumbnail?: boolean
-      displaySize?: DisplaySize
       maxDisplayCount?: number
     }>(),
     {
@@ -52,7 +48,6 @@
       showCharacterPersistent: false,
       showCharacterFrame: true,
       showCharacterThumbnail: true,
-      displaySize: 'md',
       maxDisplayCount: 5,
     }
   )

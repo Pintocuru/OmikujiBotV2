@@ -1,6 +1,6 @@
 // src/types/DisplaySettingsSchema.ts
 import { z } from 'zod'
-import { AccessLevelSchema, displaySize } from '@shared/types/'
+import { AccessLevelSchema } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'

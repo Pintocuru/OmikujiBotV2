@@ -7,7 +7,7 @@
     </div>
 
     <!-- キャラクターアイコン（message / toast のみ表示） -->
-    <div v-if="['message', 'toast'].includes(action.actionType)" class="flex items-center gap-2 flex-shrink-0">
+    <div v-if="action.actionType === 'message'" class="flex items-center gap-2 flex-shrink-0">
       <CharacterIcon
         :character-key="action.characterKey"
         :icon-key="action.iconKey"
@@ -41,16 +41,11 @@
     switch (props.action.actionType) {
       case 'message':
         list.push(MessageSquare)
-        if (props.action.wordParty) list.push(PartyPopper)
-        break
-      case 'toast':
-        list.push(Bell)
-        if (props.action.wordParty) list.push(PartyPopper)
         break
       case 'wordParty':
         list.push(PartyPopper)
         break
-      case 'sounds':
+      case 'sound':
         list.push(Music)
         break
       case 'actionSet':

@@ -1,12 +1,11 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, OmikujiSetType, PostActionType, RuleType } from '@/types'
+import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, OmikujiSetType, PostActionType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
 import { GameScriptManager } from '@MainScripts/GameScript/GameScriptManager'
 import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
-import { RankingManager } from '@MainScripts/VariablePlaceholder/RankingManager'
 import { Comment } from '@onecomme.com/onesdk/'
 
 /**
@@ -34,29 +33,29 @@ export class OmikujiProcessor {
   }
 
   /**
-   * おみくじの実行（コメント＋ルール指定）
+   * おみくじ と 引いたおみくじの処理
    */
   executeOmikuji(omikujiSet: OmikujiSetType, comment?: Comment): BotMessage[] {
+    // おみくじ
     const omikujiItem = this.executor.executeWithRule(omikujiSet, comment)
     if (!omikujiItem) return []
 
+    // おみくじの処理
     return this.resultProcessor.process(omikujiItem)
   }
 
   /**
-   * おみくじの実行（おみくじアイテムを直接指定）
-   * コンフィグエディターからの呼び出しなど、scriptManagerが不要な場合に使用
+   * おみくじの直接指定
+   * コンフィグエディターからの呼び出しで使用
    */
   executeOmikujiDirect(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
     this.executor.executeDirect(omikujiItem, comment)
-    return this.resultProcessor.process(omikujiItem)
+    return this.resultProcessor.process(omikujiItem, comment)
   }
 
   /**
    * PostActionのみを実行（テスト用・簡易実行）
    * ルール情報やスクリプト実行なしで、PostActionを直接BotMessageに変換
-   * @param actions PostAction配列
-   * @param comment コメント情報（プレースホルダー用、オプション）
    */
   executePostActionsOnly(actions: PostActionType[], comment?: Comment): BotMessage[] {
     const dummyOmikujiItem: OmikujiItemType = OmikujiItemSchema.parse({
@@ -64,52 +63,5 @@ export class OmikujiProcessor {
     })
 
     return this.executeOmikujiDirect(dummyOmikujiItem, comment)
-  }
-
-  /**
-   * おみくじプロセスの実行（テスト用）
-   * コメント、ルール、おみくじアイテムを全て指定して実行
-   * @param comment コメント情報
-   * @param rule ルール情報
-   * @param omikujiItem おみくじアイテム
-   */
-  executeOmikujiProcess(comment: Comment, omikujiItem: OmikujiItemType): BotMessage[] {
-    // executorでプレースホルダーとスクリプトを設定
-    this.executor.executeDirect(omikujiItem, comment)
-
-    // omikujiItem を投稿
-    return this.resultProcessor.process(omikujiItem, comment)
-  }
-
-  // ==========================================
-  // ランキング管理API（RankingManagerへの委譲）
-  // ==========================================
-
-  /**
-   * デバッグ用：特定ルールのランキング情報を取得
-   */
-  getRanking(ruleId: string): Record<string, number> | null {
-    return RankingManager.getRanking(ruleId)
-  }
-
-  /**
-   * デバッグ用：全ランキング情報を取得
-   */
-  getAllRankings(): Record<string, Record<string, number>> {
-    return RankingManager.getAllRankings()
-  }
-
-  /**
-   * 特定ルールのランキングをクリア
-   */
-  clearRanking(ruleId: string): void {
-    RankingManager.clearRanking(ruleId)
-  }
-
-  /**
-   * 全ランキングをクリア
-   */
-  clearAllRankings(): void {
-    RankingManager.clearAllRankings()
   }
 }

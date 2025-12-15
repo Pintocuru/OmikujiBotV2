@@ -1,10 +1,10 @@
 <!-- templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
 <template>
   <!-- BOTメッセージ表示 -->
-  <ViewBotMessage v-if="!showCharacterPersistent" />
+  <ViewBotMessage />
 
   <!-- 常時表示キャラクター -->
-  <ViewBotCharacter v-else />
+  <ViewBotCharacter />
 </template>
 
 <script setup lang="ts">
@@ -15,9 +15,4 @@
 
   // Piniaストアの使用
   const appStore = useAppStore()
-
-  // キャラクター常時表示設定
-  const showCharacterPersistent = computed(() => {
-    return appStore.data?.displaySettings?.base?.showCharacterPersistent
-  })
 </script>

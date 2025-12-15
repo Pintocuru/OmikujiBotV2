@@ -28,7 +28,6 @@
           botName="テストユーザー"
           :comment="currentPreview"
           :color="color"
-          :text-size="textSize"
           :custom-classes="customClasses"
         />
       </MotionWrapper>
@@ -61,14 +60,12 @@
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import CommentBubbleItem from '@MainComponents/CommentBubble/CommentBubbleItem.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import type { DisplaySize } from '@shared/types'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
 
   // Props定義（元のコンポーネントと同じ）
   const props = withDefaults(
     defineProps<{
       color: CharacterColorType
-      textSize?: DisplaySize
       customClasses?: string | undefined
       isSlider?: boolean
       fontFamily?: FontFamilyType
@@ -76,7 +73,6 @@
       bubbleMotionLeave?: MotionType
     }>(),
     {
-      textSize: 'md',
       fontFamily: 'default',
       isSlider: false,
       bubbleMotionEnter: 'slideUp',

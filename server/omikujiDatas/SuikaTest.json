@@ -357,7 +357,7 @@
     "developer": {
       "visibility": {
         "comments": "basic",
-        "timers": "experimental",
+        "timers": "basic",
         "actionSets": "basic",
         "placeholders": "basic",
         "characters": "basic",

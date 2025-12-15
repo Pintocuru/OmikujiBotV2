@@ -1,12 +1,10 @@
 // src\MainGenerator\scripts\DisplayMode\useDisplayCore.ts
 import { ref, computed } from 'vue'
 import { OmikujiDataType } from '@/types/'
-import { DisplaySize } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 
 export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
   const displaySettings = omikujiData.displaySettings
-  const displaySize = ref<DisplaySize>(displaySettings.base.displaySize)
   const currentModeIndex = ref(0)
   const updateTrigger = ref(0)
 
@@ -34,12 +32,6 @@ export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: Game
     return keys[currentModeIndex.value]
   })
 
-  // 表示サイズ変更
-  const setDisplaySize = (size: DisplaySize) => {
-    displaySize.value = size
-    forceUpdate()
-  }
-
   // 強制更新
   const forceUpdate = () => {
     updateTrigger.value += 1
@@ -47,7 +39,6 @@ export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: Game
 
   return {
     // 状態
-    displaySize,
     currentModeIndex,
     updateTrigger,
     selectedComponent,
@@ -55,7 +46,6 @@ export function useDisplayCore(omikujiData: OmikujiDataType, scriptManager: Game
     currentScriptKey,
 
     // アクション
-    setDisplaySize,
     forceUpdate,
 
     // 設定

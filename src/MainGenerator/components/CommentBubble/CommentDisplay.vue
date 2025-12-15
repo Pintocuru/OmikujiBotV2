@@ -19,10 +19,9 @@
       <div class="flex justify-center">
         <CommentBubbleItem
           :botName="message.name"
-          :comment="message.comment"
+          :comment="message.comment.bubble ?? ''"
           :color="message.color"
           :animated-text="animatedText"
-          :text-size="textSize"
           :brightnessLevel="index"
           :custom-classes="message.color?.customClasses"
           :style="{ zIndex: index }"
@@ -49,7 +48,6 @@
       enterMotion?: MotionType
       leaveMotion?: MotionType
       animatedText?: boolean
-      textSize: DisplaySize
       spacing: number
     }>(),
     {
@@ -57,7 +55,6 @@
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,
-      textSize: 'md',
       spacing: 0,
     }
   )

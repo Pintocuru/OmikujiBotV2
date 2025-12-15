@@ -1,13 +1,13 @@
 // src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
 import { computed, watch } from 'vue'
-import { RuleCommentProcessor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentProcessor'
-import { Comment } from '@onecomme.com/onesdk/'
+import { storeToRefs } from 'pinia'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
+import { RuleCommentProcessor } from '@/MainGenerator/scripts/RuleProcess/RuleCommentProcessor'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
 import { ConfigUserType } from '@shared/types'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { storeToRefs } from 'pinia'
+import { Comment } from '@onecomme.com/onesdk/'
 
 export function useRuleProcessor() {
   // Pinia Store
