@@ -40,7 +40,7 @@
   import { computed } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import CustomClassSelector from './CustomClass/CustomClassSelector.vue'
-  import CommentBubblePreview from '@ConfigComponents/displaySettings/CommentBubblePreview.vue'
+  import CommentBubblePreview from '@/ConfigMaker/components/displaySettings/bubble/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { Dices } from 'lucide-vue-next'

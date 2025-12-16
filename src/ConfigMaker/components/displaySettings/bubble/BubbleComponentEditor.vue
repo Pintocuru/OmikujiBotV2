@@ -90,7 +90,7 @@
   import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CommentBubblePreview from '../CommentBubblePreview.vue'
+  import CommentBubblePreview from './CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 

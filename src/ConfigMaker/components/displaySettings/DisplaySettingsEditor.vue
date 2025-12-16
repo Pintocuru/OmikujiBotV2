@@ -108,18 +108,18 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import ComponentConditionsEditor from './components/ComponentConditionsEditor.vue'
-  import BubbleComponentEditor from './components/BubbleComponentEditor.vue'
-  import BubbleComponentCharacterEditor from './components/BubbleComponentCharacterEditor.vue'
-  import ToastComponentEditor from './components/ToastComponentEditor.vue'
-  import RankingComponentEditor from './components/RankingComponentEditor.vue'
-  import CounterComponentEditor from './components/CounterComponentEditor.vue'
+  import ComponentConditionsEditor from './global/ComponentConditionsEditor.vue'
+  import BubbleComponentEditor from './bubble/BubbleComponentEditor.vue'
+  import BubbleComponentCharacterEditor from './bubble/BubbleComponentCharacterEditor.vue'
+  import ToastComponentEditor from './toast/ToastComponentEditor.vue'
+  import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
+  import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
   import SettingsGlobalEditor from './global/SettingsGlobalEditor.vue'
 
-  import EditorSettingsEditor from './EditorSettingsEditor.vue'
-  import VisibilitySettings from './VisibilitySettings.vue'
-  import DeveloperModeInfo from './DeveloperModeInfo.vue'
+  import EditorSettingsEditor from './editor/EditorSettingsEditor.vue'
+  import VisibilitySettings from './developer/VisibilitySettings.vue'
+  import DeveloperModeInfo from './developer/DeveloperModeInfo.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'

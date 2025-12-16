@@ -122,7 +122,7 @@
   // 現在表示中のプレビューデータ
   const currentPreview = ref(previewDataList[0])
 
-  // アニメーションのリロード関数（大幅に簡素化！）
+  // アニメーションのリロード関数
   const reloadAnimation = async () => {
     // メッセージを切り替え
     switchPreview()
@@ -131,7 +131,7 @@
     await motionWrapper.value?.reload()
   }
 
-  // 右クリックでアニメーションを非表示にする関数（大幅に簡素化！）
+  // 右クリックでアニメーションを非表示にする関数
   const hideAnimation = async () => {
     // MotionWrapperのhide関数を呼び出すだけ
     await motionWrapper.value?.hide()
@@ -151,5 +151,5 @@
 </script>
 
 <style scoped>
-  @import url('../../../../assets/styles/font.css');
+  @import url('../../../../../assets/styles/font.css');
 </style>
