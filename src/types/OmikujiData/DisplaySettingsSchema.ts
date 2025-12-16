@@ -33,13 +33,13 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 
 // ランキング Ranking
 export const SettingsRankingSchema = z.object({
-  scriptKey: z.string().min(1).nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
-  title: z.string().default('Ranking').catch('Ranking'), // タイトル
-  limit: z.number().default(10).catch(10), // 表示するランキング数
-  showScore: z.boolean().default(true).catch(true), // スコア表示
-  showRankNumber: z.boolean().default(true).catch(true), // 順位の表示
-  color: z.enum(themes).default('dark').catch('dark'), // テーマカラー(DaisyUi)
+  scriptKey: z.string().nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
+  title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'), // タイトル
+  limit: z.number().default(5).catch(5), // 表示するランキング数
+  sortByHighScore: z.boolean().default(true).catch(true), // 順位の表示
+  color: z.enum(themes).default('lofi').catch('lofi'), // テーマカラー(DaisyUi)
 })
+export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
 // カウンター Counter
 // idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる

@@ -1,35 +1,40 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
 <template>
-  <div v-if="displayStore.currentComponentConfig">
-    <!-- Score Display with Animation -->
+  <div v-if="rankingSettings" class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md z-10">
+    <!-- スコア表示 -->
     <GameRankingScore
-      v-if="scoreVisibility.isVisible.value && displayStore.currentUserRankings.length > 0"
-      :player-data="displayStore.currentUserRankings[0]"
-      :theme="displayStore.currentComponentConfig"
-      :score-display="displayStore.currentComponentConfig.scoreDisplay"
+      v-if="filteredMessages.length > 0"
+      :bot-messages="filteredMessages"
+      :settings="rankingSettings"
+      class="mb-4"
     />
 
-    <!-- Ranking list -->
-    <GameRankingList />
-  </div>
-
-  <!-- componentConfigがnullの場合はエラー表示 -->
-  <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
-    <p class="text-red-700">設定が読み込まれていません</p>
-    <p class="text-red-600 text-sm mt-1">
-      componentConfig: {{ displayStore.currentComponentConfig ? 'loaded' : 'null' }}
-    </p>
+    <!-- ランキングリスト -->
+    <GameRankingList :bot-messages="filteredMessages" :settings="rankingSettings" />
   </div>
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import GameRankingScore from './GameRankingScore.vue'
   import GameRankingList from './GameRankingList.vue'
-  import { useDelayedDisplay } from './composables/useDelayedDisplay'
 
-  // Score display control
-  const scoreVisibility = useDelayedDisplay(currentUserRankings, {
-    delayMs: 4500,
-    displayMs: 5000,
+  const appStore = useAppStore()
+  const { data, botMessages } = storeToRefs(appStore)
+
+  // ランキング設定を取得
+  const rankingSettings = computed(() => {
+    return data.value?.displaySettings?.components?.ranking
+  })
+
+  // ランキング対象のメッセージをフィルタリング
+  const filteredMessages = computed(() => {
+    if (!botMessages.value || !rankingSettings.value?.scriptKey) {
+      return []
+    }
+
+    return botMessages.value.filter((msg) => msg.comment?.rankingKey === rankingSettings.value?.scriptKey)
   })
 </script>

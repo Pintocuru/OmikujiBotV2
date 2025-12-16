@@ -1,79 +1,166 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingList.vue -->
 <template>
-  <div
-    v-if="displayStore.currentComponentConfig"
-    :class="[
-      'p-1 rounded-2xl',
-      displayStore.currentComponentConfig.backgrounds.base,
-      displayStore.currentComponentConfig.fontStyles.rankingText,
-    ]"
-  >
-    <!-- ランキングタイトル -->
-    <div
-      :class="[
-        'text-center mb-2 font-bold drop-shadow-lg',
-        displayStore.currentComponentConfig.textColors.accent,
-        'text-xl',
-      ]"
-    >
-      {{ displayStore.currentComponentConfig.displaySettings.titleText }}
-    </div>
+  <div v-if="settings" :data-theme="settings.color" class="card p-2 shadow-xl">
+    <div class="card-body p-2">
+      <h2 class="card-title text-3xl font-bold text-center w-full justify-center">
+        {{ settings.title }}
+      </h2>
 
-    <!-- ランキングリスト -->
-    <div class="overflow-hidden max-h-fit">
-      <ul class="list-none p-0 m-0 space-y-1">
-        <li
-          v-for="(player, index) in displayStore.currentUserRankings"
-          :key="`${player.userId}-${index}`"
-          :class="getRankingRowClass(index)"
+      <div class="space-y-2">
+        <div
+          v-for="(msg, index) in displayMessages"
+          :key="`${msg.id}-${index}`"
+          class="flex items-center gap-2 p-2 rounded-lg transition-all hover:bg-base-200"
+          :class="getRankClass(index)"
         >
-          <!-- 順位 -->
-          <span :class="getRankingNumberClass(index, 'w-6 h-4 leading-4 text-sm')">
-            {{ player.rank ?? index + 1 }}
-          </span>
+          <div class="flex-shrink-0">
+            <div class="badge badge-xl font-bold" :class="getRankBadgeClass(index)">
+              {{ settings.sortByHighScore ? index + 1 : msg.comment?.rankingRank || index + 1 }}
+            </div>
+          </div>
 
-          <!-- プレイヤー情報 -->
-          <span class="flex justify-center items-center flex-1">
-            <span
-              class="font-bold drop-shadow-lg"
-              :class="[displayStore.currentComponentConfig.textColors.primary, 'text-lg']"
-              v-html="formatPlayerInfo(player, displayStore.currentComponentConfig.displaySettings.scoreFormat)"
-            />
-          </span>
-        </li>
-      </ul>
+          <div class="flex-grow min-w-0">
+            <span class="text-xl font-semibold truncate">
+              {{ msg.comment?.rankingName || msg.name || 'Anonymous' }}
+            </span>
+            <span v-if="msg.comment.rankingSymbol !== ''" class="text-lg text-base-content/60 font-semibold truncate">
+              {{ msg.comment.rankingSymbol }}
+            </span>
+          </div>
+
+          <div class="flex-shrink-0">
+            <div class="badge badge-xl badge-primary font-bold">
+              {{ formatScore(Number(msg.comment?.rankingPoint) || 0) }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- 平均スコア -->
-    <div
-      :class="[
-        'p-0 m-0 flex justify-center items-center w-full mt-2',
-        displayStore.currentComponentConfig.textColors.primary,
-        'text-xs',
-      ]"
-    >
-      平均: {{ gameStatistics.averageScore }}pt ({{ gameStatistics.totalCount }}回 / 総計{{
-        gameStatistics.totalScore
-      }}pt)
-    </div>
-
-    <!-- スコアテンプレート表示（処理前） -->
-    <div :class="['text-center mt-1', displayStore.currentComponentConfig.textColors.secondary, 'text-xs']"></div>
-  </div>
-
-  <!-- データがない場合 -->
-  <div v-else class="p-4 bg-red-100 border border-red-400 rounded">
-    <p class="text-red-700">テーマ設定が読み込まれていません</p>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
-  import { useGameRanking } from './composables/useGameRanking'
+  import { computed } from 'vue'
+  import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+  import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
 
-  // Piniaストアの使用
-  const displayStore = useDisplayStore()
+  interface Props {
+    botMessages: BotMessage[]
+    settings: SettingsRankingType
+  }
 
-  // ゲームランキングコンポーザブル
-  const { gameStatistics, formatPlayerInfo, getRankingRowClass, getRankingNumberClass } = useGameRanking()
+  const props = defineProps<Props>()
+
+  const candidateNames = [
+    'てい',
+    'ポッピィー',
+    'おふとん',
+    'もこもこ',
+    'じゅん',
+    'たかゆき',
+    'すいすい',
+    'たいよう',
+    'ふわみ',
+    'いろは',
+    'なな',
+    'きよし',
+    'おとは',
+    'こはく',
+    'さくら',
+  ]
+
+  // ダミーBotMessageを生成
+  const generateDummyMessages = (): BotMessage[] => {
+    const count = props.settings.limit || 10
+    const usedNames = new Set<string>()
+    const dummyMessages: BotMessage[] = []
+
+    for (let i = 0; i < count; i++) {
+      // 重複しない名前を選択
+      let name: string
+      do {
+        name = candidateNames[Math.floor(Math.random() * candidateNames.length)]
+      } while (usedNames.has(name) && usedNames.size < candidateNames.length)
+
+      usedNames.add(name)
+
+      // 3000点から1000点までのランダムスコア
+      const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
+
+      dummyMessages.push(
+        BotMessageSchema.parse({
+          name,
+          comment: {
+            rankingName: name,
+            rankingPoint: String(points),
+            rankingRank: String(i + 1),
+            rankingKey: props.settings.scriptKey || 'dummy',
+          },
+        })
+      )
+    }
+
+    // スコアでソート（降順）
+    if (props.settings.sortByHighScore)
+      return dummyMessages.sort(
+        (a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0)
+      )
+    // ソートせずにそのまま返す
+    else return dummyMessages
+  }
+
+  // 表示用メッセージ（空の場合はダミーを生成）
+  const displayMessages = computed(() => {
+    if (props.botMessages.length > 0) {
+      let data = [...props.botMessages]
+
+      // sortByHighScore が true の場合のみスコアでソート
+      if (props.settings.sortByHighScore) {
+        data.sort((a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0))
+      }
+
+      // limit適用
+      return data.slice(0, props.settings.limit || 10)
+    }
+    // ダミーデータは常にソートされたものを返す
+    return generateDummyMessages()
+  })
+
+  // スコアのフォーマット
+  const formatScore = (score: number): string => {
+    return score.toLocaleString()
+  }
+
+  // ランク別のスタイルクラス
+  const getRankClass = (index: number): string => {
+    if (index === 0) return 'bg-warning/70'
+    if (index === 1) return 'bg-info/70'
+    if (index === 2) return 'bg-success/70'
+    return ''
+  }
+
+  // ランク別のバッジクラス
+  const getRankBadgeClass = (index: number): string => {
+    if (index === 0) return 'badge-warning'
+    if (index === 1) return 'badge-info'
+    if (index === 2) return 'badge-success'
+    return 'badge-ghost'
+  }
 </script>
+
+<style scoped>
+  .card {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

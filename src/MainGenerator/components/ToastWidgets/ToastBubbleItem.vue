@@ -2,10 +2,7 @@
 <template>
   <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
-    <div
-      v-if="isCharacterDisplay && character && character.image?.default"
-      class="chat-image avatar relative w-10 h-10"
-    >
+    <div v-if="isCharacterDisplay && character" class="chat-image avatar relative w-10 h-10">
       <LayerImage :layers="character.image?.[iconKey]" :size="10" :round="true" />
     </div>
 
@@ -18,7 +15,7 @@
         class="leading-tight text-base"
         :style="{ color: botMessage?.color?.textColor || character?.color.textColor || '#212121' }"
       >
-        {{ botMessage?.comment || simpleMessage }}
+        {{ botMessage?.comment?.toast || simpleMessage }}
       </div>
     </div>
   </div>

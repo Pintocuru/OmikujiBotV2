@@ -1,32 +1,26 @@
 <!-- src\ConfigMaker\components\displaySettings\components\RankingComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
-    <!-- プレビュー -->
-    <div class="border p-2 rounded">
-      <h3 class="text-lg font-bold mb-2">{{ ranking.title }}</h3>
-      <ul>
-        <li v-for="i in ranking.limit" :key="i" class="flex gap-2 items-center">
-          <span v-if="ranking.showRankNumber">{{ i }}位</span>
-          <span>ユーザー{{ i }}</span>
-          <span v-if="ranking.showScore">: {{ Math.floor(Math.random() * 1000) }}点</span>
-        </li>
-      </ul>
-    </div>
+    <!-- ランキングプレビュー -->
+    <GameRankingList :botMessages="[]" :settings="ranking" />
 
-    <!-- 対象のGameScriptID -->
-    <!-- TODO:GameGameScript を持ってくる -->
     <SettingItem
       label="対象スクリプトID"
       description="ランキング対象のGameScriptを指定します"
       :showReset="true"
-      @reset="resetMap.scriptId"
+      @reset="resetMap.scriptKey"
     >
-      <input
-        type="text"
-        class="input input-bordered w-full"
+      <select
+        class="select select-bordered w-full"
         :value="ranking.scriptKey || ''"
-        @input="(e) => updateRankingField('scriptId', (e.target as HTMLInputElement).value || null)"
-      />
+        @change="(e) => updateRankingField('scriptKey', (e.target as HTMLSelectElement).value || null)"
+      >
+        <option :value="null">-- 未選択 --</option>
+
+        <option v-for="script in enabledGameScriptMap" :key="script.key" :value="script.key">
+          {{ script.name }} (ID: {{ script.key }})
+        </option>
+      </select>
     </SettingItem>
 
     <!-- タイトル -->
@@ -61,33 +55,18 @@
       />
     </SettingItem>
 
-    <!-- スコア表示 -->
+    <!-- 順位のソート -->
     <SettingItem
-      label="スコア表示"
-      description="ランキングにスコアを表示するかどうか"
+      label="順位のソート"
+      description="ランキング向けに得点の高い順にするか"
       :showReset="true"
-      @reset="resetMap.showScore"
+      @reset="resetMap.sortByHighScore"
     >
       <input
         type="checkbox"
         class="toggle toggle-primary"
-        :checked="ranking.showScore"
-        @change="(e) => updateRankingField('showScore', (e.target as HTMLInputElement).checked)"
-      />
-    </SettingItem>
-
-    <!-- 順位の表示 -->
-    <SettingItem
-      label="順位番号表示"
-      description="ランキングに順位番号を表示するかどうか"
-      :showReset="true"
-      @reset="resetMap.showRankNumber"
-    >
-      <input
-        type="checkbox"
-        class="toggle toggle-primary"
-        :checked="ranking.showRankNumber"
-        @change="(e) => updateRankingField('showRankNumber', (e.target as HTMLInputElement).checked)"
+        :checked="ranking.sortByHighScore"
+        @change="(e) => updateRankingField('sortByHighScore', (e.target as HTMLInputElement).checked)"
       />
     </SettingItem>
 
@@ -118,8 +97,11 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { SettingsRankingSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
+  import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
 
   const omikujiStore = useOmikujiStore()
+  const { enabledGameScriptMap } = useEnabledGames()
   const { data } = storeToRefs(omikujiStore)
 
   const ranking = computed(() => data.value.displaySettings.components.ranking)
@@ -141,11 +123,10 @@
   }
 
   const resetMap = {
-    scriptId: () => resetField('scriptId'),
+    scriptKey: () => resetField('scriptKey'),
     title: () => resetField('title'),
     limit: () => resetField('limit'),
-    showScore: () => resetField('showScore'),
-    showRankNumber: () => resetField('showRankNumber'),
+    sortByHighScore: () => resetField('sortByHighScore'),
     color: () => resetField('color'),
   }
 </script>

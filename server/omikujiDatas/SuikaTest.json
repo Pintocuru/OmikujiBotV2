@@ -216,98 +216,6 @@
   "actionSets": {},
   "placeholders": {},
   "characters": {
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-12-05T06:19:51.828Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": false
-      },
-      "color": {
-        "nameColor": "#81C784",
-        "textColor": "#E8F5E8",
-        "backgroundColor": "#388E3C",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
-      }
-    },
-    "omiken_2": {
-      "id": "omiken_2",
-      "key": "omiken_2",
-      "name": "おみくじBOT2",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-12-05T06:20:02.906Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
-      },
-      "color": {
-        "nameColor": "#FFB74D",
-        "textColor": "#FFF3E0",
-        "backgroundColor": "#F57C00",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
-      }
-    },
     "metan": {
       "id": "metan",
       "key": "metan",
@@ -315,7 +223,7 @@
       "description": "困難など、私たちの前では塵にすぎないわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-09-08T19:07:16.468Z",
-      "order": 3,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
       "tags": [
@@ -361,7 +269,7 @@
       "description": "地道な努力こそが、願いを叶える魔法の呪文なのよ。",
       "createdAt": "2025-08-28T01:37:05.867Z",
       "updatedAt": "2025-11-28T00:18:16.710Z",
-      "order": 4,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
       "tags": [
@@ -399,6 +307,98 @@
         "singing": "metan/singing.webp",
         "sleepy": "metan/sleepy.webp"
       }
+    },
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-12-05T06:19:51.828Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": false
+      },
+      "color": {
+        "nameColor": "#81C784",
+        "textColor": "#E8F5E8",
+        "backgroundColor": "#388E3C",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-12-05T06:20:02.906Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "frameId": "OmikujiBot",
+      "displayOption": {
+        "isIconDisplay": false,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#FFB74D",
+        "textColor": "#FFF3E0",
+        "backgroundColor": "#F57C00",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": "",
+        "happy": "",
+        "excited": "",
+        "laughing": "",
+        "blushing": "",
+        "surprised": "",
+        "sad": "",
+        "angry": "",
+        "thinking": "",
+        "wink": "",
+        "singing": "",
+        "sleepy": ""
+      }
     }
   },
   "displaySettings": {
@@ -407,8 +407,7 @@
     },
     "components": {
       "conditions": [
-        "bubble",
-        "toast"
+        "ranking"
       ],
       "bubble": {
         "showCharacters": [
@@ -429,16 +428,15 @@
       },
       "toast": {
         "showToastsOnRight": true,
-        "showToastsCharacter": false,
+        "showToastsCharacter": true,
         "showThumbnail": []
       },
       "ranking": {
-        "scriptKey": null,
-        "title": "Ranking",
-        "limit": 10,
-        "showScore": true,
-        "showRankNumber": true,
-        "color": "dark"
+        "scriptKey": "GouseiSuika",
+        "title": "🍉スイカランキング🍉",
+        "limit": 5,
+        "sortByHighScore": true,
+        "color": "lofi"
       },
       "counter": {
         "ruleKey": null,

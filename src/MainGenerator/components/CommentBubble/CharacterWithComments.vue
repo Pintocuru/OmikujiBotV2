@@ -25,7 +25,7 @@
         v-if="profileImage"
         class="flex justify-center items-end"
         :profileImage="profileImage"
-        :characterName="character?.displayName || character?.key"
+        :characterSize="bubble.characterSize"
         :backgroundColor="character?.color?.backgroundColor"
         :showCharacterFrame="false"
       />
@@ -59,8 +59,9 @@
     emit('removeComment', messageId)
   }
 
-  // ★ toast専用コンポーネントが無効な場合、toastをフォールバック表示 ★
+  // toast専用コンポーネントが無効な場合、toastをフォールバック表示
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
+  const bubble = computed(() => appStore.data.displaySettings.components.bubble)
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
 </script>

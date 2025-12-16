@@ -1,35 +1,32 @@
-<!-- src\MainGenerator\components\GameRankingViewer\GameRankingScore.vue -->
+<!-- src/MainGenerator/components/GameRankingViewer/GameRankingScore.vue -->
 <template>
-  <div v-if="theme">
-    <div
-      v-motion="animationConfig"
-      class="relative mx-auto whitespace-nowrap flex flex-col justify-center items-center -mb-8 min-h-[120px] z-999"
-      :class="[theme.fontStyles.scoreText]"
-    >
-      <!-- lucide Icon -->
-      <component
-        v-if="scoreDisplay?.scoreIcon?.iconName"
-        :is="getIconComponent(scoreDisplay.scoreIcon.iconName)"
-        :size="sizeConfig.score.iconSize"
-        :class="[
-          'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full',
-          scoreDisplay.scoreIcon.iconColor,
-          sizeConfig.score.border,
-          scoreDisplay.scoreIcon.customClass,
-        ]"
-      />
-
-      <!-- Main Content -->
-      <div class="flex flex-col items-center justify-center text-center relative z-10">
-        <div :class="['font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]">スコア</div>
-
-        <div :class="['font-bold drop-shadow-2xl', theme.textColors.primary, sizeConfig.text.xlarge]">
-          {{ playerData.points }}
+  <div v-if="topMessage && settings" :data-theme="settings.color" class="card bg-base-100 shadow-xl animate-bounce-in">
+    <div class="card-body p-6 text-center">
+      <!-- アイコン（オプション） -->
+      <div class="flex justify-center mb-2">
+        <div class="avatar placeholder">
+          <div class="bg-primary text-primary-content rounded-full w-16">
+            <span class="text-2xl">🏆</span>
+          </div>
         </div>
+      </div>
 
-        <div :class="['mt-2 font-bold drop-shadow-lg', theme.textColors.secondary, sizeConfig.text.large]">
-          {{ playerData.name }}
-        </div>
+      <!-- プレイヤー名 -->
+      <h3 class="text-xl font-bold text-base-content">
+        {{ topMessage.comment?.rankingName || topMessage.name }}
+      </h3>
+
+      <!-- スコアラベル -->
+      <p class="text-sm text-base-content/60 mb-1">スコア</p>
+
+      <!-- スコア値 -->
+      <div class="text-5xl font-bold text-primary">
+        {{ formatScore(Number(topMessage.comment?.rankingPoint) || 0) }}
+      </div>
+
+      <!-- ランク表示（オプション） -->
+      <div v-if="topMessage.comment?.rankingRank" class="mt-2">
+        <div class="badge badge-lg badge-warning font-bold">#{{ topMessage.comment.rankingRank }}</div>
       </div>
     </div>
   </div>
@@ -37,23 +34,68 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { ANIMATION_CONFIGS } from './composables/useScoreAnimation'
-  import { COMPONENT_SIZE_CONFIG } from './composables/useComponentConfig'
-  import { useDisplayStore } from '@/MainGenerator/stores/useDisplayStore'
-  import { storeToRefs } from 'pinia'
-  import * as LucideIcons from 'lucide-vue-next'
+  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+  import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
 
-  const displayStore = useDisplayStore()
-  const { displaySize, currentUserRankings, currentComponentConfig } = storeToRefs(displayStore)
+  interface Props {
+    botMessages: BotMessage[]
+    settings: SettingsRankingType
+  }
 
-  const sizeConfig = computed(() => COMPONENT_SIZE_CONFIG[displaySize.value])
-  const playerData = computed(() => currentUserRankings.value[0])
-  const theme = computed(() => currentComponentConfig.value)
-  const scoreDisplay = computed(() => currentComponentConfig.value?.scoreDisplay)
+  const props = defineProps<Props>()
 
-  const animationConfig = computed(() => ANIMATION_CONFIGS['bounce'])
+  // トップメッセージ（最高スコア）を取得
+  const topMessage = computed(() => {
+    if (props.botMessages.length === 0) return null
 
-  const getIconComponent = (iconName: string) => {
-    return (LucideIcons as any)[iconName] || null
+    // スコアでソートして最高得点を取得
+    const sorted = [...props.botMessages].sort(
+      (a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0)
+    )
+
+    return sorted[0]
+  })
+
+  // スコアのフォーマット
+  const formatScore = (score: number): string => {
+    return score.toLocaleString()
   }
 </script>
+
+<style scoped>
+  @keyframes bounce-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.6s ease-out;
+  }
+
+  .card {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -2,14 +2,13 @@
 <template>
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
     <!-- コメントフキダシ表示 -->
-    <CommentBubble v-if="components.bubble" />
+    <CommentBubble v-if="components.conditions.includes('bubble')" />
 
     <!-- 右下UI要素コンテナ -->
-    <ToastWidgets v-if="components.toast" />
+    <ToastWidgets v-if="components.conditions.includes('toast')" />
 
-    <!-- ランキングリスト
-    <GameRankingViewer v-if="components.ranking" />
-     -->
+    <!-- ランキングリスト -->
+    <GameRankingViewer v-if="components.conditions.includes('ranking')" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->

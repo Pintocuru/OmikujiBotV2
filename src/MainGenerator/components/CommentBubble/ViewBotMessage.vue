@@ -41,14 +41,14 @@
   const enterMotion = computed(() => bubble.value?.bubbleMotionEnter)
   const animatedText = computed(() => bubble.value?.bubbleTextAnimate)
 
-  // ★ toast専用コンポーネントが無効な場合、toastをフォールバック表示 ★
+  // toast専用コンポーネントが無効な場合、toastをフォールバック表示
   const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
 
-  // ★ 新しいフィルタリングロジックを使用 ★
+  // 新しいフィルタリングロジックを使用
   const { zeroIndexMessages } = useMessageFilter()
 
-  // ★ 既存のuseBotDisplayはそのまま使用 ★
+  // 既存のuseBotDisplayはそのまま使用
   const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages, 'comment')
 
   onMounted(() => start())

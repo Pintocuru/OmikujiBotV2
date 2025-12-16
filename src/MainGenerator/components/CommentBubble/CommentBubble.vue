@@ -1,10 +1,12 @@
 <!-- templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
 <template>
-  <!-- BOTメッセージ表示(0番地) -->
-  <ViewBotMessage />
+  <div class="z-30">
+    <!-- BOTメッセージ表示(0番地) -->
+    <ViewBotMessage />
 
-  <!-- 常時表示キャラクター(1番地以降) -->
-  <ViewBotCharacter />
+    <!-- 常時表示キャラクター(1番地以降) -->
+    <ViewBotCharacter />
+  </div>
 </template>
 
 <script setup lang="ts">

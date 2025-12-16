@@ -16,7 +16,6 @@ export const useCategoryUtils = () => {
   const getCategoryItemCount = (category: CategoryType): number => {
     const { gameScripts } = data.value.displaySettings.developer.visibility
 
-    if (category === 'scriptSettings') return gameScripts.length
     if (category === 'displaySettings') return 0
     if (category === 'meta') return 0
     if (category === 'jsonMerge') return data.value.jsonMerge.length
@@ -39,10 +38,6 @@ export const useCategoryUtils = () => {
     if (!hasAccess(visibility.timers)) excludeKeys.push('timers')
     if (!hasAccess(visibility.placeholders)) excludeKeys.push('placeholders')
     if (!hasAccess(visibility.characters)) excludeKeys.push('characters')
-    if (!hasAccess(visibility.wordPartySettings)) excludeKeys.push('wordPartySettings')
-    if (!hasAccess(visibility.gameScriptSettings) || visibility.gameScripts.length === 0) {
-      excludeKeys.push('scriptSettings')
-    }
 
     return Object.fromEntries(
       Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))

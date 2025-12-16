@@ -1,8 +1,8 @@
 <!-- src\ConfigMaker\components\displaySettings\components\ToastComponentEditor.vue -->
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
-    <!-- トースト・サムネイルサンプル表示 -->
-    <ChatBubbleItem
+    <!-- トーストサンプル表示 -->
+    <ToastBubbleItem
       v-for="(message, i) in previewMessages"
       :key="i"
       :botMessage="message"
@@ -10,11 +10,13 @@
       :character="toast.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
       :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'"
     />
-    <CharacterThumbnailsPreview
-      v-if="toast.showThumbnail.length !== 0"
-      :characters="characterArray"
-      :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'"
-    />
+
+    <!-- サムネイルサンプル表示 -->
+    <div class="flex flex-row gap-4 mt-2" :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
+      <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
+      <CharacterThumbnailsPreview :characters="characterArray" :hoverVisibility="true" />
+      <CharacterThumbnailsPreview :characters="filteredCharacters" :hoverVisibility="false" />
+    </div>
   </div>
 
   <!-- 設定項目 -->
@@ -54,22 +56,11 @@
     :showReset="true"
     @reset="resetMap.showThumbnail"
   >
-    <select
-      multiple
-      class="select select-bordered w-full"
-      :value="toast.showThumbnail"
-      @change="
-        (e) =>
-          updateToastField(
-            'showThumbnail',
-            Array.from((e.target as HTMLSelectElement).selectedOptions).map((o) => o.value)
-          )
-      "
-    >
-      <option v-for="charKey in Object.keys(data.characters)" :key="charKey" :value="charKey">
-        {{ data.characters[charKey].displayName }}
-      </option>
-    </select>
+    <CharacterBadgeSelector
+      :characters="data.characters"
+      :selectedKeys="toast.showThumbnail"
+      @update:selectedKeys="(keys: string[]) => updateToastField('showThumbnail', keys)"
+    />
   </SettingItem>
 </template>
 
@@ -80,14 +71,21 @@
   import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
+  import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
+  import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   const toast = computed(() => data.value.displaySettings.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
+
+  // ★ 追加: showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
+  const filteredCharacters = computed(() => {
+    const selectedKeys = new Set(toast.value.showThumbnail)
+    return characterArray.value.filter((character) => selectedKeys.has(character.key))
+  })
 
   // 更新関数
   const updateToastField = (field: keyof typeof toast.value, value: any) => {
@@ -117,10 +115,11 @@
       .fill(null)
       .map((_, i) => {
         const charIndex = i < characterArray.value.length ? i : 0
-        const character = characterArray.value[charIndex]
+        const character = characterArray.value[charIndex] // ★ 修正: comment を { toast: string } 構造にする
+        const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
-          color: character?.color,
-          comment: i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。',
+          color: character?.color, // toastプロパティを持つオブジェクトとして渡す
+          comment: { toast: messageText },
         })
       })
   })
