@@ -53,23 +53,6 @@ export class ExecuteScript implements ScriptClass {
       getPoint: gameResult.points,
     })
 
-    if (logResult.currentUserStats.isOverLimit)
-      return [
-        ...logResult.postActions,
-        {
-          actionType: 'message',
-          delaySeconds: 3.5,
-          characterKey,
-          iconKey: 'default',
-          message: {
-            bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
-            rankingKey: RANKING_KEY,
-            rankingDisplayScore: String(gameResult.points),
-          },
-          sound: 'decision',
-        },
-      ]
-
     const stats = logResult.currentUserStats
 
     return [
@@ -83,7 +66,7 @@ export class ExecuteScript implements ScriptClass {
           bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
           rankingKey: RANKING_KEY,
           rankingDisplayScore: String(gameResult.points),
-          rankingRank: stats.rank != null ? String(stats.rank) : undefined,
+          rankingIsRank: !logResult.currentUserStats.isOverLimit,
           rankingName: stats.name,
           rankingPoint: String(stats.points),
           rankingSymbol: stats.itemValue1,

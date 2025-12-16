@@ -13,9 +13,9 @@
           class="flex items-center gap-2 p-2 rounded-lg transition-all hover:bg-base-200"
           :class="getRankClass(index)"
         >
-          <div class="flex-shrink-0">
+          <div v-if="settings.sortByHighScore" class="flex-shrink-0">
             <div class="badge badge-xl font-bold" :class="getRankBadgeClass(index)">
-              {{ settings.sortByHighScore ? index + 1 : msg.comment?.rankingRank || index + 1 }}
+              {{ index + 1 }}
             </div>
           </div>
 
@@ -114,15 +114,19 @@
     if (props.botMessages.length > 0) {
       let data = [...props.botMessages]
 
-      // sortByHighScore が true の場合のみスコアでソート
+      // rankingIsRank が false のものは除外
+      data = data.filter((msg) => msg.comment?.rankingIsRank !== false)
+
       if (props.settings.sortByHighScore) {
+        // スコアでソート（降順）
         data.sort((a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0))
+      } else {
+        // 投稿日時でソート（新しい順）
+        data.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
       }
 
-      // limit適用
       return data.slice(0, props.settings.limit || 10)
     }
-    // ダミーデータは常にソートされたものを返す
     return generateDummyMessages()
   })
 

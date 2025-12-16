@@ -25,7 +25,7 @@ export const PostActionMessageBodySchema = z
     toast: z.string().optional().catch(undefined),
     rankingKey: z.string().optional().catch(undefined), // コンポーネント用key
     rankingDisplayScore: z.string().optional().catch(undefined), // 表示用
-    rankingRank: z.string().optional().catch(undefined),
+    rankingIsRank: z.boolean().optional().catch(undefined),
     rankingName: z.string().optional().catch(undefined),
     rankingPoint: z.string().optional().catch(undefined),
     rankingSymbol: z.string().optional().catch(undefined),
