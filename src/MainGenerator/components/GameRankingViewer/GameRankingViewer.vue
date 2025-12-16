@@ -2,12 +2,14 @@
 <template>
   <div v-if="rankingSettings" class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md z-10">
     <!-- スコア表示 -->
-    <GameRankingScore
-      v-if="filteredMessages.length > 0"
-      :bot-messages="filteredMessages"
-      :settings="rankingSettings"
-      class="mb-4"
-    />
+    <div class="flex justify-center">
+      <GameRankingScore
+        v-if="filteredMessages.length > 0"
+        :bot-messages="filteredMessages"
+        :settings="rankingSettings"
+        class="-mb-4"
+      />
+    </div>
 
     <!-- ランキングリスト -->
     <GameRankingList :bot-messages="filteredMessages" :settings="rankingSettings" />

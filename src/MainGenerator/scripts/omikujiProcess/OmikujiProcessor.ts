@@ -41,7 +41,7 @@ export class OmikujiProcessor {
     if (!omikujiItem) return []
 
     // おみくじの処理
-    return this.resultProcessor.process(omikujiItem)
+    return this.resultProcessor.process(omikujiItem, comment)
   }
 
   /**

@@ -33,7 +33,7 @@
   const { lastCommenterKey, getCharacterImage, getCharacterComments, removeCommentWithIconReset, start, stop } =
     useViewBotCharacter()
 
-  // ★★★ 修正箇所: slice(1)で1番地以降のみを処理 ★★★
+  //  修正箇所: slice(1)で1番地以降のみを処理
   const charactersToShow = computed<CharacterType[]>(() => {
     if (!showCharacters || showCharacters.length === 0) {
       return []
@@ -42,7 +42,7 @@
     const allCharacters = characters.value
     const finalCharacters: CharacterType[] = []
 
-    // ★ 0番地をスキップして1番地以降を処理 ★
+    //  0番地をスキップして1番地以降を処理
     const visibleGroups = showCharacters.slice(1)
 
     visibleGroups.forEach((group) => {

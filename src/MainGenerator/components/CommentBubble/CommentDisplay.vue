@@ -9,29 +9,30 @@
       zIndex: 20 - index,
     }"
   >
-    <MotionWrapper
-      v-model:visible="message.visible"
-      :initialMotion="enterMotion"
-      :enter-motion="enterMotion"
-      :leave-motion="leaveMotion"
-      :auto-hide="false"
-      @after-leave="() => removeComment(message.id)"
-    >
-      <div class="flex justify-center">
-        <CommentBubbleItem
-          :botName="message.name"
-          :message="displayMessage(message)"
-          :color="message.color"
-          :animated-text="animatedText"
-          :brightnessLevel="index"
-          :custom-classes="message.color?.customClasses"
-          :style="{ zIndex: index }"
-        />
-      </div>
+    <template v-if="displayMessage(message) as string">
+      <MotionWrapper
+        v-model:visible="message.visible"
+        :initialMotion="enterMotion"
+        :enter-motion="enterMotion"
+        :leave-motion="leaveMotion"
+        :auto-hide="false"
+        @after-leave="() => removeComment(message.id)"
+      >
+        <div class="flex justify-center">
+          <CommentBubbleItem
+            :botName="message.name"
+            :message="displayMessage(message)"
+            :color="message.color"
+            :animated-text="animatedText"
+            :brightnessLevel="index"
+            :custom-classes="message.color?.customClasses"
+            :style="{ zIndex: index }"
+          />
+        </div>
 
-      <!-- スロットにスコープを渡す -->
-      <slot :message="message" :index="index" />
-    </MotionWrapper>
+        <slot :message="message" :index="index" />
+      </MotionWrapper>
+    </template>
   </div>
 </template>
 

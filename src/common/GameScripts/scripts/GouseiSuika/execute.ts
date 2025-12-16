@@ -85,7 +85,7 @@ export class ExecuteScript implements ScriptClass {
           rankingDisplayScore: String(gameResult.points),
           rankingRank: stats.rank != null ? String(stats.rank) : undefined,
           rankingName: stats.name,
-          rankingPoint: String(stats.totalPoints),
+          rankingPoint: String(stats.points),
           rankingSymbol: stats.itemValue1,
         },
         sound: 'decision',
