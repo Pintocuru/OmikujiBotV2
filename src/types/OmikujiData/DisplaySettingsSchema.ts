@@ -45,13 +45,14 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 // idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
 export const SettingsCounterSchema = z.object({
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
-  target: z.enum(['runCount', 'userCount', 'userName']).default('runCount').catch('runCount'),
+  target: z.enum(['draw', 'user']).default('draw').catch('draw'),
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   firstValue: z.number().default(0).catch(0), // 初期値（開始値）
   isDirectionUp: z.boolean().default(true).catch(true), // true=カウントアップ, false=カウントダウン
   color: z.enum(themes).default('dark').catch('dark'), // DaisyUIテーマカラー
-  showLabel: z.boolean().default(true).catch(true), // ラベルを表示するか
 })
+
+export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 
 //
 

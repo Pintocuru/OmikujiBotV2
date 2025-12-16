@@ -33,6 +33,7 @@ export const PostActionMessageBodySchema = z
   })
   .default({})
   .catch({})
+export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>
 
 // PostAction message
 export const PostActionMessageSchema = z.object({

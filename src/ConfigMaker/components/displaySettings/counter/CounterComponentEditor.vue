@@ -2,13 +2,7 @@
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- プレビュー -->
-    <div class="border p-2 rounded">
-      <h3 v-if="counter.showLabel" class="text-lg font-bold mb-2">{{ counter.label }}</h3>
-      <p>
-        {{ counter.isDirectionUp ? 'カウントアップ' : 'カウントダウン' }}開始値:
-        {{ counter.firstValue }}
-      </p>
-    </div>
+    <CounterPreviewCard :counter="counter" />
 
     <!-- 設定項目 -->
     <SettingItem
@@ -17,12 +11,16 @@
       :showReset="true"
       @reset="resetMap.ruleKey"
     >
-      <input
-        type="text"
-        class="input input-bordered w-full"
+      <select
+        class="select select-bordered w-full"
         :value="counter.ruleKey || ''"
-        @input="(e) => updateCounterField('ruleKey', (e.target as HTMLInputElement).value || null)"
-      />
+        @change="(e) => updateCounterField('ruleKey', (e.target as HTMLSelectElement).value || null)"
+      >
+        <option value="">未選択</option>
+        <option v-for="(value, key) in rulesComment" :key="key" :value="key">
+          {{ value.name }}
+        </option>
+      </select>
     </SettingItem>
 
     <SettingItem
@@ -36,9 +34,8 @@
         :value="counter.target"
         @change="(e) => updateCounterField('target', (e.target as HTMLSelectElement).value)"
       >
-        <option value="runCount">実行回数</option>
-        <option value="userCount">ユーザー数</option>
-        <option value="userName">ユーザー名</option>
+        <option value="draw">実行回数</option>
+        <option value="user">ユーザー数</option>
       </select>
     </SettingItem>
 
@@ -100,20 +97,6 @@
         </option>
       </select>
     </SettingItem>
-
-    <SettingItem
-      label="ラベル表示"
-      description="ラベルを表示するかどうか"
-      :showReset="true"
-      @reset="resetMap.showLabel"
-    >
-      <input
-        type="checkbox"
-        class="toggle toggle-primary"
-        :checked="counter.showLabel"
-        @change="(e) => updateCounterField('showLabel', (e.target as HTMLInputElement).checked)"
-      />
-    </SettingItem>
   </div>
 </template>
 
@@ -124,9 +107,13 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { SettingsCounterSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+
+  const rulesComment = computed(() => data.value.comments)
+  const ruleKeys = computed(() => Object.keys(rulesComment.value || {}))
 
   const counter = computed(() => data.value.displaySettings.components.counter)
 
@@ -153,6 +140,5 @@
     firstValue: () => resetField('firstValue'),
     isDirectionUp: () => resetField('isDirectionUp'),
     color: () => resetField('color'),
-    showLabel: () => resetField('showLabel'),
   }
 </script>
