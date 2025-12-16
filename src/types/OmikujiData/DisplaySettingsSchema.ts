@@ -13,11 +13,9 @@ export const SettingsGlobalSchema = z.object({
 // フキダシ・キャラクター
 export const SettingsBubbleSchema = z.object({
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
-  showCharacters: z.array(z.array(z.string())).default([]).catch([]),
-  showCharacterFrame: z.boolean().default(true), // キャラクターにフレーム（円形の背景）を表示するか
-  characterSize: z.number().default(192).catch(192), // キャラクターの横幅(新設)
+  showCharacters: z.array(z.array(z.string())).default([[], []]).catch([[], []]),
+  characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
-  bubbleMotionLeave: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(終了時)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
   bubbleTextSound: z.string().optional(), // 文字送り時のサウンド

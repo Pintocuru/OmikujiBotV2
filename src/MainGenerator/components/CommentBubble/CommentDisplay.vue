@@ -5,7 +5,7 @@
     :key="message.id"
     class="absolute w-full"
     :style="{
-      top: `${index * spacing}px`,
+      top: `${index * 40}px`,
       zIndex: 20 - index,
     }"
   >
@@ -36,7 +36,6 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import CommentBubbleItem from './CommentBubbleItem.vue'
   import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
@@ -49,7 +48,6 @@
       enterMotion?: MotionType
       leaveMotion?: MotionType
       animatedText?: boolean
-      spacing?: number
       showToastFallback?: boolean // ★ toastをフォールバック表示するか
     }>(),
     {
@@ -57,7 +55,6 @@
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,
-      spacing: 40,
       showToastFallback: false,
     }
   )

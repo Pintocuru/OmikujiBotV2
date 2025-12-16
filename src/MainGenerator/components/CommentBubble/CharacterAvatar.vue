@@ -6,6 +6,7 @@
     :class="{
       'rounded-full overflow-hidden': showCharacterFrame,
     }"
+    :style="showCharacterFrame ? { backgroundColor: props.backgroundColor } : {}"
   >
     <LayerImage :layers="profileImage" :size="characterSize" />
   </div>
@@ -22,6 +23,7 @@
       showCharacterFrame?: boolean
     }>(),
     {
+      characterSize: 16,
       backgroundColor: '#ccc',
       showCharacterFrame: true,
     }

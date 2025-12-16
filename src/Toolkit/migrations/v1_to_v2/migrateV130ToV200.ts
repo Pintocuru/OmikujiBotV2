@@ -50,11 +50,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): Disp
   })
 
   const bubble = SettingsBubbleSchema.parse({
-    showCharacters: [], // 新設 → 空配列
-    showCharacterFrame: base.showCharacterFrame ?? true,
-    characterSize: 320, // 新設 → デフォルト
     bubbleMotionEnter: base.bubbleMotionEnter ?? 'slideUp',
-    bubbleMotionLeave: base.bubbleMotionLeave ?? 'slideUp',
     bubbleTextAnimate: base.bubbleTextAnimate ?? false,
     bubbleTextSpeed: base.bubbleTextSpeed ?? 50,
     bubbleTextSound: undefined,
@@ -188,7 +184,6 @@ const migratePostAction = (oldAction: any): PostActionType[] => {
       actionType: 'message',
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
-      enterMotion: oldAction.enterMotion,
       sound: oldAction.sound,
       message: {
         bubble: oldAction.messageContent,

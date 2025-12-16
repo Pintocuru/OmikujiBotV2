@@ -4,44 +4,16 @@
     <div class="card-body p-4 gap-4">
       <!-- キャラクターサンプル表示 -->
       <CharacterAvatarPreview
-        :characters="data.characters"
+        :characters="characters"
         :showCharacters="bubble.showCharacters"
         :characterSize="bubble.characterSize"
       />
-
-      <!-- 状態説明 -->
-      <div class="flex justify-center">
-        <span>{{ statusText }}</span>
-      </div>
     </div>
   </div>
 
   <!-- キャラクター選択 -->
-  <SettingItem
-    label="表示するキャラクター"
-    description="表示対象のキャラクターを選択します"
-    :showReset="true"
-    @reset="resetMap.showCharacters"
-  >
+  <SettingItem label="表示するキャラクター" description="表示対象のキャラクターを選択します">
     <BubbleCharactersEditor />
-  </SettingItem>
-
-  <!-- キャラクターフレームの使用 -->
-  <SettingItem
-    label="キャラクター画像の背景色"
-    description="キャラ画像の背景に色を付けるかを設定します"
-    :showReset="true"
-    @reset="resetMap.showCharacterFrame"
-  >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        :checked="bubble.showCharacterFrame"
-        @change="(e) => updateBubbleField('showCharacterFrame', (e.target as HTMLInputElement).checked)"
-        type="checkbox"
-        class="toggle toggle-primary"
-      />
-      <span class="label-text">背景色を付ける</span>
-    </label>
   </SettingItem>
 
   <!-- キャラクターサイズ -->
@@ -71,7 +43,7 @@
   import BubbleCharactersEditor from './BubbleCharactersEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CharacterAvatarPreview from '../CharacterPreview.vue'
+  import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -101,11 +73,6 @@
   // フィールドごとのリセット関数マップ
   const resetMap = {
     showCharacters: () => resetField('showCharacters'),
-    showCharacterFrame: () => resetField('showCharacterFrame'),
     characterSize: () => resetField('characterSize'),
   }
-
-  const statusText = computed(() =>
-    bubble.value.showCharacterFrame ? '背景色ありで表示されます' : '背景色なしで表示されます'
-  )
 </script>

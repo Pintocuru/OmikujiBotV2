@@ -21,8 +21,6 @@ export function useViewBotCharacter() {
   // omikujiDataの設定取得
   const base = computed(() => appStore.data.displaySettings?.components.bubble || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
-  const leaveMotion = computed(() => base.value.bubbleMotionLeave)
-  const showCharacterFrame = computed(() => base.value.showCharacterFrame)
 
   // サイズ設定の取得
   const sizeConfig = {
@@ -122,8 +120,6 @@ export function useViewBotCharacter() {
 
     // 設定
     enterMotion,
-    leaveMotion,
-    showCharacterFrame,
 
     // 計算済みプロパティ
     lastCommenterKey,

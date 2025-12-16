@@ -22,7 +22,7 @@
         v-model:visible="shouldShowBubble"
         :initialMotion="bubbleMotionEnter"
         :enter-motion="bubbleMotionEnter"
-        :leave-motion="bubbleMotionLeave"
+        :leave-motion="bubbleMotionEnter"
         :auto-hide="false"
       >
         <CommentBubbleItem
@@ -73,7 +73,6 @@
       isSlider?: boolean
       fontFamily?: FontFamilyType
       bubbleMotionEnter?: MotionType
-      bubbleMotionLeave?: MotionType
       animatedText?: boolean
       animatedTextSpeed?: number
     }>(),
@@ -81,7 +80,6 @@
       fontFamily: 'default',
       isSlider: false,
       bubbleMotionEnter: 'slideUp',
-      bubbleMotionLeave: 'slideUp',
       animatedText: false,
       animatedTextSpeed: 50,
     }

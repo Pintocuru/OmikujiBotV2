@@ -15,7 +15,7 @@
 
   <!-- フキダシアニメーション -->
   <SettingItem
-    label="フキダシアニメーション(開始時)"
+    label="フキダシアニメーション"
     description="フキダシの表示アニメーションを設定します"
     :showReset="true"
     @reset="() => resetField('bubbleMotionEnter')"
@@ -23,23 +23,6 @@
     <select
       v-model="bubble.bubbleMotionEnter"
       @change="updateField('bubbleMotionEnter', $event)"
-      class="select select-bordered w-full max-w-xs"
-    >
-      <option v-for="animation in motionLabel" :key="animation" :value="animation">
-        {{ animation }}
-      </option>
-    </select>
-  </SettingItem>
-
-  <SettingItem
-    label="フキダシアニメーション(終了時)"
-    description="フキダシの非表示アニメーションを設定します"
-    :showReset="true"
-    @reset="() => resetField('bubbleMotionLeave')"
-  >
-    <select
-      v-model="bubble.bubbleMotionLeave"
-      @change="updateField('bubbleMotionLeave', $event)"
       class="select select-bordered w-full max-w-xs"
     >
       <option v-for="animation in motionLabel" :key="animation" :value="animation">

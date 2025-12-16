@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\CommentBubble\composables\useMessageFilterCore.ts
+// src\MainGenerator\components\CommentBubble\composables\useMessageFilterCore.ts
 import { computed, ref, watch, type Ref } from 'vue'
 import type { BotMessage } from '@/types/'
 
@@ -41,15 +41,15 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
       .slice(1)
       .map((group, index) => {
         const key = selectCharacterFromGroup(group)
-        return (
-          key && {
-            groupIndex: index + 1,
-            characterKey: key,
-            hasComments: getMessagesForCharacter(key).length > 0,
-          }
-        )
+        return key
+          ? {
+              groupIndex: index + 1,
+              characterKey: key,
+              hasComments: getMessagesForCharacter(key).length > 0,
+            }
+          : null
       })
-      .filter(Boolean)
+      .filter(Boolean) as { groupIndex: number; characterKey: string; hasComments: boolean }[]
   })
 
   const isLastCommenter = (characterKey: string) => lastCommenterKey.value === characterKey

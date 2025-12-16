@@ -307,6 +307,98 @@
         "singing": "",
         "sleepy": ""
       }
+    },
+    "metan": {
+      "id": "metan",
+      "key": "metan",
+      "name": "四国めたん",
+      "description": "困難など、私たちの前では塵にすぎないわ。",
+      "createdAt": "2025-08-16T09:51:49.475Z",
+      "updatedAt": "2025-09-08T19:07:16.468Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#EF9A9A",
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.2",
+      "author": "Pintocuru",
+      "url": "https://seiga.nicovideo.jp/seiga/im11022280",
+      "displayName": "四国めたん",
+      "frameId": "voicevoxMetan",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#fdd835",
+        "textColor": "#fce4ec",
+        "backgroundColor": "#d81b60"
+      },
+      "image": {
+        "default": "metan/default.webp",
+        "happy": "metan/happy.webp",
+        "excited": "metan/excited.webp",
+        "laughing": "metan/laughing.webp",
+        "blushing": "metan/blushing.webp",
+        "surprised": "metan/surprised.webp",
+        "sad": "metan/sad.webp",
+        "angry": "metan/angry.webp",
+        "thinking": "metan/thinking.webp",
+        "wink": "metan/wink.webp",
+        "singing": "metan/singing.webp",
+        "sleepy": "metan/sleepy.webp"
+      }
+    },
+    "metanBlack": {
+      "id": "metanBlack",
+      "key": "metanBlack",
+      "name": "漆黒のめたん",
+      "description": "地道な努力こそが、願いを叶える魔法の呪文なのよ。",
+      "createdAt": "2025-08-28T01:37:05.867Z",
+      "updatedAt": "2025-11-28T00:18:16.710Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#212121",
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.2",
+      "author": "Pintocuru",
+      "url": "https://seiga.nicovideo.jp/seiga/im11022280",
+      "displayName": "漆黒のめたん",
+      "frameId": "voicevoxMetan",
+      "displayOption": {
+        "isIconDisplay": true,
+        "isOneCommePost": true,
+        "isVoice": true
+      },
+      "color": {
+        "nameColor": "#f8bbd0",
+        "textColor": "#d7ccc8",
+        "backgroundColor": "#212121"
+      },
+      "image": {
+        "default": "metan/default.webp",
+        "happy": "metan/happy.webp",
+        "excited": "metan/excited.webp",
+        "laughing": "metan/laughing.webp",
+        "blushing": "metan/blushing.webp",
+        "surprised": "metan/surprised.webp",
+        "sad": "metan/sad.webp",
+        "angry": "metan/angry.webp",
+        "thinking": "metan/thinking.webp",
+        "wink": "metan/wink.webp",
+        "singing": "metan/singing.webp",
+        "sleepy": "metan/sleepy.webp"
+      }
     }
   },
   "displaySettings": {
@@ -319,11 +411,19 @@
         "toast"
       ],
       "bubble": {
-        "showCharacters": [],
-        "showCharacterFrame": true,
-        "characterSize": 320,
+        "showCharacters": [
+          [
+            "omiken",
+            "omiken_2"
+          ],
+          [
+            "metanBlack",
+            "metan"
+          ],
+          []
+        ],
+        "characterSize": 48,
         "bubbleMotionEnter": "slideUp",
-        "bubbleMotionLeave": "slideUp",
         "bubbleTextAnimate": true,
         "bubbleTextSpeed": 50
       },

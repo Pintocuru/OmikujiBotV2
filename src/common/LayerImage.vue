@@ -10,6 +10,7 @@
       :src="getImagePath(layer)"
       class="absolute inset-0 object-contain"
       :style="{ zIndex: layerArray.length - index }"
+      @error="console.error('画像読み込み失敗:', layer, getImagePath(layer))"
     />
   </div>
 </template>

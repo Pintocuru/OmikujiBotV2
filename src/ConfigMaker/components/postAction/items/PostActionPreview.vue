@@ -24,16 +24,12 @@
           @click="refreshMessage"
           class="cursor-pointer"
         />
-        <MotionWrapper :key="messageKey" :enter-motion="action.enterMotion" :auto-hide="false">
-          <!-- TODO: CharacterAvatar をつかいなさい -->
-          <CharacterPreview
-            v-if="character.image?.default && character.displayOption.isIconDisplay"
-            :characters="characters"
-            :characterKey="action.characterKey"
-            :iconKey="action.iconKey"
-            :showCharacterFrame="bubbleSettings.showCharacterFrame"
-          />
-        </MotionWrapper>
+        <CharacterAvatar
+          v-if="character.displayOption.isIconDisplay"
+          :profileImage="characters[action.characterKey].image[action.iconKey]"
+          :characterSize="bubbleSettings.characterSize"
+          :showCharacterFrame="false"
+        />
       </div>
     </div>
 
@@ -75,8 +71,7 @@
 
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
-  import CharacterPreview from '@/ConfigMaker/components/displaySettings/CharacterPreview.vue'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
+  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
   import SoundTestButton from '@/ConfigMaker/components/wordPartySettings/SoundTestButton.vue'
 

@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\CommentBubble\ViewBotMessage.vue -->
+<!-- src\MainGenerator\components\CommentBubble\ViewBotMessage.vue -->
 <template>
   <div class="relative h-screen">
     <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
@@ -7,8 +7,7 @@
         :displayed-comments="displayedComments"
         :remove-comment="removeComment"
         :enter-motion="enterMotion"
-        :leave-motion="leaveMotion"
-        :spacing="40"
+        :leave-motion="enterMotion"
         :animated-text="animatedText"
         :show-toast-fallback="showToastFallback"
       >
@@ -19,7 +18,7 @@
             class="absolute top-[80px] left-1/2 -translate-x-1/2 transform"
             :profileImage="message.profileImage"
             :backgroundColor="message.color?.backgroundColor"
-            :showCharacterFrame="showCharacterFrame"
+            :showCharacterFrame="true"
           />
         </template>
       </CommentDisplay>
@@ -40,8 +39,6 @@
   // 設定の取得
   const bubble = computed(() => appStore.data.displaySettings?.components.bubble || {})
   const enterMotion = computed(() => bubble.value?.bubbleMotionEnter)
-  const leaveMotion = computed(() => bubble.value?.bubbleMotionLeave)
-  const showCharacterFrame = computed(() => bubble.value?.showCharacterFrame)
   const animatedText = computed(() => bubble.value?.bubbleTextAnimate)
 
   // ★ toast専用コンポーネントが無効な場合、toastをフォールバック表示 ★

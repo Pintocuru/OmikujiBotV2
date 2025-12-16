@@ -14,7 +14,7 @@
           :displayed-comments="comments"
           :remove-comment="handleRemoveComment"
           :enter-motion="enterMotion"
-          :leave-motion="leaveMotion"
+          :leave-motion="enterMotion"
           :animated-text="character?.displayOption.isRpgVoice"
           :show-toast-fallback="showToastFallback"
         />
@@ -27,7 +27,7 @@
         :profileImage="profileImage"
         :characterName="character?.displayName || character?.key"
         :backgroundColor="character?.color?.backgroundColor"
-        :showCharacterFrame="showCharacterFrame"
+        :showCharacterFrame="false"
       />
     </div>
   </div>
@@ -53,7 +53,7 @@
     removeComment: [messageId: string]
   }>()
 
-  const { enterMotion, leaveMotion, showCharacterFrame } = useViewBotCharacter()
+  const { enterMotion } = useViewBotCharacter()
 
   const handleRemoveComment = (messageId: string) => {
     emit('removeComment', messageId)
