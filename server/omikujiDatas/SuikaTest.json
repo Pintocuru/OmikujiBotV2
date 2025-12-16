@@ -26,7 +26,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-15T08:59:34.582Z",
+      "updatedAt": "2025-12-16T12:26:15.680Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -48,7 +48,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "scriptParams": "",
-            "characterKey": "omiken"
+            "characterKey": "metan"
           },
           "weight": 1,
           "priority": false,
@@ -407,7 +407,8 @@
     },
     "components": {
       "conditions": [
-        "ranking"
+        "ranking",
+        "toast"
       ],
       "bubble": {
         "showCharacters": [
@@ -427,8 +428,8 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "showToastsOnRight": true,
-        "showToastsCharacter": true,
+        "showToastsOnRight": false,
+        "showToastsCharacter": false,
         "showThumbnail": []
       },
       "ranking": {
@@ -436,7 +437,7 @@
         "title": "🍉スイカランキング🍉",
         "limit": 5,
         "sortByHighScore": true,
-        "color": "lofi"
+        "color": "retro"
       },
       "counter": {
         "ruleKey": null,

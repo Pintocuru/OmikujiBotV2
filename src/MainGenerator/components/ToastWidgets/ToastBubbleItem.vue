@@ -1,13 +1,17 @@
 <!-- src/MainGenerator/components/ToastBubbleItem.vue -->
 <template>
-  <div v-if="showToasts" :class="chatPositionClass" @click="handleClick">
+  <div :class="chatPositionClass" @click="handleClick">
     <!-- アイコン -->
-    <div v-if="isCharacterDisplay && character" class="chat-image avatar relative w-10 h-10">
+    <div
+      v-if="isCharacterDisplay && character && character.image?.[iconKey]"
+      class="chat-image avatar relative w-10 h-10"
+    >
       <LayerImage :layers="character.image?.[iconKey]" :size="10" :round="true" />
     </div>
 
     <!-- メッセージ内容 -->
     <div
+      v-if="resolvedMessage"
       class="chat-bubble max-w-xs"
       :style="{ backgroundColor: botMessage?.color?.backgroundColor || character?.color.backgroundColor || '#CCC' }"
     >
@@ -15,7 +19,7 @@
         class="leading-tight text-base"
         :style="{ color: botMessage?.color?.textColor || character?.color.textColor || '#212121' }"
       >
-        {{ botMessage?.comment?.toast || simpleMessage }}
+        {{ resolvedMessage }}
       </div>
     </div>
   </div>
@@ -31,17 +35,14 @@
       botMessage?: BotMessage
       simpleMessage?: string
       showToastsOnRight?: boolean
-      showToasts?: boolean
       character?: CharacterType | null
       iconKey?: CharacterEmotionType
       isCharacterDisplay?: boolean
       clickable?: boolean
     }>(),
     {
-      simpleMessage: 'error',
       iconKey: 'default',
       showToastsOnRight: true,
-      showToasts: true,
       isCharacterDisplay: true,
       clickable: false,
     }
@@ -49,10 +50,29 @@
 
   const emit = defineEmits(['click'])
 
+  /**
+   * 表示ルール
+   * - toast が string かつ空でない → toast を表示
+   * - toast が "" / 空白 → 表示しない
+   * - toast が null / undefined → simpleMessage を表示
+   */
+  const resolvedMessage = computed(() => {
+    const toast = props.botMessage?.comment?.toast
+
+    if (typeof toast === 'string') {
+      const t = toast.trim()
+      return t !== '' ? t : null
+    }
+
+    return props.simpleMessage ?? null
+  })
+
   const chatPositionClass = computed(() => (props.showToastsOnRight ? 'chat chat-end' : 'chat chat-start'))
 
   const handleClick = () => {
-    if (props.clickable && props.botMessage) emit('click', props.botMessage.id)
+    if (props.clickable && props.botMessage) {
+      emit('click', props.botMessage.id)
+    }
   }
 </script>
 
