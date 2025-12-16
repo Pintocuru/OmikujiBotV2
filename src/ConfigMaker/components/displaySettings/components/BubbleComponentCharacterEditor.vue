@@ -3,12 +3,10 @@
   <div class="relative card bg-base-100">
     <div class="card-body p-4 gap-4">
       <!-- キャラクターサンプル表示 -->
-      <CharacterPreview
+      <CharacterAvatarPreview
         :characters="data.characters"
         :showCharacters="bubble.showCharacters"
-        :showCharacterFrame="bubble.showCharacterFrame"
         :characterSize="bubble.characterSize"
-        :maxDisplayCount="5"
       />
 
       <!-- 状態説明 -->
@@ -55,14 +53,14 @@
   >
     <input
       type="range"
-      min="100"
-      max="600"
-      step="20"
+      min="12"
+      max="80"
+      step="4"
       :value="bubble.characterSize"
       @input="(e) => updateBubbleField('characterSize', Number((e.target as HTMLInputElement).value))"
       class="range range-primary w-full"
     />
-    <div class="mt-2 text-sm">現在値: {{ bubble.characterSize }}px</div>
+    <div class="mt-2 text-sm">現在値: {{ bubble.characterSize * 4 }}px</div>
   </SettingItem>
 </template>
 
@@ -73,7 +71,7 @@
   import BubbleCharactersEditor from './BubbleCharactersEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CharacterPreview from '../CharacterPreview.vue'
+  import CharacterAvatarPreview from '../CharacterPreview.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()

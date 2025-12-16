@@ -7,6 +7,8 @@
       :is-slider="true"
       :custom-classes="localColor.customClasses"
       :font-family="global.fontFamily"
+      :animated-text="bubble.bubbleTextAnimate"
+      :animated-text-speed="bubble.bubbleTextSpeed"
       v-bind="bubble"
     />
   </div>

@@ -13,7 +13,6 @@
         :style="{ backgroundColor: character.color?.backgroundColor }"
       >
         <LayerImage
-          :isPreview="false"
           :layers="character.image?.default"
           :size="12"
           :border="true"

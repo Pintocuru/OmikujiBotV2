@@ -21,6 +21,7 @@
         ref="motionWrapper"
         v-model:visible="shouldShowBubble"
         :initialMotion="bubbleMotionEnter"
+        :enter-motion="bubbleMotionEnter"
         :leave-motion="bubbleMotionLeave"
         :auto-hide="false"
       >
@@ -29,6 +30,8 @@
           :message="currentPreview"
           :color="color"
           :custom-classes="customClasses"
+          :animatedText="animatedText"
+          :animatedTextSpeed="animatedTextSpeed"
         />
       </MotionWrapper>
 
@@ -71,12 +74,16 @@
       fontFamily?: FontFamilyType
       bubbleMotionEnter?: MotionType
       bubbleMotionLeave?: MotionType
+      animatedText?: boolean
+      animatedTextSpeed?: number
     }>(),
     {
       fontFamily: 'default',
       isSlider: false,
       bubbleMotionEnter: 'slideUp',
       bubbleMotionLeave: 'slideUp',
+      animatedText: false,
+      animatedTextSpeed: 50,
     }
   )
 

@@ -18,7 +18,7 @@
 <script setup lang="ts">
   import { ref, computed, nextTick, watch, onMounted, onBeforeUnmount } from 'vue'
   import { MotionVariants, useMotion } from '@vueuse/motion'
-  import { LoopMotionType, loopMotionVariants, MotionType, motionVariants } from './MotionVariants'
+  import { MotionType, motionVariants } from './MotionVariants'
 
   // Props定義
   // TODO: v2.0でLoopMotionType も許可したい

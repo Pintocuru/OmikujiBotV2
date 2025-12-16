@@ -19,7 +19,7 @@
     </button>
     <div class="mt-2">
       <div class="text-xs text-base-content/60 mb-1">合成プレビュー:</div>
-      <LayerImage v-if="layers.length > 0" :isPreview="true" :layers="layers" />
+      <ImagePreviewWrapper :layers="layers" />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import { Plus } from 'lucide-vue-next'
   import LayerItem from './LayerItem.vue'
-  import LayerImage from '@/common/LayerImage.vue'
+  import ImagePreviewWrapper from './ImagePreviewWrapper.vue'
 
   defineProps<{
     layers: string[]

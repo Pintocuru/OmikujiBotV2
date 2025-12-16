@@ -6,7 +6,7 @@
       v-if="isCharacterDisplay && character && character.image?.default"
       class="chat-image avatar relative w-10 h-10"
     >
-      <LayerImage :layers="character.image?.default" :size="10" :round="true" />
+      <LayerImage :layers="character.image?.[iconKey]" :size="10" :round="true" />
     </div>
 
     <!-- メッセージ内容 -->
@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessage, CharacterType } from '@/types/'
+  import { BotMessage, CharacterEmotionType, CharacterType } from '@/types/'
   import LayerImage from '@/common/LayerImage.vue'
 
   const props = withDefaults(
@@ -36,11 +36,13 @@
       showToastsOnRight?: boolean
       showToasts?: boolean
       character?: CharacterType | null
+      iconKey?: CharacterEmotionType
       isCharacterDisplay?: boolean
       clickable?: boolean
     }>(),
     {
       simpleMessage: 'error',
+      iconKey: 'default',
       showToastsOnRight: true,
       showToasts: true,
       isCharacterDisplay: true,

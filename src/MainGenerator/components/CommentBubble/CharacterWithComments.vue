@@ -22,12 +22,12 @@
 
       <!-- キャラクターアバター -->
       <CharacterAvatar
+        v-if="profileImage"
         class="flex justify-center items-end"
-        :profile-image="profileImage"
-        :character-name="character?.displayName || character?.key || 'Character'"
-        :background-color="character?.color?.backgroundColor"
-        :show-character-frame="showCharacterFrame"
-        :is-visible="true"
+        :profileImage="profileImage"
+        :characterName="character?.displayName || character?.key"
+        :backgroundColor="character?.color?.backgroundColor"
+        :showCharacterFrame="showCharacterFrame"
       />
     </div>
   </div>

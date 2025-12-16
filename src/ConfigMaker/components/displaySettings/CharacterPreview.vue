@@ -1,72 +1,55 @@
 <!-- src\ConfigMaker\components\displaySettings\CharacterPreview.vue -->
 <template>
-  <!-- メインプレビュー -->
   <div class="flex justify-center">
-    <template v-if="bundleCharacters || !showCharacterPersistent">
+    <div v-for="character in displayCharacters" :key="character.key" class="-mx-4">
       <CharacterAvatar
-        :profile-image="character?.image?.[iconKey]"
-        :character-name="character?.displayName"
-        :background-color="character?.color?.backgroundColor"
-        :showCharacterFrame="showCharacterFrame"
-        :style="{ filter: brightnessFilter }"
+        v-if="character.image?.default"
+        :profile-image="character.image.default"
+        :background-color="character.color?.backgroundColor"
+        :showCharacterFrame="false"
+        :characterSize="characterSize"
       />
-    </template>
-    <template v-else>
-      <div v-for="character in displayCharacters" :key="character.key" class="-mx-4">
-        <CharacterAvatar
-          :profile-image="character?.image?.default"
-          :character-name="character?.displayName"
-          :background-color="character?.color?.backgroundColor"
-          :showCharacterFrame="showCharacterFrame"
-          :style="{ filter: brightnessFilter }"
-        />
-      </div>
-    </template>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
+  import { computed, ref } from 'vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
+  import { useMessageFilterCore } from '@/MainGenerator/components/CommentBubble/composables/useMessageFilterCore'
+  import type { BotMessage } from '@/types/'
 
-  const props = withDefaults(
-    defineProps<{
-      characters: Record<string, CharacterType>
-      characterKey?: string | null
-      iconKey?: CharacterEmotionType
-      bundleCharacters?: boolean
-      showCharacterPersistent?: boolean
-      showCharacterFrame?: boolean
-      showCharacterThumbnail?: boolean
-      maxDisplayCount?: number
-    }>(),
-    {
-      characterKey: null,
-      iconKey: 'default',
-      bundleCharacters: false,
-      showCharacterPersistent: false,
-      showCharacterFrame: true,
-      showCharacterThumbnail: true,
-      maxDisplayCount: 5,
-    }
+  const props = defineProps<{
+    characters: Record<string, CharacterType>
+    showCharacters: string[][]
+    characterSize: number
+  }>()
+
+  /**
+   * プレビュー用なので空メッセージ
+   */
+  const botMessages = ref<BotMessage[]>([])
+
+  /**
+   * showCharacters はそのまま渡す
+   */
+  const { visibleCharacterGroups, zeroIndexMessages } = useMessageFilterCore(
+    botMessages,
+    computed(() => props.showCharacters)
   )
 
-  const character = computed(() => {
-    const keys = Object.keys(props.characters)
-    if (keys.length === 0) return null
+  /**
+   * 表示キャラ決定
+   * - 0番地があればそれ
+   * - なければ visible groups
+   */
+  const displayCharacters = computed(() => {
+    const keys =
+      zeroIndexMessages.value.length > 0
+        ? props.showCharacters[0]
+        : visibleCharacterGroups.value.map((v) => v.characterKey)
 
-    const key =
-      typeof props.characterKey === 'string' && props.characterKey in props.characters ? props.characterKey : keys[0]
-
-    return props.characters[key]
+    return keys.map((key) => props.characters[key]).filter(Boolean)
   })
-
-  const displayCharacters = computed(() =>
-    Object.values(props.characters)
-      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-      .slice(0, props.maxDisplayCount)
-  )
-
-  const brightnessFilter = computed(() => (props.showCharacterPersistent ? 'brightness(60%)' : 'brightness(100%)'))
 </script>

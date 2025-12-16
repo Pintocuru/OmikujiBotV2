@@ -34,12 +34,12 @@
       :value="layer"
       @input="emit('update', ($event.target as HTMLInputElement).value)"
     />
-    <LayerImage :isPreview="true" :layers="layer" :size="12" :border="true" />
+    <ImagePreviewWrapper :layers="layer" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import LayerImage from '@/common/LayerImage.vue'
+  import ImagePreviewWrapper from './ImagePreviewWrapper.vue'
   import { ChevronUp, ChevronDown, X } from 'lucide-vue-next'
 
   defineProps<{

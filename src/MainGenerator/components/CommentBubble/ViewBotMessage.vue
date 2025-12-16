@@ -1,3 +1,4 @@
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\CommentBubble\ViewBotMessage.vue -->
 <template>
   <div class="relative h-screen">
     <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
@@ -14,13 +15,11 @@
         <template #default="{ message, index }">
           <!-- キャラクター（最新コメント時のみ表示） -->
           <CharacterAvatar
-            v-if="index === 0"
+            v-if="index === 0 && message.profileImage"
             class="absolute top-[80px] left-1/2 -translate-x-1/2 transform"
-            :profile-image="message.profileImage"
-            :character-name="message.name"
-            :background-color="message.color?.backgroundColor"
-            :show-character-frame="showCharacterFrame"
-            :is-visible="true"
+            :profileImage="message.profileImage"
+            :backgroundColor="message.color?.backgroundColor"
+            :showCharacterFrame="showCharacterFrame"
           />
         </template>
       </CommentDisplay>

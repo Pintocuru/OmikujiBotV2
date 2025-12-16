@@ -1,43 +1,21 @@
 <!-- src\common\LayerImage.vue -->
 <template>
-  <div>
-    <div
-      class="relative overflow-hidden rounded"
-      :class="[sizeClass, border ? 'border' : '', round ? 'rounded-full' : '']"
-      @click="showPreview = true"
-    >
-      <img
-        v-for="(layer, index) in layerArray"
-        :key="index"
-        :src="getImagePath(layer)"
-        class="absolute inset-0 object-contain"
-        :style="{ zIndex: layerArray.length - index }"
-      />
-    </div>
-
-    <!-- 拡大プレビュー -->
-    <Transition name="fade">
-      <div
-        v-if="isPreview && showPreview"
-        class="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
-        @click.self="showPreview = false"
-      >
-        <div class="relative w-[256px] h-[256px] bg-white rounded overflow-hidden">
-          <img
-            v-for="(layer, index) in layerArray"
-            :key="index"
-            :src="getImagePath(layer)"
-            class="absolute inset-0 object-contain"
-            :style="{ zIndex: layerArray.length - index }"
-          />
-        </div>
-      </div>
-    </Transition>
+  <div
+    class="relative overflow-hidden rounded"
+    :class="[sizeClass, border ? 'border' : '', round ? 'rounded-full' : '']"
+  >
+    <img
+      v-for="(layer, index) in layerArray"
+      :key="index"
+      :src="getImagePath(layer)"
+      class="absolute inset-0 object-contain"
+      :style="{ zIndex: layerArray.length - index }"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { getImagePath } from '@/types/'
 
   // ✅ デフォルト値を明示的に指定
@@ -47,32 +25,14 @@
       size?: number
       border?: boolean
       round?: boolean
-      isPreview?: boolean
     }>(),
     {
-      isPreview: false,
+      size: 16,
     }
   )
 
   // サイズクラス
-  const sizeClass = computed(() => (props.size ? `w-${props.size} h-${props.size}` : 'w-16'))
+  const sizeClass = computed(() => `w-${props.size} h-${props.size}`)
   // 常に配列に変換
   const layerArray = computed(() => (Array.isArray(props.layers) ? props.layers : [props.layers]))
-
-  const showPreview = ref(false)
 </script>
-
-<style scoped>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.2s;
-  }
-  .fade-enter-from,
-  .fade-leave-to {
-    opacity: 0;
-  }
-
-  .relative {
-    aspect-ratio: 1 / 1;
-  }
-</style>

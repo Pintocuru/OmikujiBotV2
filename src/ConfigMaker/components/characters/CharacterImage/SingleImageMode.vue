@@ -7,11 +7,11 @@
     :value="value"
     @input="emit('update', ($event.target as HTMLInputElement).value)"
   />
-  <LayerImage :isPreview="true" :layers="value" />
+  <ImagePreviewWrapper :layers="value" />
 </template>
 
 <script setup lang="ts">
-  import LayerImage from '@/common/LayerImage.vue'
+  import ImagePreviewWrapper from './ImagePreviewWrapper.vue'
 
   defineProps<{
     value?: string

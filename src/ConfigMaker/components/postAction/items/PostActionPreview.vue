@@ -25,6 +25,7 @@
           class="cursor-pointer"
         />
         <MotionWrapper :key="messageKey" :enter-motion="action.enterMotion" :auto-hide="false">
+          <!-- TODO: CharacterAvatar をつかいなさい -->
           <CharacterPreview
             v-if="character.image?.default && character.displayOption.isIconDisplay"
             :characters="characters"
