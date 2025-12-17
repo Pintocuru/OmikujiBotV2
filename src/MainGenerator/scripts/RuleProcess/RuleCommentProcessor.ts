@@ -6,43 +6,62 @@ import { Comment } from '@onecomme.com/onesdk/'
 
 const TIME_THRESHOLD = 10000 // これ以上経過した古いコメントは判定しない
 
-/**
- * メイン処理: コメントを処理して拡張コメントを作成
- */
-export function respondToComments(comments: Comment[]): BotMessage[] {
-  if (!comments.length) return []
-  const botMessages: BotMessage[] = []
-  // 最新が末尾なので反転してから先頭5件を取得
-  const limitedComments = comments.slice().reverse().slice(0, 5)
+export class RuleCommentProcessor {
+  private appliedCommentIds = new Set<string>() // 既に適用済みの comment.data.id を保持
 
-  for (const comment of limitedComments) {
-    // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
-    if (isBotComment(comment.data.userId)) return []
+  /**
+   * メイン処理: コメントを処理して拡張コメントを作成
+   */
+  respondToComments(comments: Comment[]): BotMessage[] {
+    if (!comments.length) return []
 
-    // 除外条件をチェック
-    if (isOldComment(comment.data.timestamp)) continue
+    const botMessages: BotMessage[] = []
+    // 最新が末尾なので反転してから先頭5件を取得
+    const limitedComments = comments.slice().reverse().slice(0, 5)
 
-    const processedMessages = processUserComment(comment)
-    if (processedMessages.length > 0) {
-      botMessages.push(...processedMessages)
+    for (const comment of limitedComments) {
+      const { id, userId, timestamp } = comment.data
+
+      // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
+      if (this.isBotComment(userId)) return botMessages
+
+      // 既に処理済みのコメントは処理終了
+      if (this.appliedCommentIds.has(id)) return botMessages
+
+      // 除外条件をチェック
+      if (this.isOldComment(timestamp)) return botMessages
+
+      // おみくじチェック
+      this.appliedCommentIds.add(id)
+      const processedMessages = processUserComment(comment)
+      if (processedMessages.length > 0) {
+        botMessages.push(...processedMessages)
+      }
     }
+
+    return botMessages
   }
 
-  return botMessages
-}
+  /**
+   * Botのコメントかどうかを判定
+   */
+  private isBotComment(userId: string): boolean {
+    return userId === POST_SETTINGS.botUserId
+  }
 
-/**
- * Botのコメントかどうかを判定
- */
-function isBotComment(userId: string): boolean {
-  return userId === POST_SETTINGS.botUserId
-}
+  /**
+   * 古いコメント（時間閾値を超過）かどうかを判定
+   */
+  private isOldComment(timestamp: string): boolean {
+    const currentTime = Date.now()
+    const sinceComment = currentTime - new Date(timestamp).getTime()
+    return sinceComment > TIME_THRESHOLD
+  }
 
-/**
- * 古いコメント（時間閾値を超過）かどうかを判定
- */
-function isOldComment(timestamp: string): boolean {
-  const currentTime = Date.now()
-  const sinceComment = currentTime - new Date(timestamp).getTime()
-  return sinceComment > TIME_THRESHOLD
+  /**
+   * 状態を明示的にリセットしたい場合用
+   */
+  reset(): void {
+    this.appliedCommentIds.clear()
+  }
 }

@@ -31,12 +31,14 @@
   import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
 
   import { storeToRefs } from 'pinia'
-  import { respondToComments } from './scripts/RuleProcess/RuleCommentProcessor'
+  import { RuleCommentProcessor } from './scripts/RuleProcess/RuleCommentProcessor'
 
   // Pinia Store
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
   const components = computed(() => data.value.displaySettings.components)
+
+  const ruleCommentProcessor = new RuleCommentProcessor()
 
   // comment/timerルール稼働
   const { initializeApp, startTimers } = useRuleProcessor()
@@ -48,7 +50,7 @@
   onMounted(async () => {
     const isInit = await initializeApp(appStore.userConfig, (comments) => {
       // コメント処理
-      const botMessages = respondToComments(comments)
+      const botMessages = ruleCommentProcessor.respondToComments(comments)
       appStore.scheduleBotMessages(botMessages)
     })
     appStore.setInitialized(isInit)

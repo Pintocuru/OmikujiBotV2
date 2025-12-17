@@ -20,7 +20,7 @@ export class ExecuteScript implements ScriptClass<GameSettings> {
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, characterKey: string, params: string): PostActionType[] {
+  run(comment: Comment, characterKey: string, queryString: string): PostActionType[] {
     // パラメータ
     const { isParty } = this.settings
     const {} = GameParamsSchema.parse(params)

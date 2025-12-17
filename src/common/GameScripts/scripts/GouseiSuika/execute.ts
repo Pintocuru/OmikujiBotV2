@@ -1,10 +1,11 @@
 // src/execute.ts
-import { GameParamsSchema } from './params'
-import { ScriptClass, GameState, PostActionType } from '@/types/'
+import { GameParams, GameParamsSchema } from './params'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GachaGame } from './game'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { Comment } from '@onecomme.com/onesdk/'
 import { GameResult } from './gameConfigs'
+import { parseQueryString } from '../../parseQueryString'
 
 const RANKING_KEY = 'GouseiSuika'
 const UNKNOWN_NAME = 'Unknown'
@@ -17,43 +18,48 @@ export class ExecuteScript implements ScriptClass {
   }
 
   /** ゲームを実行 */
-  run(params: string, characterKey: string, comment?: Comment): PostActionType[] {
-    const { mode } = this.parseParams(params)
-
+  run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
+    const { mode } = this.parseParams(queryString)
     const gameResult = new GachaGame(mode).play()
-    const rankingActions = this.buildRankingActions(gameResult, characterKey, comment)
+    const rankingActions = this.buildRankingActions(gameResult, characterKey, mode, comment)
 
-    return {
-      postActions: [...gameResult.postArray, ...rankingActions],
-    }
+    return [...gameResult.postArray, ...rankingActions]
   }
 
   /** ゲームデータを返す */
-  getGameState(): GameState {
+  getGameState(): GameStateType {
     return this.logRank.getGameState()
   }
 
   // ---- private helpers ----
 
-  private parseParams(params: string) {
-    const paramsObject = parseQueryString(params)
+  private parseParams(queryString: string): GameParams {
+    const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
 
-  private buildRankingActions(gameResult: GameResult, characterKey: string, comment?: Comment): PostActionType[] {
+  private buildRankingActions(
+    gameResult: GameResult,
+    characterKey: string,
+    mode: string,
+    comment?: Comment
+  ): PostActionType[] {
     if (!comment) return []
 
     const logResult = this.logRank.run({
       userId: comment.data.userId,
       name: comment.data.displayName ?? UNKNOWN_NAME,
       characterKey,
-      rankMode: 'point',
-      enableCount: 5,
-      isWin: false,
-      getPoint: gameResult.points,
+      rankingMode: 'high_score',
+      maxDrawsPerUser: 5,
+      result: {
+        type: 'score',
+        score: gameResult.points,
+      },
     })
 
     const stats = logResult.currentUserStats
+    const currentRecord = logResult.currentRecord
 
     return [
       ...logResult.postActions,
@@ -66,10 +72,10 @@ export class ExecuteScript implements ScriptClass {
           bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
           rankingKey: RANKING_KEY,
           rankingDisplayScore: String(gameResult.points),
-          rankingIsRank: !logResult.currentUserStats.isOverLimit,
+          rankingIsRank: !logResult.isOverLimit,
           rankingName: stats.name,
-          rankingPoint: String(stats.points),
-          rankingSymbol: stats.itemValue1,
+          rankingPoint: String(currentRecord.score),
+          rankingSymbol: mode,
         },
         sound: 'decision',
       },
@@ -79,7 +85,3 @@ export class ExecuteScript implements ScriptClass {
 
 // プリセット用エクスポート
 export default new ExecuteScript()
-
-export function parseQueryString(queryString: string): Record<string, string> {
-  return Object.fromEntries(new URLSearchParams(queryString))
-}

@@ -1,94 +1,60 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/UserStatsService.ts
-import { UserStatsType, UserStatsTypeSchema } from '@/types'
-import { GameContext, isPointMode } from '../types'
+import { v4 as uuidv4 } from 'uuid'
+import { GameRecordType, UserStatsType } from '../GameScriptSchema'
+import { GameContext } from '../types'
 
 /**
- * ユーザー統計を更新
+ * 今回の実行記録（GameRecord）を作成
  */
-export const updateUserStats = (context: GameContext): Record<string, UserStatsType> => {
-  return isPointMode(context.params) ? updatePointModeStats(context) : updateWinnerModeStats(context)
-}
-
-/**
- * ポイントモード: 1ゲーム単位の記録を追加
- */
-const updatePointModeStats = (context: GameContext): Record<string, UserStatsType> => {
-  const { gameState, params } = context
-  const { getPoint, itemValue1, itemValue2, itemValue3 } = params
-
-  gameState.userRecords ??= {}
-  gameState.userRecords[params.userId] ??= []
-
-  const records = gameState.userRecords[params.userId]
-
-  // 新規レコード作成
-  const newRecord = UserStatsTypeSchema.parse({
-    userId: params.userId,
-    name: params.name,
-    draws: 1,
-    wins: 0,
-    points: getPoint,
-    totalPoints: getPoint,
-    ...(itemValue1 && { itemValue1 }),
-    ...(itemValue2 && { itemValue2 }),
-    ...(itemValue3 && { itemValue3 }),
-  })
-
-  records.push(newRecord)
-
-  // 集計データ作成
-  const totalPoints = records.reduce((sum, r) => sum + (r.points ?? 0), 0)
-
-  const aggregatedStats: UserStatsType = {
-    userId: params.userId,
-    name: params.name,
-    draws: records.length,
-    wins: 0,
-    points: getPoint,
-    totalPoints,
-    rank: 0,
-    rate: 0,
-    ...(itemValue1 && { itemValue1 }),
-    ...(itemValue2 && { itemValue2 }),
-    ...(itemValue3 && { itemValue3 }),
-  }
+export const createGameRecord = (context: GameContext): GameRecordType => {
+  const { params } = context
+  const { userId, name, result } = params
 
   return {
-    ...gameState.userStats,
-    [params.userId]: aggregatedStats,
+    id: uuidv4(),
+    userId,
+    userName: name,
+    score: result.score,
+    ...(result.itemValue1 && { itemValue1: result.itemValue1 }),
+    ...(result.itemValue2 && { itemValue2: result.itemValue2 }),
+    ...(result.itemValue3 && { itemValue3: result.itemValue3 }),
+    createdAt: new Date().toISOString(),
   }
 }
 
 /**
- * 勝数モード: ユーザー単位の集計を更新
+ * ユーザーの累計統計を更新
+ * userMapを更新して返す
  */
-const updateWinnerModeStats = (context: GameContext): Record<string, UserStatsType> => {
-  const { gameState, params } = context
-  const { isWin, getPoint, itemValue1, itemValue2, itemValue3 } = params
+export const updateUserStats = (context: GameContext): Record<string, UserStatsType> => {
+  const { params, gameState } = context
+  const { userId, name, result } = params
 
   // 既存統計を取得または初期化
-  const current =
-    gameState.userStats[params.userId] ??
-    UserStatsTypeSchema.parse({
-      userId: params.userId,
-      name: params.name,
-      draws: 0,
-    })
+  const current = gameState.userMap[userId] || {
+    userId,
+    name,
+    totalDraws: 0,
+    totalPoints: 0,
+    totalWins: 0,
+    bestScore: 0,
+  }
+
+  // 勝利判定
+  const isWin = result.type === 'win'
 
   // 統計を更新
   const updated: UserStatsType = {
     ...current,
-    draws: (current.draws || 0) + 1,
-    wins: isWin ? (current.wins || 0) + 1 : current.wins,
-    points: getPoint > 0 ? (current.points || 0) + getPoint : current.points,
-    totalPoints: getPoint > 0 ? (current.totalPoints || 0) + getPoint : current.totalPoints,
-    ...(itemValue1 && { itemValue1 }),
-    ...(itemValue2 && { itemValue2 }),
-    ...(itemValue3 && { itemValue3 }),
+    name, // 最新の名前で上書き
+    totalDraws: current.totalDraws + 1,
+    totalPoints: current.totalPoints + result.score,
+    totalWins: isWin ? current.totalWins + 1 : current.totalWins,
+    bestScore: Math.max(current.bestScore, result.score),
   }
 
   return {
-    ...gameState.userStats,
-    [params.userId]: updated,
+    ...gameState.userMap,
+    [userId]: updated,
   }
 }

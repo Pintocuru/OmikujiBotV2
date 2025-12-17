@@ -80,7 +80,6 @@
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": 0
       }
     },
@@ -143,7 +142,6 @@
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
         "isRepeatAllowed": 0
       }
     },
@@ -207,7 +205,62 @@
       "limits": {
         "cooldownSeconds": 3,
         "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
+        "isRepeatAllowed": 0
+      }
+    },
+    "1765979634865-ilnmcp": {
+      "id": "1765979634865-ilnmcp",
+      "key": "1765979634865-ilnmcp",
+      "name": "てすと",
+      "createdAt": "2025-12-17T13:53:54.866Z",
+      "updatedAt": "2025-12-17T13:54:37.226Z",
+      "order": 4,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1765979622090",
+          "key": "1765979622090",
+          "name": "",
+          "createdAt": "2025-12-17T13:53:42.090Z",
+          "updatedAt": "2025-12-17T13:53:42.090Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "sound",
+              "sound": "fail"
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "priority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "threshold": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "おみくじ"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "drawLimit": 0,
         "isRepeatAllowed": 0
       }
     }
@@ -407,8 +460,7 @@
     },
     "components": {
       "conditions": [
-        "ranking",
-        "toast"
+        "counter"
       ],
       "bubble": {
         "showCharacters": [
@@ -440,13 +492,14 @@
         "color": "retro"
       },
       "counter": {
-        "ruleKey": null,
-        "target": "runCount",
+        "ruleKey": "1765979634865-ilnmcp",
+        "target": "draw",
         "label": "Counter",
+        "showCounter": true,
         "firstValue": 0,
         "isDirectionUp": true,
-        "color": "dark",
-        "showLabel": true
+        "maxUsers": 0,
+        "color": "synthwave"
       }
     },
     "editor": {

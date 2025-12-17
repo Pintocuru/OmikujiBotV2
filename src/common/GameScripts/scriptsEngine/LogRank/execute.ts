@@ -1,13 +1,11 @@
 // src/common/GameScripts/scriptsEngine/LogRank/execute.ts
-import { GameState, GameStateSchema, UserStatsType } from '@/types'
+import { GameStateType, GameStateSchema, UserStatsType } from './GameScriptSchema'
 import { GameParams, GameParamsSchema, GameContext, GameResult } from './types'
-import { updateUserStats } from './services/UserStatsService'
-import { generateRankings } from './services/RankingService'
-import { createCurrentUserStats } from './services/UserStatsResultService'
+import { updateUserStats, createGameRecord } from './services/UserStatsService'
 import { createPostActions } from './services/MessageService'
 
 export class LogRankScript {
-  private gameState!: GameState
+  private gameState!: GameStateType
 
   /**
    * 設定を初期化する
@@ -24,31 +22,33 @@ export class LogRankScript {
       const validatedParams = GameParamsSchema.parse(params)
       const context = this.createContext(validatedParams)
 
-      // ユーザー統計を更新
+      // 1. 今回の実行記録を作成
+      const currentRecord = createGameRecord(context)
+
+      // 2. ユーザーの累計統計を更新
       const updatedUserStats = updateUserStats(context)
-      const updatedGameState = {
-        ...context.gameState,
-        userStats: updatedUserStats,
-      }
 
-      // 上限チェック
-      const isOverLimit = this.checkDrawLimit(validatedParams.enableCount, updatedUserStats[context.params.userId])
+      // 3. 上限チェック
+      const isOverLimit = this.checkDrawLimit(validatedParams.maxDrawsPerUser, updatedUserStats[validatedParams.userId])
 
-      // 上限内の場合のみランキング更新
+      // 4. 上限内の場合のみログに追加
       if (!isOverLimit) {
-        const updatedContext = { ...context, gameState: updatedGameState }
-        const userRankings = generateRankings(updatedContext)
-        this.gameState = { ...updatedGameState, userRankings }
-      } else {
-        this.gameState = updatedGameState
+        this.gameState.logs.push(currentRecord)
       }
 
-      // 現在のユーザー統計と投稿アクションを作成
-      const finalContext = { ...context, gameState: this.gameState }
-      const currentUserStats = createCurrentUserStats(finalContext, isOverLimit)
-      const postActions = createPostActions(params.characterKey, currentUserStats)
+      // 5. userMapを更新
+      this.gameState.userMap = updatedUserStats
 
-      return { currentUserStats, postActions }
+      // 6. 投稿アクション作成
+      const finalUserStats = updatedUserStats[validatedParams.userId]
+      const postActions = createPostActions(params.characterKey, finalUserStats, currentRecord, isOverLimit)
+
+      return {
+        currentRecord,
+        currentUserStats: finalUserStats,
+        isOverLimit,
+        postActions,
+      }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : '不明なエラー'
       console.error('Game execution error:', errorMessage, error)
@@ -59,7 +59,7 @@ export class LogRankScript {
   /**
    * ゲームデータを返す
    */
-  getGameState(): GameState {
+  getGameState(): GameStateType {
     return this.gameState
   }
 
@@ -76,9 +76,8 @@ export class LogRankScript {
   /**
    * 試行回数が上限を超えているかチェック
    */
-  private checkDrawLimit(enableCount: number, userStats: UserStatsType): boolean {
-    if (enableCount <= 0) return false
-    const draws = userStats?.draws ?? 0
-    return draws > enableCount
+  private checkDrawLimit(maxDraws: number, userStats: UserStatsType): boolean {
+    if (maxDraws <= 0) return false // 0は無制限
+    return userStats.totalDraws > maxDraws
   }
 }
