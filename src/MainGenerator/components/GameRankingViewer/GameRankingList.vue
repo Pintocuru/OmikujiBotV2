@@ -43,91 +43,28 @@
   import { computed } from 'vue'
   import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { generateDummyMessages } from './useDummyBotMessages'
 
-  interface Props {
+  const props = defineProps<{
     botMessages: BotMessage[]
     settings: SettingsRankingType
-  }
-
-  const props = defineProps<Props>()
-
-  const candidateNames = [
-    'てい',
-    'ポッピィー',
-    'おふとん',
-    'もこもこ',
-    'じゅん',
-    'たかゆき',
-    'すいすい',
-    'たいよう',
-    'ふわみ',
-    'いろは',
-    'なな',
-    'きよし',
-    'おとは',
-    'こはく',
-    'さくら',
-  ]
-
-  // ダミーBotMessageを生成
-  const generateDummyMessages = (): BotMessage[] => {
-    const count = props.settings.limit || 10
-    const usedNames = new Set<string>()
-    const dummyMessages: BotMessage[] = []
-
-    for (let i = 0; i < count; i++) {
-      // 重複しない名前を選択
-      let name: string
-      do {
-        name = candidateNames[Math.floor(Math.random() * candidateNames.length)]
-      } while (usedNames.has(name) && usedNames.size < candidateNames.length)
-
-      usedNames.add(name)
-
-      // 3000点から1000点までのランダムスコア
-      const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
-
-      dummyMessages.push(
-        BotMessageSchema.parse({
-          name,
-          comment: {
-            rankingName: name,
-            rankingPoint: String(points),
-            rankingRank: String(i + 1),
-            rankingKey: props.settings.scriptKey || 'dummy',
-          },
-        })
-      )
-    }
-
-    // スコアでソート（降順）
-    if (props.settings.sortByHighScore)
-      return dummyMessages.sort(
-        (a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0)
-      )
-    // ソートせずにそのまま返す
-    else return dummyMessages
-  }
+  }>()
 
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.botMessages.length > 0) {
-      let data = [...props.botMessages]
-
-      // rankingIsRank が false のものは除外
-      data = data.filter((msg) => msg.comment?.rankingIsRank !== false)
+      let data = [...props.botMessages].filter((msg) => msg.comment?.rankingIsRank !== false)
 
       if (props.settings.sortByHighScore) {
-        // スコアでソート（降順）
         data.sort((a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0))
       } else {
-        // 投稿日時でソート（新しい順）
         data.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
       }
 
       return data.slice(0, props.settings.limit || 10)
     }
-    return generateDummyMessages()
+
+    return generateDummyMessages(props.settings)
   })
 
   // スコアのフォーマット

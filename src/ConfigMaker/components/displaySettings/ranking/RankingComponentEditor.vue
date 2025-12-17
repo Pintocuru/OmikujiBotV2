@@ -4,6 +4,27 @@
     <!-- ランキングプレビュー -->
     <GameRankingList :botMessages="[]" :settings="ranking" />
 
+    <!-- テーマカラー -->
+    <SettingItem
+      label="カラー"
+      description="ランキングのテーマカラーを選択します"
+      :forceMode="'pro'"
+      :showReset="true"
+      @reset="resetMap.color"
+    >
+      <select
+        class="select select-bordered"
+        :value="ranking.color"
+        :disabled="!isPro"
+        @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
+      >
+        <option v-for="theme in themes" :key="theme" :value="theme">
+          {{ theme }}
+        </option>
+      </select>
+    </SettingItem>
+
+    <!-- 対象スクリプトID -->
     <SettingItem
       label="対象スクリプトID"
       description="ランキング対象のGameScriptを指定します"
@@ -41,14 +62,14 @@
     <!-- 表示するランキング数 -->
     <SettingItem
       label="表示件数"
-      description="ランキングに表示する件数を設定します"
+      description="ランキングに表示する件数を設定します(最大20)"
       :showReset="true"
       @reset="resetMap.limit"
     >
       <input
         type="number"
         min="1"
-        max="100"
+        max="20"
         class="input input-bordered w-24"
         :value="ranking.limit"
         @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
@@ -69,24 +90,6 @@
         @change="(e) => updateRankingField('sortByHighScore', (e.target as HTMLInputElement).checked)"
       />
     </SettingItem>
-
-    <!-- テーマカラー -->
-    <SettingItem
-      label="カラー"
-      description="ランキングのテーマカラーを選択します"
-      :showReset="true"
-      @reset="resetMap.color"
-    >
-      <select
-        class="select select-bordered"
-        :value="ranking.color"
-        @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="theme in themes" :key="theme" :value="theme">
-          {{ theme }}
-        </option>
-      </select>
-    </SettingItem>
   </div>
 </template>
 
@@ -99,10 +102,12 @@
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { enabledGameScriptMap } = useEnabledGames()
   const { data } = storeToRefs(omikujiStore)
+  const { isPro, isGod } = useSettingMode()
 
   const ranking = computed(() => data.value.displaySettings.components.ranking)
 

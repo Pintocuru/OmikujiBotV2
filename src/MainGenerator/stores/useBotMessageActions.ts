@@ -1,5 +1,4 @@
 // templates\OmikujiBot\src\MainGenerator\stores\useBotMessageActions.ts
-// これstoreじゃないです…
 import { ref } from 'vue'
 import type { BotMessage } from '@/types/'
 

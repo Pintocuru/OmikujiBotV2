@@ -28,7 +28,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     const {} = GameParamsSchema.parse(params)
 
     // 設定データ
-    const userName = comment?.data.displayName ?? 'Unknown'
+    const userName = comment?.data.displayName ?? comment?.data.name ?? 'Unknown'
 
     // ゲームの実行
     const result = this.gameEngine.playGame()

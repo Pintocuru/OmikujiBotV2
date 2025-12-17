@@ -9,6 +9,9 @@
 
     <!-- ランキングリスト -->
     <GameRankingViewer v-if="components.conditions.includes('ranking')" />
+
+    <!-- ランキングリスト -->
+    <CounterPreview v-if="components.conditions.includes('counter')" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -25,6 +28,8 @@
   import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@/MainGenerator/components/ToastWidgets/ToastWidgets.vue'
   import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue'
+  import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
+
   import { storeToRefs } from 'pinia'
 
   // Pinia Store

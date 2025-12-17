@@ -35,20 +35,22 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 export const SettingsRankingSchema = z.object({
   scriptKey: z.string().nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'), // タイトル
-  limit: z.number().default(5).catch(5), // 表示するランキング数
+  limit: z.number().min(1).max(20).default(5).catch(5), // 表示するランキング数
   sortByHighScore: z.boolean().default(true).catch(true), // 順位の表示
   color: z.enum(themes).default('lofi').catch('lofi'), // テーマカラー(DaisyUi)
 })
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
-// カウンター Counter
+// カウンター・ユーザーリスト Counter
 // idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
 export const SettingsCounterSchema = z.object({
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
-  target: z.enum(['draw', 'user']).default('draw').catch('draw'),
+  target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
+  showCounter: z.boolean().default(true).catch(true), // カウンターを表示するか
   firstValue: z.number().default(0).catch(0), // 初期値（開始値）
   isDirectionUp: z.boolean().default(true).catch(true), // true=カウントアップ, false=カウントダウン
+  maxUsers: z.number().min(0).max(300).default(0).catch(0), // ユーザーリスト表示数
   color: z.enum(themes).default('dark').catch('dark'), // DaisyUIテーマカラー
 })
 

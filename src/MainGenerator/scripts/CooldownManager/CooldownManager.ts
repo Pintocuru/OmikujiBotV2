@@ -3,8 +3,9 @@
 /**
  * ユーザーの抽選回数を管理するインターフェース
  */
-interface UserDrawCount {
+export interface UserDrawCount {
   readonly userId: string
+  readonly name: string
   readonly ruleId: string
   draws: number
   lastDrawTime: number
@@ -100,7 +101,7 @@ export class CooldownManager {
   /**
    * ユーザーIDを更新し、抽選回数をインクリメント
    */
-  updateUserId(userId: string, ruleId: string, lastBotMessages: string): void {
+  updateUserId(userId: string, ruleId: string, name: string, lastBotMessages: string): void {
     const key = this.createKey(userId, ruleId)
 
     // 配列の先頭に追加（最新の履歴が常に先頭）
@@ -111,7 +112,7 @@ export class CooldownManager {
       this.lastUserRuleKeys.pop()
     }
 
-    this.incrementUserDrawCount(userId, ruleId, lastBotMessages)
+    this.incrementUserDrawCount(userId, ruleId, name, lastBotMessages)
   }
 
   /**
@@ -125,7 +126,7 @@ export class CooldownManager {
   /**
    * 指定ユーザー・ルールの抽選回数を1増やす
    */
-  private incrementUserDrawCount(userId: string, ruleId: string, lastBotMessages: string): void {
+  private incrementUserDrawCount(userId: string, ruleId: string, name: string, lastBotMessages: string): void {
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userDrawCounts.get(key)
     const currentTime = Date.now()
@@ -138,6 +139,7 @@ export class CooldownManager {
       this.userDrawCounts.set(key, {
         userId,
         ruleId,
+        name,
         draws: 1,
         lastDrawTime: currentTime,
         lastBotMessages,
@@ -191,6 +193,17 @@ export class CooldownManager {
     return Array.from(this.userDrawCounts.values())
       .filter((record) => record.ruleId === ruleId)
       .reduce((total, record) => total + record.draws, 0)
+  }
+
+  /**
+   * 指定ルールの最後のユーザーを取得
+   */
+  getLatestUserRuleId(ruleId: string): UserDrawCount | null {
+    const record = Array.from(this.userDrawCounts.values())
+      .filter((r) => r.ruleId === ruleId)
+      .sort((a, b) => b.lastDrawTime - a.lastDrawTime)[0]
+
+    return record ?? null
   }
 
   /**

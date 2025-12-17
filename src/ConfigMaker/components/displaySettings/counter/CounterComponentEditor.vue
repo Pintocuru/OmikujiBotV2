@@ -2,7 +2,27 @@
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- プレビュー -->
-    <CounterPreviewCard :counter="counter" />
+    <CounterPreviewCard :counterSetting="counter" :count="0" :users="generateDummyUserNames(counter.maxUsers)" />
+
+    <!-- カラー -->
+    <SettingItem
+      label="カラー"
+      description="カウンターのテーマカラーを選択します"
+      :forceMode="'pro'"
+      :showReset="true"
+      @reset="resetMap.color"
+    >
+      <select
+        class="select select-bordered"
+        :value="counter.color"
+        :disabled="!isPro"
+        @change="(e) => updateCounterField('color', (e.target as HTMLSelectElement).value)"
+      >
+        <option v-for="theme in themes" :key="theme" :value="theme">
+          {{ theme }}
+        </option>
+      </select>
+    </SettingItem>
 
     <!-- 設定項目 -->
     <SettingItem
@@ -23,6 +43,7 @@
       </select>
     </SettingItem>
 
+    <!-- カウンターの対象 -->
     <SettingItem
       label="対象カウント種別"
       description="カウンターの対象を選択します"
@@ -39,6 +60,7 @@
       </select>
     </SettingItem>
 
+    <!-- ラベル名 -->
     <SettingItem label="ラベル" description="カウンターのラベルを設定します" :showReset="true" @reset="resetMap.label">
       <input
         type="text"
@@ -48,6 +70,27 @@
       />
     </SettingItem>
 
+    <!-- カウンターを表示するか -->
+    <SettingItem
+      label="カウンター表示"
+      description="カウンターの表示・非表示を選択します"
+      :showReset="true"
+      @reset="resetMap.showCounter"
+    >
+      <label class="label cursor-pointer justify-start gap-3">
+        <input
+          type="checkbox"
+          class="toggle toggle-primary"
+          :checked="counter.showCounter"
+          @change="(e) => updateCounterField('showCounter', (e.target as HTMLInputElement).checked)"
+        />
+        <span class="label-text">
+          {{ counter.showCounter ? '表示する' : '表示しない' }}
+        </span>
+      </label>
+    </SettingItem>
+
+    <!-- 初期値 -->
     <SettingItem
       label="初期値"
       description="カウンターの開始値を設定します"
@@ -62,6 +105,7 @@
       />
     </SettingItem>
 
+    <!-- カウントアップ/ダウン -->
     <SettingItem
       label="カウント方向"
       description="カウントアップかカウントダウンかを選択します"
@@ -81,21 +125,21 @@
       </label>
     </SettingItem>
 
+    <!-- ユーザーリスト表示数 -->
     <SettingItem
-      label="カラー"
-      description="カウンターのテーマカラーを選択します"
+      label="リスト表示数"
+      description="カウンターに表示するユーザーの数を設定します(最大300)"
       :showReset="true"
-      @reset="resetMap.color"
+      @reset="resetMap.maxUsers"
     >
-      <select
-        class="select select-bordered"
-        :value="counter.color"
-        @change="(e) => updateCounterField('color', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="theme in themes" :key="theme" :value="theme">
-          {{ theme }}
-        </option>
-      </select>
+      <input
+        type="number"
+        class="input input-bordered w-24"
+        :value="counter.maxUsers"
+        min="0"
+        max="300"
+        @input="(e) => updateCounterField('maxUsers', Number((e.target as HTMLInputElement).value))"
+      />
     </SettingItem>
   </div>
 </template>
@@ -108,12 +152,14 @@
   import { SettingsCounterSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isPro, isGod } = useSettingMode()
 
   const rulesComment = computed(() => data.value.comments)
-  const ruleKeys = computed(() => Object.keys(rulesComment.value || {}))
 
   const counter = computed(() => data.value.displaySettings.components.counter)
 
@@ -137,8 +183,10 @@
     ruleKey: () => resetField('ruleKey'),
     target: () => resetField('target'),
     label: () => resetField('label'),
+    showCounter: () => resetField('showCounter'),
     firstValue: () => resetField('firstValue'),
     isDirectionUp: () => resetField('isDirectionUp'),
+    maxUsers: () => resetField('maxUsers'),
     color: () => resetField('color'),
   }
 </script>
