@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParamsSchema } from './params'
-import { ScriptClass, GameState, ScriptResult, PostActionType } from '@/types/'
+import { ScriptClass, GameState, PostActionType } from '@/types/'
 import { GachaGame } from './game'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { Comment } from '@onecomme.com/onesdk/'
@@ -17,7 +17,7 @@ export class ExecuteScript implements ScriptClass {
   }
 
   /** ゲームを実行 */
-  run(params: string, characterKey: string, comment?: Comment): ScriptResult {
+  run(params: string, characterKey: string, comment?: Comment): PostActionType[] {
     const { mode } = this.parseParams(params)
 
     const gameResult = new GachaGame(mode).play()

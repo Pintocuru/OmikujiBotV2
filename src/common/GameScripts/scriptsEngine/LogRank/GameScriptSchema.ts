@@ -1,6 +1,39 @@
 // src\common\GameScripts\scriptsEngine\LogRank\GameScriptSchema.ts
 import { z } from 'zod'
 
+// 個別の記録（おみくじ1回分など）
+export const GameRecordSchema = z.object({
+  recordId: z.string(), // どの一回かを識別するID（UUID等）
+  userId: z.string(), // 誰の記録か
+  userName: z.string(), // 記録時の名前（変更対策）
+  score: z.number(), // ランキング判定用のメイン数値
+  itemValue1: z.string().optional(), // 汎用リスト
+  itemValue2: z.string().optional(),
+  itemValue3: z.string().optional(),
+
+  createdAt: z.string(), // 記録日時
+})
+
+// ユーザーごとの累計統計
+export const UserStatsSchema = z.object({
+  userId: z.string(),
+  name: z.string(),
+  totalDraws: z.number().default(0), // 累計実行回数
+  totalPoints: z.number().default(0), // 累計ポイント
+  bestScore: z.number().default(0), // 自己ベスト
+})
+
+// ゲーム全体のステート
+export const GameStateSchema = z.object({
+  ruleId: z.string().default(''),
+  userMap: z.record(z.string(), UserStatsSchema).default({}), // ユーザー情報
+  logs: z.array(GameRecordSchema).default([]), // 履歴・ランキング
+})
+
+export type GameRecord = z.infer<typeof GameRecordSchema>
+export type GameState = z.infer<typeof GameStateSchema>
+
+/*
 // UserStatsTypeのスキーマ
 export const UserStatsTypeSchema = z.object({
   userId: z.string(), // ユーザーID
@@ -33,3 +66,5 @@ export const GameStateSchema = z.object({
 // ===== 型推論用のエクスポート =====
 export type UserStatsType = z.infer<typeof UserStatsTypeSchema>
 export type GameState = z.infer<typeof GameStateSchema>
+
+*/

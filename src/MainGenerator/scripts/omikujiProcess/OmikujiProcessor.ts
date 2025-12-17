@@ -1,13 +1,12 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { OmikujiDataType, OmikujiSetType } from '@/types'
+import { OmikujiSetType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
-import { GameScriptManager } from '@MainScripts/GameScript/GameScriptManager'
 import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
-import { Comment } from '@onecomme.com/onesdk/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { Comment } from '@onecomme.com/onesdk/'
 
 /**
  * おみくじ処理の統合クラス

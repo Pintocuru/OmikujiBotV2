@@ -1,12 +1,12 @@
 // src\GameScripts\GoogolClover\execute.ts
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState, ScriptResult } from '@/types/'
+import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema } from './params'
+import { ScriptClass, GameState, PostActionType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { playSlot } from './game'
 import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { UserState } from './types'
 
-export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
+export class ExecuteScript implements ScriptClass {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
   private userStates = new Map<string, UserState>()
@@ -16,7 +16,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
     this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'BomberSpin')
   }
 
-  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
+  run(comment: Comment, params: GameParams): PostActionType[] {
     const { isParty } = this.settings
     const {} = GameParamsSchema.parse(params)
 

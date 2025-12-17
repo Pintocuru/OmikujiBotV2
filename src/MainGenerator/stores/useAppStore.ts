@@ -23,7 +23,7 @@ export const useAppStore = defineStore('app', () => {
 
   // 管理オブジェクト
   const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿などを監視)
-  const scriptManager = computed(() => new GameScriptManager(data.value)) // ゲームスクリプト管理
+  const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
   const characterCollector = computed(() => new CharacterCollector(data.value)) // キャラクター管理
 
   // 状態とアクションを外部から利用

@@ -11,11 +11,6 @@ export interface ScriptPreset extends PresetMetadata {
 
 // スクリプトのメイン実行クラス
 export interface ScriptClass<TSettings extends object = DefaultTypes> {
-  run(params: string, characterKey: string, comment?: Comment): ScriptResult // メイン実行関数
+  run(params: string, characterKey: string, comment?: Comment): PostActionType[] // メイン実行関数
   sampleRun?(): string // エディター用サンプルゲーム関数
-}
-
-// スクリプト実行の結果
-export interface ScriptResult {
-  postActions: PostActionType[] // わんコメに投稿するWordParty
 }

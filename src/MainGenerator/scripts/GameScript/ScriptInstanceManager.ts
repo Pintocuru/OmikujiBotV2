@@ -1,14 +1,11 @@
 // src/MainGenerator/utils/processors/GameScript/ScriptInstanceManager.ts
-import { OmikujiDataType, ScriptClass } from '@/types/'
+import { ScriptClass } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@/common/GameScripts/GameScriptsMap'
 
 export class ScriptInstanceManager {
   private readonly scriptInstances: Record<string, ScriptClass> = {}
-  private readonly omikujiData: OmikujiDataType
 
-  constructor(omikujiData: OmikujiDataType) {
-    this.omikujiData = omikujiData
-  }
+  constructor() {}
 
   /**
    * ゲームスクリプトの初期化
@@ -31,13 +28,6 @@ export class ScriptInstanceManager {
    */
   getScriptInstance(scriptId: string): ScriptClass | null {
     return this.scriptInstances[scriptId] || null
-  }
-
-  /**
-   * アクティブなスクリプトのリストを取得
-   */
-  getActiveScripts(): string[] {
-    return Object.keys(this.scriptInstances)
   }
 
   /**

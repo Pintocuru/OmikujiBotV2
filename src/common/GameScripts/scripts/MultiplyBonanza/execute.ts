@@ -1,12 +1,12 @@
 // src/execute.ts
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState, ScriptResult } from '@/types/'
+import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema } from './params'
+import { ScriptClass, GameState, PostActionType } from '@/types/'
 import { Comment } from '@onecomme.com/onesdk/'
 import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
 import { WordPartySelector } from './wordPartySelector'
 
-export class ExecuteScript implements ScriptClass<GameSettings, GameParams, GamePlaceholder> {
+export class ExecuteScript implements ScriptClass {
   private settings!: GameSettings
   private LogRank = new LogExecuteScript()
   private gameEngine = new GameEngine()
@@ -23,7 +23,7 @@ export class ExecuteScript implements ScriptClass<GameSettings, GameParams, Game
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): ScriptResult<GamePlaceholder> {
+  run(comment: Comment, params: GameParams): PostActionType[] {
     // パラメータ
     const { isParty } = this.settings
     GameParamsSchema.parse(params)
