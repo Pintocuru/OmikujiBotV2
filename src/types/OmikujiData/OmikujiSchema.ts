@@ -90,7 +90,7 @@ export const PostActionArraySchema = z
  * GameScriptsSchema ゲームスクリプト用
  */
 export const GameScriptsSchema = z.object({
-  scriptId: z.union([z.string(), z.null()]).default(null).catch(null),
+  scriptId: z.string().default('').catch(''),
   scriptParams: z.string().default('').catch(''),
   characterKey: z.string().default('').catch(''),
 })

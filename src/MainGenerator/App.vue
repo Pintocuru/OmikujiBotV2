@@ -31,6 +31,7 @@
   import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
 
   import { storeToRefs } from 'pinia'
+  import { respondToComments } from './scripts/RuleProcess/RuleCommentProcessor'
 
   // Pinia Store
   const appStore = useAppStore()
@@ -38,7 +39,7 @@
   const components = computed(() => data.value.displaySettings.components)
 
   // comment/timerルール稼働
-  const { initializeApp, processComments, startTimers } = useRuleProcessor()
+  const { initializeApp, startTimers } = useRuleProcessor()
 
   // フォントの指定
   const fontClass = computed(() => useFontFamily(appStore.data.displaySettings.global.fontFamily ?? 'default'))
@@ -47,16 +48,14 @@
   onMounted(async () => {
     const isInit = await initializeApp(appStore.userConfig, (comments) => {
       // コメント処理
-      const botMessages = processComments(comments)
+      const botMessages = respondToComments(comments)
       appStore.scheduleBotMessages(botMessages)
     })
     appStore.setInitialized(isInit)
 
     // タイマー開始
     if (isInit) {
-      startTimers((messages) => {
-        appStore.scheduleBotMessages(messages)
-      })
+      startTimers((messages) => appStore.scheduleBotMessages(messages))
     }
   })
 </script>

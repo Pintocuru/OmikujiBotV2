@@ -1,9 +1,8 @@
 // src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { GameScriptManager } from '../GameScript/GameScriptManager'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 interface TimerState {
   timerId: number
@@ -13,14 +12,10 @@ interface TimerState {
 }
 
 export class RuleTimerProcessor {
-  private readonly timerRules: Record<string, TimerRuleType>
   private readonly activeTimers = new Map<string, TimerState>()
-  private readonly omikujiProcessor: OmikujiProcessor
+  private readonly omikujiProcessor: OmikujiProcessor = new OmikujiProcessor()
 
-  constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
-    this.timerRules = omikujiData.timers
-    this.omikujiProcessor = new OmikujiProcessor(omikujiData, scriptManager)
-  }
+  constructor() {}
 
   /**
    * すべてのタイマーを開始
@@ -28,7 +23,9 @@ export class RuleTimerProcessor {
   startTimers(onTimerTrigger: (messages: BotMessage[]) => void): void {
     this.stopTimers()
 
-    const enabledTimers = Object.values(this.timerRules)
+    // Pinia Store
+    const appStore = useAppStore()
+    const enabledTimers = Object.values(appStore.data.timers)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 

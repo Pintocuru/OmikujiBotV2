@@ -1,84 +1,82 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
-import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
+import { BotMessage, BotMessageSchema, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 /**
- * 制限チェックの結果からメッセージを生成するクラス
+ * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
  */
-export class RestrictionMessageBuilder {
-  constructor(private readonly firstCharacter: CharacterType | null) {}
+function getMessageOrDefault(configuredMessage: string | undefined, defaultMessage: string): string {
+  return configuredMessage?.trim() || defaultMessage
+}
 
-  /**
-   * 制限チェック結果からBotMessageを生成
-   */
-  buildMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessage[] {
-    if (!result.isBlocked) {
-      return []
-    }
+/**
+ * 制限タイプに応じたメッセージを作成
+ */
+function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): string | null {
+  const { restrictionType, metadata } = result
 
-    const message = this.createMessage(result, rule)
-    if (!message) {
-      return []
-    }
+  switch (restrictionType) {
+    case 'cooldown':
+      return getMessageOrDefault(
+        rule.limits.cooldownMessage,
+        `コメントが被って、「${metadata?.ruleName}」ができなかったよ。またコメントしてね。`
+      )
 
-    return this.createToastMessages(message)
+    case 'repeat':
+      return getMessageOrDefault(
+        rule.limits.repeatMessage,
+        `${metadata?.userName}さんは、連投制限で「${metadata?.ruleName}」ができなかったよ。`
+      )
+
+    case 'drawLimit':
+      return getMessageOrDefault(
+        rule.limits.drawLimitMessage,
+        `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。`
+      )
+
+    default:
+      return null
   }
+}
 
-  /**
-   * 制限タイプに応じたメッセージを作成
-   */
-  private createMessage(result: RestrictionCheckResult, rule: CommentRuleType): string | null {
-    const { restrictionType, metadata } = result
+/**
+ * トーストメッセージを作成
+ */
+function createToastMessages(message: string): BotMessage[] {
+  const appStore = useAppStore()
+  const firstCharacter = appStore.characterCollector.getFirstCharacter()
 
-    switch (restrictionType) {
-      case 'cooldown':
-        return this.getMessageOrDefault(
-          rule.limits.cooldownMessage,
-          `コメントが被って、「${metadata?.ruleName}」ができなかったよ。またコメントしてね。`
-        )
-
-      case 'repeat':
-        return this.getMessageOrDefault(
-          rule.limits.repeatMessage,
-          `${metadata?.userName}さんは、連投制限で「${metadata?.ruleName}」ができなかったよ。`
-        )
-
-      case 'drawLimit': {
-        return this.getMessageOrDefault(
-          rule.limits.drawLimitMessage,
-          `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。`
-        )
+  const botMessageData: Partial<BotMessage> = firstCharacter
+    ? {
+        name: firstCharacter.name,
+        profileImage: firstCharacter.image?.default || null,
+        comment: {
+          toast: message,
+        },
+        color: firstCharacter.color,
+      }
+    : {
+        comment: {
+          toast: message,
+        },
       }
 
-      default:
-        return null
-    }
+  return [BotMessageSchema.parse(botMessageData)]
+}
+
+/**
+ * 制限チェック結果からBotMessageを生成
+ */
+export function buildRestrictionMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessage[] {
+  if (!result.isBlocked) {
+    return []
   }
 
-  /**
-   * トーストメッセージを作成
-   */
-  private createToastMessages(message: string): BotMessage[] {
-    const botMessageData = this.firstCharacter
-      ? {
-          name: this.firstCharacter.name,
-          profileImage: this.firstCharacter.image?.default || null,
-          comment: message,
-          isToast: true,
-          color: this.firstCharacter.color,
-        }
-      : {
-          comment: message,
-          isToast: true,
-        }
-
-    return [BotMessageSchema.parse(botMessageData)]
+  const message = createMessage(result, rule)
+  if (!message) {
+    return []
   }
 
-  /**
-   * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
-   */
-  private getMessageOrDefault(configuredMessage: string | undefined, defaultMessage: string): string {
-    return configuredMessage?.trim() || defaultMessage
-  }
+  return createToastMessages(message)
 }

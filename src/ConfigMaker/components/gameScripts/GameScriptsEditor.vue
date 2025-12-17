@@ -4,8 +4,8 @@
     <div class="form-control">
       <SettingItem label="ゲームスクリプト設定" description="複雑なスクリプトを稼働する">
         <label class="label cursor-pointer gap-2">
-          <span class="label-text text-xs">有効化</span>
-          <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-sm toggle-primary" />
+          <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
+          <span class="label-text">有効化</span>
         </label>
       </SettingItem>
     </div>

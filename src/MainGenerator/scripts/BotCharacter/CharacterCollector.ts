@@ -39,4 +39,13 @@ export class CharacterCollector {
       color: character?.color,
     })
   }
+
+  /**
+   * Firstのキャラクター
+   */
+  getFirstCharacter(): CharacterType | null {
+    const characters = this.omikujiData.characters
+    if (Object.keys(characters).length === 0) return null
+    return Object.values(characters)[0]
+  }
 }

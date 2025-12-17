@@ -4,12 +4,15 @@
     <!-- 追加発動条件の有効化 -->
     <div class="form-control">
       <SettingItem label="追加発動条件を設定する" description="条件を満たした場合の優先度を設定できます">
-        <input
-          type="checkbox"
-          class="toggle toggle-primary"
-          :checked="hasCriteria"
-          @change="toggleCriteria(($event.target as HTMLInputElement).checked)"
-        />
+        <label class="label cursor-pointer gap-2">
+          <input
+            type="checkbox"
+            class="toggle toggle-primary"
+            :checked="hasCriteria"
+            @change="toggleCriteria(($event.target as HTMLInputElement).checked)"
+          />
+          <span class="label-text">設定する</span>
+        </label>
       </SettingItem>
     </div>
 
@@ -17,12 +20,15 @@
       <!-- 優先度（criteriaがある場合のみ表示） -->
       <div v-if="hasCriteria" class="form-control flex-1">
         <SettingItem label="優先度" description="追加条件達成時、優先で選ばれます">
-          <input
-            type="checkbox"
-            class="toggle toggle-primary"
-            :checked="omikuji.priority"
-            @change="updatePriority(($event.target as HTMLInputElement).checked)"
-          />
+          <label class="label cursor-pointer gap-2">
+            <input
+              type="checkbox"
+              class="toggle toggle-primary"
+              :checked="omikuji.priority"
+              @change="updatePriority(($event.target as HTMLInputElement).checked)"
+            />
+            <span class="label-text">優先度を上げる</span>
+          </label>
         </SettingItem>
       </div>
 

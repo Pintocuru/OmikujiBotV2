@@ -9,14 +9,14 @@ import {
   RuleType,
   GameScriptsType,
 } from '@/types/'
-import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
-import { MockComment } from '@shared/test-utils/CreateMockComment'
+import { OmikujiTestProcessor } from './OmikujiTestProcessor'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
-import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'
+import { playSound } from '@/Toolkit/sounds'
+import { MockComment } from '@shared/test-utils/CreateMockComment'
 import { toast } from 'vue-sonner'
 import { storeToRefs } from 'pinia'
-import { playSound } from '@/Toolkit/sounds'
 
 export function useTestPost() {
   const omikujiStore = useOmikujiStore()
@@ -87,7 +87,7 @@ export function useTestPost() {
   ) => {
     const rule = selectedRule.value
     const scriptManager = new GameScriptManager(data.value as OmikujiDataType)
-    const processor = new OmikujiProcessor(data.value as OmikujiDataType, scriptManager)
+    const processor = new OmikujiTestProcessor(data.value as OmikujiDataType, scriptManager)
 
     const mockComment = MockComment('suika')
     let botMessageArray: BotMessage[]
