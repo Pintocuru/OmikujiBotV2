@@ -1,20 +1,15 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
-import { CommentRuleType } from '@/types/'
+import { CommentRuleType, RestrictionType } from '@/types/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { Comment } from '@onecomme.com/onesdk/'
 
-export type DrawLimitAction = 'showMessage' | 'showLastResult' | 'doNothing'
-
-export type RestrictionType = 'cooldown' | 'repeat' | 'drawLimit' | 'none'
-
 export interface RestrictionCheckResult {
   isBlocked: boolean
-  restrictionType: RestrictionType
+  restrictionType: RestrictionType | null
   metadata?: {
     userName?: string
     ruleName?: string
     drawLimit?: number
-    lastBotMessages?: string
   }
 }
 
@@ -27,7 +22,6 @@ export class RestrictionChecker {
    * 制限チェック（重複チェック、クールダウンチェック）
    */
   checkRestrictions(comment: Comment, rule: CommentRuleType): RestrictionCheckResult {
-    const { cooldownManager } = useAppStore()
     const isCommentBased = rule.threshold.conditions.includes('comment')
     const userName = comment.data.displayName || comment.data.name
 
@@ -43,7 +37,7 @@ export class RestrictionChecker {
     }
 
     if (!isCommentBased) {
-      return { isBlocked: false, restrictionType: 'none' }
+      return { isBlocked: false, restrictionType: null }
     }
 
     // 2. 連投制限チェック（コメントベースのルールのみ）
@@ -58,21 +52,11 @@ export class RestrictionChecker {
           },
         }
       }
-      return { isBlocked: false, restrictionType: 'none' }
+      return { isBlocked: false, restrictionType: null }
     }
 
     // 3. 回数制限チェック
     if (this.isDrawLimitExceeded(comment.data.userId, rule.key, rule.limits.drawLimit)) {
-      const action = rule.limits.drawLimitExceeded as DrawLimitAction
-
-      // doNothing の場合もブロックするが、メッセージは表示しない
-      if (action === 'doNothing') {
-        return { isBlocked: true, restrictionType: 'none' }
-      }
-
-      const lastBotMessages =
-        action === 'showLastResult' ? cooldownManager.getLastBotMessages(comment.data.userId, rule.key) : undefined
-
       return {
         isBlocked: true,
         restrictionType: 'drawLimit',
@@ -80,12 +64,11 @@ export class RestrictionChecker {
           userName,
           ruleName: rule.name,
           drawLimit: rule.limits.drawLimit,
-          lastBotMessages,
         },
       }
     }
 
-    return { isBlocked: false, restrictionType: 'none' }
+    return { isBlocked: false, restrictionType: null }
   }
 
   private isCooldownBlocked(cooldownSeconds: number): boolean {

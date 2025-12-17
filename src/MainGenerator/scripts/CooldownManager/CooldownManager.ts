@@ -9,7 +9,6 @@ export interface UserDrawCount {
   readonly ruleId: string
   draws: number
   lastDrawTime: number
-  lastBotMessages: string
 }
 
 /**
@@ -20,7 +19,7 @@ export class CooldownManager {
   private lastProcessedTime = 0
   private readonly userDrawCounts = new Map<string, UserDrawCount>()
   private readonly sessionId: string
-  private lastUserRuleKeys: string[] = [] // string[] に変更
+  private lastUserRuleKeys: string[] = []
 
   private constructor() {
     this.sessionId = this.generateSessionId()
@@ -116,14 +115,6 @@ export class CooldownManager {
   }
 
   /**
-   * 最後のBotメッセージを取得
-   */
-  getLastBotMessages(userId: string, ruleId: string): string {
-    const record = this.userDrawCounts.get(this.createKey(userId, ruleId))
-    return record?.lastBotMessages ?? 'error'
-  }
-
-  /**
    * 指定ユーザー・ルールの抽選回数を1増やす
    */
   private incrementUserDrawCount(userId: string, ruleId: string, name: string, lastBotMessages: string): void {
@@ -134,7 +125,6 @@ export class CooldownManager {
     if (existingRecord) {
       existingRecord.draws++
       existingRecord.lastDrawTime = currentTime
-      existingRecord.lastBotMessages = lastBotMessages
     } else {
       this.userDrawCounts.set(key, {
         userId,
@@ -142,7 +132,6 @@ export class CooldownManager {
         name,
         draws: 1,
         lastDrawTime: currentTime,
-        lastBotMessages,
       })
     }
   }

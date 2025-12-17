@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
 import { BotMessage, BotMessageSchema, CharacterType, CommentRuleType } from '@/types/'
-import { RestrictionCheckResult, DrawLimitAction } from '../OmikujiProcess/RestrictionChecker'
+import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 
 /**
  * 制限チェックの結果からメッセージを生成するクラス
@@ -44,23 +44,12 @@ export class RestrictionMessageBuilder {
         )
 
       case 'drawLimit': {
-        const action = rule.limits.drawLimitExceeded as DrawLimitAction
-
-        if (action === 'showMessage') {
-          return this.getMessageOrDefault(
-            rule.limits.drawLimitMessage,
-            `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。`
-          )
-        }
-
-        if (action === 'showLastResult') {
-          return `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。 最後の結果:${metadata?.lastBotMessages}`
-        }
-
-        return null
+        return this.getMessageOrDefault(
+          rule.limits.drawLimitMessage,
+          `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。`
+        )
       }
 
-      case 'none':
       default:
         return null
     }

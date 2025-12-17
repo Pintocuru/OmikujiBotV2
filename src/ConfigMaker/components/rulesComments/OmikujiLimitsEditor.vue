@@ -40,20 +40,6 @@
 
     <SettingItem
       v-if="drawLimit > 0"
-      label="制限超過時の動作"
-      description="引ける回数を超えた時の動作"
-      :showReset="true"
-      @reset="drawLimitExceeded = 'showMessage'"
-    >
-      <select v-model="drawLimitExceeded" class="select select-bordered w-full">
-        <option value="doNothing">何もしない</option>
-        <option value="showMessage">メッセージを表示</option>
-        <option value="showLastResult">最後の結果を表示</option>
-      </select>
-    </SettingItem>
-
-    <SettingItem
-      v-if="drawLimit > 0 && drawLimitExceeded === 'showMessage'"
       label="制限超過メッセージ"
       description="空欄でデフォルトが入ります"
       :showReset="true"
@@ -69,18 +55,18 @@
   </div>
 
   <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
-    <h3 class="font-semibold border-b pb-1">連投制限 - そのおみくじが同じユーザーで発動する場合、制限します</h3>
+    <h3 class="font-semibold border-b pb-1">連投制限 - 同じユーザーが続けておみくじを引ける回数を制限します</h3>
     <SettingItem
-      label="連投を許可"
-      description="続けておみくじを引くことを許可するか"
+      label="連投許可回数"
+      description="同じユーザーが続けて引ける最大回数 (0で無制限)"
       :showReset="true"
-      @reset="isRepeatAllowed = true"
+      @reset="isRepeatAllowed = 1"
     >
-      <input type="checkbox" v-model="isRepeatAllowed" class="toggle toggle-primary" />
+      <input type="number" v-model.number="isRepeatAllowed" min="0" class="input input-bordered w-full" />
     </SettingItem>
 
     <SettingItem
-      v-if="!isRepeatAllowed"
+      v-if="isRepeatAllowed > 0"
       label="連投制限メッセージ"
       description="空欄でデフォルトが入ります"
       :showReset="true"
@@ -125,7 +111,6 @@
   const drawLimit = createComputed('drawLimit')
   const isRepeatAllowed = createComputed('isRepeatAllowed')
   const cooldownMessage = createComputed('cooldownMessage')
-  const drawLimitExceeded = createComputed('drawLimitExceeded')
   const drawLimitMessage = createComputed('drawLimitMessage')
   const repeatMessage = createComputed('repeatMessage')
 </script>

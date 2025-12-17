@@ -33,4 +33,4 @@ export const CriteriaThresholdSchema = z.object({
   count: CountConditionSchema.catch(CountConditionSchema.parse({})),
   comment: z.array(z.string()).catch([]),
 })
-export type CommentThresholdType = z.infer<typeof CriteriaThresholdSchema>
+export type CriteriaThresholdType = z.infer<typeof CriteriaThresholdSchema>

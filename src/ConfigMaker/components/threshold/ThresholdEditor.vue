@@ -4,13 +4,9 @@
   <InformationCard>
     <p>
       <code class="label bg-accent text-accent-content">発動条件設定</code>では、
-      コメントを送ったユーザーの「ギフトの有無」や「チャット数」などの情報をもとに、
+      ユーザーのギフト有無やチャット数などを基にルール発動を制御します。
     </p>
-    <p>ルールを発動するかどうかを決めることができます。</p>
-    <p>
-      <code class="label bg-accent text-accent-content">発動条件が複数の場合は、すべての条件を満たしたときだけ</code
-      >ルールが発動します。
-    </p>
+    <p>条件が複数ある場合は、すべて満たしたときのみ発動します。(ANDのみ対応)</p>
   </InformationCard>
 
   <!-- 条件タイプ選択 -->

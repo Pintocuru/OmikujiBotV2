@@ -9,7 +9,16 @@
     }"
   >
     <div class="space-y-2">
+      <!-- ヘッダー（名前、メニュー） -->
+      <OmikujiItemHeader
+        :allOmikuji="allOmikujiSets"
+        :omikuji="omikujiItem"
+        :category="category"
+        :selectedItemKey="selectedItemKey"
+      />
+
       <!-- OmikujiItemBasic コンポーネント -->
+      <h3 class="font-semibold border-b pt-3 pb-1">追加条件と重み - このおみくじが適用される条件や確率を設定します</h3>
       <OmikujiItemBasic
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
@@ -18,6 +27,7 @@
       />
 
       <!-- GameScripts コンポーネント -->
+      <h3 class="font-semibold border-b pt-3 pb-1">ゲームスクリプト - 複雑な処理を行うスクリプト設定</h3>
       <GameScriptsEditor
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
@@ -26,6 +36,7 @@
       />
 
       <!-- PostActions編集コンポーネント -->
+      <h3 class="font-semibold border-b pt-3 pb-1">アクション - おみくじの内容や演出を設定します</h3>
       <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
     </div>
   </div>
@@ -34,6 +45,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import OmikujiItemBasic from './OmikujiItemBasic.vue'
+  import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
