@@ -9,9 +9,9 @@ import MultiplyBonanza from './scripts/MultiplyBonanza/main'
 // gameScriptMap
 export const gameScriptMap: Record<string, ScriptPreset> = {
   [GouseiSuika.key]: GouseiSuika,
-  //  [BomberSpin.key]: BomberSpin,
-  //  [DwarfBomb.key]: DwarfBomb,
-  // [MultiplyBonanza.key]: MultiplyBonanza,
+  [BomberSpin.key]: BomberSpin,
+  [DwarfBomb.key]: DwarfBomb,
+  [MultiplyBonanza.key]: MultiplyBonanza,
   // [GoogolClover.key]: GoogolClover,
   // GachaOmikuji,
   // StealEmAll

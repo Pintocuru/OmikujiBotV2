@@ -1,73 +1,94 @@
 // src/execute.ts
-import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState, PostActionType } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/'
-import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { GameParams, GameParamsSchema } from './params'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GameEngine } from './game'
+import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { WordPartySelector } from './wordPartySelector'
+import { Comment } from '@onecomme.com/onesdk/'
+
+const RANKING_KEY = 'MultiplyBonanza'
+const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
-  private settings!: GameSettings
-  private LogRank = new LogExecuteScript()
-  private gameEngine = new GameEngine()
-  private wordPartySelector = new WordPartySelector()
+  private readonly logRank = new LogRankScript()
 
   /**
    * 設定を初期化する
    */
-  setup(settings: GameSettings): void {
-    this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'MultiplyBonanza')
+  constructor() {
+    this.logRank.setup(RANKING_KEY)
   }
 
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, params: GameParams): PostActionType[] {
+  run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
     // パラメータ
-    const { isParty } = this.settings
-    GameParamsSchema.parse(params)
-
-    // 設定データ
-    const userName = comment?.data.displayName ?? 'Unknown'
+    const { mode } = this.parseParams(queryString)
+    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const result = this.gameEngine.playGame()
-    const message = this.gameEngine.createMessage(userName, result)
+    const gameEngine = new GameEngine()
+    const gameResult = gameEngine.playGame(mode)
+    const message = gameEngine.createMessage(userName, gameResult)
 
     // ランキングの生成
-    const logResult = this.LogRank.run(comment, {
-      isWin: false,
-      getPoint: result.payout,
+    const logResult = this.logRank.run({
+      userId: comment.data.userId,
+      name: userName,
+      characterKey,
+      rankingMode: 'high_score',
+      maxDrawsPerUser: 5,
+      result: {
+        type: 'score',
+        score: gameResult.payout,
+      },
     })
 
-    // WordPartyの抽選
-    const wordPartyActions = this.wordPartySelector.selectWordParties(result)
+    const stats = logResult.currentUserStats
+    const currentRecord = logResult.currentRecord
 
-    return {
-      postActions: isParty
-        ? [
-            { actionType: 'wordParty', delaySeconds: 1, wordParty: result.party },
-            { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
-            ...wordPartyActions,
-          ]
-        : [],
-      placeholders: {
-        ...logResult.placeholders,
-        message,
-        symbol: result.symbol,
-        payout: result.payout,
+    // WordPartyの抽選
+    const wordPartySelector = new WordPartySelector()
+    const wordPartyActions = wordPartySelector.selectWordParties(gameResult)
+
+    return [
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: gameResult.party },
+      { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
+      ...wordPartyActions,
+      {
+        actionType: 'message',
+        delaySeconds: 3.5,
+        characterKey,
+        iconKey: 'default',
+        message: {
+          bubble: message,
+          rankingKey: RANKING_KEY,
+          rankingDisplayScore: String(gameResult.payout),
+          rankingIsRank: !logResult.isOverLimit,
+          rankingName: stats.name,
+          rankingPoint: String(currentRecord.score),
+          rankingSymbol: gameResult.symbol,
+        },
+        sound: 'decision',
       },
-    }
+    ]
   }
 
   /**
    * ゲームデータを返す
    */
-  getGameState(): GameState {
-    return this.LogRank.getGameState()
+  getGameState(): GameStateType {
+    return this.logRank.getGameState()
+  }
+
+  // パラメータ
+  private parseParams(queryString: string): GameParams {
+    const paramsObject = parseQueryString(queryString)
+    return GameParamsSchema.parse(paramsObject)
   }
 }
 
-const execute = new ExecuteScript()
-export default execute
+// プリセット用エクスポート
+export default new ExecuteScript()

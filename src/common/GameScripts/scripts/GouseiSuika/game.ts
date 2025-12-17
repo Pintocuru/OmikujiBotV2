@@ -10,7 +10,7 @@ export class GachaGame {
   private postArray: PostActionWordPartyType[] = []
   private readonly gameConfig: GameConfigDetails
 
-  constructor(private readonly mode: string) {
+  constructor(private readonly mode: string = 'スイカゲーム') {
     this.gameConfig = GAME_CONFIGS[mode]
     this.initializeEffects()
   }

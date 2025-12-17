@@ -26,7 +26,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-16T12:26:15.680Z",
+      "updatedAt": "2025-12-17T15:01:38.482Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -48,7 +48,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "scriptParams": "",
-            "characterKey": "metan"
+            "characterKey": "metanBlack"
           },
           "weight": 1,
           "priority": false,
@@ -213,7 +213,7 @@
       "key": "1765979634865-ilnmcp",
       "name": "てすと",
       "createdAt": "2025-12-17T13:53:54.866Z",
-      "updatedAt": "2025-12-17T13:54:37.226Z",
+      "updatedAt": "2025-12-17T15:02:02.065Z",
       "order": 4,
       "isEnabled": true,
       "tags": [],
@@ -235,7 +235,11 @@
               "sound": "fail"
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "scriptParams": "symbol=ダイヤモンド",
+            "characterKey": "metan"
+          },
           "weight": 1,
           "priority": false,
           "criteria": null
@@ -460,7 +464,7 @@
     },
     "components": {
       "conditions": [
-        "counter"
+        "ranking"
       ],
       "bubble": {
         "showCharacters": [
@@ -485,21 +489,21 @@
         "showThumbnail": []
       },
       "ranking": {
-        "scriptKey": "GouseiSuika",
+        "scriptKey": "BomberSpin",
         "title": "🍉スイカランキング🍉",
-        "limit": 5,
+        "limit": 10,
         "sortByHighScore": true,
         "color": "retro"
       },
       "counter": {
-        "ruleKey": "1765979634865-ilnmcp",
+        "ruleKey": "GouseiSuika",
         "target": "draw",
         "label": "Counter",
         "showCounter": true,
-        "firstValue": 0,
-        "isDirectionUp": true,
+        "firstValue": 50,
+        "isDirectionUp": false,
         "maxUsers": 0,
-        "color": "synthwave"
+        "color": "luxury"
       }
     },
     "editor": {
@@ -516,7 +520,8 @@
         "characterVisible": "experimental",
         "licenseVisible": "experimental",
         "gameScripts": [
-          "GouseiSuika"
+          "GouseiSuika",
+          "BomberSpin"
         ],
         "jsonMergeSettings": "experimental"
       }

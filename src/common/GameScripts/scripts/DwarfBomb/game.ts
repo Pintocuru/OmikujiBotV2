@@ -3,8 +3,8 @@ import { PostActionWordPartyType } from '@/types/OmikujiData/OmikujiSchema'
 import { RewardType, Dwarf, GameResult, GAME_CONFIG } from './gameConfigs'
 
 export class BomberSpinGame {
-  playGame(userName: string): GameResult {
-    const dwarfs = this.createDwarfs()
+  playGame(userName: string, mode: string = ''): GameResult {
+    const dwarfs = this.createDwarfs(mode)
     let life: number = GAME_CONFIG.INITIAL_LIFE
     let items = ''
     let day = 0
@@ -93,8 +93,8 @@ export class BomberSpinGame {
     return effects
   }
 
-  private createDwarfs(): Dwarf[] {
-    return Array(GAME_CONFIG.DWARF_COUNT)
+  private createDwarfs(mode: string): Dwarf[] {
+    const dwarfs = Array(GAME_CONFIG.DWARF_COUNT)
       .fill(null)
       .map(() => ({
         gold: 0,
@@ -102,6 +102,17 @@ export class BomberSpinGame {
         hasRed: false,
         hasDynamite: false,
       }))
+
+    if (mode === 'ツルハシ') {
+      dwarfs[0].hasRed = true
+    } else if (mode === 'TNT') {
+      dwarfs[0].hasDynamite = true
+    } else if (mode === 'ツルハシTNT') {
+      dwarfs[0].hasRed = true
+      dwarfs[0].hasDynamite = true
+    }
+
+    return dwarfs
   }
 
   private getTotalGold(dwarfs: Dwarf[]): number {

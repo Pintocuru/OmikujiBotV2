@@ -1,61 +1,87 @@
 // src/execute.ts
-import { GameSettings, GameParams, GamePlaceholder, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState, PostActionType } from '@/types/'
+import { GameParams, GameParamsSchema } from './params'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { playSlot } from './game'
-import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { Comment } from '@onecomme.com/onesdk/'
 
-export class ExecuteScript implements ScriptClass<GameSettings> {
-  private settings!: GameSettings
-  private LogRank = new LogExecuteScript()
+const RANKING_KEY = 'BomberSpin'
+const UNKNOWN_NAME = 'Unknown'
+
+export class ExecuteScript implements ScriptClass {
+  private readonly logRank = new LogRankScript()
 
   /**
    * 設定を初期化する
    */
-  setup(settings: GameSettings): void {
-    this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'BomberSpin')
+  constructor() {
+    this.logRank.setup(RANKING_KEY)
   }
 
   /**
    * ゲームを実行する
    */
-  run(comment: Comment, characterKey: string, queryString: string): PostActionType[] {
+  run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
     // パラメータ
-    const { isParty } = this.settings
-    const {} = GameParamsSchema.parse(params)
-
-    // 設定データ
-    const userName = comment?.data.displayName ?? 'Unknown'
+    const { symbol } = this.parseParams(queryString)
+    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const result = playSlot(userName)
+    const gameResult = playSlot(userName, symbol)
 
     // ランキングの生成
-    const logResult = this.LogRank.run(comment, {
-      isWin: false,
-      getPoint: result.payout,
+    const logResult = this.logRank.run({
+      userId: comment.data.userId,
+      name: userName,
+      characterKey,
+      rankingMode: 'high_score',
+      maxDrawsPerUser: 5,
+      result: {
+        type: 'score',
+        score: gameResult.payout,
+      },
     })
 
-    return {
-      postActions: isParty
-        ? [
-            { actionType: 'wordParty', delaySeconds: 0, wordParty: 'BomberSpinBack' },
-            { actionType: 'wordParty', delaySeconds: 0.1, wordParty: result.party },
-            { actionType: 'wordParty', delaySeconds: 1.8, wordParty: 'CommonBombFire' },
-          ]
-        : [],
-    }
+    const stats = logResult.currentUserStats
+    const currentRecord = logResult.currentRecord
+
+    return [
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
+      { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
+      { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
+      {
+        actionType: 'message',
+        delaySeconds: 3.5,
+        characterKey,
+        iconKey: 'default',
+        message: {
+          bubble: gameResult.message,
+          rankingKey: RANKING_KEY,
+          rankingDisplayScore: String(gameResult.payout),
+          rankingIsRank: !logResult.isOverLimit,
+          rankingName: stats.name,
+          rankingPoint: String(currentRecord.score),
+          rankingSymbol: gameResult.symbol,
+        },
+        sound: 'decision',
+      },
+    ]
   }
 
   /**
    * ゲームデータを返す
    */
-  getGameState(): GameState {
-    return this.LogRank.getGameState()
+  getGameState(): GameStateType {
+    return this.logRank.getGameState()
+  }
+
+  // パラメータ
+  private parseParams(queryString: string): GameParams {
+    const paramsObject = parseQueryString(queryString)
+    return GameParamsSchema.parse(paramsObject)
   }
 }
 
-// プリセットから利用できるようにインスタンス化してエクスポート
-const execute = new ExecuteScript()
-export default execute
+// プリセット用エクスポート
+export default new ExecuteScript()

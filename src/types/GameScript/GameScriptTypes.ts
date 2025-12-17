@@ -13,5 +13,5 @@ export interface ScriptPreset extends PresetMetadata {
 export interface ScriptClass {
   run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] // メイン実行関数
   sampleRun?(): string // エディター用サンプルゲーム関数
-  getGameState(): GameStateType | null // ゲーム状態取得関数
+  getGameState?(): GameStateType // ゲーム状態取得関数
 }

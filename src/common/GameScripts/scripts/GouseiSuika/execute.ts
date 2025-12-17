@@ -2,10 +2,10 @@
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GachaGame } from './game'
+import { GameResult } from './gameConfigs'
+import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { Comment } from '@onecomme.com/onesdk/'
-import { GameResult } from './gameConfigs'
-import { parseQueryString } from '../../parseQueryString'
 
 const RANKING_KEY = 'GouseiSuika'
 const UNKNOWN_NAME = 'Unknown'
@@ -13,17 +13,28 @@ const UNKNOWN_NAME = 'Unknown'
 export class ExecuteScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
+  /**
+   * 設定を初期化する
+   */
   constructor() {
     this.logRank.setup(RANKING_KEY)
   }
 
-  /** ゲームを実行 */
+  /**
+   * ゲームを実行する
+   */
   run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
+    // パラメータ
     const { mode } = this.parseParams(queryString)
     const gameResult = new GachaGame(mode).play()
     const rankingActions = this.buildRankingActions(gameResult, characterKey, mode, comment)
 
     return [...gameResult.postArray, ...rankingActions]
+  }
+
+  sampleRun(): string {
+    const gameResult = new GachaGame().play()
+    return `[ユーザー名]の得点は${gameResult.points}!`
   }
 
   /** ゲームデータを返す */

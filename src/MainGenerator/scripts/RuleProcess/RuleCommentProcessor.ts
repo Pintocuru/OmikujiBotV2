@@ -57,11 +57,4 @@ export class RuleCommentProcessor {
     const sinceComment = currentTime - new Date(timestamp).getTime()
     return sinceComment > TIME_THRESHOLD
   }
-
-  /**
-   * 状態を明示的にリセットしたい場合用
-   */
-  reset(): void {
-    this.appliedCommentIds.clear()
-  }
 }

@@ -44,8 +44,25 @@ function randomSpins(): number {
   return Math.max(2, Math.min(7, base - Math.floor(Math.random() * 4)))
 }
 
-function randomSymbol() {
-  const index = weightedSelect(SLOT_CONFIG.symbolWeights)
+function randomSymbol(symbol: string) {
+  let index = weightedSelect(SLOT_CONFIG.symbolWeights)
+  if (symbol === 'チェリー') {
+    index = 0
+  } else if (symbol === 'オレンジ') {
+    index = 1
+  } else if (symbol === 'ぶどう') {
+    index = 2
+  } else if (symbol === 'スイカ') {
+    index = 3
+  } else if (symbol === 'ベル') {
+    index = 4
+  } else if (symbol === 'ハット') {
+    index = 5
+  } else if (symbol === 'コイン') {
+    index = 6
+  } else if (symbol === 'ダイヤモンド') {
+    index = 7
+  }
   return SLOT_CONFIG.symbols[index]
 }
 
@@ -79,10 +96,10 @@ function createMessage(user: string, symbol: string, payouts: number[], total: n
   return `${user}の${symbol}スピン!${payoutText}${winMessage}合計${total}枚獲得!`
 }
 
-export function playSlot(user: string): GameResult {
+export function playSlot(user: string, symbol: string = ''): GameResult {
   // 基本パラメータの決定
   const spins = randomSpins()
-  const symbolData = randomSymbol()
+  const symbolData = randomSymbol(symbol)
   let slots = 7 - Math.floor(Math.random() * 3) // 5-7個の空きスロット
 
   // 初回スピンの結果

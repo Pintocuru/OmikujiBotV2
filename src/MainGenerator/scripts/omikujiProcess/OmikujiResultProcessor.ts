@@ -35,7 +35,7 @@ export class OmikujiResultProcessor {
       const postActions: PostActionType[] = []
       // gameScripts 処理
       if (omikujiItem.gameScripts) {
-        const gamePost = this.scriptManager.executeScript(omikujiItem, comment)
+        const gamePost = this.scriptManager.playScript(omikujiItem, comment)
         if (gamePost) postActions.push(...gamePost)
       }
 

@@ -13,10 +13,21 @@ export class GameEngine {
    * ゲームを実行してベストな結果を返す
    * 最大試行回数分試行し、配当が出た時点で結果を返す
    */
-  playGame(): GameResult {
+  playGame(mode: string = ''): GameResult {
+    let attempt = 1
+    let luckyBoost = false
+    if (mode === '風神') {
+      attempt = 2
+    } else if (mode === '雷神') {
+      luckyBoost = true
+      attempt = 2
+    } else if (mode === '風雷神') {
+      attempt = 3
+    }
+
     // 複数回試行してベスト結果を探す
-    for (let attempt = 1; attempt <= GAME_CONFIG.MAX_ATTEMPTS; attempt++) {
-      const boost = this.calculateBoost()
+    for (attempt; attempt <= GAME_CONFIG.MAX_ATTEMPTS; attempt++) {
+      const boost = this.calculateBoost(luckyBoost)
       const reels = this.reelGenerator.generateReels(attempt, boost)
       const result = this.payoutCalculator.calculateBestResult(reels, attempt)
 
@@ -40,9 +51,9 @@ export class GameEngine {
   /**
    * ブースト値を計算する（確率でボーナスを付与）
    */
-  private calculateBoost(): number {
-    if (Math.random() < GAME_CONFIG.BOOST_PROBABILITY) {
-      const totalWeight = TOTAL_WEIGHT
+  private calculateBoost(luckyBoost: boolean = false): number {
+    const totalWeight = TOTAL_WEIGHT
+    if (luckyBoost || Math.random() < GAME_CONFIG.BOOST_PROBABILITY) {
       return Math.floor((Math.random() * totalWeight * 2) / 3)
     }
     return 0
