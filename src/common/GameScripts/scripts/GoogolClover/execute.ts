@@ -1,56 +1,102 @@
-// src\GameScripts\GoogolClover\execute.ts
-import { GameSettings, GameParams, GameSettingsSchema, GameParamsSchema } from './params'
-import { ScriptClass, GameState, PostActionType } from '@/types/'
-import { Comment } from '@onecomme.com/onesdk/'
+// src/execute.ts
+import { GameParams, GameParamsSchema } from './params'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { playSlot } from './game'
-import { LogRankScript as LogExecuteScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { UserState } from './types'
+import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/common/GameScripts/parseQueryString'
+import { Comment } from '@onecomme.com/onesdk/'
+
+const RANKING_KEY = 'GoogolClover'
+const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
-  private settings!: GameSettings
-  private LogRank = new LogExecuteScript()
+  private readonly logRank = new LogRankScript()
   private userStates = new Map<string, UserState>()
 
-  setup(settings: GameSettings): void {
-    this.settings = GameSettingsSchema.parse(settings)
-    this.LogRank.setup({ rankMode: 'point', enableCount: this.settings.enableCount }, 'BomberSpin')
+  /**
+   * 設定を初期化する
+   */
+  constructor() {
+    this.logRank.setup(RANKING_KEY)
   }
 
-  run(comment: Comment, params: GameParams): PostActionType[] {
-    const { isParty } = this.settings
-    const {} = GameParamsSchema.parse(params)
-
-    const userName = comment.data.displayName ?? comment.data.name
+  /**
+   * ゲームを実行する
+   */
+  run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
+    // パラメータ
+    const { mode } = this.parseParams(queryString)
+    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
     const userId = comment?.data.userId
 
-    // 純粋関数として呼び出し
-    const result = playSlot(this.userStates, userId, userName)
+    // ゲームの実行
+    const gameResult = playSlot(this.userStates, userId, userName)
 
-    return {
-      postActions:
-        result.party === '!bombFail'
-          ? [
-              { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
-              { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
-              { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
-            ]
-          : [
-              { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
-              { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
-              { actionType: 'wordParty', delaySeconds: 1, wordParty: '!レベルアップ' },
-            ],
-      placeholders: {
-        message: result.message,
-        payout: result.payout,
+    // ランキングの生成
+    const logResult = this.logRank.run({
+      userId: comment.data.userId,
+      name: userName,
+      characterKey,
+      rankingMode: 'total_wins',
+      maxDrawsPerUser: 5,
+      result: {
+        type: 'win',
+        score: gameResult.payout,
       },
-    }
+    })
+
+    const stats = logResult.currentUserStats
+    const currentRecord = logResult.currentRecord
+
+    const msg: PostActionType[] = [
+      {
+        actionType: 'message',
+        delaySeconds: 3.5,
+        characterKey,
+        iconKey: 'default',
+        message: {
+          bubble: gameResult.message,
+          rankingKey: RANKING_KEY,
+          rankingDisplayScore: String(gameResult.payout),
+          rankingIsRank: !logResult.isOverLimit,
+          rankingName: stats.name,
+          rankingPoint: String(gameResult.payout),
+          rankingSymbol: '',
+        },
+        sound: 'decision',
+      },
+    ]
+
+    return gameResult.success
+      ? [
+          { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
+          { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
+          { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
+          ...msg,
+        ]
+      : [
+          { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
+          { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
+          { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
+          { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
+          ...msg,
+        ]
   }
 
-  getGameState(): GameState {
-    return this.LogRank.getGameState()
+  /**
+   * ゲームデータを返す
+   */
+  getGameState(): GameStateType {
+    return this.logRank.getGameState()
+  }
+
+  // パラメータ
+  private parseParams(queryString: string): GameParams {
+    const paramsObject = parseQueryString(queryString)
+    return GameParamsSchema.parse(paramsObject)
   }
 }
 
-// プリセットから利用できるようにインスタンス化してエクスポート
-const execute = new ExecuteScript()
-export default execute
+// プリセット用エクスポート
+export default new ExecuteScript()

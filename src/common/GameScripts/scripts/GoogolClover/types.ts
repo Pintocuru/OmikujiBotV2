@@ -12,7 +12,7 @@ export interface UserState {
 export interface SlotResult {
   message: string
   payout: number
-  party: string
+  success: boolean
 }
 
 /** 報酬テーブルの定義 */

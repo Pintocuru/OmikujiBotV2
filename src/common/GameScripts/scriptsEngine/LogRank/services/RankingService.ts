@@ -110,3 +110,17 @@ export const getRank = (context: GameContext, userId?: string, recordId?: string
 
   return rankings.length + 1
 }
+
+/**
+ * スコア順位を計算する（1位始まり）
+ * 同スコアは同順位（dense rank）
+ */
+export const getScoreRank = (logs: GameRecordType[], targetScore: number): number => {
+  // スコアを降順に並べ、重複を除外
+  const uniqueScoresDesc = Array.from(new Set(logs.map((l) => l.score))).sort((a, b) => b - a)
+
+  const index = uniqueScoresDesc.findIndex((score) => score === targetScore)
+
+  // 見つからない場合は最下位扱い
+  return index === -1 ? uniqueScoresDesc.length : index + 1
+}

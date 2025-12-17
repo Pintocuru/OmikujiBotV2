@@ -54,6 +54,7 @@ export class ExecuteScript implements ScriptClass {
     const wordPartyActions = wordPartySelector.selectWordParties(gameResult)
 
     return [
+      ...logResult.postActions,
       { actionType: 'wordParty', delaySeconds: 1, wordParty: gameResult.party },
       { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
       ...wordPartyActions,

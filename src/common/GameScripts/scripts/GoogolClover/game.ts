@@ -45,7 +45,7 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
     return {
       message: `${userName}はサイコロを振る! ${multipliersDisplay}!${userName}は奈落へと消えた。`, // Result:${finalDisplay}${CURRENCY_SYMBOL}
       payout: 0,
-      party: '!bombFail',
+      success: false,
     }
   }
 
@@ -72,7 +72,7 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
     return {
       message: `${userName}はサイコロを振る! ${multipliersDisplay}!${finalDisplay}${CURRENCY_SYMBOL}獲得!${exitVoice}`,
       payout: Math.floor(state.funds * Math.pow(10, state.exp % 10)),
-      party: '!bombWin',
+      success: true,
     }
   }
 
@@ -85,6 +85,6 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
   return {
     message: `${userName}はサイコロを振る! ${multipliersDisplay}!${currentDisplay}${CURRENCY_SYMBOL}獲得!`,
     payout: Math.floor(totalMultiplier - 1),
-    party: '!bombSuccess',
+    success: true,
   }
 }

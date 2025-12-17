@@ -52,6 +52,7 @@ export class ExecuteScript implements ScriptClass {
     const partyEffects = game.generatePartyEffects(gameResult)
 
     return [
+      ...logResult.postActions,
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
       { actionType: 'wordParty', delaySeconds: 1.5, wordParty: 'DwarfBombRabbit2' },
       { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },

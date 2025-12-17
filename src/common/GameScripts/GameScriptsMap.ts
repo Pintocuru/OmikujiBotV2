@@ -12,7 +12,7 @@ export const gameScriptMap: Record<string, ScriptPreset> = {
   [BomberSpin.key]: BomberSpin,
   [DwarfBomb.key]: DwarfBomb,
   [MultiplyBonanza.key]: MultiplyBonanza,
-  // [GoogolClover.key]: GoogolClover,
+  [GoogolClover.key]: GoogolClover,
   // GachaOmikuji,
   // StealEmAll
 } as const

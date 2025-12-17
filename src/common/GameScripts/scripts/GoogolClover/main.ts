@@ -1,8 +1,6 @@
-// src\GameScripts\GoogolClover
+// src/main.ts
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
-import { GameParams, GamePlaceholder, GameSettings, params, postActions, placeholders, settings } from './params'
 import execute from './execute'
-import { componentConfig } from './componentConfig'
 
 const pluginConfig = {
   name: 'GoogolClover',
@@ -15,7 +13,7 @@ const pluginConfig = {
   banner: '',
 }
 
-const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
+const plugin: ScriptPreset = {
   id: pluginConfig.name, // プラグインID
   key: pluginConfig.name,
   name: pluginConfig.displayName, // プラグイン名
@@ -31,11 +29,6 @@ const plugin: ScriptPreset<GameSettings, GameParams, GamePlaceholder> = {
   url: pluginConfig.url, // URL
   banner: pluginConfig.banner, // github にあるバナー画像
   execute,
-  settings,
-  params,
-  postActions,
-  placeholders,
-  componentConfig,
 }
 
 export default plugin

@@ -3,6 +3,7 @@ import { GameStateType, GameStateSchema, UserStatsType } from './GameScriptSchem
 import { GameParams, GameParamsSchema, GameContext, GameResult } from './types'
 import { updateUserStats, createGameRecord } from './services/UserStatsService'
 import { createPostActions } from './services/MessageService'
+import { getScoreRank } from './services/RankingService'
 
 export class LogRankScript {
   private gameState!: GameStateType
@@ -39,9 +40,13 @@ export class LogRankScript {
       // 5. userMapを更新
       this.gameState.userMap = updatedUserStats
 
+      // ランク生成
+      const rank = isOverLimit ? undefined : getScoreRank(this.gameState.logs, currentRecord.score)
+
       // 6. 投稿アクション作成
+
       const finalUserStats = updatedUserStats[validatedParams.userId]
-      const postActions = createPostActions(params.characterKey, finalUserStats, currentRecord, isOverLimit)
+      const postActions = createPostActions(params.characterKey, finalUserStats, currentRecord, isOverLimit, rank)
 
       return {
         currentRecord,

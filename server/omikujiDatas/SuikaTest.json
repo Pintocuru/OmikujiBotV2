@@ -213,7 +213,7 @@
       "key": "1765979634865-ilnmcp",
       "name": "てすと",
       "createdAt": "2025-12-17T13:53:54.866Z",
-      "updatedAt": "2025-12-17T15:02:02.065Z",
+      "updatedAt": "2025-12-17T17:08:23.359Z",
       "order": 4,
       "isEnabled": true,
       "tags": [],
@@ -236,8 +236,8 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "BomberSpin",
-            "scriptParams": "symbol=ダイヤモンド",
+            "scriptId": "GoogolClover",
+            "scriptParams": "",
             "characterKey": "metan"
           },
           "weight": 1,
@@ -464,7 +464,8 @@
     },
     "components": {
       "conditions": [
-        "ranking"
+        "ranking",
+        "toast"
       ],
       "bubble": {
         "showCharacters": [
@@ -489,7 +490,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "scriptKey": "BomberSpin",
+        "scriptKey": "GoogolClover",
         "title": "🍉スイカランキング🍉",
         "limit": 10,
         "sortByHighScore": true,
@@ -521,7 +522,10 @@
         "licenseVisible": "experimental",
         "gameScripts": [
           "GouseiSuika",
-          "BomberSpin"
+          "BomberSpin",
+          "GoogolClover",
+          "MultiplyBonanza",
+          "DwarfBomb"
         ],
         "jsonMergeSettings": "experimental"
       }

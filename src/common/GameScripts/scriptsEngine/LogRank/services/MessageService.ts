@@ -1,5 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
-import { PostActionType } from '@/types'
+import { PostActionMessageType } from '@/types'
 import { GameRecordType, UserStatsType } from '../GameScriptSchema'
 
 /**
@@ -9,8 +9,9 @@ export const createPostActions = (
   characterKey: string,
   userStats: UserStatsType,
   record: GameRecordType,
-  isOverLimit: boolean
-): PostActionType[] => {
+  isOverLimit: boolean,
+  rank?: number
+): PostActionMessageType[] => {
   return [
     {
       actionType: 'message',
@@ -18,7 +19,9 @@ export const createPostActions = (
       characterKey,
       iconKey: 'default',
       message: {
-        toast: createMessage(userStats, record, isOverLimit),
+        toast: rank
+          ? createRankingMessage(userStats.name, record.score, rank, isOverLimit)
+          : createMessage(userStats, record, isOverLimit),
       },
       sound: 'cute',
     },
