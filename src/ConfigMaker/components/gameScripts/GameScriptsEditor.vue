@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\gameScripts\GameScriptsEditor.vue -->
 <template>
   <div v-if="availableGameScripts.length > 0" class="bg-base-200 rounded-lg space-y-3">
-    <div class="form-control">
+    <div v-if="isGod || (!isGod && gameScripts?.scriptId !== 'godMode')" class="form-control">
       <SettingItem label="ゲームスクリプト設定" description="複雑なスクリプトを稼働する">
         <label class="label cursor-pointer gap-2">
           <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
@@ -10,7 +10,18 @@
       </SettingItem>
     </div>
 
-    <div v-if="isEnabled" class="space-y-3">
+    <!-- GODMODE の設定がある場合 -->
+    <div v-if="!isGod && gameScripts?.scriptId === 'godMode'" class="space-y-3">
+      <!-- 条件設定の説明 -->
+      <InformationCard>
+        <p>
+          このおみくじアイテムは、何らかの
+          <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
+        </p>
+      </InformationCard>
+    </div>
+
+    <div v-else-if="isEnabled" class="space-y-3">
       <!-- Script ID -->
       <div class="form-control">
         <SettingItem label="スクリプトID" description="実行するスクリプトを選択">
@@ -23,6 +34,7 @@
             <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
               {{ getScriptName(scriptKey) }}
             </option>
+            <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
           </select>
         </SettingItem>
       </div>
@@ -34,7 +46,7 @@
             type="text"
             :value="gameScripts?.scriptParams || ''"
             @input="updateScriptParams(($event.target as HTMLInputElement).value)"
-            placeholder="例: speed:fast,color:red"
+            placeholder="例: mode=スイカゲーム"
             class="input input-bordered input-sm w-full"
           />
         </SettingItem>
@@ -61,12 +73,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType, GameScriptsSchema } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -77,6 +92,9 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
+
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
 
   // 利用可能なゲームスクリプトのキー一覧
   const availableGameScripts = computed(() => data.value.displaySettings.developer.visibility.gameScripts)
@@ -99,88 +117,43 @@
   // 有効/無効の判定
   const isEnabled = computed(() => gameScripts.value !== null)
 
-  // 共通の更新関数
-  const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
-    if (!props.selectedItemKey) return
-    const index = props.allOmikuji.findIndex((item) => item.key === props.omikuji.key)
-    if (index === -1) return
-    omikujiStore.updateRecordProperty(
-      props.category,
-      props.selectedItemKey,
-      'omikuji',
-      updateFn([...props.allOmikuji], index)
-    )
-  }
-
   // 有効/無効の切り替え
   const toggleEnabled = () => {
-    updateOmikujiSets((sets, index) => {
-      if (sets[index].gameScripts === null) {
-        // 無効→有効: デフォルト値で初期化
-        sets[index] = {
-          ...sets[index],
-          gameScripts: {
-            scriptId: '',
-            scriptParams: '',
-            characterKey: '',
-          },
-        }
-      } else {
-        // 有効→無効: nullに設定
-        sets[index] = {
-          ...sets[index],
-          gameScripts: null,
-        }
-      }
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      gameScripts: item.gameScripts === null ? GameScriptsSchema.parse({}) : null,
+    }))
   }
 
   // scriptId の更新
   const updateScriptId = (value: string) => {
-    updateOmikujiSets((sets, index) => {
-      if (sets[index].gameScripts) {
-        sets[index] = {
-          ...sets[index],
-          gameScripts: {
-            ...sets[index].gameScripts!,
-            scriptId: value || '',
-          },
-        }
-      }
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      gameScripts: item.gameScripts ? { ...item.gameScripts, scriptId: value || '' } : GameScriptsSchema.parse({}),
+    }))
   }
 
   // characterKey の更新
   const updateCharacterKey = (value: string) => {
-    updateOmikujiSets((sets, index) => {
-      if (sets[index].gameScripts) {
-        sets[index] = {
-          ...sets[index],
-          gameScripts: {
-            ...sets[index].gameScripts!,
-            characterKey: value,
-          },
-        }
-      }
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      gameScripts: item.gameScripts ? { ...item.gameScripts, characterKey: value } : GameScriptsSchema.parse({}),
+    }))
   }
 
   // scriptParams の更新
   const updateScriptParams = (value: string) => {
-    updateOmikujiSets((sets, index) => {
-      if (sets[index].gameScripts) {
-        sets[index] = {
-          ...sets[index],
-          gameScripts: {
-            ...sets[index].gameScripts!,
-            scriptParams: value,
-          },
-        }
-      }
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      gameScripts: item.gameScripts ? { ...item.gameScripts, scriptParams: value } : GameScriptsSchema.parse({}),
+    }))
   }
 </script>

@@ -19,6 +19,19 @@
       </SettingItem>
     </div>
 
+    <!-- 重み(コメントルール以外での表示) -->
+    <div v-if="category !== 'comments'" class="form-control flex-1">
+      <SettingItem :label="`重み (${weightPercentage}%)`" description="数値が高いほど出やすくなります">
+        <input
+          type="number"
+          :value="omikuji.weight"
+          @input="updateWeight(parseFloat(($event.target as HTMLInputElement).value))"
+          min="0"
+          class="input input-bordered input-sm w-full"
+        />
+      </SettingItem>
+    </div>
+
     <!-- メニュー -->
     <div class="ml-auto">
       <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
@@ -46,11 +59,32 @@
 
   const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
 
+  // 名前更新
   const updateName = (value: string) => {
     if (index.value === -1 || !props.selectedItemKey) return
     omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       name: value,
+    }))
+  }
+
+  // 全体の重みの合計を計算
+  const totalWeight = computed(() => {
+    return props.allOmikuji.reduce((sum, item) => sum + (item.weight || 0), 0)
+  })
+
+  // 現在のおみくじの出現率を計算
+  const weightPercentage = computed(() => {
+    if (totalWeight.value === 0) return '0.00'
+    return ((props.omikuji.weight / totalWeight.value) * 100).toFixed(2)
+  })
+
+  // 重み更新
+  const updateWeight = (value: number) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      weight: value,
     }))
   }
 
