@@ -46,7 +46,7 @@ export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySche
 // PostAction message
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
-  actionType: z.literal('message'),
+  actionType: z.literal('message').default('message'),
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   sound: z.enum(soundList).optional(),
@@ -56,21 +56,21 @@ export const PostActionMessageSchema = z.object({
 // PostAction sound
 export const PostActionSoundSchema = z.object({
   ...PostActionBaseSchema.shape,
-  actionType: z.literal('sound'),
+  actionType: z.literal('sound').default('sound'),
   sound: z.enum(soundList).optional().catch(undefined),
 })
 
 // PostAction WordParty
 export const PostActionWordPartySchema = z.object({
   ...PostActionBaseSchema.shape,
-  actionType: z.literal('wordParty'),
+  actionType: z.literal('wordParty').default('wordParty'),
   wordParty: z.string().default('').catch(''),
 })
 
 // PostAction actionSet
 export const PostActionActionSetSchema = z.object({
   ...PostActionBaseSchema.shape,
-  actionType: z.literal('actionSet'),
+  actionType: z.literal('actionSet').default('actionSet'),
   actionSetKey: z.string().default('').catch(''),
 })
 
