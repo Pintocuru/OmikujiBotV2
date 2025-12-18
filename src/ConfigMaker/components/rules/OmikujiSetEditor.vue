@@ -68,7 +68,7 @@
   const omikujiSets = computed({
     get: () => {
       if (!props.selectedItemKey) return []
-      const record = omikujiStore.getItem(props.category, props.selectedItemKey) as RuleType
+      const record = omikujiStore.getItem(props.category, props.selectedItemKey)
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {

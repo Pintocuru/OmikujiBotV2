@@ -75,11 +75,6 @@ export class CooldownManager {
 
   /**
    * 連投チェック（同じユーザーが同じルールで連続で抽選することを防ぐ）
-   * @param userId - ユーザーID
-   * @param ruleId - ルールID
-   * @param isRepeatAllowed - 連投を許可するか
-   * @param blockCount - 直近何回の履歴をチェックするか（デフォルト: 1）
-   * @returns ブロックする場合はtrue
    */
   isRepeatBlocked(userId: string, ruleId: string, blockCount: number = 0): boolean {
     if (blockCount <= 0) return false
@@ -200,6 +195,17 @@ export class CooldownManager {
    */
   resetUserDrawCount(userId: string, ruleId: string): void {
     this.userDrawCounts.delete(this.createKey(userId, ruleId))
+  }
+
+  /**
+   * 指定ルールの記録を全削除
+   */
+  resetRuleDrawCounts(ruleId: string): void {
+    for (const key of this.userDrawCounts.keys()) {
+      if (key.endsWith(`:${ruleId}`)) {
+        this.userDrawCounts.delete(key)
+      }
+    }
   }
 
   /**

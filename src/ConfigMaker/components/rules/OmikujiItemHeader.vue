@@ -19,18 +19,15 @@
       </SettingItem>
     </div>
 
-    <!-- 重み(コメントルール以外での表示) -->
-    <div v-if="category !== 'comments'" class="form-control flex-1">
-      <SettingItem :label="`重み (${weightPercentage}%)`" description="数値が高いほど出やすくなります">
-        <input
-          type="number"
-          :value="omikuji.weight"
-          @input="updateWeight(parseFloat(($event.target as HTMLInputElement).value))"
-          min="0"
-          class="input input-bordered input-sm w-full"
-        />
-      </SettingItem>
-    </div>
+    <!-- 重み -->
+    <OmikujiItemWeight
+      v-if="category !== 'comments'"
+      :all-omikuji="allOmikuji"
+      :omikuji="omikuji"
+      :category="category"
+      :index="index"
+      :selected-item-key="selectedItemKey"
+    />
 
     <!-- メニュー -->
     <div class="ml-auto">
@@ -40,13 +37,14 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
+  import OmikujiItemWeight from './OmikujiItemWeight.vue'
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { GripVertical } from 'lucide-vue-next'
-  import { computed } from 'vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -65,26 +63,6 @@
     omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       name: value,
-    }))
-  }
-
-  // 全体の重みの合計を計算
-  const totalWeight = computed(() => {
-    return props.allOmikuji.reduce((sum, item) => sum + (item.weight || 0), 0)
-  })
-
-  // 現在のおみくじの出現率を計算
-  const weightPercentage = computed(() => {
-    if (totalWeight.value === 0) return '0.00'
-    return ((props.omikuji.weight / totalWeight.value) * 100).toFixed(2)
-  })
-
-  // 重み更新
-  const updateWeight = (value: number) => {
-    if (index.value === -1 || !props.selectedItemKey) return
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
-      ...item,
-      weight: value,
     }))
   }
 

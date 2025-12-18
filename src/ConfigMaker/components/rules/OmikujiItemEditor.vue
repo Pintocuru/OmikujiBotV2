@@ -18,13 +18,17 @@
       />
 
       <!-- OmikujiItemBasic コンポーネント -->
-      <h3 class="font-semibold border-b pt-3 pb-1">追加条件と重み - このおみくじが適用される条件や確率を設定します</h3>
-      <OmikujiItemBasic
-        :allOmikuji="allOmikujiSets"
-        :omikuji="omikujiItem"
-        :category="category"
-        :selectedItemKey="selectedItemKey"
-      />
+      <div v-if="category === 'comments'">
+        <h3 class="font-semibold border-b pt-3 pb-1">
+          追加条件と重み - このおみくじが適用される条件や確率を設定します
+        </h3>
+        <OmikujiItemBasic
+          :allOmikuji="allOmikujiSets"
+          :omikuji="omikujiItem"
+          :category="category"
+          :selectedItemKey="selectedItemKey"
+        />
+      </div>
 
       <!-- GameScripts コンポーネント -->
       <h3 class="font-semibold border-b pt-3 pb-1">ゲームスクリプト - 複雑な処理を行うスクリプト設定</h3>

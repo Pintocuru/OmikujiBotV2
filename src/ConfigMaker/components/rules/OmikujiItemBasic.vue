@@ -2,7 +2,7 @@
 <template>
   <div class="space-y-4">
     <!-- 優先度と重み -->
-    <OmikujiItemWeight
+    <OmikujiItemIsPriority
       :allOmikuji="allOmikuji"
       :omikuji="omikuji"
       :category="category"
@@ -22,7 +22,7 @@
 <script setup lang="ts">
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import OmikujiItemWeight from './OmikujiItemWeight.vue'
+  import OmikujiItemIsPriority from './OmikujiItemIsPriority.vue'
   import OmikujiItemConditions from './OmikujiItemCriteria.vue'
 
   const props = defineProps<{

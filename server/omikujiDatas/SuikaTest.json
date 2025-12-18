@@ -41,7 +41,7 @@
           "postActions": [],
           "gameScripts": {
             "scriptId": "GouseiSuika",
-            "scriptParams": "",
+            "queryString": "",
             "characterKey": "metanBlack"
           },
           "weight": 1,
@@ -95,7 +95,7 @@
           "postActions": [],
           "gameScripts": {
             "scriptId": "GouseiSuika",
-            "scriptParams": "mode=カボチャゲーム",
+            "queryString": "mode=カボチャゲーム",
             "characterKey": "omiken"
           },
           "weight": 1,
@@ -149,7 +149,7 @@
           "postActions": [],
           "gameScripts": {
             "scriptId": "GouseiSuika",
-            "scriptParams": "mode=クジラゲーム",
+            "queryString": "mode=クジラゲーム",
             "characterKey": "omiken"
           },
           "weight": 1,
@@ -205,7 +205,7 @@
           ],
           "gameScripts": {
             "scriptId": "GoogolClover",
-            "scriptParams": "",
+            "queryString": "",
             "characterKey": "metan"
           },
           "weight": 1,

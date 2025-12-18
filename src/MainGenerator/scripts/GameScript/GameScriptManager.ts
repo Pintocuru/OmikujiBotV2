@@ -31,7 +31,7 @@ export class GameScriptManager {
    */
   playScript(omikujiItem: OmikujiItemType, comment?: Comment): PostActionType[] | null {
     if (!omikujiItem.gameScripts) return null
-    const { scriptId, scriptParams, characterKey } = omikujiItem.gameScripts
+    const { scriptId, queryString, characterKey } = omikujiItem.gameScripts
 
     if (!scriptId) return null
 
@@ -42,7 +42,7 @@ export class GameScriptManager {
     }
 
     try {
-      return scriptInstance.run(scriptParams, characterKey, comment)
+      return scriptInstance.run(queryString, characterKey, comment)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return null

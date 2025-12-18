@@ -91,7 +91,7 @@ export const PostActionArraySchema = z
  */
 export const GameScriptsSchema = z.object({
   scriptId: z.string().default('').catch(''),
-  scriptParams: z.string().default('').catch(''),
+  queryString: z.string().default('').catch(''),
   characterKey: z.string().default('').catch(''),
 })
 

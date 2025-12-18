@@ -41,12 +41,12 @@
 
       <!-- Script Params -->
       <div class="form-control">
-        <SettingItem label="スクリプトパラメータ" description="スクリプトに渡す追加パラメータ(任意)">
+        <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
           <input
             type="text"
-            :value="gameScripts?.scriptParams || ''"
-            @input="updateScriptParams(($event.target as HTMLInputElement).value)"
-            placeholder="例: mode=スイカゲーム"
+            :value="gameScripts?.queryString || ''"
+            @input="updateQueryString(($event.target as HTMLInputElement).value)"
+            placeholder="例: mode=スイカゲーム&theme=dark"
             class="input input-bordered input-sm w-full"
           />
         </SettingItem>
@@ -147,13 +147,13 @@
     }))
   }
 
-  // scriptParams の更新
-  const updateScriptParams = (value: string) => {
+  // queryString の更新
+  const updateQueryString = (value: string) => {
     if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
 
     omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
-      gameScripts: item.gameScripts ? { ...item.gameScripts, scriptParams: value } : GameScriptsSchema.parse({}),
+      gameScripts: item.gameScripts ? { ...item.gameScripts, queryString: value } : GameScriptsSchema.parse({}),
     }))
   }
 </script>
