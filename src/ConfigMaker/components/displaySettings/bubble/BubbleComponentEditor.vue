@@ -6,7 +6,6 @@
       :color="localColor"
       :is-slider="true"
       :custom-classes="localColor.customClasses"
-      :font-family="global.fontFamily"
       :animated-text="bubble.bubbleTextAnimate"
       :animated-text-speed="bubble.bubbleTextSpeed"
       v-bind="bubble"
@@ -14,19 +13,29 @@
   </div>
 
   <!-- フキダシアニメーション -->
-  <SettingItem
-    label="フキダシアニメーション"
-    description="フキダシの表示アニメーションを設定します"
-    :showReset="false"
-    @reset="() => resetField('bubbleMotionEnter')"
-  >
+  <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
     <select
       v-model="bubble.bubbleMotionEnter"
+      :disabled="!isPro"
       @change="updateField('bubbleMotionEnter', $event)"
       class="select select-bordered w-full max-w-xs"
     >
       <option v-for="animation in motionLabel" :key="animation" :value="animation">
         {{ animation }}
+      </option>
+    </select>
+  </SettingItem>
+
+  <!-- フォントファミリー -->
+  <SettingItem label="フォントファミリー" description="表示に使用するフォントを設定します" forceMode="pro">
+    <select
+      :value="bubble.fontFamily"
+      @change="updateField('fontFamily', $event)"
+      class="select bg-base text-base-content w-full max-w-xs"
+      :disabled="!isPro"
+    >
+      <option v-for="font in fontFamilyOptions" :key="font" :value="font">
+        {{ fontFamilyLabels[font] }}
       </option>
     </select>
   </SettingItem>
@@ -71,17 +80,19 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { fontFamilyOptions, fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
   import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isPro } = useSettingMode()
 
-  const global = computed(() => data.value.displaySettings.global)
   const bubble = computed(() => data.value.displaySettings.components.bubble)
 
   // 単一の更新関数（型キャストを削減）

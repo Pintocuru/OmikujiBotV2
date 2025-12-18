@@ -5,16 +5,12 @@ import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVarian
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
-// ジェネレーター全体設定
-export const SettingsGlobalSchema = z.object({
-  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
-})
-
 // フキダシ・キャラクター
 export const SettingsBubbleSchema = z.object({
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: z.array(z.array(z.string())).default([[], []]).catch([[], []]),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
@@ -30,14 +26,20 @@ export const SettingsToastSchema = z.object({
 })
 export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 
+// ソート方法の列挙型
+export const rankingSortOrders = ['new', 'high', 'low'] as const
+export type RankingSortOrder = (typeof rankingSortOrders)[number]
+
 // ランキング Ranking
 export const SettingsRankingSchema = z.object({
-  scriptKey: z.string().nullable().default(null).catch(null), // 対象のGameScript TODO:配列にする(スイカゲーム・カボチャゲームで得点を並べたいので)
-  title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'), // タイトル
-  limit: z.number().min(1).max(20).default(5).catch(5), // 表示するランキング数
-  sortByHighScore: z.boolean().default(true).catch(true), // 順位の表示
-  color: z.enum(themes).default('lofi').catch('lofi'), // テーマカラー(DaisyUi)
+  scriptKey: z.string().nullable().default(null).catch(null),
+  title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
+  limit: z.number().min(1).max(20).default(5).catch(5),
+  // sortByHighScore > sortOrder に変更
+  sortOrder: z.enum(rankingSortOrders).default('high').catch('high'),
+  color: z.enum(themes).default('lofi').catch('lofi'),
 })
+
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
 // カウンター・ユーザーリスト Counter
@@ -59,6 +61,14 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 
 export const settingsComponentsCondition = ['bubble', 'toast', 'ranking', 'counter'] as const
 export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
+
+// コンポーネント名のマッピング
+export const componentLabels: Record<SettingsComponentsCondition, string> = {
+  bubble: '💬 フキダシコンポーネント',
+  toast: '🍞 トーストコンポーネント',
+  ranking: '🏆 ランキングコンポーネント',
+  counter: '🔢 カウンターコンポーネント',
+}
 
 export const settingsComponentsConditionSchema = z.enum(settingsComponentsCondition).default('bubble').catch('bubble')
 
@@ -124,7 +134,6 @@ export const DeveloperSettingsSchema = z.object({
 // DisplaySettingsSchema
 // BOTの表示部分に関わる設定
 export const DisplaySettingsSchema = z.object({
-  global: SettingsGlobalSchema.catch(SettingsGlobalSchema.parse({})),
   components: SettingsComponentsSchema.catch(SettingsComponentsSchema.parse({})),
   editor: SettingsEditorSchema.catch(SettingsEditorSchema.parse({})),
   developer: DeveloperSettingsSchema.catch(DeveloperSettingsSchema.parse({})),

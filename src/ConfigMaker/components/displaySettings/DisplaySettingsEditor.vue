@@ -16,7 +16,7 @@
       v-if="conditions.includes('bubble')"
       :isOpen="activeSection === 'bubbleComponent'"
       @toggle="toggleSection('bubbleComponent')"
-      title="フキダシコンポーネント"
+      title="💬 フキダシコンポーネント"
       description="BOTが喋るフキダシの設定"
     >
       <BubbleComponentEditor />
@@ -27,7 +27,7 @@
       v-if="conditions.includes('bubble')"
       :isOpen="activeSection === 'bubbleComponentcharacter'"
       @toggle="toggleSection('bubbleComponentcharacter')"
-      title="フキダシコンポーネント(キャラクター)"
+      title="💬 フキダシコンポーネント(キャラクター)"
       description="キャラクターの表示位置設定"
     >
       <BubbleComponentCharacterEditor />
@@ -38,7 +38,7 @@
       v-if="conditions.includes('toast')"
       :isOpen="activeSection === 'toastComponent'"
       @toggle="toggleSection('toastComponent')"
-      title="トースト・サムネイルコンポーネント"
+      title="🍞 トースト・サムネイルコンポーネント"
       description="お知らせとして表示されるチャット表示"
     >
       <ToastComponentEditor />
@@ -49,7 +49,7 @@
       v-if="conditions.includes('ranking')"
       :isOpen="activeSection === 'rankingComponent'"
       @toggle="toggleSection('rankingComponent')"
-      title="ランキングコンポーネント"
+      title="🏆 ランキングコンポーネント"
       description="ゲームスクリプトで使う、ランキング表示"
     >
       <RankingComponentEditor />
@@ -60,21 +60,10 @@
       v-if="conditions.includes('counter')"
       :isOpen="activeSection === 'counterComponent'"
       @toggle="toggleSection('counterComponent')"
-      title="カウンターコンポーネント"
+      title="🔢 カウンターコンポーネント"
       description="コメントが来るたびに数値が増えるカウンターの表示"
     >
       <CounterComponentEditor />
-    </SectionCard>
-
-    <!-- ジェネレーター全体の設定 -->
-    <SectionCard
-      :isOpen="activeSection === 'globalSettings'"
-      @toggle="toggleSection('globalSettings')"
-      variant="warning"
-      title="ジェネレーター設定"
-      description="ジェネレーター全体の設定"
-    >
-      <SettingsGlobalEditor />
     </SectionCard>
 
     <!-- エディター設定 -->
@@ -82,7 +71,7 @@
       :isOpen="activeSection === 'editorSettings'"
       @toggle="toggleSection('editorSettings')"
       title="エディター設定"
-      description="エディター自体の見た目とライセンスの設定"
+      description="エディターのテーマとライセンスの設定"
     >
       <EditorSettingsEditor />
     </SectionCard>

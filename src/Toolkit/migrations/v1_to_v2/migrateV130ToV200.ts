@@ -7,7 +7,6 @@ import {
   SettingsComponentsSchema,
   SettingsCounterSchema,
   SettingsEditorSchema,
-  SettingsGlobalSchema,
   SettingsRankingSchema,
   SettingsToastSchema,
 } from '@/types/OmikujiData/DisplaySettingsSchema'
@@ -45,15 +44,11 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
 function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): DisplaySettingsType {
   const base = old.base ?? {}
 
-  const global = SettingsGlobalSchema.parse({
-    fontFamily: base.fontFamily ?? 'default',
-  })
-
   const bubble = SettingsBubbleSchema.parse({
+    fontFamily: base.fontFamily ?? 'default',
     bubbleMotionEnter: base.bubbleMotionEnter ?? 'slideUp',
     bubbleTextAnimate: base.bubbleTextAnimate ?? false,
     bubbleTextSpeed: base.bubbleTextSpeed ?? 50,
-    bubbleTextSound: undefined,
   })
 
   const toast = SettingsToastSchema.parse({
@@ -96,7 +91,6 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): Disp
   const developer = DeveloperSettingsSchema.parse(old.developer ?? {})
 
   return DisplaySettingsSchema.parse({
-    global,
     components,
     editor,
     developer,

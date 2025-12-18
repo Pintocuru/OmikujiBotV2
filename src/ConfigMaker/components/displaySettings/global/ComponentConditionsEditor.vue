@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\displaySettings\components\ComponentConditionsEditor.vue -->
 <template>
   <!-- コンポーネント表示設定 -->
-  <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
+  <SettingItem label="表示するコンポーネント" description="トリガーの種類を選択">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="condition in settingsComponentsCondition"
@@ -14,18 +14,35 @@
           :checked="conditions.includes(condition)"
           @change="toggleCondition(condition)"
         />
-        <span class="text-sm">{{ condition }}</span>
+        <!-- 英語キーではなく日本語ラベルを表示 -->
+        <span class="text-sm">{{ componentLabels[condition] }}</span>
       </label>
     </div>
   </SettingItem>
+
+  <!-- コンポーネント表示設定 -->
+  <InformationCard v-if="!conditions.length" class="mt-4">
+    <p class="text-xl">
+      あれっ、<span class="label bg-accent text-accent-content">条件がまだ設定されてない</span>みたいです。<br />
+      そのままだとプレビューに何も出力されませんよ。<br />
+      コメントは読んでくれますが、画面表示は空っぽです。<br />
+      意図的なら問題ありませんが、設定忘れなら要チェックです。<br />
+      少し見直して<span class="label bg-accent text-accent-content">条件を追加</span>してみませんか？
+    </p>
+  </InformationCard>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { settingsComponentsCondition, SettingsComponentsCondition } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import {
+    componentLabels,
+    settingsComponentsCondition,
+    SettingsComponentsCondition,
+  } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()

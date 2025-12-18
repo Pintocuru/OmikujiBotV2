@@ -23,16 +23,40 @@ export const PostActionMessageBodySchema = z
   .object({
     bubble: z.string().optional().catch(undefined),
     toast: z.string().optional().catch(undefined),
-    rankingKey: z.string().optional().catch(undefined), // コンポーネント用key
-    rankingDisplayScore: z.string().optional().catch(undefined), // 表示用
+    rankingKey: z.string().optional().catch(undefined),
+    rankingDisplayScore: z.string().optional().catch(undefined),
     rankingIsRank: z.boolean().optional().catch(undefined),
     rankingName: z.string().optional().catch(undefined),
     rankingPoint: z.string().optional().catch(undefined),
     rankingSymbol: z.string().optional().catch(undefined),
-    dialog: z.string().optional().catch(undefined),
   })
   .default({})
   .catch({})
+
+/**
+
+const RankingMessageSchema = z.object({
+  // 得点表示
+  name: z.string().default('error'), // 名前
+  scoreText: z.string().default(''), // 表示用得点
+  scoreValue: z.number().default(0), // 比較用
+  symbol: z.string().optional(), // 名前の隣につけるやつ
+  // 設定
+  scriptKey: z.string(), // コンポーネント判別用key
+  timestamp: z.number() // タイムスタンプ
+  isRank: z.boolean().default(true), // リストに載せるか
+  isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
+})
+
+
+export const PostActionMessageBodySchema = z.object({
+    bubble: z.string().optional(),
+    toast: z.string().optional(),
+  ranking: RankingMessageSchema.optional(),
+}).default({}).catch({})
+
+   */
+
 export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>
 
 // PostAction message

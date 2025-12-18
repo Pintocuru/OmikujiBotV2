@@ -32,7 +32,9 @@
       :checked="toast.showToastsOnRight"
       @change="(e) => updateToastField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
     />
-    <span class="ml-2">右側に表示する</span>
+    <span class="ml-2">
+      {{ toast.showToastsOnRight ? '右側に表示する' : '左側に表示する' }}
+    </span>
   </SettingItem>
 
   <SettingItem
