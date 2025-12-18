@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import type { useRecordCRUD } from './useRecordCRUD'
@@ -17,9 +17,7 @@ export function useRecordProperties(
   recordCRUD: ReturnType<typeof useRecordCRUD>,
   recordDataAccess: ReturnType<typeof useRecordDataAccess>
 ) {
-  // ========================================
   // 汎用プロパティ更新
-  // ========================================
   const updateRecordProperty = <C extends RecordCategoryType, K extends keyof RecordCategoryItemTypeMap[C]>(
     category: C,
     key: string,
@@ -31,9 +29,23 @@ export function useRecordProperties(
     } as unknown as Partial<RecordCategoryItemTypeMap[C]>)
   }
 
-  // ========================================
+  // 特殊ケース: おみくじのitem更新
+  const updateOmikujiByIndex = (
+    category: RulesCategoryType,
+    ruleKey: string,
+    omikujiIndex: number,
+    updater: (item: OmikujiItemType) => OmikujiItemType
+  ) => {
+    const record = recordDataAccess.getItem(category, ruleKey) as RuleType
+    if (!record?.omikuji?.[omikujiIndex]) return
+
+    const updated = [...record.omikuji]
+    updated[omikujiIndex] = updater(updated[omikujiIndex])
+
+    updateRecordProperty(category, ruleKey, 'omikuji', updated)
+  }
+
   // 特殊ケース: おみくじのpostActions更新
-  // ========================================
   const updateOmikujiPostActions = (
     category: RulesCategoryType,
     ruleKey: string,
@@ -49,15 +61,14 @@ export function useRecordProperties(
     const updatedOmikuji = [...record.omikuji]
     updatedOmikuji[omikujiIndex] = {
       ...updatedOmikuji[omikujiIndex],
+      // delaySeconds 順に並べる
       postActions: postActions.sort((a, b) => a.delaySeconds - b.delaySeconds),
     }
 
     updateRecordProperty(category, ruleKey, 'omikuji', updatedOmikuji)
   }
 
-  // ========================================
   // 特殊ケース: プレースホルダー値の更新
-  // ========================================
   const updatePlaceholderValues = (placeholderKey: string, rawValues: Array<PlaceholderValueType | string>) => {
     if (data.value.placeholders[placeholderKey]) {
       const parsedValues = PlaceholderValuesSchema.parse(rawValues)
@@ -67,6 +78,7 @@ export function useRecordProperties(
 
   return {
     updateRecordProperty,
+    updateOmikujiByIndex,
     updateOmikujiPostActions,
     updatePlaceholderValues,
   }

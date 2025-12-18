@@ -28,9 +28,7 @@ export function checkCircularReference(
   }
 
   // 既に訪問済みなら循環参照
-  if (visited.has(targetKey)) {
-    return [targetKey]
-  }
+  if (visited.has(targetKey)) return [targetKey]
 
   const actionSet = actionSets[targetKey]
   if (!actionSet?.postActions) return null

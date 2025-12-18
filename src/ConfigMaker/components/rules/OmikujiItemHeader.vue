@@ -33,6 +33,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { GripVertical } from 'lucide-vue-next'
+  import { computed } from 'vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -43,42 +44,43 @@
 
   const omikujiStore = useOmikujiStore()
 
-  // 共通の更新関数
-  const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
-    if (!props.selectedItemKey) return
-    const index = props.allOmikuji.findIndex((item) => item.key === props.omikuji.key)
-    if (index === -1) return
-    omikujiStore.updateRecordProperty(
-      props.category,
-      props.selectedItemKey,
-      'omikuji',
-      updateFn([...props.allOmikuji], index)
-    )
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
+
+  const updateName = (value: string) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      name: value,
+    }))
   }
 
-  const updateName = (value: string) =>
-    updateOmikujiSets((sets, index) => {
-      sets[index] = { ...sets[index], name: value }
-      return sets
-    })
+  const duplicateOmikuji = () => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    const id = crypto.randomUUID()
+    const duplicated = {
+      ...JSON.parse(JSON.stringify(props.omikuji)),
+      id,
+      key: id,
+      name: `${props.omikuji.name}(コピー)`,
+    }
 
-  const duplicateOmikuji = () =>
-    updateOmikujiSets((sets, index) => {
-      const id = crypto.randomUUID()
-      const duplicated = {
-        ...JSON.parse(JSON.stringify(props.omikuji)),
-        id,
-        key: id,
-        name: `${props.omikuji.name}(コピー)`,
-      }
-      sets.splice(index + 1, 0, duplicated)
-      return sets
-    })
+    // 配列全体を更新
+    const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+    if (!record?.omikuji) return
+
+    const newOmikuji = [...record.omikuji]
+    newOmikuji.splice(index.value + 1, 0, duplicated)
+    omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
+  }
 
   const removeOmikuji = () => {
-    updateOmikujiSets((sets, index) => {
-      sets.splice(index, 1)
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey) return
+
+    const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+    if (!record?.omikuji) return
+
+    const newOmikuji = [...record.omikuji]
+    newOmikuji.splice(index.value, 1)
+    omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
   }
 </script>

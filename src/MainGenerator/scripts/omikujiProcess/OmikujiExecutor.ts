@@ -12,33 +12,20 @@ import { Comment } from '@onecomme.com/onesdk/'
  */
 export class OmikujiExecutor {
   private readonly defaultManager = new DefaultPlaceholderService()
-
   constructor(private readonly placeProcess: PlaceholderProcessor) {}
 
   /**
    * おみくじの抽選と実行（コメント＋ルール指定）
    */
   executeWithRule(omikujiSet: OmikujiSetType, comment?: Comment): OmikujiItemType | null {
-    let processedOmikujiSet: OmikujiSetType = omikujiSet
-
     try {
-      if (comment) {
-        // 条件を満たさない項目をフィルタリング
-        processedOmikujiSet = omikujiSet.filter((item) => {
-          if (!item.criteria) return true
-          // checkAllConditionsがtrueの項目のみ残す
-          return checkAllConditions(comment, item.criteria)
-        })
-        if (!processedOmikujiSet.length) return null
-      }
+      const filtered = comment ? this.filterCriteria(omikujiSet, comment) : omikujiSet
+      if (!filtered.length) return null
 
-      // おみくじ
-      const omikujiItem = drawOmikuji(processedOmikujiSet) as OmikujiItemType
+      const omikujiItem = drawOmikuji(filtered) as OmikujiItemType
       if (!omikujiItem) return null
 
-      // デフォルトプレースホルダー設定
       this.setupPlaceholders(comment)
-
       return omikujiItem
     } catch (error) {
       ConsolePost('error', `おみくじ実行エラー`, error)
@@ -52,6 +39,21 @@ export class OmikujiExecutor {
   executeDirect(omikujiItem: OmikujiItemType, comment?: Comment): OmikujiItemType {
     if (comment) this.setupPlaceholders(comment)
     return omikujiItem
+  }
+
+  /**
+   * 条件フィルタ＋rank付与
+   */
+  private filterCriteria(items: OmikujiSetType, comment: Comment): OmikujiSetType {
+    return items
+      .filter((item) => {
+        if (!item.criteria) return true
+        return checkAllConditions(comment, item.criteria)
+      })
+      .map((item) => ({
+        ...item,
+        rank: item.isPriority ? 1 : 0,
+      }))
   }
 
   /**

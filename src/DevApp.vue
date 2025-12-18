@@ -1,7 +1,7 @@
 <!-- src/DevApp.vue -->
 <template>
   <ConfigMaker v-if="!showMain" />
-  <MainGenerator v-else data-theme="transparent" />
+  <MainGenerator v-else />
 
   <!-- 表示トグルボタン -->
   <label class="swap swap-rotate fixed top-12 right-6 z-9999">

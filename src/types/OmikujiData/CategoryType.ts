@@ -9,18 +9,7 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import {
-  MessageCircle,
-  Timer,
-  Hash,
-  Settings,
-  Users,
-  Monitor,
-  ListChecks,
-  Tags,
-  MessagesSquare,
-  Layers,
-} from 'lucide-vue-next'
+import { MessageCircle, Timer, Hash, Users, Monitor, Tags, MessagesSquare, Layers } from 'lucide-vue-next'
 import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**

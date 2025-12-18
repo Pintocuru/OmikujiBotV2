@@ -42,7 +42,7 @@
   // 現在のキャラクターデータを取得（読み取り専用）
   const currentData = computed<CharacterType | undefined>(() => {
     if (!props.selectedItemKey) return undefined
-    return omikujiStore.getItem<CharacterType>('characters', props.selectedItemKey) ?? undefined
+    return omikujiStore.getItem('characters', props.selectedItemKey) ?? undefined
   })
 
   // フィールドを個別に更新する関数

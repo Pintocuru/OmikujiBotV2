@@ -120,7 +120,7 @@
         sets[index] = {
           ...sets[index],
           gameScripts: {
-            scriptId: null,
+            scriptId: '',
             scriptParams: '',
             characterKey: '',
           },
@@ -144,7 +144,7 @@
           ...sets[index],
           gameScripts: {
             ...sets[index].gameScripts!,
-            scriptId: value || null,
+            scriptId: value || '',
           },
         }
       }

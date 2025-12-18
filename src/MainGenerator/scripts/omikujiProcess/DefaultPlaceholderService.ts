@@ -1,15 +1,13 @@
 // src\MainGenerator\scripts\OmikujiProcess\DefaultPlaceholderService.ts
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import {
-  DefaultPlaceholders,
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
-import { Comment } from '@onecomme.com/onesdk/'
-import { ServiceMeta } from '@onecomme.com/onesdk/'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { GetUserVisits } from '@shared/sdk/subscribe/GetUserVisits'
 import { ConfigUserSchema, ServiceMetaCondition, ServiceVisitType } from '@shared/types'
+import { Comment, ServiceMeta } from '@onecomme.com/onesdk/'
 
 export class DefaultPlaceholderService {
   private serviceMeta: ServiceMeta | null = null

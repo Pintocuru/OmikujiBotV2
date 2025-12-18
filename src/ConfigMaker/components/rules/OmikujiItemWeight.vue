@@ -24,7 +24,7 @@
             <input
               type="checkbox"
               class="toggle toggle-primary"
-              :checked="omikuji.priority"
+              :checked="omikuji.isPriority"
               @change="updatePriority(($event.target as HTMLInputElement).checked)"
             />
             <span class="label-text">優先度を上げる</span>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- 重み -->
-      <div v-if="!omikuji.priority" class="form-control flex-1">
+      <div v-if="!omikuji.isPriority" class="form-control flex-1">
         <SettingItem :label="`重み (${weightPercentage}%)`" description="数値が高いほど出やすくなります">
           <input
             type="number"
@@ -54,6 +54,7 @@
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { CriteriaThresholdSchema } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -63,6 +64,8 @@
   }>()
 
   const omikujiStore = useOmikujiStore()
+
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
 
   // criteriaが設定されているか
   const hasCriteria = computed(() => props.omikuji.criteria !== null)
@@ -78,47 +81,31 @@
     return ((props.omikuji.weight / totalWeight.value) * 100).toFixed(2)
   })
 
-  // 共通の更新関数
-  const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
-    if (!props.selectedItemKey) return
-    const index = props.allOmikuji.findIndex((item) => item.key === props.omikuji.key)
-    if (index === -1) return
-    omikujiStore.updateRecordProperty(
-      props.category,
-      props.selectedItemKey,
-      'omikuji',
-      updateFn([...props.allOmikuji], index)
-    )
+  // 重み更新
+  const updateWeight = (value: number) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      weight: value,
+    }))
   }
 
-  const updateWeight = (value: number) =>
-    updateOmikujiSets((sets, index) => {
-      sets[index] = { ...sets[index], weight: value }
-      return sets
-    })
-
-  const updatePriority = (value: boolean) =>
-    updateOmikujiSets((sets, index) => {
-      sets[index] = { ...sets[index], priority: value }
-      return sets
-    })
+  // 優先度更新
+  const updatePriority = (value: boolean) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      isPriority: value,
+    }))
+  }
 
   // criteriaのトグル
   const toggleCriteria = (enabled: boolean) => {
-    updateOmikujiSets((sets, index) => {
-      sets[index] = {
-        ...sets[index],
-        priority: enabled, // criteriaをOFFにする時はpriorityもfalseに
-        criteria: enabled
-          ? {
-              conditions: [],
-              access: [],
-              count: { comparison: 'lowerBound', unit: 'lc', value: 0 },
-              comment: [],
-            }
-          : null,
-      }
-      return sets
-    })
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      isPriority: enabled,
+      criteria: enabled ? CriteriaThresholdSchema.parse({}) : null,
+    }))
   }
 </script>

@@ -75,7 +75,7 @@
   const localData = computed<CharacterType | undefined>({
     get: () => {
       if (!props.selectedItemKey) return
-      return omikujiStore.getItem<CharacterType>('characters', props.selectedItemKey) ?? undefined
+      return omikujiStore.getItem('characters', props.selectedItemKey) ?? undefined
     },
 
     set: (value?: CharacterType) => {

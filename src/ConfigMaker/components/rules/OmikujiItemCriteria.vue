@@ -72,6 +72,7 @@
   import {
     CriteriaThresholdCondition,
     criteriaThresholdConditionLabels,
+    CriteriaThresholdSchema,
     CriteriaThresholdType,
   } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
 
@@ -90,6 +91,8 @@
 
   const omikujiStore = useOmikujiStore()
 
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
+
   // 条件タイプの選択肢
   const conditionTypes = Object.entries(criteriaThresholdConditionLabels).map(([value, label]) => ({
     value: value as CriteriaThresholdCondition,
@@ -104,19 +107,6 @@
     return criteria.value?.conditions?.includes(condition) ?? false
   }
 
-  // 共通の更新関数
-  const updateOmikujiSets = (updateFn: (sets: OmikujiItemType[], index: number) => OmikujiItemType[]) => {
-    if (!props.selectedItemKey) return
-    const index = props.allOmikuji.findIndex((item) => item.key === props.omikuji.key)
-    if (index === -1) return
-    omikujiStore.updateRecordProperty(
-      props.category,
-      props.selectedItemKey,
-      'omikuji',
-      updateFn([...props.allOmikuji], index)
-    )
-  }
-
   // Utils
   const toggleInArray = <T,>(array: T[], value: T): T[] => {
     const index = array.indexOf(value)
@@ -125,43 +115,35 @@
 
   // 条件のトグル
   const toggleCondition = (condition: CriteriaThresholdCondition) => {
-    updateOmikujiSets((sets, index) => {
-      const currentCriteria = sets[index].criteria
+    if (index.value === -1 || !props.selectedItemKey) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => {
+      const currentCriteria = item.criteria
       const currentConditions = currentCriteria?.conditions ?? []
       const newConditions = toggleInArray(currentConditions, condition)
 
-      sets[index] = {
-        ...sets[index],
+      return {
+        ...item,
         criteria: currentCriteria
           ? { ...currentCriteria, conditions: newConditions }
-          : {
-              conditions: newConditions,
-              access: [],
-              count: { comparison: 'lowerBound', unit: 'lc', value: 0 },
-              comment: [],
-            },
+          : { ...CriteriaThresholdSchema.parse({}), conditions: newConditions },
       }
-      return sets
     })
   }
 
   // criteriaのプロパティ更新
   const updateCriteriaProperty = <K extends keyof CriteriaThresholdType>(key: K, value: CriteriaThresholdType[K]) => {
-    updateOmikujiSets((sets, index) => {
-      const currentCriteria = sets[index].criteria
-      sets[index] = {
-        ...sets[index],
+    if (index.value === -1 || !props.selectedItemKey) return
+
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => {
+      const currentCriteria = item.criteria
+
+      return {
+        ...item,
         criteria: currentCriteria
           ? { ...currentCriteria, [key]: value }
-          : {
-              conditions: [],
-              access: [],
-              count: { comparison: 'lowerBound', unit: 'lc', value: 0 },
-              comment: [],
-              [key]: value,
-            },
+          : { ...CriteriaThresholdSchema.parse({}), [key]: value },
       }
-      return sets
     })
   }
 </script>

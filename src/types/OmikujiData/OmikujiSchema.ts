@@ -120,7 +120,8 @@ export const ActionSetSchema = z.object({
 export const OmikujiItemSchema = z.object({
   ...ActionSetSchema.shape,
   weight: z.number().min(0).default(1).catch(1), // 出現割合
-  priority: z.boolean().default(false).catch(false), // 優先 trueならrank=2
+  rank: z.number().min(0).max(1).optional(), // 優先度
+  isPriority: z.boolean().default(false).catch(false), // 優先 trueならrank=1
   criteria: z.union([CriteriaThresholdSchema, z.null()]).default(null).catch(null),
 })
 

@@ -100,7 +100,7 @@ export class CooldownManager {
   /**
    * ユーザーIDを更新し、抽選回数をインクリメント
    */
-  updateUserId(userId: string, ruleId: string, name: string, lastBotMessages: string): void {
+  updateUserId(userId: string, ruleId: string, name: string): void {
     const key = this.createKey(userId, ruleId)
 
     // 配列の先頭に追加（最新の履歴が常に先頭）
@@ -111,13 +111,13 @@ export class CooldownManager {
       this.lastUserRuleKeys.pop()
     }
 
-    this.incrementUserDrawCount(userId, ruleId, name, lastBotMessages)
+    this.incrementUserDrawCount(userId, ruleId, name)
   }
 
   /**
    * 指定ユーザー・ルールの抽選回数を1増やす
    */
-  private incrementUserDrawCount(userId: string, ruleId: string, name: string, lastBotMessages: string): void {
+  private incrementUserDrawCount(userId: string, ruleId: string, name: string): void {
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userDrawCounts.get(key)
     const currentTime = Date.now()

@@ -8,13 +8,7 @@
     "generatorVersion": "v2.0.0-alpha",
     "dataVersion": 2.0000001,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ゲーム",
-      "スイカゲーム",
-      "カボチャゲーム",
-      "クジラゲームオンライン"
-    ],
+    "tags": ["おみくじBOT", "ゲーム", "スイカゲーム", "カボチャゲーム", "クジラゲームオンライン"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7730686"
   },
@@ -51,15 +45,13 @@
             "characterKey": "metanBlack"
           },
           "weight": 1,
-          "priority": false,
+          "isPriority": false,
           "criteria": null
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -68,14 +60,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉$"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -114,15 +99,13 @@
             "characterKey": "omiken"
           },
           "weight": 1,
-          "priority": false,
+          "isPriority": false,
           "criteria": null
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -131,13 +114,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^pumpkin",
-          "^かぼちゃ",
-          "^カボチャ",
-          "^南瓜",
-          "^🎃$"
-        ]
+        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -176,15 +153,13 @@
             "characterKey": "omiken"
           },
           "weight": 1,
-          "priority": false,
+          "isPriority": false,
           "criteria": null
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -193,14 +168,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^whale",
-          "^くじら",
-          "^クジラ",
-          "^鯨",
-          "^🐋$",
-          "^🐳$"
-        ]
+        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -241,15 +209,13 @@
             "characterKey": "metan"
           },
           "weight": 1,
-          "priority": false,
+          "isPriority": false,
           "criteria": null
         }
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -258,9 +224,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -283,11 +247,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "Metan"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "Metan"],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -329,11 +289,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
-      "tags": [
-        "touhokuZunko",
-        "voicevox",
-        "Metan"
-      ],
+      "tags": ["touhokuZunko", "voicevox", "Metan"],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -375,10 +331,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -421,10 +374,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -463,22 +413,9 @@
       "fontFamily": "default"
     },
     "components": {
-      "conditions": [
-        "ranking",
-        "toast"
-      ],
+      "conditions": ["ranking", "toast"],
       "bubble": {
-        "showCharacters": [
-          [
-            "omiken",
-            "omiken_2"
-          ],
-          [
-            "metanBlack",
-            "metan"
-          ],
-          []
-        ],
+        "showCharacters": [["omiken", "omiken_2"], ["metanBlack", "metan"], []],
         "characterSize": 48,
         "bubbleMotionEnter": "slideUp",
         "bubbleTextAnimate": true,
@@ -520,13 +457,7 @@
         "characters": "basic",
         "characterVisible": "experimental",
         "licenseVisible": "experimental",
-        "gameScripts": [
-          "GouseiSuika",
-          "BomberSpin",
-          "GoogolClover",
-          "MultiplyBonanza",
-          "DwarfBomb"
-        ],
+        "gameScripts": ["GouseiSuika", "BomberSpin", "GoogolClover", "MultiplyBonanza", "DwarfBomb"],
         "jsonMergeSettings": "experimental"
       }
     }
