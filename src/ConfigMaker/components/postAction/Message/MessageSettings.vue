@@ -56,7 +56,7 @@
   import { CharacterEmotionType, PostActionMessageType } from '@/types/'
   import IconSelector from '@/ConfigMaker/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import PlaceholderChecker from './PlaceholderChecker.vue'
+  import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { soundList } from '@/Toolkit/sounds/soundMap'
 
   const props = defineProps<{

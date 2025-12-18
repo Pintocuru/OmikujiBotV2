@@ -1,4 +1,5 @@
 <!-- src\ConfigMaker\components\postAction\items\WordPartyField.vue -->
+<!-- ! wordPartySettings は廃止されたので、簡略化してもよい -->
 <template>
   <div class="flex items-center gap-2">
     <div class="flex gap-1 w-full">
@@ -41,7 +42,7 @@
   import { ref, computed, watch } from 'vue'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import PlaceholderChecker from './PlaceholderChecker.vue'
+  import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { storeToRefs } from 'pinia'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 

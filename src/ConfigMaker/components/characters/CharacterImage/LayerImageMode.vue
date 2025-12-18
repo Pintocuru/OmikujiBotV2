@@ -19,7 +19,7 @@
     </button>
     <div class="mt-2">
       <div class="text-xs text-base-content/60 mb-1">合成プレビュー:</div>
-      <ImagePreviewWrapper :layers="layers" />
+      <ImagePreviewWrapper :layers="layers" :size="32" />
     </div>
   </div>
 </template>

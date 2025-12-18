@@ -1345,7 +1345,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:46:49.559Z",
+      "updatedAt": "2025-12-18T09:31:58.972Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -1968,7 +1968,10 @@
       "bubble": {
         "showCharacters": [
           [],
-          []
+          [
+            "metan",
+            "metanBlack"
+          ]
         ],
         "characterSize": 48,
         "bubbleMotionEnter": "zoomIn",
@@ -1976,7 +1979,7 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "showToastsOnRight": true,
+        "showToastsOnRight": false,
         "showToastsCharacter": true,
         "showThumbnail": []
       },

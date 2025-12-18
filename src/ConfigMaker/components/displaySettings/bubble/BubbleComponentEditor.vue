@@ -17,7 +17,7 @@
   <SettingItem
     label="フキダシアニメーション"
     description="フキダシの表示アニメーションを設定します"
-    :showReset="true"
+    :showReset="false"
     @reset="() => resetField('bubbleMotionEnter')"
   >
     <select
@@ -46,42 +46,45 @@
     />
   </SettingItem>
 
-  <!-- 文字送り速度 -->
-  <SettingItem
-    label="文字送り速度"
-    description="文字が表示される速度を調整します (10〜200)"
-    :showReset="true"
-    @reset="() => resetField('bubbleTextSpeed')"
-  >
-    <input
-      type="range"
-      min="10"
-      max="200"
-      step="10"
-      class="range range-primary w-full max-w-xs"
-      v-model.number="bubble.bubbleTextSpeed"
-      @input="updateField('bubbleTextSpeed', $event)"
-    />
-    <div class="mt-2 text-sm">現在値: {{ bubble.bubbleTextSpeed }}ms</div>
-  </SettingItem>
-
-  <!-- 文字送りサウンド -->
-  <!-- TODO:サウンドからリストを持ってくる -->
-  <SettingItem
-    label="文字送りサウンド"
-    description="文字送り時に再生するサウンドを選択します"
-    :showReset="true"
-    @reset="() => resetField('bubbleTextSound')"
-  >
-    <select
-      v-model="bubble.bubbleTextSound"
-      @change="updateField('bubbleTextSound', $event)"
-      class="select select-bordered w-full max-w-xs"
+  <div v-if="bubble.bubbleTextAnimate" class="space-y-4">
+    <!-- 文字送り速度 -->
+    <SettingItem
+      label="文字送り速度"
+      description="文字が表示される速度を調整します (10〜200)"
+      :showReset="true"
+      @reset="() => resetField('bubbleTextSpeed')"
     >
-      <option value="">なし</option>
-      <option value="typewriter">タイプライター</option>
-    </select>
-  </SettingItem>
+      <input
+        type="range"
+        min="10"
+        max="200"
+        step="10"
+        class="range range-primary w-full max-w-xs"
+        v-model.number="bubble.bubbleTextSpeed"
+        @input="updateField('bubbleTextSpeed', $event)"
+      />
+      <div class="mt-2 text-sm">現在値: {{ bubble.bubbleTextSpeed }}ms</div>
+    </SettingItem>
+
+    <SettingItem
+      label="文字送りサウンド"
+      description="文字送り時に再生するサウンドを選択します"
+      :showReset="true"
+      @reset="() => resetField('bubbleTextSound')"
+    >
+      <select
+        v-model="bubble.bubbleTextSound"
+        @change="onSoundChange($event)"
+        class="select select-bordered w-full max-w-xs"
+      >
+        <option value="">なし</option>
+
+        <option v-for="(value, key) in rpgVoiceMap" :key="key" :value="key">
+          {{ key }}
+        </option>
+      </select>
+    </SettingItem>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -93,6 +96,7 @@
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -142,4 +146,15 @@
     const defaults = Object.values(DEFAULT_COLOR_THEMES)
     return defaults[Math.floor(Math.random() * defaults.length)]
   })
+
+  const onSoundChange = (event: Event) => {
+    const soundName = (event.target as HTMLSelectElement).value
+    if (soundName) {
+      playRpgVoiceLoop(
+        'こんな文章でも読んでくれてありがとう！これでもこのメッセージ、意味があるからな！文字の長さしか見ないけど！',
+        soundName
+      )
+    }
+    updateField('bubbleTextSound', event)
+  }
 </script>

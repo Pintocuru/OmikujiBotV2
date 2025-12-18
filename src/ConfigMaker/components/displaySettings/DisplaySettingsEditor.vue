@@ -25,8 +25,8 @@
     <!-- フキダシコンポーネント：キャラクター -->
     <SectionCard
       v-if="conditions.includes('bubble')"
-      :isOpen="activeSection === 'bubbleComponent'"
-      @toggle="toggleSection('bubbleComponent')"
+      :isOpen="activeSection === 'bubbleComponentcharacter'"
+      @toggle="toggleSection('bubbleComponentcharacter')"
       title="フキダシコンポーネント(キャラクター)"
       description="キャラクターの表示位置設定"
     >
@@ -129,6 +129,7 @@
   type SectionType =
     | 'componentsSettings'
     | 'bubbleComponent'
+    | 'bubbleComponentcharacter'
     | 'toastComponent'
     | 'thumbnailComponent'
     | 'rankingComponent'

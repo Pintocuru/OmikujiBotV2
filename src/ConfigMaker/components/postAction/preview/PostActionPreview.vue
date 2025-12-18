@@ -8,8 +8,9 @@
         <ChatBubbleItem
           :key="toastKey"
           :simpleMessage="processedToastMessage"
-          :showToastsOnRight="true"
+          :showToastsOnRight="toastSettings.showToastsOnRight"
           :character="character"
+          :iconKey="action.iconKey"
           :isCharacterDisplay="toastSettings.showToastsCharacter"
         />
       </div>
@@ -99,10 +100,8 @@
     return Object.values(characters.value)[0]
   })
 
-  // トースト表示判定（トーストは必ず右）
-  const isToast = computed(
-    () => props.action.actionType === 'message' && props.action.message.toast && toastSettings.value.showToastsOnRight
-  )
+  // トースト表示判定
+  const isToast = computed(() => props.action.actionType === 'message' && props.action.message.toast)
 
   // メッセージ処理
   const processedMessage = computed(() => {

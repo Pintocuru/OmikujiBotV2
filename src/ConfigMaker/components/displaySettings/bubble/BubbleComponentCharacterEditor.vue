@@ -25,7 +25,7 @@
   >
     <input
       type="range"
-      min="12"
+      min="16"
       max="80"
       step="4"
       :value="bubble.characterSize"

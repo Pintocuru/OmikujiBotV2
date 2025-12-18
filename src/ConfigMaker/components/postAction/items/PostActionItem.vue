@@ -50,12 +50,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionSchema, PostActionType, RulesCategoryType } from '@/types/'
-  import MessageSettings from './MessageSettings.vue'
-  import SoundSettings from './SoundSettings.vue'
-  import WordPartySettings from './WordPartySettings.vue'
-  import ActionSetSettings from './ActionSetSettings.vue'
+  import MessageSettings from '../Message/MessageSettings.vue'
+  import SoundSettings from '../Sounds/SoundSettings.vue'
+  import WordPartySettings from '../WordParty/WordPartySettings.vue'
+  import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import PostActionPreview from './PostActionPreview.vue'
+  import PostActionPreview from '../preview/PostActionPreview.vue'
   import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   // Props

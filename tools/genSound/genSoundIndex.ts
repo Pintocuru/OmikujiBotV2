@@ -11,7 +11,7 @@ dotenv.config({ path: envPath })
 if (!process.env.PACKAGE_ROOT) throw new Error('.envファイルが読めないみたい')
 const packageRoot = process.env.PACKAGE_ROOT
 
-const dir = path.resolve(packageRoot, 'assets/source/sounds')
+const dir = path.resolve(packageRoot, 'assets/sounds')
 const outPath = path.resolve(packageRoot, 'src/Toolkit/sounds/soundMap.ts')
 
 // 再帰的に収集
@@ -48,7 +48,7 @@ for (const f of allFiles) {
   if (!isFree && !isRpg) continue
 
   const varName = isFree ? `f${fCount++}` : `r${rCount++}`
-  imports.push(`import ${varName} from '@assets/source/sounds/${f}'`)
+  imports.push(`import ${varName} from '@assets/sounds/${f}'`)
 
   const base = path.basename(f, path.extname(f))
   if (isFree) {

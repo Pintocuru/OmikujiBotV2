@@ -1,5 +1,5 @@
 // src/Toolkit/sounds/PlaySound.ts
-import { soundMap } from './soundMap'
+import { rpgVoiceMap, soundMap } from './soundMap'
 
 // 1文字あたりの再生時間（ミリ秒）
 const RPG_VOICE_MS_PER_CHARACTER = 50
@@ -8,7 +8,7 @@ const RPG_VOICE_MS_PER_CHARACTER = 50
  * 即時再生
  */
 export const playSound = (soundName: string) => {
-  const src = soundMap[soundName]
+  const src = soundMap[soundName] ?? rpgVoiceMap[soundName]
   if (!src) {
     console.warn(`Sound "${soundName}" not found in soundMap`)
     return
@@ -34,17 +34,22 @@ export const playSoundDelay = (soundName: string, delaySeconds = 0) => {
 /**
  * RPG風音声ループを再生（テキスト長に応じて自動停止）
  */
-export const playRpgVoiceLoop = (text: string, delaySeconds: number = 0) => {
-  if (!text) return
+export const playRpgVoiceLoop = (text: string, soundName: string, delaySeconds: number = 0) => {
+  if (!text || !soundName) return
 
   setTimeout(() => {
     const durationMs = text.length * RPG_VOICE_MS_PER_CHARACTER
 
-    const rpgVoice = soundMap.rpg_voice_a5
-    const audio = new Audio(rpgVoice)
+    const src = soundMap[soundName] ?? rpgVoiceMap[soundName]
+    if (!src) {
+      console.warn(`RPG voice "${soundName}" not found`)
+      return
+    }
+
+    const audio = new Audio(src)
     audio.currentTime = 0
     audio.play().catch((e) => {
-      console.warn('RPG voice sound failed to play:', e)
+      console.warn(`RPG voice sound failed to play:`, e)
     })
 
     setTimeout(() => {
