@@ -37,6 +37,6 @@
       return []
     }
 
-    return botMessages.value.filter((msg) => msg.comment?.rankingKey === rankingSettings.value?.scriptKey)
+    return botMessages.value.filter((msg) => msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey)
   })
 </script>

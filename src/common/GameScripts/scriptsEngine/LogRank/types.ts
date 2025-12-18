@@ -13,25 +13,25 @@ export type RankingMode = z.infer<typeof RankingModeSchema>
  * 結果タイプの定義
  * より明示的に「何が起きたか」を表現
  */
-export const ResultTypeSchema = z.enum(['win', 'lose', 'draw', 'score'])
+export const ResultTypeSchema = z.enum(['win', 'lose', 'draw', 'score']).default('score')
 export type ResultType = z.infer<typeof ResultTypeSchema>
 
 /**
  * ゲーム実行時のパラメータ（改良版）
  */
 export const GameParamsSchema = z.object({
-  // ===== ユーザー情報 =====
+  // ユーザー情報
   userId: z.string(),
   name: z.string(),
 
-  // ===== BOT設定 =====
+  // BOT設定
   characterKey: z.string(),
 
-  // ===== ゲームルール設定 =====
+  //  ゲームルール設定
   rankingMode: RankingModeSchema.default('total_wins'), // より明示的な名前
   maxDrawsPerUser: z.number().int().min(0).max(100).default(5), // より意味が明確
 
-  // ===== 今回の実行結果 =====
+  // 今回の実行結果
   result: z.object({
     type: ResultTypeSchema, // 'win' | 'lose' | 'draw' | 'score'
     score: z.number(), // 獲得スコア（勝敗関係なく記録）

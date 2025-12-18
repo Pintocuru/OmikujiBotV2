@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
 import { GameEngine } from './game'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
@@ -53,27 +53,29 @@ export class ExecuteScript implements ScriptClass {
     const wordPartySelector = new WordPartySelector()
     const wordPartyActions = wordPartySelector.selectWordParties(gameResult)
 
+    const ranking = RankingMessageSchema.parse({
+      scriptKey: RANKING_KEY,
+      name: stats.name,
+      scoreText: String(gameResult.payout),
+      scoreValue: currentRecord.score,
+      symbol: gameResult.symbol,
+      isRank: !logResult.isOverLimit,
+    })
+
     return [
       ...logResult.postActions,
       { actionType: 'wordParty', delaySeconds: 1, wordParty: gameResult.party },
       { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
       ...wordPartyActions,
-      {
-        actionType: 'message',
+      PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
-        iconKey: 'default',
         message: {
           bubble: message,
-          rankingKey: RANKING_KEY,
-          rankingDisplayScore: String(gameResult.payout),
-          rankingIsRank: !logResult.isOverLimit,
-          rankingName: stats.name,
-          rankingPoint: String(currentRecord.score),
-          rankingSymbol: gameResult.symbol,
+          ranking,
         },
         sound: 'decision',
-      },
+      }),
     ]
   }
 

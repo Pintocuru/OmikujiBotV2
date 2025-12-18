@@ -12,13 +12,11 @@
 
           <div class="relative text-center text-content">
             <h3 class="text-2xl font-bold mb-3">
-              {{ latestMessage.comment?.rankingName || latestMessage.name }}
+              {{ latestMessage.comment?.ranking?.name || latestMessage.name }}
             </h3>
-
             <p class="text-base opacity-80">スコア</p>
-
             <div class="text-6xl font-bold">
-              {{ formatScore(Number(latestMessage.comment?.rankingDisplayScore) || 0) }}
+              {{ formatScore(latestMessage.comment?.ranking?.scoreValue || 0) }}
             </div>
           </div>
         </div>
@@ -33,56 +31,34 @@
   import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { Trophy } from 'lucide-vue-next'
 
-  const DISPLAY_DURATION_MS = 8000 // 表示時間（ミリ秒）
+  // 表示時間（ミリ秒）
+  const DISPLAY_DURATION_MS = 8000
 
-  interface Props {
+  const props = defineProps<{
     botMessages: BotMessage[]
     settings: SettingsRankingType
-  }
-
-  const props = defineProps<Props>()
+  }>()
 
   const isVisible = ref(false)
   let hideTimer: ReturnType<typeof setTimeout> | null = null
 
-  // 1. 新しい computed プロパティを作成し、ここでフィルタリングを安全に行う
-  const localFilteredMessages = computed(() => {
-    const scriptKey = props.settings.scriptKey // ランキングキーを取得
+  const localFilteredMessages = computed(() =>
+    props.botMessages.filter((m) => m.comment?.ranking?.scriptKey === props.settings.scriptKey)
+  )
 
-    if (!props.botMessages || !scriptKey) {
-      return []
-    }
+  const latestMessage = computed(() =>
+    localFilteredMessages.value.length > 0 ? localFilteredMessages.value[localFilteredMessages.value.length - 1] : null
+  )
 
-    // props を変更せずに、新しい配列を生成して返す
-    return props.botMessages.filter((message) => message.comment?.rankingKey === scriptKey)
-  })
+  const formatScore = (score: number): string => score.toLocaleString()
 
-  // 2. フィルタリングされたリストから最新メッセージ（末尾）を取得
-  const latestMessage = computed(() => {
-    if (localFilteredMessages.value.length === 0) return null
-
-    // フィルタリングされた配列の末尾の要素（最新のメッセージ）を返す
-    return localFilteredMessages.value[localFilteredMessages.value.length - 1]
-  })
-
-  // スコアのフォーマット
-  const formatScore = (score: number): string => {
-    return score.toLocaleString()
-  }
-
-  // 3. watch の監視対象を、フィルタリングされたリストの長さにする
   watch(
     () => localFilteredMessages.value.length,
-    (newLength) => {
-      // メッセージが1つ以上あり、最新メッセージが取得できた場合
-      if (newLength > 0 && latestMessage.value) {
+    (len) => {
+      if (len > 0 && latestMessage.value) {
         if (hideTimer) clearTimeout(hideTimer)
-
         isVisible.value = true
-
-        hideTimer = setTimeout(() => {
-          isVisible.value = false
-        }, DISPLAY_DURATION_MS)
+        hideTimer = setTimeout(() => (isVisible.value = false), DISPLAY_DURATION_MS)
       }
     },
     { immediate: true }

@@ -81,14 +81,13 @@
       label="順位のソート"
       description="ランキング向けに得点の高い順にするか"
       :showReset="true"
-      @reset="resetMap.sortByHighScore"
+      @reset="resetMap.sortOrder"
     >
-      <input
-        type="checkbox"
-        class="toggle toggle-primary"
-        :checked="ranking.sortByHighScore"
-        @change="(e) => updateRankingField('sortByHighScore', (e.target as HTMLInputElement).checked)"
-      />
+      <select class="select select-primary" v-model="ranking.sortOrder">
+        <option v-for="order in rankingSortOrders" :key="order" :value="order">
+          {{ rankingSortOrderLabels[order] }}
+        </option>
+      </select>
     </SettingItem>
   </div>
 </template>
@@ -98,7 +97,11 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { SettingsRankingSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import {
+    rankingSortOrderLabels,
+    rankingSortOrders,
+    SettingsRankingSchema,
+  } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
@@ -131,7 +134,7 @@
     scriptKey: () => resetField('scriptKey'),
     title: () => resetField('title'),
     limit: () => resetField('limit'),
-    sortByHighScore: () => resetField('sortByHighScore'),
+    sortOrder: () => resetField('sortOrder'),
     color: () => resetField('color'),
   }
 </script>

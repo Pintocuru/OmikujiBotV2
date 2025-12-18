@@ -13,7 +13,8 @@
           class="flex items-center gap-2 p-2 rounded-lg transition-all hover:bg-base-200"
           :class="getRankClass(index)"
         >
-          <div v-if="settings.sortByHighScore" class="flex-shrink-0">
+          <!-- スコア順のときだけ順位バッジを表示 -->
+          <div v-if="settings.sortOrder === 'high' || settings.sortOrder === 'low'" class="flex-shrink-0">
             <div class="badge badge-xl font-bold" :class="getRankBadgeClass(index)">
               {{ index + 1 }}
             </div>
@@ -21,16 +22,19 @@
 
           <div class="flex-grow min-w-0">
             <span class="text-xl font-semibold truncate">
-              {{ msg.comment?.rankingName || msg.name || 'Anonymous' }}
+              {{ msg.comment?.ranking?.name || msg.name || 'Anonymous' }}
             </span>
-            <span v-if="msg.comment.rankingSymbol !== ''" class="text-lg text-base-content/60 font-semibold truncate">
-              {{ msg.comment.rankingSymbol }}
+            <span
+              v-if="msg.comment?.ranking?.symbol !== ''"
+              class="text-lg text-base-content/60 font-semibold truncate"
+            >
+              {{ msg.comment?.ranking?.symbol }}
             </span>
           </div>
 
           <div class="flex-shrink-0">
             <div class="badge badge-xl badge-primary font-bold">
-              {{ formatScore(Number(msg.comment?.rankingPoint) || 0) }}
+              {{ formatScore(msg.comment?.ranking?.scoreValue || 0) }}
             </div>
           </div>
         </div>
@@ -41,7 +45,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { generateDummyMessages } from './useDummyBotMessages'
 
@@ -53,12 +57,27 @@
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.botMessages.length > 0) {
-      let data = [...props.botMessages].filter((msg) => msg.comment?.rankingIsRank !== false)
+      let data = [...props.botMessages].filter((msg) => msg.comment?.ranking?.isRank !== false)
 
-      if (props.settings.sortByHighScore) {
-        data.sort((a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0))
-      } else {
-        data.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+      switch (props.settings.sortOrder) {
+        case 'high':
+          data.sort((a, b) => {
+            const diff = (b.comment?.ranking?.scoreValue || 0) - (a.comment?.ranking?.scoreValue || 0)
+            if (diff !== 0) return diff
+            return (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0)
+          })
+          break
+        case 'low':
+          data.sort((a, b) => {
+            const diff = (a.comment?.ranking?.scoreValue || 0) - (b.comment?.ranking?.scoreValue || 0)
+            if (diff !== 0) return diff
+            return (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0)
+          })
+          break
+        case 'new':
+        default:
+          data.sort((a, b) => (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0))
+          break
       }
 
       return data.slice(0, props.settings.limit || 10)

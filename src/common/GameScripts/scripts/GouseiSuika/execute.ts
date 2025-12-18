@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
 import { GachaGame } from './game'
 import { GameResult } from './gameConfigs'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
@@ -26,8 +26,11 @@ export class ExecuteScript implements ScriptClass {
   run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
     // パラメータ
     const { mode } = this.parseParams(queryString)
+    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
+
+    // ゲームの実行
     const gameResult = new GachaGame(mode).play()
-    const rankingActions = this.buildRankingActions(gameResult, characterKey, mode, comment)
+    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, mode, comment)
 
     return [...gameResult.postArray, ...rankingActions]
   }
@@ -50,6 +53,7 @@ export class ExecuteScript implements ScriptClass {
   }
 
   private buildRankingActions(
+    userName: string,
     gameResult: GameResult,
     characterKey: string,
     mode: string,
@@ -59,7 +63,7 @@ export class ExecuteScript implements ScriptClass {
 
     const logResult = this.logRank.run({
       userId: comment.data.userId,
-      name: comment.data.displayName ?? UNKNOWN_NAME,
+      name: userName,
       characterKey,
       rankingMode: 'high_score',
       maxDrawsPerUser: 5,
@@ -72,24 +76,27 @@ export class ExecuteScript implements ScriptClass {
     const stats = logResult.currentUserStats
     const currentRecord = logResult.currentRecord
 
+    const ranking = RankingMessageSchema.parse({
+      scriptKey: RANKING_KEY,
+      name: stats.name,
+      scoreText: String(gameResult.points),
+      scoreValue: currentRecord.score,
+      symbol: mode,
+      timestamp: Date.now(),
+      isRank: !logResult.isOverLimit,
+    })
+
     return [
       ...logResult.postActions,
-      {
-        actionType: 'message',
+      PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
-        iconKey: 'default',
         message: {
-          bubble: `${comment.data.displayName ?? UNKNOWN_NAME}の得点は${gameResult.points}!`,
-          rankingKey: RANKING_KEY,
-          rankingDisplayScore: String(gameResult.points),
-          rankingIsRank: !logResult.isOverLimit,
-          rankingName: stats.name,
-          rankingPoint: String(currentRecord.score),
-          rankingSymbol: mode,
+          bubble: `${userName}の得点は${gameResult.points}!`,
+          ranking,
         },
         sound: 'decision',
-      },
+      }),
     ]
   }
 }

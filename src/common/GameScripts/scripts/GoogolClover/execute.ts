@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
 import { playSlot } from './game'
 import { UserState } from './types'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
@@ -49,23 +49,24 @@ export class ExecuteScript implements ScriptClass {
     const stats = logResult.currentUserStats
     const currentRecord = logResult.currentRecord
 
+    const ranking = RankingMessageSchema.parse({
+      name: stats.name,
+      scoreText: String(gameResult.payout),
+      scoreValue: gameResult.payout,
+      scriptKey: RANKING_KEY,
+      isUniqueUser: true,
+    })
+
     const msg: PostActionType[] = [
-      {
-        actionType: 'message',
+      PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
-        iconKey: 'default',
         message: {
           bubble: gameResult.message,
-          rankingKey: RANKING_KEY,
-          rankingDisplayScore: String(gameResult.payout),
-          rankingIsRank: !logResult.isOverLimit,
-          rankingName: stats.name,
-          rankingPoint: String(gameResult.payout),
-          rankingSymbol: '',
+          ranking,
         },
         sound: 'decision',
-      },
+      }),
     ]
 
     return gameResult.success

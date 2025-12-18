@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
 import { playSlot } from './game'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
@@ -46,27 +46,29 @@ export class ExecuteScript implements ScriptClass {
     const stats = logResult.currentUserStats
     const currentRecord = logResult.currentRecord
 
+    const ranking = RankingMessageSchema.parse({
+      scriptKey: RANKING_KEY,
+      name: stats.name,
+      scoreText: String(gameResult.payout),
+      scoreValue: currentRecord.score,
+      symbol: gameResult.symbol,
+      isRank: !logResult.isOverLimit,
+    })
+
     return [
       ...logResult.postActions,
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
       { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
       { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
-      {
-        actionType: 'message',
+      PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
-        iconKey: 'default',
         message: {
           bubble: gameResult.message,
-          rankingKey: RANKING_KEY,
-          rankingDisplayScore: String(gameResult.payout),
-          rankingIsRank: !logResult.isOverLimit,
-          rankingName: stats.name,
-          rankingPoint: String(currentRecord.score),
-          rankingSymbol: gameResult.symbol,
+          ranking,
         },
         sound: 'decision',
-      },
+      }),
     ]
   }
 

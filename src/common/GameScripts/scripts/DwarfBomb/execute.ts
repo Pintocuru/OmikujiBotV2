@@ -1,6 +1,6 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
@@ -51,6 +51,14 @@ export class ExecuteScript implements ScriptClass {
     // ゲーム結果に基づいて演出効果を生成
     const partyEffects = game.generatePartyEffects(gameResult)
 
+    const ranking = RankingMessageSchema.parse({
+      scriptKey: RANKING_KEY,
+      name: stats.name,
+      scoreText: String(gameResult.payout),
+      scoreValue: currentRecord.score,
+      isRank: !logResult.isOverLimit,
+    })
+
     return [
       ...logResult.postActions,
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
@@ -58,22 +66,15 @@ export class ExecuteScript implements ScriptClass {
       { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },
       { actionType: 'wordParty', delaySeconds: 2.7, wordParty: 'CommonBombFire' },
       ...partyEffects,
-      {
-        actionType: 'message',
+      PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
-        iconKey: 'default',
         message: {
           bubble: gameResult.message,
-          rankingKey: RANKING_KEY,
-          rankingDisplayScore: String(gameResult.payout),
-          rankingIsRank: !logResult.isOverLimit,
-          rankingName: stats.name,
-          rankingPoint: String(currentRecord.score),
-          rankingSymbol: '',
+          ranking,
         },
         sound: 'decision',
-      },
+      }),
     ]
   }
 

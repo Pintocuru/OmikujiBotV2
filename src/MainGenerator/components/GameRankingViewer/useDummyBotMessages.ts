@@ -1,4 +1,5 @@
 // src/composables/useDummyBotMessages.ts
+import { RankingMessageSchema } from '@/types'
 import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
 import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
 
@@ -99,22 +100,30 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
     const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
 
+    const ranking = RankingMessageSchema.parse({
+      scriptKey: settings.scriptKey || 'dummy',
+      name,
+      scoreText: String(points),
+      scoreValue: points,
+    })
+
     dummyMessages.push(
       BotMessageSchema.parse({
         name,
         comment: {
-          rankingName: name,
-          rankingPoint: String(points),
-          rankingRank: String(i + 1),
-          rankingKey: settings.scriptKey || 'dummy',
+          ranking,
         },
       })
     )
   }
 
-  if (settings.sortByHighScore) {
-    return dummyMessages.sort((a, b) => (Number(b.comment?.rankingPoint) || 0) - (Number(a.comment?.rankingPoint) || 0))
+  switch (settings.sortOrder) {
+    case 'high':
+      return dummyMessages.sort((a, b) => (b.comment.ranking?.scoreValue || 0) - (a.comment.ranking?.scoreValue || 0))
+    case 'low':
+      return dummyMessages.sort((a, b) => (a.comment.ranking?.scoreValue || 0) - (b.comment.ranking?.scoreValue || 0))
+    case 'new':
+    default:
+      return dummyMessages
   }
-
-  return dummyMessages
 }

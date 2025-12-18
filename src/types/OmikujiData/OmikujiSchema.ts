@@ -6,8 +6,31 @@ import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 import { soundList } from '@/Toolkit/sounds/soundMap'
 
-import { PostActionType as OldPostActionType } from '@/Toolkit/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
 import { CriteriaThresholdSchema } from '../OmikujiProcess/CriteriaThresholdSchema'
+import { migratePostAction } from './migrations/migratePostAction'
+
+export const RankingMessageSchema = z.object({
+  // 得点表示
+  name: z.string().default('error'), // 名前
+  scoreText: z.string().default(''), // 表示用得点
+  scoreValue: z.number().default(0), // 比較用
+  symbol: z.string().optional(), // 名前の隣につけるやつ
+  // 設定
+  scriptKey: z.string(), // コンポーネント判別用key
+  timestamp: z.number().transform((val) => val ?? Date.now()), // タイムスタンプ
+  isRank: z.boolean().default(true), // リストに載せるか
+  isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
+})
+
+// PostAction MessageBody
+export const PostActionMessageBodySchema = z
+  .object({
+    bubble: z.string().optional().catch(undefined),
+    toast: z.string().optional().catch(undefined),
+    ranking: RankingMessageSchema.optional(),
+  })
+  .default({})
+  .catch({})
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -18,54 +41,15 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 })
 
-// PostAction MessageBody
-export const PostActionMessageBodySchema = z
-  .object({
-    bubble: z.string().optional().catch(undefined),
-    toast: z.string().optional().catch(undefined),
-    rankingKey: z.string().optional().catch(undefined),
-    rankingDisplayScore: z.string().optional().catch(undefined),
-    rankingIsRank: z.boolean().optional().catch(undefined),
-    rankingName: z.string().optional().catch(undefined),
-    rankingPoint: z.string().optional().catch(undefined),
-    rankingSymbol: z.string().optional().catch(undefined),
-  })
-  .default({})
-  .catch({})
-
-/**
-
-const RankingMessageSchema = z.object({
-  // 得点表示
-  name: z.string().default('error'), // 名前
-  scoreText: z.string().default(''), // 表示用得点
-  scoreValue: z.number().default(0), // 比較用
-  symbol: z.string().optional(), // 名前の隣につけるやつ
-  // 設定
-  scriptKey: z.string(), // コンポーネント判別用key
-  timestamp: z.number() // タイムスタンプ
-  isRank: z.boolean().default(true), // リストに載せるか
-  isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
-})
-
-
-export const PostActionMessageBodySchema = z.object({
-    bubble: z.string().optional(),
-    toast: z.string().optional(),
-  ranking: RankingMessageSchema.optional(),
-}).default({}).catch({})
-
-   */
-
 export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>
 
 // PostAction message
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('message'),
-  characterKey: z.string().default('').catch(''),
+  characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  sound: z.enum(soundList).optional().catch(undefined),
+  sound: z.enum(soundList).optional(),
   message: PostActionMessageBodySchema,
 })
 
@@ -188,86 +172,3 @@ export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
-
-// ---
-// マイグレーション用関数
-
-/**
- * 古い PostAction オブジェクトを新しい判別共用体形式 (PostActionSchema) にマイグレーションする。
- * messageContent/messageToast を message.bubble/message.toast に変換し、
- * 古い単一のアクションから複数のアクションが生成される可能性があるため、配列を返します。
- */
-function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
-  if (oldAction.messageContent === undefined || oldAction.messageContent === null) {
-    const parseResult = PostActionSchema.safeParse(oldAction)
-    if (parseResult.success) return [parseResult.data]
-  }
-
-  const newActions: PostActionType[] = []
-
-  const baseFields = {
-    delaySeconds: oldAction.delaySeconds ?? 0,
-  }
-
-  // 1. actionSet の移行 (最優先)
-  if (oldAction.actionSetKey && oldAction.actionSetKey.trim() !== '') {
-    newActions.push({
-      ...baseFields,
-      actionType: 'actionSet',
-      actionSetKey: oldAction.actionSetKey,
-    })
-    return newActions
-  }
-
-  // 2. message / toast の移行 (新しい 'message' actionTypeに集約)
-  const hasMessageOrToast =
-    (oldAction.messageContent && oldAction.messageContent.trim() !== '') ||
-    (oldAction.messageToast && oldAction.messageToast.trim() !== '')
-
-  if (hasMessageOrToast) {
-    newActions.push({
-      ...baseFields,
-      actionType: 'message',
-      characterKey: oldAction.characterKey ?? '',
-      iconKey: oldAction.iconKey ?? 'default',
-      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: {
-        bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
-        toast: oldAction.messageToast, // ★ messageToast -> message.toast
-      },
-    })
-  }
-
-  // 3. wordParty の移行
-  if (oldAction.wordParty && oldAction.wordParty.trim() !== '') {
-    newActions.push({
-      ...baseFields,
-      actionType: 'wordParty',
-      wordParty: oldAction.wordParty,
-    })
-  }
-
-  // 4. sound の移行 (messageアクションに統合されなかった場合のみ)
-  const isSoundOnly = oldAction.sound && oldAction.sound.trim() !== '' && !hasMessageOrToast
-  if (isSoundOnly) {
-    newActions.push({
-      ...baseFields,
-      actionType: 'sound',
-      sound: oldAction.sound as z.infer<typeof PostActionSoundSchema>['sound'],
-    })
-  }
-
-  // 5. フォールバック (何も設定されていなかった場合)
-  if (newActions.length === 0) {
-    newActions.push({
-      ...baseFields,
-      actionType: 'message',
-      characterKey: oldAction.characterKey ?? '',
-      iconKey: oldAction.iconKey ?? 'default',
-      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: {},
-    })
-  }
-
-  return newActions
-}
