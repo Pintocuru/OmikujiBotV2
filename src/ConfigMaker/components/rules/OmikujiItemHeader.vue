@@ -19,20 +19,21 @@
       </SettingItem>
     </div>
 
+    <!-- メニュー -->
+    <div class="ml-auto">
+      <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
     <!-- 重み -->
     <OmikujiItemWeight
-      v-if="category !== 'comments'"
+      v-if="category !== 'comments' || isCard"
       :all-omikuji="allOmikuji"
       :omikuji="omikuji"
       :category="category"
       :index="index"
       :selected-item-key="selectedItemKey"
     />
-
-    <!-- メニュー -->
-    <div class="ml-auto">
-      <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
-    </div>
   </div>
 </template>
 
@@ -51,6 +52,7 @@
     omikuji: OmikujiItemType
     category: RulesCategoryType
     selectedItemKey: string | null
+    isCard?: boolean
   }>()
 
   const omikujiStore = useOmikujiStore()

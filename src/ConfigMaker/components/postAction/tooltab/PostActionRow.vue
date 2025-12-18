@@ -8,13 +8,7 @@
 
     <!-- キャラクターアイコン（message / toast のみ表示） -->
     <div v-if="action.actionType === 'message'" class="flex items-center gap-2 flex-shrink-0">
-      <CharacterIcon
-        :character-key="action.characterKey"
-        :icon-key="action.iconKey"
-        :size="6"
-        img-class="w-6 h-6 rounded-full"
-        fallback-class="w-6 h-6 rounded-full bg-base-300 flex items-center justify-center text-xs"
-      />
+      <CharacterIcon :character-key="action.characterKey" :icon-key="action.iconKey" :size="8" />
     </div>
 
     <!-- 種別アイコン -->

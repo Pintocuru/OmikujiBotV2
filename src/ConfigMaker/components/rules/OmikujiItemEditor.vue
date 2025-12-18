@@ -54,7 +54,7 @@
   import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
 
   const props = defineProps<{
     category: RulesCategoryType
@@ -69,7 +69,7 @@
   const allOmikujiSets = computed({
     get: () => {
       if (!props.selectedItemKey) return []
-      const record = omikujiStore.getItem(props.category, props.selectedItemKey) as RuleType
+      const record = omikujiStore.getItem(props.category, props.selectedItemKey)
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {
