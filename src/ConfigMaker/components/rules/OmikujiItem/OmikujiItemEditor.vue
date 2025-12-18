@@ -13,8 +13,8 @@
     <SectionCard
       v-if="category === 'comments'"
       variant="primary"
-      title="追加条件と重み"
-      description="このおみくじが適用される条件や確率を設定します"
+      title="追加条件"
+      description="このおみくじが適用される追加の条件を設定します"
     >
       <OmikujiItemBasic
         :allOmikuji="allOmikujiSets"

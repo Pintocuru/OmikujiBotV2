@@ -15,7 +15,7 @@
           :remove-comment="handleRemoveComment"
           :enter-motion="enterMotion"
           :leave-motion="enterMotion"
-          :animated-text="character?.displayOption.isRpgVoice"
+          :animated-text="bubbleTextAnimate"
           :show-toast-fallback="showToastFallback"
         />
       </div>
@@ -61,6 +61,7 @@
 
   // toast専用コンポーネントが無効な場合、toastをフォールバック表示
   const appStore = useAppStore()
+  const bubbleTextAnimate = computed(() => appStore.data.displaySettings?.components.bubble.bubbleTextAnimate)
   const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
   const bubble = computed(() => appStore.data.displaySettings.components.bubble)
   const showToastFallback = computed(() => !conditions.value.includes('toast'))

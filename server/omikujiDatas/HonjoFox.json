@@ -55,9 +55,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -66,9 +64,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "きつね"
-        ]
+        "comment": ["きつね"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -126,9 +122,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -137,9 +131,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ステージ"
-        ]
+        "comment": ["^ステージ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -191,9 +183,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -202,9 +192,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -265,14 +253,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -339,12 +323,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -404,12 +384,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -469,12 +445,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -534,9 +506,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -597,9 +567,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -2477,7 +2445,7 @@
         "isIconDisplay": true,
         "isOneCommePost": false,
         "isVoice": false,
-        "isRpgVoice": true
+        "rpgVoice": true
       },
       "color": {
         "nameColor": "#90A4AE",
@@ -2486,16 +2454,8 @@
         "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "honjoFox/head-1.gif",
-          "honjoFox/body.gif",
-          "honjoFox/tail-1.gif"
-        ],
-        "happy": [
-          "honjoFox/head-2.gif",
-          "honjoFox/body.gif",
-          "honjoFox/tail-1.gif"
-        ]
+        "default": ["honjoFox/head-1.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"],
+        "happy": ["honjoFox/head-2.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"]
       }
     }
   },

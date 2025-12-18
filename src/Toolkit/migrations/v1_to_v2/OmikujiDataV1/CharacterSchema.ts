@@ -81,7 +81,7 @@ export const DisplayOptionSchema = z.object({
   isIconDisplay: z.boolean().default(true).catch(true),
   isOneCommePost: z.boolean().default(true).catch(true),
   isVoice: z.boolean().default(true).catch(true),
-  isRpgVoice: z.boolean().optional().catch(undefined),
+  rpgVoice: z.boolean().optional().catch(undefined),
 })
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
 

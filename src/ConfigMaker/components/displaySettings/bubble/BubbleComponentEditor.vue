@@ -65,25 +65,6 @@
       />
       <div class="mt-2 text-sm">現在値: {{ bubble.bubbleTextSpeed }}ms</div>
     </SettingItem>
-
-    <SettingItem
-      label="文字送りサウンド"
-      description="文字送り時に再生するサウンドを選択します"
-      :showReset="true"
-      @reset="() => resetField('bubbleTextSound')"
-    >
-      <select
-        v-model="bubble.bubbleTextSound"
-        @change="onSoundChange($event)"
-        class="select select-bordered w-full max-w-xs"
-      >
-        <option value="">なし</option>
-
-        <option v-for="(value, key) in rpgVoiceMap" :key="key" :value="key">
-          {{ key }}
-        </option>
-      </select>
-    </SettingItem>
   </div>
 </template>
 
@@ -96,7 +77,6 @@
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -146,15 +126,4 @@
     const defaults = Object.values(DEFAULT_COLOR_THEMES)
     return defaults[Math.floor(Math.random() * defaults.length)]
   })
-
-  const onSoundChange = (event: Event) => {
-    const soundName = (event.target as HTMLSelectElement).value
-    if (soundName) {
-      playRpgVoiceLoop(
-        'こんな文章でも読んでくれてありがとう！これでもこのメッセージ、意味があるからな！文字の長さしか見ないけど！',
-        soundName
-      )
-    }
-    updateField('bubbleTextSound', event)
-  }
 </script>

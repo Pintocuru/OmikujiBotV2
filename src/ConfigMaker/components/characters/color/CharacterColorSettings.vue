@@ -39,7 +39,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
-  import CustomClassSelector from './CustomClass/CustomClassSelector.vue'
+  import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
   import CommentBubblePreview from '@/ConfigMaker/components/displaySettings/bubble/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'

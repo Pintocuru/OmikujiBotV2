@@ -6,9 +6,9 @@
       <CommentDisplay
         :displayed-comments="displayedComments"
         :remove-comment="removeComment"
-        :enter-motion="enterMotion"
-        :leave-motion="enterMotion"
-        :animated-text="animatedText"
+        :enter-motion="bubbleMotionEnter"
+        :leave-motion="bubbleMotionEnter"
+        :animated-text="bubbleTextAnimate"
         :show-toast-fallback="showToastFallback"
       >
         <template #default="{ message, index }">
@@ -38,8 +38,8 @@
 
   // 設定の取得
   const bubble = computed(() => appStore.data.displaySettings?.components.bubble || {})
-  const enterMotion = computed(() => bubble.value?.bubbleMotionEnter)
-  const animatedText = computed(() => bubble.value?.bubbleTextAnimate)
+  const bubbleMotionEnter = computed(() => bubble.value?.bubbleMotionEnter)
+  const bubbleTextAnimate = computed(() => bubble.value?.bubbleTextAnimate)
 
   // toast専用コンポーネントが無効な場合、toastをフォールバック表示
   const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])

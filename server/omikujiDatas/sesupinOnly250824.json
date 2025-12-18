@@ -230,9 +230,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -241,14 +239,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^連$",
-          "^幻獣",
-          "^げんじゅう",
-          "^がちゃ",
-          "^ガチャ",
-          "^gacha"
-        ]
+        "comment": ["^連$", "^幻獣", "^げんじゅう", "^がちゃ", "^ガチャ", "^gacha"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -307,9 +298,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -318,9 +307,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^ステージ"
-        ]
+        "comment": ["^ステージ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -452,9 +439,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -463,9 +448,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "フルーツ"
-        ]
+        "comment": ["フルーツ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -513,9 +496,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -524,17 +505,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^クローバー",
-          "^グーゴル",
-          "^ダイス",
-          "^Clover",
-          "^Googol",
-          "^Google$",
-          "^dice",
-          "☘",
-          "🎲"
-        ]
+        "comment": ["^クローバー", "^グーゴル", "^ダイス", "^Clover", "^Googol", "^Google$", "^dice", "☘", "🎲"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -584,9 +555,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -595,9 +564,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "きつね"
-        ]
+        "comment": ["きつね"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1734,9 +1701,7 @@
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"
-      ]
+      "values": ["{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"]
     },
     "GachaFirstSecond": {
       "id": "GachaFirstSecond",
@@ -2568,10 +2533,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -2590,46 +2552,16 @@
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
         "singing": "chocolate/singing.webp",
         "sleepy": "chocolate/sleepy.webp"
       },
@@ -2684,7 +2616,7 @@
         "isIconDisplay": true,
         "isOneCommePost": false,
         "isVoice": false,
-        "isRpgVoice": true
+        "rpgVoice": true
       },
       "color": {
         "nameColor": "#90A4AE",
@@ -2693,11 +2625,7 @@
         "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "honjoFox/head-1.gif",
-          "honjoFox/body.gif",
-          "honjoFox/tail-1.gif"
-        ]
+        "default": ["honjoFox/head-1.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"]
       }
     },
     "omiken_2": {
@@ -2710,10 +2638,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -2756,10 +2681,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -2852,13 +2774,7 @@
         "wordPartyLoading": "basic",
         "licenseVisible": "experimental",
         "gameScriptSettings": "basic",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb",
-          "GoogolClover",
-          "MarkovChain"
-        ],
+        "gameScripts": ["BomberSpin", "GouseiSuika", "DwarfBomb", "GoogolClover", "MarkovChain"],
         "wordPartySettings": "experimental",
         "jsonMergeSettings": "experimental"
       }

@@ -22,6 +22,26 @@
         @input="updateField(field.key, ($event.target as HTMLInputElement).value)"
       />
     </SettingItem>
+
+    <!-- URL -->
+    <SettingItem label="Webサイト" description="キャラクターに関連するURL">
+      <div class="flex gap-2">
+        <input
+          v-model="currentData.url"
+          type="url"
+          class="input input-bordered flex-1 w-full"
+          placeholder="https://example.com"
+        />
+        <button
+          v-if="currentData.url && isValidUrl(currentData.url)"
+          @click="openUrl"
+          class="btn btn-primary btn-outline"
+          title="サイトを開く"
+        >
+          <ExternalLink class="w-4 h-4" />
+        </button>
+      </div>
+    </SettingItem>
   </div>
 </template>
 
@@ -31,6 +51,7 @@
   import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { ExternalLink } from 'lucide-vue-next'
 
   const props = defineProps<{
     selectedItemKey: string
@@ -56,8 +77,24 @@
   const fields = [
     { key: 'name', label: '設定名', description: '識別しやすい名前' },
     { key: 'description', label: '説明', description: 'キャラクターの紹介文' },
-    { key: 'displayName', label: '表示名', description: 'ジェネレーターで表示される名前' },
-    { key: 'author', label: '作者', description: 'キャラクターの設定者名' },
-    { key: 'url', label: 'Webサイト', description: 'キャラクターに関連するURL' },
+    { key: 'displayName', label: 'ジェネレーターでの表示名', description: '配信時に表示されBOTの名前' },
   ] as const
+
+  // URL検証
+  const isValidUrl = (urlValue: string | undefined): boolean => {
+    if (!urlValue) return false
+    try {
+      new URL(urlValue)
+      return true
+    } catch {
+      return false
+    }
+  }
+
+  // URLを開く
+  const openUrl = () => {
+    if (currentData?.value?.url && isValidUrl(currentData?.value?.url)) {
+      window.open(currentData?.value?.url, '_blank', 'noopener,noreferrer')
+    }
+  }
 </script>

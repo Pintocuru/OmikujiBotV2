@@ -3,9 +3,6 @@
   <ImageSettingsInfo />
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-    <!-- 型 '"default" | "happy" | "excited" | "laughing" | "blushing" | "surprised" | "sad" | "angry" | "thinking" | "wink" | "singing" | "sleepy"' の式を使用して型 '{}' にインデックスを付けることはできないため、要素は暗黙的に 'any' 型になります。
-  プロパティ 'default' は型 '{}' に存在しません。ts-plugin(7053)
-(property) currentImages: {} -->
     <EmotionImageItem
       v-for="(emotion, key) in emotionLabels"
       :key="key"

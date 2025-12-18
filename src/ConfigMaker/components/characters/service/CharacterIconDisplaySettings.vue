@@ -52,21 +52,22 @@
     </label>
   </SettingItem>
 
-  <!-- isRpgVoice  -->
+  <!-- rpgVoice  -->
   <SettingItem
     v-if="!currentDisplayOption.isOneCommePost && !currentDisplayOption.isVoice"
     label="文字送り&RPG風の読み上げ"
     description="BOTコメントを音入りで表示するか"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        type="checkbox"
-        class="checkbox checkbox-primary"
-        :checked="currentDisplayOption.isRpgVoice"
-        @change="updateDisplayField('isRpgVoice', ($event.target as HTMLInputElement).checked)"
-      />
-      <span class="label-text font-medium">読み上げの声は「わんコメの標準設定」が使われます</span>
-    </label>
+    <select
+      v-model="currentDisplayOption.rpgVoice"
+      @change="onSoundChange($event)"
+      class="select select-bordered w-full max-w-xs"
+    >
+      <option value="">なし</option>
+      <option v-for="(value, key) in rpgVoiceMap" :key="key" :value="key">
+        {{ key }}
+      </option>
+    </select>
   </SettingItem>
 </template>
 
@@ -77,6 +78,7 @@
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
 
   const props = defineProps<{
     modelValue: DisplayOptionType
@@ -98,5 +100,17 @@
       ...currentDisplayOption.value,
       [key]: value,
     })
+  }
+
+  // サウンド
+  const onSoundChange = (event: Event) => {
+    const soundName = (event.target as HTMLSelectElement).value
+    if (soundName) {
+      playRpgVoiceLoop(
+        'こんな文章でも読んでくれてありがとう！これでもこのメッセージ、意味があるからな！文字の長さしか見ないけど！',
+        soundName
+      )
+    }
+    updateDisplayField('rpgVoice', soundName)
   }
 </script>

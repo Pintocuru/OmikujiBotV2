@@ -30,7 +30,7 @@
           :message="currentPreview"
           :color="color"
           :custom-classes="customClasses"
-          :animatedText="animatedText"
+          :rpgVoice="animatedText"
           :animatedTextSpeed="animatedTextSpeed"
         />
       </MotionWrapper>

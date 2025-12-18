@@ -59,7 +59,6 @@ export class BotMessageGenerator {
     // toast メッセージの生成
     if (postAction.message.toast?.trim()) {
       messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'toast'))
-      this.handleRpgVoice(character, postAction.message.toast, baseDelaySeconds)
     }
 
     // サウンド再生（message actionType に含まれる場合）
@@ -108,10 +107,10 @@ export class BotMessageGenerator {
    * RPG風の音声ループを再生(条件に応じて)
    */
   private handleRpgVoice(character: CharacterType, messageContent: string, baseDelaySeconds: number): void {
-    const { isOneCommePost, isVoice, isRpgVoice } = character.displayOption
-    const shouldPlayRpgVoice = !isOneCommePost && !isVoice && !!isRpgVoice
+    const { isOneCommePost, isVoice, rpgVoice } = character.displayOption
+    const shouldPlayRpgVoice = !isOneCommePost && !isVoice && !!rpgVoice
 
-    if (shouldPlayRpgVoice) playRpgVoiceLoop(messageContent, baseDelaySeconds)
+    if (shouldPlayRpgVoice) playRpgVoiceLoop(messageContent, rpgVoice, baseDelaySeconds)
   }
 
   /**

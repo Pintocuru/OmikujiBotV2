@@ -18,7 +18,6 @@ export const SettingsBubbleSchema = z.object({
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
-  bubbleTextSound: z.string().optional(), // 文字送り時のサウンド
 })
 
 export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
