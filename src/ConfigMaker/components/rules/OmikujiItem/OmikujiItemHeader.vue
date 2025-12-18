@@ -1,11 +1,6 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemHeader.vue -->
 <template>
   <div class="flex items-center gap-4">
-    <!-- ドラッグハンドル -->
-    <div class="drag-handle cursor-move text-base-content/50 hover:text-base-content">
-      <GripVertical class="w-5 h-5" />
-    </div>
-
     <!-- 名前 -->
     <div class="form-control flex-1">
       <SettingItem label="おみくじ名" description="識別しやすい名前を入力">
@@ -24,22 +19,10 @@
       <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
     </div>
   </div>
-  <div class="flex items-center gap-4">
-    <!-- 重み -->
-    <OmikujiItemWeight
-      v-if="category !== 'comments' || isCard"
-      :all-omikuji="allOmikuji"
-      :omikuji="omikuji"
-      :category="category"
-      :index="index"
-      :selected-item-key="selectedItemKey"
-    />
-  </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import OmikujiItemWeight from './OmikujiItemWeight.vue'
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'

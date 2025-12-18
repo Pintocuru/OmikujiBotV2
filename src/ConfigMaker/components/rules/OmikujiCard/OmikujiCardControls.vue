@@ -1,6 +1,6 @@
-<!-- src\ConfigMaker\components\rules\OmikujiSetControls.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\rules\OmikujiCard\OmikujiCardControls.vue -->
 <template>
-  <div class="card bg-base-200 p-4">
+  <div class="card bg-base-100 p-4">
     <div class="flex flex-wrap items-center gap-3">
       <!-- ソート -->
       <div class="flex items-center gap-2">
@@ -113,6 +113,11 @@
                   {{ item.name || `アイテム${index + 1}` }}
                 </div>
                 <div class="text-base-content/60">{{ weightDistribution[index]?.percentageStr }}%</div>
+
+                <div class="text-base">
+                  <span v-if="item?.isPriority" class="badge badge-xs badge-primary"> 優先 </span>
+                  <span v-if="item?.criteria" class="badge badge-xs badge-secondary ml-1"> 条件 </span>
+                </div>
               </div>
 
               <!-- Weight編集 -->
@@ -133,7 +138,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed, ref } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import draggable from 'vuedraggable'
   import { ArrowDownWideNarrow, ArrowUpNarrowWide, SortAsc, Settings, GripVertical } from 'lucide-vue-next'

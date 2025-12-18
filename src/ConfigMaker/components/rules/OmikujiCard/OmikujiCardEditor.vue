@@ -1,4 +1,5 @@
 <!-- src\ConfigMaker\components\rules\OmikujiCardEditor.vue -->
+<!-- !使用しない -->
 <template>
   <!-- 左端に色を付ける -->
   <div
@@ -54,7 +55,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import OmikujiItemHeader from './OmikujiItemHeader.vue'
+  import OmikujiItemHeader from '../OmikujiItem/OmikujiItemHeader.vue'
   import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionMessageType } from '@/types/OmikujiData/OmikujiSchema'

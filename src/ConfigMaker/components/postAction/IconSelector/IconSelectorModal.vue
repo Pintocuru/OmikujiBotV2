@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\IconPreviewModal.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\postAction\IconSelector\IconSelectorModal.vue -->
 <template>
   <dialog ref="modalRef" class="modal">
     <div class="modal-box max-w-4xl space-y-4">

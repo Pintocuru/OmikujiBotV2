@@ -1,13 +1,6 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
 <template>
-  <!-- 左端に色を付ける -->
-  <div
-    class="bg-base-100 p-2 border-l-6 mb-4"
-    :class="{
-      'border-x-primary': index % 2 === 0,
-      'border-x-secondary': index % 2 === 1,
-    }"
-  >
+  <div class="card bg-base-100 p-4">
     <div class="space-y-2">
       <!-- ヘッダー（名前、メニュー） -->
       <OmikujiItemHeader
@@ -18,29 +11,31 @@
       />
 
       <!-- OmikujiItemBasic コンポーネント -->
-      <div v-if="category === 'comments'">
-        <h3 class="font-semibold border-b pt-3 pb-1">
-          追加条件と重み - このおみくじが適用される条件や確率を設定します
-        </h3>
+      <SectionCard
+        v-if="category === 'comments'"
+        variant="primary"
+        title="追加条件と重み"
+        description="このおみくじが適用される条件や確率を設定します"
+      >
         <OmikujiItemBasic
           :allOmikuji="allOmikujiSets"
           :omikuji="omikujiItem"
           :category="category"
           :selectedItemKey="selectedItemKey"
         />
-      </div>
+      </SectionCard>
 
       <!-- GameScripts コンポーネント -->
-      <h3 class="font-semibold border-b pt-3 pb-1">ゲームスクリプト - 複雑な処理を行うスクリプト設定</h3>
-      <GameScriptsEditor
-        :allOmikuji="allOmikujiSets"
-        :omikuji="omikujiItem"
-        :category="category"
-        :selectedItemKey="selectedItemKey"
-      />
+      <SectionCard variant="primary" title="ゲームスクリプト" description="複雑な処理を行うスクリプト設定" class="mb-4">
+        <GameScriptsEditor
+          :allOmikuji="allOmikujiSets"
+          :omikuji="omikujiItem"
+          :category="category"
+          :selectedItemKey="selectedItemKey"
+        />
+      </SectionCard>
 
       <!-- PostActions編集コンポーネント -->
-      <h3 class="font-semibold border-b pt-3 pb-1">アクション - おみくじの内容や演出を設定します</h3>
       <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
     </div>
   </div>
@@ -55,6 +50,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   const props = defineProps<{
     category: RulesCategoryType
