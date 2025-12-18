@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\gameScripts\GameScriptsEditor.vue -->
 <template>
-  <div v-if="availableGameScripts.length > 0" class="bg-base-200 rounded-lg space-y-3">
-    <div v-if="isGod || (!isGod && gameScripts?.scriptId !== 'godMode')" class="form-control">
+  <div v-if="availableGameScripts.length > 0" class="space-y-4">
+    <div v-if="isGod || (!isGod && gameScripts?.scriptId !== 'godMode')">
       <SettingItem label="ゲームスクリプト設定" description="複雑なスクリプトを稼働する">
         <label class="label cursor-pointer gap-2">
           <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
@@ -11,7 +11,7 @@
     </div>
 
     <!-- GODMODE の設定がある場合 -->
-    <div v-if="!isGod && gameScripts?.scriptId === 'godMode'" class="space-y-3">
+    <div v-if="!isGod && gameScripts?.scriptId === 'godMode'" class="space-y-4">
       <!-- 条件設定の説明 -->
       <InformationCard>
         <p>
@@ -21,52 +21,46 @@
       </InformationCard>
     </div>
 
-    <div v-else-if="isEnabled" class="space-y-3">
+    <div v-else-if="isEnabled" class="space-y-4">
       <!-- Script ID -->
-      <div class="form-control">
-        <SettingItem label="スクリプトID" description="実行するスクリプトを選択">
-          <select
-            :value="gameScripts?.scriptId || ''"
-            @change="updateScriptId(($event.target as HTMLSelectElement).value)"
-            class="select select-bordered select-sm w-full"
-          >
-            <option value="">-- スクリプトを選択 --</option>
-            <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
-              {{ getScriptName(scriptKey) }}
-            </option>
-            <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
-          </select>
-        </SettingItem>
-      </div>
+      <SettingItem label="スクリプトID" description="実行するスクリプトを選択">
+        <select
+          :value="gameScripts?.scriptId || ''"
+          @change="updateScriptId(($event.target as HTMLSelectElement).value)"
+          class="select select-bordered select-sm w-full"
+        >
+          <option value="">-- スクリプトを選択 --</option>
+          <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
+            {{ getScriptName(scriptKey) }}
+          </option>
+          <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
+        </select>
+      </SettingItem>
 
       <!-- Script Params -->
-      <div class="form-control">
-        <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
-          <input
-            type="text"
-            :value="gameScripts?.queryString || ''"
-            @input="updateQueryString(($event.target as HTMLInputElement).value)"
-            placeholder="例: mode=スイカゲーム&theme=dark"
-            class="input input-bordered input-sm w-full"
-          />
-        </SettingItem>
-      </div>
+      <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
+        <input
+          type="text"
+          :value="gameScripts?.queryString || ''"
+          @input="updateQueryString(($event.target as HTMLInputElement).value)"
+          placeholder="例: mode=スイカゲーム&theme=dark"
+          class="input input-bordered input-sm w-full"
+        />
+      </SettingItem>
 
       <!-- Character Key -->
-      <div class="form-control">
-        <SettingItem label="キャラクターキー" description="スクリプト実行時に使用するキャラクター">
-          <select
-            :value="gameScripts?.characterKey || ''"
-            @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
-            class="select select-bordered select-sm w-full"
-          >
-            <option value="">-- キャラクターを選択 --</option>
-            <option v-for="character in charactersList" :key="character.key" :value="character.key">
-              {{ character.name }}
-            </option>
-          </select>
-        </SettingItem>
-      </div>
+      <SettingItem label="キャラクターキー" description="スクリプト実行時に使用するキャラクター">
+        <select
+          :value="gameScripts?.characterKey || ''"
+          @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
+          class="select select-bordered select-sm w-full"
+        >
+          <option value="">-- キャラクターを選択 --</option>
+          <option v-for="character in charactersList" :key="character.key" :value="character.key">
+            {{ character.name }}
+          </option>
+        </select>
+      </SettingItem>
     </div>
   </div>
 </template>

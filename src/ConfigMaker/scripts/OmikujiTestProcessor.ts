@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\scripts\OmikujiTestProcessor.ts
+// src\ConfigMaker\scripts\OmikujiTestProcessor.ts
 import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiExecutor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiExecutor'

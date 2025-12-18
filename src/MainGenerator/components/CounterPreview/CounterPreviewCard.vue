@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\CounterPreview\CounterPreviewCard.vue-->
+<!-- src\MainGenerator\components\CounterPreview\CounterPreviewCard.vue-->
 <template>
   <div
     class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center bg-gradient-to-br from-primary to-secondary text-primary-content transition-transform duration-200"

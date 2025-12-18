@@ -1,43 +1,41 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
 <template>
-  <div class="card bg-base-100 p-4">
-    <div class="space-y-2">
-      <!-- ヘッダー（名前、メニュー） -->
-      <OmikujiItemHeader
+  <div class="card bg-base-100 p-2 space-y-4">
+    <!-- ヘッダー（名前、メニュー） -->
+    <OmikujiItemHeader
+      :allOmikuji="allOmikujiSets"
+      :omikuji="omikujiItem"
+      :category="category"
+      :selectedItemKey="selectedItemKey"
+    />
+
+    <!-- OmikujiItemBasic コンポーネント -->
+    <SectionCard
+      v-if="category === 'comments'"
+      variant="primary"
+      title="追加条件と重み"
+      description="このおみくじが適用される条件や確率を設定します"
+    >
+      <OmikujiItemBasic
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"
         :category="category"
         :selectedItemKey="selectedItemKey"
       />
+    </SectionCard>
 
-      <!-- OmikujiItemBasic コンポーネント -->
-      <SectionCard
-        v-if="category === 'comments'"
-        variant="primary"
-        title="追加条件と重み"
-        description="このおみくじが適用される条件や確率を設定します"
-      >
-        <OmikujiItemBasic
-          :allOmikuji="allOmikujiSets"
-          :omikuji="omikujiItem"
-          :category="category"
-          :selectedItemKey="selectedItemKey"
-        />
-      </SectionCard>
+    <!-- GameScripts コンポーネント -->
+    <SectionCard variant="primary" title="ゲームスクリプト" description="複雑な処理を行うスクリプト設定">
+      <GameScriptsEditor
+        :allOmikuji="allOmikujiSets"
+        :omikuji="omikujiItem"
+        :category="category"
+        :selectedItemKey="selectedItemKey"
+      />
+    </SectionCard>
 
-      <!-- GameScripts コンポーネント -->
-      <SectionCard variant="primary" title="ゲームスクリプト" description="複雑な処理を行うスクリプト設定" class="mb-4">
-        <GameScriptsEditor
-          :allOmikuji="allOmikujiSets"
-          :omikuji="omikujiItem"
-          :category="category"
-          :selectedItemKey="selectedItemKey"
-        />
-      </SectionCard>
-
-      <!-- PostActions編集コンポーネント -->
-      <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
-    </div>
+    <!-- PostActions編集コンポーネント -->
+    <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
   </div>
 </template>
 
