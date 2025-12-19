@@ -6,7 +6,7 @@
 @source inline("border-{1..4}");
 @source inline("rounded rounded-md rounded-xl rounded-full");
 
-/* DaisyUiの背景カラー用テスト */
+/* DaisyUiの背景カラー用 */
 @source inline("from-{primary,secondary,accent,neutral,info,success,warning,error}");
 @source inline("to-{primary,secondary,accent,neutral,info,success,warning,error}");
 @source inline("bg-gradient-to-br");

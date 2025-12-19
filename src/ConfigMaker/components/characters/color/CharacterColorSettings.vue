@@ -1,19 +1,44 @@
 <!-- src/configMaker/components/characters/CharacterColorSettings.vue -->
 <template>
-  <div class="flex justify-end gap-2">
+  <div class="flex justify-between items-center gap-2">
     <!-- プリセットデータ -->
-    <div v-if="!currentColor.isTheme">
+    <div v-if="!currentColor.isTheme" class="flex gap-2">
       <button
         v-for="(theme, i) in DEFAULT_COLOR_THEMES"
         :key="i"
         class="w-8 h-8 rounded-full border border-base-content/20 hover:scale-110 transition"
         :style="{ backgroundColor: theme.nameColor }"
+        :title="`プリセット ${i + 1}`"
         @click="selectPresetColor(theme)"
       />
     </div>
 
-    <!-- 新しいカラー設定へ移行 TODO:旧式にも変更できるよう、トグルにする -->
-    <button @click="migrateToTheme" class="btn btn-secondary">新しいカラー設定へ移行</button>
+    <!-- カラー設定モード切り替えトグル -->
+    <div class="flex items-center gap-2">
+      <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
+      <button
+        v-if="currentColor.isTheme"
+        class="btn btn-sm btn-accent gap-2"
+        :disabled="!isPro"
+        @click="randomizeThemeColors"
+        title="テーマとカラーをランダムに選択"
+      >
+        <Dices :size="16" />
+        ランダム
+      </button>
+
+      <div class="form-control">
+        <label class="label cursor-pointer gap-3">
+          <span class="label-text">{{ currentColor.isTheme ? '旧カラー設定' : '新カラー設定' }}</span>
+          <input
+            type="checkbox"
+            class="toggle toggle-primary"
+            :checked="currentColor.isTheme"
+            @change="toggleColorMode"
+          />
+        </label>
+      </div>
+    </div>
   </div>
 
   <!-- プレビュー -->
@@ -36,7 +61,7 @@
     </div>
   </div>
 
-  <!-- 新カラー -->
+  <!-- 新：テーマベースのカラー設定 -->
   <div v-else class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- テーマカラー -->
     <SettingItem label="カラー" description="ランキングのテーマカラーを選択します" :forceMode="'pro'">
@@ -57,6 +82,7 @@
       <select
         class="select select-bordered"
         :value="currentColor.backFrom"
+        :disabled="!isPro"
         @change="(e) => updateColorField('backFrom', (e.target as HTMLSelectElement).value)"
       >
         <option v-for="color in daisyUIColor" :key="color" :value="color">
@@ -70,6 +96,7 @@
       <select
         class="select select-bordered"
         :value="currentColor.backTo"
+        :disabled="!isPro"
         @change="(e) => updateColorField('backTo', (e.target as HTMLSelectElement).value)"
       >
         <option v-for="color in daisyUIColor" :key="color" :value="color">
@@ -92,13 +119,12 @@
   import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
   import CommentBubblePreview from '@/ConfigMaker/components/displaySettings/bubble/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
-  import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-  import { Dices } from 'lucide-vue-next'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { daisyUIColor, themes } from '@shared/styles/DaisyUiTheme'
+  import { Dices } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue?: CharacterColorType
@@ -133,16 +159,17 @@
     })
   }
 
-  // TODO:トグルスイッチにする
-  const migrateToTheme = () => {
+  // カラーモード切り替え（旧式⇔新式）
+  const toggleColorMode = () => {
     if (!selectedItemKey.value) return
 
     omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
       ...currentColor.value,
-      isTheme: false,
+      isTheme: !currentColor.value.isTheme,
     })
   }
 
+  // プリセットカラー選択
   const selectPresetColor = (theme: Partial<CharacterColorType>) => {
     if (!selectedItemKey.value) return
     if (!theme.nameColor || !theme.textColor || !theme.backgroundColor) return
@@ -152,6 +179,22 @@
       nameColor: theme.nameColor,
       textColor: theme.textColor,
       backgroundColor: theme.backgroundColor,
+    })
+  }
+
+  // ランダムにテーマカラーを選択
+  const randomizeThemeColors = () => {
+    if (!selectedItemKey.value) return
+
+    const randomTheme = themes[Math.floor(Math.random() * themes.length)]
+    const randomBackFrom = daisyUIColor[Math.floor(Math.random() * daisyUIColor.length)]
+    const randomBackTo = daisyUIColor[Math.floor(Math.random() * daisyUIColor.length)]
+
+    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
+      ...currentColor.value,
+      daisyUiTheme: randomTheme,
+      backFrom: randomBackFrom,
+      backTo: randomBackTo,
     })
   }
 </script>
