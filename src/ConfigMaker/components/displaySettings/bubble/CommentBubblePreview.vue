@@ -69,7 +69,7 @@
   const props = withDefaults(
     defineProps<{
       color: CharacterColorType
-      customClasses?: string | undefined
+      customClasses?: string
       isSlider?: boolean
       fontFamily?: FontFamilyType
       bubbleMotionEnter?: MotionType

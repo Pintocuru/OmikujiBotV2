@@ -1,8 +1,8 @@
-<!-- src\MainGenerator\components\CounterPreview\CounterPreviewCard.vue-->
+<!-- src/MainGenerator/components/CounterPreview/CounterPreviewCard.vue -->
 <template>
   <div
-    class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center bg-gradient-to-br from-primary to-secondary text-primary-content transition-transform duration-200"
-    :class="isBouncing && 'scale-110'"
+    class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center text-primary-content transition-transform duration-200"
+    :class="[isBouncing && 'scale-110', ['bg-gradient-to-br', `from-${testBg.from}`, `to-${testBg.to}`]]"
     :data-theme="counterSetting.color"
   >
     <div v-if="counterSetting.label !== ''" class="text-xl font-semibold opacity-80">
@@ -13,7 +13,6 @@
       {{ count }}
     </div>
 
-    <!-- ユーザーリスト -->
     <ul v-if="counterSetting.maxUsers > 0" class="flex flex-wrap gap-2 justify-center mt-3">
       <li
         v-for="(name, index) in displayedUsers"
@@ -50,5 +49,14 @@
   const displayedUsers = computed(() => {
     if (props.counterSetting.maxUsers <= 0) return []
     return props.users.slice().reverse().slice(0, props.counterSetting.maxUsers)
+  })
+
+  /**
+   * ▼ テスト用の背景設定
+   * Tailwind のクラスが正しく反映されるか確認するための変数
+   */
+  const testBg = ref({
+    from: 'primary',
+    to: 'secondary',
   })
 </script>

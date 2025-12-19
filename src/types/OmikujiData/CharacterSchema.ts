@@ -1,6 +1,7 @@
 // shared/types/CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
+import { DaisyUIColorSchema, themes } from '@shared/styles/DaisyUiTheme'
 
 /**
  * 各種 Threshold
@@ -40,17 +41,19 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
   wink: 'おふざけ(wink)',
 }
 
-// カラー
 export const CharacterColorScheme = z.object({
+  isTheme: z.boolean().default(true).catch(true), // DaisyUI テーマを使うかどうか
+  daisyUiTheme: z.enum(themes).default('dark').catch('dark'), // DaisyUiテーマ
+  backFrom: DaisyUIColorSchema, // 背景(From)
+  backTo: DaisyUIColorSchema, // 背景(To)
+
   nameColor: z.string().default('#212121').catch('#212121'),
   textColor: z.string().default('#212121').catch('#212121'),
   backgroundColor: z.string().default('#FAFAFA').catch('#FAFAFA'),
   customClasses: z
     .string()
     .optional()
-    .describe(
-      '吹き出しに適用するカスタムTailwindクラス（例: "bg-gradient-to-r from-blue-500 to-purple-600 border-2 border-white shadow-lg"）'
-    ),
+    .describe('吹き出しに適用するカスタムTailwindクラス（例: "border-2 border-white shadow-lg"）'),
 })
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 
