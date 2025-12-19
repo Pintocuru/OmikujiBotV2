@@ -1,78 +1,78 @@
 // src\MainGenerator\scripts\BotCharacter\CharacterColorPreset.ts
 import { CharacterColorType } from '@/types'
 
-// デフォルトキャラクター用のカラーテーマ（マテリアルカラーベース、濃い背景中心）
+// デフォルトキャラクター用のカラーテーマ（マテリアルカラーベース、可読性重視）
 export const DEFAULT_COLOR_THEMES: Partial<CharacterColorType>[] = [
-  // 1. Red
+  // 1. Red - 情熱的で力強い
   {
-    nameColor: '#EF5350',
-    textColor: '#FFEBEE',
-    backgroundColor: '#D32F2F',
+    nameColor: '#EF9A9A', // Red 200 - 柔らかい赤で視認性向上
+    textColor: '#FFFFFF', // 純白で最高のコントラスト
+    backgroundColor: '#C62828', // Red 800 - 深い赤
   },
-  // 2. Red-Orange（創作）
+  // 2. Deep Orange - 温かみのあるオレンジ
   {
-    nameColor: '#FF7043',
-    textColor: '#FBE9E7',
-    backgroundColor: '#E64A19',
+    nameColor: '#FFAB91', // Deep Orange 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#D84315', // Deep Orange 800
   },
-  // 3. Orange
+  // 3. Orange - 明るく親しみやすい
   {
-    nameColor: '#FFB74D',
-    textColor: '#FFF3E0',
-    backgroundColor: '#F57C00',
+    nameColor: '#FFCC80', // Orange 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#EF6C00', // Orange 800
   },
-  // 4. Yellow（創作）
+  // 4. Amber - 暖色系で落ち着いた印象
   {
-    nameColor: '#FFF176',
-    textColor: '#FFFDE7',
-    backgroundColor: '#FBC02D',
+    nameColor: '#FFE082', // Amber 200
+    textColor: '#212121', // 濃い背景に対しては白、明るい背景には黒
+    backgroundColor: '#FF8F00', // Amber 800
   },
-  // 5. Yellow-Green（Lime）
+  // 5. Lime - 爽やかで活発
   {
-    nameColor: '#AED581',
-    textColor: '#F9FBE7',
-    backgroundColor: '#689F38',
+    nameColor: '#E6EE9C', // Lime 200
+    textColor: '#212121',
+    backgroundColor: '#9E9D24', // Lime 800
   },
-  // 6. Green（Forest Green）
+  // 6. Green - 自然で安定感
   {
-    nameColor: '#66BB6A',
-    textColor: '#E8F5E8',
-    backgroundColor: '#2E7D32',
+    nameColor: '#A5D6A7', // Green 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#2E7D32', // Green 800
   },
-  // 7. Cyan（Deep Cyan）
+  // 7. Teal - クールで洗練された
   {
-    nameColor: '#4DD0E1',
-    textColor: '#E0F6FF',
-    backgroundColor: '#0097A7',
+    nameColor: '#80CBC4', // Teal 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#00695C', // Teal 800
   },
-  // 8. Blue（Deep Blue）
+  // 8. Light Blue - 爽快で開放的
   {
-    nameColor: '#64B5F6',
-    textColor: '#E3F2FD',
-    backgroundColor: '#1565C0',
+    nameColor: '#81D4FA', // Light Blue 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#01579B', // Light Blue 900
   },
-  // 9. Indigo（Deep Indigo）
+  // 9. Indigo - 知的で落ち着いた
   {
-    nameColor: '#7986CB',
-    textColor: '#E8EAF6',
-    backgroundColor: '#303F9F',
+    nameColor: '#9FA8DA', // Indigo 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#283593', // Indigo 800
   },
-  // 10. Violet（Violet）
+  // 10. Deep Purple - 高貴で神秘的
   {
-    nameColor: '#BA68C8',
-    textColor: '#F3E5F5',
-    backgroundColor: '#8E24AA',
+    nameColor: '#B39DDB', // Deep Purple 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#4527A0', // Deep Purple 800
   },
-  // 11. Magenta（Deep Pink）
+  // 11. Pink - 優しく華やか
   {
-    nameColor: '#F06292',
-    textColor: '#FCE4EC',
-    backgroundColor: '#C2185B',
+    nameColor: '#F48FB1', // Pink 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#AD1457', // Pink 800
   },
-  // 12. Brown（Deep Brown）
+  // 12. Brown - 温もりのある落ち着き
   {
-    nameColor: '#A1887F',
-    textColor: '#EFEBE9',
-    backgroundColor: '#5D4037',
+    nameColor: '#BCAAA4', // Brown 200
+    textColor: '#FFFFFF',
+    backgroundColor: '#4E342E', // Brown 800
   },
 ]

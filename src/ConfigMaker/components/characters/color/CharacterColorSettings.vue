@@ -7,7 +7,7 @@
         v-for="(theme, i) in DEFAULT_COLOR_THEMES"
         :key="i"
         class="w-8 h-8 rounded-full border border-base-content/20 hover:scale-110 transition"
-        :style="{ backgroundColor: theme.nameColor }"
+        :style="{ backgroundColor: theme.backgroundColor }"
         :title="`プリセット ${i + 1}`"
         @click="selectPresetColor(theme)"
       />
