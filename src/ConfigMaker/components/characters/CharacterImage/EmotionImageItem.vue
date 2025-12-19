@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/parts/EmotionImageItem.vue -->
+<!-- src/configMaker/components/characters/EmotionImageItem.vue -->
 <template>
   <div class="form-control">
     <SettingItem
@@ -7,25 +7,65 @@
       :showReset="true"
       @reset="emit('reset', emotionKey)"
     >
-      <ModeToggle :is-layer-mode="isLayerMode" @toggle="handleModeToggle" />
+      <div class="space-y-2">
+        <!-- レイヤー追加ボタン -->
+        <button type="button" class="btn btn-xs flex items-center btn-primary" @click="handleAddLayer">
+          <Plus class="w-4 h-4 mr-1" />
+          レイヤーを追加
+        </button>
 
-      <SingleImageMode
-        v-if="!isLayerMode"
-        :value="singleValue"
-        :emotion-label="emotionLabel"
-        @update="handleSingleUpdate"
-      />
+        <!-- 各レイヤー -->
+        <div
+          v-for="(layer, index) in layers"
+          :key="index"
+          :class="['transition-all', layers.length > 1 ? 'border rounded p-2 bg-base-200' : 'bg-base-200']"
+        >
+          <!-- 複数レイヤーの場合はコントロール表示 -->
+          <div v-if="layers.length > 1" class="flex items-center gap-2 mb-1">
+            <span class="badge badge-sm">{{ index + 1 }}</span>
+            <div class="flex-1"></div>
+            <button
+              type="button"
+              class="btn btn-ghost btn-xs"
+              @click="handleMoveUp(index)"
+              :disabled="index === 0"
+              title="前面へ移動"
+            >
+              <ChevronUp class="w-3 h-3" />
+            </button>
+            <button
+              type="button"
+              class="btn btn-ghost btn-xs"
+              @click="handleMoveDown(index)"
+              :disabled="index === layers.length - 1"
+              title="背面へ移動"
+            >
+              <ChevronDown class="w-3 h-3" />
+            </button>
+            <button type="button" class="btn btn-error btn-xs" @click="handleRemoveLayer(index)" title="削除">
+              <X class="w-3 h-3" />
+            </button>
+          </div>
 
-      <LayerImageMode
-        v-else
-        :layers="layerArray"
-        :emotion-label="emotionLabel"
-        @update="handleLayerUpdate"
-        @add="handleAddLayer"
-        @remove="handleRemoveLayer"
-        @move-up="handleMoveUp"
-        @move-down="handleMoveDown"
-      />
+          <!-- 画像URL入力 -->
+          <input
+            type="url"
+            class="input input-sm w-full"
+            :placeholder="`レイヤー${index + 1}の画像URL`"
+            :value="layer"
+            @input="handleLayerUpdate(index, ($event.target as HTMLInputElement).value)"
+          />
+
+          <!-- 個別プレビュー -->
+          <ImagePreview :layers="layer" :size="layers.length > 1 ? 16 : 32" />
+        </div>
+
+        <!-- 合成プレビュー -->
+        <div v-if="layers.length > 1" class="mt-2">
+          <div class="text-xs text-base-content/60 mb-1">合成プレビュー:</div>
+          <ImagePreview :layers="layers" :size="32" />
+        </div>
+      </div>
     </SettingItem>
   </div>
 </template>
@@ -33,78 +73,50 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterEmotionType } from '@/types/'
+  import { Plus, ChevronUp, ChevronDown, X } from 'lucide-vue-next'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ModeToggle from './ModeToggle.vue'
-  import SingleImageMode from './SingleImageMode.vue'
-  import LayerImageMode from './LayerImageMode.vue'
+  import ImagePreview from './ImagePreview.vue'
 
   const props = defineProps<{
     emotionKey: CharacterEmotionType
     emotionLabel: string
-    currentValue: string | string[] | undefined
+    currentValue: string[]
     selectedItemKey: string | null
   }>()
 
   const emit = defineEmits<{
-    update: [key: CharacterEmotionType, value: string | string[] | undefined]
+    update: [key: CharacterEmotionType, value: string[]]
     reset: [key: CharacterEmotionType]
   }>()
 
-  const isLayerMode = computed(() => Array.isArray(props.currentValue))
-  const singleValue = computed(() => (typeof props.currentValue === 'string' ? props.currentValue : undefined))
-  const layerArray = computed(() => (Array.isArray(props.currentValue) ? props.currentValue : []))
-
-  const handleModeToggle = (toLayerMode: boolean) => {
-    let newValue: string | string[] | undefined
-
-    if (toLayerMode) {
-      if (typeof props.currentValue === 'string' && props.currentValue) {
-        newValue = [props.currentValue]
-      } else {
-        newValue = []
-      }
-    } else {
-      if (Array.isArray(props.currentValue) && props.currentValue.length > 0) {
-        newValue = props.currentValue[0]
-      } else {
-        newValue = undefined
-      }
-    }
-
-    emit('update', props.emotionKey, newValue)
-  }
-
-  const handleSingleUpdate = (value: string) => {
-    emit('update', props.emotionKey, value || undefined)
-  }
+  const layers = computed(() => (Array.isArray(props.currentValue) ? props.currentValue : []))
 
   const handleLayerUpdate = (index: number, value: string) => {
-    const layers = [...layerArray.value]
-    layers[index] = value
-    emit('update', props.emotionKey, layers)
+    const newLayers = [...layers.value]
+    newLayers[index] = value
+    emit('update', props.emotionKey, newLayers)
   }
 
   const handleAddLayer = () => {
-    const layers = [...layerArray.value, '']
-    emit('update', props.emotionKey, layers)
+    emit('update', props.emotionKey, [...layers.value, ''])
   }
 
   const handleRemoveLayer = (index: number) => {
-    const layers = layerArray.value.filter((_, i) => i !== index)
-    emit('update', props.emotionKey, layers.length > 0 ? layers : undefined)
+    const newLayers = layers.value.filter((_, i) => i !== index)
+    emit('update', props.emotionKey, newLayers)
   }
 
   const handleMoveUp = (index: number) => {
     if (index === 0) return
-    const layers = [...layerArray.value]
-    ;[layers[index - 1], layers[index]] = [layers[index], layers[index - 1]]
-    emit('update', props.emotionKey, layers)
+    const newLayers = [...layers.value]
+    ;[newLayers[index - 1], newLayers[index]] = [newLayers[index], newLayers[index - 1]]
+    emit('update', props.emotionKey, newLayers)
   }
 
   const handleMoveDown = (index: number) => {
-    const layers = [...layerArray.value]
-    if (index === layers.length - 1) return
-    ;[layers[index], layers[index + 1]] = [layers[index + 1], layers[index]]
-    emit('update', props.emotionKey, layers)
+    if (index === layers.value.length - 1) return
+    const newLayers = [...layers.value]
+    ;[newLayers[index], newLayers[index + 1]] = [newLayers[index + 1], newLayers[index]]
+    emit('update', props.emotionKey, newLayers)
   }
 </script>

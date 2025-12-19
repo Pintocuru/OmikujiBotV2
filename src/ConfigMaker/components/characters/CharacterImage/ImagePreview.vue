@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\characters\CharacterImage\ImagePreviewWrapper.vue -->
+<!-- src\ConfigMaker\components\characters\CharacterImage\ImagePreview.vue -->
 <template>
   <div @click="showPreview = true" class="cursor-pointer">
     <LayerImage :layers="layers" :size="size" :round="round" />

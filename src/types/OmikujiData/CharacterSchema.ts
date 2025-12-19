@@ -54,14 +54,15 @@ export const CharacterColorScheme = z.object({
 })
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 
-//
+// v2から string → [string] に変更
 const LayerSchema = z
-  .union([
-    z.string(), // 単一画像（従来の互換性）
-    z.array(z.string()), // レイヤー構成（順序で重ねる）
-  ])
-  .default('')
-  .catch('')
+  .union([z.string(), z.array(z.string())])
+  .transform((value) => {
+    if (typeof value === 'string') return value ? [value] : []
+    if (Array.isArray(value)) return value
+    return []
+  })
+  .catch([]) // パース失敗時も空配列に統一
 
 // 画像セットのスキーマ
 export const CharacterImageSetSchema = z.object({

@@ -4,7 +4,7 @@
     <p>
       画像ファイルは事前に
       <code class="label bg-accent text-accent-content"> Characters/[キャラクターID] </code>
-      フォルダ内に配置してください。
+      フォルダ内に配置してください。(例:Characters/reimu/default.webp)
     </p>
     <p>
       ファイル名は固定で、例：

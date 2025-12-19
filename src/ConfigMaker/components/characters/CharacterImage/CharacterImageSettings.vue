@@ -1,7 +1,9 @@
 <!-- src/configMaker/components/characters/CharacterImageSettings.vue -->
 <template>
+  <!-- 画像設定の説明 -->
   <ImageSettingsInfo />
 
+  <!-- 各画像プレビュー -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
     <EmotionImageItem
       v-for="(emotion, key) in emotionLabels"
@@ -24,7 +26,7 @@
   import EmotionImageItem from './EmotionImageItem.vue'
 
   const props = defineProps<{
-    modelValue?: CharacterImageType
+    modelValue: CharacterImageType
     selectedItemKey: string | null
   }>()
 
@@ -36,11 +38,9 @@
   const currentImages = computed(() => props.modelValue ?? CharacterImageSetSchema.parse({}))
 
   const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg']
-
-  // 拡張子のインデックスを管理するMap
   const extensionIndexMap = new Map<CharacterEmotionType, number>()
 
-  const handleUpdate = (key: CharacterEmotionType, value: string | string[] | undefined) => {
+  const handleUpdate = (key: CharacterEmotionType, value: string[]) => {
     if (!props.selectedItemKey) return
     const newImages = { ...currentImages.value, [key]: value }
     omikujiStore.updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
@@ -55,16 +55,9 @@
 
     const nextExt = imageExtensions[currentIndex]
     const newPath = `${props.selectedItemKey}/${key}.${nextExt}`
-
     const currentValue = currentImages.value[key]
-    let newValue: string | string[] | undefined
 
-    if (Array.isArray(currentValue)) {
-      newValue = [...currentValue, newPath]
-    } else {
-      newValue = newPath
-    }
-
+    const newValue = currentValue.length === 0 ? [newPath] : [newPath, ...currentValue.slice(1)]
     handleUpdate(key, newValue)
   }
 </script>
