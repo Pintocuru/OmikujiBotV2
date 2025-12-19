@@ -44,7 +44,9 @@
   const { initializeApp, startTimers } = useRuleProcessor()
 
   // フォントの指定
-  const fontClass = computed(() => useFontFamily(appStore.data.displaySettings.global.fontFamily ?? 'default'))
+  const fontClass = computed(() =>
+    useFontFamily(appStore.data.displaySettings.components.bubble.fontFamily ?? 'default')
+  )
 
   // 初期化処理
   onMounted(async () => {

@@ -22,25 +22,15 @@ export function useViewBotCharacter() {
   const base = computed(() => appStore.data.displaySettings?.components.bubble || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
 
-  // サイズ設定の取得
-  const sizeConfig = {
-    text: 'text-lg',
-    avatar: 'w-48',
-    spacing: 40,
-    avatarBottom: `${200 + 240}px`,
-    commentAreaBottom: `${192 + 100}px`,
-    characterMargin: '-16px',
-  }
-
   // storeから利用可能なキャラクターを取得
   const availableCharacters = computed(() => {
     return appStore.characterCollector.getUsedCharacterArray() || []
   })
 
   // 指定されたキャラクターの感情に応じた画像を取得
-  const getCharacterImage = (character: CharacterType): string[] | string | null => {
+  const getCharacterImage = (character: CharacterType): string[] => {
     const imageSet = character.image
-    if (!imageSet) return null
+    if (!imageSet) return []
     // 現在のアイコン状態を確認
     const currentIconKey = characterIconStates.value[character.key] || 'default'
 
