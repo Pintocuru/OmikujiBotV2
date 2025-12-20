@@ -2,17 +2,37 @@
 <template>
   <div
     class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center text-primary-content transition-transform duration-200"
-    :class="[isBouncing && 'scale-110', ['bg-gradient-to-br', `from-${testBg.from}`, `to-${testBg.to}`]]"
-    :data-theme="counterSetting.color"
+    :class="[
+      isBouncing && 'scale-110',
+      [
+        'bg-gradient-to-br',
+        `from-${testBg.from}`,
+        `to-${testBg.to}`,
+
+        ['bg-gradient-to-br', `from-${counterSetting.color.backFrom}`, `to-${counterSetting.color.backTo}`],
+      ],
+    ]"
+    :data-theme="counterSetting.color.daisyUiTheme"
   >
+    <!-- 何も入力していないときのいたずら文 -->
+    <div
+      v-if="counterSetting.label === '' && !counterSetting.showCounter && counterSetting.maxUsers === 0"
+      class="text-xl font-semibold opacity-80"
+    >
+      ハハハハハ！何を表示しようと言うのかね！？
+    </div>
+
+    <!-- ラベル -->
     <div v-if="counterSetting.label !== ''" class="text-xl font-semibold opacity-80">
       {{ counterSetting.label }}
     </div>
 
+    <!-- カウンター -->
     <div v-if="counterSetting.showCounter" class="text-7xl font-black leading-none drop-shadow-md">
       {{ count }}
     </div>
 
+    <!-- ユーザーリスト -->
     <ul v-if="counterSetting.maxUsers > 0" class="flex flex-wrap gap-2 justify-center mt-3">
       <li
         v-for="(name, index) in displayedUsers"

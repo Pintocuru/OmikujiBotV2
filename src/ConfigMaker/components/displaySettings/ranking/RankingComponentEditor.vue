@@ -2,7 +2,15 @@
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- ランキングプレビュー -->
-    <GameRankingList :botMessages="[]" :settings="ranking" />
+    <GameRankingList v-if="ranking.scriptKey" :botMessages="[]" :settings="ranking" />
+    <NoParamsCard
+      v-else
+      :message="
+        enabledGameScriptMap.length !== 0
+          ? '対象スクリプトIDを設定してください'
+          : 'このコンポーネントはPRO版で使用できます'
+      "
+    />
 
     <!-- テーマカラー -->
     <SettingItem
@@ -33,11 +41,10 @@
     >
       <select
         class="select select-bordered w-full"
-        :value="ranking.scriptKey || ''"
-        @change="(e) => updateRankingField('scriptKey', (e.target as HTMLSelectElement).value || null)"
+        :value="ranking.scriptKey ?? ''"
+        @change="(e) => updateScriptKey((e.target as HTMLSelectElement).value)"
       >
-        <option :value="null">-- 未選択 --</option>
-
+        <option value="">-- 未選択 --</option>
         <option v-for="script in enabledGameScriptMap" :key="script.key" :value="script.key">
           {{ script.name }} (ID: {{ script.key }})
         </option>
@@ -59,27 +66,10 @@
       />
     </SettingItem>
 
-    <!-- 表示するランキング数 -->
-    <SettingItem
-      label="表示件数"
-      description="ランキングに表示する件数を設定します(最大20)"
-      :showReset="true"
-      @reset="resetMap.limit"
-    >
-      <input
-        type="number"
-        min="1"
-        max="20"
-        class="input input-bordered w-24"
-        :value="ranking.limit"
-        @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-
     <!-- 順位のソート -->
     <SettingItem
       label="順位のソート"
-      description="ランキング向けに得点の高い順にするか"
+      description="得点の高い順・低い順・新しい順から選べます"
       :showReset="true"
       @reset="resetMap.sortOrder"
     >
@@ -88,6 +78,25 @@
           {{ rankingSortOrderLabels[order] }}
         </option>
       </select>
+    </SettingItem>
+
+    <!-- 表示するランキング数 -->
+    <SettingItem
+      label="表示件数"
+      description="ランキングに表示する件数を設定します(最大20)"
+      :forceMode="'pro'"
+      :showReset="true"
+      @reset="resetMap.limit"
+    >
+      <input
+        type="number"
+        min="1"
+        max="20"
+        :disabled="!isPro"
+        class="input input-bordered w-24"
+        :value="ranking.limit"
+        @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
+      />
     </SettingItem>
   </div>
 </template>
@@ -106,6 +115,7 @@
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { enabledGameScriptMap } = useEnabledGames()
@@ -122,6 +132,11 @@
         [field]: value,
       },
     })
+  }
+
+  const updateScriptKey = (raw: string) => {
+    const value = raw === '' ? null : raw
+    updateRankingField('scriptKey', value)
   }
 
   // リセット関数

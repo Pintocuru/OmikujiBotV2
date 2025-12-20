@@ -32,10 +32,6 @@
       <!-- 表示設定 -->
       <DisplaySettingsEditor v-else-if="selectedCategory === 'displaySettings'" />
 
-      <!-- WordParty設定 
-      <WordPartySettingsEditor v-else-if="selectedCategory === 'wordPartySettings'" />       
-      -->
-
       <!-- Meta設定 -->
       <PackageMetaEditor v-else-if="selectedCategory === 'meta'" />
 
@@ -55,8 +51,6 @@
   import TimerRuleEditor from '@ConfigComponents/rulesTimers/TimerRuleEditor.vue'
   import ActionSetsEditor from '@ConfigComponents/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue'
-  import ScriptSettingsEditor from '@ConfigComponents/scriptSettings/ScriptSettingsEditor.vue'
-  import WordPartySettingsEditor from '@ConfigComponents/wordPartySettings/WordPartySettingsEditor.vue'
   import CharacterEditor from '@ConfigComponents/characters/CharacterEditor.vue'
   import DisplaySettingsEditor from '@ConfigComponents/displaySettings/DisplaySettingsEditor.vue'
   import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue'

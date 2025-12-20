@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/wordPartySettings/WordPartySettingsEditor.vue -->
+<!-- ! 使用しない -->
 <template>
   <div class="space-y-4">
     <!-- WordParty発火リスト -->

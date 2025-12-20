@@ -20,6 +20,8 @@
       >
         <ExternalLink class="w-4 h-4" />
       </button>
+
+      <ExternalLinkButton v-if="omikujiStore.openLatestRelease()" :url="omikujiStore.openLatestRelease()" />
     </div>
   </SettingItem>
 
@@ -36,6 +38,7 @@
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import ExternalLinkButton from '@ConfigComponents/parts/ExternalLinkButton.vue'
   import { storeToRefs } from 'pinia'
   import { Code, Settings, Tag, ExternalLink } from 'lucide-vue-next'
 

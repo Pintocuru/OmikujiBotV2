@@ -17,7 +17,10 @@ export const RankingMessageSchema = z.object({
   symbol: z.string().optional(), // 名前の隣につけるやつ
   // 設定
   scriptKey: z.string(), // コンポーネント判別用key
-  timestamp: z.number().transform((val) => val ?? Date.now()), // タイムスタンプ
+  timestamp: z
+    .number()
+    .optional()
+    .default(() => Date.now()), // タイムスタンプ
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
 })

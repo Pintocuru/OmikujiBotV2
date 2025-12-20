@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-import { themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
 
 // フキダシ・キャラクター
@@ -57,7 +57,7 @@ export const SettingsCounterSchema = z.object({
   firstValue: z.number().default(0).catch(0), // 初期値（開始値）
   isDirectionUp: z.boolean().default(true).catch(true), // true=カウントアップ, false=カウントダウン
   maxUsers: z.number().min(0).max(300).default(0).catch(0), // ユーザーリスト表示数
-  color: z.enum(themes).default('dark').catch('dark'), // DaisyUIテーマカラー
+  color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
 })
 
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>

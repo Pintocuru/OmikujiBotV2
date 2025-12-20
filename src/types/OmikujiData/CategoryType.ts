@@ -68,7 +68,7 @@ export type CategoryType = (typeof categoryType)[number]
 // 各カテゴリのラベル、説明、アイコンを定義
 export const categoryLabels: Record<CategoryType, { label: string; description: string; icon: any }> = {
   jsonMerge: {
-    label: 'JSONマージ(開発者専用)',
+    label: 'JSONマージ(Dev)',
     description: 'ビルド時、jsonファイルをマージして出力します',
     icon: Layers,
   },
@@ -93,18 +93,18 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     icon: Hash,
   },
   characters: {
-    label: 'キャラクター(カラー設定)', // BOTメッセージで使用するアイコンやカラー
+    label: 'キャラクター・カラー', // BOTメッセージで使用するアイコンやカラー
     description: 'BOTメッセージのキャラクターや吹き出し・トーストの色を設定します',
     icon: Users,
   },
   displaySettings: {
-    label: '表示設定', // BOTメッセージやランキングの表示・非表示
-    description: 'メッセージの文字の大きさや、トーストの表示設定を行います',
+    label: 'コンポーネント', // BOTメッセージやランキングの表示・非表示
+    description: 'ジェネレーターで表示できる、コンポーネントの設定を行います',
     icon: Monitor,
   },
   meta: {
     label: 'Metaタグ',
-    description: 'このおみくじデータのメタ情報を設定します',
+    description: 'このおみくじデータのメタ情報です',
     icon: Tags,
   },
 }

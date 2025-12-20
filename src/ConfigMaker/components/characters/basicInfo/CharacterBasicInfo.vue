@@ -32,14 +32,7 @@
           class="input input-bordered flex-1 w-full"
           placeholder="https://example.com"
         />
-        <button
-          v-if="currentData.url && isValidUrl(currentData.url)"
-          @click="openUrl"
-          class="btn btn-primary btn-outline"
-          title="サイトを開く"
-        >
-          <ExternalLink class="w-4 h-4" />
-        </button>
+        <ExternalLinkButton v-if="currentData.url" :url="currentData.url" />
       </div>
     </SettingItem>
   </div>
@@ -51,7 +44,7 @@
   import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { ExternalLink } from 'lucide-vue-next'
+  import ExternalLinkButton from '@ConfigComponents/parts/ExternalLinkButton.vue'
 
   const props = defineProps<{
     selectedItemKey: string
@@ -79,22 +72,4 @@
     { key: 'description', label: '説明', description: 'キャラクターの紹介文' },
     { key: 'displayName', label: 'ジェネレーターでの表示名', description: '配信時に表示されBOTの名前' },
   ] as const
-
-  // URL検証
-  const isValidUrl = (urlValue: string | undefined): boolean => {
-    if (!urlValue) return false
-    try {
-      new URL(urlValue)
-      return true
-    } catch {
-      return false
-    }
-  }
-
-  // URLを開く
-  const openUrl = () => {
-    if (currentData?.value?.url && isValidUrl(currentData?.value?.url)) {
-      window.open(currentData?.value?.url, '_blank', 'noopener,noreferrer')
-    }
-  }
 </script>

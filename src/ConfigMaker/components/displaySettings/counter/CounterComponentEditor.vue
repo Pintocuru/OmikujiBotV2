@@ -1,28 +1,19 @@
 <!-- src\ConfigMaker\components\displaySettings\components\CounterComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
+    <div class="flex items-center gap-2">
+      <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
+      <RandomThemeButton v-if="isPro" @randomize="(newValue) => updateCounterField('color', newValue)" />
+    </div>
+
     <!-- プレビュー -->
     <CounterPreviewCard :counterSetting="counter" :count="0" :users="generateDummyUserNames(counter.maxUsers)" />
 
-    <!-- カラー -->
-    <SettingItem
-      label="カラー"
-      description="カウンターのテーマカラーを選択します"
-      :forceMode="'pro'"
-      :showReset="true"
-      @reset="resetMap.color"
-    >
-      <select
-        class="select select-bordered"
-        :value="counter.color"
-        :disabled="!isPro"
-        @change="(e) => updateCounterField('color', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="theme in themes" :key="theme" :value="theme">
-          {{ theme }}
-        </option>
-      </select>
-    </SettingItem>
+    <!-- テーマカラー -->
+    <DaisyUiThemeEditor
+      :model-value="counter.color"
+      @update:model-value="(newValue) => updateCounterField('color', newValue)"
+    />
 
     <!-- 設定項目 -->
     <SettingItem
@@ -146,13 +137,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { SettingsCounterSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
-  import { themes } from '@shared/styles/DaisyUiTheme'
-  import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import RandomThemeButton from '@/ConfigMaker/components/characters/color/RandomThemeButton.vue'
+  import DaisyUiThemeEditor from '@/ConfigMaker/components/characters/color/DaisyUiThemeEditor.vue'
+  import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
   import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
 
   const omikujiStore = useOmikujiStore()

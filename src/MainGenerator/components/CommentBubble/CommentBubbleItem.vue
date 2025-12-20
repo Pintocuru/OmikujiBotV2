@@ -6,7 +6,6 @@
     :class="[
       customClasses,
       brightnessClass,
-      // テーマモードのときだけ DaisyUI グラデーション背景を適用
       color?.isTheme ? ['bg-gradient-to-br', `from-${color.backFrom}`, `to-${color.backTo}`] : '',
     ]"
     :style="
@@ -73,18 +72,6 @@
   )
 
   const color = computed(() => props.color)
-
-  // DaisyUI テーマ時の背景
-  const themeBackgroundClass = computed(() => {
-    if (!color.value?.isTheme) return ''
-    return 'bg-base-200' // 必要なら bg-primary などに変更可能
-  })
-
-  // DaisyUI テーマ時の矢印
-  const themeArrowClass = computed(() => {
-    if (!color.value?.isTheme) return ''
-    return 'border-t-base-200'
-  })
 
   // brightness
   const BRIGHTNESS_CLASSES = ['', 'brightness-90', 'brightness-75', 'brightness-50', 'brightness-[30%]'] as const

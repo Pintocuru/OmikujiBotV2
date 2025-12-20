@@ -1,7 +1,7 @@
 // shared/types/CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
-import { DaisyUIColorSchema, themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUIColorSchema, DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 
 /**
  * 各種 Threshold
@@ -43,9 +43,7 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
 
 export const CharacterColorScheme = z.object({
   isTheme: z.boolean().default(true).catch(true), // DaisyUI テーマを使うかどうか
-  daisyUiTheme: z.enum(themes).default('dark').catch('dark'), // DaisyUiテーマ
-  backFrom: DaisyUIColorSchema, // 背景(From)
-  backTo: DaisyUIColorSchema, // 背景(To)
+  ...DaisyUiThemeFieldsSchema.shape,
 
   nameColor: z.string().default('#212121').catch('#212121'),
   textColor: z.string().default('#212121').catch('#212121'),

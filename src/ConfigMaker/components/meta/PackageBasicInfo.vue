@@ -1,67 +1,40 @@
 <!-- src/ConfigMaker/components/meta/PackageBasicInfo.vue -->
 <template>
-  <!-- パッケージ名 -->
+  <!-- パッケージ名 (読み取り専用) -->
   <SettingItem label="パッケージ名" description="テンプレート出力する際に表示する名称">
-    <input
-      v-model="name"
-      type="text"
-      class="input input-bordered w-full max-w-md"
-      :class="{ 'input-disabled': !isPro }"
-      :disabled="!isPro"
-      placeholder="パッケージ名を入力"
-    />
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-base-content/60">{{ meta.name }}</span>
+    </div>
   </SettingItem>
 
-  <!-- パッケージ説明 -->
+  <!-- パッケージ説明 (読み取り専用) -->
   <SettingItem label="パッケージ説明" description="どんな内容を表示できるかを端的に説明">
-    <input
-      v-model="description"
-      type="text"
-      class="input input-bordered w-full max-w-md"
-      :class="{ 'input-disabled': !isPro }"
-      :disabled="!isPro"
-      placeholder="パッケージの説明を入力"
-    />
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-base-content/60">{{ meta.description }}</span>
+    </div>
   </SettingItem>
 
-  <!-- バージョン -->
+  <!-- バージョン (読み取り専用) -->
   <SettingItem label="バージョン" description="パッケージのバージョン情報">
-    <input
-      v-model="version"
-      type="text"
-      class="input input-bordered w-full max-w-md"
-      :class="{ 'input-disabled': !isPro }"
-      :disabled="!isPro"
-      placeholder="例: 1.0.0"
-    />
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-sm text-base-content/60">{{ meta.version }}</span>
+    </div>
   </SettingItem>
 
-  <!-- 作者 -->
-  <SettingItem label="作者" description="パッケージの作成者名" :showReset="isPro" @reset="author = 'Pintocuru'">
-    <input
-      v-model="author"
-      type="text"
-      class="input input-bordered w-full max-w-md"
-      :class="{ 'input-disabled': !isPro }"
-      :disabled="!isPro"
-      placeholder="作者名を入力"
-    />
+  <!-- 作者 (読み取り専用) -->
+  <SettingItem label="作者" description="パッケージの作成者名">
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-base-content/60">{{ meta.author }}</span>
+    </div>
   </SettingItem>
 
-  <!-- タグ -->
-  <SettingItem
-    label="タグ"
-    description="パッケージの分類に使用されるタグ（改行区切りで入力）"
-    :showReset="isPro"
-    @reset="tags = ['おみくじBOT']"
-  >
-    <textarea
-      v-model="tagsInput"
-      class="textarea textarea-bordered w-full max-w-md h-20"
-      :class="{ 'textarea-disabled': !isPro }"
-      :disabled="!isPro"
-      placeholder="例:&#10;ゲーム&#10;エンターテイメント&#10;配信"
-    ></textarea>
+  <!-- タグ (読み取り専用) -->
+  <SettingItem label="タグ" description="パッケージの分類に使用されるタグ">
+    <div class="flex items-center gap-2 flex-wrap">
+      <span v-for="(tag, index) in meta.tags" :key="index" class="badge badge-outline text-xs">
+        {{ tag }}
+      </span>
+    </div>
   </SettingItem>
 </template>
 
@@ -69,45 +42,12 @@
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { storeToRefs } from 'pinia'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  //
-  const { isPro } = useSettingMode()
-
-  // メタデータのプロパティ用computedを生成するヘルパー関数
-  const createMetaProperty = <T,>(key: keyof typeof data.value.meta) => {
-    return computed({
-      get: () => data.value.meta[key] as T,
-      set: (value: T) => {
-        omikujiStore.updateMeta({
-          ...data.value.meta,
-          [key]: value,
-        })
-      },
-    })
-  }
-
-  // 各プロパティのcomputed
-  const name = createMetaProperty<string>('name')
-  const description = createMetaProperty<string>('description')
-  const version = createMetaProperty<string>('version')
-  const author = createMetaProperty<string>('author')
-  const tags = createMetaProperty<string[]>('tags')
-
-  // タグの配列とテキストエリア入力の相互変換（改行区切り）
-  const tagsInput = computed({
-    get: () => tags.value.join('\n'),
-    set: (value: string) => {
-      const newTags = value
-        .split('\n')
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0)
-      tags.value = newTags
-    },
-  })
+  // メタ情報の参照
+  const meta = computed(() => data.value.meta)
 </script>

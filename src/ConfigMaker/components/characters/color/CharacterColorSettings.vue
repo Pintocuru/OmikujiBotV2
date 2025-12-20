@@ -16,16 +16,7 @@
     <!-- カラー設定モード切り替えトグル -->
     <div class="flex items-center gap-2">
       <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
-      <button
-        v-if="currentColor.isTheme"
-        class="btn btn-sm btn-accent gap-2"
-        :disabled="!isPro"
-        @click="randomizeThemeColors"
-        title="テーマとカラーをランダムに選択"
-      >
-        <Dices :size="16" />
-        ランダム
-      </button>
+      <RandomThemeButton v-if="isPro && currentColor.isTheme" @randomize="handleRandomTheme" />
 
       <div class="form-control">
         <label class="label cursor-pointer gap-3">
@@ -63,53 +54,13 @@
 
   <!-- 新：テーマベースのカラー設定 -->
   <div v-else class="card bg-base-100 p-4 flex flex-col gap-4">
-    <!-- テーマカラー -->
-    <SettingItem label="カラー" description="ランキングのテーマカラーを選択します" :forceMode="'pro'">
-      <select
-        class="select select-bordered"
-        :value="currentColor.daisyUiTheme"
-        :disabled="!isPro"
-        @change="(e) => updateColorField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="theme in themes" :key="theme" :value="theme">
-          {{ theme }}
-        </option>
-      </select>
-    </SettingItem>
-
-    <!-- 背景の左端 -->
-    <SettingItem label="背景(From)" description="背景カラーの左端の色を設定します" :forceMode="'pro'">
-      <select
-        class="select select-bordered"
-        :value="currentColor.backFrom"
-        :disabled="!isPro"
-        @change="(e) => updateColorField('backFrom', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="color in daisyUIColor" :key="color" :value="color">
-          {{ color }}
-        </option>
-      </select>
-    </SettingItem>
-
-    <!-- 背景の右端 -->
-    <SettingItem label="背景(to)" description="背景カラーの右端の色を設定します" :forceMode="'pro'">
-      <select
-        class="select select-bordered"
-        :value="currentColor.backTo"
-        :disabled="!isPro"
-        @change="(e) => updateColorField('backTo', (e.target as HTMLSelectElement).value)"
-      >
-        <option v-for="color in daisyUIColor" :key="color" :value="color">
-          {{ color }}
-        </option>
-      </select>
-    </SettingItem>
+    <DaisyUiThemeEditor :model-value="themeFields" @update:model-value="handleThemeUpdate" />
   </div>
 
   <!-- カスタムクラス設定 -->
   <CustomClassSelector
     v-model="currentColor.customClasses"
-    @update:modelValue="updateColorField('customClasses', $event)"
+    @update:modelValue="(value) => updateColorField('customClasses', value)"
   />
 </template>
 
@@ -119,12 +70,12 @@
   import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
   import CommentBubblePreview from '@/ConfigMaker/components/displaySettings/bubble/CommentBubblePreview.vue'
   import { DEFAULT_COLOR_THEMES } from '@MainScripts/BotCharacter/CharacterColorPreset'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import DaisyUiThemeEditor from './DaisyUiThemeEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import RandomThemeButton from './RandomThemeButton.vue'
+  import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { daisyUIColor, themes } from '@shared/styles/DaisyUiTheme'
-  import { Dices } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue?: CharacterColorType
@@ -139,7 +90,7 @@
   const { selectedItemKey } = storeToRefs(omikujiStore)
   const { isPro, isGod } = useSettingMode()
 
-  // labelとキーを配列で管理
+  // カラーフィールド定義
   const colorFields = [
     { label: '名前の色', key: 'nameColor' },
     { label: 'テキストの色', key: 'textColor' },
@@ -149,52 +100,51 @@
   // 現在の色設定を取得
   const currentColor = computed(() => props.modelValue ?? CharacterColorScheme.parse({}))
 
-  // 色フィールドを更新する関数
-  const updateColorField = (key: keyof CharacterColorType, value: string) => {
+  // DaisyUIテーマフィールドのみ抽出
+  const themeFields = computed<DaisyUiThemeFieldsType>(() => ({
+    daisyUiTheme: currentColor.value.daisyUiTheme,
+    backFrom: currentColor.value.backFrom,
+    backTo: currentColor.value.backTo,
+  }))
+
+  // 色設定を更新する共通関数
+  const updateColor = (updates: Partial<CharacterColorType>) => {
     if (!selectedItemKey.value) return
 
     omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
       ...currentColor.value,
-      [key]: value,
+      ...updates,
     })
+  }
+
+  // 個別フィールド更新
+  const updateColorField = (key: keyof CharacterColorType, value: string) => {
+    updateColor({ [key]: value })
+  }
+
+  // テーマ更新ハンドラー
+  const handleThemeUpdate = (newValue: DaisyUiThemeFieldsType) => {
+    updateColor(newValue)
+  }
+
+  // ランダムテーマ選択ハンドラー
+  const handleRandomTheme = (newValues: DaisyUiThemeFieldsType) => {
+    updateColor(newValues)
   }
 
   // カラーモード切り替え（旧式⇔新式）
   const toggleColorMode = () => {
-    if (!selectedItemKey.value) return
-
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
-      ...currentColor.value,
-      isTheme: !currentColor.value.isTheme,
-    })
+    updateColor({ isTheme: !currentColor.value.isTheme })
   }
 
   // プリセットカラー選択
   const selectPresetColor = (theme: Partial<CharacterColorType>) => {
-    if (!selectedItemKey.value) return
     if (!theme.nameColor || !theme.textColor || !theme.backgroundColor) return
 
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
-      ...currentColor.value,
+    updateColor({
       nameColor: theme.nameColor,
       textColor: theme.textColor,
       backgroundColor: theme.backgroundColor,
-    })
-  }
-
-  // ランダムにテーマカラーを選択
-  const randomizeThemeColors = () => {
-    if (!selectedItemKey.value) return
-
-    const randomTheme = themes[Math.floor(Math.random() * themes.length)]
-    const randomBackFrom = daisyUIColor[Math.floor(Math.random() * daisyUIColor.length)]
-    const randomBackTo = daisyUIColor[Math.floor(Math.random() * daisyUIColor.length)]
-
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
-      ...currentColor.value,
-      daisyUiTheme: randomTheme,
-      backFrom: randomBackFrom,
-      backTo: randomBackTo,
     })
   }
 </script>

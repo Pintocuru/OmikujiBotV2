@@ -1,6 +1,11 @@
 <!-- src/MainGenerator/components/ToastBubbleItem.vue -->
 <template>
-  <div :class="chatPositionClass" @click="handleClick">
+  <div
+    class="bg-base-100"
+    :class="chatPositionClass"
+    :data-theme="color?.isTheme ? color.daisyUiTheme : null"
+    @click="handleClick"
+  >
     <!-- アイコン -->
     <div
       v-if="isCharacterDisplay && character && character.image?.[iconKey]"
@@ -9,16 +14,18 @@
       <LayerImage :layers="character.image?.[iconKey]" :size="10" :round="true" />
     </div>
 
-    <!-- メッセージ内容 -->
+    <!-- メッセージ -->
     <div
       v-if="resolvedMessage"
       class="chat-bubble max-w-xs"
-      :style="{ backgroundColor: botMessage?.color?.backgroundColor || character?.color.backgroundColor || '#CCC' }"
+      :class="
+        color?.isTheme
+          ? ['bg-gradient-to-br', `from-${color.backFrom}`, `to-${color.backTo}`, 'text-primary-content']
+          : ''
+      "
+      :style="!color?.isTheme ? { backgroundColor: color?.backgroundColor || '#ccc' } : {}"
     >
-      <div
-        class="leading-tight text-base"
-        :style="{ color: botMessage?.color?.textColor || character?.color.textColor || '#212121' }"
-      >
+      <div class="leading-tight text-base" :style="!color?.isTheme ? { color: color?.textColor || '#212121' } : {}">
         {{ resolvedMessage }}
       </div>
     </div>
@@ -27,7 +34,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessage, CharacterEmotionType, CharacterType } from '@/types/'
+  import { BotMessage, CharacterEmotionType, CharacterType } from '@/types'
+  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import LayerImage from '@/common/LayerImage.vue'
 
   const props = withDefaults(
@@ -50,24 +58,18 @@
 
   const emit = defineEmits(['click'])
 
-  /**
-   * 表示ルール
-   * - toast が string かつ空でない → toast を表示
-   * - toast が "" / 空白 → 表示しない
-   * - toast が null / undefined → simpleMessage を表示
-   */
   const resolvedMessage = computed(() => {
     const toast = props.botMessage?.comment?.toast
-
     if (typeof toast === 'string') {
       const t = toast.trim()
       return t !== '' ? t : null
     }
-
     return props.simpleMessage ?? null
   })
 
   const chatPositionClass = computed(() => (props.showToastsOnRight ? 'chat chat-end' : 'chat chat-start'))
+
+  const color = computed<CharacterColorType | undefined>(() => props.botMessage?.color || props.character?.color)
 
   const handleClick = () => {
     if (props.clickable && props.botMessage) {
@@ -75,9 +77,3 @@
     }
   }
 </script>
-
-<style scoped>
-  .avatar img {
-    object-fit: contain;
-  }
-</style>

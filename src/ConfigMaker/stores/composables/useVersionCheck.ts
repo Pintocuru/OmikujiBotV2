@@ -85,14 +85,14 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('click', () => {
-            window.open('https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest', '_blank')
+            window.open(openLatestRelease())
           })
         },
       })
     }
   }
 
-  const openLatestRelease = () => window.open('https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest', '_blank')
+  const openLatestRelease = () => 'https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest'
 
   // バージョン情報をリセット
   const resetVersionCheck = () => {

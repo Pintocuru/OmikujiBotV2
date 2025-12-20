@@ -1,4 +1,5 @@
 <!-- src/configMaker/components/scriptSettings/ScriptSettingsEditor.vue -->
+<!-- ! 使用しない -->
 <template>
   <div v-if="hasScripts">
     <ScriptCard

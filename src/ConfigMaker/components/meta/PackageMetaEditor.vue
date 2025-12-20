@@ -3,9 +3,8 @@
   <div class="space-y-4">
     <!-- 基本情報 -->
     <SectionCard
-      :variant="isPro ? 'secondary' : 'outline-secondary'"
-      :isOpen="activeSection === 'basic'"
-      @toggle="toggleSection('basic')"
+      variant="outline-secondary"
+      :isOpen="true"
       title="基本情報"
       description="このおみくじパッケージに関する情報です"
     >
@@ -14,9 +13,8 @@
 
     <!-- 配布情報 -->
     <SectionCard
-      :variant="isPro ? 'secondary' : 'outline-secondary'"
-      :isOpen="activeSection === 'distribution'"
-      @toggle="toggleSection('distribution')"
+      variant="outline-secondary"
+      :isOpen="true"
       title="配布情報"
       description="おみくじパッケージのライセンスや配布先の表示です"
     >
@@ -26,8 +24,7 @@
     <!-- システム情報 -->
     <SectionCard
       variant="outline-secondary"
-      :isOpen="activeSection === 'system'"
-      @toggle="toggleSection('system')"
+      :isOpen="true"
       title="システム情報"
       description="このアプリ「おみくじBOT」の情報です"
     >
@@ -37,21 +34,8 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
   import PackageBasicInfo from './PackageBasicInfo.vue'
   import PackageDistributionInfo from './PackageDistributionInfo.vue'
   import PackageSystemInfo from './PackageSystemInfo.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-
-  const { isPro } = useSettingMode()
-
-  // アクティブなセクションの管理
-  type SectionType = 'basic' | 'distribution' | 'system' | null
-  const activeSection = ref<SectionType>('basic')
-
-  // セクションの切り替え
-  const toggleSection = (section: SectionType) => {
-    activeSection.value = activeSection.value === section ? null : section
-  }
 </script>
