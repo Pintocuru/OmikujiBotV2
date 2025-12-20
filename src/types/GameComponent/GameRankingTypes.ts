@@ -1,4 +1,5 @@
 // src/types/GameComponent/GameRankingTypes.ts
+使わない
 
 // GameRankingScoreで使用するスコア表示設定
 export interface GameRankingScore {
