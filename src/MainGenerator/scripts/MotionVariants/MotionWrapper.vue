@@ -1,13 +1,13 @@
-<!-- src/components/common/MotionWrapper.vue -->
+<!-- src\MainGenerator\scripts\MotionVariants\MotionWrapper.vue -->
 <template>
   <Transition :css="false" @leave="onLeave">
     <div
       v-if="visible"
       ref="motionElement"
       v-motion="motionKey"
-      :initial="initialVariant.initial"
-      :enter="enterVariant.enter"
-      :leave="leaveVariant.leave"
+      :initial="motionVariant.initial"
+      :enter="motionVariant.enter"
+      :leave="motionVariant.leave"
       v-bind="$attrs"
     >
       <slot />
@@ -16,27 +16,22 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, nextTick, watch, onMounted, onBeforeUnmount } from 'vue'
-  import { MotionVariants, useMotion } from '@vueuse/motion'
-  import { MotionType, motionVariants } from './MotionVariants'
+  import { computed, watch, onMounted, onBeforeUnmount, nextTick, toRef } from 'vue'
+  import { MotionType } from './MotionVariants'
+  import { useMotionAnimation } from './useMotionAnimation.ts'
 
   // Props定義
-  // TODO: v2.0でLoopMotionType も許可したい
   const props = withDefaults(
     defineProps<{
       visible?: boolean
-      initialMotion?: MotionType
-      enterMotion?: MotionType
-      leaveMotion?: MotionType
+      motion?: MotionType
       motionKey?: string
       autoHide?: boolean
       hideDelay?: number
     }>(),
     {
       visible: true,
-      initialMotion: 'none',
-      enterMotion: 'none',
-      leaveMotion: 'none',
+      motion: 'none',
       motionKey: 'motion',
       autoHide: false,
       hideDelay: 3000,
@@ -52,140 +47,40 @@
     'leave-complete': []
   }>()
 
-  // アニメーション設定の算出
-  const initialVariant = computed(() => motionVariants[props.initialMotion])
-  const enterVariant = computed(() => motionVariants[props.enterMotion])
-  const leaveVariant = computed(() => motionVariants[props.leaveMotion])
+  // コンポーザブルの使用
+  const motionRef = computed(() => props.motion)
+  const visibleRef = toRef(props, 'visible')
 
-  // 要素の参照
-  const motionElement = ref<HTMLElement>()
-
-  // Motion Instanceの管理
-  let motionInstance: ReturnType<typeof useMotion> | null = null
-  let autoHideTimer: number | null = null
-
-  // Motion Instanceを初期化する関数
-  const initializeMotion = () => {
-    if (motionElement.value) {
-      motionInstance = useMotion(motionElement.value, {
-        initial: initialVariant.value.initial,
-        enter: enterVariant.value.enter,
-        leave: leaveVariant.value.leave,
-      } as MotionVariants<string>)
-    }
-  }
-
-  // 自動非表示のタイマーを設定
-  const setAutoHideTimer = () => {
-    if (props.autoHide && props.visible) {
-      clearAutoHideTimer()
-      autoHideTimer = window.setTimeout(() => {
-        hide()
-      }, props.hideDelay)
-    }
-  }
-
-  // 自動非表示のタイマーをクリア
-  const clearAutoHideTimer = () => {
-    if (autoHideTimer) {
-      clearTimeout(autoHideTimer)
-      autoHideTimer = null
-    }
-  }
-
-  // Transitionのleaveイベントハンドラー
-  const onLeave = async (el: Element, done: () => void) => {
-    emit('leave-start')
-    try {
-      if (motionInstance?.apply) {
-        await motionInstance.apply('leave')
-      }
-      emit('leave-complete')
-      done()
-    } catch (error) {
-      console.warn('Leave animation failed:', error)
-      emit('leave-complete')
-      done()
-    }
-  }
-
-  // 外部から呼び出し可能な関数群
-  const show = async () => {
-    emit('update:visible', true)
-    await nextTick()
-    initializeMotion()
-    emit('enter-start')
-
-    // ★ 修正箇所: enterMotion が 'none' の場合はアニメーションをスキップ ★
-    const shouldSkipEnterAnimation = props.enterMotion === 'none' // enterアニメーション完了を待つ
-
-    try {
-      if (motionInstance?.apply && !shouldSkipEnterAnimation) {
-        // <= 条件を追加
-        await motionInstance.apply('enter')
-      } else if (motionInstance?.set && shouldSkipEnterAnimation) {
-        // 'none' の場合、initial (enterの初期値) を適用せずに、enterの最終状態を即座に適用する
-        // これにより、要素が initial 状態（見えない位置）のまま固定されることを防ぐ
-        motionInstance.set(enterVariant.value.enter ?? 'none')
-      }
-
-      emit('enter-complete')
-      setAutoHideTimer()
-    } catch (error) {
-      console.warn('Enter animation failed:', error)
-
-      // エラー時も同様に、要素が見える状態にフォールバックさせる
-      if (motionInstance?.set) {
-        motionInstance.set(enterVariant.value.enter ?? 'none')
-      }
-
-      emit('enter-complete')
-      setAutoHideTimer()
-    }
-  }
-
-  const hide = async () => {
-    if (props.visible && motionInstance?.apply) {
-      clearAutoHideTimer()
-      emit('leave-start')
-      try {
-        await motionInstance.apply('leave')
-        emit('update:visible', false)
-        emit('leave-complete')
-      } catch (error) {
-        console.warn('Hide animation failed:', error)
-        emit('update:visible', false)
-        emit('leave-complete')
-      }
-    }
-  }
-
-  const toggle = async () => {
-    if (props.visible) {
-      await hide()
-    } else {
-      await show()
-    }
-  }
-
-  const reload = async () => {
-    if (props.visible) {
-      emit('update:visible', false)
-      await nextTick()
-      await show()
-    } else {
-      emit('update:visible', true)
-    }
-  }
+  const {
+    motionElement,
+    motionVariant,
+    initializeMotion,
+    setAutoHideTimer,
+    clearAutoHideTimer,
+    onLeave,
+    show,
+    hide,
+    toggle,
+    reload,
+  } = useMotionAnimation({
+    motion: motionRef,
+    visible: visibleRef,
+    autoHide: props.autoHide,
+    hideDelay: props.hideDelay,
+    emit,
+  })
 
   // アニメーション設定の変更を監視
-  watch([() => props.initialMotion, () => props.leaveMotion], async () => {
-    if (props.visible) {
-      emit('update:visible', false)
-      await nextTick()
-      await show()
+  watch(
+    () => props.motion,
+    async () => {
+      if (props.visible) {
+        emit('update:visible', false)
+        await nextTick()
+        await show()
+      }
     }
-  })
+  )
 
   // visibleの変更を監視
   watch(

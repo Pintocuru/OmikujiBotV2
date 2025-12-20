@@ -1,12 +1,16 @@
 <!-- src\MainGenerator\components\OmikujiBot\CharacterThumbnails.vue -->
 <template>
-  <CharacterThumbnailsPreview
-    v-if="characters.length > 0"
-    :characters="characters"
-    :clickable="true"
-    :imageClass="'transition-all duration-500'"
-    @character-click="handleCharacterClick"
-  />
+  <div
+    class="flex gap-4 mt-2"
+    :class="[toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start']"
+  >
+    <CharacterThumbnailsPreview
+      :characters="characterArray"
+      :clickable="true"
+      @character-click="handleCharacterClick"
+    />
+    <CharacterThumbnailsPreview :characters="filteredCharacters" :hoverVisibility="false" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -18,13 +22,14 @@
 
   const appStore = useAppStore()
 
-  const characters = computed(() => appStore.characterCollector.getUsedCharacterArray())
+  const toastSettings = computed(() => appStore.data.displaySettings.components.toast)
+  const characterArray = computed(() => appStore.characterCollector.getUsedCharacterArray())
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
 
   onMounted(() => {
-    currentExpressions.value = characters.value.map(() => 'default')
-    if (characters.value.length > 0) startExpressionCycle()
+    currentExpressions.value = characterArray.value.map(() => 'default')
+    if (characterArray.value.length > 0) startExpressionCycle()
   })
 
   onUnmounted(() => {
@@ -33,9 +38,9 @@
 
   const startExpressionCycle = () => {
     const updateExpressions = () => {
-      if (characters.value.length === 0) return
+      if (characterArray.value.length === 0) return
 
-      characters.value.forEach((character, index) => {
+      characterArray.value.forEach((character, index) => {
         if (!character.image) return
         const shouldChange = Math.random() < 0.05
         currentExpressions.value[index] = shouldChange
@@ -68,4 +73,10 @@
       console.error('テストメッセージの生成に失敗しました:', error)
     }
   }
+
+  // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
+  const filteredCharacters = computed(() => {
+    const selectedKeys = new Set(toastSettings.value.showThumbnail)
+    return characterArray.value.filter((character) => selectedKeys.has(character.key))
+  })
 </script>

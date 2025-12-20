@@ -20,9 +20,7 @@
       <MotionWrapper
         ref="motionWrapper"
         v-model:visible="shouldShowBubble"
-        :initialMotion="bubbleMotionEnter"
-        :enter-motion="bubbleMotionEnter"
-        :leave-motion="bubbleMotionEnter"
+        :motion="bubbleMotionEnter"
         :auto-hide="false"
       >
         <CommentBubbleItem

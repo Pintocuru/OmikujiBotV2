@@ -1944,7 +1944,7 @@
       "name": "漆黒のめたん",
       "description": "地道な努力こそが、願いを叶える魔法の呪文なのよ。",
       "createdAt": "2025-08-28T01:37:05.867Z",
-      "updatedAt": "2025-11-28T00:18:16.710Z",
+      "updatedAt": "2025-12-20T04:25:00.285Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
@@ -1967,9 +1967,9 @@
       },
       "color": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
+        "daisyUiTheme": "lofi",
         "backFrom": "primary",
-        "backTo": "primary",
+        "backTo": "secondary",
         "nameColor": "#f8bbd0",
         "textColor": "#d7ccc8",
         "backgroundColor": "#212121"
@@ -2029,15 +2029,17 @@
           ]
         ],
         "characterSize": 48,
-        "fontFamily": "default",
+        "fontFamily": "mplus1p",
         "bubbleMotionEnter": "zoomIn",
-        "bubbleTextAnimate": true,
+        "bubbleTextAnimate": false,
         "bubbleTextSpeed": 50
       },
       "toast": {
         "showToastsOnRight": false,
         "showToastsCharacter": true,
-        "showThumbnail": []
+        "showThumbnail": [
+          "metan"
+        ]
       },
       "ranking": {
         "scriptKey": null,

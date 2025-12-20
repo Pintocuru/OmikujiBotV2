@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\characters\color\PASTEL_THEMES.ts
+// src\ConfigMaker\components\characters\color\PASTEL_THEMES.ts
 import { CharacterColorType } from '@/types'
 
 export const PASTEL_THEMES: CharacterColorType[] = [

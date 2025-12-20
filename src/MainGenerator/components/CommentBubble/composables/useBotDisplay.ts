@@ -23,7 +23,12 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
   const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 
-  const comments = computed(() => botMessages.value)
+  const comments = computed(() =>
+    botMessages.value.filter((m) => {
+      if (mode === 'toast') return !!m.comment?.toast
+      return !!m.comment?.bubble
+    })
+  )
 
   // MotionWrapperのafter-leaveイベントから呼ばれる関数
   const removeComment = (messageId: string) => {

@@ -51,53 +51,35 @@
   const { lastCommenterKey, getCharacterImage, getCharacterComments, removeCommentWithIconReset, start, stop } =
     useViewBotCharacter()
 
-  //  修正箇所: slice(1)で1番地以降のみを処理
-  const charactersToShow = computed<CharacterType[]>(() => {
-    if (!showCharacters || showCharacters.length === 0) {
-      return []
+  const resolveGroupCharacter = (group: string[], lastCommenterKey?: string): string | undefined => {
+    if (!group.length) return
+
+    // 最新コメントがこのグループ内ならそれを優先
+    if (lastCommenterKey && group.includes(lastCommenterKey)) {
+      return lastCommenterKey
     }
 
+    // それ以外は先頭（デフォルト）
+    return group[0]
+  }
+
+  //  修正箇所: slice(1)で1番地以降のみを処理
+  const charactersToShow = computed<CharacterType[]>(() => {
+    if (!showCharacters || showCharacters.length === 0) return []
+
     const allCharacters = characters.value
-    const finalCharacters: CharacterType[] = []
+    const lastKey = lastCommenterKey.value
+    const result: CharacterType[] = []
 
-    //  0番地をスキップして1番地以降を処理
-    const visibleGroups = showCharacters.slice(1)
+    showCharacters.forEach((group) => {
+      const key = resolveGroupCharacter(group, lastKey)
+      if (!key) return
 
-    visibleGroups.forEach((group) => {
-      // グループ内のキャラクターキーを逆順で走査する
-      const reversedGroup = [...group].reverse()
-
-      let characterToDisplay: CharacterType | undefined = undefined
-
-      for (const key of reversedGroup) {
-        const char = allCharacters[key]
-        if (!char) continue
-
-        // グループの最初の要素（0番地、つまり最も低い優先度）
-        const isDefaultCharacter = key === group[0]
-
-        // そのキャラクターに現在表示中のコメントがあるかチェック
-        const comments = getCharacterComments(key)
-        const hasComments = comments && comments.length > 0
-
-        if (isDefaultCharacter && !characterToDisplay) {
-          // デフォルトキャラクターを暫定的な表示対象とする
-          characterToDisplay = char
-        } else if (hasComments) {
-          // コメントがあるキャラクターは、そのグループの表示対象として確定
-          characterToDisplay = char
-          break
-        }
-      }
-
-      // 最終的に表示が決定したキャラクターをリストに追加
-      if (characterToDisplay) {
-        finalCharacters.push(characterToDisplay)
-      }
+      const char = allCharacters[key]
+      if (char) result.push(char)
     })
 
-    // 最終リストを返す
-    return finalCharacters
+    return result
   })
 
   const base = useCharacterWithComments(null, [], false)

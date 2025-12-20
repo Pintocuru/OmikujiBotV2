@@ -10,7 +10,8 @@
       <div
         v-for="(character, index) in characters"
         :key="character.id"
-        class="avatar cursor-pointer transition-transform hover:scale-110"
+        class="avatar"
+        :class="clickable ? 'cursor-pointer hover:scale-110' : ''"
         @click="handleClick(character, false)"
         @contextmenu.prevent="clickable && handleClick(character, true)"
       >
@@ -18,14 +19,8 @@
           :class="['w-12 h-12', 'rounded-full border border-base-100 shadow-lg']"
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
-          <LayerImage
-            v-if="character.image?.default"
-            :layers="character.image?.default"
-            :size="12"
-            :border="true"
-            class="object-cover"
-            :class="imageClass"
-          />
+          <!-- TODO:時間経過によって、default から変化してもいいね -->
+          <LayerImage :layers="character.image?.default" :size="12" :border="true" class="object-cover" />
         </div>
       </div>
     </div>
@@ -33,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, onUnmounted } from 'vue' // ref, watch, onUnmounted を追加
+  import { ref, watch, onUnmounted } from 'vue'
   import { CharacterType } from '@/types'
   import LayerImage from '@/common/LayerImage.vue'
 
@@ -44,13 +39,10 @@
     defineProps<{
       characters: CharacterType[]
       clickable?: boolean
-      imageClass?: string
-      // 新規プロパティ: ホバーによる表示/非表示を有効にするか
       hoverVisibility?: boolean
     }>(),
     {
       clickable: false,
-      imageClass: '',
       hoverVisibility: true, // デフォルトは常に表示
     }
   )

@@ -12,9 +12,7 @@
     <template v-if="displayMessage(message) as string">
       <MotionWrapper
         v-model:visible="message.visible"
-        :initialMotion="enterMotion"
-        :enter-motion="enterMotion"
-        :leave-motion="leaveMotion"
+        :motion="enterMotion"
         :auto-hide="false"
         @after-leave="() => removeComment(message.id)"
       >

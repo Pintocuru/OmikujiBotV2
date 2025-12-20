@@ -1,23 +1,24 @@
 <!-- src/MainGenerator/components/ViewBotToast.vue -->
 <template>
-  <div v-for="(message, index) in displayedComments.slice().reverse()" :key="message.id">
-    <MotionWrapper
-      v-model:visible="message.visible"
-      :initialMotion="!toast.showToastsOnRight ? 'slideRight' : 'slideLeft'"
-      :enterMotion="!toast.showToastsOnRight ? 'slideRight' : 'slideLeft'"
-      :leave-motion="!toast.showToastsOnRight ? 'slideLeft' : 'slideRight'"
-      :auto-hide="false"
-      @after-leave="() => removeComment(message.id)"
-    >
-      <ToastBubbleItem
-        :botMessage="message"
-        :showToastsOnRight="toast.showToastsOnRight"
-        :character="characters?.[message.characterKey]"
-        :isCharacterDisplay="toast.showToastsCharacter"
-        :clickable="true"
-        @click="hideComment"
-      />
-    </MotionWrapper>
+  <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
+    <div v-for="(message, index) in displayedComments.slice().reverse()" :key="message.id">
+      <MotionWrapper
+        v-model:visible="message.visible"
+        :motion="!toastSettings.showToastsOnRight ? 'slideRight' : 'slideLeft'"
+        :auto-hide="false"
+        @after-leave="() => removeComment(message.id)"
+      >
+        <ToastBubbleItem
+          :botMessage="message"
+          :showToastsOnRight="toastSettings.showToastsOnRight"
+          :character="characters?.[message.characterKey]"
+          :iconKey="message.iconKey"
+          :isCharacterDisplay="toastSettings.showToastsCharacter"
+          :clickable="true"
+          @click="hideComment"
+        />
+      </MotionWrapper>
+    </div>
   </div>
 </template>
 
@@ -32,8 +33,7 @@
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
-  const toast = computed(() => appStore.data.displaySettings.components.toast)
-
+  const toastSettings = computed(() => appStore.data.displaySettings.components.toast)
   const characters = computed(() => appStore.characterCollector.getUsedCharacterData())
 
   // コメント表示ロジック

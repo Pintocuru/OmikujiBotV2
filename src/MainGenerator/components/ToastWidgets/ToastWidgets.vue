@@ -2,14 +2,10 @@
 <template>
   <div class="fixed bottom-4 z-20 flex flex-col" :class="!toast.showToastsOnRight ? 'left-4' : 'right-4'">
     <!-- トースト表示 -->
-    <div :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
-      <ViewBotToast />
-    </div>
+    <ViewBotToast />
 
     <!-- キャラクターサムネイル -->
-    <div v-if="toast.showThumbnail" :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
-      <CharacterThumbnails />
-    </div>
+    <CharacterThumbnails />
   </div>
 </template>
 

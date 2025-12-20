@@ -6,13 +6,16 @@
       v-for="(message, i) in previewMessages"
       :key="i"
       :botMessage="message"
-      :showToastsOnRight="toast.showToastsOnRight"
-      :character="toast.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
-      :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'"
+      :showToastsOnRight="toastSettings.showToastsOnRight"
+      :character="toastSettings.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
+      :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'"
     />
 
     <!-- サムネイルサンプル表示 -->
-    <div class="flex flex-row gap-4 mt-2" :class="!toast.showToastsOnRight ? 'self-start' : 'self-end'">
+    <div
+      class="flex flex-row gap-4 mt-2"
+      :class="!toastSettings.showToastsOnRight ? 'self-start' : 'flex-row-reverse self-start'"
+    >
       <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
       <CharacterThumbnailsPreview :characters="characterArray" :hoverVisibility="true" />
       <CharacterThumbnailsPreview :characters="filteredCharacters" :hoverVisibility="false" />
@@ -29,11 +32,11 @@
     <input
       type="checkbox"
       class="toggle toggle-primary"
-      :checked="toast.showToastsOnRight"
+      :checked="toastSettings.showToastsOnRight"
       @change="(e) => updateToastField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">
-      {{ toast.showToastsOnRight ? '右側に表示する' : '左側に表示する' }}
+      {{ toastSettings.showToastsOnRight ? '右側に表示する' : '左側に表示する' }}
     </span>
   </SettingItem>
 
@@ -46,7 +49,7 @@
     <input
       type="checkbox"
       class="toggle toggle-primary"
-      :checked="toast.showToastsCharacter"
+      :checked="toastSettings.showToastsCharacter"
       @change="(e) => updateToastField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">キャラクターを表示する</span>
@@ -60,7 +63,7 @@
   >
     <CharacterBadgeSelector
       :characters="data.characters"
-      :selectedKeys="toast.showThumbnail"
+      :selectedKeys="toastSettings.showThumbnail"
       @update:selectedKeys="(keys: string[]) => updateToastField('showThumbnail', keys)"
     />
   </SettingItem>
@@ -80,27 +83,27 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const toast = computed(() => data.value.displaySettings.components.toast)
+  const toastSettings = computed(() => data.value.displaySettings.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
 
-  // ★ 追加: showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
+  // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
-    const selectedKeys = new Set(toast.value.showThumbnail)
+    const selectedKeys = new Set(toastSettings.value.showThumbnail)
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
   })
 
   // 更新関数
-  const updateToastField = (field: keyof typeof toast.value, value: any) => {
+  const updateToastField = (field: keyof typeof toastSettings.value, value: any) => {
     omikujiStore.updateNestedDisplaySettings('components', {
       toast: {
-        ...toast.value,
+        ...toastSettings.value,
         [field]: value,
       },
     })
   }
 
   // リセット関数
-  const resetField = (field: keyof typeof toast.value) => {
+  const resetField = (field: keyof typeof toastSettings.value) => {
     const defaults = SettingsToastSchema.parse({})
     updateToastField(field, defaults[field])
   }
