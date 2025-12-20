@@ -5,6 +5,7 @@
       <MotionWrapper
         v-model:visible="message.visible"
         :motion="!toastSettings.showToastsOnRight ? 'slideRight' : 'slideLeft'"
+        :leave-motion="!toastSettings.showToastsOnRight ? 'slideLeft' : 'slideRight'"
         :auto-hide="false"
         @after-leave="() => removeComment(message.id)"
       >

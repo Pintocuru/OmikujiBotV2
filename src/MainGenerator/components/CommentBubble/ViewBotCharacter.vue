@@ -63,7 +63,7 @@
     return group[0]
   }
 
-  //  修正箇所: slice(1)で1番地以降のみを処理
+  // 0番地以外のキャラを順に並べる
   const charactersToShow = computed<CharacterType[]>(() => {
     if (!showCharacters || showCharacters.length === 0) return []
 
@@ -71,7 +71,7 @@
     const lastKey = lastCommenterKey.value
     const result: CharacterType[] = []
 
-    showCharacters.forEach((group) => {
+    showCharacters.slice(1).forEach((group) => {
       const key = resolveGroupCharacter(group, lastKey)
       if (!key) return
 

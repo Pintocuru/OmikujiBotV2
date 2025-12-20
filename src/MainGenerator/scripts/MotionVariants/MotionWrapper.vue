@@ -7,7 +7,7 @@
       v-motion="motionKey"
       :initial="motionVariant.initial"
       :enter="motionVariant.enter"
-      :leave="motionVariant.leave"
+      :leave="leaveMotionVariant.leave"
       v-bind="$attrs"
     >
       <slot />
@@ -18,20 +18,20 @@
 <script setup lang="ts">
   import { computed, watch, onMounted, onBeforeUnmount, nextTick, toRef } from 'vue'
   import { MotionType } from './MotionVariants'
-  import { useMotionAnimation } from './useMotionAnimation.ts'
+  import { useMotionAnimation, MotionAnimationEmits } from './useMotionAnimation'
 
   // Props定義
   const props = withDefaults(
     defineProps<{
       visible?: boolean
-      motion?: MotionType
+      motion: MotionType
+      leaveMotion?: MotionType
       motionKey?: string
       autoHide?: boolean
       hideDelay?: number
     }>(),
     {
       visible: true,
-      motion: 'none',
       motionKey: 'motion',
       autoHide: false,
       hideDelay: 3000,
@@ -47,13 +47,30 @@
     'leave-complete': []
   }>()
 
+  // emit関数のラッパー (型エラー回避)
+  const emitWrapper = (event: keyof MotionAnimationEmits, ...args: any[]) => {
+    if (event === 'update:visible') {
+      emit('update:visible', args[0] as boolean)
+    } else if (event === 'enter-start') {
+      emit('enter-start')
+    } else if (event === 'enter-complete') {
+      emit('enter-complete')
+    } else if (event === 'leave-start') {
+      emit('leave-start')
+    } else if (event === 'leave-complete') {
+      emit('leave-complete')
+    }
+  }
+
   // コンポーザブルの使用
   const motionRef = computed(() => props.motion)
+  const leaveMotionRef = computed(() => props.leaveMotion)
   const visibleRef = toRef(props, 'visible')
 
   const {
     motionElement,
     motionVariant,
+    leaveMotionVariant,
     initializeMotion,
     setAutoHideTimer,
     clearAutoHideTimer,
@@ -64,10 +81,11 @@
     reload,
   } = useMotionAnimation({
     motion: motionRef,
+    leaveMotion: leaveMotionRef,
     visible: visibleRef,
     autoHide: props.autoHide,
     hideDelay: props.hideDelay,
-    emit,
+    emit: emitWrapper,
   })
 
   // アニメーション設定の変更を監視
@@ -78,6 +96,17 @@
         emit('update:visible', false)
         await nextTick()
         await show()
+      }
+    }
+  )
+
+  // leaveMotionの変更も監視 (必要に応じて)
+  watch(
+    () => props.leaveMotion,
+    async () => {
+      if (props.visible) {
+        // leaveMotionが変更されたら、次回の非表示時に反映される
+        initializeMotion()
       }
     }
   )

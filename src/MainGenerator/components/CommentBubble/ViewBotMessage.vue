@@ -15,9 +15,10 @@
           <!-- キャラクター（最新コメント時のみ表示） -->
           <CharacterAvatar
             v-if="index === 0 && message.profileImage"
-            class="absolute top-[80px] left-1/2 -translate-x-1/2 transform"
+            class="absolute top-[180px] left-1/2 -translate-x-1/2 transform"
             :profileImage="message.profileImage"
             :backgroundColor="message.color?.backgroundColor"
+            :characterSize="bubble.characterSize"
             :showCharacterFrame="true"
           />
         </template>

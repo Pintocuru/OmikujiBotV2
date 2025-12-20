@@ -13,6 +13,7 @@ export interface MotionAnimationEmits {
 
 export interface UseMotionAnimationOptions {
   motion: ComputedRef<MotionType>
+  leaveMotion?: ComputedRef<MotionType | undefined> // undefined を許容
   visible: Ref<boolean>
   autoHide: boolean
   hideDelay: number
@@ -20,7 +21,7 @@ export interface UseMotionAnimationOptions {
 }
 
 export function useMotionAnimation(options: UseMotionAnimationOptions) {
-  const { motion, visible, autoHide, hideDelay, emit } = options
+  const { motion, leaveMotion, visible, autoHide, hideDelay, emit } = options
 
   // 要素の参照
   const motionElement = ref<HTMLElement>()
@@ -32,13 +33,19 @@ export function useMotionAnimation(options: UseMotionAnimationOptions) {
   // アニメーション設定の算出
   const motionVariant = computed(() => motionVariants[motion.value])
 
+  // Leave用のモーション設定 (leaveMotionが指定されていればそれを使用)
+  const leaveMotionVariant = computed(() => {
+    const targetMotion = leaveMotion?.value ?? motion.value
+    return motionVariants[targetMotion]
+  })
+
   // Motion Instanceを初期化する関数
   const initializeMotion = () => {
     if (motionElement.value) {
       motionInstance = useMotion(motionElement.value, {
         initial: motionVariant.value.initial,
         enter: motionVariant.value.enter,
-        leave: motionVariant.value.leave,
+        leave: leaveMotionVariant.value.leave, // leave は leaveMotionVariant を使用
       } as MotionVariants<string>)
     }
   }
@@ -147,6 +154,7 @@ export function useMotionAnimation(options: UseMotionAnimationOptions) {
   return {
     motionElement,
     motionVariant,
+    leaveMotionVariant, // 追加
     initializeMotion,
     setAutoHideTimer,
     clearAutoHideTimer,
