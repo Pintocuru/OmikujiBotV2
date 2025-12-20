@@ -29,7 +29,7 @@
 
     <!-- カウンター -->
     <div v-if="counterSetting.showCounter" class="text-7xl font-black leading-none drop-shadow-md">
-      {{ count }}
+      {{ displayCount }}
     </div>
 
     <!-- ユーザーリスト -->
@@ -56,6 +56,16 @@
   }>()
 
   const isBouncing = ref(false)
+
+  const displayCount = computed(() => {
+    const c = props.count
+
+    // string の場合はそのまま表示
+    if (typeof c === 'string') return c
+
+    // number の場合は 0 未満を防ぎつつ整数化
+    return Math.max(0, Math.floor(c))
+  })
 
   watch(
     () => props.count,

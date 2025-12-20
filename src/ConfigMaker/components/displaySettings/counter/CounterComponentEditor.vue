@@ -7,7 +7,14 @@
     </div>
 
     <!-- プレビュー -->
-    <CounterPreviewCard :counterSetting="counter" :count="0" :users="generateDummyUserNames(counter.maxUsers)" />
+    <CounterPreviewCard
+      v-if="counter.ruleKey"
+      :counterSetting="counter"
+      :count="counter.firstValue"
+      :users="generateDummyUserNames(counter.maxUsers)"
+    />
+
+    <NoParamsCard v-else :message="'対象ルールIDを設定してください'" />
 
     <!-- テーマカラー -->
     <DaisyUiThemeEditor
@@ -90,6 +97,7 @@
     >
       <input
         type="number"
+        min="0"
         class="input input-bordered w-24"
         :value="counter.firstValue"
         @input="(e) => updateCounterField('firstValue', Number((e.target as HTMLInputElement).value))"
@@ -146,6 +154,7 @@
   import DaisyUiThemeEditor from '@/ConfigMaker/components/characters/color/DaisyUiThemeEditor.vue'
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
   import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

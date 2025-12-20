@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\PostActionPreview.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\postAction\preview\PostActionPreview.vue -->
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->
@@ -105,12 +105,19 @@
 
   // メッセージ処理
   const processedMessage = computed(() => {
+    // ここで messageKey.value を参照することで、
+    // messageKey が更新されたとき、この computed も再計算されるようになります
+    const _ = messageKey.value
+
     if (props.action.actionType !== 'message') return ''
     const content = props.action.message.bubble || '(未記入)'
     return processMessage(content)
   })
 
   const processedToastMessage = computed(() => {
+    // toastKey も同様です
+    const _ = toastKey.value
+
     if (props.action.actionType !== 'message') return '(未記入)'
     const content = props.action.message.toast || '(未記入)'
     return processMessage(content)

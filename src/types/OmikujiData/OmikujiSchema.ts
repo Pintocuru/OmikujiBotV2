@@ -105,6 +105,7 @@ export const GameScriptsSchema = z.object({
   queryString: z.string().default('').catch(''),
   characterKey: z.string().default('').catch(''),
 })
+export type GameScriptsType = z.infer<typeof GameScriptsSchema>
 
 /**
  * PostActionRecordSchema
@@ -169,7 +170,6 @@ export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
-export type GameScriptsType = z.infer<typeof GameScriptsSchema>
 
 export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>

@@ -8,7 +8,13 @@
     "generatorVersion": "v2.0.0-alpha",
     "dataVersion": 2.0000001,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "ゲーム", "スイカゲーム", "カボチャゲーム", "クジラゲームオンライン"],
+    "tags": [
+      "おみくじBOT",
+      "ゲーム",
+      "スイカゲーム",
+      "カボチャゲーム",
+      "クジラゲームオンライン"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7730686"
   },
@@ -20,7 +26,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-17T15:01:38.482Z",
+      "updatedAt": "2025-12-20T10:20:36.605Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -42,7 +48,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "",
-            "characterKey": "metanBlack"
+            "characterKey": "metan"
           },
           "weight": 1,
           "isPriority": false,
@@ -51,7 +57,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -60,7 +68,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -105,7 +120,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -114,7 +131,13 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
+        "comment": [
+          "^pumpkin",
+          "^かぼちゃ",
+          "^カボチャ",
+          "^南瓜",
+          "^🎃$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -159,7 +182,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -168,7 +193,14 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
+        "comment": [
+          "^whale",
+          "^くじら",
+          "^クジラ",
+          "^鯨",
+          "^🐋$",
+          "^🐳$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -215,7 +247,9 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -224,7 +258,9 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": ["おみくじ"]
+        "comment": [
+          "おみくじ"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -243,11 +279,15 @@
       "name": "四国めたん",
       "description": "困難など、私たちの前では塵にすぎないわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-09-08T19:07:16.468Z",
+      "updatedAt": "2025-12-20T10:20:58.014Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
-      "tags": ["touhokuZunko", "voicevox", "Metan"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -257,26 +297,55 @@
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": true,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "nord",
+        "backFrom": "success",
+        "backTo": "warning",
         "nameColor": "#fdd835",
         "textColor": "#fce4ec",
         "backgroundColor": "#d81b60"
       },
       "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       }
     },
     "metanBlack": {
@@ -289,7 +358,11 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
-      "tags": ["touhokuZunko", "voicevox", "Metan"],
+      "tags": [
+        "touhokuZunko",
+        "voicevox",
+        "Metan"
+      ],
       "accessLevel": "basic",
       "version": "0.0.2",
       "author": "Pintocuru",
@@ -299,26 +372,55 @@
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": true,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "primary",
         "nameColor": "#f8bbd0",
         "textColor": "#d7ccc8",
         "backgroundColor": "#212121"
       },
       "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       }
     },
     "omiken": {
@@ -331,7 +433,10 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -341,27 +446,32 @@
       "displayOption": {
         "isIconDisplay": false,
         "isOneCommePost": true,
-        "isVoice": false
+        "isVoice": false,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "primary",
         "nameColor": "#81C784",
         "textColor": "#E8F5E8",
         "backgroundColor": "#388E3C",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     },
     "omiken_2": {
@@ -374,7 +484,10 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -384,39 +497,55 @@
       "displayOption": {
         "isIconDisplay": false,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": true,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "primary",
         "nameColor": "#FFB74D",
         "textColor": "#FFF3E0",
         "backgroundColor": "#F57C00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
   "displaySettings": {
-    "global": {
-      "fontFamily": "default"
-    },
     "components": {
-      "conditions": ["ranking", "toast"],
+      "conditions": [
+        "ranking",
+        "toast"
+      ],
       "bubble": {
-        "showCharacters": [["omiken", "omiken_2"], ["metanBlack", "metan"], []],
+        "showCharacters": [
+          [
+            "omiken",
+            "omiken_2"
+          ],
+          [
+            "metanBlack",
+            "metan"
+          ],
+          []
+        ],
         "characterSize": 48,
+        "fontFamily": "default",
         "bubbleMotionEnter": "slideUp",
         "bubbleTextAnimate": true,
         "bubbleTextSpeed": 50
@@ -430,7 +559,7 @@
         "scriptKey": "GoogolClover",
         "title": "🍉スイカランキング🍉",
         "limit": 10,
-        "sortByHighScore": true,
+        "sortOrder": "high",
         "color": "retro"
       },
       "counter": {
@@ -441,7 +570,11 @@
         "firstValue": 50,
         "isDirectionUp": false,
         "maxUsers": 0,
-        "color": "luxury"
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "primary"
+        }
       }
     },
     "editor": {
@@ -457,7 +590,13 @@
         "characters": "basic",
         "characterVisible": "experimental",
         "licenseVisible": "experimental",
-        "gameScripts": ["GouseiSuika", "BomberSpin", "GoogolClover", "MultiplyBonanza", "DwarfBomb"],
+        "gameScripts": [
+          "GouseiSuika",
+          "BomberSpin",
+          "GoogolClover",
+          "MultiplyBonanza",
+          "DwarfBomb"
+        ],
         "jsonMergeSettings": "experimental"
       }
     }

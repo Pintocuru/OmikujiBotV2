@@ -1,11 +1,6 @@
 <!-- src/MainGenerator/components/ToastBubbleItem.vue -->
 <template>
-  <div
-    class="bg-base-100"
-    :class="chatPositionClass"
-    :data-theme="color?.isTheme ? color.daisyUiTheme : null"
-    @click="handleClick"
-  >
+  <div :class="showToastsOnRight ? 'chat chat-end' : 'chat chat-start'" @click="handleClick">
     <!-- アイコン -->
     <div
       v-if="isCharacterDisplay && character && character.image?.[iconKey]"
@@ -17,6 +12,7 @@
     <!-- メッセージ -->
     <div
       v-if="resolvedMessage"
+      :data-theme="color?.isTheme ? color.daisyUiTheme : null"
       class="chat-bubble max-w-xs"
       :class="
         color?.isTheme
@@ -66,8 +62,6 @@
     }
     return props.simpleMessage ?? null
   })
-
-  const chatPositionClass = computed(() => (props.showToastsOnRight ? 'chat chat-end' : 'chat chat-start'))
 
   const color = computed<CharacterColorType | undefined>(() => props.botMessage?.color || props.character?.color)
 

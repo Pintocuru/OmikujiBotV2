@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\PostActionItem.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\postAction\items\PostActionItem.vue -->
 <template>
   <div class="bg-base-200 relative">
     <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->

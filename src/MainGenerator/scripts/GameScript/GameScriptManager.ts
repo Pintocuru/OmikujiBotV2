@@ -50,6 +50,28 @@ export class GameScriptManager {
   }
 
   /**
+   * サンプルラン
+   */
+  playSampleScript(scriptId: string): string {
+    if (!scriptId) return '(スクリプトが指定されていません)'
+
+    const scriptInstance = this.scriptInstances[scriptId]
+    if (!scriptInstance) {
+      console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)
+      return 'スクリプトが正常に稼働できません'
+    } else if (!scriptInstance.sampleRun) {
+      return 'テストに対応していないスクリプトです'
+    }
+
+    try {
+      return scriptInstance.sampleRun()
+    } catch (error) {
+      console.error(`スクリプト実行エラー (${scriptId}):`, error)
+      return 'スクリプト実行エラー。詳細はコンソールをご確認ください。'
+    }
+  }
+
+  /**
    * 特定のスクリプトインスタンスをリセット
    */
   reset(scriptId: string): void {
