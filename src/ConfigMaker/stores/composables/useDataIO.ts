@@ -2,15 +2,12 @@
 import { Ref } from 'vue'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { normalizeData } from '@/Toolkit/migrations'
-import { toast } from 'vue-sonner'
+import Swal from 'sweetalert2'
 
 /**
  * データの入出力（読み込み・保存・エクスポート）を提供
  */
 export function useDataIO(data: Ref<OmikujiDataType>) {
-  // ========================================
-  // データ読み込み
-  // ========================================
   /**
    * データを読み込み、マイグレーションとバリデーションを行う
    */
@@ -20,39 +17,42 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
       data.value = migratedData
       return true
     } catch (error) {
-      toast.error('データの読み込み中にエラーが発生しました。')
+      Swal.fire({
+        icon: 'error',
+        title: 'データの読み込み中にエラーが発生しました',
+        text: 'ファイル形式が正しいかご確認ください。',
+      })
       console.error('Load data error:', error)
       return false
     }
   }
 
-  // ========================================
-  // データ検証
-  // ========================================
   /**
    * 現在のデータをバリデーション
    */
-  const validateData = () => {
+  const safeValidateData = () => {
     return OmikujiDataSchema.safeParse(data.value)
   }
 
-  // ========================================
-  // データエクスポート
-  // ========================================
   /**
    * データをJSON形式でエクスポート
    */
   const exportData = () => {
-    const validation = validateData()
+    const validation = safeValidateData()
     if (validation.success) {
       return JSON.stringify(data.value, null, 2)
     }
-    throw new Error('データの検証に失敗しました。')
+
+    Swal.fire({
+      icon: 'error',
+      title: 'データの検証に失敗しました',
+      text: '内容に不備があるため、エクスポートできません。',
+    })
   }
 
   return {
     loadData,
-    validateData,
+    safeValidateData,
     exportData,
   }
 }

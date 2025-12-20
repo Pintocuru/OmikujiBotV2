@@ -5,6 +5,7 @@ import {
   CommentRuleSchema,
   CommentRuleType,
   rulesCategoryLabel,
+  RulesCategoryType,
   RuleType,
   TimerRuleSchema,
   TimerRuleType,
@@ -41,6 +42,10 @@ export const RecordCategorySchemaMap = {
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,
 } as const
+
+export const isRulesCategory = (category: CategoryType): category is RulesCategoryType => {
+  return rulesCategoryLabel.includes(category as RulesCategoryType)
+}
 
 /**
  * settingsCategory

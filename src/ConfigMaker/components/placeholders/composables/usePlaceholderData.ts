@@ -7,7 +7,6 @@ import {
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderSchema, PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
-import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
 /**
@@ -18,13 +17,6 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
 
   // デフォルトプレースホルダーの設定
   const placeholderContentMap = new Map(Object.entries(defaultPlaceholdersShortLabels))
-
-  // 選択されたルールデータを取得
-  const selectedRulesCommentData = computed(() => {
-    if (omikujiStore.selectedCategory !== 'comments') return null
-    const ruleKey = omikujiStore.selectedItemKey
-    return ruleKey ? omikujiStore.getCategoryMap('comments')[ruleKey] : null
-  })
 
   // デフォルトプレースホルダーを生成
   const defaultPlaceholders = computed((): PlaceholderType[] => {
@@ -39,26 +31,6 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
     })
   })
 
-  // ゲームスクリプトのプレースホルダーを取得
-  const scriptPlaceholders = computed((): PlaceholderType[] => {
-    const rulesComment = selectedRulesCommentData.value
-    if (!rulesComment?.scriptId) return []
-
-    const script = gameScriptMap[rulesComment.scriptId]
-    return (
-      script.placeholders?.map(
-        (item): PlaceholderType =>
-          PlaceholderSchema.parse({
-            key: item.key,
-            name: item.name,
-            order: 0,
-            editorColor: script.editorColor ?? '#FEFEFE',
-            values: [{ content: item.value }],
-          })
-      ) || []
-    )
-  })
-
   // 使用されているプレースホルダーIDのセットを取得
   const usedPlaceholderIds = computed(() => {
     const usedIds = new Set<string>()
@@ -68,7 +40,14 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
 
     // 全てのプレースホルダーパターンを一度に検索
     const allContent = actions.value
-      .flatMap((action) => [action.wordParty || '', action.messageContent || '', action.messageToast || ''])
+      .flatMap((action) => {
+        if (action.actionType === 'message') {
+          return [action.message.bubble || '', action.message.toast || '']
+        } else if (action.actionType === 'wordParty') {
+          return [action.wordParty || '']
+        }
+      })
+      .filter(Boolean)
       .join(' ')
 
     // プレースホルダーパターンのマッチングを効率化
@@ -84,7 +63,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
   // 全プレースホルダーを取得してソート
   const allPlaceholders = computed(() => {
     const customPlaceholders = omikujiStore.getCategoryArray('placeholders')
-    const placeholders = [...defaultPlaceholders.value, ...scriptPlaceholders.value, ...customPlaceholders]
+    const placeholders = [...defaultPlaceholders.value, ...customPlaceholders]
 
     return placeholders.sort((a, b) => {
       const aUsed = usedPlaceholderIds.value.has(a.key)

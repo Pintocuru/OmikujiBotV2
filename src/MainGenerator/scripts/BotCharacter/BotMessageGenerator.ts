@@ -106,11 +106,11 @@ export class BotMessageGenerator {
   /**
    * RPG風の音声ループを再生(条件に応じて)
    */
-  private handleRpgVoice(character: CharacterType, messageContent: string, baseDelaySeconds: number): void {
+  private handleRpgVoice(character: CharacterType, bubble: string, baseDelaySeconds: number): void {
     const { isOneCommePost, isVoice, rpgVoice } = character.displayOption
     const shouldPlayRpgVoice = !isOneCommePost && !isVoice && !!rpgVoice
 
-    if (shouldPlayRpgVoice) playRpgVoiceLoop(messageContent, rpgVoice, baseDelaySeconds)
+    if (shouldPlayRpgVoice) playRpgVoiceLoop(bubble, rpgVoice, baseDelaySeconds)
   }
 
   /**

@@ -6,9 +6,6 @@ import { ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
  * データマージ処理のヘルパー関数を提供
  */
 export function useDataMergeHelpers() {
-  // ========================================
-  // 型ガード
-  // ========================================
   /**
    * BaseRecordSchemaを含むアイテムかどうかを判定
    */
@@ -16,9 +13,6 @@ export function useDataMergeHelpers() {
     return item && typeof item === 'object' && 'order' in item && typeof item.order === 'number'
   }
 
-  // ========================================
-  // Order値の取得と調整
-  // ========================================
   /**
    * 指定されたカテゴリの最大order値を取得
    */
@@ -61,9 +55,6 @@ export function useDataMergeHelpers() {
     return result
   }
 
-  // ========================================
-  // カテゴリデータのマージ
-  // ========================================
   /**
    * カテゴリごとのデータマージ処理
    */

@@ -1,8 +1,8 @@
 // src/configMaker/components/presets/useConfigExport.ts
 import { ref } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { toast } from 'vue-sonner'
 import { generateJsContent, generateJsonContent } from './generateContent'
+import Swal from 'sweetalert2'
 
 type ExportType = 'config' | 'template'
 
@@ -71,31 +71,43 @@ export const useConfigExport = () => {
       isExporting.value = true
       const config = exportConfigs[type]
 
-      // バリデーションチェック
-      const validation = omikujiStore.validateData()
-      if (!validation.success) {
-        toast.error('設定データに問題があります。エラーを修正してから再度お試しください。')
+      // OmikujiDataをstringで持ってくる
+      const configData = omikujiStore.exportData()
+      if (!configData) {
+        await Swal.fire({
+          icon: 'error',
+          title: '設定データに問題があります',
+          text: 'エラーを修正してから再度お試しください。',
+        })
         return false
       }
 
-      // OmikujiDataをstringで持ってくる
-      const configData = omikujiStore.exportData()
       const content = config.generateContent(configData)
       const success = downloadFile(content, config.filename, config.contentType)
 
       if (success) {
-        toast.info(config.successMessage.title, {
-          duration: 15000,
-          description: config.successMessage.description,
+        await Swal.fire({
+          icon: 'success',
+          title: config.successMessage.title,
+          text: config.successMessage.description,
+          confirmButtonText: 'OK',
         })
       } else {
-        toast.error(`${type === 'config' ? '設定' : 'テンプレート'}ファイルのダウンロードに失敗しました。`)
+        await Swal.fire({
+          icon: 'error',
+          title: `${type === 'config' ? '設定' : 'テンプレート'}ファイルのダウンロードに失敗しました`,
+          text: 'もう一度お試しください。',
+        })
       }
 
       return success
     } catch (error) {
       console.error(`${type} export error:`, error)
-      toast.error(`${type === 'config' ? '設定' : 'テンプレート'}ファイルの出力中にエラーが発生しました。`)
+      await Swal.fire({
+        icon: 'error',
+        title: `${type === 'config' ? '設定' : 'テンプレート'}ファイルの出力中にエラーが発生しました`,
+        text: '詳細はコンソールをご確認ください。',
+      })
       return false
     } finally {
       isExporting.value = false

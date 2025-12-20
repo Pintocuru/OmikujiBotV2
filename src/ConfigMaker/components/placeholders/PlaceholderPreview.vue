@@ -51,12 +51,14 @@
       // userなどのデフォルトを入れる
       placeProcess.updateResolvedValues(DefaultPlaceholdersCommentSchema.parse({}))
       const testPost: PostActionType = PostActionSchema.parse({
-        messageContent: drawnValue.value.content,
+        message: { bubble: drawnValue.value.content },
       })
       const processedActions = placeProcess.processPostActions([testPost])
+      if (processedActions[0].actionType !== 'message') return
 
       // 結果を取得
-      processedContent.value = processedActions[0]?.messageContent || ''
+      // TODO:processedActions[0] の参照でいいのか？
+      processedContent.value = processedActions[0]?.message?.bubble || ''
 
       // デバッグ情報を取得
       debugInfo.value = placeProcess.getResolvedValues()

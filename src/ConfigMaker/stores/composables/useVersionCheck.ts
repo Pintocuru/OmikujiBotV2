@@ -1,7 +1,7 @@
 // src/ConfigMaker/stores/composables/useVersionCheck.ts
 import { ref, computed, type Ref, readonly } from 'vue'
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { toast } from 'vue-sonner'
+import Swal from 'sweetalert2'
 
 export interface VersionInfo {
   current: string
@@ -71,19 +71,24 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
     }
   }
 
-  // 更新通知ダイアログ表示 (vue-sonner)
+  // 更新通知ダイアログ表示
   const showUpdateDialog = () => {
     if (versionInfo.value.hasNewVersion) {
-      toast.info(
-        `新しいバージョンが利用可能です！\n現在: ${versionInfo.value.current}\n最新: ${versionInfo.value.latest}`,
-        {
-          duration: 15000,
-          action: {
-            label: 'GitHubを開く',
-            onClick: () => window.open('https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest', '_blank'),
-          },
-        }
-      )
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'info',
+        title: `新しいバージョンが利用可能です！\n現在: ${versionInfo.value.current}\n最新: ${versionInfo.value.latest}`,
+        showConfirmButton: true,
+        confirmButtonText: 'GitHubを開く',
+        timer: 15000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('click', () => {
+            window.open('https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest', '_blank')
+          })
+        },
+      })
     }
   }
 
