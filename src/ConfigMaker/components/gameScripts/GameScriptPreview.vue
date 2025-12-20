@@ -26,10 +26,9 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { defaultPlaceholdersShortLabels, GameScriptsType } from '@/types/'
+  import { GameScriptsType } from '@/types/'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
-  import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
 
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
@@ -41,16 +40,10 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const scriptManager = new GameScriptManager()
 
   const characters = computed(() => data.value.characters)
   const bubbleSettings = computed(() => data.value.displaySettings.components.bubble)
-
-  // プレースホルダー処理
-  const processMessage = (message: string) => {
-    const processor = new PlaceholderProcessor(data.value.placeholders)
-    processor.updateResolvedValues(defaultPlaceholdersShortLabels)
-    return processor.processText(message)
-  }
 
   // キャラクター取得
   const character = computed(() => {
@@ -66,7 +59,6 @@
     const scriptId = props.gameScripts?.scriptId
     if (!scriptId) return ''
 
-    const scriptManager = new GameScriptManager()
     return scriptManager.playSampleScript(scriptId)
   })
 

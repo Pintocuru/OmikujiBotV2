@@ -41,8 +41,14 @@
   </SettingItem>
 
   <SettingItem
+    v-if="
+      useVisibilityAccess().canShow('characterVisible') ||
+      (isDev && toastSettings.showToastsCharacter && !useVisibilityAccess().canShow('characterVisible'))
+    "
     label="キャラクター表示"
     description="トーストにキャラクターアイコンを表示するか"
+    devMemo="characterVisible"
+    :variant="!useVisibilityAccess().canShow('characterVisible') ? 'error' : 'none'"
     :showReset="true"
     @reset="resetMap.showToastsCharacter"
   >
@@ -79,6 +85,8 @@
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { isDev } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
