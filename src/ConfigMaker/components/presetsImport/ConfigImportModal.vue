@@ -40,27 +40,20 @@
 </template>
 
 <script setup lang="ts">
-  import { toast } from 'vue-sonner'
   import { useImportStore } from './useImportStore'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import ImportModeSelector from './ImportModeSelector.vue'
   import CategoryConfigSection from './CategoryConfigSection.vue'
+  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   // store
   const importStore = useImportStore()
 
   const handleImportConfirm = () => {
     try {
-      const result = importStore.executeImport()
-      if (result) {
-        toast.success('設定を読み込みました')
-      } else {
-        toast.error('設定の読み込みに失敗しました')
-      }
+      importStore.executeImport()
     } catch (error) {
       console.error('Import error:', error)
-      toast.error('設定の読み込みに失敗しました')
     }
   }
 </script>

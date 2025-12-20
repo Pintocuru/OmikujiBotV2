@@ -57,6 +57,7 @@
 </template>
 
 <script setup lang="ts">
+  import Swal from 'sweetalert2'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
 
@@ -88,7 +89,22 @@
 
   // 一括有効/無効切り替え
   const handleBulkToggleEnabled = (enabled: boolean) => {
-    tabsStore.handleBulkToggleEnabled(enabled)
+    const result = tabsStore.handleBulkToggleEnabled(enabled)
+    if (!result) return
+
+    const { count, action } = result
+
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      icon: 'success',
+      title: `${count}件のルールを${action}にしました`,
+      text: `一括${action}化が完了しました`,
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+    })
+
     emit('close')
   }
 

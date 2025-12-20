@@ -3,20 +3,12 @@ import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiDa
 import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
-import { toast } from 'vue-sonner'
+import Swal from 'sweetalert2'
 
-/**
- * ルールの基本操作（追加、更新、削除、複製、移動）を管理
- * 各操作にはトースト通知とエラーハンドリングが含まれる
- */
 export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
   const { validCategory, categoryArray, filterOptions } = ruleState
 
-  /**
-   * カテゴリ操作の共通処理
-   * カテゴリが無効な場合はearly returnで処理を中断
-   */
   const withValidCategory = <T>(callback: (category: RecordCategoryType) => T): T | void => {
     const category = validCategory.value
     if (!category) {
@@ -29,13 +21,19 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   // 新しいルールを追加
   const handleAddItem = () => {
     withValidCategory((category) => {
-      // colorFilter が入っているなら、新しいデータも色を付ける
-      const editorColor = filterOptions.value.colorFilter ? filterOptions.value.colorFilter : undefined
+      const editorColor = filterOptions.value.colorFilter || undefined
       const newId = omikujiStore.addItem?.(category, { editorColor })
       omikujiStore.selectItem(newId)
-      toast.success('新しいルールを追加しました', {
-        description: 'ルールの設定を行ってください',
-        duration: 3000,
+
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '新しいルールを追加しました',
+        text: 'ルールの設定を行ってください',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
       })
     })
   }
@@ -45,55 +43,66 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     ruleId: string,
     updates: Partial<RecordCategoryItemTypeMap[C]>
   ) => {
-    withValidCategory((category) => {
+    return withValidCategory((category) => {
       omikujiStore.updateItem(category, ruleId, updates)
-      if (updates.name) {
-        toast.success('ルールを更新しました', {
-          description: `「${updates.name}」の設定を保存しました`,
-          duration: 2000,
-        })
+
+      // UI 側で通知したい情報だけ返す
+      return {
+        updatedName: updates.name,
       }
     })
   }
 
-  /** ルールを削除（確認ダイアログ付き） */
+  // ルール削除（確認ダイアログ）
   const handleDeleteRule = (ruleId: string, ruleName?: string) => {
-    withValidCategory((category) => {
+    withValidCategory(async (category) => {
       const name = ruleName || '名前未設定'
-      toast.error(`「${name}」を削除しますか？`, {
-        description: 'この操作は取り消せません',
-        duration: 0,
-        action: {
-          label: '削除する',
-          onClick: () => {
-            omikujiStore.removeItem(category, ruleId)
-            toast.success('ルールを削除しました', {
-              description: `「${name}」を削除しました`,
-              duration: 3000,
-            })
-          },
-        },
-        cancel: {
-          label: 'キャンセル',
-          onClick: () => toast.dismiss(),
-        },
-        closeButton: true,
+
+      const result = await Swal.fire({
+        icon: 'warning',
+        title: `「${name}」を削除しますか？`,
+        text: 'この操作は取り消せません',
+        showCancelButton: true,
+        confirmButtonText: '削除する',
+        cancelButtonText: 'キャンセル',
+      })
+
+      if (!result.isConfirmed) return
+
+      omikujiStore.removeItem(category, ruleId)
+
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: 'ルールを削除しました',
+        text: `「${name}」を削除しました`,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
       })
     })
   }
 
-  /** ルールを複製 */
+  // ルール複製
   const handleDuplicateRule = (ruleId: string) => {
     withValidCategory((category) => {
       omikujiStore.duplicateItem(category, ruleId)
-      toast.success('ルールを複製しました', {
-        description: 'コピーを作成しました',
-        duration: 3000,
+
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: 'ルールを複製しました',
+        text: 'コピーを作成しました',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
       })
     })
   }
 
-  /** ルールを上に移動 */
+  // 上に移動
   const handleMoveRuleUp = (currentIndex: number) => {
     withValidCategory((category) => {
       if (currentIndex > 0) {
@@ -102,7 +111,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     })
   }
 
-  /** ルールを下に移動 */
+  // 下に移動
   const handleMoveRuleDown = (currentIndex: number, totalLength: number) => {
     withValidCategory((category) => {
       if (currentIndex < totalLength - 1) {
@@ -111,10 +120,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     })
   }
 
-  /**
-   * ルールのインデックス取得の共通処理
-   * 配列とカテゴリの両方をチェックし、見つからない場合は0を返す
-   */
+  // インデックス取得
   const getRuleIndex = (ruleKey: string): number => {
     if (!categoryArray.value || !validCategory.value) {
       console.error('Invalid category:', validCategory.value)

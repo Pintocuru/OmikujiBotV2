@@ -8,15 +8,11 @@
   >
     <ArrowUp class="w-12 h-12" />
   </button>
-
-  <!-- トースト通知 -->
-  <Toaster :expand="true" :richColors="true" :visibleToasts="5" />
 </template>
 
 <script setup lang="ts">
   import { useScrollBehavior } from './useScrollBehavior'
   import { ArrowUp } from 'lucide-vue-next'
-  import { Toaster } from 'vue-sonner'
 
   const { showScrollTopButton, scrollToTop } = useScrollBehavior()
 </script>

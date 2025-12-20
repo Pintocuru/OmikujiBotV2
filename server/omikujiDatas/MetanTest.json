@@ -1869,7 +1869,7 @@
       "name": "四国めたん",
       "description": "困難など、私たちの前では塵にすぎないわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-09-08T19:07:16.468Z",
+      "updatedAt": "2025-12-20T03:09:26.007Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#EF9A9A",
@@ -1887,26 +1887,55 @@
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": true,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "night",
+        "backFrom": "error",
+        "backTo": "accent",
         "nameColor": "#fdd835",
         "textColor": "#fce4ec",
         "backgroundColor": "#d81b60"
       },
       "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       }
     },
     "metanBlack": {
@@ -1933,33 +1962,59 @@
       "displayOption": {
         "isIconDisplay": true,
         "isOneCommePost": true,
-        "isVoice": true
+        "isVoice": true,
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "primary",
         "nameColor": "#f8bbd0",
         "textColor": "#d7ccc8",
         "backgroundColor": "#212121"
       },
       "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       }
     }
   },
   "displaySettings": {
-    "global": {
-      "fontFamily": "default"
-    },
     "components": {
       "conditions": [
         "bubble",
@@ -1974,6 +2029,7 @@
           ]
         ],
         "characterSize": 48,
+        "fontFamily": "default",
         "bubbleMotionEnter": "zoomIn",
         "bubbleTextAnimate": true,
         "bubbleTextSpeed": 50
@@ -1987,7 +2043,7 @@
         "scriptKey": null,
         "title": "Ranking",
         "limit": 10,
-        "sortByHighScore": true,
+        "sortOrder": "high",
         "color": "dark"
       },
       "counter": {

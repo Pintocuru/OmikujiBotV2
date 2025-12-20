@@ -2,7 +2,6 @@
 import { devConfigApi } from '../services/apiService'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { DevConfigStateType } from '../devTypes'
-import { toast } from 'vue-sonner'
 
 export function useLoadActions(
   state: DevConfigStateType,
@@ -18,10 +17,6 @@ export function useLoadActions(
       // saveFileNameを直接stateから更新
       state.saveFileName.value = fileName
 
-      toast.success('読み込み完了', {
-        description: `設定 "${fileName.replace('.json', '')}" を読み込みました`,
-        duration: 3000,
-      })
       omikujiStore.resetChangeState()
 
       state.isServerConnected.value = true

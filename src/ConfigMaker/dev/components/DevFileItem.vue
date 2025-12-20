@@ -69,7 +69,7 @@
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
   import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
-  import { toast } from 'vue-sonner'
+  import Swal from 'sweetalert2'
   import { Download, FileText, Edit } from 'lucide-vue-next'
 
   const props = defineProps<{
@@ -121,7 +121,11 @@
       const success = await importStore.loadFromJsonData(fileData)
 
       if (importStore.loadError) {
-        toast.error(importStore.loadError)
+        Swal.fire({
+          icon: 'error',
+          title: '読み込みエラー',
+          text: importStore.loadError,
+        })
         return
       }
 
@@ -132,8 +136,13 @@
         importStore.openPreviewModal()
       }
     } catch (error) {
-      toast.error('ファイルの読み込みに失敗しました')
       console.error('Partial load error:', error)
+
+      Swal.fire({
+        icon: 'error',
+        title: 'ファイルの読み込みに失敗しました',
+        text: 'ファイル形式や内容をご確認ください。',
+      })
     }
   }
 </script>

@@ -108,7 +108,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     isMultiSelectMode.value = false
   }
 
-  /** 一括有効/無効切り替え */
+  // 一括有効/無効切り替え
   const handleBulkToggleEnabled = (enabled: boolean) => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -122,17 +122,15 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
       })
     })
 
-    const count = selectedRules.length
-    const action = enabled ? '有効' : '無効'
-    toast.success(`${count}件のルールを${action}にしました`, {
-      description: `一括${action}化が完了しました`,
-      duration: 3000,
-    })
+    return {
+      count: selectedRules.length,
+      action: enabled ? '有効' : '無効',
+    }
   }
 
-  /** 一括アクセスレベル変更 */
+  // 一括アクセスレベル変更
   const handleBulkAccessLevelChange = (accessLevel: AccessLevelType) => {
-    if (selectedRuleIds.value.size === 0) return
+    if (selectedRuleIds.value.size === 0) return null
 
     const selectedRules = getSelectedRules()
     const category = validCategory.value as RecordCategoryType
@@ -144,11 +142,10 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
       })
     })
 
-    const count = selectedRules.length
-    toast.success(`${count}件のルールのアクセスレベルを「${accessLevel}」に変更しました`, {
-      description: '一括変更が完了しました',
-      duration: 3000,
-    })
+    return {
+      count: selectedRules.length,
+      accessLevel,
+    }
   }
 
   /** 一括カラー設定 */

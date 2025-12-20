@@ -19,7 +19,7 @@
   import { ref } from 'vue'
   import { useImportStore } from './useImportStore'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { toast } from 'vue-sonner'
+  import Swal from 'sweetalert2'
 
   const { isPro } = useSettingMode()
   const importStore = useImportStore()
@@ -32,7 +32,11 @@
     const success = await importStore.loadFromFile(file)
 
     if (importStore.loadError) {
-      toast.error(importStore.loadError)
+      Swal.fire({
+        icon: 'error',
+        title: '読み込みエラー',
+        text: importStore.loadError,
+      })
       return
     }
 

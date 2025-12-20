@@ -47,6 +47,7 @@
   import RecordContextMenuActions from './RecordContextMenuActions.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { AccessLevelType, AccessLevelLabels } from '@shared/types'
+  import Swal from 'sweetalert2'
 
   // Store
   const tabsStore = useRecordTabsStore()
@@ -91,15 +92,46 @@
   // AccessLevel変更
   const handleAccessLevelChange = (level: AccessLevelType) => {
     if (isMultiSelectActive.value) {
-      // マルチセレクト時：一括変更
-      tabsStore.handleBulkAccessLevelChange(level)
+      // 一括変更
+      const result = tabsStore.handleBulkAccessLevelChange(level)
+
+      if (result) {
+        const { count, accessLevel } = result
+
+        Swal.fire({
+          toast: true,
+          position: 'bottom-end',
+          icon: 'success',
+          title: `${count}件のルールのアクセスレベルを「${accessLevel}」に変更しました`,
+          text: '一括変更が完了しました',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        })
+      }
     } else if (tabsStore.contextMenu.rule) {
-      // 単体選択時：個別変更
-      tabsStore.handleUpdateRule(tabsStore.contextMenu.rule.key, {
-        ...tabsStore.contextMenu.rule,
+      // 単体変更
+      const rule = tabsStore.contextMenu.rule
+
+      const result = tabsStore.handleUpdateRule(rule.key, {
+        ...rule,
         accessLevel: level,
       })
+
+      if (result?.updatedName) {
+        Swal.fire({
+          toast: true,
+          position: 'bottom-end',
+          icon: 'success',
+          title: 'アクセスレベルを変更しました',
+          text: `「${result.updatedName}」のアクセスレベルを「${level}」に変更しました`,
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        })
+      }
     }
+
     tabsStore.hideContextMenu()
   }
 

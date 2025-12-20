@@ -22,7 +22,7 @@
   import { ref, watch } from 'vue'
   import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import { toast } from 'vue-sonner'
+  import Swal from 'sweetalert2'
 
   // Props
   const props = defineProps<{
@@ -57,24 +57,57 @@
     try {
       const parsed = JSON.parse(jsonText.value)
       if (!Array.isArray(parsed)) {
-        throw new Error('配列である必要があります')
+        const msg = '配列である必要があります'
+        Swal.fire({
+          toast: true,
+          position: 'bottom-end',
+          icon: 'error',
+          title: msg,
+          showConfirmButton: false,
+          timer: 3000,
+        })
+        throw new Error(msg)
       }
 
-      // PostActionSchemaを使用してバリデーション
       const validatedActions: PostActionType[] = parsed.map((action, index) => {
         try {
           return PostActionSchema.parse(action)
         } catch (error) {
-          throw new Error(
-            `${index + 1}番目の要素のバリデーションエラー: ${error instanceof Error ? error.message : '不明なエラー'}`
-          )
+          const msg = `${index + 1}番目の要素のバリデーションエラー: ${
+            error instanceof Error ? error.message : '不明なエラー'
+          }`
+
+          Swal.fire({
+            toast: true,
+            position: 'bottom-end',
+            icon: 'error',
+            title: msg,
+            showConfirmButton: false,
+            timer: 4000,
+          })
+
+          throw new Error(msg)
         }
       })
 
       jsonError.value = ''
       return validatedActions
     } catch (error) {
-      jsonError.value = error instanceof Error ? error.message : 'JSONの解析に失敗しました'
+      const msg = error instanceof Error ? error.message : 'JSONの解析に失敗しました'
+
+      // UI の赤いエラー欄にも表示
+      jsonError.value = msg
+
+      // トーストも出す（編集中なのでダイアログ禁止）
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'error',
+        title: msg,
+        showConfirmButton: false,
+        timer: 4000,
+      })
+
       return null
     }
   }
@@ -83,7 +116,16 @@
     const validatedActions = validateJson()
     if (validatedActions) {
       emit('update:modelValue', validatedActions)
-      toast.success('Json形式で保存しました')
+
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: 'JSON形式で保存しました',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+
       emit('close')
     }
   }

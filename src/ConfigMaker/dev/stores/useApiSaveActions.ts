@@ -1,15 +1,15 @@
 // src/configMaker/dev/stores/api/useSaveActions.ts
 import { devConfigApi } from '../services/apiService'
 import { generateDateFileName } from '../services/devConfigUtils'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { toast } from 'vue-sonner'
 import { DevConfigStateType } from '../devTypes'
+import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import Swal from 'sweetalert2'
 
 export function useSaveActions(
   state: DevConfigStateType,
   handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigStateType) => Promise<any>
 ) {
-  // ファイル一覧取得（他のファイルとの共通処理）
+  // ファイル一覧取得
   const fetchFileList = async () => {
     const files = await devConfigApi.getFileList()
     state.availableFiles.value = files
@@ -34,84 +34,99 @@ export function useSaveActions(
       await devConfigApi.saveConfig(trimmedFileName, configData)
       await fetchFileList()
 
-      toast.success('保存完了', {
-        description: `設定を "${trimmedFileName}" として保存しました`,
-        duration: 3000,
+      // 成功トースト（右下）
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '保存完了',
+        text: `設定を "${trimmedFileName}" として保存しました`,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
       })
+
       omikujiStore.resetChangeState()
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
   }
 
-  // 上書き保存（確認toast付き）
+  // 上書き保存（確認ダイアログ）
   const overwriteConfig = async (fileName: string) => {
     const displayName = fileName.replace('.json', '')
 
-    toast.warning('上書き確認', {
-      description: `設定ファイル "${displayName}" を現在のデータで上書きしますか？`,
-      duration: 10000,
-      action: {
-        label: '上書き',
-        onClick: async () => {
-          const omikujiStore = useOmikujiStore()
-
-          return await handleAsyncAction(async () => {
-            const configData = JSON.stringify(omikujiStore.data, null, 2)
-            await devConfigApi.saveConfig(fileName, configData)
-            await fetchFileList()
-
-            toast.success('上書き完了', {
-              description: `設定ファイル "${displayName}" を上書きしました`,
-              duration: 3000,
-            })
-
-            omikujiStore.resetChangeState()
-            state.isServerConnected.value = true
-            return null
-          }, 'isSaving')
-        },
-      },
-      cancel: {
-        label: 'キャンセル',
-        onClick: () => {
-          toast.dismiss()
-        },
-      },
+    const result = await Swal.fire({
+      icon: 'warning',
+      title: '上書き確認',
+      text: `設定ファイル "${displayName}" を現在のデータで上書きしますか？`,
+      showCancelButton: true,
+      confirmButtonText: '上書き',
+      cancelButtonText: 'キャンセル',
     })
+
+    if (!result.isConfirmed) return
+
+    const omikujiStore = useOmikujiStore()
+
+    return await handleAsyncAction(async () => {
+      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      await devConfigApi.saveConfig(fileName, configData)
+      await fetchFileList()
+
+      // 成功トースト
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '上書き完了',
+        text: `設定ファイル "${displayName}" を上書きしました`,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      })
+
+      omikujiStore.resetChangeState()
+      state.isServerConnected.value = true
+      return null
+    }, 'isSaving')
   }
 
-  // assets/omikujiData.js におみくじデータを保存
+  // assets/omikujiData.js に保存（確認ダイアログ）
   const overwriteOmikujiData = async () => {
-    toast.warning('上書き確認', {
-      description: `設定ファイル "omikujiData.js" を assets に上書きしますか？`,
-      duration: 10000,
-      action: {
-        label: '上書き',
-        onClick: async () => {
-          const omikujiStore = useOmikujiStore()
-
-          return await handleAsyncAction(async () => {
-            const configData = JSON.stringify(omikujiStore.data, null, 2)
-            await devConfigApi.saveOmikujiData(configData)
-            await fetchFileList()
-            toast.success('上書き完了', {
-              description: `設定ファイル "omikujiData.js" を上書きしました`,
-              duration: 3000,
-            })
-
-            state.isServerConnected.value = true
-            return null
-          }, 'isSaving')
-        },
-      },
-      cancel: {
-        label: 'キャンセル',
-        onClick: () => {
-          toast.dismiss()
-        },
-      },
+    const result = await Swal.fire({
+      icon: 'warning',
+      title: '上書き確認',
+      text: `設定ファイル "omikujiData.js" を assets に上書きしますか？`,
+      showCancelButton: true,
+      confirmButtonText: '上書き',
+      cancelButtonText: 'キャンセル',
     })
+
+    if (!result.isConfirmed) return
+
+    const omikujiStore = useOmikujiStore()
+
+    return await handleAsyncAction(async () => {
+      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      await devConfigApi.saveOmikujiData(configData)
+      await fetchFileList()
+
+      // 成功トースト
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '上書き完了',
+        text: `設定ファイル "omikujiData.js" を上書きしました`,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      })
+
+      state.isServerConnected.value = true
+      return null
+    }, 'isSaving')
   }
 
   return {

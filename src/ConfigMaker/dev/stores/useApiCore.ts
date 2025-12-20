@@ -1,17 +1,19 @@
 // src/configMaker/dev/stores/api/useApiCore.ts
-import { toast } from 'vue-sonner'
 import { DevConfigStateType } from '../devTypes'
+import Swal from 'sweetalert2'
 
 export function useApiCore(state: DevConfigStateType) {
   // エラーハンドリング
   const handleApiError = (error: Error) => {
     console.error('API Error:', error)
     state.isServerConnected.value = false
+
     const message = `${error.message}\n開発サーバーが起動していることを確認してください。`
 
-    toast.error('接続エラー', {
-      description: message,
-      duration: 5000,
+    Swal.fire({
+      icon: 'error',
+      title: '接続エラー',
+      text: message,
     })
   }
 

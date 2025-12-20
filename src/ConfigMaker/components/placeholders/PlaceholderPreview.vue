@@ -22,7 +22,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
-  import { toast } from 'vue-sonner'
+  import Swal from 'sweetalert2'
   import { Dices } from 'lucide-vue-next'
 
   const props = defineProps<{
@@ -45,51 +45,64 @@
     drawnValue.value = drawOmikuji(valuesWithPercent)
 
     if (drawnValue.value?.content) {
-      // プレースホルダー置換
       const placeProcess = new PlaceholderProcessor(placeholdersMap.value)
 
-      // userなどのデフォルトを入れる
       placeProcess.updateResolvedValues(DefaultPlaceholdersCommentSchema.parse({}))
       const testPost: PostActionType = PostActionSchema.parse({
         message: { bubble: drawnValue.value.content },
       })
+
       const processedActions = placeProcess.processPostActions([testPost])
-      if (processedActions[0].actionType !== 'message') return
 
-      // 結果を取得
-      // TODO:processedActions[0] の参照でいいのか？
-      processedContent.value = processedActions[0]?.message?.bubble || ''
+      // 🔥 ここを変更：全 message の bubble / toast を抽出
+      const allMessages: string[] = processedActions
+        .filter((a) => a.actionType === 'message')
+        .flatMap((a) => {
+          const msgs: string[] = []
+          if (a.message?.bubble) msgs.push(`フキダシ:${a.message.bubble}`)
+          if (a.message?.toast) msgs.push(`トースト:${a.message.toast}`)
+          return msgs
+        })
 
-      // デバッグ情報を取得
+      // 何もなければ終了
+      if (allMessages.length === 0) return
+
+      // 表示用に結合
+      processedContent.value = allMessages.join('\n')
+
+      // デバッグ情報
       debugInfo.value = placeProcess.getResolvedValues()
 
-      // トーストで結果を表示（15秒間）
+      // 抽選情報
       const weight = drawnValue.value.weight || 1
-      // ! drawOmikuji で新たなプロパティが付与されてるのでany
       const weightPercent = (drawnValue.value as any).weightPercent || 0
 
-      toast.success('抽選結果', {
-        description: `
-内容: ${processedContent.value}
-重み: ${weight}
-確率: ${weightPercent.toFixed(2)}%
-    `.trim(),
-        duration: 15000, // 15秒間表示
-        style: {
-          maxWidth: '400px',
-          whiteSpace: 'pre-line',
-        },
+      // SweetAlert2 トースト（右下）
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '抽選結果',
+        html: `
+内容:<br>${processedContent.value.replace(/\n/g, '<br>')}
+<br>重み: ${weight}
+<br>確率: ${weightPercent.toFixed(2)}%
+      `,
+        showConfirmButton: false,
+        timer: 15000,
+        timerProgressBar: true,
       })
-      // 結果をわんコメのスピーチ機能で喋らせる
+
+      // スピーチ
       postSpeech(processedContent.value)
     } else {
       processedContent.value = ''
       debugInfo.value = {}
 
-      // 抽選結果がない場合のトースト
-      toast.error('抽選結果', {
-        description: '抽選できませんでした',
-        duration: 5000,
+      Swal.fire({
+        icon: 'error',
+        title: '抽選結果',
+        text: '抽選できませんでした',
       })
     }
   }
