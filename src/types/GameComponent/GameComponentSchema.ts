@@ -1,5 +1,5 @@
 // shared/types/GameComponentSchema.ts
-使わない
+// 使わない
 import { DefaultTypes, DisplaySize } from '@shared/types/'
 import { UserStatsType } from '../../common/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 import { GameComponentConfig } from './GameRankingTypes'
