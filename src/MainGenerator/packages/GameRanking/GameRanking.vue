@@ -1,5 +1,4 @@
 <!-- templates\OmikujiBot\src\MainGenerator\packages\GameRanking\GameRanking.vue -->
-使わない
 <template>
   <div>
     <!-- Scriptsゲーム表示 -->
