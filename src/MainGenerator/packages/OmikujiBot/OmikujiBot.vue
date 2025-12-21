@@ -1,4 +1,5 @@
 <!-- templates\OmikujiBot\src\MainGenerator\packages\OmikujiBot\OmikujiBot.vue -->
+使わない
 <template>
   <!-- コメントフキダシ表示 -->
   <CommentBubble />
