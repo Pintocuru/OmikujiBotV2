@@ -5,12 +5,12 @@ import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/Charact
  * キャラクターのプロフィール画像を解決する
  * @param character - キャラクター情報
  * @param iconKey - 表示する感情アイコンのキー
- * @returns プロフィール画像のURL(string | string[] | null)
+ * @returns プロフィール画像のURL
  */
-export function resolveProfileImage(character: CharacterType, iconKey: CharacterEmotionType): string[] | string | null {
+export function resolveProfileImage(character: CharacterType, iconKey: CharacterEmotionType): string[] {
   // アイコン表示が無効の場合はnullを返す
   if (!character.displayOption.isIconDisplay) {
-    return null
+    return []
   }
 
   return getCharacterIcon(character, iconKey)
@@ -20,19 +20,19 @@ export function resolveProfileImage(character: CharacterType, iconKey: Character
  * キャラクターアイコンの取得
  * @param character - キャラクター情報
  * @param iconKey - 表示する感情アイコンのキー
- * @returns アイコンのURL(string | string[] | null)
+ * @returns アイコンのURL
  */
-function getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionType): string[] | string | null {
+function getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionType): string[] {
   const iconMap = character?.image
-  if (!iconMap) return null
+  if (!iconMap) return []
 
   // 指定されたアイコンを優先
   const iconValue = iconMap[iconKey]
-  if (iconValue && iconValue !== '') return iconValue
+  if (iconValue.length !== 0) return iconValue
 
   // デフォルトアイコンにフォールバック
   const defaultIcon = iconMap['default']
-  return defaultIcon && defaultIcon !== '' ? defaultIcon : null
+  return iconValue.length !== 0 ? defaultIcon : []
 }
 
 /**
@@ -40,15 +40,15 @@ function getCharacterIcon(character: CharacterType, iconKey: CharacterEmotionTyp
  * @param characterKey - キャラクターのキー
  * @param iconKey - 表示する感情アイコンのキー
  * @param characters - キャラクター辞書
- * @returns プロフィール画像のURL(string | string[] | null)
+ * @returns プロフィール画像のURL(string[])
  */
 export function resolveProfileImageByKey(
   characterKey: string,
   iconKey: CharacterEmotionType,
   characters: Record<string, CharacterType>
-): string[] | string | null {
+): string[] {
   const character = characters[characterKey]
-  if (!character) return null
+  if (!character) return []
 
   return resolveProfileImage(character, iconKey)
 }

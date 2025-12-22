@@ -32,10 +32,6 @@ export class RuleCommentProcessor {
       // 除外条件をチェック
       if (this.isOldComment(timestamp)) return botMessages
 
-      // UserVisitRecord を入れる
-      const { UserVisitManager } = useAppStore()
-      omiken.omikujiRecords = UserVisitManager.getOmikujiRecords(omiken.userId) ?? {}
-
       // おみくじチェック
       this.appliedCommentIds.add(id)
       const processedMessages = processUserComment(omiken)

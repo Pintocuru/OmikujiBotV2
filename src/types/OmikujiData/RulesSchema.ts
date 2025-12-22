@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentThresholdSchema } from '@/types/OmikujiProcess/CommentThresholdSchema'
 import { BaseRecordSchema } from '@shared/types/'
+import { CommentTriggerSchema } from '../OmikujiProcess/CommentTriggerSchema'
 
 /**
  * おみくじ制限設定のスキーマ
@@ -45,17 +46,48 @@ export const BaseRuleSchema = z.object({
 /**
  * comments スキーマ
  */
-export const CommentRuleSchema = z.object({
-  ...BaseRuleSchema.shape,
-  ruleType: z.literal('comments').default('comments').catch('comments'), // ルールタイプ（コメント）
-  threshold: CommentThresholdSchema.default(
-    CommentThresholdSchema.parse({
-      conditions: ['comment'],
-      comment: ['おみくじ'],
-    })
-  ).catch(CommentThresholdSchema.parse({})), // コメント発火条件
-  limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})), // おみくじ実行制限設定
-})
+export const CommentRuleSchema = z
+  .object({
+    ...BaseRuleSchema.shape,
+    ruleType: z.literal('comments').default('comments').catch('comments'),
+    threshold: CommentThresholdSchema.optional(),
+    trigger: CommentTriggerSchema.default(
+      CommentTriggerSchema.parse({
+        conditions: ['comment'],
+        comment: ['おみくじ'],
+      })
+    ).catch(CommentTriggerSchema.parse({})),
+    limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})),
+  })
+  .transform((data) => {
+    // v2 データ → trigger が undefined でなければそのまま
+    if (data.trigger !== undefined) {
+      return {
+        ...data,
+        trigger: data.trigger,
+        threshold: undefined, // ← ここで確実に消す
+      }
+    }
+
+    // v1 データ → threshold を trigger に変換
+    if (data.threshold !== undefined) {
+      return {
+        ...data,
+        trigger: CommentTriggerSchema.parse(data.threshold),
+        threshold: undefined, // ← ここでも消す
+      }
+    }
+
+    // どちらも無い → デフォルト trigger
+    return {
+      ...data,
+      trigger: CommentTriggerSchema.parse({
+        conditions: ['comment'],
+        comment: ['おみくじ'],
+      }),
+      threshold: undefined, // ← 念のため消す
+    }
+  })
 
 /**
  * timers スキーマ

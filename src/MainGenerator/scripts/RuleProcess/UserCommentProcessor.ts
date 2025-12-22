@@ -4,8 +4,8 @@ import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
 import { buildRestrictionMessages } from './RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 
 interface RuleProcessResult {
   isCommentTriggered: boolean
@@ -45,7 +45,7 @@ export function processUserComment(omiken: OmikenCommentType): BotMessage[] {
  */
 function validateThreshold(omiken: OmikenCommentType, rule: CommentRuleType): boolean {
   // TODO:修正(triggerを新規作成)
-  return checkAllConditions(omiken, rule.threshold)
+  return checkAllTriggers(omiken, rule.key, rule.threshold)
 }
 
 /**
@@ -59,7 +59,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
     return { isCommentTriggered: false, botMessages: [] }
   }
 
-  // 2. 制限チェック（純粋なチェックのみ）
+  // 2. 制限チェック
   const restrictionResult = checkRestrictions(omiken, rule)
 
   if (restrictionResult.isBlocked) {
@@ -71,12 +71,13 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
     }
   }
 
+  // 3. おみくじ成功時に回数をインクリメント
+  omiken.meta.draws = userVisitManager.getVisitCount(omiken.userId, rule.key) + 1
+  userVisitManager.recordVisit(omiken.userId, rule.key, omiken.userName)
+
   // 4. おみくじ実行
   const omikujiProcessor = new OmikujiProcessor()
   const omikujiMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
-
-  // 5. ユーザー情報の更新
-  userVisitManager.recordVisit(omiken.userId, rule.key, omiken.userName)
 
   // チャットワード起動かどうかを判定
   const isCommentTriggered = rule.threshold.conditions.includes('comment')

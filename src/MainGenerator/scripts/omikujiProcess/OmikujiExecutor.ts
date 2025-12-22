@@ -4,8 +4,8 @@ import { DefaultPlaceholderService } from './DefaultPlaceholderService'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 
 /**
  * おみくじの実行ロジックを担当するクラス
@@ -48,8 +48,7 @@ export class OmikujiExecutor {
     return items
       .filter((item) => {
         if (!item.criteria) return true
-        // TODO:triggerを新規作成
-        return checkAllConditions(omiken, item.criteria)
+        return checkAllTriggers(omiken, rule.key, item.criteria)
       })
       .map((item) => ({
         ...item,
