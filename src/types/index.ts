@@ -8,9 +8,6 @@ export * from './BotComponents/BotMessageSchema'
 export * from './OmikujiData/OmikujiDataSchema'
 export * from './OmikujiData/DisplaySettingsSchema'
 
-export * from './GameComponent/GameComponentSchema'
-export * from './GameComponent/GameRankingTypes'
-
 export * from '../common/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 // export * from './GameScript/GameScriptSettingsSchema'
 export * from './GameScript/GameScriptTypes'

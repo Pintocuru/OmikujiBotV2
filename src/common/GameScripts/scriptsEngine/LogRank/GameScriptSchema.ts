@@ -6,7 +6,7 @@ import { z } from 'zod'
  * ランキングや履歴の元データとして使用
  */
 export const GameRecordSchema = z.object({
-  id: z.string(), // 一意識別子（UUID等）
+  id: z.string().default(() => crypto.randomUUID()), // 一意識別子（UUID等）
   userId: z.string(), // 実行者のユーザーID
   userName: z.string(), // 記録時の名前（名前変更対策）
   score: z.number(), // ランキング判定用のメイン数値
