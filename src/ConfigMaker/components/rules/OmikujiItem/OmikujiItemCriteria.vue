@@ -46,14 +46,14 @@
         />
 
         <!-- アクセスレベル条件 -->
-        <ThresholdAccess
+        <TriggerAccess
           v-if="isConditionChecked('access')"
           :modelValue="criteria?.access ?? []"
           @update:modelValue="updateCriteriaProperty('access', $event)"
         />
 
         <!-- カウント条件 -->
-        <ThresholdCount
+        <TriggerCount
           v-if="isConditionChecked('count')"
           :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'lc', value: 0 }"
           @update:modelValue="updateCriteriaProperty('count', $event)"
@@ -79,8 +79,8 @@
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
-  import ThresholdAccess from '@shared/components/threshold/ThresholdAccess.vue'
-  import ThresholdCount from '@shared/components/threshold/ThresholdCount.vue'
+  import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
+  import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]

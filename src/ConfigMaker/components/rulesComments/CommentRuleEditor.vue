@@ -30,7 +30,7 @@
         :subTitle="thresholdSubTitle"
         description="「おみくじを引く」発動条件の設定"
       >
-        <CommentThresholdEditor v-model="selectedItem.threshold" :selectedItemKey="selectedItemKey" />
+        <CommentThresholdEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- おみくじ制限設定セクション -->
@@ -38,7 +38,7 @@
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
         :title="`おみくじ制限設定`"
-        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, ${selectedItem.limits.drawLimit > 0 ? `回数:${selectedItem.limits.drawLimit},` : ''}連投:${selectedItem.limits.isRepeatAllowed ? '可' : '不可'})`"
+        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, 連投:${selectedItem.limits.isRepeatAllowed ? '可' : '不可'})`"
         description="重複時や回数超過時におみくじを無効にします"
       >
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />
@@ -111,7 +111,7 @@
   const thresholdSubTitle = computed(() => {
     if (!selectedItem.value) return ''
 
-    const conditions = selectedItem.value.threshold.conditions
+    const conditions = selectedItem.value.trigger.conditions
     const icons = []
 
     if (conditions.includes('comment')) icons.push('💬')

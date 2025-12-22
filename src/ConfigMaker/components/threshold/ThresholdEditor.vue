@@ -36,34 +36,40 @@
   <ThresholdSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
 
   <!-- アクセスレベル条件 -->
-  <ThresholdAccess v-if="conditions.includes('access')" v-model="access" />
+  <TriggerAccess v-if="conditions.includes('access')" v-model="access" />
 
   <!-- ギフト条件 -->
   <ThresholdGift v-if="conditions.includes('gift')" v-model="gift" />
 
   <!-- カウント条件 -->
-  <ThresholdCount v-if="conditions.includes('count')" v-model="count" />
+  <TriggerCount v-if="conditions.includes('count')" v-model="count" />
+
+  <!-- ユーザーネーム条件 -->
+  <ThresholdUsername v-if="conditions.includes('username')" v-model="userName" />
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import {
-    CommentThresholdCondition,
-    commentThresholdConditionLabels,
-    CommentThresholdType,
-  } from '@/types/OmikujiProcess/CommentThresholdSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
   import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
-  import ThresholdAccess from '@shared/components/threshold/ThresholdAccess.vue'
   import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
-  import ThresholdCount from '@shared/components/threshold/ThresholdCount.vue'
+  import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
+
+  import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
+  import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
+
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import {
+    CommentTriggerCondition,
+    commentTriggerConditionLabels,
+    CommentTriggerType,
+  } from '@/types/OmikujiProcess/CommentTriggerSchema'
 
   const props = defineProps<{
-    modelValue: CommentThresholdType
+    modelValue: CommentTriggerType
     selectedItemKey: string | null
   }>()
 
@@ -71,13 +77,13 @@
   const omikujiStore = useOmikujiStore()
 
   // 各プロパティのcomputed getter/setter
-  const createComputed = <T extends keyof CommentThresholdType>(key: T) =>
+  const createComputed = <T extends keyof CommentTriggerType>(key: T) =>
     computed({
       get: () => props.modelValue[key],
       set: (value) => {
         if (!props.selectedItemKey) return
         const updated = { ...props.modelValue, [key]: value }
-        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'threshold', updated)
+        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'trigger', updated)
       },
     })
 
@@ -88,10 +94,11 @@
   const access = createComputed('access')
   const gift = createComputed('gift')
   const count = createComputed('count')
+  const userName = createComputed('userName')
 
   // 条件タイプの選択肢
-  const conditionTypes = Object.entries(commentThresholdConditionLabels).map(([value, label]) => ({
-    value: value as CommentThresholdCondition,
+  const conditionTypes = Object.entries(commentTriggerConditionLabels).map(([value, label]) => ({
+    value: value as CommentTriggerCondition,
     label,
   }))
 
@@ -102,7 +109,7 @@
   }
 
   // Handlers
-  const toggleCondition = (condition: CommentThresholdCondition) => {
+  const toggleCondition = (condition: CommentTriggerCondition) => {
     conditions.value = toggleInArray(conditions.value, condition)
   }
 </script>

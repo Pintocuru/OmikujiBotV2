@@ -16,40 +16,13 @@
       label="クールダウンメッセージ"
       description="空欄でデフォルトが入ります"
       :showReset="true"
-      @reset="cooldownMessage = undefined"
+      @reset="cooldownMessage = null"
     >
       <input
         type="text"
         v-model="cooldownMessage"
         class="input input-bordered w-full"
         placeholder="コメントが被って、「おみくじ」ができなかったよ。またコメントしてね。"
-      />
-    </SettingItem>
-  </div>
-
-  <div class="form-control bg-base-100 p-3 rounded-lg space-y-4">
-    <h3 class="font-semibold border-b pb-1">回数制限 - 1回の配信における回数を制限します</h3>
-    <SettingItem
-      label="引ける回数"
-      description="今回のおみくじを引ける最大回数 (0で無制限)"
-      :showReset="true"
-      @reset="drawLimit = 0"
-    >
-      <input type="number" v-model.number="drawLimit" min="0" class="input input-bordered w-full" />
-    </SettingItem>
-
-    <SettingItem
-      v-if="drawLimit > 0"
-      label="制限超過メッセージ"
-      description="空欄でデフォルトが入ります"
-      :showReset="true"
-      @reset="drawLimitMessage = undefined"
-    >
-      <input
-        type="text"
-        v-model="drawLimitMessage"
-        class="input input-bordered w-full"
-        placeholder="「おみくじ」は上限の5回を超えているよ。"
       />
     </SettingItem>
   </div>
@@ -70,7 +43,7 @@
       label="連投制限メッセージ"
       description="空欄でデフォルトが入ります"
       :showReset="true"
-      @reset="repeatMessage = undefined"
+      @reset="repeatMessage = null"
     >
       <input
         type="text"
@@ -108,9 +81,7 @@
     })
 
   const cooldownSeconds = createComputed('cooldownSeconds')
-  const drawLimit = createComputed('drawLimit')
   const isRepeatAllowed = createComputed('isRepeatAllowed')
   const cooldownMessage = createComputed('cooldownMessage')
-  const drawLimitMessage = createComputed('drawLimitMessage')
   const repeatMessage = createComputed('repeatMessage')
 </script>
