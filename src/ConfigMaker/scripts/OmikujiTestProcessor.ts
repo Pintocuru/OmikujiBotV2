@@ -30,7 +30,7 @@ export class OmikujiTestProcessor {
    * おみくじの直接指定
    * コンフィグエディターからの呼び出しで使用
    */
-  executeOmikujiDirect(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
+  executeOmikujiDirect(omikujiItem: OmikujiItemType, comment?: OmikenCommentType): BotMessage[] {
     this.executor.executeDirect(omikujiItem, comment)
     return this.resultProcessor.process(omikujiItem, comment)
   }
@@ -39,7 +39,7 @@ export class OmikujiTestProcessor {
    * PostActionのみを実行（テスト用・簡易実行）
    * ルール情報やスクリプト実行なしで、PostActionを直接BotMessageに変換
    */
-  executePostActionsOnly(actions: PostActionType[], comment?: Comment): BotMessage[] {
+  executePostActionsOnly(actions: PostActionType[], comment?: OmikenCommentType): BotMessage[] {
     const dummyOmikujiItem: OmikujiItemType = OmikujiItemSchema.parse({ postActions: actions })
     return this.executeOmikujiDirect(dummyOmikujiItem, comment)
   }

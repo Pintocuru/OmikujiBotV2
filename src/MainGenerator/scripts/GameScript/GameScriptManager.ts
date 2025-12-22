@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/omikujiProcess/GameScriptManager.ts
 import { OmikujiItemType, PostActionType, ScriptClass } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@/common/GameScripts/GameScriptsMap'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}
@@ -29,7 +29,7 @@ export class GameScriptManager {
   /**
    * スクリプト実行
    */
-  playScript(omikujiItem: OmikujiItemType, comment?: Comment): PostActionType[] | null {
+  playScript(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): PostActionType[] | null {
     if (!omikujiItem.gameScripts) return null
     const { scriptId, queryString, characterKey } = omikujiItem.gameScripts
 
@@ -42,7 +42,7 @@ export class GameScriptManager {
     }
 
     try {
-      return scriptInstance.run(queryString, characterKey, comment)
+      return scriptInstance.run(queryString, characterKey, omiken)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return null

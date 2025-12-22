@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
 import { CommentRuleType, RestrictionType } from '@/types/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export interface RestrictionCheckResult {
   isBlocked: boolean
@@ -16,9 +16,9 @@ export interface RestrictionCheckResult {
 /**
  * 制限チェック（重複チェック、クールダウンチェック）
  */
-export function checkRestrictions(comment: Comment, rule: CommentRuleType): RestrictionCheckResult {
+export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleType): RestrictionCheckResult {
   const isCommentBased = rule.threshold.conditions.includes('comment')
-  const userName = comment.data.displayName || comment.data.name
+  const userName = omiken.userName
 
   // 1. クールダウンチェック
   if (isCooldownBlocked(rule.limits.cooldownSeconds)) {
@@ -36,7 +36,7 @@ export function checkRestrictions(comment: Comment, rule: CommentRuleType): Rest
   }
 
   // 2. 連投制限チェック（コメントベースのルールのみ）
-  if (isRepeatBlocked(comment.data.userId, rule.key, rule.limits.isRepeatAllowed)) {
+  if (isRepeatBlocked(omiken.userId, rule.key, rule.limits.isRepeatAllowed)) {
     if (!rule.limits.isRepeatAllowed) {
       return {
         isBlocked: true,
@@ -50,19 +50,6 @@ export function checkRestrictions(comment: Comment, rule: CommentRuleType): Rest
     return { isBlocked: false, restrictionType: null }
   }
 
-  // 3. 回数制限チェック
-  if (isDrawLimitExceeded(comment.data.userId, rule.key, rule.limits.drawLimit)) {
-    return {
-      isBlocked: true,
-      restrictionType: 'drawLimit',
-      metadata: {
-        userName,
-        ruleName: rule.name,
-        drawLimit: rule.limits.drawLimit,
-      },
-    }
-  }
-
   return { isBlocked: false, restrictionType: null }
 }
 
@@ -74,9 +61,4 @@ function isCooldownBlocked(cooldownSeconds: number): boolean {
 function isRepeatBlocked(userId: string, key: string, isRepeatAllowed: number): boolean {
   const { cooldownManager } = useAppStore()
   return cooldownManager.isRepeatBlocked(userId, key, isRepeatAllowed)
-}
-
-function isDrawLimitExceeded(userId: string, key: string, drawLimit: number): boolean {
-  const { cooldownManager } = useAppStore()
-  return cooldownManager.isDrawLimitExceeded(userId, key, drawLimit)
 }

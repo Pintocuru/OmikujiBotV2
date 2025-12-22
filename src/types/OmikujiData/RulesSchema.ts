@@ -7,16 +7,12 @@ import { BaseRecordSchema } from '@shared/types/'
 /**
  * おみくじ制限設定のスキーマ
  */
-export type RestrictionType = 'cooldown' | 'repeat' | 'drawLimit'
+export type RestrictionType = 'cooldown' | 'repeat'
 
 export const OmikujiLimitsSchema = z.object({
   // 重複制限
   cooldownSeconds: z.number().min(0).max(300).catch(3), // 処理クールダウン時間（秒）、0で無効
-  cooldownMessage: z.string().optional(),
-
-  // 回数制限
-  drawLimit: z.number().default(0).catch(0), // 今回のおみくじはこの回数以下か
-  drawLimitMessage: z.string().optional(),
+  cooldownMessage: z.string().nullish().default(null).catch(null),
 
   // 連投制限
   isRepeatAllowed: z
@@ -29,7 +25,7 @@ export const OmikujiLimitsSchema = z.object({
     })
     .default(0)
     .catch(0), // 連投を許可するか
-  repeatMessage: z.string().optional(),
+  repeatMessage: z.string().nullish().default(null).catch(null),
 })
 
 /**

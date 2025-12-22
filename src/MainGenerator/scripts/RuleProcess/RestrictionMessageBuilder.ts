@@ -6,7 +6,7 @@ import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 /**
  * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
  */
-function getMessageOrDefault(configuredMessage: string | undefined, defaultMessage: string): string {
+function getMessageOrDefault(configuredMessage: string | null, defaultMessage: string): string {
   return configuredMessage?.trim() || defaultMessage
 }
 
@@ -18,21 +18,19 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 
   switch (restrictionType) {
     case 'cooldown':
+      if (rule.limits.cooldownMessage === '') return null // 空メッセージ
+
       return getMessageOrDefault(
         rule.limits.cooldownMessage,
         `コメントが被って、「${metadata?.ruleName}」ができなかったよ。またコメントしてね。`
       )
 
     case 'repeat':
+      if (rule.limits.repeatMessage === '') return null // 空メッセージ
+
       return getMessageOrDefault(
         rule.limits.repeatMessage,
         `${metadata?.userName}さんは、連投制限で「${metadata?.ruleName}」ができなかったよ。`
-      )
-
-    case 'drawLimit':
-      return getMessageOrDefault(
-        rule.limits.drawLimitMessage,
-        `${metadata?.userName}さんの「${metadata?.ruleName}」は上限の${metadata?.drawLimit}回を超えているよ。`
       )
 
     default:

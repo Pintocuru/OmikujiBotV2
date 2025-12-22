@@ -5,7 +5,7 @@ import { buildRestrictionMessages } from './RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 interface RuleProcessResult {
   isCommentTriggered: boolean
@@ -15,13 +15,13 @@ interface RuleProcessResult {
 /**
  * ユーザーコメントの処理
  */
-export function processUserComment(comment: Comment): BotMessage[] {
+export function processUserComment(omiken: OmikenCommentType): BotMessage[] {
   try {
     const { cooldownManager } = useAppStore()
     const sortedRules = getSortedEnabledRules()
 
     for (const rule of sortedRules) {
-      const result = processRule(comment, rule)
+      const result = processRule(omiken, rule)
 
       // ルールが成功し、botメッセージが生成された場合はここで終了
       if (result.botMessages.length > 0) {
@@ -43,23 +43,24 @@ export function processUserComment(comment: Comment): BotMessage[] {
 /**
  * コメントルールの条件チェック
  */
-function validateThreshold(comment: Comment, rule: CommentRuleType): boolean {
-  return checkAllConditions(comment, rule.threshold)
+function validateThreshold(omiken: OmikenCommentType, rule: CommentRuleType): boolean {
+  // TODO:修正(triggerを新規作成)
+  return checkAllConditions(omiken, rule.threshold)
 }
 
 /**
  * 単一ルールの処理
  */
-function processRule(comment: Comment, rule: CommentRuleType): RuleProcessResult {
-  const { cooldownManager } = useAppStore()
+function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
+  const { cooldownManager, userVisitManager } = useAppStore()
 
   // 1. 閾値条件チェック
-  if (!validateThreshold(comment, rule)) {
+  if (!validateThreshold(omiken, rule)) {
     return { isCommentTriggered: false, botMessages: [] }
   }
 
   // 2. 制限チェック（純粋なチェックのみ）
-  const restrictionResult = checkRestrictions(comment, rule)
+  const restrictionResult = checkRestrictions(omiken, rule)
 
   if (restrictionResult.isBlocked) {
     // 3. 制限チェックの結果からメッセージを生成
@@ -72,10 +73,10 @@ function processRule(comment: Comment, rule: CommentRuleType): RuleProcessResult
 
   // 4. おみくじ実行
   const omikujiProcessor = new OmikujiProcessor()
-  const omikujiMessages = omikujiProcessor.executeOmikuji(rule.omikuji, comment)
+  const omikujiMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
 
   // 5. ユーザー情報の更新
-  cooldownManager.updateUserId(comment.data.userId, rule.key, comment.data.displayName ?? comment.data.name)
+  userVisitManager.recordVisit(omiken.userId, rule.key, omiken.userName)
 
   // チャットワード起動かどうかを判定
   const isCommentTriggered = rule.threshold.conditions.includes('comment')

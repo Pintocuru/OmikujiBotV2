@@ -23,7 +23,7 @@ export class ExecuteScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, comment?: Comment): PostActionType[] {
+  run(queryString: string, characterKey: string, comment?: OmikenCommentType): PostActionType[] {
     // パラメータ
     const { mode } = this.parseParams(queryString)
     const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
@@ -57,7 +57,7 @@ export class ExecuteScript implements ScriptClass {
     gameResult: GameResult,
     characterKey: string,
     mode: string,
-    comment?: Comment
+    comment?: OmikenCommentType
   ): PostActionType[] {
     if (!comment) return []
 

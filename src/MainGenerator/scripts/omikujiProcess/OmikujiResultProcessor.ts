@@ -8,7 +8,7 @@ import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerat
 import { ActionSetExpander } from './ActionSetExpander'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
@@ -30,12 +30,12 @@ export class OmikujiResultProcessor {
   /**
    * おみくじ結果を処理してBotMessageを生成
    */
-  process(omikujiItem: OmikujiItemType, comment?: Comment): BotMessage[] {
+  process(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessage[] {
     try {
       const postActions: PostActionType[] = []
       // gameScripts 処理
       if (omikujiItem.gameScripts) {
-        const gamePost = this.scriptManager.playScript(omikujiItem, comment)
+        const gamePost = this.scriptManager.playScript(omikujiItem, omiken)
         if (gamePost) postActions.push(...gamePost)
       }
 

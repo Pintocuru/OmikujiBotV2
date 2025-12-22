@@ -6,6 +6,8 @@ import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@/MainGenerator/scripts/CooldownManager/CooldownManager'
+import { UserVisitManager } from '@/MainGenerator/scripts/UserVisitManager/UserVisitManager'
+
 import { normalizeData } from '@/Toolkit/migrations'
 import { useBotMessageActions } from './useBotMessageActions'
 
@@ -22,7 +24,8 @@ export const useAppStore = defineStore('app', () => {
   const data = ref<OmikujiDataType>(omikujiData)
 
   // 管理オブジェクト
-  const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿などを監視)
+  const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
+  const userVisitManager = UserVisitManager.getInstance() // ユーザー訪問管理
   const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
   const characterCollector = computed(() => new CharacterCollector(data.value)) // キャラクター管理
 
@@ -34,8 +37,9 @@ export const useAppStore = defineStore('app', () => {
     data,
     ...botMessageActions,
     userConfig,
-    scriptManager,
     cooldownManager,
+    userVisitManager,
+    scriptManager,
     characterCollector,
   }
 })

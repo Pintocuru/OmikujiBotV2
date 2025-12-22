@@ -50,9 +50,9 @@
 
   // 初期化処理
   onMounted(async () => {
-    const isInit = await initializeApp(appStore.userConfig, (comments) => {
+    const isInit = await initializeApp((omikens) => {
       // コメント処理
-      const botMessages = ruleCommentProcessor.respondToComments(comments)
+      const botMessages = ruleCommentProcessor.respondToComments(omikens)
       appStore.scheduleBotMessages(botMessages)
     })
     appStore.setInitialized(isInit)

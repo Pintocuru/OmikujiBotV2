@@ -5,7 +5,7 @@ import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { checkAllConditions } from '@shared/utils/threshold/ThresholdChecker'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * おみくじの実行ロジックを担当するクラス
@@ -17,15 +17,15 @@ export class OmikujiExecutor {
   /**
    * おみくじの抽選と実行（コメント＋ルール指定）
    */
-  executeWithRule(omikujiSet: OmikujiSetType, comment?: Comment): OmikujiItemType | null {
+  executeWithRule(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): OmikujiItemType | null {
     try {
-      const filtered = comment ? this.filterCriteria(omikujiSet, comment) : omikujiSet
+      const filtered = omiken ? this.filterCriteria(omikujiSet, omiken) : omikujiSet
       if (!filtered.length) return null
 
       const omikujiItem = drawOmikuji(filtered) as OmikujiItemType
       if (!omikujiItem) return null
 
-      this.setupPlaceholders(comment)
+      this.setupPlaceholders(omiken)
       return omikujiItem
     } catch (error) {
       ConsolePost('error', `おみくじ実行エラー`, error)
@@ -36,19 +36,20 @@ export class OmikujiExecutor {
   /**
    * おみくじの直接実行（アイテム指定）
    */
-  executeDirect(omikujiItem: OmikujiItemType, comment?: Comment): OmikujiItemType {
-    if (comment) this.setupPlaceholders(comment)
+  executeDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): OmikujiItemType {
+    if (omiken) this.setupPlaceholders(omiken)
     return omikujiItem
   }
 
   /**
    * 条件フィルタ＋rank付与
    */
-  private filterCriteria(items: OmikujiSetType, comment: Comment): OmikujiSetType {
+  private filterCriteria(items: OmikujiSetType, omiken: OmikenCommentType): OmikujiSetType {
     return items
       .filter((item) => {
         if (!item.criteria) return true
-        return checkAllConditions(comment, item.criteria)
+        // TODO:triggerを新規作成
+        return checkAllConditions(omiken, item.criteria)
       })
       .map((item) => ({
         ...item,
@@ -59,8 +60,8 @@ export class OmikujiExecutor {
   /**
    * デフォルトプレースホルダーの設定
    */
-  private setupPlaceholders(comment?: Comment): void {
-    const defaultPlaceholders = this.defaultManager.getDefaultComments(comment)
+  private setupPlaceholders(omiken?: OmikenCommentType): void {
+    const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
     this.placeProcess.updateResolvedValues(defaultPlaceholders)
   }
 }

@@ -2,25 +2,26 @@
 import { BotMessage } from '@/types/'
 import { processUserComment } from '@/MainGenerator/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 const TIME_THRESHOLD = 10000 // これ以上経過した古いコメントは判定しない
 
 export class RuleCommentProcessor {
-  private appliedCommentIds = new Set<string>() // 既に適用済みの comment.data.id を保持
+  private appliedCommentIds = new Set<string>()
 
   /**
    * メイン処理: コメントを処理して拡張コメントを作成
    */
-  respondToComments(comments: Comment[]): BotMessage[] {
-    if (!comments.length) return []
+  respondToComments(omikens: OmikenCommentType[]): BotMessage[] {
+    if (!omikens.length) return []
 
     const botMessages: BotMessage[] = []
     // 最新が末尾なので反転してから先頭5件を取得
-    const limitedComments = comments.slice().reverse().slice(0, 5)
+    const limitedComments = omikens.slice().reverse().slice(0, 5)
 
-    for (const comment of limitedComments) {
-      const { id, userId, timestamp } = comment.data
+    for (const omiken of limitedComments) {
+      const { id, userId, timestamp } = omiken
 
       // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
       if (this.isBotComment(userId)) return botMessages
@@ -31,9 +32,13 @@ export class RuleCommentProcessor {
       // 除外条件をチェック
       if (this.isOldComment(timestamp)) return botMessages
 
+      // UserVisitRecord を入れる
+      const { UserVisitManager } = useAppStore()
+      omiken.omikujiRecords = UserVisitManager.getOmikujiRecords(omiken.userId) ?? {}
+
       // おみくじチェック
       this.appliedCommentIds.add(id)
-      const processedMessages = processUserComment(comment)
+      const processedMessages = processUserComment(omiken)
       if (processedMessages.length > 0) {
         botMessages.push(...processedMessages)
       }

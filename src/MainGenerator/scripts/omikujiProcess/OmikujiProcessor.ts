@@ -6,7 +6,7 @@ import { OmikujiResultProcessor } from './OmikujiResultProcessor'
 import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
 import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * おみくじ処理の統合クラス
@@ -38,22 +38,22 @@ export class OmikujiProcessor {
   /**
    * おみくじ と 引いたおみくじの処理
    */
-  executeOmikuji(omikujiSet: OmikujiSetType, comment?: Comment): BotMessage[] {
+  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessage[] {
     // おみくじ
-    const omikujiItem = this.executor.executeWithRule(omikujiSet, comment)
+    const omikujiItem = this.executor.executeWithRule(omikujiSet, omiken)
     if (!omikujiItem) return []
 
     // スクリプト
-    if (omikujiItem.gameScripts?.scriptId === '') {
+    if (omikujiItem.gameScripts?.scriptId === 'godMode') {
       this.hoge()
     }
 
     // おみくじの処理
-    return this.resultProcessor.process(omikujiItem, comment)
+    return this.resultProcessor.process(omikujiItem, omiken)
   }
 
   /**
-   *
+   * GODMODE
    */
   private hoge() {
     const { cooldownManager } = useAppStore()

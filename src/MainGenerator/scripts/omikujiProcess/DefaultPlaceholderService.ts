@@ -7,7 +7,8 @@ import {
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { GetUserVisits } from '@shared/sdk/subscribe/GetUserVisits'
 import { ConfigUserSchema, ServiceMetaCondition, ServiceVisitType } from '@shared/types'
-import { Comment, ServiceMeta } from '@onecomme.com/onesdk/'
+import { ServiceMeta } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export class DefaultPlaceholderService {
   private serviceMeta: ServiceMeta | null = null
@@ -44,7 +45,7 @@ export class DefaultPlaceholderService {
   /**
    * comment用デフォルトのプレースホルダー情報を設定
    */
-  getDefaultComments(comment?: Comment) {
+  getDefaultComments(omiken?: OmikenCommentType) {
     const userList = Object.values(this.userVisits ?? {}).flatMap((v) => Object.values(v.user))
     const commenter = userList.length
     const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].name : ''
@@ -52,7 +53,7 @@ export class DefaultPlaceholderService {
     const base = this.getDefaultPlaceholders()
 
     // Comment がない場合は base に Comment依存の値を付けず返す
-    if (!comment) {
+    if (!omiken) {
       return {
         ...base,
         commenter,
@@ -63,10 +64,10 @@ export class DefaultPlaceholderService {
     // Comment がある場合は full スキーマで parse
     return DefaultPlaceholdersCommentSchema.parse({
       ...base,
-      user: comment.data.displayName || comment.data.name,
-      price: (comment.data as { price?: number })?.price,
-      lc: comment.meta?.lc,
-      tc: comment.meta?.tc,
+      user: omiken.userName,
+      price: omiken.giftPrice,
+      lc: omiken.meta.lc,
+      tc: omiken.meta.tc,
       commenter,
       winner,
     })

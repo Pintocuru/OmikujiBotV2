@@ -2,9 +2,8 @@
 import { computed, watch } from 'vue'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
-import { GetUserComments } from '@shared/sdk/subscribe/GetUserComments'
-import { ConfigUserType } from '@shared/types'
-import { Comment } from '@onecomme.com/onesdk/'
+import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export function useRuleProcessor() {
   /**
@@ -19,12 +18,9 @@ export function useRuleProcessor() {
     console.log('プロセッサーが更新されました')
   })
 
-  const initializeApp = async (
-    config: ConfigUserType,
-    onCommentsReceived: (comments: Comment[]) => void
-  ): Promise<boolean> => {
+  const initializeApp = async (onCommentsReceived: (comments: OmikenCommentType[]) => void): Promise<boolean> => {
     try {
-      return await GetUserComments(config).fetchComments(onCommentsReceived)
+      return await GetOmikenComments(onCommentsReceived)
     } catch (error) {
       console.error('初期化エラー:', error)
       return false
