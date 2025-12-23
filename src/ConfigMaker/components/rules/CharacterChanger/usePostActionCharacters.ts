@@ -6,20 +6,13 @@ import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
  */
 export function usePostActionCharacters() {
   /**
-   * PostActionがキャラクターを必要とするかチェック
-   */
-  const isCharacterRequired = (actionType: string): boolean => {
-    return actionType === 'message' || actionType === 'toast'
-  }
-
-  /**
    * PostAction配列から使用されているキャラクターキーを抽出
    */
   const extractCharacterKeys = (postActions: PostActionType[]): string[] => {
     const keys = new Set<string>()
 
     postActions.forEach((action) => {
-      if (isCharacterRequired(action.actionType) && action.characterKey !== undefined) {
+      if (action.actionType === 'message') {
         keys.add(action.characterKey)
       }
     })
@@ -34,7 +27,7 @@ export function usePostActionCharacters() {
     const counts: Record<string, number> = {}
 
     postActions.forEach((action) => {
-      if (isCharacterRequired(action.actionType) && action.characterKey !== undefined) {
+      if (action.actionType === 'message') {
         const key = action.characterKey
         counts[key] = (counts[key] || 0) + 1
       }
@@ -51,13 +44,10 @@ export function usePostActionCharacters() {
     mappings: Record<string, string>
   ): PostActionType[] => {
     return postActions.map((action) => {
-      if (isCharacterRequired(action.actionType)) {
+      if (action.actionType === 'message') {
         const newCharacterId = mappings[action.characterKey || '']
         if (newCharacterId) {
-          return {
-            ...action,
-            characterKey: newCharacterId,
-          }
+          return { ...action, characterKey: newCharacterId }
         }
       }
       return action
@@ -65,7 +55,6 @@ export function usePostActionCharacters() {
   }
 
   return {
-    isCharacterRequired,
     extractCharacterKeys,
     countCharacterUsage,
     applyCharacterMappings,

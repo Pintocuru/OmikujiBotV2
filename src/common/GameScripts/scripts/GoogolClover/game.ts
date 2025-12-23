@@ -1,24 +1,74 @@
 // src/GameScripts/GoogolClover/game.ts
+import { PostActionMessageBodySchema, PostActionMessageBodyType, UserMessageSchema } from '@/types'
 import { GOAL_EXPONENT, MIN_SPINS, MAX_SPINS, CURRENCY_SYMBOL } from './constants'
 import type { UserState, SlotResult } from './types'
-import { formatShort, spinSlot } from './utils'
+import { formatShort, spinSlot, formatScoreText, calculateScoreValue } from './utils'
+
+/**
+ * ゲーム実行に必要なコンテキスト情報
+ */
+export interface GameContext {
+  userId: string
+  userName: string
+  profileImage: string
+  rankingKey: string
+}
+
+/**
+ * スロット実行結果
+ */
+interface SlotExecutionResult {
+  spins: number
+  totalMultiplier: number
+  failedAt: number
+  multipliers: number[]
+  state: UserState
+}
+
+/**
+ * ゲーム結果（状態更新指示を含む）
+ */
+interface GameResult {
+  message: PostActionMessageBodyType
+  shouldDeleteState: boolean
+  newState: UserState | null
+}
 
 /**
  * スロットゲームのメイン処理
- * クラスではなく純粋関数として実装
  */
-export function playSlot(userStates: Map<string, UserState>, userId: string, userName: string): SlotResult {
-  // 状態の取得または初期化
-  let state = userStates.get(userId) ?? { funds: 1.0, exp: 0, successCount: 0, isGoogol: false }
+export function playSlot(userStates: Map<string, UserState>, context: GameContext): PostActionMessageBodyType {
+  const currentState = userStates.get(context.userId) ?? {
+    funds: 1.0,
+    exp: 0,
+    successCount: 0,
+    isGoogol: false,
+  }
 
-  // ランダムにMIN_SPINS～MAX_SPINS回の抽選を一括実行
+  const executionResult = executeSlotSpins(currentState)
+  const gameResult = buildGameResult(executionResult, context)
+
+  // 状態の更新
+  if (gameResult.shouldDeleteState) {
+    userStates.delete(context.userId)
+  } else if (gameResult.newState) {
+    userStates.set(context.userId, gameResult.newState)
+  }
+
+  return gameResult.message
+}
+
+/**
+ * スロット抽選の実行（純粋関数）
+ */
+function executeSlotSpins(initialState: UserState): SlotExecutionResult {
   const spins = Math.floor(Math.random() * (MAX_SPINS - MIN_SPINS + 1)) + MIN_SPINS
   let totalMultiplier = 1.0
   let failedAt = -1
   const multipliers: number[] = []
+  let state = { ...initialState }
 
   for (let i = 0; i < spins; i++) {
-    // このプレイセッションの開始時点での成功回数を使用
     const result = spinSlot(state.successCount)
 
     if (!result.isSuccess) {
@@ -32,59 +82,166 @@ export function playSlot(userStates: Map<string, UserState>, userId: string, use
     multipliers.push(Math.round(result.multiplier))
   }
 
-  // 全て成功した場合のみ、成功回数を1回増やす
-  if (failedAt < 0) state.successCount++
+  // 全て成功した場合のみ成功回数を増やす
+  if (failedAt < 0) {
+    state = { ...state, successCount: state.successCount + 1 }
+  }
 
+  return { spins, totalMultiplier, failedAt, multipliers, state }
+}
+
+/**
+ * ゲーム結果の生成（純粋関数）
+ */
+function buildGameResult(result: SlotExecutionResult, context: GameContext): GameResult {
+  const { failedAt, multipliers, totalMultiplier } = result
   const multipliersDisplay = multipliers.map((m) => `${m}`).join('×')
 
-  // 失敗した場合
-  if (failedAt > 0) {
-    const finalDisplay = formatShort(state.funds, state.exp)
-    userStates.delete(userId)
+  const user = UserMessageSchema.parse({
+    name: context.userName,
+    userId: context.userId,
+    profileImage: context.profileImage,
+  })
 
+  // 失敗時
+  if (failedAt > 0) {
     return {
-      message: `${userName}はサイコロを振る! ${multipliersDisplay}!${userName}は奈落へと消えた。`, // Result:${finalDisplay}${CURRENCY_SYMBOL}
-      payout: 0,
-      success: false,
+      message: createFailureMessage(
+        context.userName,
+        multipliersDisplay,
+        context.rankingKey,
+        user,
+        result.state.successCount
+      ),
+      shouldDeleteState: true,
+      newState: null,
     }
   }
 
-  // 全て成功：資金を更新
-  state.funds *= totalMultiplier
-
-  // 正規化（funds を 1.0～10.0 の範囲に）
-  const NORMALIZATION_THRESHOLD = 10 // 資金の正規化基準値
-  const NORMALIZATION_DIVISOR = 10 // 資金の正規化除数
-  while (state.funds >= NORMALIZATION_THRESHOLD) {
-    state.funds /= NORMALIZATION_DIVISOR
-    state.exp++
-  }
+  // 成功時：資金を更新
+  const updatedState = normalizeState({
+    ...result.state,
+    funds: result.state.funds * totalMultiplier,
+  })
 
   // 目標達成チェック
-  if (state.exp >= GOAL_EXPONENT) {
-    let exitVoice = ''
-    const finalDisplay = formatShort(state.funds, state.exp)
-    if (!state.isGoogol) {
-      exitVoice = '出口への扉が開いた。'
-      state.isGoogol = true
-    }
-
+  if (updatedState.exp >= GOAL_EXPONENT) {
     return {
-      message: `${userName}はサイコロを振る! ${multipliersDisplay}!${finalDisplay}${CURRENCY_SYMBOL}獲得!${exitVoice}`,
-      payout: Math.floor(state.funds * Math.pow(10, state.exp % 10)),
-      success: true,
+      message: createGoalAchievedMessage(updatedState, context.userName, multipliersDisplay, context.rankingKey, user),
+      shouldDeleteState: false,
+      newState: updatedState,
     }
   }
 
-  // 状態を保存
-  userStates.set(userId, state)
-
-  // 結果表示
-  const currentDisplay = formatShort(state.funds, state.exp)
-
+  // 通常の成功
   return {
-    message: `${userName}はサイコロを振る! ${multipliersDisplay}!${currentDisplay}${CURRENCY_SYMBOL}獲得!`,
-    payout: Math.floor(totalMultiplier - 1),
-    success: true,
+    message: createSuccessMessage(
+      updatedState,
+      context.userName,
+      multipliersDisplay,
+      totalMultiplier,
+      context.rankingKey,
+      user
+    ),
+    shouldDeleteState: false,
+    newState: updatedState,
   }
+}
+
+/**
+ * 資金の正規化（純粋関数）
+ */
+function normalizeState(state: UserState): UserState {
+  const NORMALIZATION_THRESHOLD = 10
+  const NORMALIZATION_DIVISOR = 10
+  let { funds, exp } = state
+
+  while (funds >= NORMALIZATION_THRESHOLD) {
+    funds /= NORMALIZATION_DIVISOR
+    exp++
+  }
+
+  return { ...state, funds, exp }
+}
+
+/**
+ * 失敗メッセージの生成
+ */
+function createFailureMessage(
+  userName: string,
+  multipliersDisplay: string,
+  rankingKey: string,
+  user: any,
+  successCount: number
+): PostActionMessageBodyType {
+  return PostActionMessageBodySchema.parse({
+    user,
+    bubble: `${userName}はサイコロを振る! ${multipliersDisplay}!${userName}は奈落へと消えた。`,
+    ranking: {
+      scriptKey: rankingKey,
+      listName: userName,
+      symbol: `${successCount}回目`,
+      scoreText: '0',
+      scoreValue: 0,
+      isUniqueUser: true,
+    },
+  })
+}
+
+/**
+ * 目標達成メッセージの生成
+ */
+function createGoalAchievedMessage(
+  state: UserState,
+  userName: string,
+  multipliersDisplay: string,
+  rankingKey: string,
+  user: any
+): PostActionMessageBodyType {
+  const finalDisplay = formatShort(state.funds, state.exp)
+  const exitVoice = !state.isGoogol ? '出口への扉が開いた。' : ''
+  const scoreText = formatScoreText(state.funds, state.exp)
+  const scoreValue = calculateScoreValue(state.funds, state.exp) * 1000000
+
+  return PostActionMessageBodySchema.parse({
+    user,
+    bubble: `${userName}はサイコロを振る! ${multipliersDisplay}!${finalDisplay}${CURRENCY_SYMBOL}獲得!${exitVoice}`,
+    ranking: {
+      scriptKey: rankingKey,
+      listName: userName,
+      symbol: `${state.successCount}回目`,
+      scoreText,
+      scoreValue,
+      isUniqueUser: true,
+    },
+  })
+}
+
+/**
+ * 通常成功メッセージの生成
+ */
+function createSuccessMessage(
+  state: UserState,
+  userName: string,
+  multipliersDisplay: string,
+  totalMultiplier: number,
+  rankingKey: string,
+  user: any
+): PostActionMessageBodyType {
+  const currentDisplay = formatShort(state.funds, state.exp)
+  const scoreText = formatScoreText(state.funds, state.exp)
+  const scoreValue = calculateScoreValue(state.funds, state.exp) * 1000000
+
+  return PostActionMessageBodySchema.parse({
+    user,
+    bubble: `${userName}はサイコロを振る! ${multipliersDisplay}!${currentDisplay}${CURRENCY_SYMBOL}獲得!`,
+    ranking: {
+      scriptKey: rankingKey,
+      listName: userName,
+      symbol: `${state.successCount}回目`,
+      scoreText,
+      scoreValue,
+      isUniqueUser: true,
+    },
+  })
 }

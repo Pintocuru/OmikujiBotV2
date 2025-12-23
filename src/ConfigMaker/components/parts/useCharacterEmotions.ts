@@ -13,25 +13,14 @@ export const useCharacterEmotions = () => {
 
     return characterEmotions.filter((emotion) => {
       const imagePath = character.image?.[emotion]
-      if (typeof imagePath === 'string') {
-        return imagePath.trim() !== ''
-      } else if (Array.isArray(imagePath)) {
-        return imagePath.some((path) => path && path.trim() !== '')
-      }
-      return false
+      return imagePath.some((path) => path && path.trim() !== '')
     })
   }
 
   const hasEmotion = (characterKey: string, emotion: CharacterEmotionType): boolean => {
     const character = charactersMap.value[characterKey]
     const imagePath = character?.image?.[emotion]
-
-    if (typeof imagePath === 'string') {
-      return imagePath.trim() !== ''
-    } else if (Array.isArray(imagePath)) {
-      return imagePath.some((path) => path && path.trim() !== '')
-    }
-    return false
+    return imagePath.some((path) => path && path.trim() !== '')
   }
 
   return {

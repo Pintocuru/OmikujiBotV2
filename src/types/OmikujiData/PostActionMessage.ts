@@ -8,6 +8,7 @@ import z from 'zod'
 // user
 export const UserMessageSchema = z.object({
   name: z.string().default('error'), // 名前
+  userId: z.string().default(''), // ユーザーID
   profileImage: z.string().default(''), // プロフィール画像
   timestamp: z
     .number()

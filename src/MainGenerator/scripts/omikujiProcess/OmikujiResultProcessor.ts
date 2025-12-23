@@ -101,6 +101,7 @@ export class OmikujiResultProcessor {
       action.message.user = omiken
         ? UserMessageSchema.parse({
             name: omiken?.userName,
+            userId: omiken?.userId,
             profileImage: omiken?.profileImage,
           })
         : undefined

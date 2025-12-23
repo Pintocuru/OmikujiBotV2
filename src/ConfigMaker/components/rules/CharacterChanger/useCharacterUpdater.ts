@@ -12,8 +12,7 @@ import { usePostActionCharacters } from './usePostActionCharacters'
  */
 export function useCharacterUpdater(
   category: TargetCategoryType,
-  allItems: ComputedRef<(RuleType | PostActionRecordType)[]>,
-  selectedId?: string
+  allItems: ComputedRef<(RuleType | PostActionRecordType)[]>
 ) {
   const omikujiStore = useOmikujiStore()
   const { applyCharacterMappings } = usePostActionCharacters()

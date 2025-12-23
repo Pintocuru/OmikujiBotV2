@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\DwarfBomb\execute.ts
+// src/common/GameScripts/scripts/DwarfBomb/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
 import { BomberSpinGame } from './game'
@@ -23,19 +23,64 @@ export class ExecuteScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, comment?: OmikenCommentType): PostActionType[] {
-    // パラメータ
-    const { mode } = this.parseParams(queryString)
-    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
+  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
+    const params = this.parseParams(queryString)
+    const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const game = new BomberSpinGame()
-    const gameResult = game.playGame(userName, mode)
-    const { day, payout, message } = gameResult
+    const gameResult = this.executeGame(userName, params.mode)
 
     // ランキングの生成
+    const rankingResult = omiken ? this.createRanking(gameResult.payout, characterKey, userName, omiken) : null
+
+    // ゲーム結果に基づいてWordPartyを生成
+    const partyEffects = gameResult.game.generatePartyEffects(gameResult.result)
+
+    return this.buildPostActions(gameResult.result, characterKey, partyEffects, rankingResult)
+  }
+
+  /**
+   * サンプルラン
+   */
+  sampleRun(queryString: string): string {
+    const { mode } = this.parseParams(queryString)
+    const gameResult = this.executeGame('[ユーザー名]', mode)
+    return gameResult.result.message
+  }
+
+  /**
+   * ゲームデータを返す
+   */
+  getGameState(): GameStateType {
+    return this.logRank.getGameState()
+  }
+
+  /**
+   * パラメータ
+   */
+  private parseParams(queryString: string): GameParams {
+    const paramsObject = parseQueryString(queryString)
+    return GameParamsSchema.parse(paramsObject)
+  }
+
+  // ゲームの実行
+  private executeGame(userName: string, mode: GameParams['mode']) {
+    const game = new BomberSpinGame()
+    const result = game.playGame(userName, mode)
+
+    return {
+      game,
+      result,
+      payout: result.payout,
+    }
+  }
+
+  /**
+   * ランキング生成
+   */
+  private createRanking(payout: number, characterKey: string, userName: string, omiken: OmikenCommentType) {
     const logResult = this.logRank.run({
-      userId: comment.data.userId,
+      userId: omiken.userId,
       name: userName,
       characterKey,
       rankingMode: 'high_score',
@@ -47,21 +92,36 @@ export class ExecuteScript implements ScriptClass {
     })
 
     const stats = logResult.currentUserStats
-    const currentRecord = logResult.currentRecord
-
-    // ゲーム結果に基づいて演出効果を生成
-    const partyEffects = game.generatePartyEffects(gameResult)
+    const record = logResult.currentRecord
 
     const ranking = RankingMessageSchema.parse({
       scriptKey: RANKING_KEY,
       name: stats.name,
-      scoreText: String(gameResult.payout),
-      scoreValue: currentRecord.score,
+      scoreText: String(payout),
+      scoreValue: record.score,
       isRank: !logResult.isOverLimit,
     })
 
+    return {
+      ranking,
+      postActions: logResult.postActions,
+    }
+  }
+
+  /**
+   * 投稿
+   */
+  private buildPostActions(
+    gameResult: ReturnType<BomberSpinGame['playGame']>,
+    characterKey: string,
+    partyEffects: PostActionType[],
+    rankingResult: {
+      ranking: unknown
+      postActions: PostActionType[]
+    } | null
+  ): PostActionType[] {
     return [
-      ...logResult.postActions,
+      ...(rankingResult?.postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
       { actionType: 'wordParty', delaySeconds: 1.5, wordParty: 'DwarfBombRabbit2' },
       { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },
@@ -72,26 +132,12 @@ export class ExecuteScript implements ScriptClass {
         characterKey,
         message: {
           bubble: gameResult.message,
-          ranking,
+          ranking: rankingResult?.ranking,
         },
         sound: 'decision',
       }),
     ]
   }
-
-  /**
-   * ゲームデータを返す
-   */
-  getGameState(): GameStateType {
-    return this.logRank.getGameState()
-  }
-
-  // パラメータ
-  private parseParams(queryString: string): GameParams {
-    const paramsObject = parseQueryString(queryString)
-    return GameParamsSchema.parse(paramsObject)
-  }
 }
 
-// プリセット用エクスポート
 export default new ExecuteScript()

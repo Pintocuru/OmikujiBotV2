@@ -1,17 +1,18 @@
-// src/execute.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\GoogolClover\execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
-import { playSlot } from './game'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
+import { GameContext, playSlot } from './game'
 import { UserState } from './types'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
-  private userStates = new Map<string, UserState>()
+  private readonly userStates = new Map<string, UserState>()
 
   /**
    * 設定を初期化する
@@ -23,65 +24,37 @@ export class ExecuteScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, comment?: OmikenCommentType): PostActionType[] {
-    // パラメータ
-    const { mode } = this.parseParams(queryString)
-    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
-    const userId = comment?.data.userId
+  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
+    const {} = this.parseParams(queryString)
+
+    const context: GameContext = {
+      userId: omiken?.userId ?? UNKNOWN_NAME,
+      userName: omiken?.userName ?? UNKNOWN_NAME,
+      profileImage: omiken?.profileImage ?? '',
+      rankingKey: RANKING_KEY,
+    }
 
     // ゲームの実行
-    const gameResult = playSlot(this.userStates, userId, userName)
+    const gameResult = playSlot(this.userStates, context)
 
-    // ランキングの生成
-    const logResult = this.logRank.run({
-      userId: comment.data.userId,
-      name: userName,
-      characterKey,
-      rankingMode: 'total_wins',
-      maxDrawsPerUser: 5,
-      result: {
-        type: 'win',
-        score: gameResult.payout,
-      },
-    })
+    return this.buildPostActions(gameResult, characterKey)
+  }
 
-    const stats = logResult.currentUserStats
-    const currentRecord = logResult.currentRecord
+  /**
+   * サンプルラン
+   */
+  sampleRun(queryString: string): string {
+    const {} = this.parseParams(queryString)
+    const context: GameContext = {
+      userId: UNKNOWN_NAME,
+      userName: UNKNOWN_NAME,
+      profileImage: '',
+      rankingKey: RANKING_KEY,
+    }
 
-    const ranking = RankingMessageSchema.parse({
-      name: stats.name,
-      scoreText: String(gameResult.payout),
-      scoreValue: gameResult.payout,
-      scriptKey: RANKING_KEY,
-      isUniqueUser: true,
-    })
-
-    const msg: PostActionType[] = [
-      PostActionMessageSchema.parse({
-        delaySeconds: 3.5,
-        characterKey,
-        message: {
-          bubble: gameResult.message,
-          ranking,
-        },
-        sound: 'decision',
-      }),
-    ]
-
-    return gameResult.success
-      ? [
-          { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
-          { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
-          { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
-          ...msg,
-        ]
-      : [
-          { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
-          { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
-          { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
-          { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
-          ...msg,
-        ]
+    // ゲームの実行
+    const gameResult = playSlot(this.userStates, context)
+    return gameResult.bubble ?? ''
   }
 
   /**
@@ -91,12 +64,40 @@ export class ExecuteScript implements ScriptClass {
     return this.logRank.getGameState()
   }
 
-  // パラメータ
+  /**
+   * パラメータ
+   */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
+
+  /**
+   * 投稿
+   */
+  private buildPostActions(gameResult: ReturnType<typeof playSlot>, characterKey: string): PostActionType[] {
+    const messageAction = PostActionMessageSchema.parse({
+      delaySeconds: 3.5,
+      characterKey,
+      message: gameResult,
+      sound: 'decision',
+    })
+
+    const common: PostActionType[] = [{ actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' }]
+
+    const successActions: PostActionType[] = [
+      { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
+      { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
+    ]
+
+    const failActions: PostActionType[] = [
+      { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
+      { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
+    ]
+
+    return [...common, ...(gameResult.ranking?.scoreValue ? successActions : failActions), messageAction]
+  }
 }
 
-// プリセット用エクスポート
 export default new ExecuteScript()

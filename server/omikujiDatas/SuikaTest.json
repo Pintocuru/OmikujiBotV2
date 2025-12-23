@@ -96,7 +96,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-23T04:34:36.636Z",
+      "updatedAt": "2025-12-23T08:17:46.382Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -116,7 +116,7 @@
           "accessLevel": "basic",
           "postActions": [],
           "gameScripts": {
-            "scriptId": "GouseiSuika",
+            "scriptId": "GoogolClover",
             "queryString": "",
             "characterKey": "metan"
           },

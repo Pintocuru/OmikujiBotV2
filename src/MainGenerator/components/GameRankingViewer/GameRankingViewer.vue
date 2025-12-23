@@ -4,15 +4,15 @@
     <!-- スコア表示 -->
     <div class="flex justify-center">
       <GameRankingScore
-        v-if="filteredMessages.length > 0"
-        :bot-messages="filteredMessages"
+        v-if="rankingScoreMessages.length > 0"
+        :bot-messages="rankingScoreMessages"
         :settings="rankingSettings"
         class="-mb-4"
       />
     </div>
 
     <!-- ランキングリスト -->
-    <GameRankingList :bot-messages="filteredMessages2" :settings="rankingSettings" />
+    <GameRankingList :bot-messages="rankingListMessages" :settings="rankingSettings" />
   </div>
 </template>
 
@@ -32,19 +32,47 @@
   })
 
   // ランキング対象のメッセージをフィルタリング
-  const filteredMessages = computed(() => {
+  const rankingScoreMessages = computed(() => {
     if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
 
     return botMessages.value.filter((msg) => {
-      if (!msg.message.ranking?.scoreValue) return false
-      return msg.message.ranking?.scriptKey === rankingSettings.value?.scriptKey
+      const r = msg.message.ranking
+      return r?.scriptKey === rankingSettings.value.scriptKey && r.scoreValue != null
     })
   })
 
-  const filteredMessages2 = computed(() => {
+  const rankingListMessages = computed(() => {
     if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
-    return botMessages.value.filter((msg) => {
-      return msg.message.ranking?.scriptKey === rankingSettings.value?.scriptKey
+
+    const targets = botMessages.value.filter((msg) => {
+      return msg.message.ranking?.scriptKey === rankingSettings.value.scriptKey
     })
+
+    // ranking.isUniqueUser が true のものが存在するか
+    const isUniqueUser = targets.some((msg) => msg.message.ranking?.isUniqueUser === true)
+
+    if (!isUniqueUser) return targets
+
+    const map = new Map<string, (typeof targets)[number]>()
+
+    for (const msg of targets) {
+      const user = msg.message.user
+      if (!user?.userId) continue
+
+      const prev = map.get(user.userId)
+      if (!prev) {
+        map.set(user.userId, msg)
+        continue
+      }
+
+      const prevTs = prev.message.user?.timestamp ?? 0
+      const currTs = user.timestamp ?? 0
+
+      if (currTs > prevTs) {
+        map.set(user.userId, msg)
+      }
+    }
+
+    return Array.from(map.values())
   })
 </script>

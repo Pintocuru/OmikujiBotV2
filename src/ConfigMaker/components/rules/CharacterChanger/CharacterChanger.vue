@@ -137,7 +137,7 @@
   } = useModalState()
 
   // キャラクター更新処理
-  const { applyMappingsToAllItems } = useCharacterUpdater(props.category, allItems, props.selectedId)
+  const { applyMappingsToAllItems } = useCharacterUpdater(props.category, allItems)
 
   /**
    * モーダルを開く（未定義キャラクターは初期選択状態に）

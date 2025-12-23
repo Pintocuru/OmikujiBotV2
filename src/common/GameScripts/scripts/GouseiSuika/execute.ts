@@ -36,23 +36,33 @@ export class ExecuteScript implements ScriptClass {
     return [...gameResult.postArray, ...rankingActions]
   }
 
+  /**
+   * サンプルラン
+   */
   sampleRun(queryString: string): string {
-    const gameResult = new GachaGame().play()
+    const { mode } = this.parseParams(queryString)
+    const gameResult = new GachaGame(mode).play()
     return `[ユーザー名]の得点は${gameResult.points}!`
   }
 
-  /** ゲームデータを返す */
+  /**
+   * ゲームデータを返す
+   */
   getGameState(): GameStateType {
     return this.logRank.getGameState()
   }
 
-  // ---- private helpers ----
-
+  /**
+   * パラメータ
+   */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
 
+  /**
+   * ランキング生成
+   */
   private buildRankingActions(
     userName: string,
     gameResult: GameResult,
