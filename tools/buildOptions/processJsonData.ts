@@ -21,7 +21,10 @@ export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: Acc
     characters: filterItems(data.characters, targetIndex),
     displaySettings: {
       ...data.displaySettings,
-      licenseKeyHash: getLicenseKeyHash(targetLevel),
+      editor: {
+        ...data.displaySettings.editor,
+        licenseKeyHash: getLicenseKeyHash(targetLevel),
+      },
     },
   }
 }

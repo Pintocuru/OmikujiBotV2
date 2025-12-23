@@ -1,6 +1,6 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 
 export function usePostActionsTab(
   actions: Ref<PostActionType[]>,
@@ -38,13 +38,10 @@ export function usePostActionsTab(
 
   // 新しいアクションの追加
   const addNewAction = () => {
-    const newAction: PostActionType = {
-      actionType: 'message',
-      characterKey: characterOptions.value[0]?.value || '',
-      iconKey: 'default',
-      message: {},
+    const newAction: PostActionMessageType = PostActionMessageSchema.parse({
+      characterKey: characterOptions.value[0]?.value,
       delaySeconds: actions.value.length > 0 ? Math.max(...actions.value.map((a) => a.delaySeconds)) + 1 : 0,
-    }
+    })
 
     const newActions = [...actions.value, newAction]
     emit('update:actions', newActions)

@@ -19,6 +19,7 @@ function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapT
     for (const remap of remaps) {
       // characterKeyの置き換え
       if (remap.fromCharacterKey && remap.toCharacterKey) {
+        if (remappedAction.actionType !== 'message') continue
         if (remappedAction.characterKey === remap.fromCharacterKey) {
           remappedAction = {
             ...remappedAction,
@@ -29,6 +30,7 @@ function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapT
 
       // iconKeyの置き換え
       if (remap.fromIconKey && remap.toIconKey) {
+        if (remappedAction.actionType !== 'message') continue
         if (remappedAction.iconKey === remap.fromIconKey) {
           remappedAction = {
             ...remappedAction,
