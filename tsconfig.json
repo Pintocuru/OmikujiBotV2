@@ -12,7 +12,7 @@
     "jsx": "preserve",
     "outDir": "./dist",
     "paths": {
-      "@onecomme.com/onesdk/": ["./src/types/onesdk-shim.ts"],
+      "@onecomme.com/onesdk": ["./src/types/onesdk-shim.ts"],
       "@shared/*": ["../../shared/*"],
       "@assets/*": ["./assets/*"],
       "@/*": ["./src/*"],

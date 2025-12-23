@@ -54,7 +54,7 @@ export class GameScriptManager {
    */
   playSampleScript(scriptId: string, queryString: string): string {
     if (!scriptId) return '(スクリプトが指定されていません)'
-
+    if (scriptId === 'godMode') return 'Q.お前何様だよ! A.あたしゃ神様だよ'
     const scriptInstance = this.scriptInstances[scriptId]
     if (!scriptInstance) {
       console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)

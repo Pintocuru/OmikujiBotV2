@@ -2,10 +2,11 @@
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->
-    <div v-if="gameScripts" class="w-full">
+    <div v-if="gameScripts && isValid" :key="gameScripts.scriptId" class="w-full">
       <!-- フキダシ -->
       <div class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
+          v-if="character"
           :key="messageKey"
           :botName="character.displayName"
           :message="processedMessage"
@@ -13,14 +14,16 @@
           @click="refreshMessage"
           class="cursor-pointer"
         />
+
         <CharacterAvatar
-          v-if="character.displayOption.isIconDisplay"
-          :profileImage="characters[gameScripts.characterKey].image.default"
+          v-if="character && character.displayOption.isIconDisplay"
+          :profileImage="character.image?.default || ''"
           :characterSize="bubbleSettings.characterSize"
           :showCharacterFrame="false"
         />
       </div>
     </div>
+    <NoParamsCard v-else :message="'スクリプトIDとキャラクターキーを設定してください'" />
   </div>
 </template>
 
@@ -33,6 +36,7 @@
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const props = defineProps<{
     gameScripts: GameScriptsType | null
@@ -46,9 +50,13 @@
   const bubbleSettings = computed(() => data.value.displaySettings.components.bubble)
 
   // キャラクター取得
+  const isValid = computed(
+    () => !!(props.gameScripts && props.gameScripts.scriptId !== '' && characters.value[props.gameScripts.characterKey])
+  )
+
   const character = computed(() => {
     if (props.gameScripts) {
-      return characters.value[props.gameScripts.characterKey] || Object.values(characters.value)[0]
+      return characters.value[props.gameScripts.characterKey]
     }
     return Object.values(characters.value)[0]
   })

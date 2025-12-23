@@ -1,7 +1,7 @@
 // src/MainGenerator/script/PostMessage/ServiceManager.ts
 import { CharacterType } from '@/types/'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
-import { Service } from '@onecomme.com/onesdk/'
+import { Service } from '../../../../../../libs/onesdk/types/Service'
 
 /**
  * サービス管理を担当するクラス

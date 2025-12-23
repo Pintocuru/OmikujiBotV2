@@ -38,6 +38,7 @@ const gameResult: {
 }
      */
     // ランキングの生成
+    //@ts-ignore まだ作成途中
     const rankingResult = omiken ? this.createRanking(gameResult, characterKey, userName, omiken) : null
 
     return this.buildPostActions(gameResult, characterKey, rankingResult)

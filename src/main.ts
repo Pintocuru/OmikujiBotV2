@@ -6,12 +6,24 @@ import App from './DevApp.vue'
 import ErrorHandler from '@shared/utils/ErrorHandler/ErrorHandler'
 import '../assets/styles/font.css'
 import '../assets/styles/DaisyUiAllObs.css'
-import OneSDK from '@onecomme.com/onesdk/'
+import OneSDK from '@/types/onesdk-shim'
+
+// createApp
+const pinia = createPinia()
+const app = createApp(App)
+// グローバルエラーハンドリング
+app.config.errorHandler = (err, instance) => {
+  console.error('エラー:', err)
+  if (instance) {
+    console.log('props:', instance.$props)
+    console.log('data:', instance.$data)
+    console.log('el:', instance.$el)
+  }
+}
 
 function initApp() {
   try {
-    const pinia = createPinia()
-    const app = createApp(App)
+    if (!OneSDK) throw new Error('OneSDK が読み込まれていません')
 
     app.use(ErrorHandler)
     app.use(pinia)
@@ -19,6 +31,7 @@ function initApp() {
     OneSDK.ready().then(() => app.mount('#App'))
   } catch (err) {
     console.error('アプリケーションの初期化に失敗:', err)
+    throw err
   }
 }
 initApp()
