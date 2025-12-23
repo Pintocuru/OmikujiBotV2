@@ -97,7 +97,7 @@
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
+  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import GameScriptPreview from './GameScriptPreview.vue'

@@ -32,7 +32,10 @@ export function useKeyEditor() {
 
       Object.entries(categoryData).forEach(([ruleKey, rule]) => {
         const hasUsage = rule.omikuji.some((omikujiSet) =>
-          omikujiSet.postActions.some((action) => action.characterKey === characterKey)
+          omikujiSet.postActions.some((action) => {
+            if (action.actionType !== 'message') return false
+            return action.characterKey === characterKey
+          })
         )
 
         if (hasUsage) {

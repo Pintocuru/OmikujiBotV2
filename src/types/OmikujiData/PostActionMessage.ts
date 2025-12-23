@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\PostActionMessage.ts
+// src\types\OmikujiData\PostActionMessage.ts
 import z from 'zod'
 
 /**

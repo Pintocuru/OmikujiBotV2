@@ -25,8 +25,9 @@
       title="おみくじ設定"
       description="コメントで実行するおみくじの設定"
     >
+      <!-- おみくじ設定セクション -->
       <PostActionsEditor
-        v-model="selectedItem.postActions"
+        v-model="postActions"
         :gameScripts="selectedItem.gameScripts"
         category="actionSets"
         :selectedItemKey="selectedItemKey"
@@ -68,6 +69,16 @@
     },
     set: (value: PostActionRecordType) => {
       omikujiStore.updateItem('actionSets', value.key, value)
+    },
+  })
+
+  const postActions = computed({
+    get: () => selectedItem.value?.postActions || [],
+    set: (newActions) => {
+      if (!selectedItem.value) return
+      omikujiStore.updateItem('actionSets', selectedItem.value.key, {
+        postActions: [...newActions],
+      })
     },
   })
 </script>

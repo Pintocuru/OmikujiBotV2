@@ -105,7 +105,7 @@
   } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
-  import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
+  import { useEnabledGames } from '@/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()

@@ -7,7 +7,6 @@
   import { computed, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import CounterPreviewCard from './CounterPreviewCard.vue'
-  import UserListDisplay from './UserListDisplay.vue'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const appStore = useAppStore()
@@ -25,8 +24,8 @@
 
     const current =
       setting.target === 'draw'
-        ? appStore.cooldownManager.getTotalDrawsByRuleId(ruleKey)
-        : appStore.cooldownManager.getDrawCountsStatusByRuleId(ruleKey).length
+        ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
+        : appStore.userVisitManager.getVisitsByRuleId(ruleKey).length
 
     return setting.isDirectionUp ? setting.firstValue + current : Math.max(0, setting.firstValue - current)
   })
@@ -37,7 +36,7 @@
     const ruleKey = setting.ruleKey
     if (!ruleKey) return ''
 
-    const current = appStore.cooldownManager.getLatestUserRuleId(ruleKey)
+    const current = appStore.userVisitManager.getLatestVisitorByRuleId(ruleKey)
 
     return current?.name ?? ''
   })

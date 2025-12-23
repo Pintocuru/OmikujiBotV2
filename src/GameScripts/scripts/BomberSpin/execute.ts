@@ -1,13 +1,12 @@
-// src/execute.ts
+// src\common\GameScripts\scripts\BomberSpin\execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
-import { GameEngine } from './game'
-import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
-import { parseQueryString } from '@/common/GameScripts/parseQueryString'
-import { WordPartySelector } from './wordPartySelector'
+import { playSlot } from './game'
+import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-const RANKING_KEY = 'MultiplyBonanza'
+const RANKING_KEY = 'BomberSpin'
 const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
@@ -28,23 +27,20 @@ export class ExecuteScript implements ScriptClass {
     const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const gameResult = this.executeGame(userName, params.mode)
+    const gameResult = playSlot(userName, params.symbol)
 
     // ランキングの生成
-    const rankingResult = omiken ? this.createRanking(gameResult.result, characterKey, userName, omiken) : null
+    const rankingResult = omiken ? this.createRanking(gameResult, characterKey, userName, omiken) : null
 
-    // ゲーム結果に基づいてWordPartyを生成
-    const wordPartyActions = this.selectWordParties(gameResult.result)
-
-    return this.buildPostActions(gameResult, characterKey, wordPartyActions, rankingResult)
+    return this.buildPostActions(gameResult, characterKey, rankingResult)
   }
 
   /**
    * サンプルラン
    */
   sampleRun(queryString: string): string {
-    const { mode } = this.parseParams(queryString)
-    const gameResult = this.executeGame('[ユーザー名]', mode)
+    const { symbol } = this.parseParams(queryString)
+    const gameResult = playSlot('[ユーザー名]', symbol)
     return gameResult.message
   }
 
@@ -63,24 +59,11 @@ export class ExecuteScript implements ScriptClass {
     return GameParamsSchema.parse(paramsObject)
   }
 
-  // ゲームの実行
-  private executeGame(userName: string, mode: GameParams['mode']) {
-    const engine = new GameEngine()
-    const result = engine.playGame(mode)
-    const message = engine.createMessage(userName, result)
-
-    return {
-      engine,
-      result,
-      message,
-    }
-  }
-
   /**
    * ランキング生成
    */
   private createRanking(
-    gameResult: ReturnType<GameEngine['playGame']>,
+    gameResult: ReturnType<typeof playSlot>,
     characterKey: string,
     userName: string,
     omiken: OmikenCommentType
@@ -115,21 +98,12 @@ export class ExecuteScript implements ScriptClass {
     }
   }
 
-  private selectWordParties(gameResult: ReturnType<GameEngine['playGame']>): PostActionType[] {
-    const selector = new WordPartySelector()
-    return selector.selectWordParties(gameResult)
-  }
-
   /**
    * 投稿
    */
   private buildPostActions(
-    game: {
-      result: ReturnType<GameEngine['playGame']>
-      message: string
-    },
+    gameResult: ReturnType<typeof playSlot>,
     characterKey: string,
-    wordPartyActions: PostActionType[],
     rankingResult: {
       ranking: unknown
       postActions: PostActionType[]
@@ -137,14 +111,14 @@ export class ExecuteScript implements ScriptClass {
   ): PostActionType[] {
     return [
       ...(rankingResult?.postActions ?? []),
-      { actionType: 'wordParty', delaySeconds: 1, wordParty: game.result.party },
-      { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
-      ...wordPartyActions,
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
+      { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
+      { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
       PostActionMessageSchema.parse({
         delaySeconds: 3.5,
         characterKey,
         message: {
-          bubble: game.message,
+          bubble: gameResult.message,
           ranking: rankingResult?.ranking,
         },
         sound: 'decision',

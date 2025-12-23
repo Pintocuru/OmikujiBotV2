@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\gameScripts\GameScriptPreview.vue -->
+<!-- src\ConfigMaker\components\gameScripts\GameScriptPreview.vue -->
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->
@@ -32,7 +32,7 @@
 
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
-  import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
+  import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
 
   const props = defineProps<{
     gameScripts: GameScriptsType | null

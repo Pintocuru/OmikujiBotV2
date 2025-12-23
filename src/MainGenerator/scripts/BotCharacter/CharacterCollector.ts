@@ -1,5 +1,5 @@
 // src/MainGenerator/script/omikujiProcess/CharacterCollector.ts
-import { BotMessage, BotMessageSchema, CharacterType, OmikujiDataType, PostActionMessageType } from '@/types/'
+import { CharacterType, OmikujiDataType } from '@/types/'
 
 export class CharacterCollector {
   constructor(private readonly omikujiData: OmikujiDataType) {}
@@ -20,24 +20,6 @@ export class CharacterCollector {
     const characters = this.omikujiData.characters
     if (Object.keys(characters).length === 0) return []
     return Object.values(characters).sort((a, b) => a.order - b.order)
-  }
-
-  /**
-   * キャラクターコントロールパネル用テストメッセージ
-   */
-  generateTestMessage(postAction: PostActionMessageType, isToast: boolean = false): BotMessage {
-    const character = this.omikujiData.characters[postAction.characterKey]
-
-    return BotMessageSchema.parse({
-      name: character?.name,
-      characterKey: postAction.characterKey,
-      iconKey: postAction.iconKey,
-      profileImage: character?.image?.[postAction.iconKey] || character?.image?.default || null,
-      sound: postAction.sound,
-      message: postAction.message.bubble,
-      isToast,
-      color: character?.color,
-    })
   }
 
   /**

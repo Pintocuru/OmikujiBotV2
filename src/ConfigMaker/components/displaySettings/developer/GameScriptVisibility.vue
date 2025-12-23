@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { gameScriptMap } from '@/common/GameScripts/GameScriptsMap'
+  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
   import { AccessLevelLabels } from '@shared/types'
   import { useVisibilitySettings } from './useVisibilitySettings'
 

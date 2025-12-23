@@ -1,12 +1,13 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\StealEmAll\execute.ts
+// src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
-import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
-import { parseQueryString } from '@/common/GameScripts/parseQueryString'
+import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/GameScripts/parseQueryString'
+import { WordPartySelector } from './wordPartySelector'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-const RANKING_KEY = 'StealEmAll'
+const RANKING_KEY = 'MultiplyBonanza'
 const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
@@ -23,32 +24,27 @@ export class ExecuteScript implements ScriptClass {
    * ゲームを実行する
    */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
-    const {} = this.parseParams(queryString)
+    const params = this.parseParams(queryString)
     const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const gameResult = this.executeGame(userName)
+    const gameResult = this.executeGame(userName, params.mode)
 
-    /**
-     * 型 '{ result: GameResult; message: string; }' の引数を型 'GameResult' のパラメーターに割り当てることはできません。
-  型 '{ result: GameResult; message: string; }' には 型 'GameResult' からの次のプロパティがありません: stage, name, ways, payoutts(2345)
-const gameResult: {
-    result: GameResult;
-    message: string;
-}
-     */
     // ランキングの生成
-    const rankingResult = omiken ? this.createRanking(gameResult, characterKey, userName, omiken) : null
+    const rankingResult = omiken ? this.createRanking(gameResult.result, characterKey, userName, omiken) : null
 
-    return this.buildPostActions(gameResult, characterKey, rankingResult)
+    // ゲーム結果に基づいてWordPartyを生成
+    const wordPartyActions = this.selectWordParties(gameResult.result)
+
+    return this.buildPostActions(gameResult, characterKey, wordPartyActions, rankingResult)
   }
 
   /**
    * サンプルラン
    */
   sampleRun(queryString: string): string {
-    const {} = this.parseParams(queryString)
-    const gameResult = this.executeGame('[ユーザー名]')
+    const { mode } = this.parseParams(queryString)
+    const gameResult = this.executeGame('[ユーザー名]', mode)
     return gameResult.message
   }
 
@@ -68,12 +64,13 @@ const gameResult: {
   }
 
   // ゲームの実行
-  private executeGame(userName: string) {
+  private executeGame(userName: string, mode: GameParams['mode']) {
     const engine = new GameEngine()
-    const result = engine.playGame()
+    const result = engine.playGame(mode)
     const message = engine.createMessage(userName, result)
 
     return {
+      engine,
       result,
       message,
     }
@@ -108,6 +105,7 @@ const gameResult: {
       name: stats.name,
       scoreText: String(gameResult.payout),
       scoreValue: record.score,
+      symbol: gameResult.symbol,
       isRank: !logResult.isOverLimit,
     })
 
@@ -115,6 +113,11 @@ const gameResult: {
       ranking,
       postActions: logResult.postActions,
     }
+  }
+
+  private selectWordParties(gameResult: ReturnType<GameEngine['playGame']>): PostActionType[] {
+    const selector = new WordPartySelector()
+    return selector.selectWordParties(gameResult)
   }
 
   /**
@@ -126,6 +129,7 @@ const gameResult: {
       message: string
     },
     characterKey: string,
+    wordPartyActions: PostActionType[],
     rankingResult: {
       ranking: unknown
       postActions: PostActionType[]
@@ -133,9 +137,11 @@ const gameResult: {
   ): PostActionType[] {
     return [
       ...(rankingResult?.postActions ?? []),
-      // TODO:演出の作成
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: game.result.party },
+      { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
+      ...wordPartyActions,
       PostActionMessageSchema.parse({
-        delaySeconds: 0.5,
+        delaySeconds: 3.5,
         characterKey,
         message: {
           bubble: game.message,

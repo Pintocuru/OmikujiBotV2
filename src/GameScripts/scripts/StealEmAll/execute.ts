@@ -1,12 +1,12 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\BomberSpin\execute.ts
+// src\common\GameScripts\scripts\StealEmAll\execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
-import { playSlot } from './game'
-import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
-import { parseQueryString } from '@/common/GameScripts/parseQueryString'
+import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { GameEngine } from './game'
+import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-const RANKING_KEY = 'BomberSpin'
+const RANKING_KEY = 'StealEmAll'
 const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
@@ -23,12 +23,20 @@ export class ExecuteScript implements ScriptClass {
    * ゲームを実行する
    */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
-    const params = this.parseParams(queryString)
+    const {} = this.parseParams(queryString)
     const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const gameResult = playSlot(userName, params.symbol)
+    const gameResult = this.executeGame(userName)
 
+    /**
+     * 型 '{ result: GameResult; message: string; }' の引数を型 'GameResult' のパラメーターに割り当てることはできません。
+  型 '{ result: GameResult; message: string; }' には 型 'GameResult' からの次のプロパティがありません: stage, name, ways, payoutts(2345)
+const gameResult: {
+    result: GameResult;
+    message: string;
+}
+     */
     // ランキングの生成
     const rankingResult = omiken ? this.createRanking(gameResult, characterKey, userName, omiken) : null
 
@@ -39,8 +47,8 @@ export class ExecuteScript implements ScriptClass {
    * サンプルラン
    */
   sampleRun(queryString: string): string {
-    const { symbol } = this.parseParams(queryString)
-    const gameResult = playSlot('[ユーザー名]', symbol)
+    const {} = this.parseParams(queryString)
+    const gameResult = this.executeGame('[ユーザー名]')
     return gameResult.message
   }
 
@@ -59,11 +67,23 @@ export class ExecuteScript implements ScriptClass {
     return GameParamsSchema.parse(paramsObject)
   }
 
+  // ゲームの実行
+  private executeGame(userName: string) {
+    const engine = new GameEngine()
+    const result = engine.playGame()
+    const message = engine.createMessage(userName, result)
+
+    return {
+      result,
+      message,
+    }
+  }
+
   /**
    * ランキング生成
    */
   private createRanking(
-    gameResult: ReturnType<typeof playSlot>,
+    gameResult: ReturnType<GameEngine['playGame']>,
     characterKey: string,
     userName: string,
     omiken: OmikenCommentType
@@ -88,7 +108,6 @@ export class ExecuteScript implements ScriptClass {
       name: stats.name,
       scoreText: String(gameResult.payout),
       scoreValue: record.score,
-      symbol: gameResult.symbol,
       isRank: !logResult.isOverLimit,
     })
 
@@ -102,7 +121,10 @@ export class ExecuteScript implements ScriptClass {
    * 投稿
    */
   private buildPostActions(
-    gameResult: ReturnType<typeof playSlot>,
+    game: {
+      result: ReturnType<GameEngine['playGame']>
+      message: string
+    },
     characterKey: string,
     rankingResult: {
       ranking: unknown
@@ -111,14 +133,12 @@ export class ExecuteScript implements ScriptClass {
   ): PostActionType[] {
     return [
       ...(rankingResult?.postActions ?? []),
-      { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
-      { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
-      { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
+      // TODO:演出の作成
       PostActionMessageSchema.parse({
-        delaySeconds: 3.5,
+        delaySeconds: 0.5,
         characterKey,
         message: {
-          bubble: gameResult.message,
+          bubble: game.message,
           ranking: rankingResult?.ranking,
         },
         sound: 'decision',

@@ -1,6 +1,6 @@
 // shared/types/GameScriptTypes.ts
 import { PostActionType } from '../OmikujiData/OmikujiSchema'
-import { GameStateType } from '@/common/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
+import { GameStateType } from '@/GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 import { PresetMetadata } from '@shared/types/'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

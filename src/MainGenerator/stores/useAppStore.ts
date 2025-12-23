@@ -3,10 +3,10 @@ import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/'
 import { ConfigUserSchema, ConfigUserType } from '@shared/types'
-import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
+import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
 import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
-import { CooldownManager } from '@/MainGenerator/scripts/CooldownManager/CooldownManager'
-import { UserVisitManager } from '@/MainGenerator/scripts/UserVisitManager/UserVisitManager'
+import { CooldownManager } from '@/MainGenerator/stores/CooldownManager/CooldownManager'
+import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
 
 import { normalizeData } from '@/Toolkit/migrations'
 import { useBotMessageActions } from './useBotMessageActions'
@@ -23,14 +23,14 @@ export const useAppStore = defineStore('app', () => {
   // ref
   const data = ref<OmikujiDataType>(omikujiData)
 
+  // botMessage
+  const botMessageActions = useBotMessageActions()
+
   // 管理オブジェクト
   const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
   const userVisitManager = UserVisitManager.getInstance() // ユーザー訪問管理
   const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
   const characterCollector = computed(() => new CharacterCollector(data.value)) // キャラクター管理
-
-  // 状態とアクションを外部から利用
-  const botMessageActions = useBotMessageActions()
 
   return {
     // 状態

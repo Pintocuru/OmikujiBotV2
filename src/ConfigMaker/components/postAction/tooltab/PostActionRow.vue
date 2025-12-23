@@ -23,7 +23,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
-  import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
+  import CharacterIcon from '@/common/CharacterIcon.vue'
   import { MessageSquare, Bell, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{

@@ -2,15 +2,16 @@
 import { ref } from 'vue'
 import type { BotMessage } from '@/types/'
 
-/**
- * appストア用の状態とアクション
- */
 export const useBotMessageActions = () => {
-  // --- 状態 ---
+  /**
+   * 状態
+   */
   const isInitialized = ref(true)
   const botMessages = ref<BotMessage[]>([])
 
-  // delaySeconds に合わせてメッセージを botMessages に入れる関数
+  /**
+   * delaySeconds に合わせてメッセージを botMessages に入れる関数
+   */
   const scheduleBotMessages = (processedMessages: BotMessage[]) => {
     if (!processedMessages.length) return
 
@@ -28,6 +29,9 @@ export const useBotMessageActions = () => {
     Promise.all(delayPromises)
   }
 
+  /**
+   * BotMessage に関する関数
+   */
   const addBotMessage = (message: BotMessage) => (botMessages.value = [...botMessages.value, message])
   const clearMessages = () => (botMessages.value = [])
   const setInitialized = (value: boolean) => (isInitialized.value = value)

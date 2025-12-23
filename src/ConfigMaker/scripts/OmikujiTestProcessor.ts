@@ -2,7 +2,7 @@
 import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
 import { OmikujiResultProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor'
-import { GameScriptManager } from '@MainScripts/GameScript/GameScriptManager'
+import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { DefaultPlaceholderService } from '@/MainGenerator/scripts/OmikujiProcess/DefaultPlaceholderService'
 

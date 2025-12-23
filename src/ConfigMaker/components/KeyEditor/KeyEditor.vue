@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
   import { RecordCategoryType } from '@/types/'
-  import { useKeyEditor } from './useKeyEditor'
+  import { useKeyEditor } from './composables/useKeyEditor'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 

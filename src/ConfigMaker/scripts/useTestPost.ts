@@ -12,7 +12,7 @@ import {
 } from '@/types/'
 import { OmikujiTestProcessor } from './OmikujiTestProcessor'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
+import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 import { playSound } from '@/Toolkit/sounds'
 import { storeToRefs } from 'pinia'

@@ -18,6 +18,7 @@ export const BotMessageSchema = z.object({
   profileImage: z
     .union([z.string(), z.array(z.string())])
     .nullable()
+    .default(null)
     .catch(null),
   color: CharacterColorScheme.catch(CharacterColorScheme.parse({})), // カラー
 })

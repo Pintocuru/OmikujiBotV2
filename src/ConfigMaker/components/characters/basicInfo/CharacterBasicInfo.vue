@@ -41,7 +41,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import KeyEditor from '@/ConfigMaker/components/KeyEditor/KeyEditor.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import ExternalLinkButton from '@ConfigComponents/parts/ExternalLinkButton.vue'

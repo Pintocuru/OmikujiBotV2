@@ -1,10 +1,10 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\GoogolClover\execute.ts
+// src\common\GameScripts\scripts\GoogolClover\execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
 import { GameContext, playSlot } from './game'
 import { UserState } from './types'
-import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
-import { parseQueryString } from '@/common/GameScripts/parseQueryString'
+import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const RANKING_KEY = 'GoogolClover'

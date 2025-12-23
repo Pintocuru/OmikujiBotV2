@@ -56,7 +56,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import OmikujiItemHeader from '../OmikujiItem/OmikujiItemHeader.vue'
-  import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
+  import CharacterIcon from '@/common/CharacterIcon.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { OmikujiItemType, PostActionMessageType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'

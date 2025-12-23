@@ -2,8 +2,8 @@
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
 import { BomberSpinGame } from './game'
-import { parseQueryString } from '@/common/GameScripts/parseQueryString'
-import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@/GameScripts/parseQueryString'
+import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
 import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

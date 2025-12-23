@@ -38,7 +38,7 @@
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
   import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
-  import CharacterIcon from '@ConfigComponents/parts/CharacterIcon.vue'
+  import CharacterIcon from '@/common/CharacterIcon.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
 
   const props = defineProps<{

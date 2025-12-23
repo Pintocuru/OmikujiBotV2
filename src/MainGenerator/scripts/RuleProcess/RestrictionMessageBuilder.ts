@@ -45,20 +45,20 @@ function createToastMessages(message: string): BotMessage[] {
   const appStore = useAppStore()
   const firstCharacter = appStore.characterCollector.getFirstCharacter()
 
-  const botMessageData: Partial<BotMessage> = firstCharacter
-    ? {
+  const botMessageData: BotMessage = firstCharacter
+    ? BotMessageSchema.parse({
         name: firstCharacter.name,
-        profileImage: firstCharacter.image?.default || null,
+        profileImage: firstCharacter.image?.default,
         message: {
           toast: message,
         },
         color: firstCharacter.color,
-      }
-    : {
+      })
+    : BotMessageSchema.parse({
         message: {
           toast: message,
         },
-      }
+      })
 
   return [BotMessageSchema.parse(botMessageData)]
 }

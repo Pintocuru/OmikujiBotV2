@@ -47,7 +47,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-  import KeyEditor from '@/ConfigMaker/components/parts/KeyEditor/KeyEditor.vue'
+  import KeyEditor from '@/ConfigMaker/components/KeyEditor/KeyEditor.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { AccessLevelLabels, BaseRecordType } from '@shared/types'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
