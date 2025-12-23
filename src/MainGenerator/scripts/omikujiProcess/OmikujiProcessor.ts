@@ -1,55 +1,73 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { OmikujiSetType } from '@/types'
+import { OmikujiSetType, OmikujiItemType } from '@/types'
 import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-import { OmikujiExecutor } from './OmikujiExecutor'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
-import { PlaceholderProcessor } from '@MainScripts/PlaceholderProcess/PlaceholderProcessor'
-import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { DefaultPlaceholderService } from './DefaultPlaceholderService'
+import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
+import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 
 /**
  * おみくじ処理の統合クラス
- * 各専門クラスへの処理の委譲とAPIの提供を担当
  */
 export class OmikujiProcessor {
-  private readonly placeProcess: PlaceholderProcessor
-  private readonly executor: OmikujiExecutor
+  private readonly defaultManager = new DefaultPlaceholderService()
   private readonly resultProcessor: OmikujiResultProcessor
 
   constructor() {
-    // Pinia Store
     const appStore = useAppStore()
-
-    // 依存関係の初期化
-    this.placeProcess = new PlaceholderProcessor(appStore.data.placeholders)
-    const botMessageGenerator = new BotMessageGenerator(appStore.data.characters)
-
-    // 専門クラスの初期化
-    this.executor = new OmikujiExecutor(this.placeProcess)
-    this.resultProcessor = new OmikujiResultProcessor(
-      appStore.data,
-      this.placeProcess,
-      botMessageGenerator,
-      appStore.scriptManager
-    )
+    this.resultProcessor = new OmikujiResultProcessor(appStore.data, appStore.scriptManager)
   }
 
   /**
-   * おみくじ と 引いたおみくじの処理
+   * おみくじ実行
    */
   executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessage[] {
-    // おみくじ
-    const omikujiItem = this.executor.executeWithRule(omikujiSet, omiken)
+    const omikujiItem = this.lotteryOmikujiItem(omikujiSet, omiken)
     if (!omikujiItem) return []
 
-    // スクリプト
+    // GOD MODE
     if (omikujiItem.gameScripts?.scriptId === 'godMode') {
       this.hoge()
     }
 
-    // おみくじの処理
+    const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
+    this.resultProcessor.insertDefaultPlaceholders(defaultPlaceholders)
+
     return this.resultProcessor.process(omikujiItem, omiken)
+  }
+
+  /**
+   * おみくじ抽選
+   */
+  private lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): OmikujiItemType | null {
+    try {
+      const filtered = omiken ? this.filterOmikujiByCriteria(omikujiSet, omiken) : omikujiSet
+
+      if (!filtered.length) return null
+
+      return (drawOmikuji(filtered) as OmikujiItemType) ?? null
+    } catch (error) {
+      ConsolePost('error', 'おみくじ実行エラー', error)
+      return null
+    }
+  }
+
+  /**
+   * 条件によるおみくじフィルタ
+   */
+  private filterOmikujiByCriteria(items: OmikujiSetType, omiken: OmikenCommentType): OmikujiSetType {
+    return items
+      .filter((item) => {
+        if (!item.criteria) return true
+        return checkAllTriggers(omiken, item.criteria)
+      })
+      .map((item) => ({
+        ...item,
+        rank: item.isPriority ? 1 : 0,
+      }))
   }
 
   /**

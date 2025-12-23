@@ -1,8 +1,7 @@
 // src/MainGenerator/scripts/omikujiProcess/placeholders/PlaceholderResolver.ts
 import { handelNormalizedValues, PlaceholderType, PlaceholderValueType } from '@/types/'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
-import { PlaceholderAnalyzer } from './PlaceholderAnalyzer'
+import { collectPlaceholderDependencies, extractPlaceholderIds } from './PlaceholderAnalyzer'
 
 /**
  * プレースホルダー解決エンジン
@@ -10,21 +9,13 @@ import { PlaceholderAnalyzer } from './PlaceholderAnalyzer'
 export class PlaceholderResolver {
   private readonly placeholderMap: Map<string, PlaceholderType> = new Map()
   private contextValues: Map<string, string | number> = new Map()
-  private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
-  private readonly analyzer: PlaceholderAnalyzer
   private static readonly MAX_RECURSION_DEPTH = 10
 
-  constructor(
-    placeholderSources: Record<string, PlaceholderType>,
-    variableProcessor?: VariablePlaceholderProcessor // 追加
-  ) {
+  constructor(placeholderSources: Record<string, PlaceholderType>) {
     for (const placeholder of Object.values(placeholderSources)) {
       const lookupKey = placeholder.key
       this.placeholderMap.set(lookupKey, placeholder)
     }
-    // 渡されたインスタンスを使用、なければ新規作成
-    this.variableProcessor = variableProcessor || new VariablePlaceholderProcessor()
-    this.analyzer = new PlaceholderAnalyzer(this.placeholderMap)
   }
 
   setContextValues(values: Record<string, string | number>): void {
@@ -42,9 +33,6 @@ export class PlaceholderResolver {
       console.warn(`プレースホルダー解決の最大深度に達しました: ${placeholderId}`)
       return `<<${placeholderId}>>`
     }
-
-    // 新しい解決サイクルの開始時（depth=0）で変数をクリア
-    if (depth === 0) this.variableProcessor.clearVariables()
 
     // <<null>> なら値を入れずに返す
     if (placeholderId === 'null') return ''
@@ -85,9 +73,6 @@ export class PlaceholderResolver {
    * コンテンツの処理（変数処理 + プレースホルダー置換）
    */
   private processContent(content: string, depth: number): string {
-    // 変数プレースホルダーを処理
-    content = this.variableProcessor.process(content)
-
     // 他のプレースホルダーを再帰的に解決（変数処理後に実行）
     return this.replaceInText(content, depth + 1)
   }
@@ -106,10 +91,10 @@ export class PlaceholderResolver {
 
   // 分析機能のデリゲート
   extractPlaceholderIds(text: string): string[] {
-    return this.analyzer.extractPlaceholderIds(text)
+    return extractPlaceholderIds(text)
   }
 
   collectDependencies(placeholderId: string, visited: Set<string> = new Set()): string[] {
-    return this.analyzer.collectDependencies(placeholderId, visited)
+    return collectPlaceholderDependencies(placeholderId, this.placeholderMap, visited)
   }
 }

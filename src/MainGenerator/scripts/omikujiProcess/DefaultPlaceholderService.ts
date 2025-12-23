@@ -20,6 +20,8 @@ export class DefaultPlaceholderService {
 
   /**
    * 定期的にAPIから取得
+   * TODO:userVisits ではなく、MainGenerator のstoreから取得できないか？
+   * ただし、コンフィグエディターでも使ってるので・・・どうする？
    */
   private initializeServiceMeta(): void {
     const { userConfig } = useAppStore()
@@ -45,7 +47,7 @@ export class DefaultPlaceholderService {
   /**
    * comment用デフォルトのプレースホルダー情報を設定
    */
-  getDefaultComments(omiken?: OmikenCommentType) {
+  getDefaultComments(omiken?: OmikenCommentType): Record<string, string | number> {
     const userList = Object.values(this.userVisits ?? {}).flatMap((v) => Object.values(v.user))
     const commenter = userList.length
     const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].name : ''

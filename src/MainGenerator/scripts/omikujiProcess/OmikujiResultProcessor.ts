@@ -14,16 +14,19 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
  * おみくじの処理とメッセージ生成を担当するクラス
  */
 export class OmikujiResultProcessor {
+  private readonly placeProcess: PlaceholderProcessor
   private readonly postMessage: PostMessage
+  private readonly botMessageGenerator: BotMessageGenerator
   private readonly actionSets: Record<string, PostActionRecordType>
 
   constructor(
     omikujiData: OmikujiDataType,
-    private readonly placeProcess: PlaceholderProcessor,
-    private readonly botMessageGenerator: BotMessageGenerator,
     private readonly scriptManager: GameScriptManager
   ) {
+    // 依存関係の初期化
+    this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
     this.actionSets = omikujiData.actionSets
+    this.botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
     this.postMessage = new PostMessage(omikujiData.characters)
   }
 
@@ -68,6 +71,19 @@ export class OmikujiResultProcessor {
     const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 
     // プレースホルダー処理
-    return this.placeProcess.processPostActions(expandedActions)
+    const hoge = this.placeProcess.processPostActions(expandedActions)
+
+    // 変数プレースホルダー処理
+
+    const huga = 0
+
+    return hoge
+  }
+
+  /**
+   * デフォルトプレースホルダーの挿入
+   */
+  insertDefaultPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
+    this.placeProcess.updateResolvedValues(defaultPlaceholders)
   }
 }

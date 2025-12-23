@@ -1,52 +1,53 @@
-// src\MainGenerator\scripts\PlaceholderProcess\PlaceholderAnalyzer.ts
-import { PlaceholderType, handelNormalizedValues } from '@/types/'
+// src/MainGenerator/scripts/PlaceholderProcess/placeholderAnalyzer.ts
+import { PlaceholderType, handelNormalizedValues } from '@/types'
 
 /**
- * プレースホルダーの解析機能を提供するクラス
- * 依存関係の解析、プレースホルダーID抽出などを行う
+ * テキスト内で使用されているプレースホルダーIDを抽出
  */
-export class PlaceholderAnalyzer {
-  constructor(private readonly placeholderMap: Map<string, PlaceholderType>) {}
+export function extractPlaceholderIds(text: string): string[] {
+  const pattern = /<<([^>]+)>>/g
+  const ids: string[] = []
+  let match: RegExpExecArray | null
 
-  /**
-   * テキスト内で使用されているプレースホルダーIDを収集
-   */
-  extractPlaceholderIds(text: string): string[] {
-    const placeholderPattern = /<<([^>]+)>>/g
-    const ids: string[] = []
-    let match
-
-    while ((match = placeholderPattern.exec(text)) !== null) {
-      const placeholderId = match[1].trim()
-      if (placeholderId && !ids.includes(placeholderId)) {
-        ids.push(placeholderId)
-      }
+  while ((match = pattern.exec(text)) !== null) {
+    const id = match[1].trim()
+    if (id && !ids.includes(id)) {
+      ids.push(id)
     }
-
-    return ids
   }
 
-  /**
-   * プレースホルダーの依存関係を再帰的に収集
-   */
-  collectDependencies(placeholderId: string, visited: Set<string> = new Set()): string[] {
-    if (visited.has(placeholderId)) return [] // 循環参照防止
+  return ids
+}
 
-    visited.add(placeholderId)
-    const dependencies: string[] = [placeholderId]
+/**
+ * プレースホルダーの依存関係を再帰的に収集
+ */
+export function collectPlaceholderDependencies(
+  placeholderId: string,
+  placeholderMap: Map<string, PlaceholderType>,
+  visited: Set<string> = new Set()
+): string[] {
+  if (visited.has(placeholderId)) return []
 
-    const placeholder = this.placeholderMap.get(placeholderId)
-    if (!placeholder) return dependencies
+  visited.add(placeholderId)
+  const dependencies: string[] = [placeholderId]
 
-    const normalizedValues = handelNormalizedValues(placeholder.values)
-    for (const value of normalizedValues) {
-      const childIds = this.extractPlaceholderIds(value.content)
-      for (const childId of childIds) {
-        const childDependencies = this.collectDependencies(childId, new Set(visited))
-        dependencies.push(...childDependencies.filter((id) => !dependencies.includes(id)))
+  const placeholder = placeholderMap.get(placeholderId)
+  if (!placeholder) return dependencies
+
+  const normalizedValues = handelNormalizedValues(placeholder.values)
+
+  for (const value of normalizedValues) {
+    const childIds = extractPlaceholderIds(value.content)
+    for (const childId of childIds) {
+      const childDeps = collectPlaceholderDependencies(childId, placeholderMap, new Set(visited))
+      for (const id of childDeps) {
+        if (!dependencies.includes(id)) {
+          dependencies.push(id)
+        }
       }
     }
-
-    return dependencies
   }
+
+  return dependencies
 }

@@ -1,7 +1,7 @@
 // src\types\BotComponents\BotMessageSchema.ts
 import { z } from 'zod'
 import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
-import { PostActionMessageBodySchema } from '../OmikujiData/OmikujiSchema'
+import { PostActionMessageBodySchema } from '../OmikujiData/PostActionMessage'
 
 // BotMessage : Commentを大幅に略したもの
 export const BotMessageSchema = z.object({

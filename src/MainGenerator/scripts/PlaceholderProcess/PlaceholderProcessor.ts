@@ -3,7 +3,6 @@ import { PostActionType, PlaceholderType } from '@/types/'
 import { DefaultTypes } from '@shared/types'
 import { PlaceholderResolver } from './PlaceholderResolver'
 import { PlaceholderContext } from './PlaceholderContext'
-import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
 
 /**
  * プレースホルダー処理のメインクラス
@@ -13,12 +12,10 @@ import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariablePro
 export class PlaceholderProcessor {
   private readonly resolver: PlaceholderResolver
   private readonly context: PlaceholderContext
-  private readonly variableProcessor: VariablePlaceholderProcessor
   private static readonly PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
   constructor(placeholderSources: Record<string, PlaceholderType>) {
-    this.variableProcessor = new VariablePlaceholderProcessor()
-    this.resolver = new PlaceholderResolver(placeholderSources, this.variableProcessor)
+    this.resolver = new PlaceholderResolver(placeholderSources)
     this.context = new PlaceholderContext()
   }
 
@@ -60,11 +57,8 @@ export class PlaceholderProcessor {
     if (!text) return ''
 
     this.resolver.setContextValues(this.context.getAllValues())
-    this.variableProcessor.clearVariables()
 
-    const processedText = this.variableProcessor.process(text)
-
-    return processedText.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) =>
+    return text.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) =>
       this.resolvePlaceholder(match, placeholderId.trim())
     )
   }
@@ -138,6 +132,5 @@ export class PlaceholderProcessor {
    */
   clearResolvedValues(): void {
     this.context.clear()
-    this.variableProcessor.clearVariables()
   }
 }

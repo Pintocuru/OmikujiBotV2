@@ -8,32 +8,7 @@ import { soundList } from '@/Toolkit/sounds/soundMap'
 
 import { CriteriaThresholdSchema } from '../OmikujiProcess/CriteriaThresholdSchema'
 import { migratePostAction } from './migrations/migratePostAction'
-
-export const RankingMessageSchema = z.object({
-  // 得点表示
-  name: z.string().default('error'), // 名前
-  scoreText: z.string().default(''), // 表示用得点
-  scoreValue: z.number().default(0), // 比較用
-  symbol: z.string().optional(), // 名前の隣につけるやつ
-  // 設定
-  scriptKey: z.string(), // コンポーネント判別用key
-  timestamp: z
-    .number()
-    .optional()
-    .default(() => Date.now()), // タイムスタンプ
-  isRank: z.boolean().default(true), // リストに載せるか
-  isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
-})
-
-// PostAction MessageBody
-export const PostActionMessageBodySchema = z
-  .object({
-    bubble: z.string().optional().catch(undefined),
-    toast: z.string().optional().catch(undefined),
-    ranking: RankingMessageSchema.optional(),
-  })
-  .default({})
-  .catch({})
+import { PostActionMessageBodySchema } from './PostActionMessage'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -44,15 +19,13 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 })
 
-export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>
-
 // PostAction message
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('message').default('message'),
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  sound: z.enum(soundList).optional(),
+  sound: z.enum(soundList).default('').catch(''),
   message: PostActionMessageBodySchema,
 })
 
@@ -60,7 +33,7 @@ export const PostActionMessageSchema = z.object({
 export const PostActionSoundSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('sound').default('sound'),
-  sound: z.enum(soundList).optional().catch(undefined),
+  sound: z.enum(soundList).default('').catch(''),
 })
 
 // PostAction WordParty
