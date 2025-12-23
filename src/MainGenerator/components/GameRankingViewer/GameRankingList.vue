@@ -20,9 +20,24 @@
             </div>
           </div>
 
+          <!-- 名前 -->
           <div class="flex-grow min-w-0">
+            <!-- アイコン -->
+            <div v-if="msg.comment.user?.profileImage" class="avatar mr-2">
+              <div class="w-10 rounded-full">
+                <img :src="msg.comment.user?.profileImage" alt="" />
+              </div>
+            </div>
+
+            <div v-else class="avatar placeholder mr-2">
+              <div class="bg-neutral text-neutral-content w-10 rounded-full">
+                {{ (msg.comment.ranking?.listName || msg.comment?.user?.name || 'A').charAt(0) }}
+              </div>
+            </div>
+
+            <!-- スコア -->
             <span class="text-xl font-semibold truncate">
-              {{ msg.comment?.ranking?.name || msg.name || 'Anonymous' }}
+              {{ msg.comment.ranking?.listName || msg.comment?.user?.name || 'Anonymous' }}
             </span>
             <span
               v-if="msg.comment?.ranking?.symbol !== ''"
@@ -34,7 +49,7 @@
 
           <div class="flex-shrink-0">
             <div class="badge badge-xl badge-primary font-bold">
-              {{ formatScore(msg.comment?.ranking?.scoreValue || 0) }}
+              {{ msg.comment?.ranking?.scoreText || 0 }}
             </div>
           </div>
         </div>
@@ -64,19 +79,19 @@
           data.sort((a, b) => {
             const diff = (b.comment?.ranking?.scoreValue || 0) - (a.comment?.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0)
+            return (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0)
           })
           break
         case 'low':
           data.sort((a, b) => {
             const diff = (a.comment?.ranking?.scoreValue || 0) - (b.comment?.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0)
+            return (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0)
           })
           break
         case 'new':
         default:
-          data.sort((a, b) => (b.comment?.ranking?.timestamp || 0) - (a.comment?.ranking?.timestamp || 0))
+          data.sort((a, b) => (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0))
           break
       }
 

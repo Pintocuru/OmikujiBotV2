@@ -10,7 +10,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
-import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
+import { RankingMessageSchema, UserMessageSchema } from '@/types/OmikujiData/PostActionMessage'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
@@ -40,7 +40,7 @@ export class OmikujiResultProcessor {
       const postActions: PostActionType[] = []
 
       // おみくじアクションから postActions を生成
-      postActions.push(...this.processOmikujiActions(omikujiItem))
+      postActions.push(...this.processOmikujiActions(omikujiItem, omiken))
 
       // gameScripts 処理
       if (omikujiItem.gameScripts) {
@@ -68,7 +68,7 @@ export class OmikujiResultProcessor {
   /**
    * おみくじアクションの処理
    */
-  private processOmikujiActions(omikujiItem: PostActionRecordType): PostActionType[] {
+  private processOmikujiActions(omikujiItem: PostActionRecordType, omiken?: OmikenCommentType): PostActionType[] {
     // アクションセットの展開
     const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 
@@ -76,7 +76,7 @@ export class OmikujiResultProcessor {
     const processedActions = this.placeProcess.processPostActions(expandedActions)
 
     // bubble と toast に対して変数プレースホルダーを実行
-    return this.applyVariablePlaceholders(processedActions)
+    return this.applyVariablePlaceholders(processedActions, omiken)
   }
 
   /**
@@ -91,12 +91,21 @@ export class OmikujiResultProcessor {
    * 変数プレースホルダーを適用する
    * text と symbol が特殊になる
    */
-  private applyVariablePlaceholders(actions: PostActionType[]): PostActionType[] {
+  private applyVariablePlaceholders(actions: PostActionType[], omiken?: OmikenCommentType): PostActionType[] {
     const variableProcessor = new VariablePlaceholderProcessor()
 
     return actions.map((action) => {
       if (action.actionType !== 'message') return action
 
+      // デフォルト情報を付与(TODO:ちゃんと切り分けて)
+      action.message.user = omiken
+        ? UserMessageSchema.parse({
+            name: omiken?.userName,
+            profileImage: omiken?.profileImage,
+          })
+        : undefined
+
+      // 変数プレースホルダー処理
       const { bubble, toast } = action.message
       const sourceText = bubble ?? toast
       if (!sourceText) return action

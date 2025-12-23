@@ -12,7 +12,7 @@
     </div>
 
     <!-- ランキングリスト -->
-    <GameRankingList :bot-messages="filteredMessages" :settings="rankingSettings" />
+    <GameRankingList :bot-messages="filteredMessages2" :settings="rankingSettings" />
   </div>
 </template>
 
@@ -33,10 +33,19 @@
 
   // ランキング対象のメッセージをフィルタリング
   const filteredMessages = computed(() => {
-    if (!botMessages.value || !rankingSettings.value?.scriptKey) {
-      return []
-    }
+    if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
 
-    return botMessages.value.filter((msg) => msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey)
+    return botMessages.value.filter((msg) => {
+      if (!msg.comment.ranking?.scoreValue) return false
+      return msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey
+    })
+  })
+
+  const filteredMessages2 = computed(() => {
+    if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
+
+    return botMessages.value.filter((msg) => {
+      return msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey
+    })
   })
 </script>
