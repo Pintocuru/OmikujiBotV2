@@ -63,7 +63,7 @@
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
         profileImage: resolveProfileImage(character, randomEmotion),
         color: character?.color,
-        comment: {
+        message: {
           bubble: !isRightClick ? `${character.name}のテストメッセージです！` : '',
           toast: isRightClick ? `${character.name}のトーストメッセージです！` : '',
         },

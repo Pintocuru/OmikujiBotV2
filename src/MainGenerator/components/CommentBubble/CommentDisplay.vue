@@ -64,8 +64,8 @@
    * 2. bubble が空で showToastFallback=true なら toast を表示
    */
   const displayMessage = (message: DisplayBotMessage): string => {
-    const bubble = message.comment?.bubble || ''
-    const toast = message.comment?.toast || ''
+    const bubble = message.message?.bubble || ''
+    const toast = message.message?.toast || ''
 
     // bubble が存在する場合は bubble を優先
     if (bubble) {

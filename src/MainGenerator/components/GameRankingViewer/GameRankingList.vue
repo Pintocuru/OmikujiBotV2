@@ -23,33 +23,33 @@
           <!-- 名前 -->
           <div class="flex-grow min-w-0">
             <!-- アイコン -->
-            <div v-if="msg.comment.user?.profileImage" class="avatar mr-2">
+            <div v-if="msg.message.user?.profileImage" class="avatar mr-2">
               <div class="w-10 rounded-full">
-                <img :src="msg.comment.user?.profileImage" alt="" />
+                <img :src="msg.message.user?.profileImage" alt="" />
               </div>
             </div>
 
             <div v-else class="avatar placeholder mr-2">
-              <div class="bg-neutral text-neutral-content w-10 rounded-full">
-                {{ (msg.comment.ranking?.listName || msg.comment?.user?.name || 'A').charAt(0) }}
+              <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center">
+                {{ (msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- スコア -->
             <span class="text-xl font-semibold truncate">
-              {{ msg.comment.ranking?.listName || msg.comment?.user?.name || 'Anonymous' }}
+              {{ msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'Anonymous' }}
             </span>
             <span
-              v-if="msg.comment?.ranking?.symbol !== ''"
+              v-if="msg.message?.ranking?.symbol !== ''"
               class="text-lg text-base-content/60 font-semibold truncate"
             >
-              {{ msg.comment?.ranking?.symbol }}
+              {{ msg.message?.ranking?.symbol }}
             </span>
           </div>
 
           <div class="flex-shrink-0">
             <div class="badge badge-xl badge-primary font-bold">
-              {{ msg.comment?.ranking?.scoreText || 0 }}
+              {{ msg.message?.ranking?.scoreText || 0 }}
             </div>
           </div>
         </div>
@@ -72,26 +72,26 @@
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.botMessages.length > 0) {
-      let data = [...props.botMessages].filter((msg) => msg.comment?.ranking?.isRank !== false)
+      let data = [...props.botMessages].filter((msg) => msg.message?.ranking?.isRank !== false)
 
       switch (props.settings.sortOrder) {
         case 'high':
           data.sort((a, b) => {
-            const diff = (b.comment?.ranking?.scoreValue || 0) - (a.comment?.ranking?.scoreValue || 0)
+            const diff = (b.message?.ranking?.scoreValue || 0) - (a.message?.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0)
+            return (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0)
           })
           break
         case 'low':
           data.sort((a, b) => {
-            const diff = (a.comment?.ranking?.scoreValue || 0) - (b.comment?.ranking?.scoreValue || 0)
+            const diff = (a.message?.ranking?.scoreValue || 0) - (b.message?.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0)
+            return (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0)
           })
           break
         case 'new':
         default:
-          data.sort((a, b) => (b.comment?.user?.timestamp || 0) - (a.comment?.user?.timestamp || 0))
+          data.sort((a, b) => (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0))
           break
       }
 
@@ -100,11 +100,6 @@
 
     return generateDummyMessages(props.settings)
   })
-
-  // スコアのフォーマット
-  const formatScore = (score: number): string => {
-    return score.toLocaleString()
-  }
 
   // ランク別のスタイルクラス
   const getRankClass = (index: number): string => {

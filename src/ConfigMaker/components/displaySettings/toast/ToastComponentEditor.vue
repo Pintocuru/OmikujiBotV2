@@ -132,7 +132,7 @@
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
           color: character?.color, // toastプロパティを持つオブジェクトとして渡す
-          comment: { toast: messageText },
+          message: { toast: messageText },
         })
       })
   })

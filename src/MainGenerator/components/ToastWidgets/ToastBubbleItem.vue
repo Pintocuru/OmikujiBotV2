@@ -55,7 +55,7 @@
   const emit = defineEmits(['click'])
 
   const resolvedMessage = computed(() => {
-    const toast = props.botMessage?.comment?.toast
+    const toast = props.botMessage?.message?.toast
     if (typeof toast === 'string') {
       const t = toast.trim()
       return t !== '' ? t : null

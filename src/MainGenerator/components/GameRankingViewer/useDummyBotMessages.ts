@@ -110,7 +110,7 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
     dummyMessages.push(
       BotMessageSchema.parse({
         name,
-        comment: {
+        message: {
           ranking,
         },
       })
@@ -119,9 +119,9 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
   switch (settings.sortOrder) {
     case 'high':
-      return dummyMessages.sort((a, b) => (b.comment.ranking?.scoreValue || 0) - (a.comment.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (b.message.ranking?.scoreValue || 0) - (a.message.ranking?.scoreValue || 0))
     case 'low':
-      return dummyMessages.sort((a, b) => (a.comment.ranking?.scoreValue || 0) - (b.comment.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (a.message.ranking?.scoreValue || 0) - (b.message.ranking?.scoreValue || 0))
     case 'new':
     default:
       return dummyMessages

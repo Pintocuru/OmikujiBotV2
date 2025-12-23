@@ -94,7 +94,7 @@ export class BotMessageGenerator {
       iconKey: postAction.iconKey,
       profileImage: character.displayOption.isIconDisplay ? resolveProfileImage(character, postAction.iconKey) : null,
       sound: postAction.sound,
-      comment:
+      message:
         messageType === 'bubble'
           ? { bubble: postAction.message.bubble, ...postAction.message }
           : { toast: postAction.message.toast, ...postAction.message },

@@ -25,8 +25,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
 
   const comments = computed(() =>
     botMessages.value.filter((m) => {
-      if (mode === 'toast') return !!m.comment?.toast
-      return !!m.comment?.bubble
+      if (mode === 'toast') return !!m.message?.toast
+      return !!m.message?.bubble
     })
   )
 
@@ -71,7 +71,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
           totalLifeTime = nextComment.displaySeconds * 1000
         } else {
           const commentLength =
-            mode === 'comment' ? (nextComment.comment?.bubble?.length ?? 0) : (nextComment.comment.toast?.length ?? 0)
+            mode === 'comment' ? (nextComment.message?.bubble?.length ?? 0) : (nextComment.message.toast?.length ?? 0)
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }

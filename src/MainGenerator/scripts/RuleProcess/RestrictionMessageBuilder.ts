@@ -49,13 +49,13 @@ function createToastMessages(message: string): BotMessage[] {
     ? {
         name: firstCharacter.name,
         profileImage: firstCharacter.image?.default || null,
-        comment: {
+        message: {
           toast: message,
         },
         color: firstCharacter.color,
       }
     : {
-        comment: {
+        message: {
           toast: message,
         },
       }

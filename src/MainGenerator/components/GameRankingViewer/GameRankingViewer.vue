@@ -36,16 +36,15 @@
     if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
 
     return botMessages.value.filter((msg) => {
-      if (!msg.comment.ranking?.scoreValue) return false
-      return msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey
+      if (!msg.message.ranking?.scoreValue) return false
+      return msg.message.ranking?.scriptKey === rankingSettings.value?.scriptKey
     })
   })
 
   const filteredMessages2 = computed(() => {
     if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
-
     return botMessages.value.filter((msg) => {
-      return msg.comment.ranking?.scriptKey === rankingSettings.value?.scriptKey
+      return msg.message.ranking?.scriptKey === rankingSettings.value?.scriptKey
     })
   })
 </script>

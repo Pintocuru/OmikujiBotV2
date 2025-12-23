@@ -12,11 +12,11 @@
 
           <div class="relative text-center text-content">
             <h3 class="text-2xl font-bold mb-3">
-              {{ latestMessage.comment?.ranking?.name || latestMessage.name }}
+              {{ latestMessage.message?.ranking?.listName || latestMessage.message?.user?.name || latestMessage.name }}
             </h3>
             <p class="text-base opacity-80">スコア</p>
             <div class="text-6xl font-bold">
-              {{ formatScore(latestMessage.comment?.ranking?.scoreValue || 0) }}
+              {{ formatScore(latestMessage.message?.ranking?.scoreValue || 0) }}
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
   let hideTimer: ReturnType<typeof setTimeout> | null = null
 
   const localFilteredMessages = computed(() =>
-    props.botMessages.filter((m) => m.comment?.ranking?.scriptKey === props.settings.scriptKey)
+    props.botMessages.filter((m) => m.message?.ranking?.scriptKey === props.settings.scriptKey)
   )
 
   const latestMessage = computed(() =>
