@@ -47,7 +47,7 @@
     </div>
 
     <!-- テストボタン -->
-    <div class="w-full text-center space-y-2">
+    <div class="w-full text-center mt-2">
       <WordPartyTestButton
         v-if="action.actionType === 'wordParty'"
         label="WordPartyのテスト実行"
@@ -75,6 +75,8 @@
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
   import SoundTestButton from '@/ConfigMaker/components/wordPartySettings/SoundTestButton.vue'
+  import { VariablePlaceholderProcessor } from '@/MainGenerator/scripts/VariablePlaceholder/VariableProcessor'
+  import { processTestPlaceholder } from './TestPlaceholderProcessor'
 
   const props = defineProps<{ action: PostActionType }>()
 
@@ -87,9 +89,7 @@
 
   // プレースホルダー処理
   const processMessage = (message: string) => {
-    const processor = new PlaceholderProcessor(data.value.placeholders)
-    processor.updateResolvedValues(defaultPlaceholdersShortLabels)
-    return processor.processText(message)
+    return processTestPlaceholder(message, data.value.placeholders)
   }
 
   // キャラクター取得

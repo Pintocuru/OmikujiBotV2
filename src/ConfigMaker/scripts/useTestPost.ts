@@ -15,9 +15,9 @@ import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { GameScriptManager } from '@/MainGenerator/scripts/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 import { playSound } from '@/Toolkit/sounds'
-import { MockComment } from '@shared/test-utils/CreateMockComment'
 import { storeToRefs } from 'pinia'
 import Swal from 'sweetalert2'
+import { OmikenCommentSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export function useTestPost() {
   const omikujiStore = useOmikujiStore()
@@ -60,19 +60,21 @@ export function useTestPost() {
     }
   }
 
+  const findFirstMessageBubble = (actions: PostActionType[]): string | null => {
+    const action = actions.find(
+      (a): a is Extract<PostActionType, { actionType: 'message' }> => a.actionType === 'message' && !!a.message?.bubble
+    )
+
+    return action?.message.bubble ?? null
+  }
+
   // 抽選結果の詳細トーストを表示
   const showOmikujiResultToast = (drawOmikuji: OmikujiItemType, actions: PostActionType[]) => {
     const weight = drawOmikuji.weight || 1
     const weightPercent = (drawOmikuji as any).weightPercent || 0
-    const omikujiName = drawOmikuji.name || 'おみくじ'
+    const omikujiName = drawOmikuji.name || '無名のアイテム'
 
-    const firstMessageAction = actions.find((action) => action.actionType === 'message' && action.message?.bubble)
-
-    // TODO:本当に表記は「メッセージなし」でいいのか？
-    const bubble =
-      firstMessageAction && firstMessageAction.actionType === 'message'
-        ? (firstMessageAction.message.bubble ?? 'メッセージなし')
-        : 'メッセージなし'
+    const bubble = findFirstMessageBubble(actions) ?? 'メッセージなし'
 
     Swal.fire({
       toast: true,
@@ -80,11 +82,11 @@ export function useTestPost() {
       icon: 'success',
       title: 'おみくじ抽選結果',
       html: `
-    おみくじ: ${omikujiName}<br>
-    内容: ${bubble}<br>
-    重み: ${weight}<br>
-    確率: ${weightPercent.toFixed(2)}%
-  `,
+      おみくじ: ${omikujiName}<br>
+      内容: ${bubble}<br>
+      重み: ${weight}<br>
+      確率: ${weightPercent.toFixed(2)}%
+    `,
       showConfirmButton: false,
       timer: 15000,
       timerProgressBar: true,
@@ -100,7 +102,11 @@ export function useTestPost() {
     const scriptManager = new GameScriptManager()
     const processor = new OmikujiTestProcessor(data.value as OmikujiDataType, scriptManager)
 
-    const mockComment = MockComment('suika')
+    const mockComment = OmikenCommentSchema.parse({
+      userId: 'testUserId',
+      userName: 'テストユーザー',
+      comment: 'テストコメント',
+    })
     let botMessageArray: BotMessage[]
 
     if (!rule) {

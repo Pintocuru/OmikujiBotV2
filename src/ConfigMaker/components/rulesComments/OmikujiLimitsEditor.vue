@@ -14,15 +14,23 @@
     <SettingItem
       v-if="cooldownSeconds > 0"
       label="クールダウンメッセージ"
-      description="空欄でデフォルトが入ります"
+      description="未設定の場合はデフォルトメッセージになります"
       :showReset="true"
       @reset="cooldownMessage = null"
     >
+      <!-- null のとき：チェックボックス -->
+      <label v-if="cooldownMessage === null" class="flex items-center gap-2 cursor-pointer">
+        <input type="checkbox" class="checkbox" @change="cooldownMessage = ''" />
+        <span>カスタムメッセージを設定する</span>
+      </label>
+
+      <!-- null でないとき：従来表示 -->
       <input
+        v-else
         type="text"
         v-model="cooldownMessage"
         class="input input-bordered w-full"
-        placeholder="コメントが被って、「おみくじ」ができなかったよ。またコメントしてね。"
+        placeholder="空欄の場合は何も表示しません。右のリセットボタンでデフォルトになります"
       />
     </SettingItem>
   </div>
@@ -41,15 +49,23 @@
     <SettingItem
       v-if="isRepeatAllowed > 0"
       label="連投制限メッセージ"
-      description="空欄でデフォルトが入ります"
+      description="未設定の場合はデフォルトメッセージになります"
       :showReset="true"
       @reset="repeatMessage = null"
     >
+      <!-- null のとき：チェックボックス -->
+      <label v-if="repeatMessage === null" class="flex items-center gap-2 cursor-pointer">
+        <input type="checkbox" class="checkbox" @change="repeatMessage = ''" />
+        <span>カスタムメッセージを設定する</span>
+      </label>
+
+      <!-- null でないとき：従来表示 -->
       <input
+        v-else
         type="text"
         v-model="repeatMessage"
         class="input input-bordered w-full"
-        placeholder="連投制限で「おみくじ」ができなかったよ。"
+        placeholder="空欄の場合は何も表示しません。右のリセットボタンでデフォルトになります"
       />
     </SettingItem>
   </div>
