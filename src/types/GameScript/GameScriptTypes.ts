@@ -12,6 +12,6 @@ export interface ScriptPreset extends PresetMetadata {
 // スクリプトのメイン実行クラス
 export interface ScriptClass {
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] // メイン実行関数
-  sampleRun?(): string // エディター用サンプルゲーム関数
+  sampleRun?(queryString?: string): string // エディター用サンプルゲーム関数
   getGameState?(): GameStateType // ゲーム状態取得関数
 }

@@ -5,7 +5,6 @@ import { playSlot } from './game'
 import { UserState } from './types'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
-import { Comment } from '@onecomme.com/onesdk/'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'

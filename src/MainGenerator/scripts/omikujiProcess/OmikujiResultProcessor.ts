@@ -9,6 +9,8 @@ import { ActionSetExpander } from './ActionSetExpander'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
+import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
@@ -67,17 +69,14 @@ export class OmikujiResultProcessor {
    * おみくじアクションの処理
    */
   private processOmikujiActions(omikujiItem: PostActionRecordType): PostActionType[] {
-    // アクションセットを展開
+    // アクションセットの展開
     const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 
-    // プレースホルダー処理
-    const hoge = this.placeProcess.processPostActions(expandedActions)
+    // プレースホルダーを実行
+    const processedActions = this.placeProcess.processPostActions(expandedActions)
 
-    // 変数プレースホルダー処理
-
-    const huga = 0
-
-    return hoge
+    // bubble と toast に対して変数プレースホルダーを実行
+    return this.applyVariablePlaceholders(processedActions)
   }
 
   /**
@@ -85,5 +84,43 @@ export class OmikujiResultProcessor {
    */
   insertDefaultPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
     this.placeProcess.updateResolvedValues(defaultPlaceholders)
+  }
+
+  /**
+   * message.action の bubble / toast に対して
+   * 変数プレースホルダーを適用する
+   * text と symbol が特殊になる
+   */
+  private applyVariablePlaceholders(actions: PostActionType[]): PostActionType[] {
+    const variableProcessor = new VariablePlaceholderProcessor()
+
+    return actions.map((action) => {
+      if (action.actionType !== 'message') return action
+
+      const { bubble, toast } = action.message
+      const sourceText = bubble ?? toast
+      if (!sourceText) return action
+
+      const result = variableProcessor.process(sourceText)
+
+      const isBasicList = result.text
+      const ranking = isBasicList
+        ? RankingMessageSchema.parse({
+            scriptKey: 'basicList',
+            scoreText: result.text,
+            symbol: result.symbol,
+            isUniqueUser: true,
+          })
+        : undefined
+
+      return {
+        ...action,
+        message: {
+          ...action.message,
+          ...(bubble ? { bubble: result.bubble } : { toast: result.bubble }),
+          ranking,
+        },
+      }
+    })
   }
 }

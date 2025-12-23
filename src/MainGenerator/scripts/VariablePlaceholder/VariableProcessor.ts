@@ -1,5 +1,4 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
-
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 
 /**
@@ -19,7 +18,8 @@ export class VariablePlaceholderProcessor {
   constructor() {}
 
   /**
-   * 変数をクリア（新しい解決サイクルの開始時に呼ぶ）
+   * 変数をクリア
+   * ! たぶんこれは要らない
    */
   clearVariables(): void {
     this.evaluator.clear()
@@ -46,8 +46,8 @@ export class VariablePlaceholderProcessor {
     processed = this.processSelectFunction(processed)
 
     return {
-      bubble: processed,
       ...this.evaluator.getAllVariables(),
+      bubble: processed,
     }
   }
 
@@ -62,9 +62,11 @@ export class VariablePlaceholderProcessor {
    * 変数宣言を処理 {{var name = value}}
    */
   private processVariableDeclarations(text: string): string {
-    return text.replace(/\{\{var\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^}]+)\}\}/g, (match, varName, expression) => {
+    const declarationRegex = /\{\{var\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.*?)\}\}/g
+
+    return text.replace(declarationRegex, (match, varName, expression) => {
       try {
-        const value = this.evaluator.evaluate(expression)
+        const value = this.evaluator.evaluate(expression.trim())
         this.evaluator.setVariable(varName, value)
         return '' // 宣言は削除
       } catch (error) {

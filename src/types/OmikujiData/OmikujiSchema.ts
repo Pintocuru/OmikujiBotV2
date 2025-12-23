@@ -28,6 +28,7 @@ export const PostActionMessageSchema = z.object({
   sound: z.enum(soundList).default('').catch(''),
   message: PostActionMessageBodySchema,
 })
+export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 
 // PostAction sound
 export const PostActionSoundSchema = z.object({
@@ -35,6 +36,7 @@ export const PostActionSoundSchema = z.object({
   actionType: z.literal('sound').default('sound'),
   sound: z.enum(soundList).default('').catch(''),
 })
+export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 
 // PostAction WordParty
 export const PostActionWordPartySchema = z.object({
@@ -42,6 +44,7 @@ export const PostActionWordPartySchema = z.object({
   actionType: z.literal('wordParty').default('wordParty'),
   wordParty: z.string().default('').catch(''),
 })
+export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 
 // PostAction actionSet
 export const PostActionActionSetSchema = z.object({
@@ -49,6 +52,7 @@ export const PostActionActionSetSchema = z.object({
   actionType: z.literal('actionSet').default('actionSet'),
   actionSetKey: z.string().default('').catch(''),
 })
+export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
 
 // PostAction わんコメ・BOTちゃんに投稿する型定義
 export const PostActionSchema = z.discriminatedUnion('actionType', [
@@ -57,6 +61,7 @@ export const PostActionSchema = z.discriminatedUnion('actionType', [
   PostActionWordPartySchema,
   PostActionActionSetSchema,
 ])
+export type PostActionType = z.infer<typeof PostActionSchema>
 
 /**
  * PostActions わんコメ・BOTちゃんに投稿する型定義
@@ -138,12 +143,6 @@ export const OmikujiSetSchema = z
 export const PostActionSetSchema = z.record(z.string(), OmikujiItemSchema).default({}).catch({})
 
 // 型定義
-export type PostActionType = z.infer<typeof PostActionSchema>
-export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
-export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
-export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
-export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
-
 export type PostActionRecordType = z.infer<typeof ActionSetSchema>
 export type PostActionSetType = z.infer<typeof PostActionSetSchema>
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>

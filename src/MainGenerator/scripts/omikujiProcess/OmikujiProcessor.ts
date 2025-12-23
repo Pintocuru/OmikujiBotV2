@@ -25,6 +25,7 @@ export class OmikujiProcessor {
    * おみくじ実行
    */
   executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessage[] {
+    // おみくじ
     const omikujiItem = this.lotteryOmikujiItem(omikujiSet, omiken)
     if (!omikujiItem) return []
 
@@ -33,14 +34,16 @@ export class OmikujiProcessor {
       this.hoge()
     }
 
+    // デフォルトプレースホルダーを挿入
     const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
     this.resultProcessor.insertDefaultPlaceholders(defaultPlaceholders)
 
+    // おみくじ処理
     return this.resultProcessor.process(omikujiItem, omiken)
   }
 
   /**
-   * おみくじ抽選
+   * おみくじ
    */
   private lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): OmikujiItemType | null {
     try {

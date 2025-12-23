@@ -1,11 +1,12 @@
 // src/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
 import { GachaGame } from './game'
 import { GameResult } from './gameConfigs'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
-import { Comment } from '@onecomme.com/onesdk/'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
 
 const RANKING_KEY = 'GouseiSuika'
 const UNKNOWN_NAME = 'Unknown'
@@ -23,19 +24,19 @@ export class ExecuteScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, comment?: OmikenCommentType): PostActionType[] {
+  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
     // パラメータ
     const { mode } = this.parseParams(queryString)
-    const userName = comment?.data.displayName ?? comment?.data.name ?? UNKNOWN_NAME
+    const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
     const gameResult = new GachaGame(mode).play()
-    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, mode, comment)
+    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, mode, omiken)
 
     return [...gameResult.postArray, ...rankingActions]
   }
 
-  sampleRun(): string {
+  sampleRun(queryString: string): string {
     const gameResult = new GachaGame().play()
     return `[ユーザー名]の得点は${gameResult.points}!`
   }
@@ -57,12 +58,12 @@ export class ExecuteScript implements ScriptClass {
     gameResult: GameResult,
     characterKey: string,
     mode: string,
-    comment?: OmikenCommentType
+    omiken?: OmikenCommentType
   ): PostActionType[] {
-    if (!comment) return []
+    if (!omiken) return []
 
     const logResult = this.logRank.run({
-      userId: comment.data.userId,
+      userId: omiken.userId,
       name: userName,
       characterKey,
       rankingMode: 'high_score',

@@ -23,7 +23,7 @@ export const RankingMessageSchema = z.object({
   scoreText: z.string().default(''), // 表示用得点
   scoreValue: z.number().default(0), // 比較用
   // 設定
-  scriptKey: z.string(), // コンポーネント判別用key
+  scriptKey: z.string().default(''), // コンポーネント判別用key
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
 })

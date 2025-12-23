@@ -1,10 +1,11 @@
-// src/execute.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\GameScripts\scripts\DwarfBomb\execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@/common/GameScripts/parseQueryString'
 import { LogRankScript } from '@/common/GameScripts/scriptsEngine/LogRank/execute'
-import { Comment } from '@onecomme.com/onesdk/'
+import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const RANKING_KEY = 'DwarfBomb'
 const UNKNOWN_NAME = 'Unknown'

@@ -16,7 +16,6 @@ export class OmikujiTestProcessor {
 
   /**
    * おみくじの直接指定
-   * コンフィグエディターからの呼び出しで使用
    */
   executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessage[] {
     // デフォルトプレースホルダーの挿入

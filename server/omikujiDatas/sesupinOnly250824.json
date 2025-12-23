@@ -18,7 +18,7 @@
       "key": "1766411949745-iq1e0j",
       "name": "回数テスト",
       "createdAt": "2025-12-22T13:59:09.745Z",
-      "updatedAt": "2025-12-22T15:38:49.145Z",
+      "updatedAt": "2025-12-23T03:56:21.342Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -39,6 +39,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<HonjoFoxComment>>"
               }
@@ -60,7 +61,7 @@
           "accessLevel": "basic",
           "postActions": [],
           "gameScripts": {
-            "scriptId": "BomberSpin",
+            "scriptId": "GouseiSuika",
             "queryString": "",
             "characterKey": "chocolate"
           },
@@ -416,6 +417,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<user>>さんのスイカは{{rank}}位"
               }
@@ -441,6 +443,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<user>>さんのメロンは{{rank}}位"
               }
@@ -466,6 +469,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<user>>さんのももは{{rank}}位"
               }
@@ -491,6 +495,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<user>>さんのパイナップルは{{rank}}位"
               }
@@ -516,6 +521,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<user>>さんのイチゴは{{rank}}位"
               }
@@ -580,6 +586,7 @@
               "actionType": "message",
               "characterKey": "cafelatte",
               "iconKey": "default",
+              "sound": "",
               "message": {
                 "bubble": "<<message>>"
               }
@@ -2922,25 +2929,25 @@
   "displaySettings": {
     "components": {
       "conditions": [
+        "ranking",
         "bubble",
         "toast"
       ],
       "bubble": {
         "showCharacters": [
           [
+            "chocolate",
             "cafelatte",
             "honjoFox",
             "omiken",
             "omiken_2"
           ],
-          [
-            "chocolate"
-          ]
+          []
         ],
         "characterSize": 48,
-        "fontFamily": "kosugiMaru",
-        "bubbleMotionEnter": "scale",
-        "bubbleTextAnimate": true,
+        "fontFamily": "default",
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
         "bubbleTextSpeed": 50
       },
       "toast": {
@@ -2949,10 +2956,10 @@
         "showThumbnail": []
       },
       "ranking": {
-        "scriptKey": null,
+        "scriptKey": "basicList",
         "title": "Ranking",
-        "limit": 10,
-        "sortOrder": "high",
+        "limit": 5,
+        "sortOrder": "new",
         "color": "dark"
       },
       "counter": {

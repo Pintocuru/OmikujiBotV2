@@ -2,15 +2,7 @@
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- ランキングプレビュー -->
-    <GameRankingList v-if="ranking.scriptKey" :botMessages="[]" :settings="ranking" />
-    <NoParamsCard
-      v-else
-      :message="
-        enabledGameScriptMap.length !== 0
-          ? '対象スクリプトIDを設定してください'
-          : 'このコンポーネントはPRO版で使用できます'
-      "
-    />
+    <GameRankingList :botMessages="[]" :settings="ranking" />
 
     <!-- テーマカラー -->
     <SettingItem
@@ -44,7 +36,7 @@
         :value="ranking.scriptKey ?? ''"
         @change="(e) => updateScriptKey((e.target as HTMLSelectElement).value)"
       >
-        <option value="">-- 未選択 --</option>
+        <option value="basicList">フキダシリスト</option>
         <option v-for="script in enabledGameScriptMap" :key="script.key" :value="script.key">
           {{ script.name }} (ID: {{ script.key }})
         </option>
@@ -115,7 +107,6 @@
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/common/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { enabledGameScriptMap } = useEnabledGames()
