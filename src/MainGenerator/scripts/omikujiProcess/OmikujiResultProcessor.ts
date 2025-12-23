@@ -33,14 +33,17 @@ export class OmikujiResultProcessor {
   process(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessage[] {
     try {
       const postActions: PostActionType[] = []
+
+      // おみくじアクションから postActions を生成
+      postActions.push(...this.processOmikujiActions(omikujiItem))
+
       // gameScripts 処理
       if (omikujiItem.gameScripts) {
         const gamePost = this.scriptManager.playScript(omikujiItem, omiken)
         if (gamePost) postActions.push(...gamePost)
       }
 
-      // おみくじアクションの処理
-      postActions.push(...this.processOmikujiActions(omikujiItem))
+      // postActions があれば投稿
       if (postActions) {
         // メッセージ投稿
         this.postMessage.post(postActions)

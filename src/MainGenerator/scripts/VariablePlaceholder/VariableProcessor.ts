@@ -2,7 +2,6 @@
 import { VariableStore } from './VariableStore'
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import { BuiltinFunctionProcessor } from './BuiltinFunctionProcessor'
-import { PlaceholderExtractor } from './PlaceholderExtractor'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -12,7 +11,6 @@ export class VariablePlaceholderProcessor {
   private variableStore = new VariableStore()
   private expressionEvaluator = new ExpressionEvaluator(this.variableStore)
   private builtinProcessor = new BuiltinFunctionProcessor()
-  private extractor = new PlaceholderExtractor()
 
   /**
    * 変数をクリア（新しい解決サイクルの開始時に呼ぶ）
@@ -81,16 +79,5 @@ export class VariablePlaceholderProcessor {
    */
   getVariables(): Record<string, string | number> {
     return this.variableStore.getAll()
-  }
-
-  /**
-   * テキスト内の変数プレースホルダーを抽出（解析用）
-   */
-  extractVariablePlaceholders(text: string): {
-    declarations: Array<{ name: string; expression: string }>
-    references: string[]
-    builtins: string[]
-  } {
-    return this.extractor.extract(text)
   }
 }

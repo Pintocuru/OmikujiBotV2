@@ -17,7 +17,7 @@ export interface RestrictionCheckResult {
  * 制限チェック（重複チェック、クールダウンチェック）
  */
 export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleType): RestrictionCheckResult {
-  const isCommentBased = rule.threshold.conditions.includes('comment')
+  const isCommentBased = rule.trigger.conditions.includes('comment')
   const userName = omiken.userName
 
   // 1. クールダウンチェック

@@ -67,14 +67,10 @@ function createToastMessages(message: string): BotMessage[] {
  * 制限チェック結果からBotMessageを生成
  */
 export function buildRestrictionMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessage[] {
-  if (!result.isBlocked) {
-    return []
-  }
+  if (!result.isBlocked) return []
 
   const message = createMessage(result, rule)
-  if (!message) {
-    return []
-  }
+  if (!message) return []
 
   return createToastMessages(message)
 }

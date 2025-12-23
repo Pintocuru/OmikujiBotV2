@@ -1,13 +1,12 @@
 // src\types\OmikujiProcess\CommentTriggerSchema.ts
 import { z } from 'zod'
 import {
-  AccessConditionSchema,
-  CountConditionSchema,
   GiftConditionSchema,
   SyokenConditionSchema,
   thresholdConditionDescriptions,
   thresholdConditionLabels,
 } from '@shared/types/Threshold/'
+import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'
 
 /**
  * Comment Trigger

@@ -112,13 +112,4 @@ export class PlaceholderResolver {
   collectDependencies(placeholderId: string, visited: Set<string> = new Set()): string[] {
     return this.analyzer.collectDependencies(placeholderId, visited)
   }
-
-  // 変数プレースホルダー関連のデリゲート
-  analyzeVariablePlaceholders(text: string) {
-    return this.variableProcessor.extractVariablePlaceholders(text)
-  }
-
-  getCurrentVariables() {
-    return this.variableProcessor.getVariables()
-  }
 }

@@ -1,11 +1,7 @@
 // src\types\OmikujiProcess\CriteriaThresholdSchema.ts
 import { z } from 'zod'
-import {
-  AccessConditionSchema,
-  CountConditionSchema,
-  thresholdConditionDescriptions,
-  thresholdConditionLabels,
-} from '@shared/types/Threshold/'
+import { thresholdConditionDescriptions, thresholdConditionLabels } from '@shared/types/Threshold/'
+import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'
 
 /**
  * criteria Threshold

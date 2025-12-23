@@ -44,8 +44,7 @@ export function processUserComment(omiken: OmikenCommentType): BotMessage[] {
  * コメントルールの条件チェック
  */
 function validateThreshold(omiken: OmikenCommentType, rule: CommentRuleType): boolean {
-  // TODO:修正(triggerを新規作成)
-  return checkAllTriggers(omiken, rule.key, rule.threshold)
+  return checkAllTriggers(omiken, rule.trigger)
 }
 
 /**
@@ -63,6 +62,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   const restrictionResult = checkRestrictions(omiken, rule)
 
   if (restrictionResult.isBlocked) {
+    console.log(restrictionResult)
     // 3. 制限チェックの結果からメッセージを生成
     const toastMessages = buildRestrictionMessages(restrictionResult, rule)
     return {
@@ -80,7 +80,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   const omikujiMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
 
   // チャットワード起動かどうかを判定
-  const isCommentTriggered = rule.threshold.conditions.includes('comment')
+  const isCommentTriggered = rule.trigger.conditions.includes('comment')
 
   return {
     isCommentTriggered,

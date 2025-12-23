@@ -48,7 +48,7 @@ export class OmikujiExecutor {
     return items
       .filter((item) => {
         if (!item.criteria) return true
-        return checkAllTriggers(omiken, rule.key, item.criteria)
+        return checkAllTriggers(omiken, item.criteria)
       })
       .map((item) => ({
         ...item,
