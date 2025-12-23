@@ -52,7 +52,7 @@ export class GameScriptManager {
   /**
    * サンプルラン
    */
-  playSampleScript(scriptId: string): string {
+  playSampleScript(scriptId: string, queryString: string): string {
     if (!scriptId) return '(スクリプトが指定されていません)'
 
     const scriptInstance = this.scriptInstances[scriptId]
@@ -64,7 +64,7 @@ export class GameScriptManager {
     }
 
     try {
-      return scriptInstance.sampleRun()
+      return scriptInstance.sampleRun(queryString)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return 'スクリプト実行エラー。詳細はコンソールをご確認ください。'

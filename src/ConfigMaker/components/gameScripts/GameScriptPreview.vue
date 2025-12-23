@@ -59,7 +59,7 @@
     const scriptId = props.gameScripts?.scriptId
     if (!scriptId) return ''
 
-    return scriptManager.playSampleScript(scriptId)
+    return scriptManager.playSampleScript(scriptId, props.gameScripts?.queryString)
   })
 
   // リフレッシュキー
