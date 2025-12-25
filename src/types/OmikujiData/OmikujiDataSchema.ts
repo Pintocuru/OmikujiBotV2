@@ -22,7 +22,9 @@ export const OmikujiDataSchema = z.object({
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),
   displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
-  wordPartySettings: z.array(WordPartySettingsSchema).catch([]),
+  components: z.any(),
+  featureUsage: z.any(),
+  settings: z.any(),
 })
 
 // 型定義

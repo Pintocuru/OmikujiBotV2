@@ -40,6 +40,7 @@ function project(packageRoot: string): ProjectConfig {
       basic: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
+          { from: 'assets/onesdk.js', to: 'assets/onesdk.js' },
           { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],
@@ -49,6 +50,7 @@ function project(packageRoot: string): ProjectConfig {
       pro: {
         filesToCopy: [
           { from: 'assets/config.js', to: 'config.js' },
+          { from: 'assets/onesdk.js', to: 'assets/onesdk.js' },
           { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],

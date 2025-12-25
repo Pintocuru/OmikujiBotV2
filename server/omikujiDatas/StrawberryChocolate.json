@@ -3,10 +3,10 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.12.05-v1.4.3",
+    "version": "ver2025.12.24-v2.0.0-alpha1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-alpha",
-    "dataVersion": 2.0000001,
+    "generatorVersion": "v2.0.0-alpha1",
+    "dataVersion": 2.00001,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T01:53:57.318Z",
+      "updatedAt": "2025-12-24T15:51:49.291Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -304,9 +304,8 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "count",
           "comment"
         ],
         "syoken": [],
@@ -314,19 +313,19 @@
         "gift": [],
         "count": {
           "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
+          "unit": "lc",
+          "value": 1
         },
         "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstHontoChocolate": {
@@ -378,29 +377,28 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "count",
           "comment"
         ],
         "syoken": [],
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
         },
         "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CheckNumberChocolate": {
@@ -447,7 +445,7 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -460,12 +458,13 @@
           "value": 1
         },
         "comment": [
-          "^コメント$"
-        ]
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
+        "cooldownMessage": null,
         "isRepeatAllowed": 1,
         "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
       }
@@ -519,28 +518,28 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "gift"
+          "comment"
         ],
         "syoken": [],
         "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
+        "gift": [],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
           "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstSyokenChocolate": {
@@ -592,13 +591,11 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "syoken"
+          "comment"
         ],
-        "syoken": [
-          "syoken"
-        ],
+        "syoken": [],
         "access": [],
         "gift": [],
         "count": {
@@ -606,12 +603,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstComebackChocolate": {
@@ -658,13 +659,11 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "syoken"
+          "comment"
         ],
-        "syoken": [
-          "again"
-        ],
+        "syoken": [],
         "access": [],
         "gift": [],
         "count": {
@@ -672,12 +671,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstVisitChocolate": {
@@ -724,13 +727,11 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "syoken"
+          "comment"
         ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "syoken": [],
         "access": [],
         "gift": [],
         "count": {
@@ -738,12 +739,16 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CountStreamChocolate": {
@@ -790,24 +795,28 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "count"
+          "comment"
         ],
         "syoken": [],
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "loop",
+          "comparison": "lowerBound",
           "unit": "lc",
-          "value": 50
+          "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CountUserChocolate": {
@@ -883,24 +892,28 @@
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "count"
+          "comment"
         ],
         "syoken": [],
         "access": [],
         "gift": [],
         "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
         },
-        "comment": []
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "isRepeatAllowed": 0
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -1336,8 +1349,7 @@
     "components": {
       "conditions": [
         "bubble",
-        "toast",
-        "counter"
+        "toast"
       ],
       "bubble": {
         "showCharacters": [
@@ -1358,7 +1370,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "scriptKey": null,
+        "scriptKey": "basicList",
         "title": "Ranking",
         "limit": 5,
         "sortOrder": "high",

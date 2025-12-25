@@ -27,7 +27,6 @@ export function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataTy
     // 設定系: 上書き（最後のデータで統一）
     result.wordPartySettings = data.wordPartySettings
     result.meta = data.meta
-    result.scriptSettings = data.scriptSettings
     result.displaySettings = data.displaySettings
 
     // jsonMerge: 存在する場合のみセット（通常は最後は空配列）

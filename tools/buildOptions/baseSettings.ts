@@ -8,6 +8,7 @@ import { processMerge } from '../JsonMerge/JsonMergeProcessor'
 export function createCommonBuildConfig(packageRoot: string) {
   return {
     packageRoot,
+    isOneSDK: true,
 
     // ライセンスキー
     licenseKey: {

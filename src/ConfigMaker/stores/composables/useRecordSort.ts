@@ -12,17 +12,13 @@ export function useRecordSort(
   hasChanged: Ref<boolean>,
   recordDataAccess: ReturnType<typeof useRecordDataAccess>
 ) {
-  // ========================================
   // カテゴリデータ更新（内部用）
-  // ========================================
   const updateCategoryData = <C extends CategoryType>(category: C, newData: OmikujiDataType[C]) => {
     data.value[category] = newData
     hasChanged.value = true
   }
 
-  // ========================================
   // アイテムの並び替え
-  // ========================================
   const reorderItem = async <K extends RecordCategoryType>(category: K, fromIndex: number, toIndex: number) => {
     const items = recordDataAccess.getCategoryArray(category)
     const keys = items.map((item) => item.key)
@@ -34,9 +30,7 @@ export function useRecordSort(
     await batchUpdateOrder(category, updates)
   }
 
-  // ========================================
   // 一括order更新
-  // ========================================
   const batchUpdateOrder = async <K extends RecordCategoryType>(
     category: K,
     updates: Array<{ key: string; newOrder: number }>
@@ -53,12 +47,7 @@ export function useRecordSort(
     })
 
     await nextTick()
-    // orderがない場合にエラーが起きている
-    /**
-     * 型 'Record<string, RecordCategoryItemTypeMap[K]>' の引数を型 '{ id: string; name: string; description: string; version: string; generatorName: string; generatorVersion: string; dataVersion: number; author: string; tags: string[]; license: string; url?: string | undefined; } | ... 6 more ... | { ...; }' のパラメーターに割り当てることはできません。
-  型 'Record<string, RecordCategoryItemTypeMap[K]>' には 型 '{ sourceFile: string; keySuffix: string; remaps: { fromCharacterKey: string; toCharacterKey: string; fromIconKey: string; toIconKey: string; }[]; order: number; tags: string[]; accessLevel: "basic" | "pro" | "internal" | "experimental"; ... 7 more ...; description?: string | undefined; }[]' からの次のプロパティがありません: length, pop, push, concat、28 など。ts(2345)
-     */
-    updateCategoryData(category as CategoryType, updatedData)
+    updateCategoryData(category as CategoryType, updatedData as any)
   }
 
   return {
