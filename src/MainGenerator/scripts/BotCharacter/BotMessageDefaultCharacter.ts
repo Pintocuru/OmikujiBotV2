@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\omikujiProcess\BotMessageDefaultCharacter.ts
-import { CharacterType, CharacterSchema } from '@/types/'
+import { CharacterType, CharacterSchema, DisplayOptionSchema } from '@/types/'
 import MersenneTwister from 'mersenne-twister'
 import { DEFAULT_COLOR_THEMES } from './CharacterColorPreset'
 
@@ -11,11 +11,7 @@ export const createDefaultCharacters = (): CharacterType[] => {
       key: `default-${index + 1}`,
       name: `おみくじBOT`,
       displayName: `おみくじBOT`,
-      displayOption: {
-        isIconDisplay: false, // 画像がないため非表示
-        isOneCommePost: false,
-        isVoice: true,
-      },
+      displayOption: DisplayOptionSchema.parse({}),
       color: colorTheme,
     })
   )

@@ -8,11 +8,6 @@ import { CharacterEmotionType, CharacterType } from '@/types/OmikujiData/Charact
  * @returns プロフィール画像のURL
  */
 export function resolveProfileImage(character: CharacterType, iconKey: CharacterEmotionType): string[] {
-  // アイコン表示が無効の場合はnullを返す
-  if (!character.displayOption.isIconDisplay) {
-    return []
-  }
-
   return getCharacterIcon(character, iconKey)
 }
 

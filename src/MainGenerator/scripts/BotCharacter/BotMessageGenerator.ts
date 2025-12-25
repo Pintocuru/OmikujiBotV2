@@ -1,7 +1,7 @@
 // src/MainGenerator/utils/commentProcessor/BotMessageGenerator.ts
 import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
-import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
+import { CharacterType, DisplayOptionType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
 import { playSoundDelay, playRpgVoiceLoop } from '@/Toolkit/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
@@ -53,7 +53,8 @@ export class BotMessageGenerator {
     // bubble メッセージの生成
     if (postAction.message.bubble?.trim()) {
       messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'bubble'))
-      this.handleRpgVoice(character, postAction.message.bubble, baseDelaySeconds)
+      // @ts-ignore character.displayOption が型崩れ v2.0.1でスキーマ書き直しする
+      this.handleRpgVoice(character.displayOption, postAction.message.bubble, baseDelaySeconds)
     }
 
     // toast メッセージの生成
@@ -88,11 +89,15 @@ export class BotMessageGenerator {
     delaySeconds: number,
     messageType: 'bubble' | 'toast'
   ): BotMessage {
+    /**
+     * TODO:featureUsage の影響を受ける
+     */
     return BotMessageSchema.parse({
       name: character.displayName,
       characterKey: postAction.characterKey,
       iconKey: postAction.iconKey,
-      profileImage: character.displayOption.isIconDisplay ? resolveProfileImage(character, postAction.iconKey) : null,
+      // TODO:キャラクターが非表示ならここはnull
+      profileImage: true ? resolveProfileImage(character, postAction.iconKey) : null,
       sound: postAction.sound,
       message:
         messageType === 'bubble'
@@ -106,11 +111,8 @@ export class BotMessageGenerator {
   /**
    * RPG風の音声ループを再生(条件に応じて)
    */
-  private handleRpgVoice(character: CharacterType, bubble: string, baseDelaySeconds: number): void {
-    const { isOneCommePost, isVoice, rpgVoice } = character.displayOption
-    const shouldPlayRpgVoice = !isOneCommePost && !isVoice && !!rpgVoice
-
-    if (shouldPlayRpgVoice) playRpgVoiceLoop(bubble, rpgVoice, baseDelaySeconds)
+  private handleRpgVoice({ mode, rpgVoice }: DisplayOptionType, bubble: string, baseDelaySeconds: number): void {
+    if (mode === 'rpgVoice' && rpgVoice !== '') playRpgVoiceLoop(bubble, rpgVoice, baseDelaySeconds)
   }
 
   /**

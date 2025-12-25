@@ -29,9 +29,9 @@
         @change="handleImageSelect"
       />
       <div class="pr-4">
-        <div v-if="localData && localData.imageBase64" class="relative">
+        <div v-if="localData && localData.displayOption.imageBase64" class="relative">
           <img
-            :src="localData?.imageBase64"
+            :src="localData?.displayOption.imageBase64"
             alt="Base64画像プレビュー"
             :class="`w-${Math.max(16, imageSize)} h-${Math.max(16, imageSize)} rounded border-2 border-primary bg-white object-cover`"
           />
@@ -130,7 +130,7 @@
 
         // Base64データを取得
         const base64Data = canvas.toDataURL('image/png')
-        localData.value.imageBase64 = base64Data
+        localData.value.displayOption.imageBase64 = base64Data
       }
 
       img.src = e.target?.result as string

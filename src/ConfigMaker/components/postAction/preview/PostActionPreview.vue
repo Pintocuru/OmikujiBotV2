@@ -26,7 +26,6 @@
           class="cursor-pointer"
         />
         <CharacterAvatar
-          v-if="character.displayOption.isIconDisplay"
           :profileImage="characters[action.characterKey].image[action.iconKey]"
           :characterSize="bubbleSettings.characterSize"
           :showCharacterFrame="false"

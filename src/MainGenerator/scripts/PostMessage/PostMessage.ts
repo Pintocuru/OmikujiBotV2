@@ -68,13 +68,13 @@ export class PostMessage {
 
     if (this.shouldPostAsComment(chara)) {
       this.postAsComment(bubble, chara, delaySeconds)
-    } else if (chara.displayOption.isVoice) {
+    } else if (chara.displayOption.mode === 'voice') {
       postSpeech(bubble, delaySeconds)
     }
   }
 
   private shouldPostAsComment(chara: CharacterType): boolean {
-    return chara.displayOption.isOneCommePost && chara.frameId !== ''
+    return chara.displayOption.mode === 'comment' && chara.frameId !== ''
   }
 
   private postAsComment(bubble: string, chara: CharacterType, delaySeconds: number): void {

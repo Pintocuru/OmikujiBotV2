@@ -1,60 +1,55 @@
 <!-- src/configMaker/components/characters/CharacterIconDisplaySettings.vue -->
 <template>
-  <!-- isIconDisplay  -->
+  <!-- mode  -->
   <SettingItem
-    v-if="
-      useVisibilityAccess().canShow('characterVisible') ||
-      (isDev && currentDisplayOption.isIconDisplay && !useVisibilityAccess().canShow('characterVisible'))
-    "
     :variant="!useVisibilityAccess().canShow('characterVisible') ? 'error' : 'none'"
-    label="キャラクター表示"
-    description="ONで画像とフキダシを表示、OFFでフキダシのみ表示"
-    devMemo="characterVisible"
+    label="BOTコメント表現方法"
+    description="BOTの文章を表現する方法を指定します"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        type="checkbox"
-        class="checkbox checkbox-primary"
-        :checked="currentDisplayOption.isIconDisplay"
-        @change="updateDisplayField('isIconDisplay', ($event.target as HTMLInputElement).checked)"
-      />
-      <span class="label-text font-medium">有効にするとジェネレーター用画像の設定が可能になります</span>
-    </label>
+    <select
+      v-model="currentDisplayOption.mode"
+      @change="updateDisplayField('mode', ($event.target as HTMLSelectElement).value)"
+      class="select select-bordered w-full max-w-xs"
+    >
+      <option v-for="(value, key) in displayModeLabels" :key="key" :value="key">
+        {{ value }}
+      </option>
+    </select>
   </SettingItem>
 
-  <!-- isOneCommePost -->
-  <SettingItem label="BOTコメントをわんコメに投稿" description="わんコメにBOTコメントとして表示させるか">
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        type="checkbox"
-        class="checkbox checkbox-primary"
-        :checked="currentDisplayOption.isOneCommePost"
-        @change="updateDisplayField('isOneCommePost', ($event.target as HTMLInputElement).checked)"
-      />
-      <span class="label-text font-medium">有効にすると「キャラクター用枠設定」の設定ができます</span>
-    </label>
-  </SettingItem>
+  <div v-if="currentDisplayOption.mode === 'comment'">
+    <!-- 補足説明 -->
+    <InformationCard class="mb-4">
+      キャラクター専用の枠を作成すると、各キャラクターごとに
+      <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
+      詳しくは
+      <a
+        href="https://onecomme.com/docs/guide/speech"
+        target="_blank"
+        rel="noopener"
+        class="inline-block px-2 py-1 rounded bg-secondary text-secondary-content hover:bg-secondary/70 transition"
+      >
+        読み上げ機能を使う
+      </a>
+      をお読みください。
+    </InformationCard>
+  </div>
 
-  <!-- isVoice  -->
+  <!-- わんコメの枠を指定 -->
   <SettingItem
-    v-if="!currentDisplayOption.isOneCommePost"
-    label="BOTコメントの読み上げ"
-    description="BOTコメントをわんコメで鳴らすか"
+    v-if="currentDisplayOption.mode === 'comment'"
+    label="枠のID名"
+    description="わんコメに同じIDの枠がなければ新規作成されます"
   >
-    <label class="label cursor-pointer justify-start gap-3">
-      <input
-        type="checkbox"
-        class="checkbox checkbox-primary"
-        :checked="currentDisplayOption.isVoice"
-        @change="updateDisplayField('isVoice', ($event.target as HTMLInputElement).checked)"
-      />
-      <span class="label-text font-medium">読み上げの声は「わんコメの標準設定」が使われます</span>
-    </label>
+    <input type="text" class="input w-full" v-model="currentDisplayOption.frameId" />
   </SettingItem>
+
+  <!-- imageBase64 -->
+  <CharacterBase64Settings v-if="currentDisplayOption.mode === 'comment'" :selectedItemKey="selectedItemKey" />
 
   <!-- rpgVoice  -->
   <SettingItem
-    v-if="!currentDisplayOption.isOneCommePost && !currentDisplayOption.isVoice"
+    v-if="currentDisplayOption.mode === 'rpgVoice'"
     label="文字送り&RPG風の読み上げ"
     description="BOTコメントを音入りで表示するか"
   >
@@ -73,12 +68,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { DisplayOptionType, isDev } from '@/types/'
+  import { storeToRefs } from 'pinia'
+  import { displayModeLabels, DisplayOptionType, isDev } from '@/types/'
+  import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
   import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     modelValue: DisplayOptionType

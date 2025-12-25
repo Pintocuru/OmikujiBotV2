@@ -82,24 +82,75 @@ export const CharacterImageSetSchema = z.object({
 })
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>
 
+/**
+ * CharacterSchema
+ */
+export const displayModes = ['comment', 'voice', 'rpgVoice', 'none'] as const
+export type DisplayModeType = (typeof displayModes)[number]
+
+export const displayModeLabels: Record<DisplayModeType, string> = {
+  comment: 'わんコメでの表示+読み上げ',
+  voice: '読み上げのみ',
+  rpgVoice: 'RPG風音声',
+  none: 'なし',
+}
+
 export const DisplayOptionSchema = z.object({
-  isIconDisplay: z.boolean().default(true).catch(true),
-  isOneCommePost: z.boolean().default(true).catch(true),
-  isVoice: z.boolean().default(true).catch(true),
-  rpgVoice: z.string().default('').catch(''),
+  mode: z.enum(displayModes).default('comment'),
+  imageBase64: z.string().default('').catch(''), // 表示時のアイコン
+  frameId: z.string().default('').catch(''), // わんコメの枠指定
+  rpgVoice: z.string().default('').catch(''), // RPG音声モード
 })
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
 
 /**
  * CharacterSchema
+ * ! マイグレーション済
  */
-export const CharacterSchema = z.object({
-  ...PresetMetadataSchema.shape,
-  displayName: z.string().default('').catch(''),
-  frameId: z.string().optional().catch(undefined),
-  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
-  color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
-  image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({})),
-  imageBase64: z.string().optional().catch(undefined), // わんコメのジェネレーター用Base64画像
-})
+export const CharacterSchema = z
+  .object({
+    ...PresetMetadataSchema.shape,
+    displayName: z.string().default('').catch(''),
+
+    // 旧データ用（v1）
+    frameId: z.string().optional().catch(undefined),
+    imageBase64: z.string().optional().catch(undefined),
+
+    // 旧 displayOption（v1）
+    displayOption: z.any(),
+
+    color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
+    image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({})),
+  })
+  .transform((old) => {
+    const opt = old.displayOption
+
+    // mode 判定
+    let mode: (typeof displayModes)[number] = 'comment'
+    if (!opt.isOneCommePost && opt.isVoice) {
+      mode = 'voice'
+    } else if (!opt.isOneCommePost && !opt.isVoice && opt.rpgVoice) {
+      mode = 'rpgVoice'
+    } else if (!opt.isOneCommePost && !opt.isVoice && !opt.rpgVoice) {
+      mode = 'none'
+    }
+
+    // 新 displayOption を構築
+    const newDisplayOption = {
+      mode,
+      imageBase64: old.imageBase64,
+      frameId: old.frameId,
+      rpgVoice: opt.rpgVoice ?? '',
+    }
+
+    return {
+      ...old,
+      displayOption: newDisplayOption,
+
+      // CharacterSchema のトップから旧プロパティを削除したい場合は null にする
+      imageBase64: undefined,
+      frameId: undefined,
+    }
+  })
+
 export type CharacterType = z.infer<typeof CharacterSchema>

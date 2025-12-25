@@ -26,32 +26,19 @@
       <CharacterColorSettings :modelValue="selectedItem.color" />
     </SectionCard>
 
-    <!-- キャラクター表示設定 -->
+    <!-- BOTコメント表現設定 -->
     <SectionCard
       :isOpen="activeSection === 'displaySettings'"
       @toggle="toggleSection('displaySettings')"
-      title="キャラクター表示設定"
-      :subTitle="`(キャラ画像表示:${selectedItem.displayOption.isIconDisplay ? 'ON' : 'OFF'}${selectedItem.displayOption.isOneCommePost ? ',わんコメ投稿' : selectedItem.displayOption.isVoice ? ',ボイス読み上げ' : ''})`"
-      description="キャラクターアイコン(画像)に関する編集を行います"
+      title="BOTコメント表現設定"
+      :subTitle="``"
+      description="BOTコメントを読み上げる方法を指定します"
     >
-      <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption" />
-    </SectionCard>
-
-    <!-- キャラクター用枠設定 -->
-    <SectionCard
-      v-if="selectedItem.displayOption?.isOneCommePost"
-      :isOpen="activeSection === 'serviceSettings'"
-      @toggle="toggleSection('serviceSettings')"
-      title="キャラクター用枠設定"
-      :subTitle="` わんコメ投稿用画像 : ${selectedItem.imageBase64 ? 'あり' : 'なし'}`"
-      description="わんコメの投稿で必要な設定を行います"
-    >
-      <CharacterServiceSettings :selectedItemKey="selectedItemKey" />
+      <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption as any" />
     </SectionCard>
 
     <!-- ジェネレーター用画像設定 -->
     <SectionCard
-      v-if="selectedItem.displayOption?.isIconDisplay"
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
       title="ジェネレーター用画像設定"
@@ -70,7 +57,6 @@
   import CharacterBasicInfo from './basicInfo/CharacterBasicInfo.vue'
   import CharacterColorSettings from './color/CharacterColorSettings.vue'
   import CharacterImageSettings from './CharacterImage/CharacterImageSettings.vue'
-  import CharacterServiceSettings from './service/CharacterServiceSettings.vue'
   import CharacterIconDisplaySettings from './service/CharacterIconDisplaySettings.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
@@ -99,10 +85,7 @@
     if (!selectedItem.value?.image) return 0
 
     return Object.values(selectedItem.value.image).filter((v) => {
-      if (!v) return false
-      if (typeof v === 'string') return v.trim() !== ''
-      if (Array.isArray(v)) return v.some((s) => typeof s === 'string' && s.trim() !== '')
-      return false
+      return v.some((s) => s.trim() !== '')
     }).length
   })
 </script>

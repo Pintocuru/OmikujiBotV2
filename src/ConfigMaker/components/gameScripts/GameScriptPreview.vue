@@ -16,7 +16,6 @@
         />
 
         <CharacterAvatar
-          v-if="character && character.displayOption.isIconDisplay"
           :profileImage="character.image?.default || ''"
           :characterSize="bubbleSettings.characterSize"
           :showCharacterFrame="false"
