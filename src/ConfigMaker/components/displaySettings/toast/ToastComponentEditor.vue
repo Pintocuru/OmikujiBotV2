@@ -14,7 +14,7 @@
     <!-- サムネイルサンプル表示 -->
     <div
       class="flex flex-row gap-4 mt-2"
-      :class="!toastSettings.showToastsOnRight ? 'self-start' : 'flex-row-reverse self-start'"
+      :class="toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start'"
     >
       <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
       <CharacterThumbnailsPreview :characters="characterArray" :hoverVisibility="true" />

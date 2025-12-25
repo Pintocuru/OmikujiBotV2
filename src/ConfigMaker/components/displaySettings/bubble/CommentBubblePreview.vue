@@ -24,7 +24,7 @@
         :auto-hide="false"
       >
         <CommentBubbleItem
-          botName="テストユーザー"
+          :botName="botName"
           :message="currentPreview"
           :color="color"
           :custom-classes="customClasses"
@@ -66,6 +66,7 @@
   // Props定義（元のコンポーネントと同じ）
   const props = withDefaults(
     defineProps<{
+      botName?: string
       color: CharacterColorType
       customClasses?: string
       isSlider?: boolean
@@ -75,6 +76,7 @@
       animatedTextSpeed?: number
     }>(),
     {
+      botName: 'テストユーザー',
       fontFamily: 'default',
       isSlider: false,
       bubbleMotionEnter: 'slideUp',

@@ -4,18 +4,17 @@
   <SettingItem label="表示するコンポーネント" description="トリガーの種類を選択">
     <div class="flex flex-wrap gap-2">
       <label
-        v-for="condition in settingsComponentsCondition"
-        :key="condition"
+        v-for="comp in enabledComponents"
+        :key="comp.id"
         class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
       >
         <input
           type="checkbox"
           class="checkbox checkbox-primary"
-          :checked="conditions.includes(condition)"
-          @change="toggleCondition(condition)"
+          :checked="conditions.includes(comp.id)"
+          @change="toggleCondition(comp.id)"
         />
-        <!-- 英語キーではなく日本語ラベルを表示 -->
-        <span class="text-sm">{{ componentLabels[condition] }}</span>
+        <span class="text-sm">{{ comp.label }}</span>
       </label>
     </div>
   </SettingItem>
@@ -35,18 +34,16 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import {
-    componentLabels,
-    settingsComponentsCondition,
-    SettingsComponentsCondition,
-  } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { SettingsComponentsCondition } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import { useEnabledComponents } from '@/MainGenerator/components/useEnabledComponents'
 
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { enabledComponents } = useEnabledComponents()
 
   // 個別のcomputed値
   const conditions = computed(() => data.value.displaySettings.components.conditions)

@@ -1,8 +1,5 @@
 // src\Toolkit\migrations\v1_to_v2\OmikujiDataV1\migrateV130ToV200.ts
 import {
-  DeveloperSettingsSchema,
-  DisplaySettingsSchema,
-  DisplaySettingsType,
   SettingsBubbleSchema,
   SettingsComponentsSchema,
   SettingsCounterSchema,
@@ -13,17 +10,21 @@ import {
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
+import { FeatureUsageSchema } from '@/types/OmikujiData/FeatureUsageSchema'
 
 /**
  * v1からv1.3へのマイグレーション
  * omikuji配列内のオブジェクトのkeyが空文字の場合、idをコピーする
  */
 export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
-  const migratedData: any = { ...data }
+  let migratedData: any = { ...data }
 
   // comments のマイグレーション
   if (migratedData.displaySettings) {
-    migratedData.displaySettings = migrateDisplaySettings(migratedData.displaySettings)
+    migratedData = {
+      ...migratedData,
+      ...migrateDisplaySettings(migratedData),
+    }
   }
 
   // actionSets の手動マイグレーション
@@ -41,8 +42,31 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
 }
 
 // 新スキーマへのマイグレーション
-function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): DisplaySettingsType {
-  const base = old.base ?? {}
+function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
+  /**
+   * featureUsage
+   */
+  const visibility = old.displaySettings.developer.visibility ?? {}
+  const featureUsage = FeatureUsageSchema.parse({
+    usage: {
+      comments: visibility.comments ?? 'basic',
+      timers: visibility.timers ?? 'basic',
+      actionSets: visibility.actionSets ?? 'basic',
+      placeholders: visibility.placeholders ?? 'basic',
+      characters: visibility.characters ?? 'basic',
+    },
+    components: ['bubble', 'toast', 'ranking', 'counter'],
+    gameScripts: visibility.gameScripts ?? [],
+    developer: {
+      licenseVisible: visibility.licenseVisible ?? 'basic',
+      jsonMergeSettings: visibility.jsonMergeSettings ?? 'basic',
+    },
+  })
+
+  /**
+   * components
+   */
+  const base = old.displaySettings.base ?? {}
 
   const bubble = SettingsBubbleSchema.parse({
     fontFamily: base.fontFamily ?? 'default',
@@ -57,44 +81,27 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1['displaySettings']): Disp
     showThumbnail: [],
   })
 
-  const ranking = SettingsRankingSchema.parse({
-    scriptId: null,
-    title: 'Ranking',
-    limit: 10,
-    showScore: true,
-    showRankNumber: true,
-    color: 'dark',
-  })
-
-  const counter = SettingsCounterSchema.parse({
-    ruleKey: null,
-    target: 'runCount',
-    label: 'Counter',
-    firstValue: 0,
-    isDirectionUp: true,
-    color: 'dark',
-    showLabel: true,
-  })
-
   const components = SettingsComponentsSchema.parse({
     bubble,
     toast,
-    ranking,
-    counter,
+    ranking: SettingsRankingSchema.parse({}),
+    counter: SettingsCounterSchema.parse({}),
   })
 
-  const editor = SettingsEditorSchema.parse({
-    licenseKeyHash: old.licenseKeyHash ?? '',
+  /**
+   * settings
+   */
+  const settings = SettingsEditorSchema.parse({
+    licenseKeyHash: old.displaySettings.licenseKeyHash ?? '',
     daisyUiTheme: base.daisyUiTheme ?? 'dark',
   })
 
-  const developer = DeveloperSettingsSchema.parse(old.developer ?? {})
-
-  return DisplaySettingsSchema.parse({
+  return {
+    ...old,
+    featureUsage,
     components,
-    editor,
-    developer,
-  })
+    settings,
+  }
 }
 
 /**

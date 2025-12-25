@@ -6,9 +6,11 @@ import { CharacterSchema } from './CharacterSchema'
 import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'
 import { recordNormalization } from './OmikujiDataNormalize'
 import { PackageJsonSchema } from '@shared/types'
-import { WordPartySettingsSchema } from './WordPartySettings'
 import { ActionSetSchema } from './OmikujiSchema'
 import { JsonMergeSchema } from './JsonMergeType'
+import { ComponentsSchema } from './ComponentsSchema'
+import { FeatureUsageSchema } from './FeatureUsageSchema'
+import { SettingsSchema } from './SettingsSchema'
 
 /**
  * おみくじデータ全体のメインスキーマ
@@ -22,9 +24,9 @@ export const OmikujiDataSchema = z.object({
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),
   displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
-  components: z.any(),
-  featureUsage: z.any(),
-  settings: z.any(),
+  components: ComponentsSchema.catch(ComponentsSchema.parse({})),
+  featureUsage: FeatureUsageSchema.catch(FeatureUsageSchema.parse({})),
+  settings: SettingsSchema.catch(SettingsSchema.parse({})),
 })
 
 // 型定義

@@ -23,7 +23,7 @@
       title="フキダシカラー設定"
       description="フキダシのカラー編集を行います"
     >
-      <CharacterColorSettings :modelValue="selectedItem.color" />
+      <CharacterColorSettings :botName="selectedItem.name" :modelValue="selectedItem.color" />
     </SectionCard>
 
     <!-- BOTコメント表現設定 -->

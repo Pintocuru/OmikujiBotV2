@@ -34,7 +34,12 @@
 
   <!-- プレビュー -->
   <div class="relative flex justify-center">
-    <CommentBubblePreview :color="currentColor" :custom-classes="currentColor.customClasses" bubbleMotionEnter="none" />
+    <CommentBubblePreview
+      :botName="botName"
+      :color="currentColor"
+      :custom-classes="currentColor.customClasses"
+      bubbleMotionEnter="none"
+    />
   </div>
 
   <!-- 旧：カラーピッカーを表示 -->
@@ -79,6 +84,7 @@
 
   const props = defineProps<{
     modelValue?: CharacterColorType
+    botName: string
   }>()
 
   const emit = defineEmits<{

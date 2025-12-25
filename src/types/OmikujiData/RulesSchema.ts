@@ -51,12 +51,7 @@ export const CommentRuleSchema = z
     ...BaseRuleSchema.shape,
     ruleType: z.literal('comments').default('comments').catch('comments'),
     threshold: CommentThresholdSchema.optional(),
-    trigger: CommentTriggerSchema.default(
-      CommentTriggerSchema.parse({
-        conditions: ['comment'],
-        comment: ['おみくじ'],
-      })
-    ).catch(CommentTriggerSchema.parse({})),
+    trigger: CommentTriggerSchema.optional(),
     limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})),
   })
   .transform((data) => {
