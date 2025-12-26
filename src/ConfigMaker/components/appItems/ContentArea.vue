@@ -30,10 +30,10 @@
       <CharacterEditor v-else-if="selectedCategory === 'characters'" />
 
       <!-- 表示設定 -->
-      <DisplaySettingsEditor v-else-if="selectedCategory === 'components'" />
+      <ComponentEditor v-else-if="selectedCategory === 'components'" />
 
-      <!-- Meta設定 -->
-      <PackageMetaEditor v-else-if="selectedCategory === 'meta'" />
+      <!-- アプリ情報 -->
+      <AppInfoEditor v-else-if="selectedCategory === 'appInfo'" />
 
       <!-- フォールバック -->
       <div v-else>
@@ -52,8 +52,8 @@
   import ActionSetsEditor from '@ConfigComponents/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@ConfigComponents/characters/CharacterEditor.vue'
-  import DisplaySettingsEditor from '@/ConfigMaker/components/componentEditor/ComponentEditor.vue'
-  import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue'
+  import ComponentEditor from '@/ConfigMaker/components/componentEditor/ComponentEditor.vue'
+  import AppInfoEditor from '@ConfigComponents/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@ConfigComponents/JsonMerge/JsonMergeEditor.vue'
 
   const omikujiStore = useOmikujiStore()

@@ -50,14 +50,7 @@ export const isRulesCategory = (category: CategoryType): category is RulesCatego
 /**
  * settingsCategory
  */
-export const settingsCategoryLabel = [
-  'jsonMerge',
-  //  'scriptSettings',
-  //'displaySettings',
-  //  'wordPartySettings',
-  'components',
-  'meta',
-] as const
+export const settingsCategoryLabel = ['jsonMerge', 'components', 'appInfo'] as const
 export type SettingsCategoryType = (typeof settingsCategoryLabel)[number]
 
 /**
@@ -103,24 +96,9 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     description: 'ジェネレーターで表示できる、コンポーネントの設定を行います',
     icon: LayoutGrid,
   },
-  meta: {
+  appInfo: {
     label: 'アプリ情報',
     description: 'ライセンスや使用できる機能を確認できます',
     icon: Info,
   },
 }
-
-/**
-
-  scriptSettings: {
-    label: 'ゲームスクリプト', // 特殊なプレースホルダーを生成するための初期設定
-    description: 'ゲームのモードや、ランキングの上限回数等の初期設定を行います',
-    icon: Settings,
-  },
-  wordPartySettings: {
-    label: 'WordPartyリスト', // コメント・タイマーの設定時に補助的に使える
-    description: 'コメントやタイマー設定時に利用できる、WordPartyの発動リストを管理します',
-    icon: ListChecks,
-  },
-
-*/

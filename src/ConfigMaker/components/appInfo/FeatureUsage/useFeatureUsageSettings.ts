@@ -8,20 +8,6 @@ export function useFeatureUsageSettings() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  // developer
-  const createFeatureDeveloperRef = <K extends keyof FeatureUsageDeveloperType>(key: K) =>
-    computed<FeatureUsageDeveloperType[K]>({
-      get: () => data.value.featureUsage.developer[key],
-      set: (newValue) => {
-        omikujiStore.updateNestedFeatureUsage('developer', {
-          ...data.value.featureUsage.developer,
-          [key]: newValue,
-        })
-      },
-    })
-  const licenseVisible = createFeatureDeveloperRef('licenseVisible')
-  const jsonMergeSettings = createFeatureDeveloperRef('jsonMergeSettings')
-
   // usage
   const createFeatureUsageRef = <K extends keyof FeatureUsageUsageType>(key: K) =>
     computed<FeatureUsageUsageType[K]>({
@@ -33,7 +19,6 @@ export function useFeatureUsageSettings() {
         })
       },
     })
-
   const comments = createFeatureUsageRef('comments')
   const timers = createFeatureUsageRef('timers')
   const actionSets = createFeatureUsageRef('actionSets')
@@ -62,55 +47,19 @@ export function useFeatureUsageSettings() {
   const components = createStringArrayRef('components')
   const gameScripts = createStringArrayRef('gameScripts')
 
-  /**
-   * 「full」プリセット
-   */
-  const setFullVisibility = () => {
-    const fullSettings = {
-      comments: 'basic' as const,
-      timers: 'basic' as const,
-      actionSets: 'basic' as const,
-      placeholders: 'basic' as const,
-      characters: 'basic' as const,
-
-      characterVisible: 'basic' as const,
-      wordPartyLoading: 'internal' as const,
-      licenseVisible: 'basic' as const,
-
-      gameScriptSettings: 'pro' as const,
-      gameScripts: [] as string[],
-
-      jsonMergeSettings: 'basic' as const,
-      wordPartySettings: 'internal' as const,
-    }
-
-    omikujiStore.updateFeatureUsage(fullSettings)
-  }
-
-  /**
-   * 「solo」プリセット
-   */
-  const setSoloVisibility = () => {
-    const soloSettings = {
-      comments: 'basic' as const,
-      timers: 'experimental' as const,
-      actionSets: 'basic' as const,
-      placeholders: 'basic' as const,
-      characters: 'basic' as const,
-
-      characterVisible: 'experimental' as const,
-      wordPartyLoading: 'experimental' as const,
-      licenseVisible: 'experimental' as const,
-
-      gameScriptSettings: 'experimental' as const,
-      gameScripts: [] as string[],
-
-      jsonMergeSettings: 'experimental' as const,
-      wordPartySettings: 'experimental' as const,
-    }
-
-    omikujiStore.updateFeatureUsage(soloSettings)
-  }
+  // developer
+  const createFeatureDeveloperRef = <K extends keyof FeatureUsageDeveloperType>(key: K) =>
+    computed<FeatureUsageDeveloperType[K]>({
+      get: () => data.value.featureUsage.developer[key],
+      set: (newValue) => {
+        omikujiStore.updateNestedFeatureUsage('developer', {
+          ...data.value.featureUsage.developer,
+          [key]: newValue,
+        })
+      },
+    })
+  const licenseVisible = createFeatureDeveloperRef('licenseVisible')
+  const jsonMergeSettings = createFeatureDeveloperRef('jsonMergeSettings')
 
   return {
     // 基本
@@ -126,8 +75,5 @@ export function useFeatureUsageSettings() {
     //
     licenseVisible,
     jsonMergeSettings,
-    // プリセット
-    setFullVisibility,
-    setSoloVisibility,
   }
 }

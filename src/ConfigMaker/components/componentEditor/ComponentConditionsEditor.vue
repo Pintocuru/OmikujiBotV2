@@ -38,7 +38,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { useEnabledComponents } from '@/MainGenerator/components/useEnabledComponents'
+  import { useEnabledComponents } from '@/ConfigMaker/components/componentEditor/useEnabledComponents'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -46,7 +46,7 @@
   const { enabledComponents } = useEnabledComponents()
 
   // 個別のcomputed値
-  const conditions = computed(() => data.value.displaySettings.components.conditions)
+  const conditions = computed(() => data.value.components.conditions)
 
   // 汎用的な更新関数
   const toggleCondition = (condition: SettingsComponentsCondition) => {
@@ -54,6 +54,6 @@
       ? conditions.value.filter((c) => c !== condition)
       : [...conditions.value, condition]
 
-    omikujiStore.updateNestedComponents('conditions', newConditions)
+    omikujiStore.updateComponentsConditions(newConditions)
   }
 </script>

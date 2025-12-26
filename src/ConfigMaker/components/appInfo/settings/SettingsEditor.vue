@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/display/EditorSettingsEditor.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\settings\SettingsEditor.vue -->
 <template>
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
@@ -31,6 +31,7 @@
         @input="(e) => updateLicenseKeyHash((e.target as HTMLInputElement).value)"
         placeholder="****"
       />
+      <!-- ライセンススイッチ -->
       <span v-if="isDev">
         <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
         <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>

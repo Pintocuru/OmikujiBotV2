@@ -4,7 +4,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { DisplaySettingsType } from '@/types/OmikujiData/DisplaySettingsSchema'
 import { MetaDataType } from '@shared/types'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { ComponentsType, FeatureUsageType, SettingsType } from '@/types'
+import { ComponentsType, FeatureUsageType, SettingsComponentsCondition, SettingsType } from '@/types'
 
 /**
  * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
@@ -17,8 +17,8 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
   // components を更新
-  const updateComponents = (updates: Partial<ComponentsType>) => {
-    data.value.components = { ...data.value.components, ...updates }
+  const updateComponentsConditions = (newConditions: SettingsComponentsCondition[]) => {
+    data.value.components.conditions = newConditions
     hasChanged.value = true
   }
 
@@ -57,7 +57,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
 
   return {
     updateJsonMerge,
-    updateComponents,
+    updateComponentsConditions,
     updateNestedComponents,
     updateFeatureUsage,
     updateNestedFeatureUsage,

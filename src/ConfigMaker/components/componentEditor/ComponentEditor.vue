@@ -65,33 +65,6 @@
     >
       <CounterComponentEditor />
     </SectionCard>
-
-    <!-- エディター設定
-    <SectionCard
-      :isOpen="activeSection === 'editorSettings'"
-      @toggle="toggleSection('editorSettings')"
-      title="エディター設定"
-      description="エディターのテーマとライセンスの設定"
-    >
-      <EditorSettingsEditor />
-    </SectionCard>
-     -->
-
-    <template v-if="isGod">
-      <!-- コンポーネント可視性設定
-      <SectionCard
-        :isOpen="activeSection === 'visibilitySettings'"
-        @toggle="toggleSection('visibilitySettings')"
-        variant="warning"
-        title="コンポーネント可視性設定"
-        description="見えるのか…私が…！"
-      >
-        <VisibilitySettings />
-      </SectionCard> -->
-
-      <!-- 補足説明(´・ω・｀)
-      <DeveloperModeInfo /> -->
-    </template>
   </div>
 </template>
 
@@ -115,14 +88,8 @@
     | 'bubbleComponent'
     | 'bubbleComponentcharacter'
     | 'toastComponent'
-    | 'thumbnailComponent'
     | 'rankingComponent'
     | 'counterComponent'
-    | 'globalSettings'
-    | 'toastBubble'
-    | 'showCharacter'
-    | 'editorSettings'
-    | 'visibilitySettings'
     | null
   const activeSection = ref<SectionType>('componentsSettings') // 初期状態で文字・アニメーション設定を開く
 
@@ -137,5 +104,5 @@
   const { isGod } = useSettingMode()
 
   //
-  const conditions = computed(() => data.value.displaySettings.components.conditions)
+  const conditions = computed(() => data.value.components.conditions)
 </script>
