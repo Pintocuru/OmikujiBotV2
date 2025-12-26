@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\CounterComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\counter\CounterComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <div class="flex items-center gap-2">
@@ -166,11 +166,9 @@
 
   // 更新関数
   const updateCounterField = (field: keyof typeof counter.value, value: any) => {
-    omikujiStore.updateNestedDisplaySettings('components', {
-      counter: {
-        ...counter.value,
-        [field]: value,
-      },
+    omikujiStore.updateNestedComponents('counter', {
+      ...counter.value,
+      [field]: value,
     })
   }
 

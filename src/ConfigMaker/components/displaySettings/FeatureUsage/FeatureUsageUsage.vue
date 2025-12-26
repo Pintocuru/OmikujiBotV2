@@ -26,9 +26,9 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { categoryLabels, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
   import { AccessLevelLabels } from '@shared/types'
-  import { useVisibilitySettings } from './useVisibilitySettings'
+  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
 
-  const { categoryVisibility } = useVisibilitySettings()
+  const { categoryVisibility } = useFeatureUsageSettings()
 
   function getCategoryDisplayName(category: RecordCategoryType): string {
     return `${categoryLabels[category].label} (${category})`

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\BubbleComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\bubble\BubbleComponentEditor.vue -->
 <template>
   <div class="mx-auto">
     <!-- プレビュー表示 -->
@@ -85,15 +85,24 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
-  import { DEFAULT_COLOR_THEMES } from '@/MainGenerator/scripts/BotCharacter/CharacterColorPreset'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { hasAccess, useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
 
-  const bubble = computed(() => data.value.displaySettings.components.bubble)
+  const bubble = computed(() => data.value.components.bubble)
+
+  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
+
+  // 値を直接指定して更新する関数
+  const updateFieldValue = <K extends keyof typeof bubble.value>(field: K, value: (typeof bubble.value)[K]) => {
+    omikujiStore.updateNestedComponents('bubble', {
+      ...bubble.value,
+      [field]: value,
+    })
+  }
 
   // 単一の更新関数（型キャストを削減）
   const updateField = (field: keyof typeof bubble.value, event: Event) => {
@@ -105,23 +114,14 @@
           ? Number(target.value)
           : target.value
 
-    omikujiStore.updateNestedDisplaySettings('components', {
-      bubble: {
-        ...bubble.value,
-        [field]: value,
-      },
-    })
+    updateFieldValue(field, value as (typeof bubble.value)[typeof field])
   }
 
   // リセット関数（簡潔化）
   const resetField = (field: keyof typeof bubble.value) => {
-    const schemaDefaults = SettingsBubbleSchema.parse({})
-    omikujiStore.updateNestedDisplaySettings('components', {
-      bubble: {
-        ...bubble.value,
-        [field]: schemaDefaults[field],
-      },
-    })
+    if (field === 'defaultColor') return
+    const defaults = SettingsBubbleSchema.parse({})
+    updateFieldValue(field, defaults[field])
   }
 
   // ランダムカラー取得（キャッシュ可能なように分離）
@@ -129,12 +129,11 @@
     const characters = data.value.characters
     const keys = Object.keys(characters)
 
-    if (keys.length > 0) {
+    if (isCharacter.value && keys.length > 0) {
       const randomKey = keys[Math.floor(Math.random() * keys.length)]
       return characters[randomKey].color
     }
 
-    const defaults = Object.values(DEFAULT_COLOR_THEMES)
-    return defaults[Math.floor(Math.random() * defaults.length)]
+    return bubble.value.defaultColor
   })
 </script>

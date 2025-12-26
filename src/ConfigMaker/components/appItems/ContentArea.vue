@@ -52,7 +52,7 @@
   import ActionSetsEditor from '@ConfigComponents/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@ConfigComponents/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@ConfigComponents/characters/CharacterEditor.vue'
-  import DisplaySettingsEditor from '@ConfigComponents/displaySettings/DisplaySettingsEditor.vue'
+  import DisplaySettingsEditor from '@/ConfigMaker/components/componentEditor/ComponentEditor.vue'
   import PackageMetaEditor from '@ConfigComponents/meta/PackageMetaEditor.vue'
   import JsonMergeEditor from '@ConfigComponents/JsonMerge/JsonMergeEditor.vue'
 

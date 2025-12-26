@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/parts/CommentBubblePreview.vue -->
+<!-- src\ConfigMaker\components\componentEditor\bubble\CommentBubblePreview.vue -->
 <template>
   <div class="space-y-4">
     <!-- 横幅調整スライダー -->

@@ -1,5 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\visibility\ToolsVisibility.vue -->
-
+<!-- src\ConfigMaker\components\displaySettings\visibility\ComponentSpecificVisibility.vue -->
 <template>
   <SettingItem label="コンポーネント固有設定" description="特定コンポーネント内の要素の表示制御">
     <div class="space-y-3">
@@ -21,14 +20,14 @@
 </template>
 
 <script setup lang="ts">
-  import { useVisibilitySettings } from './useVisibilitySettings'
+  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
 
-  const { jsonMergeSettings } = useVisibilitySettings()
+  const { licenseVisible, jsonMergeSettings } = useFeatureUsageSettings()
 
   const settings = [
-    { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev)', model: jsonMergeSettings },
-    // { key: 'wordPartySettings', label: 'WordPartyリスト', model: wordPartySettings },
+    { key: 'licenseVisible', label: 'ライセンス記入表示 (licenseVisible)', model: licenseVisible },
+    { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev) (jsonMergeSettings)', model: jsonMergeSettings },
   ]
 </script>

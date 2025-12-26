@@ -1,3 +1,4 @@
+<!-- src\ConfigMaker\components\componentEditor\toast\CharacterBadgeSelector.vue -->
 <template>
   <div class="flex flex-wrap gap-2">
     <div
@@ -16,8 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { CharacterType } from '@/types' // 仮のインポートパス
+  import { CharacterType } from '@/types'
 
   const props = defineProps<{
     characters: Record<string, CharacterType>

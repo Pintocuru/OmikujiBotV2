@@ -24,7 +24,7 @@
   import { computed } from 'vue'
   import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
-  import CommentBubblePreview from '@/ConfigMaker/components/displaySettings/bubble/CommentBubblePreview.vue'
+  import CommentBubblePreview from '@/ConfigMaker/components/componentEditor/bubble/CommentBubblePreview.vue'
   import ColorModeSelector from './ColorModeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'

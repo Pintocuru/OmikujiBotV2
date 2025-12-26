@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\SettingsSchema.ts
+// src\types\OmikujiData\SettingsSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 

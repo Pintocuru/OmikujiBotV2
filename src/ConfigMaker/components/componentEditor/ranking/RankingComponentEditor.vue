@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\RankingComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <!-- ランキングプレビュー -->
@@ -117,11 +117,9 @@
 
   // 更新関数
   const updateRankingField = (field: keyof typeof ranking.value, value: any) => {
-    omikujiStore.updateNestedDisplaySettings('components', {
-      ranking: {
-        ...ranking.value,
-        [field]: value,
-      },
+    omikujiStore.updateNestedComponents('ranking', {
+      ...ranking.value,
+      [field]: value,
     })
   }
 

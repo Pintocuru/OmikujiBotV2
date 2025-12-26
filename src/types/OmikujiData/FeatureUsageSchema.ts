@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\FeatureUsageSchema.ts
+// src\types\OmikujiData\FeatureUsageSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
 

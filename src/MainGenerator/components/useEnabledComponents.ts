@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\useEnabledComponents.ts
+// src\MainGenerator\components\useEnabledComponents.ts
 import { computed } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { storeToRefs } from 'pinia'

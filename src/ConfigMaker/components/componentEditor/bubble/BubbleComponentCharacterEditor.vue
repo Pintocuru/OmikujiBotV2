@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\BubbleComponentCharacterEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\bubble\BubbleComponentCharacterEditor.vue -->
 <template>
   <div class="relative card bg-base-100">
     <div class="card-body p-4 gap-4">
@@ -55,11 +55,9 @@
 
   // 汎用的な更新関数
   const updateBubbleField = (field: keyof typeof bubble.value, value: any) => {
-    omikujiStore.updateNestedDisplaySettings('components', {
-      bubble: {
-        ...bubble.value,
-        [field]: value,
-      },
+    omikujiStore.updateNestedComponents('bubble', {
+      ...bubble.value,
+      [field]: value,
     })
   }
 

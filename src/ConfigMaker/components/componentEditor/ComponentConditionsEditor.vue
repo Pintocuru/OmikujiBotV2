@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\ComponentConditionsEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\ComponentConditionsEditor.vue -->
 <template>
   <!-- コンポーネント表示設定 -->
   <SettingItem label="表示するコンポーネント" description="トリガーの種類を選択">
@@ -54,9 +54,6 @@
       ? conditions.value.filter((c) => c !== condition)
       : [...conditions.value, condition]
 
-    omikujiStore.updateNestedDisplaySettings('components', {
-      ...data.value.displaySettings.components,
-      conditions: newConditions,
-    })
+    omikujiStore.updateNestedComponents('conditions', newConditions)
   }
 </script>

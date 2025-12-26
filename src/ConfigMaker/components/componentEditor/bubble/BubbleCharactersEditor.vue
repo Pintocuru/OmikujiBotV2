@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\BubbleCharactersEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\bubble\BubbleCharactersEditor.vue -->
 <template>
   <div class="card bg-base-100 shadow-md">
     <div class="card-body gap-6 p-4">
@@ -132,11 +132,9 @@
    * ストアの値を更新する関数
    */
   const updateStore = (newGroups: string[][]) => {
-    omikujiStore.updateNestedDisplaySettings('components', {
-      bubble: {
-        ...bubble.value,
-        showCharacters: newGroups,
-      },
+    omikujiStore.updateNestedComponents('bubble', {
+      ...bubble.value,
+      showCharacters: newGroups,
     })
   }
 

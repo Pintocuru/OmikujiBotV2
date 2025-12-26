@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\CharacterAvatarPreview.vue -->
+<!-- src\ConfigMaker\components\componentEditor\bubble\CharacterAvatarPreview.vue -->
 <template>
   <div class="flex flex-col md:flex-row justify-around gap-4 p-4 border rounded-lg border-base-200">
     <!-- コメントで表示する -->

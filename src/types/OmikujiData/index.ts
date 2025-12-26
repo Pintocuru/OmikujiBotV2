@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\index
+// src\types\OmikujiData\index
 
 // 各型定義の公開
 export * from './CategoryType'

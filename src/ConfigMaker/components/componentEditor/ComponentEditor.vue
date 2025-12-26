@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\DisplaySettingsEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\ComponentEditor.vue -->
 <template>
   <div class="space-y-4">
     <!-- コンポーネント表示設定 -->
@@ -66,7 +66,7 @@
       <CounterComponentEditor />
     </SectionCard>
 
-    <!-- エディター設定 -->
+    <!-- エディター設定
     <SectionCard
       :isOpen="activeSection === 'editorSettings'"
       @toggle="toggleSection('editorSettings')"
@@ -75,10 +75,10 @@
     >
       <EditorSettingsEditor />
     </SectionCard>
+     -->
 
-    <!-- 開発者用設定 -->
     <template v-if="isGod">
-      <!-- コンポーネント可視性設定 -->
+      <!-- コンポーネント可視性設定
       <SectionCard
         :isOpen="activeSection === 'visibilitySettings'"
         @toggle="toggleSection('visibilitySettings')"
@@ -87,26 +87,23 @@
         description="見えるのか…私が…！"
       >
         <VisibilitySettings />
-      </SectionCard>
+      </SectionCard> -->
 
-      <!-- 補足説明(´・ω・｀) -->
-      <DeveloperModeInfo />
+      <!-- 補足説明(´・ω・｀)
+      <DeveloperModeInfo /> -->
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import ComponentConditionsEditor from './global/ComponentConditionsEditor.vue'
+  import ComponentConditionsEditor from './ComponentConditionsEditor.vue'
   import BubbleComponentEditor from './bubble/BubbleComponentEditor.vue'
   import BubbleComponentCharacterEditor from './bubble/BubbleComponentCharacterEditor.vue'
   import ToastComponentEditor from './toast/ToastComponentEditor.vue'
   import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
-  import EditorSettingsEditor from './editor/EditorSettingsEditor.vue'
-  import VisibilitySettings from './developer/VisibilitySettings.vue'
-  import DeveloperModeInfo from './developer/DeveloperModeInfo.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'

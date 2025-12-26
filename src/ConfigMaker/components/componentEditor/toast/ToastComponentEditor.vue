@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\components\ToastComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
     <!-- トーストサンプル表示 -->
@@ -30,7 +30,7 @@
   >
     <ColorModeSelector
       :model-value="toastSettings.defaultColor"
-      @update:model-value="updateToastField('defaultColor', $event)"
+      @update:model-value="updateField('defaultColor', $event)"
     />
   </SettingItem>
 
@@ -45,7 +45,7 @@
       type="checkbox"
       class="toggle toggle-primary"
       :checked="toastSettings.showToastsOnRight"
-      @change="(e) => updateToastField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
+      @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">
       {{ toastSettings.showToastsOnRight ? '右側に表示する' : '左側に表示する' }}
@@ -68,7 +68,7 @@
       type="checkbox"
       class="toggle toggle-primary"
       :checked="toastSettings.showToastsCharacter"
-      @change="(e) => updateToastField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
+      @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">キャラクターを表示する</span>
   </SettingItem>
@@ -82,7 +82,7 @@
     <CharacterBadgeSelector
       :characters="data.characters"
       :selectedKeys="toastSettings.showThumbnail"
-      @update:selectedKeys="(keys: string[]) => updateToastField('showThumbnail', keys)"
+      @update:selectedKeys="(keys: string[]) => updateField('showThumbnail', keys)"
     />
   </SettingItem>
 </template>
@@ -105,10 +105,7 @@
 
   const toastSettings = computed(() => data.value.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
-  const isCharacter = computed(() => {
-    return hasAccess(data.value.featureUsage.usage.characters)
-  })
-
+  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
     const selectedKeys = new Set(toastSettings.value.showThumbnail)
@@ -116,7 +113,7 @@
   })
 
   // 更新関数
-  const updateToastField = (field: keyof typeof toastSettings.value, value: any) => {
+  const updateField = (field: keyof typeof toastSettings.value, value: any) => {
     omikujiStore.updateNestedComponents('toast', {
       ...toastSettings.value,
       [field]: value,
@@ -126,7 +123,7 @@
   // リセット関数
   const resetField = (field: keyof typeof toastSettings.value) => {
     const defaults = SettingsToastSchema.parse({})
-    updateToastField(field, defaults[field])
+    updateField(field, defaults[field])
   }
 
   const resetMap = {
