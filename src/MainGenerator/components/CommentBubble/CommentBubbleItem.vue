@@ -46,11 +46,11 @@
 
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
-  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
 
   const props = withDefaults(
     defineProps<{
-      botName?: string
+      botName: string | null
       message: string
       color?: CharacterColorType
       brightnessLevel?: number
@@ -60,8 +60,7 @@
       animatedTextSpeed?: number
     }>(),
     {
-      botName: '',
-      message: '(未記入)',
+      color: () => CharacterColorScheme.parse({}),
       brightnessLevel: 0,
       customClasses: 'p-4 rounded-xl',
       customArrowClasses:

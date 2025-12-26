@@ -3,7 +3,9 @@ import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiD
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
-import { OmikujiDataTypeV1 } from './v1_to_v2/OmikujiDataV1/OmikujiDataSchema'
+import { resolveSettingMode } from '@/types/SettingMode'
+import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
+import { getAvailableComponents } from '@/ConfigMaker/components/componentEditor/componentRules'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -27,18 +29,20 @@ export function normalizeData(data: unknown): OmikujiDataType {
   // まずは生データをそのまま使う
   let updatedData: any = { ...data }
 
+  // v1 -> v1.3
   if (currentDataVersion < 1.3) {
     console.log('Migrating data from v1 to v1.3...')
     updatedData = migrateV100ToV130(updatedData)
   }
 
+  // v1.3 -> v2
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1 to v2...')
     updatedData = migrateV130ToV200(updatedData)
   }
 
-  // 最後にスキーマで保証
-  return OmikujiDataSchema.parse({
+  // スキーマで保証
+  const hoge = OmikujiDataSchema.parse({
     ...updatedData,
     meta: {
       ...updatedData.meta,
@@ -46,4 +50,12 @@ export function normalizeData(data: unknown): OmikujiDataType {
       dataVersion: DATA_VERSION,
     },
   })
+
+  // PRO,GOD-MODE だったときの FeatureUsageSchema 変更(Advは変更なし)
+  const licenseKeyHash = hoge.settings.licenseKeyHash
+  const license = resolveSettingMode(licenseKeyHash)
+  hoge.featureUsage.components = getAvailableComponents(license, hoge.featureUsage.components)
+  hoge.featureUsage.gameScripts = getAvailableScripts(license, hoge.featureUsage.gameScripts)
+
+  return hoge
 }

@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\settings\SettingsEditor.vue -->
+<!-- src\ConfigMaker\components\appInfo\settings\SettingsEditor.vue -->
 <template>
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">

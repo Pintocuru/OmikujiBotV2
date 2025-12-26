@@ -7,7 +7,7 @@
       <div v-if="!isToast" class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
           :key="messageKey"
-          :botName="character ? character.displayName : undefined"
+          :botName="character ? character.displayName : null"
           :message="processedMessage"
           :color="character ? character.color : toastSettings.defaultColor"
           @click="refreshMessage"

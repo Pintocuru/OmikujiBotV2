@@ -39,7 +39,7 @@
       botMessage?: BotMessage
       simpleMessage?: string
       showToastsOnRight?: boolean
-      character?: CharacterType | null
+      character: CharacterType | null
       iconKey?: CharacterEmotionType
       isCharacterDisplay?: boolean
       clickable?: boolean

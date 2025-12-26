@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageGames.vue -->
+<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageGames.vue -->
 <template>
   <SettingItem label="ゲームスクリプト設定" description="ゲームスクリプト関連の表示制御">
     <!-- 利用可能なゲームスクリプト -->

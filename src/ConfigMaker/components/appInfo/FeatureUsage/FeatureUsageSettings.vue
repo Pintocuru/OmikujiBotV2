@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageSettings.vue -->
+<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageSettings.vue -->
 <template>
   <div class="space-y-4">
     <!-- プリセットボタン -->
