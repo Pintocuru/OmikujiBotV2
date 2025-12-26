@@ -28,8 +28,8 @@
 
     <!-- BOTコメント表現設定 -->
     <SectionCard
-      :isOpen="activeSection === 'displaySettings'"
-      @toggle="toggleSection('displaySettings')"
+      :isOpen="activeSection === 'botComments'"
+      @toggle="toggleSection('botComments')"
       title="BOTコメント表現設定"
       :subTitle="``"
       description="BOTコメントを読み上げる方法を指定します"
@@ -62,7 +62,7 @@
   import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理
-  type SectionType = 'basicInfo' | 'colorSettings' | 'displaySettings' | 'serviceSettings' | 'imageSettings' | null
+  type SectionType = 'basicInfo' | 'colorSettings' | 'botComments' | 'serviceSettings' | 'imageSettings' | null
   const activeSection = ref<SectionType>('basicInfo') // 初期状態で基本情報を開く
 
   // セクションの切り替え

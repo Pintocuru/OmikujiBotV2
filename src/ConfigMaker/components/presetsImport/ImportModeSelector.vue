@@ -1,5 +1,6 @@
 <!-- src\ConfigMaker\components\presetsImport\ImportModeSelector.vue -->
 <template>
+  <!-- 読み込みモード の廃止(すべてマージモードに変更) -->
   <SettingItem label="読み込みモード">
     <div class="flex flex-col gap-3">
       <label class="flex items-start gap-3 cursor-pointer">

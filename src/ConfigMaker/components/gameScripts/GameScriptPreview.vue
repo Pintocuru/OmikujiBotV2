@@ -46,7 +46,7 @@
   const scriptManager = new GameScriptManager()
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.displaySettings.components.bubble)
+  const bubbleSettings = computed(() => data.value.components.bubble)
 
   // キャラクター取得
   const isValid = computed(

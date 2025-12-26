@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\visibility\FeatureUsageComponents.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageComponents.vue -->
 <template>
   <SettingItem label="コンポーネント設定" description="ジェネレーターのコンポーネント表示制御">
     <!-- 利用可能なゲームスクリプト -->

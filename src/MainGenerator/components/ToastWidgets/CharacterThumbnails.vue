@@ -22,7 +22,7 @@
 
   const appStore = useAppStore()
 
-  const toastSettings = computed(() => appStore.data.displaySettings.components.toast)
+  const toastSettings = computed(() => appStore.data.components.toast)
   const characterArray = computed(() => appStore.characterCollector.getUsedCharacterArray())
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)

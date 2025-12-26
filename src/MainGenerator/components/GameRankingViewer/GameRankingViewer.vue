@@ -27,9 +27,7 @@
   const { data, botMessages } = storeToRefs(appStore)
 
   // ランキング設定を取得
-  const rankingSettings = computed(() => {
-    return data.value?.displaySettings?.components?.ranking
-  })
+  const rankingSettings = computed(() => data.value.components.ranking)
 
   // ランキング対象のメッセージをフィルタリング
   const rankingScoreMessages = computed(() => {

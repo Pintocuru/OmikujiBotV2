@@ -8,7 +8,7 @@ export const useMessageFilter = () => {
   const appStore = useAppStore()
   const { botMessages, data } = storeToRefs(appStore)
 
-  const showCharacters = computed(() => data.value.displaySettings?.components?.bubble?.showCharacters || [])
+  const showCharacters = computed(() => data.value.components.bubble.showCharacters || [])
 
   return useMessageFilterCore(botMessages, showCharacters)
 }

@@ -113,7 +113,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isPro, isGod } = useSettingMode()
 
-  const ranking = computed(() => data.value.displaySettings.components.ranking)
+  const ranking = computed(() => data.value.components.ranking)
 
   // 更新関数
   const updateRankingField = (field: keyof typeof ranking.value, value: any) => {

@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\ComponentConditionsEditor.vue -->
 <template>
   <!-- コンポーネント表示設定 -->
-  <SettingItem label="表示するコンポーネント" description="トリガーの種類を選択">
+  <SettingItem label="表示するコンポーネント" description="ジェネレーターで表示するUIを選択">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="comp in enabledComponents"

@@ -119,7 +119,7 @@
   const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
 
   // 利用可能なゲームスクリプトのキー一覧
-  const availableGameScripts = computed(() => data.value.displaySettings.developer.visibility.gameScripts)
+  const availableGameScripts = computed(() => data.value.featureUsage.gameScripts)
 
   // キャラクター一覧（レコードから配列に変換）
   const charactersList = computed(() => {

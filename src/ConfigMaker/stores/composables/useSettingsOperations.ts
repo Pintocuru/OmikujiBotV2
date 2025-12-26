@@ -1,14 +1,11 @@
 // src/ConfigMaker/script/stores/composables/useSettingsOperations.ts
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { DisplaySettingsType } from '@/types/OmikujiData/DisplaySettingsSchema'
-import { MetaDataType } from '@shared/types'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
 import { ComponentsType, FeatureUsageType, SettingsComponentsCondition, SettingsType } from '@/types'
 
 /**
- * カテゴリに属さないプロパティ（displaySettings, wordPartySettings, scriptSettings）
- * の操作機能を提供するコンポーザブル
+ * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル
  */
 export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   // jsonMerge を更新する関数

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\visibility\ComponentSpecificVisibility.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageDeveloper.vue -->
 <template>
   <SettingItem label="コンポーネント固有設定" description="特定コンポーネント内の要素の表示制御">
     <div class="space-y-3">

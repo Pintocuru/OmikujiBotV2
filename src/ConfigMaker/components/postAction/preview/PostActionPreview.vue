@@ -3,8 +3,26 @@
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->
     <div v-if="action.actionType === 'message'" class="w-full">
+      <!-- フキダシ -->
+      <div v-if="!isToast" class="space-y-8 flex flex-col items-center">
+        <CommentBubbleItem
+          :key="messageKey"
+          :botName="character ? character.displayName : undefined"
+          :message="processedMessage"
+          :color="character ? character.color : toastSettings.defaultColor"
+          @click="refreshMessage"
+          class="cursor-pointer"
+        />
+        <CharacterAvatar
+          v-if="isCharacter"
+          :profileImage="character ? character.image[action.iconKey] : []"
+          :characterSize="bubbleSettings.characterSize"
+          :showCharacterFrame="false"
+        />
+      </div>
       <!-- トースト -->
-      <div v-if="isToast" @click="refreshToast" class="cursor-pointer">
+
+      <div v-else @click="refreshToast" class="cursor-pointer">
         <ChatBubbleItem
           :key="toastKey"
           :simpleMessage="processedToastMessage"
@@ -12,23 +30,6 @@
           :character="character"
           :iconKey="action.iconKey"
           :isCharacterDisplay="toastSettings.showToastsCharacter"
-        />
-      </div>
-
-      <!-- フキダシ -->
-      <div v-else class="space-y-8 flex flex-col items-center">
-        <CommentBubbleItem
-          :key="messageKey"
-          :botName="character.displayName"
-          :message="processedMessage"
-          :color="character.color"
-          @click="refreshMessage"
-          class="cursor-pointer"
-        />
-        <CharacterAvatar
-          :profileImage="characters[action.characterKey].image[action.iconKey]"
-          :characterSize="bubbleSettings.characterSize"
-          :showCharacterFrame="false"
         />
       </div>
     </div>
@@ -63,10 +64,9 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { defaultPlaceholdersShortLabels, PostActionType } from '@/types/'
+  import { PostActionType } from '@/types/'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
-  import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
@@ -74,8 +74,8 @@
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
   import SoundTestButton from '@/ConfigMaker/components/wordPartySettings/SoundTestButton.vue'
-  import { VariablePlaceholderProcessor } from '@/MainGenerator/scripts/VariablePlaceholder/VariableProcessor'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
+  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{ action: PostActionType }>()
 
@@ -83,8 +83,10 @@
   const { data } = storeToRefs(omikujiStore)
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.displaySettings.components.bubble)
-  const toastSettings = computed(() => data.value.displaySettings.components.toast)
+  const bubbleSettings = computed(() => data.value.components.bubble)
+  const toastSettings = computed(() => data.value.components.toast)
+
+  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
 
   // プレースホルダー処理
   const processMessage = (message: string) => {
@@ -93,10 +95,8 @@
 
   // キャラクター取得
   const character = computed(() => {
-    if (props.action.actionType === 'message') {
-      return characters.value[props.action.characterKey] || Object.values(characters.value)[0]
-    }
-    return Object.values(characters.value)[0]
+    if (!isCharacter.value || props.action.actionType !== 'message') return null
+    return characters.value[props.action.characterKey]
   })
 
   // トースト表示判定

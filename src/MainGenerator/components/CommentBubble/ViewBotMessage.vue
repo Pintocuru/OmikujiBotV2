@@ -38,12 +38,12 @@
   const appStore = useAppStore()
 
   // 設定の取得
-  const bubble = computed(() => appStore.data.displaySettings?.components.bubble || {})
-  const bubbleMotionEnter = computed(() => bubble.value?.bubbleMotionEnter)
-  const bubbleTextAnimate = computed(() => bubble.value?.bubbleTextAnimate)
+  const bubble = computed(() => appStore.data.components.bubble || {})
+  const bubbleMotionEnter = computed(() => bubble.value.bubbleMotionEnter)
+  const bubbleTextAnimate = computed(() => bubble.value.bubbleTextAnimate)
 
   // toast専用コンポーネントが無効な場合、toastをフォールバック表示
-  const conditions = computed(() => appStore.data.displaySettings?.components?.conditions || [])
+  const conditions = computed(() => appStore.data.components?.conditions || [])
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
 
   // 新しいフィルタリングロジックを使用

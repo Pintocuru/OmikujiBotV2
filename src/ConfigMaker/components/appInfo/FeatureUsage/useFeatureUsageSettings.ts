@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/displaySettings/visibility/useVisibilitySettings.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\useFeatureUsageSettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'

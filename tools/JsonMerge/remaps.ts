@@ -1,7 +1,7 @@
 // tools/JsonMerge/remaps.ts
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
-import type { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import type { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterEmotionType } from '@/types'
 
 /**
@@ -53,37 +53,13 @@ function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapT
  * @returns リマップ後のOmikujiData
  */
 export function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[]): OmikujiDataType {
-  if (!remaps || remaps.length === 0) {
-    return data
-  }
+  if (!remaps || remaps.length === 0) return data
 
   const clonedData: OmikujiDataType = JSON.parse(JSON.stringify(data))
 
   // commentsのPostActionをリマップ
-  if (clonedData.comments) {
-    for (const key in clonedData.comments) {
-      const comment = clonedData.comments[key]
-      if (comment.omikuji) {
-        comment.omikuji = comment.omikuji.map((item) => ({
-          ...item,
-          postActions: item.postActions ? remapPostActions(item.postActions, remaps) : [],
-        }))
-      }
-    }
-  }
-
-  // timersのPostActionをリマップ
-  if (clonedData.timers) {
-    for (const key in clonedData.timers) {
-      const timer = clonedData.timers[key]
-      if (timer.omikuji) {
-        timer.omikuji = timer.omikuji.map((item) => ({
-          ...item,
-          postActions: item.postActions ? remapPostActions(item.postActions, remaps) : [],
-        }))
-      }
-    }
-  }
+  remapOmikujiGroup(clonedData.comments, remaps)
+  remapOmikujiGroup(clonedData.timers, remaps)
 
   // actionSetsのPostActionをリマップ
   if (clonedData.actionSets) {
@@ -97,4 +73,20 @@ export function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[])
 
   console.log(`[JsonMerge] Applied ${remaps.length} remap(s)`)
   return clonedData
+}
+
+function remapOmikujiGroup(
+  group: Record<string, { omikuji: OmikujiItemType[] }> | undefined,
+  remaps: JsonMergeRemapType[]
+) {
+  if (!group) return
+
+  for (const key in group) {
+    const entry = group[key]
+
+    entry.omikuji = entry.omikuji.map((item) => ({
+      ...item,
+      postActions: item.postActions ? remapPostActions(item.postActions, remaps) : [],
+    }))
+  }
 }

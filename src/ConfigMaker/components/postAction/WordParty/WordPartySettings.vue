@@ -2,14 +2,13 @@
 <template>
   <!-- WordParty -->
   <SettingItem label="🎉 WordParty" description="WordPartyで演出する内容">
-    <WordPartyField v-model:wordParty="wordPartyValue" :action="action" :index="0" />
+    <input type="text" v-model="wordPartyValue" class="input input-bordered input-sm flex-1" placeholder="WordParty" />
   </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionWordPartyType } from '@/types/'
-  import WordPartyField from './WordPartyField.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
 
   const props = defineProps<{

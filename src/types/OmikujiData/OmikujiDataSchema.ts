@@ -23,7 +23,7 @@ export const OmikujiDataSchema = z.object({
   actionSets: recordNormalization(ActionSetSchema),
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),
-  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
+  //  displaySettings: DisplaySettingsSchema.catch(DisplaySettingsSchema.parse({})),
   components: ComponentsSchema.catch(ComponentsSchema.parse({})),
   featureUsage: FeatureUsageSchema.catch(FeatureUsageSchema.parse({})),
   settings: SettingsSchema.catch(SettingsSchema.parse({})),

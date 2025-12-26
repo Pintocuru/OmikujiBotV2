@@ -34,7 +34,7 @@
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
-  const toastSettings = computed(() => appStore.data.displaySettings.components.toast)
+  const toastSettings = computed(() => appStore.data.components.toast)
   const characters = computed(() => appStore.characterCollector.getUsedCharacterData())
 
   // コメント表示ロジック

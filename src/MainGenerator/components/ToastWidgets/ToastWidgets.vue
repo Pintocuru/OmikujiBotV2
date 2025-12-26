@@ -16,5 +16,5 @@
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const appStore = useAppStore()
-  const toast = computed(() => appStore.data.displaySettings.components.toast)
+  const toast = computed(() => appStore.data.components.toast)
 </script>

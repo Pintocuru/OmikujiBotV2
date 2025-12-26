@@ -19,7 +19,7 @@ export function useViewBotCharacter() {
   const { displayedComments, removeComment, start, stop } = useBotDisplay(botMessages, 'comment')
 
   // omikujiDataの設定取得
-  const base = computed(() => appStore.data.displaySettings?.components.bubble || {})
+  const base = computed(() => appStore.data.components.bubble || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
 
   // storeから利用可能なキャラクターを取得

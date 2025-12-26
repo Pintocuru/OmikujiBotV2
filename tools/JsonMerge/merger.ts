@@ -2,14 +2,7 @@
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
 /**
- * 複数のOmikujiDataを統合
- *
- * Record型プロパティ（comments, timers, actionSets, placeholders）は
- * キーごとにマージされます
- * その他のプロパティ（characters, settings系）は後ろの要素で上書きされます
- *
- * @param dataArray - マージするOmikujiDataの可変長配列
- * @returns マージ後の単一のOmikujiData
+ * JsonMerge:複数のOmikujiDataを統合
  */
 export function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataType {
   const result: OmikujiDataType = {} as OmikujiDataType
@@ -21,18 +14,17 @@ export function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataTy
     result.actionSets = { ...result.actionSets, ...data.actionSets }
     result.placeholders = { ...result.placeholders, ...data.placeholders }
 
-    // characters: 上書き（複数マージの場合、最後のcharactersで統一）
+    // characters は上書き
     result.characters = data.characters
 
     // 設定系: 上書き（最後のデータで統一）
-    result.wordPartySettings = data.wordPartySettings
+    result.components = data.components
+    result.featureUsage = data.featureUsage
+    result.settings = data.settings
     result.meta = data.meta
-    result.displaySettings = data.displaySettings
 
     // jsonMerge: 存在する場合のみセット（通常は最後は空配列）
-    if (data.jsonMerge) {
-      result.jsonMerge = data.jsonMerge
-    }
+    if (data.jsonMerge) result.jsonMerge = data.jsonMerge
   }
 
   return result

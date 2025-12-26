@@ -14,7 +14,7 @@
             :remove-comment="(id) => removeCommentWithIconReset(id, character.key)"
             :enter-motion="enterMotion"
             :leave-motion="enterMotion"
-            :animated-text="bubbleTextAnimate"
+            :animated-text="bubble.bubbleTextAnimate"
             :show-toast-fallback="showToastFallback"
           />
         </div>
@@ -35,21 +35,38 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
+  import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useViewBotCharacter } from './composables/useViewBotCharacter'
-  import { useCharacterWithComments } from './composables/useCharacterWithComments'
   import CommentDisplay from '@/MainGenerator/components/CommentBubble/CommentDisplay.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
-  import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
-  const showCharacters = data.value.displaySettings.components.bubble.showCharacters
+  const showCharacters = data.value.components.bubble.showCharacters
   const characters = computed(() => data.value.characters)
+  const bubble = computed(() => data.value.components.bubble)
+  const conditions = computed(() => data.value.components.conditions || [])
+  const showToastFallback = computed(() => !conditions.value.includes('toast'))
 
-  const { lastCommenterKey, getCharacterImage, getCharacterComments, removeCommentWithIconReset, start, stop } =
-    useViewBotCharacter()
+  const {
+    lastCommenterKey,
+    getCharacterImage,
+    getCharacterComments,
+    removeCommentWithIconReset,
+    enterMotion,
+    start,
+    stop,
+  } = useViewBotCharacter()
+
+  const getStyle = (key: string) => {
+    const isActive = key === lastCommenterKey.value
+    return {
+      zIndex: isActive ? 50 : 0,
+      filter: isActive ? 'brightness(100%)' : 'brightness(60%)',
+    }
+  }
 
   const resolveGroupCharacter = (group: string[], lastCommenterKey?: string): string | undefined => {
     if (!group.length) return
@@ -59,7 +76,7 @@
       return lastCommenterKey
     }
 
-    // それ以外は先頭（デフォルト）
+    // それ以外は先頭(デフォルト)
     return group[0]
   }
 
@@ -81,14 +98,6 @@
 
     return result
   })
-
-  const base = useCharacterWithComments(null, [], false)
-
-  const getStyle = (key: string) =>
-    useCharacterWithComments(characters.value[key], getCharacterComments(key), key === lastCommenterKey.value).style
-      .value
-
-  const { enterMotion, bubble, bubbleTextAnimate, showToastFallback } = base
 
   onMounted(start)
   onUnmounted(stop)

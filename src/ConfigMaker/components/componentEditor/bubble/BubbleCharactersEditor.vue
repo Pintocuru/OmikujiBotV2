@@ -88,7 +88,7 @@
   const errorMessage = ref('')
 
   // Computed properties
-  const bubble = computed(() => data.value.displaySettings.components.bubble)
+  const bubble = computed(() => data.value.components.bubble)
   const characters = computed(() => data.value.characters)
   const availableCharacters = computed(() => Object.keys(characters.value))
 

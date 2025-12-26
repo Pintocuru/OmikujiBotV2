@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\displaySettings\visibility\BasicComponentsVisibility.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageUsage.vue -->
 <template>
   <SettingItem label="Recordコンポーネント表示" description="コンポーネントの表示・非表示を制御">
     <div class="grid grid-cols-1 gap-2">

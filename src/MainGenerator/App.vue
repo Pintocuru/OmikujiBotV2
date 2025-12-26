@@ -36,17 +36,15 @@
   // Pinia Store
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const components = computed(() => data.value.displaySettings.components)
+  const components = computed(() => data.value.components)
+
+  // フォントの指定
+  const fontClass = computed(() => useFontFamily(components.value.bubble.fontFamily ?? 'default'))
 
   const ruleCommentProcessor = new RuleCommentProcessor()
 
   // comment/timerルール稼働
   const { initializeApp, startTimers } = useRuleProcessor()
-
-  // フォントの指定
-  const fontClass = computed(() =>
-    useFontFamily(appStore.data.displaySettings.components.bubble.fontFamily ?? 'default')
-  )
 
   // 初期化処理
   onMounted(async () => {
