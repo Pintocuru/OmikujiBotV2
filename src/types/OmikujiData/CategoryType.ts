@@ -10,7 +10,7 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageCircle, Timer, Hash, Users, Monitor, Tags, MessagesSquare, Layers } from 'lucide-vue-next'
+import { MessageCircle, Timer, Hash, Users, LayoutGrid, Info, MessagesSquare, Layers } from 'lucide-vue-next'
 import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
@@ -53,8 +53,9 @@ export const isRulesCategory = (category: CategoryType): category is RulesCatego
 export const settingsCategoryLabel = [
   'jsonMerge',
   //  'scriptSettings',
-  'displaySettings',
+  //'displaySettings',
   //  'wordPartySettings',
+  'components',
   'meta',
 ] as const
 export type SettingsCategoryType = (typeof settingsCategoryLabel)[number]
@@ -93,19 +94,19 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     icon: Hash,
   },
   characters: {
-    label: 'キャラクター・カラー', // BOTメッセージで使用するアイコンやカラー
+    label: 'キャラクター', // BOTメッセージで使用するアイコンやカラー
     description: 'BOTメッセージのキャラクターや吹き出し・トーストの色を設定します',
     icon: Users,
   },
-  displaySettings: {
+  components: {
     label: 'コンポーネント', // BOTメッセージやランキングの表示・非表示
     description: 'ジェネレーターで表示できる、コンポーネントの設定を行います',
-    icon: Monitor,
+    icon: LayoutGrid,
   },
   meta: {
-    label: 'Metaタグ',
-    description: 'このおみくじデータのメタ情報です',
-    icon: Tags,
+    label: 'アプリ情報',
+    description: 'ライセンスや使用できる機能を確認できます',
+    icon: Info,
   },
 }
 

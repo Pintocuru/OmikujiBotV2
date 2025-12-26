@@ -14,9 +14,6 @@ export const useCategoryUtils = () => {
    * ナビゲーションのアイテム数バッジ表示
    */
   const getCategoryItemCount = (category: CategoryType): number => {
-    const { gameScripts } = data.value.displaySettings.developer.visibility
-
-    if (category === 'displaySettings') return 0
     if (category === 'meta') return 0
     if (category === 'jsonMerge') return data.value.jsonMerge.length
 
@@ -28,16 +25,16 @@ export const useCategoryUtils = () => {
    * ナビゲーションの表示・非表示設定
    */
   const filteredCategoryLabels = computed<Record<CategoryType, (typeof categoryLabels)[CategoryType]>>(() => {
-    const { visibility } = data.value.displaySettings.developer
+    const { usage, developer } = data.value.featureUsage
 
     const excludeKeys: CategoryType[] = []
 
-    // visibility の設定に基づいて非表示にするカテゴリを決定
-    if (!isDev || !hasAccess(visibility.jsonMergeSettings)) excludeKeys.push('jsonMerge') // 開発者のみの機能
-    if (!hasAccess(visibility.comments)) excludeKeys.push('comments')
-    if (!hasAccess(visibility.timers)) excludeKeys.push('timers')
-    if (!hasAccess(visibility.placeholders)) excludeKeys.push('placeholders')
-    if (!hasAccess(visibility.characters)) excludeKeys.push('characters')
+    // usage の設定に基づいて非表示にするカテゴリを決定
+    if (!isDev || !hasAccess(developer.jsonMergeSettings)) excludeKeys.push('jsonMerge') // 開発者のみの機能
+    if (!hasAccess(usage.comments)) excludeKeys.push('comments')
+    if (!hasAccess(usage.timers)) excludeKeys.push('timers')
+    if (!hasAccess(usage.placeholders)) excludeKeys.push('placeholders')
+    if (!hasAccess(usage.characters)) excludeKeys.push('characters')
 
     return Object.fromEntries(
       Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))

@@ -1,6 +1,5 @@
 // src\types\OmikujiData\ComponentsSchema.ts
 import { z } from 'zod'
-import { AccessLevelSchema } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
@@ -10,7 +9,7 @@ import { CharacterColorScheme } from './CharacterSchema'
 export const SettingsBubbleSchema = z.object({
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: z.array(z.array(z.string())).default([[], []]).catch([[], []]),
-  defaultColor: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
@@ -22,7 +21,7 @@ export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
 
 // トースト・サムネイル
 export const SettingsToastSchema = z.object({
-  defaultColor: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
   showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
   showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)

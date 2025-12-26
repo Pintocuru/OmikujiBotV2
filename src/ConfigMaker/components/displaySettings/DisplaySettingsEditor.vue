@@ -104,8 +104,6 @@
   import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
-  import SettingsGlobalEditor from './global/SettingsGlobalEditor.vue'
-
   import EditorSettingsEditor from './editor/EditorSettingsEditor.vue'
   import VisibilitySettings from './developer/VisibilitySettings.vue'
   import DeveloperModeInfo from './developer/DeveloperModeInfo.vue'

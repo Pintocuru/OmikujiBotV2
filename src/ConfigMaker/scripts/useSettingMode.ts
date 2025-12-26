@@ -11,7 +11,7 @@ import { AccessLevelType } from '@shared/types'
 export function useSettingMode() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  return useSettingModeFromHash(computed(() => data.value.displaySettings.editor.licenseKeyHash))
+  return useSettingModeFromHash(computed(() => data.value.settings.licenseKeyHash))
 }
 
 /**
@@ -43,15 +43,19 @@ export function useVisibilityAccess() {
   const { data } = storeToRefs(omikujiStore)
 
   // developer.visibility を reactive に取り出し
-  const visibility = computed(() => data.value.displaySettings.developer.visibility)
+  const usage = computed(() => data.value.featureUsage.usage)
+  const developer = computed(() => data.value.featureUsage.developer)
 
   // hasAccess を透過的に使える関数
-  const canShow = (key: keyof typeof visibility.value): boolean => {
-    return hasAccess(visibility.value[key] as AccessLevelType)
+  const canShowUsage = (key: keyof typeof usage.value): boolean => {
+    return hasAccess(usage.value[key] as AccessLevelType)
+  }
+  const canShowDeveloper = (key: keyof typeof developer.value): boolean => {
+    return hasAccess(developer.value[key] as AccessLevelType)
   }
 
   return {
-    visibility,
-    canShow,
+    canShowUsage,
+    canShowDeveloper,
   }
 }

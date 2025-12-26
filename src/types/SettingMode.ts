@@ -3,6 +3,7 @@ import { computed, Ref } from 'vue'
 
 // 判定テーブル
 const MODE_KEY: Record<Exclude<SettingMode, 'basic'>, string> = {
+  adv: 'a3f1c9b27e4d8f62b19c0a7e53d4f981',
   pro: '2c26b46b68ffc68ff99b453c1d304134',
   godMode: '5d41402abc4b2a76b9719d911017c592',
 }
@@ -11,7 +12,7 @@ const MODE_KEY: Record<Exclude<SettingMode, 'basic'>, string> = {
 const KEY_MAP: Record<string, SettingMode> = Object.fromEntries(
   Object.entries(MODE_KEY).map(([mode, hash]) => [hash, mode])
 ) as Record<string, SettingMode>
-export type SettingMode = 'basic' | 'pro' | 'godMode'
+export type SettingMode = 'basic' | 'adv' | 'pro' | 'godMode'
 
 // 純粋関数: ハッシュ文字列からモード判定
 export function resolveSettingMode(licenseKeyHash?: string): SettingMode {
@@ -22,10 +23,15 @@ export function resolveSettingMode(licenseKeyHash?: string): SettingMode {
 export function useSettingModeFromHash(licenseKeyHashRef: Ref<string | undefined>) {
   const settingMode = computed((): SettingMode => resolveSettingMode(licenseKeyHashRef.value))
 
-  const isPro = computed(() => settingMode.value === 'pro' || settingMode.value === 'godMode')
-  const isGod = computed(() => settingMode.value === 'godMode')
+  const ADV_MODES = ['adv', 'pro', 'godMode']
+  const PRO_MODES = ['pro', 'godMode']
+  const GOD_MODES = ['godMode']
 
-  return { settingMode, isPro, isGod }
+  const isAdv = computed(() => ADV_MODES.includes(settingMode.value))
+  const isPro = computed(() => PRO_MODES.includes(settingMode.value))
+  const isGod = computed(() => GOD_MODES.includes(settingMode.value))
+
+  return { isAdv, isPro, isGod }
 }
 
 // 利用しやすい関数群

@@ -94,7 +94,7 @@
   const { data, selectedItemKey } = storeToRefs(omikujiStore)
 
   const { isGod } = useSettingMode()
-  const { canShow } = useVisibilityAccess()
+  const { canShowUsage } = useVisibilityAccess()
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({

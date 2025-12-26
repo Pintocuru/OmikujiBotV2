@@ -30,7 +30,7 @@
       <CharacterEditor v-else-if="selectedCategory === 'characters'" />
 
       <!-- 表示設定 -->
-      <DisplaySettingsEditor v-else-if="selectedCategory === 'displaySettings'" />
+      <DisplaySettingsEditor v-else-if="selectedCategory === 'components'" />
 
       <!-- Meta設定 -->
       <PackageMetaEditor v-else-if="selectedCategory === 'meta'" />

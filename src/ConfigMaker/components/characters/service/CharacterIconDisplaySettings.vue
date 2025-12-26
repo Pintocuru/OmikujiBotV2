@@ -2,7 +2,7 @@
 <template>
   <!-- mode  -->
   <SettingItem
-    :variant="!useVisibilityAccess().canShow('characterVisible') ? 'error' : 'none'"
+    :variant="!useVisibilityAccess().canShowUsage('characters') ? 'error' : 'none'"
     label="BOTコメント表現方法"
     description="BOTの文章を表現する方法を指定します"
   >

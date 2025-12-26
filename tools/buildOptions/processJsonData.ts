@@ -19,12 +19,9 @@ export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: Acc
     timers: filterItems(data.timers, targetIndex),
     placeholders: filterItems(data.placeholders, targetIndex),
     characters: filterItems(data.characters, targetIndex),
-    displaySettings: {
-      ...data.displaySettings,
-      editor: {
-        ...data.displaySettings.editor,
-        licenseKeyHash: getLicenseKeyHash(targetLevel),
-      },
+    settings: {
+      ...data.settings,
+      licenseKeyHash: getLicenseKeyHash(targetLevel),
     },
   }
 }

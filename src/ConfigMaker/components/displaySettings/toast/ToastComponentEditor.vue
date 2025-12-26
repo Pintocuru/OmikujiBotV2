@@ -22,6 +22,18 @@
     </div>
   </div>
 
+  <!-- デフォルトカラー設定 -->
+  <SettingItem
+    v-if="!isCharacter"
+    label="デフォルトカラー設定"
+    description="キャラクターが非表示の際はこのカラーが使用されます"
+  >
+    <ColorModeSelector
+      :model-value="toastSettings.defaultColor"
+      @update:model-value="updateToastField('defaultColor', $event)"
+    />
+  </SettingItem>
+
   <!-- 設定項目 -->
   <SettingItem
     label="トースト位置"
@@ -42,13 +54,13 @@
 
   <SettingItem
     v-if="
-      useVisibilityAccess().canShow('characterVisible') ||
-      (isDev && toastSettings.showToastsCharacter && !useVisibilityAccess().canShow('characterVisible'))
+      useVisibilityAccess().canShowUsage('characters') ||
+      (isDev && toastSettings.showToastsCharacter && !useVisibilityAccess().canShowUsage('characters'))
     "
     label="キャラクター表示"
     description="トーストにキャラクターアイコンを表示するか"
     devMemo="characterVisible"
-    :variant="!useVisibilityAccess().canShow('characterVisible') ? 'error' : 'none'"
+    :variant="!useVisibilityAccess().canShowUsage('characters') ? 'error' : 'none'"
     :showReset="true"
     @reset="resetMap.showToastsCharacter"
   >
@@ -76,23 +88,26 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, Ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsToastSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { isDev, SettingsToastSchema } from '@/types'
   import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+  import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { hasAccess, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
-  import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
-  import { isDev } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const toastSettings = computed(() => data.value.displaySettings.components.toast)
+  const toastSettings = computed(() => data.value.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
+  const isCharacter = computed(() => {
+    return hasAccess(data.value.featureUsage.usage.characters)
+  })
 
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
@@ -102,11 +117,9 @@
 
   // 更新関数
   const updateToastField = (field: keyof typeof toastSettings.value, value: any) => {
-    omikujiStore.updateNestedDisplaySettings('components', {
-      toast: {
-        ...toastSettings.value,
-        [field]: value,
-      },
+    omikujiStore.updateNestedComponents('toast', {
+      ...toastSettings.value,
+      [field]: value,
     })
   }
 
@@ -117,6 +130,7 @@
   }
 
   const resetMap = {
+    defaultColor: () => resetField('defaultColor'),
     showToastsOnRight: () => resetField('showToastsOnRight'),
     showToastsCharacter: () => resetField('showToastsCharacter'),
     showThumbnail: () => resetField('showThumbnail'),
@@ -131,7 +145,7 @@
         const character = characterArray.value[charIndex] // ★ 修正: comment を { toast: string } 構造にする
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
-          color: character?.color, // toastプロパティを持つオブジェクトとして渡す
+          color: isCharacter.value ? character?.color : toastSettings.value.defaultColor,
           message: { toast: messageText },
         })
       })

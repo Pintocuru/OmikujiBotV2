@@ -3,8 +3,8 @@
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
-      :value="editor.daisyUiTheme"
-      @change="(e) => updateEditorField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
+      :value="settings.daisyUiTheme"
+      @change="(e) => updateSettingsField('daisyUiTheme', (e.target as HTMLSelectElement).value as ThemeType)"
       class="select select-bordered w-full max-w-xs"
       :disabled="!isPro"
     >
@@ -16,7 +16,7 @@
 
   <!-- ライセンスキー -->
   <SettingItem
-    v-if="isDev || useVisibilityAccess().canShow('licenseVisible')"
+    v-if="isDev || useVisibilityAccess().canShowDeveloper('licenseVisible')"
     devMemo="licenseVisible"
     label="ライセンスキー"
     description="入力したハッシュでモードを判定します"
@@ -27,7 +27,7 @@
       <input
         type="password"
         class="input input-bordered flex-1"
-        :value="licenseKeyHash"
+        :value="settings.licenseKeyHash"
         @input="(e) => updateLicenseKeyHash((e.target as HTMLInputElement).value)"
         placeholder="****"
       />
@@ -49,37 +49,30 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { isDev } from '@/types'
   import { getKey } from '@/types/SettingMode'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
+  import { themes, ThemeType } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
-  import { storeToRefs } from 'pinia'
+  import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro, isGod } = useSettingMode()
 
-  // v2では editor を参照
-  const editor = computed(() => data.value.displaySettings.editor)
-  const licenseKeyHash = computed(() => editor.value.licenseKeyHash)
+  const settings = computed(() => data.value.settings)
 
-  // DaisyUIテーマ更新
-  const updateEditorField = (field: keyof typeof editor.value, value: any) => {
-    omikujiStore.updateNestedDisplaySettings('editor', {
-      ...editor.value,
-      [field]: value,
-    })
+  // settings の単一フィールド更新
+  const updateSettingsField = <K extends keyof SettingsType>(field: K, value: SettingsType[K]) => {
+    omikujiStore.updateSettings({ [field]: value })
   }
 
   // ライセンスキー更新
   const updateLicenseKeyHash = (value: string) => {
-    omikujiStore.updateNestedDisplaySettings('editor', {
-      ...editor.value,
-      licenseKeyHash: value,
-    })
+    omikujiStore.updateSettings({ licenseKeyHash: value })
   }
 </script>
