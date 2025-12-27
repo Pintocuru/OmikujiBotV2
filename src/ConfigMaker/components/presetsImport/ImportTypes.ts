@@ -1,10 +1,9 @@
-// src\ConfigMaker\components\presetsImport\ImportTypes.ts (修正版)
+// src\ConfigMaker\components\presetsImport\ImportTypes.ts
 import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
 
-// インポートモードを簡素化
 export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'
 
-// 競合情報を表すインターフェース
 export interface ConflictInfo {
   key: string
   name: string
@@ -17,8 +16,14 @@ export interface CategoryImportConfig {
   conflicts: ConflictInfo[]
 }
 
+export interface ComponentImportConfig {
+  enabled: boolean
+  useImported: boolean // true: 読み込み側を使用, false: 既存を使用
+}
+
 export interface ImportPreview {
-  recordCategories: Record<RecordCategoryType, CategoryImportConfig> // Record型カテゴリのみに修正
+  recordCategories: Record<RecordCategoryType, CategoryImportConfig>
+  componentConfigs: Record<SettingsComponentsCondition, ComponentImportConfig>
   totalItems: number
-  importMode: 'full' | 'partial'
+  importMode: 'partial'
 }

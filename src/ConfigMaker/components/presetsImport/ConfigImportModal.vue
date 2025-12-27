@@ -7,25 +7,39 @@
         :is-open="true"
         variant="success"
         title="設定読み込みプレビュー"
-        :description="`総項目数: ${importStore.previewData ? importStore.previewData.totalItems : ''}`"
+        :description="`総項目数: ${importManager.previewData.value ? importManager.previewData.value.totalItems : ''}`"
       >
-        <div v-if="importStore.previewData" class="space-y-4">
+        <div v-if="importManager.previewData.value" class="space-y-4">
           <!-- Record型カテゴリ別設定 -->
-          <template v-if="importStore.previewData.importMode !== 'full'">
+          <div class="space-y-2">
+            <h3 class="font-semibold text-lg">データカテゴリ</h3>
             <CategoryConfigSection
-              v-for="(config, category) in importStore.previewData.recordCategories"
+              v-for="(config, category) in importManager.previewData.value.recordCategories"
               :key="category"
               :category="category"
               :config="config"
+              :import-manager="importManager"
             />
-          </template>
+          </div>
+
+          <!-- コンポーネント設定 -->
+          <div v-if="Object.keys(importManager.previewData.value.componentConfigs).length > 0" class="space-y-2">
+            <h3 class="font-semibold text-lg">コンポーネント設定</h3>
+            <ComponentConfigSection
+              v-for="(config, component) in importManager.previewData.value.componentConfigs"
+              :key="component"
+              :component="component"
+              :config="config"
+              :import-manager="importManager"
+            />
+          </div>
 
           <ModalFooterActions
             class="pt-4"
-            :on-cancel="importStore.closePreviewModal"
+            :on-cancel="importManager.closePreviewModal"
             :on-save="handleImportConfirm"
             saveName="読み込む"
-            :disabled="!importStore.enabledCategories.length || !importStore.previewData"
+            :disabled="!importManager.enabledCategories.value.length || !importManager.previewData.value"
           />
         </div>
 
@@ -33,37 +47,26 @@
           <div class="text-gray-500">プレビューデータを読み込み中...</div>
         </div>
       </SectionCard>
-
-      <!-- コンポーネントの読み込み -->
-      <!--
-      - data.featureUsage.components はArray<string>型。
-        この中にキーがあるとき、その data.components にある
-        同じキーを読み込み、古いほうか新しい方を選ばせる
-      - 読み込み側の data.featureUsage.components にない data.components は読み込まない。
-
-      - 読み込み側の data.featureUsage と、マージ側の data.featureUsage が異なるとき、
-        basic > pro > internal > experimental の順に優先させる。
-        例：一方が basic で もう一方が experimental なら、basicを優先する。
-
-      - data.jsonMerge と data.settings は一切読み込まない。
-        
-           -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useImportStore } from './useImportStore'
+  import { useImportManager } from './composables/useImportManager'
   import CategoryConfigSection from './CategoryConfigSection.vue'
+  import ComponentConfigSection from './ComponentConfigSection.vue'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
 
-  // store
-  const importStore = useImportStore()
+  const props = defineProps<{
+    importManager: ReturnType<typeof useImportManager>
+  }>()
+
+  const importManager = props.importManager
 
   const handleImportConfirm = () => {
     try {
-      importStore.executeImport()
+      importManager.executeImport()
     } catch (error) {
       console.error('Import error:', error)
     }

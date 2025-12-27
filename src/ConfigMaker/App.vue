@@ -13,7 +13,7 @@
       <ConfigExport />
 
       <!-- インポートプレビューモーダル -->
-      <ConfigImportModal v-if="importStore.showPreviewModal" />
+      <ConfigImportModal v-if="importManager.showPreviewModal.value" :import-manager="importManager" />
     </div>
 
     <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
@@ -52,14 +52,17 @@
   import FloatingElements from './components/appItems/FloatingElements.vue'
   import ConfigImport from '@ConfigComponents/presetsImport/ConfigImport.vue'
   import ConfigExport from '@ConfigComponents/presetsExport/ConfigExport.vue'
-  import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
   import { storeToRefs } from 'pinia'
+  import { useImportManager } from './components/presetsImport/composables/useImportManager'
 
+  // stores
   const omikujiStore = useOmikujiStore()
-  const importStore = useImportStore()
   const { data } = storeToRefs(omikujiStore)
+
+  // インポートマネージャー
+  const importManager = useImportManager()
 
   // 開発者ツール
   const devToolsComponent = ref<any | null>(null)

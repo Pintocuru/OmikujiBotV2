@@ -7,45 +7,54 @@
       @click="fileInputRef?.click()"
       class="btn btn-success tooltip tooltip-top"
       data-tip="ダウンロード、またはテンプレート出力したjsonファイルを読み込みます"
-      :disabled="importStore.isLoading"
+      :disabled="importManager.isLoading.value"
     >
-      <span v-if="importStore.isLoading" class="loading loading-spinner loading-sm mr-2"></span>
+      <span v-if="importManager.isLoading.value" class="loading loading-spinner loading-sm mr-2"></span>
       テンプレート読み込み(json)
     </button>
+
+    <!-- モーダル表示 -->
+    <ConfigImportModal v-if="importManager.showPreviewModal.value" :import-manager="importManager" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useImportStore } from './useImportStore'
+  import { useImportManager } from './composables/useImportManager'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
   import Swal from 'sweetalert2'
 
   const { isPro } = useSettingMode()
-  const importStore = useImportStore()
+  const importManager = useImportManager()
   const fileInputRef = ref<HTMLInputElement | null>(null)
 
   const handleFileSelection = async (event: Event) => {
     const file = (event.target as HTMLInputElement).files?.[0]
     if (!file) return
 
-    const success = await importStore.loadFromFile(file)
+    const result = await importManager.loadFromFile(file)
 
-    if (importStore.loadError) {
-      Swal.fire({
-        icon: 'error',
-        title: '読み込みエラー',
-        text: importStore.loadError,
-      })
+    if (!result.success) {
+      if (result.error === 'invalid-metadata') {
+        await Swal.fire({
+          icon: 'error',
+          title: '無効なファイル',
+          text: 'このファイルはおみくじBOTのデータではありません。正しいJSONファイルを選択してください。',
+        })
+      } else {
+        await Swal.fire({
+          icon: 'error',
+          title: '読み込みエラー',
+          text: result.error || '不明なエラーが発生しました',
+        })
+      }
+      ;(event.target as HTMLInputElement).value = ''
       return
     }
 
-    if (success) {
-      importStore.generatePreview()
-      importStore.openPreviewModal()
-    }
-
-    // ファイル入力をリセット
+    importManager.generatePreview()
+    importManager.openPreviewModal()
     ;(event.target as HTMLInputElement).value = ''
   }
 </script>

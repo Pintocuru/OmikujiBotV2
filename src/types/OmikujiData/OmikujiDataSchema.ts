@@ -1,6 +1,5 @@
 // src/types/OmikujiDataSchema.ts
 import { z } from 'zod'
-import { DisplaySettingsSchema } from './DisplaySettingsSchema'
 import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'
 import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'

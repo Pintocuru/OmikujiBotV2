@@ -55,7 +55,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
       placeholders: visibility.placeholders ?? 'basic',
       characters: visibility.characters ?? 'basic',
     },
-    components: ['bubble', 'toast', 'ranking', 'counter'],
+    components: ['bubble', 'toast', 'ranking', 'counter'], // 読み込みボーナス(rankingとcounterは通常付かない)
     gameScripts: visibility.gameScripts ?? [],
     developer: {
       licenseVisible: visibility.licenseVisible ?? 'basic',
@@ -71,7 +71,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
   const bubble = SettingsBubbleSchema.parse({
     fontFamily: base.fontFamily ?? 'default',
     bubbleMotionEnter: base.bubbleMotionEnter ?? 'slideUp',
-    bubbleTextAnimate: base.bubbleTextAnimate ?? false,
+    bubbleTextAnimate: false, // v1.4.3で既に実装してたかもだが、強制falseにします…
     bubbleTextSpeed: base.bubbleTextSpeed ?? 50,
   })
 

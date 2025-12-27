@@ -36,7 +36,7 @@
       <!-- 部分読み込み -->
       <button
         @click="handlePartialLoad"
-        :disabled="devStore.isLoading || devStore.isAnyLoading || importStore.isLoading"
+        :disabled="devStore.isLoading || devStore.isAnyLoading || importManager.isLoading.value"
         class="btn btn-xs btn-secondary tooltip tooltip-bottom"
         data-tip="この設定を部分的に読み込み/マージ"
       >
@@ -61,13 +61,17 @@
       />
     </div>
   </div>
+
+  <!-- インポートプレビューモーダル -->
+  <ConfigImportModal v-if="importManager.showPreviewModal.value" :import-manager="importManager" />
 </template>
 
 <script setup lang="ts">
   import { ref, nextTick } from 'vue'
   import type { FileItem } from '../devTypes'
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
-  import { useImportStore } from '@/ConfigMaker/components/presetsImport/useImportStore'
+  import { useImportManager } from '@/ConfigMaker/components/presetsImport/composables/useImportManager'
+  import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import Swal from 'sweetalert2'
   import { Download, FileText, Edit } from 'lucide-vue-next'
@@ -79,7 +83,9 @@
 
   // stores
   const devStore = useDevStore()
-  const importStore = useImportStore()
+
+  // インポートマネージャー
+  const importManager = useImportManager()
 
   // 名前編集関連
   const isEditing = ref(false)
@@ -111,34 +117,39 @@
     editingName.value = ''
   }
 
-  // 部分読み込み開始（loadFromJsonDataを使用）
+  // 部分読み込み開始
   const handlePartialLoad = async () => {
     try {
       // devStoreからファイルデータを取得
       const fileData = await devStore.fetchFileData(props.file.name)
 
-      // useImportStoreで直接JSONデータを読み込み
-      const success = await importStore.loadFromJsonData(fileData)
+      // useImportManagerで直接JSONデータを読み込み
+      const result = await importManager.loadFromJsonData(fileData)
 
-      if (importStore.loadError) {
-        Swal.fire({
-          icon: 'error',
-          title: '読み込みエラー',
-          text: importStore.loadError,
-        })
+      if (!result.success) {
+        if (result.error === 'invalid-metadata') {
+          await Swal.fire({
+            icon: 'error',
+            title: '無効なファイル',
+            text: 'このファイルはおみくじBOTのデータではありません。',
+          })
+        } else {
+          await Swal.fire({
+            icon: 'error',
+            title: '読み込みエラー',
+            text: result.error || '不明なエラーが発生しました',
+          })
+        }
         return
       }
 
-      if (success) {
-        // デフォルトを部分読み込みに設定
-        importStore.setGlobalImportMode('partial')
-        importStore.generatePreview()
-        importStore.openPreviewModal()
-      }
+      // プレビュー生成とモーダル表示
+      importManager.generatePreview()
+      importManager.openPreviewModal()
     } catch (error) {
       console.error('Partial load error:', error)
 
-      Swal.fire({
+      await Swal.fire({
         icon: 'error',
         title: 'ファイルの読み込みに失敗しました',
         text: 'ファイル形式や内容をご確認ください。',

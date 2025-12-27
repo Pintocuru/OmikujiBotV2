@@ -31,19 +31,18 @@
 
 <script setup lang="ts">
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+  import { useImportManager } from './composables/useImportManager'
   import { ImportMode } from './ImportTypes'
-  import { useImportStore } from './useImportStore'
 
   const props = defineProps<{
     category: RecordCategoryType
     config: {
       mode: ImportMode
     }
+    importManager: ReturnType<typeof useImportManager>
   }>()
 
-  const importStore = useImportStore()
-
   const handleModeChange = (mode: ImportMode) => {
-    importStore.updateCategoryConfig(props.category, { mode })
+    props.importManager.updateCategoryConfig(props.category, { mode })
   }
 </script>

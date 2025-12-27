@@ -42,7 +42,8 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
 }
 
 export const CharacterColorScheme = z.object({
-  isTheme: z.boolean().default(true).catch(true), // DaisyUI テーマを使うかどうか
+  // TODO:v2.0.1でtrueに変更
+  isTheme: z.boolean().default(false).catch(false), // DaisyUI テーマを使うかどうか
   ...DaisyUiThemeFieldsSchema.shape,
 
   nameColor: z.string().default('#212121').catch('#212121'),
@@ -123,32 +124,57 @@ export const CharacterSchema = z
     image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({})),
   })
   .transform((old) => {
-    const opt = old.displayOption
+    const opt = old.displayOption || {}
 
-    // mode 判定
-    let mode: (typeof displayModes)[number] = 'comment'
-    if (!opt.isOneCommePost && opt.isVoice) {
+    // すでに新形式（modeが存在する）の場合は、そのまま活かす
+    if (opt.mode && displayModes.includes(opt.mode)) {
+      return {
+        ...old,
+        displayOption: opt as DisplayOptionType,
+        imageBase64: undefined,
+        frameId: undefined,
+      }
+    }
+
+    // --- 旧形式からの変換ロジック ---
+
+    // 判定変数（undefined/null対策を徹底）
+    const isOneComme = opt.isOneCommePost === true
+    const isVoice = opt.isVoice === true
+    const hasRpgVoice = !!(opt.rpgVoice || typeof opt.rpgVoice === 'string')
+
+    let mode: DisplayModeType = 'comment'
+
+    // 優先順位1: isOneCommePost が true なら無条件で comment (今回のケース)
+    if (isOneComme) {
+      mode = 'comment'
+    }
+    // 優先順位2: わんコメ投稿せず、ボイス設定がある場合
+    else if (isVoice) {
       mode = 'voice'
-    } else if (!opt.isOneCommePost && !opt.isVoice && opt.rpgVoice) {
+    }
+    // 優先順位3: RPG音声の設定がある場合
+    else if (hasRpgVoice) {
       mode = 'rpgVoice'
-    } else if (!opt.isOneCommePost && !opt.isVoice && !opt.rpgVoice) {
+    }
+    // 優先順位4: どれも当てはまらない、または明示的にフラグが折れている場合
+    else {
       mode = 'none'
     }
 
-    // 新 displayOption を構築
-    const newDisplayOption = {
+    // 新形式のオブジェクトを再構成
+    const newDisplayOption: DisplayOptionType = {
       mode,
-      imageBase64: old.imageBase64,
-      frameId: old.frameId,
-      rpgVoice: opt.rpgVoice ?? '',
+      // ルートにあった値、あるいは opt 内にあった値を統合
+      imageBase64: old.imageBase64 || opt.imageBase64 || '',
+      frameId: old.frameId || opt.frameId || '',
+      rpgVoice: typeof opt.rpgVoice === 'string' ? opt.rpgVoice : '',
     }
 
     return {
       ...old,
       displayOption: newDisplayOption,
-
-      // CharacterSchema のトップから旧プロパティを削除したい場合は null にする
-      imageBase64: undefined,
+      imageBase64: undefined, // 旧データのクリーンアップ
       frameId: undefined,
     }
   })

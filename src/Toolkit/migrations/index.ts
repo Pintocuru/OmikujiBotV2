@@ -37,7 +37,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
 
   // v1.3 -> v2
   if (currentDataVersion < 2) {
-    console.log('Migrating data from v1 to v2...')
+    console.log('Migrating data from v1.3 to v2...')
     updatedData = migrateV130ToV200(updatedData)
   }
 
