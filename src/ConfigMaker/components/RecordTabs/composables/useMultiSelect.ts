@@ -6,6 +6,7 @@ import type { useRuleState } from './useRuleState'
 import { BaseRecordType, AccessLevelType } from '@shared/types'
 import { storeToRefs } from 'pinia'
 import { toast } from 'vue-sonner'
+import Swal from 'sweetalert2'
 
 /**
  * マルチセレクト機能の管理
@@ -99,13 +100,47 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   }
 
   /** 一括削除の実行 */
-  const handleBulkDelete = () => {
+  const handleBulkDelete = async () => {
     if (selectedRuleIds.value.size === 0) return
 
+    const category = validCategory.value as RecordCategoryType
     const rulesToDelete = getSelectedRules()
-    handleBulkDeleteRules(rulesToDelete)
-    selectedRuleIds.value.clear()
-    isMultiSelectMode.value = false
+    const count = rulesToDelete.length
+
+    // SweetAlert2 で確認ダイアログを出す（この方が非同期制御が確実です）
+    const result = await Swal.fire({
+      title: `${count}件のルールを削除しますか？`,
+      text: 'この操作は取り消せません',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: '削除する',
+      cancelButtonText: 'キャンセル',
+      // コンテキストメニューより前面に出すための設定
+      target: 'body',
+    })
+
+    if (result.isConfirmed) {
+      // 1. 削除実行（デバッグで成功したロジックをそのまま使用）
+      rulesToDelete.forEach((rule) => {
+        omikujiStore.removeItem(category, rule.key)
+      })
+
+      // 2. 状態クリア
+      selectedRuleIds.value.clear()
+      isMultiSelectMode.value = false
+
+      // 3. 完了通知
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: `${count}件のルールを削除しました`,
+        showConfirmButton: false,
+        timer: 2000,
+      })
+    }
   }
 
   // 一括有効/無効切り替え
