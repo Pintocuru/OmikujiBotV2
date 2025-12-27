@@ -5,6 +5,7 @@ import {
   RecordCategorySchemaMap,
   RecordCategoryType,
   RecordCategoryItemTypeMap,
+  recordCategoryLabel,
 } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
@@ -12,12 +13,6 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
  * レコード型カテゴリの基本的なCRUD操作を提供
  */
 export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
-  // カテゴリデータ更新
-  const updateCategoryData = <C extends CategoryType>(category: C, newData: OmikujiDataType[C]) => {
-    data.value[category] = newData
-    hasChanged.value = true
-  }
-
   // アイテム追加
   const addItem = <C extends RecordCategoryType>(
     category: C,
@@ -88,6 +83,16 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
       updateCategoryData(category, remaining as any)
     }
   }
+  // カテゴリデータ更新
+  const updateCategoryData = (category: RecordCategoryType, newData: Record<string, any>) => {
+    if (!recordCategoryLabel.includes(category)) {
+      console.warn(`Invalid category: ${category}`)
+      return
+    }
+
+    data.value[category] = newData
+    hasChanged.value = true
+  }
 
   // アイテム複製
   const duplicateItem = <C extends RecordCategoryType>(category: C, key: string): string | null => {
@@ -138,7 +143,6 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
   }
 
   return {
-    updateCategoryData,
     addItem,
     updateItem,
     removeItem,

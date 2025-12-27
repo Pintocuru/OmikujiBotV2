@@ -25,5 +25,4 @@ export interface ImportPreview {
   recordCategories: Record<RecordCategoryType, CategoryImportConfig>
   componentConfigs: Record<SettingsComponentsCondition, ComponentImportConfig>
   totalItems: number
-  importMode: 'partial'
 }

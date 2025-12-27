@@ -110,7 +110,6 @@ export const useImportManager = () => {
       recordCategories,
       componentConfigs,
       totalItems,
-      importMode: 'partial',
     }
 
     previewData.value = preview

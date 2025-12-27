@@ -12,12 +12,6 @@ export function useRecordSort(
   hasChanged: Ref<boolean>,
   recordDataAccess: ReturnType<typeof useRecordDataAccess>
 ) {
-  // カテゴリデータ更新（内部用）
-  const updateCategoryData = <C extends CategoryType>(category: C, newData: OmikujiDataType[C]) => {
-    data.value[category] = newData
-    hasChanged.value = true
-  }
-
   // アイテムの並び替え
   const reorderItem = async <K extends RecordCategoryType>(category: K, fromIndex: number, toIndex: number) => {
     const items = recordDataAccess.getCategoryArray(category)
@@ -47,7 +41,13 @@ export function useRecordSort(
     })
 
     await nextTick()
-    updateCategoryData(category as CategoryType, updatedData as any)
+    updateCategoryData(category, updatedData as any)
+  }
+
+  // カテゴリデータ更新（内部用）
+  const updateCategoryData = <C extends RecordCategoryType>(category: C, newData: OmikujiDataType[C]) => {
+    data.value[category] = newData
+    hasChanged.value = true
   }
 
   return {

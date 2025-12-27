@@ -1,32 +1,35 @@
 // src/MainGenerator/script/PostMessage.ts
-import { PostActionType, PostActionWordPartyType, CharacterType } from '@/types/'
+import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
 import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme'
-import { ServiceManager } from './ServiceManager'
-import { CommentRequestBuilder } from './CommentRequestBuilder'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { SendCommentType, SendCommentSchema } from '@shared/types/'
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { Service } from '../../../../../../libs/onesdk/types/Service'
+import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
+
+// メインクラス
 
 /**
  * メッセージ投稿を管理するクラス
  */
 export class PostMessage {
   private readonly serviceAPI: ServiceAPI
-  private readonly commentRequestBuilder: CommentRequestBuilder
-  private readonly serviceManager: ServiceManager
+  private services: Service[] = []
+  private createdServiceIds: Set<string> = new Set()
 
   constructor(private readonly charactersMap: Record<string, CharacterType> = {}) {
     this.serviceAPI = ServiceAPI.getInstance()
-    this.commentRequestBuilder = new CommentRequestBuilder()
-    this.serviceManager = new ServiceManager(this.serviceAPI)
   }
 
   /**
    * 複数の投稿アクションを並列実行
    */
-  async post(posts: (PostActionType | PostActionWordPartyType)[]): Promise<void> {
+  async post(posts: PostActionType[]): Promise<void> {
     try {
+      // サービス一覧を取得・更新
       const services = await this.serviceAPI.getServices()
-      this.serviceManager.updateServices(services ?? [])
+      this.services = services ?? []
 
       await Promise.all(posts.map((post) => this.processPost(post)))
     } catch (error) {
@@ -35,54 +38,91 @@ export class PostMessage {
     }
   }
 
+  /**
+   * 単一の投稿アクションを処理
+   */
   private async processPost(post: PostActionType): Promise<void> {
     const { delaySeconds = 0 } = post
 
-    // WordPartyの投稿
-    if (post.actionType === 'wordParty') {
-      postWordParty(post.wordParty, delaySeconds)
-      return
-    }
-
-    // フキダシの投稿
     if (post.actionType === 'message') {
-      const chara = this.getCharacter(post.characterKey)
-
-      if (chara && chara?.frameId !== null) {
-        await this.serviceManager.ensureServiceExists(chara)
-      }
-
-      if (post.message.bubble) {
-        this.postMessage(post.message.bubble, chara, delaySeconds)
-      }
+      await this.processMessagePost(post, delaySeconds)
+    } else if (post.actionType === 'wordParty') {
+      postWordParty(post.wordParty, delaySeconds)
     }
   }
 
-  private getCharacter(characterKey: string): CharacterType | undefined {
-    if (!characterKey || characterKey === '') return undefined
-    return this.charactersMap[characterKey]
-  }
+  /**
+   * メッセージ投稿を処理
+   */
+  private async processMessagePost(post: PostActionMessageType, delaySeconds: number): Promise<void> {
+    const { bubble } = post.message
+    if (!bubble || bubble.trim() === '') return
 
-  private postMessage(bubble: string, chara: CharacterType | undefined, delaySeconds: number): void {
-    if (!chara) return
+    const chara = this.getCharacter(post.characterKey)
 
-    if (this.shouldPostAsComment(chara)) {
+    // わんコメ投稿の処理
+    if (chara && shouldPostAsComment(chara)) {
+      await this.ensureServiceExists(chara)
       this.postAsComment(bubble, chara, delaySeconds)
-    } else if (chara.displayOption.mode === 'voice') {
+    }
+
+    // ボイス投稿の処理
+    if (shouldPostAsVoice(chara, bubble)) {
       postSpeech(bubble, delaySeconds)
     }
   }
 
-  private shouldPostAsComment(chara: CharacterType): boolean {
-    return chara.displayOption.mode === 'comment' && chara.frameId !== ''
+  /**
+   * キャラクター情報を取得
+   */
+  private getCharacter(characterKey: string): CharacterType | null {
+    if (!characterKey) return null
+    return this.charactersMap[characterKey] ?? null
   }
 
+  /**
+   * わんコメとしてコメント投稿
+   */
   private postAsComment(bubble: string, chara: CharacterType, delaySeconds: number): void {
     try {
-      const request = this.commentRequestBuilder.createCommentRequest(bubble, chara)
+      const request = createCommentRequest(bubble, chara)
       postComment(request, delaySeconds)
     } catch (error) {
       ConsolePost('error', `キャラクターコメント投稿エラー: ${chara.name}`, error)
+    }
+  }
+
+  /**
+   * キャラクターに対応するサービスが存在することを保証
+   */
+  private async ensureServiceExists(chara: CharacterType): Promise<void> {
+    const frameId = chara.displayOption.frameId
+    if (!frameId) return
+
+    if (!isServiceExists(frameId, this.services, this.createdServiceIds)) {
+      await this.createService(chara)
+    }
+  }
+
+  /**
+   * 新しいサービス(枠)を作成
+   */
+  private async createService(chara: CharacterType): Promise<void> {
+    const frameId = chara.displayOption.frameId
+    if (!frameId) return
+
+    try {
+      const newService = await this.serviceAPI.createService(chara.name, frameId, chara.color.backgroundColor)
+
+      if (newService) {
+        this.createdServiceIds.add(frameId)
+        // サービス作成後に一覧を再取得
+        const updatedServices = await this.serviceAPI.getServices()
+        this.services = updatedServices ?? []
+      }
+    } catch (error) {
+      console.error(`枠作成に失敗: ${chara.name} (${frameId})`, error)
+      throw error
     }
   }
 }

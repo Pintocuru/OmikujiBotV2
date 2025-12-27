@@ -23,35 +23,19 @@ export function useDataMerge(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean
 
       let result: OmikujiDataType
 
-      if (preview.importMode === 'full') {
-        // 全体上書きモード
-        result = { ...importedData }
+      // 部分更新モード
+      result = processPartialMerge(importedData, preview)
 
-        // 成功トースト（右下）
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'success',
-          title: 'データの上書きが完了しました。',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-        })
-      } else {
-        // 部分更新モード
-        result = processPartialMerge(importedData, preview)
-
-        // 成功トースト（右下）
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'success',
-          title: 'データの部分更新が完了しました。',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-        })
-      }
+      // 成功トースト（右下）
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: 'データの部分更新が完了しました。',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      })
 
       data.value = result
       hasChanged.value = true
