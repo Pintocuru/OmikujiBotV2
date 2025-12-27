@@ -4,7 +4,7 @@
     <!-- 基本機能 -->
     <div class="card bg-base-100 shadow-lg">
       <div class="card-body">
-        <SectionHeader icon="Package" title="基本機能" description="おみくじBOTの基本的な機能" />
+        <SubSectionHeader icon="Package" title="基本機能" description="おみくじBOTの基本的な機能" />
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <FeatureCard
             v-for="(level, key) in usage"
@@ -21,7 +21,7 @@
     <!-- コンポーネント -->
     <div v-if="hasEnabledComponents" class="card bg-base-100 shadow-lg">
       <div class="card-body">
-        <SectionHeader icon="Box" title="コンポーネント" description="ジェネレーターで表示できるアイテム" />
+        <SubSectionHeader icon="Box" title="コンポーネント" description="ジェネレーターで表示できるアイテム" />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
           <ComponentChip v-for="component in enabledComponents" :key="component" :name="component" />
@@ -35,7 +35,7 @@
     <!-- ゲームスクリプト -->
     <div v-if="hasEnabledGames" class="card bg-base-100 shadow-lg">
       <div class="card-body">
-        <SectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます" />
+        <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
           <ComponentChip v-for="game in enabledGames" :key="game" :name="game" is-game />
         </div>
@@ -52,11 +52,11 @@
   import { storeToRefs } from 'pinia'
   import ComponentChip from './ComponentChip.vue'
   import FeatureCard from './FeatureCard.vue'
-  import SectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { categoryLabels } from '@/types/OmikujiData/CategoryType'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
-  import { Package, Box, Gamepad2 } from 'lucide-vue-next'
+  import { Package } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

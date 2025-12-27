@@ -2,13 +2,13 @@
 <template>
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
+    <!-- 全体キャラ変更 -->
     <GlobalCharacterChanger category="comments" />
   </div>
 
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <!-- ルール編集エリア -->
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
@@ -16,8 +16,7 @@
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
-      description="コメントルールの基本的な設定"
+      :description="selectedItem.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="comments" />
     </SectionCard>
@@ -28,7 +27,7 @@
         icon="Filter"
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
-        :title="`発動条件設定`"
+        title="発動条件設定"
         :subTitle="thresholdSubTitle"
         description="「おみくじを引く」発動条件の設定"
       >
@@ -86,7 +85,7 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('baseSettings') // 初期状態で基本設定を開く
+  const activeSection = ref<SectionType>('omikujiSet')
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

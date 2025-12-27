@@ -12,6 +12,7 @@
     <!-- OmikujiItemBasic コンポーネント -->
     <SectionCard
       v-if="category === 'comments'"
+      icon="Filter"
       variant="primary"
       title="追加条件"
       description="このおみくじが適用される追加の条件を設定します"
@@ -25,7 +26,12 @@
     </SectionCard>
 
     <!-- GameScripts コンポーネント -->
-    <SectionCard variant="primary" title="ゲームスクリプト" description="複雑な処理を行うスクリプト設定">
+    <SectionCard
+      icon="Gamepad2"
+      variant="primary"
+      title="ゲームスクリプト"
+      description="複雑な処理を行うスクリプト設定"
+    >
       <GameScriptsEditor
         :allOmikuji="allOmikujiSets"
         :omikuji="omikujiItem"

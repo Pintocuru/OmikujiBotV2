@@ -1,9 +1,6 @@
 // src\ConfigMaker\components\presetsImport\ImportTypes.ts (修正版)
 import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 
-//
-export type JsonDataSource = 'file' | 'server'
-
 // インポートモードを簡素化
 export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'
 

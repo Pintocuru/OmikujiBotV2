@@ -1,20 +1,7 @@
 <!-- src/configMaker/components/RecordTabs/RuleFilter.vue -->
 <template>
   <div role="alert" class="alert alert-info alert-outline">
-    <!-- フィルター条件 -->
     <div class="px-4 py-2 space-y-2">
-      <div class="flex flex-wrap gap-4 items-center">
-        <span class="text-sm font-medium">フィルター条件:</span>
-
-        <!-- 有効/無効フィルター -->
-        <div class="flex items-center gap-2">
-          <label class="label cursor-pointer p-0">
-            <input v-model="store.filterOptions.enabledOnly" type="checkbox" class="toggle toggle-sm" />
-            <span class="label-text ml-2 text-sm">有効のみ</span>
-          </label>
-        </div>
-      </div>
-
       <!-- カラーフィルター -->
       <div v-if="store.getUniqueColors.length > 0" class="flex flex-wrap items-center gap-2">
         <span class="text-sm font-medium">カラー:</span>

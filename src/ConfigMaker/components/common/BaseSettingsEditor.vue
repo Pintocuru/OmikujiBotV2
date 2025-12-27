@@ -1,22 +1,5 @@
 <!-- src\ConfigMaker\components\common\BaseSettingsEditor.vue -->
 <template>
-  <!-- 開発モード専用 -->
-  <div v-if="isGod" class="flex flex-col gap-4">
-    <!-- アクセスレベル -->
-    <SettingItem
-      v-if="isAccessLevel"
-      label="Access Level"
-      description="製品のアクセスレベルを選択してください"
-      variant="warning"
-    >
-      <select v-model="accessLevel" class="select select-bordered text-base-content w-full">
-        <option v-for="level in AccessLevelLabels" :key="level" :value="level">
-          {{ level }}
-        </option>
-      </select>
-    </SettingItem>
-  </div>
-
   <!-- Key表示 -->
   <SettingItem v-if="isKey" label="キーの名前を変更する" description="他のデータと区別できるよう名前を付けます">
     <div class="flex gap-2 items-center">
@@ -48,9 +31,8 @@
   import { computed } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
   import KeyEditor from '@/ConfigMaker/components/KeyEditor/KeyEditor.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
-  import { AccessLevelLabels, BaseRecordType } from '@shared/types'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { BaseRecordType } from '@shared/types'
 
   const props = withDefaults(
     defineProps<{
@@ -73,9 +55,6 @@
     'update:modelValue': [value: BaseRecordType]
   }>()
 
-  // Store
-  const { isGod } = useSettingMode()
-
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof BaseRecordType>(key: T) =>
     computed({
@@ -87,5 +66,4 @@
   const name = createComputed('name')
   const description = createComputed('description')
   const isEnabled = createComputed('isEnabled')
-  const accessLevel = createComputed('accessLevel')
 </script>

@@ -11,8 +11,7 @@
       :isOpen="activeSection === 'basicInfo'"
       @toggle="toggleSection('basicInfo')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
-      description="キャラクター、またはカラー設定名の編集"
+      :description="selectedItem.description"
     >
       <CharacterBasicInfo :selectedItemKey="selectedItemKey" class="space-y-2" />
     </SectionCard>
@@ -67,7 +66,7 @@
 
   // アクティブなセクションの管理
   type SectionType = 'basicInfo' | 'colorSettings' | 'botComments' | 'serviceSettings' | 'imageSettings' | null
-  const activeSection = ref<SectionType>('basicInfo') // 初期状態で基本情報を開く
+  const activeSection = ref<SectionType>('colorSettings') // 初期状態で基本情報を開く
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

@@ -17,8 +17,7 @@
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
-      description="機能のON/OFFや名称の設定を行います"
+      :description="selectedItem.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="timers" />
     </SectionCard>
@@ -72,7 +71,7 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'timerInterval' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('baseSettings') // 初期状態で基本設定を開く
+  const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

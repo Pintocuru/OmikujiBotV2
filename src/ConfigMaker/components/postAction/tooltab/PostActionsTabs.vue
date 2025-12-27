@@ -4,6 +4,7 @@
   <div class="tabs">
     <!-- プレースホルダータブ（固定） -->
     <button
+      v-if="isPlaceholder"
       class="tab tab-sm rounded"
       :class="{ 'tab-active bg-info text-info-content': activeTab === -1 }"
       @click="setActiveTab(-1)"
@@ -64,13 +65,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RulesCategoryType } from '@/types'
+  import { storeToRefs } from 'pinia'
   import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
@@ -82,6 +85,13 @@
     'update:actions': [actions: PostActionType[]]
     'open-placeholder': [placeholderId: string, editorColor?: string | null]
   }>()
+
+  // Store
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+
+  // プレースホルダー機能が見えているか
+  const isPlaceholder = computed(() => hasAccess(data.value.featureUsage.usage.placeholders))
 
   // キャラクターオプションの取得
   const { charactersMap } = useCharacterEmotions()

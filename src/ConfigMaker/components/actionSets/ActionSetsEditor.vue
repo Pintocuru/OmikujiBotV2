@@ -13,8 +13,7 @@
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :subTitle="` : ${selectedItem.description ? selectedItem.description : ''}`"
-      description="コメントルールの基本的な設定"
+      :description="selectedItem.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="actionSets" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
@@ -51,7 +50,7 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('baseSettings') // 初期状態で基本設定を開く
+  const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

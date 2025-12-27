@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="card-body space-y-4">
-      <!-- コメントルール -->
+      <!-- Jsonマージ(Dev) -->
       <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
 
       <!-- コメントルール -->

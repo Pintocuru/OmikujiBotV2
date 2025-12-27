@@ -64,18 +64,17 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { PostActionType } from '@/types/'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
-  import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
-
+  import SoundTestButton from './SoundTestButton.vue'
+  import { processTestPlaceholder } from './TestPlaceholderProcessor'
+  import WordPartyTestButton from './WordPartyTestButton.vue'
+  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
-  import WordPartyTestButton from '@/ConfigMaker/components/wordPartySettings/WordPartyTestButton.vue'
-  import SoundTestButton from '@/ConfigMaker/components/wordPartySettings/SoundTestButton.vue'
-  import { processTestPlaceholder } from './TestPlaceholderProcessor'
-  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{ action: PostActionType }>()
 

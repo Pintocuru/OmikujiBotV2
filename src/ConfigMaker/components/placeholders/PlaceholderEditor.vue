@@ -10,7 +10,7 @@
       :isOpen="activeSection === 'basic'"
       @toggle="toggleSection('basic')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      description="プレースホルダー名の設定を行います"
+      :description="selectedItem.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="placeholders" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
@@ -36,14 +36,12 @@
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
   import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
-  import CopyButton from '@ConfigComponents/parts/CopyButton.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理
   type SectionType = 'basic' | 'placeholder' | null
-  const activeSection = ref<SectionType>('basic') // 初期状態で基本設定を開く
+  const activeSection = ref<SectionType>('placeholder') // 初期状態で基本設定を開く
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
@@ -93,7 +91,4 @@
       },
     })
   }
-
-  // 各プロパティのcomputed
-  const itemName = createPlaceholderProperty<string>('name')
 </script>
