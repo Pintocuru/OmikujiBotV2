@@ -12,6 +12,7 @@
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
@@ -25,6 +26,7 @@
     <div v-if="selectedItem.isEnabled !== false">
       <!-- タイマー設定セクション -->
       <SectionCard
+        icon="Clock"
         :isOpen="activeSection === 'timerInterval'"
         @toggle="toggleSection('timerInterval')"
         title="タイマー設定"
@@ -36,6 +38,7 @@
 
       <!-- おみくじ設定セクション -->
       <SectionCard
+        icon="ListChecks"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"

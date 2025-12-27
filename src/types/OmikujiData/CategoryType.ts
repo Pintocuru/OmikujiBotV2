@@ -10,7 +10,7 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageSquare, Timer, Hash, Users, LayoutGrid, Info, Zap, Layers } from 'lucide-vue-next'
+import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Layers } from 'lucide-vue-next'
 import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
@@ -84,7 +84,7 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
   placeholders: {
     label: 'プレースホルダー', // コメント・タイマーで補助的に使用
     description: 'コメントやタイマーで利用できる、高性能なプレースホルダーを設定します',
-    icon: Hash,
+    icon: Brackets,
   },
   characters: {
     label: 'キャラクター', // BOTメッセージで使用するアイコンやカラー

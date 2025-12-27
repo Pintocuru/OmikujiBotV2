@@ -9,6 +9,7 @@
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
@@ -20,6 +21,7 @@
 
     <!-- おみくじ設定セクション -->
     <SectionCard
+      icon="ListChecks"
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
       title="おみくじ設定"

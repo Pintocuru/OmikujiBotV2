@@ -1,6 +1,11 @@
 <!-- src\ConfigMaker\components\JsonMerge\JsonMergeEditor.vue -->
 <template>
-  <SectionCard :isOpen="true" title="JSONマージ" description="ビルド時、jsonファイルをマージして出力します">
+  <SectionCard
+    icon="Merge"
+    :isOpen="true"
+    title="JSONマージ"
+    description="ビルド時、jsonファイルをマージして出力します"
+  >
     <div class="space-y-4">
       <!-- マージ設定がない場合のメッセージ -->
       <div v-if="merge.length === 0" class="text-gray-500 text-center py-8">

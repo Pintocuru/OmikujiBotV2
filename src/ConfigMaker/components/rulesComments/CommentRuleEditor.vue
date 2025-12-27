@@ -12,6 +12,7 @@
   <div v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
@@ -24,6 +25,7 @@
     <div v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
       <SectionCard
+        icon="Filter"
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
         :title="`発動条件設定`"
@@ -35,6 +37,7 @@
 
       <!-- おみくじ制限設定セクション -->
       <SectionCard
+        icon="Timer"
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
         :title="`おみくじ制限設定`"
@@ -46,6 +49,7 @@
 
       <!-- おみくじ設定セクション -->
       <SectionCard
+        icon="ListChecks"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"

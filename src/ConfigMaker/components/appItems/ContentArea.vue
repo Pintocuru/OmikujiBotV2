@@ -2,8 +2,8 @@
 <template>
   <div class="card bg-base-200 mt-4">
     <div class="card-title p-4 rounded-t justify-between bg-primary text-primary-content">
-      <div class="flex items-center gap-2">
-        <component :is="categoryLabels[selectedCategory].icon" class="w-5 h-5" />
+      <div class="flex text-xl items-center gap-2">
+        <component :is="categoryLabels[selectedCategory].icon" class="w-6 h-6" />
         {{ categoryLabels[selectedCategory].label }}
       </div>
       <div class="text-sm pr-2">
@@ -20,7 +20,7 @@
       <!-- タイマールール -->
       <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
 
-      <!-- プレースホルダー -->
+      <!-- アクションセット -->
       <ActionSetsEditor v-else-if="selectedCategory === 'actionSets'" />
 
       <!-- プレースホルダー -->

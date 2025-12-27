@@ -7,6 +7,7 @@
   <div v-if="selectedItemKey && selectedItem">
     <!-- 基本情報 -->
     <SectionCard
+      icon="SlidersHorizontal"
       :isOpen="activeSection === 'basicInfo'"
       @toggle="toggleSection('basicInfo')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
@@ -18,6 +19,7 @@
 
     <!-- フキダシカラー設定 -->
     <SectionCard
+      icon="Palette"
       :isOpen="activeSection === 'colorSettings'"
       @toggle="toggleSection('colorSettings')"
       title="フキダシカラー設定"
@@ -28,6 +30,7 @@
 
     <!-- BOTコメント表現設定 -->
     <SectionCard
+      icon="MessageSquare"
       :isOpen="activeSection === 'botComments'"
       @toggle="toggleSection('botComments')"
       title="BOTコメント表現設定"
@@ -39,6 +42,7 @@
 
     <!-- ジェネレーター用画像設定 -->
     <SectionCard
+      icon="Image"
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
       title="ジェネレーター用画像設定"

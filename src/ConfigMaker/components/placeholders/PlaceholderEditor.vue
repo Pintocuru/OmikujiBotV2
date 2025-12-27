@@ -6,6 +6,7 @@
   <div v-if="selectedItem">
     <!-- 基本設定 -->
     <SectionCard
+      icon="SlidersHorizontal"
       :isOpen="activeSection === 'basic'"
       @toggle="toggleSection('basic')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
@@ -16,6 +17,7 @@
 
     <!-- プレースホルダー設定 -->
     <SectionCard
+      icon="Brackets"
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
       title="プレースホルダー設定"
