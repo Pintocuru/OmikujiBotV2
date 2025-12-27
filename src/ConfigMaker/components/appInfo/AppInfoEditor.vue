@@ -8,6 +8,7 @@
 
     <!-- 実績 -->
     <SectionCard :isOpen="true" title="利用可能な機能" description="PRO版を使うと機能が増えます">
+      <FeatureUsageInfo />
       <FeatureUsageSettings />
     </SectionCard>
 
@@ -45,7 +46,8 @@
 
 <script setup lang="ts">
   import SettingsEditor from './settings/SettingsEditor.vue'
-  import FeatureUsageSettings from './FeatureUsage/FeatureUsageSettings.vue'
+  import FeatureUsageInfo from './FeatureUsageInfo/FeatureUsageInfo.vue'
+  import FeatureUsageSettings from './FeatureUsageSettings/FeatureUsageSettings.vue'
   import PackageBasicInfo from './meta/PackageBasicInfo.vue'
   import PackageDistributionInfo from './meta/PackageDistributionInfo.vue'
   import PackageSystemInfo from './meta/PackageSystemInfo.vue'

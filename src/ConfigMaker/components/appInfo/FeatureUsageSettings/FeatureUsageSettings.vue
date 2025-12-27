@@ -20,18 +20,16 @@
 </template>
 
 <script setup lang="ts">
-  import FeatureUsageUsage from './FeatureUsageUsage.vue'
-  import FeatureUsageComponents from './FeatureUsageComponents.vue'
-  import FeatureUsageGames from './FeatureUsageGames.vue'
-  import FeatureUsageDeveloper from './FeatureUsageDeveloper.vue'
+  import FeatureUsageUsage from './UsageUsageSettings.vue'
+  import FeatureUsageComponents from './UsageComponentsSettings.vue'
+  import FeatureUsageGames from './UsageGamesSettings.vue'
+  import FeatureUsageDeveloper from './UsageDeveloperSettings.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { FeatureUsageType, isDev } from '@/types'
-  import { useEnabledGames } from '@/GameScripts/useEnabledGames'
 
   const { updateFeatureUsage } = useOmikujiStore()
   const { isPro, isGod } = useSettingMode()
-  const { getAvailableScripts } = useEnabledGames()
 
   /**
    * 「full」プリセット

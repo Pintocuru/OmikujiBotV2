@@ -10,7 +10,7 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageCircle, Timer, Hash, Users, LayoutGrid, Info, MessagesSquare, Layers } from 'lucide-vue-next'
+import { MessageSquare, Timer, Hash, Users, LayoutGrid, Info, Zap, Layers } from 'lucide-vue-next'
 import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
@@ -69,7 +69,7 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
   comments: {
     label: 'コメントルール', // チャットの内容やユーザー情報でおみくじを発動
     description: 'チャット内容やユーザー情報を基におみくじを発動します',
-    icon: MessageCircle,
+    icon: MessageSquare,
   },
   timers: {
     label: 'タイマールール', // 時間経過で自動的におみくじを発動
@@ -79,7 +79,7 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
   actionSets: {
     label: 'アクションセット',
     description: 'BOTのコメント・WordPartyの指定のプリセットを作成します',
-    icon: MessagesSquare,
+    icon: Zap,
   },
   placeholders: {
     label: 'プレースホルダー', // コメント・タイマーで補助的に使用
