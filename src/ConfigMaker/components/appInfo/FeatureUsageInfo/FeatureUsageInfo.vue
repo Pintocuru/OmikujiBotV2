@@ -24,7 +24,7 @@
         <SubSectionHeader icon="Box" title="コンポーネント" description="ジェネレーターで表示できるアイテム" />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
-          <ComponentChip v-for="component in enabledComponents" :key="component" :name="component" />
+          <ComponentChip v-for="component in components" :key="component" :name="component" />
         </div>
         <div v-if="!hasAnyComponents" class="text-center py-4 text-base-content/60">
           利用可能なコンポーネントはありません
@@ -37,7 +37,7 @@
       <div class="card-body">
         <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
-          <ComponentChip v-for="game in enabledGames" :key="game" :name="game" is-game />
+          <ComponentChip v-for="game in gameScripts" :key="game" :name="game" is-game />
         </div>
         <div v-if="!hasAnyGames" class="text-center py-4 text-base-content/60">
           利用可能なゲームスクリプトはありません
@@ -55,7 +55,6 @@
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { categoryLabels } from '@/types/OmikujiData/CategoryType'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import { Package } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
@@ -66,11 +65,8 @@
   const gameScripts = computed(() => data.value.featureUsage.gameScripts)
 
   // 有効な機能のみフィルタリング
-  const enabledComponents = computed(() => components.value.filter(() => hasAccess('basic')))
-  const enabledGames = computed(() => gameScripts.value.filter(() => hasAccess('basic')))
-
   const hasEnabledComponents = computed(() => components.value.length > 0)
   const hasEnabledGames = computed(() => gameScripts.value.length > 0)
-  const hasAnyComponents = computed(() => enabledComponents.value.length > 0)
-  const hasAnyGames = computed(() => enabledGames.value.length > 0)
+  const hasAnyComponents = computed(() => components.value.length > 0)
+  const hasAnyGames = computed(() => gameScripts.value.length > 0)
 </script>

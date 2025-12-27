@@ -3,6 +3,7 @@
   <div>
     <!-- トリガーボタン -->
     <div
+      v-if="isCharacter"
       class="tooltip tooltip-bottom"
       :data-tip="
         hasInvalidCharacters
@@ -100,6 +101,7 @@
   import { useCharacterUpdater } from './useCharacterUpdater'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { Users } from 'lucide-vue-next'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = withDefaults(
     defineProps<{
@@ -112,6 +114,8 @@
       buttonStyle: 'secondary',
     }
   )
+
+  const { isCharacter } = useVisibilityAccess()
 
   // データ抽出（selectedIdがある場合は単一ルールのみ対象）
   const { changeScope, scopeLabel, allItems, allPostActions, totalItems } = useDataExtractor(

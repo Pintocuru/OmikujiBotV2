@@ -39,7 +39,7 @@
   import { Plus, AlertCircle } from 'lucide-vue-next'
   import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
   import { PlaceholderSchema } from '@/types'
-  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   // Props
   const props = defineProps<{
@@ -49,16 +49,12 @@
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isPlaceholder } = useVisibilityAccess()
 
   // プレースホルダーのパターン
   const PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 
-  // プレースホルダー機能が見えているか
-  const isPlaceholder = computed(() => hasAccess(data.value.featureUsage.usage.placeholders))
-
-  /**
-   * テキスト内のプレースホルダーを全て抽出
-   */
+  // テキスト内のプレースホルダーを全て抽出
   const allPlaceholdersInText = computed(() => {
     const matches = props.text.matchAll(PLACEHOLDER_PATTERN)
     const placeholderSet = new Set<string>()
@@ -76,43 +72,31 @@
     return Array.from(placeholderSet)
   })
 
-  /**
-   * 定義済みプレースホルダー
-   */
+  // 定義済みプレースホルダー
   const definedPlaceholders = computed(() => {
     const definedPlaceholders = data.value.placeholders
     return allPlaceholdersInText.value.filter((id) => definedPlaceholders[id])
   })
 
-  /**
-   * 未定義のプレースホルダーを検出
-   */
+  // 未定義のプレースホルダーを検出
   const undefinedPlaceholders = computed(() => {
     const definedPlaceholders = data.value.placeholders
     return allPlaceholdersInText.value.filter((id) => !definedPlaceholders[id])
   })
 
-  /**
-   * 未定義プレースホルダーの存在チェック
-   */
+  //未定義プレースホルダーの存在チェック
   const hasUndefined = computed(() => undefinedPlaceholders.value.length > 0)
 
-  /**
-   * プレースホルダーが存在するかチェック
-   */
+  // プレースホルダーが存在するかチェック
   const hasPlaceholders = computed(() => allPlaceholdersInText.value.length > 0)
 
-  /**
-   * アイテム選択
-   */
+  // アイテム選択
   const selectPlaceholderItem = (key: string) => {
     omikujiStore.selectCategory('placeholders')
     omikujiStore.selectItem(key)
   }
 
-  /**
-   * 新しいプレースホルダーを作成
-   */
+  // 新しいプレースホルダーを作成
   const createPlaceholder = (placeholderKey: string) => {
     const parsedItem = PlaceholderSchema.parse({
       key: placeholderKey,

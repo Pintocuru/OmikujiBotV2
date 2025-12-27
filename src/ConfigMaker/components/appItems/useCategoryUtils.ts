@@ -3,12 +3,13 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+import { useAccessChecker } from '@/ConfigMaker/scripts/useSettingMode'
 import { isDev } from '@/types'
 
 export const useCategoryUtils = () => {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { hasAccess } = useAccessChecker()
 
   /**
    * ナビゲーションのアイテム数バッジ表示

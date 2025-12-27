@@ -70,7 +70,7 @@
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
   import WordPartyTestButton from './WordPartyTestButton.vue'
-  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
   import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
@@ -80,12 +80,11 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isCharacter } = useVisibilityAccess()
 
   const characters = computed(() => data.value.characters)
   const bubbleSettings = computed(() => data.value.components.bubble)
   const toastSettings = computed(() => data.value.components.toast)
-
-  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
 
   // プレースホルダー処理
   const processMessage = (message: string) => {

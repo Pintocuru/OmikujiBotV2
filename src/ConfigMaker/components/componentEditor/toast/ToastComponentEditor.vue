@@ -53,14 +53,8 @@
   </SettingItem>
 
   <SettingItem
-    v-if="
-      useVisibilityAccess().canShowUsage('characters') ||
-      (isDev && toastSettings.showToastsCharacter && !useVisibilityAccess().canShowUsage('characters'))
-    "
     label="キャラクター表示"
     description="トーストにキャラクターアイコンを表示するか"
-    devMemo="characterVisible"
-    :variant="!useVisibilityAccess().canShowUsage('characters') ? 'error' : 'none'"
     :showReset="true"
     @reset="resetMap.showToastsCharacter"
   >
@@ -88,13 +82,13 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, Ref } from 'vue'
+  import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, SettingsToastSchema } from '@/types'
+  import { SettingsToastSchema } from '@/types'
   import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { hasAccess, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
@@ -102,10 +96,10 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isCharacter } = useVisibilityAccess()
 
   const toastSettings = computed(() => data.value.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
-  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
     const selectedKeys = new Set(toastSettings.value.showThumbnail)

@@ -17,22 +17,17 @@ export function useSettingMode() {
 /**
  * アクセスレベルをチェックする関数
  */
-export const hasAccess = (visibilityLevel: AccessLevelType): boolean => {
+export function useAccessChecker() {
   const { isPro, isGod } = useSettingMode()
 
-  // experimental は常に非表示（isGodでも非表示）
-  if (visibilityLevel === 'experimental') return false
+  const hasAccess = (level: AccessLevelType) => {
+    if (level === 'experimental') return false
+    if (level === 'internal') return isGod.value
+    if (level === 'pro') return isPro.value
+    return true
+  }
 
-  // internal は godMode のみ表示
-  if (visibilityLevel === 'internal') return isGod.value
-
-  // pro は pro または godMode で表示
-  if (visibilityLevel === 'pro') return isPro.value
-
-  // basic は全てのライセンスで表示
-  if (visibilityLevel === 'basic') return true
-
-  return false
+  return { hasAccess }
 }
 
 /**
@@ -41,21 +36,24 @@ export const hasAccess = (visibilityLevel: AccessLevelType): boolean => {
 export function useVisibilityAccess() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { hasAccess } = useAccessChecker()
 
-  // developer.visibility を reactive に取り出し
+  // featureUsage
   const usage = computed(() => data.value.featureUsage.usage)
   const developer = computed(() => data.value.featureUsage.developer)
 
-  // hasAccess を透過的に使える関数
-  const canShowUsage = (key: keyof typeof usage.value): boolean => {
-    return hasAccess(usage.value[key] as AccessLevelType)
-  }
-  const canShowDeveloper = (key: keyof typeof developer.value): boolean => {
-    return hasAccess(developer.value[key] as AccessLevelType)
-  }
+  const canShowUsage = (key: keyof typeof usage.value): boolean => hasAccess(usage.value[key] as AccessLevelType)
+  const canShowDeveloper = (key: keyof typeof developer.value): boolean =>
+    hasAccess(developer.value[key] as AccessLevelType)
+
+  // isCharacter
+  const isCharacter = computed(() => hasAccess(usage.value.characters) && Object.keys(data.value.characters).length > 0)
+  const isPlaceholder = computed(() => hasAccess(data.value.featureUsage.usage.placeholders))
 
   return {
     canShowUsage,
     canShowDeveloper,
+    isPlaceholder,
+    isCharacter,
   }
 }

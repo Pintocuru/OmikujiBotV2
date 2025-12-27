@@ -1,18 +1,20 @@
 <!-- src\ConfigMaker\components\postAction\items\MessageSettings.vue -->
 <template>
   <!-- キャラクター選択 -->
-  <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
-    <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
-      <option v-for="char in characterOptions" :key="char.value" :value="char.value">
-        {{ char.label }}
-      </option>
-    </select>
-  </SettingItem>
+  <div v-if="isCharacter" class="space-y-2">
+    <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
+      <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
+        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
+          {{ char.label }}
+        </option>
+      </select>
+    </SettingItem>
 
-  <!-- アイコン選択 -->
-  <SettingItem v-if="characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
-    <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
-  </SettingItem>
+    <!-- アイコン選択 -->
+    <SettingItem v-if="characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
+      <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
+    </SettingItem>
+  </div>
 
   <!-- 表示形式の選択（単一） -->
   <SettingItem label="表示形式" description="フキダシかトーストを選択してください">
@@ -58,6 +60,7 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { soundList } from '@/Toolkit/sounds/soundMap'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{
     action: PostActionMessageType
@@ -67,6 +70,8 @@
   const emit = defineEmits<{
     'update:action': [action: PostActionMessageType]
   }>()
+
+  const { isCharacter } = useVisibilityAccess()
 
   const updateAction = (updates: Partial<PostActionMessageType>) => {
     emit('update:action', { ...props.action, ...updates })
@@ -78,13 +83,10 @@
   })
 
   // 既存値から初期選択を決定
-  const messageType = ref<'bubble' | 'toast'>(
-    props.action.message.bubble && props.action.message.bubble !== ''
-      ? 'bubble'
-      : props.action.message.toast && props.action.message.toast !== ''
-        ? 'toast'
-        : 'bubble'
-  )
+  const messageType = computed<'bubble' | 'toast'>(() => {
+    const msg = props.action.message
+    return msg.bubble && msg.bubble !== '' ? 'bubble' : msg.toast && msg.toast !== '' ? 'toast' : 'bubble'
+  })
 
   // 単一 input の v-model 用（選択側の値だけを編集）
   const messageText = computed<string>({
@@ -114,8 +116,9 @@
     const newType = (event.target as HTMLInputElement).value as 'bubble' | 'toast'
     const prevType = messageType.value
 
-    if (newType === 'toast' && prevType === 'bubble') {
-      // bubble → toast に移動
+    if (newType === prevType) return
+
+    if (newType === 'toast') {
       updateAction({
         message: {
           ...props.action.message,
@@ -123,8 +126,7 @@
           bubble: '',
         },
       })
-    } else if (newType === 'bubble' && prevType === 'toast') {
-      // toast → bubble に移動
+    } else {
       updateAction({
         message: {
           ...props.action.message,
@@ -133,8 +135,6 @@
         },
       })
     }
-
-    messageType.value = newType
   }
 
   const sound = computed({

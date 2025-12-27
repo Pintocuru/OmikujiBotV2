@@ -86,15 +86,14 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { hasAccess, useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
+  const { isCharacter } = useVisibilityAccess()
 
   const bubble = computed(() => data.value.components.bubble)
-
-  const isCharacter = computed(() => hasAccess(data.value.featureUsage.usage.characters))
 
   // 値を直接指定して更新する関数
   const updateFieldValue = <K extends keyof typeof bubble.value>(field: K, value: (typeof bubble.value)[K]) => {

@@ -62,17 +62,17 @@
     const soloSettings: FeatureUsageType = {
       usage: {
         comments: 'basic' as const,
-        timers: 'experimental' as const,
+        timers: 'pro' as const,
         actionSets: 'basic' as const,
         placeholders: 'basic' as const,
-        characters: 'basic' as const,
+        characters: 'pro' as const,
       },
-      components: [],
+      components: ['toast', 'ranking'],
       gameScripts: [],
 
       developer: {
+        licenseVisible: 'basic' as const,
         jsonMergeSettings: 'experimental' as const,
-        licenseVisible: 'experimental' as const,
       },
     }
 

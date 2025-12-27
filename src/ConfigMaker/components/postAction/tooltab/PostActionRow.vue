@@ -7,7 +7,7 @@
     </div>
 
     <!-- キャラクターアイコン（message / toast のみ表示） -->
-    <div v-if="action.actionType === 'message'" class="flex items-center gap-2 flex-shrink-0">
+    <div v-if="isCharacter && action.actionType === 'message'" class="flex items-center gap-2 flex-shrink-0">
       <CharacterIcon :character-key="action.characterKey" :icon-key="action.iconKey" :size="8" />
     </div>
 
@@ -25,10 +25,13 @@
   import { PostActionType } from '@/types/'
   import CharacterIcon from '@/common/CharacterIcon.vue'
   import { MessageSquare, Bell, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{
     action: PostActionType
   }>()
+
+  const { isCharacter } = useVisibilityAccess()
 
   const icons = computed(() => {
     const list = []

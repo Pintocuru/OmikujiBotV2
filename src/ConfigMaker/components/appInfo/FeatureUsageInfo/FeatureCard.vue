@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-  import { hasAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useAccessChecker } from '@/ConfigMaker/scripts/useSettingMode'
   import type { AccessLevelType } from '@shared/types'
   import { CheckCircle } from 'lucide-vue-next'
 
@@ -28,6 +28,8 @@
     accessLevel: AccessLevelType
     description: string
   }>()
+
+  const { hasAccess } = useAccessChecker()
 
   function getAccessLevelClass(level: AccessLevelType): string {
     if (!hasAccess(level)) return 'border-base-300 opacity-60'

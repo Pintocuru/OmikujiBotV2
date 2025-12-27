@@ -4,13 +4,10 @@
     class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center text-primary-content transition-transform duration-200"
     :class="[
       isBouncing && 'scale-110',
-      [
-        'bg-gradient-to-br',
-        `from-${testBg.from}`,
-        `to-${testBg.to}`,
-
-        ['bg-gradient-to-br', `from-${counterSetting.color.backFrom}`, `to-${counterSetting.color.backTo}`],
-      ],
+      // From と To が同じかどうかでクラスを切り替える
+      counterSetting.color.backFrom === counterSetting.color.backTo
+        ? `bg-${counterSetting.color.backFrom}`
+        : ['bg-gradient-to-br', `from-${counterSetting.color.backFrom}`, `to-${counterSetting.color.backTo}`],
     ]"
     :data-theme="counterSetting.color.daisyUiTheme"
   >
