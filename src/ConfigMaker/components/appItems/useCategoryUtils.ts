@@ -34,6 +34,7 @@ export const useCategoryUtils = () => {
     if (!isDev || !hasAccess(developer.jsonMergeSettings)) excludeKeys.push('jsonMerge') // 開発者のみの機能
     if (!hasAccess(usage.comments)) excludeKeys.push('comments')
     if (!hasAccess(usage.timers)) excludeKeys.push('timers')
+    if (!hasAccess(usage.actionSets)) excludeKeys.push('actionSets')
     if (!hasAccess(usage.placeholders)) excludeKeys.push('placeholders')
     if (!hasAccess(usage.characters)) excludeKeys.push('characters')
 

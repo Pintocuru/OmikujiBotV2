@@ -13,6 +13,7 @@
 
     <!-- サムネイルサンプル表示 -->
     <div
+      v-if="isCharacter"
       class="flex flex-row gap-4 mt-2"
       :class="toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start'"
     >
@@ -30,7 +31,7 @@
   >
     <ColorModeSelector
       :model-value="toastSettings.defaultColor"
-      @update:model-value="updateField('defaultColor', $event)"
+      @update:model-value="(value) => updateField('defaultColor', value)"
     />
   </SettingItem>
 
@@ -44,7 +45,7 @@
     <input
       type="checkbox"
       class="toggle toggle-primary"
-      :checked="toastSettings.showToastsOnRight"
+      v-model="toastSettings.showToastsOnRight"
       @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">
@@ -53,6 +54,7 @@
   </SettingItem>
 
   <SettingItem
+    v-if="isCharacter"
     label="キャラクター表示"
     description="トーストにキャラクターアイコンを表示するか"
     :showReset="true"
@@ -61,13 +63,14 @@
     <input
       type="checkbox"
       class="toggle toggle-primary"
-      :checked="toastSettings.showToastsCharacter"
+      v-model="toastSettings.showToastsCharacter"
       @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
     />
     <span class="ml-2">キャラクターを表示する</span>
   </SettingItem>
 
   <SettingItem
+    v-if="isCharacter"
     label="サムネイル表示キャラクター"
     description="右下にサムネイルとして表示するキャラクターを選択します"
     :showReset="true"
@@ -76,7 +79,7 @@
     <CharacterBadgeSelector
       :characters="data.characters"
       :selectedKeys="toastSettings.showThumbnail"
-      @update:selectedKeys="(keys: string[]) => updateField('showThumbnail', keys)"
+      @update:selectedKeys="(keys) => updateField('showThumbnail', keys)"
     />
   </SettingItem>
 </template>
@@ -100,14 +103,18 @@
 
   const toastSettings = computed(() => data.value.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
+
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
     const selectedKeys = new Set(toastSettings.value.showThumbnail)
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
   })
 
-  // 更新関数
-  const updateField = (field: keyof typeof toastSettings.value, value: any) => {
+  // 更新関数（値を直接受け取る）
+  const updateField = <K extends keyof typeof toastSettings.value>(
+    field: K,
+    value: (typeof toastSettings.value)[K]
+  ) => {
     omikujiStore.updateNestedComponents('toast', {
       ...toastSettings.value,
       [field]: value,
@@ -133,7 +140,7 @@
       .fill(null)
       .map((_, i) => {
         const charIndex = i < characterArray.value.length ? i : 0
-        const character = characterArray.value[charIndex] // ★ 修正: comment を { toast: string } 構造にする
+        const character = characterArray.value[charIndex]
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
           color: isCharacter.value ? character?.color : toastSettings.value.defaultColor,

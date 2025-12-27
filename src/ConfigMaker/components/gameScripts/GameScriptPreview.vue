@@ -6,16 +6,16 @@
       <!-- フキダシ -->
       <div class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
-          v-if="character"
           :key="messageKey"
-          :botName="character.displayName"
+          :botName="isCharacter ? character.displayName : null"
           :message="processedMessage"
-          :color="character.color"
+          :color="isCharacter ? character.color : bubbleSettings.defaultColor"
           @click="refreshMessage"
           class="cursor-pointer"
         />
 
         <CharacterAvatar
+          v-if="isCharacter"
           :profileImage="character.image?.default || ''"
           :characterSize="bubbleSettings.characterSize"
           :showCharacterFrame="false"
@@ -36,6 +36,7 @@
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
   const props = defineProps<{
     gameScripts: GameScriptsType | null
@@ -43,15 +44,25 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isCharacter } = useVisibilityAccess()
   const scriptManager = new GameScriptManager()
 
   const characters = computed(() => data.value.characters)
   const bubbleSettings = computed(() => data.value.components.bubble)
 
   // キャラクター取得
-  const isValid = computed(
-    () => !!(props.gameScripts && props.gameScripts.scriptId !== '' && characters.value[props.gameScripts.characterKey])
-  )
+  const isValid = computed(() => {
+    if (!props.gameScripts) return false
+    if (props.gameScripts.scriptId === '') return false
+
+    // キャラクター機能が有効な場合だけキャラチェック
+    if (isCharacter.value) {
+      return !!characters.value[props.gameScripts.characterKey]
+    }
+
+    // isCharacter = false の場合はキャラチェック不要
+    return true
+  })
 
   const character = computed(() => {
     if (props.gameScripts) {

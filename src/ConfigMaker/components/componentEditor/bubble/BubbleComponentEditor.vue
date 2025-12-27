@@ -12,6 +12,18 @@
     />
   </div>
 
+  <!-- デフォルトカラー設定 -->
+  <SettingItem
+    v-if="!isCharacter"
+    label="デフォルトカラー設定"
+    description="キャラクターが非表示の際はこのカラーが使用されます"
+  >
+    <ColorModeSelector
+      :model-value="bubble.defaultColor"
+      @update:model-value="(value) => updateFieldValue('defaultColor', value)"
+    />
+  </SettingItem>
+
   <!-- フキダシアニメーション -->
   <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
     <select
@@ -85,6 +97,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
+  import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
 
@@ -103,7 +116,7 @@
     })
   }
 
-  // 単一の更新関数（型キャストを削減）
+  // 単一の更新関数（イベントから値を取得）
   const updateField = (field: keyof typeof bubble.value, event: Event) => {
     const target = event.target as HTMLInputElement | HTMLSelectElement
     const value =
@@ -116,14 +129,14 @@
     updateFieldValue(field, value as (typeof bubble.value)[typeof field])
   }
 
-  // リセット関数（簡潔化）
+  // リセット関数
   const resetField = (field: keyof typeof bubble.value) => {
     if (field === 'defaultColor') return
     const defaults = SettingsBubbleSchema.parse({})
     updateFieldValue(field, defaults[field])
   }
 
-  // ランダムカラー取得（キャッシュ可能なように分離）
+  // ランダムカラー取得
   const localColor = computed(() => {
     const characters = data.value.characters
     const keys = Object.keys(characters)

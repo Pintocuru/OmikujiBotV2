@@ -60,7 +60,7 @@
           </SettingItem>
 
           <!-- Character Key -->
-          <SettingItem label="キャラクターキー" description="スクリプト実行時に使用するキャラクター">
+          <SettingItem v-if="isCharacter" label="キャラクターキー" description="スクリプト実行時に使用するキャラクター">
             <select
               :value="gameScripts?.characterKey || ''"
               @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
@@ -99,7 +99,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import GameScriptPreview from './GameScriptPreview.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
@@ -115,6 +115,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isGod } = useSettingMode()
+  const { isCharacter } = useVisibilityAccess()
 
   const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
 
