@@ -7,13 +7,18 @@ export const GOD_SCRIPTS = ['GoogolClover']
 
 export function getAvailableScripts(mode: SettingMode, fallback: string[] = []) {
   switch (mode) {
-    case 'godMode':
-      return [...PRO_SCRIPTS, ...GOD_SCRIPTS, ...fallback]
-    case 'pro':
-      return [...PRO_SCRIPTS, ...fallback]
+    case 'godMode': {
+      return Array.from(new Set([...PRO_SCRIPTS, ...GOD_SCRIPTS, ...fallback]))
+    }
+
+    case 'pro': {
+      return Array.from(new Set([...PRO_SCRIPTS, ...fallback]))
+    }
+
     case 'basic':
     case 'adv':
-    default:
-      return fallback
+    default: {
+      return Array.from(new Set(fallback))
+    }
   }
 }

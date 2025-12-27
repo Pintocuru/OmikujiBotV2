@@ -10,12 +10,12 @@ export const GOD_COMPONENTS: string[] = []
 export function getAvailableComponents(mode: SettingMode, fallback: string[] = []) {
   switch (mode) {
     case 'godMode':
-      return [...BASIC_COMPONENTS, ...PRO_COMPONENTS, ...GOD_COMPONENTS]
+      return Array.from(new Set([...BASIC_COMPONENTS, ...PRO_COMPONENTS, ...GOD_COMPONENTS, ...fallback]))
     case 'pro':
-      return [...BASIC_COMPONENTS, ...PRO_COMPONENTS]
+      return Array.from(new Set([...BASIC_COMPONENTS, ...PRO_COMPONENTS, ...fallback]))
     case 'basic':
     case 'adv':
     default:
-      return [...BASIC_COMPONENTS, ...fallback]
+      return Array.from(new Set([...BASIC_COMPONENTS, ...fallback]))
   }
 }
