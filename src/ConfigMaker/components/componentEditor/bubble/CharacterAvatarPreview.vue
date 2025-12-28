@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+  import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import { useMessageFilterCore } from '@/MainGenerator/components/CommentBubble/composables/useMessageFilterCore'

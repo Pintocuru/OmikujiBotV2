@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
-import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
+import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 
 // フキダシ・キャラクター
 export const SettingsBubbleSchema = z.object({

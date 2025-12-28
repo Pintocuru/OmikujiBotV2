@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { AccessLevelSchema, displaySize } from '@shared/types/'
 import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 import { themes } from '@shared/styles/DaisyUiTheme'
-import { fontFamilyOptions } from '@/types/BotComponents/useFontFamily'
+import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 
 // BaseSettingsSchema
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)

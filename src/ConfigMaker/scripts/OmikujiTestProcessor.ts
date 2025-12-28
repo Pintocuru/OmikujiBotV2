@@ -1,6 +1,6 @@
 // src\ConfigMaker\scripts\OmikujiTestProcessor.ts
 import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types'
-import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor'
 import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

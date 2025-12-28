@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
-import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 

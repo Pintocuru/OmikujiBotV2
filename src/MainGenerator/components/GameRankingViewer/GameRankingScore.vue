@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
-  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+  import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { Trophy } from 'lucide-vue-next'
 

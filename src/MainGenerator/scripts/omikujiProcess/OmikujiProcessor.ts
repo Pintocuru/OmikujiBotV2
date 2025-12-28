@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
 import { OmikujiSetType, OmikujiItemType } from '@/types'
-import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { FontFamilyType, useFontFamily } from '@/types/BotComponents/useFontFamily'
+  import { FontFamilyType, useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import CommentBubbleItem from '@MainComponents/CommentBubble/CommentBubbleItem.vue'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'

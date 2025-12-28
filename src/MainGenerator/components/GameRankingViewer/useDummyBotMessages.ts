@@ -1,7 +1,9 @@
 // src/composables/useDummyBotMessages.ts
-import { RankingMessageSchema } from '@/types'
-import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+import { RankingMessageSchema, UserNameSchema } from '@/types'
+import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
+import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
+import { vi } from 'zod/v4/locales'
 
 const candidateNames = [
   'てい',
@@ -65,22 +67,24 @@ const prefixes = [
 ]
 
 // プレビュー用: 毎回ランダムにユーザー名を生成
-export const generateDummyUserNames = (count: number): string[] => {
-  const result: string[] = []
-  const maxCount = Math.min(count, 300) // 最大200件まで
+export const generateDummyUserNames = (count: number): UserVisitRecord[] => {
+  const result: UserVisitRecord[] = []
+  const maxCount = Math.min(count, 300)
 
   for (let i = 0; i < maxCount; i++) {
     const baseName = candidateNames[Math.floor(Math.random() * candidateNames.length)]
 
-    // 20% の確率で prefix を付与
-    if (Math.random() < 0.2) {
-      const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
-      result.push(baseName + prefix)
-    } else {
-      result.push(baseName)
-    }
-  }
+    const name = Math.random() < 0.2 ? baseName + prefixes[Math.floor(Math.random() * prefixes.length)] : baseName
 
+    result.push(
+      UserVisitRecordSchema.parse({
+        name,
+        userId: name,
+        ruleId: 'dummy',
+        visitCount: Math.floor(Math.random() * 100),
+      })
+    )
+  }
   return result
 }
 

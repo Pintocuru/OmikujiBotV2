@@ -1,16 +1,10 @@
 // src/MainGenerator/script/omikujiProcess/UserVisitManager.ts
+import { UserNameType } from '@/types'
+import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
 /**
  * ユーザーの訪問記録を管理するインターフェース
  */
-export interface UserVisitRecord {
-  readonly userId: string
-  readonly ruleId: string
-  name: string
-  visitCount: number
-  firstVisitTime: number
-  lastVisitTime: number
-}
 
 /**
  * OmikenCommentTypeのomikujiRecordsを更新するためのコールバック型
@@ -78,23 +72,21 @@ export class UserVisitManager {
   /**
    * ユーザーの訪問を記録し、コールバックを通じてomikujiRecordsを更新
    */
-  recordVisit(userId: string, ruleId: string, name: string): void {
+  recordVisit(ruleId: string, user: UserNameType): void {
+    const { userId, name, timestamp } = user
+
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userVisits.get(key)
-    const currentTime = Date.now()
 
     if (existingRecord) {
-      existingRecord.name = name
+      existingRecord.name = name // 名前変更に対応
       existingRecord.visitCount++
-      existingRecord.lastVisitTime = currentTime
+      existingRecord.timestamp = timestamp
     } else {
       this.userVisits.set(key, {
-        userId,
+        ...user,
         ruleId,
-        name,
         visitCount: 1,
-        firstVisitTime: currentTime,
-        lastVisitTime: currentTime,
       })
     }
 
@@ -193,7 +185,7 @@ export class UserVisitManager {
   getLatestVisitorByRuleId(ruleId: string): UserVisitRecord | null {
     const records = Array.from(this.userVisits.values())
       .filter((r) => r.ruleId === ruleId)
-      .sort((a, b) => b.lastVisitTime - a.lastVisitTime)
+      .sort((a, b) => b.timestamp - a.timestamp)
 
     return records[0] ?? null
   }

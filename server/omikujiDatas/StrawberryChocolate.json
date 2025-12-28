@@ -3082,11 +3082,22 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [],
-    "gameScripts": [],
+    "components": [
+      "bubble",
+      "toast",
+      "ranking",
+      "counter"
+    ],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover"
+    ],
     "developer": {
-      "jsonMergeSettings": "basic",
-      "licenseVisible": "basic"
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
     }
   },
   "settings": {

@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
 import { computed, watch } from 'vue'
-import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

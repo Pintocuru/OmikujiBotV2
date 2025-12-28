@@ -1,5 +1,5 @@
 // src/GameScripts/GoogolClover/game.ts
-import { PostActionMessageBodySchema, PostActionMessageBodyType, UserMessageSchema } from '@/types'
+import { PostActionMessageBodySchema, PostActionMessageBodyType, UserNameSchema } from '@/types'
 import { GOAL_EXPONENT, MIN_SPINS, MAX_SPINS, CURRENCY_SYMBOL } from './constants'
 import type { UserState, SlotResult } from './types'
 import { formatShort, spinSlot, formatScoreText, calculateScoreValue } from './utils'
@@ -97,7 +97,7 @@ function buildGameResult(result: SlotExecutionResult, context: GameContext): Gam
   const { failedAt, multipliers, totalMultiplier } = result
   const multipliersDisplay = multipliers.map((m) => `${m}`).join('×')
 
-  const user = UserMessageSchema.parse({
+  const user = UserNameSchema.parse({
     name: context.userName,
     userId: context.userId,
     profileImage: context.profileImage,

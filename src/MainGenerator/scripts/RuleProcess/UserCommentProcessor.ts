@@ -1,5 +1,5 @@
 // src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
-import { BotMessage, CommentRuleType } from '@/types/'
+import { BotMessage, CommentRuleType, UserNameSchema } from '@/types/'
 import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
 import { buildRestrictionMessages } from './RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
@@ -73,7 +73,12 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
 
   // 3. おみくじ成功時に回数をインクリメント
   omiken.meta.draws = userVisitManager.getVisitCount(omiken.userId, rule.key) + 1
-  userVisitManager.recordVisit(omiken.userId, rule.key, omiken.userName)
+  const userName = UserNameSchema.parse({
+    name: omiken.userName,
+    userId: omiken.userId,
+    profileImage: omiken.profileImage,
+  })
+  userVisitManager.recordVisit(rule.key, userName)
 
   // 4. おみくじ実行
   const omikujiProcessor = new OmikujiProcessor()

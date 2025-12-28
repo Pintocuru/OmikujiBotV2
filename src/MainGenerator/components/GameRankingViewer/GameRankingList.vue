@@ -60,8 +60,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
-  import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+  import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
   import { generateDummyMessages } from './useDummyBotMessages'
 
   const props = defineProps<{

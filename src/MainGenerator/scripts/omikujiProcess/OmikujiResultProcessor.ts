@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
-import { BotMessage } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType } from '@/types'
 import { OmikujiItemType, PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
@@ -10,7 +10,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../../stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
-import { RankingMessageSchema, UserMessageSchema } from '@/types/OmikujiData/PostActionMessage'
+import { RankingMessageSchema, UserNameSchema } from '@/types/OmikujiData/PostActionMessage'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
@@ -99,7 +99,7 @@ export class OmikujiResultProcessor {
 
       // デフォルト情報を付与(TODO:ちゃんと切り分けて)
       action.message.user = omiken
-        ? UserMessageSchema.parse({
+        ? UserNameSchema.parse({
             name: omiken?.userName,
             userId: omiken?.userId,
             profileImage: omiken?.profileImage,

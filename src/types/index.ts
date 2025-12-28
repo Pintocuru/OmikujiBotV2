@@ -3,7 +3,7 @@
 // 各型定義の公開
 export * from './env'
 
-export * from './BotComponents/BotMessageSchema'
+export * from './MainGenerator/BotMessageSchema'
 
 export * from '../GameScripts/scriptsEngine/LogRank/GameScriptSchema'
 // export * from './GameScript/GameScriptSettingsSchema'

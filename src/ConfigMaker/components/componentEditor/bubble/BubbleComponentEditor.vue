@@ -92,7 +92,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { fontFamilyOptions, fontFamilyLabels } from '@/types/BotComponents/useFontFamily'
+  import { fontFamilyOptions, fontFamilyLabels } from '@/types/MainGenerator/useFontFamily'
   import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'

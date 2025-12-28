@@ -32,11 +32,22 @@
     <!-- ユーザーリスト -->
     <ul v-if="counterSetting.maxUsers > 0" class="flex flex-wrap gap-2 justify-center mt-3">
       <li
-        v-for="(name, index) in displayedUsers"
-        :key="name + '-' + index"
-        class="badge badge-warning px-3 py-2 text-sm font-semibold"
+        v-for="(value, index) in displayedUsers"
+        :key="value.userId + '-' + index"
+        class="badge badge-warning px-2 py-2 text-sm font-semibold"
       >
-        {{ name }}
+        <!-- アイコン -->
+        <div v-if="value.profileImage !== ''" class="avatar">
+          <div class="w-5 rounded-full">
+            <img :src="value.profileImage" alt="" />
+          </div>
+        </div>
+        <div v-else class="avatar placeholder">
+          <div class="bg-neutral text-neutral-content w-5 rounded-full flex items-center justify-center">
+            {{ (value.name || 'A').charAt(0) }}
+          </div>
+        </div>
+        {{ value.name }}
       </li>
     </ul>
   </div>
@@ -44,12 +55,13 @@
 
 <script setup lang="ts">
   import { ref, watch, computed } from 'vue'
-  import type { SettingsCounterType } from '@/types/OmikujiData/DisplaySettingsSchema'
+  import { SettingsCounterType } from '@/types'
+  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType
     count: number | string
-    users: string[]
+    users: UserVisitRecord[]
   }>()
 
   const isBouncing = ref(false)
@@ -74,16 +86,27 @@
 
   // 最新が後ろに貯まるので逆順にして、maxUsersで制限
   const displayedUsers = computed(() => {
-    if (props.counterSetting.maxUsers <= 0) return []
-    return props.users.slice().reverse().slice(0, props.counterSetting.maxUsers)
-  })
+    const { maxUsers, target } = props.counterSetting
+    if (maxUsers <= 0) return []
 
-  /**
-   * ▼ テスト用の背景設定
-   * Tailwind のクラスが正しく反映されるか確認するための変数
-   */
-  const testBg = ref({
-    from: 'primary',
-    to: 'secondary',
+    const reversed = props.users.slice().reverse()
+
+    // user の場合のみ userId で重複排除
+    if (target === 'user') {
+      const seen = new Set<string>()
+      const unique: UserVisitRecord[] = []
+
+      for (const user of reversed) {
+        if (seen.has(user.userId)) continue
+        seen.add(user.userId)
+        unique.push(user)
+        if (unique.length >= maxUsers) break
+      }
+
+      return unique
+    }
+
+    // draw の場合はそのまま
+    return reversed.slice(0, maxUsers)
   })
 </script>

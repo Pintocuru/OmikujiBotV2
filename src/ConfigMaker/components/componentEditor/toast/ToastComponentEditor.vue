@@ -48,9 +48,7 @@
       v-model="toastSettings.showToastsOnRight"
       @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
     />
-    <span class="ml-2">
-      {{ toastSettings.showToastsOnRight ? '右側に表示する' : '左側に表示する' }}
-    </span>
+    <span class="ml-2"> {{ toastSettings.showToastsOnRight ? '右' : '左' }}側に表示する </span>
   </SettingItem>
 
   <SettingItem
@@ -88,7 +86,7 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { SettingsToastSchema } from '@/types'
-  import { BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+  import { BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'

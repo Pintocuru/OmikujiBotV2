@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { useFontFamily } from '@/types/BotComponents/useFontFamily'
+  import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'

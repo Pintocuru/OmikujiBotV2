@@ -1,4 +1,4 @@
-// src\types\BotComponents\BotMessageSchema.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\MainGenerator\BotMessageSchema.ts
 import { z } from 'zod'
 import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { PostActionMessageBodySchema } from '../OmikujiData/PostActionMessage'

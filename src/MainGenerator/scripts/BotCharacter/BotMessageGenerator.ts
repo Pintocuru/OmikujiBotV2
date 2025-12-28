@@ -1,5 +1,5 @@
 // src/MainGenerator/utils/commentProcessor/BotMessageGenerator.ts
-import { BotMessage, BotMessageSchema } from '@/types/BotComponents/BotMessageSchema'
+import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterType, DisplayOptionType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'

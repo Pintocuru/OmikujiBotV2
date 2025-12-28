@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/useFontFamily.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\MainGenerator\useFontFamily.ts
 
 export const fontFamilyOptions = [
   'default',
