@@ -146,7 +146,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsCounterSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
@@ -155,6 +154,7 @@
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
   import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import { SettingsCounterSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

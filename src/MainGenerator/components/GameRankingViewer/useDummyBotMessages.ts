@@ -1,9 +1,7 @@
 // src/composables/useDummyBotMessages.ts
-import { RankingMessageSchema, UserNameSchema } from '@/types'
+import { RankingMessageSchema, SettingsRankingType, UserNameSchema } from '@/types'
 import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
-import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
-import { vi } from 'zod/v4/locales'
 
 const candidateNames = [
   'てい',

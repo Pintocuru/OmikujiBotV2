@@ -39,11 +39,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import BubbleCharactersEditor from './BubbleCharactersEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
+  import { SettingsBubbleSchema } from '@/types'
 
   // Store
   const omikujiStore = useOmikujiStore()

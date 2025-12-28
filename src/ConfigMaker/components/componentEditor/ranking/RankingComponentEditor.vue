@@ -98,15 +98,11 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import {
-    rankingSortOrderLabels,
-    rankingSortOrders,
-    SettingsRankingSchema,
-  } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { enabledGameScriptMap } = useEnabledGames()

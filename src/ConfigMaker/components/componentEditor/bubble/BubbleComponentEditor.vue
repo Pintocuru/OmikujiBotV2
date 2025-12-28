@@ -93,13 +93,13 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { fontFamilyOptions, fontFamilyLabels } from '@/types/MainGenerator/useFontFamily'
-  import { SettingsBubbleSchema } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { SettingsBubbleSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

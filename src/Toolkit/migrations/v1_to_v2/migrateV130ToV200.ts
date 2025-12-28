@@ -1,16 +1,16 @@
 // src\Toolkit\migrations\v1_to_v2\OmikujiDataV1\migrateV130ToV200.ts
 import {
   SettingsBubbleSchema,
-  SettingsComponentsSchema,
+  ComponentsSchema,
   SettingsCounterSchema,
-  SettingsEditorSchema,
   SettingsRankingSchema,
   SettingsToastSchema,
-} from '@/types/OmikujiData/DisplaySettingsSchema'
+} from '@/types/OmikujiData/ComponentsSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
 import { FeatureUsageSchema } from '@/types/OmikujiData/FeatureUsageSchema'
+import { SettingsSchema } from '@/types/OmikujiData/SettingsSchema'
 
 /**
  * v1からv1.3へのマイグレーション
@@ -81,7 +81,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
     showThumbnail: [],
   })
 
-  const components = SettingsComponentsSchema.parse({
+  const components = ComponentsSchema.parse({
     bubble,
     toast,
     ranking: SettingsRankingSchema.parse({}),
@@ -91,7 +91,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
   /**
    * settings
    */
-  const settings = SettingsEditorSchema.parse({
+  const settings = SettingsSchema.parse({
     licenseKeyHash: old.displaySettings.licenseKeyHash ?? '',
     daisyUiTheme: base.daisyUiTheme ?? 'dark',
   })

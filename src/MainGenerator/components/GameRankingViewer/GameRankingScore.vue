@@ -28,8 +28,8 @@
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
-  import { SettingsRankingType } from '@/types/OmikujiData/DisplaySettingsSchema'
   import { Trophy } from 'lucide-vue-next'
+  import { SettingsRankingType } from '@/types'
 
   // 表示時間（ミリ秒）
   const DISPLAY_DURATION_MS = 8000
