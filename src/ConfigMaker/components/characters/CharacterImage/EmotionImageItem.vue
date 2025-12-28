@@ -75,7 +75,7 @@
   import { CharacterEmotionType } from '@/types/'
   import { Plus, ChevronUp, ChevronDown, X } from 'lucide-vue-next'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ImagePreview from './ImagePreview.vue'
+  import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
 
   const props = defineProps<{
     emotionKey: CharacterEmotionType

@@ -50,7 +50,7 @@
   import { useConfigExport } from './useConfigExport'
   import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { storeToRefs } from 'pinia'
   import { Save } from 'lucide-vue-next'
 

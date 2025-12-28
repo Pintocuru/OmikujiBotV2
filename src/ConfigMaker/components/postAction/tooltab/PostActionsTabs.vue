@@ -71,7 +71,7 @@
   import PostActionItem from '../items/PostActionItem.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 

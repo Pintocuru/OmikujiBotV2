@@ -60,7 +60,7 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { soundList } from '@/Toolkit/sounds/soundMap'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     action: PostActionMessageType

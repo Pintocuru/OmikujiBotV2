@@ -52,7 +52,7 @@
     defineProps<{
       botName: string | null
       message: string
-      color?: CharacterColorType
+      color: CharacterColorType
       brightnessLevel?: number
       customClasses?: string
       customArrowClasses?: string

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "v2.0.0-beta1",
+    "dataVersion": 2.00011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -25,19 +25,17 @@
       "name": "ルノルマンカード",
       "description": "36枚のルノルマンカードを使った占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-11-29T15:20:56.173Z",
+      "updatedAt": "2025-12-28T11:30:49.960Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757800562314",
           "key": "1757800562314",
-          "name": "",
+          "name": "ルノルマンカード",
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
@@ -45,29 +43,62 @@
           "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 0,
-              "actionSetKey": "LenormandOracleFirst",
-              "wordParty": "!LenormandOracle_direction",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
-            },
-            {
               "delaySeconds": 3.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは<<LenormandOracle>>",
               "sound": "collect",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは<<LenormandOracle>>"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1766921349743",
+          "key": "1766921349743",
+          "name": "回数超過(6回目以降)",
+          "createdAt": "2025-12-28T11:29:09.743Z",
+          "updatedAt": "2025-12-28T11:29:09.743Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは5回を超えているよ。また明日占ってみてね。"
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 6
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -85,115 +116,68 @@
           "^Lenormand",
           "^うらな",
           "^占"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
   "timers": {},
-  "actionSets": {
-    "LenormandOracleFirst": {
-      "id": "LenormandOracleFirst",
-      "key": "LenormandOracleFirst",
-      "name": "ルノルマンカード:イントロ",
-      "description": "稼働時の演出です",
-      "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2025-11-29T15:20:56.173Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "wordParty": "LenormandOracle_back",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1,
-          "wordParty": "LenormandOracle_01",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 1.5,
-          "wordParty": "LenormandOracle_02",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        },
-        {
-          "delaySeconds": 2,
-          "wordParty": "LenormandOracle_03",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
-        }
-      ]
-    }
-  },
+  "actionSets": {},
   "placeholders": {
     "LenormandOracle": {
       "id": "LenormandOracle",
       "key": "LenormandOracle",
       "name": "ルーン:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-12-05T12:55:22.118Z",
+      "updatedAt": "2025-12-28T11:17:10.229Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "【🏇 騎士】<<LenormandOracleRider>>",
-        "【🍀 クローバー】<<LenormandOracleClover>>",
-        "【🚢 船】<<LenormandOracleShip>>",
-        "【🏠 家】<<LenormandOracleHouse>>",
-        "【🌳 木】<<LenormandOracleTree>>",
-        "【☁️ 雲】<<LenormandOracleClouds>>",
-        "【🐍 蛇】<<LenormandOracleSnake>>",
-        "【⚰ 棺】<<LenormandOracleCoffin>>",
-        "【💐 花束】<<LenormandOracleBouquet>>",
-        "【🔪 鎌】<<LenormandOracleScythe>>",
-        "【🏏 鞭】<<LenormandOracleWhip>>",
-        "【🐦 鳥】<<LenormandOracleBirds>>",
-        "【👶 子供】<<LenormandOracleChild>>",
-        "【🦊 狐】<<LenormandOracleFox>>",
-        "【🐻 熊】<<LenormandOracleBear>>",
-        "【⭐ 星】<<LenormandOracleStars>>",
-        "【🕊 コウノトリ】<<LenormandOracleStork>>",
-        "【🐕 犬】<<LenormandOracleDog>>",
-        "【🗼 塔】<<LenormandOracleTower>>",
-        "【🌸 庭園】<<LenormandOracleGarden>>",
-        "【🗻 山】<<LenormandOracleMountain>>",
-        "【🛣 道】<<LenormandOracleCrossroads>>",
-        "【🐭 ネズミ】<<LenormandOracleMice>>",
-        "【❤️ 心臓】<<LenormandOracleHeart>>",
-        "【💍 指輪】<<LenormandOracleRing>>",
-        "【📖 本】<<LenormandOracleBook>>",
-        "【💌 手紙】<<LenormandOracleLetter>>",
-        "【👨 男性】<<LenormandOracleMan>>",
-        "【👩 女性】<<LenormandOracleWoman>>",
-        "【🌷 百合】<<LenormandOracleLily>>",
-        "【☀️ 太陽】<<LenormandOracleSun>>",
-        "【🌙 月】<<LenormandOracleMoon>>",
-        "【🔑 鍵】<<LenormandOracleKey>>",
-        "【🐟 魚】<<LenormandOracleFish>>",
-        "【⚓ 錨】<<LenormandOracleAnchor>>",
-        "【✝ 十字架】<<LenormandOracleCross>>"
+        "{{var symbol='🏇'}}{{var text='騎士'}} 【{{symbol}}{{text}}】<<LenormandOracleRider>>",
+        "{{var symbol='🍀'}}{{var text='クローバー'}} 【{{symbol}}{{text}}】<<LenormandOracleClover>>",
+        "{{var symbol='🚢'}}{{var text='船'}} 【{{symbol}}{{text}}】<<LenormandOracleShip>>",
+        "{{var symbol='🏠'}}{{var text='家'}} 【{{symbol}}{{text}}】<<LenormandOracleHouse>>",
+        "{{var symbol='🌳'}}{{var text='木'}} 【{{symbol}}{{text}}】<<LenormandOracleTree>>",
+        "{{var symbol='☁️'}}{{var text='雲'}} 【{{symbol}}{{text}}】<<LenormandOracleClouds>>",
+        "{{var symbol='🐍'}}{{var text='蛇'}} 【{{symbol}}{{text}}】<<LenormandOracleSnake>>",
+        "{{var symbol='⚰'}}{{var text='棺'}} 【{{symbol}}{{text}}】<<LenormandOracleCoffin>>",
+        "{{var symbol='💐'}}{{var text='花束'}} 【{{symbol}}{{text}}】<<LenormandOracleBouquet>>",
+        "{{var symbol='🔪'}}{{var text='鎌'}} 【{{symbol}}{{text}}】<<LenormandOracleScythe>>",
+        "{{var symbol='🏏'}}{{var text='鞭'}} 【{{symbol}}{{text}}】<<LenormandOracleWhip>>",
+        "{{var symbol='🐦'}}{{var text='鳥'}} 【{{symbol}}{{text}}】<<LenormandOracleBirds>>",
+        "{{var symbol='👶'}}{{var text='子供'}} 【{{symbol}}{{text}}】<<LenormandOracleChild>>",
+        "{{var symbol='🦊'}}{{var text='狐'}} 【{{symbol}}{{text}}】<<LenormandOracleFox>>",
+        "{{var symbol='🐻'}}{{var text='熊'}} 【{{symbol}}{{text}}】<<LenormandOracleBear>>",
+        "{{var symbol='⭐'}}{{var text='星'}} 【{{symbol}}{{text}}】<<LenormandOracleStars>>",
+        "{{var symbol='🕊'}}{{var text='コウノトリ'}} 【{{symbol}}{{text}}】<<LenormandOracleStork>>",
+        "{{var symbol='🐕'}}{{var text='犬'}} 【{{symbol}}{{text}}】<<LenormandOracleDog>>",
+        "{{var symbol='🗼'}}{{var text='塔'}} 【{{symbol}}{{text}}】<<LenormandOracleTower>>",
+        "{{var symbol='🌸'}}{{var text='庭園'}} 【{{symbol}}{{text}}】<<LenormandOracleGarden>>",
+        "{{var symbol='🗻'}}{{var text='山'}} 【{{symbol}}{{text}}】<<LenormandOracleMountain>>",
+        "{{var symbol='🛣'}}{{var text='道'}} 【{{symbol}}{{text}}】<<LenormandOracleCrossroads>>",
+        "{{var symbol='🐭'}}{{var text='ネズミ'}} 【{{symbol}}{{text}}】<<LenormandOracleMice>>",
+        "{{var symbol='❤️'}}{{var text='心臓'}} 【{{symbol}}{{text}}】<<LenormandOracleHeart>>",
+        "{{var symbol='💍'}}{{var text='指輪'}} 【{{symbol}}{{text}}】<<LenormandOracleRing>>",
+        "{{var symbol='📖'}}{{var text='本'}} 【{{symbol}}{{text}}】<<LenormandOracleBook>>",
+        "{{var symbol='💌'}}{{var text='手紙'}} 【{{symbol}}{{text}}】<<LenormandOracleLetter>>",
+        "{{var symbol='👨'}}{{var text='男性'}} 【{{symbol}}{{text}}】<<LenormandOracleMan>>",
+        "{{var symbol='👩'}}{{var text='女性'}} 【{{symbol}}{{text}}】<<LenormandOracleWoman>>",
+        "{{var symbol='🌷'}}{{var text='百合'}} 【{{symbol}}{{text}}】<<LenormandOracleLily>>",
+        "{{var symbol='☀️'}}{{var text='太陽'}} 【{{symbol}}{{text}}】<<LenormandOracleSun>>",
+        "{{var symbol='🌙'}}{{var text='月'}} 【{{symbol}}{{text}}】<<LenormandOracleMoon>>",
+        "{{var symbol='🔑'}}{{var text='鍵'}} 【{{symbol}}{{text}}】<<LenormandOracleKey>>",
+        "{{var symbol='🐟'}}{{var text='魚'}} 【{{symbol}}{{text}}】<<LenormandOracleFish>>",
+        "{{var symbol='⚓'}}{{var text='錨'}} 【{{symbol}}{{text}}】<<LenormandOracleAnchor>>",
+        "{{var symbol='✝'}}{{var text='十字架'}} 【{{symbol}}{{text}}】<<LenormandOracleCross>>"
       ]
     },
     "LenormandOracleRider": {
@@ -1032,7 +1016,7 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-16T07:53:23.473Z",
+      "updatedAt": "2025-12-28T11:19:30.358Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -1045,89 +1029,127 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "fantasy",
+        "backFrom": "secondary",
+        "backTo": "primary",
         "nameColor": "#AB47BC",
         "textColor": "#F3E5F5",
         "backgroundColor": "#6A1B9A",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "fantasy",
+        "backFrom": "secondary",
+        "backTo": "primary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "kaiseiDecol",
       "bubbleMotionEnter": "flipX",
-      "bubbleMotionLeave": "flipX",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "fantasy",
+        "backFrom": "secondary",
+        "backTo": "primary",
+        "nameColor": "#A5D6A7",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2E7D32"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "fantasy"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+    "ranking": {
+      "scriptKey": "basicList",
+      "title": "🔮ルノルマンカード 占い履歴",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "fantasy"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "pro",
+      "placeholders": "basic",
+      "characters": "pro"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "experimental",
+      "jsonMergeSettings": "basic"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "",
+    "daisyUiTheme": "fantasy"
+  }
 }

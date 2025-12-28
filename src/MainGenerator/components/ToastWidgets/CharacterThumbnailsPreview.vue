@@ -20,7 +20,7 @@
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
           <!-- TODO:時間経過によって、default から変化してもいいね -->
-          <LayerImage :layers="character.image?.default" :size="12" :border="true" class="object-cover" />
+          <LayerImages :layers="character.image?.default" :size="12" :border="true" class="object-cover" />
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
 <script setup lang="ts">
   import { ref, watch, onUnmounted } from 'vue'
   import { CharacterType } from '@/types'
-  import LayerImage from '@/common/LayerImage.vue'
+  import LayerImages from '@/common/LayerImage/LayerImage.vue'
 
   // 定数
   const HIDE_DELAY = 2000 // 2秒後に非表示にする

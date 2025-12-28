@@ -17,15 +17,20 @@ export const useCharacterEmotions = () => {
     })
   }
 
-  const hasEmotion = (characterKey: string, emotion: CharacterEmotionType): boolean => {
+  const hasEmotion = (characterKey: string, iconKey: CharacterEmotionType): boolean => {
     const character = charactersMap.value[characterKey]
-    const imagePath = character?.image?.[emotion]
+    const imagePath = character?.image?.[iconKey]
     return imagePath.some((path) => path && path.trim() !== '')
   }
 
+  const iconSrc = (characterKey: string, iconKey: CharacterEmotionType) => {
+    return charactersMap.value[characterKey]?.image?.[iconKey]
+  }
+
   return {
+    charactersMap,
     getAvailableEmotions,
     hasEmotion,
-    charactersMap,
+    iconSrc,
   }
 }

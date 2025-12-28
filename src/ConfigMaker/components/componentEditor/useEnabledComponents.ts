@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
-import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 import { componentLabels } from '@/types/OmikujiData/ComponentsSchema'
 // 新しいロジックファイルをインポート
 import { getAvailableComponents } from './componentRules'

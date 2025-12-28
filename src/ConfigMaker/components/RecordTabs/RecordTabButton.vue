@@ -46,7 +46,7 @@
   import { RecordCategoryUnion } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     rule: RecordCategoryUnion

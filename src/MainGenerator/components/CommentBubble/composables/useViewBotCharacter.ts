@@ -28,6 +28,7 @@ export function useViewBotCharacter() {
   })
 
   // 指定されたキャラクターの感情に応じた画像を取得
+  // TODO:「キャラクター画像が1枚もない」という値はここ
   const getCharacterImage = (character: CharacterType): string[] => {
     const imageSet = character.image
     if (!imageSet) return []

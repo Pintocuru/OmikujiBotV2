@@ -60,7 +60,7 @@
   import PackageDistributionInfo from './meta/PackageDistributionInfo.vue'
   import PackageSystemInfo from './meta/PackageSystemInfo.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const { isGod } = useSettingMode()
 </script>

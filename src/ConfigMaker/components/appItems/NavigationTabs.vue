@@ -48,7 +48,7 @@
   import { storeToRefs } from 'pinia'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useRecordTabsStore } from '../RecordTabs/RecordTabsStore'
   import { CategoryType } from '@/types/OmikujiData/CategoryType'
 

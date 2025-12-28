@@ -1,6 +1,6 @@
 // tools\buildOptions\baseSettings.ts
 import path from 'path'
-import { getKey } from '@/types/SettingMode'
+import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'

@@ -47,7 +47,7 @@
 <script setup lang="ts">
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { daisyUIColor, DaisyUiThemeFieldsType, themes } from '@shared/styles/DaisyUiTheme'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     modelValue: DaisyUiThemeFieldsType

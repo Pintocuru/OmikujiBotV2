@@ -1,5 +1,5 @@
 // src\GameScripts\GameScriptsRules.ts
-import { SettingMode } from '@/types/SettingMode'
+import { SettingMode } from '@/common/FeatureAccess/SettingMode'
 
 // ゲームスクリプト
 export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza']

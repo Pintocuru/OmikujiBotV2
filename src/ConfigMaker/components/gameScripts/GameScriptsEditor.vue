@@ -110,7 +110,7 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
   import { storeToRefs } from 'pinia'
-  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import GameScriptPreview from './GameScriptPreview.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 

@@ -3,7 +3,7 @@ import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiD
 import { APP_VERSION, DATA_VERSION } from '@/config/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
-import { resolveSettingMode } from '@/types/SettingMode'
+import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
 import { getAvailableComponents } from '@/ConfigMaker/components/componentEditor/componentRules'
 

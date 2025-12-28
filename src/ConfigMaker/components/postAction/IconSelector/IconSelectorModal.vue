@@ -11,17 +11,12 @@
           @click="selectEmotion(emotion)"
           class="cursor-pointer rounded-lg border-2 transition-all hover:shadow-lg"
           :class="[
-            currentIconKey === emotion ? 'border-primary bg-primary-focus/10' : 'border-base-200 hover:border-base-300',
+            currentIconKey === emotion ? 'border-primary bg-primary-focus' : 'border-base-200 hover:border-base-300',
           ]"
         >
           <div class="text-center">
             <div class="w-32 h-32 mx-auto rounded-full items-center justify-center">
-              <CharacterIcon
-                :characterKey="characterKey"
-                :iconKey="emotion"
-                :size="32"
-                imgClass="max-w-full max-h-full object-contain rounded-full hover:scale-110 transition-all"
-              />
+              <LayerImage :layers="iconSrc(characterKey, emotion)" :size="32" />
             </div>
             <p class="text-sm text-base-content mt-4">{{ emotionLabels[emotion] }}</p>
           </div>
@@ -38,7 +33,7 @@
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
   import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
-  import CharacterIcon from '@/common/CharacterIcon.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
 
   const props = defineProps<{
@@ -51,7 +46,7 @@
   }>()
 
   // キャラクター感情のコンポーザブルを使用
-  const { getAvailableEmotions, charactersMap } = useCharacterEmotions()
+  const { getAvailableEmotions, charactersMap, iconSrc } = useCharacterEmotions()
 
   const modalRef: Ref<HTMLDialogElement | null> = ref(null)
 

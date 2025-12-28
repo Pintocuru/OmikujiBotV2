@@ -1,15 +1,17 @@
 <!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
 <template>
   <div class="card p-2 bg-base-100 flex flex-col">
-    <!-- トーストサンプル表示 -->
-    <ToastBubbleItem
-      v-for="(message, i) in previewMessages"
-      :key="i"
-      :botMessage="message"
-      :showToastsOnRight="toastSettings.showToastsOnRight"
-      :character="toastSettings.showToastsCharacter ? (characterArray[i] ?? characterArray[0]) : null"
-      :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'"
-    />
+    <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
+      <!-- トーストサンプル表示 -->
+      <ToastBubbleItem
+        v-for="(message, i) in previewMessages"
+        :key="i"
+        :message="message.message.toast ?? '(未記入)'"
+        :color="message.color"
+        :iconLayers="message.iconLayers ?? []"
+        :showToastsOnRight="toastSettings.showToastsOnRight"
+      />
+    </div>
 
     <!-- サムネイルサンプル表示 -->
     <div
@@ -89,7 +91,7 @@
   import { BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'

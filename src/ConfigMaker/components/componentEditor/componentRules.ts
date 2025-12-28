@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\componentEditor\componentRules.ts
-import { SettingMode } from '@/types/SettingMode'
+import { SettingMode } from '@/common/FeatureAccess/SettingMode'
 
 // コンポーネント
 export const BASIC_COMPONENTS = ['bubble', 'toast'] as const

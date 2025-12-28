@@ -18,15 +18,13 @@
             :show-toast-fallback="showToastFallback"
           />
         </div>
-
-        <CharacterAvatar
-          v-if="getCharacterImage(character)"
-          class="flex justify-center items-end"
-          :profileImage="getCharacterImage(character)"
-          :characterSize="bubble.characterSize"
-          :backgroundColor="character.color?.backgroundColor"
-          :showCharacterFrame="false"
-        />
+        <div class="flex justify-center items-end">
+          <LayerImage
+            v-if="isCharacter && getCharacterImage(character)"
+            :layers="getCharacterImage(character)"
+            :size="bubble.characterSize"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -39,7 +37,8 @@
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useViewBotCharacter } from './composables/useViewBotCharacter'
   import CommentDisplay from '@/MainGenerator/components/CommentBubble/CommentDisplay.vue'
-  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
@@ -49,6 +48,8 @@
   const bubble = computed(() => data.value.components.bubble)
   const conditions = computed(() => data.value.components.conditions || [])
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
+
+  const { isCharacter } = useVisibilityAccess()
 
   const {
     lastCommenterKey,

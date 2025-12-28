@@ -27,7 +27,7 @@
     <!-- フキダシコンポーネント：キャラクター -->
     <SectionCard
       icon="UserSquare"
-      v-if="conditions.includes('bubble')"
+      v-if="conditions.includes('bubble') && isCharacter"
       :isOpen="activeSection === 'bubbleComponentcharacter'"
       @toggle="toggleSection('bubbleComponentcharacter')"
       title="フキダシコンポーネント(キャラクター)"
@@ -84,7 +84,7 @@
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
@@ -98,6 +98,8 @@
     | 'counterComponent'
     | null
   const activeSection = ref<SectionType>('componentsSettings') // 初期状態で文字・アニメーション設定を開く
+
+  const { isCharacter } = useVisibilityAccess()
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta7",
-    "dataVersion": 1.30907,
+    "generatorVersion": "v2.0.0-beta1",
+    "dataVersion": 2.00011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -28,14 +28,12 @@
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-20T01:52:51.488Z",
+      "updatedAt": "2025-12-28T11:48:17.969Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "daccba76-9c92-466b-bb58-217734027c5b",
@@ -51,33 +49,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneRed",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneRed"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【赤色】<<FlowerRed>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【赤色】<<FlowerRed>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "5e5d2d59-a2a8-450d-963d-e338c3d7fd35",
@@ -93,33 +88,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneWhite",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneWhite"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【白色】<<FlowerWhite>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【白色】<<FlowerWhite>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "d8fada65-e221-4d53-ac0c-6416208d3bf6",
@@ -135,33 +127,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneYellow",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneYellow"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【黄色】<<FlowerYellow>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【黄色】<<FlowerYellow>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "4fd3e408-f4a0-4a99-b0bd-6bd7157fe85c",
@@ -177,33 +166,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneBlue",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneBlue"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【青色】<<FlowerBlue>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【青色】<<FlowerBlue>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "fdbc5b88-c1e9-4b7e-8c9d-d8834fac6d23",
@@ -219,33 +205,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneBlue",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneBlue"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【青色】<<FlowerBlue>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【青色】<<FlowerBlue>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "7799628c-53b4-4c7e-b581-ff3d5c023a8f",
@@ -261,33 +244,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneGreen",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneGreen"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【緑色】<<FlowerGreen>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【緑色】<<FlowerGreen>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "e568455b-1eb7-4a44-a7f9-64e54f8ce554",
@@ -303,33 +283,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneOrange",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneOrange"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【オレンジ色】<<FlowerOrange>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【オレンジ色】<<FlowerOrange>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "517e7ac7-fc59-4878-8554-b2e71ced876e",
@@ -345,33 +322,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortunePurple",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortunePurple"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは【紫色】<<FlowerPurple>>",
-              "messageToast": "",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは【紫色】<<FlowerPurple>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
@@ -387,33 +361,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneKinoko2",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneKinoko2"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "thinking",
-              "messageContent": "<<user>>さんは【キノコ色】<<FlowerKinoko2>>",
-              "messageToast": "",
               "sound": "bounce",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var text='キノコ'}} <<user>>さんは【{{text}}色】<<FlowerKinoko2>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "96e19942-4bc8-4e3a-9035-ddd4ebc93c0e",
@@ -429,37 +400,40 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "FlowerFirst",
-              "wordParty": "",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "FlowerFirst"
             },
             {
               "delaySeconds": 0,
-              "wordParty": "FlowerFortuneKinoko1",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FlowerFortuneKinoko1"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "thinking",
-              "messageContent": "<<user>>さんは【毒キノコ色】<<FlowerKinoko1>>",
-              "messageToast": "",
               "sound": "bounce",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var text='毒キノコ'}} <<user>>さんは【{{text}}色】<<FlowerKinoko1>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": null,
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      },
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -480,13 +454,8 @@
           "🌺",
           "🌻",
           "🌼"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showLastResult",
-        "isRepeatAllowed": true
+        ],
+        "userName": []
       }
     }
   },
@@ -507,23 +476,16 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "FlowerFortuneSound",
-          "characterKey": "reimu",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "FlowerFortuneSound"
         },
         {
           "delaySeconds": 2.3,
-          "wordParty": "FlowerFortuneCracker",
-          "characterKey": "reimu",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "FlowerFortuneCracker"
         }
-      ]
+      ],
+      "gameScripts": null
     }
   },
   "placeholders": {
@@ -532,20 +494,20 @@
       "key": "FlowerAllItem",
       "name": "フラワー:通常色の抽選",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-02T10:03:36.582Z",
+      "updatedAt": "2025-12-28T11:46:57.530Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "【白色】<<FlowerWhite>>",
-        "【赤色】<<FlowerRed>>",
-        "【オレンジ色】<<FlowerOrange>>",
-        "【黄色】<<FlowerYellow>>",
-        "【緑色】<<FlowerGreen>>",
-        "【青色】<<FlowerBlue>>",
-        "【紫色】<<FlowerPurple>>"
+        "{{var text='白'}}【{{text}}色】<<FlowerWhite>>",
+        "{{var text='赤'}}【{{text}}色】<<FlowerRed>>",
+        "{{var text='オレンジ'}}【{{text}}色】<<FlowerOrange>>",
+        "{{var text='黄'}}【{{text}}色】<<FlowerYellow>>",
+        "{{var text='緑'}}【{{text}}色】<<FlowerGreen>>",
+        "{{var text='青'}}【{{text}}色】<<FlowerBlue>>",
+        "{{var text='紫'}}【{{text}}色】<<FlowerPurple>>"
       ]
     },
     "FlowerWhite": {
@@ -765,89 +727,127 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#64B5F6",
         "textColor": "#E3F2FD",
         "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "sm",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "acid",
+        "backFrom": "secondary",
+        "backTo": "warning",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "acid",
+        "backFrom": "secondary",
+        "backTo": "warning",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": true,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": false,
-      "showCharacterPersistent": true,
-      "bundleCharacters": false,
-      "daisyUiTheme": "halloween"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "basic",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "basic",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "basic",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "scriptKey": "basicList",
+      "title": "✿フラワー占い履歴✿",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "cmyk"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "pro"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
+    "daisyUiTheme": "halloween"
+  }
 }

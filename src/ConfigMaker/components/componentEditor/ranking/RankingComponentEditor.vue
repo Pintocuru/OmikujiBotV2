@@ -101,7 +101,7 @@
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
   import { useEnabledGames } from '@/GameScripts/useEnabledGames'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()

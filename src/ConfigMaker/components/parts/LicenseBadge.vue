@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const { isAdv, isPro, isGod } = useSettingMode()
 

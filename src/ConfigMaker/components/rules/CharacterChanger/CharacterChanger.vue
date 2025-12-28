@@ -101,7 +101,7 @@
   import { useCharacterUpdater } from './useCharacterUpdater'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import { Users } from 'lucide-vue-next'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = withDefaults(
     defineProps<{

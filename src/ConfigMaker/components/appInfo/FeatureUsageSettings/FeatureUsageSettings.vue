@@ -24,7 +24,7 @@
   import FeatureUsageComponents from './UsageComponentsSettings.vue'
   import FeatureUsageGames from './UsageGamesSettings.vue'
   import FeatureUsageDeveloper from './UsageDeveloperSettings.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { FeatureUsageType, isDev } from '@/types'
 

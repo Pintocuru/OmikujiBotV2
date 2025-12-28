@@ -15,11 +15,7 @@ export const BotMessageSchema = z.object({
   iconKey: CharacterEmotionSchema.default('default'), // アイコンキー(必要かどうかはわからん…)
   displaySeconds: z.number().min(0).max(60).optional(), // 表示時間（秒）0-60秒の範囲
   sound: z.string().default(''), // サウンド
-  profileImage: z
-    .union([z.string(), z.array(z.string())])
-    .nullable()
-    .default(null)
-    .catch(null),
+  iconLayers: z.array(z.string()).nullable().default(null).catch(null),
   color: CharacterColorScheme.catch(CharacterColorScheme.parse({})), // カラー
 })
 export type BotMessage = z.infer<typeof BotMessageSchema>

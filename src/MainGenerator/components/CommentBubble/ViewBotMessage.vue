@@ -13,14 +13,14 @@
       >
         <template #default="{ message, index }">
           <!-- キャラクター（最新コメント時のみ表示） -->
-          <CharacterAvatar
-            v-if="index === 0 && message.profileImage"
-            class="absolute top-[180px] left-1/2 -translate-x-1/2 transform"
-            :profileImage="message.profileImage"
-            :backgroundColor="message.color?.backgroundColor"
-            :characterSize="bubble.characterSize"
-            :showCharacterFrame="true"
-          />
+          <div class="absolute top-[180px] left-1/2 -translate-x-1/2 transform">
+            <CharacterLayerImage
+              v-if="index === 0 && message.iconLayers"
+              :layers="message.iconLayers"
+              :size="bubble.characterSize"
+              :color="message.color"
+            />
+          </div>
         </template>
       </CommentDisplay>
     </div>
@@ -30,7 +30,7 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import CommentDisplay from './CommentDisplay.vue'
-  import CharacterAvatar from './CharacterAvatar.vue'
+  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import { useBotDisplay } from './composables/useBotDisplay'
   import { useMessageFilter } from './composables/useMessageFilter'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'

@@ -33,7 +33,7 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
   import LicenseBadge from '@ConfigComponents/parts/LicenseBadge.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 

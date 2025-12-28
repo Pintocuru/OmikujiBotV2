@@ -72,7 +72,7 @@
   import { displayModeLabels, DisplayOptionType, isDev } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

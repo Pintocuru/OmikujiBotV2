@@ -61,7 +61,7 @@
   import DaisyUiThemeEditor from './DaisyUiThemeEditor.vue'
   import RandomThemeButton from './RandomThemeButton.vue'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     modelValue: CharacterColorType

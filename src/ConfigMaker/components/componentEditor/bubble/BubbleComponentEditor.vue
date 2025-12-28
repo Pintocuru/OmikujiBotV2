@@ -98,7 +98,7 @@
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { SettingsBubbleSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()

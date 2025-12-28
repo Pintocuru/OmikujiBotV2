@@ -39,7 +39,7 @@
   import { Plus, AlertCircle } from 'lucide-vue-next'
   import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
   import { PlaceholderSchema } from '@/types'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   // Props
   const props = defineProps<{

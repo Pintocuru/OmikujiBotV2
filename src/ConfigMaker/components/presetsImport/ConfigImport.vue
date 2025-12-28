@@ -21,7 +21,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useImportManager } from './composables/useImportManager'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
   import Swal from 'sweetalert2'
 

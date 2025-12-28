@@ -9,27 +9,25 @@
           :key="messageKey"
           :botName="character ? character.displayName : null"
           :message="processedMessage"
-          :color="character ? character.color : toastSettings.defaultColor"
+          :color="character ? character.color : bubbleSettings.defaultColor"
           @click="refreshMessage"
           class="cursor-pointer"
         />
-        <CharacterAvatar
+        <LayerImage
           v-if="isCharacter"
-          :profileImage="character ? character.image[action.iconKey] : []"
-          :characterSize="bubbleSettings.characterSize"
-          :showCharacterFrame="false"
+          :layers="character ? character.image[action.iconKey] : []"
+          :size="bubbleSettings.characterSize"
         />
       </div>
       <!-- トースト -->
 
       <div v-else @click="refreshToast" class="cursor-pointer">
-        <ChatBubbleItem
+        <ToastBubbleItem
           :key="toastKey"
-          :simpleMessage="processedToastMessage"
+          :message="processedToastMessage"
+          :color="character ? character.color : toastSettings.defaultColor"
+          :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
-          :character="character"
-          :iconKey="action.iconKey"
-          :isCharacterDisplay="toastSettings.showToastsCharacter"
         />
       </div>
     </div>
@@ -70,10 +68,10 @@
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
   import WordPartyTestButton from './WordPartyTestButton.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
-  import ChatBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
-  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{ action: PostActionType }>()

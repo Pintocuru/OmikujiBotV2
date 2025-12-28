@@ -14,12 +14,8 @@
           class="cursor-pointer"
         />
 
-        <CharacterAvatar
-          v-if="isCharacter"
-          :profileImage="character.image?.default || ''"
-          :characterSize="bubbleSettings.characterSize"
-          :showCharacterFrame="false"
-        />
+        <!-- TODO: 「キャラクター画像が1枚もない」という値も欲しいな -->
+        <LayerImage v-if="isCharacter" :layers="character.image?.default || ''" :size="bubbleSettings.characterSize" />
       </div>
     </div>
     <NoParamsCard v-else :message="`スクリプトID${isCharacter ? 'とキャラクターキー' : ''}を設定してください`" />
@@ -33,10 +29,10 @@
   import { storeToRefs } from 'pinia'
 
   import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
-  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     gameScripts: GameScriptsType | null

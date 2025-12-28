@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { useAccessChecker } from '@/ConfigMaker/scripts/useSettingMode'
+import { useAccessChecker } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 import { isDev } from '@/types'
 
 export const useCategoryUtils = () => {

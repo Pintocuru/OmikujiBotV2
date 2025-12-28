@@ -151,7 +151,7 @@
   import { SettingsCounterSchema } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import RandomThemeButton from '@/ConfigMaker/components/characters/color/RandomThemeButton.vue'
   import DaisyUiThemeEditor from '@/ConfigMaker/components/characters/color/DaisyUiThemeEditor.vue'
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'

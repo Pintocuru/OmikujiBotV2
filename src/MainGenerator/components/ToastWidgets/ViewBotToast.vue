@@ -10,13 +10,12 @@
         @after-leave="() => removeComment(message.id)"
       >
         <ToastBubbleItem
-          :botMessage="message"
+          :key="message.id"
+          :message="message.message.toast ?? '(未記入)'"
+          :color="message.color"
+          :iconLayers="isCharacter && toastSettings.showToastsCharacter ? (message.iconLayers ?? []) : []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
-          :character="characters?.[message.characterKey]"
-          :iconKey="message.iconKey"
-          :isCharacterDisplay="toastSettings.showToastsCharacter"
-          :clickable="true"
-          @click="hideComment"
+          @click="hideComment(message.id)"
         />
       </MotionWrapper>
     </div>
@@ -25,17 +24,20 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
+  import { storeToRefs } from 'pinia'
   import ToastBubbleItem from './ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import { storeToRefs } from 'pinia'
+  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
-  const { botMessages } = storeToRefs(appStore)
-  const toastSettings = computed(() => appStore.data.components.toast)
-  const characters = computed(() => appStore.characterCollector.getUsedCharacterData())
+  const { data, botMessages } = storeToRefs(appStore)
+  const toastSettings = computed(() => data.value.components.toast)
+
+  // ライセンス状態で閲覧できないなら表示させない
+  const { isCharacter } = useVisibilityAccess()
 
   // コメント表示ロジック
   const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(botMessages, 'toast')

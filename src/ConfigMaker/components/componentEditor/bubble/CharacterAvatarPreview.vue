@@ -7,17 +7,12 @@
       </div>
       <div class="flex flex-col items-center">
         <div class="flex justify-center min-h-[50px]">
-          <div v-if="zeroIndexCharacters.length === 0" class="text-gray-500 italic text-sm p-2">
-            キャラクター設定されていません
-          </div>
+          <!-- キャラクターデータがない場合 -->
+          <div v-if="!isCharacter" class="text-gray-500 italic text-sm p-2">キャラクターが存在しません</div>
           <div v-for="character in zeroIndexCharacters" :key="character.key" class="-mx-4">
-            <CharacterAvatar
-              v-if="character.image?.default"
-              :profile-image="character.image.default"
-              :background-color="character.color?.backgroundColor"
-              :showCharacterFrame="true"
-              :characterSize="characterSize"
-            />
+            <!-- TODO: 「キャラクター画像が1枚もない」という値も欲しいな -->
+            <!-- TODO: キャラクター画像が複数あるなら、ランダムで変更してもいいかもね -->
+            <CharacterLayerImage :layers="character.image.default" :size="characterSize" :color="character.color" />
           </div>
         </div>
       </div>
@@ -33,13 +28,7 @@
             常時表示キャラクターが設定されていません
           </div>
           <div v-for="character in displayCharacters" :key="character.key" class="-mx-4">
-            <CharacterAvatar
-              v-if="character.image?.default"
-              :profile-image="character.image.default"
-              :background-color="character.color?.backgroundColor"
-              :showCharacterFrame="false"
-              :characterSize="characterSize"
-            />
+            <LayerImage :layers="character.image.default" :size="characterSize" />
           </div>
         </div>
       </div>
@@ -53,15 +42,19 @@
   import { computed, ref } from 'vue'
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
+  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useMessageFilterCore } from '@/MainGenerator/components/CommentBubble/composables/useMessageFilterCore'
   import { ShowCharacters } from '@/types'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     characters: Record<string, CharacterType>
     showCharacters: ShowCharacters
     characterSize: number
   }>()
+
+  const { isCharacter } = useVisibilityAccess()
 
   const botMessages = ref<BotMessage[]>([])
 

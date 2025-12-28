@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
 import { gameScriptMap } from './GameScriptsMap'
-import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
+import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 import { getAvailableScripts } from './GameScriptsRules'
 
 export function useEnabledGames() {
