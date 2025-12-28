@@ -1,8 +1,9 @@
 // src\MainGenerator\components\CommentBubble\composables\useMessageFilterCore.ts
 import { computed, ref, watch, type Ref } from 'vue'
 import type { BotMessage } from '@/types/'
+import type { ShowCharacters } from '@/types/' // ShowCharactersの型をインポート
 
-export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharacters: Ref<string[][]>) => {
+export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharacters: Ref<ShowCharacters>) => {
   const lastCommenterKey = ref<string | null>(null)
 
   watch(
@@ -20,11 +21,12 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
   )
 
   const zeroIndexMessages = computed(() => {
-    const allowKeys = showCharacters.value[0] ?? []
+    const allowKeys = showCharacters.value.center ?? []
+
+    // centerが空の場合は何も表示しない
+    if (allowKeys.length === 0) return []
 
     return botMessages.value.filter((message) => {
-      // 0番地は characterKey だけで判定する
-      if (allowKeys.length === 0) return true
       return allowKeys.includes(message.characterKey)
     })
   })
@@ -41,8 +43,14 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
   }
 
   const visibleCharacterGroups = computed(() => {
-    return showCharacters.value
-      .slice(1)
+    const slots = [
+      showCharacters.value.slot1,
+      showCharacters.value.slot2,
+      showCharacters.value.slot3,
+      showCharacters.value.slot4,
+    ]
+
+    return slots
       .map((group, index) => {
         const key = selectCharacterFromGroup(group)
         return key

@@ -44,7 +44,7 @@
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
-  const showCharacters = data.value.components.bubble.showCharacters
+  const showCharacters = computed(() => data.value.components.bubble.showCharacters)
   const characters = computed(() => data.value.characters)
   const bubble = computed(() => data.value.components.bubble)
   const conditions = computed(() => data.value.components.conditions || [])
@@ -80,15 +80,18 @@
     return group[0]
   }
 
-  // 0番地以外のキャラを順に並べる
+  // slot1〜slot4のキャラを順に並べる
   const charactersToShow = computed<CharacterType[]>(() => {
-    if (!showCharacters || showCharacters.length === 0) return []
+    const sc = showCharacters.value
+    if (!sc) return []
 
     const allCharacters = characters.value
     const lastKey = lastCommenterKey.value
     const result: CharacterType[] = []
 
-    showCharacters.slice(1).forEach((group) => {
+    const slots = [sc.slot1, sc.slot2, sc.slot3, sc.slot4]
+
+    slots.forEach((group) => {
       const key = resolveGroupCharacter(group, lastKey)
       if (!key) return
 

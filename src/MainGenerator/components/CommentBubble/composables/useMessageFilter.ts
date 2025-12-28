@@ -1,4 +1,4 @@
-// useMessageFilter.ts
+// src\MainGenerator\components\CommentBubble\composables\useMessageFilter.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
@@ -8,7 +8,7 @@ export const useMessageFilter = () => {
   const appStore = useAppStore()
   const { botMessages, data } = storeToRefs(appStore)
 
-  const showCharacters = computed(() => data.value.components.bubble.showCharacters || [])
+  const showCharacters = computed(() => data.value.components.bubble.showCharacters)
 
   return useMessageFilterCore(botMessages, showCharacters)
 }

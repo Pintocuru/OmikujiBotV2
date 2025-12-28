@@ -1,7 +1,6 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\CharacterAvatarPreview.vue -->
 <template>
   <div class="flex flex-col md:flex-row justify-around gap-4 p-4 border rounded-lg border-base-200">
-    <!-- コメントで表示する -->
     <div class="flex-1 min-w-0">
       <div class="text-sm font-semibold mb-2 text-center text-secondary border-b border-secondary/50 pb-1">
         コメント時に表示するキャラクター
@@ -56,46 +55,28 @@
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterAvatar from '@/MainGenerator/components/CommentBubble/CharacterAvatar.vue'
   import { useMessageFilterCore } from '@/MainGenerator/components/CommentBubble/composables/useMessageFilterCore'
+  import { ShowCharacters } from '@/types'
 
   const props = defineProps<{
     characters: Record<string, CharacterType>
-    showCharacters: string[][]
+    showCharacters: ShowCharacters
     characterSize: number
   }>()
 
-  /**
-   * プレビュー用なので空メッセージ
-   */
   const botMessages = ref<BotMessage[]>([])
 
-  /**
-   * showCharacters はそのまま渡す
-   */
-  const { visibleCharacterGroups, zeroIndexMessages } = useMessageFilterCore(
+  const { visibleCharacterGroups } = useMessageFilterCore(
     botMessages,
     computed(() => props.showCharacters)
   )
 
-  /**
-   * 表示キャラ決定
-   * - 0番地があればそれ
-   * - なければ visible groups
-   */
   const displayCharacters = computed(() => {
-    const keys =
-      zeroIndexMessages.value.length > 0
-        ? props.showCharacters[0]
-        : visibleCharacterGroups.value.map((v) => v.characterKey)
-
+    const keys = visibleCharacterGroups.value.map((v) => v.characterKey)
     return keys.map((key) => props.characters[key]).filter(Boolean)
   })
 
-  /**
-   * 【追加】0番地専用の表示キャラ決定
-   * - showCharacters[0]に設定されているキャラクター全てを返します
-   */
   const zeroIndexCharacters = computed(() => {
-    const zeroIndexGroup = props.showCharacters[0] || []
-    return zeroIndexGroup.map((key) => props.characters[key]).filter(Boolean)
+    const centerGroup = props.showCharacters.center || []
+    return centerGroup.map((key) => props.characters[key]).filter(Boolean)
   })
 </script>
