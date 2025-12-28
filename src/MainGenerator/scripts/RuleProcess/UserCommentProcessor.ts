@@ -51,7 +51,7 @@ function validateThreshold(omiken: OmikenCommentType, rule: CommentRuleType): bo
  * 単一ルールの処理
  */
 function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
-  const { cooldownManager, userVisitManager } = useAppStore()
+  const { userVisitManager } = useAppStore()
 
   // 1. 閾値条件チェック
   if (!validateThreshold(omiken, rule)) {
@@ -60,9 +60,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
 
   // 2. 制限チェック
   const restrictionResult = checkRestrictions(omiken, rule)
-
   if (restrictionResult.isBlocked) {
-    console.log(restrictionResult)
     // 3. 制限チェックの結果からメッセージを生成
     const toastMessages = buildRestrictionMessages(restrictionResult, rule)
     return {

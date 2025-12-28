@@ -70,6 +70,7 @@ export class DefaultPlaceholderService {
       price: omiken.giftPrice,
       lc: omiken.meta.lc,
       tc: omiken.meta.tc,
+      draws: omiken.meta.draws,
       commenter,
       winner,
     })

@@ -53,7 +53,8 @@ export class BotMessageGenerator {
     // bubble メッセージの生成
     if (postAction.message.bubble?.trim()) {
       messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'bubble'))
-      // @ts-ignore character.displayOption が型崩れ v2.0.1でスキーマ書き直しする
+      // @ts-ignore character.displayOption が型崩れ
+      //TODO:v2.0.1でスキーマ書き直しする
       this.handleRpgVoice(character.displayOption, postAction.message.bubble, baseDelaySeconds)
     }
 
@@ -96,8 +97,7 @@ export class BotMessageGenerator {
       name: character.displayName,
       characterKey: postAction.characterKey,
       iconKey: postAction.iconKey,
-      // TODO:キャラクターが非表示ならここはnull
-      profileImage: true ? resolveProfileImage(character, postAction.iconKey) : null,
+      profileImage: resolveProfileImage(character, postAction.iconKey),
       sound: postAction.sound,
       message:
         messageType === 'bubble'

@@ -42,11 +42,36 @@
     </div>
   </SettingItem>
 
-  <!-- TODO: ここでは即時保存を促す(再起動後PRO版が反映されるという話とか) 補足説明 -->
   <InformationCard v-if="isPro && !isGod">
     <p>PROライセンスキーを入力したあとは：</p>
-    <p>ライセンスは即時適用されますが、保存を行わないと、リロード時にライセンスが戻ってしまいます。</p>
-    <p>「設定を出力(js)」を押して、保存するのをお忘れなく。</p>
+
+    <p>
+      <strong
+        >一部のPRO機能は<code class="label bg-accent text-accent-content">アプリの再起動後</code
+        >に反映されます。</strong
+      >
+    </p>
+
+    <p>
+      ライセンスを入力したら、まずは「設定を出力(js)」を押して<code class="label bg-accent text-accent-content"
+        >設定を保存</code
+      >してください。<br />
+      保存が完了したら、<code class="label bg-accent text-accent-content">アプリを再起動</code>してください。
+    </p>
+
+    <p>※設定を保存していない場合、再読み込み時にライセンス情報が戻ってしまいます。</p>
+
+    <p>
+      <button
+        @click="exportFile('config')"
+        class="btn btn-primary tooltip tooltip-top"
+        data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
+        :disabled="isExporting"
+      >
+        <span v-if="isExporting" class="loading loading-spinner loading-sm mr-2"></span>
+        設定を出力(js)
+      </button>
+    </p>
   </InformationCard>
 </template>
 
@@ -62,12 +87,14 @@
   import { themes, ThemeType } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useSettingMode'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
+  import { useConfigExport } from '../../presetsExport/useConfigExport'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro, isGod } = useSettingMode()
 
   const settings = computed(() => data.value.settings)
+  const { isExporting, exportFile } = useConfigExport()
 
   // settings の単一フィールド更新
   const updateSettingsField = <K extends keyof SettingsType>(field: K, value: SettingsType[K]) => {

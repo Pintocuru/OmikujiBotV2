@@ -37,17 +37,14 @@ export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleTy
 
   // 2. 連投制限チェック（コメントベースのルールのみ）
   if (isRepeatBlocked(omiken.userId, rule.key, rule.limits.isRepeatAllowed)) {
-    if (!rule.limits.isRepeatAllowed) {
-      return {
-        isBlocked: true,
-        restrictionType: 'repeat',
-        metadata: {
-          userName,
-          ruleName: rule.name,
-        },
-      }
+    return {
+      isBlocked: true,
+      restrictionType: 'repeat',
+      metadata: {
+        userName,
+        ruleName: rule.name,
+      },
     }
-    return { isBlocked: false, restrictionType: null }
   }
 
   return { isBlocked: false, restrictionType: null }
@@ -58,7 +55,10 @@ function isCooldownBlocked(cooldownSeconds: number): boolean {
   return cooldownManager.isCooldownBlocked(cooldownSeconds)
 }
 
-function isRepeatBlocked(userId: string, key: string, isRepeatAllowed: number): boolean {
-  const { cooldownManager } = useAppStore()
-  return cooldownManager.isRepeatBlocked(userId, key, isRepeatAllowed)
+function isRepeatBlocked(userId: string, ruleKey: string, allowedCount: number): boolean {
+  if (allowedCount <= 0) return false
+  const { userVisitManager } = useAppStore()
+  const currentCount = userVisitManager.getVisitCount(userId, ruleKey)
+
+  return currentCount >= allowedCount
 }

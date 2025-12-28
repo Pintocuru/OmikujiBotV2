@@ -1,10 +1,7 @@
 /* assets/font.css */
 
-/* TODO:Kiwi Maru　Hachi Maru Pop の2つを追加したいです */
-
 /* Google Fonts 読み込み */
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kaisei+Decol&family=Kosugi+Maru&family=M+PLUS+1p&family=Mochiy+Pop+One&family=Shippori+Mincho&family=WDXL+Lubrifont+JP+N&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kaisei+Decol&family=Kosugi+Maru&family=M+PLUS+1p&family=Mochiy+Pop+One&family=Shippori+Mincho&family=WDXL+Lubrifont+JP+N&family=Kiwi+Maru&family=Hachi+Maru+Pop&display=swap');
 /* M PLUS 標準的なゴシック https://mplusfonts.github.io/ */
 .font-mplus-1p {
   font-family: 'M PLUS 1p', sans-serif;
@@ -44,4 +41,24 @@
 /* M PLUS 標準的なゴシック */
 .font-mochiy-pop {
   font-family: 'Mochiy Pop One', sans-serif;
+}
+
+/* Kiwi Maru（柔らかい丸みのある明朝） */
+.font-kiwi-maru {
+  font-family: 'Kiwi Maru', serif;
+}
+
+/* Hachi Maru Pop（手書き風の丸文字） */
+.font-hachi-maru-pop {
+  font-family: 'Hachi Maru Pop', cursive;
+}
+
+/* RocknRoll One（太くて勢いのあるポップ体） */
+.font-rocknroll-one {
+  font-family: 'RocknRoll One', sans-serif;
+}
+
+/* Dela Gothic One（超極太のロゴ向けゴシック） */
+.font-dela-gothic-one {
+  font-family: 'Dela Gothic One', sans-serif;
 }

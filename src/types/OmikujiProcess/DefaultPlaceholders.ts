@@ -1,11 +1,7 @@
 // src\types\OmikujiProcess\DefaultPlaceholders.ts
 import z from 'zod'
-import {
-  countUnitCondition,
-  countUnitConditionLabels,
-  serviceMetaCondition,
-  serviceMetaConditionLabels,
-} from '@shared/types/'
+import { serviceMetaCondition, serviceMetaConditionLabels } from '@shared/types/'
+import { countUnitCondition, countUnitConditionLabels } from '@shared/types/trigger'
 
 // デフォルトで利用可能なプレースホルダーの定数配列
 export const defaultPlaceholders = [
@@ -31,6 +27,7 @@ export const DefaultPlaceholdersCommentSchema = z.object({
   price: z.coerce.number().default(0), //
   lc: z.coerce.number().default(0),
   tc: z.coerce.number().default(0),
+  draws: z.coerce.number().default(0),
   commenter: z.coerce.number().default(0),
   winner: z.string().default('テストユーザー'),
   ...DefaultPlaceholdersMetaSchema.shape,
@@ -47,12 +44,12 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
 }
 
 // 省略形（短い）ラベル
-// TODO:おみくじ発動回数を入れたい
 export const defaultPlaceholdersShortLabels: Record<DefaultPlaceholders, string> = {
   user: '[ユーザー名]',
   price: '[ギフト金額]',
   lc: '[配信コメント数]',
   tc: '[個人コメント数]',
+  draws: '[おみくじ発動回数]',
   commenter: '[コメントしたユーザー数]',
   winner: '[ランダムユーザー]',
   viewer: '[視聴者数]',

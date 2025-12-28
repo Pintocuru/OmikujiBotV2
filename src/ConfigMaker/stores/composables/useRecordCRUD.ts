@@ -42,7 +42,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     const maxOrder = Math.max(0, ...existingItems.map((item) => item.order ?? 0))
     parseItem.order = maxOrder + 1
     parseItem.isEnabled = true
-    parseItem.id = parseItem.key ?? undefined // TODO:v2.0で削除予定。idはkeyと切り離し、一意性専用にする
+    // parseItem.id = parseItem.key ?? undefined // TODO:v2.0で削除予定。idはkeyと切り離し、一意性専用にする
 
     const newItem = schema.parse(parseItem) as RecordCategoryItemTypeMap[C]
 

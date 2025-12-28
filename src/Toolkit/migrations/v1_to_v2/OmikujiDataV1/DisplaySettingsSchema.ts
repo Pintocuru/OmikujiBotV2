@@ -35,7 +35,6 @@ export const BaseSettingsSchema = z.object({
   // トースト表示時、キャラクターを表示するか
   showToastsCharacter: z.boolean().default(false).catch(false),
   // キャラクターサムネイルを表示するか
-  // TODO:showCharacterThumbnail -> showThumbnail に移行
   showCharacterThumbnail: z.boolean().default(true).catch(true),
 
   /**
