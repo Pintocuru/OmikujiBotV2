@@ -22,8 +22,9 @@
     description="入力したハッシュでモードを判定します"
   >
     <div class="flex gap-2 items-center">
-      <span v-if="isPro && !isGod" class="badge badge-success">PRO</span>
       <span v-if="isGod" class="badge badge-warning">GOD-MODE</span>
+      <span v-else-if="isPro" class="badge badge-success">PRO</span>
+      <span v-else-if="isAdv" class="badge badge-info">Adv</span>
       <input
         type="password"
         class="input input-bordered flex-1"
@@ -34,13 +35,14 @@
       <!-- ライセンススイッチ -->
       <span v-if="isDev">
         <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
+        <button class="btn btn-sm btn-info mr-2" @click="updateLicenseKeyHash(getKey('adv'))">Adv</button>
         <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>
         <button class="btn btn-sm btn-warning" @click="updateLicenseKeyHash(getKey('godMode'))">GOD-MODE</button>
       </span>
     </div>
   </SettingItem>
 
-  <!-- 補足説明 -->
+  <!-- TODO: ここでは即時保存を促す(再起動後PRO版が反映されるという話とか) 補足説明 -->
   <InformationCard v-if="isPro && !isGod">
     <p>PROライセンスキーを入力したあとは：</p>
     <p>ライセンスは即時適用されますが、保存を行わないと、リロード時にライセンスが戻ってしまいます。</p>
@@ -63,7 +65,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   const settings = computed(() => data.value.settings)
 

@@ -2,11 +2,15 @@
 <template>
   <h1
     class="flex justify-center text-2xl font-bold mb-6 text-center relative"
-    :class="isGod ? ['text-warning'] : isPro ? ['text-success'] : ['text-primary']"
+    :class="isGod ? ['text-warning'] : isPro ? ['text-success'] : isAdv ? ['text-info'] : ['text-primary']"
   >
     <div class="flex items-center gap-2">
       おみくじBot コンフィグエディター
-      <LicenseBadge godTip="私が神です!" proTip="テンプレートが扱える、有料版です!" />
+      <LicenseBadge
+        advTip="カラー変更など、一部有料版を使えます"
+        proTip="テンプレートが扱える、有料版です!"
+        godTip="私が神です!"
+      />
     </div>
 
     <!-- 右上バージョン表示 -->
@@ -33,7 +37,7 @@
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   // Pinia store
   const omikujiStore = useOmikujiStore()

@@ -3,7 +3,7 @@
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
     <div class="flex items-center gap-2">
       <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
-      <RandomThemeButton v-if="isPro" @randomize="(newValue) => updateCounterField('color', newValue)" />
+      <RandomThemeButton v-if="isAdv" @randomize="(newValue) => updateCounterField('color', newValue)" />
     </div>
 
     <!-- プレビュー -->
@@ -14,7 +14,7 @@
       :users="generateDummyUserNames(counter.maxUsers)"
     />
 
-    <NoParamsCard v-else :message="'対象ルールIDを設定してください'" />
+    <NoParamsCard v-else :message="'対象ルールキーを設定してください'" />
 
     <!-- テーマカラー -->
     <DaisyUiThemeEditor
@@ -26,6 +26,8 @@
     <SettingItem
       label="対象ルールキー"
       description="どのルールを対象にするか"
+      :variant="counter.ruleKey === '' || !counter.ruleKey ? 'warning' : undefined"
+      :showWarning="counter.ruleKey === '' || !counter.ruleKey"
       :showReset="true"
       @reset="resetMap.ruleKey"
     >
@@ -146,6 +148,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { SettingsCounterSchema } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
@@ -154,11 +157,10 @@
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
   import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import { SettingsCounterSchema } from '@/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const rulesComment = computed(() => data.value.comments)
 

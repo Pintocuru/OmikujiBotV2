@@ -17,7 +17,7 @@
     <!-- カラー設定モード切り替えトグル -->
     <div class="flex items-center gap-2">
       <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
-      <RandomThemeButton v-if="isPro && colorValue.isTheme" @randomize="handleRandomTheme" />
+      <RandomThemeButton v-if="isAdv && colorValue.isTheme" @randomize="handleRandomTheme" />
 
       <div class="form-control">
         <label class="label cursor-pointer gap-3">
@@ -71,7 +71,7 @@
     'update:modelValue': [value: CharacterColorType]
   }>()
 
-  const { isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   // カラーフィールド定義
   const colorFields = [

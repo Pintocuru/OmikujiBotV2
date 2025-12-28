@@ -15,8 +15,8 @@
     </SettingItem>
 
     <!-- 背景の左端 -->
-    <div v-if="isPro" class="flex flex-col gap-4">
-      <SettingItem label="背景(From)" description="背景グラデーションの左端の色" forceMode="pro">
+    <div v-if="isAdv" class="flex flex-col gap-4">
+      <SettingItem label="背景(From)" description="背景グラデーションの左端の色" forceMode="adv">
         <select
           class="select select-bordered"
           :value="modelValue.backFrom"
@@ -29,7 +29,7 @@
       </SettingItem>
 
       <!-- 背景の右端 -->
-      <SettingItem label="背景(To)" description="背景グラデーションの右端の色" forceMode="pro">
+      <SettingItem label="背景(To)" description="背景グラデーションの右端の色" forceMode="adv">
         <select
           class="select select-bordered"
           :value="modelValue.backTo"
@@ -57,7 +57,7 @@
     'update:modelValue': [value: DaisyUiThemeFieldsType]
   }>()
 
-  const { isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const onUpdate = (key: keyof DaisyUiThemeFieldsType, value: string) => {
     emit('update:modelValue', {

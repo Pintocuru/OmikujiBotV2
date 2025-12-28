@@ -9,24 +9,46 @@
   import { computed } from 'vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useSettingMode'
 
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   const props = defineProps<{
-    forceMode?: 'god' | 'pro'
+    forceMode?: 'god' | 'pro' | 'adv'
     godTip?: string
     proTip?: string
+    advTip?: string
   }>()
 
-  // 優先順位: forceMode > isGod > isPro
-  const mode = computed(() => props.forceMode ?? (isGod.value ? 'god' : isPro.value ? 'pro' : null))
+  type Mode = 'god' | 'pro' | 'adv'
 
-  const badgeClass = computed(() =>
-    mode.value === 'god' ? 'badge-warning' : mode.value === 'pro' ? 'badge-success' : ''
-  )
+  const mode = computed<Mode | null>(() => {
+    if (props.forceMode) return props.forceMode
+    if (isGod.value) return 'god'
+    if (isPro.value) return 'pro'
+    if (isAdv.value) return 'adv'
+    return null
+  })
 
-  const label = computed(() => (mode.value === 'god' ? 'GOD-MODE' : mode.value === 'pro' ? 'PRO' : ''))
+  const MODE_CONFIG: Record<Mode, { label: string; badge: string; tip?: string }> = {
+    god: {
+      label: 'GOD-MODE',
+      badge: 'badge-warning',
+      tip: props.godTip,
+    },
+    pro: {
+      label: 'PRO',
+      badge: 'badge-success',
+      tip: props.proTip,
+    },
+    adv: {
+      label: 'ADV',
+      badge: 'badge-info',
+      tip: props.advTip,
+    },
+  }
 
-  const currentTip = computed(() =>
-    mode.value === 'god' ? props.godTip : mode.value === 'pro' ? props.proTip : undefined
-  )
+  const badgeClass = computed(() => (mode.value ? MODE_CONFIG[mode.value].badge : ''))
+
+  const label = computed(() => (mode.value ? MODE_CONFIG[mode.value].label : ''))
+
+  const currentTip = computed(() => (mode.value ? MODE_CONFIG[mode.value].tip : undefined))
 </script>

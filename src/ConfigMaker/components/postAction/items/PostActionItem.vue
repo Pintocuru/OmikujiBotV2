@@ -48,14 +48,14 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { PostActionSchema, PostActionType, RulesCategoryType } from '@/types/'
+  import { computed, ref } from 'vue'
+  import { PostActionSchema, PostActionType } from '@/types/'
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   // Props
@@ -98,12 +98,33 @@
     set: (value) => emit('update:action', { ...props.action, delaySeconds: value }),
   })
 
+  // actionType 別の生データキャッシュ
+  const rawActionCache = ref<Partial<Record<PostActionType['actionType'], any>>>({})
+
   // アクションタイプの更新
   const updateActionType = (newType: PostActionType['actionType']) => {
-    const basePayload = { ...props.action, actionType: newType }
+    const currentType = props.action.actionType
+
+    // ① 現在の状態を退避
+    rawActionCache.value[currentType] = {
+      ...rawActionCache.value[currentType],
+      ...props.action,
+    }
+
+    // ② 復元候補を取得（なければ最低限のベース）
+    const restored = rawActionCache.value[newType] ?? {
+      ...props.action,
+      delaySeconds: props.action.delaySeconds,
+      actionType: newType,
+    }
 
     try {
-      const newAction = PostActionSchema.parse(basePayload)
+      // ③ Zodで正規化
+      const newAction = PostActionSchema.parse({
+        ...restored,
+        actionType: newType,
+      })
+
       emit('update:action', newAction)
     } catch (error) {
       console.error(`Action type change failed Zod validation for type "${newType}":`, error)

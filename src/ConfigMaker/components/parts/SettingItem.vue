@@ -5,6 +5,7 @@
     :description="description"
     :variant="variant"
     :showReset="showReset"
+    :showWarning="showWarning"
     @reset="$emit('reset')"
   >
     <template #default>
@@ -18,6 +19,7 @@
         :forceMode="forceMode"
         godTip="貴様!神の力を使えるのか!?"
         proTip="PRO版のみの機能です"
+        advTip="Adv版以上の機能です"
       />
     </template>
   </SettingItem>
@@ -35,8 +37,9 @@
       description?: string
       variant?: VariantType
       showReset?: boolean
+      showWarning?: boolean
       devMemo?: string
-      forceMode?: 'god' | 'pro'
+      forceMode?: 'god' | 'pro' | 'adv'
     }>(),
     {
       showReset: false,

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\presetsImport\composables\useImportManager.ts
+// src\ConfigMaker\components\presetsImport\composables\useImportManager.ts
 import { ref, computed } from 'vue'
 import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'

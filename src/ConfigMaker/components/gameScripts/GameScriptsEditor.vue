@@ -4,12 +4,12 @@
     <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
     <div class="grid grid-cols-3 gap-4 p-4">
       <!-- 左側: プレビューエリア -->
-      <div class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
+      <div v-if="isEnabled" class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
         <GameScriptPreview :gameScripts="gameScripts" />
       </div>
 
       <!-- 右側: 設定エリア -->
-      <div class="col-span-2 space-y-4">
+      <div class="space-y-4" :class="isEnabled ? 'col-span-2' : 'col-span-3'">
         <!-- ゲームスクリプトパッケージカード -->
 
         <div v-if="isGod || (!isGod && gameScripts?.scriptId !== 'godMode')">
@@ -34,7 +34,12 @@
 
         <div v-else-if="isEnabled" class="space-y-4">
           <!-- Script ID -->
-          <SettingItem label="スクリプトID" description="実行するスクリプトを選択">
+          <SettingItem
+            label="スクリプトID"
+            description="実行するスクリプトを選択"
+            :variant="gameScripts?.scriptId === '' ? 'warning' : undefined"
+            :showWarning="gameScripts?.scriptId === ''"
+          >
             <select
               :value="gameScripts?.scriptId || ''"
               @change="updateScriptId(($event.target as HTMLSelectElement).value)"
@@ -60,7 +65,13 @@
           </SettingItem>
 
           <!-- Character Key -->
-          <SettingItem v-if="isCharacter" label="キャラクターキー" description="スクリプト実行時に使用するキャラクター">
+          <SettingItem
+            v-if="isCharacter"
+            label="キャラクターキー"
+            description="スクリプト実行時に使用するキャラクター"
+            :variant="gameScripts?.characterKey === '' ? 'warning' : undefined"
+            :showWarning="gameScripts?.characterKey === ''"
+          >
             <select
               :value="gameScripts?.characterKey || ''"
               @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"

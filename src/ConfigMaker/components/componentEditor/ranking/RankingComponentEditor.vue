@@ -15,7 +15,7 @@
       <select
         class="select select-bordered"
         :value="ranking.color"
-        :disabled="!isPro"
+        :disabled="!isAdv"
         @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
       >
         <option v-for="theme in themes" :key="theme" :value="theme">
@@ -84,7 +84,7 @@
         type="number"
         min="1"
         max="20"
-        :disabled="!isPro"
+        :disabled="!isAdv"
         class="input input-bordered w-24"
         :value="ranking.limit"
         @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
@@ -107,7 +107,7 @@
   const omikujiStore = useOmikujiStore()
   const { enabledGameScriptMap } = useEnabledGames()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const ranking = computed(() => data.value.components.ranking)
 

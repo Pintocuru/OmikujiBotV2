@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <NoParamsCard v-else :message="'スクリプトIDとキャラクターキーを設定してください'" />
+    <NoParamsCard v-else :message="`スクリプトID${isCharacter ? 'とキャラクターキー' : ''}を設定してください`" />
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PostMessage\PostMessageHelper.ts
+// src\MainGenerator\scripts\PostMessage\PostMessageHelper.ts
 import { CharacterType } from '@/types/'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'

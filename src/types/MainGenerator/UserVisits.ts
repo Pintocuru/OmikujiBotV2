@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\MainGenerator\UserVisits.ts
+// src\types\MainGenerator\UserVisits.ts
 import { z } from 'zod'
 import { UserNameSchema } from '../OmikujiData/PostActionMessage'
 

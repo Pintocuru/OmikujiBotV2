@@ -28,7 +28,7 @@
   <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
     <select
       v-model="bubble.bubbleMotionEnter"
-      :disabled="!isPro"
+      :disabled="!isAdv"
       @change="updateField('bubbleMotionEnter', $event)"
       class="select select-bordered w-full max-w-xs"
     >
@@ -44,7 +44,7 @@
       :value="bubble.fontFamily"
       @change="updateField('fontFamily', $event)"
       class="select bg-base text-base-content w-full max-w-xs"
-      :disabled="!isPro"
+      :disabled="!isAdv"
     >
       <option v-for="font in fontFamilyOptions" :key="font" :value="font">
         {{ fontFamilyLabels[font] }}
@@ -103,7 +103,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
 
   const bubble = computed(() => data.value.components.bubble)

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
+// src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
 import { RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { AccessLevelType } from '@shared/types'

@@ -29,7 +29,7 @@
   import { FeatureUsageType, isDev } from '@/types'
 
   const { updateFeatureUsage } = useOmikujiStore()
-  const { isPro, isGod } = useSettingMode()
+  const { isGod } = useSettingMode()
 
   /**
    * 「full」プリセット
