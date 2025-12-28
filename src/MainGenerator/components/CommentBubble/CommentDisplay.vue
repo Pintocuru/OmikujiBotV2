@@ -68,14 +68,10 @@
     const toast = message.message?.toast || ''
 
     // bubble が存在する場合は bubble を優先
-    if (bubble) {
-      return bubble
-    }
+    if (bubble) return bubble
 
     // bubble が空で、フォールバックが有効な場合は toast を表示
-    if (props.showToastFallback && toast) {
-      return toast
-    }
+    if (props.showToastFallback && toast) return toast
 
     return ''
   }

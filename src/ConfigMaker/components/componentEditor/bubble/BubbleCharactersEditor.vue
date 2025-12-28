@@ -95,9 +95,7 @@
   // Draggable 用のローカルなグループリスト (深層コピーでストアへの直接変更を防ぐ)
   const editableGroups = ref<string[][]>([])
 
-  // ----------------------------------------------------
   // 1. **要件対応: showCharacters に availableCharacters をすべて含める**
-  // ----------------------------------------------------
 
   /**
    * showCharacters を初期化・補完する関数。
@@ -142,9 +140,7 @@
   onMounted(initializeGroups)
   watch(availableCharacters, initializeGroups, { immediate: false, deep: true })
 
-  // ----------------------------------------------------
   // 2. Draggable 関連の処理
-  // ----------------------------------------------------
 
   // キャラクターの移動・並べ替え後の処理
   const handleCharacterChange = () => {

@@ -6,6 +6,15 @@ import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'
 
 // フキダシ・キャラクター
+
+export const ShowCharactersSchema = z.object({
+  hidden: z.array(z.string()).default([]),
+  slot1: z.array(z.string()).default([]),
+  slot2: z.array(z.string()).default([]),
+  slot3: z.array(z.string()).default([]),
+  slot4: z.array(z.string()).default([]),
+})
+
 export const SettingsBubbleSchema = z.object({
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: z.array(z.array(z.string())).default([[], []]).catch([[], []]),

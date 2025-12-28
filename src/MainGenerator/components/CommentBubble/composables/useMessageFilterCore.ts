@@ -20,9 +20,13 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
   )
 
   const zeroIndexMessages = computed(() => {
-    const group = showCharacters.value[0]
-    if (!group?.length) return []
-    return botMessages.value.filter((m) => group.includes(m.characterKey))
+    const allowKeys = showCharacters.value[0] ?? []
+
+    return botMessages.value.filter((message) => {
+      // 0番地は characterKey だけで判定する
+      if (allowKeys.length === 0) return true
+      return allowKeys.includes(message.characterKey)
+    })
   })
 
   const getMessagesForCharacter = (characterKey: string) =>
