@@ -1,19 +1,17 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
 <template>
-  <div v-if="rankingSettings" class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md z-10">
-    <!-- スコア表示 -->
-    <div class="flex justify-center">
-      <GameRankingScore
-        v-if="rankingScoreMessages.length > 0"
-        :bot-messages="rankingScoreMessages"
-        :settings="rankingSettings"
-        class="-mb-4"
-      />
-    </div>
-
-    <!-- ランキングリスト -->
-    <GameRankingList :bot-messages="rankingListMessages" :settings="rankingSettings" />
+  <!-- スコア表示 -->
+  <div class="flex justify-center">
+    <GameRankingScore
+      v-if="rankingScoreMessages.length > 0"
+      :bot-messages="rankingScoreMessages"
+      :settings="rankingSettings"
+      class="-mb-4"
+    />
   </div>
+
+  <!-- ランキングリスト -->
+  <GameRankingList :bot-messages="rankingListMessages" :settings="rankingSettings" />
 </template>
 
 <script setup lang="ts">

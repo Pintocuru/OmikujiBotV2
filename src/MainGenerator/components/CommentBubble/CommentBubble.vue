@@ -1,6 +1,6 @@
 <!-- templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
 <template>
-  <div class="z-30">
+  <div class="relative">
     <!-- BOTメッセージ表示(0番地) -->
     <ViewBotMessage />
 
