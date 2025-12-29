@@ -4,6 +4,8 @@
     <SettingItem
       :label="emotionLabel"
       :description="`(${emotionKey})`"
+      :variant="emotionKey === 'default' && !props.isDefaultFilled ? 'warning' : undefined"
+      :showWarning="emotionKey === 'default' && !props.isDefaultFilled"
       :showReset="true"
       @reset="emit('reset', emotionKey)"
     >
@@ -82,6 +84,7 @@
     emotionLabel: string
     currentValue: string[]
     selectedItemKey: string | null
+    isDefaultFilled: boolean
   }>()
 
   const emit = defineEmits<{

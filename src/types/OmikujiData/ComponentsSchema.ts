@@ -20,7 +20,9 @@ export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 export const SettingsBubbleSchema = z.object({
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: ShowCharactersSchema.default(ShowCharactersSchema.parse({})).catch(ShowCharactersSchema.parse({})),
-  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({ isTheme: true })).catch(
+    CharacterColorScheme.parse({ isTheme: true })
+  ),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
@@ -31,7 +33,9 @@ export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
 
 // トースト・サムネイル
 export const SettingsToastSchema = z.object({
-  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({ isTheme: true })).catch(
+    CharacterColorScheme.parse({ isTheme: true })
+  ),
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
   showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
   showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)

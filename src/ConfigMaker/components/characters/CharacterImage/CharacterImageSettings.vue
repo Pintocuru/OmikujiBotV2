@@ -12,6 +12,7 @@
       :emotion-label="emotion"
       :current-value="currentImages[key]"
       :selected-item-key="selectedItemKey"
+      :is-default-filled="isDefaultFilled"
       @update="handleUpdate"
       @reset="handleReset"
     />
@@ -36,6 +37,11 @@
 
   const omikujiStore = useOmikujiStore()
   const currentImages = computed(() => props.modelValue ?? CharacterImageSetSchema.parse({}))
+
+  const isDefaultFilled = computed(() => {
+    const layers = currentImages.value.default ?? []
+    return layers.some((v) => v.trim() !== '')
+  })
 
   const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg']
   const extensionIndexMap = new Map<CharacterEmotionType, number>()
