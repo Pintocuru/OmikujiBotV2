@@ -1,16 +1,36 @@
 <!-- src/MainGenerator/components/GameRankingViewer/CommentBubbleItem.vue -->
 <template>
   <Transition name="bubble-fade" @after-leave="$emit('hidden')">
-    <div v-if="isVisible && latestMessage && settings" :data-theme="settings.color" class="inline-block">
+    <div v-if="isVisible && latestMessage" ref="bubbleRef" class="inline-block relative z-10">
       <div class="bubble-float">
+        <!-- 円マスク -->
         <div
-          class="relative w-[280px] h-[280px] rounded-full flex items-center justify-center bg-gradient-to-br from-primary/40 via-secondary/30 to-accent/25 backdrop-blur-sm shadow-2xl"
+          class="relative w-[280px] h-[280px] rounded-full overflow-hidden flex items-center justify-center shadow-2xl"
         >
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 text-content">
+          <!-- シャボン玉背景 -->
+          <div
+            class="absolute inset-0 rounded-full backdrop-blur-sm"
+            style="
+              background: radial-gradient(
+                circle at 30% 30%,
+                rgba(255, 255, 255, 0.65),
+                rgba(255, 255, 255, 0.25) 35%,
+                rgba(255, 255, 255, 0.1) 55%,
+                rgba(255, 255, 255, 0) 70%
+              );
+            "
+          />
+
+          <!-- 輪郭 -->
+          <div class="absolute inset-0 rounded-full ring-1 ring-white/30" />
+
+          <!-- 背景アイコン -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 text-white">
             <Trophy :size="100" :stroke-width="1.5" />
           </div>
 
-          <div class="relative text-center text-content">
+          <!-- コンテンツ -->
+          <div class="relative z-10 text-center text-white">
             <h3 class="text-2xl font-bold mb-3">
               {{ latestMessage.message?.ranking?.listName || latestMessage.message?.user?.name || latestMessage.name }}
             </h3>
@@ -27,11 +47,11 @@
 
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
+  import { useMotion } from '@vueuse/motion'
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { Trophy } from 'lucide-vue-next'
   import { SettingsRankingType } from '@/types'
 
-  // 表示時間（ミリ秒）
   const DISPLAY_DURATION_MS = 8000
 
   const props = defineProps<{
@@ -47,11 +67,39 @@
   )
 
   const latestMessage = computed(() =>
-    localFilteredMessages.value.length > 0 ? localFilteredMessages.value[localFilteredMessages.value.length - 1] : null
+    localFilteredMessages.value.length ? localFilteredMessages.value[localFilteredMessages.value.length - 1] : null
   )
 
-  const formatScore = (score: number): string => score.toLocaleString()
+  const formatScore = (score: number) => score.toLocaleString()
 
+  /* motion */
+  const bubbleRef = ref<HTMLElement | null>(null)
+
+  const { apply } = useMotion(bubbleRef, {
+    initial: {
+      scale: 0,
+      opacity: 0,
+      x: 0,
+    },
+    enter: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 160,
+        damping: 18,
+      },
+    },
+  })
+
+  watch(
+    () => isVisible.value,
+    (v) => {
+      if (v) apply('enter')
+    }
+  )
+
+  /* 表示制御 */
   watch(
     () => localFilteredMessages.value.length,
     (len) => {
@@ -66,25 +114,32 @@
 </script>
 
 <style scoped>
-  /* 浮遊アニメーション専用 */
+  /* 浮遊＋左右揺れ */
   .bubble-float {
-    animation: bubble-float 3s ease-in-out infinite;
+    animation: bubble-float 4s ease-in-out infinite;
   }
 
-  /* 浮遊 */
   @keyframes bubble-float {
-    0%,
-    100% {
-      transform: translateY(0);
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(3px, -12px);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translate(0, -20px);
+    }
+    75% {
+      transform: translate(-3px, -12px);
+    }
+    100% {
+      transform: translate(0, 0);
     }
   }
 
-  /* Transition */
+  /* 出入り */
   .bubble-fade-enter-active {
-    animation: bubble-appear 0.5s ease-out;
+    animation: bubble-appear 0.4s ease-out;
   }
 
   .bubble-fade-leave-active {
@@ -94,11 +149,9 @@
   @keyframes bubble-appear {
     from {
       opacity: 0;
-      transform: scale(0.8);
     }
     to {
       opacity: 1;
-      transform: scale(1);
     }
   }
 

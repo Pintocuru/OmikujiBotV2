@@ -2,6 +2,16 @@
 <template>
   <!-- スコア表示 -->
   <div class="flex justify-center">
+    <!-- DEV preview trigger -->
+    <div
+      v-if="isDev"
+      class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
+      @mouseenter="devHoverActive = true"
+      @mouseleave="devHoverActive = false"
+    >
+      Bubble Preview
+    </div>
+
     <GameRankingScore
       v-if="rankingScoreMessages.length > 0"
       :bot-messages="rankingScoreMessages"
@@ -15,26 +25,47 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import GameRankingScore from './GameRankingScore.vue'
   import GameRankingList from './GameRankingList.vue'
+  import { BotMessageSchema, isDev } from '@/types'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
+
+  const devHoverActive = ref(false)
+  const devScoreMessages = computed(() => {
+    if (!isDev || !devHoverActive.value) return []
+    return [
+      BotMessageSchema.parse({
+        message: {
+          ranking: {
+            listName: 'test',
+            scoretext: 'test',
+            scoreValue: 100,
+            scriptKey: rankingSettings.value.scriptKey,
+          },
+        },
+      }),
+    ]
+  })
 
   // ランキング設定を取得
   const rankingSettings = computed(() => data.value.components.ranking)
 
   // ランキング対象のメッセージをフィルタリング
   const rankingScoreMessages = computed(() => {
-    if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
+    const base =
+      !botMessages.value || !rankingSettings.value?.scriptKey
+        ? []
+        : botMessages.value.filter((msg) => {
+            const r = msg.message.ranking
+            return r?.scriptKey === rankingSettings.value.scriptKey && typeof r.scoreValue === 'number'
+          })
 
-    return botMessages.value.filter((msg) => {
-      const r = msg.message.ranking
-      return r?.scriptKey === rankingSettings.value.scriptKey && r.scoreValue != null
-    })
+    return isDev ? [...base, ...devScoreMessages.value] : base
   })
 
   const rankingListMessages = computed(() => {

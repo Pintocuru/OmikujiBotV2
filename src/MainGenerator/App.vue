@@ -2,10 +2,10 @@
 <template>
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
     <!-- コメントフキダシ表示 -->
-    <CommentBubble v-if="components.conditions.includes('bubble')" class="z-30" />
+    <CommentBubble v-if="components.conditions.includes('bubble')" class="z-10 pointer-events-none" />
 
     <!-- 右下UI要素コンテナ -->
-    <ToastWidgets v-if="components.conditions.includes('toast')" class="z-30" />
+    <ToastWidgets v-if="components.conditions.includes('toast')" class="z-10" />
 
     <!-- ランキングリスト -->
     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md">
