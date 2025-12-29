@@ -4,7 +4,7 @@ import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/Cat
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
 import { ImportPreview } from '@/ConfigMaker/components/presetsImport/ImportTypes'
-import { normalizeData } from '@/Toolkit/migrations'
+import { normalizeData } from '@/common/migrations'
 import Swal from 'sweetalert2'
 
 /**

@@ -1,5 +1,5 @@
 // build.ts
-import { APP_VERSION, DATA_VERSION } from '@/config/version'
+import { APP_VERSION, DATA_VERSION } from '@/version'
 
 import path from 'path'
 import { fileURLToPath } from 'url'

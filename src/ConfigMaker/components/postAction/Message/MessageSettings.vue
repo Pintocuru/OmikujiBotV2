@@ -59,7 +59,7 @@
   import IconSelector from '@/ConfigMaker/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
-  import { soundList } from '@/Toolkit/sounds/soundMap'
+  import { soundList } from '@/common/sounds/soundMap'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{

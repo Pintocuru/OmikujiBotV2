@@ -1,6 +1,6 @@
 // tools\packages\solo\5percent_Dora.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
-import { APP_VERSION, BUILD_DATE } from '@/config/version'
+import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
 function project(packageRoot: string): ProjectConfig {

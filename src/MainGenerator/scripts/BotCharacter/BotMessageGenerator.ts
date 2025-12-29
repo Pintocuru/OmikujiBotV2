@@ -3,7 +3,7 @@ import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSc
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterType, DisplayOptionType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
-import { playSoundDelay, playRpgVoiceLoop } from '@/Toolkit/sounds/PlaySound'
+import { playSoundDelay, playRpgVoiceLoop } from '@/common/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { resolveProfileImage } from './ProfileImageResolver'
 

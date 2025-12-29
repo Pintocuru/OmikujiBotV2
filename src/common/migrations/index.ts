@@ -1,6 +1,6 @@
 // src/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { APP_VERSION, DATA_VERSION } from '@/config/version'
+import { APP_VERSION, DATA_VERSION } from '@/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'

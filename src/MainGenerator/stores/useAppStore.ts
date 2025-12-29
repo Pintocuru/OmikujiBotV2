@@ -8,7 +8,7 @@ import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector
 import { CooldownManager } from '@/MainGenerator/stores/CooldownManager/CooldownManager'
 import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
 
-import { normalizeData } from '@/Toolkit/migrations'
+import { normalizeData } from '@/common/migrations'
 import { useBotMessageActions } from './useBotMessageActions'
 
 // グローバルデータの初期化

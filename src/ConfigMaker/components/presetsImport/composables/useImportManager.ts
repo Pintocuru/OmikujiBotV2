@@ -5,7 +5,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo, ImportPreview } from '../ImportTypes'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
-import { normalizeData } from '@/Toolkit/migrations'
+import { normalizeData } from '@/common/migrations'
 import { generateCategoryPreview, generateComponentPreview } from './importHelpers'
 
 /**

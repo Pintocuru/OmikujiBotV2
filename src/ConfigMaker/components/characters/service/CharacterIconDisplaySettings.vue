@@ -74,7 +74,7 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { playRpgVoiceLoop, rpgVoiceMap } from '@/Toolkit/sounds'
+  import { playRpgVoiceLoop, rpgVoiceMap } from '@/common/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
