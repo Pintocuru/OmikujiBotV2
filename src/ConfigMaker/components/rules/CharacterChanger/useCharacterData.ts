@@ -13,6 +13,8 @@ export function useCharacterData() {
    */
   const charactersArray = computed(() => omikujiStore.getCategoryArray('characters').sort((a, b) => a.order - b.order))
 
+  const firstCharacter = computed(() => omikujiStore.data.characters[Object.keys(omikujiStore.data.characters)[0]])
+
   /**
    * キャラクター名を取得
    */
@@ -29,6 +31,7 @@ export function useCharacterData() {
   }
 
   return {
+    firstCharacter,
     charactersArray,
     getCharacterName,
     isValidCharacter,

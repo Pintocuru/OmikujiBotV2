@@ -3,8 +3,6 @@ import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
 import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { SendCommentType, SendCommentSchema } from '@shared/types/'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Service } from '../../../../../../libs/onesdk/types/Service'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 

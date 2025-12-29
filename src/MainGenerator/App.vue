@@ -2,17 +2,17 @@
 <template>
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
     <!-- コメントフキダシ表示 -->
-    <CommentBubble v-if="components.conditions.includes('bubble')" class="z-10 pointer-events-none" />
+    <CommentBubble v-if="conditions.includes('bubble')" class="z-10 pointer-events-none" />
 
     <!-- 右下UI要素コンテナ -->
-    <ToastWidgets v-if="components.conditions.includes('toast')" class="z-10" />
+    <ToastWidgets v-if="conditions.includes('toast')" class="z-10" />
 
     <!-- ランキングリスト -->
     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md">
-      <GameRankingViewer v-if="components.conditions.includes('ranking')" />
+      <GameRankingViewer v-if="conditions.includes('ranking')" />
 
       <!-- カウンター -->
-      <CounterPreview v-if="components.conditions.includes('counter')" />
+      <CounterPreview v-if="conditions.includes('counter')" />
     </div>
   </div>
 
@@ -32,16 +32,14 @@
   import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue'
   import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
 
-  import { storeToRefs } from 'pinia'
   import { RuleCommentProcessor } from './scripts/RuleProcess/RuleCommentProcessor'
 
   // Pinia Store
   const appStore = useAppStore()
-  const { data } = storeToRefs(appStore)
-  const components = computed(() => data.value.components)
+  const conditions = computed(() => appStore.data.components.conditions)
 
   // フォントの指定
-  const fontClass = computed(() => useFontFamily(components.value.bubble.fontFamily ?? 'default'))
+  const fontClass = computed(() => useFontFamily(appStore.data.components.bubble.fontFamily ?? 'default'))
 
   const ruleCommentProcessor = new RuleCommentProcessor()
 

@@ -8,7 +8,7 @@
   >
     <div class="avatar-group -space-x-6 rtl:space-x-reverse">
       <div
-        v-for="(character, index) in characters"
+        v-for="(character, index) in charactersArray"
         :key="character.id"
         class="avatar"
         :class="clickable ? 'cursor-pointer hover:scale-120' : ''"
@@ -20,7 +20,7 @@
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
           <!-- TODO:時間経過によって、default から変化してもいいね -->
-          <LayerImage :layers="character.image?.default" :size="12" />
+          <CharacterLayerImage :layers="character.image?.default" :size="12" :color="character.color" />
         </div>
       </div>
     </div>
@@ -30,14 +30,14 @@
 <script setup lang="ts">
   import { ref, watch, onUnmounted } from 'vue'
   import { CharacterType } from '@/types'
-  import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
 
   // 定数
   const HIDE_DELAY = 2000 // 2秒後に非表示にする
 
   const props = withDefaults(
     defineProps<{
-      characters: CharacterType[]
+      charactersArray: CharacterType[]
       clickable?: boolean
       hoverVisibility?: boolean
     }>(),

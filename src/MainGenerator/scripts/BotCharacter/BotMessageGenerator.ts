@@ -3,9 +3,10 @@ import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSc
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterType, DisplayOptionType } from '@/types/OmikujiData/CharacterSchema'
 import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
+import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 import { playSoundDelay, playRpgVoiceLoop } from '@/common/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { resolveProfileImage } from './ProfileImageResolver'
+import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 
 export class BotMessageGenerator {
   constructor(private readonly characters: Record<string, CharacterType>) {}
@@ -90,21 +91,24 @@ export class BotMessageGenerator {
     delaySeconds: number,
     messageType: 'bubble' | 'toast'
   ): BotMessage {
-    /**
-     * TODO:featureUsage の影響を受ける
-     */
+    const { isCharacter } = useVisibilityAccess()
+    const { defaultBubbleColor, defaultToastColor } = useCharacterManager()
     return BotMessageSchema.parse({
       name: character.displayName,
-      characterKey: postAction.characterKey,
+      characterKey: isCharacter.value ? postAction.characterKey : undefined, // defaultを入れる
       iconKey: postAction.iconKey,
-      profileImage: resolveProfileImage(character, postAction.iconKey),
+      delaySeconds,
       sound: postAction.sound,
+      color: isCharacter.value
+        ? character.color
+        : messageType === 'bubble'
+          ? defaultBubbleColor.value
+          : defaultToastColor.value,
+
       message:
         messageType === 'bubble'
           ? { bubble: postAction.message.bubble, ...postAction.message }
           : { toast: postAction.message.toast, ...postAction.message },
-      color: character.color,
-      delaySeconds,
     })
   }
 

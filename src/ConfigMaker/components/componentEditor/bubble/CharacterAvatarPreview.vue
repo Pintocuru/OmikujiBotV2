@@ -44,7 +44,7 @@
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useMessageFilterCore } from '@/MainGenerator/components/CommentBubble/composables/useMessageFilterCore'
+  import { useMessageFilterCore } from '@/common/CharacterManager/useMessageFilterCore'
   import { ShowCharacters } from '@/types'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 

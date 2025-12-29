@@ -1,8 +1,8 @@
 // src\common\CharacterManager\createCharacterManager.ts
 import { Ref } from 'vue'
-import { CharacterEmotionType, characterEmotions } from '@/types/'
+import { CharacterEmotionType, CharacterType, ShowCharactersSchema, characterEmotions } from '@/types/'
 
-export const createCharacterEmotions = (charactersMap: Ref<Record<string, any>>) => {
+export const createCharacterEmotions = (charactersMap: Ref<Record<string, CharacterType>>) => {
   /**
    * キャラクターが有効かどうかを判定
    * 条件: image.default に有効なパスが1つ以上含まれていること
@@ -28,6 +28,16 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, any>>)
     })
   }
 
+  // キャラクターを表示しないときの showCharacters の default
+  const defaultShowCharacters = ShowCharactersSchema.parse({
+    center: ['default'],
+    slot1: [],
+    slot2: [],
+    slot3: [],
+    slot4: [],
+  })
+
+  //
   const hasEmotion = (characterKey: string, iconKey: CharacterEmotionType): boolean => {
     const character = charactersMap.value[characterKey]
     const imagePath = character?.image?.[iconKey]
@@ -39,6 +49,8 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, any>>)
   }
 
   return {
+    defaultShowCharacters,
+
     isValidCharacter,
     getAvailableEmotions,
     hasEmotion,

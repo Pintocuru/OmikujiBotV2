@@ -5,11 +5,11 @@
     :class="[toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start']"
   >
     <CharacterThumbnailsPreview
-      :characters="characterArray"
+      :charactersArray="characterArray"
       :clickable="true"
       @character-click="handleCharacterClick"
     />
-    <CharacterThumbnailsPreview :characters="filteredCharacters" :hoverVisibility="false" />
+    <CharacterThumbnailsPreview :charactersArray="filteredCharacters" :hoverVisibility="false" />
   </div>
 </template>
 
@@ -18,14 +18,18 @@
   import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { resolveProfileImage } from '@/MainGenerator/scripts/BotCharacter/ProfileImageResolver'
+  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
+  const { characterArray } = useCharacterManager()
 
   const toastSettings = computed(() => appStore.data.components.toast)
-  const characterArray = computed(() => appStore.characterCollector.getUsedCharacterArray())
   const currentExpressions = ref<CharacterEmotionType[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
+
+  // ライセンス状態で閲覧できないなら表示させない
+  const { isCharacter } = useVisibilityAccess()
 
   onMounted(() => {
     currentExpressions.value = characterArray.value.map(() => 'default')
@@ -54,6 +58,7 @@
 
   const handleCharacterClick = (character: CharacterType, isRightClick: boolean) => {
     try {
+      const { defaultBubbleColor, defaultToastColor } = useCharacterManager()
       const shouldChangeExpression = Math.random() < 0.5
       const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
 
@@ -61,11 +66,10 @@
         name: character.name,
         characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
-        profileImage: resolveProfileImage(character, randomEmotion),
-        color: character?.color,
+        color: isCharacter ? character?.color : !isRightClick ? defaultBubbleColor.value : defaultToastColor.value,
         message: {
-          bubble: !isRightClick ? `${character.name}のテストメッセージです！` : '',
-          toast: isRightClick ? `${character.name}のトーストメッセージです！` : '',
+          bubble: !isRightClick ? `${character.name !== '' ? character.name : 'default'}のテストメッセージです！` : '',
+          toast: isRightClick ? `${character.name !== '' ? character.name : 'default'}のトーストメッセージです！` : '',
         },
       })
       appStore.addBotMessage(postAction)
@@ -76,6 +80,7 @@
 
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
   const filteredCharacters = computed(() => {
+    if (!isCharacter) return characterArray.value
     const selectedKeys = new Set(toastSettings.value.showThumbnail)
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
   })

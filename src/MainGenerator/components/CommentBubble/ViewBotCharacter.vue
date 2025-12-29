@@ -86,7 +86,6 @@
     const sc = showCharacters.value
     if (!sc) return []
 
-    const allCharacters = characters.value
     const lastKey = lastCommenterKey.value
     const result: CharacterType[] = []
 
@@ -96,7 +95,7 @@
       const key = resolveGroupCharacter(group, lastKey)
       if (!key) return
 
-      const char = allCharacters[key]
+      const char = characters.value[key]
       if (char) result.push(char)
     })
 

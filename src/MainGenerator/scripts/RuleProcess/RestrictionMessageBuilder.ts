@@ -2,6 +2,8 @@
 import { BotMessage, BotMessageSchema, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useCharacterManager } from '../CharacterManager/useCharacterManager'
+import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
 
 /**
  * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
@@ -42,23 +44,24 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
  * トーストメッセージを作成
  */
 function createToastMessages(message: string): BotMessage[] {
-  const appStore = useAppStore()
-  const firstCharacter = appStore.characterCollector.getFirstCharacter()
+  const { getFirstCharacter } = useCharacterManager()
+  const { isCharacter } = useVisibilityAccess()
+  const { defaultToastColor } = useCharacterManager()
+  const firstCharacter = getFirstCharacter()
 
-  const botMessageData: BotMessage = firstCharacter
-    ? BotMessageSchema.parse({
-        name: firstCharacter.name,
-        profileImage: firstCharacter.image?.default,
-        message: {
-          toast: message,
-        },
-        color: firstCharacter.color,
-      })
-    : BotMessageSchema.parse({
-        message: {
-          toast: message,
-        },
-      })
+  const botMessageData: BotMessage =
+    isCharacter.value && firstCharacter
+      ? BotMessageSchema.parse({
+          name: firstCharacter.name,
+          characterKey: firstCharacter.key,
+          iconKey: 'default',
+          message: { toast: message },
+          color: firstCharacter.color,
+        })
+      : BotMessageSchema.parse({
+          message: { toast: message },
+          color: defaultToastColor.value,
+        })
 
   return [BotMessageSchema.parse(botMessageData)]
 }

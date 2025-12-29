@@ -8,7 +8,7 @@
         :key="i"
         :message="message.message.toast ?? '(未記入)'"
         :color="message.color"
-        :iconLayers="message.iconLayers ?? []"
+        :iconLayers="iconSrc(message.characterKey, message.iconKey)"
         :showToastsOnRight="toastSettings.showToastsOnRight"
       />
     </div>
@@ -20,8 +20,8 @@
       :class="toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start'"
     >
       <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
-      <CharacterThumbnailsPreview :characters="characterArray" :hoverVisibility="true" />
-      <CharacterThumbnailsPreview :characters="filteredCharacters" :hoverVisibility="false" />
+      <CharacterThumbnailsPreview :charactersArray="characterArray" :hoverVisibility="true" />
+      <CharacterThumbnailsPreview :charactersArray="filteredCharacters" :hoverVisibility="false" />
     </div>
   </div>
 
@@ -96,10 +96,12 @@
   import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
+  const { iconSrc } = useCharacterManager()
 
   const toastSettings = computed(() => data.value.components.toast)
   const characterArray = computed(() => Object.values(data.value.characters))
@@ -143,7 +145,8 @@
         const character = characterArray.value[charIndex]
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
-          color: isCharacter.value ? character?.color : toastSettings.value.defaultColor,
+          characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
+          color: isCharacter.value ? character.color : toastSettings.value.defaultColor,
           message: { toast: messageText },
         })
       })

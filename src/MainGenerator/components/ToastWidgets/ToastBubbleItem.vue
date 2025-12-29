@@ -3,7 +3,7 @@
   <div :class="showToastsOnRight ? 'chat chat-end' : 'chat chat-start'">
     <!-- アイコン -->
     <div v-if="iconLayers?.length" class="chat-image avatar relative w-10 h-10">
-      <LayerImage :layers="iconLayers" :size="10" :round="true" />
+      <CharacterLayerImage :layers="iconLayers" :size="10" :color="color" />
     </div>
 
     <!-- メッセージ -->
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import type { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
 
   const props = defineProps<{

@@ -4,10 +4,12 @@ import type { CharacterType, CharacterEmotionType } from '@/types/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { useBotDisplay } from './useBotDisplay'
 import { storeToRefs } from 'pinia'
+import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
 export function useViewBotCharacter() {
   // Piniaストアの使用
   const appStore = useAppStore()
+  const { characterArray } = useCharacterManager()
 
   // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
@@ -21,11 +23,6 @@ export function useViewBotCharacter() {
   // omikujiDataの設定取得
   const base = computed(() => appStore.data.components.bubble || {})
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
-
-  // storeから利用可能なキャラクターを取得
-  const availableCharacters = computed(() => {
-    return appStore.characterCollector.getUsedCharacterArray() || []
-  })
 
   // 指定されたキャラクターの感情に応じた画像を取得
   // TODO:「キャラクター画像が1枚もない」という値はここ
@@ -61,7 +58,7 @@ export function useViewBotCharacter() {
     return Array.isArray(v) ? v : Object.values(v ?? {})
   }
   const updateCharacterIconState = () => {
-    const list = toList(availableCharacters.value)
+    const list = toList(characterArray.value)
     list.forEach((ch: CharacterType) => {
       const key = ch.key
       const latest = getCharacterComments(key)[0]
@@ -105,7 +102,6 @@ export function useViewBotCharacter() {
 
   return {
     // データ
-    availableCharacters,
     characterIconStates,
     displayedComments,
 

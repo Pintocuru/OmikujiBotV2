@@ -4,7 +4,6 @@ import { defineStore } from 'pinia'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/'
 import { ConfigUserSchema, ConfigUserType } from '@shared/types'
 import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
-import { CharacterCollector } from '@MainScripts/BotCharacter/CharacterCollector'
 import { CooldownManager } from '@/MainGenerator/stores/CooldownManager/CooldownManager'
 import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
 
@@ -30,7 +29,6 @@ export const useAppStore = defineStore('app', () => {
   const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
   const userVisitManager = UserVisitManager.getInstance() // ユーザー訪問管理
   const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
-  const characterCollector = computed(() => new CharacterCollector(data.value)) // キャラクター管理
 
   return {
     // 状態
@@ -40,6 +38,5 @@ export const useAppStore = defineStore('app', () => {
     cooldownManager,
     userVisitManager,
     scriptManager,
-    characterCollector,
   }
 })
