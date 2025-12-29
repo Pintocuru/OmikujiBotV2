@@ -84,14 +84,14 @@
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType
+    omikuji: OmikujiItemType | null
     category: RulesCategoryType
     selectedItemKey: string | null
   }>()
 
   const omikujiStore = useOmikujiStore()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
   // 条件タイプの選択肢
   const conditionTypes = Object.entries(criteriaThresholdConditionLabels).map(([value, label]) => ({
@@ -100,7 +100,7 @@
   }))
 
   // 現在のcriteria
-  const criteria = computed(() => props.omikuji.criteria)
+  const criteria = computed(() => props.omikuji?.criteria)
 
   // 条件がチェックされているか判定
   const isConditionChecked = (condition: CriteriaThresholdCondition): boolean => {

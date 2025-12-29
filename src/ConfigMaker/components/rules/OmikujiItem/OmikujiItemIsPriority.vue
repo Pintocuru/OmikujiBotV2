@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemIsPriority.vue -->
 <template>
-  <div class="space-y-4">
+  <div v-if="omikuji" class="space-y-4">
     <!-- 追加発動条件の有効化 -->
     <SettingItem label="追加発動条件を設定する" description="条件を満たした場合の優先度を設定できます">
       <label class="label cursor-pointer gap-2">
@@ -43,17 +43,19 @@
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType
+    omikuji: OmikujiItemType | null
     category: RulesCategoryType
     selectedItemKey: string | null
   }>()
 
   const omikujiStore = useOmikujiStore()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
-
+  const index = computed(() => {
+    if (!props.omikuji) return -1
+    return props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key)
+  })
   // criteriaが設定されているか
-  const hasCriteria = computed(() => props.omikuji.criteria !== null)
+  const hasCriteria = computed(() => props.omikuji?.criteria !== null)
 
   // 優先度更新
   const updatePriority = (value: boolean) => {

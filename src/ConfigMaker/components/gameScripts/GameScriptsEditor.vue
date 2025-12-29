@@ -1,104 +1,100 @@
 <!-- src\ConfigMaker\components\gameScripts\GameScriptsEditor.vue -->
 <template>
-  <div v-if="availableGameScripts.length > 0" class="">
+  <div v-if="hasAvailableScripts" class="">
     <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
     <div class="grid grid-cols-3 gap-4 p-4">
       <!-- 左側: プレビューエリア -->
       <div v-if="isEnabled" class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
-        <GameScriptPreview :gameScripts="gameScripts" />
+        <GameScriptPreview v-if="gameScripts" :gameScripts="gameScripts" />
       </div>
 
       <!-- 右側: 設定エリア -->
       <div class="space-y-4" :class="isEnabled ? 'col-span-2' : 'col-span-3'">
-        <!-- ゲームスクリプトパッケージカード -->
+        <!-- GODMODE の特別表示 -->
+        <InformationCard v-if="isGodModeActive">
+          <p>
+            このおみくじアイテムは、何らかの
+            <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
+          </p>
+        </InformationCard>
 
-        <div v-if="isGod || (!isGod && gameScripts?.scriptId !== 'godMode')">
+        <!-- 通常の設定 -->
+        <template v-else>
+          <!-- ゲームスクリプト有効化トグル -->
           <SettingItem label="ゲームスクリプト設定" description="複雑なスクリプトを稼働する">
             <label class="label cursor-pointer gap-2">
               <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
               <span class="label-text">有効化</span>
             </label>
           </SettingItem>
-        </div>
 
-        <!-- GODMODE の設定がある場合 -->
-        <div v-if="!isGod && gameScripts?.scriptId === 'godMode'" class="space-y-4">
-          <!-- 条件設定の説明 -->
-          <InformationCard>
-            <p>
-              このおみくじアイテムは、何らかの
-              <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
-            </p>
-          </InformationCard>
-        </div>
-
-        <div v-else-if="isEnabled" class="space-y-4">
-          <!-- Script ID -->
-          <SettingItem
-            label="スクリプトID"
-            description="実行するスクリプトを選択"
-            :variant="gameScripts?.scriptId === '' ? 'warning' : undefined"
-            :showWarning="gameScripts?.scriptId === ''"
-          >
-            <select
-              :value="gameScripts?.scriptId || ''"
-              @change="updateScriptId(($event.target as HTMLSelectElement).value)"
-              class="select select-bordered select-sm w-full"
+          <!-- 有効時の詳細設定 -->
+          <template v-if="isEnabled">
+            <!-- Script ID -->
+            <SettingItem
+              label="スクリプトID"
+              description="実行するスクリプトを選択"
+              :variant="isScriptIdEmpty ? 'warning' : undefined"
+              :showWarning="isScriptIdEmpty"
             >
-              <option value="">-- スクリプトを選択 --</option>
-              <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
-                {{ getScriptName(scriptKey) }}
-              </option>
-              <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
-            </select>
-          </SettingItem>
+              <select
+                :value="gameScripts?.scriptId || ''"
+                @change="updateScriptId(($event.target as HTMLSelectElement).value)"
+                class="select select-bordered select-sm w-full"
+              >
+                <option value="">-- スクリプトを選択 --</option>
+                <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
+                  {{ getScriptName(scriptKey) }}
+                </option>
+                <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
+              </select>
+            </SettingItem>
 
-          <!-- Script Params -->
-          <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
-            <input
-              type="text"
-              :value="gameScripts?.queryString || ''"
-              @input="updateQueryString(($event.target as HTMLInputElement).value)"
-              placeholder="例: mode=スイカゲーム&theme=dark"
-              class="input input-bordered input-sm w-full"
-            />
-          </SettingItem>
+            <!-- Script Params -->
+            <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
+              <input
+                type="text"
+                :value="gameScripts?.queryString || ''"
+                @input="updateQueryString(($event.target as HTMLInputElement).value)"
+                placeholder="例: mode=スイカ&tlife=3"
+                class="input input-bordered input-sm w-full"
+              />
+            </SettingItem>
 
-          <!-- Character Key -->
-          <SettingItem
-            v-if="isCharacter"
-            label="キャラクターキー"
-            description="スクリプト実行時に使用するキャラクター"
-            :variant="gameScripts?.characterKey === '' ? 'warning' : undefined"
-            :showWarning="gameScripts?.characterKey === ''"
-          >
-            <select
-              :value="gameScripts?.characterKey || ''"
-              @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
-              class="select select-bordered select-sm w-full"
+            <!-- Character Key -->
+            <SettingItem
+              v-if="isCharacter"
+              label="キャラクターキー"
+              description="スクリプト実行時に使用するキャラクター"
+              :variant="isCharacterKeyEmpty ? 'warning' : undefined"
+              :showWarning="isCharacterKeyEmpty"
             >
-              <option value="">-- キャラクターを選択 --</option>
-              <option v-for="character in charactersList" :key="character.key" :value="character.key">
-                {{ character.name }}
-              </option>
-            </select>
-          </SettingItem>
-        </div>
+              <select
+                :value="gameScripts?.characterKey || ''"
+                @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
+                class="select select-bordered select-sm w-full"
+              >
+                <option value="">-- キャラクターを選択 --</option>
+                <option v-for="character in charactersList" :key="character.key" :value="character.key">
+                  {{ character.name }}
+                </option>
+              </select>
+            </SettingItem>
+          </template>
+        </template>
       </div>
     </div>
   </div>
 
-  <!-- GODMODE の設定がある場合 -->
-  <div v-else-if="!isGod && gameScripts?.scriptId === 'godMode'" class="space-y-4">
-    <!-- 条件設定の説明 -->
-    <InformationCard>
-      <p>
-        このおみくじアイテムは、何らかの
-        <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
-      </p>
-    </InformationCard>
-  </div>
+  <!-- GODMODE で非GODユーザーの場合 -->
+  <InformationCard v-else-if="isGodModeActive">
+    <p>
+      このおみくじアイテムは、何らかの
+      <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
+    </p>
+  </InformationCard>
 
+  <!-- 利用可能なスクリプトがない場合 -->
   <NoParamsCard v-else :message="'このゲームスクリプトはPRO版で設定できます'" />
 </template>
 
@@ -113,12 +109,11 @@
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import GameScriptPreview from './GameScriptPreview.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType
+    omikuji: OmikujiItemType | null
     category: RulesCategoryType
     selectedItemKey: string | null
   }>()
@@ -128,30 +123,37 @@
   const { isGod } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
-
-  // 利用可能なゲームスクリプトのキー一覧
+  // Computed Properties
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
   const availableGameScripts = computed(() => data.value.featureUsage.gameScripts)
+  const hasAvailableScripts = computed(() => availableGameScripts.value.length > 0)
+  const charactersList = computed(() => Object.values(data.value.characters))
+  const gameScripts = computed(() => props.omikuji?.gameScripts)
+  const isEnabled = computed(() => gameScripts.value !== null)
+  const isGodModeActive = computed(() => !isGod.value && gameScripts.value?.scriptId === 'godMode')
+  const isScriptIdEmpty = computed(() => gameScripts.value?.scriptId === '')
+  const isCharacterKeyEmpty = computed(() => gameScripts.value?.characterKey === '')
 
-  // キャラクター一覧（レコードから配列に変換）
-  const charactersList = computed(() => {
-    const charactersRecord = data.value.characters
-    return Object.values(charactersRecord)
-  })
-
-  // スクリプトキーから名前を取得
+  // Helper Functions
   const getScriptName = (scriptKey: string): string => {
     const script = gameScriptMap[scriptKey]
     return script?.name || scriptKey
   }
 
-  // 現在のgameScripts
-  const gameScripts = computed(() => props.omikuji.gameScripts)
+  const updateGameScripts = (
+    updater: (current: NonNullable<typeof gameScripts.value>) => Partial<NonNullable<typeof gameScripts.value>>
+  ) => {
+    if (index.value === -1 || !props.selectedItemKey || !gameScripts.value) return
 
-  // 有効/無効の判定
-  const isEnabled = computed(() => gameScripts.value !== null)
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      gameScripts: item.gameScripts
+        ? { ...item.gameScripts, ...updater(item.gameScripts) }
+        : GameScriptsSchema.parse({}),
+    }))
+  }
 
-  // 有効/無効の切り替え
+  // Update Functions
   const toggleEnabled = () => {
     if (index.value === -1 || !props.selectedItemKey) return
 
@@ -161,33 +163,15 @@
     }))
   }
 
-  // scriptId の更新
   const updateScriptId = (value: string) => {
-    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
-
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
-      ...item,
-      gameScripts: item.gameScripts ? { ...item.gameScripts, scriptId: value || '' } : GameScriptsSchema.parse({}),
-    }))
+    updateGameScripts(() => ({ scriptId: value || '' }))
   }
 
-  // characterKey の更新
   const updateCharacterKey = (value: string) => {
-    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
-
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
-      ...item,
-      gameScripts: item.gameScripts ? { ...item.gameScripts, characterKey: value } : GameScriptsSchema.parse({}),
-    }))
+    updateGameScripts(() => ({ characterKey: value }))
   }
 
-  // queryString の更新
   const updateQueryString = (value: string) => {
-    if (index.value === -1 || !props.selectedItemKey || !props.omikuji.gameScripts) return
-
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
-      ...item,
-      gameScripts: item.gameScripts ? { ...item.gameScripts, queryString: value } : GameScriptsSchema.parse({}),
-    }))
+    updateGameScripts(() => ({ queryString: value }))
   }
 </script>

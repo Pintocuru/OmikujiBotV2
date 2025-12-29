@@ -10,7 +10,7 @@
     />
 
     <!-- 発動条件 -->
-    <OmikujiItemConditions
+    <OmikujiItemCriteria
       :allOmikuji="allOmikuji"
       :omikuji="omikuji"
       :category="category"
@@ -23,7 +23,7 @@
   import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import OmikujiItemIsPriority from './OmikujiItemIsPriority.vue'
-  import OmikujiItemConditions from './OmikujiItemCriteria.vue'
+  import OmikujiItemCriteria from './OmikujiItemCriteria.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]

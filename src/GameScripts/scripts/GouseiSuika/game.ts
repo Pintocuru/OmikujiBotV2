@@ -1,6 +1,7 @@
 // src/game.ts
 import { PostActionWordPartyType } from '@/types/'
 import { GAME_CONFIGS, GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
+import { GameParams } from './params'
 
 /**
  * ガチャゲームのロジックを管理するクラス
@@ -10,8 +11,8 @@ export class GachaGame {
   private postArray: PostActionWordPartyType[] = []
   private readonly gameConfig: GameConfigDetails
 
-  constructor(private readonly mode: string = 'スイカゲーム') {
-    this.gameConfig = GAME_CONFIGS[mode]
+  constructor(private readonly params: GameParams) {
+    this.gameConfig = GAME_CONFIGS[params.mode]
     this.initializeEffects()
   }
 
@@ -36,7 +37,7 @@ export class GachaGame {
       {
         actionType: 'wordParty',
         delaySeconds: GAME_CONSTANTS.EMOJI_DELAY,
-        wordParty: this.mode === 'クジラゲーム' ? 'GouseiSuikaMarimo' : 'GouseiSuikaCherry',
+        wordParty: this.params.mode === 'クジラ' ? 'GouseiSuikaMarimo' : 'GouseiSuikaCherry',
       },
     ]
   }
@@ -58,7 +59,7 @@ export class GachaGame {
    * 大きいアイテムの抽選を実行
    */
   private playBigItems(): void {
-    let life = GAME_CONSTANTS.INITIAL_LIFE
+    let life = this.params.life ?? GAME_CONSTANTS.INITIAL_LIFE
 
     while (life > 0) {
       const selectedItem = this.selectBigItem()

@@ -28,7 +28,7 @@
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-29T13:00:06.970Z",
+      "updatedAt": "2025-12-29T13:36:24.357Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -60,7 +60,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -99,7 +99,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -138,7 +138,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -177,7 +177,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -216,7 +216,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -255,7 +255,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -294,7 +294,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -333,7 +333,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "default",
               "sound": "decision",
               "message": {
@@ -372,7 +372,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "thinking",
               "sound": "bounce",
               "message": {
@@ -411,7 +411,7 @@
             {
               "delaySeconds": 3,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": "marisa",
               "iconKey": "thinking",
               "sound": "bounce",
               "message": {
@@ -853,54 +853,78 @@
     }
   },
   "characters": {
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
+    "marisa": {
+      "id": "marisa",
+      "key": "marisa",
+      "name": "ゆっくり魔理沙",
+      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2025-12-29T13:37:19.672Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#2196F3",
+      "editorColor": "#FF9800",
       "tags": [
         "Yukkuri",
-        "Reimu"
+        "Marisa"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
+      "url": "https://nagipon-sozai.studio.site/",
+      "displayName": "ゆっくり魔理沙",
       "displayOption": {
         "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
+        "imageBase64": "data:image/png;base64,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",
+        "frameId": "OmikenMarisa",
         "rpgVoice": ""
       },
       "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
+        "isTheme": true,
+        "daisyUiTheme": "synthwave",
+        "backFrom": "warning",
+        "backTo": "accent",
+        "nameColor": "#FFE082",
+        "textColor": "#333333",
+        "backgroundColor": "#FF8F00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
+        "default": [
+          "marisa/default.webp"
+        ],
+        "happy": [
+          "marisa/happy.webp"
+        ],
+        "excited": [
+          "marisa/excited.webp"
+        ],
+        "laughing": [
+          "marisa/laughing.webp"
+        ],
+        "blushing": [
+          "marisa/blushing.webp"
+        ],
+        "surprised": [
+          "marisa/surprised.webp"
+        ],
+        "sad": [
+          "marisa/sad.webp"
+        ],
+        "angry": [
+          "marisa/angry.webp"
+        ],
+        "thinking": [
+          "marisa/thinking.webp"
+        ],
+        "wink": [
+          "marisa/wink.webp"
+        ],
+        "singing": [
+          "marisa/singing.webp"
+        ],
+        "sleepy": [
+          "marisa/sleepy.webp"
+        ]
       }
     }
   },
@@ -913,6 +937,7 @@
     "bubble": {
       "showCharacters": {
         "center": [
+          "marisa",
           "omiken"
         ],
         "slot1": [],
@@ -977,7 +1002,7 @@
       "timers": "pro",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "basic"
     },
     "components": [
       "bubble",
@@ -992,7 +1017,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "halloween"
   }
 }

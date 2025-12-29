@@ -6,7 +6,7 @@
       <SettingItem label="おみくじ名" description="識別しやすい名前を入力">
         <input
           type="text"
-          :value="omikuji.name"
+          :value="omikuji?.name"
           @input="updateName(($event.target as HTMLInputElement).value)"
           placeholder="おみくじ名"
           class="input input-bordered input-sm w-full"
@@ -28,11 +28,10 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
-  import { GripVertical } from 'lucide-vue-next'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType
+    omikuji: OmikujiItemType | null
     category: RulesCategoryType
     selectedItemKey: string | null
     isCard?: boolean
@@ -40,7 +39,7 @@
 
   const omikujiStore = useOmikujiStore()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji.key))
+  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
   // 名前更新
   const updateName = (value: string) => {
@@ -58,7 +57,7 @@
       ...JSON.parse(JSON.stringify(props.omikuji)),
       id,
       key: id,
-      name: `${props.omikuji.name}(コピー)`,
+      name: `${props.omikuji?.name}(コピー)`,
     }
 
     // 配列全体を更新

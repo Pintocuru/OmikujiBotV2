@@ -40,7 +40,7 @@
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
         :title="`おみくじ制限設定`"
-        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, 連投:${selectedItem.limits.isRepeatAllowed ? '可' : '不可'})`"
+        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, 連投:${selectedItem.limits.isRepeatAllowed === 0 ? '可' : `${selectedItem.limits.isRepeatAllowed}回まで可`})`"
         description="重複時や回数超過時におみくじを無効にします"
       >
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />

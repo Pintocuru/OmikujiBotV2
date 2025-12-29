@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "v2.0.0-alpha5",
+    "dataVersion": 2.00005,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -26,21 +26,17 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-02T09:22:17.495Z",
-      "order": 1,
+      "updatedAt": "2025-12-29T16:03:51.613Z",
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "スイカゲーム"
-      },
       "omikuji": [
         {
           "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "name": "",
+          "name": "スイカ",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.296Z",
           "updatedAt": "2025-08-11T15:34:29.296Z",
@@ -48,33 +44,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767024074139",
+          "key": "1767024074139",
+          "name": "回数超過",
+          "createdAt": "2025-12-29T16:01:14.139Z",
+          "updatedAt": "2025-12-29T16:01:14.139Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -93,13 +113,14 @@
           "^スイカ",
           "^西瓜",
           "^🍉$"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "GouseiSuikaPumpkin": {
@@ -108,21 +129,17 @@
       "name": "カボチャジェネレーター",
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
-      "updatedAt": "2025-11-02T09:23:38.012Z",
-      "order": 2,
+      "updatedAt": "2025-12-29T16:03:34.969Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "カボチャゲーム"
-      },
       "omikuji": [
         {
           "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "name": "",
+          "name": "カボチャ",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.296Z",
           "updatedAt": "2025-08-11T15:34:29.296Z",
@@ -130,33 +147,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "mode=カボチャ",
+            "characterKey": ""
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767024194524",
+          "key": "1767024194524",
+          "name": "回数超過",
+          "createdAt": "2025-12-29T16:03:14.524Z",
+          "updatedAt": "2025-12-29T16:03:14.524Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -174,13 +215,14 @@
           "^カボチャ",
           "^南瓜",
           "^🎃$"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "GouseiSuikaWhale": {
@@ -189,21 +231,17 @@
       "name": "クジラジェネレーター",
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
-      "updatedAt": "2025-11-02T09:23:51.155Z",
-      "order": 3,
+      "updatedAt": "2025-12-29T16:04:49.524Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "GouseiSuika",
-      "scriptParams": {
-        "mode": "クジラゲーム"
-      },
       "omikuji": [
         {
           "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
-          "name": "",
+          "name": "クジラ",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.296Z",
           "updatedAt": "2025-08-11T15:34:29.296Z",
@@ -211,33 +249,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "mode=クジラ",
+            "characterKey": ""
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767024253934",
+          "key": "1767024253934",
+          "name": "回数超過",
+          "createdAt": "2025-12-29T16:04:13.934Z",
+          "updatedAt": "2025-12-29T16:04:13.934Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -256,13 +318,147 @@
           "^鯨",
           "^🐋$",
           "^🐳$"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      }
+    },
+    "GouseiSuikaPremium": {
+      "id": "1767020612932-ukv2lt",
+      "key": "GouseiSuikaPremium",
+      "name": "ギフト用スイカ",
+      "description": "ギフトされた方への特別なスイカゲーム。ライフ3倍!",
+      "createdAt": "2025-12-29T15:03:32.932Z",
+      "updatedAt": "2025-12-29T16:05:29.334Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "pro",
+      "omikuji": [
+        {
+          "id": "1767020159501",
+          "key": "1767020159501",
+          "name": "スイカプレミアム",
+          "createdAt": "2025-12-29T14:55:59.501Z",
+          "updatedAt": "2025-12-29T14:55:59.501Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "mode=スイカ&life=9",
+            "characterKey": ""
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "f04e679a-a3c7-4a7f-9b83-94bd51a6a5d2",
+          "key": "f04e679a-a3c7-4a7f-9b83-94bd51a6a5d2",
+          "name": "カボチャプレミアム",
+          "createdAt": "2025-12-29T14:55:59.501Z",
+          "updatedAt": "2025-12-29T14:55:59.501Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "mode=カボチャ&life=9",
+            "characterKey": ""
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "comment"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "lc",
+              "value": 1
+            },
+            "comment": [
+              "^pumpkin",
+              "^かぼちゃ",
+              "^カボチャ",
+              "^南瓜",
+              "^🎃$"
+            ]
+          }
+        },
+        {
+          "id": "da8ffc2a-9a84-407b-96ca-1571a8d15744",
+          "key": "da8ffc2a-9a84-407b-96ca-1571a8d15744",
+          "name": "クジラプレミアム",
+          "createdAt": "2025-12-29T14:55:59.501Z",
+          "updatedAt": "2025-12-29T14:55:59.501Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "GouseiSuika",
+            "queryString": "mode=クジラ&life=9",
+            "characterKey": ""
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "comment"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "lc",
+              "value": 1
+            },
+            "comment": [
+              "^whale",
+              "^くじら",
+              "^クジラ",
+              "^鯨",
+              "^🐋$",
+              "^🐳$"
+            ]
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "gift"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [
+          "all"
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "おみくじ"
+        ],
+        "userName": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -289,31 +485,35 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": false
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#81C784",
         "textColor": "#E8F5E8",
         "backgroundColor": "#388E3C",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     },
     "omiken_2": {
@@ -335,96 +535,129 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#FFB74D",
         "textColor": "#FFF3E0",
         "backgroundColor": "#F57C00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GoogolClover": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken",
+          "omiken_2"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "forest",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "forest",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "emerald"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "basic",
-        "gameScripts": [
-          "GouseiSuika"
-        ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "scriptKey": "GouseiSuika",
+      "title": "🍉スイカランキング🍉",
+      "limit": 5,
+      "sortOrder": "high",
+      "color": "lofi"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "pro",
+      "placeholders": "pro",
+      "characters": "pro"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [
+      "GouseiSuika"
+    ],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "",
+    "daisyUiTheme": "emerald"
+  }
 }

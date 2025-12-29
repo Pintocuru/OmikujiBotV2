@@ -43,7 +43,7 @@ export const GAME_CONSTANTS = {
 
 export const GAME_CONFIGS: GameConfigs = {
   // スイカゲーム
-  スイカゲーム: {
+  スイカ: {
     small: [
       { chance: 67, times: 15, points: 1, party: 'GouseiSuikaStrawberry' }, // いちご：1点
       { chance: 50, times: 15, points: 3, party: 'GouseiSuikaGrape' }, // ぶどう：3点
@@ -62,7 +62,7 @@ export const GAME_CONFIGS: GameConfigs = {
   },
 
   // カボチャゲーム
-  カボチャゲーム: {
+  カボチャ: {
     small: [
       { chance: 67, times: 15, points: 1, party: 'GouseiSuikaStrawberry' }, // いちご strawberry
       { chance: 50, times: 15, points: 3, party: 'GouseiSuikaGrape' }, // ぶどう grape
@@ -82,7 +82,7 @@ export const GAME_CONFIGS: GameConfigs = {
   },
 
   // クジラゲーム
-  クジラゲーム: {
+  クジラ: {
     small: [
       { chance: 50, times: 5, points: 11, party: 'GouseiSuikaClownfish' },
       { chance: 50, times: 5, points: 22, party: 'GouseiSuikaJellyfish' },
@@ -91,7 +91,7 @@ export const GAME_CONFIGS: GameConfigs = {
       { chance: 50, times: 5, points: 55, party: 'GouseiSuikaTuna' },
     ],
     big: [
-      { chance: 20, points: 0, damage: 99, party: 'GouseiSuikaOrca' },
+      { chance: 20, points: 0, damage: 3, party: 'GouseiSuikaOrca' },
       { chance: 25, points: 200, damage: 0, party: 'GouseiSuikaTurtle' },
       { chance: 25, points: 250, damage: 0, party: 'GouseiSuikaSunfish' },
       { chance: 25, points: 300, damage: 0, party: 'GouseiSuikaShark' },

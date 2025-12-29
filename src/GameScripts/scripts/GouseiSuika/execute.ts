@@ -26,12 +26,12 @@ export class ExecuteScript implements ScriptClass {
    */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
     // パラメータ
-    const { mode } = this.parseParams(queryString)
+    const params = this.parseParams(queryString)
     const userName = omiken?.userName ?? UNKNOWN_NAME
 
     // ゲームの実行
-    const gameResult = new GachaGame(mode).play()
-    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, mode, omiken)
+    const gameResult = new GachaGame(params).play()
+    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, params.mode, omiken)
 
     return [...gameResult.postArray, ...rankingActions]
   }
@@ -40,8 +40,8 @@ export class ExecuteScript implements ScriptClass {
    * サンプルラン
    */
   sampleRun(queryString: string): string {
-    const { mode } = this.parseParams(queryString)
-    const gameResult = new GachaGame(mode).play()
+    const params = this.parseParams(queryString)
+    const gameResult = new GachaGame(params).play()
     return `[ユーザー名]の得点は${gameResult.points}!`
   }
 
