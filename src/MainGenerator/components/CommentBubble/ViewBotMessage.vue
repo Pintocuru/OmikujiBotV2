@@ -15,8 +15,8 @@
           <!-- キャラクター（最新コメント時のみ表示） -->
           <div class="absolute top-[180px] left-1/2 -translate-x-1/2 transform">
             <CharacterLayerImage
-              v-if="index === 0 && message.iconLayers"
-              :layers="message.iconLayers"
+              v-if="index === 0 && isValidCharacter(message.characterKey)"
+              :layers="iconSrc(message.characterKey, message.iconKey)"
               :size="bubble.characterSize"
               :color="message.color"
             />
@@ -34,8 +34,10 @@
   import { useBotDisplay } from './composables/useBotDisplay'
   import { useMessageFilter } from './composables/useMessageFilter'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
+  const { iconSrc, isValidCharacter } = useCharacterManager()
 
   // 設定の取得
   const bubble = computed(() => appStore.data.components.bubble || {})

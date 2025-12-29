@@ -20,7 +20,7 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
   let migratedData: any = { ...data }
 
   // comments のマイグレーション
-  if (migratedData.displaySettings) {
+  if (data.displaySettings) {
     migratedData = {
       ...migratedData,
       ...migrateDisplaySettings(migratedData),
@@ -31,10 +31,21 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
   if (migratedData.actionSets) {
     for (const key in migratedData.actionSets) {
       const actionSet = migratedData.actionSets[key]
-      actionSet.postActions = actionSet.postActions.flatMap(migratePostAction) // ←ここで適用
+      actionSet.postActions = actionSet.postActions.flatMap(migratePostAction)
       // ソート処理も必要
       actionSet.postActions.sort((a: any, b: any) => a.delaySeconds - b.delaySeconds)
     }
+  }
+
+  // Characterのデータ注入
+  const allKeys = Object.keys(data.characters)
+  const showCharacterPersistent = data.displaySettings.base.showCharacterPersistent
+  migratedData.components.bubble.showCharacters = {
+    center: !showCharacterPersistent ? allKeys : [],
+    slot1: showCharacterPersistent ? allKeys : [],
+    slot2: [],
+    slot3: [],
+    slot4: [],
   }
 
   console.log('Migration to v2.0 completed: omikuji keys補完完了')

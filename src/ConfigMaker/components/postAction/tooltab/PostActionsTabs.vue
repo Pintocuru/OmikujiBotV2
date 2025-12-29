@@ -69,7 +69,7 @@
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
-  import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
   import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
@@ -88,7 +88,7 @@
   const { isPlaceholder } = useVisibilityAccess()
 
   // キャラクターオプションの取得
-  const { charactersMap } = useCharacterEmotions()
+  const { charactersMap } = useCharacterManager()
   const characterOptions = computed(() => {
     return Object.entries(charactersMap.value).map(([key, char]) => ({
       value: key,

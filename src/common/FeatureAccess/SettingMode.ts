@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\FeatureAccess\SettingMode.ts
+// src\common\FeatureAccess\SettingMode.ts
 import { computed, Ref } from 'vue'
 
 // 判定テーブル

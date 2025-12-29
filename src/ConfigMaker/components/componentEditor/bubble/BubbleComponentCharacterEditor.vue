@@ -12,7 +12,7 @@
   </div>
 
   <!-- キャラクター選択 -->
-  <SettingItem label="表示するキャラクター" description="表示対象のキャラクターを選択します">
+  <SettingItem label="表示するキャラクター" description="ドラッグアンドドロップで移動します">
     <BubbleCharactersEditor />
   </SettingItem>
 

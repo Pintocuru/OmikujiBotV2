@@ -1,7 +1,7 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\LayerImages\ImagePreview.vue -->
+<!-- src\common\LayerImage\ImagePreview.vue -->
 <template>
   <div @click="showPreview = true" class="cursor-pointer">
-    <LayerImages :layers="layers" :size="size" />
+    <LayerImage :layers="layers" :size="size" />
   </div>
 
   <Transition name="fade">
@@ -11,7 +11,7 @@
       @click.self="showPreview = false"
     >
       <div class="relative w-64 h-64 bg-white rounded overflow-hidden">
-        <LayerImages :layers="layers" :size="64" />
+        <LayerImage :layers="layers" :size="64" />
       </div>
     </div>
   </Transition>
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import LayerImages from '@/common/LayerImage/LayerImage.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
 
   defineProps<{
     layers: string[] | string

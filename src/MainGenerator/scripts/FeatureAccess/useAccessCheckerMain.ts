@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\useAccessCheckerMain.ts
+// src\MainGenerator\scripts\useAccessCheckerMain.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'

@@ -11,7 +11,7 @@
         v-for="(character, index) in characters"
         :key="character.id"
         class="avatar"
-        :class="clickable ? 'cursor-pointer hover:scale-110' : ''"
+        :class="clickable ? 'cursor-pointer hover:scale-120' : ''"
         @click="handleClick(character, false)"
         @contextmenu.prevent="clickable && handleClick(character, true)"
       >
@@ -20,7 +20,7 @@
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
           <!-- TODO:時間経過によって、default から変化してもいいね -->
-          <LayerImages :layers="character.image?.default" :size="12" :border="true" class="object-cover" />
+          <LayerImage :layers="character.image?.default" :size="12" />
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
 <script setup lang="ts">
   import { ref, watch, onUnmounted } from 'vue'
   import { CharacterType } from '@/types'
-  import LayerImages from '@/common/LayerImage/LayerImage.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
 
   // 定数
   const HIDE_DELAY = 2000 // 2秒後に非表示にする

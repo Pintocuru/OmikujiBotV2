@@ -34,7 +34,7 @@
   import { ref, computed, Ref } from 'vue'
   import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useCharacterEmotions } from '@ConfigComponents/parts/useCharacterEmotions'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
   const props = defineProps<{
     characterKey: string
@@ -46,7 +46,7 @@
   }>()
 
   // キャラクター感情のコンポーザブルを使用
-  const { getAvailableEmotions, charactersMap, iconSrc } = useCharacterEmotions()
+  const { getAvailableEmotions, charactersMap, iconSrc } = useCharacterManager()
 
   const modalRef: Ref<HTMLDialogElement | null> = ref(null)
 
