@@ -21,7 +21,7 @@
           </div>
 
           <!-- 名前 -->
-          <div class="flex-grow min-w-0">
+          <div class="flex-grow min-w-0 items-center flex flex-nowrap">
             <!-- アイコン -->
             <div v-if="msg.message.user?.profileImage" class="avatar mr-2">
               <div class="w-10 rounded-full">
@@ -30,7 +30,7 @@
             </div>
 
             <div v-else class="avatar placeholder mr-2">
-              <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center">
+              <div class="w-10 rounded-full flex items-center justify-center">
                 {{ (msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'A').charAt(0) }}
               </div>
             </div>
@@ -41,7 +41,7 @@
             </span>
             <span
               v-if="msg.message?.ranking?.symbol !== ''"
-              class="text-lg text-base-content/60 font-semibold truncate"
+              class="text-base text-base-content/60 font-semibold truncate ml-2"
             >
               {{ msg.message?.ranking?.symbol }}
             </span>

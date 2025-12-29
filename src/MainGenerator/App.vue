@@ -8,7 +8,7 @@
     <ToastWidgets v-if="conditions.includes('toast')" class="z-10" />
 
     <!-- ランキングリスト -->
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-md">
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl">
       <GameRankingViewer v-if="conditions.includes('ranking')" />
 
       <!-- カウンター -->

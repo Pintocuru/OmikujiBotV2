@@ -1,7 +1,7 @@
 <!-- src\MainGenerator\components\CommentBubble\CommentBubbleItem.vue -->
 <template>
   <div
-    class="relative inline-block max-w-2xl min-w-[10rem]"
+    class="relative inline-block max-w-3xl min-w-[10rem]"
     :data-theme="color?.isTheme ? color.daisyUiTheme : null"
     :class="[
       customClasses,
