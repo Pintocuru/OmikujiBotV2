@@ -1,116 +1,99 @@
-// src/execute.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\GameScripts\scripts\GouseiSuika\execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GachaGame } from './game'
-import { GameResult } from './gameConfigs'
 import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
+import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GouseiSuika'
-const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
-  /**
-   * 設定を初期化する
-   */
   constructor() {
     this.logRank.setup(RANKING_KEY)
   }
 
-  /**
-   * ゲームを実行する
-   */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
-    // パラメータ
     const params = this.parseParams(queryString)
-    const userName = omiken?.userName ?? UNKNOWN_NAME
-
-    // ゲームの実行
     const gameResult = new GachaGame(params).play()
-    const rankingActions = this.buildRankingActions(userName, gameResult, characterKey, params.mode, omiken)
+    const rankingActions = this.buildRankingActions(omiken, gameResult.points, characterKey, params.mode)
 
     return [...gameResult.postArray, ...rankingActions]
   }
 
-  /**
-   * サンプルラン
-   */
   sampleRun(queryString: string): string {
     const params = this.parseParams(queryString)
     const gameResult = new GachaGame(params).play()
     return `[ユーザー名]の得点は${gameResult.points}!`
   }
 
-  /**
-   * ゲームデータを返す
-   */
   getGameState(): GameStateType {
     return this.logRank.getGameState()
   }
 
-  /**
-   * パラメータ
-   */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
 
   /**
-   * ランキング生成
+   * ランキング関連のアクションを構築
+   * 1. ランキングデータを記録（omikenがある場合のみ）
+   * 2. ランキングメッセージを生成
    */
   private buildRankingActions(
-    userName: string,
-    gameResult: GameResult,
+    omiken: OmikenCommentType | undefined,
+    points: number,
     characterKey: string,
-    mode: string,
-    omiken?: OmikenCommentType
+    symbol: string
   ): PostActionType[] {
-    if (!omiken) return []
+    // ユーザー情報の準備
+    const user = prepareUserInfo(omiken)
 
-    const logResult = this.logRank.run({
+    const bubbleText = `${user.name}の得点は${points}!`
+
+    // ランキングデータの記録と取得
+    const logResult = omiken ? this.recordRanking(omiken, points, characterKey) : null
+
+    // メッセージの構築
+    const rankingMessage = buildRankingMessage({
+      user,
+      characterKey,
+      scriptKey: RANKING_KEY,
+      score: points,
+      symbol,
+      logResult,
+      bubbleText,
+    })
+
+    // ランキングのpostActionsとメッセージを結合
+    const rankingPostActions = logResult?.postActions ?? []
+    return [...rankingPostActions, rankingMessage]
+  }
+
+  /**
+   * ランキングデータを記録
+   */
+  private recordRanking(
+    omiken: OmikenCommentType,
+    points: number,
+    characterKey: string
+  ): ReturnType<LogRankScript['run']> {
+    return this.logRank.run({
       userId: omiken.userId,
-      name: userName,
+      name: omiken.userName,
       characterKey,
       rankingMode: 'high_score',
       maxDrawsPerUser: 5,
       result: {
         type: 'score',
-        score: gameResult.points,
+        score: points,
       },
     })
-
-    const stats = logResult.currentUserStats
-    const currentRecord = logResult.currentRecord
-
-    const ranking = RankingMessageSchema.parse({
-      scriptKey: RANKING_KEY,
-      name: stats.name,
-      scoreText: String(gameResult.points),
-      scoreValue: currentRecord.score,
-      symbol: mode,
-      timestamp: Date.now(),
-      isRank: !logResult.isOverLimit,
-    })
-
-    return [
-      ...logResult.postActions,
-      PostActionMessageSchema.parse({
-        delaySeconds: 3.5,
-        characterKey,
-        message: {
-          bubble: `${userName}の得点は${gameResult.points}!`,
-          ranking,
-        },
-        sound: 'decision',
-      }),
-    ]
   }
 }
 
-// プリセット用エクスポート
 export default new ExecuteScript()

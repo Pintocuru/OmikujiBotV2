@@ -99,7 +99,7 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import GameRankingList from '@/MainGenerator/components/GameRankingViewer/GameRankingList.vue'
+  import GameRankingList from '@/MainGenerator/components/GameRanking/GameRankingList.vue'
   import { useEnabledGames } from '@/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'

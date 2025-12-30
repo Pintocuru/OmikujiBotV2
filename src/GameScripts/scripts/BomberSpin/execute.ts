@@ -1,128 +1,92 @@
 // src\common\GameScripts\scripts\BomberSpin\execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, RankingMessageSchema, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, UserNameType } from '@/types/'
 import { playSlot } from './game'
 import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'BomberSpin'
-const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
-  /**
-   * 設定を初期化する
-   */
   constructor() {
     this.logRank.setup(RANKING_KEY)
   }
 
-  /**
-   * ゲームを実行する
-   */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
     const params = this.parseParams(queryString)
-    const userName = omiken?.userName ?? UNKNOWN_NAME
+    const user = prepareUserInfo(omiken)
 
-    // ゲームの実行
-    const gameResult = playSlot(userName, params.symbol)
+    const gameResult = playSlot(user.name, params.symbol)
 
-    // ランキングの生成
-    const rankingResult = omiken ? this.createRanking(gameResult, characterKey, userName, omiken) : null
+    const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 
-    return this.buildPostActions(gameResult, characterKey, rankingResult)
+    const rankingMessage = buildRankingMessage({
+      user,
+      characterKey,
+      scriptKey: RANKING_KEY,
+      score: gameResult.payout,
+      symbol: gameResult.symbol,
+      bubbleText: gameResult.message, // BomberSpin固有のメッセージ
+      logResult,
+    })
+
+    return this.buildPostActions(gameResult, logResult, rankingMessage)
   }
 
-  /**
-   * サンプルラン
-   */
   sampleRun(queryString: string): string {
     const { symbol } = this.parseParams(queryString)
     const gameResult = playSlot('[ユーザー名]', symbol)
     return gameResult.message
   }
 
-  /**
-   * ゲームデータを返す
-   */
   getGameState(): GameStateType {
     return this.logRank.getGameState()
   }
 
-  /**
-   * パラメータ
-   */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
 
   /**
-   * ランキング生成
+   * ランキングデータを記録
    */
-  private createRanking(
-    gameResult: ReturnType<typeof playSlot>,
-    characterKey: string,
-    userName: string,
-    omiken: OmikenCommentType
-  ) {
-    const logResult = this.logRank.run({
+  private recordRanking(
+    omiken: OmikenCommentType,
+    payout: number,
+    characterKey: string
+  ): ReturnType<LogRankScript['run']> {
+    return this.logRank.run({
       userId: omiken.userId,
-      name: userName,
+      name: omiken.userName,
       characterKey,
       rankingMode: 'high_score',
       maxDrawsPerUser: 5,
       result: {
         type: 'score',
-        score: gameResult.payout,
+        score: payout,
       },
     })
-
-    const stats = logResult.currentUserStats
-    const record = logResult.currentRecord
-
-    const ranking = RankingMessageSchema.parse({
-      scriptKey: RANKING_KEY,
-      name: stats.name,
-      scoreText: String(gameResult.payout),
-      scoreValue: record.score,
-      symbol: gameResult.symbol,
-      isRank: !logResult.isOverLimit,
-    })
-
-    return {
-      ranking,
-      postActions: logResult.postActions,
-    }
   }
 
   /**
-   * 投稿
+   * 投稿アクションの構築
    */
   private buildPostActions(
     gameResult: ReturnType<typeof playSlot>,
-    characterKey: string,
-    rankingResult: {
-      ranking: unknown
-      postActions: PostActionType[]
-    } | null
+    logResult: ReturnType<LogRankScript['run']> | null,
+    rankingMessage: PostActionType
   ): PostActionType[] {
     return [
-      ...(rankingResult?.postActions ?? []),
+      ...(logResult?.postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
       { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
       { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
-      PostActionMessageSchema.parse({
-        delaySeconds: 3.5,
-        characterKey,
-        message: {
-          bubble: gameResult.message,
-          ranking: rankingResult?.ranking,
-        },
-        sound: 'decision',
-      }),
+      rankingMessage,
     ]
   }
 }

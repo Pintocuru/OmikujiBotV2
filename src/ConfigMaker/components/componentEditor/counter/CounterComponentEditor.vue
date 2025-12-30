@@ -155,7 +155,7 @@
   import RandomThemeButton from '@/ConfigMaker/components/characters/color/RandomThemeButton.vue'
   import DaisyUiThemeEditor from '@/ConfigMaker/components/characters/color/DaisyUiThemeEditor.vue'
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
-  import { generateDummyUserNames } from '@/MainGenerator/components/GameRankingViewer/useDummyBotMessages'
+  import { generateDummyUserNames } from '@/MainGenerator/components/GameRanking/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()

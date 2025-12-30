@@ -47,6 +47,7 @@ export class BotMessageGenerator {
    */
   private generateMessageAction(postAction: PostActionMessageType): BotMessage[] {
     const character = this.getSafeCharacter(postAction.characterKey)
+    console.log(postAction)
     const baseDelaySeconds = this.calculateBaseDelay(postAction)
 
     const messages: BotMessage[] = []

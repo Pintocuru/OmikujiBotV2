@@ -29,7 +29,7 @@
 
   import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@/MainGenerator/components/ToastWidgets/ToastWidgets.vue'
-  import GameRankingViewer from '@/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue'
+  import GameRankingViewer from '@/MainGenerator/components/GameRanking/GameRanking.vue'
   import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
 
   import { RuleCommentProcessor } from './scripts/RuleProcess/RuleCommentProcessor'

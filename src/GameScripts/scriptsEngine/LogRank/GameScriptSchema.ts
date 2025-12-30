@@ -18,7 +18,6 @@ export const GameRecordSchema = z.object({
 
 /**
  * ユーザーごとの累計統計
- * Map形式で管理し、O(1)で参照可能
  */
 export const UserStatsSchema = z.object({
   userId: z.string(),
@@ -31,7 +30,6 @@ export const UserStatsSchema = z.object({
 
 /**
  * ゲーム全体のステート
- * Single Source of Truth として機能
  */
 export const GameStateSchema = z.object({
   ruleId: z.string().default(''), // 使用中のルールID
@@ -39,7 +37,7 @@ export const GameStateSchema = z.object({
   logs: z.array(GameRecordSchema).default([]), // 全実行履歴（配列）
 })
 
-// ===== 型推論用のエクスポート =====
+// 型推論用のエクスポート
 export type GameRecordType = z.infer<typeof GameRecordSchema>
 export type UserStatsType = z.infer<typeof UserStatsSchema>
 export type GameStateType = z.infer<typeof GameStateSchema>

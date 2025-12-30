@@ -1,69 +1,67 @@
 // src/common/GameScripts/scripts/DwarfBomb/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, UserNameType } from '@/types/'
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
-import { RankingMessageSchema } from '@/types/OmikujiData/PostActionMessage'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'DwarfBomb'
-const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
-  /**
-   * 設定を初期化する
-   */
   constructor() {
     this.logRank.setup(RANKING_KEY)
   }
 
-  /**
-   * ゲームを実行する
-   */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
     const params = this.parseParams(queryString)
-    const userName = omiken?.userName ?? UNKNOWN_NAME
+    const user = prepareUserInfo(omiken)
 
     // ゲームの実行
-    const gameResult = this.executeGame(userName, params.mode)
+    const gameResult = this.executeGame(user.name, params.mode)
 
-    // ランキングの生成
-    const rankingResult = omiken ? this.createRanking(gameResult.payout, characterKey, userName, omiken) : null
+    // ランキングデータの記録
+    const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
+
+    // ランキングメッセージの構築
+    const rankingMessage = buildRankingMessage({
+      user,
+      characterKey,
+      scriptKey: RANKING_KEY,
+      score: gameResult.payout,
+      symbol: '',
+      bubbleText: gameResult.result.message,
+      logResult,
+    })
 
     // ゲーム結果に基づいてWordPartyを生成
     const partyEffects = gameResult.game.generatePartyEffects(gameResult.result)
 
-    return this.buildPostActions(gameResult.result, characterKey, partyEffects, rankingResult)
+    return this.buildPostActions(logResult, partyEffects, rankingMessage)
   }
 
-  /**
-   * サンプルラン
-   */
   sampleRun(queryString: string): string {
     const { mode } = this.parseParams(queryString)
-    const gameResult = this.executeGame('[ユーザー名]', mode)
+    const user = prepareUserInfo()
+    const gameResult = this.executeGame(user.name, mode)
     return gameResult.result.message
   }
 
-  /**
-   * ゲームデータを返す
-   */
   getGameState(): GameStateType {
     return this.logRank.getGameState()
   }
 
-  /**
-   * パラメータ
-   */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
   }
 
-  // ゲームの実行
+  /**
+   * ゲームの実行
+   */
   private executeGame(userName: string, mode: GameParams['mode']) {
     const game = new BomberSpinGame()
     const result = game.playGame(userName, mode)
@@ -76,12 +74,16 @@ export class ExecuteScript implements ScriptClass {
   }
 
   /**
-   * ランキング生成
+   * ランキングデータを記録
    */
-  private createRanking(payout: number, characterKey: string, userName: string, omiken: OmikenCommentType) {
-    const logResult = this.logRank.run({
+  private recordRanking(
+    omiken: OmikenCommentType,
+    payout: number,
+    characterKey: string
+  ): ReturnType<LogRankScript['run']> {
+    return this.logRank.run({
       userId: omiken.userId,
-      name: userName,
+      name: omiken.userName,
       characterKey,
       rankingMode: 'high_score',
       maxDrawsPerUser: 5,
@@ -90,52 +92,24 @@ export class ExecuteScript implements ScriptClass {
         score: payout,
       },
     })
-
-    const stats = logResult.currentUserStats
-    const record = logResult.currentRecord
-
-    const ranking = RankingMessageSchema.parse({
-      scriptKey: RANKING_KEY,
-      name: stats.name,
-      scoreText: String(payout),
-      scoreValue: record.score,
-      isRank: !logResult.isOverLimit,
-    })
-
-    return {
-      ranking,
-      postActions: logResult.postActions,
-    }
   }
 
   /**
-   * 投稿
+   * 投稿アクションの構築
    */
   private buildPostActions(
-    gameResult: ReturnType<BomberSpinGame['playGame']>,
-    characterKey: string,
+    logResult: ReturnType<LogRankScript['run']> | null,
     partyEffects: PostActionType[],
-    rankingResult: {
-      ranking: unknown
-      postActions: PostActionType[]
-    } | null
+    rankingMessage: PostActionType
   ): PostActionType[] {
     return [
-      ...(rankingResult?.postActions ?? []),
+      ...(logResult?.postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
       { actionType: 'wordParty', delaySeconds: 1.5, wordParty: 'DwarfBombRabbit2' },
       { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },
       { actionType: 'wordParty', delaySeconds: 2.7, wordParty: 'CommonBombFire' },
       ...partyEffects,
-      PostActionMessageSchema.parse({
-        delaySeconds: 3.5,
-        characterKey,
-        message: {
-          bubble: gameResult.message,
-          ranking: rankingResult?.ranking,
-        },
-        sound: 'decision',
-      }),
+      rankingMessage,
     ]
   }
 }

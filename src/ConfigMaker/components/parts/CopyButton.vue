@@ -96,8 +96,6 @@
 
   // コンポーネントがアンマウントされる際のクリーンアップ
   onUnmounted(() => {
-    if (successTimer) {
-      clearTimeout(successTimer)
-    }
+    if (successTimer) clearTimeout(successTimer)
   })
 </script>

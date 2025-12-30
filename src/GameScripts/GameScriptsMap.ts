@@ -13,7 +13,7 @@ export const gameScriptMap: Record<string, ScriptPreset> = {
   [DwarfBomb.key]: DwarfBomb,
   [MultiplyBonanza.key]: MultiplyBonanza,
   [GoogolClover.key]: GoogolClover,
-  // StealEmAll
+  // HugEmAll
 } as const
 
 // 自動的にキー一覧と型を抽出（TypeScriptのみ）

@@ -14,6 +14,7 @@
 
     <GameRankingScore
       v-if="rankingScoreMessages.length > 0"
+      :key="rankingScoreMessages.length"
       :bot-messages="rankingScoreMessages"
       :settings="rankingSettings"
       class="-mb-4"

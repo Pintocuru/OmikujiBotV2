@@ -28,9 +28,9 @@
                 <img :src="msg.message.user?.profileImage" alt="" />
               </div>
             </div>
-
+            <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-2">
-              <div class="w-10 rounded-full flex items-center justify-center">
+              <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center">
                 {{ (msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'A').charAt(0) }}
               </div>
             </div>

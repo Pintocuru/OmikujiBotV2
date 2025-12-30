@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "v2.0.0-alpha5",
+    "dataVersion": 2.00005,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -27,14 +27,12 @@
       "name": "ボンバースロット",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-30T01:02:39.720Z",
+      "updatedAt": "2025-12-30T04:13:23.866Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "BomberSpin",
-      "scriptParams": {},
       "omikuji": [
         {
           "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
@@ -47,33 +45,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767067920080",
+          "key": "1767067920080",
+          "name": "回数超過",
+          "createdAt": "2025-12-30T04:12:00.080Z",
+          "updatedAt": "2025-12-30T04:12:00.080Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 2.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -93,13 +115,14 @@
           "^ぼんばー",
           "^bomber",
           "^🎰"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "DwarfBomb": {
@@ -108,19 +131,17 @@
       "name": "うさぎスロット",
       "description": "3匹のうさぎがお宝ザクザク！最大枚数5000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-12-03T13:27:25.824Z",
+      "updatedAt": "2025-12-30T05:32:23.256Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "DwarfBomb",
-      "scriptParams": {},
       "omikuji": [
         {
           "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
           "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "name": "",
+          "name": "うさぎスロット",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -128,33 +149,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "DwarfBomb",
+            "queryString": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767072548549",
+          "key": "1767072548549",
+          "name": "回数超過",
+          "createdAt": "2025-12-30T05:29:08.549Z",
+          "updatedAt": "2025-12-30T05:29:08.549Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -176,13 +221,14 @@
           "^usagi",
           "🐰",
           "🐇"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "MultiplyBonanza": {
@@ -191,19 +237,17 @@
       "name": "桜吹雪スロット",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
-      "updatedAt": "2025-12-05T03:13:51.047Z",
+      "updatedAt": "2025-12-30T05:31:06.449Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": "MultiplyBonanza",
-      "scriptParams": {},
       "omikuji": [
         {
           "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
           "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "name": "",
+          "name": "桜吹雪スロット",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -211,33 +255,57 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "MultiplyBonanza",
+            "queryString": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767072648208",
+          "key": "1767072648208",
+          "name": "回数超過",
+          "createdAt": "2025-12-30T05:30:48.208Z",
+          "updatedAt": "2025-12-30T05:30:48.208Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
           "postActions": [
             {
-              "delaySeconds": 3.5,
-              "wordParty": "",
+              "delaySeconds": 0,
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<message>>",
-              "messageToast": "",
-              "sound": "decision",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 8,
-              "wordParty": "",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<announceMessage>>",
-              "sound": "cute",
-              "actionType": "toast"
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -261,13 +329,14 @@
           "🌊",
           "🌸",
           "🌟"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 10,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -294,31 +363,35 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": false
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#A1887F",
         "textColor": "#EFEBE9",
         "backgroundColor": "#5D4037",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     },
     "omiken_2": {
@@ -340,109 +413,135 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#FFB74D",
         "textColor": "#FFF3E0",
         "backgroundColor": "#F57C00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GoogolClover": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "multiply-bonanza": {
-      "isParty": true,
-      "enableCount": 5,
-      "rankingLimit": 10
-    },
-    "MultiplyBonanza": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken",
+          "omiken_2"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "luxury"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "basic",
-        "gameScripts": [
-          "BomberSpin",
-          "DwarfBomb",
-          "multiply-bonanza",
-          "MultiplyBonanza"
-        ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "scriptKey": "basicList",
+      "title": "🍉スイカランキング🍉",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "lofi"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "experimental",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking",
+      "counter"
+    ],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "multiply-bonanza"
+    ],
+    "developer": {
+      "licenseVisible": "experimental",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "luxury"
+  }
 }

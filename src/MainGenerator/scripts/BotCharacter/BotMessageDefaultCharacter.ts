@@ -9,8 +9,8 @@ export const createDefaultCharacters = (): CharacterType[] => {
     CharacterSchema.parse({
       // PresetMetadataSchema fields
       key: `default-${index + 1}`,
-      name: `おみくじBOT`,
-      displayName: `おみくじBOT`,
+      name: `おみくじBOTssss`,
+      displayName: `おみくじBOTssss`,
       displayOption: DisplayOptionSchema.parse({}),
       color: colorTheme,
     })
