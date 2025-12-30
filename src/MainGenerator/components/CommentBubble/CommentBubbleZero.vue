@@ -9,7 +9,6 @@
         :enter-motion="bubble.bubbleMotionEnter"
         :leave-motion="bubble.bubbleMotionEnter"
         :animated-text="bubble.bubbleTextAnimate"
-        :show-toast-fallback="showToastFallback"
       >
         <template #default="{ message, index }">
           <!-- キャラクター（最新コメント時のみ表示） -->
@@ -35,7 +34,6 @@
   import { useBotDisplay } from './composables/useBotDisplay'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-  import { useMessageFilter } from '@/common/CharacterManager/useMessageFilter'
 
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
@@ -44,12 +42,19 @@
   // 設定の取得
   const bubble = computed(() => appStore.data.components.bubble || {})
 
-  // toast専用コンポーネントが無効な場合、toastをフォールバック表示
-  const conditions = computed(() => appStore.data.components?.conditions || [])
-  const showToastFallback = computed(() => !conditions.value.includes('toast'))
+  // 0番地のコメント取得
+  const zeroIndexMessages = computed(() => {
+    const allowKeys = showCharacters.value.center ?? []
 
-  // 新しいフィルタリングロジックを使用
-  const { zeroIndexMessages } = useMessageFilter(botMessages, showCharacters)
+    // centerが空の場合は何も表示しない
+    if (allowKeys.length === 0) return []
+
+    return botMessages.value.filter((message) => {
+      // null の場合はキャラクター非表示モードなのでそのまま表示させる
+      if (message.characterKey === null) return true
+      return allowKeys.includes(message.characterKey)
+    })
+  })
 
   // 既存のuseBotDisplayはそのまま使用
   const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages, 'comment')

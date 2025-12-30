@@ -37,18 +37,17 @@ export const useCharacterManager = () => {
           color: appStore.data.components.toast.defaultColor,
         }),
       ]
-
     const characters = appStore.data.characters
     if (Object.keys(characters).length === 0) return []
     return Object.values(characters).sort((a, b) => a.order - b.order)
   })
 
-  // orderが一番若いキャラクターを取得
-  // TODO:実装
+  // order が一番若い（最小）キャラクターを取得
   const getFirstCharacter = (): CharacterType | null => {
-    const characters = appStore.data.characters
-    if (Object.keys(characters).length === 0) return null
-    return Object.values(characters)[0]
+    const characters = Object.values(appStore.data.characters)
+    if (characters.length === 0) return null
+
+    return characters.reduce((min, current) => (current.order < min.order ? current : min))
   }
 
   const showCharacters = computed(() => {

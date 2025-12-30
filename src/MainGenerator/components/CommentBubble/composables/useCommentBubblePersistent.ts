@@ -1,113 +1,71 @@
-// src/MainGenerator/components/OmikujiBot/composables/useommentBubblePersistent.ts
-import { computed, ref, watch } from 'vue'
-import type { CharacterType, CharacterEmotionType } from '@/types/'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { useBotDisplay } from './useBotDisplay'
+// src/MainGenerator/composables/useCommentBubblePersistent.ts
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+import { useCharacterSelection } from './useCharacterSelection'
+import { useCharacterEmotionState } from './useCharacterEmotionState'
+import { useBotDisplay } from './useBotDisplay'
 
-export function useommentBubblePersistent() {
-  // Piniaストアの使用
+/**
+ * 常時表示キャラクター（1〜4番地）の表示制御
+ * 責務を明確に分離:
+ * - useCharacterSelection: キャラクター選択ロジック
+ * - useCharacterEmotionState: 感情状態管理
+ * - useBotDisplay: コメント表示制御
+ */
+export function useCommentBubblePersistent() {
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
-  const { characterArray } = useCharacterManager()
-  const { isCharacter } = useVisibilityAccess()
+  const { charactersMap, showCharacters } = useCharacterManager()
 
-  // キャラクターごとの現在のアイコン状態を管理
-  const characterIconStates = ref<Record<string, CharacterEmotionType>>({})
-
-  // 基底composableを使用
+  // コメント表示制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(botMessages, 'comment')
 
-  // omikujiDataの設定取得
-  const base = computed(() => appStore.data.components.bubble || {})
-  const enterMotion = computed(() => base.value.bubbleMotionEnter)
+  // キャラクター選択
+  const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, charactersMap)
 
-  // 指定されたキャラクターの感情に応じた画像を取得
-  const getCharacterImage = (character: CharacterType): string[] => {
-    // キャラクター非表示なら空
-    if (!isCharacter.value) return []
-
-    // 指定されたエモーション > default > null
-    const currentIconKey = characterIconStates.value[character.key]
-    return character.image[currentIconKey] || character.image.default || []
-  }
-
-  // 指定されたキャラクターのコメントを取得
-  const getCharacterComments = (characterKey: string) => {
-    return displayedComments.value.filter((comment) => comment.characterKey === characterKey && comment.visible)
-  }
-
-  // 最後にコメントしたキャラクターのキー
-  const lastCommenterKey = computed(() => {
-    const visibleComments = displayedComments.value.filter((c) => c.visible)
-    const latestComment = visibleComments[0]
-    return latestComment?.characterKey
-  })
-
-  // キャラクターアイコンの状態を更新
-  const toList = <T>(v: T[] | Record<string, T> | null | undefined): T[] => {
-    return Array.isArray(v) ? v : Object.values(v ?? {})
-  }
-  const updateCharacterIconState = () => {
-    const list = toList(characterArray.value)
-    list.forEach((ch: CharacterType) => {
-      const key = ch.key
-      const latest = getCharacterComments(key)[0]
-      characterIconStates.value[key] = latest?.iconKey ?? 'default'
-    })
-  }
-
-  // コメント削除時にアイコンをリセット
-  const removeCommentWithIconReset = (messageId: string, characterKey?: string) => {
-    // まず通常のremoveCommentを実行
-    removeComment(messageId)
-
-    // characterKeyが指定されている場合のみアイコンリセット処理を実行
-    if (characterKey) {
-      // そのキャラクターの残りのコメントをチェック
-      const remainingComments = getCharacterComments(characterKey)
-
-      if (remainingComments.length === 0) {
-        // 残りのコメントがない場合、defaultに戻す
-        characterIconStates.value[characterKey] = 'default'
-      } else {
-        // 残りのコメントがある場合、最新のコメントのiconKeyを適用
-        const latestComment = remainingComments[0]
-        const iconKey = latestComment.iconKey || 'default'
-        characterIconStates.value[characterKey] = iconKey
-      }
-    } else {
-      // characterKeyが指定されていない場合（統合モード）、すべてのキャラクターの状態を更新
-      updateCharacterIconState()
-    }
-  }
-
-  // displayedCommentsの変化を監視してアイコン状態を更新
-  watch(
+  // 感情状態管理
+  const { emotionStates, getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(
     displayedComments,
-    () => {
-      updateCharacterIconState()
-    },
-    { deep: true, immediate: true }
+    charactersMap
   )
 
+  // 設定取得
+  const bubble = computed(() => appStore.data.components.bubble || {})
+
+  // コメント削除時に感情状態も更新
+  const removeCommentWithEmotionUpdate = (messageId: string, characterKey?: string) => {
+    removeComment(messageId)
+
+    // 特定キャラクターの感情のみ更新
+    if (characterKey) updateCharacterEmotion(characterKey)
+  }
+
+  // 指定キャラクターのコメントを取得（表示中のみ）
+  const getCharacterComments = (characterKey: string) => {
+    return displayedComments.value.filter((c) => c.characterKey === characterKey && c.visible)
+  }
+
   return {
-    // データ
-    characterIconStates,
+    // キャラクター情報
+    slotCharacters,
+    latestCommenterKey,
+
+    // 感情状態
+    emotionStates,
+    getCharacterLayers,
+
+    // コメント関連
     displayedComments,
+    getCharacterComments,
+    removeCommentWithEmotionUpdate,
 
     // 設定
-    enterMotion,
+    enterMotion: computed(() => bubble.value.bubbleMotionEnter),
+    bubble,
 
-    // 計算済みプロパティ
-    lastCommenterKey,
-
-    // メソッド
-    getCharacterImage,
-    getCharacterComments,
-    removeCommentWithIconReset,
+    // ライフサイクル
     start,
     stop,
   }

@@ -3,6 +3,7 @@ import { computed, ComputedRef } from 'vue'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import { PostActionRecordType, PostActionType, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { categoryLabels } from '@/types'
 
 /**
  * カテゴリタイプ（rules系とactionSets）
@@ -21,37 +22,13 @@ export type ChangeScope = 'category' | 'single'
 export function useDataExtractor(category: TargetCategoryType, selectedId?: string) {
   const omikujiStore = useOmikujiStore()
 
-  /**
-   * 変更スコープ（全体 or 単一）
-   */
-  const changeScope = computed<ChangeScope>(() => {
-    return selectedId ? 'single' : 'category'
-  })
+  // 変更スコープ（全体 or 単一）
+  const changeScope = computed<ChangeScope>(() => (selectedId ? 'single' : 'category'))
 
-  /**
-   * カテゴリに応じたラベルを取得
-   */
-  const categoryLabel = computed(() => {
-    switch (category) {
-      case 'comments':
-        return 'コメント'
-      case 'timers':
-        return 'タイマー'
-      case 'actionSets':
-        return 'アクションセット'
-      default:
-        return '不明なカテゴリ'
-    }
-  })
-
-  /**
-   * スコープに応じたラベル
-   */
+  // スコープに応じたラベル
   const scopeLabel = computed(() => {
-    if (changeScope.value === 'single') {
-      return 'このルール'
-    }
-    return `${categoryLabel.value}全体`
+    if (changeScope.value === 'single') return 'このルール'
+    return `${categoryLabels[category].label}全体`
   })
 
   /**
@@ -95,7 +72,6 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
 
   return {
     changeScope,
-    categoryLabel,
     scopeLabel,
     allItems,
     allPostActions,

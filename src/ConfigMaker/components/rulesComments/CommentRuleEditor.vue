@@ -77,8 +77,6 @@
   import CommentThresholdEditor from '@ConfigComponents/threshold/ThresholdEditor.vue'
   import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
@@ -95,9 +93,6 @@
   // Pinia store
   const omikujiStore = useOmikujiStore()
   const { data, selectedItemKey } = storeToRefs(omikujiStore)
-
-  const { isGod } = useSettingMode()
-  const { canShowUsage } = useVisibilityAccess()
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({

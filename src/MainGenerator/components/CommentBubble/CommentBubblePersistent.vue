@@ -1,29 +1,27 @@
-<!-- src\MainGenerator\components\CommentBubble\CommentBubblePersistent.vue -->
+<!-- src/MainGenerator/components/CommentBubble/CommentBubblePersistent.vue -->
 <template>
   <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end">
     <div
-      v-for="character in charactersToShow"
+      v-for="{ character, slotIndex } in slotCharacters"
       :key="character.key"
       class="relative pointer-events-auto -mx-4"
-      :style="getStyle(character.key)"
+      :style="getCharacterStyle(character.key)"
     >
       <div class="relative flex flex-col items-center">
+        <!-- コメント吹き出し -->
         <div class="absolute bottom-full mb-[240px] left-1/2 -translate-x-1/2 min-w-[320px] max-w-[90vw]">
           <CommentDisplay
             :displayed-comments="getCharacterComments(character.key)"
-            :remove-comment="(id) => removeCommentWithIconReset(id, character.key)"
+            :remove-comment="(id) => removeCommentWithEmotionUpdate(id, character.key)"
             :enter-motion="enterMotion"
             :leave-motion="enterMotion"
             :animated-text="bubble.bubbleTextAnimate"
-            :show-toast-fallback="showToastFallback"
           />
         </div>
+
+        <!-- キャラクター画像 -->
         <div class="flex justify-center items-end">
-          <LayerImage
-            v-if="getCharacterImage(character)"
-            :layers="getCharacterImage(character)"
-            :size="bubble.characterSize"
-          />
+          <LayerImage :layers="getCharacterLayers(character.key)" :size="bubble.characterSize" />
         </div>
       </div>
     </div>
@@ -31,74 +29,31 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useommentBubblePersistent } from './composables/useCommentBubblePersistent'
+  import { onMounted, onUnmounted } from 'vue'
+  import { useCommentBubblePersistent } from './composables/useCommentBubblePersistent'
   import CommentDisplay from '@/MainGenerator/components/CommentBubble/CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-
-  const appStore = useAppStore()
-  const { data } = storeToRefs(appStore)
-  const { showCharacters } = useCharacterManager()
-
-  const characters = computed(() => data.value.characters)
-  const bubble = computed(() => data.value.components.bubble)
-  const conditions = computed(() => data.value.components.conditions || [])
-  const showToastFallback = computed(() => !conditions.value.includes('toast'))
 
   const {
-    lastCommenterKey,
-    getCharacterImage,
+    slotCharacters,
+    latestCommenterKey,
+    getCharacterLayers,
     getCharacterComments,
-    removeCommentWithIconReset,
+    removeCommentWithEmotionUpdate,
     enterMotion,
+    bubble,
     start,
     stop,
-  } = useommentBubblePersistent()
+  } = useCommentBubblePersistent()
 
-  const getStyle = (key: string) => {
-    const isActive = key === lastCommenterKey.value
+  // キャラクタースタイル（最新発言者をハイライト）
+  const getCharacterStyle = (key: string) => {
+    const isActive = key === latestCommenterKey.value
     return {
       zIndex: isActive ? 50 : 0,
       filter: isActive ? 'brightness(100%)' : 'brightness(60%)',
     }
   }
-
-  const resolveGroupCharacter = (group: string[], lastCommenterKey: string | null): string | undefined => {
-    if (!group.length) return
-
-    // 最新コメントがこのグループ内ならそれを優先
-    if (lastCommenterKey && group.includes(lastCommenterKey)) {
-      return lastCommenterKey
-    }
-
-    // それ以外は先頭(デフォルト)
-    return group[0]
-  }
-
-  // slot1〜slot4のキャラを順に並べる
-  // TODO: これは useMessageFilter と被っていないか？
-  const charactersToShow = computed<CharacterType[]>(() => {
-    const sc = showCharacters.value
-
-    const lastKey = lastCommenterKey.value
-    const result: CharacterType[] = []
-
-    const slots = [sc.slot1, sc.slot2, sc.slot3, sc.slot4]
-
-    slots.forEach((group) => {
-      const key = resolveGroupCharacter(group, lastKey)
-      if (!key) return
-
-      const char = characters.value[key]
-      if (char) result.push(char)
-    })
-
-    return result
-  })
 
   onMounted(start)
   onUnmounted(stop)

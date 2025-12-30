@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-alpha5",
-    "dataVersion": 2.00005,
+    "generatorVersion": "v2.0.0-beta2",
+    "dataVersion": 2.0002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -549,8 +549,8 @@
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast"
+      "toast",
+      "ranking"
     ],
     "bubble": {
       "showCharacters": {
@@ -593,11 +593,11 @@
       "showThumbnail": []
     },
     "ranking": {
-      "scriptKey": "basicList",
-      "title": "🍉スイカランキング🍉",
+      "scriptKey": "BomberSpin",
+      "title": "💣️Bonber Slot Ranking💎",
       "limit": 5,
-      "sortOrder": "new",
-      "color": "lofi"
+      "sortOrder": "high",
+      "color": "abyss"
     },
     "counter": {
       "ruleKey": null,
@@ -625,25 +625,21 @@
     "components": [
       "bubble",
       "toast",
-      "ranking",
-      "counter"
+      "ranking"
     ],
     "gameScripts": [
-      "GouseiSuika",
       "BomberSpin",
       "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
+      "MultiplyBonanza"
     ],
     "developer": {
-      "licenseVisible": "experimental",
+      "licenseVisible": "basic",
       "jsonMergeSettings": "experimental"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
     "daisyUiTheme": "luxury"
   }
 }

@@ -34,7 +34,7 @@ export class ExecuteScript implements ScriptClass {
       logResult,
     })
 
-    return this.buildPostActions(gameResult, logResult, rankingMessage)
+    return [...this.buildPostActions(gameResult, logResult), rankingMessage]
   }
 
   sampleRun(queryString: string): string {
@@ -78,15 +78,13 @@ export class ExecuteScript implements ScriptClass {
    */
   private buildPostActions(
     gameResult: ReturnType<typeof playSlot>,
-    logResult: ReturnType<LogRankScript['run']> | null,
-    rankingMessage: PostActionType
+    logResult: ReturnType<LogRankScript['run']> | null
   ): PostActionType[] {
     return [
       ...(logResult?.postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'BomberSpinBack' },
       { actionType: 'wordParty', delaySeconds: 1.1, wordParty: gameResult.party },
       { actionType: 'wordParty', delaySeconds: 2.8, wordParty: 'CommonBombFire' },
-      rankingMessage,
     ]
   }
 }

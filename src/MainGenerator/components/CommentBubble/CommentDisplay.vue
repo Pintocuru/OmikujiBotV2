@@ -39,6 +39,7 @@
   import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const props = withDefaults(
     defineProps<{
@@ -47,16 +48,16 @@
       enterMotion?: MotionType
       leaveMotion?: MotionType
       animatedText?: boolean
-      showToastFallback?: boolean // ★ toastをフォールバック表示するか
     }>(),
     {
       removeComment: () => {},
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,
-      showToastFallback: false,
     }
   )
+
+  const appStore = useAppStore()
 
   /**
    * 表示するメッセージを決定
@@ -64,15 +65,11 @@
    * 2. bubble が空で showToastFallback=true なら toast を表示
    */
   const displayMessage = (message: DisplayBotMessage): string => {
-    const bubble = message.message?.bubble || ''
-    const toast = message.message?.toast || ''
+    const { bubble = '', toast = '' } = message.message || {}
+    const conditions = appStore.data.components.conditions || []
 
-    // bubble が存在する場合は bubble を優先
     if (bubble) return bubble
-
-    // bubble が空で、フォールバックが有効な場合は toast を表示
-    if (props.showToastFallback && toast) return toast
-
+    if (!conditions.includes('toast') && toast) return toast
     return ''
   }
 </script>

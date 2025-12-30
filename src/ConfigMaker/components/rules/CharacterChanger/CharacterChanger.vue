@@ -11,17 +11,7 @@
           : 'すべてのルールのキャラクターを一括変更する'
       "
     >
-      <button
-        :class="[
-          'btn',
-          hasInvalidCharacters
-            ? 'btn-error animate-pulse'
-            : changeScope === 'single'
-              ? `btn-${props.buttonStyle}`
-              : 'btn-secondary',
-        ]"
-        @click="openModal"
-      >
+      <button :class="['btn', hasInvalidCharacters ? 'btn-error animate-pulse' : 'btn-secondary']" @click="openModal">
         <Users class="w-4 h-4" />
         {{ changeScope === 'single' ? 'キャラ変更' : '全体キャラ変更' }}
         <span v-if="hasInvalidCharacters" class="ml-1">⚠️</span>
@@ -103,17 +93,10 @@
   import { Users } from 'lucide-vue-next'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
-  const props = withDefaults(
-    defineProps<{
-      category: TargetCategoryType
-      selectedId?: string
-      buttonStyle?: 'primary' | 'secondary' | 'info'
-    }>(),
-    {
-      selectedId: undefined,
-      buttonStyle: 'secondary',
-    }
-  )
+  const props = defineProps<{
+    category: TargetCategoryType
+    selectedId?: string
+  }>()
 
   const { isCharacter } = useVisibilityAccess()
 

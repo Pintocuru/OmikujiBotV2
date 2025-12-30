@@ -1,5 +1,4 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useCharacterUpdater.ts
-// src/ConfigMaker/components/rules/CharacterChanger/composables/useCharacterUpdater.ts
 import { ComputedRef } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { RuleType } from '@/types/OmikujiData/RulesSchema'

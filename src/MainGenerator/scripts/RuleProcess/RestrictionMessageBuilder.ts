@@ -1,7 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
 import { BotMessage, BotMessageSchema, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
 
@@ -44,10 +43,9 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
  * トーストメッセージを作成
  */
 function createToastMessages(message: string): BotMessage[] {
-  const { getFirstCharacter } = useCharacterManager()
   const { isCharacter } = useVisibilityAccess()
   const { defaultToastColor } = useCharacterManager()
-  const firstCharacter = getFirstCharacter()
+  const firstCharacter = useCharacterManager().getFirstCharacter()
 
   const botMessageData: BotMessage =
     isCharacter.value && firstCharacter

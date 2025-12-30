@@ -92,17 +92,6 @@
             {{ radius.label }}
           </span>
         </SettingItem>
-
-        <!-- カスタムクラス入力 -->
-        <SettingItem label="追加クラス" description="その他のTailwindCSSクラスを直接入力できます">
-          <input
-            type="text"
-            class="input input-bordered w-full"
-            placeholder="例: shadow-lg hover:shadow-xl transition-all"
-            v-model="settings.customClasses"
-            @input="updateClasses"
-          />
-        </SettingItem>
       </div>
     </SectionCard>
   </div>
