@@ -70,6 +70,6 @@
   const fields = [
     { key: 'name', label: '設定名', description: '識別しやすい名前' },
     { key: 'description', label: '説明', description: 'キャラクターの紹介文' },
-    { key: 'displayName', label: 'ジェネレーターでの表示名', description: '配信時に表示されBOTの名前' },
+    { key: 'displayName', label: 'ジェネレーターでの表示名', description: '配信時に表示される、BOTの名前' },
   ] as const
 </script>
