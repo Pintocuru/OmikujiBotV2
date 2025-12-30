@@ -3,7 +3,7 @@ import { SettingMode } from '@/common/FeatureAccess/SettingMode'
 
 // ゲームスクリプト
 export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza']
-export const GOD_SCRIPTS = ['GoogolClover']
+export const GOD_SCRIPTS = ['GoogolClover', 'HugEmAll']
 
 export function getAvailableScripts(mode: SettingMode, fallback: string[] = []) {
   switch (mode) {

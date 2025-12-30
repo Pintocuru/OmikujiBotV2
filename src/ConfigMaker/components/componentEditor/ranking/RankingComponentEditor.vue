@@ -100,16 +100,31 @@
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingList from '@/MainGenerator/components/GameRanking/GameRankingList.vue'
-  import { useEnabledGames } from '@/GameScripts/useEnabledGames'
   import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'
+  import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
+  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
 
   const omikujiStore = useOmikujiStore()
-  const { enabledGameScriptMap } = useEnabledGames()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv } = useSettingMode()
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   const ranking = computed(() => data.value.components.ranking)
+
+  // 利用可能なゲームスクリプトを取得
+  const enabledGameScriptMap = computed(() => {
+    const { gameScripts } = data.value.featureUsage
+
+    // 現在の状態からモードを判定
+    const mode = isGod.value ? 'godMode' : isPro.value ? 'pro' : 'basic'
+
+    // 分離した共通ロジックを使用
+    const enabled = getAvailableScripts(mode, gameScripts)
+
+    return Object.entries(gameScriptMap)
+      .filter(([scriptId]) => enabled.includes(scriptId))
+      .map(([, scriptPreset]) => scriptPreset)
+  })
 
   // 更新関数
   const updateRankingField = (field: keyof typeof ranking.value, value: any) => {
