@@ -7,7 +7,8 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, Charac
    * キャラクターが有効かどうかを判定
    * 条件: image.default に有効なパスが1つ以上含まれていること
    */
-  const isValidCharacter = (characterKey: string): boolean => {
+  const isValidCharacter = (characterKey: string | null): boolean => {
+    if (!characterKey) return false
     const character = charactersMap.value[characterKey]
     const defaultLayers = character?.image?.default
 
@@ -15,9 +16,9 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, Charac
     return Array.isArray(defaultLayers) && defaultLayers.some((path: string) => path && path.trim() !== '')
   }
 
-  const getAvailableEmotions = (characterKey: string): CharacterEmotionType[] => {
+  const getAvailableEmotions = (characterKey: string | null): CharacterEmotionType[] => {
     // キャラクターが無効なら空配列を返す
-    if (!isValidCharacter(characterKey)) return []
+    if (!characterKey || !isValidCharacter(characterKey)) return []
 
     const character = charactersMap.value[characterKey]
     if (!character?.image) return []
@@ -38,13 +39,15 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, Charac
   })
 
   //
-  const hasEmotion = (characterKey: string, iconKey: CharacterEmotionType): boolean => {
+  const hasEmotion = (characterKey: string | null, iconKey: CharacterEmotionType): boolean => {
+    if (!characterKey) return false
     const character = charactersMap.value[characterKey]
     const imagePath = character?.image?.[iconKey]
     return imagePath?.some((path: string) => path && path.trim() !== '') ?? false
   }
 
-  const iconSrc = (characterKey: string, iconKey: CharacterEmotionType) => {
+  const iconSrc = (characterKey: string | null, iconKey: CharacterEmotionType): string[] => {
+    if (!characterKey) return []
     return charactersMap.value[characterKey]?.image?.[iconKey]
   }
 

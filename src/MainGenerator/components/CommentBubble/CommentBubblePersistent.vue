@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/OmikujiBot/ViewBotCharacter.vue -->
+<!-- src\MainGenerator\components\CommentBubble\CommentBubblePersistent.vue -->
 <template>
   <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end">
     <div
@@ -20,7 +20,7 @@
         </div>
         <div class="flex justify-center items-end">
           <LayerImage
-            v-if="isCharacter && getCharacterImage(character)"
+            v-if="getCharacterImage(character)"
             :layers="getCharacterImage(character)"
             :size="bubble.characterSize"
           />
@@ -35,21 +35,19 @@
   import { storeToRefs } from 'pinia'
   import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useViewBotCharacter } from './composables/useViewBotCharacter'
+  import { useommentBubblePersistent } from './composables/useCommentBubblePersistent'
   import CommentDisplay from '@/MainGenerator/components/CommentBubble/CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
+  const { showCharacters } = useCharacterManager()
 
-  const showCharacters = computed(() => data.value.components.bubble.showCharacters)
   const characters = computed(() => data.value.characters)
   const bubble = computed(() => data.value.components.bubble)
   const conditions = computed(() => data.value.components.conditions || [])
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
-
-  const { isCharacter } = useVisibilityAccess()
 
   const {
     lastCommenterKey,
@@ -59,7 +57,7 @@
     enterMotion,
     start,
     stop,
-  } = useViewBotCharacter()
+  } = useommentBubblePersistent()
 
   const getStyle = (key: string) => {
     const isActive = key === lastCommenterKey.value
@@ -69,7 +67,7 @@
     }
   }
 
-  const resolveGroupCharacter = (group: string[], lastCommenterKey?: string): string | undefined => {
+  const resolveGroupCharacter = (group: string[], lastCommenterKey: string | null): string | undefined => {
     if (!group.length) return
 
     // 最新コメントがこのグループ内ならそれを優先
@@ -82,9 +80,9 @@
   }
 
   // slot1〜slot4のキャラを順に並べる
+  // TODO: これは useMessageFilter と被っていないか？
   const charactersToShow = computed<CharacterType[]>(() => {
     const sc = showCharacters.value
-    if (!sc) return []
 
     const lastKey = lastCommenterKey.value
     const result: CharacterType[] = []

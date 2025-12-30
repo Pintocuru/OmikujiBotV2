@@ -1,25 +1,10 @@
-// src\MainGenerator\components\CommentBubble\composables\useMessageFilterCore.ts
-import { computed, ref, watch, type Ref } from 'vue'
+// src\common\CharacterManager\useMessageFilter.ts
+import { computed, type Ref } from 'vue'
 import type { BotMessage } from '@/types/'
 import type { ShowCharacters } from '@/types/' // ShowCharactersの型をインポート
 
-export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharacters: Ref<ShowCharacters>) => {
-  const lastCommenterKey = ref<string | null>(null)
-
-  watch(
-    () => botMessages.value.length,
-    () => {
-      const list = botMessages.value
-      if (list.length === 0) return
-
-      const latest = list[list.length - 1]
-      if (latest?.characterKey) {
-        lastCommenterKey.value = latest.characterKey
-      }
-    },
-    { immediate: true }
-  )
-
+export const useMessageFilter = (botMessages: Ref<BotMessage[]>, showCharacters: Ref<ShowCharacters>) => {
+  // 0番地のコメント取得
   const zeroIndexMessages = computed(() => {
     const allowKeys = showCharacters.value.center ?? []
 
@@ -33,9 +18,11 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
     })
   })
 
+  // ???
   const getMessagesForCharacter = (characterKey: string) =>
     botMessages.value.filter((m) => m.characterKey === characterKey)
 
+  // ???
   const selectCharacterFromGroup = (group: string[]) => {
     if (!group?.length) return null
     for (let i = group.length - 1; i >= 0; i--) {
@@ -44,6 +31,7 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
     return group[0]
   }
 
+  // ???
   const visibleCharacterGroups = computed(() => {
     const slots = [
       showCharacters.value.slot1,
@@ -66,13 +54,9 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
       .filter(Boolean) as { groupIndex: number; characterKey: string; hasComments: boolean }[]
   })
 
-  const isLastCommenter = (characterKey: string) => lastCommenterKey.value === characterKey
-
   return {
     zeroIndexMessages,
     visibleCharacterGroups,
     getMessagesForCharacter,
-    isLastCommenter,
-    lastCommenterKey,
   }
 }

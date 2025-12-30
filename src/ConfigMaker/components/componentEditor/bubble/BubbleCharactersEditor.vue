@@ -104,7 +104,7 @@
 <script setup lang="ts">
   import { ref, computed, watch, onMounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import type { ShowCharacters } from '@/types/'
+  import { ShowCharactersSchema, type ShowCharacters } from '@/types/'
   import CharacterSlot from './CharacterSlot.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -119,14 +119,9 @@
   const characters = computed(() => data.value.characters)
   const availableCharacters = computed(() => Object.keys(characters.value))
 
-  const editableGroups = ref<ShowCharacters>({
-    center: [],
-    slot1: [],
-    slot2: [],
-    slot3: [],
-    slot4: [],
-  })
+  const editableGroups = ref<ShowCharacters>(ShowCharactersSchema.parse({}))
 
+  // グループの初期化
   const initializeGroups = () => {
     const current = bubble.value.showCharacters
     const allUsedChars = new Set([
@@ -162,11 +157,13 @@
     })
   }
 
+  // スロットを更新
   const updateSlot = (slotName: keyof ShowCharacters, newItems: string[]) => {
     editableGroups.value[slotName] = newItems
     updateStore()
   }
 
+  // スロットをクリア
   const clearSlot = (slotName: keyof ShowCharacters) => {
     if (slotName === 'center') return
 
@@ -177,20 +174,20 @@
     updateStore()
   }
 
+  // スロットを増やす
   const increaseSlots = () => {
     if (visibleSlots.value < 4) {
       visibleSlots.value++
     }
   }
 
+  // スロットを減らす
   const decreaseSlots = () => {
     if (visibleSlots.value > 1) {
       const slotNames: Array<keyof ShowCharacters> = ['slot4', 'slot3', 'slot2']
       const slotToRemove = slotNames[4 - visibleSlots.value]
 
-      if (slotToRemove) {
-        clearSlot(slotToRemove)
-      }
+      if (slotToRemove) clearSlot(slotToRemove)
 
       visibleSlots.value--
     }

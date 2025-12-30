@@ -63,8 +63,8 @@
       const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
 
       const postAction: BotMessage = BotMessageSchema.parse({
-        name: character.name,
-        characterKey: character.key,
+        name: isCharacter ? character.name : '',
+        characterKey: isCharacter ? character.key : null,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
         color: isCharacter ? character?.color : !isRightClick ? defaultBubbleColor.value : defaultToastColor.value,
         message: {

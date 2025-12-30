@@ -2,7 +2,7 @@
 <template>
   <div class="relative h-screen">
     <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
-    <div class="absolute w-full" :style="{ bottom: '440px' }">
+    <div class="absolute top-0 left-0 right-0 flex justify-center">
       <CommentDisplay
         :displayed-comments="displayedComments"
         :remove-comment="removeComment"
@@ -13,9 +13,9 @@
       >
         <template #default="{ message, index }">
           <!-- キャラクター（最新コメント時のみ表示） -->
-          <div class="absolute top-[180px] left-1/2 -translate-x-1/2 transform">
+          <div class="absolute top-[180px] left-0 right-0 flex justify-center">
             <CharacterLayerImage
-              v-if="index === 0 && isCharacter && isValidCharacter(message.characterKey)"
+              v-if="index === 0 && isValidCharacter(message.characterKey)"
               :layers="iconSrc(message.characterKey, message.iconKey)"
               :size="bubble.characterSize"
               :color="message.color"
@@ -29,17 +29,17 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
+  import { storeToRefs } from 'pinia'
   import CommentDisplay from './CommentDisplay.vue'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import { useBotDisplay } from './composables/useBotDisplay'
-  import { useMessageFilter } from './composables/useMessageFilter'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useMessageFilter } from '@/common/CharacterManager/useMessageFilter'
 
   const appStore = useAppStore()
-  const { iconSrc, isValidCharacter } = useCharacterManager()
-  const { isCharacter } = useVisibilityAccess()
+  const { botMessages } = storeToRefs(appStore)
+  const { iconSrc, isValidCharacter, showCharacters } = useCharacterManager()
 
   // 設定の取得
   const bubble = computed(() => appStore.data.components.bubble || {})
@@ -49,7 +49,7 @@
   const showToastFallback = computed(() => !conditions.value.includes('toast'))
 
   // 新しいフィルタリングロジックを使用
-  const { zeroIndexMessages } = useMessageFilter()
+  const { zeroIndexMessages } = useMessageFilter(botMessages, showCharacters)
 
   // 既存のuseBotDisplayはそのまま使用
   const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages, 'comment')

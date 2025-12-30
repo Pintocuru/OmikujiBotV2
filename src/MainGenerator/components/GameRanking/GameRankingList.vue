@@ -1,21 +1,21 @@
 <!-- src/MainGenerator/components/GameRankingViewer/GameRankingList.vue -->
 <template>
-  <div v-if="settings" :data-theme="settings.color" class="card p-2 shadow-xl">
+  <div v-if="settings" :data-theme="settings.color" class="card shadow-xl">
     <div class="card-body p-2">
-      <h2 class="card-title text-3xl font-bold text-center w-full justify-center">
+      <h2 class="card-title text-xl font-bold text-center w-full justify-center">
         {{ settings.title }}
       </h2>
 
-      <div class="space-y-2">
+      <div class="space-y-1">
         <div
           v-for="(msg, index) in displayMessages"
           :key="`${msg.id}-${index}`"
-          class="flex items-center gap-2 p-2 rounded-lg transition-all hover:bg-base-200"
+          class="flex items-center gap-1 p-1 rounded-lg transition-all hover:bg-base-200"
           :class="getRankClass(index)"
         >
           <!-- スコア順のときだけ順位バッジを表示 -->
           <div v-if="settings.sortOrder === 'high' || settings.sortOrder === 'low'" class="flex-shrink-0">
-            <div class="badge badge-xl font-bold" :class="getRankBadgeClass(index)">
+            <div class="badge ml-1 p-2 font-bold" :class="getRankBadgeClass(index)">
               {{ index + 1 }}
             </div>
           </div>
@@ -23,22 +23,23 @@
           <!-- 名前 -->
           <div class="flex-grow min-w-0 items-center flex flex-nowrap">
             <!-- アイコン -->
-            <div v-if="msg.message.user?.profileImage" class="avatar mr-2">
-              <div class="w-10 rounded-full">
+            <div v-if="msg.message.user?.profileImage" class="avatar mr-1">
+              <div class="w-7 rounded-full">
                 <img :src="msg.message.user?.profileImage" alt="" />
               </div>
             </div>
             <!-- アイコン(ないとき) -->
-            <div v-else class="avatar placeholder mr-2">
-              <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center">
+            <div v-else class="avatar placeholder mr-1">
+              <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
                 {{ (msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'A').charAt(0) }}
               </div>
             </div>
 
-            <!-- スコア -->
-            <span class="text-xl font-semibold truncate">
+            <!-- 名前 -->
+            <span class="text-lg font-bold truncate">
               {{ msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'Anonymous' }}
             </span>
+            <!-- symbol -->
             <span
               v-if="msg.message?.ranking?.symbol !== ''"
               class="text-base text-base-content/60 font-semibold truncate ml-2"
@@ -47,8 +48,9 @@
             </span>
           </div>
 
+          <!--スコア -->
           <div class="flex-shrink-0">
-            <div class="badge badge-xl badge-primary font-bold">
+            <div class="badge badge-lg p-2 badge-primary font-bold">
               {{ msg.message?.ranking?.scoreText || 0 }}
             </div>
           </div>

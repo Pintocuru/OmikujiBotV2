@@ -1,15 +1,15 @@
-<!-- templates\OmikujiBot\src\MainGenerator\components\OmikujiBot\OmikujiBot.vue -->
+<!-- src\MainGenerator\components\CommentBubble\CommentBubble.vue -->
 <template>
   <div class="relative">
     <!-- BOTメッセージ表示(0番地) -->
-    <ViewBotMessage />
+    <CommentBubbleZero />
 
     <!-- 常時表示キャラクター(1番地以降) -->
-    <ViewBotCharacter />
+    <CommentBubblePersistent />
   </div>
 </template>
 
 <script setup lang="ts">
-  import ViewBotMessage from './ViewBotMessage.vue'
-  import ViewBotCharacter from './ViewBotCharacter.vue'
+  import CommentBubbleZero from './CommentBubbleZero.vue'
+  import CommentBubblePersistent from './CommentBubblePersistent.vue'
 </script>

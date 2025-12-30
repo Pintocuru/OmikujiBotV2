@@ -1,18 +1,18 @@
-// src/MainGenerator/components/OmikujiBot/composables/useViewBotCharacter.ts
+// src/MainGenerator/components/OmikujiBot/composables/useommentBubblePersistent.ts
 import { computed, ref, watch } from 'vue'
 import type { CharacterType, CharacterEmotionType } from '@/types/'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { useBotDisplay } from './useBotDisplay'
 import { storeToRefs } from 'pinia'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 
-export function useViewBotCharacter() {
+export function useommentBubblePersistent() {
   // Piniaストアの使用
   const appStore = useAppStore()
-  const { characterArray } = useCharacterManager()
-
-  // リアクティブ変数
   const { botMessages } = storeToRefs(appStore)
+  const { characterArray } = useCharacterManager()
+  const { isCharacter } = useVisibilityAccess()
 
   // キャラクターごとの現在のアイコン状態を管理
   const characterIconStates = ref<Record<string, CharacterEmotionType>>({})
@@ -25,20 +25,13 @@ export function useViewBotCharacter() {
   const enterMotion = computed(() => base.value.bubbleMotionEnter)
 
   // 指定されたキャラクターの感情に応じた画像を取得
-  // TODO:「キャラクター画像が1枚もない」という値はここ
   const getCharacterImage = (character: CharacterType): string[] => {
-    const imageSet = character.image
-    if (!imageSet) return []
-    // 現在のアイコン状態を確認
-    const currentIconKey = characterIconStates.value[character.key] || 'default'
+    // キャラクター非表示なら空
+    if (!isCharacter.value) return []
 
-    // 指定された感情の画像があるかチェック
-    const emotionImage = imageSet[currentIconKey]
-
-    if (emotionImage) return emotionImage
-
-    // 指定された感情の画像がない場合はdefaultを使用
-    return imageSet.default || null
+    // 指定されたエモーション > default > null
+    const currentIconKey = characterIconStates.value[character.key]
+    return character.image[currentIconKey] || character.image.default || []
   }
 
   // 指定されたキャラクターのコメントを取得

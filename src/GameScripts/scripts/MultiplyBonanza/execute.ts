@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\GameScripts\scripts\MultiplyBonanza\execute.ts
+// src\GameScripts\scripts\MultiplyBonanza\execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GameEngine } from './game'

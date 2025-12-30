@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\GameScripts\scripts\GouseiSuika\execute.ts
+// src\GameScripts\scripts\GouseiSuika\execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GachaGame } from './game'

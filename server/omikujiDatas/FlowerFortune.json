@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-alpha5",
-    "dataVersion": 2.00005,
+    "generatorVersion": "v2.0.0-beta1",
+    "dataVersion": 2.0001,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -1007,9 +1007,17 @@
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "experimental"
@@ -1018,6 +1026,6 @@
   "settings": {
     "commentType": "OneComme",
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "daisyUiTheme": "halloween"
+    "daisyUiTheme": "pastel"
   }
 }

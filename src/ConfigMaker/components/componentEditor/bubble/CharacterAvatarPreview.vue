@@ -44,7 +44,7 @@
   import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useMessageFilterCore } from '@/common/CharacterManager/useMessageFilterCore'
+  import { useMessageFilter } from '@/common/CharacterManager/useMessageFilter'
   import { ShowCharacters } from '@/types'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
@@ -58,7 +58,7 @@
 
   const botMessages = ref<BotMessage[]>([])
 
-  const { visibleCharacterGroups } = useMessageFilterCore(
+  const { visibleCharacterGroups } = useMessageFilter(
     botMessages,
     computed(() => props.showCharacters)
   )
