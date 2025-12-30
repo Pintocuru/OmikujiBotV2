@@ -27,6 +27,8 @@ export const useMessageFilterCore = (botMessages: Ref<BotMessage[]>, showCharact
     if (allowKeys.length === 0) return []
 
     return botMessages.value.filter((message) => {
+      // null の場合はキャラクター非表示モードなのでそのまま表示させる
+      if (message.characterKey === null) return true
       return allowKeys.includes(message.characterKey)
     })
   })

@@ -1,19 +1,21 @@
 // src\common\FeatureAccess\useAccessChecker.ts
 import { computed, type Ref } from 'vue'
-import { AccessLevelType } from '@shared/types'
-import { useSettingModeFromHash } from './SettingMode'
 import { OmikujiDataType } from '@/types'
+import { useSettingModeFromHash } from './SettingMode'
+import { AccessLevelType } from '@shared/types'
 
 /**
  * アクセスレベルをチェックする関数
  */
+export function hasAccessPure(level: AccessLevelType, isPro: boolean, isGod: boolean): boolean {
+  if (level === 'experimental') return false
+  if (level === 'internal') return isGod
+  if (level === 'pro') return isPro
+  return true
+}
+
 export function useAccessCheckerCore(isPro: Ref<boolean>, isGod: Ref<boolean>) {
-  const hasAccess = (level: AccessLevelType) => {
-    if (level === 'experimental') return false
-    if (level === 'internal') return isGod.value
-    if (level === 'pro') return isPro.value
-    return true
-  }
+  const hasAccess = (level: AccessLevelType) => hasAccessPure(level, isPro.value, isGod.value)
   return { hasAccess }
 }
 

@@ -11,7 +11,7 @@ export const BotMessageSchema = z.object({
 
   name: z.string().default('error'), // 名前
   message: PostActionMessageBodySchema, // コメント
-  characterKey: z.string().default('default'), // キャラクターキー
+  characterKey: z.string().nullable().default(null), // キャラクターキー
   iconKey: CharacterEmotionSchema.default('default'), // アイコンキー(必要かどうかはわからん…)
   displaySeconds: z.number().min(0).max(60).optional(), // 表示時間（秒）0-60秒の範囲
   sound: z.string().default(''), // サウンド

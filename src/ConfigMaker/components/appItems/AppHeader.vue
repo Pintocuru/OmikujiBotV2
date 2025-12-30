@@ -5,7 +5,7 @@
     :class="isGod ? ['text-warning'] : isPro ? ['text-success'] : isAdv ? ['text-info'] : ['text-primary']"
   >
     <div class="flex items-center gap-2">
-      おみくじBot コンフィグエディター
+      おみくじBOT コンフィグエディター
       <LicenseBadge
         advTip="カラー変更など、一部有料版を使えます"
         proTip="テンプレートが扱える、有料版です!"

@@ -2,14 +2,14 @@
 import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterType, DisplayOptionType } from '@/types/OmikujiData/CharacterSchema'
-import { DefaultCharacterManager } from './BotMessageDefaultCharacter'
-import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 import { playSoundDelay, playRpgVoiceLoop } from '@/common/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { useCharacterManager } from '../CharacterManager/useCharacterManager'
+import { resolveSettingMode, SettingMode } from '@/common/FeatureAccess/SettingMode'
+import { OmikujiDataType } from '@/types'
+import { AccessLevelType } from '@shared/types'
 
 export class BotMessageGenerator {
-  constructor(private readonly characters: Record<string, CharacterType>) {}
+  constructor(private readonly omikujiData: OmikujiDataType) {}
 
   /**
    * 複数のPostActionからBotMessageの配列を生成
@@ -47,7 +47,6 @@ export class BotMessageGenerator {
    */
   private generateMessageAction(postAction: PostActionMessageType): BotMessage[] {
     const character = this.getSafeCharacter(postAction.characterKey)
-    console.log(postAction)
     const baseDelaySeconds = this.calculateBaseDelay(postAction)
 
     const messages: BotMessage[] = []
@@ -88,23 +87,22 @@ export class BotMessageGenerator {
    */
   private createBotMessage(
     postAction: PostActionMessageType,
-    character: CharacterType,
+    character: CharacterType | null,
     delaySeconds: number,
     messageType: 'bubble' | 'toast'
   ): BotMessage {
-    const { isCharacter } = useVisibilityAccess()
-    const { defaultBubbleColor, defaultToastColor } = useCharacterManager()
+    const isCharacter = character ? checkIsCharacter(this.omikujiData) : false
+
+    const defaultBubbleColor = this.omikujiData.components.bubble.defaultColor
+    const defaultToastColor = this.omikujiData.components.toast.defaultColor
+
     return BotMessageSchema.parse({
-      name: character.displayName,
-      characterKey: isCharacter.value ? postAction.characterKey : undefined, // defaultを入れる
+      name: isCharacter ? character?.displayName : '',
+      characterKey: isCharacter ? postAction.characterKey : null,
       iconKey: postAction.iconKey,
       delaySeconds,
       sound: postAction.sound,
-      color: isCharacter.value
-        ? character.color
-        : messageType === 'bubble'
-          ? defaultBubbleColor.value
-          : defaultToastColor.value,
+      color: isCharacter ? character?.color : messageType === 'bubble' ? defaultBubbleColor : defaultToastColor,
 
       message:
         messageType === 'bubble'
@@ -130,15 +128,42 @@ export class BotMessageGenerator {
   /**
    * キャラクターを安全に取得(エラー時はデフォルトを返す)
    */
-  private getSafeCharacter(characterKey: string): CharacterType {
+  private getSafeCharacter(characterKey: string): CharacterType | null {
     try {
-      return DefaultCharacterManager.getCharacterOrDefault(characterKey, this.characters)
+      const charactersArray = Object.values(this.omikujiData.characters)
+
+      if (charactersArray.length > 0) {
+        const foundCharacter = charactersArray.find((char) => char.key === characterKey)
+        if (foundCharacter) return foundCharacter
+      }
+      // 見つからない場合はnull
+      return null
     } catch (error) {
       console.warn('Character resolution failed, using default character:', {
         characterKey,
         error: error instanceof Error ? error.message : error,
       })
-      return DefaultCharacterManager.getDefaultCharacterByIndex(0)
+      return null
     }
   }
+}
+
+/**
+ * IsCharacter
+ * TODO:他でも使うようなら、個別に切り分ける
+ */
+export function checkIsCharacter(omikujiData: OmikujiDataType): boolean {
+  const usageCharacters = omikujiData.featureUsage.usage.characters
+  const hasCharacters = Object.keys(omikujiData.characters).length > 0
+  const licenseKeyHash = omikujiData.settings.licenseKeyHash
+  const mode = resolveSettingMode(licenseKeyHash)
+
+  return hasAccessPureByMode(usageCharacters, mode) && hasCharacters
+}
+
+export function hasAccessPureByMode(level: AccessLevelType, mode: SettingMode): boolean {
+  if (level === 'experimental') return false
+  if (level === 'internal') return mode === 'godMode'
+  if (level === 'pro') return mode === 'pro' || mode === 'godMode'
+  return true
 }

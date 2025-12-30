@@ -3,7 +3,7 @@ import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
 import execute from './execute'
 
 const pluginConfig = {
-  name: 'steal-em-all',
+  name: 'HugEmAll',
   version: '0.0.1',
   displayName: 'ダンジョンスロット',
   description: 'Nolimit City - Kill Em All/大都技研 盗忍！剛衛門 風のおみくじ',

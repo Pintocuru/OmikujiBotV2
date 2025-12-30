@@ -338,6 +338,108 @@
         "isRepeatAllowed": 0,
         "repeatMessage": null
       }
+    },
+    "HugEmAll": {
+      "id": "mjs5xe2grraoi",
+      "key": "HugEmAll",
+      "name": "桜吹雪スロット(コピー)",
+      "description": "吹雪け、大量のコイン！最大枚数10000枚!",
+      "createdAt": "2025-12-30T05:44:28.050Z",
+      "updatedAt": "2025-12-30T07:09:55.738Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
+          "name": "桜吹雪スロット",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "HugEmAll",
+            "queryString": "",
+            "characterKey": "omiken"
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767072648208",
+          "key": "1767072648208",
+          "name": "回数超過",
+          "createdAt": "2025-12-30T05:30:48.208Z",
+          "updatedAt": "2025-12-30T05:30:48.208Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "sound": "warn",
+              "message": {
+                "bubble": "",
+                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 11
+            },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "syoken": [],
+        "access": [],
+        "gift": [],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "lc",
+          "value": 1
+        },
+        "comment": [
+          "^ダンジョン",
+          "^だんじょん",
+          "^洞窟",
+          "^dungeon",
+          ""
+        ],
+        "userName": []
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      }
     }
   },
   "timers": {},
@@ -515,10 +617,10 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "experimental",
+      "timers": "pro",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "pro"
     },
     "components": [
       "bubble",
@@ -532,7 +634,7 @@
       "DwarfBomb",
       "MultiplyBonanza",
       "GoogolClover",
-      "multiply-bonanza"
+      "HugEmAll"
     ],
     "developer": {
       "licenseVisible": "experimental",
@@ -541,7 +643,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "",
     "daisyUiTheme": "luxury"
   }
 }

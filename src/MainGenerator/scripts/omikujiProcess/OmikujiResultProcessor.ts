@@ -28,7 +28,7 @@ export class OmikujiResultProcessor {
     // 依存関係の初期化
     this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
     this.actionSets = omikujiData.actionSets
-    this.botMessageGenerator = new BotMessageGenerator(omikujiData.characters)
+    this.botMessageGenerator = new BotMessageGenerator(omikujiData)
     this.postMessage = new PostMessage(omikujiData.characters)
   }
 
