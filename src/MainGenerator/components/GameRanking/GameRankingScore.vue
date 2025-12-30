@@ -5,7 +5,7 @@
       <div class="bubble-float">
         <!-- 円マスク -->
         <div
-          class="relative w-[280px] h-[280px] rounded-full overflow-hidden flex items-center justify-center shadow-2xl"
+          class="relative w-[200px] h-[200px] rounded-full overflow-hidden flex items-center justify-center shadow-2xl"
         >
           <!-- シャボン玉背景 -->
           <div
