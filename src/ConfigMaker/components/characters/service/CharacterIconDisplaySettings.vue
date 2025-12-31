@@ -17,9 +17,9 @@
     </select>
   </SettingItem>
 
-  <div v-if="currentDisplayOption.mode === 'comment'">
+  <template v-if="currentDisplayOption.mode === 'comment'">
     <!-- 補足説明 -->
-    <InformationCard class="mb-4">
+    <InformationCard>
       キャラクター専用の枠を作成すると、各キャラクターごとに
       <code class="label bg-accent text-accent-content">「読み上げ」設定</code>を個別に行うことができます。<br />
       詳しくは
@@ -33,7 +33,7 @@
       </a>
       をお読みください。
     </InformationCard>
-  </div>
+  </template>
 
   <!-- わんコメの枠を指定 -->
   <SettingItem

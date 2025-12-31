@@ -5,6 +5,12 @@ import { createCharacterEmotions } from '@/common/CharacterManager/createCharact
 
 export const useCharacterManager = () => {
   const omikujiStore = useOmikujiStore()
+
+  // Record型キャラクターデータ
   const charactersMap = computed(() => omikujiStore.data.characters)
-  return { charactersMap, ...createCharacterEmotions(charactersMap) }
+
+  return {
+    ...createCharacterEmotions(charactersMap),
+    charactersMap,
+  }
 }

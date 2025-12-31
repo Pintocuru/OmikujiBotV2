@@ -1,14 +1,14 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useCharacterStats.ts
 import { computed, ComputedRef } from 'vue'
 import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { useCharacterData } from './useCharacterData'
+import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 import { usePostActionCharacters } from './usePostActionCharacters'
 
 /**
  * キャラクター使用状況の統計情報を提供
  */
 export function useCharacterStats(allPostActions: ComputedRef<PostActionType[]>) {
-  const { isValidCharacter } = useCharacterData()
+  const { isValidCharacter } = useCharacterManager()
   const { extractCharacterKeys, countCharacterUsage } = usePostActionCharacters()
 
   /**

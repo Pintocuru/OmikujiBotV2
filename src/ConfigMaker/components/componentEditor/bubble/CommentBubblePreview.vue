@@ -1,16 +1,16 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\CommentBubblePreview.vue -->
 <template>
-  <div class="space-y-4">
+  <div class="flex flex-col items-center space-y-2">
     <!-- 横幅調整スライダー -->
-    <div v-if="isSlider" class="flex items-center gap-4 p-3 bg-base-200 rounded-lg">
-      <label class="text-sm font-medium min-w-0 flex-shrink-0">横幅:</label>
+    <div v-if="isSlider" class="flex items-center gap-4 p-2 bg-base-200 rounded-lg">
+      <label class="text-sm font-medium">横幅:</label>
       <input type="range" :min="minWidth" :max="maxWidth" v-model="currentWidth" class="range range-primary flex-1" />
-      <span class="text-sm font-mono min-w-0 flex-shrink-0">{{ currentWidth }}px</span>
+      <span class="text-sm">{{ currentWidth }}px</span>
     </div>
 
     <!-- プレビュー表示エリア（横幅制限付き） -->
     <div
-      class="cursor-pointer border-2 border-dashed border-base-300 rounded-lg p-4"
+      class="relative flex flex-col items-center cursor-pointer"
       :class="fontClass"
       :style="{ width: currentWidth + 'px' }"
       @click="reloadAnimation"
@@ -33,6 +33,7 @@
         />
       </MotionWrapper>
 
+      <!-- 再表示ボタン mt-6はフキダシのカギ用 -->
       <div class="flex justify-center mt-6">
         <button class="btn btn-ghost btn-sm" @click.stop="reloadAnimation">
           再表示 (右クリックで消失アニメーション)

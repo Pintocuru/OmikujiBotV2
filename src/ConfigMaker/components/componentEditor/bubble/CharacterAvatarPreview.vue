@@ -18,6 +18,7 @@
       </div>
     </PreviewSection>
 
+    <!-- 縦線 -->
     <div class="divider md:divider-horizontal my-0"></div>
 
     <!-- 常時表示キャラクター（1〜4番地） -->

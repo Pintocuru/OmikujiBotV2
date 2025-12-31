@@ -1,77 +1,75 @@
 <!-- src\ConfigMaker\components\componentEditor\ComponentEditor.vue -->
 <template>
-  <div class="space-y-4">
-    <!-- コンポーネント表示設定 -->
-    <SectionCard
-      icon="LayoutGrid"
-      :isOpen="true"
-      title="コンポーネント表示設定"
-      description="ジェネレーターで表示するコンポーネントの設定"
-    >
-      <ComponentConditionsEditor />
-    </SectionCard>
+  <!-- コンポーネント表示設定 -->
+  <SectionCard
+    icon="LayoutGrid"
+    :isOpen="true"
+    title="コンポーネント表示設定"
+    description="ジェネレーターで表示するコンポーネントの設定"
+  >
+    <ComponentConditionsEditor />
+  </SectionCard>
 
-    <!-- 各コンポーネント設定 -->
-    <!-- フキダシコンポーネント -->
-    <SectionCard
-      icon="MessageSquare"
-      v-if="conditions.includes('bubble')"
-      :isOpen="activeSection === 'bubbleComponent'"
-      @toggle="toggleSection('bubbleComponent')"
-      title="フキダシコンポーネント"
-      description="BOTが喋るフキダシの設定"
-    >
-      <BubbleComponentEditor />
-    </SectionCard>
+  <!-- 各コンポーネント設定 -->
+  <!-- フキダシコンポーネント -->
+  <SectionCard
+    icon="MessageSquare"
+    v-if="conditions.includes('bubble')"
+    :isOpen="activeSection === 'bubbleComponent'"
+    @toggle="toggleSection('bubbleComponent')"
+    title="フキダシコンポーネント"
+    description="BOTが喋るフキダシの設定"
+  >
+    <BubbleComponentEditor />
+  </SectionCard>
 
-    <!-- フキダシコンポーネント：キャラクター -->
-    <SectionCard
-      icon="UserSquare"
-      v-if="conditions.includes('bubble') && isCharacter"
-      :isOpen="activeSection === 'bubbleComponentcharacter'"
-      @toggle="toggleSection('bubbleComponentcharacter')"
-      title="フキダシコンポーネント(キャラクター)"
-      description="キャラクターの表示位置設定"
-    >
-      <BubbleComponentCharacterEditor />
-    </SectionCard>
+  <!-- フキダシコンポーネント：キャラクター -->
+  <SectionCard
+    icon="UserSquare"
+    v-if="conditions.includes('bubble') && isCharacter"
+    :isOpen="activeSection === 'bubbleComponentcharacter'"
+    @toggle="toggleSection('bubbleComponentcharacter')"
+    title="フキダシコンポーネント(キャラクター)"
+    description="キャラクターの表示位置設定"
+  >
+    <BubbleComponentCharacterEditor />
+  </SectionCard>
 
-    <!-- トースト・サムネイルコンポーネント -->
-    <SectionCard
-      icon="Bell"
-      v-if="conditions.includes('toast')"
-      :isOpen="activeSection === 'toastComponent'"
-      @toggle="toggleSection('toastComponent')"
-      title="トースト・サムネイルコンポーネント"
-      description="お知らせとして表示されるチャット表示"
-    >
-      <ToastComponentEditor />
-    </SectionCard>
+  <!-- トースト・サムネイルコンポーネント -->
+  <SectionCard
+    icon="Bell"
+    v-if="conditions.includes('toast')"
+    :isOpen="activeSection === 'toastComponent'"
+    @toggle="toggleSection('toastComponent')"
+    title="トースト・サムネイルコンポーネント"
+    description="お知らせとして表示されるチャット表示"
+  >
+    <ToastComponentEditor />
+  </SectionCard>
 
-    <!-- ランキングコンポーネント -->
-    <SectionCard
-      icon="Trophy"
-      v-if="conditions.includes('ranking')"
-      :isOpen="activeSection === 'rankingComponent'"
-      @toggle="toggleSection('rankingComponent')"
-      title="ランキングコンポーネント"
-      description="ゲームスクリプトで使う、ランキング表示"
-    >
-      <RankingComponentEditor />
-    </SectionCard>
+  <!-- ランキングコンポーネント -->
+  <SectionCard
+    icon="Trophy"
+    v-if="conditions.includes('ranking')"
+    :isOpen="activeSection === 'rankingComponent'"
+    @toggle="toggleSection('rankingComponent')"
+    title="ランキングコンポーネント"
+    description="ゲームスクリプトで使う、ランキング表示"
+  >
+    <RankingComponentEditor />
+  </SectionCard>
 
-    <!-- カウンターコンポーネント -->
-    <SectionCard
-      icon="Hash"
-      v-if="conditions.includes('counter')"
-      :isOpen="activeSection === 'counterComponent'"
-      @toggle="toggleSection('counterComponent')"
-      title="カウンターコンポーネント"
-      description="コメントが来るたびに数値が増えるカウンターの表示"
-    >
-      <CounterComponentEditor />
-    </SectionCard>
-  </div>
+  <!-- カウンターコンポーネント -->
+  <SectionCard
+    icon="Hash"
+    v-if="conditions.includes('counter')"
+    :isOpen="activeSection === 'counterComponent'"
+    @toggle="toggleSection('counterComponent')"
+    title="カウンターコンポーネント"
+    description="コメントが来るたびに数値が増えるカウンターの表示"
+  >
+    <CounterComponentEditor />
+  </SectionCard>
 </template>
 
 <script setup lang="ts">

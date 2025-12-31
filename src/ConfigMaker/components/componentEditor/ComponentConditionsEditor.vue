@@ -20,8 +20,8 @@
   </SettingItem>
 
   <!-- コンポーネント表示設定 -->
-  <InformationCard v-if="!conditions.length" class="mt-4">
-    <p class="text-xl">
+  <InformationCard v-if="!conditions.length">
+    <p class="text-base">
       あれっ、<span class="label bg-accent text-accent-content">条件がまだ設定されてない</span>みたいです。<br />
       そのままだとプレビューに何も出力されませんよ。<br />
       コメントは読んでくれますが、画面表示は空っぽです。<br />

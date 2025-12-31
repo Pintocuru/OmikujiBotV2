@@ -1,8 +1,24 @@
-// src\common\CharacterManager\createCharacterManager.ts
-import { Ref } from 'vue'
+// src/common/CharacterManager/createCharacterManager.ts
+import { Ref, computed } from 'vue'
 import { CharacterEmotionType, CharacterType, ShowCharactersSchema, characterEmotions } from '@/types/'
 
-export const createCharacterEmotions = (charactersMap: Ref<Record<string, CharacterType>>) => {
+export const createCharacterManager = (charactersMap: Ref<Record<string, CharacterType>>) => {
+  // ソート済みキャラクター配列
+  const charactersArray = computed(() => Object.values(charactersMap.value).sort((a, b) => a.order - b.order))
+
+  // orderが一番若いキャラクター
+  const firstCharacter = computed(() => {
+    const keys = Object.keys(charactersMap.value)
+    if (keys.length === 0) return undefined
+    return charactersMap.value[keys[0]]
+  })
+
+  // キャラクター名を取得
+  const getCharacterName = (characterKey: string): string => {
+    const character = charactersArray.value.find((char) => char.key === characterKey)
+    return character?.name || ''
+  }
+
   /**
    * キャラクターが有効かどうかを判定
    * 条件: image.default に有効なパスが1つ以上含まれていること
@@ -38,7 +54,6 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, Charac
     slot4: [],
   })
 
-  //
   const hasEmotion = (characterKey: string | null, iconKey: CharacterEmotionType): boolean => {
     if (!characterKey) return false
     const character = charactersMap.value[characterKey]
@@ -52,11 +67,25 @@ export const createCharacterEmotions = (charactersMap: Ref<Record<string, Charac
   }
 
   return {
-    defaultShowCharacters,
+    // 配列・基本データ
+    charactersArray,
+    firstCharacter,
 
+    // 名前取得
+    getCharacterName,
+
+    // 検証
     isValidCharacter,
+
+    // 感情関連
     getAvailableEmotions,
     hasEmotion,
     iconSrc,
+
+    // デフォルト値
+    defaultShowCharacters,
   }
 }
+
+// 後方互換性のためのエイリアス
+export const createCharacterEmotions = createCharacterManager

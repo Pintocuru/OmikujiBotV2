@@ -1,19 +1,18 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\BubbleComponentEditor.vue -->
 <template>
-  <div class="mx-auto">
-    <!-- プレビュー表示 -->
-    <CommentBubblePreview
-      :color="localColor"
-      :is-slider="true"
-      :custom-classes="localColor.customClasses"
-      :animated-text="bubble.bubbleTextAnimate"
-      :animated-text-speed="bubble.bubbleTextSpeed"
-      v-bind="bubble"
-    />
-  </div>
+  <!-- プレビュー表示 -->
+  <CommentBubblePreview
+    :color="localColor"
+    :is-slider="true"
+    :custom-classes="localColor.customClasses"
+    :animated-text="bubble.bubbleTextAnimate"
+    :animated-text-speed="bubble.bubbleTextSpeed"
+    v-bind="bubble"
+  />
 
   <!-- デフォルトカラー設定 -->
   <ColorModeSelector
+    v-if="!isCharacter"
     :model-value="bubble.defaultColor"
     @update:model-value="(value) => updateFieldValue('defaultColor', value)"
   />
@@ -61,7 +60,7 @@
     />
   </SettingItem>
 
-  <div v-if="bubble.bubbleTextAnimate" class="space-y-4">
+  <template v-if="bubble.bubbleTextAnimate">
     <!-- 文字送り速度 -->
     <SettingItem
       label="文字送り速度"
@@ -80,7 +79,7 @@
       />
       <div class="mt-2 text-sm">現在値: {{ bubble.bubbleTextSpeed }}ms</div>
     </SettingItem>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -94,6 +93,7 @@
   import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -132,13 +132,10 @@
 
   // ランダムカラー取得
   const localColor = computed(() => {
-    const characters = data.value.characters
-    const keys = Object.keys(characters)
+    const { firstCharacter } = useCharacterManager()
+    const { isCharacter } = useVisibilityAccess()
 
-    if (isCharacter.value && keys.length > 0) {
-      const randomKey = keys[Math.floor(Math.random() * keys.length)]
-      return characters[randomKey].color
-    }
+    if (isCharacter.value && firstCharacter.value) return firstCharacter.value.color
 
     return bubble.value.defaultColor
   })

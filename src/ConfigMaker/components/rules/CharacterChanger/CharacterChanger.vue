@@ -85,7 +85,7 @@
   import CharacterMappingEditor from './CharacterMappingEditor.vue'
   import MappingPreview from './MappingPreview.vue'
   import { TargetCategoryType, useDataExtractor } from './useDataExtractor'
-  import { useCharacterData } from './useCharacterData'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
   import { useCharacterStats } from './useCharacterStats'
   import { useModalState } from './useModalState'
   import { useCharacterUpdater } from './useCharacterUpdater'
@@ -107,7 +107,7 @@
   )
 
   // キャラクターデータ
-  const { charactersArray, getCharacterName } = useCharacterData()
+  const { charactersArray, getCharacterName } = useCharacterManager()
 
   // キャラクター統計
   const { uniqueCharacterKeys, characterUsageCount, invalidCharacterCount, hasInvalidCharacters } =

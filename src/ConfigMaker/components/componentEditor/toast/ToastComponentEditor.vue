@@ -1,8 +1,9 @@
 <!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
 <template>
+  <!-- サンプル表示 -->
   <div class="card p-2 bg-base-100 flex flex-col">
+    <!-- トーストサンプル -->
     <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
-      <!-- トーストサンプル表示 -->
       <ToastBubbleItem
         v-for="(message, i) in previewMessages"
         :key="i"
@@ -21,7 +22,7 @@
     >
       <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
       <CharacterThumbnailsPreview :charactersArray="characterArray" :hoverVisibility="true" />
-      <CharacterThumbnailsPreview :charactersArray="filteredCharacters" :hoverVisibility="false" />
+      <CharacterThumbnailsPreview :charactersArray="thumbnailCharacters" :hoverVisibility="false" />
     </div>
   </div>
 
@@ -48,35 +49,35 @@
     <span class="ml-2"> {{ toastSettings.showToastsOnRight ? '右' : '左' }}側に表示する </span>
   </SettingItem>
 
-  <SettingItem
-    v-if="isCharacter"
-    label="キャラクター表示"
-    description="トーストにキャラクターアイコンを表示するか"
-    :showReset="true"
-    @reset="resetMap.showToastsCharacter"
-  >
-    <input
-      type="checkbox"
-      class="toggle toggle-primary"
-      v-model="toastSettings.showToastsCharacter"
-      @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
-    />
-    <span class="ml-2">キャラクターを表示する</span>
-  </SettingItem>
+  <template v-if="isCharacter">
+    <SettingItem
+      label="キャラクター表示"
+      description="トーストにキャラクターアイコンを表示するか"
+      :showReset="true"
+      @reset="resetMap.showToastsCharacter"
+    >
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        v-model="toastSettings.showToastsCharacter"
+        @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
+      />
+      <span class="ml-2">キャラクターを表示する</span>
+    </SettingItem>
 
-  <SettingItem
-    v-if="isCharacter"
-    label="サムネイル表示キャラクター"
-    description="右下にサムネイルとして表示するキャラクターを選択します"
-    :showReset="true"
-    @reset="resetMap.showThumbnail"
-  >
-    <CharacterBadgeSelector
-      :characters="data.characters"
-      :selectedKeys="toastSettings.showThumbnail"
-      @update:selectedKeys="(keys) => updateField('showThumbnail', keys)"
-    />
-  </SettingItem>
+    <SettingItem
+      label="サムネイル表示キャラクター"
+      description="右下にサムネイルとして表示するキャラクターを選択します"
+      :showReset="true"
+      @reset="resetMap.showThumbnail"
+    >
+      <CharacterBadgeSelector
+        :characters="data.characters"
+        :selectedKeys="toastSettings.showThumbnail"
+        @update:selectedKeys="(keys) => updateField('showThumbnail', keys)"
+      />
+    </SettingItem>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -102,7 +103,7 @@
   const characterArray = computed(() => Object.values(data.value.characters))
 
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
-  const filteredCharacters = computed(() => {
+  const thumbnailCharacters = computed(() => {
     const selectedKeys = new Set(toastSettings.value.showThumbnail)
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
   })

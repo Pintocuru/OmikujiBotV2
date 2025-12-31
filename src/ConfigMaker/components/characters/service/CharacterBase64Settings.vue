@@ -1,19 +1,5 @@
 <!-- src\ConfigMaker\components\characters\CharacterBase64Settings.vue -->
 <template>
-  <!-- サイズ設定エリア(未使用) -->
-  <SettingItem
-    v-if="false"
-    label="画像サイズ"
-    description="リサイズ後の画像サイズを選択してください"
-    containerClass="form-control flex-row items-center gap-2 mt-2"
-  >
-    <select v-model="imageSize" class="select select-bordered select-primary">
-      <option value="16">16×16</option>
-      <option value="24">24×24</option>
-      <option value="32">32×32</option>
-    </select>
-  </SettingItem>
-
   <!-- Base64画像設定エリア -->
   <SettingItem
     label="わんコメ表示用画像"
@@ -84,8 +70,8 @@
     },
   })
 
-  // 画像サイズの設定（デフォルト16）
-  const imageSize = ref<number>(24)
+  // 画像サイズの設定 16 / 24 / 32
+  const imageSize = 24
 
   // ファイル入力の参照
   const fileInput = ref<HTMLInputElement>()
@@ -117,7 +103,7 @@
 
         if (!ctx) return
 
-        const size = imageSize.value
+        const size = imageSize
         canvas.width = size
         canvas.height = size
 

@@ -26,22 +26,14 @@
 
   const emit = defineEmits(['update:selectedKeys'])
 
-  const isSelected = (key: string) => {
-    return props.selectedKeys.includes(key)
-  }
+  const isSelected = (key: string) => props.selectedKeys.includes(key)
 
   const toggleSelection = (key: string) => {
     const currentSelection = [...props.selectedKeys]
     const index = currentSelection.indexOf(key)
 
-    if (index > -1) {
-      // 選択解除
-      currentSelection.splice(index, 1)
-    } else {
-      // 選択
-      currentSelection.push(key)
-    }
-
+    if (index > -1) currentSelection.splice(index, 1)
+    else currentSelection.push(key)
     emit('update:selectedKeys', currentSelection)
   }
 </script>

@@ -1,8 +1,15 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\CharacterSlot.vue -->
 <template>
-  <div :class="['card shadow-lg p-3 border', cardStyle || 'bg-base-200', showClear ? '' : 'shadow-inner']">
+  <div
+    :class="[
+      'card shadow-lg p-2',
+      cardStyle ? 'border-3 ' : '',
+      cardStyle || 'bg-base-200',
+      showClear ? '' : 'shadow-inner',
+    ]"
+  >
     <div class="flex justify-between items-center mb-2">
-      <h4 class="text-md font-semibold" :class="titleClass">{{ title }}</h4>
+      <h4 class="text-md font-semibold">{{ title }}</h4>
       <button v-if="showClear" class="btn btn-xs btn-error" @click="$emit('clear')">クリア</button>
     </div>
 
@@ -31,7 +38,6 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import draggable from 'vuedraggable'
 
   interface Props {
@@ -53,14 +59,4 @@
     update: [items: string[]]
     clear: []
   }>()
-
-  const titleClass = computed(() => {
-    const styleMap: Record<string, string> = {
-      'badge-primary': 'text-primary',
-      'badge-secondary': 'text-secondary',
-      'badge-accent': 'text-accent',
-      'badge-info': 'text-info',
-    }
-    return styleMap[props.badgeStyle] || 'text-secondary'
-  })
 </script>
