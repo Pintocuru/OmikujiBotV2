@@ -54,9 +54,13 @@ export class BotMessageGenerator {
     // bubble メッセージの生成
     if (postAction.message.bubble?.trim()) {
       messages.push(this.createBotMessage(postAction, character, baseDelaySeconds, 'bubble'))
-      // @ts-ignore character.displayOption が型崩れ
-      //TODO:v2.0.1でスキーマ書き直しする
-      this.handleRpgVoice(character.displayOption, postAction.message.bubble, baseDelaySeconds)
+
+      // 安全な呼び出しに書き換え（@ts-ignore を外す）
+      if (character && character.displayOption) {
+        this.handleRpgVoice(character.displayOption, postAction.message.bubble, baseDelaySeconds)
+      } else {
+        console.warn(`Character "${postAction.characterKey}" not found or has no displayOption.`)
+      }
     }
 
     // toast メッセージの生成

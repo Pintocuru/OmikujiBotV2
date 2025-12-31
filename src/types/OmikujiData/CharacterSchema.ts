@@ -119,6 +119,7 @@ export const CharacterSchema = z
 
     // 旧 displayOption（v1）
     displayOption: z.any(),
+    // displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
 
     color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
     image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({})),

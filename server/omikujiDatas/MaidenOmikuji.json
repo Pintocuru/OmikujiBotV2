@@ -28,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-31T08:32:50.320Z",
+      "updatedAt": "2025-12-31T09:52:14.079Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -103,7 +103,7 @@
               "iconKey": "happy",
               "sound": "twinkle",
               "message": {
-                "bubble": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
+                "bubble": "{{var text='吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji02>>",
                 "toast": ""
               }
             }
@@ -142,7 +142,7 @@
               "iconKey": "default",
               "sound": "congrats",
               "message": {
-                "bubble": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
+                "bubble": "{{var text='中吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji03>>",
                 "toast": ""
               }
             }
@@ -181,7 +181,7 @@
               "iconKey": "default",
               "sound": "jingle",
               "message": {
-                "bubble": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
+                "bubble": "{{var text='小吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji04>>",
                 "toast": ""
               }
             }
@@ -220,7 +220,7 @@
               "iconKey": "wink",
               "sound": "bounce",
               "message": {
-                "bubble": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
+                "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
                 "toast": ""
               }
             }
@@ -259,7 +259,7 @@
               "iconKey": "sad",
               "sound": "fail",
               "message": {
-                "bubble": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
+                "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
                 "toast": ""
               }
             }
@@ -298,7 +298,7 @@
               "iconKey": "default",
               "sound": "explosion",
               "message": {
-                "bubble": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
+                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
                 "toast": ""
               }
             }
@@ -310,12 +310,6 @@
         }
       ],
       "ruleType": "comments",
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      },
       "trigger": {
         "conditions": [
           "comment"
@@ -335,6 +329,12 @@
           "^御神籤"
         ],
         "userName": []
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -616,7 +616,8 @@
   "components": {
     "conditions": [
       "bubble",
-      "toast"
+      "toast",
+      "ranking"
     ],
     "bubble": {
       "showCharacters": {
@@ -631,7 +632,7 @@
       },
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
+        "daisyUiTheme": "light",
         "backFrom": "primary",
         "backTo": "secondary",
         "nameColor": "#212121",
@@ -647,7 +648,7 @@
     "toast": {
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
+        "daisyUiTheme": "light",
         "backFrom": "primary",
         "backTo": "secondary",
         "nameColor": "#212121",
@@ -662,10 +663,10 @@
       "targetScriptKeys": [
         "basicList"
       ],
-      "title": "🍉スイカランキング🍉",
+      "title": "🥠おみくじ履歴⛩️",
       "limit": 5,
       "sortOrder": "new",
-      "color": "lofi"
+      "color": "corporate"
     },
     "counter": {
       "ruleKey": null,
@@ -688,21 +689,13 @@
       "timers": "pro",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "pro"
     },
     "components": [
-      "bubble",
       "toast",
       "ranking"
     ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "experimental"
@@ -710,7 +703,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
     "daisyUiTheme": "light"
   }
 }
