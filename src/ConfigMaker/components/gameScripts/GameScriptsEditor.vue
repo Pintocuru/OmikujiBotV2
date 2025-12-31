@@ -1,90 +1,103 @@
 <!-- src\ConfigMaker\components\gameScripts\GameScriptsEditor.vue -->
 <template>
-  <div v-if="hasAvailableScripts" class="">
-    <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
-    <div class="grid grid-cols-3 gap-4 p-4">
-      <!-- 左側: プレビューエリア -->
-      <div v-if="isEnabled" class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
-        <GameScriptPreview v-if="gameScripts" :gameScripts="gameScripts" />
-      </div>
+  <template v-if="hasAvailableScripts">
+    <!-- ゲームスクリプト有効化トグル -->
+    <SettingItem
+      label="ゲームスクリプト設定"
+      description="複雑なスクリプトを稼働する"
+      :variant="isEnabled ? 'secondary' : undefined"
+    >
+      <label class="label cursor-pointer gap-2">
+        <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
+        <span class="label-text">有効化</span>
+      </label>
+    </SettingItem>
 
-      <!-- 右側: 設定エリア -->
-      <div class="space-y-4" :class="isEnabled ? 'col-span-2' : 'col-span-3'">
-        <!-- GODMODE の特別表示 -->
-        <InformationCard v-if="isGodModeActive">
-          <p>
-            このおみくじアイテムは、何らかの
-            <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
-          </p>
-        </InformationCard>
+    <div v-if="isEnabled" class="card p-4 space-y-2 bg-base-200 rounded-lg shadow-lg">
+      <SubSectionHeader
+        icon="Gamepad2"
+        variant="primary"
+        title="ゲームスクリプト"
+        description="複雑な処理を行うスクリプト設定"
+      />
 
-        <!-- 通常の設定 -->
-        <template v-else>
-          <!-- ゲームスクリプト有効化トグル -->
-          <SettingItem label="ゲームスクリプト設定" description="複雑なスクリプトを稼働する">
-            <label class="label cursor-pointer gap-2">
-              <input type="checkbox" :checked="isEnabled" @change="toggleEnabled" class="toggle toggle-primary" />
-              <span class="label-text">有効化</span>
-            </label>
-          </SettingItem>
+      <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
+      <div class="grid grid-cols-3 gap-4 p-4">
+        <!-- 左側: プレビューエリア -->
+        <div v-if="isEnabled" class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
+          <GameScriptPreview v-if="gameScripts" :gameScripts="gameScripts" />
+        </div>
 
-          <!-- 有効時の詳細設定 -->
-          <template v-if="isEnabled">
-            <!-- Script ID -->
-            <SettingItem
-              label="スクリプトID"
-              description="実行するスクリプトを選択"
-              :variant="isScriptIdEmpty ? 'warning' : undefined"
-              :showWarning="isScriptIdEmpty"
-            >
-              <select
-                :value="gameScripts?.scriptId || ''"
-                @change="updateScriptId(($event.target as HTMLSelectElement).value)"
-                class="select select-bordered select-sm w-full"
+        <!-- 右側: 設定エリア -->
+        <div class="space-y-4" :class="isEnabled ? 'col-span-2' : 'col-span-3'">
+          <!-- GODMODE の特別表示 -->
+          <InformationCard v-if="isGodModeActive">
+            <p>
+              このおみくじアイテムは、何らかの
+              <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
+            </p>
+          </InformationCard>
+
+          <!-- 通常の設定 -->
+          <template v-else>
+            <!-- 有効時の詳細設定 -->
+            <template v-if="isEnabled">
+              <!-- Script ID -->
+              <SettingItem
+                label="スクリプトID"
+                description="実行するスクリプトを選択"
+                :variant="isScriptIdEmpty ? 'warning' : undefined"
+                :showWarning="isScriptIdEmpty"
               >
-                <option value="">-- スクリプトを選択 --</option>
-                <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
-                  {{ getScriptName(scriptKey) }}
-                </option>
-                <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
-              </select>
-            </SettingItem>
+                <select
+                  :value="gameScripts?.scriptId || ''"
+                  @change="updateScriptId(($event.target as HTMLSelectElement).value)"
+                  class="select select-bordered select-sm w-full"
+                >
+                  <option value="">-- スクリプトを選択 --</option>
+                  <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
+                    {{ getScriptName(scriptKey) }}
+                  </option>
+                  <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
+                </select>
+              </SettingItem>
 
-            <!-- Script Params -->
-            <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
-              <input
-                type="text"
-                :value="gameScripts?.queryString || ''"
-                @input="updateQueryString(($event.target as HTMLInputElement).value)"
-                placeholder="例: mode=スイカ&tlife=3"
-                class="input input-bordered input-sm w-full"
-              />
-            </SettingItem>
+              <!-- Script Params -->
+              <SettingItem label="スクリプトクエリ" description="スクリプトに渡す追加クエリ">
+                <input
+                  type="text"
+                  :value="gameScripts?.queryString || ''"
+                  @input="updateQueryString(($event.target as HTMLInputElement).value)"
+                  placeholder="例: mode=スイカ&tlife=3"
+                  class="input input-bordered input-sm w-full"
+                />
+              </SettingItem>
 
-            <!-- Character Key -->
-            <SettingItem
-              v-if="isCharacter"
-              label="キャラクターキー"
-              description="スクリプト実行時に使用するキャラクター"
-              :variant="isCharacterKeyEmpty ? 'warning' : undefined"
-              :showWarning="isCharacterKeyEmpty"
-            >
-              <select
-                :value="gameScripts?.characterKey || ''"
-                @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
-                class="select select-bordered select-sm w-full"
+              <!-- Character Key -->
+              <SettingItem
+                v-if="isCharacter"
+                label="キャラクターキー"
+                description="スクリプト実行時に使用するキャラクター"
+                :variant="isCharacterKeyEmpty ? 'warning' : undefined"
+                :showWarning="isCharacterKeyEmpty"
               >
-                <option value="">-- キャラクターを選択 --</option>
-                <option v-for="character in charactersList" :key="character.key" :value="character.key">
-                  {{ character.name }}
-                </option>
-              </select>
-            </SettingItem>
+                <select
+                  :value="gameScripts?.characterKey || ''"
+                  @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
+                  class="select select-bordered select-sm w-full"
+                >
+                  <option value="">-- キャラクターを選択 --</option>
+                  <option v-for="character in charactersList" :key="character.key" :value="character.key">
+                    {{ character.name }}
+                  </option>
+                </select>
+              </SettingItem>
+            </template>
           </template>
-        </template>
+        </div>
       </div>
     </div>
-  </div>
+  </template>
 
   <!-- GODMODE で非GODユーザーの場合 -->
   <InformationCard v-else-if="isGodModeActive">
@@ -110,6 +123,7 @@
   import GameScriptPreview from './GameScriptPreview.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]

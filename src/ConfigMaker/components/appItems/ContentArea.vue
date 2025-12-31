@@ -1,16 +1,16 @@
 <!-- src\ConfigMaker\components\appItems\ContentArea.vue -->
 <template>
-  <div class="card bg-base-200 mt-4">
-    <div class="card-title p-4 rounded-t justify-between bg-primary text-primary-content">
+  <div class="card bg-base-200">
+    <div class="card-title p-4 bg-primary text-primary-content flex justify-between rounded-t">
       <div class="flex text-xl items-center gap-2">
         <component :is="categoryLabels[selectedCategory].icon" class="w-6 h-6" />
         {{ categoryLabels[selectedCategory].label }}
       </div>
-      <div class="text-sm pr-2">
+      <div class="text-sm">
         {{ categoryLabels[selectedCategory].description }}
       </div>
     </div>
-    <div class="card-body space-y-2">
+    <div class="card-body">
       <!-- Jsonマージ(Dev) -->
       <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
 

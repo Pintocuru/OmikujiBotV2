@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0-beta7",
-    "dataVersion": 1.30907,
+    "generatorVersion": "v2.0.0-beta2",
+    "dataVersion": 2.0002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -28,14 +28,12 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-11-20T01:59:36.524Z",
+      "updatedAt": "2025-12-31T08:32:50.320Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "c4dcf0cd-554d-4dfc-8880-eab00077e9fc",
@@ -51,34 +49,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji01",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji01"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "happy",
-              "messageContent": "<<user>>さんの運勢は【大吉】<<MaidenOmikuji01>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var text='大吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji01>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": null,
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "ea8cfca6-7c08-46e5-96b3-d93cdf95783a",
@@ -94,34 +88,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji02",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji02"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "happy",
-              "messageContent": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
-              "messageToast": "",
               "sound": "twinkle",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【吉】<<MaidenOmikuji02>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 20
+          "gameScripts": null,
+          "weight": 20,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "5cd77096-dca9-4714-a0a9-e24b5b8cee62",
@@ -137,34 +127,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji03",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji03"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
-              "messageToast": "",
               "sound": "congrats",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【中吉】<<MaidenOmikuji03>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 20
+          "gameScripts": null,
+          "weight": 20,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "e6d4e9f7-e72c-4e31-9f18-920557fec162",
@@ -180,34 +166,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji04",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji04"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
-              "messageToast": "",
               "sound": "jingle",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【小吉】<<MaidenOmikuji04>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": null,
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "81e073ba-a404-4dff-b066-be59b9cc2010",
@@ -223,34 +205,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji05",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji05"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "wink",
-              "messageContent": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
-              "messageToast": "",
               "sound": "bounce",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【末吉】<<MaidenOmikuji05>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": null,
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "1066e6ff-58ad-4264-b684-09cc0dd8ca6d",
@@ -266,34 +244,30 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji06",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji06"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "sad",
-              "messageContent": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
-              "messageToast": "",
               "sound": "fail",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【凶】<<MaidenOmikuji06>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 10
+          "gameScripts": null,
+          "weight": 10,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
@@ -309,38 +283,40 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "marisa",
-              "iconKey": "sleepy",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji07",
-              "characterKey": "marisa",
-              "iconKey": "sleepy",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji07"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken_2",
               "iconKey": "default",
-              "messageContent": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
-              "messageToast": "",
               "sound": "explosion",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんの運勢は【残念賞】<<MaidenOmikuji07>>",
+                "toast": ""
+              }
             }
           ],
-          "weight": 5
+          "gameScripts": null,
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      },
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -357,13 +333,8 @@
           "^omikuji",
           "^omikuzi",
           "^御神籤"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        ],
+        "userName": []
       }
     }
   },
@@ -560,31 +531,35 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#64B5F6",
         "textColor": "#E3F2FD",
         "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     },
     "omiken_2": {
@@ -606,93 +581,136 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#64B5F6",
         "textColor": "#E3F2FD",
         "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken",
+          "omiken_2"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "default",
       "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": true,
-      "showCharacterThumbnail": true,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "light"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "basic",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "basic",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb"
-        ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "lofi"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "light"
+  }
 }

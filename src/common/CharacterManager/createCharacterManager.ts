@@ -21,15 +21,13 @@ export const createCharacterManager = (charactersMap: Ref<Record<string, Charact
 
   /**
    * キャラクターが有効かどうかを判定
-   * 条件: image.default に有効なパスが1つ以上含まれていること
+   * TODO: image.default がないならfalseだったが、
+   * 現在は character オブジェクトが存在するかどうかだけで判定してる
    */
   const isValidCharacter = (characterKey: string | null): boolean => {
     if (!characterKey) return false
     const character = charactersMap.value[characterKey]
-    const defaultLayers = character?.image?.default
-
-    // defaultが配列であり、かつ空文字でない要素が1つ以上あるか
-    return Array.isArray(defaultLayers) && defaultLayers.some((path: string) => path && path.trim() !== '')
+    return !!character
   }
 
   const getAvailableEmotions = (characterKey: string | null): CharacterEmotionType[] => {

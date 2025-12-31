@@ -24,6 +24,7 @@
     </div>
   </div>
 
+  <!-- dock -->
   <div class="dock dock-bottom" :class="dockClass">
     <div
       v-for="(tab, key) in filteredCategoryLabels"

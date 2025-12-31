@@ -10,7 +10,6 @@
     />
 
     <!-- OmikujiItemBasic コンポーネント -->
-
     <OmikujiItemPriority
       v-if="category === 'comments'"
       :allOmikuji="allOmikujiSets"
@@ -20,19 +19,13 @@
     />
 
     <!-- GameScripts コンポーネント -->
-    <SectionCard
-      icon="Gamepad2"
-      variant="primary"
-      title="ゲームスクリプト"
-      description="複雑な処理を行うスクリプト設定"
-    >
-      <GameScriptsEditor
-        :allOmikuji="allOmikujiSets"
-        :omikuji="omikujiItem"
-        :category="category"
-        :selectedItemKey="selectedItemKey"
-      />
-    </SectionCard>
+
+    <GameScriptsEditor
+      :allOmikuji="allOmikujiSets"
+      :omikuji="omikujiItem"
+      :category="category"
+      :selectedItemKey="selectedItemKey"
+    />
 
     <!-- PostActions編集コンポーネント -->
     <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
