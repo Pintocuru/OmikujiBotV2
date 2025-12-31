@@ -9,7 +9,7 @@
   <RecordTabs />
 
   <!-- ルール編集エリア -->
-  <div v-if="selectedItem">
+  <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -22,7 +22,7 @@
       <BaseSettingsEditor v-model="selectedItem" category="timers" />
     </SectionCard>
 
-    <div v-if="selectedItem.isEnabled !== false">
+    <template v-if="selectedItem.isEnabled !== false">
       <!-- タイマー設定セクション -->
       <SectionCard
         icon="Clock"
@@ -46,14 +46,14 @@
       >
         <OmikujiSetEditor category="timers" :selectedItemKey="selectedItemKey" />
       </SectionCard>
-    </div>
+    </template>
 
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
       現在、このルールは無効になっています。<br />
       編集を行うには、まずルールを有効にしてください。
     </InformationCard>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

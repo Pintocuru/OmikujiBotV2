@@ -1,7 +1,7 @@
 <!-- src/configMaker/components/placeholders/PlaceholderValuesEditor.vue -->
 <template>
-  <div class="space-y-4">
-    <div v-if="selectedItem" class="flex justify-end gap-2">
+  <template v-if="selectedItem">
+    <div class="flex justify-end gap-2">
       <!-- 抽選テストボタン -->
       <PlaceholderPreview v-if="selectedItem.values.length > 0" :values="selectedItem.values" />
 
@@ -17,15 +17,16 @@
     </div>
 
     <!-- 入力モード -->
-    <div v-if="!isTextMode && selectedItem">
-      <PlaceholderInputMode :placeholderId="props.placeholderKey" :values="selectedItem.values" />
-    </div>
+    <PlaceholderInputMode v-if="!isTextMode" :placeholderId="props.placeholderKey" :values="selectedItem.values" />
 
     <!-- テキストモード -->
-    <div v-else-if="selectedItem">
-      <PlaceholderTextMode :initialValues="selectedItem.values" @save="handleTextSave" @cancel="isTextMode = false" />
-    </div>
-  </div>
+    <PlaceholderTextMode
+      v-else
+      :initialValues="selectedItem.values"
+      @save="handleTextSave"
+      @cancel="isTextMode = false"
+    />
+  </template>
 </template>
 
 <script setup lang="ts">

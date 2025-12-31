@@ -9,7 +9,7 @@
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <div v-if="selectedItem">
+  <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -21,7 +21,7 @@
       <BaseSettingsEditor v-model="selectedItem" category="comments" />
     </SectionCard>
 
-    <div v-if="selectedItem.isEnabled !== false">
+    <template v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
       <SectionCard
         icon="Filter"
@@ -57,14 +57,14 @@
       >
         <OmikujiSetEditor category="comments" :selectedItemKey="selectedItemKey" />
       </SectionCard>
-    </div>
+    </template>
 
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
       現在、このルールは無効になっています。<br />
       編集を行うには、まずルールを有効にしてください。
     </InformationCard>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

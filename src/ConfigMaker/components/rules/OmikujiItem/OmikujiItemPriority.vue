@@ -1,0 +1,95 @@
+<!-- src\ConfigMaker\components\rules\OmikujiItemPriority.vue -->
+<template>
+  <div v-if="omikuji" class="space-y-4">
+    <!-- 追加発動条件の有効化 -->
+    <SettingItem label="追加発動条件を設定する" description="条件を満たした場合の優先度を設定できます">
+      <label class="label cursor-pointer gap-2">
+        <input
+          type="checkbox"
+          class="toggle toggle-primary"
+          :checked="hasCriteria"
+          @change="toggleCriteria(($event.target as HTMLInputElement).checked)"
+        />
+        <span class="label-text">設定する</span>
+      </label>
+    </SettingItem>
+
+    <!-- 優先度 -->
+    <SectionCard
+      icon="Filter"
+      variant="primary"
+      title="追加条件"
+      description="このおみくじが適用される追加の条件を設定します"
+    >
+      <div v-if="hasCriteria" class="space-y-4">
+        <SettingItem label="優先度" description="追加条件達成時、優先で選ばれます">
+          <label class="label cursor-pointer gap-2">
+            <input
+              type="checkbox"
+              class="toggle toggle-primary"
+              :checked="omikuji.isPriority"
+              @change="updatePriority(($event.target as HTMLInputElement).checked)"
+            />
+            <span class="label-text">
+              {{ omikuji.isPriority ? '適用時、このおみくじが必ず適用されます' : '他のおみくじと同じ抽選を行います' }}
+            </span>
+          </label>
+        </SettingItem>
+
+        <!-- 発動条件 -->
+        <OmikujiItemCriteria
+          :allOmikuji="allOmikuji"
+          :omikuji="omikuji"
+          :category="category"
+          :selectedItemKey="selectedItemKey"
+        />
+      </div>
+    </SectionCard>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { computed } from 'vue'
+  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import OmikujiItemCriteria from './OmikujiItemCriteria.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { CriteriaThresholdSchema } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
+
+  const props = defineProps<{
+    allOmikuji: OmikujiItemType[]
+    omikuji: OmikujiItemType
+    category: RulesCategoryType
+    selectedItemKey: string | null
+  }>()
+
+  const omikujiStore = useOmikujiStore()
+
+  const index = computed(() => {
+    if (!props.omikuji) return -1
+    return props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key)
+  })
+  // criteriaが設定されているか
+  const hasCriteria = computed(() => props.omikuji?.criteria !== null)
+
+  // 優先度更新
+  const updatePriority = (value: boolean) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      isPriority: value,
+    }))
+  }
+
+  // criteriaのトグル
+  const toggleCriteria = (enabled: boolean) => {
+    if (index.value === -1 || !props.selectedItemKey) return
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+      ...item,
+      isPriority: enabled,
+      criteria: enabled ? CriteriaThresholdSchema.parse({}) : null,
+    }))
+  }
+</script>

@@ -1,10 +1,10 @@
-<!-- src/configMaker/components/characters/CharacterEditor.vue -->
+<!-- src\ConfigMaker\components\characters\CharacterEditor.vue -->
 <template>
   <!-- タブ -->
   <RecordTabs />
 
   <!-- 選択されたキャラクターの編集フォーム -->
-  <div v-if="selectedItemKey && selectedItem">
+  <template v-if="selectedItemKey && selectedItem">
     <!-- 基本情報 -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -50,7 +50,7 @@
     >
       <CharacterImageSettings :modelValue="selectedItem.image" :selectedItemKey="selectedItemKey" />
     </SectionCard>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

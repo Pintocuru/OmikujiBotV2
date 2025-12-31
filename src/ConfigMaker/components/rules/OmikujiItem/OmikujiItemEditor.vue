@@ -10,20 +10,14 @@
     />
 
     <!-- OmikujiItemBasic コンポーネント -->
-    <SectionCard
+
+    <OmikujiItemPriority
       v-if="category === 'comments'"
-      icon="Filter"
-      variant="primary"
-      title="追加条件"
-      description="このおみくじが適用される追加の条件を設定します"
-    >
-      <OmikujiItemBasic
-        :allOmikuji="allOmikujiSets"
-        :omikuji="omikujiItem"
-        :category="category"
-        :selectedItemKey="selectedItemKey"
-      />
-    </SectionCard>
+      :allOmikuji="allOmikujiSets"
+      :omikuji="omikujiItem"
+      :category="category"
+      :selectedItemKey="selectedItemKey"
+    />
 
     <!-- GameScripts コンポーネント -->
     <SectionCard
@@ -47,7 +41,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import OmikujiItemBasic from './OmikujiItemBasic.vue'
+  import OmikujiItemPriority from './OmikujiItemPriority.vue'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'

@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\characters\CharacterBasicInfo.vue -->
 <template>
-  <div v-if="currentData">
+  <template v-if="currentData">
     <!-- Key表示 -->
     <SettingItem label="Key" description="キャラクターのキー名">
       <div class="flex gap-2 items-center">
@@ -35,7 +35,7 @@
         <ExternalLinkButton v-if="currentData.url" :url="currentData.url" />
       </div>
     </SettingItem>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -55,8 +55,8 @@
 
   // 現在のキャラクターデータを取得（読み取り専用）
   const currentData = computed<CharacterType | undefined>(() => {
-    if (!props.selectedItemKey) return undefined
-    return omikujiStore.getItem('characters', props.selectedItemKey) ?? undefined
+    if (!props.selectedItemKey) return
+    return omikujiStore.getItem('characters', props.selectedItemKey)
   })
 
   // フィールドを個別に更新する関数

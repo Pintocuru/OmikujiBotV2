@@ -13,16 +13,10 @@
   </div>
 
   <!-- デフォルトカラー設定 -->
-  <SettingItem
-    v-if="!isCharacter"
-    label="デフォルトカラー設定"
-    description="キャラクターが非表示の際はこのカラーが使用されます"
-  >
-    <ColorModeSelector
-      :model-value="bubble.defaultColor"
-      @update:model-value="(value) => updateFieldValue('defaultColor', value)"
-    />
-  </SettingItem>
+  <ColorModeSelector
+    :model-value="bubble.defaultColor"
+    @update:model-value="(value) => updateFieldValue('defaultColor', value)"
+  />
 
   <!-- フキダシアニメーション -->
   <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
@@ -92,14 +86,14 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { SettingsBubbleSchema } from '@/types'
   import { fontFamilyOptions, fontFamilyLabels } from '@/types/MainGenerator/useFontFamily'
+  import CommentBubblePreview from './CommentBubblePreview.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import CommentBubblePreview from './CommentBubblePreview.vue'
-  import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
-  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { SettingsBubbleSchema } from '@/types'
+  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

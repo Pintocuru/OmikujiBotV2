@@ -96,9 +96,7 @@
       const prevTs = prev.message.user?.timestamp ?? 0
       const currTs = user.timestamp ?? 0
 
-      if (currTs > prevTs) {
-        map.set(user.userId, msg)
-      }
+      if (currTs > prevTs) map.set(user.userId, msg)
     }
 
     return Array.from(map.values())

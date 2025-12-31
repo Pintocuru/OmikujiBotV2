@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/CharacterColorSettings.vue -->
+<!-- src\ConfigMaker\components\characters\color\CharacterColorSettings.vue -->
 <template>
   <!-- プレビュー -->
   <div class="relative flex justify-center">
@@ -10,7 +10,8 @@
     />
   </div>
 
-  <!-- カラー設定 -->
+  <!-- フキダシカラー設定 -->
+  <SubSectionHeader icon="Palette" title="カラー設定" description="フキダシの配色やテーマカラーを設定します" />
   <ColorModeSelector :model-value="currentColor" @update:model-value="handleColorUpdate" />
 
   <!-- カスタムクラス設定 -->
@@ -22,12 +23,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
   import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
   import CommentBubblePreview from '@/ConfigMaker/components/componentEditor/bubble/CommentBubblePreview.vue'
-  import ColorModeSelector from './ColorModeSelector.vue'
+  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
 
   const props = defineProps<{
     modelValue?: CharacterColorType

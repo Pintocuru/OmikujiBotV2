@@ -26,16 +26,11 @@
   </div>
 
   <!-- デフォルトカラー設定 -->
-  <SettingItem
+  <ColorModeSelector
     v-if="!isCharacter"
-    label="デフォルトカラー設定"
-    description="キャラクターが非表示の際はこのカラーが使用されます"
-  >
-    <ColorModeSelector
-      :model-value="toastSettings.defaultColor"
-      @update:model-value="(value) => updateField('defaultColor', value)"
-    />
-  </SettingItem>
+    :model-value="toastSettings.defaultColor"
+    @update:model-value="(value) => updateField('defaultColor', value)"
+  />
 
   <!-- 設定項目 -->
   <SettingItem
@@ -93,10 +88,10 @@
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ColorModeSelector from '@ConfigComponents/characters/color/ColorModeSelector.vue'
   import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
   import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

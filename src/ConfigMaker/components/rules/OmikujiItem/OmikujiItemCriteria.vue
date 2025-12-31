@@ -1,64 +1,61 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemCriteria.vue -->
 <template>
-  <!-- criteriaがnullの場合は何も表示しない -->
-  <div v-if="criteria !== null" class="space-y-4">
-    <!-- 条件設定の説明 -->
-    <InformationCard>
-      <p>
-        <code class="label bg-accent text-accent-content">追加発動条件</code>は、
-        コメント内容やチャット数などを基にルール発動を制御します。
-      </p>
-      <p>条件が複数ある場合は、すべて満たしたときのみ発動します。</p>
-      <p>管理者限定コマンドなどの応用も可能です。</p>
-    </InformationCard>
+  <!-- 条件設定の説明 -->
+  <InformationCard>
+    <p>
+      <code class="label bg-accent text-accent-content">追加発動条件</code>は、
+      コメント内容やチャット数などを基にルール発動を制御します。
+    </p>
+    <p>条件が複数ある場合は、すべて満たしたときのみ発動します。</p>
+    <p>管理者限定コマンドなどの応用も可能です。</p>
+  </InformationCard>
 
-    <div class="flex items-center gap-4">
-      <div class="form-control flex-1">
-        <!-- 条件タイプ選択 -->
-        <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
-          <div class="flex flex-wrap gap-2">
-            <label
-              v-for="condition in conditionTypes"
-              :key="condition.value"
-              class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                class="checkbox checkbox-primary"
-                :checked="isConditionChecked(condition.value)"
-                @change="toggleCondition(condition.value)"
-              />
-              <span class="text-sm">{{ condition.label }}</span>
-            </label>
-          </div>
-        </SettingItem>
-      </div>
+  <div class="flex items-center gap-4">
+    <div class="form-control flex-1">
+      <!-- 条件タイプ選択 -->
+      <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
+        <div class="flex flex-wrap gap-2">
+          <label
+            v-for="condition in conditionTypes"
+            :key="condition.value"
+            class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              class="checkbox checkbox-primary"
+              :checked="isConditionChecked(condition.value)"
+              @change="toggleCondition(condition.value)"
+            />
+            <span class="text-sm">{{ condition.label }}</span>
+          </label>
+        </div>
+      </SettingItem>
     </div>
+  </div>
 
-    <!-- 各条件の詳細設定 -->
-    <div class="flex items-center gap-4">
-      <div class="form-control flex-1">
-        <!-- チャットワード条件 -->
-        <ThresholdComment
-          v-if="isConditionChecked('comment')"
-          :modelValue="criteria?.comment ?? []"
-          @update:modelValue="updateCriteriaProperty('comment', $event)"
-        />
+  <!-- 各条件の詳細設定 -->
+  <div class="flex items-center gap-4">
+    <div class="form-control flex-1">
+      <!-- チャットワード条件 -->
+      <ThresholdComment
+        v-if="isConditionChecked('comment')"
+        :modelValue="criteria?.comment ?? []"
+        @update:modelValue="updateCriteriaProperty('comment', $event)"
+      />
 
-        <!-- アクセスレベル条件 -->
-        <TriggerAccess
-          v-if="isConditionChecked('access')"
-          :modelValue="criteria?.access ?? []"
-          @update:modelValue="updateCriteriaProperty('access', $event)"
-        />
+      <!-- アクセスレベル条件 -->
+      <TriggerAccess
+        v-if="isConditionChecked('access')"
+        :modelValue="criteria?.access ?? []"
+        @update:modelValue="updateCriteriaProperty('access', $event)"
+      />
 
-        <!-- カウント条件 -->
-        <TriggerCount
-          v-if="isConditionChecked('count')"
-          :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'lc', value: 0 }"
-          @update:modelValue="updateCriteriaProperty('count', $event)"
-        />
-      </div>
+      <!-- カウント条件 -->
+      <TriggerCount
+        v-if="isConditionChecked('count')"
+        :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'lc', value: 0 }"
+        @update:modelValue="updateCriteriaProperty('count', $event)"
+      />
     </div>
   </div>
 </template>

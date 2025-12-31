@@ -3,7 +3,7 @@
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <div v-if="selectedItem">
+  <template v-if="selectedItem">
     <!-- 基本設定 -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -26,7 +26,7 @@
     >
       <PlaceholderValuesEditor :key="selectedItem.id" :placeholderKey="selectedItem.key" />
     </SectionCard>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

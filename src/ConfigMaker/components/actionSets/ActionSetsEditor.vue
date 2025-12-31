@@ -6,7 +6,7 @@
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <div v-if="selectedItem">
+  <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -34,7 +34,7 @@
         :selectedItemKey="selectedItemKey"
       />
     </SectionCard>
-  </div>
+  </template>
 </template>
 
 <script setup lang="ts">

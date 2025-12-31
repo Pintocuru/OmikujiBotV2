@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/ContentArea.vue -->
+<!-- src\ConfigMaker\components\appItems\ContentArea.vue -->
 <template>
   <div class="card bg-base-200 mt-4">
     <div class="card-title p-4 rounded-t justify-between bg-primary text-primary-content">
@@ -10,7 +10,7 @@
         {{ categoryLabels[selectedCategory].description }}
       </div>
     </div>
-    <div class="card-body space-y-4">
+    <div class="card-body space-y-2">
       <!-- Jsonマージ(Dev) -->
       <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
 
