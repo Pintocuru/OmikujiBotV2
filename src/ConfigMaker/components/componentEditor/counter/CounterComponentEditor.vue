@@ -1,11 +1,6 @@
 <!-- src\ConfigMaker\components\componentEditor\counter\CounterComponentEditor.vue -->
 <template>
   <div class="card bg-base-100 p-4 flex flex-col gap-4">
-    <div class="flex items-center gap-2">
-      <!-- ランダム選択ボタン（新カラー設定時のみ表示） -->
-      <RandomThemeButton v-if="isAdv" @randomize="(newValue) => updateCounterField('color', newValue)" />
-    </div>
-
     <!-- プレビュー -->
     <CounterPreviewCard
       v-if="counter.ruleKey"
@@ -140,8 +135,6 @@
   import { SettingsCounterSchema } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import RandomThemeButton from '@/ConfigMaker/components/common/ThemeColorPicker/RandomThemeButton.vue'
   import DaisyUiThemeEditor from '@/ConfigMaker/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
   import { generateDummyUserNames } from '@/MainGenerator/components/GameRanking/useDummyBotMessages'
@@ -149,7 +142,6 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv } = useSettingMode()
 
   const rulesComment = computed(() => data.value.comments)
 

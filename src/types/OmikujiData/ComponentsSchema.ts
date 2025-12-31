@@ -54,7 +54,7 @@ export const rankingSortOrderLabels: Record<RankingSortOrder, string> = {
 
 // ランキング Ranking
 export const SettingsRankingSchema = z.object({
-  scriptKey: z.string().default('basicList').catch('basicList'),
+  targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   limit: z.number().min(1).max(20).default(5).catch(5),
   sortOrder: z.enum(rankingSortOrders).default('new').catch('new'),

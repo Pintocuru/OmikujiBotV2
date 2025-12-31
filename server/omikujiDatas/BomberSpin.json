@@ -593,7 +593,11 @@
       "showThumbnail": []
     },
     "ranking": {
-      "scriptKey": "BomberSpin",
+      "targetScriptKeys": [
+        "BomberSpin",
+        "DwarfBomb",
+        "MultiplyBonanza"
+      ],
       "title": "💣️Bonber Slot Ranking💎",
       "limit": 5,
       "sortOrder": "high",

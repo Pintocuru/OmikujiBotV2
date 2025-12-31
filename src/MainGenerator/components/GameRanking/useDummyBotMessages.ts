@@ -103,7 +103,7 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
     const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
 
     const ranking = RankingMessageSchema.parse({
-      scriptKey: settings.scriptKey || 'dummy',
+      targetScriptKeys: settings.targetScriptKeys || ['dummy'],
       name,
       scoreText: String(points),
       scoreValue: points,

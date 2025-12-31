@@ -13,7 +13,7 @@
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
-      <CharacterBasicInfo :selectedItemKey="selectedItemKey" class="space-y-2" />
+      <CharacterBasicInfo :selectedItemKey="selectedItemKey" />
     </SectionCard>
 
     <!-- フキダシカラー設定 -->

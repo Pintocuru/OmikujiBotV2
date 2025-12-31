@@ -63,7 +63,10 @@
   let hideTimer: ReturnType<typeof setTimeout> | null = null
 
   const localFilteredMessages = computed(() =>
-    props.botMessages.filter((m) => m.message?.ranking?.scriptKey === props.settings.scriptKey)
+    props.botMessages.filter((m) => {
+      const r = m.message?.ranking
+      return r && props.settings.targetScriptKeys.includes(r.scriptKey)
+    })
   )
 
   const latestMessage = computed(() =>

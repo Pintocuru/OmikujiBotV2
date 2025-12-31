@@ -1,64 +1,67 @@
 <!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
-  <GameRankingList :botMessages="[]" :settings="ranking" />
+  <GameRankingList v-if="ranking.targetScriptKeys.length > 0" :botMessages="[]" :settings="ranking" />
+  <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
 
-  <!-- テーマカラー -->
-  <SettingItem
-    label="カラー"
-    description="ランキングのテーマカラーを選択します"
-    :forceMode="'pro'"
-    :showReset="true"
-    @reset="resetMap.color"
-  >
-    <select
-      class="select select-bordered"
-      :value="ranking.color"
-      :disabled="!isAdv"
-      @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- テーマカラー -->
+    <SettingItem label="カラー" description="ランキングのテーマカラーを選択します" :forceMode="'pro'">
+      <select
+        class="select select-bordered"
+        :value="ranking.color"
+        :disabled="!isAdv"
+        @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
+      >
+        <option v-for="theme in themes" :key="theme" :value="theme">
+          {{ theme }}
+        </option>
+      </select>
+    </SettingItem>
+
+    <!-- 表示するランキング数 -->
+    <SettingItem
+      label="表示件数"
+      description="ランキングに表示する件数を設定します(最大20)"
+      :forceMode="'pro'"
+      :showReset="true"
+      @reset="resetMap.limit"
     >
-      <option v-for="theme in themes" :key="theme" :value="theme">
-        {{ theme }}
-      </option>
-    </select>
-  </SettingItem>
-
-  <!-- 表示するランキング数 -->
-  <SettingItem
-    label="表示件数"
-    description="ランキングに表示する件数を設定します(最大20)"
-    :forceMode="'pro'"
-    :showReset="true"
-    @reset="resetMap.limit"
-  >
-    <input
-      type="number"
-      min="1"
-      max="20"
-      :disabled="!isAdv"
-      class="input input-bordered w-24"
-      :value="ranking.limit"
-      @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
-    />
-  </SettingItem>
+      <input
+        type="number"
+        min="1"
+        max="20"
+        :disabled="!isAdv"
+        class="input input-bordered w-24"
+        :value="ranking.limit"
+        @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
+      />
+    </SettingItem>
+  </div>
 
   <!-- 対象スクリプトID -->
-  <SettingItem
-    label="対象スクリプトID"
-    description="ランキング対象のGameScriptを指定します"
-    :showReset="true"
-    @reset="resetMap.scriptKey"
-  >
-    <select
-      class="select select-bordered w-full"
-      :value="ranking.scriptKey ?? ''"
-      @change="(e) => updateScriptKey((e.target as HTMLSelectElement).value)"
-    >
-      <option value="basicList">フキダシリスト</option>
-      <option v-for="script in enabledGameScriptMap" :key="script.key" :value="script.key">
-        {{ script.name }} (ID: {{ script.key }})
-      </option>
-    </select>
+  <SettingItem label="対象スクリプトID(複数)" description="ランキング対象のGameScriptを指定します">
+    <div class="flex flex-wrap gap-2">
+      <!-- 基本リスト -->
+      <div
+        class="badge badge-lg cursor-pointer"
+        :class="ranking.targetScriptKeys.includes('basicList') ? 'badge-primary' : 'badge-outline'"
+        @click="toggleScriptKey('basicList')"
+      >
+        アクションセット
+      </div>
+
+      <!-- ゲームスクリプト -->
+      <div
+        v-for="script in enabledGameScriptMap"
+        :key="script.key"
+        class="badge badge-lg cursor-pointer"
+        :class="ranking.targetScriptKeys.includes(script.key) ? 'badge-primary' : 'badge-outline'"
+        @click="toggleScriptKey(script.key)"
+      >
+        {{ script.name }}
+      </div>
+    </div>
   </SettingItem>
 
   <!-- タイトル -->
@@ -77,12 +80,7 @@
   </SettingItem>
 
   <!-- 順位のソート -->
-  <SettingItem
-    label="順位のソート"
-    description="得点の高い順・低い順・新しい順から選べます"
-    :showReset="true"
-    @reset="resetMap.sortOrder"
-  >
+  <SettingItem label="順位のソート" description="得点の高い順・低い順・新しい順から選べます">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="order in rankingSortOrders"
@@ -108,6 +106,7 @@
   import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'
   import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
   import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -138,9 +137,11 @@
     })
   }
 
-  const updateScriptKey = (raw: string) => {
-    const value = raw === '' ? null : raw
-    updateRankingField('scriptKey', value)
+  // スクリプトIDの更新
+  const toggleScriptKey = (key: string) => {
+    const current = ranking.value.targetScriptKeys ?? []
+    const next = current.includes(key) ? current.filter((k) => k !== key) : [...current, key]
+    updateRankingField('targetScriptKeys', next)
   }
 
   // リセット関数
@@ -150,7 +151,7 @@
   }
 
   const resetMap = {
-    scriptKey: () => resetField('scriptKey'),
+    targetScriptKeys: () => resetField('targetScriptKeys'),
     title: () => resetField('title'),
     limit: () => resetField('limit'),
     sortOrder: () => resetField('sortOrder'),

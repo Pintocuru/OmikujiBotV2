@@ -46,7 +46,7 @@
             listName: 'test',
             scoretext: 'test',
             scoreValue: 100,
-            scriptKey: rankingSettings.value.scriptKey,
+            scriptKey: rankingSettings.value.targetScriptKeys,
           },
         },
       }),
@@ -58,22 +58,26 @@
 
   // ランキング対象のメッセージをフィルタリング
   const rankingScoreMessages = computed(() => {
+    const keys = rankingSettings.value?.targetScriptKeys
+    const messages = botMessages.value
+
     const base =
-      !botMessages.value || !rankingSettings.value?.scriptKey
+      !messages || !keys
         ? []
-        : botMessages.value.filter((msg) => {
+        : messages.filter((msg) => {
             const r = msg.message.ranking
-            return r?.scriptKey === rankingSettings.value.scriptKey && typeof r.scoreValue === 'number'
+            return r && typeof r.scoreValue === 'number' && keys.includes(r.scriptKey)
           })
 
     return isDev ? [...base, ...devScoreMessages.value] : base
   })
 
   const rankingListMessages = computed(() => {
-    if (!botMessages.value || !rankingSettings.value?.scriptKey) return []
+    if (!botMessages.value || !rankingSettings.value?.targetScriptKeys) return []
 
     const targets = botMessages.value.filter((msg) => {
-      return msg.message.ranking?.scriptKey === rankingSettings.value.scriptKey
+      const r = msg.message.ranking
+      return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
     })
 
     // ranking.isUniqueUser が true のものが存在するか
