@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\BotMessage\BotMessageGenerator.ts
+// src\MainGenerator\scripts\BotMessage\BotMessageGenerator.ts
 import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
 import { CharacterColorType, CharacterType } from '@/types/OmikujiData/CharacterSchema'

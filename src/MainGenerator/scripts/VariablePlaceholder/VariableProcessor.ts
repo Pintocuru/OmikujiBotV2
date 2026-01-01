@@ -1,6 +1,12 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
 import { ExpressionEvaluator } from './ExpressionEvaluator'
-import { RESERVED_KEYS } from './ReservedKeys'
+import {
+  RAND_PATTERN,
+  RESERVED_KEYS,
+  SELECT_PATTERN,
+  VAR_DECLARATION_PATTERN,
+  VAR_REFERENCE_PATTERN,
+} from './ReservedKeys'
 
 /**
  * process メソッドの返り値型
@@ -52,7 +58,7 @@ export class VariablePlaceholderProcessor {
   private processVariableDeclarations(text: string): string {
     const declarationRegex = /\{\{var\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.*?)\}\}/g
 
-    return text.replace(declarationRegex, (match, varName, expression) => {
+    return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
         const value = this.evaluator.evaluate(expression.trim())
         this.evaluator.set(varName, value)
@@ -68,7 +74,7 @@ export class VariablePlaceholderProcessor {
    * 変数参照を処理 {{variableName}}
    */
   private processVariableReferences(text: string): string {
-    return text.replace(/\{\{([a-zA-Z_][a-zA-Z0-9_]*)\}\}/g, (match, varName) => {
+    return text.replace(VAR_REFERENCE_PATTERN, (match, varName) => {
       if (this.evaluator.has(varName)) {
         return String(this.evaluator.get(varName))
       }
@@ -81,7 +87,7 @@ export class VariablePlaceholderProcessor {
    * rand関数を処理 {{rand(min,max)}}
    */
   private processRandFunction(text: string): string {
-    return text.replace(/\{\{rand\((\d+),(\d+)\)\}\}/g, (match, minStr, maxStr) => {
+    return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
       const min = parseInt(minStr, 10)
       const max = parseInt(maxStr, 10)
       if (isNaN(min) || isNaN(max) || min > max) {
@@ -96,7 +102,7 @@ export class VariablePlaceholderProcessor {
    * select関数を処理 {{select(opt1,opt2,...)}}
    */
   private processSelectFunction(text: string): string {
-    return text.replace(/\{\{select\(([^)]+)\)\}\}/g, (match, optionsStr) => {
+    return text.replace(SELECT_PATTERN, (match, optionsStr) => {
       try {
         const options = optionsStr
           .split(',')

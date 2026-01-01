@@ -33,14 +33,42 @@
     :label="messageType === 'bubble' ? '💬 フキダシ内容' : '📝 トースト内容'"
     :description="messageType === 'bubble' ? 'フキダシに表示する内容' : 'トーストに表示する内容'"
   >
-    <input
-      type="text"
-      v-model="messageText"
-      class="input input-bordered input-sm w-full"
-      :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
-    />
-    <PlaceholderChecker v-if="messageText !== ''" :text="messageText" />
+    <div class="relative w-full">
+      <!-- input -->
+      <input
+        v-model="messageText"
+        type="text"
+        class="input input-bordered input-sm w-full pr-10"
+        :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
+        :class="{ hidden: isTextarea }"
+      />
+
+      <!-- textarea -->
+      <textarea
+        v-model="messageText"
+        rows="3"
+        class="textarea textarea-bordered textarea-sm w-full pr-10"
+        :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
+        :class="{ hidden: !isTextarea }"
+      ></textarea>
+
+      <!-- 切り替えボタン -->
+      <button
+        type="button"
+        class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs"
+        @click="isTextarea = !isTextarea"
+      >
+        <AlignLeft v-if="!isTextarea" class="w-4 h-4" />
+        <AlignJustify v-else class="w-4 h-4" />
+      </button>
+    </div>
   </SettingItem>
+
+  <!-- 変数プレースホルダーチェッカー -->
+  <VariableDeclarationChecker v-if="messageText !== ''" :text="messageText" />
+
+  <!-- プレースホルダーチェッカー -->
+  <PlaceholderChecker v-if="messageText !== ''" :text="messageText" />
 
   <!-- サウンド -->
   <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
@@ -58,9 +86,11 @@
   import { CharacterEmotionType, PostActionMessageType } from '@/types/'
   import IconSelector from '@/ConfigMaker/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { soundList } from '@/common/sounds/soundMap'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { AlignLeft, AlignJustify } from 'lucide-vue-next'
 
   const props = defineProps<{
     action: PostActionMessageType
@@ -72,6 +102,8 @@
   }>()
 
   const { isCharacter } = useVisibilityAccess()
+
+  const isTextarea = ref(false)
 
   const updateAction = (updates: Partial<PostActionMessageType>) => {
     emit('update:action', { ...props.action, ...updates })

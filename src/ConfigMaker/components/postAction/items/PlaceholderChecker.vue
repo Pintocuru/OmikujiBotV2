@@ -1,11 +1,10 @@
 <!-- src\ConfigMaker\components\postAction\items\PlaceholderChecker.vue -->
 <template>
-  <div v-if="isPlaceholder && hasPlaceholders" class="space-y-2 mt-2">
+  <div v-if="isPlaceholder && hasPlaceholders" class="space-y-2">
     <!-- 既存のプレースホルダー -->
-    <div v-if="definedPlaceholders.length > 0" class="alert alert-info py-2">
-      <AlertCircle :size="16" class="shrink-0" />
+    <div v-if="definedPlaceholders.length > 0" class="alert alert-info py-1">
       <span class="text-xs">
-        定義済みプレースホルダー:
+        プレースホルダー
         <button
           v-for="id in definedPlaceholders"
           :key="id"
