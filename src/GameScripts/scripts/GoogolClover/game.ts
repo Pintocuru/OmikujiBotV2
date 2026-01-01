@@ -1,5 +1,5 @@
 // src/GameScripts/GoogolClover/game.ts
-import { PostActionMessageBodySchema, PostActionMessageBodyType, UserNameSchema } from '@/types'
+import { PostActionMessageBodySchema, PostActionMessageBodyType, UserNameSchema, UserNameType } from '@/types'
 import { GOAL_EXPONENT, MIN_SPINS, MAX_SPINS, CURRENCY_SYMBOL } from './constants'
 import type { UserState, SlotResult } from './types'
 import { formatShort, spinSlot, formatScoreText, calculateScoreValue } from './utils'
@@ -171,7 +171,7 @@ function createFailureMessage(
   userName: string,
   multipliersDisplay: string,
   rankingKey: string,
-  user: any,
+  user: UserNameType,
   successCount: number
 ): PostActionMessageBodyType {
   return PostActionMessageBodySchema.parse({
@@ -196,7 +196,7 @@ function createGoalAchievedMessage(
   userName: string,
   multipliersDisplay: string,
   rankingKey: string,
-  user: any
+  user: UserNameType
 ): PostActionMessageBodyType {
   const finalDisplay = formatShort(state.funds, state.exp)
   const exitVoice = !state.isGoogol ? '出口への扉が開いた。' : ''

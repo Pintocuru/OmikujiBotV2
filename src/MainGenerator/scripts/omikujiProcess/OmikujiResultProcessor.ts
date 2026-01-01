@@ -4,13 +4,14 @@ import { OmikujiDataType } from '@/types'
 import { OmikujiItemType, PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
-import { BotMessageGenerator } from '@MainScripts/BotCharacter/BotMessageGenerator'
+import { BotMessageGenerator } from '@/MainGenerator/scripts/BotMessage/BotMessageGenerator'
 import { ActionSetExpander } from './ActionSetExpander'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../../stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
 import { RankingMessageSchema, UserNameSchema } from '@/types/OmikujiData/PostActionMessage'
+import { ExpressionEvaluator } from '../VariablePlaceholder/ExpressionEvaluator'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス
@@ -20,6 +21,7 @@ export class OmikujiResultProcessor {
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
   private readonly actionSets: Record<string, PostActionRecordType>
+  private evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   constructor(
     omikujiData: OmikujiDataType,
@@ -92,7 +94,7 @@ export class OmikujiResultProcessor {
    * text,symbol,name,unique,variant が特殊になる
    */
   private applyVariablePlaceholders(actions: PostActionType[], omiken?: OmikenCommentType): PostActionType[] {
-    const variableProcessor = new VariablePlaceholderProcessor()
+    const variableProcessor = new VariablePlaceholderProcessor(this.evaluator)
 
     return actions.map((action) => {
       if (action.actionType !== 'message') return action
@@ -113,6 +115,7 @@ export class OmikujiResultProcessor {
 
       const result = variableProcessor.process(sourceText)
 
+      // textがなければランキング不成立
       const isBasicList = result.text
       const ranking = isBasicList
         ? RankingMessageSchema.parse({

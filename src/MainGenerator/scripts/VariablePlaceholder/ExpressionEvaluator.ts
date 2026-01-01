@@ -1,47 +1,11 @@
 // src/MainGenerator/scripts/VariablePlaceholder/ExpressionEvaluator.ts
+import { KeyValueMap } from '@/MainGenerator/scripts/KeyValue/KeyValueMap'
 
 /**
  * 式評価エンジン
  * 変数の管理と式の評価を担当
  */
-export class ExpressionEvaluator {
-  private variables: Map<string, string | number> = new Map()
-
-  /**
-   * 変数をクリア
-   */
-  clear(): void {
-    this.variables.clear()
-  }
-
-  /**
-   * 変数を設定
-   */
-  setVariable(name: string, value: string | number): void {
-    this.variables.set(name, value)
-  }
-
-  /**
-   * 変数を取得
-   */
-  getVariable(name: string): string | number | undefined {
-    return this.variables.get(name)
-  }
-
-  /**
-   * 変数の存在確認
-   */
-  hasVariable(name: string): boolean {
-    return this.variables.has(name)
-  }
-
-  /**
-   * すべての変数を取得
-   */
-  getAllVariables(): Record<string, string | number> {
-    return Object.fromEntries(this.variables)
-  }
-
+export class ExpressionEvaluator extends KeyValueMap {
   /**
    * 式を評価して値を返す
    */
@@ -72,8 +36,8 @@ export class ExpressionEvaluator {
     }
 
     // 変数参照
-    if (this.variables.has(trimmed)) {
-      return this.variables.get(trimmed)!
+    if (this.has(trimmed)) {
+      return this.get(trimmed)!
     }
 
     // その他は文字列として扱う

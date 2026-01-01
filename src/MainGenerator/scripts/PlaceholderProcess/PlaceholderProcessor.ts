@@ -1,4 +1,3 @@
-// src/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor.ts
 import { PostActionType, PlaceholderType } from '@/types/'
 import { DefaultTypes } from '@shared/types'
 import { PlaceholderResolver } from './PlaceholderResolver'
@@ -20,7 +19,7 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * コンテキスト値を更新（ユーザー名、日付など）
+   * コンテキスト値を更新(ユーザー名、日付など)
    */
   updateResolvedValues(data: DefaultTypes): void {
     this.context.updateValues(data)
@@ -56,7 +55,7 @@ export class PlaceholderProcessor {
   processText(text?: string): string {
     if (!text) return ''
 
-    this.resolver.setContextValues(this.context.getAllValues())
+    this.resolver.setContextValues(this.context.getAll())
 
     return text.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) =>
       this.resolvePlaceholder(match, placeholderId.trim())
@@ -68,8 +67,8 @@ export class PlaceholderProcessor {
    */
   private resolvePlaceholder(originalMatch: string, placeholderId: string): string {
     // コンテキスト値を優先
-    if (this.context.hasValue(placeholderId)) {
-      const value = this.context.getValue(placeholderId)
+    if (this.context.has(placeholderId)) {
+      const value = this.context.get(placeholderId)
       return value !== undefined ? String(value) : originalMatch
     }
 
@@ -124,7 +123,7 @@ export class PlaceholderProcessor {
    * デバッグ用: コンテキスト値の一覧を取得
    */
   getResolvedValues(): Record<string, string | number> {
-    return this.context.getAllValues()
+    return this.context.getAll()
   }
 
   /**

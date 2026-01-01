@@ -1,5 +1,6 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
 import { ExpressionEvaluator } from './ExpressionEvaluator'
+import { RESERVED_KEYS } from './ReservedKeys'
 
 /**
  * process メソッドの返り値型
@@ -14,16 +15,7 @@ export interface ProcessResult {
  * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{select(opt1,opt2,...)}}を処理
  */
 export class VariablePlaceholderProcessor {
-  private evaluator: ExpressionEvaluator = new ExpressionEvaluator()
-  constructor() {}
-
-  /**
-   * 変数をクリア
-   * ! たぶんこれは要らない
-   */
-  clearVariables(): void {
-    this.evaluator.clear()
-  }
+  constructor(private evaluator: ExpressionEvaluator) {}
 
   /**
    * テキスト内のプレースホルダーを処理
@@ -31,7 +23,7 @@ export class VariablePlaceholderProcessor {
    */
   process(text: string): ProcessResult {
     // 改行を除去
-    let processed = this.removeNewlines(text)
+    let processed = text.replace(/\n/g, '')
 
     // 1: 変数宣言を処理
     processed = this.processVariableDeclarations(processed)
@@ -45,17 +37,13 @@ export class VariablePlaceholderProcessor {
     // 4: select関数を処理
     processed = this.processSelectFunction(processed)
 
-    return {
-      ...this.evaluator.getAllVariables(),
-      bubble: processed,
-    }
-  }
+    // すべての処理した変数を取得
+    const allVars = this.evaluator.getAll()
 
-  /**
-   * 改行を除去
-   */
-  private removeNewlines(text: string): string {
-    return text.replace(/\n/g, '')
+    // 予約語の削除
+    for (const key of RESERVED_KEYS) this.evaluator.remove(key)
+
+    return { ...allVars, bubble: processed }
   }
 
   /**
@@ -67,7 +55,7 @@ export class VariablePlaceholderProcessor {
     return text.replace(declarationRegex, (match, varName, expression) => {
       try {
         const value = this.evaluator.evaluate(expression.trim())
-        this.evaluator.setVariable(varName, value)
+        this.evaluator.set(varName, value)
         return '' // 宣言は削除
       } catch (error) {
         console.warn(`変数宣言の評価に失敗: ${match}`, error)
@@ -81,8 +69,8 @@ export class VariablePlaceholderProcessor {
    */
   private processVariableReferences(text: string): string {
     return text.replace(/\{\{([a-zA-Z_][a-zA-Z0-9_]*)\}\}/g, (match, varName) => {
-      if (this.evaluator.hasVariable(varName)) {
-        return String(this.evaluator.getVariable(varName))
+      if (this.evaluator.has(varName)) {
+        return String(this.evaluator.get(varName))
       }
       console.warn(`未定義の変数: ${varName}`)
       return match
@@ -127,12 +115,5 @@ export class VariablePlaceholderProcessor {
         return match
       }
     })
-  }
-
-  /**
-   * デバッグ用: 現在の変数状態を取得
-   */
-  getVariables(): Record<string, string | number> {
-    return this.evaluator.getAllVariables()
   }
 }

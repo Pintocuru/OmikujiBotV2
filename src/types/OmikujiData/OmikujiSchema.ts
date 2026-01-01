@@ -25,7 +25,9 @@ export const PostActionMessageSchema = z.object({
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   sound: z.enum(soundList).default('').catch(''),
-  message: PostActionMessageBodySchema,
+  message: PostActionMessageBodySchema.default(PostActionMessageBodySchema.parse({})).catch(
+    PostActionMessageBodySchema.parse({})
+  ),
 })
 export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 
@@ -189,10 +191,10 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: {
+      message: PostActionMessageBodySchema.parse({
         bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
         toast: oldAction.messageToast, // ★ messageToast -> message.toast
-      },
+      }),
     })
   }
 
@@ -223,7 +225,10 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: {},
+      message: PostActionMessageBodySchema.parse({
+        bubble: oldAction.messageContent,
+        toast: oldAction.messageToast,
+      }),
     })
   }
 

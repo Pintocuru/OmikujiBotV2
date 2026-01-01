@@ -29,14 +29,13 @@ export const RankingMessageSchema = z.object({
 })
 
 // PostAction MessageBody
-export const PostActionMessageBodySchema = z
-  .object({
-    bubble: z.string().optional().catch(undefined),
-    toast: z.string().optional().catch(undefined),
-    user: UserNameSchema.optional(),
-    ranking: RankingMessageSchema.optional(),
-  })
-  .default({})
-  .catch({})
+// TODO:将来「bubble」と「isToast」にし、toastは削除する
+export const PostActionMessageBodySchema = z.object({
+  bubble: z.string().nullable().default(null),
+  toast: z.string().optional(),
+  isToast: z.boolean().default(false),
+  user: UserNameSchema.optional(),
+  ranking: RankingMessageSchema.optional(),
+})
 
 export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>
