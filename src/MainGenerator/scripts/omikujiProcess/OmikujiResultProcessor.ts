@@ -89,7 +89,7 @@ export class OmikujiResultProcessor {
   /**
    * message.action の bubble / toast に対して
    * 変数プレースホルダーを適用する
-   * text と symbol が特殊になる
+   * text,symbol,name,unique,variant が特殊になる
    */
   private applyVariablePlaceholders(actions: PostActionType[], omiken?: OmikenCommentType): PostActionType[] {
     const variableProcessor = new VariablePlaceholderProcessor()
@@ -117,9 +117,11 @@ export class OmikujiResultProcessor {
       const ranking = isBasicList
         ? RankingMessageSchema.parse({
             scriptKey: 'basicList',
+            listName: result.name,
             scoreText: result.text,
             symbol: result.symbol,
-            isUniqueUser: true,
+            variant: result.variant,
+            isUniqueUser: result.unique === 'false' ? false : true,
           })
         : undefined
 

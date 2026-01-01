@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v2.0.0-beta3",
+    "dataVersion": 2.0003,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -30,8 +30,6 @@
       "editorColor": "#E0E0E0",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757756121625",
@@ -45,35 +43,39 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "BigBang_back",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "BigBang_back"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "CommonBombFire",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CommonBombFire"
             },
             {
               "delaySeconds": 3,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>の運勢は<<BigBangLottery>>",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>の運勢は<<BigBangLottery>>"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      },
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -89,13 +91,8 @@
           "^超$",
           "^超おみくじ",
           "^BigBang"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        ],
+        "userName": []
       }
     }
   },
@@ -230,7 +227,7 @@
       "key": "BigBangLottery",
       "name": "超おみくじ:抽選",
       "createdAt": "2025-09-18T06:38:25.113Z",
-      "updatedAt": "2025-09-18T09:25:51.523Z",
+      "updatedAt": "2025-12-31T23:49:47.959Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
@@ -239,19 +236,19 @@
       "values": [
         {
           "weight": 122,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB4>>!!!!"
+          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB4>>!!!!"
         },
         {
           "weight": 138,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB3>>!!!"
+          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB3>>!!!"
         },
         {
           "weight": 154,
-          "content": "【<<BigBangDecoB>><<BigBangDecoB>>凶】、希少度は<<BigBangB2>>!!"
+          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB2>>!!"
         },
         {
           "weight": 215,
-          "content": "【<<BigBangDecoB>>凶】、希少度は<<BigBangB1>>!"
+          "content": "{{var text='<<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB1>>!"
         },
         {
           "weight": 46,
@@ -259,39 +256,39 @@
         },
         {
           "weight": 245,
-          "content": "【<<BigBangDecoG>>吉】、希少度は<<BigBangG1>>!"
+          "content": "{{var text='<<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG1>>!"
         },
         {
           "weight": 270,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG2>>!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG2>>!!"
         },
         {
           "weight": 357,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG3>>!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG3>>!!!"
         },
         {
           "weight": 460,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG4>>!!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG4>>!!!!"
         },
         {
           "weight": 570,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG5>>!!!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG5>>!!!!!"
         },
         {
           "weight": 426,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG6>>!!!!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG6>>!!!!!!"
         },
         {
           "weight": 282,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG7>>!!!!!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG7>>!!!!!!!"
         },
         {
           "weight": 138,
-          "content": "【<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉】、希少度は<<BigBangG8>>!!!!!!!!"
+          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG8>>!!!!!!!!"
         },
         {
           "weight": 5,
-          "content": "【完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻吉】、希少度は9999無量大数!!!!!!!!!"
+          "content": "{{var text='完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻吉'}}【{{text}}】、希少度は9999無量大数!!!!!!!!!"
         }
       ]
     },
@@ -424,20 +421,20 @@
       "key": "BigBangG0",
       "name": "超おみくじ:大吉-大凶",
       "createdAt": "2025-09-18T06:28:34.367Z",
-      "updatedAt": "2025-09-18T07:06:29.587Z",
+      "updatedAt": "2025-12-31T23:51:15.410Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "【大吉】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
-        "【吉】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
-        "【中吉】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
-        "【小吉】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
-        "【末吉】希少度は3.{{rand(10,99)}}",
-        "【凶】希少度は2.{{rand(10,99)}}",
-        "【大凶】希少度は1.{{rand(10,99)}}"
+        "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
+        "{{var text='吉'}}【{{text}}】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
+        "{{var text='中吉'}}【{{text}}】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
+        "{{var text='小吉'}}【{{text}}】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
+        "{{var text='末吉'}}【{{text}}】希少度は3.{{rand(10,99)}}",
+        "{{var text='凶'}}【{{text}}】希少度は2.{{rand(10,99)}}",
+        "{{var text='大凶'}}【{{text}}】希少度は1.{{rand(10,99)}}"
       ]
     },
     "BigBangG1": {
@@ -865,89 +862,128 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#90A4AE",
         "textColor": "#ECEFF1",
         "backgroundColor": "#455A64",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "mochiyPop",
       "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": false,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "dim"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "lofi"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "pro"
+    },
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "",
+    "daisyUiTheme": "dim"
+  }
 }

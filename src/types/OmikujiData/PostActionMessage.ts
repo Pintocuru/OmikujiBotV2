@@ -21,6 +21,7 @@ export const RankingMessageSchema = z.object({
   symbol: z.string().optional(), // 名前の隣につけるやつ
   scoreText: z.string().default(''), // 表示用得点
   scoreValue: z.number().optional(), // 比較用
+  variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
   // 設定
   scriptKey: z.string().default(''), // コンポーネント判別用key
   isRank: z.boolean().default(true), // リストに載せるか

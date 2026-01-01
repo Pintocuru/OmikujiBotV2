@@ -50,7 +50,10 @@
 
           <!--スコア -->
           <div class="flex-shrink-0">
-            <div class="badge badge-lg p-2 badge-primary font-bold">
+            <div
+              class="badge badge-lg p-2 font-bold"
+              :class="scoreBadgeClass(msg.message?.ranking?.variant as BaseVariant)"
+            >
               {{ msg.message?.ranking?.scoreText || 0 }}
             </div>
           </div>
@@ -65,6 +68,7 @@
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
   import { generateDummyMessages } from './useDummyBotMessages'
+  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{
     botMessages: BotMessage[]
@@ -117,6 +121,32 @@
     if (index === 1) return 'badge-info'
     if (index === 2) return 'badge-success'
     return 'badge-ghost'
+  }
+
+  // スコアのカラー
+  const scoreBadgeClass = (variant?: BaseVariant): string => {
+    switch (variant) {
+      case 'primary':
+        return 'badge-primary'
+      case 'secondary':
+        return 'badge-secondary'
+      case 'accent':
+        return 'badge-accent'
+      case 'info':
+        return 'badge-info'
+      case 'success':
+        return 'badge-success'
+      case 'warning':
+        return 'badge-warning'
+      case 'error':
+        return 'badge-error'
+      case 'neutral':
+        return 'badge-neutral'
+      case 'none':
+        return ''
+      default:
+        return 'badge-primary'
+    }
   }
 </script>
 

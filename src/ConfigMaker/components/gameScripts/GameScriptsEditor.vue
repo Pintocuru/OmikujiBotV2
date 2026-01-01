@@ -106,9 +106,6 @@
       <code class="label bg-accent text-accent-content">特別な設定</code>がされているようです…
     </p>
   </InformationCard>
-
-  <!-- 利用可能なスクリプトがない場合 -->
-  <NoParamsCard v-else :message="'このゲームスクリプトはPRO版で設定できます'" />
 </template>
 
 <script setup lang="ts">

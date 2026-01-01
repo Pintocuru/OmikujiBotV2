@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.0",
-    "dataVersion": 1.4,
+    "generatorVersion": "v2.0.0-beta3",
+    "dataVersion": 2.0003,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -32,8 +32,6 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "a411a12c-bdbc-43fd-b2e9-a1be0de50560",
@@ -49,16 +47,14 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora"
             }
           ],
-          "weight": 380
+          "gameScripts": null,
+          "weight": 380,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "17765e28-5805-4872-b698-c829a462765b",
@@ -74,16 +70,14 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora_boron",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora_boron"
             }
           ],
-          "weight": 19
+          "gameScripts": null,
+          "weight": 19,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "17765e28-5805-4872-b698-c829a462765b",
@@ -99,20 +93,18 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora_Konjac",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora_Konjac"
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -129,13 +121,14 @@
           "^どらちゃん",
           "^dorachan",
           "^5percent_dora"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 5,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -152,8 +145,6 @@
       "editorColor": "#3B82F6",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1754855691056",
@@ -168,16 +159,14 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora"
             }
           ],
-          "weight": 380
+          "gameScripts": null,
+          "weight": 380,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "1754858755996",
@@ -192,16 +181,14 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora_boron",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora_boron"
             }
           ],
-          "weight": 19
+          "gameScripts": null,
+          "weight": 19,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "1754858776558",
@@ -216,16 +203,14 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "5percent_dora_Konjac",
-              "wordParty": "!5percent_dora_0",
-              "characterKey": "5percent_Dora",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "5percent_dora_Konjac"
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "timers",
@@ -249,23 +234,16 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "5percent_dora_0",
-          "characterKey": "5percent_Dora",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "5percent_dora_0"
         },
         {
           "delaySeconds": 1,
-          "wordParty": "5percent_dora_1",
-          "characterKey": "5percent_Dora",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "5percent_dora_1"
         }
-      ]
+      ],
+      "gameScripts": null
     },
     "5percent_dora": {
       "id": "5percent_dora",
@@ -273,7 +251,7 @@
       "name": "ドラちゃん",
       "description": "ひみつ道具を出してくれます",
       "createdAt": "2025-10-11T00:37:22.462Z",
-      "updatedAt": "2025-10-11T01:22:51.448Z",
+      "updatedAt": "2026-01-01T00:10:33.496Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -282,23 +260,22 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "actionSetKey": "5percent_dora_hand",
-          "wordParty": "",
-          "characterKey": "5percent_Dora",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "actionSet"
+          "actionType": "actionSet",
+          "actionSetKey": "5percent_dora_hand"
         },
         {
           "delaySeconds": 1.5,
-          "wordParty": "",
+          "actionType": "message",
           "characterKey": "5percent_Dora",
           "iconKey": "default",
-          "messageContent": "はぁーい、<<5percent_Dora>>～",
-          "messageToast": "",
-          "actionType": "message"
+          "sound": "",
+          "message": {
+            "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='<<5percent_Dora>>'}}はぁーい、{{text}}～",
+            "toast": ""
+          }
         }
-      ]
+      ],
+      "gameScripts": null
     },
     "5percent_dora_boron": {
       "id": "5percent_dora_boron",
@@ -306,7 +283,7 @@
       "name": "ドラちゃん(ボロン)",
       "description": "オンボロがオンボロをボロンします",
       "createdAt": "2025-10-11T00:41:10.500Z",
-      "updatedAt": "2025-10-11T01:21:55.578Z",
+      "updatedAt": "2026-01-01T01:03:54.343Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -315,32 +292,33 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "actionSetKey": "5percent_dora_hand",
-          "wordParty": "",
-          "characterKey": "5percent_Dora",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "actionSet"
+          "actionType": "actionSet",
+          "actionSetKey": "5percent_dora_hand"
         },
         {
           "delaySeconds": 1.5,
-          "wordParty": "5percent_dora_2",
+          "actionType": "message",
           "characterKey": "5percent_Dora",
           "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "sound": "",
+          "message": {
+            "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='チンポ'}}{{var variant='error'}}はぁーい（ボロン）",
+            "toast": ""
+          }
         },
         {
           "delaySeconds": 5,
+          "actionType": "message",
           "characterKey": "5percent_Dora",
           "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "オンボロのオンボロをボロンさせたのは、<<user>>さんです。",
-          "actionType": "toast",
-          "sound": "fanfare"
+          "sound": "fanfare",
+          "message": {
+            "bubble": "",
+            "toast": "オンボロのオンボロをボロンさせたのは、<<user>>さんです。"
+          }
         }
-      ]
+      ],
+      "gameScripts": null
     },
     "5percent_dora_Konjac": {
       "id": "5percent_dora_Konjac",
@@ -348,7 +326,7 @@
       "name": "ドラちゃん (こんにゃく)",
       "description": "こ、これは伝説の…",
       "createdAt": "2025-10-11T01:17:21.409Z",
-      "updatedAt": "2025-10-11T01:21:33.864Z",
+      "updatedAt": "2026-01-01T01:04:20.764Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -357,23 +335,27 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "5percent_dora_Konjac_0",
-          "characterKey": "5percent_Dora",
-          "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "5percent_dora_Konjac_0"
         },
         {
           "delaySeconds": 1,
-          "wordParty": "5percent_dora_Konjac_1",
+          "actionType": "wordParty",
+          "wordParty": "5percent_dora_Konjac_1"
+        },
+        {
+          "delaySeconds": 1.5,
+          "actionType": "message",
           "characterKey": "5percent_Dora",
           "iconKey": "default",
-          "messageContent": "",
-          "messageToast": "",
-          "actionType": "wordParty"
+          "sound": "",
+          "message": {
+            "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='どこでもしずちゃん'}}{{var variant='neutral'}}はぁーい、{{text}}～",
+            "toast": ""
+          }
         }
-      ]
+      ],
+      "gameScripts": null
     }
   },
   "placeholders": {
@@ -1782,89 +1764,130 @@
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
-      "frameId": "5percent_Dora",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": false,
-        "isVoice": true
+        "mode": "voice",
+        "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAfBJREFUSEvtk01IVFEUx3/3vTfKcyLC6GNyCnERIVKQWg4F0YetGqrFMC2DQsJNA5FBEUVBBC4SplxpgtDC2tiQUtC2mSAqNaJctQlmaqpZlDb65s6rZzBkjt6r1c67Pf9zfvf8zzki0DHm8h+fWAao3F22SOUQS7NITkNRgs/+t4CKp500bigSv3UTyzLJpDMcCR8mf3RgXpBWB8bHV7TtDRAJ1RDcGJxT7Hb/AP2pHOm1rXNiWoD2hiynIy0L2pH7kmNXxxCyJjRLpwT4Utd52Hup7M//JHbG++j5EALTVwopAfuzcbq7u5TD9ASpJ0lOPKpGCl2AM8nI5XrsClML4LoujbEEE6sa9DoQ39K8vNaCXWlpATxR06EYk/5a5JbwTI7SotSZANUrq7QAjuOwrcvPd0ewInGQwvaTaoA9eIyR0WdagMTgfWJjYVzr1wFamaQa4Amv1L8gGo0oIftO9fJuU/vi1tRTB9/f43HPOYQQ80Iunr/AHfMsrr1u8QAvwx6/S1trHTu21tHU3DxTRErJ8IMh+pJTjPoOUKxav7RLLmVJB9MA//MbGNnX5Hde5euaPSXPy7Wn3KIFjS8WMMaHmd58vOzvtdZUOdmfS2B8fkuB1RQCu0HMPsq/6+A3uvHpDW5+gqnaKJiVpcgPOou95FDza+YAAAAASUVORK5CYII=",
+        "frameId": "5percent_Dora",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#b3e5fc",
         "textColor": "#eceff1",
         "backgroundColor": "#1976d2"
       },
       "image": {
-        "default": "5percent_Dora/default.webp",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
-      },
-      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAfBJREFUSEvtk01IVFEUx3/3vTfKcyLC6GNyCnERIVKQWg4F0YetGqrFMC2DQsJNA5FBEUVBBC4SplxpgtDC2tiQUtC2mSAqNaJctQlmaqpZlDb65s6rZzBkjt6r1c67Pf9zfvf8zzki0DHm8h+fWAao3F22SOUQS7NITkNRgs/+t4CKp500bigSv3UTyzLJpDMcCR8mf3RgXpBWB8bHV7TtDRAJ1RDcGJxT7Hb/AP2pHOm1rXNiWoD2hiynIy0L2pH7kmNXxxCyJjRLpwT4Utd52Hup7M//JHbG++j5EALTVwopAfuzcbq7u5TD9ASpJ0lOPKpGCl2AM8nI5XrsClML4LoujbEEE6sa9DoQ39K8vNaCXWlpATxR06EYk/5a5JbwTI7SotSZANUrq7QAjuOwrcvPd0ewInGQwvaTaoA9eIyR0WdagMTgfWJjYVzr1wFamaQa4Amv1L8gGo0oIftO9fJuU/vi1tRTB9/f43HPOYQQ80Iunr/AHfMsrr1u8QAvwx6/S1trHTu21tHU3DxTRErJ8IMh+pJTjPoOUKxav7RLLmVJB9MA//MbGNnX5Hde5euaPSXPy7Wn3KIFjS8WMMaHmd58vOzvtdZUOdmfS2B8fkuB1RQCu0HMPsq/6+A3uvHpDW5+gqnaKJiVpcgPOou95FDza+YAAAAASUVORK5CYII="
-    }
-  },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
-      "fontFamily": "kosugiMaru",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": false,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "fantasy"
-    },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "basic",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+        "default": [
+          "5percent_Dora/default.webp"
+        ],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "wordPartySettings": []
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "5percent_Dora"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "night",
+        "backFrom": "secondary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
+      "fontFamily": "mplus1p",
+      "bubbleMotionEnter": "zoomIn",
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "night",
+        "backFrom": "secondary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "showToastsOnRight": true,
+      "showToastsCharacter": false,
+      "showThumbnail": []
+    },
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "ひみつ道具履歴",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "cmyk"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "basic",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "pro"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
+    "daisyUiTheme": "fantasy"
+  }
 }
