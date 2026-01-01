@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "v2.0.0-beta3",
+    "dataVersion": 2.0003,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -31,8 +31,6 @@
       "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757800562314",
@@ -46,28 +44,28 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "TarotCardFirst",
-              "wordParty": "!TarotCard_direction",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKey": "TarotCardFirst"
             },
             {
               "delaySeconds": 3.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは<<TarotCard>>",
               "sound": "collect",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは<<TarotCard>>"
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
@@ -89,13 +87,14 @@
           "^占う",
           "^fortune",
           "タロットカード"
-        ]
+        ],
+        "userName": []
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -116,37 +115,26 @@
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "TarotCard_back",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_back"
         },
         {
           "delaySeconds": 1,
-          "wordParty": "TarotCard_01",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_01"
         },
         {
           "delaySeconds": 1.5,
-          "wordParty": "TarotCard_02",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_02"
         },
         {
           "delaySeconds": 2,
-          "wordParty": "TarotCard_03",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_03"
         }
-      ]
+      ],
+      "gameScripts": null
     }
   },
   "placeholders": {
@@ -155,57 +143,57 @@
       "key": "TarotCard",
       "name": "タロット:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-01T01:33:52.520Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "【愚者】(正位置) <<TarotCardFool_U>>",
-        "【愚者】(逆位置) <<TarotCardFool_R>>",
-        "【魔術師】(正位置) <<TarotCardMagician_U>>",
-        "【魔術師】(逆位置) <<TarotCardMagician_R>>",
-        "【女教皇】(正位置) <<TarotCardHighPriestess_U>>",
-        "【女教皇】(逆位置) <<TarotCardHighPriestess_R>>",
-        "【女帝】(正位置) <<TarotCardEmpress_U>>",
-        "【女帝】(逆位置) <<TarotCardEmpress_R>>",
-        "【皇帝】(正位置) <<TarotCardEmperor_U>>",
-        "【皇帝】(逆位置) <<TarotCardEmperor_R>>",
-        "【法王】(正位置) <<TarotCardHierophant_U>>",
-        "【法王】(逆位置) <<TarotCardHierophant_R>>",
-        "【恋人】(正位置) <<TarotCardLovers_U>>",
-        "【恋人】(逆位置) <<TarotCardLovers_R>>",
-        "【戦車】(正位置) <<TarotCardChariot_U>>",
-        "【戦車】(逆位置) <<TarotCardChariot_R>>",
-        "【力】(正位置) <<TarotCardStrength_U>>",
-        "【力】(逆位置) <<TarotCardStrength_R>>",
-        "【隠者】(正位置) <<TarotCardHermit_U>>",
-        "【隠者】(逆位置) <<TarotCardHermit_R>>",
-        "【運命の輪】(正位置) <<TarotCardWheelOfFortune_U>>",
-        "【運命の輪】(逆位置) <<TarotCardWheelOfFortune_R>>",
-        "【正義】(正位置) <<TarotCardJustice_U>>",
-        "【正義】(逆位置) <<TarotCardJustice_R>>",
-        "【吊るされた男】(正位置) <<TarotCardHangedMan_U>>",
-        "【吊るされた男】(逆位置) <<TarotCardHangedMan_R>>",
-        "【死神】(正位置) <<TarotCardDeath_U>>",
-        "【死神】(逆位置) <<TarotCardDeath_R>>",
-        "【節制】(正位置) <<TarotCardTemperance_U>>",
-        "【節制】(逆位置) <<TarotCardTemperance_R>>",
-        "【悪魔】(正位置) <<TarotCardDevil_U>>",
-        "【悪魔】(逆位置) <<TarotCardDevil_R>>",
-        "【塔】(正位置) <<TarotCardTower_U>>",
-        "【塔】(逆位置) <<TarotCardTower_R>>",
-        "【星】(正位置) <<TarotCardStar_U>>",
-        "【星】(逆位置) <<TarotCardStar_R>>",
-        "【月】(正位置) <<TarotCardMoon_U>>",
-        "【月】(逆位置) <<TarotCardMoon_R>>",
-        "【太陽】(正位置) <<TarotCardSun_U>>",
-        "【太陽】(逆位置) <<TarotCardSun_R>>",
-        "【審判】(正位置) <<TarotCardJudgement_U>>",
-        "【審判】(逆位置) <<TarotCardJudgement_R>>",
-        "【世界】(正位置) <<TarotCardWorld_U>>",
-        "【世界】(逆位置) <<TarotCardWorld_R>>"
+        "{{var text='愚者(正位置)'}}【{{text}}】 <<TarotCardFool_U>>",
+        "{{var variant='neutral'}}{{var text='愚者(逆位置)'}}【{{text}}】 <<TarotCardFool_R>>",
+        "{{var text='魔術師(正位置)'}}【{{text}}】 <<TarotCardMagician_U>>",
+        "{{var variant='neutral'}}{{var text='魔術師(逆位置)'}}【{{text}}】 <<TarotCardMagician_R>>",
+        "{{var text='女教皇(正位置)'}}【{{text}}】 <<TarotCardHighPriestess_U>>",
+        "{{var variant='neutral'}}{{var text='女教皇(逆位置)'}}【{{text}}】 <<TarotCardHighPriestess_R>>",
+        "{{var text='女帝(正位置)'}}【{{text}}】 <<TarotCardEmpress_U>>",
+        "{{var variant='neutral'}}{{var text='女帝(逆位置)'}}【{{text}}】 <<TarotCardEmpress_R>>",
+        "{{var text='皇帝(正位置)'}}【{{text}}】 <<TarotCardEmperor_U>>",
+        "{{var variant='neutral'}}{{var text='皇帝(逆位置)'}}【{{text}}】 <<TarotCardEmperor_R>>",
+        "{{var text='法王(正位置)'}}【{{text}}】 <<TarotCardHierophant_U>>",
+        "{{var variant='neutral'}}{{var text='法王(逆位置)'}}【{{text}}】 <<TarotCardHierophant_R>>",
+        "{{var text='恋人(正位置)'}}【{{text}}】 <<TarotCardLovers_U>>",
+        "{{var variant='neutral'}}{{var text='恋人(逆位置)'}}【{{text}}】 <<TarotCardLovers_R>>",
+        "{{var text='戦車(正位置)'}}【{{text}}】 <<TarotCardChariot_U>>",
+        "{{var variant='neutral'}}{{var text='戦車(逆位置)'}}【{{text}}】 <<TarotCardChariot_R>>",
+        "{{var text='力(正位置)'}}【{{text}}】 <<TarotCardStrength_U>>",
+        "{{var variant='neutral'}}{{var text='力(逆位置)'}}【{{text}}】 <<TarotCardStrength_R>>",
+        "{{var text='隠者(正位置)'}}【{{text}}】 <<TarotCardHermit_U>>",
+        "{{var variant='neutral'}}{{var text='隠者(逆位置)'}}【{{text}}】 <<TarotCardHermit_R>>",
+        "{{var text='運命の輪(正位置)'}}【{{text}}】 <<TarotCardWheelOfFortune_U>>",
+        "{{var variant='neutral'}}{{var text='運命の輪(逆位置)'}}【{{text}}】 <<TarotCardWheelOfFortune_R>>",
+        "{{var text='正義(正位置)'}}【{{text}}】 <<TarotCardJustice_U>>",
+        "{{var variant='neutral'}}{{var text='正義(逆位置)'}}【{{text}}】 <<TarotCardJustice_R>>",
+        "{{var text='吊るされた男(正位置)'}}【{{text}}】 <<TarotCardHangedMan_U>>",
+        "{{var variant='neutral'}}{{var text='吊るされた男(逆位置)'}}【{{text}}】 <<TarotCardHangedMan_R>>",
+        "{{var text='死神(正位置)'}}【{{text}}】 <<TarotCardDeath_U>>",
+        "{{var variant='neutral'}}{{var text='死神(逆位置)'}}【{{text}}】 <<TarotCardDeath_R>>",
+        "{{var text='節制(正位置)'}}【{{text}}】 <<TarotCardTemperance_U>>",
+        "{{var variant='neutral'}}{{var text='節制(逆位置)'}}【{{text}}】 <<TarotCardTemperance_R>>",
+        "{{var text='悪魔(正位置)'}}【{{text}}】 <<TarotCardDevil_U>>",
+        "{{var variant='neutral'}}{{var text='悪魔(逆位置)'}}【{{text}}】 <<TarotCardDevil_R>>",
+        "{{var text='塔(正位置)'}}【{{text}}】 <<TarotCardTower_U>>",
+        "{{var variant='neutral'}}{{var text='塔(逆位置)'}}【{{text}}】 <<TarotCardTower_R>>",
+        "{{var text='星(正位置)'}}【{{text}}】 <<TarotCardStar_U>>",
+        "{{var variant='neutral'}}{{var text='星(逆位置)'}}【{{text}}】 <<TarotCardStar_R>>",
+        "{{var text='月(正位置)'}}【{{text}}】 <<TarotCardMoon_U>>",
+        "{{var variant='neutral'}}{{var text='月(逆位置)'}}【{{text}}】 <<TarotCardMoon_R>>",
+        "{{var text='太陽(正位置)'}}【{{text}}】 <<TarotCardSun_U>>",
+        "{{var variant='neutral'}}{{var text='太陽(逆位置)'}}【{{text}}】 <<TarotCardSun_R>>",
+        "{{var text='審判(正位置)'}}【{{text}}】 <<TarotCardJudgement_U>>",
+        "{{var variant='neutral'}}{{var text='審判(逆位置)'}}【{{text}}】 <<TarotCardJudgement_R>>",
+        "{{var text='世界(正位置)'}}【{{text}}】 <<TarotCardWorld_U>>",
+        "{{var variant='neutral'}}{{var text='世界(逆位置)'}}【{{text}}】 <<TarotCardWorld_R>>"
       ]
     },
     "TarotCardFool_U": {
@@ -1065,89 +1053,127 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
       "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#AB47BC",
         "textColor": "#F3E5F5",
         "backgroundColor": "#6A1B9A",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
       "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "kaiseiDecol",
       "bubbleMotionEnter": "flipX",
-      "bubbleMotionLeave": "flipX",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "night"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "limit": 5,
+      "sortOrder": "new",
+      "color": "lofi"
+    },
+    "counter": {
+      "ruleKey": null,
+      "target": "draw",
+      "label": "Counter",
+      "showCounter": true,
+      "firstValue": 0,
+      "isDirectionUp": true,
+      "maxUsers": 1,
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "pro",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "pro"
+    },
+    "components": [
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "experimental"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "",
+    "daisyUiTheme": "night"
+  }
 }

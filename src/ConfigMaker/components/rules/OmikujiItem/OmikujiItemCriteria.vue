@@ -53,7 +53,7 @@
       <!-- カウント条件 -->
       <TriggerCount
         v-if="isConditionChecked('count')"
-        :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'lc', value: 0 }"
+        :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'draws', value: 0 }"
         @update:modelValue="updateCriteriaProperty('count', $event)"
       />
     </div>

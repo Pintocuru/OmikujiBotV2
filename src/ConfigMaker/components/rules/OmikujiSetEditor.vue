@@ -85,7 +85,7 @@
   const omikujiStore = useOmikujiStore()
 
   // 選択されたおみくじアイテムのインデックス
-  const selectedOmikujiIndex = ref<number | null>(null)
+  const selectedOmikujiIndex = ref<number | null>(0)
 
   // Computed
   const omikujiSets = computed({
