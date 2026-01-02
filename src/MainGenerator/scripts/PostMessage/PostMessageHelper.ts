@@ -3,7 +3,7 @@ import { CharacterType } from '@/types/'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { Service } from '../../../../../../libs/onesdk/types/Service'
+import { Service } from '@onecomme.com/onesdk/types/Service'
 
 /**
  * わんコメ投稿用のリクエストオブジェクトを作成

@@ -4,11 +4,11 @@ import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
+import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { GetUserVisits } from '@shared/sdk/subscribe/GetUserVisits'
 import { ConfigUserSchema, ServiceMetaCondition, ServiceVisitType } from '@shared/types'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { ServiceMeta } from '../../../../../../libs/onesdk/types/Service'
 
 export class DefaultPlaceholderService {
   private serviceMeta: ServiceMeta | null = null
