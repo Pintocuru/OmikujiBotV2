@@ -1,11 +1,16 @@
 // src\MainGenerator\scripts\BotMessage\BotMessageGenerator.ts
 import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
-import { PostActionType, PostActionMessageType, PostActionSoundType } from '@/types/OmikujiData/OmikujiSchema'
-import { CharacterColorType, CharacterType } from '@/types/OmikujiData/CharacterSchema'
+import {
+  PostActionType,
+  PostActionMessageType,
+  PostActionSoundType,
+  CharacterColorType,
+  CharacterType,
+  OmikujiDataType,
+} from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@/common/sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { resolveSettingMode, SettingMode } from '@/common/FeatureAccess/SettingMode'
-import { OmikujiDataType } from '@/types'
 import { AccessLevelType } from '@shared/types'
 
 export class BotMessageGenerator {
@@ -129,8 +134,8 @@ export class BotMessageGenerator {
       color,
       message:
         messageType === 'bubble'
-          ? { bubble: postAction.message.bubble, ...postAction.message }
-          : { toast: postAction.message.toast, ...postAction.message },
+          ? { ...postAction.message, bubble: postAction.message.bubble }
+          : { ...postAction.message, toast: postAction.message.toast },
     })
   }
 
@@ -158,7 +163,7 @@ export class BotMessageGenerator {
   /**
    * コンテンツの有無チェック
    */
-  private hasContent(content: string | undefined): boolean {
+  private hasContent(content: string | null | undefined): boolean {
     return !!content?.trim()
   }
 

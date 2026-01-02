@@ -1,7 +1,7 @@
 // src\types\MainGenerator\BotMessageSchema.ts
 import { z } from 'zod'
 import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
-import { PostActionMessageBodySchema } from '../OmikujiData/PostActionMessage'
+import { PostActionMessageBodySchema } from '../OmikujiData/ActionMessage'
 
 // BotMessage
 export const BotMessageSchema = z.object({

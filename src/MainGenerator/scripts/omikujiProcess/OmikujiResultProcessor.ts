@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
 import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType } from '@/types'
-import { OmikujiItemType, PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiItemType, ActionSetType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@/MainGenerator/scripts/BotMessage/BotMessageGenerator'
@@ -10,7 +10,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { GameScriptManager } from '../../stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
-import { RankingMessageSchema, UserNameSchema } from '@/types/OmikujiData/PostActionMessage'
+import { RankingMessageSchema, UserNameSchema } from '@/types/OmikujiData/ActionMessage'
 import { ExpressionEvaluator } from '../VariablePlaceholder/ExpressionEvaluator'
 
 /**
@@ -20,7 +20,7 @@ export class OmikujiResultProcessor {
   private readonly placeProcess: PlaceholderProcessor
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
-  private readonly actionSets: Record<string, PostActionRecordType>
+  private readonly actionSets: Record<string, ActionSetType>
   private evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   constructor(
@@ -70,7 +70,7 @@ export class OmikujiResultProcessor {
   /**
    * おみくじアクションの処理
    */
-  private processOmikujiActions(omikujiItem: PostActionRecordType, omiken?: OmikenCommentType): PostActionType[] {
+  private processOmikujiActions(omikujiItem: ActionSetType, omiken?: OmikenCommentType): PostActionType[] {
     // アクションセットの展開
     const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 

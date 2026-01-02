@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
   import { Send, FileJson } from 'lucide-vue-next'

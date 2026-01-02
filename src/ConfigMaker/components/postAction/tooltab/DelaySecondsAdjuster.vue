@@ -25,9 +25,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-  import { Minus, Plus } from 'lucide-vue-next'
+  import { PostActionType } from '@/types/OmikujiData/'
   import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+  import { Minus, Plus } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{

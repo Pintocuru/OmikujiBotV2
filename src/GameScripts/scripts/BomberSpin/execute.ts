@@ -1,6 +1,6 @@
 // src\common\GameScripts\scripts\BomberSpin\execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, UserNameType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { playSlot } from './game'
 import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@/GameScripts/parseQueryString'

@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
-import { PostActionRecordType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { ActionSetType, PostActionType } from '@/types/OmikujiData/'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 export class ActionSetExpander {
@@ -7,7 +7,7 @@ export class ActionSetExpander {
 
   static expand(
     actions: PostActionType[],
-    actionSets: Record<string, PostActionRecordType>,
+    actionSets: Record<string, ActionSetType>,
     depth: number = 0,
     visited: Set<string> = new Set()
   ): PostActionType[] {
@@ -33,7 +33,7 @@ export class ActionSetExpander {
 
   private static expandSingleActionSet(
     action: Extract<PostActionType, { actionType: 'actionSet' }>, // 型を絞る
-    actionSets: Record<string, PostActionRecordType>,
+    actionSets: Record<string, ActionSetType>,
     depth: number,
     visited: Set<string>
   ): PostActionType[] {

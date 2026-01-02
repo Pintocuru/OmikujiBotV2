@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostActionRecordType } from '@/types'
+  import { ActionSetType } from '@/types'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
   import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
@@ -68,7 +68,7 @@
       if (!selectedItemKey.value) return null
       return data.value.actionSets[selectedItemKey.value]
     },
-    set: (value: PostActionRecordType) => {
+    set: (value: ActionSetType) => {
       omikujiStore.updateItem('actionSets', value.key, value)
     },
   })

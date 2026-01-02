@@ -2,17 +2,14 @@
 import { ComputedRef } from 'vue'
 import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
 import { RuleType } from '@/types/OmikujiData/RulesSchema'
-import { PostActionRecordType, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+import { ActionSetType, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
 import { TargetCategoryType } from './useDataExtractor'
 import { usePostActionCharacters } from './usePostActionCharacters'
 
 /**
  * キャラクターの一括更新処理を提供
  */
-export function useCharacterUpdater(
-  category: TargetCategoryType,
-  allItems: ComputedRef<(RuleType | PostActionRecordType)[]>
-) {
+export function useCharacterUpdater(category: TargetCategoryType, allItems: ComputedRef<(RuleType | ActionSetType)[]>) {
   const omikujiStore = useOmikujiStore()
   const { applyCharacterMappings } = usePostActionCharacters()
 
@@ -22,7 +19,7 @@ export function useCharacterUpdater(
   const applyMappingsToAllItems = (mappings: Record<string, string>) => {
     if (category === 'actionSets') {
       // actionSetsの場合: postActionsを直接更新
-      const items = allItems.value as PostActionRecordType[]
+      const items = allItems.value as ActionSetType[]
       items.forEach((item) => {
         const newPostActions = applyCharacterMappings(item.postActions, mappings)
         omikujiStore.updateItem('actionSets', item.key, {

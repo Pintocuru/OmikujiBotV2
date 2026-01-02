@@ -5,8 +5,7 @@ import {
   defaultPlaceholdersLabels,
   defaultPlaceholdersShortLabels,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { PlaceholderSchema, PlaceholderType } from '@/types/OmikujiData/PlaceholderSchema'
+import { PlaceholderSchema, PlaceholderType, PostActionType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
 /**

@@ -1,11 +1,7 @@
-// shared/types/CharacterSchema.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
-import { DaisyUIColorSchema, DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
-
-/**
- * 各種 Threshold
- */
+import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 
 /** キャラクターの画像設定 */
 export const characterEmotions = [

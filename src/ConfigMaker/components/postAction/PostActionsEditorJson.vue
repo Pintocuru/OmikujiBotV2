@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { PostActionType, PostActionSchema } from '@/types/OmikujiData/OmikujiSchema'
+  import { PostActionType, PostActionSchema } from '@/types/OmikujiData/'
   import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
   import Swal from 'sweetalert2'
 

@@ -5,11 +5,11 @@ import { CharacterSchema } from './CharacterSchema'
 import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'
 import { recordNormalization } from './OmikujiDataNormalize'
 import { PackageJsonSchema } from '@shared/types'
-import { ActionSetSchema } from './OmikujiSchema'
 import { JsonMergeSchema } from './JsonMergeType'
 import { ComponentsSchema } from './ComponentsSchema'
 import { FeatureUsageSchema } from './FeatureUsageSchema'
 import { SettingsSchema } from './SettingsSchema'
+import { ActionSetSchema } from './ActionSet'
 
 /**
  * おみくじデータ全体のメインスキーマ

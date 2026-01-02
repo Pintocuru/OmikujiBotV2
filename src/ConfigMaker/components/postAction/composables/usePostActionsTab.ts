@@ -1,6 +1,6 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
-import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/'
 
 export function usePostActionsTab(
   actions: Ref<PostActionType[]>,

@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/DwarfBomb/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, UserNameType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@/GameScripts/parseQueryString'
 import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'

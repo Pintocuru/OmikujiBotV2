@@ -1,4 +1,5 @@
 // types\OmikujiData\CategoryType.ts
+import { ActionSetSchema, ActionSetType } from './ActionSet'
 import { PlaceholderSchema, PlaceholderType } from './PlaceholderSchema'
 import { CharacterSchema, CharacterType } from './CharacterSchema'
 import {
@@ -11,7 +12,6 @@ import {
   TimerRuleType,
 } from './RulesSchema'
 import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Layers } from 'lucide-vue-next'
-import { ActionSetSchema, PostActionRecordType } from './OmikujiSchema'
 
 /**
  * RecordCategory
@@ -22,14 +22,14 @@ export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
   comments: Record<string, CommentRuleType>
   timers: Record<string, TimerRuleType>
-  actionSets: Record<string, PostActionRecordType>
+  actionSets: Record<string, ActionSetType>
   placeholders: Record<string, PlaceholderType>
   characters: Record<string, CharacterType>
 }
 export type RecordCategoryItemTypeMap = {
   comments: CommentRuleType
   timers: TimerRuleType
-  actionSets: PostActionRecordType
+  actionSets: ActionSetType
   placeholders: PlaceholderType
   characters: CharacterType
 }

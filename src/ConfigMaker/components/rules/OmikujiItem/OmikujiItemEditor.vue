@@ -34,14 +34,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/'
   import OmikujiItemPriority from './OmikujiItemPriority.vue'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
   import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   const props = defineProps<{
     category: RulesCategoryType

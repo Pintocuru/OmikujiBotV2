@@ -23,7 +23,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionType } from '@/types/'
-  import { useCharacterManager } from '../../../scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'

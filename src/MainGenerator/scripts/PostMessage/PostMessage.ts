@@ -3,8 +3,8 @@ import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
 import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { Service } from '../../../../../../libs/onesdk/types/Service'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
+import { Service } from '../../../../../../libs/onesdk/types/Service'
 
 // メインクラス
 

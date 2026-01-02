@@ -1,6 +1,5 @@
 // src/MainGenerator/scripts/omikujiProcess/placeholders/PlaceholderResolver.ts
-import { handelNormalizedValues, PlaceholderType, PlaceholderValueType } from '@/types/'
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
+import { PlaceholderType, selectValue } from '@/types/'
 import { collectPlaceholderDependencies, extractPlaceholderIds } from './PlaceholderAnalyzer'
 
 /**
@@ -50,23 +49,11 @@ export class PlaceholderResolver {
       return `<<${placeholderId}>>`
     }
 
-    const normalizedValues = handelNormalizedValues(placeholder.values)
-    if (normalizedValues.length === 0) return ''
-
     // ランダム抽選で値を選択
-    const selectedValue = this.selectValue(normalizedValues)
-    if (!selectedValue?.content) return normalizedValues[0].content || ''
+    const selectedValue = selectValue(placeholder.values)
 
     // コンテンツの処理
-    return this.processContent(selectedValue.content, depth)
-  }
-
-  /**
-   * ランダム抽選で値を選択
-   */
-  private selectValue(normalizedValues: PlaceholderValueType[]): PlaceholderValueType {
-    const drawnValue = drawOmikuji(normalizedValues)
-    return drawnValue || normalizedValues[0]
+    return this.processContent(selectedValue, depth)
   }
 
   /**

@@ -41,8 +41,6 @@ export function useTestPost() {
         (post) =>
           new Promise<void>((resolve) => {
             setTimeout(() => {
-              // 🎵 sound再生
-              if (post.sound) playSound(post.sound)
               resolve()
             }, post.delaySeconds * 1000)
           })

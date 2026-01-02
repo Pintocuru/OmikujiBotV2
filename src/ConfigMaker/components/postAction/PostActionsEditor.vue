@@ -24,10 +24,10 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/tooltab/OmikujiItemToolbar.vue'
+  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/'
   import PostActionsTabs from './tooltab/PostActionsTabs.vue'
+  import OmikujiItemToolbar from '@/ConfigMaker/components/postAction/tooltab/OmikujiItemToolbar.vue'
   import PostActionsEditorJson from '@ConfigComponents/postAction/PostActionsEditorJson.vue'
-  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 
   const props = defineProps<{
     modelValue: PostActionType[]

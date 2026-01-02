@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+  import { PostActionType } from '@/types/OmikujiData/'
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'

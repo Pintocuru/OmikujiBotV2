@@ -1,6 +1,6 @@
 // src/configMaker/components/placeholders/composables/usePlaceholders.ts
 import { computed, Ref } from 'vue'
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionType } from '@/types/OmikujiData/'
 import { usePlaceholderData } from './usePlaceholderData'
 import { usePlaceholderFilter } from './usePlaceholderFilter'
 

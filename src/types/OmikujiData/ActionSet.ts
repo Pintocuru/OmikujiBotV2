@@ -1,0 +1,191 @@
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\ActionSet.ts
+import { z } from 'zod'
+import { CharacterEmotionSchema } from './CharacterSchema'
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { BaseRecordSchema } from '@shared/types'
+import { soundList } from '@/common/sounds/soundMap'
+import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
+import { PostActionMessageBodySchema } from './ActionMessage'
+
+// PostAction delaySeconds
+const PostActionBaseSchema = z.object({
+  delaySeconds: z
+    .number()
+    .min(POST_SETTINGS.basicDelaySeconds * -1)
+    .default(0)
+    .catch(0),
+})
+
+// PostAction message
+export const PostActionMessageSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal('message').default('message'),
+  characterKey: z.string().catch('omiken'),
+  iconKey: CharacterEmotionSchema.default('default').catch('default'),
+  sound: z.enum(soundList).default('').catch(''),
+  message: PostActionMessageBodySchema.default(PostActionMessageBodySchema.parse({})).catch(
+    PostActionMessageBodySchema.parse({})
+  ),
+})
+export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
+
+// PostAction sound
+export const PostActionSoundSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal('sound').default('sound'),
+  sound: z.enum(soundList).default('').catch(''),
+})
+export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
+
+// PostAction WordParty
+export const PostActionWordPartySchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal('wordParty').default('wordParty'),
+  wordParty: z.string().default('').catch(''),
+})
+export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
+
+// PostAction actionSet
+export const PostActionActionSetSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal('actionSet').default('actionSet'),
+  actionSetKey: z.string().default('').catch(''),
+})
+export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
+
+// PostAction わんコメ・BOTちゃんに投稿する型定義
+export const PostActionSchema = z.discriminatedUnion('actionType', [
+  PostActionMessageSchema,
+  PostActionSoundSchema,
+  PostActionWordPartySchema,
+  PostActionActionSetSchema,
+])
+export type PostActionType = z.infer<typeof PostActionSchema>
+
+/**
+ * PostActionArray わんコメ・BOTちゃんに投稿する型定義
+ */
+export const PostActionArraySchema = z
+  .array(PostActionSchema)
+  .default([])
+  .catch([])
+  .transform((actions) => {
+    // delaySecondsが小さい順に並べ替え
+    return actions.sort((a, b) => a.delaySeconds - b.delaySeconds)
+  })
+
+/**
+ * GameScriptsSchema ゲームスクリプト用
+ */
+export const GameScriptsSchema = z.object({
+  scriptId: z.string().default('').catch(''),
+  queryString: z.string().default('').catch(''),
+  characterKey: z.string().default('').catch(''),
+})
+export type GameScriptsType = z.infer<typeof GameScriptsSchema>
+
+/**
+ * ActionSetSchema
+ */
+export const ActionSetSchema = z.object({
+  ...BaseRecordSchema.shape,
+  postActions: z
+    .array(z.any())
+    .default([])
+    .catch([])
+    .transform((oldActions) => {
+      // 1. マイグレーション関数の適用
+      const migratedActions = oldActions.flatMap(migratePostAction)
+
+      // 2. delaySecondsでソートし、新しい型として返す
+      return migratedActions.sort((a, b) => a.delaySeconds - b.delaySeconds) as PostActionType[]
+    }),
+  gameScripts: z.union([GameScriptsSchema, z.null()]).default(null).catch(null),
+})
+export type ActionSetType = z.infer<typeof ActionSetSchema>
+
+// ---
+// マイグレーション用関数
+
+/**
+ * 古い PostAction オブジェクトを新しい判別共用体形式 (PostActionSchema) にマイグレーションする。
+ * messageContent/messageToast を message.bubble/message.toast に変換し、
+ * 古い単一のアクションから複数のアクションが生成される可能性があるため、配列を返します。
+ */
+export function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
+  if (oldAction.messageContent === undefined || oldAction.messageContent === null) {
+    const parseResult = PostActionSchema.safeParse(oldAction)
+    if (parseResult.success) return [parseResult.data]
+  }
+
+  const newActions: PostActionType[] = []
+
+  const baseFields = {
+    delaySeconds: oldAction.delaySeconds ?? 0,
+  }
+
+  // 1. actionSet の移行 (最優先)
+  if (oldAction.actionSetKey && oldAction.actionSetKey.trim() !== '') {
+    newActions.push({
+      ...baseFields,
+      actionType: 'actionSet',
+      actionSetKey: oldAction.actionSetKey,
+    })
+    return newActions
+  }
+
+  // 2. message / toast の移行 (新しい 'message' actionTypeに集約)
+  const hasMessageOrToast =
+    (oldAction.messageContent && oldAction.messageContent.trim() !== '') ||
+    (oldAction.messageToast && oldAction.messageToast.trim() !== '')
+
+  if (hasMessageOrToast) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'message',
+      characterKey: oldAction.characterKey ?? '',
+      iconKey: oldAction.iconKey ?? 'default',
+      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
+      message: PostActionMessageBodySchema.parse({
+        bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
+        toast: oldAction.messageToast, // ★ messageToast -> message.toast
+      }),
+    })
+  }
+
+  // 3. wordParty の移行
+  if (oldAction.wordParty && oldAction.wordParty.trim() !== '') {
+    newActions.push({
+      ...baseFields,
+      actionType: 'wordParty',
+      wordParty: oldAction.wordParty,
+    })
+  }
+
+  // 4. sound の移行 (messageアクションに統合されなかった場合のみ)
+  const isSoundOnly = oldAction.sound && oldAction.sound.trim() !== '' && !hasMessageOrToast
+  if (isSoundOnly) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'sound',
+      sound: oldAction.sound as z.infer<typeof PostActionSoundSchema>['sound'],
+    })
+  }
+
+  // 5. フォールバック (何も設定されていなかった場合)
+  if (newActions.length === 0) {
+    newActions.push({
+      ...baseFields,
+      actionType: 'message',
+      characterKey: oldAction.characterKey ?? '',
+      iconKey: oldAction.iconKey ?? 'default',
+      sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
+      message: PostActionMessageBodySchema.parse({
+        bubble: oldAction.messageContent,
+        toast: oldAction.messageToast,
+      }),
+    })
+  }
+
+  return newActions
+}

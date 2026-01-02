@@ -1,12 +1,16 @@
 // src/ConfigMaker/script/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
-import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
 import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import type { useRecordCRUD } from './useRecordCRUD'
 import type { useRecordDataAccess } from './useRecordDataAccess'
+import {
+  OmikujiDataType,
+  OmikujiItemType,
+  PostActionType,
+  RecordCategoryItemTypeMap,
+  RecordCategoryType,
+} from '@/types/OmikujiData'
 
 /**
  * レコード型アイテムのプロパティ更新機能を提供

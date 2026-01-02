@@ -1,5 +1,5 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/usePostActionCharacters.ts
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionType } from '@/types/OmikujiData/'
 
 /**
  * PostAction内のキャラクター情報を扱うユーティリティ

@@ -110,15 +110,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType, GameScriptsSchema } from '@/types/OmikujiData/OmikujiSchema'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { storeToRefs } from 'pinia'
+  import { OmikujiItemType, GameScriptsSchema, RulesCategoryType } from '@/types/OmikujiData/'
+  import GameScriptPreview from './GameScriptPreview.vue'
   import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
   import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
-  import { storeToRefs } from 'pinia'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import GameScriptPreview from './GameScriptPreview.vue'
-  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
 
