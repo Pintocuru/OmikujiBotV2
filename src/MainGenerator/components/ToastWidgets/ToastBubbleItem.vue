@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
-  import type { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import type { CharacterColorType } from '@/types/OmikujiData/'
 
   const props = defineProps<{
     message: string

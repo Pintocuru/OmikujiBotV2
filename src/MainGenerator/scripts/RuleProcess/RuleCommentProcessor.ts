@@ -1,6 +1,6 @@
 // src/MainGenerator/script/RuleProcess/RuleCommentProcessor.ts
 import { BotMessage } from '@/types/'
-import { processUserComment } from '@/MainGenerator/scripts/RuleProcess/UserCommentProcessor'
+import { processUserComment } from '@main/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

@@ -97,15 +97,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import GameRankingList from '@/MainGenerator/components/GameRanking/GameRankingList.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types'
-  import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
-  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
+  import GameRankingList from '@main/components/GameRanking/GameRankingList.vue'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types/'
+  import { getAvailableScripts } from '@game/GameScriptsRules'
+  import { gameScriptMap } from '@game/GameScriptsMap'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()

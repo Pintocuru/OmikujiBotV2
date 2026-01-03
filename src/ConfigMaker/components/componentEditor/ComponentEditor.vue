@@ -82,8 +82,8 @@
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理

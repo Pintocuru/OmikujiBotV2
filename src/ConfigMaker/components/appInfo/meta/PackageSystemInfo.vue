@@ -36,9 +36,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ExternalLinkButton from '@ConfigComponents/parts/ExternalLinkButton.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
   import { storeToRefs } from 'pinia'
   import { Code, Settings, Tag, ExternalLink } from 'lucide-vue-next'
 

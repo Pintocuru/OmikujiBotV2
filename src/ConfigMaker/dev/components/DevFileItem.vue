@@ -69,9 +69,9 @@
 <script setup lang="ts">
   import { ref, nextTick } from 'vue'
   import type { FileItem } from '../devTypes'
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
-  import { useImportManager } from '@/ConfigMaker/components/presetsImport/composables/useImportManager'
-  import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
+  import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import Swal from 'sweetalert2'
   import { Download, FileText, Edit } from 'lucide-vue-next'

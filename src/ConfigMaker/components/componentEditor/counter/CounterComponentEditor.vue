@@ -132,12 +132,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsCounterSchema } from '@/types'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import DaisyUiThemeEditor from '@/ConfigMaker/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterPreviewCard from '@/MainGenerator/components/CounterPreview/CounterPreviewCard.vue'
-  import { generateDummyUserNames } from '@/MainGenerator/components/GameRanking/useDummyBotMessages'
+  import { SettingsCounterSchema } from '@/types/'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
+  import CounterPreviewCard from '@main/components/CounterPreview/CounterPreviewCard.vue'
+  import { generateDummyUserNames } from '@main/components/GameRanking/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()

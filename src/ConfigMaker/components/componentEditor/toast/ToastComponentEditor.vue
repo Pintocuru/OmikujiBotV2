@@ -83,16 +83,16 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsToastSchema } from '@/types'
+  import { SettingsToastSchema } from '@/types/'
   import { BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ToastBubbleItem from '@/MainGenerator/components/ToastWidgets/ToastBubbleItem.vue'
-  import CharacterThumbnailsPreview from '@/MainGenerator/components/ToastWidgets/CharacterThumbnailsPreview.vue'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
-  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import ToastBubbleItem from '@main/components/ToastWidgets/ToastBubbleItem.vue'
+  import CharacterThumbnailsPreview from '@main/components/ToastWidgets/CharacterThumbnailsPreview.vue'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

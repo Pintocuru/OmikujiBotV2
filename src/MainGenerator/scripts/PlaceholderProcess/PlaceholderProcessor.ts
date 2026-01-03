@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PlaceholderProcess\PlaceholderProcessor.ts
+// src\MainGenerator\scripts\PlaceholderProcess\PlaceholderProcessor.ts
 import { PostActionType, PlaceholderType } from '@/types/'
 import { DefaultTypes } from '@shared/types'
 import { PlaceholderResolver } from './PlaceholderResolver'

@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/'
   import { GripVertical } from 'lucide-vue-next'
 
   defineProps<{

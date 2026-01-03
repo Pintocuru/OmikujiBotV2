@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { CharacterColorType } from '@/types/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { CharacterColorType } from '@/types'
 
   const props = defineProps<{
     layers: string[] | string

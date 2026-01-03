@@ -1,5 +1,5 @@
 // src/MainGenerator/script/omikujiProcess/UserVisitManager.ts
-import { UserNameType } from '@/types'
+import { UserNameType } from '@/types/'
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
 /**

@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
   import { Save } from 'lucide-vue-next'
 
   const devStore = useDevStore()

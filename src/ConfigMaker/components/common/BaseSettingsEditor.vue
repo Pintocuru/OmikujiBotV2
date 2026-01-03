@@ -30,8 +30,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-  import KeyEditor from '@/ConfigMaker/components/KeyEditor/KeyEditor.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { BaseRecordType } from '@shared/types'
 
   const props = withDefaults(

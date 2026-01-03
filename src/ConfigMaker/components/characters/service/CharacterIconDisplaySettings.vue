@@ -71,9 +71,9 @@
   import { storeToRefs } from 'pinia'
   import { displayModeLabels, DisplayOptionType, isDev } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { playRpgVoiceLoop, rpgVoiceMap } from '@/common/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 

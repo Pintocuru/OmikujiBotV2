@@ -37,7 +37,7 @@
     RESERVED_KEYS,
     SELECT_PATTERN,
     VAR_DECLARATION_PATTERN,
-  } from '@/MainGenerator/scripts/VariablePlaceholder/ReservedKeys'
+  } from '@main/scripts/VariablePlaceholder/ReservedKeys'
 
   // Props
   const props = defineProps<{

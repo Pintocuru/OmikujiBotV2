@@ -1,8 +1,8 @@
 // src/MainGenerator/composables/useCommentBubblePersistent.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+import { useAppStore } from '@main/stores/useAppStore'
+import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 import { useCharacterSelection } from './useCharacterSelection'
 import { useCharacterEmotionState } from './useCharacterEmotionState'
 import { useBotDisplay } from './useBotDisplay'

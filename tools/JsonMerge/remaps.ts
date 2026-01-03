@@ -1,8 +1,8 @@
 // tools/JsonMerge/remaps.ts
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
-import type { OmikujiItemType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { CharacterEmotionType } from '@/types'
+import type { OmikujiItemType, PostActionType } from '@/types/OmikujiData/'
+import { CharacterEmotionType } from '@/types/'
 
 /**
  * PostActionの配列に対してリマップルールを適用

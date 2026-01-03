@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\OmikujiProcess\DefaultPlaceholderService.ts
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,

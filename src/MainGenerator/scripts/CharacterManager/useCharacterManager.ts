@@ -1,9 +1,9 @@
 // src\MainGenerator\scripts\CharacterManager\useCharacterManager.ts
 import { computed } from 'vue'
-import { CharacterSchema, CharacterType, ShowCharactersSchema } from '@/types'
+import { CharacterSchema, CharacterType, ShowCharactersSchema } from '@/types/'
 import { createCharacterEmotions } from '@/common/CharacterManager/createCharacterManager'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+import { useAppStore } from '@main/stores/useAppStore'
+import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
 export const useCharacterManager = () => {
   const appStore = useAppStore()

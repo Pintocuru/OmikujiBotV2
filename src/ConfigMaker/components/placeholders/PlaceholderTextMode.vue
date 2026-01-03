@@ -47,7 +47,7 @@
 <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue'
   import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{

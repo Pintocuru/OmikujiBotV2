@@ -1,5 +1,5 @@
 // tools\JsonMerge\KeySuffix.ts
-import { OmikujiDataType } from '@/types'
+import { OmikujiDataType } from '@/types/'
 
 export function applyKeySuffix(data: OmikujiDataType, suffix?: string): OmikujiDataType {
   if (!suffix || suffix === '') return data

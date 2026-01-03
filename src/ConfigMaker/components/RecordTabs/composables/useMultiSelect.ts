@@ -1,6 +1,6 @@
 // src/configMaker/components/RecordTabs/composables/useMultiSelect.ts
 import { ref, watch } from 'vue'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
 import type { useRuleState } from './useRuleState'
 import { BaseRecordType, AccessLevelType } from '@shared/types'

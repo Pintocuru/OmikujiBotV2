@@ -1,6 +1,6 @@
 // src/configMaker/dev/stores/api/useLoadActions.ts
 import { devConfigApi } from '../services/apiService'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { DevConfigStateType } from '../devTypes'
 
 export function useLoadActions(

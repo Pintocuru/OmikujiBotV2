@@ -15,12 +15,11 @@
       "@shared/*": ["../../shared/*"],
       "@assets/*": ["./assets/*"],
       "@/*": ["./src/*"],
-      "@LogRank/*": ["./src/GameScripts/LogRank/src/*"],
-      "@ConfigComponents/*": ["./src/ConfigMaker/components/*"],
-      "@ConfigScript/*": ["./src/ConfigMaker/scripts/*"],
-      "@ConfigStores/*": ["./src/ConfigMaker/stores/*"],
-      "@MainComponents/*": ["./src/MainGenerator/components/*"],
-      "@MainScripts/*": ["./src/MainGenerator/scripts/*"]
+      "@main/*": ["./src/MainGenerator/*"],
+      "@config/*": ["./src/ConfigMaker/*"],
+      "@game/*": ["./src/GameScripts/*"],
+      "@sounds/*": ["./src/common/sounds/*"],
+      "@migrations/*": ["./src/common/migrations/*"]
     }
   },
   "include": [

@@ -40,8 +40,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { storeToRefs } from 'pinia'
 
   // Store

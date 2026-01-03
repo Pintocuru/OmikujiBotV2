@@ -3,7 +3,7 @@ import { BotMessage, CommentRuleType, UserNameSchema } from '@/types/'
 import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
 import { buildRestrictionMessages } from './RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 

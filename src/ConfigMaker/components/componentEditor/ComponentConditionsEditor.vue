@@ -34,11 +34,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { useEnabledComponents } from '@/ConfigMaker/components/componentEditor/useEnabledComponents'
-  import { SettingsComponentsCondition } from '@/types'
+  import { useEnabledComponents } from '@config/components/componentEditor/useEnabledComponents'
+  import { SettingsComponentsCondition } from '@/types/'
 
   // Store
   const omikujiStore = useOmikujiStore()

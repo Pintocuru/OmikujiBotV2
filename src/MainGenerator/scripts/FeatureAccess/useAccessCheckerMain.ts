@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\useAccessCheckerMain.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import { useSettingModeFromHash } from '@/common/FeatureAccess/SettingMode'
 import { useAccessCheckerCore, useVisibilityAccessCore } from '@/common/FeatureAccess/useAccessChecker'
 

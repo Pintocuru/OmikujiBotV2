@@ -3,7 +3,7 @@ import { Ref } from 'vue'
 import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
-import { ImportPreview } from '@/ConfigMaker/components/presetsImport/ImportTypes'
+import { ImportPreview } from '@config/components/presetsImport/ImportTypes'
 import { normalizeData } from '@/common/migrations'
 import Swal from 'sweetalert2'
 

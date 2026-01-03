@@ -37,9 +37,9 @@
 <script setup lang="ts">
   import CommentBubbleItem from './CommentBubbleItem.vue'
   import { DisplayBotMessage } from './composables/useBotDisplay'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
+  import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
+  import { useAppStore } from '@main/stores/useAppStore'
 
   const props = withDefaults(
     defineProps<{

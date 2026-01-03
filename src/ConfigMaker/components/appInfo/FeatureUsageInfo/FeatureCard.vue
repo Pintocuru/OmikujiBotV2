@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useAccessChecker } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
   import type { AccessLevelType } from '@shared/types'
   import { CheckCircle } from 'lucide-vue-next'
 

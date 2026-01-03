@@ -58,11 +58,11 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
+  import { CharacterColorType } from '@/types/OmikujiData/'
   import { FontFamilyType, useFontFamily } from '@/types/MainGenerator/useFontFamily'
-  import { MotionType } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import CommentBubbleItem from '@MainComponents/CommentBubble/CommentBubbleItem.vue'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import CommentBubbleItem from '@main/components/CommentBubble/CommentBubbleItem.vue'
+  import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
+  import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
 
   // Props定義（元のコンポーネントと同じ）
   const props = withDefaults(

@@ -1,6 +1,6 @@
 // src\types\OmikujiData\ComponentsSchema.ts
 import { z } from 'zod'
-import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'

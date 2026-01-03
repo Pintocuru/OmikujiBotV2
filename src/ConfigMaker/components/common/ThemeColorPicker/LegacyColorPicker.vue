@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterColorType } from '@/types/OmikujiData/'
   import { DEFAULT_COLOR_THEMES } from './CharacterColorPreset'
 
   const props = defineProps<{

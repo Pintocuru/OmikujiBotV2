@@ -1,7 +1,7 @@
 // src/configMaker/components/placeholders/usePlaceholderValues.ts
 import { ref, computed } from 'vue'
 import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 export function usePlaceholderValues(placeholderId: string) {
   // Pinia store

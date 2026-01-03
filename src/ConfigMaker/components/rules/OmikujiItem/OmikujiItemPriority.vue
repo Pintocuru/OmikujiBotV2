@@ -53,12 +53,12 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import OmikujiItemCriteria from './OmikujiItemCriteria.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { CriteriaThresholdSchema } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
 
   const props = defineProps<{

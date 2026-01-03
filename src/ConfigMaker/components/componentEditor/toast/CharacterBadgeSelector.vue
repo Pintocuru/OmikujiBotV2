@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CharacterType } from '@/types'
+  import { CharacterType } from '@/types/'
 
   const props = defineProps<{
     characters: Record<string, CharacterType>

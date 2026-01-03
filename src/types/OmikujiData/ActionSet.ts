@@ -1,11 +1,11 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\ActionSet.ts
+// src\types\OmikujiData\ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { BaseRecordSchema } from '@shared/types'
-import { soundList } from '@/common/sounds/soundMap'
-import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
 import { PostActionMessageBodySchema } from './ActionMessage'
+import { soundList } from '@sounds/soundMap'
+import { PostActionType as OldPostActionType } from '@migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
+import { BaseRecordSchema } from '@shared/types'
+import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({

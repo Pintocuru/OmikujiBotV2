@@ -68,12 +68,12 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
-  import CharacterChanger from '@ConfigComponents/rules/CharacterChanger/CharacterChanger.vue'
-  import OmikujiItemEditor from '@/ConfigMaker/components/rules/OmikujiItem/OmikujiItemEditor.vue'
+  import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/'
+  import CharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
+  import OmikujiItemEditor from '@config/components/rules/OmikujiItem/OmikujiItemEditor.vue'
   import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
-  import { useTestPost } from '@/ConfigMaker/scripts/useTestPost'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useTestPost } from '@config/scripts/useTestPost'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useWeightCalculation } from './composables/useWeightCalculation'
   import { Dices, Plus, X } from 'lucide-vue-next'
 

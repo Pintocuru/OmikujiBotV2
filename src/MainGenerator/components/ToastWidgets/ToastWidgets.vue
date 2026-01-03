@@ -13,7 +13,7 @@
   import { computed } from 'vue'
   import ViewBotToast from './ViewBotToast.vue'
   import CharacterThumbnails from './CharacterThumbnails.vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
 
   const appStore = useAppStore()
   const toast = computed(() => appStore.data.components.toast)

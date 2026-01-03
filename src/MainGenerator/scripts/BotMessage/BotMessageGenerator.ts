@@ -8,7 +8,7 @@ import {
   CharacterType,
   OmikujiDataType,
 } from '@/types/OmikujiData/'
-import { playSoundDelay, playRpgVoiceLoop } from '@/common/sounds/PlaySound'
+import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { resolveSettingMode, SettingMode } from '@/common/FeatureAccess/SettingMode'
 import { AccessLevelType } from '@shared/types'

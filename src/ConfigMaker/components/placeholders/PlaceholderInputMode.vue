@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import {
     PlaceholderValueType,
     handelNormalizedValues,

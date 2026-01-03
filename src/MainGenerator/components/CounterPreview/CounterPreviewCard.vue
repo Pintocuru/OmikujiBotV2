@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
   import { ref, watch, computed } from 'vue'
-  import { SettingsCounterType } from '@/types'
+  import { SettingsCounterType } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
   const props = defineProps<{

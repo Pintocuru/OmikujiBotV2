@@ -39,12 +39,12 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { ActionSetType } from '@/types'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
-  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
-  import CharacterChanger from '@/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue'
-  import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
+  import { ActionSetType } from '@/types/'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
+  import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
+  import CharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
+  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 

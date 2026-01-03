@@ -21,7 +21,7 @@
   import { onMounted } from 'vue'
   import DevHeader from './components/DevHeader.vue'
   import DevFileList from './components/DevFileList.vue'
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
 
   const devStore = useDevStore()
 

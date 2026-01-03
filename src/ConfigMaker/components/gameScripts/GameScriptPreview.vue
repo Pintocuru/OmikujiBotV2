@@ -25,14 +25,14 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { GameScriptsType } from '@/types/'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
-  import CommentBubbleItem from '@/MainGenerator/components/CommentBubble/CommentBubbleItem.vue'
+  import CommentBubbleItem from '@main/components/CommentBubble/CommentBubbleItem.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
+  import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     gameScripts: GameScriptsType | null

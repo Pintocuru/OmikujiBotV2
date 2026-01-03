@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateReferences.ts
 import { rulesCategoryLabel } from '@/types/OmikujiData/RulesSchema'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
  * キャラクター参照の更新

@@ -1,6 +1,6 @@
 // src/ConfigMaker/composables/useWeightCalculation.ts
 import { computed, Ref } from 'vue'
-import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+import { OmikujiItemType } from '@/types/OmikujiData/'
 
 export const useWeightCalculation = (omikujiItems: Ref<OmikujiItemType[]>) => {
   // 全体の重みの合計を計算

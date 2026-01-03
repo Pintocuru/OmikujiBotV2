@@ -45,8 +45,8 @@
   import { computed } from 'vue'
   import { RecordCategoryUnion } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     rule: RecordCategoryUnion

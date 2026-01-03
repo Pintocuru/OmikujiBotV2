@@ -1,11 +1,11 @@
 // src/common/GameScripts/scripts/HugEmAll/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
-import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
-import { parseQueryString } from '@/GameScripts/parseQueryString'
+import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { buildRankingMessage, prepareUserInfo } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'HugEmAll'
 

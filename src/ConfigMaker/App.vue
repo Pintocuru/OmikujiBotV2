@@ -50,10 +50,10 @@
   import NavigationTabs from './components/appItems/NavigationTabs.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import FloatingElements from './components/appItems/FloatingElements.vue'
-  import ConfigImport from '@ConfigComponents/presetsImport/ConfigImport.vue'
-  import ConfigExport from '@ConfigComponents/presetsExport/ConfigExport.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import ConfigImportModal from '@/ConfigMaker/components/presetsImport/ConfigImportModal.vue'
+  import ConfigImport from '@config/components/presetsImport/ConfigImport.vue'
+  import ConfigExport from '@config/components/presetsExport/ConfigExport.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import { storeToRefs } from 'pinia'
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
 
@@ -67,7 +67,7 @@
   // 開発者ツール
   const devToolsComponent = ref<any | null>(null)
   if (isDev) {
-    import('@/ConfigMaker/dev/DevConfigs.vue').then((mod) => {
+    import('@config/dev/DevConfigs.vue').then((mod) => {
       devToolsComponent.value = markRaw(mod.default)
     })
   }

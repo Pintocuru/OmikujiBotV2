@@ -40,11 +40,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import KeyEditor from '@/ConfigMaker/components/KeyEditor/KeyEditor.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import ExternalLinkButton from '@ConfigComponents/parts/ExternalLinkButton.vue'
+  import { CharacterType } from '@/types/OmikujiData/'
+  import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
 
   const props = defineProps<{
     selectedItemKey: string

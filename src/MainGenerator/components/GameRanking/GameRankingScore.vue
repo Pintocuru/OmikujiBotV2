@@ -50,7 +50,7 @@
   import { useMotion } from '@vueuse/motion'
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { Trophy } from 'lucide-vue-next'
-  import { SettingsRankingType } from '@/types'
+  import { SettingsRankingType } from '@/types/'
 
   const DISPLAY_DURATION_MS = 8000
 

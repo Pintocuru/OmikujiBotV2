@@ -2,7 +2,7 @@
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
 import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 
 interface TimerState {
   timerId: number

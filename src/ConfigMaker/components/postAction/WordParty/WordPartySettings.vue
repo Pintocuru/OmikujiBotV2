@@ -9,7 +9,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionWordPartyType } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
 
   const props = defineProps<{
     action: PostActionWordPartyType

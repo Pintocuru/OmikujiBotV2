@@ -24,9 +24,9 @@
   import FeatureUsageComponents from './UsageComponentsSettings.vue'
   import FeatureUsageGames from './UsageGamesSettings.vue'
   import FeatureUsageDeveloper from './UsageDeveloperSettings.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { FeatureUsageType, isDev } from '@/types'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { FeatureUsageType, isDev } from '@/types/'
 
   const { updateFeatureUsage } = useOmikujiStore()
   const { isGod } = useSettingMode()

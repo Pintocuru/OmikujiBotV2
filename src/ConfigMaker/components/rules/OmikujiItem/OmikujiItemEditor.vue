@@ -37,9 +37,9 @@
   import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/'
   import OmikujiItemPriority from './OmikujiItemPriority.vue'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
-  import PostActionsEditor from '@ConfigComponents/postAction/PostActionsEditor.vue'
-  import GameScriptsEditor from '@ConfigComponents/gameScripts/GameScriptsEditor.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
+  import GameScriptsEditor from '@config/components/gameScripts/GameScriptsEditor.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
 
   const props = defineProps<{

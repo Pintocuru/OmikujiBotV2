@@ -31,7 +31,7 @@
 <script setup lang="ts">
   import { onMounted, onUnmounted } from 'vue'
   import { useCommentBubblePersistent } from './composables/useCommentBubblePersistent'
-  import CommentDisplay from '@/MainGenerator/components/CommentBubble/CommentDisplay.vue'
+  import CommentDisplay from '@main/components/CommentBubble/CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
 
   const {

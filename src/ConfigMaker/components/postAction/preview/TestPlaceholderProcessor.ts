@@ -1,8 +1,8 @@
 // src\ConfigMaker\components\postAction\preview\TestPlaceholderProcessor.ts
-import { PlaceholderProcessor } from '@/MainGenerator/scripts/PlaceholderProcess/PlaceholderProcessor'
-import { ExpressionEvaluator } from '@/MainGenerator/scripts/VariablePlaceholder/ExpressionEvaluator'
-import { VariablePlaceholderProcessor } from '@/MainGenerator/scripts/VariablePlaceholder/VariableProcessor'
-import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types'
+import { PlaceholderProcessor } from '@main/scripts/PlaceholderProcess/PlaceholderProcessor'
+import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
+import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
+import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
 
 /**
  * テスト用：メッセージのプレースホルダーを処理して bubble を返す

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\CharacterSchema.ts
+// src\types\OmikujiData\CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'

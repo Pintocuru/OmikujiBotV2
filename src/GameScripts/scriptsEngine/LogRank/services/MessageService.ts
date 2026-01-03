@@ -1,5 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
-import { PostActionMessageType } from '@/types'
+import { PostActionMessageType } from '@/types/'
 import { GameRecordType, UserStatsType } from '../GameScriptSchema'
 
 /**

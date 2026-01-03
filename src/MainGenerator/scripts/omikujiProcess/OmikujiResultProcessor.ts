@@ -1,17 +1,22 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
 import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiDataType } from '@/types'
-import { OmikujiItemType, ActionSetType, PostActionType } from '@/types/OmikujiData/OmikujiSchema'
-import { PlaceholderProcessor } from '../PlaceholderProcess/PlaceholderProcessor'
-import { PostMessage } from '@MainScripts/PostMessage/PostMessage'
-import { BotMessageGenerator } from '@/MainGenerator/scripts/BotMessage/BotMessageGenerator'
+import {
+  OmikujiDataType,
+  OmikujiItemType,
+  ActionSetType,
+  PostActionType,
+  RankingMessageSchema,
+  UserNameSchema,
+} from '@/types/OmikujiData/'
 import { ActionSetExpander } from './ActionSetExpander'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
-import { GameScriptManager } from '../../stores/GameScript/GameScriptManager'
+import { PlaceholderProcessor } from '@main/scripts/PlaceholderProcess/PlaceholderProcessor'
+import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
+import { BotMessageGenerator } from '@main/scripts/BotMessage/BotMessageGenerator'
+import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { VariablePlaceholderProcessor } from '../VariablePlaceholder/VariableProcessor'
-import { RankingMessageSchema, UserNameSchema } from '@/types/OmikujiData/ActionMessage'
-import { ExpressionEvaluator } from '../VariablePlaceholder/ExpressionEvaluator'
+import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
+import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
+import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 /**
  * おみくじの処理とメッセージ生成を担当するクラス

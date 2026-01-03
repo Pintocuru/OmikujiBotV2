@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
 
   const { licenseVisible, jsonMergeSettings } = useFeatureUsageSettings()

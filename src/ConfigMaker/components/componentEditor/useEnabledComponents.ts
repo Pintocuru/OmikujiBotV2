@@ -1,8 +1,8 @@
 // src\ConfigMaker\components\componentEditor\useEnabledComponents.ts
 import { computed } from 'vue'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
-import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 import { componentLabels } from '@/types/OmikujiData/ComponentsSchema'
 // 新しいロジックファイルをインポート
 import { getAvailableComponents } from './componentRules'

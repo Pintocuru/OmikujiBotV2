@@ -1,7 +1,7 @@
 // src/configMaker/components/RecordTabs/composables/useRuleOperations.ts
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
 import type { useRuleState } from './useRuleState'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
 import Swal from 'sweetalert2'
 

@@ -29,10 +29,10 @@
   import { storeToRefs } from 'pinia'
   import ToastBubbleItem from './ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import MotionWrapper from '@MainScripts/MotionVariants/MotionWrapper.vue'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()

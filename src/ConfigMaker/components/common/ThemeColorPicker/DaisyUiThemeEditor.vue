@@ -49,10 +49,10 @@
 </template>
 
 <script setup lang="ts">
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import RandomThemeButton from './RandomThemeButton.vue'
   import { daisyUIColor, DaisyUiThemeFieldsType, themes } from '@shared/styles/DaisyUiTheme'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     modelValue: DaisyUiThemeFieldsType

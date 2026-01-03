@@ -33,12 +33,12 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { Plus, AlertCircle } from 'lucide-vue-next'
   import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
-  import { PlaceholderSchema } from '@/types'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { PlaceholderSchema } from '@/types/'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   // Props
   const props = defineProps<{

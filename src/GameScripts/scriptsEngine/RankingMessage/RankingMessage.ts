@@ -1,5 +1,5 @@
 // src\GameScripts\scriptsEngine\RankingMessage\RankingMessage.ts
-import { PostActionMessageSchema, PostActionType, RankingMessageSchema, UserNameSchema, UserNameType } from '@/types'
+import { PostActionMessageSchema, PostActionType, RankingMessageSchema, UserNameSchema, UserNameType } from '@/types/'
 import { LogRankScript } from '../LogRank/execute'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

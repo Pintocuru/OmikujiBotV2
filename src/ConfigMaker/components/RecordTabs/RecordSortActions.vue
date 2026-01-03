@@ -55,7 +55,7 @@
   import { ref } from 'vue'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { Plus, Palette, Type, ListChecks } from 'lucide-vue-next'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import type { BaseRecordType } from '@shared/types'
 
   // Pinia store

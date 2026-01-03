@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/VariablePlaceholder/ExpressionEvaluator.ts
-import { KeyValueMap } from '@/MainGenerator/scripts/KeyValue/KeyValueMap'
+import { KeyValueMap } from '@main/scripts/KeyValue/KeyValueMap'
 
 /**
  * 式評価エンジン

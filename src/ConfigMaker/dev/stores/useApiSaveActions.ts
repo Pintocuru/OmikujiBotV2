@@ -2,7 +2,7 @@
 import { devConfigApi } from '../services/apiService'
 import { generateDateFileName } from '../services/devConfigUtils'
 import { DevConfigStateType } from '../devTypes'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import Swal from 'sweetalert2'
 
 export function useSaveActions(

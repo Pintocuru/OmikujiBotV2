@@ -55,7 +55,7 @@
   import { useImportManager } from './composables/useImportManager'
   import CategoryConfigSection from './CategoryConfigSection.vue'
   import ComponentConfigSection from './ComponentConfigSection.vue'
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
+  import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   const props = defineProps<{

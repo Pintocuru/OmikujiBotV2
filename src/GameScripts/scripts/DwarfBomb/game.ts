@@ -1,5 +1,5 @@
 // src/game.ts
-import { PostActionWordPartyType } from '@/types/OmikujiData/OmikujiSchema'
+import { PostActionWordPartyType } from '@/types/OmikujiData/'
 import { RewardType, Dwarf, GameResult, GAME_CONFIG } from './gameConfigs'
 
 export class BomberSpinGame {

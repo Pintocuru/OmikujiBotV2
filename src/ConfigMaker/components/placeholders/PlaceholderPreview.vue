@@ -11,7 +11,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { handelNormalizedValues, PlaceholderValueType } from '@/types/'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
   import Swal from 'sweetalert2'

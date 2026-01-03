@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { PlaceholderType, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
   import PlaceholderInputMode from './PlaceholderInputMode.vue'
   import PlaceholderTextMode from './PlaceholderTextMode.vue'

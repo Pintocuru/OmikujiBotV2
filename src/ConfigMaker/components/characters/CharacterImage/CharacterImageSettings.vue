@@ -22,7 +22,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterEmotionType, CharacterImageSetSchema, CharacterImageType, emotionLabels } from '@/types/'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ImageSettingsInfo from './ImageSettingsInfo.vue'
   import EmotionImageItem from './EmotionImageItem.vue'
 

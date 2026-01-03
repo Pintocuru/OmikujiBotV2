@@ -92,8 +92,8 @@
 <script setup lang="ts">
   import { RecordCategoryType } from '@/types/'
   import { useKeyEditor } from './composables/useKeyEditor'
-  import ModalFooterActions from '@ConfigComponents/parts/ModalFooterActions.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
 
   const props = defineProps<{
     category: RecordCategoryType

@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { isDev, RecordCategoryUnion } from '@/types'
+  import { isDev, RecordCategoryUnion } from '@/types/'
 
   const props = defineProps<{
     rule: RecordCategoryUnion

@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiControlsToolbar from './OmikujiControlsToolbar.vue'
   import OmikujiWeightProgressBar from './OmikujiWeightProgressBar.vue'
 

@@ -47,9 +47,9 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useRecordTabsStore } from '../RecordTabs/RecordTabsStore'
   import { CategoryType } from '@/types/OmikujiData/CategoryType'
 

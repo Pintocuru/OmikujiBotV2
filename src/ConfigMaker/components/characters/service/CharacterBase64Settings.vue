@@ -42,9 +42,9 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { CharacterType } from '@/types/OmikujiData/CharacterSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { CharacterType } from '@/types/OmikujiData/'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
 
   const props = defineProps<{

@@ -31,11 +31,11 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PlaceholderType } from '@/types'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { PlaceholderType } from '@/types/'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
-  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
-  import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
+  import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
+  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 

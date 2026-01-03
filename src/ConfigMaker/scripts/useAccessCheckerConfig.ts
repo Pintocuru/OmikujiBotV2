@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSettingModeFromHash } from '@/common/FeatureAccess/SettingMode'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessCheckerCore, useVisibilityAccessCore } from '@/common/FeatureAccess/useAccessChecker'
 
 /**

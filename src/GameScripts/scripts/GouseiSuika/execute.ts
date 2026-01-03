@@ -2,10 +2,10 @@
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { GachaGame } from './game'
-import { parseQueryString } from '@/GameScripts/parseQueryString'
-import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@game/parseQueryString'
+import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { buildRankingMessage, prepareUserInfo } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GouseiSuika'
 

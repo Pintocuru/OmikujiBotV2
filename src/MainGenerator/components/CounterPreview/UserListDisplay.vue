@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { SettingsCounterType } from '@/types'
+  import { SettingsCounterType } from '@/types/'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType

@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\parts\KeyEditor\keyEditorValidation.ts
 import { RecordCategoryType } from '@/types/'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
  * Keyの基本フォーマットバリデーション

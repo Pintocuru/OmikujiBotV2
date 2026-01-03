@@ -4,8 +4,8 @@ import { APP_VERSION, DATA_VERSION } from '@/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
-import { getAvailableScripts } from '@/GameScripts/GameScriptsRules'
-import { getAvailableComponents } from '@/ConfigMaker/components/componentEditor/componentRules'
+import { getAvailableScripts } from '@game/GameScriptsRules'
+import { getAvailableComponents } from '@config/components/componentEditor/componentRules'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする

@@ -37,11 +37,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterEmotionType, CharacterType, ShowCharacters } from '@/types'
+  import type { CharacterEmotionType, CharacterType, ShowCharacters } from '@/types/'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import PreviewSection from './PreviewSection.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     characters: Record<string, CharacterType>

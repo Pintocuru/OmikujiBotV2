@@ -1,8 +1,8 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
 import { RulesCategoryType, RuleType, ActionSetType, PostActionType, OmikujiItemType } from '@/types/OmikujiData/'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { categoryLabels } from '@/types'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { categoryLabels } from '@/types/'
 
 /**
  * カテゴリタイプ（rules系とactionSets）

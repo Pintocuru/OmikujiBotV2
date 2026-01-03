@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { gameScriptMap } from '@/GameScripts/GameScriptsMap'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { gameScriptMap } from '@game/GameScriptsMap'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
-  import { PRO_SCRIPTS } from '@/GameScripts/GameScriptsRules'
+  import { PRO_SCRIPTS } from '@game/GameScriptsRules'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const { gameScripts } = useFeatureUsageSettings()

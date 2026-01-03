@@ -25,9 +25,9 @@
 </template>
 
 <script setup lang="ts">
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
-  import { componentLabels } from '@/types'
+  import { componentLabels } from '@/types/'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { BASIC_COMPONENTS, PRO_COMPONENTS } from '../../componentEditor/componentRules'
 

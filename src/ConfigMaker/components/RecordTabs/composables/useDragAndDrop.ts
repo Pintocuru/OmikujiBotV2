@@ -1,7 +1,7 @@
 // src/configMaker/components/RecordTabs/composables/useDragAndDrop.ts
 import { ref, computed } from 'vue'
 import type { useRuleState } from './useRuleState'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
 
 /**

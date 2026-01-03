@@ -1,8 +1,8 @@
 // src\ConfigMaker\components\appInfo\FeatureUsage\useFeatureUsageSettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { FeatureUsageDeveloperType, FeatureUsageUsageType, RecordCategoryType } from '@/types'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { FeatureUsageDeveloperType, FeatureUsageUsageType, RecordCategoryType } from '@/types/'
 
 export function useFeatureUsageSettings() {
   const omikujiStore = useOmikujiStore()

@@ -34,7 +34,7 @@
   import { ref, computed, Ref } from 'vue'
   import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
   const props = defineProps<{
     characterKey: string

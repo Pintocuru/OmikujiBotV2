@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/PlaceholderProcess/placeholderAnalyzer.ts
-import { PlaceholderType, handelNormalizedValues } from '@/types'
+import { PlaceholderType, handelNormalizedValues } from '@/types/'
 
 /**
  * テキスト内で使用されているプレースホルダーIDを抽出

@@ -14,8 +14,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionMessageType, PostActionSoundType } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { soundList } from '@/common/sounds/soundMap'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { soundList } from '@sounds/soundMap'
 
   const props = defineProps<{
     action: PostActionMessageType | PostActionSoundType

@@ -11,8 +11,8 @@ import {
   isRulesCategory,
 } from '@/types/'
 import { OmikujiTestProcessor } from './OmikujiTestProcessor'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 import { playSound } from '@/common/sounds'
 import { storeToRefs } from 'pinia'

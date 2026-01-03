@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import { ref, watch, onUnmounted } from 'vue'
-  import { CharacterType } from '@/types'
+  import { CharacterType } from '@/types/'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
 
   // 定数

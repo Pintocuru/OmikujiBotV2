@@ -46,11 +46,11 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types'
+  import { isDev } from '@/types/'
   import { useConfigExport } from './useConfigExport'
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { storeToRefs } from 'pinia'
   import { Save } from 'lucide-vue-next'
 

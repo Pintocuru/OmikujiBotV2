@@ -17,9 +17,9 @@
   import { computed, ref, onMounted, onUnmounted } from 'vue'
   import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
   const { characterArray } = useCharacterManager()

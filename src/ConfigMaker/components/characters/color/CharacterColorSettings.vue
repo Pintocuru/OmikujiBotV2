@@ -24,11 +24,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/'
   import CustomClassSelector from '../CustomClass/CustomClassSelector.vue'
-  import CommentBubblePreview from '@/ConfigMaker/components/componentEditor/bubble/CommentBubblePreview.vue'
-  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import CommentBubblePreview from '@config/components/componentEditor/bubble/CommentBubblePreview.vue'
+  import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
 
   const props = defineProps<{

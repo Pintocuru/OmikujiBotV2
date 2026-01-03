@@ -2,7 +2,7 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
+import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { BaseRecordSchema } from '@shared/types'
 

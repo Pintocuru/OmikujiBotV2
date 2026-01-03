@@ -32,9 +32,9 @@
 
 <script setup lang="ts">
   import { onMounted } from 'vue'
-  import LicenseBadge from '@ConfigComponents/parts/LicenseBadge.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
   const { isAdv, isPro, isGod } = useSettingMode()

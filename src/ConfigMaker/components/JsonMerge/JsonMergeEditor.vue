@@ -61,13 +61,13 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { CharacterType } from '@/types'
+  import { CharacterType } from '@/types/'
   import { JsonMergeItemSchema, JsonMergeRemapSchema } from '@/types/OmikujiData/JsonMergeType'
   import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
   import JsonMergeSourceFileSelector from './JsonMergeSourceFileSelector.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
+  import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
 

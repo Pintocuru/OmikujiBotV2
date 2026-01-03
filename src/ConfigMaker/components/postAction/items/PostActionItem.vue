@@ -55,7 +55,7 @@
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
 
   // Props

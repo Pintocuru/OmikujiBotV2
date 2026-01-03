@@ -98,7 +98,7 @@
 <script setup lang="ts">
   import { watch, onMounted } from 'vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import {
     useClassGenerator,
     PRESETS,

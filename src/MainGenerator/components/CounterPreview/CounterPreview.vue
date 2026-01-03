@@ -7,7 +7,7 @@
   import { computed, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import CounterPreviewCard from './CounterPreviewCard.vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
   const appStore = useAppStore()

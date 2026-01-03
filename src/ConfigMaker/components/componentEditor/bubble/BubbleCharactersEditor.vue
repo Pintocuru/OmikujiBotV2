@@ -106,7 +106,7 @@
   import { storeToRefs } from 'pinia'
   import { ShowCharactersSchema, type ShowCharacters } from '@/types/'
   import CharacterSlot from './CharacterSlot.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const omikujiStore = useOmikujiStore()

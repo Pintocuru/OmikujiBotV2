@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useDataMergeHelpers.ts
 import { RecordCategoryDataMap, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-import { ImportMode } from '@/ConfigMaker/components/presetsImport/ImportTypes'
+import { ImportMode } from '@config/components/presetsImport/ImportTypes'
 
 /**
  * データマージ処理のヘルパー関数を提供

@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
-  import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/'
 
   const props = withDefaults(
     defineProps<{

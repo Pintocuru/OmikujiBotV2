@@ -1,10 +1,10 @@
 // src\ConfigMaker\scripts\OmikujiTestProcessor.ts
-import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types'
+import { OmikujiDataType, OmikujiItemSchema, OmikujiItemType, PostActionType } from '@/types/'
 import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiResultProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor'
-import { GameScriptManager } from '@/MainGenerator/stores/GameScript/GameScriptManager'
+import { OmikujiResultProcessor } from '@main/scripts/OmikujiProcess/OmikujiResultProcessor'
+import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { DefaultPlaceholderService } from '@/MainGenerator/scripts/OmikujiProcess/DefaultPlaceholderService'
+import { DefaultPlaceholderService } from '@main/scripts/OmikujiProcess/DefaultPlaceholderService'
 
 export class OmikujiTestProcessor {
   private readonly defaultManager = new DefaultPlaceholderService()

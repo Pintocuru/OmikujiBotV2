@@ -54,7 +54,7 @@
   import FeatureCard from './FeatureCard.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { categoryLabels } from '@/types/OmikujiData/CategoryType'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { Package } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()

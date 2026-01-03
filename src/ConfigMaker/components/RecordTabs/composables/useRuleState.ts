@@ -1,7 +1,7 @@
 // src/configMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue'
 import { recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 

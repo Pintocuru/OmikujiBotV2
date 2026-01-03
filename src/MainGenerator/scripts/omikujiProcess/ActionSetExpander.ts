@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
-import { ActionSetType, PostActionType } from '@/types/OmikujiData/'
+import { ActionSetType, PostActionActionSetType, PostActionType } from '@/types/OmikujiData/'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 export class ActionSetExpander {
@@ -20,7 +20,6 @@ export class ActionSetExpander {
 
     for (const action of actions) {
       if (action.actionType === 'actionSet') {
-        // ここで型が絞り込まれるので action.actionSetKey が安全に使える
         const expandedAction = this.expandSingleActionSet(action, actionSets, depth, visited)
         expandedActions.push(...expandedAction)
       } else {
@@ -31,14 +30,16 @@ export class ActionSetExpander {
     return expandedActions
   }
 
+  /**
+   *
+   */
   private static expandSingleActionSet(
-    action: Extract<PostActionType, { actionType: 'actionSet' }>, // 型を絞る
+    action: PostActionActionSetType,
     actionSets: Record<string, ActionSetType>,
     depth: number,
     visited: Set<string>
   ): PostActionType[] {
-    const cleanedAction = this.cleanActionSetAction(action)
-    const targetKey = cleanedAction.actionSetKey
+    const targetKey = action.actionSetKey
 
     if (visited.has(targetKey)) {
       ConsolePost('error', `循環参照が検出されました: ${targetKey}`)
@@ -54,7 +55,7 @@ export class ActionSetExpander {
     const newVisited = new Set(visited)
     newVisited.add(targetKey)
 
-    const adjustedActions = this.adjustDelays(targetActionSet.postActions, cleanedAction.delaySeconds)
+    const adjustedActions = this.adjustDelays(targetActionSet.postActions, action.delaySeconds)
 
     return this.expand(adjustedActions, actionSets, depth + 1, newVisited)
   }
@@ -64,19 +65,5 @@ export class ActionSetExpander {
       ...action,
       delaySeconds: (action.delaySeconds || 0) + baseDelay,
     }))
-  }
-
-  private static cleanActionSetAction(
-    action: Extract<PostActionType, { actionType: 'actionSet' }> // 型を絞る
-  ): {
-    actionType: 'actionSet'
-    actionSetKey: string
-    delaySeconds: number
-  } {
-    return {
-      actionType: 'actionSet',
-      actionSetKey: action.actionSetKey,
-      delaySeconds: action.delaySeconds || 0,
-    }
   }
 }

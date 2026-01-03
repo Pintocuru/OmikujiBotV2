@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\PlaceholderProcess\PlaceholderContext.ts
 import { DefaultTypes } from '@shared/types'
-import { KeyValueMap } from '@/MainGenerator/scripts/KeyValue/KeyValueMap'
+import { KeyValueMap } from '@main/scripts/KeyValue/KeyValueMap'
 
 /**
  * プレースホルダーのコンテキスト値を管理

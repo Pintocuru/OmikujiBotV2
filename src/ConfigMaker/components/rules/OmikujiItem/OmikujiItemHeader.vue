@@ -23,10 +23,10 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/OmikujiSchema'
+  import { OmikujiItemType } from '@/types/OmikujiData/'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{

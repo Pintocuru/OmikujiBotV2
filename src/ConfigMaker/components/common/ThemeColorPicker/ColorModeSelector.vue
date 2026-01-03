@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterColorType } from '@/types/OmikujiData/CharacterSchema'
+  import { CharacterColorType } from '@/types/OmikujiData/'
   import DaisyUiThemeEditor from './DaisyUiThemeEditor.vue'
   import LegacyColorPicker from './LegacyColorPicker.vue'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'

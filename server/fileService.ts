@@ -3,7 +3,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { FileItem } from './types.js'
-import { generateJsContent } from '@/ConfigMaker/components/presetsExport/generateContent'
+import { generateJsContent } from '@config/components/presetsExport/generateContent'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

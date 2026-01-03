@@ -6,7 +6,7 @@ import {
   defaultPlaceholdersShortLabels,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { PlaceholderSchema, PlaceholderType, PostActionType } from '@/types/OmikujiData/'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
  * プレースホルダーのデータ管理を担当するcomposable

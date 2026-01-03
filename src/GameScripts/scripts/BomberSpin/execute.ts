@@ -2,10 +2,10 @@
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType } from '@/types/'
 import { playSlot } from './game'
-import { LogRankScript } from '@/GameScripts/scriptsEngine/LogRank/execute'
-import { parseQueryString } from '@/GameScripts/parseQueryString'
+import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
+import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { buildRankingMessage, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { buildRankingMessage, prepareUserInfo } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'BomberSpin'
 

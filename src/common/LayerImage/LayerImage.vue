@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { getImagePath } from '@/types'
+  import { getImagePath } from '@/types/'
 
   const props = defineProps<{
     layers: string[] | string

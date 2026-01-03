@@ -84,12 +84,12 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CharacterEmotionType, PostActionMessageType } from '@/types/'
-  import IconSelector from '@/ConfigMaker/components/postAction/IconSelector/IconSelector.vue'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
+  import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
-  import { soundList } from '@/common/sounds/soundMap'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { soundList } from '@sounds/soundMap'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { AlignLeft, AlignJustify } from 'lucide-vue-next'
 
   const props = defineProps<{

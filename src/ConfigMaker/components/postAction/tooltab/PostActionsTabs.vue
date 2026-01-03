@@ -69,9 +69,9 @@
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
-  import PlaceholderList from '@ConfigComponents/placeholders/PlaceholderList.vue'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import PlaceholderList from '@config/components/placeholders/PlaceholderList.vue'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 

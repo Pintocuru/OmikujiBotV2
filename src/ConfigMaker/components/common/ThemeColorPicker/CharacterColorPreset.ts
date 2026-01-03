@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\BotCharacter\CharacterColorPreset.ts
-import { CharacterColorType } from '@/types'
+import { CharacterColorType } from '@/types/'
 
 // デフォルトキャラクター用のカラーテーマ（マテリアルカラーベース、可読性重視）
 export const DEFAULT_COLOR_THEMES: Partial<CharacterColorType>[] = [

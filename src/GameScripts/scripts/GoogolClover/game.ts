@@ -1,5 +1,5 @@
 // src/GameScripts/GoogolClover/game.ts
-import { PostActionMessageBodySchema, PostActionMessageBodyType, UserNameSchema, UserNameType } from '@/types'
+import { PostActionMessageBodySchema, PostActionMessageBodyType, UserNameSchema, UserNameType } from '@/types/'
 import { GOAL_EXPONENT, MIN_SPINS, MAX_SPINS, CURRENCY_SYMBOL } from './constants'
 import type { UserState, SlotResult } from './types'
 import { formatShort, spinSlot, formatScoreText, calculateScoreValue } from './utils'

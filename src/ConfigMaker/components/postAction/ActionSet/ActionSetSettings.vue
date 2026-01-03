@@ -24,9 +24,9 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostActionActionSetType } from '@/types/'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-  import { checkCircularReference } from '@/MainGenerator/scripts/OmikujiProcess/ActionSetValidator'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { checkCircularReference } from '@main/scripts/OmikujiProcess/ActionSetValidator'
   import { storeToRefs } from 'pinia'
   import { XCircle } from 'lucide-vue-next'
 

@@ -85,15 +85,15 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsBubbleSchema } from '@/types'
+  import { SettingsBubbleSchema } from '@/types/'
   import { fontFamilyOptions, fontFamilyLabels } from '@/types/MainGenerator/useFontFamily'
   import CommentBubblePreview from './CommentBubblePreview.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import SettingItem from '@ConfigComponents/parts/SettingItem.vue'
-  import ColorModeSelector from '@/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { motionLabel } from '@/MainGenerator/scripts/MotionVariants/MotionVariants'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
+  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

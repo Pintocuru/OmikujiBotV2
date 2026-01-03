@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  import { playSound } from '@/common/sounds/PlaySound'
+  import { playSound } from '@sounds/PlaySound'
 
   const props = withDefaults(
     defineProps<{

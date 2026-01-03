@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateCore.ts
 import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
  * 汎用ルールKey更新処理（BaseRecordSchema対応）

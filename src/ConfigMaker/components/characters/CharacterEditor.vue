@@ -55,8 +55,8 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
-  import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import CharacterBasicInfo from './basicInfo/CharacterBasicInfo.vue'
   import CharacterColorSettings from './color/CharacterColorSettings.vue'
   import CharacterImageSettings from './CharacterImage/CharacterImageSettings.vue'

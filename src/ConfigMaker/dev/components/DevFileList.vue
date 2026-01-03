@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { useDevStore } from '@/ConfigMaker/dev/stores/useDevStore'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
   import DevFileItem from './DevFileItem.vue'
   import { formatFileDate } from '../services/devConfigUtils'
 

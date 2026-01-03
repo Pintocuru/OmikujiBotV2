@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
 import { CommentRuleType, RestrictionType } from '@/types/'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export interface RestrictionCheckResult {

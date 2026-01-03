@@ -61,12 +61,12 @@
   import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
   import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
-  import OmikujiSetEditor from '@ConfigComponents/rules/OmikujiSetEditor.vue'
-  import RecordTabs from '@ConfigComponents/RecordTabs/RecordTabs.vue'
-  import BaseSettingsEditor from '@ConfigComponents/common/BaseSettingsEditor.vue'
+  import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
+  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
+  import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useOmikujiStore } from '@ConfigStores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
   // アクティブなセクションの管理
