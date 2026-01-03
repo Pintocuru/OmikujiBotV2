@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/GameRankingViewer/GameRankingViewer.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\components\GameRanking\GameRanking.vue -->
 <template>
   <!-- スコア表示 -->
   <div class="flex justify-center">
@@ -46,7 +46,7 @@
             listName: 'test',
             scoretext: 'test',
             scoreValue: 100,
-            scriptKey: rankingSettings.value.targetScriptKeys,
+            scriptKey: rankingSettings.value.targetScriptKeys[0],
           },
         },
       }),

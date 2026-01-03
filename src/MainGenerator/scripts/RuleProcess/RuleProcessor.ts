@@ -1,22 +1,15 @@
 // src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
-import { computed, watch } from 'vue'
 import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-export function useRuleProcessor() {
-  /**
-   * dataが変更されると自動的に新しいインスタンスが作成される
-   */
-  const timerProcessor = computed(() => new RuleTimerProcessor())
+let timerProcessorSingleton: RuleTimerProcessor | null = null
 
-  // 必要に応じて、プロセッサーの変更を監視して追加処理を実行
-  watch(timerProcessor, (oldTimerProcessor) => {
-    // 古いタイマーを停止
-    if (oldTimerProcessor) oldTimerProcessor.stopTimers()
-    console.log('プロセッサーが更新されました')
-  })
+export function useRuleProcessor() {
+  if (!timerProcessorSingleton) {
+    timerProcessorSingleton = new RuleTimerProcessor()
+  }
 
   const initializeApp = async (onCommentsReceived: (comments: OmikenCommentType[]) => void): Promise<boolean> => {
     try {
@@ -31,11 +24,11 @@ export function useRuleProcessor() {
    * Timer Rules
    */
   const startTimers = (callback: (messages: BotMessage[]) => void) => {
-    timerProcessor.value.startTimers(callback)
+    timerProcessorSingleton!.startTimers(callback)
   }
 
   const stopTimers = () => {
-    timerProcessor.value.stopTimers()
+    timerProcessorSingleton!.stopTimers()
   }
 
   return {

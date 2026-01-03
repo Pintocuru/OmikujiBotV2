@@ -24,15 +24,13 @@
   import { computed, onMounted } from 'vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
-  import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
-
   import CommentBubble from '@MainComponents/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@/MainGenerator/components/ToastWidgets/ToastWidgets.vue'
   import GameRankingViewer from '@/MainGenerator/components/GameRanking/GameRanking.vue'
   import CounterPreview from '@/MainGenerator/components/CounterPreview/CounterPreview.vue'
-
   import { RuleCommentProcessor } from './scripts/RuleProcess/RuleCommentProcessor'
+  import { useRuleProcessor } from './scripts/RuleProcess/RuleProcessor'
+  import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
 
   // Pinia Store
   const appStore = useAppStore()
