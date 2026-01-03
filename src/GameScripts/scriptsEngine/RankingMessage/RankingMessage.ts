@@ -1,7 +1,8 @@
 // src\GameScripts\scriptsEngine\RankingMessage\RankingMessage.ts
-import { PostActionMessageSchema, PostActionType, RankingMessageSchema, UserNameSchema, UserNameType } from '@/types/'
+import { PostActionMessageSchema, PostActionType, RankingMessageSchema } from '@/types/'
 import { LogRankScript } from '../LogRank/execute'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const UNKNOWN_NAME = 'おみくじBOT'
 

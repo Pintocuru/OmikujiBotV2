@@ -53,7 +53,7 @@ export class ExecuteScript implements ScriptClass {
     // ユーザー情報の準備
     const user = prepareUserInfo(omiken)
 
-    const bubbleText = `${user.name}の得点は${points}!`
+    const bubbleText = `${user.userName}の得点は${points}!`
 
     // ランキングデータの記録と取得
     const logResult = omiken ? this.recordRanking(omiken, points, characterKey) : null

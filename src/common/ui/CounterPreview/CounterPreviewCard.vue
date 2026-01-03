@@ -44,10 +44,10 @@
         </div>
         <div v-else class="avatar placeholder">
           <div class="bg-neutral text-neutral-content w-5 rounded-full flex items-center justify-center">
-            {{ (value.name || 'A').charAt(0) }}
+            {{ (value.userName || 'A').charAt(0) }}
           </div>
         </div>
-        {{ value.name }}
+        {{ value.userName }}
       </li>
     </ul>
   </div>

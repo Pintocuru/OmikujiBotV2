@@ -1,6 +1,6 @@
 // src\types\MainGenerator\UserVisits.ts
 import { z } from 'zod'
-import { UserNameSchema } from '../OmikujiData/ActionMessage'
+import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export const UserVisitRecordSchema = z.object({
   ...UserNameSchema.shape,

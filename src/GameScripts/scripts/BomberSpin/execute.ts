@@ -20,7 +20,7 @@ export class ExecuteScript implements ScriptClass {
     const params = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
 
-    const gameResult = playSlot(user.name, params.symbol)
+    const gameResult = playSlot(user.userName, params.symbol)
 
     const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 

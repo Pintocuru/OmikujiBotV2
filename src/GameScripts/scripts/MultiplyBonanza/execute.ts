@@ -22,7 +22,7 @@ export class ExecuteScript implements ScriptClass {
     const user = prepareUserInfo(omiken)
 
     // ゲームの実行
-    const gameResult = this.executeGame(user.name, params.mode)
+    const gameResult = this.executeGame(user.userName, params.mode)
 
     // ランキングデータの記録
     const logResult = omiken ? this.recordRanking(omiken, gameResult.result.payout, characterKey) : null
@@ -47,7 +47,7 @@ export class ExecuteScript implements ScriptClass {
   sampleRun(queryString: string): string {
     const { mode } = this.parseParams(queryString)
     const user = prepareUserInfo()
-    const gameResult = this.executeGame(user.name, mode)
+    const gameResult = this.executeGame(user.userName, mode)
     return gameResult.message
   }
 

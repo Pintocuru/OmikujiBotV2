@@ -31,13 +31,13 @@
             <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-1">
               <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'A').charAt(0) }}
+                {{ (msg.message.ranking?.listName || msg.message?.user?.userName || msg.name || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- 名前 -->
             <span class="text-lg font-bold truncate">
-              {{ msg.message.ranking?.listName || msg.message?.user?.name || msg.name || 'Anonymous' }}
+              {{ msg.message.ranking?.listName || msg.message?.user?.userName || msg.name || 'Anonymous' }}
             </span>
             <!-- symbol -->
             <span

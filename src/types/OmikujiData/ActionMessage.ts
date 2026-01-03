@@ -1,18 +1,10 @@
 // src\types\OmikujiData\PostActionMessage.ts
 import z from 'zod'
+import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * PostActionMessageSchema のメッセージ内容
  */
-
-// user
-export const UserNameSchema = z.object({
-  name: z.string().default('error'), // 名前
-  userId: z.string().default(''), // ユーザーID
-  profileImage: z.string().default(''), // プロフィール画像
-  timestamp: z.number().default(() => Date.now()), // タイムスタンプ
-})
-export type UserNameType = z.infer<typeof UserNameSchema>
 
 // Ranking
 export const RankingMessageSchema = z.object({

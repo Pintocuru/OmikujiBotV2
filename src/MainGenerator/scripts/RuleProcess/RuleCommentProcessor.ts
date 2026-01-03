@@ -2,7 +2,8 @@
 import { BotMessage } from '@/types/'
 import { processUserComment } from '@/MainGenerator/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 const TIME_THRESHOLD = 10000 // これ以上経過した古いコメントは判定しない
 
@@ -20,6 +21,7 @@ export class RuleCommentProcessor {
     const limitedComments = omikens.slice().reverse().slice(0, 5)
 
     for (const omiken of limitedComments) {
+      const { userVisitManager } = useAppStore()
       const { id, userId, timestamp } = omiken
 
       // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
@@ -30,6 +32,9 @@ export class RuleCommentProcessor {
 
       // 除外条件をチェック
       if (this.isOldComment(timestamp)) return botMessages
+
+      // ユーザー情報を記録する
+      userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
 
       // おみくじチェック
       this.appliedCommentIds.add(id)
@@ -52,9 +57,9 @@ export class RuleCommentProcessor {
   /**
    * 古いコメント（時間閾値を超過）かどうかを判定
    */
-  private isOldComment(timestamp: string): boolean {
+  private isOldComment(timestamp: number): boolean {
     const currentTime = Date.now()
-    const sinceComment = currentTime - new Date(timestamp).getTime()
+    const sinceComment = currentTime - timestamp
     return sinceComment > TIME_THRESHOLD
   }
 }

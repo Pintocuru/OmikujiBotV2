@@ -6,14 +6,13 @@ import {
   ActionSetType,
   PostActionType,
   RankingMessageSchema,
-  UserNameSchema,
 } from '@/types/OmikujiData/'
 import { ActionSetExpander } from './ActionSetExpander'
 import { PlaceholderProcessor } from '@main/scripts/PlaceholderProcess/PlaceholderProcessor'
 import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@main/scripts/BotMessage/BotMessageGenerator'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'

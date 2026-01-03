@@ -1,10 +1,13 @@
 // src/MainGenerator/script/omikujiProcess/UserVisitManager.ts
-import { UserNameType } from '@/types/'
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * ユーザーの訪問記録を管理するインターフェース
  */
+
+// 定数 liveComments ユーザーの参加者リスト(commenter)とランダム(winner)用
+const BOT_STATS_RULE_ID = 'liveComments'
 
 /**
  * OmikenCommentTypeのomikujiRecordsを更新するためのコールバック型
@@ -73,13 +76,13 @@ export class UserVisitManager {
    * ユーザーの訪問を記録し、コールバックを通じてomikujiRecordsを更新
    */
   recordVisit(ruleId: string, user: UserNameType): void {
-    const { userId, name, timestamp } = user
+    const { userId, userName: name, timestamp } = user
 
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userVisits.get(key)
 
     if (existingRecord) {
-      existingRecord.name = name // 名前変更に対応
+      existingRecord.userName = name // 名前変更に対応
       existingRecord.visitCount++
       existingRecord.timestamp = timestamp
     } else {
@@ -106,6 +109,24 @@ export class UserVisitManager {
         console.error('UserVisitManager: コールバック実行エラー', error)
       }
     }
+  }
+
+  /**
+   * コメント受取時に呼び出す専用メソッド
+   */
+  recordLiveComment(user: UserNameType): void {
+    this.recordVisit(BOT_STATS_RULE_ID, user)
+  }
+  // リスナー数とランダムリスナーの呼び出し
+  getLiveComment(): { commenter: number; winner: string } {
+    // 内部で BOT_STATS_RULE_ID を使用
+    const commenter = this.getUniqueVisitorCountByRuleId(BOT_STATS_RULE_ID)
+
+    // 当選者選出（必要な時だけリスト化するので軽量）
+    const userList = this.getVisitsByRuleId(BOT_STATS_RULE_ID)
+    const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].userName : ''
+
+    return { commenter, winner }
   }
 
   /**

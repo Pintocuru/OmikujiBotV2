@@ -2,13 +2,11 @@
 import { computed, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/'
-import { ConfigUserSchema, ConfigUserType } from '@shared/types'
-import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
+import { useBotMessageActions } from './useBotMessageActions'
 import { CooldownManager } from '@main/stores/CooldownManager/CooldownManager'
 import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
-
+import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { normalizeData } from '@/common/migrations'
-import { useBotMessageActions } from './useBotMessageActions'
 
 // グローバルデータの初期化
 const { omikujiData: rawOmikujiData } = window

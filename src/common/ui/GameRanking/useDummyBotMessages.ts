@@ -1,5 +1,5 @@
 // src/composables/useDummyBotMessages.ts
-import { RankingMessageSchema, SettingsRankingType, UserNameSchema } from '@/types/'
+import { RankingMessageSchema, SettingsRankingType } from '@/types/'
 import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 

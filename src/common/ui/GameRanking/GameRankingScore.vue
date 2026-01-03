@@ -32,7 +32,9 @@
           <!-- コンテンツ -->
           <div class="relative z-10 text-center text-white">
             <h3 class="text-2xl font-bold mb-3">
-              {{ latestMessage.message?.ranking?.listName || latestMessage.message?.user?.name || latestMessage.name }}
+              {{
+                latestMessage.message?.ranking?.listName || latestMessage.message?.user?.userName || latestMessage.name
+              }}
             </h3>
             <p class="text-base opacity-80">スコア</p>
             <div class="text-6xl font-bold">
