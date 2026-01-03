@@ -136,8 +136,8 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterPreviewCard from '@main/components/CounterPreview/CounterPreviewCard.vue'
-  import { generateDummyUserNames } from '@main/components/GameRanking/useDummyBotMessages'
+  import CounterPreviewCard from '@/common/ui/CounterPreview/CounterPreviewCard.vue'
+  import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()

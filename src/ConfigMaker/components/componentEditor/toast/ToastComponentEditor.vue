@@ -89,8 +89,8 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import ToastBubbleItem from '@main/components/ToastWidgets/ToastBubbleItem.vue'
-  import CharacterThumbnailsPreview from '@main/components/ToastWidgets/CharacterThumbnailsPreview.vue'
+  import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
+  import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
 

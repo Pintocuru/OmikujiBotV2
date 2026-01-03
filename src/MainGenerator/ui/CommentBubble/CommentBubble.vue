@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\components\CommentBubble\CommentBubble.vue -->
+<!-- src\MainGenerator\ui\CommentBubble\CommentBubble.vue -->
 <template>
   <div class="relative">
     <!-- BOTメッセージ表示(0番地) -->

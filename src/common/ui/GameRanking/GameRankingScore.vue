@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/GameRankingViewer/CommentBubbleItem.vue -->
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\GameRanking\GameRankingScore.vue -->
 <template>
   <Transition name="bubble-fade" @after-leave="$emit('hidden')">
     <div v-if="isVisible && latestMessage" ref="bubbleRef" class="inline-block relative z-10">
@@ -47,10 +47,10 @@
 
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
-  import { useMotion } from '@vueuse/motion'
+  import { SettingsRankingType } from '@/types/'
   import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
   import { Trophy } from 'lucide-vue-next'
-  import { SettingsRankingType } from '@/types/'
+  import { useMotion } from '@vueuse/motion'
 
   const DISPLAY_DURATION_MS = 8000
 

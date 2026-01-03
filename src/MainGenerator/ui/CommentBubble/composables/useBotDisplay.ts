@@ -1,4 +1,4 @@
-// src\MainGenerator\components\OmikujiBot\composables\useBotDisplay.ts
+// src\MainGenerator\ui\OmikujiBot\composables\useBotDisplay.ts
 import { ref, computed, Ref } from 'vue'
 import { BotMessage } from '@/types/'
 

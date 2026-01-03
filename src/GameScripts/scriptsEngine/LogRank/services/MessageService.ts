@@ -19,9 +19,11 @@ export const createPostActions = (
       characterKey,
       iconKey: 'default',
       message: {
+        bubble: null,
         toast: rank
           ? createRankingMessage(userStats.name, record.score, rank, isOverLimit)
           : createMessage(userStats, record, isOverLimit),
+        isToast: true,
       },
       sound: 'cute',
     },

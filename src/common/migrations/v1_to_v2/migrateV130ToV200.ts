@@ -5,12 +5,12 @@ import {
   SettingsCounterSchema,
   SettingsRankingSchema,
   SettingsToastSchema,
-} from '@/types/OmikujiData/ComponentsSchema'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { PostActionType } from '@/types/OmikujiData/OmikujiSchema'
+} from '@/types/OmikujiData/'
+import { OmikujiDataType } from '@/types/OmikujiData/'
+import { PostActionType } from '@/types/OmikujiData/'
+import { FeatureUsageSchema } from '@/types/OmikujiData/'
+import { SettingsSchema } from '@/types/OmikujiData/'
 import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
-import { FeatureUsageSchema } from '@/types/OmikujiData/FeatureUsageSchema'
-import { SettingsSchema } from '@/types/OmikujiData/SettingsSchema'
 
 /**
  * v1からv1.3へのマイグレーション
@@ -159,6 +159,7 @@ const migratePostAction = (oldAction: any): PostActionType[] => {
       message: {
         bubble: oldAction.messageContent, // messageContent -> message.bubble
         toast: oldAction.messageToast, // messageToast -> message.toast
+        isToast: !oldAction.messageContent,
       },
     })
   }
@@ -200,6 +201,7 @@ const migratePostAction = (oldAction: any): PostActionType[] => {
       message: {
         bubble: oldAction.messageContent,
         toast: oldAction.messageToast,
+        isToast: !oldAction.messageContent,
       },
     })
   }

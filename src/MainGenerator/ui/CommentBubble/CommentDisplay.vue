@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-  import CommentBubbleItem from './CommentBubbleItem.vue'
+  import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
   import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'

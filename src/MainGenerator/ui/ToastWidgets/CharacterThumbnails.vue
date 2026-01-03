@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\components\OmikujiBot\CharacterThumbnails.vue -->
+<!-- src\MainGenerator\ui\OmikujiBot\CharacterThumbnails.vue -->
 <template>
   <div
     class="flex gap-4 mt-2"
@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import CharacterThumbnailsPreview from './CharacterThumbnailsPreview.vue'
   import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
+  import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
 
   const appStore = useAppStore()
   const { characterArray } = useCharacterManager()

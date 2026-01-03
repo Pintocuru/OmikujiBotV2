@@ -6,9 +6,9 @@
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import CounterPreviewCard from './CounterPreviewCard.vue'
-  import { useAppStore } from '@main/stores/useAppStore'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import CounterPreviewCard from '@/common/ui/CounterPreview/CounterPreviewCard.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)

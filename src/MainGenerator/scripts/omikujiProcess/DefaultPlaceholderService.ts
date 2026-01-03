@@ -1,5 +1,4 @@
 // src\MainGenerator\scripts\OmikujiProcess\DefaultPlaceholderService.ts
-import { useAppStore } from '@main/stores/useAppStore'
 import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
@@ -21,11 +20,8 @@ export class DefaultPlaceholderService {
   /**
    * 定期的にAPIから取得
    * TODO:userVisits ではなく、MainGenerator のstoreから取得できないか？
-   * ただし、コンフィグエディターでも使ってるので・・・どうする？
    */
   private initializeServiceMeta(): void {
-    const { userConfig } = useAppStore()
-
     createGetMetas().fetchMeta((meta) => {
       this.serviceMeta = meta
     })
@@ -34,8 +30,7 @@ export class DefaultPlaceholderService {
       ConfigUserSchema.parse({
         isDiffMode: false,
         threshold: {
-          ...userConfig.threshold,
-          conditions: [...userConfig.threshold.conditions, 'service'],
+          conditions: ['service'],
           service: ['platforms'],
         },
       })

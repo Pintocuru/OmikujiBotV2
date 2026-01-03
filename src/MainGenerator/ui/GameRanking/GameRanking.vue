@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\components\GameRanking\GameRanking.vue -->
+<!-- src\MainGenerator\ui\GameRanking\GameRanking.vue -->
 <template>
   <!-- スコア表示 -->
   <div class="flex justify-center">
@@ -28,10 +28,10 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useAppStore } from '@main/stores/useAppStore'
-  import GameRankingScore from './GameRankingScore.vue'
-  import GameRankingList from './GameRankingList.vue'
   import { BotMessageSchema, isDev } from '@/types/'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import GameRankingScore from '@/common/ui/GameRanking/GameRankingScore.vue'
+  import GameRankingList from '@/common/ui/GameRanking/GameRankingList.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)

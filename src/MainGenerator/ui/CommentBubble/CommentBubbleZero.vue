@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\components\CommentBubble\ViewBotMessage.vue -->
+<!-- src\MainGenerator\ui\CommentBubble\CommentBubbleZero.vue -->
 <template>
   <div class="relative h-screen">
     <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
@@ -30,10 +30,10 @@
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
   import CommentDisplay from './CommentDisplay.vue'
-  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import { useBotDisplay } from './composables/useBotDisplay'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
+  import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
 
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)

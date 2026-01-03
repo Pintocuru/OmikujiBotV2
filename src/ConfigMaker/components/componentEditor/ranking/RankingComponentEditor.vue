@@ -101,7 +101,7 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import GameRankingList from '@main/components/GameRanking/GameRankingList.vue'
+  import GameRankingList from '@/common/ui/GameRanking/GameRankingList.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types/'
   import { getAvailableScripts } from '@game/GameScriptsRules'
