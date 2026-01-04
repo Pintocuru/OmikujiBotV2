@@ -1,6 +1,6 @@
 // src/ConfigMaker/script/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
-import { PlaceholderValuesSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
+import { WeightValuesArraySchema, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
 import type { useRecordCRUD } from './useRecordCRUD'
 import type { useRecordDataAccess } from './useRecordDataAccess'
@@ -73,9 +73,9 @@ export function useRecordProperties(
   }
 
   // 特殊ケース: プレースホルダー値の更新
-  const updatePlaceholderValues = (placeholderKey: string, rawValues: Array<PlaceholderValueType | string>) => {
+  const updatePlaceholderValues = (placeholderKey: string, rawValues: WeightValuesArrayType) => {
     if (data.value.placeholders[placeholderKey]) {
-      const parsedValues = PlaceholderValuesSchema.parse(rawValues)
+      const parsedValues = WeightValuesArraySchema.parse(rawValues)
       updateRecordProperty('placeholders', placeholderKey, 'values', parsedValues)
     }
   }

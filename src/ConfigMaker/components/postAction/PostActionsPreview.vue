@@ -37,7 +37,8 @@
       case 'sound':
         return action.sound
       case 'actionSet':
-        return `アクションセット: ${action.actionSetKey}`
+        // TODO:この箇所の配列はどうすればいい？
+        return `アクションセット: ${action.actionSetKeys}`
       default:
         return ''
     }

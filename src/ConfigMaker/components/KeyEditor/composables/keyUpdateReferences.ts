@@ -135,7 +135,16 @@ export function updateActionSetReferences(oldKey: string, newKey: string): void 
         ...omikujiSet,
         postActions: omikujiSet.postActions.map((action) => {
           if (action.actionType !== 'actionSet') return action
-          return action.actionSetKey === oldKey ? { ...action, actionSetKey: newKey } : action
+
+          const keys = action.actionSetKeys
+
+          // oldKey が含まれていなければそのまま
+          if (!keys.some((k) => k === oldKey)) return action
+
+          // oldKey を newKey に置換
+          const replaced = keys.map((k) => (k === oldKey ? newKey : k))
+
+          return { ...action, actionSetKeys: replaced }
         }),
       }))
 
@@ -148,7 +157,16 @@ export function updateActionSetReferences(oldKey: string, newKey: string): void 
   Object.entries(actionSets).forEach(([actionSetKey, actionSet]) => {
     const updatedPostActions = actionSet.postActions.map((action) => {
       if (action.actionType !== 'actionSet') return action
-      return action.actionSetKey === oldKey ? { ...action, actionSetKey: newKey } : action
+
+      const keys = action.actionSetKeys
+
+      // oldKey が含まれていなければそのまま
+      if (!keys.some((k) => k === oldKey)) return action
+
+      // oldKey を newKey に置換
+      const replaced = keys.map((k) => (k === oldKey ? newKey : k))
+
+      return { ...action, actionSetKeys: replaced }
     })
 
     omikujiStore.updateItem('actionSets', actionSetKey, {

@@ -133,7 +133,7 @@ const migratePostAction = (oldAction: any): PostActionType[] => {
     newActions.push({
       ...baseFields,
       actionType: 'actionSet',
-      actionSetKey: oldAction.actionSetKey,
+      actionSetKeys: [oldAction.actionSetKey],
     })
     // actionSet の場合は他のアクションを生成しない（古い transform に準拠）
     return newActions

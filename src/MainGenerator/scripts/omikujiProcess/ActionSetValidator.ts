@@ -35,10 +35,18 @@ export function checkCircularReference(
 
   visited.add(targetKey)
 
-  // このアクションセット内のすべてのアクションをチェック
   for (const action of actionSet.postActions) {
-    if (action.actionType === 'actionSet' && action.actionSetKey) {
-      const circularPath = checkCircularReference(action.actionSetKey, actionSets, currentKey, new Set(visited))
+    if (action.actionType !== 'actionSet') continue
+
+    const keys = action.actionSetKeys ?? []
+
+    // 参照先キーを抽出（string または WeightValueType.content）
+    const referencedKeys = keys
+      .map((k) => (typeof k === 'string' ? k : k.content))
+      .filter((k) => k && typeof k === 'string')
+
+    for (const nextKey of referencedKeys) {
+      const circularPath = checkCircularReference(nextKey, actionSets, currentKey, new Set(visited))
       if (circularPath) return [targetKey, ...circularPath]
     }
   }

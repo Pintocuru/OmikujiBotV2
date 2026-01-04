@@ -1,6 +1,6 @@
 // src/configMaker/components/placeholders/useTextModeParser.ts
 import { ref, computed } from 'vue'
-import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
+import { WeightValuesArrayType, WeightValueSchema } from '@/types/'
 
 export function useTextModeParser() {
   const textContent = ref('')
@@ -17,7 +17,7 @@ export function useTextModeParser() {
         ? { weight: parseInt(parts[0].trim()), content: parts[1].trim() }
         : { weight: 1, content: trimmed }
 
-    const result = PlaceholderValueObjectSchema.safeParse(candidate)
+    const result = WeightValueSchema.safeParse(candidate)
 
     return {
       ...candidate,
@@ -55,7 +55,7 @@ export function useTextModeParser() {
   }
 
   // 値からテキストに変換
-  const convertValuesToText = (values: Array<PlaceholderValueType | string>) => {
+  const convertValuesToText = (values: WeightValuesArrayType) => {
     textContent.value = values
       .map((value) => {
         if (typeof value === 'object') {
@@ -69,7 +69,7 @@ export function useTextModeParser() {
   }
 
   // テキストから値に変換
-  const convertTextToValues = (): Array<PlaceholderValueType | string> => {
+  const convertTextToValues = (): WeightValuesArrayType => {
     return previewItems.value.filter((item) => !item.hasError).map(({ weight, content }) => ({ weight, content }))
   }
 

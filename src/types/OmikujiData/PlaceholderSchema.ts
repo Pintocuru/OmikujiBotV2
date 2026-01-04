@@ -4,20 +4,20 @@ import { BaseRecordSchema } from '@shared/types'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 /**
- * PlaceholderValueObjectSchema: 重み付きのコンテンツオブジェクト
+ * WeightValueSchema: 重み付きのコンテンツオブジェクト
  */
-export const PlaceholderValueObjectSchema = z.object({
+export const WeightValueSchema = z.object({
   weight: z.number().min(0).default(1).catch(1),
   content: z.string().default('').catch(''),
 })
-export type PlaceholderValueType = z.infer<typeof PlaceholderValueObjectSchema>
+export type WeightValueType = z.infer<typeof WeightValueSchema>
 
 /**
- * PlaceholderValuesSchema: 配列の要素を処理
+ * WeightValuesArraySchema: 配列の要素を処理
  */
-export const PlaceholderValuesSchema = z
+export const WeightValuesArraySchema = z
   .array(
-    z.union([PlaceholderValueObjectSchema, z.string()]).transform((value) => {
+    z.union([WeightValueSchema, z.string()]).transform((value) => {
       // オブジェクトかつ weight が 1 で、他のプロパティがない場合に string に変換
       if (typeof value === 'object' && value.weight === 1) {
         // content 以外のキーがないことを確認
@@ -29,21 +29,22 @@ export const PlaceholderValuesSchema = z
       return value
     })
   )
-  .default([PlaceholderValueObjectSchema.parse({})])
+  .default([WeightValueSchema.parse({})])
   .catch([])
+export type WeightValuesArrayType = z.infer<typeof WeightValuesArraySchema>
 
 /**
  * PlaceholderSchema
  */
 export const PlaceholderSchema = z.object({
   ...BaseRecordSchema.shape,
-  values: PlaceholderValuesSchema,
+  values: WeightValuesArraySchema,
 })
 
 export type PlaceholderType = z.infer<typeof PlaceholderSchema>
 
 // PlaceholderValueType に修正する関数
-export function handelNormalizedValues(values: Array<PlaceholderValueType | string>): PlaceholderValueType[] {
+export function handelNormalizedValues(values: WeightValuesArrayType): WeightValueType[] {
   return values.map((item) => {
     if (typeof item === 'string') return { content: item, weight: 1 }
     else return item
@@ -51,10 +52,10 @@ export function handelNormalizedValues(values: Array<PlaceholderValueType | stri
 }
 
 // PlaceholderValueType から ランダム抽選で値を選択
-export function selectValue(values: Array<PlaceholderValueType | string>): string {
+export function selectValue(values: WeightValuesArrayType): string {
   const normalizedValues = handelNormalizedValues(values)
   if (normalizedValues.length === 0) return ''
 
-  const drawnValue = drawOmikuji(normalizedValues) as PlaceholderValueType
+  const drawnValue = drawOmikuji(normalizedValues) as WeightValueType
   return drawnValue.content || normalizedValues[0].content || ''
 }

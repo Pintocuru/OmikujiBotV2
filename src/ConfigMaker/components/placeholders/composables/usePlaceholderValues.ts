@@ -1,6 +1,6 @@
 // src/configMaker/components/placeholders/usePlaceholderValues.ts
 import { ref, computed } from 'vue'
-import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/'
+import { WeightValuesArrayType, WeightValueSchema } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 export function usePlaceholderValues(placeholderId: string) {
@@ -8,7 +8,7 @@ export function usePlaceholderValues(placeholderId: string) {
   const omikujiStore = useOmikujiStore()
 
   // リアクティブデータ
-  const localValues = ref<Array<PlaceholderValueType | string>>([])
+  const localValues = ref<WeightValuesArrayType>([])
   const updateValues = () => {
     omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', localValues.value)
   }
@@ -23,13 +23,13 @@ export function usePlaceholderValues(placeholderId: string) {
     if (placeholder?.values) {
       localValues.value = JSON.parse(JSON.stringify(placeholder.values))
     } else {
-      localValues.value = [PlaceholderValueObjectSchema.parse({})]
+      localValues.value = [WeightValueSchema.parse({})]
     }
   }
 
   // 値の操作
   const addValue = () => {
-    localValues.value.push(PlaceholderValueObjectSchema.parse({}))
+    localValues.value.push(WeightValueSchema.parse({}))
     updateValues()
   }
 

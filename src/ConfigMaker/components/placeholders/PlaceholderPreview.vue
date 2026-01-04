@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { handelNormalizedValues, PlaceholderValueType } from '@/types/'
+  import { handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
@@ -19,7 +19,7 @@
   import { processTestPlaceholder } from '../postAction/preview/TestPlaceholderProcessor'
 
   const props = defineProps<{
-    values: (PlaceholderValueType | string)[]
+    values: WeightValuesArrayType
   }>()
 
   const placeholdersMap = computed(() => useOmikujiStore().getCategoryMap('placeholders'))
@@ -27,12 +27,11 @@
   // 抽選実行
   const draw = () => {
     const normalized = handelNormalizedValues(props.values)
-    const weighted = addWeightPercentages(normalized)
-    return drawOmikuji(weighted)
+    return drawOmikuji(normalized)
   }
 
   // 結果表示
-  const showResult = (drawn: PlaceholderValueType, message: string) => {
+  const showResult = (drawn: WeightValueType, message: string) => {
     const { weight = 1, weightPercent = 0 } = drawn as any
 
     Swal.fire({

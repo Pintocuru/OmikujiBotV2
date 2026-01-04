@@ -6,6 +6,7 @@ import { soundList } from '@sounds/soundMap'
 import { PostActionType as OldPostActionType } from '@migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { WeightValueSchema } from './PlaceholderSchema'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -49,8 +50,14 @@ export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 export const PostActionActionSetSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('actionSet').default('actionSet'),
-  actionSetKey: z.string().default('').catch(''),
+  actionSetKeys: z.union([z.string(), z.array(z.union([z.string(), WeightValueSchema]))]).transform((value) => {
+    if (typeof value === 'string') {
+      return value === '' ? [] : [value]
+    }
+    return value
+  }),
 })
+
 export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
 
 // PostAction わんコメ・BOTちゃんに投稿する型定義
@@ -123,13 +130,12 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
   const baseFields = {
     delaySeconds: oldAction.delaySeconds ?? 0,
   }
-
   // 1. actionSet の移行
   if (oldAction.actionSetKey && oldAction.actionSetKey.trim() !== '') {
     newActions.push({
       ...baseFields,
       actionType: 'actionSet',
-      actionSetKey: oldAction.actionSetKey,
+      actionSetKeys: [oldAction.actionSetKey],
     })
     return newActions
   }

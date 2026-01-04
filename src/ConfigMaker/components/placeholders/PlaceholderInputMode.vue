@@ -9,7 +9,7 @@
           <input
             type="number"
             :value="value.weight"
-            @input="updateWeight(index, $event)"
+            @input="updateWeight(index, $event, handleUpdate)"
             min="0"
             class="input input-bordered input-sm w-full"
             placeholder="重み"
@@ -22,7 +22,7 @@
           <input
             type="text"
             :value="value.content"
-            @input="updateContent(index, $event)"
+            @input="updateContent(index, $event, handleUpdate)"
             placeholder="プレースホルダーの内容"
             class="input input-bordered input-sm w-full"
           />
@@ -30,7 +30,7 @@
 
         <!-- 複製・削除ボタン -->
         <div class="mt-2 sm:mt-0 sm:ml-auto">
-          <MenuDropdown @duplicate="handleDuplicate(index)" @delete="handleRemove(index)" />
+          <MenuDropdown @duplicate="duplicateValue(index, handleUpdate)" @delete="removeValue(index, handleUpdate)" />
         </div>
       </div>
     </div>
@@ -41,91 +41,32 @@
     <NoParamsCard message="プレースホルダーの内容が空です" />
   </div>
 
-  <button @click="handleAdd" class="btn btn-primary w-full mt-4">+ 値を追加</button>
+  <button @click="addValue(handleUpdate)" class="btn btn-primary w-full mt-4">+ 値を追加</button>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import {
-    PlaceholderValueType,
-    handelNormalizedValues,
-    PlaceholderValueObjectSchema,
-  } from '@/types/OmikujiData/PlaceholderSchema'
+  import { WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
+  import { useWeightValueManagement } from '@config/components/postAction/ActionSet/useWeightValueManagement'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
-  import { useWeightCalculation } from '../rules/composables/useWeightCalculation'
 
   const props = defineProps<{
     placeholderId: string
-    values: Array<PlaceholderValueType | string>
+    values: WeightValuesArrayType
   }>()
 
-  // ストアを使用
   const omikujiStore = useOmikujiStore()
 
-  // 表示用に正規化された値（stringをオブジェクトに変換）
-  const displayValues = computed(() => handelNormalizedValues(props.values))
+  // values を取得
+  const getValues = () => props.values
 
-  // weight計算のコンポーザブルを使用
-  const { getWeightPercentage } = useWeightCalculation(displayValues)
+  // コンポーザブルを使用（循環参照チェックは不要なのでcurrentKeyは渡さない）
+  const { displayValues, getWeightPercentage, addValue, removeValue, duplicateValue, updateWeight, updateContent } =
+    useWeightValueManagement(getValues)
 
-  // 新しい値を追加
-  const handleAdd = () => {
-    const newValue = PlaceholderValueObjectSchema.parse({})
-    const updatedValues = [...props.values, newValue]
-    omikujiStore.updatePlaceholderValues(props.placeholderId, updatedValues)
-  }
-
-  // 値の更新
-  const handleUpdate = (index: number, updates: Partial<PlaceholderValueType>) => {
-    const values = [...props.values]
-    const currentValue = values[index]
-
-    if (typeof currentValue === 'string') {
-      // stringの場合はオブジェクトに変換
-      values[index] = { content: currentValue, weight: 1, ...updates }
-    } else {
-      // オブジェクトの場合は更新
-      values[index] = { ...currentValue, ...updates }
-    }
-
-    omikujiStore.updatePlaceholderValues(props.placeholderId, values)
-  }
-
-  // 値の削除
-  const handleRemove = (index: number) => {
-    const updatedValues = props.values.filter((_, i) => i !== index)
-    omikujiStore.updatePlaceholderValues(props.placeholderId, updatedValues)
-  }
-
-  // 値の複製
-  const handleDuplicate = (index: number) => {
-    const original = props.values[index]
-    let duplicated: PlaceholderValueType | string
-
-    if (typeof original === 'string') {
-      duplicated = `${original}(コピー)`
-    } else {
-      duplicated = { ...original, content: `${original.content}(コピー)` }
-    }
-
-    const updatedValues = [...props.values]
-    updatedValues.splice(index + 1, 0, duplicated)
-    omikujiStore.updatePlaceholderValues(props.placeholderId, updatedValues)
-  }
-
-  // 重み更新
-  const updateWeight = (index: number, event: Event) => {
-    const target = event.target as HTMLInputElement
-    const weight = parseInt(target.value) || 1
-    handleUpdate(index, { weight })
-  }
-
-  // 内容更新
-  const updateContent = (index: number, event: Event) => {
-    const target = event.target as HTMLInputElement
-    const content = target.value
-    handleUpdate(index, { content })
+  // 更新処理（ストアに直接保存）
+  const handleUpdate = (newValues: WeightValuesArrayType) => {
+    omikujiStore.updatePlaceholderValues(props.placeholderId, newValues)
   }
 </script>

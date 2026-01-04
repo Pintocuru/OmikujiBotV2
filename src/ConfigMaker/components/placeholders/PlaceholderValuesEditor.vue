@@ -32,7 +32,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { PlaceholderType, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
+  import { PlaceholderType, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
   import PlaceholderInputMode from './PlaceholderInputMode.vue'
   import PlaceholderTextMode from './PlaceholderTextMode.vue'
   import PlaceholderPreview from './PlaceholderPreview.vue'
@@ -64,7 +64,7 @@
   }
 
   // テキストモードからの保存
-  const handleTextSave = (values: Array<PlaceholderValueType | string>) => {
+  const handleTextSave = (values: WeightValuesArrayType) => {
     omikujiStore.updatePlaceholderValues(props.placeholderKey, values)
     isTextMode.value = false
   }

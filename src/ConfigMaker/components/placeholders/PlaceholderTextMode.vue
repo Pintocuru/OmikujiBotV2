@@ -46,16 +46,16 @@
 
 <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue'
-  import { PlaceholderValueObjectSchema, PlaceholderValueType } from '@/types/OmikujiData/PlaceholderSchema'
+  import { WeightValuesArrayType, WeightValueSchema } from '@/types/OmikujiData/PlaceholderSchema'
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const props = defineProps<{
-    initialValues: Array<PlaceholderValueType | string>
+    initialValues: WeightValuesArrayType
   }>()
 
   const emit = defineEmits<{
-    save: [values: Array<PlaceholderValueType | string>]
+    save: [values: WeightValuesArrayType]
     cancel: []
   }>()
 
@@ -101,7 +101,7 @@
       candidate = { weight: 1, content: trimmed }
     }
 
-    const result = PlaceholderValueObjectSchema.safeParse(candidate)
+    const result = WeightValueSchema.safeParse(candidate)
 
     return {
       ...candidate,
@@ -132,7 +132,7 @@
   const errorCount = computed(() => previewItems.value.filter((item) => item.hasError).length)
 
   // テキストから値に変換
-  const convertTextToValues = (): Array<PlaceholderValueType | string> => {
+  const convertTextToValues = (): WeightValuesArrayType => {
     return previewItems.value
       .filter((item) => !item.hasError)
       .map(({ weight, content }) => {

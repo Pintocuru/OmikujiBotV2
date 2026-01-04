@@ -116,6 +116,7 @@
       ...props.action,
       delaySeconds: props.action.delaySeconds,
       actionType: newType,
+      actionSetKeys: [''],
     }
 
     try {

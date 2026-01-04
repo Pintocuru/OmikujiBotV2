@@ -1,6 +1,7 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
-import { ActionSetType, PostActionActionSetType, PostActionType } from '@/types/OmikujiData/'
+import { ActionSetType, handelNormalizedValues, PostActionActionSetType, PostActionType } from '@/types/OmikujiData/'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 export class ActionSetExpander {
   private static readonly MAX_DEPTH = 10
@@ -39,13 +40,19 @@ export class ActionSetExpander {
     depth: number,
     visited: Set<string>
   ): PostActionType[] {
-    const targetKey = action.actionSetKey
+    // 抽選を行う
+    const normalized = handelNormalizedValues(action.actionSetKeys)
+    const targetKeyObject = drawOmikuji(normalized)
+    if (!targetKeyObject) return []
+    const targetKey = targetKeyObject.content
 
+    // 循環参照チェック
     if (visited.has(targetKey)) {
       ConsolePost('error', `循環参照が検出されました: ${targetKey}`)
       return []
     }
 
+    // 展開
     const targetActionSet = actionSets[targetKey]
     if (!targetActionSet) {
       ConsolePost('warn', `アクションセット "${targetKey}" が見つかりません`)
