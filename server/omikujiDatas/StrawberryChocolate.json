@@ -342,7 +342,10 @@
             "conditions": [
               "count"
             ],
+            "userName": [],
             "access": [],
+            "gift": [],
+            "syoken": [],
             "count": {
               "comparison": "upperBound",
               "unit": "tc",
@@ -357,20 +360,14 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        },
         "comment": [
           "初見(?!さん)",
           "所見",
           "はじめまして"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -428,18 +425,12 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^コメント$"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -502,18 +493,12 @@
         "conditions": [
           "gift"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [
           "all"
         ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [],
-        "userName": []
+        "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -525,20 +510,23 @@
     "FirstSyokenChocolate": {
       "id": "FirstSyokenChocolate",
       "key": "FirstSyokenChocolate",
-      "name": "初見:Chocolate",
+      "name": "初見判定ちゃん:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T02:25:22.122Z",
+      "updatedAt": "2026-01-04T06:57:23.570Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "315c1260-131e-44d0-8020-1ab5cd420621",
           "key": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "name": "初見(blushing):Chocolate",
+          "name": "初見",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -567,27 +555,124 @@
           ],
           "gameScripts": null,
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767509750837",
+          "key": "1767509750837",
+          "name": "久しぶり",
+          "createdAt": "2026-01-04T06:55:50.837Z",
+          "updatedAt": "2026-01-04T06:55:50.837Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "wink",
+              "sound": "congrats",
+              "message": {
+                "bubble": "<<FirstComebackChocolate>>",
+                "toast": "",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "again"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767509789237",
+          "key": "1767509789237",
+          "name": "こんにちは",
+          "createdAt": "2026-01-04T06:56:29.237Z",
+          "updatedAt": "2026-01-04T06:56:29.237Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "sound": "collect",
+              "message": {
+                "bubble": "<<FirstVisitChocolate>>",
+                "toast": "",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "firstVisit"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [],
-        "userName": []
+        "syoken": [
+          "syoken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -645,18 +730,13 @@
         "conditions": [
           "syoken"
         ],
-        "syoken": [
-          "again"
-        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [],
-        "userName": []
+        "syoken": [
+          "again"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -714,18 +794,13 @@
         "conditions": [
           "syoken"
         ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [],
-        "userName": []
+        "syoken": [
+          "firstVisit"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -783,16 +858,15 @@
         "conditions": [
           "count"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
+        "comment": [],
         "count": {
           "comparison": "loop",
           "unit": "lc",
           "value": 50
-        },
-        "comment": [],
-        "userName": []
+        }
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -850,16 +924,15 @@
         "conditions": [
           "count"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
+        "comment": [],
         "count": {
           "comparison": "loop",
           "unit": "tc",
           "value": 100
-        },
-        "comment": [],
-        "userName": []
+        }
       },
       "limits": {
         "cooldownSeconds": 0,

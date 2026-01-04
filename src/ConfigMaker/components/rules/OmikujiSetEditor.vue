@@ -65,7 +65,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/'
   import CharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
@@ -152,4 +152,15 @@
     ]
     return colors[index % colors.length]
   }
+
+  watch(
+    () => props.selectedItemKey,
+    () => {
+      if (omikujiSets.value.length === 0) {
+        selectedOmikujiIndex.value = null
+      } else {
+        selectedOmikujiIndex.value = 0
+      }
+    }
+  )
 </script>

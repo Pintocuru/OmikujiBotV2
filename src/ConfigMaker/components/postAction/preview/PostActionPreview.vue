@@ -32,6 +32,12 @@
       </div>
     </div>
 
+    <!-- サウンドアクション -->
+    <div v-else-if="action.actionType === 'sound'" class="w-full text-center">
+      <Volume2 :size="80" class="mx-auto text-blue-500" />
+      <p class="text-sm opacity-70 mt-2">サウンド</p>
+    </div>
+
     <!-- WordPartyアクション -->
     <div v-else-if="action.actionType === 'wordParty'" class="w-full text-center">
       <PartyPopper :size="80" class="mx-auto text-purple-500" />
@@ -72,7 +78,7 @@
   import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
   import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { PartyPopper, MessagesSquare } from 'lucide-vue-next'
+  import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{ action: PostActionType }>()
 
