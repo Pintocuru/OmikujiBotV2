@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/ThresholdEditor.vue -->
+<!-- src\ConfigMaker\components\rulesComments\CommentTriggerEditor.vue -->
 <template>
   <!-- 条件設定の説明 -->
   <InformationCard>
@@ -7,23 +7,27 @@
       ユーザーのギフト有無やチャット数などを基にルール発動を制御します。
     </p>
     <p>条件が複数ある場合は、すべて満たしたときのみ発動します。(ANDのみ対応)</p>
+    <p class="text-xs opacity-70">
+      ※ 初見判定ちゃん・チャット数は v2 以降「追加発動条件」で設定できます。詳細はこちら。
+    </p>
   </InformationCard>
 
   <!-- 条件タイプ選択 -->
   <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
     <div class="flex flex-wrap gap-2">
-      <label
-        v-for="condition in conditionTypes"
-        :key="condition.value"
-        class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
-      >
+      <label v-for="condition in conditionTypes" :key="condition.value" class="cursor-pointer">
         <input
           type="checkbox"
-          class="checkbox checkbox-primary"
+          class="hidden"
           :checked="conditions.includes(condition.value)"
           @change="toggleCondition(condition.value)"
         />
-        <span class="text-sm">{{ condition.label }}</span>
+        <span
+          class="badge badge-lg select-none"
+          :class="conditions.includes(condition.value) ? 'badge-primary' : 'badge-ghost'"
+        >
+          {{ condition.label }}
+        </span>
       </label>
     </div>
   </SettingItem>
@@ -32,20 +36,17 @@
   <!-- チャットワード条件 -->
   <ThresholdComment v-if="conditions.includes('comment')" v-model="comment" />
 
-  <!-- 初見条件 -->
-  <ThresholdSyoken v-if="conditions.includes('syoken')" v-model="syoken" />
-
   <!-- アクセスレベル条件 -->
   <TriggerAccess v-if="conditions.includes('access')" v-model="access" />
 
   <!-- ギフト条件 -->
   <ThresholdGift v-if="conditions.includes('gift')" v-model="gift" />
 
-  <!-- カウント条件 -->
-  <TriggerCount v-if="conditions.includes('count')" v-model="count" />
-
   <!-- ユーザーネーム条件 -->
   <ThresholdUsername v-if="conditions.includes('username')" v-model="userName" />
+
+  <!-- 条件未記入ですべてのコメントで適用 -->
+  <NoParamsCard v-if="conditions.length === 0" message="すべてのコメントで適用されます" />
 </template>
 
 <script setup lang="ts">
@@ -54,12 +55,10 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
 
   import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
-  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
   import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
   import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
 
   import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
-  import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
 
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import {
@@ -67,6 +66,7 @@
     commentTriggerConditionLabels,
     CommentTriggerType,
   } from '@/types/OmikujiProcess/CommentTriggerSchema'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const props = defineProps<{
     modelValue: CommentTriggerType
@@ -90,10 +90,8 @@
   // 各プロパティのcomputed
   const conditions = createComputed('conditions')
   const comment = createComputed('comment')
-  const syoken = createComputed('syoken')
   const access = createComputed('access')
   const gift = createComputed('gift')
-  const count = createComputed('count')
   const userName = createComputed('userName')
 
   // 条件タイプの選択肢

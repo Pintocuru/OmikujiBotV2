@@ -31,7 +31,7 @@
         :subTitle="thresholdSubTitle"
         description="「おみくじを引く」発動条件の設定"
       >
-        <CommentThresholdEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
+        <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- おみくじ制限設定セクション -->
@@ -70,11 +70,11 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
+  import CommentTriggerEditor from './CommentTriggerEditor.vue'
+  import OmikujiLimitsEditor from './OmikujiLimitsEditor.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
   import GlobalCharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
-  import OmikujiLimitsEditor from '@config/components/rulesComments/OmikujiLimitsEditor.vue'
-  import CommentThresholdEditor from '@config/components/threshold/ThresholdEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -112,11 +112,10 @@
     const conditions = selectedItem.value.trigger.conditions
     const icons = []
 
-    if (conditions.includes('comment')) icons.push('💬')
-    if (conditions.includes('syoken')) icons.push('🆕')
+    if (conditions.includes('username')) icons.push('👱')
     if (conditions.includes('access')) icons.push('🚶')
+    if (conditions.includes('comment')) icons.push('💬')
     if (conditions.includes('gift')) icons.push('🎁')
-    if (conditions.includes('count')) icons.push('🔢')
 
     return icons.join('')
   })

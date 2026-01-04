@@ -103,14 +103,8 @@ export class OmikujiResultProcessor {
     return actions.map((action) => {
       if (action.actionType !== 'message') return action
 
-      // デフォルト情報を付与(TODO:ちゃんと切り分けて)
-      action.message.user = omiken
-        ? UserNameSchema.parse({
-            name: omiken?.userName,
-            userId: omiken?.userId,
-            profileImage: omiken?.profileImage,
-          })
-        : undefined
+      // デフォルト情報を付与
+      action.message.user = omiken ? UserNameSchema.parse(omiken) : undefined
 
       // 変数プレースホルダー処理
       const { bubble, toast } = action.message

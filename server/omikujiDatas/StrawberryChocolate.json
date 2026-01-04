@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T01:53:57.318Z",
+      "updatedAt": "2026-01-04T00:32:05.737Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -180,7 +180,8 @@
               "sound": "bounce",
               "message": {
                 "bubble": "<<FirstSagiChocolateThinking>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -214,7 +215,8 @@
               "sound": "explosion",
               "message": {
                 "bubble": "<<FirstSagiChocolateSurprise>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -248,7 +250,8 @@
               "sound": "fail",
               "message": {
                 "bubble": "<<FirstSagiChocolateSad>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -282,7 +285,8 @@
               "sound": "baseball",
               "message": {
                 "bubble": "<<FirstSyokenChocolate>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             },
             {
@@ -293,7 +297,8 @@
               "sound": "fail",
               "message": {
                 "bubble": "えっ！<<user>>さん、初見じゃなかったの? もう、びっくりさせないでよ～",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -301,12 +306,55 @@
           "weight": 1,
           "isPriority": false,
           "criteria": null
+        },
+        {
+          "id": "1767486455920",
+          "key": "1767486455920",
+          "name": "ホントの初見:Chocolate",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
+            },
+            {
+              "delaySeconds": 1.5,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "happy",
+              "sound": "baseball",
+              "message": {
+                "bubble": "<<FirstSyokenChocolate>>",
+                "toast": "",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "access": [],
+            "count": {
+              "comparison": "upperBound",
+              "unit": "tc",
+              "value": 5
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
       "trigger": {
         "conditions": [
-          "count",
           "comment"
         ],
         "syoken": [],
@@ -331,82 +379,6 @@
         "repeatMessage": null
       }
     },
-    "FirstHontoChocolate": {
-      "id": "FirstHontoChocolate",
-      "key": "FirstHontoChocolate",
-      "name": "ホントの初見:Chocolate",
-      "description": "あら、はじめまして🍓 見つけてくれてありがとう♡",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-27T08:39:41.819Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "key": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "name": "ホントの初見:Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenChocolate>>",
-                "toast": ""
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ],
-        "userName": []
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
     "CheckNumberChocolate": {
       "id": "CheckNumberChocolate",
       "key": "CheckNumberChocolate",
@@ -414,7 +386,7 @@
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-12-27T08:40:27.220Z",
-      "order": 3,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -440,7 +412,8 @@
               "sound": "transition",
               "message": {
                 "bubble": "",
-                "toast": "<<user>>さんは、 [<<tc>>] 回コメントしてるわ。"
+                "toast": "<<user>>さんは、 [<<tc>>] 回コメントしてるわ。",
+                "isToast": false
               }
             }
           ],
@@ -482,7 +455,7 @@
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2025-12-27T08:38:17.567Z",
-      "order": 4,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -513,7 +486,8 @@
               "sound": "carnival",
               "message": {
                 "bubble": "<<GiftChocolate>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -555,7 +529,7 @@
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-11-28T02:25:22.122Z",
-      "order": 5,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -586,7 +560,8 @@
               "sound": "baseball",
               "message": {
                 "bubble": "<<FirstSyokenChocolate>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -628,7 +603,7 @@
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-11-28T02:25:49.379Z",
-      "order": 6,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -654,7 +629,8 @@
               "sound": "congrats",
               "message": {
                 "bubble": "<<FirstComebackChocolate>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -696,7 +672,7 @@
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-12-27T08:36:23.237Z",
-      "order": 7,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -722,7 +698,8 @@
               "sound": "collect",
               "message": {
                 "bubble": "<<FirstVisitChocolate>>",
-                "toast": ""
+                "toast": "",
+                "isToast": false
               }
             }
           ],
@@ -764,7 +741,7 @@
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-12-06T03:32:55.645Z",
-      "order": 8,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -790,7 +767,8 @@
               "sound": "baseball",
               "message": {
                 "bubble": "",
-                "toast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡"
+                "toast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
+                "isToast": false
               }
             }
           ],
@@ -830,7 +808,7 @@
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
       "updatedAt": "2025-12-27T08:35:08.587Z",
-      "order": 9,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -856,7 +834,8 @@
               "sound": "baseball",
               "message": {
                 "bubble": "",
-                "toast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡"
+                "toast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
+                "isToast": false
               }
             }
           ],
@@ -924,7 +903,8 @@
               "sound": "cute",
               "message": {
                 "bubble": "",
-                "toast": "<<viewer>>人が見てくれているわ。ありがと♡"
+                "toast": "<<viewer>>人が見てくれているわ。ありがと♡",
+                "isToast": false
               }
             }
           ],
@@ -953,7 +933,8 @@
               "sound": "cute",
               "message": {
                 "bubble": "",
-                "toast": "高評価は<<upVote>>よ。押してくれると嬉しいな♡"
+                "toast": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
+                "isToast": false
               }
             }
           ],
@@ -1000,7 +981,8 @@
               "sound": "news",
               "message": {
                 "bubble": "",
-                "toast": "<<PromotionToastsChocolate>>"
+                "toast": "<<PromotionToastsChocolate>>",
+                "isToast": false
               }
             }
           ],
@@ -1029,7 +1011,8 @@
               "sound": "bounce",
               "message": {
                 "bubble": "",
-                "toast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…"
+                "toast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…",
+                "isToast": false
               }
             }
           ],
@@ -1065,7 +1048,8 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1092,7 +1076,8 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1134,7 +1119,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1176,7 +1162,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1218,7 +1205,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1260,7 +1248,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1302,7 +1291,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1344,7 +1334,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1386,7 +1377,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1428,7 +1420,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1470,7 +1463,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1512,7 +1506,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1554,7 +1549,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1596,7 +1592,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1638,7 +1635,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -1680,7 +1678,8 @@
           "sound": "decision",
           "message": {
             "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -3056,7 +3055,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "scriptKey": "basicList",
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "🍉スイカランキング🍉",
       "limit": 5,
       "sortOrder": "new",

@@ -12,7 +12,6 @@
     <!-- プログレスバーと凡例 -->
     <OmikujiWeightProgressBar
       :items="localItems"
-      :totalWeight="totalWeight"
       :selectedIndex="selectedIndex"
       @update:items="localItems = $event"
       @update:weight="handleWeightUpdate"
@@ -26,10 +25,10 @@
   import { OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiControlsToolbar from './OmikujiControlsToolbar.vue'
   import OmikujiWeightProgressBar from './OmikujiWeightProgressBar.vue'
+  import { useWeightCalculation } from '../composables/useWeightCalculation'
 
   const props = defineProps<{
     items: OmikujiItemType[]
-    totalWeight: number
     selectedIndex: number | null
   }>()
 
@@ -44,6 +43,9 @@
     get: () => props.items,
     set: (value) => emit('update:items', value),
   })
+
+  // weight計算のコンポーザブルを使用
+  const { totalWeight } = useWeightCalculation(localItems)
 
   const itemCount = computed(() => props.items.length)
 

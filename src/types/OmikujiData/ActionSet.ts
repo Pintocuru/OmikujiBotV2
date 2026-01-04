@@ -124,7 +124,7 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
     delaySeconds: oldAction.delaySeconds ?? 0,
   }
 
-  // 1. actionSet の移行 (最優先)
+  // 1. actionSet の移行
   if (oldAction.actionSetKey && oldAction.actionSetKey.trim() !== '') {
     newActions.push({
       ...baseFields,

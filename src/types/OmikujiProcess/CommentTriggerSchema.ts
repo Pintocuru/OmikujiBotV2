@@ -1,17 +1,12 @@
 // src\types\OmikujiProcess\CommentTriggerSchema.ts
 import { z } from 'zod'
-import {
-  GiftConditionSchema,
-  SyokenConditionSchema,
-  thresholdConditionDescriptions,
-  thresholdConditionLabels,
-} from '@shared/types/Threshold/'
-import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'
+import { GiftConditionSchema, thresholdConditionDescriptions, thresholdConditionLabels } from '@shared/types/Threshold/'
+import { AccessConditionSchema } from '@shared/types/trigger'
 
 /**
  * Comment Trigger
  */
-export const commentTriggerCondition = ['comment', 'syoken', 'access', 'gift', 'count', 'username'] as const
+export const commentTriggerCondition = ['comment', 'access', 'gift', 'username'] as const
 export type CommentTriggerCondition = (typeof commentTriggerCondition)[number]
 
 export const commentTriggerConditionLabels = Object.fromEntries(
@@ -26,11 +21,9 @@ export const CommentTriggerConditionSchema = z.enum(commentTriggerCondition).def
 
 export const CommentTriggerSchema = z.object({
   conditions: z.array(CommentTriggerConditionSchema).catch([]),
-  syoken: z.array(SyokenConditionSchema).catch([]),
+  userName: z.array(z.string()).catch([]),
   access: z.array(AccessConditionSchema).catch([]),
   gift: z.array(GiftConditionSchema).catch([]),
-  count: CountConditionSchema.catch(CountConditionSchema.parse({})),
   comment: z.array(z.string()).catch([]),
-  userName: z.array(z.string()).catch([]),
 })
 export type CommentTriggerType = z.infer<typeof CommentTriggerSchema>

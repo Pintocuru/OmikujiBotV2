@@ -41,20 +41,13 @@ export function processUserComment(omiken: OmikenCommentType): BotMessage[] {
 }
 
 /**
- * コメントルールの条件チェック
- */
-function validateThreshold(omiken: OmikenCommentType, rule: CommentRuleType): boolean {
-  return checkAllTriggers(omiken, rule.trigger)
-}
-
-/**
  * 単一ルールの処理
  */
 function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
   const { userVisitManager } = useAppStore()
 
-  // 1. 閾値条件チェック
-  if (!validateThreshold(omiken, rule)) {
+  // 1. コメントルールの条件チェック
+  if (!checkAllTriggers(omiken, rule.trigger)) {
     return { isCommentTriggered: false, botMessages: [] }
   }
 
@@ -71,11 +64,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
 
   // 3. おみくじ成功時に回数をインクリメント
   omiken.meta.draws = userVisitManager.getVisitCount(omiken.userId, rule.key) + 1
-  const userName = UserNameSchema.parse({
-    name: omiken.userName,
-    userId: omiken.userId,
-    profileImage: omiken.profileImage,
-  })
+  const userName = UserNameSchema.parse(omiken)
   userVisitManager.recordVisit(rule.key, userName)
 
   // 4. おみくじ実行

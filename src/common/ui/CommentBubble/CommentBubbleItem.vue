@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\common\ui\CommentBubble\CommentBubbleItem.vue -->
+<!-- src\common\ui\CommentBubble\CommentBubbleItem.vue -->
 <template>
   <div
     class="relative inline-block max-w-3xl min-w-[10rem]"

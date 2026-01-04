@@ -27,7 +27,6 @@
     <!-- おみくじリスト一覧（クリックで選択） -->
     <OmikujiCardControls
       :items="omikujiSets"
-      :totalWeight="totalWeight"
       :selectedIndex="selectedOmikujiIndex"
       @sort="handleSort"
       @update:items="omikujiSets = $event"
@@ -74,7 +73,6 @@
   import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { useWeightCalculation } from './composables/useWeightCalculation'
   import { Dices, Plus, X } from 'lucide-vue-next'
 
   const props = defineProps<{
@@ -104,9 +102,6 @@
       }
     },
   })
-
-  // weight計算のコンポーザブルを使用
-  const { totalWeight } = useWeightCalculation(omikujiSets)
 
   // Methods
   const addOmikuji = () => {

@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\GameRanking\GameRankingScore.vue -->
+<!-- src\MainGenerator\ui\GameRanking\GameRankingScore.vue -->
 <template>
   <Transition name="bubble-fade" @after-leave="$emit('hidden')">
     <div v-if="isVisible && latestMessage" ref="bubbleRef" class="inline-block relative z-10">

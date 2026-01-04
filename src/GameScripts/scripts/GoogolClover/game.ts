@@ -98,11 +98,7 @@ function buildGameResult(result: SlotExecutionResult, context: GameContext): Gam
   const { failedAt, multipliers, totalMultiplier } = result
   const multipliersDisplay = multipliers.map((m) => `${m}`).join('×')
 
-  const user = UserNameSchema.parse({
-    name: context.userName,
-    userId: context.userId,
-    profileImage: context.profileImage,
-  })
+  const user = UserNameSchema.parse(context)
 
   // 失敗時
   if (failedAt > 0) {

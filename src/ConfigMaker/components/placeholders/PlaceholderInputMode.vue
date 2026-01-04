@@ -54,6 +54,7 @@
   } from '@/types/OmikujiData/PlaceholderSchema'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import { useWeightCalculation } from '../rules/composables/useWeightCalculation'
 
   const props = defineProps<{
     placeholderId: string
@@ -66,16 +67,8 @@
   // 表示用に正規化された値（stringをオブジェクトに変換）
   const displayValues = computed(() => handelNormalizedValues(props.values))
 
-  // 全体の重みの合計を計算
-  const totalWeight = computed(() => {
-    return displayValues.value.reduce((sum, item) => sum + (item.weight || 0), 0)
-  })
-
-  // 各項目の重みのパーセンテージを計算
-  const getWeightPercentage = (weight: number) => {
-    if (totalWeight.value === 0) return '0.00'
-    return ((weight / totalWeight.value) * 100).toFixed(2)
-  }
+  // weight計算のコンポーザブルを使用
+  const { getWeightPercentage } = useWeightCalculation(displayValues)
 
   // 新しい値を追加
   const handleAdd = () => {

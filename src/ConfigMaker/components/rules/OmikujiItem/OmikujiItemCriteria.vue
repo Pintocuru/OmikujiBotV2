@@ -10,54 +10,71 @@
     <p>管理者限定コマンドなどの応用も可能です。</p>
   </InformationCard>
 
-  <div class="flex items-center gap-4">
-    <div class="form-control flex-1">
-      <!-- 条件タイプ選択 -->
-      <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
-        <div class="flex flex-wrap gap-2">
-          <label
-            v-for="condition in conditionTypes"
-            :key="condition.value"
-            class="flex items-center gap-2 hover:bg-base-300 p-2 rounded cursor-pointer"
-          >
-            <input
-              type="checkbox"
-              class="checkbox checkbox-primary"
-              :checked="isConditionChecked(condition.value)"
-              @change="toggleCondition(condition.value)"
-            />
-            <span class="text-sm">{{ condition.label }}</span>
-          </label>
-        </div>
-      </SettingItem>
+  <!-- 条件タイプ選択 -->
+  <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
+    <div class="flex flex-wrap gap-2">
+      <label v-for="condition in conditionTypes" :key="condition.value" class="cursor-pointer">
+        <input
+          type="checkbox"
+          class="hidden"
+          :checked="activeConditions.has(condition.value)"
+          @change="toggleCondition(condition.value)"
+        />
+        <span
+          class="badge badge-lg select-none"
+          :class="activeConditions.has(condition.value) ? 'badge-primary' : 'badge-ghost'"
+        >
+          {{ condition.label }}
+        </span>
+      </label>
     </div>
-  </div>
+  </SettingItem>
 
   <!-- 各条件の詳細設定 -->
-  <div class="flex items-center gap-4">
-    <div class="form-control flex-1">
-      <!-- チャットワード条件 -->
-      <ThresholdComment
-        v-if="isConditionChecked('comment')"
-        :modelValue="criteria?.comment ?? []"
-        @update:modelValue="updateCriteriaProperty('comment', $event)"
-      />
+  <!-- ユーザーネーム条件 -->
+  <ThresholdUsername
+    v-if="activeConditions.has('username')"
+    :modelValue="criteria?.userName ?? []"
+    @update:modelValue="updateCriteria('userName', $event)"
+  />
 
-      <!-- アクセスレベル条件 -->
-      <TriggerAccess
-        v-if="isConditionChecked('access')"
-        :modelValue="criteria?.access ?? []"
-        @update:modelValue="updateCriteriaProperty('access', $event)"
-      />
+  <!-- アクセスレベル条件 -->
+  <TriggerAccess
+    v-if="activeConditions.has('access')"
+    :modelValue="criteria?.access ?? []"
+    @update:modelValue="updateCriteria('access', $event)"
+  />
 
-      <!-- カウント条件 -->
-      <TriggerCount
-        v-if="isConditionChecked('count')"
-        :modelValue="criteria?.count ?? { comparison: 'lowerBound', unit: 'draws', value: 0 }"
-        @update:modelValue="updateCriteriaProperty('count', $event)"
-      />
-    </div>
-  </div>
+  <!-- ギフト条件 -->
+  <ThresholdGift
+    v-if="activeConditions.has('gift')"
+    :modelValue="criteria?.gift ?? []"
+    @update:modelValue="updateCriteria('gift', $event)"
+  />
+
+  <!-- 初見条件 -->
+  <ThresholdSyoken
+    v-if="activeConditions.has('syoken')"
+    :modelValue="criteria?.syoken ?? []"
+    @update:modelValue="updateCriteria('syoken', $event)"
+  />
+
+  <!-- カウント条件 -->
+  <TriggerCount
+    v-if="activeConditions.has('count')"
+    :modelValue="criteria?.count ?? CountConditionSchema.parse({})"
+    @update:modelValue="updateCriteria('count', $event)"
+  />
+
+  <!-- チャットワード条件 -->
+  <ThresholdComment
+    v-if="activeConditions.has('comment')"
+    :modelValue="criteria?.comment ?? []"
+    @update:modelValue="updateCriteria('comment', $event)"
+  />
+
+  <!-- チャットワード条件 -->
+  <NoParamsCard v-if="activeConditions.keys.length === 0" message="すべてのコメントで適用されます" />
 </template>
 
 <script setup lang="ts">
@@ -72,12 +89,15 @@
     CriteriaThresholdSchema,
     CriteriaThresholdType,
   } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
-
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
+  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-
   import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
   import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
   import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
+  import { CountConditionSchema } from '@shared/types'
+  import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -88,7 +108,8 @@
 
   const omikujiStore = useOmikujiStore()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
+  // 現在編集中のおみくじのインデックス
+  const omikujiIndex = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
   // 条件タイプの選択肢
   const conditionTypes = Object.entries(criteriaThresholdConditionLabels).map(([value, label]) => ({
@@ -99,48 +120,50 @@
   // 現在のcriteria
   const criteria = computed(() => props.omikuji?.criteria)
 
-  // 条件がチェックされているか判定
-  const isConditionChecked = (condition: CriteriaThresholdCondition): boolean => {
-    return criteria.value?.conditions?.includes(condition) ?? false
-  }
-
-  // Utils
-  const toggleInArray = <T,>(array: T[], value: T): T[] => {
-    const index = array.indexOf(value)
-    return index > -1 ? array.filter((_, i) => i !== index) : [...array, value]
-  }
+  // アクティブな条件のSet（高速な検索のため）
+  const activeConditions = computed(() => new Set(criteria.value?.conditions ?? []))
 
   // 条件のトグル
   const toggleCondition = (condition: CriteriaThresholdCondition) => {
-    if (index.value === -1 || !props.selectedItemKey) return
+    if (!isValidUpdate()) return
 
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => {
-      const currentCriteria = item.criteria
-      const currentConditions = currentCriteria?.conditions ?? []
-      const newConditions = toggleInArray(currentConditions, condition)
+    const currentConditions = criteria.value?.conditions ?? []
+    const newConditions = currentConditions.includes(condition)
+      ? currentConditions.filter((c) => c !== condition)
+      : [...currentConditions, condition]
 
-      return {
-        ...item,
-        criteria: currentCriteria
-          ? { ...currentCriteria, conditions: newConditions }
-          : { ...CriteriaThresholdSchema.parse({}), conditions: newConditions },
-      }
-    })
+    updateOmikuji((item) => ({
+      ...item,
+      criteria: ensureCriteria(item.criteria, { conditions: newConditions }),
+    }))
   }
 
   // criteriaのプロパティ更新
-  const updateCriteriaProperty = <K extends keyof CriteriaThresholdType>(key: K, value: CriteriaThresholdType[K]) => {
-    if (index.value === -1 || !props.selectedItemKey) return
+  const updateCriteria = <K extends keyof CriteriaThresholdType>(key: K, value: CriteriaThresholdType[K]) => {
+    if (!isValidUpdate()) return
 
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => {
-      const currentCriteria = item.criteria
+    updateOmikuji((item) => ({
+      ...item,
+      criteria: ensureCriteria(item.criteria, { [key]: value }),
+    }))
+  }
 
-      return {
-        ...item,
-        criteria: currentCriteria
-          ? { ...currentCriteria, [key]: value }
-          : { ...CriteriaThresholdSchema.parse({}), [key]: value },
-      }
-    })
+  // ヘルパー関数: 更新可能かチェック
+  const isValidUpdate = (): boolean => {
+    return omikujiIndex.value !== -1 && props.selectedItemKey !== null
+  }
+
+  // ヘルパー関数: criteriaの存在を保証
+  const ensureCriteria = (
+    current: CriteriaThresholdType | null,
+    updates: Partial<CriteriaThresholdType>
+  ): CriteriaThresholdType => {
+    const base = current ?? CriteriaThresholdSchema.parse({})
+    return { ...base, ...updates }
+  }
+
+  // ヘルパー関数: おみくじの更新
+  const updateOmikuji = (updater: (item: OmikujiItemType) => OmikujiItemType) => {
+    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey!, omikujiIndex.value, updater)
   }
 </script>

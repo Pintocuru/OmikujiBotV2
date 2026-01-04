@@ -47,8 +47,8 @@ export function buildRankingMessage(params: {
  */
 export function prepareUserInfo(omiken?: OmikenCommentType): UserNameType {
   return UserNameSchema.parse({
-    name: omiken?.userName ?? UNKNOWN_NAME,
-    userId: omiken?.userId ?? UNKNOWN_NAME,
-    profileImage: omiken?.profileImage,
+    userName: UNKNOWN_NAME,
+    userId: UNKNOWN_NAME,
+    ...omiken,
   })
 }

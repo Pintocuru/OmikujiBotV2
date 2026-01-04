@@ -28,6 +28,7 @@
 
     <!-- Weight編集 -->
     <input
+      v-if="!item?.isPriority"
       type="number"
       :value="item.weight"
       @input="handleWeightUpdate"

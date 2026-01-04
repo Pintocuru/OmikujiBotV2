@@ -5,18 +5,18 @@
       <!-- プログレスバー本体 -->
       <div class="flex w-full h-8 rounded overflow-hidden border border-base-300">
         <div
-          v-for="(item, index) in weightDistribution"
+          v-for="(item, index) in localItems"
           :key="index"
           :style="{
-            width: `${item.percentage}%`,
+            width: `${item.weightPercent}%`,
             backgroundColor: getColorForIndex(index),
           }"
           class="tooltip tooltip-top flex items-center justify-center text-xs text-white font-semibold cursor-pointer hover:brightness-110 transition-all"
-          :data-tip="`${item.name || `アイテム${index + 1}`}: ${item.percentageStr}%`"
+          :data-tip="`${items[index].name || `アイテム${index + 1}`}: ${item.weightPercent}%`"
           @click="$emit('select', index)"
         >
-          <span v-if="item.percentage > 8" class="truncate px-1">
-            {{ item.percentage > 12 ? item.name || `#${index + 1}` : '' }}
+          <span v-if="typeof item.weightPercent === 'number' && item.weightPercent > 8" class="truncate px-1">
+            {{ item.weightPercent > 12 ? items[index].name || `#${index + 1}` : '' }}
           </span>
         </div>
       </div>
@@ -36,7 +36,7 @@
             :item="item"
             :index="index"
             :color="getColorForIndex(index)"
-            :percentage="weightDistribution[index]?.percentageStr"
+            :percentage="String(localItems[index]?.weightPercent)"
             :isSelected="selectedIndex === index"
             @update:weight="$emit('update:weight', { index, weight: $event })"
             @select="$emit('select', index)"
@@ -52,10 +52,10 @@
   import { OmikujiItemType } from '@/types/OmikujiData/'
   import draggable from 'vuedraggable'
   import OmikujiLegendItem from './OmikujiLegendItem.vue'
+  import { addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 
   const props = defineProps<{
     items: OmikujiItemType[]
-    totalWeight: number
     selectedIndex: number | null
   }>()
 
@@ -65,20 +65,7 @@
     select: [index: number]
   }>()
 
-  const weightDistribution = computed(() => {
-    const total = props.totalWeight
-    if (total === 0) return []
-
-    return props.items.map((item, index) => {
-      const percentage = (item.weight / total) * 100
-      return {
-        name: item.name || `アイテム${index + 1}`,
-        weight: item.weight,
-        percentage: percentage,
-        percentageStr: percentage.toFixed(2),
-      }
-    })
-  })
+  const localItems = computed(() => addWeightPercentages(props.items))
 
   const getColorForIndex = (index: number): string => {
     const colors = [
