@@ -61,9 +61,9 @@ export function useWeightValueManagement(values: () => WeightValuesArrayType, cu
     let duplicated: string | WeightValueType
 
     if (typeof original === 'string') {
-      duplicated = `${original}(コピー)`
+      duplicated = original
     } else {
-      duplicated = { ...original, content: `${original.content}(コピー)` }
+      duplicated = { ...original }
     }
 
     const updated = [...values()]

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta3",
-    "dataVersion": 2.0003,
+    "generatorVersion": "v2.0.0-beta4",
+    "dataVersion": 2.0004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -26,7 +26,7 @@
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2025-11-20T02:23:56.855Z",
+      "updatedAt": "2026-01-04T14:43:50.318Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -48,11 +48,13 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "5percent_dora"
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": null,
-          "weight": 380,
+          "weight": 19,
           "isPriority": false,
           "criteria": null
         },
@@ -71,30 +73,16 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "5percent_dora_boron"
-            }
-          ],
-          "gameScripts": null,
-          "weight": 19,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "17765e28-5805-4872-b698-c829a462765b",
-          "key": "17765e28-5805-4872-b698-c829a462765b",
-          "name": "ドラちゃん (こんにゃく)",
-          "description": "",
-          "createdAt": "2025-08-10T10:59:27.244Z",
-          "updatedAt": "2025-08-10T10:59:27.244Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKey": "5percent_dora_Konjac"
+              "actionSetKeys": [
+                {
+                  "content": "5percent_dora_boron",
+                  "weight": 19
+                },
+                {
+                  "weight": 1,
+                  "content": "5percent_dora_Konjac"
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -108,21 +96,15 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^ドラちゃん",
           "^どらちゃん",
           "^dorachan",
           "^5percent_dora"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -139,7 +121,7 @@
       "name": "ドラちゃん(定期)",
       "description": "ドラちゃんです。5分に1回、自動で性器を露出します。",
       "createdAt": "2025-08-10T20:39:01.283Z",
-      "updatedAt": "2025-10-11T01:20:18.389Z",
+      "updatedAt": "2026-01-04T14:47:45.720Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -160,11 +142,13 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "5percent_dora"
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": null,
-          "weight": 380,
+          "weight": 19,
           "isPriority": false,
           "criteria": null
         },
@@ -182,29 +166,16 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "5percent_dora_boron"
-            }
-          ],
-          "gameScripts": null,
-          "weight": 19,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "1754858776558",
-          "key": "1754858776558",
-          "name": "ドラちゃん (こんにゃく)",
-          "createdAt": "2025-08-10T20:46:16.558Z",
-          "updatedAt": "2025-08-10T20:46:16.558Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKey": "5percent_dora_Konjac"
+              "actionSetKeys": [
+                {
+                  "content": "5percent_dora_boron",
+                  "weight": 19
+                },
+                {
+                  "weight": 1,
+                  "content": "5percent_dora_Konjac"
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -261,7 +232,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKey": "5percent_dora_hand"
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -271,7 +244,8 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='<<5percent_Dora>>'}}はぁーい、{{text}}～",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
@@ -293,7 +267,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKey": "5percent_dora_hand"
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -303,7 +279,8 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='チンポ'}}{{var variant='error'}}はぁーい（ボロン）",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         },
         {
@@ -314,7 +291,8 @@
           "sound": "fanfare",
           "message": {
             "bubble": "",
-            "toast": "オンボロのオンボロをボロンさせたのは、<<user>>さんです。"
+            "toast": "オンボロのオンボロをボロンさせたのは、<<user>>さんです。",
+            "isToast": false
           }
         }
       ],
@@ -351,7 +329,8 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='どこでもしずちゃん'}}{{var variant='neutral'}}はぁーい、{{text}}～",
-            "toast": ""
+            "toast": "",
+            "isToast": false
           }
         }
       ],
