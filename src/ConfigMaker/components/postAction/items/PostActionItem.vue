@@ -56,7 +56,7 @@
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { MessageSquare, PartyPopper, Music, MessagesSquare } from 'lucide-vue-next'
+  import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -75,7 +75,7 @@
   // アクションタイプの定義
   const actionTypes = [
     { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
-    { type: 'sound' as const, label: 'サウンド', icon: Music },
+    { type: 'sound' as const, label: 'サウンド', icon: Volume2 },
     { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
     { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
   ]

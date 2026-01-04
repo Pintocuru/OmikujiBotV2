@@ -445,7 +445,7 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-12-27T08:38:17.567Z",
+      "updatedAt": "2026-01-04T07:55:18.348Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -484,8 +484,22 @@
           ],
           "gameScripts": null,
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
@@ -669,138 +683,7 @@
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [],
-        "syoken": [
-          "syoken"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "FirstComebackChocolate": {
-      "id": "FirstComebackChocolate",
-      "key": "FirstComebackChocolate",
-      "name": "久しぶり:Chocolate",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T02:25:49.379Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "key": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "name": "久しぶり(wink):Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "wink",
-              "sound": "congrats",
-              "message": {
-                "bubble": "<<FirstComebackChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "syoken"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "syoken": [
-          "again"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "FirstVisitChocolate": {
-      "id": "FirstVisitChocolate",
-      "key": "FirstVisitChocolate",
-      "name": "こんにちは:Chocolate",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-27T08:36:23.237Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "key": "c972e5f7-5229-40f5-b6a0-96eb60315f7a",
-          "name": "挨拶(happy):Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "happy",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<FirstVisitChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 4,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "syoken"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "syoken": [
-          "firstVisit"
-        ]
+        "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -812,11 +695,11 @@
     "CountStreamChocolate": {
       "id": "CountStreamChocolate",
       "key": "CountStreamChocolate",
-      "name": "配信内コメント数チェック:Chocolate",
-      "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
+      "name": "コメントチェック:Chocolate",
+      "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-06T03:32:55.645Z",
-      "order": 7,
+      "updatedAt": "2026-01-04T09:07:32.592Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -825,7 +708,7 @@
         {
           "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
           "key": "b5aac496-d7d5-4748-913b-cbcba4e34454",
-          "name": "50回コメント:Chocolate",
+          "name": "配信枠コメント50回",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -838,7 +721,7 @@
               "delaySeconds": 0,
               "actionType": "message",
               "characterKey": "chocolate",
-              "iconKey": "thinking",
+              "iconKey": "singing",
               "sound": "baseball",
               "message": {
                 "bubble": "",
@@ -849,54 +732,30 @@
           ],
           "gameScripts": null,
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "count"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 50
-        }
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "CountUserChocolate": {
-      "id": "CountUserChocolate",
-      "key": "CountUserChocolate",
-      "name": "個別コメント数チェック:Chocolate",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-27T08:35:08.587Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "lc",
+              "value": 50
+            },
+            "comment": []
+          }
+        },
         {
-          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "key": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "name": "100回コメント:Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "id": "1767511957448",
+          "key": "1767511957448",
+          "name": "個人コメント100回",
+          "createdAt": "2026-01-04T07:32:37.448Z",
+          "updatedAt": "2026-01-04T07:32:37.448Z",
           "order": 0,
-          "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
           "postActions": [
@@ -904,7 +763,7 @@
               "delaySeconds": 0,
               "actionType": "message",
               "characterKey": "chocolate",
-              "iconKey": "default",
+              "iconKey": "wink",
               "sound": "baseball",
               "message": {
                 "bubble": "",
@@ -914,25 +773,32 @@
             }
           ],
           "gameScripts": null,
-          "weight": 3,
-          "isPriority": false,
-          "criteria": null
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "tc",
+              "value": 100
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": [],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        }
+        "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,

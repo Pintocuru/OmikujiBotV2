@@ -39,6 +39,7 @@ export class RuleCommentProcessor {
       // おみくじチェック
       this.appliedCommentIds.add(id)
       const processedMessages = processUserComment(omiken)
+
       if (processedMessages.length > 0) {
         botMessages.push(...processedMessages)
       }

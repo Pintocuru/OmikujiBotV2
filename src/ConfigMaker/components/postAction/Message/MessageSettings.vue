@@ -29,9 +29,10 @@
   </SettingItem>
 
   <!-- 単一の入力欄：messageType に応じてラベル／説明／プレースホルダ／バインド先を切替 -->
+  <!-- TODO:URL表記したい -->
   <SettingItem
     :label="messageType === 'bubble' ? '💬 フキダシ内容' : '📝 トースト内容'"
-    :description="messageType === 'bubble' ? 'フキダシに表示する内容' : 'トーストに表示する内容'"
+    description="プレースホルダーが使用できます"
   >
     <div class="relative w-full">
       <!-- input -->

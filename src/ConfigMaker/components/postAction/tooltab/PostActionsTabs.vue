@@ -17,7 +17,7 @@
       v-for="(action, index) in props.modelValue"
       :key="`action-${index}`"
       class="tab tab-sm rounded pr-1 flex items-center justify-between gap-2"
-      :class="{ 'tab-active bg-info text-info-content': activeTab === index }"
+      :class="activeTab === index ? 'tab-active bg-info text-info-content' : ''"
       @click="setActiveTab(index)"
     >
       <!-- 左側：バッジと内容 -->
