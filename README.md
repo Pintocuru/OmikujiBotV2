@@ -1,17 +1,20 @@
 # OmikujiBot
 
-OmikujiBotは、配信プラットフォーム向けのインタラクティブなおみくじボットを作成・実行するためのプロジェクトです。
+OmikujiBotは、配信向けアプリ「わんコメ」専用のテンプレート「MainGenerator」と、
+それのデータを編集する「ConfigEditor」を作成するプロジェクトです。
 
 ## プロジェクト構成
 
 このプロジェクトは、主に以下の2つのコンポーネントで構成されています。
 
 ### 1. ConfigMaker (`src/ConfigMaker`)
+
 **MainGenerator** を稼働させるための設定データを作成・編集する専用エディターです。
 ユーザーはGUIを通じて、おみくじの結果、確率、演出、コメントへの反応などを直感的に設定できます。
 作成された設定データは、MainGeneratorによって読み込まれます。
 
 ### 2. MainGenerator (`src/MainGenerator`)
+
 OmikujiBotの本体となるアプリケーションです。
 ConfigMakerで作成された設定データ（JSON）を読み込み、実際にコメントに反応しておみくじを引いたり、演出を表示したりするコアロジックを担います。
 

@@ -10,6 +10,7 @@
         <!-- delaySeconds調整コンポーネント -->
         <DelaySecondsAdjuster :model-value="modelValue" @update:model-value="emit('update:modelValue', $event)" />
 
+        <!-- テスト投稿ボタン -->
         <button
           @click="() => useTestPost().postTestOmikujiItem(modelValue, gameScripts)"
           class="btn btn-sm btn-info tooltip tooltip-top"
@@ -20,7 +21,9 @@
           テスト投稿
         </button>
 
+        <!-- JSON編集ボタン(isGod) -->
         <button
+          v-if="isGod"
           @click="$emit('toggleJson')"
           class="btn btn-sm btn-secondary tooltip tooltip-top"
           data-tip="JSON形式で編集ができます(上級者向け)"
@@ -38,6 +41,7 @@
   import { GameScriptsType, PostActionType } from '@/types/OmikujiData/'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { Send, FileJson } from 'lucide-vue-next'
 
   // Props
@@ -48,4 +52,6 @@
 
   // Emits
   const emit = defineEmits(['update:modelValue', 'toggleJson'])
+
+  const { isGod } = useSettingMode()
 </script>
