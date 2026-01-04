@@ -1,6 +1,7 @@
 <!-- src\ConfigMaker\components\rulesComments\CommentTriggerEditor.vue -->
 <template>
   <!-- 条件設定の説明 -->
+  <!-- TODO:詳細はこちら のURL -->
   <InformationCard>
     <p>
       <code class="label bg-accent text-accent-content">発動条件設定</code>では、
@@ -8,7 +9,7 @@
     </p>
     <p>条件が複数ある場合は、すべて満たしたときのみ発動します。(ANDのみ対応)</p>
     <p class="text-xs opacity-70">
-      ※ 初見判定ちゃん・チャット数は v2 以降「追加発動条件」で設定できます。詳細はこちら。
+      ※ 初見判定ちゃん・チャット数は v2 以降非推奨となりました。代わりに「追加発動条件」で設定できます。詳細はこちら。
     </p>
   </InformationCard>
 
@@ -45,6 +46,12 @@
   <!-- ユーザーネーム条件 -->
   <ThresholdUsername v-if="conditions.includes('username')" v-model="userName" />
 
+  <!-- 初見条件 -->
+  <ThresholdSyoken v-if="syoken && conditions.includes('syoken')" v-model="syoken" />
+
+  <!-- カウント条件 -->
+  <TriggerCount v-if="count && conditions.includes('count')" v-model="count" />
+
   <!-- 条件未記入ですべてのコメントで適用 -->
   <NoParamsCard v-if="conditions.length === 0" message="すべてのコメントで適用されます" />
 </template>
@@ -59,6 +66,8 @@
   import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
 
   import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
+  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
+  import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
 
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import {
@@ -93,12 +102,36 @@
   const access = createComputed('access')
   const gift = createComputed('gift')
   const userName = createComputed('userName')
+  const syoken = createComputed('syoken')
+  const count = createComputed('count')
 
   // 条件タイプの選択肢
-  const conditionTypes = Object.entries(commentTriggerConditionLabels).map(([value, label]) => ({
-    value: value as CommentTriggerCondition,
-    label,
-  }))
+  const baseConditionTypes = Object.entries(commentTriggerConditionLabels)
+    .filter(([key]) => key !== 'syoken' && key !== 'count')
+    .map(([value, label]) => ({
+      value: value as CommentTriggerCondition,
+      label,
+    }))
+
+  const conditionTypes = computed(() => {
+    const list = [...baseConditionTypes]
+
+    if (props.modelValue.syoken !== undefined) {
+      list.push({
+        value: 'syoken',
+        label: commentTriggerConditionLabels.syoken,
+      })
+    }
+
+    if (props.modelValue.count !== undefined) {
+      list.push({
+        value: 'count',
+        label: commentTriggerConditionLabels.count,
+      })
+    }
+
+    return list
+  })
 
   // Utils
   const toggleInArray = <T,>(array: T[], value: T): T[] => {

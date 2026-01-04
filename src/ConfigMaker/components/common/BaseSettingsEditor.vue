@@ -25,10 +25,35 @@
   <SettingItem v-if="isDescription" label="説明" description="このデータの紹介文">
     <input type="text" v-model="description" class="input w-full" />
   </SettingItem>
+
+  <!-- タグ編集 -->
+  <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
+    <div class="flex flex-wrap gap-2 mb-2">
+      <span
+        v-for="(tag, index) in tags"
+        :key="index"
+        class="badge badge-sm badge-primary cursor-pointer"
+        @click="removeTag(index)"
+      >
+        {{ tag }} ✕
+      </span>
+    </div>
+
+    <div class="flex gap-2">
+      <input
+        v-model="newTag"
+        type="text"
+        class="input input-bordered input-sm flex-1"
+        placeholder="タグを追加"
+        @keyup.enter="addTag"
+      />
+      <button class="btn btn-sm btn-primary" @click="addTag">追加</button>
+    </div>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
   import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -55,6 +80,19 @@
     'update:modelValue': [value: BaseRecordType]
   }>()
 
+  const newTag = ref('')
+
+  const addTag = () => {
+    const value = newTag.value.trim()
+    if (!value) return
+    tags.value = [...(tags.value ?? []), value]
+    newTag.value = ''
+  }
+
+  const removeTag = (index: number) => {
+    tags.value = tags.value.filter((_, i) => i !== index)
+  }
+
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof BaseRecordType>(key: T) =>
     computed({
@@ -66,4 +104,5 @@
   const name = createComputed('name')
   const description = createComputed('description')
   const isEnabled = createComputed('isEnabled')
+  const tags = createComputed('tags')
 </script>

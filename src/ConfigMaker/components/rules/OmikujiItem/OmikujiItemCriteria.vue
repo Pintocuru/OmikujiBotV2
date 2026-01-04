@@ -11,7 +11,11 @@
   </InformationCard>
 
   <!-- 条件タイプ選択 -->
-  <SettingItem label="適用する発動条件" description="トリガーの種類を選択">
+  <SettingItem
+    label="適用する発動条件"
+    description="トリガーの種類を選択"
+    :variant="activeConditions.size === 0 ? 'warning' : undefined"
+  >
     <div class="flex flex-wrap gap-2">
       <label v-for="condition in conditionTypes" :key="condition.value" class="cursor-pointer">
         <input
@@ -74,7 +78,7 @@
   />
 
   <!-- チャットワード条件 -->
-  <NoParamsCard v-if="activeConditions.keys.length === 0" message="すべてのコメントで適用されます" />
+  <NoParamsCard v-if="activeConditions.size === 0" message="発動条件が指定されていません" />
 </template>
 
 <script setup lang="ts">
@@ -91,10 +95,10 @@
   } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
-  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import ThresholdComment from '@shared/components/threshold/ThresholdComment.vue'
   import TriggerAccess from '@shared/components/trigger/TriggerAccess.vue'
+  import ThresholdSyoken from '@shared/components/threshold/ThresholdSyoken.vue'
   import TriggerCount from '@shared/components/trigger/TriggerCount.vue'
   import { CountConditionSchema } from '@shared/types'
   import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
