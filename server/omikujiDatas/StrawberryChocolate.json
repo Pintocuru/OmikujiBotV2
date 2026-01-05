@@ -3,10 +3,10 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.03-v2.0.0-beta4",
+    "version": "ver2026.01.04-v2.0.0-beta5",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta4",
-    "dataVersion": 2.0004,
+    "generatorVersion": "v2.0.0-beta5",
+    "dataVersion": 2.0005,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T00:32:05.737Z",
+      "updatedAt": "2026-01-04T15:16:42.575Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -158,7 +158,7 @@
         {
           "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
           "key": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
-          "name": "初見詐欺(thinking):Chocolate",
+          "name": "初見詐欺",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -174,132 +174,25 @@
             },
             {
               "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "thinking",
-              "sound": "bounce",
-              "message": {
-                "bubble": "<<FirstSagiChocolateThinking>>",
-                "toast": "",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 5,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "e3034923-d727-4cb8-b44-0e0f11532ad",
-          "key": "e3034923-d727-4cb8-b44-0e0f11532ad",
-          "name": "初見詐欺(surprised):Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "surprised",
-              "sound": "explosion",
-              "message": {
-                "bubble": "<<FirstSagiChocolateSurprise>>",
-                "toast": "",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 5,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "e3034923-727-4b8-bc4-0e0f114532ad",
-          "key": "e3034923-727-4b8-bc4-0e0f114532ad",
-          "name": "初見詐欺(sad):Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "sad",
-              "sound": "fail",
-              "message": {
-                "bubble": "<<FirstSagiChocolateSad>>",
-                "toast": "",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 4,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "key": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
-            },
-            {
-              "delaySeconds": 5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "surprised",
-              "sound": "fail",
-              "message": {
-                "bubble": "えっ！<<user>>さん、初見じゃなかったの? もう、びっくりさせないでよ～",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767539439046-od3bas",
+                  "weight": 4
+                },
+                {
+                  "content": "1767539481151-kvg5to",
+                  "weight": 4
+                },
+                {
+                  "content": "1767539536508-gcvcfg",
+                  "weight": 4
+                },
+                {
+                  "content": "1767539560050-xw7xfz",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -319,20 +212,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767539629815-molbgp",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -382,7 +268,7 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-27T08:40:27.220Z",
+      "updatedAt": "2026-01-04T15:20:36.355Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -405,7 +291,7 @@
               "delaySeconds": 0,
               "actionType": "message",
               "characterKey": "chocolate",
-              "iconKey": "default",
+              "iconKey": "blushing",
               "sound": "transition",
               "message": {
                 "bubble": "",
@@ -445,7 +331,7 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T07:55:18.348Z",
+      "updatedAt": "2026-01-04T15:26:38.231Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -455,7 +341,7 @@
         {
           "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
           "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
-          "name": "ギフト(wink):Chocolate",
+          "name": "ギフト",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -471,35 +357,19 @@
             },
             {
               "delaySeconds": 0.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "wink",
-              "sound": "carnival",
-              "message": {
-                "bubble": "<<GiftChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767540348473-d4fev8",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
           "weight": 1,
-          "isPriority": true,
-          "criteria": {
-            "conditions": [
-              "gift"
-            ],
-            "userName": [],
-            "access": [],
-            "gift": [],
-            "syoken": [],
-            "count": {
-              "comparison": "lowerBound",
-              "unit": "draws",
-              "value": 1
-            },
-            "comment": []
-          }
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
@@ -527,7 +397,7 @@
       "name": "初見判定ちゃん:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T06:57:23.570Z",
+      "updatedAt": "2026-01-04T15:24:34.679Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -551,20 +421,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "blushing",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767539629815-molbgp",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -600,15 +463,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "wink",
-              "sound": "congrats",
-              "message": {
-                "bubble": "<<FirstComebackChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767540169384-b2waaw",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -644,15 +505,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "happy",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<FirstVisitChocolate>>",
-                "toast": "",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767540201946-kvrx6s",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -698,7 +557,7 @@
       "name": "コメントチェック:Chocolate",
       "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T09:07:32.592Z",
+      "updatedAt": "2026-01-04T15:30:52.391Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -719,15 +578,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "singing",
-              "sound": "baseball",
-              "message": {
-                "bubble": "",
-                "toast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767540543495-x0of51",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -761,15 +618,13 @@
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "wink",
-              "sound": "baseball",
-              "message": {
-                "bubble": "",
-                "toast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "1767540577897-8ne654",
+                  "weight": 1
+                }
+              ]
             }
           ],
           "gameScripts": null,
@@ -967,15 +822,15 @@
     }
   },
   "actionSets": {
-    "HondaJankenReadyA": {
-      "id": "HondaJankenReadyA",
-      "key": "HondaJankenReadyA",
-      "name": "じゃんけん:出す前の動作(キャラA)",
-      "createdAt": "2025-10-08T00:59:17.768Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+    "1767539439046-od3bas": {
+      "id": "1767539439046-od3bas",
+      "key": "1767539439046-od3bas",
+      "name": "初見詐欺(thinking):Chocolate",
+      "createdAt": "2026-01-04T15:10:39.046Z",
+      "updatedAt": "2026-01-04T15:17:22.369Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#2196F3",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
@@ -983,10 +838,10 @@
           "delaySeconds": 0,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "excited",
-          "sound": "",
+          "iconKey": "thinking",
+          "sound": "bounce",
           "message": {
-            "bubble": "じゃんけんぽん!",
+            "bubble": "<<FirstSagiChocolateThinking>>",
             "toast": "",
             "isToast": false
           }
@@ -994,16 +849,15 @@
       ],
       "gameScripts": null
     },
-    "HondaJankenReadyB": {
-      "id": "HondaJankenReadyB",
-      "key": "HondaJankenReadyB",
-      "name": "じゃんけん:出す前の動作(キャラB)",
-      "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
-      "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+    "1767539481151-kvg5to": {
+      "id": "1767539481151-kvg5to",
+      "key": "1767539481151-kvg5to",
+      "name": "初見詐欺(surprised):Chocolate",
+      "createdAt": "2026-01-04T15:11:21.152Z",
+      "updatedAt": "2026-01-04T15:17:33.806Z",
       "order": 2,
       "isEnabled": true,
-      "editorColor": "#2196F3",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
@@ -1011,10 +865,10 @@
           "delaySeconds": 0,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "excited",
-          "sound": "",
+          "iconKey": "surprised",
+          "sound": "explosion",
           "message": {
-            "bubble": "じゃんけんぽん!",
+            "bubble": "<<FirstSagiChocolateSurprise>>",
             "toast": "",
             "isToast": false
           }
@@ -1022,42 +876,26 @@
       ],
       "gameScripts": null
     },
-    "HondaJankenRockA": {
-      "id": "HondaJankenRockA",
-      "key": "HondaJankenRockA",
-      "name": "じゃんけん:グーA",
-      "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
-      "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+    "1767539536508-gcvcfg": {
+      "id": "1767539536508-gcvcfg",
+      "key": "1767539536508-gcvcfg",
+      "name": "初見詐欺(sad):Chocolate",
+      "createdAt": "2026-01-04T15:12:16.508Z",
+      "updatedAt": "2026-01-04T15:18:07.480Z",
       "order": 3,
       "isEnabled": true,
-      "editorColor": "#2196F3",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
         {
           "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_3"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
+          "iconKey": "sad",
+          "sound": "fail",
           "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+            "bubble": "<<FirstSagiChocolateSad>>",
             "toast": "",
             "isToast": false
           }
@@ -1065,42 +903,38 @@
       ],
       "gameScripts": null
     },
-    "HondaJankenRockB": {
-      "id": "HondaJankenRockB",
-      "key": "HondaJankenRockB",
-      "name": "じゃんけん:グーB",
-      "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
-      "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+    "1767539560050-xw7xfz": {
+      "id": "1767539560050-xw7xfz",
+      "key": "1767539560050-xw7xfz",
+      "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
+      "createdAt": "2026-01-04T15:12:40.050Z",
+      "updatedAt": "2026-01-04T15:18:15.573Z",
       "order": 4,
       "isEnabled": true,
-      "editorColor": "#2196F3",
+      "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
         {
           "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_3"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
+          "iconKey": "happy",
+          "sound": "baseball",
           "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+            "bubble": "<<FirstSyokenChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        },
+        {
+          "delaySeconds": 3.5,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "surprised",
+          "sound": "fail",
+          "message": {
+            "bubble": "えっ！<<user>>さん、初見じゃなかったの? もう、びっくりさせないでよ～",
             "toast": "",
             "isToast": false
           }
@@ -1108,1584 +942,182 @@
       ],
       "gameScripts": null
     },
-    "HondaJankenScissorsA": {
-      "id": "HondaJankenScissorsA",
-      "key": "HondaJankenScissorsA",
-      "name": "じゃんけん:チョキA",
-      "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-      "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_1"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenScissorsB": {
-      "id": "HondaJankenScissorsB",
-      "key": "HondaJankenScissorsB",
-      "name": "じゃんけん:チョキB",
-      "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-      "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+    "1767539629815-molbgp": {
+      "id": "1767539629815-molbgp",
+      "key": "1767539629815-molbgp",
+      "name": "初見:Chocolate",
+      "createdAt": "2026-01-04T15:13:49.815Z",
+      "updatedAt": "2026-01-04T15:21:55.682Z",
       "order": 6,
       "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_1"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenPaperA": {
-      "id": "HondaJankenPaperA",
-      "key": "HondaJankenPaperA",
-      "name": "じゃんけん:パーA",
-      "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-      "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_2"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenPaperB": {
-      "id": "HondaJankenPaperB",
-      "key": "HondaJankenPaperB",
-      "name": "じゃんけん:パーB",
-      "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
-      "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_2"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenLose"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "singing",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryA": {
-      "id": "HondaJankenVictoryA",
-      "key": "HondaJankenVictoryA",
-      "name": "じゃんけん:勝利A",
-      "description": "やるやん。明日は俺にリベンジさせて。",
-      "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2025-10-16T02:45:48.542Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_{{rand(1,4)}}"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryB": {
-      "id": "HondaJankenVictoryB",
-      "key": "HondaJankenVictoryB",
-      "name": "じゃんけん:勝利B",
-      "description": "やるやん。明日は俺にリベンジさせて。",
-      "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2025-10-16T02:45:50.961Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_{{rand(1,4)}}"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryRockA": {
-      "id": "HondaJankenVictoryRockA",
-      "key": "HondaJankenVictoryRockA",
-      "name": "じゃんけん:グー勝利A",
-      "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
-      "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2025-10-16T02:45:56.214Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_2"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryRockB": {
-      "id": "HondaJankenVictoryRockB",
-      "key": "HondaJankenVictoryRockB",
-      "name": "じゃんけん:グー勝利B",
-      "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
-      "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2025-10-16T02:45:58.822Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_2"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryScissorsA": {
-      "id": "HondaJankenVictoryScissorsA",
-      "key": "HondaJankenVictoryScissorsA",
-      "name": "じゃんけん:チョキ勝利A",
-      "description": "明日、俺が勝つからまたやろう!",
-      "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2025-10-16T02:46:18.674Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_3"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryScissorsB": {
-      "id": "HondaJankenVictoryScissorsB",
-      "key": "HondaJankenVictoryScissorsB",
-      "name": "じゃんけん:チョキ勝利B",
-      "description": "明日、俺が勝つからまたやろう!",
-      "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2025-10-16T02:46:22.146Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_3"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryPaperA": {
-      "id": "HondaJankenVictoryPaperA",
-      "key": "HondaJankenVictoryPaperA",
-      "name": "じゃんけん:パー勝利A",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2025-10-10T15:11:14.790Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyA"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_1"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "HondaJankenVictoryPaperB": {
-      "id": "HondaJankenVictoryPaperB",
-      "key": "HondaJankenVictoryPaperB",
-      "name": "じゃんけん:パー勝利B",
-      "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
-      "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2025-10-10T15:11:14.790Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "actionSet",
-          "actionSetKey": "HondaJankenReadyB"
-        },
-        {
-          "delaySeconds": 0.4,
-          "actionType": "wordParty",
-          "wordParty": "HondaJanken_1"
-        },
-        {
-          "delaySeconds": 1.9,
-          "actionType": "wordParty",
-          "wordParty": "HondaJankenWin"
-        },
-        {
-          "delaySeconds": 4,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "sad",
-          "sound": "decision",
-          "message": {
-            "bubble": "<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "TarotCardFirst": {
-      "id": "TarotCardFirst",
-      "key": "TarotCardFirst",
-      "name": "タロット:イントロ",
-      "description": "稼働時の演出です",
-      "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2025-11-20T02:04:13.427Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
+      "editorColor": "#E65100",
       "tags": [],
       "accessLevel": "basic",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "wordParty",
-          "wordParty": "TarotCard_back"
-        },
-        {
-          "delaySeconds": 1,
-          "actionType": "wordParty",
-          "wordParty": "TarotCard_01"
+          "wordParty": "FirstSyoken"
         },
         {
           "delaySeconds": 1.5,
-          "actionType": "wordParty",
-          "wordParty": "TarotCard_02"
-        },
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "happy",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<FirstSyokenChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
+    "1767540169384-b2waaw": {
+      "id": "1767540169384-b2waaw",
+      "key": "1767540169384-b2waaw",
+      "name": "久しぶり:Chocolate",
+      "createdAt": "2026-01-04T15:22:49.384Z",
+      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
         {
-          "delaySeconds": 2,
-          "actionType": "wordParty",
-          "wordParty": "TarotCard_03"
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "wink",
+          "sound": "congrats",
+          "message": {
+            "bubble": "<<FirstComebackChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
+    "1767540201946-kvrx6s": {
+      "id": "1767540201946-kvrx6s",
+      "key": "1767540201946-kvrx6s",
+      "name": "こんにちは:Chocolate",
+      "createdAt": "2026-01-04T15:23:21.946Z",
+      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "happy",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<FirstVisitChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
+    "1767540348473-d4fev8": {
+      "id": "1767540348473-d4fev8",
+      "key": "1767540348473-d4fev8",
+      "name": "ギフト(wink):Chocolate",
+      "createdAt": "2026-01-04T15:25:48.473Z",
+      "updatedAt": "2026-01-04T15:26:19.604Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "wink",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
+    "1767540543495-x0of51": {
+      "id": "1767540543495-x0of51",
+      "key": "1767540543495-x0of51",
+      "name": "配信枠コメント50回:Chocolate",
+      "createdAt": "2026-01-04T15:29:03.495Z",
+      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "singing",
+          "sound": "baseball",
+          "message": {
+            "bubble": "",
+            "toast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
+    "1767540577897-8ne654": {
+      "id": "1767540577897-8ne654",
+      "key": "1767540577897-8ne654",
+      "name": "個人コメント100回:Chocolate",
+      "createdAt": "2026-01-04T15:29:37.897Z",
+      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "wink",
+          "sound": "baseball",
+          "message": {
+            "bubble": "",
+            "toast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
+            "isToast": false
+          }
         }
       ],
       "gameScripts": null
     }
   },
   "placeholders": {
-    "HondaJankenA1": {
-      "id": "HondaJankenA1",
-      "key": "HondaJankenA1",
-      "name": "じゃんけん:グー1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "負けは次につながるチャンスです!ネバーギブアップ!",
-        "じゃんけんの向こう側に何があるか、考えてみてください。",
-        "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
-        "何事も準備がすべて。それを怠っている事がバレてますよ。"
-      ]
-    },
-    "HondaJankenA2": {
-      "id": "HondaJankenA2",
-      "key": "HondaJankenA2",
-      "name": "じゃんけん:グー2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
-        "ちゃんと分析してます?じっくり結果に向き合ってください。",
-        "ここは練習ではありません。全身全霊で<<HondaJankenOre>>と向き合ってください。"
-      ]
-    },
-    "HondaJankenB1": {
-      "id": "HondaJankenB1",
-      "key": "HondaJankenB1",
-      "name": "じゃんけん:チョキ1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
-        "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
-        "運を味方につけるのは、地道な努力ですよ。",
-        "あなたの考えてる事ぐらい、<<HondaJankenOre>>にはお見通しです。"
-      ]
-    },
-    "HondaJankenB2": {
-      "id": "HondaJankenB2",
-      "key": "HondaJankenB2",
-      "name": "じゃんけん:チョキ2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
-        "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
-        "その程度の、気持ちで勝てるとでも思ったんですか?ちゃんと練習してきてください。"
-      ]
-    },
-    "HondaJankenC1": {
-      "id": "HondaJankenC1",
-      "key": "HondaJankenC1",
-      "name": "じゃんけん:パー1",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
-        "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
-        "動揺してませんか?運が大事な時こそ集中力が物を言いますよ!",
-        "それで勝てると思ってるんやったら、<<HondaJankenOre>>がずっと勝ちますよ!"
-      ]
-    },
-    "HondaJankenC2": {
-      "id": "HondaJankenC2",
-      "key": "HondaJankenC2",
-      "name": "じゃんけん:パー2",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
-        "正確にはじゃんけんを味方につけた<<HondaJankenOre>>の勝ち!",
-        "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。"
-      ]
-    },
-    "HondaJankenV": {
-      "id": "HondaJankenV",
-      "key": "HondaJankenV",
-      "name": "じゃんけん:勝利",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
-        "でも、今度は絶対、<<HondaJankenOre>>が勝つから!また明日やろう!",
-        "明日、<<HondaJankenOre>>が勝つからまたやろう!",
-        "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。"
-      ]
-    },
-    "TarotCard": {
-      "id": "TarotCard",
-      "key": "TarotCard",
-      "name": "タロット:占い結果",
-      "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "【愚者】(正位置) <<TarotCardFool_U>>",
-        "【愚者】(逆位置) <<TarotCardFool_R>>",
-        "【魔術師】(正位置) <<TarotCardMagician_U>>",
-        "【魔術師】(逆位置) <<TarotCardMagician_R>>",
-        "【女教皇】(正位置) <<TarotCardHighPriestess_U>>",
-        "【女教皇】(逆位置) <<TarotCardHighPriestess_R>>",
-        "【女帝】(正位置) <<TarotCardEmpress_U>>",
-        "【女帝】(逆位置) <<TarotCardEmpress_R>>",
-        "【皇帝】(正位置) <<TarotCardEmperor_U>>",
-        "【皇帝】(逆位置) <<TarotCardEmperor_R>>",
-        "【法王】(正位置) <<TarotCardHierophant_U>>",
-        "【法王】(逆位置) <<TarotCardHierophant_R>>",
-        "【恋人】(正位置) <<TarotCardLovers_U>>",
-        "【恋人】(逆位置) <<TarotCardLovers_R>>",
-        "【戦車】(正位置) <<TarotCardChariot_U>>",
-        "【戦車】(逆位置) <<TarotCardChariot_R>>",
-        "【力】(正位置) <<TarotCardStrength_U>>",
-        "【力】(逆位置) <<TarotCardStrength_R>>",
-        "【隠者】(正位置) <<TarotCardHermit_U>>",
-        "【隠者】(逆位置) <<TarotCardHermit_R>>",
-        "【運命の輪】(正位置) <<TarotCardWheelOfFortune_U>>",
-        "【運命の輪】(逆位置) <<TarotCardWheelOfFortune_R>>",
-        "【正義】(正位置) <<TarotCardJustice_U>>",
-        "【正義】(逆位置) <<TarotCardJustice_R>>",
-        "【吊るされた男】(正位置) <<TarotCardHangedMan_U>>",
-        "【吊るされた男】(逆位置) <<TarotCardHangedMan_R>>",
-        "【死神】(正位置) <<TarotCardDeath_U>>",
-        "【死神】(逆位置) <<TarotCardDeath_R>>",
-        "【節制】(正位置) <<TarotCardTemperance_U>>",
-        "【節制】(逆位置) <<TarotCardTemperance_R>>",
-        "【悪魔】(正位置) <<TarotCardDevil_U>>",
-        "【悪魔】(逆位置) <<TarotCardDevil_R>>",
-        "【塔】(正位置) <<TarotCardTower_U>>",
-        "【塔】(逆位置) <<TarotCardTower_R>>",
-        "【星】(正位置) <<TarotCardStar_U>>",
-        "【星】(逆位置) <<TarotCardStar_R>>",
-        "【月】(正位置) <<TarotCardMoon_U>>",
-        "【月】(逆位置) <<TarotCardMoon_R>>",
-        "【太陽】(正位置) <<TarotCardSun_U>>",
-        "【太陽】(逆位置) <<TarotCardSun_R>>",
-        "【審判】(正位置) <<TarotCardJudgement_U>>",
-        "【審判】(逆位置) <<TarotCardJudgement_R>>",
-        "【世界】(正位置) <<TarotCardWorld_U>>",
-        "【世界】(逆位置) <<TarotCardWorld_R>>"
-      ]
-    },
-    "TarotCardFool_U": {
-      "id": "TarotCardFool_U",
-      "key": "TarotCardFool_U",
-      "name": "【愚者】(正位置)",
-      "createdAt": "2025-09-13T22:16:22.894Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
-        "好奇心が運を導くとき。小さな冒険心が大きな成果へつながり、笑顔の輪を広げます。",
-        "今は自由な発想が吉。常識を超えた選択が、あなたの未来をより豊かに彩るでしょう。",
-        "固定観念を外すほどに道は開けます。未知を楽しむ姿勢が幸運を引き寄せるでしょう。",
-        "軽やかに歩み出せば幸運到来。小さな無鉄砲さも新たな可能性の扉を開いてくれます。"
-      ]
-    },
-    "TarotCardFool_R": {
-      "id": "TarotCardFool_R",
-      "key": "TarotCardFool_R",
-      "name": "【愚者】(逆位置)",
-      "createdAt": "2025-09-13T22:24:43.051Z",
-      "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
-        "誘いに流されると後悔しやすいとき。自分の直感を信じ、軽はずみな決断を避けましょう。",
-        "現実を見失いやすいとき。夢や理想に溺れず、足元を固めることで運気が整います。",
-        "不安定な計画は挫折の元。小さな確認を怠らないことが、未来を守る力になります。",
-        "思いつきで動けば混乱を招く恐れ。慎重な姿勢が新たなトラブルを防ぐでしょう。"
-      ]
-    },
-    "TarotCardMagician_U": {
-      "id": "TarotCardMagician_U",
-      "key": "TarotCardMagician_U",
-      "name": "【魔術師】(正位置)",
-      "createdAt": "2025-09-13T22:25:10.590Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
-        "今は言葉と行動が力になる時期。自信を持てば、新しい出会いや好機を呼び込みます。",
-        "眠っていた能力が花開く兆し。学んだことを活かせば、成果がすぐ目に見えてきます。",
-        "意欲と工夫が成功の鍵。小さな工夫を積み重ねるほど、運気が着実に高まります。",
-        "始める勇気が幸運を招くとき。思い切りのよい行動が未来を切り拓いていきます。"
-      ]
-    },
-    "TarotCardMagician_R": {
-      "id": "TarotCardMagician_R",
-      "key": "TarotCardMagician_R",
-      "name": "【魔術師】(逆位置)",
-      "createdAt": "2025-09-13T22:28:18.260Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 12,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
-        "話がすれ違いやすい時期。言葉の使い方に注意しないと、誤解から信頼を失います。",
-        "実力不足が露呈しやすい兆し。準備不足を補えば、挽回のチャンスは訪れます。",
-        "器用貧乏になりがちです。焦らず、一つのことを丁寧に磨けば運は安定します。",
-        "計画の甘さに注意。思いつきの行動より、地道な努力が未来を守るでしょう。"
-      ]
-    },
-    "TarotCardHighPriestess_U": {
-      "id": "TarotCardHighPriestess_U",
-      "key": "TarotCardHighPriestess_U",
-      "name": "【女教皇】(正位置)",
-      "createdAt": "2025-09-13T22:28:54.093Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
-        "心を落ち着ければ道が見えるとき。周囲に流されず、内なる声に耳を傾けましょう。",
-        "学びや探求が実を結ぶ兆し。小さな努力が積み重なり、確かな実力に変わります。",
-        "冷静な視点が吉。感情を抑えて観察すれば、真実が自然と浮かび上がります。",
-        "今は慎重さが幸運の鍵。焦らず待つ姿勢が、最善のチャンスを引き寄せるでしょう。"
-      ]
-    },
-    "TarotCardHighPriestess_R": {
-      "id": "TarotCardHighPriestess_R",
-      "key": "TarotCardHighPriestess_R",
-      "name": "【女教皇】(逆位置) ",
-      "createdAt": "2025-09-13T22:29:26.905Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 14,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
-        "疑い深さが運を遠ざける兆し。人を信じることで思わぬ助けを得られるでしょう。",
-        "孤立しやすい時期。自分の世界に閉じこもらず、交流を大切にすれば運が開けます。",
-        "知識を振りかざすと誤解を招きます。柔らかな言葉が信頼を守ってくれます。",
-        "迷いに足を取られやすいとき。小さな行動が霧を晴らし、進むべき道を示します。"
-      ]
-    },
-    "TarotCardEmpress_U": {
-      "id": "TarotCardEmpress_U",
-      "key": "TarotCardEmpress_U",
-      "name": "【女帝】(正位置) ",
-      "createdAt": "2025-09-13T22:29:59.161Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 15,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
-        "努力が実りやすい時期。温かな気持ちで接するほど、成果と信頼が集まります。",
-        "美や感性が磨かれるとき。小さな楽しみが心を潤し、幸運の芽を育てます。",
-        "家庭や仲間との調和が吉。優しさを惜しまなければ、安心できる場が広がります。",
-        "豊かな実りの兆し。育んできたことが花開き、嬉しい結果として戻ってきます。"
-      ]
-    },
-    "TarotCardEmpress_R": {
-      "id": "TarotCardEmpress_R",
-      "key": "TarotCardEmpress_R",
-      "name": "【女帝】(逆位置) ",
-      "createdAt": "2025-09-13T22:30:31.785Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 16,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
-        "期待に依存すると失望が増えやすい兆し。自ら動けば運気は回復します。",
-        "余裕を失いやすい時期。焦らず小さな楽しみを大切にすると心が安らぎます。",
-        "人間関係で気疲れしやすいとき。無理に合わせず、境界を保つことが吉です。",
-        "物質的な満足に偏ると空虚さが残ります。心の豊かさを求める姿勢が必要です。"
-      ]
-    },
-    "TarotCardEmperor_U": {
-      "id": "TarotCardEmperor_U",
-      "key": "TarotCardEmperor_U",
-      "name": "【皇帝】(正位置) ",
-      "createdAt": "2025-09-13T22:31:02.984Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 17,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
-        "規律と計画が幸運の鍵。堅実な姿勢が未来を安定させ、成功を後押しします。",
-        "リーダーシップを発揮できるとき。周囲を導けば、新たな信頼関係が築かれます。",
-        "基盤を固める好機。地道な積み重ねが揺るぎない力となり、安心をもたらします。",
-        "強い意志が運を開く兆し。迷いを断ち切れば、着実に目的地へ近づけます。"
-      ]
-    },
-    "TarotCardEmperor_R": {
-      "id": "TarotCardEmperor_R",
-      "key": "TarotCardEmperor_R",
-      "name": "【皇帝】(逆位置)",
-      "createdAt": "2025-09-13T22:31:30.126Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 18,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
-        "支配欲が強まると摩擦を生みます。相手の意見を尊重すれば関係が守られます。",
-        "計画の甘さで崩れやすい兆し。足元を固め直すことで流れを取り戻せます。",
-        "責任を避けると信頼を失う恐れ。小さな約束を守ることから始めましょう。",
-        "権威に振り回されやすいとき。自分の信念を守れば混乱を避けられます。"
-      ]
-    },
-    "TarotCardHierophant_U": {
-      "id": "TarotCardHierophant_U",
-      "key": "TarotCardHierophant_U",
-      "name": "【法王】(正位置)",
-      "createdAt": "2025-09-13T22:32:48.041Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 19,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
-        "礼儀や常識を大切にすれば、自然と好運が舞い込み、良縁にも恵まれます。",
-        "学びの機会に恵まれるとき。知識を深めれば、人生の土台が強固になります。",
-        "誰かの導きが幸運を招く兆し。人との絆を信じれば、運が整っていきます。",
-        "真面目な姿勢が実を結ぶとき。誠実さが認められ、信頼と成果を得られます。"
-      ]
-    },
-    "TarotCardHierophant_R": {
-      "id": "TarotCardHierophant_R",
-      "key": "TarotCardHierophant_R",
-      "name": "【法王】(逆位置)",
-      "createdAt": "2025-09-13T22:34:16.344Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 20,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
-        "形だけの付き合いに注意。心のこもらない関係は次第に崩れていきます。",
-        "権威や常識に縛られやすい時期。自分の意思を持つことで運が回復します。",
-        "助言を誤解しやすいとき。鵜呑みにせず、自分の心で確かめることが大切です。",
-        "無理に合わせると疲弊します。距離を取る勇気が運気を守ってくれます。"
-      ]
-    },
-    "TarotCardLovers_U": {
-      "id": "TarotCardLovers_U",
-      "key": "TarotCardLovers_U",
-      "name": "【恋人】(正位置)",
-      "createdAt": "2025-09-13T22:34:50.903Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 21,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
-        "大切な選択が迫られるとき。誠実に向き合えば、最良の道を選べます。",
-        "出会いや縁に恵まれる兆し。互いの魅力を認め合い、調和が広がります。",
-        "協力が吉。信頼し合える関係が力となり、大きな成果を生み出します。",
-        "恋や友情が花開くとき。素直な言葉が心を結び、幸せを引き寄せます。"
-      ]
-    },
-    "TarotCardLovers_R": {
-      "id": "TarotCardLovers_R",
-      "key": "TarotCardLovers_R",
-      "name": "【恋人】(逆位置) ",
-      "createdAt": "2025-09-13T22:35:22.822Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 22,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
-        "誘惑に流されやすい兆し。大切なものを見失わないよう注意が必要です。",
-        "すれ違いや誤解が生じやすい時期。丁寧な対話が運を守ってくれます。",
-        "選択を先延ばしすると機会を逃します。勇気ある決断が未来を切り開きます。",
-        "執着や迷いが心を縛る兆し。思い切って手放せば、新しい可能性が生まれます。"
-      ]
-    },
-    "TarotCardChariot_U": {
-      "id": "TarotCardChariot_U",
-      "key": "TarotCardChariot_U",
-      "name": "【戦車】(正位置)",
-      "createdAt": "2025-09-13T22:36:04.753Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 23,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
-        "意志を貫けば成功間近。多少の困難も力強く突破できるでしょう。",
-        "チャレンジ精神が吉。勇気ある一歩が新しい扉を開き、運を引き寄せます。",
-        "集中力が高まるとき。目標を定めて進めば、望んだ結果をつかめます。",
-        "勝負運が上昇中。自信を持って挑めば、追い風が味方してくれるでしょう。"
-      ]
-    },
-    "TarotCardChariot_R": {
-      "id": "TarotCardChariot_R",
-      "key": "TarotCardChariot_R",
-      "name": "【戦車】(逆位置)",
-      "createdAt": "2025-09-13T22:36:37.887Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 24,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
-        "気持ちが空回りしやすい時期。力任せより計画性を意識しましょう。",
-        "方向性を見失いやすいとき。目標を見直すことで進む道が整います。",
-        "衝動的な決断が混乱を招く恐れ。慎重さが未来を守ります。",
-        "勝ち負けにこだわりすぎると孤立します。協調を忘れず進みましょう。"
-      ]
-    },
-    "TarotCardStrength_U": {
-      "id": "TarotCardStrength_U",
-      "key": "TarotCardStrength_U",
-      "name": "【力】(正位置) ",
-      "createdAt": "2025-09-13T22:37:06.904Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 25,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
-        "辛抱強さが吉。焦らず歩めば、必ず望む成果に近づけます。",
-        "内面の強さが試される時期。自分を信じれば運が開けます。",
-        "柔らかな対応が成功の鍵。思いやりが大きな力を生み出します。",
-        "心と体のバランスが整い、安心できる未来が形になっていきます。"
-      ]
-    },
-    "TarotCardStrength_R": {
-      "id": "TarotCardStrength_R",
-      "key": "TarotCardStrength_R",
-      "name": "【力】(逆位置)",
-      "createdAt": "2025-09-13T22:37:42.040Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 26,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
-        "感情に振り回されやすい兆し。冷静に向き合えば混乱を防げます。",
-        "怠け心が芽生えやすい時期。目標を再確認すれば軌道修正できます。",
-        "力を誇示すると逆効果。謙虚さが人の心を引き寄せます。",
-        "我慢が限界に達しやすいとき。無理をせず、休息を取ることが吉です。"
-      ]
-    },
-    "TarotCardHermit_U": {
-      "id": "TarotCardHermit_U",
-      "key": "TarotCardHermit_U",
-      "name": "【隠者】(正位置)",
-      "createdAt": "2025-09-13T22:38:15.662Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 27,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
-        "探求心が実を結ぶとき。学びや研究に力を注げば確かな成果が残ります。",
-        "内なる声に耳を傾ける時期。直感が正しい道を示してくれるでしょう。",
-        "一人の時間が運気を整えます。心を整理すれば迷いが消えていきます。",
-        "慎重な姿勢が吉。小さな確認を重ねるほど、安定した結果が得られます。"
-      ]
-    },
-    "TarotCardHermit_R": {
-      "id": "TarotCardHermit_R",
-      "key": "TarotCardHermit_R",
-      "name": "【隠者】(逆位置)",
-      "createdAt": "2025-09-13T22:38:47.948Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 28,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
-        "考え込みすぎて動けなくなる兆し。小さな行動で流れを変えましょう。",
-        "偏った考えに注意。柔らかい視点を持つことでバランスが整います。",
-        "過去にこだわると停滞します。未来を見据える勇気が運を呼びます。",
-        "消極的になりやすいとき。積極的な一歩が幸運を引き寄せます。"
-      ]
-    },
-    "TarotCardWheelOfFortune_U": {
-      "id": "TarotCardWheelOfFortune_U",
-      "key": "TarotCardWheelOfFortune_U",
-      "name": "【運命の輪】(正位置)",
-      "createdAt": "2025-09-13T22:39:41.511Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 29,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
-        "タイミングが味方する時期。自然な流れに身を任せれば良い方向へ進みます。",
-        "偶然の出会いや出来事が幸運の鍵。思わぬチャンスを大切にしましょう。",
-        "流れが好転する兆し。苦労してきたことが報われやすいときです。",
-        "幸運期到来。柔軟な心で受け止めれば運気がさらに高まります。"
-      ]
-    },
-    "TarotCardWheelOfFortune_R": {
-      "id": "TarotCardWheelOfFortune_R",
-      "key": "TarotCardWheelOfFortune_R",
-      "name": "【運命の輪】(逆位置) ",
-      "createdAt": "2025-09-13T22:40:17.525Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 30,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
-        "思わぬトラブルに注意。冷静に対応すれば大事には至りません。",
-        "機会を逃しやすい兆し。準備を怠らずにいれば再び巡ってきます。",
-        "流れに逆らうと混乱を招きます。無理をせず現状維持が吉です。",
-        "変化を恐れると停滞します。受け入れる心が運を整えてくれます。"
-      ]
-    },
-    "TarotCardJustice_U": {
-      "id": "TarotCardJustice_U",
-      "key": "TarotCardJustice_U",
-      "name": "【正義】(正位置)",
-      "createdAt": "2025-09-13T22:40:53.592Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 31,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
-        "バランス感覚が冴える時期。冷静さを保てば物事が順調に進みます。",
-        "約束や契約が実を結ぶ兆し。正直な姿勢が運気を高めます。",
-        "正しい選択ができるとき。迷っても心の声に従えば道は開けます。",
-        "誠意が認められるとき。努力が公正に評価され、成果へとつながります。"
-      ]
-    },
-    "TarotCardJustice_R": {
-      "id": "TarotCardJustice_R",
-      "key": "TarotCardJustice_R",
-      "name": "【正義】(逆位置)",
-      "createdAt": "2025-09-13T22:41:28.894Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 32,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
-        "判断が偏りやすい兆し。感情に流されず事実を見極めましょう。",
-        "不誠実な態度が信頼を失います。真摯な姿勢に戻ることが吉です。",
-        "約束を軽視すると問題が拡大します。小さな義務を守ることが大切です。",
-        "優柔不断が混乱を招きやすいとき。勇気ある決断が運を整えます。"
-      ]
-    },
-    "TarotCardHangedMan_U": {
-      "id": "TarotCardHangedMan_U",
-      "key": "TarotCardHangedMan_U",
-      "name": "【吊るされた男】(正位置)",
-      "createdAt": "2025-09-13T22:42:18.909Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 33,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
-        "視点を変えることで幸運が訪れる兆し。逆境に学びを見つけましょう。",
-        "奉仕の心が吉。見返りを求めない行動が運を呼び込みます。",
-        "今は動かずに待つことが最善。時間が解決へ導いてくれます。",
-        "困難の中に成長の種があります。受け入れる姿勢が未来を拓きます。"
-      ]
-    },
-    "TarotCardHangedMan_R": {
-      "id": "TarotCardHangedMan_R",
-      "key": "TarotCardHangedMan_R",
-      "name": "【吊るされた男】(逆位置)",
-      "createdAt": "2025-09-13T22:42:52.913Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 34,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
-        "停滞が長引きやすい兆し。状況を見直す勇気が必要です。",
-        "自己犠牲が過ぎると心身を消耗します。自分を守る選択をしましょう。",
-        "視野が狭まりやすいとき。柔軟な発想を心がければ流れが変わります。",
-        "無意味な我慢は損失を招きます。解放の一歩が幸運を取り戻します。"
-      ]
-    },
-    "TarotCardDeath_U": {
-      "id": "TarotCardDeath_U",
-      "key": "TarotCardDeath_U",
-      "name": "【死神】(正位置)",
-      "createdAt": "2025-09-13T22:43:24.157Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 35,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
-        "不要な縁や習慣を整理する好機。心が軽くなり、新しい可能性が芽生えます。",
-        "大きな転換期。勇気を出して一区切りつければ運気が好転します。",
-        "過去を清算するほど幸運が舞い込みます。潔い決断が未来を呼びます。",
-        "変化を恐れないことが吉。終わりを受け入れると成長の扉が開きます。"
-      ]
-    },
-    "TarotCardDeath_R": {
-      "id": "TarotCardDeath_R",
-      "key": "TarotCardDeath_R",
-      "name": "【死神】(逆位置)",
-      "createdAt": "2025-09-13T22:43:57.186Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 36,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
-        "過去にしがみつくと停滞します。前を向く勇気が幸運を招きます。",
-        "惰性で続けることに注意。一区切りをつければ新しい道が現れます。",
-        "終わらせることを恐れると苦しみが長引きます。潔さが必要です。",
-        "無理にしがみつけば疲弊します。心を整理すれば再生が訪れます。"
-      ]
-    },
-    "TarotCardTemperance_U": {
-      "id": "TarotCardTemperance_U",
-      "key": "TarotCardTemperance_U",
-      "name": "【節制】(正位置)",
-      "createdAt": "2025-09-13T22:44:45.664Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 37,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
-        "穏やかな流れの中で運が整います。焦らず歩むことが吉です。",
-        "物事を中庸に保てば安定します。柔らかな心が人間関係を円滑にします。",
-        "小さな努力を積み重ねるほど成果が確実に育ちます。地道さが力になります。",
-        "心と体の調和が取れるとき。生活を整えれば運気も向上します。"
-      ]
-    },
-    "TarotCardTemperance_R": {
-      "id": "TarotCardTemperance_R",
-      "key": "TarotCardTemperance_R",
-      "name": "【節制】(逆位置)",
-      "createdAt": "2025-09-13T22:45:39.048Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 38,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "バランスを崩しやすい時期。無理な行動は運を乱します。",
-        "過不足に注意。極端な態度が誤解を招きます。",
-        "調整不足で停滞する兆し。小さな見直しが運を回復させます。",
-        "不摂生や偏りが運気を下げます。生活のリズムを整えることが必要です。",
-        "協調を欠くと孤立しやすいとき。歩み寄る姿勢が吉です。"
-      ]
-    },
-    "TarotCardDevil_U": {
-      "id": "TarotCardDevil_U",
-      "key": "TarotCardDevil_U",
-      "name": "【悪魔】(正位置)",
-      "createdAt": "2025-09-13T22:46:08.800Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 39,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
-        "魅力が高まり、人を惹きつけます。誘惑に注意しつつ上手に活かしましょう。",
-        "物質的な喜びに恵まれる兆し。執着せず感謝すれば心が満たされます。",
-        "本能や衝動が強まるとき。うまくコントロールすれば力となります。",
-        "禁断の誘いが舞い込みやすい時期。理性を忘れなければ安全に楽しめます。"
-      ]
-    },
-    "TarotCardDevil_R": {
-      "id": "TarotCardDevil_R",
-      "key": "TarotCardDevil_R",
-      "name": "【悪魔】(逆位置)",
-      "createdAt": "2025-09-13T22:46:34.891Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 40,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "束縛から解放される兆し。執着を手放せば自由が訪れます。",
-        "悪習慣を断ち切る好機。心身が軽くなり運気も回復します。",
-        "執着や迷いから抜け出せます。新しい視野が開けるときです。",
-        "誘惑を断ち切る強さが芽生えます。自分を信じて進みましょう。",
-        "重荷を降ろすとき。勇気を出して縁を整理すれば未来が明るくなります。"
-      ]
-    },
-    "TarotCardTower_U": {
-      "id": "TarotCardTower_U",
-      "key": "TarotCardTower_U",
-      "name": "【塔】(正位置)",
-      "createdAt": "2025-09-13T22:47:31.680Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 41,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
-        "思わぬ衝撃が古い殻を壊し、自由な未来を拓いていきます。",
-        "崩壊は再生の始まり。新しい可能性がそこから芽生えます。",
-        "大切なのは柔軟さ。予想外の展開も受け入れれば道が開けます。",
-        "急なトラブルに見舞われやすいとき。冷静に乗り越えれば成長できます。"
-      ]
-    },
-    "TarotCardTower_R": {
-      "id": "TarotCardTower_R",
-      "key": "TarotCardTower_R",
-      "name": "【塔】(逆位置)",
-      "createdAt": "2025-09-13T22:48:02.811Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 42,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
-        "変化を恐れてしがみつくと停滞します。勇気を持って手放すことが吉です。",
-        "危機を未然に防げる時期。小さなサインを見逃さないようにしましょう。",
-        "破壊の衝撃は和らぎますが、油断すると再燃します。慎重さが必要です。",
-        "過去の問題が表面化しやすいとき。向き合えば再建の道が整います。"
-      ]
-    },
-    "TarotCardStar_U": {
-      "id": "TarotCardStar_U",
-      "key": "TarotCardStar_U",
-      "name": "【星】(正位置)",
-      "createdAt": "2025-09-13T22:49:06.492Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 43,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
-        "純粋な気持ちが運を導きます。願いを信じれば幸運が舞い込みます。",
-        "癒しの力が強まる兆し。心身が整い、人間関係も和やかになります。",
-        "未来へのビジョンが明るく広がる時期。夢に向けて歩みを進めましょう。",
-        "信じる心が力となります。希望を胸に抱けば運が開けます。"
-      ]
-    },
-    "TarotCardStar_R": {
-      "id": "TarotCardStar_R",
-      "key": "TarotCardStar_R",
-      "name": "【星】(逆位置)",
-      "createdAt": "2025-09-13T22:49:30.889Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 44,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
-        "希望を見失いやすい兆し。小さな目標に集中すれば光が戻ります。",
-        "幻想に振り回されやすい時期。冷静な判断で迷いを払うことが必要です。",
-        "理想と現実の差に悩みやすいとき。焦らず少しずつ前進しましょう。",
-        "諦めの気持ちが芽生えやすい兆し。信じる力を取り戻すことが大切です。"
-      ]
-    },
-    "TarotCardMoon_U": {
-      "id": "TarotCardMoon_U",
-      "key": "TarotCardMoon_U",
-      "name": "【月】(正位置) ",
-      "createdAt": "2025-09-13T22:49:54.792Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 45,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
-        "不確かな状況の中に学びあり。恐れず進めば新しい気づきを得られます。",
-        "想像力が高まる時期。創作や表現活動に幸運が訪れます。",
-        "秘められたものが表に現れる兆し。真実を見抜く目を養いましょう。",
-        "心の奥にある願望を受け入れれば、未来が明るくなります。"
-      ]
-    },
-    "TarotCardMoon_R": {
-      "id": "TarotCardMoon_R",
-      "key": "TarotCardMoon_R",
-      "name": "【月】(逆位置)",
-      "createdAt": "2025-09-13T22:50:19.652Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 46,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
-        "誤解や曖昧さが混乱を招く兆し。率直な対話が運を守ります。",
-        "悪い夢や思い込みに惑わされやすい時期。冷静に現実を見ましょう。",
-        "嘘や隠し事が露呈する兆し。正直さを大切にすれば難を逃れます。",
-        "不安定な感情に注意。心を落ち着ければ運気は整います。"
-      ]
-    },
-    "TarotCardSun_U": {
-      "id": "TarotCardSun_U",
-      "key": "TarotCardSun_U",
-      "name": "【太陽】(正位置)",
-      "createdAt": "2025-09-13T22:50:44.266Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 47,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
-        "幸せな縁や良い出会いに恵まれます。素直な笑顔が運を呼びます。",
-        "努力が実を結び、評価される兆し。誇りを持って進みましょう。",
-        "健康や活力に恵まれ、心身が充実します。積極的に動くと吉。",
-        "明るい未来が照らされるとき。希望を胸に歩みを続けましょう。"
-      ]
-    },
-    "TarotCardSun_R": {
-      "id": "TarotCardSun_R",
-      "key": "TarotCardSun_R",
-      "name": "【太陽】(逆位置)",
-      "createdAt": "2025-09-13T22:51:11.175Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 48,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
-        "期待が空回りしやすいとき。無理せず自然体で過ごすことが吉です。",
-        "明るさの裏に隠された不安が顔を出すかも。心を整えましょう。",
-        "油断や慢心が運を曇らせます。謙虚さを忘れずに。",
-        "幸せを見落としやすい時期。感謝の気持ちが流れを好転させます。"
-      ]
-    },
-    "TarotCardJudgement_U": {
-      "id": "TarotCardJudgement_U",
-      "key": "TarotCardJudgement_U",
-      "name": "【審判】(正位置)",
-      "createdAt": "2025-09-13T22:51:42.360Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 49,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "過去の努力が報われるとき。新しい扉が開きます。",
-        "復縁や再会など、縁がよみがえる兆し。大切な関係が戻ります。",
-        "運命的な転機が訪れます。勇気を出せば再生の道が開けます。",
-        "正しい判断を下せる時期。迷いが晴れ、答えが見つかります。",
-        "人生の節目となる出来事が訪れる予感。誠実に向き合えば吉。"
-      ]
-    },
-    "TarotCardJudgement_R": {
-      "id": "TarotCardJudgement_R",
-      "key": "TarotCardJudgement_R",
-      "name": "【審判】(逆位置)",
-      "createdAt": "2025-09-13T22:52:15.809Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 50,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
-        "チャンスを逃しやすい兆し。慎重さより行動が鍵です。",
-        "誤った判断に注意。冷静さと第三者の助言が必要です。",
-        "後悔や未練が心を重くします。切り替えが運を救います。",
-        "再生の機会を見逃しやすい時期。視野を広げて流れをつかみましょう。"
-      ]
-    },
-    "TarotCardWorld_U": {
-      "id": "TarotCardWorld_U",
-      "key": "TarotCardWorld_U",
-      "name": "【世界】(正位置)",
-      "createdAt": "2025-09-13T22:52:41.548Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 51,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
-        "良縁や成功に恵まれ、心が満たされます。次の旅立ちの準備も整います。",
-        "大きな成果を得られる時期。自信を持って胸を張りましょう。",
-        "周囲との調和が整い、物事がスムーズに進みます。安心して進めます。",
-        "夢が実現し、幸せを実感できるとき。感謝がさらに幸運を呼びます。"
-      ]
-    },
-    "TarotCardWorld_R": {
-      "id": "TarotCardWorld_R",
-      "key": "TarotCardWorld_R",
-      "name": "【世界】(逆位置)",
-      "createdAt": "2025-09-13T22:53:06.146Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 52,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
-        "未完成のまま終わりやすいとき。努力を続ければ好転します。",
-        "課題を放置すると次に進めません。小さな改善を怠らないこと。",
-        "成果を独り占めすると不調和が生じます。分かち合いが吉。",
-        "惜しいところでつまずく暗示。柔軟な姿勢が完成へ導きます。"
-      ]
-    },
     "FirstSagiChocolateThinking": {
       "id": "FirstSagiChocolateThinking",
       "key": "FirstSagiChocolateThinking",
       "name": "初見詐欺(Thinking):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-12-06T03:05:39.591Z",
-      "order": 53,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -2704,7 +1136,7 @@
       "name": "初見詐欺(Surprise):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-11-28T01:46:23.119Z",
-      "order": 54,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -2723,7 +1155,7 @@
       "name": "初見詐欺(Sad):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2025-11-28T01:51:19.222Z",
-      "order": 55,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -2742,7 +1174,7 @@
       "name": "ギフト:Chocolate",
       "createdAt": "2025-08-27T09:48:36.227Z",
       "updatedAt": "2025-11-28T03:25:55.315Z",
-      "order": 56,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -2761,7 +1193,7 @@
       "name": "初見:Chocolate",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2025-11-28T02:31:44.308Z",
-      "order": 57,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2780,7 +1212,7 @@
       "name": "久しぶり:Chocolate",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2025-11-28T03:20:36.914Z",
-      "order": 58,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2799,7 +1231,7 @@
       "name": "こんにちは:Chocolate",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2025-11-28T03:23:13.536Z",
-      "order": 59,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [],
@@ -2818,7 +1250,7 @@
       "name": "告知用トースト:Chocolate",
       "createdAt": "2025-08-26T07:00:06.947Z",
       "updatedAt": "2025-11-28T03:29:52.688Z",
-      "order": 60,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -2838,7 +1270,7 @@
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-12-06T01:30:28.621Z",
-      "order": 61,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
@@ -2853,7 +1285,7 @@
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-12-06T01:29:59.019Z",
-      "order": 62,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [],
@@ -2870,7 +1302,7 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-27T04:32:45.344Z",
+      "updatedAt": "2026-01-04T15:09:32.911Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",

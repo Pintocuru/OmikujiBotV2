@@ -1548,9 +1548,17 @@
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "experimental"
@@ -1558,7 +1566,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "",
     "daisyUiTheme": "corporate"
   }
 }

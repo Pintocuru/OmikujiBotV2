@@ -1,5 +1,4 @@
 // src\MainGenerator\scripts\PlaceholderProcess\PlaceholderContext.ts
-import { DefaultTypes } from '@shared/types'
 import { KeyValueMap } from '@main/scripts/KeyValue/KeyValueMap'
 
 /**
@@ -10,7 +9,7 @@ export class PlaceholderContext extends KeyValueMap {
   /**
    * コンテキスト値を更新
    */
-  updateValues(values: DefaultTypes): void {
+  updateValues(values: Record<string, string | number>): void {
     Object.entries(values).forEach(([key, value]) => {
       this.set(key, value)
     })

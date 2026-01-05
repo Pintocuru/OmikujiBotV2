@@ -12,7 +12,9 @@ const MODE_KEY: Record<Exclude<SettingMode, 'basic'>, string> = {
 const KEY_MAP: Record<string, SettingMode> = Object.fromEntries(
   Object.entries(MODE_KEY).map(([mode, hash]) => [hash, mode])
 ) as Record<string, SettingMode>
-export type SettingMode = 'basic' | 'adv' | 'pro' | 'godMode'
+
+export const settingModeLabels = ['basic', 'pro', 'adv', 'godMode'] as const
+export type SettingMode = (typeof settingModeLabels)[number]
 
 // 純粋関数: ハッシュ文字列からモード判定
 export function resolveSettingMode(licenseKeyHash?: string): SettingMode {

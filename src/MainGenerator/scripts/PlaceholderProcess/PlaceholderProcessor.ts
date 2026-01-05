@@ -1,6 +1,5 @@
 // src\MainGenerator\scripts\PlaceholderProcess\PlaceholderProcessor.ts
 import { PostActionType, PlaceholderType } from '@/types/'
-import { DefaultTypes } from '@shared/types'
 import { PlaceholderResolver } from './PlaceholderResolver'
 import { PlaceholderContext } from './PlaceholderContext'
 
@@ -22,7 +21,7 @@ export class PlaceholderProcessor {
   /**
    * コンテキスト値を更新(ユーザー名、日付など)
    */
-  updateResolvedValues(data: DefaultTypes): void {
+  updateResolvedValues(data: Record<string, string | number>): void {
     this.context.updateValues(data)
   }
 
