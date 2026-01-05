@@ -9,8 +9,6 @@ export const getImagePath = (profileImage?: string) => {
 }
 
 /**
- * settingMode
+ * developer mode
  */
-
-// developer mode
 export const isDev = import.meta.env?.VITE_IS_DEV === 'true'

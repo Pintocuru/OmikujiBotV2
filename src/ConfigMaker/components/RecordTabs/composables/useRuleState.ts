@@ -56,7 +56,7 @@ export const useRuleState = () => {
   const filterOptions = ref<FilterOptions>({
     enabledOnly: false,
     colorFilter: null,
-    accessFilter: 'experimental',
+    accessFilter: 'godMode',
   })
 
   const searchQuery = ref('')
@@ -66,7 +66,7 @@ export const useRuleState = () => {
     filterOptions.value = {
       enabledOnly: false,
       colorFilter: null,
-      accessFilter: 'experimental',
+      accessFilter: 'godMode',
     }
     searchQuery.value = ''
   }

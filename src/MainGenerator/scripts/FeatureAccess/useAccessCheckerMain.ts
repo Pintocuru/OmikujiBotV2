@@ -18,8 +18,8 @@ export function useSettingMode() {
  * アクセスレベルをチェックする関数
  */
 export function useAccessChecker() {
-  const { isPro, isGod } = useSettingMode()
-  return useAccessCheckerCore(isPro, isGod)
+  const { accessMode } = useSettingMode()
+  return useAccessCheckerCore(accessMode)
 }
 
 /**

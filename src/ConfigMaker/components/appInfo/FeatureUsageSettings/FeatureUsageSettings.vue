@@ -72,7 +72,7 @@
 
       developer: {
         licenseVisible: 'basic' as const,
-        jsonMergeSettings: 'experimental' as const,
+        jsonMergeSettings: 'none' as const,
       },
     }
 

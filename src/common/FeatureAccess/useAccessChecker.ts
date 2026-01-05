@@ -7,15 +7,20 @@ import { AccessLevelType } from '@shared/types'
 /**
  * アクセスレベルをチェックする関数
  */
-export function hasAccessPure(level: AccessLevelType, isPro: boolean, isGod: boolean): boolean {
-  if (level === 'experimental') return false
-  if (level === 'internal') return isGod
-  if (level === 'pro') return isPro
-  return true
+const AccessLevelPriority: Record<AccessLevelType, number> = {
+  none: 0,
+  basic: 1,
+  adv: 2,
+  pro: 3,
+  godMode: 4,
 }
 
-export function useAccessCheckerCore(isPro: Ref<boolean>, isGod: Ref<boolean>) {
-  const hasAccess = (level: AccessLevelType) => hasAccessPure(level, isPro.value, isGod.value)
+export function hasAccessPure(level: AccessLevelType, accessMode: AccessLevelType): boolean {
+  return AccessLevelPriority[accessMode] >= AccessLevelPriority[level]
+}
+
+export function useAccessCheckerCore(accessMode: Ref<AccessLevelType>) {
+  const hasAccess = (level: AccessLevelType) => hasAccessPure(level, accessMode.value)
   return { hasAccess }
 }
 
@@ -24,8 +29,8 @@ export function useAccessCheckerCore(isPro: Ref<boolean>, isGod: Ref<boolean>) {
  */
 export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
   // setting mode
-  const { isPro, isGod } = useSettingModeFromHash(computed(() => data.value.settings.licenseKeyHash))
-  const { hasAccess } = useAccessCheckerCore(isPro, isGod)
+  const { accessMode } = useSettingModeFromHash(computed(() => data.value.settings.licenseKeyHash))
+  const { hasAccess } = useAccessCheckerCore(accessMode)
 
   // featureUsage
   const usage = computed(() => data.value.featureUsage.usage)

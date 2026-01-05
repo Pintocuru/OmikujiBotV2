@@ -11,10 +11,11 @@ export function createCommonBuildConfig(packageRoot: string) {
 
     // ライセンスキー
     licenseKey: {
+      none: '',
       basic: '',
+      adv: getKey('adv'),
       pro: getKey('pro'),
-      internal: getKey('godMode'),
-      experimental: getKey('godMode'),
+      godMode: getKey('godMode'),
     },
 
     // ビルド設定

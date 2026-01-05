@@ -9,8 +9,8 @@ import { AccessLevelLabels, AccessLevelType } from '@shared/types'
  * @returns 前処理後のビルド設定オブジェクト
  */
 export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: AccessLevelType): OmikujiDataType => {
-  // experimental なら、フィルタリングしない
-  if (!targetLevel || targetLevel === 'experimental') return data
+  // none なら、フィルタリングしない
+  if (!targetLevel || targetLevel === 'none') return data
   const targetIndex = AccessLevelLabels.indexOf(targetLevel)
 
   return {
@@ -21,7 +21,7 @@ export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: Acc
     characters: filterItems(data.characters, targetIndex),
     settings: {
       ...data.settings,
-      licenseKeyHash: getLicenseKeyHash(targetLevel),
+      licenseKeyHash: getKey(targetLevel),
     },
   }
 }
@@ -36,15 +36,4 @@ const filterItems = <T extends Record<string, any>>(data: T, targetIndex: number
     if (itemIndex <= targetIndex) filteredData[key] = item
   }
   return filteredData
-}
-
-// License書き換え
-const getLicenseKeyHash = (targetLevel?: AccessLevelType): string => {
-  // 未記入ならbasic
-  if (!targetLevel) return ''
-
-  if (targetLevel === 'pro') return getKey('pro')
-  if (targetLevel === 'internal') return getKey('godMode')
-
-  return ''
 }

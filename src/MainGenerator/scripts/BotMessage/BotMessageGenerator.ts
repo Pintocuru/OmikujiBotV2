@@ -10,8 +10,9 @@ import {
 } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { resolveSettingMode, SettingMode } from '@/common/FeatureAccess/SettingMode'
+import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { AccessLevelType } from '@shared/types'
+import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
 export class BotMessageGenerator {
   // キャラクター検索を高速化するためのMap
@@ -200,12 +201,5 @@ export function checkIsCharacter(omikujiData: OmikujiDataType): boolean {
   const hasCharacters = Object.keys(characters).length > 0
   const mode = resolveSettingMode(settings.licenseKeyHash)
 
-  return hasAccessPureByMode(usageCharacters, mode) && hasCharacters
-}
-
-export function hasAccessPureByMode(level: AccessLevelType, mode: SettingMode): boolean {
-  if (level === 'experimental') return false
-  if (level === 'internal') return mode === 'godMode'
-  if (level === 'pro') return mode === 'pro' || mode === 'godMode'
-  return true
+  return hasAccessPure(usageCharacters, mode) && hasCharacters
 }

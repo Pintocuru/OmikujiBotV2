@@ -90,11 +90,13 @@
       switch (level) {
         case 'basic':
           return [...baseClasses, 'badge-base']
+        case 'adv':
+          return [...baseClasses, 'badge-info']
         case 'pro':
           return [...baseClasses, 'badge-secondary']
-        case 'internal':
+        case 'godMode':
           return [...baseClasses, 'badge-warning']
-        case 'experimental':
+        case 'none':
           return [...baseClasses, 'badge-error']
         default:
           return [...baseClasses, 'badge-primary']

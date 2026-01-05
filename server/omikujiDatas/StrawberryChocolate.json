@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T15:16:42.575Z",
+      "updatedAt": "2026-01-05T02:16:13.196Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -177,20 +177,20 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767539439046-od3bas",
-                  "weight": 4
+                  "weight": 4,
+                  "content": "1767539439046-od3bas"
                 },
                 {
-                  "content": "1767539481151-kvg5to",
-                  "weight": 4
+                  "weight": 4,
+                  "content": "1767539481151-kvg5to"
                 },
                 {
-                  "content": "1767539536508-gcvcfg",
-                  "weight": 4
+                  "weight": 4,
+                  "content": "1767539536508-gcvcfg"
                 },
                 {
-                  "content": "1767539560050-xw7xfz",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767539560050-xw7xfz"
                 }
               ]
             }
@@ -201,9 +201,40 @@
           "criteria": null
         },
         {
+          "id": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "key": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "name": "ホントの初見(1回)",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "equal",
+              "unit": "tc",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
           "id": "1767486455920",
           "key": "1767486455920",
-          "name": "ホントの初見:Chocolate",
+          "name": "ホントの初見(2-5回)",
           "createdAt": "2026-01-04T00:27:35.920Z",
           "updatedAt": "2026-01-04T00:27:35.920Z",
           "order": 0,
@@ -215,8 +246,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767539629815-molbgp",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767539629815-molbgp"
                 }
               ]
             }
@@ -360,8 +391,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767540348473-d4fev8",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767540348473-d4fev8"
                 }
               ]
             }
@@ -424,8 +455,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767539629815-molbgp",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767539629815-molbgp"
                 }
               ]
             }
@@ -466,8 +497,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767540169384-b2waaw",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767540169384-b2waaw"
                 }
               ]
             }
@@ -508,8 +539,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767540201946-kvrx6s",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767540201946-kvrx6s"
                 }
               ]
             }
@@ -581,8 +612,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767540543495-x0of51",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767540543495-x0of51"
                 }
               ]
             }
@@ -621,8 +652,8 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "1767540577897-8ne654",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "1767540577897-8ne654"
                 }
               ]
             }
@@ -942,6 +973,33 @@
       ],
       "gameScripts": null
     },
+    "1767540348473-d4fev8": {
+      "id": "1767540348473-d4fev8",
+      "key": "1767540348473-d4fev8",
+      "name": "ギフト(wink):Chocolate",
+      "createdAt": "2026-01-04T15:25:48.473Z",
+      "updatedAt": "2026-01-04T15:26:19.604Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [],
+      "accessLevel": "basic",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "chocolate",
+          "iconKey": "wink",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftChocolate>>",
+            "toast": "",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": null
+    },
     "1767539629815-molbgp": {
       "id": "1767539629815-molbgp",
       "key": "1767539629815-molbgp",
@@ -1021,33 +1079,6 @@
           "sound": "collect",
           "message": {
             "bubble": "<<FirstVisitChocolate>>",
-            "toast": "",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
-    },
-    "1767540348473-d4fev8": {
-      "id": "1767540348473-d4fev8",
-      "key": "1767540348473-d4fev8",
-      "name": "ギフト(wink):Chocolate",
-      "createdAt": "2026-01-04T15:25:48.473Z",
-      "updatedAt": "2026-01-04T15:26:19.604Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "message",
-          "characterKey": "chocolate",
-          "iconKey": "wink",
-          "sound": "carnival",
-          "message": {
-            "bubble": "<<GiftChocolate>>",
             "toast": "",
             "isToast": false
           }
@@ -1473,7 +1504,7 @@
     ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "basic"
     }
   },
   "settings": {

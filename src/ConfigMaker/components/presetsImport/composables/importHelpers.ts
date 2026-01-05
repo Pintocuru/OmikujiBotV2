@@ -41,26 +41,6 @@ export const checkRecordConflicts = (
 }
 
 /**
- * AccessLevelの優先度を返す
- */
-export const getAccessLevelPriority = (level: AccessLevelType): number => {
-  const priority: Record<AccessLevelType, number> = {
-    basic: 0,
-    pro: 1,
-    internal: 2,
-    experimental: 3,
-  }
-  return priority[level]
-}
-
-/**
- * より優先度の高いAccessLevelを返す
- */
-export const getMergedAccessLevel = (current: AccessLevelType, imported: AccessLevelType): AccessLevelType => {
-  return getAccessLevelPriority(current) <= getAccessLevelPriority(imported) ? current : imported
-}
-
-/**
  * カテゴリのプレビューを生成
  */
 export const generateCategoryPreview = (currentData: OmikujiDataType, importData: OmikujiDataType) => {

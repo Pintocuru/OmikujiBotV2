@@ -1,11 +1,11 @@
 // src\GameScripts\GameScriptsRules.ts
-import { SettingMode } from '@/common/FeatureAccess/SettingMode'
+import { AccessLevelType } from '@shared/types'
 
 // ゲームスクリプト
 export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza']
 export const GOD_SCRIPTS = ['GoogolClover', 'HugEmAll']
 
-export function getAvailableScripts(mode: SettingMode, fallback: string[] = []) {
+export function getAvailableScripts(mode: AccessLevelType, fallback: string[] = []) {
   switch (mode) {
     case 'godMode': {
       return Array.from(new Set([...PRO_SCRIPTS, ...GOD_SCRIPTS, ...fallback]))
