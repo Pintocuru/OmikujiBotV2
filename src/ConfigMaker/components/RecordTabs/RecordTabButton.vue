@@ -47,19 +47,21 @@
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { storeToRefs } from 'pinia'
 
   const props = defineProps<{
     rule: RecordCategoryUnion
   }>()
 
   // Store
-  const { selectedItemKey, selectItem } = useNavigationStore()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
   const { isGod } = useSettingMode()
   const tabsStore = useRecordTabsStore()
 
   // Computed
   const isEditing = computed(() => tabsStore.editingRuleId === props.rule.key)
-  const isSelected = computed(() => selectedItemKey === props.rule.key)
+  const isSelected = computed(() => selectedItemKey.value === props.rule.key)
   const isMultiSelected = computed(() => tabsStore.selectedRuleIds.has(props.rule.key))
   const getRuleEnabledState = computed(() => props.rule.isEnabled !== false)
 
@@ -79,7 +81,7 @@
     if (tabsStore.isMultiSelectMode) {
       tabsStore.handleMultiSelect(props.rule.key, event)
     } else {
-      selectItem(props.rule.key)
+      navigationStore.selectItem(props.rule.key)
     }
   }
 

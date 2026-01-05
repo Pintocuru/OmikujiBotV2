@@ -6,8 +6,8 @@
 
     <!-- vue-draggableを使用 -->
     <draggable
-      :model-value="store.draggableRules"
-      @update:model-value="(value: any) => (store.draggableRules = value)"
+      :model-value="draggableRules"
+      @update:model-value="(value: any) => (draggableRules = value)"
       tag="div"
       class="flex flex-wrap gap-1"
       :disabled="!!store.searchQuery || store.isMultiSelectMode"
@@ -15,8 +15,8 @@
       :animation="200"
       ghost-class="opacity-50"
       chosen-class="scale-95"
-      @start="store.onDragStart"
-      @end="store.onDragEnd"
+      @start="onDragStart"
+      @end="onDragEnd"
     >
       <template #item="{ element: rule }">
         <RecordTabItem :rule="rule" />
@@ -26,7 +26,7 @@
 
   <!-- フィルター結果が空の場合のメッセージ -->
   <div v-else>
-    <NoParamsCard message="一致するルールが見つかりませんでした。" />
+    <NoParamsCard :message="`一致するルールが見つかりませんでした。`" :sub="`${store.filterDescription}`" />
 
     <div class="text-center">
       <!-- 新規追加ボタン（フィルター結果が空の場合） -->
@@ -51,7 +51,9 @@
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import draggable from 'vuedraggable'
   import { Plus } from 'lucide-vue-next'
+  import { useDragAndDrop } from './composables/useDragAndDrop'
 
   // Pinia store
   const store = useRecordTabsStore()
+  const { draggableRules, onDragStart, onDragEnd } = useDragAndDrop()
 </script>

@@ -1,15 +1,13 @@
 <!-- src/configMaker/components/RecordTabs/RecordTabs.vue -->
 <template>
-  <div class="space-y-4">
-    <!-- フィルターコンポーネント -->
-    <RecordFilter />
+  <!-- フィルターコンポーネント -->
+  <RecordFilter />
 
-    <!-- タブ部分 -->
-    <RecordTabList />
+  <!-- タブ部分 -->
+  <RecordTabList />
 
-    <!-- 右クリックコンテキストメニュー -->
-    <RecordContextMenu />
-  </div>
+  <!-- 右クリックコンテキストメニュー -->
+  <RecordContextMenu />
 </template>
 
 <script setup lang="ts">

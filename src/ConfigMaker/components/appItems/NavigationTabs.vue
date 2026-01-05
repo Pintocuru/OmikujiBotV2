@@ -80,7 +80,8 @@
   const dockItemClass = (key: CategoryType) => (selectedCategory.value === key ? 'bg-primary text-primary-content' : '')
 
   const navigateCategory = (key: CategoryType) => {
-    tabsStore.resetFilterOptions()
+    // TODO:リセットを一旦やめてみる・・・
+    // tabsStore.resetFilterOptions()
     navigationStore.selectCategory(key)
   }
 </script>

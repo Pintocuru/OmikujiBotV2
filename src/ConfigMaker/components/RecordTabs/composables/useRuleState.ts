@@ -1,51 +1,23 @@
 // src/configMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/'
-import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { useNavigationStore } from '@config/stores/useNavigationStore'
-import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
 /** フィルター設定の型定義 */
 export interface FilterOptions {
-  enabledOnly: boolean // 有効なルールのみ表示
   colorFilter: string | null // 特定の色でフィルター
-  accessFilter: AccessLevelType // AccessLevelでフィルター(開発用)
+  tagFilter: string | null // 特定のタグでフィルター
 }
 
 /**
- * ルールの基本状態管理
- * データの取得、フィルタリング、検索機能を提供
+ * ルールのフィルタリング・検索機能を提供
+ * ナビゲーション状態は useNavigationStore から取得
  */
-export const useRuleState = () => {
+export function useRuleState() {
   const navigationStore = useNavigationStore()
-  const { selectedCategory } = storeToRefs(navigationStore)
-  const { getItem, getCategoryArray } = useGetRecordData()
 
-  /**
-   * 基本状態
-   */
-  /** 選択中のカテゴリ（型安全な変換） */
-  const validCategory = computed(() => toRecordCategory(selectedCategory.value))
-
-  /** 現在のカテゴリの配列データ */
-  const categoryArray = computed(() => {
-    const category = validCategory.value
-    if (!category) {
-      console.warn('Invalid category selected:', selectedCategory.value)
-      return undefined
-    }
-    return getCategoryArray(category)
-  })
-
-  /** 単一選択されているルールのID */
-  const selectedItemKey = ref<string | null>(null)
-
-  /** 選択されているルールの詳細データ */
-  const selectedItem = computed(() => {
-    if (!validCategory.value || !selectedItemKey.value) return null
-    return getItem(validCategory.value, selectedItemKey.value)
-  })
+  // navigationStoreから必要な状態を取得
+  const { validCategory, categoryArray, selectedItemKey, selectedItem } = storeToRefs(navigationStore)
 
   /**
    * マルチセレクトモード
@@ -56,19 +28,17 @@ export const useRuleState = () => {
    * フィルター・検索状態
    */
   const filterOptions = ref<FilterOptions>({
-    enabledOnly: false,
     colorFilter: null,
-    accessFilter: 'godMode',
+    tagFilter: null,
   })
 
   const searchQuery = ref('')
 
-  // フィルタリングをリセットする
+  /** フィルタリングをリセット */
   const resetFilterOptions = () => {
     filterOptions.value = {
-      enabledOnly: false,
       colorFilter: null,
-      accessFilter: 'godMode',
+      tagFilter: null,
     }
     searchQuery.value = ''
   }
@@ -76,6 +46,7 @@ export const useRuleState = () => {
   /**
    * 計算プロパティ
    */
+
   /** orderでソート済みのルール一覧 */
   const sortedItems = computed(() =>
     Array.isArray(categoryArray.value) ? [...categoryArray.value].sort((a, b) => a.order - b.order) : []
@@ -85,26 +56,14 @@ export const useRuleState = () => {
   const filteredSortedItems = computed(() => {
     let filtered = sortedItems.value
 
-    // 有効ルールのみフィルター
-    if (filterOptions.value.enabledOnly) {
-      filtered = filtered.filter((rule) => rule.isEnabled !== false)
-    }
-
     // カラーフィルター
     if (filterOptions.value.colorFilter) {
       filtered = filtered.filter((rule) => rule.editorColor === filterOptions.value.colorFilter)
     }
 
-    // AccessLevelフィルター
-    if (filterOptions.value.accessFilter) {
-      const selectedIndex = AccessLevelLabels.indexOf(filterOptions.value.accessFilter)
-
-      filtered = filtered.filter((rule) => {
-        // undefined は basic として扱う
-        const level = rule.accessLevel ?? 'basic'
-        const ruleIndex = AccessLevelLabels.indexOf(level)
-        return ruleIndex <= selectedIndex
-      })
+    // タグフィルター
+    if (filterOptions.value.tagFilter) {
+      filtered = filtered.filter((rule) => rule.tags?.includes(filterOptions.value.tagFilter!))
     }
 
     // 検索クエリでフィルター（名前による部分一致）
@@ -128,33 +87,118 @@ export const useRuleState = () => {
     return Array.from(colors).sort()
   })
 
+  /** カテゴリで使用中のユニークなタグ一覧 */
+  const getUniqueTags = computed(() => {
+    if (!categoryArray.value) return []
+    const tags = new Set<string>()
+    categoryArray.value.forEach((rule) => {
+      if (rule.tags && Array.isArray(rule.tags)) {
+        rule.tags.forEach((tag) => tags.add(tag))
+      }
+    })
+    return Array.from(tags).sort()
+  })
+
+  /** フィルタリング条件の説明文 */
+  const filterDescription = computed(() => {
+    const conditions: string[] = []
+
+    if (filterOptions.value.colorFilter) {
+      conditions.push(`カラー: ${filterOptions.value.colorFilter}`)
+    }
+
+    if (filterOptions.value.tagFilter) {
+      conditions.push(`タグ: ${filterOptions.value.tagFilter}`)
+    }
+
+    if (searchQuery.value.trim()) {
+      conditions.push(`検索: "${searchQuery.value.trim()}"`)
+    }
+
+    if (conditions.length === 0) {
+      return ''
+    }
+
+    return `フィルター条件: ${conditions.join(' / ')}`
+  })
+
+  /** フィルターが適用されているか */
+  const isFilterActive = computed(
+    () =>
+      filterOptions.value.colorFilter !== null ||
+      filterOptions.value.tagFilter !== null ||
+      searchQuery.value.trim() !== ''
+  )
+
+  /**
+   * フィルター変更時の処理
+   */
+
+  /** カラーフィルターを設定（選択アイテムの自動調整付き） */
+  const setColorFilter = (color: string | null) => {
+    filterOptions.value.colorFilter = color
+    adjustSelectedItem()
+  }
+
+  /** タグフィルターを設定（選択アイテムの自動調整付き） */
+  const setTagFilter = (tag: string | null) => {
+    filterOptions.value.tagFilter = tag
+    adjustSelectedItem()
+  }
+
+  /** 検索クエリを設定（選択アイテムの自動調整付き） */
+  const setSearchQuery = (query: string) => {
+    searchQuery.value = query
+    adjustSelectedItem()
+  }
+
+  /**
+   * 現在選択中のアイテムがフィルター結果に含まれない場合、
+   * フィルター結果の最初のアイテムを選択する
+   */
+  const adjustSelectedItem = () => {
+    const currentKey = selectedItemKey.value
+
+    // 選択がない、またはフィルター結果が空の場合
+    if (!currentKey || filteredSortedItems.value.length === 0) {
+      navigationStore.selectItem(null)
+      return
+    }
+
+    // 現在の選択がフィルター結果に含まれているかチェック
+    const isCurrentInFiltered = filteredSortedItems.value.some((item) => item.key === currentKey)
+
+    // 含まれていない場合は、最初のアイテムを選択
+    if (!isCurrentInFiltered) {
+      navigationStore.selectItem(filteredSortedItems.value[0]?.key ?? null)
+    }
+  }
+
   return {
-    // 基本状態
+    // navigationStoreから取得した状態（読み取り専用）
     validCategory,
     categoryArray,
     selectedItemKey,
     selectedItem,
-    resetFilterOptions,
 
-    // マルチセレクトモード
+    // このcomposableで管理する状態
     isMultiSelectMode,
-
-    // フィルター・検索
     filterOptions,
     searchQuery,
+    resetFilterOptions,
+
+    // フィルター変更メソッド
+    setColorFilter,
+    setTagFilter,
+    setSearchQuery,
+    adjustSelectedItem,
 
     // 計算プロパティ
     sortedItems,
     filteredSortedItems,
     getUniqueColors,
+    getUniqueTags,
+    filterDescription,
+    isFilterActive,
   }
-}
-
-/**
- * 型ガード関数: string を RecordCategoryType に安全に変換
- */
-function toRecordCategory(value: string): RecordCategoryType | undefined {
-  return (recordCategoryLabel as readonly string[]).includes(value as RecordCategoryType)
-    ? (value as RecordCategoryType)
-    : undefined
 }

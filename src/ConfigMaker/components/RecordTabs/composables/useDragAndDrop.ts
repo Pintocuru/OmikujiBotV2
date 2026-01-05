@@ -1,16 +1,18 @@
 // src/configMaker/components/RecordTabs/composables/useDragAndDrop.ts
 import { ref, computed } from 'vue'
-import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
+import { useRecordTabsStore } from '../RecordTabsStore'
+import { storeToRefs } from 'pinia'
 
 /**
  * ドラッグ&ドロップによる並び替え機能
  * Vuedraggableライブラリとの統合、順序変更の管理を提供
  */
-export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>) => {
+export const useDragAndDrop = () => {
   const omikujiStore = useOmikujiStore()
-  const { filteredSortedItems, categoryArray, validCategory, isMultiSelectMode } = ruleState
+  const recordTabsStore = useRecordTabsStore()
+  const { filteredSortedItems, categoryArray, validCategory, isMultiSelectMode } = storeToRefs(recordTabsStore)
 
   /** ドラッグ操作中フラグ */
   const isDragging = ref(false)
@@ -72,16 +74,8 @@ export const useDragAndDrop = (ruleState: ReturnType<typeof useRuleState>) => {
     }, 100)
   }
 
-  /**
-   * ドラッグ可能かどうかを判定
-   * マルチセレクトモード中は無効化
-   */
-  const isDragDisabled = computed(() => isMultiSelectMode.value)
-
   return {
-    isDragging,
     draggableRules,
-    isDragDisabled,
     onDragStart,
     onDragEnd,
   }

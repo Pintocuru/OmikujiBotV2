@@ -1,89 +1,130 @@
-// src\ConfigMaker\stores\Navigation\useNavigationStore.ts
-import { ref } from 'vue'
+// src/ConfigMaker/stores/Navigation/useNavigationStore.ts
+import { ref, watch, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { CategoryType, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/'
 import { useGetRecordData } from './useGetRecordData'
 
 /**
  * ナビゲーションstore
+ * アプリ全体のカテゴリ・アイテム選択状態を一元管理
  */
 export const useNavigationStore = defineStore('navigation', () => {
-  // data取得
-  const recordDataAccess = useGetRecordData()
+  const { getCategoryArray } = useGetRecordData()
 
-  // 状態
+  /**
+   * 状態
+   */
   const selectedCategory = ref<CategoryType>('comments')
-  // TODO:最初はnullなので、なんとかしてnullでない方法にしたい
   const selectedItemKey = ref<string | null>(null)
 
-  // 計算プロパティ
+  /**
+   * 計算プロパティ
+   */
+
+  /** RecordCategory かどうかの型ガード */
   const isRecordCategory = (category: CategoryType): category is RecordCategoryType =>
     recordCategoryLabel.includes(category as RecordCategoryType)
 
-  const getOrderedItems = (category: RecordCategoryType) => {
-    const items = recordDataAccess.getCategoryMap(category)
-    return Object.values(items).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-  }
+  /** 現在のカテゴリがRecordCategoryかどうか */
+  const isCurrentRecordCategory = computed(() => isRecordCategory(selectedCategory.value))
 
-  // カテゴリ選択
+  /** 型安全な現在のカテゴリ（RecordCategoryの場合のみ値を返す） */
+  const validCategory = computed((): RecordCategoryType | undefined =>
+    isRecordCategory(selectedCategory.value) ? selectedCategory.value : undefined
+  )
+
+  /** 現在のカテゴリの配列データ */
+  const categoryArray = computed(() => {
+    const category = validCategory.value
+    if (!category) return undefined
+    return getCategoryArray(category)
+  })
+
+  /** 選択されているアイテムの詳細データ */
+  const selectedItem = computed(() => {
+    const category = validCategory.value
+    if (!category || !selectedItemKey.value || !categoryArray.value) return null
+    return categoryArray.value.find((item) => item.key === selectedItemKey.value) ?? null
+  })
+
+  /**
+   * 操作
+   */
+
+  /** カテゴリを選択（自動的に最初のアイテムを選択） */
   const selectCategory = (category: CategoryType) => {
     selectedCategory.value = category
 
     if (!isRecordCategory(category)) {
       selectedItemKey.value = null
-      return
+    } else {
+      const firstItem = getCategoryArray(category)[0]
+      selectedItemKey.value = firstItem?.key ?? null
     }
-
-    const firstItem = getOrderedItems(category)[0]
-    selectedItemKey.value = firstItem?.key ?? null
   }
 
-  // アイテム選択
-  const selectItem = (key: string) => {
+  /** アイテムを選択 */
+  const selectItem = (key: string | null) => {
     selectedItemKey.value = key
   }
 
-  /**
-   * アイテム削除後に適切なアイテムを選択する
-   * 削除されたアイテムより前のアイテムを優先的に選択
-   */
-  const selectItemAfterDeletion = (deletedKey: string, category: RecordCategoryType) => {
-    if (selectedItemKey.value !== deletedKey || category !== selectedCategory.value) {
-      return // 削除対象が選択中でない、または別カテゴリの場合は何もしない
-    }
+  /** 選択をクリア */
+  const clearSelection = () => {
+    selectedItemKey.value = null
+  }
 
-    const items = recordDataAccess.getCategoryMap(category)
-    const deletedItem = items[deletedKey]
-    const currentOrder = deletedItem?.order ?? 0
-
-    // 利用可能なアイテムを取得（削除対象を除外）
-    const availableItems = Object.entries(items)
-      .filter(([key]) => key !== deletedKey)
-      .map(([key, item]) => ({ key, order: item.order ?? 0 }))
-      .sort((a, b) => a.order - b.order)
-
-    if (availableItems.length === 0) {
+  /** 次のアイテムを選択（現在のアイテムが削除された時などに使用） */
+  const selectNextItem = () => {
+    if (!categoryArray.value || categoryArray.value.length === 0) {
       selectedItemKey.value = null
       return
     }
 
-    // 削除アイテムより小さいorder値のアイテムを探す
-    const previousItem = availableItems
-      .slice()
-      .reverse()
-      .find((item) => item.order < currentOrder)
+    const currentIndex = categoryArray.value.findIndex((item) => item.key === selectedItemKey.value)
 
-    selectedItemKey.value = previousItem?.key || availableItems[0]?.key || null
+    if (currentIndex === -1) {
+      // 現在のアイテムが見つからない場合は最初を選択
+      selectedItemKey.value = categoryArray.value[0].key
+    } else if (currentIndex < categoryArray.value.length - 1) {
+      // 次のアイテムを選択
+      selectedItemKey.value = categoryArray.value[currentIndex + 1].key
+    } else if (categoryArray.value.length > 1) {
+      // 最後のアイテムの場合は前のアイテムを選択
+      selectedItemKey.value = categoryArray.value[currentIndex - 1].key
+    } else {
+      // アイテムが1つしかない場合はクリア
+      selectedItemKey.value = null
+    }
   }
+
+  /**
+   * 初期化: commentsカテゴリの最初のアイテムを選択
+   */
+  watch(
+    () => getCategoryArray('comments'),
+    (arr) => {
+      if (arr.length > 0 && selectedItemKey.value === null) {
+        selectedItemKey.value = arr[0].key
+      }
+    },
+    { immediate: true }
+  )
 
   return {
     // 状態
     selectedCategory,
     selectedItemKey,
 
+    // 計算プロパティ
+    isCurrentRecordCategory,
+    validCategory,
+    categoryArray,
+    selectedItem,
+
     // 操作
     selectCategory,
     selectItem,
-    selectItemAfterDeletion,
+    clearSelection,
+    selectNextItem,
   }
 })

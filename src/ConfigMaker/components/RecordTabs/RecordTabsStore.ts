@@ -5,7 +5,6 @@ import { useRuleOperations } from './composables/useRuleOperations'
 import { useMultiSelect } from './composables/useMultiSelect'
 import { useContextMenu } from './composables/useContextMenu'
 import { useInlineEdit } from './composables/useInlineEdit'
-import { useDragAndDrop } from './composables/useDragAndDrop'
 
 /**
  * ルールタブ機能の統合ストア
@@ -18,9 +17,8 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   // 各種操作機能の初期化（ruleStateを一括で渡すことで依存関係を簡素化）
   const ruleOperations = useRuleOperations(ruleState)
   const multiSelect = useMultiSelect(ruleState)
-  const contextMenu = useContextMenu(ruleState)
   const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule)
-  const dragAndDrop = useDragAndDrop(ruleState)
+  const contextMenu = useContextMenu(ruleState)
 
   /**
    * コンテキストメニューのアクション統合
@@ -54,7 +52,6 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
     ...multiSelect,
     ...contextMenu,
     ...inlineEdit,
-    ...dragAndDrop,
 
     // 統合されたコンテキストメニューハンドラー
     handleContextDuplicate,
