@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\presetsImport\ImportTypes.ts
-import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryType } from '@/types/OmikujiData/'
 import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
 
 export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'

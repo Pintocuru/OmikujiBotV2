@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-  import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+  import { RecordCategoryType } from '@/types/OmikujiData/'
   import { useImportManager } from './composables/useImportManager'
   import { ImportMode } from './ImportTypes'
 

@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+  import { RecordCategoryType } from '@/types/OmikujiData/'
   import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { BaseRecordType } from '@shared/types'

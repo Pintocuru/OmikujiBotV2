@@ -1,5 +1,5 @@
 // src/ConfigMaker/script/stores/composables/useDataMergeHelpers.ts
-import { RecordCategoryDataMap, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryDataMap, RecordCategoryType } from '@/types/OmikujiData/'
 import { ImportMode } from '@config/components/presetsImport/ImportTypes'
 
 /**

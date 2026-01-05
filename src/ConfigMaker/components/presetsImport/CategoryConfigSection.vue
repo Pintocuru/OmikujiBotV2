@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CategoryType, RecordCategoryType, categoryLabels } from '@/types/OmikujiData/CategoryType'
+  import { CategoryType, RecordCategoryType, categoryLabels } from '@/types/OmikujiData/'
   import { useImportManager } from './composables/useImportManager'
   import CategoryModeSelector from './CategoryModeSelector.vue'
   import ConflictsList from './ConflictsList.vue'

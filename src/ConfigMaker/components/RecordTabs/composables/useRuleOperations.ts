@@ -1,12 +1,14 @@
 // src/configMaker/components/RecordTabs/composables/useRuleOperations.ts
-import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/'
 import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
 import Swal from 'sweetalert2'
+import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
 
 export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
+  const { selectItem } = useNavigationStore()
   const { validCategory, categoryArray, filterOptions } = ruleState
 
   const withValidCategory = <T>(callback: (category: RecordCategoryType) => T): T | void => {
@@ -23,7 +25,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     withValidCategory((category) => {
       const editorColor = filterOptions.value.colorFilter || undefined
       const newId = omikujiStore.addItem?.(category, { editorColor })
-      omikujiStore.selectItem(newId)
+      selectItem(newId)
 
       Swal.fire({
         toast: true,

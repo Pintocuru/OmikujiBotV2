@@ -1,13 +1,16 @@
-// src/ConfigMaker/script/stores/composables/useRecordDataAccess.ts
-import { Ref } from 'vue'
-import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+// src\ConfigMaker\stores\useGetRecordData.ts
+import { storeToRefs } from 'pinia'
+import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/'
+import { useOmikujiStore } from './useOmikujiStore'
 
 /**
  * レコード型カテゴリのデータアクセス機能を提供
  * 読み取り専用の操作のみを含む
  */
-export function useRecordDataAccess(data: Ref<OmikujiDataType>) {
+export function useGetRecordData() {
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+
   // 単一アイテム取得
   const getItem = <K extends RecordCategoryType>(
     category: K,

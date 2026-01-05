@@ -6,7 +6,7 @@ import {
   RecordCategoryType,
   RecordCategoryItemTypeMap,
   recordCategoryLabel,
-} from '@/types/OmikujiData/CategoryType'
+} from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
 /**

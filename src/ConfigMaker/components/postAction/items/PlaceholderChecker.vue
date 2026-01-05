@@ -33,12 +33,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
-  import { Plus, AlertCircle } from 'lucide-vue-next'
-  import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
   import { PlaceholderSchema } from '@/types/'
+  import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { Plus, AlertCircle } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -46,8 +47,7 @@
   }>()
 
   // Store
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { getCategoryMap } = useGetRecordData()
   const { isPlaceholder } = useVisibilityAccess()
 
   // プレースホルダーのパターン
@@ -73,13 +73,13 @@
 
   // 定義済みプレースホルダー
   const definedPlaceholders = computed(() => {
-    const definedPlaceholders = data.value.placeholders
+    const definedPlaceholders = getCategoryMap('placeholders')
     return allPlaceholdersInText.value.filter((id) => definedPlaceholders[id])
   })
 
   // 未定義のプレースホルダーを検出
   const undefinedPlaceholders = computed(() => {
-    const definedPlaceholders = data.value.placeholders
+    const definedPlaceholders = getCategoryMap('placeholders')
     return allPlaceholdersInText.value.filter((id) => !definedPlaceholders[id])
   })
 
@@ -91,8 +91,9 @@
 
   // アイテム選択
   const selectPlaceholderItem = (key: string) => {
-    omikujiStore.selectCategory('placeholders')
-    omikujiStore.selectItem(key)
+    const navigationStore = useNavigationStore()
+    navigationStore.selectCategory('placeholders')
+    navigationStore.selectItem(key)
   }
 
   // 新しいプレースホルダーを作成
@@ -102,7 +103,8 @@
       name: placeholderKey,
     })
 
-    omikujiStore.addItem('placeholders', parsedItem)
+    const { addItem } = useOmikujiStore()
+    addItem('placeholders', parsedItem)
     selectPlaceholderItem(placeholderKey)
   }
 </script>

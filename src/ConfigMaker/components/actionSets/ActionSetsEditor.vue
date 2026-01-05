@@ -47,6 +47,8 @@
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'omikujiSet' | null
@@ -59,17 +61,19 @@
   }
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateItem } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({
     get: () => {
       if (!selectedItemKey.value) return null
-      return data.value.actionSets[selectedItemKey.value]
+      return getItem('actionSets', selectedItemKey.value)
     },
     set: (value: ActionSetType) => {
-      omikujiStore.updateItem('actionSets', value.key, value)
+      updateItem('actionSets', value.key, value)
     },
   })
 
@@ -77,7 +81,7 @@
     get: () => selectedItem.value?.postActions || [],
     set: (newActions) => {
       if (!selectedItem.value) return
-      omikujiStore.updateItem('actionSets', selectedItem.value.key, {
+      updateItem('actionSets', selectedItem.value.key, {
         postActions: [...newActions],
       })
     },

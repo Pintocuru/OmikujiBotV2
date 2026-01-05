@@ -28,6 +28,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -37,14 +38,15 @@
     isCard?: boolean
   }>()
 
-  const omikujiStore = useOmikujiStore()
+  const { updateOmikujiByIndex, updateRecordProperty } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
 
   const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
   // 名前更新
   const updateName = (value: string) => {
     if (index.value === -1 || !props.selectedItemKey) return
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       name: value,
     }))
@@ -61,22 +63,22 @@
     }
 
     // 配列全体を更新
-    const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+    const record = getItem(props.category, props.selectedItemKey)
     if (!record?.omikuji) return
 
     const newOmikuji = [...record.omikuji]
     newOmikuji.splice(index.value + 1, 0, duplicated)
-    omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
+    updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
   }
 
   const removeOmikuji = () => {
     if (index.value === -1 || !props.selectedItemKey) return
 
-    const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+    const record = getItem(props.category, props.selectedItemKey)
     if (!record?.omikuji) return
 
     const newOmikuji = [...record.omikuji]
     newOmikuji.splice(index.value, 1)
-    omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
+    updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
   }
 </script>

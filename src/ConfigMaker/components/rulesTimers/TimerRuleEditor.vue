@@ -68,6 +68,8 @@
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'timerInterval' | 'omikujiSet' | null
@@ -79,16 +81,18 @@
   }
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateItem } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   const selectedItem = computed({
     get: () => {
       if (!selectedItemKey.value) return null
-      return data.value.timers[selectedItemKey.value]
+      return getItem('timers', selectedItemKey.value)
     },
     set: (value: TimerRuleType) => {
-      omikujiStore.updateItem('timers', value.key, value)
+      updateItem('timers', value.key, value)
     },
   })
 </script>

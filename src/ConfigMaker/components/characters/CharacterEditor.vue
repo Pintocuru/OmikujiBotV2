@@ -63,6 +63,8 @@
   import CharacterIconDisplaySettings from './service/CharacterIconDisplaySettings.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
   type SectionType = 'basicInfo' | 'colorSettings' | 'botComments' | 'serviceSettings' | 'imageSettings' | null
@@ -74,13 +76,14 @@
   }
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedItemKey } = storeToRefs(omikujiStore)
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // 選択されたキャラクターを取得（読み取り専用）
   const selectedItem = computed(() => {
     if (!selectedItemKey.value) return null
-    return data.value.characters[selectedItemKey.value]
+    return getItem('characters', selectedItemKey.value)
   })
 
   // 画像数カウント

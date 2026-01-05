@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateStrategies.ts
-import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryType } from '@/types/OmikujiData/'
 import { KeyUpdateStrategy } from './keyEditorTypes'
 import { updateRecordKey, updateCharacterKey, updatePlaceholderKey } from './keyUpdateCore'
 import {

@@ -74,13 +74,15 @@
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { Dices, Plus, X } from 'lucide-vue-next'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     category: RulesCategoryType
     selectedItemKey: string | null
   }>()
 
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
 
   // 選択されたおみくじアイテムのインデックス
   const selectedOmikujiIndex = ref<number | null>(0)
@@ -89,12 +91,12 @@
   const omikujiSets = computed({
     get: () => {
       if (!props.selectedItemKey) return []
-      const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+      const record = getItem(props.category, props.selectedItemKey)
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {
       if (!props.selectedItemKey) return
-      omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
+      updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
 
       // 選択インデックスが範囲外になったらリセット
       if (selectedOmikujiIndex.value !== null && selectedOmikujiIndex.value >= value.length) {

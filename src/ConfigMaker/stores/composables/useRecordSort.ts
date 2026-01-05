@@ -1,20 +1,15 @@
 // src/ConfigMaker/script/stores/composables/useRecordSort.ts
 import { nextTick, Ref } from 'vue'
-import { CategoryType, RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/CategoryType'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import type { useRecordDataAccess } from './useRecordDataAccess'
+import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/'
+import { OmikujiDataType } from '@/types/OmikujiData/'
 
 /**
  * レコード型アイテムの並び替え機能を提供
  */
-export function useRecordSort(
-  data: Ref<OmikujiDataType>,
-  hasChanged: Ref<boolean>,
-  recordDataAccess: ReturnType<typeof useRecordDataAccess>
-) {
+export function useRecordSort(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   // アイテムの並び替え
   const reorderItem = async <K extends RecordCategoryType>(category: K, fromIndex: number, toIndex: number) => {
-    const items = recordDataAccess.getCategoryArray(category)
+    const items = Object.values(data.value[category]).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
     const keys = items.map((item) => item.key)
 
     const [movedKey] = keys.splice(fromIndex, 1)
@@ -29,7 +24,7 @@ export function useRecordSort(
     category: K,
     updates: Array<{ key: string; newOrder: number }>
   ) => {
-    const categoryData = recordDataAccess.getCategoryMap(category)
+    const categoryData = data.value[category]
     const updatedData: Record<string, RecordCategoryItemTypeMap[K]> = {}
 
     Object.entries(categoryData).forEach(([key, item]) => {

@@ -35,7 +35,7 @@
     'update:modelValue': [value: CharacterImageType]
   }>()
 
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
   const currentImages = computed(() => props.modelValue ?? CharacterImageSetSchema.parse({}))
 
   const isDefaultFilled = computed(() => {
@@ -49,7 +49,7 @@
   const handleUpdate = (key: CharacterEmotionType, value: string[]) => {
     if (!props.selectedItemKey) return
     const newImages = { ...currentImages.value, [key]: value }
-    omikujiStore.updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
+    updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
   }
 
   const handleReset = (key: CharacterEmotionType) => {

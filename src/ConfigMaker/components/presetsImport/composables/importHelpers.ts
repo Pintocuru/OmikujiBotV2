@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
-import { RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { AccessLevelType } from '@shared/types'
 import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'

@@ -88,6 +88,7 @@
   import CopyButton from '@config/components/parts/CopyButton.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { ArrowRight } from 'lucide-vue-next'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   // Props
   const props = defineProps<{
@@ -100,9 +101,6 @@
   defineEmits<{
     click: [placeholderId: string]
   }>()
-
-  // ストアを使用
-  const omikujiStore = useOmikujiStore()
 
   // State
   const currentRandomValue = ref<string>('')
@@ -138,7 +136,8 @@
 
   // アイテム選択
   const selectPlaceholderItem = (key: string) => {
-    omikujiStore.selectCategory('placeholders')
-    omikujiStore.selectItem(key)
+    const navigationStore = useNavigationStore()
+    navigationStore.selectCategory('placeholders')
+    navigationStore.selectItem(key)
   }
 </script>

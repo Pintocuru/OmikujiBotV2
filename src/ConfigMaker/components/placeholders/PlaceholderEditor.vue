@@ -31,13 +31,14 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PlaceholderType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
   type SectionType = 'basic' | 'placeholder' | null
@@ -50,18 +51,20 @@
   }
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateItem } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // 選択されたアイテムの取得（読み取り専用）
   const selectedItem = computed({
     get: () => {
       if (!selectedItemKey.value) return null
-      return data.value.placeholders[selectedItemKey.value]
+      return getItem('placeholders', selectedItemKey.value)
     },
     set: (value) => {
       if (!selectedItemKey.value || !value) return
-      omikujiStore.updateItem('placeholders', selectedItemKey.value, value)
+      updateItem('placeholders', selectedItemKey.value, value)
     },
   })
 
@@ -73,22 +76,4 @@
       return sum + (v.weight ?? 0)
     }, 0)
   })
-
-  // プレースホルダーのプロパティ用computedを生成するヘルパー関数
-  const createPlaceholderProperty = <T,>(key: keyof PlaceholderType) => {
-    return computed({
-      get: () => {
-        if (!selectedItem.value) return '' as T
-        return selectedItem.value[key] as T
-      },
-      set: (value: T) => {
-        if (!selectedItem.value) return
-        const updatedItem = {
-          ...selectedItem.value,
-          [key]: value,
-        }
-        omikujiStore.updateItem('placeholders', selectedItem.value.key, updatedItem)
-      },
-    })
-  }
 </script>

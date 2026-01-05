@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { categoryLabels, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+  import { categoryLabels, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/'
   import { AccessLevelLabels } from '@shared/types'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
 

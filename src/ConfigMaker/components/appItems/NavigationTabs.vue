@@ -47,16 +47,16 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useCategoryUtils } from './useCategoryUtils'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useRecordTabsStore } from '../RecordTabs/RecordTabsStore'
-  import { CategoryType } from '@/types/OmikujiData/CategoryType'
+  import { CategoryType } from '@/types/OmikujiData/'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   const tabsStore = useRecordTabsStore()
-  const omikujiStore = useOmikujiStore()
+  const navigationStore = useNavigationStore()
 
-  const { selectedCategory } = storeToRefs(omikujiStore)
+  const { selectedCategory } = storeToRefs(navigationStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
   const { isPro, isGod } = useSettingMode()
 
@@ -81,6 +81,6 @@
 
   const navigateCategory = (key: CategoryType) => {
     tabsStore.resetFilterOptions()
-    omikujiStore.selectCategory(key)
+    navigationStore.selectCategory(key)
   }
 </script>

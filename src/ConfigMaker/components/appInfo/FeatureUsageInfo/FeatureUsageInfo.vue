@@ -53,7 +53,7 @@
   import ComponentChip from './ComponentChip.vue'
   import FeatureCard from './FeatureCard.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { categoryLabels } from '@/types/OmikujiData/CategoryType'
+  import { categoryLabels } from '@/types/OmikujiData/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { Package } from 'lucide-vue-next'
 

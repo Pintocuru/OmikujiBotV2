@@ -1,60 +1,47 @@
-// src/ConfigMaker/script/stores/composables/useNavigationManager.ts
-import { ref, computed } from 'vue'
-import { CategoryType, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/CategoryType'
-import { useRecordDataAccess } from './useRecordDataAccess'
+// src\ConfigMaker\stores\Navigation\useNavigationStore.ts
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { CategoryType, RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/'
+import { useGetRecordData } from './useGetRecordData'
 
 /**
- * ナビゲーション状態とカテゴリ/アイテム選択を管理
- * keyベースでの選択に統一
+ * ナビゲーションstore
  */
-export function useNavigationManager(recordDataAccess: ReturnType<typeof useRecordDataAccess>) {
+export const useNavigationStore = defineStore('navigation', () => {
+  // data取得
+  const recordDataAccess = useGetRecordData()
+
   // 状態
   const selectedCategory = ref<CategoryType>('comments')
+  // TODO:最初はnullなので、なんとかしてnullでない方法にしたい
   const selectedItemKey = ref<string | null>(null)
 
   // 計算プロパティ
-  const isRecordCategory = computed(() => recordCategoryLabel.includes(selectedCategory.value as RecordCategoryType))
+  const isRecordCategory = (category: CategoryType): category is RecordCategoryType =>
+    recordCategoryLabel.includes(category as RecordCategoryType)
 
-  const currentCategoryItems = computed(() => {
-    if (!isRecordCategory.value) return {}
-    return recordDataAccess.getCategoryMap(selectedCategory.value as RecordCategoryType)
-  })
-
-  const currentSelectedItem = computed(() => {
-    if (!selectedItemKey.value || !isRecordCategory.value) return null
-    return currentCategoryItems.value[selectedItemKey.value] || null
-  })
-
-  const orderedCategoryItems = computed(() => {
-    return Object.values(currentCategoryItems.value).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-  })
-
-  const hasItems = computed(() => orderedCategoryItems.value.length > 0)
+  const getOrderedItems = (category: RecordCategoryType) => {
+    const items = recordDataAccess.getCategoryMap(category)
+    return Object.values(items).sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  }
 
   // カテゴリ選択
   const selectCategory = (category: CategoryType) => {
     selectedCategory.value = category
 
-    if (!recordCategoryLabel.includes(category as RecordCategoryType)) {
+    if (!isRecordCategory(category)) {
       selectedItemKey.value = null
       return
     }
 
-    // 最初のアイテムを自動選択
-    const firstItem = orderedCategoryItems.value[0]
-    selectedItemKey.value = firstItem?.key || null
+    const firstItem = getOrderedItems(category)[0]
+    selectedItemKey.value = firstItem?.key ?? null
   }
 
   // アイテム選択
   const selectItem = (key: string) => {
     selectedItemKey.value = key
   }
-
-  const clearSelection = () => {
-    selectedItemKey.value = null
-  }
-
-  // アイテム削除後の選択更新
 
   /**
    * アイテム削除後に適切なアイテムを選択する
@@ -94,17 +81,9 @@ export function useNavigationManager(recordDataAccess: ReturnType<typeof useReco
     selectedCategory,
     selectedItemKey,
 
-    // 計算プロパティ
-    isRecordCategory,
-    currentCategoryItems,
-    currentSelectedItem,
-    orderedCategoryItems,
-    hasItems,
-
     // 操作
     selectCategory,
     selectItem,
-    clearSelection,
     selectItemAfterDeletion,
   }
-}
+})

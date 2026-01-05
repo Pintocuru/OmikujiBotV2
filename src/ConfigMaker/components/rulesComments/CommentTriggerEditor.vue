@@ -83,7 +83,7 @@
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
 
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof CommentTriggerType>(key: T) =>
@@ -92,7 +92,7 @@
       set: (value) => {
         if (!props.selectedItemKey) return
         const updated = { ...props.modelValue, [key]: value }
-        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'trigger', updated)
+        updateRecordProperty('comments', props.selectedItemKey, 'trigger', updated)
       },
     })
 

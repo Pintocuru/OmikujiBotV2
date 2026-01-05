@@ -110,8 +110,6 @@
     selectedItemKey: string | null
   }>()
 
-  const omikujiStore = useOmikujiStore()
-
   // 現在編集中のおみくじのインデックス
   const omikujiIndex = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
@@ -168,6 +166,7 @@
 
   // ヘルパー関数: おみくじの更新
   const updateOmikuji = (updater: (item: OmikujiItemType) => OmikujiItemType) => {
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey!, omikujiIndex.value, updater)
+    const { updateOmikujiByIndex } = useOmikujiStore()
+    updateOmikujiByIndex(props.category, props.selectedItemKey!, omikujiIndex.value, updater)
   }
 </script>

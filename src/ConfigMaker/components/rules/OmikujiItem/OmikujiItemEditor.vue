@@ -41,6 +41,7 @@
   import GameScriptsEditor from '@config/components/gameScripts/GameScriptsEditor.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     category: RulesCategoryType
@@ -49,18 +50,19 @@
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
 
   // Computed
   const allOmikujiSets = computed({
     get: () => {
       if (!props.selectedItemKey) return []
-      const record = omikujiStore.getItem(props.category, props.selectedItemKey)
+      const record = getItem(props.category, props.selectedItemKey)
       return record?.omikuji || []
     },
     set: (value: OmikujiItemType[]) => {
       if (!props.selectedItemKey) return
-      omikujiStore.updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
+      updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
     },
   })
 

@@ -16,11 +16,7 @@ import {
  * レコード型アイテムのプロパティ更新機能を提供
  * 汎用的な更新と特殊ケースの更新を含む
  */
-export function useRecordProperties(
-  data: Ref<OmikujiDataType>,
-  recordCRUD: ReturnType<typeof useRecordCRUD>,
-  recordDataAccess: ReturnType<typeof useRecordDataAccess>
-) {
+export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: ReturnType<typeof useRecordCRUD>) {
   // 汎用プロパティ更新
   const updateRecordProperty = <C extends RecordCategoryType, K extends keyof RecordCategoryItemTypeMap[C]>(
     category: C,
@@ -40,7 +36,7 @@ export function useRecordProperties(
     omikujiIndex: number,
     updater: (item: OmikujiItemType) => OmikujiItemType
   ) => {
-    const record = recordDataAccess.getItem(category, ruleKey) as RuleType
+    const record = data.value[category]?.[ruleKey] as RuleType
     if (!record?.omikuji?.[omikujiIndex]) return
 
     const updated = [...record.omikuji]
@@ -56,7 +52,7 @@ export function useRecordProperties(
     omikujiIndex: number,
     postActions: PostActionType[]
   ) => {
-    const record = recordDataAccess.getItem(category, ruleKey) as RuleType
+    const record = data.value[category]?.[ruleKey] as RuleType
     if (!record?.omikuji?.[omikujiIndex]) {
       console.error('指定されたおみくじが見つかりません')
       return

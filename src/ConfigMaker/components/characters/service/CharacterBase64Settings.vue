@@ -46,6 +46,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     selectedItemKey: string | null
@@ -56,17 +57,18 @@
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateItem } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
 
   const localData = computed<CharacterType | undefined>({
     get: () => {
       if (!props.selectedItemKey) return
-      return omikujiStore.getItem('characters', props.selectedItemKey) ?? undefined
+      return getItem('characters', props.selectedItemKey) ?? undefined
     },
 
     set: (value?: CharacterType) => {
       if (!props.selectedItemKey || !value) return
-      omikujiStore.updateItem('characters', props.selectedItemKey, value)
+      updateItem('characters', props.selectedItemKey, value)
     },
   })
 

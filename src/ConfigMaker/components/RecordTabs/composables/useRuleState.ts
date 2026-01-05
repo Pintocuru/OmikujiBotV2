@@ -1,8 +1,9 @@
 // src/configMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue'
-import { recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/CategoryType'
-import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { storeToRefs } from 'pinia'
+import { recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
+import { useNavigationStore } from '@config/stores/useNavigationStore'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
 /** フィルター設定の型定義 */
@@ -17,8 +18,9 @@ export interface FilterOptions {
  * データの取得、フィルタリング、検索機能を提供
  */
 export const useRuleState = () => {
-  const omikujiStore = useOmikujiStore()
-  const { selectedCategory } = storeToRefs(omikujiStore)
+  const navigationStore = useNavigationStore()
+  const { selectedCategory } = storeToRefs(navigationStore)
+  const { getItem, getCategoryArray } = useGetRecordData()
 
   /**
    * 基本状態
@@ -33,7 +35,7 @@ export const useRuleState = () => {
       console.warn('Invalid category selected:', selectedCategory.value)
       return undefined
     }
-    return omikujiStore.getCategoryArray(category)
+    return getCategoryArray(category)
   })
 
   /** 単一選択されているルールのID */
@@ -42,7 +44,7 @@ export const useRuleState = () => {
   /** 選択されているルールの詳細データ */
   const selectedItem = computed(() => {
     if (!validCategory.value || !selectedItemKey.value) return null
-    return omikujiStore.getItem(validCategory.value, selectedItemKey.value)
+    return getItem(validCategory.value, selectedItemKey.value)
   })
 
   /**

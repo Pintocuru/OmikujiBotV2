@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { RecordCategoryUnion } from '@/types/OmikujiData/CategoryType'
+  import { RecordCategoryUnion } from '@/types/OmikujiData/'
   import RecordTabButton from './RecordTabButton.vue'
   import RecordHoverPreview from './RecordHoverPreview.vue'
   import { useRecordTabsStore } from './RecordTabsStore'

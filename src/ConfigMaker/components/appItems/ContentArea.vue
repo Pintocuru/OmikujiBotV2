@@ -45,8 +45,8 @@
 
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
-  import { categoryLabels } from '@/types/OmikujiData/CategoryType'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { categoryLabels } from '@/types/OmikujiData/'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
   import CommentRuleEditor from '@config/components/rulesComments/CommentRuleEditor.vue'
   import TimerRuleEditor from '@config/components/rulesTimers/TimerRuleEditor.vue'
   import ActionSetsEditor from '@config/components/actionSets/ActionSetsEditor.vue'
@@ -56,6 +56,6 @@
   import AppInfoEditor from '@config/components/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@config/components/JsonMerge/JsonMergeEditor.vue'
 
-  const omikujiStore = useOmikujiStore()
-  const { selectedCategory } = storeToRefs(omikujiStore)
+  const navigationStore = useNavigationStore()
+  const { selectedCategory } = storeToRefs(navigationStore)
 </script>

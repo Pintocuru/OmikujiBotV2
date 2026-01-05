@@ -1,5 +1,7 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateCore.ts
-import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { useNavigationStore } from '@config/stores/useNavigationStore'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
+import { RecordCategoryType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
@@ -8,15 +10,20 @@ import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 export function updateRecordKey(category: RecordCategoryType, oldKey: string, newKey: string): boolean {
   try {
     const omikujiStore = useOmikujiStore()
-    const categoryMap = omikujiStore.getCategoryMap(category)
+    const { getCategoryMap } = useGetRecordData()
+    const { selectedCategory, selectedItemKey, selectItem } = useNavigationStore()
+
+    const categoryMap = getCategoryMap(category)
     const oldRecord = categoryMap[oldKey]
 
     if (!oldRecord || categoryMap[newKey]) return false
 
-    // Key更新処理
-    omikujiStore.addItem(category, { ...oldRecord, key: newKey })
     omikujiStore.removeItem(category, oldKey)
-    omikujiStore.selectItem(newKey)
+    omikujiStore.addItem(category, { ...oldRecord, key: newKey })
+
+    if (selectedCategory === category && selectedItemKey === oldKey) {
+      selectItem(newKey)
+    }
 
     return true
   } catch {
@@ -30,7 +37,10 @@ export function updateRecordKey(category: RecordCategoryType, oldKey: string, ne
 export function updateCharacterKey(oldKey: string, newKey: string): boolean {
   try {
     const omikujiStore = useOmikujiStore()
-    const characters = omikujiStore.getCategoryMap('characters')
+    const { selectedCategory, selectedItemKey, selectItem } = useNavigationStore()
+    const { getCategoryMap } = useGetRecordData()
+
+    const characters = getCategoryMap('characters')
     const character = characters[oldKey]
 
     if (!character || characters[newKey]) return false
@@ -39,8 +49,8 @@ export function updateCharacterKey(oldKey: string, newKey: string): boolean {
     omikujiStore.addItem('characters', { ...character, key: newKey })
 
     // 選択状態の更新
-    if (omikujiStore.selectedCategory === 'characters' && omikujiStore.selectedItemKey === oldKey) {
-      omikujiStore.selectItem(newKey)
+    if (selectedCategory === 'characters' && selectedItemKey === oldKey) {
+      selectItem(newKey)
     }
 
     return true
@@ -55,17 +65,21 @@ export function updateCharacterKey(oldKey: string, newKey: string): boolean {
 export function updatePlaceholderKey(oldKey: string, newKey: string): boolean {
   try {
     const omikujiStore = useOmikujiStore()
-    const placeholders = omikujiStore.getCategoryMap('placeholders')
+    const { getCategoryMap } = useGetRecordData()
+    const { selectedCategory, selectedItemKey, selectItem } = useNavigationStore()
+
+    const placeholders = getCategoryMap('placeholders')
     const placeholder = placeholders[oldKey]
 
     if (!placeholder || placeholders[newKey]) return false
 
-    const { key, ...placeholderData } = placeholder
-    omikujiStore.addItem('placeholders', { ...placeholderData, key: newKey })
-    omikujiStore.removeItem('placeholders', oldKey)
+    const { key, ...data } = placeholder
 
-    if (omikujiStore.selectedItemKey === oldKey) {
-      omikujiStore.selectItem(newKey)
+    omikujiStore.removeItem('placeholders', oldKey)
+    omikujiStore.addItem('placeholders', { ...data, key: newKey })
+
+    if (selectedCategory === 'placeholders' && selectedItemKey === oldKey) {
+      selectItem(newKey)
     }
 
     return true

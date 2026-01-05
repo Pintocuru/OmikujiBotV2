@@ -7,8 +7,8 @@
     @dblclick="handleDblClick"
   >
     <!-- 複数選択モード時のチェックボックス -->
-    <div v-if="store.isMultiSelectMode" class="pointer-events-none">
-      <input type="checkbox" :checked="store.selectedRuleIds.has(rule.key)" class="checkbox checkbox-sm" readonly />
+    <div v-if="tabsStore.isMultiSelectMode" class="pointer-events-none">
+      <input type="checkbox" :checked="tabsStore.selectedRuleIds.has(rule.key)" class="checkbox checkbox-sm" readonly />
     </div>
 
     <!-- order 判定する順番 --> 
@@ -19,13 +19,13 @@
     <!-- ルール名（インライン編集対応） -->
     <input
       v-if="isEditing"
-      :value="store.editingName"
-      @input="store.updateEditingName(($event.target as HTMLInputElement).value)"
-      @blur="store.finishInlineEdit"
-      @keyup.enter="store.finishInlineEdit"
-      @keyup.escape="store.cancelInlineEdit"
+      :value="tabsStore.editingName"
+      @input="tabsStore.updateEditingName(($event.target as HTMLInputElement).value)"
+      @blur="tabsStore.finishInlineEdit"
+      @keyup.enter="tabsStore.finishInlineEdit"
+      @keyup.escape="tabsStore.cancelInlineEdit"
       class="bg-transparent border-none outline-none text-current text-center hover:bg-base-200"
-      :ref="store.setEditInput"
+      :ref="tabsStore.setEditInput"
       @click.stop
     />
     <div v-else class="badge truncate max-w-28" :class="nameWrapperClasses">
@@ -45,25 +45,25 @@
   import { computed } from 'vue'
   import { RecordCategoryUnion } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   const props = defineProps<{
     rule: RecordCategoryUnion
   }>()
 
   // Store
-  const omikujiStore = useOmikujiStore()
+  const { selectedItemKey, selectItem } = useNavigationStore()
   const { isGod } = useSettingMode()
-  const store = useRecordTabsStore()
+  const tabsStore = useRecordTabsStore()
 
   // Computed
-  const isEditing = computed(() => store.editingRuleId === props.rule.key)
-  const isSelected = computed(() => omikujiStore.selectedItemKey === props.rule.key)
-  const isMultiSelected = computed(() => store.selectedRuleIds.has(props.rule.key))
+  const isEditing = computed(() => tabsStore.editingRuleId === props.rule.key)
+  const isSelected = computed(() => selectedItemKey === props.rule.key)
+  const isMultiSelected = computed(() => tabsStore.selectedRuleIds.has(props.rule.key))
   const getRuleEnabledState = computed(() => props.rule.isEnabled !== false)
 
-  const showDragHandle = computed(() => !store.searchQuery && !isEditing.value && !store.isMultiSelectMode)
+  const showDragHandle = computed(() => !tabsStore.searchQuery && !isEditing.value && !tabsStore.isMultiSelectMode)
 
   const tabClasses = computed(() => ({
     'tab-active bg-primary text-primary-content': isSelected.value,
@@ -71,15 +71,15 @@
     'hover:bg-base-200 hover:shadow-md': !isSelected.value && !isMultiSelected.value,
     'opacity-60': !getRuleEnabledState.value,
     'cursor-grab': showDragHandle.value,
-    'cursor-pointer': store.isMultiSelectMode,
+    'cursor-pointer': tabsStore.isMultiSelectMode,
   }))
 
   // Event Handlers
   const handleClick = (event: MouseEvent) => {
-    if (store.isMultiSelectMode) {
-      store.handleMultiSelect(props.rule.key, event)
+    if (tabsStore.isMultiSelectMode) {
+      tabsStore.handleMultiSelect(props.rule.key, event)
     } else {
-      omikujiStore.selectItem(props.rule.key)
+      selectItem(props.rule.key)
     }
   }
 
@@ -107,8 +107,8 @@
 
   // 複数選択モード時のみダブルクリックを無効化する
   const handleDblClick = () => {
-    if (!store.isMultiSelectMode) {
-      store.startInlineEdit(props.rule)
+    if (!tabsStore.isMultiSelectMode) {
+      tabsStore.startInlineEdit(props.rule)
     }
   }
 </script>

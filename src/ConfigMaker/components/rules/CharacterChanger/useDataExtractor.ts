@@ -3,6 +3,7 @@ import { computed, ComputedRef } from 'vue'
 import { RulesCategoryType, RuleType, ActionSetType, PostActionType, OmikujiItemType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { categoryLabels } from '@/types/'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 /**
  * カテゴリタイプ（rules系とactionSets）
@@ -19,7 +20,7 @@ export type ChangeScope = 'category' | 'single'
  * selectedIdがある場合は単一アイテムのみ、ない場合はカテゴリ全体を対象とする
  */
 export function useDataExtractor(category: TargetCategoryType, selectedId?: string) {
-  const omikujiStore = useOmikujiStore()
+  const { getItem, getCategoryMap, getCategoryArray } = useGetRecordData()
 
   // 変更スコープ（全体 or 単一）
   const changeScope = computed<ChangeScope>(() => (selectedId ? 'single' : 'category'))
@@ -36,7 +37,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
    */
   const allItems = computed(() => {
     if (category === 'actionSets') {
-      const actionSets = omikujiStore.data.actionSets
+      const actionSets = getCategoryMap('actionSets')
       if (selectedId) {
         const item = actionSets[selectedId]
         return item ? [item] : []
@@ -44,10 +45,10 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
       return Object.values(actionSets) as ActionSetType[]
     } else {
       if (selectedId) {
-        const item = omikujiStore.getItem(category, selectedId)
+        const item = getItem(category, selectedId)
         return item ? [item as RuleType] : []
       }
-      return omikujiStore.getCategoryArray(category) as RuleType[]
+      return getCategoryArray(category) as RuleType[]
     }
   })
 

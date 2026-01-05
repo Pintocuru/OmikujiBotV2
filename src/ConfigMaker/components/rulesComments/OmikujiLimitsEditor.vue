@@ -93,7 +93,7 @@
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
 
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof OmikujiLimitsType>(key: T) =>
@@ -102,7 +102,7 @@
       set: (value) => {
         if (!props.selectedItemKey) return
         const updatedLimits = { ...props.modelValue, [key]: value }
-        omikujiStore.updateRecordProperty('comments', props.selectedItemKey, 'limits', updatedLimits)
+        updateRecordProperty('comments', props.selectedItemKey, 'limits', updatedLimits)
       },
     })
 

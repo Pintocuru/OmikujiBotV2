@@ -30,6 +30,7 @@
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   const props = defineProps<{
     modelValue?: CharacterColorType
@@ -41,8 +42,9 @@
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateRecordProperty } = useOmikujiStore()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // 現在の色設定を取得
   const currentColor = computed(() => props.modelValue ?? CharacterColorScheme.parse({}))
@@ -51,7 +53,7 @@
   const updateColor = (updates: Partial<CharacterColorType>) => {
     if (!selectedItemKey.value) return
 
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', {
+    updateRecordProperty('characters', selectedItemKey.value, 'color', {
       ...currentColor.value,
       ...updates,
     })
@@ -61,7 +63,7 @@
   const handleColorUpdate = (newColor: CharacterColorType) => {
     if (!selectedItemKey.value) return
 
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'color', newColor)
+    updateRecordProperty('characters', selectedItemKey.value, 'color', newColor)
   }
 
   // 個別フィールド更新（カスタムクラス用）

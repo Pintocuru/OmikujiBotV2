@@ -80,6 +80,8 @@
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null
@@ -91,17 +93,19 @@
   }
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateItem } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({
     get: () => {
       if (!selectedItemKey.value) return null
-      return data.value.comments[selectedItemKey.value]
+      return getItem('comments', selectedItemKey.value)
     },
     set: (value: CommentRuleType) => {
-      omikujiStore.updateItem('comments', value.key, value)
+      updateItem('comments', value.key, value)
     },
   })
 

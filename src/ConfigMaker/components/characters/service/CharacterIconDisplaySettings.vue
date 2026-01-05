@@ -76,14 +76,16 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { playRpgVoiceLoop, rpgVoiceMap } from '@/common/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   const props = defineProps<{
     modelValue: DisplayOptionType
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
-  const { selectedItemKey } = storeToRefs(omikujiStore)
+  const { updateRecordProperty } = useOmikujiStore()
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // 現在の表示オプションを取得
   const currentDisplayOption = computed(() => props.modelValue)
@@ -93,7 +95,7 @@
     if (!selectedItemKey.value) return
 
     // storeを使って更新
-    omikujiStore.updateRecordProperty('characters', selectedItemKey.value, 'displayOption', {
+    updateRecordProperty('characters', selectedItemKey.value, 'displayOption', {
       ...currentDisplayOption.value,
       [key]: value,
     })

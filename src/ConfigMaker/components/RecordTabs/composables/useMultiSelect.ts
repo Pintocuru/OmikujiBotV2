@@ -1,12 +1,13 @@
 // src/configMaker/components/RecordTabs/composables/useMultiSelect.ts
 import { ref, watch } from 'vue'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { RecordCategoryType } from '@/types/OmikujiData/CategoryType'
+import { RecordCategoryType } from '@/types/OmikujiData/'
 import type { useRuleState } from './useRuleState'
 import { BaseRecordType, AccessLevelType } from '@shared/types'
 import { storeToRefs } from 'pinia'
 import { toast } from 'vue-sonner'
 import Swal from 'sweetalert2'
+import { useNavigationStore } from '@config/stores/useNavigationStore'
 
 /**
  * マルチセレクト機能の管理
@@ -14,7 +15,8 @@ import Swal from 'sweetalert2'
  */
 export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
-  const { selectedCategory } = storeToRefs(omikujiStore)
+  const navigationStore = useNavigationStore()
+  const { selectedCategory } = storeToRefs(navigationStore)
   const { validCategory, filteredSortedItems, isMultiSelectMode } = ruleState
 
   const selectedRuleIds = ref(new Set<string>())

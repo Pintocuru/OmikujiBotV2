@@ -119,6 +119,7 @@
   import { gameScriptMap } from '@game/GameScriptsMap'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -127,16 +128,16 @@
     selectedItemKey: string | null
   }>()
 
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+  const { data, updateOmikujiByIndex } = useOmikujiStore()
+  const { getCategoryArray } = useGetRecordData()
   const { isGod } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
 
   // Computed Properties
   const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
-  const availableGameScripts = computed(() => data.value.featureUsage.gameScripts)
+  const availableGameScripts = computed(() => data.featureUsage.gameScripts)
   const hasAvailableScripts = computed(() => availableGameScripts.value.length > 0)
-  const charactersList = computed(() => Object.values(data.value.characters))
+  const charactersList = computed(() => getCategoryArray('characters'))
   const gameScripts = computed(() => props.omikuji?.gameScripts)
   const isEnabled = computed(() => gameScripts.value !== null)
   const isGodModeActive = computed(() => !isGod.value && gameScripts.value?.scriptId === 'godMode')
@@ -154,7 +155,7 @@
   ) => {
     if (index.value === -1 || !props.selectedItemKey || !gameScripts.value) return
 
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       gameScripts: item.gameScripts
         ? { ...item.gameScripts, ...updater(item.gameScripts) }
@@ -166,7 +167,7 @@
   const toggleEnabled = () => {
     if (index.value === -1 || !props.selectedItemKey) return
 
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       gameScripts: item.gameScripts === null ? GameScriptsSchema.parse({}) : null,
     }))

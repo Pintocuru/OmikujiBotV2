@@ -1,7 +1,7 @@
 // src\ConfigMaker\components\appItems\useCategoryUtils.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { categoryLabels, CategoryType } from '@/types/OmikujiData/CategoryType'
+import { categoryLabels, CategoryType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
 import { isDev } from '@/types/'

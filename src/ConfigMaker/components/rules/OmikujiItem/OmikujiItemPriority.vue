@@ -68,7 +68,7 @@
     selectedItemKey: string | null
   }>()
 
-  const omikujiStore = useOmikujiStore()
+  const { updateOmikujiByIndex } = useOmikujiStore()
 
   const index = computed(() => {
     if (!props.omikuji) return -1
@@ -80,7 +80,7 @@
   // 優先度更新
   const updatePriority = (value: boolean) => {
     if (index.value === -1 || !props.selectedItemKey) return
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       isPriority: value,
     }))
@@ -89,7 +89,7 @@
   // criteriaのトグル
   const toggleCriteria = (enabled: boolean) => {
     if (index.value === -1 || !props.selectedItemKey) return
-    omikujiStore.updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
       ...item,
       isPriority: enabled,
       criteria: enabled ? CriteriaThresholdSchema.parse({}) : null,

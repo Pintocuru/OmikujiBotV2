@@ -45,18 +45,20 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     selectedItemKey: string
   }>()
 
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
 
-  // 現在のキャラクターデータを取得（読み取り専用）
-  const currentData = computed<CharacterType | undefined>(() => {
-    if (!props.selectedItemKey) return
-    return omikujiStore.getItem('characters', props.selectedItemKey)
+  // 現在のキャラクターデータを取得
+  const currentData = computed<CharacterType | null>(() => {
+    if (!props.selectedItemKey) return null
+    return getItem('characters', props.selectedItemKey) ?? null
   })
 
   // フィールドを個別に更新する関数
@@ -64,7 +66,7 @@
     if (!props.selectedItemKey) return
 
     // updateRecordPropertyを使用して特定のフィールドのみ更新
-    omikujiStore.updateRecordProperty('characters', props.selectedItemKey, key, value)
+    updateRecordProperty('characters', props.selectedItemKey, key, value)
   }
 
   const fields = [

@@ -5,7 +5,6 @@ import {
   PostActionType,
   BotMessage,
   OmikujiItemType,
-  OmikujiDataType,
   RuleType,
   GameScriptsType,
   isRulesCategory,
@@ -17,20 +16,24 @@ import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmi
 import { storeToRefs } from 'pinia'
 import Swal from 'sweetalert2'
 import { OmikenCommentSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { useNavigationStore } from '../stores/useNavigationStore'
+import { useGetRecordData } from '../stores/useGetRecordData'
 
 export function useTestPost() {
-  const omikujiStore = useOmikujiStore()
-  const { data, selectedCategory, selectedItemKey } = storeToRefs(omikujiStore)
+  const { getItem } = useGetRecordData()
+  const navigationStore = useNavigationStore()
+  const { selectedCategory, selectedItemKey } = storeToRefs(navigationStore)
 
   // 選択されているルールを取得（型安全性を確保）
+  // TODO:これもう少しスマートなコードにならないか
   const selectedRule = computed((): RuleType | null => {
     const key = selectedItemKey.value
     if (!key) return null
 
     if (!isRulesCategory(selectedCategory.value)) return null
-    const ruleData = data.value[selectedCategory.value]?.[key]
+    const ruleData = getItem(selectedCategory.value, key)
 
-    return ruleData ? JSON.parse(JSON.stringify(ruleData)) : null
+    return ruleData ? ruleData : null
   })
 
   // テスト投稿の遅延処理を並列実行
@@ -95,9 +98,11 @@ export function useTestPost() {
     gameScripts?: GameScriptsType | null,
     drawOmikuji?: OmikujiItemType
   ) => {
+    const omikujiStore = useOmikujiStore()
+
     const rule = selectedRule.value
     const scriptManager = new GameScriptManager()
-    const processor = new OmikujiTestProcessor(data.value as OmikujiDataType, scriptManager)
+    const processor = new OmikujiTestProcessor(omikujiStore.data, scriptManager)
 
     const mockComment = OmikenCommentSchema.parse({
       userId: 'testUserId',
