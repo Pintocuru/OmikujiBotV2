@@ -82,7 +82,7 @@
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
 
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
@@ -107,8 +107,6 @@
   // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isGod } = useSettingMode()
 
-  //
   const conditions = computed(() => data.value.components.conditions)
 </script>

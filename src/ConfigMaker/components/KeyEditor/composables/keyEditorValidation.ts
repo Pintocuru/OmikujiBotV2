@@ -1,4 +1,5 @@
 // src\ConfigMaker\components\parts\KeyEditor\keyEditorValidation.ts
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
@@ -21,13 +22,9 @@ export function validateKeyFormat(key: string): string | null {
  */
 export function validateKeyDuplication(key: string, category: RecordCategoryType, currentKey: string): string | null {
   if (key === currentKey) return null
-
-  const omikujiStore = useOmikujiStore()
-  const existingKeys = Object.keys(omikujiStore.getCategoryMap(category)).filter(
-    (existingKey) => existingKey !== currentKey
-  )
-
-  return existingKeys.includes(key) ? 'このKeyは既に使用されています' : null
+  const { getCategoryMap } = useGetRecordData()
+  const keys = Object.keys(getCategoryMap(category)).filter((key) => key !== currentKey)
+  return keys.includes(key) ? 'このKeyは既に使用されています' : null
 }
 
 /**

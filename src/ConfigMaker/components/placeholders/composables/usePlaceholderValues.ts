@@ -2,19 +2,21 @@
 import { ref, computed } from 'vue'
 import { WeightValuesArrayType, WeightValueSchema } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
 export function usePlaceholderValues(placeholderId: string) {
   // Pinia store
-  const omikujiStore = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
+  const { getCategoryMap } = useGetRecordData()
 
   // リアクティブデータ
   const localValues = ref<WeightValuesArrayType>([])
   const updateValues = () => {
-    omikujiStore.updateRecordProperty('placeholders', placeholderId, 'values', localValues.value)
+    updateRecordProperty('placeholders', placeholderId, 'values', localValues.value)
   }
 
   // 現在のプレースホルダーデータ
-  const currentPlaceholder = computed(() => omikujiStore.getCategoryMap('placeholders')[placeholderId])
+  const currentPlaceholder = computed(() => getCategoryMap('placeholders')[placeholderId])
 
   // 初期化
   const initializeValues = () => {

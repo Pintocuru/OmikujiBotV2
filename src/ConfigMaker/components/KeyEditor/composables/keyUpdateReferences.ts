@@ -1,40 +1,39 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateReferences.ts
-import { rulesCategoryLabel } from '@/types/OmikujiData/RulesSchema'
+import type { PostActionType } from '@/types/OmikujiData/'
+import { rulesCategoryLabel } from '@/types/OmikujiData/'
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
- * キャラクター参照の更新
- * PostActionArraySchemaを持つ全カテゴリ（comments, timers, actionSets）から参照を更新
+ * ルールカテゴリ（comments, timers）のpostActions更新
  */
-export function updateCharacterReferences(oldKey: string, newKey: string): void {
-  const omikujiStore = useOmikujiStore()
+function updateRuleCategoriesPostActions(updateFn: (action: PostActionType) => PostActionType): void {
+  const { updateItem } = useOmikujiStore()
+  const { getCategoryMap } = useGetRecordData()
 
-  // comments, timers内のpostActionsから参照を更新
   rulesCategoryLabel.forEach((category) => {
-    const categoryData = omikujiStore.getCategoryMap(category)
-
+    const categoryData = getCategoryMap(category)
     Object.entries(categoryData).forEach(([ruleKey, rule]) => {
       const updatedOmikuji = rule.omikuji.map((omikujiSet) => ({
         ...omikujiSet,
-        postActions: omikujiSet.postActions.map((action) => {
-          if (action.actionType !== 'message') return action
-          return action.characterKey === oldKey ? { ...action, characterKey: newKey } : action
-        }),
+        postActions: omikujiSet.postActions.map(updateFn),
       }))
-
-      omikujiStore.updateItem(category, ruleKey, { ...rule, omikuji: updatedOmikuji })
+      updateItem(category, ruleKey, { ...rule, omikuji: updatedOmikuji })
     })
   })
+}
 
-  // actionSets内のcharacterKey参照を更新
-  const actionSets = omikujiStore.getCategoryMap('actionSets')
+/**
+ * actionSetsカテゴリのpostActions更新
+ */
+function updateActionSetsPostActions(updateFn: (action: PostActionType) => PostActionType): void {
+  const { updateItem } = useOmikujiStore()
+  const { getCategoryMap } = useGetRecordData()
+  const actionSets = getCategoryMap('actionSets')
+
   Object.entries(actionSets).forEach(([actionSetKey, actionSet]) => {
-    const updatedPostActions = actionSet.postActions.map((action) => {
-      if (action.actionType !== 'message') return action
-      return action.characterKey === oldKey ? { ...action, characterKey: newKey } : action
-    })
-
-    omikujiStore.updateItem('actionSets', actionSetKey, {
+    const updatedPostActions = actionSet.postActions.map(updateFn)
+    updateItem('actionSets', actionSetKey, {
       ...actionSet,
       postActions: updatedPostActions,
     })
@@ -42,136 +41,78 @@ export function updateCharacterReferences(oldKey: string, newKey: string): void 
 }
 
 /**
+ * キャラクター参照の更新
+ */
+export function updateCharacterReferences(oldKey: string, newKey: string): void {
+  const updateFn = (action: PostActionType): PostActionType =>
+    action.actionType === 'message' && action.characterKey === oldKey ? { ...action, characterKey: newKey } : action
+
+  updateRuleCategoriesPostActions(updateFn)
+  updateActionSetsPostActions(updateFn)
+}
+
+/**
  * プレースホルダー参照の更新
- * PostActionArraySchemaを持つ全カテゴリ（comments, timers, actionSets）から参照を更新
  */
 export function updatePlaceholderReferences(oldKey: string, newKey: string): void {
-  const omikujiStore = useOmikujiStore()
+  const { updateItem } = useOmikujiStore()
+  const { getCategoryMap } = useGetRecordData()
   const oldPlaceholder = `<<${oldKey}>>`
   const newPlaceholder = `<<${newKey}>>`
   const regex = new RegExp(oldPlaceholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')
 
   // プレースホルダー内容の更新
-  const placeholders = omikujiStore.getCategoryMap('placeholders')
+  const placeholders = getCategoryMap('placeholders')
   Object.entries(placeholders).forEach(([key, placeholder]) => {
     const updatedValues = placeholder.values.map((value: any) => {
       const v = typeof value === 'string' ? { content: value, weight: 1 } : value
       return v.content.includes(oldPlaceholder) ? { ...v, content: v.content.replace(regex, newPlaceholder) } : v
     })
-    omikujiStore.updateItem('placeholders', key, { ...placeholder, values: updatedValues })
+    updateItem('placeholders', key, { ...placeholder, values: updatedValues })
   })
 
-  // ルール内のメッセージ参照更新（comments, timers）
-  rulesCategoryLabel.forEach((category) => {
-    const categoryData = omikujiStore.getCategoryMap(category)
-
-    Object.entries(categoryData).forEach(([ruleKey, rule]) => {
-      const updatedOmikuji = rule.omikuji.map((omikujiSet) => ({
-        ...omikujiSet,
-        postActions: omikujiSet.postActions.map((action) => {
-          if (action.actionType === 'message') {
-            const newAction = { ...action }
-
-            // message の bubble,toastのみ変更する
-            ;(['bubble', 'toast'] as const).forEach((field) => {
-              const value = newAction.message[field]
-              if (value?.includes(oldPlaceholder)) {
-                newAction.message[field] = value.replace(regex, newPlaceholder)
-              }
-            })
-            return newAction
-          } else if (action.actionType === 'wordParty') {
-            const newAction = { ...action }
-            const value = newAction.wordParty
-            if (value?.includes(oldPlaceholder)) {
-              newAction.wordParty = value.replace(regex, newPlaceholder)
-            }
-            return newAction
-          } else {
-            return action
-          }
-        }),
-      }))
-
-      omikujiStore.updateItem(category, ruleKey, { ...rule, omikuji: updatedOmikuji })
-    })
-  })
-
-  // actionSets内のメッセージ参照更新
-  const actionSets = omikujiStore.getCategoryMap('actionSets')
-  Object.entries(actionSets).forEach(([actionSetKey, actionSet]) => {
-    const updatedPostActions = actionSet.postActions.map((action) => {
-      const newAction = { ...action }
-
+  // postActions更新関数
+  const updateFn = (action: PostActionType): PostActionType => {
+    if (action.actionType === 'message') {
+      const newMessage = { ...action.message }
       ;(['bubble', 'toast'] as const).forEach((field) => {
-        if (newAction.actionType !== 'message') return action
-        const value = newAction.message[field]
-        if (value?.includes(oldPlaceholder)) newAction.message[field] = value.replace(regex, newPlaceholder)
+        if (newMessage[field]?.includes(oldPlaceholder)) {
+          newMessage[field] = newMessage[field]!.replace(regex, newPlaceholder)
+        }
       })
-      return newAction
-    })
+      return { ...action, message: newMessage }
+    }
+    if (action.actionType === 'wordParty' && action.wordParty.includes(oldPlaceholder)) {
+      return { ...action, wordParty: action.wordParty.replace(regex, newPlaceholder) }
+    }
+    return action
+  }
 
-    omikujiStore.updateItem('actionSets', actionSetKey, {
-      ...actionSet,
-      postActions: updatedPostActions,
-    })
-  })
+  updateRuleCategoriesPostActions(updateFn)
+  updateActionSetsPostActions(updateFn)
 }
 
 /**
  * actionSet参照の更新
- * comments/timersのpostActionsから actionSetKey を更新
- * actionSets自身の回帰参照（actionSets内のpostActionsのactionSetKey）も更新
  */
 export function updateActionSetReferences(oldKey: string, newKey: string): void {
-  const omikujiStore = useOmikujiStore()
+  const updateFn = (action: PostActionType): PostActionType => {
+    if (action.actionType !== 'actionSet') return action
 
-  // comments, timersからの参照を更新
-  rulesCategoryLabel.forEach((category) => {
-    const categoryData = omikujiStore.getCategoryMap(category)
+    const keys = Array.isArray(action.actionSetKeys) ? action.actionSetKeys : [action.actionSetKeys]
 
-    Object.entries(categoryData).forEach(([ruleKey, rule]) => {
-      const updatedOmikuji = rule.omikuji.map((omikujiSet) => ({
-        ...omikujiSet,
-        postActions: omikujiSet.postActions.map((action) => {
-          if (action.actionType !== 'actionSet') return action
+    if (!keys.some((k) => (typeof k === 'string' ? k : k.content) === oldKey)) {
+      return action
+    }
 
-          const keys = action.actionSetKeys
+    return {
+      ...action,
+      actionSetKeys: keys.map((k) =>
+        typeof k === 'string' ? (k === oldKey ? newKey : k) : k.content === oldKey ? { ...k, content: newKey } : k
+      ),
+    }
+  }
 
-          // oldKey が含まれていなければそのまま
-          if (!keys.some((k) => k === oldKey)) return action
-
-          // oldKey を newKey に置換
-          const replaced = keys.map((k) => (k === oldKey ? newKey : k))
-
-          return { ...action, actionSetKeys: replaced }
-        }),
-      }))
-
-      omikujiStore.updateItem(category, ruleKey, { ...rule, omikuji: updatedOmikuji })
-    })
-  })
-
-  // actionSets自身の回帰参照を更新
-  const actionSets = omikujiStore.getCategoryMap('actionSets')
-  Object.entries(actionSets).forEach(([actionSetKey, actionSet]) => {
-    const updatedPostActions = actionSet.postActions.map((action) => {
-      if (action.actionType !== 'actionSet') return action
-
-      const keys = action.actionSetKeys
-
-      // oldKey が含まれていなければそのまま
-      if (!keys.some((k) => k === oldKey)) return action
-
-      // oldKey を newKey に置換
-      const replaced = keys.map((k) => (k === oldKey ? newKey : k))
-
-      return { ...action, actionSetKeys: replaced }
-    })
-
-    omikujiStore.updateItem('actionSets', actionSetKey, {
-      ...actionSet,
-      postActions: updatedPostActions,
-    })
-  })
+  updateRuleCategoriesPostActions(updateFn)
+  updateActionSetsPostActions(updateFn)
 }

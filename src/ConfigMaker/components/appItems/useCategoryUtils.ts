@@ -5,21 +5,21 @@ import { categoryLabels, CategoryType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
 import { isDev } from '@/types/'
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
 export const useCategoryUtils = () => {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { getCategoryArray } = useGetRecordData()
   const { hasAccess } = useAccessChecker()
 
   /**
    * ナビゲーションのアイテム数バッジ表示
    */
   const getCategoryItemCount = (category: CategoryType): number => {
-    if (category === 'appInfo') return 0
+    if (category === 'appInfo' || category === 'components') return 0
     if (category === 'jsonMerge') return data.value.jsonMerge.length
-
-    const items = data.value[category]
-    return items ? Object.keys(items).length : 0
+    return getCategoryArray(category).length
   }
 
   /**

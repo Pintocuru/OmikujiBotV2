@@ -5,10 +5,9 @@ import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
 import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './keyEditorTypes'
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
 export function useKeyEditor() {
-  const omikujiStore = useOmikujiStore()
-
   // リアクティブ状態
   const isDialogOpen = ref(false)
   const newKey = ref('')
@@ -26,9 +25,10 @@ export function useKeyEditor() {
    */
   function getCharacterUsage(characterKey: string): CharacterUsage {
     const usage: CharacterUsage = { comments: [], timers: [] }
+    const { getCategoryMap } = useGetRecordData()
 
     ;(['comments', 'timers'] as const).forEach((category) => {
-      const categoryData = omikujiStore.getCategoryMap(category)
+      const categoryData = getCategoryMap(category)
 
       Object.entries(categoryData).forEach(([ruleKey, rule]) => {
         const hasUsage = rule.omikuji.some((omikujiSet) =>

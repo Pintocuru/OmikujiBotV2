@@ -6,13 +6,13 @@ import {
   defaultPlaceholdersShortLabels,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
 import { PlaceholderSchema, PlaceholderType, PostActionType } from '@/types/OmikujiData/'
-import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
 /**
  * プレースホルダーのデータ管理を担当するcomposable
  */
 export function usePlaceholderData(actions: Ref<PostActionType[]>) {
-  const omikujiStore = useOmikujiStore()
+  const { getCategoryArray } = useGetRecordData()
 
   // デフォルトプレースホルダーの設定
   const placeholderContentMap = new Map(Object.entries(defaultPlaceholdersShortLabels))
@@ -61,7 +61,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
 
   // 全プレースホルダーを取得してソート
   const allPlaceholders = computed(() => {
-    const customPlaceholders = omikujiStore.getCategoryArray('placeholders')
+    const customPlaceholders = getCategoryArray('placeholders')
     const placeholders = [...defaultPlaceholders.value, ...customPlaceholders]
 
     return placeholders.sort((a, b) => {
