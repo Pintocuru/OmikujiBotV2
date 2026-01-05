@@ -13,15 +13,10 @@
     <div class="flex items-center gap-3">
       <Tag class="w-4 h-4 text-base-content/50" />
       <span class="text-sm text-base-content/60">{{ meta.generatorVersion }}</span>
-      <button
-        @click="omikujiStore.openLatestRelease"
-        class="btn btn-primary btn-outline"
-        title="最新バージョンを入手する"
-      >
-        <ExternalLink class="w-4 h-4" />
-      </button>
 
-      <ExternalLinkButton v-if="omikujiStore.openLatestRelease()" :url="omikujiStore.openLatestRelease()" />
+      <ExternalLinkButton :url="openLatestRelease()" title="最新バージョンを入手する">
+        <ExternalLink class="w-4 h-4" />
+      </ExternalLinkButton>
     </div>
   </SettingItem>
 
@@ -36,11 +31,12 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import SettingItem from '@config/components/parts/SettingItem.vue'
-  import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
   import { storeToRefs } from 'pinia'
   import { Code, Settings, Tag, ExternalLink } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useVersionCheck } from '@config/components/appItems/useVersionCheck'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
 
   // Store
   const omikujiStore = useOmikujiStore()
@@ -48,4 +44,7 @@
 
   // メタ情報の参照
   const meta = computed(() => data.value.meta)
+
+  // バージョンチェック機能（URL取得のみ使用）
+  const { openLatestRelease } = useVersionCheck(meta.value.generatorVersion)
 </script>

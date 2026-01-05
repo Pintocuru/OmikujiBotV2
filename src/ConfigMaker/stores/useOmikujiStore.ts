@@ -13,7 +13,6 @@ import { useRecordProperties } from './composables/useRecordProperties'
 import { useRecordSort } from './composables/useRecordSort'
 
 import { useSettingsOperations } from './composables/useSettingsOperations'
-import { useVersionCheck } from './composables/useVersionCheck'
 import { normalizeData } from '@/common/migrations'
 
 // グローバルデータの初期化
@@ -40,7 +39,6 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   const settingsOps = useSettingsOperations(data, hasChanged)
   const navigation = useNavigationManager(recordDataAccess)
   const itemManager = useItemManager(recordDataAccess, recordCRUD, recordProperties, recordSort, navigation)
-  const versionCheck = useVersionCheck(data)
 
   return {
     // コアデータ
@@ -62,6 +60,5 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     ...settingsOps,
     ...navigation,
     ...itemManager,
-    ...versionCheck,
   }
 })

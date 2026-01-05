@@ -1,6 +1,5 @@
-// src/ConfigMaker/stores/composables/useVersionCheck.ts
-import { ref, computed, type Ref, readonly } from 'vue'
-import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+// src/ConfigMaker/composables/useVersionCheck.ts
+import { ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 
 export interface VersionInfo {
@@ -12,32 +11,35 @@ export interface VersionInfo {
   error: string | null
 }
 
-export function useVersionCheck(data: Ref<OmikujiDataType>) {
+/**
+ * バージョンチェック機能を提供する専属コンポーザブル
+ * storeに依存せず、現在のバージョンを引数で受け取る
+ */
+export function useVersionCheck(currentVersion: string) {
   const latestVersion = ref<string | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
 
-  // 現在のバージョン
-  const currentVersion = computed(() => data.value.meta.generatorVersion)
-
-  // バージョン比較
+  // バージョン比較用の正規化
   function normalizeVersion(v: string | null): string | null {
     return v ? v.trim().replace(/^v/, '') : null
   }
 
+  // 最新版かどうか
   const isLatest = computed(() => {
     if (!latestVersion.value) return true
-    return normalizeVersion(currentVersion.value) === normalizeVersion(latestVersion.value)
+    return normalizeVersion(currentVersion) === normalizeVersion(latestVersion.value)
   })
 
+  // 新バージョンが存在するか
   const hasNewVersion = computed(() => {
     if (!latestVersion.value) return false
-    return normalizeVersion(currentVersion.value) !== normalizeVersion(latestVersion.value)
+    return normalizeVersion(currentVersion) !== normalizeVersion(latestVersion.value)
   })
 
   // バージョン情報オブジェクト
   const versionInfo = computed<VersionInfo>(() => ({
-    current: currentVersion.value,
+    current: currentVersion,
     latest: latestVersion.value,
     isLatest: isLatest.value,
     hasNewVersion: hasNewVersion.value,
@@ -45,7 +47,9 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
     error: error.value,
   }))
 
-  // バージョンチェック実行
+  /**
+   * GitHubから最新バージョンをチェック
+   */
   const checkVersion = async (): Promise<void> => {
     if (isLoading.value) return // 重複実行防止
 
@@ -55,7 +59,9 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
     try {
       const res = await fetch('https://api.github.com/repos/Pintocuru/OmikujiBot-Docs/releases/latest')
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+      }
 
       const release = await res.json()
       latestVersion.value = release.tag_name?.replace(/^v/, '') || null
@@ -71,30 +77,43 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
     }
   }
 
-  // 更新通知ダイアログ表示
+  /**
+   * 更新通知ダイアログを表示
+   */
   const showUpdateDialog = () => {
-    if (versionInfo.value.hasNewVersion) {
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'info',
-        title: `新しいバージョンが利用可能です！\n現在: ${versionInfo.value.current}\n最新: ${versionInfo.value.latest}`,
-        showConfirmButton: true,
-        confirmButtonText: 'GitHubを開く',
-        timer: 15000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('click', () => {
-            window.open(openLatestRelease())
-          })
-        },
-      })
-    }
+    if (!hasNewVersion.value) return
+
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      icon: 'info',
+      title: `新しいバージョンが利用可能です！\n現在: ${versionInfo.value.current}\n最新: ${versionInfo.value.latest}`,
+      showConfirmButton: true,
+      confirmButtonText: 'GitHubを開く',
+      timer: 15000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('click', () => {
+          window.open(openLatestRelease(), '_blank')
+        })
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.open(openLatestRelease(), '_blank')
+      }
+    })
   }
 
-  const openLatestRelease = () => 'https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest'
+  /**
+   * 最新リリースページのURLを取得
+   */
+  const openLatestRelease = (): string => {
+    return 'https://github.com/Pintocuru/OmikujiBot-Docs/releases/latest'
+  }
 
-  // バージョン情報をリセット
+  /**
+   * バージョン情報をリセット
+   */
   const resetVersionCheck = () => {
     latestVersion.value = null
     error.value = null
@@ -104,12 +123,10 @@ export function useVersionCheck(data: Ref<OmikujiDataType>) {
   return {
     // 状態
     versionInfo,
-    currentVersion,
-    latestVersion: readonly(latestVersion),
     isLatest,
     hasNewVersion,
-    isLoading: readonly(isLoading),
-    error: readonly(error),
+    isLoading,
+    error,
 
     // アクション
     checkVersion,

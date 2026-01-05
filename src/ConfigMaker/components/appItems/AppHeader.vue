@@ -18,11 +18,7 @@
       <div>現在のバージョン: {{ versionInfo.current }}</div>
       <div v-if="versionInfo.isLoading" class="text-info">チェック中...</div>
       <div v-else-if="versionInfo.error" class="text-error" :title="versionInfo.error">チェック失敗</div>
-      <div
-        v-else-if="versionInfo.hasNewVersion"
-        class="text-warning cursor-pointer"
-        @click="omikujiStore.showUpdateDialog"
-      >
+      <div v-else-if="versionInfo.hasNewVersion" class="text-warning cursor-pointer" @click="showUpdateDialog">
         新版: {{ versionInfo.latest }} 🔄
       </div>
       <div v-else-if="versionInfo.latest" class="text-success">最新版 ✓</div>
@@ -31,18 +27,23 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  import { onMounted, computed } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { useVersionCheck } from './useVersionCheck'
   import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
 
   const { isAdv, isPro, isGod } = useSettingMode()
 
-  // Pinia store
+  // Pinia storeから現在のバージョンを取得
   const omikujiStore = useOmikujiStore()
-  const { versionInfo } = storeToRefs(omikujiStore)
-  const { checkVersion } = omikujiStore
+  const { data } = storeToRefs(omikujiStore)
+
+  const currentVersion = computed(() => data.value.meta.generatorVersion)
+
+  // バージョンチェック機能
+  const { versionInfo, checkVersion, showUpdateDialog } = useVersionCheck(currentVersion.value)
 
   // マウント時にバージョンチェック実行
   onMounted(() => checkVersion())
