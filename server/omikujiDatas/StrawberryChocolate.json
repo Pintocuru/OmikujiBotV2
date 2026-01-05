@@ -1,12 +1,12 @@
 {
   "meta": {
     "id": "1755337374735-01vj6j",
-    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
+    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.04-v2.0.0-beta5",
+    "version": "ver2026.01.05-v2.0.0-beta6",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta5",
-    "dataVersion": 2.0005,
+    "generatorVersion": "v2.0.0-beta6",
+    "dataVersion": 2.0006,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -19,6 +19,12 @@
   },
   "jsonMerge": [
     {
+      "0": "じ",
+      "1": "ゃ",
+      "2": "ん",
+      "3": "け",
+      "4": "ん",
+      "5": "s",
       "id": "1760544069848",
       "key": "1760544069848",
       "name": "じゃんけん",
@@ -148,11 +154,14 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T02:16:13.196Z",
+      "updatedAt": "2026-01-05T03:03:22.739Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "初見詐欺",
+        "ショコラ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -299,11 +308,14 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T15:20:36.355Z",
+      "updatedAt": "2026-01-05T03:03:41.568Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "コメント数表示"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -362,11 +374,14 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T15:26:38.231Z",
+      "updatedAt": "2026-01-05T03:03:47.408Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "ギフト",
+        "ショコラ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -428,7 +443,7 @@
       "name": "初見判定ちゃん:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T15:24:34.679Z",
+      "updatedAt": "2026-01-05T03:03:59.418Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -588,11 +603,14 @@
       "name": "コメントチェック:Chocolate",
       "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-04T15:30:52.391Z",
+      "updatedAt": "2026-01-05T03:04:08.003Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "コメントチェック"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -701,11 +719,14 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-12-06T02:52:56.980Z",
+      "updatedAt": "2026-01-05T03:04:33.712Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "閲覧数チェック",
+        "ショコラ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -779,11 +800,14 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-28T01:13:08.667Z",
+      "updatedAt": "2026-01-05T03:04:41.655Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "告知",
+        "ショコラ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -858,11 +882,15 @@
       "key": "1767539439046-od3bas",
       "name": "初見詐欺(thinking):Chocolate",
       "createdAt": "2026-01-04T15:10:39.046Z",
-      "updatedAt": "2026-01-04T15:17:22.369Z",
+      "updatedAt": "2026-01-05T03:06:04.152Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "thinking",
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -885,11 +913,14 @@
       "key": "1767539481151-kvg5to",
       "name": "初見詐欺(surprised):Chocolate",
       "createdAt": "2026-01-04T15:11:21.152Z",
-      "updatedAt": "2026-01-04T15:17:33.806Z",
+      "updatedAt": "2026-01-05T03:06:09.818Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -912,11 +943,14 @@
       "key": "1767539536508-gcvcfg",
       "name": "初見詐欺(sad):Chocolate",
       "createdAt": "2026-01-04T15:12:16.508Z",
-      "updatedAt": "2026-01-04T15:18:07.480Z",
+      "updatedAt": "2026-01-05T03:06:12.484Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -939,11 +973,14 @@
       "key": "1767539560050-xw7xfz",
       "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
       "createdAt": "2026-01-04T15:12:40.050Z",
-      "updatedAt": "2026-01-04T15:18:15.573Z",
+      "updatedAt": "2026-01-05T03:06:15.724Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -978,11 +1015,14 @@
       "key": "1767540348473-d4fev8",
       "name": "ギフト(wink):Chocolate",
       "createdAt": "2026-01-04T15:25:48.473Z",
-      "updatedAt": "2026-01-04T15:26:19.604Z",
+      "updatedAt": "2026-01-05T03:06:20.368Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "ギフト"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -1005,11 +1045,14 @@
       "key": "1767539629815-molbgp",
       "name": "初見:Chocolate",
       "createdAt": "2026-01-04T15:13:49.815Z",
-      "updatedAt": "2026-01-04T15:21:55.682Z",
+      "updatedAt": "2026-01-05T03:06:44.628Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -1037,11 +1080,14 @@
       "key": "1767540169384-b2waaw",
       "name": "久しぶり:Chocolate",
       "createdAt": "2026-01-04T15:22:49.384Z",
-      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "updatedAt": "2026-01-05T03:06:47.424Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -1064,11 +1110,14 @@
       "key": "1767540201946-kvrx6s",
       "name": "こんにちは:Chocolate",
       "createdAt": "2026-01-04T15:23:21.946Z",
-      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "updatedAt": "2026-01-05T03:06:49.990Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -1091,11 +1140,14 @@
       "key": "1767540543495-x0of51",
       "name": "配信枠コメント50回:Chocolate",
       "createdAt": "2026-01-04T15:29:03.495Z",
-      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "updatedAt": "2026-01-05T03:07:06.767Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "コメントチェック"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {
@@ -1118,11 +1170,14 @@
       "key": "1767540577897-8ne654",
       "name": "個人コメント100回:Chocolate",
       "createdAt": "2026-01-04T15:29:37.897Z",
-      "updatedAt": "2026-01-04T15:30:22.065Z",
+      "updatedAt": "2026-01-05T03:07:14.189Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "コメントチェック"
+      ],
       "accessLevel": "basic",
       "postActions": [
         {

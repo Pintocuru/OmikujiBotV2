@@ -1,38 +1,50 @@
 <!-- src\ConfigMaker\components\JsonMerge\JsonMergeEditor.vue -->
 <template>
-  <SectionCard
-    icon="Merge"
-    :isOpen="true"
-    title="JSONマージ"
-    description="ビルド時、jsonファイルをマージして出力します"
-  >
-    <div class="space-y-4">
-      <!-- マージ設定がない場合のメッセージ -->
-      <div v-if="merge.length === 0" class="text-gray-500 text-center py-8">
-        <NoParamsCard message="マージ設定がありません。" sub="下のボタンから追加してください。" />
+  <!-- マージ設定がない場合のメッセージ -->
+  <template v-if="merge.length === 0">
+    <NoParamsCard message="マージ設定がありません。" sub="下のボタンから追加してください。" />
+  </template>
+
+  <!-- 各マージ設定 -->
+  <template v-for="(item, i) in merge" :key="i">
+    <SectionCard
+      icon="Merge"
+      :title="merge[i].name"
+      description="ビルド時、jsonファイルをマージして出力します"
+      :subTitle="merge[i].accessLevel === 'pro' ? 'pro' : merge[i].accessLevel === 'adv' ? 'adv' : 'basic'"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-semibold text-lg"></h3>
+        <button @click="removeMerge(i)" class="btn btn-sm btn-error" title="この設定を削除">削除</button>
       </div>
 
-      <!-- 各マージ設定 -->
-      <div v-for="(item, i) in merge" :key="i" class="border rounded-lg p-4 bg-base-100">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="font-semibold text-lg">{{ merge[i].name }}</h3>
-          <button @click="removeMerge(i)" class="btn btn-sm btn-error" title="この設定を削除">削除</button>
-        </div>
-
-        <div class="space-y-4">
-          <!-- 基本設定セクション -->
-          <BaseSettingsEditor
-            :model-value="merge[i]"
+      <!-- 基本設定セクション -->
+      <div class="space-y-4">
+        <!-- ルール名 -->
+        <SettingItem label="ルール名" description="識別しやすい名前">
+          <input
+            type="text"
+            v-model="merge[i].name"
             @update:model-value="updateBaseSettings(i, $event)"
-            :category="null"
-            :isKey="false"
-            :isIsEnabled="false"
-            :isDescription="false"
+            class="input w-full"
           />
+        </SettingItem>
 
-          <!-- ファイル選択 & キーサフィックス -->
-          <JsonMergeSourceFileSelector :merge-index="i" />
-        </div>
+        <!-- DaisyUIテーマ -->
+        <SettingItem label="アクセスレベル" description="ライセンスキーがこのレベル以上ならマージします">
+          <select
+            :value="merge[i].accessLevel"
+            @change="updateBaseSettings(i, $event)"
+            class="select select-bordered w-full max-w-xs"
+          >
+            <option v-for="theme in AccessLevelLabels" :key="theme" :value="theme">
+              {{ theme }}
+            </option>
+          </select>
+        </SettingItem>
+
+        <!-- ファイル選択 & キーサフィックス -->
+        <JsonMergeSourceFileSelector :merge-index="i" />
 
         <!-- リマップ設定 -->
         <div class="mt-4">
@@ -52,11 +64,11 @@
           />
         </div>
       </div>
+    </SectionCard>
+  </template>
 
-      <!-- マージ設定追加ボタン -->
-      <button @click="addMerge" class="btn btn-primary w-full">+ マージ設定を追加</button>
-    </div>
-  </SectionCard>
+  <!-- マージ設定追加ボタン -->
+  <button @click="addMerge" class="btn btn-primary w-full">+ マージ設定を追加</button>
 </template>
 
 <script setup lang="ts">
@@ -70,6 +82,8 @@
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { AccessLevelLabels } from '@shared/types'
 
   const store = useOmikujiStore()
   const { data } = storeToRefs(store)

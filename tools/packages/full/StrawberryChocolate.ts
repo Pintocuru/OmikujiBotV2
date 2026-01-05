@@ -42,16 +42,12 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
       pro: {
         filesToCopy: [
           { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
     },
   }

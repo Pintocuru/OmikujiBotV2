@@ -48,9 +48,8 @@ const packageRoot = process.env.PACKAGE_ROOT
  */
 const buildTargets: BuildTarget[] = [
   /**
-   * core - 常にWebpackビルドが必要
+   * core : エディターを更新したら必ずビルドする
    */
-  // { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
   { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
 
   /**
@@ -61,6 +60,8 @@ const buildTargets: BuildTarget[] = [
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   */
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 
   /**
    * full
