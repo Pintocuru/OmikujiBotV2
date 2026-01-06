@@ -29,6 +29,10 @@ export default defineConfig(() => {
     },
     // チェックレベルに応じた追加設定
     build: {
+      lib: { entry: path.resolve(__dirname, 'src/MainPlugin/plugin.ts'), formats: ['es'], fileName: () => 'plugin.js' },
+      target: 'node18',
+      outDir: 'dist-plugin',
+      emptyOutDir: true,
       rollupOptions:
         checkLevel === 'production'
           ? {

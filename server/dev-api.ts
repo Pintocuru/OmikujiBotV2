@@ -22,23 +22,43 @@ function logMiddleware(req: Request, res: Response, next: NextFunction): void {
 
 // ルート設定
 function setupRoutes(app: Application): void {
-  // ファイル一覧取得
-  app.get('/api/dev-configs/list', handleListFiles)
+  app.get('/api', async (req, res) => {
+    const action = req.query.action
 
-  // ファイル保存
-  app.post('/api/dev-configs/save', handleSaveFile)
+    switch (action) {
+      case 'list':
+        return handleListFiles(req, res)
 
-  // assets/omikujiData.jsにおみくじデータ保存
-  app.post('/api/dev-configs/save-omikuji', handleSaveOmikuji)
+      case 'load':
+        // fileName を params に詰め替える
+        req.params = { fileName: req.query.fileName as string }
+        return handleLoadFile(req, res)
 
-  // ファイル読み込み
-  app.get('/api/dev-configs/load/:fileName', handleLoadFile)
+      case 'health':
+        return handleHealthCheck(req, res)
 
-  // ファイル削除
-  app.delete('/api/dev-configs/delete/:fileName', handleDeleteFile)
+      default:
+        return res.status(400).json({ error: 'Unknown action' })
+    }
+  })
 
-  // ヘルスチェック
-  app.get('/api/dev-configs/health', handleHealthCheck)
+  app.post('/api', async (req, res) => {
+    const action = req.body.action
+
+    switch (action) {
+      case 'save':
+        return handleSaveFile(req, res)
+
+      case 'save-omikuji':
+        return handleSaveOmikuji(req, res)
+
+      case 'delete':
+        return handleDeleteFile(req, res)
+
+      default:
+        return res.status(404).json({ error: 'Unknown action' })
+    }
+  })
 }
 
 // 開発用APIサーバーを起動
@@ -56,7 +76,6 @@ export function startDevApiServer(): Server | null {
   app.use(cors())
   app.use(express.json({ limit: '10mb' }))
   app.use(logMiddleware)
-
   // ルート設定
   setupRoutes(app)
 

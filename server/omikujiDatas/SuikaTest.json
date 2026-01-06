@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-alpha2",
-    "dataVersion": 2.00002,
+    "generatorVersion": "v2.0.0-beta7",
+    "dataVersion": 2.0007,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -46,7 +46,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "LenormandOracleFirst"
+              "actionSetKeys": [
+                "LenormandOracleFirst"
+              ]
             },
             {
               "delaySeconds": 3.5,
@@ -55,7 +57,8 @@
               "iconKey": "default",
               "sound": "collect",
               "message": {
-                "bubble": "<<user>>さんは<<LenormandOracle>>"
+                "bubble": "<<user>>さんは<<LenormandOracle>>",
+                "isToast": false
               }
             }
           ],
@@ -70,18 +73,12 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "おみくじ"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -130,18 +127,12 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "すいか"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -190,18 +181,12 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "おみくじ"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -250,20 +235,14 @@
         "conditions": [
           "gift"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [
           "blue"
         ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "くじら"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -312,20 +291,14 @@
         "conditions": [
           "gift"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [
           "lightBlue"
         ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "くじら"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -374,7 +347,7 @@
         "conditions": [
           "gift"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [
           "yellow",
@@ -384,15 +357,9 @@
           "orange",
           "green"
         ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "くじら"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -443,24 +410,76 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "おみくじ"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null
+      }
+    },
+    "1767675900177-k9nc6g": {
+      "id": "1767675900177-k9nc6g",
+      "key": "1767675900177-k9nc6g",
+      "name": "",
+      "createdAt": "2026-01-06T05:05:00.177Z",
+      "updatedAt": "2026-01-06T05:05:00.177Z",
+      "order": 8,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1767675895552",
+          "key": "1767675895552",
+          "name": "",
+          "createdAt": "2026-01-06T05:04:55.552Z",
+          "updatedAt": "2026-01-06T05:04:55.552Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "",
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "<<user>>さんの運勢は【大吉】",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": null,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      },
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": [
+          "おみくじ"
+        ]
       }
     }
   },
@@ -1390,10 +1409,13 @@
       "ranking"
     ],
     "bubble": {
-      "showCharacters": [
-        [],
-        []
-      ],
+      "showCharacters": {
+        "center": [],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "forest",
@@ -1424,7 +1446,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "scriptKey": "GouseiSuika",
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "🍉スイカランキング🍉",
       "limit": 5,
       "sortOrder": "high",
@@ -1463,7 +1487,7 @@
     ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "basic"
     }
   },
   "settings": {

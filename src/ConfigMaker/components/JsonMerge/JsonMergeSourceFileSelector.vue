@@ -36,6 +36,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { devConfigApi } from '@/ConfigMaker/dev/services/apiService'
 
   const props = defineProps<{
     mergeIndex: number
@@ -54,15 +55,8 @@
   // JSONファイルリストを取得
   onMounted(async () => {
     try {
-      const apiUrl = 'http://localhost:3001/api/dev-configs/list'
-
-      const res = await fetch(apiUrl)
-      if (res.ok) {
-        const files = await res.json()
-        jsonFiles.value = files.map((f: any) => f.name || f)
-      } else {
-        console.error('API Error:', res.status, res.statusText)
-      }
+      const files = await devConfigApi.getFileList()
+      jsonFiles.value = files.map((f) => f.name)
     } catch (err) {
       console.error('JSONファイル取得エラー:', err)
     }

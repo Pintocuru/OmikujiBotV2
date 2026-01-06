@@ -10,6 +10,7 @@
     "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
     "lintLevel2:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "vitest run game",
+    "build:omikujiBotPlugin": "vite build --config vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx tools/build.ts"
   },
   "author": "Pintocuru(せすじピンとしてます)",
