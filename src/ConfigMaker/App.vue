@@ -4,8 +4,8 @@
     <!-- タイトル -->
     <AppHeader />
 
-    <!-- 開発者用プリセット管理 -->
-    <component :is="devToolsComponent" v-if="devToolsComponent" />
+    <!-- プリセット管理 -->
+    <PresetTool v-if="isPreset" />
 
     <!-- 設定読み込み・書き出し -->
     <div class="flex justify-between">
@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-  import { markRaw, onMounted, ref } from 'vue'
+  import { onMounted, ref } from 'vue'
   import { isDev } from '@/types/'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
@@ -56,23 +56,16 @@
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import { storeToRefs } from 'pinia'
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
-  import { useDevStore } from './dev/stores/useDevStore'
   import { devConfigApi } from './dev/services/apiService'
+  import PresetTool from '@config/dev/DevConfigs.vue'
 
   // stores
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const isPreset = ref<boolean>(false) // TODO:どこかのstoreに入れておいて state.isServerConnected があるぞ
 
   // インポートマネージャー
   const importManager = useImportManager()
-
-  // 開発者ツール
-  const devToolsComponent = ref<any | null>(null)
-  if (isDev) {
-    import('@config/dev/DevConfigs.vue').then((mod) => {
-      devToolsComponent.value = markRaw(mod.default)
-    })
-  }
 
   // assets の omikujiData.js を開く
   const openLocalOmikujiData = () => {
@@ -82,12 +75,11 @@
   // スクロール動作
   useScrollBehavior()
 
-  //
   onMounted(async () => {
+    // プラグインのデフォルト設定を読み込む
     const isHealth = await devConfigApi.getHealth()
-
     if (isHealth) {
-      // プラグインのデフォルト設定を読み込む
+      isPreset.value = true
       const lowData = await devConfigApi.loadGeneratorConfig()
       if (lowData) {
         omikujiStore.loadData(lowData)

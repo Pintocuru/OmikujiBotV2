@@ -31,7 +31,7 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     // 状態
-    data: readonly(data),
+    data,
     loadData,
     ...botMessageActions,
     cooldownManager,

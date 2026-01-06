@@ -2,7 +2,7 @@
 <template>
   <div class="flex gap-2">
     <!-- Dev jsonファイルの保存(Server利用) -->
-    <div v-if="isDev && saveFileName">
+    <div v-if="saveFileName">
       <button
         @click="() => devStore.overwriteConfig(saveFileName)"
         class="btn btn-warning tooltip tooltip-top"
