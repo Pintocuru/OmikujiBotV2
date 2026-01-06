@@ -23,7 +23,7 @@ export async function Requestplugin(req: PluginRequest): Promise<PluginResponse>
         break
 
       case 'save-generator':
-        result = await handlers.saveFileHandler('generator', body.data, true)
+        result = await handlers.saveFileHandler('generator.json', body.data, true)
         break
 
       case 'save-omikuji':

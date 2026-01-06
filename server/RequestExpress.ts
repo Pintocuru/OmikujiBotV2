@@ -17,7 +17,7 @@ export function setupRoutes(app: Application): void {
       }
 
       case 'load-generator':
-        return sendHandlerResult(res, () => handlers.loadFileHandler('generator', true))
+        return sendHandlerResult(res, () => handlers.loadFileHandler('generator.json', true))
 
       case 'health':
         return sendHandlerResult(res, handlers.healthCheckHandler)
