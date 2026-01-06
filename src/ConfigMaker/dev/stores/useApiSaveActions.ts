@@ -9,6 +9,11 @@ export function useSaveActions(
   state: DevConfigStateType,
   handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigStateType) => Promise<any>
 ) {
+  // サーバチェック
+  const checkServer = async (): Promise<boolean> => {
+    return await devConfigApi.getHealth()
+  }
+
   // ファイル一覧取得
   const fetchFileList = async () => {
     const files = await devConfigApi.getFileList()
@@ -47,6 +52,43 @@ export function useSaveActions(
       })
 
       omikujiStore.resetChangeState()
+      state.isServerConnected.value = true
+      return null
+    }, 'isSaving')
+  }
+
+  // ジェネレーターに保存
+  const saveToGenerator = async () => {
+    const result = await Swal.fire({
+      icon: 'info',
+      title: 'ジェネレーターに保存',
+      text: '現在の設定をジェネレーター用として保存しますか？',
+      showCancelButton: true,
+      confirmButtonText: '保存',
+      cancelButtonText: 'キャンセル',
+    })
+
+    if (!result.isConfirmed) return
+
+    const omikujiStore = useOmikujiStore()
+
+    return await handleAsyncAction(async () => {
+      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      await devConfigApi.saveGeneratorConfig(configData)
+      await fetchFileList()
+
+      // 成功トースト
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: '保存完了',
+        text: 'ジェネレーター用設定を保存しました',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      })
+
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
@@ -129,10 +171,33 @@ export function useSaveActions(
     }, 'isSaving')
   }
 
+  // APIモード切り替え
+  const toggleApiMode = () => {
+    // TODO:ping打ってサーバ確認してから作業を行うこと
+
+    devConfigApi.toggleApiMode()
+    state.isExpressMode.value = !state.isExpressMode.value
+
+    const modeName = state.isExpressMode.value ? 'Express (DEV)' : 'Plugin'
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      icon: 'info',
+      title: 'APIモード切り替え',
+      text: `${modeName} モードに切り替えました`,
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    })
+  }
+
   return {
+    checkServer,
     saveConfigAutoName,
     saveConfig,
+    saveToGenerator,
     overwriteConfig,
     overwriteOmikujiData,
+    toggleApiMode,
   }
 }

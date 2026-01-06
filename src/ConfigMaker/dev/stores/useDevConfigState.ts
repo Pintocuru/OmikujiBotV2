@@ -1,11 +1,15 @@
 // src/configMaker/dev/stores/useDevConfigState.ts
 import { ref, reactive } from 'vue'
 import { FileItem } from '../devTypes'
+import { isDev } from '@/types'
 
 export function useDevConfigState() {
   // ファイル関連
   const saveFileName = ref('')
   const availableFiles = ref<FileItem[]>([])
+
+  // APIモード（開発環境ではExpressモードがデフォルト、本番環境ではPluginのみ）
+  const isExpressMode = ref(isDev)
 
   // ローディング状態
   const isSaving = ref(false)
@@ -23,6 +27,7 @@ export function useDevConfigState() {
   return {
     saveFileName,
     availableFiles,
+    isExpressMode,
     isSaving,
     isLoading,
     isDeleting,

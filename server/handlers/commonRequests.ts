@@ -1,4 +1,4 @@
-// server/handlers/commonHandlers.ts
+// server/handlers/commonRequests.ts
 import { getFileList, saveFile, saveOmikujiData, loadFile, deleteFile } from '../fileService.js'
 
 // 共通の結果型
@@ -23,7 +23,7 @@ export async function listFilesHandler(): Promise<HandlerResult> {
   }
 }
 
-export async function saveFileHandler(fileName: string, data: string): Promise<HandlerResult> {
+export async function saveFileHandler(fileName: string, data: string, isRoot?: boolean): Promise<HandlerResult> {
   try {
     if (!fileName || !data) {
       return { code: 400, data: { error: 'fileName and data are required' } }
@@ -33,7 +33,7 @@ export async function saveFileHandler(fileName: string, data: string): Promise<H
       return { code: 400, data: { error: 'Invalid file name' } }
     }
 
-    await saveFile(fileName, data)
+    await saveFile(fileName, data, isRoot)
     console.info(`💾 Saved config file: ${fileName}`)
     return { code: 200, data: { message: 'File saved successfully', fileName } }
   } catch (error) {
@@ -42,16 +42,13 @@ export async function saveFileHandler(fileName: string, data: string): Promise<H
   }
 }
 
-export async function saveOmikujiHandler(
-  configData: string,
-  mode: 'plugin' | 'express' = 'plugin'
-): Promise<HandlerResult> {
+export async function saveOmikujiHandler(configData: string, isExpress?: boolean): Promise<HandlerResult> {
   try {
     if (!configData) {
       return { code: 400, data: { error: 'configData is required' } }
     }
 
-    await saveOmikujiData(configData, mode)
+    await saveOmikujiData(configData, isExpress)
     console.info('🎋 Saved omikuji data to assets/omikujiData.js')
     return {
       code: 200,
@@ -63,7 +60,7 @@ export async function saveOmikujiHandler(
   }
 }
 
-export async function loadFileHandler(fileName: string): Promise<HandlerResult> {
+export async function loadFileHandler(fileName: string, isRoot?: boolean): Promise<HandlerResult> {
   try {
     if (!fileName) {
       return { code: 400, data: { error: 'fileName is required' } }
@@ -73,7 +70,7 @@ export async function loadFileHandler(fileName: string): Promise<HandlerResult> 
       return { code: 400, data: { error: 'Invalid file name' } }
     }
 
-    const data = await loadFile(fileName)
+    const data = await loadFile(fileName, isRoot)
     console.info(`📖 Loaded config file: ${fileName}`)
     return { code: 200, data }
   } catch (error: any) {
@@ -107,7 +104,7 @@ export async function deleteFileHandler(fileName: string): Promise<HandlerResult
   }
 }
 
-export function healthCheckHandler(): HandlerResult {
+export async function healthCheckHandler(): Promise<HandlerResult> {
   return {
     code: 200,
     data: { status: 'OK', message: 'API is running' },

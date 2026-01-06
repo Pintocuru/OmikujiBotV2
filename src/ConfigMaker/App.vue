@@ -1,6 +1,6 @@
 <!-- src/configMaker/App.vue -->
 <template>
-  <div class="p-4 max-w-6xl pb-32 overflow-x-hidden mx-auto" :data-theme="data.settings.daisyUiTheme">
+  <div class="p-4 max-w-6xl pb-32 overflow-x-hidden mx-auto space-y-4" :data-theme="data.settings.daisyUiTheme">
     <!-- タイトル -->
     <AppHeader />
 
@@ -19,9 +19,9 @@
     <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
     <div v-if="isDev && Object.keys(data.comments).length === 0" class="hero bg-base-200 min-h-screen">
       <div class="hero-content text-center">
-        <div class="max-w-md">
+        <div class="max-w-md space-y-4">
           <h1 class="text-5xl font-bold">Welcome to <br />"Dev World..."</h1>
-          <p class="py-6">
+          <p>
             おまえが長く深淵を覗くならば、<br />
             深淵もまた等しくおまえを見返すのだ。<br />
             …で、どうやって君はこのコメントを見つけたんだ？

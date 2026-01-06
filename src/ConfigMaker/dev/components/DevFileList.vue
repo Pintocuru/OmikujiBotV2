@@ -7,7 +7,7 @@
       </div>
 
       <!-- 13件以上ある場合、残りを展開できる -->
-      <div v-if="devStore.availableFiles.length > MAX_VISIBLE" class="text-center mt-2">
+      <div v-if="(isDev || isPro) && devStore.availableFiles.length > MAX_VISIBLE" class="text-center mt-2">
         <button class="btn btn-xs btn-outline" @click="toggleExpand">
           {{ showAll ? '隠す' : `さらに表示（${devStore.availableFiles.length - MAX_VISIBLE}件）` }}
         </button>
@@ -30,13 +30,16 @@
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import DevFileItem from './DevFileItem.vue'
   import { formatFileDate } from '../services/devConfigUtils'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { isDev } from '@/types'
 
   const devStore = useDevStore()
-  const MAX_VISIBLE = 12
+  const { isPro } = useSettingMode()
+  const MAX_VISIBLE = computed(() => (isDev || isPro.value ? 9 : 3))
   const showAll = ref(false)
 
   const displayedFiles = computed(() =>
-    showAll.value ? devStore.availableFiles : devStore.availableFiles.slice(0, MAX_VISIBLE)
+    showAll.value ? devStore.availableFiles : devStore.availableFiles.slice(0, MAX_VISIBLE.value)
   )
 
   const toggleExpand = () => {

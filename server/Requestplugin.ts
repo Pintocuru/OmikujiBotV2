@@ -1,8 +1,8 @@
-// server/pluginRequestHandler.ts（簡潔に）
+// server/Requestplugin.ts
 import { PluginRequest, PluginResponse } from '@onecomme.com/onesdk/types/Plugin'
-import * as handlers from './handlers/commonHandlers.js'
+import * as handlers from './handlers/commonRequests.js'
 
-export async function handlePluginRequest(req: PluginRequest): Promise<PluginResponse> {
+export async function Requestplugin(req: PluginRequest): Promise<PluginResponse> {
   try {
     const action = req.params?.action
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body ?? {})
@@ -22,6 +22,10 @@ export async function handlePluginRequest(req: PluginRequest): Promise<PluginRes
         result = await handlers.saveFileHandler(body.fileName, body.data)
         break
 
+      case 'save-generator':
+        result = await handlers.saveFileHandler('generator', body.data, true)
+        break
+
       case 'save-omikuji':
         result = await handlers.saveOmikujiHandler(body.configData)
         break
@@ -30,12 +34,16 @@ export async function handlePluginRequest(req: PluginRequest): Promise<PluginRes
         result = await handlers.loadFileHandler(req.params.fileName || body.fileName)
         break
 
+      case 'load-generator':
+        result = await handlers.loadFileHandler('generator', true)
+        break
+
       case 'delete':
         result = await handlers.deleteFileHandler(req.params.fileName || body.fileName)
         break
 
       case 'health':
-        result = handlers.healthCheckHandler()
+        result = await handlers.healthCheckHandler()
         break
 
       default:

@@ -1,16 +1,9 @@
-// server/dev-api.ts
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\server\dev-api.ts
 import express, { Request, Response, Application, NextFunction } from 'express'
 import cors from 'cors'
 import { Server } from 'http'
-import { CONFIG_DIR } from './fileService.js'
-import {
-  handleListFiles,
-  handleSaveFile,
-  handleSaveOmikuji,
-  handleLoadFile,
-  handleDeleteFile,
-  handleHealthCheck,
-} from './routeHandlers.js'
+import { CONFIG_DIR } from './fileService'
+import { setupRoutes } from './RequestExpress'
 
 let server: Server | null = null
 
@@ -20,50 +13,8 @@ function logMiddleware(req: Request, res: Response, next: NextFunction): void {
   next()
 }
 
-// ルート設定
-function setupRoutes(app: Application): void {
-  app.get('/api', async (req, res) => {
-    const action = req.query.action
-
-    switch (action) {
-      case 'list':
-        return handleListFiles(req, res)
-
-      case 'load':
-        // fileName を params に詰め替える
-        req.params = { fileName: req.query.fileName as string }
-        return handleLoadFile(req, res)
-
-      case 'health':
-        return handleHealthCheck(req, res)
-
-      default:
-        return res.status(400).json({ error: 'Unknown action' })
-    }
-  })
-
-  app.post('/api', async (req, res) => {
-    const action = req.body.action
-
-    switch (action) {
-      case 'save':
-        return handleSaveFile(req, res)
-
-      case 'save-omikuji':
-        return handleSaveOmikuji(req, res)
-
-      case 'delete':
-        return handleDeleteFile(req, res)
-
-      default:
-        return res.status(404).json({ error: 'Unknown action' })
-    }
-  })
-}
-
 // 開発用APIサーバーを起動
 export function startDevApiServer(): Server | null {
-  // 既にサーバーが起動している場合はスキップ
   if (server) {
     console.log('⚠️ Dev API server is already running')
     return server
@@ -76,6 +27,7 @@ export function startDevApiServer(): Server | null {
   app.use(cors())
   app.use(express.json({ limit: '10mb' }))
   app.use(logMiddleware)
+
   // ルート設定
   setupRoutes(app)
 

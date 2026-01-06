@@ -1,39 +1,40 @@
 // src/configMaker/dev/devTypes.ts
-import { Ref } from 'vue';
+import { Ref } from 'vue'
 
 export interface DevConfigStateType {
- saveFileName: Ref<string>;
- availableFiles: Ref<FileItem[]>;
- isSaving: Ref<boolean>;
- isLoading: Ref<boolean>;
- isDeleting: Ref<boolean>;
- isLoadingFileList: Ref<boolean>;
- isExecutingConfirm: Ref<boolean>;
- isServerConnected: Ref<boolean>;
- isDeletingFileMap: Map<string, boolean>;
+  saveFileName: Ref<string>
+  availableFiles: Ref<FileItem[]>
+  isExpressMode: Ref<boolean>
+  isSaving: Ref<boolean>
+  isLoading: Ref<boolean>
+  isDeleting: Ref<boolean>
+  isLoadingFileList: Ref<boolean>
+  isExecutingConfirm: Ref<boolean>
+  isServerConnected: Ref<boolean>
+  isDeletingFileMap: Map<string, boolean>
 }
 
 export interface FileItem {
- name: string;
- displayName: string;
- modified: string;
+  name: string
+  displayName: string
+  modified: string
 }
 
 export interface DevConfigsState {
- // ファイル関連
- saveFileName: string;
- availableFiles: FileItem[];
+  // ファイル関連
+  saveFileName: string
+  availableFiles: FileItem[]
 
- // ローディング状態
- isSaving: boolean;
- isLoading: boolean;
- isDeleting: boolean;
- isLoadingFileList: boolean;
- isExecutingConfirm: boolean;
+  // ローディング状態
+  isSaving: boolean
+  isLoading: boolean
+  isDeleting: boolean
+  isLoadingFileList: boolean
+  isExecutingConfirm: boolean
 
- // 接続状態
- isServerConnected: boolean;
+  // 接続状態
+  isServerConnected: boolean
 
- // 個別のファイル削除状態を管理
- isDeletingFileMap: Map<string, boolean>;
+  // 個別のファイル削除状態を管理
+  isDeletingFileMap: Map<string, boolean>
 }
