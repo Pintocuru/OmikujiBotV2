@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-  import { markRaw, ref } from 'vue'
+  import { markRaw, onMounted, ref } from 'vue'
   import { isDev } from '@/types/'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
@@ -56,6 +56,8 @@
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import { storeToRefs } from 'pinia'
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
+  import { useDevStore } from './dev/stores/useDevStore'
+  import { devConfigApi } from './dev/services/apiService'
 
   // stores
   const omikujiStore = useOmikujiStore()
@@ -79,4 +81,20 @@
 
   // スクロール動作
   useScrollBehavior()
+
+  //
+  onMounted(async () => {
+    const isHealth = await devConfigApi.getHealth()
+
+    if (isHealth) {
+      // プラグインのデフォルト設定を読み込む
+      const lowData = await devConfigApi.loadGeneratorConfig()
+      if (lowData) {
+        omikujiStore.loadData(lowData)
+        return
+      }
+    }
+    // 見つからないなら omikujiData.js を開く
+    if (!isDev) omikujiStore.loadData(window.omikujiData)
+  })
 </script>

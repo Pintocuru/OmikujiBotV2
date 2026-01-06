@@ -14,6 +14,10 @@ export function useDevConfigActions(state: DevConfigStateType) {
   const saveActions = useSaveActions(state, handleAsyncAction)
   const loadActions = useLoadActions(state, handleAsyncAction)
 
+  const setSaveFileName = (name: string = '') => {
+    state.saveFileName.value = name
+  }
+
   // 状態リセット
   const resetState = () => {
     // ファイル関連
@@ -39,6 +43,7 @@ export function useDevConfigActions(state: DevConfigStateType) {
     ...fileActions,
     ...saveActions,
     ...loadActions,
+    setSaveFileName,
     resetState,
   }
 }

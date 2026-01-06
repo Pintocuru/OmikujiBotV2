@@ -43,7 +43,7 @@ export function setupRoutes(app: Application): void {
 
       case 'save-generator': {
         const { data } = req.body
-        return sendHandlerResult(res, () => handlers.saveFileHandler('generator', data, true))
+        return sendHandlerResult(res, () => handlers.saveFileHandler('generator.json', data, true))
       }
 
       case 'save-omikuji': {

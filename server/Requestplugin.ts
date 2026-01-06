@@ -35,7 +35,7 @@ export async function Requestplugin(req: PluginRequest): Promise<PluginResponse>
         break
 
       case 'load-generator':
-        result = await handlers.loadFileHandler('generator', true)
+        result = await handlers.loadFileHandler('generator.json', true)
         break
 
       case 'delete':

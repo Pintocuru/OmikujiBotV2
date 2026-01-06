@@ -6,7 +6,7 @@
       <DevHeader />
 
       <!-- 読み込みセクション -->
-      <DevFileList />
+      <DevFileList v-if="isPro || isDev" />
 
       <!-- 接続ステータス -->
       <div class="text-xs flex items-center text-primary-content gap-2">
@@ -18,7 +18,6 @@
               ? '開発サーバー接続中…'
               : 'プラグインサーバー接続中…'
         }}</span>
-        <span v-if="!isDev && !isPro"> PRO 版では全件表示できます（通常/Adv 版は最新 3 件まで）</span>
       </div>
     </div>
   </div>

@@ -22,24 +22,22 @@ export function useSaveActions(
     return files
   }
 
-  // 日付ファイル名で保存
-  const saveConfigAutoName = async () => {
-    const fileName = generateDateFileName()
-    await saveConfig(fileName)
-  }
-
   // 名前指定で保存
-  const saveConfig = async (fileName: string) => {
+  const saveConfig = async (fileName: string): Promise<boolean> => {
     const omikujiStore = useOmikujiStore()
     const trimmedFileName = fileName.trim()
-    if (!trimmedFileName) return
+    if (!trimmedFileName) return false
 
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
-      await devConfigApi.saveConfig(trimmedFileName, configData)
+      const res = await devConfigApi.saveConfig(trimmedFileName, configData)
+
+      if (!res) {
+        throw new Error('設定の保存に失敗しました')
+      }
+
       await fetchFileList()
 
-      // 成功トースト（右下）
       Swal.fire({
         toast: true,
         position: 'bottom-end',
@@ -53,7 +51,8 @@ export function useSaveActions(
 
       omikujiStore.resetChangeState()
       state.isServerConnected.value = true
-      return null
+
+      return true
     }, 'isSaving')
   }
 
@@ -193,7 +192,6 @@ export function useSaveActions(
 
   return {
     checkServer,
-    saveConfigAutoName,
     saveConfig,
     saveToGenerator,
     overwriteConfig,

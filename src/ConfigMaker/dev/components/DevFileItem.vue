@@ -25,7 +25,7 @@
     <div class="flex gap-1 ml-2 flex-shrink-0">
       <!-- 置き換え -->
       <button
-        @click="devStore.loadConfig(file.name)"
+        @click="devStore.applyConfigFile(file.name)"
         :disabled="devStore.isLoading || devStore.isAnyLoading"
         class="btn btn-xs btn-primary tooltip tooltip-bottom"
         data-tip="この設定を読み込む"

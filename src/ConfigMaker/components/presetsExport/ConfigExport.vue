@@ -11,7 +11,7 @@
         :disabled="!hasChanged || !saveFileName"
       >
         <Save class="w-4 h-4" />
-        {{ saveFileName.replace('.json', '') || 'ないよ' }} の保存
+        {{ saveFileName.replace('.json', '') }} の保存
       </button>
     </div>
 

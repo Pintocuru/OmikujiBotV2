@@ -1,7 +1,6 @@
 // src/ConfigMaker/stores/useOmikujiStore.ts
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { isDev } from '@/types/env'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/'
 import { useDataIO } from './composables/useDataIO'
 import { useDataMerge } from './composables/useDataMerge'
@@ -9,71 +8,45 @@ import { useRecordCRUD } from './composables/useRecordCRUD'
 import { useRecordProperties } from './composables/useRecordProperties'
 import { useRecordSort } from './composables/useRecordSort'
 import { useSettingsOperations } from './composables/useSettingsOperations'
-import { normalizeData } from '@/common/migrations'
-
-// グローバルデータの初期化
-const rawData = window.omikujiData || {}
-const omikujiData = normalizeData(rawData) // マイグレーション（バージョン更新を含む）
 
 /**
  * おみくじデータの中心的なstore
- *
- * 責務:
- * - コアデータの管理（data, hasChanged）
- * - データIO（読み込み・保存・エクスポート）
- * - データマージ
- * - 基本的なレコード操作（ナビゲーション連携なし）
- * - 設定操作
  */
 export const useOmikujiStore = defineStore('omikuji', () => {
-  // ==========================================
   // コアデータ
-  // ==========================================
-  const data = ref<OmikujiDataType>(!isDev ? omikujiData : OmikujiDataSchema.parse({}))
+  const data = ref<OmikujiDataType>(OmikujiDataSchema.parse({}))
 
   // 変更追跡
   const hasChanged = ref(false)
   const resetChangeState = () => (hasChanged.value = false)
 
-  // ==========================================
   // データIO・マージ
-  // ==========================================
   const dataIO = useDataIO(data)
   const dataMerge = useDataMerge(data, hasChanged)
 
-  // ==========================================
   // レコード操作（基本版・ナビゲーション連携なし）
-  // ==========================================
   const recordCRUD = useRecordCRUD(data, hasChanged)
   const recordProperties = useRecordProperties(data, recordCRUD)
   const recordSort = useRecordSort(data, hasChanged)
 
-  // ==========================================
   // 設定操作
-  // ==========================================
   const settingsOps = useSettingsOperations(data, hasChanged)
 
   return {
-    // ==========================================
     // コアデータ
-    // ==========================================
     data,
     hasChanged,
     resetChangeState,
 
-    // ==========================================
     // データIO・マージ
-    // ==========================================
     loadData: dataIO.loadData,
     safeValidateData: dataIO.safeValidateData,
     exportData: dataIO.exportData,
     mergeDataSets: dataMerge.mergeDataSets,
 
-    // ==========================================
     // レコード操作（基本版）
     // カテゴリとkeyを明示的に指定する必要がある
     // 💡 UI連携版は useRecordStore を使用
-    // ==========================================
 
     // CRUD操作（低レベルAPI）
     addItem: recordCRUD.addItem,
@@ -98,9 +71,8 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     batchUpdateOrder: recordSort.batchUpdateOrder,
     reorderItem: recordSort.reorderItem,
 
-    // ==========================================
     // 設定操作
-    // ==========================================
+
     updateJsonMerge: settingsOps.updateJsonMerge,
     updateComponentsConditions: settingsOps.updateComponentsConditions,
     updateNestedComponents: settingsOps.updateNestedComponents,

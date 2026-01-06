@@ -1,47 +1,71 @@
 // src/configMaker/dev/services/apiService.ts
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosError } from 'axios'
 import { isDev, SERVER_EXPRESS_URL, SERVER_PLUGIN_URL } from '@/types'
 import type { FileItem } from '../devTypes'
-import { PluginResponse } from '@onecomme.com/onesdk/types/Plugin'
 
-// ちゃんと正しい型で返っているか
-function normalizeApiResponse<T>(raw: any): { code: number; data: T } {
+// ============================================================================
+// 型定義
+// ============================================================================
+
+interface NormalizedResponse<T> {
+  code: number
+  data: T
+}
+
+type ApiAction = 'health' | 'list' | 'save' | 'load' | 'load-generator' | 'delete' | 'save-omikuji' | 'save-generator'
+
+// ============================================================================
+// ユーティリティ関数
+// ============================================================================
+
+/**
+ * APIレスポンスを正規化
+ */
+function normalizeApiResponse<T>(raw: any): NormalizedResponse<T> {
   if (raw && typeof raw === 'object' && 'code' in raw && 'response' in raw) {
     return {
       code: raw.code,
       data: JSON.parse(raw.response) as T,
     }
   }
-
   throw new Error('APIレスポンス形式が不正です')
 }
 
 /**
- * レスポンスがわんコメ形式かどうかを判定
+ * ファイル名に .json 拡張子を確実に付与
  */
-function isPluginResponse(data: any): data is PluginResponse {
-  return data && typeof data === 'object' && 'code' in data && 'response' in data
+function ensureJsonExtension(fileName: string): string {
+  return fileName.endsWith('.json') ? fileName : `${fileName}.json`
 }
 
 /**
- * APIレスポンスを統一形式にパース
- * わんコメ形式の場合はresponseをパースし、Express形式の場合はそのまま返す
+ * エラーメッセージマップ
  */
-function parseApiResponse<T>(data: any): T {
-  if (isPluginResponse(data)) {
-    return JSON.parse(data.response)
-  }
-  return data
+const ERROR_MESSAGES: Record<string, string> = {
+  list: 'ファイル一覧の取得に失敗しました',
+  'save-omikuji': 'おみくじデータの保存に失敗しました',
+  'save-generator': 'ジェネレーター設定の保存に失敗しました',
+  save: '設定の保存に失敗しました',
+  load: '設定の読み込みに失敗しました',
+  'load-generator': '設定の読み込みに失敗しました',
+  delete: '設定ファイルの削除に失敗しました',
 }
 
 /**
- * わんコメ形式のレスポンスコードをチェック
+ * URLからエラーメッセージを取得
  */
-function validatePluginResponse(data: any, errorMessage: string): void {
-  if (isPluginResponse(data) && data.code !== 200) {
-    throw new Error(`${errorMessage} (code: ${data.code})`)
+function getErrorMessage(url: string, status: number): string {
+  for (const [key, message] of Object.entries(ERROR_MESSAGES)) {
+    if (url.includes(key)) {
+      return `${message} (${status})`
+    }
   }
+  return `APIリクエストに失敗しました (${status})`
 }
+
+// ============================================================================
+// メインクラス
+// ============================================================================
 
 export class DevConfigApiService {
   private client: AxiosInstance
@@ -52,6 +76,10 @@ export class DevConfigApiService {
     this.client = this.createClient()
   }
 
+  // --------------------------------------------------------------------------
+  // プライベートメソッド
+  // --------------------------------------------------------------------------
+
   /**
    * Axiosクライアントを作成
    */
@@ -60,9 +88,7 @@ export class DevConfigApiService {
 
     const client = axios.create({
       baseURL,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     })
 
     this.setupErrorInterceptor(client)
@@ -70,17 +96,16 @@ export class DevConfigApiService {
   }
 
   /**
-   * エラーハンドリング用インターセプターの設定
+   * エラーハンドリング用インターセプター
    */
   private setupErrorInterceptor(client: AxiosInstance): void {
     client.interceptors.response.use(
       (response) => response,
-      (error) => {
+      (error: AxiosError) => {
         if (error.response) {
           const status = error.response.status
-          const url = error.config.url || ''
-          const message = this.getErrorMessage(url, status)
-          throw new Error(message)
+          const url = error.config?.url || ''
+          throw new Error(getErrorMessage(url, status))
         }
 
         if (error.request) {
@@ -93,41 +118,46 @@ export class DevConfigApiService {
   }
 
   /**
-   * URLとステータスコードからエラーメッセージを生成
+   * GET リクエストの共通処理
    */
-  private getErrorMessage(url: string, status: number): string {
-    const errorMap: Record<string, string> = {
-      list: 'ファイル一覧の取得に失敗しました',
-      'save-omikuji': 'おみくじデータの保存に失敗しました',
-      save: '設定の保存に失敗しました',
-      load: '設定の読み込みに失敗しました',
-      delete: '設定ファイルの削除に失敗しました',
-    }
-
-    for (const [key, message] of Object.entries(errorMap)) {
-      if (url.includes(key)) {
-        return `${message} (${status})`
-      }
-    }
-
-    return `APIリクエストに失敗しました (${status})`
+  private async get<T>(action: ApiAction, additionalParams: Record<string, any> = {}): Promise<NormalizedResponse<T>> {
+    const { data } = await this.client.get('', {
+      params: { action, ...additionalParams },
+    })
+    return normalizeApiResponse<T>(data)
   }
 
   /**
-   * Ping
+   * POST リクエストの共通処理
+   */
+  private async post<T>(action: ApiAction, body: Record<string, any>): Promise<NormalizedResponse<T>> {
+    const { data } = await this.client.post('', { action, ...body }, { params: { action } })
+    return normalizeApiResponse<T>(data)
+  }
+
+  /**
+   * レスポンスコードをチェック
+   */
+  private validateResponse(response: NormalizedResponse<any>, errorMessage: string): void {
+    if (response.code !== 200) {
+      throw new Error(`${errorMessage} (code: ${response.code})`)
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // パブリックメソッド
+  // --------------------------------------------------------------------------
+
+  /**
+   * ヘルスチェック
    */
   async getHealth(): Promise<boolean> {
-    const { data } = await this.client.get('', {
-      params: { action: 'health' },
-    })
-
-    const normalized = normalizeApiResponse<any>(data)
-    return normalized.code === 200
+    const response = await this.get<any>('health')
+    return response.code === 200
   }
 
   /**
    * APIモードを切り替え（Express ⇔ わんコメプラグイン）
-   * 開発環境でのみ使用可能
    */
   toggleApiMode(): void {
     if (!isDev) return
@@ -142,13 +172,9 @@ export class DevConfigApiService {
    * ファイル一覧を取得
    */
   async getFileList(): Promise<FileItem[]> {
-    const { data } = await this.client.get('', {
-      params: { action: 'list' },
-    })
+    const response = await this.get<any[]>('list')
 
-    const normalized = normalizeApiResponse<any[]>(data)
-
-    return normalized.data.map((file) => ({
+    return response.data.map((file) => ({
       name: file.name,
       displayName: file.name.replace('.json', ''),
       modified: file.modified,
@@ -158,113 +184,83 @@ export class DevConfigApiService {
   /**
    * 設定ファイルを保存
    */
-  async saveConfig(fileName: string, configData: string): Promise<void> {
-    const finalFileName = fileName.endsWith('.json') ? fileName : `${fileName}.json`
+  async saveConfig(fileName: string, configData: string): Promise<string> {
+    const finalFileName = ensureJsonExtension(fileName)
 
-    const { data } = await this.client.post(
-      '',
-      {
-        action: 'save',
-        fileName: finalFileName,
-        data: configData,
-      },
-      {
-        params: { action: 'save' },
+    const response = await this.post('save', {
+      fileName: finalFileName,
+      data: configData,
+    })
+
+    this.validateResponse(response, '設定の保存に失敗しました')
+
+    return finalFileName
+  }
+
+  /**
+   * 設定ファイルをロード
+   */
+  async loadConfig(fileName: string): Promise<any> {
+    try {
+      const response = await this.get('load', { fileName })
+
+      this.validateResponse(response, '設定の読み込みに失敗しました')
+
+      return response.data
+    } catch (err: any) {
+      if (err.response?.status === 404) {
+        throw new Error('設定ファイルが見つかりませんでした (404)')
       }
-    )
-
-    const normalized = normalizeApiResponse<any>(data)
-
-    if (normalized.code !== 200) {
-      throw new Error(`設定の保存に失敗しました (code: ${normalized.code})`)
+      throw new Error('設定の読み込み中に通信エラーが発生しました')
     }
   }
 
   /**
-   * 設定ファイルを読み込み
+   * Generatorファイルを読み込み（存在しない場合は null を返す）
    */
-  async loadConfig(fileName: string): Promise<any> {
-    const { data } = await this.client.get('', {
-      params: { action: 'load', fileName },
-    })
+  async loadGeneratorConfig(): Promise<any | null> {
+    try {
+      const response = await this.get('load-generator')
 
-    const normalized = normalizeApiResponse<any>(data)
+      if (response.code === 404) {
+        return null
+      }
 
-    if (normalized.code !== 200) {
-      throw new Error(`設定の読み込みに失敗しました (code: ${normalized.code})`)
+      this.validateResponse(response, '設定の読み込みに失敗しました')
+
+      return response.data
+    } catch (error: any) {
+      if (error?.response?.status === 404) {
+        return null
+      }
+      throw error
     }
-
-    return normalized.data
   }
 
   /**
    * 設定ファイルを削除
    */
   async deleteConfig(fileName: string): Promise<void> {
-    const { data } = await this.client.post(
-      '',
-      {
-        action: 'delete',
-        fileName,
-      },
-      {
-        params: { action: 'delete' },
-      }
-    )
-
-    const normalized = normalizeApiResponse<any>(data)
-
-    if (normalized.code !== 200) {
-      throw new Error(`設定ファイルの削除に失敗しました (code: ${normalized.code})`)
-    }
+    const response = await this.post('delete', { fileName })
+    this.validateResponse(response, '設定ファイルの削除に失敗しました')
   }
 
   /**
    * おみくじデータを保存
    */
   async saveOmikujiData(configData: string): Promise<any> {
-    const { data } = await this.client.post(
-      '',
-      {
-        action: 'save-omikuji',
-        configData,
-      },
-      {
-        params: { action: 'save-omikuji' },
-      }
-    )
-
-    const normalized = normalizeApiResponse<any>(data)
-
-    if (normalized.code !== 200) {
-      throw new Error(`おみくじデータの保存に失敗しました (code: ${normalized.code})`)
-    }
-
-    return normalized.data
+    const response = await this.post('save-omikuji', { configData })
+    this.validateResponse(response, 'おみくじデータの保存に失敗しました')
+    return response.data
   }
 
   /**
    * ジェネレーター用設定を保存
    */
   async saveGeneratorConfig(configData: string): Promise<any> {
-    const { data } = await this.client.post(
-      '',
-      {
-        action: 'save-generator',
-        data: configData,
-      },
-      {
-        params: { action: 'save-generator' },
-      }
-    )
-
-    const normalized = normalizeApiResponse<any>(data)
-
-    if (normalized.code !== 200) {
-      throw new Error(`ジェネレーター設定の保存に失敗しました (code: ${normalized.code})`)
-    }
-
-    return normalized.data
+    const response = await this.post('save-generator', { data: configData })
+    this.validateResponse(response, 'ジェネレーター設定の保存に失敗しました')
+    return response.data
   }
 }
 

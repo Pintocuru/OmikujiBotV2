@@ -8,7 +8,7 @@ export function useLoadActions(
   handleAsyncAction: (action: () => Promise<any>, loadingKey: keyof DevConfigStateType) => Promise<any>
 ) {
   // 設定読み込み
-  const loadConfig = async (fileName: string) => {
+  const applyConfigFile = async (fileName: string) => {
     const omikujiStore = useOmikujiStore()
     return await handleAsyncAction(async () => {
       const configData = await devConfigApi.loadConfig(fileName)
@@ -25,6 +25,6 @@ export function useLoadActions(
   }
 
   return {
-    loadConfig,
+    applyConfigFile,
   }
 }

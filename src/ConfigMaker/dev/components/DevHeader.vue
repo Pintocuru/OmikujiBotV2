@@ -16,8 +16,32 @@
     </div>
 
     <div class="flex items-center gap-2">
+      <template v-if="!isExpressMode">
+        <button
+          @click="loadFromGenerator"
+          :disabled="devStore.isSaving"
+          class="btn btn-secondary btn-sm tooltip tooltip-top"
+          data-tip="ジェネレーターの設定を読み込む"
+        >
+          <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
+          <Download class="w-4 h-4 mr-2" />
+          ジェネレーターから読み込み
+        </button>
+
+        <button
+          @click="devStore.saveToGenerator"
+          :disabled="devStore.isSaving"
+          class="btn btn-primary btn-sm tooltip tooltip-top"
+          data-tip="ジェネレーター用設定として保存"
+        >
+          <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
+          <Save class="w-4 h-4 mr-2" />
+          ジェネレーターに保存
+        </button>
+      </template>
+
       <button
-        v-if="isExpressMode"
+        v-else
         @click="devStore.overwriteOmikujiData"
         :disabled="devStore.isSaving"
         class="btn btn-primary btn-sm tooltip tooltip-top"
@@ -29,19 +53,8 @@
       </button>
 
       <button
-        v-else
-        @click="devStore.saveToGenerator"
-        :disabled="devStore.isSaving"
-        class="btn btn-primary btn-sm tooltip tooltip-top"
-        data-tip="ジェネレーター用設定として保存"
-      >
-        <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
-        <Save class="w-4 h-4 mr-2" />
-        ジェネレーターに保存
-      </button>
-
-      <button
-        @click="devStore.saveConfigAutoName"
+        v-if="isPro || isDev"
+        @click="saveConfigAutoName"
         :disabled="devStore.isSaving"
         class="btn btn-success btn-sm tooltip tooltip-bottom"
         data-tip="現在の設定を日付ファイル名で保存"
@@ -55,14 +68,19 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types'
-  import { useDevStore } from '@config/dev/stores/useDevStore'
-  import { Save } from 'lucide-vue-next'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { isDev } from '@/types'
+  import { devConfigApi } from '../services/apiService'
+  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { Download, Save } from 'lucide-vue-next'
   import Swal from 'sweetalert2'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { generateDateFileName } from '../services/devConfigUtils'
 
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)
+  const { isPro } = useSettingMode()
 
   const toggleApiMode = async () => {
     const isServer = await devStore.checkServer()
@@ -83,5 +101,57 @@
         color: '#b30000',
       })
     }
+  }
+
+  const loadFromGenerator = async () => {
+    try {
+      const { loadData } = useOmikujiStore()
+      const data = await devConfigApi.loadGeneratorConfig()
+
+      if (!data) {
+        Swal.fire({
+          toast: true,
+          position: 'bottom-end',
+          icon: 'warning',
+          title: 'ジェネレーター設定が見つかりません',
+          text: 'generator.json が存在しませんでした',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+        })
+        return
+      }
+      // ファイル読み込み
+      devStore.setSaveFileName() // ファイル名をクリア
+      loadData(data)
+
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'success',
+        title: 'ジェネレーター設定を読み込みました',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      })
+    } catch (error) {
+      Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        icon: 'error',
+        title: '読み込みに失敗しました',
+        text: String(error),
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      })
+    }
+  }
+
+  // 日付ファイル名で保存 > 即開く
+  const saveConfigAutoName = async () => {
+    const fileName = generateDateFileName()
+    await devStore.saveConfig(fileName)
+    await devStore.applyConfigFile(fileName)
   }
 </script>
