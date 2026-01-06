@@ -31,6 +31,7 @@
   import { useRuleProcessor } from '@main/scripts/RuleProcess/RuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
+  import { devConfigApi } from '@/ConfigMaker/dev/services/apiService'
 
   // Pinia Store
   const appStore = useAppStore()
@@ -53,8 +54,15 @@
     })
     appStore.setInitialized(isInit)
 
-    // タイマー開始
     if (isInit) {
+      // プラグインのデフォルト設定を読み込む
+      const isHealth = await devConfigApi.getHealth()
+      if (isHealth) {
+        const lowData = await devConfigApi.loadGeneratorConfig()
+        if (lowData) appStore.loadData(lowData)
+      }
+
+      // タイマー開始
       startTimers((messages) => appStore.scheduleBotMessages(messages))
     }
   })

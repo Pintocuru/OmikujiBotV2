@@ -1,7 +1,7 @@
 // src\MainGenerator\stores\useAppStore.ts
-import { computed, ref } from 'vue'
+import { computed, readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
-import { OmikujiDataSchema, OmikujiDataType } from '@/types/'
+import { OmikujiDataType } from '@/types/'
 import { useBotMessageActions } from './useBotMessageActions'
 import { CooldownManager } from '@main/stores/CooldownManager/CooldownManager'
 import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
@@ -10,12 +10,16 @@ import { normalizeData } from '@/common/migrations'
 
 // グローバルデータの初期化
 const { omikujiData: rawOmikujiData } = window
-const migratedData = normalizeData(rawOmikujiData)
-const omikujiData = OmikujiDataSchema.parse(migratedData)
+const omikujiData = normalizeData(rawOmikujiData)
 
 export const useAppStore = defineStore('app', () => {
   // ref
   const data = ref<OmikujiDataType>(omikujiData)
+
+  const loadData = (newData: OmikujiDataType) => {
+    console.log('[appStore] loadData', newData)
+    data.value = normalizeData(newData)
+  }
 
   // botMessage
   const botMessageActions = useBotMessageActions()
@@ -27,7 +31,8 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     // 状態
-    data,
+    data: readonly(data),
+    loadData,
     ...botMessageActions,
     cooldownManager,
     userVisitManager,
