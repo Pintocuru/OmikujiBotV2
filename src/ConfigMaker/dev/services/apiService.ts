@@ -1,12 +1,12 @@
 // src/configMaker/dev/services/apiService.ts
 import axios, { AxiosInstance } from 'axios'
 import type { FileItem } from '../devTypes'
-import { isDev } from '@/types'
+import { isDev, SERVER_EXPRESS_URL, SERVER_PLUGIN_URL } from '@/types'
 
 /**
  * APIレスポンスの型定義
  */
-interface WankommeResponse<T = any> {
+interface WankommeResponse {
   code: number
   response: string // JSON文字列
 }
@@ -35,11 +35,8 @@ export class DevConfigApiService {
 
   constructor() {
     // 開発環境では自前Expressサーバー、本番環境ではわんコメプラグイン
-    // TODO: 'dist' の箇所は適宜変更してください
-    this.isExpressMode = false // isDev
-    const baseURL = this.isExpressMode
-      ? 'http://localhost:3001/api'
-      : 'http://localhost:11180/api/plugins/OmikujiBotPluginPlus'
+    this.isExpressMode = isDev
+    const baseURL = this.isExpressMode ? SERVER_EXPRESS_URL : SERVER_PLUGIN_URL
 
     this.client = axios.create({
       baseURL,

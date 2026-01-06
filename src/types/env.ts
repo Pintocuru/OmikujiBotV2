@@ -12,3 +12,9 @@ export const getImagePath = (profileImage?: string) => {
  * developer mode
  */
 export const isDev = import.meta.env?.VITE_IS_DEV === 'true'
+
+/**
+ * プラグイン
+ */
+export const SERVER_PLUGIN_URL = 'http://localhost:11180/api/plugins/OmikujiBotPluginPlus'
+export const SERVER_EXPRESS_URL = 'http://localhost:3001/api'

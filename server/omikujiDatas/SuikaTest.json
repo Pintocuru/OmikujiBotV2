@@ -423,64 +423,6 @@
         "isRepeatAllowed": 0,
         "repeatMessage": null
       }
-    },
-    "1767675900177-k9nc6g": {
-      "id": "1767675900177-k9nc6g",
-      "key": "1767675900177-k9nc6g",
-      "name": "",
-      "createdAt": "2026-01-06T05:05:00.177Z",
-      "updatedAt": "2026-01-06T05:05:00.177Z",
-      "order": 8,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "1767675895552",
-          "key": "1767675895552",
-          "name": "",
-          "createdAt": "2026-01-06T05:04:55.552Z",
-          "updatedAt": "2026-01-06T05:04:55.552Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "",
-              "iconKey": "default",
-              "sound": "",
-              "message": {
-                "bubble": "<<user>>さんの運勢は【大吉】",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      },
-      "trigger": {
-        "conditions": [
-          "comment"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
-      }
     }
   },
   "timers": {},

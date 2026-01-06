@@ -9,8 +9,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 // ディレクトリ設定
-export const CONFIG_DIR = path.join(__dirname, 'omikujiDatas')
-export const ASSETS_DIR = path.join(__dirname, '..', 'assets')
+const CONFIG_DIR = path.join(__dirname, 'omikujiDatas')
+const ASSETS_DIR = path.join(__dirname, '..', 'assets')
+const ROOT_DIR = path.join(__dirname)
 
 // ディレクトリを作成（存在しない場合）
 export async function ensureConfigDir(): Promise<void> {
@@ -65,11 +66,12 @@ export async function saveFile(fileName: string, data: string): Promise<void> {
 }
 
 // おみくじデータをJSファイルとして保存
-export async function saveOmikujiData(configData: string): Promise<void> {
+export async function saveOmikujiData(configData: string, mode: 'plugin' | 'express' = 'plugin'): Promise<void> {
   await ensureAssetsDir()
   const jsContent = generateJsContent(configData)
+  const dir = mode === 'plugin' ? ROOT_DIR : ASSETS_DIR
 
-  const filePath = path.join(ASSETS_DIR, 'omikujiData.js')
+  const filePath = path.join(dir, 'omikujiData.js')
   await fs.writeFile(filePath, jsContent, 'utf8')
 }
 
