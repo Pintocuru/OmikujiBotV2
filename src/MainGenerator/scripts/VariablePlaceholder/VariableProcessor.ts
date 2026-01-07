@@ -1,9 +1,9 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import {
+  CALC_PATTERN,
   RAND_PATTERN,
   RESERVED_KEYS,
-  SELECT_PATTERN,
   VAR_DECLARATION_PATTERN,
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
@@ -18,14 +18,14 @@ export interface ProcessResult {
 
 /**
  * 変数プレースホルダー処理エンジン
- * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{select(opt1,opt2,...)}}を処理
+ * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{calc varName op= expr}}を処理
  */
 export class VariablePlaceholderProcessor {
   constructor(private evaluator: ExpressionEvaluator) {}
 
   /**
    * テキスト内のプレースホルダーを処理
-   * 処理順序: 改行除去 → var宣言 → 変数参照 → 組み込み関数
+   * 処理順序: 改行除去 → var宣言 → calc → 変数参照 → 組み込み関数
    */
   process(text: string): ProcessResult {
     // 改行を除去
@@ -34,14 +34,14 @@ export class VariablePlaceholderProcessor {
     // 1: 変数宣言を処理
     processed = this.processVariableDeclarations(processed)
 
-    // 2: 変数参照を処理
+    // 2: calc関数を処理
+    processed = this.processCalcFunction(processed)
+
+    // 3: 変数参照を処理
     processed = this.processVariableReferences(processed)
 
-    // 3: rand関数を処理
+    // 4: rand関数を処理
     processed = this.processRandFunction(processed)
-
-    // 4: select関数を処理
-    processed = this.processSelectFunction(processed)
 
     // すべての処理した変数を取得
     const allVars = this.evaluator.getAll()
@@ -56,8 +56,6 @@ export class VariablePlaceholderProcessor {
    * 変数宣言を処理 {{var name = value}}
    */
   private processVariableDeclarations(text: string): string {
-    const declarationRegex = /\{\{var\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.*?)\}\}/g
-
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
         const value = this.evaluator.evaluate(expression.trim())
@@ -65,6 +63,21 @@ export class VariablePlaceholderProcessor {
         return '' // 宣言は削除
       } catch (error) {
         console.warn(`変数宣言の評価に失敗: ${match}`, error)
+        return match
+      }
+    })
+  }
+
+  /**
+   * calc関数を処理 {{calc varName += expr}}
+   */
+  private processCalcFunction(text: string): string {
+    return text.replace(CALC_PATTERN, (match, varName, operator, expression) => {
+      try {
+        this.evaluator.calculate(varName, operator, expression.trim())
+        return '' // calc宣言は削除
+      } catch (error) {
+        console.warn(`calc関数の評価に失敗: ${match}`, error)
         return match
       }
     })
@@ -88,38 +101,14 @@ export class VariablePlaceholderProcessor {
    */
   private processRandFunction(text: string): string {
     return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
-      const min = parseInt(minStr, 10)
-      const max = parseInt(maxStr, 10)
-      if (isNaN(min) || isNaN(max) || min > max) {
+      let min = parseInt(minStr, 10)
+      let max = parseInt(maxStr, 10)
+      if (isNaN(min) || isNaN(max)) {
         console.warn(`無効なrand関数: ${match}`)
         return match
       }
+      if (min > max) [min, max] = [max, min]
       return String(this.evaluator.evaluate(`rand(${min},${max})`))
-    })
-  }
-
-  /**
-   * select関数を処理 {{select(opt1,opt2,...)}}
-   */
-  private processSelectFunction(text: string): string {
-    return text.replace(SELECT_PATTERN, (match, optionsStr) => {
-      try {
-        const options = optionsStr
-          .split(',')
-          .map((opt: string) => opt.trim())
-          .filter((opt: string) => opt.length > 0)
-
-        if (options.length === 0) {
-          console.warn(`select関数に有効な選択肢がありません: ${match}`)
-          return match
-        }
-
-        const index = Math.floor(Math.random() * options.length)
-        return options[index]
-      } catch (error) {
-        console.warn(`select関数の処理に失敗: ${match}`, error)
-        return match
-      }
     })
   }
 }

@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\parts\KeyEditor\keyEditorValidation.ts
-import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { RecordCategoryType } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 

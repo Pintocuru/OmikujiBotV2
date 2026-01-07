@@ -6,7 +6,7 @@
       <DevHeader />
 
       <!-- 読み込みセクション -->
-      <DevFileList v-if="isPro || isDev" />
+      <DevFileList v-if="(isPro || isDev) && devStore.isServerConnected" />
 
       <!-- 接続ステータス -->
       <div class="text-xs flex items-center text-primary-content gap-2">
@@ -30,7 +30,7 @@
   import DevHeader from './components/DevHeader.vue'
   import DevFileList from './components/DevFileList.vue'
   import { useDevStore } from '@config/dev/stores/useDevStore'
-  import { useSettingMode } from '../scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)

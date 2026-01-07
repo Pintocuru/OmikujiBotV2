@@ -5,7 +5,7 @@
     <AppHeader />
 
     <!-- プリセット管理 -->
-    <PresetTool v-if="isPreset" />
+    <PresetTool v-if="isServerConnected" />
 
     <!-- 設定読み込み・書き出し -->
     <div class="flex justify-between">
@@ -58,12 +58,13 @@
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
   import { devConfigApi } from './dev/services/apiService'
   import PresetTool from '@config/dev/DevConfigs.vue'
+  import { useDevStore } from './dev/stores/useDevStore'
 
   // stores
   const omikujiStore = useOmikujiStore()
+  const devStore = useDevStore()
   const { data } = storeToRefs(omikujiStore)
-  const isPreset = ref<boolean>(false) // TODO:どこかのstoreに入れておいて state.isServerConnected があるぞ
-
+  const { isServerConnected } = storeToRefs(devStore)
   // インポートマネージャー
   const importManager = useImportManager()
 
@@ -79,7 +80,7 @@
     // プラグインのデフォルト設定を読み込む
     const isHealth = await devConfigApi.getHealth()
     if (isHealth) {
-      isPreset.value = true
+      isServerConnected.value = true
       const lowData = await devConfigApi.loadGeneratorConfig()
       if (lowData) {
         omikujiStore.loadData(lowData)

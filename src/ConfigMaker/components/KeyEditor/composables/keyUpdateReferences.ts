@@ -1,7 +1,7 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateReferences.ts
 import type { PostActionType } from '@/types/OmikujiData/'
 import { rulesCategoryLabel } from '@/types/OmikujiData/'
-import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**

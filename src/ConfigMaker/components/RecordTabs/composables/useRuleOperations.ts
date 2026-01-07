@@ -4,7 +4,7 @@ import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
 import Swal from 'sweetalert2'
-import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
+import { useNavigationStore } from '@config/stores/useNavigationStore'
 
 export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()

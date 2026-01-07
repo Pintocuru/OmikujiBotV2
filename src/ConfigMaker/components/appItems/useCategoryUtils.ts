@@ -5,7 +5,7 @@ import { categoryLabels, CategoryType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
 import { isDev } from '@/types/'
-import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export const useCategoryUtils = () => {
   const omikujiStore = useOmikujiStore()

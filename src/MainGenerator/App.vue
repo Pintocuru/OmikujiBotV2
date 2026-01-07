@@ -31,7 +31,7 @@
   import { useRuleProcessor } from '@main/scripts/RuleProcess/RuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
-  import { devConfigApi } from '@/ConfigMaker/dev/services/apiService'
+  import { devConfigApi } from '@config/dev/services/apiService'
 
   // Pinia Store
   const appStore = useAppStore()

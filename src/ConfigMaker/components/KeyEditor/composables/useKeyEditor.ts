@@ -5,7 +5,7 @@ import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
 import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './keyEditorTypes'
-import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export function useKeyEditor() {
   // リアクティブ状態

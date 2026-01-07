@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { WeightValuesArrayType, WeightValueSchema } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export function usePlaceholderValues(placeholderId: string) {
   // Pinia store

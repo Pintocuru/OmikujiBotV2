@@ -12,10 +12,10 @@
       >
         {{ devStore.isExpressMode ? 'DEV' : 'Plugin' }}
       </button>
-      <h2 class="text-lg font-bold text-primary-content">プリセット管理</h2>
+      <h2 class="text-lg font-bold text-primary-content">{{ !isDev || isPro ? 'プリセット管理' : '' }}</h2>
     </div>
 
-    <div class="flex items-center gap-2">
+    <div v-if="devStore.isServerConnected" class="flex items-center gap-2">
       <template v-if="!isExpressMode">
         <button
           @click="loadFromGenerator"
@@ -29,6 +29,7 @@
         </button>
 
         <button
+          v-if="hasChanged"
           @click="devStore.saveToGenerator"
           :disabled="devStore.isSaving"
           class="btn btn-primary btn-sm tooltip tooltip-top"
@@ -68,16 +69,18 @@
 </template>
 
 <script setup lang="ts">
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types'
-  import { devConfigApi } from '../services/apiService'
+  import { generateDateFileName } from '@config/dev/services/devConfigUtils'
+  import { devConfigApi } from '@config/dev/services/apiService'
   import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { Download, Save } from 'lucide-vue-next'
   import Swal from 'sweetalert2'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
-  import { generateDateFileName } from '../services/devConfigUtils'
 
+  const omikujiStore = useOmikujiStore()
+  const { hasChanged } = storeToRefs(omikujiStore)
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)
   const { isPro } = useSettingMode()
