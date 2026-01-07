@@ -6,6 +6,7 @@ import { countUnitCondition, countUnitConditionLabels } from '@shared/types/trig
 // デフォルトで利用可能なプレースホルダーの定数配列
 export const defaultPlaceholders = [
   'user', // ユーザー名
+  'userId', // ユーザーID
   'price', // 金額
   'commenter', //  配信枠のコメントをしたユーザー数
   'winner', //  配信枠のコメントをしたランダムなユーザー
@@ -20,22 +21,24 @@ export type DefaultPlaceholders = (typeof defaultPlaceholders)[number]
 export const DefaultPlaceholdersMetaSchema = z.object({
   viewer: z.coerce.number().default(0),
   upVote: z.coerce.number().default(0),
+  commenter: z.coerce.number().default(0),
+  winner: z.string().default('テストユーザー'),
 })
 
 export const DefaultPlaceholdersCommentSchema = z.object({
   user: z.string().default('テストユーザー'),
+  userId: z.string().default('test'),
   price: z.coerce.number().default(0), //
   lc: z.coerce.number().default(0),
   tc: z.coerce.number().default(0),
   draws: z.coerce.number().default(0),
-  commenter: z.coerce.number().default(0),
-  winner: z.string().default('テストユーザー'),
   ...DefaultPlaceholdersMetaSchema.shape,
 })
 
 // デフォルトプレースホルダーの日本語ラベル定義
 export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
   user: 'コメントしたユーザー',
+  userId: 'コメントしたユーザーID',
   price: 'ギフト金額',
   commenter: 'コメントをしたユーザー数',
   winner: 'コメントをしたランダムなユーザー',
@@ -46,6 +49,7 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
 // 省略形（短い）ラベル
 export const defaultPlaceholdersShortLabels: Record<DefaultPlaceholders, string> = {
   user: '[ユーザー名]',
+  userId: '[ユーザーID]',
   price: '[ギフト金額]',
   lc: '[配信コメント数]',
   tc: '[個人コメント数]',

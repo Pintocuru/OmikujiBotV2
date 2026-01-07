@@ -71,10 +71,7 @@ export function useTestPost() {
   // 抽選結果の詳細トーストを表示
   const showOmikujiResultToast = (drawOmikuji: OmikujiItemType, actions: PostActionType[]) => {
     const weight = drawOmikuji.weight || 1
-    const weightPercent = (drawOmikuji as any).weightPercent || 0
     const omikujiName = drawOmikuji.name || '無名のアイテム'
-
-    const bubble = findFirstMessageBubble(actions) ?? 'メッセージなし'
 
     Swal.fire({
       toast: true,
@@ -83,9 +80,7 @@ export function useTestPost() {
       title: 'おみくじ抽選結果',
       html: `
       おみくじ: ${omikujiName}<br>
-      内容: ${bubble}<br>
       重み: ${weight}<br>
-      確率: ${weightPercent.toFixed(2)}%
     `,
       showConfirmButton: false,
       timer: 15000,

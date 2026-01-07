@@ -124,7 +124,7 @@ export class UserVisitManager {
 
     // 当選者選出（必要な時だけリスト化するので軽量）
     const userList = this.getVisitsByRuleId(BOT_STATS_RULE_ID)
-    const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].userName : ''
+    const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].userName : 'Null'
 
     return { commenter, winner }
   }

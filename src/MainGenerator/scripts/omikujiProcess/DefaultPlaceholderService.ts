@@ -30,30 +30,20 @@ export class DefaultPlaceholderService {
    * comment用デフォルトのプレースホルダー情報を設定
    */
   getDefaultComments(omiken?: OmikenCommentType): Record<string, string | number> {
-    const { userVisitManager } = useAppStore()
-
-    const { commenter, winner } = userVisitManager.getLiveComment()
     const base = this.getDefaultPlaceholders()
 
-    // Comment がない場合は base に Comment依存の値を付けず返す
-    if (!omiken) {
-      return {
-        ...base,
-        commenter,
-        winner,
-      }
-    }
+    // Comment がない場合は base のみ
+    if (!omiken) return base
 
     // Comment がある場合は full スキーマで parse
     return DefaultPlaceholdersCommentSchema.parse({
       ...base,
       user: omiken.userName,
+      userId: omiken.userId,
       price: omiken.giftPrice,
       lc: omiken.meta.lc,
       tc: omiken.meta.tc,
       draws: omiken.meta.draws,
-      commenter,
-      winner,
     })
   }
 
@@ -61,9 +51,14 @@ export class DefaultPlaceholderService {
    * timer用デフォルトのプレースホルダー情報を設定
    */
   getDefaultPlaceholders(): Record<ServiceMetaCondition, string | number> {
+    const { userVisitManager } = useAppStore()
+    const { commenter, winner } = userVisitManager.getLiveComment()
+
     return DefaultPlaceholdersMetaSchema.parse({
       viewer: this.serviceMeta?.viewer,
       upVote: this.serviceMeta?.upVote,
+      commenter,
+      winner,
     })
   }
 }

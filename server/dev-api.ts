@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\server\dev-api.ts
+// server\dev-api.ts
 import express, { Request, Response, Application, NextFunction } from 'express'
 import cors from 'cors'
 import { Server } from 'http'

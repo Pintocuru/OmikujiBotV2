@@ -1,5 +1,6 @@
-// src\ConfigMaker\components\postAction\preview\TestPlaceholderProcessor.ts
-import { PlaceholderProcessor } from '@main/scripts/PlaceholderProcess/PlaceholderProcessor'
+// src/ConfigMaker/components/postAction/preview/TestPlaceholderProcessor.ts
+import { PlaceholderProcessor } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
+import { PlaceholderContext } from '@/MainGenerator/scripts/ContentPlaceholder/context'
 import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
@@ -10,12 +11,13 @@ import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
 export const processTestPlaceholder = (message: string, placeholders: Record<string, PlaceholderType>): string => {
   // 静的プレースホルダー
   const staticProcessor = new PlaceholderProcessor(placeholders)
-  staticProcessor.updateResolvedValues(defaultPlaceholdersShortLabels)
+  const context = new PlaceholderContext()
+  context.updateValues(defaultPlaceholdersShortLabels)
+  staticProcessor.updateResolvedValues(context.getAll())
 
   const withStatic = staticProcessor.processText(message)
 
   // 動的プレースホルダー
-  // TODO:ExpressionEvaluator は保持したほうがいいのか？
   const dynamicProcessor = new VariablePlaceholderProcessor(new ExpressionEvaluator())
   const processed = dynamicProcessor.process(withStatic)
 

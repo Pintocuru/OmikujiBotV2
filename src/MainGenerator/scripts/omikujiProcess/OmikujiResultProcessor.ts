@@ -8,7 +8,8 @@ import {
   RankingMessageSchema,
 } from '@/types/OmikujiData/'
 import { ActionSetExpander } from './ActionSetExpander'
-import { PlaceholderProcessor } from '@main/scripts/PlaceholderProcess/PlaceholderProcessor'
+import { PlaceholderProcessor } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
+import { PlaceholderContext } from '@/MainGenerator/scripts/ContentPlaceholder/context'
 import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@main/scripts/BotMessage/BotMessageGenerator'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
@@ -22,6 +23,7 @@ import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
  */
 export class OmikujiResultProcessor {
   private readonly placeProcess: PlaceholderProcessor
+  private readonly placeContext: PlaceholderContext
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
   private readonly actionSets: Record<string, ActionSetType>
@@ -33,6 +35,7 @@ export class OmikujiResultProcessor {
   ) {
     // 依存関係の初期化
     this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
+    this.placeContext = new PlaceholderContext()
     this.actionSets = omikujiData.actionSets
     this.botMessageGenerator = new BotMessageGenerator(omikujiData)
     this.postMessage = new PostMessage(omikujiData.characters)
@@ -67,7 +70,7 @@ export class OmikujiResultProcessor {
       ConsolePost('error', `おみくじ結果処理エラー`, error)
       return []
     } finally {
-      this.placeProcess.clearResolvedValues()
+      this.placeContext.clear()
     }
   }
 
@@ -89,7 +92,8 @@ export class OmikujiResultProcessor {
    * デフォルトプレースホルダーの挿入
    */
   insertDefaultPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
-    this.placeProcess.updateResolvedValues(defaultPlaceholders)
+    this.placeContext.updateValues(defaultPlaceholders)
+    this.placeProcess.updateResolvedValues(this.placeContext.getAll())
   }
 
   /**
