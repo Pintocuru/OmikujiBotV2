@@ -78,7 +78,8 @@ export class BotMessageGenerator {
 
     // 最終的なメッセージテキスト
     const finalBubble = bubbleResult?.bubble || null
-    const finalToast = toastResult?.bubble || null
+    // 新型に対応
+    const finalToast = toastResult?.toast || postAction.message.isToast ? bubbleResult?.bubble : null
 
     // ランキング情報の生成（textがあれば）
     const rankingSource = bubbleResult || toastResult
@@ -94,8 +95,8 @@ export class BotMessageGenerator {
       : undefined
 
     // メッセージ内容の有無チェック
-    const hasBubble = this.hasContent(finalBubble)
-    const hasToast = this.hasContent(finalToast)
+    const hasBubble = this.hasContent(finalBubble) && !postAction.message.isToast
+    const hasToast = this.hasContent(finalToast ?? finalBubble) && postAction.message.isToast
     const hasRanking = !!ranking
 
     // 何もメッセージがない場合は音声のみ再生
@@ -153,7 +154,6 @@ export class BotMessageGenerator {
   ): BotMessageType {
     const isChar = this.isCharacterMode && character
     const color = isChar ? character.color : this.defaultColors[messageType]
-
     return BotMessageSchema.parse({
       type: omiken ? 'comment' : 'system',
       delaySeconds,
@@ -161,8 +161,7 @@ export class BotMessageGenerator {
       ranking,
       bubble: {
         name: isChar ? character.displayName : '',
-        message: messageType === 'bubble' ? messageText : '',
-        toast: messageType === 'toast' ? messageText : undefined,
+        message: messageText,
         isToast: messageType === 'toast',
         characterKey: isChar ? postAction.characterKey : null,
         iconKey: postAction.iconKey,

@@ -93,18 +93,18 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
   const dummyMessages: BotMessageType[] = []
 
   for (let i = 0; i < count; i++) {
-    let name: string
+    let listName: string
     do {
-      name = candidateNames[Math.floor(Math.random() * candidateNames.length)]
-    } while (usedNames.has(name) && usedNames.size < candidateNames.length)
+      listName = candidateNames[Math.floor(Math.random() * candidateNames.length)]
+    } while (usedNames.has(listName) && usedNames.size < candidateNames.length)
 
-    usedNames.add(name)
+    usedNames.add(listName)
 
     const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
 
     const ranking = RankingMessageSchema.parse({
       scriptKey: 'dummy',
-      name,
+      listName,
       scoreText: String(points),
       scoreValue: points,
     })

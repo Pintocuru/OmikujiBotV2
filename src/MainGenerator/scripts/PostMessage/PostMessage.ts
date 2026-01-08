@@ -42,7 +42,7 @@ export class PostMessage {
   private async processPost(post: PostActionType): Promise<void> {
     const { delaySeconds = 0 } = post
 
-    if (post.actionType === 'message') {
+    if (post.actionType === 'message' && !post.message.isToast) {
       await this.processMessagePost(post, delaySeconds)
     } else if (post.actionType === 'wordParty') {
       postWordParty(post.wordParty, delaySeconds)
