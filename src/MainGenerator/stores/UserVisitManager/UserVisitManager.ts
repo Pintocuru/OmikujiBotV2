@@ -2,39 +2,19 @@
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-/**
- * ユーザーの訪問記録を管理するインターフェース
- */
-
 // 定数 liveComments ユーザーの参加者リスト(commenter)とランダム(winner)用
 const BOT_STATS_RULE_ID = 'liveComments'
-
-/**
- * OmikenCommentTypeのomikujiRecordsを更新するためのコールバック型
- * omikujiRecords全体を Record<ruleId, count> の形式で渡す
- */
-export type OmikujiRecordsUpdateCallback = (userId: string, omikujiRecords: Record<string, number>) => void
 
 /**
  * ユーザーの訪問回数と抽選制限を管理するクラス
  * OmikenCommentTypeのomikujiRecordsフィールドへの後入れ更新に対応
  */
 export class UserVisitManager {
-  private static instance: UserVisitManager | null = null
   private readonly userVisits = new Map<string, UserVisitRecord>()
   private readonly sessionId: string
-  private updateCallbacks: OmikujiRecordsUpdateCallback[] = []
 
-  private constructor() {
+  constructor() {
     this.sessionId = this.generateSessionId()
-  }
-
-  // シングルトンパターン
-  public static getInstance(): UserVisitManager {
-    if (!UserVisitManager.instance) {
-      UserVisitManager.instance = new UserVisitManager()
-    }
-    return UserVisitManager.instance
   }
 
   /**
@@ -51,25 +31,10 @@ export class UserVisitManager {
   }
 
   /**
-   * omikujiRecords更新用のコールバックを登録
-   */
-  registerUpdateCallback(callback: OmikujiRecordsUpdateCallback): void {
-    this.updateCallbacks.push(callback)
-  }
-
-  /**
-   * 登録されたコールバックをクリア
-   */
-  clearUpdateCallbacks(): void {
-    this.updateCallbacks = []
-  }
-
-  /**
    * セッションをリセット（新しい配信開始時などに使用）
    */
   resetSession(): void {
     this.userVisits.clear()
-    this.updateCallbacks = []
   }
 
   /**
@@ -91,23 +56,6 @@ export class UserVisitManager {
         ruleId,
         visitCount: 1,
       })
-    }
-
-    // コールバックを実行してomikujiRecordsを更新
-    const omikujiRecords = this.getOmikujiRecords(userId)
-    this.notifyUpdate(userId, omikujiRecords)
-  }
-
-  /**
-   * 登録されたコールバックに更新を通知
-   */
-  private notifyUpdate(userId: string, omikujiRecords: Record<string, number>): void {
-    for (const callback of this.updateCallbacks) {
-      try {
-        callback(userId, omikujiRecords)
-      } catch (error) {
-        console.error('UserVisitManager: コールバック実行エラー', error)
-      }
     }
   }
 
@@ -234,9 +182,6 @@ export class UserVisitManager {
    */
   resetUserVisit(userId: string, ruleId: string): void {
     this.userVisits.delete(this.createKey(userId, ruleId))
-    // リセット後の状態を通知
-    const omikujiRecords = this.getOmikujiRecords(userId)
-    this.notifyUpdate(userId, omikujiRecords)
   }
 
   /**
@@ -253,12 +198,6 @@ export class UserVisitManager {
         }
         this.userVisits.delete(key)
       }
-    }
-
-    // 影響を受けたユーザーに通知
-    for (const userId of affectedUsers) {
-      const omikujiRecords = this.getOmikujiRecords(userId)
-      this.notifyUpdate(userId, omikujiRecords)
     }
   }
 

@@ -29,7 +29,6 @@
   </SettingItem>
 
   <!-- 単一の入力欄：messageType に応じてラベル／説明／プレースホルダ／バインド先を切替 -->
-  <!-- TODO:URL表記したい -->
   <SettingItem
     :label="messageType === 'bubble' ? '💬 フキダシ内容' : '📝 トースト内容'"
     description="プレースホルダーが使用できます"
@@ -66,10 +65,10 @@
   </SettingItem>
 
   <!-- 変数プレースホルダーチェッカー -->
-  <VariableDeclarationChecker v-if="messageText !== ''" :text="messageText" />
+  <VariableDeclarationChecker :text="messageText" />
 
   <!-- プレースホルダーチェッカー -->
-  <PlaceholderChecker v-if="messageText !== ''" :text="messageText" />
+  <PlaceholderChecker :text="messageText" />
 
   <!-- サウンド -->
   <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">

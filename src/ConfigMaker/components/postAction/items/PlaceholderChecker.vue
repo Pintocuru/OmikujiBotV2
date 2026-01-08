@@ -1,10 +1,18 @@
 <!-- src\ConfigMaker\components\postAction\items\PlaceholderChecker.vue -->
 <template>
-  <div v-if="isPlaceholder && hasPlaceholders" class="space-y-2">
+  <div class="space-y-2">
     <!-- 既存のプレースホルダー -->
-    <div v-if="definedPlaceholders.length > 0" class="alert alert-info py-1">
+    <div class="alert alert-info py-1">
       <span class="text-xs">
-        プレースホルダー
+        <a
+          class="link no-underline hover:underline"
+          href="https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/core/ConfigEditor/sub/ContentPlaceholder.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          プレースホルダー
+        </a>
+
         <button
           v-for="id in definedPlaceholders"
           :key="id"
@@ -13,6 +21,7 @@
         >
           &lt;&lt;{{ id }}&gt;&gt;
         </button>
+        <span v-if="!hasPlaceholders">なし</span>
       </span>
     </div>
 

@@ -26,7 +26,7 @@ export const useAppStore = defineStore('app', () => {
 
   // 管理オブジェクト
   const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
-  const userVisitManager = UserVisitManager.getInstance() // ユーザー訪問管理
+  const userVisitManager = new UserVisitManager() // ユーザー訪問管理
   const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
 
   return {

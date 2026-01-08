@@ -11,7 +11,6 @@ import {
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
-import { AccessLevelType } from '@shared/types'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
 export class BotMessageGenerator {

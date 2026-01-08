@@ -1,10 +1,10 @@
 <!-- src/ConfigMaker/components/postAction/items/VariableDeclarationChecker.vue -->
 <template>
-  <div v-if="hasAnyDeclarations" class="space-y-2">
+  <div class="space-y-2">
     <!-- 予約語の変数宣言 -->
     <div v-if="hasReservedDeclarations" class="alert alert-success py-2">
       <span class="text-xs">
-        変数プレースホルダー(予約語)
+        予約語
         <span v-for="decl in reservedDeclarations" :key="decl.name + decl.value" class="mx-1">
           {{ decl.name }}={{ decl.value }}
         </span>
@@ -12,9 +12,17 @@
     </div>
 
     <!-- カスタム変数宣言 + calc + rand -->
-    <div v-if="hasCustomDeclarations" class="alert alert-warning py-2">
+    <div class="alert alert-warning py-2">
       <span class="text-xs">
-        変数プレースホルダー
+        <a
+          class="link no-underline hover:underline"
+          href="https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/core/ConfigEditor/sub/VariablePlaceholder.md"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          変数プレースホルダー
+        </a>
+
         <span v-for="decl in customDeclarations" :key="decl.name + decl.value" class="mx-1">
           var: {{ decl.name }} = {{ decl.value }}
         </span>
@@ -24,6 +32,7 @@
         <span v-for="(func, index) in randFunctions" :key="'rand-' + index" class="mx-1">
           rand({{ func.min }},{{ func.max }})
         </span>
+        <span v-if="!hasAnyDeclarations">なし</span>
       </span>
     </div>
   </div>
