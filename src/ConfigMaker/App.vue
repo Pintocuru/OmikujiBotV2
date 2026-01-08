@@ -77,17 +77,29 @@
   useScrollBehavior()
 
   onMounted(async () => {
-    // プラグインのデフォルト設定を読み込む
-    const isHealth = await devConfigApi.getHealth()
+    let isHealth = false
+
+    try {
+      isHealth = await devConfigApi.getHealth()
+    } catch (e) {
+      console.warn('Health check failed:', e)
+    }
+
     if (isHealth) {
       isServerConnected.value = true
-      const lowData = await devConfigApi.loadGeneratorConfig()
-      if (lowData) {
-        omikujiStore.loadData(lowData)
-        return
+      try {
+        const lowData = await devConfigApi.loadGeneratorConfig()
+        if (lowData) {
+          omikujiStore.loadData(lowData)
+          return
+        }
+      } catch (e) {
+        console.warn('loadGeneratorConfig failed:', e)
       }
     }
-    // 見つからないなら omikujiData.js を開く
-    if (!isDev) omikujiStore.loadData(window.omikujiData)
+
+    if (!isDev) {
+      omikujiStore.loadData(window.omikujiData)
+    }
   })
 </script>

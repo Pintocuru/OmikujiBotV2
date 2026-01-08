@@ -19,7 +19,7 @@ export function useDevConfigState() {
   const isExecutingConfirm = ref(false)
 
   // サーバー接続状態
-  const isServerConnected = ref(true)
+  const isServerConnected = ref(false)
 
   // 個別ファイル削除状態
   const isDeletingFileMap = reactive(new Map<string, boolean>())
