@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/omikujiProcess/GameScriptManager.ts
-import { OmikujiItemType, PostActionType, ScriptClass } from '@/types/'
+import { BotMessageType, OmikujiItemType, PostActionType, ScriptClass, ScriptResult } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -29,7 +29,7 @@ export class GameScriptManager {
   /**
    * スクリプト実行
    */
-  playScript(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): PostActionType[] | null {
+  playScript(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): ScriptResult | null {
     if (!omikujiItem.gameScripts) return null
     const { scriptId, queryString, characterKey } = omikujiItem.gameScripts
 

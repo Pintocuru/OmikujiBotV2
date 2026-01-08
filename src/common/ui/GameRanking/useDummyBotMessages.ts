@@ -1,6 +1,6 @@
 // src/composables/useDummyBotMessages.ts
 import { RankingMessageSchema, SettingsRankingType } from '@/types/'
-import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
 const candidateNames = [
@@ -87,10 +87,10 @@ export const generateDummyUserNames = (count: number): UserVisitRecord[] => {
 }
 
 // ランダムな BotMessage を生成
-export const generateDummyMessages = (settings: SettingsRankingType): BotMessage[] => {
+export const generateDummyMessages = (settings: SettingsRankingType): BotMessageType[] => {
   const count = settings.limit || 10
   const usedNames = new Set<string>()
-  const dummyMessages: BotMessage[] = []
+  const dummyMessages: BotMessageType[] = []
 
   for (let i = 0; i < count; i++) {
     let name: string
@@ -111,19 +111,17 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
     dummyMessages.push(
       BotMessageSchema.parse({
-        name,
-        message: {
-          ranking,
-        },
+        type: 'rankingOnly',
+        ranking,
       })
     )
   }
 
   switch (settings.sortOrder) {
     case 'high':
-      return dummyMessages.sort((a, b) => (b.message.ranking?.scoreValue || 0) - (a.message.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (b.ranking?.scoreValue || 0) - (a.ranking?.scoreValue || 0))
     case 'low':
-      return dummyMessages.sort((a, b) => (a.message.ranking?.scoreValue || 0) - (b.message.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (a.ranking?.scoreValue || 0) - (b.ranking?.scoreValue || 0))
     case 'new':
     default:
       return dummyMessages

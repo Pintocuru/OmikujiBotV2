@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useCharacterEmotionState.ts
 import { ref, computed, watch, type Ref } from 'vue'
-import type { BotMessage, CharacterEmotionType, CharacterType } from '@/types/'
+import type { BotMessageType, CharacterEmotionType, CharacterType } from '@/types/'
 import { DisplayBotMessage } from './useBotDisplay'
 
 /**
@@ -16,14 +16,14 @@ export function useCharacterEmotionState(
   const emotionStates = ref<Record<string, CharacterEmotionType>>({})
 
   // 指定キャラクターの表示中コメント一覧
-  const getVisibleComments = (characterKey: string): BotMessage[] => {
-    return displayedComments.value.filter((m) => m.characterKey === characterKey && m.visible)
+  const getVisibleComments = (characterKey: string): BotMessageType[] => {
+    return displayedComments.value.filter((m) => m.bubble?.characterKey === characterKey && m.visible)
   }
 
   // 指定キャラクターの最新の感情を取得
   const getLatestEmotion = (characterKey: string): CharacterEmotionType => {
     const comments = getVisibleComments(characterKey)
-    return comments[0]?.iconKey ?? 'default'
+    return comments[0]?.bubble?.iconKey ?? 'default'
   }
 
   // 全キャラクターの感情状態を更新

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import {
   OmikujiItemSchema,
   PostActionType,
-  BotMessage,
+  BotMessageType,
   OmikujiItemType,
   RuleType,
   GameScriptsType,
@@ -37,7 +37,7 @@ export function useTestPost() {
   })
 
   // テスト投稿の遅延処理を並列実行
-  const executeTestPostDelays = async (posts: BotMessage[]): Promise<void> => {
+  const executeTestPostDelays = async (posts: BotMessageType[]): Promise<void> => {
     try {
       const delayPromises = posts.map(
         (post) =>
@@ -104,7 +104,7 @@ export function useTestPost() {
       userName: 'テストユーザー',
       comment: 'テストコメント',
     })
-    let botMessageArray: BotMessage[]
+    let botMessageArray: BotMessageType[]
 
     if (!rule) {
       // ルールがない場合は簡易実行（アクションのみをテスト）

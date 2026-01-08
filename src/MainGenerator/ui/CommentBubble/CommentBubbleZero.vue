@@ -14,10 +14,10 @@
           <!-- キャラクター（最新コメント時のみ表示） -->
           <div class="absolute top-[180px] left-0 right-0 flex justify-center">
             <CharacterLayerImage
-              v-if="index === 0 && isValidCharacter(message.characterKey)"
-              :layers="iconSrc(message.characterKey, message.iconKey)"
+              v-if="message.bubble && index === 0 && isValidCharacter(message.bubble?.characterKey)"
+              :layers="iconSrc(message.bubble?.characterKey, message.bubble?.iconKey)"
               :size="bubble.characterSize"
-              :color="message.color"
+              :color="message.bubble?.color"
             />
           </div>
         </template>
@@ -51,8 +51,8 @@
 
     return botMessages.value.filter((message) => {
       // null の場合はキャラクター非表示モードなのでそのまま表示させる
-      if (message.characterKey === null) return true
-      return allowKeys.includes(message.characterKey)
+      if (!message.bubble || message.bubble?.characterKey === null) return true
+      return allowKeys.includes(message.bubble?.characterKey)
     })
   })
 

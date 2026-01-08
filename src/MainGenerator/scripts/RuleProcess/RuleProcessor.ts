@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\RuleProcess\RuleProcessor.ts
-import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -23,7 +23,7 @@ export function useRuleProcessor() {
   /**
    * Timer Rules
    */
-  const startTimers = (callback: (messages: BotMessage[]) => void) => {
+  const startTimers = (callback: (messages: BotMessageType[]) => void) => {
     timerProcessorSingleton!.startTimers(callback)
   }
 

@@ -1,18 +1,18 @@
 // templates\OmikujiBot\src\MainGenerator\stores\useBotMessageActions.ts
 import { ref } from 'vue'
-import type { BotMessage } from '@/types/'
+import type { BotMessageType } from '@/types/'
 
 export const useBotMessageActions = () => {
   /**
    * 状態
    */
   const isInitialized = ref(true)
-  const botMessages = ref<BotMessage[]>([])
+  const botMessages = ref<BotMessageType[]>([])
 
   /**
    * delaySeconds に合わせてメッセージを botMessages に入れる関数
    */
-  const scheduleBotMessages = (processedMessages: BotMessage[]) => {
+  const scheduleBotMessages = (processedMessages: BotMessageType[]) => {
     if (!processedMessages.length) return
 
     const delayPromises = processedMessages.map((m) => {
@@ -32,7 +32,7 @@ export const useBotMessageActions = () => {
   /**
    * BotMessage に関する関数
    */
-  const addBotMessage = (message: BotMessage) => (botMessages.value = [...botMessages.value, message])
+  const addBotMessage = (message: BotMessageType) => (botMessages.value = [...botMessages.value, message])
   const clearMessages = () => (botMessages.value = [])
   const setInitialized = (value: boolean) => (isInitialized.value = value)
 

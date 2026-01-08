@@ -41,13 +41,12 @@
     if (!isDev || !devHoverActive.value) return []
     return [
       BotMessageSchema.parse({
-        message: {
-          ranking: {
-            listName: 'test',
-            scoretext: 'test',
-            scoreValue: 100,
-            scriptKey: rankingSettings.value.targetScriptKeys[0],
-          },
+        type: 'rankingOnly',
+        ranking: {
+          listName: 'test',
+          scoreText: 'test',
+          scoreValue: 100,
+          scriptKey: rankingSettings.value.targetScriptKeys[0],
         },
       }),
     ]
@@ -65,7 +64,7 @@
       !messages || !keys
         ? []
         : messages.filter((msg) => {
-            const r = msg.message.ranking
+            const r = msg.ranking
             return r && typeof r.scoreValue === 'number' && keys.includes(r.scriptKey)
           })
 
@@ -76,19 +75,19 @@
     if (!botMessages.value || !rankingSettings.value?.targetScriptKeys) return []
 
     const targets = botMessages.value.filter((msg) => {
-      const r = msg.message.ranking
+      const r = msg.ranking
       return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
     })
 
     // ranking.isUniqueUser が true のものが存在するか
-    const isUniqueUser = targets.some((msg) => msg.message.ranking?.isUniqueUser === true)
+    const isUniqueUser = targets.some((msg) => msg.ranking?.isUniqueUser === true)
 
     if (!isUniqueUser) return targets
 
     const map = new Map<string, (typeof targets)[number]>()
 
     for (const msg of targets) {
-      const user = msg.message.user
+      const user = msg.user
       if (!user?.userId) continue
 
       const prev = map.get(user.userId)
@@ -97,7 +96,7 @@
         continue
       }
 
-      const prevTs = prev.message.user?.timestamp ?? 0
+      const prevTs = prev.user?.timestamp ?? 0
       const currTs = user.timestamp ?? 0
 
       if (currTs > prevTs) map.set(user.userId, msg)

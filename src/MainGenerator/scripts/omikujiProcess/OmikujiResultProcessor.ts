@@ -1,21 +1,13 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiResultProcessor.ts
-import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
-import {
-  OmikujiDataType,
-  OmikujiItemType,
-  ActionSetType,
-  PostActionType,
-  RankingMessageSchema,
-} from '@/types/OmikujiData/'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { OmikujiDataType, OmikujiItemType, ActionSetType, PostActionType } from '@/types/OmikujiData/'
 import { ActionSetExpander } from './ActionSetExpander'
 import { PlaceholderProcessor } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@/MainGenerator/scripts/ContentPlaceholder/context'
 import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
 import { BotMessageGenerator } from '@main/scripts/BotMessage/BotMessageGenerator'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
-import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
-import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 
 /**
@@ -27,7 +19,6 @@ export class OmikujiResultProcessor {
   private readonly postMessage: PostMessage
   private readonly botMessageGenerator: BotMessageGenerator
   private readonly actionSets: Record<string, ActionSetType>
-  private evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   constructor(
     omikujiData: OmikujiDataType,
@@ -44,28 +35,33 @@ export class OmikujiResultProcessor {
   /**
    * おみくじ結果を処理してBotMessageを生成
    */
-  process(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessage[] {
+  process(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessageType[] {
     try {
       const postActions: PostActionType[] = []
+      const botMessages: BotMessageType[] = []
 
-      // おみくじアクションから postActions を生成
-      postActions.push(...this.processOmikujiActions(omikujiItem, omiken))
+      // 1. おみくじアクションから postActions を生成
+      postActions.push(...this.processOmikujiActions(omikujiItem))
 
-      // gameScripts 処理
+      // 2. gameScripts 処理
       if (omikujiItem.gameScripts) {
-        const gamePost = this.scriptManager.playScript(omikujiItem, omiken)
-        if (gamePost) postActions.push(...gamePost)
+        const scriptResult = this.scriptManager.playScript(omikujiItem, omiken)
+        if (scriptResult) {
+          postActions.push(...scriptResult.actions)
+          botMessages.push(...scriptResult.messages)
+        }
       }
 
-      // postActions があれば投稿
-      if (postActions) {
-        // メッセージ投稿
+      // 3. PostAction があれば投稿
+      if (postActions.length > 0) {
         this.postMessage.post(postActions)
-
-        // BotMessage生成
-        return this.botMessageGenerator.generateMessages(postActions)
       }
-      return []
+
+      // 4. PostAction から BotMessage を生成
+      const generated = this.botMessageGenerator.generateMessages(postActions, omiken)
+
+      // 5. スクリプトが直接生成した BotMessage と合体
+      return [...botMessages, ...generated]
     } catch (error) {
       ConsolePost('error', `おみくじ結果処理エラー`, error)
       return []
@@ -77,15 +73,12 @@ export class OmikujiResultProcessor {
   /**
    * おみくじアクションの処理
    */
-  private processOmikujiActions(omikujiItem: ActionSetType, omiken?: OmikenCommentType): PostActionType[] {
+  private processOmikujiActions(omikujiItem: ActionSetType): PostActionType[] {
     // アクションセットの展開
     const expandedActions = ActionSetExpander.expand(omikujiItem.postActions, this.actionSets)
 
     // プレースホルダーを実行
-    const processedActions = this.placeProcess.processPostActions(expandedActions)
-
-    // bubble と toast に対して変数プレースホルダーを実行
-    return this.applyVariablePlaceholders(processedActions, omiken)
+    return this.placeProcess.processPostActions(expandedActions)
   }
 
   /**
@@ -94,50 +87,5 @@ export class OmikujiResultProcessor {
   insertDefaultPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
     this.placeContext.updateValues(defaultPlaceholders)
     this.placeProcess.updateResolvedValues(this.placeContext.getAll())
-  }
-
-  /**
-   * message.action の bubble / toast に対して
-   * 変数プレースホルダーを適用する
-   * text,symbol,name,unique,variant が特殊になる
-   */
-  private applyVariablePlaceholders(actions: PostActionType[], omiken?: OmikenCommentType): PostActionType[] {
-    const variableProcessor = new VariablePlaceholderProcessor(this.evaluator)
-
-    return actions.map((action) => {
-      if (action.actionType !== 'message') return action
-
-      // デフォルト情報を付与
-      action.message.user = omiken ? UserNameSchema.parse(omiken) : undefined
-
-      // 変数プレースホルダー処理
-      const { bubble, toast } = action.message
-      const sourceText = bubble ?? toast
-      if (!sourceText) return action
-
-      const result = variableProcessor.process(sourceText)
-
-      // textがなければランキング不成立
-      const isBasicList = result.text
-      const ranking = isBasicList
-        ? RankingMessageSchema.parse({
-            scriptKey: 'basicList',
-            listName: result.name,
-            scoreText: result.text,
-            symbol: result.symbol,
-            variant: result.variant,
-            isUniqueUser: result.unique === 'false' ? false : true,
-          })
-        : undefined
-
-      return {
-        ...action,
-        message: {
-          ...action.message,
-          ...(bubble ? { bubble: result.bubble } : { toast: result.bubble }),
-          ranking,
-        },
-      }
-    })
   }
 }

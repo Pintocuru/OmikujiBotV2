@@ -23,38 +23,32 @@
           <!-- 名前 -->
           <div class="flex-grow min-w-0 items-center flex flex-nowrap">
             <!-- アイコン -->
-            <div v-if="msg.message.user?.profileImage" class="avatar mr-1">
+            <div v-if="msg.user?.profileImage" class="avatar mr-1">
               <div class="w-7 rounded-full">
-                <img :src="msg.message.user?.profileImage" alt="" />
+                <img :src="msg.user?.profileImage" alt="" />
               </div>
             </div>
             <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-1">
               <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.message.ranking?.listName || msg.message?.user?.userName || msg.name || 'A').charAt(0) }}
+                {{ (msg.ranking?.listName || msg.user?.userName || msg.bubble?.name || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- 名前 -->
             <span class="text-lg font-bold truncate">
-              {{ msg.message.ranking?.listName || msg.message?.user?.userName || msg.name || 'Anonymous' }}
+              {{ msg.ranking?.listName || msg.user?.userName || msg.bubble?.name || 'Anonymous' }}
             </span>
             <!-- symbol -->
-            <span
-              v-if="msg.message?.ranking?.symbol !== ''"
-              class="text-base text-base-content/60 font-semibold truncate ml-2"
-            >
-              {{ msg.message?.ranking?.symbol }}
+            <span v-if="msg.ranking?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
+              {{ msg.ranking?.symbol }}
             </span>
           </div>
 
           <!--スコア -->
           <div class="flex-shrink-0">
-            <div
-              class="badge badge-lg p-2 font-bold"
-              :class="scoreBadgeClass(msg.message?.ranking?.variant as BaseVariant)"
-            >
-              {{ msg.message?.ranking?.scoreText || 0 }}
+            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.ranking?.variant as BaseVariant)">
+              {{ msg.ranking?.scoreText || 0 }}
             </div>
           </div>
         </div>
@@ -65,39 +59,39 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
   import { generateDummyMessages } from './useDummyBotMessages'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{
-    botMessages: BotMessage[]
+    botMessages: BotMessageType[]
     settings: SettingsRankingType
   }>()
 
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.botMessages.length > 0) {
-      let data = [...props.botMessages].filter((msg) => msg.message?.ranking?.isRank !== false)
+      let data = [...props.botMessages].filter((msg) => msg.ranking?.isRank !== false)
 
       switch (props.settings.sortOrder) {
         case 'high':
           data.sort((a, b) => {
-            const diff = (b.message?.ranking?.scoreValue || 0) - (a.message?.ranking?.scoreValue || 0)
+            const diff = (b.ranking?.scoreValue || 0) - (a.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0)
+            return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })
           break
         case 'low':
           data.sort((a, b) => {
-            const diff = (a.message?.ranking?.scoreValue || 0) - (b.message?.ranking?.scoreValue || 0)
+            const diff = (a.ranking?.scoreValue || 0) - (b.ranking?.scoreValue || 0)
             if (diff !== 0) return diff
-            return (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0)
+            return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })
           break
         case 'new':
         default:
-          data.sort((a, b) => (b.message?.user?.timestamp || 0) - (a.message?.user?.timestamp || 0))
+          data.sort((a, b) => (b.user?.timestamp || 0) - (a.user?.timestamp || 0))
           break
       }
 

@@ -7,9 +7,9 @@
       <ToastBubbleItem
         v-for="(message, i) in previewMessages"
         :key="i"
-        :message="message.message.toast ?? '(未記入)'"
-        :color="message.color"
-        :iconLayers="iconSrc(message.characterKey, message.iconKey)"
+        :message="message.bubble?.message ?? '(未記入)'"
+        :color="message.bubble?.color ?? toastSettings.defaultColor"
+        :iconLayers="iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')"
         :showToastsOnRight="toastSettings.showToastsOnRight"
       />
     </div>
@@ -141,9 +141,15 @@
         const character = characterArray.value[charIndex]
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
         return BotMessageSchema.parse({
-          characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
-          color: isCharacter.value ? character.color : toastSettings.value.defaultColor,
-          message: { toast: messageText },
+          type: 'system',
+          bubble: {
+            message: messageText,
+            toast: messageText, // TODO:将来消す
+            isToast: true,
+
+            characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
+            color: isCharacter.value ? character.color : toastSettings.value.defaultColor,
+          },
         })
       })
   })

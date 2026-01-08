@@ -1,4 +1,5 @@
 // src\types\OmikujiData\PostActionMessage.ts
+
 import z from 'zod'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -19,15 +20,3 @@ export const RankingMessageSchema = z.object({
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
 })
-
-// PostAction MessageBody
-// TODO:将来「bubble」と「isToast」にし、toastは削除する
-export const PostActionMessageBodySchema = z.object({
-  bubble: z.string().nullable().default(null),
-  toast: z.string().optional(),
-  isToast: z.boolean().default(false),
-  user: UserNameSchema.optional(),
-  ranking: RankingMessageSchema.optional(),
-})
-
-export type PostActionMessageBodyType = z.infer<typeof PostActionMessageBodySchema>

@@ -1,5 +1,5 @@
 // src/MainGenerator/script/RuleProcess/RuleCommentProcessor.ts
-import { BotMessage } from '@/types/'
+import { BotMessageType } from '@/types/'
 import { processUserComment } from '@/MainGenerator/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -13,10 +13,10 @@ export class RuleCommentProcessor {
   /**
    * メイン処理: コメントを処理して拡張コメントを作成
    */
-  respondToComments(omikens: OmikenCommentType[]): BotMessage[] {
+  respondToComments(omikens: OmikenCommentType[]): BotMessageType[] {
     if (!omikens.length) return []
 
-    const botMessages: BotMessage[] = []
+    const botMessages: BotMessageType[] = []
     // 最新が末尾なので反転してから先頭5件を取得
     const limitedComments = omikens.slice().reverse().slice(0, 5)
 

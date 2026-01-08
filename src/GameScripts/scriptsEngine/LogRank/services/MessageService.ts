@@ -19,9 +19,9 @@ export const createPostActions = (
       characterKey,
       iconKey: 'default',
       message: {
-        bubble: null,
-        toast: rank
-          ? createRankingMessage(userStats.name, record.score, rank, isOverLimit)
+        // TODO:isToast 修正
+        bubble: rank
+          ? createRankingMessage(userStats.userName, record.score, rank, isOverLimit)
           : createMessage(userStats, record, isOverLimit),
         isToast: true,
       },
@@ -34,20 +34,20 @@ export const createPostActions = (
  * ユーザー統計と記録からメッセージを作成
  */
 const createMessage = (stats: UserStatsType, record: GameRecordType, isOverLimit: boolean): string => {
-  const { name } = stats
+  const { userName } = stats
   const { score } = record
 
   if (isOverLimit) {
-    return `${name}さんは上限を超えているから、参考記録だよ。`
+    return `${userName}さんは上限を超えているから、参考記録だよ。`
   }
 
   // ランキング情報は外部で取得する想定
   // ここではシンプルなメッセージのみ
   if (score > 0) {
-    return `${name}さんの${score}ポイントを記録したよ。`
+    return `${userName}さんの${score}ポイントを記録したよ。`
   }
 
-  return `${name}さんの記録を登録したよ。`
+  return `${userName}さんの記録を登録したよ。`
 }
 
 /**

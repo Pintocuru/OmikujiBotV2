@@ -63,7 +63,7 @@ const generateWinBasedRankings = (context: GameContext): RankingEntry[] => {
     return {
       id: `aggregate-${stats.userId}`,
       userId: stats.userId,
-      userName: stats.name,
+      userName: stats.userName,
       score: sortValue,
       itemValue1: latestLog?.itemValue1,
       itemValue2: latestLog?.itemValue2,

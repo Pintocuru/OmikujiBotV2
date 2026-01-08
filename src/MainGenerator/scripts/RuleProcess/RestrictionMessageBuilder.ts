@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
-import { BotMessage, BotMessageSchema, CommentRuleType } from '@/types/'
+import { BotMessageType, BotMessageSchema, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
@@ -42,24 +42,21 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 /**
  * トーストメッセージを作成
  */
-function createToastMessages(message: string): BotMessage[] {
+function createToastMessages(message: string): BotMessageType[] {
   const { isCharacter } = useVisibilityAccess()
   const { defaultToastColor } = useCharacterManager()
   const firstCharacter = useCharacterManager().getFirstCharacter()
 
-  const botMessageData: BotMessage =
-    isCharacter.value && firstCharacter
-      ? BotMessageSchema.parse({
-          name: firstCharacter.name,
-          characterKey: firstCharacter.key,
-          iconKey: 'default',
-          message: { toast: message },
-          color: firstCharacter.color,
-        })
-      : BotMessageSchema.parse({
-          message: { toast: message },
-          color: defaultToastColor.value,
-        })
+  const botMessageData: BotMessageType = BotMessageSchema.parse({
+    type: 'system',
+    bubble: {
+      name: firstCharacter?.name,
+      message,
+      isToast: true,
+      characterKey: firstCharacter?.key,
+      color: isCharacter.value && firstCharacter ? firstCharacter.color : defaultToastColor.value,
+    },
+  })
 
   return [BotMessageSchema.parse(botMessageData)]
 }
@@ -67,7 +64,7 @@ function createToastMessages(message: string): BotMessage[] {
 /**
  * 制限チェック結果からBotMessageを生成
  */
-export function buildRestrictionMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessage[] {
+export function buildRestrictionMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessageType[] {
   if (!result.isBlocked) return []
 
   const message = createMessage(result, rule)

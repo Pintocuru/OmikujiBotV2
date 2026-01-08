@@ -6,7 +6,7 @@ import {
   OmikujiItemType,
   PostActionType,
 } from '@/types/'
-import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiProcess/OmikujiResultProcessor'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -21,7 +21,7 @@ export class OmikujiTestProcessor {
   /**
    * おみくじの直接指定
    */
-  executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessage[] {
+  executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessageType[] {
     const defaultPlaceholders = this.getSamplePlaceholders()
     this.resultProcessor.insertDefaultPlaceholders(defaultPlaceholders)
 
@@ -33,7 +33,7 @@ export class OmikujiTestProcessor {
    * PostActionのみを実行（テスト用・簡易実行）
    * ルール情報やスクリプト実行なしで、PostActionを直接BotMessageに変換
    */
-  executePostActionsOnly(actions: PostActionType[], omiken?: OmikenCommentType): BotMessage[] {
+  executePostActionsOnly(actions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
     const dummyOmikujiItem: OmikujiItemType = OmikujiItemSchema.parse({ postActions: actions })
     return this.executeOmikujiDirect(dummyOmikujiItem, omiken)
   }

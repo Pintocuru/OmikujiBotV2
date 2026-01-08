@@ -22,7 +22,7 @@ export type ResultType = z.infer<typeof ResultTypeSchema>
 export const GameParamsSchema = z.object({
   // ユーザー情報
   userId: z.string(),
-  name: z.string(),
+  userName: z.string(),
 
   // BOT設定
   characterKey: z.string(),
@@ -88,29 +88,3 @@ export const isLoseResult = (params: GameParams): boolean => params.result.type 
 export const isDrawResult = (params: GameParams): boolean => params.result.type === 'draw'
 
 export const isScoreResult = (params: GameParams): boolean => params.result.type === 'score'
-
-/**
- * 使用例とマイグレーションガイド
- *
- * 【旧】
- * {
- *   rankMode: 'point',
- *   isWin: true,
- *   getPoint: 100
- * }
- *
- * 【新】
- * {
- *   rankingMode: 'high_score',
- *   result: {
- *     type: 'win',
- *     score: 100
- *   }
- * }
- *
- * メリット:
- * 1. rankingMode: 'total_wins' | 'win_rate' | 'high_score' で目的が明確
- * 2. result.type: 勝敗とスコアを分離して扱える（引き分けも表現可能）
- * 3. result.score: 常に記録されるので、勝敗に関係なくポイント付与が可能
- * 4. 拡張性: result内に新しいプロパティを追加しやすい
- */

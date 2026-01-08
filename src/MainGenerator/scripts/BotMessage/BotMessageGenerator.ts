@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\BotMessage\BotMessageGenerator.ts
-import { BotMessage, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
 import {
   PostActionType,
   PostActionMessageType,
@@ -7,38 +7,45 @@ import {
   CharacterColorType,
   CharacterType,
   OmikujiDataType,
+  RankingMessageSchema,
 } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
+import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 
 export class BotMessageGenerator {
-  // キャラクター検索を高速化するためのMap
   private characterMap: Map<string, CharacterType>
   private isCharacterMode: boolean
   private defaultColors: { bubble: CharacterColorType; toast: CharacterColorType }
+  private variableProcessor: VariablePlaceholderProcessor
+  private evaluator: ExpressionEvaluator
 
   constructor(omikujiData: OmikujiDataType) {
-    // 初期化時に一度だけMap化
     this.characterMap = new Map(Object.values(omikujiData.characters).map((char) => [char.key, char]))
     this.isCharacterMode = checkIsCharacter(omikujiData)
     this.defaultColors = {
       bubble: omikujiData.components.bubble.defaultColor,
       toast: omikujiData.components.toast.defaultColor,
     }
+    this.evaluator = new ExpressionEvaluator()
+    this.variableProcessor = new VariablePlaceholderProcessor(this.evaluator)
   }
 
   /**
    * 複数のPostActionからBotMessageの配列を生成
    */
-  generateMessages(postActions: PostActionType[]): BotMessage[] {
-    const messages: BotMessage[] = []
+  generateMessages(postActions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
+    const messages: BotMessageType[] = []
+    // TODO: UserNameSchema のデータを作成するのは、この箇所でもいいのでは？
 
     for (const action of postActions) {
       switch (action.actionType) {
         case 'message':
-          messages.push(...this.generateMessageAction(action))
+          messages.push(...this.generateMessageAction(action, omiken))
           break
         case 'sound':
           this.handleSoundAction(action)
@@ -59,16 +66,37 @@ export class BotMessageGenerator {
   /**
    * PostActionMessageType の処理
    */
-  private generateMessageAction(postAction: PostActionMessageType): BotMessage[] {
+  private generateMessageAction(postAction: PostActionMessageType, omiken?: OmikenCommentType): BotMessageType[] {
     const character = this.getSafeCharacter(postAction.characterKey)
     const delaySeconds = this.calculateBaseDelay(postAction)
     const { message: msg } = postAction
-    const messages: BotMessage[] = []
+    const messages: BotMessageType[] = []
+
+    // bubble と toast に対して変数プレースホルダーを適用
+    const bubbleResult = msg.bubble ? this.variableProcessor.process(msg.bubble) : null
+    const toastResult = msg.toast ? this.variableProcessor.process(msg.toast) : null
+
+    // 最終的なメッセージテキスト
+    const finalBubble = bubbleResult?.bubble || null
+    const finalToast = toastResult?.bubble || null
+
+    // ランキング情報の生成（textがあれば）
+    const rankingSource = bubbleResult || toastResult
+    const ranking = rankingSource?.text
+      ? RankingMessageSchema.parse({
+          scriptKey: 'basicList',
+          listName: rankingSource.name,
+          scoreText: rankingSource.text,
+          symbol: rankingSource.symbol,
+          variant: rankingSource.variant,
+          isUniqueUser: rankingSource.unique === 'false' ? false : true,
+        })
+      : undefined
 
     // メッセージ内容の有無チェック
-    const hasBubble = this.hasContent(msg.bubble)
-    const hasToast = this.hasContent(msg.toast)
-    const hasRanking = !!msg.ranking
+    const hasBubble = this.hasContent(finalBubble)
+    const hasToast = this.hasContent(finalToast)
+    const hasRanking = !!ranking
 
     // 何もメッセージがない場合は音声のみ再生
     if (!hasBubble && !hasToast && !hasRanking) {
@@ -78,24 +106,21 @@ export class BotMessageGenerator {
 
     // bubble メッセージ処理
     if (hasBubble) {
-      messages.push(this.createBotMessage(postAction, character, delaySeconds, 'bubble'))
-      this.handleRpgVoiceIfNeeded(character, msg.bubble!, delaySeconds)
+      messages.push(this.createBotMessage(postAction, character, delaySeconds, 'bubble', finalBubble!, ranking, omiken))
+      this.handleRpgVoiceIfNeeded(character, finalBubble!, delaySeconds)
     }
-
     // toast メッセージ処理
     else if (hasToast) {
-      messages.push(this.createBotMessage(postAction, character, delaySeconds, 'toast'))
+      messages.push(this.createBotMessage(postAction, character, delaySeconds, 'toast', finalToast!, ranking, omiken))
     }
-
-    // ranking / user のみの場合
+    // ranking のみの場合
     else if (hasRanking) {
       messages.push(
         BotMessageSchema.parse({
           delaySeconds,
-          message: {
-            ranking: msg.ranking,
-            user: msg.user,
-          },
+          type: 'rankingOnly',
+          ranking,
+          user: omiken ? UserNameSchema.parse(omiken) : undefined,
         })
       )
     }
@@ -121,21 +146,28 @@ export class BotMessageGenerator {
     postAction: PostActionMessageType,
     character: CharacterType | null,
     delaySeconds: number,
-    messageType: 'bubble' | 'toast'
-  ): BotMessage {
-    const isChar = this.isCharacterMode && !!character
-    const color = isChar ? character!.color : this.defaultColors[messageType]
+    messageType: 'bubble' | 'toast',
+    messageText: string,
+    ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined,
+    omiken?: OmikenCommentType
+  ): BotMessageType {
+    const isChar = this.isCharacterMode && character
+    const color = isChar ? character.color : this.defaultColors[messageType]
 
     return BotMessageSchema.parse({
-      name: isChar ? character!.displayName : '',
-      characterKey: isChar ? postAction.characterKey : null,
-      iconKey: postAction.iconKey,
+      type: omiken ? 'comment' : 'system',
       delaySeconds,
-      color,
-      message:
-        messageType === 'bubble'
-          ? { ...postAction.message, bubble: postAction.message.bubble }
-          : { ...postAction.message, toast: postAction.message.toast },
+      user: omiken ? UserNameSchema.parse(omiken) : undefined,
+      ranking,
+      bubble: {
+        name: isChar ? character.displayName : '',
+        message: messageType === 'bubble' ? messageText : '',
+        toast: messageType === 'toast' ? messageText : undefined,
+        isToast: messageType === 'toast',
+        characterKey: isChar ? postAction.characterKey : null,
+        iconKey: postAction.iconKey,
+        color,
+      },
     })
   }
 
@@ -192,7 +224,6 @@ export class BotMessageGenerator {
 
 /**
  * IsCharacter
- * TODO:他でも使うなら個別化する
  */
 export function checkIsCharacter(omikujiData: OmikujiDataType): boolean {
   const { featureUsage, characters, settings } = omikujiData

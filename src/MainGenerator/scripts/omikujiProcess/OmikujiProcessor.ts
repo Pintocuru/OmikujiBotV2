@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
 import { OmikujiSetType, OmikujiItemType } from '@/types/'
-import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from './OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -24,7 +24,7 @@ export class OmikujiProcessor {
   /**
    * おみくじ実行
    */
-  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessage[] {
+  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
     // おみくじ
     const omikujiItem = this.lotteryOmikujiItem(omikujiSet, omiken)
     if (!omikujiItem) return []

@@ -15,18 +15,20 @@ export const GameRecordSchema = z.object({
   itemValue3: z.string().optional(), // 汎用表示項目3
   createdAt: z.string(), // 記録日時（ISO 8601形式）
 })
+export type GameRecordType = z.infer<typeof GameRecordSchema>
 
 /**
  * ユーザーごとの累計統計
  */
 export const UserStatsSchema = z.object({
   userId: z.string(),
-  name: z.string(), // 最新の表示名
+  userName: z.string(), // 最新の表示名
   totalDraws: z.number().default(0), // 累計実行回数（上限チェック用）
   totalPoints: z.number().default(0), // 累計ポイント
   totalWins: z.number().default(0), // 累計勝利回数
   bestScore: z.number().default(0), // 自己ベストスコア
 })
+export type UserStatsType = z.infer<typeof UserStatsSchema>
 
 /**
  * ゲーム全体のステート
@@ -38,6 +40,4 @@ export const GameStateSchema = z.object({
 })
 
 // 型推論用のエクスポート
-export type GameRecordType = z.infer<typeof GameRecordSchema>
-export type UserStatsType = z.infer<typeof UserStatsSchema>
 export type GameStateType = z.infer<typeof GameStateSchema>

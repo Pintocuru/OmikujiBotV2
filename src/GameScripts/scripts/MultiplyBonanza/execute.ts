@@ -1,12 +1,12 @@
-// src\GameScripts\scripts\MultiplyBonanza\execute.ts
+// src/GameScripts/scripts/MultiplyBonanza/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
 import { GameEngine } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { WordPartySelector } from './wordPartySelector'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { buildRankingMessage, prepareUserInfo } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo, buildBotMessage } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'MultiplyBonanza'
 
@@ -17,7 +17,7 @@ export class ExecuteScript implements ScriptClass {
     this.logRank.setup(RANKING_KEY)
   }
 
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
+  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
     const params = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
 
@@ -27,21 +27,24 @@ export class ExecuteScript implements ScriptClass {
     // ランキングデータの記録
     const logResult = omiken ? this.recordRanking(omiken, gameResult.result.payout, characterKey) : null
 
-    // ランキングメッセージの構築
-    const rankingMessage = buildRankingMessage({
+    // BotMessage の構築
+    const botMessage = buildBotMessage({
       user,
       characterKey,
+      bubbleText: gameResult.message,
       scriptKey: RANKING_KEY,
       score: gameResult.result.payout,
       symbol: gameResult.result.symbol,
-      bubbleText: gameResult.message,
       logResult,
     })
 
     // ゲーム結果に基づいてWordPartyを生成
     const wordPartyActions = this.selectWordParties(gameResult.result)
 
-    return this.buildPostActions(gameResult, wordPartyActions, logResult, rankingMessage)
+    return {
+      actions: this.buildPostActions(gameResult, wordPartyActions, logResult, characterKey),
+      messages: [botMessage],
+    }
   }
 
   sampleRun(queryString: string): string {
@@ -85,7 +88,7 @@ export class ExecuteScript implements ScriptClass {
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
       userId: omiken.userId,
-      name: omiken.userName,
+      userName: omiken.userName,
       characterKey,
       rankingMode: 'high_score',
       maxDrawsPerUser: 5,
@@ -105,23 +108,32 @@ export class ExecuteScript implements ScriptClass {
   }
 
   /**
-   * 投稿アクションの構築
+   * PostAction の構築
    */
   private buildPostActions(
-    game: {
+    gameResult: {
       result: ReturnType<GameEngine['playGame']>
       message: string
     },
     wordPartyActions: PostActionType[],
     logResult: ReturnType<LogRankScript['run']> | null,
-    rankingMessage: PostActionType
+    characterKey: string
   ): PostActionType[] {
+    const messageAction = PostActionMessageSchema.parse({
+      delaySeconds: 3.5,
+      characterKey,
+      message: {
+        bubble: gameResult.message,
+      },
+      sound: 'decision',
+    })
+
     return [
       ...(logResult?.postActions ?? []),
-      { actionType: 'wordParty', delaySeconds: 1, wordParty: game.result.party },
+      { actionType: 'wordParty', delaySeconds: 1, wordParty: gameResult.result.party },
       { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
       ...wordPartyActions,
-      rankingMessage,
+      messageAction,
     ]
   }
 }

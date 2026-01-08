@@ -1,11 +1,12 @@
-// src\common\GameScripts\scripts\GoogolClover\execute.ts
+// src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { BotMessageSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { GameContext, playSlot } from './game'
-import { UserState } from './types'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { UserState } from './sub/types'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'
@@ -24,7 +25,7 @@ export class ExecuteScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): PostActionType[] {
+  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
     const {} = this.parseParams(queryString)
 
     const context: GameContext = {
@@ -37,7 +38,14 @@ export class ExecuteScript implements ScriptClass {
     // ゲームの実行
     const gameResult = playSlot(this.userStates, context)
 
-    return this.buildPostActions(gameResult, characterKey)
+    // PostActionとBotMessageに分離
+    const postActions = this.buildPostActions(gameResult.botMessage, characterKey)
+    const botMessages = this.buildBotMessages(gameResult.botMessage, characterKey, omiken)
+
+    return {
+      actions: postActions,
+      messages: botMessages,
+    }
   }
 
   /**
@@ -54,7 +62,7 @@ export class ExecuteScript implements ScriptClass {
 
     // ゲームの実行
     const gameResult = playSlot(this.userStates, context)
-    return gameResult.bubble ?? ''
+    return gameResult.botMessage.bubble ?? ''
   }
 
   /**
@@ -73,13 +81,19 @@ export class ExecuteScript implements ScriptClass {
   }
 
   /**
-   * 投稿
+   * PostAction の構築（bubble は含めない）
    */
-  private buildPostActions(gameResult: ReturnType<typeof playSlot>, characterKey: string): PostActionType[] {
+  private buildPostActions(
+    botMessage: ReturnType<typeof playSlot>['botMessage'],
+    characterKey: string
+  ): PostActionType[] {
+    // メッセージアクションは bubble のみを含む
     const messageAction = PostActionMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
-      message: gameResult,
+      message: {
+        bubble: botMessage.bubble,
+      },
       sound: 'decision',
     })
 
@@ -96,7 +110,31 @@ export class ExecuteScript implements ScriptClass {
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
     ]
 
-    return [...common, ...(gameResult.ranking?.scoreValue ? successActions : failActions), messageAction]
+    return [...common, ...(botMessage.ranking.scoreValue ? successActions : failActions), messageAction]
+  }
+
+  /**
+   * BotMessage の構築（user, ranking を含む）
+   */
+  private buildBotMessages(
+    botMessage: ReturnType<typeof playSlot>['botMessage'],
+    characterKey: string,
+    omiken?: OmikenCommentType
+  ): BotMessageType[] {
+    return [
+      BotMessageSchema.parse({
+        delaySeconds: 3.5,
+        type: 'comment' as const,
+        bubble: {
+          name: botMessage.user.userName,
+          message: botMessage.bubble,
+          isToast: false,
+          characterKey,
+        },
+        user: omiken ? UserNameSchema.parse(omiken) : undefined,
+        ranking: botMessage.ranking,
+      }),
+    ]
   }
 }
 

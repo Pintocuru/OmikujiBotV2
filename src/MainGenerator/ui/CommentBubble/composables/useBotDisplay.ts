@@ -1,6 +1,7 @@
 // src\MainGenerator\ui\OmikujiBot\composables\useBotDisplay.ts
+// TODO:toastを削除し、isToastに統一したい
 import { ref, computed, Ref } from 'vue'
-import { BotMessage } from '@/types/'
+import { BotMessageType } from '@/types/'
 
 const DISPLAY_CONFIG = {
   INTERVAL: 250,
@@ -13,20 +14,20 @@ const DISPLAY_CONFIG = {
 export type DisplayMode = 'comment' | 'toast'
 
 // 表示用の拡張BotMessage型
-export interface DisplayBotMessage extends BotMessage {
+export interface DisplayBotMessage extends BotMessageType {
   visible: boolean
   hideTimeout?: number
 }
 
 // 共通の基底composable
-export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode) => {
+export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayMode) => {
   const displayedComments = ref<DisplayBotMessage[]>([])
   const animationFrameId = ref<number>()
 
   const comments = computed(() =>
     botMessages.value.filter((m) => {
-      if (mode === 'toast') return !!m.message?.toast
-      return !!m.message?.bubble
+      if (mode === 'toast') return !!m.bubble?.message
+      return !!m.bubble?.message
     })
   )
 
@@ -67,11 +68,11 @@ export const useBotDisplay = (botMessages: Ref<BotMessage[]>, mode: DisplayMode)
       newComments.forEach((nextComment) => {
         let totalLifeTime: number
 
-        if (nextComment.displaySeconds !== undefined) {
-          totalLifeTime = nextComment.displaySeconds * 1000
+        if (nextComment.bubble?.displaySeconds !== undefined) {
+          totalLifeTime = nextComment.bubble?.displaySeconds * 1000
         } else {
           const commentLength =
-            mode === 'comment' ? (nextComment.message?.bubble?.length ?? 0) : (nextComment.message.toast?.length ?? 0)
+            mode === 'comment' ? (nextComment.bubble?.message?.length ?? 0) : (nextComment.bubble?.message?.length ?? 0)
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }

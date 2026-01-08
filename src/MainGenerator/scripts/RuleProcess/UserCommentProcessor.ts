@@ -1,5 +1,5 @@
 // src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
-import { BotMessage, CommentRuleType } from '@/types/'
+import { BotMessageType, CommentRuleType } from '@/types/'
 import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
 import { buildRestrictionMessages } from './RestrictionMessageBuilder'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
@@ -9,13 +9,13 @@ import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 
 interface RuleProcessResult {
   isCommentTriggered: boolean
-  botMessages: BotMessage[]
+  botMessages: BotMessageType[]
 }
 
 /**
  * ユーザーコメントの処理
  */
-export function processUserComment(omiken: OmikenCommentType): BotMessage[] {
+export function processUserComment(omiken: OmikenCommentType): BotMessageType[] {
   try {
     const { cooldownManager } = useAppStore()
     const sortedRules = getSortedEnabledRules()

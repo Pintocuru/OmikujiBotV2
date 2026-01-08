@@ -1,6 +1,6 @@
 // src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
-import { BotMessage } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 
@@ -20,7 +20,7 @@ export class RuleTimerProcessor {
   /**
    * すべてのタイマーを開始
    */
-  startTimers(onTimerTrigger: (messages: BotMessage[]) => void): void {
+  startTimers(onTimerTrigger: (messages: BotMessageType[]) => void): void {
     this.stopTimers()
 
     // Pinia Store
@@ -37,7 +37,7 @@ export class RuleTimerProcessor {
   /**
    * 個別のタイマーを開始
    */
-  private startTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessage[]) => void): void {
+  private startTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessageType[]) => void): void {
     const intervalMs = rule.intervalSeconds * 1000
     let initialDelay = intervalMs
 
@@ -79,7 +79,7 @@ export class RuleTimerProcessor {
   /**
    * タイマー実行時の処理
    */
-  private executeTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessage[]) => void): void {
+  private executeTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessageType[]) => void): void {
     try {
       const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
       onTimerTrigger(omikujiMessages)

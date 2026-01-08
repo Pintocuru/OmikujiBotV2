@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
 import { computed, type Ref } from 'vue'
-import type { BotMessage, ShowCharacters, CharacterType } from '@/types/'
+import type { BotMessageType, ShowCharacters, CharacterType } from '@/types/'
 import { DisplayBotMessage } from './useBotDisplay'
 
 /**
@@ -16,12 +16,12 @@ export function useCharacterSelection(
   // 最新コメントのキャラクターキーを取得
   const latestCommenterKey = computed(() => {
     const visibleMessages = displayedComments.value.filter((m) => m.visible)
-    return visibleMessages[0]?.characterKey ?? null
+    return visibleMessages[0]?.bubble?.characterKey ?? null
   })
 
   // 指定キャラクターのメッセージ数を取得
   const getMessageCount = (characterKey: string): number => {
-    return displayedComments.value.filter((m) => m.characterKey === characterKey).length
+    return displayedComments.value.filter((m) => m.bubble?.characterKey === characterKey).length
   }
 
   /**
@@ -59,8 +59,8 @@ export function useCharacterSelection(
     if (allowKeys.length === 0) return []
 
     return displayedComments.value.filter((message) => {
-      if (message.characterKey === null) return true // キャラクター非表示モード
-      return allowKeys.includes(message.characterKey)
+      if (!message.bubble?.characterKey) return true // キャラクター非表示モード
+      return allowKeys.includes(message.bubble?.characterKey)
     })
   })
 

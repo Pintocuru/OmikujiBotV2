@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessage } from '@/types/'
+  import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessageType } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
@@ -62,16 +62,20 @@
       const shouldChangeExpression = Math.random() < 0.5
       const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
 
-      const postAction: BotMessage = BotMessageSchema.parse({
-        name: isCharacter ? character.name : '',
-        characterKey: isCharacter ? character.key : null,
-        iconKey: shouldChangeExpression ? randomEmotion : 'default',
-        color: isCharacter ? character?.color : !isRightClick ? defaultBubbleColor.value : defaultToastColor.value,
-        message: {
-          bubble: !isRightClick ? `${character.name !== '' ? character.name : 'default'}のテストメッセージです！` : '',
-          toast: isRightClick ? `${character.name !== '' ? character.name : 'default'}のトーストメッセージです！` : '',
+      const postAction: BotMessageType = BotMessageSchema.parse({
+        type: 'system',
+        bubble: {
+          name: isCharacter ? character.name : null,
+          message: !isRightClick
+            ? `${character.name || 'default'}のテストメッセージです！`
+            : `${character.name || 'default'}のトーストメッセージです！`,
+          isToast: isRightClick,
+          characterKey: isCharacter ? character.key : null,
+          iconKey: shouldChangeExpression ? randomEmotion : 'default',
+          color: isCharacter ? character.color : !isRightClick ? defaultBubbleColor.value : defaultToastColor.value,
         },
       })
+
       appStore.addBotMessage(postAction)
     } catch (error) {
       console.error('テストメッセージの生成に失敗しました:', error)

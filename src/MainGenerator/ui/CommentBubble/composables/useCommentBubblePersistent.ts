@@ -44,7 +44,7 @@ export function useCommentBubblePersistent() {
 
   // 指定キャラクターのコメントを取得（表示中のみ）
   const getCharacterComments = (characterKey: string) => {
-    return displayedComments.value.filter((c) => c.characterKey === characterKey && c.visible)
+    return displayedComments.value.filter((c) => c.bubble?.characterKey === characterKey && c.visible)
   }
 
   return {

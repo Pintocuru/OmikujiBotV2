@@ -1,7 +1,6 @@
 // src\types\OmikujiData\ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { PostActionMessageBodySchema } from './ActionMessage'
 import { soundList } from '@sounds/soundMap'
 import { PostActionType as OldPostActionType } from '@migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types'
@@ -18,14 +17,24 @@ const PostActionBaseSchema = z.object({
 })
 
 // PostAction message
+// PostAction MessageBody
+// TODO:将来「bubble」と「isToast」にし、toastは削除する
+export const PostActionMessageMessageSchema = z.object({
+  bubble: z.string().nullable().default(null),
+  toast: z.string().optional(),
+  isToast: z.boolean().default(false),
+})
+
+export type PostActionMessageMessageType = z.infer<typeof PostActionMessageMessageSchema>
+
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('message').default('message'),
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   sound: z.enum(soundList).default('').catch(''),
-  message: PostActionMessageBodySchema.default(PostActionMessageBodySchema.parse({})).catch(
-    PostActionMessageBodySchema.parse({})
+  message: PostActionMessageMessageSchema.default(PostActionMessageMessageSchema.parse({})).catch(
+    PostActionMessageMessageSchema.parse({})
   ),
 })
 export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
@@ -152,9 +161,10 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: PostActionMessageBodySchema.parse({
+      message: PostActionMessageMessageSchema.parse({
         bubble: oldAction.messageContent, // ★ messageContent -> message.bubble
         toast: oldAction.messageToast, // ★ messageToast -> message.toast
+        isToast: oldAction.messageToast ? true : false,
       }),
     })
   }
@@ -186,9 +196,10 @@ export function migratePostAction(oldAction: OldPostActionType): PostActionType[
       characterKey: oldAction.characterKey ?? '',
       iconKey: oldAction.iconKey ?? 'default',
       sound: oldAction.sound as z.infer<typeof PostActionMessageSchema>['sound'],
-      message: PostActionMessageBodySchema.parse({
+      message: PostActionMessageMessageSchema.parse({
         bubble: oldAction.messageContent,
         toast: oldAction.messageToast,
+        isToast: oldAction.messageToast ? true : false,
       }),
     })
   }
