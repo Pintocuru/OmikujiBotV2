@@ -1,7 +1,7 @@
 // src\ConfigMaker\components\componentEditor\componentRules.ts
 import { AccessLevelType } from '@shared/types'
 
-// コンポーネント
+// アイテム
 export const BASIC_COMPONENTS = ['bubble', 'toast'] as const
 export const PRO_COMPONENTS = ['ranking', 'counter'] as const
 export const GOD_COMPONENTS: string[] = []

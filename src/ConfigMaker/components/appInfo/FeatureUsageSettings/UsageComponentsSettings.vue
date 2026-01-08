@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageComponents.vue -->
 <template>
-  <SettingItem label="コンポーネント設定" description="ジェネレーターのコンポーネント表示制御">
-    <!-- 利用可能なコンポーネント -->
+  <SettingItem label="アイテム設定" description="ジェネレーターのアイテム表示制御">
+    <!-- 利用可能なアイテム -->
     <div class="bg-base-200 p-3 rounded">
       <InformationCard class="mb-4">
         <p>デフォルトでは</p>

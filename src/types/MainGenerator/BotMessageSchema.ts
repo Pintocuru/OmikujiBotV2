@@ -73,7 +73,6 @@ export const BotMessageSchema = BotMessageBaseSchema.superRefine((data, ctx) => 
           path: ['user'],
         })
       }
-      // ranking は optional なのでチェック不要
       break
 
     case 'rankingOnly':
@@ -84,8 +83,6 @@ export const BotMessageSchema = BotMessageBaseSchema.superRefine((data, ctx) => 
           path: ['ranking'],
         })
       }
-      // user は optional
-      // bubble は不要
       break
   }
 })

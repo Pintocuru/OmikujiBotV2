@@ -1,7 +1,6 @@
 // src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
 import { RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { AccessLevelType } from '@shared/types'
 import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo } from '../ImportTypes'
 
@@ -69,7 +68,7 @@ export const generateCategoryPreview = (currentData: OmikujiDataType, importData
 }
 
 /**
- * コンポーネントのプレビューを生成
+ * アイテムのプレビューを生成
  */
 export const generateComponentPreview = (
   currentData: OmikujiDataType,

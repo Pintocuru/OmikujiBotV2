@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\ComponentConditionsEditor.vue -->
 <template>
-  <!-- コンポーネント表示設定 -->
-  <SettingItem label="表示するコンポーネント" description="ジェネレーターで表示するUIを選択">
+  <!-- アイテム表示設定 -->
+  <SettingItem label="表示するアイテム" description="ジェネレーターで表示するUIを選択">
     <div class="flex flex-wrap gap-2">
       <label
         v-for="comp in enabledComponents"
@@ -19,7 +19,7 @@
     </div>
   </SettingItem>
 
-  <!-- コンポーネント表示設定 -->
+  <!-- アイテム表示設定 -->
   <InformationCard v-if="!conditions.length">
     <p class="text-base">
       あれっ、<span class="label bg-accent text-accent-content">条件がまだ設定されてない</span>みたいです。<br />

@@ -5,8 +5,9 @@ import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'
 
-// フキダシ・キャラクター
-
+/**
+ * フキダシ・キャラクター
+ */
 // キャラアイコンの並び順
 export const ShowCharactersSchema = z.object({
   center: z.array(z.string()).default([]), // 中央上部に表示
@@ -31,7 +32,9 @@ export const SettingsBubbleSchema = z.object({
 })
 export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
 
-// トースト・サムネイル
+/**
+ * トースト・サムネイル
+ */
 export const SettingsToastSchema = z.object({
   defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({ isTheme: true })).catch(
     CharacterColorScheme.parse({ isTheme: true })
@@ -52,7 +55,9 @@ export const rankingSortOrderLabels: Record<RankingSortOrder, string> = {
   low: 'スコア低い順',
 }
 
-// ランキング Ranking
+/**
+ * ランキング Ranking
+ */
 export const SettingsRankingSchema = z.object({
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
@@ -63,7 +68,9 @@ export const SettingsRankingSchema = z.object({
 
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
-// カウンター・ユーザーリスト Counter
+/**
+ * カウンター・ユーザーリスト Counter
+ */
 // idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
 export const SettingsCounterSchema = z.object({
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
@@ -78,16 +85,16 @@ export const SettingsCounterSchema = z.object({
 
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 
-// コンポーネント設定
+// アイテム設定
 export const settingsComponentsCondition = ['bubble', 'toast', 'ranking', 'counter'] as const
 export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
 
-// コンポーネント名のマッピング
+// アイテム名のマッピング
 export const componentLabels: Record<SettingsComponentsCondition, string> = {
-  bubble: '💬 フキダシコンポーネント',
-  toast: '🍞 トーストコンポーネント',
-  ranking: '🏆 ランキングコンポーネント',
-  counter: '🔢 カウンターコンポーネント',
+  bubble: '💬 フキダシアイテム',
+  toast: '🍞 トーストアイテム',
+  ranking: '🏆 ランキングアイテム',
+  counter: '🔢 カウンターアイテム',
 }
 
 export const ComponentsConditionSchema = z.enum(settingsComponentsCondition)

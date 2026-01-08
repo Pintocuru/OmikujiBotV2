@@ -64,7 +64,6 @@
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
 
-  // Props定義（元のコンポーネントと同じ）
   const props = withDefaults(
     defineProps<{
       botName?: string

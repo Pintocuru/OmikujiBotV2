@@ -92,8 +92,8 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     icon: Users,
   },
   components: {
-    label: 'コンポーネント', // BOTメッセージやランキングの表示・非表示
-    description: 'ジェネレーターで表示できる、コンポーネントの設定を行います',
+    label: 'アイテム', // BOTメッセージやランキングの表示・非表示
+    description: 'ジェネレーターで表示できる、アイテムの設定を行います',
     icon: LayoutGrid,
   },
   appInfo: {

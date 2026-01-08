@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageDeveloper.vue -->
 <template>
-  <SettingItem label="コンポーネント固有設定" description="特定コンポーネント内の要素の表示制御">
+  <SettingItem label="アイテム固有設定" description="特定アイテム内の要素の表示制御">
     <div class="space-y-3">
       <template v-for="item in settings" :key="item.key">
         <div class="bg-base-200 p-3 rounded">

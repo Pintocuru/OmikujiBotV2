@@ -18,17 +18,15 @@
       </div>
     </div>
 
-    <!-- コンポーネント -->
+    <!-- アイテム -->
     <div v-if="hasEnabledComponents" class="card bg-base-100 shadow-lg">
       <div class="card-body">
-        <SubSectionHeader icon="Box" title="コンポーネント" description="ジェネレーターで表示できるアイテム" />
+        <SubSectionHeader icon="Box" title="アイテム" description="ジェネレーターで表示できるアイテム" />
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-4">
           <ComponentChip v-for="component in components" :key="component" :name="component" />
         </div>
-        <div v-if="!hasAnyComponents" class="text-center py-4 text-base-content/60">
-          利用可能なコンポーネントはありません
-        </div>
+        <div v-if="!hasAnyComponents" class="text-center py-4 text-base-content/60">利用可能なアイテムはありません</div>
       </div>
     </div>
 

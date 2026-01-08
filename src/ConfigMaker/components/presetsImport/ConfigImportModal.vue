@@ -22,9 +22,9 @@
             />
           </div>
 
-          <!-- コンポーネント設定 -->
+          <!-- アイテム設定 -->
           <div v-if="Object.keys(importManager.previewData.value.componentConfigs).length > 0" class="space-y-2">
-            <h3 class="font-semibold text-lg">コンポーネント設定</h3>
+            <h3 class="font-semibold text-lg">アイテム設定</h3>
             <ComponentConfigSection
               v-for="(config, component) in importManager.previewData.value.componentConfigs"
               :key="component"

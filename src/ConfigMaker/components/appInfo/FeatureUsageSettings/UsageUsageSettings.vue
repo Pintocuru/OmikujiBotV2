@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageUsage.vue -->
 <template>
-  <SettingItem label="Recordコンポーネント表示" description="コンポーネントの表示・非表示を制御">
+  <SettingItem label="Recordアイテム表示" description="アイテムの表示・非表示を制御">
     <div class="grid grid-cols-1 gap-2">
       <div v-for="category in recordCategoryLabel" :key="category" class="bg-base-200 p-3 rounded">
         <div class="flex items-center justify-between mb-2">

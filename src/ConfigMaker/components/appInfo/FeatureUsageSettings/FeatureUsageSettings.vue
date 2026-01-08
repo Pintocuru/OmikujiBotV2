@@ -7,10 +7,10 @@
       <button @click="setSoloVisibility" class="btn btn-sm btn-secondary">Solo</button>
     </div>
 
-    <!-- 基本コンポーネントの可視性 -->
+    <!-- 基本アイテムの可視性 -->
     <FeatureUsageUsage />
 
-    <!-- コンポーネント・ゲームスクリプト設定 -->
+    <!-- アイテム・ゲームスクリプト設定 -->
     <FeatureUsageComponents />
     <FeatureUsageGames />
 

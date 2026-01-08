@@ -1,7 +1,5 @@
 // src\types\OmikujiData\PostActionMessage.ts
-
 import z from 'zod'
-import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * PostActionMessageSchema のメッセージ内容
@@ -16,7 +14,7 @@ export const RankingMessageSchema = z.object({
   scoreValue: z.number().optional(), // 比較用
   variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
   // 設定
-  scriptKey: z.string().default(''), // コンポーネント判別用key
+  scriptKey: z.string().default(''), // アイテム判別用key
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
 })
