@@ -108,6 +108,20 @@
 
   const loadFromGenerator = async () => {
     try {
+      // 変更があるなら確認ダイアログ
+      if (hasChanged.value) {
+        const result = await Swal.fire({
+          title: '変更が保存されていません',
+          text: '読み込むと現在の編集内容は失われます。続行しますか？',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: '読み込む',
+          cancelButtonText: 'キャンセル',
+        })
+        // キャンセル → 処理中断
+        if (!result.isConfirmed) return
+      }
+
       const { loadData } = useOmikujiStore()
       const data = await devConfigApi.loadGeneratorConfig()
 
@@ -124,9 +138,11 @@
         })
         return
       }
+
       // ファイル読み込み
-      devStore.setSaveFileName() // ファイル名をクリア
+      devStore.setSaveFileName()
       loadData(data)
+      hasChanged.value = false // 読み込み後は変更なし状態に戻す
 
       Swal.fire({
         toast: true,
