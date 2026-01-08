@@ -16,6 +16,8 @@ const AccessLevelPriority: Record<AccessLevelType, number> = {
 }
 
 export function hasAccessPure(level: AccessLevelType, accessMode: AccessLevelType): boolean {
+  // none なら必ず非表示
+  if (level === 'none') return false
   return AccessLevelPriority[accessMode] >= AccessLevelPriority[level]
 }
 

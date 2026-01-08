@@ -43,7 +43,7 @@
         placeholders: 'basic' as const,
         characters: 'basic' as const,
       },
-      components: [],
+      components: ['bubble', 'toast'],
       gameScripts: [],
 
       developer: {

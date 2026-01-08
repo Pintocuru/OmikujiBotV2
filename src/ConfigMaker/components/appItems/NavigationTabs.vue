@@ -47,13 +47,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { CategoryType } from '@/types/OmikujiData/'
   import { useCategoryUtils } from './useCategoryUtils'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { useRecordTabsStore } from '../RecordTabs/RecordTabsStore'
-  import { CategoryType } from '@/types/OmikujiData/'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
 
-  const tabsStore = useRecordTabsStore()
   const navigationStore = useNavigationStore()
 
   const { selectedCategory } = storeToRefs(navigationStore)
@@ -80,8 +78,6 @@
   const dockItemClass = (key: CategoryType) => (selectedCategory.value === key ? 'bg-primary text-primary-content' : '')
 
   const navigateCategory = (key: CategoryType) => {
-    // TODO:リセットを一旦やめてみる・・・
-    // tabsStore.resetFilterOptions()
     navigationStore.selectCategory(key)
   }
 </script>
