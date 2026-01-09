@@ -1,5 +1,5 @@
 // src/ConfigMaker/composables/useVersionCheck.ts
-import { ref, computed } from 'vue'
+import { ref, computed, Ref } from 'vue'
 import Swal from 'sweetalert2'
 
 export interface VersionInfo {
@@ -15,7 +15,7 @@ export interface VersionInfo {
  * バージョンチェック機能を提供する専属コンポーザブル
  * storeに依存せず、現在のバージョンを引数で受け取る
  */
-export function useVersionCheck(currentVersion: string) {
+export function useVersionCheck(currentVersion: Ref<string>) {
   const latestVersion = ref<string | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
@@ -28,18 +28,18 @@ export function useVersionCheck(currentVersion: string) {
   // 最新版かどうか
   const isLatest = computed(() => {
     if (!latestVersion.value) return true
-    return normalizeVersion(currentVersion) === normalizeVersion(latestVersion.value)
+    return normalizeVersion(currentVersion.value) === normalizeVersion(latestVersion.value)
   })
 
   // 新バージョンが存在するか
   const hasNewVersion = computed(() => {
     if (!latestVersion.value) return false
-    return normalizeVersion(currentVersion) !== normalizeVersion(latestVersion.value)
+    return normalizeVersion(currentVersion.value) !== normalizeVersion(latestVersion.value)
   })
 
   // バージョン情報オブジェクト
   const versionInfo = computed<VersionInfo>(() => ({
-    current: currentVersion,
+    current: currentVersion.value,
     latest: latestVersion.value,
     isLatest: isLatest.value,
     hasNewVersion: hasNewVersion.value,

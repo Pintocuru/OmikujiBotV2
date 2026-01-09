@@ -43,7 +43,7 @@
   const currentVersion = computed(() => data.value.meta.generatorVersion)
 
   // バージョンチェック機能
-  const { versionInfo, checkVersion, showUpdateDialog } = useVersionCheck(currentVersion.value)
+  const { versionInfo, checkVersion, showUpdateDialog } = useVersionCheck(currentVersion)
 
   // マウント時にバージョンチェック実行
   onMounted(() => checkVersion())
