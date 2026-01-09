@@ -24,7 +24,7 @@ export default defineConfig(() => {
     server: {
       watch: {
         // server フォルダは更新してもホットリロードしない
-        ignored: [path.resolve(__dirname, 'server/omikujiDatas/**')],
+        ignored: [path.resolve(__dirname, 'server/presets/**')],
       },
     },
     // チェックレベルに応じた追加設定

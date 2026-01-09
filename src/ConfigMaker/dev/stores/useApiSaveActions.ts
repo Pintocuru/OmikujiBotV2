@@ -75,6 +75,7 @@ export function useSaveActions(
       const configData = JSON.stringify(omikujiStore.data, null, 2)
       await generatorApi.saveGeneratorConfig(configData)
       await fetchFileList()
+      omikujiStore.resetChangeState() // 変更リセット
 
       // 成功トースト
       Swal.fire({
