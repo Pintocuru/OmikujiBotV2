@@ -24,14 +24,16 @@ class ConfigApiService extends BaseApiClient {
    * 設定ファイルを取得
    */
   async loadConfig(fileName: string): Promise<any> {
+    const finalFileName = ensureJsonExtension(fileName)
     try {
-      const response = await this.get('load', { fileName })
-
+      const response = await this.get('load', { fileName: finalFileName })
       this.validateResponse(response, '設定の読み込みに失敗しました')
 
       return response.data
     } catch (err: any) {
-      if (err.response?.status === 404) {
+      if (!err.response) throw err
+
+      if (err.response.status === 404) {
         throw new Error('設定ファイルが見つかりませんでした (404)')
       }
       throw new Error('設定の読み込み中に通信エラーが発生しました')

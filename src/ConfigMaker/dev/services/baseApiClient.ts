@@ -3,8 +3,6 @@ import axios, { AxiosInstance, AxiosError } from 'axios'
 import { isDev, SERVER_EXPRESS_URL, SERVER_PLUGIN_URL } from '@/types'
 import { getErrorMessage, normalizeApiResponse, NormalizedResponse } from './apiServiceUtils'
 
-type ApiAction = 'health' | 'list' | 'save' | 'load' | 'load-generator' | 'delete' | 'save-omikuji' | 'save-generator'
-
 /**
  * API通信の基盤クラス
  * 各ドメインAPIクラスはこれを継承して実装する

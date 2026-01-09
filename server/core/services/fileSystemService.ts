@@ -3,15 +3,15 @@ import fs from 'fs/promises'
 import path from 'path'
 import { FileItem } from '../types'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
-import { ASSETS_DIR, ROOT_DIR } from '../../dev-api'
 import { ensureDirectory } from './directoryService'
+import { DIR } from '../../constants'
 
 /**
  * ファイル一覧を取得
  */
 export async function getFileList(rootName: string | null): Promise<FileItem[]> {
   try {
-    const dir = rootName ? path.join(ROOT_DIR, rootName) : ROOT_DIR
+    const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
 
     await ensureDirectory(dir)
 
@@ -40,7 +40,7 @@ export async function getFileList(rootName: string | null): Promise<FileItem[]> 
  * ファイルを読み込み
  */
 export async function loadFile(rootName: string | null, fileName: string): Promise<any> {
-  const dir = rootName ? path.join(ROOT_DIR, rootName) : ROOT_DIR
+  const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
 
   const filePath = path.join(dir, fileName)
   const data = await fs.readFile(filePath, 'utf8')
@@ -51,7 +51,7 @@ export async function loadFile(rootName: string | null, fileName: string): Promi
  * JSONファイルを保存
  */
 export async function saveFile(rootName: string | null, fileName: string, data: string): Promise<void> {
-  const dir = rootName ? path.join(ROOT_DIR, rootName) : ROOT_DIR
+  const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
 
   await ensureDirectory(dir)
 
@@ -63,7 +63,7 @@ export async function saveFile(rootName: string | null, fileName: string, data: 
  * ファイルを削除
  */
 export async function deleteFile(rootName: string | null, fileName: string): Promise<void> {
-  const dir = rootName ? path.join(ROOT_DIR, rootName) : ROOT_DIR
+  const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
 
   const filePath = path.join(dir, fileName)
   await fs.unlink(filePath)
@@ -74,7 +74,7 @@ export async function deleteFile(rootName: string | null, fileName: string): Pro
  */
 export async function saveOmikujiData(configData: string, isExpress?: boolean): Promise<void> {
   const jsContent = generateJsContent(configData)
-  const dir = isExpress ? ASSETS_DIR : ROOT_DIR
+  const dir = isExpress ? DIR.assets : DIR.root
 
   await ensureDirectory(dir)
   const filePath = path.join(dir, 'omikujiData.js')

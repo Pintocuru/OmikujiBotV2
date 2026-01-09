@@ -2,21 +2,8 @@
 import express, { Request, Response, Application, NextFunction } from 'express'
 import cors from 'cors'
 import { Server } from 'http'
-import { fileURLToPath } from 'url'
-import path from 'path'
 import { setupExpressRoutes } from './adapters/expressAdapter'
-
-// ディレクトリ設定
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-export const CONFIG_DIR = path.join(__dirname, 'omikujiDatas')
-export const ASSETS_DIR = path.join(__dirname, '..', 'assets')
-export const ROOT_DIR = path.join(__dirname)
-const DIR = {
-  config: path.join(__dirname, 'omikujiDatas'),
-  assets: path.join(__dirname, '..', 'assets'),
-  root: path.join(__dirname),
-}
+import { DIR } from './constants'
 
 let server: Server | null = null
 
@@ -41,7 +28,7 @@ export function startDevApiServer(): Server | null {
   // サーバー起動
   server = app.listen(port, () => {
     console.log(`🚀 Dev API server running on http://localhost:${port}`)
-    console.log(`📁 Config files directory: ${CONFIG_DIR}`)
+    console.log(`📁 Config files directory: ${DIR.root}`)
   })
 
   // プロセス終了時の処理

@@ -6,13 +6,13 @@
       <button
         @click="toggleApiMode"
         :disabled="!isDev"
-        class="badge transition-colors cursor-pointer hover:opacity-80"
-        :class="[devStore.isExpressMode ? 'badge-warning' : 'badge-info', !isDev && 'cursor-not-allowed opacity-50']"
+        class="badge transition-colors"
+        :class="[devStore.isExpressMode ? 'badge-warning' : 'badge-info', isDev && 'cursor-pointer hover:opacity-80']"
         :title="isDev ? 'クリックでAPIモードを切り替え' : undefined"
       >
         {{ devStore.isExpressMode ? 'DEV' : 'Plugin' }}
       </button>
-      <h2 class="text-lg font-bold text-primary-content">{{ !isDev || isPro ? 'プリセット管理' : '' }}</h2>
+      <h2 class="text-lg font-bold text-primary-content">{{ isDev || isPro ? 'プリセット管理' : '' }}</h2>
     </div>
 
     <div v-if="devStore.isServerConnected" class="flex items-center gap-2">
@@ -29,7 +29,6 @@
         </button>
 
         <button
-          v-if="hasChanged"
           @click="devStore.saveToGenerator"
           :disabled="devStore.isSaving"
           class="btn btn-primary btn-sm tooltip tooltip-top"
