@@ -16,5 +16,7 @@ export const isDev = import.meta.env?.VITE_IS_DEV === 'true'
 /**
  * プラグイン
  */
-export const SERVER_PLUGIN_URL = 'http://localhost:11180/api/plugins/OmikujiBotPluginPlus'
+export const PLUGIN_KEY = 'OmikujiBotPluginPlus'
+export const PLUGIN_NAME = 'おみくじBOTプラグイン+'
+export const SERVER_PLUGIN_URL = `http://localhost:11180/api/plugins/${PLUGIN_KEY}`
 export const SERVER_EXPRESS_URL = 'http://localhost:3001/api'

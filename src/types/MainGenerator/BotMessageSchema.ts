@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { CharacterColorScheme, CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { RankingMessageSchema } from '../OmikujiData/ActionMessage'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { v4 } from 'uuid'
 
 /**
  * CommentBubbleSchema
@@ -22,7 +23,7 @@ export type CommentBubbleType = z.infer<typeof CommentBubbleSchema>
  * BotMessageBaseSchema
  */
 export const BotMessageBaseSchema = z.object({
-  id: z.string().default(() => crypto.randomUUID()),
+  id: z.string().default(() => v4()),
   timestamp: z.string().default(() => new Date().toISOString()),
   delaySeconds: z.number().default(0),
   type: z.enum(['system', 'comment', 'rankingOnly']),

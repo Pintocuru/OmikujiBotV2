@@ -1,4 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/GameScriptSchema.ts
+import { v4 } from 'uuid'
 import { z } from 'zod'
 
 /**
@@ -6,7 +7,7 @@ import { z } from 'zod'
  * ランキングや履歴の元データとして使用
  */
 export const GameRecordSchema = z.object({
-  id: z.string().default(() => crypto.randomUUID()),
+  id: z.string().default(() => v4()),
   userId: z.string(), // 実行者のユーザーID
   userName: z.string(), // 記録時の名前（名前変更対策）
   score: z.number(), // ランキング判定用のメイン数値

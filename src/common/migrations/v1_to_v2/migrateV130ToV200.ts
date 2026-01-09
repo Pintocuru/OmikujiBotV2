@@ -152,13 +152,15 @@ const migratePostAction = (oldAction: any): PostActionType[] => {
       sound: oldAction.sound,
     }
 
+    const hoge =
+      oldAction.messageContent && oldAction.messageContent !== '' ? oldAction.messageContent : oldAction.messageToast
+
     newActions.push({
       ...baseFields,
       actionType: 'message',
       ...characterFields,
       message: {
-        bubble: oldAction.messageContent, // messageContent -> message.bubble
-        toast: oldAction.messageToast, // messageToast -> message.toast
+        bubble: hoge ?? '', // messageContent -> message.bubble
         isToast: !oldAction.messageContent,
       },
     })

@@ -7,7 +7,7 @@ import {
   PostActionType,
 } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiResultProcessor } from '@main/scripts/OmikujiProcess/OmikujiResultProcessor'
+import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -23,10 +23,7 @@ export class OmikujiTestProcessor {
    */
   executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessageType[] {
     const defaultPlaceholders = this.getSamplePlaceholders()
-    this.resultProcessor.insertDefaultPlaceholders(defaultPlaceholders)
-
-    // おみくじを直接実行
-    return this.resultProcessor.process(omikujiItem, omiken)
+    return this.resultProcessor.process(omikujiItem, omiken, defaultPlaceholders)
   }
 
   /**

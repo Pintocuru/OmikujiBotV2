@@ -82,6 +82,7 @@
 
     if (isHealth) {
       isServerConnected.value = true
+      if (isDev) return // devならデータを読まない
       try {
         const lowData = await generatorApi.loadGeneratorConfig()
         if (lowData) {
@@ -94,6 +95,6 @@
     }
 
     // ローカルを読む
-    if (!isDev) omikujiStore.openLocalOmikujiData()
+    omikujiStore.openLocalOmikujiData()
   })
 </script>

@@ -29,6 +29,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { v4 } from 'uuid'
 
   const props = defineProps<{
     allOmikuji: OmikujiItemType[]
@@ -54,7 +55,7 @@
 
   const duplicateOmikuji = () => {
     if (index.value === -1 || !props.selectedItemKey) return
-    const id = crypto.randomUUID()
+    const id = v4()
     const duplicated = {
       ...JSON.parse(JSON.stringify(props.omikuji)),
       id,

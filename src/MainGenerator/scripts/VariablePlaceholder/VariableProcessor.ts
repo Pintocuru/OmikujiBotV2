@@ -13,7 +13,7 @@ import {
  */
 export interface ProcessResult {
   bubble: string
-  [key: string]: string | number
+  [key: string]: string
 }
 
 /**
@@ -44,7 +44,9 @@ export class VariablePlaceholderProcessor {
     processed = this.processRandFunction(processed)
 
     // すべての処理した変数を取得
-    const allVars = this.evaluator.getAll()
+    const allVars = Object.fromEntries(
+      Object.entries(this.evaluator.getAll()).map(([k, v]) => [k, String(v)])
+    ) as Record<string, string>
 
     // 予約語の削除
     for (const key of RESERVED_KEYS) this.evaluator.remove(key)

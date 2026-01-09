@@ -1,10 +1,10 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
 import { OmikujiSetType, OmikujiItemType } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiResultProcessor } from './OmikujiResultProcessor'
+import { DefaultPlaceholderService } from './DefaultPlaceholderService'
+import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { DefaultPlaceholderService } from './DefaultPlaceholderService'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
@@ -34,12 +34,9 @@ export class OmikujiProcessor {
       this.hoge()
     }
 
-    // デフォルトプレースホルダーを挿入
-    const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
-    this.resultProcessor.insertDefaultPlaceholders(defaultPlaceholders)
-
     // おみくじ処理
-    return this.resultProcessor.process(omikujiItem, omiken)
+    const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
+    return this.resultProcessor.process(omikujiItem, omiken, defaultPlaceholders)
   }
 
   /**

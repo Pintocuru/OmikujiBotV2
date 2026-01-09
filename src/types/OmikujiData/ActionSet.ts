@@ -18,12 +18,21 @@ const PostActionBaseSchema = z.object({
 
 // PostAction message
 // PostAction MessageBody
-// TODO:将来「bubble」と「isToast」にし、toastは削除する
-export const PostActionMessageMessageSchema = z.object({
-  bubble: z.string().nullable().default(null),
-  toast: z.string().optional(),
-  isToast: z.boolean().default(false),
-})
+export const PostActionMessageMessageSchema = z
+  .object({
+    bubble: z.string().nullable().default(null).catch(null),
+    toast: z.string().optional(),
+    isToast: z.boolean().default(false).catch(false),
+  })
+  .transform((v) => {
+    if (v.toast)
+      return {
+        bubble: v.toast ?? null,
+        isToast: true,
+        toast: undefined,
+      }
+    else return v
+  })
 
 export type PostActionMessageMessageType = z.infer<typeof PostActionMessageMessageSchema>
 

@@ -1,27 +1,23 @@
 // src/MainPlugin/plugin.ts
-import { fileURLToPath } from 'url'
-import path from 'path'
 import { pluginRequest } from '../../server/adapters/pluginAdapter'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { OnePlugin, PluginRequest, PluginResponse } from '@onecomme.com/onesdk/types/Plugin'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const pluginName = 'おみくじBOTプラグイン+'
+import { PLUGIN_KEY, PLUGIN_NAME } from '@/types'
+import { APP_VERSION } from '@/version'
 
 const plugin: OnePlugin = {
-  name: `${pluginName}  OmikujiBotPluginPlus`,
-  uid: 'OmikujiBotPluginPlus',
-  version: '2.0.0-beta-7',
+  name: `${PLUGIN_NAME} ${PLUGIN_KEY}`,
+  uid: PLUGIN_KEY,
+  version: APP_VERSION,
   author: 'Pintocuru',
-  url: path.resolve(__dirname, './index.html'),
+  // TODO:あとで配布URLを入れる
+  url: '',
   permissions: [],
   defaultState: {},
 
   async init(api, initialData) {
     try {
-      // プラグインの起動メッセージ
-      ConsolePost('info', `【${pluginName}】がONだよ`)
+      ConsolePost('info', `【${PLUGIN_NAME}】がONだよ`)
     } catch (error) {
       console.error('Plugin initialization failed:', error)
       ConsolePost('error', `プラグインの初期化に失敗しました: ${error}`)
@@ -33,7 +29,7 @@ const plugin: OnePlugin = {
     return await pluginRequest(req)
   },
   destroy() {
-    ConsolePost('info', `【${pluginName}】がOFFだよ`)
+    ConsolePost('info', `【${PLUGIN_NAME}】がOFFだよ`)
   },
 }
 

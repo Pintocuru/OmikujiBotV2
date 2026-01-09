@@ -7,7 +7,7 @@ import { ServiceMetaCondition } from '@shared/types'
 import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 
 export class DefaultPlaceholderService {
   // TODO:将来、metaを参照としたおみくじを作成するため、AppStoreに移行するかも

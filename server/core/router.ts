@@ -34,11 +34,11 @@ export async function routeRequest(req: UnifiedRequest, isExpress?: boolean): Pr
 
   // メソッド別にルーティング
   if (method === 'GET') {
-    return handleGetRequest(action, params)
+    return handleGetRequest(action, params, isExpress)
   }
 
   if (method === 'POST') {
-    return handlePostRequest(action, params, body)
+    return handlePostRequest(action, params, body, isExpress)
   }
 
   return { code: 405, data: { error: `Method ${method} not allowed` } }

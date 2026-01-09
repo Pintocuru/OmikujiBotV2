@@ -72,12 +72,12 @@ export const generateDummyUserNames = (count: number): UserVisitRecord[] => {
   for (let i = 0; i < maxCount; i++) {
     const baseName = candidateNames[Math.floor(Math.random() * candidateNames.length)]
 
-    const name = Math.random() < 0.2 ? baseName + prefixes[Math.floor(Math.random() * prefixes.length)] : baseName
+    const userName = Math.random() < 0.2 ? baseName + prefixes[Math.floor(Math.random() * prefixes.length)] : baseName
 
     result.push(
       UserVisitRecordSchema.parse({
-        name,
-        userId: name,
+        userName,
+        userId: userName,
         ruleId: 'dummy',
         visitCount: Math.floor(Math.random() * 100),
       })

@@ -1,4 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/UserStatsService.ts
+import { v4 } from 'uuid'
 import { GameRecordType, UserStatsType } from '../GameScriptSchema'
 import { GameContext } from '../types'
 
@@ -10,7 +11,7 @@ export const createGameRecord = (context: GameContext): GameRecordType => {
   const { userId, userName, result } = params
 
   return {
-    id: crypto.randomUUID(),
+    id: v4(),
     userId,
     userName,
     score: result.score,

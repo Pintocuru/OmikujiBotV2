@@ -19,36 +19,33 @@
   <!-- 表示形式の選択（単一） -->
   <SettingItem label="表示形式" description="フキダシかトーストを選択してください">
     <label class="mr-4">
-      <input type="radio" value="bubble" :checked="messageType === 'bubble'" @change="handleTypeChange" />
+      <input type="radio" :value="false" :checked="!isToast" @change="handleTypeChange" />
       💬 フキダシ
     </label>
     <label>
-      <input type="radio" value="toast" :checked="messageType === 'toast'" @change="handleTypeChange" />
+      <input type="radio" :value="true" :checked="isToast" @change="handleTypeChange" />
       📝 トースト
     </label>
   </SettingItem>
 
-  <!-- 単一の入力欄：messageType に応じてラベル／説明／プレースホルダ／バインド先を切替 -->
-  <SettingItem
-    :label="messageType === 'bubble' ? '💬 フキダシ内容' : '📝 トースト内容'"
-    description="プレースホルダーが使用できます"
-  >
+  <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
+  <SettingItem :label="isToast ? '📝 トースト内容' : '💬 フキダシ内容'" description="プレースホルダーが使用できます">
     <div class="relative w-full">
       <!-- input -->
       <input
-        v-model="messageText"
+        v-model="bubbleText"
         type="text"
         class="input input-bordered input-sm w-full pr-10"
-        :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
+        :placeholder="isToast ? 'トーストのメッセージを入力' : 'フキダシのメッセージを入力'"
         :class="{ hidden: isTextarea }"
       />
 
       <!-- textarea -->
       <textarea
-        v-model="messageText"
+        v-model="bubbleText"
         rows="3"
         class="textarea textarea-bordered textarea-sm w-full pr-10"
-        :placeholder="messageType === 'bubble' ? 'フキダシのメッセージを入力' : 'トーストのメッセージを入力'"
+        :placeholder="isToast ? 'トーストのメッセージを入力' : 'フキダシのメッセージを入力'"
         :class="{ hidden: !isTextarea }"
       ></textarea>
 
@@ -65,10 +62,10 @@
   </SettingItem>
 
   <!-- 変数プレースホルダーチェッカー -->
-  <VariableDeclarationChecker :text="messageText" />
+  <VariableDeclarationChecker :text="bubbleText" />
 
   <!-- プレースホルダーチェッカー -->
-  <PlaceholderChecker :text="messageText" />
+  <PlaceholderChecker :text="bubbleText" />
 
   <!-- サウンド -->
   <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
@@ -114,59 +111,36 @@
     set: (value) => updateAction({ characterKey: value }),
   })
 
-  // 既存値から初期選択を決定
-  const messageType = computed<'bubble' | 'toast'>(() => {
-    const msg = props.action.message
-    return msg.bubble && msg.bubble !== '' ? 'bubble' : msg.toast && msg.toast !== '' ? 'toast' : 'bubble'
-  })
-
-  // 単一 input の v-model 用（選択側の値だけを編集）
-  const messageText = computed<string>({
-    get: () =>
-      messageType.value === 'bubble' ? (props.action.message.bubble ?? '') : (props.action.message.toast ?? ''),
+  // isToast フラグの computed
+  const isToast = computed<boolean>({
+    get: () => props.action.message.isToast,
     set: (value) => {
-      if (messageType.value === 'bubble') {
-        updateAction({
-          message: {
-            ...props.action.message,
-            bubble: value,
-          },
-        })
-      } else {
-        updateAction({
-          message: {
-            ...props.action.message,
-            toast: value,
-          },
-        })
-      }
+      updateAction({
+        message: {
+          ...props.action.message,
+          isToast: value,
+        },
+      })
     },
   })
 
-  // ラジオ切替：選択を変えた瞬間に「選ばれた側へ内容を移し、元の側を空にする」
+  // bubble フィールドの computed（メッセージ内容）
+  const bubbleText = computed<string>({
+    get: () => props.action.message.bubble ?? '',
+    set: (value) => {
+      updateAction({
+        message: {
+          ...props.action.message,
+          bubble: value,
+        },
+      })
+    },
+  })
+
+  // ラジオ切替：isToast を更新
   const handleTypeChange = (event: Event) => {
-    const newType = (event.target as HTMLInputElement).value as 'bubble' | 'toast'
-    const prevType = messageType.value
-
-    if (newType === prevType) return
-
-    if (newType === 'toast') {
-      updateAction({
-        message: {
-          ...props.action.message,
-          toast: props.action.message.bubble ?? '',
-          bubble: '',
-        },
-      })
-    } else {
-      updateAction({
-        message: {
-          ...props.action.message,
-          bubble: props.action.message.toast ?? '',
-          toast: '',
-        },
-      })
-    }
+    const newValue = (event.target as HTMLInputElement).value === 'true'
+    isToast.value = newValue
   }
 
   const sound = computed({

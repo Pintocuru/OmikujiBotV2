@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/postAction/preview/TestPlaceholderProcessor.ts
-import { PlaceholderProcessor } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
-import { PlaceholderContext } from '@/MainGenerator/scripts/ContentPlaceholder/context'
+import { PlaceholderProcessor } from '@main/scripts/ContentPlaceholder/processor'
+import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
