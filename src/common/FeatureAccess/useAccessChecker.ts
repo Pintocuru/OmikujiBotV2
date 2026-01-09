@@ -41,12 +41,18 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
   const canShowUsage = (key: keyof typeof usage.value): boolean => hasAccess(usage.value[key])
   const canShowDeveloper = (key: keyof typeof developer.value): boolean => hasAccess(developer.value[key])
 
-  const isCharacter = computed(() => hasAccess(usage.value.characters) && Object.keys(data.value.characters).length > 0)
+  const isComment = computed(() => hasAccess(usage.value.comments))
+  const isTimer = computed(() => hasAccess(usage.value.timers))
+  const isActionSet = computed(() => hasAccess(usage.value.actionSets))
   const isPlaceholder = computed(() => hasAccess(usage.value.placeholders))
+  const isCharacter = computed(() => hasAccess(usage.value.characters) && Object.keys(data.value.characters).length > 0)
 
   return {
     canShowUsage,
     canShowDeveloper,
+    isComment,
+    isTimer,
+    isActionSet,
     isPlaceholder,
     isCharacter,
   }

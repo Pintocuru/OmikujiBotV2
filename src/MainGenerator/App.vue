@@ -32,10 +32,12 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
   import { generatorApi } from '@/ConfigMaker/dev/services/generatorApi'
+  import { useVisibilityAccess } from './scripts/FeatureAccess/useAccessCheckerMain'
 
   // Pinia Store
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
+  const { isComment, isTimer } = useVisibilityAccess()
 
   // フォントの指定
   const fontClass = computed(() => useFontFamily(appStore.data.components.bubble.fontFamily ?? 'default'))
@@ -48,6 +50,9 @@
   // 初期化処理
   onMounted(async () => {
     const isInit = await initializeApp((omikens) => {
+      // usageチェック
+      if (!isComment.value) return
+
       // コメント処理
       const botMessages = ruleCommentProcessor.respondToComments(omikens)
       appStore.scheduleBotMessages(botMessages)
@@ -63,6 +68,7 @@
       }
 
       // タイマー開始
+      if (!isTimer.value) return
       startTimers((messages) => appStore.scheduleBotMessages(messages))
     }
   })
