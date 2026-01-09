@@ -28,6 +28,14 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
   }
 
   /**
+   * グローバルの omikujiData.js を開く
+   */
+  //
+  const openLocalOmikujiData = () => {
+    loadData(window.omikujiData)
+  }
+
+  /**
    * 現在のデータをバリデーション
    */
   const safeValidateData = () => {
@@ -52,6 +60,7 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
 
   return {
     loadData,
+    openLocalOmikujiData,
     safeValidateData,
     exportData,
   }

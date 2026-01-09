@@ -31,7 +31,7 @@
   import { useRuleProcessor } from '@main/scripts/RuleProcess/RuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
-  import { devConfigApi } from '@config/dev/services/apiService'
+  import { generatorApi } from '@/ConfigMaker/dev/services/generatorApi'
 
   // Pinia Store
   const appStore = useAppStore()
@@ -56,9 +56,9 @@
 
     if (isInit) {
       // プラグインのデフォルト設定を読み込む
-      const isHealth = await devConfigApi.getHealth()
+      const isHealth = await generatorApi.getHealth()
       if (isHealth) {
-        const lowData = await devConfigApi.loadGeneratorConfig()
+        const lowData = await generatorApi.loadGeneratorConfig()
         if (lowData) appStore.loadData(lowData)
       }
 

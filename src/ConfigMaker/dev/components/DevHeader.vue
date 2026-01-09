@@ -71,8 +71,8 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types'
-  import { generateDateFileName } from '@config/dev/services/devConfigUtils'
-  import { devConfigApi } from '@config/dev/services/apiService'
+  import { generateDateFileName } from '@/ConfigMaker/dev/services/apiServiceUtils'
+  import { generatorApi } from '@config/dev/services/generatorApi'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
@@ -123,7 +123,7 @@
       }
 
       const { loadData } = useOmikujiStore()
-      const data = await devConfigApi.loadGeneratorConfig()
+      const data = await generatorApi.loadGeneratorConfig()
 
       if (!data) {
         Swal.fire({

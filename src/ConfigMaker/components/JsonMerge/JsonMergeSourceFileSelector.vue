@@ -33,10 +33,10 @@
 
 <script setup lang="ts">
   import { ref, onMounted, computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
-  import { devConfigApi } from '@config/dev/services/apiService'
+  import { configApi } from '@/ConfigMaker/dev/services/configApi'
 
   const props = defineProps<{
     mergeIndex: number
@@ -55,7 +55,7 @@
   // JSONファイルリストを取得
   onMounted(async () => {
     try {
-      const files = await devConfigApi.getFileList()
+      const files = await configApi.getFileList()
       jsonFiles.value = files.map((f) => f.name)
     } catch (err) {
       console.error('JSONファイル取得エラー:', err)

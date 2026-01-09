@@ -2,16 +2,23 @@
 import express, { Request, Response, Application, NextFunction } from 'express'
 import cors from 'cors'
 import { Server } from 'http'
-import { CONFIG_DIR } from './fileService'
-import { setupRoutes } from './RequestExpress'
+import { fileURLToPath } from 'url'
+import path from 'path'
+import { setupExpressRoutes } from './adapters/expressAdapter'
+
+// ディレクトリ設定
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+export const CONFIG_DIR = path.join(__dirname, 'omikujiDatas')
+export const ASSETS_DIR = path.join(__dirname, '..', 'assets')
+export const ROOT_DIR = path.join(__dirname)
+const DIR = {
+  config: path.join(__dirname, 'omikujiDatas'),
+  assets: path.join(__dirname, '..', 'assets'),
+  root: path.join(__dirname),
+}
 
 let server: Server | null = null
-
-// ログ用ミドルウェア
-function logMiddleware(req: Request, res: Response, next: NextFunction): void {
-  console.log(`[DEV API] ${req.method} ${req.path}`)
-  next()
-}
 
 // 開発用APIサーバーを起動
 export function startDevApiServer(): Server | null {
@@ -29,7 +36,7 @@ export function startDevApiServer(): Server | null {
   app.use(logMiddleware)
 
   // ルート設定
-  setupRoutes(app)
+  setupExpressRoutes(app)
 
   // サーバー起動
   server = app.listen(port, () => {
@@ -48,11 +55,8 @@ export function startDevApiServer(): Server | null {
   return server
 }
 
-// サーバーを停止
-export function stopDevApiServer(): void {
-  if (server) {
-    server.close()
-    server = null
-    console.log('🛑 Dev API server stopped')
-  }
+// ログ用ミドルウェア
+function logMiddleware(req: Request, res: Response, next: NextFunction): void {
+  console.log(`[DEV API] ${req.method} ${req.path}`)
+  next()
 }

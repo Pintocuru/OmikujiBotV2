@@ -1,7 +1,7 @@
 // src/configMaker/dev/stores/api/useLoadActions.ts
-import { devConfigApi } from '../services/apiService'
+import { DevConfigStateType } from '@config/dev/devTypes'
+import { configApi } from '@config/dev/services/configApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { DevConfigStateType } from '../devTypes'
 import Swal from 'sweetalert2'
 
 export function useLoadActions(
@@ -31,7 +31,7 @@ export function useLoadActions(
 
     // 実処理は handleAsyncAction に任せる
     return await handleAsyncAction(async () => {
-      const configData = await devConfigApi.loadConfig(fileName)
+      const configData = await configApi.loadConfig(fileName)
 
       omikujiStore.loadData(configData)
       state.saveFileName.value = fileName

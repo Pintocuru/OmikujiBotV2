@@ -39,45 +39,13 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     resetChangeState,
 
     // データIO・マージ
-    loadData: dataIO.loadData,
-    safeValidateData: dataIO.safeValidateData,
-    exportData: dataIO.exportData,
-    mergeDataSets: dataMerge.mergeDataSets,
+    ...dataIO,
+    ...dataMerge,
 
-    // レコード操作（基本版）
-    // カテゴリとkeyを明示的に指定する必要がある
-    // 💡 UI連携版は useRecordStore を使用
-
-    // CRUD操作（低レベルAPI）
-    addItem: recordCRUD.addItem,
-    updateItem: recordCRUD.updateItem,
-    removeItem: recordCRUD.removeItem,
-    duplicateItem: recordCRUD.duplicateItem,
-    updateItemKey: recordCRUD.updateItemKey,
-
-    // 直接CRUD（選択更新なし）
-    addItemDirect: recordCRUD.addItem,
-    updateItemDirect: recordCRUD.updateItem,
-    removeItemDirect: recordCRUD.removeItem,
-    duplicateItemDirect: recordCRUD.duplicateItem,
-
-    // プロパティ更新
-    updateRecordProperty: recordProperties.updateRecordProperty,
-    updateOmikujiByIndex: recordProperties.updateOmikujiByIndex,
-    updateOmikujiPostActions: recordProperties.updateOmikujiPostActions,
-    updatePlaceholderValues: recordProperties.updatePlaceholderValues,
-
-    // 並び替え
-    batchUpdateOrder: recordSort.batchUpdateOrder,
-    reorderItem: recordSort.reorderItem,
-
-    // 設定操作
-
-    updateJsonMerge: settingsOps.updateJsonMerge,
-    updateComponentsConditions: settingsOps.updateComponentsConditions,
-    updateNestedComponents: settingsOps.updateNestedComponents,
-    updateFeatureUsage: settingsOps.updateFeatureUsage,
-    updateNestedFeatureUsage: settingsOps.updateNestedFeatureUsage,
-    updateSettings: settingsOps.updateSettings,
+    // レコード操作
+    ...recordCRUD, // CRUD操作
+    ...recordProperties, // プロパティ更新
+    ...recordSort, // 並び替え
+    ...settingsOps, // 設定操作
   }
 })

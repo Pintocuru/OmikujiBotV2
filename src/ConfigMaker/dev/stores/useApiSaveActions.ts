@@ -1,7 +1,7 @@
 // src/configMaker/dev/stores/api/useSaveActions.ts
-import { devConfigApi } from '../services/apiService'
-import { generateDateFileName } from '../services/devConfigUtils'
-import { DevConfigStateType } from '../devTypes'
+import { DevConfigStateType } from '@config/dev/devTypes'
+import { configApi } from '@config/dev/services/configApi'
+import { generatorApi } from '@config/dev/services/generatorApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import Swal from 'sweetalert2'
 
@@ -11,12 +11,12 @@ export function useSaveActions(
 ) {
   // サーバチェック
   const checkServer = async (): Promise<boolean> => {
-    return await devConfigApi.getHealth()
+    return await configApi.getHealth()
   }
 
   // ファイル一覧取得
   const fetchFileList = async () => {
-    const files = await devConfigApi.getFileList()
+    const files = await configApi.getFileList()
     state.availableFiles.value = files
     state.isServerConnected.value = true
     return files
@@ -30,7 +30,7 @@ export function useSaveActions(
 
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
-      const res = await devConfigApi.saveConfig(trimmedFileName, configData)
+      const res = await configApi.saveConfig(trimmedFileName, configData)
 
       if (!res) {
         throw new Error('設定の保存に失敗しました')
@@ -73,7 +73,7 @@ export function useSaveActions(
 
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
-      await devConfigApi.saveGeneratorConfig(configData)
+      await generatorApi.saveGeneratorConfig(configData)
       await fetchFileList()
 
       // 成功トースト
@@ -112,7 +112,7 @@ export function useSaveActions(
 
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
-      await devConfigApi.saveConfig(fileName, configData)
+      await configApi.saveConfig(fileName, configData)
       await fetchFileList()
 
       // 成功トースト
@@ -150,7 +150,7 @@ export function useSaveActions(
 
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
-      await devConfigApi.saveOmikujiData(configData)
+      await configApi.saveOmikujiData(configData)
       await fetchFileList()
 
       // 成功トースト
@@ -174,7 +174,7 @@ export function useSaveActions(
   const toggleApiMode = () => {
     // TODO:ping打ってサーバ確認してから作業を行うこと
 
-    devConfigApi.toggleApiMode()
+    configApi.toggleApiMode()
     state.isExpressMode.value = !state.isExpressMode.value
 
     const modeName = state.isExpressMode.value ? 'Express (DEV)' : 'Plugin'

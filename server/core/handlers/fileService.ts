@@ -1,20 +1,12 @@
 // server/fileService.ts
 import fs from 'fs/promises'
 import path from 'path'
-import { fileURLToPath } from 'url'
-import { FileItem } from './types.js'
+import { FileItem } from '../types.js'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-// ディレクトリ設定
-export const CONFIG_DIR = path.join(__dirname, 'omikujiDatas')
-const ASSETS_DIR = path.join(__dirname, '..', 'assets')
-const ROOT_DIR = path.join(__dirname)
+import { ASSETS_DIR, CONFIG_DIR, ROOT_DIR } from '../../dev-api.js'
 
 // ディレクトリを作成（存在しない場合）
-export async function ensureConfigDir(): Promise<void> {
+async function ensureConfigDir(): Promise<void> {
   try {
     await fs.access(CONFIG_DIR)
   } catch {
@@ -24,7 +16,7 @@ export async function ensureConfigDir(): Promise<void> {
 }
 
 // assetディレクトリを作成(isDevのみ)
-export async function ensureAssetsDir(): Promise<void> {
+async function ensureAssetsDir(): Promise<void> {
   try {
     await fs.access(ASSETS_DIR)
   } catch {

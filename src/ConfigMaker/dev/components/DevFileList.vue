@@ -29,7 +29,7 @@
   import { ref, computed } from 'vue'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import DevFileItem from './DevFileItem.vue'
-  import { formatFileDate } from '../services/devConfigUtils'
+  import { formatFileDate } from '../services/apiServiceUtils'
 
   const devStore = useDevStore()
   const MAX_VISIBLE = 9

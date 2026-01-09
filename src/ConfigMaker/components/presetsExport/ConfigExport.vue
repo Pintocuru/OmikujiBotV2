@@ -3,7 +3,7 @@
   <div class="flex gap-2">
     <!-- ローカルのデータを読む -->
     <template v-if="!hasChanged">
-      <button class="btn btn-primary" @click="openLocalOmikujiData">omikujiData.js を開く</button>
+      <button class="btn btn-primary" @click="omikujiStore.openLocalOmikujiData()">omikujiData.js を開く</button>
     </template>
 
     <!-- Dev jsonファイルの保存(Server利用) -->
@@ -51,7 +51,6 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types/'
   import { useConfigExport } from './useConfigExport'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -68,9 +67,4 @@
   // コンポーザブル
   const { isPro } = useSettingMode()
   const { isExporting, exportFile } = useConfigExport()
-
-  // assets の omikujiData.js を開く
-  const openLocalOmikujiData = () => {
-    omikujiStore.loadData(window.omikujiData)
-  }
 </script>

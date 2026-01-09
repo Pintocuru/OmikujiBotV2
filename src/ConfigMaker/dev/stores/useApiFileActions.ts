@@ -1,6 +1,6 @@
 // src/configMaker/dev/stores/api/useFileActions.ts
-import { devConfigApi } from '../services/apiService'
-import { DevConfigStateType } from '../devTypes'
+import { DevConfigStateType } from '@config/dev/devTypes'
+import { configApi } from '@config/dev/services/configApi'
 import Swal from 'sweetalert2'
 
 export function useFileActions(
@@ -10,7 +10,7 @@ export function useFileActions(
   // ファイル一覧取得
   const fetchFileList = async () => {
     return await handleAsyncAction(async () => {
-      const files = await devConfigApi.getFileList()
+      const files = await configApi.getFileList()
       state.availableFiles.value = files
       state.isServerConnected.value = true
       return files
@@ -20,7 +20,7 @@ export function useFileActions(
   // ファイルデータ取得
   const fetchFileData = async (fileName: string) => {
     return await handleAsyncAction(async () => {
-      const configData = await devConfigApi.loadConfig(fileName)
+      const configData = await configApi.loadConfig(fileName)
       state.isServerConnected.value = true
       return configData
     }, 'isLoading')
@@ -29,11 +29,11 @@ export function useFileActions(
   // ファイル複製
   const duplicateFile = async (fileName: string) => {
     return await handleAsyncAction(async () => {
-      const configData = await devConfigApi.loadConfig(fileName)
+      const configData = await configApi.loadConfig(fileName)
       const originalName = fileName.replace('.json', '')
       const duplicateName = `${originalName}_copy`
 
-      await devConfigApi.saveConfig(duplicateName, JSON.stringify(configData, null, 2))
+      await configApi.saveConfig(duplicateName, JSON.stringify(configData, null, 2))
       await fetchFileList()
 
       // 成功トースト
@@ -56,9 +56,9 @@ export function useFileActions(
   // ファイル名変更
   const renameFile = async (oldFileName: string, newFileName: string) => {
     return await handleAsyncAction(async () => {
-      const configData = await devConfigApi.loadConfig(oldFileName)
-      await devConfigApi.saveConfig(newFileName, JSON.stringify(configData, null, 2))
-      await devConfigApi.deleteConfig(oldFileName)
+      const configData = await configApi.loadConfig(oldFileName)
+      await configApi.saveConfig(newFileName, JSON.stringify(configData, null, 2))
+      await configApi.deleteConfig(oldFileName)
 
       const file = state.availableFiles.value.find((f: any) => f.name === oldFileName)
       if (file) {
@@ -101,7 +101,7 @@ export function useFileActions(
     state.isDeletingFileMap.set(fileName, true)
 
     try {
-      await devConfigApi.deleteConfig(fileName)
+      await configApi.deleteConfig(fileName)
 
       const index = state.availableFiles.value.findIndex((f: any) => f.name === fileName)
       if (index >= 0) {

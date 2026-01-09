@@ -26,7 +26,7 @@
             深淵もまた等しくおまえを見返すのだ。<br />
             …で、どうやって君はこのコメントを見つけたんだ？
           </p>
-          <button class="btn btn-primary" @click="openLocalOmikujiData">omikujiData.js を開く</button>
+          <button class="btn btn-primary" @click="omikujiStore.openLocalOmikujiData()">omikujiData.js を開く</button>
         </div>
       </div>
     </div>
@@ -43,22 +43,22 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref } from 'vue'
+  import { onMounted } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { isDev } from '@/types/'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
   import NavigationTabs from './components/appItems/NavigationTabs.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import FloatingElements from './components/appItems/FloatingElements.vue'
-  import ConfigImport from '@config/components/presetsImport/ConfigImport.vue'
-  import ConfigExport from '@config/components/presetsExport/ConfigExport.vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
-  import { storeToRefs } from 'pinia'
+  import ConfigImport from './components/presetsImport/ConfigImport.vue'
+  import ConfigExport from './components/presetsExport/ConfigExport.vue'
+  import ConfigImportModal from './components/presetsImport/ConfigImportModal.vue'
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
-  import { devConfigApi } from './dev/services/apiService'
-  import PresetTool from '@config/dev/DevConfigs.vue'
+  import { useOmikujiStore } from './stores/useOmikujiStore'
+  import PresetTool from './dev/DevConfigs.vue'
   import { useDevStore } from './dev/stores/useDevStore'
+  import { generatorApi } from './dev/services/generatorApi'
 
   // stores
   const omikujiStore = useOmikujiStore()
@@ -68,11 +68,6 @@
   // インポートマネージャー
   const importManager = useImportManager()
 
-  // assets の omikujiData.js を開く
-  const openLocalOmikujiData = () => {
-    omikujiStore.loadData(window.omikujiData)
-  }
-
   // スクロール動作
   useScrollBehavior()
 
@@ -80,7 +75,7 @@
     let isHealth = false
 
     try {
-      isHealth = await devConfigApi.getHealth()
+      isHealth = await generatorApi.getHealth()
     } catch (e) {
       console.warn('Health check failed:', e)
     }
@@ -88,7 +83,7 @@
     if (isHealth) {
       isServerConnected.value = true
       try {
-        const lowData = await devConfigApi.loadGeneratorConfig()
+        const lowData = await generatorApi.loadGeneratorConfig()
         if (lowData) {
           omikujiStore.loadData(lowData)
           return
@@ -98,8 +93,7 @@
       }
     }
 
-    if (!isDev) {
-      omikujiStore.loadData(window.omikujiData)
-    }
+    // ローカルを読む
+    if (!isDev) omikujiStore.openLocalOmikujiData()
   })
 </script>

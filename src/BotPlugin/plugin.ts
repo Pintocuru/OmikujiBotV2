@@ -1,7 +1,7 @@
 // src/MainPlugin/plugin.ts
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { Requestplugin } from '../../server/Requestplugin'
+import { pluginRequest } from '../../server/adapters/pluginAdapter'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { OnePlugin, PluginRequest, PluginResponse } from '@onecomme.com/onesdk/types/Plugin'
 
@@ -30,7 +30,7 @@ const plugin: OnePlugin = {
   },
 
   async request(req: PluginRequest): Promise<PluginResponse> {
-    return await Requestplugin(req)
+    return await pluginRequest(req)
   },
   destroy() {
     ConsolePost('info', `【${pluginName}】がOFFだよ`)

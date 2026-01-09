@@ -12,11 +12,7 @@
       <div class="text-xs flex items-center text-primary-content gap-2">
         <div class="status" :class="devStore.isServerConnected ? 'status-info' : 'status-error'" />
         <span>{{
-          !devStore.isServerConnected
-            ? 'サーバー未接続'
-            : isExpressMode
-              ? '開発サーバー接続中…'
-              : 'プラグインサーバー接続中…'
+          !devStore.isServerConnected ? 'サーバー未接続' : isExpressMode ? '開発サーバー接続' : 'プラグインサーバー接続'
         }}</span>
       </div>
     </div>
