@@ -24,7 +24,7 @@ import * as configHandler from './handlers/configHandler'
 import * as generatorHandler from './handlers/generatorHandler'
 import * as omikujiHandler from './handlers/omikujiHandler'
 
-export async function routeRequest(req: UnifiedRequest): Promise<UnifiedResponse> {
+export async function routeRequest(req: UnifiedRequest, isExpress?: boolean): Promise<UnifiedResponse> {
   const { method, action, params, body } = req
 
   // アクションが必須
@@ -47,7 +47,11 @@ export async function routeRequest(req: UnifiedRequest): Promise<UnifiedResponse
 /**
  * GETリクエストのルーティング
  */
-async function handleGetRequest(action: string, params: Record<string, string>): Promise<UnifiedResponse> {
+async function handleGetRequest(
+  action: string,
+  params: Record<string, string>,
+  isExpress?: boolean
+): Promise<UnifiedResponse> {
   switch (action) {
     case 'health':
       return { code: 200, data: { status: 'OK', message: 'API is running' } }
@@ -59,7 +63,7 @@ async function handleGetRequest(action: string, params: Record<string, string>):
       return configHandler.loadConfig(params.fileName)
 
     case 'load-generator':
-      return generatorHandler.loadGeneratorConfig()
+      return generatorHandler.loadGeneratorConfig(params.fileName)
 
     default:
       return { code: 404, data: { error: `Unknown GET action: ${action}` } }
@@ -72,20 +76,24 @@ async function handleGetRequest(action: string, params: Record<string, string>):
 async function handlePostRequest(
   action: string,
   params: Record<string, string>,
-  body: Record<string, any>
+  body: Record<string, any>,
+  isExpress?: boolean
 ): Promise<UnifiedResponse> {
   switch (action) {
     case 'save':
       return configHandler.saveConfig(body.fileName, body.data)
 
     case 'delete':
+      // TODOこれどっちなの？
+      console.info('params.fileName : ' + params.fileName)
+      console.info('body.fileName : ' + body.fileName)
       return configHandler.deleteConfig(params.fileName || body.fileName)
 
     case 'save-generator':
-      return generatorHandler.saveGeneratorConfig(body.data)
+      return generatorHandler.saveGeneratorConfig(body.data, body.fileName)
 
     case 'save-omikuji':
-      return omikujiHandler.saveOmikujiData(body.configData)
+      return omikujiHandler.saveOmikujiData(body.configData, isExpress)
 
     default:
       return { code: 404, data: { error: `Unknown POST action: ${action}` } }

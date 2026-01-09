@@ -10,7 +10,7 @@ export function setupExpressRoutes(app: Application): void {
   app.get('/api', async (req, res) => {
     try {
       const unifiedReq = adaptExpressRequest(req)
-      const result = await routeRequest(unifiedReq)
+      const result = await routeRequest(unifiedReq, true)
       sendUnifiedResponse(res, result)
     } catch (error) {
       console.error('Express GET error:', error)
@@ -25,7 +25,7 @@ export function setupExpressRoutes(app: Application): void {
   app.post('/api', async (req, res) => {
     try {
       const unifiedReq = adaptExpressRequest(req)
-      const result = await routeRequest(unifiedReq)
+      const result = await routeRequest(unifiedReq, true)
       sendUnifiedResponse(res, result)
     } catch (error) {
       console.error('Express POST error:', error)

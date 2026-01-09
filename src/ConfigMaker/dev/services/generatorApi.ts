@@ -10,25 +10,37 @@ class GeneratorApiService extends BaseApiClient {
    */
   async loadGeneratorConfig(): Promise<any | null> {
     try {
-      const response = await this.get('load-generator')
+      const fileName = this.getGeneratorFileName()
+      const response = await this.get('load-generator', { fileName })
+
       if (response.code === 404) return null
 
       this.validateResponse(response, '設定の読み込みに失敗しました')
 
       return response.data
-    } catch (error: any) {
-      if (error?.response?.status === 404) return null
-      throw error
+    } catch (err: any) {
+      if (err?.response?.status === 404) return null
+      throw err
     }
   }
 
   /**
    * ジェネレーター用設定を保存
    */
-  async saveGeneratorConfig(configData: string): Promise<any> {
-    const response = await this.post('save-generator', { data: configData })
+  async saveGeneratorConfig(data: string): Promise<any> {
+    const fileName = this.getGeneratorFileName()
+
+    const response = await this.post('save-generator', { data, fileName })
     this.validateResponse(response, 'ジェネレーター設定の保存に失敗しました')
     return response.data
+  }
+
+  /**
+   * meta.id からユニークなファイル名を生成する
+   */
+  private getGeneratorFileName(): string | null {
+    const id = window.omikujiData?.meta.id
+    return id && id.trim() !== '' ? `${id}.json` : null
   }
 }
 

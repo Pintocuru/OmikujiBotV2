@@ -21,6 +21,24 @@ class ConfigApiService extends BaseApiClient {
   }
 
   /**
+   * 設定ファイルを取得
+   */
+  async loadConfig(fileName: string): Promise<any> {
+    try {
+      const response = await this.get('load', { fileName })
+
+      this.validateResponse(response, '設定の読み込みに失敗しました')
+
+      return response.data
+    } catch (err: any) {
+      if (err.response?.status === 404) {
+        throw new Error('設定ファイルが見つかりませんでした (404)')
+      }
+      throw new Error('設定の読み込み中に通信エラーが発生しました')
+    }
+  }
+
+  /**
    * 設定ファイルを保存
    */
   async saveConfig(fileName: string, configData: string): Promise<string> {
@@ -43,24 +61,6 @@ class ConfigApiService extends BaseApiClient {
     const response = await this.post('save-omikuji', { configData })
     this.validateResponse(response, 'おみくじデータの保存に失敗しました')
     return response.data
-  }
-
-  /**
-   * 設定ファイルをロード
-   */
-  async loadConfig(fileName: string): Promise<any> {
-    try {
-      const response = await this.get('load', { fileName })
-
-      this.validateResponse(response, '設定の読み込みに失敗しました')
-
-      return response.data
-    } catch (err: any) {
-      if (err.response?.status === 404) {
-        throw new Error('設定ファイルが見つかりませんでした (404)')
-      }
-      throw new Error('設定の読み込み中に通信エラーが発生しました')
-    }
   }
 
   /**

@@ -67,6 +67,7 @@ export abstract class BaseApiClient {
    * POST リクエストの共通処理
    */
   protected async post<T>(action: string, body: Record<string, any>): Promise<NormalizedResponse<T>> {
+    // ? わんコメの仕様?により、bodyのほうにparamsを入れる必要がある…？設定ミスかも
     const { data } = await this.client.post('', { action, ...body }, { params: { action } })
     return normalizeApiResponse<T>(data)
   }

@@ -1,40 +1,20 @@
 // server/handlers/configHandler.ts
-import * as fileSystem from '../services/fileSystemService'
 import { RouteResult } from '../types'
+import * as fileSystem from '../services/fileSystemService'
 import { validateFileName } from '../utils/validation'
+
+const PRESET_DIR_NAME = 'presets'
 
 /**
  * ファイル一覧を取得
  */
 export async function listFiles(): Promise<RouteResult> {
   try {
-    const files = await fileSystem.getFileList()
+    const files = await fileSystem.getFileList(PRESET_DIR_NAME)
     return { code: 200, data: files }
   } catch (error) {
     console.error('List files error:', error)
     return { code: 500, data: { error: 'Failed to list files' } }
-  }
-}
-
-/**
- * 設定ファイルを保存
- */
-export async function saveConfig(fileName: string, data: string): Promise<RouteResult> {
-  try {
-    if (!fileName || !data) {
-      return { code: 400, data: { error: 'fileName and data are required' } }
-    }
-
-    if (!validateFileName(fileName)) {
-      return { code: 400, data: { error: 'Invalid file name' } }
-    }
-
-    await fileSystem.saveFile(fileName, data, false)
-    console.info(`💾 Saved config file: ${fileName}`)
-    return { code: 200, data: { message: 'File saved successfully', fileName } }
-  } catch (error) {
-    console.error('Save file error:', error)
-    return { code: 500, data: { error: 'Failed to save file' } }
   }
 }
 
@@ -51,7 +31,7 @@ export async function loadConfig(fileName: string): Promise<RouteResult> {
       return { code: 400, data: { error: 'Invalid file name' } }
     }
 
-    const data = await fileSystem.loadFile(fileName, false)
+    const data = await fileSystem.loadFile(PRESET_DIR_NAME, fileName)
     console.info(`📖 Loaded config file: ${fileName}`)
     return { code: 200, data }
   } catch (error: any) {
@@ -60,6 +40,28 @@ export async function loadConfig(fileName: string): Promise<RouteResult> {
       return { code: 404, data: { error: 'File not found' } }
     }
     return { code: 500, data: { error: 'Failed to load file' } }
+  }
+}
+
+/**
+ * 設定ファイルを保存
+ */
+export async function saveConfig(fileName: string, data: string): Promise<RouteResult> {
+  try {
+    if (!fileName || !data) {
+      return { code: 400, data: { error: 'fileName and data are required' } }
+    }
+
+    if (!validateFileName(fileName)) {
+      return { code: 400, data: { error: 'Invalid file name' } }
+    }
+
+    await fileSystem.saveFile(PRESET_DIR_NAME, fileName, data)
+    console.info(`💾 Saved config file: ${fileName}`)
+    return { code: 200, data: { message: 'File saved successfully', fileName } }
+  } catch (error) {
+    console.error('Save file error:', error)
+    return { code: 500, data: { error: 'Failed to save file' } }
   }
 }
 
@@ -76,7 +78,7 @@ export async function deleteConfig(fileName: string): Promise<RouteResult> {
       return { code: 400, data: { error: 'Invalid file name' } }
     }
 
-    await fileSystem.deleteFile(fileName)
+    await fileSystem.deleteFile(PRESET_DIR_NAME, fileName)
     console.info(`🗑️ Deleted config file: ${fileName}`)
     return { code: 200, data: { message: 'File deleted successfully', fileName } }
   } catch (error: any) {

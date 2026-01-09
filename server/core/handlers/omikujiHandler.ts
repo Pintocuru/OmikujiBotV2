@@ -5,13 +5,13 @@ import * as fileSystem from '../services/fileSystemService'
 /**
  * おみくじデータを保存
  */
-export async function saveOmikujiData(configData: string): Promise<RouteResult> {
+export async function saveOmikujiData(configData: string, isExpress?: boolean): Promise<RouteResult> {
   try {
     if (!configData) {
       return { code: 400, data: { error: 'configData is required' } }
     }
 
-    await fileSystem.saveOmikujiData(configData, false)
+    await fileSystem.saveOmikujiData(configData, isExpress)
     console.info('🎋 Saved omikuji data to assets/omikujiData.js')
     return {
       code: 200,
