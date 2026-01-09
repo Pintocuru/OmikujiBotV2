@@ -1,18 +1,13 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageFactory.ts
 import { BotMessageType, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
-import {
-  PostActionMessageType,
-  CharacterColorType,
-  CharacterType,
-  OmikujiDataType,
-  RankingMessageSchema,
-} from '@/types/OmikujiData/'
+import { CharacterColorType, CharacterType, OmikujiDataType, RankingMessageSchema } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
+import { ProcessedMessageAction } from './OmikujiResultHelper'
 
 /**
- * BotMessage生成とキャラクター管理を担当するクラス
+ * BotMessage生成とキャラクター管理
  */
 export class BotMessageFactory {
   private characterMap: Map<string, CharacterType>
@@ -29,24 +24,24 @@ export class BotMessageFactory {
   }
 
   /**
-   * BotMessageオブジェクトの生成
+   *  BotMessageを生成
    */
   createBotMessage({
-    postAction,
+    action,
     delaySeconds,
     messageType,
     messageText,
     ranking,
     omiken,
   }: {
-    postAction: PostActionMessageType
+    action: ProcessedMessageAction
     delaySeconds: number
     messageType: 'bubble' | 'toast'
     messageText: string
     ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined
     omiken?: OmikenCommentType
   }): BotMessageType {
-    const character = this.getCharacter(postAction.characterKey)
+    const character = this.getCharacter(action.characterKey)
     const isChar = this.isCharacterMode && character
     const color = isChar ? character.color : this.defaultColors[messageType]
 
@@ -59,15 +54,15 @@ export class BotMessageFactory {
         name: isChar ? character.displayName : '',
         message: messageText,
         isToast: messageType === 'toast',
-        characterKey: isChar ? postAction.characterKey : null,
-        iconKey: postAction.iconKey,
+        characterKey: isChar ? action.characterKey : null,
+        iconKey: action.iconKey,
         color,
       },
     })
   }
 
   /**
-   * ランキングのみのBotMessage生成
+   * ランキングのみのBotMessageを生成
    */
   createRankingOnlyMessage(
     delaySeconds: number,
@@ -82,9 +77,6 @@ export class BotMessageFactory {
     })
   }
 
-  /**
-   * キャラクター取得
-   */
   getCharacter(characterKey: string): CharacterType | null {
     try {
       return this.characterMap.get(characterKey) ?? null
@@ -97,16 +89,10 @@ export class BotMessageFactory {
     }
   }
 
-  /**
-   * キャラクターモードかどうか
-   */
   isCharacterModeEnabled(): boolean {
     return this.isCharacterMode
   }
 
-  /**
-   * キャラクターモードの判定
-   */
   private checkIsCharacter(omikujiData: OmikujiDataType): boolean {
     const { featureUsage, characters, settings } = omikujiData
     const usageCharacters = featureUsage.usage.characters

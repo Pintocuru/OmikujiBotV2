@@ -36,7 +36,7 @@ export class OmikujiProcessor {
 
     // おみくじ処理
     const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
-    return this.resultProcessor.process(omikujiItem, omiken, defaultPlaceholders)
+    return this.resultProcessor.process(omikujiItem, defaultPlaceholders, omiken)
   }
 
   /**

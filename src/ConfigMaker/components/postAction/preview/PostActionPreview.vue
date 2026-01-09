@@ -24,7 +24,7 @@
       <div v-else @click="refreshToast" class="cursor-pointer">
         <ToastBubbleItem
           :key="toastKey"
-          :message="processedToastMessage"
+          :message="processedMessage"
           :color="character ? character.color : toastSettings.defaultColor"
           :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
@@ -102,25 +102,14 @@
   })
 
   // トースト表示判定
-  const isToast = computed(() => props.action.actionType === 'message' && props.action.message.toast)
+  const isToast = computed(() => props.action.actionType === 'message' && props.action.message.isToast)
 
   // メッセージ処理
   const processedMessage = computed(() => {
-    // ここで messageKey.value を参照することで、
-    // messageKey が更新されたとき、この computed も再計算されるようになります
-    const _ = messageKey.value
+    const _ = messageKey.value // computed 再計算用キー
 
     if (props.action.actionType !== 'message') return ''
     const content = props.action.message.bubble || '(未記入)'
-    return processMessage(content)
-  })
-
-  const processedToastMessage = computed(() => {
-    // toastKey も同様です
-    const _ = toastKey.value
-
-    if (props.action.actionType !== 'message') return '(未記入)'
-    const content = props.action.message.toast || '(未記入)'
     return processMessage(content)
   })
 

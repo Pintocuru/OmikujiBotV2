@@ -21,7 +21,7 @@ export interface ProcessResult {
  * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{calc varName op= expr}}を処理
  */
 export class VariablePlaceholderProcessor {
-  constructor(private evaluator: ExpressionEvaluator) {}
+  private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   /**
    * テキスト内のプレースホルダーを処理

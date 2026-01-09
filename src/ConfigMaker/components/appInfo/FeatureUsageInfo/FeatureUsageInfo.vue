@@ -13,8 +13,18 @@
             :icon="categoryLabels[key]?.icon || Package"
             :access-level="level"
             :description="categoryLabels[key]?.description || ''"
+            :feature-key="key"
+            @toggle="handleFeatureToggle"
           />
         </div>
+
+        <!-- どれかがGOD-MODEなら説明をつける -->
+        <InformationCard v-if="hasGodModeFeature">
+          <p>
+            特殊なパッケージのため、
+            <code class="label bg-accent text-accent-content">一部の機能は使用できません。</code>
+          </p>
+        </InformationCard>
       </div>
     </div>
 
@@ -48,11 +58,13 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { categoryLabels } from '@/types/OmikujiData/'
   import ComponentChip from './ComponentChip.vue'
   import FeatureCard from './FeatureCard.vue'
-  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { categoryLabels } from '@/types/OmikujiData/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import type { AccessLevelType } from '@shared/types'
   import { Package } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
@@ -67,4 +79,14 @@
   const hasEnabledGames = computed(() => gameScripts.value.length > 0)
   const hasAnyComponents = computed(() => components.value.length > 0)
   const hasAnyGames = computed(() => gameScripts.value.length > 0)
+
+  // いずれかがgodModeかチェック
+  const hasGodModeFeature = computed(() => Object.values(usage.value).some((level) => level === 'godMode'))
+
+  // トグルハンドラー
+  const handleFeatureToggle = (key: string, newLevel: AccessLevelType) => {
+    omikujiStore.updateNestedFeatureUsage('usage', {
+      [key]: newLevel,
+    })
+  }
 </script>

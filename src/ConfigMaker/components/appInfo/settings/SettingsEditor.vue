@@ -46,17 +46,19 @@
     <p>PROライセンスキーを入力したあとは：</p>
 
     <p>
-      <strong
-        >一部のPRO機能は<code class="label bg-accent text-accent-content">アプリの再起動後</code
-        >に反映されます。</strong
-      >
+      一部のPRO機能は<code class="label bg-accent text-accent-content">コンフィグエディターの再起動後</code
+      >に反映されます。
     </p>
 
     <p>
-      ライセンスを入力したら、まずは「設定を出力(js)」を押して<code class="label bg-accent text-accent-content"
+      ライセンスを入力したら、まずは
+      <code class="label bg-accent text-accent-content">設定を出力(js)</code> または (プラグインが起動しているなら)
+      <code class="label bg-accent text-accent-content">ジェネレーターに保存</code> を押して<code
+        class="label bg-accent text-accent-content"
         >設定を保存</code
       >してください。<br />
-      保存が完了したら、<code class="label bg-accent text-accent-content">アプリを再起動</code>してください。
+      保存が完了したら、<code class="label bg-accent text-accent-content">コンフィグエディターを再起動</code
+      >してください。
     </p>
 
     <p>※設定を保存していない場合、再読み込み時にライセンス情報が戻ってしまいます。</p>

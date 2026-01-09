@@ -1,21 +1,15 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { PostActionType, PostActionMessageType, PostActionSoundType, OmikujiDataType } from '@/types/OmikujiData/'
+import { PostActionSoundType, OmikujiDataType } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { MessageProcessor } from './MessageProcessor'
 import { BotMessageFactory } from './BotMessageFactory'
+import { ProcessedAction, ProcessedMessageAction } from './OmikujiResultHelper'
 
 /**
- * PostActionからBotMessageを生成し、音声を制御するクラス
- *
- * 主な責務:
- * - PostActionの種類に応じた処理の振り分け
- * - BotMessageの生成（MessageProcessorとBotMessageFactoryに委譲）
- * - 音声再生の制御
- *
- * ⚠️ 重要: 変数プレースホルダーはOmikujiResultProcessorで既に処理済みです
+ *  ProcessedActionからBotMessageを生成し音声を制御
  */
 export class BotMessageGenerator {
   private messageProcessor: MessageProcessor
@@ -27,16 +21,12 @@ export class BotMessageGenerator {
   }
 
   /**
-   * 複数のPostActionからBotMessageの配列を生成
-   *
-   * @param postActions - 処理対象のPostAction配列（変数プレースホルダー処理済み）
-   * @param omiken - コメント情報（オプション）
-   * @returns 生成されたBotMessage配列
+   *  ProcessedActionからBotMessageを生成
    */
-  generateMessages(postActions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
+  generateMessages(actions: ProcessedAction[], omiken?: OmikenCommentType): BotMessageType[] {
     const messages: BotMessageType[] = []
 
-    for (const action of postActions) {
+    for (const action of actions) {
       switch (action.actionType) {
         case 'message':
           messages.push(...this.handleMessageAction(action, omiken))
@@ -46,7 +36,6 @@ export class BotMessageGenerator {
           break
         case 'wordParty':
         case 'actionSet':
-          // 別処理系でハンドリング済み
           break
         default:
           const _exhaustiveCheck: never = action
@@ -58,31 +47,23 @@ export class BotMessageGenerator {
   }
 
   /**
-   * messageアクションの処理
-   *
-   * ⚠️ processedContent は OmikujiResultProcessor で処理済みのデータを使用
+   *  メッセージアクションを処理してBotMessageを生成
    */
-  private handleMessageAction(postAction: PostActionMessageType, omiken?: OmikenCommentType): BotMessageType[] {
-    const delaySeconds = this.calculateDelay(postAction)
+  private handleMessageAction(action: ProcessedMessageAction, omiken?: OmikenCommentType): BotMessageType[] {
+    const delaySeconds = this.calculateDelay(action)
+    const processedContent = this.messageProcessor.extractMessageContent(action)
+    const messageTypes = this.messageProcessor.determineMessageTypes(action, processedContent)
 
-    // 処理済みコンテンツの抽出（再処理は行わない）
-    const processedContent = this.messageProcessor.extractMessageContent(postAction.message)
-
-    // メッセージタイプの判定
-    const messageTypes = this.messageProcessor.determineMessageTypes(postAction, processedContent)
-
-    // メッセージがない場合は音声のみ再生
     if (!messageTypes.hasBubble && !messageTypes.hasToast && !messageTypes.hasRanking) {
-      this.playSound(postAction.sound, delaySeconds)
+      this.playSound(action.sound, delaySeconds)
       return []
     }
 
     const messages: BotMessageType[] = []
 
-    // bubble メッセージ生成
     if (messageTypes.hasBubble) {
       const message = this.messageFactory.createBotMessage({
-        postAction,
+        action,
         delaySeconds,
         messageType: 'bubble',
         messageText: processedContent.finalBubble!,
@@ -90,12 +71,10 @@ export class BotMessageGenerator {
         omiken,
       })
       messages.push(message)
-      this.playRpgVoice(postAction.characterKey, processedContent.finalBubble!, delaySeconds)
-    }
-    // toast メッセージ生成
-    else if (messageTypes.hasToast) {
+      this.playRpgVoice(action.characterKey, processedContent.finalBubble!, delaySeconds)
+    } else if (messageTypes.hasToast) {
       const message = this.messageFactory.createBotMessage({
-        postAction,
+        action,
         delaySeconds,
         messageType: 'toast',
         messageText: processedContent.finalBubble!,
@@ -103,29 +82,20 @@ export class BotMessageGenerator {
         omiken,
       })
       messages.push(message)
-    }
-    // ranking のみの場合
-    else if (messageTypes.hasRanking) {
+    } else if (messageTypes.hasRanking) {
       const message = this.messageFactory.createRankingOnlyMessage(delaySeconds, processedContent.ranking!, omiken)
       messages.push(message)
     }
 
-    this.playSound(postAction.sound, delaySeconds)
-
+    this.playSound(action.sound, delaySeconds)
     return messages
   }
 
-  /**
-   * soundアクションの処理
-   */
-  private handleSoundAction(postAction: PostActionSoundType): void {
-    const delaySeconds = this.calculateDelay(postAction)
-    this.playSound(postAction.sound, delaySeconds)
+  private handleSoundAction(action: PostActionSoundType): void {
+    const delaySeconds = this.calculateDelay(action)
+    this.playSound(action.sound, delaySeconds)
   }
 
-  /**
-   * RPG風音声の再生
-   */
   private playRpgVoice(characterKey: string, bubble: string, delaySeconds: number): void {
     const character = this.messageFactory.getCharacter(characterKey)
     const displayOption = character?.displayOption
@@ -137,19 +107,13 @@ export class BotMessageGenerator {
     }
   }
 
-  /**
-   * 音声再生
-   */
   private playSound(sound: string | undefined, delaySeconds: number): void {
     if (sound?.trim()) {
       playSoundDelay(sound, delaySeconds)
     }
   }
 
-  /**
-   * 遅延時間の計算
-   */
-  private calculateDelay(postAction: PostActionType): number {
-    return postAction.delaySeconds + POST_SETTINGS.basicDelaySeconds
+  private calculateDelay(action: ProcessedAction): number {
+    return action.delaySeconds + POST_SETTINGS.basicDelaySeconds
   }
 }

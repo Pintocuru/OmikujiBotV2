@@ -23,7 +23,7 @@ export class OmikujiTestProcessor {
    */
   executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessageType[] {
     const defaultPlaceholders = this.getSamplePlaceholders()
-    return this.resultProcessor.process(omikujiItem, omiken, defaultPlaceholders)
+    return this.resultProcessor.process(omikujiItem, defaultPlaceholders, omiken)
   }
 
   /**

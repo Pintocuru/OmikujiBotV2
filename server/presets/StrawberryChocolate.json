@@ -19,12 +19,6 @@
   },
   "jsonMerge": [
     {
-      "0": "じ",
-      "1": "ゃ",
-      "2": "ん",
-      "3": "け",
-      "4": "ん",
-      "5": "s",
       "id": "1760544069848",
       "key": "1760544069848",
       "name": "じゃんけん",
@@ -308,7 +302,7 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T03:03:41.568Z",
+      "updatedAt": "2026-01-09T13:46:37.373Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -337,9 +331,8 @@
               "iconKey": "blushing",
               "sound": "transition",
               "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは、 [<<tc>>] 回コメントしてるわ。",
-                "isToast": false
+                "bubble": "<<user>>さんは、 [<<tc>>] 回コメントしてるわ。",
+                "isToast": true
               }
             }
           ],
@@ -364,7 +357,8 @@
       "limits": {
         "cooldownSeconds": 0,
         "cooldownMessage": null,
-        "isRepeatAllowed": 1
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "GiftChocolate": {
@@ -747,9 +741,8 @@
               "iconKey": "default",
               "sound": "cute",
               "message": {
-                "bubble": "",
-                "toast": "<<viewer>>人が見てくれているわ。ありがと♡",
-                "isToast": false
+                "bubble": "<<viewer>>人が見てくれているわ。ありがと♡",
+                "isToast": true
               }
             }
           ],
@@ -777,9 +770,8 @@
               "iconKey": "default",
               "sound": "cute",
               "message": {
-                "bubble": "",
-                "toast": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
-                "isToast": false
+                "bubble": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
+                "isToast": true
               }
             }
           ],
@@ -799,7 +791,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-01-05T03:04:41.655Z",
+      "updatedAt": "2026-01-09T13:49:46.158Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -828,9 +820,8 @@
               "iconKey": "happy",
               "sound": "news",
               "message": {
-                "bubble": "",
-                "toast": "<<PromotionToastsChocolate>>",
-                "isToast": false
+                "bubble": "<<PromotionToastsChocolate>>",
+                "isToast": true
               }
             }
           ],
@@ -856,11 +847,10 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "thinking",
-              "sound": "bounce",
+              "sound": "nya",
               "message": {
-                "bubble": "",
-                "toast": "このおみくじBOT、オマエら配信者に使って欲しいのだ…",
-                "isToast": false
+                "bubble": "うふ～、このおみくじBOT、あたしの大切な人が作ったのよ～",
+                "isToast": true
               }
             }
           ],
@@ -1109,7 +1099,7 @@
       "key": "1767540201946-kvrx6s",
       "name": "こんにちは:Chocolate",
       "createdAt": "2026-01-04T15:23:21.946Z",
-      "updatedAt": "2026-01-05T03:06:49.990Z",
+      "updatedAt": "2026-01-09T13:50:48.467Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1123,7 +1113,7 @@
           "delaySeconds": 0,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "happy",
+          "iconKey": "blushing",
           "sound": "collect",
           "message": {
             "bubble": "<<FirstVisitChocolate>>",
@@ -1156,9 +1146,8 @@
           "iconKey": "singing",
           "sound": "baseball",
           "message": {
-            "bubble": "",
-            "toast": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
-            "isToast": false
+            "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんよ♡",
+            "isToast": true
           }
         }
       ],
@@ -1186,9 +1175,8 @@
           "iconKey": "wink",
           "sound": "baseball",
           "message": {
-            "bubble": "",
-            "toast": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
-            "isToast": false
+            "bubble": "<<user>>さんのコメントが<<tc>>回になったわ。たくさんのコメント、ありがとう♡",
+            "isToast": true
           }
         }
       ],
