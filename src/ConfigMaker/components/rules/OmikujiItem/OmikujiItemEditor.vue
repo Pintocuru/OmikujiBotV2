@@ -1,35 +1,33 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
 <template>
-  <div class="card bg-base-100 p-2 space-y-4">
-    <!-- ヘッダー（名前、メニュー） -->
-    <OmikujiItemHeader
-      :allOmikuji="allOmikujiSets"
-      :omikuji="omikujiItem"
-      :category="category"
-      :selectedItemKey="selectedItemKey"
-    />
+  <!-- ヘッダー（名前、メニュー） -->
+  <OmikujiItemHeader
+    :allOmikuji="allOmikujiSets"
+    :omikuji="omikujiItem"
+    :category="category"
+    :selectedItemKey="selectedItemKey"
+  />
 
-    <!-- OmikujiItemBasic コンポーネント -->
-    <OmikujiItemPriority
-      v-if="category === 'comments'"
-      :allOmikuji="allOmikujiSets"
-      :omikuji="omikujiItem"
-      :category="category"
-      :selectedItemKey="selectedItemKey"
-    />
+  <!-- OmikujiItemBasic コンポーネント -->
+  <OmikujiItemPriority
+    v-if="category === 'comments'"
+    :allOmikuji="allOmikujiSets"
+    :omikuji="omikujiItem"
+    :category="category"
+    :selectedItemKey="selectedItemKey"
+  />
 
-    <!-- GameScripts コンポーネント -->
+  <!-- GameScripts コンポーネント -->
 
-    <GameScriptsEditor
-      :allOmikuji="allOmikujiSets"
-      :omikuji="omikujiItem"
-      :category="category"
-      :selectedItemKey="selectedItemKey"
-    />
+  <GameScriptsEditor
+    :allOmikuji="allOmikujiSets"
+    :omikuji="omikujiItem"
+    :category="category"
+    :selectedItemKey="selectedItemKey"
+  />
 
-    <!-- PostActions編集コンポーネント -->
-    <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
-  </div>
+  <!-- PostActions編集コンポーネント -->
+  <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
 </template>
 
 <script setup lang="ts">

@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/componentEditor/bubble/CharacterAvatarPreview.vue -->
 <template>
-  <div class="flex flex-col md:flex-row justify-around gap-4 p-4 border rounded-lg border-base-200">
+  <div class="flex flex-col md:flex-row justify-around gap-4 p-4">
     <!-- 中央表示キャラクター（0番地） -->
     <PreviewSection title="コメント時に表示するキャラクター" color-class="secondary">
       <div v-if="!isCharacter" class="text-gray-500 italic text-sm p-2">キャラクターが存在しません</div>

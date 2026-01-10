@@ -14,55 +14,17 @@
 
     <!-- Slots Grid (2列レイアウト) -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Slot 1 : 赤 -->
       <CharacterSlot
-        slot-name="slot1"
-        title="スロット 1"
-        badge-style="bg-red-600 text-white"
-        card-style="bg-red-50 border-red-400"
+        v-for="slot in visibleSlotConfigs"
+        :key="slot.name"
+        :slot-name="slot.name"
+        :title="slot.title"
+        :badge-style="slot.badgeStyle"
+        :card-style="slot.cardStyle"
         :characters="characters"
-        :items="editableGroups.slot1"
-        @update="updateSlot('slot1', $event)"
-        @clear="clearSlot('slot1')"
-      />
-
-      <!-- Slot 2 : 青 -->
-      <CharacterSlot
-        v-if="visibleSlots >= 2"
-        slot-name="slot2"
-        title="スロット 2"
-        badge-style="bg-blue-600 text-white"
-        card-style="bg-blue-50 border-blue-400"
-        :characters="characters"
-        :items="editableGroups.slot2"
-        @update="updateSlot('slot2', $event)"
-        @clear="clearSlot('slot2')"
-      />
-
-      <!-- Slot 3 : 緑 -->
-      <CharacterSlot
-        v-if="visibleSlots >= 3"
-        slot-name="slot3"
-        title="スロット 3"
-        badge-style="bg-green-600 text-white"
-        card-style="bg-green-50 border-green-400"
-        :characters="characters"
-        :items="editableGroups.slot3"
-        @update="updateSlot('slot3', $event)"
-        @clear="clearSlot('slot3')"
-      />
-
-      <!-- Slot 4 : 黄 -->
-      <CharacterSlot
-        v-if="visibleSlots >= 4"
-        slot-name="slot4"
-        title="スロット 4"
-        badge-style="bg-yellow-500 text-black"
-        card-style="bg-yellow-50 border-yellow-400"
-        :characters="characters"
-        :items="editableGroups.slot4"
-        @update="updateSlot('slot4', $event)"
-        @clear="clearSlot('slot4')"
+        :items="editableGroups[slot.name]"
+        @update="updateSlot(slot.name, $event)"
+        @clear="clearSlot(slot.name)"
       />
     </div>
 
@@ -120,6 +82,38 @@
   const availableCharacters = computed(() => Object.keys(characters.value))
 
   const editableGroups = ref<ShowCharacters>(ShowCharactersSchema.parse({}))
+
+  // スロット設定（DaisyUIカラー使用）
+  const slotConfigs = [
+    {
+      name: 'slot1' as keyof ShowCharacters,
+      title: 'スロット 1',
+      badgeStyle: 'badge-error',
+      cardStyle: 'bg-error bg-opacity-10 border-error border-3',
+    },
+    {
+      name: 'slot2' as keyof ShowCharacters,
+      title: 'スロット 2',
+      badgeStyle: 'badge-info',
+      cardStyle: 'bg-info bg-opacity-10 border-info border-3',
+    },
+    {
+      name: 'slot3' as keyof ShowCharacters,
+      title: 'スロット 3',
+      badgeStyle: 'badge-success',
+      cardStyle: 'bg-success bg-opacity-10 border-success border-3',
+    },
+    {
+      name: 'slot4' as keyof ShowCharacters,
+      title: 'スロット 4',
+      badgeStyle: 'badge-warning',
+      cardStyle: 'bg-warning bg-opacity-10 border-warning border-3',
+    },
+  ]
+
+  const visibleSlotConfigs = computed(() => {
+    return slotConfigs.slice(0, visibleSlots.value)
+  })
 
   // グループの初期化
   const initializeGroups = () => {

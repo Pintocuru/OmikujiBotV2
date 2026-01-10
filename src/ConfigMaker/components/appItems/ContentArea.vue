@@ -1,46 +1,40 @@
 <!-- src\ConfigMaker\components\appItems\ContentArea.vue -->
 <template>
-  <div class="card bg-base-200">
-    <div class="card-title p-4 bg-primary text-primary-content flex justify-between rounded-t">
-      <div class="flex text-xl items-center gap-2">
-        <component :is="categoryLabels[selectedCategory].icon" class="w-6 h-6" />
-        {{ categoryLabels[selectedCategory].label }}
-      </div>
-      <div class="text-sm">
-        {{ categoryLabels[selectedCategory].description }}
-      </div>
+  <!-- カテゴリ帯 -->
+  <div class="flex items-center justify-between px-4 py-3 bg-primary text-primary-content">
+    <div class="flex items-center gap-2 text-lg font-bold">
+      <component :is="categoryLabels[selectedCategory].icon" class="w-6 h-6" />
+      {{ categoryLabels[selectedCategory].label }}
     </div>
-    <div class="card-body">
-      <!-- Jsonマージ(Dev) -->
-      <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
 
-      <!-- コメントルール -->
-      <CommentRuleEditor v-else-if="selectedCategory === 'comments'" />
-
-      <!-- タイマールール -->
-      <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
-
-      <!-- アクションセット -->
-      <ActionSetsEditor v-else-if="selectedCategory === 'actionSets'" />
-
-      <!-- プレースホルダー -->
-      <PlaceholderEditor v-else-if="selectedCategory === 'placeholders'" />
-
-      <!-- キャラクター設定 -->
-      <CharacterEditor v-else-if="selectedCategory === 'characters'" />
-
-      <!-- 表示設定 -->
-      <ComponentEditor v-else-if="selectedCategory === 'components'" />
-
-      <!-- アプリ情報 -->
-      <AppInfoEditor v-else-if="selectedCategory === 'appInfo'" />
-
-      <!-- フォールバック -->
-      <div v-else>
-        <p class="text-gray-600">不明なカテゴリ: {{ selectedCategory }}</p>
-      </div>
+    <div class="text-sm opacity-80">
+      {{ categoryLabels[selectedCategory].description }}
     </div>
   </div>
+
+  <!-- Jsonマージ(Dev) -->
+  <JsonMergeEditor v-if="selectedCategory === 'jsonMerge'" />
+
+  <!-- コメントルール -->
+  <CommentRuleEditor v-else-if="selectedCategory === 'comments'" />
+
+  <!-- タイマールール -->
+  <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
+
+  <!-- アクションセット -->
+  <ActionSetsEditor v-else-if="selectedCategory === 'actionSets'" />
+
+  <!-- プレースホルダー -->
+  <PlaceholderEditor v-else-if="selectedCategory === 'placeholders'" />
+
+  <!-- キャラクター設定 -->
+  <CharacterEditor v-else-if="selectedCategory === 'characters'" />
+
+  <!-- 表示設定 -->
+  <ComponentEditor v-else-if="selectedCategory === 'components'" />
+
+  <!-- アプリ情報 -->
+  <AppInfoEditor v-else-if="selectedCategory === 'appInfo'" />
 </template>
 
 <script setup lang="ts">

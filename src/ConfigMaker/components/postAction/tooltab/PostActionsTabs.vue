@@ -37,30 +37,28 @@
   </div>
 
   <!-- タブコンテンツ -->
-  <div>
-    <!-- アクションが空の場合 -->
-    <div v-if="props.modelValue.length === 0">
-      <NoParamsCard message="PostActionがありません" />
-      <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
-    </div>
+  <!-- アクションが空の場合 -->
+  <template v-if="props.modelValue.length === 0">
+    <NoParamsCard message="PostActionがありません" />
+    <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
+  </template>
 
-    <!-- プレースホルダーリストタブの内容 -->
-    <div v-else-if="activeTab === -1">
-      <PlaceholderList :actions="props.modelValue" @open-placeholder="handleOpenPlaceholder" />
-    </div>
+  <!-- プレースホルダーリストタブの内容 -->
+  <template v-else-if="activeTab === -1">
+    <PlaceholderList :actions="props.modelValue" @open-placeholder="handleOpenPlaceholder" />
+  </template>
 
-    <!-- PostActionタブの内容 -->
-    <div v-else-if="props.modelValue.length > 0 && activeTab >= 0">
-      <PostActionItem
-        :action="currentAction"
-        :index="activeTab"
-        :character-options="characterOptions"
-        @update:action="updateCurrentAction"
-        @duplicate="duplicateAction"
-        @remove="removeAction"
-      />
-    </div>
-  </div>
+  <!-- PostActionタブの内容 -->
+  <template v-else-if="props.modelValue.length > 0 && activeTab >= 0">
+    <PostActionItem
+      :action="currentAction"
+      :index="activeTab"
+      :character-options="characterOptions"
+      @update:action="updateCurrentAction"
+      @duplicate="duplicateAction"
+      @remove="removeAction"
+    />
+  </template>
 </template>
 
 <script setup lang="ts">

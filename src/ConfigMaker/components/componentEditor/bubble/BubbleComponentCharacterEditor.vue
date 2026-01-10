@@ -1,15 +1,11 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\BubbleComponentCharacterEditor.vue -->
 <template>
-  <div class="relative card bg-base-100">
-    <div class="card-body p-4 gap-4">
-      <!-- キャラクターサンプル表示 -->
-      <CharacterAvatarPreview
-        :characters="characters"
-        :showCharacters="bubble.showCharacters"
-        :characterSize="bubble.characterSize"
-      />
-    </div>
-  </div>
+  <!-- キャラクターサンプル表示 -->
+  <CharacterAvatarPreview
+    :characters="characters"
+    :showCharacters="bubble.showCharacters"
+    :characterSize="bubble.characterSize"
+  />
 
   <!-- キャラクター選択 -->
   <SettingItem label="表示するキャラクター" description="ドラッグアンドドロップで移動します">

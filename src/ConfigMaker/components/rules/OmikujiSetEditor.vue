@@ -34,23 +34,25 @@
     />
 
     <!-- 選択されたアイテムの編集 -->
-    <div
-      v-if="selectedOmikujiIndex !== null"
-      class="card bg-base-100 shadow-lg p-4"
-      :style="{ backgroundColor: getColorForIndex(selectedOmikujiIndex) }"
-    >
-      <div class="card-title justify-between mb-4">
-        <h3 class="text-lg font-bold text-white">
-          おみくじ編集: {{ omikujiSets[selectedOmikujiIndex]?.name || `アイテム${selectedOmikujiIndex + 1}` }}
+    <template v-if="selectedOmikujiIndex !== null">
+      <!-- 帯ヘッダー -->
+      <div
+        class="flex items-center justify-between px-4 py-2 font-bold text-white"
+        :style="{ backgroundColor: getColorForIndex(selectedOmikujiIndex) }"
+      >
+        <h3 class="text-sm md:text-base">
+          おみくじ編集:
+          {{ omikujiSets[selectedOmikujiIndex]?.name || `アイテム${selectedOmikujiIndex + 1}` }}
         </h3>
-        <button @click="selectedOmikujiIndex = null" class="btn btn-sm btn-ghost text-white hover:bg-white/20">
+
+        <button @click="selectedOmikujiIndex = null" class="btn btn-xs btn-ghost text-white hover:bg-white/20">
           <X class="w-4 h-4" />
-          閉じる
         </button>
       </div>
 
+      <!-- 本文 -->
       <OmikujiItemEditor :category="category" :selectedItemKey="selectedItemKey" :index="selectedOmikujiIndex" />
-    </div>
+    </template>
 
     <!-- 選択していない場合のメッセージ -->
     <div v-else class="card bg-base-200 shadow p-6 text-center">

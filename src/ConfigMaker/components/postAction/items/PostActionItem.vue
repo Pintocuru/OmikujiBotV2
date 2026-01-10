@@ -1,48 +1,46 @@
 <!-- src\ConfigMaker\components\postAction\items\PostActionItem.vue -->
 <template>
-  <div class="bg-base-200 relative">
-    <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
-    <div class="grid grid-cols-3 gap-4 p-4">
-      <!-- 左側: プレビューエリア -->
-      <div class="col-span-1 bg-base-300 rounded-lg min-h-[200px]">
-        <PostActionPreview :action="action" />
-      </div>
+  <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
+  <div class="grid grid-cols-3 gap-4">
+    <!-- 左側: プレビューエリア -->
+    <div class="col-span-1 bg-base-300 rounded-lg min-h-xs">
+      <PostActionPreview :action="action" />
+    </div>
 
-      <!-- 右側: 設定エリア -->
-      <div class="col-span-2 space-y-2">
-        <!-- ActionType -->
-        <SettingItem label="🚀 アクションタイプ" description="種類を選択します">
-          <select
-            class="select select-sm w-full max-w-xs"
-            :value="action.actionType"
-            @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionType['actionType'])"
-          >
-            <option v-for="t in actionTypes" :key="t.type" :value="t.type">
-              {{ t.label }}
-            </option>
-          </select>
-        </SettingItem>
+    <!-- 右側: 設定エリア -->
+    <div class="col-span-2 space-y-2">
+      <!-- ActionType -->
+      <SettingItem label="🚀 アクションタイプ" description="種類を選択します">
+        <select
+          class="select select-sm w-full max-w-xs"
+          :value="action.actionType"
+          @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionType['actionType'])"
+        >
+          <option v-for="t in actionTypes" :key="t.type" :value="t.type">
+            {{ t.label }}
+          </option>
+        </select>
+      </SettingItem>
 
-        <!-- 遅延秒数（全タイプ共通） -->
-        <SettingItem label="⏱️ 遅延秒数" description="この秒数後に下記のアクションを実行します">
-          <input
-            type="number"
-            v-model.number="delaySeconds"
-            min="-1"
-            step="0.1"
-            class="input input-bordered input-sm w-32"
-            placeholder="0"
-          />
-        </SettingItem>
-
-        <!-- 動的コンポーネント表示 -->
-        <component
-          v-if="currentComponent"
-          :is="currentComponent"
-          v-bind="{ action: action as any, 'character-options': characterOptions }"
-          @update:action="handleActionUpdate"
+      <!-- 遅延秒数（全タイプ共通） -->
+      <SettingItem label="⏱️ 遅延秒数" description="この秒数後に下記のアクションを実行します">
+        <input
+          type="number"
+          v-model.number="delaySeconds"
+          min="-1"
+          step="0.1"
+          class="input input-bordered input-sm w-32"
+          placeholder="0"
         />
-      </div>
+      </SettingItem>
+
+      <!-- 動的コンポーネント表示 -->
+      <component
+        v-if="currentComponent"
+        :is="currentComponent"
+        v-bind="{ action: action as any, 'character-options': characterOptions }"
+        @update:action="handleActionUpdate"
+      />
     </div>
   </div>
 </template>

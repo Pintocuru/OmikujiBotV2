@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
 <template>
   <!-- サンプル表示 -->
-  <div class="card p-2 bg-base-100 flex flex-col">
+  <div class="flex flex-col">
     <!-- トーストサンプル -->
     <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
       <ToastBubbleItem
