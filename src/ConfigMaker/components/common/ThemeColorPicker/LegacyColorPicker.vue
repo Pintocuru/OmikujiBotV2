@@ -1,33 +1,31 @@
 <!-- src/ConfigMaker/components/characters/color/LegacyColorPicker.vue -->
 <template>
-  <div class="card bg-base-100">
-    <div class="card-body p-4 flex flex-col gap-4">
-      <!-- プリセットカラー -->
-      <div class="flex gap-2 flex-wrap">
-        <button
-          v-for="(theme, i) in DEFAULT_COLOR_THEMES"
-          :key="i"
-          class="w-8 h-8 rounded-full border border-base-content/20 hover:scale-110 transition"
-          :style="{ backgroundColor: theme.backgroundColor }"
-          :title="`プリセット ${i + 1}`"
-          @click="selectPreset(theme)"
+  <div class="bg-base-300 p-4 flex flex-col space-y-4">
+    <!-- プリセットカラー -->
+    <div class="flex gap-2 flex-wrap">
+      <button
+        v-for="(theme, i) in DEFAULT_COLOR_THEMES"
+        :key="i"
+        class="w-8 h-8 rounded-full border border-base-content/20 hover:scale-110 transition"
+        :style="{ backgroundColor: theme.backgroundColor }"
+        :title="`プリセット ${i + 1}`"
+        @click="selectPreset(theme)"
+      />
+    </div>
+
+    <!-- カラーピッカー -->
+    <div class="flex flex-wrap gap-4">
+      <div v-for="{ label, key } in colorFields" :key="key" class="form-control flex-1 min-w-32">
+        <label class="label">
+          <span class="label-text">{{ label }}</span>
+        </label>
+
+        <input
+          type="color"
+          class="input input-bordered h-12 w-full"
+          :value="modelValue[key]"
+          @input="onUpdate(key, ($event.target as HTMLInputElement).value)"
         />
-      </div>
-
-      <!-- カラーピッカー -->
-      <div class="flex flex-wrap gap-4">
-        <div v-for="{ label, key } in colorFields" :key="key" class="form-control flex-1 min-w-32">
-          <label class="label">
-            <span class="label-text">{{ label }}</span>
-          </label>
-
-          <input
-            type="color"
-            class="input input-bordered h-12 w-full"
-            :value="modelValue[key]"
-            @input="onUpdate(key, ($event.target as HTMLInputElement).value)"
-          />
-        </div>
       </div>
     </div>
   </div>

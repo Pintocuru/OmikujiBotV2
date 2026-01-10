@@ -3,7 +3,7 @@
   <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
   <div class="grid grid-cols-3 gap-4">
     <!-- 左側: プレビューエリア -->
-    <div class="col-span-1 bg-base-300 rounded-lg min-h-xs">
+    <div class="col-span-1 min-h-xs">
       <PostActionPreview :action="action" />
     </div>
 

@@ -3,12 +3,10 @@
   <!-- モード切り替えヘッダー -->
   <div class="flex justify-end items-center gap-2">
     <!-- 切り替えトグル -->
-    <div class="form-control">
-      <label class="label cursor-pointer gap-3">
-        <span class="label-text">{{ colorValue.isTheme ? '旧カラー設定' : '新カラー設定' }}</span>
-        <input type="checkbox" class="toggle toggle-primary" :checked="colorValue.isTheme" @change="toggleColorMode" />
-      </label>
-    </div>
+    <label class="label cursor-pointer gap-3">
+      <span class="label-text">{{ colorValue.isTheme ? '旧カラー設定' : '新カラー設定' }}</span>
+      <input type="checkbox" class="toggle toggle-primary" :checked="colorValue.isTheme" @change="toggleColorMode" />
+    </label>
   </div>
 
   <!-- 旧カラー設定 -->
