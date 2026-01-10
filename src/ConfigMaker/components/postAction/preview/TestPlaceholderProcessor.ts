@@ -18,7 +18,7 @@ export const processTestPlaceholder = (message: string, placeholders: Record<str
   const withStatic = staticProcessor.processText(message)
 
   // 動的プレースホルダー
-  const dynamicProcessor = new VariablePlaceholderProcessor(new ExpressionEvaluator())
+  const dynamicProcessor = new VariablePlaceholderProcessor()
   const processed = dynamicProcessor.process(withStatic)
 
   return processed.bubble

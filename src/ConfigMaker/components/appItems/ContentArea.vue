@@ -30,7 +30,7 @@
   <!-- キャラクター設定 -->
   <CharacterEditor v-else-if="selectedCategory === 'characters'" />
 
-  <!-- 表示設定 -->
+  <!-- アイテム設定 -->
   <ComponentEditor v-else-if="selectedCategory === 'components'" />
 
   <!-- アプリ情報 -->

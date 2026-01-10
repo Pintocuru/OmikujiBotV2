@@ -59,20 +59,19 @@
 
   const appStore = useAppStore()
 
+  // トースト機能がOFFなら、こちらで表示する
   const displayMessage = (bot: DisplayBotMessage): string | null => {
-    if (!bot.bubble) return null
+    const bubble = bot.bubble
+    if (!bubble) return null
 
-    const { message, toast, isToast } = bot.bubble
+    const { message, isToast } = bubble
     const conditions = appStore.data.components.conditions || []
 
-    if (!conditions.includes('toast') && isToast && toast) return toast
-    if (!isToast) return message
-    return null
+    if (conditions.includes('toast') && isToast) return null
+    return message
   }
 
-  /**
-   * 表示対象のみを抽出し、メッセージ文字列も保持
-   */
+  // 表示対象のみを抽出し、メッセージ文字列も保持
   const visibleComments = computed(() =>
     props.displayedComments
       .map((message) => {

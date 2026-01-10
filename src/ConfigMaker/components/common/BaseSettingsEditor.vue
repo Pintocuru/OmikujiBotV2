@@ -27,34 +27,13 @@
   </SettingItem>
 
   <!-- タグ編集 -->
-  <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
-    <div class="flex flex-wrap gap-2 mb-2">
-      <span
-        v-for="(tag, index) in tags"
-        :key="index"
-        class="badge badge-sm badge-primary cursor-pointer"
-        @click="removeTag(index)"
-      >
-        {{ tag }} ✕
-      </span>
-    </div>
-
-    <div class="flex gap-2">
-      <input
-        v-model="newTag"
-        type="text"
-        class="input input-bordered input-sm flex-1"
-        placeholder="タグを追加"
-        @keyup.enter="addTag"
-      />
-      <button class="btn btn-sm btn-primary" @click="addTag">追加</button>
-    </div>
-  </SettingItem>
+  <BaseTagEditor v-model="tags" />
 </template>
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/'
+  import BaseTagEditor from './BaseTagEditor.vue'
   import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { BaseRecordType } from '@shared/types'

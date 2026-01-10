@@ -35,6 +35,9 @@
         <ExternalLinkButton v-if="currentData.url" :url="currentData.url" />
       </div>
     </SettingItem>
+
+    <!-- タグ編集 -->
+    <BaseTagEditor v-model="currentData.tags" />
   </template>
 </template>
 
@@ -46,6 +49,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ExternalLinkButton from '@config/components/parts/ExternalLinkButton.vue'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import BaseTagEditor from '@config/components/common/BaseTagEditor.vue'
 
   const props = defineProps<{
     selectedItemKey: string

@@ -1,9 +1,10 @@
 <!-- src/MainGenerator/components/CounterPreview/CounterPreviewCard.vue -->
 <template>
   <div
-    class="mx-auto w-fit min-w-3xs p-4 rounded-2xl shadow-xl text-center text-primary-content transition-transform duration-200"
+    class="w-full p-4 rounded-2xl text-center transition-transform duration-200"
     :class="[
       isBouncing && 'scale-110',
+      `text-${counterSetting.color.backFrom}-content`,
       // From と To が同じかどうかでクラスを切り替える
       counterSetting.color.backFrom === counterSetting.color.backTo
         ? `bg-${counterSetting.color.backFrom}`
@@ -76,14 +77,6 @@
     return Math.max(0, Math.floor(c))
   })
 
-  watch(
-    () => props.count,
-    () => {
-      isBouncing.value = true
-      setTimeout(() => (isBouncing.value = false), 180)
-    }
-  )
-
   // 最新が後ろに貯まるので逆順にして、maxUsersで制限
   const displayedUsers = computed(() => {
     const { maxUsers, target } = props.counterSetting
@@ -109,4 +102,12 @@
     // draw の場合はそのまま
     return reversed.slice(0, maxUsers)
   })
+
+  watch(
+    () => props.count,
+    () => {
+      isBouncing.value = true
+      setTimeout(() => (isBouncing.value = false), 180)
+    }
+  )
 </script>

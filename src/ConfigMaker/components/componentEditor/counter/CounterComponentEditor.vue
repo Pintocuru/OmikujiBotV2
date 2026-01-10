@@ -1,12 +1,13 @@
 <!-- src\ConfigMaker\components\componentEditor\counter\CounterComponentEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <CounterPreviewCard
-    v-if="counter.ruleKey"
-    :counterSetting="counter"
-    :count="counter.firstValue"
-    :users="generateDummyUserNames(counter.maxUsers)"
-  />
+  <div v-if="counter.ruleKey" class="max-h-64 overflow-y-hidden">
+    <CounterPreviewCard
+      :counterSetting="counter"
+      :count="counter.firstValue"
+      :users="generateDummyUserNames(counter.maxUsers)"
+    />
+  </div>
 
   <NoParamsCard v-else :message="'対象ルールキーを設定してください'" />
 

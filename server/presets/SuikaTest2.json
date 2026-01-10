@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta7",
-    "dataVersion": 2.0007,
+    "generatorVersion": "v2.0.0-beta11",
+    "dataVersion": 2.0011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -464,12 +464,6 @@
         }
       ],
       "ruleType": "comments",
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      },
       "trigger": {
         "conditions": [
           "comment"
@@ -480,6 +474,12 @@
         "comment": [
           "おみくじ"
         ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -1472,15 +1472,16 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
-      "actionSets": "pro",
-      "placeholders": "pro",
-      "characters": "pro"
+      "timers": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
     },
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter"
     ],
     "gameScripts": [
       "GouseiSuika"
@@ -1492,7 +1493,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "corporate"
   }
 }

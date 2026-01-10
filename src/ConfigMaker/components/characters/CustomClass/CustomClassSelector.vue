@@ -15,7 +15,7 @@
 
   <!-- カスタム設定アコーディオン -->
   <SectionCard icon="Settings2" variant="primary" title="カスタム設定" description="フキダシの詳細設定を調整します">
-    <div class="space-y-4">
+    <div class="pt-4 space-y-4">
       <!-- Padding設定 -->
       <SettingItem label="余白設定" description="要素の内側の余白を調整します">
         <div class="grid grid-cols-2 gap-4">

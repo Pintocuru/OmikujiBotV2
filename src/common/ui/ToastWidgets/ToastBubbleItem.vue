@@ -12,7 +12,7 @@
       :data-theme="color.isTheme ? color.daisyUiTheme : null"
       :class="
         color.isTheme
-          ? ['bg-gradient-to-br', `from-${color.backFrom}`, `to-${color.backTo}`, 'text-primary-content']
+          ? [`text-${color.backFrom}-content`, 'bg-gradient-to-br', `from-${color.backFrom}`, `to-${color.backTo}`]
           : ''
       "
       :style="!color.isTheme ? { backgroundColor: color.backgroundColor } : {}"

@@ -2,45 +2,22 @@
 <template>
   <div
     class="relative inline-block max-w-3xl min-w-[10rem]"
-    :data-theme="color?.isTheme ? color.daisyUiTheme : null"
-    :class="[
-      customClasses,
-      brightnessClass,
-      color?.isTheme ? ['bg-gradient-to-br', `from-${color.backFrom}`, `to-${color.backTo}`] : '',
-    ]"
-    :style="
-      !color?.isTheme
-        ? {
-            backgroundColor: color?.backgroundColor || '#212121',
-            '--bubble-bg': color?.backgroundColor || '#212121',
-          }
-        : {}
-    "
+    :data-theme="uiMap.themeDataAttr"
+    :class="uiMap.bubble.class"
+    :style="uiMap.bubble.style"
   >
     <!-- 名前表示 -->
-    <div
-      v-if="botName && botName !== ''"
-      class="font-bold"
-      :style="!color?.isTheme ? { color: color?.nameColor || '#ccc' } : {}"
-      :class="[textSizeClass, color?.isTheme ? 'badge mb-2 text-base-content' : '']"
-    >
+    <div v-if="botName" class="font-bold text-xl" :class="uiMap.name.class" :style="uiMap.name.style">
       {{ botName }}
     </div>
 
     <!-- コメント内容 -->
-    <div
-      class="break-words"
-      :style="!color?.isTheme ? { color: color?.textColor || '#ccc' } : {}"
-      :class="[textSizeClass, color?.isTheme ? 'text-primary-content' : '']"
-    >
+    <div class="break-words text-xl" :class="uiMap.text.class" :style="uiMap.text.style">
       {{ displayed }}
     </div>
 
     <!-- 吹き出しの矢印 -->
-    <div
-      :class="[customArrowClasses, brightnessClass, color?.isTheme ? `border-t-${color.backTo}` : '']"
-      :style="!color?.isTheme ? { borderTopColor: 'var(--bubble-bg)' } : {}"
-    />
+    <div :class="uiMap.arrow.class" :style="uiMap.arrow.style" />
   </div>
 </template>
 
@@ -70,18 +47,62 @@
     }
   )
 
-  const color = computed(() => props.color)
-
-  // brightness
+  // Brightness
   const BRIGHTNESS_CLASSES = ['', 'brightness-90', 'brightness-75', 'brightness-50', 'brightness-[30%]'] as const
 
-  const brightnessClass = computed(() => {
-    const level = Math.min(props.brightnessLevel, BRIGHTNESS_CLASSES.length - 1)
-    return BRIGHTNESS_CLASSES[level]
-  })
+  const mode = computed(() => ({
+    theme: props.color?.isTheme ?? false,
+    brightness: BRIGHTNESS_CLASSES[Math.min(props.brightnessLevel, BRIGHTNESS_CLASSES.length - 1)],
+  }))
 
-  // テキストサイズ
-  const textSizeClass = computed(() => 'text-xl')
+  const uiMap = computed(() => {
+    const isTheme = mode.value.theme
+    const bgColor = props.color?.backgroundColor || '#212121'
+
+    return {
+      themeDataAttr: isTheme ? props.color.daisyUiTheme : null,
+
+      bubble: {
+        class: [
+          props.customClasses,
+          mode.value.brightness,
+          ...(isTheme
+            ? [
+                `text-${props.color.backFrom}-content`,
+                'bg-gradient-to-br',
+                `from-${props.color.backFrom}`,
+                `to-${props.color.backTo}`,
+              ]
+            : []),
+        ],
+        style: isTheme
+          ? {}
+          : {
+              backgroundColor: bgColor,
+              '--bubble-bg': bgColor,
+            },
+      },
+
+      name: {
+        class: isTheme ? 'badge mb-2 text-base-content' : '',
+        style: isTheme ? {} : { color: props.color?.nameColor || '#ccc' },
+      },
+
+      text: {
+        class: mode.value.brightness,
+        style: isTheme ? {} : { color: props.color?.textColor || '#ccc' },
+      },
+
+      arrow: {
+        class: [
+          props.customArrowClasses,
+          mode.value.brightness,
+          ...(isTheme ? [`border-t-${props.color.backTo}`] : []),
+        ],
+        style: isTheme ? {} : { borderTopColor: 'var(--bubble-bg)' },
+      },
+    }
+  })
 
   // アニメーション
   const displayed = ref(props.animatedText ? '' : props.message)

@@ -1,6 +1,8 @@
 <!-- src/MainGenerator/components/preview/CounterPreview.vue -->
 <template>
-  <CounterPreviewCard :counter-setting="counterSetting" :count="count" :users="userList" />
+  <div class="h-screen">
+    <CounterPreviewCard :counter-setting="counterSetting" :count="count" :users="userList" />
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -80,6 +80,7 @@ export const SettingsCounterSchema = z.object({
   isDirectionUp: z.boolean().default(true).catch(true), // true=カウントアップ, false=カウントダウン
   maxUsers: z.number().min(0).max(300).default(1).catch(1), // ユーザーリスト表示数
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
+  // limitUserCount: z.number().min(1).max(300).nullable().default(null) // maxUsers の代わりに入れようかなと
 })
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 
