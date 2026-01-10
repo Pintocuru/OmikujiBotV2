@@ -11,70 +11,23 @@
   </SectionCard>
 
   <!-- 各アイテム設定 -->
-  <!-- フキダシアイテム -->
-  <SectionCard
-    icon="MessageSquare"
-    v-if="conditions.includes('bubble')"
-    :isOpen="activeSection === 'bubbleComponent'"
-    @toggle="toggleSection('bubbleComponent')"
-    title="フキダシアイテム"
-    description="BOTが喋るフキダシの設定"
-  >
-    <BubbleComponentEditor />
-  </SectionCard>
-
-  <!-- フキダシアイテム：キャラクター -->
-  <SectionCard
-    icon="UserSquare"
-    v-if="conditions.includes('bubble') && isCharacter"
-    :isOpen="activeSection === 'bubbleComponentcharacter'"
-    @toggle="toggleSection('bubbleComponentcharacter')"
-    title="フキダシアイテム(キャラクター)"
-    description="キャラクターの表示位置設定"
-  >
-    <BubbleComponentCharacterEditor />
-  </SectionCard>
-
-  <!-- トースト・サムネイルアイテム -->
-  <SectionCard
-    icon="Bell"
-    v-if="conditions.includes('toast')"
-    :isOpen="activeSection === 'toastComponent'"
-    @toggle="toggleSection('toastComponent')"
-    title="トースト・サムネイルアイテム"
-    description="お知らせとして表示されるチャット表示"
-  >
-    <ToastComponentEditor />
-  </SectionCard>
-
-  <!-- ランキングアイテム -->
-  <SectionCard
-    icon="Trophy"
-    v-if="conditions.includes('ranking')"
-    :isOpen="activeSection === 'rankingComponent'"
-    @toggle="toggleSection('rankingComponent')"
-    title="ランキングアイテム"
-    description="ゲームスクリプトで使う、ランキング表示"
-  >
-    <RankingComponentEditor />
-  </SectionCard>
-
-  <!-- カウンターアイテム -->
-  <SectionCard
-    icon="Hash"
-    v-if="conditions.includes('counter')"
-    :isOpen="activeSection === 'counterComponent'"
-    @toggle="toggleSection('counterComponent')"
-    title="カウンターアイテム"
-    description="コメントが来るたびに数値が増えるカウンターの表示"
-  >
-    <CounterComponentEditor />
-  </SectionCard>
+  <template v-for="item in componentItems" :key="item.type">
+    <SectionCard
+      v-if="item.shouldShow"
+      :icon="item.icon"
+      :isOpen="activeSection === item.sectionKey"
+      @toggle="toggleSection(item.sectionKey)"
+      :title="item.title"
+      :description="item.description"
+    >
+      <component :is="item.component" />
+    </SectionCard>
+  </template>
 </template>
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import ComponentConditionsEditor from './ComponentConditionsEditor.vue'
+  import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
   import BubbleComponentEditor from './bubble/BubbleComponentEditor.vue'
   import BubbleComponentCharacterEditor from './bubble/BubbleComponentCharacterEditor.vue'
   import ToastComponentEditor from './toast/ToastComponentEditor.vue'
@@ -95,9 +48,9 @@
     | 'rankingComponent'
     | 'counterComponent'
     | null
-  const activeSection = ref<SectionType>('componentsSettings') // 初期状態で文字・アニメーション設定を開く
+  const activeSection = ref<SectionType>('componentsSettings')
 
-  const { isCharacter } = useVisibilityAccess()
+  const { isComment, isCharacter } = useVisibilityAccess()
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
@@ -109,4 +62,53 @@
   const { data } = storeToRefs(omikujiStore)
 
   const conditions = computed(() => data.value.components.conditions)
+
+  // アイテム設定の配列
+  const componentItems = computed(() => [
+    {
+      type: 'bubble',
+      sectionKey: 'bubbleComponent' as const,
+      icon: 'MessageSquare',
+      title: 'フキダシアイテム',
+      description: 'BOTが喋るフキダシの設定',
+      component: BubbleComponentEditor,
+      shouldShow: conditions.value.includes('bubble'),
+    },
+    {
+      type: 'bubbleCharacter',
+      sectionKey: 'bubbleComponentcharacter' as const,
+      icon: 'UserSquare',
+      title: 'フキダシアイテム(キャラクター)',
+      description: 'キャラクターの表示位置設定',
+      component: BubbleComponentCharacterEditor,
+      shouldShow: conditions.value.includes('bubble') && isCharacter.value,
+    },
+    {
+      type: 'toast',
+      sectionKey: 'toastComponent' as const,
+      icon: 'Bell',
+      title: 'トースト・サムネイルアイテム',
+      description: 'お知らせとして表示されるチャット表示',
+      component: ToastComponentEditor,
+      shouldShow: conditions.value.includes('toast'),
+    },
+    {
+      type: 'ranking',
+      sectionKey: 'rankingComponent' as const,
+      icon: 'Trophy',
+      title: 'ランキングアイテム',
+      description: 'ゲームスクリプトで使う、ランキング表示',
+      component: RankingComponentEditor,
+      shouldShow: conditions.value.includes('ranking'),
+    },
+    {
+      type: 'counter',
+      sectionKey: 'counterComponent' as const,
+      icon: 'Hash',
+      title: 'カウンターアイテム',
+      description: 'コメントが来るたびに数値が増えるカウンターの表示',
+      component: CounterComponentEditor,
+      shouldShow: conditions.value.includes('counter') && isComment.value,
+    },
+  ])
 </script>

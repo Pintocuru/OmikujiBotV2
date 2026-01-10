@@ -12,7 +12,7 @@
       <GameRankingViewer v-if="conditions.includes('ranking')" />
 
       <!-- カウンター -->
-      <CounterPreview v-if="conditions.includes('counter')" />
+      <CounterPreview v-if="conditions.includes('counter') && isComment" />
     </div>
   </div>
 

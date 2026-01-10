@@ -110,7 +110,6 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { storeToRefs } from 'pinia'
   import { OmikujiItemType, GameScriptsSchema, RulesCategoryType } from '@/types/OmikujiData/'
   import GameScriptPreview from './GameScriptPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'

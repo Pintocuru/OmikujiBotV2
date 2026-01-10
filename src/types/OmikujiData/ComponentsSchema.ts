@@ -65,7 +65,6 @@ export const SettingsRankingSchema = z.object({
   sortOrder: z.enum(rankingSortOrders).default('new').catch('new'),
   color: z.enum(themes).default('lofi').catch('lofi'),
 })
-
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
 /**
@@ -82,23 +81,26 @@ export const SettingsCounterSchema = z.object({
   maxUsers: z.number().min(0).max(300).default(1).catch(1), // ユーザーリスト表示数
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
 })
-
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 
-// アイテム設定
+/**
+ * アイテム設定
+ */
 export const settingsComponentsCondition = ['bubble', 'toast', 'ranking', 'counter'] as const
 export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
 
 // アイテム名のマッピング
 export const componentLabels: Record<SettingsComponentsCondition, string> = {
-  bubble: '💬 フキダシアイテム',
-  toast: '🍞 トーストアイテム',
-  ranking: '🏆 ランキングアイテム',
-  counter: '🔢 カウンターアイテム',
+  bubble: 'フキダシ',
+  toast: 'トースト',
+  ranking: 'ランキング',
+  counter: 'カウンター',
 }
-
 export const ComponentsConditionSchema = z.enum(settingsComponentsCondition)
 
+/**
+ * ComponentsSchema
+ */
 export const ComponentsSchema = z.object({
   conditions: z.array(ComponentsConditionSchema).catch(['bubble', 'toast']),
   bubble: SettingsBubbleSchema.catch(SettingsBubbleSchema.parse({})),
