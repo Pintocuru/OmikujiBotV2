@@ -11,6 +11,7 @@ const MIN_VALUE = -999999999
 export class ExpressionEvaluator extends KeyValueMap {
   /**
    * 式を評価して値を返す
+   * 四則演算（+, -, *, /）をサポート
    */
   evaluate(expression: string): string | number {
     const trimmed = expression.trim()
@@ -34,11 +35,54 @@ export class ExpressionEvaluator extends KeyValueMap {
     const stringMatch = trimmed.match(/^["'](.*)["']$/)
     if (stringMatch) return stringMatch[1]
 
-    // 変数参照
-    if (this.has(trimmed)) return this.get(trimmed)!
+    // 単一の変数参照
+    if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(trimmed) && this.has(trimmed)) {
+      return this.get(trimmed)!
+    }
+
+    // 式の評価（四則演算を含む場合）
+    if (/[\+\-\*\/]/.test(trimmed)) {
+      try {
+        return this.evaluateArithmetic(trimmed)
+      } catch (e) {
+        // 評価失敗時は文字列として扱う
+        return trimmed
+      }
+    }
 
     // その他は文字列として扱う
     return trimmed
+  }
+
+  /**
+   * 四則演算式を評価
+   * 例: "r1 + r2", "10 * 3 + 5"
+   */
+  private evaluateArithmetic(expression: string): number {
+    // 変数を値に置き換える
+    let resolved = expression.replace(/[a-zA-Z_][a-zA-Z0-9_]*/g, (varName) => {
+      if (this.has(varName)) {
+        const value = this.get(varName)!
+        return String(this.toNumber(value))
+      }
+      return '0' // 未定義変数は0として扱う
+    })
+
+    // 安全な評価のため、数値と演算子のみを許可
+    if (!/^[\d\.\+\-\*\/\(\)\s]+$/.test(resolved)) {
+      throw new Error(`無効な式: ${expression}`)
+    }
+
+    // Function を使った評価（eval の代替）
+    try {
+      const result = new Function(`'use strict'; return (${resolved})`)()
+      if (typeof result !== 'number' || isNaN(result)) {
+        throw new Error('評価結果が数値ではありません')
+      }
+      return result
+    } catch (e) {
+      throw new Error(`式の評価に失敗: ${expression}`)
+    }
   }
 
   /**

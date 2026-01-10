@@ -14,7 +14,7 @@
   >
     <!-- 何も入力していないときのいたずら文 -->
     <div
-      v-if="counterSetting.label === '' && !counterSetting.showCounter && counterSetting.maxUsers === 0"
+      v-if="counterSetting.label === '' && !counterSetting.showCounter && counterSetting.limitUserCount === 0"
       class="text-xl font-semibold opacity-80"
     >
       ハハハハハ！何を表示しようと言うのかね！？
@@ -31,7 +31,10 @@
     </div>
 
     <!-- ユーザーリスト -->
-    <ul v-if="counterSetting.maxUsers > 0" class="flex flex-wrap gap-2 justify-center mt-3">
+    <ul
+      v-if="counterSetting.limitUserCount === null || counterSetting.limitUserCount > 0"
+      class="flex flex-wrap gap-2 justify-center mt-3"
+    >
       <li
         v-for="(value, index) in displayedUsers"
         :key="value.userId + '-' + index"
@@ -61,7 +64,7 @@
 
   const props = defineProps<{
     counterSetting: SettingsCounterType
-    count: number | string
+    count: number | null
     users: UserVisitRecord[]
   }>()
 
@@ -69,18 +72,17 @@
 
   const displayCount = computed(() => {
     const c = props.count
-
-    // string の場合はそのまま表示
-    if (typeof c === 'string') return c
-
-    // number の場合は 0 未満を防ぎつつ整数化
-    return Math.max(0, Math.floor(c))
+    return c !== null ? c : '---'
   })
 
-  // 最新が後ろに貯まるので逆順にして、maxUsersで制限
+  // 最新が後ろに貯まるので逆順にして、limitUserCountで制限
   const displayedUsers = computed(() => {
-    const { maxUsers, target } = props.counterSetting
-    if (maxUsers <= 0) return []
+    const { limitUserCount, target } = props.counterSetting
+
+    // 0 以下なら表示しない
+    if (limitUserCount !== null && limitUserCount <= 0) {
+      return []
+    }
 
     const reversed = props.users.slice().reverse()
 
@@ -93,14 +95,18 @@
         if (seen.has(user.userId)) continue
         seen.add(user.userId)
         unique.push(user)
-        if (unique.length >= maxUsers) break
+
+        // limitUserCount が null なら制限なし
+        if (limitUserCount !== null && unique.length >= limitUserCount) {
+          break
+        }
       }
 
       return unique
     }
 
-    // draw の場合はそのまま
-    return reversed.slice(0, maxUsers)
+    // draw の場合（重複排除なし）
+    return limitUserCount === null ? reversed : reversed.slice(0, limitUserCount)
   })
 
   watch(

@@ -1,28 +1,30 @@
 <!-- src\MainGenerator\ui\GameRanking\GameRanking.vue -->
 <template>
-  <!-- スコア表示 -->
-  <div class="flex justify-center">
-    <!-- DEV preview trigger -->
-    <div
-      v-if="isDev"
-      class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
-      @mouseenter="devHoverActive = true"
-      @mouseleave="devHoverActive = false"
-    >
-      Bubble Preview
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl">
+    <!-- スコア表示 -->
+    <div class="flex justify-center">
+      <!-- DEV preview trigger -->
+      <div
+        v-if="isDev"
+        class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
+        @mouseenter="devHoverActive = true"
+        @mouseleave="devHoverActive = false"
+      >
+        Bubble Preview
+      </div>
+
+      <GameRankingScore
+        v-if="rankingScoreMessages.length > 0"
+        :key="rankingScoreMessages.length"
+        :bot-messages="rankingScoreMessages"
+        :settings="rankingSettings"
+        class="-mb-4"
+      />
     </div>
 
-    <GameRankingScore
-      v-if="rankingScoreMessages.length > 0"
-      :key="rankingScoreMessages.length"
-      :bot-messages="rankingScoreMessages"
-      :settings="rankingSettings"
-      class="-mb-4"
-    />
+    <!-- ランキングリスト -->
+    <GameRankingList :bot-messages="rankingListMessages" :settings="rankingSettings" />
   </div>
-
-  <!-- ランキングリスト -->
-  <GameRankingList :bot-messages="rankingListMessages" :settings="rankingSettings" />
 </template>
 
 <script setup lang="ts">

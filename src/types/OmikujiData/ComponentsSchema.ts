@@ -76,11 +76,8 @@ export const SettingsCounterSchema = z.object({
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   showCounter: z.boolean().default(true).catch(true), // カウンターを表示するか
-  firstValue: z.number().default(0).catch(0), // 初期値（開始値）
-  isDirectionUp: z.boolean().default(true).catch(true), // true=カウントアップ, false=カウントダウン
-  maxUsers: z.number().min(0).max(300).default(1).catch(1), // ユーザーリスト表示数
+  limitUserCount: z.number().min(0).nullable().default(null), // 表示するユーザー数の上限
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
-  // limitUserCount: z.number().min(1).max(300).nullable().default(null) // maxUsers の代わりに入れようかなと
 })
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 

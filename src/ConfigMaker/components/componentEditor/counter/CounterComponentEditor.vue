@@ -4,8 +4,8 @@
   <div v-if="counter.ruleKey" class="max-h-64 overflow-y-hidden">
     <CounterPreviewCard
       :counterSetting="counter"
-      :count="counter.firstValue"
-      :users="generateDummyUserNames(counter.maxUsers)"
+      :count="0"
+      :users="generateDummyUserNames(counter.limitUserCount ? counter.limitUserCount : 100)"
     />
   </div>
 
@@ -32,7 +32,7 @@
         :class="counter.ruleKey === key ? 'badge-primary' : 'badge-outline'"
         @click="updateCounterField('ruleKey', key)"
       >
-        {{ value.name }}
+        {{ value.name || '名称未設定' }}
       </div>
     </div>
   </SettingItem>
@@ -83,47 +83,42 @@
       </label>
     </SettingItem>
 
-    <!-- 初期値 -->
-    <SettingItem label="初期値" description="カウンターの開始値を設定" :showReset="true" @reset="resetMap.firstValue">
-      <input
-        type="number"
-        min="0"
-        class="input input-bordered w-24"
-        :value="counter.firstValue"
-        @input="(e) => updateCounterField('firstValue', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-
-    <!-- カウントアップ/ダウン -->
-    <SettingItem label="カウント方向" description="アップ↑ か、ダウン↓ を選択">
-      <label class="label cursor-pointer justify-start gap-3">
-        <input
-          type="checkbox"
-          class="toggle toggle-primary"
-          :checked="counter.isDirectionUp"
-          @change="(e) => updateCounterField('isDirectionUp', (e.target as HTMLInputElement).checked)"
-        />
-        <span class="label-text">
-          {{ counter.isDirectionUp ? 'カウントアップ' : 'カウントダウン' }}
-        </span>
-      </label>
-    </SettingItem>
-
     <!-- ユーザーリスト表示数 -->
     <SettingItem
       label="リスト表示数"
-      description="カウンターに表示するユーザーの数を設定(最大300)"
+      description="カウンターに表示するユーザーの数を設定"
       :showReset="true"
-      @reset="resetMap.maxUsers"
+      @reset="resetMap.limitUserCount"
     >
-      <input
-        type="number"
-        class="input input-bordered w-24"
-        :value="counter.maxUsers"
-        min="0"
-        max="300"
-        @input="(e) => updateCounterField('maxUsers', Number((e.target as HTMLInputElement).value))"
-      />
+      <div class="flex items-center gap-3">
+        <!-- チェックボックス：制限を有効化 -->
+        <label v-if="counter.limitUserCount === null" class="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            class="checkbox"
+            :checked="counter.limitUserCount !== null"
+            @change="
+              (e) => {
+                const checked = (e.target as HTMLInputElement).checked
+                updateCounterField('limitUserCount', checked ? 0 : null)
+              }
+            "
+          />
+          <span>制限する</span>
+        </label>
+
+        <!-- 数値入力：チェックONのときだけ有効 -->
+        <input
+          v-else
+          type="number"
+          class="input input-bordered w-24"
+          :disabled="counter.limitUserCount === null"
+          :value="counter.limitUserCount ?? ''"
+          min="0"
+          max="300"
+          @input="(e) => updateCounterField('limitUserCount', Number((e.target as HTMLInputElement).value))"
+        />
+      </div>
     </SettingItem>
   </div>
 </template>
@@ -165,9 +160,7 @@
     target: () => resetField('target'),
     label: () => resetField('label'),
     showCounter: () => resetField('showCounter'),
-    firstValue: () => resetField('firstValue'),
-    isDirectionUp: () => resetField('isDirectionUp'),
-    maxUsers: () => resetField('maxUsers'),
+    limitUserCount: () => resetField('limitUserCount'),
     color: () => resetField('color'),
   }
 </script>

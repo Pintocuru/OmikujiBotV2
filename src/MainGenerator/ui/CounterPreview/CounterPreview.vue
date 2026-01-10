@@ -1,7 +1,11 @@
 <!-- src/MainGenerator/components/preview/CounterPreview.vue -->
 <template>
-  <div class="h-screen">
-    <CounterPreviewCard :counter-setting="counterSetting" :count="count" :users="userList" />
+  <div class="h-screen overflow-hidden">
+    <CounterPreviewCard
+      :counter-setting="counterSetting"
+      :count="count"
+      :users="previewTick > 0 ? userList : generateDummyUserNames(500)"
+    />
   </div>
 </template>
 
@@ -11,6 +15,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewCard from '@/common/ui/CounterPreview/CounterPreviewCard.vue'
+  import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
@@ -19,18 +24,15 @@
   const previewTick = computed(() => botMessages.value.length)
   const userList = ref<UserVisitRecord[]>([])
 
-  const count = computed(() => {
+  const count = computed<number | null>(() => {
     const _ = previewTick.value
     const setting = counterSetting.value
     const ruleKey = setting.ruleKey
-    if (!ruleKey) return '-'
+    if (!ruleKey) return null
 
-    const current =
-      setting.target === 'draw'
-        ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
-        : appStore.userVisitManager.getVisitsByRuleId(ruleKey).length
-
-    return setting.isDirectionUp ? setting.firstValue + current : Math.max(0, setting.firstValue - current)
+    return setting.target === 'draw'
+      ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
+      : appStore.userVisitManager.getVisitsByRuleId(ruleKey).length
   })
 
   const lastUserName = computed<UserVisitRecord | null>(() => {

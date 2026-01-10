@@ -1,13 +1,6 @@
 <!-- src\ConfigMaker\components\componentEditor\bubble\CharacterSlot.vue -->
 <template>
-  <div
-    :class="[
-      'card shadow-lg p-2',
-      cardStyle ? 'border-3 ' : '',
-      cardStyle || 'bg-base-200',
-      showClear ? '' : 'shadow-inner',
-    ]"
-  >
+  <div class="card shadow-lg p-2" :class="[cardStyle ? '' : 'shadow-inner', cardStyle || 'bg-base-200']">
     <div class="flex justify-between items-center mb-2">
       <h4 class="text-md font-semibold">{{ title }}</h4>
       <button v-if="showClear" class="btn btn-xs btn-error" @click="$emit('clear')">クリア</button>

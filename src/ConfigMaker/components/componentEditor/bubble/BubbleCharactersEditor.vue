@@ -13,7 +13,7 @@
     />
 
     <!-- Slots Grid (2列レイアウト) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <CharacterSlot
         v-for="slot in visibleSlotConfigs"
         :key="slot.name"
@@ -89,25 +89,25 @@
       name: 'slot1' as keyof ShowCharacters,
       title: 'スロット 1',
       badgeStyle: 'badge-error',
-      cardStyle: 'bg-error bg-opacity-10 border-error border-3',
+      cardStyle: 'bg-error text-error-content',
     },
     {
       name: 'slot2' as keyof ShowCharacters,
       title: 'スロット 2',
       badgeStyle: 'badge-info',
-      cardStyle: 'bg-info bg-opacity-10 border-info border-3',
+      cardStyle: 'bg-info text-info-content',
     },
     {
       name: 'slot3' as keyof ShowCharacters,
       title: 'スロット 3',
       badgeStyle: 'badge-success',
-      cardStyle: 'bg-success bg-opacity-10 border-success border-3',
+      cardStyle: 'bg-success text-success-content',
     },
     {
       name: 'slot4' as keyof ShowCharacters,
       title: 'スロット 4',
       badgeStyle: 'badge-warning',
-      cardStyle: 'bg-warning bg-opacity-10 border-warning border-3',
+      cardStyle: 'bg-warning text-warning-content',
     },
   ]
 
