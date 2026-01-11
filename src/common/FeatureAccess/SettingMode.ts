@@ -3,7 +3,7 @@ import { AccessLevelType } from '@shared/types'
 import { computed, Ref } from 'vue'
 
 // 判定テーブル
-const MODE_KEY: Record<string, string> = {
+const MODE_KEY: Partial<Record<AccessLevelType, string>> = {
   adv: 'a3f1c9b27e4d8f62b19c0a7e53d4f981',
   pro: '2c26b46b68ffc68ff99b453c1d304134',
   godMode: '5d41402abc4b2a76b9719d911017c592',
@@ -35,6 +35,6 @@ export function useSettingModeFromHash(licenseKeyHashRef: Ref<string | undefined
 }
 
 // 利用しやすい関数群
-export function getKey(mode: string): string {
+export function getKey(mode: AccessLevelType): string {
   return MODE_KEY[mode] ?? ''
 }

@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
-  <GameRankingList v-if="ranking.targetScriptKeys.length > 0" :botMessages="[]" :settings="ranking" />
+  <GameRankingManager v-if="ranking.targetScriptKeys.length > 0" :botMessages="[]" :settings="ranking" />
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -17,6 +17,21 @@
           {{ theme }}
         </option>
       </select>
+    </SettingItem>
+
+    <!-- コンポーネント選択 -->
+    <SettingItem label="表示スタイル" description="カウンターの表示形式を選択">
+      <div class="flex flex-wrap gap-2">
+        <div
+          v-for="style in rankingComponents"
+          :key="style.value"
+          class="badge cursor-pointer"
+          :class="ranking.component === style.value ? 'badge-primary' : 'badge-outline'"
+          @click="updateRankingField('component', style.value)"
+        >
+          {{ style.label }}
+        </div>
+      </div>
     </SettingItem>
 
     <!-- 表示するランキング数 -->
@@ -101,9 +116,9 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import GameRankingList from '@/common/ui/GameRanking/GameRankingList.vue'
+  import GameRankingManager from '@/common/ui/GameRanking/GameRankingManager.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types/'
+  import { rankingComponents, rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types/'
   import { getAvailableScripts } from '@game/GameScriptsRules'
   import { gameScriptMap } from '@game/GameScriptsMap'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'

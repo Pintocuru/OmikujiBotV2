@@ -61,7 +61,7 @@
   import { computed } from 'vue'
   import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
-  import { generateDummyMessages } from './useDummyBotMessages'
+  import { generateDummyMessages } from '../../useDummyBotMessages'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{

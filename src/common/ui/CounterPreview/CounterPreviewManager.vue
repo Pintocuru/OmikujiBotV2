@@ -10,6 +10,7 @@
   import UserList from './variants/UserList.vue'
   import UserCardScroller from './variants/UserCardScroller.vue'
   import CounterUser from './variants/CounterUser.vue'
+  import CounterTimer from './variants/CounterTimer.vue'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType
@@ -21,6 +22,7 @@
     counterUser: CounterUser,
     userList: UserList,
     UserCardScroller: UserCardScroller,
+    counterTimer: CounterTimer,
   }
 
   const currentComponent = computed(() => {

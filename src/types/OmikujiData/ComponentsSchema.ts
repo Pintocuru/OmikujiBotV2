@@ -45,6 +45,9 @@ export const SettingsToastSchema = z.object({
 })
 export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 
+/**
+ * ランキング Ranking
+ */
 // ソート方法の列挙型
 export const rankingSortOrders = ['new', 'high', 'low'] as const
 export type RankingSortOrder = (typeof rankingSortOrders)[number]
@@ -54,16 +57,18 @@ export const rankingSortOrderLabels: Record<RankingSortOrder, string> = {
   high: 'スコア高い順',
   low: 'スコア低い順',
 }
+export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
 
-/**
- * ランキング Ranking
- */
+export type RankingComponent = (typeof rankingComponents)[number]['value']
+export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
+
 export const SettingsRankingSchema = z.object({
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
+  color: z.enum(themes).default('lofi').catch('lofi'),
   limit: z.number().min(1).max(20).default(5).catch(5),
   sortOrder: z.enum(rankingSortOrders).default('new').catch('new'),
-  color: z.enum(themes).default('lofi').catch('lofi'),
+  component: z.enum(rankingValues).default('rankStandard').catch('rankStandard'),
 })
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 
@@ -72,8 +77,9 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
  */
 export const counterComponents = [
   { value: 'counterUser', label: 'カウンター+最後のユーザー' },
-  { value: 'userList', label: 'ユーザーリスト' },
-  { value: 'UserCardScroller', label: '縦型ユーザーリスト' },
+  { value: 'counterTimer', label: '最後のユーザーからの経過時間' },
+  { value: 'userList', label: 'ユーザーリスト(バッジ)' },
+  { value: 'UserCardScroller', label: 'ユーザーリスト(縦型)' },
 ] as const
 
 export type CounterComponent = (typeof counterComponents)[number]['value']
