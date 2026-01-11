@@ -5,9 +5,6 @@
       <div v-if="counterSetting.label !== ''" class="text-xl">
         {{ counterSetting.label }}
       </div>
-      <div v-else class="text-xl">Standard Counter</div>
-
-      <div class="text-5xl font-black">{{ displayCount }}</div>
     </div>
 
     <ul class="flex flex-wrap gap-2 justify-center">

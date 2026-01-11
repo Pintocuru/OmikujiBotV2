@@ -73,7 +73,7 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 export const counterComponents = [
   { value: 'counterUser', label: 'カウンター+最後のユーザー' },
   { value: 'userList', label: 'ユーザーリスト' },
-  { value: 'userFocused', label: 'ユーザー重視' },
+  { value: 'UserCardScroller', label: '縦型ユーザーリスト' },
 ] as const
 
 export type CounterComponent = (typeof counterComponents)[number]['value']

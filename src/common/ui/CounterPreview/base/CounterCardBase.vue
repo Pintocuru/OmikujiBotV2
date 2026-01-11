@@ -20,6 +20,6 @@
 
   defineProps<{
     counterSetting: SettingsCounterType
-    isBouncing: boolean
+    isBouncing?: boolean
   }>()
 </script>

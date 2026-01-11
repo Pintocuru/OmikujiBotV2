@@ -8,7 +8,7 @@
   import { CounterComponent, SettingsCounterType } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import UserList from './variants/UserList.vue'
-  import UserFocusedCounter from './variants/UserFocusedCounter.vue'
+  import UserCardScroller from './variants/UserCardScroller.vue'
   import CounterUser from './variants/CounterUser.vue'
 
   const props = defineProps<{
@@ -20,7 +20,7 @@
   const componentMap: Record<CounterComponent, any> = {
     counterUser: CounterUser,
     userList: UserList,
-    userFocused: UserFocusedCounter,
+    UserCardScroller: UserCardScroller,
   }
 
   const currentComponent = computed(() => {
