@@ -1,5 +1,5 @@
 // tools\buildOptions\processJsonData.ts
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { OmikujiDataType } from '@/types/OmikujiData/'
 import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 

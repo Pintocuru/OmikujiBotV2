@@ -5,9 +5,18 @@ import { generateJsContent } from '@config/components/presetsExport/generateCont
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
 
-export function createCommonBuildConfig(packageRoot: string) {
+export function createCommonBuildConfig(packageRoot: string, isConfigGenerator: boolean = true) {
+  // ビルド設定
+  const entryPoints: Record<string, string> = {
+    MainGenerator: path.resolve(packageRoot, 'src/MainGenerator/main.ts'),
+  }
+  if (isConfigGenerator) {
+    entryPoints.ConfigMaker = path.resolve(packageRoot, 'src/ConfigMaker/main.ts')
+  }
+
   return {
     packageRoot,
+    entryPoints,
 
     // ライセンスキー
     licenseKey: {
@@ -16,12 +25,6 @@ export function createCommonBuildConfig(packageRoot: string) {
       adv: getKey('adv'),
       pro: getKey('pro'),
       godMode: getKey('godMode'),
-    },
-
-    // ビルド設定
-    entryPoints: {
-      MainGenerator: path.resolve(packageRoot, 'src/MainGenerator/main.ts'),
-      ConfigMaker: path.resolve(packageRoot, 'src/ConfigMaker/main.ts'),
     },
 
     // HTML設定

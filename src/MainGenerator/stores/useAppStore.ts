@@ -17,7 +17,6 @@ export const useAppStore = defineStore('app', () => {
   const data = ref<OmikujiDataType>(omikujiData)
 
   const loadData = (newData: OmikujiDataType) => {
-    console.log('[appStore] loadData', newData)
     data.value = normalizeData(newData)
   }
 

@@ -6,6 +6,7 @@ import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { getAvailableScripts } from '@game/GameScriptsRules'
 import { getAvailableComponents } from '@config/components/componentEditor/componentRules'
+import Swal from 'sweetalert2'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -21,6 +22,17 @@ export function normalizeData(data: unknown): OmikujiDataType {
         dataVersion: DATA_VERSION,
       },
     })
+  }
+
+  // 読み込むデータが現在よりも新しい場合
+  const incomingVersion = (data as any)?.meta?.dataVersion ?? 1
+  if (incomingVersion > DATA_VERSION) {
+    Swal.fire({
+      icon: 'error',
+      title: '読み込みエラー',
+      text: `このデータは v${incomingVersion} 形式です。\nこのアプリ（v${DATA_VERSION}）では読み込めません。`,
+    })
+    throw new Error(`このデータは v${incomingVersion} 形式のため、このアプリ（v${DATA_VERSION}）では読み込めません。`)
   }
 
   // dataVersionを数値として取得。存在しない場合はv1と見なす。
