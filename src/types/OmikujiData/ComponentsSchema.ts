@@ -70,13 +70,20 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 /**
  * カウンター・ユーザーリスト Counter
  */
-// idを指定することで、稼働した回数や、稼働させたユーザー数、ユーザーリストが出せる
+export const counterComponents = [
+  { value: 'counterUser', label: 'カウンター+最後のユーザー' },
+  { value: 'userList', label: 'ユーザーリスト' },
+  { value: 'userFocused', label: 'ユーザー重視' },
+] as const
+
+export type CounterComponent = (typeof counterComponents)[number]['value']
+export const componentValues = counterComponents.map((c) => c.value) as CounterComponent[]
+
 export const SettingsCounterSchema = z.object({
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
+  component: z.enum(componentValues).default('counterUser').catch('counterUser'),
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
-  showCounter: z.boolean().default(true).catch(true), // カウンターを表示するか
-  limitUserCount: z.number().min(0).nullable().default(null), // 表示するユーザー数の上限
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
 })
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>

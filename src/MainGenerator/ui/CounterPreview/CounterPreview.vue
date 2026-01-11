@@ -1,10 +1,10 @@
 <!-- src/MainGenerator/components/preview/CounterPreview.vue -->
 <template>
-  <div class="h-screen overflow-hidden">
-    <CounterPreviewCard
+  <div class="overflow-hidden">
+    <CounterPreviewManager
       :counter-setting="counterSetting"
       :count="count"
-      :users="previewTick > 0 ? userList : generateDummyUserNames(500)"
+      :users="hasPreviewData ? userList : generateDummyUserNames(500)"
     />
   </div>
 </template>
@@ -14,7 +14,7 @@
   import { storeToRefs } from 'pinia'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
-  import CounterPreviewCard from '@/common/ui/CounterPreview/CounterPreviewCard.vue'
+  import CounterPreviewManager from '@/common/ui/CounterPreview/CounterPreviewManager.vue'
   import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
 
   const appStore = useAppStore()
@@ -33,6 +33,10 @@
     return setting.target === 'draw'
       ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
       : appStore.userVisitManager.getVisitsByRuleId(ruleKey).length
+  })
+
+  const hasPreviewData = computed(() => {
+    return count.value !== null && count.value > 0
   })
 
   const lastUserName = computed<UserVisitRecord | null>(() => {
