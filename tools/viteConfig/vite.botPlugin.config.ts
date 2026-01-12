@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import tsconfig from '../../tsconfig.json'
 import { baseViteConfig, rootAlias } from '../../../../shared/utils/ViteConfig/viteConfigBase'
 import { createAliases } from '../../../../shared/utils/webpackBuild/utils/createAliases'
+import { APP_VERSION } from '../../src/version'
 
 // projectRoot の設定
 const __filename = fileURLToPath(import.meta.url)
@@ -24,8 +25,8 @@ export default defineConfig(() => {
       lib: {
         entry: path.resolve(projectRoot, 'src/BotPlugin/plugin.ts'),
         name: 'Plugin',
-        fileName: () => 'plugin.js',
-        formats: ['cjs'], // 出力形式をCommonJSに指定
+        fileName: () => `omikujiBotPlugin-${APP_VERSION}/plugin.js`,
+        formats: ['cjs'], // 出力形式は CommonJS 指定
       },
 
       // 出力ディレクトリ

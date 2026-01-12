@@ -20,26 +20,13 @@ export default defineConfig(() => {
   const overrideConfig: UserConfig = {
     root: path.resolve(projectRoot),
     resolve: { alias },
+    optimizeDeps: {
+      // キャッシュの再構築を促すため、一度除外してみる
+      exclude: ['vue-draggable-plus'],
+    },
     server: {
       watch: {
         ignored: [path.resolve(projectRoot, 'server/presets/**')],
-      },
-    },
-    build: {
-      lib: {
-        entry: path.resolve(projectRoot, 'src/MainGenerator/main.ts'),
-        formats: ['iife'],
-        name: 'MainGenerator',
-        fileName: () => 'main.js',
-      },
-      target: 'node18',
-      outDir: 'dist-plugin',
-      emptyOutDir: true,
-      rollupOptions: {
-        output: {
-          entryFileNames: 'scripts/[name].js',
-          assetFileNames: 'scripts/[name].[ext]',
-        },
       },
     },
   }

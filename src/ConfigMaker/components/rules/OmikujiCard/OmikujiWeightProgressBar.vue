@@ -22,12 +22,13 @@
       </div>
 
       <!-- 凡例（ドラッグ可能） -->
-      <draggable
+      <VueDraggable
+        tag="div"
+        item-key="id"
         :modelValue="items"
         @update:modelValue="$emit('update:items', $event)"
-        item-key="id"
         handle=".legend-drag-handle"
-        animation="200"
+        :animation="200"
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
       >
         <template #item="{ element: item, index }">
@@ -42,7 +43,7 @@
             @select="$emit('select', index)"
           />
         </template>
-      </draggable>
+      </VueDraggable>
     </div>
   </div>
 </template>
@@ -50,7 +51,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/'
-  import draggable from 'vuedraggable'
+  //  import { VueDraggable } from 'vue-draggable-plus'
+  import VueDraggable from '@/DraggableWrapper.vue'
   import OmikujiLegendItem from './OmikujiLegendItem.vue'
   import { addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 

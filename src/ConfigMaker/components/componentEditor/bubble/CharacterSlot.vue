@@ -5,8 +5,8 @@
       <h4 class="text-md font-semibold">{{ title }}</h4>
       <button v-if="showClear" class="btn btn-xs btn-error" @click="$emit('clear')">クリア</button>
     </div>
-
-    <draggable
+    <VueDraggable
+      tag="div"
       :model-value="items"
       item-key="key"
       group="characters"
@@ -26,27 +26,29 @@
           キャラクターをここにドラッグしてください
         </div>
       </template>
-    </draggable>
+    </VueDraggable>
   </div>
 </template>
 
 <script setup lang="ts">
-  import draggable from 'vuedraggable'
+  // import { VueDraggable } from 'vue-draggable-plus'
+  import VueDraggable from '@/DraggableWrapper.vue'
 
-  interface Props {
-    slotName: string
-    title: string
-    badgeStyle: string
-    cardStyle?: string
-    characters: Record<string, { displayName?: string }>
-    items: string[]
-    showClear?: boolean
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    cardStyle: '',
-    showClear: true,
-  })
+  const props = withDefaults(
+    defineProps<{
+      slotName: string
+      title: string
+      badgeStyle: string
+      cardStyle?: string
+      characters: Record<string, { displayName?: string }>
+      items: string[]
+      showClear?: boolean
+    }>(),
+    {
+      cardStyle: '',
+      showClear: true,
+    }
+  )
 
   defineEmits<{
     update: [items: string[]]

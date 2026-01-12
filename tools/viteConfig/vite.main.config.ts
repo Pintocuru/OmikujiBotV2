@@ -25,7 +25,7 @@ export default defineConfig(() => {
         entry: path.resolve(projectRoot, 'src/MainGenerator/main.ts'),
         formats: ['iife'],
         name: 'MainGenerator',
-        fileName: 'scripts/MainGenerator.js',
+        fileName: () => 'scripts/MainGenerator.js',
       },
       emptyOutDir: true,
       rollupOptions: {

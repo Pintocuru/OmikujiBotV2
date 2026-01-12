@@ -25,7 +25,7 @@ export default defineConfig(() => {
         entry: path.resolve(projectRoot, 'src/ConfigMaker/main.ts'),
         formats: ['iife'],
         name: 'ConfigMaker',
-        fileName: 'scripts/ConfigMaker.js',
+        fileName: () => 'scripts/ConfigMaker.js',
       },
       emptyOutDir: false,
       rollupOptions: {

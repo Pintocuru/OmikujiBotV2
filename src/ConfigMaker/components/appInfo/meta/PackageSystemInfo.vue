@@ -44,7 +44,8 @@
 
   // メタ情報の参照
   const meta = computed(() => data.value.meta)
+  const generatorVersion = computed(() => meta.value.generatorVersion)
 
   // バージョンチェック機能（URL取得のみ使用）
-  const { openLatestRelease } = useVersionCheck(meta.value.generatorVersion)
+  const { openLatestRelease } = useVersionCheck(generatorVersion)
 </script>

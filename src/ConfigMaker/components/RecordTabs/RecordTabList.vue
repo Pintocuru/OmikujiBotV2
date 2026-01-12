@@ -5,13 +5,13 @@
     <RecordSortActions />
 
     <!-- vue-draggableを使用 -->
-    <draggable
-      :model-value="draggableRules"
+    <VueDraggable
+      v-model="draggableRules"
+      item-key="key"
       @update:model-value="(value: any) => (draggableRules = value)"
       tag="div"
       class="flex flex-wrap gap-1"
       :disabled="!!store.searchQuery || store.isMultiSelectMode"
-      item-key="id"
       :animation="200"
       ghost-class="opacity-50"
       chosen-class="scale-95"
@@ -19,9 +19,10 @@
       @end="onDragEnd"
     >
       <template #item="{ element: rule }">
-        <RecordTabItem :rule="rule" />
+        <!-- ! @ts-ignore -->
+        <RecordTabItem :rule="rule as any" />
       </template>
-    </draggable>
+    </VueDraggable>
   </div>
 
   <!-- フィルター結果が空の場合のメッセージ -->
@@ -48,10 +49,11 @@
   import RecordTabItem from './RecordTabItem.vue'
   import RecordSortActions from './RecordSortActions.vue'
   import { useRecordTabsStore } from './RecordTabsStore'
-  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import draggable from 'vuedraggable'
-  import { Plus } from 'lucide-vue-next'
   import { useDragAndDrop } from './composables/useDragAndDrop'
+  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  //  import { VueDraggable } from 'vue-draggable-plus'
+  import VueDraggable from '@/DraggableWrapper.vue'
+  import { Plus } from 'lucide-vue-next'
 
   // Pinia store
   const store = useRecordTabsStore()
