@@ -6,6 +6,7 @@ import { PostActionType as OldPostActionType } from '@migrations/v1_to_v2/Omikuj
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { WeightValueSchema } from './PlaceholderSchema'
+import { MessageSquare, PartyPopper, Volume2, MessagesSquare, Sparkles } from 'lucide-vue-next'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({
@@ -75,8 +76,31 @@ export const PostActionActionSetSchema = z.object({
     return value
   }),
 })
-
 export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
+
+//  PostAction Special
+export const specialTypeMap = {
+  return: '処理を終了する（return）',
+  continue: '次のルールへ進む（continue）',
+  log: 'ログを出力する（log）',
+} as const
+
+export const PostActionSpecialSchema = z.object({
+  ...PostActionBaseSchema.shape,
+  actionType: z.literal('special').default('special'),
+  special: z.enum(['return', 'continue', 'log']),
+})
+export type PostActionSpecialType = z.infer<typeof PostActionSpecialSchema>
+
+// アクションタイプの定義
+export const postActionTypes = [
+  { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
+  { type: 'sound' as const, label: 'サウンド', icon: Volume2 },
+  { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
+  { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
+  { type: 'special', label: '特殊動作', icon: Sparkles },
+]
+export type PostActionTypes = (typeof postActionTypes)[number]['type']
 
 // PostAction わんコメ・BOTちゃんに投稿する型定義
 export const PostActionSchema = z.discriminatedUnion('actionType', [
@@ -84,6 +108,7 @@ export const PostActionSchema = z.discriminatedUnion('actionType', [
   PostActionSoundSchema,
   PostActionWordPartySchema,
   PostActionActionSetSchema,
+  PostActionSpecialSchema,
 ])
 export type PostActionType = z.infer<typeof PostActionSchema>
 

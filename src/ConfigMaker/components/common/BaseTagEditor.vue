@@ -2,14 +2,13 @@
 <template>
   <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
     <div class="flex flex-wrap gap-2 mb-2">
-      <span
-        v-for="(tag, index) in modelValue"
-        :key="index"
-        class="badge badge-sm badge-primary cursor-pointer"
-        @click="removeTag(index)"
-      >
-        {{ tag }} ✕
-      </span>
+      <VueDraggable v-model="internalValue" itemKey="key" group="tags" class="flex flex-wrap gap-2">
+        <template #item="{ element, index }">
+          <span class="badge badge-sm badge-primary">
+            {{ element }} <span class="cursor-pointer" @click="removeTag(index)">✕</span></span
+          >
+        </template>
+      </VueDraggable>
     </div>
 
     <div class="flex gap-2">
@@ -26,8 +25,10 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
+  //  import { VueDraggable } from 'vue-VueDraggable-plus'
+  import VueDraggable from '@/DraggableWrapper.vue'
 
   const props = defineProps<{
     modelValue?: string[]
@@ -38,6 +39,11 @@
   }>()
 
   const newTag = ref('')
+
+  const internalValue = computed({
+    get: () => props.modelValue ?? [],
+    set: (val) => emit('update:modelValue', val),
+  })
 
   const addTag = () => {
     const value = newTag.value.trim()

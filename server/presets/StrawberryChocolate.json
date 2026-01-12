@@ -3,10 +3,10 @@
     "id": "1755337374735-01vj6j",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.12-v2.0.0-beta13",
+    "version": "ver2026.01.12-v2.0.0-beta14",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta13",
-    "dataVersion": 2.0013,
+    "generatorVersion": "v2.0.0-beta14",
+    "dataVersion": 2.0014,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -148,13 +148,13 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T03:03:22.739Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
-        "初見詐欺",
-        "ショコラ"
+        "ショコラ",
+        "初見詐欺"
       ],
       "accessLevel": "basic",
       "omikuji": [
@@ -181,19 +181,19 @@
               "actionSetKeys": [
                 {
                   "weight": 4,
-                  "content": "1767539439046-od3bas"
+                  "content": "FirstSagiChocolateThinking"
                 },
                 {
                   "weight": 4,
-                  "content": "1767539481151-kvg5to"
+                  "content": "FirstSagiChocolateSurprised"
                 },
                 {
                   "weight": 4,
-                  "content": "1767539536508-gcvcfg"
+                  "content": "FirstSagiChocolateSad"
                 },
                 {
                   "weight": 1,
-                  "content": "1767539560050-xw7xfz"
+                  "content": "FirstSagiChocolateFake"
                 }
               ]
             }
@@ -250,7 +250,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767539629815-molbgp"
+                  "content": "FirstSyokenChocolateHappy"
                 }
               ]
             }
@@ -302,7 +302,7 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-09T13:46:37.373Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -367,13 +367,13 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-05T03:03:47.408Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [
-        "ギフト",
-        "ショコラ"
+        "ショコラ",
+        "ギフト"
       ],
       "accessLevel": "basic",
       "omikuji": [
@@ -400,7 +400,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767540348473-d4fev8"
+                  "content": "GiftChocolateWink"
                 }
               ]
             }
@@ -436,7 +436,7 @@
       "name": "初見判定ちゃん:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T03:03:59.418Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -464,7 +464,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767539629815-molbgp"
+                  "content": "FirstSyokenChocolateHappy"
                 }
               ]
             }
@@ -506,7 +506,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767540169384-b2waaw"
+                  "content": "FirstComebackChocolateWink"
                 }
               ]
             }
@@ -548,7 +548,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767540201946-kvrx6s"
+                  "content": "FirstVisitChocolateBlushing"
                 }
               ]
             }
@@ -596,7 +596,7 @@
       "name": "コメントチェック:Chocolate",
       "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T03:04:08.003Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -624,7 +624,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767540543495-x0of51"
+                  "content": "CountStreamChocolate"
                 }
               ]
             }
@@ -664,7 +664,7 @@
               "actionSetKeys": [
                 {
                   "weight": 1,
-                  "content": "1767540577897-8ne654"
+                  "content": "CountUserChocolate"
                 }
               ]
             }
@@ -712,13 +712,13 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-05T03:04:33.712Z",
+      "updatedAt": "2026-01-12T12:21:40.812Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
-        "閲覧数チェック",
-        "ショコラ"
+        "ショコラ",
+        "閲覧数チェック"
       ],
       "accessLevel": "basic",
       "omikuji": [
@@ -791,13 +791,13 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-01-09T13:49:46.158Z",
+      "updatedAt": "2026-01-12T12:21:40.812Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
-        "告知",
-        "ショコラ"
+        "ショコラ",
+        "告知"
       ],
       "accessLevel": "basic",
       "omikuji": [
@@ -866,19 +866,20 @@
     }
   },
   "actionSets": {
-    "1767539439046-od3bas": {
+    "FirstSagiChocolateThinking": {
       "id": "1767539439046-od3bas",
-      "key": "1767539439046-od3bas",
+      "key": "FirstSagiChocolateThinking",
       "name": "初見詐欺(thinking):Chocolate",
+      "description": "あらあら、また初見なの？",
       "createdAt": "2026-01-04T15:10:39.046Z",
-      "updatedAt": "2026-01-05T03:06:04.152Z",
+      "updatedAt": "2026-01-12T12:28:23.001Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
-        "thinking",
         "ショコラ",
-        "初見詐欺"
+        "初見詐欺",
+        "thinking"
       ],
       "accessLevel": "basic",
       "postActions": [
@@ -897,12 +898,13 @@
       ],
       "gameScripts": null
     },
-    "1767539481151-kvg5to": {
+    "FirstSagiChocolateSurprised": {
       "id": "1767539481151-kvg5to",
-      "key": "1767539481151-kvg5to",
+      "key": "FirstSagiChocolateSurprised",
       "name": "初見詐欺(surprised):Chocolate",
+      "description": "本当に忘れちゃったのかと思ったわ",
       "createdAt": "2026-01-04T15:11:21.152Z",
-      "updatedAt": "2026-01-05T03:06:09.818Z",
+      "updatedAt": "2026-01-12T12:28:40.515Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -927,12 +929,12 @@
       ],
       "gameScripts": null
     },
-    "1767539536508-gcvcfg": {
+    "FirstSagiChocolateSad": {
       "id": "1767539536508-gcvcfg",
-      "key": "1767539536508-gcvcfg",
+      "key": "FirstSagiChocolateSad",
       "name": "初見詐欺(sad):Chocolate",
       "createdAt": "2026-01-04T15:12:16.508Z",
-      "updatedAt": "2026-01-05T03:06:12.484Z",
+      "updatedAt": "2026-01-12T12:29:06.880Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -955,14 +957,15 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": null,
+      "description": "ほんとは常連さんでしょ？"
     },
-    "1767539560050-xw7xfz": {
+    "FirstSagiChocolateFake": {
       "id": "1767539560050-xw7xfz",
-      "key": "1767539560050-xw7xfz",
+      "key": "FirstSagiChocolateFake",
       "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
       "createdAt": "2026-01-04T15:12:40.050Z",
-      "updatedAt": "2026-01-05T03:06:15.724Z",
+      "updatedAt": "2026-01-12T12:29:27.296Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -997,14 +1000,16 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": null,
+      "description": "もう、びっくりさせないでよ～"
     },
-    "1767540348473-d4fev8": {
+    "GiftChocolateWink": {
       "id": "1767540348473-d4fev8",
-      "key": "1767540348473-d4fev8",
+      "key": "GiftChocolateWink",
       "name": "ギフト(wink):Chocolate",
+      "description": "あなたの優しさに癒されます♡",
       "createdAt": "2026-01-04T15:25:48.473Z",
-      "updatedAt": "2026-01-05T03:06:20.368Z",
+      "updatedAt": "2026-01-12T12:29:46.561Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1021,7 +1026,7 @@
           "iconKey": "wink",
           "sound": "carnival",
           "message": {
-            "bubble": "<<GiftChocolate>>",
+            "bubble": "<<GiftChocolateWink>>",
             "toast": "",
             "isToast": false
           }
@@ -1029,12 +1034,12 @@
       ],
       "gameScripts": null
     },
-    "1767539629815-molbgp": {
+    "FirstSyokenChocolateHappy": {
       "id": "1767539629815-molbgp",
-      "key": "1767539629815-molbgp",
+      "key": "FirstSyokenChocolateHappy",
       "name": "初見:Chocolate",
       "createdAt": "2026-01-04T15:13:49.815Z",
-      "updatedAt": "2026-01-05T03:06:44.628Z",
+      "updatedAt": "2026-01-12T12:30:04.934Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1062,14 +1067,16 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": null,
+      "description": "お姉さんが歓迎しちゃうね♡"
     },
-    "1767540169384-b2waaw": {
+    "FirstComebackChocolateWink": {
       "id": "1767540169384-b2waaw",
-      "key": "1767540169384-b2waaw",
+      "key": "FirstComebackChocolateWink",
       "name": "久しぶり:Chocolate",
+      "description": "また来てくれてありがとう♡",
       "createdAt": "2026-01-04T15:22:49.384Z",
-      "updatedAt": "2026-01-05T03:06:47.424Z",
+      "updatedAt": "2026-01-12T12:30:17.380Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1094,12 +1101,13 @@
       ],
       "gameScripts": null
     },
-    "1767540201946-kvrx6s": {
+    "FirstVisitChocolateBlushing": {
       "id": "1767540201946-kvrx6s",
-      "key": "1767540201946-kvrx6s",
+      "key": "FirstVisitChocolateBlushing",
       "name": "こんにちは:Chocolate",
+      "description": "お姉さんの楽しみになってるわ。",
       "createdAt": "2026-01-04T15:23:21.946Z",
-      "updatedAt": "2026-01-09T13:50:48.467Z",
+      "updatedAt": "2026-01-12T12:30:31.100Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1124,12 +1132,13 @@
       ],
       "gameScripts": null
     },
-    "1767540543495-x0of51": {
+    "CountStreamChocolate": {
       "id": "1767540543495-x0of51",
-      "key": "1767540543495-x0of51",
+      "key": "CountStreamChocolate",
       "name": "配信枠コメント50回:Chocolate",
+      "description": "ちょうどいいキリ番ね～",
       "createdAt": "2026-01-04T15:29:03.495Z",
-      "updatedAt": "2026-01-05T03:07:06.767Z",
+      "updatedAt": "2026-01-12T12:31:00.086Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1153,12 +1162,13 @@
       ],
       "gameScripts": null
     },
-    "1767540577897-8ne654": {
+    "CountUserChocolate": {
       "id": "1767540577897-8ne654",
-      "key": "1767540577897-8ne654",
+      "key": "CountUserChocolate",
       "name": "個人コメント100回:Chocolate",
+      "description": "100回って、すごい数よね！",
       "createdAt": "2026-01-04T15:29:37.897Z",
-      "updatedAt": "2026-01-05T03:07:14.189Z",
+      "updatedAt": "2026-01-12T12:31:15.183Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -1189,183 +1199,352 @@
       "key": "FirstSagiChocolateThinking",
       "name": "初見詐欺(Thinking):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-12-06T03:05:39.591Z",
+      "updatedAt": "2026-01-12T12:24:52.589Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "values": [
-        "あら？<<user>>さん、初見だったかしら？",
-        "<<user>>さん、初見って言っているけど、この前来てくれたような…",
-        "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
-        "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
-        "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ"
-      ]
+        {
+          "content": "あら？<<user>>さん、初見だったかしら？",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、初見って言っているけど、この前来てくれたような…",
+          "weight": 1
+        },
+        {
+          "content": "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
+          "weight": 1
+        },
+        {
+          "content": "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
+          "weight": 1
+        },
+        {
+          "content": "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ",
+          "weight": 1
+        }
+      ],
+      "description": "あら、初見だったかしら？"
     },
     "FirstSagiChocolateSurprise": {
       "id": "FirstSagiChocolateSurprise",
       "key": "FirstSagiChocolateSurprise",
       "name": "初見詐欺(Surprise):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T01:46:23.119Z",
+      "updatedAt": "2026-01-12T12:25:03.159Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "values": [
-        "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
-        "えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?",
-        "びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ",
-        "えっ、初見!? あたしとあんなに仲よかったじゃない～",
-        "そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～"
-      ]
+        {
+          "content": "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
+          "weight": 1
+        },
+        {
+          "content": "えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?",
+          "weight": 1
+        },
+        {
+          "content": "びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ",
+          "weight": 1
+        },
+        {
+          "content": "えっ、初見!? あたしとあんなに仲よかったじゃない～",
+          "weight": 1
+        },
+        {
+          "content": "そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～",
+          "weight": 1
+        }
+      ],
+      "description": "あたしとあんなに仲よかったじゃない～"
     },
     "FirstSagiChocolateSad": {
       "id": "FirstSagiChocolateSad",
       "key": "FirstSagiChocolateSad",
       "name": "初見詐欺(Sad):Chocolate",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T01:51:19.222Z",
+      "updatedAt": "2026-01-12T12:25:23.375Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "values": [
-        "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
-        "<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？",
-        "えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ",
-        "<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜",
-        "<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん"
-      ]
-    },
-    "GiftChocolate": {
-      "id": "GiftChocolate",
-      "key": "GiftChocolate",
-      "name": "ギフト:Chocolate",
-      "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-11-28T03:25:55.315Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "values": [
-        "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
-        "あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡",
-        "ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡",
-        "<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡",
-        "あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。"
-      ]
+        {
+          "content": "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？",
+          "weight": 1
+        },
+        {
+          "content": "えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん",
+          "weight": 1
+        }
+      ],
+      "description": "記憶喪失かしら？あたしのハグで治る？"
     },
     "FirstSyokenChocolate": {
       "id": "FirstSyokenChocolate",
       "key": "FirstSyokenChocolate",
       "name": "初見:Chocolate",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-11-28T02:31:44.308Z",
+      "updatedAt": "2026-01-12T12:25:44.007Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
-        "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
-        "わぁ、<<user>>さん、初めまして！仲良くしてくれると嬉しいな♡",
-        "ようこそ、<<user>>さん！初見さんって聞くとちょっとドキドキしちゃうわ～♡",
-        "初めまして、<<user>>さん。来てくれてありがとう、お姉さんが歓迎しちゃうね♡",
-        "<<user>>さん、初見さんなのね？ふふ、歓迎しましょう♪"
-      ]
+        {
+          "content": "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
+          "weight": 1
+        },
+        {
+          "content": "わぁ、<<user>>さん、初めまして！仲良くしてくれると嬉しいな♡",
+          "weight": 1
+        },
+        {
+          "content": "ようこそ、<<user>>さん！初見さんって聞くとちょっとドキドキしちゃうわ～♡",
+          "weight": 1
+        },
+        {
+          "content": "初めまして、<<user>>さん。来てくれてありがとう、お姉さんが歓迎しちゃうね♡",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、初見さんなのね？ふふ、歓迎しましょう♪",
+          "weight": 1
+        }
+      ],
+      "description": "仲良くしてくれると嬉しいな♡"
     },
     "FirstComebackChocolate": {
       "id": "FirstComebackChocolate",
       "key": "FirstComebackChocolate",
       "name": "久しぶり:Chocolate",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-11-28T03:20:36.914Z",
+      "updatedAt": "2026-01-12T12:26:12.280Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
-        "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
-        "<<user>>さん、お久しぶり！お姉さんちょっと安心しちゃったわ～♡",
-        "わぁ、<<user>>さん、お久しぶりね。待ってたわ、また来てくれてありがとう♡",
-        "あらあら、<<user>>さん、1週間ぶりね～。あたし、寂しかったのよ。",
-        "<<user>>さん、来てくれてありがとう。また会えるのを楽しみにしてたのよ♡"
-      ]
+        {
+          "content": "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、お久しぶり！お姉さんちょっと安心しちゃったわ～♡",
+          "weight": 1
+        },
+        {
+          "content": "わぁ、<<user>>さん、お久しぶりね。待ってたわ、また来てくれてありがとう♡",
+          "weight": 1
+        },
+        {
+          "content": "あらあら、<<user>>さん、1週間ぶりね～。あたし、寂しかったのよ。",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、来てくれてありがとう。また会えるのを楽しみにしてたのよ♡",
+          "weight": 1
+        }
+      ],
+      "description": " 来てくれて嬉しいわ、元気にしてた？"
     },
     "FirstVisitChocolate": {
       "id": "FirstVisitChocolate",
       "key": "FirstVisitChocolate",
       "name": "こんにちは:Chocolate",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-11-28T03:23:13.536Z",
+      "updatedAt": "2026-01-12T12:26:21.753Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
-        "あら、<<user>>さん、今日も来てくれて嬉しい♡",
-        "<<user>>さん、いつも顔を見せてくれてありがとう♡",
-        "あらあら、<<user>>さん、今日も来てくれてるのね。常連さんね～",
-        "<<user>>さん、いつも来てくれるから、幸せよ。",
-        "<<user>>さん、今日も来てくれてるのね。お姉さんの楽しみになってるわ。"
-      ]
+        {
+          "content": "あら、<<user>>さん、今日も来てくれて嬉しい♡",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、いつも顔を見せてくれてありがとう♡",
+          "weight": 1
+        },
+        {
+          "content": "あらあら、<<user>>さん、今日も来てくれてるのね。常連さんね～",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、いつも来てくれるから、幸せよ。",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、今日も来てくれてるのね。お姉さんの楽しみになってるわ。",
+          "weight": 1
+        }
+      ],
+      "description": "今日も来てくれてるのね。常連さんね～"
     },
     "PromotionToastsChocolate": {
       "id": "PromotionToastsChocolate",
       "key": "PromotionToastsChocolate",
       "name": "告知用トースト:Chocolate",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-11-28T03:29:52.688Z",
+      "updatedAt": "2026-01-12T12:26:35.583Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "告知"
+      ],
       "accessLevel": "basic",
       "values": [
-        "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
-        "あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。",
-        "チャンネル登録は、気軽に押してね♡",
-        "高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡",
-        "コメントは配信の華よね。気軽にどんどん付けて欲しいわ。",
-        "占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡"
-      ]
+        {
+          "content": "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
+          "weight": 1
+        },
+        {
+          "content": "あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。",
+          "weight": 1
+        },
+        {
+          "content": "チャンネル登録は、気軽に押してね♡",
+          "weight": 1
+        },
+        {
+          "content": "高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡",
+          "weight": 1
+        },
+        {
+          "content": "コメントは配信の華よね。気軽にどんどん付けて欲しいわ。",
+          "weight": 1
+        },
+        {
+          "content": "占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡",
+          "weight": 1
+        }
+      ],
+      "description": "チャンネル登録は、気軽に押してね♡"
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-12-06T01:30:28.621Z",
+      "updatedAt": "2026-01-12T12:27:31.301Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
-        "ショコラ"
-      ]
+        {
+          "content": "ショコラ",
+          "weight": 1
+        }
+      ],
+      "description": "あたしの名前はストロベリー♪"
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-12-06T01:29:59.019Z",
+      "updatedAt": "2026-01-12T12:27:42.715Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
-        "あたし"
-      ]
+        {
+          "content": "あたし",
+          "weight": 1
+        }
+      ],
+      "description": "あたし！"
+    },
+    "GiftChocolateWink": {
+      "id": "GiftChocolate",
+      "key": "GiftChocolateWink",
+      "name": "ギフト:Chocolate",
+      "createdAt": "2025-08-27T09:48:36.227Z",
+      "updatedAt": "2026-01-12T12:25:36.445Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "ショコラ",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
+          "weight": 1
+        },
+        {
+          "content": "あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡",
+          "weight": 1
+        },
+        {
+          "content": "ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡",
+          "weight": 1
+        },
+        {
+          "content": "<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡",
+          "weight": 1
+        },
+        {
+          "content": "あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。",
+          "weight": 1
+        }
+      ],
+      "description": "大切に受け取らせてもらうわね♡"
     }
   },
   "characters": {
@@ -1375,13 +1554,13 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2026-01-04T15:09:32.911Z",
+      "updatedAt": "2026-01-12T12:06:52.120Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "ショコラ"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -1503,18 +1682,16 @@
         "basicList"
       ],
       "title": "🍉スイカランキング🍉",
+      "color": "lofi",
       "limit": 5,
       "sortOrder": "new",
-      "color": "lofi"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": "FirstSyokenChocolate",
+      "component": "counterUser",
       "target": "user",
       "label": "🆕 本日の初見さん 🎉",
-      "showCounter": false,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 30,
       "color": {
         "daisyUiTheme": "light",
         "backFrom": "primary",

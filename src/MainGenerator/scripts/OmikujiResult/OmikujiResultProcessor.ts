@@ -10,7 +10,6 @@ import { ActionSetExpander } from '@main/scripts/OmikujiProcess/ActionSetExpande
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
-import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 import { ProcessedAction, VariablePlaceholderResult } from './OmikujiResultHelper'
 import { ScriptResult } from '@/types'
 

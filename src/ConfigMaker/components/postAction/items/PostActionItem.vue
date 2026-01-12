@@ -14,9 +14,9 @@
         <select
           class="select select-sm w-full max-w-xs"
           :value="action.actionType"
-          @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionType['actionType'])"
+          @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionTypes)"
         >
-          <option v-for="t in actionTypes" :key="t.type" :value="t.type">
+          <option v-for="t in postActionTypes" :key="t.type" :value="t.type">
             {{ t.label }}
           </option>
         </select>
@@ -47,14 +47,14 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostActionSchema, PostActionType } from '@/types/'
+  import { PostActionSchema, PostActionType, PostActionTypes, postActionTypes } from '@/types/'
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
+  import SpecialSettings from '../special/SpecialSettings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
@@ -70,21 +70,14 @@
     'update:action': [value: PostActionType]
   }>()
 
-  // アクションタイプの定義
-  const actionTypes = [
-    { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
-    { type: 'sound' as const, label: 'サウンド', icon: Volume2 },
-    { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
-    { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
-  ]
-
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {
-    const componentMap = {
+    const componentMap: Record<PostActionTypes, any> = {
       message: MessageSettings,
       sound: SoundSettings,
       wordParty: WordPartySettings,
       actionSet: ActionSetSettings,
+      special: SpecialSettings,
     }
 
     return componentMap[props.action.actionType]
@@ -97,10 +90,10 @@
   })
 
   // actionType 別の生データキャッシュ
-  const rawActionCache = ref<Partial<Record<PostActionType['actionType'], any>>>({})
+  const rawActionCache = ref<Partial<Record<PostActionTypes, any>>>({})
 
   // アクションタイプの更新
-  const updateActionType = (newType: PostActionType['actionType']) => {
+  const updateActionType = (newType: PostActionTypes) => {
     const currentType = props.action.actionType
 
     // ① 現在の状態を退避
@@ -114,6 +107,7 @@
       ...props.action,
       delaySeconds: props.action.delaySeconds,
       actionType: newType,
+      special: 'return',
       actionSetKeys: [''],
     }
 
