@@ -2,18 +2,18 @@
 import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { visualizer } from 'rollup-plugin-visualizer'
-import { baseViteConfig, rootAlias } from '../../shared/utils/ViteConfig/viteConfigBase'
-import { createAliases } from '../../shared/utils/webpackBuild/utils/createAliases'
-import tsconfig from './tsconfig.json'
+import tsconfig from '../../tsconfig.json'
+import { baseViteConfig, rootAlias } from '../../../../shared/utils/ViteConfig/viteConfigBase'
+import { createAliases } from '../../../../shared/utils/webpackBuild/utils/createAliases'
 
-// __dirname の設定
+// projectRoot の設定
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const base = baseViteConfig(__dirname)
+const projectRoot = path.resolve(__dirname, '../../')
+const base = baseViteConfig(projectRoot)
 
 // tsconfig.json からエイリアスを生成
-const tsAliases = createAliases(__dirname, tsconfig)
+const tsAliases = createAliases(projectRoot, tsconfig)
 export const alias = { ...rootAlias, ...tsAliases }
 
 export default defineConfig(() => {
@@ -22,7 +22,7 @@ export default defineConfig(() => {
     build: {
       // ライブラリモードで構築
       lib: {
-        entry: path.resolve(__dirname, 'src/BotPlugin/plugin.ts'),
+        entry: path.resolve(projectRoot, 'src/BotPlugin/plugin.ts'),
         name: 'Plugin',
         fileName: () => 'plugin.js',
         formats: ['cjs'], // 出力形式をCommonJSに指定

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+    <title>OmikujiBot MainGenerator</title>
+    <link rel="stylesheet" href="./scripts/omikuji-bot.css" />
+
+    <style>
+      #file-warning {
+        display: none;
+        background: #fff3cd;
+        color: #856404;
+        padding: 16px;
+        margin: 20px;
+        border: 1px solid #ffeeba;
+        border-radius: 8px;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      #file-warning img {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 6px;
+      }
+      #file-warning a {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- file:// のときだけ表示される注意画面 -->
+    <div id="file-warning">
+      <h2>このページは直接開けません</h2>
+      <p>
+        このテンプレートは <strong>file://</strong> で開くと CORS
+        制限により動作しません。
+      </p>
+
+      <p>OBS に導入する場合は、以下の手順で読み込んでください（仮の説明文）:</p>
+
+      <img
+        src="./images/how-to-load-in-obs.png"
+        alt="OBSでの読み込み方法（仮）"
+      />
+
+      <p style="margin-top: 12px">
+        親アプリで開く場合はこちらから移動できます：
+      </p>
+
+      <p>
+        <a id="redirect-link" href="#" target="_blank"> 親アプリで開く </a>
+      </p>
+    </div>
+
+    <!-- 通常のアプリ本体 -->
+    <div id="App"></div>
+
+    <script>
+      // file:// で開いた場合だけ注意画面を表示
+      if (location.protocol === "file:") {
+        const warning = document.getElementById("file-warning");
+        warning.style.display = "block";
+
+        // フォルダ名を自動取得してリンク生成
+        const parts = location.pathname.split("/");
+        const folder = parts[parts.length - 2];
+        const target = `http://192.168.1.3:11180/templates/custom/${folder}/index.html`;
+
+        document.getElementById("redirect-link").href = target;
+      }
+    </script>
+
+    <script
+      src="https://unpkg.com/vue@3/dist/vue.global.prod.js"
+      defer="defer"
+    ></script>
+    <script type="module" src="./omikujiData.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>

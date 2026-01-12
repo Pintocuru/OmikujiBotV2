@@ -1,69 +1,48 @@
 // [Package] vite.config.ts
-import { defineConfig, mergeConfig } from 'vite'
+import { defineConfig, mergeConfig, UserConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { createViteAliases } from './tools/viteConfig/createViteAliases'
 import { baseViteConfig, rootAlias } from '../../shared/utils/ViteConfig/viteConfigBase'
-import tsconfig from './tsconfig.json'
 
-// __dirname の設定
+// projectRoot の設定
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const base = baseViteConfig(__dirname)
+const projectRoot = path.resolve(__dirname)
+const base = baseViteConfig(projectRoot)
 
 // tsconfig.json からエイリアスを生成
-const tsAliases = createViteAliases(__dirname)
-export const alias = { ...rootAlias, ...tsAliases }
+export const alias = { ...rootAlias, ...createViteAliases(projectRoot) }
 
-// ホットリロード用設定
 export default defineConfig(() => {
   const checkLevel = process.env.VITE_TS_CHECK_LEVEL || 'development'
 
-  return mergeConfig(base, {
-    root: path.resolve(__dirname),
+  const overrideConfig: UserConfig = {
+    root: path.resolve(projectRoot),
     resolve: { alias },
     server: {
       watch: {
-        // server フォルダは更新してもホットリロードしない
-        ignored: [path.resolve(__dirname, 'server/presets/**')],
+        ignored: [path.resolve(projectRoot, 'server/presets/**')],
       },
     },
-    // チェックレベルに応じた追加設定
     build: {
-      lib: { entry: path.resolve(__dirname, 'src/MainPlugin/plugin.ts'), formats: ['es'], fileName: () => 'plugin.js' },
+      lib: {
+        entry: path.resolve(projectRoot, 'src/MainGenerator/main.ts'),
+        formats: ['iife'],
+        name: 'MainGenerator',
+        fileName: () => 'main.js',
+      },
       target: 'node18',
       outDir: 'dist-plugin',
       emptyOutDir: true,
-      rollupOptions:
-        checkLevel === 'production'
-          ? {
-              onwarn: (warning: any, warn: (w: any) => void) => {
-                if (warning.code === 'UNUSED_EXTERNAL_IMPORT') {
-                  throw new Error(warning.message)
-                }
-                warn(warning)
-              },
-            }
-          : {},
+      rollupOptions: {
+        output: {
+          entryFileNames: 'scripts/[name].js',
+          assetFileNames: 'scripts/[name].[ext]',
+        },
+      },
     },
-  })
-})
-
-// tsconfig.json の paths を Vite の resolve.alias 形式に変換する関数
-export function createViteAliases(baseDir: string): Record<string, string> {
-  const aliases: Record<string, string> = {}
-  const paths = tsconfig.compilerOptions.paths
-
-  // paths が存在しない場合は空のオブジェクトを返す
-  if (!paths) return aliases
-
-  // tsconfig.json のパスを Vite の形式に変換
-  type PathsType = typeof tsconfig.compilerOptions.paths
-  for (const alias of Object.keys(paths) as (keyof PathsType)[]) {
-    const value = paths[alias][0]
-    const key = alias.replace('/*', '')
-    // `/*` を取り除き、`path.resolve` で絶対パスに変換
-    aliases[key] = path.resolve(baseDir, value.replace('/*', ''))
   }
 
-  return aliases
-}
+  return mergeConfig(base, overrideConfig)
+})
