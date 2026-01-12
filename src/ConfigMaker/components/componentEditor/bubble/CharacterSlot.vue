@@ -5,6 +5,7 @@
       <h4 class="text-md font-semibold">{{ title }}</h4>
       <button v-if="showClear" class="btn btn-xs btn-error" @click="$emit('clear')">クリア</button>
     </div>
+
     <VueDraggable
       tag="div"
       :model-value="items"
