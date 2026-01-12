@@ -25,15 +25,12 @@ export default defineConfig(() => {
         entry: path.resolve(projectRoot, 'src/MainGenerator/main.ts'),
         formats: ['iife'],
         name: 'MainGenerator',
-        fileName: () => 'MainGenerator.js',
+        fileName: 'scripts/MainGenerator.js',
       },
-      target: 'node18',
-      outDir: 'dist-plugin',
       emptyOutDir: true,
       rollupOptions: {
         output: {
-          entryFileNames: 'scripts/[name].js',
-          assetFileNames: 'scripts/[name].[ext]',
+          assetFileNames: '[name].[ext]',
         },
       },
     },

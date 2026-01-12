@@ -25,15 +25,12 @@ export default defineConfig(() => {
         entry: path.resolve(projectRoot, 'src/ConfigMaker/main.ts'),
         formats: ['iife'],
         name: 'ConfigMaker',
-        fileName: () => 'ConfigMaker.js',
+        fileName: 'scripts/ConfigMaker.js',
       },
-      target: 'node18',
-      outDir: 'dist-plugin',
-      emptyOutDir: true,
+      emptyOutDir: false,
       rollupOptions: {
         output: {
-          entryFileNames: 'scripts/[name].js',
-          assetFileNames: 'scripts/[name].[ext]',
+          assetFileNames: '[name].[ext]',
         },
       },
     },

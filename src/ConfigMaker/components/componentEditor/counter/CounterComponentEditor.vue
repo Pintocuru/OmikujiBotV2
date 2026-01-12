@@ -14,7 +14,7 @@
   />
 
   <!-- コンポーネント選択 -->
-  <SettingItem label="表示スタイル" description="カウンターの表示形式を選択">
+  <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="style in counterComponents"
@@ -91,9 +91,11 @@
   import CounterPreviewManager from '@/common/ui/CounterPreview/CounterPreviewManager.vue'
   import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   const rulesComment = computed(() => data.value.comments)
 

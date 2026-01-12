@@ -8,7 +8,7 @@
     <input type="checkbox" v-model="showMain" />
 
     <!-- ON: MainGenerator 表示中 (Settingsアイコン) -->
-    <SettingsIcon class="swap-on w-8 h-8 text-primary" />
+    <Settings class="swap-on w-8 h-8 text-primary" />
 
     <!-- OFF: ConfigMaker 表示中 (Cpuアイコン) -->
     <Cpu class="swap-off w-8 h-8 text-primary" />
@@ -19,7 +19,7 @@
   import { ref } from 'vue'
   import MainGenerator from './MainGenerator/App.vue'
   import ConfigMaker from './ConfigMaker/App.vue'
-  import { Settings as SettingsIcon, Cpu } from 'lucide-vue-next'
+  import { Settings, Cpu } from 'lucide-vue-next'
 
   const showMain = ref(false)
 </script>
