@@ -21,7 +21,7 @@ const PostActionBaseSchema = z.object({
 // PostAction MessageBody
 export const PostActionMessageMessageSchema = z
   .object({
-    bubble: z.string().nullable().default(null).catch(null),
+    bubble: z.string().default('').catch(''),
     toast: z.string().optional(),
     isToast: z.boolean().default(false).catch(false),
   })
@@ -78,27 +78,12 @@ export const PostActionActionSetSchema = z.object({
 })
 export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
 
-//  PostAction Special
-export const specialTypeMap = {
-  return: '処理を終了する（return）',
-  continue: '次のルールへ進む（continue）',
-  log: 'ログを出力する（log）',
-} as const
-
-export const PostActionSpecialSchema = z.object({
-  ...PostActionBaseSchema.shape,
-  actionType: z.literal('special').default('special'),
-  special: z.enum(['return', 'continue', 'log']),
-})
-export type PostActionSpecialType = z.infer<typeof PostActionSpecialSchema>
-
 // アクションタイプの定義
 export const postActionTypes = [
   { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
   { type: 'sound' as const, label: 'サウンド', icon: Volume2 },
   { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
   { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
-  { type: 'special', label: '特殊動作', icon: Sparkles },
 ]
 export type PostActionTypes = (typeof postActionTypes)[number]['type']
 
@@ -108,7 +93,6 @@ export const PostActionSchema = z.discriminatedUnion('actionType', [
   PostActionSoundSchema,
   PostActionWordPartySchema,
   PostActionActionSetSchema,
-  PostActionSpecialSchema,
 ])
 export type PostActionType = z.infer<typeof PostActionSchema>
 
@@ -125,7 +109,7 @@ export const PostActionArraySchema = z
   })
 
 /**
- * GameScriptsSchema ゲームスクリプト用
+ * GameScriptsSchema ゲームスクリプト
  */
 export const GameScriptsSchema = z.object({
   scriptId: z.string().default('').catch(''),
@@ -135,10 +119,64 @@ export const GameScriptsSchema = z.object({
 export type GameScriptsType = z.infer<typeof GameScriptsSchema>
 
 /**
+ * Special
+ */
+export const specialActionMap = {
+  return: {
+    label: '処理を終了する（return）',
+    description: 'このルールで処理を終了し、以降のルールは実行されません。',
+    variant: 'warning',
+  },
+  continue: {
+    label: '次のルールへ進む（continue）',
+    description: '次のルールへ処理を進めます。通常の動作と同じです。',
+    variant: 'info',
+  },
+  log: {
+    label: 'ログを出力する（log）',
+    description: 'わんコメにおみくじ回数のログを投稿します。',
+    variant: 'success',
+  },
+  reset: {
+    label: 'おみくじ回数をリセットする（reset）',
+    description: 'おみくじの抽選回数をリセットします。',
+    variant: 'neutral',
+  },
+} as const
+
+export type ActionSetSpecialType = keyof typeof specialActionMap
+export const specialAction = Object.keys(specialActionMap) as ActionSetSpecialType[]
+
+export const SpecialActionSchema = z.enum(specialAction).default('return').catch('return')
+export type PostActionSpecialType = z.infer<typeof SpecialActionSchema>
+
+/**
  * ActionSetSchema
  */
+export const ActionSetMap = {
+  postActions: {
+    label: 'BOTアクション',
+    description: '下記の内容をわんコメやジェネレーターで表示します',
+    icon: 'Bot',
+  },
+  gameScripts: {
+    label: 'ゲームスクリプト',
+    description: 'ゲームを実行し、結果をわんコメやジェネレーターで表示します',
+    icon: 'Gamepad2',
+  },
+  special: {
+    label: '特殊動作',
+    description: 'おみくじの実行フローを制御する特殊な処理',
+    icon: 'Zap',
+  },
+} as const
+
+export type ActionSetCategory = keyof typeof ActionSetMap
+export const actionSetCategory = Object.keys(ActionSetMap) as ActionSetCategory[]
+
 export const ActionSetSchema = z.object({
   ...BaseRecordSchema.shape,
+  type: z.enum(actionSetCategory).default('postActions').catch('postActions'),
   postActions: z
     .array(z.any())
     .default([])
@@ -150,7 +188,8 @@ export const ActionSetSchema = z.object({
       // 2. delaySecondsでソートし、新しい型として返す
       return migratedActions.sort((a, b) => a.delaySeconds - b.delaySeconds) as PostActionType[]
     }),
-  gameScripts: z.union([GameScriptsSchema, z.null()]).default(null).catch(null),
+  gameScripts: GameScriptsSchema.default(GameScriptsSchema.parse({})).catch(GameScriptsSchema.parse({})),
+  special: SpecialActionSchema.default(SpecialActionSchema.parse({})).catch(SpecialActionSchema.parse({})),
 })
 export type ActionSetType = z.infer<typeof ActionSetSchema>
 

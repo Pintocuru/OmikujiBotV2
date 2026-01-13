@@ -43,7 +43,7 @@
         :class="ranking.targetScriptKeys.includes('basicList') ? 'badge-primary' : 'badge-outline'"
         @click="toggleScriptKey('basicList')"
       >
-        アクションセット
+        BOTアクション
       </div>
 
       <!-- ゲームスクリプト -->

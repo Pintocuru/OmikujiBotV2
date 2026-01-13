@@ -40,9 +40,9 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 }
 
 /**
- * トーストメッセージを作成
+ * メッセージを作成
  */
-function createToastMessages(message: string): BotMessageType[] {
+export function createBotMessages(message: string, isToast: boolean = false): BotMessageType[] {
   const { isCharacter } = useVisibilityAccess()
   const { defaultToastColor } = useCharacterManager()
   const firstCharacter = useCharacterManager().getFirstCharacter()
@@ -52,7 +52,7 @@ function createToastMessages(message: string): BotMessageType[] {
     bubble: {
       name: firstCharacter?.name,
       message,
-      isToast: true,
+      isToast,
       characterKey: firstCharacter?.key,
       color: isCharacter.value && firstCharacter ? firstCharacter.color : defaultToastColor.value,
     },
@@ -70,5 +70,5 @@ export function buildRestrictionMessages(result: RestrictionCheckResult, rule: C
   const message = createMessage(result, rule)
   if (!message) return []
 
-  return createToastMessages(message)
+  return createBotMessages(message, true)
 }

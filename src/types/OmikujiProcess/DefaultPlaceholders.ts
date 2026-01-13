@@ -1,7 +1,7 @@
 // src\types\OmikujiProcess\DefaultPlaceholders.ts
 import z from 'zod'
-import { serviceMetaCondition, serviceMetaConditionLabels } from '@shared/types/'
-import { countUnitCondition, countUnitConditionLabels } from '@shared/types/trigger'
+import { serviceMetaCondition, serviceMetaConditionLabels, serviceMetaConditionMap } from '@shared/types/'
+import { countUnitCondition, countUnitConditionMap } from '@shared/types/trigger'
 
 // デフォルトで利用可能なプレースホルダーの定数配列
 export const defaultPlaceholders = [
@@ -42,8 +42,11 @@ export const defaultPlaceholdersLabels: Record<DefaultPlaceholders, string> = {
   price: 'ギフト金額',
   commenter: 'コメントをしたユーザー数',
   winner: 'コメントをしたランダムなユーザー',
-  ...countUnitConditionLabels,
-  ...serviceMetaConditionLabels,
+  lc: countUnitConditionMap.lc.label,
+  tc: countUnitConditionMap.tc.label,
+  draws: countUnitConditionMap.draws.label,
+  viewer: serviceMetaConditionMap.viewer.label,
+  upVote: serviceMetaConditionMap.upVote.label,
 }
 
 // 省略形（短い）ラベル

@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-12T12:21:40.811Z",
+      "updatedAt": "2026-01-13T05:03:00.368Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -169,6 +169,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -198,7 +199,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -212,8 +218,14 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "special",
           "postActions": [],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "continue",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -243,6 +255,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -255,7 +268,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -323,6 +341,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -336,7 +355,12 @@
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -388,6 +412,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -405,7 +430,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -457,6 +487,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -469,7 +500,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -499,6 +535,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -511,7 +548,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -541,6 +583,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -553,7 +596,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -617,6 +665,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -629,7 +678,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -657,6 +711,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -669,7 +724,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
@@ -733,6 +793,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -746,7 +807,12 @@
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -762,6 +828,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -775,7 +842,12 @@
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -812,6 +884,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -825,7 +898,12 @@
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 99,
           "isPriority": false,
           "criteria": null
@@ -841,6 +919,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -854,7 +933,12 @@
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -882,6 +966,7 @@
         "thinking"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -896,7 +981,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstSagiChocolateSurprised": {
       "id": "1767539481151-kvg5to",
@@ -913,6 +1003,7 @@
         "初見詐欺"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -927,12 +1018,18 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstSagiChocolateSad": {
       "id": "1767539536508-gcvcfg",
       "key": "FirstSagiChocolateSad",
       "name": "初見詐欺(sad):Chocolate",
+      "description": "ほんとは常連さんでしょ？",
       "createdAt": "2026-01-04T15:12:16.508Z",
       "updatedAt": "2026-01-12T12:29:06.880Z",
       "order": 3,
@@ -943,6 +1040,7 @@
         "初見詐欺"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -957,13 +1055,18 @@
           }
         }
       ],
-      "gameScripts": null,
-      "description": "ほんとは常連さんでしょ？"
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstSagiChocolateFake": {
       "id": "1767539560050-xw7xfz",
       "key": "FirstSagiChocolateFake",
       "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
+      "description": "もう、びっくりさせないでよ～",
       "createdAt": "2026-01-04T15:12:40.050Z",
       "updatedAt": "2026-01-12T12:29:27.296Z",
       "order": 4,
@@ -974,6 +1077,7 @@
         "初見詐欺"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1000,8 +1104,12 @@
           }
         }
       ],
-      "gameScripts": null,
-      "description": "もう、びっくりさせないでよ～"
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "GiftChocolateWink": {
       "id": "1767540348473-d4fev8",
@@ -1018,6 +1126,7 @@
         "ギフト"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1032,12 +1141,18 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstSyokenChocolateHappy": {
       "id": "1767539629815-molbgp",
       "key": "FirstSyokenChocolateHappy",
       "name": "初見:Chocolate",
+      "description": "お姉さんが歓迎しちゃうね♡",
       "createdAt": "2026-01-04T15:13:49.815Z",
       "updatedAt": "2026-01-12T12:30:04.934Z",
       "order": 6,
@@ -1048,6 +1163,7 @@
         "初見判定"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1067,8 +1183,12 @@
           }
         }
       ],
-      "gameScripts": null,
-      "description": "お姉さんが歓迎しちゃうね♡"
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstComebackChocolateWink": {
       "id": "1767540169384-b2waaw",
@@ -1085,6 +1205,7 @@
         "初見判定"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1099,7 +1220,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "FirstVisitChocolateBlushing": {
       "id": "1767540201946-kvrx6s",
@@ -1116,6 +1242,7 @@
         "初見判定"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1130,7 +1257,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "CountStreamChocolate": {
       "id": "1767540543495-x0of51",
@@ -1147,6 +1279,7 @@
         "コメントチェック"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1160,7 +1293,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "CountUserChocolate": {
       "id": "1767540577897-8ne654",
@@ -1177,6 +1315,7 @@
         "コメントチェック"
       ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1190,7 +1329,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -1198,6 +1342,7 @@
       "id": "FirstSagiChocolateThinking",
       "key": "FirstSagiChocolateThinking",
       "name": "初見詐欺(Thinking):Chocolate",
+      "description": "あら、初見だったかしら？",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:24:52.589Z",
       "order": 1,
@@ -1209,33 +1354,18 @@
       ],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "あら？<<user>>さん、初見だったかしら？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見って言っているけど、この前来てくれたような…",
-          "weight": 1
-        },
-        {
-          "content": "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
-          "weight": 1
-        },
-        {
-          "content": "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
-          "weight": 1
-        },
-        {
-          "content": "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ",
-          "weight": 1
-        }
-      ],
-      "description": "あら、初見だったかしら？"
+        "あら？<<user>>さん、初見だったかしら？",
+        "<<user>>さん、初見って言っているけど、この前来てくれたような…",
+        "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
+        "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
+        "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ"
+      ]
     },
     "FirstSagiChocolateSurprise": {
       "id": "FirstSagiChocolateSurprise",
       "key": "FirstSagiChocolateSurprise",
       "name": "初見詐欺(Surprise):Chocolate",
+      "description": "あたしとあんなに仲よかったじゃない～",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:25:03.159Z",
       "order": 2,
@@ -1247,33 +1377,18 @@
       ],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
-          "weight": 1
-        },
-        {
-          "content": "えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?",
-          "weight": 1
-        },
-        {
-          "content": "びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ",
-          "weight": 1
-        },
-        {
-          "content": "えっ、初見!? あたしとあんなに仲よかったじゃない～",
-          "weight": 1
-        },
-        {
-          "content": "そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～",
-          "weight": 1
-        }
-      ],
-      "description": "あたしとあんなに仲よかったじゃない～"
+        "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
+        "えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?",
+        "びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ",
+        "えっ、初見!? あたしとあんなに仲よかったじゃない～",
+        "そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～"
+      ]
     },
     "FirstSagiChocolateSad": {
       "id": "FirstSagiChocolateSad",
       "key": "FirstSagiChocolateSad",
       "name": "初見詐欺(Sad):Chocolate",
+      "description": "記憶喪失かしら？あたしのハグで治る？",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:25:23.375Z",
       "order": 3,
@@ -1285,233 +1400,18 @@
       ],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？",
-          "weight": 1
-        },
-        {
-          "content": "えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん",
-          "weight": 1
-        }
-      ],
-      "description": "記憶喪失かしら？あたしのハグで治る？"
-    },
-    "FirstSyokenChocolate": {
-      "id": "FirstSyokenChocolate",
-      "key": "FirstSyokenChocolate",
-      "name": "初見:Chocolate",
-      "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2026-01-12T12:25:44.007Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
-          "weight": 1
-        },
-        {
-          "content": "わぁ、<<user>>さん、初めまして！仲良くしてくれると嬉しいな♡",
-          "weight": 1
-        },
-        {
-          "content": "ようこそ、<<user>>さん！初見さんって聞くとちょっとドキドキしちゃうわ～♡",
-          "weight": 1
-        },
-        {
-          "content": "初めまして、<<user>>さん。来てくれてありがとう、お姉さんが歓迎しちゃうね♡",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、初見さんなのね？ふふ、歓迎しましょう♪",
-          "weight": 1
-        }
-      ],
-      "description": "仲良くしてくれると嬉しいな♡"
-    },
-    "FirstComebackChocolate": {
-      "id": "FirstComebackChocolate",
-      "key": "FirstComebackChocolate",
-      "name": "久しぶり:Chocolate",
-      "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2026-01-12T12:26:12.280Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、お久しぶり！お姉さんちょっと安心しちゃったわ～♡",
-          "weight": 1
-        },
-        {
-          "content": "わぁ、<<user>>さん、お久しぶりね。待ってたわ、また来てくれてありがとう♡",
-          "weight": 1
-        },
-        {
-          "content": "あらあら、<<user>>さん、1週間ぶりね～。あたし、寂しかったのよ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、来てくれてありがとう。また会えるのを楽しみにしてたのよ♡",
-          "weight": 1
-        }
-      ],
-      "description": " 来てくれて嬉しいわ、元気にしてた？"
-    },
-    "FirstVisitChocolate": {
-      "id": "FirstVisitChocolate",
-      "key": "FirstVisitChocolate",
-      "name": "こんにちは:Chocolate",
-      "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2026-01-12T12:26:21.753Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "あら、<<user>>さん、今日も来てくれて嬉しい♡",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、いつも顔を見せてくれてありがとう♡",
-          "weight": 1
-        },
-        {
-          "content": "あらあら、<<user>>さん、今日も来てくれてるのね。常連さんね～",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、いつも来てくれるから、幸せよ。",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、今日も来てくれてるのね。お姉さんの楽しみになってるわ。",
-          "weight": 1
-        }
-      ],
-      "description": "今日も来てくれてるのね。常連さんね～"
-    },
-    "PromotionToastsChocolate": {
-      "id": "PromotionToastsChocolate",
-      "key": "PromotionToastsChocolate",
-      "name": "告知用トースト:Chocolate",
-      "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2026-01-12T12:26:35.583Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
-          "weight": 1
-        },
-        {
-          "content": "あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。",
-          "weight": 1
-        },
-        {
-          "content": "チャンネル登録は、気軽に押してね♡",
-          "weight": 1
-        },
-        {
-          "content": "高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡",
-          "weight": 1
-        },
-        {
-          "content": "コメントは配信の華よね。気軽にどんどん付けて欲しいわ。",
-          "weight": 1
-        },
-        {
-          "content": "占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡",
-          "weight": 1
-        }
-      ],
-      "description": "チャンネル登録は、気軽に押してね♡"
-    },
-    "HondaJankenName": {
-      "id": "HondaJankenName",
-      "key": "HondaJankenName",
-      "name": "じゃんけん:名前",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-01-12T12:27:31.301Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "ショコラ",
-        "じゃんけん"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "ショコラ",
-          "weight": 1
-        }
-      ],
-      "description": "あたしの名前はストロベリー♪"
-    },
-    "HondaJankenOre": {
-      "id": "HondaJankenOre",
-      "key": "HondaJankenOre",
-      "name": "じゃんけん:名前(一人称)",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-01-12T12:27:42.715Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": [
-        "ショコラ",
-        "じゃんけん"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        {
-          "content": "あたし",
-          "weight": 1
-        }
-      ],
-      "description": "あたし！"
+        "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
+        "<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？",
+        "えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ",
+        "<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜",
+        "<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん"
+      ]
     },
     "GiftChocolateWink": {
       "id": "GiftChocolate",
       "key": "GiftChocolateWink",
       "name": "ギフト:Chocolate",
+      "description": "大切に受け取らせてもらうわね♡",
       "createdAt": "2025-08-27T09:48:36.227Z",
       "updatedAt": "2026-01-12T12:25:36.445Z",
       "order": 4,
@@ -1523,28 +1423,143 @@
       ],
       "accessLevel": "basic",
       "values": [
-        {
-          "content": "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
-          "weight": 1
-        },
-        {
-          "content": "あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡",
-          "weight": 1
-        },
-        {
-          "content": "ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡",
-          "weight": 1
-        },
-        {
-          "content": "<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡",
-          "weight": 1
-        },
-        {
-          "content": "あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。",
-          "weight": 1
-        }
+        "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
+        "あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡",
+        "ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡",
+        "<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡",
+        "あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。"
+      ]
+    },
+    "FirstSyokenChocolate": {
+      "id": "FirstSyokenChocolate",
+      "key": "FirstSyokenChocolate",
+      "name": "初見:Chocolate",
+      "description": "仲良くしてくれると嬉しいな♡",
+      "createdAt": "2025-08-27T14:29:25.367Z",
+      "updatedAt": "2026-01-12T12:25:44.007Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ショコラ",
+        "初見判定"
       ],
-      "description": "大切に受け取らせてもらうわね♡"
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
+        "わぁ、<<user>>さん、初めまして！仲良くしてくれると嬉しいな♡",
+        "ようこそ、<<user>>さん！初見さんって聞くとちょっとドキドキしちゃうわ～♡",
+        "初めまして、<<user>>さん。来てくれてありがとう、お姉さんが歓迎しちゃうね♡",
+        "<<user>>さん、初見さんなのね？ふふ、歓迎しましょう♪"
+      ]
+    },
+    "FirstComebackChocolate": {
+      "id": "FirstComebackChocolate",
+      "key": "FirstComebackChocolate",
+      "name": "久しぶり:Chocolate",
+      "description": " 来てくれて嬉しいわ、元気にしてた？",
+      "createdAt": "2025-08-27T14:30:15.661Z",
+      "updatedAt": "2026-01-12T12:26:12.280Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
+        "<<user>>さん、お久しぶり！お姉さんちょっと安心しちゃったわ～♡",
+        "わぁ、<<user>>さん、お久しぶりね。待ってたわ、また来てくれてありがとう♡",
+        "あらあら、<<user>>さん、1週間ぶりね～。あたし、寂しかったのよ。",
+        "<<user>>さん、来てくれてありがとう。また会えるのを楽しみにしてたのよ♡"
+      ]
+    },
+    "FirstVisitChocolate": {
+      "id": "FirstVisitChocolate",
+      "key": "FirstVisitChocolate",
+      "name": "こんにちは:Chocolate",
+      "description": "今日も来てくれてるのね。常連さんね～",
+      "createdAt": "2025-08-27T14:30:51.900Z",
+      "updatedAt": "2026-01-12T12:26:21.753Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ショコラ",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あら、<<user>>さん、今日も来てくれて嬉しい♡",
+        "<<user>>さん、いつも顔を見せてくれてありがとう♡",
+        "あらあら、<<user>>さん、今日も来てくれてるのね。常連さんね～",
+        "<<user>>さん、いつも来てくれるから、幸せよ。",
+        "<<user>>さん、今日も来てくれてるのね。お姉さんの楽しみになってるわ。"
+      ]
+    },
+    "PromotionToastsChocolate": {
+      "id": "PromotionToastsChocolate",
+      "key": "PromotionToastsChocolate",
+      "name": "告知用トースト:Chocolate",
+      "description": "チャンネル登録は、気軽に押してね♡",
+      "createdAt": "2025-08-26T07:00:06.947Z",
+      "updatedAt": "2026-01-12T12:26:35.583Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "ショコラ",
+        "告知"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
+        "あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。",
+        "チャンネル登録は、気軽に押してね♡",
+        "高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡",
+        "コメントは配信の華よね。気軽にどんどん付けて欲しいわ。",
+        "占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡"
+      ]
+    },
+    "HondaJankenName": {
+      "id": "HondaJankenName",
+      "key": "HondaJankenName",
+      "name": "じゃんけん:名前",
+      "description": "あたしの名前はストロベリー♪",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2026-01-12T12:27:31.301Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "ショコラ",
+        "じゃんけん"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "ショコラ"
+      ]
+    },
+    "HondaJankenOre": {
+      "id": "HondaJankenOre",
+      "key": "HondaJankenOre",
+      "name": "じゃんけん:名前(一人称)",
+      "description": "あたし！",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2026-01-12T12:27:42.715Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "ショコラ",
+        "じゃんけん"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あたし"
+      ]
     }
   },
   "characters": {

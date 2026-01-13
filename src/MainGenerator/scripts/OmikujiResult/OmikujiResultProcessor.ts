@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiDataType, OmikujiItemType, ActionSetType, PostActionType } from '@/types/OmikujiData/'
+import { OmikujiDataType, OmikujiItemType, ActionSetType, PostActionType, GameScriptsType } from '@/types/OmikujiData/'
 import { BotMessageGenerator } from './BotMessageGenerator'
 import { PlaceholderProcessor } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
@@ -38,35 +38,73 @@ export class OmikujiResultProcessor {
    * おみくじ結果を処理してBotMessageを生成
    */
   process(
-    omikujiItem: OmikujiItemType,
+    actionItem: ActionSetType,
     defaultPlaceholders: Record<string, string | number>,
     omiken?: OmikenCommentType
   ): BotMessageType[] {
     try {
-      // プレースホルダー処理
-      this.setupPlaceholders(defaultPlaceholders)
+      switch (actionItem.type) {
+        case 'special':
+          // special なら処理しない
+          return []
 
-      // おみくじアイテムのpostActionsを展開・プレースホルダー処理
-      const processedActions = this.processOmikujiActions(omikujiItem)
-      this.placeContext.clear()
+        case 'gameScripts':
+          return this.processGameScripts(actionItem, omiken)
 
-      // gameScripts を実行
-      const scriptResult = this.executeGameScripts(omikujiItem, omiken)
-      const allActions = [...processedActions, ...scriptResult.actions]
+        case 'postActions':
+          return this.processPostActions(actionItem, defaultPlaceholders, omiken)
 
-      // 変数プレースホルダー処理
-      const finalActions = this.processVariablePlaceholders(allActions)
-
-      // わんコメへ投稿
-      this.publishActions(finalActions)
-
-      // BotMessageを生成
-      const generatedMessages = this.botMessageGenerator.generateMessages(finalActions, omiken)
-      return [...scriptResult.messages, ...generatedMessages]
+        default:
+          const _exhaustiveCheck: never = actionItem.type
+          ConsolePost('warn', '未知のアクションタイプ:', _exhaustiveCheck)
+          return []
+      }
     } catch (error) {
       ConsolePost('error', 'おみくじ結果処理エラー', error)
       return []
     }
+  }
+
+  /**
+   * gameScripts処理
+   */
+  private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    const scriptResult = this.executeGameScripts(actionItem.gameScripts, omiken)
+
+    // actionsを変数プレースホルダー処理
+    const processedActions = this.processVariablePlaceholders(scriptResult.actions)
+
+    // わんコメへ投稿
+    this.publishActions(processedActions)
+
+    // scriptResultのmessagesとprocessedActionsから生成したBotMessageを結合
+    const generatedMessages = this.botMessageGenerator.generateMessages(processedActions, omiken)
+    return [...scriptResult.messages, ...generatedMessages]
+  }
+
+  /**
+   * postActions処理: 従来の処理フロー
+   */
+  private processPostActions(
+    actionItem: ActionSetType,
+    defaultPlaceholders: Record<string, string | number>,
+    omiken?: OmikenCommentType
+  ): BotMessageType[] {
+    // プレースホルダー処理
+    this.setupPlaceholders(defaultPlaceholders)
+
+    // おみくじアイテムのpostActionsを展開・プレースホルダー処理
+    const processedActions = this.processOmikujiActions(actionItem)
+    this.placeContext.clear()
+
+    // 変数プレースホルダー処理
+    const finalActions = this.processVariablePlaceholders(processedActions)
+
+    // わんコメへ投稿
+    this.publishActions(finalActions)
+
+    // BotMessageを生成
+    return this.botMessageGenerator.generateMessages(finalActions, omiken)
   }
 
   private setupPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
@@ -88,7 +126,7 @@ export class OmikujiResultProcessor {
         const result = this.variableProcessor.process(action.message.bubble)
 
         const processed: VariablePlaceholderResult = {
-          bubble: result.bubble || null,
+          bubble: result.bubble,
           rankingData: result.text
             ? {
                 name: result.name,
@@ -114,12 +152,10 @@ export class OmikujiResultProcessor {
     })
   }
 
-  private executeGameScripts(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): ScriptResult {
-    if (!omikujiItem.gameScripts) {
-      return { actions: [], messages: [] }
-    }
+  private executeGameScripts(gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult {
+    if (!gameScripts) return { actions: [], messages: [] }
 
-    const scriptResult = this.scriptManager.playScript(omikujiItem, omiken)
+    const scriptResult = this.scriptManager.playScript(gameScripts, omiken)
     if (!scriptResult) return { actions: [], messages: [] }
 
     return {

@@ -53,7 +53,6 @@
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
-  import SpecialSettings from '../special/SpecialSettings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
 
   // Props
@@ -77,7 +76,6 @@
       sound: SoundSettings,
       wordParty: WordPartySettings,
       actionSet: ActionSetSettings,
-      special: SpecialSettings,
     }
 
     return componentMap[props.action.actionType]

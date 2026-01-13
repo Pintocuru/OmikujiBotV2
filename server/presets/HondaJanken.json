@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta4",
-    "dataVersion": 2.0004,
+    "generatorVersion": "v2.0.0-beta14",
+    "dataVersion": 2.0014,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -23,11 +23,13 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T14:10:18.766Z",
+      "updatedAt": "2026-01-13T05:15:51.587Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -41,6 +43,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "gameScripts",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -57,7 +60,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 38,
           "isPriority": false,
           "criteria": null
@@ -73,6 +81,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -89,7 +98,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 38,
           "isPriority": false,
           "criteria": null
@@ -105,6 +119,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -121,7 +136,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 38,
           "isPriority": false,
           "criteria": null
@@ -137,6 +157,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -171,7 +192,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 6,
           "isPriority": false,
           "criteria": null
@@ -204,11 +230,13 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T14:14:13.764Z",
+      "updatedAt": "2026-01-13T05:15:54.262Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -222,6 +250,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -238,7 +267,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 19,
           "isPriority": false,
           "criteria": null
@@ -254,6 +288,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -278,7 +313,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -312,11 +352,13 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T14:16:12.508Z",
+      "updatedAt": "2026-01-13T05:15:57.632Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -330,6 +372,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -346,7 +389,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 19,
           "isPriority": false,
           "criteria": null
@@ -362,6 +410,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -386,7 +435,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -419,11 +473,13 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-04T14:19:30.719Z",
+      "updatedAt": "2026-01-13T05:16:00.767Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -437,6 +493,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -453,7 +510,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 19,
           "isPriority": false,
           "criteria": null
@@ -469,6 +531,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -493,7 +556,12 @@
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -528,13 +596,17 @@
       "id": "HondaJankenReadyA",
       "key": "HondaJankenReadyA",
       "name": "じゃんけん:出す前の動作(キャラA)",
+      "description": "じゃんけんぽん！",
       "createdAt": "2025-10-08T00:59:17.768Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "updatedAt": "2026-01-13T05:14:34.747Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -549,7 +621,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenReadyB": {
       "id": "HondaJankenReadyB",
@@ -557,12 +634,15 @@
       "name": "じゃんけん:出す前の動作(キャラB)",
       "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
       "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2025-10-10T15:11:14.789Z",
+      "updatedAt": "2026-01-13T05:14:38.037Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -577,7 +657,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenRockA": {
       "id": "HondaJankenRockA",
@@ -585,12 +670,15 @@
       "name": "じゃんけん:グーA",
       "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
       "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2026-01-01T01:21:26.544Z",
+      "updatedAt": "2026-01-13T05:14:40.553Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -622,7 +710,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenRockB": {
       "id": "HondaJankenRockB",
@@ -630,12 +723,15 @@
       "name": "じゃんけん:グーB",
       "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
       "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2026-01-01T01:22:30.563Z",
+      "updatedAt": "2026-01-13T05:14:43.479Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -667,7 +763,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenScissorsA": {
       "id": "HondaJankenScissorsA",
@@ -675,12 +776,15 @@
       "name": "じゃんけん:チョキA",
       "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
       "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2026-01-01T01:22:51.925Z",
+      "updatedAt": "2026-01-13T05:14:46.285Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -712,7 +816,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenScissorsB": {
       "id": "HondaJankenScissorsB",
@@ -720,12 +829,15 @@
       "name": "じゃんけん:チョキB",
       "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
       "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2026-01-01T01:22:58.846Z",
+      "updatedAt": "2026-01-13T05:15:00.158Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -757,7 +869,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenPaperA": {
       "id": "HondaJankenPaperA",
@@ -765,12 +882,15 @@
       "name": "じゃんけん:パーA",
       "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
       "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2026-01-01T01:23:12.678Z",
+      "updatedAt": "2026-01-13T05:14:57.483Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -802,7 +922,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenPaperB": {
       "id": "HondaJankenPaperB",
@@ -810,12 +935,15 @@
       "name": "じゃんけん:パーB",
       "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
       "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2026-01-01T01:23:19.549Z",
+      "updatedAt": "2026-01-13T05:14:54.729Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -847,7 +975,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryRockA": {
       "id": "HondaJankenVictoryRockA",
@@ -855,12 +988,15 @@
       "name": "じゃんけん:グー勝利A",
       "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
       "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2026-01-01T01:27:42.918Z",
+      "updatedAt": "2026-01-13T05:14:52.107Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -892,7 +1028,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryRockB": {
       "id": "HondaJankenVictoryRockB",
@@ -900,12 +1041,15 @@
       "name": "じゃんけん:グー勝利B",
       "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
       "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2026-01-01T01:27:47.688Z",
+      "updatedAt": "2026-01-13T05:14:49.101Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -937,7 +1081,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryScissorsA": {
       "id": "HondaJankenVictoryScissorsA",
@@ -945,12 +1094,15 @@
       "name": "じゃんけん:チョキ勝利A",
       "description": "明日、俺が勝つからまたやろう!",
       "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2026-01-01T01:28:12.346Z",
+      "updatedAt": "2026-01-13T05:15:02.877Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -982,7 +1134,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryScissorsB": {
       "id": "HondaJankenVictoryScissorsB",
@@ -990,12 +1147,15 @@
       "name": "じゃんけん:チョキ勝利B",
       "description": "明日、俺が勝つからまたやろう!",
       "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2026-01-01T01:28:17.844Z",
+      "updatedAt": "2026-01-13T05:15:05.322Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1027,7 +1187,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryPaperA": {
       "id": "HondaJankenVictoryPaperA",
@@ -1035,12 +1200,15 @@
       "name": "じゃんけん:パー勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2026-01-01T01:28:28.012Z",
+      "updatedAt": "2026-01-13T05:15:07.825Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1072,7 +1240,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryPaperB": {
       "id": "HondaJankenVictoryPaperB",
@@ -1080,12 +1253,15 @@
       "name": "じゃんけん:パー勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2026-01-01T01:28:32.074Z",
+      "updatedAt": "2026-01-13T05:15:10.656Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1117,7 +1293,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryA": {
       "id": "HondaJankenVictoryA",
@@ -1125,12 +1306,15 @@
       "name": "じゃんけん:ILoveYou勝利A",
       "description": "やるやん。明日は俺にリベンジさせて。",
       "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2026-01-04T14:36:58.915Z",
+      "updatedAt": "2026-01-13T05:15:13.421Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1162,7 +1346,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     },
     "HondaJankenVictoryB": {
       "id": "HondaJankenVictoryB",
@@ -1170,12 +1359,15 @@
       "name": "じゃんけん:ILoveYou勝利B",
       "description": "やるやん。明日は俺にリベンジさせて。",
       "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2026-01-04T14:37:11.661Z",
+      "updatedAt": "2026-01-13T05:15:16.108Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -1207,7 +1399,12 @@
           }
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -1215,12 +1412,15 @@
       "id": "HondaJankenName",
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
+      "description": "一日一回勝負。じゃあ、また明日",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.809Z",
+      "updatedAt": "2026-01-13T05:17:53.601Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "ケイスケ ホンダ"
@@ -1230,12 +1430,15 @@
       "id": "HondaJankenOre",
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
+      "description": "俺の勝ち！",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.809Z",
+      "updatedAt": "2026-01-13T05:18:31.978Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "俺"
@@ -1245,12 +1448,15 @@
       "id": "HondaJankenA1",
       "key": "HondaJankenA1",
       "name": "じゃんけん:グー1",
+      "description": "じゃんけんの向こう側に何があるか、考えてみてください。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:20:56.599Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "負けは次につながるチャンスです!ネバーギブアップ!",
@@ -1263,12 +1469,15 @@
       "id": "HondaJankenA2",
       "key": "HondaJankenA2",
       "name": "じゃんけん:グー2",
+      "description": "あきらめへん人だけに見える景色があるはずです。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:21:07.045Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
@@ -1280,12 +1489,15 @@
       "id": "HondaJankenB1",
       "key": "HondaJankenB1",
       "name": "じゃんけん:チョキ1",
+      "description": "たかがじゃんけん、そう思ってないですか？",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:22:28.164Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
@@ -1298,12 +1510,15 @@
       "id": "HondaJankenB2",
       "key": "HondaJankenB2",
       "name": "じゃんけん:チョキ2",
+      "description": "その程度の、気持ちで勝てるとでも思ったんですか?",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:22:54.514Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
@@ -1315,12 +1530,15 @@
       "id": "HondaJankenC1",
       "key": "HondaJankenC1",
       "name": "じゃんけん:パー1",
+      "description": "運が大事な時こそ集中力が物を言いますよ!",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:23:58.781Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
@@ -1333,12 +1551,15 @@
       "id": "HondaJankenC2",
       "key": "HondaJankenC2",
       "name": "じゃんけん:パー2",
+      "description": "複雑に考えてないですか?答えはシンプルです。",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:24:30.500Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
@@ -1350,12 +1571,15 @@
       "id": "HondaJankenV",
       "key": "HondaJankenV",
       "name": "じゃんけん:勝利",
+      "description": "勝てば、ペプシ ジャパンコーラ 1本もらえる!",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-09-02T21:43:11.810Z",
+      "updatedAt": "2026-01-13T05:20:19.104Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
@@ -1377,8 +1601,8 @@
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "シンプル"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -1427,8 +1651,8 @@
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "シンプル"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -1486,9 +1710,9 @@
       },
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
+        "daisyUiTheme": "black",
+        "backFrom": "info",
+        "backTo": "error",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
@@ -1502,9 +1726,9 @@
     "toast": {
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
+        "daisyUiTheme": "black",
+        "backFrom": "info",
+        "backTo": "error",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
@@ -1518,18 +1742,16 @@
         "basicList"
       ],
       "title": "👊 じゃんけん 🖐️",
+      "color": "garden",
       "limit": 5,
       "sortOrder": "new",
-      "color": "garden"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -1540,28 +1762,20 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
+      "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "basic"
     },
     "components": [
-      "bubble",
       "toast",
       "ranking",
-      "counter"
+      "bubble"
     ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {

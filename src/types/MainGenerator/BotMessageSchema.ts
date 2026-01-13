@@ -26,7 +26,7 @@ export const BotMessageBaseSchema = z.object({
   id: z.string().default(() => v4()),
   timestamp: z.string().default(() => new Date().toISOString()),
   delaySeconds: z.number().default(0),
-  type: z.enum(['system', 'comment', 'rankingOnly']),
+  type: z.enum(['system', 'comment', 'rankingOnly', 'null']),
 
   bubble: CommentBubbleSchema.optional(),
   user: UserNameSchema.optional(),

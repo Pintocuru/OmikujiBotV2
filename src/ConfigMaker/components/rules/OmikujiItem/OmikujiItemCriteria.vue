@@ -84,7 +84,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import {
@@ -104,14 +103,10 @@
   import ThresholdUsername from '@shared/components/threshold/ThresholdUsername.vue'
 
   const props = defineProps<{
-    allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType | null
-    category: RulesCategoryType
     selectedItemKey: string | null
+    omikuji: OmikujiItemType | null
+    index: number
   }>()
-
-  // 現在編集中のおみくじのインデックス
-  const omikujiIndex = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
 
   // 条件タイプの選択肢
   const conditionTypes = Object.entries(criteriaThresholdConditionLabels).map(([value, label]) => ({
@@ -152,7 +147,7 @@
 
   // ヘルパー関数: 更新可能かチェック
   const isValidUpdate = (): boolean => {
-    return omikujiIndex.value !== -1 && props.selectedItemKey !== null
+    return props.index !== -1 && props.selectedItemKey !== null
   }
 
   // ヘルパー関数: criteriaの存在を保証
@@ -167,6 +162,6 @@
   // ヘルパー関数: おみくじの更新
   const updateOmikuji = (updater: (item: OmikujiItemType) => OmikujiItemType) => {
     const { updateOmikujiByIndex } = useOmikujiStore()
-    updateOmikujiByIndex(props.category, props.selectedItemKey!, omikujiIndex.value, updater)
+    updateOmikujiByIndex('comments', props.selectedItemKey!, props.index, updater)
   }
 </script>

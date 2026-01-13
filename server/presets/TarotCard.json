@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta6",
-    "dataVersion": 2.0006,
+    "generatorVersion": "v2.0.0-beta14",
+    "dataVersion": 2.0014,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -25,11 +25,13 @@
       "name": "タロットカード",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-05T10:00:53.199Z",
+      "updatedAt": "2026-01-13T06:00:50.200Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -39,14 +41,18 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [],
+          "tags": [
+            "タロット",
+            "逆位置"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
               "actionSetKeys": [
-                "TarotCardFirst"
+                "TarotCardIntro"
               ]
             },
             {
@@ -54,13 +60,18 @@
               "actionType": "actionSet",
               "actionSetKeys": [
                 {
-                  "content": "TarotCardFirst_copy_1767607127066",
-                  "weight": 1
+                  "weight": 1,
+                  "content": "TarotCardResult"
                 }
               ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -96,18 +107,58 @@
   },
   "timers": {},
   "actionSets": {
-    "TarotCardFirst": {
+    "TarotCardResult": {
+      "id": "mkc5pno89tdfl",
+      "key": "TarotCardResult",
+      "name": "タロットカード:占い部分",
+      "description": "結果をわんコメへ投稿します",
+      "createdAt": "2026-01-05T09:58:47.066Z",
+      "updatedAt": "2026-01-13T06:00:50.200Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#9C27B0",
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<user>>さんは<<TarotCard>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "TarotCardIntro": {
       "id": "TarotCardFirst",
-      "key": "TarotCardFirst",
+      "key": "TarotCardIntro",
       "name": "タロットカード:イントロ",
-      "description": "",
+      "description": "Wordpartyを使った演出パートです",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-05T10:00:07.355Z",
+      "updatedAt": "2026-01-13T06:00:50.200Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "イントロ"
+      ],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -130,34 +181,12 @@
           "wordParty": "TarotCard_03"
         }
       ],
-      "gameScripts": null
-    },
-    "TarotCardFirst_copy_1767607127066": {
-      "id": "TarotCardFirst",
-      "key": "TarotCardFirst_copy_1767607127066",
-      "name": "タロットカード:占い部分",
-      "description": "",
-      "createdAt": "2026-01-05T09:58:47.066Z",
-      "updatedAt": "2026-01-05T10:01:14.195Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [],
-      "accessLevel": "basic",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "message",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "sound": "collect",
-          "message": {
-            "bubble": "<<user>>さんは<<TarotCard>>",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -166,11 +195,14 @@
       "key": "TarotCard",
       "name": "タロット:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2026-01-01T01:33:52.520Z",
+      "updatedAt": "2026-01-13T05:42:29.344Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         "{{var text='愚者(正位置)'}}【{{text}}】 <<TarotCardFool_U>>",
@@ -224,11 +256,14 @@
       "key": "TarotCardFool_U",
       "name": "【愚者】(正位置)",
       "createdAt": "2025-09-13T22:16:22.894Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:06.729Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
@@ -247,7 +282,10 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
@@ -262,11 +300,14 @@
       "key": "TarotCardMagician_U",
       "name": "【魔術師】(正位置)",
       "createdAt": "2025-09-13T22:25:10.590Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:10.637Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
@@ -285,7 +326,10 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
@@ -300,11 +344,14 @@
       "key": "TarotCardHighPriestess_U",
       "name": "【女教皇】(正位置)",
       "createdAt": "2025-09-13T22:28:54.093Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:14.297Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
@@ -323,7 +370,10 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
@@ -338,11 +388,14 @@
       "key": "TarotCardEmpress_U",
       "name": "【女帝】(正位置) ",
       "createdAt": "2025-09-13T22:29:59.161Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:17.134Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
@@ -361,7 +414,10 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
@@ -376,11 +432,14 @@
       "key": "TarotCardEmperor_U",
       "name": "【皇帝】(正位置) ",
       "createdAt": "2025-09-13T22:31:02.984Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:20.664Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
@@ -399,7 +458,10 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
@@ -414,11 +476,14 @@
       "key": "TarotCardHierophant_U",
       "name": "【法王】(正位置)",
       "createdAt": "2025-09-13T22:32:48.041Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:23.942Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
@@ -437,7 +502,10 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
@@ -452,11 +520,14 @@
       "key": "TarotCardLovers_U",
       "name": "【恋人】(正位置)",
       "createdAt": "2025-09-13T22:34:50.903Z",
-      "updatedAt": "2025-09-14T12:18:33.418Z",
+      "updatedAt": "2026-01-13T05:43:26.450Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
@@ -475,7 +546,10 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
@@ -490,11 +564,14 @@
       "key": "TarotCardChariot_U",
       "name": "【戦車】(正位置)",
       "createdAt": "2025-09-13T22:36:04.753Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:29.264Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
@@ -513,7 +590,10 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
@@ -528,11 +608,14 @@
       "key": "TarotCardStrength_U",
       "name": "【力】(正位置) ",
       "createdAt": "2025-09-13T22:37:06.904Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:36.837Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
@@ -551,7 +634,10 @@
       "order": 19,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
@@ -566,11 +652,14 @@
       "key": "TarotCardHermit_U",
       "name": "【隠者】(正位置)",
       "createdAt": "2025-09-13T22:38:15.662Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:39.667Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
@@ -589,7 +678,10 @@
       "order": 21,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
@@ -604,11 +696,14 @@
       "key": "TarotCardWheelOfFortune_U",
       "name": "【運命の輪】(正位置)",
       "createdAt": "2025-09-13T22:39:41.511Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:42.636Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
@@ -627,7 +722,10 @@
       "order": 23,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
@@ -642,11 +740,14 @@
       "key": "TarotCardJustice_U",
       "name": "【正義】(正位置)",
       "createdAt": "2025-09-13T22:40:53.592Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:45.794Z",
       "order": 24,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
@@ -665,7 +766,10 @@
       "order": 25,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
@@ -680,11 +784,14 @@
       "key": "TarotCardHangedMan_U",
       "name": "【吊るされた男】(正位置)",
       "createdAt": "2025-09-13T22:42:18.909Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:48.933Z",
       "order": 26,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
@@ -703,7 +810,10 @@
       "order": 27,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
@@ -718,11 +828,14 @@
       "key": "TarotCardDeath_U",
       "name": "【死神】(正位置)",
       "createdAt": "2025-09-13T22:43:24.157Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:53.684Z",
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
@@ -741,7 +854,10 @@
       "order": 29,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
@@ -756,11 +872,14 @@
       "key": "TarotCardTemperance_U",
       "name": "【節制】(正位置)",
       "createdAt": "2025-09-13T22:44:45.664Z",
-      "updatedAt": "2025-09-14T12:18:33.419Z",
+      "updatedAt": "2026-01-13T05:43:56.756Z",
       "order": 30,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
@@ -779,7 +898,10 @@
       "order": 31,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "バランスを崩しやすい時期。無理な行動は運を乱します。",
@@ -794,11 +916,14 @@
       "key": "TarotCardDevil_U",
       "name": "【悪魔】(正位置)",
       "createdAt": "2025-09-13T22:46:08.800Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:00.279Z",
       "order": 32,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
@@ -817,7 +942,10 @@
       "order": 33,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "束縛から解放される兆し。執着を手放せば自由が訪れます。",
@@ -832,11 +960,14 @@
       "key": "TarotCardTower_U",
       "name": "【塔】(正位置)",
       "createdAt": "2025-09-13T22:47:31.680Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:03.331Z",
       "order": 34,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
@@ -855,7 +986,10 @@
       "order": 35,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
@@ -870,11 +1004,14 @@
       "key": "TarotCardStar_U",
       "name": "【星】(正位置)",
       "createdAt": "2025-09-13T22:49:06.492Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:06.630Z",
       "order": 36,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
@@ -893,7 +1030,10 @@
       "order": 37,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
@@ -908,11 +1048,14 @@
       "key": "TarotCardMoon_U",
       "name": "【月】(正位置) ",
       "createdAt": "2025-09-13T22:49:54.792Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:09.288Z",
       "order": 38,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
@@ -931,7 +1074,10 @@
       "order": 39,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
@@ -946,11 +1092,14 @@
       "key": "TarotCardSun_U",
       "name": "【太陽】(正位置)",
       "createdAt": "2025-09-13T22:50:44.266Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:12.298Z",
       "order": 40,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
@@ -969,7 +1118,10 @@
       "order": 41,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
@@ -984,11 +1136,14 @@
       "key": "TarotCardJudgement_U",
       "name": "【審判】(正位置)",
       "createdAt": "2025-09-13T22:51:42.360Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:15.087Z",
       "order": 42,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去の努力が報われるとき。新しい扉が開きます。",
@@ -1007,7 +1162,10 @@
       "order": 43,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
@@ -1022,11 +1180,14 @@
       "key": "TarotCardWorld_U",
       "name": "【世界】(正位置)",
       "createdAt": "2025-09-13T22:52:41.548Z",
-      "updatedAt": "2025-09-14T12:18:33.420Z",
+      "updatedAt": "2026-01-13T05:44:17.967Z",
       "order": 44,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
@@ -1045,7 +1206,10 @@
       "order": 45,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
@@ -1063,13 +1227,13 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-16T07:53:23.473Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#F44336",
+      "editorColor": "#2196F3",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "シンプル"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -1087,10 +1251,60 @@
         "daisyUiTheme": "dark",
         "backFrom": "primary",
         "backTo": "secondary",
-        "nameColor": "#AB47BC",
-        "textColor": "#F3E5F5",
-        "backgroundColor": "#6A1B9A",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
+      },
+      "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
         "default": [],
@@ -1157,18 +1371,16 @@
         "basicList"
       ],
       "title": "🍉スイカランキング🍉",
+      "color": "lofi",
       "limit": 5,
       "sortOrder": "new",
-      "color": "lofi"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -1179,25 +1391,33 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
+      "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "basic"
     },
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "basic"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "",
     "daisyUiTheme": "night"
   }
 }

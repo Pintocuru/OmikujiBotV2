@@ -62,10 +62,10 @@
     const soloSettings: FeatureUsageType = {
       usage: {
         comments: 'basic' as const,
-        timers: 'pro' as const,
+        timers: 'none' as const,
         actionSets: 'basic' as const,
         placeholders: 'basic' as const,
-        characters: 'pro' as const,
+        characters: 'none' as const,
       },
       components: ['toast', 'ranking'],
       gameScripts: [],

@@ -1,11 +1,11 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\OmikujiResult\OmikujiResultHelper.ts
+// src/MainGenerator/scripts/OmikujiResult/OmikujiResultHelper.ts
 import { PostActionMessageType, PostActionType, RankingMessageSchema } from '@/types'
 
 /**
  * 変数プレースホルダー処理結果
  */
 export interface VariablePlaceholderResult {
-  bubble: string | null
+  bubble: string
   rankingData?: {
     name: string
     text: string
@@ -21,7 +21,7 @@ export interface VariablePlaceholderResult {
 export interface ProcessedMessageAction extends Omit<PostActionMessageType, 'message'> {
   actionType: 'message'
   message: {
-    bubble: string | null
+    bubble: string
     isToast: boolean
     processed: VariablePlaceholderResult
   }
@@ -33,18 +33,36 @@ export interface ProcessedMessageAction extends Omit<PostActionMessageType, 'mes
 export type ProcessedAction = ProcessedMessageAction | Exclude<PostActionType, PostActionMessageType>
 
 /**
- * 処理済みメッセージコンテンツ
+ * 処理済みメッセージの内容
  */
-export interface ProcessedMessageContent {
-  finalBubble: string | null
+export interface MessageContent {
+  bubble: string | null
   ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined
 }
 
 /**
- * メッセージタイプの判定結果
+ * 処理済みデータをMessageContentに変換
  */
-export interface MessageTypeFlags {
-  hasBubble: boolean
-  hasToast: boolean
-  hasRanking: boolean
+export const extractMessageContent = (action: ProcessedAction): MessageContent => {
+  if (action.actionType !== 'message') {
+    return { bubble: null, ranking: undefined }
+  }
+
+  const { processed } = action.message
+
+  const ranking = processed.rankingData
+    ? RankingMessageSchema.parse({
+        scriptKey: 'basicList',
+        listName: processed.rankingData.name,
+        scoreText: processed.rankingData.text,
+        symbol: processed.rankingData.symbol,
+        variant: processed.rankingData.variant,
+        isUniqueUser: processed.rankingData.unique === 'false' ? false : true,
+      })
+    : undefined
+
+  return {
+    bubble: processed.bubble,
+    ranking,
+  }
 }

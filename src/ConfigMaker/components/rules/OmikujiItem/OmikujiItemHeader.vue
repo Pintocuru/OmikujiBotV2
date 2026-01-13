@@ -6,7 +6,7 @@
       <SettingItem label="おみくじ名" description="識別しやすい名前を入力">
         <input
           type="text"
-          :value="omikuji?.name"
+          :value="omikujiItem?.name"
           @input="updateName(($event.target as HTMLInputElement).value)"
           placeholder="おみくじ名"
           class="input input-bordered input-sm w-full"
@@ -19,11 +19,19 @@
       <MenuDropdown @duplicate="duplicateOmikuji" @delete="removeOmikuji" />
     </div>
   </div>
+
+  <!-- OmikujiItemBasic コンポーネント -->
+  <OmikujiItemPriority
+    v-if="category === 'comments'"
+    :selectedItemKey="selectedItemKey"
+    :omikujiItem="omikujiItem"
+    :index="index"
+  />
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/'
+  import OmikujiItemPriority from './OmikujiItemPriority.vue'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -32,35 +40,33 @@
   import { v4 } from 'uuid'
 
   const props = defineProps<{
-    allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType | null
     category: RulesCategoryType
     selectedItemKey: string | null
+    omikujiItem: OmikujiItemType | null
+    index: number
     isCard?: boolean
   }>()
 
   const { updateOmikujiByIndex, updateRecordProperty } = useOmikujiStore()
   const { getItem } = useGetRecordData()
 
-  const index = computed(() => props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key))
-
   // 名前更新
   const updateName = (value: string) => {
-    if (index.value === -1 || !props.selectedItemKey) return
-    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    if (props.index === -1 || !props.selectedItemKey) return
+    updateOmikujiByIndex(props.category, props.selectedItemKey, props.index, (item) => ({
       ...item,
       name: value,
     }))
   }
 
   const duplicateOmikuji = () => {
-    if (index.value === -1 || !props.selectedItemKey) return
+    if (props.index === -1 || !props.selectedItemKey) return
     const id = v4()
     const duplicated = {
-      ...JSON.parse(JSON.stringify(props.omikuji)),
+      ...JSON.parse(JSON.stringify(props.omikujiItem)),
       id,
       key: id,
-      name: `${props.omikuji?.name}(コピー)`,
+      name: `${props.omikujiItem?.name}(コピー)`,
     }
 
     // 配列全体を更新
@@ -68,18 +74,18 @@
     if (!record?.omikuji) return
 
     const newOmikuji = [...record.omikuji]
-    newOmikuji.splice(index.value + 1, 0, duplicated)
+    newOmikuji.splice(props.index + 1, 0, duplicated)
     updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
   }
 
   const removeOmikuji = () => {
-    if (index.value === -1 || !props.selectedItemKey) return
+    if (props.index === -1 || !props.selectedItemKey) return
 
     const record = getItem(props.category, props.selectedItemKey)
     if (!record?.omikuji) return
 
     const newOmikuji = [...record.omikuji]
-    newOmikuji.splice(index.value, 1)
+    newOmikuji.splice(props.index, 1)
     updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newOmikuji)
   }
 </script>

@@ -11,18 +11,19 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
+  import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
   import Swal from 'sweetalert2'
   import { Dices } from 'lucide-vue-next'
   import { processTestPlaceholder } from '../postAction/preview/TestPlaceholderProcessor'
+  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
   const props = defineProps<{
     values: WeightValuesArrayType
   }>()
 
-  const placeholdersMap = computed(() => useOmikujiStore().getCategoryMap('placeholders'))
+  const { getCategoryMap } = useGetRecordData()
+  const placeholdersMap = computed(() => getCategoryMap('placeholders'))
 
   // 抽選実行
   const draw = () => {

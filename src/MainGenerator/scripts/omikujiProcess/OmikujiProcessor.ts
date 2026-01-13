@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { OmikujiSetType, OmikujiItemType } from '@/types/'
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { OmikujiSetType, OmikujiItemType, ActionSetSchema, ActionSetType } from '@/types/'
+import { BotMessageSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { DefaultPlaceholderService } from './DefaultPlaceholderService'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
@@ -8,17 +8,18 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
+import { createBotMessages } from '../RuleProcess/RestrictionMessageBuilder'
 
 /**
  * おみくじ処理の統合クラス
  */
 export class OmikujiProcessor {
   private readonly defaultManager = new DefaultPlaceholderService()
-  private readonly resultProcessor: OmikujiResultProcessor
+  private readonly omikujiResult: OmikujiResultProcessor
 
   constructor() {
     const appStore = useAppStore()
-    this.resultProcessor = new OmikujiResultProcessor(appStore.data, appStore.scriptManager)
+    this.omikujiResult = new OmikujiResultProcessor(appStore.data, appStore.scriptManager)
   }
 
   /**
@@ -26,29 +27,53 @@ export class OmikujiProcessor {
    */
   executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
     // おみくじ
-    const omikujiItem = this.lotteryOmikujiItem(omikujiSet, omiken)
-    if (!omikujiItem) return []
+    const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
+    if (!actionItem) return []
 
     // GOD MODE
-    if (omikujiItem.gameScripts?.scriptId === 'godMode') {
-      this.hoge()
+    if (actionItem.type === 'special') {
+      // return は終了させる
+      if (actionItem.special === 'return') {
+        return [BotMessageSchema.parse({ type: 'null' })]
+      }
+      // continue は空を返す
+      if (actionItem.special === 'continue') {
+        return []
+      }
+      // 回数のリセット
+      if (actionItem.special === 'reset') {
+        const ruleKey = actionItem.key
+        const { userVisitManager } = useAppStore()
+        userVisitManager.resetRuleVisits(ruleKey)
+        const msg = `${actionItem.name}のおみくじ回数をリセットしたよ`
+        return createBotMessages(msg)
+      }
+      // log は回数を伝える
+      if (actionItem.special === 'log') {
+        const ruleKey = actionItem.key
+        const { userVisitManager } = useAppStore()
+        const totalVisits = userVisitManager.getTotalVisitsByRuleId(ruleKey)
+        const totalUnique = userVisitManager.getUniqueVisitorCountByRuleId(ruleKey)
+        const msg = `${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`
+        return createBotMessages(msg)
+      }
     }
 
     // おみくじ処理
     const defaultPlaceholders = this.defaultManager.getDefaultComments(omiken)
-    return this.resultProcessor.process(omikujiItem, defaultPlaceholders, omiken)
+    return this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
   }
 
   /**
    * おみくじ
    */
-  private lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): OmikujiItemType | null {
+  private lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): ActionSetType | null {
     try {
       const filtered = omiken ? this.filterOmikujiByCriteria(omikujiSet, omiken) : omikujiSet
 
       if (!filtered.length) return null
 
-      return (drawOmikuji(filtered) as OmikujiItemType) ?? null
+      return (drawOmikuji(filtered) as ActionSetType) ?? null
     } catch (error) {
       ConsolePost('error', 'おみくじ実行エラー', error)
       return null

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta3",
-    "dataVersion": 2.0003,
+    "generatorVersion": "v2.0.0-beta14",
+    "dataVersion": 2.0014,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -24,214 +24,845 @@
       "name": "超おみくじ",
       "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2025-11-02T12:56:54.451Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "1757756121625",
           "key": "1757756121625",
-          "name": "超!",
+          "name": "超おみくじ",
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
-          "tags": [],
+          "tags": [
+            "超おみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "BigBang_back"
-            },
-            {
-              "delaySeconds": 2,
-              "actionType": "wordParty",
-              "wordParty": "CommonBombFire"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "BigBangIntro",
+                  "weight": 1
+                }
+              ]
             },
             {
               "delaySeconds": 3,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "decision",
-              "message": {
-                "bubble": "<<user>>の運勢は<<BigBangLottery>>"
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "BigBangResult",
+                  "weight": 1
+                }
+              ]
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
         }
       ],
       "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": [
+          "^超$",
+          "^超おみくじ",
+          "^BigBang"
+        ]
+      },
       "limits": {
         "cooldownSeconds": 3,
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null
-      },
-      "trigger": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^超$",
-          "^超おみくじ",
-          "^BigBang"
-        ],
-        "userName": []
       }
     }
   },
   "timers": {},
-  "actionSets": {},
+  "actionSets": {
+    "BigBangIntro": {
+      "id": "1768283592738-fbfv3r",
+      "key": "BigBangIntro",
+      "name": "超おみくじ:イントロ",
+      "description": "地球の半径と同じ大きさの「超」が出てくるシーン",
+      "createdAt": "2026-01-13T05:53:12.739Z",
+      "updatedAt": "2026-01-13T06:20:18.752Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [
+        "超おみくじ",
+        "イントロ"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "wordParty",
+          "wordParty": "BigBang_back"
+        },
+        {
+          "delaySeconds": 2,
+          "actionType": "wordParty",
+          "wordParty": "CommonBombFire"
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "BigBangResult": {
+      "id": "1768283603981-7xpr1c",
+      "key": "BigBangResult",
+      "name": "超おみくじ:占い結果",
+      "description": "5000兆円欲しい!",
+      "createdAt": "2026-01-13T05:53:23.981Z",
+      "updatedAt": "2026-01-13T06:20:18.752Z",
+      "order": 2,
+      "isEnabled": true,
+      "tags": [
+        "超おみくじ",
+        "占い結果"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "sound": "decision",
+          "message": {
+            "bubble": "<<user>>の運勢は<<BigBangLottery>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    }
+  },
   "placeholders": {
     "BigBangDecoG": {
       "id": "BigBangDecoG",
       "key": "BigBangDecoG",
       "name": "超おみくじ:装飾吉",
       "createdAt": "2025-09-18T06:23:15.889Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "装飾",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
-        "光彩",
-        "星霜",
-        "金星",
-        "銀河",
-        "宝石",
-        "花火",
-        "流星",
-        "月光",
-        "朝陽",
-        "陽光",
-        "花園",
-        "春風",
-        "香気",
-        "彩雲",
-        "虹彩",
-        "星辰",
-        "花鳥",
-        "錦繍",
-        "絢爛",
-        "芳香",
-        "金銀",
-        "宝冠",
-        "花束",
-        "光輪",
-        "月華",
-        "瑞光",
-        "神託",
-        "法力",
-        "金剛",
-        "浄界",
-        "極光",
-        "宝玉",
-        "琉璃",
-        "水晶",
-        "輝星",
-        "瑞雲",
-        "霞光",
-        "金波",
-        "銀波",
-        "虹橋",
-        "星斗",
-        "瓊花",
-        "珠玉",
-        "紫雲",
-        "金輪",
-        "玉座",
-        "瑞穂",
-        "霊峰",
-        "慧光",
-        "琴瑟"
-      ]
+        {
+          "content": "光彩",
+          "weight": 1
+        },
+        {
+          "content": "星霜",
+          "weight": 1
+        },
+        {
+          "content": "金星",
+          "weight": 1
+        },
+        {
+          "content": "銀河",
+          "weight": 1
+        },
+        {
+          "content": "宝石",
+          "weight": 1
+        },
+        {
+          "content": "花火",
+          "weight": 1
+        },
+        {
+          "content": "流星",
+          "weight": 1
+        },
+        {
+          "content": "月光",
+          "weight": 1
+        },
+        {
+          "content": "朝陽",
+          "weight": 1
+        },
+        {
+          "content": "陽光",
+          "weight": 1
+        },
+        {
+          "content": "花園",
+          "weight": 1
+        },
+        {
+          "content": "春風",
+          "weight": 1
+        },
+        {
+          "content": "香気",
+          "weight": 1
+        },
+        {
+          "content": "彩雲",
+          "weight": 1
+        },
+        {
+          "content": "虹彩",
+          "weight": 1
+        },
+        {
+          "content": "星辰",
+          "weight": 1
+        },
+        {
+          "content": "花鳥",
+          "weight": 1
+        },
+        {
+          "content": "錦繍",
+          "weight": 1
+        },
+        {
+          "content": "絢爛",
+          "weight": 1
+        },
+        {
+          "content": "芳香",
+          "weight": 1
+        },
+        {
+          "content": "金銀",
+          "weight": 1
+        },
+        {
+          "content": "宝冠",
+          "weight": 1
+        },
+        {
+          "content": "花束",
+          "weight": 1
+        },
+        {
+          "content": "光輪",
+          "weight": 1
+        },
+        {
+          "content": "月華",
+          "weight": 1
+        },
+        {
+          "content": "瑞光",
+          "weight": 1
+        },
+        {
+          "content": "神託",
+          "weight": 1
+        },
+        {
+          "content": "法力",
+          "weight": 1
+        },
+        {
+          "content": "金剛",
+          "weight": 1
+        },
+        {
+          "content": "浄界",
+          "weight": 1
+        },
+        {
+          "content": "極光",
+          "weight": 1
+        },
+        {
+          "content": "宝玉",
+          "weight": 1
+        },
+        {
+          "content": "琉璃",
+          "weight": 1
+        },
+        {
+          "content": "水晶",
+          "weight": 1
+        },
+        {
+          "content": "輝星",
+          "weight": 1
+        },
+        {
+          "content": "瑞雲",
+          "weight": 1
+        },
+        {
+          "content": "霞光",
+          "weight": 1
+        },
+        {
+          "content": "金波",
+          "weight": 1
+        },
+        {
+          "content": "銀波",
+          "weight": 1
+        },
+        {
+          "content": "虹橋",
+          "weight": 1
+        },
+        {
+          "content": "星斗",
+          "weight": 1
+        },
+        {
+          "content": "瓊花",
+          "weight": 1
+        },
+        {
+          "content": "珠玉",
+          "weight": 1
+        },
+        {
+          "content": "紫雲",
+          "weight": 1
+        },
+        {
+          "content": "金輪",
+          "weight": 1
+        },
+        {
+          "content": "玉座",
+          "weight": 1
+        },
+        {
+          "content": "瑞穂",
+          "weight": 1
+        },
+        {
+          "content": "霊峰",
+          "weight": 1
+        },
+        {
+          "content": "慧光",
+          "weight": 1
+        },
+        {
+          "content": "琴瑟",
+          "weight": 1
+        },
+        {
+          "content": "明珠",
+          "weight": 1
+        },
+        {
+          "content": "燐光",
+          "weight": 1
+        },
+        {
+          "content": "宝珠",
+          "weight": 1
+        },
+        {
+          "content": "閃光",
+          "weight": 1
+        },
+        {
+          "content": "金砂",
+          "weight": 1
+        },
+        {
+          "content": "玉響",
+          "weight": 1
+        },
+        {
+          "content": "星屑",
+          "weight": 1
+        },
+        {
+          "content": "氷晶",
+          "weight": 1
+        },
+        {
+          "content": "金箔",
+          "weight": 1
+        },
+        {
+          "content": "星芒",
+          "weight": 1
+        },
+        {
+          "content": "煌星",
+          "weight": 1
+        },
+        {
+          "content": "銀砂",
+          "weight": 1
+        },
+        {
+          "content": "光塵",
+          "weight": 1
+        },
+        {
+          "content": "瑠璃",
+          "weight": 1
+        },
+        {
+          "content": "金糸",
+          "weight": 1
+        },
+        {
+          "content": "星燦",
+          "weight": 1
+        },
+        {
+          "content": "光芒",
+          "weight": 1
+        },
+        {
+          "content": "宝光",
+          "weight": 1
+        },
+        {
+          "content": "銀箔",
+          "weight": 1
+        },
+        {
+          "content": "金鱗",
+          "weight": 1
+        },
+        {
+          "content": "星灯",
+          "weight": 1
+        },
+        {
+          "content": "光華",
+          "weight": 1
+        },
+        {
+          "content": "珠光",
+          "weight": 1
+        },
+        {
+          "content": "星虹",
+          "weight": 1
+        },
+        {
+          "content": "霊光",
+          "weight": 1
+        },
+        {
+          "content": "金影",
+          "weight": 1
+        },
+        {
+          "content": "氷華",
+          "weight": 1
+        },
+        {
+          "content": "煌彩",
+          "weight": 1
+        },
+        {
+          "content": "銀星",
+          "weight": 1
+        },
+        {
+          "content": "光滴",
+          "weight": 1
+        }
+      ],
+      "description": "吉に付ける装飾語です"
     },
     "BigBangDecoB": {
       "id": "BigBangDecoB",
       "key": "BigBangDecoB",
       "name": "超おみくじ:装飾凶",
       "createdAt": "2025-09-18T06:12:32.542Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "装飾"
+      ],
       "accessLevel": "basic",
       "values": [
-        "魑魅",
-        "魍魎",
-        "修羅",
-        "餓鬼",
-        "怨霊",
-        "狂気",
-        "呪詛",
-        "暴虐",
-        "魔境",
-        "暗黒",
-        "狂乱",
-        "邪道",
-        "冥界",
-        "地獄",
-        "暴走",
-        "狂騒",
-        "鬼哭",
-        "異才",
-        "鬼才",
-        "魔性",
-        "妖艶",
-        "毒舌",
-        "怪異",
-        "幻影",
-        "妖気",
-        "邪気",
-        "暗躍",
-        "異形",
-        "禍福",
-        "妖術",
-        "毒気",
-        "鬼面",
-        "羅刹",
-        "夜叉",
-        "阿鼻",
-        "怨念",
-        "凶悪",
-        "妖怪",
-        "魔物",
-        "凶暴",
-        "邪悪",
-        "禍々",
-        "驚愕",
-        "轟音",
-        "轟烈"
-      ]
+        {
+          "content": "魑魅",
+          "weight": 1
+        },
+        {
+          "content": "魍魎",
+          "weight": 1
+        },
+        {
+          "content": "修羅",
+          "weight": 1
+        },
+        {
+          "content": "餓鬼",
+          "weight": 1
+        },
+        {
+          "content": "怨霊",
+          "weight": 1
+        },
+        {
+          "content": "狂気",
+          "weight": 1
+        },
+        {
+          "content": "呪詛",
+          "weight": 1
+        },
+        {
+          "content": "暴虐",
+          "weight": 1
+        },
+        {
+          "content": "魔境",
+          "weight": 1
+        },
+        {
+          "content": "暗黒",
+          "weight": 1
+        },
+        {
+          "content": "狂乱",
+          "weight": 1
+        },
+        {
+          "content": "邪道",
+          "weight": 1
+        },
+        {
+          "content": "冥界",
+          "weight": 1
+        },
+        {
+          "content": "地獄",
+          "weight": 1
+        },
+        {
+          "content": "暴走",
+          "weight": 1
+        },
+        {
+          "content": "狂騒",
+          "weight": 1
+        },
+        {
+          "content": "鬼哭",
+          "weight": 1
+        },
+        {
+          "content": "異才",
+          "weight": 1
+        },
+        {
+          "content": "鬼才",
+          "weight": 1
+        },
+        {
+          "content": "魔性",
+          "weight": 1
+        },
+        {
+          "content": "妖艶",
+          "weight": 1
+        },
+        {
+          "content": "毒舌",
+          "weight": 1
+        },
+        {
+          "content": "怪異",
+          "weight": 1
+        },
+        {
+          "content": "幻影",
+          "weight": 1
+        },
+        {
+          "content": "妖気",
+          "weight": 1
+        },
+        {
+          "content": "邪気",
+          "weight": 1
+        },
+        {
+          "content": "暗躍",
+          "weight": 1
+        },
+        {
+          "content": "異形",
+          "weight": 1
+        },
+        {
+          "content": "禍福",
+          "weight": 1
+        },
+        {
+          "content": "妖術",
+          "weight": 1
+        },
+        {
+          "content": "毒気",
+          "weight": 1
+        },
+        {
+          "content": "鬼面",
+          "weight": 1
+        },
+        {
+          "content": "羅刹",
+          "weight": 1
+        },
+        {
+          "content": "夜叉",
+          "weight": 1
+        },
+        {
+          "content": "阿鼻",
+          "weight": 1
+        },
+        {
+          "content": "怨念",
+          "weight": 1
+        },
+        {
+          "content": "凶悪",
+          "weight": 1
+        },
+        {
+          "content": "妖怪",
+          "weight": 1
+        },
+        {
+          "content": "魔物",
+          "weight": 1
+        },
+        {
+          "content": "凶暴",
+          "weight": 1
+        },
+        {
+          "content": "邪悪",
+          "weight": 1
+        },
+        {
+          "content": "禍々",
+          "weight": 1
+        },
+        {
+          "content": "驚愕",
+          "weight": 1
+        },
+        {
+          "content": "轟音",
+          "weight": 1
+        },
+        {
+          "content": "轟烈",
+          "weight": 1
+        },
+        {
+          "content": "幽玄",
+          "weight": 1
+        },
+        {
+          "content": "荘厳",
+          "weight": 1
+        },
+        {
+          "content": "威風",
+          "weight": 1
+        },
+        {
+          "content": "絶景",
+          "weight": 1
+        },
+        {
+          "content": "偉容",
+          "weight": 1
+        },
+        {
+          "content": "静謐",
+          "weight": 1
+        },
+        {
+          "content": "妖魔",
+          "weight": 1
+        },
+        {
+          "content": "悪霊",
+          "weight": 1
+        },
+        {
+          "content": "呪縛",
+          "weight": 1
+        },
+        {
+          "content": "瘴気",
+          "weight": 1
+        },
+        {
+          "content": "凶変",
+          "weight": 1
+        },
+        {
+          "content": "怪奇",
+          "weight": 1
+        },
+        {
+          "content": "脅威",
+          "weight": 1
+        },
+        {
+          "content": "慄然",
+          "weight": 1
+        },
+        {
+          "content": "戦慄",
+          "weight": 1
+        },
+        {
+          "content": "畏怖",
+          "weight": 1
+        },
+        {
+          "content": "陰気",
+          "weight": 1
+        },
+        {
+          "content": "不気",
+          "weight": 1
+        },
+        {
+          "content": "物怪",
+          "weight": 1
+        },
+        {
+          "content": "邪霊",
+          "weight": 1
+        },
+        {
+          "content": "災厄",
+          "weight": 1
+        },
+        {
+          "content": "凶兆",
+          "weight": 1
+        },
+        {
+          "content": "怪音",
+          "weight": 1
+        },
+        {
+          "content": "暗闇",
+          "weight": 1
+        },
+        {
+          "content": "亡霊",
+          "weight": 1
+        },
+        {
+          "content": "怪火",
+          "weight": 1
+        },
+        {
+          "content": "異臭",
+          "weight": 1
+        },
+        {
+          "content": "幻惑",
+          "weight": 1
+        },
+        {
+          "content": "魔爪",
+          "weight": 1
+        },
+        {
+          "content": "凶刃",
+          "weight": 1
+        },
+        {
+          "content": "脅迫",
+          "weight": 1
+        },
+        {
+          "content": "惨劇",
+          "weight": 1
+        },
+        {
+          "content": "鬼火",
+          "weight": 1
+        },
+        {
+          "content": "魔境",
+          "weight": 1
+        },
+        {
+          "content": "邪心",
+          "weight": 1
+        }
+      ],
+      "description": "凶に付ける装飾語です"
     },
     "BigBangLottery": {
       "id": "BigBangLottery",
       "key": "BigBangLottery",
-      "name": "超おみくじ:抽選",
+      "name": "超おみくじ:抽選結果",
       "createdAt": "2025-09-18T06:38:25.113Z",
-      "updatedAt": "2025-12-31T23:49:47.959Z",
+      "updatedAt": "2026-01-13T06:27:28.907Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -288,7 +919,7 @@
         },
         {
           "weight": 5,
-          "content": "{{var text='完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻吉'}}【{{text}}】、希少度は9999無量大数!!!!!!!!!"
+          "content": "{{var text='<<BigBangG9>>吉'}}【{{text}}】、希少度は9999無量大数!!!!!!!!!"
         }
       ]
     },
@@ -297,11 +928,14 @@
       "key": "BigBangB4",
       "name": "超おみくじ:凶x4",
       "createdAt": "2025-09-18T06:25:41.070Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -327,11 +961,14 @@
       "key": "BigBangB3",
       "name": "超おみくじ:凶x3",
       "createdAt": "2025-09-18T06:26:35.570Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -357,11 +994,14 @@
       "key": "BigBangB2",
       "name": "超おみくじ:凶x2",
       "createdAt": "2025-09-18T06:27:06.116Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -387,11 +1027,14 @@
       "key": "BigBangB1",
       "name": "超おみくじ:凶x1",
       "createdAt": "2025-09-18T06:27:32.561Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -421,20 +1064,45 @@
       "key": "BigBangG0",
       "name": "超おみくじ:大吉-大凶",
       "createdAt": "2025-09-18T06:28:34.367Z",
-      "updatedAt": "2025-12-31T23:51:15.410Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
-        "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
-        "{{var text='吉'}}【{{text}}】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
-        "{{var text='中吉'}}【{{text}}】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
-        "{{var text='小吉'}}【{{text}}】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
-        "{{var text='末吉'}}【{{text}}】希少度は3.{{rand(10,99)}}",
-        "{{var text='凶'}}【{{text}}】希少度は2.{{rand(10,99)}}",
-        "{{var text='大凶'}}【{{text}}】希少度は1.{{rand(10,99)}}"
+        {
+          "content": "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='吉'}}【{{text}}】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='中吉'}}【{{text}}】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='小吉'}}【{{text}}】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='末吉'}}【{{text}}】希少度は3.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='凶'}}【{{text}}】希少度は2.{{rand(10,99)}}",
+          "weight": 1
+        },
+        {
+          "content": "{{var text='大凶'}}【{{text}}】希少度は1.{{rand(10,99)}}",
+          "weight": 1
+        }
       ]
     },
     "BigBangG1": {
@@ -442,11 +1110,14 @@
       "key": "BigBangG1",
       "name": "超おみくじ:吉x1",
       "createdAt": "2025-09-18T06:30:32.932Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.750Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -476,11 +1147,14 @@
       "key": "BigBangG2",
       "name": "超おみくじ:吉x2",
       "createdAt": "2025-09-18T06:30:57.869Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -510,11 +1184,14 @@
       "key": "BigBangG3",
       "name": "超おみくじ:吉x3",
       "createdAt": "2025-09-18T06:31:33.831Z",
-      "updatedAt": "2025-09-18T06:50:30.387Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -548,11 +1225,14 @@
       "key": "BigBangG4",
       "name": "超おみくじ:吉x4",
       "createdAt": "2025-09-18T06:32:46.031Z",
-      "updatedAt": "2025-09-18T14:55:07.336Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -598,11 +1278,14 @@
       "key": "BigBangG5",
       "name": "超おみくじ:吉x5",
       "createdAt": "2025-09-18T06:33:16.278Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -660,11 +1343,14 @@
       "key": "BigBangG6",
       "name": "超おみくじ:吉x6",
       "createdAt": "2025-09-18T06:33:48.527Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -722,11 +1408,14 @@
       "key": "BigBangG7",
       "name": "超おみくじ:吉x7",
       "createdAt": "2025-09-18T06:34:28.321Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -784,11 +1473,14 @@
       "key": "BigBangG8",
       "name": "超おみくじ:吉x8",
       "createdAt": "2025-09-18T06:34:56.085Z",
-      "updatedAt": "2025-09-18T06:50:30.388Z",
+      "updatedAt": "2026-01-13T06:20:18.751Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -840,6 +1532,31 @@
           "content": "{{rand(1,9)}}那由他{{rand(10,99)}}00阿僧祇"
         }
       ]
+    },
+    "BigBangG9": {
+      "id": "1768285210251-3fvxz1",
+      "key": "BigBangG9",
+      "name": "超おみくじ:吉x9",
+      "createdAt": "2026-01-13T06:20:10.251Z",
+      "updatedAt": "2026-01-13T06:27:45.688Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#E0E0E0",
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻",
+        "天地開闢万象創世究極神聖光輪臨御福徳円満万寿虹霓閃光往生",
+        "混沌終焉超絶浄化煌星天啓宝冠戴寿無量極楽神仏合掌宇宙律霊",
+        "究極神変天魔降伏霊験灼然万福招来大乾鳴動焼肉定食冥府赦令",
+        "輪廻転生破邪顕正千客万来装束縛解無限幸運吸収天運開花福招",
+        "劫火浄罪天命奉戴龍鳳翔舞禍転福基千祥雲集太極玄幽神界顕現",
+        "魔哭止滅宝珠放光億万歓喜虚空崩壊構築神威灌注厄払難消散大",
+        "紫電清輝神霊憑依百鬼夜行終末黙示聖獣覚醒天地和合永世泰平"
+      ]
     }
   },
   "characters": {
@@ -849,13 +1566,13 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-29T09:59:34.333Z",
+      "updatedAt": "2025-10-09T22:04:37.277Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#F44336",
+      "editorColor": "#2196F3",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "シンプル"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -873,10 +1590,60 @@
         "daisyUiTheme": "dark",
         "backFrom": "primary",
         "backTo": "secondary",
-        "nameColor": "#90A4AE",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#455A64",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "image": {
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
+      }
+    },
+    "omiken_2": {
+      "id": "omiken_2",
+      "key": "omiken_2",
+      "name": "おみくじBOT2",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-10-10T07:35:41.827Z",
+      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#2196F3",
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
+      },
+      "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
       },
       "image": {
         "default": [],
@@ -943,18 +1710,16 @@
         "basicList"
       ],
       "title": "🍉スイカランキング🍉",
+      "color": "lofi",
       "limit": 5,
       "sortOrder": "new",
-      "color": "lofi"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -965,20 +1730,28 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
+      "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "none"
     },
     "components": [
+      "bubble",
       "toast",
       "ranking",
-      "bubble"
+      "counter"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {

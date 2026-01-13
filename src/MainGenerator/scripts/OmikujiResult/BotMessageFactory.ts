@@ -29,21 +29,22 @@ export class BotMessageFactory {
   createBotMessage({
     action,
     delaySeconds,
-    messageType,
+    isToast,
     messageText,
     ranking,
     omiken,
   }: {
     action: ProcessedMessageAction
     delaySeconds: number
-    messageType: 'bubble' | 'toast'
+    isToast: boolean
     messageText: string
     ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined
     omiken?: OmikenCommentType
   }): BotMessageType {
     const character = this.getCharacter(action.characterKey)
     const isChar = this.isCharacterMode && character
-    const color = isChar ? character.color : this.defaultColors[messageType]
+    const colorType = isToast ? 'toast' : 'bubble'
+    const color = isChar ? character.color : this.defaultColors[colorType]
 
     return BotMessageSchema.parse({
       type: omiken ? 'comment' : 'system',
@@ -53,7 +54,7 @@ export class BotMessageFactory {
       bubble: {
         name: isChar ? character.displayName : '',
         message: messageText,
-        isToast: messageType === 'toast',
+        isToast,
         characterKey: isChar ? action.characterKey : null,
         iconKey: action.iconKey,
         color,

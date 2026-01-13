@@ -4,19 +4,16 @@ import { PostActionSoundType, OmikujiDataType } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { MessageProcessor } from './MessageProcessor'
 import { BotMessageFactory } from './BotMessageFactory'
-import { ProcessedAction, ProcessedMessageAction } from './OmikujiResultHelper'
+import { extractMessageContent, ProcessedAction, ProcessedMessageAction } from './OmikujiResultHelper'
 
 /**
  *  ProcessedActionからBotMessageを生成し音声を制御
  */
 export class BotMessageGenerator {
-  private messageProcessor: MessageProcessor
   private messageFactory: BotMessageFactory
 
   constructor(omikujiData: OmikujiDataType) {
-    this.messageProcessor = new MessageProcessor()
     this.messageFactory = new BotMessageFactory(omikujiData)
   }
 
@@ -34,12 +31,8 @@ export class BotMessageGenerator {
         case 'sound':
           this.handleSoundAction(action)
           break
-        case 'wordParty':
-        case 'actionSet':
-          break
         default:
-          const _exhaustiveCheck: never = action
-          console.warn('Unknown action type:', _exhaustiveCheck)
+          break
       }
     }
 
@@ -51,39 +44,38 @@ export class BotMessageGenerator {
    */
   private handleMessageAction(action: ProcessedMessageAction, omiken?: OmikenCommentType): BotMessageType[] {
     const delaySeconds = this.calculateDelay(action)
-    const processedContent = this.messageProcessor.extractMessageContent(action)
-    const messageTypes = this.messageProcessor.determineMessageTypes(action, processedContent)
+    const content = extractMessageContent(action)
+    const { isToast } = action.message
+    const hasBubbleText = !!content.bubble?.trim()
 
-    if (!messageTypes.hasBubble && !messageTypes.hasToast && !messageTypes.hasRanking) {
+    // メッセージが何もない場合は音声のみ再生
+    if (!hasBubbleText && !content.ranking) {
       this.playSound(action.sound, delaySeconds)
       return []
     }
 
     const messages: BotMessageType[] = []
 
-    if (messageTypes.hasBubble) {
+    // bubbleテキストがある場合
+    if (hasBubbleText) {
       const message = this.messageFactory.createBotMessage({
         action,
         delaySeconds,
-        messageType: 'bubble',
-        messageText: processedContent.finalBubble!,
-        ranking: processedContent.ranking,
+        isToast,
+        messageText: content.bubble!,
+        ranking: content.ranking,
         omiken,
       })
       messages.push(message)
-      this.playRpgVoice(action.characterKey, processedContent.finalBubble!, delaySeconds)
-    } else if (messageTypes.hasToast) {
-      const message = this.messageFactory.createBotMessage({
-        action,
-        delaySeconds,
-        messageType: 'toast',
-        messageText: processedContent.finalBubble!,
-        ranking: processedContent.ranking,
-        omiken,
-      })
-      messages.push(message)
-    } else if (messageTypes.hasRanking) {
-      const message = this.messageFactory.createRankingOnlyMessage(delaySeconds, processedContent.ranking!, omiken)
+
+      // toastでない場合のみRPGボイスを再生
+      if (!isToast) {
+        this.playRpgVoice(action.characterKey, content.bubble!, delaySeconds)
+      }
+    }
+    // ランキングのみの場合
+    else if (content.ranking) {
+      const message = this.messageFactory.createRankingOnlyMessage(delaySeconds, content.ranking, omiken)
       messages.push(message)
     }
 

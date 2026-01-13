@@ -1,6 +1,6 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemPriority.vue -->
 <template>
-  <template v-if="omikuji">
+  <template v-if="omikujiItem">
     <!-- 追加発動条件の有効化 -->
     <SettingItem
       label="追加発動条件を設定する"
@@ -31,22 +31,17 @@
           <input
             type="checkbox"
             class="toggle toggle-primary"
-            :checked="omikuji.isPriority"
+            :checked="omikujiItem.isPriority"
             @change="updatePriority(($event.target as HTMLInputElement).checked)"
           />
           <span class="label-text">
-            {{ omikuji.isPriority ? '適用時、このおみくじが必ず適用されます' : '他のおみくじと同じ抽選を行います' }}
+            {{ omikujiItem.isPriority ? '適用時、このおみくじが必ず適用されます' : '他のおみくじと同じ抽選を行います' }}
           </span>
         </label>
       </SettingItem>
 
       <!-- 発動条件 -->
-      <OmikujiItemCriteria
-        :allOmikuji="allOmikuji"
-        :omikuji="omikuji"
-        :category="category"
-        :selectedItemKey="selectedItemKey"
-      />
+      <OmikujiItemCriteria :index="index" :omikuji="omikujiItem" :selectedItemKey="selectedItemKey" />
     </div>
   </template>
 </template>
@@ -54,7 +49,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import OmikujiItemCriteria from './OmikujiItemCriteria.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -62,25 +56,20 @@
   import { CriteriaThresholdSchema } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
 
   const props = defineProps<{
-    allOmikuji: OmikujiItemType[]
-    omikuji: OmikujiItemType
-    category: RulesCategoryType
     selectedItemKey: string | null
+    omikujiItem: OmikujiItemType | null
+    index: number
   }>()
 
   const { updateOmikujiByIndex } = useOmikujiStore()
 
-  const index = computed(() => {
-    if (!props.omikuji) return -1
-    return props.allOmikuji.findIndex((item) => item.key === props.omikuji?.key)
-  })
   // criteriaが設定されているか
-  const hasCriteria = computed(() => props.omikuji?.criteria !== null)
+  const hasCriteria = computed(() => props.omikujiItem?.criteria !== null)
 
   // 優先度更新
   const updatePriority = (value: boolean) => {
-    if (index.value === -1 || !props.selectedItemKey) return
-    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    if (props.index === -1 || !props.selectedItemKey) return
+    updateOmikujiByIndex('comments', props.selectedItemKey, props.index, (item) => ({
       ...item,
       isPriority: value,
     }))
@@ -88,8 +77,8 @@
 
   // criteriaのトグル
   const toggleCriteria = (enabled: boolean) => {
-    if (index.value === -1 || !props.selectedItemKey) return
-    updateOmikujiByIndex(props.category, props.selectedItemKey, index.value, (item) => ({
+    if (props.index === -1 || !props.selectedItemKey) return
+    updateOmikujiByIndex('comments', props.selectedItemKey, props.index, (item) => ({
       ...item,
       isPriority: enabled,
       criteria: enabled ? CriteriaThresholdSchema.parse({}) : null,

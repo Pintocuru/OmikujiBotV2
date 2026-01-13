@@ -1,13 +1,14 @@
 // src/ConfigMaker/script/useTestPost.ts
 import { computed } from 'vue'
 import {
-  OmikujiItemSchema,
   PostActionType,
   BotMessageType,
   OmikujiItemType,
   RuleType,
   GameScriptsType,
   isRulesCategory,
+  ActionSetType,
+  ActionSetSchema,
 } from '@/types/'
 import { OmikujiTestProcessor } from './OmikujiTestProcessor'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -111,19 +112,19 @@ export function useTestPost() {
       botMessageArray = processor.executePostActionsOnly(postActions, mockComment)
     } else {
       // ルールがある場合は完全な実行
-      let testOmikujiItem: OmikujiItemType
+      let testActionItem: ActionSetType
 
       if (drawOmikuji) {
-        testOmikujiItem = drawOmikuji
-        testOmikujiItem.postActions = postActions
+        testActionItem = drawOmikuji
+        testActionItem.postActions = postActions
       } else {
-        testOmikujiItem = OmikujiItemSchema.parse({
+        testActionItem = ActionSetSchema.parse({
           postActions,
           gameScripts,
         })
       }
 
-      botMessageArray = processor.executeOmikujiDirect(testOmikujiItem, mockComment)
+      botMessageArray = processor.executeOmikujiDirect(testActionItem, mockComment)
     }
 
     if (drawOmikuji) {

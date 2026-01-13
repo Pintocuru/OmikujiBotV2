@@ -1,42 +1,66 @@
 <!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
 <template>
-  <!-- ヘッダー（名前、メニュー） -->
+  <!-- ヘッダー(名前、メニュー) -->
   <OmikujiItemHeader
-    :allOmikuji="allOmikujiSets"
-    :omikuji="omikujiItem"
     :category="category"
+    :omikujiItem="omikujiItem"
+    :index="index"
     :selectedItemKey="selectedItemKey"
   />
 
-  <!-- OmikujiItemBasic コンポーネント -->
-  <OmikujiItemPriority
-    v-if="category === 'comments'"
-    :allOmikuji="allOmikujiSets"
-    :omikuji="omikujiItem"
-    :category="category"
-    :selectedItemKey="selectedItemKey"
+  <!-- 実行内容 -->
+  <SettingItem v-if="shouldShowTypeSelector" label="実行内容" description="このおみくじの処理内容を選択します">
+    <div class="flex flex-wrap gap-2">
+      <span
+        v-for="(option, key) in filteredActionSetMap"
+        :key="key"
+        class="badge cursor-pointer select-none"
+        :class="omikujiItem.type === key ? 'badge-primary' : 'badge-ghost'"
+        @click="updateType(key as ActionSetCategory)"
+      >
+        {{ option }}
+      </span>
+    </div>
+  </SettingItem>
+
+  <!-- サブタイトル -->
+  <SubSectionHeader
+    class="pt-4"
+    :icon="ActionSetMap[omikujiItem.type].icon"
+    variant="warning"
+    :title="ActionSetMap[omikujiItem.type].label"
+    :description="ActionSetMap[omikujiItem.type].description"
   />
 
   <!-- GameScripts コンポーネント -->
-
   <GameScriptsEditor
-    :allOmikuji="allOmikujiSets"
-    :omikuji="omikujiItem"
+    v-if="omikujiItem.type === 'gameScripts'"
     :category="category"
+    :index="index"
     :selectedItemKey="selectedItemKey"
   />
 
   <!-- PostActions編集コンポーネント -->
-  <PostActionsEditor v-model="postActions" :gameScripts="gameScripts" />
+  <PostActionsEditor v-else-if="omikujiItem.type === 'postActions'" v-model="postActions" :gameScripts="gameScripts" />
+
+  <!-- Special編集コンポーネント -->
+  <SpecialActionEditor
+    v-else-if="omikujiItem.type === 'special'"
+    :category="category"
+    :index="index"
+    :selectedItemKey="selectedItemKey"
+  />
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { OmikujiItemType, PostActionType } from '@/types/OmikujiData/'
-  import OmikujiItemPriority from './OmikujiItemPriority.vue'
+  import { computed, watch } from 'vue'
+  import { ActionSetCategory, ActionSetMap, PostActionType } from '@/types/OmikujiData/'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
   import GameScriptsEditor from '@config/components/gameScripts/GameScriptsEditor.vue'
+  import SpecialActionEditor from './SpecialActionEditor.vue'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
@@ -44,30 +68,44 @@
   const props = defineProps<{
     category: RulesCategoryType
     selectedItemKey: string | null
-    index: number // カードの色分け用
+    index: number
   }>()
 
   // Pinia store
-  const { updateRecordProperty } = useOmikujiStore()
+  const { data, updateOmikujiByIndex, updateRecordProperty } = useOmikujiStore()
   const { getItem } = useGetRecordData()
 
   // Computed
-  const allOmikujiSets = computed({
-    get: () => {
-      if (!props.selectedItemKey) return []
-      const record = getItem(props.category, props.selectedItemKey)
-      return record?.omikuji || []
-    },
-    set: (value: OmikujiItemType[]) => {
-      if (!props.selectedItemKey) return
-      updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
-    },
+  const omikujiSets = computed(() => {
+    if (!props.selectedItemKey) return []
+    const record = getItem(props.category, props.selectedItemKey)
+    return record?.omikuji || []
   })
 
-  // 現在のインデックスのおみくじアイテム
   const omikujiItem = computed(() => {
-    const omikujiSets = allOmikujiSets.value
-    return omikujiSets[props.index] || null
+    return omikujiSets.value[props.index] || null
+  })
+
+  // 利用可能なゲームスクリプトがあるかチェック
+  const hasAvailableScripts = computed(() => data.featureUsage.gameScripts.length > 0)
+
+  // category === "comments" 以外では special を選択不可
+  const canUseSpecial = computed(() => props.category === 'comments')
+
+  // 利用可能な ActionSet を絞り込む
+  const filteredActionSetMap = computed(() => {
+    const result: Record<string, string> = {}
+    Object.entries(ActionSetMap).forEach(([key, value]) => {
+      if (key === 'gameScripts' && !hasAvailableScripts.value) return
+      if (key === 'special' && !canUseSpecial.value) return
+      result[key] = value.label
+    })
+    return result
+  })
+
+  // 実行内容セレクタを表示するか（選択肢が2つ以上ある場合のみ）
+  const shouldShowTypeSelector = computed(() => {
+    return Object.keys(filteredActionSetMap.value).length > 1
   })
 
   // postActionsのgetter/setter
@@ -78,15 +116,37 @@
     set: (newActions: PostActionType[]) => {
       if (!props.selectedItemKey) return
 
-      const updatedOmikuji = [...allOmikujiSets.value]
+      const updatedOmikuji = [...omikujiSets.value]
       if (updatedOmikuji[props.index]) {
         updatedOmikuji[props.index] = {
           ...updatedOmikuji[props.index],
           postActions: newActions,
         }
-        allOmikujiSets.value = updatedOmikuji
+        updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', updatedOmikuji)
       }
     },
   })
+
   const gameScripts = computed(() => omikujiItem.value?.gameScripts || null)
+
+  const updateType = (value: ActionSetCategory) => {
+    if (props.index === -1 || !props.selectedItemKey) return
+    updateOmikujiByIndex(props.category, props.selectedItemKey, props.index, (item) => ({
+      ...item,
+      type: value,
+    }))
+  }
+
+  // 選択肢が1つしかない場合、自動的にその type に設定
+  watch(
+    () => [filteredActionSetMap.value, omikujiItem.value],
+    () => {
+      const availableTypes = Object.keys(filteredActionSetMap.value) as ActionSetCategory[]
+
+      if (availableTypes.length === 1 && omikujiItem.value?.type !== availableTypes[0]) {
+        updateType(availableTypes[0])
+      }
+    },
+    { immediate: true }
+  )
 </script>

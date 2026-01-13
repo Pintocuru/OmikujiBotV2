@@ -1,9 +1,9 @@
 // src\ConfigMaker\scripts\OmikujiTestProcessor.ts
 import {
+  ActionSetSchema,
+  ActionSetType,
   defaultPlaceholdersShortLabels,
   OmikujiDataType,
-  OmikujiItemSchema,
-  OmikujiItemType,
   PostActionType,
 } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
@@ -21,9 +21,9 @@ export class OmikujiTestProcessor {
   /**
    * おみくじの直接指定
    */
-  executeOmikujiDirect(omikujiItem: OmikujiItemType, omiken?: OmikenCommentType): BotMessageType[] {
+  executeOmikujiDirect(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
     const defaultPlaceholders = this.getSamplePlaceholders()
-    return this.resultProcessor.process(omikujiItem, defaultPlaceholders, omiken)
+    return this.resultProcessor.process(actionItem, defaultPlaceholders, omiken)
   }
 
   /**
@@ -31,8 +31,8 @@ export class OmikujiTestProcessor {
    * ルール情報やスクリプト実行なしで、PostActionを直接BotMessageに変換
    */
   executePostActionsOnly(actions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
-    const dummyOmikujiItem: OmikujiItemType = OmikujiItemSchema.parse({ postActions: actions })
-    return this.executeOmikujiDirect(dummyOmikujiItem, omiken)
+    const actionItem: ActionSetType = ActionSetSchema.parse({ postActions: actions })
+    return this.executeOmikujiDirect(actionItem, omiken)
   }
 
   /**
