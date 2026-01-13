@@ -101,7 +101,7 @@
   const { isCharacter } = useVisibilityAccess()
 
   // データ抽出（selectedIdがある場合は単一ルールのみ対象）
-  const { changeScope, scopeLabel, allItems, allPostActions, totalItems } = useDataExtractor(
+  const { changeScope, scopeLabel, allItems, allActionSets, totalItems } = useDataExtractor(
     props.category,
     props.selectedId
   )
@@ -111,7 +111,7 @@
 
   // キャラクター統計
   const { uniqueCharacterKeys, characterUsageCount, invalidCharacterCount, hasInvalidCharacters } =
-    useCharacterStats(allPostActions)
+    useCharacterStats(allActionSets)
 
   // モーダル状態
   const {

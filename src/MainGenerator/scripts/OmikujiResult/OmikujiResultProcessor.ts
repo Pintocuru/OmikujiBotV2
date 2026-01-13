@@ -8,10 +8,10 @@ import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { ActionSetExpander } from '@main/scripts/OmikujiProcess/ActionSetExpander'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { ProcessedAction, VariablePlaceholderResult } from './OmikujiResultHelper'
 import { ScriptResult } from '@/types'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 /**
  * おみくじ結果の処理とBotMessage生成を担当
@@ -44,10 +44,6 @@ export class OmikujiResultProcessor {
   ): BotMessageType[] {
     try {
       switch (actionItem.type) {
-        case 'special':
-          // special なら処理しない
-          return []
-
         case 'gameScripts':
           return this.processGameScripts(actionItem, omiken)
 
@@ -55,12 +51,12 @@ export class OmikujiResultProcessor {
           return this.processPostActions(actionItem, defaultPlaceholders, omiken)
 
         default:
-          const _exhaustiveCheck: never = actionItem.type
-          ConsolePost('warn', '未知のアクションタイプ:', _exhaustiveCheck)
           return []
       }
     } catch (error) {
-      ConsolePost('error', 'おみくじ結果処理エラー', error)
+      const msg = `おみくじ実行エラー ${error}`
+      console.error(msg)
+      postSystemMessage(msg)
       return []
     }
   }
@@ -77,9 +73,8 @@ export class OmikujiResultProcessor {
     // わんコメへ投稿
     this.publishActions(processedActions)
 
-    // scriptResultのmessagesとprocessedActionsから生成したBotMessageを結合
-    const generatedMessages = this.botMessageGenerator.generateMessages(processedActions, omiken)
-    return [...scriptResult.messages, ...generatedMessages]
+    // 処理して返す
+    return this.botMessageGenerator.generateMessages(processedActions, omiken)
   }
 
   /**

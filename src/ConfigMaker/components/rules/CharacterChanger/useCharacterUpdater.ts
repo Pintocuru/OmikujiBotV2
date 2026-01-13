@@ -11,29 +11,30 @@ import { usePostActionCharacters } from './usePostActionCharacters'
  */
 export function useCharacterUpdater(category: TargetCategoryType, allItems: ComputedRef<(RuleType | ActionSetType)[]>) {
   const omikujiStore = useOmikujiStore()
-  const { applyCharacterMappings } = usePostActionCharacters()
+  const { applyCharacterMappingsToActionSet } = usePostActionCharacters()
 
   /**
    * キャラクターマッピングを適用してアイテムを更新
    */
   const applyMappingsToAllItems = (mappings: Record<string, string>) => {
     if (category === 'actionSets') {
-      // actionSetsの場合: postActionsを直接更新
       const items = allItems.value as ActionSetType[]
       items.forEach((item) => {
-        const newPostActions = applyCharacterMappings(item.postActions, mappings)
-        omikujiStore.updateItem('actionSets', item.key, {
-          postActions: newPostActions,
-        })
+        const updatedActionSet = applyCharacterMappingsToActionSet(item, mappings)
+        omikujiStore.updateItem('actionSets', item.key, updatedActionSet)
       })
     } else {
-      // rules系の場合: omikuji内のpostActionsを更新
       const rules = allItems.value as RuleType[]
       rules.forEach((rule) => {
-        const newOmikujiSets = rule.omikuji.map((omikuji: OmikujiItemType) => ({
-          ...omikuji,
-          postActions: applyCharacterMappings(omikuji.postActions, mappings),
-        }))
+        const newOmikujiSets = rule.omikuji.map((omikuji: OmikujiItemType) => {
+          // OmikujiItemTypeのプロパティを保持しつつ、characterKeyを更新
+          const updatedActionSetPart = applyCharacterMappingsToActionSet(omikuji, mappings)
+
+          return {
+            ...omikuji, // weight, isPriority, criteria などを保持
+            ...updatedActionSetPart, // postActions, gameScripts などを更新
+          } as OmikujiItemType
+        })
 
         omikujiStore.updateItem(category, rule.key, {
           omikuji: newOmikujiSets,

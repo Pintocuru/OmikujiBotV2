@@ -6,9 +6,9 @@ import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResul
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { createBotMessages } from '../RuleProcess/RestrictionMessageBuilder'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 /**
  * おみくじ処理の統合クラス
@@ -75,7 +75,9 @@ export class OmikujiProcessor {
 
       return (drawOmikuji(filtered) as ActionSetType) ?? null
     } catch (error) {
-      ConsolePost('error', 'おみくじ実行エラー', error)
+      const msg = `おみくじ実行エラー ${error}`
+      console.error(msg)
+      postSystemMessage(msg)
       return null
     }
   }

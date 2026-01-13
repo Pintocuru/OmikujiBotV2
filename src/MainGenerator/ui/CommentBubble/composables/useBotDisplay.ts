@@ -14,7 +14,7 @@ const DISPLAY_CONFIG = {
 export type DisplayMode = 'comment' | 'toast'
 
 // 表示用の拡張BotMessage型
-export interface DisplayBotMessage extends BotMessageType {
+export type DisplayBotMessage = BotMessageType & {
   visible: boolean
   hideTimeout?: number
 }

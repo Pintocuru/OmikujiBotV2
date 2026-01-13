@@ -1,8 +1,7 @@
 // src/MainGenerator/script/PostMessage.ts
 import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
-import { postWordParty, postComment, postSpeech } from '@shared/sdk/postMessage/PostOneComme'
+import { postWordParty, postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 import { Service } from '@onecomme.com/onesdk/types/Service'
 
@@ -86,7 +85,9 @@ export class PostMessage {
       const request = createCommentRequest(bubble, chara)
       postComment(request, delaySeconds)
     } catch (error) {
-      ConsolePost('error', `キャラクターコメント投稿エラー: ${chara.name}`, error)
+      const msg = `キャラクターコメント投稿エラー: ${chara.name} ${error}`
+      console.error(msg)
+      postSystemMessage(msg)
     }
   }
 

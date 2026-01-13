@@ -1,18 +1,18 @@
 // src\MainGenerator\scripts\PostMessage\PostMessageHelper.ts
 import { CharacterType } from '@/types/'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { Service } from '@onecomme.com/onesdk/types/Service'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 /**
  * わんコメ投稿用のリクエストオブジェクトを作成
  */
 export function createCommentRequest(bubble: string, chara: CharacterType): SendCommentType {
   if (!chara.displayOption.frameId) {
-    const errorMessage = `キャラクター「${chara.name}」にframeIdが設定されていません`
-    ConsolePost('error', errorMessage)
-    throw new Error(errorMessage)
+    const msg = `キャラクター「${chara.name}」にframeIdが設定されていません`
+    postSystemMessage(msg)
+    throw new Error(msg)
   }
 
   return SendCommentSchema.parse({

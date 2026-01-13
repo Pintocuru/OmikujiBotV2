@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
 import { ActionSetType, handelNormalizedValues, PostActionActionSetType, PostActionType } from '@/types/OmikujiData/'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 export class ActionSetExpander {
@@ -13,7 +13,9 @@ export class ActionSetExpander {
     visited: Set<string> = new Set()
   ): PostActionType[] {
     if (depth >= this.MAX_DEPTH) {
-      ConsolePost('warn', `アクションセットの展開が最大階層(${this.MAX_DEPTH})に達しました`)
+      const msg = `アクションセットの展開が最大階層(${this.MAX_DEPTH})に達しました`
+      console.warn(msg)
+      postSystemMessage(msg, 'warn')
       return actions
     }
 
@@ -48,14 +50,18 @@ export class ActionSetExpander {
 
     // 循環参照チェック
     if (visited.has(targetKey)) {
-      ConsolePost('error', `循環参照が検出されました: ${targetKey}`)
+      const msg = `循環参照が検出されました: ${targetKey}`
+      console.error(msg)
+      postSystemMessage(msg)
       return []
     }
 
     // 展開
     const targetActionSet = actionSets[targetKey]
     if (!targetActionSet) {
-      ConsolePost('warn', `アクションセット "${targetKey}" が見つかりません`)
+      const msg = `アクションセット "${targetKey}" が見つかりません`
+      console.error(msg)
+      postSystemMessage(msg)
       return []
     }
 

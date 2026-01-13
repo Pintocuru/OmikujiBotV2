@@ -66,6 +66,18 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
   })
 
   /**
+   * 全ActionSetを取得（GameScriptsのcharacterKeyを含む処理用）
+   */
+  const allActionSets: ComputedRef<ActionSetType[]> = computed(() => {
+    if (category === 'actionSets') {
+      return allItems.value as ActionSetType[]
+    } else {
+      const rules = allItems.value as RuleType[]
+      return rules.flatMap((rule) => rule.omikuji) as ActionSetType[]
+    }
+  })
+
+  /**
    * アイテム数
    */
   const totalItems = computed(() => allItems.value.length)
@@ -75,6 +87,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
     scopeLabel,
     allItems,
     allPostActions,
+    allActionSets,
     totalItems,
   }
 }

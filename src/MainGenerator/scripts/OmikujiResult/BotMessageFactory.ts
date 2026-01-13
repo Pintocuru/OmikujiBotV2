@@ -46,20 +46,30 @@ export class BotMessageFactory {
     const colorType = isToast ? 'toast' : 'bubble'
     const color = isChar ? character.color : this.defaultColors[colorType]
 
-    return BotMessageSchema.parse({
-      type: omiken ? 'comment' : 'system',
-      delaySeconds,
-      user: omiken ? UserNameSchema.parse(omiken) : undefined,
-      ranking,
-      bubble: {
-        name: isChar ? character.displayName : '',
-        message: messageText,
-        isToast,
-        characterKey: isChar ? action.characterKey : null,
-        iconKey: action.iconKey,
-        color,
-      },
-    })
+    const bubble = {
+      name: isChar ? character.displayName : '',
+      message: messageText,
+      isToast,
+      characterKey: isChar ? action.characterKey : null,
+      iconKey: action.iconKey,
+      color,
+    }
+
+    if (omiken) {
+      return BotMessageSchema.parse({
+        type: 'comment',
+        delaySeconds,
+        user: UserNameSchema.parse(omiken),
+        bubble,
+        ranking,
+      })
+    } else {
+      return BotMessageSchema.parse({
+        type: 'system',
+        delaySeconds,
+        bubble,
+      })
+    }
   }
 
   /**
@@ -70,6 +80,10 @@ export class BotMessageFactory {
     ranking: ReturnType<typeof RankingMessageSchema.parse>,
     omiken?: OmikenCommentType
   ): BotMessageType {
+    if (!ranking) {
+      throw new Error('ranking is required for rankingOnly message type')
+    }
+
     return BotMessageSchema.parse({
       delaySeconds,
       type: 'rankingOnly',

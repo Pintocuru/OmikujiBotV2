@@ -1,6 +1,6 @@
 // src/MainPlugin/plugin.ts
 import { pluginRequest } from '../../server/adapters/pluginAdapter'
-import { ConsolePost } from '@shared/sdk/postMessage/ConsolePost'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { OnePlugin, PluginRequest, PluginResponse } from '@onecomme.com/onesdk/types/Plugin'
 import { PLUGIN_KEY, PLUGIN_NAME } from '@/types'
 import { APP_VERSION } from '@/version'
@@ -17,10 +17,10 @@ const plugin: OnePlugin = {
 
   async init(api, initialData) {
     try {
-      ConsolePost('info', `【${PLUGIN_NAME}】がONだよ`)
+      postSystemMessage(`【${PLUGIN_NAME}】がONだよ`, 'info')
     } catch (error) {
       console.error('Plugin initialization failed:', error)
-      ConsolePost('error', `プラグインの初期化に失敗しました: ${error}`)
+      postSystemMessage(`プラグインの初期化に失敗しました: ${error}`)
       throw error
     }
   },
@@ -29,7 +29,7 @@ const plugin: OnePlugin = {
     return await pluginRequest(req)
   },
   destroy() {
-    ConsolePost('info', `【${PLUGIN_NAME}】がOFFだよ`)
+    postSystemMessage(`【${PLUGIN_NAME}】がOFFだよ`, 'info')
   },
 }
 
