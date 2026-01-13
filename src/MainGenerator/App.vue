@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue'
+  import { computed, onMounted, onUnmounted, watch } from 'vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
@@ -45,7 +45,7 @@
   const ruleCommentProcessor = new RuleCommentProcessor()
 
   // comment/timerルール稼働
-  const { initializeApp, startTimers } = useRuleProcessor()
+  const { initializeApp, startTimers, stopTimers } = useRuleProcessor()
 
   // 初期化処理
   onMounted(async () => {
@@ -71,5 +71,11 @@
       if (!isTimer.value) return
       startTimers((messages) => appStore.scheduleBotMessages(messages))
     }
+  })
+
+  // タイマー停止
+  onUnmounted(() => {
+    console.log('App.vue がアンマウントされました。タイマーを停止します。')
+    stopTimers()
   })
 </script>

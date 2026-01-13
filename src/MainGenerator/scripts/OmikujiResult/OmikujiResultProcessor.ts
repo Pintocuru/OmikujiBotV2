@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiDataType, OmikujiItemType, ActionSetType, PostActionType, GameScriptsType } from '@/types/OmikujiData/'
+import { OmikujiDataType, ActionSetType, PostActionType } from '@/types/OmikujiData/'
 import { BotMessageGenerator } from './BotMessageGenerator'
 import { PlaceholderProcessor } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
@@ -9,7 +9,7 @@ import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { ActionSetExpander } from '@main/scripts/OmikujiProcess/ActionSetExpander'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
-import { ProcessedAction, VariablePlaceholderResult } from './OmikujiResultHelper'
+import { createProcessedMessageContent } from './OmikujiResultHelper'
 import { ScriptResult } from '@/types'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
@@ -67,13 +67,13 @@ export class OmikujiResultProcessor {
   private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
     const scriptResult = this.executeGameScripts(actionItem.gameScripts, omiken)
 
-    // actionsを変数プレースホルダー処理
+    // 変数プレースホルダー処理
     const processedActions = this.processVariablePlaceholders(scriptResult.actions)
 
     // わんコメへ投稿
-    this.publishActions(processedActions)
+    this.postMessage.post(processedActions)
 
-    // 処理して返す
+    // BotMessageを生成
     return this.botMessageGenerator.generateMessages(processedActions, omiken)
   }
 
@@ -96,7 +96,7 @@ export class OmikujiResultProcessor {
     const finalActions = this.processVariablePlaceholders(processedActions)
 
     // わんコメへ投稿
-    this.publishActions(finalActions)
+    this.postMessage.post(finalActions)
 
     // BotMessageを生成
     return this.botMessageGenerator.generateMessages(finalActions, omiken)
@@ -113,41 +113,30 @@ export class OmikujiResultProcessor {
   }
 
   /**
-   * 変数プレースホルダーを処理してProcessedActionに変換
+   * 変数プレースホルダーを処理
    */
-  private processVariablePlaceholders(actions: PostActionType[]): ProcessedAction[] {
-    return actions.map((action): ProcessedAction => {
+  private processVariablePlaceholders(actions: PostActionType[]): PostActionType[] {
+    return actions.map((action): PostActionType => {
       if (action.actionType === 'message' && action.message.bubble) {
         const result = this.variableProcessor.process(action.message.bubble)
-
-        const processed: VariablePlaceholderResult = {
-          bubble: result.bubble,
-          rankingData: result.text
-            ? {
-                name: result.name,
-                text: result.text,
-                symbol: result.symbol,
-                variant: result.variant,
-                unique: result.unique,
-              }
-            : undefined,
-        }
+        const processedContent = createProcessedMessageContent(result, action.message.isToast)
 
         return {
           ...action,
           message: {
-            bubble: processed.bubble,
-            isToast: action.message.isToast,
-            processed,
-          },
+            ...action.message,
+            bubble: processedContent.bubble,
+            // 内部的にrankingを保持（後でBotMessage生成時に使用）
+            __processed: processedContent,
+          } as any,
         }
       }
 
-      return action as ProcessedAction
+      return action
     })
   }
 
-  private executeGameScripts(gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult {
+  private executeGameScripts(gameScripts: any, omiken?: OmikenCommentType): ScriptResult {
     if (!gameScripts) return { actions: [], messages: [] }
 
     const scriptResult = this.scriptManager.playScript(gameScripts, omiken)
@@ -157,27 +146,5 @@ export class OmikujiResultProcessor {
       actions: scriptResult.actions,
       messages: scriptResult.messages,
     }
-  }
-
-  /**
-   * ProcessedActionを元の形式に戻して投稿
-   */
-  private publishActions(actions: ProcessedAction[]): void {
-    if (actions.length === 0) return
-
-    const postActions: PostActionType[] = actions.map((action) => {
-      if (action.actionType === 'message') {
-        return {
-          ...action,
-          message: {
-            bubble: action.message.bubble,
-            isToast: action.message.isToast,
-          },
-        }
-      }
-      return action
-    })
-
-    this.postMessage.post(postActions)
   }
 }

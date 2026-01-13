@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultHelper.ts
-import { PostActionMessageType, PostActionType, RankingMessageSchema, RankingMessageType } from '@/types'
+import { RankingMessageSchema, RankingMessageType } from '@/types'
 
 /**
  * 変数プレースホルダー処理結果
@@ -16,53 +16,35 @@ export interface VariablePlaceholderResult {
 }
 
 /**
- * 変数プレースホルダー処理済みメッセージアクション
+ * 変数プレースホルダー処理済みメッセージの中身
  */
-export interface ProcessedMessageAction extends Omit<PostActionMessageType, 'message'> {
-  actionType: 'message'
-  message: {
-    bubble: string
-    isToast: boolean
-    processed: VariablePlaceholderResult
-  }
+export interface ProcessedMessageContent {
+  bubble: string
+  isToast: boolean
+  ranking?: RankingMessageType
 }
 
 /**
- * 処理済みアクション（メッセージ以外は元のまま）
+ * VariablePlaceholderResultをProcessedMessageContentに変換
  */
-export type ProcessedAction = ProcessedMessageAction | Exclude<PostActionType, PostActionMessageType>
-
-/**
- * 処理済みメッセージの内容
- */
-export interface MessageContent {
-  bubble: string | null
-  ranking: RankingMessageType | undefined
-}
-
-/**
- * 処理済みデータをMessageContentに変換
- */
-export const extractMessageContent = (action: ProcessedAction): MessageContent => {
-  if (action.actionType !== 'message') {
-    return { bubble: null, ranking: undefined }
-  }
-
-  const { processed } = action.message
-
-  const ranking = processed.rankingData
+export const createProcessedMessageContent = (
+  result: VariablePlaceholderResult,
+  isToast: boolean
+): ProcessedMessageContent => {
+  const ranking = result.rankingData
     ? RankingMessageSchema.parse({
         scriptKey: 'basicList',
-        listName: processed.rankingData.name,
-        scoreText: processed.rankingData.text,
-        symbol: processed.rankingData.symbol,
-        variant: processed.rankingData.variant,
-        isUniqueUser: processed.rankingData.unique === 'false' ? false : true,
+        listName: result.rankingData.name,
+        scoreText: result.rankingData.text,
+        symbol: result.rankingData.symbol,
+        variant: result.rankingData.variant,
+        isUniqueUser: result.rankingData.unique !== 'false',
       })
     : undefined
 
   return {
-    bubble: processed.bubble,
+    bubble: result.bubble,
+    isToast,
     ranking,
   }
 }

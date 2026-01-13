@@ -1,7 +1,6 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
 import { computed, type Ref } from 'vue'
-import type { BotMessageType, ShowCharacters, CharacterType } from '@/types/'
-import { BotMessageCommentType } from './useBotDisplay'
+import type { ShowCharacters, CharacterType, BotMessageCommentType } from '@/types/'
 
 /**
  * キャラクター選択ロジックを集約
@@ -15,7 +14,7 @@ export function useCharacterSelection(
 ) {
   // 最新コメントのキャラクターキーを取得
   const latestCommenterKey = computed(() => {
-    const visibleMessages = displayedComments.value.filter((m) => m.visible)
+    const visibleMessages = displayedComments.value.filter((m) => m.display?.visible)
     return visibleMessages[0]?.bubble?.characterKey ?? null
   })
 

@@ -6,6 +6,7 @@ import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacter
 import { useCharacterSelection } from './useCharacterSelection'
 import { useCharacterEmotionState } from './useCharacterEmotionState'
 import { useBotDisplay } from './useBotDisplay'
+import { BotMessageCommentType } from '@/types'
 
 /**
  * 常時表示キャラクター（1〜4番地）の表示制御
@@ -18,9 +19,32 @@ export function useCommentBubblePersistent() {
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
   const { charactersMap, showCharacters } = useCharacterManager()
+  const isToastEnabled = computed(() => appStore.data.featureUsage.components.includes('toast'))
+
+  // 1-4番地のコメント取得
+  const indexMessages = computed(() => {
+    const allowKeys = [
+      ...showCharacters.value.slot1,
+      ...showCharacters.value.slot2,
+      ...showCharacters.value.slot3,
+      ...showCharacters.value.slot4,
+    ]
+
+    // centerが空の場合は何も表示しない
+    if (allowKeys.length === 0) return []
+
+    return botMessages.value.filter((message): message is BotMessageCommentType => {
+      if (message.type !== 'comment') return false
+      if (isToastEnabled.value && message.bubble?.isToast) return false
+
+      // null の場合はキャラクター非表示モードなのでそのまま表示させる
+      if (message.bubble?.characterKey === null) return true
+      return allowKeys.includes(message.bubble?.characterKey)
+    })
+  })
 
   // コメント表示制御
-  const { displayedComments, removeComment, start, stop } = useBotDisplay(botMessages, 'comment')
+  const { displayedComments, removeComment, start, stop } = useBotDisplay(indexMessages)
 
   // キャラクター選択
   const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, charactersMap)
@@ -44,7 +68,7 @@ export function useCommentBubblePersistent() {
 
   // 指定キャラクターのコメントを取得（表示中のみ）
   const getCharacterComments = (characterKey: string) => {
-    return displayedComments.value.filter((c) => c.bubble?.characterKey === characterKey && c.visible)
+    return displayedComments.value.filter((c) => c.bubble?.characterKey === characterKey && c.display?.visible)
   }
 
   return {

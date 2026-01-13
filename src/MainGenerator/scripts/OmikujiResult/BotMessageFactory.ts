@@ -9,7 +9,6 @@ import { CharacterColorType, CharacterType, OmikujiDataType } from '@/types/Omik
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
-import { ProcessedMessageAction } from './OmikujiResultHelper'
 
 /**
  * BotMessage生成とキャラクター管理
@@ -29,66 +28,60 @@ export class BotMessageFactory {
   }
 
   /**
-   *  BotMessageを生成
+   * BotMessageを生成（bubble + ranking）
    */
-  createBotMessage({
-    action,
+  createBotMessages({
+    characterKey,
+    iconKey,
     delaySeconds,
     isToast,
-    messageText,
+    bubble,
     ranking,
     omiken,
   }: {
-    action: ProcessedMessageAction
+    characterKey: string
+    iconKey: string
     delaySeconds: number
     isToast: boolean
-    messageText: string
-    ranking: RankingMessageType | undefined // z.inferで見やすく
+    bubble: string
+    ranking: RankingMessageType | undefined
     omiken?: OmikenCommentType
   }): BotMessageType[] {
-    // 戻り値を配列に変更
     const messages: BotMessageType[] = []
 
-    const character = this.getCharacter(action.characterKey)
+    const character = this.getCharacter(characterKey)
     const isChar = this.isCharacterMode && character
     const colorType = isToast ? 'toast' : 'bubble'
     const color = isChar ? character.color : this.defaultColors[colorType]
 
-    // 1. 吹き出しメッセージ (comment) の作成
-    const bubble = {
-      name: isChar ? character.displayName : '',
-      message: messageText,
-      isToast,
-      characterKey: isChar ? action.characterKey : null,
-      iconKey: action.iconKey,
-      color,
-    }
-
-    const commentData: any = {
+    // 1. コメントメッセージを作成
+    const commentMessage = BotMessageCommentSchema.parse({
       type: 'comment',
       delaySeconds,
-      bubble,
+      bubble: {
+        name: isChar ? character.displayName : '',
+        message: bubble,
+        isToast,
+        characterKey: isChar ? characterKey : null,
+        iconKey,
+        color,
+      },
       display: { visible: true },
-    }
+      user: omiken ? UserNameSchema.parse(omiken) : undefined,
+    })
 
-    if (omiken) {
-      commentData.user = UserNameSchema.parse(omiken)
-    }
+    messages.push(commentMessage)
 
-    messages.push(BotMessageCommentSchema.parse(commentData))
-
-    // 2. ランキングメッセージ (ranking) の作成
-    // rankingデータが存在する場合のみ、別のメッセージとして切り出す
+    // 2. ランキングメッセージを作成（存在する場合のみ）
     if (ranking) {
-      messages.push(
-        BotMessageRankingSchema.parse({
-          type: 'ranking',
-          // ランキングは吹き出しより少し遅らせる（演出上の調整）
-          delaySeconds: delaySeconds + 0.1,
-          ranking,
-          user: omiken ? UserNameSchema.parse(omiken) : undefined,
-        })
-      )
+      const rankingMessage = BotMessageRankingSchema.parse({
+        type: 'ranking',
+        delaySeconds: delaySeconds + 0.1, // 吹き出しより少し遅らせる
+        ranking,
+        user: omiken ? UserNameSchema.parse(omiken) : undefined,
+      })
+
+      messages.push(rankingMessage)
     }
 
     return messages
@@ -97,16 +90,9 @@ export class BotMessageFactory {
   /**
    * ランキングのみのBotMessageを生成
    */
-  createRankingOnlyMessage(
-    delaySeconds: number,
-    ranking: RankingMessageType,
-    omiken?: OmikenCommentType
-  ): BotMessageType {
-    if (!ranking) {
-      throw new Error('ranking is required for rankingOnly message type')
-    }
-
+  createRankingMessage(delaySeconds: number, ranking: RankingMessageType, omiken?: OmikenCommentType): BotMessageType {
     return BotMessageRankingSchema.parse({
+      type: 'ranking',
       delaySeconds,
       ranking,
       user: omiken ? UserNameSchema.parse(omiken) : undefined,

@@ -1,14 +1,14 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { PostActionSoundType, OmikujiDataType } from '@/types/OmikujiData/'
+import { PostActionType, PostActionMessageType, OmikujiDataType } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BotMessageFactory } from './BotMessageFactory'
-import { extractMessageContent, ProcessedAction, ProcessedMessageAction } from './OmikujiResultHelper'
+import { ProcessedMessageContent } from './OmikujiResultHelper'
 
 /**
- *  ProcessedActionからBotMessageを生成し音声を制御
+ * PostActionからBotMessageを生成し音声を制御
  */
 export class BotMessageGenerator {
   private messageFactory: BotMessageFactory
@@ -18,9 +18,9 @@ export class BotMessageGenerator {
   }
 
   /**
-   *  ProcessedActionからBotMessageを生成
+   * PostActionからBotMessageを生成
    */
-  generateMessages(actions: ProcessedAction[], omiken?: OmikenCommentType): BotMessageType[] {
+  generateMessages(actions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
     const messages: BotMessageType[] = []
 
     for (const action of actions) {
@@ -40,12 +40,12 @@ export class BotMessageGenerator {
   }
 
   /**
-   *  メッセージアクションを処理してBotMessageを生成
+   * メッセージアクションを処理してBotMessageを生成
    */
-  private handleMessageAction(action: ProcessedMessageAction, omiken?: OmikenCommentType): BotMessageType[] {
+  private handleMessageAction(action: PostActionMessageType, omiken?: OmikenCommentType): BotMessageType[] {
     const delaySeconds = this.calculateDelay(action)
-    const content = extractMessageContent(action)
-    const { isToast } = action.message
+    const content = this.extractMessageContent(action)
+    const { isToast } = content
     const hasBubbleText = !!content.bubble?.trim()
 
     // メッセージが何もない場合は音声のみ再生
@@ -58,11 +58,12 @@ export class BotMessageGenerator {
 
     // bubbleテキストがある場合
     if (hasBubbleText) {
-      const newMessages = this.messageFactory.createBotMessage({
-        action,
+      const newMessages = this.messageFactory.createBotMessages({
+        characterKey: action.characterKey,
+        iconKey: action.iconKey,
         delaySeconds,
         isToast,
-        messageText: content.bubble!,
+        bubble: content.bubble!,
         ranking: content.ranking,
         omiken,
       })
@@ -75,7 +76,7 @@ export class BotMessageGenerator {
     }
     // ランキングのみの場合
     else if (content.ranking) {
-      const message = this.messageFactory.createRankingOnlyMessage(delaySeconds, content.ranking, omiken)
+      const message = this.messageFactory.createRankingMessage(delaySeconds, content.ranking, omiken)
       messages.push(message)
     }
 
@@ -83,9 +84,29 @@ export class BotMessageGenerator {
     return messages
   }
 
-  private handleSoundAction(action: PostActionSoundType): void {
+  private handleSoundAction(action: PostActionType): void {
+    if (action.actionType !== 'sound') return
     const delaySeconds = this.calculateDelay(action)
     this.playSound(action.sound, delaySeconds)
+  }
+
+  /**
+   * メッセージアクションから処理済みコンテンツを抽出
+   */
+  private extractMessageContent(action: PostActionMessageType): ProcessedMessageContent {
+    const message = action.message as any
+
+    // __processedがある場合（変数プレースホルダー処理済み）
+    if (message.__processed) {
+      return message.__processed
+    }
+
+    // __processedがない場合は通常のbubbleとisToastのみ
+    return {
+      bubble: message.bubble || '',
+      isToast: message.isToast || false,
+      ranking: undefined,
+    }
   }
 
   private playRpgVoice(characterKey: string, bubble: string, delaySeconds: number): void {
@@ -105,7 +126,7 @@ export class BotMessageGenerator {
     }
   }
 
-  private calculateDelay(action: ProcessedAction): number {
+  private calculateDelay(action: PostActionType): number {
     return action.delaySeconds + POST_SETTINGS.basicDelaySeconds
   }
 }
