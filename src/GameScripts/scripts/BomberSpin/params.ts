@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 /**
  * params
+ * symbol=チェリー
  */
 export const symbol = [
   '',
@@ -17,5 +18,6 @@ export const symbol = [
 ] as const
 export const GameParamsSchema = z.object({
   symbol: z.enum(symbol).default('').catch(''),
+  spin: z.number().min(3).max(8).nullable().default(null).catch(null),
 })
 export type GameParams = z.infer<typeof GameParamsSchema>

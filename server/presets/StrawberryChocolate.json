@@ -1724,26 +1724,17 @@
     },
     "components": [
       "bubble",
-      "toast",
-      "ranking",
-      "counter"
+      "toast"
     ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "gameScripts": [],
     "developer": {
-      "licenseVisible": "basic",
-      "jsonMergeSettings": "basic"
+      "jsonMergeSettings": "basic",
+      "licenseVisible": "basic"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "daisyUiTheme": "cupcake"
   }
 }

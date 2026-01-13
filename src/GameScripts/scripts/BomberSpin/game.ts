@@ -96,9 +96,9 @@ function createMessage(user: string, symbol: string, payouts: number[], total: n
   return `${user}の${symbol}スピン!${payoutText}${winMessage}合計${total}枚獲得!`
 }
 
-export function playSlot(user: string, symbol: string = ''): GameResult {
+export function playSlot(user: string, symbol: string = '', spin: number | null = null): GameResult {
   // 基本パラメータの決定
-  const spins = randomSpins()
+  const spins = spin ? spin - 1 : randomSpins()
   const symbolData = randomSymbol(symbol)
   let slots = 7 - Math.floor(Math.random() * 3) // 5-7個の空きスロット
 

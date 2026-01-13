@@ -170,7 +170,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-13T06:36:11.380Z",
+      "updatedAt": "2026-01-13T06:47:36.746Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -268,7 +268,7 @@
         ]
       },
       "limits": {
-        "cooldownSeconds": 3,
+        "cooldownSeconds": 5,
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null
@@ -280,7 +280,7 @@
       "name": "カボチャジェネレーター",
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
-      "updatedAt": "2026-01-13T06:36:17.471Z",
+      "updatedAt": "2026-01-13T06:47:39.337Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -378,7 +378,7 @@
         ]
       },
       "limits": {
-        "cooldownSeconds": 3,
+        "cooldownSeconds": 5,
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null
@@ -390,7 +390,7 @@
       "name": "クジラジェネレーター",
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
-      "updatedAt": "2026-01-13T06:36:21.678Z",
+      "updatedAt": "2026-01-13T06:47:41.202Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -489,7 +489,7 @@
         ]
       },
       "limits": {
-        "cooldownSeconds": 3,
+        "cooldownSeconds": 5,
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null

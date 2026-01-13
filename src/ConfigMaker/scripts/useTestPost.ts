@@ -61,16 +61,8 @@ export function useTestPost() {
     }
   }
 
-  const findFirstMessageBubble = (actions: PostActionType[]): string | null => {
-    const action = actions.find(
-      (a): a is Extract<PostActionType, { actionType: 'message' }> => a.actionType === 'message' && !!a.message?.bubble
-    )
-
-    return action?.message.bubble ?? null
-  }
-
   // 抽選結果の詳細トーストを表示
-  const showOmikujiResultToast = (drawOmikuji: OmikujiItemType, actions: PostActionType[]) => {
+  const showOmikujiResultToast = (drawOmikuji: OmikujiItemType) => {
     const weight = drawOmikuji.weight || 1
     const omikujiName = drawOmikuji.name || '無名のアイテム'
 
@@ -128,7 +120,7 @@ export function useTestPost() {
     }
 
     if (drawOmikuji) {
-      showOmikujiResultToast(drawOmikuji, postActions)
+      showOmikujiResultToast(drawOmikuji)
     }
     executeTestPostDelays(botMessageArray)
   }
@@ -144,7 +136,9 @@ export function useTestPost() {
       return
     }
 
-    const omikujisWithPercent = addWeightPercentages(omikujiSet)
+    const unpriorityItems = omikujiSet.filter((item) => !item.isPriority)
+    const targetSet = unpriorityItems.length > 0 ? unpriorityItems : omikujiSet
+    const omikujisWithPercent = addWeightPercentages(targetSet)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 
     if (!omikujiItem) {

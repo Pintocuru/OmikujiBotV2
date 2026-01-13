@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta2",
-    "dataVersion": 2.0002,
+    "generatorVersion": "v2.0.0-beta14",
+    "dataVersion": 2.0014,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -27,17 +27,20 @@
       "name": "ボンバースロット",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-12-30T04:13:23.866Z",
+      "updatedAt": "2026-01-13T07:43:07.574Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "スロット",
+        "ボンバースロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
-          "name": "通常",
+          "id": "6f11513e-c15d-44da-82d3-0cae37d18150",
+          "key": "6f11513e-c15d-44da-82d3-0cae37d18150",
+          "name": "チェリー",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.297Z",
           "updatedAt": "2025-08-11T15:34:29.297Z",
@@ -45,15 +48,217 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "gameScripts",
           "postActions": [],
           "gameScripts": {
             "scriptId": "BomberSpin",
-            "queryString": "",
+            "queryString": "symbol=チェリー",
             "characterKey": "omiken"
           },
-          "weight": 1,
+          "special": "return",
+          "weight": 14,
           "isPriority": false,
           "criteria": null
+        },
+        {
+          "id": "6e56d2a1-aecb-4ede-8ef1-38e86c469bb3",
+          "key": "6e56d2a1-aecb-4ede-8ef1-38e86c469bb3",
+          "name": "オレンジ",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=オレンジ&spin=3",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 13,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "cc7f7b87-75b1-45fd-8fee-ba46911282e3",
+          "key": "cc7f7b87-75b1-45fd-8fee-ba46911282e3",
+          "name": "ぶどう",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=ぶどう",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 12,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "61221c2b-232b-43b7-89be-38e0a38e438e",
+          "key": "61221c2b-232b-43b7-89be-38e0a38e438e",
+          "name": "スイカ",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=スイカ",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 11,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "9fc31ae7-c126-43a5-9cee-d71e45381044",
+          "key": "9fc31ae7-c126-43a5-9cee-d71e45381044",
+          "name": "ベル",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=ベル",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 10,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "578f635c-2c1d-4679-8558-978744954e2e",
+          "key": "578f635c-2c1d-4679-8558-978744954e2e",
+          "name": "ハット",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=ハット",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 9,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "edcfc378-0699-4510-91b6-f0c41f158bae",
+          "key": "edcfc378-0699-4510-91b6-f0c41f158bae",
+          "name": "コイン",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=コイン",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 8,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "513281f6-ef14-490a-a89f-960bf22852e5",
+          "key": "513281f6-ef14-490a-a89f-960bf22852e5",
+          "name": "ダイヤモンド",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "symbol=ダイヤモンド",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 7,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
+          "key": "668ee6ab-64fe-4e07-b7f8-3802357488ee",
+          "name": "ボンバープレミアム(8spin固定)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "BomberSpin",
+            "queryString": "spin=8",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 0,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "all"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
         {
           "id": "1767067920080",
@@ -64,6 +269,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -72,19 +278,27 @@
               "iconKey": "default",
               "sound": "warn",
               "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+                "bubble": "<<user>>さんは10回を超えているよ。また明日遊んでね。",
+                "isToast": true
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
             "conditions": [
               "count"
             ],
+            "userName": [],
             "access": [],
+            "gift": [],
+            "syoken": [],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -99,14 +313,9 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^スロット",
           "^すろっと",
@@ -115,8 +324,7 @@
           "^ぼんばー",
           "^bomber",
           "^🎰"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -131,11 +339,14 @@
       "name": "うさぎスロット",
       "description": "3匹のうさぎがお宝ザクザク！最大枚数5000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-12-30T05:32:23.256Z",
+      "updatedAt": "2026-01-13T07:43:12.921Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "スロット",
+        "うさぎスロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -149,15 +360,102 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "gameScripts",
           "postActions": [],
           "gameScripts": {
             "scriptId": "DwarfBomb",
             "queryString": "",
             "characterKey": "omiken"
           },
+          "special": "return",
+          "weight": 6,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "253fa247-3d4a-445c-b417-568c65d34118",
+          "key": "253fa247-3d4a-445c-b417-568c65d34118",
+          "name": "うさぎ(ツルハシ持参)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "DwarfBomb",
+            "queryString": "mode=ツルハシ",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "5f83ff87-2871-4952-a764-70de7674b926",
+          "key": "5f83ff87-2871-4952-a764-70de7674b926",
+          "name": "うさぎ(TNT持参)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "DwarfBomb",
+            "queryString": "mode=TNT",
+            "characterKey": "omiken"
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
+        },
+        {
+          "id": "f0216330-e6e9-4d70-a86f-e55cad3af0d8",
+          "key": "f0216330-e6e9-4d70-a86f-e55cad3af0d8",
+          "name": "うさぎプレミアム(ツルハシTNT持参)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "DwarfBomb",
+            "queryString": "mode=ツルハシTNT",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "all"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
         {
           "id": "1767072548549",
@@ -168,6 +466,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -176,19 +475,27 @@
               "iconKey": "default",
               "sound": "warn",
               "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+                "bubble": "<<user>>さんは10回を超えているよ。また明日遊んでね。",
+                "isToast": true
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
             "conditions": [
               "count"
             ],
+            "userName": [],
             "access": [],
+            "gift": [],
+            "syoken": [],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -203,14 +510,9 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^うさぎ",
           "^ウサギ",
@@ -221,8 +523,7 @@
           "^usagi",
           "🐰",
           "🐇"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -237,11 +538,14 @@
       "name": "桜吹雪スロット",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
-      "updatedAt": "2025-12-30T05:31:06.449Z",
+      "updatedAt": "2026-01-13T07:53:43.775Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "スロット",
+        "桜吹雪スロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -255,15 +559,102 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "gameScripts",
           "postActions": [],
           "gameScripts": {
             "scriptId": "MultiplyBonanza",
             "queryString": "",
             "characterKey": "omiken"
           },
-          "weight": 1,
+          "special": "return",
+          "weight": 6,
           "isPriority": false,
           "criteria": null
+        },
+        {
+          "id": "38cfa1cb-bd01-4f63-9fe1-7a6b503836e3",
+          "key": "38cfa1cb-bd01-4f63-9fe1-7a6b503836e3",
+          "name": "桜吹雪(風神モード)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "MultiplyBonanza",
+            "queryString": "mode=風神",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1ae0f193-3ffc-458d-9188-f0faa768a35e",
+          "key": "1ae0f193-3ffc-458d-9188-f0faa768a35e",
+          "name": "桜吹雪(雷神モード)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "MultiplyBonanza",
+            "queryString": "mode=雷神",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "e7b685a8-a521-47a3-8d0f-4dc8b5e0b583",
+          "key": "e7b685a8-a521-47a3-8d0f-4dc8b5e0b583",
+          "name": "桜吹雪プレミアム(風雷神モード)",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "MultiplyBonanza",
+            "queryString": "mode=風雷神",
+            "characterKey": "omiken"
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "all"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
         {
           "id": "1767072648208",
@@ -274,6 +665,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -282,19 +674,27 @@
               "iconKey": "default",
               "sound": "warn",
               "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
+                "bubble": "<<user>>さんは10回を超えているよ。また明日遊んでね。",
+                "isToast": true
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
             "conditions": [
               "count"
             ],
+            "userName": [],
             "access": [],
+            "gift": [],
+            "syoken": [],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -309,14 +709,9 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^さくら",
           "^サクラ",
@@ -329,110 +724,7 @@
           "🌊",
           "🌸",
           "🌟"
-        ],
-        "userName": []
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "HugEmAll": {
-      "id": "mjs5xe2grraoi",
-      "key": "HugEmAll",
-      "name": "桜吹雪スロット(コピー)",
-      "description": "吹雪け、大量のコイン！最大枚数10000枚!",
-      "createdAt": "2025-12-30T05:44:28.050Z",
-      "updatedAt": "2025-12-30T07:09:55.738Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#4CAF50",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "key": "db072d7c-e4df-4ce6-8bbc-8b9ff89287a2",
-          "name": "桜吹雪スロット",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [],
-          "gameScripts": {
-            "scriptId": "HugEmAll",
-            "queryString": "",
-            "characterKey": "omiken"
-          },
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "1767072648208",
-          "key": "1767072648208",
-          "name": "回数超過",
-          "createdAt": "2025-12-30T05:30:48.208Z",
-          "updatedAt": "2025-12-30T05:30:48.208Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "warn",
-              "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは10回を超えているよ。また明日遊んでね。"
-              }
-            }
-          ],
-          "gameScripts": null,
-          "weight": 1,
-          "isPriority": true,
-          "criteria": {
-            "conditions": [
-              "count"
-            ],
-            "access": [],
-            "count": {
-              "comparison": "lowerBound",
-              "unit": "draws",
-              "value": 11
-            },
-            "comment": []
-          }
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "^ダンジョン",
-          "^だんじょん",
-          "^洞窟",
-          "^dungeon",
-          ""
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -599,18 +891,16 @@
         "MultiplyBonanza"
       ],
       "title": "💣️Bonber Slot Ranking💎",
+      "color": "abyss",
       "limit": 5,
       "sortOrder": "high",
-      "color": "abyss"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -621,29 +911,33 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
-      "actionSets": "basic",
-      "placeholders": "basic",
-      "characters": "pro"
+      "timers": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
     },
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter"
     ],
     "gameScripts": [
+      "GouseiSuika",
       "BomberSpin",
       "DwarfBomb",
-      "MultiplyBonanza"
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
     ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "luxury"
   }
 }

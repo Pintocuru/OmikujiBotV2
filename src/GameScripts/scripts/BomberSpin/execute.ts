@@ -17,10 +17,9 @@ export class ExecuteScript implements ScriptClass {
   }
 
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
-    const params = this.parseParams(queryString)
+    const { symbol, spin } = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
-
-    const gameResult = playSlot(user.userName, params.symbol)
+    const gameResult = playSlot(user.userName, symbol, spin)
 
     const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 
@@ -41,8 +40,8 @@ export class ExecuteScript implements ScriptClass {
   }
 
   sampleRun(queryString: string): string {
-    const { symbol } = this.parseParams(queryString)
-    const gameResult = playSlot('[ユーザー名]', symbol)
+    const { symbol, spin } = this.parseParams(queryString)
+    const gameResult = playSlot('[ユーザー名]', symbol, spin)
     return gameResult.message
   }
 
@@ -52,7 +51,10 @@ export class ExecuteScript implements ScriptClass {
 
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
-    return GameParamsSchema.parse(paramsObject)
+    return GameParamsSchema.parse({
+      symbol: paramsObject.symbol ?? '',
+      spin: Number(paramsObject.spin),
+    })
   }
 
   /**
