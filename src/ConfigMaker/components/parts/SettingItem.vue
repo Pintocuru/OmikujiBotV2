@@ -29,13 +29,13 @@
   import { isDev } from '@/types/'
   import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
   import SettingItem from '@shared/components/parts/SettingItem.vue'
-  import type { VariantType } from '@shared/components/parts/ItemVariantTypes'
+  import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = withDefaults(
     defineProps<{
       label: string
       description?: string
-      variant?: VariantType
+      variant?: BaseVariant
       showReset?: boolean
       showWarning?: boolean
       devMemo?: string

@@ -50,10 +50,7 @@ export function useCommentBubblePersistent() {
   const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, charactersMap)
 
   // 感情状態管理
-  const { emotionStates, getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(
-    displayedComments,
-    charactersMap
-  )
+  const { getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(displayedComments, charactersMap)
 
   // 設定取得
   const bubble = computed(() => appStore.data.components.bubble || {})
@@ -77,7 +74,6 @@ export function useCommentBubblePersistent() {
     latestCommenterKey,
 
     // 感情状態
-    emotionStates,
     getCharacterLayers,
 
     // コメント関連

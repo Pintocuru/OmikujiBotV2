@@ -9,7 +9,7 @@
     >
       <div class="relative flex flex-col items-center">
         <!-- コメント吹き出し -->
-        <div class="absolute bottom-full mb-32 left-1/2 -translate-x-1/2 min-w-[320px] max-w-[90vw]">
+        <div class="absolute bottom-full -translate-y-36 left-1/2 -translate-x-1/2 min-w-[320px]">
           <CommentDisplay
             :displayed-comments="getCharacterComments(character.key)"
             :remove-comment="(id) => removeCommentWithEmotionUpdate(id, character.key)"

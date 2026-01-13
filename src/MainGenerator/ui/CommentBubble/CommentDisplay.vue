@@ -3,7 +3,7 @@
   <div
     v-for="(item, index) in visibleComments"
     :key="item.message.id"
-    class="absolute w-full"
+    class="absolute left-0 right-0"
     :style="{
       top: `${index * 40}px`,
       zIndex: 20 - index,

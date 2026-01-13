@@ -28,7 +28,6 @@
           <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
             {{ getScriptName(scriptKey) }}
           </option>
-          <option v-if="isGod" value="godMode">三 GOD MODE 三</option>
         </select>
       </SettingItem>
 
