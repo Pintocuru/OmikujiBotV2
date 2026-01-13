@@ -1,7 +1,6 @@
 // src\MainGenerator\ui\OmikujiBot\composables\useBotDisplay.ts
-// TODO:toastを削除し、isToastに統一したい
 import { ref, computed, Ref } from 'vue'
-import { BotMessageType } from '@/types/'
+import { BotMessageCommentType } from '@/types/'
 
 const DISPLAY_CONFIG = {
   INTERVAL: 250,
@@ -11,22 +10,13 @@ const DISPLAY_CONFIG = {
   LEAVE_ANIMATION_DELAY: 200,
 } as const
 
-export type DisplayMode = 'comment' | 'toast'
-
-// 表示用の拡張BotMessage型
-export type DisplayBotMessage = BotMessageType & {
-  visible: boolean
-  hideTimeout?: number
-}
-
 // 共通の基底composable
-export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayMode) => {
-  const displayedComments = ref<DisplayBotMessage[]>([])
+export const useBotDisplay = (botMessages: Ref<BotMessageCommentType[]>) => {
+  const displayedComments = ref<BotMessageCommentType[]>([])
   const animationFrameId = ref<number>()
 
   const comments = computed(() =>
     botMessages.value.filter((m) => {
-      if (mode === 'toast') return !!m.bubble?.message
       return !!m.bubble?.message
     })
   )
@@ -37,8 +27,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayM
     if (index > -1) {
       const comment = displayedComments.value[index]
       // hideTimeoutをクリア
-      if (comment.hideTimeout) {
-        clearTimeout(comment.hideTimeout)
+      if (comment.display?.hideTimeout) {
+        clearTimeout(comment.display?.hideTimeout)
       }
       displayedComments.value.splice(index, 1)
     }
@@ -47,8 +37,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayM
   // コメントのvisibleをfalseにしてLeaveアニメーションを開始
   const hideComment = (messageId: string) => {
     const comment = displayedComments.value.find((item) => item.id === messageId)
-    if (comment) {
-      comment.visible = false
+    if (comment && comment.display) {
+      comment.display.visible = false
     }
   }
 
@@ -71,27 +61,27 @@ export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayM
         if (nextComment.bubble?.displaySeconds !== undefined) {
           totalLifeTime = nextComment.bubble?.displaySeconds * 1000
         } else {
-          const commentLength =
-            mode === 'comment' ? (nextComment.bubble?.message?.length ?? 0) : (nextComment.bubble?.message?.length ?? 0)
+          const commentLength = nextComment.bubble?.message?.length ?? 0
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }
 
         // DisplayBotMessageとして作成
-        const displayMessage: DisplayBotMessage = {
+        const displayMessage: BotMessageCommentType = {
           ...nextComment,
-          visible: true,
+          display: { visible: true },
         }
 
         // Enterアニメーション用に少し遅延してvisibleをtrueに
         setTimeout(() => {
-          displayMessage.visible = true
+          if (displayMessage.display) displayMessage.display.visible = true
         }, 50)
 
         // 指定時間後にLeaveアニメーションを開始
-        displayMessage.hideTimeout = setTimeout(() => {
-          hideComment(nextComment.id)
-        }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
+        if (displayMessage.display)
+          displayMessage.display.hideTimeout = setTimeout(() => {
+            hideComment(nextComment.id)
+          }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
 
         displayedComments.value.unshift(displayMessage)
         processedMessageIds.add(nextComment.id)
@@ -108,8 +98,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayM
       processedMessageIds.clear()
       // 既存のタイムアウトをすべてクリア
       displayedComments.value.forEach((comment) => {
-        if (comment.hideTimeout) {
-          clearTimeout(comment.hideTimeout)
+        if (comment.display?.hideTimeout) {
+          clearTimeout(comment.display?.hideTimeout)
         }
       })
       displayedComments.value = []
@@ -122,8 +112,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessageType[]>, mode: DisplayM
       }
       // すべてのタイムアウトをクリア
       displayedComments.value.forEach((comment) => {
-        if (comment.hideTimeout) {
-          clearTimeout(comment.hideTimeout)
+        if (comment.display?.hideTimeout) {
+          clearTimeout(comment.display?.hideTimeout)
         }
       })
       processedMessageIds.clear()

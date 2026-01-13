@@ -1,6 +1,6 @@
 // src/composables/useDummyBotMessages.ts
 import { RankingMessageSchema, SettingsRankingType } from '@/types/'
-import { BotMessageType, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageRankingSchema, BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
 const candidateNames = [
@@ -87,10 +87,10 @@ export const generateDummyUserNames = (count: number): UserVisitRecord[] => {
 }
 
 // ランダムな BotMessage を生成
-export const generateDummyMessages = (settings: SettingsRankingType): BotMessageType[] => {
+export const generateDummyMessages = (settings: SettingsRankingType): BotMessageRankingType[] => {
   const count = settings.limit || 10
   const usedNames = new Set<string>()
-  const dummyMessages: BotMessageType[] = []
+  const dummyMessages: BotMessageRankingType[] = []
 
   for (let i = 0; i < count; i++) {
     let listName: string
@@ -110,8 +110,7 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
     })
 
     dummyMessages.push(
-      BotMessageSchema.parse({
-        type: 'rankingOnly',
+      BotMessageRankingSchema.parse({
         ranking,
       })
     )

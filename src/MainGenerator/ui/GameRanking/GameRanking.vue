@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageSchema, isDev } from '@/types/'
+  import { BotMessageRankingSchema, isDev } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from '@/common/ui/GameRanking/GameRankingManager.vue'
 
@@ -32,8 +32,7 @@
   const devScoreMessages = computed(() => {
     if (!isDev || !devHoverActive.value) return []
     return [
-      BotMessageSchema.parse({
-        type: 'rankingOnly',
+      BotMessageRankingSchema.parse({
         ranking: {
           listName: 'テストユーザー',
           scoreText: '12,345',
@@ -50,15 +49,13 @@
   // ランキング対象のメッセージをフィルタリング
   const filteredMessages = computed(() => {
     const keys = rankingSettings.value?.targetScriptKeys
-    const messages = botMessages.value
+    if (!keys) return []
 
-    const base =
-      !messages || !keys
-        ? []
-        : messages.filter((msg) => {
-            const r = msg.ranking
-            return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
-          })
+    const base = botMessages.value.filter((msg) => {
+      if (msg.type !== 'ranking') return false
+      const r = msg.ranking
+      return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
+    })
 
     return isDev ? [...base, ...devScoreMessages.value] : base
   })

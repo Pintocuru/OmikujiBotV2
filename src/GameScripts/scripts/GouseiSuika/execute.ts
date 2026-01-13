@@ -5,7 +5,7 @@ import { GachaGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { prepareUserInfo, buildBotMessage } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo, buildBotMessages } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GouseiSuika'
 
@@ -25,7 +25,7 @@ export class ExecuteScript implements ScriptClass {
 
     const logResult = omiken ? this.recordRanking(omiken, gameResult.points, characterKey) : null
 
-    const botMessage = buildBotMessage({
+    const botMessages = buildBotMessages({
       user,
       characterKey,
       bubbleText,
@@ -37,7 +37,7 @@ export class ExecuteScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(gameResult, logResult, characterKey, bubbleText),
-      messages: [botMessage],
+      messages: botMessages,
     }
   }
 

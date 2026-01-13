@@ -34,6 +34,7 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
+  import { BotMessageCommentType } from '@/types'
 
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
@@ -41,6 +42,7 @@
 
   // 設定の取得
   const bubble = computed(() => appStore.data.components.bubble || {})
+  const isToastEnabled = computed(() => appStore.data.featureUsage.components.includes('toast'))
 
   // 0番地のコメント取得
   const zeroIndexMessages = computed(() => {
@@ -49,15 +51,18 @@
     // centerが空の場合は何も表示しない
     if (allowKeys.length === 0) return []
 
-    return botMessages.value.filter((message) => {
+    return botMessages.value.filter((message): message is BotMessageCommentType => {
+      if (message.type !== 'comment') return false
+      if (isToastEnabled.value && message.bubble?.isToast) return false
+
       // null の場合はキャラクター非表示モードなのでそのまま表示させる
-      if (!message.bubble || message.bubble?.characterKey === null) return true
+      if (message.bubble?.characterKey === null) return true
       return allowKeys.includes(message.bubble?.characterKey)
     })
   })
 
   // 既存のuseBotDisplayはそのまま使用
-  const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages, 'comment')
+  const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages)
 
   onMounted(() => start())
   onUnmounted(() => stop())

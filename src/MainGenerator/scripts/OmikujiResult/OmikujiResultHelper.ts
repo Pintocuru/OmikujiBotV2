@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultHelper.ts
-import { PostActionMessageType, PostActionType, RankingMessageSchema } from '@/types'
+import { PostActionMessageType, PostActionType, RankingMessageSchema, RankingMessageType } from '@/types'
 
 /**
  * 変数プレースホルダー処理結果
@@ -37,7 +37,7 @@ export type ProcessedAction = ProcessedMessageAction | Exclude<PostActionType, P
  */
 export interface MessageContent {
   bubble: string | null
-  ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined
+  ranking: RankingMessageType | undefined
 }
 
 /**

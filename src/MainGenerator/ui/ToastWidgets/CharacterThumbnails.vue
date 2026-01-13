@@ -15,7 +15,13 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import { characterEmotions, CharacterEmotionType, CharacterType, BotMessageSchema, BotMessageType } from '@/types/'
+  import {
+    characterEmotions,
+    CharacterEmotionType,
+    CharacterType,
+    BotMessageCommentSchema,
+    BotMessageCommentType,
+  } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
@@ -62,8 +68,7 @@
       const shouldChangeExpression = Math.random() < 0.5
       const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
 
-      const postAction: BotMessageType = BotMessageSchema.parse({
-        type: 'system',
+      const postAction: BotMessageCommentType = BotMessageCommentSchema.parse({
         bubble: {
           name: isCharacter ? character.name : null,
           message: !isRightClick

@@ -5,7 +5,7 @@ import { playSlot } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { prepareUserInfo, buildBotMessage } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo, buildBotMessages } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'BomberSpin'
 
@@ -23,7 +23,7 @@ export class ExecuteScript implements ScriptClass {
 
     const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 
-    const botMessage = buildBotMessage({
+    const botMessages = buildBotMessages({
       user,
       characterKey,
       bubbleText: gameResult.message,
@@ -35,7 +35,7 @@ export class ExecuteScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(gameResult, logResult, characterKey),
-      messages: [botMessage],
+      messages: botMessages,
     }
   }
 

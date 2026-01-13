@@ -58,7 +58,7 @@ export class BotMessageGenerator {
 
     // bubbleテキストがある場合
     if (hasBubbleText) {
-      const message = this.messageFactory.createBotMessage({
+      const newMessages = this.messageFactory.createBotMessage({
         action,
         delaySeconds,
         isToast,
@@ -66,7 +66,7 @@ export class BotMessageGenerator {
         ranking: content.ranking,
         omiken,
       })
-      messages.push(message)
+      messages.push(...newMessages)
 
       // toastでない場合のみRPGボイスを再生
       if (!isToast) {

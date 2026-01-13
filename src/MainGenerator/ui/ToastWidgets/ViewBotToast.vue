@@ -2,8 +2,9 @@
 <template>
   <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
     <div v-for="message in filteredToastComments.slice().reverse()" :key="message.id">
+      <!-- ! を使用… -->
       <MotionWrapper
-        v-model:visible="message.visible"
+        v-model:visible="message.display!.visible"
         :motion="!toastSettings.showToastsOnRight ? 'slideRight' : 'slideLeft'"
         :leave-motion="!toastSettings.showToastsOnRight ? 'slideLeft' : 'slideRight'"
         :auto-hide="false"
@@ -28,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, ComputedRef, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
   import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
@@ -36,7 +37,7 @@
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { CharacterColorScheme } from '@/types'
+  import { BotMessageCommentType, CharacterColorScheme } from '@/types'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
@@ -47,8 +48,15 @@
   // ライセンス状態で閲覧できないなら表示させない
   const { isCharacter } = useVisibilityAccess()
 
+  const toastMessages: ComputedRef<BotMessageCommentType[]> = computed(() => {
+    return botMessages.value.filter((message): message is BotMessageCommentType => {
+      if (message.type !== 'comment') return false
+      return message.bubble?.isToast
+    })
+  })
+
   // コメント表示ロジック
-  const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(botMessages, 'toast')
+  const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(toastMessages)
 
   const filteredToastComments = computed(() =>
     displayedComments.value.filter((message) => message.bubble?.isToast !== false)

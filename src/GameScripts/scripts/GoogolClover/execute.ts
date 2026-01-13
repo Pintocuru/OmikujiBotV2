@@ -1,12 +1,13 @@
 // src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
-import { BotMessageSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { GameContext, playSlot } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserState } from './sub/types'
+import { buildBotMessages, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'
@@ -27,6 +28,7 @@ export class ExecuteScript implements ScriptClass {
    */
   run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
     const {} = this.parseParams(queryString)
+    const user = prepareUserInfo(omiken)
 
     const context: GameContext = {
       userId: omiken?.userId ?? UNKNOWN_NAME,
@@ -36,15 +38,28 @@ export class ExecuteScript implements ScriptClass {
     }
 
     // ゲームの実行
+    // ! メッセージの生成に失敗してる(責務が重すぎる)作り直し
     const gameResult = playSlot(this.userStates, context)
 
+    /**
+    const botMessages = buildBotMessages({
+      user,
+      characterKey,
+      bubbleText: gameResult.message,
+      scriptKey: RANKING_KEY,
+      score: gameResult.payout,
+      symbol: gameResult.symbol,
+      logResult,
+    })
+ */
     // PostActionとBotMessageに分離
+    // TODO:buildBotMessages を適用すること
     const postActions = this.buildPostActions(gameResult.botMessage, characterKey)
-    const botMessages = this.buildBotMessages(gameResult.botMessage, characterKey, omiken)
+    // const botMessages = this.buildBotMessages(gameResult.botMessage, characterKey, omiken)
 
     return {
       actions: postActions,
-      messages: botMessages,
+      messages: [],
     }
   }
 
@@ -111,30 +126,6 @@ export class ExecuteScript implements ScriptClass {
     ]
 
     return [...common, ...(botMessage.ranking.scoreValue ? successActions : failActions), messageAction]
-  }
-
-  /**
-   * BotMessage の構築（user, ranking を含む）
-   */
-  private buildBotMessages(
-    botMessage: ReturnType<typeof playSlot>['botMessage'],
-    characterKey: string,
-    omiken?: OmikenCommentType
-  ): BotMessageType[] {
-    return [
-      BotMessageSchema.parse({
-        delaySeconds: 3.5,
-        type: 'comment' as const,
-        bubble: {
-          name: botMessage.user.userName,
-          message: botMessage.bubble,
-          isToast: false,
-          characterKey,
-        },
-        user: omiken ? UserNameSchema.parse(omiken) : undefined,
-        ranking: botMessage.ranking,
-      }),
-    ]
   }
 }
 

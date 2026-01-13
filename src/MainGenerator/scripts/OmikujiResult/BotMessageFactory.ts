@@ -1,6 +1,11 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageFactory.ts
-import { BotMessageType, BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
-import { CharacterColorType, CharacterType, OmikujiDataType, RankingMessageSchema } from '@/types/OmikujiData/'
+import {
+  BotMessageCommentSchema,
+  BotMessageRankingSchema,
+  BotMessageType,
+  RankingMessageType,
+} from '@/types/MainGenerator/BotMessageSchema'
+import { CharacterColorType, CharacterType, OmikujiDataType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
@@ -38,14 +43,18 @@ export class BotMessageFactory {
     delaySeconds: number
     isToast: boolean
     messageText: string
-    ranking: ReturnType<typeof RankingMessageSchema.parse> | undefined
+    ranking: RankingMessageType | undefined // z.inferで見やすく
     omiken?: OmikenCommentType
-  }): BotMessageType {
+  }): BotMessageType[] {
+    // 戻り値を配列に変更
+    const messages: BotMessageType[] = []
+
     const character = this.getCharacter(action.characterKey)
     const isChar = this.isCharacterMode && character
     const colorType = isToast ? 'toast' : 'bubble'
     const color = isChar ? character.color : this.defaultColors[colorType]
 
+    // 1. 吹き出しメッセージ (comment) の作成
     const bubble = {
       name: isChar ? character.displayName : '',
       message: messageText,
@@ -55,21 +64,34 @@ export class BotMessageFactory {
       color,
     }
 
-    if (omiken) {
-      return BotMessageSchema.parse({
-        type: 'comment',
-        delaySeconds,
-        user: UserNameSchema.parse(omiken),
-        bubble,
-        ranking,
-      })
-    } else {
-      return BotMessageSchema.parse({
-        type: 'system',
-        delaySeconds,
-        bubble,
-      })
+    const commentData: any = {
+      type: 'comment',
+      delaySeconds,
+      bubble,
+      display: { visible: true },
     }
+
+    if (omiken) {
+      commentData.user = UserNameSchema.parse(omiken)
+    }
+
+    messages.push(BotMessageCommentSchema.parse(commentData))
+
+    // 2. ランキングメッセージ (ranking) の作成
+    // rankingデータが存在する場合のみ、別のメッセージとして切り出す
+    if (ranking) {
+      messages.push(
+        BotMessageRankingSchema.parse({
+          type: 'ranking',
+          // ランキングは吹き出しより少し遅らせる（演出上の調整）
+          delaySeconds: delaySeconds + 0.1,
+          ranking,
+          user: omiken ? UserNameSchema.parse(omiken) : undefined,
+        })
+      )
+    }
+
+    return messages
   }
 
   /**
@@ -77,16 +99,15 @@ export class BotMessageFactory {
    */
   createRankingOnlyMessage(
     delaySeconds: number,
-    ranking: ReturnType<typeof RankingMessageSchema.parse>,
+    ranking: RankingMessageType,
     omiken?: OmikenCommentType
   ): BotMessageType {
     if (!ranking) {
       throw new Error('ranking is required for rankingOnly message type')
     }
 
-    return BotMessageSchema.parse({
+    return BotMessageRankingSchema.parse({
       delaySeconds,
-      type: 'rankingOnly',
       ranking,
       user: omiken ? UserNameSchema.parse(omiken) : undefined,
     })

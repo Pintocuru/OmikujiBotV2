@@ -83,8 +83,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsToastSchema } from '@/types/'
-  import { BotMessageSchema } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageCommentSchema, SettingsToastSchema } from '@/types/'
   import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
@@ -140,13 +139,10 @@
         const charIndex = i < characterArray.value.length ? i : 0
         const character = characterArray.value[charIndex]
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
-        return BotMessageSchema.parse({
-          type: 'system',
+        return BotMessageCommentSchema.parse({
           bubble: {
             message: messageText,
-            toast: messageText, // TODO:将来消す
             isToast: true,
-
             characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
             color: isCharacter.value ? character.color : toastSettings.value.defaultColor,
           },

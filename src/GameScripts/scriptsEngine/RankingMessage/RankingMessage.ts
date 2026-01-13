@@ -1,11 +1,5 @@
 // src/GameScripts/scriptsEngine/RankingMessage/RankingMessage.ts
-import {
-  BotMessageSchema,
-  BotMessageType,
-  PostActionMessageSchema,
-  PostActionType,
-  RankingMessageSchema,
-} from '@/types/'
+import { BotMessageCommentSchema, BotMessageRankingSchema, BotMessageType } from '@/types/'
 import { LogRankScript } from '../LogRank/execute'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -27,38 +21,6 @@ export interface BuildBotMessageParams {
 }
 
 /**
- * ランキングメッセージを構築（既存の関数 - 後方互換性のために残す）
- * @deprecated 新しいコードでは buildBotMessage を使用してください
- */
-export function buildRankingMessage(params: BuildBotMessageParams): PostActionType {
-  const { user, logResult } = params
-  const stats = logResult?.currentUserStats
-  const currentRecord = logResult?.currentRecord
-
-  const ranking = logResult
-    ? RankingMessageSchema.parse({
-        scriptKey: params.scriptKey,
-        listName: stats?.userName,
-        scoreText: String(params.score),
-        scoreValue: currentRecord?.score,
-        symbol: params.symbol,
-        isRank: !logResult.isOverLimit,
-      })
-    : undefined
-
-  return PostActionMessageSchema.parse({
-    delaySeconds: 3.5,
-    characterKey: params.characterKey,
-    message: {
-      bubble: params.bubbleText,
-      user,
-      ranking,
-    },
-    sound: 'decision',
-  })
-}
-
-/**
  * ユーザー情報を準備（omikenの有無を吸収）
  */
 export function prepareUserInfo(omiken?: OmikenCommentType): UserNameType {
@@ -70,36 +32,51 @@ export function prepareUserInfo(omiken?: OmikenCommentType): UserNameType {
 }
 /**
  * BotMessageを構築する共通関数
+ * 吹き出し(comment)とランキング(ranking)を個別のメッセージとして出力する
  */
-export function buildBotMessage(params: BuildBotMessageParams): BotMessageType {
+export function buildBotMessages(params: BuildBotMessageParams): BotMessageType[] {
   const { user, bubbleText, scriptKey, score, symbol, delaySeconds = 3.5, logResult } = params
+  const messages: BotMessageType[] = []
 
-  const stats = logResult?.currentUserStats
-  const currentRecord = logResult?.currentRecord
+  // 1. 吹き出しメッセージ (comment) の構築
+  const commentMessage = BotMessageCommentSchema.parse({
+    type: 'comment',
+    delaySeconds,
+    bubble: {
+      name: user.userName,
+      message: bubbleText,
+      isToast: false,
+      characterKey: params.characterKey,
+      color: {}, // TODO: キャラクター依存
+    },
+    // ここで display 状態の初期値を設定可能
+    display: { visible: true },
+  })
+  messages.push(commentMessage)
 
-  const ranking = logResult
-    ? {
+  // 2. ランキングメッセージ (ranking) の構築
+  // logResult がある場合のみ生成する
+  if (logResult) {
+    const stats = logResult.currentUserStats
+    const currentRecord = logResult.currentRecord
+
+    const rankingMessage = BotMessageRankingSchema.parse({
+      type: 'ranking',
+      // ランキング表示を少し遅らせる場合は delaySeconds に加算するなどの調整が可能
+      delaySeconds: delaySeconds + 0.5,
+      user,
+      ranking: {
         scriptKey,
         listName: stats?.userName ?? user.userName,
         scoreText: String(score),
         scoreValue: currentRecord?.score ?? score,
         symbol,
         isRank: !logResult.isOverLimit,
-      }
-    : undefined
+        isUniqueUser: true, // 必要に応じて判定
+      },
+    })
+    messages.push(rankingMessage)
+  }
 
-  return BotMessageSchema.parse({
-    delaySeconds,
-    type: 'comment',
-    bubble: {
-      name: user.userName,
-      message: bubbleText,
-      isToast: false,
-      characterKey: params.characterKey,
-      // TODO:colorはキャラクターに依存
-      color: {},
-    },
-    user,
-    ranking,
-  })
+  return messages
 }

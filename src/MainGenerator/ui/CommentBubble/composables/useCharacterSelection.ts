@@ -1,7 +1,7 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
 import { computed, type Ref } from 'vue'
 import type { BotMessageType, ShowCharacters, CharacterType } from '@/types/'
-import { DisplayBotMessage } from './useBotDisplay'
+import { BotMessageCommentType } from './useBotDisplay'
 
 /**
  * キャラクター選択ロジックを集約
@@ -9,7 +9,7 @@ import { DisplayBotMessage } from './useBotDisplay'
  * - 表示するキャラクターリストを生成
  */
 export function useCharacterSelection(
-  displayedComments: Ref<DisplayBotMessage[]>,
+  displayedComments: Ref<BotMessageCommentType[]>,
   showCharacters: Ref<ShowCharacters>,
   charactersMap: Ref<Record<string, CharacterType>>
 ) {

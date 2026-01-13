@@ -9,8 +9,9 @@
       zIndex: 20 - index,
     }"
   >
+    <!-- ! を使用… -->
     <MotionWrapper
-      v-model:visible="item.message.visible"
+      v-model:visible="item.message.display!.visible"
       :motion="enterMotion"
       :auto-hide="false"
       @after-leave="() => removeComment(item.message.id)"
@@ -35,15 +36,14 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
-  import { DisplayBotMessage } from './composables/useBotDisplay'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { CharacterColorScheme } from '@/types'
+  import { BotMessageCommentType, CharacterColorScheme } from '@/types'
 
   const props = withDefaults(
     defineProps<{
-      displayedComments: DisplayBotMessage[]
+      displayedComments: BotMessageCommentType[]
       removeComment: (id: string) => void
       enterMotion?: MotionType
       leaveMotion?: MotionType
@@ -60,7 +60,7 @@
   const appStore = useAppStore()
 
   // トースト機能がOFFなら、こちらで表示する
-  const displayMessage = (bot: DisplayBotMessage): string | null => {
+  const displayMessage = (bot: BotMessageCommentType): string | null => {
     const bubble = bot.bubble
     if (!bubble) return null
 
@@ -78,6 +78,6 @@
         const text = displayMessage(message)
         return text ? { message, text } : null
       })
-      .filter((v): v is { message: DisplayBotMessage; text: string } => v !== null)
+      .filter((v): v is { message: BotMessageCommentType; text: string } => v !== null)
   )
 </script>

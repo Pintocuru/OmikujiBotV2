@@ -5,7 +5,7 @@ import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { prepareUserInfo, buildBotMessage } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo, buildBotMessages } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'HugEmAll'
 
@@ -27,7 +27,7 @@ export class ExecuteScript implements ScriptClass {
     const logResult = omiken ? this.recordRanking(omiken, gameResult.result.payout, characterKey) : null
 
     // BotMessage の構築
-    const botMessage = buildBotMessage({
+    const botMessages = buildBotMessages({
       user,
       characterKey,
       bubbleText: gameResult.message,
@@ -39,7 +39,7 @@ export class ExecuteScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(logResult, characterKey, gameResult.message),
-      messages: [botMessage],
+      messages: botMessages,
     }
   }
 

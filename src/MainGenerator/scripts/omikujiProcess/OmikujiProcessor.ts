@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor.ts
-import { OmikujiSetType, OmikujiItemType, ActionSetSchema, ActionSetType } from '@/types/'
-import { BotMessageSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { OmikujiSetType, ActionSetType } from '@/types/'
+import { BotMessageEmptySchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { DefaultPlaceholderService } from './DefaultPlaceholderService'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
@@ -34,7 +34,7 @@ export class OmikujiProcessor {
     if (actionItem.type === 'special') {
       // return は終了させる
       if (actionItem.special === 'return') {
-        return [BotMessageSchema.parse({ type: 'null' })]
+        return [BotMessageEmptySchema.parse({})]
       }
       // continue は空を返す
       if (actionItem.special === 'continue') {

@@ -2,7 +2,6 @@
 
 // 各型定義の公開
 export * from './ActionSet'
-export * from './ActionMessage'
 export * from './CategoryType'
 export * from './CharacterSchema'
 export * from './ComponentsSchema'

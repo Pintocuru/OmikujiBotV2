@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
-import { BotMessageType, BotMessageSchema, CommentRuleType } from '@/types/'
+import { BotMessageCommentSchema, BotMessageType, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
@@ -47,8 +47,7 @@ export function createBotMessages(message: string, isToast: boolean = false): Bo
   const { defaultToastColor } = useCharacterManager()
   const firstCharacter = useCharacterManager().getFirstCharacter()
 
-  const botMessageData: BotMessageType = BotMessageSchema.parse({
-    type: 'system',
+  const botMessageData: BotMessageType = BotMessageCommentSchema.parse({
     bubble: {
       name: firstCharacter?.name,
       message,
@@ -58,7 +57,7 @@ export function createBotMessages(message: string, isToast: boolean = false): Bo
     },
   })
 
-  return [BotMessageSchema.parse(botMessageData)]
+  return [botMessageData]
 }
 
 /**
