@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { generateJsContent, generateJsonContent } from './generateContent'
-import Swal from 'sweetalert2'
+import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 type ExportType = 'config' | 'template'
 
@@ -37,7 +37,7 @@ export const useConfigExport = () => {
       generateContent: generateJsonContent,
       successMessage: {
         title: 'テンプレートファイルのダウンロード完了',
-        description: 'ダウンロードしたファイルを保存し、他のプロジェクトでご利用ください。',
+        description: 'ダウンロードしたファイルを保存し、他のおみくじBOTでご利用ください。',
       },
     },
   }
@@ -74,8 +74,7 @@ export const useConfigExport = () => {
       // OmikujiDataをstringで持ってくる
       const configData = omikujiStore.exportData()
       if (!configData) {
-        await Swal.fire({
-          icon: 'error',
+        await swalModal.error({
           title: '設定データに問題があります',
           text: 'エラーを修正してから再度お試しください。',
         })
@@ -86,15 +85,12 @@ export const useConfigExport = () => {
       const success = downloadFile(content, config.filename, config.contentType)
 
       if (success) {
-        await Swal.fire({
-          icon: 'success',
+        swalModal.success({
           title: config.successMessage.title,
           text: config.successMessage.description,
-          confirmButtonText: 'OK',
         })
       } else {
-        await Swal.fire({
-          icon: 'error',
+        await swalModal.error({
           title: `${type === 'config' ? '設定' : 'テンプレート'}ファイルのダウンロードに失敗しました`,
           text: 'もう一度お試しください。',
         })
@@ -103,8 +99,7 @@ export const useConfigExport = () => {
       return success
     } catch (error) {
       console.error(`${type} export error:`, error)
-      await Swal.fire({
-        icon: 'error',
+      await swalModal.error({
         title: `${type === 'config' ? '設定' : 'テンプレート'}ファイルの出力中にエラーが発生しました`,
         text: '詳細はコンソールをご確認ください。',
       })

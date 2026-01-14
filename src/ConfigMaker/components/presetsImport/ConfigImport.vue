@@ -23,7 +23,7 @@
   import { useImportManager } from './composables/useImportManager'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
-  import Swal from 'sweetalert2'
+  import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   const { isPro } = useSettingMode()
   const importManager = useImportManager()
@@ -37,14 +37,12 @@
 
     if (!result.success) {
       if (result.error === 'invalid-metadata') {
-        await Swal.fire({
-          icon: 'error',
+        await swalModal.error({
           title: '無効なファイル',
           text: 'このファイルはおみくじBOTのデータではありません。正しいJSONファイルを選択してください。',
         })
       } else {
-        await Swal.fire({
-          icon: 'error',
+        await swalModal.error({
           title: '読み込みエラー',
           text: result.error || '不明なエラーが発生しました',
         })

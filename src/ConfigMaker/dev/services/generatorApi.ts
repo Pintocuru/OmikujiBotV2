@@ -8,9 +8,9 @@ class GeneratorApiService extends BaseApiClient {
   /**
    * Generatorファイルを読み込み（存在しない場合は null を返す）
    */
-  async loadGeneratorConfig(): Promise<any | null> {
+  async loadGeneratorConfig(id?: string): Promise<any | null> {
     try {
-      const fileName = this.getGeneratorFileName()
+      const fileName = this.getGeneratorFileName(id)
       const response = await this.get('load-generator', { fileName })
 
       if (response.code === 404) return null
@@ -38,9 +38,9 @@ class GeneratorApiService extends BaseApiClient {
   /**
    * meta.id からユニークなファイル名を生成する
    */
-  private getGeneratorFileName(): string | null {
-    const id = window.omikujiData?.meta.id
-    return id && id.trim() !== '' ? `${id}.json` : null
+  private getGeneratorFileName(id?: string): string | null {
+    const finalId = id ?? window.omikujiData?.meta.id
+    return finalId && finalId.trim() !== '' ? `${finalId}.json` : null
   }
 }
 

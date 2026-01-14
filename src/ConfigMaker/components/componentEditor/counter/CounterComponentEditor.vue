@@ -91,7 +91,7 @@
   import CounterPreviewManager from '@/common/ui/CounterPreview/CounterPreviewManager.vue'
   import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

@@ -1,9 +1,9 @@
 // src/configMaker/dev/stores/api/useSaveActions.ts
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@config/dev/devTypes'
 import { configApi } from '@config/dev/services/configApi'
 import { generatorApi } from '@config/dev/services/generatorApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import Swal from 'sweetalert2'
 
 export function useSaveActions(
   state: DevConfigStateType,
@@ -31,23 +31,10 @@ export function useSaveActions(
     return await handleAsyncAction(async () => {
       const configData = JSON.stringify(omikujiStore.data, null, 2)
       const res = await configApi.saveConfig(trimmedFileName, configData)
-
-      if (!res) {
-        throw new Error('設定の保存に失敗しました')
-      }
+      if (!res) throw new Error('設定の保存に失敗しました')
 
       await fetchFileList()
-
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '保存完了',
-        text: `設定を "${trimmedFileName}" として保存しました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: `設定を "${trimmedFileName}" として保存しました` })
 
       omikujiStore.resetChangeState()
       state.isServerConnected.value = true
@@ -58,13 +45,11 @@ export function useSaveActions(
 
   // ジェネレーターに保存
   const saveToGenerator = async () => {
-    const result = await Swal.fire({
+    const result = await swalModal.confirmDelete({
       icon: 'info',
       title: 'ジェネレーターに保存',
       text: '現在の設定をジェネレーター用として保存しますか？',
-      showCancelButton: true,
       confirmButtonText: '保存',
-      cancelButtonText: 'キャンセル',
     })
 
     if (!result.isConfirmed) return
@@ -78,17 +63,7 @@ export function useSaveActions(
       omikujiStore.resetChangeState() // 変更リセット
 
       // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '保存完了',
-        text: 'ジェネレーター用設定を保存しました',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
-
+      swalToast.success({ title: `ジェネレーター用設定を保存しました` })
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
@@ -98,13 +73,10 @@ export function useSaveActions(
   const overwriteConfig = async (fileName: string) => {
     const displayName = fileName.replace('.json', '')
 
-    const result = await Swal.fire({
-      icon: 'warning',
+    const result = await swalModal.confirmDelete({
       title: '上書き確認',
       text: `設定ファイル "${displayName}" を現在のデータで上書きしますか？`,
-      showCancelButton: true,
       confirmButtonText: '上書き',
-      cancelButtonText: 'キャンセル',
     })
 
     if (!result.isConfirmed) return
@@ -117,16 +89,7 @@ export function useSaveActions(
       await fetchFileList()
 
       // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '上書き完了',
-        text: `設定ファイル "${displayName}" を上書きしました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: `設定ファイル "${displayName}" を上書きしました` })
 
       omikujiStore.resetChangeState()
       state.isServerConnected.value = true
@@ -136,13 +99,10 @@ export function useSaveActions(
 
   // assets/omikujiData.js に保存（確認ダイアログ）
   const overwriteOmikujiData = async () => {
-    const result = await Swal.fire({
-      icon: 'warning',
+    const result = await swalModal.confirmDelete({
       title: '上書き確認',
       text: `設定ファイル "omikujiData.js" を assets に上書きしますか？`,
-      showCancelButton: true,
       confirmButtonText: '上書き',
-      cancelButtonText: 'キャンセル',
     })
 
     if (!result.isConfirmed) return
@@ -155,40 +115,26 @@ export function useSaveActions(
       await fetchFileList()
 
       // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '上書き完了',
-        text: `設定ファイル "omikujiData.js" を上書きしました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
-
+      swalToast.success({ title: `設定ファイル "omikujiData.js" を上書きしました` })
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
   }
 
   // APIモード切り替え
-  const toggleApiMode = () => {
-    // TODO:ping打ってサーバ確認してから作業を行うこと
+  const toggleApiMode = async () => {
+    const ishealth = await configApi.getHealth()
+
+    if (!ishealth) {
+      swalToast.error({ title: 'サーバ、起動してないですよ！？' })
+      return
+    }
 
     configApi.toggleApiMode()
     state.isExpressMode.value = !state.isExpressMode.value
 
     const modeName = state.isExpressMode.value ? 'Express (DEV)' : 'Plugin'
-    Swal.fire({
-      toast: true,
-      position: 'bottom-end',
-      icon: 'info',
-      title: 'APIモード切り替え',
-      text: `${modeName} モードに切り替えました`,
-      showConfirmButton: false,
-      timer: 2000,
-      timerProgressBar: true,
-    })
+    swalToast.success({ title: `${modeName} モードに切り替えました` })
   }
 
   return {

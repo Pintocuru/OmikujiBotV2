@@ -73,8 +73,8 @@
   import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
-  import Swal from 'sweetalert2'
   import { Download, FileText, Edit } from 'lucide-vue-next'
+  import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   const props = defineProps<{
     file: FileItem
@@ -128,14 +128,12 @@
 
       if (!result.success) {
         if (result.error === 'invalid-metadata') {
-          await Swal.fire({
-            icon: 'error',
+          await swalModal.error({
             title: '無効なファイル',
             text: 'このファイルはおみくじBOTのデータではありません。',
           })
         } else {
-          await Swal.fire({
-            icon: 'error',
+          await swalModal.error({
             title: '読み込みエラー',
             text: result.error || '不明なエラーが発生しました',
           })
@@ -149,10 +147,9 @@
     } catch (error) {
       console.error('Partial load error:', error)
 
-      await Swal.fire({
-        icon: 'error',
+      await swalModal.error({
         title: 'ファイルの読み込みに失敗しました',
-        text: 'ファイル形式や内容をご確認ください。',
+        text: 'コンソールログをご確認ください',
       })
     }
   }

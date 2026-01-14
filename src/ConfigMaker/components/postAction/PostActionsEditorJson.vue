@@ -22,7 +22,7 @@
   import { ref, watch } from 'vue'
   import { PostActionType, PostActionSchema } from '@/types/OmikujiData/'
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
-  import Swal from 'sweetalert2'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   // Props
   const props = defineProps<{
@@ -58,14 +58,7 @@
       const parsed = JSON.parse(jsonText.value)
       if (!Array.isArray(parsed)) {
         const msg = '配列である必要があります'
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'error',
-          title: msg,
-          showConfirmButton: false,
-          timer: 3000,
-        })
+        swalToast.error({ title: msg })
         throw new Error(msg)
       }
 
@@ -76,16 +69,7 @@
           const msg = `${index + 1}番目の要素のバリデーションエラー: ${
             error instanceof Error ? error.message : '不明なエラー'
           }`
-
-          Swal.fire({
-            toast: true,
-            position: 'bottom-end',
-            icon: 'error',
-            title: msg,
-            showConfirmButton: false,
-            timer: 4000,
-          })
-
+          swalToast.error({ title: msg })
           throw new Error(msg)
         }
       })
@@ -94,19 +78,8 @@
       return validatedActions
     } catch (error) {
       const msg = error instanceof Error ? error.message : 'JSONの解析に失敗しました'
-
-      // UI の赤いエラー欄にも表示
-      jsonError.value = msg
-
-      // トーストも出す（編集中なのでダイアログ禁止）
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'error',
-        title: msg,
-        showConfirmButton: false,
-        timer: 4000,
-      })
+      jsonError.value = msg // UI の赤いエラー欄にも表示
+      swalToast.error({ title: msg }) // トースト
 
       return null
     }
@@ -116,16 +89,7 @@
     const validatedActions = validateJson()
     if (validatedActions) {
       emit('update:modelValue', validatedActions)
-
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'JSON形式で保存しました',
-        showConfirmButton: false,
-        timer: 2000,
-      })
-
+      swalToast.success({ title: 'JSON形式で保存しました' })
       emit('close')
     }
   }

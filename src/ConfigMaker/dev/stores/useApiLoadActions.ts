@@ -1,8 +1,8 @@
 // src/configMaker/dev/stores/api/useLoadActions.ts
+import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@config/dev/devTypes'
 import { configApi } from '@config/dev/services/configApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import Swal from 'sweetalert2'
 
 export function useLoadActions(
   state: DevConfigStateType,
@@ -15,13 +15,10 @@ export function useLoadActions(
 
     // 変更があるなら確認ダイアログ
     if (hasChanged) {
-      const result = await Swal.fire({
+      const result = await swalModal.confirmDelete({
         title: '変更が保存されていません',
         text: '読み込むと現在の編集内容は失われます。続行しますか？',
-        icon: 'warning',
-        showCancelButton: true,
         confirmButtonText: '読み込む',
-        cancelButtonText: 'キャンセル',
       })
 
       if (!result.isConfirmed) {

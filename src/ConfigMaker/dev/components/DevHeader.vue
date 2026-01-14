@@ -70,13 +70,13 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types'
-  import { generateDateFileName } from '@/ConfigMaker/dev/services/apiServiceUtils'
+  import { generateDateFileName } from '@config/dev/services/apiServiceUtils'
   import { generatorApi } from '@config/dev/services/generatorApi'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { Download, Save } from 'lucide-vue-next'
-  import Swal from 'sweetalert2'
+  import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   const omikujiStore = useOmikujiStore()
   const { hasChanged } = storeToRefs(omikujiStore)
@@ -90,17 +90,9 @@
       devStore.toggleApiMode()
       await devStore.fetchFileList()
     } else if (isDev) {
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'error',
+      swalToast.error({
         title: 'プラグインサーバ起動しとらんやん！',
         text: '動かん思たら…そらサーバー止まっとったら無理やわな！',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        background: '#ffecec',
-        color: '#b30000',
       })
     }
   }
@@ -109,31 +101,24 @@
     try {
       // 変更があるなら確認ダイアログ
       if (hasChanged.value) {
-        const result = await Swal.fire({
+        const result = await swalModal.confirmDelete({
           title: '変更が保存されていません',
           text: '読み込むと現在の編集内容は失われます。続行しますか？',
-          icon: 'warning',
-          showCancelButton: true,
           confirmButtonText: '読み込む',
-          cancelButtonText: 'キャンセル',
         })
         // キャンセル → 処理中断
         if (!result.isConfirmed) return
       }
 
       const { loadData } = useOmikujiStore()
-      const data = await generatorApi.loadGeneratorConfig()
+      const id = window.omikujiData?.meta.id
+      const data = await generatorApi.loadGeneratorConfig(id)
+      const fileName = id ? `presets/${id}.json` : 'generator.json'
 
       if (!data) {
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'warning',
+        swalToast.warning({
           title: 'ジェネレーター設定が見つかりません',
-          text: 'generator.json が存在しませんでした',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
+          text: `${fileName} が存在しませんでした`,
         })
         return
       }
@@ -143,25 +128,11 @@
       loadData(data)
       hasChanged.value = false // 読み込み後は変更なし状態に戻す
 
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'ジェネレーター設定を読み込みました',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: 'ジェネレーター設定を読み込みました' })
     } catch (error) {
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'error',
+      swalToast.error({
         title: '読み込みに失敗しました',
         text: String(error),
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
       })
     }
   }

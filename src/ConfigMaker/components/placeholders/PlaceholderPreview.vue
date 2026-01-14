@@ -11,12 +11,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
+  import { processTestPlaceholder } from '@config/components/postAction/preview/TestPlaceholderProcessor'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
   import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
-  import Swal from 'sweetalert2'
   import { Dices } from 'lucide-vue-next'
-  import { processTestPlaceholder } from '../postAction/preview/TestPlaceholderProcessor'
-  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
   const props = defineProps<{
     values: WeightValuesArrayType
@@ -35,24 +35,15 @@
   const showResult = (drawn: WeightValueType, message: string) => {
     const { weight = 1, weightPercent = 0 } = drawn as any
 
-    Swal.fire({
-      toast: true,
-      position: 'bottom-end',
-      icon: 'success',
+    swalToast.success({
       title: '抽選結果',
       html: `内容:<br>${message}<br>重み: ${weight}<br>確率: ${weightPercent.toFixed(2)}%`,
-      showConfirmButton: false,
       timer: 15000,
-      timerProgressBar: true,
     })
   }
 
   const showError = () => {
-    Swal.fire({
-      icon: 'error',
-      title: '抽選結果',
-      text: '抽選できませんでした',
-    })
+    swalToast.error({ title: '抽選結果', text: '抽選できませんでした' })
   }
 
   // メイン処理

@@ -57,8 +57,8 @@
 </template>
 
 <script setup lang="ts">
-  import Swal from 'sweetalert2'
   import { useRecordTabsStore } from './RecordTabsStore'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { Eye, EyeOff, Copy, Trash2 } from 'lucide-vue-next'
 
   // Props
@@ -93,18 +93,7 @@
     if (!result) return
 
     const { count, action } = result
-
-    Swal.fire({
-      toast: true,
-      position: 'bottom-end',
-      icon: 'success',
-      title: `${count}件のルールを${action}にしました`,
-      text: `一括${action}化が完了しました`,
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-    })
-
+    swalToast.success({ title: `${count}件のルールを${action}にしました` })
     emit('close')
   }
 

@@ -1,6 +1,6 @@
 // src/configMaker/dev/stores/api/useApiCore.ts
+import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '../devTypes'
-import Swal from 'sweetalert2'
 
 export function useApiCore(state: DevConfigStateType) {
   // エラーハンドリング
@@ -9,12 +9,7 @@ export function useApiCore(state: DevConfigStateType) {
     state.isServerConnected.value = false
 
     const message = `${error.message}\n開発サーバーが起動していることを確認してください。`
-
-    Swal.fire({
-      icon: 'error',
-      title: '接続エラー',
-      text: message,
-    })
+    swalModal.error({ title: '接続エラー', text: message })
   }
 
   // 非同期アクションのラッパー

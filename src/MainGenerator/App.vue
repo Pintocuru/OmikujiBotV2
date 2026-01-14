@@ -31,7 +31,7 @@
   import { useRuleProcessor } from '@main/scripts/RuleProcess/RuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
-  import { generatorApi } from '@/ConfigMaker/dev/services/generatorApi'
+  import { generatorApi } from '@config/dev/services/generatorApi'
   import { useVisibilityAccess } from './scripts/FeatureAccess/useAccessCheckerMain'
 
   // Pinia Store

@@ -3,8 +3,8 @@ import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiDa
 import type { useRuleState } from './useRuleState'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { BaseRecordType } from '@shared/types'
-import Swal from 'sweetalert2'
 import { useNavigationStore } from '@config/stores/useNavigationStore'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) => {
   const omikujiStore = useOmikujiStore()
@@ -26,17 +26,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
       const editorColor = filterOptions.value.colorFilter || undefined
       const newId = omikujiStore.addItem?.(category, { editorColor })
       selectItem(newId)
-
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '新しいルールを追加しました',
-        text: 'ルールの設定を行ってください',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: '新しいルールを追加しました' })
     })
   }
 
@@ -60,29 +50,13 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     withValidCategory(async (category) => {
       const name = ruleName || '名前未設定'
 
-      const result = await Swal.fire({
-        icon: 'warning',
+      const result = await swalModal.warning({
         title: `「${name}」を削除しますか？`,
-        text: 'この操作は取り消せません',
-        showCancelButton: true,
-        confirmButtonText: '削除する',
-        cancelButtonText: 'キャンセル',
       })
 
       if (!result.isConfirmed) return
-
       omikujiStore.removeItem(category, ruleId)
-
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'ルールを削除しました',
-        text: `「${name}」を削除しました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: `「${name}」を削除しました` })
     })
   }
 
@@ -90,17 +64,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
   const handleDuplicateRule = (ruleId: string) => {
     withValidCategory((category) => {
       omikujiStore.duplicateItem(category, ruleId)
-
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'ルールを複製しました',
-        text: 'コピーを作成しました',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      swalToast.success({ title: 'ルールを複製しました' })
     })
   }
 

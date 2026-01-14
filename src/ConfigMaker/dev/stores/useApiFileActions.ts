@@ -1,7 +1,7 @@
 // src/configMaker/dev/stores/api/useFileActions.ts
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@config/dev/devTypes'
 import { configApi } from '@config/dev/services/configApi'
-import Swal from 'sweetalert2'
 
 export function useFileActions(
   state: DevConfigStateType,
@@ -37,17 +37,7 @@ export function useFileActions(
       await fetchFileList()
 
       // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '複製完了',
-        text: `設定ファイル "${originalName}" を複製しました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
-
+      swalToast.success({ title: `設定ファイル "${originalName}" を複製しました` })
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
@@ -67,15 +57,8 @@ export function useFileActions(
       await fetchFileList()
 
       // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '名前変更完了',
-        text: `設定ファイル名を "${oldFileName.replace('.json', '')}" から "${newFileName}" に変更しました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
+      swalToast.success({
+        title: `設定ファイル名を "${oldFileName.replace('.json', '')}" から "${newFileName}" に変更しました`,
       })
 
       state.isServerConnected.value = true
@@ -87,13 +70,8 @@ export function useFileActions(
   const deleteFile = async (fileName: string) => {
     const displayName = fileName.replace('.json', '')
 
-    const result = await Swal.fire({
-      icon: 'warning',
-      title: '削除確認',
-      text: `設定ファイル "${displayName}" を削除しますか？`,
-      showCancelButton: true,
-      confirmButtonText: '削除',
-      cancelButtonText: 'キャンセル',
+    const result = await swalModal.confirmDelete({
+      title: `設定ファイル "${displayName}" を削除しますか？`,
     })
 
     if (!result.isConfirmed) return
@@ -104,35 +82,17 @@ export function useFileActions(
       await configApi.deleteConfig(fileName)
 
       const index = state.availableFiles.value.findIndex((f: any) => f.name === fileName)
-      if (index >= 0) {
-        state.availableFiles.value.splice(index, 1)
-      }
+      if (index >= 0) state.availableFiles.value.splice(index, 1)
 
-      // 成功トースト
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: '削除完了',
-        text: `設定ファイル "${displayName}" を削除しました`,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
-
+      swalToast.success({ title: `設定ファイル "${displayName}" を削除しました` })
       state.isServerConnected.value = true
     } catch (error) {
       console.error('API Error:', error)
       state.isServerConnected.value = false
 
-      const message = `${(error as Error).message}\n開発サーバーが起動していることを確認してください。`
-
       // エラーダイアログ
-      Swal.fire({
-        icon: 'error',
-        title: '接続エラー',
-        text: message,
-      })
+      const message = `${(error as Error).message}\nサーバーが起動していることを確認してください。`
+      swalModal.error({ title: '接続エラー', text: message })
     } finally {
       state.isDeletingFileMap.delete(fileName)
     }

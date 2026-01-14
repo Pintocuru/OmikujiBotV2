@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { normalizeData } from '@/common/migrations'
-import Swal from 'sweetalert2'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 /**
  * データの入出力（読み込み・保存・エクスポート）を提供
@@ -17,11 +17,7 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
       data.value = migratedData
       return true
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'データの読み込み中にエラーが発生しました',
-        text: 'ファイル形式が正しいかご確認ください。',
-      })
+      swalModal.error({ title: 'データの読み込み中にエラーが発生しました', text: error })
       console.error('Load data error:', error)
       return false
     }
@@ -33,6 +29,7 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
   //
   const openLocalOmikujiData = () => {
     loadData(window.omikujiData)
+    swalToast.success({ title: '読み込み完了', text: 'omikujiData.js を読み込みました。' })
   }
 
   /**
@@ -51,8 +48,7 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
       return JSON.stringify(data.value, null, 2)
     }
 
-    Swal.fire({
-      icon: 'error',
+    swalModal.error({
       title: 'データの検証に失敗しました',
       text: '内容に不備があるため、エクスポートできません。',
     })

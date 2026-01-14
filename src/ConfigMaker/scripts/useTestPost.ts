@@ -15,10 +15,10 @@ import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 import { storeToRefs } from 'pinia'
-import Swal from 'sweetalert2'
 import { OmikenCommentSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { useNavigationStore } from '../stores/useNavigationStore'
 import { useGetRecordData } from '../stores/useGetRecordData'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 export function useTestPost() {
   const { getItem } = useGetRecordData()
@@ -53,10 +53,9 @@ export function useTestPost() {
     } catch (error) {
       console.error('メッセージ投稿処理中にエラーが発生しました:', error)
 
-      Swal.fire({
-        icon: 'error',
+      swalModal.error({
         title: 'テスト投稿の表示中にエラーが発生しました',
-        text: '詳細はコンソールをご確認ください。',
+        text: String(error),
       })
     }
   }
@@ -66,18 +65,10 @@ export function useTestPost() {
     const weight = drawOmikuji.weight || 1
     const omikujiName = drawOmikuji.name || '無名のアイテム'
 
-    Swal.fire({
-      toast: true,
-      position: 'bottom-end',
-      icon: 'success',
+    swalToast.success({
       title: 'おみくじ抽選結果',
-      html: `
-      おみくじ: ${omikujiName}<br>
-      重み: ${weight}<br>
-    `,
-      showConfirmButton: false,
+      html: `おみくじ: ${omikujiName}<br>重み: ${weight}<br>`,
       timer: 15000,
-      timerProgressBar: true,
     })
   }
 
@@ -128,8 +119,7 @@ export function useTestPost() {
   const postTestOmikuji = (omikujiSet: OmikujiItemType[]) => {
     const rule = selectedRule.value
     if (!rule) {
-      Swal.fire({
-        icon: 'error',
+      swalToast.error({
         title: 'ルールが選択されていません',
         text: 'テスト投稿の対象となるルールを選択してください。',
       })
@@ -142,8 +132,7 @@ export function useTestPost() {
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 
     if (!omikujiItem) {
-      Swal.fire({
-        icon: 'warning',
+      swalToast.info({
         title: 'おみくじ抽選結果',
         text: '該当するおみくじがありませんでした。',
       })

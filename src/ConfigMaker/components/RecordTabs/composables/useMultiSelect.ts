@@ -5,11 +5,10 @@ import { RecordCategoryType } from '@/types/OmikujiData/'
 import type { useRuleState } from './useRuleState'
 import { BaseRecordType, AccessLevelType } from '@shared/types'
 import { storeToRefs } from 'pinia'
-import { toast } from 'vue-sonner'
-import Swal from 'sweetalert2'
 import { useNavigationStore } from '@config/stores/useNavigationStore'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
-/**
+/*
  * マルチセレクト機能の管理
  * Ctrl/Cmd + クリック、Shift + クリック、範囲選択、一括削除を提供
  */
@@ -61,7 +60,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  /** 範囲選択の処理 */
+  // 範囲選択の処理 */
   const handleRangeSelect = (ruleKey: string) => {
     const currentRules = filteredSortedItems.value
     const lastSelectedIndex = Math.max(
@@ -81,27 +80,27 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  /** 全選択 */
+  // 全選択 */
   const selectAll = () => {
     filteredSortedItems.value.forEach((rule: BaseRecordType) => {
       selectedRuleIds.value.add(rule.key)
     })
   }
 
-  /** 選択解除 */
+  // 選択解除 */
   const clearSelection = () => {
     selectedRuleIds.value.clear()
     isMultiSelectMode.value = false
   }
 
-  /** 選択されたルールを取得 */
+  // 選択されたルールを取得 */
   const getSelectedRules = (): BaseRecordType[] => {
     return Array.from(selectedRuleIds.value)
       .map((key) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.key === key))
       .filter(Boolean) as BaseRecordType[]
   }
 
-  /** 一括削除の実行 */
+  // 一括削除の実行 */
   const handleBulkDelete = async () => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -110,17 +109,8 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const count = rulesToDelete.length
 
     // SweetAlert2 で確認ダイアログを出す（この方が非同期制御が確実です）
-    const result = await Swal.fire({
+    const result = await swalModal.confirmDelete({
       title: `${count}件のルールを削除しますか？`,
-      text: 'この操作は取り消せません',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: '削除する',
-      cancelButtonText: 'キャンセル',
-      // コンテキストメニューより前面に出すための設定
-      target: 'body',
     })
 
     if (result.isConfirmed) {
@@ -134,14 +124,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
       isMultiSelectMode.value = false
 
       // 3. 完了通知
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: `${count}件のルールを削除しました`,
-        showConfirmButton: false,
-        timer: 2000,
-      })
+      swalToast.success({ title: `${count}件のルールを削除しました` })
     }
   }
 
@@ -185,7 +168,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  /** 一括カラー設定 */
+  // 一括カラー設定 */
   const handleBulkColorChange = (color: string) => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -200,13 +183,10 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     })
 
     const count = selectedRules.length
-    toast.success(`${count}件のルールのカラーを変更しました`, {
-      description: '一括カラー変更が完了しました',
-      duration: 3000,
-    })
+    swalToast.success({ title: `${count}件のルールのカラーを変更しました` })
   }
 
-  /** 一括複製 */
+  // 一括複製 */
   const handleBulkDuplicate = () => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -221,47 +201,39 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     })
 
     const count = selectedRules.length
-    toast.success(`${count}件のルールを複製しました`, {
-      description: '一括複製が完了しました',
-      duration: 3000,
-    })
+
+    swalToast.success({ title: `${count}件のルールを複製しました` })
   }
 
-  /** 一括削除の確認ダイアログ */
-  const handleBulkDeleteRules = (rulesToDelete: BaseRecordType[]) => {
+  // 一括削除の確認ダイアログ */
+  const handleBulkDeleteRules = async (rulesToDelete: BaseRecordType[]) => {
     if (rulesToDelete.length === 0) return
 
     const ruleNames = rulesToDelete.map((rule) => rule.name || '名前未設定').join('、')
     const count = rulesToDelete.length
 
-    toast.error(`${count}件のルールを削除しますか？`, {
-      description: `削除対象: ${ruleNames.length > 50 ? ruleNames.substring(0, 50) + '...' : ruleNames}`,
-      duration: 0,
-      action: {
-        label: `${count}件削除する`,
-        onClick: () => {
-          const sortedRules = [...rulesToDelete].sort((a, b) => {
-            const indexA = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.key === a.key) ?? -1
-            const indexB = filteredSortedItems.value.findIndex((rule: BaseRecordType) => rule.key === b.key) ?? -1
-            return indexB - indexA
-          })
-
-          sortedRules.forEach((rule) => {
-            omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.key)
-          })
-
-          toast.success(`${count}件のルールを削除しました`, {
-            description: '一括削除が完了しました',
-            duration: 3000,
-          })
-        },
-      },
-      cancel: {
-        label: 'キャンセル',
-        onClick: () => toast.dismiss(),
-      },
-      closeButton: true,
+    const result = await swalModal.confirmDelete({
+      title: `${count}件のルールを削除しますか？`,
+      text: `削除対象: ${ruleNames.length > 50 ? ruleNames.substring(0, 50) + '...' : ruleNames}`,
+      confirmButtonText: `${count}件削除する`,
     })
+
+    if (!result.isConfirmed) {
+      swalToast.info({ title: 'キャンセルしました' })
+      return
+    }
+
+    const sortedRules = [...rulesToDelete].sort((a, b) => {
+      const indexA = filteredSortedItems.value.findIndex((rule) => rule.key === a.key) ?? -1
+      const indexB = filteredSortedItems.value.findIndex((rule) => rule.key === b.key) ?? -1
+      return indexB - indexA
+    })
+
+    sortedRules.forEach((rule) => {
+      omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.key)
+    })
+
+    swalToast.success({ title: `${count}件のルールを削除しました` })
   }
 
   return {

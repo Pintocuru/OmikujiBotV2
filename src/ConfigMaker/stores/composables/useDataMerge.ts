@@ -5,7 +5,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
 import { ImportPreview } from '@config/components/presetsImport/ImportTypes'
 import { normalizeData } from '@/common/migrations'
-import Swal from 'sweetalert2'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 /**
  * データマージ機能
@@ -26,25 +26,16 @@ export function useDataMerge(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean
       // 部分更新モード
       result = processPartialMerge(importedData, preview)
 
-      // 成功トースト（右下）
-      Swal.fire({
-        toast: true,
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'データの部分更新が完了しました。',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-      })
+      // 成功トースト
+      swalToast.success({ title: 'データの部分更新が完了しました。' })
 
       data.value = result
       hasChanged.value = true
       return true
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
+      swalModal.error({
         title: 'データの更新中にエラーが発生しました',
-        text: '詳細はコンソールをご確認ください。',
+        text: String(error),
       })
       console.error('Merge error:', error)
       return false

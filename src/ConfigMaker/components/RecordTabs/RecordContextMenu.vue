@@ -47,7 +47,7 @@
   import RecordContextMenuActions from './RecordContextMenuActions.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { AccessLevelType, AccessLevelLabels } from '@shared/types'
-  import Swal from 'sweetalert2'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   // Store
   const tabsStore = useRecordTabsStore()
@@ -97,16 +97,8 @@
 
       if (result) {
         const { count, accessLevel } = result
-
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'success',
+        swalToast.success({
           title: `${count}件のルールのアクセスレベルを「${accessLevel}」に変更しました`,
-          text: '一括変更が完了しました',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
         })
       }
     } else if (tabsStore.contextMenu.rule) {
@@ -119,15 +111,8 @@
       })
 
       if (result?.updatedName) {
-        Swal.fire({
-          toast: true,
-          position: 'bottom-end',
-          icon: 'success',
-          title: 'アクセスレベルを変更しました',
-          text: `「${result.updatedName}」のアクセスレベルを「${level}」に変更しました`,
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
+        swalToast.success({
+          title: `「${result.updatedName}」のアクセスレベルを「${level}」に変更しました`,
         })
       }
     }
