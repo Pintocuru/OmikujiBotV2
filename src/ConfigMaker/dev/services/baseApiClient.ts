@@ -82,13 +82,14 @@ export abstract class BaseApiClient {
   /**
    * APIモードを切り替え（Express ⇔ わんコメプラグイン）
    */
-  toggleApiMode(): void {
-    if (!isDev) return
+  toggleApiMode(): boolean {
+    if (!isDev) return this.isExpressMode
 
     this.isExpressMode = !this.isExpressMode
     this.client = this.createClient()
 
     console.log(`[API Mode] ${this.isExpressMode ? 'Express' : 'わんコメプラグイン'}に切り替えました`)
+    return this.isExpressMode
   }
 
   /**

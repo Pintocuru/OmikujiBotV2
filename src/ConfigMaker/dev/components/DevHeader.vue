@@ -85,9 +85,8 @@
   const { isPro } = useSettingMode()
 
   const toggleApiMode = async () => {
-    const isServer = await devStore.checkServer()
-    if (isDev && isServer) {
-      devStore.toggleApiMode()
+    const ok = await devStore.toggleExpressMode()
+    if (ok) {
       await devStore.fetchFileList()
     } else if (isDev) {
       swalToast.error({

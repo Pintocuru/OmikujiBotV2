@@ -6,6 +6,8 @@ import { useSaveActions } from './useApiSaveActions'
 import { useLoadActions } from './useApiLoadActions'
 
 import { DevConfigStateType } from '../devTypes'
+import { configApi } from '../services/configApi'
+import { isDev } from '@/types'
 
 export function useDevConfigActions(state: DevConfigStateType) {
   const stateActions = useDevConfigStateActions(state)
@@ -16,6 +18,18 @@ export function useDevConfigActions(state: DevConfigStateType) {
 
   const setSaveFileName = (name: string = '') => {
     state.saveFileName.value = name
+  }
+
+  // サーバモード切り替え
+  const toggleExpressMode = async (): Promise<boolean> => {
+    if (!isDev) return false
+
+    const isServer = await configApi.getHealth()
+    if (!isServer) return false
+
+    const mode = configApi.toggleApiMode()
+    state.isExpressMode.value = mode
+    return true
   }
 
   // 状態リセット
@@ -43,6 +57,7 @@ export function useDevConfigActions(state: DevConfigStateType) {
     ...fileActions,
     ...saveActions,
     ...loadActions,
+    toggleExpressMode,
     setSaveFileName,
     resetState,
   }
