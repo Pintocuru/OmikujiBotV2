@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.30-v2.0.0-beta2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta15",
-    "dataVersion": 2.0015,
+    "generatorVersion": "v2.0.0-beta16",
+    "dataVersion": 2.0016,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -589,8 +589,8 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-13T10:04:39.314Z",
-      "order": 5,
+      "updatedAt": "2025-12-31T09:52:14.079Z",
+      "order": 30,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [],
@@ -622,7 +622,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "happy",
               "sound": "baseball",
               "message": {
@@ -668,7 +668,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "happy",
               "sound": "twinkle",
               "message": {
@@ -714,7 +714,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "default",
               "sound": "congrats",
               "message": {
@@ -760,7 +760,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "default",
               "sound": "jingle",
               "message": {
@@ -806,7 +806,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "wink",
               "sound": "bounce",
               "message": {
@@ -852,7 +852,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken",
               "iconKey": "sad",
               "sound": "fail",
               "message": {
@@ -898,7 +898,7 @@
             {
               "delaySeconds": 2,
               "actionType": "message",
-              "characterKey": "chocolate",
+              "characterKey": "omiken_2",
               "iconKey": "default",
               "sound": "explosion",
               "message": {
@@ -6372,7 +6372,7 @@
       "name": "巫女さんのおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:46:05.745Z",
-      "order": 9,
+      "order": 177,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6396,7 +6396,7 @@
       "name": "巫女さんのおみくじ:吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:47:01.957Z",
-      "order": 10,
+      "order": 178,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6420,7 +6420,7 @@
       "name": "巫女さんのおみくじ:中吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:48:35.458Z",
-      "order": 11,
+      "order": 179,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6444,7 +6444,7 @@
       "name": "巫女さんのおみくじ:小吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:49:30.274Z",
-      "order": 12,
+      "order": 180,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6468,7 +6468,7 @@
       "name": "巫女さんのおみくじ:末吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:50:20.148Z",
-      "order": 13,
+      "order": 181,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6492,7 +6492,7 @@
       "name": "巫女さんのおみくじ:凶",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-10-11T15:51:10.592Z",
-      "order": 14,
+      "order": 182,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -6516,7 +6516,7 @@
       "name": "巫女さんのおみくじ:残念賞",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2025-08-28T09:34:01.985Z",
-      "order": 15,
+      "order": 183,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
@@ -15044,12 +15044,12 @@
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
       "updatedAt": "2025-10-09T22:04:37.277Z",
-      "order": 2,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
-        "おみくじBOT",
-        "シンプル"
+        "Yukkuri",
+        "Reimu"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -15094,12 +15094,12 @@
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
       "updatedAt": "2025-10-10T07:35:47.624Z",
-      "order": 3,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
-        "おみくじBOT",
-        "シンプル"
+        "Yukkuri",
+        "Reimu"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",

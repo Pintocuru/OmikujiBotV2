@@ -1,14 +1,14 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType, RankingMessageSchema, RankingMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { PostActionType, PostActionMessageType, OmikujiDataType } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BotMessageFactory } from './BotMessageFactory'
-import { ProcessedMessageContent } from './OmikujiResultHelper'
+import { ProcessedPostAction, VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
 
 /**
- * PostActionからBotMessageを生成し音声を制御
+ * 処理済みアクションからBotMessageを生成し音声を制御
  */
 export class BotMessageGenerator {
   private messageFactory: BotMessageFactory
@@ -18,20 +18,21 @@ export class BotMessageGenerator {
   }
 
   /**
-   * PostActionからBotMessageを生成
+   * 解析済みのProcessedPostActionからBotMessageを生成
    */
-  generateMessages(actions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
+  generateMessages(processedActions: ProcessedPostAction[], omiken?: OmikenCommentType): BotMessageType[] {
     const messages: BotMessageType[] = []
 
-    for (const action of actions) {
+    for (const item of processedActions) {
+      const { action, variableResult } = item
+      const delaySeconds = action.delaySeconds + POST_SETTINGS.basicDelaySeconds
+
       switch (action.actionType) {
         case 'message':
-          messages.push(...this.handleMessageAction(action, omiken))
+          messages.push(...this.handleMessageAction(action, variableResult, delaySeconds, omiken))
           break
         case 'sound':
-          this.handleSoundAction(action)
-          break
-        default:
+          this.playSound(action.sound, delaySeconds)
           break
       }
     }
@@ -39,84 +40,76 @@ export class BotMessageGenerator {
     return messages
   }
 
-  /**
-   * メッセージアクションを処理してBotMessageを生成
-   */
-  private handleMessageAction(action: PostActionMessageType, omiken?: OmikenCommentType): BotMessageType[] {
-    const delaySeconds = this.calculateDelay(action)
-    const content = this.extractMessageContent(action)
-    const { isToast } = content
-    const hasBubbleText = !!content.bubble?.trim()
+  private handleMessageAction(
+    action: PostActionMessageType,
+    variableResult: VariablePlaceholderResult | undefined,
+    delaySeconds: number,
+    omiken?: OmikenCommentType
+  ): BotMessageType[] {
+    // 1. ランキングデータの変換
+    const ranking = this.createRankingMessage(variableResult)
+    console.log(variableResult)
+    // bubbleは既にProcessor側で置換済み
+    const bubbleText = action.message.bubble || ''
+    const isToast = action.message.isToast
+    const hasBubbleText = !!bubbleText.trim()
 
-    // メッセージが何もない場合は音声のみ再生
-    if (!hasBubbleText && !content.ranking) {
+    // 表示内容がない場合
+    if (!hasBubbleText && !ranking) {
       this.playSound(action.sound, delaySeconds)
       return []
     }
 
     const messages: BotMessageType[] = []
 
-    // bubbleテキストがある場合
     if (hasBubbleText) {
       const newMessages = this.messageFactory.createBotMessages({
         characterKey: action.characterKey,
         iconKey: action.iconKey,
         delaySeconds,
         isToast,
-        bubble: content.bubble!,
-        ranking: content.ranking,
+        bubble: bubbleText,
+        ranking,
         omiken,
       })
       messages.push(...newMessages)
 
-      // toastでない場合のみRPGボイスを再生
       if (!isToast) {
-        this.playRpgVoice(action.characterKey, content.bubble!, delaySeconds)
+        this.playRpgVoice(action.characterKey, bubbleText, delaySeconds)
       }
-    }
-    // ランキングのみの場合
-    else if (content.ranking) {
-      const message = this.messageFactory.createRankingMessage(delaySeconds, content.ranking, omiken)
-      messages.push(message)
+    } else if (ranking) {
+      messages.push(this.messageFactory.createRankingMessage(delaySeconds, ranking, omiken))
     }
 
     this.playSound(action.sound, delaySeconds)
     return messages
   }
 
-  private handleSoundAction(action: PostActionType): void {
-    if (action.actionType !== 'sound') return
-    const delaySeconds = this.calculateDelay(action)
-    this.playSound(action.sound, delaySeconds)
-  }
-
   /**
-   * メッセージアクションから処理済みコンテンツを抽出
+   * VariablePlaceholderResultから正式なRankingMessageTypeを生成
    */
-  private extractMessageContent(action: PostActionMessageType): ProcessedMessageContent {
-    const message = action.message as any
+  private createRankingMessage(result?: VariablePlaceholderResult): RankingMessageType | undefined {
+    if (!result) return undefined
 
-    // __processedがある場合（変数プレースホルダー処理済み）
-    if (message.__processed) {
-      return message.__processed
-    }
-
-    // __processedがない場合は通常のbubbleとisToastのみ
-    return {
-      bubble: message.bubble || '',
-      isToast: message.isToast || false,
-      ranking: undefined,
+    try {
+      return RankingMessageSchema.parse({
+        scriptKey: 'basicList',
+        listName: result.name,
+        scoreText: result.text,
+        symbol: result.symbol,
+        variant: result.variant,
+        isUniqueUser: result.unique !== 'false',
+      })
+    } catch (e) {
+      return undefined
     }
   }
 
   private playRpgVoice(characterKey: string, bubble: string, delaySeconds: number): void {
     const character = this.messageFactory.getCharacter(characterKey)
     const displayOption = character?.displayOption
-    if (!displayOption) return
-
-    const { mode, rpgVoice } = displayOption
-    if (mode === 'rpgVoice' && rpgVoice) {
-      playRpgVoiceLoop(bubble, rpgVoice, delaySeconds)
+    if (displayOption?.mode === 'rpgVoice' && displayOption.rpgVoice) {
+      playRpgVoiceLoop(bubble, displayOption.rpgVoice, delaySeconds)
     }
   }
 
@@ -124,9 +117,5 @@ export class BotMessageGenerator {
     if (sound?.trim()) {
       playSoundDelay(sound, delaySeconds)
     }
-  }
-
-  private calculateDelay(action: PostActionType): number {
-    return action.delaySeconds + POST_SETTINGS.basicDelaySeconds
   }
 }

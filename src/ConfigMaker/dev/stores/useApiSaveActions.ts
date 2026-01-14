@@ -1,11 +1,9 @@
 // src/configMaker/dev/stores/api/useSaveActions.ts
-import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
-import { isDev } from '@/types'
 import { DevConfigStateType } from '@config/dev/devTypes'
 import { configApi } from '@config/dev/services/configApi'
 import { generatorApi } from '@config/dev/services/generatorApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { useDevStore } from './useDevStore'
+import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 export function useSaveActions(
   state: DevConfigStateType,
@@ -121,37 +119,6 @@ export function useSaveActions(
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
-  }
-
-  /**
-  // APIモード切り替え
-  const toggleApiMode = async () => {
-    const ishealth = await configApi.getHealth()
-
-    if (!ishealth) {
-      swalToast.error({ title: 'サーバ、起動してないですよ！？' })
-      return
-    }
-
-    state.isExpressMode.value = !state.isExpressMode.value
-    configApi.toggleApiMode()
-
-    const modeName = state.isExpressMode.value ? 'Express (DEV)' : 'Plugin'
-    swalToast.success({ title: `${modeName} モードに切り替えました` })
-  }
- */
-
-  // APIモード切り替え
-  const toggleApiMode = () => {
-    if (!isDev) return
-    // TODO:ping打ってサーバ確認してから作業を行うこと
-
-    const devStore = useDevStore()
-    devStore.toggleExpressMode()
-    state.isExpressMode.value = !state.isExpressMode.value
-
-    const modeName = state.isExpressMode.value ? 'Express (DEV)' : 'Plugin'
-    swalToast.success({ title: `${modeName} モードに切り替えました` })
   }
 
   return {

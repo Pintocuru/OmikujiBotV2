@@ -1,4 +1,5 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
+import { VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import {
   CALC_PATTERN,
@@ -7,14 +8,6 @@ import {
   VAR_DECLARATION_PATTERN,
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
-
-/**
- * process メソッドの返り値型
- */
-export interface ProcessResult {
-  bubble: string
-  [key: string]: string
-}
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -27,7 +20,7 @@ export class VariablePlaceholderProcessor {
    * テキスト内のプレースホルダーを処理
    * 処理順序: 改行除去 → var宣言 → calc → 変数参照 → 組み込み関数
    */
-  process(text: string): ProcessResult {
+  process(text: string): VariablePlaceholderResult {
     // 改行を除去
     let processed = text.replace(/\n/g, '')
 

@@ -9,6 +9,7 @@ import { CharacterColorType, CharacterType, OmikujiDataType } from '@/types/Omik
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
+import { CreateBotMessageParams } from '@/types/MainGenerator/OmikujiResultTypes'
 
 /**
  * BotMessage生成とキャラクター管理
@@ -30,24 +31,9 @@ export class BotMessageFactory {
   /**
    * BotMessageを生成（bubble + ranking）
    */
-  createBotMessages({
-    characterKey,
-    iconKey,
-    delaySeconds,
-    isToast,
-    bubble,
-    ranking,
-    omiken,
-  }: {
-    characterKey: string
-    iconKey: string
-    delaySeconds: number
-    isToast: boolean
-    bubble: string
-    ranking: RankingMessageType | undefined
-    omiken?: OmikenCommentType
-  }): BotMessageType[] {
+  createBotMessages(params: CreateBotMessageParams): BotMessageType[] {
     const messages: BotMessageType[] = []
+    const { characterKey, iconKey, delaySeconds, isToast, bubble, ranking, omiken } = params
 
     const character = this.getCharacter(characterKey)
     const isChar = this.isCharacterMode && character
