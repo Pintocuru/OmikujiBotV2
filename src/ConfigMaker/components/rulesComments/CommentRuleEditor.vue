@@ -28,7 +28,7 @@
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
         title="発動条件設定"
-        :subTitle="thresholdSubTitle"
+        :subTitle="`発動条件: ${thresholdSubTitle}`"
         description="「おみくじを引く」発動条件の設定"
       >
         <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
@@ -116,10 +116,11 @@
     const conditions = selectedItem.value.trigger.conditions
     const icons = []
 
-    if (conditions.includes('username')) icons.push('👱')
-    if (conditions.includes('access')) icons.push('🚶')
-    if (conditions.includes('comment')) icons.push('💬')
-    if (conditions.includes('gift')) icons.push('🎁')
+    if (conditions.includes('username')) icons.push('[👱 ユーザー名]')
+    if (conditions.includes('access')) icons.push('[🚶 ユーザーの役職]')
+    if (conditions.includes('comment')) icons.push('[💬 チャットワード]')
+    if (conditions.includes('gift')) icons.push('[🎁 ギフト]')
+    if (!icons.length) return '[すべてのコメント]'
 
     return icons.join('')
   })

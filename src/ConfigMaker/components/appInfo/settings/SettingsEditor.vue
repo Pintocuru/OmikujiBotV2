@@ -41,62 +41,27 @@
       </span>
     </div>
   </SettingItem>
-
-  <InformationCard v-if="isPro && !isGod">
-    <p>PROライセンスキーを入力したあとは：</p>
-
-    <p>
-      一部のPRO機能は<code class="label bg-accent text-accent-content">コンフィグエディターの再起動後</code
-      >に反映されます。
-    </p>
-
-    <p>
-      ライセンスを入力したら、まずは
-      <code class="label bg-accent text-accent-content">設定を出力(js)</code> または (プラグインが起動しているなら)
-      <code class="label bg-accent text-accent-content">ジェネレーターに保存</code> を押して<code
-        class="label bg-accent text-accent-content"
-        >設定を保存</code
-      >してください。<br />
-      保存が完了したら、<code class="label bg-accent text-accent-content">コンフィグエディターを再起動</code
-      >してください。
-    </p>
-
-    <p>※設定を保存していない場合、再読み込み時にライセンス情報が戻ってしまいます。</p>
-
-    <p>
-      <button
-        @click="exportFile('config')"
-        class="btn btn-primary tooltip tooltip-top"
-        data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
-        :disabled="isExporting"
-      >
-        <span v-if="isExporting" class="loading loading-spinner loading-sm mr-2"></span>
-        設定を出力(js)
-      </button>
-    </p>
-  </InformationCard>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types/'
-  import { getKey } from '@/common/FeatureAccess/SettingMode'
+  import { getKey, resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { themes, ThemeType } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
-  import { useConfigExport } from '../../presetsExport/useConfigExport'
+  import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
+  import Swal from 'sweetalert2'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro, isGod } = useSettingMode()
 
   const settings = computed(() => data.value.settings)
-  const { isExporting, exportFile } = useConfigExport()
 
   // settings の単一フィールド更新
   const updateSettingsField = <K extends keyof SettingsType>(field: K, value: SettingsType[K]) => {
@@ -107,4 +72,44 @@
   const updateLicenseKeyHash = (value: string) => {
     omikujiStore.updateSettings({ licenseKeyHash: value })
   }
+
+  // …既存コード…
+
+  // ライセンスキー変更時のモーダル表示
+  watch(
+    () => settings.value.licenseKeyHash,
+    (newVal, oldVal) => {
+      // isDev のときは頻繁に変わるので通知しない
+      if (isDev) return
+
+      // 初期ロード時の oldVal === undefined を除外
+      if (oldVal === undefined) return
+
+      // 神々の遊び
+      if (resolveSettingMode(newVal) === 'godMode') {
+        Swal.fire({
+          title: '✨ 今日からお前は神 ✨',
+          text: '暇を持て余した神々の遊び',
+          icon: 'warning',
+          showCancelButton: true,
+          showDenyButton: true,
+          confirmButtonText: '承知した',
+          denyButtonText: 'よくわかった',
+          cancelButtonText: 'よくわからなかった',
+          background: 'linear-gradient(135deg, #fff7d1, #ffe08a, #ffd24c)',
+          color: '#5b3b00',
+          confirmButtonColor: '#d97706',
+        })
+        return
+      }
+
+      // 値が変わったときだけモーダル表示
+      if (newVal !== oldVal) {
+        swalModal.info({
+          title: 'ライセンスキーが変更されました',
+          text: '一部の機能を反映するには設定の保存とエディターの再起動が必要です。',
+        })
+      }
+    }
+  )
 </script>
