@@ -6,7 +6,7 @@ import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacter
 import { useCharacterSelection } from './useCharacterSelection'
 import { useCharacterEmotionState } from './useCharacterEmotionState'
 import { useBotDisplay } from './useBotDisplay'
-import { BotMessageCommentType } from '@/types'
+import { BotMessageCommentType, isDev } from '@/types'
 
 /**
  * 常時表示キャラクター（1〜4番地）の表示制御
@@ -18,7 +18,7 @@ import { BotMessageCommentType } from '@/types'
 export function useCommentBubblePersistent() {
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
-  const { charactersMap, showCharacters } = useCharacterManager()
+  const { charactersMap, showCharacters, isValidCharacter } = useCharacterManager()
   const isToastEnabled = computed(() => appStore.data.featureUsage.components.includes('toast'))
 
   // 1-4番地のコメント取得
@@ -30,7 +30,6 @@ export function useCommentBubblePersistent() {
       ...showCharacters.value.slot4,
     ]
 
-    // centerが空の場合は何も表示しない
     if (allowKeys.length === 0) return []
 
     return botMessages.value.filter((message): message is BotMessageCommentType => {
@@ -39,6 +38,9 @@ export function useCommentBubblePersistent() {
 
       // null の場合はキャラクター非表示モードなのでそのまま表示させる
       if (message.bubble?.characterKey === null) return true
+
+      // allowKeys に含まれていればフキダシは表示
+      // ※ 画像の有無は問わない
       return allowKeys.includes(message.bubble?.characterKey)
     })
   })
@@ -47,7 +49,14 @@ export function useCommentBubblePersistent() {
   const { displayedComments, removeComment, start, stop } = useBotDisplay(indexMessages)
 
   // キャラクター選択
-  const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, charactersMap)
+  const { latestCommenterKey, slotCharacters, validateAllCharacters } = useCharacterSelection(
+    displayedComments,
+    showCharacters,
+    charactersMap
+  )
+
+  // isDev
+  if (isDev) validateAllCharacters()
 
   // 感情状態管理
   const { getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(displayedComments, charactersMap)
@@ -88,5 +97,6 @@ export function useCommentBubblePersistent() {
     // ライフサイクル
     start,
     stop,
+    isValidCharacter,
   }
 }

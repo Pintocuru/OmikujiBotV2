@@ -1,11 +1,15 @@
-// src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
-import { BotMessageType, RankingMessageSchema, RankingMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { PostActionType, PostActionMessageType, OmikujiDataType } from '@/types/OmikujiData/'
+// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\OmikujiResult\BotMessageGenerator.ts
+import {
+  CreateBotMessageParams,
+  ProcessedPostAction,
+  VariablePlaceholderResult,
+} from '@/types/MainGenerator/OmikujiResultTypes'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { PostActionMessageType, OmikujiDataType } from '@/types/OmikujiData/'
 import { playSoundDelay, playRpgVoiceLoop } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BotMessageFactory } from './BotMessageFactory'
-import { ProcessedPostAction, VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
 
 /**
  * 処理済みアクションからBotMessageを生成し音声を制御
@@ -32,7 +36,7 @@ export class BotMessageGenerator {
           messages.push(...this.handleMessageAction(action, variableResult, delaySeconds, omiken))
           break
         case 'sound':
-          this.playSound(action.sound, delaySeconds)
+          playSoundDelay(action.sound, delaySeconds)
           break
       }
     }
@@ -40,82 +44,60 @@ export class BotMessageGenerator {
     return messages
   }
 
+  /**
+   * メッセージアクションを処理
+   * 本文とランキングを「独立して」追加できるように修正
+   */
   private handleMessageAction(
     action: PostActionMessageType,
     variableResult: VariablePlaceholderResult | undefined,
     delaySeconds: number,
     omiken?: OmikenCommentType
   ): BotMessageType[] {
-    // 1. ランキングデータの変換
-    const ranking = this.createRankingMessage(variableResult)
-    console.log(variableResult)
-    // bubbleは既にProcessor側で置換済み
-    const bubbleText = action.message.bubble || ''
+    const ranking = variableResult?.ranking
+    const bubble = action.message.bubble || ''
     const isToast = action.message.isToast
-    const hasBubbleText = !!bubbleText.trim()
-
-    // 表示内容がない場合
-    if (!hasBubbleText && !ranking) {
-      this.playSound(action.sound, delaySeconds)
-      return []
-    }
+    const hasBubbleText = !!bubble.trim()
 
     const messages: BotMessageType[] = []
 
+    // メッセージ本文の生成
     if (hasBubbleText) {
-      const newMessages = this.messageFactory.createBotMessages({
+      const params: CreateBotMessageParams = {
         characterKey: action.characterKey,
         iconKey: action.iconKey,
         delaySeconds,
         isToast,
-        bubble: bubbleText,
+        bubble,
         ranking,
         omiken,
-      })
-      messages.push(...newMessages)
+      }
+      messages.push(...this.messageFactory.createBotMessages(params))
 
       if (!isToast) {
-        this.playRpgVoice(action.characterKey, bubbleText, delaySeconds)
+        this.playRpgVoice(action.characterKey, bubble, delaySeconds)
       }
-    } else if (ranking) {
+    }
+
+    // ランキング情報のみ
+    if (!hasBubbleText && ranking) {
       messages.push(this.messageFactory.createRankingMessage(delaySeconds, ranking, omiken))
     }
 
-    this.playSound(action.sound, delaySeconds)
+    // 効果音の再生
+    playSoundDelay(action.sound, delaySeconds)
+
     return messages
   }
 
   /**
-   * VariablePlaceholderResultから正式なRankingMessageTypeを生成
+   *
    */
-  private createRankingMessage(result?: VariablePlaceholderResult): RankingMessageType | undefined {
-    if (!result) return undefined
-
-    try {
-      return RankingMessageSchema.parse({
-        scriptKey: 'basicList',
-        listName: result.name,
-        scoreText: result.text,
-        symbol: result.symbol,
-        variant: result.variant,
-        isUniqueUser: result.unique !== 'false',
-      })
-    } catch (e) {
-      return undefined
-    }
-  }
-
   private playRpgVoice(characterKey: string, bubble: string, delaySeconds: number): void {
     const character = this.messageFactory.getCharacter(characterKey)
     const displayOption = character?.displayOption
     if (displayOption?.mode === 'rpgVoice' && displayOption.rpgVoice) {
       playRpgVoiceLoop(bubble, displayOption.rpgVoice, delaySeconds)
-    }
-  }
-
-  private playSound(sound: string | undefined, delaySeconds: number): void {
-    if (sound?.trim()) {
-      playSoundDelay(sound, delaySeconds)
     }
   }
 }

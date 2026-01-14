@@ -8,6 +8,7 @@ import {
   VAR_DECLARATION_PATTERN,
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
+import { RankingMessageSchema, RankingMessageType } from '@/types'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -41,10 +42,13 @@ export class VariablePlaceholderProcessor {
       Object.entries(this.evaluator.getAll()).map(([k, v]) => [k, String(v)])
     ) as Record<string, string>
 
+    // 予約語からランキングデータを構築
+    const ranking = this.buildRankingData(allVars)
+
     // 予約語の削除
     for (const key of RESERVED_KEYS) this.evaluator.remove(key)
 
-    return { ...allVars, bubble: processed }
+    return { bubble: processed, ranking }
   }
 
   /**
@@ -105,5 +109,39 @@ export class VariablePlaceholderProcessor {
       if (min > max) [min, max] = [max, min]
       return String(this.evaluator.evaluate(`rand(${min},${max})`))
     })
+  }
+
+  /**
+   * 取得した変数の中から予約語を抽出し、RankingMessageSchema に適合する形に変換
+   */
+  private buildRankingData(vars: Record<string, string>): RankingMessageType | undefined {
+    // slot0 - slot9 を収集
+    const slots: string[] = []
+    for (let i = 0; i <= 9; i++) {
+      const key = `slot${i}`
+      if (vars[key] !== undefined) {
+        slots.push(vars[key])
+      }
+    }
+
+    // text (scoreText) が無い、あるいはslotsが空の場合はランキングを生成しない
+    if (!vars['text'] && slots.length === 0) return
+
+    try {
+      // Zod スキーマを使用して安全にパース
+      return RankingMessageSchema.parse({
+        scriptKey: 'basicList',
+        listName: vars['name'],
+        symbol: vars['symbol'],
+        scoreText: vars['text'],
+        variant: vars['variant'],
+        isUniqueUser: vars['unique'] !== 'false',
+        isRank: true,
+        slots: slots.length > 0 ? slots : undefined,
+      })
+    } catch (error) {
+      console.warn('Ranking data construction failed:', error)
+      return undefined
+    }
   }
 }

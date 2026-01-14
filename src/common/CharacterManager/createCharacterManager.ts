@@ -20,14 +20,23 @@ export const createCharacterManager = (charactersMap: Ref<Record<string, Charact
   }
 
   /**
-   * キャラクターが有効かどうかを判定
-   * TODO: image.default がないならfalseだったが、
-   * 現在は character オブジェクトが存在するかどうかだけで判定してる
+   * キャラクターが有効（表示可能）かどうかを判定
+   * - キャラクターオブジェクトが存在する
+   * - かつ、最低1つの感情に画像が存在する
    */
   const isValidCharacter = (characterKey: string | null): boolean => {
     if (!characterKey) return false
+
     const character = charactersMap.value[characterKey]
-    return !!character
+    if (!character) return false
+
+    // 少なくとも1つの感情に画像があるかチェック
+    const hasAnyImage = characterEmotions.some((emotion) => {
+      const imagePaths = character.image?.[emotion]
+      return imagePaths?.some((path: string) => path && path.trim() !== '')
+    })
+
+    return hasAnyImage
   }
 
   const getAvailableEmotions = (characterKey: string | null): CharacterEmotionType[] => {

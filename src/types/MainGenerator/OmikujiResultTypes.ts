@@ -8,18 +8,8 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
  * VariablePlaceholderProcessor.ts の ProcessResult と構造を一致させる
  */
 export interface VariablePlaceholderResult {
-  // 置換後のメッセージ本文
-  bubble: string
-
-  // ランキング生成に使用する特定のキー
-  name?: string
-  text?: string
-  symbol?: string
-  variant?: string
-  unique?: string
-
-  // その他の任意の変数 (VariablePlaceholderProcessor から返される全ての変数)
-  [key: string]: string | undefined
+  bubble: string // 置換後のメッセージ本文
+  ranking?: RankingMessageType // ランキング生成に使用する特定のキー
 }
 
 /**

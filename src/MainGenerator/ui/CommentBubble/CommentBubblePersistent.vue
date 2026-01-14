@@ -19,8 +19,8 @@
           />
         </div>
 
-        <!-- キャラクター画像 -->
-        <div class="flex justify-center items-end">
+        <!-- キャラクター画像（画像がある場合のみ表示） -->
+        <div v-if="isValidCharacter(character.key)" class="flex justify-center items-end">
           <LayerImage :layers="getCharacterLayers(character.key)" :size="bubble.characterSize" />
         </div>
       </div>
@@ -44,6 +44,7 @@
     bubble,
     start,
     stop,
+    isValidCharacter, // 追加
   } = useCommentBubblePersistent()
 
   // キャラクタースタイル（最新発言者をハイライト）

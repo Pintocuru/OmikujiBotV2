@@ -110,7 +110,7 @@ export class OmikujiResultProcessor {
   private processVariables(actions: PostActionType[]): ProcessedPostAction[] {
     return actions.map((action): ProcessedPostAction => {
       // message以外、またはbubbleがない場合はそのまま
-      if (action.actionType !== 'message' || action.message.bubble) return { action }
+      if (action.actionType !== 'message' || !action.message.bubble) return { action }
 
       // 変数処理の実行（ランキング抽出等）
       const result = this.variableProcessor.process(action.message.bubble)

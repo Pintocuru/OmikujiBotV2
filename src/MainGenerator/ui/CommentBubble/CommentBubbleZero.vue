@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\CommentBubble\CommentBubbleZero.vue -->
+<!-- src/MainGenerator/ui/CommentBubble/CommentBubbleZero.vue -->
 <template>
   <div class="relative h-screen">
     <!-- 0番地キャラクターのコメント表示エリア（中央上部） -->
@@ -14,7 +14,7 @@
           <!-- キャラクター（最新コメント時のみ表示） -->
           <div class="absolute top-[180px] left-0 right-0 flex justify-center">
             <CharacterLayerImage
-              v-if="message.bubble && index === 0 && isValidCharacter(message.bubble?.characterKey)"
+              v-if="shouldShowCharacterImage(message, index)"
               :layers="iconSrc(message.bubble?.characterKey, message.bubble?.iconKey)"
               :size="bubble.characterSize"
               :color="message.bubble?.color"
@@ -57,12 +57,29 @@
 
       // null の場合はキャラクター非表示モードなのでそのまま表示させる
       if (message.bubble?.characterKey === null) return true
+
+      // allowKeys に含まれていればフキダシは表示
+      // ※ 画像の有無は問わない
       return allowKeys.includes(message.bubble?.characterKey)
     })
   })
 
   // 既存のuseBotDisplayはそのまま使用
   const { displayedComments, removeComment, start, stop } = useBotDisplay(zeroIndexMessages)
+
+  // キャラクター画像を表示すべきかどうかを判定
+  const shouldShowCharacterImage = (message: BotMessageCommentType, index: number): boolean => {
+    if (!message.bubble) return false
+    if (index !== 0) return false // 最新コメントのみ
+
+    const characterKey = message.bubble.characterKey
+
+    // キャラクター非表示モード
+    if (characterKey === null) return false
+
+    // キャラクターが有効（画像がある）場合のみ表示
+    return isValidCharacter(characterKey)
+  }
 
   onMounted(() => start())
   onUnmounted(() => stop())

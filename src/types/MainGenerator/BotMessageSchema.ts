@@ -56,6 +56,7 @@ export const RankingMessageSchema = z.object({
   scriptKey: z.string().default(''), // アイテム判別用key
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
+  slots: z.array(z.string()).optional(), // 任意の値
 })
 export type RankingMessageType = z.infer<typeof RankingMessageSchema>
 

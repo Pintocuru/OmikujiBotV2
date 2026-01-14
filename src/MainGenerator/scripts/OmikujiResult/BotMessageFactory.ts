@@ -60,16 +60,9 @@ export class BotMessageFactory {
 
     // 2. ランキングメッセージを作成（存在する場合のみ）
     if (ranking) {
-      const rankingMessage = BotMessageRankingSchema.parse({
-        type: 'ranking',
-        delaySeconds: delaySeconds + 0.1, // 吹き出しより少し遅らせる
-        ranking,
-        user: omiken ? UserNameSchema.parse(omiken) : undefined,
-      })
-
+      const rankingMessage = this.createRankingMessage(delaySeconds, ranking, omiken)
       messages.push(rankingMessage)
     }
-
     return messages
   }
 
@@ -95,10 +88,6 @@ export class BotMessageFactory {
       })
       return null
     }
-  }
-
-  isCharacterModeEnabled(): boolean {
-    return this.isCharacterMode
   }
 
   private checkIsCharacter(omikujiData: OmikujiDataType): boolean {
