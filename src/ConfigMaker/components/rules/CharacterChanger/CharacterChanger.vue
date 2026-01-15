@@ -47,7 +47,7 @@
           <CharacterMappingEditor
             :character-keys="uniqueCharacterKeys"
             :character-mappings="characterMappings"
-            :characters-array="charactersArray"
+            :characters-array="characterArray"
             :usage-count="characterUsageCount"
             :get-character-name="getCharacterName"
             :has-changes="hasChanges"
@@ -107,7 +107,7 @@
   )
 
   // キャラクターデータ
-  const { charactersArray, getCharacterName } = useCharacterManager()
+  const { characterArray, characterMap } = useCharacterManager()
 
   // キャラクター統計
   const { uniqueCharacterKeys, characterUsageCount, invalidCharacterCount, hasInvalidCharacters } =
@@ -125,6 +125,11 @@
 
   // キャラクター更新処理
   const { applyMappingsToAllItems } = useCharacterUpdater(props.category, allItems)
+
+  // TODO:変な関数を作ってしまったので、後で修正
+  const getCharacterName = (charKey: string) => {
+    return characterMap.value[charKey]?.displayName
+  }
 
   /**
    * モーダルを開く（未定義キャラクターは初期選択状態に）

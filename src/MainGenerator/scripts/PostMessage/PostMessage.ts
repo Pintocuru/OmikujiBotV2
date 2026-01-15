@@ -59,8 +59,11 @@ export class PostMessage {
 
     // わんコメ投稿の処理
     if (chara && shouldPostAsComment(chara)) {
-      await this.ensureServiceExists(chara)
-      this.postAsComment(bubble, chara, delaySeconds)
+      // frameId があればわんコメへ、なければボイスへ
+      const frameId = await this.ensureServiceExists(chara)
+      if (frameId) this.postAsComment(bubble, chara, delaySeconds)
+      else postSpeech(bubble, delaySeconds)
+      return
     }
 
     // ボイス投稿の処理
@@ -94,22 +97,20 @@ export class PostMessage {
   /**
    * キャラクターに対応するサービスが存在することを保証
    */
-  private async ensureServiceExists(chara: CharacterType): Promise<void> {
+  private async ensureServiceExists(chara: CharacterType): Promise<string | null> {
     const frameId = chara.displayOption.frameId
-    if (!frameId) return
+    if (!frameId || frameId.trim() === '') return null
 
     if (!isServiceExists(frameId, this.services, this.createdServiceIds)) {
-      await this.createService(chara)
+      return await this.createService(chara, frameId)
     }
+    return frameId
   }
 
   /**
    * 新しいサービス(枠)を作成
    */
-  private async createService(chara: CharacterType): Promise<void> {
-    const frameId = chara.displayOption.frameId
-    if (!frameId) return
-
+  private async createService(chara: CharacterType, frameId: string): Promise<string> {
     try {
       const newService = await this.serviceAPI.createService(chara.name, frameId, chara.color.backgroundColor)
 
@@ -119,6 +120,7 @@ export class PostMessage {
         const updatedServices = await this.serviceAPI.getServices()
         this.services = updatedServices ?? []
       }
+      return frameId
     } catch (error) {
       console.error(`枠作成に失敗: ${chara.name} (${frameId})`, error)
       throw error

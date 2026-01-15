@@ -1,69 +1,42 @@
 // src\MainGenerator\scripts\CharacterManager\useCharacterManager.ts
 import { computed } from 'vue'
-import { CharacterSchema, CharacterType, ShowCharactersSchema } from '@/types/'
-import { createCharacterEmotions } from '@/common/CharacterManager/createCharacterManager'
 import { useAppStore } from '@main/stores/useAppStore'
-import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+import { CharacterManager } from '../CharacterManager/CharacterManager'
+import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
 
+/**
+ * Vueコンポーネント用：CharacterManager のリアクティブなラッパー
+ * ロジックの実体は CharacterManager クラスに集約されている
+ */
 export const useCharacterManager = () => {
   const appStore = useAppStore()
 
-  // ライセンス状態で閲覧できないなら表示させない
-  const { isCharacter } = useVisibilityAccess()
+  // CharacterManager のインスタンス
+  const manager = computed(() => new CharacterManager(appStore.data))
 
-  const defaultBubbleColor = computed(() => appStore.data.components.bubble.defaultColor)
-  const defaultToastColor = computed(() => appStore.data.components.toast.defaultColor)
-
-  // 使用されているキャラクターデータを取得
-  const charactersMap = computed(() => {
-    if (!isCharacter.value) {
-      return {
-        default: CharacterSchema.parse({
-          key: 'default',
-          color: appStore.data.components.bubble.defaultColor,
-        }),
-      }
-    }
-
-    return appStore.data.characters
-  })
-
-  // 使用されているキャラクターのプリセットを配列で取得
-  const characterArray = computed(() => {
-    if (!isCharacter.value)
-      return [
-        CharacterSchema.parse({
-          key: 'default',
-          color: appStore.data.components.toast.defaultColor,
-        }),
-      ]
-    const characters = appStore.data.characters
-    if (Object.keys(characters).length === 0) return []
-    return Object.values(characters).sort((a, b) => a.order - b.order)
-  })
-
-  // order が一番若い（最小）キャラクターを取得
-  const getFirstCharacter = (): CharacterType | null => {
-    const characters = Object.values(appStore.data.characters)
-    if (characters.length === 0) return null
-
-    return characters.reduce((min, current) => (current.order < min.order ? current : min))
-  }
-
+  // 表示設定 (bubbleコンポーネントの表示位置設定などで使用)
   const showCharacters = computed(() => {
-    if (isCharacter.value) return appStore.data.components.bubble.showCharacters
-
-    // キャラクターを表示しないときの showCharacters の default
-    return ShowCharactersSchema.parse({ center: ['default'] })
+    // キャラクターモードが無効な場合は、中央にデフォルトキャラのみを表示する設定を返す
+    if (!manager.value.isCharacterMode) {
+      return ShowCharactersSchema.parse({ center: ['default'] })
+    }
+    return appStore.data.components.bubble.showCharacters
   })
 
   return {
-    charactersMap,
-    characterArray,
-    getFirstCharacter,
+    // Manager インスタンス自体へのアクセスを提供
+    manager: manager.value,
+
+    // リアクティブなプロパティ
+    isCharacter: computed(() => manager.value.isCharacterMode),
+    characterMap: computed(() => Object.fromEntries(manager.value.characterMap)),
+    characterArray: computed(() => manager.value.characterArray),
     showCharacters,
-    defaultBubbleColor,
-    defaultToastColor,
-    ...createCharacterEmotions(charactersMap),
+
+    // ロジックメソッド（後方互換性と利便性のため）
+    isValidCharacter: (key: string | null) => manager.value.isValidCharacter(key),
+    hasImage: (key: string | null) => manager.value.hasImage(key),
+    resolveEmotion: (key: string, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion),
+    iconSrc: (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion),
   }
 }

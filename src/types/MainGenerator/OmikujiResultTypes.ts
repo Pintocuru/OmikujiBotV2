@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultTypes.ts
-import { PostActionType } from '@/types/OmikujiData/'
+import { CharacterEmotionType, PostActionType } from '@/types/OmikujiData/'
 import { RankingMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -26,7 +26,7 @@ export interface ProcessedPostAction {
  */
 export interface CreateBotMessageParams {
   characterKey: string
-  iconKey: string
+  iconKey: CharacterEmotionType
   delaySeconds: number
   isToast: boolean
   bubble: string

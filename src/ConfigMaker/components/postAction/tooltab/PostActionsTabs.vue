@@ -86,9 +86,9 @@
   const { isPlaceholder } = useVisibilityAccess()
 
   // キャラクターオプションの取得
-  const { charactersMap } = useCharacterManager()
+  const { characterMap } = useCharacterManager()
   const characterOptions = computed(() => {
-    return Object.entries(charactersMap.value).map(([key, char]) => ({
+    return Object.entries(characterMap.value).map(([key, char]) => ({
       value: key,
       label: char.name,
     }))

@@ -1,61 +1,71 @@
-<!-- src/MainGenerator/components/CommentBubble/CommentBubblePersistent.vue -->
+<!-- src/MainGenerator/components/CommentBubble/CommentBubblePersistentItem.vue -->
 <template>
-  <div class="absolute bottom-0 left-0 right-0 flex justify-center items-end">
-    <div
-      v-for="{ character, slotIndex } in slotCharacters"
-      :key="character.key"
-      class="relative pointer-events-auto -mx-4"
-      :style="getCharacterStyle(character.key)"
-    >
-      <div class="relative flex flex-col items-center">
-        <!-- コメント吹き出し -->
-        <div class="absolute bottom-full -translate-y-36 left-1/2 -translate-x-1/2 min-w-[320px]">
-          <CommentDisplay
-            :displayed-comments="getCharacterComments(character.key)"
-            :remove-comment="(id) => removeCommentWithEmotionUpdate(id, character.key)"
-            :enter-motion="enterMotion"
-            :leave-motion="enterMotion"
-            :animated-text="bubble.bubbleTextAnimate"
-          />
-        </div>
+  <div class="relative pointer-events-auto -mx-4" :style="characterStyle">
+    <div class="relative flex flex-col items-center">
+      <!-- コメント吹き出し -->
+      <div class="absolute bottom-full -translate-y-36 left-1/2 -translate-x-1/2 min-w-[320px]">
+        <CommentDisplay
+          :displayed-comments="messages"
+          :remove-comment="handleRemoveComment"
+          :enter-motion="enterMotion"
+          :leave-motion="enterMotion"
+          :animated-text="bubble.bubbleTextAnimate"
+        />
+      </div>
 
-        <!-- キャラクター画像（画像がある場合のみ表示） -->
-        <div v-if="isValidCharacter(character.key)" class="flex justify-center items-end">
-          <LayerImage :layers="getCharacterLayers(character.key)" :size="bubble.characterSize" />
-        </div>
+      <!-- キャラクター画像（画像がある場合のみ表示） -->
+      <div v-if="isValidCharacter(character.key)" class="flex justify-center items-end">
+        <LayerImage :layers="characterLayers" :size="bubble.characterSize" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { onMounted, onUnmounted } from 'vue'
-  import { useCommentBubblePersistent } from './composables/useCommentBubblePersistent'
+  import { computed } from 'vue'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterEmotionState } from './composables/useCharacterEmotionState'
   import CommentDisplay from './CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import { BotMessageCommentType, CharacterType } from '@/types'
 
-  const {
-    slotCharacters,
-    latestCommenterKey,
-    getCharacterLayers,
-    getCharacterComments,
-    removeCommentWithEmotionUpdate,
-    enterMotion,
-    bubble,
-    start,
-    stop,
-    isValidCharacter, // 追加
-  } = useCommentBubblePersistent()
+  const props = defineProps<{
+    character: CharacterType
+    slotIndex: number
+    messages: BotMessageCommentType[]
+    isActive: boolean
+  }>()
+
+  const emit = defineEmits<{
+    removeComment: [messageId: string]
+  }>()
+
+  const appStore = useAppStore()
+  const { characterMap, isValidCharacter } = useCharacterManager()
+
+  // 設定取得
+  const bubble = computed(() => appStore.data.components.bubble || {})
+  const enterMotion = computed(() => bubble.value.bubbleMotionEnter)
+
+  // キャラクター感情状態（composableを統合）
+  const messagesRef = computed(() => props.messages)
+  const { getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(messagesRef, characterMap)
+
+  // このキャラクターのレイヤー
+  const characterLayers = computed(() => getCharacterLayers(props.character.key))
 
   // キャラクタースタイル（最新発言者をハイライト）
-  const getCharacterStyle = (key: string) => {
-    const isActive = key === latestCommenterKey.value
-    return {
-      zIndex: isActive ? 50 : 0,
-      filter: isActive ? 'brightness(100%)' : 'brightness(60%)',
-    }
-  }
+  const characterStyle = computed(() => ({
+    zIndex: props.isActive ? 50 : 0,
+    filter: props.isActive ? 'brightness(100%)' : 'brightness(60%)',
+  }))
 
-  onMounted(start)
-  onUnmounted(stop)
+  // コメント削除時の処理（親にemit）
+  const handleRemoveComment = (messageId: string) => {
+    emit('removeComment', messageId)
+
+    // 感情状態を更新
+    updateCharacterEmotion(props.character.key)
+  }
 </script>

@@ -7,7 +7,7 @@ import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
-import { createBotMessages } from '../RuleProcess/RestrictionMessageBuilder'
+import { createFirstBotMessages } from '@main/scripts/RuleProcess/RestrictionMessageBuilder'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 /**
@@ -46,7 +46,7 @@ export class OmikujiProcessor {
         const { userVisitManager } = useAppStore()
         userVisitManager.resetRuleVisits(ruleKey)
         const msg = `${actionItem.name}のおみくじ回数をリセットしたよ`
-        return createBotMessages(msg)
+        return createFirstBotMessages(msg)
       }
       // log は回数を伝える
       if (actionItem.special === 'log') {
@@ -55,7 +55,7 @@ export class OmikujiProcessor {
         const totalVisits = userVisitManager.getTotalVisitsByRuleId(ruleKey)
         const totalUnique = userVisitManager.getUniqueVisitorCountByRuleId(ruleKey)
         const msg = `${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`
-        return createBotMessages(msg)
+        return createFirstBotMessages(msg)
       }
     }
 

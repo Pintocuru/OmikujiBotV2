@@ -1,8 +1,7 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
-import { BotMessageCommentSchema, BotMessageType, CommentRuleType } from '@/types/'
+import { BotMessageCommentSchema, BotMessageCommentType, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
-import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
 
 /**
  * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
@@ -42,18 +41,17 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 /**
  * メッセージを作成
  */
-export function createBotMessages(message: string, isToast: boolean = false): BotMessageType[] {
-  const { isCharacter } = useVisibilityAccess()
-  const { defaultToastColor } = useCharacterManager()
-  const firstCharacter = useCharacterManager().getFirstCharacter()
+export function createFirstBotMessages(message: string, isToast: boolean = false): BotMessageCommentType[] {
+  const { characterArray } = useCharacterManager()
+  const firstCharacter = characterArray.value[0]
 
-  const botMessageData: BotMessageType = BotMessageCommentSchema.parse({
+  const botMessageData: BotMessageCommentType = BotMessageCommentSchema.parse({
     bubble: {
       name: firstCharacter?.name,
       message,
       isToast,
       characterKey: firstCharacter?.key,
-      color: isCharacter.value && firstCharacter ? firstCharacter.color : defaultToastColor.value,
+      color: firstCharacter.color,
     },
   })
 
@@ -63,11 +61,14 @@ export function createBotMessages(message: string, isToast: boolean = false): Bo
 /**
  * 制限チェック結果からBotMessageを生成
  */
-export function buildRestrictionMessages(result: RestrictionCheckResult, rule: CommentRuleType): BotMessageType[] {
+export function buildRestrictionMessages(
+  result: RestrictionCheckResult,
+  rule: CommentRuleType
+): BotMessageCommentType[] {
   if (!result.isBlocked) return []
 
   const message = createMessage(result, rule)
   if (!message) return []
 
-  return createBotMessages(message, true)
+  return createFirstBotMessages(message, true)
 }

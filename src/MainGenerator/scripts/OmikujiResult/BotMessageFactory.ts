@@ -2,74 +2,80 @@
 import {
   BotMessageCommentSchema,
   BotMessageRankingSchema,
+  BotMessageRankingType,
   BotMessageType,
   RankingMessageType,
 } from '@/types/MainGenerator/BotMessageSchema'
 import { CharacterColorType, CharacterType, OmikujiDataType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
-import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 import { CreateBotMessageParams } from '@/types/MainGenerator/OmikujiResultTypes'
+import { CharacterManager } from '../CharacterManager/CharacterManager'
 
 /**
- * BotMessage生成とキャラクター管理
+ * BotMessageの生成を担当
+ * キャラクターの解決は CharacterManager に委譲する
  */
 export class BotMessageFactory {
-  private characterMap: Map<string, CharacterType>
-  private isCharacterMode: boolean
-  private defaultColors: { bubble: CharacterColorType; toast: CharacterColorType }
+  private characterManager: CharacterManager
 
   constructor(omikujiData: OmikujiDataType) {
-    this.characterMap = new Map(Object.values(omikujiData.characters).map((char) => [char.key, char]))
-    this.isCharacterMode = this.checkIsCharacter(omikujiData)
-    this.defaultColors = {
-      bubble: omikujiData.components.bubble.defaultColor,
-      toast: omikujiData.components.toast.defaultColor,
-    }
+    this.characterManager = new CharacterManager(omikujiData)
   }
 
   /**
-   * BotMessageを生成（bubble + ranking）
+   * BotMessageを構築。表示すべき内容がない場合は空配列を返す。
    */
   createBotMessages(params: CreateBotMessageParams): BotMessageType[] {
     const messages: BotMessageType[] = []
-    const { characterKey, iconKey, delaySeconds, isToast, bubble, ranking, omiken } = params
+    const { delaySeconds, isToast, bubble, ranking, omiken } = params
 
-    const character = this.getCharacter(characterKey)
-    const isChar = this.isCharacterMode && character
-    const colorType = isToast ? 'toast' : 'bubble'
-    const color = isChar ? character.color : this.defaultColors[colorType]
+    const hasBubble = bubble.trim().length > 0
 
-    // 1. コメントメッセージを作成
-    const commentMessage = BotMessageCommentSchema.parse({
-      type: 'comment',
-      delaySeconds,
-      bubble: {
-        name: isChar ? character.displayName : '',
-        message: bubble,
-        isToast,
-        characterKey: isChar ? characterKey : null,
-        iconKey,
-        color,
-      },
-      display: { visible: true },
-      user: omiken ? UserNameSchema.parse(omiken) : undefined,
+    // 表示するものが何もない場合は空配列を返す
+    if (!hasBubble && !!ranking) return []
+
+    // 1. キャラクターとアイコンの解決 (Managerに委譲)
+    const { characterKey, iconKey } = this.characterManager.resolveCharacter({
+      characterKey: params.characterKey,
+      iconKey: params.iconKey,
     })
 
-    messages.push(commentMessage)
+    // 2. キャラクターオブジェクトの取得 (Managerが必ずdefaultを返してくれる)
+    const character = this.characterManager.getCharacter(characterKey)
 
-    // 2. ランキングメッセージを作成（存在する場合のみ）
-    if (ranking) {
+    // 3. コメントメッセージを作成 (本文がある場合のみ)
+    if (hasBubble) {
+      const commentMessage = BotMessageCommentSchema.parse({
+        delaySeconds,
+        bubble: {
+          name: character.displayName,
+          message: bubble,
+          isToast,
+          characterKey,
+          iconKey,
+          color: character.color,
+        },
+      })
+      messages.push(commentMessage)
+    }
+
+    // 4. ランキングメッセージを作成 (存在する場合のみ)
+    if (!!ranking) {
       const rankingMessage = this.createRankingMessage(delaySeconds, ranking, omiken)
       messages.push(rankingMessage)
     }
+
     return messages
   }
 
   /**
    * ランキングのみのBotMessageを生成
    */
-  createRankingMessage(delaySeconds: number, ranking: RankingMessageType, omiken?: OmikenCommentType): BotMessageType {
+  createRankingMessage(
+    delaySeconds: number,
+    ranking: RankingMessageType,
+    omiken?: OmikenCommentType
+  ): BotMessageRankingType {
     return BotMessageRankingSchema.parse({
       type: 'ranking',
       delaySeconds,
@@ -78,24 +84,10 @@ export class BotMessageFactory {
     })
   }
 
-  getCharacter(characterKey: string): CharacterType | null {
-    try {
-      return this.characterMap.get(characterKey) ?? null
-    } catch (error) {
-      console.warn('Character resolution failed:', {
-        characterKey,
-        error: error instanceof Error ? error.message : error,
-      })
-      return null
-    }
-  }
-
-  private checkIsCharacter(omikujiData: OmikujiDataType): boolean {
-    const { featureUsage, characters, settings } = omikujiData
-    const usageCharacters = featureUsage.usage.characters
-    const hasCharacters = Object.keys(characters).length > 0
-    const mode = resolveSettingMode(settings.licenseKeyHash)
-
-    return hasAccessPure(usageCharacters, mode) && hasCharacters
+  /**
+   * Generator 等から参照するための公開メソッド
+   */
+  getCharacter(characterKey: string | null): CharacterType {
+    return this.characterManager.getCharacter(characterKey)
   }
 }

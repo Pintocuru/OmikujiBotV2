@@ -130,13 +130,9 @@
     updateFieldValue(field, defaults[field])
   }
 
-  // ランダムカラー取得
+  // 最初のキャラのカラー取得
   const localColor = computed(() => {
-    const { firstCharacter } = useCharacterManager()
-    const { isCharacter } = useVisibilityAccess()
-
-    if (isCharacter.value && firstCharacter.value) return firstCharacter.value.color
-
-    return bubble.value.defaultColor
+    const { characterArray } = useCharacterManager()
+    return characterArray.value[0].color
   })
 </script>

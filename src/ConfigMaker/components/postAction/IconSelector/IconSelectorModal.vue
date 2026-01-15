@@ -46,17 +46,14 @@
   }>()
 
   // キャラクター感情のコンポーザブルを使用
-  const { getAvailableEmotions, charactersMap, iconSrc } = useCharacterManager()
+  const { characterMap, iconSrc } = useCharacterManager()
 
   const modalRef: Ref<HTMLDialogElement | null> = ref(null)
 
   const characterName = computed(() => {
-    const character = charactersMap.value[props.characterKey]
+    const character = characterMap.value[props.characterKey]
     return character?.name || ''
   })
-
-  // 利用可能な感情のみを表示
-  const availableEmotions = computed(() => getAvailableEmotions(props.characterKey))
 
   const selectEmotion = (emotion: CharacterEmotionType) => {
     emit('select:icon', emotion)
