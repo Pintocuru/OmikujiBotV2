@@ -1,7 +1,9 @@
 <!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
-  <GameRankingManager v-if="ranking.targetScriptKeys.length > 0" :botMessages="[]" :settings="ranking" />
+  <div v-if="ranking.targetScriptKeys.length > 0" class="max-h-56 overflow-y-hidden">
+    <GameRankingManager :botMessages="[]" :settings="ranking" />
+  </div>
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
 
   <!-- テーマカラー -->

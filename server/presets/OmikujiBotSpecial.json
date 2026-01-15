@@ -15146,7 +15146,10 @@
     ],
     "bubble": {
       "showCharacters": {
-        "center": [],
+        "center": [
+          "omiken",
+          "omiken_2"
+        ],
         "slot1": [
           "chocolate"
         ],
@@ -15170,26 +15173,23 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "primary",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": true,
       "showThumbnail": []
     },
     "ranking": {
       "targetScriptKeys": [
-        "basicList"
+        "basicList",
+        "GouseiSuika",
+        "BomberSpin",
+        "DwarfBomb",
+        "MultiplyBonanza",
+        "HugEmAll",
+        "GoogolClover"
       ],
       "title": "🥠おみくじ履歴⛩️",
       "color": "lofi",
-      "limit": 20,
+      "limit": 5,
       "sortOrder": "new",
       "component": "rankStandard"
     },
