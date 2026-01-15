@@ -1,5 +1,5 @@
 // shared/types/GameScriptTypes.ts
-import { BotMessageType, PostActionType } from '@/types/'
+import { BotMessageRankingType, PostActionType } from '@/types/'
 import { GameStateType } from '@game/scriptsEngine/LogRank/GameScriptSchema'
 import { PresetMetadata } from '@shared/types/'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -11,7 +11,7 @@ export interface ScriptPreset extends PresetMetadata {
 
 export type ScriptResult = {
   actions: PostActionType[]
-  messages: BotMessageType[]
+  rankingMessages: BotMessageRankingType[]
 }
 
 // スクリプトのメイン実行クラス

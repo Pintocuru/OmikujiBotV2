@@ -8,7 +8,7 @@
         v-for="(message, i) in previewMessages"
         :key="i"
         :message="message.bubble?.message ?? '(未記入)'"
-        :color="message.bubble?.color ?? toastSettings.defaultColor"
+        :color="message.bubble?.color ?? bubbleSettings.defaultColor"
         :iconLayers="iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')"
         :showToastsOnRight="toastSettings.showToastsOnRight"
       />
@@ -27,11 +27,15 @@
   </div>
 
   <!-- デフォルトカラー設定 -->
-  <ColorModeSelector
-    v-if="!isCharacter"
-    :model-value="toastSettings.defaultColor"
-    @update:model-value="(value) => updateField('defaultColor', value)"
-  />
+  <template v-if="!isCharacter">
+    <ColorModeSelector
+      :model-value="bubbleSettings.defaultColor"
+      @update:model-value="(value) => updateBubbleField('defaultColor', value)"
+    />
+    <InformationCard>
+      <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
+    </InformationCard>
+  </template>
 
   <!-- 設定項目 -->
   <SettingItem
@@ -92,6 +96,7 @@
   import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -99,6 +104,7 @@
   const { iconSrc } = useCharacterManager()
 
   const toastSettings = computed(() => data.value.components.toast)
+  const bubbleSettings = computed(() => data.value.components.bubble)
   const characterArray = computed(() => Object.values(data.value.characters))
 
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
@@ -118,6 +124,17 @@
     })
   }
 
+  // 更新関数（値を直接受け取る）
+  const updateBubbleField = <K extends keyof typeof bubbleSettings.value>(
+    field: K,
+    value: (typeof bubbleSettings.value)[K]
+  ) => {
+    omikujiStore.updateNestedComponents('bubble', {
+      ...bubbleSettings.value,
+      [field]: value,
+    })
+  }
+
   // リセット関数
   const resetField = (field: keyof typeof toastSettings.value) => {
     const defaults = SettingsToastSchema.parse({})
@@ -125,7 +142,6 @@
   }
 
   const resetMap = {
-    defaultColor: () => resetField('defaultColor'),
     showToastsOnRight: () => resetField('showToastsOnRight'),
     showToastsCharacter: () => resetField('showToastsCharacter'),
     showThumbnail: () => resetField('showThumbnail'),
@@ -144,7 +160,7 @@
             message: messageText,
             isToast: true,
             characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
-            color: isCharacter.value ? character.color : toastSettings.value.defaultColor,
+            color: isCharacter.value ? character.color : bubbleSettings.value.defaultColor,
           },
         })
       })

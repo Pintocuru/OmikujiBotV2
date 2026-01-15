@@ -66,16 +66,20 @@ export class OmikujiResultProcessor {
   private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
     const scriptResult = this.scriptManager.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
+    const { actions, rankingMessages: messages } = scriptResult
 
     // 1. 変数プレースホルダーを処理
-    const processedActions = this.processVariables(scriptResult.actions)
+    const processedActions = this.processVariables(actions)
 
     // 2. わんコメへ投稿 (置換後のアクションを投稿)
     // 互換性のため、PostActionTypeに戻して送信
     this.postMessage.post(processedActions.map((a) => a.action))
 
     // 3. BotMessageを生成
-    return this.botMessageGenerator.generateMessages(processedActions, omiken)
+    const hoge = this.botMessageGenerator.generateMessages(processedActions, omiken)
+
+    // ゲームスクリプトと生成したメッセージを返す
+    return [...messages, ...hoge]
   }
 
   /**

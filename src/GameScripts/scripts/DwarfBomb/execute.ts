@@ -5,7 +5,7 @@ import { BomberSpinGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { prepareUserInfo, buildBotMessages } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'DwarfBomb'
 
@@ -27,7 +27,7 @@ export class ExecuteScript implements ScriptClass {
     const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 
     // BotMessage の構築
-    const botMessages = buildBotMessages({
+    const rankingMessages = buildBotMessageRanking({
       user,
       characterKey,
       bubbleText: gameResult.result.message,
@@ -42,7 +42,7 @@ export class ExecuteScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(logResult, partyEffects, characterKey, gameResult.result.message),
-      messages: botMessages,
+      rankingMessages,
     }
   }
 

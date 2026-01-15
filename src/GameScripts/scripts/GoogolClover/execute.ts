@@ -7,7 +7,7 @@ import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserState } from './sub/types'
-import { buildBotMessages, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { buildBotMessageRanking, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'
@@ -59,7 +59,7 @@ export class ExecuteScript implements ScriptClass {
 
     return {
       actions: postActions,
-      messages: [],
+      rankingMessages: [],
     }
   }
 

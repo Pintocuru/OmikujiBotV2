@@ -62,14 +62,14 @@
 
     if (allowKeys.length === 0) return []
 
-    return botMessages.value.filter((message): message is BotMessageCommentType => {
-      if (message.type !== 'comment') return false
-      if (isToastEnabled.value && message.bubble?.isToast) return false
+    return botMessages.value.filter((msg): msg is BotMessageCommentType => {
+      if (msg.type !== 'comment') return false
+      if (isToastEnabled.value && msg.bubble?.isToast) return false
 
       // null の場合はキャラクター非表示モードなのでそのまま表示
-      if (message.bubble?.characterKey === null) return true
+      if (msg.bubble?.characterKey === null) return true
 
-      return allowKeys.includes(message.bubble?.characterKey)
+      return allowKeys.includes(msg.bubble?.characterKey)
     })
   })
 

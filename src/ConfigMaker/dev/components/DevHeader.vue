@@ -41,7 +41,7 @@
       </template>
 
       <button
-        v-else
+        v-else-if="hasChanged"
         @click="devStore.overwriteOmikujiData"
         :disabled="devStore.isSaving"
         class="btn btn-primary btn-sm tooltip tooltip-top"

@@ -56,7 +56,6 @@
       const r = msg.ranking
       return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
     })
-
     return isDev ? [...base, ...devScoreMessages.value] : base
   })
 </script>

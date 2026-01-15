@@ -1,13 +1,5 @@
 // src/MainGenerator/scripts/omikujiProcess/GameScriptManager.ts
-import {
-  ActionSetType,
-  BotMessageType,
-  GameScriptsType,
-  OmikujiItemType,
-  PostActionType,
-  ScriptClass,
-  ScriptResult,
-} from '@/types/'
+import { GameScriptsType, ScriptClass, ScriptResult } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

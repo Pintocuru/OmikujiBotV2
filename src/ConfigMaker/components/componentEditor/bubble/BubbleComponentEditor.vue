@@ -11,11 +11,16 @@
   />
 
   <!-- デフォルトカラー設定 -->
-  <ColorModeSelector
-    v-if="!isCharacter"
-    :model-value="bubble.defaultColor"
-    @update:model-value="(value) => updateFieldValue('defaultColor', value)"
-  />
+  <template v-if="!isCharacter">
+    <ColorModeSelector
+      :model-value="bubble.defaultColor"
+      @update:model-value="(value) => updateFieldValue('defaultColor', value)"
+    />
+
+    <InformationCard>
+      <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
+    </InformationCard>
+  </template>
 
   <!-- フキダシアニメーション -->
   <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
@@ -94,6 +99,7 @@
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -133,6 +139,7 @@
   // 最初のキャラのカラー取得
   const localColor = computed(() => {
     const { characterArray } = useCharacterManager()
-    return characterArray.value[0].color
+    const first = characterArray.value[0]
+    return first ? first.color : omikujiStore.data.components.bubble.defaultColor
   })
 </script>
