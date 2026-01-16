@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
 import { soundList } from '@sounds/soundMap'
-import { PostActionType as OldPostActionType } from '@migrations/v1_to_v2/OmikujiDataV1/OmikujiSchema'
+import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v2/OmikujiDataV130/OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
 import { WeightValueSchema } from './PlaceholderSchema'

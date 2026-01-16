@@ -1,5 +1,5 @@
 // src\Toolkit\migrations\v1_to_v2\OmikujiDataV1\migrateV1ToV13.ts
-import { OmikujiDataTypeV1 } from './OmikujiDataV1/OmikujiDataSchema'
+import { OmikujiDataTypeV1 } from './OmikujiDataV130/OmikujiDataSchema'
 
 /**
  * v1からv1.3へのマイグレーション

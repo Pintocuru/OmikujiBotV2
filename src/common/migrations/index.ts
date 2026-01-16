@@ -1,5 +1,6 @@
 // src/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { OmikujiDataSchema as OmikujiDataSchemaV200 } from './v1_to_v2/OmikujiDataV200/OmikujiDataSchema'
 import { APP_VERSION, DATA_VERSION } from '@/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
@@ -48,6 +49,13 @@ export function normalizeData(data: unknown): OmikujiDataType {
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1.3 to v2...')
     updatedData = migrateV130ToV200(updatedData)
+  }
+
+  // v2.0.0 → v2.0.1
+  if (currentDataVersion < 2.01) {
+    console.log('Migrating data: v2.0.0 → v2.0.1')
+    updatedData = OmikujiDataSchemaV200.parse(updatedData)
+    updatedData.dataVersion = 2.01
   }
 
   // スキーマで保証
