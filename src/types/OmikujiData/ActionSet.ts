@@ -17,13 +17,12 @@ const PostActionBaseSchema = z.object({
 })
 
 // PostAction message
-// TODO:MessageMessageSchema という名称はどうにかならないか?
-export const PostActionMessageMessageSchema = z.object({
+export const PostActionMessageContentSchema = z.object({
   bubble: z.string().default('').catch(''),
   isToast: z.boolean().default(false).catch(false),
 })
 
-export type PostActionMessageMessageType = z.infer<typeof PostActionMessageMessageSchema>
+export type PostActionMessageMessageType = z.infer<typeof PostActionMessageContentSchema>
 
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
@@ -31,8 +30,8 @@ export const PostActionMessageSchema = z.object({
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   sound: z.enum(soundList).default('').catch(''),
-  message: PostActionMessageMessageSchema.default(PostActionMessageMessageSchema.parse({})).catch(
-    PostActionMessageMessageSchema.parse({})
+  message: PostActionMessageContentSchema.default(PostActionMessageContentSchema.parse({})).catch(
+    PostActionMessageContentSchema.parse({})
   ),
 })
 export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>

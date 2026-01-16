@@ -5,11 +5,11 @@ import {
   SettingsCounterSchema,
   SettingsRankingSchema,
   SettingsToastSchema,
-} from '@/types/OmikujiData/'
-import { OmikujiDataType } from '@/types/OmikujiData/'
-import { PostActionType } from '@/types/OmikujiData/'
-import { FeatureUsageSchema } from '@/types/OmikujiData/'
-import { SettingsSchema } from '@/types/OmikujiData/'
+  OmikujiDataType,
+  PostActionType,
+  FeatureUsageSchema,
+  SettingsSchema,
+} from './OmikujiDataV200/'
 import { OmikujiDataTypeV1 } from './OmikujiDataV130/OmikujiDataSchema'
 
 /**

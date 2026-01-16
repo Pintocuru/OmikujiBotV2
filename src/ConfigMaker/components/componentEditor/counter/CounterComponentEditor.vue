@@ -17,13 +17,13 @@
   <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="style in counterComponents"
-        :key="style.value"
+        v-for="(style, key) in counterComponents"
+        :key="key"
         class="badge cursor-pointer"
-        :class="counter.component === style.value ? 'badge-primary' : 'badge-outline'"
-        @click="updateCounterField('component', style.value)"
+        :class="counter.component === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateCounterField('component', key)"
       >
-        {{ style.label }}
+        {{ style }}
       </div>
     </div>
   </SettingItem>

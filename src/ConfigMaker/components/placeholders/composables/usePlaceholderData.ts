@@ -41,7 +41,7 @@ export function usePlaceholderData(actions: Ref<PostActionType[]>) {
     const allContent = actions.value
       .flatMap((action) => {
         if (action.actionType === 'message') {
-          return [action.message.bubble || '', action.message.toast || '']
+          return [action.message.bubble || '']
         } else if (action.actionType === 'wordParty') {
           return [action.wordParty || '']
         }

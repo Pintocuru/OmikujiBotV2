@@ -31,7 +31,7 @@
   const displayText = (action: PostActionType) => {
     switch (action.actionType) {
       case 'message':
-        return action.message.bubble || action.message.toast || 'error'
+        return action.message.bubble || 'error'
       case 'wordParty':
         return action.wordParty
       case 'sound':

@@ -75,7 +75,7 @@ export function updatePlaceholderReferences(oldKey: string, newKey: string): voi
   const updateFn = (action: PostActionType): PostActionType => {
     if (action.actionType === 'message') {
       const newMessage = { ...action.message }
-      ;(['bubble', 'toast'] as const).forEach((field) => {
+      ;(['bubble'] as const).forEach((field) => {
         if (newMessage[field]?.includes(oldPlaceholder)) {
           newMessage[field] = newMessage[field]!.replace(regex, newPlaceholder)
         }

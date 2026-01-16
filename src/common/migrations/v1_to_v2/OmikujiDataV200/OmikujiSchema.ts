@@ -1,7 +1,6 @@
 // types/OmikujiBot/OmikujiSchema.ts
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
-import { CriteriaThresholdSchema } from '../OmikujiProcess/CriteriaThresholdSchema'
 import { ActionSetSchema } from './ActionSet'
 
 /**
@@ -12,7 +11,8 @@ export const OmikujiItemSchema = z.object({
   weight: z.number().min(0).default(1).catch(1), // 出現割合
   rank: z.number().min(0).max(1).optional(), // 優先度
   isPriority: z.boolean().default(false).catch(false), // 優先 trueならrank=1
-  criteria: z.union([CriteriaThresholdSchema, z.null()]).default(null).catch(null),
+  // any > CriteriaThresholdSchema
+  criteria: z.union([z.any(), z.null()]).default(null).catch(null),
 })
 export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 

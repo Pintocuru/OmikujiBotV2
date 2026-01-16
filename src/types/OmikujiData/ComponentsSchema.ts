@@ -45,15 +45,17 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 /**
  * ランキング Ranking
  */
-// ソート方法の列挙型
-export const rankingSortOrders = ['new', 'high', 'low'] as const
-export type RankingSortOrder = (typeof rankingSortOrders)[number]
-
-export const rankingSortOrderLabels: Record<RankingSortOrder, string> = {
+export const rankingSortOrderLabels = {
   new: '新着順',
   high: 'スコア高い順',
   low: 'スコア低い順',
-}
+} as const
+export const RankingSortOrderSchema = z.enum(
+  Object.keys(rankingSortOrderLabels) as [RankingSortOrder, ...RankingSortOrder[]]
+)
+export type RankingSortOrder = keyof typeof rankingSortOrderLabels
+
+// 現在は１つだけ…
 export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
 
 export type RankingComponent = (typeof rankingComponents)[number]['value']
@@ -64,7 +66,7 @@ export const SettingsRankingSchema = z.object({
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
   limit: z.number().min(1).max(20).default(5).catch(5),
-  sortOrder: z.enum(rankingSortOrders).default('new').catch('new'),
+  sortOrder: RankingSortOrderSchema.default('new').catch('new'),
   component: z.enum(rankingValues).default('rankStandard').catch('rankStandard'),
 })
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
@@ -72,15 +74,15 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 /**
  * カウンター・ユーザーリスト Counter
  */
-export const counterComponents = [
-  { value: 'counterUser', label: 'カウンター+最後のユーザー' },
-  { value: 'counterTimer', label: '最後のユーザーからの経過時間' },
-  { value: 'userList', label: 'ユーザーリスト(バッジ)' },
-  { value: 'UserCardScroller', label: 'ユーザーリスト(縦型)' },
-] as const
+export const counterComponents = {
+  counterUser: 'カウンター+最後のユーザー',
+  counterTimer: '最後のユーザーからの経過時間',
+  userList: 'ユーザーリスト(バッジ)',
+  UserCardScroller: 'ユーザーリスト(縦型)',
+} as const
 
-export type CounterComponent = (typeof counterComponents)[number]['value']
-export const componentValues = counterComponents.map((c) => c.value) as CounterComponent[]
+export type CounterComponent = keyof typeof counterComponents
+export const componentValues = Object.keys(counterComponents) as CounterComponent[]
 
 export const SettingsCounterSchema = z.object({
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
@@ -94,17 +96,16 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 /**
  * アイテム設定
  */
-export const settingsComponentsCondition = ['bubble', 'toast', 'ranking', 'counter'] as const
-export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
-
-// アイテム名のマッピング
-export const componentLabels: Record<SettingsComponentsCondition, string> = {
+export const componentLabels = {
   bubble: 'フキダシ',
   toast: 'トースト',
   ranking: 'ランキング',
   counter: 'カウンター',
-}
-export const ComponentsConditionSchema = z.enum(settingsComponentsCondition)
+} as const
+export type SettingsComponentsCondition = keyof typeof componentLabels
+export const ComponentsConditionSchema = z.enum(
+  Object.keys(componentLabels) as [SettingsComponentsCondition, ...SettingsComponentsCondition[]]
+)
 
 /**
  * ComponentsSchema

@@ -81,13 +81,13 @@
     <SettingItem label="順位のソート" description="得点の高い順・低い順・新しい順から選べます">
       <div class="flex flex-wrap gap-2">
         <div
-          v-for="order in rankingSortOrders"
-          :key="order"
+          v-for="(order, key) in rankingSortOrderLabels"
+          :key="key"
           class="badge badge-lg cursor-pointer"
-          :class="ranking.sortOrder === order ? 'badge-primary' : 'badge-outline'"
-          @click="ranking.sortOrder = order"
+          :class="ranking.sortOrder === key ? 'badge-primary' : 'badge-outline'"
+          @click="ranking.sortOrder = key"
         >
-          {{ rankingSortOrderLabels[order] }}
+          {{ order }}
         </div>
       </div>
     </SettingItem>
@@ -121,7 +121,7 @@
   import { themes } from '@shared/styles/DaisyUiTheme'
   import GameRankingManager from '@/common/ui/GameRanking/GameRankingManager.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { isDev, rankingComponents, rankingSortOrderLabels, rankingSortOrders, SettingsRankingSchema } from '@/types/'
+  import { isDev, rankingComponents, rankingSortOrderLabels, SettingsRankingSchema } from '@/types/'
   import { getAvailableScripts } from '@game/GameScriptsRules'
   import { gameScriptMap } from '@game/GameScriptsMap'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
