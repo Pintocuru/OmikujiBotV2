@@ -6,19 +6,19 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         <div
-          v-for="emotion in characterEmotions"
-          :key="emotion"
-          @click="selectEmotion(emotion)"
+          v-for="(emotion, key) in emotionLabels"
+          :key="key"
+          @click="selectEmotion(key)"
           class="cursor-pointer rounded-lg border-2 transition-all hover:shadow-lg"
           :class="[
-            currentIconKey === emotion ? 'border-primary bg-primary-focus' : 'border-base-200 hover:border-base-300',
+            currentIconKey === key ? 'border-primary bg-primary-focus' : 'border-base-200 hover:border-base-300',
           ]"
         >
           <div class="text-center">
             <div class="w-32 h-32 mx-auto rounded-full items-center justify-center">
-              <LayerImage :layers="iconSrc(characterKey, emotion)" :size="32" />
+              <LayerImage :layers="iconSrc(characterKey, key)" :size="32" />
             </div>
-            <p class="text-sm text-base-content mt-4">{{ emotionLabels[emotion] }}</p>
+            <p class="text-sm text-base-content mt-4">{{ emotion }}</p>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
+  import { emotionLabels, CharacterEmotionType } from '@/types/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 

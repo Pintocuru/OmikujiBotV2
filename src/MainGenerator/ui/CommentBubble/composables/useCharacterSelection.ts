@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
-import { computed, type Ref } from 'vue'
-import { type ShowCharacters, type CharacterType, type BotMessageCommentType, characterEmotions } from '@/types/'
+import { computed, Ref } from 'vue'
+import { ShowCharacters, CharacterType, BotMessageCommentType, characterEmotionKeys } from '@/types/'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
 const defaultCharacterKey = 'default'
@@ -166,7 +166,7 @@ export function useCharacterSelection(
     Object.entries(charactersMap.value).forEach(([key, character]) => {
       if (key === 'default') return // defaultは特別扱い
 
-      const hasAnyImage = characterEmotions.some((emotion) => {
+      const hasAnyImage = characterEmotionKeys.some((emotion) => {
         const imagePaths = character.image?.[emotion]
         return imagePaths?.some((path: string) => path && path.trim() !== '')
       })
@@ -175,13 +175,12 @@ export function useCharacterSelection(
         issues.push(`⚠️ Character "${key}" (${character.name}) has NO images in any emotion state!`)
       }
 
-      // 詳細チェック
-      const emptyEmotions = characterEmotions.filter((emotion) => {
+      const emptyEmotions = characterEmotionKeys.filter((emotion) => {
         const imagePaths = character.image?.[emotion]
         return !imagePaths || imagePaths.every((path: string) => !path || path.trim() === '')
       })
 
-      if (emptyEmotions.length > 0 && emptyEmotions.length < characterEmotions.length) {
+      if (emptyEmotions.length > 0 && emptyEmotions.length < characterEmotionKeys.length) {
         console.info(`ℹ️ Character "${key}" is missing images for: ${emptyEmotions.join(', ')}`)
       }
     })

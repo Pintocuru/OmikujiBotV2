@@ -2,8 +2,8 @@
 <template>
   <div class="flex gap-1">
     <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-      <option v-for="emotion in characterEmotions" :key="emotion" :value="emotion">
-        {{ emotionLabels[emotion] }}
+      <option v-for="(emotion, key) in emotionLabels" :key="key" :value="key">
+        {{ emotion }}
       </option>
     </select>
     <div class="relative">
@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { emotionLabels, CharacterEmotionType, characterEmotions } from '@/types/'
+  import { emotionLabels, CharacterEmotionType } from '@/types/'
   import IconSelectorModal from './IconSelectorModal.vue'
   import { User } from 'lucide-vue-next'
 

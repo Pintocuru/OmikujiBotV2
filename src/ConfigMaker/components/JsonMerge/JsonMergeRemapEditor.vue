@@ -30,8 +30,8 @@
       <SettingItem label="元アイコンキー">
         <select v-model="localRemap.fromIconKey" class="select select-sm select-bordered w-full">
           <option value="">アイコンキーを選択…</option>
-          <option v-for="emotion in emotionOptions" :key="emotion" :value="emotion">
-            {{ emotionLabels[emotion] }}
+          <option v-for="(emotion, key) in emotionLabels" :key="key" :value="key">
+            {{ emotion }}
           </option>
         </select>
       </SettingItem>
@@ -40,8 +40,8 @@
       <SettingItem label="新アイコンキー">
         <select v-model="localRemap.toIconKey" class="select select-sm select-bordered w-full">
           <option value="">アイコンキーを選択…</option>
-          <option v-for="emotion in emotionOptions" :key="emotion" :value="emotion">
-            {{ emotionLabels[emotion] }}
+          <option v-for="(emotion, key) in emotionLabels" :key="key" :value="key">
+            {{ emotion }}
           </option>
         </select>
       </SettingItem>
@@ -54,7 +54,7 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
-  import { characterEmotions, CharacterEmotionType, CharacterType, emotionLabels } from '@/types/'
+  import { CharacterType, emotionLabels } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
   const props = defineProps<{
@@ -65,8 +65,6 @@
 
   const store = useOmikujiStore()
   const { data } = storeToRefs(store)
-
-  const emotionOptions = computed(() => characterEmotions as readonly CharacterEmotionType[])
 
   // 現在のリマップデータ
   const currentRemap = computed(

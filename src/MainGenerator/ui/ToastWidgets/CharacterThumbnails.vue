@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import { characterEmotions, CharacterType, BotMessageCommentSchema, BotMessageCommentType } from '@/types/'
+  import { CharacterType, BotMessageCommentSchema, BotMessageCommentType, characterEmotionKeys } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
@@ -50,7 +50,7 @@
 
         const shouldChange = Math.random() < 0.05
         if (shouldChange) {
-          const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
+          const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
           currentExpressions.value[index] = manager.resolveEmotion(character.key, randomEmotion)
         } else {
           currentExpressions.value[index] = 'default'
@@ -67,7 +67,7 @@
   const handleCharacterClick = (character: CharacterType, isRightClick: boolean) => {
     try {
       const shouldChangeExpression = Math.random() < 0.5
-      const randomEmotion = characterEmotions[Math.floor(Math.random() * characterEmotions.length)]
+      const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
       const defaultBubbleColor = appStore.data.components.bubble?.defaultColor
 
       // キャラクターの妥当性を考慮してデータを構成
