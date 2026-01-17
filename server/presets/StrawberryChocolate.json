@@ -8,16 +8,31 @@
     "generatorVersion": "v2.0.1",
     "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ストロベリーショコラ",
-      "占い",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "ストロベリーショコラ", "占い", "じゃんけん"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7733810"
   },
   "jsonMerge": [
+    {
+      "id": "1764984479468",
+      "key": "1764984479468",
+      "name": "タロットカード",
+      "createdAt": "2025-12-06T01:27:59.468Z",
+      "updatedAt": "2025-12-06T01:27:59.468Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "basic",
+      "sourceFile": "TarotCard.json",
+      "keySuffix": "",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "default",
+          "toIconKey": "laughing"
+        }
+      ]
+    },
     {
       "id": "1760544069848",
       "key": "1760544069848",
@@ -65,26 +80,6 @@
           "toCharacterKey": "chocolate",
           "fromIconKey": "sad",
           "toIconKey": "sad"
-        }
-      ]
-    },
-    {
-      "id": "1764984479468",
-      "key": "1764984479468",
-      "name": "タロットカード",
-      "createdAt": "2025-12-06T01:27:59.468Z",
-      "updatedAt": "2025-12-06T01:27:59.468Z",
-      "order": 0,
-      "tags": [],
-      "accessLevel": "basic",
-      "sourceFile": "TarotCard.json",
-      "keySuffix": "",
-      "remaps": [
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "chocolate",
-          "fromIconKey": "default",
-          "toIconKey": "laughing"
         }
       ]
     },
@@ -152,10 +147,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -229,15 +221,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "syoken"
-            ],
+            "syoken": ["syoken"],
             "count": {
               "comparison": "equal",
               "unit": "tc",
@@ -277,9 +265,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -295,17 +281,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -324,10 +304,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "コメント数表示"
-      ],
+      "tags": ["ショコラ", "コメント数表示"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -368,15 +345,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -395,10 +368,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -443,14 +413,10 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "userName": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "comment": []
       },
       "limits": {
@@ -470,10 +436,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -509,15 +472,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "syoken"
-            ],
+            "syoken": ["syoken"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -557,15 +516,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "again"
-            ],
+            "syoken": ["again"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -605,15 +560,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "firstVisit"
-            ],
+            "syoken": ["firstVisit"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -648,10 +599,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -687,9 +635,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -733,9 +679,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -776,10 +720,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "ショコラ",
-        "閲覧数チェック"
-      ],
+      "tags": ["ショコラ", "閲覧数チェック"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -867,10 +808,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
+      "tags": ["ショコラ", "告知"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -960,11 +898,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺",
-        "thinking"
-      ],
+      "tags": ["ショコラ", "初見詐欺", "thinking"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -998,10 +932,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1035,10 +966,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1072,10 +1000,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1121,10 +1046,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1158,10 +1080,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1200,10 +1119,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1237,10 +1153,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1274,10 +1187,7 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1310,10 +1220,7 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -1348,10 +1255,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "あら？<<user>>さん、初見だったかしら？",
@@ -1371,10 +1275,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
@@ -1394,10 +1295,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
@@ -1417,10 +1315,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
@@ -1440,10 +1335,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
@@ -1463,10 +1355,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
@@ -1486,10 +1375,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "あら、<<user>>さん、今日も来てくれて嬉しい♡",
@@ -1509,10 +1395,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
+      "tags": ["ショコラ", "告知"],
       "accessLevel": "basic",
       "values": [
         "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
@@ -1533,14 +1416,9 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "ショコラ",
-        "じゃんけん"
-      ],
+      "tags": ["ショコラ", "じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "ショコラ"
-      ]
+      "values": ["ショコラ"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -1552,14 +1430,9 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "ショコラ",
-        "じゃんけん"
-      ],
+      "tags": ["ショコラ", "じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "あたし"
-      ]
+      "values": ["あたし"]
     }
   },
   "characters": {
@@ -1573,10 +1446,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "ショコラ"
-      ],
+      "tags": ["おみくじBOT", "ショコラ"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1599,66 +1469,27 @@
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
-        "singing": [
-          "chocolate/singing.webp"
-        ],
-        "sleepy": [
-          "chocolate/sleepy.webp"
-        ]
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
+        "singing": ["chocolate/singing.webp"],
+        "sleepy": ["chocolate/sleepy.webp"]
       }
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast"
-    ],
+    "conditions": ["bubble", "toast"],
     "bubble": {
       "showCharacters": {
         "center": [],
-        "slot1": [
-          "chocolate"
-        ],
+        "slot1": ["chocolate"],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -1693,9 +1524,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "🍉スイカランキング🍉",
       "color": "lofi",
       "limit": 5,
@@ -1722,10 +1551,7 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [
-      "bubble",
-      "toast"
-    ],
+    "components": ["bubble", "toast"],
     "gameScripts": [],
     "developer": {
       "jsonMergeSettings": "basic",

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta14",
-    "dataVersion": 2.0014,
+    "generatorVersion": "v2.0.1",
+    "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -23,7 +23,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-13T05:15:51.587Z",
+      "updatedAt": "2026-01-17T00:33:52.339Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -43,7 +43,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
-          "type": "gameScripts",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -616,7 +616,6 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": "",
             "isToast": false
           }
         }
@@ -652,7 +651,6 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": "",
             "isToast": false
           }
         }
@@ -705,7 +703,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -758,7 +755,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -811,7 +807,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -864,7 +859,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -917,7 +911,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -970,7 +963,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1023,7 +1015,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1076,7 +1067,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1129,7 +1119,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1182,7 +1171,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1235,7 +1223,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1288,7 +1275,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1341,7 +1327,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1394,7 +1379,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -1596,7 +1580,7 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
+      "updatedAt": "2026-01-17T01:03:00.202Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1609,22 +1593,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -1638,6 +1606,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     },
     "omiken_2": {
@@ -1646,7 +1630,7 @@
       "name": "おみくじBOT2",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-10-10T07:35:47.624Z",
+      "updatedAt": "2026-01-17T01:03:37.661Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1659,22 +1643,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -1688,6 +1656,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
@@ -1710,9 +1694,9 @@
       },
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "black",
-        "backFrom": "info",
-        "backTo": "error",
+        "daisyUiTheme": "cyberpunk",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
@@ -1724,15 +1708,6 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "black",
-        "backFrom": "info",
-        "backTo": "error",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showThumbnail": []
@@ -1765,7 +1740,7 @@
       "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "none"
     },
     "components": [
       "toast",
@@ -1780,7 +1755,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "corporate"
   }
 }

@@ -8,6 +8,7 @@ import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { getAvailableScripts } from '@game/GameScriptsRules'
 import { getAvailableComponents } from '@config/components/componentEditor/componentRules'
 import { swalToast } from '../SweetAlert2/SweetAlert2Toast'
+import { isDev } from '@/types'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -49,6 +50,9 @@ export function normalizeData(data: unknown): OmikujiDataType {
   if (currentDataVersion < 2) {
     console.log('Migrating data from v1.3 to v2...')
     updatedData = migrateV130ToV200(updatedData)
+
+    // v1 > v2 のWelcomeトースト
+    swalToast.success({ title: 'Welcome to v2!', text: 'データが v2 形式にアップグレードされました。' })
   }
 
   // v2.0.0 → v2.0.1
@@ -69,6 +73,8 @@ export function normalizeData(data: unknown): OmikujiDataType {
   })
 
   // PRO,GOD-MODE だったときの FeatureUsageSchema 変更(Advは変更なし)
+  if (isDev) return hoge // devなら変更を行わない
+
   const licenseKeyHash = hoge.settings.licenseKeyHash
   const license = resolveSettingMode(licenseKeyHash)
   hoge.featureUsage.components = getAvailableComponents(license, hoge.featureUsage.components)

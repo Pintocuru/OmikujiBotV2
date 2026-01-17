@@ -8,8 +8,8 @@ import { usePostActionCharacters } from './usePostActionCharacters'
  * キャラクター使用状況の統計情報を提供
  */
 export function useCharacterStats(allActionSets: ComputedRef<ActionSetType[]>) {
-  const { isValidCharacter } = useCharacterManager()
-  const { extractCharacterKeysFromActionSet, countCharacterUsageFromActionSet } = usePostActionCharacters()
+  const { characterArray, isValidCharacter } = useCharacterManager()
+  const { extractCharacterKeys, countCharacterUsage } = usePostActionCharacters()
 
   /**
    * 使用されている全キャラクターキー
@@ -17,9 +17,9 @@ export function useCharacterStats(allActionSets: ComputedRef<ActionSetType[]>) {
   const uniqueCharacterKeys = computed(() => {
     const keys = new Set<string>()
     allActionSets.value.forEach((actionSet) => {
-      extractCharacterKeysFromActionSet(actionSet).forEach((key) => keys.add(key))
+      extractCharacterKeys(actionSet).forEach((key) => keys.add(key))
     })
-    return Array.from(keys).sort()
+    return Array.from(keys)
   })
 
   /**
@@ -28,7 +28,7 @@ export function useCharacterStats(allActionSets: ComputedRef<ActionSetType[]>) {
   const characterUsageCount = computed(() => {
     const counts: Record<string, number> = {}
     allActionSets.value.forEach((actionSet) => {
-      const setCounts = countCharacterUsageFromActionSet(actionSet)
+      const setCounts = countCharacterUsage(actionSet)
       Object.entries(setCounts).forEach(([key, count]) => {
         counts[key] = (counts[key] || 0) + count
       })
@@ -40,7 +40,8 @@ export function useCharacterStats(allActionSets: ComputedRef<ActionSetType[]>) {
    * 未定義キャラクターの数
    */
   const invalidCharacterCount = computed(() => {
-    return uniqueCharacterKeys.value.filter((key) => !isValidCharacter(key)).length
+    const validKeys = new Set(characterArray.value.map((c) => c.key).filter((key) => key && key.trim() !== ''))
+    return uniqueCharacterKeys.value.filter((key) => !validKeys.has(key)).length
   })
 
   /**

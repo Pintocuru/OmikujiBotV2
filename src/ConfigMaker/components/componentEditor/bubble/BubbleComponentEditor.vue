@@ -105,6 +105,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
+  const { characterArray } = useCharacterManager()
 
   const bubble = computed(() => data.value.components.bubble)
 
@@ -138,8 +139,7 @@
 
   // 最初のキャラのカラー取得
   const localColor = computed(() => {
-    const { characterArray } = useCharacterManager()
-    const first = characterArray.value[0]
-    return first ? first.color : omikujiStore.data.components.bubble.defaultColor
+    if (!isCharacter.value) return omikujiStore.data.components.bubble.defaultColor
+    return characterArray.value[0].color
   })
 </script>

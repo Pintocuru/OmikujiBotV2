@@ -6,75 +6,46 @@ import { PostActionType, ActionSetType } from '@/types/OmikujiData/'
  */
 export function usePostActionCharacters() {
   /**
-   * PostAction配列から使用されているキャラクターキーを抽出
-   */
-  const extractCharacterKeys = (postActions: PostActionType[]): string[] => {
-    const keys = new Set<string>()
-
-    postActions.forEach((action) => {
-      if (action.actionType === 'message') {
-        keys.add(action.characterKey)
-      }
-    })
-
-    return Array.from(keys).sort()
-  }
-
-  /**
    * ActionSetから使用されているキャラクターキーを抽出（GameScriptsを含む）
    */
-  const extractCharacterKeysFromActionSet = (actionSet: ActionSetType): string[] => {
+  const extractCharacterKeys = (actionSet: ActionSetType): string[] => {
     const keys = new Set<string>()
 
-    // PostActionsから抽出
     actionSet.postActions.forEach((action) => {
-      if (action.actionType === 'message') {
+      if (action.actionType === 'message' && action.characterKey?.trim()) {
         keys.add(action.characterKey)
       }
     })
 
-    // GameScriptsから抽出
-    if (actionSet.type === 'gameScripts' && actionSet.gameScripts.characterKey) {
-      keys.add(actionSet.gameScripts.characterKey)
+    if (actionSet.type === 'gameScripts') {
+      const key = actionSet.gameScripts.characterKey ?? ''
+      keys.add(key)
     }
 
     return Array.from(keys).sort()
   }
 
   /**
-   * 各キャラクターの使用箇所数をカウント
-   */
-  const countCharacterUsage = (postActions: PostActionType[]): Record<string, number> => {
-    const counts: Record<string, number> = {}
-
-    postActions.forEach((action) => {
-      if (action.actionType === 'message') {
-        const key = action.characterKey
-        counts[key] = (counts[key] || 0) + 1
-      }
-    })
-
-    return counts
-  }
-
-  /**
    * ActionSetからキャラクター使用箇所数をカウント（GameScriptsを含む）
    */
-  const countCharacterUsageFromActionSet = (actionSet: ActionSetType): Record<string, number> => {
+  const countCharacterUsage = (actionSet: ActionSetType): Record<string, number> => {
     const counts: Record<string, number> = {}
 
     // PostActionsからカウント
-    actionSet.postActions.forEach((action) => {
-      if (action.actionType === 'message') {
-        const key = action.characterKey
-        counts[key] = (counts[key] || 0) + 1
-      }
-    })
+    if (actionSet.type === 'postActions') {
+      actionSet.postActions.forEach((action) => {
+        if (action.actionType === 'message') {
+          const key = action.characterKey
+          counts[key] = (counts[key] || 0) + 1
+        }
+      })
+    }
 
     // GameScriptsからカウント
-    if (actionSet.type === 'gameScripts' && actionSet.gameScripts.characterKey) {
+    else if (actionSet.type === 'gameScripts') {
       const key = actionSet.gameScripts.characterKey
       counts[key] = (counts[key] || 0) + 1
+      console.log()
     }
 
     return counts
@@ -83,10 +54,7 @@ export function usePostActionCharacters() {
   /**
    * キャラクターマッピングに基づいてPostAction配列を更新
    */
-  const applyCharacterMappings = (
-    postActions: PostActionType[],
-    mappings: Record<string, string>
-  ): PostActionType[] => {
+  const hoge = (postActions: PostActionType[], mappings: Record<string, string>): PostActionType[] => {
     return postActions.map((action) => {
       if (action.actionType === 'message') {
         const newCharacterId = mappings[action.characterKey || '']
@@ -101,17 +69,14 @@ export function usePostActionCharacters() {
   /**
    * キャラクターマッピングに基づいてActionSetを更新（GameScriptsを含む）
    */
-  const applyCharacterMappingsToActionSet = (
-    actionSet: ActionSetType,
-    mappings: Record<string, string>
-  ): ActionSetType => {
+  const applyCharacterMappings = (actionSet: ActionSetType, mappings: Record<string, string>): ActionSetType => {
     const newActionSet = { ...actionSet }
 
     // PostActionsを更新
-    newActionSet.postActions = applyCharacterMappings(actionSet.postActions, mappings)
+    newActionSet.postActions = hoge(actionSet.postActions, mappings)
 
     // GameScriptsを更新
-    if (actionSet.type === 'gameScripts' && actionSet.gameScripts.characterKey) {
+    if (actionSet.type === 'gameScripts') {
       const newCharacterKey = mappings[actionSet.gameScripts.characterKey]
       if (newCharacterKey) {
         newActionSet.gameScripts = {
@@ -126,10 +91,7 @@ export function usePostActionCharacters() {
 
   return {
     extractCharacterKeys,
-    extractCharacterKeysFromActionSet,
     countCharacterUsage,
-    countCharacterUsageFromActionSet,
     applyCharacterMappings,
-    applyCharacterMappingsToActionSet,
   }
 }

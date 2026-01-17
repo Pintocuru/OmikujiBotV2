@@ -56,7 +56,7 @@ export class CharacterManager {
   private createCharacterMap(omikujiData: OmikujiDataType): Map<string, CharacterType> {
     const defaultCharacter = CharacterSchema.parse({
       key: 'default',
-      name: 'System',
+      name: '',
       color: omikujiData.components.bubble.defaultColor,
       image: {},
     })

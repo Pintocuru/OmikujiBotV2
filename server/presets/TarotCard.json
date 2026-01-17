@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta14",
-    "dataVersion": 2.0014,
+    "generatorVersion": "v2.0.1",
+    "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -25,7 +25,7 @@
       "name": "タロットカード",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-13T06:00:50.200Z",
+      "updatedAt": "2026-01-17T00:34:25.316Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -107,42 +107,6 @@
   },
   "timers": {},
   "actionSets": {
-    "TarotCardResult": {
-      "id": "mkc5pno89tdfl",
-      "key": "TarotCardResult",
-      "name": "タロットカード:占い部分",
-      "description": "結果をわんコメへ投稿します",
-      "createdAt": "2026-01-05T09:58:47.066Z",
-      "updatedAt": "2026-01-13T06:00:50.200Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
-      "accessLevel": "basic",
-      "type": "postActions",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "message",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "sound": "collect",
-          "message": {
-            "bubble": "<<user>>さんは<<TarotCard>>",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": {
-        "scriptId": "",
-        "queryString": "",
-        "characterKey": ""
-      },
-      "special": "return"
-    },
     "TarotCardIntro": {
       "id": "TarotCardFirst",
       "key": "TarotCardIntro",
@@ -179,6 +143,42 @@
           "delaySeconds": 2,
           "actionType": "wordParty",
           "wordParty": "TarotCard_03"
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "TarotCardResult": {
+      "id": "mkc5pno89tdfl",
+      "key": "TarotCardResult",
+      "name": "タロットカード:占い部分",
+      "description": "結果をわんコメへ投稿します",
+      "createdAt": "2026-01-05T09:58:47.066Z",
+      "updatedAt": "2026-01-13T06:00:50.200Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#9C27B0",
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "omiken",
+          "iconKey": "default",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<user>>さんは<<TarotCard>>",
+            "isToast": false
+          }
         }
       ],
       "gameScripts": {
@@ -1227,8 +1227,8 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
-      "order": 1,
+      "updatedAt": "2026-01-17T01:03:00.202Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -1240,22 +1240,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -1269,6 +1253,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     },
     "omiken_2": {
@@ -1277,8 +1277,8 @@
       "name": "おみくじBOT2",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-10-10T07:35:47.624Z",
-      "order": 2,
+      "updatedAt": "2026-01-17T01:03:37.661Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -1290,22 +1290,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -1319,13 +1303,30 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
   "components": {
     "conditions": [
       "bubble",
-      "toast"
+      "toast",
+      "ranking"
     ],
     "bubble": {
       "showCharacters": {
@@ -1353,15 +1354,6 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showThumbnail": []
@@ -1370,8 +1362,8 @@
       "targetScriptKeys": [
         "basicList"
       ],
-      "title": "🍉スイカランキング🍉",
-      "color": "lofi",
+      "title": "🔯タロット占い履歴🔮",
+      "color": "aqua",
       "limit": 5,
       "sortOrder": "new",
       "component": "rankStandard"
@@ -1394,22 +1386,14 @@
       "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "none"
     },
     "components": [
-      "bubble",
       "toast",
       "ranking",
-      "counter"
+      "bubble"
     ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "none"
@@ -1417,7 +1401,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "daisyUiTheme": "night"
   }
 }

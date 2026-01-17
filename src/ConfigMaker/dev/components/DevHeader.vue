@@ -41,7 +41,7 @@
       </template>
 
       <button
-        v-else-if="hasChanged"
+        v-else-if="Object.keys(data.comments).length > 0"
         @click="devStore.overwriteOmikujiData"
         :disabled="devStore.isSaving"
         class="btn btn-primary btn-sm tooltip tooltip-top"
@@ -79,7 +79,7 @@
   import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   const omikujiStore = useOmikujiStore()
-  const { hasChanged } = storeToRefs(omikujiStore)
+  const { data, hasChanged } = storeToRefs(omikujiStore)
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)
   const { isPro } = useSettingMode()

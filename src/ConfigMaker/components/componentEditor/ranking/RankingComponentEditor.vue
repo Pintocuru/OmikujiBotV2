@@ -115,15 +115,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
-  import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
-  import GameRankingManager from '@/common/ui/GameRanking/GameRankingManager.vue'
-  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { isDev, rankingComponents, rankingSortOrderLabels, SettingsRankingSchema } from '@/types/'
-  import { getAvailableScripts } from '@game/GameScriptsRules'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import GameRankingManager from '@/common/ui/GameRanking/GameRankingManager.vue'
   import { gameScriptMap } from '@game/GameScriptsMap'
+  import { themes } from '@shared/styles/DaisyUiTheme'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const omikujiStore = useOmikujiStore()
@@ -136,14 +135,8 @@
   const enabledGameScriptMap = computed(() => {
     const { gameScripts } = data.value.featureUsage
 
-    // 現在の状態からモードを判定
-    const mode = isGod.value ? 'godMode' : isPro.value ? 'pro' : 'basic'
-
-    // 分離した共通ロジックを使用
-    const enabled = getAvailableScripts(mode, gameScripts)
-
     return Object.entries(gameScriptMap)
-      .filter(([scriptId]) => enabled.includes(scriptId))
+      .filter(([scriptId]) => gameScripts.includes(scriptId))
       .map(([, scriptPreset]) => scriptPreset)
   })
 
