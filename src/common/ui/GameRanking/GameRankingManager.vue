@@ -1,12 +1,12 @@
 <!-- src\common\ui\GameRanking\GameRankingManager.vue -->
 <template>
-  <component :is="currentComponent" :bot-messages="botMessages" :settings="settings" />
+  <component :is="currentComponent" :rankingMessages="targetRankingMessages" :settings="settings" />
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { RankingComponent, SettingsRankingType } from '@/types/'
-  import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageRankingType, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 
   // 各コンポーネントのインポート
   import RankStandard from './variants/RankStandard.vue'
@@ -15,6 +15,15 @@
     botMessages: BotMessageType[]
     settings: SettingsRankingType
   }>()
+
+  const targetRankingMessages = computed<BotMessageRankingType[]>(() => {
+    const keys = props.settings.targetScriptKeys
+    if (!keys?.length) return []
+
+    return props.botMessages.filter(
+      (m): m is BotMessageRankingType => m.type === 'ranking' && keys.includes(m.ranking.scriptKey)
+    )
+  })
 
   // コンポーネントマッピング
   const componentMap: Record<RankingComponent, any> = {

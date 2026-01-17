@@ -31,13 +31,13 @@
             <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-1">
               <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.ranking?.listName || msg.user?.userName || msg.bubble?.name || 'A').charAt(0) }}
+                {{ (msg.ranking?.listName || msg.user?.userName || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- 名前 -->
             <span class="text-lg font-bold truncate">
-              {{ msg.ranking?.listName || msg.user?.userName || msg.bubble?.name || 'Anonymous' }}
+              {{ msg.ranking?.listName || msg.user?.userName || 'Anonymous' }}
             </span>
             <!-- symbol -->
             <span v-if="msg.ranking?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
@@ -59,20 +59,20 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
   import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
   import { generateDummyMessages } from '../../useDummyBotMessages'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{
-    botMessages: BotMessageType[]
+    listMessages: BotMessageRankingType[]
     settings: SettingsRankingType
   }>()
 
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
-    if (props.botMessages.length > 0) {
-      let data = [...props.botMessages].filter((msg) => msg.ranking?.isRank !== false)
+    if (props.listMessages.length > 0) {
+      let data = [...props.listMessages].filter((msg) => msg.ranking?.isRank !== false)
 
       switch (props.settings.sortOrder) {
         case 'high':

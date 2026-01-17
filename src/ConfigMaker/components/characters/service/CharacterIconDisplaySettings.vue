@@ -45,7 +45,11 @@
   </SettingItem>
 
   <!-- imageBase64 -->
-  <CharacterBase64Settings v-if="currentDisplayOption.mode === 'comment'" :selectedItemKey="selectedItemKey" />
+  <CharacterBase64Settings
+    v-if="currentDisplayOption.mode === 'comment'"
+    :selectedItemKey="selectedItemKey"
+    :modelValue="currentDisplayOption"
+  />
 
   <!-- rpgVoice  -->
   <SettingItem
@@ -69,7 +73,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { displayModeLabels, DisplayOptionType, isDev } from '@/types/'
+  import { displayModeLabels, DisplayOptionType } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

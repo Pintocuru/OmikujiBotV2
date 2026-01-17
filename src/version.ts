@@ -2,5 +2,5 @@
 
 // アプリケーションのバージョン情報
 export const BUILD_DATE = 'ver2026.01.17'
-export const APP_VERSION = 'v2.0.2'
-export const DATA_VERSION = 2.02
+export const APP_VERSION = 'v2.0.3'
+export const DATA_VERSION = 2.03

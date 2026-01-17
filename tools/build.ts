@@ -49,8 +49,8 @@ const packageRoot = process.env.PACKAGE_ROOT
 const buildTargets: BuildTarget[] = [
   /**
    * core : エディターを更新したら必ずビルドする
-  { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
    */
+  { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
 
   /**
    * Special (せすぴん用)

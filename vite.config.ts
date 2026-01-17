@@ -20,10 +20,6 @@ export default defineConfig(() => {
   const overrideConfig: UserConfig = {
     root: path.resolve(projectRoot),
     resolve: { alias },
-    optimizeDeps: {
-      // キャッシュの再構築を促すため、一度除外してみる
-      exclude: ['vue-draggable-plus'],
-    },
     server: {
       watch: {
         ignored: [path.resolve(projectRoot, 'server/presets/**')],

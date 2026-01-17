@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.2",
-    "dataVersion": 2.02,
+    "generatorVersion": "v2.0.3",
+    "dataVersion": 2.03,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -125,7 +125,7 @@
       "name": "初見詐欺:Reimu",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T07:32:49.383Z",
+      "updatedAt": "2026-01-17T10:26:23.271Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -168,7 +168,7 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 5,
+          "weight": 4,
           "isPriority": false,
           "criteria": null
         },
@@ -208,7 +208,7 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 7,
+          "weight": 8,
           "isPriority": false,
           "criteria": null
         },
@@ -301,7 +301,73 @@
           "special": "return",
           "weight": 7,
           "isPriority": false,
-          "criteria": null
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "tc",
+              "value": 100
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "e77329a7-d126-4027-b31c-f61b8e7155af",
+          "key": "48ac3e3a-8cba-4ea0-90fb-0ccf9cb80e06",
+          "name": "ホントの初見(2-5回)",
+          "createdAt": "2026-01-17T10:25:04.188Z",
+          "updatedAt": "2026-01-17T10:25:04.188Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
+            },
+            {
+              "delaySeconds": 1.5,
+              "actionType": "message",
+              "characterKey": "reimu",
+              "iconKey": "happy",
+              "sound": "baseball",
+              "message": {
+                "bubble": "<<FirstSyokenReimu>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "upperBound",
+              "unit": "tc",
+              "value": 5
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
@@ -1477,7 +1543,7 @@
       "name": "初見詐欺(surprised):魔理沙",
       "description": "ノリでツッコミ、または一緒に悪乗りしている",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2026-01-17T10:24:02.430Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1491,7 +1557,8 @@
         "おーっと！初見って言ったな! でも私のカウントではもう<<tc>>回目だぜ。どっちが正しいんだぜ？",
         "いや〜、<<user>>さん。初見って言うのがクセになってるな？次回も待ってるぜ。",
         "おいおい、<<user>>さん。これじゃあ「初見詐欺コンテスト」も開けるぜ。",
-        "おっと!? <<user>>さん、初見アピールしてるけど、もうあなたはこの配信のオリジナルメンバーだぜ。"
+        "おっと!? <<user>>さん、初見アピールしてるけど、もうあなたはこの配信のオリジナルメンバーだぜ。",
+        "<<user>>さん、私が出るってことはもう100回以上コメントしてるんだぜ。えーと、<<tc>>回のコメントだぜ。"
       ]
     },
     "GiftReimu": {
@@ -1967,13 +2034,13 @@
     ],
     "gameScripts": [],
     "developer": {
-      "jsonMergeSettings": "basic",
-      "licenseVisible": "basic"
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "basic"
     }
   },
   "settings": {
     "commentType": "OneComme",
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "daisyUiTheme": "cmyk"
+    "daisyUiTheme": "dim"
   }
 }

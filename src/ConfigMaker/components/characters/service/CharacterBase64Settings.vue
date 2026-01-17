@@ -15,9 +15,9 @@
         @change="handleImageSelect"
       />
       <div class="pr-4">
-        <div v-if="localData && localData.displayOption.imageBase64" class="relative">
+        <div v-if="modelValue.imageBase64" class="relative">
           <img
-            :src="localData?.displayOption.imageBase64"
+            :src="modelValue.imageBase64"
             alt="Base64画像プレビュー"
             :class="`w-${Math.max(16, imageSize)} h-${Math.max(16, imageSize)} rounded border-2 border-primary bg-white object-cover`"
           />
@@ -42,34 +42,24 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { CharacterType } from '@/types/OmikujiData/'
+  import { DisplayOptionType } from '@/types/OmikujiData/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
-  import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
 
   const props = defineProps<{
     selectedItemKey: string | null
-  }>()
-
-  const emit = defineEmits<{
-    'update:modelValue': [value?: string]
+    modelValue: DisplayOptionType
   }>()
 
   // Pinia store
-  const { updateItem } = useOmikujiStore()
+  const { updateRecordProperty } = useOmikujiStore()
   const { getItem } = useGetRecordData()
 
-  const localData = computed<CharacterType | undefined>({
-    get: () => {
-      if (!props.selectedItemKey) return
-      return getItem('characters', props.selectedItemKey) ?? undefined
-    },
-
-    set: (value?: CharacterType) => {
-      if (!props.selectedItemKey || !value) return
-      updateItem('characters', props.selectedItemKey, value)
-    },
+  const backgroundColor = computed(() => {
+    if (!props.selectedItemKey) return '#ccc'
+    return getItem('characters', props.selectedItemKey)?.color.backgroundColor || '#ccc'
   })
 
   // 画像サイズの設定 16 / 24 / 32
@@ -80,8 +70,11 @@
 
   // Base64画像のリセット
   const resetBase64Image = () => {
-    if (!localData.value) return
-    localData.value.imageBase64 = undefined
+    if (!props.selectedItemKey) return
+    updateRecordProperty('characters', props.selectedItemKey, 'displayOption', {
+      ...props.modelValue,
+      imageBase64: '',
+    })
     if (fileInput.value) fileInput.value.value = ''
   }
 
@@ -99,7 +92,7 @@
     reader.onload = (e) => {
       const img = new Image()
       img.onload = () => {
-        if (!localData.value) return
+        if (!props.selectedItemKey) return
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')
 
@@ -109,8 +102,8 @@
         canvas.width = size
         canvas.height = size
 
-        // 白背景を描画（透明部分対策）
-        ctx.fillStyle = localData.value.color.backgroundColor || '#ccc'
+        // 白背景を描画(透明部分対策)
+        ctx.fillStyle = backgroundColor.value
         ctx.fillRect(0, 0, size, size)
 
         // 画像を指定サイズにリサイズして描画
@@ -118,7 +111,10 @@
 
         // Base64データを取得
         const base64Data = canvas.toDataURL('image/png')
-        localData.value.displayOption.imageBase64 = base64Data
+        updateRecordProperty('characters', props.selectedItemKey, 'displayOption', {
+          ...props.modelValue,
+          imageBase64: base64Data,
+        })
       }
 
       img.src = e.target?.result as string
