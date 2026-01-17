@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "v2.0.2",
+    "dataVersion": 2.02,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -131,8 +131,6 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
@@ -145,28 +143,34 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "angry",
-              "messageContent": "<<FirstSagiReimuAngry>>",
-              "messageToast": "",
               "sound": "fail",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSagiReimuAngry>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 5
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
@@ -179,28 +183,34 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "sleepy",
-              "messageContent": "<<FirstSagiReimuSleepy>>",
-              "messageToast": "",
               "sound": "negative",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSagiReimuSleepy>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 7
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 7,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
@@ -213,38 +223,45 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "messageContent": "<<FirstSyokenReimu>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSyokenReimu>>",
+                "isToast": false
+              }
             },
             {
               "delaySeconds": 5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "angry",
-              "messageContent": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
-              "messageToast": "",
               "sound": "fail",
-              "actionType": "message"
+              "message": {
+                "bubble": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "352ea94d-dd73-41a8-abb7-bab726c205f6",
@@ -257,55 +274,60 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "surprised",
-              "messageContent": "<<FirstSagiReimuSurprise>>",
-              "messageToast": "",
               "sound": "bounce",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSagiReimuSurprise>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 7
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 7,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "count",
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        },
         "comment": [
           "初見(?!さん)",
           "所見",
           "はじめまして"
-        ]
+        ],
+        "count": {
+          "comparison": "lowerBound",
+          "unit": "tc",
+          "value": 6
+        }
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": false,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 1,
         "repeatMessage": "初見詐欺は連投するものではない。"
       }
     },
@@ -321,8 +343,6 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
@@ -335,55 +355,61 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "messageContent": "<<FirstSyokenReimu>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSyokenReimu>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "count",
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
         "comment": [
           "初見",
           "所見",
           "はじめまして"
-        ]
+        ],
+        "count": {
+          "comparison": "upperBound",
+          "unit": "tc",
+          "value": 5
+        }
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "NumCommentsReimu": {
@@ -398,8 +424,6 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
@@ -412,19 +436,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だよ",
               "sound": "transition",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>さんのコメント数は [<<tc>>] だよ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 6
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 6,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
@@ -437,19 +471,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は [<<tc>>] だぜ",
               "sound": "transition",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>さんのコメント数は [<<tc>>] だぜ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
@@ -462,53 +506,59 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)",
               "sound": "reveal_full",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)",
+                "isToast": true
+              }
             },
             {
               "delaySeconds": 4,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "angry",
-              "messageContent": "",
-              "messageToast": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。",
               "sound": "explosion",
-              "actionType": "toast"
+              "message": {
+                "bubble": "ふざけないで魔理沙!<<user>>さんは [<<tc>>] よ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^コメント$"
         ]
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "GiftReimu": {
@@ -523,8 +573,6 @@
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
@@ -537,52 +585,53 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "sound": "cash",
-              "actionType": "sounds"
+              "actionType": "sound",
+              "sound": "cash"
             },
             {
               "delaySeconds": 0.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "messageContent": "<<GiftReimu>>",
-              "messageToast": "",
               "sound": "carnival",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<GiftReimu>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "gift"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [
           "all"
         ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstSyokenReimu": {
@@ -597,8 +646,6 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
@@ -611,28 +658,34 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "messageContent": "<<FirstSyokenReimu>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSyokenReimu>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
@@ -645,52 +698,54 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "excited",
-              "messageContent": "<<FirstSyokenMarisa>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstSyokenMarisa>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "syoken"
         ],
-        "syoken": [
-          "syoken"
-        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
+        "comment": [],
+        "syoken": [
+          "syoken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstComebackReimu": {
@@ -705,8 +760,6 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
@@ -719,19 +772,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "singing",
-              "messageContent": "<<FirstComebackReimu>>",
-              "messageToast": "",
               "sound": "congrats",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstComebackReimu>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "c383530d-30fd-48ad-89c5-7b486de885ed",
@@ -744,43 +807,49 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "happy",
-              "messageContent": "<<FirstComebackMarisa>>",
-              "messageToast": "",
               "sound": "congrats",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstComebackMarisa>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "syoken"
         ],
-        "syoken": [
-          "again"
-        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
+        "comment": [],
+        "syoken": [
+          "again"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstVisitReimu": {
@@ -795,8 +864,6 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
@@ -809,19 +876,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "laughing",
-              "messageContent": "<<FirstVisitReimu>>",
-              "messageToast": "",
               "sound": "collect",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstVisitReimu>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
@@ -834,43 +911,49 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "singing",
-              "messageContent": "<<FirstVisitMarisa>>",
-              "messageToast": "",
               "sound": "collect",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<FirstVisitMarisa>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "syoken"
         ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
+        "comment": [],
+        "syoken": [
+          "firstVisit"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CountStreamReimu": {
@@ -885,8 +968,6 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
@@ -899,19 +980,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 4
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 4,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
@@ -924,41 +1015,51 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "count"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
+        "comment": [],
         "count": {
           "comparison": "loop",
           "unit": "lc",
           "value": 50
-        },
-        "comment": []
+        }
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CountUserReimu": {
@@ -973,8 +1074,6 @@
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
@@ -987,19 +1086,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+                "isToast": true
+              }
             }
           ],
-          "weight": 4
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 4,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
@@ -1012,41 +1121,51 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "count"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
+        "comment": [],
         "count": {
           "comparison": "loop",
           "unit": "tc",
           "value": 100
-        },
-        "comment": []
+        }
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -1063,8 +1182,6 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
@@ -1077,19 +1194,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中だよ",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<viewer>>人が視聴中だよ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
@@ -1102,19 +1229,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中だぜ",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<viewer>>人が視聴中だぜ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "b7aafc25-2b6c-45f6-9420-106483a55a5d1",
@@ -1127,19 +1264,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "高評価は<<upVote>>だよ",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "高評価は<<upVote>>だよ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "6e7900c2-0938-44aa-8522-1708d4bb1a1d1",
@@ -1152,19 +1299,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "高評価は<<upVote>>だぜ。チャンネル登録と高評価を忘れずにな！",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "高評価は<<upVote>>だぜ。チャンネル登録と高評価を忘れずにな！",
+                "isToast": true
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "timers",
@@ -1183,8 +1340,6 @@
       "editorColor": "#3F51B5",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
@@ -1197,19 +1352,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "messageContent": "",
-              "messageToast": "<<PromotionToastsReimu>>",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<PromotionToastsReimu>>",
+                "isToast": true
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "9dea8c40-0801-4523-93e2-dc3049fe1814",
@@ -1222,19 +1387,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "marisa",
               "iconKey": "excited",
-              "messageContent": "",
-              "messageToast": "<<PromotionToastsMarisa>>",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<PromotionToastsMarisa>>",
+                "isToast": true
+              }
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "timers",
@@ -1323,6 +1498,7 @@
       "id": "GiftReimu",
       "key": "GiftReimu",
       "name": "ギフト:霊夢",
+      "description": "ギフト＝お賽銭としてお礼する",
       "createdAt": "2025-08-27T09:48:36.227Z",
       "updatedAt": "2025-12-06T01:25:45.300Z",
       "order": 4,
@@ -1341,8 +1517,7 @@
         "尊いお賽銭をありがとう、<<user>>さん。神社も私も、あなたを応援しているわ。",
         "<<user>>さんのお賽銭、確かにお預かりしたわ。ご縁に感謝ね。",
         "お賽銭ありがとう、<<user>>さん。これからも神様と共に見守るわ。"
-      ],
-      "description": "ギフト＝お賽銭としてお礼する"
+      ]
     },
     "FirstSyokenReimu": {
       "id": "FirstSyokenReimu",
@@ -1577,18 +1752,6 @@
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
       "displayName": "ゆっくり霊夢",
-      "frameId": "OmikenReimu",
-      "displayOption": {
-        "isIconDisplay": true,
-        "isOneCommePost": true,
-        "isVoice": true
-      },
-      "color": {
-        "nameColor": "#FFC107",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#FF4081",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [
           "reimu/default.webp",
@@ -1639,7 +1802,22 @@
           "reimu/body_1.webp"
         ]
       },
-      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAGtElEQVR4AXyVa1BU5xnHf+ecXfYGLLvAoiKwXHRBJKgIeImYBM2o0ZnENrWZaZzepv3WTj62n0rSfmmnmU6+dPol+qVN04w17WiMqYlVMRXHMAooghdgYVkuy2Xvu2fPpe+CpDqdyTvnOee9PO/zf57/87zvkc0Xesw1yb3wK9Psfsc0ut829Rd7TC0/fmp9Te+bvobQN8S+vJgH3jFlnrQ5Pc1x6Sr6748T+uUuTu9N0ZPqY1FPoZkaGUlHVSCrmGRkgwzayrwp+qaYMxUD0wL3s/N8kZygLzdL+i8/4WuAUo+HU799D6QIzo/Pczya4q2OBpIbQ1zSbvBu0TAftOn8MRDlN1Uhfl3QzxW9l3DlOIvNiyzUh0jvzOHZmqXzQBWdvzvJ1d1HVgFMCaJFCuEHI5jzBtmFCKE7w9xZinKpbSvZbx3FXd9A2jSxOWxsLPayzl/HUGOAj6wO/iZ0p4dGiX32Kc7BUazjj8h8cpHOEvsqgFFgYfqVAAWn/kEmHOS2APqwyMZCSwsFCY2FyDyuUi9z8RRLSZWUqqFms5gCMO9ctqGB85tquZoTTi7HyN4bIf3JZ2j2oicAao7Q++fQhKHR5WVuVVez88AhlkQEWk7HqljJzM1QamYpzKWQcglkRULL5jB0g3xzWJxEdm7jusuJJltxSDksLtsqACIC6YcvsoTKeHiZfUePEQxO4nK6hAGd2FIMNaOSE8ZMJCRJpE5ITESkCpA8QF5UWWaqqxXNYSHiqyAcnV0FsFqt7OvupuDlbg69fhzFkHA7nSSiMdIiZC2TEUDaCiWYeVOr4vV6cTqcrM6tLhTHTO5k4xRubyXi9a0CiJ0oNgsbD3WQikXZXO+nRHjvLS5GEl5LRn6z8DyvLkkrBiVhVRZdBYkykZ9NDXWYuoZhGFzAjllRBh3t+R2r3siiW+ouIxZdwlvspmvPbnZ3ttHYHKC6upIN631s3RJgS9Nmmrc00hQI4LLbycaTOO021pWXf+1M7XPb0UJxEJQJMkHXdO713iQ4MYm/slooymQSaUFRlAZRIYVOO0X2AjxFLior1rOxciMedzEKsLSwyMjwKFeu9oqYLFgkC4aeY8nuZn37DuG2UNJFFfW/f5a+69fpv3WLgf473L8/wujDRyykEkw8niASnhPrN0QRhBkYEQYvXyGTTKEoBUKsKAUFKx7rIulx2cIXp07j3713FUAWHFdPZZiPzHFTAHx5rZfLFy4yMTXFw4HbeN1uihwuSks8qPNRJm4PMjF8n9BkEMUiYRP5k0QuZmbCpBMJBu4NEEzOw597kU0RWF9iiqYtPoqzGoIvNCPHrjdeo1TwfvPvZ8hqWVq6u/B6S1eSuHP/PtwiT3cHB8lEZrELrhWRcZfdsVIASRHhS24Xykd9AkAUyM3EJNbaopUrYuHeKLW11QTatxLsv4khOE7E49Tv7aD5yEt0nnyNvXV+AsKJXGYRm6GLQ6Xgmlvk2OHDlPrKsQtGthQ6UQMysiRJHHTXkx0NU15XQ5caJRAMId/oZ7MR57u/eJ09b3wbzSbha6mncrMfY2iEPa0yb719kpZyH1W3BtgxFqSpqRGXSH5l+3bUA/v4w+A1AQBsdVbgmLWTtBbg3lSPu7mG+Mws3SfepO3wCQI7WpAnp5GFEbIq1ufb8B88wf5tB1lX5qOk1IHsdPOvD88Sj8WoqqnFO+9jf7YGWdgXj4TVcBCaWuBuRR36jue5PDLGuc8HOPPeP+n763m0nITs8kJa4mFkWaw94Ozpy9yNp/ncWcglReH23WEyahZVlrBN59hVXL0GAPlDIZV5iKRVLp25wOJ0nLHHM4wPjdN//hpf/fs/zA1f59HFszz68i5jw1PcfzRFylmAVZzaZYcVVTdJi2ulK2gTDkvCKP8DcOkyP5j08OqYgyMPLPyUTfxIquekkFZrOXHHY0qqR9AiX1HoVTja1MmPlQDHZj0cnSzhZK6O+fAsR2bdtKseFFG2eQQ5/8qLqFfWZRSqNDs+Qxx9yUGFuFN8e56j9tUOaiYXYTlJRegBG8IhFjurUDZvoEZ34s+58FNIz7oumiUPdklhrclrnbWv/AR5Zdxej/6zQyw6TEbjUSZvZ4mWNaD6N1DT2sL0mx1Eat0okiSokKiwusRVIfN0e3b09Mo2P/R8h1QygbN/mLarYzj/dAX5gxvYPj6HdG+Ixh2tFL37ffSWqqd3PtP/P4C4+DcPfq8RtecVEnMLLHx6BffMJHI8hlXkyWmx4kmm4XwvxmgQq9WG9POXGWr3krSIU/uMefgvAAAA//9A073QAAAABklEQVQDAMvTDSr29D6bAAAAAElFTkSuQmCC"
+      "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#FFC107",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#FF4081",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "data:image/png;base64,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",
+        "frameId": "OmikenReimu",
+        "rpgVoice": ""
+      }
     },
     "marisa": {
       "id": "marisa",
@@ -1660,100 +1838,142 @@
       "author": "Pintocuru",
       "url": "https://nagipon-sozai.studio.site/",
       "displayName": "ゆっくり魔理沙",
-      "frameId": "OmikenMarisa",
-      "displayOption": {
-        "isIconDisplay": true,
-        "isOneCommePost": true,
-        "isVoice": true
+      "image": {
+        "default": [
+          "marisa/default.webp"
+        ],
+        "happy": [
+          "marisa/happy.webp"
+        ],
+        "excited": [
+          "marisa/excited.webp"
+        ],
+        "laughing": [
+          "marisa/laughing.webp"
+        ],
+        "blushing": [
+          "marisa/blushing.webp"
+        ],
+        "surprised": [
+          "marisa/surprised.webp"
+        ],
+        "sad": [
+          "marisa/sad.webp"
+        ],
+        "angry": [
+          "marisa/angry.webp"
+        ],
+        "thinking": [
+          "marisa/thinking.webp"
+        ],
+        "wink": [
+          "marisa/wink.webp"
+        ],
+        "singing": [
+          "marisa/singing.webp"
+        ],
+        "sleepy": [
+          "marisa/sleepy.webp"
+        ]
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#FFE082",
         "textColor": "#333333",
         "backgroundColor": "#FF8F00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
-      "image": {
-        "default": "marisa/default.webp",
-        "happy": "marisa/happy.webp",
-        "excited": "marisa/excited.webp",
-        "laughing": "marisa/laughing.webp",
-        "blushing": "marisa/blushing.webp",
-        "surprised": "marisa/surprised.webp",
-        "sad": "marisa/sad.webp",
-        "angry": "marisa/angry.webp",
-        "thinking": "marisa/thinking.webp",
-        "wink": "marisa/wink.webp",
-        "singing": "marisa/singing.webp",
-        "sleepy": "marisa/sleepy.webp"
-      },
-      "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAHCUlEQVR4AYyVC0yV5xnHf9937gcOKnC4iAKKMFBRkRK8RWaV2gVv65bVVsxcOmO7arekmWZkZjbVdpvWy+Kiu1TddHaaWp3D1gvOaRVUFEFE5C6C6OFwuJz79fv2Cm7ZsqTpm7xf3rxv8v+9z/P83+eT1V2oX3dGdqJGdsliatQPlurUv/75gFpd36RevFqjbntjtvpoi/b/tGS+xlAlHSE5miO10bzf8zZ7TQfpzi7jxMWbbP7Fe2zf/hFVg1lsuL+aNnccroCE+lz3KwGqxkjElExf2hrOZp3hUe52Op0GKi5coKOtlaEhJ84BJ16vl6DfTzAQYMPtlyk+nEqXyzyMGAaoAjfg1xIwpaKMmkQkJoNQ1AT6k76NfcU9ohbvZc4LeaQmxKKVgiQmWklKSkQSEouLizl8aD/j4mMIh4JiB2Iz5/Gj20sJWTKRm/vN3O+LYld1Ko0zTxN8/T6O5Xdonn2O2tHrkWUdTpeHwQEH8/Jn8EHZz9i/Zwe7f7WVnR9uY+3q1xgbF4sUCSOqOQxIHZ9CWlo6nlfrkUv/PoW1Z6ZTbZuEr9tOyDGErfEBtge1mHxuXH126upq+NPRo5y5/CW1LS00idl+q57yY8eov1ZJoMtOWspYsrOzyPlGJlt/vondOz7EZDAgaxQZWaRIETewP+zi4dVqrt84x7gEF7eqTwjxChYV5rL5zbdIj7JQfvwk27b8mrNXv2TVmlUUryhB9ocoe3cTO365lffLNqATtdEqIRru3mG4Bs/i0un1TJ+SS+KUCZSunUVmnpkNGxdSUmQk4LhGwNdC1jgT61//LssWzMfZ28eNaze4dvs2d5w2bt6p42FjNYPd93B21aAoQfbv248siUqpwlTBYIDa9lbU1ESM9CKJqMQRerMBtAOEvDdxea/jUh8wd1Eub7+5hpDTzfnjp/lo5x627v0N+/6wi6uXqxi0f8H1ul4K07XIy7N6WZzRiy8SovZpN0pERQlHRFAyigBHxDcUDqEIYn7RNKZN1jLQc4mwpo3sSaNZtWwJSxa9yMKi+aRlLWTvkeOcrmxj38FLpHT/DnnTnA42ze1g5XQ3y19aLIygFbBYwn4DQV80YWcYyygLcbFxSD4FpddJdqKRVKuISr6HpLSwqqSQJfMLWFv6Kj98ZyPW7DVMTXIQtGQhi6ti0CisndZNyO1FlY24g1k8dUTjtmsZ7LOKl5mCJ5CEL5jG4/YQvV0GQv5UcqZOxGK7hc/eht/diLuhghUTTUyMs7D6e6/w29qJI4BnENQQOncNUcEaQvYaWusb0RsS0OrHCOs6iHiH8PTb8AZECvXJ2B7raay24/IEQOMhJycaA63grsPd84TzFRdxORwjAEXWY0tahrPxE6ShG9w4d5TjB//CgWPl/PPzgzRdOYUp2IbRW8/QUA91Dbc49dnHnPj0CqerOxjydCPpgkSlpWDJTqfb3suRw0dFZ1RGAJKqYPZ3Ml7TLNJlZGLWDCbMXMAXfztJQ3MntY8kNPHz0MTkM2pcAS2Puzl74QwVV6tw9NtFHfxUXajB400TKZaoqLqGd7htSP8GhInrv0KCwcX1iktkjE9gkjXAytKxzHw5mbj0HCRLBjprLpNmFrFkSQ7r3plB0YtZLCh+gVhrDAlMxukI4Y8o/GRWB1vmt/LKpPYRAM+HeNT4tBFCLgd5mRaW5r9GwdTvsKCoBKWjm0B9C6rHjTUxk4nx6ZQW51KQl0nw6RC9TU3opXY0ei1F6f3C+n18f0bf/wJURVg0nEyUxYyh3YmnwY7VlIE1KV7YN4LGqEMbbcRsyGCceS7JrhiMHomo6NEkx/oZHR1ClpTn14UEi8qwTZ/t+MNwyxbFrHnz0GjMwkkO1Ed19H76R3oO7eRJ+VFsNXXcPVVO6yeH8FRVEujsETlX0SeOwTImGtmoQxSE/x7/AeiiR5G7biOJljDBuz3oNOIo5CNoE+sxVprG51CtNVPjDtIgjUYZHU9Vn4d/dA3w+ZlKaiIG/C4N2oiezn4JRR3BCJXnC9lEjKUERXRC31BA3ExGlcCUk8+TCbM5WdnAgfILnDx/GcZm0K2zcv2pKlz1ErMXb6LPm4yj2UZEiRC/cjOS3jQsPAxQdVEMLtpD4/kj2O7cIxBxE0ZFEj+bYFhAzEZiR8UIG3pwen3UfHaMGOsY3vjxOmJ0fVRWHOJJVwehIb8ASJjixiJJw9IjNZAkFXNsCItFT/NDO6oO+ga8mLMKCeVOI9zdwU83vMXHZWX8fv27LCwsRKeTmJybhdzVScGUJEpFE9R7HCgRZVi0Pu89VEkzvB4ORSf6d3xAYcKYDDTRueRt3k1c8beIkkxoksejig6bPiePlG/mU1D6A6JdPjytHUwtWYWhRULT58NkNKBFQhK5nZKbgiTBvwAAAP//9Pr6OQAAAAZJREFUAwCFRT1vrVFWOwAAAABJRU5ErkJggg=="
-    }
-  },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "MultiplyBonanza": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleMotionLeave": "slideUp",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": false,
-      "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": false,
-      "showCharacterPersistent": true,
-      "bundleCharacters": false,
-      "daisyUiTheme": "cmyk"
-    },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "basic",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "basic",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "basic",
-        "gameScriptSettings": "pro",
-        "gameScripts": [
-          "GouseiSuika",
-          "BomberSpin",
-          "DwarfBomb",
-          "MultiplyBonanza"
-        ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "data:image/png;base64,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",
+        "frameId": "OmikenMarisa",
+        "rpgVoice": ""
       }
     }
   },
-  "wordPartySettings": []
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [],
+        "slot1": [
+          "reimu"
+        ],
+        "slot2": [
+          "marisa"
+        ],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
+      "fontFamily": "default",
+      "bubbleMotionEnter": "slideUp",
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "showToastsOnRight": true,
+      "showToastsCharacter": true,
+      "showThumbnail": []
+    },
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "color": "lofi",
+      "limit": 5,
+      "sortOrder": "new",
+      "component": "rankStandard"
+    },
+    "counter": {
+      "ruleKey": null,
+      "component": "counterUser",
+      "target": "draw",
+      "label": "Counter",
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "basic",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "jsonMergeSettings": "basic",
+      "licenseVisible": "basic"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "cmyk"
+  }
 }

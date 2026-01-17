@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta2",
-    "dataVersion": 2.0002,
+    "generatorVersion": "v2.0.2",
+    "dataVersion": 2.02,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -28,7 +28,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-31T09:52:14.079Z",
+      "updatedAt": "2026-01-17T05:37:20.398Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -46,6 +46,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -65,11 +66,16 @@
               "sound": "baseball",
               "message": {
                 "bubble": "{{var text='大吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji01>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 15,
           "isPriority": false,
           "criteria": null
@@ -85,6 +91,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -104,11 +111,16 @@
               "sound": "twinkle",
               "message": {
                 "bubble": "{{var text='吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji02>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 20,
           "isPriority": false,
           "criteria": null
@@ -124,6 +136,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -143,11 +156,16 @@
               "sound": "congrats",
               "message": {
                 "bubble": "{{var text='中吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji03>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 20,
           "isPriority": false,
           "criteria": null
@@ -163,6 +181,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -182,11 +201,16 @@
               "sound": "jingle",
               "message": {
                 "bubble": "{{var text='小吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji04>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 15,
           "isPriority": false,
           "criteria": null
@@ -202,6 +226,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -221,11 +246,16 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 15,
           "isPriority": false,
           "criteria": null
@@ -241,6 +271,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -260,11 +291,16 @@
               "sound": "fail",
               "message": {
                 "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 10,
           "isPriority": false,
           "criteria": null
@@ -280,6 +316,7 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -298,12 +335,17 @@
               "iconKey": "default",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
-                "toast": ""
+                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 5,
           "isPriority": false,
           "criteria": null
@@ -314,21 +356,15 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^おみくじ",
           "^omikuji",
           "^omikuzi",
           "^御神籤"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -346,23 +382,53 @@
       "key": "MaidenOmikuji01",
       "name": "巫女さんのおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:46:05.745Z",
+      "updatedAt": "2026-01-17T05:37:20.396Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
-        "健康運が特に好調ね。心身ともに充実した日々になるわ。",
-        "努力が実を結び、幸運が訪れるって。積極的に行動すると良いことがあるわ。",
-        "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。",
-        "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。",
-        "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。",
-        "思いがけないチャンスが舞い込むかも。柔軟な心で受け止めてみて。",
-        "周囲からの信頼が高まるとき。誠実な姿勢が運を引き寄せるわ。",
-        "過去の努力が評価される兆し。自分を信じて堂々と進んで。",
-        "笑顔が幸運を呼ぶ鍵に。明るい気持ちで過ごすことが吉よ。"
+        {
+          "content": "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
+          "weight": 1
+        },
+        {
+          "content": "健康運が特に好調ね。心身ともに充実した日々になるわ。",
+          "weight": 1
+        },
+        {
+          "content": "努力が実を結び、幸運が訪れるって。積極的に行動すると良いことがあるわ。",
+          "weight": 1
+        },
+        {
+          "content": "新しい挑戦が成功をもたらす予感。勇気を出して一歩踏み出してみて。",
+          "weight": 1
+        },
+        {
+          "content": "良い知らせが届くかも。ポジティブな気持ちを持ち続けてね。",
+          "weight": 1
+        },
+        {
+          "content": "困難な状況も乗り越えられるわ。自信を持って進んで大丈夫よ。",
+          "weight": 1
+        },
+        {
+          "content": "思いがけないチャンスが舞い込むかも。柔軟な心で受け止めてみて。",
+          "weight": 1
+        },
+        {
+          "content": "周囲からの信頼が高まるとき。誠実な姿勢が運を引き寄せるわ。",
+          "weight": 1
+        },
+        {
+          "content": "過去の努力が評価される兆し。自分を信じて堂々と進んで。",
+          "weight": 1
+        },
+        {
+          "content": "笑顔が幸運を呼ぶ鍵に。明るい気持ちで過ごすことが吉よ。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji02": {
@@ -370,23 +436,53 @@
       "key": "MaidenOmikuji02",
       "name": "巫女さんのおみくじ:吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:47:01.957Z",
+      "updatedAt": "2026-01-17T05:37:20.396Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
-        "周囲の人々に感謝の気持ちを忘れずにね。",
-        "今後の展望は明るめね。夢に向かって突き進めばいいことがあるわ。",
-        "仲間との協力が成功への鍵よ。チームワークを大切にしてね。",
-        "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。",
-        "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。",
-        "タイミングを見極めれば、物事がスムーズに進むわ。焦らず慎重にね。",
-        "人との会話がヒントになるかも。柔らかい姿勢で耳を傾けてみて。",
-        "少しの工夫が運気を引き寄せる鍵よ。日常にひと工夫加えてみて。",
-        "過去の経験が役立つ場面があるわ。自分の歩みを信じてみてね。"
+        {
+          "content": "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
+          "weight": 1
+        },
+        {
+          "content": "周囲の人々に感謝の気持ちを忘れずにね。",
+          "weight": 1
+        },
+        {
+          "content": "今後の展望は明るめね。夢に向かって突き進めばいいことがあるわ。",
+          "weight": 1
+        },
+        {
+          "content": "仲間との協力が成功への鍵よ。チームワークを大切にしてね。",
+          "weight": 1
+        },
+        {
+          "content": "小さな努力が大きな成果を生むわ。コツコツと続けることが大事よ。",
+          "weight": 1
+        },
+        {
+          "content": "ポジティブな考えが良い結果を招くわ。前向きに考え続けてね。",
+          "weight": 1
+        },
+        {
+          "content": "タイミングを見極めれば、物事がスムーズに進むわ。焦らず慎重にね。",
+          "weight": 1
+        },
+        {
+          "content": "人との会話がヒントになるかも。柔らかい姿勢で耳を傾けてみて。",
+          "weight": 1
+        },
+        {
+          "content": "少しの工夫が運気を引き寄せる鍵よ。日常にひと工夫加えてみて。",
+          "weight": 1
+        },
+        {
+          "content": "過去の経験が役立つ場面があるわ。自分の歩みを信じてみてね。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji03": {
@@ -394,23 +490,53 @@
       "key": "MaidenOmikuji03",
       "name": "巫女さんのおみくじ:中吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:48:35.458Z",
+      "updatedAt": "2026-01-17T05:37:20.396Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "思いがけない幸運があるかも。チャンスを逃さないようにね。",
-        "周囲の人との協力が大切よ。助けを求めることを恐れないで。",
-        "自分の直感を信じていいわ。大きな成長が待ってるそうよ。",
-        "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。",
-        "楽しい出来事が増えるわ。笑顔を忘れずにね。",
-        "計画をしっかり立てることで、成功への道が開けるわ。",
-        "少しの工夫が運気を後押しするわ。柔軟な発想を大切にしてね。",
-        "人との出会いが刺激になる時期よ。積極的に交流してみて。",
-        "過去の経験が役立つ場面があるわ。自信を持って活かしてみて。",
-        "焦らず一歩ずつ進めば、確かな成果につながるわ。"
+        {
+          "content": "思いがけない幸運があるかも。チャンスを逃さないようにね。",
+          "weight": 1
+        },
+        {
+          "content": "周囲の人との協力が大切よ。助けを求めることを恐れないで。",
+          "weight": 1
+        },
+        {
+          "content": "自分の直感を信じていいわ。大きな成長が待ってるそうよ。",
+          "weight": 1
+        },
+        {
+          "content": "新しいスキルを学ぶと良いわ。自分を磨くチャンスが来てるわよ。",
+          "weight": 1
+        },
+        {
+          "content": "楽しい出来事が増えるわ。笑顔を忘れずにね。",
+          "weight": 1
+        },
+        {
+          "content": "計画をしっかり立てることで、成功への道が開けるわ。",
+          "weight": 1
+        },
+        {
+          "content": "少しの工夫が運気を後押しするわ。柔軟な発想を大切にしてね。",
+          "weight": 1
+        },
+        {
+          "content": "人との出会いが刺激になる時期よ。積極的に交流してみて。",
+          "weight": 1
+        },
+        {
+          "content": "過去の経験が役立つ場面があるわ。自信を持って活かしてみて。",
+          "weight": 1
+        },
+        {
+          "content": "焦らず一歩ずつ進めば、確かな成果につながるわ。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji04": {
@@ -418,23 +544,53 @@
       "key": "MaidenOmikuji04",
       "name": "巫女さんのおみくじ:小吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:49:30.274Z",
+      "updatedAt": "2026-01-17T05:37:20.396Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
-        "いまは慎重に行動が必要な時。きっと吉へと導かれるわ。慌てない事が大切よ。",
-        "健康面に注意して。規則正しい生活が運気を呼び込むわ。",
-        "周囲のサポートを受け入れることで、運気が上昇するわ。",
-        "小さな喜びを大切にね。それが大きな幸せに繋がるわ。",
-        "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。",
-        "過去の失敗が学びになる時期よ。振り返りが次の一歩に繋がるわ。",
-        "身近な人との絆を深めると良いわ。安心感が運気を支えてくれるの。",
-        "自然の中で過ごす時間が心を整えてくれるわ。リフレッシュを意識してね。",
-        "小さな目標を立てると良いわ。一歩ずつ達成していくことが運気アップの鍵よ。"
+        {
+          "content": "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
+          "weight": 1
+        },
+        {
+          "content": "いまは慎重に行動が必要な時。きっと吉へと導かれるわ。慌てない事が大切よ。",
+          "weight": 1
+        },
+        {
+          "content": "健康面に注意して。規則正しい生活が運気を呼び込むわ。",
+          "weight": 1
+        },
+        {
+          "content": "周囲のサポートを受け入れることで、運気が上昇するわ。",
+          "weight": 1
+        },
+        {
+          "content": "小さな喜びを大切にね。それが大きな幸せに繋がるわ。",
+          "weight": 1
+        },
+        {
+          "content": "ゆっくりとした進展があるわ。焦らずに自分のペースで進んでね。",
+          "weight": 1
+        },
+        {
+          "content": "過去の失敗が学びになる時期よ。振り返りが次の一歩に繋がるわ。",
+          "weight": 1
+        },
+        {
+          "content": "身近な人との絆を深めると良いわ。安心感が運気を支えてくれるの。",
+          "weight": 1
+        },
+        {
+          "content": "自然の中で過ごす時間が心を整えてくれるわ。リフレッシュを意識してね。",
+          "weight": 1
+        },
+        {
+          "content": "小さな目標を立てると良いわ。一歩ずつ達成していくことが運気アップの鍵よ。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji05": {
@@ -442,23 +598,53 @@
       "key": "MaidenOmikuji05",
       "name": "巫女さんのおみくじ:末吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:50:20.148Z",
+      "updatedAt": "2026-01-17T05:37:20.397Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "油断が思わぬ結果に繋がるわ。慎重に行動して。",
-        "今は試練の時期ね。乗り越えれば、大きな成長が待ってるわ。",
-        "新しいことより、今の事を見直すといい事があるわ。",
-        "計画を練り直すことで、より良い結果が得られるわ。",
-        "周囲の意見に耳を傾けることが、成功の鍵になるわ。",
-        "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。",
-        "焦らずに状況を見極めて。冷静な判断が運気を支えてくれるわ。",
-        "小さな変化に気づくことが大切よ。日常の中にヒントがあるわ。",
-        "過去の選択を振り返ることで、次の一手が見えてくるわ。",
-        "無理をせず、休息も大事よ。心の余裕が運気を整えてくれるわ。"
+        {
+          "content": "油断が思わぬ結果に繋がるわ。慎重に行動して。",
+          "weight": 1
+        },
+        {
+          "content": "今は試練の時期ね。乗り越えれば、大きな成長が待ってるわ。",
+          "weight": 1
+        },
+        {
+          "content": "新しいことより、今の事を見直すといい事があるわ。",
+          "weight": 1
+        },
+        {
+          "content": "計画を練り直すことで、より良い結果が得られるわ。",
+          "weight": 1
+        },
+        {
+          "content": "周囲の意見に耳を傾けることが、成功の鍵になるわ。",
+          "weight": 1
+        },
+        {
+          "content": "自己改善に取り組むことで運が開けるわ。自分を見つめ直す時間を作ってね。",
+          "weight": 1
+        },
+        {
+          "content": "焦らずに状況を見極めて。冷静な判断が運気を支えてくれるわ。",
+          "weight": 1
+        },
+        {
+          "content": "小さな変化に気づくことが大切よ。日常の中にヒントがあるわ。",
+          "weight": 1
+        },
+        {
+          "content": "過去の選択を振り返ることで、次の一手が見えてくるわ。",
+          "weight": 1
+        },
+        {
+          "content": "無理をせず、休息も大事よ。心の余裕が運気を整えてくれるわ。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji06": {
@@ -466,48 +652,135 @@
       "key": "MaidenOmikuji06",
       "name": "巫女さんのおみくじ:凶",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-10-11T15:51:10.592Z",
+      "updatedAt": "2026-01-17T05:37:20.397Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "運気はやや下がり気味。慎重に行動するといいわ。",
-        "周囲の人とのトラブルに注意して。喧嘩になったら、頭を冷やすことね。",
-        "健康面に注意が必要ね。体調管理をしっかり。乳酸菌とってるぅ？",
-        "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。",
-        "信頼できる人に相談すると、助け舟が出るわよ。",
-        "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。",
-        "感情的にならず、冷静さを保つことが運気回復の鍵よ。",
-        "物事を一人で抱え込まないで。頼れる人に話してみてね。",
-        "小さなミスが大きな問題に繋がるかも。確認を怠らないようにね。",
-        "今は耐える時期かも。でも、夜明けは必ず来るわ。"
+        {
+          "content": "運気はやや下がり気味。慎重に行動するといいわ。",
+          "weight": 1
+        },
+        {
+          "content": "周囲の人とのトラブルに注意して。喧嘩になったら、頭を冷やすことね。",
+          "weight": 1
+        },
+        {
+          "content": "健康面に注意が必要ね。体調管理をしっかり。乳酸菌とってるぅ？",
+          "weight": 1
+        },
+        {
+          "content": "計画が思い通りに進まないかも。焦らず、柔軟に対応してね。",
+          "weight": 1
+        },
+        {
+          "content": "信頼できる人に相談すると、助け舟が出るわよ。",
+          "weight": 1
+        },
+        {
+          "content": "無理をせず、休息を取ることが大切よ。リラックスする時間を作ってね。",
+          "weight": 1
+        },
+        {
+          "content": "感情的にならず、冷静さを保つことが運気回復の鍵よ。",
+          "weight": 1
+        },
+        {
+          "content": "物事を一人で抱え込まないで。頼れる人に話してみてね。",
+          "weight": 1
+        },
+        {
+          "content": "小さなミスが大きな問題に繋がるかも。確認を怠らないようにね。",
+          "weight": 1
+        },
+        {
+          "content": "今は耐える時期かも。でも、夜明けは必ず来るわ。",
+          "weight": 1
+        }
+      ]
+    },
+    "MaidenOmikuji08": {
+      "id": "MaidenOmikuji07",
+      "key": "MaidenOmikuji08",
+      "name": "巫女さんのおみくじ:残念賞",
+      "createdAt": "2025-08-11T15:34:29.298Z",
+      "updatedAt": "2026-01-17T05:37:20.397Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [],
+      "accessLevel": "basic",
+      "values": [
+        {
+          "content": "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
+          "weight": 1
+        },
+        {
+          "content": "終わったわ、風が強すぎるぜ。強すぎてお亡くなりだぜ。",
+          "weight": 1
+        },
+        {
+          "content": "高嶋ちさ子さんも、長嶋一茂さんも、石原良純さんも、残念！",
+          "weight": 1
+        },
+        {
+          "content": "波田ニューヨークが古くなったら、波田ヨークだぜ。残念ッ！",
+          "weight": 1
+        },
+        {
+          "content": "剥いても剥いても中身がない野菜？答えは玉ねぎだぜ。残念でした。また来てね。",
+          "weight": 1
+        },
+        {
+          "content": "知ってる？「コンクリート」っていう漢字があるんだぜ。しかも1文字で。",
+          "weight": 1
+        },
+        {
+          "content": "バスケ中にゴリラが横切っても誰も気づかないぜ。インビジブル・ゴリラ実験って言うぜ。",
+          "weight": 1
+        },
+        {
+          "content": "ベネット！？殺されたんじゃ！？ 残念だったな、トリックだよ",
+          "weight": 1
+        },
+        {
+          "content": "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。",
+          "weight": 1
+        },
+        {
+          "content": "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。",
+          "weight": 1
+        },
+        {
+          "content": "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。",
+          "weight": 1
+        }
       ]
     },
     "MaidenOmikuji07": {
       "id": "MaidenOmikuji07",
       "key": "MaidenOmikuji07",
-      "name": "巫女さんのおみくじ:残念賞",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-08-28T09:34:01.985Z",
+      "name": "巫女さんのおみくじ:大凶",
+      "createdAt": "2026-01-17T05:37:05.955Z",
+      "updatedAt": "2026-01-17T05:40:00.622Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
-        "終わったわ、風が強すぎるぜ。強すぎてお亡くなりだぜ。",
-        "高嶋ちさ子さんも、長嶋一茂さんも、石原良純さんも、残念！",
-        "波田ニューヨークが古くなったら、波田ヨークだぜ。残念ッ！",
-        "剥いても剥いても中身がない野菜？答えは玉ねぎだぜ。残念でした。また来てね。",
-        "知ってる？「コンクリート」っていう漢字があるんだぜ。しかも1文字で。",
-        "バスケ中にゴリラが横切っても誰も気づかないぜ。インビジブル・ゴリラ実験って言うぜ。",
-        "ベネット！？殺されたんじゃ！？ 残念だったな、トリックだよ",
-        "ざんねんないきもの事典は、2017年に日本で最も売れた児童書だぜ。",
-        "残念無念、という四字熟語は、とても悔しいさまのことを言うぜ。",
-        "女子高生とか好きだからって理由で先生になっちゃいけないぜ。奥さんは美人だぜ。"
+        "運気が深く沈み込みやすい時期。一度立ち止まって状況を整理してね。",
+        "人間関係の誤解が連鎖しやすいわ。言葉選びを丁寧に、早めのフォローが鍵よ。",
+        "体調の乱れが長引きやすい時期。今は徹底的に休息優先よ。",
+        "計画が根本から見直しになる可能性も。柔軟なプランBを持っておくと安心ね。",
+        "信頼していた人とのすれ違いが起きやすいわ。感情で動かず、事実ベースで話すと吉よ。",
+        "仕事や作業で思わぬ遅延が発生しやすい時期。余裕を持ったスケジュール管理が大事よ。",
+        "判断力が鈍りがち。大きな決断は先送りして、情報を集めてから慎重に進むのが吉よ。",
+        "悩みを一人で抱え込むと悪循環に。小さな相談でも誰かに話してね。",
+        "些細な不注意が大きな損失に繋がる暗示。確認作業はいつもの倍を意識して。",
+        "運気の底にいるように感じても、ここでの踏ん張りが後の飛躍に繋がるわ。"
       ]
     }
   },
@@ -531,22 +804,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -560,6 +817,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     },
     "omiken_2": {
@@ -581,22 +854,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -610,6 +867,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#64B5F6",
+        "textColor": "#E3F2FD",
+        "backgroundColor": "#1565C0",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
@@ -646,15 +919,6 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "light",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": true,
       "showThumbnail": []
@@ -664,18 +928,16 @@
         "basicList"
       ],
       "title": "🥠おみくじ履歴⛩️",
+      "color": "light",
       "limit": 5,
       "sortOrder": "new",
-      "color": "corporate"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -686,24 +948,25 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
+      "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "none"
     },
     "components": [
       "toast",
-      "ranking"
+      "ranking",
+      "bubble"
     ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "a3f1c9b27e4d8f62b19c0a7e53d4f981",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "light"
   }
 }

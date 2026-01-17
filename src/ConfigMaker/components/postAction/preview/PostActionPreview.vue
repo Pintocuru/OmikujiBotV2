@@ -25,7 +25,7 @@
         <ToastBubbleItem
           :key="toastKey"
           :message="processedMessage"
-          :color="character ? character.color : toastSettings.defaultColor"
+          :color="character ? character.color : bubbleSettings.defaultColor"
           :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
         />
