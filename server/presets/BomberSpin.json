@@ -8,14 +8,7 @@
     "generatorVersion": "v2.0.1",
     "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ゲーム",
-      "スロット",
-      "ボンバースロット",
-      "うさぎスロット",
-      "桜吹雪スロット"
-    ],
+    "tags": ["おみくじBOT", "ゲーム", "スロット", "ボンバースロット", "うさぎスロット", "桜吹雪スロット"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7730686"
   },
@@ -31,10 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "ボンバースロット"
-      ],
+      "tags": ["スロット", "ボンバースロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -243,14 +233,10 @@
           "weight": 0,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -292,9 +278,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -310,21 +294,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -343,10 +317,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "うさぎスロット"
-      ],
+      "tags": ["スロット", "うさぎスロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -440,14 +411,10 @@
           "weight": 3,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -489,9 +456,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -507,23 +472,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -542,10 +495,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "桜吹雪スロット"
-      ],
+      "tags": ["スロット", "桜吹雪スロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -639,14 +589,10 @@
           "weight": 2,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -688,9 +634,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -706,25 +650,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^さくら",
-          "^サクラ",
-          "^桜",
-          "^sakura",
-          "桜吹雪",
-          "⛈️",
-          "🌙",
-          "🎍",
-          "🌊",
-          "🌸",
-          "🌟"
-        ]
+        "comment": ["^さくら", "^サクラ", "^桜", "^sakura", "桜吹雪", "⛈️", "🌙", "🎍", "🌊", "🌸", "🌟"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -748,10 +678,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -798,10 +725,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -840,16 +764,10 @@
     }
   },
   "components": {
-    "conditions": [
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "omiken",
-          "omiken_2"
-        ],
+        "center": ["omiken", "omiken_2"],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -876,11 +794,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "BomberSpin",
-        "DwarfBomb",
-        "MultiplyBonanza"
-      ],
+      "targetScriptKeys": ["BomberSpin", "DwarfBomb", "MultiplyBonanza"],
       "title": "💣️Bonber Slot Ranking💎",
       "color": "abyss",
       "limit": 5,
@@ -907,20 +821,8 @@
       "placeholders": "none",
       "characters": "none"
     },
-    "components": [
-      "bubble",
-      "toast",
-      "ranking",
-      "counter"
-    ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "components": ["bubble", "toast", "ranking", "counter"],
+    "gameScripts": ["GouseiSuika", "BomberSpin", "DwarfBomb", "MultiplyBonanza", "GoogolClover", "HugEmAll"],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "none"

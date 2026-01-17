@@ -13,7 +13,9 @@
       "おみくじ",
       "占い",
       "ゆっくり",
+      "ゆっくり",
       "ゆっくり霊夢",
+      "ゆっくり魔理沙",
       "ゆっくり魔理沙",
       "じゃんけん"
     ],
@@ -28,7 +30,11 @@
       "createdAt": "2025-10-16T02:53:38.383Z",
       "updatedAt": "2025-10-16T02:53:38.383Z",
       "order": 0,
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙"
+      ],
       "accessLevel": "basic",
       "sourceFile": "MaidenOmikuji.json",
       "keySuffix": "",
@@ -54,7 +60,11 @@
       "createdAt": "2025-10-16T05:38:01.006Z",
       "updatedAt": "2025-10-16T05:38:01.006Z",
       "order": 0,
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙"
+      ],
       "accessLevel": "basic",
       "sourceFile": "FlowerFortune.json",
       "keySuffix": "",
@@ -74,7 +84,11 @@
       "createdAt": "2025-10-15T16:01:09.848Z",
       "updatedAt": "2025-10-15T16:01:09.848Z",
       "order": 0,
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙"
+      ],
       "accessLevel": "basic",
       "sourceFile": "HondaJanken.json",
       "keySuffix": "",
@@ -124,24 +138,33 @@
       "key": "FirstSagiReimu",
       "name": "初見詐欺:Reimu",
       "description": "初めてでもないのに「初見」という奴らへの正義の鉄槌(「初見さん」なら大丈夫)",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-17T10:26:23.271Z",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-01-17T13:11:12.900Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
-          "key": "9d9ba6af-96ca-4c6b-9d01-e50e138ef8ee",
-          "name": "初見詐欺(Angry):霊夢",
+          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "key": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "name": "初見詐欺:霊夢",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -152,14 +175,21 @@
             },
             {
               "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "angry",
-              "sound": "fail",
-              "message": {
-                "bubble": "<<FirstSagiReimuAngry>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 4,
+                  "content": "FirstSagiReimuAngry"
+                },
+                {
+                  "weight": 8,
+                  "content": "FirstSagiReimuSleepy"
+                },
+                {
+                  "weight": 1,
+                  "content": "FirstSagiReimuFake"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -168,60 +198,22 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 4,
+          "weight": 13,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "e3b96d09-df98-4ee7-910c-951acc587fa8",
-          "key": "e3b96d09-df98-4ee7-910c-951acc587fa8",
-          "name": "初見詐欺(sleepy):霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "id": "2f464ccd-1a37-46ac-816d-c80284fd3f92",
+          "key": "6db1d5d2-00c5-4808-83af-a662c1131df1",
+          "name": "初見詐欺:魔理沙",
+          "createdAt": "2026-01-17T10:35:20.895Z",
+          "updatedAt": "2026-01-17T10:35:20.895Z",
           "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "sleepy",
-              "sound": "negative",
-              "message": {
-                "bubble": "<<FirstSagiReimuSleepy>>",
-                "isToast": false
-              }
-            }
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
           ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 8,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
-          "key": "0da7d1fa-9fd4-4a30-bb78-600c683f74d9",
-          "name": "ああ初見だと思ったら騙された高校校歌:reimu",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -232,65 +224,13 @@
             },
             {
               "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenReimu>>",
-                "isToast": false
-              }
-            },
-            {
-              "delaySeconds": 5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "angry",
-              "sound": "fail",
-              "message": {
-                "bubble": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "352ea94d-dd73-41a8-abb7-bab726c205f6",
-          "key": "352ea94d-dd73-41a8-abb7-bab726c205f6",
-          "name": "初見詐欺(surprised):魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "surprised",
-              "sound": "bounce",
-              "message": {
-                "bubble": "<<FirstSagiReimuSurprise>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSagiMarisaSurprised"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -311,20 +251,65 @@
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
-              "unit": "tc",
+              "unit": "draws",
               "value": 100
             },
             "comment": []
           }
         },
         {
-          "id": "e77329a7-d126-4027-b31c-f61b8e7155af",
-          "key": "48ac3e3a-8cba-4ea0-90fb-0ccf9cb80e06",
-          "name": "ホントの初見(2-5回)",
-          "createdAt": "2026-01-17T10:25:04.188Z",
-          "updatedAt": "2026-01-17T10:25:04.188Z",
+          "id": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "key": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "name": "ホントの初見(1回)",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
           "order": 0,
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
+          "accessLevel": "basic",
+          "type": "special",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "continue",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "equal",
+              "unit": "tc",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767486455920",
+          "key": "1767486455920",
+          "name": "ホントの初見(2-5回)",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -335,14 +320,17 @@
             },
             {
               "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenReimu>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSyokenReimuHappy"
+                },
+                {
+                  "weight": 2,
+                  "content": "FirstSyokenMarisaExcited"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -373,7 +361,6 @@
       "ruleType": "comments",
       "trigger": {
         "conditions": [
-          "count",
           "comment"
         ],
         "userName": [],
@@ -383,124 +370,47 @@
           "初見(?!さん)",
           "所見",
           "はじめまして"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        }
+        ]
       },
       "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
+        "cooldownSeconds": 5,
+        "cooldownMessage": "コメントが被って「初見詐欺」ができなかったよ。またコメントしてね…って詐欺はダメに決まってるでしょ!!",
         "isRepeatAllowed": 1,
-        "repeatMessage": "初見詐欺は連投するものではない。"
+        "repeatMessage": "初見詐欺は連投するものではないわ。"
       }
     },
-    "FirstHontoReimu": {
-      "id": "FirstHontoReimu",
-      "key": "FirstHontoReimu",
-      "name": "ホントの初見:Reimu",
-      "description": "初めてから5回までは歓迎してくれます",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+    "CheckNumberReimu": {
+      "id": "CheckNumberReimu",
+      "key": "CheckNumberReimu",
+      "name": "コメント数表示:Reimu",
+      "description": "コメント数は数えているわ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-01-17T13:17:07.881Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
-          "key": "84d44380-9e0c-4650-a308-d1b6a50a31c8",
-          "name": "ホントの初見:Reimu",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenReimu>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "コメント数表示"
       ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        }
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "NumCommentsReimu": {
-      "id": "NumCommentsReimu",
-      "key": "NumCommentsReimu",
-      "name": "コメント数表示:Reimu",
-      "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
-          "key": "1c7a0c06-4101-4d74-9bd5-5c76e94d00c5",
-          "name": "コメント数表示:霊夢",
+          "id": "72f0b6a8-e5ab-4295-ae25-0eb60e844ff3",
+          "key": "72f0b6a8-e5ab-4295-ae25-0eb60e844ff3",
+          "name": "コメント数表示:Reimu",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -527,26 +437,30 @@
           "criteria": null
         },
         {
-          "id": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
-          "key": "cfefd7ad-1e53-49f2-8026-12bd8411f968",
+          "id": "9ea2e940-1e08-4848-bd02-38d13e3e067d",
+          "key": "9ea2e940-1e08-4848-bd02-38d13e3e067d",
           "name": "コメント数表示:魔理沙",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "message",
-              "characterKey": "marisa",
+              "characterKey": "reimu",
               "iconKey": "default",
               "sound": "transition",
               "message": {
-                "bubble": "<<user>>さんのコメント数は [<<tc>>] だぜ",
+                "bubble": "<<user>>さんのコメント数は [<<tc>>] だよ",
                 "isToast": true
               }
             }
@@ -562,15 +476,19 @@
           "criteria": null
         },
         {
-          "id": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
-          "key": "c21577d0-8002-4e97-87cc-e43dd40e5cb6",
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "key": "4d17c161-f7ce-48a1-a819-863431a8b73c",
           "name": "コメント数表示:魔理沙 (おふざけ)",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -578,7 +496,7 @@
               "delaySeconds": 0,
               "actionType": "message",
               "characterKey": "marisa",
-              "iconKey": "default",
+              "iconKey": "wink",
               "sound": "reveal_full",
               "message": {
                 "bubble": "<<user>>さんのコメント数は…教えてあげないよん!(ジャン!)",
@@ -605,7 +523,21 @@
           "special": "return",
           "weight": 1,
           "isPriority": false,
-          "criteria": null
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "tc",
+              "value": 100
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
@@ -633,11 +565,16 @@
       "name": "ギフト:Reimu",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 4,
+      "updatedAt": "2026-01-17T13:21:44.766Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "ギフト"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -649,7 +586,11 @@
           "updatedAt": "2025-08-11T15:34:29.297Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -660,14 +601,13 @@
             },
             {
               "delaySeconds": 0.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "happy",
-              "sound": "carnival",
-              "message": {
-                "bubble": "<<GiftReimu>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "GiftReimuHappy"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -703,44 +643,51 @@
     "FirstSyokenReimu": {
       "id": "FirstSyokenReimu",
       "key": "FirstSyokenReimu",
-      "name": "初見:Reimu",
+      "name": "初見判定ちゃん:Reimu",
       "description": "初めてコメントをした方への挨拶",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 5,
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-01-17T13:06:20.907Z",
+      "order": 4,
       "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
-          "key": "8bdb89c3-e656-4ac8-a490-6d921eeae3cd",
-          "name": "初見(happy):霊夢",
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "name": "初見",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "happy",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenReimu>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 2,
+                  "content": "FirstSyokenReimuHappy"
+                },
+                {
+                  "weight": 1,
+                  "content": "FirstSyokenMarisaExcited"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -750,37 +697,53 @@
           },
           "special": "return",
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
         {
-          "id": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
-          "key": "8cbc01c0-634e-42e5-95bd-bab044c9ac30",
-          "name": "初見(excited):魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "id": "1767509750837",
+          "key": "1767509750837",
+          "name": "久しぶり",
+          "createdAt": "2026-01-04T06:55:50.837Z",
+          "updatedAt": "2026-01-04T06:55:50.837Z",
           "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "FirstSyoken"
-            },
-            {
-              "delaySeconds": 1.5,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "excited",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<FirstSyokenMarisa>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 2,
+                  "content": "FirstComebackReimuSinging"
+                },
+                {
+                  "weight": 1,
+                  "content": "FirstComebackMarisaHappy"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -790,101 +753,53 @@
           },
           "special": "return",
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "syoken"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "syoken": [
-          "syoken"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "FirstComebackReimu": {
-      "id": "FirstComebackReimu",
-      "key": "FirstComebackReimu",
-      "name": "久しぶり:Reimu",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
-          "key": "63af8b63-6c50-45fe-b044-2d33457f7c8c",
-          "name": "久しぶり(singing):霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "singing",
-              "sound": "congrats",
-              "message": {
-                "bubble": "<<FirstComebackReimu>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 3,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "again"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
         {
-          "id": "c383530d-30fd-48ad-89c5-7b486de885ed",
-          "key": "c383530d-30fd-48ad-89c5-7b486de885ed",
-          "name": "久しぶり(happy):魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "id": "1767509789237",
+          "key": "1767509789237",
+          "name": "こんにちは",
+          "createdAt": "2026-01-04T06:56:29.237Z",
+          "updatedAt": "2026-01-04T06:56:29.237Z",
           "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "happy",
-              "sound": "congrats",
-              "message": {
-                "bubble": "<<FirstComebackMarisa>>",
-                "isToast": false
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 2,
+                  "content": "FirstVisitReimuLaughing"
+                },
+                {
+                  "weight": 1,
+                  "content": "FirstComebackMarisaHappy"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -893,127 +808,34 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 2,
-          "isPriority": false,
-          "criteria": null
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "firstVisit"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "syoken"
-        ],
+        "conditions": [],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [],
-        "syoken": [
-          "again"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "FirstVisitReimu": {
-      "id": "FirstVisitReimu",
-      "key": "FirstVisitReimu",
-      "name": "こんにちは:Reimu",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
-          "key": "5f8226f7-1a66-4acf-8ad1-0274d009a25d",
-          "name": "挨拶(laughing):霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "laughing",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<FirstVisitReimu>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 3,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
-          "key": "da52865b-8fd8-4e25-b04f-3ca507019cf6",
-          "name": "挨拶(singing):魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "singing",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<FirstVisitMarisa>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 2,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "syoken"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "syoken": [
-          "firstVisit"
-        ]
+        "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -1025,74 +847,51 @@
     "CountStreamReimu": {
       "id": "CountStreamReimu",
       "key": "CountStreamReimu",
-      "name": "配信内コメント数チェック:Reimu",
-      "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 8,
+      "name": "コメントチェック:Reimu",
+      "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-01-17T13:19:32.018Z",
+      "order": 5,
       "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "コメントチェック"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "934d91f0-82d1-4b54-b8be-3252e3149a08",
-          "key": "934d91f0-82d1-4b54-b8be-3252e3149a08",
-          "name": "50回コメント:霊夢",
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "key": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "name": "配信枠コメント50回",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "sound": "baseball",
-              "message": {
-                "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
-                "isToast": true
-              }
-            }
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
           ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 4,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
-          "key": "2060d81f-83c1-4899-b7fb-3d68a9d68652",
-          "name": "50回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "sound": "baseball",
-              "message": {
-                "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
-                "isToast": true
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 2,
+                  "content": "CountStreamReimu"
+                },
+                {
+                  "weight": 1,
+                  "content": "CountStreamMarisa"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -1102,103 +901,47 @@
           },
           "special": "return",
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "count"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 50
-        }
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "CountUserReimu": {
-      "id": "CountUserReimu",
-      "key": "CountUserReimu",
-      "name": "個別コメント数チェック:Reimu",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
-      "order": 9,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "25bbf670-ffd8-4646-b1e2-de04313df2de",
-          "key": "25bbf670-ffd8-4646-b1e2-de04313df2de",
-          "name": "100回コメント:霊夢",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
-                "isToast": true
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 4,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "lc",
+              "value": 50
+            },
+            "comment": []
+          }
         },
         {
-          "id": "624558c1-e666-4d8b-ba58-6406fd24cd89",
-          "key": "624558c1-e666-4d8b-ba58-6406fd24cd89",
-          "name": "100回コメント:魔理沙",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "id": "e4cecb10-ee69-4693-95c0-39c7635e45c2",
+          "key": "e4cecb10-ee69-4693-95c0-39c7635e45c2",
+          "name": "個人コメント200回",
+          "createdAt": "2026-01-04T07:32:37.448Z",
+          "updatedAt": "2026-01-04T07:32:37.448Z",
           "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "marisa",
-              "iconKey": "default",
-              "sound": "baseball",
-              "message": {
-                "bubble": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
-                "isToast": true
-              }
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "CountUserMarisa"
+                }
+              ]
             }
           ],
           "gameScripts": {
@@ -1208,24 +951,81 @@
           },
           "special": "return",
           "weight": 1,
-          "isPriority": false,
-          "criteria": null
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "tc",
+              "value": 200
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767511957448",
+          "key": "1767511957448",
+          "name": "個人コメント100回",
+          "createdAt": "2026-01-04T07:32:37.448Z",
+          "updatedAt": "2026-01-04T07:32:37.448Z",
+          "order": 0,
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "CountUserReimu"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "tc",
+              "value": 100
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": [],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        }
+        "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -1241,24 +1041,33 @@
       "key": "ViewCountDisplayReimu",
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-27T04:06:15.990Z",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-01-17T13:25:39.059Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
+      "editorColor": "#4CAF50",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "閲覧数チェック"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "0636470c-29c0-4f74-af36-549dc7c247b2",
-          "key": "0636470c-29c0-4f74-af36-549dc7c247b2",
-          "name": "閲覧数:霊夢",
+          "id": "70762039-889c-47fd-8195-fe2fb87da00f",
+          "key": "70762039-889c-47fd-8195-fe2fb87da00f",
+          "name": "閲覧数:Reimu",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1285,15 +1094,19 @@
           "criteria": null
         },
         {
-          "id": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
-          "key": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff",
+          "id": "2043aa1c-22bf-4127-bfd2-0f6b7baab97f",
+          "key": "2043aa1c-22bf-4127-bfd2-0f6b7baab97f",
           "name": "閲覧数:魔理沙",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1320,15 +1133,19 @@
           "criteria": null
         },
         {
-          "id": "b7aafc25-2b6c-45f6-9420-106483a55a5d1",
-          "key": "0636470c-29c0-4f74-af36-549dc7c247b21",
-          "name": "高評価数:霊夢",
+          "id": "09344253-0890-47c8-9df1-18426f32481f",
+          "key": "09344253-0890-47c8-9df1-18426f32481f",
+          "name": "高評価数:Reimu",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1339,7 +1156,7 @@
               "iconKey": "default",
               "sound": "cute",
               "message": {
-                "bubble": "高評価は<<upVote>>だよ",
+                "bubble": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
                 "isToast": true
               }
             }
@@ -1355,15 +1172,19 @@
           "criteria": null
         },
         {
-          "id": "6e7900c2-0938-44aa-8522-1708d4bb1a1d1",
-          "key": "e36f1bbf-b4fe-4aa8-bc38-0334a830abff1",
+          "id": "a8dd6c06-d05b-44ba-a67b-728937b79eb0",
+          "key": "a8dd6c06-d05b-44ba-a67b-728937b79eb0",
           "name": "高評価数:魔理沙",
           "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1400,23 +1221,32 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T04:11:05.746Z",
+      "updatedAt": "2026-01-17T13:30:03.435Z",
       "order": 2,
       "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [],
+      "editorColor": "#F44336",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "告知"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
           "key": "33d7982c-d477-4975-989e-0f010a5fc0a6",
-          "name": "チャンネル登録告知",
+          "name": "チャンネル登録告知:Reimu",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
           "updatedAt": "2025-08-11T15:34:29.298Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1425,7 +1255,7 @@
               "actionType": "message",
               "characterKey": "reimu",
               "iconKey": "happy",
-              "sound": "cute",
+              "sound": "news",
               "message": {
                 "bubble": "<<PromotionToastsReimu>>",
                 "isToast": true
@@ -1438,20 +1268,24 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 3,
+          "weight": 69,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "9dea8c40-0801-4523-93e2-dc3049fe1814",
-          "key": "9dea8c40-0801-4523-93e2-dc3049fe1814",
-          "name": "discord告知",
+          "id": "37ef45c1-fd83-40e1-8596-57a4f08b210c",
+          "key": "37ef45c1-fd83-40e1-8596-57a4f08b210c",
+          "name": "チャンネル登録告知:Marisa",
           "description": "",
           "createdAt": "2025-08-11T15:34:29.298Z",
           "updatedAt": "2025-08-11T15:34:29.298Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -1459,8 +1293,8 @@
               "delaySeconds": 0,
               "actionType": "message",
               "characterKey": "marisa",
-              "iconKey": "excited",
-              "sound": "cute",
+              "iconKey": "wink",
+              "sound": "news",
               "message": {
                 "bubble": "<<PromotionToastsMarisa>>",
                 "isToast": true
@@ -1473,7 +1307,46 @@
             "characterKey": ""
           },
           "special": "return",
-          "weight": 2,
+          "weight": 30,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
+          "name": "おみくじBOT告知",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [
+            "ゆっくり",
+            "ゆっくり霊夢",
+            "ゆっくり魔理沙"
+          ],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "marisa",
+              "iconKey": "singing",
+              "sound": "nya",
+              "message": {
+                "bubble": "このおみくじBOT、配信者さんに使って欲しいんだぜ…",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
           "isPriority": false,
           "criteria": null
         }
@@ -1483,19 +1356,591 @@
       "isBaseZero": false
     }
   },
-  "actionSets": {},
+  "actionSets": {
+    "FirstSagiReimuAngry": {
+      "id": "1767539439046-od3bas",
+      "key": "FirstSagiReimuAngry",
+      "name": "初見詐欺(Angry):Reimu",
+      "description": "初見って書いていても、私達がカウントしてるから騙せないわよ。",
+      "createdAt": "2026-01-04T15:10:39.046Z",
+      "updatedAt": "2026-01-17T13:34:30.817Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見詐欺",
+        "Angry"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "angry",
+          "sound": "fail",
+          "message": {
+            "bubble": "<<FirstSagiReimuAngry>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSagiReimuSleepy": {
+      "id": "1767539481151-kvg5to",
+      "key": "FirstSagiReimuSleepy",
+      "name": "初見詐欺(sleepy):Reimu",
+      "description": "はじめましてね。ようこそようこそ。お帰りはあちらよ。",
+      "createdAt": "2026-01-04T15:11:21.152Z",
+      "updatedAt": "2026-01-17T13:34:34.493Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見詐欺"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "sleepy",
+          "sound": "negative",
+          "message": {
+            "bubble": "<<FirstSagiReimuSleepy>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSagiMarisaSurprised": {
+      "id": "1767539536508-gcvcfg",
+      "key": "FirstSagiMarisaSurprised",
+      "name": "初見詐欺(surprised):Marisa",
+      "description": "これじゃあ「初見詐欺コンテスト」も開けるぜ。",
+      "createdAt": "2026-01-04T15:12:16.508Z",
+      "updatedAt": "2026-01-17T13:34:37.641Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見詐欺"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "surprised",
+          "sound": "bounce",
+          "message": {
+            "bubble": "<<FirstSagiReimuSurprise>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSagiReimuFake": {
+      "id": "1767539560050-xw7xfz",
+      "key": "FirstSagiReimuFake",
+      "name": "ああ初見だと思ったら騙された高校校歌:Reimu",
+      "description": "可愛い巫女をひどい目に合わせたのね!",
+      "createdAt": "2026-01-04T15:12:40.050Z",
+      "updatedAt": "2026-01-17T13:34:41.239Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見詐欺"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "actionSet",
+          "actionSetKeys": [
+            {
+              "weight": 1,
+              "content": "FirstSyokenReimuHappy"
+            }
+          ]
+        },
+        {
+          "delaySeconds": 3.5,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "angry",
+          "sound": "fail",
+          "message": {
+            "bubble": "だましたわね<<user>>さん。可愛い巫女をひどい目に合わせたのね!",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "GiftReimuHappy": {
+      "id": "1767540348473-d4fev8",
+      "key": "GiftReimuHappy",
+      "name": "ギフト(happy):Reimu",
+      "description": "お賽銭、確かに受け取ったわ。神様もきっと微笑んでるわ。",
+      "createdAt": "2026-01-04T15:25:48.473Z",
+      "updatedAt": "2026-01-17T13:34:43.794Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "happy",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftReimuHappy>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSyokenReimuHappy": {
+      "id": "1767539629815-molbgp",
+      "key": "FirstSyokenReimuHappy",
+      "name": "初見(happy):霊夢",
+      "description": "ようこそ！一緒に楽しんでくれると嬉しいわ。",
+      "createdAt": "2026-01-04T15:13:49.815Z",
+      "updatedAt": "2026-01-17T13:34:47.124Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "happy",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<FirstSyokenReimu>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSyokenMarisaExcited": {
+      "id": "mkicmbvzkcgj3",
+      "key": "FirstSyokenMarisaExcited",
+      "name": "初見(excited):魔理沙",
+      "description": "コメントナイスだぜ！歓迎するぜ！",
+      "createdAt": "2026-01-17T12:56:34.339Z",
+      "updatedAt": "2026-01-17T13:34:51.951Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "excited",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<FirstSyokenReimu>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstComebackReimuSinging": {
+      "id": "1767540169384-b2waaw",
+      "key": "FirstComebackReimuSinging",
+      "name": "久しぶり(singing):霊夢",
+      "description": "ご縁が続いていることに感謝するわ。",
+      "createdAt": "2026-01-04T15:22:49.384Z",
+      "updatedAt": "2026-01-17T13:34:54.846Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "singing",
+          "sound": "congrats",
+          "message": {
+            "bubble": "<<FirstComebackReimuSinging>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstComebackMarisaHappy": {
+      "id": "mkicmbvz89ajs",
+      "key": "FirstComebackMarisaHappy",
+      "name": "久しぶり(happy):魔理沙",
+      "description": "久しぶりすぎて忘れかけてたぜ…",
+      "createdAt": "2026-01-17T12:43:03.254Z",
+      "updatedAt": "2026-01-17T13:34:57.008Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "happy",
+          "sound": "congrats",
+          "message": {
+            "bubble": "<<FirstComebackMarisaHappy>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstVisitReimuLaughing": {
+      "id": "1767540201946-kvrx6s",
+      "key": "FirstVisitReimuLaughing",
+      "name": "挨拶(laughing):霊夢",
+      "description": "毎日の訪れに心からお礼をするわ。",
+      "createdAt": "2026-01-04T15:23:21.946Z",
+      "updatedAt": "2026-01-17T13:34:59.496Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "laughing",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<FirstVisitReimuLaughing>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstVisitMarisaSinging": {
+      "id": "mkicmbvzees9d",
+      "key": "FirstVisitMarisaSinging",
+      "name": "挨拶(singing):魔理沙",
+      "description": "いつもコメントしてくれてるから、もう配信仲間だぜ！",
+      "createdAt": "2026-01-17T12:45:47.633Z",
+      "updatedAt": "2026-01-17T13:35:01.926Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "singing",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<FirstVisitMarisaSinging>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "CountStreamReimu": {
+      "id": "1767540543495-x0of51",
+      "key": "CountStreamReimu",
+      "name": "配信枠コメント50回:Reimu",
+      "description": "この配信のコメントは…",
+      "createdAt": "2026-01-04T15:29:03.495Z",
+      "updatedAt": "2026-01-17T13:35:06.248Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "コメントチェック"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "happy",
+          "sound": "baseball",
+          "message": {
+            "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだよ。",
+            "isToast": true
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "CountStreamMarisa": {
+      "id": "mkicmbvz2m2s5",
+      "key": "CountStreamMarisa",
+      "name": "配信枠コメント50回:Marisa",
+      "description": "この配信のコメントは…",
+      "createdAt": "2026-01-17T12:49:44.887Z",
+      "updatedAt": "2026-01-17T13:35:09.037Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "コメントチェック"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "excited",
+          "sound": "baseball",
+          "message": {
+            "bubble": "この配信の<<lc>>回目のコメントは、<<user>>さんだぜ。",
+            "isToast": true
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "CountUserReimu": {
+      "id": "1767540577897-8ne654",
+      "key": "CountUserReimu",
+      "name": "個人コメント100回:Reimu",
+      "description": "たくさんのコメント、ありがとう！",
+      "createdAt": "2026-01-04T15:29:37.897Z",
+      "updatedAt": "2026-01-17T13:35:13.064Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "コメントチェック"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "reimu",
+          "iconKey": "blushing",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<user>>さんのコメントが、<<tc>>回になったわ。たくさんのコメント、ありがとう！",
+            "isToast": true
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "CountUserMarisa": {
+      "id": "mkicmbvzqpaxx",
+      "key": "CountUserMarisa",
+      "name": "個人コメント200回:Marisa",
+      "description": "たくさんのコメント、嬉しいぜ！",
+      "createdAt": "2026-01-17T12:50:05.818Z",
+      "updatedAt": "2026-01-17T13:35:15.473Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "コメントチェック"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "marisa",
+          "iconKey": "wink",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<user>>さんのコメントが、<<tc>>回になったぜ。たくさんのコメント、嬉しいぜ！",
+            "isToast": true
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    }
+  },
   "placeholders": {
     "FirstSagiReimuAngry": {
       "id": "FirstSagiReimuAngry",
       "key": "FirstSagiReimuAngry",
       "name": "初見詐欺(Angry):霊夢",
-      "description": "「初見詐欺」を本気で嫌がっているセリフのリスト",
+      "description": "初見じゃないのに初見って言うのやめてもらえる？",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2026-01-17T13:35:44.315Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見詐欺",
+        "Angry"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -1517,13 +1962,18 @@
       "id": "FirstSagiReimuSleepy",
       "key": "FirstSagiReimuSleepy",
       "name": "初見詐欺(sleepy):霊夢",
-      "description": "呆れつつも、コメント自体はしてくれるユーザーにかまっている",
+      "description": "それ、何度目の「初見」かしらね？",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2026-01-17T13:36:06.580Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見詐欺",
+        "sleepy"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、初めまし…あなた初見ではないわね?",
@@ -1541,13 +1991,18 @@
       "id": "FirstSagiReimuSurprise",
       "key": "FirstSagiReimuSurprise",
       "name": "初見詐欺(surprised):魔理沙",
-      "description": "ノリでツッコミ、または一緒に悪乗りしている",
+      "description": "はじめまして！実は私も初見なんだぜ！",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2026-01-17T10:24:02.430Z",
+      "updatedAt": "2026-01-17T13:36:17.465Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見詐欺",
+        "surprised"
+      ],
       "accessLevel": "basic",
       "values": [
         "おい!<<user>>さん初見ちゃうやろ!<<tc>>回もコメントくれてるぜ!?",
@@ -1561,17 +2016,22 @@
         "<<user>>さん、私が出るってことはもう100回以上コメントしてるんだぜ。えーと、<<tc>>回のコメントだぜ。"
       ]
     },
-    "GiftReimu": {
+    "GiftReimuHappy": {
       "id": "GiftReimu",
-      "key": "GiftReimu",
-      "name": "ギフト:霊夢",
-      "description": "ギフト＝お賽銭としてお礼する",
+      "key": "GiftReimuHappy",
+      "name": "ギフト(Happy):霊夢",
+      "description": "お賽銭ありがとう。あなたの願いが叶いますように。",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-12-06T01:25:45.300Z",
+      "updatedAt": "2026-01-17T13:36:43.760Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ギフト",
+        "Happy"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、お賽銭ありがとう。あなたの願いが叶いますように。",
@@ -1589,13 +2049,19 @@
     "FirstSyokenReimu": {
       "id": "FirstSyokenReimu",
       "key": "FirstSyokenReimu",
-      "name": "初見:霊夢",
+      "name": "初見(happy):霊夢",
+      "description": "初めまして!ゆっくりしていってね。",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2026-01-17T13:37:19.962Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定",
+        "happy"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、初めまして!ゆっくりしていってね。",
@@ -1608,16 +2074,22 @@
         "初めて来てくれたのね、<<user>>さん。歓迎するわ。"
       ]
     },
-    "FirstSyokenMarisa": {
+    "FirstSyokenMarisaeExcited": {
       "id": "FirstSyokenMarisa",
-      "key": "FirstSyokenMarisa",
-      "name": "初見:魔理沙",
+      "key": "FirstSyokenMarisaeExcited",
+      "name": "初見(excited):魔理沙",
+      "description": "初見ありがとだぜ！一緒に盛り上げていこうぜ。",
       "createdAt": "2025-11-27T01:37:09.289Z",
-      "updatedAt": "2025-11-27T04:06:15.988Z",
+      "updatedAt": "2026-01-17T13:37:32.994Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定",
+        "excited"
+      ],
       "accessLevel": "basic",
       "values": [
         "ようこそだぜ、<<user>>さん!コメントに感謝だぜ!",
@@ -1627,16 +2099,22 @@
         "おっと！初見の<<user>>さん登場だぜ！拍手〜！👏"
       ]
     },
-    "FirstComebackReimu": {
+    "FirstComebackReimuSinging": {
       "id": "FirstComebackReimu",
-      "key": "FirstComebackReimu",
-      "name": "久しぶり:霊夢",
+      "key": "FirstComebackReimuSinging",
+      "name": "久しぶり(singing):霊夢",
+      "description": "再び会えるのもご縁の力だと思うわ。",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:39:17.596Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定",
+        "singing"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、久しぶり!また会えたね。",
@@ -1649,16 +2127,22 @@
         "あら、<<user>>さん。久しぶりね。元気そうで安心したわ。"
       ]
     },
-    "FirstComebackMarisa": {
+    "FirstComebackMarisaHappy": {
       "id": "FirstComebackMarisa",
-      "key": "FirstComebackMarisa",
-      "name": "久しぶり:魔理沙",
+      "key": "FirstComebackMarisaHappy",
+      "name": "久しぶり(happy):魔理沙",
+      "description": "会いたかったと配信者は嬉し涙だぜ。",
       "createdAt": "2025-11-27T01:37:33.626Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:39:04.698Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定",
+        "happy"
+      ],
       "accessLevel": "basic",
       "values": [
         "おっ、<<user>>さんだぜ。久しぶり!ゆっくりしていってね!",
@@ -1668,16 +2152,22 @@
         "<<user>>さん、また来てくれたんだな！久しぶりに会えて嬉しいぜ～"
       ]
     },
-    "FirstVisitReimu": {
+    "FirstVisitReimuLaughing": {
       "id": "FirstVisitReimu",
-      "key": "FirstVisitReimu",
-      "name": "こんにちは:霊夢",
+      "key": "FirstVisitReimuLaughing",
+      "name": "挨拶(laughing):霊夢",
+      "description": "毎日来てくれるから、もう家族のように思えるわ。",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:39:25.294Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "初見判定",
+        "laughing"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、こんにちは!ゆっくりしていってね。",
@@ -1692,16 +2182,22 @@
         "今日も来てくれてありがとう、<<user>>さん。心を込めて歓迎するわ。"
       ]
     },
-    "FirstVisitMarisa": {
+    "FirstVisitMarisaSinging": {
       "id": "FirstVisitMarisa",
-      "key": "FirstVisitMarisa",
-      "name": "こんにちは:魔理沙",
+      "key": "FirstVisitMarisaSinging",
+      "name": "挨拶(singing):魔理沙",
+      "description": "userさんがいると安心するぜ。",
       "createdAt": "2025-11-27T01:38:33.789Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:38:47.047Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "初見判定",
+        "singing"
+      ],
       "accessLevel": "basic",
       "values": [
         "おっ、<<user>>さんだ。これで<<tc>>回目のコメントだぜ",
@@ -1715,12 +2211,17 @@
       "id": "PromotionToastsReimu",
       "key": "PromotionToastsReimu",
       "name": "告知用トースト:霊夢",
+      "description": "チャンネル登録は、0円でできるお賽銭よ。",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-11-27T04:09:36.700Z",
+      "updatedAt": "2026-01-17T13:39:51.678Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "告知"
+      ],
       "accessLevel": "basic",
       "values": [
         "チャンネル登録と高評価をすると、配信主がとても喜ぶわ。",
@@ -1737,47 +2238,41 @@
       "id": "PromotionToastsMarisa",
       "key": "PromotionToastsMarisa",
       "name": "告知用トースト:魔理沙",
+      "description": "チャンネル登録と高評価、ついでに通知ONしてくれよな！",
       "createdAt": "2025-11-27T04:05:32.863Z",
-      "updatedAt": "2025-11-27T04:10:41.322Z",
+      "updatedAt": "2026-01-17T13:41:10.952Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "告知"
+      ],
       "accessLevel": "basic",
       "values": [
-        {
-          "weight": 5,
-          "content": "チャンネル登録と高評価、ついでに通知ONしてくれよな！私からのお願いだぜ。"
-        },
-        {
-          "weight": 5,
-          "content": "推しは推せるときに推せ、だぜ。チャンネル登録と高評価は今すぐな！"
-        },
-        {
-          "weight": 5,
-          "content": "配信主の過去配信は、アーカイブで見られるぜ。"
-        },
-        {
-          "weight": 5,
-          "content": "配信主はショート動画を積極的に作成してるぜ。見に来てくれよな！"
-        },
-        {
-          "weight": 5,
-          "content": "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ"
-        },
-        "このおみくじBOT、配信者さんに使って欲しいんだぜ…"
+        "チャンネル登録と高評価、ついでに通知ONしてくれよな！私からのお願いだぜ。",
+        "推しは推せるときに推せ、だぜ。チャンネル登録と高評価は今すぐな！",
+        "配信主の過去配信は、アーカイブで見られるぜ。",
+        "配信主はショート動画を積極的に作成してるぜ。見に来てくれよな！",
+        "discordで活動中!主は配信中はいつも入っているぜ。友達になって欲しいんだぜ"
       ]
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
+      "description": "マリサ キリサメ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:40:17.669Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり魔理沙",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "マリサ キリサメ"
@@ -1787,12 +2282,18 @@
       "id": "HondaJankenOre",
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
+      "description": "私(霊夢と魔理沙で共用です)",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-27T04:06:15.989Z",
+      "updatedAt": "2026-01-17T13:44:10.961Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "ゆっくり",
+        "ゆっくり霊夢",
+        "ゆっくり魔理沙",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "私"
@@ -1811,8 +2312,8 @@
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "ゆっくり",
+        "ゆっくり霊夢"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -1897,8 +2398,8 @@
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [
-        "Yukkuri",
-        "Marisa"
+        "ゆっくり",
+        "ゆっくり魔理沙"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
@@ -2041,6 +2542,6 @@
   "settings": {
     "commentType": "OneComme",
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "daisyUiTheme": "dim"
+    "daisyUiTheme": "cmyk"
   }
 }

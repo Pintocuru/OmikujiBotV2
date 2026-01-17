@@ -56,9 +56,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -67,9 +65,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -130,14 +126,10 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "syoken": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "count": {
           "comparison": "lowerBound",
           "unit": "lc",
@@ -204,12 +196,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["syoken"],
         "access": [],
         "gift": [],
         "count": {
@@ -269,12 +257,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["again"],
         "access": [],
         "gift": [],
         "count": {
@@ -334,12 +318,8 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+        "conditions": ["syoken"],
+        "syoken": ["firstVisit"],
         "access": [],
         "gift": [],
         "count": {
@@ -399,9 +379,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -462,9 +440,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -566,10 +542,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -588,46 +561,16 @@
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
         "singing": "chocolate/singing.webp",
         "sleepy": "chocolate/sleepy.webp"
       },

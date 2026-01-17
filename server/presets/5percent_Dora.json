@@ -49,9 +49,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora"
-              ]
+              "actionSetKeys": ["5percent_dora"]
             }
           ],
           "gameScripts": {
@@ -105,18 +103,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ドラちゃん",
-          "^どらちゃん",
-          "^dorachan",
-          "^5percent_dora"
-        ]
+        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -155,9 +146,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora"
-              ]
+              "actionSetKeys": ["5percent_dora"]
             }
           ],
           "gameScripts": {
@@ -263,9 +252,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "5percent_dora_hand"
-          ]
+          "actionSetKeys": ["5percent_dora_hand"]
         },
         {
           "delaySeconds": 1.5,
@@ -303,9 +290,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "5percent_dora_hand"
-          ]
+          "actionSetKeys": ["5percent_dora_hand"]
         },
         {
           "delaySeconds": 1.5,
@@ -1781,16 +1766,14 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
-      "tags": [],
+      "tags": ["ドラちゃん", "5percent_Dora"],
       "accessLevel": "basic",
       "version": "0.0.0",
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
       "image": {
-        "default": [
-          "5percent_Dora/default.webp"
-        ],
+        "default": ["5percent_Dora/default.webp"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -1821,16 +1804,10 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["bubble", "toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "5percent_Dora"
-        ],
+        "center": ["5percent_Dora"],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1857,9 +1834,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "ひみつ道具履歴",
       "color": "cmyk",
       "limit": 5,
@@ -1886,11 +1861,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "none",

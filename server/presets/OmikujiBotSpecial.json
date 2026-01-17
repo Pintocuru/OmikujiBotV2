@@ -8,12 +8,7 @@
     "generatorVersion": "v2.0.0-beta17",
     "dataVersion": 2.0017,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ストロベリーショコラ",
-      "占い",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "ストロベリーショコラ", "占い", "じゃんけん"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7733810"
   },
@@ -334,18 +329,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ],
+        "comment": ["初見(?!さん)", "所見", "はじめまして"],
         "count": {
           "comparison": "lowerBound",
           "unit": "tc",
@@ -416,18 +404,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
+        "conditions": ["count", "comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ],
+        "comment": ["初見", "所見", "はじめまして"],
         "count": {
           "comparison": "upperBound",
           "unit": "tc",
@@ -492,15 +473,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -566,14 +543,10 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "userName": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "comment": []
       },
       "limits": {
@@ -651,9 +624,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -669,18 +640,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ダンジョン",
-          "^だんじょん",
-          "^洞窟",
-          "^dungeon"
-        ]
+        "comment": ["^ダンジョン", "^だんじょん", "^洞窟", "^dungeon"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -718,9 +682,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -766,9 +728,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -814,9 +774,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -862,9 +820,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -910,9 +866,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -958,9 +912,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -1006,9 +958,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -1054,9 +1004,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -1102,9 +1050,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -1150,9 +1096,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "FlowerFirst"
-              ]
+              "actionSetKeys": ["FlowerFirst"]
             },
             {
               "delaySeconds": 0,
@@ -1185,24 +1129,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^フラワー",
-          "^ふらわー",
-          "^flower",
-          "^花",
-          "^はな$",
-          "🌷",
-          "🌹",
-          "🌺",
-          "🌻",
-          "🌼"
-        ]
+        "comment": ["^フラワー", "^ふらわー", "^flower", "^花", "^はな$", "🌷", "🌹", "🌺", "🌻", "🌼"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1289,9 +1220,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1307,19 +1236,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ルノルマン",
-          "^るのるまん",
-          "^Lenormand",
-          "^うらな",
-          "^占"
-        ]
+        "comment": ["^ルノルマン", "^るのるまん", "^Lenormand", "^うらな", "^占"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1355,9 +1276,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "RunicOracleFirst"
-              ]
+              "actionSetKeys": ["RunicOracleFirst"]
             },
             {
               "delaySeconds": 3.5,
@@ -1384,20 +1303,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ルーン",
-          "^るーん",
-          "^rune",
-          "^runic",
-          "^うらな",
-          "^占"
-        ]
+        "comment": ["^ルーン", "^るーん", "^rune", "^runic", "^うらな", "^占"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1433,9 +1343,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1478,9 +1386,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1523,9 +1429,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1568,9 +1472,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1613,9 +1515,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1658,9 +1558,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -1692,18 +1590,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^カード",
-          "^かーど",
-          "^card",
-          "^station"
-        ]
+        "comment": ["^カード", "^かーど", "^card", "^station"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1741,9 +1632,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora"
-              ]
+              "actionSetKeys": ["5percent_dora"]
             }
           ],
           "gameScripts": {
@@ -1772,9 +1661,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora_boron"
-              ]
+              "actionSetKeys": ["5percent_dora_boron"]
             }
           ],
           "gameScripts": {
@@ -1803,9 +1690,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora_Konjac"
-              ]
+              "actionSetKeys": ["5percent_dora_Konjac"]
             }
           ],
           "gameScripts": {
@@ -1821,18 +1706,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ドラちゃん",
-          "^どらちゃん",
-          "^dorachan",
-          "^5percent_dora"
-        ]
+        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -1870,9 +1748,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenRockA"
-              ]
+              "actionSetKeys": ["HondaJankenRockA"]
             }
           ],
           "gameScripts": {
@@ -1901,9 +1777,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenRockB"
-              ]
+              "actionSetKeys": ["HondaJankenRockB"]
             }
           ],
           "gameScripts": {
@@ -1932,9 +1806,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenScissorsA"
-              ]
+              "actionSetKeys": ["HondaJankenScissorsA"]
             }
           ],
           "gameScripts": {
@@ -1963,9 +1835,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenScissorsB"
-              ]
+              "actionSetKeys": ["HondaJankenScissorsB"]
             }
           ],
           "gameScripts": {
@@ -1994,9 +1864,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenPaperA"
-              ]
+              "actionSetKeys": ["HondaJankenPaperA"]
             }
           ],
           "gameScripts": {
@@ -2025,9 +1893,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenPaperB"
-              ]
+              "actionSetKeys": ["HondaJankenPaperB"]
             }
           ],
           "gameScripts": {
@@ -2056,9 +1922,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryA"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryA"]
             }
           ],
           "gameScripts": {
@@ -2087,9 +1951,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryB"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryB"]
             }
           ],
           "gameScripts": {
@@ -2105,17 +1967,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2153,9 +2009,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenRockA"
-              ]
+              "actionSetKeys": ["HondaJankenRockA"]
             }
           ],
           "gameScripts": {
@@ -2184,9 +2038,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenRockB"
-              ]
+              "actionSetKeys": ["HondaJankenRockB"]
             }
           ],
           "gameScripts": {
@@ -2215,9 +2067,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryRockA"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryRockA"]
             }
           ],
           "gameScripts": {
@@ -2246,9 +2096,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryRockB"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryRockB"]
             }
           ],
           "gameScripts": {
@@ -2264,18 +2112,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2313,9 +2154,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenScissorsA"
-              ]
+              "actionSetKeys": ["HondaJankenScissorsA"]
             }
           ],
           "gameScripts": {
@@ -2344,9 +2183,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenScissorsB"
-              ]
+              "actionSetKeys": ["HondaJankenScissorsB"]
             }
           ],
           "gameScripts": {
@@ -2375,9 +2212,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryScissorsA"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryScissorsA"]
             }
           ],
           "gameScripts": {
@@ -2406,9 +2241,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryScissorsB"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryScissorsB"]
             }
           ],
           "gameScripts": {
@@ -2424,17 +2257,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2472,9 +2299,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenPaperA"
-              ]
+              "actionSetKeys": ["HondaJankenPaperA"]
             }
           ],
           "gameScripts": {
@@ -2503,9 +2328,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenPaperB"
-              ]
+              "actionSetKeys": ["HondaJankenPaperB"]
             }
           ],
           "gameScripts": {
@@ -2534,9 +2357,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryPaperA"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryPaperA"]
             }
           ],
           "gameScripts": {
@@ -2565,9 +2386,7 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "HondaJankenVictoryPaperB"
-              ]
+              "actionSetKeys": ["HondaJankenVictoryPaperB"]
             }
           ],
           "gameScripts": {
@@ -2583,18 +2402,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2654,9 +2466,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -2725,9 +2535,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "count"
-        ],
+        "conditions": ["count"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -2802,16 +2610,12 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": [
-          "syoken"
-        ]
+        "syoken": ["syoken"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2872,16 +2676,12 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": [
-          "again"
-        ]
+        "syoken": ["again"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2942,16 +2742,12 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "syoken"
-        ],
+        "conditions": ["syoken"],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": [
-          "firstVisit"
-        ]
+        "syoken": ["firstVisit"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2970,10 +2766,7 @@
       "order": 20,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "ボンバースロット"
-      ],
+      "tags": ["スロット", "ボンバースロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3182,14 +2975,10 @@
           "weight": 0,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3231,9 +3020,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3249,21 +3036,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3282,10 +3059,7 @@
       "order": 21,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "うさぎスロット"
-      ],
+      "tags": ["スロット", "うさぎスロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3379,14 +3153,10 @@
           "weight": 3,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3428,9 +3198,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3446,23 +3214,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3481,10 +3237,7 @@
       "order": 22,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "桜吹雪スロット"
-      ],
+      "tags": ["スロット", "桜吹雪スロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3578,14 +3331,10 @@
           "weight": 2,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3627,9 +3376,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3645,25 +3392,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^さくら",
-          "^サクラ",
-          "^桜",
-          "^sakura",
-          "桜吹雪",
-          "⛈️",
-          "🌙",
-          "🎍",
-          "🌊",
-          "🌸",
-          "🌟"
-        ]
+        "comment": ["^さくら", "^サクラ", "^桜", "^sakura", "桜吹雪", "⛈️", "🌙", "🎍", "🌊", "🌸", "🌟"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3682,12 +3415,7 @@
       "order": 23,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "ギフト",
-        "スイカジェネレーター",
-        "カボチャジェネレーター",
-        "クジラジェネレーター"
-      ],
+      "tags": ["ギフト", "スイカジェネレーター", "カボチャジェネレーター", "クジラジェネレーター"],
       "accessLevel": "pro",
       "omikuji": [
         {
@@ -3731,9 +3459,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "comment"
-            ],
+            "conditions": ["comment"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3743,13 +3469,7 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": [
-              "pumpkin",
-              "かぼちゃ",
-              "カボチャ",
-              "南瓜",
-              "🎃"
-            ]
+            "comment": ["pumpkin", "かぼちゃ", "カボチャ", "南瓜", "🎃"]
           }
         },
         {
@@ -3772,9 +3492,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "comment"
-            ],
+            "conditions": ["comment"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3784,30 +3502,17 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": [
-              "whale",
-              "くじら",
-              "クジラ",
-              "鯨",
-              "🐋",
-              "🐳"
-            ]
+            "comment": ["whale", "くじら", "クジラ", "鯨", "🐋", "🐳"]
           }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "userName": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
-        "comment": [
-          "おみくじ"
-        ]
+        "gift": ["all"],
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -3826,9 +3531,7 @@
       "order": 24,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3886,9 +3589,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3904,20 +3605,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉$"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -3936,10 +3628,7 @@
       "order": 25,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "カボチャジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "カボチャジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3997,9 +3686,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -4015,19 +3702,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^pumpkin",
-          "^かぼちゃ",
-          "^カボチャ",
-          "^南瓜",
-          "^🎃$"
-        ]
+        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -4046,10 +3725,7 @@
       "order": 26,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "クジラジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "クジラジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -4107,9 +3783,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -4125,20 +3799,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^whale",
-          "^くじら",
-          "^クジラ",
-          "^鯨",
-          "^🐋$",
-          "^🐳$"
-        ]
+        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -4157,9 +3822,7 @@
       "order": 27,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ"
-      ],
+      "tags": ["超おみくじ"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -4169,9 +3832,7 @@
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
-          "tags": [
-            "超おみくじ"
-          ],
+          "tags": ["超おみくじ"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -4209,17 +3870,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^超$",
-          "^超おみくじ",
-          "^BigBang"
-        ]
+        "comment": ["^超$", "^超おみくじ", "^BigBang"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -4238,9 +3893,7 @@
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット"
-      ],
+      "tags": ["タロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -4250,19 +3903,14 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "タロット",
-            "逆位置"
-          ],
+          "tags": ["タロット", "逆位置"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "TarotCardIntro"
-              ]
+              "actionSetKeys": ["TarotCardIntro"]
             },
             {
               "delaySeconds": 3.5,
@@ -4288,9 +3936,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -4651,18 +4297,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^おみくじ",
-          "^omikuji",
-          "^omikuzi",
-          "^御神籤"
-        ]
+        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -4877,9 +4516,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora"
-              ]
+              "actionSetKeys": ["5percent_dora"]
             }
           ],
           "gameScripts": {
@@ -4907,9 +4544,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora_boron"
-              ]
+              "actionSetKeys": ["5percent_dora_boron"]
             }
           ],
           "gameScripts": {
@@ -4937,9 +4572,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "5percent_dora_Konjac"
-              ]
+              "actionSetKeys": ["5percent_dora_Konjac"]
             }
           ],
           "gameScripts": {
@@ -5118,9 +4751,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "5percent_dora_hand"
-          ]
+          "actionSetKeys": ["5percent_dora_hand"]
         },
         {
           "delaySeconds": 1.5,
@@ -5159,9 +4790,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "5percent_dora_hand"
-          ]
+          "actionSetKeys": ["5percent_dora_hand"]
         },
         {
           "delaySeconds": 1.5,
@@ -5322,9 +4951,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5373,9 +5000,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5424,9 +5049,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5475,9 +5098,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5526,9 +5147,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5577,9 +5196,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5628,9 +5245,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5679,9 +5294,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5730,9 +5343,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5781,9 +5392,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5832,9 +5441,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5883,9 +5490,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -5934,9 +5539,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -5985,9 +5588,7 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -6070,10 +5671,7 @@
       "updatedAt": "2026-01-13T06:20:18.752Z",
       "order": 25,
       "isEnabled": true,
-      "tags": [
-        "超おみくじ",
-        "イントロ"
-      ],
+      "tags": ["超おみくじ", "イントロ"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -6104,10 +5702,7 @@
       "updatedAt": "2026-01-13T06:20:18.752Z",
       "order": 26,
       "isEnabled": true,
-      "tags": [
-        "超おみくじ",
-        "占い結果"
-      ],
+      "tags": ["超おみくじ", "占い結果"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -6140,10 +5735,7 @@
       "order": 27,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "イントロ"
-      ],
+      "tags": ["タロット", "イントロ"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -6185,10 +5777,7 @@
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
+      "tags": ["タロット", "占い結果"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -9080,10 +8669,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNice>>!】",
-        "<<null>>"
-      ]
+      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -9572,12 +9158,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "<<CardStationDomestic>>",
-        "<<CardStationEast>>",
-        "<<CardStationWest>>",
-        "<<CardStationAbroad>>"
-      ]
+      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -12727,9 +12308,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "ケイスケ ホンダ"
-      ]
+      "values": ["ケイスケ ホンダ"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -12742,9 +12321,7 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "俺"
-      ]
+      "values": ["俺"]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -12879,11 +12456,7 @@
       "order": 108,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "装飾",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "装飾", "吉"],
       "accessLevel": "basic",
       "values": [
         "光彩",
@@ -12978,10 +12551,7 @@
       "order": 109,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "装飾"
-      ],
+      "tags": ["超おみくじ", "装飾"],
       "accessLevel": "basic",
       "values": [
         "魑魅",
@@ -13075,10 +12645,7 @@
       "order": 110,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "占い結果"
-      ],
+      "tags": ["超おみくじ", "占い結果"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13148,10 +12715,7 @@
       "order": 111,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13181,10 +12745,7 @@
       "order": 112,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13214,10 +12775,7 @@
       "order": 113,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13247,10 +12805,7 @@
       "order": 114,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13284,11 +12839,7 @@
       "order": 115,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "吉", "凶"],
       "accessLevel": "basic",
       "values": [
         "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
@@ -13309,10 +12860,7 @@
       "order": 116,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13346,10 +12894,7 @@
       "order": 117,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13383,10 +12928,7 @@
       "order": 118,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13424,10 +12966,7 @@
       "order": 119,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13477,10 +13016,7 @@
       "order": 120,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13542,10 +13078,7 @@
       "order": 121,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13607,10 +13140,7 @@
       "order": 122,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13672,10 +13202,7 @@
       "order": 123,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -13737,10 +13264,7 @@
       "order": 124,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         "完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻",
@@ -13762,10 +13286,7 @@
       "order": 125,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
+      "tags": ["タロット", "占い結果"],
       "accessLevel": "basic",
       "values": [
         "{{var text='愚者(正位置)'}}【{{text}}】 <<TarotCardFool_U>>",
@@ -13823,10 +13344,7 @@
       "order": 126,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
@@ -13845,10 +13363,7 @@
       "order": 127,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
@@ -13867,10 +13382,7 @@
       "order": 128,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
@@ -13889,10 +13401,7 @@
       "order": 129,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
@@ -13911,10 +13420,7 @@
       "order": 130,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
@@ -13933,10 +13439,7 @@
       "order": 131,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
@@ -13955,10 +13458,7 @@
       "order": 132,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
@@ -13977,10 +13477,7 @@
       "order": 133,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
@@ -13999,10 +13496,7 @@
       "order": 134,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
@@ -14021,10 +13515,7 @@
       "order": 135,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
@@ -14043,10 +13534,7 @@
       "order": 136,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
@@ -14065,10 +13553,7 @@
       "order": 137,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
@@ -14087,10 +13572,7 @@
       "order": 138,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
@@ -14109,10 +13591,7 @@
       "order": 139,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
@@ -14131,10 +13610,7 @@
       "order": 140,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
@@ -14153,10 +13629,7 @@
       "order": 141,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
@@ -14175,10 +13648,7 @@
       "order": 142,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
@@ -14197,10 +13667,7 @@
       "order": 143,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
@@ -14219,10 +13686,7 @@
       "order": 144,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
@@ -14241,10 +13705,7 @@
       "order": 145,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
@@ -14263,10 +13724,7 @@
       "order": 146,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
@@ -14285,10 +13743,7 @@
       "order": 147,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
@@ -14307,10 +13762,7 @@
       "order": 148,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
@@ -14329,10 +13781,7 @@
       "order": 149,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
@@ -14351,10 +13800,7 @@
       "order": 150,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
@@ -14373,10 +13819,7 @@
       "order": 151,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
@@ -14395,10 +13838,7 @@
       "order": 152,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
@@ -14417,10 +13857,7 @@
       "order": 153,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
@@ -14439,10 +13876,7 @@
       "order": 154,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
@@ -14461,10 +13895,7 @@
       "order": 155,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "バランスを崩しやすい時期。無理な行動は運を乱します。",
@@ -14483,10 +13914,7 @@
       "order": 156,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
@@ -14505,10 +13933,7 @@
       "order": 157,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "束縛から解放される兆し。執着を手放せば自由が訪れます。",
@@ -14527,10 +13952,7 @@
       "order": 158,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
@@ -14549,10 +13971,7 @@
       "order": 159,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
@@ -14571,10 +13990,7 @@
       "order": 160,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
@@ -14593,10 +14009,7 @@
       "order": 161,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
@@ -14615,10 +14028,7 @@
       "order": 162,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
@@ -14637,10 +14047,7 @@
       "order": 163,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
@@ -14659,10 +14066,7 @@
       "order": 164,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
@@ -14681,10 +14085,7 @@
       "order": 165,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
@@ -14703,10 +14104,7 @@
       "order": 166,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "過去の努力が報われるとき。新しい扉が開きます。",
@@ -14725,10 +14123,7 @@
       "order": 167,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
@@ -14747,10 +14142,7 @@
       "order": 168,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
@@ -14769,10 +14161,7 @@
       "order": 169,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
@@ -14963,10 +14352,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -14989,52 +14375,18 @@
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
-        "singing": [
-          "chocolate/singing.webp"
-        ],
-        "sleepy": [
-          "chocolate/sleepy.webp"
-        ]
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
+        "singing": ["chocolate/singing.webp"],
+        "sleepy": ["chocolate/sleepy.webp"]
       }
     },
     "omiken": {
@@ -15047,10 +14399,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -15097,10 +14446,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -15139,20 +14485,11 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["bubble", "toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "omiken",
-          "omiken_2"
-        ],
-        "slot1": [
-          "chocolate"
-        ],
+        "center": ["omiken", "omiken_2"],
+        "slot1": ["chocolate"],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -15213,20 +14550,8 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [
-      "bubble",
-      "toast",
-      "ranking",
-      "counter"
-    ],
-    "gameScripts": [
-      "GouseiSuika",
-      "BomberSpin",
-      "DwarfBomb",
-      "MultiplyBonanza",
-      "GoogolClover",
-      "HugEmAll"
-    ],
+    "components": ["bubble", "toast", "ranking", "counter"],
+    "gameScripts": ["GouseiSuika", "BomberSpin", "DwarfBomb", "MultiplyBonanza", "GoogolClover", "HugEmAll"],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "basic"

@@ -8,13 +8,7 @@
     "generatorVersion": "v2.0.1",
     "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ゲーム",
-      "スイカゲーム",
-      "カボチャゲーム",
-      "クジラゲームオンライン"
-    ],
+    "tags": ["おみくじBOT", "ゲーム", "スイカゲーム", "カボチャゲーム", "クジラゲームオンライン"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7730686"
   },
@@ -30,12 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "ギフト",
-        "スイカジェネレーター",
-        "カボチャジェネレーター",
-        "クジラジェネレーター"
-      ],
+      "tags": ["ギフト", "スイカジェネレーター", "カボチャジェネレーター", "クジラジェネレーター"],
       "accessLevel": "adv",
       "omikuji": [
         {
@@ -79,9 +68,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "comment"
-            ],
+            "conditions": ["comment"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -91,13 +78,7 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": [
-              "pumpkin",
-              "かぼちゃ",
-              "カボチャ",
-              "南瓜",
-              "🎃"
-            ]
+            "comment": ["pumpkin", "かぼちゃ", "カボチャ", "南瓜", "🎃"]
           }
         },
         {
@@ -120,9 +101,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "comment"
-            ],
+            "conditions": ["comment"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -132,30 +111,17 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": [
-              "whale",
-              "くじら",
-              "クジラ",
-              "鯨",
-              "🐋",
-              "🐳"
-            ]
+            "comment": ["whale", "くじら", "クジラ", "鯨", "🐋", "🐳"]
           }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "userName": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
-        "comment": [
-          "おみくじ"
-        ]
+        "gift": ["all"],
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -174,9 +140,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -234,9 +198,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -252,20 +214,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉$"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -284,10 +237,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "カボチャジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "カボチャジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -345,9 +295,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -363,19 +311,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^pumpkin",
-          "^かぼちゃ",
-          "^カボチャ",
-          "^南瓜",
-          "^🎃$"
-        ]
+        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -394,10 +334,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "クジラジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "クジラジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -455,9 +392,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -473,20 +408,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^whale",
-          "^くじら",
-          "^クジラ",
-          "^鯨",
-          "^🐋$",
-          "^🐳$"
-        ]
+        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -510,10 +436,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -560,10 +483,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -602,16 +522,10 @@
     }
   },
   "components": {
-    "conditions": [
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "omiken",
-          "omiken_2"
-        ],
+        "center": ["omiken", "omiken_2"],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -638,9 +552,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "GouseiSuika"
-      ],
+      "targetScriptKeys": ["GouseiSuika"],
       "title": "🍉スイカランキング🍉",
       "color": "lofi",
       "limit": 5,
@@ -667,13 +579,8 @@
       "placeholders": "none",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking"
-    ],
-    "gameScripts": [
-      "GouseiSuika"
-    ],
+    "components": ["toast", "ranking"],
+    "gameScripts": ["GouseiSuika"],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "none"

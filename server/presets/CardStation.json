@@ -8,10 +8,7 @@
     "generatorVersion": "v1.4.1",
     "dataVersion": 1.41,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7412886"
   },
@@ -269,9 +266,7 @@
       ],
       "ruleType": "comments",
       "threshold": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "syoken": [],
         "access": [],
         "gift": [],
@@ -280,12 +275,7 @@
           "unit": "lc",
           "value": 1
         },
-        "comment": [
-          "^カード",
-          "^かーど",
-          "^card",
-          "^station"
-        ]
+        "comment": ["^カード", "^かーど", "^card", "^station"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1000,10 +990,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNice>>!】",
-        "<<null>>"
-      ]
+      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -1492,12 +1479,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "<<CardStationDomestic>>",
-        "<<CardStationEast>>",
-        "<<CardStationWest>>",
-        "<<CardStationAbroad>>"
-      ]
+      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -3261,10 +3243,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3307,10 +3286,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3353,10 +3329,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",

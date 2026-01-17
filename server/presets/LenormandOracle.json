@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta1",
-    "dataVersion": 2.00011,
+    "generatorVersion": "v2.0.3",
+    "dataVersion": 2.03,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -41,6 +41,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 3.5,
@@ -49,11 +50,17 @@
               "iconKey": "default",
               "sound": "collect",
               "message": {
-                "bubble": "<<user>>さんは<<LenormandOracle>>"
+                "bubble": "<<user>>さんは<<LenormandOracle>>",
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
@@ -67,6 +74,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
@@ -75,19 +83,27 @@
               "iconKey": "default",
               "sound": "warn",
               "message": {
-                "bubble": "",
-                "toast": "<<user>>さんは5回を超えているよ。また明日占ってみてね。"
+                "bubble": "<<user>>さんは5回を超えているよ。また明日占ってみてね。",
+                "isToast": true
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
             "conditions": [
               "count"
             ],
+            "userName": [],
             "access": [],
+            "gift": [],
+            "syoken": [],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -102,22 +118,16 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^ルノルマン",
           "^るのるまん",
           "^Lenormand",
           "^うらな",
           "^占"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1021,30 +1031,14 @@
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
-        "Yukkuri",
-        "Reimu"
+        "おみくじBOT",
+        "シンプル"
       ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "fantasy",
-        "backFrom": "secondary",
-        "backTo": "primary",
-        "nameColor": "#AB47BC",
-        "textColor": "#F3E5F5",
-        "backgroundColor": "#6A1B9A",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -1058,6 +1052,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "fantasy",
+        "backFrom": "secondary",
+        "backTo": "primary",
+        "nameColor": "#AB47BC",
+        "textColor": "#F3E5F5",
+        "backgroundColor": "#6A1B9A",
+        "customClasses": "px-6 py-6 border border-white rounded-md"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
@@ -1093,34 +1103,25 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "fantasy",
-        "backFrom": "secondary",
-        "backTo": "primary",
-        "nameColor": "#A5D6A7",
-        "textColor": "#FFFFFF",
-        "backgroundColor": "#2E7D32"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showThumbnail": []
     },
     "ranking": {
-      "scriptKey": "basicList",
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "🔮ルノルマンカード 占い履歴",
+      "color": "fantasy",
       "limit": 5,
       "sortOrder": "new",
-      "color": "fantasy"
+      "component": "rankStandard"
     },
     "counter": {
       "ruleKey": null,
+      "component": "counterUser",
       "target": "draw",
       "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
       "color": {
         "daisyUiTheme": "dark",
         "backFrom": "primary",
@@ -1131,25 +1132,25 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
-      "actionSets": "pro",
+      "timers": "none",
+      "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "pro"
+      "characters": "none"
     },
     "components": [
-      "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "bubble"
     ],
     "gameScripts": [],
     "developer": {
-      "licenseVisible": "experimental",
-      "jsonMergeSettings": "basic"
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "fantasy"
   }
 }
