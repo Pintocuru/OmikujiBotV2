@@ -14,7 +14,6 @@
           class="cursor-pointer"
         />
 
-        <!-- TODO: 「キャラクター画像が1枚もない」という値も欲しいな -->
         <LayerImage v-if="isCharacter" :layers="character.image?.default || ''" :size="bubbleSettings.characterSize" />
       </div>
     </div>

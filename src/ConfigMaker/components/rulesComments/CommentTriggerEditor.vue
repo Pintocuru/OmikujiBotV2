@@ -1,7 +1,6 @@
 <!-- src\ConfigMaker\components\rulesComments\CommentTriggerEditor.vue -->
 <template>
   <!-- 条件設定の説明 -->
-  <!-- TODO:詳細はこちら のURL -->
   <InformationCard>
     <p>
       <code class="label bg-accent text-accent-content">発動条件設定</code>では、

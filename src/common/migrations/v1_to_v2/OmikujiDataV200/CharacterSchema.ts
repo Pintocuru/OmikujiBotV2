@@ -38,7 +38,6 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
 }
 
 export const CharacterColorScheme = z.object({
-  // TODO:v2.0.1でtrueに変更
   isTheme: z.boolean().default(false).catch(false), // DaisyUI テーマを使うかどうか
   ...DaisyUiThemeFieldsSchema.shape,
 

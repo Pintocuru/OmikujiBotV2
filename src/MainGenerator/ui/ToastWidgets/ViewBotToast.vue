@@ -10,7 +10,6 @@
         :auto-hide="false"
         @after-leave="() => removeComment(message.id)"
       >
-        <!-- TODO:toast使用してるので変更させて -->
         <ToastBubbleItem
           :key="message.id"
           :message="message.bubble?.isToast ? (message.bubble?.message ?? '(未記入)') : ''"

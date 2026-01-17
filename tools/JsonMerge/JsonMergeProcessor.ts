@@ -8,11 +8,6 @@ import { applyKeySuffix } from './KeySuffix'
 
 /**
  * jsonMergeがある場合にマージ処理を実行
- * 複数のソースファイルを読み込み、リマップして、accessLevelとorderを統一した上でマージする
- *
- * @param jsonData - マージ設定を含むメインのOmikujiData
- * @param jsonPathRoot - ソースファイルの相対パスの基準ディレクトリ
- * @returns マージ後のOmikujiData
  */
 export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: string): Promise<OmikujiDataType> {
   // マージ設定がない場合はそのまま返す

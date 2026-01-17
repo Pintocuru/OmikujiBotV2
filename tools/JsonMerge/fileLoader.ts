@@ -5,11 +5,6 @@ import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 
 /**
  * ソースファイルをファイルシステムから読み込み、パースする
- *
- * @param sourceFile - 読み込むファイルの相対パス
- * @param jsonPathRoot - 相対パスの基準ディレクトリ
- * @returns パースされたOmikujiData
- * @throws ファイル読み込みまたはJSON解析に失敗した場合
  */
 export function loadSourceFile(sourceFile: string, jsonPathRoot: string): OmikujiDataType {
   const filePath = path.resolve(jsonPathRoot, sourceFile)
