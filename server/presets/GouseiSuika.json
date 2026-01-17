@@ -26,7 +26,7 @@
       "name": "ギフト用スイカ",
       "description": "ギフトされた方への特別なスイカゲーム。ライフ3倍!",
       "createdAt": "2025-12-29T15:03:32.932Z",
-      "updatedAt": "2026-01-13T06:34:56.254Z",
+      "updatedAt": "2026-01-17T03:22:30.641Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -36,7 +36,7 @@
         "カボチャジェネレーター",
         "クジラジェネレーター"
       ],
-      "accessLevel": "pro",
+      "accessLevel": "adv",
       "omikuji": [
         {
           "id": "1767020159501",
@@ -52,7 +52,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=スイカ&life=9",
-            "characterKey": ""
+            "characterKey": "omiken"
           },
           "special": "return",
           "weight": 1,
@@ -73,7 +73,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=カボチャ&life=9",
-            "characterKey": ""
+            "characterKey": "omiken"
           },
           "special": "return",
           "weight": 1,
@@ -114,7 +114,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=クジラ&life=9",
-            "characterKey": ""
+            "characterKey": "omiken"
           },
           "special": "return",
           "weight": 1,
@@ -170,7 +170,7 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-13T06:47:36.746Z",
+      "updatedAt": "2026-01-17T03:21:38.983Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -280,7 +280,7 @@
       "name": "カボチャジェネレーター",
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
-      "updatedAt": "2026-01-13T06:47:39.337Z",
+      "updatedAt": "2026-01-17T03:21:38.984Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -306,7 +306,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=カボチャ",
-            "characterKey": ""
+            "characterKey": "omiken"
           },
           "special": "return",
           "weight": 1,
@@ -390,7 +390,7 @@
       "name": "クジラジェネレーター",
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
-      "updatedAt": "2026-01-13T06:47:41.202Z",
+      "updatedAt": "2026-01-17T03:21:38.984Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -416,7 +416,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=クジラ",
-            "characterKey": ""
+            "characterKey": "omiken"
           },
           "special": "return",
           "weight": 1,

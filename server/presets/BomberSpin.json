@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.05-v1.4.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta14",
-    "dataVersion": 2.0014,
+    "generatorVersion": "v2.0.1",
+    "dataVersion": 2.011,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -27,7 +27,7 @@
       "name": "ボンバースロット",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-13T07:43:07.574Z",
+      "updatedAt": "2026-01-17T03:24:49.404Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -339,7 +339,7 @@
       "name": "うさぎスロット",
       "description": "3匹のうさぎがお宝ザクザク！最大枚数5000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-13T07:43:12.921Z",
+      "updatedAt": "2026-01-17T03:24:49.404Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -538,7 +538,7 @@
       "name": "桜吹雪スロット",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
-      "updatedAt": "2026-01-13T07:53:43.775Z",
+      "updatedAt": "2026-01-17T03:24:49.404Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -744,8 +744,8 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-12-05T03:20:34.877Z",
-      "order": 1,
+      "updatedAt": "2026-01-17T03:37:02.055Z",
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -757,22 +757,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#A1887F",
-        "textColor": "#EFEBE9",
-        "backgroundColor": "#5D4037",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -786,6 +770,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#81C784",
+        "textColor": "#E8F5E8",
+        "backgroundColor": "#388E3C",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     },
     "omiken_2": {
@@ -794,8 +794,8 @@
       "name": "おみくじBOT2",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-12-05T03:20:41.857Z",
-      "order": 2,
+      "updatedAt": "2026-01-17T03:37:08.168Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -807,22 +807,6 @@
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#FFB74D",
-        "textColor": "#FFF3E0",
-        "backgroundColor": "#F57C00",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
       "image": {
         "default": [],
         "happy": [],
@@ -836,6 +820,22 @@
         "wink": [],
         "singing": [],
         "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#FFB74D",
+        "textColor": "#FFF3E0",
+        "backgroundColor": "#F57C00",
+        "customClasses": "px-4 py-4 rounded-xl"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
@@ -871,15 +871,6 @@
       "bubbleTextSpeed": 50
     },
     "toast": {
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
       "showToastsOnRight": true,
       "showToastsCharacter": false,
       "showThumbnail": []
