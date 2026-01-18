@@ -59,7 +59,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
   if (currentDataVersion < 2.01) {
     console.log('Migrating data: v2.0.0 → v2.0.1')
     updatedData = OmikujiDataSchemaV200.parse(updatedData)
-    updatedData.dataVersion = 2.01
+    updatedData.meta.dataVersion = 2.01
   }
 
   // スキーマで保証
