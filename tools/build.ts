@@ -49,16 +49,16 @@ const packageRoot = process.env.PACKAGE_ROOT
 const buildTargets: BuildTarget[] = [
   /**
    * core : エディターを更新したら必ずビルドする
-   */
   { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
+   */
 
   /**
    * Special (せすぴん用)
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   */
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
@@ -75,6 +75,12 @@ const buildTargets: BuildTarget[] = [
   { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisa', type: 'JSON', accessLevel: 'basic' },
+  { project: 'EveryoneZunda', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'EveryoneZunda', type: 'JSON', accessLevel: 'basic' },
+  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * solo

@@ -1,11 +1,11 @@
 {
   "meta": {
-    "id": "1754926464640-roopmp",
+    "id": "ReimuMarisa-ver2026.01.20-2.0.3",
     "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.12.05-v1.4.3",
+    "version": "ver2026.01.20-2.0.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.3",
+    "generatorVersion": "2.0.3",
     "dataVersion": 2.03,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
@@ -13,9 +13,7 @@
       "おみくじ",
       "占い",
       "ゆっくり",
-      "ゆっくり",
       "ゆっくり霊夢",
-      "ゆっくり魔理沙",
       "ゆっくり魔理沙",
       "じゃんけん"
     ],
@@ -1042,7 +1040,7 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-17T13:25:39.059Z",
+      "updatedAt": "2026-01-19T16:43:00.045Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -1156,7 +1154,7 @@
               "iconKey": "default",
               "sound": "cute",
               "message": {
-                "bubble": "高評価は<<upVote>>よ。押してくれると嬉しいな♡",
+                "bubble": "高評価は<<upVote>>だよ",
                 "isToast": true
               }
             }

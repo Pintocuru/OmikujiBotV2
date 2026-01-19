@@ -1,21 +1,21 @@
 {
   "meta": {
-    "id": "EveryoneZunda",
-    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryZunda",
+    "id": "EveryoneZunda-ver2026.01.20-2.0.3",
+    "name": "おみくじBOT みんなのずんだもん OmikujiBot EveryoneZunda",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.17-v2.0.3",
+    "version": "ver2026.01.20-2.0.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.3",
+    "generatorVersion": "2.0.3",
     "dataVersion": 2.03,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "ストロベリーショコラ",
-      "占い",
-      "じゃんけん"
+      "VOICEVOX",
+      "ずんだもん",
+      "（ず・ω・きょ）"
     ],
     "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/7733810"
+    "url": "https://pintocuru.booth.pm/items/6053855"
   },
   "jsonMerge": [
     {

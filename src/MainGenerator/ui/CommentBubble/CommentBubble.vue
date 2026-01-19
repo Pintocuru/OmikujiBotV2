@@ -6,7 +6,7 @@
       <CommentBubbleZero :center-messages="centerMessages" @remove-comment="handleRemoveComment" />
     </div>
     <!-- 常時表示キャラクター(1番地以降) -->
-    <div class="absolute bottom-0 left-0 right-0 items-end">
+    <div class="absolute bottom-0 left-0 right-0 flex items-end justify-center">
       <CommentBubblePersistent
         v-for="{ character, slotIndex } in slotCharacters"
         :key="character.key"
