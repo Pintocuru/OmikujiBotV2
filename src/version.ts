@@ -1,6 +1,15 @@
 // src\config\version.ts
+import package_json from '../package.json'
 
 // アプリケーションのバージョン情報
-export const BUILD_DATE = 'ver2026.01.17'
-export const APP_VERSION = 'v2.0.3'
-export const DATA_VERSION = 2.03
+export const BUILD_DATE = buildDate()
+export const APP_VERSION = package_json.version
+export const DATA_VERSION = package_json.data_varsion
+
+function buildDate(): string {
+  const d = new Date()
+  const yyyy = d.getFullYear()
+  const mm = String(d.getMonth() + 1).padStart(2, '0')
+  const dd = String(d.getDate()).padStart(2, '0')
+  return `ver${yyyy}.${mm}.${dd}`
+}

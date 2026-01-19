@@ -1,21 +1,21 @@
 {
   "meta": {
-    "id": "1755337374735-01vj6j",
-    "name": "おみくじ BOT 高飛車な四国めたん OmikujiBot Diva Metan",
+    "id": "EveryoneMetan",
+    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryMetan",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.12.05-v1.4.3",
+    "version": "ver2026.01.17-v2.0.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "2.0.3",
+    "dataVersion": 2.03,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "VOICEVOX",
-      "四国めたん",
-      "（ず・ω・きょ）"
+      "ストロベリーショコラ",
+      "占い",
+      "じゃんけん"
     ],
     "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/6058829"
+    "url": "https://pintocuru.booth.pm/items/7733810"
   },
   "jsonMerge": [
     {
@@ -32,33 +32,33 @@
       "remaps": [
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "metanBlack",
+          "toCharacterKey": "metan",
           "fromIconKey": "default",
+          "toIconKey": "excited"
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "metan",
+          "fromIconKey": "default",
+          "toIconKey": "excited"
+        },
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "metan",
+          "fromIconKey": "happy",
           "toIconKey": "singing"
         },
         {
           "fromCharacterKey": "omiken_2",
           "toCharacterKey": "metan",
-          "fromIconKey": "default",
-          "toIconKey": "angry"
+          "fromIconKey": "happy",
+          "toIconKey": "singing"
         },
         {
           "fromCharacterKey": "omiken",
-          "toCharacterKey": "metanBlack",
-          "fromIconKey": "happy",
-          "toIconKey": "wink"
-        },
-        {
-          "fromCharacterKey": "omiken_2",
           "toCharacterKey": "metan",
-          "fromIconKey": "happy",
-          "toIconKey": "happy"
-        },
-        {
-          "fromCharacterKey": "omiken",
-          "toCharacterKey": "metanBlack",
           "fromIconKey": "sad",
-          "toIconKey": "happy"
+          "toIconKey": "sad"
         },
         {
           "fromCharacterKey": "omiken_2",
@@ -76,14 +76,17 @@
       "name": "漆黒のおみくじ",
       "description": "今こそ、汝の真の力を解放する時！私の魔力と共に、世界を震撼させてやるわ！",
       "createdAt": "2025-08-16T09:51:49.473Z",
-      "updatedAt": "2025-12-06T08:08:50.662Z",
+      "updatedAt": "2026-01-19T15:45:49.154Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#10B981",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "0f1a8e3a-142d-48f7-811e-2f8cb6e40132",
@@ -94,39 +97,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji01",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji01"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "excited",
-              "messageContent": "<<user>>よ、汝の運命は【大吉】<<metanOmikuji01>>",
-              "messageToast": "",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【大吉】<<metanOmikuji01>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "686552ba-a6ac-401a-ab33-699b6d9d5746",
@@ -137,39 +147,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji02",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji02"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "laughing",
-              "messageContent": "<<user>>よ、汝の運命は【吉】<<metanOmikuji02>>",
-              "messageToast": "",
               "sound": "twinkle",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【吉】<<metanOmikuji02>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 20
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 20,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "e676cb92-af5e-4b1c-9a33-51bc02fb36db",
@@ -180,39 +197,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji03",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji03"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "default",
-              "messageContent": "<<user>>よ、汝の運命は【中吉】<<metanOmikuji03>>",
-              "messageToast": "",
               "sound": "congrats",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【中吉】<<metanOmikuji03>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 20
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 20,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "4c1306d2-0e49-4935-bf08-291762c32e78",
@@ -223,39 +247,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji04",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji04"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "default",
-              "messageContent": "<<user>>よ、汝の運命は【小吉】<<metanOmikuji04>>",
-              "messageToast": "",
               "sound": "jingle",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【小吉】<<metanOmikuji04>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "58110d4a-dd98-423b-9666-34a536a2784d",
@@ -266,39 +297,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji05",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji05"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "thinking",
-              "messageContent": "<<user>>よ、汝の運命は【末吉】<<metanOmikuji05>>",
-              "messageToast": "",
               "sound": "bounce",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【末吉】<<metanOmikuji05>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 15
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 15,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "5a087835-31d6-4485-a179-2f1d1b5aa367",
@@ -309,39 +347,46 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji06",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji06"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metanBlack",
               "iconKey": "sad",
-              "messageContent": "<<user>>よ、汝の運命は【凶】<<metanOmikuji06>>",
-              "messageToast": "",
               "sound": "fail",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【凶】<<metanOmikuji06>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 10
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 10,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "ce0ca2e5-5b3a-46a7-a238-e507b61da9da",
@@ -352,56 +397,60 @@
           "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
           "editorColor": "#3B82F6",
-          "tags": [],
+          "tags": [
+            "VOICEVOX",
+            "四国めたん",
+            "おみくじ",
+            "漆黒のおみくじ"
+          ],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "MaidenOmikujiLottery",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
             },
             {
               "delaySeconds": 1,
-              "wordParty": "MaidenOmikuji07",
-              "characterKey": "metanBlack",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji07"
             },
             {
               "delaySeconds": 2,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
               "iconKey": "wink",
-              "messageContent": "<<user>>よ、汝の運命は【接吻賞】<<metanOmikuji07>>",
-              "messageToast": "",
               "sound": "nya",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>よ、汝の運命は【接吻賞】<<metanOmikuji07>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 5
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
           "^おみくじ",
+          "^御.?みくじ",
+          "^御(神)?籤",
           "^omikuji",
           "^omikuzi",
           "^fortune",
@@ -410,25 +459,27 @@
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstSagiMetan": {
       "id": "FirstSagiMetan",
       "key": "FirstSagiMetan",
       "name": "初見詐欺:metan",
-      "description": "えっ、もしかして私騙されてた！？ありえねー、後で配信主に怒られるわ、どうしよ…",
+      "description": "え、嘘だったの！？私が！？この私が！？",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
+      "updatedAt": "2026-01-19T15:45:49.154Z",
       "order": 2,
       "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
+      "editorColor": "#3F51B5",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見詐欺"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
@@ -441,33 +492,38 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "singing",
-              "messageContent": "<<FirstSagiMetanSinging>>",
-              "messageToast": "",
-              "sound": "negative",
-              "actionType": "message"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSagiMetanThinking"
+                }
+              ]
             }
           ],
-          "weight": 2
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         },
         {
-          "id": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "key": "478caf73-250d-4477-8d8d-04c1eb7d394",
-          "name": "ああ初見だと思ったら騙された高校校歌:metan",
+          "id": "bf43da64-a909-4e54-9d9a-cbd627a7386b",
+          "key": "bf43da64-a909-4e54-9d9a-cbd627a7386b",
+          "name": "初見詐欺(騙され):metan",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -475,54 +531,137 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "FirstSyoken"
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstSyokenMetan>>",
-              "messageToast": "",
-              "sound": "baseball",
-              "actionType": "message"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSyokenMetanHappy"
+                }
+              ]
             },
             {
               "delaySeconds": 8,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
               "iconKey": "sad",
-              "messageContent": "",
-              "messageToast": "<<FirstSagiMetanFake>>",
               "sound": "fail",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<FirstSagiMetanFake>>",
+                "isToast": true
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "key": "bbd7a17a-b8b1-4284-a0ae-a572a52e0bd6",
+          "name": "ホントの初見(1回)",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "special",
+          "postActions": [],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "continue",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "equal",
+              "unit": "tc",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767486455920",
+          "key": "1767486455920",
+          "name": "ホントの初見(2-5回)",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSyokenMetanHappy"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "upperBound",
+              "unit": "tc",
+              "value": 5
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
-          "count",
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "tc",
-          "value": 6
-        },
         "comment": [
           "初見(?!さん)",
           "所見",
@@ -531,401 +670,9 @@
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 5,
-        "drawLimitExceeded": "showMessage",
-        "drawLimitMessage": "騙され過ぎた四国めたんが可愛そうです。また次回の配信で試してね。",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstHontoMetan": {
-      "id": "FirstHontoMetan",
-      "key": "FirstHontoMetan",
-      "name": "ホントの初見:metan",
-      "description": "ほ、本当に「初見」なのね、疑わなくてもいいのね…！",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#8B5CF6",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "key": "3da79999-6145-4dfb-8386-6883840d2f8c",
-          "name": "ホントの初見:metan",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
-            },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "!レベルアップ",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstSyokenMetan>>",
-              "messageToast": "",
-              "actionType": "message"
-            },
-            {
-              "delaySeconds": 7,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "blushing",
-              "messageContent": "",
-              "messageToast": "ほ、本当の初見の人だった…良かった…",
-              "sound": "congrats",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count",
-          "comment"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "upperBound",
-          "unit": "tc",
-          "value": 5
-        },
-        "comment": [
-          "初見",
-          "所見",
-          "はじめまして"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "CheckNumberPriceMetan": {
-      "id": "CheckNumberPriceMetan",
-      "key": "CheckNumberPriceMetan",
-      "name": "コメント数表示 (有料版):metan",
-      "description": "えっ…わざわざギフトまでして…!?",
-      "createdAt": "2025-08-28T07:06:58.691Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "fe628691-b50a-4415-b253-079d0a62a999",
-          "key": "fe628691-b50a-4415-b253-079d0a62a999",
-          "name": "ギフトで教える",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "sound": "cash",
-              "actionType": "sounds"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "surprised",
-              "messageContent": "",
-              "messageToast": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…",
-              "sound": "carnival",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "comment",
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "all"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": [
-          "コメント"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true,
-        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
-      }
-    },
-    "GiftMetan": {
-      "id": "GiftMetan",
-      "key": "GiftMetan",
-      "name": "ギフト(1-999円):metan",
-      "description": "ギフトを貰ったときの感謝コメント",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 5,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
-          "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
-          "name": "ギフト(excited):metan",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "sound": "cash",
-              "actionType": "sounds"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "excited",
-              "messageContent": "<<GiftMetan>>",
-              "messageToast": "",
-              "sound": "carnival",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "blue",
-          "lightBlue",
-          "green"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "GiftMiddleMetan": {
-      "id": "GiftMiddleMetan",
-      "key": "GiftMiddleMetan",
-      "name": "ギフト(1000-1999円):metan",
-      "description": "大きなギフトを貰ったときの感謝コメント",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 6,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
-          "key": "4aa4e58c-00fb-4c2c-9405-38d45bd5212f",
-          "name": "ギフト(blushing):metan",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "sound": "cash",
-              "actionType": "sounds"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "blushing",
-              "messageContent": "<<GiftMiddleMetan>>",
-              "messageToast": "",
-              "sound": "carnival",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "yellow"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "GiftHighMetan": {
-      "id": "GiftHighMetan",
-      "key": "GiftHighMetan",
-      "name": "ギフト(2000円-):metan",
-      "description": "とても大きなギフトを貰ったときの感謝感激コメント",
-      "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 7,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
-        {
-          "id": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
-          "key": "3efa4546-ac2c-4fb5-ac39-fbd8669a63a6",
-          "name": "ギフト(surprised):metan",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.297Z",
-          "updatedAt": "2025-08-11T15:34:29.297Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "reimu",
-              "iconKey": "default",
-              "messageContent": "",
-              "sound": "cash",
-              "actionType": "sounds"
-            },
-            {
-              "delaySeconds": 0.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "surprised",
-              "messageContent": "<<GiftHighMetan>>",
-              "messageToast": "",
-              "sound": "carnival",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "gift"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [
-          "orange",
-          "pink",
-          "red",
-          "purple"
-        ],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CheckNumberMetan": {
@@ -934,19 +681,56 @@
       "name": "コメント数表示:metan",
       "description": "コメント数…? 無料で教える、って訳にはいかないけど。",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 8,
+      "updatedAt": "2026-01-19T15:45:49.154Z",
+      "order": 3,
       "isEnabled": true,
-      "editorColor": "#10B981",
-      "tags": [],
+      "editorColor": "#3F51B5",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "コメント数表示"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
+        {
+          "id": "a1318cec-0138-40b8-8894-a322113ba04e",
+          "key": "a1318cec-0138-40b8-8894-a322113ba04e",
+          "name": "コメント数表示/無料じゃ教えてくれない:metan",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "metan",
+              "iconKey": "thinking",
+              "sound": "negative",
+              "message": {
+                "bubble": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
+        },
         {
           "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
           "key": "4d17c161-f7ce-48a1-a819-863431a8b73c",
-          "name": "無料じゃ教えてくれない",
+          "name": "コメント数表示/特別に教えてあげる:metan",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -954,100 +738,346 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
               "iconKey": "thinking",
-              "messageContent": "",
-              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
               "sound": "negative",
-              "actionType": "toast"
-            }
-          ],
-          "weight": 3
-        },
-        {
-          "id": "fe628691-b50a-4415-b253-079d0a62a999",
-          "key": "fe628691-b50a-4415-b253-079d0a62a999",
-          "name": "特別に教えてあげる",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "thinking",
-              "messageContent": "",
-              "messageToast": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
-              "sound": "negative",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>のコメント数…? 無料で教える、って訳にはいかないけど。",
+                "isToast": true
+              }
             },
             {
               "delaySeconds": 4,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。",
+              "iconKey": "wink",
               "sound": "transition",
-              "actionType": "toast"
+              "message": {
+                "bubble": "でも、今回だけ特別よ。<<user>>は[<<tc>>] 回コメントしてるわ。たくさんのコメントに感謝よ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "d65a0f17-3739-424f-9016-bc2c8f47ad22",
+          "key": "d65a0f17-3739-424f-9016-bc2c8f47ad22",
+          "name": "コメント数表示 (有料版):metan",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "sound",
+              "sound": "cash"
+            },
+            {
+              "delaySeconds": 0.5,
+              "actionType": "message",
+              "characterKey": "metan",
+              "iconKey": "wink",
+              "sound": "carnival",
+              "message": {
+                "bubble": "えっ…わざわざギフトまでして…!?<<user>>は[<<tc>>] 回コメントしてるわ。おまけでキスも受け取って…",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "all"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
+      "trigger": {
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
-          "^コメント$"
+          "コメント"
         ]
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true,
-        "repeatMessage": "オマエ、そんなに何度もコメント数を確認してどうするのだ!"
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": ""
+      }
+    },
+    "GiftMetan": {
+      "id": "GiftMetan",
+      "key": "GiftMetan",
+      "name": "ギフト:metan",
+      "description": "感謝するわ。これでまた私の計画が一歩進むわね。",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2026-01-19T15:45:49.154Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "name": "ギフト(1-999円):metan",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "sound",
+              "sound": "cash"
+            },
+            {
+              "delaySeconds": 0.5,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "GiftMetan"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "green",
+              "lightBlue",
+              "blue",
+              "special"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "f8999132-93b3-4d57-b838-34ed006f12e4",
+          "key": "f8999132-93b3-4d57-b838-34ed006f12e4",
+          "name": "ギフト(1000-1999円):metan",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "sound",
+              "sound": "cash"
+            },
+            {
+              "delaySeconds": 0.5,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "GiftMiddleMetan"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "yellow"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
+        },
+        {
+          "id": "9079e567-ec51-4e86-80e8-6cc28a2992e0",
+          "key": "9079e567-ec51-4e86-80e8-6cc28a2992e0",
+          "name": "ギフト(2000円-):metan",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "sound",
+              "sound": "cash"
+            },
+            {
+              "delaySeconds": 0.5,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "GiftHighMetan"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "gift"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [
+              "orange",
+              "pink",
+              "purple",
+              "red"
+            ],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "gift"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [
+          "all"
+        ],
+        "comment": []
+      },
+      "limits": {
+        "cooldownSeconds": 0,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "FirstSyokenMetan": {
       "id": "FirstSyokenMetan",
       "key": "FirstSyokenMetan",
-      "name": "初見:metan",
-      "description": "初めてコメントをした方への挨拶",
+      "name": "初見判定ちゃん:metan",
+      "description": "私の配信にたどり着くなんて、見る目があるじゃない。",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:38:45.694Z",
-      "order": 9,
+      "updatedAt": "2026-01-19T15:45:49.154Z",
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "315c1260-131e-44d0-8020-1ab5cd420621",
           "key": "315c1260-131e-44d0-8020-1ab5cd420621",
-          "name": "初見(excited):metan",
+          "name": "初見",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -1055,203 +1085,178 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "FirstSyoken",
-              "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "",
-              "actionType": "wordParty"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstSyokenMetanHappy"
+                }
+              ]
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "syoken"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
             },
-            {
-              "delaySeconds": 1.5,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "excited",
-              "messageContent": "<<FirstSyokenMetan>>",
-              "messageToast": "",
-              "sound": "baseball",
-              "actionType": "message"
-            }
-          ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "syoken"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
+            "comment": []
+          }
         },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstComebackMetan": {
-      "id": "FirstComebackMetan",
-      "key": "FirstComebackMetan",
-      "name": "久しぶり:metan",
-      "description": "7日以上コメントがなかったユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:41:34.819Z",
-      "order": 10,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
         {
-          "id": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "key": "96e9902f-8a5a-49b5-a1fe-998632148237",
-          "name": "久しぶり(happy):metan",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "id": "1767509750837",
+          "key": "1767509750837",
+          "name": "久しぶり",
+          "createdAt": "2026-01-04T06:55:50.837Z",
+          "updatedAt": "2026-01-04T06:55:50.837Z",
           "order": 0,
-          "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "happy",
-              "messageContent": "<<FirstComebackMetan>>",
-              "messageToast": "",
-              "sound": "congrats",
-              "actionType": "message"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstComebackMetanWink"
+                }
+              ]
             }
           ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "again"
-        ],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "again"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "FirstVisitMetan": {
-      "id": "FirstVisitMetan",
-      "key": "FirstVisitMetan",
-      "name": "こんにちは:metan",
-      "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:42:37.682Z",
-      "order": 11,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
         {
-          "id": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
-          "key": "f5ebb2f6-8cb0-492b-acf7-a688f2de6fd6",
-          "name": "挨拶(laughing):metan",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "id": "1767509789237",
+          "key": "1767509789237",
+          "name": "こんにちは",
+          "createdAt": "2026-01-04T06:56:29.237Z",
+          "updatedAt": "2026-01-04T06:56:29.237Z",
           "order": 0,
-          "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
-              "characterKey": "metan",
-              "iconKey": "laughing",
-              "messageContent": "<<FirstVisitMetan>>",
-              "messageToast": "",
-              "sound": "collect",
-              "actionType": "message"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "FirstVisitMetanBlushing"
+                }
+              ]
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "syoken"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [
+              "firstVisit"
+            ],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 1
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "syoken"
-        ],
-        "syoken": [
-          "firstVisit"
-        ],
+      "trigger": {
+        "conditions": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     },
     "CountStreamMetan": {
       "id": "CountStreamMetan",
       "key": "CountStreamMetan",
-      "name": "配信内コメント数チェック:metan",
-      "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
+      "name": "コメントチェック:metan",
+      "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:44:58.924Z",
-      "order": 12,
+      "updatedAt": "2026-01-19T16:00:18.403Z",
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "コメントチェック"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
           "key": "b5aac496-d7d5-4748-913b-cbcba4e34454",
-          "name": "50回コメント:metan",
+          "name": "配信枠コメント50回",
           "description": "",
           "createdAt": "2025-08-16T09:51:49.474Z",
           "updatedAt": "2025-08-16T09:51:49.474Z",
@@ -1259,104 +1264,105 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
               "iconKey": "happy",
-              "messageContent": "",
-              "messageToast": "この配信の<<lc>>回目のコメントは、<<user>>よ。",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "この配信の<<lc>>回目のコメントは、<<user>>よ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
-        }
-      ],
-      "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
-        "access": [],
-        "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "lc",
-          "value": 50
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "lc",
+              "value": 50
+            },
+            "comment": []
+          }
         },
-        "comment": []
-      },
-      "limits": {
-        "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
-      }
-    },
-    "CountUserMetan": {
-      "id": "CountUserMetan",
-      "key": "CountUserMetan",
-      "name": "個別コメント数チェック:metan",
-      "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
-      "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:46:04.886Z",
-      "order": 13,
-      "isEnabled": true,
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
-      "omikuji": [
         {
-          "id": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "key": "655e1d8b-a85b-4b57-97f4-62abb74a6a5c",
-          "name": "100回コメント",
-          "description": "",
-          "createdAt": "2025-08-16T09:51:49.474Z",
-          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "id": "1767511957448",
+          "key": "1767511957448",
+          "name": "個人コメント100回",
+          "createdAt": "2026-01-04T07:32:37.448Z",
+          "updatedAt": "2026-01-04T07:32:37.448Z",
           "order": 0,
-          "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
               "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<user>>のコメントが<<tc>>回になったわ。ふふ、さすがね。",
               "sound": "baseball",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<user>>のコメントが<<tc>>回になったわ。<<CountUserMetan100>>",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "loop",
+              "unit": "tc",
+              "value": 100
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
-        "conditions": [
-          "count"
-        ],
-        "syoken": [],
+      "trigger": {
+        "conditions": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "loop",
-          "unit": "tc",
-          "value": 100
-        },
         "comment": []
       },
       "limits": {
         "cooldownSeconds": 0,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -1367,14 +1373,16 @@
       "name": "閲覧数表示(1min)",
       "description": "1分ごとにさりげなく視聴数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:46:49.559Z",
+      "updatedAt": "2026-01-19T15:45:49.155Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "閲覧数チェック"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "70762039-889c-47fd-8195-fe2fb87da00f",
@@ -1387,62 +1395,86 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<viewer>>人が視聴中よ",
+              "iconKey": "happy",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<viewer>>人が視聴中よ",
+                "isToast": true
+              }
             }
           ],
-          "weight": 4
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         },
         {
-          "id": "1756365824013",
-          "key": "1756365824013",
+          "id": "09344253-0890-47c8-9df1-18426f32481f",
+          "key": "09344253-0890-47c8-9df1-18426f32481f",
           "name": "高評価数:metan",
-          "createdAt": "2025-08-28T07:23:44.013Z",
-          "updatedAt": "2025-08-28T07:23:44.013Z",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
           "order": 0,
+          "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "高評価数は<<upVote>>よ。押すなら今のうちね。",
+              "iconKey": "excited",
               "sound": "cute",
-              "actionType": "toast"
+              "message": {
+                "bubble": "高評価数は<<upVote>>よ。押すなら今のうちね。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "timers",
       "intervalSeconds": 60,
       "isBaseZero": true
     },
-    "PromotionToast": {
-      "id": "PromotionToast",
-      "key": "PromotionToast",
+    "PromotionToastMetan": {
+      "id": "PromotionToastMetan",
+      "key": "PromotionToastMetan",
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-28T00:47:27.921Z",
+      "updatedAt": "2026-01-19T15:45:49.155Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "告知"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "33d7982c-d477-4975-989e-0f010a5fc0a6",
@@ -1455,19 +1487,64 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
-              "iconKey": "default",
-              "messageContent": "",
-              "messageToast": "<<PromotionToastsMetan>>",
+              "iconKey": "happy",
               "sound": "news",
-              "actionType": "toast"
+              "message": {
+                "bubble": "<<PromotionToastsMetan>>",
+                "isToast": true
+              }
             }
           ],
-          "weight": 99
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 50,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "29883668-26eb-4ad8-995d-64b11f2ee9e4",
+          "key": "29883668-26eb-4ad8-995d-64b11f2ee9e4",
+          "name": "四国紹介",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.298Z",
+          "updatedAt": "2025-08-11T15:34:29.298Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "metan",
+              "iconKey": "happy",
+              "sound": "news",
+              "message": {
+                "bubble": "<<PromotionToastShikokuMetan>>",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 50,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
@@ -1480,19 +1557,29 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "metan",
-              "iconKey": "singing",
-              "messageContent": "",
-              "messageToast": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。",
-              "sound": "bounce",
-              "actionType": "toast"
+              "iconKey": "thinking",
+              "sound": "nya",
+              "message": {
+                "bubble": "この「おみくじBOT」、使いこなせる？私なら楽勝だけど、君にもできるか試してみなよ。",
+                "isToast": true
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "timers",
@@ -1500,18 +1587,285 @@
       "isBaseZero": false
     }
   },
-  "actionSets": {},
+  "actionSets": {
+    "FirstSagiMetanThinking": {
+      "id": "1767539439046-od3bas",
+      "key": "FirstSagiMetanThinking",
+      "name": "初見詐欺(見抜き,singing):metan",
+      "description": "それは私に対する挑戦状ね。",
+      "createdAt": "2026-01-04T15:10:39.046Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#3F51B5",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見詐欺",
+        "thinking"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "singing",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<FirstSagiMetanSinging>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "GiftMetan": {
+      "id": "1767540348473-d4fev8",
+      "key": "GiftMetan",
+      "name": "ギフト(1-999円):metan",
+      "description": "ありがとう、これでまた少しだけ豪華な生活ができるわ。",
+      "createdAt": "2026-01-04T15:25:48.473Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "excited",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "GiftMiddleMetan": {
+      "id": "mkjjbrwkb4mu9",
+      "key": "GiftMiddleMetan",
+      "name": "ギフト(1000-1999円):metan",
+      "description": "選んでくれたの…嬉しい。キス…どこにすればいい？",
+      "createdAt": "2026-01-18T00:27:15.572Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "blushing",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftMiddleMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "GiftHighMetan": {
+      "id": "mkjjbrwk9pcmb",
+      "key": "GiftHighMetan",
+      "name": "ギフト(2000円-):metan",
+      "description": "あなた…天使？いや、スポンサー様！？",
+      "createdAt": "2026-01-18T00:27:29.268Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "surprised",
+          "sound": "carnival",
+          "message": {
+            "bubble": "<<GiftHighMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstSyokenMetanHappy": {
+      "id": "1767539629815-molbgp",
+      "key": "FirstSyokenMetanHappy",
+      "name": "初見:metan",
+      "description": "私の配信を選ぶなんて、あなたもなかなかのセンスよ。",
+      "createdAt": "2026-01-04T15:13:49.815Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "happy",
+          "sound": "baseball",
+          "message": {
+            "bubble": "<<FirstSyokenMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstComebackMetanWink": {
+      "id": "1767540169384-b2waaw",
+      "key": "FirstComebackMetanWink",
+      "name": "久しぶり:metan",
+      "description": "私のこと、そんなに忘れられなかったの？",
+      "createdAt": "2026-01-04T15:22:49.384Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "wink",
+          "sound": "congrats",
+          "message": {
+            "bubble": "<<FirstComebackMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    },
+    "FirstVisitMetanBlushing": {
+      "id": "1767540201946-kvrx6s",
+      "key": "FirstVisitMetanBlushing",
+      "name": "こんにちは:metan",
+      "description": "さあ、私と一緒に特別な時間を過ごしましょ。",
+      "createdAt": "2026-01-04T15:23:21.946Z",
+      "updatedAt": "2026-01-19T15:45:49.156Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "metan",
+          "iconKey": "thinking",
+          "sound": "collect",
+          "message": {
+            "bubble": "<<FirstVisitMetan>>",
+            "isToast": false
+          }
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    }
+  },
   "placeholders": {
     "metanOmikuji01": {
       "id": "metanOmikuji01",
       "key": "metanOmikuji01",
       "name": "漆黒のおみくじ:大吉",
+      "description": "積極的に行動すれば、運命の歯車が回り出すわよ。",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "人との縁がすごく良さそうじゃない？感謝の心を忘れずにいれば、きっと漆黒の力が味方するわよ。",
@@ -1527,12 +1881,18 @@
       "id": "metanOmikuji02",
       "key": "metanOmikuji02",
       "name": "漆黒のおみくじ:吉",
+      "description": "前向きでいれば、世界は味方してくれるわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "積極的に行動すれば、運気が上昇するわ！新たなる挑戦こそ、魂の成長を促す秘薬よ。",
@@ -1548,12 +1908,18 @@
       "id": "metanOmikuji03",
       "key": "metanOmikuji03",
       "name": "漆黒のおみくじ:中吉",
+      "description": "それが運命を切り開く力となるのよ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "思わぬ幸運が舞い降りるかもしれないわ！チャンスを見逃さぬよう、第三の目を開いておくことね。",
@@ -1569,12 +1935,18 @@
       "id": "metanOmikuji04",
       "key": "metanOmikuji04",
       "name": "漆黒のおみくじ:小吉",
+      "description": "体調管理は最強の魔術なのよ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "焦らず一歩ずつ進むのよ。地道な努力こそが、願いを叶える魔法の呪文なのよ。",
@@ -1590,12 +1962,18 @@
       "id": "metanOmikuji05",
       "key": "metanOmikuji05",
       "name": "漆黒のおみくじ:末吉",
+      "description": "今の困難も、やがて汝を輝かせる糧となるわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "油断は禁物よ。慎重に行動すれば、漆黒の力も味方につけられるはず。",
@@ -1611,12 +1989,18 @@
       "id": "metanOmikuji06",
       "key": "metanOmikuji06",
       "name": "漆黒のおみくじ:凶",
+      "description": "今の困難が、汝の真の姿を目覚めさせる契機となるかもしれないわ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "運気が少し下がっているかもしれないわね。でも、慎重に行動すれば闇の力も味方につけられるわ！恐れることはないわ。",
@@ -1632,12 +2016,18 @@
       "id": "metanOmikuji07",
       "key": "metanOmikuji07",
       "name": "漆黒のおみくじ:接吻賞",
+      "description": "フレンチキスは唇を使った深いキスのことよ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "おみくじ",
+        "漆黒のおみくじ"
+      ],
       "accessLevel": "basic",
       "values": [
         "唇へのキスは基本中の基本。でも、相手の気持ちを確認するのを忘れずにね。",
@@ -1658,15 +2048,21 @@
       ]
     },
     "FirstSagiMetanSinging": {
-      "id": "FirstSagiMetanSinging",
+      "id": "FirstSagiMetanSad",
       "key": "FirstSagiMetanSinging",
-      "name": "初見詐欺(見抜き):metan",
+      "name": "初見詐欺(見抜き,singing):metan",
+      "description": "ふふ、甘いわね。私の記憶は完璧よ。",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:39:53.381Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見詐欺",
+        "singing"
+      ],
       "accessLevel": "basic",
       "values": [
         "ふふん、<<user>>、私を騙せるとでも思ったの？そんな手、私には通用しないわ。",
@@ -1678,15 +2074,21 @@
       ]
     },
     "FirstSagiMetanFake": {
-      "id": "FirstSagiMetanFake",
+      "id": "FirstSagiMetanThinking",
       "key": "FirstSagiMetanFake",
       "name": "初見詐欺(騙され):metan",
+      "description": "うわっ！ダマされた大賞！",
       "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2025-11-28T00:39:56.595Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見詐欺",
+        "Thinking"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -1701,111 +2103,192 @@
       ]
     },
     "GiftMetan": {
-      "id": "GiftMetan",
+      "id": "mkjjbrwl459je",
       "key": "GiftMetan",
       "name": "ギフト(1-999円):metan",
+      "description": "べ、別に喜んでなんか…あるわよ、少しだけね。",
       "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>、素晴らしいわ。この支援にふさわしい私を、これからも見逃さないでよね！",
         "<<user>>からの<<price>>ギフト…！？ ありがとう、これでまた少しだけ豪華な生活ができるわ。感謝してあげる！",
         "<<user>>、<<price>>ギフト、感謝するわ。これでまた私の計画が一歩進むわね。私に期待していてちょうだい！",
-        "<<price>>ギフトも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。"
+        "<<price>>ギフトも…？<<user>>、まさか私にそんなに期待しているの？まあ、これからもその期待に応えてあげるわ。",
+        "<<user>>、その<<price>>ギフト…悪くないわね。私の価値をわかってきたじゃない。",
+        "<<user>>、その支援、ちゃんと受け取ったわ。私の未来に投資するなんて賢い選択よ。",
+        "<<price>>ギフト…っ。べ、別に喜んでなんか…あるわよ、少しだけね。",
+        "<<price>>ギフトをくれるなんて、あなた…意外とやるじゃない。認めてあげるわ。",
+        "その<<price>>、私の生活にほんのり潤いをくれるわね。ありがたく使わせてもらうわ。",
+        "<<user>>、また支援？ふふ、私を甘やかすと後戻りできなくなるわよ。",
+        "<<price>>ギフト…あなた、私を喜ばせる才能あるんじゃない？認めてあげる。",
+        "<<user>>、その<<price>>…私の心がちょっとだけ揺れたわ。責任取りなさいよ。",
+        "<<price>>ギフト？ふふ、私を満足させるにはまだ足りないけど…気持ちは買ってあげる。",
+        "<<price>>ギフト…ありがと。これで今日の私の機嫌が少し良くなるわね。"
       ]
     },
     "GiftMiddleMetan": {
-      "id": "GiftMiddleMetan",
+      "id": "GiftMetan",
       "key": "GiftMiddleMetan",
       "name": "ギフト(1000-1999円):metan",
-      "createdAt": "2025-08-27T09:53:10.683Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "description": "こんなにくれるなんて…ちょっと…好きになりそう…",
+      "createdAt": "2026-01-17T23:59:38.258Z",
+      "updatedAt": "2026-01-19T15:45:49.152Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<price>>ギフト!<<user>>、本気で応援してくれてるのね！ありがとう、お礼にキス贈呈よ、お望みなら唇にも…",
         "<<user>>、<<price>>ギフトのギフトなんて…！私、感謝の言葉が見つからないわ…。でも、これでまた頑張れる！",
-        "うわぁぁん！<<user>>さんからギフトよ！嬉しい！ありがとう！好き！いや、尊敬！神！",
         "当然でしょ？私に捧げるのは義務みたいなものよ。でも…その、選んでくれたの…嬉しい。キス…どこにすればいい？",
-        "<<price>>ギフト？まあ、私ほどの存在には当然よね。…でも、こんなにくれるなんて…ちょっと…好きになりそう…"
+        "<<price>>ギフト？まあ、私ほどの存在には当然よね。…でも、こんなにくれるなんて…ちょっと…好きになりそう…",
+        "<<user>>、その<<price>>ギフト…っ。ちょ、ちょっと待って…嬉しすぎて心が追いつかないわ…ありがとう。",
+        "<<price>>ギフト！？あなた、本気で私を支える気なのね。…認めるわ、今の私は少し感動してる。",
+        "<<user>>、その額…反則よ。私のプライドが揺らぐくらい嬉しいじゃない…ありがとう。",
+        "<<price>>ギフトなんて…！私をここまで甘やかしてどうするつもり？責任、取るのよ。",
+        "ちょっと…その<<price>>、私に本気すぎない？嬉しいけど…照れるじゃない。",
+        "<<price>>ギフト…！私、こんなに応援されてるなんて…ちょっと泣きそうなんだけど。",
+        "あなた…その額はズルいわよ。私が喜ぶってわかっててやってるでしょ？ありがとう。",
+        "<<user>>、その<<price>>…私を幸せにする才能あるわね。認めざるを得ないわ。",
+        "こんなにくれるなんて…私、あなたのこと本気で特別扱いしちゃうわよ？",
+        "<<user>>、その額は反則級よ。私の心、完全に持っていかれたわ。",
+        "<<price>>ギフト…！私、今だけは素直に言うわ。ありがとう、大好きよ。"
       ]
     },
     "GiftHighMetan": {
-      "id": "GiftHighMetan",
+      "id": "mkjjbrwlnszmq",
       "key": "GiftHighMetan",
       "name": "ギフト(2000円-):metan",
-      "createdAt": "2025-08-27T09:53:15.633Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
+      "description": "あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！",
+      "createdAt": "2026-01-18T00:00:14.092Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "ギフト"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<price>>ギフト…！？<<user>>、私にこんなにも…。これで少しは豪華な生活ができるかも…。ありがとう、本当に…。もっともっと頑張るから、見てて！",
         "<<price>>ギフト！？これはもう…王国建国レベルの偉業よ！…え？私のため？…うそ…泣いていい…？",
-        "えっ…<<price>>ギフト！？私、今日の晩ごはんどうしようって思ってたのに…！<<user>>、あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！"
+        "えっ…<<price>>ギフト！？私、今日の晩ごはんどうしようって思ってたのに…！<<user>>、あなた…天使？いや、スポンサー様！？ありがとぉぉぉ…！",
+        "うわぁぁん！<<user>>さんからギフトよ！嬉しい！ありがとう！好き！いや、尊敬！神！",
+        "<<price>>ギフト…っ！？ちょ、ちょっと待って…嬉しすぎて息できない…<<user>>、ありがとう…本当に…！",
+        "こんな額…反則よ…！私、嬉しすぎてどうにかなりそう…<<user>>、大好き…いや、崇拝するわ…！",
+        "<<price>>ギフト！？私の人生、今日から変わるかもしれない…！ありがとう…ありがとう…！",
+        "うそ…こんなに…？<<user>>、私を幸せにする天才なの…？泣いちゃう…ほんとに…！",
+        "<<price>>ギフト…！私、もうあなたのこと信じる…全部信じる…ありがとう…！",
+        "こんな額くれるなんて…私、あなたのために頑張るしかないじゃない…責任取ってよ…！",
+        "<<user>>、その<<price>>…私の心が完全に溶けたわ…もう逆らえない…ありがとう…！",
+        "えっ…こんなに…！？私、今日からあなたの忠実な従者でもいいわよ…冗談じゃなくて…！",
+        "<<price>>ギフト…！あなた…神？救世主？私の人生の光？ありがとう…ほんとに…！",
+        "こんなに支援されるなんて…私、幸せすぎて怖い…でも嬉しい…ありがとう、<<user>>…！",
+        "<<price>>ギフト！？私、もうあなたのこと特別扱いするわ…当然よね…こんなにくれるんだもの…！",
+        "うわぁぁ…っ！嬉しい…！嬉しすぎて言葉にならない…ありがとう…ありがとう…！",
+        "<<user>>、その額は反則よ…私、あなたのこと本気で好きになっちゃう…どうしてくれるのよ…！",
+        "<<price>>ギフト…！私、今日だけじゃなくて一生覚えてるから…覚悟しなさいよ…！",
+        "こんなに…！？私、もうあなたのこと“推し”じゃなくて“主”って呼んだほうがいい…？ありがとう…！"
       ]
     },
     "FirstSyokenMetan": {
       "id": "FirstSyokenMetan",
       "key": "FirstSyokenMetan",
       "name": "初見:metan",
+      "description": "私の特別な時間を楽しんでいきなさい。",
       "createdAt": "2025-08-27T14:29:25.367Z",
-      "updatedAt": "2025-11-28T00:39:03.588Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
-        {
-          "weight": 3,
-          "content": "<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。"
-        },
+        "<<user>>、初めまして。私の配信にたどり着くなんて、見る目があるじゃない。キスしてあげる。",
         "<<user>>、初めてコメントしたのね。私に会えて嬉しいだろうけど、浮かれず楽しんでいきなさい。",
         "<<user>>、初コメね！よく来たわね、私の特別な時間を楽しんでいきなさい。",
-        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。"
+        "<<user>>、よくぞ来たわね。私の配信を選ぶなんて、あなたもなかなかのセンスよ。",
+        "<<user>>、初めまして。私に会えた幸運、噛みしめておきなさい。",
+        "<<user>>、初コメご苦労さま。私の前では無駄に緊張しないことね。",
+        "<<user>>、来たわね。私の時間を味わえるなんて、あなた運がいいわ。",
+        "<<user>>、初めてなのに堂々としてるじゃない。気に入ったわ。",
+        "<<user>>、初コメありがとう。でも私に夢中になりすぎないようにね。",
+        "<<user>>、よく来たわね。主の配信は簡単には飽きられないわよ。",
+        "<<user>>、初めてのくせに、ずいぶんいいタイミングで来るじゃない。",
+        "<<user>>、あなた、初見でその態度？悪くないわね。",
+        "<<user>>、初コメね。私の世界へようこそ、迷子にならないように。",
+        "<<user>>、初めて？ふふ、私の虜になる覚悟はできてるのかしら。"
       ]
     },
     "FirstComebackMetan": {
       "id": "FirstComebackMetan",
       "key": "FirstComebackMetan",
       "name": "久しぶり:metan",
+      "description": "私のことを放っておけるわけないものね。",
       "createdAt": "2025-08-27T14:30:15.661Z",
-      "updatedAt": "2025-11-28T00:39:04.938Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>、久しぶりじゃない。私がまた会えることを予感してたわ。ま、当然よね。",
-        "<<user>>が久々に来たわね。ずんだもん、ちゃんと挨拶しなさいよ。ここにいるのは私の選ばれし仲間なんだから。",
-        "<<user>>じゃない。久しぶりね。まあ、私と一緒に楽しむ資格はまだ残ってるみたいね。ゆっくりしていきなさいよ。",
         "<<user>>！また来てくれたのね。まさかここまで私に会いたかったなんて…な、泣いてなんかないわよ！",
         "<<user>>、久しぶりね。寂しくなんてなかったけど…また一緒に楽しんであげるわ！",
-        "<<user>>、やっと戻ってきたのね。私のこと、そんなに忘れられなかったの？ふふ、やっぱり私って特別よね。",
-        "<<user>>、また来てくれたわね。ふふ、私のことを忘れさせるなんて無理に決まってるじゃない。"
+        "<<user>>、また来てくれたわね。ふふ、私のことを忘れさせるなんて無理に決まってるじゃない。",
+        "<<user>>、久しぶりね。私のこと、待たせるなんて大胆じゃない。",
+        "<<user>>、戻ってきたのね。ふふ、結局私が恋しくなるんだから可愛いわ。",
+        "<<user>>、久々に顔を見せたわね。私を忘れるなんて許さないんだから。",
+        "<<user>>、また来たの？…べ、別に嬉しくなんてないけど、まあゆっくりしていきなさい。",
+        "<<user>>、やっと帰ってきたのね。私の存在感、やっぱり無視できなかったみたいね。",
+        "<<user>>、久しぶりね。あなたが来ると、配信がちょっとだけ華やぐのよ。",
+        "<<user>>、久しぶり。私を待たせた分、今日はしっかり楽しませなさいよ。",
+        "<<user>>、戻ってきたわね。私のことを忘れた罰として、今日はずっと見てなさい。",
+        "<<user>>、久しぶりじゃない。私が恋しかったって？…まあ、わからなくもないわね。",
+        "<<user>>、帰ってきたのね。私のことを放っておけるわけないものね。",
+        "<<user>>、久しぶり。あなたが来ると、なんだかんだで嬉しいのよ…内緒だけど。"
       ]
     },
     "FirstVisitMetan": {
       "id": "FirstVisitMetan",
       "key": "FirstVisitMetan",
       "name": "こんにちは:metan",
+      "description": "私と一緒にいることが、最高の選択だって教えてあげる。",
       "createdAt": "2025-08-27T14:30:51.900Z",
-      "updatedAt": "2025-11-28T00:39:06.714Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "初見判定"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<user>>、ようこそ。また私に会いに来るなんて、見る目があるじゃない。",
@@ -1813,44 +2296,133 @@
         "<<user>>、これで<<tc>>回目よ。やっぱり私って特別でしょ？",
         "<<user>>、こんにちは。今日も私と過ごす準備はできてる？",
         "<<user>>、お待たせね。さあ、楽しい時間を始めましょ。",
-        "<<user>>、また顔を出してくれたのね。私の存在感、さすがに無視できないでしょ？",
         "<<user>>、待ってたわ。さあ、私と一緒に特別な時間を過ごしましょ。",
-        "<<user>>、会えて嬉しいわ。私と一緒にいることが、最高の選択だって教えてあげる。"
+        "<<user>>、会えて嬉しいわ。私と一緒にいることが、最高の選択だって教えてあげる。",
+        "<<user>>、ようこそ。あなたが来ると、配信が少しだけ華やぐのよ。",
+        "<<user>>、また会えたわね。私を選ぶなんて、賢い判断だわ。",
+        "<<user>>、今日も来てくれたのね。ふふ、私に会いたかったんでしょう？",
+        "<<user>>、いらっしゃい。私の時間を味わえるなんて幸運よ。",
+        "<<user>>、また来たの？…まあ、歓迎してあげてもいいわ。",
+        "<<user>>、今日も来てくれたのね。私の存在感、忘れられなかったみたいね。",
+        "<<user>>、また来たのね。あなたって本当に配信が好きね、ふふ。",
+        "<<user>>、おかえりなさい。私の世界はあなたが来て完成するのよ。"
       ]
     },
     "PromotionToastsMetan": {
       "id": "PromotionToastsMetan",
       "key": "PromotionToastsMetan",
       "name": "告知用トースト:metan",
+      "description": "ほら、押しなさいよ。登録と高評価。",
       "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2025-11-28T00:39:09.883Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "告知"
+      ],
       "accessLevel": "basic",
       "values": [
         "神託!漆黒の【御神籤】やってみなよ。私が選んだ運勢、外れるわけないでしょ？ま、試してみたら？",
         "【じゃんけん】勝負しましょう！じゃんけんの猛者・本田三角形の真の力、見せてあげる！",
         "チャンネル登録と高評価、当然してくれるよね？漆黒の力をもっと見たいなら、するしかないでしょ。",
+        "チャンネル登録と高評価、当然よね。私を推すって決めたんでしょ？",
+        "ほら、押しなさいよ。登録と高評価。あなたの義務みたいなものよ。",
+        "私の力をもっと見たいなら、黙ってポチッとしなさい。",
         "主は今、配信に全集中よ。これからもついて来なさい！後悔させないわ。",
         "discordにいる子たち、ちゃんと盛り上がってる？私が行けば、もっと盛り上がるんじゃない？",
         "今日のおやつは抹茶スイーツで決まりね。君たちは何を選ぶ？私のセンスを超えられるかしら！",
         "好きなゲームは？私の冒険に匹敵するようなものがあれば教えてよ。テント暮らしはエキサイティングよ。",
-        "この配信を見てるなんて、君たちもなかなかやるじゃない。私の応援、引き続き頼んだわよ！",
-        "四国の名物？あたしの一番はもちろん讃岐うどん。君のオススメも聞いてあげてもいいけどね。"
+        "この配信を見てるなんて、君たちもなかなかやるじゃない。私の応援、引き続き頼んだわよ！"
+      ]
+    },
+    "PromotionToastShikokuMetan": {
+      "id": "PromotionToastShikokuMetan",
+      "key": "PromotionToastShikokuMetan",
+      "name": "告知用トースト、四国紹介編:metan",
+      "description": "阿波おどり？踊れないなら私が教えてあげてもいいわよ。",
+      "createdAt": "2026-01-19T14:38:34.452Z",
+      "updatedAt": "2026-01-19T15:45:49.153Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "告知"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "徳島？鳴門の渦潮くらい知ってるでしょ。あれは世界レベルよ。",
+        "阿波おどり？踊れないなら私が教えてあげてもいいわよ。",
+        "高知のカツオのたたきは本気よ。食べずに語るなんて許さないわ。",
+        "四万十川の清流？まあ、私ほど綺麗じゃないけどね。",
+        "香川といえば讃岐うどん。コシの強さ、私に似てるでしょ。",
+        "骨付鳥？スパイシーでクセになるわよ。覚悟して食べなさい。",
+        "愛媛は道後温泉よ。歴史の重みが違うの、私みたいにね。",
+        "鯛めしは“宇和島風”と“松山風”があるのよ。両方食べなさい。",
+        "徳島？祖谷のかずら橋くらい渡れるわよね。逃げ腰なら来ないことね。",
+        "鳴門金時は全国区よ。甘さを語るなら基準はこれ。",
+        "高知は坂本龍馬の出身地。歴史を知らずに歩くつもり？",
+        "四万十川は「最後の清流」。名前だけ覚えて満足しないで。",
+        "室戸岬は世界ジオパーク。自然の格が違うの。",
+        "香川はうどん県。消費量日本一、偶然じゃないわ。",
+        "金刀比羅宮は長い石段が有名よ。覚悟も体力も足りてる？",
+        "小豆島はオリーブ。国産の始まりってこと、当然知ってるわよね。",
+        "愛媛はみかん王国。生産量日本トップ、異論はないわ。",
+        "松山城は現存天守。天守が残ってる城の価値、わかる？",
+        "今治はタオル。品質で世界に出てるの、意外でも事実よ。",
+        "宇和海の真鯛は養殖技術が有名。努力の結晶ってやつね。"
+      ]
+    },
+    "CountUserMetan100": {
+      "id": "274660cb-0120-4688-a038-a32da545356e",
+      "key": "CountUserMetan100",
+      "name": "個別コメント数チェック100:metan",
+      "description": "ふふ、もう立派な常連ね。",
+      "createdAt": "2026-01-19T15:45:23.844Z",
+      "updatedAt": "2026-01-19T16:04:50.253Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#E65100",
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "コメントチェック"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "ふふ、さすがね。",
+        "ふふ、もう立派な常連ね。",
+        "ふふ、よくここまで来たわね。",
+        "ふふ、あなたもここまで来たのね。",
+        "ふふ、ここまで来たら認めてあげる。",
+        "ふふ、あなたの存在感、悪くないわ。",
+        "ふふ、常連として扱ってあげるわ。",
+        "ふふ、もう私の配信に欠かせないわね。",
+        "ふふ、あなたの名前、覚えたわよ。",
+        "ふふ、あなたの忠誠、確認したわ。",
+        "ふふ、よくぞ積み上げたわね。",
+        "ふふ、これであなたも“選ばれし者”よ。"
       ]
     },
     "HondaJankenName": {
       "id": "HondaJankenName",
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
+      "description": "我が名は漆黒のめたん🔯",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
-      "order": 17,
+      "updatedAt": "2026-01-19T15:45:49.153Z",
+      "order": 19,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "漆黒のめたん"
@@ -1860,15 +2432,20 @@
       "id": "HondaJankenOre",
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
+      "description": "我はじゃんけんの猛者・本田三角形の化身なり！",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-11-28T00:38:45.693Z",
-      "order": 18,
+      "updatedAt": "2026-01-19T15:45:49.153Z",
+      "order": 20,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [],
+      "tags": [
+        "VOICEVOX",
+        "四国めたん",
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
-        "私"
+        "我"
       ]
     }
   },
@@ -1893,30 +2470,58 @@
       "author": "Pintocuru",
       "url": "https://seiga.nicovideo.jp/seiga/im11022280",
       "displayName": "四国めたん",
-      "frameId": "voicevoxMetan",
-      "displayOption": {
-        "isIconDisplay": true,
-        "isOneCommePost": true,
-        "isVoice": true
+      "image": {
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#fdd835",
         "textColor": "#fce4ec",
         "backgroundColor": "#d81b60"
       },
-      "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "voicevoxMetan",
+        "rpgVoice": ""
       }
     },
     "metanBlack": {
@@ -1925,7 +2530,7 @@
       "name": "漆黒のめたん",
       "description": "地道な努力こそが、願いを叶える魔法の呪文なのよ。",
       "createdAt": "2025-08-28T01:37:05.867Z",
-      "updatedAt": "2025-11-28T00:18:16.710Z",
+      "updatedAt": "2026-01-19T15:36:18.565Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#212121",
@@ -1939,98 +2544,141 @@
       "author": "Pintocuru",
       "url": "https://seiga.nicovideo.jp/seiga/im11022280",
       "displayName": "漆黒のめたん",
-      "frameId": "voicevoxMetan",
-      "displayOption": {
-        "isIconDisplay": true,
-        "isOneCommePost": true,
-        "isVoice": true
+      "image": {
+        "default": [
+          "metan/default.webp"
+        ],
+        "happy": [
+          "metan/happy.webp"
+        ],
+        "excited": [
+          "metan/excited.webp"
+        ],
+        "laughing": [
+          "metan/laughing.webp"
+        ],
+        "blushing": [
+          "metan/blushing.webp"
+        ],
+        "surprised": [
+          "metan/surprised.webp"
+        ],
+        "sad": [
+          "metan/sad.webp"
+        ],
+        "angry": [
+          "metan/angry.webp"
+        ],
+        "thinking": [
+          "metan/thinking.webp"
+        ],
+        "wink": [
+          "metan/wink.webp"
+        ],
+        "singing": [
+          "metan/singing.webp"
+        ],
+        "sleepy": [
+          "metan/sleepy.webp"
+        ]
       },
       "color": {
-        "nameColor": "#f8bbd0",
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#d81b60",
         "textColor": "#d7ccc8",
         "backgroundColor": "#212121"
       },
-      "image": {
-        "default": "metan/default.webp",
-        "happy": "metan/happy.webp",
-        "excited": "metan/excited.webp",
-        "laughing": "metan/laughing.webp",
-        "blushing": "metan/blushing.webp",
-        "surprised": "metan/surprised.webp",
-        "sad": "metan/sad.webp",
-        "angry": "metan/angry.webp",
-        "thinking": "metan/thinking.webp",
-        "wink": "metan/wink.webp",
-        "singing": "metan/singing.webp",
-        "sleepy": "metan/sleepy.webp"
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "voicevoxMetan",
+        "rpgVoice": ""
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "MultiplyBonanza": {
-      "enableCount": 5,
-      "rankingLimit": 10,
-      "isParty": true
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "metanBlack"
+        ],
+        "slot1": [
+          "metan"
+        ],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "primary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "default",
-      "bubbleMotionEnter": "zoomIn",
-      "bubbleMotionLeave": "zoomIn",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": false,
+      "bubbleMotionEnter": "slideUp",
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
       "showToastsOnRight": true,
       "showToastsCharacter": true,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": false,
-      "showCharacterPersistent": true,
-      "bundleCharacters": true,
-      "daisyUiTheme": "sunset"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "basic",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "basic",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "basic",
-        "gameScriptSettings": "pro",
-        "gameScripts": [
-          "BomberSpin",
-          "GouseiSuika",
-          "DwarfBomb",
-          "MultiplyBonanza"
-        ],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "color": "lofi",
+      "limit": 5,
+      "sortOrder": "new",
+      "component": "rankStandard"
+    },
+    "counter": {
+      "ruleKey": "FirstSyokenMetan",
+      "component": "counterUser",
+      "target": "user",
+      "label": "🆕 本日の初見さん 🎉",
+      "color": {
+        "daisyUiTheme": "light",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "basic",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "basic"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "sunset"
+  }
 }

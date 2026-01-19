@@ -4,7 +4,7 @@
     <!-- メッセージアクション -->
     <div v-if="action.actionType === 'message'" class="w-full">
       <!-- フキダシ -->
-      <div v-if="!isToast" class="space-y-8 flex flex-col items-center">
+      <div v-if="action.message.isToast !== true" class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
           :key="messageKey"
           :botName="character ? character.displayName : null"
@@ -21,9 +21,9 @@
       </div>
       <!-- トースト -->
 
-      <div v-else @click="refreshToast" class="cursor-pointer">
+      <div v-else @click="refreshMessage" class="cursor-pointer">
         <ToastBubbleItem
-          :key="toastKey"
+          :key="messageKey"
           :message="processedMessage"
           :color="character ? character.color : bubbleSettings.defaultColor"
           :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
@@ -80,7 +80,9 @@
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
-  const props = defineProps<{ action: PostActionType }>()
+  const props = defineProps<{
+    action: PostActionType
+  }>()
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -90,19 +92,11 @@
   const bubbleSettings = computed(() => data.value.components.bubble)
   const toastSettings = computed(() => data.value.components.toast)
 
-  // プレースホルダー処理
-  const processMessage = (message: string) => {
-    return processTestPlaceholder(message, data.value.placeholders)
-  }
-
   // キャラクター取得
   const character = computed(() => {
     if (!isCharacter.value || props.action.actionType !== 'message') return null
     return characters.value[props.action.characterKey]
   })
-
-  // トースト表示判定
-  const isToast = computed(() => props.action.actionType === 'message' && props.action.message.isToast)
 
   // メッセージ処理
   const processedMessage = computed(() => {
@@ -110,12 +104,10 @@
 
     if (props.action.actionType !== 'message') return ''
     const content = props.action.message.bubble || '(未記入)'
-    return processMessage(content)
+    return processTestPlaceholder(content, data.value.placeholders)
   })
 
   // リフレッシュキー
   const messageKey = ref(0)
-  const toastKey = ref(0)
   const refreshMessage = () => messageKey.value++
-  const refreshToast = () => toastKey.value++
 </script>

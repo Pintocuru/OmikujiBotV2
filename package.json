@@ -1,6 +1,7 @@
 {
   "name": "omikuji-bot",
-  "version": "2.0.1",
+  "version": "2.0.3",
+  "data_varsion": 2.03,
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
     "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",

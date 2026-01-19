@@ -1,7 +1,6 @@
 // src\ConfigMaker\stores\composables\useRecordCRUD.ts
 import { Ref } from 'vue'
 import {
-  CategoryType,
   RecordCategorySchemaMap,
   RecordCategoryType,
   RecordCategoryItemTypeMap,
@@ -24,17 +23,6 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     // keyの重複チェック
     if (typeof parseItem.key === 'string' && data.value[category][parseItem.key]) {
       delete parseItem.key
-    }
-
-    // idとkeyの補完（現行仕様では同一にする）
-    if (!parseItem.id && !parseItem.key) {
-      const unique = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
-      parseItem.id = unique
-      parseItem.key = unique
-    } else if (!parseItem.id && parseItem.key) {
-      parseItem.id = parseItem.key
-    } else if (!parseItem.key && parseItem.id) {
-      parseItem.key = parseItem.id
     }
 
     // order値を自動設定
@@ -102,6 +90,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     const timestamp = new Date().toISOString()
     const duplicatedItem = {
       ...item,
+      id: undefined,
       key: `${key.replace(/_copy_\d+$/, '')}_copy_${Date.now()}`,
       name: `${item.name}(コピー)`,
       createdAt: timestamp,
