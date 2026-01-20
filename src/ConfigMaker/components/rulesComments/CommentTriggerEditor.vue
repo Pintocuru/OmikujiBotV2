@@ -70,8 +70,9 @@
 
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import {
+    commentTriggerCondition,
     CommentTriggerCondition,
-    commentTriggerConditionLabels,
+    commentTriggerConditionInfo,
     CommentTriggerType,
   } from '@/types/OmikujiProcess/CommentTriggerSchema'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
@@ -105,28 +106,31 @@
   const count = createComputed('count')
 
   // 条件タイプの選択肢
-  const baseConditionTypes = Object.entries(commentTriggerConditionLabels)
-    .filter(([key]) => key !== 'syoken' && key !== 'count')
-    .map(([value, label]) => ({
-      value: value as CommentTriggerCondition,
-      label,
+  const baseConditionTypes = commentTriggerCondition
+    .filter((key) => key !== 'syoken' && key !== 'count')
+    .map((key) => ({
+      value: key,
+      label: commentTriggerConditionInfo[key].label,
+      description: commentTriggerConditionInfo[key].description,
     }))
 
-  const conditionTypes = computed(() => {
-    const list = [...baseConditionTypes]
+  const deprecatedConditions = ['syoken', 'count'] as const
 
-    if (props.modelValue.syoken !== undefined) {
-      list.push({
-        value: 'syoken',
-        label: commentTriggerConditionLabels.syoken,
-      })
-    }
+  type ConditionOption = {
+    value: CommentTriggerCondition
+    label: string
+  }
 
-    if (props.modelValue.count !== undefined) {
-      list.push({
-        value: 'count',
-        label: commentTriggerConditionLabels.count,
-      })
+  const conditionTypes = computed<ConditionOption[]>(() => {
+    const list: ConditionOption[] = [...baseConditionTypes]
+
+    for (const key of deprecatedConditions) {
+      if (props.modelValue[key] !== undefined) {
+        list.push({
+          value: key,
+          label: commentTriggerConditionInfo[key].label,
+        })
+      }
     }
 
     return list

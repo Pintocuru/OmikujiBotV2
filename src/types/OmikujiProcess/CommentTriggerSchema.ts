@@ -1,11 +1,6 @@
 // src\types\OmikujiProcess\CommentTriggerSchema.ts
 import { z } from 'zod'
-import {
-  GiftConditionSchema,
-  SyokenConditionSchema,
-  thresholdConditionDescriptions,
-  thresholdConditionLabels,
-} from '@shared/types/Threshold/'
+import { GiftConditionSchema, SyokenConditionSchema, thresholdConditionMap } from '@shared/types/Threshold/'
 import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'
 
 /**
@@ -22,13 +17,10 @@ export const commentTriggerCondition = [
 ] as const
 export type CommentTriggerCondition = (typeof commentTriggerCondition)[number]
 
-export const commentTriggerConditionLabels = Object.fromEntries(
-  commentTriggerCondition.map((key) => [key, thresholdConditionLabels[key]])
-) as Record<CommentTriggerCondition, string>
+export const commentTriggerConditionInfo = Object.fromEntries(
+  commentTriggerCondition.map((key) => [key, thresholdConditionMap[key]])
+) as Record<CommentTriggerCondition, (typeof thresholdConditionMap)[CommentTriggerCondition]>
 
-export const commentTriggerConditionDescriptions = Object.fromEntries(
-  commentTriggerCondition.map((key) => [key, thresholdConditionDescriptions[key]])
-) as Record<CommentTriggerCondition, string>
 
 export const CommentTriggerConditionSchema = z.enum(commentTriggerCondition).default('comment').catch('comment')
 

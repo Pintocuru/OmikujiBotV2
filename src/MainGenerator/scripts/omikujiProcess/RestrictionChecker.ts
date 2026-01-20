@@ -1,11 +1,11 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
-import { CommentRuleType, RestrictionType } from '@/types/'
+import { CommentRuleType } from '@/types/'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export interface RestrictionCheckResult {
   isBlocked: boolean
-  restrictionType: RestrictionType | null
+  restrictionType: 'cooldown' | 'repeat' | null
   metadata?: {
     userName?: string
     ruleName?: string

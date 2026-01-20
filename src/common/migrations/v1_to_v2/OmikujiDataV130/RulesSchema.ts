@@ -1,7 +1,6 @@
 // src\types\OmikujiData\RulesSchema.ts
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
-import { CommentThresholdSchema } from '@/types/OmikujiProcess/CommentThresholdSchema'
 import { BaseRecordSchema } from '@shared/types/'
 
 /**
@@ -44,12 +43,7 @@ export const BaseRuleSchema = z.object({
 export const CommentRuleSchema = z.object({
   ...BaseRuleSchema.shape,
   ruleType: z.literal('comments').default('comments').catch('comments'), // ルールタイプ（コメント）
-  threshold: CommentThresholdSchema.default(
-    CommentThresholdSchema.parse({
-      conditions: ['comment'],
-      comment: ['おみくじ'],
-    })
-  ).catch(CommentThresholdSchema.parse({})), // コメント発火条件
+  threshold: z.any(), // コメント発火条件
   limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})), // おみくじ実行制限設定
 })
 

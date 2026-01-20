@@ -19,12 +19,12 @@ export const ShowCharactersSchema = z.object({
 export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 
 export const SettingsBubbleSchema = z.object({
+  //   slotType: z.literal('primary'),// TODO: v2.1で追記
+
   // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: ShowCharactersSchema.default(ShowCharactersSchema.parse({})).catch(ShowCharactersSchema.parse({})),
-  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({ isTheme: true })).catch(
-    CharacterColorScheme.parse({ isTheme: true })
-  ),
-  characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+  characterSize: z.number().default(48).catch(48), // キャラクターの横幅
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
@@ -36,6 +36,8 @@ export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
  * トースト・サムネイル
  */
 export const SettingsToastSchema = z.object({
+  //   slotType: z.literal('secondary'),// TODO: v2.1で追記
+
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
   showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
   showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
@@ -62,6 +64,7 @@ export type RankingComponent = (typeof rankingComponents)[number]['value']
 export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
 
 export const SettingsRankingSchema = z.object({
+  //   slotType: z.literal('extra'),// TODO: v2.1で追記
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
@@ -85,6 +88,7 @@ export type CounterComponent = keyof typeof counterComponents
 export const componentValues = Object.keys(counterComponents) as CounterComponent[]
 
 export const SettingsCounterSchema = z.object({
+  //   slotType: z.literal('extra'),// TODO: v2.1で追記
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
   component: z.enum(componentValues).default('counterUser').catch('counterUser'),
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
@@ -119,3 +123,65 @@ export const ComponentsSchema = z.object({
 })
 
 export type ComponentsType = z.infer<typeof ComponentsSchema>
+
+/**
+
+TODO: v2.1 で新しく追加
+
+// 共通設定(SettingsBubbleSchema から分離)
+export const ComponentsCommonStyleSchema = z.object({
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+  defaultColor: CharacterColorScheme.default({}),
+})
+export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
+
+
+// kind
+export const ComponentKindSchema = z.enum([
+  'bubble',
+  'toast',
+  'ranking',
+  'counter',
+  // future...
+])
+export type ComponentKind = z.infer<typeof ComponentKindSchema>
+
+
+ // Conditions
+export const ComponentsConditionSchema = z.object({
+  slot: ComponentSlotSchema,
+  kind: ComponentKindSchema,
+})
+
+export const ComponentsConditionsSchema = z
+  .array(ComponentsConditionSchema)
+  .max(3)
+  .refine(
+    v => new Set(v.map(c => c.slot)).size === v.length,
+    { message: 'slot は重複不可' }
+  )
+
+ // ComponentsSchema 
+export const ComponentsSchema = z.object({
+  conditions: ComponentsConditionsSchema.default([
+    { slot: 'primary', kind: 'bubble' },
+    { slot: 'secondary', kind: 'toast' },
+  ]),
+
+  commonStyle: ComponentsCommonStyleSchema
+    .default(ComponentsCommonStyleSchema.parse({}))
+    .catch(ComponentsCommonStyleSchema.parse({})),
+
+  // TODO:あとでdefaultを入れておく
+  settings: z.object({
+    bubble: SettingsBubbleSchema,
+    toast: SettingsToastSchema,
+    ranking: SettingsRankingSchema,
+    counter: SettingsCounterSchema,
+  }),
+})
+
+export type ComponentsType = z.infer<typeof ComponentsSchema>
+
+
+ */

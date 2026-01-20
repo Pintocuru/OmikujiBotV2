@@ -1,7 +1,7 @@
 // src\types\OmikujiData\RulesSchema.ts
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
-import { CommentThresholdSchema } from '@/types/OmikujiProcess/CommentThresholdSchema'
+import { CommentThresholdSchema } from './old/CommentThresholdSchema'
 import { CommentTriggerSchema } from '@/types/OmikujiProcess/CommentTriggerSchema'
 import { BaseRecordSchema } from '@shared/types/'
 

@@ -69,6 +69,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
   import CommentTriggerEditor from './CommentTriggerEditor.vue'
   import OmikujiLimitsEditor from './OmikujiLimitsEditor.vue'
@@ -79,7 +80,6 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 
