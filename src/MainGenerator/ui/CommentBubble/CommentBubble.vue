@@ -23,7 +23,7 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleType } from '@/types'
+  import { BotMessageBubbleType, BotMessageType } from '@/types'
   import CommentBubbleZero from './CommentBubbleZero.vue'
   import CommentBubblePersistent from './CommentBubblePersistent.vue'
   import { useCharacterSelection } from './composables/useCharacterSelection'
@@ -31,43 +31,46 @@
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
-  // メッセージはここから取り出す
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)
   const { showCharacters, characterMap } = useCharacterManager()
 
-  // 設定の取得
   const isToastEnabled = computed(() => appStore.data.featureUsage.components.includes('toast'))
 
-  // 0番地のコメント取得
-  const centerMessages = computed(() => {
-    const allowKeys = showCharacters.value.center ?? []
+  // 型ガードヘルパー: トーストでないコメントメッセージのみを抽出
+  const isDisplayableComment = (msg: BotMessageType): msg is BotMessageBubbleType => {
+    if (typeof msg !== 'object' || msg === null) return false
+    const m = msg as Partial<BotMessageBubbleType>
+    return m.type === 'comment' && !(isToastEnabled.value && m.bubble?.isToast)
+  }
 
+  // 0番地: 中央表示用メッセージ
+  const centerMessages = computed(() => {
+    const allowKeys = showCharacters.value.center
     return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
-      if (msg.type !== 'comment') return false
-      if (isToastEnabled.value && msg.bubble?.isToast) return false
-      // null の場合はキャラクター非表示モードなのでそのまま表示
-      if (msg.bubble?.characterKey === null) return true
-      return allowKeys.includes(msg.bubble?.characterKey)
+      if (!isDisplayableComment(msg)) return false
+      const key = msg.bubble?.characterKey
+      // null の場合はキャラクター非表示モードなので表示
+      return key === null || allowKeys.includes(key)
     })
   })
 
-  // 1-4番地のコメント取得
+  // 1-4番地: スロット表示用メッセージ
   const indexMessages = computed(() => {
     const allowKeys = [
-      ...showCharacters.value.slot1,
-      ...showCharacters.value.slot2,
-      ...showCharacters.value.slot3,
-      ...showCharacters.value.slot4,
+      ...(showCharacters.value.slot1 ?? []),
+      ...(showCharacters.value.slot2 ?? []),
+      ...(showCharacters.value.slot3 ?? []),
+      ...(showCharacters.value.slot4 ?? []),
     ]
 
-    if (allowKeys.length === 0) return []
+    if (!allowKeys.length) return []
 
     return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
-      if (msg.type !== 'comment') return false
-      if (msg.bubble?.characterKey === null) return false
-      if (isToastEnabled.value && msg.bubble?.isToast) return false
-      return allowKeys.includes(msg.bubble?.characterKey)
+      if (!isDisplayableComment(msg)) return false
+      const key = msg.bubble?.characterKey
+      // null は除外（0番地で表示）
+      return key !== null && allowKeys.includes(key)
     })
   })
 
@@ -77,12 +80,12 @@
   // キャラクター選択
   const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, characterMap)
 
-  // 特定キャラクターのメッセージを取得
+  // 特定キャラクターの表示中メッセージを取得
   const getCharacterMessages = (characterKey: string) => {
-    return displayedComments.value.filter((c) => c.bubble?.characterKey === characterKey && c.display?.visible)
+    return displayedComments.value.filter((msg) => msg.bubble?.characterKey === characterKey && msg.display?.visible)
   }
 
-  // コメント削除ハンドラ（子からのemitを受け取る）
+  // コメント削除ハンドラ
   const handleRemoveComment = (messageId: string) => removeComment(messageId)
 
   onMounted(start)

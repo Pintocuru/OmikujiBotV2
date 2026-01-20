@@ -3,8 +3,6 @@ import { computed, Ref } from 'vue'
 import { ShowCharacters, CharacterType, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
-const defaultCharacterKey = 'default'
-
 /**
  * キャラクター選択ロジックを集約
  * - グループからキャラクターを選択
@@ -15,10 +13,12 @@ export function useCharacterSelection(
   showCharacters: Ref<ShowCharacters>,
   charactersMap: Ref<Record<string, CharacterType>>
 ) {
+  const { isValidCharacter } = useCharacterManager()
+
   // 最新コメントのキャラクターキーを取得
   const latestCommenterKey = computed(() => {
-    const visibleMessages = displayedComments.value.filter((m) => m.display?.visible)
-    return visibleMessages[0]?.bubble?.characterKey ?? null
+    const latestVisible = displayedComments.value.find((m) => m.display?.visible)
+    return latestVisible?.bubble?.characterKey ?? null
   })
 
   // 指定キャラクターのメッセージ数を取得
@@ -27,96 +27,78 @@ export function useCharacterSelection(
   }
 
   /**
+   * キャラクターの有効性を検証し、警告を出力
+   */
+  const validateAndWarn = (key: string, context: string): boolean => {
+    const character = charactersMap.value[key]
+
+    if (!character) {
+      console.warn(`[CharacterSelection] Character "${key}" not found in map (${context})`)
+      return false
+    }
+
+    if (!isValidCharacter(key)) {
+      console.warn(`[CharacterSelection] Character "${key}" has no images (${context})`, {
+        availableEmotions: Object.keys(character.image || {}),
+      })
+      return false
+    }
+
+    return true
+  }
+
+  /**
    * グループから表示するキャラクターを選択
-   * 1. 最新コメントがグループ内にあればそれを優先
-   * 2. コメント数が多い順
-   * 3. グループの先頭
+   * 優先順位: 1) 最新コメント 2) コメント数が多い 3) グループ先頭
    */
   const selectCharacterFromGroup = (group: string[]): string | null => {
-    if (!group?.length) return defaultCharacterKey
-    const { isValidCharacter } = useCharacterManager()
+    if (!group?.length) return null
 
     // 1. 最新コメントがこのグループ内なら優先
     if (latestCommenterKey.value && group.includes(latestCommenterKey.value)) {
-      const character = charactersMap.value[latestCommenterKey.value]
-
-      // ⚠️ キャラクターは存在するが画像がない場合の警告
-      if (character && !isValidCharacter(latestCommenterKey.value)) {
-        console.warn(
-          `[CharacterSelection] Character "${latestCommenterKey.value}" exists but has no images. ` +
-            `Falling back to default character.`,
-          { character, availableEmotions: Object.keys(character.image || {}) }
-        )
-      } else if (isValidCharacter(latestCommenterKey.value)) {
+      if (validateAndWarn(latestCommenterKey.value, 'latest commenter')) {
         return latestCommenterKey.value
       }
     }
 
     // 2. コメント数が最も多いキャラクターを探す
-    const withCounts = group.map((key) => ({
-      key,
-      count: getMessageCount(key),
-    }))
+    const withCounts = group
+      .map((key) => ({ key, count: getMessageCount(key) }))
+      .filter((item) => item.count > 0)
+      .sort((a, b) => b.count - a.count)
 
-    const hasComments = withCounts.find((c) => c.count > 0)
-    if (hasComments) {
-      const sortedKeys = withCounts.sort((a, b) => b.count - a.count)
-      const selectedKey = sortedKeys[0].key
-      const character = charactersMap.value[selectedKey]
-
-      // ⚠️ 警告
-      if (character && !isValidCharacter(selectedKey)) {
-        console.warn(
-          `[CharacterSelection] Character "${selectedKey}" exists but has no images. ` +
-            `Falling back to default character.`,
-          { character, availableEmotions: Object.keys(character.image || {}) }
-        )
-      } else if (isValidCharacter(selectedKey)) {
-        return selectedKey
+    if (withCounts.length > 0) {
+      const topKey = withCounts[0].key
+      if (validateAndWarn(topKey, 'most comments')) {
+        return topKey
       }
     }
 
     // 3. グループ内で最初に有効なキャラクターを探す
     for (const key of group) {
-      const character = charactersMap.value[key]
-
-      if (character && !isValidCharacter(key)) {
-        console.warn(`[CharacterSelection] Character "${key}" exists but has no images. Skipping.`, {
-          character,
-          availableEmotions: Object.keys(character.image || {}),
-        })
-        continue
-      }
-
-      if (isValidCharacter(key)) {
+      if (validateAndWarn(key, 'group fallback')) {
         return key
       }
     }
 
     // 4. 有効なキャラクターがない場合
-    console.warn(`[CharacterSelection] No valid characters with images found in group. Falling back to default.`, {
+    console.warn(`[CharacterSelection] No valid characters in group`, {
       group,
-      charactersInMap: Object.keys(charactersMap.value),
+      availableCharacters: Object.keys(charactersMap.value),
     })
 
-    return defaultCharacterKey
+    return null
   }
 
   // 0番地（中央）に表示するメッセージ
-  // 0番地（中央）に表示するメッセージ
   const centerMessages = computed(() => {
-    const allowKeys = showCharacters.value.center ?? []
-    if (allowKeys.length === 0) return []
+    const allowKeys = showCharacters.value.center
+    if (!allowKeys?.length) return []
 
     return displayedComments.value.filter((message) => {
-      // キャラクター非表示モード（null）の場合は表示
-      if (!message.bubble?.characterKey) return true
-
-      const characterKey = message.bubble.characterKey
-
-      // allowKeys に含まれていればフキダシは表示する
-      // ※ キャラクター画像があるかどうかは別問題
-      return allowKeys.includes(characterKey)
+      const key = message.bubble?.characterKey
+      // null の場合はキャラクター非表示モードなので表示
+      return key === null || allowKeys.includes(key)
     })
   })
 
@@ -134,15 +116,7 @@ export function useCharacterSelection(
         const key = selectCharacterFromGroup(group)
         if (!key) return null
 
-        // keyがdefaultの場合も含めて、charactersMapから取得を試みる
-        let character = charactersMap.value[key]
-
-        // キャラクターが見つからない場合、defaultキャラクターにフォールバック
-        if (!character && key !== defaultCharacterKey) {
-          character = charactersMap.value[defaultCharacterKey]
-        }
-
-        // それでも見つからない場合はnullを返す
+        const character = charactersMap.value[key]
         if (!character) return null
 
         return {
@@ -150,7 +124,7 @@ export function useCharacterSelection(
           character,
         }
       })
-      .filter(Boolean) as Array<{ slotIndex: number; character: CharacterType }>
+      .filter((item): item is { slotIndex: number; character: CharacterType } => item !== null)
   })
 
   /**
@@ -160,37 +134,37 @@ export function useCharacterSelection(
     if (import.meta.env.MODE !== 'development') return
 
     const issues: string[] = []
+    const warnings: string[] = []
 
     Object.entries(charactersMap.value).forEach(([key, character]) => {
-      if (key === 'default') return // defaultは特別扱い
-
       const hasAnyImage = characterEmotionKeys.some((emotion) => {
         const imagePaths = character.image?.[emotion]
-        return imagePaths?.some((path: string) => path && path.trim() !== '')
+        return imagePaths?.some((path: string) => path?.trim())
       })
 
       if (!hasAnyImage) {
-        issues.push(`⚠️ Character "${key}" (${character.name}) has NO images in any emotion state!`)
+        issues.push(`⚠️  "${key}" (${character.name}): NO images in any emotion`)
+        return
       }
 
       const emptyEmotions = characterEmotionKeys.filter((emotion) => {
         const imagePaths = character.image?.[emotion]
-        return !imagePaths || imagePaths.every((path: string) => !path || path.trim() === '')
+        return !imagePaths?.some((path: string) => path?.trim())
       })
 
       if (emptyEmotions.length > 0 && emptyEmotions.length < characterEmotionKeys.length) {
-        console.info(`ℹ️ Character "${key}" is missing images for: ${emptyEmotions.join(', ')}`)
+        warnings.push(`ℹ️  "${key}": Missing ${emptyEmotions.join(', ')}`)
       }
     })
 
     if (issues.length > 0) {
-      console.error(
-        '❌ CHARACTER VALIDATION FAILED\n' +
-          issues.join('\n') +
-          '\n\nThese characters will fall back to default and may cause display issues.'
-      )
-    } else {
-      console.log('✅ All characters have valid images')
+      console.error('❌ CHARACTER VALIDATION FAILED\n' + issues.join('\n'))
+    }
+    if (warnings.length > 0) {
+      console.info('CHARACTER WARNINGS\n' + warnings.join('\n'))
+    }
+    if (issues.length === 0 && warnings.length === 0) {
+      console.log('✅ All characters validated successfully')
     }
   }
 
