@@ -32,8 +32,6 @@ export function useCharacterSelection(
    * 2. コメント数が多い順
    * 3. グループの先頭
    */
-  // src/MainGenerator/composables/useCharacterSelection.ts
-
   const selectCharacterFromGroup = (group: string[]): string | null => {
     if (!group?.length) return defaultCharacterKey
     const { isValidCharacter } = useCharacterManager()

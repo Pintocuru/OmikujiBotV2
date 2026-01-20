@@ -8,7 +8,7 @@
         v-for="(message, i) in previewMessages"
         :key="i"
         :message="message.bubble?.message ?? '(未記入)'"
-        :color="message.bubble?.color ?? bubbleSettings.defaultColor"
+        :color="getCharacterColor(message.bubble.characterKey)"
         :iconLayers="iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')"
         :showToastsOnRight="toastSettings.showToastsOnRight"
       />
@@ -101,7 +101,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
-  const { iconSrc } = useCharacterManager()
+  const { iconSrc, getCharacterColor } = useCharacterManager()
 
   const toastSettings = computed(() => data.value.components.toast)
   const bubbleSettings = computed(() => data.value.components.bubble)
@@ -155,12 +155,13 @@
         const charIndex = i < characterArray.value.length ? i : 0
         const character = characterArray.value[charIndex]
         const messageText = i === 0 ? 'テストコメントです' : 'テストユーザーの運勢は【大吉】長文のテストコメントです。'
+        const characterKey = isCharacter.value ? character.key : null
+
         return BotMessageBubbleSchema.parse({
           bubble: {
             message: messageText,
             isToast: true,
-            characterKey: isCharacter.value && toastSettings.value.showToastsCharacter ? character.key : undefined,
-            color: isCharacter.value ? character.color : bubbleSettings.value.defaultColor,
+            characterKey,
           },
         })
       })

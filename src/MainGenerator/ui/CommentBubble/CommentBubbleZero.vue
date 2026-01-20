@@ -17,9 +17,10 @@
             class="absolute top-[180px] left-0 right-0 flex justify-center"
           >
             <CharacterLayerImage
+              v-if="getCharacterLayers(message).length > 0"
               :layers="getCharacterLayers(message)"
               :size="bubble.characterSize"
-              :color="message.bubble?.color"
+              :color="getCharacterColor(message.bubble?.characterKey)"
             />
           </div>
         </template>
@@ -46,18 +47,13 @@
   }>()
 
   const appStore = useAppStore()
-  const { iconSrc, hasImage, resolveEmotion } = useCharacterManager()
+  const { hasImage, getCharacterLayers, getCharacterColor } = useCharacterManager()
 
   // 設定の取得
   const bubble = computed(() => appStore.data.components.bubble || {})
 
   // コメント表示制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(toRef(() => props.centerMessages))
-
-  // キャラクターレイヤー取得（関数化で冗長性を削減）
-  const getCharacterLayers = (message: BotMessageBubbleType) => {
-    return iconSrc(message.bubble.characterKey, resolveEmotion(message.bubble.characterKey, message.bubble?.iconKey))
-  }
 
   // コメント削除ハンドラ（親にemit）
   const handleRemoveComment = (messageId: string) => {

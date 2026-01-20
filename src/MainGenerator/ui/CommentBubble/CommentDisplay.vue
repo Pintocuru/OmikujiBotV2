@@ -20,10 +20,10 @@
         <CommentBubbleItem
           :botName="item.message.bubble?.name ?? ''"
           :message="item.text"
-          :color="item.message.bubble?.color ?? CharacterColorScheme.parse({})"
+          :color="getCharacterColor(item.message.bubble.characterKey)"
           :animated-text="animatedText"
           :brightnessLevel="index"
-          :custom-classes="item.message.bubble?.color?.customClasses"
+          :custom-classes="getCharacterColor(item.message.bubble.characterKey).customClasses"
           :style="{ zIndex: index }"
         />
       </div>
@@ -40,6 +40,7 @@
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useAppStore } from '@main/stores/useAppStore'
   import { BotMessageBubbleType, CharacterColorScheme } from '@/types'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
   const props = withDefaults(
     defineProps<{
@@ -58,6 +59,7 @@
   )
 
   const appStore = useAppStore()
+  const { getCharacterColor } = useCharacterManager()
 
   // トースト機能がOFFなら、こちらで表示する
   const displayMessage = (bot: BotMessageBubbleType): string | null => {

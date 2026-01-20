@@ -21,6 +21,9 @@ export const useCharacterManager = () => {
     characterArray: computed(() => manager.value.characterArray),
     showCharacters,
 
+    //
+    getCharacterColor: (characterKey: string | null) => manager.value.getCharacterColor(characterKey),
+
     // メソッドは関数として返す
     isValidCharacter: (key: string | null) => manager.value.isValidCharacter(key),
     iconSrc: (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion),

@@ -2,7 +2,8 @@
 import { computed } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
-import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
+import { CharacterColorType, CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
+import { BotMessageBubbleType } from '@/types'
 
 /**
  * Vueコンポーネント用：CharacterManager のリアクティブなラッパー
@@ -13,30 +14,50 @@ export const useCharacterManager = () => {
 
   // CharacterManager のインスタンス
   const manager = computed(() => new CharacterManager(appStore.data))
+  const isCharacter = computed(() => manager.value.isCharacterMode)
+  const characterMap = computed(() => Object.fromEntries(manager.value.characterMap))
+  const characterArray = computed(() => manager.value.characterArray)
+
+  const isValidCharacter = (key: string | null) => manager.value.isValidCharacter(key)
+  const resolveEmotion = (key: string, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion)
+  const iconSrc = (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion)
 
   // 表示設定 (bubbleコンポーネントの表示位置設定などで使用)
   const showCharacters = computed(() => {
-    // キャラクターモードが無効な場合は、中央にデフォルトキャラのみを表示する設定を返す
-    if (!manager.value.isCharacterMode) {
-      return ShowCharactersSchema.parse({ center: ['default'] })
-    }
+    // キャラクターモードが無効な場合は、空を返す
+    if (!manager.value.isCharacterMode) return ShowCharactersSchema.parse({})
     return appStore.data.components.bubble.showCharacters
   })
+
+  // メッセージからキャラクター画像を返す
+  const getCharacterLayers = (message: BotMessageBubbleType): string[] => {
+    if (!isCharacter.value) return []
+
+    const key = message.bubble?.characterKey
+    if (!key || !manager.value.isValidCharacter(key)) return []
+
+    const emotion = manager.value.resolveEmotion(key, message.bubble?.iconKey)
+    return manager.value.iconSrc(key, emotion)
+  }
 
   return {
     // Manager インスタンス自体へのアクセスを提供
     manager: manager.value,
 
     // リアクティブなプロパティ
-    isCharacter: computed(() => manager.value.isCharacterMode),
-    characterMap: computed(() => Object.fromEntries(manager.value.characterMap)),
-    characterArray: computed(() => manager.value.characterArray),
+    isCharacter,
+    characterMap,
+    characterArray,
     showCharacters,
 
+    //
+    getCharacterLayers,
+    getCharacterColor: (key: string | null) => manager.value.getCharacterColor(key),
+
     // ロジックメソッド（後方互換性と利便性のため）
-    isValidCharacter: (key: string | null) => manager.value.isValidCharacter(key),
+    isValidCharacter,
     hasImage: (key: string | null) => manager.value.hasImage(key),
-    resolveEmotion: (key: string, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion),
-    iconSrc: (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion),
+    resolveEmotion,
+    iconSrc,
   }
 }

@@ -20,10 +20,9 @@ const CommentBubbleSchema = z.object({
   name: z.string().default('error'),
   message: z.string(),
   isToast: z.boolean().default(false),
-  characterKey: z.string().default('default'),
+  characterKey: z.string().nullable().default(null),
   iconKey: CharacterEmotionSchema.default('default'),
   displaySeconds: z.number().min(0).max(60).optional(),
-  color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
 })
 
 const DisplayStatusSchema = z.object({

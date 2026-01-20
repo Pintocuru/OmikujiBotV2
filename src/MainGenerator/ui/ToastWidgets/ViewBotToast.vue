@@ -13,7 +13,7 @@
         <ToastBubbleItem
           :key="message.id"
           :message="message.bubble?.isToast ? (message.bubble?.message ?? '(未記入)') : ''"
-          :color="message.bubble?.color ?? CharacterColorScheme.parse({})"
+          :color="getCharacterColor(message.bubble.characterKey)"
           :iconLayers="
             isCharacter && toastSettings.showToastsCharacter && message.bubble
               ? iconSrc(message.bubble.characterKey, message.bubble.iconKey)
@@ -42,15 +42,15 @@
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
   const toastSettings = computed(() => data.value.components.toast)
-  const { iconSrc } = useCharacterManager()
+  const { iconSrc, getCharacterColor } = useCharacterManager()
 
   // ライセンス状態で閲覧できないなら表示させない
   const { isCharacter } = useVisibilityAccess()
 
   const toastMessages: ComputedRef<BotMessageBubbleType[]> = computed(() => {
-    return botMessages.value.filter((message): message is BotMessageBubbleType => {
-      if (message.type !== 'comment') return false
-      return message.bubble?.isToast
+    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
+      if (msg.type !== 'comment') return false
+      return msg.bubble?.isToast
     })
   })
 

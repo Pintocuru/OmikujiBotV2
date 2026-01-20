@@ -1,5 +1,11 @@
 // src\MainGenerator\scripts\CharacterManager\CharacterManager.ts
-import { CharacterType, OmikujiDataType, CharacterSchema, CharacterEmotionType } from '@/types/OmikujiData/'
+import {
+  CharacterType,
+  OmikujiDataType,
+  CharacterSchema,
+  CharacterEmotionType,
+  CharacterColorType,
+} from '@/types/OmikujiData/'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
@@ -10,10 +16,12 @@ export class CharacterManager {
   readonly characterMap: Map<string, CharacterType>
   readonly characterArray: CharacterType[]
   readonly isCharacterMode: boolean
+  readonly defaultColor: CharacterColorType
 
   constructor(omikujiData: OmikujiDataType) {
     this.isCharacterMode = this.checkIsCharacter(omikujiData)
     this.characterMap = this.createCharacterMap(omikujiData)
+    this.defaultColor = omikujiData.components.bubble.defaultColor
 
     // Mapから配列を生成
     // UIに表示するための characterArray からは 'default' キーを除外する
@@ -31,7 +39,7 @@ export class CharacterManager {
 
     // キャラクター定義が存在するか確認。存在しない場合のみ 'default' にフォールバック
     const exists = characterKey ? this.characterMap.has(characterKey) : false
-    const resolvedCharacterKey = exists ? characterKey! : 'default'
+    const resolvedCharacterKey = exists ? characterKey! : null
 
     // 表情キーの妥当性を確認（画像がない表情なら、そのキャラの 'default' 画像を参照させる）
     const resolvedEmotion = this.resolveEmotion(resolvedCharacterKey, iconKey)
@@ -84,6 +92,16 @@ export class CharacterManager {
   }
 
   /**
+   * キャラクターキーから色を返す
+   */
+  getCharacterColor(characterKey: string | null): CharacterColorType {
+    if (!this.isCharacterMode || !characterKey || !this.isValidCharacter(characterKey)) return this.defaultColor
+
+    const character = this.getCharacter(characterKey)
+    return character.color ?? this.defaultColor
+  }
+
+  /**
    * 指定されたキャラクターが（画像アセットの有無にかかわらず）定義されているか確認
    */
   isValidCharacter(characterKey: string | null): boolean {
@@ -107,7 +125,8 @@ export class CharacterManager {
   /**
    * 指定された表情の画像アセットが存在するか確認。ない場合はキャラクター自体の 'default' 画像を返す
    */
-  resolveEmotion(characterKey: string, iconKey: CharacterEmotionType): CharacterEmotionType {
+  resolveEmotion(characterKey: string | null, iconKey: CharacterEmotionType): CharacterEmotionType {
+    if (!characterKey) return 'default'
     const character = this.characterMap.get(characterKey)
     if (!character) return 'default'
 

@@ -21,15 +21,15 @@
 </template>
 
 <script setup lang="ts">
+  import { computed, onMounted, onUnmounted } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { BotMessageBubbleType } from '@/types'
   import CommentBubbleZero from './CommentBubbleZero.vue'
   import CommentBubblePersistent from './CommentBubblePersistent.vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { storeToRefs } from 'pinia'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-  import { computed, onMounted, onUnmounted } from 'vue'
-  import { BotMessageBubbleType } from '@/types'
   import { useCharacterSelection } from './composables/useCharacterSelection'
   import { useBotDisplay } from './composables/useBotDisplay'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
   // メッセージはここから取り出す
   const appStore = useAppStore()
@@ -42,12 +42,13 @@
   // 0番地のコメント取得
   const centerMessages = computed(() => {
     const allowKeys = showCharacters.value.center ?? []
-    if (allowKeys.length === 0) return []
 
-    return botMessages.value.filter((message): message is BotMessageBubbleType => {
-      if (message.type !== 'comment') return false
-      if (isToastEnabled.value && message.bubble?.isToast) return false
-      return allowKeys.includes(message.bubble?.characterKey)
+    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
+      if (msg.type !== 'comment') return false
+      if (isToastEnabled.value && msg.bubble?.isToast) return false
+      // null の場合はキャラクター非表示モードなのでそのまま表示
+      if (msg.bubble?.characterKey === null) return true
+      return allowKeys.includes(msg.bubble?.characterKey)
     })
   })
 
@@ -64,11 +65,8 @@
 
     return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
       if (msg.type !== 'comment') return false
+      if (msg.bubble?.characterKey === null) return false
       if (isToastEnabled.value && msg.bubble?.isToast) return false
-
-      // null の場合はキャラクター非表示モードなのでそのまま表示
-      if (msg.bubble?.characterKey === null) return true
-
       return allowKeys.includes(msg.bubble?.characterKey)
     })
   })

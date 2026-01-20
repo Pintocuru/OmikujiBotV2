@@ -51,7 +51,6 @@ export function createFirstBotMessages(message: string, isToast: boolean = false
       message,
       isToast,
       characterKey: firstCharacter?.key,
-      color: firstCharacter.color,
     },
   })
 

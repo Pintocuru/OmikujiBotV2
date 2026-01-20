@@ -6,7 +6,7 @@
   >
     <!-- すべてのキャラクターリスト（テスト送信用） -->
     <CharacterThumbnailsPreview
-      :charactersArray="characterArray"
+      :charactersArray="clickableCharacters"
       :clickable="true"
       @character-click="handleCharacterClick"
     />
@@ -17,7 +17,13 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import { CharacterType, BotMessageBubbleSchema, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
+  import {
+    CharacterType,
+    BotMessageBubbleSchema,
+    BotMessageBubbleType,
+    characterEmotionKeys,
+    CharacterSchema,
+  } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
@@ -64,11 +70,20 @@
   /**
    * キャラクタークリック時のテストメッセージ送信
    */
+  const TEST_CHARACTER = CharacterSchema.parse({
+    key: '__test__',
+    name: 'テスト',
+    color: appStore.data.components.bubble.defaultColor,
+  })
+  const clickableCharacters = computed(() => {
+    if (!isCharacter.value) return [TEST_CHARACTER]
+    return [TEST_CHARACTER, ...characterArray.value]
+  })
+
   const handleCharacterClick = (character: CharacterType, isRightClick: boolean) => {
     try {
       const shouldChangeExpression = Math.random() < 0.5
       const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
-      const defaultBubbleColor = appStore.data.components.bubble?.defaultColor
 
       // キャラクターの妥当性を考慮してデータを構成
       const resolvedData = manager.resolveCharacter({
@@ -78,14 +93,11 @@
 
       const postAction: BotMessageBubbleType = BotMessageBubbleSchema.parse({
         bubble: {
-          name: isCharacter.value ? character.name : 'default',
-          message: !isRightClick
-            ? `${character.name || 'default'}のテストメッセージです！`
-            : `${character.name || 'default'}のトーストメッセージです！`,
+          name: character.name,
+          message: `${character.name}の${isRightClick ? 'トースト' : 'テスト'}メッセージです！`,
           isToast: isRightClick,
-          characterKey: isCharacter.value ? resolvedData.characterKey : 'default',
+          characterKey: resolvedData.characterKey ?? null,
           iconKey: resolvedData.iconKey,
-          color: isCharacter.value ? character.color : defaultBubbleColor,
         },
       })
 
@@ -99,8 +111,7 @@
    * 設定（showThumbnail）に含まれるキーを持つキャラクターのみをフィルタリング
    */
   const filteredCharacters = computed(() => {
-    // ライセンス無効時は characterArray 自体がデフォルトのみになっているためそのまま返す
-    if (!isCharacter.value) return characterArray.value
+    if (!isCharacter.value) return []
 
     const selectedKeys = new Set(toastSettings.value.showThumbnail)
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
