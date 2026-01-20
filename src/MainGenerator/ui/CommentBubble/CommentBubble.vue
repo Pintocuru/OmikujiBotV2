@@ -27,7 +27,7 @@
   import { storeToRefs } from 'pinia'
   import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
   import { computed, onMounted, onUnmounted } from 'vue'
-  import { BotMessageCommentType } from '@/types'
+  import { BotMessageBubbleType } from '@/types'
   import { useCharacterSelection } from './composables/useCharacterSelection'
   import { useBotDisplay } from './composables/useBotDisplay'
 
@@ -44,7 +44,7 @@
     const allowKeys = showCharacters.value.center ?? []
     if (allowKeys.length === 0) return []
 
-    return botMessages.value.filter((message): message is BotMessageCommentType => {
+    return botMessages.value.filter((message): message is BotMessageBubbleType => {
       if (message.type !== 'comment') return false
       if (isToastEnabled.value && message.bubble?.isToast) return false
       return allowKeys.includes(message.bubble?.characterKey)
@@ -62,7 +62,7 @@
 
     if (allowKeys.length === 0) return []
 
-    return botMessages.value.filter((msg): msg is BotMessageCommentType => {
+    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
       if (msg.type !== 'comment') return false
       if (isToastEnabled.value && msg.bubble?.isToast) return false
 

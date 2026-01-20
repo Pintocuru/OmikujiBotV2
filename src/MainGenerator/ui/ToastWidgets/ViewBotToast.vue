@@ -36,7 +36,7 @@
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { BotMessageCommentType, CharacterColorScheme } from '@/types'
+  import { BotMessageBubbleType, CharacterColorScheme } from '@/types'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
@@ -47,8 +47,8 @@
   // ライセンス状態で閲覧できないなら表示させない
   const { isCharacter } = useVisibilityAccess()
 
-  const toastMessages: ComputedRef<BotMessageCommentType[]> = computed(() => {
-    return botMessages.value.filter((message): message is BotMessageCommentType => {
+  const toastMessages: ComputedRef<BotMessageBubbleType[]> = computed(() => {
+    return botMessages.value.filter((message): message is BotMessageBubbleType => {
       if (message.type !== 'comment') return false
       return message.bubble?.isToast
     })

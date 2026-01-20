@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
 import { computed, Ref } from 'vue'
-import { ShowCharacters, CharacterType, BotMessageCommentType, characterEmotionKeys } from '@/types/'
+import { ShowCharacters, CharacterType, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
 
 const defaultCharacterKey = 'default'
@@ -11,7 +11,7 @@ const defaultCharacterKey = 'default'
  * - 表示するキャラクターリストを生成
  */
 export function useCharacterSelection(
-  displayedComments: Ref<BotMessageCommentType[]>,
+  displayedComments: Ref<BotMessageBubbleType[]>,
   showCharacters: Ref<ShowCharacters>,
   charactersMap: Ref<Record<string, CharacterType>>
 ) {

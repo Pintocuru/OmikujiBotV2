@@ -16,7 +16,7 @@ const BotMessageBaseSchema = z.object({
 /**
  * CommentBubbleSchema
  */
-export const CommentBubbleSchema = z.object({
+const CommentBubbleSchema = z.object({
   name: z.string().default('error'),
   message: z.string(),
   isToast: z.boolean().default(false),
@@ -25,7 +25,6 @@ export const CommentBubbleSchema = z.object({
   displaySeconds: z.number().min(0).max(60).optional(),
   color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
 })
-export type CommentBubbleType = z.infer<typeof CommentBubbleSchema>
 
 const DisplayStatusSchema = z.object({
   visible: z.boolean().default(true),
@@ -33,14 +32,14 @@ const DisplayStatusSchema = z.object({
 })
 
 /**
- * BotMessageCommentSchema
+ * BotMessageBubbleSchema
  */
-export const BotMessageCommentSchema = BotMessageBaseSchema.extend({
+export const BotMessageBubbleSchema = BotMessageBaseSchema.extend({
   type: z.literal('comment').default('comment'),
   bubble: CommentBubbleSchema,
   display: DisplayStatusSchema.optional(),
 })
-export type BotMessageCommentType = z.infer<typeof BotMessageCommentSchema>
+export type BotMessageBubbleType = z.infer<typeof BotMessageBubbleSchema>
 
 /**
  * RankingMessageSchema
@@ -80,7 +79,7 @@ export const BotMessageEmptySchema = BotMessageBaseSchema.extend({
 export type BotMessageEmptyType = z.infer<typeof BotMessageEmptySchema>
 
 const BotMessageSchema = z.discriminatedUnion('type', [
-  BotMessageCommentSchema,
+  BotMessageBubbleSchema,
   BotMessageRankingSchema,
   BotMessageEmptySchema,
 ])

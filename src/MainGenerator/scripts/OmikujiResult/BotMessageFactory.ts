@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageFactory.ts
 import {
-  BotMessageCommentSchema,
+  BotMessageBubbleSchema,
   BotMessageRankingSchema,
   BotMessageRankingType,
   BotMessageType,
@@ -45,7 +45,7 @@ export class BotMessageFactory {
 
     // 3. コメントメッセージを作成 (本文がある場合のみ)
     if (hasBubble) {
-      const commentMessage = BotMessageCommentSchema.parse({
+      const commentMessage = BotMessageBubbleSchema.parse({
         delaySeconds,
         bubble: {
           name: character.displayName,

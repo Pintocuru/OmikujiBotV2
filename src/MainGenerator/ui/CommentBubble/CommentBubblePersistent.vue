@@ -28,12 +28,12 @@
   import { useCharacterEmotionState } from './composables/useCharacterEmotionState'
   import CommentDisplay from './CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { BotMessageCommentType, CharacterType } from '@/types'
+  import { BotMessageBubbleType, CharacterType } from '@/types'
 
   const props = defineProps<{
     character: CharacterType
     slotIndex: number
-    messages: BotMessageCommentType[]
+    messages: BotMessageBubbleType[]
     isActive: boolean
   }>()
 

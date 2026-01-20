@@ -35,10 +35,10 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
-  import { BotMessageCommentType } from '@/types'
+  import { BotMessageBubbleType } from '@/types'
 
   const props = defineProps<{
-    centerMessages: BotMessageCommentType[]
+    centerMessages: BotMessageBubbleType[]
   }>()
 
   const emit = defineEmits<{
@@ -55,7 +55,7 @@
   const { displayedComments, removeComment, start, stop } = useBotDisplay(toRef(() => props.centerMessages))
 
   // キャラクターレイヤー取得（関数化で冗長性を削減）
-  const getCharacterLayers = (message: BotMessageCommentType) => {
+  const getCharacterLayers = (message: BotMessageBubbleType) => {
     return iconSrc(message.bubble.characterKey, resolveEmotion(message.bubble.characterKey, message.bubble?.iconKey))
   }
 

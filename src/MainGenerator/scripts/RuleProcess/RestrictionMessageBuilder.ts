@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
-import { BotMessageCommentSchema, BotMessageCommentType, CommentRuleType } from '@/types/'
+import { BotMessageBubbleSchema, BotMessageBubbleType, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 
@@ -41,11 +41,11 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 /**
  * メッセージを作成
  */
-export function createFirstBotMessages(message: string, isToast: boolean = false): BotMessageCommentType[] {
+export function createFirstBotMessages(message: string, isToast: boolean = false): BotMessageBubbleType[] {
   const { characterArray } = useCharacterManager()
   const firstCharacter = characterArray.value[0]
 
-  const botMessageData: BotMessageCommentType = BotMessageCommentSchema.parse({
+  const botMessageData: BotMessageBubbleType = BotMessageBubbleSchema.parse({
     bubble: {
       name: firstCharacter?.name,
       message,
@@ -64,7 +64,7 @@ export function createFirstBotMessages(message: string, isToast: boolean = false
 export function buildRestrictionMessages(
   result: RestrictionCheckResult,
   rule: CommentRuleType
-): BotMessageCommentType[] {
+): BotMessageBubbleType[] {
   if (!result.isBlocked) return []
 
   const message = createMessage(result, rule)

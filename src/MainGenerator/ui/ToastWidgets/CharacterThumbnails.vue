@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
   import { computed, ref, onMounted, onUnmounted } from 'vue'
-  import { CharacterType, BotMessageCommentSchema, BotMessageCommentType, characterEmotionKeys } from '@/types/'
+  import { CharacterType, BotMessageBubbleSchema, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
@@ -76,7 +76,7 @@
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
       })
 
-      const postAction: BotMessageCommentType = BotMessageCommentSchema.parse({
+      const postAction: BotMessageBubbleType = BotMessageBubbleSchema.parse({
         bubble: {
           name: isCharacter.value ? character.name : 'default',
           message: !isRightClick

@@ -1,6 +1,6 @@
 // src\MainGenerator\ui\OmikujiBot\composables\useBotDisplay.ts
 import { ref, computed, Ref } from 'vue'
-import { BotMessageCommentType } from '@/types/'
+import { BotMessageBubbleType } from '@/types/'
 
 const DISPLAY_CONFIG = {
   INTERVAL: 250,
@@ -11,8 +11,8 @@ const DISPLAY_CONFIG = {
 } as const
 
 // 共通の基底composable
-export const useBotDisplay = (botMessages: Ref<BotMessageCommentType[]>) => {
-  const displayedComments = ref<BotMessageCommentType[]>([])
+export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
+  const displayedComments = ref<BotMessageBubbleType[]>([])
   const animationFrameId = ref<number>()
 
   const comments = computed(() =>
@@ -67,7 +67,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessageCommentType[]>) => {
         }
 
         // DisplayBotMessageとして作成
-        const displayMessage: BotMessageCommentType = {
+        const displayMessage: BotMessageBubbleType = {
           ...nextComment,
           display: { visible: true },
         }

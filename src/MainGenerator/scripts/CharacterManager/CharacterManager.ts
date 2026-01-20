@@ -61,17 +61,13 @@ export class CharacterManager {
       image: {},
     })
 
-    if (!this.isCharacterMode) {
-      // キャラクターモードが無効な場合は、内部解決用に default のみを持つ
-      return new Map([[defaultCharacter.key, defaultCharacter]])
-    }
+    // キャラクターモードが無効な場合は、内部解決用に default のみを持つ
+    if (!this.isCharacterMode) return new Map([[defaultCharacter.key, defaultCharacter]])
 
     const map = new Map<string, CharacterType>(Object.values(omikujiData.characters).map((char) => [char.key, char]))
 
     // 内部解決用に default キーを保持させる（UIには出さない）
-    if (!map.has('default')) {
-      map.set('default', defaultCharacter)
-    }
+    if (!map.has('default')) map.set('default', defaultCharacter)
 
     return map
   }

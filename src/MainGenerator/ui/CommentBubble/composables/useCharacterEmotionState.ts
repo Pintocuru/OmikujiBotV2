@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useCharacterEmotionState.ts
 import { ref, computed, watch, type Ref } from 'vue'
-import type { BotMessageCommentType, BotMessageType, CharacterEmotionType, CharacterType } from '@/types/'
+import type { BotMessageBubbleType, BotMessageType, CharacterEmotionType, CharacterType } from '@/types/'
 
 /**
  * キャラクターの感情状態（アイコン）を管理
@@ -8,7 +8,7 @@ import type { BotMessageCommentType, BotMessageType, CharacterEmotionType, Chara
  * - コメントに基づいて感情を自動更新
  */
 export function useCharacterEmotionState(
-  displayedComments: Ref<BotMessageCommentType[]>,
+  displayedComments: Ref<BotMessageBubbleType[]>,
   charactersMap: Ref<Record<string, CharacterType>>
 ) {
   // キャラクターごとの現在の感情状態
