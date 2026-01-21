@@ -18,7 +18,6 @@ import OmikujiBotSpecialProject from './packages/full/OmikujiBotSpecial'
 
 // full
 import ReimuMarisaProject from './packages/full/ReimuMarisa'
-import ReimuMarisaMateProject from './packages/full/ReimuMarisaMate'
 import EveryoneZundaProject from './packages/full/EveryoneZunda'
 import DivaMetanProject from './packages/full/DivaMetan'
 import TsumugiHimariProject from './packages/full/TsumugiHimari'
@@ -138,7 +137,6 @@ const buildTargets: BuildTarget[] = [
 
       // Full
       ReimuMarisaProject(packageRoot),
-      ReimuMarisaMateProject(packageRoot),
       EveryoneZundaProject(packageRoot),
       DivaMetanProject(packageRoot),
       TsumugiHimariProject(packageRoot),

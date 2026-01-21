@@ -45,7 +45,6 @@ function project(packageRoot: string): ProjectConfig {
     accessLevels: {
       basic: {
         filesToCopy: [
-          { from: 'assets/config.js', to: 'config.js' },
           { from: 'assets/exported/thumb/thumb_TsumugiHimari.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/tsumugi/', to: 'Characters/tsumugi/' },
           { from: 'assets/exported/Characters/himari/', to: 'Characters/himari/' },
