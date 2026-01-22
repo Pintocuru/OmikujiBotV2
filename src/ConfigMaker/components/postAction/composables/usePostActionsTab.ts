@@ -1,12 +1,14 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
 import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/'
+import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
 export function usePostActionsTab(
   actions: Ref<PostActionType[]>,
-  emit: (event: 'update:actions', actions: PostActionType[]) => void,
-  characterOptions: ComputedRef<{ value: string; label: string }[]>
+  emit: (event: 'update:actions', actions: PostActionType[]) => void
 ) {
+  const { characterArray } = useCharacterManager()
+
   // アクティブなタブのインデックス（-1はプレースホルダータブ）
   const activeTab = ref(0)
 
@@ -39,7 +41,7 @@ export function usePostActionsTab(
   // 新しいアクションの追加
   const addNewAction = () => {
     const newAction: PostActionMessageType = PostActionMessageSchema.parse({
-      characterKey: characterOptions.value[0]?.value,
+      characterKey: characterArray.value[0]?.key ?? null,
       delaySeconds: actions.value.length > 0 ? Math.max(...actions.value.map((a) => a.delaySeconds)) + 1 : 0,
     })
 

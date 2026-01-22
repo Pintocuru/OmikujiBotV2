@@ -4,8 +4,8 @@
   <div v-if="isCharacter" class="space-y-2">
     <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
       <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
-        <option v-for="char in characterOptions" :key="char.value" :value="char.value">
-          {{ char.label }}
+        <option v-for="(value, key) in characterMap" :key="key" :value="key">
+          {{ value.name }}
         </option>
       </select>
     </SettingItem>
@@ -88,17 +88,19 @@
   import { soundList } from '@sounds/soundMap'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { AlignLeft, AlignJustify } from 'lucide-vue-next'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
   const props = defineProps<{
     action: PostActionMessageType
-    characterOptions: Array<{ value: string; label: string }>
   }>()
 
   const emit = defineEmits<{
     'update:action': [action: PostActionMessageType]
   }>()
 
+  // キャラクターオプションの取得
   const { isCharacter } = useVisibilityAccess()
+  const { characterMap } = useCharacterManager()
 
   const isTextarea = ref(false)
 

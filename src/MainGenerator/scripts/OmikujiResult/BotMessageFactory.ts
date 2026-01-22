@@ -6,7 +6,7 @@ import {
   BotMessageType,
   RankingMessageType,
 } from '@/types/MainGenerator/BotMessageSchema'
-import { CharacterColorType, CharacterType, OmikujiDataType } from '@/types/OmikujiData/'
+import { CharacterType, OmikujiDataType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { CreateBotMessageParams } from '@/types/MainGenerator/OmikujiResultTypes'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
@@ -48,12 +48,11 @@ export class BotMessageFactory {
       const commentMessage = BotMessageBubbleSchema.parse({
         delaySeconds,
         bubble: {
-          name: character.displayName,
+          name: character?.displayName || '',
           message: bubble,
           isToast,
           characterKey,
           iconKey,
-          color: character.color,
         },
       })
       messages.push(commentMessage)
@@ -87,7 +86,8 @@ export class BotMessageFactory {
   /**
    * Generator 等から参照するための公開メソッド
    */
-  getCharacter(characterKey: string | null): CharacterType {
+  getCharacter(characterKey: string | null): CharacterType | null {
+    if (!characterKey) return null
     return this.characterManager.getCharacter(characterKey)
   }
 }

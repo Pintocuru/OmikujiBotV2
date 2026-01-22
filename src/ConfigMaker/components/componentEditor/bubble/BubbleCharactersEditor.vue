@@ -116,29 +116,41 @@
   })
 
   // グループの初期化
+  const normalize = (list: string[]) => list.filter((key) => availableCharacters.value.includes(key))
+
   const initializeGroups = () => {
     const current = bubble.value.showCharacters
+
+    // 存在しないキャラ key を除去
+    const normalized = {
+      center: normalize(current.center),
+      slot1: normalize(current.slot1),
+      slot2: normalize(current.slot2),
+      slot3: normalize(current.slot3),
+      slot4: normalize(current.slot4),
+    }
+
     const allUsedChars = new Set([
-      ...current.center,
-      ...current.slot1,
-      ...current.slot2,
-      ...current.slot3,
-      ...current.slot4,
+      ...normalized.center,
+      ...normalized.slot1,
+      ...normalized.slot2,
+      ...normalized.slot3,
+      ...normalized.slot4,
     ])
+
     const unusedChars = availableCharacters.value.filter((char) => !allUsedChars.has(char))
 
     editableGroups.value = {
-      center: Array.from(new Set([...current.center, ...unusedChars])),
-      slot1: [...current.slot1],
-      slot2: [...current.slot2],
-      slot3: [...current.slot3],
-      slot4: [...current.slot4],
+      center: [...normalized.center, ...unusedChars],
+      slot1: [...normalized.slot1],
+      slot2: [...normalized.slot2],
+      slot3: [...normalized.slot3],
+      slot4: [...normalized.slot4],
     }
 
-    // 初期表示スロット数を計算
-    if (current.slot4.length > 0) visibleSlots.value = 4
-    else if (current.slot3.length > 0) visibleSlots.value = 3
-    else if (current.slot2.length > 0) visibleSlots.value = 2
+    if (normalized.slot4.length > 0) visibleSlots.value = 4
+    else if (normalized.slot3.length > 0) visibleSlots.value = 3
+    else if (normalized.slot2.length > 0) visibleSlots.value = 2
     else visibleSlots.value = 1
 
     updateStore()
@@ -170,9 +182,7 @@
 
   // スロットを増やす
   const increaseSlots = () => {
-    if (visibleSlots.value < 4) {
-      visibleSlots.value++
-    }
+    if (visibleSlots.value < 4) visibleSlots.value++
   }
 
   // スロットを減らす

@@ -52,12 +52,11 @@
   const { isCharacter } = useVisibilityAccess()
 
   /**
-   * グループから表示キャラクターを1体選ぶ
-   * 設定プレビューなので「最後に指定されたもの」を採用
+   * グループから表示キャラクターを1体選ぶ(表示は最初の配列)
    */
   const selectCharacterFromGroup = (group?: string[]) => {
     if (!group || group.length === 0) return null
-    return group[group.length - 1]
+    return group[0]
   }
 
   /**

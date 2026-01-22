@@ -53,7 +53,6 @@
     <PostActionItem
       :action="currentAction"
       :index="activeTab"
-      :character-options="characterOptions"
       @update:action="updateCurrentAction"
       @duplicate="duplicateAction"
       @remove="removeAction"
@@ -67,7 +66,6 @@
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
-  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import PlaceholderList from '@config/components/placeholders/PlaceholderList.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
@@ -85,21 +83,11 @@
   // Store
   const { isPlaceholder } = useVisibilityAccess()
 
-  // キャラクターオプションの取得
-  const { characterMap } = useCharacterManager()
-  const characterOptions = computed(() => {
-    return Object.entries(characterMap.value).map(([key, char]) => ({
-      value: key,
-      label: char.name,
-    }))
-  })
-
   // タブロジックをコンポーザブルから取得
   const { activeTab, currentAction, setActiveTab, updateCurrentAction, addNewAction, duplicateAction, removeAction } =
     usePostActionsTab(
       computed(() => props.modelValue),
-      (event, actions) => emit(event, actions),
-      characterOptions
+      (event, actions) => emit(event, actions)
     )
 
   // プレースホルダーを開く処理

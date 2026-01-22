@@ -38,7 +38,7 @@
       <component
         v-if="currentComponent"
         :is="currentComponent"
-        v-bind="{ action: action as any, 'character-options': characterOptions }"
+        v-bind="{ action: action as any, }"
         @update:action="handleActionUpdate"
       />
     </div>
@@ -59,7 +59,6 @@
   const props = defineProps<{
     action: PostActionType
     index: number
-    characterOptions: Array<{ value: string; label: string }>
   }>()
 
   // Emits

@@ -5,10 +5,15 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.12.30-v2.0.0-beta2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta17",
-    "dataVersion": 2.0017,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "ストロベリーショコラ", "占い", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "ストロベリーショコラ",
+      "占い",
+      "じゃんけん"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7733810"
   },
@@ -143,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.791Z",
+      "updatedAt": "2026-01-22T09:12:02.009Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -176,7 +181,6 @@
               "sound": "bounce",
               "message": {
                 "bubble": "<<FirstSagiChocolateThinking>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -217,7 +221,6 @@
               "sound": "explosion",
               "message": {
                 "bubble": "<<FirstSagiChocolateSurprise>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -258,7 +261,6 @@
               "sound": "fail",
               "message": {
                 "bubble": "<<FirstSagiChocolateSad>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -299,7 +301,6 @@
               "sound": "baseball",
               "message": {
                 "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             },
@@ -311,7 +312,6 @@
               "sound": "fail",
               "message": {
                 "bubble": "えっ！<<user>>さん、初見じゃなかったの? もう、びっくりさせないでよ～",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -329,11 +329,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["初見(?!さん)", "所見", "はじめまして"],
+        "comment": [
+          "初見(?!さん)",
+          "所見",
+          "はじめまして"
+        ],
         "count": {
           "comparison": "lowerBound",
           "unit": "tc",
@@ -353,7 +360,7 @@
       "name": "ホントの初見:Chocolate",
       "description": "あら、はじめまして🍓 見つけてくれてありがとう♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.791Z",
+      "updatedAt": "2026-01-22T09:12:02.010Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -386,7 +393,6 @@
               "sound": "baseball",
               "message": {
                 "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -404,11 +410,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["count", "comment"],
+        "conditions": [
+          "count",
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["初見", "所見", "はじめまして"],
+        "comment": [
+          "初見",
+          "所見",
+          "はじめまして"
+        ],
         "count": {
           "comparison": "upperBound",
           "unit": "tc",
@@ -428,7 +441,7 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.791Z",
+      "updatedAt": "2026-01-22T09:12:02.010Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -473,11 +486,15 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^コメント$"]
+        "comment": [
+          "^コメント$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -492,7 +509,7 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.792Z",
+      "updatedAt": "2026-01-22T09:12:02.010Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -525,7 +542,6 @@
               "sound": "carnival",
               "message": {
                 "bubble": "<<GiftChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -543,10 +559,14 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "userName": [],
         "access": [],
-        "gift": ["all"],
+        "gift": [
+          "all"
+        ],
         "comment": []
       },
       "limits": {
@@ -562,7 +582,7 @@
       "name": "桜吹雪スロット(コピー)",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-30T05:44:28.050Z",
-      "updatedAt": "2026-01-14T14:24:06.792Z",
+      "updatedAt": "2026-01-22T09:12:02.010Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -624,7 +644,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -640,11 +662,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ダンジョン", "^だんじょん", "^洞窟", "^dungeon"]
+        "comment": [
+          "^ダンジョン",
+          "^だんじょん",
+          "^洞窟",
+          "^dungeon"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -659,7 +688,7 @@
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-14T14:24:06.792Z",
+      "updatedAt": "2026-01-22T09:12:02.011Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -682,7 +711,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -697,7 +728,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='白'}}【{{symbol}}色】<<FlowerWhite>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -728,7 +758,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -743,7 +775,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='赤'}}【{{symbol}}色】<<FlowerRed>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -774,7 +805,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -789,7 +822,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='オレンジ'}}【{{symbol}}色】<<FlowerOrange>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -820,7 +852,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -835,7 +869,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='黄'}}【{{symbol}}色】<<FlowerYellow>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -866,7 +899,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -881,7 +916,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='緑'}}【{{symbol}}色】<<FlowerGreen>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -912,7 +946,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -927,7 +963,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='青'}}【{{symbol}}色】<<FlowerBlue>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -958,7 +993,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -973,7 +1010,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='紫'}}【{{symbol}}色】<<FlowerPurple>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -1004,7 +1040,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -1019,7 +1057,6 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='ピンク'}}【{{symbol}}色】<<FlowerPink>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -1050,7 +1087,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -1065,7 +1104,6 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var symbol='キノコ'}} <<user>>さんは【{{symbol}}色】<<FlowerKinoko2>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -1096,7 +1134,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["FlowerFirst"]
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -1111,7 +1151,6 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var symbol='毒キノコ'}} <<user>>さんは【{{symbol}}色】<<FlowerKinoko1>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -1129,11 +1168,24 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^フラワー", "^ふらわー", "^flower", "^花", "^はな$", "🌷", "🌹", "🌺", "🌻", "🌼"]
+        "comment": [
+          "^フラワー",
+          "^ふらわー",
+          "^flower",
+          "^花",
+          "^はな$",
+          "🌷",
+          "🌹",
+          "🌺",
+          "🌻",
+          "🌼"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1148,7 +1200,7 @@
       "name": "ルノルマンカード",
       "description": "36枚のルノルマンカードを使った占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-14T14:24:06.793Z",
+      "updatedAt": "2026-01-22T09:12:02.011Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -1220,7 +1272,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1236,11 +1290,19 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ルノルマン", "^るのるまん", "^Lenormand", "^うらな", "^占"]
+        "comment": [
+          "^ルノルマン",
+          "^るのるまん",
+          "^Lenormand",
+          "^うらな",
+          "^占"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1255,7 +1317,7 @@
       "name": "ルーン占い",
       "description": "25個のルーンストーンを使ったルーン占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-14T14:24:06.793Z",
+      "updatedAt": "2026-01-22T09:12:02.011Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -1276,7 +1338,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["RunicOracleFirst"]
+              "actionSetKeys": [
+                "RunicOracleFirst"
+              ]
             },
             {
               "delaySeconds": 3.5,
@@ -1303,11 +1367,20 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ルーン", "^るーん", "^rune", "^runic", "^うらな", "^占"]
+        "comment": [
+          "^ルーン",
+          "^るーん",
+          "^rune",
+          "^runic",
+          "^うらな",
+          "^占"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1322,7 +1395,7 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2026-01-14T14:24:06.793Z",
+      "updatedAt": "2026-01-22T09:12:02.012Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -1343,7 +1416,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1386,7 +1461,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1429,7 +1506,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1472,7 +1551,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1515,7 +1596,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1558,7 +1641,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -1590,11 +1675,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^カード", "^かーど", "^card", "^station"]
+        "comment": [
+          "^カード",
+          "^かーど",
+          "^card",
+          "^station"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1609,7 +1701,7 @@
       "name": "ドラちゃん",
       "description": "ドラちゃんです。5%の確率で性器を露出します。",
       "createdAt": "2025-08-10T10:59:27.244Z",
-      "updatedAt": "2026-01-14T14:24:06.794Z",
+      "updatedAt": "2026-01-22T09:12:02.012Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#3B82F6",
@@ -1632,7 +1724,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -1661,7 +1755,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora_boron"]
+              "actionSetKeys": [
+                "5percent_dora_boron"
+              ]
             }
           ],
           "gameScripts": {
@@ -1690,7 +1786,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora_Konjac"]
+              "actionSetKeys": [
+                "5percent_dora_Konjac"
+              ]
             }
           ],
           "gameScripts": {
@@ -1706,11 +1804,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
+        "comment": [
+          "^ドラちゃん",
+          "^どらちゃん",
+          "^dorachan",
+          "^5percent_dora"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -1725,7 +1830,7 @@
       "name": "じゃんけん",
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.794Z",
+      "updatedAt": "2026-01-22T09:12:02.013Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1748,7 +1853,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenRockA"]
+              "actionSetKeys": [
+                "HondaJankenRockA"
+              ]
             }
           ],
           "gameScripts": {
@@ -1777,7 +1884,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenRockB"]
+              "actionSetKeys": [
+                "HondaJankenRockB"
+              ]
             }
           ],
           "gameScripts": {
@@ -1806,7 +1915,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenScissorsA"]
+              "actionSetKeys": [
+                "HondaJankenScissorsA"
+              ]
             }
           ],
           "gameScripts": {
@@ -1835,7 +1946,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenScissorsB"]
+              "actionSetKeys": [
+                "HondaJankenScissorsB"
+              ]
             }
           ],
           "gameScripts": {
@@ -1864,7 +1977,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenPaperA"]
+              "actionSetKeys": [
+                "HondaJankenPaperA"
+              ]
             }
           ],
           "gameScripts": {
@@ -1893,7 +2008,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenPaperB"]
+              "actionSetKeys": [
+                "HondaJankenPaperB"
+              ]
             }
           ],
           "gameScripts": {
@@ -1922,7 +2039,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryA"]
+              "actionSetKeys": [
+                "HondaJankenVictoryA"
+              ]
             }
           ],
           "gameScripts": {
@@ -1951,7 +2070,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryB"]
+              "actionSetKeys": [
+                "HondaJankenVictoryB"
+              ]
             }
           ],
           "gameScripts": {
@@ -1967,11 +2088,17 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1986,7 +2113,7 @@
       "name": "じゃんけん(グー)",
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.795Z",
+      "updatedAt": "2026-01-22T09:12:02.013Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -2009,7 +2136,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenRockA"]
+              "actionSetKeys": [
+                "HondaJankenRockA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2038,7 +2167,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenRockB"]
+              "actionSetKeys": [
+                "HondaJankenRockB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2067,7 +2198,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryRockA"]
+              "actionSetKeys": [
+                "HondaJankenVictoryRockA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2096,7 +2229,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryRockB"]
+              "actionSetKeys": [
+                "HondaJankenVictoryRockB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2112,11 +2247,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2131,7 +2273,7 @@
       "name": "じゃんけん(チョキ)",
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.795Z",
+      "updatedAt": "2026-01-22T09:12:02.013Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -2154,7 +2296,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenScissorsA"]
+              "actionSetKeys": [
+                "HondaJankenScissorsA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2183,7 +2327,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenScissorsB"]
+              "actionSetKeys": [
+                "HondaJankenScissorsB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2212,7 +2358,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryScissorsA"]
+              "actionSetKeys": [
+                "HondaJankenVictoryScissorsA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2241,7 +2389,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryScissorsB"]
+              "actionSetKeys": [
+                "HondaJankenVictoryScissorsB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2257,11 +2407,17 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2276,7 +2432,7 @@
       "name": "じゃんけん(パー)",
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.013Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -2299,7 +2455,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenPaperA"]
+              "actionSetKeys": [
+                "HondaJankenPaperA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2328,7 +2486,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenPaperB"]
+              "actionSetKeys": [
+                "HondaJankenPaperB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2357,7 +2517,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryPaperA"]
+              "actionSetKeys": [
+                "HondaJankenVictoryPaperA"
+              ]
             }
           ],
           "gameScripts": {
@@ -2386,7 +2548,9 @@
             {
               "delaySeconds": 1,
               "actionType": "actionSet",
-              "actionSetKeys": ["HondaJankenVictoryPaperB"]
+              "actionSetKeys": [
+                "HondaJankenVictoryPaperB"
+              ]
             }
           ],
           "gameScripts": {
@@ -2402,11 +2566,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2421,7 +2592,7 @@
       "name": "配信内コメント数チェック:Chocolate",
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.014Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2466,7 +2637,9 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
@@ -2490,7 +2663,7 @@
       "name": "個別コメント数チェック:Chocolate",
       "description": "個人の総合コメントが100回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.014Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2535,7 +2708,9 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["count"],
+        "conditions": [
+          "count"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
@@ -2559,7 +2734,7 @@
       "name": "初見:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.014Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2592,7 +2767,6 @@
               "sound": "baseball",
               "message": {
                 "bubble": "<<FirstSyokenChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -2610,12 +2784,16 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": ["syoken"]
+        "syoken": [
+          "syoken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2630,7 +2808,7 @@
       "name": "久しぶり:Chocolate",
       "description": "7日以上コメントがなかったユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.014Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2658,7 +2836,6 @@
               "sound": "congrats",
               "message": {
                 "bubble": "<<FirstComebackChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -2676,12 +2853,16 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": ["again"]
+        "syoken": [
+          "again"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2696,7 +2877,7 @@
       "name": "こんにちは:Chocolate",
       "description": "配信枠での1回目のコメントをしたユーザーへの挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-14T14:24:06.796Z",
+      "updatedAt": "2026-01-22T09:12:02.014Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -2724,7 +2905,6 @@
               "sound": "collect",
               "message": {
                 "bubble": "<<FirstVisitChocolate>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -2742,12 +2922,16 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["syoken"],
+        "conditions": [
+          "syoken"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
         "comment": [],
-        "syoken": ["firstVisit"]
+        "syoken": [
+          "firstVisit"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -2762,11 +2946,14 @@
       "name": "ボンバースロット",
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.797Z",
+      "updatedAt": "2026-01-22T09:12:02.015Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スロット", "ボンバースロット"],
+      "tags": [
+        "スロット",
+        "ボンバースロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2975,10 +3162,14 @@
           "weight": 0,
           "isPriority": true,
           "criteria": {
-            "conditions": ["gift"],
+            "conditions": [
+              "gift"
+            ],
             "userName": [],
             "access": [],
-            "gift": ["all"],
+            "gift": [
+              "all"
+            ],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3020,7 +3211,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3036,11 +3229,21 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
+        "comment": [
+          "^スロット",
+          "^すろっと",
+          "^slot",
+          "^ボンバー",
+          "^ぼんばー",
+          "^bomber",
+          "^🎰"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3055,11 +3258,14 @@
       "name": "うさぎスロット",
       "description": "3匹のうさぎがお宝ザクザク！最大枚数5000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-01-14T14:24:06.797Z",
+      "updatedAt": "2026-01-22T09:12:02.015Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スロット", "うさぎスロット"],
+      "tags": [
+        "スロット",
+        "うさぎスロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3153,10 +3359,14 @@
           "weight": 3,
           "isPriority": true,
           "criteria": {
-            "conditions": ["gift"],
+            "conditions": [
+              "gift"
+            ],
             "userName": [],
             "access": [],
-            "gift": ["all"],
+            "gift": [
+              "all"
+            ],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3198,7 +3408,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3214,11 +3426,23 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
+        "comment": [
+          "^うさぎ",
+          "^ウサギ",
+          "^ドワーフ",
+          "^どわーふ",
+          "^rabbit",
+          "^dwarf",
+          "^usagi",
+          "🐰",
+          "🐇"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3233,11 +3457,14 @@
       "name": "桜吹雪スロット",
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
-      "updatedAt": "2026-01-14T14:24:06.798Z",
+      "updatedAt": "2026-01-22T09:12:02.016Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スロット", "桜吹雪スロット"],
+      "tags": [
+        "スロット",
+        "桜吹雪スロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3331,10 +3558,14 @@
           "weight": 2,
           "isPriority": true,
           "criteria": {
-            "conditions": ["gift"],
+            "conditions": [
+              "gift"
+            ],
             "userName": [],
             "access": [],
-            "gift": ["all"],
+            "gift": [
+              "all"
+            ],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -3376,7 +3607,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3392,11 +3625,25 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^さくら", "^サクラ", "^桜", "^sakura", "桜吹雪", "⛈️", "🌙", "🎍", "🌊", "🌸", "🌟"]
+        "comment": [
+          "^さくら",
+          "^サクラ",
+          "^桜",
+          "^sakura",
+          "桜吹雪",
+          "⛈️",
+          "🌙",
+          "🎍",
+          "🌊",
+          "🌸",
+          "🌟"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3411,11 +3658,16 @@
       "name": "ギフト用スイカ",
       "description": "ギフトされた方への特別なスイカゲーム。ライフ3倍!",
       "createdAt": "2025-12-29T15:03:32.932Z",
-      "updatedAt": "2026-01-14T14:24:06.798Z",
+      "updatedAt": "2026-01-22T09:12:02.017Z",
       "order": 23,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["ギフト", "スイカジェネレーター", "カボチャジェネレーター", "クジラジェネレーター"],
+      "tags": [
+        "ギフト",
+        "スイカジェネレーター",
+        "カボチャジェネレーター",
+        "クジラジェネレーター"
+      ],
       "accessLevel": "pro",
       "omikuji": [
         {
@@ -3432,7 +3684,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=スイカ&life=9",
-            "characterKey": ""
+            "characterKey": "chocolate"
           },
           "special": "return",
           "weight": 1,
@@ -3453,13 +3705,15 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=カボチャ&life=9",
-            "characterKey": ""
+            "characterKey": "chocolate"
           },
           "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["comment"],
+            "conditions": [
+              "comment"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3469,7 +3723,13 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": ["pumpkin", "かぼちゃ", "カボチャ", "南瓜", "🎃"]
+            "comment": [
+              "pumpkin",
+              "かぼちゃ",
+              "カボチャ",
+              "南瓜",
+              "🎃"
+            ]
           }
         },
         {
@@ -3486,13 +3746,15 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=クジラ&life=9",
-            "characterKey": ""
+            "characterKey": "chocolate"
           },
           "special": "return",
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["comment"],
+            "conditions": [
+              "comment"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3502,17 +3764,30 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": ["whale", "くじら", "クジラ", "鯨", "🐋", "🐳"]
+            "comment": [
+              "whale",
+              "くじら",
+              "クジラ",
+              "鯨",
+              "🐋",
+              "🐳"
+            ]
           }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "userName": [],
         "access": [],
-        "gift": ["all"],
-        "comment": ["おみくじ"]
+        "gift": [
+          "all"
+        ],
+        "comment": [
+          "おみくじ"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -3527,11 +3802,13 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-14T14:24:06.798Z",
+      "updatedAt": "2026-01-22T09:12:02.017Z",
       "order": 24,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター"],
+      "tags": [
+        "スイカジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3589,7 +3866,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3605,11 +3884,20 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
+        "comment": [
+          "^suika",
+          "^suica",
+          "^すいか",
+          "^スイカ",
+          "^西瓜",
+          "^🍉$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -3624,11 +3912,14 @@
       "name": "カボチャジェネレーター",
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
-      "updatedAt": "2026-01-14T14:24:06.799Z",
+      "updatedAt": "2026-01-22T09:12:02.018Z",
       "order": 25,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター", "カボチャジェネレーター"],
+      "tags": [
+        "スイカジェネレーター",
+        "カボチャジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3647,7 +3938,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=カボチャ",
-            "characterKey": ""
+            "characterKey": "chocolate"
           },
           "special": "return",
           "weight": 1,
@@ -3686,7 +3977,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3702,11 +3995,19 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
+        "comment": [
+          "^pumpkin",
+          "^かぼちゃ",
+          "^カボチャ",
+          "^南瓜",
+          "^🎃$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -3721,11 +4022,14 @@
       "name": "クジラジェネレーター",
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
-      "updatedAt": "2026-01-14T14:24:06.799Z",
+      "updatedAt": "2026-01-22T09:12:02.018Z",
       "order": 26,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター", "クジラジェネレーター"],
+      "tags": [
+        "スイカジェネレーター",
+        "クジラジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3744,7 +4048,7 @@
           "gameScripts": {
             "scriptId": "GouseiSuika",
             "queryString": "mode=クジラ",
-            "characterKey": ""
+            "characterKey": "chocolate"
           },
           "special": "return",
           "weight": 1,
@@ -3783,7 +4087,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -3799,11 +4105,20 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
+        "comment": [
+          "^whale",
+          "^くじら",
+          "^クジラ",
+          "^鯨",
+          "^🐋$",
+          "^🐳$"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -3818,11 +4133,13 @@
       "name": "超おみくじ",
       "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
-      "updatedAt": "2026-01-14T14:24:06.799Z",
+      "updatedAt": "2026-01-22T09:12:02.018Z",
       "order": 27,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ"],
+      "tags": [
+        "超おみくじ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3832,7 +4149,9 @@
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
-          "tags": ["超おみくじ"],
+          "tags": [
+            "超おみくじ"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -3870,11 +4189,17 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^超$", "^超おみくじ", "^BigBang"]
+        "comment": [
+          "^超$",
+          "^超おみくじ",
+          "^BigBang"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -3889,11 +4214,13 @@
       "name": "タロットカード",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-14T14:24:06.799Z",
+      "updatedAt": "2026-01-22T09:12:02.019Z",
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット"],
+      "tags": [
+        "タロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3903,14 +4230,19 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": ["タロット", "逆位置"],
+          "tags": [
+            "タロット",
+            "逆位置"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["TarotCardIntro"]
+              "actionSetKeys": [
+                "TarotCardIntro"
+              ]
             },
             {
               "delaySeconds": 3.5,
@@ -3936,7 +4268,9 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
@@ -3965,7 +4299,7 @@
       "name": "巫女さんのおみくじ",
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-14T14:24:06.800Z",
+      "updatedAt": "2026-01-22T09:12:02.020Z",
       "order": 29,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -4003,7 +4337,6 @@
               "sound": "baseball",
               "message": {
                 "bubble": "{{var text='大吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji01>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4049,7 +4382,6 @@
               "sound": "twinkle",
               "message": {
                 "bubble": "{{var text='吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji02>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4095,7 +4427,6 @@
               "sound": "congrats",
               "message": {
                 "bubble": "{{var text='中吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji03>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4141,7 +4472,6 @@
               "sound": "jingle",
               "message": {
                 "bubble": "{{var text='小吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji04>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4187,7 +4517,6 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4233,7 +4562,6 @@
               "sound": "fail",
               "message": {
                 "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4279,7 +4607,6 @@
               "sound": "explosion",
               "message": {
                 "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
-                "toast": "",
                 "isToast": false
               }
             }
@@ -4297,11 +4624,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^おみくじ", "^omikuji", "^omikuzi", "^御神籤"]
+        "comment": [
+          "^おみくじ",
+          "^omikuji",
+          "^omikuzi",
+          "^御神籤"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -4516,7 +4850,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -4544,7 +4880,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora_boron"]
+              "actionSetKeys": [
+                "5percent_dora_boron"
+              ]
             }
           ],
           "gameScripts": {
@@ -4572,7 +4910,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora_Konjac"]
+              "actionSetKeys": [
+                "5percent_dora_Konjac"
+              ]
             }
           ],
           "gameScripts": {
@@ -4598,7 +4938,7 @@
       "name": "フラワー:イントロ",
       "description": "WordPartyの演出イントロ",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-01T01:36:09.025Z",
+      "updatedAt": "2026-01-22T09:12:11.753Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -4630,7 +4970,7 @@
       "name": "ルーン占い:イントロ",
       "description": "稼働時の演出です",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.754Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -4671,7 +5011,7 @@
       "key": "StationCardFirst",
       "name": "カード駅:イントロ",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.754Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -4708,7 +5048,7 @@
       "name": "ドラちゃんの手か性器",
       "description": "もう、しょうがないなあ。はい、",
       "createdAt": "2025-10-11T00:39:10.669Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.754Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4740,7 +5080,7 @@
       "name": "ドラちゃん",
       "description": "ひみつ道具を出してくれます",
       "createdAt": "2025-10-11T00:37:22.462Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.754Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4751,7 +5091,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -4761,7 +5103,6 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='<<5percent_Dora>>'}}はぁーい、{{text}}～",
-            "toast": "",
             "isToast": false
           }
         }
@@ -4779,7 +5120,7 @@
       "name": "ドラちゃん(ボロン)",
       "description": "オンボロがオンボロをボロンします",
       "createdAt": "2025-10-11T00:41:10.500Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4790,7 +5131,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -4800,7 +5143,6 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='チンポ'}}{{var variant='error'}}はぁーい（ボロン）",
-            "toast": "",
             "isToast": false
           }
         },
@@ -4829,7 +5171,7 @@
       "name": "ドラちゃん (こんにゃく)",
       "description": "こ、これは伝説の…",
       "createdAt": "2025-10-11T01:17:21.409Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4855,7 +5197,6 @@
           "sound": "",
           "message": {
             "bubble": "{{var name='ドラちゃん'}}{{var unique='false'}}{{var text='どこでもしずちゃん'}}{{var variant='neutral'}}はぁーい、{{text}}～",
-            "toast": "",
             "isToast": false
           }
         }
@@ -4872,7 +5213,7 @@
       "key": "HondaJankenReadyA",
       "name": "じゃんけん:出す前の動作(キャラA)",
       "createdAt": "2025-10-08T00:59:17.768Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4888,7 +5229,6 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": "",
             "isToast": false
           }
         }
@@ -4906,7 +5246,7 @@
       "name": "じゃんけん:出す前の動作(キャラB)",
       "description": "もっと美味しくなったペプシジャパンコーラ、飲んでみたくないですか。",
       "createdAt": "2025-10-08T01:19:38.144Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4922,7 +5262,6 @@
           "sound": "",
           "message": {
             "bubble": "じゃんけんぽん!",
-            "toast": "",
             "isToast": false
           }
         }
@@ -4940,7 +5279,7 @@
       "name": "じゃんけん:グーA",
       "description": "何事も準備がすべて。それを怠っている事がバレてますよ。",
       "createdAt": "2025-10-08T01:07:31.634Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -4951,7 +5290,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -4971,7 +5312,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -4989,7 +5329,7 @@
       "name": "じゃんけん:グーB",
       "description": "ちゃんと分析してます?じっくり結果に向き合ってください。",
       "createdAt": "2025-10-08T01:20:19.514Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.755Z",
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5000,7 +5340,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5020,7 +5362,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5038,7 +5379,7 @@
       "name": "じゃんけん:チョキA",
       "description": "ウラのウラのウラまで読む訓練をしてくださいね。どこまで読もうとするかで結果が変わってきます。",
       "createdAt": "2025-10-08T01:28:24.530Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5049,7 +5390,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5069,7 +5412,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5087,7 +5429,7 @@
       "name": "じゃんけん:チョキB",
       "description": "ただの運やと思ってませんか?運も実力のうち!聞いたことありますよね?",
       "createdAt": "2025-10-08T01:31:02.784Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5098,7 +5440,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5118,7 +5462,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5136,7 +5479,7 @@
       "name": "じゃんけん:パーA",
       "description": "どんな事でも絶対に勝つんや!というメンタリティーが大事ですよ。",
       "createdAt": "2025-10-08T01:34:21.906Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5147,7 +5490,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5167,7 +5512,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5185,7 +5529,7 @@
       "name": "じゃんけん:パーB",
       "description": "1年間何やってたんですか？この結果はじゃんけんに対する意識の差です。",
       "createdAt": "2025-10-08T01:35:19.910Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5196,7 +5540,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5216,7 +5562,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5234,7 +5579,7 @@
       "name": "じゃんけん:勝利A",
       "description": "やるやん。明日は俺にリベンジさせて。",
       "createdAt": "2025-10-08T01:37:27.617Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5245,7 +5590,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5265,7 +5612,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5283,7 +5629,7 @@
       "name": "じゃんけん:勝利B",
       "description": "やるやん。明日は俺にリベンジさせて。",
       "createdAt": "2025-10-08T01:41:25.959Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.756Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5294,7 +5640,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5314,7 +5662,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5332,7 +5679,7 @@
       "name": "じゃんけん:グー勝利A",
       "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
       "createdAt": "2025-10-08T01:42:27.410Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.757Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5343,7 +5690,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5363,7 +5712,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5381,7 +5729,7 @@
       "name": "じゃんけん:グー勝利B",
       "description": "でも、今度は絶対、俺が勝つから!また明日やろう!",
       "createdAt": "2025-10-08T01:48:42.302Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.757Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5392,7 +5740,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5412,7 +5762,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5430,7 +5779,7 @@
       "name": "じゃんけん:チョキ勝利A",
       "description": "明日、俺が勝つからまたやろう!",
       "createdAt": "2025-10-08T01:49:23.722Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.758Z",
       "order": 20,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5441,7 +5790,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5461,7 +5812,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5479,7 +5829,7 @@
       "name": "じゃんけん:チョキ勝利B",
       "description": "明日、俺が勝つからまたやろう!",
       "createdAt": "2025-10-08T01:50:18.283Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.758Z",
       "order": 21,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5490,7 +5840,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5510,7 +5862,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5528,7 +5879,7 @@
       "name": "じゃんけん:パー勝利A",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:51:25.819Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.758Z",
       "order": 22,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5539,7 +5890,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5559,7 +5912,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5577,7 +5929,7 @@
       "name": "じゃんけん:パー勝利B",
       "description": "やるやん。今日は負けを認めます。ただ、勝ち逃げは許しませんよ。",
       "createdAt": "2025-10-08T01:52:21.730Z",
-      "updatedAt": "2026-01-01T01:36:09.027Z",
+      "updatedAt": "2026-01-22T09:12:11.759Z",
       "order": 23,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -5588,7 +5940,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -5608,7 +5962,6 @@
           "sound": "decision",
           "message": {
             "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
-            "toast": "",
             "isToast": false
           }
         }
@@ -5626,7 +5979,7 @@
       "name": "タロット:イントロ",
       "description": "稼働時の演出です",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-01T01:36:09.026Z",
+      "updatedAt": "2026-01-22T09:12:11.759Z",
       "order": 24,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -5668,10 +6021,13 @@
       "name": "超おみくじ:イントロ",
       "description": "地球の半径と同じ大きさの「超」が出てくるシーン",
       "createdAt": "2026-01-13T05:53:12.739Z",
-      "updatedAt": "2026-01-13T06:20:18.752Z",
+      "updatedAt": "2026-01-22T09:12:11.759Z",
       "order": 25,
       "isEnabled": true,
-      "tags": ["超おみくじ", "イントロ"],
+      "tags": [
+        "超おみくじ",
+        "イントロ"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -5699,17 +6055,20 @@
       "name": "超おみくじ:占い結果",
       "description": "5000兆円欲しい!",
       "createdAt": "2026-01-13T05:53:23.981Z",
-      "updatedAt": "2026-01-13T06:20:18.752Z",
+      "updatedAt": "2026-01-22T09:12:11.759Z",
       "order": 26,
       "isEnabled": true,
-      "tags": ["超おみくじ", "占い結果"],
+      "tags": [
+        "超おみくじ",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "message",
-          "characterKey": "omiken",
+          "characterKey": "chocolate",
           "iconKey": "default",
           "sound": "decision",
           "message": {
@@ -5731,11 +6090,14 @@
       "name": "タロットカード:イントロ",
       "description": "Wordpartyを使った演出パートです",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2026-01-13T06:00:50.200Z",
+      "updatedAt": "2026-01-22T09:12:11.760Z",
       "order": 27,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "イントロ"],
+      "tags": [
+        "タロット",
+        "イントロ"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -5773,18 +6135,21 @@
       "name": "タロットカード:占い部分",
       "description": "結果をわんコメへ投稿します",
       "createdAt": "2026-01-05T09:58:47.066Z",
-      "updatedAt": "2026-01-13T06:00:50.200Z",
+      "updatedAt": "2026-01-22T09:12:11.761Z",
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "占い結果"],
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "message",
-          "characterKey": "omiken",
+          "characterKey": "chocolate",
           "iconKey": "default",
           "sound": "collect",
           "message": {
@@ -8669,7 +9034,10 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
+      "values": [
+        "【<<CardTypeNice>>!】",
+        "<<null>>"
+      ]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -9158,7 +9526,12 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
+      "values": [
+        "<<CardStationDomestic>>",
+        "<<CardStationEast>>",
+        "<<CardStationWest>>",
+        "<<CardStationAbroad>>"
+      ]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -12308,7 +12681,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["ケイスケ ホンダ"]
+      "values": [
+        "ケイスケ ホンダ"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -12321,7 +12696,9 @@
       "editorColor": "#2196F3",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["俺"]
+      "values": [
+        "俺"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -12456,7 +12833,11 @@
       "order": 108,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "装飾", "吉"],
+      "tags": [
+        "超おみくじ",
+        "装飾",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         "光彩",
@@ -12551,7 +12932,10 @@
       "order": 109,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "装飾"],
+      "tags": [
+        "超おみくじ",
+        "装飾"
+      ],
       "accessLevel": "basic",
       "values": [
         "魑魅",
@@ -12645,7 +13029,10 @@
       "order": 110,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "占い結果"],
+      "tags": [
+        "超おみくじ",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12715,7 +13102,10 @@
       "order": 111,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12745,7 +13135,10 @@
       "order": 112,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12775,7 +13168,10 @@
       "order": 113,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12805,7 +13201,10 @@
       "order": 114,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12839,7 +13238,11 @@
       "order": 115,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉", "凶"],
+      "tags": [
+        "超おみくじ",
+        "吉",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
@@ -12860,7 +13263,10 @@
       "order": 116,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12894,7 +13300,10 @@
       "order": 117,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12928,7 +13337,10 @@
       "order": 118,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -12966,7 +13378,10 @@
       "order": 119,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -13016,7 +13431,10 @@
       "order": 120,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -13078,7 +13496,10 @@
       "order": 121,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -13140,7 +13561,10 @@
       "order": 122,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -13202,7 +13626,10 @@
       "order": 123,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -13264,7 +13691,10 @@
       "order": 124,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         "完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻",
@@ -13286,7 +13716,10 @@
       "order": 125,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "占い結果"],
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         "{{var text='愚者(正位置)'}}【{{text}}】 <<TarotCardFool_U>>",
@@ -13344,7 +13777,10 @@
       "order": 126,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
@@ -13363,7 +13799,10 @@
       "order": 127,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
@@ -13382,7 +13821,10 @@
       "order": 128,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
@@ -13401,7 +13843,10 @@
       "order": 129,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
@@ -13420,7 +13865,10 @@
       "order": 130,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
@@ -13439,7 +13887,10 @@
       "order": 131,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
@@ -13458,7 +13909,10 @@
       "order": 132,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
@@ -13477,7 +13931,10 @@
       "order": 133,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
@@ -13496,7 +13953,10 @@
       "order": 134,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
@@ -13515,7 +13975,10 @@
       "order": 135,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
@@ -13534,7 +13997,10 @@
       "order": 136,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
@@ -13553,7 +14019,10 @@
       "order": 137,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
@@ -13572,7 +14041,10 @@
       "order": 138,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
@@ -13591,7 +14063,10 @@
       "order": 139,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
@@ -13610,7 +14085,10 @@
       "order": 140,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
@@ -13629,7 +14107,10 @@
       "order": 141,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
@@ -13648,7 +14129,10 @@
       "order": 142,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
@@ -13667,7 +14151,10 @@
       "order": 143,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
@@ -13686,7 +14173,10 @@
       "order": 144,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
@@ -13705,7 +14195,10 @@
       "order": 145,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
@@ -13724,7 +14217,10 @@
       "order": 146,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
@@ -13743,7 +14239,10 @@
       "order": 147,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
@@ -13762,7 +14261,10 @@
       "order": 148,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
@@ -13781,7 +14283,10 @@
       "order": 149,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
@@ -13800,7 +14305,10 @@
       "order": 150,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
@@ -13819,7 +14327,10 @@
       "order": 151,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
@@ -13838,7 +14349,10 @@
       "order": 152,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
@@ -13857,7 +14371,10 @@
       "order": 153,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
@@ -13876,7 +14393,10 @@
       "order": 154,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
@@ -13895,7 +14415,10 @@
       "order": 155,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "バランスを崩しやすい時期。無理な行動は運を乱します。",
@@ -13914,7 +14437,10 @@
       "order": 156,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
@@ -13933,7 +14459,10 @@
       "order": 157,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "束縛から解放される兆し。執着を手放せば自由が訪れます。",
@@ -13952,7 +14481,10 @@
       "order": 158,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
@@ -13971,7 +14503,10 @@
       "order": 159,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
@@ -13990,7 +14525,10 @@
       "order": 160,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
@@ -14009,7 +14547,10 @@
       "order": 161,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
@@ -14028,7 +14569,10 @@
       "order": 162,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
@@ -14047,7 +14591,10 @@
       "order": 163,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
@@ -14066,7 +14613,10 @@
       "order": 164,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
@@ -14085,7 +14635,10 @@
       "order": 165,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
@@ -14104,7 +14657,10 @@
       "order": 166,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去の努力が報われるとき。新しい扉が開きます。",
@@ -14123,7 +14679,10 @@
       "order": 167,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
@@ -14142,7 +14701,10 @@
       "order": 168,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
@@ -14161,7 +14723,10 @@
       "order": 169,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
@@ -14352,17 +14917,62 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://pintocuru.booth.pm/",
       "displayName": "ショコラ",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "data:image/png;base64,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",
-        "frameId": "StrawberryChocolat",
-        "rpgVoice": ""
+      "image": {
+        "default": [
+          "chocolate/default.webp",
+          "chocolate/face.webp"
+        ],
+        "happy": [
+          "chocolate/happy.webp",
+          "chocolate/face.webp"
+        ],
+        "excited": [
+          "chocolate/excited.webp",
+          "chocolate/face.webp"
+        ],
+        "laughing": [
+          "chocolate/laughing.webp",
+          "chocolate/face.webp"
+        ],
+        "blushing": [
+          "chocolate/blushing.webp",
+          "chocolate/face.webp"
+        ],
+        "surprised": [
+          "chocolate/surprised.webp",
+          "chocolate/face.webp"
+        ],
+        "sad": [
+          "chocolate/sad.webp",
+          "chocolate/face.webp"
+        ],
+        "angry": [
+          "chocolate/angry.webp",
+          "chocolate/face.webp"
+        ],
+        "thinking": [
+          "chocolate/thinking.webp",
+          "chocolate/face.webp"
+        ],
+        "wink": [
+          "chocolate/wink.webp",
+          "chocolate/face.webp"
+        ],
+        "singing": [
+          "chocolate/singing.webp"
+        ],
+        "sleepy": [
+          "chocolate/sleepy.webp"
+        ]
       },
       "color": {
         "isTheme": false,
@@ -14374,122 +14984,26 @@
         "backgroundColor": "#D32F2F",
         "customClasses": "px-4 py-4 border border-white rounded-xl"
       },
-      "image": {
-        "default": ["chocolate/default.webp", "chocolate/face.webp"],
-        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
-        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
-        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
-        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
-        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
-        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
-        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
-        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
-        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
-        "singing": ["chocolate/singing.webp"],
-        "sleepy": ["chocolate/sleepy.webp"]
-      }
-    },
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-10-09T22:04:37.277Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
       "displayOption": {
         "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
+        "imageBase64": "data:image/png;base64,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",
+        "frameId": "StrawberryChocolat",
         "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      }
-    },
-    "omiken_2": {
-      "id": "omiken_2",
-      "key": "omiken_2",
-      "name": "おみくじBOT2",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-10-10T07:35:47.624Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#64B5F6",
-        "textColor": "#E3F2FD",
-        "backgroundColor": "#1565C0",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
       }
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "bubble": {
       "showCharacters": {
-        "center": ["omiken", "omiken_2"],
-        "slot1": ["chocolate"],
+        "center": [],
+        "slot1": [
+          "chocolate"
+        ],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -14550,8 +15064,20 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": ["bubble", "toast", "ranking", "counter"],
-    "gameScripts": ["GouseiSuika", "BomberSpin", "DwarfBomb", "MultiplyBonanza", "GoogolClover", "HugEmAll"],
+    "components": [
+      "bubble",
+      "toast",
+      "ranking",
+      "counter"
+    ],
+    "gameScripts": [
+      "GouseiSuika",
+      "BomberSpin",
+      "DwarfBomb",
+      "MultiplyBonanza",
+      "GoogolClover",
+      "HugEmAll"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "basic"

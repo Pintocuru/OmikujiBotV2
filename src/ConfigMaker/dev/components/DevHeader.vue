@@ -12,7 +12,9 @@
       >
         {{ devStore.isExpressMode ? 'DEV' : 'Plugin' }}
       </button>
-      <h2 class="text-lg font-bold text-primary-content">{{ isDev || isPro ? 'プリセット管理' : '' }}</h2>
+      <h2 class="text-lg font-bold text-primary-content">
+        {{ isDev || isPro ? 'プリセット管理' : 'サーバー連携機能' }}
+      </h2>
     </div>
 
     <div v-if="devStore.isServerConnected" class="flex items-center gap-2">
@@ -25,7 +27,7 @@
         >
           <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
           <Download class="w-4 h-4 mr-2" />
-          ジェネレーターから読み込み
+          サーバーから読み込み
         </button>
 
         <button
@@ -36,7 +38,7 @@
         >
           <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
           <Save class="w-4 h-4 mr-2" />
-          ジェネレーターに保存
+          サーバーに保存
         </button>
       </template>
 

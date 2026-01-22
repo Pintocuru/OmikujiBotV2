@@ -1,11 +1,5 @@
 // src\MainGenerator\scripts\CharacterManager\CharacterManager.ts
-import {
-  CharacterType,
-  OmikujiDataType,
-  CharacterSchema,
-  CharacterEmotionType,
-  CharacterColorType,
-} from '@/types/OmikujiData/'
+import { CharacterType, OmikujiDataType, CharacterEmotionType, CharacterColorType } from '@/types/OmikujiData/'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
@@ -20,14 +14,11 @@ export class CharacterManager {
 
   constructor(omikujiData: OmikujiDataType) {
     this.isCharacterMode = this.checkIsCharacter(omikujiData)
-    this.characterMap = this.createCharacterMap(omikujiData)
+    this.characterMap = this.createCharacterMap(omikujiData.characters)
     this.defaultColor = omikujiData.components.bubble.defaultColor
 
-    // Mapから配列を生成
-    // UIに表示するための characterArray からは 'default' キーを除外する
-    this.characterArray = Array.from(this.characterMap.values())
-      .filter((char) => char.key !== 'default')
-      .sort((a, b) => (a.order || 0) - (b.order || 0))
+    // Mapから配列を生成（全キャラクターを含む）
+    this.characterArray = Array.from(this.characterMap.values()).sort((a, b) => (a.order || 0) - (b.order || 0))
   }
 
   /**
@@ -37,7 +28,7 @@ export class CharacterManager {
   resolveCharacter(data: { characterKey: string | null; iconKey: CharacterEmotionType }) {
     const { characterKey, iconKey } = data
 
-    // キャラクター定義が存在するか確認。存在しない場合のみ 'default' にフォールバック
+    // キャラクター定義が存在するか確認。存在しない場合は null にフォールバック
     const exists = characterKey ? this.characterMap.has(characterKey) : false
     const resolvedCharacterKey = exists ? characterKey! : null
 
@@ -52,32 +43,19 @@ export class CharacterManager {
   }
 
   /**
-   * キャラクター情報を取得。見つからない場合は default を返す
+   * キャラクター情報を取得。見つからない場合は null を返す
    */
-  getCharacter(characterKey: string | null): CharacterType {
-    return this.characterMap.get(characterKey || 'default') || this.characterMap.get('default')!
+  getCharacter(characterKey: string | null): CharacterType | null {
+    if (!characterKey) return null
+    return this.characterMap.get(characterKey) || null
   }
 
   /**
-   * characterMapの生成（ライセンス無効時はデフォルトのみ保持）
+   * characterMapの生成（ライセンス無効時は空のMapを返す）
    */
-  private createCharacterMap(omikujiData: OmikujiDataType): Map<string, CharacterType> {
-    const defaultCharacter = CharacterSchema.parse({
-      key: 'default',
-      name: '',
-      color: omikujiData.components.bubble.defaultColor,
-      image: {},
-    })
-
-    // キャラクターモードが無効な場合は、内部解決用に default のみを持つ
-    if (!this.isCharacterMode) return new Map([[defaultCharacter.key, defaultCharacter]])
-
-    const map = new Map<string, CharacterType>(Object.values(omikujiData.characters).map((char) => [char.key, char]))
-
-    // 内部解決用に default キーを保持させる（UIには出さない）
-    if (!map.has('default')) map.set('default', defaultCharacter)
-
-    return map
+  private createCharacterMap(characters: Record<string, CharacterType>): Map<string, CharacterType> {
+    if (!this.isCharacterMode) return new Map()
+    return new Map<string, CharacterType>(Object.values(characters).map((char) => [char.key, char]))
   }
 
   /**
@@ -95,10 +73,12 @@ export class CharacterManager {
    * キャラクターキーから色を返す
    */
   getCharacterColor(characterKey: string | null): CharacterColorType {
-    if (!this.isCharacterMode || !characterKey || !this.isValidCharacter(characterKey)) return this.defaultColor
+    if (!this.isCharacterMode || !characterKey || !this.isValidCharacter(characterKey)) {
+      return this.defaultColor
+    }
 
     const character = this.getCharacter(characterKey)
-    return character.color ?? this.defaultColor
+    return character?.color ?? this.defaultColor
   }
 
   /**
@@ -106,8 +86,7 @@ export class CharacterManager {
    */
   isValidCharacter(characterKey: string | null): boolean {
     if (!characterKey) return false
-    // UI用のリストに含まれているかどうかで判定（defaultを除外したリスト）
-    return this.characterArray.some((char) => char.key === characterKey)
+    return this.characterMap.has(characterKey)
   }
 
   /**
@@ -138,8 +117,9 @@ export class CharacterManager {
    * キャラクターとアイコンから画像urlを返す
    */
   iconSrc(characterKey: string | null, iconKey: CharacterEmotionType): string[] {
-    const key = characterKey || 'default'
-    const char = this.characterMap.get(key)
+    if (!characterKey) return []
+
+    const char = this.characterMap.get(characterKey)
     if (!char) return []
 
     // 指定された表情がなければ default 表情、それもなければ空配列

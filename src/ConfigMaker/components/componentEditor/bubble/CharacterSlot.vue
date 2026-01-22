@@ -19,7 +19,7 @@
     >
       <template #item="{ element: charKey }">
         <span :class="['badge cursor-grab', badgeStyle]">
-          {{ characters[charKey]?.displayName || charKey }}
+          {{ characters[charKey]?.displayName || characters[charKey]?.name || charKey }}
         </span>
       </template>
       <template #footer>
@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+  import { CharacterType } from '@/types'
   // import { VueDraggable } from 'vue-draggable-plus'
   import VueDraggable from '@/DraggableWrapper.vue'
 
@@ -41,7 +42,7 @@
       title: string
       badgeStyle: string
       cardStyle?: string
-      characters: Record<string, { displayName?: string }>
+      characters: Record<string, CharacterType>
       items: string[]
       showClear?: boolean
     }>(),
