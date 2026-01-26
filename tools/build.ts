@@ -48,8 +48,8 @@ const packageRoot = process.env.PACKAGE_ROOT
  * エディターを更新したら必ずビルドする基盤部分
  */
 const coreBuildTargets: CoreBuildTarget[] = [
-  //  { project: 'OmikujiBot', accessLevel: 'basic' }, // MainGenerator + ConfigMaker
-  //  { project: 'OmikujiBotMain', accessLevel: 'basic' }, // MainGenerator のみ
+  { project: 'OmikujiBot', accessLevel: 'basic' }, // MainGenerator + ConfigMaker
+  { project: 'OmikujiBotMain', accessLevel: 'basic' }, // MainGenerator のみ
 ]
 
 /**
@@ -64,7 +64,6 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   */
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * full
@@ -93,12 +92,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
-  { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
-  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
-  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
-  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
-  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
+  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * syoken

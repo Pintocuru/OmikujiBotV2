@@ -49,13 +49,9 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
           { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
       pro: {
         filesToCopy: [],
-        skipWebpack: true,
-        outputJson: true,
       },
     },
   }

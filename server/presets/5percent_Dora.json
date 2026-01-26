@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "1754823565389-7x2yib",
+    "id": "5percent_Dora-ver2026.01.26-2.0.4",
     "name": "どこでもドラちゃんBot",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.11.20-v1.4.0",
+    "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.2",
-    "dataVersion": 2.02,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -49,7 +49,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -103,11 +105,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
+        "comment": [
+          "^ドラちゃん",
+          "^どらちゃん",
+          "^dorachan",
+          "^5percent_dora"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -146,7 +155,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -252,7 +263,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -290,7 +303,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -1766,14 +1781,19 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
-      "tags": ["ドラちゃん", "5percent_Dora"],
+      "tags": [
+        "ドラちゃん",
+        "5percent_Dora"
+      ],
       "accessLevel": "basic",
       "version": "0.0.0",
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
       "image": {
-        "default": ["5percent_Dora/default.webp"],
+        "default": [
+          "5percent_Dora/default.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -1804,10 +1824,16 @@
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "bubble": {
       "showCharacters": {
-        "center": ["5percent_Dora"],
+        "center": [
+          "5percent_Dora"
+        ],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1834,7 +1860,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": ["basicList"],
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "ひみつ道具履歴",
       "color": "cmyk",
       "limit": 5,
@@ -1861,7 +1889,11 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "none",

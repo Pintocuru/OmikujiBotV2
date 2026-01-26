@@ -3,7 +3,7 @@
   <div>
     <!-- DEV preview trigger -->
     <div
-      v-if="isDev"
+      v-if="isDev && showDevLabel"
       class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
       @mouseenter="devHoverActive = true"
       @mouseleave="devHoverActive = false"
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ComputedRef, ref } from 'vue'
+  import { computed, ComputedRef, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { BotMessageRankingSchema, BotMessageRankingType, isDev } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
@@ -27,6 +27,7 @@
   const { data, botMessages } = storeToRefs(appStore)
 
   const devHoverActive = ref(false)
+  const showDevLabel = ref(true)
 
   // 開発環境用のダミーメッセージ
   const devScoreMessages = computed<BotMessageRankingType[]>(() => {
@@ -57,5 +58,11 @@
       return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
     })
     return isDev ? [...base, ...devScoreMessages.value] : base
+  })
+
+  onMounted(() => {
+    setTimeout(() => {
+      showDevLabel.value = false
+    }, 5000)
   })
 </script>
