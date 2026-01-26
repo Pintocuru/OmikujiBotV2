@@ -1,5 +1,6 @@
 // src/MainGenerator/scripts/VariablePlaceholder/ExpressionEvaluator.ts
 import { KeyValueMap } from '@main/scripts/KeyValue/KeyValueMap'
+import { CondEvaluator } from './CondEvaluator'
 
 const MAX_VALUE = 999999999
 const MIN_VALUE = -999999999
@@ -25,6 +26,17 @@ export class ExpressionEvaluator extends KeyValueMap {
         throw new Error(`無効なrandパラメータ: ${expression}`)
       }
       return this.randomInt(min, max)
+    }
+
+    // cond(condition, trueValue, falseValue)関数
+    const condMatch = trimmed.match(/^cond\s*\(\s*(.+?)\s*,\s*(.+?)\s*,\s*(.+?)\s*\)$/i)
+    if (condMatch) {
+      const condition = condMatch[1].trim()
+      const trueValue = condMatch[2].trim()
+      const falseValue = condMatch[3].trim()
+
+      // CondEvaluatorに委譲
+      return CondEvaluator.evaluate(condition, trueValue, falseValue, (varName) => this.get(varName))
     }
 
     // 数値リテラル

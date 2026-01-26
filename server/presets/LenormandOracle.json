@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.3",
-    "dataVersion": 2.03,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -25,7 +25,7 @@
       "name": "ルノルマンカード",
       "description": "36枚のルノルマンカードを使った占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-12-28T11:30:49.960Z",
+      "updatedAt": "2026-01-26T01:32:04.272Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -43,6 +43,16 @@
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "content": "LenormandOracleFirst",
+                  "weight": 1
+                }
+              ]
+            },
             {
               "delaySeconds": 3.5,
               "actionType": "message",
@@ -122,11 +132,18 @@
         "access": [],
         "gift": [],
         "comment": [
-          "^ルノルマン",
-          "^るのるまん",
+          "^ルノ",
+          "^るの",
+          "^ルノマン",
+          "^るのまん",
+          "^lenor",
           "^Lenormand",
+          "^カード",
+          "^かーど",
           "^うらな",
-          "^占"
+          "^占",
+          "^オラクル",
+          "^oracle"
         ]
       },
       "limits": {
@@ -138,14 +155,56 @@
     }
   },
   "timers": {},
-  "actionSets": {},
+  "actionSets": {
+    "LenormandOracleFirst": {
+      "id": "1ff87a57-03ce-4590-ada0-7aa171c8165e",
+      "key": "LenormandOracleFirst",
+      "name": "ルノルマンカード:イントロ",
+      "createdAt": "2026-01-26T01:10:18.129Z",
+      "updatedAt": "2026-01-26T01:13:17.798Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracleBack"
+        },
+        {
+          "delaySeconds": 1,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_1"
+        },
+        {
+          "delaySeconds": 1.5,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_2"
+        },
+        {
+          "delaySeconds": 2,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_3"
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return",
+      "description": "稼働時の演出です"
+    }
+  },
   "placeholders": {
     "LenormandOracle": {
       "id": "LenormandOracle",
       "key": "LenormandOracle",
-      "name": "ルーン:占い結果",
+      "name": "ルノルマン:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2025-12-28T11:17:10.229Z",
+      "updatedAt": "2026-01-26T01:12:05.400Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -1089,9 +1148,9 @@
       },
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "fantasy",
-        "backFrom": "secondary",
-        "backTo": "primary",
+        "daisyUiTheme": "wireframe",
+        "backFrom": "success",
+        "backTo": "info",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
@@ -1111,8 +1170,8 @@
       "targetScriptKeys": [
         "basicList"
       ],
-      "title": "🔮ルノルマンカード 占い履歴",
-      "color": "fantasy",
+      "title": "🔮ルノルマンカード 占い履歴🔮",
+      "color": "dim",
       "limit": 5,
       "sortOrder": "new",
       "component": "rankStandard"

@@ -48,13 +48,9 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/exported/thumb/thumb_TossedKotaro.gif', to: 'thumb.gif' },
           { from: 'assets/exported/Characters/kotaro/', to: 'Characters/kotaro/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
       pro: {
         filesToCopy: [],
-        skipWebpack: true,
-        outputJson: true,
       },
     },
   }

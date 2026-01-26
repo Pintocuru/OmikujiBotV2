@@ -3,6 +3,7 @@ import { VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTy
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import {
   CALC_PATTERN,
+  COND_PATTERN,
   RAND_PATTERN,
   RESERVED_KEYS,
   VAR_DECLARATION_PATTERN,
@@ -12,14 +13,14 @@ import { RankingMessageSchema, RankingMessageType } from '@/types'
 
 /**
  * 変数プレースホルダー処理エンジン
- * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{calc varName op= expr}}を処理
+ * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{calc varName op= expr}}, {{cond(var, true, false)}}を処理
  */
 export class VariablePlaceholderProcessor {
   private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   /**
    * テキスト内のプレースホルダーを処理
-   * 処理順序: 改行除去 → var宣言 → calc → 変数参照 → 組み込み関数
+   * 処理順序: 改行除去 → var宣言 → calc → cond → 変数参照 → rand
    */
   process(text: string): VariablePlaceholderResult {
     // 改行を除去
@@ -31,10 +32,13 @@ export class VariablePlaceholderProcessor {
     // 2: calc関数を処理
     processed = this.processCalcFunction(processed)
 
-    // 3: 変数参照を処理
+    // 3: cond関数を処理（変数参照の前に実行）
+    processed = this.processCondFunction(processed)
+
+    // 4: 変数参照を処理
     processed = this.processVariableReferences(processed)
 
-    // 4: rand関数を処理
+    // 5: rand関数を処理
     processed = this.processRandFunction(processed)
 
     // すべての処理した変数を取得
@@ -77,6 +81,21 @@ export class VariablePlaceholderProcessor {
         return '' // calc宣言は削除
       } catch (error) {
         console.warn(`calc関数の評価に失敗: ${match}`, error)
+        return match
+      }
+    })
+  }
+
+  /**
+   * cond関数を処理 {{cond(condition, trueValue, falseValue)}}
+   */
+  private processCondFunction(text: string): string {
+    return text.replace(COND_PATTERN, (match, condition, trueValue, falseValue) => {
+      try {
+        const result = this.evaluator.evaluate(`cond(${condition}, ${trueValue}, ${falseValue})`)
+        return String(result)
+      } catch (error) {
+        console.warn(`cond関数の評価に失敗: ${match}`, error)
         return match
       }
     })

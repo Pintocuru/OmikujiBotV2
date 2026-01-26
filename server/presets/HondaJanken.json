@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "1754926464640-roopmp",
+    "id": "HondaJanken-ver2026.01.26-2.0.4",
     "name": "おみくじBOT じゃんけん OmikujiBot HondaJanken",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.11.20-v1.4.0",
+    "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.1",
-    "dataVersion": 2.011,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -1580,7 +1580,7 @@
       "name": "おみくじBOT",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2026-01-17T01:03:00.202Z",
+      "updatedAt": "2026-01-23T07:52:40.877Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1592,15 +1592,23 @@
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
-      "displayName": "おみくじBOT",
+      "displayName": "",
       "image": {
-        "default": [],
-        "happy": [],
+        "default": [
+          "HondaJanken/default.webp"
+        ],
+        "happy": [
+          "HondaJanken/cora.webp",
+          "HondaJanken/default.webp"
+        ],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": [],
+        "sad": [
+          "HondaJanken/coraWin.webp",
+          "HondaJanken/default.webp"
+        ],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1630,7 +1638,7 @@
       "name": "おみくじBOT2",
       "description": "シンプルなフキダシです",
       "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2026-01-17T01:03:37.661Z",
+      "updatedAt": "2026-01-23T07:52:58.145Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
@@ -1642,15 +1650,23 @@
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
-      "displayName": "おみくじBOT",
+      "displayName": "",
       "image": {
-        "default": [],
-        "happy": [],
+        "default": [
+          "HondaJanken/default.webp"
+        ],
+        "happy": [
+          "HondaJanken/cora.webp",
+          "HondaJanken/default.webp"
+        ],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": [],
+        "sad": [
+          "HondaJanken/coraWin.webp",
+          "HondaJanken/default.webp"
+        ],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1683,11 +1699,11 @@
     ],
     "bubble": {
       "showCharacters": {
-        "center": [
+        "center": [],
+        "slot1": [
           "omiken",
           "omiken_2"
         ],
-        "slot1": [],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -1740,7 +1756,7 @@
       "timers": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "none"
+      "characters": "basic"
     },
     "components": [
       "toast",

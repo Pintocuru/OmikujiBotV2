@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.01.22-2.0.4",
+    "id": "StrawberryChocolate-ver2026.01.26-2.0.4",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.22-2.0.4",
+    "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.0.4",
     "dataVersion": 2.04,

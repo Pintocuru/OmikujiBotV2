@@ -49,13 +49,9 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/exported/Characters/tsumugi/', to: 'Characters/tsumugi/' },
           { from: 'assets/exported/Characters/himari/', to: 'Characters/himari/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
       pro: {
         filesToCopy: [],
-        skipWebpack: true,
-        outputJson: true,
       },
     },
   }

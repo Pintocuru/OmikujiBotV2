@@ -1,11 +1,10 @@
 // tools\packages\OmikujiBot.ts
+// MainGenerator + ConfigMaker の両方をビルドするコアプロジェクト
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import { createCommonBuildConfig } from '../buildOptions/baseSettings'
 import { APP_VERSION } from '@/version'
+import path from 'path'
 
-/**
- * プロジェクト設定
- */
 function project(packageRoot: string): ProjectConfig {
   return {
     ...createCommonBuildConfig(packageRoot),
@@ -18,15 +17,18 @@ function project(packageRoot: string): ProjectConfig {
       basic: 'CC-BY 4.0',
     },
 
+    // MainGenerator + ConfigMaker の両方をビルド
+    entryPoints: {
+      MainGenerator: path.resolve(packageRoot, 'src/MainGenerator/main.ts'),
+      ConfigMaker: path.resolve(packageRoot, 'src/ConfigMaker/main.ts'),
+    },
+
     template: null,
     json: undefined,
 
-    // アクセスレベル別設定
     accessLevels: {
       basic: {
         filesToCopy: [],
-        skipWebpack: false,
-        outputJson: false,
       },
     },
   }

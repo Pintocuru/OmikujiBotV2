@@ -5,10 +5,15 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.11.20-v1.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "ルーン", "rune", "Fortune"],
+    "tags": [
+      "おみくじBOT",
+      "ルーン",
+      "rune",
+      "Fortune"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682"
   },
@@ -20,65 +25,127 @@
       "name": "ルーン占い",
       "description": "25個のルーンストーンを使ったルーン占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2025-11-28T23:44:14.071Z",
+      "updatedAt": "2026-01-26T01:36:24.682Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1757800562314",
           "key": "1757800562314",
-          "name": "",
+          "name": "ルーン占い",
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "RunicOracleFirst",
-              "wordParty": "!RunicOracle_direction",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "RunicOracleFirst"
+              ]
             },
             {
               "delaySeconds": 3.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "omiken",
               "iconKey": "default",
-              "messageContent": "<<user>>さんは<<RunicOracle>>",
               "sound": "collect",
-              "actionType": "message"
+              "message": {
+                "bubble": "<<user>>さんは<<RunicOracle>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 1
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "3aba7f88-071d-46d4-8ae9-76a11d5a0b62",
+          "key": "d1e75dfe-5a15-4e23-8384-f178506df7a2",
+          "name": "回数超過(6回目以降)",
+          "createdAt": "2026-01-26T00:58:05.743Z",
+          "updatedAt": "2026-01-26T00:58:05.743Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "sound": "warn",
+              "message": {
+                "bubble": "<<user>>さんは5回を超えているよ。また明日占ってみてね。",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 6
+            },
+            "comment": []
+          }
         }
       ],
       "ruleType": "comments",
-      "threshold": {
-        "conditions": ["comment"],
-        "syoken": [],
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": ["^ルーン", "^るーん", "^rune", "^runic", "^うらな", "^占"]
+        "comment": [
+          "^ルーン",
+          "^るーん",
+          "^rune",
+          "^runic",
+          "^stone",
+          "^うらな",
+          "^占",
+          "^石",
+          "^オラクル",
+          "^oracle"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -90,46 +157,41 @@
       "name": "ルーン占い:イントロ",
       "description": "稼働時の演出です",
       "createdAt": "2025-10-11T11:16:21.472Z",
-      "updatedAt": "2025-11-28T23:44:14.071Z",
+      "updatedAt": "2026-01-26T00:59:53.283Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "RunicOracle_back",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "RunicOracleBack"
         },
         {
           "delaySeconds": 1,
-          "wordParty": "RunicOracle_01",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "RunicOracle_1"
         },
         {
-          "delaySeconds": 1.5,
-          "wordParty": "RunicOracle_02",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "delaySeconds": 1.1,
+          "actionType": "wordParty",
+          "wordParty": "RunicOracle_2"
         },
         {
-          "delaySeconds": 2,
-          "wordParty": "RunicOracle_03",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "delaySeconds": 1.2,
+          "actionType": "wordParty",
+          "wordParty": "RunicOracle_3"
         }
-      ]
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -958,95 +1020,127 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+      "image": {
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       },
       "color": {
+        "isTheme": false,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
         "nameColor": "#AB47BC",
         "textColor": "#F3E5F5",
         "backgroundColor": "#6A1B9A",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "kaiseiDecol",
       "bubbleMotionEnter": "flipX",
-      "bubbleMotionLeave": "flipX",
-      "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "aqua"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "basic"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🍉スイカランキング🍉",
+      "color": "lofi",
+      "limit": 5,
+      "sortOrder": "new",
+      "component": "rankStandard"
+    },
+    "counter": {
+      "ruleKey": null,
+      "component": "counterUser",
+      "target": "draw",
+      "label": "Counter",
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "basic",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking",
+      "counter"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "basic"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "aqua"
+  }
 }

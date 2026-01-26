@@ -4,19 +4,16 @@ import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
+import e from 'express'
 
-export function createCommonBuildConfig(packageRoot: string, isConfigGenerator: boolean = true) {
-  // ビルド設定
-  const entryPoints: Record<string, string> = {
-    MainGenerator: path.resolve(packageRoot, 'src/MainGenerator/main.ts'),
-  }
-  if (isConfigGenerator) {
-    entryPoints.ConfigMaker = path.resolve(packageRoot, 'src/ConfigMaker/main.ts')
-  }
-
+/**
+ * 共通のビルド設定を生成
+ * @param packageRoot パッケージのルートディレクトリ
+ */
+export function createCommonBuildConfig(packageRoot: string) {
   return {
     packageRoot,
-    entryPoints,
+    entryPoints: null,
 
     // ライセンスキー
     licenseKey: {

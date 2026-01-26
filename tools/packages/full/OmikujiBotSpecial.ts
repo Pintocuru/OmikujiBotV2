@@ -43,13 +43,9 @@ function project(packageRoot: string): ProjectConfig {
           { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
           { from: 'assets/exported/Characters/cafelatte/', to: 'Characters/cafelatte/' },
         ],
-        skipWebpack: false,
-        outputJson: false,
       },
       pro: {
         filesToCopy: [],
-        skipWebpack: true,
-        outputJson: true,
       },
     },
   }

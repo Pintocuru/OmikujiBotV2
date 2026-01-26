@@ -7,10 +7,11 @@ import dotenv from 'dotenv'
 import { alias } from '../vite.config'
 import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
-import { BuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
+import { CoreBuildTarget, PackageBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
 
 // 各設定ファイルをインポート
 import OmikujiBotProject from './packages/OmikujiBot'
+import OmikujiBotMainProject from './packages/OmikujiBotMain'
 
 // sesupin
 import StrawberryChocolateProject from './packages/full/StrawberryChocolate'
@@ -43,15 +44,18 @@ if (!process.env.PACKAGE_ROOT) throw new Error('.envファイルが読めない�
 const packageRoot = process.env.PACKAGE_ROOT
 
 /**
+ * コアビルド設定リスト
+ * エディターを更新したら必ずビルドする基盤部分
+ */
+const coreBuildTargets: CoreBuildTarget[] = [
+  //  { project: 'OmikujiBot', accessLevel: 'basic' }, // MainGenerator + ConfigMaker
+  //  { project: 'OmikujiBotMain', accessLevel: 'basic' }, // MainGenerator のみ
+]
+
+/**
  * ビルド設定リスト - プロジェクトタイプを明示的に指定
  */
-const buildTargets: BuildTarget[] = [
-  /**
-   * core : エディターを更新したら必ずビルドする
-  { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
-   */
-  { project: 'OmikujiBot', type: 'CORE', accessLevel: 'basic' },
-
+const packageBuildTargets: PackageBuildTarget[] = [
   /**
    * Special (せすぴん用)
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -73,24 +77,28 @@ const buildTargets: BuildTarget[] = [
   { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'TsumugiHimari', type: 'JSON', accessLevel: 'basic' },
    */
-
   /**
    * solo
-  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BomberSpin', type: 'JSON', accessLevel: 'basic',},
-  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic',},
-
-  { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'BomberSpin', type: 'JSON', accessLevel: 'basic', },
+  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic', },
+  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
-  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'CardStation', type: 'JSON', accessLevel: 'basic',},
-  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
+  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
-  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'HondaJanken', type: 'JSON', accessLevel: 'basic' },
+  { project: 'CardStation', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'CardStation', type: 'JSON', accessLevel: 'basic' },
+  { project: 'TarotCard', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'TarotCard', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * syoken
@@ -122,6 +130,7 @@ const buildTargets: BuildTarget[] = [
     builder.registerProject([
       // Core
       OmikujiBotProject(packageRoot),
+      OmikujiBotMainProject(packageRoot),
 
       // sesupin
       StrawberryChocolateProject(packageRoot),
@@ -147,7 +156,10 @@ const buildTargets: BuildTarget[] = [
     ])
 
     // 改良されたビルドを実行
-    await builder.buildTargets(buildTargets)
+    await builder.build({
+      coreTargets: coreBuildTargets,
+      packageTargets: packageBuildTargets,
+    })
 
     console.log('[Build] All builds completed successfully!')
   } catch (error) {

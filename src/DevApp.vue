@@ -4,15 +4,15 @@
   <MainGenerator v-else />
 
   <!-- 表示トグルボタン -->
-  <label class="swap swap-rotate fixed top-12 right-6 z-9999">
-    <input type="checkbox" v-model="showMain" />
-
-    <!-- ON: MainGenerator 表示中 (Settingsアイコン) -->
-    <Settings class="swap-on w-8 h-8 text-primary" />
-
-    <!-- OFF: ConfigMaker 表示中 (Cpuアイコン) -->
-    <Cpu class="swap-off w-8 h-8 text-primary" />
-  </label>
+  <div class="fixed top-0 right-0 w-24 h-24 z-9999 group">
+    <label
+      class="swap swap-rotate absolute top-12 right-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200"
+    >
+      <input type="checkbox" v-model="showMain" />
+      <Settings class="swap-on w-8 h-8 text-primary" />
+      <Cpu class="swap-off w-8 h-8 text-primary" />
+    </label>
+  </div>
 </template>
 
 <script setup lang="ts">

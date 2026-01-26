@@ -30,3 +30,6 @@ export const RAND_PATTERN = /\{\{\s*[Rr][Aa][Nn][Dd]\s*\(\s*(\d+)\s*,\s*(\d+)\s*
 
 // {{calc score += 10}}
 export const CALC_PATTERN = /\{\{\s*[Cc][Aa][Ll][Cc]\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*([\+\-\*\/])=\s*(.*?)\s*\}\}/g
+
+// {{cond(condition, trueValue, falseValue)}} - 比較演算子対応、ネスト禁止
+export const COND_PATTERN = /\{\{\s*[Cc][Oo][Nn][Dd]\s*\(\s*(.+?)\s*,\s*(.+?)\s*,\s*(.+?)\s*\)\s*\}\}/g

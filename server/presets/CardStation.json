@@ -1,14 +1,17 @@
 {
   "meta": {
-    "id": "1754884254510-shoywq",
+    "id": "CardStation-ver2026.01.26-2.0.4",
     "name": "おみくじBOT カード駅 OmikujiBot CardStation",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.11.20-v1.4.0",
+    "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.1",
-    "dataVersion": 1.41,
+    "generatorVersion": "2.0.4",
+    "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "じゃんけん"],
+    "tags": [
+      "おみくじBOT",
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7412886"
   },
@@ -20,14 +23,14 @@
       "name": "カード駅",
       "description": "ユーザー社長!カード駅ではカードが貰えますぞ!",
       "createdAt": "2025-08-31T19:33:46.945Z",
-      "updatedAt": "2025-11-20T02:52:05.584Z",
+      "updatedAt": "2026-01-23T12:19:51.292Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
-      "tags": [],
+      "tags": [
+        "カード駅"
+      ],
       "accessLevel": "basic",
-      "scriptId": null,
-      "scriptParams": null,
       "omikuji": [
         {
           "id": "1756666545244",
@@ -38,35 +41,41 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationNormal",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationNormal"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card01",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNormal>>!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
               "sound": "decision",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeNormal>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
+                "isToast": false
+              }
             }
           ],
-          "weight": 700
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 700,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "2f431cf1-bcdb-46d8-9ca1-6a8a3b866dc6",
@@ -77,35 +86,41 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationNice",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationNice"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card02",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeNice>>!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
               "sound": "twinkle",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeNice>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
+                "isToast": false
+              }
             }
           ],
-          "weight": 150
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 150,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "918d4067-023a-4dfe-8664-8c7825339a6b",
@@ -116,35 +131,41 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationNice",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationNice"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card02",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!<<CardStation>>駅のカードですぞ!【<<CardTypeSpecial>>!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
               "sound": "baseball",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeSpecial>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
+                "isToast": false
+              }
             }
           ],
-          "weight": 50
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 50,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "cf3f6f59-e9a3-438e-9db5-de5c9d70312a",
@@ -155,35 +176,41 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationDevil",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationDevil"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card03",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
               "sound": "fail",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var symbol=ボンビラス}}\n{{var text=<<CardTypeDevil>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
+                "isToast": false
+              }
             }
           ],
-          "weight": 77
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 77,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "7b7aca02-a5aa-4d43-9811-d59a0a74a97d",
@@ -194,35 +221,41 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationDevil",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationDevil"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card03",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビラス駅のカードですぞ!【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
               "sound": "negative",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var symbol=ボンビラス}}\n{{var text=<<CardStation>>に行け!カード}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
+                "isToast": false
+              }
             }
           ],
-          "weight": 20
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 20,
+          "isPriority": false,
+          "criteria": null
         },
         {
           "id": "96d7b85c-f59e-4194-99b4-4d94987cc243",
@@ -233,55 +266,63 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionSetKey": "StationCardFirst",
-              "wordParty": "",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "actionSet"
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
-              "wordParty": "CardStationDevil",
-              "characterKey": "card01",
-              "iconKey": "default",
-              "messageContent": "",
-              "actionType": "wordParty"
+              "actionType": "wordParty",
+              "wordParty": "CardStationDevil"
             },
             {
               "delaySeconds": 2.5,
-              "wordParty": "",
+              "actionType": "message",
               "characterKey": "card03",
               "iconKey": "default",
-              "messageContent": "<<user>><<CardRole>>!ボンビュラス駅のカードですぞ!【プロ野球チップスカード!】いらんわ!こんなカード",
               "sound": "explosion",
-              "actionType": "message"
+              "message": {
+                "bubble": "{{var text=<<'プロ野球','Jリーグ','仮面ライダー','ユーチューバー','よしもと芸人','ラグビー日本代表'>>チップスカード}}\n{{var symbol=ボンビュラス}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】いらんわ!こんなカード",
+                "isToast": false
+              }
             }
           ],
-          "weight": 3
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
-      "threshold": {
-        "conditions": ["comment"],
-        "syoken": [],
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
-        "comment": ["^カード", "^かーど", "^card", "^station"]
+        "comment": [
+          "^カード",
+          "^かーど",
+          "^card",
+          "^station"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
-        "drawLimit": 0,
-        "drawLimitExceeded": "showMessage",
-        "isRepeatAllowed": true
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
       }
     }
   },
@@ -298,32 +339,30 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
-          "wordParty": "CardStationIntro1",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "CardStationIntro1"
         },
         {
           "delaySeconds": 0.5,
-          "wordParty": "CardStationIntro2",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "CardStationIntro2"
         },
         {
           "delaySeconds": 1,
-          "wordParty": "CardStationIntro3",
-          "characterKey": "card01",
-          "iconKey": "default",
-          "messageContent": "",
-          "actionType": "wordParty"
+          "actionType": "wordParty",
+          "wordParty": "CardStationIntro3"
         }
-      ]
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -990,7 +1029,10 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
+      "values": [
+        "【<<CardTypeNice>>!】",
+        "<<null>>"
+      ]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -1303,7 +1345,7 @@
       "key": "CardRole",
       "name": "カード駅:役職選択",
       "createdAt": "2025-08-31T16:43:33.489Z",
-      "updatedAt": "2025-11-20T02:52:05.583Z",
+      "updatedAt": "2026-01-22T15:02:43.146Z",
       "order": 9,
       "isEnabled": true,
       "editorColor": "#00BCD4",
@@ -1312,13 +1354,13 @@
       "values": [
         {
           "weight": 12,
-          "content": "社長"
+          "content": "{{var name = <<user>>社長}}{{name}}"
         },
         {
           "weight": 3,
-          "content": "<<CardRoleUncommon>>"
+          "content": "{{var name = <<user>><<CardRoleUncommon>>}}{{name}}"
         },
-        "<<CardRoleRare>>"
+        "{{var name = <<user>><<CardRoleRare>>}}{{name}}"
       ]
     },
     "CardRoleUncommon": {
@@ -1479,7 +1521,12 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
+      "values": [
+        "<<CardStationDomestic>>",
+        "<<CardStationEast>>",
+        "<<CardStationWest>>",
+        "<<CardStationAbroad>>"
+      ]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -3239,41 +3286,50 @@
       "name": "通常カード",
       "description": "カード駅(通常)",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-11T01:38:08.233Z",
+      "updatedAt": "2026-01-23T00:56:34.406Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+      "displayName": "",
+      "image": {
+        "default": [
+          "CardStation/CardStation_1.webp"
+        ],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "night",
+        "backFrom": "warning",
+        "backTo": "warning",
         "nameColor": "#f57f17",
         "textColor": "#212121",
         "backgroundColor": "#fdd835",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "card02": {
@@ -3282,41 +3338,50 @@
       "name": "ナイス",
       "description": "ナイスカード駅・スペシャルカード駅",
       "createdAt": "2025-09-11T01:36:47.685Z",
-      "updatedAt": "2025-09-11T01:41:27.740Z",
+      "updatedAt": "2026-01-23T00:56:38.588Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+      "displayName": "",
+      "image": {
+        "default": [
+          "CardStation/CardStation_2.webp"
+        ],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "corporate",
+        "backFrom": "success",
+        "backTo": "success",
         "nameColor": "#fdd835",
         "textColor": "#fff59d",
         "backgroundColor": "#388E3C",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "card03": {
@@ -3325,99 +3390,135 @@
       "name": "ボンビラス",
       "description": "ボンビラス駅・ボンビュラス駅",
       "createdAt": "2025-09-11T01:38:19.528Z",
-      "updatedAt": "2025-09-11T01:39:55.682Z",
+      "updatedAt": "2026-01-23T00:56:41.248Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
-      "displayName": "おみくじBOT",
-      "frameId": "OmikujiBot",
-      "displayOption": {
-        "isIconDisplay": false,
-        "isOneCommePost": true,
-        "isVoice": true
+      "displayName": "",
+      "image": {
+        "default": [
+          "CardStation/CardStation_3.webp"
+        ],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       },
       "color": {
+        "isTheme": true,
+        "daisyUiTheme": "synthwave",
+        "backFrom": "neutral",
+        "backTo": "neutral",
         "nameColor": "#7986CB",
         "textColor": "#E8EAF6",
         "backgroundColor": "#6a1b9a",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
-      "image": {
-        "default": "",
-        "happy": "",
-        "excited": "",
-        "laughing": "",
-        "blushing": "",
-        "surprised": "",
-        "sad": "",
-        "angry": "",
-        "thinking": "",
-        "wink": "",
-        "singing": "",
-        "sleepy": ""
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
-  "scriptSettings": {
-    "BomberSpin": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "GouseiSuika": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    },
-    "DwarfBomb": {
-      "isParty": true,
-      "rankingLimit": 10,
-      "enableCount": 5
-    }
-  },
-  "displaySettings": {
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "base": {
-      "displaySize": "md",
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [],
+        "slot1": [
+          "card01",
+          "card02",
+          "card03"
+        ],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
       "fontFamily": "kosugiMaru",
-      "bubbleMotionEnter": "scale",
-      "bubbleMotionLeave": "scale",
+      "bubbleMotionEnter": "none",
       "bubbleTextAnimate": true,
-      "bubbleTextSpeed": 50,
-      "showToasts": true,
+      "bubbleTextSpeed": 30
+    },
+    "toast": {
       "showToastsOnRight": true,
       "showToastsCharacter": false,
-      "showCharacterThumbnail": false,
-      "showCharacterFrame": true,
-      "showCharacterPersistent": false,
-      "bundleCharacters": false,
-      "daisyUiTheme": "emerald"
+      "showThumbnail": []
     },
-    "developer": {
-      "startup": {
-        "component": "omikujiBot",
-        "scriptKey": null
-      },
-      "visibility": {
-        "comments": "basic",
-        "timers": "experimental",
-        "actionSets": "basic",
-        "placeholders": "basic",
-        "characters": "basic",
-        "characterVisible": "experimental",
-        "wordPartyLoading": "experimental",
-        "licenseVisible": "experimental",
-        "gameScriptSettings": "experimental",
-        "gameScripts": [],
-        "wordPartySettings": "experimental",
-        "jsonMergeSettings": "experimental"
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🚄カード履歴🎴",
+      "color": "garden",
+      "limit": 5,
+      "sortOrder": "new",
+      "component": "rankStandard"
+    },
+    "counter": {
+      "ruleKey": null,
+      "component": "counterUser",
+      "target": "draw",
+      "label": "Counter",
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
       }
     }
   },
-  "wordPartySettings": []
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "basic"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "emerald"
+  }
 }
