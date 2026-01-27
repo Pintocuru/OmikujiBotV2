@@ -31,6 +31,8 @@ import percent_DoraProject from './packages/solo/5percent_Dora'
 import HondaJankenProject from './packages/solo/HondaJanken'
 import CardStationProject from './packages/solo/CardStation'
 import TarotCardProject from './packages/solo/TarotCard'
+import LenormandOracleProject from './packages/solo/LenormandOracle'
+import RunicOracleProject from './packages/solo/RunicOracle'
 import BigBangFortuneProject from './packages/solo/BigBangFortune'
 
 // syoken
@@ -48,8 +50,8 @@ const packageRoot = process.env.PACKAGE_ROOT
  * エディターを更新したら必ずビルドする基盤部分
  */
 const coreBuildTargets: CoreBuildTarget[] = [
-  { project: 'OmikujiBot', accessLevel: 'basic' }, // MainGenerator + ConfigMaker
-  { project: 'OmikujiBotMain', accessLevel: 'basic' }, // MainGenerator のみ
+  { project: 'OmikujiBot' }, // MainGenerator + ConfigMaker
+  { project: 'OmikujiBotMain' }, // MainGenerator のみ
 ]
 
 /**
@@ -92,8 +94,10 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
    */
-  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
-  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
+  { project: 'LenormandOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
+  { project: 'LenormandOracle', type: 'JSON', accessLevel: 'adv' },
+  { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
+  { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
 
   /**
    * syoken
@@ -145,6 +149,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
       HondaJankenProject(packageRoot),
       CardStationProject(packageRoot),
       TarotCardProject(packageRoot),
+      LenormandOracleProject(packageRoot),
+      RunicOracleProject(packageRoot),
       BigBangFortuneProject(packageRoot),
 
       // syoken

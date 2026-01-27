@@ -1,21 +1,22 @@
 {
   "meta": {
-    "id": "1754884254510-shoyll",
-    "name": "おみくじ BOT ルノルマンカード OmikujiBot LenormandOracle",
+    "id": "LenormandOracle-ver2026.01.28-2.0.4",
+    "name": "おみくじ BOT ルノルマンカード OmikujiBot LenormandOracle-ADV",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.11.20-v1.4.0",
+    "version": "ver2026.01.28-2.0.4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.0.4",
     "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
+      "占い",
+      "Fortune",
       "ルノルマンカード",
-      "Lenormand",
-      "Fortune"
+      "Lenormand"
     ],
-    "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/7432682"
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/7915987"
   },
   "jsonMerge": [],
   "comments": {

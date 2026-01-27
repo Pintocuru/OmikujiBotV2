@@ -14,10 +14,6 @@ function project(packageRoot: string): ProjectConfig {
     version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: ['おみくじBOT', '占い', 'Fortune', 'ルノルマンカード', 'Lenormand'],
 
-    license: {
-      basic: 'CC-BY 4.0',
-    },
-
     template: {
       name: 'おみくじ BOT ルノルマンカード OmikujiBot LenormandOracle',
       boothURL: 'https://pintocuru.booth.pm/items/7915987',
@@ -31,8 +27,11 @@ function project(packageRoot: string): ProjectConfig {
     },
 
     // アクセスレベル別設定
+    license: {
+      adv: '利用規約に従う',
+    },
     accessLevels: {
-      basic: {
+      adv: {
         filesToCopy: [{ from: 'assets/exported/thumb/thumb_LenormandOracle.gif', to: 'thumb.gif' }],
       },
     },

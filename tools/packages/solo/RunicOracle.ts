@@ -14,13 +14,9 @@ function project(packageRoot: string): ProjectConfig {
     version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: ['おみくじBOT', '占い', 'Fortune', 'ルーン', 'rune', 'runic'],
 
-    license: {
-      basic: 'CC-BY 4.0',
-    },
-
     template: {
-      name: 'おみくじ BOT タロットカード OmikujiBot RunicOracle',
-      boothURL: 'https://pintocuru.booth.pm/items/7432682',
+      name: 'おみくじ BOT ルーン占い OmikujiBot RunicOracle',
+      boothURL: 'https://pintocuru.booth.pm/items/7919298',
       readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/RunicOracle/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
@@ -31,8 +27,11 @@ function project(packageRoot: string): ProjectConfig {
     },
 
     // アクセスレベル別設定
+    license: {
+      adv: '利用規約に従う',
+    },
     accessLevels: {
-      basic: {
+      adv: {
         filesToCopy: [{ from: 'assets/exported/thumb/thumb_RunicOracle.gif', to: 'thumb.gif' }],
       },
     },
