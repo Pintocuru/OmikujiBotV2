@@ -13,22 +13,25 @@ import {
  * すべてのRecordCategoryTypeに対応（BaseRecordSchema準拠）
  */
 export const updateStrategies: Record<RecordCategoryType, KeyUpdateStrategy<RecordCategoryType>> = {
-  characters: {
-    updateKey: updateCharacterKey,
-    updateReferences: updateCharacterReferences,
-  },
-  placeholders: {
-    updateKey: updatePlaceholderKey,
-    updateReferences: updatePlaceholderReferences,
-  },
-  actionSets: {
-    updateKey: (oldKey, newKey) => updateRecordKey('actionSets', oldKey, newKey),
-    updateReferences: updateActionSetReferences,
-  },
   comments: {
     updateKey: (oldKey, newKey) => updateRecordKey('comments', oldKey, newKey),
   },
   timers: {
     updateKey: (oldKey, newKey) => updateRecordKey('timers', oldKey, newKey),
+  },
+  metas: {
+    updateKey: (oldKey, newKey) => updateRecordKey('metas', oldKey, newKey),
+  },
+  actionSets: {
+    updateKey: (oldKey, newKey) => updateRecordKey('actionSets', oldKey, newKey),
+    updateReferences: updateActionSetReferences,
+  },
+  placeholders: {
+    updateKey: updatePlaceholderKey,
+    updateReferences: updatePlaceholderReferences,
+  },
+  characters: {
+    updateKey: updateCharacterKey,
+    updateReferences: updateCharacterReferences,
   },
 }

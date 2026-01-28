@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\MetaState\MetaTriggerEngine.ts
+// src\MainGenerator\scripts\MetaState\MetaTriggerEngine.ts
 
 import { MetaStateService, MetaUpdateEvent } from './MetaStateService'
 

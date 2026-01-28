@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentTriggerSchema } from '../OmikujiProcess/CommentTriggerSchema'
 import { BaseRecordSchema } from '@shared/types/'
+import { MetaTriggerSchema } from '../OmikujiProcess/MetaTriggerSchema'
 
 /**
  * おみくじ制限設定のスキーマ
@@ -21,7 +22,7 @@ export type OmikujiLimitsType = z.infer<typeof OmikujiLimitsSchema>
 /**
  * Rules のカテゴリ定数セット
  */
-export const rulesCategoryLabel = ['comments', 'timers'] as const
+export const rulesCategoryLabel = ['comments', 'timers', 'metas'] as const
 export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
 
 /**
@@ -61,9 +62,19 @@ export const TimerRuleSchema = z.object({
 export type TimerRuleType = z.infer<typeof TimerRuleSchema>
 
 /**
+ * metas スキーマ
+ */
+export const MetaRuleSchema = z.object({
+  ...BaseRuleSchema.shape,
+  ruleType: z.literal('metas').default('metas').catch('metas'),
+  trigger: MetaTriggerSchema.default(MetaTriggerSchema.parse({})).catch(MetaTriggerSchema.parse({})),
+})
+export type MetaRuleType = z.infer<typeof MetaRuleSchema>
+
+/**
  * 型
  */
-export type RuleType = CommentRuleType | TimerRuleType
+export type RuleType = CommentRuleType | TimerRuleType | MetaRuleType
 
 /**
 

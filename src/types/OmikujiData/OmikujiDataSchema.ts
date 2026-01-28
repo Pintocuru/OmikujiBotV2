@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'
-import { CommentRuleSchema, TimerRuleSchema } from './RulesSchema'
+import { CommentRuleSchema, MetaRuleSchema, TimerRuleSchema } from './RulesSchema'
 import { recordNormalization } from './OmikujiDataNormalize'
 import { PackageJsonSchema } from '@shared/types'
 import { JsonMergeSchema } from './JsonMergeType'
@@ -19,6 +19,7 @@ export const OmikujiDataSchema = z.object({
   jsonMerge: JsonMergeSchema.catch([]),
   comments: recordNormalization(CommentRuleSchema),
   timers: recordNormalization(TimerRuleSchema),
+  metas: recordNormalization(MetaRuleSchema),
   actionSets: recordNormalization(ActionSetSchema),
   placeholders: recordNormalization(PlaceholderSchema),
   characters: recordNormalization(CharacterSchema),

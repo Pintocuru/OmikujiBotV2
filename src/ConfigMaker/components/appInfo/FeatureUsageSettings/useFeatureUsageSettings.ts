@@ -28,6 +28,7 @@ export function useFeatureUsageSettings() {
   const categoryToUsageKey: Record<RecordCategoryType, keyof FeatureUsageUsageType> = {
     comments: 'comments',
     timers: 'timers',
+    metas: 'metas',
     actionSets: 'actionSets',
     placeholders: 'placeholders',
     characters: 'characters',

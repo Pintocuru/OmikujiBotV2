@@ -1,5 +1,6 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
 import { PostActionType, PlaceholderType, selectValue } from '@/types/'
+import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
 
 /**
  * プレースホルダー処理のメインクラス
@@ -9,7 +10,7 @@ import { PostActionType, PlaceholderType, selectValue } from '@/types/'
  * - <<placeholderId>> : 定義済みプレースホルダーからランダム選択
  * - <<'value1','value2','value3'>> : インラインでランダム選択
  */
-export class PlaceholderProcessor {
+export class ContentPlaceholder {
   private readonly placeholderMap: Map<string, PlaceholderType> = new Map()
   private contextValues: Map<string, string | number> = new Map()
   private static readonly PLACEHOLDER_PATTERN = /<<([\s\S]+?)>>/g
@@ -78,7 +79,7 @@ export class PlaceholderProcessor {
       const startIndex = result.indexOf('<<')
 
       // 2. それに対応する "一番外側の >>" を探す
-      const endIndex = this.findMatchingClosingBracket(result, startIndex)
+      const endIndex = findMatchingClosingBracket(result, startIndex)
 
       if (endIndex === -1) break
 
@@ -98,28 +99,10 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * ネストを考慮して、対応する閉じ括弧 >> の位置を返す
-   */
-  private findMatchingClosingBracket(text: string, startPos: number): number {
-    let depth = 0
-    for (let i = startPos; i < text.length; i++) {
-      if (text.substring(i, i + 2) === '<<') {
-        depth++
-        i++ // 1文字飛ばす
-      } else if (text.substring(i, i + 2) === '>>') {
-        depth--
-        if (depth === 0) return i
-        i++ // 1文字飛ばす
-      }
-    }
-    return -1
-  }
-
-  /**
    * プレースホルダーを解決
    */
   private resolvePlaceholder(originalMatch: string, placeholderId: string, depth: number = 0): string {
-    if (depth > PlaceholderProcessor.MAX_RECURSION_DEPTH) {
+    if (depth > ContentPlaceholder.MAX_RECURSION_DEPTH) {
       console.warn(`プレースホルダー解決の最大深度に達しました: ${placeholderId}`)
       return originalMatch
     }
@@ -128,7 +111,7 @@ export class PlaceholderProcessor {
     if (placeholderId === 'null') return ''
 
     // インラインランダム選択構文: <<'value1','value2','value3'>>
-    if (this.isInlineRandomSyntax(placeholderId)) {
+    if (isInlineRandomSyntax(placeholderId)) {
       return this.resolveInlineRandom(placeholderId, depth)
     }
 
@@ -153,20 +136,12 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * インラインランダム選択構文かどうかを判定
-   * カンマを含み、クォートで囲まれた値がある場合
-   */
-  private isInlineRandomSyntax(input: string): boolean {
-    return input.includes(',') && input.includes("'")
-  }
-
-  /**
    * インラインランダム選択を解決
    * <<'value1','value2','value3'>> から1つをランダムに選択
    */
   private resolveInlineRandom(input: string, depth: number): string {
     // シンプルなパース: 'で囲まれた部分を抽出
-    const values = this.parseInlineValues(input)
+    const values = parseInlineValues(input)
 
     if (values.length === 0) {
       console.warn(`インラインランダム選択の値が空です: ${input}`)
@@ -174,7 +149,7 @@ export class PlaceholderProcessor {
     }
 
     // ランダムに1つ選択
-    const selected = values[Math.floor(Math.random() * values.length)]
+    const selected = selectRandomValue(values)
 
     // 選択された値内のプレースホルダーを再帰的に解決
     // これにより <<'<<greeting>>','bar'>> のような入れ子も対応
@@ -182,49 +157,10 @@ export class PlaceholderProcessor {
   }
 
   /**
-   * インライン値をパースして配列として取得
-   * 'value1','value2','value3' -> ['value1', 'value2', 'value3']
-   */
-  private parseInlineValues(input: string): string[] {
-    const values: string[] = []
-    let current = ''
-    let inQuote = false
-    let quoteChar = ''
-
-    for (let i = 0; i < input.length; i++) {
-      const char = input[i]
-
-      // クォートの判定
-      if ((char === "'" || char === '"') && (i === 0 || input[i - 1] !== '\\')) {
-        if (!inQuote) {
-          inQuote = true
-          quoteChar = char
-          // 開始クォートは current に追加しない
-        } else if (char === quoteChar) {
-          inQuote = false
-          // 終了クォートも current に追加しない
-        } else {
-          current += char
-        }
-      } else if (char === ',' && !inQuote) {
-        // クォート外のカンマで区切る
-        values.push(current.trim())
-        current = ''
-      } else {
-        current += char
-      }
-    }
-    if (current.trim() || values.length > 0) {
-      values.push(current.trim())
-    }
-    return values
-  }
-
-  /**
    * テキスト内のプレースホルダーを置換
    */
   private replaceInText(text: string, depth: number = 0): string {
-    return text.replace(PlaceholderProcessor.PLACEHOLDER_PATTERN, (match, placeholderId) => {
+    return text.replace(ContentPlaceholder.PLACEHOLDER_PATTERN, (match, placeholderId) => {
       return this.resolvePlaceholder(match, placeholderId.trim(), depth)
     })
   }

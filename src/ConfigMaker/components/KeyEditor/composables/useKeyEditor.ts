@@ -1,10 +1,9 @@
 // src\ConfigMaker\components\parts\KeyEditor\useKeyEditor.ts
 import { ref, computed, readonly } from 'vue'
 import { RecordCategoryType } from '@/types/'
-import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
-import { CharacterUsage, UpdateResult, CATEGORY_TITLES, ITEM_TYPE_LABELS } from './keyEditorTypes'
+import { CharacterUsage, UpdateResult, CATEGORY_TITLES } from './keyEditorTypes'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export function useKeyEditor() {
@@ -126,7 +125,7 @@ export function useKeyEditor() {
    * アイテムタイプラベルを取得
    */
   function getItemTypeLabel(category: RecordCategoryType): string {
-    return ITEM_TYPE_LABELS[category]
+    return CATEGORY_TITLES[category]
   }
 
   // 公開API

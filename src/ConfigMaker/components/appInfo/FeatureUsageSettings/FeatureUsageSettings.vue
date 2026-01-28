@@ -39,6 +39,7 @@
       usage: {
         comments: 'basic' as const,
         timers: 'basic' as const,
+        metas: 'basic' as const,
         actionSets: 'basic' as const,
         placeholders: 'basic' as const,
         characters: 'basic' as const,
@@ -63,6 +64,7 @@
       usage: {
         comments: 'basic' as const,
         timers: 'none' as const,
+        metas: 'none' as const,
         actionSets: 'basic' as const,
         placeholders: 'basic' as const,
         characters: 'none' as const,

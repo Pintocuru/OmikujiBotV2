@@ -45,7 +45,7 @@
   const ruleCommentProcessor = new RuleCommentProcessor()
 
   // comment/timerルール稼働
-  const { initializeApp, startTimers, stopTimers } = useRuleProcessor()
+  const { initializeApp, startTimers, stopTimers, startMetaRules } = useRuleProcessor()
 
   // 初期化処理
   onMounted(async () => {
@@ -68,8 +68,12 @@
       }
 
       // タイマー開始
-      if (!isTimer.value) return
-      startTimers((messages) => appStore.scheduleBotMessages(messages))
+      if (isTimer.value) {
+        startTimers((messages) => appStore.scheduleBotMessages(messages))
+      }
+
+      // メタルール開始
+      startMetaRules((messages) => appStore.scheduleBotMessages(messages))
     }
   })
 

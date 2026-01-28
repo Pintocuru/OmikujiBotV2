@@ -1,7 +1,6 @@
 // src/ConfigMaker/components/postAction/preview/TestPlaceholderProcessor.ts
-import { PlaceholderProcessor } from '@main/scripts/ContentPlaceholder/processor'
+import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
-import { ExpressionEvaluator } from '@main/scripts/VariablePlaceholder/ExpressionEvaluator'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
 
@@ -10,12 +9,12 @@ import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
  */
 export const processTestPlaceholder = (message: string, placeholders: Record<string, PlaceholderType>): string => {
   // 静的プレースホルダー
-  const staticProcessor = new PlaceholderProcessor(placeholders)
+  const contentPlaceholder = new ContentPlaceholder(placeholders)
   const context = new PlaceholderContext()
   context.updateValues(defaultPlaceholdersShortLabels)
-  staticProcessor.updateResolvedValues(context.getAll())
+  contentPlaceholder.updateResolvedValues(context.getAll())
 
-  const withStatic = staticProcessor.processText(message)
+  const withStatic = contentPlaceholder.processText(message)
 
   // 動的プレースホルダー
   const dynamicProcessor = new VariablePlaceholderProcessor()

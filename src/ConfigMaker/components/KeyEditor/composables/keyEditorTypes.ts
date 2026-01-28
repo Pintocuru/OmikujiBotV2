@@ -19,15 +19,8 @@ export interface KeyUpdateStrategy<T extends RecordCategoryType> {
 export const CATEGORY_TITLES: Record<RecordCategoryType, string> = {
   comments: 'コメントルール',
   timers: 'タイマールール',
+  metas: 'メタルール',
   actionSets: 'アクションセット',
-  characters: 'キャラクター',
   placeholders: 'プレースホルダー',
-} as const
-
-export const ITEM_TYPE_LABELS: Record<RecordCategoryType, string> = {
   characters: 'キャラクター',
-  placeholders: 'プレースホルダー',
-  actionSets: 'アクションセット',
-  comments: 'コメントルール',
-  timers: 'タイマールール',
 } as const

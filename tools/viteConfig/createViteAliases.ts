@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\tools\viteConfig\createViteAliases.ts
+// tools\viteConfig\createViteAliases.ts
 import path from 'path'
 import tsconfig from '../../tsconfig.json'
 

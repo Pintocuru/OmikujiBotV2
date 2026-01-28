@@ -5,13 +5,15 @@ import { CharacterSchema, CharacterType } from './CharacterSchema'
 import {
   CommentRuleSchema,
   CommentRuleType,
+  MetaRuleSchema,
+  MetaRuleType,
   rulesCategoryLabel,
   RulesCategoryType,
   RuleType,
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Layers } from 'lucide-vue-next'
+import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Activity, Layers } from 'lucide-vue-next'
 
 /**
  * RecordCategory
@@ -22,6 +24,7 @@ export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
   comments: Record<string, CommentRuleType>
   timers: Record<string, TimerRuleType>
+  metas: Record<string, MetaRuleType>
   actionSets: Record<string, ActionSetType>
   placeholders: Record<string, PlaceholderType>
   characters: Record<string, CharacterType>
@@ -29,6 +32,7 @@ export type RecordCategoryDataMap = {
 export type RecordCategoryItemTypeMap = {
   comments: CommentRuleType
   timers: TimerRuleType
+  metas: MetaRuleType
   actionSets: ActionSetType
   placeholders: PlaceholderType
   characters: CharacterType
@@ -38,6 +42,7 @@ export type RecordCategoryItemTypeMap = {
 export const RecordCategorySchemaMap = {
   comments: CommentRuleSchema,
   timers: TimerRuleSchema,
+  metas: MetaRuleSchema,
   actionSets: ActionSetSchema,
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,
@@ -75,6 +80,11 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     label: 'タイマールール', // 時間経過で自動的におみくじを発動
     description: '指定した時間経過で、自動的におみくじを発動します',
     icon: Timer,
+  },
+  metas: {
+    label: 'メタルール',
+    description: '配信の視聴数・高評価の変動でおみくじを発動します',
+    icon: Activity,
   },
   actionSets: {
     label: 'アクションセット',

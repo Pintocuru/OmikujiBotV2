@@ -21,6 +21,9 @@
   <!-- タイマールール -->
   <TimerRuleEditor v-else-if="selectedCategory === 'timers'" />
 
+  <!-- メタルール -->
+  <MetaRuleEditor v-else-if="selectedCategory === 'metas'" />
+
   <!-- アクションセット -->
   <ActionSetsEditor v-else-if="selectedCategory === 'actionSets'" />
 
@@ -43,6 +46,7 @@
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import CommentRuleEditor from '@config/components/rulesComments/CommentRuleEditor.vue'
   import TimerRuleEditor from '@config/components/rulesTimers/TimerRuleEditor.vue'
+  import MetaRuleEditor from '@config/components/rulesMetas/MetaRuleEditor.vue'
   import ActionSetsEditor from '@config/components/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@config/components/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@config/components/characters/CharacterEditor.vue'

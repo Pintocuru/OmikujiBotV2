@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\OmikujiResult\BotMessageGenerator.ts
+// src\MainGenerator\scripts\OmikujiResult\BotMessageGenerator.ts
 import {
   CreateBotMessageParams,
   ProcessedPostAction,

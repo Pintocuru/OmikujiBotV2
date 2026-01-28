@@ -2,7 +2,7 @@
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType, ActionSetType, PostActionType, PostActionMessageType } from '@/types/OmikujiData/'
 import { BotMessageGenerator } from './BotMessageGenerator'
-import { PlaceholderProcessor } from '@main/scripts/ContentPlaceholder/processor'
+import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
@@ -16,7 +16,7 @@ import { ProcessedPostAction } from '@/types/MainGenerator/OmikujiResultTypes'
  * おみくじ結果の処理とBotMessage生成を担当
  */
 export class OmikujiResultProcessor {
-  private readonly placeProcess: PlaceholderProcessor
+  private readonly placeProcess: ContentPlaceholder
   private readonly placeContext: PlaceholderContext = new PlaceholderContext()
   private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
   private readonly postMessage: PostMessage
@@ -27,7 +27,7 @@ export class OmikujiResultProcessor {
     omikujiData: OmikujiDataType,
     private readonly scriptManager: GameScriptManager
   ) {
-    this.placeProcess = new PlaceholderProcessor(omikujiData.placeholders)
+    this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
     this.actionSets = omikujiData.actionSets
     this.botMessageGenerator = new BotMessageGenerator(omikujiData)
     this.postMessage = new PostMessage(omikujiData.characters)
