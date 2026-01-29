@@ -23,16 +23,16 @@
     </SectionCard>
 
     <template v-if="selectedItem.isEnabled !== false">
-      <!-- タイマー設定セクション -->
+      <!-- 条件設定セクション -->
       <SectionCard
-        icon="Clock"
-        :isOpen="activeSection === 'timerInterval'"
-        @toggle="toggleSection('timerInterval')"
-        title="タイマー設定"
-        :subTitle="`(${selectedItem.intervalSeconds}秒毎${selectedItem.isBaseZero ? '、基準調整あり' : ''})`"
-        description="発動する間隔やタイミングの設定"
+        icon="Filter"
+        :isOpen="activeSection === 'trigger'"
+        @toggle="toggleSection('trigger')"
+        title="発動条件設定"
+        :subTitle="`発動条件: ${thresholdSubTitle}`"
+        description="「おみくじを引く」発動条件の設定"
       >
-        <TimerIntervalEditor v-model="selectedItem" />
+        <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- おみくじ設定セクション -->
@@ -60,7 +60,7 @@
   import { computed, ref } from 'vue'
   import { MetaRuleType } from '@/types/OmikujiData/RulesSchema'
   import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
-  import TimerIntervalEditor from './TimerIntervalEditor.vue'
+  import CommentTriggerEditor from './MetaTriggerEditor.vue'
   import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
@@ -72,7 +72,7 @@
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
-  type SectionType = 'baseSettings' | 'timerInterval' | 'omikujiSet' | null
+  type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
   const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
 
   // セクションの切り替え
@@ -94,5 +94,21 @@
     set: (value: MetaRuleType) => {
       updateItem('metas', value.key, value)
     },
+  })
+
+  // 発動条件セクションのサブタイトル
+  const thresholdSubTitle = computed(() => {
+    if (!selectedItem.value) return ''
+
+    const conditions = selectedItem.value.trigger.conditions
+    const icons = []
+
+    if (conditions.includes('upVote')) icons.push('[👱 ユーザー名]')
+    if (conditions.includes('viewer')) icons.push('[🚶 ユーザーの役職]')
+    if (conditions.includes('follower')) icons.push('[💬 チャットワード]')
+    if (conditions.includes('startTime')) icons.push('[🎁 ギフト]')
+    if (!icons.length) return '[すべてのコメント]'
+
+    return icons.join('')
   })
 </script>

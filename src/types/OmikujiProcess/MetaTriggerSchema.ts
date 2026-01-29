@@ -60,12 +60,6 @@ export const MetaSimpleComparisonConditionMap = {
 
 export type MetaSimpleComparisonCondition = keyof typeof MetaSimpleComparisonConditionMap
 
-export const MetaSimpleConditionSchema = z.object({
-  comparison: z.enum(Object.keys(MetaSimpleComparisonConditionMap) as MetaSimpleComparisonCondition[]),
-  value: z.number().min(0).optional(),
-})
-export type MetaSimpleConditionType = z.infer<typeof MetaSimpleConditionSchema>
-
 /**
  *
  */
@@ -73,7 +67,7 @@ export const metaTriggerCondition = [
   'upVote', // 高評価
   'viewer', // 視聴者数
   'follower', // 登録者数
-  'startTime', // 配信開始時間
+  'elapsedMinutes', // 配信開始時間
 ] as const
 
 export type MetaTriggerCondition = (typeof metaTriggerCondition)[number]
@@ -84,11 +78,11 @@ export const MetaTriggerConditionSchema = z.enum(metaTriggerCondition)
  *
  */
 export const MetaTriggerSchema = z.object({
-  conditions: z.array(MetaTriggerConditionSchema).catch([]),
+  condition: MetaTriggerConditionSchema.default('upVote').catch('upVote'),
   upVote: MetaConditionSchema.optional(),
   viewer: MetaConditionSchema.optional(),
-  follower: MetaSimpleConditionSchema.optional(),
-  startTime: MetaSimpleConditionSchema.optional(),
+  follower: z.literal(true).optional(),
+  elapsedMinutes: z.number().min(0).optional(),
 })
 
 export type MetaTriggerType = z.infer<typeof MetaTriggerSchema>
