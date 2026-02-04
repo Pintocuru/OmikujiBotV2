@@ -15,7 +15,7 @@
     <!-- カウンター -->
     <CounterPreview v-if="conditions.includes('counter') && isComment" />
 
-    <!-- カウンター -->
+    <!-- meta -->
     <MetaDebugPanel v-if="isDev" />
   </div>
 
