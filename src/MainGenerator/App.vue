@@ -16,7 +16,7 @@
     <CounterPreview v-if="conditions.includes('counter') && isComment" />
 
     <!-- カウンター -->
-<MetaDebugPanel v-if="isDev" />
+    <MetaDebugPanel v-if="isDev" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -24,8 +24,8 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, watch } from 'vue'
-  import MetaDebugPanel from '@/MainGenerator/ui/MetaDebugPanel.vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
+  import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
   import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
@@ -37,7 +37,7 @@
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
   import { generatorApi } from '@config/dev/services/generatorApi'
   import { useVisibilityAccess } from './scripts/FeatureAccess/useAccessCheckerMain'
-import { isDev } from '@/types'
+  import { isDev } from '@/types'
 
   // Pinia Store
   const appStore = useAppStore()

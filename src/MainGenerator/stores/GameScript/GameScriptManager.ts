@@ -8,8 +8,7 @@ export class GameScriptManager {
   private static instance: GameScriptManager | null = null
 
   static getInstance() {
-    if (!this.instance) 
-      this.instance = new GameScriptManager()
+    if (!this.instance) this.instance = new GameScriptManager()
     return this.instance
   }
 

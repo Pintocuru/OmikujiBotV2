@@ -10,17 +10,13 @@ export class MetaStateService {
   private static instance: MetaStateService | null = null
 
   static getInstance() {
-    if (!this.instance) {
-      this.instance = new MetaStateService()
-    }
+    if (!this.instance) this.instance = new MetaStateService()
     return this.instance
   }
 
   private constructor() {
     this.initialize()
   }
-
-
 
   private initialize() {
     // GetMetas を購読してメタデータを読む
