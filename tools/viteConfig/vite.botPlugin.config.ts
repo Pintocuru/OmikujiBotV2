@@ -41,8 +41,6 @@ export default defineConfig(() => {
           'fs',
           'fs/promises',
           'path',
-          'crypto',
-          'util',
           'events',
           'stream',
           'buffer',
