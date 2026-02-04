@@ -61,18 +61,20 @@ export const MetaSimpleComparisonConditionMap = {
 export type MetaSimpleComparisonCondition = keyof typeof MetaSimpleComparisonConditionMap
 
 /**
- *
+ * 条件タイプのラベル
  */
-export const metaTriggerCondition = [
-  'upVote', // 高評価
-  'viewer', // 視聴者数
-  'follower', // 登録者数
-  'elapsedMinutes', // 配信開始時間
-] as const
+export const metaTriggerCondition = {
+  upVote: '高評価',
+  viewer: '視聴者数',
+  follower: '登録者数',
+  elapsedMinutes: '配信経過時間',
+}
 
-export type MetaTriggerCondition = (typeof metaTriggerCondition)[number]
+export type MetaTriggerCondition = keyof typeof metaTriggerCondition
 
-export const MetaTriggerConditionSchema = z.enum(metaTriggerCondition)
+export const MetaTriggerConditionSchema = z.enum(
+  Object.keys(metaTriggerCondition) as [MetaTriggerCondition, ...MetaTriggerCondition[]]
+)
 
 /**
  *

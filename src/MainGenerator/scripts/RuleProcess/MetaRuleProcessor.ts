@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/RuleProcess/MetaRuleProcessor.ts
-import { MetaConditionType, MetaSimpleConditionType, MetaTriggerType } from '@/types/OmikujiProcess/MetaTriggerSchema'
+import { MetaConditionType, MetaTriggerType } from '@/types/OmikujiProcess/MetaTriggerSchema'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { MetaStateService, MetaUpdateEvent } from '../MetaState/MetaStateService'
@@ -42,66 +42,46 @@ export class MetaRuleProcessor {
   }
 
   /**
-   * トリガー条件の評価（AND条件）
+   * トリガー条件の評価（単一条件）
    */
   private evaluateTrigger(trigger: MetaTriggerType, event: MetaUpdateEvent): boolean {
-    const { conditions } = trigger
+    const { condition } = trigger
+    if (!condition) return true
 
-    // 空配列の場合は無条件でtrue
-    if (conditions.length === 0) {
-      return true
-    }
+    switch (condition) {
+      case 'upVote':
+        return this.evaluateMetaCondition(
+          trigger.upVote!,
+          event.current.upVote,
+          event.previous?.upVote ?? 0,
+          event.peak.upVote
+        )
 
-    // すべての条件を満たす必要がある（AND条件）
-    for (const conditionType of conditions) {
-      const condition = trigger[conditionType]
-      if (!condition) continue
+      case 'viewer':
+        return this.evaluateMetaCondition(
+          trigger.viewer!,
+          event.current.viewer,
+          event.previous?.viewer ?? 0,
+          event.peak.viewer
+        )
 
-      let result = false
+      case 'elapsedMinutes': {
+        const thresholdMinutes = trigger.elapsedMinutes ?? 0
+        const startTime = event.current.startTime
 
-      switch (conditionType) {
-        case 'upVote':
-          result = this.evaluateMetaCondition(
-            condition as MetaConditionType,
-            event.current.upVote,
-            event.previous?.upVote ?? 0,
-            event.peak.upVote
-          )
-          break
+        // startTime が null → 経過時間を計算できない → false
+        if (startTime == null) return false
 
-        case 'viewer':
-          result = this.evaluateMetaCondition(
-            condition as MetaConditionType,
-            event.current.viewer,
-            event.previous?.viewer ?? 0,
-            event.peak.viewer
-          )
-          break
-
-        case 'follower':
-          result = this.evaluateSimpleCondition(
-            condition as MetaSimpleConditionType,
-            event.current.follower,
-            event.previous?.follower ?? 0
-          )
-          break
-
-        case 'startTime':
-          result = this.evaluateSimpleCondition(
-            condition as MetaSimpleConditionType,
-            event.current.startTime ?? 0,
-            event.previous?.startTime ?? 0
-          )
-          break
+        const now = Date.now()
+        const elapsedMs = now - startTime
+        const thresholdMs = thresholdMinutes * 60_000
+        return elapsedMs >= thresholdMs
       }
 
-      // 1つでも条件を満たさなければfalse
-      if (!result) {
-        return false
-      }
+      case 'follower':
+      default:
+        return true
     }
-
-    return true
   }
 
   /**
@@ -140,41 +120,6 @@ export class MetaRuleProcessor {
       case 'loop':
         if (value === undefined || value === 0) return false
         // 前回との差分が指定値の倍数かどうか
-        const diff = current - previous
-        return diff > 0 && diff % value === 0
-
-      default:
-        return false
-    }
-  }
-
-  /**
-   * Peak比較なしの条件評価
-   */
-  private evaluateSimpleCondition(condition: MetaSimpleConditionType, current: number, previous: number): boolean {
-    const { comparison, value } = condition
-
-    switch (comparison) {
-      case 'changed':
-        return current !== previous
-
-      case 'increased':
-        return current > previous
-
-      case 'decreased':
-        return current < previous
-
-      case 'lowerBound':
-        return value !== undefined && current >= value
-
-      case 'upperBound':
-        return value !== undefined && current <= value
-
-      case 'equal':
-        return value !== undefined && current === value
-
-      case 'loop':
-        if (value === undefined || value === 0) return false
         const diff = current - previous
         return diff > 0 && diff % value === 0
 

@@ -38,23 +38,33 @@
   import SettingItem from '../parts/SettingItem.vue'
   import {
     MetaConditionType,
-    MetaSimpleConditionType,
     metaComparisonConditionMap,
     MetaSimpleComparisonConditionMap,
   } from '@/types/OmikujiProcess/MetaTriggerSchema'
 
   const props = defineProps<{
-    modelValue?: MetaConditionType | MetaSimpleConditionType
+    modelValue?: MetaConditionType
     label: string
     description: string
-    hasPeak: boolean // Peak比較が可能かどうか
+    hasPeak: boolean
   }>()
 
   const emit = defineEmits<{
-    (e: 'update:modelValue', value: MetaConditionType | MetaSimpleConditionType): void
+    (e: 'update:modelValue', value: MetaConditionType): void
   }>()
 
-  // 比較オプション
+  // ★ 初期値生成
+  const defaultCondition = (): MetaConditionType => ({
+    comparison: 'changed',
+    value: 0,
+  })
+
+  // ★ 初回だけ初期値を emit
+  if (!props.modelValue) {
+    emit('update:modelValue', defaultCondition())
+  }
+
+  // 以下は既存ロジック
   const comparisonOptions = computed(() => {
     const map = props.hasPeak ? metaComparisonConditionMap : MetaSimpleComparisonConditionMap
     return Object.entries(map).map(([value, info]) => ({
@@ -63,13 +73,11 @@
     }))
   })
 
-  // 数値入力が必要な比較方法
   const needsValue = computed(() => {
     const comparison = props.modelValue?.comparison
     return ['lowerBound', 'upperBound', 'equal', 'loop'].includes(comparison || '')
   })
 
-  // プレースホルダー
   const valuePlaceholder = computed(() => {
     const comparison = props.modelValue?.comparison
     switch (comparison) {
@@ -86,25 +94,26 @@
     }
   })
 
-  // 説明テキスト
   const comparisonDescription = computed(() => {
     const comparison = props.modelValue?.comparison
     if (!comparison) return ''
-
     const map = props.hasPeak ? metaComparisonConditionMap : MetaSimpleComparisonConditionMap
     return map[comparison as keyof typeof map]?.description || ''
   })
 
-  // フィールド更新
   const updateField = (field: 'comparison' | 'value', value: string | number) => {
-    const updated = { ...props.modelValue } as MetaConditionType | MetaSimpleConditionType
+    const updated = { ...(props.modelValue ?? defaultCondition()) }
 
-    // フィールド更新
-    ;(updated as any)[field] = value
+    if (field === 'comparison') {
+      updated.comparison = value as MetaConditionType['comparison']
 
-    // 不要なら削除
-    if (field === 'comparison' && !['lowerBound', 'upperBound', 'equal', 'loop'].includes(value as string)) {
-      delete (updated as MetaConditionType).value
+      // comparison に応じて value を削除
+      if (!['lowerBound', 'upperBound', 'equal', 'loop'].includes(updated.comparison)) {
+        delete updated.value
+      }
+    } else {
+      // field === 'value'
+      updated.value = value as number
     }
 
     emit('update:modelValue', updated)
