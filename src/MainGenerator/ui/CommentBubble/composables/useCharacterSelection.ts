@@ -1,7 +1,7 @@
 // src/MainGenerator/composables/useCharacterSelection.ts
 import { computed, Ref } from 'vue'
 import { ShowCharacters, CharacterType, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
-import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
 /**
  * キャラクター選択ロジックを集約

@@ -28,8 +28,8 @@
   import CommentBubblePersistent from './CommentBubblePersistent.vue'
   import { useCharacterSelection } from './composables/useCharacterSelection'
   import { useBotDisplay } from './composables/useBotDisplay'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
   const { botMessages } = storeToRefs(appStore)

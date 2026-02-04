@@ -40,7 +40,7 @@
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useAppStore } from '@main/stores/useAppStore'
   import { BotMessageBubbleType, CharacterColorScheme } from '@/types'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   const props = withDefaults(
     defineProps<{

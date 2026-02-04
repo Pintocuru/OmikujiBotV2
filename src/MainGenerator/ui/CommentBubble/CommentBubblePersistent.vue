@@ -23,8 +23,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { useCharacterEmotionState } from './composables/useCharacterEmotionState'
   import CommentDisplay from './CommentDisplay.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'

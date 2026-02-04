@@ -4,7 +4,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import tsconfig from '../../tsconfig.json'
 import { baseViteConfig, rootAlias } from '../../../../shared/utils/ViteConfig/viteConfigBase'
-import { createAliases } from '../../../../shared/utils/webpackBuild/utils/createAliases'
+import { createAliases } from '../../../../shared/utils/webpackBuild/utils/CreateAliases'
 import { APP_VERSION } from '../../src/version'
 
 // projectRoot の設定
