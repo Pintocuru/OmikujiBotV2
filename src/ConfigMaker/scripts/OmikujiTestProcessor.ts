@@ -15,7 +15,7 @@ export class OmikujiTestProcessor {
   private readonly resultProcessor: OmikujiResultProcessor
 
   constructor(omikujiData: OmikujiDataType, scriptManager: GameScriptManager) {
-    this.resultProcessor = new OmikujiResultProcessor(omikujiData, scriptManager)
+    this.resultProcessor = new OmikujiResultProcessor(omikujiData, scriptManager.playScript)
   }
 
   /**

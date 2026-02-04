@@ -7,14 +7,25 @@ export class MetaStateService {
   private previous: NormalizedMeta | null = null
   private peak = { upVote: 0, viewer: 0 }
   private subscribers: Array<(meta: MetaUpdateEvent) => void> = []
+  private static instance: MetaStateService | null = null
 
-  constructor() {
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new MetaStateService()
+    }
+    return this.instance
+  }
+
+  private constructor() {
     this.initialize()
   }
 
+
+
   private initialize() {
-    createGetMetas().fetchMeta((raw) => {
-      const normalized = this.normalize(raw)
+    // GetMetas を購読してメタデータを読む
+    createGetMetas().fetchMeta((rawServiceMeta) => {
+      const normalized = this.normalize(rawServiceMeta)
 
       this.previous = this.current
       this.current = normalized

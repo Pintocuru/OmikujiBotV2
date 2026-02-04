@@ -80,7 +80,7 @@ export function useTestPost() {
     const omikujiStore = useOmikujiStore()
 
     const rule = selectedRule.value
-    const scriptManager = new GameScriptManager()
+    const scriptManager = GameScriptManager.getInstance()
     const processor = new OmikujiTestProcessor(omikujiStore.data, scriptManager)
 
     const mockComment = OmikenCommentSchema.parse({

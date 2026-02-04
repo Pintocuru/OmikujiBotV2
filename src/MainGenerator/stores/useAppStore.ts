@@ -7,6 +7,7 @@ import { CooldownManager } from '@main/stores/CooldownManager/CooldownManager'
 import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { normalizeData } from '@/common/migrations'
+import { MetaStateService } from '../scripts/MetaState/MetaStateService'
 
 // グローバルデータの初期化
 const { omikujiData: rawOmikujiData } = window
@@ -26,7 +27,8 @@ export const useAppStore = defineStore('app', () => {
   // 管理オブジェクト
   const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
   const userVisitManager = new UserVisitManager() // ユーザー訪問管理
-  const scriptManager = computed(() => new GameScriptManager()) // ゲームスクリプト管理
+const scriptManager = GameScriptManager.getInstance() // ゲームスクリプト管理
+const metaState = MetaStateService.getInstance() // メタデータ取得
 
   return {
     // 状態
@@ -36,5 +38,6 @@ export const useAppStore = defineStore('app', () => {
     cooldownManager,
     userVisitManager,
     scriptManager,
+    metaState,
   }
 })

@@ -2,21 +2,20 @@
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { MetaRuleProcessor } from './MetaRuleProcessor'
-import { MetaStateService } from '../MetaState/MetaStateService'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-let timerProcessorSingleton: RuleTimerProcessor | null = null
-let metaRuleProcessorSingleton: MetaRuleProcessor | null = null
+let timerProcessor: RuleTimerProcessor | null = null
+let metaRuleProcessor: MetaRuleProcessor | null = null
 
 export function useRuleProcessor() {
-  if (!timerProcessorSingleton) {
-    timerProcessorSingleton = new RuleTimerProcessor()
-  }
+  if (!timerProcessor) 
+    timerProcessor = new RuleTimerProcessor()
+  
 
-  if (!metaRuleProcessorSingleton) {
-    metaRuleProcessorSingleton = new MetaRuleProcessor()
-  }
+  if (!metaRuleProcessor) 
+    metaRuleProcessor = new MetaRuleProcessor()
+  
 
   const initializeApp = async (onCommentsReceived: (comments: OmikenCommentType[]) => void): Promise<boolean> => {
     try {
@@ -31,18 +30,18 @@ export function useRuleProcessor() {
    * Timer Rules
    */
   const startTimers = (callback: (messages: BotMessageType[]) => void) => {
-    timerProcessorSingleton!.startTimers(callback)
+    timerProcessor!.startTimers(callback)
   }
 
   const stopTimers = () => {
-    timerProcessorSingleton!.stopTimers()
+    timerProcessor!.stopTimers()
   }
 
   /**
    * Meta Rules
    */
   const startMetaRules = (callback: (messages: BotMessageType[]) => void) => {
-    metaRuleProcessorSingleton!.startMetaRules(callback)
+    metaRuleProcessor!.startMetaRules(callback)
   }
 
   return {

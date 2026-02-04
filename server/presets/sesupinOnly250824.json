@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.1.0-alpha1",
+    "dataVersion": 2.09001,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -828,7 +828,7 @@
       "key": "35c580b9-e9f0-4982-9d65-787a53af65de",
       "name": "test",
       "createdAt": "2026-02-04T00:53:53.100Z",
-      "updatedAt": "2026-02-04T01:57:47.642Z",
+      "updatedAt": "2026-02-04T05:36:57.186Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -852,7 +852,7 @@
               "iconKey": "default",
               "sound": "",
               "message": {
-                "bubble": "<<user>>さんの運勢は【大吉】",
+                "bubble": "運勢は【大吉】",
                 "isToast": false
               }
             }
@@ -872,7 +872,7 @@
       "trigger": {
         "condition": "upVote",
         "upVote": {
-          "comparison": "changed"
+          "comparison": "greaterThanPeak"
         },
         "viewer": {
           "comparison": "greaterThanPeak"

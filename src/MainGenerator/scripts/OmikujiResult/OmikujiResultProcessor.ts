@@ -25,7 +25,7 @@ export class OmikujiResultProcessor {
 
   constructor(
     omikujiData: OmikujiDataType,
-    private readonly scriptManager: GameScriptManager
+    private readonly playScript: GameScriptManager['playScript']
   ) {
     this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
     this.actionSets = omikujiData.actionSets
@@ -64,7 +64,7 @@ export class OmikujiResultProcessor {
    * gameScripts処理
    */
   private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
-    const scriptResult = this.scriptManager.playScript(actionItem.gameScripts, omiken)
+    const scriptResult = this.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
     const { actions, rankingMessages: messages } = scriptResult
 

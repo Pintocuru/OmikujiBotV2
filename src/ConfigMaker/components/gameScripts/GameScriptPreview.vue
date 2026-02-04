@@ -40,7 +40,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
-  const scriptManager = new GameScriptManager()
+  const scriptManager = GameScriptManager.getInstance()
 
   const characters = computed(() => data.value.characters)
   const bubbleSettings = computed(() => data.value.components.bubble)

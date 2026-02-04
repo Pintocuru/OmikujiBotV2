@@ -5,8 +5,15 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
 
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}
+  private static instance: GameScriptManager | null = null
 
-  constructor() {
+  static getInstance() {
+    if (!this.instance) 
+      this.instance = new GameScriptManager()
+    return this.instance
+  }
+
+  private constructor() {
     this.initializeScripts()
   }
 
