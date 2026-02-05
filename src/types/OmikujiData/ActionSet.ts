@@ -48,7 +48,9 @@ export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 export const PostActionWordPartySchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('wordParty').default('wordParty'),
+  wordPartyId: z.string().optional(),
   wordParty: z.string().default('').catch(''),
+  repeat: z.union([z.number().int().min(1), z.enum(['viewer', 'upVote'])]).optional(),
 })
 export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
 

@@ -45,7 +45,6 @@
   import { PlaceholderSchema } from '@/types/'
   import { defaultPlaceholders } from '@/types/OmikujiProcess/DefaultPlaceholders'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import { Plus, AlertCircle } from 'lucide-vue-next'
@@ -57,22 +56,26 @@
 
   // Store
   const { getCategoryMap } = useGetRecordData()
-  const { isPlaceholder } = useVisibilityAccess()
 
   // プレースホルダーのパターン
   const PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
+  // プレースホルダーIDとして許可する形式（例: upVote, viewer, user_name）
+  const PLACEHOLDER_ID_PATTERN = /^[a-zA-Z0-9_]+$/
 
-  // テキスト内のプレースホルダーを全て抽出
   const allPlaceholdersInText = computed(() => {
     const matches = props.text.matchAll(PLACEHOLDER_PATTERN)
     const placeholderSet = new Set<string>()
 
     for (const match of matches) {
       if (match[1]) {
-        const id = match[1].trim()
+        const raw = match[1].trim()
+
+        // 簡易プレースホルダー <<'A','B'>> はここで弾く
+        if (!PLACEHOLDER_ID_PATTERN.test(raw)) continue
+
         // デフォルトプレースホルダーは除外
-        if (!defaultPlaceholders.includes(id as any)) {
-          placeholderSet.add(id)
+        if (!defaultPlaceholders.includes(raw as any)) {
+          placeholderSet.add(raw)
         }
       }
     }

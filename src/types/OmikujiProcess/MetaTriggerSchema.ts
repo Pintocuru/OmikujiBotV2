@@ -64,10 +64,10 @@ export type MetaSimpleComparisonCondition = keyof typeof MetaSimpleComparisonCon
  * 条件タイプのラベル
  */
 export const metaTriggerCondition = {
-  upVote: '高評価',
-  viewer: '視聴者数',
-  follower: '登録者数',
-  elapsedMinutes: '配信経過時間',
+  upVote: '👍 高評価',
+  viewer: '👀 視聴者数',
+  follower: '⭐ 登録者数',
+  elapsedMinutes: '⏱ 配信経過時間',
 }
 
 export type MetaTriggerCondition = keyof typeof metaTriggerCondition

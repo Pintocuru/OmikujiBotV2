@@ -949,6 +949,66 @@
       "isBaseZero": false
     }
   },
+  "metas": {
+    "0cf758a2-0143-458f-8080-8bf45b65249a": {
+      "id": "1294df69-4454-4878-8535-dabdb9baf495",
+      "key": "0cf758a2-0143-458f-8080-8bf45b65249a",
+      "name": "高評価へのお礼",
+      "createdAt": "2026-02-05T01:34:04.746Z",
+      "updatedAt": "2026-02-05T02:04:33.005Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1578ab2f-5b8f-4ca1-8533-7a9aff477371",
+          "key": "1d22b839-1139-41cf-8f79-de9fb36e78f2",
+          "name": "",
+          "createdAt": "2026-02-05T01:23:18.358Z",
+          "updatedAt": "2026-02-05T01:23:18.358Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "blushing",
+              "sound": "",
+              "message": {
+                "bubble": "高評価ありがとう♡<<\n'お姉さん、嬉しいわ。',\n'ふふっ、ありがとね。',\n'<<upVote>>個にもなったわ。',\n'ほら、<<upVote>> 個まで増えてるわ。',\n'配信も一段と盛り上がるわね。'\n>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "metas",
+      "trigger": {
+        "condition": "upVote",
+        "upVote": {
+          "comparison": "greaterThanPeak"
+        },
+        "viewer": {
+          "comparison": "changed",
+          "value": 0
+        }
+      },
+      "description": "ピーク時よりも増加したとき、お礼します"
+    }
+  },
   "actionSets": {
     "FirstSagiChocolateThinking": {
       "id": "1767539439046-od3bas",
@@ -1700,6 +1760,7 @@
     "usage": {
       "comments": "basic",
       "timers": "basic",
+      "metas": "basic",
       "actionSets": "basic",
       "placeholders": "basic",
       "characters": "basic"

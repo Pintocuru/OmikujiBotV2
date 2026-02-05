@@ -4,9 +4,9 @@
   <MainGenerator v-else />
 
   <!-- 表示トグルボタン -->
-  <div class="fixed top-0 right-0 w-24 h-24 z-9999 group">
+  <div class="fixed top-10 right-0 w-24 h-24 z-9999 group">
     <label
-      class="swap swap-rotate absolute top-12 right-6 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200"
+      class="swap swap-rotate absolute top-4 right-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-200"
     >
       <input type="checkbox" v-model="showMain" />
       <Settings class="swap-on w-8 h-8 text-primary" />

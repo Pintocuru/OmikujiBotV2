@@ -1,5 +1,5 @@
-// src\MainGenerator\scripts\MetaState\MetaStateService.ts
-import { createGetMetas } from '@shared/sdk/subscribe/GetMetas'
+// src/MainGenerator/scripts/MetaState/MetaStateService.ts
+import { GetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 
 export class MetaStateService {
@@ -19,8 +19,8 @@ export class MetaStateService {
   }
 
   private initialize() {
-    // GetMetas を購読してメタデータを読む
-    createGetMetas().fetchMeta((rawServiceMeta) => {
+    const { fetchMeta } = GetMetas.getInstance()
+    fetchMeta((rawServiceMeta) => {
       const normalized = this.normalize(rawServiceMeta)
 
       this.previous = this.current
@@ -60,11 +60,17 @@ export class MetaStateService {
   subscribe(fn: (meta: MetaUpdateEvent) => void) {
     this.subscribers.push(fn)
   }
+
+  // 👇 現在のメタデータを同期的に取得できるメソッドを追加
+  getCurrent(): NormalizedMeta | null {
+    return this.current
+  }
+
+  getPeak() {
+    return { ...this.peak }
+  }
 }
 
-/**
- * 型定義(あとで切り分ける)
- */
 export interface NormalizedMeta {
   upVote: number
   viewer: number

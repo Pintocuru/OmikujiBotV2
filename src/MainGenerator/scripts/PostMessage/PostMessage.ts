@@ -1,17 +1,25 @@
 // src/MainGenerator/script/PostMessage.ts
 import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
-import { postWordParty, postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import {
+  postWordParty,
+  postComment,
+  postSpeech,
+  postSystemMessage,
+  postWordPartyId,
+} from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 import { Service } from '@onecomme.com/onesdk/types/Service'
+import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
 
-// メインクラス
+const MAX_REPEAT_COUNT = 30
 
 /**
  * メッセージ投稿を管理するクラス
  */
 export class PostMessage {
   private readonly serviceAPI: ServiceAPI
+  private readonly metaStateService = MetaStateService.getInstance()
   private services: Service[] = []
   private createdServiceIds: Set<string> = new Set()
 
@@ -44,8 +52,35 @@ export class PostMessage {
     if (post.actionType === 'message' && !post.message.isToast) {
       await this.processMessagePost(post, delaySeconds)
     } else if (post.actionType === 'wordParty') {
-      postWordParty(post.wordParty, delaySeconds)
+      const repeatCount = this.getRepeatCount(post.repeat)
+
+      // 指定された回数だけ wordParty を実行
+      for (let i = 0; i < repeatCount; i++) {
+        if (post.wordPartyId && post.wordPartyId !== '') postWordPartyId(post.wordPartyId, delaySeconds)
+        else postWordParty(post.wordParty, delaySeconds)
+      }
     }
+  }
+
+  /**
+   * repeat の値から実際の繰り返し回数を取得
+   */
+  private getRepeatCount(repeat?: number | 'viewer' | 'upVote'): number {
+    // repeat が未指定の場合はデフォルト1回
+    if (!repeat) return 1
+
+    // 数値で直接指定されている場合
+    if (typeof repeat === 'number') return Math.min(repeat, MAX_REPEAT_COUNT)
+
+    // メタデータから取得する場合
+    const meta = this.metaStateService.getCurrent()
+    if (!meta) {
+      console.warn('メタデータが取得できないため、repeat を 1 に設定します')
+      return 1
+    }
+
+    const value = repeat === 'viewer' ? meta.viewer : meta.upVote
+    return Math.min(Math.max(value, 1), MAX_REPEAT_COUNT)
   }
 
   /**

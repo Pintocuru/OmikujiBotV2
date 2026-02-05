@@ -70,7 +70,7 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
-  import { MetaTriggerCondition } from '@/types/OmikujiProcess/MetaTriggerSchema'
+  import { metaTriggerCondition, MetaTriggerCondition } from '@/types/OmikujiProcess/MetaTriggerSchema'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
@@ -100,16 +100,7 @@
   // 発動条件セクションのサブタイトル
   const thresholdSubTitle = computed(() => {
     if (!selectedItem.value) return ''
-
     const condition = selectedItem.value.trigger.condition
-
-    const iconMap: Record<MetaTriggerCondition, string> = {
-      upVote: '[👱 ユーザー名]',
-      viewer: '[🚶 ユーザーの役職]',
-      follower: '[💬 チャットワード]',
-      elapsedMinutes: '[🎁 ギフト]',
-    }
-
-    return iconMap[condition] ?? '[すべてのコメント]'
+    return `[${metaTriggerCondition[condition]}]`
   })
 </script>
