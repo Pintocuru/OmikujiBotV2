@@ -1,39 +1,39 @@
 // build.ts
 import { APP_VERSION, DATA_VERSION } from '@/version'
 
-import path from 'path'
-import { fileURLToPath } from 'url'
-import dotenv from 'dotenv'
-import { alias } from '../vite.config'
+import { CoreBuildTarget, PackageBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
 import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
-import { CoreBuildTarget, PackageBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
+import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { alias } from '../vite.config'
 
 // 各設定ファイルをインポート
 import OmikujiBotProject from './packages/OmikujiBot'
 import OmikujiBotMainProject from './packages/OmikujiBotMain'
 
 // sesupin
-import StrawberryChocolateProject from './packages/full/StrawberryChocolate'
 import OmikujiBotSpecialProject from './packages/full/OmikujiBotSpecial'
+import StrawberryChocolateProject from './packages/full/StrawberryChocolate'
 
 // full
-import ReimuMarisaProject from './packages/full/ReimuMarisa'
-import EveryoneZundaProject from './packages/full/EveryoneZunda'
 import DivaMetanProject from './packages/full/DivaMetan'
-import TsumugiHimariProject from './packages/full/TsumugiHimari'
+import EveryoneZundaProject from './packages/full/EveryoneZunda'
+import ReimuMarisaProject from './packages/full/ReimuMarisa'
 import TossedKotaroProject from './packages/full/TossedKotaro'
+import TsumugiHimariProject from './packages/full/TsumugiHimari'
 
 // solo
-import BomberSpinProject from './packages/solo/BomberSpin'
-import GouseiSuikaProject from './packages/solo/GouseiSuika'
 import percent_DoraProject from './packages/solo/5percent_Dora'
-import HondaJankenProject from './packages/solo/HondaJanken'
+import BigBangFortuneProject from './packages/solo/BigBangFortune'
+import BomberSpinProject from './packages/solo/BomberSpin'
 import CardStationProject from './packages/solo/CardStation'
-import TarotCardProject from './packages/solo/TarotCard'
+import GouseiSuikaProject from './packages/solo/GouseiSuika'
+import HondaJankenProject from './packages/solo/HondaJanken'
 import LenormandOracleProject from './packages/solo/LenormandOracle'
 import RunicOracleProject from './packages/solo/RunicOracle'
-import BigBangFortuneProject from './packages/solo/BigBangFortune'
+import TarotCardProject from './packages/solo/TarotCard'
 
 // syoken
 
@@ -66,6 +66,7 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   */
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
   /**
    * full
@@ -93,12 +94,11 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
-   */
   { project: 'LenormandOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
   { project: 'LenormandOracle', type: 'JSON', accessLevel: 'adv' },
   { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
-
+   */
   /**
    * syoken
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
