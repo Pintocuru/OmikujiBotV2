@@ -11,6 +11,7 @@ import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 import { Service } from '@onecomme.com/onesdk/types/Service'
 import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
+import { executeWordParty } from '@shared/sdk/postMessage/PostWordParty'
 
 const MAX_REPEAT_COUNT = 30
 
@@ -52,13 +53,12 @@ export class PostMessage {
     if (post.actionType === 'message' && !post.message.isToast) {
       await this.processMessagePost(post, delaySeconds)
     } else if (post.actionType === 'wordParty') {
-      const repeatCount = this.getRepeatCount(post.repeat)
-
-      // 指定された回数だけ wordParty を実行
-      for (let i = 0; i < repeatCount; i++) {
-        if (post.wordPartyId && post.wordPartyId !== '') postWordPartyId(post.wordPartyId, delaySeconds)
-        else postWordParty(post.wordParty, delaySeconds)
-      }
+      await executeWordParty({
+        wordParty: post.wordParty,
+        wordPartyId: post.wordPartyId,
+        repeat: this.getRepeatCount(post.repeat),
+        delaySeconds,
+      })
     }
   }
 

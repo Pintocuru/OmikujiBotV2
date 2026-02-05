@@ -5,30 +5,19 @@
     <div v-if="action.actionType === 'message'" class="w-full">
       <!-- フキダシ -->
       <div v-if="action.message.isToast !== true" class="space-y-8 flex flex-col items-center">
-        <CommentBubbleItem
-          :key="messageKey"
-          :botName="character ? character.displayName : null"
-          :message="processedMessage"
-          :color="character ? character.color : bubbleSettings.defaultColor"
-          @click="refreshMessage"
-          class="cursor-pointer"
-        />
-        <LayerImage
-          v-if="isCharacter"
-          :layers="character ? character.image[action.iconKey] : []"
-          :size="bubbleSettings.characterSize"
-        />
+        <CommentBubbleItem :key="messageKey" :botName="character ? character.displayName : null"
+          :message="processedMessage" :color="character ? character.color : bubbleSettings.defaultColor"
+          @click="refreshMessage" class="cursor-pointer" />
+        <LayerImage v-if="isCharacter" :layers="character ? character.image[action.iconKey] : []"
+          :size="bubbleSettings.characterSize" />
       </div>
       <!-- トースト -->
 
       <div v-else @click="refreshMessage" class="cursor-pointer">
-        <ToastBubbleItem
-          :key="messageKey"
-          :message="processedMessage"
+        <ToastBubbleItem :key="messageKey" :message="processedMessage"
           :color="character ? character.color : bubbleSettings.defaultColor"
           :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
-          :showToastsOnRight="toastSettings.showToastsOnRight"
-        />
+          :showToastsOnRight="toastSettings.showToastsOnRight" />
       </div>
     </div>
 
@@ -52,62 +41,56 @@
 
     <!-- テストボタン -->
     <div class="w-full text-center mt-2">
-      <WordPartyTestButton
-        v-if="action.actionType === 'wordParty'"
-        label="WordPartyのテスト実行"
-        :pattern="action.wordParty"
-      />
-      <SoundTestButton
-        v-if="action.actionType === 'sound' || action.actionType === 'message'"
-        label="サウンドのテスト実行"
-        :pattern="action.sound"
-      />
+      <WordPartyTestButton v-if="action.actionType === 'wordParty'" :id="action.wordPartyId" :pattern="action.wordParty"
+        :repeat="action.repeat" />
+      <SoundTestButton v-if="action.actionType === 'sound' || action.actionType === 'message'" label="サウンドのテスト実行"
+        :pattern="action.sound" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import { PostActionType } from '@/types/'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import SoundTestButton from './SoundTestButton.vue'
-  import { processTestPlaceholder } from './TestPlaceholderProcessor'
-  import WordPartyTestButton from './WordPartyTestButton.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
-  import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
-  import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
+import { computed, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { PostActionType } from '@/types/'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import SoundTestButton from './SoundTestButton.vue'
+import { processTestPlaceholder } from './TestPlaceholderProcessor'
+import WordPartyTestButton from './WordPartyTestButton.vue'
+import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
+import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
+import LayerImage from '@/common/LayerImage/LayerImage.vue'
+import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
-  const props = defineProps<{
-    action: PostActionType
-  }>()
+const props = defineProps<{
+  action: PostActionType
+}>()
 
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
-  const { isCharacter } = useVisibilityAccess()
+const omikujiStore = useOmikujiStore()
+const { data } = storeToRefs(omikujiStore)
+const { isCharacter } = useVisibilityAccess()
 
-  const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.bubble)
-  const toastSettings = computed(() => data.value.components.toast)
+const characters = computed(() => data.value.characters)
+const bubbleSettings = computed(() => data.value.components.bubble)
+const toastSettings = computed(() => data.value.components.toast)
 
-  // キャラクター取得
-  const character = computed(() => {
-    if (!isCharacter.value || props.action.actionType !== 'message') return null
-    return characters.value[props.action.characterKey]
-  })
+// キャラクター取得
+const character = computed(() => {
+  if (!isCharacter.value || props.action.actionType !== 'message') return null
+  return characters.value[props.action.characterKey]
+})
 
-  // メッセージ処理
-  const processedMessage = computed(() => {
-    const _ = messageKey.value // computed 再計算用キー
+// メッセージ処理
+const processedMessage = computed(() => {
+  const _ = messageKey.value // computed 再計算用キー
 
-    if (props.action.actionType !== 'message') return ''
-    const content = props.action.message.bubble || '(未記入)'
-    return processTestPlaceholder(content, data.value.placeholders)
-  })
+  if (props.action.actionType !== 'message') return ''
+  const content = props.action.message.bubble || '(未記入)'
+  return processTestPlaceholder(content, data.value.placeholders)
+})
 
-  // リフレッシュキー
-  const messageKey = ref(0)
-  const refreshMessage = () => messageKey.value++
+// リフレッシュキー
+const messageKey = ref(0)
+const refreshMessage = () => messageKey.value++
 </script>
