@@ -3,7 +3,6 @@ import { z } from 'zod'
 import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'
 import { CommentRuleSchema, MetaRuleSchema, TimerRuleSchema } from './RulesSchema'
-import { recordNormalization } from './OmikujiDataNormalize'
 import { PackageJsonSchema } from '@shared/types'
 import { JsonMergeSchema } from './JsonMergeType'
 import { ComponentsSchema } from './ComponentsSchema'
@@ -28,5 +27,9 @@ export const OmikujiDataSchema = z.object({
   settings: SettingsSchema.catch(SettingsSchema.parse({})),
 })
 
-// 型定義
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>
+
+// TODO:将来これは消したい
+function recordNormalization<T extends z.ZodTypeAny>(itemSchema: T) {
+  return z.record(z.string(), itemSchema).default({}).catch({})
+}

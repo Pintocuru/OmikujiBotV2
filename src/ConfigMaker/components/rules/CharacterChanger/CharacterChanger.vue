@@ -128,7 +128,7 @@
 
   // TODO:変な関数を作ってしまったので、後で修正
   const getCharacterName = (charKey: string) => {
-    return characterMap.value[charKey]?.displayName
+    return characterMap.value[charKey]?.name
   }
 
   /**

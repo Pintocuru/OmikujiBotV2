@@ -45,25 +45,41 @@ export function useSaveActions(
 
   // ジェネレーターに保存
   const saveToGenerator = async () => {
+    const generatorId = window.omikujiData?.meta.id
+    if (!generatorId) {
+      throw new Error('generatorId が存在しないため、ジェネレーター用設定を保存できません')
+    }
+
     const result = await swalModal.confirmDelete({
       icon: 'info',
       title: 'ジェネレーターに保存',
-      text: '現在の設定をジェネレーター用として保存しますか？',
+      html: `
+    <p>現在の設定をジェネレーター用として保存しますか？</p>
+    <p style="font-size: 0.8em; color: #666; margin-top: 8px;">
+      プリセットID: ${generatorId}
+    </p>
+  `,
       confirmButtonText: '保存',
     })
-
     if (!result.isConfirmed) return
-
     const omikujiStore = useOmikujiStore()
 
+    // ★ store の data は触らない。保存用にだけコピーを作る
+    const dataForSave = {
+      ...omikujiStore.data,
+      meta: {
+        ...omikujiStore.data.meta,
+        id: generatorId,
+      },
+    }
+
     return await handleAsyncAction(async () => {
-      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      const configData = JSON.stringify(dataForSave, null, 2)
       await generatorApi.saveGeneratorConfig(configData)
       await fetchFileList()
-      omikujiStore.resetChangeState() // 変更リセット
+      omikujiStore.resetChangeState()
 
-      // 成功トースト
-      swalToast.success({ title: `ジェネレーター用設定を保存しました` })
+      swalToast.success({ title: 'ジェネレーター用設定を保存しました' })
       state.isServerConnected.value = true
       return null
     }, 'isSaving')

@@ -9,6 +9,7 @@ import { getAvailableScripts } from '@game/GameScriptsRules'
 import { getAvailableComponents } from '@config/components/componentEditor/componentRules'
 import { swalToast } from '../SweetAlert2/SweetAlert2Toast'
 import { isDev } from '@/types'
+import { migrateV204ToV205 } from './v2_to_v3/v2_04_to_v2_05'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -60,6 +61,12 @@ export function normalizeData(data: unknown): OmikujiDataType {
     console.log('Migrating data: v2.0.0 → v2.0.1')
     updatedData = OmikujiDataSchemaV200.parse(updatedData)
     updatedData.meta.dataVersion = 2.01
+  }
+
+  // v2.0.4 → v2.0.5
+  if (currentDataVersion < 2.05) {
+    console.log('Migrating data: v2.04 → v2.05')
+    updatedData = migrateV204ToV205(updatedData)
   }
 
   // スキーマで保証

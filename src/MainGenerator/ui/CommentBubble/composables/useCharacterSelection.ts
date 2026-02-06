@@ -90,18 +90,6 @@ export function useCharacterSelection(
     return null
   }
 
-  // 0番地（中央）に表示するメッセージ
-  const centerMessages = computed(() => {
-    const allowKeys = showCharacters.value.center
-    if (!allowKeys?.length) return []
-
-    return displayedComments.value.filter((message) => {
-      const key = message.bubble?.characterKey
-      // null の場合はキャラクター非表示モードなので表示
-      return key === null || allowKeys.includes(key)
-    })
-  })
-
   // 1〜4番地に表示するキャラクターリスト
   const slotCharacters = computed<Array<{ slotIndex: number; character: CharacterType }>>(() => {
     const slots = [
@@ -170,7 +158,6 @@ export function useCharacterSelection(
 
   return {
     latestCommenterKey,
-    centerMessages,
     slotCharacters,
     getMessageCount,
     validateAllCharacters,
