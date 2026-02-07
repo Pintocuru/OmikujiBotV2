@@ -41,7 +41,7 @@
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
-  const toastSettings = computed(() => data.value.components.toast)
+  const toastSettings = computed(() => data.value.components.settings.toast)
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
   // ライセンス状態で閲覧できないなら表示させない

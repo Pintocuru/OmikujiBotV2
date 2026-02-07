@@ -43,7 +43,7 @@
   type SectionType =
     | 'componentsSettings'
     | 'bubbleComponent'
-    | 'bubbleComponentcharacter'
+    | 'bubbleComponentCharacter'
     | 'toastComponent'
     | 'rankingComponent'
     | 'counterComponent'
@@ -63,6 +63,11 @@
 
   const conditions = computed(() => data.value.components.conditions)
 
+  // v2.1: conditions から特定の kind が含まれているかチェック
+  const hasComponentKind = (kind: string) => {
+    return conditions.value.some((condition) => condition.kind === kind)
+  }
+
   // アイテム設定の配列
   const componentItems = computed(() => [
     {
@@ -72,16 +77,16 @@
       title: 'フキダシアイテム',
       description: 'BOTが喋るフキダシの設定',
       component: BubbleComponentEditor,
-      shouldShow: conditions.value.includes('bubble'),
+      shouldShow: hasComponentKind('bubble'),
     },
     {
       type: 'bubbleCharacter',
-      sectionKey: 'bubbleComponentcharacter' as const,
+      sectionKey: 'bubbleComponentCharacter' as const,
       icon: 'UserSquare',
       title: 'フキダシアイテム(キャラクター)',
       description: 'キャラクターの表示位置設定',
       component: BubbleComponentCharacterEditor,
-      shouldShow: conditions.value.includes('bubble') && isCharacter.value,
+      shouldShow: hasComponentKind('bubble') && isCharacter.value,
     },
     {
       type: 'toast',
@@ -90,7 +95,7 @@
       title: 'トースト・サムネイルアイテム',
       description: 'お知らせとして表示されるチャット表示',
       component: ToastComponentEditor,
-      shouldShow: conditions.value.includes('toast'),
+      shouldShow: hasComponentKind('toast'),
     },
     {
       type: 'ranking',
@@ -99,7 +104,7 @@
       title: 'ランキングアイテム',
       description: 'ゲームスクリプトで使う、ランキング表示',
       component: RankingComponentEditor,
-      shouldShow: conditions.value.includes('ranking'),
+      shouldShow: hasComponentKind('ranking'),
     },
     {
       type: 'counter',
@@ -108,7 +113,7 @@
       title: 'カウンターアイテム',
       description: 'コメントが来るたびに数値が増えるカウンターの表示',
       component: CounterComponentEditor,
-      shouldShow: conditions.value.includes('counter') && isComment.value,
+      shouldShow: hasComponentKind('counter') && isComment.value,
     },
   ])
 </script>

@@ -20,7 +20,7 @@
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  const counterSetting = computed(() => data.value.components.counter)
+  const counterSetting = computed(() => data.value.components.settings.counter)
   const previewTick = computed(() => botMessages.value.length)
   const userList = ref<UserVisitRecord[]>([])
 

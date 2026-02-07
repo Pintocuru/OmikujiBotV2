@@ -31,7 +31,7 @@
   const appStore = useAppStore()
   const { characterArray, isCharacter, manager } = useCharacterManager()
 
-  const toastSettings = computed(() => appStore.data.components.toast)
+  const toastSettings = computed(() => appStore.data.components.settings.toast)
   const currentExpressions = ref<string[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
 
@@ -73,7 +73,7 @@
   const TEST_CHARACTER = CharacterSchema.parse({
     key: '__test__',
     name: 'テスト',
-    color: appStore.data.components.bubble.defaultColor,
+    color: appStore.data.components.commonStyle.defaultColor,
   })
   const clickableCharacters = computed(() => {
     if (!isCharacter.value) return [TEST_CHARACTER]

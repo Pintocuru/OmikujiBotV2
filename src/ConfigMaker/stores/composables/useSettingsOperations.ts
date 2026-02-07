@@ -2,7 +2,13 @@
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { ComponentsType, FeatureUsageType, SettingsComponentsCondition, SettingsType } from '@/types/'
+import { 
+  ComponentsType, 
+  ComponentsConditions,
+  ComponentsCommonStyle,
+  FeatureUsageType, 
+  SettingsType 
+} from '@/types/'
 
 /**
  * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル
@@ -13,20 +19,43 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     data.value.jsonMerge = newMerge
     hasChanged.value = true
   }
-  // components を更新
-  const updateComponentsConditions = (newConditions: SettingsComponentsCondition[]) => {
+
+  /**
+   * v2.1: components.conditions を更新
+   * スロットと種類の組み合わせ配列を更新
+   */
+  const updateComponentsConditions = (newConditions: ComponentsConditions) => {
     data.value.components.conditions = newConditions
     hasChanged.value = true
   }
 
-  // components のネスト更新
-  const updateNestedComponents = <T extends keyof ComponentsType>(key: T, updates: Partial<ComponentsType[T]>) => {
-    data.value.components[key] = {
-      ...data.value.components[key],
+  /**
+   * v2.1: components.commonStyle を更新
+   * 共通スタイル設定を更新
+   */
+  const updateComponentsCommonStyle = (updates: Partial<ComponentsCommonStyle>) => {
+    data.value.components.commonStyle = {
+      ...data.value.components.commonStyle,
       ...updates,
-    } as ComponentsType[T]
+    }
     hasChanged.value = true
   }
+
+  /**
+   * v2.1: components.settings のネスト更新
+   * 特定のコンポーネント設定を更新
+   */
+  const updateComponentSettings = <T extends keyof ComponentsType['settings']>(
+    key: T,
+    updates: Partial<ComponentsType['settings'][T]>
+  ) => {
+    data.value.components.settings[key] = {
+      ...data.value.components.settings[key],
+      ...updates,
+    } as ComponentsType['settings'][T]
+    hasChanged.value = true
+  }
+
 
   // featureUsage を更新
   const updateFeatureUsage = (updates: Partial<FeatureUsageType>) => {
@@ -55,7 +84,8 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   return {
     updateJsonMerge,
     updateComponentsConditions,
-    updateNestedComponents,
+    updateComponentsCommonStyle,
+    updateComponentSettings,
     updateFeatureUsage,
     updateNestedFeatureUsage,
     updateSettings,

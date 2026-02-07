@@ -10,6 +10,7 @@ import { getAvailableComponents } from '@config/components/componentEditor/compo
 import { swalToast } from '../SweetAlert2/SweetAlert2Toast'
 import { isDev } from '@/types'
 import { migrateV204ToV205 } from './v2_to_v3/v2_04_to_v2_05'
+import { migrateV205ToV210 } from './v2_to_v3/v2_05_to_v2_10'
 
 /**
  * データを現在のアプリのバージョンに合わせてマイグレーションする
@@ -67,6 +68,18 @@ export function normalizeData(data: unknown): OmikujiDataType {
   if (currentDataVersion < 2.05) {
     console.log('Migrating data: v2.04 → v2.05')
     updatedData = migrateV204ToV205(updatedData)
+  }
+
+  // v2.0.5 → v2.1.0
+  if (currentDataVersion < 2.09003) {
+    console.log('Migrating data: v2.05 → v2.10')
+    updatedData = migrateV205ToV210(updatedData)
+
+    // マイグレーション通知
+    swalToast.info({
+      title: 'データ更新',
+      text: 'コンポーネント設定が v2.1 形式にアップグレードされました。',
+    })
   }
 
   // スキーマで保証

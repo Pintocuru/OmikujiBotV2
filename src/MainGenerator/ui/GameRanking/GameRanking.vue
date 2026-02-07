@@ -45,7 +45,7 @@
   })
 
   // ランキング設定を取得
-  const rankingSettings = computed(() => data.value.components.ranking)
+  const rankingSettings = computed(() => data.value.components.settings.ranking)
 
   // ランキング対象のメッセージをフィルタリング
   const rankingMessages: ComputedRef<BotMessageRankingType[]> = computed(() => {

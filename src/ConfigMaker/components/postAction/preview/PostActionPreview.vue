@@ -6,7 +6,7 @@
       <!-- フキダシ -->
       <div v-if="action.message.isToast !== true" class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem :key="messageKey" :botName="character ? character.displayName : null"
-          :message="processedMessage" :color="character ? character.color : bubbleSettings.defaultColor"
+          :message="processedMessage" :color="character ? character.color : commonStyle.defaultColor"
           @click="refreshMessage" class="cursor-pointer" />
         <LayerImage v-if="isCharacter" :layers="character ? character.image[action.iconKey] : []"
           :size="bubbleSettings.characterSize" />
@@ -15,7 +15,7 @@
 
       <div v-else @click="refreshMessage" class="cursor-pointer">
         <ToastBubbleItem :key="messageKey" :message="processedMessage"
-          :color="character ? character.color : bubbleSettings.defaultColor"
+          :color="character ? character.color : commonStyle.defaultColor"
           :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
           :showToastsOnRight="toastSettings.showToastsOnRight" />
       </div>
@@ -72,8 +72,9 @@ const { data } = storeToRefs(omikujiStore)
 const { isCharacter } = useVisibilityAccess()
 
 const characters = computed(() => data.value.characters)
-const bubbleSettings = computed(() => data.value.components.bubble)
-const toastSettings = computed(() => data.value.components.toast)
+const bubbleSettings = computed(() => data.value.components.settings.bubble)
+const toastSettings = computed(() => data.value.components.settings.toast)
+const commonStyle = computed(() => data.value.components.commonStyle)
 
 // キャラクター取得
 const character = computed(() => {

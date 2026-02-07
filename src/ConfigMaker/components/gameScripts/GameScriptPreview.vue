@@ -9,7 +9,7 @@
           :key="messageKey"
           :botName="isCharacter ? character.displayName : null"
           :message="processedMessage"
-          :color="isCharacter ? character.color : bubbleSettings.defaultColor"
+          :color="isCharacter ? character.color : commonStyle.defaultColor"
           @click="refreshMessage"
           class="cursor-pointer"
         />
@@ -43,7 +43,8 @@
   const scriptManager = GameScriptManager.getInstance()
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.bubble)
+  const bubbleSettings = computed(() => data.value.components.settings.bubble)
+  const commonStyle = computed(() => data.value.components.commonStyle)
 
   // キャラクター取得
   const isValid = computed(() => {

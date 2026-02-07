@@ -13,8 +13,8 @@
   <!-- デフォルトカラー設定 -->
   <template v-if="!isCharacter">
     <ColorModeSelector
-      :model-value="bubble.defaultColor"
-      @update:model-value="(value) => updateFieldValue('defaultColor', value)"
+      :model-value="commonStyle.defaultColor"
+      @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
 
     <InformationCard>
@@ -39,8 +39,8 @@
   <!-- フォントファミリー -->
   <SettingItem label="フォントファミリー" description="表示に使用するフォントを設定します" forceMode="pro">
     <select
-      :value="bubble.fontFamily"
-      @change="updateField('fontFamily', $event)"
+      :value="commonStyle.fontFamily"
+      @change="updateFontFamily($event)"
       class="select bg-base text-base-content w-full max-w-xs"
       :disabled="!isAdv"
     >
@@ -107,14 +107,30 @@
   const { isCharacter } = useVisibilityAccess()
   const { characterArray } = useCharacterManager()
 
-  const bubble = computed(() => data.value.components.bubble)
+  const bubble = computed(() => data.value.components.settings.bubble)
+  const commonStyle = computed(() => data.value.components.commonStyle)
 
-  // 値を直接指定して更新する関数
+  // bubble設定の値を直接指定して更新する関数
   const updateFieldValue = <K extends keyof typeof bubble.value>(field: K, value: (typeof bubble.value)[K]) => {
-    omikujiStore.updateNestedComponents('bubble', {
-      ...bubble.value,
+    omikujiStore.updateComponentSettings('bubble', {
       [field]: value,
     })
+  }
+
+  // commonStyle の更新関数
+  const updateCommonStyleField = <K extends keyof typeof commonStyle.value>(
+    field: K,
+    value: (typeof commonStyle.value)[K]
+  ) => {
+    omikujiStore.updateComponentsCommonStyle({
+      [field]: value,
+    })
+  }
+
+  // フォントファミリーの更新（commonStyleに移動）
+  const updateFontFamily = (event: Event) => {
+    const target = event.target as HTMLSelectElement
+    updateCommonStyleField('fontFamily', target.value as (typeof commonStyle.value)['fontFamily'])
   }
 
   // 単一の更新関数（イベントから値を取得）
@@ -132,14 +148,13 @@
 
   // リセット関数
   const resetField = (field: keyof typeof bubble.value) => {
-    if (field === 'defaultColor') return
     const defaults = SettingsBubbleSchema.parse({})
     updateFieldValue(field, defaults[field])
   }
 
   // 最初のキャラのカラー取得
   const localColor = computed(() => {
-    if (!isCharacter.value) return omikujiStore.data.components.bubble.defaultColor
+    if (!isCharacter.value) return data.value.components.commonStyle.defaultColor
     return characterArray.value[0].color
   })
 </script>

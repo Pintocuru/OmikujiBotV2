@@ -77,7 +77,7 @@
   const errorMessage = ref('')
   const visibleSlots = ref(1)
 
-  const bubble = computed(() => data.value.components.bubble)
+  const bubble = computed(() => data.value.components.settings.bubble)
   const characters = computed(() => data.value.characters)
   const availableCharacters = computed(() => Object.keys(characters.value))
 
@@ -157,7 +157,7 @@
   }
 
   const updateStore = () => {
-    omikujiStore.updateNestedComponents('bubble', {
+    omikujiStore.updateComponentSettings('bubble', {
       ...bubble.value,
       showCharacters: editableGroups.value,
     })

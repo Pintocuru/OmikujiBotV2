@@ -46,12 +46,12 @@
   const { data } = storeToRefs(omikujiStore)
 
   // 個別のcomputed値（読み取り専用）
-  const bubble = computed(() => data.value.components.bubble)
+  const bubble = computed(() => data.value.components.settings.bubble)
   const characters = computed(() => data.value.characters)
 
   // 汎用的な更新関数
   const updateBubbleField = (field: keyof typeof bubble.value, value: any) => {
-    omikujiStore.updateNestedComponents('bubble', {
+    omikujiStore.updateComponentSettings('bubble', {
       ...bubble.value,
       [field]: value,
     })

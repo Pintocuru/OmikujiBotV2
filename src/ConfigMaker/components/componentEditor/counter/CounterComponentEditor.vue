@@ -99,11 +99,11 @@
 
   const rulesComment = computed(() => data.value.comments)
 
-  const counter = computed(() => data.value.components.counter)
+  const counter = computed(() => data.value.components.settings.counter)
 
   // 更新関数
   const updateCounterField = (field: keyof typeof counter.value, value: any) => {
-    omikujiStore.updateNestedComponents('counter', {
+    omikujiStore.updateComponentSettings('counter', {
       ...counter.value,
       [field]: value,
     })

@@ -15,7 +15,7 @@ export class CharacterManager {
   constructor(omikujiData: OmikujiDataType) {
     this.isCharacterMode = this.checkIsCharacter(omikujiData)
     this.characterMap = this.createCharacterMap(omikujiData.characters)
-    this.defaultColor = omikujiData.components.bubble.defaultColor
+    this.defaultColor = omikujiData.components.commonStyle.defaultColor
 
     // Mapから配列を生成（全キャラクターを含む）
     this.characterArray = Array.from(this.characterMap.values()).sort((a, b) => (a.order || 0) - (b.order || 0))

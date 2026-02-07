@@ -50,7 +50,7 @@
   const { hasImage, getCharacterLayers, getCharacterColor } = useCharacterManager()
 
   // 設定の取得
-  const bubble = computed(() => appStore.data.components.bubble || {})
+  const bubble = computed(() => appStore.data.components.settings.bubble || {})
 
   // コメント表示制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(toRef(() => props.centerMessages))

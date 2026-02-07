@@ -11,7 +11,7 @@ export const useCharacterManager = () => {
 
   const showCharacters = computed(() => {
     if (!manager.value.isCharacterMode) return { center: ['default'] }
-    return omikujiStore.data.components.bubble.showCharacters
+    return omikujiStore.data.components.settings.bubble.showCharacters
   })
 
   return {

@@ -29,8 +29,8 @@
   <!-- デフォルトカラー設定 -->
   <template v-if="!isCharacter">
     <ColorModeSelector
-      :model-value="bubbleSettings.defaultColor"
-      @update:model-value="(value) => updateBubbleField('defaultColor', value)"
+      :model-value="commonStyle.defaultColor"
+      @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
     <InformationCard>
       <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
@@ -103,8 +103,8 @@
   const { isCharacter } = useVisibilityAccess()
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
-  const toastSettings = computed(() => data.value.components.toast)
-  const bubbleSettings = computed(() => data.value.components.bubble)
+  const toastSettings = computed(() => data.value.components.settings.toast)
+  const commonStyle = computed(() => data.value.components.commonStyle)
   const characterArray = computed(() => Object.values(data.value.characters))
 
   // showThumbnail に含まれるキーを持つキャラクターのみをフィルタリング
@@ -113,24 +113,22 @@
     return characterArray.value.filter((character) => selectedKeys.has(character.key))
   })
 
-  // 更新関数（値を直接受け取る）
+  // toast設定の更新関数（v2.1）
   const updateField = <K extends keyof typeof toastSettings.value>(
     field: K,
     value: (typeof toastSettings.value)[K]
   ) => {
-    omikujiStore.updateNestedComponents('toast', {
-      ...toastSettings.value,
+    omikujiStore.updateComponentSettings('toast', {
       [field]: value,
     })
   }
 
-  // 更新関数（値を直接受け取る）
-  const updateBubbleField = <K extends keyof typeof bubbleSettings.value>(
+  // commonStyle の更新関数（v2.1）
+  const updateCommonStyleField = <K extends keyof typeof commonStyle.value>(
     field: K,
-    value: (typeof bubbleSettings.value)[K]
+    value: (typeof commonStyle.value)[K]
   ) => {
-    omikujiStore.updateNestedComponents('bubble', {
-      ...bubbleSettings.value,
+    omikujiStore.updateComponentsCommonStyle({
       [field]: value,
     })
   }

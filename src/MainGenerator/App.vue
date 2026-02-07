@@ -1,19 +1,10 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
-    <!-- コメントフキダシ表示 -->
-    <CommentBubble v-if="conditions.includes('bubble')" class="z-10 pointer-events-none" />
-
-    <!-- 右下UI要素コンテナ -->
-    <ToastWidgets v-if="conditions.includes('toast')" class="z-10" />
-
-    <!-- ランキングリスト -->
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
-      <GameRankingViewer v-if="conditions.includes('ranking')" />
-    </div>
-
-    <!-- カウンター -->
-    <CounterPreview v-if="conditions.includes('counter') && isComment" />
+    <!-- 動的コンポーネント表示 -->
+    <template v-for="item in activeComponents" :key="item?.slot">
+      <component v-if="item" :is="item.component" :class="item.classes" v-bind="item.props" />
+    </template>
 
     <!-- meta -->
     <MetaDebugPanel v-if="isDev" />
@@ -25,27 +16,51 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
+  import { isDev } from '@/types'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
-  import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
-  import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
-  import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
-  import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
   import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
   import { useRuleProcessor } from '@main/scripts/RuleProcess/RuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
   import { generatorApi } from '@config/dev/services/generatorApi'
-  import { useVisibilityAccess } from './scripts/FeatureAccess/useAccessCheckerMain'
-  import { isDev } from '@/types'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+  import { COMPONENT_MAPPINGS } from './ui/ComponentMapping'
 
   // Pinia Store
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
   const { isComment, isTimer } = useVisibilityAccess()
 
-  // フォントの指定
-  const fontClass = computed(() => useFontFamily(appStore.data.components.bubble.fontFamily ?? 'default'))
+  // フォントの指定（commonStyleから取得）
+  const fontClass = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
+
+  // アクティブなコンポーネントを動的に取得
+  const activeComponents = computed(() => {
+    return conditions.value
+      .map((condition) => {
+        const mapping = COMPONENT_MAPPINGS.find((m) => m.kind === condition.kind)
+        if (!mapping) return null
+
+        if (
+          mapping.shouldRender &&
+          !mapping.shouldRender({
+            isComment: isComment.value,
+            isTimer: isTimer.value,
+          })
+        ) {
+          return null
+        }
+
+        return {
+          slot: condition.slot,
+          component: mapping.component,
+          classes: mapping.classes,
+          props: mapping.props,
+        }
+      })
+      .filter(Boolean)
+  })
 
   const ruleCommentProcessor = new RuleCommentProcessor()
 

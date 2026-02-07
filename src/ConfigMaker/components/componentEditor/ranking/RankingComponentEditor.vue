@@ -129,7 +129,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro, isGod } = useSettingMode()
 
-  const ranking = computed(() => data.value.components.ranking)
+  const ranking = computed(() => data.value.components.settings.ranking)
 
   // 利用可能なゲームスクリプトを取得
   const enabledGameScriptMap = computed(() => {
@@ -142,7 +142,7 @@
 
   // 更新関数
   const updateRankingField = (field: keyof typeof ranking.value, value: any) => {
-    omikujiStore.updateNestedComponents('ranking', {
+    omikujiStore.updateComponentSettings('ranking', {
       ...ranking.value,
       [field]: value,
     })

@@ -26,7 +26,7 @@ export const useCharacterManager = () => {
   const showCharacters = computed(() => {
     // キャラクターモードが無効な場合は、空を返す
     if (!manager.value.isCharacterMode) return ShowCharactersSchema.parse({})
-    return appStore.data.components.bubble.showCharacters
+    return appStore.data.components.settings.bubble.showCharacters
   })
 
   // メッセージからキャラクター画像を返す
