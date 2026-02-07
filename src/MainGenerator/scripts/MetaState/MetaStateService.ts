@@ -19,8 +19,8 @@ export class MetaStateService {
   }
 
   private initialize() {
-    const { fetchMeta } = GetMetas.getInstance()
-    fetchMeta((rawServiceMeta) => {
+    const metas = GetMetas.getInstance()
+    metas.fetchMeta((rawServiceMeta) => {
       const normalized = this.normalize(rawServiceMeta)
 
       this.previous = this.current
