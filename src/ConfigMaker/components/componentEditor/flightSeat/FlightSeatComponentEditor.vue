@@ -3,12 +3,7 @@
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
 
   <!-- タイトル -->
-  <SettingItem
-    label="タイトル"
-    description="座席表のタイトルを設定します"
-    :showReset="true"
-    @reset="resetMap.title"
-  >
+  <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.title">
     <input
       type="text"
       class="input input-bordered w-full"
@@ -34,12 +29,7 @@
 
   <!-- square の場合: 縦×横 -->
   <div v-if="flightSeat.layout === 'square'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <SettingItem
-      label="縦（行数）"
-      description="縦方向の座席数（1〜10）"
-      :showReset="true"
-      @reset="resetMap.rows"
-    >
+    <SettingItem label="縦（行数）" description="縦方向の座席数（1〜10）" :showReset="true" @reset="resetMap.rows">
       <input
         type="number"
         min="1"
@@ -50,12 +40,7 @@
       />
     </SettingItem>
 
-    <SettingItem
-      label="横（列数）"
-      description="横方向の座席数（1〜10）"
-      :showReset="true"
-      @reset="resetMap.cols"
-    >
+    <SettingItem label="横（列数）" description="横方向の座席数（1〜10）" :showReset="true" @reset="resetMap.cols">
       <input
         type="number"
         min="1"
@@ -99,11 +84,7 @@
   </SettingItem>
 
   <!-- 背景デザイン（オプション） -->
-  <SettingItem 
-    label="背景デザイン" 
-    description="座席表の背景イメージ（オプション）"
-    :forceMode="'pro'"
-  >
+  <SettingItem label="背景デザイン" description="座席表の背景イメージ（オプション）" :forceMode="'pro'">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="(label, key) in flightSeatVehicles"
@@ -161,25 +142,20 @@
 
   // 総座席数を計算
   const totalSeats = computed(() => {
-    const { layout, rows, cols,  } = flightSeat.value
-    
+    const { layout, rows, cols } = flightSeat.value
+
     switch (layout) {
       case 'square':
         return rows * cols
-      
+
       case 'pyramid':
         // 1 + 2 + 3 + ... + rows
         return (rows * (rows + 1)) / 2
-      
+
       case 'inversePyramid':
         // rows + (rows-1) + ... + 1
         return (rows * (rows + 1)) / 2
-      
-      case 'theater':
-        // 中央が最大、両端が最小のパターン
-        // 簡易計算: rows * (rows / 2 + 2) 程度
-        return Math.floor(rows * (rows / 2 + 2))
-      
+
       default:
         return 0
     }

@@ -3457,9 +3457,9 @@
       },
       "flightSeat": {
         "slotType": "extra",
-        "layout": "theater",
-        "rows": 4,
-        "cols": 6,
+        "layout": "square",
+        "rows": 3,
+        "cols": 3,
         "title": "🛫 8時間フライト、どの席に座る？",
         "color": "dark",
         "backgroundVehicle": "none",

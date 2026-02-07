@@ -72,7 +72,7 @@ export const rankingValues = rankingComponents.map((c) => c.value) as RankingCom
 
 export const SettingsRankingSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
-  
+
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
@@ -97,7 +97,7 @@ export const componentValues = Object.keys(counterComponents) as CounterComponen
 
 export const SettingsCounterSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
-  
+
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
   component: z.enum(componentValues).default('counterUser').catch('counterUser'),
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
@@ -113,7 +113,6 @@ export const flightSeatLayouts = {
   square: '正方形グリッド',
   pyramid: 'ピラミッド',
   inversePyramid: '逆ピラミッド',
-  theater: 'シアター（中央重視）',
 } as const
 
 export const flightSeatVehicles = {
@@ -126,19 +125,25 @@ export const flightSeatVehicles = {
 
 export const SettingsFlightSeatSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'),
-  
-  layout: z.enum(Object.keys(flightSeatLayouts) as [keyof typeof flightSeatLayouts, ]).default('square').catch('square'),
-  
+
+  layout: z
+    .enum(Object.keys(flightSeatLayouts) as [keyof typeof flightSeatLayouts])
+    .default('square')
+    .catch('square'),
+
   // square の場合: 縦×横
   rows: z.number().min(1).max(10).default(4).catch(4), // 縦（行数）
   cols: z.number().min(1).max(10).default(6).catch(6), // 横（列数）
-    
+
   title: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
-  
+
   // 背景画像（オプション）
-  backgroundVehicle: z.enum(Object.keys(flightSeatVehicles) as [keyof typeof flightSeatVehicles, ]).default('none').catch('none'),
-  
+  backgroundVehicle: z
+    .enum(Object.keys(flightSeatVehicles) as [keyof typeof flightSeatVehicles])
+    .default('none')
+    .catch('none'),
+
   // 履歴保存数
   historyLimit: z.number().min(0).max(20).default(10).catch(10),
 })
@@ -153,6 +158,8 @@ export const ComponentsSettingsSchema = z.object({
   toast: SettingsToastSchema.default(SettingsToastSchema.parse({})).catch(SettingsToastSchema.parse({})),
   ranking: SettingsRankingSchema.default(SettingsRankingSchema.parse({})).catch(SettingsRankingSchema.parse({})),
   counter: SettingsCounterSchema.default(SettingsCounterSchema.parse({})).catch(SettingsCounterSchema.parse({})),
-  flightSeat: SettingsFlightSeatSchema.default(SettingsFlightSeatSchema.parse({})).catch(SettingsFlightSeatSchema.parse({})),
+  flightSeat: SettingsFlightSeatSchema.default(SettingsFlightSeatSchema.parse({})).catch(
+    SettingsFlightSeatSchema.parse({})
+  ),
 })
 export type ComponentsSettings = z.infer<typeof ComponentsSettingsSchema>

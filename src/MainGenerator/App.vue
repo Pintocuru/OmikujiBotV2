@@ -7,7 +7,7 @@
     </template>
 
     <!-- meta -->
-    <MetaDebugPanel v-if="isDev" />
+    <MetaDebugPanel v-if="0" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
