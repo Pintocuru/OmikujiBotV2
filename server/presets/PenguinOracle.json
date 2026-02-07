@@ -1,0 +1,809 @@
+{
+  "meta": {
+    "id": "LenormandOracle-ver2026.02.05-2.1.0-alpha1",
+    "name": "おみくじ BOT ルノルマンカード OmikujiBot LenormandOracle-ADV",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.02.05-2.1.0-alpha1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.1.0-alpha2",
+    "dataVersion": 2.09002,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "占い",
+      "Fortune",
+      "ルノルマンカード",
+      "Lenormand"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/7915987"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "PenguinOracle": {
+      "id": "LenormandOracle",
+      "key": "PenguinOracle",
+      "name": "ペンギン占い",
+      "description": "16種の個性豊かなペンギンたちの相性占い",
+      "createdAt": "2025-09-13T22:02:36.595Z",
+      "updatedAt": "2026-02-07T01:59:15.458Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "占い",
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "a3bba6c1-3fe0-4375-99f1-7b228ee29e66",
+          "key": "1757800562314",
+          "name": "ペンギン占い",
+          "createdAt": "2025-09-13T21:56:02.314Z",
+          "updatedAt": "2025-09-13T21:56:02.314Z",
+          "order": 0,
+          "tags": [
+            "ペンギン"
+          ],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                {
+                  "weight": 1,
+                  "content": "PenguinOracleFirst"
+                }
+              ]
+            },
+            {
+              "delaySeconds": 3.5,
+              "actionType": "message",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "sound": "collect",
+              "message": {
+                "bubble": "<<user>>さんは、<<PenguinOracle>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "b4f1628a-6591-4a85-9f57-18adc4f0e541",
+          "key": "1766921349743",
+          "name": "回数超過(6回目以降)",
+          "createdAt": "2025-12-28T11:29:09.743Z",
+          "updatedAt": "2025-12-28T11:29:09.743Z",
+          "order": 0,
+          "tags": [
+            "ペンギン"
+          ],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "omiken",
+              "iconKey": "default",
+              "sound": "warn",
+              "message": {
+                "bubble": "<<user>>さんは5回を超えているよ。また明日占ってみてね。",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": [
+              "count"
+            ],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": {
+              "comparison": "lowerBound",
+              "unit": "draws",
+              "value": 6
+            },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": [
+          "^ペンギン",
+          "^ぺんぎん",
+          "^peng",
+          "^うらな",
+          "^占",
+          "^オラクル",
+          "^oracle"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      }
+    }
+  },
+  "timers": {},
+  "metas": {},
+  "actionSets": {
+    "PenguinOracleFirst": {
+      "id": "1ff87a57-03ce-4590-ada0-7aa171c8165e",
+      "key": "PenguinOracleFirst",
+      "name": "🐧イントロ",
+      "description": "稼働時の演出です",
+      "createdAt": "2026-01-26T01:10:18.129Z",
+      "updatedAt": "2026-02-07T01:53:26.378Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracleBack"
+        },
+        {
+          "delaySeconds": 1,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_1"
+        },
+        {
+          "delaySeconds": 1.5,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_2"
+        },
+        {
+          "delaySeconds": 2,
+          "actionType": "wordParty",
+          "wordParty": "LenormandOracle_3"
+        }
+      ],
+      "gameScripts": {
+        "scriptId": "",
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
+    }
+  },
+  "placeholders": {
+    "PenguinOracle": {
+      "id": "LenormandOracle",
+      "key": "PenguinOracle",
+      "name": "ペンギン:占い結果",
+      "createdAt": "2025-09-13T22:12:07.988Z",
+      "updatedAt": "2026-02-07T02:15:32.035Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='アデリーペンギン'}}<<'好奇心旺盛な','怖いもの知らずの','勢いのある'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinAdelie>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='コウテイペンギン'}}<<'忍耐強い','責任感のある','リーダー的存在'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinEmperor>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='オウサマペンギン'}}<<'統率のとれた','安定感のある','堂々とした'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinKing>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='ジェンツーペンギン'}}<<'勘の鋭い','ものわかりのいい','スマートな'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinGentoo>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='ヒゲペンギン'}}<<'空気の読める','気配り上手な','調整役の'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinChinstrap>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='マカロニペンギン'}}<<'個性際立つ','センス溢れる','華のある'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinMacaroni>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='イワトビペンギン'}}<<'情熱的な','ガッツのある','負けず嫌いな'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinRockhopper>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='コガタペンギン'}}<<'感性豊かな','繊細な','癒やし系'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinFairy>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='キンメペンギン'}}<<'冷静沈着な','思慮深い','マイペースな'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinYellowEyed>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='フンボルトペンギン'}}<<'親しみやすい','器用でそつのない','リアリズムな'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinHumboldt>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='ガラパゴスペンギン'}}<<'自由奔放な','ユニークな','縛られない'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinGalapagos>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='マゼランペンギン'}}<<'誠実で真面目な','一途な','ヤンキーな'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinMagellanic>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='シュレーターペンギン'}}<<'意志の強い','情熱溢れる','自分を曲げない'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinErectCrested>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='ケープペンギン'}}<<'社交的な','お喋り好きな','ムードメーカーの'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinAfrican>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='ロイヤルペンギン'}}<<'美意識の高い','理想主義の','気品のある'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinRoyal>>",
+        "{{var symbol='<<PenguinPartner>>'}}{{var text='キマユペンギン'}}<<'ミステリアスな','深い感性を持つ','魅惑的な'>>【{{text}}】、パートナーは【{{symbol}}ペンギン】<<PenguinFiordland>>"
+      ]
+    },
+    "PenguinPartner": {
+      "id": "LenormandOracleCross",
+      "key": "PenguinPartner",
+      "name": "🐧パートナー",
+      "description": "",
+      "createdAt": "2025-09-13T22:32:48.041Z",
+      "updatedAt": "2026-02-07T01:52:04.445Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "アデリー",
+        "コウテイ",
+        "オウサマ",
+        "ジェンツー",
+        "ヒゲ",
+        "マカロニ",
+        "イワトビ",
+        "コガタ",
+        "キンメ",
+        "フンボルト",
+        "ガラパゴス",
+        "マゼラン",
+        "シュレーター",
+        "ケープ",
+        "ロイヤル",
+        "キマユ"
+      ]
+    },
+    "PenguinAdelie": {
+      "id": "LenormandOracleRider",
+      "key": "PenguinAdelie",
+      "name": "🐧アデリーペンギン",
+      "description": "アデリーペンギン （好奇心旺盛）",
+      "createdAt": "2025-09-13T22:16:22.894Z",
+      "updatedAt": "2026-02-07T01:52:04.445Z",
+      "order": 3,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あなたの突撃力に相手が共鳴！二人が組めば、どんな氷山も砕いて進める最強の突撃隊になります。",
+        "あなたの無邪気な動きに相手がノリノリで反応。息ぴったりの連携で、今日は笑いが絶えない一日に！",
+        "猪突猛進なあなたを、相手がそっと見守ってくれます。背中を預けて、思い切り暴れまわってOK！",
+        "あなたにないものを相手が持っています。正反対の個性が混ざり合い、予想外の化学反応が起きる予感。",
+        "今日はあなたが「小石」を運ぶように、相手をサポートしてみて。その優しさが大きな幸運を運びます。",
+        "「どっちが先に海へ飛び込むか」競い合うような関係。相手の頑張りが、あなたのやる気に火をつけます！",
+        "遊び疲れたら、相手と一緒に岩場でひと休み。何もしない時間を共有することで、次の活力が湧いてくるよ。",
+        "未知の海へ二人でダイブ！あなたの好奇心と相手の協力があれば、誰も見たことのないお宝が見つかるかも。"
+      ]
+    },
+    "PenguinEmperor": {
+      "id": "LenormandOracleClover",
+      "key": "PenguinEmperor",
+      "name": "🐧コウテイペンギン",
+      "description": "コウテイペンギン （忍耐・責任感）",
+      "createdAt": "2025-09-13T22:24:43.051Z",
+      "updatedAt": "2026-02-07T01:52:04.445Z",
+      "order": 4,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "王者の風格を持つあなたに、相手が絶対的な信頼を寄せています。二人の絆は極寒をも溶かすほど熱い！",
+        "どっしり構えるあなたと相手の息がぴったり。余裕のある振る舞いが、周囲を惹きつける最高の一日に。",
+        "相手に背中を預け、あなたは自分の使命に集中して。無言の了解が、二人の仲をより強固にします。",
+        "重厚なあなたと、軽やかな相手。正反対だからこそ、お互いの弱点を完璧に埋め合える最強の布陣です。",
+        "大切な卵を守るように、今日は相手を優しくフォローして。あなたの包容力が相手の才能を開花させます。",
+        "高い志を持つ者同士。相手の存在が、あなたの「もっと上へ」という向上心に火をつけてくれるはず！",
+        "吹雪の中でも動じないあなたも、今日は相手と一息ついて。肩の力を抜くことで、新たな良案が浮かびます。",
+        "深海へ深く潜る勇気を持つあなた。相手と協力すれば、誰も到達できない成功の深淵まで辿り着けます。"
+      ]
+    },
+    "PenguinKing": {
+      "id": "LenormandOracleShip",
+      "key": "PenguinKing",
+      "name": "🐧オウサマペンギン",
+      "description": "オウサマペンギン（統率・安定）",
+      "createdAt": "2025-09-13T22:25:10.590Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 5,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "統率力あるあなたを相手が全力サポート。二人で立てた計画は、揺るぎない成功へと繋がっています。",
+        "気品溢れる二人の連携。周囲を圧倒するスマートな振る舞いで、今日の主役をかっさらっていこう！",
+        "相手を信じて、あなたは一歩前を歩いて。確かな絆があるからこそ、迷わずリーダーシップを発揮できます。",
+        "安定感抜群のあなたと、予測不能な相手。カオスな状況も、あなたの調整力があれば最高の楽しみに変わる！",
+        "困っている相手をそっと導くのが今日の役目。あなたの的確な指示が、チーム全体を救うことになります。",
+        "どちらがより優雅に振る舞えるか競うような日。良きライバルとして、お互いの質を高め合える関係です。",
+        "完璧主義を少しお休みして、相手とゆったり過ごして。リラックスした会話の中に、幸運のヒントが。",
+        "慎重に、かつ大胆に。相手と戦略を練って挑めば、暗い海の底に眠る大きなチャンスを釣り上げられます。"
+      ]
+    },
+    "PenguinGentoo": {
+      "id": "LenormandOracleHouse",
+      "key": "PenguinGentoo",
+      "name": "🐧ジェンツーペンギン",
+      "description": "ジェンツーペンギン（最速・効率）",
+      "createdAt": "2025-09-13T22:28:18.260Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 6,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あなたの速さに相手が必死についてきます。そのスピード感こそが、今日という日を切り拓く最強の武器！",
+        "最速スイマーのあなたと相手が軽快にリンク。無駄のない動きで、山積みのタスクも楽しく片付きそう。",
+        "相手を信頼しているからこそ、あなたは迷わず最短距離を選べる。言葉以上のスピードで心が通じ合います。",
+        "効率命のあなたを、おっとりした相手が癒やします。緩急のあるコンビネーションが、心に余裕を生む日。",
+        "持ち前のフットワークで、相手のピンチを爆速で救いましょう。その迅速な対応が、絶大な信頼を築きます。",
+        "「どっちが先にゴールするか」の競争！相手のスピードが、あなたの限界をさらに押し広げてくれます。",
+        "たまには泳ぐ足を止めて、相手とまったり。速度を落とすことで、普段は見落としていた幸せに気づけます。",
+        "狙った獲物は逃さない！相手と連携して一気に潜り込めば、効率よく最高の結果を掴み取れるチャンス。"
+      ]
+    },
+    "PenguinChinstrap": {
+      "id": "LenormandOracleTree",
+      "key": "PenguinChinstrap",
+      "name": "🐧ヒゲペンギン",
+      "description": "ヒゲペンギン （戦略・連携）",
+      "createdAt": "2025-09-13T22:28:54.093Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 7,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "抜群のチームプレー。相手と呼吸を合わせることで、一人では不可能な難局もスマートに突破できます。",
+        "空気を読む天才のあなたに、相手が心地よく同調します。滑らかな連携で、人間関係が円滑に進む一日。",
+        "黙っていても次の動きがわかる。そんな阿吽の呼吸が、相手との間に生まれています。自信を持って進んで。",
+        "周調和を重んじるあなたと、奔放な相手。あなたの柔軟な対応があれば、どんな凸凹も魅力的な個性に！",
+        "群れの平和を守るため、今日は調整役に回ると吉。相手の顔を立てることで、巡り巡ってあなたに福が来ます。",
+        "戦略を練り、高め合う関係。相手の意外な一面に驚きつつ、自分の適応力を磨いていける良い刺激になります。",
+        "集団の中にいても、今日は相手と二人で「凪」の時間を。静かに過ごすことで、明日への戦術が整理されます。",
+        "二人で役割分担を明確に。あなたが道筋を示し、相手が動く。完璧なフォーメーションで未知の領域へ！"
+      ]
+    },
+    "PenguinMacaroni": {
+      "id": "LenormandOracleClouds",
+      "key": "PenguinMacaroni",
+      "name": "🐧マカロニペンギン",
+      "description": "マカロニペンギン（自己表現・華やか）",
+      "createdAt": "2025-09-13T22:29:26.905Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 8,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "華やかなあなたを相手が最高に引き立てます。二人が並べば、そこはもうランウェイ！最強の主役コンビ。",
+        "自己表現が得意なあなたと、相手がノリノリで共演。あなたのセンスが光り、周囲からの注目度も急上昇！",
+        "派手なパフォーマンスの裏にある、相手への絶対的な安心感。見守られているからこそ、自由に自分を出せます。",
+        "個性爆発のあなたを、地味だけど堅実な相手が支えます。そのギャップが、周囲にはたまらなく魅力的に映る！",
+        "輝いているあなたの姿が、相手を勇気づけます。今日は「見せる」ことで、相手を元気にできる恩返しの提。",
+        "どちらがより輝けるかの美意識バトル！相手のセンスを認めつつ、自分の魅力をアップデートしていける日。",
+        "冠羽のお手入れをするように、相手と優雅な休息を。飾り気のない時間を過ごすことで、内面の美が磨かれます。",
+        "暗い海の中でも、あなたの輝きが道標。相手の手を引いて、華やかな成功への入り口を見つけ出しましょう！"
+      ]
+    },
+    "PenguinRockhopper": {
+      "id": "LenormandOracleSnake",
+      "key": "PenguinRockhopper",
+      "name": "🐧イワトビペンギン",
+      "description": "イワトビペンギン （不屈・挑戦）",
+      "createdAt": "2025-09-13T22:29:59.161Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 9,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "どんな岩場も二人でジャンプ！困難に立ち向かうあなたの背中を、相手が全力で押し上げてくれるはず。",
+        "アクティブなあなたと相手。困難さえもステップに変えて、リズミカルに乗り越えていける爽快な一日。",
+        "あなたのガッツを、相手が静かに評価しています。無茶をしても受け止めてくれる安心感が、勇気の源。",
+        "攻めのあなたと、守りの相手。あなたが跳ねる場所を相手がしっかり確保してくれる、絶妙なバランスです。",
+        "壁にぶつかっている相手を、あなたの突破力で助けて。一緒にジャンプする楽しさを教えてあげましょう。",
+        "「あいつにできて自分にできないはずがない！」そんな熱い競争心が、二人をより高い場所へと導きます。",
+        "険しい崖を登りきったら、相手と並んで一休み。戦士の休息が、次の跳躍へのパワーを蓄えてくれます。",
+        "荒波も恐れずダイブ！相手のサポートがあれば、険しい海底に隠されたお宝も確実にゲットできます。"
+      ]
+    },
+    "PenguinFairy": {
+      "id": "LenormandOracleCoffin",
+      "key": "PenguinFairy",
+      "name": "🐧コガタペンギン",
+      "description": "コガタペンギン （繊細・癒やし）",
+      "createdAt": "2025-09-13T22:30:31.785Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 10,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "小さなあなたの大きな愛を、相手が全力で守ります。二人の間には、世界で一番優しい時間が流れるはず。",
+        "ちょこちょこ動くあなたに、相手が笑顔で合わせてくれます。何気ないやり取りが、最高の癒やしになる日。",
+        "夜の海を泳ぐように、静かで深い絆。言葉がなくても、相手がそばにいるだけであなたの心は満たされます。",
+        "繊細なあなたを、包容力のある相手が包み込みます。守られている安心感が、あなたの隠れた勇気を引き出すよ。",
+        "今日は相手の心の隙間を、あなたの気配りで埋めてあげて。小さな優しさが、大きな感謝となって返ってきます。",
+        "控えめなあなただけど、相手の活躍に刺激を受けて「少しだけ勇気」を出せる日。小さな一歩が大きな成長に。",
+        "安全な巣穴で、相手とゆったり。心地よい静寂を共有することで、繊細なあなたの心がエネルギー満タンに。",
+        "臆病にならず、相手と手をつないで少しだけ深い場所へ。二人なら、不思議で美しい景色を見つけられるはず。"
+      ]
+    },
+    "PenguinYellowEyed": {
+      "id": "LenormandOracleBouquet",
+      "key": "PenguinYellowEyed",
+      "name": "🐧キンメペンギン ",
+      "description": "キンメペンギン （慎重・計画）",
+      "createdAt": "2025-09-13T22:31:02.984Z",
+      "updatedAt": "2026-02-07T01:52:04.446Z",
+      "order": 11,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あなたの緻密な計画を、相手が完璧に実行。二人の連携に隙はなく、確実に目的を達成できる鉄壁のバディ！",
+        "慎重なあなたも、今日は相手のリズムに乗ってみて。計画通りにいかない面白さが、新しい扉を開きます。",
+        "単独行動を好むあなたを、相手が程よい距離で見守ります。その信頼があるからこそ、安心して羽を伸ばせそう。",
+        "慎重派のあなたと、直感派の相手。あなたのリスク管理と相手の瞬発力が合わされば、死角なしの最強ユニット。",
+        "周りが見えなくなっている相手に、冷静な助言を。あなたの客観的な視点が、トラブルを未然に防ぎます。",
+        "どちらがより冷静でいられるか。相手の落ち着きを見て、自分も襟を正すような、心地よい緊張感のある日。",
+        "警戒心を少し緩めて、相手と静かな時間を。安全を確認し合える相手との休息は、何よりの贅沢になります。",
+        "綿密にシミュレーションしてから二人でGO！石橋を叩いて渡る慎重さが、最高の成果を確実に手繰り寄せます。"
+      ]
+    },
+    "PenguinHumboldt": {
+      "id": "LenormandOracleScythe",
+      "key": "PenguinHumboldt",
+      "name": "🐧フンボルトペンギン",
+      "description": "フンボルトペンギン （適応・現実）",
+      "createdAt": "2025-09-13T22:31:30.126Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 12,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "現実的なあなたの判断を、相手が全面的に支持。どんな環境の変化も、二人なら笑って順応していけるはず。",
+        "柔軟なあなたと相手の、息の合ったセッション。場の空気に合わせて、最高に楽しい時間を演出できそう。",
+        "安定した生活力を尊重し合える関係。無理に飾らず、素のままでいられる心地よさが二人の絆を深めます。",
+        "常識的なあなたと、夢見がちな相手。あなたが現実の舵を握ることで、二人の夢を形にできる好バランス！",
+        "器用なあなたなら、相手のどんな悩みも解決できそう。実用的なアドバイスで、相手をピンチから救いましょう。",
+        "「今、何が必要か」を競い合う知恵比べ。相手の現実的な処世術を見て、自分のスキルも磨いていける日。",
+        "どんな場所でも楽しめるあなたらしく、相手と日常を謳歌。特別なことはなくても、笑い合えるだけで運気UP。",
+        "確実な獲物を狙って、相手と協力。無茶をせず「勝てる勝負」に挑むことで、安定した収益や成果を得られます。"
+      ]
+    },
+    "PenguinGalapagos": {
+      "id": "LenormandOracleWhip",
+      "key": "PenguinGalapagos",
+      "name": "🐧ガラパゴスペンギン",
+      "description": "ガラパゴスペンギン （自由・独自）",
+      "createdAt": "2025-09-13T22:32:48.041Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 13,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "常識に縛られない二人の道。相手もあなたのユニークさを愛しています。誰も歩んだことのない航路へ進もう！",
+        "自由奔放なあなたに、相手が楽しく振り回される日。あなたの突拍子もないアイデアが、最高のイベントに。",
+        "「自分は自分、相手は相手」という尊重。個々の自由を大切にするからこそ、深い部分で繋がっていられます。",
+        "型破りなあなたを、常識的な相手がフォロー。相手がいるからこそ、あなたは安心して冒険へ出かけられます。",
+        "行き詰まっている相手に、自由な発想でヒントを。あなたの「なんとかなるさ」が、相手の心を救います。",
+        "お互いの「こだわり」をぶつけ合う日。自分にはない相手の哲学に触れ、あなたの世界観がさらに広がります。",
+        "南国の太陽を浴びるように、開放的な時間を。相手と自由な夢を語り合えば、心がリフレッシュされます。",
+        "直感のままにダイブ！相手が予測不能な動きでサポートしてくれるから、驚きの発見が期待できるラッキーデー。"
+      ]
+    },
+    "PenguinMagellanic": {
+      "id": "LenormandOracleBirds",
+      "key": "PenguinMagellanic",
+      "name": "🐧マゼランペンギン",
+      "description": "マゼランペンギン （誠実・一途）",
+      "createdAt": "2025-09-13T22:34:16.344Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 14,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "相手への深い愛情が奇跡を起こします。一途な想いが通じ合い、二人でひとつの夢を実現できる幸せな日。",
+        "真面目なあなたも、今日は相手と無邪気に遊んで。誠実さの中に少しの遊び心を加えると、魅力が倍増します。",
+        "言葉にしなくても伝わる深い絆。隣にいてくれるだけでいい、そんな純粋な信頼が今日のあなたを強くします。",
+        "一途なあなたと、多趣味な相手。あなたがしっかり軸となることで、二人の関係はどこまでも安定します。",
+        "相手が道に迷わないよう、あなたの信念を灯台にして導いて。誠実な態度は、相手に勇気と安心を与えます。",
+        "お互いの誠実さを認め合い、より良い自分であろうとする関係。相手の真面目さが、あなたの心を浄化してくれます。",
+        "二人だけの静かな場所で、思い出話に花を咲かせて。変わらない絆を再確認することで、心の底から癒やされます。",
+        "信じた道を突き進む！相手との確固たる信頼関係があれば、どんな深い悩みも二人で解決していけます。"
+      ]
+    },
+    "PenguinErectCrested": {
+      "id": "LenormandOracleChild",
+      "key": "PenguinErectCrested",
+      "name": "🐧シュレーターペンギン",
+      "description": "シュレーターペンギン （情熱・リーダー）",
+      "createdAt": "2025-09-13T22:34:50.903Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 15,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "あなたの熱いパッションに相手が心酔！二人のコンビネーションで、周囲を巻き込む大きなムーブメントを。",
+        "意思の強いあなたと、やる気満載の相手。足並みを揃えて力強く進む姿は、周囲に大きな勇気を与えます。",
+        "背中で語るあなたの信念を、相手がしっかり理解しています。無駄な説明は不要。行動で信頼を示して。",
+        "情熱的なあなたと、冷静沈着な相手。あなたのエンジンに相手がブレーキ役となり、最高の着地点が見つかります。",
+        "正義感の強いあなたらしく、困っている相手のために一肌脱ぎましょう。あなたの熱意が状況を好転させます。",
+        "真剣勝負の熱いバトル！お互いのポテンシャルを引き出し合い、終わった後には固い友情が芽生えるはず。",
+        "眉間にしわを寄せていないで、今日は相手とリラックス。情熱を一度鎮めることで、次の戦略がクリアに見えます。",
+        "狙いを定めて一直線！相手と勢いよく潜れば、最大のチャンスを一瞬の判断でモノにできるはず。"
+      ]
+    },
+    "PenguinAfrican": {
+      "id": "LenormandOracleFox",
+      "key": "PenguinAfrican",
+      "name": "🐧ケープペンギン",
+      "description": "ケープペンギン （社交・お喋り）",
+      "createdAt": "2025-09-13T22:35:22.822Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 16,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "お喋りが止まらないほど意気投合！二人でいれば退屈とは無縁。笑い声が幸運をどんどん引き寄せるよ。",
+        "抜群のトークセッション。あなたの軽快な話術に相手が爆笑し、最高のムードで物事が進んでいく一日。",
+        "饒舌なあなたを、相手が優しく聞き役として支えます。あなたの想いを全て吐き出すことで、心がスッキリ！",
+        "お喋りなあなたと、寡黙な相手。あなたが場の空気を温め、相手が要所を締める。完璧な司会コンビです。",
+        "落ち込んでいる相手を、あなたの明るい声で励まして。楽しい会話が、相手にとって一番の特効薬になります。",
+        "どちらが場を盛り上げられるか勝負！相手のコミュニケーション術を参考に、自分の人脈もさらに広がる予感。",
+        "言葉を介さない、静かな時間をあえて相手と。お喋りを休むことで、相手の新しい魅力に気づけるかも。",
+        "情報交換を密にしてダイブ！二人で集めた情報を繋ぎ合わせれば、黄金のチャンスへたどり着けます。"
+      ]
+    },
+    "PenguinRoyal": {
+      "id": "LenormandOracleBear",
+      "key": "PenguinRoyal",
+      "name": "🐧ロイヤルペンギン",
+      "description": "ロイヤルペンギン （美意識・理想）",
+      "createdAt": "2025-09-13T22:36:04.753Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 17,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "高い理想を共有する二人。美しく完璧な仕上がりを目指せば、周囲もため息をつくような成果が出せます。",
+        "優雅な身のこなしで相手と調和。あなたの洗練されたセンスが、今日のあらゆる場面を美しく彩ります。",
+        "相手の品格を信じ、あなたは自分自身の美学を追求して。凛とした二人の佇まいが、幸運を呼び寄せます。",
+        "理想主義のあなたを、泥臭い努力ができる相手が支えます。夢を現実にするための、完璧な二人三脚です。",
+        "相手の立ち振る舞いに、あなたの美意識でアドバイスを。あなたのひと工夫で、相手の印象が劇的に良くなります。",
+        "どちらがより高く、美しく飛べるか。相手の向上心が、あなたの理想をさらに高みへと引き上げてくれるはず。",
+        "美しい景色を相手と一緒に眺めるような休息を。心を豊かにすることで、直感力がさらに研ぎ澄まされます。",
+        "最高のクオリティを求めて潜航。妥協しない二人の姿勢が、宝石のような価値ある結果を掘り当てます。"
+      ]
+    },
+    "PenguinFiordland": {
+      "id": "LenormandOracleStars",
+      "key": "PenguinFiordland",
+      "name": "🐧キマユペンギン",
+      "description": "キマユペンギン （ミステリアス・癒やし）",
+      "createdAt": "2025-09-13T22:36:37.887Z",
+      "updatedAt": "2026-02-07T01:52:04.447Z",
+      "order": 18,
+      "isEnabled": true,
+      "editorColor": "#A5D6A7",
+      "tags": [
+        "ペンギン"
+      ],
+      "accessLevel": "basic",
+      "values": [
+        "深い霧の中でも繋がっているような特別な絆。二人だけの秘密を共有することで、運勢がぐんと強まります。",
+        "不思議な魅力を持つあなたに、相手が惹きつけられます。言葉を超えた感覚で、ゆったりと共鳴し合える日。",
+        "相手の静かな存在が、あなたの心を落ち着かせます。森の中にいるような深い安らぎを、共に感じられる関係。",
+        "謎めいたあなたと、分かりやすい相手。相手の直球な態度が、あなたの複雑な心を優しく解きほぐしてくれます。",
+        "疲れている相手を、あなたの「静かな強さ」で癒やしてあげて。ただそばにいるだけで、相手は救われます。",
+        "お互いの内面を深掘りするような関係。相手の意外な深みに触れ、あなた自身の感性も鋭く磨かれていく予感。",
+        "木漏れ日を浴びるように、穏やかな時間を。何も語らずとも心が満たされる、贅沢なひとときを過ごせそう。",
+        "直感を信じて、相手と深淵へ。あなたの中に眠るミステリアスな直感力が、素晴らしい宝を見つけ出す鍵に。"
+      ]
+    }
+  },
+  "characters": {
+    "omiken": {
+      "id": "omiken",
+      "key": "omiken",
+      "name": "おみくじBOT",
+      "description": "シンプルなフキダシです",
+      "createdAt": "2025-08-11T03:50:57.710Z",
+      "updatedAt": "2025-12-28T11:19:30.358Z",
+      "order": 1,
+      "isEnabled": true,
+      "editorColor": "#F44336",
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.1",
+      "author": "Pintocuru",
+      "url": "",
+      "displayName": "おみくじBOT",
+      "image": {
+        "default": [],
+        "happy": [],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "fantasy",
+        "backFrom": "secondary",
+        "backTo": "primary",
+        "nameColor": "#AB47BC",
+        "textColor": "#F3E5F5",
+        "backgroundColor": "#6A1B9A",
+        "customClasses": "px-6 py-6 border border-white rounded-md"
+      },
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": ""
+      }
+    }
+  },
+  "components": {
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
+    "bubble": {
+      "showCharacters": {
+        "center": [
+          "omiken"
+        ],
+        "slot1": [],
+        "slot2": [],
+        "slot3": [],
+        "slot4": []
+      },
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "wireframe",
+        "backFrom": "success",
+        "backTo": "info",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "characterSize": 48,
+      "fontFamily": "kaiseiDecol",
+      "bubbleMotionEnter": "flipX",
+      "bubbleTextAnimate": false,
+      "bubbleTextSpeed": 50
+    },
+    "toast": {
+      "showToastsOnRight": true,
+      "showToastsCharacter": false,
+      "showThumbnail": []
+    },
+    "ranking": {
+      "targetScriptKeys": [
+        "basicList"
+      ],
+      "title": "🐧ペンギン占い🐧",
+      "color": "autumn",
+      "limit": 5,
+      "sortOrder": "new",
+      "component": "rankStandard"
+    },
+    "counter": {
+      "ruleKey": null,
+      "component": "counterUser",
+      "target": "draw",
+      "label": "Counter",
+      "color": {
+        "daisyUiTheme": "dark",
+        "backFrom": "primary",
+        "backTo": "secondary"
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "metas": "none",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "none"
+    },
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "fantasy"
+  }
+}

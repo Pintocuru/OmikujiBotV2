@@ -28,7 +28,7 @@
     </SettingItem>
 
     <!-- Repeat -->
-    <SettingItem label="🔁 繰り返し回数" description="WordPartyを実行する回数（最大30回）">
+    <SettingItem label="🔁 繰り返し回数" description="WordPartyを実行する回数（最大20回）">
       <div class="flex items-center gap-2 flex-1">
         <select v-model="repeatMode" class="select select-bordered select-sm w-32">
           <option value="none">なし（1回）</option>
@@ -43,12 +43,12 @@
           v-model.number="repeatNumber"
           class="input input-bordered input-sm w-24"
           min="1"
-          max="30"
+          max="20"
           placeholder="回数"
         />
 
         <span v-if="repeatMode === 'viewer' || repeatMode === 'upVote'" class="text-xs text-gray-500">
-          (最大30回)
+          (最大20回)
         </span>
       </div>
     </SettingItem>
@@ -133,7 +133,7 @@
       return typeof repeat === 'number' ? repeat : 1
     },
     set: (value: number) => {
-      const clampedValue = Math.min(Math.max(value, 1), 30)
+      const clampedValue = Math.min(Math.max(value, 1), 20)
       updateAction({ repeat: clampedValue })
     },
   })

@@ -4,7 +4,7 @@ import package_json from '../package.json'
 // アプリケーションのバージョン情報
 export const BUILD_DATE = buildDate()
 export const APP_VERSION = package_json.version
-export const DATA_VERSION = package_json.data_varsion
+export const DATA_VERSION = package_json.data_version
 
 function buildDate(): string {
   const d = new Date()
