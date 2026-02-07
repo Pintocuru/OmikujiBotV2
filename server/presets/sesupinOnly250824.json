@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha1",
-    "dataVersion": 2.03001,
+    "generatorVersion": "2.1.0-alpha3",
+    "dataVersion": 2.09003,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -25,7 +25,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1766411730366",
+          "id": "fca49a03-8da4-4cb0-b600-a9e9b194b0dc",
           "key": "1766411730366",
           "name": "",
           "createdAt": "2025-12-22T13:55:30.367Z",
@@ -58,7 +58,7 @@
           "criteria": null
         },
         {
-          "id": "23a111e9-eb9c-4186-9bea-77b76108cc5d",
+          "id": "2c08fd97-2094-474d-85ad-6e82b437e50d",
           "key": "23a111e9-eb9c-4186-9bea-77b76108cc5d",
           "name": "3回以上",
           "createdAt": "2025-12-22T13:55:30.367Z",
@@ -125,7 +125,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
+          "id": "d72e24bb-79c8-4b7f-88ed-1a8996f096c5",
           "key": "cbe3bd6b-b592-4aa6-b6ea-489993898dec",
           "name": "幻獣ガチャ:アンコモン",
           "createdAt": "2025-09-02T03:45:59.053Z",
@@ -170,7 +170,7 @@
           "criteria": null
         },
         {
-          "id": "1756784759053",
+          "id": "b90f6c05-7c7d-412c-a934-8d8837bd2bfb",
           "key": "1756784759053",
           "name": "幻獣ガチャ:レア",
           "createdAt": "2025-09-02T03:45:59.053Z",
@@ -220,7 +220,7 @@
           "criteria": null
         },
         {
-          "id": "51d3adb2-6a15-438b-9c80-a3327102a87b",
+          "id": "f9493334-c787-44b6-90eb-fe7e29ec192b",
           "key": "51d3adb2-6a15-438b-9c80-a3327102a87b",
           "name": "幻獣ガチャ:SSR",
           "createdAt": "2025-09-02T03:45:59.053Z",
@@ -275,7 +275,7 @@
           "criteria": null
         },
         {
-          "id": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
+          "id": "7272a9da-88a4-4b5c-a5cf-b537de07a358",
           "key": "a2ff6922-8ce2-4bd8-8cc6-4b654c22246d",
           "name": "幻獣ガチャ:SecretRare",
           "createdAt": "2025-09-02T03:45:59.053Z",
@@ -363,7 +363,7 @@
       "accessLevel": "pro",
       "omikuji": [
         {
-          "id": "e446aa2d-b9d5-4a6d-96fe-c9bd9a8887be",
+          "id": "1855b469-01b1-4a7d-84b5-1bc84b1b602e",
           "key": "e446aa2d-b9d5-4a6d-96fe-c9bd9a8887be",
           "name": "",
           "description": "",
@@ -436,7 +436,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1757806025003",
+          "id": "51ba308e-729d-4bee-86f8-a91476072a28",
           "key": "1757806025003",
           "name": "スイカ",
           "createdAt": "2025-09-13T23:27:05.003Z",
@@ -469,7 +469,7 @@
           "criteria": null
         },
         {
-          "id": "6421b292-505b-4f08-986d-bf22162a8ea1",
+          "id": "f9493afd-732a-47ce-b694-d3b4fafcfd87",
           "key": "6421b292-505b-4f08-986d-bf22162a8ea1",
           "name": "メロン",
           "createdAt": "2025-09-13T23:27:05.003Z",
@@ -502,7 +502,7 @@
           "criteria": null
         },
         {
-          "id": "98186699-9024-4a93-9a4c-1391828b606a",
+          "id": "0050c21b-fd43-4d1d-8944-d6bfadd35eba",
           "key": "98186699-9024-4a93-9a4c-1391828b606a",
           "name": "もも",
           "createdAt": "2025-09-13T23:27:05.003Z",
@@ -535,7 +535,7 @@
           "criteria": null
         },
         {
-          "id": "27d3c13c-9f3e-4025-987a-69e05e2de900",
+          "id": "d8f5306c-8119-4172-b9e3-c9932ceccca7",
           "key": "27d3c13c-9f3e-4025-987a-69e05e2de900",
           "name": "パイナップル",
           "createdAt": "2025-09-13T23:27:05.003Z",
@@ -568,7 +568,7 @@
           "criteria": null
         },
         {
-          "id": "a2581c8c-a775-47ba-a2bb-9295ccb81720",
+          "id": "5d12bff4-652b-4055-ac39-9cabca8cbb24",
           "key": "a2581c8c-a775-47ba-a2bb-9295ccb81720",
           "name": "イチゴ",
           "createdAt": "2025-09-13T23:27:05.003Z",
@@ -634,7 +634,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1759673656457",
+          "id": "171c331f-a275-4468-bcf3-439c7e603335",
           "key": "1759673656457",
           "name": "",
           "createdAt": "2025-10-05T14:14:16.457Z",
@@ -704,7 +704,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1763446870108",
+          "id": "bda93793-2a81-4b97-9c87-7fe41aa618a8",
           "key": "1763446870108",
           "name": "",
           "createdAt": "2025-11-18T06:21:10.108Z",
@@ -768,7 +768,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "79c3293f-90f9-4db0-a38f-595b4b96c82d",
+          "id": "6ecf29f4-e0da-46ab-853f-1a127721ef7a",
           "key": "7bdd8e09-b4f2-4fb6-953b-4c75a5ffce58",
           "name": "",
           "createdAt": "2026-01-19T00:51:36.052Z",
@@ -835,7 +835,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1f2ce0e5-dd0c-4d75-b778-352eb53c02d8",
+          "id": "98204ef6-58ff-478c-abab-64273d89bc88",
           "key": "66362a33-3a12-4228-ad82-74e2bf6c758c",
           "name": "",
           "createdAt": "2026-02-04T00:52:11.426Z",
@@ -3384,17 +3384,17 @@
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "extra",
+        "kind": "flightSeat"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      }
+    ],
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "dark",
@@ -3403,37 +3403,67 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "slotType": "primary",
+        "showCharacters": {
+          "center": [
+            "chocolate",
+            "cafelatte",
+            "honjoFox",
+            "omiken",
+            "omiken_2"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
-    },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
-      "title": "🍉スイカランキング🍉",
-      "color": "lofi",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+      "toast": {
+        "slotType": "secondary",
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "slotType": "extra",
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🍉スイカランキング🍉",
+        "color": "lofi",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "slotType": "extra",
+        "ruleKey": null,
+        "component": "counterUser",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
+      "flightSeat": {
+        "slotType": "extra",
+        "layout": "theater",
+        "rows": 4,
+        "cols": 6,
+        "title": "🛫 8時間フライト、どの席に座る？",
+        "color": "dark",
+        "backgroundVehicle": "none",
+        "historyLimit": 10
       }
     }
   },
@@ -3446,7 +3476,13 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [],
+    "components": [
+      "bubble",
+      "toast",
+      "ranking",
+      "counter",
+      "flightSeat"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
@@ -3455,7 +3491,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "dark"
   }
 }

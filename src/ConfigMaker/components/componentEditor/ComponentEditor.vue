@@ -15,8 +15,8 @@
     <SectionCard
       v-if="item.shouldShow"
       :icon="item.icon"
-      :isOpen="activeSection === item.sectionKey"
-      @toggle="toggleSection(item.sectionKey)"
+      :isOpen="activeSection === item.type"
+      @toggle="toggleSection(item.type)"
       :title="item.title"
       :description="item.description"
     >
@@ -33,87 +33,82 @@
   import ToastComponentEditor from './toast/ToastComponentEditor.vue'
   import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
+  import FlightSeatComponentEditor from './flightSeat/FlightSeatComponentEditor.vue'
 
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
+  import { ComponentKind } from '@/types'
 
-  // アクティブなセクションの管理
-  type SectionType =
-    | 'componentsSettings'
-    | 'bubbleComponent'
-    | 'bubbleComponentCharacter'
-    | 'toastComponent'
-    | 'rankingComponent'
-    | 'counterComponent'
-    | null
-  const activeSection = ref<SectionType>('componentsSettings')
-
+  const activeSection = ref<string | null>('componentsSettings')
   const { isComment, isCharacter } = useVisibilityAccess()
 
-  // セクションの切り替え
-  const toggleSection = (section: SectionType) => {
+  const toggleSection = (section: string) => {
     activeSection.value = activeSection.value === section ? null : section
   }
 
-  // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   const conditions = computed(() => data.value.components.conditions)
 
-  // v2.1: conditions から特定の kind が含まれているかチェック
-  const hasComponentKind = (kind: string) => {
-    return conditions.value.some((condition) => condition.kind === kind)
-  }
+  const hasComponentKind = (kind: ComponentKind): boolean => conditions.value.some((c) => c.kind === kind)
 
-  // アイテム設定の配列
   const componentItems = computed(() => [
+    // フキダシ
     {
       type: 'bubble',
-      sectionKey: 'bubbleComponent' as const,
       icon: 'MessageSquare',
       title: 'フキダシアイテム',
       description: 'BOTが喋るフキダシの設定',
       component: BubbleComponentEditor,
       shouldShow: hasComponentKind('bubble'),
     },
+    // フキダシ(キャラクター)
     {
       type: 'bubbleCharacter',
-      sectionKey: 'bubbleComponentCharacter' as const,
       icon: 'UserSquare',
       title: 'フキダシアイテム(キャラクター)',
       description: 'キャラクターの表示位置設定',
       component: BubbleComponentCharacterEditor,
       shouldShow: hasComponentKind('bubble') && isCharacter.value,
     },
+    // トースト・サムネイル
     {
       type: 'toast',
-      sectionKey: 'toastComponent' as const,
       icon: 'Bell',
       title: 'トースト・サムネイルアイテム',
       description: 'お知らせとして表示されるチャット表示',
       component: ToastComponentEditor,
       shouldShow: hasComponentKind('toast'),
     },
+    // ランキング
     {
       type: 'ranking',
-      sectionKey: 'rankingComponent' as const,
       icon: 'Trophy',
       title: 'ランキングアイテム',
       description: 'ゲームスクリプトで使う、ランキング表示',
       component: RankingComponentEditor,
       shouldShow: hasComponentKind('ranking'),
     },
+    // カウンター
     {
       type: 'counter',
-      sectionKey: 'counterComponent' as const,
       icon: 'Hash',
       title: 'カウンターアイテム',
       description: 'コメントが来るたびに数値が増えるカウンターの表示',
       component: CounterComponentEditor,
       shouldShow: hasComponentKind('counter') && isComment.value,
+    },
+    // フライトシート
+    {
+      type: 'flightSeat',
+      icon: 'Plane',
+      title: 'フライトシートアイテム',
+      description: '8時間フライト、どの席に座る？視聴者の座席配置表示',
+      component: FlightSeatComponentEditor,
+      shouldShow: hasComponentKind('flightSeat') && isComment.value,
     },
   ])
 </script>

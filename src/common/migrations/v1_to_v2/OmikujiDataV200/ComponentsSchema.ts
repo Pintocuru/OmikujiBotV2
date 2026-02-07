@@ -94,17 +94,17 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 /**
  * アイテム設定
  */
-export const settingsComponentsCondition = ['bubble', 'toast', 'ranking', 'counter'] as const
-export type SettingsComponentsCondition = (typeof settingsComponentsCondition)[number]
+export const ComponentKind = ['bubble', 'toast', 'ranking', 'counter'] as const
+export type ComponentKind = (typeof ComponentKind)[number]
 
 // アイテム名のマッピング
-export const componentLabels: Record<SettingsComponentsCondition, string> = {
+export const componentLabels: Record<ComponentKind, string> = {
   bubble: 'フキダシ',
   toast: 'トースト',
   ranking: 'ランキング',
   counter: 'カウンター',
 }
-export const ComponentsConditionSchema = z.enum(settingsComponentsCondition)
+export const ComponentsConditionSchema = z.enum(ComponentKind)
 
 /**
  * ComponentsSchema

@@ -4,7 +4,7 @@ import { RecordCategoryType } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo, ImportPreview } from '../ImportTypes'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
+import { ComponentKind } from '@/types/OmikujiData/ComponentsSchema'
 import { normalizeData } from '@/common/migrations'
 import { generateCategoryPreview, generateComponentPreview } from './importHelpers'
 
@@ -131,7 +131,7 @@ export const useImportManager = () => {
   /**
    * コンポーネント設定を更新
    */
-  const updateComponentConfig = (component: SettingsComponentsCondition, config: Partial<ComponentImportConfig>) => {
+  const updateComponentConfig = (component: ComponentKind, config: Partial<ComponentImportConfig>) => {
     if (!previewData.value?.componentConfigs[component]) return
 
     previewData.value.componentConfigs[component] = {

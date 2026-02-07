@@ -12,11 +12,11 @@
 
       <div class="grid grid-cols-1 gap-2">
         <label
-          v-for="(label, key) in componentLabels"
+          v-for="(value, key) in componentKindConfig"
           :key="key"
           class="label cursor-pointer justify-between p-2 rounded text-sm bg-base-300"
         >
-          <span class="font-mono">{{ label }} / {{ key }}</span>
+          <span class="font-mono">{{ value.label }} / {{ key }}</span>
           <input type="checkbox" class="toggle toggle-warning toggle-sm" :value="key" v-model="components" />
         </label>
       </div>
@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
-  import { componentLabels } from '@/types/'
+  import { componentKindConfig } from '@/types/'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { BASIC_COMPONENTS, PRO_COMPONENTS } from '../../componentEditor/componentRules'
 

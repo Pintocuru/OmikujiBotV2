@@ -5,66 +5,60 @@
     <div class="space-y-4">
       <!-- Primary Slot -->
       <div class="flex items-center gap-2">
-        <span class="badge badge-primary">メイン表示</span>
+        <span class="badge badge-primary" :class="{ 'opacity-40': !getSlotKind('primary') }"> メイン表示 </span>
         <select
           :value="getSlotKind('primary')"
           @change="updateSlot('primary', $event)"
           class="select select-bordered select-primary"
         >
-          <option value="">未使用</option>
+          <option value="">(未使用)</option>
           <option
-            v-for="comp in availableComponents"
+            v-for="comp in getAvailableComponents('primary')"
             :key="comp.kind"
             :value="comp.kind"
-            :disabled="comp.disabled || isKindUsedInOtherSlot(comp.kind, 'primary')"
+            :disabled="comp.disabled"
           >
-            {{ comp.label }}
-            {{ comp.disabled ? '（利用不可）' : '' }}
-            {{ isKindUsedInOtherSlot(comp.kind, 'primary') ? '（他のスロットで使用中）' : '' }}
+            {{ comp.label }}{{ comp.disabledReason }}
           </option>
         </select>
       </div>
 
       <!-- Secondary Slot -->
       <div class="flex items-center gap-2">
-        <span class="badge badge-secondary">サブ表示</span>
+        <span class="badge badge-secondary" :class="{ 'opacity-40': !getSlotKind('secondary') }"> サブ表示 </span>
         <select
           :value="getSlotKind('secondary')"
           @change="updateSlot('secondary', $event)"
           class="select select-bordered select-secondary"
         >
-          <option value="">未使用</option>
+          <option value="">(未使用)</option>
           <option
-            v-for="comp in availableComponents"
+            v-for="comp in getAvailableComponents('secondary')"
             :key="comp.kind"
             :value="comp.kind"
-            :disabled="comp.disabled || isKindUsedInOtherSlot(comp.kind, 'secondary')"
+            :disabled="comp.disabled"
           >
-            {{ comp.label }}
-            {{ comp.disabled ? '（利用不可）' : '' }}
-            {{ isKindUsedInOtherSlot(comp.kind, 'secondary') ? '（他のスロットで使用中）' : '' }}
+            {{ comp.label }}{{ comp.disabledReason }}
           </option>
         </select>
       </div>
 
       <!-- Extra Slot -->
       <div class="flex items-center gap-2">
-        <span class="badge badge-accent">エクストラ</span>
+        <span class="badge badge-accent" :class="{ 'opacity-40': !getSlotKind('extra') }"> エクストラ </span>
         <select
           :value="getSlotKind('extra')"
           @change="updateSlot('extra', $event)"
           class="select select-bordered select-accent"
         >
-          <option value="">未使用</option>
+          <option value="">(未使用)</option>
           <option
-            v-for="comp in availableComponents"
+            v-for="comp in getAvailableComponents('extra')"
             :key="comp.kind"
             :value="comp.kind"
-            :disabled="comp.disabled || isKindUsedInOtherSlot(comp.kind, 'extra')"
+            :disabled="comp.disabled"
           >
-            {{ comp.label }}
-            {{ comp.disabled ? '（利用不可）' : '' }}
-            {{ isKindUsedInOtherSlot(comp.kind, 'extra') ? '（他のスロットで使用中）' : '' }}
+            {{ comp.label }}{{ comp.disabledReason }}
           </option>
         </select>
       </div>
@@ -95,66 +89,50 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { ComponentSlot, ComponentKind, componentKindConfig, getKindsForSlot } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { ComponentSlot, ComponentKind, componentLabels } from '@/types/'
 
-  // Store
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isComment } = useVisibilityAccess()
 
   const conditions = computed(() => data.value.components.conditions)
-
-  // 利用可能なコンポーネント一覧
-  const availableComponents = computed(() => {
-    const { components } = data.value.featureUsage
-
-    return components
-      .filter((id): id is ComponentKind => id in componentLabels)
-      .map((kind) => ({
-        kind,
-        label: componentLabels[kind],
-        disabled: kind === 'counter' && !isComment.value, // counterはコメント機能必須
-      }))
-  })
+  const hasCounterSelected = computed(() => conditions.value.some((c) => c.kind === 'counter'))
 
   // 指定スロットに設定されているkindを取得
-  const getSlotKind = (slot: ComponentSlot): ComponentKind | '' => {
-    const condition = conditions.value.find((c) => c.slot === slot)
-    return condition?.kind ?? ''
-  }
-
-  // kindのラベルを取得
-  const getKindLabel = (kind: ComponentKind): string => {
-    return componentLabels[kind] ?? kind
-  }
+  const getSlotKind = (slot: ComponentSlot): ComponentKind | '' =>
+    conditions.value.find((c) => c.slot === slot)?.kind ?? ''
 
   // 指定kindが他のスロットで使用されているかチェック
-  const isKindUsedInOtherSlot = (kind: ComponentKind, currentSlot: ComponentSlot): boolean => {
-    return conditions.value.some((c) => c.kind === kind && c.slot !== currentSlot)
-  }
+  const isKindUsedInOtherSlot = (kind: ComponentKind, currentSlot: ComponentSlot): boolean =>
+    conditions.value.some((c) => c.kind === kind && c.slot !== currentSlot)
 
-  // counterが選択されているか
-  const hasCounterSelected = computed(() => conditions.value.some((c) => c.kind === 'counter'))
+  // スロットで利用可能なコンポーネント一覧を取得
+  const getAvailableComponents = (slot: ComponentSlot) => {
+    const { components } = data.value.featureUsage
+    return getKindsForSlot(slot)
+      .filter((kind) => components.includes(kind))
+      .map((kind) => {
+        const isCounterDisabled = kind === 'counter' && !isComment.value
+        const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
+        return {
+          kind,
+          label: componentKindConfig[kind].label,
+          disabled: isCounterDisabled || isUsedInOther,
+          disabledReason: isCounterDisabled ? '（利用不可）' : isUsedInOther ? '（他のスロットで使用中）' : '',
+        }
+      })
+  }
 
   // スロットの更新
   const updateSlot = (slot: ComponentSlot, event: Event) => {
-    const target = event.target as HTMLSelectElement
-    const newKind = target.value as ComponentKind | ''
-
-    // 新しいconditions配列を作成
-    let newConditions = conditions.value.filter((c) => c.slot !== slot)
-
-    // 空文字でなければ追加
-    if (newKind !== '') {
-      // 同じkindが他のスロットで使われていれば削除
-      newConditions = newConditions.filter((c) => c.kind !== newKind)
-      // 新しい設定を追加
-      newConditions.push({ slot, kind: newKind })
-    }
+    const newKind = (event.target as HTMLSelectElement).value as ComponentKind | ''
+    const newConditions = conditions.value
+      .filter((c) => c.slot !== slot && c.kind !== newKind) // 該当スロットと重複kindを除外
+      .concat(newKind ? [{ slot, kind: newKind }] : []) // 新しい設定を追加
 
     omikujiStore.updateComponentsConditions(newConditions)
   }

@@ -5,6 +5,8 @@ import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
 import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
 import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
 import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
+import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
+
 
 // コンポーネントマッピング定義
 interface ComponentMapping {
@@ -16,26 +18,37 @@ interface ComponentMapping {
 }
 
 export const COMPONENT_MAPPINGS: ComponentMapping[] = [
+// フキダシ
   {
     kind: 'bubble',
     component: CommentBubble,
     classes: 'z-10 pointer-events-none',
   },
+  // トースト・サムネイル
   {
     kind: 'toast',
     component: ToastWidgets,
     classes: 'z-10',
   },
+  // ランキング
   {
     kind: 'ranking',
     component: GameRankingViewer,
     classes: 'absolute top-0 left-1/2 transform -translate-x-1/2 w-full',
   },
+  // カウンター
   {
     kind: 'counter',
     component: CounterPreview,
     shouldRender: ({ isComment }) => isComment, // コメント機能が有効な時のみ
   },
+  // 8時間フライト
+  {
+    kind: 'flightSeat',
+    component: FlightSeat,
+    shouldRender: ({ isTimer }) => isTimer,
+  }
+
   // 将来的な拡張例:
   // {
   //   kind: 'timer',

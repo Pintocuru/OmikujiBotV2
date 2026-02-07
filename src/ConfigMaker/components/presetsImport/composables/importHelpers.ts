@@ -1,7 +1,7 @@
 // src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
 import { RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
+import { ComponentKind } from '@/types/OmikujiData/ComponentsSchema'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo } from '../ImportTypes'
 
 /**
@@ -73,14 +73,14 @@ export const generateCategoryPreview = (currentData: OmikujiDataType, importData
 export const generateComponentPreview = (
   currentData: OmikujiDataType,
   importData: OmikujiDataType
-): Record<SettingsComponentsCondition, ComponentImportConfig> => {
-  const componentConfigs: Partial<Record<SettingsComponentsCondition, ComponentImportConfig>> = {}
+): Record<ComponentKind, ComponentImportConfig> => {
+  const componentConfigs: Partial<Record<ComponentKind, ComponentImportConfig>> = {}
   const currentComponents = currentData.featureUsage.components || []
   const importComponents = importData.featureUsage.components || []
 
   currentComponents.forEach((compKey) => {
     if (importComponents.includes(compKey)) {
-      const key = compKey as SettingsComponentsCondition
+      const key = compKey as ComponentKind
       componentConfigs[key] = {
         enabled: true,
         useImported: false,
@@ -88,5 +88,5 @@ export const generateComponentPreview = (
     }
   })
 
-  return componentConfigs as Record<SettingsComponentsCondition, ComponentImportConfig>
+  return componentConfigs as Record<ComponentKind, ComponentImportConfig>
 }

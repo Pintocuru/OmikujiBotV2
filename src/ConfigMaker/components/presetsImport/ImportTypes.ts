@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\presetsImport\ImportTypes.ts
 import { RecordCategoryType } from '@/types/OmikujiData/'
-import { SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
+import { ComponentKind } from '@/types/OmikujiData/ComponentsSchema'
 
 export type ImportMode = 'full-replace' | 'partial-replace' | 'partial-merge'
 
@@ -23,6 +23,6 @@ export interface ComponentImportConfig {
 
 export interface ImportPreview {
   recordCategories: Record<RecordCategoryType, CategoryImportConfig>
-  componentConfigs: Record<SettingsComponentsCondition, ComponentImportConfig>
+  componentConfigs: Record<ComponentKind, ComponentImportConfig>
   totalItems: number
 }

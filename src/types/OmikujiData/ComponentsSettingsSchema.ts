@@ -1,0 +1,158 @@
+// src/types/OmikujiData/ComponentsSettingsSchema.ts
+import { z } from 'zod'
+import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
+import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
+import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
+import { CharacterColorScheme } from './CharacterSchema'
+
+/**
+ * 共通スタイル設定
+ */
+export const ComponentsCommonStyleSchema = z.object({
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+})
+export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
+
+/**
+ * フキダシ・キャラクター
+ */
+// キャラアイコンの並び順
+export const ShowCharactersSchema = z.object({
+  center: z.array(z.string()).default([]), // 中央上部に表示
+  slot1: z.array(z.string()).default([]),
+  slot2: z.array(z.string()).default([]),
+  slot3: z.array(z.string()).default([]),
+  slot4: z.array(z.string()).default([]),
+})
+export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
+
+export const SettingsBubbleSchema = z.object({
+  slotType: z.literal('primary').default('primary').catch('primary'), // v2.1で追加
+
+  // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
+  showCharacters: ShowCharactersSchema.default(ShowCharactersSchema.parse({})).catch(ShowCharactersSchema.parse({})),
+  characterSize: z.number().default(48).catch(48), // キャラクターの横幅
+  bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
+  bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
+  bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
+})
+export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
+
+/**
+ * トースト・サムネイル
+ */
+export const SettingsToastSchema = z.object({
+  slotType: z.literal('secondary').default('secondary').catch('secondary'), // v2.1で追加
+
+  showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
+  showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
+  showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
+})
+export type SettingsToastType = z.infer<typeof SettingsToastSchema>
+
+/**
+ * ランキング Ranking
+ */
+export const rankingSortOrderLabels = {
+  new: '新着順',
+  high: 'スコア高い順',
+  low: 'スコア低い順',
+} as const
+export const RankingSortOrderSchema = z.enum(
+  Object.keys(rankingSortOrderLabels) as [RankingSortOrder, ...RankingSortOrder[]]
+)
+export type RankingSortOrder = keyof typeof rankingSortOrderLabels
+
+// 現在は１つだけ…
+export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
+
+export type RankingComponent = (typeof rankingComponents)[number]['value']
+export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
+
+export const SettingsRankingSchema = z.object({
+  slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
+  
+  targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
+  title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
+  color: z.enum(themes).default('lofi').catch('lofi'),
+  limit: z.number().min(1).max(20).default(5).catch(5),
+  sortOrder: RankingSortOrderSchema.default('new').catch('new'),
+  component: z.enum(rankingValues).default('rankStandard').catch('rankStandard'),
+})
+export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
+
+/**
+ * カウンター・ユーザーリスト Counter
+ */
+export const counterComponents = {
+  counterUser: 'カウンター+最後のユーザー',
+  counterTimer: '最後のユーザーからの経過時間',
+  userList: 'ユーザーリスト(バッジ)',
+  UserCardScroller: 'ユーザーリスト(縦型)',
+} as const
+
+export type CounterComponent = keyof typeof counterComponents
+export const componentValues = Object.keys(counterComponents) as CounterComponent[]
+
+export const SettingsCounterSchema = z.object({
+  slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
+  
+  ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
+  component: z.enum(componentValues).default('counterUser').catch('counterUser'),
+  target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
+  label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
+  color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
+})
+export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
+
+/**
+ * 8時間フライト flightSeat
+ */
+export const flightSeatLayouts = {
+  square: '正方形グリッド',
+  pyramid: 'ピラミッド',
+  inversePyramid: '逆ピラミッド',
+  theater: 'シアター（中央重視）',
+} as const
+
+export const flightSeatVehicles = {
+  none: 'なし',
+  airplane: '✈️ 飛行機',
+  bus: '🚌 バス',
+  train: '🚃 電車',
+  classroom: '🏫 教室',
+} as const
+
+export const SettingsFlightSeatSchema = z.object({
+  slotType: z.literal('extra').default('extra').catch('extra'),
+  
+  layout: z.enum(Object.keys(flightSeatLayouts) as [keyof typeof flightSeatLayouts, ]).default('square').catch('square'),
+  
+  // square の場合: 縦×横
+  rows: z.number().min(1).max(10).default(4).catch(4), // 縦（行数）
+  cols: z.number().min(1).max(10).default(6).catch(6), // 横（列数）
+    
+  title: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
+  color: z.enum(themes).default('lofi').catch('lofi'),
+  
+  // 背景画像（オプション）
+  backgroundVehicle: z.enum(Object.keys(flightSeatVehicles) as [keyof typeof flightSeatVehicles, ]).default('none').catch('none'),
+  
+  // 履歴保存数
+  historyLimit: z.number().min(0).max(20).default(10).catch(10),
+})
+
+export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
+
+/**
+ * settings オブジェクトのスキーマ
+ */
+export const ComponentsSettingsSchema = z.object({
+  bubble: SettingsBubbleSchema.default(SettingsBubbleSchema.parse({})).catch(SettingsBubbleSchema.parse({})),
+  toast: SettingsToastSchema.default(SettingsToastSchema.parse({})).catch(SettingsToastSchema.parse({})),
+  ranking: SettingsRankingSchema.default(SettingsRankingSchema.parse({})).catch(SettingsRankingSchema.parse({})),
+  counter: SettingsCounterSchema.default(SettingsCounterSchema.parse({})).catch(SettingsCounterSchema.parse({})),
+  flightSeat: SettingsFlightSeatSchema.default(SettingsFlightSeatSchema.parse({})).catch(SettingsFlightSeatSchema.parse({})),
+})
+export type ComponentsSettings = z.infer<typeof ComponentsSettingsSchema>

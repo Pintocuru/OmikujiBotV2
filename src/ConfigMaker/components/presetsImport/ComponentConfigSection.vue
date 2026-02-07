@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between mb-2">
       <div class="flex items-center gap-2">
         <input type="checkbox" :checked="config.enabled" @change="handleEnabledChange" class="checkbox checkbox-sm" />
-        <span class="font-medium">{{ componentLabels[component] }}</span>
+        <span>{{ componentKindConfig[component].label }}</span>
       </div>
     </div>
 
@@ -39,12 +39,12 @@
 </template>
 
 <script setup lang="ts">
-  import { componentLabels, SettingsComponentsCondition } from '@/types/OmikujiData/ComponentsSchema'
+  import { componentKindConfig, ComponentKind } from '@/types/OmikujiData/ComponentsSchema'
   import { useImportManager } from './composables/useImportManager'
   import { ComponentImportConfig } from './ImportTypes'
 
   const props = defineProps<{
-    component: SettingsComponentsCondition
+    component: ComponentKind
     config: ComponentImportConfig
     importManager: ReturnType<typeof useImportManager>
   }>()
