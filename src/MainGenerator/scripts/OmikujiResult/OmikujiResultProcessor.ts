@@ -53,8 +53,8 @@ export class OmikujiResultProcessor {
           return []
       }
     } catch (error) {
+      console.error('おみくじ実行エラー', error)
       const msg = `おみくじ実行エラー ${error}`
-      console.error(msg)
       postSystemMessage(msg)
       return []
     }

@@ -35,7 +35,7 @@ export class GameScriptManager {
   /**
    * スクリプト実行
    */
-  playScript(gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult | null {
+  playScript = (gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult | null => {
     if (!gameScripts) return null
     const { scriptId, queryString, characterKey } = gameScripts
 

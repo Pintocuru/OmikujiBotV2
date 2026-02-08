@@ -1,4 +1,3 @@
-<!-- src\MainGenerator\ui\FlightSeat\FlightSeat.vue -->
 <template>
   <div class="min-w-sm mx-auto" :data-theme="settings.color">
     <!-- タイトル -->
@@ -16,7 +15,6 @@
 
     <!-- 座席グリッド表示 -->
     <div class="mb-8">
-      <!-- 履歴表示モード -->
       <div v-if="showHistoryMode && seatHistory.length > 0">
         <SeatHistoryViewer
           :seatHistory="seatHistory"
@@ -25,8 +23,6 @@
           :cols="settings.cols"
         />
       </div>
-      
-      <!-- 現在の座席表示モード（デフォルト） -->
       <div v-else>
         <SeatGrid
           :seats="seats"
@@ -42,7 +38,7 @@
       <div class="stat">
         <div class="stat-title">現在の乗車人数</div>
         <div class="stat-value text-primary">{{ occupiedSeats }}</div>
-        <div class="stat-desc">/ {{ totalSeats }}席</div>
+        <div class="stat-desc">/ {{ totalSeats }}席 (待機: {{ pendingCount }}人)</div>
       </div>
       <div class="stat">
         <div class="stat-title">座席リセット回数</div>
@@ -51,7 +47,7 @@
       </div>
     </div>
 
-    <!-- デバッグログ（開発時のみ表示） -->
+    <!-- デバッグログ -->
     <details v-if="debugLog.length > 0" class="mt-4">
       <summary class="cursor-pointer text-sm text-base-content/70">デバッグログ ({{ debugLog.length }}件)</summary>
       <div class="mt-2 p-4 bg-base-200 rounded-lg max-h-60 overflow-y-auto">
@@ -64,52 +60,57 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import { useAppStore } from '@main/stores/useAppStore'
-  import SeatGrid from './SeatGrid.vue'
-  import SeatHistoryViewer from './SeatHistoryViewer.vue'
-  import { useSeatManager } from './useSeatManager'
-  import { calculateTotalSeats } from './seatLayoutUtils'
+import { ref, computed, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useAppStore } from '@main/stores/useAppStore'
+import SeatGrid from './SeatGrid.vue'
+import SeatHistoryViewer from './SeatHistoryViewer.vue'
+import { useSeatManager } from './useSeatManager'
+import { calculateTotalSeats } from './seatLayoutUtils'
 
-  const appStore = useAppStore()
-  const { data } = storeToRefs(appStore)
-  const settings = computed(() => data.value.components.settings.flightSeat)
+const appStore = useAppStore()
+const { data } = storeToRefs(appStore)
+const settings = computed(() => data.value.components.settings.flightSeat)
 
-  // 履歴表示モードの切り替え
-  const showHistoryMode = ref(false)
+const showHistoryMode = ref(false)
 
-  // Store から live コメントユーザーを取得
-  const liveCommentUsers = computed(() => {
-    return appStore.userVisitManager.getVisitsByRuleId('liveComments')
-  })
+// ユーザーリストの取得
+const liveCommentUsers = computed(() => {
+  return appStore.userVisitManager.getVisitsByRuleId('liveComments')
+})
 
-  // 総座席数を計算
-  const totalSeats = computed(() => {
-    return calculateTotalSeats(settings.value.layout, settings.value.rows, settings.value.cols)
-  })
+const totalSeats = computed(() => {
+  return calculateTotalSeats(settings.value.layout, settings.value.rows, settings.value.cols)
+})
 
-  // 座席管理（allowReseating を追加）
-  const { seats, seatHistory, occupiedSeats, debugLog, updateSeats, resetSeats } = useSeatManager({
-    totalSeats,
-    historyLimit: computed(() => settings.value.historyLimit),
-    allowReseating: computed(() => settings.value.allowReseating),  // 新規追加
-  })
+const { 
+  seats, 
+  seatHistory, 
+  occupiedSeats, 
+  pendingCount,
+  debugLog, 
+  updateSeats 
+} = useSeatManager({
+  totalSeats,
+  historyLimit: computed(() => settings.value.historyLimit),
+  allowReseating: computed(() => settings.value.allowReseating),
+})
 
-  // ユーザーリストの変更を監視
-  watch(
-    liveCommentUsers, 
-    () => updateSeats(liveCommentUsers.value), 
-    { immediate: true, deep: true }
-  )
+// ユーザー変更の監視
+// deep: true だが、内部で ID リストの比較を行うことで不必要な更新を抑制
+let lastUserIdsHash = ''
 
-  // 設定変更時に座席をリセット
-  watch(
-    () => [settings.value.layout, settings.value.rows, settings.value.cols],
-    () => {
-      resetSeats()
-      updateSeats(liveCommentUsers.value)
-    },
-    { deep: true }
-  )
+watch(
+  liveCommentUsers,
+  (newUsers) => {
+    if (!newUsers || newUsers.length === 0) return
+    
+    const currentHash = newUsers.map(u => u.userId).join(',')
+    if (currentHash === lastUserIdsHash) return
+    
+    lastUserIdsHash = currentHash
+    updateSeats(newUsers)
+  },
+  { immediate: true, deep: true }
+)
 </script>
