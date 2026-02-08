@@ -146,6 +146,8 @@ export const SettingsFlightSeatSchema = z.object({
 
   // 履歴保存数
   historyLimit: z.number().min(0).max(20).default(10).catch(10),
+  // 過去の座席に乗っていたユーザーでも、空席があれば再度座れるようにするか
+  allowReseating: z.boolean().default(false).catch(false),
 })
 
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>

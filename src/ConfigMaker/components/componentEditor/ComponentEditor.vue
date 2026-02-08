@@ -33,7 +33,7 @@
   import ToastComponentEditor from './toast/ToastComponentEditor.vue'
   import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
   import CounterComponentEditor from './counter/CounterComponentEditor.vue'
-  import FlightSeatComponentEditor from './flightSeat/FlightSeatComponentEditor.vue'
+  import FlightSeatComponentEditor from './FlightSeat/FlightSeatComponentEditor.vue'
 
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

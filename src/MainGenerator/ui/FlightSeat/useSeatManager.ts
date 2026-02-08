@@ -10,10 +10,11 @@ interface SeatHistory {
 interface SeatManagerOptions {
   totalSeats: Ref<number>
   historyLimit: Ref<number>
+  allowReseating: Ref<boolean> // 新規追加: 過去の座席に乗っていたユーザーの再搭乗を許可するか
 }
 
 export function useSeatManager(options: SeatManagerOptions) {
-  const { totalSeats, historyLimit } = options
+  const { totalSeats, historyLimit, allowReseating } = options
 
   const seats = ref<(UserVisitRecord | null)[]>([])
   const seatHistory = ref<SeatHistory[]>([])
@@ -32,7 +33,7 @@ export function useSeatManager(options: SeatManagerOptions) {
     const timestamp = new Date().toLocaleTimeString('ja-JP')
     debugLog.value.push(`[${timestamp}] ${message}`)
     console.log(`[SeatManager] ${message}`)
-    
+
     // ログは最新100件まで保持
     if (debugLog.value.length > 100) {
       debugLog.value.shift()
@@ -41,9 +42,7 @@ export function useSeatManager(options: SeatManagerOptions) {
 
   // 空いている座席のインデックスを取得
   function getAvailableSeats(): number[] {
-    return seats.value
-      .map((seat, index) => (seat === null ? index : -1))
-      .filter((index) => index !== -1)
+    return seats.value.map((seat, index) => (seat === null ? index : -1)).filter((index) => index !== -1)
   }
 
   // ランダムな座席を選択
@@ -56,7 +55,7 @@ export function useSeatManager(options: SeatManagerOptions) {
   // 座席配置を更新
   function updateSeats(users: UserVisitRecord[]) {
     addDebugLog(`--- updateSeats 開始: ${users.length}人のユーザー ---`)
-    
+
     // 履歴に保存済みのユーザーIDを収集
     const historicalUserIds = new Set<string>()
     seatHistory.value.forEach((history) => {
@@ -66,7 +65,7 @@ export function useSeatManager(options: SeatManagerOptions) {
         }
       })
     })
-    
+
     // 現在の座席にいるユーザーIDを収集
     const currentSeatedUserIds = new Set<string>()
     seats.value.forEach((seat) => {
@@ -74,21 +73,27 @@ export function useSeatManager(options: SeatManagerOptions) {
         currentSeatedUserIds.add(seat.userId)
       }
     })
-    
-    // 履歴にも現在の座席にも含まれていないユーザーのみを対象とする
+
+    // 対象ユーザーをフィルタリング
     const eligibleUsers = users.filter((user) => {
       const isInHistory = historicalUserIds.has(user.userId)
-      const isCurrentlySeated = currentSeatedUserIds.has(user.userId)
-      
-      if (isInHistory) {
-        addDebugLog(`除外（履歴済み）: ${user.userName} (ID: ${user.userId})`)
+
+      // allowReseating が true の場合、履歴にいても対象とする
+      if (allowReseating.value) {
+        // 現在座っているユーザーは除外（重複配置を避けるため）
+        return true
+      } else {
+        // allowReseating が false の場合、従来通り履歴にいるユーザーは除外
+        if (isInHistory) {
+          addDebugLog(`除外（履歴済み）: ${user.userName} (ID: ${user.userId})`)
+        }
+        return !isInHistory
       }
-      
-      return !isInHistory
     })
-    
-    addDebugLog(`対象ユーザー: ${eligibleUsers.length}人 / 全ユーザー: ${users.length}人 (履歴除外: ${historicalUserIds.size}人)`)
-    
+
+    const exclusionReason = allowReseating.value ? '再搭乗許可' : `履歴除外: ${historicalUserIds.size}人`
+    addDebugLog(`対象ユーザー: ${eligibleUsers.length}人 / 全ユーザー: ${users.length}人 (${exclusionReason})`)
+
     const currentUsers = new Set(eligibleUsers.map((u) => u.userId))
     addDebugLog(`現在のユーザーID: ${Array.from(currentUsers).join(', ')}`)
 
@@ -99,25 +104,25 @@ export function useSeatManager(options: SeatManagerOptions) {
       userSeatMap.value.clear()
     }
 
-    // 【重要】座席に座っているユーザーは削除しない
-    // eligibleUsersに含まれないユーザーでも、現在座っている場合は維持する
-    // （削除されるのは履歴に入ったユーザーのみ）
+    // 座席の削除処理
     const removedUsers: string[] = []
     userSeatMap.value.forEach((seatIndex, userId) => {
-      const isInHistory = historicalUserIds.has(userId)
-      if (isInHistory) {
+      const userStillPresent = currentUsers.has(userId)
+
+      if (!userStillPresent) {
+        // eligibleUsersに含まれていないユーザーは座席から削除
         seats.value[seatIndex] = null
         userSeatMap.value.delete(userId)
         removedUsers.push(userId)
       }
     })
     if (removedUsers.length > 0) {
-      addDebugLog(`削除されたユーザー（履歴済み）: ${removedUsers.join(', ')}`)
+      addDebugLog(`削除されたユーザー: ${removedUsers.join(', ')}`)
     }
 
     // 新しいユーザーのみを抽出（既に座っているユーザーを除外）
     const newUsers = eligibleUsers.filter((user) => !userSeatMap.value.has(user.userId))
-    
+
     if (newUsers.length === 0) {
       addDebugLog('新規ユーザーなし - 処理終了')
       return
@@ -130,7 +135,7 @@ export function useSeatManager(options: SeatManagerOptions) {
       // 座席が満席かチェック
       if (userSeatMap.value.size >= totalSeats.value) {
         addDebugLog(`座席満席 (${totalSeats.value}席) - 履歴に保存してリセット`)
-        
+
         // 履歴制限を適用
         if (seatHistory.value.length >= historyLimit.value) {
           seatHistory.value.shift()
@@ -146,7 +151,7 @@ export function useSeatManager(options: SeatManagerOptions) {
         // 座席を完全にクリア
         seats.value = new Array(totalSeats.value).fill(null)
         userSeatMap.value.clear()
-        
+
         addDebugLog(`座席リセット完了 - 履歴数: ${seatHistory.value.length}`)
       }
 

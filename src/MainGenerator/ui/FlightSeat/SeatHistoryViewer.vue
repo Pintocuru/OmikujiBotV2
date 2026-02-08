@@ -3,18 +3,10 @@
   <div v-if="seatHistory.length > 0" class="space-y-4">
     <!-- ナビゲーション -->
     <div class="flex items-center justify-between">
-      <button
-        @click="previousHistory"
-        :disabled="currentHistoryIndex === 0"
-        class="btn btn-sm btn-circle"
-      >
-        ‹
-      </button>
+      <button @click="previousHistory" :disabled="currentHistoryIndex === 0" class="btn btn-sm btn-circle">‹</button>
 
       <div class="text-center">
-        <h3 class="text-sm font-semibold">
-          過去の座席（{{ currentHistoryIndex + 1 }}回目）
-        </h3>
+        <h3 class="text-sm font-semibold">過去の座席（{{ currentHistoryIndex + 1 }}回目）</h3>
         <p class="text-xs text-base-content/70">
           {{ formatDate(currentHistory.clearedAt) }}
         </p>
@@ -30,12 +22,7 @@
     </div>
 
     <!-- 座席グリッド -->
-    <SeatGrid
-      :seats="currentHistory.seats"
-      :layout="layout"
-      :rows="rows"
-      :cols="cols"
-    />
+    <SeatGrid :seats="currentHistory.seats" :layout="layout" :rows="rows" :cols="cols" />
 
     <!-- インジケーター -->
     <div class="flex justify-center gap-1">
@@ -53,20 +40,19 @@
   import { ref, computed, watch } from 'vue'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import SeatGrid from './SeatGrid.vue'
+  import { SeatLayout } from './seatLayoutUtils'
 
   interface SeatHistory {
     seats: (UserVisitRecord | null)[]
     clearedAt: number
   }
 
-  interface Props {
+  const props = defineProps< {
     seatHistory: SeatHistory[]
-    layout: 'square' | 'pyramid' | 'inversePyramid'
+    layout: SeatLayout
     rows: number
     cols: number
-  }
-
-  const props = defineProps<Props>()
+  }>()
 
   const currentHistoryIndex = ref(0)
 
@@ -76,11 +62,14 @@
   })
 
   // 履歴が更新されたら最新を表示
-  watch(() => props.seatHistory.length, (newLength) => {
-    if (newLength > 0) {
-      currentHistoryIndex.value = newLength - 1
+  watch(
+    () => props.seatHistory.length,
+    (newLength) => {
+      if (newLength > 0) {
+        currentHistoryIndex.value = newLength - 1
+      }
     }
-  })
+  )
 
   // 前の履歴へ
   function previousHistory() {

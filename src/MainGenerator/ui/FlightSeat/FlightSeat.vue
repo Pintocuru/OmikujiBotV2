@@ -1,28 +1,40 @@
 <!-- src\MainGenerator\ui\FlightSeat\FlightSeat.vue -->
 <template>
-  <div class="p-4 max-w-6xl mx-auto" :data-theme="settings.color">
+  <div class="min-w-sm mx-auto" :data-theme="settings.color">
     <!-- タイトル -->
     <h2 v-if="settings.title" class="text-2xl font-bold text-center mb-6">
       {{ settings.title }}
     </h2>
 
-    <!-- 履歴がある場合は履歴を表示、ない場合は現在の座席を表示 -->
+    <!-- 履歴表示モード切り替えボタン -->
+    <div v-if="seatHistory.length > 0" class="mb-4 flex justify-center">
+      <button @click="showHistoryMode = !showHistoryMode" class="btn btn-sm btn-outline">
+        <span v-if="!showHistoryMode">📜 過去の座席を見る ({{ seatHistory.length }}回)</span>
+        <span v-else>🔄 現在の座席に戻る</span>
+      </button>
+    </div>
+
+    <!-- 座席グリッド表示 -->
     <div class="mb-8">
-      <SeatHistoryViewer
-        v-if="seatHistory.length > 0"
-        :seatHistory="seatHistory"
-        :layout="settings.layout"
-        :rows="settings.rows"
-        :cols="settings.cols"
-      />
+      <!-- 履歴表示モード -->
+      <div v-if="showHistoryMode && seatHistory.length > 0">
+        <SeatHistoryViewer
+          :seatHistory="seatHistory"
+          :layout="settings.layout"
+          :rows="settings.rows"
+          :cols="settings.cols"
+        />
+      </div>
       
-      <SeatGrid
-        v-else
-        :seats="seats"
-        :layout="settings.layout"
-        :rows="settings.rows"
-        :cols="settings.cols"
-      />
+      <!-- 現在の座席表示モード（デフォルト） -->
+      <div v-else>
+        <SeatGrid
+          :seats="seats"
+          :layout="settings.layout"
+          :rows="settings.rows"
+          :cols="settings.cols"
+        />
+      </div>
     </div>
 
     <!-- 統計情報 -->
@@ -52,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, watch } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@main/stores/useAppStore'
   import SeatGrid from './SeatGrid.vue'
@@ -64,6 +76,9 @@
   const { data } = storeToRefs(appStore)
   const settings = computed(() => data.value.components.settings.flightSeat)
 
+  // 履歴表示モードの切り替え
+  const showHistoryMode = ref(false)
+
   // Store から live コメントユーザーを取得
   const liveCommentUsers = computed(() => {
     return appStore.userVisitManager.getVisitsByRuleId('liveComments')
@@ -74,10 +89,11 @@
     return calculateTotalSeats(settings.value.layout, settings.value.rows, settings.value.cols)
   })
 
-  // 座席管理
+  // 座席管理（allowReseating を追加）
   const { seats, seatHistory, occupiedSeats, debugLog, updateSeats, resetSeats } = useSeatManager({
     totalSeats,
     historyLimit: computed(() => settings.value.historyLimit),
+    allowReseating: computed(() => settings.value.allowReseating),  // 新規追加
   })
 
   // ユーザーリストの変更を監視

@@ -1,6 +1,16 @@
-<!-- src\ConfigMaker\components\componentEditor\flightseat\FlightSeatComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\FlightSeat\FlightSeatComponentEditor.vue -->
 <template>
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
+
+  <!-- プレビュー -->
+  <div class="max-h-56 overflow-y-hidden" :data-theme="flightSeat.color">
+    <SeatGrid
+      :seats="Array(flightSeat.rows * flightSeat.cols).fill(null)"
+      :layout="flightSeat.layout"
+      :rows="flightSeat.rows"
+      :cols="flightSeat.cols"
+    />
+  </div>
 
   <!-- タイトル -->
   <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.title">
@@ -115,6 +125,26 @@
     />
   </SettingItem>
 
+  <!-- 再搭乗許可 -->
+  <SettingItem
+    label="再搭乗を許可"
+    description="過去に座席に乗っていたユーザーでも、空席があれば再度座れるようにします"
+    :showReset="true"
+    @reset="resetMap.allowReseating"
+  >
+    <div class="form-control">
+      <label class="label cursor-pointer justify-start gap-4">
+        <input
+          type="checkbox"
+          class="toggle toggle-primary"
+          :checked="flightSeat.allowReseating"
+          @change="(e) => updateField('allowReseating', (e.target as HTMLInputElement).checked)"
+        />
+        <span class="label-text">{{ flightSeat.allowReseating ? '有効' : '無効' }}</span>
+      </label>
+    </div>
+  </SettingItem>
+
   <!-- 座席数の表示 -->
   <InformationCard variant="neutral">
     <p class="text-base">
@@ -129,10 +159,12 @@
   import { flightSeatLayouts, flightSeatVehicles, SettingsFlightSeatSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import SeatGrid from '@/MainGenerator/ui/FlightSeat/SeatGrid.vue'
+  import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/seatLayoutUtils'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -143,22 +175,7 @@
   // 総座席数を計算
   const totalSeats = computed(() => {
     const { layout, rows, cols } = flightSeat.value
-
-    switch (layout) {
-      case 'square':
-        return rows * cols
-
-      case 'pyramid':
-        // 1 + 2 + 3 + ... + rows
-        return (rows * (rows + 1)) / 2
-
-      case 'inversePyramid':
-        // rows + (rows-1) + ... + 1
-        return (rows * (rows + 1)) / 2
-
-      default:
-        return 0
-    }
+    return calculateTotalSeats(layout, rows, cols)
   })
 
   const updateField = (field: keyof typeof flightSeat.value, value: any) => {
@@ -178,5 +195,6 @@
     rows: () => resetField('rows'),
     cols: () => resetField('cols'),
     historyLimit: () => resetField('historyLimit'),
+    allowReseating: () => resetField('allowReseating'),
   }
 </script>
