@@ -60,7 +60,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'
 import SeatGrid from './SeatGrid.vue'
@@ -74,11 +74,6 @@ const settings = computed(() => data.value.components.settings.flightSeat)
 
 const showHistoryMode = ref(false)
 
-// ユーザーリストの取得
-const liveCommentUsers = computed(() => {
-  return appStore.userVisitManager.getVisitsByRuleId('liveComments')
-})
-
 const totalSeats = computed(() => {
   return calculateTotalSeats(settings.value.layout, settings.value.rows, settings.value.cols)
 })
@@ -89,28 +84,25 @@ const {
   occupiedSeats, 
   pendingCount,
   debugLog, 
-  updateSeats 
+  handleVisitEvent 
 } = useSeatManager({
   totalSeats,
   historyLimit: computed(() => settings.value.historyLimit),
   allowReseating: computed(() => settings.value.allowReseating),
 })
 
-// ユーザー変更の監視
-// deep: true だが、内部で ID リストの比較を行うことで不必要な更新を抑制
-let lastUserIdsHash = ''
+// イベントリスナーの登録と解除
+let unsubscribe: (() => void) | null = null
 
-watch(
-  liveCommentUsers,
-  (newUsers) => {
-    if (!newUsers || newUsers.length === 0) return
-    
-    const currentHash = newUsers.map(u => u.userId).join(',')
-    if (currentHash === lastUserIdsHash) return
-    
-    lastUserIdsHash = currentHash
-    updateSeats(newUsers)
-  },
-  { immediate: true, deep: true }
-)
+onMounted(() => {
+  // userVisitManager にイベントリスナーを登録
+  unsubscribe = appStore.userVisitManager.onVisit('liveComments', handleVisitEvent)
+})
+
+onUnmounted(() => {
+  // コンポーネント破棄時にリスナーを解除
+  if (unsubscribe) {
+    unsubscribe()
+  }
+})
 </script>

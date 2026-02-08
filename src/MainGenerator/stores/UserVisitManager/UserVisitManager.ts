@@ -5,6 +5,9 @@ import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 // 定数 liveComments ユーザーの参加者リスト(commenter)とランダム(winner)用
 const BOT_STATS_RULE_ID = 'liveComments'
 
+// イベントリスナーの型定義
+type VisitEventListener = (record: UserVisitRecord) => void
+
 /**
  * ユーザーの訪問回数と抽選制限を管理するクラス
  * OmikenCommentTypeのomikujiRecordsフィールドへの後入れ更新に対応
@@ -12,6 +15,9 @@ const BOT_STATS_RULE_ID = 'liveComments'
 export class UserVisitManager {
   private readonly userVisits = new Map<string, UserVisitRecord>()
   private readonly sessionId: string
+  
+  // イベントリスナー（ruleId別）
+  private readonly listeners = new Map<string, Set<VisitEventListener>>()
 
   constructor() {
     this.sessionId = this.generateSessionId()
@@ -38,7 +44,7 @@ export class UserVisitManager {
   }
 
   /**
-   * ユーザーの訪問を記録し、コールバックを通じてomikujiRecordsを更新
+   * ユーザーの訪問を記録し、リスナーに通知
    */
   recordVisit(ruleId: string, user: UserNameType): void {
     const { userId, userName: name, timestamp } = user
@@ -46,17 +52,24 @@ export class UserVisitManager {
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userVisits.get(key)
 
+    let record: UserVisitRecord
+
     if (existingRecord) {
       existingRecord.userName = name // 名前変更に対応
       existingRecord.visitCount++
       existingRecord.timestamp = timestamp
+      record = existingRecord
     } else {
-      this.userVisits.set(key, {
+      record = {
         ...user,
         ruleId,
         visitCount: 1,
-      })
+      }
+      this.userVisits.set(key, record)
     }
+
+    // リスナーに通知（新規・既存どちらも）
+    this.notifyListeners(ruleId, record)
   }
 
   /**
@@ -65,6 +78,35 @@ export class UserVisitManager {
   recordLiveComment(user: UserNameType): void {
     this.recordVisit(BOT_STATS_RULE_ID, user)
   }
+
+  /**
+   * イベントリスナーを登録
+   * @param ruleId 監視するruleId
+   * @param listener コールバック関数
+   * @returns リスナー解除用の関数
+   */
+  onVisit(ruleId: string, listener: VisitEventListener): () => void {
+    if (!this.listeners.has(ruleId)) {
+      this.listeners.set(ruleId, new Set())
+    }
+    this.listeners.get(ruleId)!.add(listener)
+
+    // 解除用関数を返す
+    return () => {
+      this.listeners.get(ruleId)?.delete(listener)
+    }
+  }
+
+  /**
+   * リスナーに通知
+   */
+  private notifyListeners(ruleId: string, record: UserVisitRecord): void {
+    const ruleListeners = this.listeners.get(ruleId)
+    if (ruleListeners) {
+      ruleListeners.forEach(listener => listener(record))
+    }
+  }
+
   // リスナー数とランダムリスナーの呼び出し
   getLiveComment(): { commenter: number; winner: string } {
     // 内部で BOT_STATS_RULE_ID を使用
