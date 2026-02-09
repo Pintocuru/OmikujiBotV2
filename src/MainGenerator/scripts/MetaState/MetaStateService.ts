@@ -57,8 +57,12 @@ export class MetaStateService {
     for (const fn of this.subscribers) fn(event)
   }
 
-  subscribe(fn: (meta: MetaUpdateEvent) => void) {
+  subscribe(fn: (meta: MetaUpdateEvent) => void): () => void {
     this.subscribers.push(fn)
+
+    return () => {
+      this.subscribers = this.subscribers.filter((f) => f !== fn)
+    }
   }
 
   // 👇 現在のメタデータを同期的に取得できるメソッドを追加

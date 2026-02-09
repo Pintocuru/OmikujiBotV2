@@ -17,17 +17,17 @@ export const useAppStore = defineStore('app', () => {
   // ref
   const data = ref<OmikujiDataType>(omikujiData)
 
-  // ⭐ データ更新カウンター（リアクティブな更新検知用）
-  const dataVersion = ref(0)
-
+  /**
+   * データを更新
+   *
+   * data.valueを更新すると、Vueのリアクティブシステムが自動的に
+   * それを参照しているwatchEffectやcomputedを再実行します。
+   * そのため、dataVersionのような手動カウンターは不要です。
+   */
   const loadData = (newData: OmikujiDataType) => {
     console.log('📥 loadData: データを更新します')
     data.value = normalizeData(newData)
-
-    // ⭐ バージョンをインクリメント（これでwatchが反応する）
-    dataVersion.value++
-
-    console.log('✅ loadData: 完了 (version:', dataVersion.value, ')')
+    console.log('✅ loadData: 完了')
   }
 
   // botMessage
@@ -42,7 +42,6 @@ export const useAppStore = defineStore('app', () => {
   return {
     // 状態
     data,
-    dataVersion, // ⭐ 追加
     loadData,
     ...botMessageActions,
     cooldownManager,

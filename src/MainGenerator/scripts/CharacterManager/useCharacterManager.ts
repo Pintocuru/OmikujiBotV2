@@ -7,68 +7,108 @@ import { BotMessageBubbleType } from '@/types'
 
 /**
  * Vueコンポーネント用：CharacterManager のリアクティブなラッパー
- * ⭐ すべての戻り値を computed にして、常に最新のデータを参照させる
+ *
+ * CharacterManagerは純粋な計算ロジックであり、副作用を持ちません。
+ * そのため、computedで管理することで以下のメリットがあります：
+ *
+ * 1. メモリ効率: 同じdataに対してCharacterManagerインスタンスを重複生成しない
+ * 2. 自動更新: appStore.dataが更新されると自動的に新しいインスタンスが生成される
+ * 3. シンプルさ: watchEffectやonCleanupなどの複雑な管理が不要
  */
 export const useCharacterManager = () => {
   const appStore = useAppStore()
 
-  // ⭐ dataVersion を明示的に依存関係に含める
-  const manager = computed(() => {
-    // この computed 内で dataVersion を参照することで、
-    // dataVersion が変更されるたびに CharacterManager が再生成される
-    const _ = appStore.dataVersion // 依存関係を明示
-    return new CharacterManager(appStore.data)
-  })
+  /**
+   * CharacterManagerのシングルトンインスタンス（計算プロパティとして）
+   * appStore.dataが更新されると自動的に再生成される
+   */
+  const manager = computed(() => new CharacterManager(appStore.data))
 
-  // ⭐ すべて computed で返す（関数も computed でラップ）
+  /**
+   * キャラクターモードが有効かどうか
+   */
   const isCharacter = computed(() => manager.value.isCharacterMode)
+
+  /**
+   * キャラクターの配列（順序付き）
+   */
   const characterMap = computed(() => Object.fromEntries(manager.value.characterMap))
   const characterArray = computed(() => manager.value.characterArray)
 
-  // 表示設定
+  /**
+   * キャラクター表示設定
+   */
   const showCharacters = computed(() => {
     if (!manager.value.isCharacterMode) return ShowCharactersSchema.parse({})
     return appStore.data.components.settings.bubble.showCharacters
   })
 
-  // ⭐ メソッドも computed 化
-  const isValidCharacter = computed(() => (key: string | null) => manager.value.isValidCharacter(key))
-  const hasImage = computed(() => (key: string | null) => manager.value.hasImage(key))
-  const resolveEmotion = computed(
-    () => (key: string, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion)
-  )
-  const iconSrc = computed(
-    () => (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion)
-  )
-  const getCharacterColor = computed(() => (key: string | null) => manager.value.getCharacterColor(key))
-
-  // メッセージからキャラクター画像を返す
-  const getCharacterLayers = computed(() => (message: BotMessageBubbleType): string[] => {
-    if (!isCharacter.value) return []
+  /**
+   * メッセージからキャラクター画像レイヤーを取得
+   */
+  const getCharacterLayers = (message: BotMessageBubbleType): string[] => {
+    if (!manager.value.isCharacterMode) return []
 
     const key = message.bubble?.characterKey
     if (!key || !manager.value.isValidCharacter(key)) return []
 
     const emotion = manager.value.resolveEmotion(key, message.bubble?.iconKey)
     return manager.value.iconSrc(key, emotion)
-  })
+  }
+
+  /**
+   * キャラクターキーから色情報を取得
+   */
+  const getCharacterColor = (characterKey: string | null) => {
+    return manager.value.getCharacterColor(characterKey)
+  }
+
+  /**
+   * キャラクターが有効な定義を持っているか確認
+   */
+  const isValidCharacter = (characterKey: string | null): boolean => {
+    return manager.value.isValidCharacter(characterKey)
+  }
+
+  /**
+   * キャラクターが画像を持っているか確認
+   */
+  const hasImage = (characterKey: string | null): boolean => {
+    return manager.value.hasImage(characterKey)
+  }
+
+  /**
+   * 表情を解決（画像がない場合はdefaultにフォールバック）
+   */
+  const resolveEmotion = (characterKey: string, iconKey: CharacterEmotionType): CharacterEmotionType => {
+    return manager.value.resolveEmotion(characterKey, iconKey)
+  }
+
+  /**
+   * アイコン画像のURLを取得
+   */
+  const iconSrc = (characterKey: string | null, iconKey: CharacterEmotionType): string[] => {
+    return manager.value.iconSrc(characterKey, iconKey)
+  }
+
+  const resolveCharacter = (data: { characterKey: string | null; iconKey: CharacterEmotionType }) => {
+    return manager.value.resolveCharacter(data)
+  }
 
   return {
-    // Manager インスタンス自体へのアクセス
-    manager,
-
-    // リアクティブなプロパティ（すべて computed）
+    // リアクティブなプロパティ
     isCharacter,
     characterMap,
     characterArray,
     showCharacters,
 
-    // リアクティブなメソッド（すべて computed）
+    // メソッド（通常の関数として返す - computedでラップする必要はない）
     getCharacterLayers,
     getCharacterColor,
     isValidCharacter,
     hasImage,
     resolveEmotion,
     iconSrc,
+    resolveCharacter,
   }
 }

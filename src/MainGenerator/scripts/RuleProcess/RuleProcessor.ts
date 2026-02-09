@@ -1,59 +1,63 @@
 // src/MainGenerator/scripts/RuleProcess/RuleProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { OmikujiDataType } from '@/types/OmikujiData/'
 import { RuleTimerProcessor } from './RuleTimerProcessor'
 import { MetaRuleProcessor } from './MetaRuleProcessor'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
-// ⭐ シングルトンを完全に廃止
-export function useRuleProcessor() {
-  // ⭐ 毎回新しいインスタンスを返す
-  let timerProcessor: RuleTimerProcessor | null = null
-  let metaRuleProcessor: MetaRuleProcessor | null = null
+/**
+ * ルールプロセッサーのファクトリー関数
+ *
+ * この関数は呼び出されるたびに新しいプロセッサーインスタンスを生成します。
+ * watchEffect と組み合わせることで、データ更新時に古いインスタンスを
+ * 確実に破棄し、新しいインスタンスで再起動できます。
+ *
+ * @param data - おみくじデータ。このデータに基づいてタイマーやメタルールを実行します。
+ */
+export function useRuleProcessor(data: OmikujiDataType) {
+  // この実行コンテキスト専用のインスタンス
+  const timerProcessor = new RuleTimerProcessor(data)
+  const metaRuleProcessor = new MetaRuleProcessor(data)
 
+  /**
+   * アプリ初期化（コメント購読の開始）
+   */
   const initializeApp = async (onCommentsReceived: (comments: OmikenCommentType[]) => void): Promise<boolean> => {
     try {
       return await GetOmikenComments(onCommentsReceived)
     } catch (error) {
-      console.error('初期化エラー:', error)
+      console.error('❌ 初期化エラー:', error)
       return false
     }
   }
 
   /**
-   * Timer Rules
+   * タイマールールの開始
    */
   const startTimers = (callback: (messages: BotMessageType[]) => void) => {
-    if (!timerProcessor) {
-      console.log('🆕 RuleTimerProcessor を新規生成')
-      timerProcessor = new RuleTimerProcessor()
-    }
     timerProcessor.startTimers(callback)
   }
 
+  /**
+   * タイマールールの停止
+   */
   const stopTimers = () => {
-    if (timerProcessor) {
-      timerProcessor.stopTimers()
-      timerProcessor = null // ⭐ 破棄
-    }
+    timerProcessor.stopTimers()
   }
 
   /**
-   * Meta Rules
+   * メタルールの開始
    */
   const startMetaRules = (callback: (messages: BotMessageType[]) => void) => {
-    if (!metaRuleProcessor) {
-      console.log('🆕 MetaRuleProcessor を新規生成')
-      metaRuleProcessor = new MetaRuleProcessor()
-    }
     metaRuleProcessor.startMetaRules(callback)
   }
 
+  /**
+   * メタルールの停止
+   */
   const stopMetaRules = () => {
-    if (metaRuleProcessor) {
-      // MetaRuleProcessorにstopメソッドがあれば呼ぶ
-      metaRuleProcessor = null // ⭐ 破棄
-    }
+    metaRuleProcessor.stopMetaRules()
   }
 
   return {
@@ -61,6 +65,6 @@ export function useRuleProcessor() {
     startTimers,
     stopTimers,
     startMetaRules,
-    stopMetaRules, // ⭐ 追加
+    stopMetaRules,
   }
 }

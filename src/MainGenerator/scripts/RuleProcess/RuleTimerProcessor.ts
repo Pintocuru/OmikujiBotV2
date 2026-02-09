@@ -1,8 +1,7 @@
 // src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
-import { TimerRuleType } from '@/types/OmikujiData/RulesSchema'
+import { TimerRuleType, OmikujiDataType } from '@/types/OmikujiData/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { useAppStore } from '@main/stores/useAppStore'
 
 interface TimerState {
   timerId: number
@@ -11,11 +10,21 @@ interface TimerState {
   isActive: boolean
 }
 
+/**
+ * タイマールールの実行を管理
+ *
+ * このクラスはコンストラクタで受け取ったデータに基づいてタイマーを管理します。
+ * データが更新された場合は、古いインスタンスをstopTimers()で停止し、
+ * 新しいインスタンスを生成してstartTimers()を呼び出してください。
+ */
 export class RuleTimerProcessor {
   private readonly activeTimers = new Map<string, TimerState>()
   private readonly omikujiProcessor: OmikujiProcessor = new OmikujiProcessor()
+  private readonly data: OmikujiDataType
 
-  constructor() {}
+  constructor(data: OmikujiDataType) {
+    this.data = data
+  }
 
   /**
    * すべてのタイマーを開始
@@ -23,9 +32,7 @@ export class RuleTimerProcessor {
   startTimers(onTimerTrigger: (messages: BotMessageType[]) => void): void {
     this.stopTimers()
 
-    // Pinia Store
-    const appStore = useAppStore()
-    const enabledTimers = Object.values(appStore.data.timers)
+    const enabledTimers = Object.values(this.data.timers)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 

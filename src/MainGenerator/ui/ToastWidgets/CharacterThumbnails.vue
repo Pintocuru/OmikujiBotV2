@@ -29,7 +29,7 @@
   import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
 
   const appStore = useAppStore()
-  const { characterArray, isCharacter, manager } = useCharacterManager()
+  const { characterArray, isCharacter, isValidCharacter, resolveCharacter, resolveEmotion } = useCharacterManager()
 
   const toastSettings = computed(() => appStore.data.components.settings.toast)
   const currentExpressions = ref<string[]>([])
@@ -52,12 +52,12 @@
       if (characterArray.value.length === 0) return
 
       characterArray.value.forEach((character, index) => {
-        if (!manager.value.isValidCharacter(character.key)) return
+        if (!isValidCharacter(character.key)) return
 
         const shouldChange = Math.random() < 0.05
         if (shouldChange) {
           const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
-          currentExpressions.value[index] = manager.value.resolveEmotion(character.key, randomEmotion)
+          currentExpressions.value[index] = resolveEmotion(character.key, randomEmotion)
         } else {
           currentExpressions.value[index] = 'default'
         }
@@ -86,7 +86,7 @@
       const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
 
       // キャラクターの妥当性を考慮してデータを構成
-      const resolvedData = manager.value.resolveCharacter({
+      const resolvedData = resolveCharacter({
         characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
       })

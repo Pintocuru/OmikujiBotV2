@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, watch, ref } from 'vue'
+  import { computed, onMounted, watchEffect } from 'vue'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
@@ -58,51 +58,17 @@
       .filter(Boolean)
   })
 
-  // ⭐ これらを let に変更して再生成可能にする
-  let ruleCommentProcessor = new RuleCommentProcessor()
-  let currentRuleProcessor = useRuleProcessor()
-
-  const isRunning = ref(false)
-
-  // データバージョンを監視してProcessorを再起動
-  watch(
-    () => appStore.dataVersion,
-    (newVersion, oldVersion) => {
-      if (oldVersion === undefined) return
-      if (!isRunning.value) return
-
-      console.log(`🔄 データ更新を検知 (v${oldVersion} → v${newVersion})。全Processorを再起動します。`)
-
-      // 1. 既存のProcessorを停止＆破棄
-      currentRuleProcessor.stopTimers()
-      currentRuleProcessor.stopMetaRules()
-
-      // 2. 新しいProcessorを生成
-      currentRuleProcessor = useRuleProcessor()
-
-      // ⭐ 3. RuleCommentProcessorも再生成
-      ruleCommentProcessor = new RuleCommentProcessor()
-
-      // 4. 少し待ってから再起動
-      setTimeout(() => {
-        if (isTimer.value) {
-          console.log('▶️ タイマー再起動')
-          currentRuleProcessor.startTimers((messages) => appStore.scheduleBotMessages(messages))
-        }
-        console.log('▶️ メタルール再起動')
-        currentRuleProcessor.startMetaRules((messages) => appStore.scheduleBotMessages(messages))
-      }, 100)
-    }
-  )
-
-  // 初期化処理
+  // 初期化処理（一度だけ実行）
   onMounted(async () => {
-    const isInit = await currentRuleProcessor.initializeApp((omikens) => {
+    const ruleProcessor = useRuleProcessor(appStore.data)
+
+    const isInit = await ruleProcessor.initializeApp((omikens) => {
       if (!isComment.value) return
-      // ⭐ 常に最新のruleCommentProcessorを使う
-      const botMessages = ruleCommentProcessor.respondToComments(omikens)
+      const commentProcessor = new RuleCommentProcessor()
+      const botMessages = commentProcessor.respondToComments(omikens)
       appStore.scheduleBotMessages(botMessages)
     })
+
     appStore.setInitialized(isInit)
 
     if (isInit) {
@@ -113,21 +79,35 @@
           appStore.loadData(lowData)
         }
       }
-
-      if (isTimer.value) {
-        currentRuleProcessor.startTimers((messages) => appStore.scheduleBotMessages(messages))
-      }
-
-      currentRuleProcessor.startMetaRules((messages) => appStore.scheduleBotMessages(messages))
-
-      isRunning.value = true
     }
   })
 
-  onUnmounted(() => {
-    console.log('App.vue がアンマウントされました。タイマーを停止します。')
-    isRunning.value = false
-    currentRuleProcessor.stopTimers()
-    currentRuleProcessor.stopMetaRules()
+  // 副作用の宣言的管理（データ更新時に自動的に再起動）
+  watchEffect((onCleanup) => {
+    // 初期化が完了していない場合は何もしない
+    if (!appStore.isInitialized) return
+
+    console.log('🔄 RuleProcessor起動')
+
+    // この実行サイクル専用のプロセッサーを生成（最新のdataを渡す）
+    const ruleProcessor = useRuleProcessor(appStore.data)
+
+    // タイマールールの起動（機能が有効な場合のみ）
+    if (isTimer.value) {
+      console.log('▶️ タイマールール起動')
+      ruleProcessor.startTimers((messages) => appStore.scheduleBotMessages(messages))
+    }
+
+    // メタルールの起動（常に有効）
+    console.log('▶️ メタルール起動')
+    ruleProcessor.startMetaRules((messages) => appStore.scheduleBotMessages(messages))
+
+    // 【最重要】クリーンアップ関数の登録
+    // appStore.dataが更新された時、またはコンポーネントがアンマウントされる時に必ず実行される
+    onCleanup(() => {
+      console.log('🛑 RuleProcessor停止')
+      ruleProcessor.stopTimers()
+      ruleProcessor.stopMetaRules()
+    })
   })
 </script>
