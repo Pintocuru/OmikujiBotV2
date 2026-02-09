@@ -52,12 +52,12 @@
       if (characterArray.value.length === 0) return
 
       characterArray.value.forEach((character, index) => {
-        if (!manager.isValidCharacter(character.key)) return
+        if (!manager.value.isValidCharacter(character.key)) return
 
         const shouldChange = Math.random() < 0.05
         if (shouldChange) {
           const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
-          currentExpressions.value[index] = manager.resolveEmotion(character.key, randomEmotion)
+          currentExpressions.value[index] = manager.value.resolveEmotion(character.key, randomEmotion)
         } else {
           currentExpressions.value[index] = 'default'
         }
@@ -86,7 +86,7 @@
       const randomEmotion = characterEmotionKeys[Math.floor(Math.random() * characterEmotionKeys.length)]
 
       // キャラクターの妥当性を考慮してデータを構成
-      const resolvedData = manager.resolveCharacter({
+      const resolvedData = manager.value.resolveCharacter({
         characterKey: character.key,
         iconKey: shouldChangeExpression ? randomEmotion : 'default',
       })

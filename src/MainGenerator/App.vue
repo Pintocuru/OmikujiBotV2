@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted, watch, ref } from 'vue'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
@@ -26,15 +26,12 @@
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { COMPONENT_MAPPINGS } from './ui/ComponentMapping'
 
-  // Pinia Store
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
   const { isComment, isTimer } = useVisibilityAccess()
 
-  // フォントの指定（commonStyleから取得）
   const fontClass = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
-  // アクティブなコンポーネントを動的に取得
   const activeComponents = computed(() => {
     return conditions.value
       .map((condition) => {
@@ -61,44 +58,76 @@
       .filter(Boolean)
   })
 
-  const ruleCommentProcessor = new RuleCommentProcessor()
+  // ⭐ これらを let に変更して再生成可能にする
+  let ruleCommentProcessor = new RuleCommentProcessor()
+  let currentRuleProcessor = useRuleProcessor()
 
-  // comment/timerルール稼働
-  const { initializeApp, startTimers, stopTimers, startMetaRules } = useRuleProcessor()
+  const isRunning = ref(false)
+
+  // データバージョンを監視してProcessorを再起動
+  watch(
+    () => appStore.dataVersion,
+    (newVersion, oldVersion) => {
+      if (oldVersion === undefined) return
+      if (!isRunning.value) return
+
+      console.log(`🔄 データ更新を検知 (v${oldVersion} → v${newVersion})。全Processorを再起動します。`)
+
+      // 1. 既存のProcessorを停止＆破棄
+      currentRuleProcessor.stopTimers()
+      currentRuleProcessor.stopMetaRules()
+
+      // 2. 新しいProcessorを生成
+      currentRuleProcessor = useRuleProcessor()
+
+      // ⭐ 3. RuleCommentProcessorも再生成
+      ruleCommentProcessor = new RuleCommentProcessor()
+
+      // 4. 少し待ってから再起動
+      setTimeout(() => {
+        if (isTimer.value) {
+          console.log('▶️ タイマー再起動')
+          currentRuleProcessor.startTimers((messages) => appStore.scheduleBotMessages(messages))
+        }
+        console.log('▶️ メタルール再起動')
+        currentRuleProcessor.startMetaRules((messages) => appStore.scheduleBotMessages(messages))
+      }, 100)
+    }
+  )
 
   // 初期化処理
   onMounted(async () => {
-    const isInit = await initializeApp((omikens) => {
-      // usageチェック
+    const isInit = await currentRuleProcessor.initializeApp((omikens) => {
       if (!isComment.value) return
-
-      // コメント処理
+      // ⭐ 常に最新のruleCommentProcessorを使う
       const botMessages = ruleCommentProcessor.respondToComments(omikens)
       appStore.scheduleBotMessages(botMessages)
     })
     appStore.setInitialized(isInit)
 
     if (isInit) {
-      // プラグインのデフォルト設定を読み込む
       const isHealth = await generatorApi.getHealth()
       if (isHealth) {
         const lowData = await generatorApi.loadGeneratorConfig()
-        if (lowData) appStore.loadData(lowData)
+        if (lowData) {
+          appStore.loadData(lowData)
+        }
       }
 
-      // タイマー開始
       if (isTimer.value) {
-        startTimers((messages) => appStore.scheduleBotMessages(messages))
+        currentRuleProcessor.startTimers((messages) => appStore.scheduleBotMessages(messages))
       }
 
-      // メタルール開始
-      startMetaRules((messages) => appStore.scheduleBotMessages(messages))
+      currentRuleProcessor.startMetaRules((messages) => appStore.scheduleBotMessages(messages))
+
+      isRunning.value = true
     }
   })
 
-  // タイマー停止
   onUnmounted(() => {
     console.log('App.vue がアンマウントされました。タイマーを停止します。')
-    stopTimers()
+    isRunning.value = false
+    currentRuleProcessor.stopTimers()
+    currentRuleProcessor.stopMetaRules()
   })
 </script>

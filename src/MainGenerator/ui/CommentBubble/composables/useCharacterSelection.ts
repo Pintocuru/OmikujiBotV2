@@ -37,7 +37,7 @@ export function useCharacterSelection(
       return false
     }
 
-    if (!isValidCharacter(key)) {
+    if (!isValidCharacter.value(key)) {
       console.warn(`[CharacterSelection] Character "${key}" has no images (${context})`, {
         availableEmotions: Object.keys(character.image || {}),
       })

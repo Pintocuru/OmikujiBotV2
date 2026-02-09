@@ -1,4 +1,4 @@
-// src\MainGenerator\stores\useAppStore.ts
+// src/MainGenerator/stores/useAppStore.ts
 import { computed, readonly, ref } from 'vue'
 import { defineStore } from 'pinia'
 import { OmikujiDataType } from '@/types/'
@@ -17,22 +17,32 @@ export const useAppStore = defineStore('app', () => {
   // ref
   const data = ref<OmikujiDataType>(omikujiData)
 
+  // ⭐ データ更新カウンター（リアクティブな更新検知用）
+  const dataVersion = ref(0)
+
   const loadData = (newData: OmikujiDataType) => {
+    console.log('📥 loadData: データを更新します')
     data.value = normalizeData(newData)
+
+    // ⭐ バージョンをインクリメント（これでwatchが反応する）
+    dataVersion.value++
+
+    console.log('✅ loadData: 完了 (version:', dataVersion.value, ')')
   }
 
   // botMessage
   const botMessageActions = useBotMessageActions()
 
   // 管理オブジェクト
-  const cooldownManager = CooldownManager.getInstance() // 時間管理(連続投稿と重複を監視)
-  const userVisitManager = new UserVisitManager() // ユーザー訪問管理
-  const scriptManager = GameScriptManager.getInstance() // ゲームスクリプト管理
-  const metaState = MetaStateService.getInstance() // メタデータ取得
+  const cooldownManager = CooldownManager.getInstance()
+  const userVisitManager = new UserVisitManager()
+  const scriptManager = GameScriptManager.getInstance()
+  const metaState = MetaStateService.getInstance()
 
   return {
     // 状態
     data,
+    dataVersion, // ⭐ 追加
     loadData,
     ...botMessageActions,
     cooldownManager,
