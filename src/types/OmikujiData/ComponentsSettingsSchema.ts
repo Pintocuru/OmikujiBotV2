@@ -111,16 +111,9 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
  */
 export const flightSeatLayouts = {
   square: '正方形グリッド',
-  pyramid: 'ピラミッド',
-  inversePyramid: '逆ピラミッド',
-} as const
-
-export const flightSeatVehicles = {
-  none: 'なし',
-  airplane: '✈️ 飛行機',
-  bus: '🚌 バス',
-  train: '🚃 電車',
-  classroom: '🏫 教室',
+  staggered: '卒業写真風',
+  circle: 'サークル',
+  custom: 'カスタム配列', // ピラミッド・ひな壇などを含む
 } as const
 
 export const SettingsFlightSeatSchema = z.object({
@@ -133,16 +126,19 @@ export const SettingsFlightSeatSchema = z.object({
 
   // square の場合: 縦×横
   rows: z.number().min(1).max(10).default(4).catch(4), // 縦（行数）
-  cols: z.number().min(1).max(10).default(6).catch(6), // 横（列数）
+  cols: z.number().min(1).max(15).default(6).catch(6), // 横（列数）
+
+  // circle専用
+  circleSeats: z.number().min(3).max(30).default(12).optional(),
+
+  // custom専用: 各行の座席数を配列で指定
+  // "[1,2,3,4,5]" → ピラミッド
+  // "[5,4,3,2,1]" → 逆ピラミッド
+  // "[2,2,2,3,5,5,5]" → ひな壇
+  customLayout: z.string().default('[1,2,3,4,5]').catch('[1,2,3,4,5]').optional(),
 
   title: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
-
-  // 背景画像（オプション）
-  backgroundVehicle: z
-    .enum(Object.keys(flightSeatVehicles) as [keyof typeof flightSeatVehicles])
-    .default('none')
-    .catch('none'),
 
   // 履歴保存数
   historyLimit: z.number().min(0).max(20).default(10).catch(10),

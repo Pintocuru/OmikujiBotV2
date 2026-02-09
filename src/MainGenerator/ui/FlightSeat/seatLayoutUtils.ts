@@ -3,7 +3,7 @@
 /**
  * 座席レイアウトタイプ
  */
-export type SeatLayout = 'square' | 'pyramid' | 'inversePyramid'
+export type SeatLayout = 'square' | 'staggered' | 'circle' | 'custom'
 
 /**
  * 総座席数を計算
@@ -11,19 +11,20 @@ export type SeatLayout = 'square' | 'pyramid' | 'inversePyramid'
 export function calculateTotalSeats(
   layout: SeatLayout,
   rows: number,
-  cols: number
+  cols: number,
+  customLayout?: number[],
+  circleSeats?: number
 ): number {
   switch (layout) {
     case 'square':
+    case 'staggered':
       return rows * cols
 
-    case 'pyramid':
-      // 1 + 2 + 3 + ... + rows
-      return (rows * (rows + 1)) / 2
+    case 'circle':
+      return circleSeats ?? 12
 
-    case 'inversePyramid':
-      // rows + (rows-1) + ... + 1
-      return (rows * (rows + 1)) / 2
+    case 'custom':
+      return customLayout ? customLayout.reduce((sum, n) => sum + n, 0) : 0
 
     default:
       return 0
@@ -33,20 +34,17 @@ export function calculateTotalSeats(
 /**
  * 各行の座席数配列を計算
  */
-export function calculateSeatLayout(
-  layout: SeatLayout,
-  rows: number,
-  cols: number
-): number[] {
+export function calculateSeatLayout(layout: SeatLayout, rows: number, cols: number, customLayout?: number[]): number[] {
   switch (layout) {
     case 'square':
+    case 'staggered':
       return Array(rows).fill(cols)
 
-    case 'pyramid':
-      return Array.from({ length: rows }, (_, i) => i + 1)
+    case 'custom':
+      return customLayout ?? [1, 2, 3, 4, 5]
 
-    case 'inversePyramid':
-      return Array.from({ length: rows }, (_, i) => rows - i)
+    case 'circle':
+      return [] // circleは配列不要
 
     default:
       return []

@@ -954,8 +954,9 @@
       "id": "1294df69-4454-4878-8535-dabdb9baf495",
       "key": "0cf758a2-0143-458f-8080-8bf45b65249a",
       "name": "高評価へのお礼",
+      "description": "ピーク時よりも増加したとき、お礼します",
       "createdAt": "2026-02-05T01:34:04.746Z",
-      "updatedAt": "2026-02-05T02:04:33.005Z",
+      "updatedAt": "2026-02-09T05:49:52.179Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -977,7 +978,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "blushing",
-              "sound": "",
+              "sound": "jingle",
               "message": {
                 "bubble": "高評価ありがとう♡<<\n'お姉さん、嬉しいわ。',\n'ふふっ、ありがとね。',\n'<<upVote>>個にもなったわ。',\n'ほら、<<upVote>> 個まで増えてるわ。',\n'配信も一段と盛り上がるわね。'\n>>",
                 "isToast": false
@@ -1006,7 +1007,7 @@
           "value": 0
         }
       },
-      "description": "ピーク時よりも増加したとき、お礼します"
+      "editorColor": "#4CAF50"
     }
   },
   "actionSets": {
@@ -1701,58 +1702,80 @@
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [],
-        "slot1": [
-          "chocolate"
-        ],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      }
+    ],
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "dark",
         "backFrom": "primary",
-        "backTo": "primary",
+        "backTo": "secondary",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "slotType": "primary",
+        "showCharacters": {
+          "center": [],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
-    },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
-      "title": "🍉スイカランキング🍉",
-      "color": "lofi",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": "FirstSyokenChocolate",
-      "component": "counterUser",
-      "target": "user",
-      "label": "🆕 本日の初見さん 🎉",
-      "color": {
-        "daisyUiTheme": "light",
-        "backFrom": "primary",
-        "backTo": "secondary"
+      "toast": {
+        "slotType": "secondary",
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "slotType": "extra",
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🍉スイカランキング🍉",
+        "color": "lofi",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "slotType": "extra",
+        "ruleKey": null,
+        "component": "counterUser",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
+      "flightSeat": {
+        "slotType": "extra",
+        "layout": "square",
+        "rows": 4,
+        "cols": 6,
+        "title": "🛫 8時間フライト、どの席に座る？",
+        "color": "lofi",
+        "historyLimit": 10,
+        "allowReseating": false
       }
     }
   },

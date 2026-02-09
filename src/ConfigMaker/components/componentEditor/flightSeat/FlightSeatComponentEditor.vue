@@ -1,16 +1,25 @@
-<!-- src\ConfigMaker\components\componentEditor\FlightSeat\FlightSeatComponentEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/FlightSeat/FlightSeatComponentEditor.vue -->
 <template>
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
 
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :data-theme="flightSeat.color">
     <SeatGrid
-      :seats="Array(flightSeat.rows * flightSeat.cols).fill(null)"
+      :seats="previewSeats"
       :layout="flightSeat.layout"
       :rows="flightSeat.rows"
       :cols="flightSeat.cols"
+      :customLayout="parsedCustomLayout"
+      :circleSeats="flightSeat.circleSeats"
     />
   </div>
+
+  <!-- 座席数の表示 -->
+  <InformationCard variant="neutral">
+    <p class="text-base">
+      現在の総座席数: <span class="label bg-primary text-primary-content">{{ totalSeats }}</span>
+    </p>
+  </InformationCard>
 
   <!-- タイトル -->
   <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.title">
@@ -37,49 +46,6 @@
     </div>
   </SettingItem>
 
-  <!-- square の場合: 縦×横 -->
-  <div v-if="flightSeat.layout === 'square'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <SettingItem label="縦（行数）" description="縦方向の座席数（1〜10）" :showReset="true" @reset="resetMap.rows">
-      <input
-        type="number"
-        min="1"
-        max="10"
-        class="input input-bordered w-24"
-        :value="flightSeat.rows"
-        @input="(e) => updateField('rows', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-
-    <SettingItem label="横（列数）" description="横方向の座席数（1〜10）" :showReset="true" @reset="resetMap.cols">
-      <input
-        type="number"
-        min="1"
-        max="10"
-        class="input input-bordered w-24"
-        :value="flightSeat.cols"
-        @input="(e) => updateField('cols', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-  </div>
-
-  <!-- pyramid, inversePyramid, theater の場合: 高さのみ -->
-  <SettingItem
-    v-else
-    label="高さ"
-    description="ピラミッド・シアターの段数（1〜10）"
-    :showReset="true"
-    @reset="resetMap.rows"
-  >
-    <input
-      type="number"
-      min="1"
-      max="10"
-      class="input input-bordered w-24"
-      :value="flightSeat.rows"
-      @input="(e) => updateField('rows', Number((e.target as HTMLInputElement).value))"
-    />
-  </SettingItem>
-
   <!-- テーマカラー -->
   <SettingItem label="テーマカラー" description="座席表のテーマカラーを選択">
     <select
@@ -93,37 +59,58 @@
     </select>
   </SettingItem>
 
-  <!-- 背景デザイン（オプション） -->
-  <SettingItem label="背景デザイン" description="座席表の背景イメージ（オプション）" :forceMode="'pro'">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(label, key) in flightSeatVehicles"
-        :key="key"
-        class="badge badge-lg cursor-pointer"
-        :class="flightSeat.backgroundVehicle === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('backgroundVehicle', key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
+  <!-- square / staggered の場合: 縦×横 -->
+  <div
+    v-if="flightSeat.layout === 'square' || flightSeat.layout === 'staggered'"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4"
+  >
+    <SettingItem label="縦（行数）" description="縦方向の座席数（1〜10）" :showReset="true" @reset="resetMap.rows">
+      <input
+        type="number"
+        min="1"
+        max="10"
+        class="input input-bordered w-24"
+        :value="flightSeat.rows"
+        @input="(e) => updateField('rows', Number((e.target as HTMLInputElement).value))"
+      />
+    </SettingItem>
 
-  <!-- 履歴保存数 -->
+    <SettingItem label="横（列数）" description="横方向の座席数（1〜15）" :showReset="true" @reset="resetMap.cols">
+      <input
+        type="number"
+        min="1"
+        max="15"
+        class="input input-bordered w-24"
+        :value="flightSeat.cols"
+        @input="(e) => updateField('cols', Number((e.target as HTMLInputElement).value))"
+      />
+    </SettingItem>
+  </div>
+
+  <!-- circle の場合: 外周の座席数 -->
   <SettingItem
-    label="履歴保存数"
-    description="満席リセット時の履歴を保存する回数（0〜20）"
+    v-else-if="flightSeat.layout === 'circle'"
+    label="外周の座席数"
+    description="円周上に配置する座席数（3〜30）"
     :showReset="true"
-    @reset="resetMap.historyLimit"
+    @reset="resetMap.circleSeats"
   >
     <input
       type="number"
-      min="0"
-      max="20"
+      min="3"
+      max="30"
       class="input input-bordered w-24"
-      :value="flightSeat.historyLimit"
-      @input="(e) => updateField('historyLimit', Number((e.target as HTMLInputElement).value))"
+      :value="flightSeat.circleSeats"
+      @input="(e) => updateField('circleSeats', Number((e.target as HTMLInputElement).value))"
     />
   </SettingItem>
+
+  <!-- custom の場合: プリセット選択 & カスタム配列入力 -->
+  <CustomLayoutEditor
+    v-else-if="flightSeat.layout === 'custom'"
+    :customLayoutString="flightSeat.customLayout ?? '[1,2,3,4,5]'"
+    @update="(value) => updateField('customLayout', value)"
+  />
 
   <!-- 再搭乗許可 -->
   <SettingItem
@@ -145,25 +132,37 @@
     </div>
   </SettingItem>
 
-  <!-- 座席数の表示 -->
-  <InformationCard variant="neutral">
-    <p class="text-base">
-      現在の総座席数: <span class="label bg-primary text-primary-content">{{ totalSeats }}</span>
-    </p>
-  </InformationCard>
+  <!-- 履歴保存数 -->
+  <SettingItem
+    label="履歴保存数"
+    description="満席リセット時の履歴を保存する回数（0〜20）"
+    :showReset="true"
+    @reset="resetMap.historyLimit"
+  >
+    <input
+      type="number"
+      min="0"
+      max="20"
+      class="input input-bordered w-24"
+      :value="flightSeat.historyLimit"
+      @input="(e) => updateField('historyLimit', Number((e.target as HTMLInputElement).value))"
+    />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flightSeatLayouts, flightSeatVehicles, SettingsFlightSeatSchema } from '@/types/'
+  import { flightSeatLayouts, SettingsFlightSeatSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import SeatGrid from '@/MainGenerator/ui/FlightSeat/SeatGrid.vue'
-  import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/seatLayoutUtils'
+  import SeatGrid from '@main/ui/FlightSeat/SeatGrid.vue'
+  import { calculateTotalSeats } from '@main/ui/FlightSeat/seatLayoutUtils'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import CustomLayoutEditor from './CustomLayoutEditor.vue'
+  import { layoutStringToArray } from './customLayoutPresets'
   import { themes } from '@shared/styles/DaisyUiTheme'
 
   const omikujiStore = useOmikujiStore()
@@ -172,10 +171,21 @@
 
   const flightSeat = computed(() => data.value.components.settings.flightSeat)
 
+  // customLayoutを配列にパース
+  const parsedCustomLayout = computed(() => {
+    if (flightSeat.value.layout !== 'custom') return undefined
+    return layoutStringToArray(flightSeat.value.customLayout ?? '[1,2,3,4,5]')
+  })
+
   // 総座席数を計算
   const totalSeats = computed(() => {
-    const { layout, rows, cols } = flightSeat.value
-    return calculateTotalSeats(layout, rows, cols)
+    const { layout, rows, cols, circleSeats } = flightSeat.value
+    return calculateTotalSeats(layout, rows, cols, parsedCustomLayout.value, circleSeats)
+  })
+
+  // プレビュー用の空席配列
+  const previewSeats = computed(() => {
+    return Array(totalSeats.value).fill(null)
   })
 
   const updateField = (field: keyof typeof flightSeat.value, value: any) => {
@@ -194,6 +204,7 @@
     title: () => resetField('title'),
     rows: () => resetField('rows'),
     cols: () => resetField('cols'),
+    circleSeats: () => resetField('circleSeats'),
     historyLimit: () => resetField('historyLimit'),
     allowReseating: () => resetField('allowReseating'),
   }

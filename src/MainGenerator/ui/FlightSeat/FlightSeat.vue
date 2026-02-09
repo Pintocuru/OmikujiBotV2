@@ -57,12 +57,12 @@
 <script setup lang="ts">
   import { ref, computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useAppStore } from '@main/stores/useAppStore'
+  import { isDev } from '@/types'
   import SeatGrid from './SeatGrid.vue'
   import SeatHistoryViewer from './SeatHistoryViewer.vue'
   import { useSeatManager } from './useSeatManager'
   import { calculateTotalSeats } from './seatLayoutUtils'
-  import { isDev } from '@/types'
+  import { useAppStore } from '@main/stores/useAppStore'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
@@ -83,15 +83,13 @@
   // イベントリスナーの登録と解除
   let unsubscribe: (() => void) | null = null
 
+  // userVisitManager にイベントリスナーを登録
   onMounted(() => {
-    // userVisitManager にイベントリスナーを登録
     unsubscribe = appStore.userVisitManager.onVisit('liveComments', registerUser)
   })
 
+  // コンポーネント破棄時にリスナーを解除
   onUnmounted(() => {
-    // コンポーネント破棄時にリスナーを解除
-    if (unsubscribe) {
-      unsubscribe()
-    }
+    if (unsubscribe) unsubscribe()
   })
 </script>

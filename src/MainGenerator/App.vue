@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
-  import { isDev } from '@/types'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
   import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'

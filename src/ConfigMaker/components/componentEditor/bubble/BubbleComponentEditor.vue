@@ -4,6 +4,7 @@
   <CommentBubblePreview
     :color="localColor"
     :is-slider="true"
+    :fontFamily="commonStyle.fontFamily"
     :custom-classes="localColor.customClasses"
     :animated-text="bubble.bubbleTextAnimate"
     :animated-text-speed="bubble.bubbleTextSpeed"
