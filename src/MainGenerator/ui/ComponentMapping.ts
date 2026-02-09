@@ -46,7 +46,6 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
   {
     kind: 'flightSeat',
     component: FlightSeat,
-    shouldRender: ({ isTimer }) => isTimer,
   }
 
   // 将来的な拡張例:
