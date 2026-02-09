@@ -12,10 +12,19 @@
         :layout="settings.layout"
         :rows="settings.rows"
         :cols="settings.cols"
+        :customLayout="parsedCustomLayout"
+        :circleSeats="settings.circleSeats"
       />
     </div>
     <div v-else>
-      <SeatGrid :seats="seats" :layout="settings.layout" :rows="settings.rows" :cols="settings.cols" />
+      <SeatGrid
+        :seats="seats"
+        :layout="settings.layout"
+        :rows="settings.rows"
+        :cols="settings.cols"
+        :customLayout="parsedCustomLayout"
+        :circleSeats="settings.circleSeats"
+      />
     </div>
 
     <!-- 履歴表示モード切り替えボタン -->
@@ -71,13 +80,28 @@
   const showHistoryMode = ref(false)
 
   const totalSeats = computed(() => {
-    return calculateTotalSeats(settings.value.layout, settings.value.rows, settings.value.cols)
+    return calculateTotalSeats(
+      settings.value.layout,
+      settings.value.rows,
+      settings.value.cols,
+      parsedCustomLayout.value,
+      settings.value.circleSeats
+    )
   })
 
   const { seats, seatHistory, occupiedSeats, debugLog, registerUser } = useSeatManager({
     totalSeats,
     historyLimit: computed(() => settings.value.historyLimit),
     allowReseating: computed(() => settings.value.allowReseating),
+  })
+
+  const parsedCustomLayout = computed(() => {
+    if (!settings.value.customLayout) return []
+    try {
+      return JSON.parse(settings.value.customLayout) as number[]
+    } catch {
+      return []
+    }
   })
 
   // イベントリスナーの登録と解除

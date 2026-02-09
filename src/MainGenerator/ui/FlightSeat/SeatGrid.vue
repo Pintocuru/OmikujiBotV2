@@ -13,10 +13,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { SeatLayout } from '@/types'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import type { SeatLayout } from './seatLayoutUtils'
   import SeatGridSquare from './SeatGridSquare.vue'
-  import SeatGridStaggered from './SeatGridStaggered.vue'
   import SeatGridCircle from './SeatGridCircle.vue'
   import SeatGridCustom from './SeatGridCustom.vue'
 
@@ -33,8 +32,6 @@
     switch (props.layout) {
       case 'square':
         return SeatGridSquare
-      case 'staggered':
-        return SeatGridStaggered
       case 'circle':
         return SeatGridCircle
       case 'custom':

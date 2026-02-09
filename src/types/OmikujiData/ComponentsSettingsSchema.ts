@@ -111,10 +111,10 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
  */
 export const flightSeatLayouts = {
   square: '正方形グリッド',
-  staggered: '卒業写真風',
   circle: 'サークル',
   custom: 'カスタム配列', // ピラミッド・ひな壇などを含む
 } as const
+export type SeatLayout = keyof typeof flightSeatLayouts
 
 export const SettingsFlightSeatSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'),
@@ -132,18 +132,15 @@ export const SettingsFlightSeatSchema = z.object({
   circleSeats: z.number().min(3).max(30).default(12).optional(),
 
   // custom専用: 各行の座席数を配列で指定
-  // "[1,2,3,4,5]" → ピラミッド
-  // "[5,4,3,2,1]" → 逆ピラミッド
-  // "[2,2,2,3,5,5,5]" → ひな壇
   customLayout: z.string().default('[1,2,3,4,5]').catch('[1,2,3,4,5]').optional(),
 
   title: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
 
+  // 過去の座席に乗っていたユーザーでも、空席があれば再度座れるようにするか
+  allowReseating: z.boolean().default(true).catch(true),
   // 履歴保存数
   historyLimit: z.number().min(0).max(20).default(10).catch(10),
-  // 過去の座席に乗っていたユーザーでも、空席があれば再度座れるようにするか
-  allowReseating: z.boolean().default(false).catch(false),
 })
 
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>

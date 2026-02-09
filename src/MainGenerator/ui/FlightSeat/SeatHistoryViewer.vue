@@ -22,7 +22,14 @@
     </div>
 
     <!-- 座席グリッド -->
-    <SeatGrid :seats="currentHistory.seats" :layout="layout" :rows="rows" :cols="cols" />
+    <SeatGrid
+      :seats="currentHistory.seats"
+      :layout="layout"
+      :rows="rows"
+      :cols="cols"
+      :customLayout="customLayout"
+      :circleSeats="circleSeats"
+    />
 
     <!-- インジケーター -->
     <div class="flex justify-center gap-1">
@@ -38,20 +45,22 @@
 
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
+  import { SeatLayout } from '@/types'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import SeatGrid from './SeatGrid.vue'
-  import { SeatLayout } from './seatLayoutUtils'
 
   interface SeatHistory {
     seats: (UserVisitRecord | null)[]
     clearedAt: number
   }
 
-  const props = defineProps< {
+  const props = defineProps<{
     seatHistory: SeatHistory[]
     layout: SeatLayout
     rows: number
     cols: number
+    customLayout?: number[]
+    circleSeats?: number
   }>()
 
   const currentHistoryIndex = ref(0)

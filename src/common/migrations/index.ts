@@ -54,7 +54,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
     updatedData = migrateV130ToV200(updatedData)
 
     // v1 > v2 のWelcomeトースト
-    swalToast.success({ title: 'Welcome to v2!', text: 'データが v2 形式にアップグレードされました。' })
+    // swalToast.success({ title: 'Welcome to v2!', text: 'データが v2 形式にアップグレードされました。' })
   }
 
   // v2.0.0 → v2.0.1
@@ -76,10 +76,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
     updatedData = migrateV205ToV210(updatedData)
 
     // マイグレーション通知
-    swalToast.info({
-      title: 'データ更新',
-      text: 'コンポーネント設定が v2.1 形式にアップグレードされました。',
-    })
+    // swalToast.success({ title: 'Welcome to v2.1!', text: 'データが v2.1 形式にアップグレードされました。' })
   }
 
   // スキーマで保証

@@ -19,8 +19,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { SeatLayout } from '@/types'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import { calculateSeatLayout, calculateTotalSeats, type SeatLayout } from './seatLayoutUtils'
+  import { calculateSeatLayout, calculateTotalSeats } from './seatLayoutUtils'
   import SeatCell from './SeatCell.vue'
 
   const props = defineProps<{

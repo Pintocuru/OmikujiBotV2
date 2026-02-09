@@ -1,46 +1,14 @@
 // src/types/MainGenerator/customLayoutPresets.ts
 
 export const customLayoutPresets = {
-  pyramid5: {
-    label: 'ピラミッド (5段)',
-    layout: [1, 2, 3, 4, 5],
-    emoji: '🔺',
-  },
-  pyramid7: {
-    label: 'ピラミッド (7段)',
-    layout: [1, 2, 3, 4, 5, 6, 7],
-    emoji: '🔺',
-  },
-  inversePyramid5: {
-    label: '逆ピラミッド (5段)',
-    layout: [5, 4, 3, 2, 1],
-    emoji: '🔻',
-  },
-  inversePyramid7: {
-    label: '逆ピラミッド (7段)',
-    layout: [7, 6, 5, 4, 3, 2, 1],
-    emoji: '🔻',
-  },
-  hinadan5: {
-    label: 'ひな壇 (5段)',
-    layout: [2, 2, 3, 5, 5],
-    emoji: '🎎',
-  },
-  hinadan7: {
-    label: 'ひな壇 (7段・五人囃子)',
-    layout: [2, 2, 2, 3, 5, 5, 5],
-    emoji: '🎎',
-  },
-  theater: {
-    label: 'シアター風',
-    layout: [3, 4, 5, 6, 7, 8, 9],
-    emoji: '🎭',
-  },
-  diamond: {
-    label: 'ダイヤモンド',
-    layout: [1, 2, 3, 4, 3, 2, 1],
-    emoji: '💎',
-  },
+  pyramid5: { label: 'ピラミッド (5段)', layout: [1, 2, 3, 4, 5], emoji: '🔺' },
+  inversePyramid5: { label: '逆ピラミッド (5段)', layout: [5, 4, 3, 2, 1], emoji: '🔻' },
+  hinadan5: { label: 'ひな壇 (5段)', layout: [2, 2, 3, 5, 5], emoji: '🎎' },
+  hinadan7: { label: 'ひな壇 (7段・五人囃子)', layout: [2, 2, 2, 3, 5, 5, 5], emoji: '🎎' },
+  theater: { label: 'シアター風', layout: [3, 4, 5, 6, 7, 8, 9], emoji: '🎭' },
+  diamond: { label: 'ダイヤモンド', layout: [1, 2, 3, 4, 3, 2, 1], emoji: '💎' },
+  graduationPhoto: { label: '卒業写真（中央密集）', layout: [12, 13, 12], emoji: '🎓' },
+  hourglass: { label: '砂時計型', layout: [5, 4, 3, 2, 3, 4, 5], emoji: '⏳' },
 } as const
 
 export type CustomLayoutPresetKey = keyof typeof customLayoutPresets

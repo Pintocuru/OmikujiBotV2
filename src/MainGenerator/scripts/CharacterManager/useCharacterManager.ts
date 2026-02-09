@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
-import { CharacterColorType, CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
+import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
 import { BotMessageBubbleType } from '@/types'
 
 /**

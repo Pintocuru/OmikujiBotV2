@@ -59,11 +59,8 @@
     </select>
   </SettingItem>
 
-  <!-- square / staggered の場合: 縦×横 -->
-  <div
-    v-if="flightSeat.layout === 'square' || flightSeat.layout === 'staggered'"
-    class="grid grid-cols-1 md:grid-cols-2 gap-4"
-  >
+  <!-- square の場合: 縦×横 -->
+  <div v-if="flightSeat.layout === 'square'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <SettingItem label="縦（行数）" description="縦方向の座席数（1〜10）" :showReset="true" @reset="resetMap.rows">
       <input
         type="number"

@@ -1,9 +1,5 @@
 // src\MainGenerator\ui\FlightSeat\seatLayoutUtils.ts
-
-/**
- * 座席レイアウトタイプ
- */
-export type SeatLayout = 'square' | 'staggered' | 'circle' | 'custom'
+import { SeatLayout } from '@/types'
 
 /**
  * 総座席数を計算
@@ -17,7 +13,6 @@ export function calculateTotalSeats(
 ): number {
   switch (layout) {
     case 'square':
-    case 'staggered':
       return rows * cols
 
     case 'circle':
@@ -37,7 +32,6 @@ export function calculateTotalSeats(
 export function calculateSeatLayout(layout: SeatLayout, rows: number, cols: number, customLayout?: number[]): number[] {
   switch (layout) {
     case 'square':
-    case 'staggered':
       return Array(rows).fill(cols)
 
     case 'custom':
