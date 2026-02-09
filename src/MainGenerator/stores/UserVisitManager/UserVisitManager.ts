@@ -15,7 +15,7 @@ type VisitEventListener = (record: UserVisitRecord) => void
 export class UserVisitManager {
   private readonly userVisits = new Map<string, UserVisitRecord>()
   private readonly sessionId: string
-  
+
   // イベントリスナー（ruleId別）
   private readonly listeners = new Map<string, Set<VisitEventListener>>()
 
@@ -103,7 +103,7 @@ export class UserVisitManager {
   private notifyListeners(ruleId: string, record: UserVisitRecord): void {
     const ruleListeners = this.listeners.get(ruleId)
     if (ruleListeners) {
-      ruleListeners.forEach(listener => listener(record))
+      ruleListeners.forEach((listener) => listener(record))
     }
   }
 

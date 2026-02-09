@@ -1,3 +1,4 @@
+// src\MainGenerator\ui\FlightSeat\useSeatManager.ts
 import { ref, computed, type Ref } from 'vue'
 import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 
@@ -18,12 +19,9 @@ export function useSeatManager(options: SeatManagerOptions) {
   const seats = ref<(UserVisitRecord | null)[]>([])
   const seatHistory = ref<SeatHistory[]>([])
   const debugLog = ref<string[]>([])
-  
-  // イベント駆動型の核心：現在座席にいるユーザーのIDセット
   const activeUserIds = ref<Set<string>>(new Set())
 
-  const occupiedSeats = computed(() => seats.value.filter(s => s !== null).length)
-  const pendingCount = computed(() => 0)
+  const occupiedSeats = computed(() => seats.value.filter((s) => s !== null).length)
 
   function addDebugLog(message: string) {
     const timestamp = new Date().toLocaleTimeString('ja-JP', { hour12: false })
@@ -32,7 +30,6 @@ export function useSeatManager(options: SeatManagerOptions) {
     if (debugLog.value.length > 50) debugLog.value.shift()
   }
 
-  // 座席初期化
   function initSeatsIfNeeded() {
     if (seats.value.length !== totalSeats.value) {
       seats.value = new Array(totalSeats.value).fill(null)
@@ -41,83 +38,102 @@ export function useSeatManager(options: SeatManagerOptions) {
     }
   }
 
-  // 履歴への保存とリセット
   function archiveAndReset() {
     addDebugLog(`!! 満席検知: 履歴保存 (${seatHistory.value.length + 1}回目) !!`)
 
     if (seatHistory.value.length >= historyLimit.value) {
       seatHistory.value.shift()
     }
-    
+
     seatHistory.value.push({
       seats: [...seats.value],
-      clearedAt: Date.now()
+      clearedAt: Date.now(),
     })
 
-    // 座席とアクティブIDをクリア（再着席を可能にする）
     seats.value = new Array(totalSeats.value).fill(null)
     activeUserIds.value.clear()
 
     addDebugLog(`リセット完了。再着席=${allowReseating.value}`)
   }
 
-  // 【核心機能】特定ユーザーを座らせる（イベント駆動のエントリポイント）
+  function findRandomEmptyIndex(): number {
+    const emptyIndexes = seats.value.map((s, i) => (s === null ? i : -1)).filter((i) => i !== -1)
+
+    if (emptyIndexes.length === 0) return -1
+
+    const r = Math.floor(Math.random() * emptyIndexes.length)
+    return emptyIndexes[r]
+  }
+
+  // ユーザーが既に着席しているかチェック
+  function isAlreadySeated(userId: string): boolean {
+    return activeUserIds.value.has(userId)
+  }
+
+  // ユーザーが過去に着席したことがあるかチェック
+  function hasSeatedInHistory(userId: string): boolean {
+    return seatHistory.value.some((h) => h.seats.some((s) => s?.userId === userId))
+  }
+
+  // ユーザーが着席可能かどうかを判定
+  function canUserBeSeat(user: UserVisitRecord): { canSeat: boolean; reason?: string } {
+    if (isAlreadySeated(user.userId)) {
+      return { canSeat: false, reason: '既に着席中' }
+    }
+
+    if (!allowReseating.value && hasSeatedInHistory(user.userId)) {
+      addDebugLog(`${user.userName} は過去に着席済み（再着席不可）`)
+      return { canSeat: false, reason: '過去に着席済み' }
+    }
+
+    return { canSeat: true }
+  }
+
+  // ユーザーを指定座席に配置
+  function assignToSeat(user: UserVisitRecord, seatIndex: number): void {
+    seats.value[seatIndex] = user
+    activeUserIds.value.add(user.userId)
+    addDebugLog(`${user.userName} が座席 ${seatIndex + 1} に着席`)
+  }
+
+  // 満席時の処理とリトライ
+  function handleFullSeats(user: UserVisitRecord): boolean {
+    addDebugLog(`満席のため ${user.userName} を配置できません`)
+    archiveAndReset()
+
+    const retryIndex = seats.value.findIndex((s) => s === null)
+    if (retryIndex !== -1) {
+      assignToSeat(user, retryIndex)
+      addDebugLog(`${user.userName} が座席 ${retryIndex + 1} に着席（リセット後）`)
+      return true
+    }
+    return false
+  }
+
+  // ユーザーを座席に登録（メインエントリポイント）
   function registerUser(user: UserVisitRecord): boolean {
     initSeatsIfNeeded()
 
-    // 既に座っている場合はスキップ
-    if (activeUserIds.value.has(user.userId)) {
-      return false
-    }
+    // 着席可否チェック
+    const { canSeat } = canUserBeSeat(user)
+    if (!canSeat) return false
 
-    // allowReseating=false の場合、履歴チェック
-    if (!allowReseating.value) {
-      const hasBeenSeated = seatHistory.value.some(h =>
-        h.seats.some(s => s?.userId === user.userId)
-      )
-      if (hasBeenSeated) {
-        addDebugLog(`${user.userName} は過去に着席済み（再着席不可）`)
-        return false
-      }
-    }
+    // 空席検索
+    const emptyIndex = findRandomEmptyIndex()
 
-    // 空席を探す
-    const emptyIndex = seats.value.findIndex(s => s === null)
-    
-    if (emptyIndex === -1) {
-      // 満席の場合
-      addDebugLog(`満席のため ${user.userName} を配置できません`)
-      archiveAndReset()
-      
-      // リセット後に再試行
-      const retryIndex = seats.value.findIndex(s => s === null)
-      if (retryIndex !== -1) {
-        seats.value[retryIndex] = user
-        activeUserIds.value.add(user.userId)
-        addDebugLog(`${user.userName} が座席 ${retryIndex + 1} に着席（リセット後）`)
-        return true
-      }
-      return false
-    }
+    // 満席の場合
+    if (emptyIndex === -1) return handleFullSeats(user)
 
-    // 着席
-    seats.value[emptyIndex] = user
-    activeUserIds.value.add(user.userId)
-    addDebugLog(`${user.userName} が座席 ${emptyIndex + 1} に着席`)
+    // 通常の着席処理
+    assignToSeat(user, emptyIndex)
     return true
-  }
-
-  // 【イベントリスナー対応】コメントイベントを直接処理
-  function handleVisitEvent(record: UserVisitRecord) {
-    registerUser(record)
   }
 
   return {
     seats,
     seatHistory,
     occupiedSeats,
-    pendingCount,
     debugLog,
-    handleVisitEvent, // イベントリスナー用のメソッド
+    registerUser,
   }
 }

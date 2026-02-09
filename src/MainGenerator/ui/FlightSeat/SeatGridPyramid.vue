@@ -18,36 +18,27 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-import { calculateSeatLayout, calculateTotalSeats, type SeatLayout } from './seatLayoutUtils'
-import SeatCell from './SeatCell.vue'
+  import { computed } from 'vue'
+  import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { calculateSeatLayout, calculateTotalSeats, type SeatLayout } from './seatLayoutUtils'
+  import SeatCell from './SeatCell.vue'
 
-const props = defineProps<{
-  seats: (UserVisitRecord | null)[]
-  layout: SeatLayout
-  rows: number
-  cols?: number  // pyramidでは使わないがpropsとして受け取る
-}>()
+  const props = defineProps<{
+    seats: (UserVisitRecord | null)[]
+    layout: SeatLayout
+    rows: number
+    cols?: number // pyramidでは使わないがpropsとして受け取る
+  }>()
 
-const seatLayout = computed(() =>
-  calculateSeatLayout(props.layout, props.rows, 0)
-)
-
-const totalSeats = computed(() =>
-  calculateTotalSeats(props.layout, props.rows, 0)
-)
-
-const displaySeats = computed(() =>
-  Array.from({ length: totalSeats.value }, (_, i) => props.seats[i] ?? null)
-)
-
-const rowOffsets = computed(() => {
-  let sum = 0
-  return seatLayout.value.map(n => {
-    const cur = sum
-    sum += n
-    return cur
+  const seatLayout = computed(() => calculateSeatLayout(props.layout, props.rows, 0))
+  const totalSeats = computed(() => calculateTotalSeats(props.layout, props.rows, 0))
+  const displaySeats = computed(() => Array.from({ length: totalSeats.value }, (_, i) => props.seats[i] ?? null))
+  const rowOffsets = computed(() => {
+    let sum = 0
+    return seatLayout.value.map((n) => {
+      const cur = sum
+      sum += n
+      return cur
+    })
   })
-})
 </script>
