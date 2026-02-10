@@ -5,120 +5,21 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha3",
-    "dataVersion": 2.09003,
+    "generatorVersion": "2.1.0-alpha4",
+    "dataVersion": 2.09004,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
   },
   "jsonMerge": [],
   "comments": {
-    "1766411949745-iq1e0j": {
-      "id": "1766411949745-iq1e0j",
-      "key": "1766411949745-iq1e0j",
-      "name": "回数テスト",
-      "createdAt": "2025-12-22T13:59:09.745Z",
-      "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 1,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
-        {
-          "id": "fca49a03-8da4-4cb0-b600-a9e9b194b0dc",
-          "key": "1766411730366",
-          "name": "",
-          "createdAt": "2025-12-22T13:55:30.367Z",
-          "updatedAt": "2025-12-22T13:55:30.372Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "default",
-              "sound": "",
-              "message": {
-                "bubble": "<<HonjoFoxComment>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 1,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "2c08fd97-2094-474d-85ad-6e82b437e50d",
-          "key": "23a111e9-eb9c-4186-9bea-77b76108cc5d",
-          "name": "3回以上",
-          "createdAt": "2025-12-22T13:55:30.367Z",
-          "updatedAt": "2025-12-22T13:55:30.372Z",
-          "order": 0,
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [],
-          "gameScripts": {
-            "scriptId": "GouseiSuika",
-            "queryString": "",
-            "characterKey": "chocolate"
-          },
-          "special": "return",
-          "weight": 1,
-          "isPriority": true,
-          "criteria": {
-            "conditions": [
-              "count"
-            ],
-            "userName": [],
-            "access": [],
-            "gift": [],
-            "syoken": [],
-            "count": {
-              "comparison": "lowerBound",
-              "unit": "draws",
-              "value": 3
-            },
-            "comment": []
-          }
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "comment"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
     "EidolonGacha": {
       "id": "EidolonGacha",
       "key": "EidolonGacha",
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
       "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 2,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -356,7 +257,7 @@
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
       "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 3,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -429,7 +330,7 @@
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
       "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 4,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -626,8 +527,8 @@
       "name": "グーゴルクローバー",
       "description": "19個の大吉と、1個の大凶",
       "createdAt": "2025-10-05T14:14:24.331Z",
-      "updatedAt": "2026-01-19T01:20:31.531Z",
-      "order": 5,
+      "updatedAt": "2026-02-10T00:26:03.833Z",
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
@@ -642,7 +543,7 @@
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
-          "type": "postActions",
+          "type": "gameScripts",
           "postActions": [
             {
               "delaySeconds": 1,
@@ -662,74 +563,53 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": "GoogolClover",
             "queryString": "",
-            "characterKey": ""
+            "characterKey": "cafelatte"
           },
           "special": "return",
           "weight": 1,
           "isPriority": false,
           "criteria": null
-        }
-      ],
-      "ruleType": "comments",
-      "trigger": {
-        "conditions": [
-          "comment"
-        ],
-        "userName": [],
-        "access": [],
-        "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
-      },
-      "limits": {
-        "cooldownSeconds": 3,
-        "cooldownMessage": null,
-        "isRepeatAllowed": 0,
-        "repeatMessage": null
-      }
-    },
-    "1763446909245-z4z5q1": {
-      "id": "1763446909245-z4z5q1",
-      "key": "1763446909245-z4z5q1",
-      "name": "村きつねテスト",
-      "description": "ちゃんと返ってくるか？",
-      "createdAt": "2025-11-18T06:21:49.245Z",
-      "updatedAt": "2026-01-19T01:20:31.531Z",
-      "order": 6,
-      "isEnabled": true,
-      "tags": [],
-      "accessLevel": "basic",
-      "omikuji": [
+        },
         {
-          "id": "bda93793-2a81-4b97-9c87-7fe41aa618a8",
-          "key": "1763446870108",
+          "id": "609a4c4c-373f-4b8a-80a9-27d4f38a1432",
+          "key": "68f4ddba-942f-452c-b116-6027ae100a6f",
           "name": "",
-          "createdAt": "2025-11-18T06:21:10.108Z",
-          "updatedAt": "2025-11-18T06:21:10.108Z",
+          "createdAt": "2026-02-10T00:21:37.146Z",
+          "updatedAt": "2026-02-10T00:21:37.146Z",
           "order": 0,
           "tags": [],
           "accessLevel": "basic",
-          "type": "postActions",
+          "type": "gameScripts",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "message",
-              "characterKey": "honjoFox",
+              "characterKey": "chocolate",
               "iconKey": "default",
-              "sound": "cute",
+              "sound": "",
               "message": {
-                "bubble": "<<message>>",
+                "bubble": "",
+                "isToast": false
+              }
+            },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "",
                 "isToast": false
               }
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": "GoogolClover",
             "queryString": "",
-            "characterKey": ""
+            "characterKey": "cafelatte"
           },
           "special": "return",
           "weight": 1,
@@ -762,7 +642,7 @@
       "name": "くいしんぼうライセンス",
       "createdAt": "2026-01-19T00:52:58.878Z",
       "updatedAt": "2026-01-19T01:20:31.531Z",
-      "order": 7,
+      "order": 5,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -3385,12 +3265,12 @@
   "components": {
     "conditions": [
       {
-        "slot": "extra",
-        "kind": "flightSeat"
-      },
-      {
         "slot": "secondary",
         "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
       }
     ],
     "commonStyle": {
@@ -3460,11 +3340,12 @@
         "layout": "square",
         "rows": 5,
         "cols": 6,
+        "circleSeats": 12,
+        "customLayout": "[1,2,3,4,5]",
         "title": "🛫 8時間フライト、どの席に座る？",
         "color": "synthwave",
-        "backgroundVehicle": "airplane",
-        "historyLimit": 10,
-        "allowReseating": false
+        "allowReseating": false,
+        "historyLimit": 10
       }
     }
   },
@@ -3484,7 +3365,14 @@
       "counter",
       "flightSeat"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "GoogolClover",
+      "HugEmAll",
+      "MultiplyBonanza",
+      "DwarfBomb",
+      "BomberSpin",
+      "GouseiSuika"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "basic"

@@ -6,6 +6,7 @@ import DwarfBomb from './scripts/DwarfBomb/main'
 import GoogolClover from './scripts/GoogolClover/main'
 import MultiplyBonanza from './scripts/MultiplyBonanza/main'
 import HugEmAll from './scripts/HugEmAll/main'
+import WinnerGroup from './scripts/WinnerGroup/main'
 
 // gameScriptMap
 export const gameScriptMap: Record<string, ScriptPreset> = {
@@ -15,6 +16,7 @@ export const gameScriptMap: Record<string, ScriptPreset> = {
   [MultiplyBonanza.key]: MultiplyBonanza,
   [GoogolClover.key]: GoogolClover,
   [HugEmAll.key]: HugEmAll,
+  [WinnerGroup.key]: WinnerGroup,
 } as const
 
 // 自動的にキー一覧と型を抽出（TypeScriptのみ）

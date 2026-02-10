@@ -64,6 +64,8 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
 
   // 3. おみくじ成功時に回数をインクリメント
   omiken.meta.draws = userVisitManager.getVisitCount(omiken.userId, rule.key) + 1
+  omiken.meta.ruleKey = rule.key
+
   const userName = UserNameSchema.parse(omiken)
   userVisitManager.recordVisit(rule.key, userName)
 

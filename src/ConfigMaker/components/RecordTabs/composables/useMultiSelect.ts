@@ -60,7 +60,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  // 範囲選択の処理 */
+  // 範囲選択の処理
   const handleRangeSelect = (ruleKey: string) => {
     const currentRules = filteredSortedItems.value
     const lastSelectedIndex = Math.max(
@@ -80,20 +80,20 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  // 全選択 */
+  // 全選択
   const selectAll = () => {
     filteredSortedItems.value.forEach((rule: BaseRecordType) => {
       selectedRuleIds.value.add(rule.key)
     })
   }
 
-  // 選択解除 */
+  // 選択解除
   const clearSelection = () => {
     selectedRuleIds.value.clear()
     isMultiSelectMode.value = false
   }
 
-  // 選択されたルールを取得 */
+  // 選択されたルールを取得
   const getSelectedRules = (): BaseRecordType[] => {
     return Array.from(selectedRuleIds.value)
       .map((key) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.key === key))
@@ -168,7 +168,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     }
   }
 
-  // 一括カラー設定 */
+  // 一括カラー設定
   const handleBulkColorChange = (color: string) => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -186,7 +186,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     swalToast.success({ title: `${count}件のルールのカラーを変更しました` })
   }
 
-  // 一括複製 */
+  // 一括複製
   const handleBulkDuplicate = () => {
     if (selectedRuleIds.value.size === 0) return
 
@@ -205,7 +205,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     swalToast.success({ title: `${count}件のルールを複製しました` })
   }
 
-  // 一括削除の確認ダイアログ */
+  // 一括削除の確認ダイアログ
   const handleBulkDeleteRules = async (rulesToDelete: BaseRecordType[]) => {
     if (rulesToDelete.length === 0) return
 

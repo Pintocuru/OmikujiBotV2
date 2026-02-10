@@ -1,5 +1,7 @@
 // src/MainGenerator/scripts/ContentPlaceholder/parser.ts
 
+import { sanitizeText } from './context'
+
 /**
  * テキスト解析・パース用の純粋関数群
  * 状態を持たず、入力に対して常に同じ出力を返す
@@ -28,9 +30,6 @@ export function findMatchingClosingBracket(text: string, startPos: number): numb
 
 /**
  * インラインランダム選択構文かどうかを判定
- * カンマを含み、クォートで囲まれた値がある場合にtrue
- * @param input 判定対象の文字列
- * @returns インラインランダム選択構文の場合true
  */
 export function isInlineRandomSyntax(input: string): boolean {
   return input.includes(',') && input.includes("'")
@@ -39,20 +38,22 @@ export function isInlineRandomSyntax(input: string): boolean {
 /**
  * インライン値をパースして配列として取得
  * 'value1','value2','value3' -> ['value1', 'value2', 'value3']
- * @param input パース対象の文字列
- * @returns パースされた値の配列
  */
 export function parseInlineValues(input: string): string[] {
+  // <<http://*/>> の無害化
+  const sanitized = sanitizeText(input)
+  if (sanitized === '') return []
+
   const values: string[] = []
   let current = ''
   let inQuote = false
   let quoteChar = ''
 
-  for (let i = 0; i < input.length; i++) {
-    const char = input[i]
+  for (let i = 0; i < sanitized.length; i++) {
+    const char = sanitized[i]
 
     // クォートの判定
-    if ((char === "'" || char === '"') && (i === 0 || input[i - 1] !== '\\')) {
+    if ((char === "'" || char === '"') && (i === 0 || sanitized[i - 1] !== '\\')) {
       if (!inQuote) {
         inQuote = true
         quoteChar = char

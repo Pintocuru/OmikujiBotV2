@@ -58,11 +58,6 @@
     <div v-else class="card bg-base-200 shadow p-6 text-center">
       <p class="text-base-content/60">上のリストからおみくじアイテムをクリックして編集してください</p>
     </div>
-
-    <button @click="addOmikuji" class="btn btn-primary w-full mt-4">
-      <Plus class="w-4 h-4" />
-      おみくじを追加
-    </button>
   </div>
 </template>
 

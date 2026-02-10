@@ -54,7 +54,20 @@ export const RankingMessageSchema = z.object({
   scriptKey: z.string().default(''), // アイテム判別用key
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
-  slots: z.array(z.string()).optional(), // 任意の値
+  slots: z // 任意の値
+    .object({
+      slot0: z.string().optional(),
+      slot1: z.string().optional(),
+      slot2: z.string().optional(),
+      slot3: z.string().optional(),
+      slot4: z.string().optional(),
+      slot5: z.string().optional(),
+      slot6: z.string().optional(),
+      slot7: z.string().optional(),
+      slot8: z.string().optional(),
+      slot9: z.string().optional(),
+    })
+    .optional(),
 })
 export type RankingMessageType = z.infer<typeof RankingMessageSchema>
 

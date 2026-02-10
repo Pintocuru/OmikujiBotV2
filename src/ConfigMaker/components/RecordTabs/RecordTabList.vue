@@ -51,7 +51,7 @@
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useDragAndDrop } from './composables/useDragAndDrop'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  //  import { VueDraggable } from 'vue-draggable-plus'
+  // import { VueDraggable } from 'vue-draggable-plus'
   import VueDraggable from '@/DraggableWrapper.vue'
   import { Plus } from 'lucide-vue-next'
 

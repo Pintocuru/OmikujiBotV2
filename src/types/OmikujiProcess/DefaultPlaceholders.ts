@@ -18,6 +18,7 @@ export const defaultPlaceholders = [
 export type DefaultPlaceholders = (typeof defaultPlaceholders)[number]
 
 // Zod スキーマ
+// TODO:winnerId , winnerImage を入れてみたい
 export const DefaultPlaceholdersMetaSchema = z.object({
   viewer: z.coerce.number().default(0),
   upVote: z.coerce.number().default(0),

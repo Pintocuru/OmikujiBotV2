@@ -102,21 +102,27 @@ export class UserVisitManager {
    */
   private notifyListeners(ruleId: string, record: UserVisitRecord): void {
     const ruleListeners = this.listeners.get(ruleId)
-    if (ruleListeners) {
-      ruleListeners.forEach((listener) => listener(record))
-    }
+    if (ruleListeners) ruleListeners.forEach((listener) => listener(record))
   }
 
   // リスナー数とランダムリスナーの呼び出し
-  getLiveComment(): { commenter: number; winner: string } {
-    // 内部で BOT_STATS_RULE_ID を使用
-    const commenter = this.getUniqueVisitorCountByRuleId(BOT_STATS_RULE_ID)
+  getLiveComment(count = 1, ruleId = BOT_STATS_RULE_ID): { commenter: number; winners: UserVisitRecord[] } {
+    const commenter = this.getUniqueVisitorCountByRuleId(ruleId)
+    const userList = this.getVisitsByRuleId(ruleId)
 
-    // 当選者選出（必要な時だけリスト化するので軽量）
-    const userList = this.getVisitsByRuleId(BOT_STATS_RULE_ID)
-    const winner = userList.length > 0 ? userList[Math.floor(Math.random() * userList.length)].userName : 'Null'
+    // 0人の場合は "Null" を返す
+    if (userList.length === 0) return { commenter, winners: [] }
 
-    return { commenter, winner }
+    // シャッフル（Fisher–Yates）
+    const shuffled = [...userList]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+
+    // count 人だけ切り出す（最大4人など制限可能）
+    const winners = shuffled.slice(0, Math.min(count, 4)).map((u) => u)
+    return { commenter, winners }
   }
 
   /**
@@ -125,13 +131,9 @@ export class UserVisitManager {
    */
   getOmikujiRecords(userId: string): Record<string, number> {
     const records: Record<string, number> = {}
-
     for (const [key, record] of this.userVisits.entries()) {
-      if (record.userId === userId) {
-        records[record.ruleId] = record.visitCount
-      }
+      if (record.userId === userId) records[record.ruleId] = record.visitCount
     }
-
     return records
   }
 
@@ -163,14 +165,10 @@ export class UserVisitManager {
    */
   getVisitsByRule(): Record<string, UserVisitRecord[]> {
     const result: Record<string, UserVisitRecord[]> = {}
-
     for (const record of this.userVisits.values()) {
-      if (!result[record.ruleId]) {
-        result[record.ruleId] = []
-      }
+      if (!result[record.ruleId]) result[record.ruleId] = []
       result[record.ruleId].push(record)
     }
-
     return result
   }
 
@@ -235,9 +233,7 @@ export class UserVisitManager {
     for (const key of this.userVisits.keys()) {
       if (key.endsWith(`:${ruleId}`)) {
         const record = this.userVisits.get(key)
-        if (record) {
-          affectedUsers.add(record.userId)
-        }
+        if (record) affectedUsers.add(record.userId)
         this.userVisits.delete(key)
       }
     }

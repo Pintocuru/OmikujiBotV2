@@ -3,7 +3,7 @@ import { RankingMessageSchema, SettingsRankingType } from '@/types/'
 import { BotMessageRankingSchema, BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
-const candidateNames = [
+export const candidateNames = [
   'てい',
   'ポッピィー',
   'おふとん',

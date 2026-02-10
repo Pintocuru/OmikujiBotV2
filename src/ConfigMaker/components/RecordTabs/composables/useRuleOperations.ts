@@ -50,7 +50,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     withValidCategory(async (category) => {
       const name = ruleName || '名前未設定'
 
-      const result = await swalModal.warning({
+      const result = await swalModal.confirmDelete({
         title: `「${name}」を削除しますか？`,
       })
 

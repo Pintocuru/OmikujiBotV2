@@ -1,6 +1,7 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
 import { PostActionType, PlaceholderType, selectValue } from '@/types/'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
+import { sanitizeText } from './context'
 
 /**
  * プレースホルダー処理のメインクラス
@@ -69,7 +70,11 @@ export class ContentPlaceholder {
   processText(text?: string): string {
     if (!text) return ''
 
-    let result = text
+    // <<http://*/>> の無害化
+    const sanitized = sanitizeText(text)
+    if (sanitized === '') return ''
+
+    let result = sanitized
 
     // 無限ループ防止のため最大試行回数を設定
     let safetyCounter = 0

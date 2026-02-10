@@ -119,7 +119,9 @@ export class OmikujiProcessor {
   private getBasePlaceholders(): Record<ServiceMetaCondition, string | number> {
     const meta = this.metaStateService.getCurrent()
     const { userVisitManager } = this.store
-    const { commenter, winner } = userVisitManager.getLiveComment()
+    const { commenter, winners } = userVisitManager.getLiveComment()
+
+    const winner = winners[0]?.userName ?? 'Null'
 
     return DefaultPlaceholdersMetaSchema.parse({
       viewer: meta?.viewer ?? 0,
