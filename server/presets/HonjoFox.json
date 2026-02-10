@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha3",
-    "dataVersion": 2.09003,
+    "generatorVersion": "2.1.0-alpha4",
+    "dataVersion": 2.09004,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -725,6 +725,7 @@
       "updatedAt": "2026-02-09T05:50:10.591Z",
       "order": 1,
       "isEnabled": true,
+      "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -768,8 +769,7 @@
         "upVote": {
           "comparison": "greaterThanPeak"
         }
-      },
-      "editorColor": "#4CAF50"
+      }
     }
   },
   "actionSets": {},
@@ -1551,10 +1551,12 @@
         "layout": "square",
         "rows": 4,
         "cols": 6,
+        "circleSeats": 12,
+        "customLayout": "[1,2,3,4,5]",
         "title": "🛫 8時間フライト、どの席に座る？",
         "color": "lofi",
-        "historyLimit": 10,
-        "allowReseating": false
+        "allowReseating": false,
+        "historyLimit": 10
       }
     }
   },

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.09-2.1.0-alpha3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha3",
-    "dataVersion": 2.09003,
+    "generatorVersion": "2.1.0-alpha4",
+    "dataVersion": 2.09004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -959,6 +959,7 @@
       "updatedAt": "2026-02-09T05:49:52.179Z",
       "order": 1,
       "isEnabled": true,
+      "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -1006,8 +1007,7 @@
           "comparison": "changed",
           "value": 0
         }
-      },
-      "editorColor": "#4CAF50"
+      }
     }
   },
   "actionSets": {
@@ -1728,7 +1728,9 @@
         "slotType": "primary",
         "showCharacters": {
           "center": [],
-          "slot1": [],
+          "slot1": [
+            "chocolate"
+          ],
           "slot2": [],
           "slot3": [],
           "slot4": []
@@ -1772,10 +1774,12 @@
         "layout": "square",
         "rows": 4,
         "cols": 6,
+        "circleSeats": 12,
+        "customLayout": "[1,2,3,4,5]",
         "title": "🛫 8時間フライト、どの席に座る？",
         "color": "lofi",
-        "historyLimit": 10,
-        "allowReseating": false
+        "allowReseating": false,
+        "historyLimit": 10
       }
     }
   },

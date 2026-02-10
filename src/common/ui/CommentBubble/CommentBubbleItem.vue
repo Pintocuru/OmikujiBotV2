@@ -11,10 +11,8 @@
       {{ botName }}
     </div>
 
-    <!-- コメント内容 -->
-    <div class="break-words text-xl" :class="uiMap.text.class" :style="uiMap.text.style">
-      {{ displayed }}
-    </div>
+    <!-- コメント内容（HTML を描画） -->
+    <div class="break-words text-xl" :class="uiMap.text.class" :style="uiMap.text.style" v-html="displayedHtml"></div>
 
     <!-- 吹き出しの矢印 -->
     <div :class="uiMap.arrow.class" :style="uiMap.arrow.style" />
@@ -105,18 +103,21 @@
   })
 
   // アニメーション
-  const displayed = ref(props.animatedText ? '' : props.message)
+  const displayedHtml = ref(props.animatedText ? '' : props.message)
+  const isHtml = computed(() => props.message.includes('<'))
 
   watchEffect(() => {
-    if (!props.animatedText) {
-      displayed.value = props.message
+    // HTML を含む場合はアニメーション禁止（そのまま表示）
+    if (!props.animatedText || isHtml.value) {
+      displayedHtml.value = props.message
       return
     }
 
-    displayed.value = ''
+    // ここから先は「プレーンテキストのみ」アニメーション
+    displayedHtml.value = ''
     let i = 0
     const timer = setInterval(() => {
-      displayed.value = props.message.substring(0, i++)
+      displayedHtml.value = props.message.substring(0, i++)
       if (i > props.message.length) clearInterval(timer)
     }, props.animatedTextSpeed)
   })

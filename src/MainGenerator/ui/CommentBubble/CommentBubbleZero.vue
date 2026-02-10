@@ -17,7 +17,7 @@
             class="absolute top-[180px] left-0 right-0 flex justify-center"
           >
             <CharacterLayerImage
-              v-if="getCharacterLayers(message).length > 0"
+              v-if="latestMessage && message.id === latestMessage.id && getCharacterLayers(message).length > 0"
               :layers="getCharacterLayers(message)"
               :size="bubble.characterSize"
               :color="getCharacterColor(message.bubble?.characterKey)"
@@ -54,6 +54,11 @@
 
   // コメント表示制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(toRef(() => props.centerMessages))
+
+  const latestMessage = computed(() => {
+    const list = displayedComments.value
+    return list.length > 0 ? list[0] : null
+  })
 
   // コメント削除ハンドラ（親にemit）
   const handleRemoveComment = (messageId: string) => {

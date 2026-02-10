@@ -60,9 +60,9 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
-  import { SettingsRankingType } from '@/types/OmikujiData/ComponentsSchema'
   import { generateDummyMessages } from '../../useDummyBotMessages'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { SettingsRankingType } from '@/types/OmikujiData'
 
   const props = defineProps<{
     listMessages: BotMessageRankingType[]

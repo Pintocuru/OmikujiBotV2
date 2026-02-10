@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.06-2.1.0-alpha2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha2",
-    "dataVersion": 2.09002,
+    "generatorVersion": "2.1.0-alpha4",
+    "dataVersion": 2.09004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -148,7 +148,7 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-02-06T03:06:26.847Z",
+      "updatedAt": "2026-02-10T06:43:32.141Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -7828,74 +7828,25 @@
         "frameId": "StrawberryChocolat",
         "rpgVoice": ""
       }
-    },
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-12-28T11:19:30.358Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "fantasy",
-        "backFrom": "secondary",
-        "backTo": "primary",
-        "nameColor": "#AB47BC",
-        "textColor": "#F3E5F5",
-        "backgroundColor": "#6A1B9A",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
-      },
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "",
-        "frameId": "OmikujiBot",
-        "rpgVoice": ""
-      }
     }
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [],
-        "slot1": [
-          "chocolate"
-        ],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "dark",
@@ -7904,43 +7855,71 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "slotType": "primary",
+        "showCharacters": {
+          "center": [],
+          "slot1": [
+            "chocolate"
+          ],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
-    },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList",
-        "GouseiSuika",
-        "BomberSpin",
-        "DwarfBomb",
-        "HugEmAll",
-        "GoogolClover",
-        "MultiplyBonanza"
-      ],
-      "title": "おみくじ履歴",
-      "color": "garden",
-      "limit": 10,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": "FirstSyokenChocolate",
-      "component": "counterUser",
-      "target": "user",
-      "label": "🆕 本日の初見さん 🎉",
-      "color": {
-        "daisyUiTheme": "light",
-        "backFrom": "primary",
-        "backTo": "secondary"
+      "toast": {
+        "slotType": "secondary",
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "slotType": "extra",
+        "targetScriptKeys": [
+          "basicList",
+          "GouseiSuika",
+          "BomberSpin",
+          "DwarfBomb",
+          "HugEmAll",
+          "GoogolClover",
+          "MultiplyBonanza"
+        ],
+        "title": "おみくじ履歴",
+        "color": "garden",
+        "limit": 10,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "slotType": "extra",
+        "ruleKey": "FirstSyokenChocolate",
+        "component": "counterUser",
+        "target": "user",
+        "label": "🆕 本日の初見さん 🎉",
+        "color": {
+          "daisyUiTheme": "light",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
+      "flightSeat": {
+        "slotType": "extra",
+        "layout": "square",
+        "rows": 4,
+        "cols": 6,
+        "circleSeats": 12,
+        "customLayout": "[1,2,3,4,5]",
+        "title": "🛫 8時間フライト、どの席に座る？",
+        "color": "lofi",
+        "allowReseating": true,
+        "historyLimit": 10
       }
     }
   },

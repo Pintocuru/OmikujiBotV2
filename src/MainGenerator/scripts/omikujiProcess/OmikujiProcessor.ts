@@ -104,7 +104,7 @@ export class OmikujiProcessor {
 
     return DefaultPlaceholdersCommentSchema.parse({
       ...base,
-      user: omiken.userName,
+      user: `{{icon ${omiken.userId}}}${omiken.userName}`,
       userId: omiken.userId,
       price: omiken.giftPrice,
       lc: omiken.meta.lc,

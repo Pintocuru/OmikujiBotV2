@@ -87,24 +87,23 @@ export class PostMessage {
    * メッセージ投稿を処理
    */
   private async processMessagePost(post: PostActionMessageType, delaySeconds: number): Promise<void> {
-    const { bubble } = post.message
+    let { bubble } = post.message
     if (!bubble || bubble.trim() === '') return
 
+    // ★ 投稿用にクリーンアップ
+    bubble = cleanPostMessage(bubble)
     const chara = this.getCharacter(post.characterKey)
 
-    // わんコメ投稿の処理
+    // わんコメ投稿
     if (chara && shouldPostAsComment(chara)) {
-      // frameId があればわんコメへ、なければボイスへ
       const frameId = await this.ensureServiceExists(chara)
       if (frameId) this.postAsComment(bubble, chara, delaySeconds)
       else postSpeech(bubble, delaySeconds)
       return
     }
 
-    // ボイス投稿の処理
-    if (shouldPostAsVoice(chara, bubble)) {
-      postSpeech(bubble, delaySeconds)
-    }
+    // ボイス投稿
+    if (shouldPostAsVoice(chara, bubble)) postSpeech(bubble, delaySeconds)
   }
 
   /**
@@ -161,4 +160,12 @@ export class PostMessage {
       throw error
     }
   }
+}
+
+export function cleanPostMessage(raw: string): string {
+  if (!raw) return ''
+  return raw
+    .replace(/\{\{[^}]+\}\}/g, '') // {{...}} を削除
+    .replace(/<<[^>]+>>/g, '') // <<...>> を削除
+    .trim() // 前後の空白を整える
 }

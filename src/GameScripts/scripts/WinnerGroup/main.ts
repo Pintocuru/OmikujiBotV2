@@ -5,7 +5,7 @@ import execute from './execute'
 const plugin: ScriptPreset = {
   id: 'WinnerGroup',
   key: 'WinnerGroup',
-  name: 'WinnerGroup',
+  name: 'バレンタイン・カップリング',
   description: '複数の当選者をまとめて返すスクリプト',
   createdAt: '2025/01/01 00:00',
   updatedAt: '2025/01/01 00:00',
