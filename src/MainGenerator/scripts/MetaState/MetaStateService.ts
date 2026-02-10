@@ -35,7 +35,7 @@ export class MetaStateService {
     return {
       upVote: Number(meta?.upVote ?? 0),
       viewer: Number(meta?.viewer ?? 0),
-      follower: Number(meta?.follower ?? 0),
+      follower: Number(meta?.subscriberCount ?? meta?.follower ?? 0),
       startTime: meta?.startTime ?? null,
     }
   }
@@ -47,6 +47,9 @@ export class MetaStateService {
 
   private notifySubscribers() {
     if (!this.current) return
+
+    const peakChanged =
+      this.previous && (this.current.upVote > this.peak.upVote || this.current.viewer > this.peak.viewer)
 
     const event: MetaUpdateEvent = {
       current: this.current,

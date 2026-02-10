@@ -17,7 +17,7 @@ export function evaluateMetaTrigger(trigger: MetaTriggerType, event: MetaUpdateE
 
     case 'viewer':
       if (!trigger.viewer) return true
-      evaluateCondition(trigger.viewer, event.current.viewer, event.previous?.viewer ?? 0, event.peak.viewer)
+      return evaluateCondition(trigger.viewer, event.current.viewer, event.previous?.viewer ?? 0, event.peak.viewer)
 
     case 'elapsedMinutes':
       return evaluateElapsedTime(trigger.elapsedMinutes ?? 0, event.current.startTime)

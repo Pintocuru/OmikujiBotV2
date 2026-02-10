@@ -8,12 +8,6 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
 
 /**
  * ルールプロセッサーのファクトリー関数
- *
- * この関数は呼び出されるたびに新しいプロセッサーインスタンスを生成します。
- * watchEffect と組み合わせることで、データ更新時に古いインスタンスを
- * 確実に破棄し、新しいインスタンスで再起動できます。
- *
- * @param data - おみくじデータ。このデータに基づいてタイマーやメタルールを実行します。
  */
 export function useRuleProcessor(data: OmikujiDataType) {
   // この実行コンテキスト専用のインスタンス

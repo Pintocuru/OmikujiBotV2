@@ -16,6 +16,8 @@ export class MetaRuleProcessor {
   private readonly omikujiProcessor = new OmikujiProcessor()
   private readonly data: OmikujiDataType
   private unsubscribe: (() => void) | null = null
+  private lastUpVote: number | null = null
+  private lastViewer: number | null = null
 
   constructor(data: OmikujiDataType) {
     this.data = data
@@ -25,20 +27,27 @@ export class MetaRuleProcessor {
    * メタルール監視を開始
    */
   startMetaRules(onMetaTrigger: (messages: BotMessageType[]) => void): void {
-    const appStore = useAppStore()
-    const metaState = appStore.metaState
+    const { metaState } = useAppStore()
 
     this.stopMetaRules()
 
-    const handler = (event: MetaUpdateEvent) => {
-      this.processMetaRules(event, onMetaTrigger)
-    }
-
-    metaState.subscribe(handler)
-
+    // 購読の開始
     this.unsubscribe = metaState.subscribe((event) => {
       this.processMetaRules(event, onMetaTrigger)
     })
+
+    // ??
+    const current = metaState.getCurrent()
+    if (current) {
+      this.processMetaRules(
+        {
+          current,
+          previous: null,
+          peak: metaState.getPeak(),
+        },
+        onMetaTrigger
+      )
+    }
   }
 
   /**
@@ -55,18 +64,32 @@ export class MetaRuleProcessor {
    * メタデータ更新時の処理
    */
   private processMetaRules(event: MetaUpdateEvent, onMetaTrigger: (messages: BotMessageType[]) => void): void {
+    const currentUpVote = event.current.upVote
+    const previousUpVote = this.lastUpVote ?? 0
+
+    const currentViewer = event.current.viewer
+    const previousViewer = this.lastViewer ?? 0
+
+    this.lastUpVote = currentUpVote
+    this.lastViewer = currentViewer
+
     const enabledRules = Object.values(this.data.metas)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
     for (const rule of enabledRules) {
-      if (evaluateMetaTrigger(rule.trigger, event)) {
-        try {
-          const messages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
-          onMetaTrigger(messages)
-        } catch (error) {
-          console.error(`Meta rule ${rule.key} execution error:`, error)
-        }
+      switch (rule.trigger.condition) {
+        case 'upVote':
+          if (currentUpVote > previousUpVote) {
+            onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
+          }
+          break
+
+        case 'viewer':
+          if (currentViewer > previousViewer) {
+            onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
+          }
+          break
       }
     }
   }
