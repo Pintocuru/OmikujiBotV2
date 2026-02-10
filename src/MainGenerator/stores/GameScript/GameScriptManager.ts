@@ -2,10 +2,12 @@
 import { GameScriptsType, ScriptClass, ScriptResult } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { UserVisitManager } from '../UserVisitManager/UserVisitManager'
 
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}
   private static instance: GameScriptManager | null = null
+  private visitManager?: UserVisitManager
 
   static getInstance() {
     if (!this.instance) this.instance = new GameScriptManager()
@@ -26,6 +28,11 @@ export class GameScriptManager {
 
         const scriptInstance = gameScriptMap[scriptId].execute
         this.scriptInstances[scriptId] = scriptInstance
+
+        // ★ visitManagerが既に設定されていれば注入
+        if (this.visitManager && 'initialize' in scriptInstance && typeof scriptInstance.initialize === 'function') {
+          scriptInstance.initialize(this.visitManager)
+        }
       }
     } catch (error) {
       console.error('スクリプト初期化エラー:', error)
@@ -75,6 +82,19 @@ export class GameScriptManager {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return 'スクリプト実行エラー。詳細はコンソールをご確認ください。'
     }
+  }
+
+  /**
+   * VisitManager をセット
+   */
+  setVisitManager(visitManager: UserVisitManager) {
+    this.visitManager = visitManager
+    // 既存のスクリプトインスタンスに注入
+    Object.values(this.scriptInstances).forEach((instance) => {
+      if ('initialize' in instance && typeof instance.initialize === 'function') {
+        instance.initialize(visitManager)
+      }
+    })
   }
 
   /**

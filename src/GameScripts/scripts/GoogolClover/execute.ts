@@ -1,18 +1,17 @@
 // src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult, BaseScript } from '@/types/'
 import { GameContext, playSlot } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
-import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserState } from './sub/types'
-import { buildBotMessageRanking, prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GoogolClover'
 const UNKNOWN_NAME = 'Unknown'
 
-export class ExecuteScript implements ScriptClass {
+export class ExecuteScript extends BaseScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
   private readonly userStates = new Map<string, UserState>()
 
@@ -20,6 +19,7 @@ export class ExecuteScript implements ScriptClass {
    * 設定を初期化する
    */
   constructor() {
+    super()
     this.logRank.setup(RANKING_KEY)
   }
 

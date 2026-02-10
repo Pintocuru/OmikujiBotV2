@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/BomberSpin/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult, BaseScript } from '@/types/'
 import { playSlot } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
@@ -9,10 +9,11 @@ import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/Ran
 
 const RANKING_KEY = 'BomberSpin'
 
-export class ExecuteScript implements ScriptClass {
+export class ExecuteScript extends BaseScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
   constructor() {
+    super()
     this.logRank.setup(RANKING_KEY)
   }
 

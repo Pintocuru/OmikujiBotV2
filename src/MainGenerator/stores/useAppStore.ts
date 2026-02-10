@@ -17,13 +17,7 @@ export const useAppStore = defineStore('app', () => {
   // ref
   const data = ref<OmikujiDataType>(omikujiData)
 
-  /**
-   * データを更新
-   *
-   * data.valueを更新すると、Vueのリアクティブシステムが自動的に
-   * それを参照しているwatchEffectやcomputedを再実行します。
-   * そのため、dataVersionのような手動カウンターは不要です。
-   */
+  // データを更新
   const loadData = (newData: OmikujiDataType) => {
     console.log('📥 loadData: データを更新します')
     data.value = normalizeData(newData)
@@ -38,6 +32,9 @@ export const useAppStore = defineStore('app', () => {
   const userVisitManager = new UserVisitManager()
   const scriptManager = GameScriptManager.getInstance()
   const metaState = MetaStateService.getInstance()
+
+  // ★ visitManagerをscriptManagerに注入
+  scriptManager.setVisitManager(userVisitManager)
 
   return {
     // 状態
