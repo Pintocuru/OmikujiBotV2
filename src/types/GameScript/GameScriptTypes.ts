@@ -12,7 +12,7 @@ export interface ScriptPreset extends PresetMetadata {
 
 export type ScriptResult = {
   actions: PostActionType[]
-  rankingMessages: BotMessageExtraType[]
+  botMessageExtras: BotMessageExtraType[]
 }
 
 // スクリプトのメイン実行クラス

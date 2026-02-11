@@ -148,7 +148,7 @@ export class UserVisitManager {
   /**
    * 指定ユーザー・ルールの訪問記録を取得
    */
-  getVisitRecord(userId: string, ruleId: string): UserVisitRecord | null {
+  getVisitRecord(userId: string, ruleId = BOT_STATS_RULE_ID): UserVisitRecord | null {
     return this.userVisits.get(this.createKey(userId, ruleId)) ?? null
   }
 

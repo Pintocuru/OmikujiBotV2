@@ -59,7 +59,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     return {
       actions: postActions,
-      rankingMessages: [],
+      botMessageExtras: [],
     }
   }
 

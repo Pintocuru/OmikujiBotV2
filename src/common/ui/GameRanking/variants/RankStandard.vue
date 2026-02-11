@@ -23,16 +23,16 @@
   import GameRankingList from './RankStandard/GameRankingList.vue'
 
   const props = defineProps<{
-    rankingMessages: BotMessageExtraType[]
+    botMessageExtra: BotMessageExtraType[]
     settings: SettingsRankingType
   }>()
 
   // スコア表示用（scoreValue を持つもの）
-  const scoreMessages = computed(() => props.rankingMessages.filter((m) => typeof m.lists?.order === 'number'))
+  const scoreMessages = computed(() => props.botMessageExtra.filter((m) => typeof m.lists?.order === 'number'))
 
   // リスト表示用
   const listMessages = computed(() => {
-    const messages = props.rankingMessages
+    const messages = props.botMessageExtra
     if (!messages.length) return []
 
     const needsUnique = messages.some((m) => m.lists?.isUnique === true)

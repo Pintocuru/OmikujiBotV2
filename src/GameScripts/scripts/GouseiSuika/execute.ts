@@ -26,7 +26,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     const logResult = omiken ? this.recordRanking(omiken, gameResult.points, characterKey) : null
 
-    const rankingMessages = buildBotMessageRanking({
+    const botMessageExtras = buildBotMessageRanking({
       user,
       characterKey,
       bubbleText,
@@ -38,7 +38,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(gameResult, logResult, characterKey, bubbleText),
-      rankingMessages,
+      botMessageExtras,
     }
   }
 

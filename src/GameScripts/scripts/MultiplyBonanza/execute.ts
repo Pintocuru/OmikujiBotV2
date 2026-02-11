@@ -44,7 +44,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(gameResult, wordPartyActions, logResult, characterKey),
-      rankingMessages: botMessages,
+      botMessageExtras: botMessages,
     }
   }
 

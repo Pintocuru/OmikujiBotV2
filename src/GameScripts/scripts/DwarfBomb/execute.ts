@@ -28,7 +28,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
 
     // BotMessage の構築
-    const rankingMessages = buildBotMessageRanking({
+    const botMessageExtras = buildBotMessageRanking({
       user,
       characterKey,
       bubbleText: gameResult.result.message,
@@ -43,7 +43,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     return {
       actions: this.buildPostActions(logResult, partyEffects, characterKey, gameResult.result.message),
-      rankingMessages,
+      botMessageExtras,
     }
   }
 

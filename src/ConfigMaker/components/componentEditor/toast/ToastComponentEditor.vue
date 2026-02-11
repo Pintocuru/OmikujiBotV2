@@ -157,6 +157,7 @@
 
         return BotMessageBubbleSchema.parse({
           bubble: {
+            name: 'テストユーザー',
             message: messageText,
             isToast: true,
             characterKey,

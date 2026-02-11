@@ -2,7 +2,7 @@
 <template>
   <!-- ランキングプレビュー -->
   <div v-if="ranking.targetScriptKeys.length > 0" class="max-h-56 overflow-y-hidden">
-    <GameRankingManager :botMessages="[]" :settings="ranking" />
+    <GameRankingManager :botMessageExtras="[]" :settings="ranking" />
   </div>
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
 

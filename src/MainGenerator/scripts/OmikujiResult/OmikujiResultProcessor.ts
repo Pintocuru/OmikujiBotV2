@@ -69,7 +69,7 @@ export class OmikujiResultProcessor {
   private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
     const scriptResult = this.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
-    const { actions, rankingMessages: scriptMessages } = scriptResult
+    const { actions, botMessageExtras: scriptMessages } = scriptResult
 
     // 1. 変数プレースホルダーを処理
     const processedActions = this.processVariables(actions)

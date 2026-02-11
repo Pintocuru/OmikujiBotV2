@@ -5,8 +5,8 @@ import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
 import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
 import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
 import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
+import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
 import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
-
 
 // コンポーネントマッピング定義
 interface ComponentMapping {
@@ -18,7 +18,7 @@ interface ComponentMapping {
 }
 
 export const COMPONENT_MAPPINGS: ComponentMapping[] = [
-// フキダシ
+  // フキダシ
   {
     kind: 'bubble',
     component: CommentBubble,
@@ -42,11 +42,17 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
     component: CounterPreview,
     shouldRender: ({ isComment }) => isComment, // コメント機能が有効な時のみ
   },
+  // ラッキーメンバーズ
+  {
+    kind: 'WinnerGroup',
+    component: WinnerGroup,
+    shouldRender: ({ isComment }) => isComment,
+  },
   // 8時間フライト
   {
     kind: 'flightSeat',
     component: FlightSeat,
-  }
+  },
 
   // 将来的な拡張例:
   // {

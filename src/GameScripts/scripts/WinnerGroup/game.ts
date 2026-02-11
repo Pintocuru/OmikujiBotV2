@@ -7,11 +7,9 @@ import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager
 export function getWinnersFromVisitManager(
   count: number,
   ruleKey?: string | null,
-  visitManager?: UserVisitManager // ← 注入可能に
+  visitManager?: UserVisitManager
 ): UserVisitRecord[] {
-  if (!visitManager) {
-    return getDummyWinners(count)
-  }
+  if (!visitManager) return getDummyWinners(count)
 
   try {
     const winners = visitManager.getLiveComment(count, ruleKey ?? undefined).winners

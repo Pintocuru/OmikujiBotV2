@@ -1,3 +1,4 @@
+<!-- src\MainGenerator\ui\FlightSeat\FlightSeat.vue -->
 <template>
   <div class="card w-full shadow-xl mx-auto p-4 space-y-2" :data-theme="settings.color">
     <!-- タイトル -->

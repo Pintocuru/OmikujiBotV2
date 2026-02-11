@@ -12,7 +12,7 @@
     </div>
 
     <!-- CounterPreviewManagerで表示を管理 -->
-    <CounterPreviewManager :bot-messages="rankingMessages" :settings="rankingSettings" />
+    <CounterPreviewManager :botMessageExtras="rankingMessages" :settings="rankingSettings" />
   </div>
 </template>
 

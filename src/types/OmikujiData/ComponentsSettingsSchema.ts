@@ -4,6 +4,7 @@ import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'
+import WinnerGroup from '@/MainGenerator/ui/WinnerGroup/WinnerGroup.vue'
 
 /**
  * 共通スタイル設定
@@ -93,18 +94,35 @@ export const counterComponents = {
 } as const
 
 export type CounterComponent = keyof typeof counterComponents
-export const componentValues = Object.keys(counterComponents) as CounterComponent[]
+const counterComponentValues = Object.keys(counterComponents) as CounterComponent[]
 
 export const SettingsCounterSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
 
   ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
-  component: z.enum(componentValues).default('counterUser').catch('counterUser'),
+  component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
 })
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
+
+/**
+ * ラッキーメンバーズ WinnerGroup
+ */
+export const winnerComponents = {
+  valentineCoupling: 'バレンタイン・カップリング',
+} as const
+
+export type WinnerComponent = keyof typeof winnerComponents
+const winnerComponentValues = Object.keys(winnerComponents) as WinnerComponent[]
+
+export const SettingsWinnerGroupSchema = z.object({
+  component: z.enum(winnerComponentValues).default('valentineCoupling').catch('valentineCoupling'),
+  label: z.string().default('ラッキーメンバーズ').catch('ラッキーメンバーズ'), // ラベル
+  color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
+})
+export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 
 /**
  * 8時間フライト flightSeat
@@ -153,6 +171,9 @@ export const ComponentsSettingsSchema = z.object({
   toast: SettingsToastSchema.default(SettingsToastSchema.parse({})).catch(SettingsToastSchema.parse({})),
   ranking: SettingsRankingSchema.default(SettingsRankingSchema.parse({})).catch(SettingsRankingSchema.parse({})),
   counter: SettingsCounterSchema.default(SettingsCounterSchema.parse({})).catch(SettingsCounterSchema.parse({})),
+  winnerGroup: SettingsWinnerGroupSchema.default(SettingsWinnerGroupSchema.parse({})).catch(
+    SettingsWinnerGroupSchema.parse({})
+  ),
   flightSeat: SettingsFlightSeatSchema.default(SettingsFlightSeatSchema.parse({})).catch(
     SettingsFlightSeatSchema.parse({})
   ),

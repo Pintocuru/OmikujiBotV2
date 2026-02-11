@@ -22,7 +22,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     const ruleKey = useRule ? omiken?.meta.ruleKey : null
     const user = prepareUserInfo(omiken)
 
-    const winners = getWinnersFromVisitManager(count, ruleKey)
+    const winners = getWinnersFromVisitManager(count, ruleKey, this.visitManager)
     const names = winners.map((w) => w.userName)
     const winnerText = names.length === 1 ? names[0] : names.join(' さん、') + ' さん'
 
@@ -37,7 +37,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       sound: 'decision',
     })
 
-    const rankingMessage: BotMessageExtraType = BotMessageExtraSchema.parse({
+    const botMessageExtra: BotMessageExtraType = BotMessageExtraSchema.parse({
       delaySeconds,
       user,
       componentKey: 'WinnerGroup',
@@ -46,7 +46,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     return {
       actions: [messageAction],
-      rankingMessages: [rankingMessage],
+      botMessageExtras: [botMessageExtra],
     }
   }
 

@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha4",
-    "dataVersion": 2.09004,
+    "generatorVersion": "2.1.0-alpha5",
+    "dataVersion": 2.09005,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -18,7 +18,7 @@
       "key": "EidolonGacha",
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
-      "updatedAt": "2026-01-19T01:20:31.530Z",
+      "updatedAt": "2026-02-11T14:22:24.060Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -234,7 +234,8 @@
       "ruleType": "comments",
       "trigger": {
         "conditions": [
-          "comment"
+          "comment",
+          "access"
         ],
         "userName": [],
         "access": [],
@@ -691,6 +692,70 @@
         "gift": [],
         "comment": [
           "おみくじ"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      }
+    },
+    "3be9b811-71d0-4aed-9ae0-7387dac9122d": {
+      "id": "1724f07a-b46d-4833-8d38-56063b1a4b38",
+      "key": "3be9b811-71d0-4aed-9ae0-7387dac9122d",
+      "name": "バレンタイン・カップリング",
+      "createdAt": "2026-02-11T14:15:32.212Z",
+      "updatedAt": "2026-02-11T14:22:41.839Z",
+      "order": 6,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "7f36837e-08f6-4535-852a-0a020dc525b3",
+          "key": "e13f8adc-4d01-4f0a-85bf-8157fa936581",
+          "name": "",
+          "createdAt": "2026-02-11T14:15:23.918Z",
+          "updatedAt": "2026-02-11T14:15:23.918Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "gameScripts",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "",
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "<<user>>さんの運勢は【大吉】",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "WinnerGroup",
+            "queryString": "",
+            "characterKey": "chocolate"
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": [
+          "カップ"
         ]
       },
       "limits": {
@@ -3265,12 +3330,8 @@
   "components": {
     "conditions": [
       {
-        "slot": "secondary",
-        "kind": "toast"
-      },
-      {
         "slot": "extra",
-        "kind": "ranking"
+        "kind": "WinnerGroup"
       }
     ],
     "commonStyle": {
@@ -3335,6 +3396,15 @@
           "backTo": "secondary"
         }
       },
+      "winnerGroup": {
+        "component": "valentineCoupling",
+        "label": "ラッキーメンバーズ",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
       "flightSeat": {
         "slotType": "extra",
         "layout": "square",
@@ -3363,7 +3433,8 @@
       "toast",
       "ranking",
       "counter",
-      "flightSeat"
+      "flightSeat",
+      "WinnerGroup"
     ],
     "gameScripts": [
       "GoogolClover",
@@ -3371,7 +3442,8 @@
       "MultiplyBonanza",
       "DwarfBomb",
       "BomberSpin",
-      "GouseiSuika"
+      "GouseiSuika",
+      "WinnerGroup"
     ],
     "developer": {
       "licenseVisible": "basic",
