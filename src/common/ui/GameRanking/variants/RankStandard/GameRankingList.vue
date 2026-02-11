@@ -31,24 +31,24 @@
             <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-1">
               <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.extra?.listName || msg.user?.userName || 'A').charAt(0) }}
+                {{ (msg.lists?.listName || msg.user?.userName || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- 名前 -->
             <span class="text-lg font-bold truncate">
-              {{ msg.extra?.listName || msg.user?.userName || 'Anonymous' }}
+              {{ msg.lists?.listName || msg.user?.userName || 'Anonymous' }}
             </span>
             <!-- symbol -->
-            <span v-if="msg.extra?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
-              {{ msg.extra?.symbol }}
+            <span v-if="msg.lists?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
+              {{ msg.lists?.symbol }}
             </span>
           </div>
 
           <!--スコア -->
           <div class="flex-shrink-0">
-            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.extra?.variant as BaseVariant)">
-              {{ msg.extra?.scoreText || 0 }}
+            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.lists?.variant as BaseVariant)">
+              {{ msg.lists?.text || 0 }}
             </div>
           </div>
         </div>
@@ -72,19 +72,19 @@
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.listMessages.length > 0) {
-      let data = [...props.listMessages].filter((msg) => msg.extra?.isRank !== false)
+      let data = [...props.listMessages].filter((msg) => msg.lists?.isVisible !== false)
 
       switch (props.settings.sortOrder) {
         case 'high':
           data.sort((a, b) => {
-            const diff = (b.extra?.scoreValue || 0) - (a.extra?.scoreValue || 0)
+            const diff = (b.lists?.order || 0) - (a.lists?.order || 0)
             if (diff !== 0) return diff
             return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })
           break
         case 'low':
           data.sort((a, b) => {
-            const diff = (a.extra?.scoreValue || 0) - (b.extra?.scoreValue || 0)
+            const diff = (a.lists?.order || 0) - (b.lists?.order || 0)
             if (diff !== 0) return diff
             return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })

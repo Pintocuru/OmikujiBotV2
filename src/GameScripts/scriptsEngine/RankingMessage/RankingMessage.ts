@@ -17,7 +17,7 @@ export interface BuildBotMessageParams {
   symbol: string
   delaySeconds?: number
   characterKey: string
-  isUniqueUser?: boolean
+  isUnique?: boolean
   logResult: ReturnType<LogRankScript['run']> | null
 }
 
@@ -36,7 +36,7 @@ export function prepareUserInfo(omiken?: OmikenCommentType): UserNameType {
  * 吹き出し(comment)とランキング(extra)を個別のメッセージとして出力する
  */
 export function buildBotMessageRanking(params: BuildBotMessageParams): BotMessageExtraType[] {
-  const { user, componentKey, score, symbol, delaySeconds = 3.5, isUniqueUser = false, logResult } = params
+  const { user, componentKey, score, symbol, delaySeconds = 3.5, isUnique = false, logResult } = params
   const messages: BotMessageExtraType[] = []
 
   if (logResult) {
@@ -47,13 +47,13 @@ export function buildBotMessageRanking(params: BuildBotMessageParams): BotMessag
       delaySeconds: delaySeconds,
       user,
       componentKey,
-      extra: {
+      lists: {
         listName: stats?.userName ?? user.userName,
-        scoreText: String(score),
-        scoreValue: currentRecord?.score ?? score,
         symbol,
-        isRank: !logResult.isOverLimit,
-        isUniqueUser,
+        text: String(score),
+        order: currentRecord?.score ?? score,
+        isVisible: !logResult.isOverLimit,
+        isUnique,
       },
     })
     messages.push(rankingMessage)

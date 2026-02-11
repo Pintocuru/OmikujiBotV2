@@ -1,5 +1,5 @@
 // src/composables/useDummyBotMessages.ts
-import { ExtraMessageSchema, SettingsRankingType } from '@/types/'
+import { ExtraListsSchema, SettingsRankingType } from '@/types/'
 import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
@@ -105,10 +105,10 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
     dummyMessages.push(
       BotMessageExtraSchema.parse({
         componentKey: 'dummy',
-        extra: ExtraMessageSchema.parse({
+        lists: ExtraListsSchema.parse({
           listName,
-          scoreText: String(points),
-          scoreValue: points,
+          text: String(points),
+          order: points,
         }),
       })
     )
@@ -116,9 +116,9 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
   switch (settings.sortOrder) {
     case 'high':
-      return dummyMessages.sort((a, b) => (b.extra?.scoreValue || 0) - (a.extra?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (b.lists?.order || 0) - (a.lists?.order || 0))
     case 'low':
-      return dummyMessages.sort((a, b) => (a.extra?.scoreValue || 0) - (b.extra?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (a.lists?.order || 0) - (b.lists?.order || 0))
     case 'new':
     default:
       return dummyMessages

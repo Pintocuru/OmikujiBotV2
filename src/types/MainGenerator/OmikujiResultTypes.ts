@@ -1,16 +1,21 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultTypes.ts
 import { CharacterEmotionType, PostActionType } from '@/types/OmikujiData/'
-import { ExtraMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { ExtraListsType, ExtraSlotsType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
  * 変数プレースホルダーの解析結果
  * VariablePlaceholderProcessor.ts の ProcessResult と構造を一致させる
  */
+export interface VariablePlaceholderExtra {
+  componentKey: string
+  lists?: ExtraListsType
+  slots?: ExtraSlotsType
+}
+
 export interface VariablePlaceholderResult {
-  bubble: string // 置換後のメッセージ本文
-  componentKey?: string // ランキング生成に使用する特定のキー
-  ranking?: ExtraMessageType // ランキング生成に使用する特定のキー
+  bubble: string
+  extra?: VariablePlaceholderExtra
 }
 
 /**
@@ -30,8 +35,6 @@ export interface CreateBotMessageParams {
   iconKey: CharacterEmotionType
   delaySeconds: number
   isToast: boolean
-  bubble: string
-  componentKey?: string
-  ranking?: ExtraMessageType
+  message: VariablePlaceholderResult
   omiken?: OmikenCommentType
 }

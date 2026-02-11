@@ -70,33 +70,6 @@ export const ExtraSlotsSchema = z.object({
 })
 export type ExtraSlotsType = z.infer<typeof ExtraSlotsSchema>
 
-export const ExtraMessageSchema = z.object({
-  // 得点表示
-  listName: z.string().optional(), // 名前
-  symbol: z.string().optional(), // 名前の隣につけるやつ
-  scoreText: z.string().default(''), // 表示用得点
-  scoreValue: z.number().optional(), // 比較用
-  variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
-  // 設定
-  isRank: z.boolean().default(true), // リストに載せるか
-  isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
-  slots: z // 任意の値
-    .object({
-      slot0: z.string().optional(),
-      slot1: z.string().optional(),
-      slot2: z.string().optional(),
-      slot3: z.string().optional(),
-      slot4: z.string().optional(),
-      slot5: z.string().optional(),
-      slot6: z.string().optional(),
-      slot7: z.string().optional(),
-      slot8: z.string().optional(),
-      slot9: z.string().optional(),
-    })
-    .optional(),
-})
-export type ExtraMessageType = z.infer<typeof ExtraMessageSchema>
-
 /**
  * BotMessageExtraSchema
  */
@@ -104,7 +77,8 @@ export const BotMessageExtraSchema = BotMessageBaseSchema.extend({
   type: z.literal('extra').default('extra'),
   componentKey: z.string(), // アイテム判別用key
   user: UserNameSchema.optional(),
-  extra: ExtraMessageSchema,
+  lists: ExtraListsSchema.optional(),
+  slots: ExtraSlotsSchema.optional(),
 })
 export type BotMessageExtraType = z.infer<typeof BotMessageExtraSchema>
 

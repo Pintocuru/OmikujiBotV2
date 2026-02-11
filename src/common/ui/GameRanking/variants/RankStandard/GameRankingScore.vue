@@ -32,11 +32,11 @@
           <!-- コンテンツ -->
           <div class="relative z-10 text-center text-white">
             <h3 class="text-2xl font-bold mb-3">
-              {{ latestMessage.extra?.listName || latestMessage.user?.userName }}
+              {{ latestMessage.lists?.listName || latestMessage.user?.userName }}
             </h3>
             <p class="text-base opacity-80">スコア</p>
             <div class="text-6xl font-bold">
-              {{ formatScore(latestMessage.extra?.scoreValue || 0) }}
+              {{ formatScore(latestMessage.lists?.order || 0) }}
             </div>
           </div>
         </div>
@@ -64,8 +64,7 @@
 
   const localFilteredMessages = computed(() =>
     props.scoreMessages.filter((m) => {
-      const r = m.extra
-      return r && props.settings.targetScriptKeys.includes(r.componentKey)
+      return m.lists && props.settings.targetScriptKeys.includes(m.componentKey)
     })
   )
 

@@ -9,7 +9,7 @@ import {
   VAR_DECLARATION_PATTERN,
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
-import { ExtraMessageSchema, ExtraMessageType } from '@/types'
+import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } from '@/types'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -47,12 +47,19 @@ export class VariablePlaceholderProcessor {
     ) as Record<string, string>
 
     // 予約語からランキングデータを構築
-    const ranking = this.buildRankingData(allVars)
+    const extra = this.buildExtraData(allVars)
 
     // 予約語の削除
     for (const key of RESERVED_KEYS) this.evaluator.remove(key)
 
-    return { bubble: processed, ranking }
+    return {
+      bubble: processed,
+      extra: {
+        componentKey: 'basicList', // basicList = BOTアクション
+        lists: extra.lists,
+        slots: extra.slots,
+      },
+    }
   }
 
   /**
@@ -133,7 +140,7 @@ export class VariablePlaceholderProcessor {
   /**
    * 取得した変数の中から予約語を抽出し、ExtraMessageSchema に適合する形に変換
    */
-  private buildRankingData(vars: Record<string, string>): ExtraMessageType | undefined {
+  private buildRankingData(vars: Record<string, string>): ExtraListsType | undefined {
     // slot0 - slot9 を収集
     const slots: string[] = []
     for (let i = 0; i <= 9; i++) {
@@ -148,18 +155,67 @@ export class VariablePlaceholderProcessor {
 
     try {
       // Zod スキーマを使用して安全にパース
-      return ExtraMessageSchema.parse({
+      return ExtraListsSchema.parse({
         listName: vars['name'],
         symbol: vars['symbol'],
         scoreText: vars['text'],
         variant: vars['variant'],
-        isUniqueUser: vars['unique'] !== 'false',
-        isRank: true,
+        isUnique: vars['unique'] !== 'false',
+        isVisible: true,
         slots: slots.length > 0 ? slots : undefined,
       })
     } catch (error) {
       console.warn('Ranking data construction failed:', error)
       return undefined
+    }
+  }
+
+  private buildExtraData(vars: Record<string, string>): {
+    lists?: ExtraListsType
+    slots?: ExtraSlotsType
+  } {
+    // slot0 - slot9 を収集
+    const slotEntries: Record<string, string> = {}
+
+    for (let i = 0; i <= 9; i++) {
+      const key = `slot${i}`
+      if (vars[key] !== undefined) {
+        slotEntries[key] = vars[key]
+      }
+    }
+
+    const hasSlots = Object.keys(slotEntries).length > 0
+    const hasListData = vars['text'] !== undefined
+
+    if (!hasSlots && !hasListData) {
+      return {}
+    }
+
+    let lists: ExtraListsType | undefined
+    let slots: ExtraSlotsType | undefined
+
+    try {
+      if (hasListData) {
+        lists = ExtraListsSchema.parse({
+          listName: vars['name'],
+          symbol: vars['symbol'],
+          text: vars['text'],
+          order: vars['order'] ? Number(vars['order']) : undefined,
+          variant: vars['variant'],
+          isUnique: vars['unique'] === 'true',
+          isVisible: vars['visible'] !== 'false',
+          flag: vars['flag'] === 'true',
+        })
+      }
+
+      if (hasSlots) {
+        slots = ExtraSlotsSchema.parse(slotEntries)
+      }
+
+      return { lists, slots }
+    } catch (error) {
+      console.warn('Extra data construction failed:', error)
+      return {}
     }
   }
 }

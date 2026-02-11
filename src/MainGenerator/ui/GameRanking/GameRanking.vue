@@ -35,10 +35,10 @@
     return [
       BotMessageExtraSchema.parse({
         componentKey: rankingSettings.value.targetScriptKeys[0],
-        extra: {
+        lists: {
           listName: 'テストユーザー',
-          scoreText: '12,345',
-          scoreValue: 12345,
+          text: '12,345',
+          order: 12345,
         },
       }),
     ]
@@ -53,8 +53,8 @@
     if (!keys) return []
 
     const base = botMessages.value.filter((msg): msg is BotMessageExtraType => {
-      if (msg.type !== 'extra') return false
-      return msg.extra && rankingSettings.value.targetScriptKeys.includes(msg.componentKey)
+      if (msg.type !== 'extra' || !msg.lists) return false
+      return rankingSettings.value.targetScriptKeys.includes(msg.componentKey)
     })
     return isDev ? [...base, ...devScoreMessages.value] : base
   })

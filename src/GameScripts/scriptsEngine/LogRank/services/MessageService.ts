@@ -37,16 +37,11 @@ const createMessage = (stats: UserStatsType, record: GameRecordType, isOverLimit
   const { userName } = stats
   const { score } = record
 
-  if (isOverLimit) {
-    return `${userName}さんは上限を超えているから、参考記録だよ。`
-  }
+  if (isOverLimit) return `${userName}さんは上限を超えているから、参考記録だよ。`
 
   // ランキング情報は外部で取得する想定
   // ここではシンプルなメッセージのみ
-  if (score > 0) {
-    return `${userName}さんの${score}ポイントを記録したよ。`
-  }
-
+  if (score > 0) return `${userName}さんの${score}ポイントを記録したよ。`
   return `${userName}さんの記録を登録したよ。`
 }
 

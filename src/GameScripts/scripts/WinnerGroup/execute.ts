@@ -41,9 +41,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       delaySeconds,
       user,
       componentKey: 'WinnerGroup',
-      extra: {
-        slots: buildSlots(winners),
-      },
+      slots: buildSlots(winners),
     })
 
     return {

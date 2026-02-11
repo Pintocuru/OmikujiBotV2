@@ -21,7 +21,7 @@
     if (!keys?.length) return []
 
     return props.botMessages.filter(
-      (m): m is BotMessageExtraType => m.type === 'extra' && keys.includes(m.extra.componentKey)
+      (m): m is BotMessageExtraType => m.type === 'extra' && keys.includes(m.componentKey)
     )
   })
 
