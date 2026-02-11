@@ -1,19 +1,17 @@
 <!-- src\MainGenerator\ui\GameRanking\GameRanking.vue -->
 <template>
-  <div>
-    <!-- DEV preview trigger -->
-    <div
-      v-if="isDev && showDevLabel"
-      class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
-      @mouseenter="devHoverActive = true"
-      @mouseleave="devHoverActive = false"
-    >
-      Ranking Preview
-    </div>
-
-    <!-- CounterPreviewManagerで表示を管理 -->
-    <CounterPreviewManager :botMessageExtras="rankingMessages" :settings="rankingSettings" />
+  <!-- DEV preview trigger -->
+  <div
+    v-if="isDev && showDevLabel"
+    class="fixed top-4 right-4 z-50 px-3 py-1 text-xs rounded-md bg-base-200 opacity-40 hover:opacity-100 cursor-pointer"
+    @mouseenter="devHoverActive = true"
+    @mouseleave="devHoverActive = false"
+  >
+    Ranking Preview
   </div>
+
+  <!-- CounterPreviewManagerで表示を管理 -->
+  <CounterPreviewManager :botMessageExtras="rankingMessages" :settings="rankingSettings" />
 </template>
 
 <script setup lang="ts">

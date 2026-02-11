@@ -1,28 +1,8 @@
 <!-- src\MainGenerator\ui\WinnerGroup\WinnerGroup.vue -->
 <template>
-  <div class="overflow-hidden space-y-4">
-    <!-- テスト表示 -->
-    <div class="p-4 bg-base-200 rounded-box">
-      <h2 class="text-lg font-bold mb-3">Selected Users</h2>
-
-      <div v-if="selectedUsers.length === 0" class="text-sm opacity-60">No users selected</div>
-
-      <div v-else class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div v-for="user in selectedUsers" :key="user.userId" class="card bg-base-100 shadow">
-          <div class="card-body items-center text-center p-4">
-            <div class="avatar">
-              <div class="w-16 rounded-full">
-                <img :src="user.profileImage" alt="avatar" />
-              </div>
-            </div>
-            <div class="font-semibold mt-2">
-              {{ user.userName }}
-            </div>
-            <div class="text-xs opacity-60">Visits: {{ user.visitCount }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="overflow-hidden space-y-4" :data-theme="winnerSetting.color">
+    <!-- コンポーネント切り替え -->
+    <component :is="currentComponent" :users="selectedUsers" :label="winnerSetting.label" />
   </div>
 </template>
 
@@ -32,6 +12,10 @@
   import { BotMessageExtraType } from '@/types'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
+  import ValentineCoupling from './ValentineCoupling.vue'
+  import TopStars from './TopStars.vue'
+
+  // カスタムフック
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
@@ -59,5 +43,19 @@
     return selectedUserIds.value
       .map((userId) => userVisitManager.getVisitRecord(userId))
       .filter((record): record is UserVisitRecord => !!record)
+  })
+
+  // コンポーネントマッピング
+  const componentMap: Record<string, any> = {
+    valentineCoupling: ValentineCoupling,
+    TopStars: TopStars,
+    // 他のコンポーネントを追加する場合はここに追加
+    // anotherComponent: AnotherComponent,
+  }
+
+  // 現在選択されているコンポーネント
+  const currentComponent = computed(() => {
+    const componentKey = winnerSetting.value.component
+    return componentMap[componentKey] || ValentineCoupling // フォールバック
   })
 </script>
