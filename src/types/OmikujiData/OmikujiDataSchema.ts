@@ -16,20 +16,18 @@ import { ActionSetSchema } from './ActionSet'
 export const OmikujiDataSchema = z.object({
   ...PackageJsonSchema.shape,
   jsonMerge: JsonMergeSchema.catch([]),
-  comments: recordNormalization(CommentRuleSchema),
-  timers: recordNormalization(TimerRuleSchema),
-  metas: recordNormalization(MetaRuleSchema),
-  actionSets: recordNormalization(ActionSetSchema),
-  placeholders: recordNormalization(PlaceholderSchema),
-  characters: recordNormalization(CharacterSchema),
+  comments: normalizedRecord(CommentRuleSchema),
+  timers: normalizedRecord(TimerRuleSchema),
+  metas: normalizedRecord(MetaRuleSchema),
+  actionSets: normalizedRecord(ActionSetSchema),
+  placeholders: normalizedRecord(PlaceholderSchema),
+  characters: normalizedRecord(CharacterSchema),
   components: ComponentsSchema.catch(ComponentsSchema.parse({})),
   featureUsage: FeatureUsageSchema.catch(FeatureUsageSchema.parse({})),
   settings: SettingsSchema.catch(SettingsSchema.parse({})),
 })
-
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>
 
-// TODO:将来これは消したい
-function recordNormalization<T extends z.ZodTypeAny>(itemSchema: T) {
+function normalizedRecord<T extends z.ZodTypeAny>(itemSchema: T) {
   return z.record(z.string(), itemSchema).default({}).catch({})
 }

@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.02.10-2.1.0-alpha4",
+    "id": "StrawberryChocolate-ver2026.02.10-2.1.0-alpha5",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.10-2.1.0-alpha4",
+    "version": "ver2026.02.10-2.1.0-alpha5",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha4",
-    "dataVersion": 2.09004,
+    "generatorVersion": "2.1.0-alpha5",
+    "dataVersion": 2.09005,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
