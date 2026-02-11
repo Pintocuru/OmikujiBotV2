@@ -1,6 +1,6 @@
 // src/composables/useDummyBotMessages.ts
-import { RankingMessageSchema, SettingsRankingType } from '@/types/'
-import { BotMessageRankingSchema, BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
+import { ExtraMessageSchema, SettingsRankingType } from '@/types/'
+import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
 export const candidateNames = [
@@ -87,10 +87,10 @@ export const generateDummyUserNames = (count: number): UserVisitRecord[] => {
 }
 
 // ランダムな BotMessage を生成
-export const generateDummyMessages = (settings: SettingsRankingType): BotMessageRankingType[] => {
+export const generateDummyMessages = (settings: SettingsRankingType): BotMessageExtraType[] => {
   const count = settings.limit || 10
   const usedNames = new Set<string>()
-  const dummyMessages: BotMessageRankingType[] = []
+  const dummyMessages: BotMessageExtraType[] = []
 
   for (let i = 0; i < count; i++) {
     let listName: string
@@ -102,25 +102,23 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
     const points = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000
 
-    const ranking = RankingMessageSchema.parse({
-      scriptKey: 'dummy',
-      listName,
-      scoreText: String(points),
-      scoreValue: points,
-    })
-
     dummyMessages.push(
-      BotMessageRankingSchema.parse({
-        ranking,
+      BotMessageExtraSchema.parse({
+        componentKey: 'dummy',
+        extra: ExtraMessageSchema.parse({
+          listName,
+          scoreText: String(points),
+          scoreValue: points,
+        }),
       })
     )
   }
 
   switch (settings.sortOrder) {
     case 'high':
-      return dummyMessages.sort((a, b) => (b.ranking?.scoreValue || 0) - (a.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (b.extra?.scoreValue || 0) - (a.extra?.scoreValue || 0))
     case 'low':
-      return dummyMessages.sort((a, b) => (a.ranking?.scoreValue || 0) - (b.ranking?.scoreValue || 0))
+      return dummyMessages.sort((a, b) => (a.extra?.scoreValue || 0) - (b.extra?.scoreValue || 0))
     case 'new':
     default:
       return dummyMessages

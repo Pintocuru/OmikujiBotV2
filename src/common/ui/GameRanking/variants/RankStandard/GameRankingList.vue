@@ -31,24 +31,24 @@
             <!-- アイコン(ないとき) -->
             <div v-else class="avatar placeholder mr-1">
               <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.ranking?.listName || msg.user?.userName || 'A').charAt(0) }}
+                {{ (msg.extra?.listName || msg.user?.userName || 'A').charAt(0) }}
               </div>
             </div>
 
             <!-- 名前 -->
             <span class="text-lg font-bold truncate">
-              {{ msg.ranking?.listName || msg.user?.userName || 'Anonymous' }}
+              {{ msg.extra?.listName || msg.user?.userName || 'Anonymous' }}
             </span>
             <!-- symbol -->
-            <span v-if="msg.ranking?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
-              {{ msg.ranking?.symbol }}
+            <span v-if="msg.extra?.symbol !== ''" class="text-base text-base-content/60 font-semibold truncate ml-2">
+              {{ msg.extra?.symbol }}
             </span>
           </div>
 
           <!--スコア -->
           <div class="flex-shrink-0">
-            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.ranking?.variant as BaseVariant)">
-              {{ msg.ranking?.scoreText || 0 }}
+            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.extra?.variant as BaseVariant)">
+              {{ msg.extra?.scoreText || 0 }}
             </div>
           </div>
         </div>
@@ -59,32 +59,32 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import { generateDummyMessages } from '../../useDummyBotMessages'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import { SettingsRankingType } from '@/types/OmikujiData'
 
   const props = defineProps<{
-    listMessages: BotMessageRankingType[]
+    listMessages: BotMessageExtraType[]
     settings: SettingsRankingType
   }>()
 
   // 表示用メッセージ（空の場合はダミーを生成）
   const displayMessages = computed(() => {
     if (props.listMessages.length > 0) {
-      let data = [...props.listMessages].filter((msg) => msg.ranking?.isRank !== false)
+      let data = [...props.listMessages].filter((msg) => msg.extra?.isRank !== false)
 
       switch (props.settings.sortOrder) {
         case 'high':
           data.sort((a, b) => {
-            const diff = (b.ranking?.scoreValue || 0) - (a.ranking?.scoreValue || 0)
+            const diff = (b.extra?.scoreValue || 0) - (a.extra?.scoreValue || 0)
             if (diff !== 0) return diff
             return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })
           break
         case 'low':
           data.sort((a, b) => {
-            const diff = (a.ranking?.scoreValue || 0) - (b.ranking?.scoreValue || 0)
+            const diff = (a.extra?.scoreValue || 0) - (b.extra?.scoreValue || 0)
             if (diff !== 0) return diff
             return (b.user?.timestamp || 0) - (a.user?.timestamp || 0)
           })

@@ -54,8 +54,9 @@ export class BotMessageGenerator {
     delaySeconds: number,
     omiken?: OmikenCommentType
   ): BotMessageType[] {
-    const ranking = variableResult?.ranking
     const bubble = action.message.bubble || ''
+    const componentKey = variableResult?.componentKey
+    const ranking = variableResult?.ranking
     const isToast = action.message.isToast
     const hasBubbleText = !!bubble.trim()
 
@@ -69,6 +70,7 @@ export class BotMessageGenerator {
         delaySeconds,
         isToast,
         bubble,
+        componentKey,
         ranking,
         omiken,
       }
@@ -80,8 +82,8 @@ export class BotMessageGenerator {
     }
 
     // ランキング情報のみ
-    if (!hasBubbleText && ranking) {
-      messages.push(this.messageFactory.createRankingMessage(delaySeconds, ranking, omiken))
+    if (!hasBubbleText && componentKey && ranking) {
+      messages.push(this.messageFactory.createRankingMessage(delaySeconds, componentKey, ranking, omiken))
     }
 
     // 効果音の再生

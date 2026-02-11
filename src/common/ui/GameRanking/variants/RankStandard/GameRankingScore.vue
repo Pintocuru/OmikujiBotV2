@@ -32,11 +32,11 @@
           <!-- コンテンツ -->
           <div class="relative z-10 text-center text-white">
             <h3 class="text-2xl font-bold mb-3">
-              {{ latestMessage.ranking?.listName || latestMessage.user?.userName }}
+              {{ latestMessage.extra?.listName || latestMessage.user?.userName }}
             </h3>
             <p class="text-base opacity-80">スコア</p>
             <div class="text-6xl font-bold">
-              {{ formatScore(latestMessage.ranking?.scoreValue || 0) }}
+              {{ formatScore(latestMessage.extra?.scoreValue || 0) }}
             </div>
           </div>
         </div>
@@ -48,14 +48,14 @@
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
   import { SettingsRankingType } from '@/types/'
-  import { BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import { Trophy } from 'lucide-vue-next'
   import { useMotion } from '@vueuse/motion'
 
   const DISPLAY_DURATION_MS = 8000
 
   const props = defineProps<{
-    scoreMessages: BotMessageRankingType[]
+    scoreMessages: BotMessageExtraType[]
     settings: SettingsRankingType
   }>()
 
@@ -64,8 +64,8 @@
 
   const localFilteredMessages = computed(() =>
     props.scoreMessages.filter((m) => {
-      const r = m.ranking
-      return r && props.settings.targetScriptKeys.includes(r.scriptKey)
+      const r = m.extra
+      return r && props.settings.targetScriptKeys.includes(r.componentKey)
     })
   )
 

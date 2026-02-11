@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { computed, ComputedRef, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageRankingSchema, BotMessageRankingType, isDev } from '@/types/'
+  import { BotMessageExtraSchema, BotMessageExtraType, isDev } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from '@/common/ui/GameRanking/GameRankingManager.vue'
 
@@ -30,15 +30,15 @@
   const showDevLabel = ref(true)
 
   // 開発環境用のダミーメッセージ
-  const devScoreMessages = computed<BotMessageRankingType[]>(() => {
+  const devScoreMessages = computed<BotMessageExtraType[]>(() => {
     if (!isDev || !devHoverActive.value) return []
     return [
-      BotMessageRankingSchema.parse({
-        ranking: {
+      BotMessageExtraSchema.parse({
+        componentKey: rankingSettings.value.targetScriptKeys[0],
+        extra: {
           listName: 'テストユーザー',
           scoreText: '12,345',
           scoreValue: 12345,
-          scriptKey: rankingSettings.value.targetScriptKeys[0],
         },
       }),
     ]
@@ -48,14 +48,13 @@
   const rankingSettings = computed(() => data.value.components.settings.ranking)
 
   // ランキング対象のメッセージをフィルタリング
-  const rankingMessages: ComputedRef<BotMessageRankingType[]> = computed(() => {
+  const rankingMessages: ComputedRef<BotMessageExtraType[]> = computed(() => {
     const keys = rankingSettings.value?.targetScriptKeys
     if (!keys) return []
 
-    const base = botMessages.value.filter((msg): msg is BotMessageRankingType => {
-      if (msg.type !== 'ranking') return false
-      const r = msg.ranking
-      return r && rankingSettings.value.targetScriptKeys.includes(r.scriptKey)
+    const base = botMessages.value.filter((msg): msg is BotMessageExtraType => {
+      if (msg.type !== 'extra') return false
+      return msg.extra && rankingSettings.value.targetScriptKeys.includes(msg.componentKey)
     })
     return isDev ? [...base, ...devScoreMessages.value] : base
   })

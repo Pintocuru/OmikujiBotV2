@@ -32,7 +32,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       user,
       characterKey,
       bubbleText: gameResult.result.message,
-      scriptKey: RANKING_KEY,
+      componentKey: RANKING_KEY,
       score: gameResult.payout,
       symbol: '',
       logResult,

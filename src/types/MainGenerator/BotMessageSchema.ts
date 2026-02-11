@@ -41,9 +41,36 @@ export const BotMessageBubbleSchema = BotMessageBaseSchema.extend({
 export type BotMessageBubbleType = z.infer<typeof BotMessageBubbleSchema>
 
 /**
- * RankingMessageSchema
+ * ExtraMessageSchema
  */
-export const RankingMessageSchema = z.object({
+export const ExtraListsSchema = z.object({
+  listName: z.string().optional(), // 名前
+  symbol: z.string().optional(), // 名前の隣につけるやつ
+  text: z.string().default(''), // 表示用得点
+  order: z.number().optional(), // 比較用
+  variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
+  tags: z.array(z.string()).optional(),
+  isVisible: z.boolean().default(true), // リストに載せるか
+  isUnique: z.boolean().default(false), // 1ユーザー1つか複数か
+  flag: z.boolean().optional(),
+})
+export type ExtraListsType = z.infer<typeof ExtraListsSchema>
+
+export const ExtraSlotsSchema = z.object({
+  slot0: z.string().optional(),
+  slot1: z.string().optional(),
+  slot2: z.string().optional(),
+  slot3: z.string().optional(),
+  slot4: z.string().optional(),
+  slot5: z.string().optional(),
+  slot6: z.string().optional(),
+  slot7: z.string().optional(),
+  slot8: z.string().optional(),
+  slot9: z.string().optional(),
+})
+export type ExtraSlotsType = z.infer<typeof ExtraSlotsSchema>
+
+export const ExtraMessageSchema = z.object({
   // 得点表示
   listName: z.string().optional(), // 名前
   symbol: z.string().optional(), // 名前の隣につけるやつ
@@ -51,7 +78,6 @@ export const RankingMessageSchema = z.object({
   scoreValue: z.number().optional(), // 比較用
   variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
   // 設定
-  scriptKey: z.string().default(''), // アイテム判別用key
   isRank: z.boolean().default(true), // リストに載せるか
   isUniqueUser: z.boolean().default(false), // 1ユーザー1つか複数か
   slots: z // 任意の値
@@ -69,17 +95,18 @@ export const RankingMessageSchema = z.object({
     })
     .optional(),
 })
-export type RankingMessageType = z.infer<typeof RankingMessageSchema>
+export type ExtraMessageType = z.infer<typeof ExtraMessageSchema>
 
 /**
- * BotMessageRankingSchema
+ * BotMessageExtraSchema
  */
-export const BotMessageRankingSchema = BotMessageBaseSchema.extend({
-  type: z.literal('ranking').default('ranking'),
+export const BotMessageExtraSchema = BotMessageBaseSchema.extend({
+  type: z.literal('extra').default('extra'),
+  componentKey: z.string(), // アイテム判別用key
   user: UserNameSchema.optional(),
-  ranking: RankingMessageSchema,
+  extra: ExtraMessageSchema,
 })
-export type BotMessageRankingType = z.infer<typeof BotMessageRankingSchema>
+export type BotMessageExtraType = z.infer<typeof BotMessageExtraSchema>
 
 /**
  * BotMessageEmptySchema
@@ -92,7 +119,7 @@ export type BotMessageEmptyType = z.infer<typeof BotMessageEmptySchema>
 
 const BotMessageSchema = z.discriminatedUnion('type', [
   BotMessageBubbleSchema,
-  BotMessageRankingSchema,
+  BotMessageExtraSchema,
   BotMessageEmptySchema,
 ])
 export type BotMessageType = z.infer<typeof BotMessageSchema>

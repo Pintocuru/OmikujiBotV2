@@ -54,9 +54,6 @@ const createMessage = (stats: UserStatsType, record: GameRecordType, isOverLimit
  * ランキング情報を含むメッセージを作成
  */
 export const createRankingMessage = (userName: string, score: number, rank: number, isOverLimit: boolean): string => {
-  if (isOverLimit) {
-    return `${userName}さんは上限を超えているから、参考記録だよ。`
-  }
-
+  if (isOverLimit) return `${userName}さんは上限を超えているから、参考記録だよ。`
   return `${userName}さんの${score}ポイントは、${rank}位だよ。`
 }

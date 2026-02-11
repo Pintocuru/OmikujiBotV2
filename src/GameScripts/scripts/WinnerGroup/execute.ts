@@ -3,8 +3,8 @@ import {
   ScriptClass,
   ScriptResult,
   PostActionType,
-  BotMessageRankingType,
-  BotMessageRankingSchema,
+  BotMessageExtraType,
+  BotMessageExtraSchema,
   BaseScript,
 } from '@/types/'
 import { parseQueryString } from '@game/parseQueryString'
@@ -37,11 +37,11 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       sound: 'decision',
     })
 
-    const rankingMessage: BotMessageRankingType = BotMessageRankingSchema.parse({
+    const rankingMessage: BotMessageExtraType = BotMessageExtraSchema.parse({
       delaySeconds,
       user,
-      ranking: {
-        scriptKey: 'WinnerGroup',
+      componentKey: 'WinnerGroup',
+      extra: {
         slots: buildSlots(winners),
       },
     })

@@ -1,10 +1,10 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageFactory.ts
 import {
   BotMessageBubbleSchema,
-  BotMessageRankingSchema,
-  BotMessageRankingType,
+  BotMessageExtraSchema,
+  BotMessageExtraType,
   BotMessageType,
-  RankingMessageType,
+  ExtraMessageType,
 } from '@/types/MainGenerator/BotMessageSchema'
 import { CharacterType, OmikujiDataType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -27,7 +27,7 @@ export class BotMessageFactory {
    */
   createBotMessages(params: CreateBotMessageParams): BotMessageType[] {
     const messages: BotMessageType[] = []
-    const { delaySeconds, isToast, bubble, ranking, omiken } = params
+    const { delaySeconds, isToast, bubble, componentKey, ranking, omiken } = params
 
     const hasBubble = bubble.trim().length > 0
 
@@ -59,8 +59,8 @@ export class BotMessageFactory {
     }
 
     // 4. ランキングメッセージを作成 (存在する場合のみ)
-    if (!!ranking) {
-      const rankingMessage = this.createRankingMessage(delaySeconds, ranking, omiken)
+    if (!!componentKey && !!ranking) {
+      const rankingMessage = this.createRankingMessage(delaySeconds, componentKey, ranking, omiken)
       messages.push(rankingMessage)
     }
 
@@ -72,13 +72,14 @@ export class BotMessageFactory {
    */
   createRankingMessage(
     delaySeconds: number,
-    ranking: RankingMessageType,
+    componentKey: string,
+    ranking: ExtraMessageType,
     omiken?: OmikenCommentType
-  ): BotMessageRankingType {
-    return BotMessageRankingSchema.parse({
-      type: 'ranking',
+  ): BotMessageExtraType {
+    return BotMessageExtraSchema.parse({
       delaySeconds,
-      ranking,
+      componentKey,
+      extra: ranking,
       user: omiken ? UserNameSchema.parse(omiken) : undefined,
     })
   }

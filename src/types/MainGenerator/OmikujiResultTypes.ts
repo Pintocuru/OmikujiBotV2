@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultTypes.ts
 import { CharacterEmotionType, PostActionType } from '@/types/OmikujiData/'
-import { RankingMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { ExtraMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 /**
@@ -9,7 +9,8 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
  */
 export interface VariablePlaceholderResult {
   bubble: string // 置換後のメッセージ本文
-  ranking?: RankingMessageType // ランキング生成に使用する特定のキー
+  componentKey?: string // ランキング生成に使用する特定のキー
+  ranking?: ExtraMessageType // ランキング生成に使用する特定のキー
 }
 
 /**
@@ -30,6 +31,7 @@ export interface CreateBotMessageParams {
   delaySeconds: number
   isToast: boolean
   bubble: string
-  ranking: RankingMessageType | undefined
+  componentKey?: string
+  ranking?: ExtraMessageType
   omiken?: OmikenCommentType
 }

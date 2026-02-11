@@ -18,31 +18,31 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { SettingsRankingType } from '@/types/OmikujiData/'
-  import { BotMessageRankingType } from '@/types/MainGenerator/BotMessageSchema'
+  import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import GameRankingScore from './RankStandard/GameRankingScore.vue'
   import GameRankingList from './RankStandard/GameRankingList.vue'
 
   const props = defineProps<{
-    rankingMessages: BotMessageRankingType[]
+    rankingMessages: BotMessageExtraType[]
     settings: SettingsRankingType
   }>()
 
   // スコア表示用（scoreValue を持つもの）
-  const scoreMessages = computed(() => props.rankingMessages.filter((m) => typeof m.ranking.scoreValue === 'number'))
+  const scoreMessages = computed(() => props.rankingMessages.filter((m) => typeof m.extra.scoreValue === 'number'))
 
   // リスト表示用
   const listMessages = computed(() => {
     const messages = props.rankingMessages
     if (!messages.length) return []
 
-    const needsUnique = messages.some((m) => m.ranking.isUniqueUser === true)
+    const needsUnique = messages.some((m) => m.extra.isUniqueUser === true)
 
     return needsUnique ? uniqueByLatestUser(messages) : messages
   })
 
   // ユーザーごとに最新メッセージを残す
-  function uniqueByLatestUser(messages: BotMessageRankingType[]): BotMessageRankingType[] {
-    const map = new Map<string, BotMessageRankingType>()
+  function uniqueByLatestUser(messages: BotMessageExtraType[]): BotMessageExtraType[] {
+    const map = new Map<string, BotMessageExtraType>()
 
     for (const msg of messages) {
       const userId = msg.user?.userId

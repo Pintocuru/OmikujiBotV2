@@ -1,5 +1,5 @@
 // src/GameScripts/scriptsEngine/RankingMessage/RankingMessage.ts
-import { BotMessageRankingSchema, BotMessageRankingType } from '@/types/'
+import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/'
 import { LogRankScript } from '../LogRank/execute'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -12,7 +12,7 @@ const UNKNOWN_NAME = 'おみくじBOT'
 export interface BuildBotMessageParams {
   user: UserNameType
   bubbleText: string
-  scriptKey: string
+  componentKey: string
   score: number
   symbol: string
   delaySeconds?: number
@@ -33,22 +33,21 @@ export function prepareUserInfo(omiken?: OmikenCommentType): UserNameType {
 }
 /**
  * BotMessageを構築する共通関数
- * 吹き出し(comment)とランキング(ranking)を個別のメッセージとして出力する
+ * 吹き出し(comment)とランキング(extra)を個別のメッセージとして出力する
  */
-export function buildBotMessageRanking(params: BuildBotMessageParams): BotMessageRankingType[] {
-  const { user, scriptKey, score, symbol, delaySeconds = 3.5, isUniqueUser = false, logResult } = params
-  const messages: BotMessageRankingType[] = []
+export function buildBotMessageRanking(params: BuildBotMessageParams): BotMessageExtraType[] {
+  const { user, componentKey, score, symbol, delaySeconds = 3.5, isUniqueUser = false, logResult } = params
+  const messages: BotMessageExtraType[] = []
 
   if (logResult) {
     const stats = logResult.currentUserStats
     const currentRecord = logResult.currentRecord
 
-    const rankingMessage = BotMessageRankingSchema.parse({
-      type: 'ranking',
+    const rankingMessage = BotMessageExtraSchema.parse({
       delaySeconds: delaySeconds,
       user,
-      ranking: {
-        scriptKey,
+      componentKey,
+      extra: {
         listName: stats?.userName ?? user.userName,
         scoreText: String(score),
         scoreValue: currentRecord?.score ?? score,

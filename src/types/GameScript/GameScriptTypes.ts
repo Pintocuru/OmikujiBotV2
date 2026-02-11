@@ -1,5 +1,5 @@
 // shared/types/GameScriptTypes.ts
-import { BotMessageRankingType, PostActionType } from '@/types/'
+import { BotMessageExtraType, PostActionType } from '@/types/'
 import { GameStateType } from '@game/scriptsEngine/LogRank/GameScriptSchema'
 import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
 import { PresetMetadata } from '@shared/types/'
@@ -12,7 +12,7 @@ export interface ScriptPreset extends PresetMetadata {
 
 export type ScriptResult = {
   actions: PostActionType[]
-  rankingMessages: BotMessageRankingType[]
+  rankingMessages: BotMessageExtraType[]
 }
 
 // スクリプトのメイン実行クラス

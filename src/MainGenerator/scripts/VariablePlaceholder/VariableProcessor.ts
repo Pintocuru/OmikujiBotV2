@@ -9,7 +9,7 @@ import {
   VAR_DECLARATION_PATTERN,
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
-import { RankingMessageSchema, RankingMessageType } from '@/types'
+import { ExtraMessageSchema, ExtraMessageType } from '@/types'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -131,9 +131,9 @@ export class VariablePlaceholderProcessor {
   }
 
   /**
-   * 取得した変数の中から予約語を抽出し、RankingMessageSchema に適合する形に変換
+   * 取得した変数の中から予約語を抽出し、ExtraMessageSchema に適合する形に変換
    */
-  private buildRankingData(vars: Record<string, string>): RankingMessageType | undefined {
+  private buildRankingData(vars: Record<string, string>): ExtraMessageType | undefined {
     // slot0 - slot9 を収集
     const slots: string[] = []
     for (let i = 0; i <= 9; i++) {
@@ -148,8 +148,7 @@ export class VariablePlaceholderProcessor {
 
     try {
       // Zod スキーマを使用して安全にパース
-      return RankingMessageSchema.parse({
-        scriptKey: 'basicList',
+      return ExtraMessageSchema.parse({
         listName: vars['name'],
         symbol: vars['symbol'],
         scoreText: vars['text'],
