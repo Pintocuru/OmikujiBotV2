@@ -3331,7 +3331,7 @@
     "conditions": [
       {
         "slot": "extra",
-        "kind": "WinnerGroup"
+        "kind": "counter"
       }
     ],
     "commonStyle": {
@@ -3386,7 +3386,7 @@
       },
       "counter": {
         "slotType": "extra",
-        "ruleKey": null,
+        "ruleKey": "",
         "component": "counterUser",
         "target": "draw",
         "label": "Counter",
@@ -3399,11 +3399,7 @@
       "winnerGroup": {
         "component": "valentineCoupling",
         "label": "ラッキーメンバーズ",
-        "color": {
-          "daisyUiTheme": "dark",
-          "backFrom": "primary",
-          "backTo": "secondary"
-        }
+        "color": "lofi"
       },
       "flightSeat": {
         "slotType": "extra",
@@ -3412,7 +3408,7 @@
         "cols": 6,
         "circleSeats": 12,
         "customLayout": "[1,2,3,4,5]",
-        "title": "🛫 8時間フライト、どの席に座る？",
+        "label": "🛫 8時間フライト、どの席に座る？",
         "color": "synthwave",
         "allowReseating": false,
         "historyLimit": 10
@@ -3434,7 +3430,8 @@
       "ranking",
       "counter",
       "flightSeat",
-      "WinnerGroup"
+      "WinnerGroup",
+      "winnerGroup"
     ],
     "gameScripts": [
       "GoogolClover",

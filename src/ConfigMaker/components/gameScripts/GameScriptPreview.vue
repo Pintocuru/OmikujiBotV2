@@ -27,7 +27,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
-  import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
+  import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'

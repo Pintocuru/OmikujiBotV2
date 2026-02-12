@@ -1,11 +1,9 @@
 <!-- src\ConfigMaker\components\componentEditor\counter\CounterComponentEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div v-if="counter.ruleKey" class="max-h-56 overflow-y-hidden">
+  <div class="max-h-56 overflow-y-hidden">
     <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyUserNames(100)" />
   </div>
-
-  <NoParamsCard v-else :message="'対象ルールキーを設定してください'" />
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
@@ -26,13 +24,17 @@
   </SettingItem>
 
   <!-- 設定項目 -->
-  <SettingItem
-    label="対象ルールキー"
-    description="どのルールを対象にするか"
-    :variant="counter.ruleKey === '' || !counter.ruleKey ? 'warning' : undefined"
-    :showWarning="counter.ruleKey === '' || !counter.ruleKey"
-  >
+  <SettingItem label="対象ルールキー" description="どのルールを対象にするか">
     <div class="flex flex-wrap gap-2">
+      <!-- すべて -->
+      <div
+        class="badge cursor-pointer"
+        :class="counter.ruleKey === '' ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('ruleKey', '')"
+      >
+        すべて
+      </div>
+      <!-- 通常のルール -->
       <div
         v-for="(value, key) in rulesComment"
         :key="key"
@@ -85,14 +87,13 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterPreviewManager from '@/common/ui/CounterPreview/CounterPreviewManager.vue'
-  import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
-  import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import CounterPreviewManager from '@main/ui/CounterPreview/parts/CounterPreviewManager.vue'
+  import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro, isGod } = useSettingMode()
+  const { isPro } = useSettingMode()
 
   const rulesComment = computed(() => data.value.comments)
 

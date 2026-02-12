@@ -34,6 +34,7 @@ import HondaJankenProject from './packages/solo/HondaJanken'
 import LenormandOracleProject from './packages/solo/LenormandOracle'
 import RunicOracleProject from './packages/solo/RunicOracle'
 import TarotCardProject from './packages/solo/TarotCard'
+import ValentineCoupling from './packages/solo/ValentineCoupling'
 
 // syoken
 
@@ -99,6 +100,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
    */
+  { project: 'ValentineCoupling', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+
   /**
    * syoken
   { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -152,6 +155,7 @@ const packageBuildTargets: PackageBuildTarget[] = [
       LenormandOracleProject(packageRoot),
       RunicOracleProject(packageRoot),
       BigBangFortuneProject(packageRoot),
+      ValentineCoupling(packageRoot),
 
       // syoken
     ])

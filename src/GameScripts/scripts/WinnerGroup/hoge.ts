@@ -1,5 +1,5 @@
 // src/GameScripts/scripts/WinnerGroup/game.ts
-import { candidateNames } from '@/common/ui/GameRanking/useDummyBotMessages'
+import { candidateNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 
 export function getWinnersFromVisitManager(count: number, _ruleKey?: string | null): UserVisitRecord[] {

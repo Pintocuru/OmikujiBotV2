@@ -25,6 +25,7 @@
   import { generatorApi } from '@config/dev/services/generatorApi'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { COMPONENT_MAPPINGS } from './ui/ComponentMapping'
+  import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
@@ -63,6 +64,12 @@
     const ruleProcessor = useRuleProcessor(appStore.data)
 
     const isInit = await ruleProcessor.initializeApp((omikens) => {
+      // ユーザー情報を記録する
+      for (const omiken of omikens) {
+        appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
+      }
+
+      // おみくじ処理
       if (!isComment.value) return
       const commentProcessor = new RuleCommentProcessor()
       const botMessages = commentProcessor.respondToComments(omikens)

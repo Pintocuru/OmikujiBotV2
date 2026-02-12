@@ -1,74 +1,82 @@
 <!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling.vue -->
 <template>
-  <!-- 背景グラデーション -->
-  <div class="absolute inset-0 bg-base-200 backdrop-blur-sm rounded-lg border-2 border-primary/30"></div>
+  <div class="p-4">
+    <!-- 背景グラデーション -->
+    <div class="absolute inset-0 bg-base-200 backdrop-blur-sm rounded-lg border-2 border-primary/30"></div>
 
-  <!-- メインコンテンツ -->
-  <div class="relative space-y-3 z-10">
-    <!-- タイトル -->
-    <div v-if="label" class="text-center">
-      <h2
-        class="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent"
-      >
-        {{ label }}
-      </h2>
-      <div class="flex items-center justify-center gap-2">
-        <div class="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
-        <Heart class="w-4 h-4 text-primary fill-primary" />
-        <div class="h-px w-12 bg-gradient-to-l from-transparent to-secondary"></div>
-      </div>
-    </div>
-
-    <!-- ユーザーカード表示 -->
-    <div v-if="users.length >= 2" class="relative">
-      <!-- 中央のハートと矢印 -->
-      <div
-        :key="`heart-${animationKey}`"
-        v-motion
-        :initial="{ scale: 0, rotate: -180 }"
-        :enter="{ scale: 1, rotate: 0, transition: { duration: 1000, delay: 800, type: 'spring', stiffness: 100 } }"
-        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-      >
-        <div class="relative">
-          <!-- 光るハート背景 -->
-          <div class="absolute inset-0 blur-lg">
-            <Heart class="w-12 h-12 text-primary fill-primary animate-pulse" />
-          </div>
-          <!-- メインハート -->
-          <Heart class="w-12 h-12 text-primary fill-primary relative animate-heartbeat" />
+    <!-- メインコンテンツ -->
+    <div class="relative space-y-3 z-10">
+      <!-- タイトル -->
+      <div v-if="label" class="text-center">
+        <h2 class="text-2xl font-bold">
+          {{ label }}
+        </h2>
+        <div class="flex items-center justify-center gap-2">
+          <div class="h-px w-12 bg-gradient-to-r from-transparent to-primary"></div>
+          <Heart class="w-4 h-4" />
+          <div class="h-px w-12 bg-gradient-to-l from-transparent to-secondary"></div>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-8 sm:gap-12 items-center">
-        <!-- 左側のユーザー -->
-        <ValentineUserCard :key="`left-${animationKey}`" :user="users[0]" position="left" color-scheme="primary" />
+      <!-- ユーザーカード表示 -->
+      <div v-if="users.length >= 2" class="relative">
+        <!-- 中央のハートと矢印 -->
+        <div
+          :key="`heart-${animationKey}`"
+          v-motion
+          :initial="{ scale: 0, rotate: -180 }"
+          :enter="{ scale: 1, rotate: 0, transition: { duration: 1000, delay: 800, type: 'spring', stiffness: 100 } }"
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+        >
+          <div class="relative">
+            <!-- 光るハート背景 -->
+            <div class="absolute inset-0 blur-lg">
+              <Heart class="w-5 h-5 text-accent fill-accent animate-pulse" />
+            </div>
+            <!-- メインハート -->
+            <Heart class="w-12 h-12 text-accent fill-accent relative animate-heartbeat" />
+          </div>
+        </div>
 
-        <!-- 右側のユーザー -->
-        <ValentineUserCard :key="`right-${animationKey}`" :user="users[1]" position="right" color-scheme="secondary" />
+        <div class="grid grid-cols-2 gap-8 sm:gap-12 items-center">
+          <!-- 左側のユーザー -->
+          <ValentineUserCard :key="`left-${animationKey}`" :user="users[0]" position="left" color-scheme="primary" />
+
+          <!-- 右側のユーザー -->
+          <ValentineUserCard
+            :key="`right-${animationKey}`"
+            :user="users[1]"
+            position="right"
+            color-scheme="secondary"
+          />
+        </div>
+
+        <!-- 浮遊するハート装飾 -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+          <Heart
+            v-for="i in 6"
+            :key="i"
+            :class="[getRandomHeartSize(), getHeartColor(i)]"
+            :style="getRandomHeartPosition(i)"
+            class="absolute"
+          />
+        </div>
       </div>
 
-      <!-- 浮遊するハート装飾 -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <Heart
-          v-for="i in 6"
-          :key="i"
-          :class="[getRandomHeartSize(), getHeartColor(i)]"
-          :style="getRandomHeartPosition(i)"
-          class="absolute"
-        />
+      <!-- ユーザーが不足している場合 -->
+      <div v-else class="text-center py-8 opacity-60 cursor-pointer hover:opacity-80 transition">
+        <HeartCrack class="w-12 h-12 mx-auto mb-3 text-gray-400" />
+        <p class="text-base">
+          カップリングには2名のユーザーが必要です<br />
+          クリックして更新する
+        </p>
       </div>
-    </div>
-
-    <!-- ユーザーが不足している場合 -->
-    <div v-else class="text-center py-8 opacity-60">
-      <HeartCrack class="w-12 h-12 mx-auto mb-3 text-gray-400" />
-      <p class="text-base">カップリングには2名のユーザーが必要です</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, watch, ref } from 'vue'
+  import { watch, ref } from 'vue'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { Heart, HeartCrack } from 'lucide-vue-next'
   import ValentineUserCard from './ValentineUserCard.vue'

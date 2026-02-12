@@ -46,7 +46,6 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
   {
     kind: 'winnerGroup',
     component: WinnerGroup,
-    shouldRender: ({ isComment }) => isComment,
   },
   // 8時間フライト
   {

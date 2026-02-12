@@ -36,7 +36,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { BotMessageBubbleType } from '@/types'
-  import CommentBubbleItem from '@/common/ui/CommentBubble/CommentBubbleItem.vue'
+  import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useAppStore } from '@main/stores/useAppStore'

@@ -121,7 +121,7 @@ export class UserVisitManager {
     }
 
     // count 人だけ切り出す（最大4人など制限可能）
-    const winners = shuffled.slice(0, Math.min(count, 4)).map((u) => u)
+    const winners = shuffled.slice(0, Math.min(count, 9)).map((u) => u)
     return { commenter, winners }
   }
 
@@ -175,14 +175,15 @@ export class UserVisitManager {
   /**
    * 指定ルールの訪問記録一覧を取得
    */
-  getVisitsByRuleId(ruleId: string): UserVisitRecord[] {
-    return Array.from(this.userVisits.values()).filter((record) => record.ruleId === ruleId)
+  getVisitsByRuleId(ruleId?: string): UserVisitRecord[] {
+    const effectiveRuleId = ruleId || BOT_STATS_RULE_ID
+    return Array.from(this.userVisits.values()).filter((record) => record.ruleId === effectiveRuleId)
   }
 
   /**
    * 指定ルールの総訪問回数を取得
    */
-  getTotalVisitsByRuleId(ruleId: string): number {
+  getTotalVisitsByRuleId(ruleId = BOT_STATS_RULE_ID): number {
     return Array.from(this.userVisits.values())
       .filter((record) => record.ruleId === ruleId)
       .reduce((total, record) => total + record.visitCount, 0)
@@ -191,7 +192,7 @@ export class UserVisitManager {
   /**
    * 指定ルールの最新訪問ユーザーを取得
    */
-  getLatestVisitorByRuleId(ruleId: string): UserVisitRecord | null {
+  getLatestVisitorByRuleId(ruleId = BOT_STATS_RULE_ID): UserVisitRecord | null {
     const records = Array.from(this.userVisits.values())
       .filter((r) => r.ruleId === ruleId)
       .sort((a, b) => b.timestamp - a.timestamp)
@@ -202,7 +203,7 @@ export class UserVisitManager {
   /**
    * 指定ルールの訪問者数（ユニークユーザー数）を取得
    */
-  getUniqueVisitorCountByRuleId(ruleId: string): number {
+  getUniqueVisitorCountByRuleId(ruleId = BOT_STATS_RULE_ID): number {
     return Array.from(this.userVisits.values()).filter((record) => record.ruleId === ruleId).length
   }
 

@@ -26,7 +26,7 @@
   } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import CharacterThumbnailsPreview from '@/common/ui/ToastWidgets/CharacterThumbnailsPreview.vue'
+  import CharacterThumbnailsPreview from './parts/CharacterThumbnailsPreview.vue'
 
   const appStore = useAppStore()
   const { characterArray, isCharacter, isValidCharacter, resolveCharacter, resolveEmotion } = useCharacterManager()

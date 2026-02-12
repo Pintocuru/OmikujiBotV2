@@ -106,9 +106,9 @@
       type: 'winnerGroup',
       icon: '',
       title: 'ラッキーメンバーズアイテム',
-      description: 'ランダムに選ばれたユーザーの表示(ゲームスクリプトと一緒に使います)',
+      description: 'ランダムに選ばれたユーザーの表示',
       component: WinnerGroupEditor,
-      shouldShow: hasComponentKind('winnerGroup') && isComment.value,
+      shouldShow: hasComponentKind('winnerGroup'),
     },
     // フライトシート
     {

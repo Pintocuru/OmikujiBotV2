@@ -14,8 +14,8 @@
   import { storeToRefs } from 'pinia'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
-  import CounterPreviewManager from '@/common/ui/CounterPreview/CounterPreviewManager.vue'
-  import { generateDummyUserNames } from '@/common/ui/GameRanking/useDummyBotMessages'
+  import CounterPreviewManager from './parts/CounterPreviewManager.vue'
+  import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
@@ -27,8 +27,7 @@
   const count = computed<number | null>(() => {
     const _ = previewTick.value
     const setting = counterSetting.value
-    const ruleKey = setting.ruleKey
-    if (!ruleKey) return null
+    const ruleKey = setting.ruleKey ? setting.ruleKey : undefined
 
     return setting.target === 'draw'
       ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
@@ -41,9 +40,8 @@
 
   const lastUserName = computed<UserVisitRecord | null>(() => {
     const _ = previewTick.value
-    const ruleKey = counterSetting.value.ruleKey
-    if (!ruleKey) return null
-
+    const setting = counterSetting.value
+    const ruleKey = setting.ruleKey ? setting.ruleKey : undefined
     return appStore.userVisitManager.getLatestVisitorByRuleId(ruleKey)
   })
 

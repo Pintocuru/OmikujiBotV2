@@ -3,7 +3,14 @@
   <div v-motion :initial="initialAnimation" :enter="enterAnimation" :class="containerClass">
     <div :class="cardClass">
       <!-- カードの光沢効果 -->
-      <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
+      <div
+        :class="[
+          'absolute inset-0 pointer-events-none',
+          position === 'left'
+            ? 'bg-gradient-to-br from-primary to-primary/40'
+            : 'bg-gradient-to-br from-secondary to-secondary/40',
+        ]"
+      />
 
       <figure class="px-4 pt-4 relative">
         <div class="avatar relative z-10 flex justify-center">
@@ -11,7 +18,10 @@
             <img v-if="user.profileImage" :src="user.profileImage" :alt="user.userName" class="object-cover" />
             <div
               v-else
-              class="w-full h-full bg-primary flex items-center justify-center text-primary-content font-bold text-base"
+              :class="[
+                'w-full h-full flex items-center justify-center font-bold',
+                position === 'left' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content',
+              ]"
             >
               {{ user.userName.charAt(0) }}
             </div>
@@ -42,28 +52,34 @@
   const containerClass = computed(() => (props.position === 'left' ? 'flex justify-end' : 'flex justify-start'))
 
   const cardClass = computed(() => {
-    const baseClass = 'card-3d backdrop-blur-sm shadow-xl w-44 border-2 rounded-xl overflow-hidden relative'
-    const colorClass =
-      props.colorScheme === 'primary' ? 'bg-primary/10 border-primary/40' : 'bg-secondary/10 border-secondary/40'
+    const baseClass = 'card-3d shadow-xl w-44 border-2 rounded-xl overflow-hidden relative'
+    const colorClass = props.position === 'left' ? 'bg-primary border-primary' : 'bg-secondary border-secondary'
     const transformClass = props.position === 'left' ? 'style-transform-left' : 'style-transform-right'
+
     return `${baseClass} ${colorClass} ${transformClass}`
   })
 
   const avatarRingClass = computed(() => {
     const baseClass = 'w-20 rounded-full ring-2 ring-offset-base-100 ring-offset-2 shadow-lg'
-    const ringColor = props.colorScheme === 'primary' ? 'ring-primary' : 'ring-secondary'
+    const ringColor = props.position === 'left' ? 'ring-primary' : 'ring-secondary'
+
     return `${baseClass} ${ringColor}`
   })
 
   const titleClass = computed(() => {
     const baseClass = 'card-title text-lg font-bold'
-    const textColor = props.colorScheme === 'primary' ? 'text-primary' : 'text-secondary'
+    const textColor = props.position === 'left' ? 'text-primary-content' : 'text-secondary-content'
+
     return `${baseClass} ${textColor}`
   })
 
   const heartClass = computed(() => {
     const baseClass = 'w-3 h-3 animate-bounce'
-    const colorClass = props.colorScheme === 'primary' ? 'text-primary fill-primary' : 'text-secondary fill-secondary'
+    const colorClass =
+      props.position === 'left'
+        ? 'text-primary-content fill-primary-content'
+        : 'text-secondary-content fill-secondary-content'
+
     return `${baseClass} ${colorClass}`
   })
 

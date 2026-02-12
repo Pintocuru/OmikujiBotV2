@@ -120,7 +120,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import GameRankingManager from '@/common/ui/GameRanking/GameRankingManager.vue'
+  import GameRankingManager from '@main/ui/GameRanking/parts/GameRankingManager.vue'
   import { gameScriptMap } from '@game/GameScriptsMap'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'

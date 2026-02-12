@@ -30,7 +30,7 @@
 <script setup lang="ts">
   import { computed, ComputedRef, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import ToastBubbleItem from '@/common/ui/ToastWidgets/ToastBubbleItem.vue'
+  import ToastBubbleItem from './parts/ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { useAppStore } from '@main/stores/useAppStore'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'

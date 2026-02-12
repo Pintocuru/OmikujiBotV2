@@ -1,7 +1,7 @@
 // shared/types/GameScriptTypes.ts
 import { BotMessageExtraType, PostActionType } from '@/types/'
 import { GameStateType } from '@game/scriptsEngine/LogRank/GameScriptSchema'
-import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
+import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
 import { PresetMetadata } from '@shared/types/'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

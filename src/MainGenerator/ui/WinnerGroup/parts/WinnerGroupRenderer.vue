@@ -1,7 +1,7 @@
 <!-- src\MainGenerator\ui\WinnerGroup\parts\WinnerGroupRenderer.vue -->
 <template>
-  <div class="relative w-full max-w-2xl mx-auto" :data-theme="winnerSetting.color" @click="reload">
-    <component :is="currentComponent" :key="renderKey" :users="users" :label="winnerSetting.label" />
+  <div class="relative w-full max-w-2xl mx-auto" :data-theme="winnerSetting.color" @click="handleClick">
+    <component :is="currentComponent" :users="users" :label="winnerSetting.label" />
   </div>
 </template>
 
@@ -17,6 +17,10 @@
     users: UserVisitRecord[]
   }>()
 
+  const emit = defineEmits<{
+    click: []
+  }>()
+
   const componentMap: Record<WinnerComponent, any> = {
     valentineCoupling: ValentineCoupling,
     topStars: TopStars,
@@ -26,9 +30,7 @@
     return componentMap[props.winnerSetting.component] ?? ValentineCoupling
   })
 
-  const renderKey = ref(0)
-
-  function reload() {
-    renderKey.value++
+  const handleClick = () => {
+    emit('click')
   }
 </script>

@@ -18,6 +18,7 @@ export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
  * フキダシ・キャラクター
  */
 // キャラアイコンの並び順
+// キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
 export const ShowCharactersSchema = z.object({
   center: z.array(z.string()).default([]), // 中央上部に表示
   slot1: z.array(z.string()).default([]),
@@ -28,9 +29,6 @@ export const ShowCharactersSchema = z.object({
 export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 
 export const SettingsBubbleSchema = z.object({
-  slotType: z.literal('primary').default('primary').catch('primary'), // v2.1で追加
-
-  // キャラクターのkeyを並べる(新設) 0番地は非表示、1番から常時表示
   showCharacters: ShowCharactersSchema.default(ShowCharactersSchema.parse({})).catch(ShowCharactersSchema.parse({})),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
@@ -43,8 +41,6 @@ export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
  * トースト・サムネイル
  */
 export const SettingsToastSchema = z.object({
-  slotType: z.literal('secondary').default('secondary').catch('secondary'), // v2.1で追加
-
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
   showToastsCharacter: z.boolean().default(false).catch(false), // トースト表示時、キャラクターを表示するか
   showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
@@ -71,8 +67,6 @@ export type RankingComponent = (typeof rankingComponents)[number]['value']
 export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
 
 export const SettingsRankingSchema = z.object({
-  slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
-
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
@@ -96,10 +90,8 @@ export type CounterComponent = keyof typeof counterComponents
 const counterComponentValues = Object.keys(counterComponents) as CounterComponent[]
 
 export const SettingsCounterSchema = z.object({
-  slotType: z.literal('extra').default('extra').catch('extra'), // v2.1で追加
-
-  ruleKey: z.string().min(1).nullable().default(null).catch(null), // どのruleを対象にするか
   component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
+  ruleKey: z.string().default('').catch(''), // どのruleを対象にするか
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
@@ -119,8 +111,10 @@ const winnerComponentValues = Object.keys(winnerComponents) as WinnerComponent[]
 
 export const SettingsWinnerGroupSchema = z.object({
   component: z.enum(winnerComponentValues).default('valentineCoupling').catch('valentineCoupling'),
+  ruleKey: z.string().default('').catch(''), // どのruleを対象にするか
   label: z.string().default('ラッキーメンバーズ').catch('ラッキーメンバーズ'), // ラベル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUIテーマカラー
+  queryString: z.string().default('count=2&label=今日のラッキーさん').catch('count=2&label=今日のラッキーさん'), // クリックで実行するクエリ文字列
 })
 export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 

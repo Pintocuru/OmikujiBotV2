@@ -21,7 +21,6 @@ export class RuleCommentProcessor {
     const limitedComments = omikens.slice().reverse().slice(0, 5)
 
     for (const omiken of limitedComments) {
-      const { userVisitManager } = useAppStore()
       const { id, userId, timestamp } = omiken
 
       // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
@@ -32,9 +31,6 @@ export class RuleCommentProcessor {
 
       // 除外条件をチェック
       if (this.isOldComment(timestamp)) return botMessages
-
-      // ユーザー情報を記録する
-      userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
 
       // おみくじチェック
       this.appliedCommentIds.add(id)

@@ -18,10 +18,9 @@
       "key": "3be9b811-71d0-4aed-9ae0-7387dac9122d",
       "name": "バレンタイン・カップリング",
       "createdAt": "2026-02-11T14:15:32.212Z",
-      "updatedAt": "2026-02-11T23:53:06.345Z",
+      "updatedAt": "2026-02-11T14:22:41.839Z",
       "order": 1,
       "isEnabled": true,
-      "editorColor": "#9C27B0",
       "tags": [],
       "accessLevel": "basic",
       "omikuji": [
@@ -68,15 +67,7 @@
         "access": [],
         "gift": [],
         "comment": [
-          "^バレンタイン",
-          "^ばれんたいん",
-          "^Valentine",
-          "^チョコ",
-          "^ちょこ",
-          "^choco",
-          "^カップル",
-          "^かっぷる",
-          "^couple"
+          "カップ"
         ]
       },
       "limits": {
@@ -2651,10 +2642,6 @@
   "components": {
     "conditions": [
       {
-        "slot": "secondary",
-        "kind": "toast"
-      },
-      {
         "slot": "extra",
         "kind": "winnerGroup"
       }
@@ -2673,7 +2660,6 @@
     },
     "settings": {
       "bubble": {
-        "slotType": "primary",
         "showCharacters": {
           "center": [
             "chocolate",
@@ -2693,13 +2679,11 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "slotType": "secondary",
         "showToastsOnRight": true,
         "showToastsCharacter": false,
         "showThumbnail": []
       },
       "ranking": {
-        "slotType": "extra",
         "targetScriptKeys": [
           "basicList"
         ],
@@ -2710,9 +2694,8 @@
         "component": "rankStandard"
       },
       "counter": {
-        "slotType": "extra",
-        "ruleKey": null,
         "component": "counterUser",
+        "ruleKey": "",
         "target": "draw",
         "label": "Counter",
         "color": {
@@ -2723,8 +2706,10 @@
       },
       "winnerGroup": {
         "component": "valentineCoupling",
-        "label": "ラッキーメンバーズ",
-        "color": "bumblebee"
+        "ruleKey": "",
+        "label": "バレンタイン・カップリング",
+        "color": "valentine",
+        "queryString": "count=2&label=今日のカップリング"
       },
       "flightSeat": {
         "slotType": "extra",
@@ -2742,7 +2727,7 @@
   },
   "featureUsage": {
     "usage": {
-      "comments": "basic",
+      "comments": "none",
       "timers": "none",
       "metas": "none",
       "actionSets": "none",
@@ -2752,15 +2737,24 @@
     "components": [
       "bubble",
       "toast",
+      "ranking",
+      "counter",
+      "flightSeat",
       "WinnerGroup",
       "winnerGroup"
     ],
     "gameScripts": [
+      "GoogolClover",
+      "HugEmAll",
+      "MultiplyBonanza",
+      "DwarfBomb",
+      "BomberSpin",
+      "GouseiSuika",
       "WinnerGroup"
     ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "none"
+      "jsonMergeSettings": "basic"
     }
   },
   "settings": {

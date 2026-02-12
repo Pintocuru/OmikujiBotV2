@@ -19,7 +19,7 @@
   import { storeToRefs } from 'pinia'
   import { BotMessageExtraSchema, BotMessageExtraType, isDev } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
-  import CounterPreviewManager from '@/common/ui/GameRanking/GameRankingManager.vue'
+  import CounterPreviewManager from './parts/GameRankingManager.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)

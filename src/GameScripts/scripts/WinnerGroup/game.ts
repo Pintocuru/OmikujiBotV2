@@ -1,5 +1,5 @@
 // src/game.ts
-import { candidateNames } from '@/common/ui/GameRanking/useDummyBotMessages'
+import { candidateNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
 import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
 

@@ -1,5 +1,5 @@
 // src/MainGenerator/stores/useAppStore.ts
-import { computed, readonly, ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { OmikujiDataType } from '@/types/'
 import { useBotMessageActions } from './useBotMessageActions'
