@@ -16,7 +16,7 @@ export const componentKindConfig = {
   toast: { slot: 'secondary', label: 'トースト' },
   ranking: { slot: 'extra', label: 'ランキング' },
   counter: { slot: 'extra', label: 'カウンター' },
-  WinnerGroup: { slot: 'extra', label: 'ラッキーメンバーズ' },
+  winnerGroup: { slot: 'extra', label: 'ラッキーメンバーズ' },
   flightSeat: { slot: 'extra', label: 'フライトシート' },
 } as const satisfies Record<string, { slot: ComponentSlot; label: string }>
 

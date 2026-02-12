@@ -10,6 +10,19 @@
     <!-- 右側: 設定エリア -->
     <div class="col-span-2 space-y-4">
       <!-- Script ID -->
+      <div v-if="gameScriptMap[gameScripts.scriptId].banner !== ''">
+        <img :src="gameScriptMap[gameScripts.scriptId].banner" alt="banner" class="w-full rounded-lg shadow" />
+      </div>
+      <div v-if="gameScriptMap[gameScripts.scriptId]?.url">
+        <p class="text-sm">
+          スクリプトクエリのチートシートはこちら →
+          <a :href="gameScriptMap[gameScripts.scriptId].url" target="_blank" class="link link-primary">
+            紹介ページを開く
+          </a>
+        </p>
+      </div>
+
+      <!-- Script ID -->
       <SettingItem
         label="スクリプトID"
         description="実行するスクリプトを選択"
@@ -83,7 +96,6 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { gameScriptMap } from '@game/GameScriptsMap'
-  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{

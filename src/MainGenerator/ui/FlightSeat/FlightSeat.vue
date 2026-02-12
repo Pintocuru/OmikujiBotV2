@@ -2,8 +2,8 @@
 <template>
   <div class="card w-full shadow-xl mx-auto p-4 space-y-2" :data-theme="settings.color">
     <!-- タイトル -->
-    <h2 v-if="settings.title" class="text-xl font-bold text-center">
-      {{ settings.title }}
+    <h2 v-if="settings.label" class="text-xl font-bold text-center">
+      {{ settings.label }}
     </h2>
 
     <!-- 座席グリッド表示 -->

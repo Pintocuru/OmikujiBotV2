@@ -55,16 +55,15 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
+  import { storeToRefs } from 'pinia'
   import CharacterBasicInfo from './basicInfo/CharacterBasicInfo.vue'
   import CharacterColorSettings from './color/CharacterColorSettings.vue'
   import CharacterImageSettings from './CharacterImage/CharacterImageSettings.vue'
   import CharacterIconDisplaySettings from './service/CharacterIconDisplaySettings.vue'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { storeToRefs } from 'pinia'
+  import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   // アクティブなセクションの管理
   type SectionType = 'basicInfo' | 'colorSettings' | 'botComments' | 'serviceSettings' | 'imageSettings' | null

@@ -124,3 +124,29 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
       return dummyMessages
   }
 }
+
+// WinnerGroup プレビュー専用
+export const generateDummyWinnerUsers = (count: number = 2): UserVisitRecord[] => {
+  const result: UserVisitRecord[] = []
+  const used = new Set<string>()
+
+  for (let i = 0; i < count; i++) {
+    let name: string
+    do {
+      name = candidateNames[Math.floor(Math.random() * candidateNames.length)]
+    } while (used.has(name))
+
+    used.add(name)
+
+    result.push(
+      UserVisitRecordSchema.parse({
+        userName: name,
+        userId: `dummy-${i}-${Date.now()}`,
+        ruleId: 'winner-preview',
+        visitCount: Math.floor(Math.random() * 50) + 1,
+      })
+    )
+  }
+
+  return result
+}

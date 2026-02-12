@@ -9,8 +9,8 @@ const pluginConfig = {
   description: 'Wing FURAIJIN風のおみくじ',
   editorColor: '#333333',
   keywords: ['ポイント', 'ランキング', 'スロット'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/BomberSpin/MultiplyBonanza.md',
+  banner: 'https://github.com/Pintocuru/OmikujiBot-Docs/raw/main/solo/BomberSpin/images/thumb_MultiplyBonanza.webp',
 }
 
 const plugin: ScriptPreset = {

@@ -8,10 +8,7 @@
   <NoParamsCard v-else :message="'対象ルールキーを設定してください'" />
 
   <!-- テーマカラー -->
-  <DaisyUiThemeEditor
-    :model-value="counter.color"
-    @update:model-value="(newValue) => updateCounterField('color', newValue)"
-  />
+  <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
@@ -21,7 +18,7 @@
         :key="key"
         class="badge cursor-pointer"
         :class="counter.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateCounterField('component', key)"
+        @click="updateField('component', key)"
       >
         {{ style }}
       </div>
@@ -41,7 +38,7 @@
         :key="key"
         class="badge cursor-pointer"
         :class="counter.ruleKey === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateCounterField('ruleKey', key)"
+        @click="updateField('ruleKey', key)"
       >
         {{ value.name || '名称未設定' }}
       </div>
@@ -55,14 +52,14 @@
         <div
           class="badge cursor-pointer"
           :class="counter.target === 'draw' ? 'badge-primary' : 'badge-outline'"
-          @click="updateCounterField('target', 'draw')"
+          @click="updateField('target', 'draw')"
         >
           実行回数
         </div>
         <div
           class="badge cursor-pointer"
           :class="counter.target === 'user' ? 'badge-primary' : 'badge-outline'"
-          @click="updateCounterField('target', 'user')"
+          @click="updateField('target', 'user')"
         >
           ユーザー数
         </div>
@@ -75,7 +72,7 @@
         type="text"
         class="input input-bordered w-full"
         :value="counter.label"
-        @input="(e) => updateCounterField('label', (e.target as HTMLInputElement).value)"
+        @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
       />
     </SettingItem>
   </div>
@@ -102,7 +99,7 @@
   const counter = computed(() => data.value.components.settings.counter)
 
   // 更新関数
-  const updateCounterField = (field: keyof typeof counter.value, value: any) => {
+  const updateField = (field: keyof typeof counter.value, value: any) => {
     omikujiStore.updateComponentSettings('counter', {
       ...counter.value,
       [field]: value,
@@ -112,7 +109,7 @@
   // リセット関数
   const resetField = (field: keyof typeof counter.value) => {
     const defaults = SettingsCounterSchema.parse({})
-    updateCounterField(field, defaults[field])
+    updateField(field, defaults[field])
   }
 
   const resetMap = {

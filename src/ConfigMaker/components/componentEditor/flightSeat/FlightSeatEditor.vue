@@ -22,12 +22,12 @@
   </InformationCard>
 
   <!-- タイトル -->
-  <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.title">
+  <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.label">
     <input
       type="text"
       class="input input-bordered w-full"
-      :value="flightSeat.title"
-      @input="(e) => updateField('title', (e.target as HTMLInputElement).value)"
+      :value="flightSeat.label"
+      @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
     />
   </SettingItem>
 
@@ -198,7 +198,7 @@
   }
 
   const resetMap = {
-    title: () => resetField('title'),
+    label: () => resetField('label'),
     rows: () => resetField('rows'),
     cols: () => resetField('cols'),
     circleSeats: () => resetField('circleSeats'),

@@ -4,7 +4,6 @@ import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'
-import WinnerGroup from '@/MainGenerator/ui/WinnerGroup/WinnerGroup.vue'
 
 /**
  * 共通スタイル設定
@@ -112,6 +111,7 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
  */
 export const winnerComponents = {
   valentineCoupling: 'バレンタイン・カップリング',
+  topStars: 'トップスターズ',
 } as const
 
 export type WinnerComponent = keyof typeof winnerComponents
@@ -120,7 +120,7 @@ const winnerComponentValues = Object.keys(winnerComponents) as WinnerComponent[]
 export const SettingsWinnerGroupSchema = z.object({
   component: z.enum(winnerComponentValues).default('valentineCoupling').catch('valentineCoupling'),
   label: z.string().default('ラッキーメンバーズ').catch('ラッキーメンバーズ'), // ラベル
-  color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
+  color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUIテーマカラー
 })
 export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 
@@ -152,7 +152,7 @@ export const SettingsFlightSeatSchema = z.object({
   // custom専用: 各行の座席数を配列で指定
   customLayout: z.string().default('[1,2,3,4,5]').catch('[1,2,3,4,5]').optional(),
 
-  title: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
+  label: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
 
   // 過去の座席に乗っていたユーザーでも、空席があれば再度座れるようにするか

@@ -9,8 +9,8 @@ const pluginConfig = {
   description: 'Nolimit City - Fire in the Hole風のおみくじ',
   editorColor: '#CC0000',
   keywords: ['ポイント', 'ランキング', 'スロット'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/BomberSpin/DwarfBomb.md',
+  banner: 'https://github.com/Pintocuru/OmikujiBot-Docs/raw/main/solo/BomberSpin/images/thumb_DwarfBomb.webp',
 }
 
 const plugin: ScriptPreset = {

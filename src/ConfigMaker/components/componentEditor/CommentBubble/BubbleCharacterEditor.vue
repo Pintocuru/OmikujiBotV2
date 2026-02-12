@@ -9,7 +9,7 @@
 
   <!-- キャラクター選択 -->
   <SettingItem label="表示するキャラクター" description="ドラッグアンドドロップで移動します">
-    <BubbleCharactersEditor />
+    <BubbleCharacterSelect />
   </SettingItem>
 
   <!-- キャラクターサイズ -->
@@ -35,11 +35,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import BubbleCharactersEditor from './BubbleCharactersEditor.vue'
+  import { SettingsBubbleSchema } from '@/types/'
+  import BubbleCharacterSelect from './BubbleCharacterSelect.vue'
+  import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
-  import { SettingsBubbleSchema } from '@/types/'
 
   // Store
   const omikujiStore = useOmikujiStore()

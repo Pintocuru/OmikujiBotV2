@@ -1,0 +1,97 @@
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\WinnerGroup\components\ValentineUserCard.vue -->
+<template>
+  <div v-motion :initial="initialAnimation" :enter="enterAnimation" :class="containerClass">
+    <div :class="cardClass">
+      <!-- カードの光沢効果 -->
+      <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
+
+      <figure class="px-4 pt-4 relative">
+        <div class="avatar relative z-10 flex justify-center">
+          <div :class="avatarRingClass">
+            <img v-if="user.profileImage" :src="user.profileImage" :alt="user.userName" class="object-cover" />
+            <div
+              v-else
+              class="w-full h-full bg-primary flex items-center justify-center text-primary-content font-bold text-base"
+            >
+              {{ user.userName.charAt(0) }}
+            </div>
+          </div>
+        </div>
+      </figure>
+      <div class="card-body items-center text-center p-3">
+        <h3 :class="titleClass">{{ user.userName }}</h3>
+        <div class="flex gap-1 mt-1">
+          <Heart v-for="i in 3" :key="i" :class="heartClass" :style="{ animationDelay: `${(i - 1) * 0.1}s` }" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { computed } from 'vue'
+  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { Heart } from 'lucide-vue-next'
+
+  const props = defineProps<{
+    user: UserVisitRecord
+    position: 'left' | 'right'
+    colorScheme: 'primary' | 'secondary'
+  }>()
+
+  const containerClass = computed(() => (props.position === 'left' ? 'flex justify-end' : 'flex justify-start'))
+
+  const cardClass = computed(() => {
+    const baseClass = 'card-3d backdrop-blur-sm shadow-xl w-44 border-2 rounded-xl overflow-hidden relative'
+    const colorClass =
+      props.colorScheme === 'primary' ? 'bg-primary/10 border-primary/40' : 'bg-secondary/10 border-secondary/40'
+    const transformClass = props.position === 'left' ? 'style-transform-left' : 'style-transform-right'
+    return `${baseClass} ${colorClass} ${transformClass}`
+  })
+
+  const avatarRingClass = computed(() => {
+    const baseClass = 'w-20 rounded-full ring-2 ring-offset-base-100 ring-offset-2 shadow-lg'
+    const ringColor = props.colorScheme === 'primary' ? 'ring-primary' : 'ring-secondary'
+    return `${baseClass} ${ringColor}`
+  })
+
+  const titleClass = computed(() => {
+    const baseClass = 'card-title text-lg font-bold'
+    const textColor = props.colorScheme === 'primary' ? 'text-primary' : 'text-secondary'
+    return `${baseClass} ${textColor}`
+  })
+
+  const heartClass = computed(() => {
+    const baseClass = 'w-3 h-3 animate-bounce'
+    const colorClass = props.colorScheme === 'primary' ? 'text-primary fill-primary' : 'text-secondary fill-secondary'
+    return `${baseClass} ${colorClass}`
+  })
+
+  const initialAnimation = computed(() => ({
+    opacity: 0,
+    x: props.position === 'left' ? -100 : 100,
+    rotateY: props.position === 'left' ? -45 : 45,
+  }))
+
+  const enterAnimation = computed(() => ({
+    opacity: 1,
+    x: 0,
+    rotateY: 0,
+    transition: { duration: 1000, delay: 400 },
+  }))
+</script>
+
+<style scoped>
+  .card-3d {
+    transition: transform 0.3s ease;
+    transform-style: preserve-3d;
+  }
+
+  .style-transform-left {
+    transform: perspective(1000px) rotateY(15deg);
+  }
+
+  .style-transform-right {
+    transform: perspective(1000px) rotateY(-15deg);
+  }
+</style>

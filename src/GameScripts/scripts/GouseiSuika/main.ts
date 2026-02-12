@@ -9,8 +9,8 @@ const pluginConfig = {
   description: '米兜科技 合成大西瓜風のおみくじ',
   editorColor: '#388E3C',
   keywords: ['ポイント', 'ランキング', 'スイカ'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/GouseiSuika/GouseiSuika.md',
+  banner: 'https://github.com/Pintocuru/OmikujiBot-Docs/raw/main/solo/GouseiSuika/images/thumb_GouseiSuika.webp',
 }
 
 const plugin: ScriptPreset = {

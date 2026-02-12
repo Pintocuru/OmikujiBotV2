@@ -27,19 +27,19 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
-  import BubbleComponentEditor from './bubble/BubbleComponentEditor.vue'
-  import BubbleComponentCharacterEditor from './bubble/BubbleComponentCharacterEditor.vue'
-  import ToastComponentEditor from './toast/ToastComponentEditor.vue'
-  import RankingComponentEditor from './ranking/RankingComponentEditor.vue'
-  import CounterComponentEditor from './counter/CounterComponentEditor.vue'
-  import FlightSeatComponentEditor from './FlightSeat/FlightSeatComponentEditor.vue'
-
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
   import { ComponentKind } from '@/types'
+  import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
+  import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
+  import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
+  import ToastComponentEditor from './ToastWidgets/ToastWidgetsEditor.vue'
+  import GameRankingEditor from './GameRanking/GameRankingEditor.vue'
+  import CounterPreviewEditor from './CounterPreview/CounterPreviewEditor.vue'
+  import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
+  import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   const activeSection = ref<string | null>('componentsSettings')
   const { isComment, isCharacter } = useVisibilityAccess()
@@ -62,7 +62,7 @@
       icon: 'MessageSquare',
       title: 'フキダシアイテム',
       description: 'BOTが喋るフキダシの設定',
-      component: BubbleComponentEditor,
+      component: CommentBubbleEditor,
       shouldShow: hasComponentKind('bubble'),
     },
     // フキダシ(キャラクター)
@@ -71,7 +71,7 @@
       icon: 'UserSquare',
       title: 'フキダシアイテム(キャラクター)',
       description: 'キャラクターの表示位置設定',
-      component: BubbleComponentCharacterEditor,
+      component: BubbleCharacterEditor,
       shouldShow: hasComponentKind('bubble') && isCharacter.value,
     },
     // トースト・サムネイル
@@ -89,7 +89,7 @@
       icon: 'Trophy',
       title: 'ランキングアイテム',
       description: 'ゲームスクリプトで使う、ランキング表示',
-      component: RankingComponentEditor,
+      component: GameRankingEditor,
       shouldShow: hasComponentKind('ranking'),
     },
     // カウンター
@@ -98,8 +98,17 @@
       icon: 'Hash',
       title: 'カウンターアイテム',
       description: 'コメントが来るたびに数値が増えるカウンターの表示',
-      component: CounterComponentEditor,
+      component: CounterPreviewEditor,
       shouldShow: hasComponentKind('counter') && isComment.value,
+    },
+    // ラッキーメンバーズ
+    {
+      type: 'winnerGroup',
+      icon: '',
+      title: 'ラッキーメンバーズアイテム',
+      description: 'ランダムに選ばれたユーザーの表示(ゲームスクリプトと一緒に使います)',
+      component: WinnerGroupEditor,
+      shouldShow: hasComponentKind('winnerGroup') && isComment.value,
     },
     // フライトシート
     {
@@ -107,7 +116,7 @@
       icon: 'Plane',
       title: 'フライトシートアイテム',
       description: '8時間フライト、どの席に座る？視聴者の座席配置表示',
-      component: FlightSeatComponentEditor,
+      component: FlightSeatEditor,
       shouldShow: hasComponentKind('flightSeat') && isComment.value,
     },
   ])

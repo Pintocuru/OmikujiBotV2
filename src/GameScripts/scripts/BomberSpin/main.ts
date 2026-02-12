@@ -9,8 +9,9 @@ const pluginConfig = {
   description: 'APPLI BOMBERSPIN2風のおみくじ',
   editorColor: '#550000',
   keywords: ['ポイント', 'ランキング', 'スロット'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/BomberSpin/BomberSpin.md',
+  banner:
+    'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/BomberSpin/images/thumb_BomberSpin.webp?raw=true',
 }
 
 const plugin: ScriptPreset = {

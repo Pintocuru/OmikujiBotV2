@@ -44,7 +44,7 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
   },
   // ラッキーメンバーズ
   {
-    kind: 'WinnerGroup',
+    kind: 'winnerGroup',
     component: WinnerGroup,
     shouldRender: ({ isComment }) => isComment,
   },

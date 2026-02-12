@@ -9,8 +9,8 @@ const pluginConfig = {
   description: 'CloverPit風のおみくじ',
   editorColor: '#550000',
   keywords: ['ポイント', 'ランキング', 'スロット'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/GoogolClover/GoogolClover.md',
+  banner: 'https://github.com/Pintocuru/OmikujiBot-Docs/raw/main/solo/GoogolClover/images/thumb_GoogolClover.webp',
 }
 
 const plugin: ScriptPreset = {

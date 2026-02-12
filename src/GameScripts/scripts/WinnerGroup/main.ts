@@ -15,8 +15,8 @@ const plugin: ScriptPreset = {
   version: '1.0.0',
   author: 'Pintocuru',
   tags: ['winner', 'group'],
-  url: '',
-  banner: '',
+  url: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/WinnerGroup/WinnerGroup.md',
+  banner: 'https://github.com/Pintocuru/OmikujiBot-Docs/raw/main/solo/WinnerGroup/images/thumb_WinnerGroup.webp',
   execute,
 }
 
