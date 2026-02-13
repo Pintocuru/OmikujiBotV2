@@ -1,32 +1,29 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
-import { PostActionMessageType } from '@/types/'
+import { PostActionMessageSchema, PostActionMessageType } from '@/types/'
 import { GameRecordType, UserStatsType } from '../GameScriptSchema'
 
 /**
  * PostActionType型のメッセージを作成
  */
 export const createPostActions = (
-  characterKey: string,
+  characterKey: string | null,
   userStats: UserStatsType,
   record: GameRecordType,
   isOverLimit: boolean,
   rank?: number
 ): PostActionMessageType[] => {
   return [
-    {
-      actionType: 'message',
+    PostActionMessageSchema.parse({
       delaySeconds: 8,
       characterKey,
-      iconKey: 'default',
       message: {
-        // TODO:isToast 修正
         bubble: rank
           ? createRankingMessage(userStats.userName, record.score, rank, isOverLimit)
           : createMessage(userStats, record, isOverLimit),
         isToast: true,
       },
       sound: 'cute',
-    },
+    }),
   ]
 }
 

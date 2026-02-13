@@ -1,10 +1,8 @@
 // src/MainGenerator/scripts/RuleProcess/useRuleProcessor.ts
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/'
-import { RuleTimerProcessor } from '../scripts/RuleProcess/RuleTimerProcessor'
-import { MetaRuleProcessor } from '../scripts/RuleProcess/MetaRuleProcessor'
-import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { RuleTimerProcessor } from '@main/scripts/RuleProcess/RuleTimerProcessor'
+import { MetaRuleProcessor } from '@main/scripts/RuleProcess/MetaRuleProcessor'
 
 /**
  * ルールプロセッサーのファクトリー関数
@@ -13,18 +11,6 @@ export function useRuleProcessor(data: OmikujiDataType) {
   // この実行コンテキスト専用のインスタンス
   const timerProcessor = new RuleTimerProcessor(data)
   const metaRuleProcessor = new MetaRuleProcessor(data)
-
-  /**
-   * アプリ初期化（コメント購読の開始）
-   */
-  const initializeApp = async (onCommentsReceived: (comments: OmikenCommentType[]) => void): Promise<boolean> => {
-    try {
-      return await GetOmikenComments(onCommentsReceived)
-    } catch (error) {
-      console.error('❌ 初期化エラー:', error)
-      return false
-    }
-  }
 
   /**
    * タイマールールの開始
@@ -55,7 +41,6 @@ export function useRuleProcessor(data: OmikujiDataType) {
   }
 
   return {
-    initializeApp,
     startTimers,
     stopTimers,
     startMetaRules,

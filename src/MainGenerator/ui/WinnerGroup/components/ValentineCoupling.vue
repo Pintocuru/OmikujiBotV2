@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling.vue -->
+<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling.vue -->
 <template>
   <div class="p-4">
     <!-- 背景グラデーション -->
@@ -78,8 +78,8 @@
 <script setup lang="ts">
   import { watch, ref } from 'vue'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import { Heart, HeartCrack } from 'lucide-vue-next'
   import ValentineUserCard from './ValentineUserCard.vue'
+  import { Heart, HeartCrack } from 'lucide-vue-next'
 
   const props = defineProps<{
     users: UserVisitRecord[]

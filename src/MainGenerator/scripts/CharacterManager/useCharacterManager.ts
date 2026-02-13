@@ -7,13 +7,6 @@ import { BotMessageBubbleType } from '@/types'
 
 /**
  * Vueコンポーネント用：CharacterManager のリアクティブなラッパー
- *
- * CharacterManagerは純粋な計算ロジックであり、副作用を持ちません。
- * そのため、computedで管理することで以下のメリットがあります：
- *
- * 1. メモリ効率: 同じdataに対してCharacterManagerインスタンスを重複生成しない
- * 2. 自動更新: appStore.dataが更新されると自動的に新しいインスタンスが生成される
- * 3. シンプルさ: watchEffectやonCleanupなどの複雑な管理が不要
  */
 export const useCharacterManager = () => {
   const appStore = useAppStore()

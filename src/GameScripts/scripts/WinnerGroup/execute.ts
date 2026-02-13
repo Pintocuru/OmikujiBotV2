@@ -16,7 +16,7 @@ import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { getWinnersFromVisitManager } from './game'
 
 export class ExecuteScript extends BaseScript implements ScriptClass {
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
+  run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const rawParams = parseQueryString(queryString)
     const { count, label, useRule } = GameParamsSchema.parse(rawParams)
     const ruleKey = useRule ? omiken?.meta.ruleKey : null

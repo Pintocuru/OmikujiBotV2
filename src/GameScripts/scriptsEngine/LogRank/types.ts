@@ -25,7 +25,7 @@ export const GameParamsSchema = z.object({
   userName: z.string(),
 
   // BOT設定
-  characterKey: z.string(),
+  characterKey: z.string().nullable().default(null),
 
   //  ゲームルール設定
   rankingMode: RankingModeSchema.default('total_wins'), // より明示的な名前

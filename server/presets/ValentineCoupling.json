@@ -20,21 +20,25 @@
   },
   "jsonMerge": [],
   "comments": {
-    "3be9b811-71d0-4aed-9ae0-7387dac9122d": {
+    "ValentineCoupling": {
       "id": "1724f07a-b46d-4833-8d38-56063b1a4b38",
-      "key": "3be9b811-71d0-4aed-9ae0-7387dac9122d",
+      "key": "ValentineCoupling",
       "name": "バレンタイン・カップリング",
+      "description": "コメントしたユーザーの中から、ランダムに2名を表示します。",
       "createdAt": "2026-02-11T14:15:32.212Z",
-      "updatedAt": "2026-02-11T14:22:41.839Z",
+      "updatedAt": "2026-02-13T01:30:02.872Z",
       "order": 1,
       "isEnabled": true,
-      "tags": [],
+      "editorColor": "#CE93D8",
+      "tags": [
+        "ラッキーメンバーズ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "7f36837e-08f6-4535-852a-0a020dc525b3",
           "key": "e13f8adc-4d01-4f0a-85bf-8157fa936581",
-          "name": "",
+          "name": "カップリング",
           "createdAt": "2026-02-11T14:15:23.918Z",
           "updatedAt": "2026-02-11T14:15:23.918Z",
           "order": 0,
@@ -56,7 +60,7 @@
           ],
           "gameScripts": {
             "scriptId": "WinnerGroup",
-            "queryString": "",
+            "queryString": "count=2&label=今日のカップリング",
             "characterKey": "chocolate"
           },
           "special": "return",
@@ -74,7 +78,12 @@
         "access": [],
         "gift": [],
         "comment": [
-          "カップ"
+          "^カップ",
+          "^かっぷ",
+          "^coupling",
+          "^ペア",
+          "^ぺあ",
+          "^pear"
         ]
       },
       "limits": {
@@ -2651,6 +2660,10 @@
       {
         "slot": "extra",
         "kind": "winnerGroup"
+      },
+      {
+        "slot": "primary",
+        "kind": "bubble"
       }
     ],
     "commonStyle": {
@@ -2734,7 +2747,7 @@
   },
   "featureUsage": {
     "usage": {
-      "comments": "none",
+      "comments": "basic",
       "timers": "none",
       "metas": "none",
       "actionSets": "none",
@@ -2767,6 +2780,6 @@
   "settings": {
     "commentType": "OneComme",
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "daisyUiTheme": "dark"
+    "daisyUiTheme": "valentine"
   }
 }

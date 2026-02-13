@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\WinnerGroup\components\ValentineUserCard.vue -->
+<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineUserCard.vue -->
 <template>
   <div v-motion :initial="initialAnimation" :enter="enterAnimation" :class="containerClass">
     <div :class="cardClass">
@@ -104,10 +104,10 @@
   }
 
   .style-transform-left {
-    transform: perspective(1000px) rotateY(15deg);
+    transform: perspective(1000px) rotateY(25deg);
   }
 
   .style-transform-right {
-    transform: perspective(1000px) rotateY(-15deg);
+    transform: perspective(1000px) rotateY(-25deg);
   }
 </style>

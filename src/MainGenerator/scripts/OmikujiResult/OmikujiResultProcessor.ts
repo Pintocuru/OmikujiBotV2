@@ -3,14 +3,14 @@ import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType, ActionSetType, PostActionType, PostActionMessageType } from '@/types/OmikujiData/'
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
-import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
+import { PostOmikujiService } from '@/MainGenerator/scripts/PostOmikuji/PostOmikujiService'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { ActionSetExpander } from '@main/scripts/OmikujiProcess/ActionSetExpander'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ProcessedPostAction } from '@/types/MainGenerator/OmikujiResultTypes'
-import { CharacterManager } from '../CharacterManager/CharacterManager'
+import { CharacterManager, checkIsCharacterMode } from '../CharacterManager/CharacterManager'
 import { createBotMessagesFromAction } from './BotMessageHelpers'
 import { playSoundDelay } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
@@ -22,8 +22,8 @@ export class OmikujiResultProcessor {
   private readonly placeProcess: ContentPlaceholder
   private readonly placeContext: PlaceholderContext = new PlaceholderContext()
   private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
-  private readonly postMessage: PostMessage
-  private readonly characterManager: CharacterManager
+  private readonly postMessage: PostOmikujiService
+  private readonly characterManager?: CharacterManager
   private readonly actionSets: Record<string, ActionSetType>
 
   constructor(
@@ -32,8 +32,11 @@ export class OmikujiResultProcessor {
   ) {
     this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
     this.actionSets = omikujiData.actionSets
-    this.characterManager = new CharacterManager(omikujiData)
-    this.postMessage = new PostMessage(omikujiData.characters)
+
+    // isCharacterMode の影響を受けるコード
+    const isCharacterMode = checkIsCharacterMode(omikujiData)
+    this.characterManager = isCharacterMode ? new CharacterManager(omikujiData) : undefined
+    this.postMessage = new PostOmikujiService(omikujiData)
   }
 
   /**
@@ -67,17 +70,18 @@ export class OmikujiResultProcessor {
    * gameScripts処理
    */
   private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    // 1. スクリプトの実行
     const scriptResult = this.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
     const { actions, botMessageExtras: scriptMessages } = scriptResult
 
-    // 1. 変数プレースホルダーを処理
+    // 2. 変数プレースホルダーを処理
     const processedActions = this.processVariables(actions)
 
-    // 2. わんコメへ投稿 (置換後のアクションを投稿)
+    // 3. わんコメへ投稿 (置換後のアクションを投稿)
     this.postMessage.post(processedActions.map((a) => a.action))
 
-    // 3. BotMessage を生成
+    // 4. BotMessage を生成
     const botMessages = this.generateBotMessages(processedActions, omiken)
 
     // ゲームスクリプトと生成したメッセージを返す

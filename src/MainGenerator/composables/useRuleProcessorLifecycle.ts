@@ -1,7 +1,7 @@
 // src/MainGenerator/composables/useRuleProcessorLifecycle.ts
 import { ComputedRef, watchEffect } from 'vue'
-import { useRuleProcessor } from '@/MainGenerator/composables/useRuleProcessor'
-import { useAppStore } from '../stores/useAppStore'
+import { useRuleProcessor } from './useRuleProcessor'
+import { useAppStore } from '@main/stores/useAppStore'
 
 export function useRuleProcessorLifecycle(isTimer: ComputedRef<boolean>) {
   watchEffect((onCleanup) => {

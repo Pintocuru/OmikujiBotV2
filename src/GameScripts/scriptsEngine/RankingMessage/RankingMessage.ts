@@ -9,14 +9,13 @@ const UNKNOWN_NAME = 'おみくじBOT'
 /**
  * BotMessage構築のパラメータ
  */
-export interface BuildBotMessageParams {
+interface BuildBotMessageParams {
   user: UserNameType
   bubbleText: string
   componentKey: string
   score: number
   symbol: string
   delaySeconds?: number
-  characterKey: string
   isUnique?: boolean
   logResult: ReturnType<LogRankScript['run']> | null
 }

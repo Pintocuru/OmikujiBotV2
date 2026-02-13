@@ -11,7 +11,7 @@
     </SettingItem>
 
     <!-- アイコン選択 -->
-    <SettingItem v-if="characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
+    <SettingItem v-if="characterKey && characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
       <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
     </SettingItem>
   </div>

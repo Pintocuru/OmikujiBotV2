@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\WinnerGroup\components\TopStars.vue -->
+<!-- src\MainGenerator\ui\WinnerGroup\components\TopStars.vue -->
 <template>
   <div class="top-stars-container p-4 relative">
     <!-- 背景グラデーション -->

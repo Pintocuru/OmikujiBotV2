@@ -17,7 +17,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     this.logRank.setup(RANKING_KEY)
   }
 
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
+  run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const params = this.parseParams(queryString)
     const gameResult = new GachaGame(params).play()
 
@@ -28,7 +28,6 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     const botMessageExtras = buildBotMessageRanking({
       user,
-      characterKey,
       bubbleText,
       componentKey: RANKING_KEY,
       score: gameResult.points,
@@ -63,7 +62,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   private recordRanking(
     omiken: OmikenCommentType,
     points: number,
-    characterKey: string
+    characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
       userId: omiken.userId,
@@ -84,7 +83,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   private buildPostActions(
     gameResult: ReturnType<GachaGame['play']>,
     logResult: ReturnType<LogRankScript['run']> | null,
-    characterKey: string,
+    characterKey: string | null,
     bubbleText: string
   ): PostActionType[] {
     const messageAction = PostActionMessageSchema.parse({

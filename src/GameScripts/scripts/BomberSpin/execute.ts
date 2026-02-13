@@ -17,7 +17,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     this.logRank.setup(RANKING_KEY)
   }
 
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
+  run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const { symbol, spin } = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
     const gameResult = playSlot(user.userName, symbol, spin)
@@ -26,7 +26,6 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
 
     const botMessageExtras = buildBotMessageRanking({
       user,
-      characterKey,
       bubbleText: gameResult.message,
       componentKey: RANKING_KEY,
       score: gameResult.payout,
@@ -64,7 +63,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   private recordRanking(
     omiken: OmikenCommentType,
     payout: number,
-    characterKey: string
+    characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
       userId: omiken.userId,
@@ -85,7 +84,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   private buildPostActions(
     gameResult: ReturnType<typeof playSlot>,
     logResult: ReturnType<LogRankScript['run']> | null,
-    characterKey: string
+    characterKey: string | null
   ): PostActionType[] {
     const messageAction = PostActionMessageSchema.parse({
       delaySeconds: 3.5,

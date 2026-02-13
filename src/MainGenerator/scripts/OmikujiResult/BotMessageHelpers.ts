@@ -13,7 +13,7 @@ export function createBotMessagesFromAction(
   action: PostActionMessageType,
   variableResult: VariablePlaceholderResult | undefined,
   delaySeconds: number,
-  characterManager: CharacterManager,
+  characterManager?: CharacterManager,
   omiken?: OmikenCommentType
 ): BotMessageType[] {
   const bubble = action.message.bubble || ''
@@ -55,15 +55,15 @@ export function createBotMessagesFromAction(
  * Bubbleメッセージを生成
  */
 function createBubbleMessage(
-  characterKey: string,
+  characterKey: string | null,
   iconKey: CharacterEmotionType,
   bubble: string,
   isToast: boolean | undefined,
   delaySeconds: number,
-  characterManager: CharacterManager
+  characterManager?: CharacterManager
 ): BotMessageType {
-  const resolved = characterManager.resolveCharacter({ characterKey, iconKey })
-  const character = characterManager.getCharacter(resolved.characterKey)
+  const resolved = characterManager?.resolveCharacter({ characterKey, iconKey })
+  const character = resolved && characterManager?.getCharacter(resolved.characterKey)
 
   return BotMessageBubbleSchema.parse({
     delaySeconds,
@@ -71,8 +71,8 @@ function createBubbleMessage(
       name: character?.displayName || '',
       message: bubble,
       isToast,
-      characterKey: resolved.characterKey,
-      iconKey: resolved.iconKey,
+      characterKey: resolved?.characterKey,
+      iconKey: resolved?.iconKey,
     },
   })
 }
@@ -98,12 +98,12 @@ function createRankingMessage(
  * キャラクターのRPG音声を再生
  */
 function playRpgVoiceForCharacter(
-  characterKey: string,
+  characterKey: string | null,
   bubble: string,
   delaySeconds: number,
-  characterManager: CharacterManager
+  characterManager?: CharacterManager
 ): void {
-  const character = characterManager.getCharacter(characterKey)
+  const character = characterManager && characterManager.getCharacter(characterKey)
   const displayOption = character?.displayOption
 
   if (displayOption?.mode === 'rpgVoice' && displayOption.rpgVoice) {

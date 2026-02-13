@@ -1,34 +1,36 @@
 // src/MainGenerator/composables/useAppInitializer.ts
-import { useRuleProcessor } from '@/MainGenerator/composables/useRuleProcessor'
+import { ComputedRef } from 'vue'
+import { useAppStore } from '@main/stores/useAppStore'
 import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
 import { generatorApi } from '@config/dev/services/generatorApi'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-
-import { ComputedRef } from 'vue'
-import { useAppStore } from '../stores/useAppStore'
+import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 
 export function useAppInitializer(isComment: ComputedRef<boolean>) {
   const initialize = async () => {
     const appStore = useAppStore()
-    const ruleProcessor = useRuleProcessor(appStore.data)
 
-    const isInit = await ruleProcessor.initializeApp((omikens) => {
-      // ユーザー情報を記録
-      for (const omiken of omikens) {
-        appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
-      }
+    try {
+      // コメント購読開始
+      const isInit = await GetOmikenComments((omikens) => {
+        // ユーザー記録
+        for (const omiken of omikens) {
+          appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
+        }
 
-      // おみくじ処理
-      if (!isComment.value) return
-      const commentProcessor = new RuleCommentProcessor()
-      const botMessages = commentProcessor.respondToComments(omikens)
-      appStore.scheduleBotMessages(botMessages)
-    })
+        // コメント処理
+        if (!isComment.value) return
 
-    appStore.setInitialized(isInit)
+        const commentProcessor = new RuleCommentProcessor()
+        const botMessages = commentProcessor.respondToComments(omikens)
+        appStore.scheduleBotMessages(botMessages)
+      })
 
-    // サーバ同期
-    if (isInit) {
+      appStore.setInitialized(isInit)
+
+      if (!isInit) return
+
+      // サーバ同期
       const isHealth = await generatorApi.getHealth()
       if (!isHealth) return
 
@@ -36,6 +38,9 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
       if (serverData) {
         appStore.loadData(serverData)
       }
+    } catch (error) {
+      console.error('❌ 初期化エラー:', error)
+      appStore.setInitialized(false)
     }
   }
 

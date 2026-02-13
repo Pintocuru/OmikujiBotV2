@@ -26,7 +26,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   /**
    * ゲームを実行する
    */
-  run(queryString: string, characterKey: string, omiken?: OmikenCommentType): ScriptResult {
+  run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const {} = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
 
@@ -100,7 +100,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
    */
   private buildPostActions(
     botMessage: ReturnType<typeof playSlot>['botMessage'],
-    characterKey: string
+    characterKey: string | null
   ): PostActionType[] {
     // メッセージアクションは bubble のみを含む
     const messageAction = PostActionMessageSchema.parse({

@@ -1,31 +1,32 @@
-// src/MainGenerator/script/PostMessage.ts
-import { PostActionType, CharacterType, PostActionMessageType } from '@/types/'
-import {
-  postWordParty,
-  postComment,
-  postSpeech,
-  postSystemMessage,
-  postWordPartyId,
-} from '@shared/sdk/postMessage/PostOneComme'
+// src\MainGenerator\scripts\PostOmikuji\PostOmikujiService.ts
+import { PostActionType, CharacterType, PostActionMessageType, OmikujiDataType } from '@/types/'
+import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 import { Service } from '@onecomme.com/onesdk/types/Service'
 import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
 import { executeWordParty } from '@shared/sdk/postMessage/PostWordParty'
+import { CharacterManager, checkIsCharacterMode } from '@main/scripts/CharacterManager/CharacterManager'
 
 const MAX_REPEAT_COUNT = 30
 
 /**
  * メッセージ投稿を管理するクラス
  */
-export class PostMessage {
+export class PostOmikujiService {
   private readonly serviceAPI: ServiceAPI
   private readonly metaStateService = MetaStateService.getInstance()
+  private readonly characterManager?: CharacterManager
   private services: Service[] = []
   private createdServiceIds: Set<string> = new Set()
 
-  constructor(private readonly charactersMap: Record<string, CharacterType> = {}) {
+  constructor(omikujiData: OmikujiDataType) {
     this.serviceAPI = ServiceAPI.getInstance()
+
+    // キャラクターモードが有効な場合のみ CharacterManager を生成
+    if (checkIsCharacterMode(omikujiData)) {
+      this.characterManager = new CharacterManager(omikujiData)
+    }
   }
 
   /**
@@ -90,28 +91,55 @@ export class PostMessage {
     let { bubble } = post.message
     if (!bubble || bubble.trim() === '') return
 
-    // ★ 投稿用にクリーンアップ
+    // 投稿用にクリーンアップ
     bubble = cleanPostMessage(bubble)
+
+    // キャラクター情報を取得
     const chara = this.getCharacter(post.characterKey)
 
+    // キャラクターが定義されていない、またはキャラクターモードが無効な場合
+    if (!chara) {
+      postSpeech(bubble, delaySeconds)
+      return
+    }
+
+    // 画像がない場合は音声投稿にフォールバック
+    if (!this.hasCharacterImage(post.characterKey)) {
+      postSpeech(bubble, delaySeconds)
+      return
+    }
+
     // わんコメ投稿
-    if (chara && shouldPostAsComment(chara)) {
+    if (shouldPostAsComment(chara)) {
       const frameId = await this.ensureServiceExists(chara)
-      if (frameId) this.postAsComment(bubble, chara, delaySeconds)
-      else postSpeech(bubble, delaySeconds)
+      if (frameId) {
+        this.postAsComment(bubble, chara, delaySeconds)
+      } else {
+        postSpeech(bubble, delaySeconds)
+      }
       return
     }
 
     // ボイス投稿
-    if (shouldPostAsVoice(chara, bubble)) postSpeech(bubble, delaySeconds)
+    if (shouldPostAsVoice(chara, bubble)) {
+      postSpeech(bubble, delaySeconds)
+    }
   }
 
   /**
    * キャラクター情報を取得
    */
-  private getCharacter(characterKey: string): CharacterType | null {
-    if (!characterKey) return null
-    return this.charactersMap[characterKey] ?? null
+  private getCharacter(characterKey: string | null): CharacterType | null {
+    if (!this.characterManager || !characterKey) return null
+    return this.characterManager.getCharacter(characterKey)
+  }
+
+  /**
+   * キャラクターが画像を持っているか確認
+   */
+  private hasCharacterImage(characterKey: string | null): boolean {
+    if (!this.characterManager || !characterKey) return false
+    return this.characterManager.hasImage(characterKey)
   }
 
   /**

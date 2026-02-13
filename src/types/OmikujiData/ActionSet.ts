@@ -27,7 +27,7 @@ export type PostActionMessageMessageType = z.infer<typeof PostActionMessageConte
 export const PostActionMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('message').default('message'),
-  characterKey: z.string().catch('omiken'),
+  characterKey: z.string().nullable().default(null).catch(null),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
   sound: z.enum(soundList).default('').catch(''),
   message: PostActionMessageContentSchema.default(PostActionMessageContentSchema.parse({})).catch(
@@ -99,7 +99,7 @@ export const PostActionArraySchema = z
 export const GameScriptsSchema = z.object({
   scriptId: z.string().default('').catch(''),
   queryString: z.string().default('').catch(''),
-  characterKey: z.string().default('').catch(''),
+  characterKey: z.string().nullish().default(null).catch(null),
 })
 export type GameScriptsType = z.infer<typeof GameScriptsSchema>
 

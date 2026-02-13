@@ -10,7 +10,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { PostMessage } from '@main/scripts/PostMessage/PostMessage'
+  import { PostOmikujiService } from '@/MainGenerator/scripts/PostOmikuji/PostOmikujiService'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
@@ -43,7 +43,7 @@
     const result = appStore.scriptManager.playScript({
       scriptId: 'WinnerGroup',
       queryString: winnerSetting.value.queryString,
-      characterKey: '',
+      characterKey: null,
     })
     if (!result?.botMessageExtras?.length) return
     result.botMessageExtras.forEach((extra) => {
@@ -56,7 +56,7 @@
 
     // わんコメにpost
     if (!result?.actions) return
-    const postMessage = new PostMessage(data.value.characters)
+    const postMessage = new PostOmikujiService(data.value)
     postMessage.post(result.actions)
   }
 

@@ -5,15 +5,6 @@ import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
 /**
  * キャラクター情報の解決とライセンス判定を一括管理
- *
- * このクラスは純粋な計算ロジックであり、以下の特徴を持ちます：
- *
- * 1. **不変性**: コンストラクタで渡されたデータを元に、読み取り専用のプロパティを構築
- * 2. **副作用なし**: タイマー、イベントリスナー、外部状態の変更などを一切行わない
- * 3. **決定論的**: 同じ入力に対して常に同じ出力を返す
- *
- * これらの特性により、Vue の computed プロパティで安全に管理できます。
- * データが更新された際は、新しいインスタンスを生成するだけで済みます。
  */
 export class CharacterManager {
   readonly characterMap: Map<string, CharacterType>
@@ -22,7 +13,7 @@ export class CharacterManager {
   readonly defaultColor: CharacterColorType
 
   constructor(omikujiData: OmikujiDataType) {
-    this.isCharacterMode = this.checkIsCharacter(omikujiData)
+    this.isCharacterMode = checkIsCharacterMode(omikujiData)
     this.characterMap = this.createCharacterMap(omikujiData.characters)
     this.defaultColor = omikujiData.components.commonStyle.defaultColor
 
@@ -135,4 +126,16 @@ export class CharacterManager {
     const mode = resolveSettingMode(settings.licenseKeyHash)
     return hasAccessPure(usageCharacters, mode) && hasCharacters
   }
+}
+
+/**
+ * キャラクターモード（ライセンス）の有効判定
+ * CharacterManager 外でも使用可能
+ */
+export function checkIsCharacterMode(omikujiData: OmikujiDataType): boolean {
+  const { featureUsage, characters, settings } = omikujiData
+  const usageCharacters = featureUsage.usage.characters
+  const hasCharacters = Object.keys(characters).length > 0
+  const mode = resolveSettingMode(settings.licenseKeyHash)
+  return hasAccessPure(usageCharacters, mode) && hasCharacters
 }
