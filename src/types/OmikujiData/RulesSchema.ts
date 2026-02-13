@@ -75,36 +75,3 @@ export type MetaRuleType = z.infer<typeof MetaRuleSchema>
  * 型
  */
 export type RuleType = CommentRuleType | TimerRuleType | MetaRuleType
-
-/**
-
-metas の新規導入について
-
-export const MetaRuleSchema = z.object({
-  ...BaseRuleSchema.shape,
-  ruleType: z.literal('metas').default('metas').catch('metas'),
-  trigger: TriggerMetaSchema.default(TriggerMetaSchema.parse({})).catch(TriggerMetaSchema.parse({})),
-})
-
-
-
-  startTime: number | null // metaで取得した配信開始時間(Date)
-  upVote: number // metaで取得した高評価数
-  viewer: number // metaで取得した視聴者数
-  peakUpVote: number // 過去最高の高評価数
-  peakViewer: number // 最大視聴者数
-  follower: number // 登録者・サブスクライブ(Youtubeの場合は上3桁)
-
-
-export const MetaTriggerSchema = z.object({
-  conditions: z.array(MetaTriggerConditionSchema).catch([]),
-
-  upVote: MetaConditionSchema.optional(),
-  viewer: MetaConditionSchema.optional(),
-  follower: z.any().optional(),
-  startTime: z.any().optional(),
-})
-
-  
-
- */

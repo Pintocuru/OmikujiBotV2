@@ -17,7 +17,7 @@ const BotMessageBaseSchema = z.object({
  * CommentBubbleSchema
  */
 const CommentBubbleSchema = z.object({
-  name: z.string(),
+  name: z.string().nullable().default(null),
   message: z.string(),
   isToast: z.boolean().default(false),
   characterKey: z.string().nullable().default(null),

@@ -161,15 +161,12 @@ export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
  * settings オブジェクトのスキーマ
  */
 export const ComponentsSettingsSchema = z.object({
-  bubble: SettingsBubbleSchema.default(SettingsBubbleSchema.parse({})).catch(SettingsBubbleSchema.parse({})),
-  toast: SettingsToastSchema.default(SettingsToastSchema.parse({})).catch(SettingsToastSchema.parse({})),
-  ranking: SettingsRankingSchema.default(SettingsRankingSchema.parse({})).catch(SettingsRankingSchema.parse({})),
-  counter: SettingsCounterSchema.default(SettingsCounterSchema.parse({})).catch(SettingsCounterSchema.parse({})),
-  winnerGroup: SettingsWinnerGroupSchema.default(SettingsWinnerGroupSchema.parse({})).catch(
-    SettingsWinnerGroupSchema.parse({})
-  ),
-  flightSeat: SettingsFlightSeatSchema.default(SettingsFlightSeatSchema.parse({})).catch(
-    SettingsFlightSeatSchema.parse({})
-  ),
+  bubble: SettingsBubbleSchema.optional(),
+  toast: SettingsToastSchema.optional(),
+  ranking: SettingsRankingSchema.optional(),
+  counter: SettingsCounterSchema.optional(),
+  winnerGroup: SettingsWinnerGroupSchema.optional(),
+  flightSeat: SettingsFlightSeatSchema.optional(),
 })
+
 export type ComponentsSettings = z.infer<typeof ComponentsSettingsSchema>

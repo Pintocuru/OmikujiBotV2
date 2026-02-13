@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.12-2.1.0-alpha5",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha5",
-    "dataVersion": 2.09005,
+    "generatorVersion": "2.1.0-alpha6",
+    "dataVersion": 2.09006,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -2662,8 +2662,8 @@
         "kind": "winnerGroup"
       },
       {
-        "slot": "primary",
-        "kind": "bubble"
+        "slot": "secondary",
+        "kind": "toast"
       }
     ],
     "commonStyle": {
