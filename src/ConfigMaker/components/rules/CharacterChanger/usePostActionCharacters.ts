@@ -36,7 +36,7 @@ export function usePostActionCharacters() {
       actionSet.postActions.forEach((action) => {
         if (action.actionType === 'message') {
           const key = action.characterKey
-          counts[key] = (counts[key] || 0) + 1
+          if (key) counts[key] = (counts[key] || 0) + 1
         }
       })
     }
@@ -44,8 +44,7 @@ export function usePostActionCharacters() {
     // GameScriptsからカウント
     else if (actionSet.type === 'gameScripts') {
       const key = actionSet.gameScripts.characterKey
-      counts[key] = (counts[key] || 0) + 1
-      console.log()
+      if (key) counts[key] = counts[key] = (counts[key] || 0) + 1
     }
 
     return counts
@@ -54,7 +53,10 @@ export function usePostActionCharacters() {
   /**
    * キャラクターマッピングに基づいてPostAction配列を更新
    */
-  const hoge = (postActions: PostActionType[], mappings: Record<string, string>): PostActionType[] => {
+  const mapPostActionsCharacterKey = (
+    postActions: PostActionType[],
+    mappings: Record<string, string>
+  ): PostActionType[] => {
     return postActions.map((action) => {
       if (action.actionType === 'message') {
         const newCharacterId = mappings[action.characterKey || '']
@@ -73,15 +75,20 @@ export function usePostActionCharacters() {
     const newActionSet = { ...actionSet }
 
     // PostActionsを更新
-    newActionSet.postActions = hoge(actionSet.postActions, mappings)
+    newActionSet.postActions = mapPostActionsCharacterKey(actionSet.postActions, mappings)
 
     // GameScriptsを更新
     if (actionSet.type === 'gameScripts') {
-      const newCharacterKey = mappings[actionSet.gameScripts.characterKey]
-      if (newCharacterKey) {
-        newActionSet.gameScripts = {
-          ...actionSet.gameScripts,
-          characterKey: newCharacterKey,
+      const oldKey = actionSet.gameScripts.characterKey
+
+      // null のときはマッピングしない
+      if (oldKey !== null) {
+        const newKey = mappings[oldKey]
+        if (newKey) {
+          newActionSet.gameScripts = {
+            ...actionSet.gameScripts,
+            characterKey: newKey,
+          }
         }
       }
     }

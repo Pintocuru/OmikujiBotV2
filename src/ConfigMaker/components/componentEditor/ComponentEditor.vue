@@ -104,7 +104,7 @@
     // ラッキーメンバーズ
     {
       type: 'winnerGroup',
-      icon: '',
+      icon: 'Crown',
       title: 'ラッキーメンバーズアイテム',
       description: 'ランダムに選ばれたユーザーの表示',
       component: WinnerGroupEditor,

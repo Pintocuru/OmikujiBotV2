@@ -36,7 +36,7 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
-  import { BotMessageBubbleType } from '@/types'
+  import { BotMessageBubbleType, SettingsBubbleSchema } from '@/types'
 
   const props = defineProps<{
     centerMessages: BotMessageBubbleType[]
@@ -50,7 +50,7 @@
   const { hasImage, getCharacterLayers, getCharacterColor } = useCharacterManager()
 
   // 設定の取得
-  const bubble = computed(() => appStore.data.components.settings.bubble || {})
+  const bubble = computed(() => appStore.data.components.settings.bubble || SettingsBubbleSchema.parse({}))
 
   // コメント表示制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(toRef(() => props.centerMessages))

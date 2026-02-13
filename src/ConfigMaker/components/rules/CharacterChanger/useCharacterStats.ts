@@ -8,7 +8,7 @@ import { usePostActionCharacters } from './usePostActionCharacters'
  * キャラクター使用状況の統計情報を提供
  */
 export function useCharacterStats(allActionSets: ComputedRef<ActionSetType[]>) {
-  const { characterArray, isValidCharacter } = useCharacterManager()
+  const { characterArray } = useCharacterManager()
   const { extractCharacterKeys, countCharacterUsage } = usePostActionCharacters()
 
   /**

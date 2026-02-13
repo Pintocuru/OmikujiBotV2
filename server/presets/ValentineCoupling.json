@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "ValentineCoupling-ver2026.02.12-2.1.0-alpha5",
+    "id": "ValentineCoupling-ver2026.02.13-2.1.0-alpha6",
     "name": "おみくじ BOT バレンタイン・カップリング OmikujiBot ValentineCoupling",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.12-2.1.0-alpha5",
+    "version": "ver2026.02.13-2.1.0-alpha6",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.1.0-alpha6",
     "dataVersion": 2.09006,

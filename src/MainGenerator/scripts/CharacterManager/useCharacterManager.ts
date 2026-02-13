@@ -32,8 +32,10 @@ export const useCharacterManager = () => {
    * キャラクター表示設定
    */
   const showCharacters = computed(() => {
-    if (!manager.value.isCharacterMode) return ShowCharactersSchema.parse({})
-    return appStore.data.components.settings.bubble.showCharacters
+    if (!manager.value.isCharacterMode) return {}
+    const bubble = appStore.data.components.settings.bubble
+    if (!bubble) return ShowCharactersSchema.parse({})
+    return bubble.showCharacters
   })
 
   /**
