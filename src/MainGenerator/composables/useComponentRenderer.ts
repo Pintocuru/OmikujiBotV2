@@ -27,7 +27,6 @@ export function useComponentRenderer(
         return {
           slot: condition.slot,
           component: mapping.component,
-          classes: mapping.classes,
           props: mapping.props,
         }
       })

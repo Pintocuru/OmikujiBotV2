@@ -1,11 +1,11 @@
 <!-- src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling.vue -->
 <template>
   <div class="p-4">
-    <!-- 背景グラデーション -->
+    <!-- 背景グラデーション（常に表示） -->
     <div class="absolute inset-0 bg-base-200 backdrop-blur-sm rounded-lg border-2 border-primary/30"></div>
 
-    <!-- メインコンテンツ -->
-    <div class="relative space-y-3 z-10">
+    <!-- メインコンテンツ（isVisibleでコントロール） -->
+    <div v-if="isVisible" class="relative space-y-3 z-10">
       <!-- タイトル -->
       <div v-if="label" class="text-center">
         <h2 class="text-2xl font-bold">
@@ -72,6 +72,14 @@
         </p>
       </div>
     </div>
+
+    <!-- 非表示時のプレースホルダー（オプション） -->
+    <div v-else class="relative space-y-3 z-10 flex items-center justify-center min-h-[200px]">
+      <div class="text-center opacity-40">
+        <Heart class="w-16 h-16 mx-auto mb-3 text-gray-400" />
+        <p class="text-sm text-gray-500">クリックして新しいペアを表示</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -84,6 +92,7 @@
   const props = defineProps<{
     users: UserVisitRecord[]
     label: string
+    isVisible: boolean
   }>()
 
   // アニメーションキーを管理（propsが変更されたら再アニメーション）

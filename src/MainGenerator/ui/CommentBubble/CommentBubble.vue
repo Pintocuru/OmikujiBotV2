@@ -1,6 +1,6 @@
 <!-- src\MainGenerator\ui\CommentBubble\CommentBubble.vue -->
 <template>
-  <div class="relative">
+  <div class="z-10 pointer-events-none">
     <!-- BOTメッセージ表示(0番地) -->
     <div class="flex justify-center item-center">
       <CommentBubbleZero :center-messages="centerMessages" @remove-comment="handleRemoveComment" />

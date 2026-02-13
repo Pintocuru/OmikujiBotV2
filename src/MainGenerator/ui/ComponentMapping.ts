@@ -12,7 +12,6 @@ import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
 interface ComponentMapping {
   kind: ComponentKind
   component: Component
-  classes?: string
   props?: Record<string, any>
   shouldRender?: (ctx: { isComment: boolean; isTimer: boolean }) => boolean // 追加の表示条件
 }
@@ -22,19 +21,16 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
   {
     kind: 'bubble',
     component: CommentBubble,
-    classes: 'z-10 pointer-events-none',
   },
   // トースト・サムネイル
   {
     kind: 'toast',
     component: ToastWidgets,
-    classes: 'z-10',
   },
   // ランキング
   {
     kind: 'ranking',
     component: GameRankingViewer,
-    classes: 'absolute top-0 left-1/2 transform -translate-x-1/2 w-full',
   },
   // カウンター
   {

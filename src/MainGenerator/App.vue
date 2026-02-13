@@ -3,7 +3,7 @@
   <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
     <!-- 動的コンポーネント表示 -->
     <template v-for="item in activeComponents" :key="item?.slot">
-      <component v-if="item" :is="item.component" :class="item.classes" v-bind="item.props" />
+      <component v-if="item" :is="item.component" v-bind="item.props" />
     </template>
 
     <!-- meta -->
