@@ -108,7 +108,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { characterArray } = useCharacterManager()
 
-  const bubble = computed(() => data.value.components.settings.bubble)
+  const bubble = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // bubble設定の値を直接指定して更新する関数

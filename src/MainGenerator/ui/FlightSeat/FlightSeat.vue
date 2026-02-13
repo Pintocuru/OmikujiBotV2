@@ -67,8 +67,8 @@
 <script setup lang="ts">
   import { ref, computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev } from '@/types'
-  import SeatGrid from './SeatGrid.vue'
+  import { isDev, SettingsFlightSeatSchema } from '@/types'
+  import SeatGrid from './parts/SeatGrid.vue'
   import SeatHistoryViewer from './SeatHistoryViewer.vue'
   import { useSeatManager } from './useSeatManager'
   import { calculateTotalSeats } from './seatLayoutUtils'
@@ -76,7 +76,7 @@
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const settings = computed(() => data.value.components.settings.flightSeat)
+  const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
 
   const showHistoryMode = ref(false)
 

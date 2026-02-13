@@ -12,7 +12,7 @@
     </div>
 
     <!-- コメント内容（HTML を描画） -->
-    <div class="break-words text-xl" :class="uiMap.text.class" :style="uiMap.text.style" v-html="displayedHtml"></div>
+    <div class="break-words text-xl" :class="uiMap.text.class" :style="uiMap.text.style" v-html="displayedHtml" />
 
     <!-- 吹き出しの矢印 -->
     <div :class="uiMap.arrow.class" :style="uiMap.arrow.style" />

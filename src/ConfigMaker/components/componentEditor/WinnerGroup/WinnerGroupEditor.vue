@@ -97,7 +97,9 @@
   const previewKey = ref(0)
   const rulesComment = computed(() => data.value.comments)
 
-  const winnerSetting = computed(() => data.value.components.settings.winnerGroup)
+  const winnerSetting = computed(
+    () => data.value.components.settings.winnerGroup ?? SettingsWinnerGroupSchema.parse({})
+  )
   const queryCount = computed(() => {
     const parsed = parseQueryString(winnerSetting.value.queryString)
     const count = Number(parsed?.count)

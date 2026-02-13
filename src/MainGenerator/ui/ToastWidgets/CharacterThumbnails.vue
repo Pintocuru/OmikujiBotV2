@@ -23,6 +23,7 @@
     BotMessageBubbleType,
     characterEmotionKeys,
     CharacterSchema,
+    SettingsToastSchema,
   } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
@@ -31,7 +32,7 @@
   const appStore = useAppStore()
   const { characterArray, isCharacter, isValidCharacter, resolveCharacter, resolveEmotion } = useCharacterManager()
 
-  const toastSettings = computed(() => appStore.data.components.settings.toast)
+  const toastSettings = computed(() => appStore.data.components.settings.toast ?? SettingsToastSchema.parse({}))
   const currentExpressions = ref<string[]>([])
   const expressionTimer = ref<ReturnType<typeof setTimeout> | null>(null)
 

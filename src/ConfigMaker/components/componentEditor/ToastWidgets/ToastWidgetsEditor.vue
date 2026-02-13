@@ -103,7 +103,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
-  const toastSettings = computed(() => data.value.components.settings.toast)
+  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
   const characterArray = computed(() => Object.values(data.value.characters))
 

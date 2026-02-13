@@ -25,9 +25,9 @@
   const props = defineProps<{
     seats: (UserVisitRecord | null)[]
     customLayout: number[]
-    layout?: string // 互換性のため受け取るが使用しない
-    rows?: number // 互換性のため受け取るが使用しない
-    cols?: number // 互換性のため受け取るが使用しない
+    layout?: string
+    rows?: number
+    cols?: number
   }>()
 
   // カスタム配列をそのまま使用

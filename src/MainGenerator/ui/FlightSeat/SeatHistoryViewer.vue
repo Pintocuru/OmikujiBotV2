@@ -47,7 +47,7 @@
   import { ref, computed, watch } from 'vue'
   import { SeatLayout } from '@/types'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import SeatGrid from './SeatGrid.vue'
+  import SeatGrid from './parts/SeatGrid.vue'
 
   interface SeatHistory {
     seats: (UserVisitRecord | null)[]

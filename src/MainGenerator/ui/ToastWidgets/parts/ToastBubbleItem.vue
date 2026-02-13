@@ -17,16 +17,20 @@
       "
       :style="!color.isTheme ? { backgroundColor: color.backgroundColor } : {}"
     >
-      <div class="leading-tight text-base" :style="!color.isTheme ? { color: color.textColor } : {}">
-        {{ message }}
-      </div>
+      <div
+        class="leading-tight text-base"
+        :style="!color.isTheme ? { color: color.textColor } : {}"
+        v-html="displayedHtml"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import type { CharacterColorType } from '@/types/OmikujiData/'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
+  import { transformIconPlaceholders } from '@main/ui/CommentBubble/TransformIconPlaceholders'
 
   const props = defineProps<{
     message: string
@@ -34,4 +38,6 @@
     iconLayers?: string[]
     showToastsOnRight: boolean
   }>()
+
+  const displayedHtml = computed(() => transformIconPlaceholders(props.message))
 </script>

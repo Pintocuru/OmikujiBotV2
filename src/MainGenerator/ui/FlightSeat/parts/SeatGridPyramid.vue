@@ -21,14 +21,14 @@
   import { computed } from 'vue'
   import { SeatLayout } from '@/types'
   import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import { calculateSeatLayout, calculateTotalSeats } from './seatLayoutUtils'
+  import { calculateSeatLayout, calculateTotalSeats } from '../seatLayoutUtils'
   import SeatCell from './SeatCell.vue'
 
   const props = defineProps<{
     seats: (UserVisitRecord | null)[]
     layout: SeatLayout
     rows: number
-    cols?: number // pyramidでは使わないがpropsとして受け取る
+    cols?: number
   }>()
 
   const seatLayout = computed(() => calculateSeatLayout(props.layout, props.rows, 0))

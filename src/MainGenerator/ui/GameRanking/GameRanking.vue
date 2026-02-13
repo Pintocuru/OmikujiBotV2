@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { computed, ComputedRef, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageExtraSchema, BotMessageExtraType, isDev } from '@/types/'
+  import { BotMessageExtraSchema, BotMessageExtraType, isDev, SettingsRankingSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from './parts/GameRankingManager.vue'
 
@@ -43,7 +43,7 @@
   })
 
   // ランキング設定を取得
-  const rankingSettings = computed(() => data.value.components.settings.ranking)
+  const rankingSettings = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
 
   // ランキング対象のメッセージをフィルタリング
   const rankingMessages: ComputedRef<BotMessageExtraType[]> = computed(() => {

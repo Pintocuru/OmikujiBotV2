@@ -6,7 +6,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageExtraType } from '@/types'
+  import { BotMessageExtraType, SettingsWinnerGroupSchema } from '@/types'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
   import { useAppStore } from '@main/stores/useAppStore'
@@ -16,7 +16,9 @@
   const { data, botMessages } = storeToRefs(appStore)
   const previewKey = ref(0)
 
-  const winnerSetting = computed(() => data.value.components.settings.winnerGroup)
+  const winnerSetting = computed(
+    () => data.value.components.settings.winnerGroup ?? SettingsWinnerGroupSchema.parse({})
+  )
   const winnerExtras = computed<BotMessageExtraType[]>(() =>
     botMessages.value.filter(
       (msg): msg is BotMessageExtraType => msg.type === 'extra' && msg.componentKey === 'WinnerGroup'

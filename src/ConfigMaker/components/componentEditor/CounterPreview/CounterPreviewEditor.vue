@@ -97,7 +97,7 @@
 
   const rulesComment = computed(() => data.value.comments)
 
-  const counter = computed(() => data.value.components.settings.counter)
+  const counter = computed(() => data.value.components.settings.counter ?? SettingsCounterSchema.parse({}))
 
   // 更新関数
   const updateField = (field: keyof typeof counter.value, value: any) => {

@@ -36,12 +36,12 @@
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { BotMessageBubbleType, CharacterColorScheme } from '@/types'
+  import { BotMessageBubbleType, CharacterColorScheme, SettingsToastSchema } from '@/types'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
-  const toastSettings = computed(() => data.value.components.settings.toast)
+  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
   // ライセンス状態で閲覧できないなら表示させない

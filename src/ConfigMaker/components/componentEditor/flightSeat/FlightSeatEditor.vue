@@ -154,7 +154,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import SeatGrid from '@main/ui/FlightSeat/SeatGrid.vue'
+  import SeatGrid from '@main/ui/FlightSeat/parts/SeatGrid.vue'
   import { calculateTotalSeats } from '@main/ui/FlightSeat/seatLayoutUtils'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -166,7 +166,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isComment } = useVisibilityAccess()
 
-  const flightSeat = computed(() => data.value.components.settings.flightSeat)
+  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
 
   // customLayoutを配列にパース
   const parsedCustomLayout = computed(() => {

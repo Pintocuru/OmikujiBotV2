@@ -46,7 +46,7 @@
   const { data } = storeToRefs(omikujiStore)
 
   // 個別のcomputed値（読み取り専用）
-  const bubble = computed(() => data.value.components.settings.bubble)
+  const bubble = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
   const characters = computed(() => data.value.characters)
 
   // 汎用的な更新関数

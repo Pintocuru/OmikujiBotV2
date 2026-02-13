@@ -129,7 +129,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro, isGod } = useSettingMode()
 
-  const ranking = computed(() => data.value.components.settings.ranking)
+  const ranking = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
 
   // 利用可能なゲームスクリプトを取得
   const enabledGameScriptMap = computed(() => {

@@ -1,6 +1,6 @@
 <!-- templates\OmikujiBot\src\MainGenerator\ui\ToastWidgets\ToastWidgets.vue -->
 <template>
-  <div class="fixed bottom-4 flex flex-col" :class="!toast.showToastsOnRight ? 'left-4' : 'right-4'">
+  <div class="fixed bottom-4 flex flex-col" :class="!toastSettings.showToastsOnRight ? 'left-4' : 'right-4'">
     <!-- トースト表示 -->
     <ViewBotToast />
 
@@ -11,10 +11,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { SettingsToastSchema } from '@/types'
   import ViewBotToast from './ViewBotToast.vue'
   import CharacterThumbnails from './CharacterThumbnails.vue'
   import { useAppStore } from '@main/stores/useAppStore'
 
   const appStore = useAppStore()
-  const toast = computed(() => appStore.data.components.settings.toast)
+  const toastSettings = computed(() => appStore.data.components.settings.toast ?? SettingsToastSchema.parse({}))
 </script>
