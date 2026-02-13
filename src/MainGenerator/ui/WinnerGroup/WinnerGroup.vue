@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { BotMessageExtraType } from '@/types'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
@@ -59,4 +59,7 @@
     const postMessage = new PostMessage(data.value.characters)
     postMessage.post(result.actions)
   }
+
+  // 初回実行
+  onMounted(() => handleClick())
 </script>

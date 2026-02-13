@@ -117,8 +117,8 @@
         :class="{
           'grid-cols-1': users.length === 2,
           'grid-cols-2': users.length === 3,
-          'grid-cols-2 md:grid-cols-3': users.length === 4,
-          'grid-cols-2 md:grid-cols-4': users.length >= 5,
+          'grid-cols-2 sm:grid-cols-3': users.length === 4,
+          'grid-cols-2 sm:grid-cols-4': users.length >= 5,
         }"
       >
         <div

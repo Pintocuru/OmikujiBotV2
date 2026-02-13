@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/OmikujiProcess/RestrictionMessageBuilder.ts
+// src/MainGenerator/scripts/OmikujiProcess/createBotMessages.ts
 import { BotMessageBubbleSchema, BotMessageBubbleType, CommentRuleType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'

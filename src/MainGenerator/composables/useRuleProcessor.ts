@@ -1,8 +1,8 @@
-// src/MainGenerator/scripts/RuleProcess/RuleProcessor.ts
+// src/MainGenerator/scripts/RuleProcess/useRuleProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiDataType } from '@/types/OmikujiData/'
-import { RuleTimerProcessor } from './RuleTimerProcessor'
-import { MetaRuleProcessor } from './MetaRuleProcessor'
+import { RuleTimerProcessor } from '../scripts/RuleProcess/RuleTimerProcessor'
+import { MetaRuleProcessor } from '../scripts/RuleProcess/MetaRuleProcessor'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

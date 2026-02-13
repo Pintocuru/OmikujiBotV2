@@ -30,7 +30,5 @@
     return componentMap[props.winnerSetting.component] ?? ValentineCoupling
   })
 
-  const handleClick = () => {
-    emit('click')
-  }
+  const handleClick = () => emit('click')
 </script>

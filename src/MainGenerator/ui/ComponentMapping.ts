@@ -52,16 +52,4 @@ export const COMPONENT_MAPPINGS: ComponentMapping[] = [
     kind: 'flightSeat',
     component: FlightSeat,
   },
-
-  // 将来的な拡張例:
-  // {
-  //   kind: 'timer',
-  //   component: TimerDisplay,
-  //   classes: 'absolute bottom-4 left-4',
-  // },
-  // {
-  //   kind: 'poll',
-  //   component: PollViewer,
-  //   classes: 'absolute top-4 right-4',
-  // },
 ]

@@ -1,7 +1,7 @@
 // src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
 import { BotMessageType, CommentRuleType } from '@/types/'
 import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
-import { buildRestrictionMessages } from './RestrictionMessageBuilder'
+import { buildRestrictionMessages } from './createBotMessages'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
@@ -71,14 +71,14 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
 
   // 4. おみくじ実行
   const omikujiProcessor = new OmikujiProcessor()
-  const omikujiMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
+  const botMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
 
   // チャットワード起動かどうかを判定
   const isCommentTriggered = rule.trigger.conditions.includes('comment')
 
   return {
     isCommentTriggered,
-    botMessages: omikujiMessages,
+    botMessages,
   }
 }
 
