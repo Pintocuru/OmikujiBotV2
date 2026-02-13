@@ -19,7 +19,7 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-2"
     >
-      <div v-if="showHistory" class="absolute top-12 right-0 w-80 max-h-96 overflow-y-auto">
+      <div v-if="showHistory" class="absolute top-12 right-0 w-128 max-h-48 overflow-y-auto">
         <div class="card bg-base-200/95 backdrop-blur-md shadow-xl border border-base-300">
           <div class="card-body p-4">
             <h3 class="card-title text-sm mb-2 flex items-center gap-2">
@@ -76,8 +76,8 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { Clock, History, Hash, User, Trash2, FileQuestion } from 'lucide-vue-next'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { Clock, History, Hash, User, Trash2, FileQuestion } from 'lucide-vue-next'
 
   interface HistoryItem {
     id: string
@@ -104,10 +104,8 @@
   }
 
   const clearHistory = () => {
-    if (confirm('履歴を全てクリアしますか?')) {
-      emit('clear')
-      showHistory.value = false
-    }
+    emit('clear')
+    showHistory.value = false
   }
 
   const formatTimestamp = (timestamp: string): string => {

@@ -2,7 +2,13 @@
 <template>
   <!-- プレビュー -->
   <div class="max-h-96 overflow-y-hidden" :data-theme="winnerSetting.color">
-    <WinnerGroupRenderer :key="previewKey" :winnerSetting="winnerSetting" :users="previewUsers" @click="handleClick" />
+    <WinnerGroupRenderer
+      :key="previewKey"
+      :winnerSetting="winnerSetting"
+      :users="previewUsers"
+      :isVisible="true"
+      @click="handleClick"
+    />
   </div>
 
   <!-- コンポーネント選択 -->

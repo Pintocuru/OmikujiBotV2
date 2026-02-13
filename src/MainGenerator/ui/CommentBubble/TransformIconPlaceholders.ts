@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\CommentBubble\TransformIconPlaceholders.ts
+// src\MainGenerator\ui\CommentBubble\TransformIconPlaceholders.ts
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
 export function transformIconPlaceholders(raw: string): string {

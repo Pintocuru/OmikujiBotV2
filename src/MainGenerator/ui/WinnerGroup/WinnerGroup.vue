@@ -31,6 +31,8 @@
     users: UserVisitRecord[]
   }
 
+  const TIMER = 30000
+
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
   const previewKey = ref(0)
@@ -74,7 +76,7 @@
     hideTimer.value = window.setTimeout(() => {
       isVisible.value = false
       hideTimer.value = null
-    }, 30000)
+    }, TIMER)
   }
 
   // 履歴に追加
