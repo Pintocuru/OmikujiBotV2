@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between mb-2">
       <div class="flex items-center gap-2">
         <input type="checkbox" :checked="config.enabled" @change="handleEnabledChange" class="checkbox checkbox-sm" />
-        <span>{{ COMPONENT_DEFINITIONS[component].label }}</span>
+        <span>{{ COMPONENT_MAP[componentKey].label }}</span>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
           <label class="flex items-center gap-1">
             <input
               type="radio"
-              :name="`component-${component}`"
+              :name="`component-${componentKey}`"
               :checked="!config.useImported"
               @change="() => handleUseChange(false)"
               class="radio radio-sm"
@@ -25,7 +25,7 @@
           <label class="flex items-center gap-1">
             <input
               type="radio"
-              :name="`component-${component}`"
+              :name="`component-${componentKey}`"
               :checked="config.useImported"
               @change="() => handleUseChange(true)"
               class="radio radio-sm"
@@ -39,22 +39,22 @@
 </template>
 
 <script setup lang="ts">
-  import { COMPONENT_DEFINITIONS, ComponentKind } from '@/types/'
+  import { COMPONENT_MAP, ComponentKind } from '@/types/'
   import { useImportManager } from './composables/useImportManager'
   import { ComponentImportConfig } from './ImportTypes'
 
   const props = defineProps<{
-    component: ComponentKind
+    componentKey: ComponentKind
     config: ComponentImportConfig
     importManager: ReturnType<typeof useImportManager>
   }>()
 
   const handleEnabledChange = (event: Event) => {
     const enabled = (event.target as HTMLInputElement).checked
-    props.importManager.updateComponentConfig(props.component, { enabled })
+    props.importManager.updateComponentConfig(props.componentKey, { enabled })
   }
 
   const handleUseChange = (useImported: boolean) => {
-    props.importManager.updateComponentConfig(props.component, { useImported })
+    props.importManager.updateComponentConfig(props.componentKey, { useImported })
   }
 </script>

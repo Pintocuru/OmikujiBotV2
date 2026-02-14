@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.02.12-2.1.0-alpha5",
+    "id": "StrawberryChocolate-ver2026.02.14-2.1.0-beta1",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.12-2.1.0-alpha5",
+    "version": "ver2026.02.14-2.1.0-beta1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha5",
-    "dataVersion": 2.09005,
+    "generatorVersion": "2.1.0-beta1",
+    "dataVersion": 2.091,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -644,7 +644,7 @@
       "name": "コメントチェック:Chocolate",
       "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-12T12:21:40.811Z",
+      "updatedAt": "2026-02-14T06:50:41.625Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -770,9 +770,9 @@
       "id": "ViewCountDisplayChocolate",
       "key": "ViewCountDisplayChocolate",
       "name": "閲覧数表示(1min)",
-      "description": "1分ごとにさりげなく視聴数を教えてくれます",
+      "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-01-12T12:21:40.812Z",
+      "updatedAt": "2026-02-14T06:46:29.490Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -802,7 +802,7 @@
               "iconKey": "default",
               "sound": "cute",
               "message": {
-                "bubble": "<<viewer>>人が見てくれているわ。ありがと♡",
+                "bubble": "<<\n  '<<viewer>>人が見てくれているわ。ありがと♡',\n  'わぁ、今は<<viewer>>人も来てくれてるのね。嬉しいわ♡',\n  '今の視聴者さんは<<viewer>>人よ。来てくれて嬉しいわ♡',\n  'ただいま<<viewer>>人よ。みんなのおかげで賑やかね♡',\n  '<<viewer>>人…ふふ、思ったより来てくれてるわね。ありがと♡',\n  '今は<<viewer>>人が見てくれてるわ。ゆっくりしていってね♡',\n  '<<viewer>>人も来てくれてるなんて…ちょっと照れちゃうわね♡'\n>>\n",
                 "isToast": true
               }
             }
@@ -950,23 +950,26 @@
     }
   },
   "metas": {
-    "0cf758a2-0143-458f-8080-8bf45b65249a": {
+    "UpVotePeekChocolate": {
       "id": "1294df69-4454-4878-8535-dabdb9baf495",
-      "key": "0cf758a2-0143-458f-8080-8bf45b65249a",
-      "name": "高評価へのお礼",
-      "description": "ピーク時よりも増加したとき、お礼します",
+      "key": "UpVotePeekChocolate",
+      "name": "高評価の増加",
+      "description": "高評価がピーク時よりも多いとき、反応します",
       "createdAt": "2026-02-05T01:34:04.746Z",
-      "updatedAt": "2026-02-09T05:49:52.179Z",
+      "updatedAt": "2026-02-14T05:58:15.879Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [],
+      "tags": [
+        "ショコラ",
+        "閲覧数チェック"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "1578ab2f-5b8f-4ca1-8533-7a9aff477371",
           "key": "1d22b839-1139-41cf-8f79-de9fb36e78f2",
-          "name": "",
+          "name": "高評価がピーク時よりも多いとき",
           "createdAt": "2026-02-05T01:23:18.358Z",
           "updatedAt": "2026-02-05T01:23:18.358Z",
           "order": 0,
@@ -1006,6 +1009,64 @@
         "viewer": {
           "comparison": "changed",
           "value": 0
+        }
+      }
+    },
+    "ViewerPeekChocolate": {
+      "id": "3a102676-3442-4994-8cdd-e0b48122c3d0",
+      "key": "ViewerPeekChocolate",
+      "name": "視聴数の増加",
+      "description": "視聴数がピーク時よりも多いとき、反応します",
+      "createdAt": "2026-02-14T05:55:06.303Z",
+      "updatedAt": "2026-02-14T06:00:56.780Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [
+        "ショコラ",
+        "閲覧数チェック"
+      ],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "2173ccc8-199e-44d4-982f-1fa0e65af2e0",
+          "key": "2d23214d-4e5d-4da7-bbf2-76d03ff4a65f",
+          "name": "視聴数がピーク時よりも多いとき",
+          "createdAt": "2026-02-14T05:02:52.611Z",
+          "updatedAt": "2026-02-14T05:02:52.611Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "blushing",
+              "sound": "cute",
+              "message": {
+                "bubble": "<<\n  '賑やかになったわね～♡',\n  'あら、今日はいつもより人が多いわね♪',\n  'わっ、急に増えた…！嬉しいわ～',\n  'みんな来てくれてありがとう♡',\n  'なんだかお祭りみたいになってきたわね',\n  '盛り上がってきたじゃない…ふふっ',\n  '視聴数、更新しちゃったみたい♡',\n  '今日の配信、いい感じね～',\n  'わ、視聴数更新！みんなのおかげよ♡'\n>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": null
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "metas",
+      "trigger": {
+        "condition": "viewer",
+        "viewer": {
+          "comparison": "greaterThanPeak"
         }
       }
     }
@@ -1621,7 +1682,7 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2026-01-12T12:06:52.120Z",
+      "updatedAt": "2026-02-14T06:22:32.853Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -1683,10 +1744,10 @@
         ]
       },
       "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
+        "isTheme": true,
+        "daisyUiTheme": "valentine",
+        "backFrom": "error",
+        "backTo": "error",
         "nameColor": "#eed84f",
         "textColor": "#FFEBEE",
         "backgroundColor": "#D32F2F",
@@ -1725,7 +1786,6 @@
     },
     "settings": {
       "bubble": {
-        "slotType": "primary",
         "showCharacters": {
           "center": [],
           "slot1": [
@@ -1741,13 +1801,11 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "slotType": "secondary",
         "showToastsOnRight": true,
         "showToastsCharacter": false,
         "showThumbnail": []
       },
       "ranking": {
-        "slotType": "extra",
         "targetScriptKeys": [
           "basicList"
         ],
@@ -1758,9 +1816,8 @@
         "component": "rankStandard"
       },
       "counter": {
-        "slotType": "extra",
-        "ruleKey": null,
         "component": "counterUser",
+        "ruleKey": "",
         "target": "draw",
         "label": "Counter",
         "color": {
@@ -1776,7 +1833,7 @@
         "cols": 6,
         "circleSeats": 12,
         "customLayout": "[1,2,3,4,5]",
-        "title": "🛫 8時間フライト、どの席に座る？",
+        "label": "🛫 8時間フライト、どの席に座る？",
         "color": "lofi",
         "allowReseating": false,
         "historyLimit": 10

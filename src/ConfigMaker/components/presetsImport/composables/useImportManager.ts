@@ -1,10 +1,9 @@
 // src\ConfigMaker\components\presetsImport\composables\useImportManager.ts
 import { ref, computed } from 'vue'
-import { RecordCategoryType } from '@/types/OmikujiData/'
-import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { CategoryImportConfig, ComponentImportConfig, ConflictInfo, ImportPreview } from '../ImportTypes'
+import { ComponentKind } from '@/types/'
+import { RecordCategoryType, OmikujiDataType } from '@/types/OmikujiData/'
+import { CategoryImportConfig, ComponentImportConfig, ImportPreview } from '../ImportTypes'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { ComponentKind } from '@/types/OmikujiData/ComponentsSchema'
 import { normalizeData } from '@/common/migrations'
 import { generateCategoryPreview, generateComponentPreview } from './importHelpers'
 

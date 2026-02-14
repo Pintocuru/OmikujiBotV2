@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.06-2.1.0-alpha2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha7",
-    "dataVersion": 2.09007,
+    "generatorVersion": "2.1.0-beta1",
+    "dataVersion": 2.091,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -148,8 +148,8 @@
       "name": "初見詐欺:Chocolate",
       "description": "「初見」の演出は、いつ見ても楽しいものね♡",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-02-11T05:41:30.030Z",
-      "order": 1,
+      "updatedAt": "2026-01-13T05:03:00.368Z",
+      "order": 15,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -320,8 +320,8 @@
       "name": "コメント数表示:Chocolate",
       "description": "ちゃんとあなたのコメント、数えてるのよ♪",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-02-11T05:41:30.031Z",
-      "order": 2,
+      "updatedAt": "2026-01-12T12:21:40.811Z",
+      "order": 16,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -391,7 +391,7 @@
       "name": "ギフト:Chocolate",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-11T05:41:30.036Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 17,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -466,7 +466,7 @@
       "name": "初見判定ちゃん:Chocolate",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-02-11T05:41:30.037Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -644,7 +644,7 @@
       "name": "コメントチェック:Chocolate",
       "description": "配信でのコメントを数えて、キリのいい数字だったらトースト表示でお知らせ",
       "createdAt": "2025-08-16T09:51:49.474Z",
-      "updatedAt": "2026-02-11T05:41:30.037Z",
+      "updatedAt": "2026-01-12T12:21:40.811Z",
       "order": 19,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -771,7 +771,7 @@
       "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
       "updatedAt": "2026-02-11T05:41:30.031Z",
-      "order": 3,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -1178,7 +1178,7 @@
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
       "updatedAt": "2026-02-11T05:41:30.032Z",
-      "order": 4,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -1263,7 +1263,7 @@
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
       "updatedAt": "2026-02-11T05:41:30.032Z",
-      "order": 5,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -1373,7 +1373,7 @@
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
       "updatedAt": "2026-02-11T05:41:30.032Z",
-      "order": 6,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -1483,7 +1483,7 @@
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
       "updatedAt": "2026-02-11T05:41:30.033Z",
-      "order": 7,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -1594,7 +1594,7 @@
       "description": "メダルスロットをモチーフにしたおみくじ。目指せ、出玉大爆発!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.034Z",
-      "order": 8,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -1906,7 +1906,7 @@
       "description": "3匹のうさぎがお宝ザクザク！最大枚数5000枚!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.034Z",
-      "order": 9,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -2105,7 +2105,7 @@
       "description": "吹雪け、大量のコイン！最大枚数10000枚!",
       "createdAt": "2025-12-03T12:39:37.764Z",
       "updatedAt": "2026-02-11T05:41:30.034Z",
-      "order": 10,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [
@@ -2306,7 +2306,7 @@
       "description": "ここは練習ではありません。全身全霊で俺と向き合ってください。",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.035Z",
-      "order": 11,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -2513,7 +2513,7 @@
       "description": "いい勝負でしたね!でも結果が伴わないと、全く意味がありません。",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.035Z",
-      "order": 12,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -2635,7 +2635,7 @@
       "description": "あなたの考えてる事ぐらい、俺にはお見通しです。",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.035Z",
-      "order": 13,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -2756,7 +2756,7 @@
       "description": "それで勝てると思ってるんやったら、俺がずっと勝ちますよ!",
       "createdAt": "2025-08-11T15:34:29.297Z",
       "updatedAt": "2026-02-11T05:41:30.036Z",
-      "order": 14,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -2878,7 +2878,7 @@
       "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター!!!!!!!!",
       "createdAt": "2025-09-13T09:36:31.634Z",
       "updatedAt": "2026-02-11T05:41:30.036Z",
-      "order": 15,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -2959,7 +2959,7 @@
       "description": "16種の個性豊かなペンギンたちの相性占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
       "updatedAt": "2026-02-11T05:41:30.036Z",
-      "order": 16,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -3274,22 +3274,26 @@
     }
   },
   "metas": {
-    "0cf758a2-0143-458f-8080-8bf45b65249a": {
+    "UpVotePeek": {
       "id": "1294df69-4454-4878-8535-dabdb9baf495",
-      "key": "0cf758a2-0143-458f-8080-8bf45b65249a",
-      "name": "高評価へのお礼",
-      "description": "ピーク時よりも増加したとき、お礼します",
+      "key": "UpVotePeek",
+      "name": "高評価の増加",
+      "description": "高評価がピーク時よりも多いとき、反応します",
       "createdAt": "2026-02-05T01:34:04.746Z",
-      "updatedAt": "2026-02-05T02:04:33.005Z",
+      "updatedAt": "2026-02-14T05:58:15.879Z",
       "order": 1,
       "isEnabled": true,
-      "tags": [],
+      "editorColor": "#4CAF50",
+      "tags": [
+        "ショコラ",
+        "閲覧数チェック"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
           "id": "1578ab2f-5b8f-4ca1-8533-7a9aff477371",
           "key": "1d22b839-1139-41cf-8f79-de9fb36e78f2",
-          "name": "",
+          "name": "高評価がピーク時よりも多いとき",
           "createdAt": "2026-02-05T01:23:18.358Z",
           "updatedAt": "2026-02-05T01:23:18.358Z",
           "order": 0,
@@ -3302,7 +3306,7 @@
               "actionType": "message",
               "characterKey": "chocolate",
               "iconKey": "blushing",
-              "sound": "",
+              "sound": "jingle",
               "message": {
                 "bubble": "高評価ありがとう♡<<\n'お姉さん、嬉しいわ。',\n'ふふっ、ありがとね。',\n'<<upVote>>個にもなったわ。',\n'ほら、<<upVote>> 個まで増えてるわ。',\n'配信も一段と盛り上がるわね。'\n>>",
                 "isToast": false
@@ -3331,6 +3335,64 @@
           "value": 0
         }
       }
+    },
+    "ViewerPeek": {
+      "id": "3a102676-3442-4994-8cdd-e0b48122c3d0",
+      "key": "ViewerPeek",
+      "name": "視聴数の増加",
+      "description": "視聴数がピーク時よりも多いとき、反応します",
+      "createdAt": "2026-02-14T05:55:06.303Z",
+      "updatedAt": "2026-02-14T06:00:56.780Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [
+        "ショコラ",
+        "閲覧数チェック"
+      ],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "2173ccc8-199e-44d4-982f-1fa0e65af2e0",
+          "key": "2d23214d-4e5d-4da7-bbf2-76d03ff4a65f",
+          "name": "視聴数がピーク時よりも多いとき",
+          "createdAt": "2026-02-14T05:02:52.611Z",
+          "updatedAt": "2026-02-14T05:02:52.611Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "blushing",
+              "sound": "cute",
+              "message": {
+                "bubble": "<<\n  '賑やかになったわね～♡',\n  'あら、今日はいつもより人が多いわね♪',\n  'わっ、急に増えた…！嬉しいわ～',\n  'みんな来てくれてありがとう♡',\n  'なんだかお祭りみたいになってきたわね',\n  '盛り上がってきたじゃない…ふふっ',\n  '視聴数、更新しちゃったみたい♡',\n  '今日の配信、いい感じね～',\n  'わ、視聴数更新！みんなのおかげよ♡'\n>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": null
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "metas",
+      "trigger": {
+        "condition": "viewer",
+        "viewer": {
+          "comparison": "greaterThanPeak"
+        }
+      }
     }
   },
   "actionSets": {
@@ -3340,8 +3402,8 @@
       "name": "初見詐欺(thinking):Chocolate",
       "description": "あらあら、また初見なの？",
       "createdAt": "2026-01-04T15:10:39.046Z",
-      "updatedAt": "2026-02-06T02:56:23.142Z",
-      "order": 1,
+      "updatedAt": "2026-01-12T12:28:23.001Z",
+      "order": 32,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -3377,8 +3439,8 @@
       "name": "初見詐欺(surprised):Chocolate",
       "description": "本当に忘れちゃったのかと思ったわ",
       "createdAt": "2026-01-04T15:11:21.152Z",
-      "updatedAt": "2026-02-06T02:56:23.143Z",
-      "order": 2,
+      "updatedAt": "2026-01-12T12:28:40.515Z",
+      "order": 33,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -3413,8 +3475,8 @@
       "name": "初見詐欺(sad):Chocolate",
       "description": "ほんとは常連さんでしょ？",
       "createdAt": "2026-01-04T15:12:16.508Z",
-      "updatedAt": "2026-02-06T02:56:23.143Z",
-      "order": 3,
+      "updatedAt": "2026-01-12T12:29:06.880Z",
+      "order": 34,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -3449,8 +3511,8 @@
       "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
       "description": "もう、びっくりさせないでよ～",
       "createdAt": "2026-01-04T15:12:40.050Z",
-      "updatedAt": "2026-02-06T02:56:23.143Z",
-      "order": 4,
+      "updatedAt": "2026-01-12T12:29:27.296Z",
+      "order": 35,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -3496,8 +3558,8 @@
       "name": "ギフト(wink):Chocolate",
       "description": "あなたの優しさに癒されます♡",
       "createdAt": "2026-01-04T15:25:48.473Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 5,
+      "updatedAt": "2026-01-12T12:29:46.561Z",
+      "order": 36,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [
@@ -3532,8 +3594,8 @@
       "name": "初見:Chocolate",
       "description": "お姉さんが歓迎しちゃうね♡",
       "createdAt": "2026-01-04T15:13:49.815Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 6,
+      "updatedAt": "2026-01-12T12:30:04.934Z",
+      "order": 37,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -3573,8 +3635,8 @@
       "name": "久しぶり:Chocolate",
       "description": "また来てくれてありがとう♡",
       "createdAt": "2026-01-04T15:22:49.384Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 7,
+      "updatedAt": "2026-01-12T12:30:17.380Z",
+      "order": 38,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -3609,8 +3671,8 @@
       "name": "こんにちは:Chocolate",
       "description": "お姉さんの楽しみになってるわ。",
       "createdAt": "2026-01-04T15:23:21.946Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 8,
+      "updatedAt": "2026-01-12T12:30:31.100Z",
+      "order": 39,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -3645,8 +3707,8 @@
       "name": "配信枠コメント50回:Chocolate",
       "description": "ちょうどいいキリ番ね～",
       "createdAt": "2026-01-04T15:29:03.495Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 9,
+      "updatedAt": "2026-01-12T12:31:00.086Z",
+      "order": 40,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -3681,8 +3743,8 @@
       "name": "個人コメント100回:Chocolate",
       "description": "100回って、すごい数よね！",
       "createdAt": "2026-01-04T15:29:37.897Z",
-      "updatedAt": "2026-02-06T02:56:23.144Z",
-      "order": 10,
+      "updatedAt": "2026-01-12T12:31:15.183Z",
+      "order": 41,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -4711,7 +4773,7 @@
       "description": "あら、初見だったかしら？",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:24:52.589Z",
-      "order": 1,
+      "order": 96,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -4734,7 +4796,7 @@
       "description": "あたしとあんなに仲よかったじゃない～",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:25:03.159Z",
-      "order": 2,
+      "order": 97,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -4757,7 +4819,7 @@
       "description": "記憶喪失かしら？あたしのハグで治る？",
       "createdAt": "2025-08-16T09:51:49.475Z",
       "updatedAt": "2026-01-12T12:25:23.375Z",
-      "order": 3,
+      "order": 98,
       "isEnabled": true,
       "editorColor": "#3F51B5",
       "tags": [
@@ -4780,7 +4842,7 @@
       "description": "大切に受け取らせてもらうわね♡",
       "createdAt": "2025-08-27T09:48:36.227Z",
       "updatedAt": "2026-01-12T12:25:36.445Z",
-      "order": 4,
+      "order": 99,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [
@@ -4803,7 +4865,7 @@
       "description": "仲良くしてくれると嬉しいな♡",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2026-01-12T12:25:44.007Z",
-      "order": 5,
+      "order": 100,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -4826,7 +4888,7 @@
       "description": " 来てくれて嬉しいわ、元気にしてた？",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2026-01-12T12:26:12.280Z",
-      "order": 6,
+      "order": 101,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -4849,7 +4911,7 @@
       "description": "今日も来てくれてるのね。常連さんね～",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2026-01-12T12:26:21.753Z",
-      "order": 7,
+      "order": 102,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -4872,7 +4934,7 @@
       "description": "チャンネル登録は、気軽に押してね♡",
       "createdAt": "2025-08-26T07:00:06.947Z",
       "updatedAt": "2026-01-12T12:26:35.583Z",
-      "order": 8,
+      "order": 103,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -4893,31 +4955,33 @@
       "id": "HondaJankenName",
       "key": "HondaJankenName",
       "name": "じゃんけん:名前",
-      "description": "一日一回勝負。じゃあ、また明日",
+      "description": "あたしの名前はストロベリー♪",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-02-06T02:48:32.468Z",
-      "order": 64,
+      "updatedAt": "2026-01-12T12:27:31.301Z",
+      "order": 104,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
+        "ショコラ",
         "じゃんけん"
       ],
       "accessLevel": "basic",
       "values": [
-        "ショゴス"
+        "ショコラ"
       ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
       "key": "HondaJankenOre",
       "name": "じゃんけん:名前(一人称)",
-      "description": "俺の勝ち！",
+      "description": "あたし！",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-02-06T02:48:17.434Z",
-      "order": 65,
+      "updatedAt": "2026-01-12T12:27:42.715Z",
+      "order": 105,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
+        "ショコラ",
         "じゃんけん"
       ],
       "accessLevel": "basic",
@@ -4931,7 +4995,7 @@
       "name": "巫女さんのおみくじ:大吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:49:50.021Z",
-      "order": 11,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -4968,7 +5032,7 @@
       "name": "巫女さんのおみくじ:吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:52:10.391Z",
-      "order": 12,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5005,7 +5069,7 @@
       "name": "巫女さんのおみくじ:中吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:52:48.970Z",
-      "order": 13,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5042,7 +5106,7 @@
       "name": "巫女さんのおみくじ:小吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:53:34.489Z",
-      "order": 14,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5079,7 +5143,7 @@
       "name": "巫女さんのおみくじ:末吉",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:54:11.676Z",
-      "order": 15,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5116,7 +5180,7 @@
       "name": "巫女さんのおみくじ:凶",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T01:54:56.540Z",
-      "order": 16,
+      "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5153,7 +5217,7 @@
       "name": "巫女さんのおみくじ:大凶",
       "createdAt": "2026-01-17T05:37:05.955Z",
       "updatedAt": "2026-01-26T01:55:51.960Z",
-      "order": 17,
+      "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5190,7 +5254,7 @@
       "name": "巫女さんのおみくじ:残念賞",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-26T02:01:36.609Z",
-      "order": 18,
+      "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -5227,7 +5291,7 @@
       "name": "タロット:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
       "updatedAt": "2026-01-13T05:42:29.344Z",
-      "order": 19,
+      "order": 9,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5288,7 +5352,7 @@
       "name": "【愚者】(正位置)",
       "createdAt": "2025-09-13T22:16:22.894Z",
       "updatedAt": "2026-01-13T05:43:06.729Z",
-      "order": 20,
+      "order": 10,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5310,7 +5374,7 @@
       "name": "【愚者】(逆位置)",
       "createdAt": "2025-09-13T22:24:43.051Z",
       "updatedAt": "2025-09-14T12:18:33.421Z",
-      "order": 21,
+      "order": 11,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5332,7 +5396,7 @@
       "name": "【魔術師】(正位置)",
       "createdAt": "2025-09-13T22:25:10.590Z",
       "updatedAt": "2026-01-13T05:43:10.637Z",
-      "order": 22,
+      "order": 12,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5354,7 +5418,7 @@
       "name": "【魔術師】(逆位置)",
       "createdAt": "2025-09-13T22:28:18.260Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 23,
+      "order": 13,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5376,7 +5440,7 @@
       "name": "【女教皇】(正位置)",
       "createdAt": "2025-09-13T22:28:54.093Z",
       "updatedAt": "2026-01-13T05:43:14.297Z",
-      "order": 24,
+      "order": 14,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5398,7 +5462,7 @@
       "name": "【女教皇】(逆位置) ",
       "createdAt": "2025-09-13T22:29:26.905Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 25,
+      "order": 15,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5420,7 +5484,7 @@
       "name": "【女帝】(正位置) ",
       "createdAt": "2025-09-13T22:29:59.161Z",
       "updatedAt": "2026-01-13T05:43:17.134Z",
-      "order": 26,
+      "order": 16,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5442,7 +5506,7 @@
       "name": "【女帝】(逆位置) ",
       "createdAt": "2025-09-13T22:30:31.785Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 27,
+      "order": 17,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5464,7 +5528,7 @@
       "name": "【皇帝】(正位置) ",
       "createdAt": "2025-09-13T22:31:02.984Z",
       "updatedAt": "2026-01-13T05:43:20.664Z",
-      "order": 28,
+      "order": 18,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5486,7 +5550,7 @@
       "name": "【皇帝】(逆位置)",
       "createdAt": "2025-09-13T22:31:30.126Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 29,
+      "order": 19,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5508,7 +5572,7 @@
       "name": "【法王】(正位置)",
       "createdAt": "2025-09-13T22:32:48.041Z",
       "updatedAt": "2026-01-13T05:43:23.942Z",
-      "order": 30,
+      "order": 20,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5530,7 +5594,7 @@
       "name": "【法王】(逆位置)",
       "createdAt": "2025-09-13T22:34:16.344Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 31,
+      "order": 21,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5552,7 +5616,7 @@
       "name": "【恋人】(正位置)",
       "createdAt": "2025-09-13T22:34:50.903Z",
       "updatedAt": "2026-01-13T05:43:26.450Z",
-      "order": 32,
+      "order": 22,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5574,7 +5638,7 @@
       "name": "【恋人】(逆位置) ",
       "createdAt": "2025-09-13T22:35:22.822Z",
       "updatedAt": "2025-09-14T12:18:33.418Z",
-      "order": 33,
+      "order": 23,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5596,7 +5660,7 @@
       "name": "【戦車】(正位置)",
       "createdAt": "2025-09-13T22:36:04.753Z",
       "updatedAt": "2026-01-13T05:43:29.264Z",
-      "order": 34,
+      "order": 24,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5618,7 +5682,7 @@
       "name": "【戦車】(逆位置)",
       "createdAt": "2025-09-13T22:36:37.887Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 35,
+      "order": 25,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5640,7 +5704,7 @@
       "name": "【力】(正位置) ",
       "createdAt": "2025-09-13T22:37:06.904Z",
       "updatedAt": "2026-01-13T05:43:36.837Z",
-      "order": 36,
+      "order": 26,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5662,7 +5726,7 @@
       "name": "【力】(逆位置)",
       "createdAt": "2025-09-13T22:37:42.040Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 37,
+      "order": 27,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5684,7 +5748,7 @@
       "name": "【隠者】(正位置)",
       "createdAt": "2025-09-13T22:38:15.662Z",
       "updatedAt": "2026-01-13T05:43:39.667Z",
-      "order": 38,
+      "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5706,7 +5770,7 @@
       "name": "【隠者】(逆位置)",
       "createdAt": "2025-09-13T22:38:47.948Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 39,
+      "order": 29,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5728,7 +5792,7 @@
       "name": "【運命の輪】(正位置)",
       "createdAt": "2025-09-13T22:39:41.511Z",
       "updatedAt": "2026-01-13T05:43:42.636Z",
-      "order": 40,
+      "order": 30,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5750,7 +5814,7 @@
       "name": "【運命の輪】(逆位置) ",
       "createdAt": "2025-09-13T22:40:17.525Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 41,
+      "order": 31,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5772,7 +5836,7 @@
       "name": "【正義】(正位置)",
       "createdAt": "2025-09-13T22:40:53.592Z",
       "updatedAt": "2026-01-13T05:43:45.794Z",
-      "order": 42,
+      "order": 32,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5794,7 +5858,7 @@
       "name": "【正義】(逆位置)",
       "createdAt": "2025-09-13T22:41:28.894Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 43,
+      "order": 33,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5816,7 +5880,7 @@
       "name": "【吊るされた男】(正位置)",
       "createdAt": "2025-09-13T22:42:18.909Z",
       "updatedAt": "2026-01-13T05:43:48.933Z",
-      "order": 44,
+      "order": 34,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5838,7 +5902,7 @@
       "name": "【吊るされた男】(逆位置)",
       "createdAt": "2025-09-13T22:42:52.913Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 45,
+      "order": 35,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5860,7 +5924,7 @@
       "name": "【死神】(正位置)",
       "createdAt": "2025-09-13T22:43:24.157Z",
       "updatedAt": "2026-01-13T05:43:53.684Z",
-      "order": 46,
+      "order": 36,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5882,7 +5946,7 @@
       "name": "【死神】(逆位置)",
       "createdAt": "2025-09-13T22:43:57.186Z",
       "updatedAt": "2025-09-14T12:18:33.419Z",
-      "order": 47,
+      "order": 37,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5904,7 +5968,7 @@
       "name": "【節制】(正位置)",
       "createdAt": "2025-09-13T22:44:45.664Z",
       "updatedAt": "2026-01-13T05:43:56.756Z",
-      "order": 48,
+      "order": 38,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5926,7 +5990,7 @@
       "name": "【節制】(逆位置)",
       "createdAt": "2025-09-13T22:45:39.048Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 49,
+      "order": 39,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5948,7 +6012,7 @@
       "name": "【悪魔】(正位置)",
       "createdAt": "2025-09-13T22:46:08.800Z",
       "updatedAt": "2026-01-13T05:44:00.279Z",
-      "order": 50,
+      "order": 40,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5970,7 +6034,7 @@
       "name": "【悪魔】(逆位置)",
       "createdAt": "2025-09-13T22:46:34.891Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 51,
+      "order": 41,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -5992,7 +6056,7 @@
       "name": "【塔】(正位置)",
       "createdAt": "2025-09-13T22:47:31.680Z",
       "updatedAt": "2026-01-13T05:44:03.331Z",
-      "order": 52,
+      "order": 42,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6014,7 +6078,7 @@
       "name": "【塔】(逆位置)",
       "createdAt": "2025-09-13T22:48:02.811Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 53,
+      "order": 43,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6036,7 +6100,7 @@
       "name": "【星】(正位置)",
       "createdAt": "2025-09-13T22:49:06.492Z",
       "updatedAt": "2026-01-13T05:44:06.630Z",
-      "order": 54,
+      "order": 44,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6058,7 +6122,7 @@
       "name": "【星】(逆位置)",
       "createdAt": "2025-09-13T22:49:30.889Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 55,
+      "order": 45,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6080,7 +6144,7 @@
       "name": "【月】(正位置) ",
       "createdAt": "2025-09-13T22:49:54.792Z",
       "updatedAt": "2026-01-13T05:44:09.288Z",
-      "order": 56,
+      "order": 46,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6102,7 +6166,7 @@
       "name": "【月】(逆位置)",
       "createdAt": "2025-09-13T22:50:19.652Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 57,
+      "order": 47,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6124,7 +6188,7 @@
       "name": "【太陽】(正位置)",
       "createdAt": "2025-09-13T22:50:44.266Z",
       "updatedAt": "2026-01-13T05:44:12.298Z",
-      "order": 58,
+      "order": 48,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6146,7 +6210,7 @@
       "name": "【太陽】(逆位置)",
       "createdAt": "2025-09-13T22:51:11.175Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 59,
+      "order": 49,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6168,7 +6232,7 @@
       "name": "【審判】(正位置)",
       "createdAt": "2025-09-13T22:51:42.360Z",
       "updatedAt": "2026-01-13T05:44:15.087Z",
-      "order": 60,
+      "order": 50,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6190,7 +6254,7 @@
       "name": "【審判】(逆位置)",
       "createdAt": "2025-09-13T22:52:15.809Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 61,
+      "order": 51,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6212,7 +6276,7 @@
       "name": "【世界】(正位置)",
       "createdAt": "2025-09-13T22:52:41.548Z",
       "updatedAt": "2026-01-13T05:44:17.967Z",
-      "order": 62,
+      "order": 52,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6234,7 +6298,7 @@
       "name": "【世界】(逆位置)",
       "createdAt": "2025-09-13T22:53:06.146Z",
       "updatedAt": "2025-09-14T12:18:33.420Z",
-      "order": 63,
+      "order": 53,
       "isEnabled": true,
       "editorColor": "#9C27B0",
       "tags": [
@@ -6257,7 +6321,7 @@
       "description": "じゃんけんの向こう側に何があるか、考えてみてください。",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:20:56.599Z",
-      "order": 66,
+      "order": 54,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6278,7 +6342,7 @@
       "description": "あきらめへん人だけに見える景色があるはずです。",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:21:07.045Z",
-      "order": 67,
+      "order": 55,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6298,7 +6362,7 @@
       "description": "たかがじゃんけん、そう思ってないですか？",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:22:28.164Z",
-      "order": 68,
+      "order": 56,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6319,7 +6383,7 @@
       "description": "その程度の、気持ちで勝てるとでも思ったんですか?",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:22:54.514Z",
-      "order": 69,
+      "order": 57,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6339,7 +6403,7 @@
       "description": "運が大事な時こそ集中力が物を言いますよ!",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:23:58.781Z",
-      "order": 70,
+      "order": 58,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6360,7 +6424,7 @@
       "description": "複雑に考えてないですか?答えはシンプルです。",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:24:30.500Z",
-      "order": 71,
+      "order": 59,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6380,7 +6444,7 @@
       "description": "勝てば、ペプシ ジャパンコーラ 1本もらえる!",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-13T05:20:19.104Z",
-      "order": 72,
+      "order": 60,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -6401,7 +6465,7 @@
       "description": "吉に付ける装飾語です",
       "createdAt": "2025-09-18T06:23:15.889Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 73,
+      "order": 61,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6500,7 +6564,7 @@
       "description": "凶に付ける装飾語です",
       "createdAt": "2025-09-18T06:12:32.542Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 74,
+      "order": 62,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6597,7 +6661,7 @@
       "name": "超おみくじ:抽選結果",
       "createdAt": "2025-09-18T06:38:25.113Z",
       "updatedAt": "2026-01-13T06:27:28.907Z",
-      "order": 75,
+      "order": 63,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6670,7 +6734,7 @@
       "name": "超おみくじ:凶x4",
       "createdAt": "2025-09-18T06:25:41.070Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 76,
+      "order": 64,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6703,7 +6767,7 @@
       "name": "超おみくじ:凶x3",
       "createdAt": "2025-09-18T06:26:35.570Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 77,
+      "order": 65,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6736,7 +6800,7 @@
       "name": "超おみくじ:凶x2",
       "createdAt": "2025-09-18T06:27:06.116Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 78,
+      "order": 66,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6769,7 +6833,7 @@
       "name": "超おみくじ:凶x1",
       "createdAt": "2025-09-18T06:27:32.561Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 79,
+      "order": 67,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6806,7 +6870,7 @@
       "name": "超おみくじ:大吉-大凶",
       "createdAt": "2025-09-18T06:28:34.367Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 80,
+      "order": 68,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6831,7 +6895,7 @@
       "name": "超おみくじ:吉x1",
       "createdAt": "2025-09-18T06:30:32.932Z",
       "updatedAt": "2026-01-13T06:20:18.750Z",
-      "order": 81,
+      "order": 69,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6868,7 +6932,7 @@
       "name": "超おみくじ:吉x2",
       "createdAt": "2025-09-18T06:30:57.869Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 82,
+      "order": 70,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6905,7 +6969,7 @@
       "name": "超おみくじ:吉x3",
       "createdAt": "2025-09-18T06:31:33.831Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 83,
+      "order": 71,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6946,7 +7010,7 @@
       "name": "超おみくじ:吉x4",
       "createdAt": "2025-09-18T06:32:46.031Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 84,
+      "order": 72,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -6999,7 +7063,7 @@
       "name": "超おみくじ:吉x5",
       "createdAt": "2025-09-18T06:33:16.278Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 85,
+      "order": 73,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -7064,7 +7128,7 @@
       "name": "超おみくじ:吉x6",
       "createdAt": "2025-09-18T06:33:48.527Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 86,
+      "order": 74,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -7129,7 +7193,7 @@
       "name": "超おみくじ:吉x7",
       "createdAt": "2025-09-18T06:34:28.321Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 87,
+      "order": 75,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -7194,7 +7258,7 @@
       "name": "超おみくじ:吉x8",
       "createdAt": "2025-09-18T06:34:56.085Z",
       "updatedAt": "2026-01-13T06:20:18.751Z",
-      "order": 88,
+      "order": 76,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -7259,7 +7323,7 @@
       "name": "超おみくじ:吉x9",
       "createdAt": "2026-01-13T06:20:10.251Z",
       "updatedAt": "2026-01-13T06:27:45.688Z",
-      "order": 89,
+      "order": 77,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
       "tags": [
@@ -7284,7 +7348,7 @@
       "name": "ペンギン:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
       "updatedAt": "2026-02-07T02:15:32.035Z",
-      "order": 90,
+      "order": 78,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7317,7 +7381,7 @@
       "description": "",
       "createdAt": "2025-09-13T22:32:48.041Z",
       "updatedAt": "2026-02-07T01:52:04.445Z",
-      "order": 91,
+      "order": 79,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7350,7 +7414,7 @@
       "description": "アデリーペンギン （好奇心旺盛）",
       "createdAt": "2025-09-13T22:16:22.894Z",
       "updatedAt": "2026-02-07T01:52:04.445Z",
-      "order": 92,
+      "order": 80,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7375,7 +7439,7 @@
       "description": "コウテイペンギン （忍耐・責任感）",
       "createdAt": "2025-09-13T22:24:43.051Z",
       "updatedAt": "2026-02-07T01:52:04.445Z",
-      "order": 93,
+      "order": 81,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7400,7 +7464,7 @@
       "description": "オウサマペンギン（統率・安定）",
       "createdAt": "2025-09-13T22:25:10.590Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 94,
+      "order": 82,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7425,7 +7489,7 @@
       "description": "ジェンツーペンギン（最速・効率）",
       "createdAt": "2025-09-13T22:28:18.260Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 95,
+      "order": 83,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7450,7 +7514,7 @@
       "description": "ヒゲペンギン （戦略・連携）",
       "createdAt": "2025-09-13T22:28:54.093Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 96,
+      "order": 84,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7475,7 +7539,7 @@
       "description": "マカロニペンギン（自己表現・華やか）",
       "createdAt": "2025-09-13T22:29:26.905Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 97,
+      "order": 85,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7500,7 +7564,7 @@
       "description": "イワトビペンギン （不屈・挑戦）",
       "createdAt": "2025-09-13T22:29:59.161Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 98,
+      "order": 86,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7525,7 +7589,7 @@
       "description": "コガタペンギン （繊細・癒やし）",
       "createdAt": "2025-09-13T22:30:31.785Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 99,
+      "order": 87,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7550,7 +7614,7 @@
       "description": "キンメペンギン （慎重・計画）",
       "createdAt": "2025-09-13T22:31:02.984Z",
       "updatedAt": "2026-02-07T01:52:04.446Z",
-      "order": 100,
+      "order": 88,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7575,7 +7639,7 @@
       "description": "フンボルトペンギン （適応・現実）",
       "createdAt": "2025-09-13T22:31:30.126Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 101,
+      "order": 89,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7600,7 +7664,7 @@
       "description": "ガラパゴスペンギン （自由・独自）",
       "createdAt": "2025-09-13T22:32:48.041Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 102,
+      "order": 90,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7625,7 +7689,7 @@
       "description": "マゼランペンギン （誠実・一途）",
       "createdAt": "2025-09-13T22:34:16.344Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 103,
+      "order": 91,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7650,7 +7714,7 @@
       "description": "シュレーターペンギン （情熱・リーダー）",
       "createdAt": "2025-09-13T22:34:50.903Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 104,
+      "order": 92,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7675,7 +7739,7 @@
       "description": "ケープペンギン （社交・お喋り）",
       "createdAt": "2025-09-13T22:35:22.822Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 105,
+      "order": 93,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7700,7 +7764,7 @@
       "description": "ロイヤルペンギン （美意識・理想）",
       "createdAt": "2025-09-13T22:36:04.753Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 106,
+      "order": 94,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7725,7 +7789,7 @@
       "description": "キマユペンギン （ミステリアス・癒やし）",
       "createdAt": "2025-09-13T22:36:37.887Z",
       "updatedAt": "2026-02-07T01:52:04.447Z",
-      "order": 107,
+      "order": 95,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [
@@ -7751,8 +7815,8 @@
       "name": "ストロベリーショコラ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2026-01-12T12:06:52.120Z",
-      "order": 1,
+      "updatedAt": "2026-02-14T06:22:32.853Z",
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
       "tags": [
@@ -7813,10 +7877,10 @@
         ]
       },
       "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
+        "isTheme": true,
+        "daisyUiTheme": "valentine",
+        "backFrom": "error",
+        "backTo": "error",
         "nameColor": "#eed84f",
         "textColor": "#FFEBEE",
         "backgroundColor": "#D32F2F",
@@ -7931,8 +7995,7 @@
     "components": [
       "bubble",
       "toast",
-      "ranking",
-      "counter"
+      "ranking"
     ],
     "gameScripts": [
       "MultiplyBonanza",
@@ -7940,7 +8003,8 @@
       "BomberSpin",
       "GouseiSuika",
       "HugEmAll",
-      "GoogolClover"
+      "GoogolClover",
+      "WinnerGroup"
     ],
     "developer": {
       "licenseVisible": "basic",

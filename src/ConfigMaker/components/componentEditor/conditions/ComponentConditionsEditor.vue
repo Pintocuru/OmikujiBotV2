@@ -89,7 +89,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { ComponentSlot, ComponentKind, getKindsForSlot, COMPONENT_DEFINITIONS } from '@/types/'
+  import { ComponentSlot, ComponentKind, getKindsForSlot, COMPONENT_MAP } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -120,7 +120,7 @@
         const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
         return {
           kind,
-          label: COMPONENT_DEFINITIONS[kind].label,
+          label: COMPONENT_MAP[kind].label,
           disabled: isCounterDisabled || isUsedInOther,
           disabledReason: isCounterDisabled ? '（利用不可）' : isUsedInOther ? '（他のスロットで使用中）' : '',
         }

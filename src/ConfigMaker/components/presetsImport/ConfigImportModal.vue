@@ -28,7 +28,7 @@
             <ComponentConfigSection
               v-for="(config, component) in importManager.previewData.value.componentConfigs"
               :key="component"
-              :component="component"
+              :componentKey="component"
               :config="config"
               :import-manager="importManager"
             />

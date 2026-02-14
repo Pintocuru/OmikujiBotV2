@@ -1,7 +1,7 @@
 // src/types/OmikujiData/ComponentsSchema.ts
 import { z } from 'zod'
 import { ComponentsCommonStyleSchema, ComponentsSettingsSchema } from './ComponentsSettingsSchema'
-import { COMPONENT_DEFINITIONS, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
+import { COMPONENT_MAP, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
@@ -12,7 +12,7 @@ export const ComponentsConditionSchema = z
     slot: ComponentSlotSchema,
     kind: ComponentKindSchema,
   })
-  .refine((data) => COMPONENT_DEFINITIONS[data.kind].slot === data.slot, {
+  .refine((data) => COMPONENT_MAP[data.kind].slot === data.slot, {
     message: 'kindとslotの組み合わせが不正です',
   })
 export type ComponentsCondition = z.infer<typeof ComponentsConditionSchema>
