@@ -1,37 +1,7 @@
 // src/types/OmikujiData/ComponentsSchema.ts
 import { z } from 'zod'
 import { ComponentsCommonStyleSchema, ComponentsSettingsSchema } from './ComponentsSettingsSchema'
-
-/**
- * スロット定義
- */
-export const ComponentSlotSchema = z.enum(['primary', 'secondary', 'extra'])
-export type ComponentSlot = z.infer<typeof ComponentSlotSchema>
-
-/**
- * コンポーネント種類の定義
- */
-export const componentKindConfig = {
-  bubble: { slot: 'primary', label: 'フキダシ' },
-  toast: { slot: 'secondary', label: 'トースト' },
-  ranking: { slot: 'extra', label: 'ランキング' },
-  counter: { slot: 'extra', label: 'カウンター' },
-  winnerGroup: { slot: 'extra', label: 'ラッキーメンバーズ' },
-  flightSeat: { slot: 'extra', label: 'フライトシート' },
-} as const satisfies Record<string, { slot: ComponentSlot; label: string }>
-
-export type ComponentKind = keyof typeof componentKindConfig
-
-export const ComponentKindSchema = z.enum(Object.keys(componentKindConfig) as [ComponentKind, ...ComponentKind[]])
-
-/**
- * ComponentSlotで使用可能なComponentKindを取得する
- */
-export function getKindsForSlot(slot: ComponentSlot): ComponentKind[] {
-  return Object.entries(componentKindConfig)
-    .filter(([_, config]) => config.slot === slot)
-    .map(([kind, _]) => kind as ComponentKind)
-}
+import { COMPONENT_DEFINITIONS, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
@@ -42,7 +12,7 @@ export const ComponentsConditionSchema = z
     slot: ComponentSlotSchema,
     kind: ComponentKindSchema,
   })
-  .refine((data) => componentKindConfig[data.kind].slot === data.slot, {
+  .refine((data) => COMPONENT_DEFINITIONS[data.kind].slot === data.slot, {
     message: 'kindとslotの組み合わせが不正です',
   })
 export type ComponentsCondition = z.infer<typeof ComponentsConditionSchema>

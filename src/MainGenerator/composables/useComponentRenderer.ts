@@ -1,7 +1,7 @@
 // src/MainGenerator/composables/useComponentRenderer.ts
 import { computed, ComputedRef } from 'vue'
-import { COMPONENT_MAPPINGS } from '@main/ui/ComponentMapping'
 import { ComponentsConditions } from '@/types'
+import { COMPONENT_DEFINITIONS } from '@/types/ui/ComponentKind'
 
 export function useComponentRenderer(
   conditions: ComputedRef<ComponentsConditions>,
@@ -11,23 +11,17 @@ export function useComponentRenderer(
   const activeComponents = computed(() => {
     return conditions.value
       .map((condition) => {
-        const mapping = COMPONENT_MAPPINGS.find((m) => m.kind === condition.kind)
-        if (!mapping) return null
+        const mapping = COMPONENT_DEFINITIONS[condition.kind]
 
-        if (
-          mapping.shouldRender &&
-          !mapping.shouldRender({
-            isComment: isComment.value,
-            isTimer: isTimer.value,
-          })
-        ) {
-          return null
+        if ('shouldRender' in mapping && mapping.shouldRender) {
+          if (!mapping.shouldRender({ isComment: isComment.value, isTimer: isTimer.value })) {
+            return null
+          }
         }
 
         return {
           slot: condition.slot,
           component: mapping.component,
-          props: mapping.props,
         }
       })
       .filter(Boolean)

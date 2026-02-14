@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.06-2.1.0-alpha2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha5",
-    "dataVersion": 2.09005,
+    "generatorVersion": "2.1.0-alpha7",
+    "dataVersion": 2.09007,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -7859,7 +7859,6 @@
     },
     "settings": {
       "bubble": {
-        "slotType": "primary",
         "showCharacters": {
           "center": [],
           "slot1": [
@@ -7875,13 +7874,11 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "slotType": "secondary",
         "showToastsOnRight": true,
         "showToastsCharacter": true,
         "showThumbnail": []
       },
       "ranking": {
-        "slotType": "extra",
         "targetScriptKeys": [
           "basicList",
           "GouseiSuika",
@@ -7898,9 +7895,8 @@
         "component": "rankStandard"
       },
       "counter": {
-        "slotType": "extra",
-        "ruleKey": "FirstSyokenChocolate",
         "component": "counterUser",
+        "ruleKey": "FirstSyokenChocolate",
         "target": "user",
         "label": "🆕 本日の初見さん 🎉",
         "color": {
@@ -7916,7 +7912,7 @@
         "cols": 6,
         "circleSeats": 12,
         "customLayout": "[1,2,3,4,5]",
-        "title": "🛫 8時間フライト、どの席に座る？",
+        "label": "🛫 8時間フライト、どの席に座る？",
         "color": "lofi",
         "allowReseating": true,
         "historyLimit": 10

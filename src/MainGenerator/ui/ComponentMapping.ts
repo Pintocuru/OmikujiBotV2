@@ -1,4 +1,5 @@
 // src\MainGenerator\ui\ComponentMapping.ts
+// !使用しない
 import type { Component } from 'vue'
 import { ComponentKind } from '@/types'
 import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'

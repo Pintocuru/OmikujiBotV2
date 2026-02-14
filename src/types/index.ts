@@ -13,3 +13,6 @@ export * from './GameScript/GameScriptTypes'
 export * from './OmikujiData/index'
 
 export * from './OmikujiProcess/DefaultPlaceholders'
+
+// ui
+export * from './ui/ComponentKind'

@@ -159,7 +159,7 @@
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import CustomLayoutEditor from './CustomLayoutEditor.vue'
-  import { layoutStringToArray } from './customLayoutPresets'
+  import { layoutStringToArray } from './CustomLayoutPresets'
   import { themes } from '@shared/styles/DaisyUiTheme'
 
   const omikujiStore = useOmikujiStore()

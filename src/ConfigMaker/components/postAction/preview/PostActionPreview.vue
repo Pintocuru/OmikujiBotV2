@@ -70,7 +70,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { PostActionType } from '@/types/'
+  import { PostActionType, SettingsBubbleSchema, SettingsToastSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
@@ -90,14 +90,15 @@
   const { isCharacter } = useVisibilityAccess()
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.settings.bubble)
-  const toastSettings = computed(() => data.value.components.settings.toast)
+  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
+  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // キャラクター取得
   const character = computed(() => {
     if (!isCharacter.value || props.action.actionType !== 'message') return null
-    return characters.value[props.action.characterKey]
+    const key = props.action.characterKey
+    return key !== null ? characters.value[key] : null
   })
 
   // メッセージ処理

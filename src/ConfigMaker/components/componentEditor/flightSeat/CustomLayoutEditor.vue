@@ -46,7 +46,7 @@
     layoutArrayToString,
     layoutStringToArray,
     getPresetLayout,
-  } from './customLayoutPresets'
+  } from './CustomLayoutPresets'
 
   const props = defineProps<{
     customLayoutString: string

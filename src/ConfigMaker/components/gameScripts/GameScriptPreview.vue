@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { GameScriptsType } from '@/types/'
+  import { GameScriptsType, SettingsBubbleSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
@@ -43,7 +43,7 @@
   const scriptManager = GameScriptManager.getInstance()
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.settings.bubble)
+  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // キャラクター取得
@@ -51,18 +51,18 @@
     if (!props.gameScripts) return false
     if (props.gameScripts.scriptId === '') return false
 
-    // キャラクター機能が有効な場合だけキャラチェック
     if (isCharacter.value) {
-      return !!characters.value[props.gameScripts.characterKey]
+      const key = props.gameScripts.characterKey
+      return key !== null && !!characters.value[key]
     }
 
-    // isCharacter = false の場合はキャラチェック不要
     return true
   })
 
   const character = computed(() => {
     if (props.gameScripts) {
-      return characters.value[props.gameScripts.characterKey]
+      const key = props.gameScripts.characterKey
+      if (key !== null) return characters.value[key]
     }
     return Object.values(characters.value)[0]
   })

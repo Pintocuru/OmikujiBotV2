@@ -106,7 +106,6 @@
 
   const { data, updateOmikujiByIndex } = useOmikujiStore()
   const { getCategoryArray, getItem } = useGetRecordData()
-  const { isGod } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
 
   // Computed Properties

@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { ComponentKind } from '@/types'
+  import { ComponentKind } from '@/types/ui/ComponentKind'
   import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
   import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
   import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
