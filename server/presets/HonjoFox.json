@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha4",
-    "dataVersion": 2.09004,
+    "generatorVersion": "2.1.0-beta1",
+    "dataVersion": 2.091,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -585,7 +585,7 @@
       "name": "村きつね:ぼやき",
       "description": "2分経過でランダムにぼやきます",
       "createdAt": "2025-11-18T07:52:00.564Z",
-      "updatedAt": "2026-02-09T05:48:36.132Z",
+      "updatedAt": "2026-02-14T01:01:56.277Z",
       "order": 1,
       "isEnabled": true,
       "tags": [],
@@ -627,7 +627,8 @@
       ],
       "ruleType": "timers",
       "intervalSeconds": 120,
-      "isBaseZero": true
+      "isBaseZero": true,
+      "editorColor": "#3F51B5"
     },
     "ViewCountDisplay": {
       "id": "ViewCountDisplay",
@@ -720,9 +721,9 @@
     "ce2c165a-4ae8-4f4e-a600-c6ce8ccab154": {
       "id": "d80134db-31b3-4d85-9c03-d38fed7a4fab",
       "key": "ce2c165a-4ae8-4f4e-a600-c6ce8ccab154",
-      "name": "",
+      "name": "高評価の増加",
       "createdAt": "2026-02-09T04:42:22.540Z",
-      "updatedAt": "2026-02-09T05:50:10.591Z",
+      "updatedAt": "2026-02-14T00:59:28.497Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -732,7 +733,7 @@
         {
           "id": "5f460d5a-cbc6-44cd-9220-c5a095988878",
           "key": "d01601aa-d204-47b7-b0d7-65e6615e979f",
-          "name": "",
+          "name": "高評価が過去より多いとき",
           "createdAt": "2026-02-09T04:36:37.660Z",
           "updatedAt": "2026-02-09T04:36:37.664Z",
           "order": 0,
@@ -769,7 +770,67 @@
         "upVote": {
           "comparison": "greaterThanPeak"
         }
-      }
+      },
+      "description": "高評価が過去より多いとき、反応します"
+    },
+    "54e5dfe4-8de5-4356-86f2-e5d9a99217df": {
+      "id": "b258ce52-a85e-49d1-b3b5-618a855d2849",
+      "key": "54e5dfe4-8de5-4356-86f2-e5d9a99217df",
+      "name": "最大視聴数の増加",
+      "createdAt": "2026-02-14T00:58:18.958Z",
+      "updatedAt": "2026-02-14T01:00:38.548Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#4CAF50",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "cb359280-01bb-4ce2-8d99-fc3c63d46a2b",
+          "key": "faad0296-45d1-4bbe-9e4a-628e3aa129da",
+          "name": "視聴数が過去より多いとき",
+          "createdAt": "2026-02-14T00:48:38.764Z",
+          "updatedAt": "2026-02-14T00:48:38.768Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "honjoFox",
+              "iconKey": "happy",
+              "sound": "cute",
+              "message": {
+                "bubble": "一段と賑やかになったのう。",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": null
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "metas",
+      "trigger": {
+        "condition": "viewer",
+        "viewer": {
+          "comparison": "greaterThanPeak"
+        },
+        "upVote": {
+          "comparison": "changed",
+          "value": 0
+        }
+      },
+      "description": "視聴数が過去より多いとき、反応します"
     }
   },
   "actionSets": {},
@@ -1502,7 +1563,6 @@
     },
     "settings": {
       "bubble": {
-        "slotType": "primary",
         "showCharacters": {
           "center": [],
           "slot1": [
@@ -1518,13 +1578,11 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "slotType": "secondary",
         "showToastsOnRight": true,
         "showToastsCharacter": false,
         "showThumbnail": []
       },
       "ranking": {
-        "slotType": "extra",
         "targetScriptKeys": [
           "basicList"
         ],
@@ -1535,9 +1593,8 @@
         "component": "rankStandard"
       },
       "counter": {
-        "slotType": "extra",
-        "ruleKey": null,
         "component": "counterUser",
+        "ruleKey": "",
         "target": "draw",
         "label": "Counter",
         "color": {
@@ -1553,7 +1610,7 @@
         "cols": 6,
         "circleSeats": 12,
         "customLayout": "[1,2,3,4,5]",
-        "title": "🛫 8時間フライト、どの席に座る？",
+        "label": "🛫 8時間フライト、どの席に座る？",
         "color": "lofi",
         "allowReseating": false,
         "historyLimit": 10

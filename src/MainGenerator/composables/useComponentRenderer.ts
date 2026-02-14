@@ -1,7 +1,9 @@
 // src/MainGenerator/composables/useComponentRenderer.ts
 import { computed, ComputedRef } from 'vue'
 import { ComponentsConditions } from '@/types'
-import { COMPONENT_DEFINITIONS } from '@/types/ui/ComponentKind'
+import { COMPONENT_DEFINITIONS, ComponentMapping } from '@/types/ui/ComponentKind'
+
+const SLOT_PRIORITY = { primary: 2, secondary: 2, extra: 1 } as const
 
 export function useComponentRenderer(
   conditions: ComputedRef<ComponentsConditions>,
@@ -24,7 +26,8 @@ export function useComponentRenderer(
           component: mapping.component,
         }
       })
-      .filter(Boolean)
+      .filter((item): item is ComponentMapping => item !== null)
+      .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
   })
 
   return { activeComponents }

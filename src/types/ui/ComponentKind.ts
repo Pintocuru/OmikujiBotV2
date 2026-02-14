@@ -16,7 +16,7 @@ export type ComponentSlot = z.infer<typeof ComponentSlotSchema>
 /**
  * コンポーネント種類の定義
  */
-interface ComponentMapping {
+export interface ComponentMapping {
   slot: ComponentSlot
   label: string
   component: any
