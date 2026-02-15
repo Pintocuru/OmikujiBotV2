@@ -29,7 +29,7 @@
   </SettingItem>
 
   <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
-  <SettingItem :label="isToast ? '📝 トースト内容' : '💬 フキダシ内容'" description="プレースホルダーが使用できます">
+  <SettingItem :label="isToast ? '📝 トースト内容' : '💬 フキダシ内容'" description="プレースホルダーが使えます">
     <div class="relative w-full">
       <!-- input -->
       <input
@@ -102,7 +102,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
 
-  const isTextarea = ref(false)
+  const isTextarea = ref(true)
 
   const updateAction = (updates: Partial<PostActionMessageType>) => {
     emit('update:action', { ...props.action, ...updates })

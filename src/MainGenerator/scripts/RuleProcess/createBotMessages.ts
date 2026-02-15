@@ -4,10 +4,39 @@ import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 
 /**
- * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
+ * メッセージを作成
  */
-function getMessageOrDefault(configuredMessage: string | null, defaultMessage: string): string {
-  return configuredMessage?.trim() || defaultMessage
+export function createFirstBotMessages(message: string, isToast: boolean = false): BotMessageBubbleType[] {
+  const { characterArray } = useCharacterManager()
+
+  // キャラクターがいない場合の明示的な扱い
+  const firstCharacter = characterArray.value.length > 0 ? characterArray.value[0] : null
+
+  const botMessageData: BotMessageBubbleType = BotMessageBubbleSchema.parse({
+    bubble: {
+      name: firstCharacter ? firstCharacter.name : undefined,
+      characterKey: firstCharacter ? firstCharacter.key : undefined,
+      message,
+      isToast,
+    },
+  })
+
+  return [botMessageData]
+}
+
+/**
+ * 制限チェック結果からBotMessageを生成
+ */
+export function buildRestrictionMessages(
+  result: RestrictionCheckResult,
+  rule: CommentRuleType
+): BotMessageBubbleType[] {
+  if (!result.isBlocked) return []
+
+  const message = createMessage(result, rule)
+  if (!message) return []
+
+  return createFirstBotMessages(message, true)
 }
 
 /**
@@ -39,35 +68,8 @@ function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): s
 }
 
 /**
- * メッセージを作成
+ * 設定されたメッセージがあればそれを返し、なければデフォルトメッセージを返す
  */
-export function createFirstBotMessages(message: string, isToast: boolean = false): BotMessageBubbleType[] {
-  const { characterArray } = useCharacterManager()
-  const firstCharacter = characterArray.value[0]
-
-  const botMessageData: BotMessageBubbleType = BotMessageBubbleSchema.parse({
-    bubble: {
-      name: firstCharacter?.name,
-      message,
-      isToast,
-      characterKey: firstCharacter?.key,
-    },
-  })
-
-  return [botMessageData]
-}
-
-/**
- * 制限チェック結果からBotMessageを生成
- */
-export function buildRestrictionMessages(
-  result: RestrictionCheckResult,
-  rule: CommentRuleType
-): BotMessageBubbleType[] {
-  if (!result.isBlocked) return []
-
-  const message = createMessage(result, rule)
-  if (!message) return []
-
-  return createFirstBotMessages(message, true)
+function getMessageOrDefault(configuredMessage: string | null, defaultMessage: string): string {
+  return configuredMessage?.trim() || defaultMessage
 }

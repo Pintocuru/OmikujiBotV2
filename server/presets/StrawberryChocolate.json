@@ -139,6 +139,47 @@
           "toIconKey": "laughing"
         }
       ]
+    },
+    {
+      "0": "巫",
+      "1": "女",
+      "2": "さ",
+      "3": "ん",
+      "4": "の",
+      "5": "お",
+      "6": "み",
+      "7": "く",
+      "8": "じ",
+      "9": "(",
+      "10": "ノ",
+      "11": "ー",
+      "12": "マ",
+      "13": "ル",
+      "14": ")",
+      "id": "a3a3cb54-e447-43d2-b506-8b18f23417a4",
+      "key": "e4970825-0ccd-4a68-83f4-1cd37e8b135c",
+      "name": "巫女さんのおみくじ(ノーマル)",
+      "createdAt": "2026-02-15T03:05:08.847Z",
+      "updatedAt": "2026-02-15T03:05:08.847Z",
+      "order": 0,
+      "tags": [],
+      "accessLevel": "basic",
+      "sourceFile": "MaidenOmikujiNormal.json",
+      "keySuffix": "",
+      "remaps": [
+        {
+          "fromCharacterKey": "omiken",
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "",
+          "toIconKey": ""
+        },
+        {
+          "fromCharacterKey": "omiken_2",
+          "toCharacterKey": "chocolate",
+          "fromIconKey": "",
+          "toIconKey": ""
+        }
+      ]
     }
   ],
   "comments": {
@@ -863,7 +904,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-01-12T12:21:40.812Z",
+      "updatedAt": "2026-02-15T02:39:19.611Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -893,7 +934,7 @@
               "iconKey": "happy",
               "sound": "news",
               "message": {
-                "bubble": "<<PromotionToastsChocolate>>",
+                "bubble": "<<\n  'チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡',\n  'あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。',\n  'チャンネル登録は、気軽に押してね♡',\n  '高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡',\n  'コメントは配信の華よね。気軽にどんどん付けて欲しいわ。',\n  '占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡'\n>>\n",
                 "isToast": true
               }
             }
@@ -1078,7 +1119,7 @@
       "name": "初見詐欺(thinking):Chocolate",
       "description": "あらあら、また初見なの？",
       "createdAt": "2026-01-04T15:10:39.046Z",
-      "updatedAt": "2026-01-12T12:28:23.001Z",
+      "updatedAt": "2026-02-15T02:23:56.565Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1097,7 +1138,7 @@
           "iconKey": "thinking",
           "sound": "bounce",
           "message": {
-            "bubble": "<<FirstSagiChocolateThinking>>",
+            "bubble": "<<\n  'あら？<<user>>さん、初見だったかしら？',\n  '<<user>>さん、初見って言っているけど、この前来てくれたような…',\n  'あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。',\n  'もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？',\n  'えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ'\n>>\n",
             "isToast": false
           }
         }
@@ -1115,7 +1156,7 @@
       "name": "初見詐欺(surprised):Chocolate",
       "description": "本当に忘れちゃったのかと思ったわ",
       "createdAt": "2026-01-04T15:11:21.152Z",
-      "updatedAt": "2026-01-12T12:28:40.515Z",
+      "updatedAt": "2026-02-15T02:30:37.343Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1133,7 +1174,7 @@
           "iconKey": "surprised",
           "sound": "explosion",
           "message": {
-            "bubble": "<<FirstSagiChocolateSurprise>>",
+            "bubble": "<<\n  'えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…',\n  'えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?',\n  'びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ',\n  'えっ、初見!? あたしとあんなに仲よかったじゃない～',\n  'そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～'\n>>\n",
             "isToast": false
           }
         }
@@ -1151,7 +1192,7 @@
       "name": "初見詐欺(sad):Chocolate",
       "description": "ほんとは常連さんでしょ？",
       "createdAt": "2026-01-04T15:12:16.508Z",
-      "updatedAt": "2026-01-12T12:29:06.880Z",
+      "updatedAt": "2026-02-15T02:31:09.181Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1169,7 +1210,7 @@
           "iconKey": "sad",
           "sound": "fail",
           "message": {
-            "bubble": "<<FirstSagiChocolateSad>>",
+            "bubble": "<<\n  '<<user>>さん、記憶喪失かしら？あたしのハグで治る？',\n  '<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？',\n  'えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ',\n  '<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜',\n  '<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん'\n>>\n",
             "isToast": false
           }
         }
@@ -1187,7 +1228,7 @@
       "name": "ああ初見だと思ったら騙された高校校歌:Chocolate",
       "description": "もう、びっくりさせないでよ～",
       "createdAt": "2026-01-04T15:12:40.050Z",
-      "updatedAt": "2026-01-12T12:29:27.296Z",
+      "updatedAt": "2026-02-15T02:35:47.892Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -1216,7 +1257,7 @@
           "iconKey": "surprised",
           "sound": "fail",
           "message": {
-            "bubble": "えっ！<<user>>さん、初見じゃなかったの? もう、びっくりさせないでよ～",
+            "bubble": "<<\n  'えっ、初見なの？って思ったのに…もう、<<user>>ちゃん、騙したわね〜？',\n  'ほんとに初見かと思って心配したのに…もう〜、意地悪なんだから、<<user>>ちゃん。',\n  'えぇ!? 初見って信じちゃったじゃない…あたしをからかうなんて、可愛いことするわね、<<user>>ちゃん。',\n  '初見って言うから本気で信じたのに…ああもう、<<user>>ちゃんに騙されたわよ〜',\n  'ちょっと！初見って言うからドキッとしたのよ？…もう、そうやってからかうんだから〜',\n  '本気で初見だと思ったのに…ふふ、そういうところあるわよね、<<user>>ちゃん。',\n  'あたし、初見だって信じたのよ？…もう、<<user>>ちゃんに振り回されっぱなしだわ〜'\n>>\n",
             "isToast": false
           }
         }
@@ -1234,7 +1275,7 @@
       "name": "ギフト(wink):Chocolate",
       "description": "あなたの優しさに癒されます♡",
       "createdAt": "2026-01-04T15:25:48.473Z",
-      "updatedAt": "2026-01-12T12:29:46.561Z",
+      "updatedAt": "2026-02-15T02:38:00.826Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1249,10 +1290,10 @@
           "delaySeconds": 0,
           "actionType": "message",
           "characterKey": "chocolate",
-          "iconKey": "wink",
+          "iconKey": "blushing",
           "sound": "carnival",
           "message": {
-            "bubble": "<<GiftChocolateWink>>",
+            "bubble": "<<\n  '<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡',\n  'あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡',\n  'ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡',\n  '<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡',\n  'あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。'\n>>\n",
             "isToast": false
           }
         }
@@ -1451,98 +1492,6 @@
     }
   },
   "placeholders": {
-    "FirstSagiChocolateThinking": {
-      "id": "FirstSagiChocolateThinking",
-      "key": "FirstSagiChocolateThinking",
-      "name": "初見詐欺(Thinking):Chocolate",
-      "description": "あら、初見だったかしら？",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2026-01-12T12:24:52.589Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        "あら？<<user>>さん、初見だったかしら？",
-        "<<user>>さん、初見って言っているけど、この前来てくれたような…",
-        "あらあら、また初見なの？でも私、前にお話ししたの忘れてないわよ。",
-        "もう〜、初見って言いたい気持ちはわかるけど、<<user>>ちゃんは常連さんでしょ？",
-        "えっ、初見？…でも<<user>>ちゃんは、この前も来てくれた気がするんだけどなぁ"
-      ]
-    },
-    "FirstSagiChocolateSurprise": {
-      "id": "FirstSagiChocolateSurprise",
-      "key": "FirstSagiChocolateSurprise",
-      "name": "初見詐欺(Surprise):Chocolate",
-      "description": "あたしとあんなに仲よかったじゃない～",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2026-01-12T12:25:03.159Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
-        "えっ!? 初見って…<<tc>>回もコメントしてくれてるのに!?",
-        "びっくりした〜！初見って言うから、本当に忘れちゃったのかと思ったわ",
-        "えっ、初見!? あたしとあんなに仲よかったじゃない～",
-        "そうなの!? えっと、<<tc>>回コメントしてるわね。驚かせないでよ～"
-      ]
-    },
-    "FirstSagiChocolateSad": {
-      "id": "FirstSagiChocolateSad",
-      "key": "FirstSagiChocolateSad",
-      "name": "初見詐欺(Sad):Chocolate",
-      "description": "記憶喪失かしら？あたしのハグで治る？",
-      "createdAt": "2025-08-16T09:51:49.475Z",
-      "updatedAt": "2026-01-12T12:25:23.375Z",
-      "order": 3,
-      "isEnabled": true,
-      "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
-        "<<user>>さん、また初見って…記憶が飛んじゃったのかしら？大丈夫？",
-        "えぇ〜？<<user>>さん、あたしのこと忘れちゃったの？それはちょっと寂しいなぁ",
-        "<<user>>さん、初見って言うから心配したけど…ほんとは常連さんでしょ？意地悪ね〜",
-        "<<user>>さん…初見って言うから心配したのに…からかってるのね？もう〜意地悪さん"
-      ]
-    },
-    "GiftChocolateWink": {
-      "id": "GiftChocolate",
-      "key": "GiftChocolateWink",
-      "name": "ギフト:Chocolate",
-      "description": "大切に受け取らせてもらうわね♡",
-      "createdAt": "2025-08-27T09:48:36.227Z",
-      "updatedAt": "2026-01-12T12:25:36.445Z",
-      "order": 4,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
-        "あら、<<user>>さんからギフトだなんて…大切に受け取らせてもらうわね♡",
-        "ふふっ、<<user>>さんからのギフト、とっても嬉しいわ。大事にするね♡",
-        "<<user>>さん、ギフトありがとう。あなたの優しさに癒されます♡",
-        "あらあら、<<user>>さんからギフトなんて…配信主も愛されてるわね。"
-      ]
-    },
     "FirstSyokenChocolate": {
       "id": "FirstSyokenChocolate",
       "key": "FirstSyokenChocolate",
@@ -1550,7 +1499,7 @@
       "description": "仲良くしてくれると嬉しいな♡",
       "createdAt": "2025-08-27T14:29:25.367Z",
       "updatedAt": "2026-01-12T12:25:44.007Z",
-      "order": 5,
+      "order": 1,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -1573,7 +1522,7 @@
       "description": " 来てくれて嬉しいわ、元気にしてた？",
       "createdAt": "2025-08-27T14:30:15.661Z",
       "updatedAt": "2026-01-12T12:26:12.280Z",
-      "order": 6,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -1596,7 +1545,7 @@
       "description": "今日も来てくれてるのね。常連さんね～",
       "createdAt": "2025-08-27T14:30:51.900Z",
       "updatedAt": "2026-01-12T12:26:21.753Z",
-      "order": 7,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#E65100",
       "tags": [
@@ -1612,30 +1561,6 @@
         "<<user>>さん、今日も来てくれてるのね。お姉さんの楽しみになってるわ。"
       ]
     },
-    "PromotionToastsChocolate": {
-      "id": "PromotionToastsChocolate",
-      "key": "PromotionToastsChocolate",
-      "name": "告知用トースト:Chocolate",
-      "description": "チャンネル登録は、気軽に押してね♡",
-      "createdAt": "2025-08-26T07:00:06.947Z",
-      "updatedAt": "2026-01-12T12:26:35.583Z",
-      "order": 8,
-      "isEnabled": true,
-      "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
-      "accessLevel": "basic",
-      "values": [
-        "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
-        "あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。",
-        "チャンネル登録は、気軽に押してね♡",
-        "高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡",
-        "コメントは配信の華よね。気軽にどんどん付けて欲しいわ。",
-        "占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡"
-      ]
-    },
     "HondaJankenName": {
       "id": "HondaJankenName",
       "key": "HondaJankenName",
@@ -1643,7 +1568,7 @@
       "description": "あたしの名前はストロベリー♪",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-12T12:27:31.301Z",
-      "order": 9,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -1662,7 +1587,7 @@
       "description": "あたし！",
       "createdAt": "2025-08-11T15:34:29.298Z",
       "updatedAt": "2026-01-12T12:27:42.715Z",
-      "order": 10,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
       "tags": [
@@ -1802,7 +1727,7 @@
       },
       "toast": {
         "showToastsOnRight": true,
-        "showToastsCharacter": false,
+        "showToastsCharacter": true,
         "showThumbnail": []
       },
       "ranking": {

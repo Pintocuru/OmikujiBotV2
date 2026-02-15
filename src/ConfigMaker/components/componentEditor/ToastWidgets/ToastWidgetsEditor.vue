@@ -9,7 +9,11 @@
         :key="i"
         :message="message.bubble?.message ?? '(未記入)'"
         :color="getCharacterColor(message.bubble.characterKey)"
-        :iconLayers="iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')"
+        :iconLayers="
+          toastSettings.showToastsCharacter
+            ? iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')
+            : []
+        "
         :showToastsOnRight="toastSettings.showToastsOnRight"
       />
     </div>
@@ -44,13 +48,15 @@
     :showReset="true"
     @reset="resetMap.showToastsOnRight"
   >
-    <input
-      type="checkbox"
-      class="toggle toggle-primary"
-      v-model="toastSettings.showToastsOnRight"
-      @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
-    />
-    <span class="ml-2"> {{ toastSettings.showToastsOnRight ? '右' : '左' }}側に表示する </span>
+    <label class="flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        v-model="toastSettings.showToastsOnRight"
+        @change="(e) => updateField('showToastsOnRight', (e.target as HTMLInputElement).checked)"
+      />
+      <span class="ml-2"> {{ toastSettings.showToastsOnRight ? '右' : '左' }}側に表示する </span>
+    </label>
   </SettingItem>
 
   <template v-if="isCharacter">
@@ -60,13 +66,15 @@
       :showReset="true"
       @reset="resetMap.showToastsCharacter"
     >
-      <input
-        type="checkbox"
-        class="toggle toggle-primary"
-        v-model="toastSettings.showToastsCharacter"
-        @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
-      />
-      <span class="ml-2">キャラクターを表示する</span>
+      <label class="flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          class="toggle toggle-primary"
+          v-model="toastSettings.showToastsCharacter"
+          @change="(e) => updateField('showToastsCharacter', (e.target as HTMLInputElement).checked)"
+        />
+        <span class="ml-2">キャラクターを表示する</span>
+      </label>
     </SettingItem>
 
     <SettingItem

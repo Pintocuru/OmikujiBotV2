@@ -31,6 +31,7 @@ export class OmikujiProcessor {
     const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
     if (!actionItem) return []
 
+    // special アクション
     if (actionItem.type === 'special') {
       return this.handleSpecialAction(actionItem)
     }
