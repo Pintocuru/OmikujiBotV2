@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2025.09.11-v1.1.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.1.0-beta1",
+    "dataVersion": 2.091,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -26,9 +26,9 @@
       "id": "MaidenOmikuji",
       "key": "MaidenOmikuji",
       "name": "巫女さんのおみくじ",
-      "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりにおふざけが入ってるよ。",
+      "description": "巫女さん手製の、真面目なおみくじ。大凶の代わりに「残念賞」が入ってるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-26T01:45:59.194Z",
+      "updatedAt": "2026-02-15T03:12:55.151Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -39,7 +39,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "c4dcf0cd-554d-4dfc-8880-eab00077e9fc",
+          "id": "7dea9559-8c11-4063-8e4b-bfbde2858a21",
           "key": "c4dcf0cd-554d-4dfc-8880-eab00077e9fc",
           "name": "おみくじ:大吉",
           "description": "",
@@ -84,7 +84,7 @@
           "criteria": null
         },
         {
-          "id": "ea8cfca6-7c08-46e5-96b3-d93cdf95783a",
+          "id": "ae96ea89-6547-444d-a173-a94621b16da0",
           "key": "ea8cfca6-7c08-46e5-96b3-d93cdf95783a",
           "name": "おみくじ:吉",
           "description": "",
@@ -129,7 +129,7 @@
           "criteria": null
         },
         {
-          "id": "5cd77096-dca9-4714-a0a9-e24b5b8cee62",
+          "id": "0d4dc073-0a64-4a1e-ad15-f7cd41f284a6",
           "key": "5cd77096-dca9-4714-a0a9-e24b5b8cee62",
           "name": "おみくじ:中吉",
           "description": "",
@@ -174,7 +174,7 @@
           "criteria": null
         },
         {
-          "id": "e6d4e9f7-e72c-4e31-9f18-920557fec162",
+          "id": "703c31f3-b639-41ef-9316-cbb3d60f6d00",
           "key": "e6d4e9f7-e72c-4e31-9f18-920557fec162",
           "name": "おみくじ:小吉",
           "description": "",
@@ -219,7 +219,7 @@
           "criteria": null
         },
         {
-          "id": "81e073ba-a404-4dff-b066-be59b9cc2010",
+          "id": "354f4872-b5fb-49b3-9cac-624948166845",
           "key": "81e073ba-a404-4dff-b066-be59b9cc2010",
           "name": "おみくじ:末吉",
           "description": "",
@@ -264,7 +264,7 @@
           "criteria": null
         },
         {
-          "id": "1066e6ff-58ad-4264-b684-09cc0dd8ca6d",
+          "id": "ed62bff4-db08-4bc3-b97f-b0d566bda3e6",
           "key": "1066e6ff-58ad-4264-b684-09cc0dd8ca6d",
           "name": "おみくじ:凶",
           "description": "",
@@ -309,52 +309,7 @@
           "criteria": null
         },
         {
-          "id": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
-          "key": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
-          "name": "おみくじ:残念賞",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.296Z",
-          "updatedAt": "2025-08-11T15:34:29.296Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "MaidenOmikujiLottery"
-            },
-            {
-              "delaySeconds": 1,
-              "actionType": "wordParty",
-              "wordParty": "MaidenOmikuji07"
-            },
-            {
-              "delaySeconds": 2,
-              "actionType": "message",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "sound": "explosion",
-              "message": {
-                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 5,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "768d962f-2271-4da6-845b-f2034172b99c",
+          "id": "23d567dd-c3d2-4fee-bbf4-1eb62a7d61a9",
           "key": "768d962f-2271-4da6-845b-f2034172b99c",
           "name": "おみくじ:大凶",
           "description": "",
@@ -380,7 +335,7 @@
               "delaySeconds": 2,
               "actionType": "message",
               "characterKey": "omiken",
-              "iconKey": "default",
+              "iconKey": "sad",
               "sound": "explosion",
               "message": {
                 "bubble": "{{var text='大凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
@@ -395,6 +350,51 @@
           },
           "special": "return",
           "weight": 0,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "530b7d75-3208-4f0d-9193-bb7e0b1b4fd3",
+          "key": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
+          "name": "おみくじ:残念賞",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
+            },
+            {
+              "delaySeconds": 1,
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji07"
+            },
+            {
+              "delaySeconds": 2,
+              "actionType": "message",
+              "characterKey": "omiken_2",
+              "iconKey": "wink",
+              "sound": "explosion",
+              "message": {
+                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 5,
           "isPriority": false,
           "criteria": null
         }
@@ -431,6 +431,7 @@
     }
   },
   "timers": {},
+  "metas": {},
   "actionSets": {},
   "placeholders": {
     "MaidenOmikuji01": {
@@ -834,21 +835,21 @@
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [
-          "omiken",
-          "omiken_2"
-        ],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "light",
@@ -857,37 +858,50 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "omiken",
+            "omiken_2"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
-    },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
-      "title": "🥠おみくじ履歴⛩️",
-      "color": "light",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🥠おみくじ履歴⛩️",
+        "color": "light",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -895,7 +909,8 @@
     "usage": {
       "comments": "basic",
       "timers": "none",
-      "actionSets": "basic",
+      "metas": "none",
+      "actionSets": "none",
       "placeholders": "basic",
       "characters": "none"
     },

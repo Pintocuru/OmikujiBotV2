@@ -63,7 +63,7 @@
       class="select select-bordered w-full max-w-xs"
     >
       <option value="">なし</option>
-      <option v-for="(value, key) in rpgVoiceMap" :key="key" :value="key">
+      <option v-for="(value, key) in rpgVoiceMetaMap" :key="key" :value="key">
         {{ key }}
       </option>
     </select>
@@ -73,12 +73,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { displayModeLabels, DisplayOptionType } from '@/types/'
+  import { displayModeLabels, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMetaMap } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { playRpgVoiceLoop, rpgVoiceMap } from '@/common/sounds'
+  import { playRpgVoiceLoop } from '@/common/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
 
@@ -107,7 +107,7 @@
 
   // サウンド
   const onSoundChange = (event: Event) => {
-    const soundName = (event.target as HTMLSelectElement).value
+    const soundName = (event.target as HTMLSelectElement).value as RpgVoiceKeyType
     if (soundName) {
       playRpgVoiceLoop(
         'こんな文章でも読んでくれてありがとう！これでもこのメッセージ、意味があるからな！文字の長さしか見ないけど！',

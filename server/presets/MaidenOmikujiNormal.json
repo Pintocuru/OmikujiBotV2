@@ -22,13 +22,13 @@
   },
   "jsonMerge": [],
   "comments": {
-    "MaidenOmikuji": {
+    "MaidenOmikujiNormal": {
       "id": "MaidenOmikuji",
-      "key": "MaidenOmikuji",
+      "key": "MaidenOmikujiNormal",
       "name": "巫女さんのおみくじ(ノーマル)",
       "description": "巫女さん手製の、真面目なおみくじ。大吉・吉・中吉・小吉・末吉・凶・大凶が入っているよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-02-15T03:03:57.922Z",
+      "updatedAt": "2026-02-15T03:17:53.681Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -245,7 +245,7 @@
               "delaySeconds": 2,
               "actionType": "message",
               "characterKey": "omiken",
-              "iconKey": "wink",
+              "iconKey": "thinking",
               "sound": "bounce",
               "message": {
                 "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
@@ -290,7 +290,7 @@
               "delaySeconds": 2,
               "actionType": "message",
               "characterKey": "omiken",
-              "iconKey": "sad",
+              "iconKey": "sleepy",
               "sound": "fail",
               "message": {
                 "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
@@ -305,51 +305,6 @@
           },
           "special": "return",
           "weight": 10,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "3402e7a6-f42e-4727-9c0b-f27e3caabe77",
-          "key": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
-          "name": "おみくじ:残念賞",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.296Z",
-          "updatedAt": "2025-08-11T15:34:29.296Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "wordParty",
-              "wordParty": "MaidenOmikujiLottery"
-            },
-            {
-              "delaySeconds": 1,
-              "actionType": "wordParty",
-              "wordParty": "MaidenOmikuji07"
-            },
-            {
-              "delaySeconds": 2,
-              "actionType": "message",
-              "characterKey": "omiken_2",
-              "iconKey": "default",
-              "sound": "explosion",
-              "message": {
-                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 5,
           "isPriority": false,
           "criteria": null
         },
@@ -380,10 +335,55 @@
               "delaySeconds": 2,
               "actionType": "message",
               "characterKey": "omiken",
-              "iconKey": "default",
+              "iconKey": "sad",
               "sound": "explosion",
               "message": {
                 "bubble": "{{var text='大凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": "",
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "3402e7a6-f42e-4727-9c0b-f27e3caabe77",
+          "key": "1c6e7104-a7f6-45c3-90f2-48f0c627acee",
+          "name": "おみくじ:残念賞",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.296Z",
+          "updatedAt": "2025-08-11T15:34:29.296Z",
+          "order": 0,
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikujiLottery"
+            },
+            {
+              "delaySeconds": 1,
+              "actionType": "wordParty",
+              "wordParty": "MaidenOmikuji07"
+            },
+            {
+              "delaySeconds": 2,
+              "actionType": "message",
+              "characterKey": "omiken_2",
+              "iconKey": "wink",
+              "sound": "explosion",
+              "message": {
+                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
                 "isToast": false
               }
             }
@@ -909,8 +909,8 @@
     "usage": {
       "comments": "basic",
       "timers": "none",
-      "metas": "basic",
-      "actionSets": "basic",
+      "metas": "none",
+      "actionSets": "none",
       "placeholders": "basic",
       "characters": "none"
     },

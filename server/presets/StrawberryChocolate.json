@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.02.14-2.1.0-beta1",
-    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
+    "id": "StrawberryChocolate-ver2026.02.15-2.1.0-beta2",
+    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate-PRO",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.14-2.1.0-beta1",
+    "version": "ver2026.02.15-2.1.0-beta2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-beta1",
-    "dataVersion": 2.091,
+    "generatorVersion": "2.1.0-beta2",
+    "dataVersion": 2.09102,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -904,7 +904,7 @@
       "name": "告知トースト",
       "description": "チャンネル登録や高評価をトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2026-02-15T02:39:19.611Z",
+      "updatedAt": "2026-02-15T03:22:50.013Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -935,41 +935,6 @@
               "sound": "news",
               "message": {
                 "bubble": "<<\n  'チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡',\n  'あら、忘れてないかしら？チャンネル登録と高評価は、配信主の栄養剤よ。',\n  'チャンネル登録は、気軽に押してね♡',\n  '高評価を押すと、すごいのよ。配信主のモチベがあがるのよ～♡',\n  'コメントは配信の華よね。気軽にどんどん付けて欲しいわ。',\n  '占ってみる？「タロット」とコメントすると、あたしが占いするわよ♡'\n>>\n",
-                "isToast": true
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": "",
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 99,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
-          "key": "69becfbb-56b3-4484-b9f4-d15786b5ad47",
-          "name": "おみくじBOT告知",
-          "description": "",
-          "createdAt": "2025-08-11T15:34:29.298Z",
-          "updatedAt": "2025-08-11T15:34:29.298Z",
-          "order": 0,
-          "editorColor": "#3B82F6",
-          "tags": [],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "message",
-              "characterKey": "chocolate",
-              "iconKey": "thinking",
-              "sound": "nya",
-              "message": {
-                "bubble": "うふ～、このおみくじBOT、あたしの大切な人が作ったのよ～",
                 "isToast": true
               }
             }

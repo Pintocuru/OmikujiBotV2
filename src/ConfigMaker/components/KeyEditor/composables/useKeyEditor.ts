@@ -1,9 +1,9 @@
 // src\ConfigMaker\components\parts\KeyEditor\useKeyEditor.ts
 import { ref, computed, readonly } from 'vue'
-import { RecordCategoryType } from '@/types/'
+import { categoryLabels, RecordCategoryType, rulesCategoryLabel } from '@/types/OmikujiData/'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
-import { CharacterUsage, UpdateResult, CATEGORY_TITLES } from './keyEditorTypes'
+import { CharacterUsage, UpdateResult } from './keyEditorTypes'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export function useKeyEditor() {
@@ -14,7 +14,7 @@ export function useKeyEditor() {
   const characterUsage = ref<CharacterUsage | null>(null)
 
   const hasError = computed(() => errorMessage.value !== '')
-  const dialogTitle = computed(() => CATEGORY_TITLES[currentCategory.value] || '')
+  const dialogTitle = computed(() => categoryLabels[currentCategory.value].label || '')
 
   // 現在のカテゴリ（ダイアログで使用）
   const currentCategory = ref<RecordCategoryType>('comments')
@@ -23,10 +23,10 @@ export function useKeyEditor() {
    * キャラクター使用箇所の取得
    */
   function getCharacterUsage(characterKey: string): CharacterUsage {
-    const usage: CharacterUsage = { comments: [], timers: [] }
+    const usage: CharacterUsage = { comments: [], timers: [], metas: [] }
     const { getCategoryMap } = useGetRecordData()
 
-    ;(['comments', 'timers'] as const).forEach((category) => {
+    rulesCategoryLabel.forEach((category) => {
       const categoryData = getCategoryMap(category)
 
       Object.entries(categoryData).forEach(([ruleKey, rule]) => {
@@ -125,7 +125,7 @@ export function useKeyEditor() {
    * アイテムタイプラベルを取得
    */
   function getItemTypeLabel(category: RecordCategoryType): string {
-    return CATEGORY_TITLES[category]
+    return categoryLabels[category].label
   }
 
   // 公開API

@@ -4,7 +4,6 @@ import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
-import e from 'express'
 
 /**
  * 共通のビルド設定を生成

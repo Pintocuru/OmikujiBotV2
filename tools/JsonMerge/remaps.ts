@@ -1,8 +1,8 @@
 // tools/JsonMerge/remaps.ts
-import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import type { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
+import type { OmikujiDataType } from '@/types/OmikujiData/'
+import type { JsonMergeRemapType } from '@/types/OmikujiData/'
 import type { ActionSetType, PostActionType, GameScriptsType } from '@/types/OmikujiData/'
-import { CharacterEmotionType } from '@/types/'
+import { CharacterEmotionType, rulesCategoryLabel } from '@/types/OmikujiData'
 
 /**
  * PostActionの配列に対してリマップルールを適用
@@ -69,21 +69,21 @@ function remapGameScripts(gameScripts: GameScriptsType, remaps: JsonMergeRemapTy
  * OmikujiData全体に対してリマップを適用
  */
 export function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[]): OmikujiDataType {
-  // remapsが空の場合は早期return
-  if (!remaps || remaps.length === 0) return data
+  if (!remaps?.length) return data
 
   const clonedData: OmikujiDataType = JSON.parse(JSON.stringify(data))
 
-  // commentsとtimersのPostActionとGameScriptsをリマップ
-  remapOmikujiGroup(clonedData.comments, remaps)
-  remapOmikujiGroup(clonedData.timers, remaps)
+  // Rulesカテゴリを網羅的に処理
+  for (const category of rulesCategoryLabel) {
+    remapOmikujiGroup(clonedData[category], remaps)
+  }
 
-  // actionSetsのPostActionとGameScriptsをリマップ
+  // actionSets処理
   if (clonedData.actionSets) {
     for (const key in clonedData.actionSets) {
       const actionSet = clonedData.actionSets[key]
 
-      if (actionSet.postActions && actionSet.postActions.length > 0) {
+      if (actionSet.postActions?.length) {
         actionSet.postActions = remapPostActions(actionSet.postActions, remaps)
       }
 
@@ -93,7 +93,6 @@ export function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[])
     }
   }
 
-  console.log(`[JsonMerge] Applied ${remaps.length} remap(s)`)
   return clonedData
 }
 

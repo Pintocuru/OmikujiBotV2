@@ -1,31 +1,36 @@
 // tools\JsonMerge\KeySuffix.ts
-import { OmikujiDataType } from '@/types/'
+import { OmikujiDataType, rulesCategoryLabel, RulesCategoryType } from '@/types/OmikujiData'
 
 export function applyKeySuffix(data: OmikujiDataType, suffix?: string): OmikujiDataType {
-  if (!suffix || suffix === '') return data
+  if (!suffix) return data
+
+  const updated = {} as Pick<OmikujiDataType, RulesCategoryType>
+
+  for (const category of rulesCategoryLabel) {
+    // TypeScript の型システムはユニオンキーによる異構造インデックス代入を
+    // 安全に扱えないため、ここでは any を使用。
+    // 実行時の安全性は applySuffixToRules のジェネリック制約により保証される。
+    updated[category] = applySuffixToRules(data[category] as any, suffix) as any
+  }
 
   return {
     ...data,
-    comments: applySuffixToRules(data.comments, suffix),
-    timers: applySuffixToRules(data.timers, suffix),
+    ...updated,
   }
 }
 
-function applySuffixToRules<T extends { key: string }>(
-  rules: Record<string, T> | undefined,
-  suffix: string
-): Record<string, T> {
-  if (!rules) return {}
-
-  // 先頭大文字化
-  const normalizedSuffix = suffix.length > 0 ? suffix[0].toUpperCase() + suffix.slice(1) : ''
+function applySuffixToRules<T extends { key: string }>(rules: Record<string, T>, suffix: string): Record<string, T> {
+  const normalized = suffix.length > 0 ? suffix[0].toUpperCase() + suffix.slice(1) : ''
 
   const result: Record<string, T> = {}
-  for (const [key, item] of Object.entries(rules)) {
-    result[`${key}${normalizedSuffix}`] = {
+
+  for (const key in rules) {
+    const item = rules[key]
+    result[key + normalized] = {
       ...item,
-      key: `${item.key}${normalizedSuffix}`,
+      key: item.key + normalized,
     }
   }
+
   return result
 }

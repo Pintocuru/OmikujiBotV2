@@ -1,27 +1,39 @@
 // tools/JsonMerge/transforms.ts
-import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import type { AccessLevelType, BaseRecordType } from '@shared/types'
+import { RecordCategoryDataMap, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData'
+import type { OmikujiDataType } from '@/types/OmikujiData/'
+import type { AccessLevelType } from '@shared/types'
 
 /**
  * OmikujiData内のすべてのRecord型プロパティに対してaccessLevelを強制上書き
- * comments, timers, actionSets, placeholders, charactersが対象
- *
- * @param data - 対象のOmikujiData
- * @param level - 統一するaccessLevel
- * @returns accessLevelが統一されたOmikujiData
  */
 export function applyAccessLevel(data: OmikujiDataType, level: AccessLevelType): OmikujiDataType {
-  const updateLevel = <T extends BaseRecordType>(obj: Record<string, T>): Record<string, T> =>
-    Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, { ...v, accessLevel: level }]))
+  const result = { ...data }
 
-  return {
-    ...data,
-    comments: data.comments ? updateLevel(data.comments) : {},
-    timers: data.timers ? updateLevel(data.timers) : {},
-    actionSets: data.actionSets ? updateLevel(data.actionSets) : {},
-    placeholders: data.placeholders ? updateLevel(data.placeholders) : {},
-    characters: data.characters ? updateLevel(data.characters) : {},
+  for (const category of recordCategoryLabel) {
+    applyAccessLevelToCategory(result, data, category, level)
   }
+
+  return result
+}
+function applyAccessLevelToCategory<K extends RecordCategoryType>(
+  target: OmikujiDataType,
+  source: OmikujiDataType,
+  category: K,
+  level: AccessLevelType
+) {
+  const obj = source[category] as RecordCategoryDataMap[K]
+
+  // 存在しないならスキップ
+  if (!obj) {
+    ;(target as any)[category] = {} as RecordCategoryDataMap[K]
+    return
+  }
+
+  const updated: RecordCategoryDataMap[K] = Object.fromEntries(
+    Object.entries(obj).map(([k, v]) => [k, { ...v, accessLevel: level }])
+  ) as RecordCategoryDataMap[K]
+
+  ;(target as any)[category] = updated
 }
 
 /**
@@ -29,27 +41,32 @@ export function applyAccessLevel(data: OmikujiDataType, level: AccessLevelType):
  * comments, timers, actionSets, placeholders, charactersが対象
  */
 export function applyOrderOffset(data: OmikujiDataType, offset: number): OmikujiDataType {
-  // ジェネリック関数でorder加算を実施
-  const shiftOrder = <T extends BaseRecordType>(obj: Record<string, T>): Record<string, T> => {
-    const shifted: Record<string, T> = {}
+  const result = { ...data }
 
-    for (const [key, value] of Object.entries(obj)) {
-      // 各要素に対して明示的にorderを加算
-      // 型アサーション後、ordersプロパティが存在することを前提に加算を行う
-      const originalOrder = value.order ?? 0
-      const newOrder = originalOrder + offset
-      shifted[key] = { ...value, order: newOrder } as T
+  for (const category of recordCategoryLabel) {
+    applyOrderOffsetToCategory(result, data, category, offset)
+  }
+
+  return result
+}
+
+function applyOrderOffsetToCategory<K extends RecordCategoryType>(
+  target: OmikujiDataType,
+  source: OmikujiDataType,
+  category: K,
+  offset: number
+) {
+  const obj = source[category] as RecordCategoryDataMap[K]
+
+  const shifted = {} as RecordCategoryDataMap[K]
+
+  for (const key in obj) {
+    const value = obj[key]
+    shifted[key] = {
+      ...value,
+      order: (value.order ?? 0) + offset,
     }
-
-    return shifted
   }
 
-  return {
-    ...data,
-    comments: data.comments ? shiftOrder(data.comments) : {},
-    timers: data.timers ? shiftOrder(data.timers) : {},
-    actionSets: data.actionSets ? shiftOrder(data.actionSets) : {},
-    placeholders: data.placeholders ? shiftOrder(data.placeholders) : {},
-    characters: data.characters ? shiftOrder(data.characters) : {},
-  }
+  ;(target as any)[category] = shifted
 }

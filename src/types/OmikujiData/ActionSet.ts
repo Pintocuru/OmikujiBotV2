@@ -1,10 +1,10 @@
 // src/types/OmikujiData/ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { soundList } from '@sounds/soundMap'
+import { WeightValueSchema } from './PlaceholderSchema'
+import { soundKeys } from './SoundKey'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { WeightValueSchema } from './PlaceholderSchema'
 import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
 // PostAction delaySeconds
@@ -29,7 +29,10 @@ export const PostActionMessageSchema = z.object({
   actionType: z.literal('message').default('message'),
   characterKey: z.string().nullable().default(null).catch(null),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  sound: z.enum(soundList).default('').catch(''),
+  sound: z
+    .union([z.enum(soundKeys), z.literal('')])
+    .default('')
+    .catch(''),
   message: PostActionMessageContentSchema.default(PostActionMessageContentSchema.parse({})).catch(
     PostActionMessageContentSchema.parse({})
   ),
@@ -40,7 +43,10 @@ export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 export const PostActionSoundSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('sound').default('sound'),
-  sound: z.enum(soundList).default('').catch(''),
+  sound: z
+    .union([z.enum(soundKeys), z.literal('')])
+    .default('')
+    .catch(''),
 })
 export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 

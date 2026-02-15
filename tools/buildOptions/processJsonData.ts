@@ -1,24 +1,22 @@
 // tools\buildOptions\processJsonData.ts
-import { OmikujiDataType } from '@/types/OmikujiData/'
+import { OmikujiDataType, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/'
 import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'
 
 /**
  * JSONデータを読み込み、前処理を行う関数
- * @param config ビルド設定オブジェクト
- * @returns 前処理後のビルド設定オブジェクト
  */
 export const generateAccessLevelData = (data: OmikujiDataType, targetLevel?: AccessLevelType): OmikujiDataType => {
-  // none なら、フィルタリングしない
   if (!targetLevel || targetLevel === 'none') return data
   const targetIndex = AccessLevelLabels.indexOf(targetLevel)
 
+  const filtered = Object.fromEntries(
+    recordCategoryLabel.map((category) => [category, filterItems(data[category], targetIndex)])
+  ) as Pick<OmikujiDataType, RecordCategoryType>
+
   return {
     ...data,
-    comments: filterItems(data.comments, targetIndex),
-    timers: filterItems(data.timers, targetIndex),
-    placeholders: filterItems(data.placeholders, targetIndex),
-    characters: filterItems(data.characters, targetIndex),
+    ...filtered,
     settings: {
       ...data.settings,
       licenseKeyHash: getKey(targetLevel),

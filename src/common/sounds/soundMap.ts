@@ -1,3 +1,6 @@
+// src\common\sounds\soundMap.ts
+import { RpgVoiceKeyType, SoundKeyType } from '@/types/OmikujiData/SoundKey'
+
 import f0 from '@assets/sounds/FreeSound/applause.mp3'
 import f1 from '@assets/sounds/FreeSound/baseball.mp3'
 import f2 from '@assets/sounds/FreeSound/bounce.mp3'
@@ -29,7 +32,7 @@ import r2 from '@assets/sounds/RpgVoice/rpg_voice_c5.mp3'
 import r3 from '@assets/sounds/RpgVoice/rpg_voice_f2.mp3'
 import r4 from '@assets/sounds/RpgVoice/rpg_voice_g3.mp3'
 
-export const soundMap: Record<string, string> = {
+export const soundMap: Record<SoundKeyType, string> = {
   cute: f9,
   nya: f19,
   bubble: f3,
@@ -57,7 +60,7 @@ export const soundMap: Record<string, string> = {
   explosion: f12,
 }
 
-export const rpgVoiceMap: Record<string, string> = {
+export const rpgVoiceMap: Record<RpgVoiceKeyType, string> = {
   rpg_voice_a5: r0,
   rpg_voice_b4: r1,
   rpg_voice_c5: r2,
