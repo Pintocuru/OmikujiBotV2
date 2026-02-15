@@ -64,7 +64,7 @@
     >
       <option value="">なし</option>
       <option v-for="(value, key) in rpgVoiceMetaMap" :key="key" :value="key">
-        {{ key }}
+        {{ value }}
       </option>
     </select>
   </SettingItem>

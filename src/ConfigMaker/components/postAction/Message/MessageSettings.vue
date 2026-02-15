@@ -71,8 +71,8 @@
   <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
       <option value="">（なし）</option>
-      <option v-for="s in soundList" :key="s" :value="s">
-        {{ s }}
+      <option v-for="(value, key) in soundMetaMap" :key="key" :value="key">
+        {{ value }}
       </option>
     </select>
   </SettingItem>
@@ -80,12 +80,11 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { CharacterEmotionType, PostActionMessageType } from '@/types/'
+  import { CharacterEmotionType, PostActionMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
-  import { soundList } from '@sounds/soundMap'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { AlignLeft, AlignJustify } from 'lucide-vue-next'
   import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'

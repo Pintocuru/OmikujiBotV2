@@ -2,9 +2,9 @@
 
 // サウンドの種類
 export const soundMetaMap = {
-  cute: 'かわいい効果音',
+  cute: 'ぽよん',
   nya: 'にゃーん',
-  bubble: 'ポコポコ',
+  bubble: 'ポコン',
   twinkle: 'キラキラ',
   bounce: 'ボヨン',
   jingle: 'ジングル',
@@ -13,18 +13,18 @@ export const soundMetaMap = {
   notification: '通知音',
   news: 'ニュース風',
   decision: '決定音',
-  reveal: 'リビール',
-  reveal_full: 'フルリビール',
+  reveal: '＼ジャン／',
+  reveal_full: '＼ジャジャーン／',
   transition: 'トランジション',
   applause: '拍手',
   congrats: 'お祝い',
   fanfare: 'ファンファーレ',
   carnival: 'カーニバル',
-  baseball: '野球',
+  baseball: 'レベルアップ',
   drum_hit: 'ドラム',
-  warn: '警告',
+  warn: 'ブレーキ',
   cancel: 'キャンセル',
-  negative: 'ネガティブ',
+  negative: 'ざんねん',
   fail: '失敗',
   explosion: '爆発',
 } as const
@@ -36,11 +36,11 @@ export const soundKeys = Object.keys(soundMetaMap) as SoundKeyType[]
  * RPG風サウンド
  */
 export const rpgVoiceMetaMap = {
-  rpg_voice_a5: 'A5（高め）',
-  rpg_voice_b4: 'B4（落ち着き）',
+  rpg_voice_a5: 'A5（落ち着き）',
+  rpg_voice_b4: 'B4（高め）',
   rpg_voice_c5: 'C5（標準）',
-  rpg_voice_f2: 'F2（低音）',
-  rpg_voice_g3: 'G3（中低音）',
+  rpg_voice_f2: 'F2（低音・ゆらぎ）',
+  rpg_voice_g3: 'G3（中低音・ゆらぎ）',
 } as const
 
 export const rpgVoiceKeys = Object.keys(rpgVoiceMetaMap) as RpgVoiceKeyType[]
