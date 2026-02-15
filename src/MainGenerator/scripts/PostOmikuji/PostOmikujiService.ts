@@ -4,7 +4,7 @@ import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMess
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
 import { Service } from '@onecomme.com/onesdk/types/Service'
-import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
+import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { executeWordParty } from '@shared/sdk/postMessage/PostWordParty'
 import { CharacterManager, checkIsCharacterMode } from '@main/scripts/CharacterManager/CharacterManager'
 

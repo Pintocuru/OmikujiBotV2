@@ -1,9 +1,10 @@
 // src\MainGenerator\scripts\RuleProcess\MetaRuleProcessor.ts
 import { BotMessageType } from '@/types/'
 import { OmikujiDataType } from '@/types/OmikujiData/'
-import { MetaUpdateEvent } from '@main/scripts/MetaState/MetaStateService'
+import { MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
+import { evaluateMetaTrigger } from '@/MainGenerator/stores/MetaState/MetaTriggerEvaluator'
 
 /**
  * メタルールの実行を管理
@@ -43,6 +44,10 @@ export class MetaRuleProcessor {
           current,
           previous: null,
           peak: metaState.getPeak(),
+          peakChanged: {
+            upVote: false,
+            viewer: false,
+          },
         },
         onMetaTrigger
       )
@@ -63,32 +68,13 @@ export class MetaRuleProcessor {
    * メタデータ更新時の処理
    */
   private processMetaRules(event: MetaUpdateEvent, onMetaTrigger: (messages: BotMessageType[]) => void): void {
-    const currentUpVote = event.current.upVote
-    const previousUpVote = this.lastUpVote ?? 0
-
-    const currentViewer = event.current.viewer
-    const previousViewer = this.lastViewer ?? 0
-
-    this.lastUpVote = currentUpVote
-    this.lastViewer = currentViewer
-
     const enabledRules = Object.values(this.data.metas)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
     for (const rule of enabledRules) {
-      switch (rule.trigger.condition) {
-        case 'upVote':
-          if (currentUpVote > previousUpVote) {
-            onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
-          }
-          break
-
-        case 'viewer':
-          if (currentViewer > previousViewer) {
-            onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
-          }
-          break
+      if (evaluateMetaTrigger(rule.trigger, event)) {
+        onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
       }
     }
   }

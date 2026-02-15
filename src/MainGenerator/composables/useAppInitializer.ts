@@ -35,9 +35,7 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
       if (!isHealth) return
 
       const serverData = await generatorApi.loadGeneratorConfig()
-      if (serverData) {
-        appStore.loadData(serverData)
-      }
+      if (serverData) appStore.loadData(serverData)
     } catch (error) {
       console.error('❌ 初期化エラー:', error)
       appStore.setInitialized(false)

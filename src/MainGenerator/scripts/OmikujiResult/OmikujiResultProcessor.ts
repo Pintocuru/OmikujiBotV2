@@ -129,11 +129,11 @@ export class OmikujiResultProcessor {
           messages.push(
             ...createBotMessagesFromAction(action, variableResult, delaySeconds, this.characterManager, omiken)
           )
-          playSoundDelay(action.sound, delaySeconds)
+          if (action.sound) playSoundDelay(action.sound, delaySeconds)
           break
 
         case 'sound':
-          playSoundDelay(action.sound, delaySeconds)
+          if (action.sound) playSoundDelay(action.sound, delaySeconds)
           break
       }
     }

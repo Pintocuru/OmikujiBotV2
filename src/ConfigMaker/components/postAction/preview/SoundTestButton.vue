@@ -6,11 +6,12 @@
 </template>
 
 <script setup lang="ts">
+  import { SoundKeyType } from '@/types'
   import { playSound } from '@sounds/PlaySound'
 
   const props = withDefaults(
     defineProps<{
-      pattern?: string
+      pattern?: SoundKeyType | ''
       label?: string
     }>(),
     {
@@ -18,10 +19,9 @@
     }
   )
 
+  // pattern をサウンド名として再生
   function handleClick() {
     if (!props.pattern) return
-
-    // pattern をサウンド名として再生
     playSound(props.pattern)
   }
 </script>

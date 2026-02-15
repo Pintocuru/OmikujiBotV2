@@ -16,11 +16,12 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from './parts/CounterPreviewManager.vue'
   import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
+  import { SettingsCounterSchema } from '@/types'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  const counterSetting = computed(() => data.value.components.settings.counter)
+  const counterSetting = computed(() => data.value.components.settings.counter ?? SettingsCounterSchema.parse({}))
   const previewTick = computed(() => botMessages.value.length)
   const userList = ref<UserVisitRecord[]>([])
 

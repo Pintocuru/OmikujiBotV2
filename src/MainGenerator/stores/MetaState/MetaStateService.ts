@@ -26,8 +26,10 @@ export class MetaStateService {
       this.previous = this.current
       this.current = normalized
 
-      this.updatePeak(normalized)
-      this.notifySubscribers()
+      // 🔧 FIX: peakChanged を計算してから peak を更新
+      const peakChanged = this.updatePeak(normalized)
+
+      this.notifySubscribers(peakChanged)
     })
   }
 
@@ -40,21 +42,32 @@ export class MetaStateService {
     }
   }
 
+  /**
+   * 🔧 FIX: peak を更新し、peakChanged フラグを返す
+   * このメソッドが peak を超えたかどうかを判定する唯一の場所
+   */
   private updatePeak(meta: NormalizedMeta) {
-    if (meta.upVote > this.peak.upVote) this.peak.upVote = meta.upVote
-    if (meta.viewer > this.peak.viewer) this.peak.viewer = meta.viewer
+    const peakChanged = {
+      upVote: meta.upVote > this.peak.upVote,
+      viewer: meta.viewer > this.peak.viewer,
+    }
+
+    // peak を更新
+    if (peakChanged.upVote) this.peak.upVote = meta.upVote
+    if (peakChanged.viewer) this.peak.viewer = meta.viewer
+
+    return peakChanged
   }
 
-  private notifySubscribers() {
-    if (!this.current) return
-
-    const peakChanged =
-      this.previous && (this.current.upVote > this.peak.upVote || this.current.viewer > this.peak.viewer)
-
+  /**
+   * 🔧 FIX: peakChanged を受け取るだけ（peak 値は不要）
+   */
+  private notifySubscribers(peakChanged: { upVote: boolean; viewer: boolean }) {
     const event: MetaUpdateEvent = {
-      current: this.current,
+      current: this.current!,
       previous: this.previous,
       peak: this.peak,
+      peakChanged,
     }
 
     for (const fn of this.subscribers) fn(event)
@@ -68,7 +81,6 @@ export class MetaStateService {
     }
   }
 
-  // 👇 現在のメタデータを同期的に取得できるメソッドを追加
   getCurrent(): NormalizedMeta | null {
     return this.current
   }
@@ -91,5 +103,9 @@ export interface MetaUpdateEvent {
   peak: {
     upVote: number
     viewer: number
+  }
+  peakChanged: {
+    upVote: boolean
+    viewer: boolean
   }
 }

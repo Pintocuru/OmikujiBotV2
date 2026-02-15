@@ -9,7 +9,7 @@ import { BotMessageEmptySchema, BotMessageType } from '@/types/MainGenerator/Bot
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { createFirstBotMessages } from '@main/scripts/RuleProcess/createBotMessages'
-import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
+import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'

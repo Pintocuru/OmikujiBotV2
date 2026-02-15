@@ -2,6 +2,7 @@
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
+import { rpgVoiceKeys } from './SoundKey'
 
 // 感情ラベルマップ
 export const emotionLabels = {
@@ -65,7 +66,11 @@ export const DisplayOptionSchema = z.object({
   mode: z.enum(displayModes).default('comment'),
   imageBase64: z.string().default('').catch(''), // 表示時のアイコン
   frameId: z.string().default('').catch(''), // わんコメの枠指定
-  rpgVoice: z.string().default('').catch(''), // RPG音声モード
+  // RPG音声モード
+  rpgVoice: z
+    .union([z.enum(rpgVoiceKeys), z.literal('')])
+    .default('')
+    .catch(''),
 })
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
 

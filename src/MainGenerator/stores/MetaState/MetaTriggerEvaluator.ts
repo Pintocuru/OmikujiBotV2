@@ -1,7 +1,7 @@
-// src\MainGenerator\scripts\MetaState\MetaTriggerEvaluator.ts
+// src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.ts
 import { MetaConditionType } from '@/types/OmikujiProcess/MetaTriggerSchema'
 import { MetaTriggerType } from '@/types/OmikujiProcess/MetaTriggerSchema'
-import type { MetaUpdateEvent } from '../MetaState/MetaStateService'
+import type { MetaUpdateEvent } from './MetaStateService'
 
 /**
  * トリガー条件の評価
@@ -13,11 +13,21 @@ export function evaluateMetaTrigger(trigger: MetaTriggerType, event: MetaUpdateE
   switch (condition) {
     case 'upVote':
       if (!trigger.upVote) return true
-      return evaluateCondition(trigger.upVote, event.current.upVote, event.previous?.upVote ?? 0, event.peak.upVote)
+      return evaluateCondition(
+        trigger.upVote,
+        event.current.upVote,
+        event.previous?.upVote ?? 0,
+        event.peakChanged.upVote
+      )
 
     case 'viewer':
       if (!trigger.viewer) return true
-      return evaluateCondition(trigger.viewer, event.current.viewer, event.previous?.viewer ?? 0, event.peak.viewer)
+      return evaluateCondition(
+        trigger.viewer,
+        event.current.viewer,
+        event.previous?.viewer ?? 0,
+        event.peakChanged.viewer
+      )
 
     case 'elapsedMinutes':
       return evaluateElapsedTime(trigger.elapsedMinutes ?? 0, event.current.startTime)
@@ -30,12 +40,13 @@ export function evaluateMetaTrigger(trigger: MetaTriggerType, event: MetaUpdateE
 
 /**
  * 単一条件の評価
+ * 🔧 FIX: peak 値ではなく peakChanged フラグを受け取る
  */
 export function evaluateCondition(
   condition: MetaConditionType,
   current: number,
   previous: number,
-  peak: number
+  isPeakChanged: boolean
 ): boolean {
   const { comparison, value } = condition
 
@@ -47,7 +58,7 @@ export function evaluateCondition(
     case 'decreased':
       return current < previous
     case 'greaterThanPeak':
-      return current > peak
+      return isPeakChanged
     case 'lowerBound':
       return value !== undefined && current >= value
     case 'upperBound':
