@@ -23,7 +23,7 @@
   import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
   import HistoryButton from './components/HistoryButton.vue'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { PostOmikujiService } from '@/MainGenerator/scripts/PostOmikuji/PostOmikujiService'
+  import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
 
   interface HistoryItem {
     id: string

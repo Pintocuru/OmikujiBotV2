@@ -1,7 +1,7 @@
 // src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
+import { BotMessageType } from '@/types/'
 import { TimerRuleType, OmikujiDataType } from '@/types/OmikujiData/'
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
+import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 
 interface TimerState {
   timerId: number

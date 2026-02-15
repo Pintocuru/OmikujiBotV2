@@ -8,11 +8,6 @@ export interface CircularReferenceResult {
 
 /**
  * アクションセットの循環参照をチェックする
- * @param targetKey チェック対象のアクションセットキー
- * @param actionSets 全アクションセットのデータ
- * @param currentKey 現在編集中のアクションセットキー（オプション）
- * @param visited 訪問済みキーのセット（内部使用）
- * @returns 循環参照の経路（循環参照がない場合はnull）
  */
 export function checkCircularReference(
   targetKey: string,

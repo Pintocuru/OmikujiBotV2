@@ -8,13 +8,12 @@ import {
 import { BotMessageEmptySchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { createFirstBotMessages } from '@main/scripts/RuleProcess/createBotMessages'
+import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
+import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
-import { createFirstBotMessages } from '@/MainGenerator/scripts/RuleProcess/createBotMessages'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
-import { MetaStateService } from '@main/scripts/MetaState/MetaStateService'
-import { ServiceMetaCondition } from '@shared/types'
 
 export class OmikujiProcessor {
   private readonly store = useAppStore()
@@ -32,34 +31,42 @@ export class OmikujiProcessor {
     const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
     if (!actionItem) return []
 
-    // special
     if (actionItem.type === 'special') {
-      const { userVisitManager } = this.store
-
-      if (actionItem.special === 'return') {
-        return [BotMessageEmptySchema.parse({})]
-      }
-
-      if (actionItem.special === 'continue') {
-        return []
-      }
-
-      if (actionItem.special === 'reset') {
-        const ruleKey = actionItem.key
-        userVisitManager.resetRuleVisits(ruleKey)
-        return createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`)
-      }
-
-      if (actionItem.special === 'log') {
-        const ruleKey = actionItem.key
-        const totalVisits = userVisitManager.getTotalVisitsByRuleId(ruleKey)
-        const totalUnique = userVisitManager.getUniqueVisitorCountByRuleId(ruleKey)
-        return createFirstBotMessages(`${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`)
-      }
+      return this.handleSpecialAction(actionItem)
     }
 
     const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
     return this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+  }
+
+  /**
+   * special アクションの処理
+   */
+  private handleSpecialAction(actionItem: ActionSetType): BotMessageType[] {
+    const { userVisitManager } = this.store
+
+    if (actionItem.special === 'return') {
+      return [BotMessageEmptySchema.parse({})]
+    }
+
+    if (actionItem.special === 'continue') {
+      return []
+    }
+
+    if (actionItem.special === 'reset') {
+      const ruleKey = actionItem.key
+      userVisitManager.resetRuleVisits(ruleKey)
+      return createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`)
+    }
+
+    if (actionItem.special === 'log') {
+      const ruleKey = actionItem.key
+      const totalVisits = userVisitManager.getTotalVisitsByRuleId(ruleKey)
+      const totalUnique = userVisitManager.getUniqueVisitorCountByRuleId(ruleKey)
+      return createFirstBotMessages(`${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`)
+    }
+
+    return []
   }
 
   /**

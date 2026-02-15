@@ -1,5 +1,5 @@
 // src\MainGenerator\ui\CommentBubble\TransformIconPlaceholders.ts
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 
 export function transformIconPlaceholders(raw: string): string {
   const store = useAppStore()

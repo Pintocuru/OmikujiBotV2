@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
 import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
 import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
-import { buildDefaultShowCharacters } from '@/MainGenerator/scripts/CharacterManager/CharacterManagerHelper'
+import { buildDefaultShowCharacters } from '@main/scripts/CharacterManager/CharacterManagerHelper'
 
 /**
  * ConfigMaker用：CharacterManager のリアクティブなラッパー

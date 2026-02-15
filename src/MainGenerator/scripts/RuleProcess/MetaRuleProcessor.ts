@@ -1,10 +1,9 @@
 // src\MainGenerator\scripts\RuleProcess\MetaRuleProcessor.ts
-import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/'
 import { OmikujiDataType } from '@/types/OmikujiData/'
+import { MetaUpdateEvent } from '@main/scripts/MetaState/MetaStateService'
+import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { MetaUpdateEvent } from '../MetaState/MetaStateService'
-import { evaluateMetaTrigger } from '../MetaState/MetaTriggerEvaluator'
-import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 
 /**
  * メタルールの実行を管理

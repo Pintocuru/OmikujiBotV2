@@ -1,8 +1,8 @@
 // src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
 import { BotMessageType, CommentRuleType } from '@/types/'
-import { checkRestrictions } from '../OmikujiProcess/RestrictionChecker'
 import { buildRestrictionMessages } from './createBotMessages'
-import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
+import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'
+import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
