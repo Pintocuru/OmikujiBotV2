@@ -17,6 +17,13 @@ export function useModalState() {
   }
 
   /**
+   * マッピングを更新
+   */
+  const updateMapping = (charKey: string, value: string) => {
+    characterMappings.value[charKey] = value
+  }
+
+  /**
    * モーダルを閉じる
    */
   const closeModal = () => {
@@ -42,6 +49,7 @@ export function useModalState() {
     isModalOpen,
     characterMappings,
     openModal,
+    updateMapping,
     closeModal,
     clearAllMappings,
     hasChanges,

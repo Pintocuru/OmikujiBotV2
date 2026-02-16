@@ -39,7 +39,7 @@
           :class="getMappingValue(charKey) ? 'select-primary' : ''"
         >
           <option value="">変更しない</option>
-          <option v-for="character in charactersArray" :key="character.key" :value="character.key">
+          <option v-for="character in characterArray" :key="character.key" :value="character.key">
             {{ character.name || character.key }}
           </option>
         </select>
@@ -49,12 +49,12 @@
 </template>
 
 <script setup lang="ts">
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+
   const props = defineProps<{
     characterKeys: string[]
     characterMappings: Record<string, string>
-    charactersArray: Array<{ key: string; name: string; order: number }>
     usageCount: Record<string, number>
-    getCharacterName: (id: string) => string
     hasChanges: boolean
   }>()
 
@@ -63,16 +63,12 @@
     updateMapping: [charKey: string, value: string]
   }>()
 
-  /**
-   * マッピング値を取得するcomputed
-   */
-  const getMappingValue = (charKey: string) => {
-    return props.characterMappings[charKey] || ''
-  }
+  const { characterArray, getCharacterName } = useCharacterManager()
 
-  /**
-   * マッピング値を更新（イベント発行）
-   */
+  // マッピング値を取得
+  const getMappingValue = (charKey: string) => props.characterMappings[charKey] || ''
+
+  // マッピング値を更新
   const updateMapping = (charKey: string, value: string) => {
     emit('updateMapping', charKey, value)
   }

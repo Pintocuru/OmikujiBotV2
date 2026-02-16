@@ -21,12 +21,14 @@
 </template>
 
 <script setup lang="ts">
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
   import { AlertTriangle } from 'lucide-vue-next'
 
   defineProps<{
     characterMappings: Record<string, string>
     usageCount: Record<string, number>
     scopeLabel: string
-    getCharacterName: (id: string) => string
   }>()
+
+  const { getCharacterName } = useCharacterManager()
 </script>

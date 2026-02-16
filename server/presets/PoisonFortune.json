@@ -8,13 +8,7 @@
     "generatorVersion": "2.1.0-beta2",
     "dataVersion": 2.09102,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "占い",
-      "Fortune",
-      "ルノルマンカード",
-      "Lenormand"
-    ],
+    "tags": ["おみくじBOT", "占い", "Fortune", "ルノルマンカード", "Lenormand"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7915987"
   },
@@ -30,10 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "占い",
-        "毒占い"
-      ],
+      "tags": ["占い", "毒占い"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -43,9 +34,7 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -88,9 +77,7 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -133,9 +120,7 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -178,9 +163,7 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -223,9 +206,7 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -268,9 +249,7 @@
           "createdAt": "2025-12-28T11:29:09.743Z",
           "updatedAt": "2025-12-28T11:29:09.743Z",
           "order": 0,
-          "tags": [
-            "毒占い"
-          ],
+          "tags": ["毒占い"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -295,9 +274,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -313,21 +290,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^毒",
-          "^どく",
-          "^poison",
-          "^うらな",
-          "^占",
-          "^オラクル",
-          "^oracle"
-        ]
+        "comment": ["^毒", "^どく", "^poison", "^うらな", "^占", "^オラクル", "^oracle"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -349,9 +316,7 @@
       "updatedAt": "2026-02-15T13:53:31.814Z",
       "order": 1,
       "isEnabled": true,
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -395,9 +360,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "本能が騒ぐ",
@@ -442,9 +405,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "静かに侵す",
@@ -489,9 +450,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "じわじわ広がる",
@@ -536,9 +495,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "冷徹な",
@@ -583,9 +540,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "物語めいた",
@@ -630,9 +585,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "{{var text='テトロドトキシン'}}フグの肝臓や卵巣に眠る海洋性神経毒。電位依存性Na⁺チャネルを高親和性で遮断する。衝動を封じるほどに、物事は静かに整う。",
@@ -698,7 +651,7 @@
         "{{var text='ラトロトキシン'}}神経伝達物質の枯渇は、後に深刻な筋力低下をもたらす。出し尽くした後には虚無が待つ。力を蓄えよ。",
         "{{var text='ラトロトキシン'}}シナプス小胞の開口放出機構の研究に用いられる毒素。メカニズムを知れば、対策も見える。",
         "{{var text='ラトロトキシン'}}黒い背中に赤い砂時計模様のクロゴケグモ。その警告を無視するな。危険な人物には近づくな。",
-        "{{var text='ラトロトキシン'}}極めて特異的な作用を持つラトロトキシン。脊椎動物用、昆虫用と種類を使い分ける。相手によって態度を変えよ、それが生き残る術。",
+        "{{var text='ラトロトキシン'}}極めて特異的な作用を持つラトロトキシン。脊椎動物用、昆虫用と種類を使い分ける。相手によって態度を変えよ。",
         "{{var text='シガトキシン'}}熱帯・亜熱帯のサンゴ礁魚類に蓄積する海洋神経毒。渦鞭毛藻ギャンビエルディスカスが産生する。遠方からの知らせ、それは幸運か災いか。",
         "{{var text='シガトキシン'}}電位依存性Na⁺チャネルを開かせるシガトキシン。温度感覚の逆転、冷たいものが熱く感じる。常識が覆る日、それに戸惑うな。",
         "{{var text='シガトキシン'}}食物連鎖の頂点で最も濃縮される毒。バラクーダやウツボなど大型魚ほど危険。積み重ねた努力、それは大きいほど力を発揮する。",
@@ -767,9 +720,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "{{var text='アコニチン'}}トリカブト由来の強力なアルカロイド。神経のNa⁺チャネルに作用し細胞を興奮させる。直感が研ぎ澄まされる時、その感覚に身を委ねるべし。",
@@ -912,9 +863,7 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "{{var text='アフラトキシン B1'}}アスペルギルス属カビが産生する強力な肝毒性マイコトキシン。DNAに結合し突然変異を誘発する。慎重な判断が評価を守る日、一度の過ちが取り返しのつかない傷を残す。",
@@ -1049,9 +998,7 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "{{var text='シアン化水素'}}工業的に合成される揮発性の高い化学物質。ミトコンドリアのシトクロム酸化酵素を阻害し細胞呼吸を完全に止める。慌てて出た結論は命取り。",
@@ -1186,9 +1133,7 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": [
-        "毒占い"
-      ],
+      "tags": ["毒占い"],
       "accessLevel": "basic",
       "values": [
         "{{var text='バジリスクの毒'}}『ハリー・ポッター』に登場する怪物の猛毒。分霊箱すら破壊する絶対の力。迷いを断ち切る決断、それが物事を前進させる。",
@@ -1269,9 +1214,7 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": [
-            "omiken"
-          ],
+          "center": ["omiken"],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -1288,9 +1231,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": [
-          "basicList"
-        ],
+        "targetScriptKeys": ["basicList"],
         "title": "🐍毒占い履歴💀",
         "color": "luxury",
         "limit": 5,
@@ -1319,11 +1260,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

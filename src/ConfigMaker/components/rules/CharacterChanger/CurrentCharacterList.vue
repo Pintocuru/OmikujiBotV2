@@ -16,11 +16,14 @@
 </template>
 
 <script setup lang="ts">
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+
   defineProps<{
     characterKeys: string[]
     usageCount: Record<string, number>
-    getCharacterName: (id: string) => string
   }>()
+
+  const { getCharacterName } = useCharacterManager()
 </script>
 
 <style scoped>

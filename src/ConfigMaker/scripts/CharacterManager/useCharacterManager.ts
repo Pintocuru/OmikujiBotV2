@@ -39,5 +39,10 @@ export const useCharacterManager = () => {
     resolveEmotion: (key: string | null, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion),
     resolveCharacter: (data: { characterKey: string | null; iconKey: CharacterEmotionType }) =>
       manager.value.resolveCharacter(data),
+    // キャラクター名を取得
+    getCharacterName: (key: string | null) => {
+      if (!key) return undefined
+      return manager.value.characterMap.get(key)?.name
+    },
   }
 }
