@@ -1,7 +1,6 @@
 // src\ConfigMaker\components\rules\composables\useWeightCalculation.ts
 import { computed, Ref } from 'vue'
 
-// TODO:Share のほうに、omikujiItem として共用化できないだろうか。
 type WeightItem = {
   weight: number
   isPriority?: boolean

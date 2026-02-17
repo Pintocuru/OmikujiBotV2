@@ -1,15 +1,15 @@
 // src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult, BaseScript } from '@/types/'
-import { GameContext, playSlot } from './game'
+import { ScriptClass, PostActionType, GameStateType, ScriptResult, BaseScript } from '@/types/'
+import { executeGame } from './sub/game'
+import { buildPostActions } from './sub/postActionBuilder'
+import { UserState } from './sub/types'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { UserState } from './sub/types'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GoogolClover'
-const UNKNOWN_NAME = 'Unknown'
 
 export class ExecuteScript extends BaseScript implements ScriptClass {
   private readonly logRank = new LogRankScript()
@@ -30,36 +30,19 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     const {} = this.parseParams(queryString)
     const user = prepareUserInfo(omiken)
 
-    const context: GameContext = {
-      userId: omiken?.userId ?? UNKNOWN_NAME,
-      userName: omiken?.userName ?? UNKNOWN_NAME,
-      profileImage: omiken?.profileImage ?? '',
-      rankingKey: RANKING_KEY,
-    }
-
     // ゲームの実行
-    // ! メッセージの生成に失敗してる(責務が重すぎる)作り直し
-    const gameResult = playSlot(this.userStates, context)
+    const gameResult = executeGame(this.userStates, user, RANKING_KEY)
 
-    /**
-    const botMessages = buildBotMessages({
-      user,
+    // PostActionの構築
+    const postActions = buildPostActions({
+      bubble: gameResult.bubble,
+      score: gameResult.botMessageExtra.lists?.order ?? 0,
       characterKey,
-      bubbleText: gameResult.message,
-      scriptKey: RANKING_KEY,
-      score: gameResult.payout,
-      symbol: gameResult.symbol,
-      logResult,
     })
- */
-    // PostActionとBotMessageに分離
-    // TODO:buildBotMessages を適用すること
-    const postActions = this.buildPostActions(gameResult.botMessage, characterKey)
-    // const botMessages = this.buildBotMessages(gameResult.botMessage, characterKey, omiken)
 
     return {
       actions: postActions,
-      botMessageExtras: [],
+      botMessageExtras: [gameResult.botMessageExtra],
     }
   }
 
@@ -68,16 +51,10 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
    */
   sampleRun(queryString: string): string {
     const {} = this.parseParams(queryString)
-    const context: GameContext = {
-      userId: UNKNOWN_NAME,
-      userName: UNKNOWN_NAME,
-      profileImage: '',
-      rankingKey: RANKING_KEY,
-    }
+    const user = prepareUserInfo()
 
-    // ゲームの実行
-    const gameResult = playSlot(this.userStates, context)
-    return gameResult.botMessage.bubble ?? ''
+    const gameResult = executeGame(this.userStates, user, RANKING_KEY)
+    return gameResult.bubble
   }
 
   /**
@@ -88,44 +65,11 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
   }
 
   /**
-   * パラメータ
+   * パラメータをパース
    */
   private parseParams(queryString: string): GameParams {
     const paramsObject = parseQueryString(queryString)
     return GameParamsSchema.parse(paramsObject)
-  }
-
-  /**
-   * PostAction の構築（bubble は含めない）
-   */
-  private buildPostActions(
-    botMessage: ReturnType<typeof playSlot>['botMessage'],
-    characterKey: string | null
-  ): PostActionType[] {
-    // メッセージアクションは bubble のみを含む
-    const messageAction = PostActionMessageSchema.parse({
-      delaySeconds: 3.5,
-      characterKey,
-      message: {
-        bubble: botMessage.bubble,
-      },
-      sound: 'decision',
-    })
-
-    const common: PostActionType[] = [{ actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' }]
-
-    const successActions: PostActionType[] = [
-      { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
-      { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
-    ]
-
-    const failActions: PostActionType[] = [
-      { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji07' },
-      { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
-      { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
-    ]
-
-    return [...common, ...(botMessage.ranking.scoreValue ? successActions : failActions), messageAction]
   }
 }
 

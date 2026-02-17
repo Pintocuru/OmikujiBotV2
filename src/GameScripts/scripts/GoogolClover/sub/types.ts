@@ -1,31 +1,20 @@
 // src/GameScripts/GoogolClover/types.ts
 
+/**
+ * スロット実行結果
+ */
+export interface SlotExecutionResult {
+  spins: number
+  totalMultiplier: number
+  failedAt: number
+  multipliers: number[]
+  state: UserState
+}
+
 /** ユーザーの状態 */
 export interface UserState {
   funds: number
   exp: number
   successCount: number
   isGoogol: boolean
-}
-
-/** ゲーム結果 */
-export interface SlotResult {
-  message: string
-  payout: number
-  success: boolean
-}
-
-/** 報酬テーブルの定義 */
-export interface RewardEntry {
-  name: string
-  weight: number
-  min: number
-  max: number
-}
-
-/** スピン結果 */
-export interface SpinResult {
-  isSuccess: boolean
-  name: string
-  multiplier: number
 }

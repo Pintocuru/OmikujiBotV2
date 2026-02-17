@@ -26,7 +26,6 @@ export function useTestPost() {
   const { selectedCategory, selectedItemKey } = storeToRefs(navigationStore)
 
   // 選択されているルールを取得（型安全性を確保）
-  // TODO:これもう少しスマートなコードにならないか
   const selectedRule = computed((): RuleType | null => {
     const key = selectedItemKey.value
     if (!key) return null

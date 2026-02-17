@@ -2,8 +2,7 @@
 import { BotMessageType } from '@/types/'
 import { processUserComment } from '@main/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { useAppStore } from '@main/stores/useAppStore'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const TIME_THRESHOLD = 10000 // これ以上経過した古いコメントは判定しない
 

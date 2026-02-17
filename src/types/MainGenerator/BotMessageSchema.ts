@@ -2,6 +2,7 @@
 import { z } from 'zod'
 import { CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
 import { v4 } from 'uuid'
 
 /**
@@ -48,7 +49,7 @@ export const ExtraListsSchema = z.object({
   symbol: z.string().optional(), // 名前の隣につけるやつ
   text: z.string().default(''), // 表示用得点
   order: z.number().optional(), // 比較用
-  variant: z.string().optional(), // 得点表示のカラー(型は BaseVariant)
+  variant: z.enum(BaseVariantLabels).optional(), // 得点表示のカラー(型は BaseVariant)
   tags: z.array(z.string()).optional(),
   isVisible: z.boolean().default(true), // リストに載せるか
   isUnique: z.boolean().default(false), // 1ユーザー1つか複数か
