@@ -46,8 +46,6 @@ export class GameScriptManager {
     if (!gameScripts) return null
     const { scriptId, queryString, characterKey } = gameScripts
 
-    if (!scriptId) return null
-
     const scriptInstance = this.scriptInstances[scriptId]
     if (!scriptInstance) {
       console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)
@@ -55,7 +53,10 @@ export class GameScriptManager {
     }
 
     try {
-      return scriptInstance.run(queryString, characterKey, omiken)
+      const scriptResult = scriptInstance.run(queryString, characterKey, omiken)
+      // TODO:API送信するならこのタイミングだと思う
+
+      return scriptResult
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return null
@@ -67,7 +68,6 @@ export class GameScriptManager {
    */
   playSampleScript(scriptId: string, queryString: string): string {
     if (!scriptId) return '(スクリプトが指定されていません)'
-    if (scriptId === 'godMode') return 'Q.お前何様だよ! A.あたしゃ神様だよ'
     const scriptInstance = this.scriptInstances[scriptId]
     if (!scriptInstance) {
       console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)
@@ -100,17 +100,17 @@ export class GameScriptManager {
   /**
    * 特定のスクリプトインスタンスをリセット
    */
-  reset(scriptId: string): void {
-    if (!this.scriptInstances[scriptId]) {
-      console.warn(`リセット対象のスクリプトが見つかりません: ${scriptId}`)
+  reset(scriptKey: string): void {
+    if (!this.scriptInstances[scriptKey]) {
+      console.warn(`リセット対象のスクリプトが見つかりません: ${scriptKey}`)
       return
     }
 
-    delete this.scriptInstances[scriptId]
+    delete this.scriptInstances[scriptKey]
 
     // 再初期化
-    if (gameScriptMap[scriptId]) {
-      this.scriptInstances[scriptId] = gameScriptMap[scriptId].execute
+    if (gameScriptMap[scriptKey]) {
+      this.scriptInstances[scriptKey] = gameScriptMap[scriptKey].execute
     }
   }
 

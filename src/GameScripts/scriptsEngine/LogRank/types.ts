@@ -1,7 +1,6 @@
 // src/common/GameScripts/scriptsEngine/LogRank/types.ts
 import { z } from 'zod'
-import { GameStateType, PostActionType } from '@/types/'
-import { GameRecordType, UserStatsType } from './GameScriptSchema'
+import { UserNameSchema } from '@shared/types'
 
 /**
  * ランキングモードの定義
@@ -20,71 +19,19 @@ export type ResultType = z.infer<typeof ResultTypeSchema>
  * ゲーム実行時のパラメータ（改良版）
  */
 export const GameParamsSchema = z.object({
-  // ユーザー情報
-  userId: z.string(),
-  userName: z.string(),
-
-  // BOT設定
-  characterKey: z.string().nullable().default(null),
+  user: UserNameSchema, // ユーザー情報
+  characterKey: z.string().nullable().default(null), // BOT設定
 
   //  ゲームルール設定
-  rankingMode: RankingModeSchema.default('total_wins'), // より明示的な名前
-  maxDrawsPerUser: z.number().int().min(0).max(100).default(5), // より意味が明確
+  rankingMode: RankingModeSchema.default('total_wins'), // ランキングモード
+  maxDraws: z.number().int().min(0).max(100).default(5), // 最大回数
 
   // 今回の実行結果
   result: z.object({
     type: ResultTypeSchema, // 'win' | 'lose' | 'draw' | 'score'
     score: z.number(), // 獲得スコア（勝敗関係なく記録）
-    itemValue1: z.string().optional(), // 表示用の汎用項目
-    itemValue2: z.string().optional(),
-    itemValue3: z.string().optional(),
+    item: z.string().optional(), // 表示用の汎用項目
+    flag: z.boolean().optional(), // 表示用の汎用項目
   }),
 })
 export type GameParams = z.infer<typeof GameParamsSchema>
-
-/**
- * ゲームコンテキスト
- */
-export interface GameContext {
-  params: GameParams
-  gameState: GameStateType
-}
-
-/**
- * ランキング表示用の拡張型
- */
-export interface RankingEntry extends GameRecordType {
-  rank: number
-  totalDraws?: number
-  totalPoints?: number
-}
-
-/**
- * ゲーム実行結果
- */
-export interface GameResult {
-  currentRecord: GameRecordType
-  currentUserStats: UserStatsType
-  isOverLimit: boolean
-  postActions: PostActionType[]
-}
-
-/**
- * ランキングモードのヘルパー関数
- */
-export const isHighScoreMode = (params: GameParams): boolean => params.rankingMode === 'high_score'
-
-export const isWinRateMode = (params: GameParams): boolean => params.rankingMode === 'win_rate'
-
-export const isTotalWinsMode = (params: GameParams): boolean => params.rankingMode === 'total_wins'
-
-/**
- * 結果タイプのヘルパー関数
- */
-export const isWinResult = (params: GameParams): boolean => params.result.type === 'win'
-
-export const isLoseResult = (params: GameParams): boolean => params.result.type === 'lose'
-
-export const isDrawResult = (params: GameParams): boolean => params.result.type === 'draw'
-
-export const isScoreResult = (params: GameParams): boolean => params.result.type === 'score'

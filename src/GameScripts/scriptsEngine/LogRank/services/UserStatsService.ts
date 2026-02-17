@@ -1,44 +1,30 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/UserStatsService.ts
-import { v4 } from 'uuid'
-import { GameRecordType, UserStatsType } from '../GameScriptSchema'
-import { GameContext } from '../types'
+import { GameLogSchema, GameLogType, GameStateType, UserStatsSchema, UserStatsType } from '../GameScriptSchema'
+import { GameParams } from '../types'
 
 /**
  * 今回の実行記録（GameRecord）を作成
  */
-export const createGameRecord = (context: GameContext): GameRecordType => {
-  const { params } = context
-  const { userId, userName, result } = params
+export const createGameRecord = (params: GameParams): GameLogType => {
+  const { user, result } = params
 
-  return {
-    id: v4(),
-    userId,
-    userName,
+  return GameLogSchema.parse({
+    userId: user.userId,
     score: result.score,
-    ...(result.itemValue1 && { itemValue1: result.itemValue1 }),
-    ...(result.itemValue2 && { itemValue2: result.itemValue2 }),
-    ...(result.itemValue3 && { itemValue3: result.itemValue3 }),
-    createdAt: new Date().toISOString(),
-  }
+    ...(result.item && { item: result.item }),
+    ...(result.flag && { flag: result.flag }),
+  })
 }
 
 /**
  * ユーザーの累計統計を更新
  * userMapを更新して返す
  */
-export const updateUserStats = (context: GameContext): Record<string, UserStatsType> => {
-  const { params, gameState } = context
-  const { userId, userName, result } = params
+export const updateUserStats = (params: GameParams, gameState: GameStateType): Record<string, UserStatsType> => {
+  const { user, result } = params
 
   // 既存統計を取得または初期化
-  const current = gameState.userMap[userId] || {
-    userId,
-    userName,
-    totalDraws: 0,
-    totalPoints: 0,
-    totalWins: 0,
-    bestScore: 0,
-  }
+  const current = gameState.userMap[user.userId] || UserStatsSchema.parse({ userId: user.userId })
 
   // 勝利判定
   const isWin = result.type === 'win'
@@ -46,7 +32,6 @@ export const updateUserStats = (context: GameContext): Record<string, UserStatsT
   // 統計を更新
   const updated: UserStatsType = {
     ...current,
-    userName, // 最新の名前で上書き
     totalDraws: current.totalDraws + 1,
     totalPoints: current.totalPoints + result.score,
     totalWins: isWin ? current.totalWins + 1 : current.totalWins,
@@ -55,6 +40,6 @@ export const updateUserStats = (context: GameContext): Record<string, UserStatsT
 
   return {
     ...gameState.userMap,
-    [userId]: updated,
+    [user.userId]: updated,
   }
 }

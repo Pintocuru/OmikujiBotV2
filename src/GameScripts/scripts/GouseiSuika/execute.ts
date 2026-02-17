@@ -4,7 +4,7 @@ import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, Sc
 import { GachaGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'GouseiSuika'
@@ -24,20 +24,28 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     const user = prepareUserInfo(omiken)
     const bubbleText = `${user.userName}の得点は${gameResult.points}!`
 
-    const logResult = omiken ? this.recordRanking(omiken, gameResult.points, characterKey) : null
+    if (omiken) {
+      const logResult = this.recordRanking(omiken, gameResult.points, characterKey)
 
-    const botMessageExtras = buildBotMessageRanking({
-      user,
-      bubbleText,
-      componentKey: RANKING_KEY,
-      score: gameResult.points,
-      symbol: params.mode,
-      logResult,
-    })
+      const botMessageExtra = buildBotMessageRanking({
+        user,
+        bubbleText,
+        componentKey: RANKING_KEY,
+        score: gameResult.points,
+        symbol: params.mode,
+        isOverLimit: logResult.isOverLimit,
+      })
 
+      return {
+        actions: this.buildPostActions(gameResult, logResult.postActions, characterKey, bubbleText),
+        botMessageExtras: [botMessageExtra],
+      }
+    }
+
+    // omiken(コメント)がない場合
     return {
-      actions: this.buildPostActions(gameResult, logResult, characterKey, bubbleText),
-      botMessageExtras,
+      actions: this.buildPostActions(gameResult, null, characterKey, bubbleText),
+      botMessageExtras: [],
     }
   }
 
@@ -65,11 +73,10 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
-      userId: omiken.userId,
-      userName: omiken.userName,
+      user: UserNameSchema.parse(omiken),
       characterKey,
       rankingMode: 'high_score',
-      maxDrawsPerUser: 5,
+      maxDraws: 5,
       result: {
         type: 'score',
         score: points,
@@ -82,7 +89,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
    */
   private buildPostActions(
     gameResult: ReturnType<GachaGame['play']>,
-    logResult: ReturnType<LogRankScript['run']> | null,
+    postActions: PostActionType[] | null,
     characterKey: string | null,
     bubbleText: string
   ): PostActionType[] {
@@ -95,7 +102,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       sound: 'decision',
     })
 
-    return [...gameResult.postArray, ...(logResult?.postActions ?? []), messageAction]
+    return [...gameResult.postArray, ...(postActions ?? []), messageAction]
   }
 }
 

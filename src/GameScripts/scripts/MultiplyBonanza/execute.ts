@@ -5,7 +5,7 @@ import { GameEngine } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { WordPartySelector } from './wordPartySelector'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'MultiplyBonanza'
@@ -25,25 +25,33 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     // ゲームの実行
     const gameResult = this.executeGame(user.userName, params.mode)
 
-    // ランキングデータの記録
-    const logResult = omiken ? this.recordRanking(omiken, gameResult.result.payout, characterKey) : null
-
-    // BotMessage の構築
-    const botMessages = buildBotMessageRanking({
-      user,
-      bubbleText: gameResult.message,
-      componentKey: RANKING_KEY,
-      score: gameResult.result.payout,
-      symbol: gameResult.result.symbol,
-      logResult,
-    })
-
     // ゲーム結果に基づいてWordPartyを生成
     const wordPartyActions = this.selectWordParties(gameResult.result)
 
+    if (omiken) {
+      // ランキングデータの記録
+      const logResult = this.recordRanking(omiken, gameResult.result.payout, characterKey)
+
+      // BotMessage の構築
+      const botMessage = buildBotMessageRanking({
+        user,
+        bubbleText: gameResult.message,
+        componentKey: RANKING_KEY,
+        score: gameResult.result.payout,
+        symbol: gameResult.result.symbol,
+        isOverLimit: logResult.isOverLimit,
+      })
+
+      return {
+        actions: this.buildPostActions(gameResult, wordPartyActions, logResult.postActions, characterKey),
+        botMessageExtras: [botMessage],
+      }
+    }
+
+    // omiken(コメント)がない場合
     return {
-      actions: this.buildPostActions(gameResult, wordPartyActions, logResult, characterKey),
-      botMessageExtras: botMessages,
+      actions: this.buildPostActions(gameResult, wordPartyActions, null, characterKey),
+      botMessageExtras: [],
     }
   }
 
@@ -87,11 +95,10 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
-      userId: omiken.userId,
-      userName: omiken.userName,
+      user: UserNameSchema.parse(omiken),
       characterKey,
       rankingMode: 'high_score',
-      maxDrawsPerUser: 5,
+      maxDraws: 5,
       result: {
         type: 'score',
         score: payout,
@@ -116,7 +123,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
       message: string
     },
     wordPartyActions: PostActionType[],
-    logResult: ReturnType<LogRankScript['run']> | null,
+    postActions: PostActionType[] | null,
     characterKey: string | null
   ): PostActionType[] {
     const messageAction = PostActionMessageSchema.parse({
@@ -129,7 +136,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     })
 
     return [
-      ...(logResult?.postActions ?? []),
+      ...(postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: gameResult.result.party },
       { actionType: 'wordParty', delaySeconds: 3.2, wordParty: 'MultiplyBonanzaCracker1' },
       ...wordPartyActions,

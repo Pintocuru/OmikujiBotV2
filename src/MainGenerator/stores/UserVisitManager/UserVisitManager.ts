@@ -1,5 +1,5 @@
 // src/MainGenerator/script/omikujiProcess/UserVisitManager.ts
-import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+import { UserStatsRecord, UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 // 定数 liveComments ユーザーの参加者リスト(commenter)とランダム(winner)用
@@ -13,11 +13,10 @@ type VisitEventListener = (record: UserVisitRecord) => void
  * OmikenCommentTypeのomikujiRecordsフィールドへの後入れ更新に対応
  */
 export class UserVisitManager {
-  private readonly userVisits = new Map<string, UserVisitRecord>()
-  private readonly sessionId: string
-
-  // イベントリスナー（ruleId別）
-  private readonly listeners = new Map<string, Set<VisitEventListener>>()
+  private readonly userStats = new Map<string, UserStatsRecord>() // 全体の訪問情報
+  private readonly userVisits = new Map<string, UserVisitRecord>() // ruleId別 訪問情報
+  private readonly listeners = new Map<string, Set<VisitEventListener>>() // イベントリスナー（ruleId別）
+  private readonly sessionId: string // 配信用id
 
   constructor() {
     this.sessionId = this.generateSessionId()

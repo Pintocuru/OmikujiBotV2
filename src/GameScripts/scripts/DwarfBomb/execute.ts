@@ -4,7 +4,7 @@ import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, Sc
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'DwarfBomb'
@@ -24,25 +24,32 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     // ゲームの実行
     const gameResult = this.executeGame(user.userName, params.mode)
 
-    // ランキングデータの記録
-    const logResult = omiken ? this.recordRanking(omiken, gameResult.payout, characterKey) : null
-
-    // BotMessage の構築
-    const botMessageExtras = buildBotMessageRanking({
-      user,
-      bubbleText: gameResult.result.message,
-      componentKey: RANKING_KEY,
-      score: gameResult.payout,
-      symbol: '',
-      logResult,
-    })
-
     // ゲーム結果に基づいてWordPartyを生成
     const partyEffects = gameResult.game.generatePartyEffects(gameResult.result)
 
+    if (omiken) {
+      // ランキングデータの記録
+      const logResult = this.recordRanking(omiken, gameResult.payout, characterKey)
+
+      // BotMessage の構築
+      const botMessageExtra = buildBotMessageRanking({
+        user,
+        bubbleText: gameResult.result.message,
+        componentKey: RANKING_KEY,
+        score: gameResult.payout,
+        symbol: '',
+        isOverLimit: logResult.isOverLimit,
+      })
+
+      return {
+        actions: this.buildPostActions(logResult.postActions, partyEffects, characterKey, gameResult.result.message),
+        botMessageExtras: [botMessageExtra],
+      }
+    }
+    // omiken(コメント)がない場合
     return {
-      actions: this.buildPostActions(logResult, partyEffects, characterKey, gameResult.result.message),
-      botMessageExtras,
+      actions: this.buildPostActions(null, partyEffects, characterKey, gameResult.result.message),
+      botMessageExtras: [],
     }
   }
 
@@ -85,11 +92,10 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
-      userId: omiken.userId,
-      userName: omiken.userName,
+      user: UserNameSchema.parse(omiken),
       characterKey,
       rankingMode: 'high_score',
-      maxDrawsPerUser: 5,
+      maxDraws: 5,
       result: {
         type: 'score',
         score: payout,
@@ -101,7 +107,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
    * PostAction の構築
    */
   private buildPostActions(
-    logResult: ReturnType<LogRankScript['run']> | null,
+    postActions: PostActionType[] | null,
     partyEffects: PostActionType[],
     characterKey: string | null,
     bubbleText: string
@@ -116,7 +122,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     })
 
     return [
-      ...(logResult?.postActions ?? []),
+      ...(postActions ?? []),
       { actionType: 'wordParty', delaySeconds: 1, wordParty: 'DwarfBombRabbit1' },
       { actionType: 'wordParty', delaySeconds: 1.5, wordParty: 'DwarfBombRabbit2' },
       { actionType: 'wordParty', delaySeconds: 2, wordParty: 'DwarfBombRabbit3' },

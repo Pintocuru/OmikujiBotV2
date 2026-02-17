@@ -1,9 +1,17 @@
 // src/common/GameScripts/scriptsEngine/LogRank/execute.ts
-import { GameStateType, GameStateSchema, UserStatsType } from './GameScriptSchema'
-import { GameParams, GameParamsSchema, GameContext, GameResult } from './types'
+import { GameStateType, GameStateSchema, GameLogType, UserStatsType } from './GameScriptSchema'
+import { GameParams, GameParamsSchema } from './types'
 import { updateUserStats, createGameRecord } from './services/UserStatsService'
 import { createPostActions } from './services/MessageService'
-import { getScoreRank } from './services/RankingService'
+import { PostActionType } from '@/types'
+
+// ゲーム実行結果
+interface GameResult {
+  gameLog: GameLogType
+  userStats: UserStatsType
+  isOverLimit: boolean
+  postActions: PostActionType[]
+}
 
 export class LogRankScript {
   private gameState!: GameStateType
@@ -21,36 +29,32 @@ export class LogRankScript {
   run(params: GameParams): GameResult {
     try {
       const validatedParams = GameParamsSchema.parse(params)
-      const context = this.createContext(validatedParams)
+      const userId = validatedParams.user.userId
 
       // 1. 今回の実行記録を作成
-      const currentRecord = createGameRecord(context)
+      const gameLog = createGameRecord(validatedParams)
 
       // 2. ユーザーの累計統計を更新
-      const updatedUserStats = updateUserStats(context)
+      const updatedUserStats = updateUserStats(params, this.gameState)
 
       // 3. 上限チェック
-      const isOverLimit = this.checkDrawLimit(validatedParams.maxDrawsPerUser, updatedUserStats[validatedParams.userId])
+      const isOverLimit = checkDrawLimit(validatedParams.maxDraws, updatedUserStats[userId].totalDraws)
 
       // 4. 上限内の場合のみログに追加
-      if (!isOverLimit) {
-        this.gameState.logs.push(currentRecord)
-      }
+      if (!isOverLimit) this.gameState.logs.push(gameLog)
 
       // 5. userMapを更新
       this.gameState.userMap = updatedUserStats
 
-      // ランク生成
-      const rank = isOverLimit ? undefined : getScoreRank(this.gameState.logs, currentRecord.score)
+      // スコア順位を計算
+      const rank = !isOverLimit ? getScoreRank(this.gameState.logs, gameLog.score) : undefined
 
       // 6. 投稿アクション作成
-
-      const finalUserStats = updatedUserStats[validatedParams.userId]
-      const postActions = createPostActions(params.characterKey, finalUserStats, currentRecord, isOverLimit, rank)
+      const postActions = createPostActions(params, gameLog.score, isOverLimit, rank)
 
       return {
-        currentRecord,
-        currentUserStats: finalUserStats,
+        gameLog,
+        userStats: updatedUserStats[userId],
         isOverLimit,
         postActions,
       }
@@ -67,22 +71,25 @@ export class LogRankScript {
   getGameState(): GameStateType {
     return this.gameState
   }
+}
 
-  /**
-   * コンテキストを作成
-   */
-  private createContext(params: GameParams): GameContext {
-    return {
-      params,
-      gameState: this.gameState,
-    }
-  }
+/**
+ * 試行回数が上限を超えているかチェック
+ */
+const checkDrawLimit = (maxDraws: number, totalDraws: number): boolean => {
+  if (maxDraws <= 0) return false // 0は無制限
+  return totalDraws > maxDraws
+}
 
-  /**
-   * 試行回数が上限を超えているかチェック
-   */
-  private checkDrawLimit(maxDraws: number, userStats: UserStatsType): boolean {
-    if (maxDraws <= 0) return false // 0は無制限
-    return userStats.totalDraws > maxDraws
-  }
+/**
+ * スコア順位を計算する（1位始まり）
+ * 同スコアは同順位（dense rank）
+ */
+const getScoreRank = (logs: { score: number }[], targetScore: number): number => {
+  // スコアを降順に並べ、重複を除外
+  const uniqueScoresDesc = Array.from(new Set(logs.map((l) => l.score))).sort((a, b) => b - a)
+  const index = uniqueScoresDesc.findIndex((score) => score === targetScore)
+
+  // 見つからない場合は最下位扱い
+  return index === -1 ? uniqueScoresDesc.length : index + 1
 }

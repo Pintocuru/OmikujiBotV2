@@ -4,7 +4,7 @@ import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, Sc
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
 import { parseQueryString } from '@game/parseQueryString'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
 
 const RANKING_KEY = 'HugEmAll'
@@ -24,22 +24,30 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     // ゲームの実行
     const gameResult = this.executeGame(user.userName, params.mode)
 
-    // ランキングデータの記録
-    const logResult = omiken ? this.recordRanking(omiken, gameResult.result.payout, characterKey) : null
+    if (omiken) {
+      // ランキングデータの記録
+      const logResult = this.recordRanking(omiken, gameResult.result.payout, characterKey)
 
-    // BotMessage の構築
-    const botMessages = buildBotMessageRanking({
-      user,
-      bubbleText: gameResult.message,
-      componentKey: RANKING_KEY,
-      score: gameResult.result.payout,
-      symbol: '',
-      logResult,
-    })
+      // BotMessage の構築
+      const botMessageExtra = buildBotMessageRanking({
+        user,
+        bubbleText: gameResult.message,
+        componentKey: RANKING_KEY,
+        score: gameResult.result.payout,
+        symbol: '',
+        isOverLimit: logResult.isOverLimit,
+      })
 
+      return {
+        actions: this.buildPostActions(logResult.postActions, characterKey, gameResult.message),
+        botMessageExtras: [botMessageExtra],
+      }
+    }
+
+    // omiken(コメント)がない場合
     return {
-      actions: this.buildPostActions(logResult, characterKey, gameResult.message),
-      botMessageExtras: botMessages,
+      actions: this.buildPostActions(null, characterKey, gameResult.message),
+      botMessageExtras: [],
     }
   }
 
@@ -82,11 +90,10 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     characterKey: string | null
   ): ReturnType<LogRankScript['run']> {
     return this.logRank.run({
-      userId: omiken.userId,
-      userName: omiken.userName,
+      user: UserNameSchema.parse(omiken),
       characterKey,
       rankingMode: 'high_score',
-      maxDrawsPerUser: 5,
+      maxDraws: 5,
       result: {
         type: 'score',
         score: payout,
@@ -98,7 +105,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
    * PostAction の構築
    */
   private buildPostActions(
-    logResult: ReturnType<LogRankScript['run']> | null,
+    postActions: PostActionType[] | null,
     characterKey: string | null,
     bubbleText: string
   ): PostActionType[] {
@@ -112,7 +119,7 @@ export class ExecuteScript extends BaseScript implements ScriptClass {
     })
 
     return [
-      ...(logResult?.postActions ?? []),
+      ...(postActions ?? []),
       // TODO:演出の作成
       messageAction,
     ]
