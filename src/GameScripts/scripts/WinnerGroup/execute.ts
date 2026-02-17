@@ -1,12 +1,5 @@
 // src/GameScripts/scripts/WinnerGroup/execute.ts
-import {
-  ScriptClass,
-  ScriptResult,
-  PostActionType,
-  BotMessageExtraType,
-  BotMessageExtraSchema,
-  BaseScript,
-} from '@/types/'
+import { ScriptClass, ScriptResult, PostActionType, BotMessageExtraType, BotMessageExtraSchema } from '@/types/'
 import { parseQueryString } from '@game/parseQueryString'
 import { PostActionMessageSchema } from '@/types/'
 import { GameParamsSchema } from './params'
@@ -14,8 +7,9 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { getWinnersFromVisitManager } from './game'
+import { GameScriptBase } from '@/types/GameScript/GameScriptBase'
 
-export class ExecuteScript extends BaseScript implements ScriptClass {
+export class ExecuteScript extends GameScriptBase implements ScriptClass {
   run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const rawParams = parseQueryString(queryString)
     const { count, label, useRule } = GameParamsSchema.parse(rawParams)

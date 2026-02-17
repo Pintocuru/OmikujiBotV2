@@ -1,6 +1,7 @@
 // src\types\MainGenerator\UserVisits.ts
 import { z } from 'zod'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
 
 /**
  * 全体の訪問情報
@@ -17,9 +18,11 @@ export type UserVisitRecord = z.infer<typeof UserVisitRecordSchema>
  */
 export const UserStatsRecordSchema = z.object({
   ...UserNameSchema.shape,
-  team: z.enum(['red', 'blue', 'green', 'yellow']).default('red'),
+  order: z.number().optional(), // 並び替え用（UI 側で自由に使える）
+  team: z.enum(BaseVariantLabels).default('error'),
   score: z.number().default(0),
-  wins: z.number().default(0),
-  // 並べ替え用のキーなども追加可能
+  tags: z.array(z.string()).default([]), // タグ
+  badges: z.array(z.string()).default([]), // バッジ
+  lastVisit: z.number().default(() => Date.now()),
 })
 export type UserStatsRecord = z.infer<typeof UserStatsRecordSchema>

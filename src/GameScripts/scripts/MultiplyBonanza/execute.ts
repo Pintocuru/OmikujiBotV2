@@ -1,16 +1,17 @@
 // src/GameScripts/scripts/MultiplyBonanza/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult, BaseScript } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
 import { GameEngine } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { WordPartySelector } from './wordPartySelector'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { GameScriptBase } from '@/types/GameScript/GameScriptBase'
 
 const RANKING_KEY = 'MultiplyBonanza'
 
-export class ExecuteScript extends BaseScript implements ScriptClass {
+export class ExecuteScript extends GameScriptBase implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
   constructor() {

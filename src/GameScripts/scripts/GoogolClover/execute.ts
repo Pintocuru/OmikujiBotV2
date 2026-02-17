@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, ScriptResult, BaseScript } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, ScriptResult } from '@/types/'
 import { executeGame } from './sub/game'
 import { buildPostActions } from './sub/postActionBuilder'
 import { UserState } from './sub/types'
@@ -8,10 +8,11 @@ import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
+import { GameScriptBase } from '@/types/GameScript/GameScriptBase'
 
 const RANKING_KEY = 'GoogolClover'
 
-export class ExecuteScript extends BaseScript implements ScriptClass {
+export class ExecuteScript extends GameScriptBase implements ScriptClass {
   private readonly logRank = new LogRankScript()
   private readonly userStates = new Map<string, UserState>()
 

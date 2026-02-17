@@ -1,4 +1,4 @@
-// src/common/GameScripts/scriptsEngine/LogRank/GameScriptSchema.ts
+// src\types\GameScript\GameStateSchema.ts
 import { v4 } from 'uuid'
 import { z } from 'zod'
 

@@ -1,15 +1,16 @@
 // src/GameScripts/scripts/GouseiSuika/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult, BaseScript } from '@/types/'
+import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
 import { GachaGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo, buildBotMessageRanking } from '@game/scriptsEngine/RankingMessage/RankingMessage'
+import { GameScriptBase } from '@/types/GameScript/GameScriptBase'
 
 const RANKING_KEY = 'GouseiSuika'
 
-export class ExecuteScript extends BaseScript implements ScriptClass {
+export class ExecuteScript extends GameScriptBase implements ScriptClass {
   private readonly logRank = new LogRankScript()
 
   constructor() {

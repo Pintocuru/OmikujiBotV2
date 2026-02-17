@@ -46,7 +46,7 @@ export class UserVisitManager {
    * ユーザーの訪問を記録し、リスナーに通知
    */
   recordVisit(ruleId: string, user: UserNameType): void {
-    const { userId, userName: name, timestamp } = user
+    const { userId, userName, timestamp } = user
 
     const key = this.createKey(userId, ruleId)
     const existingRecord = this.userVisits.get(key)
@@ -54,7 +54,7 @@ export class UserVisitManager {
     let record: UserVisitRecord
 
     if (existingRecord) {
-      existingRecord.userName = name // 名前変更に対応
+      existingRecord.userName = userName // 名前変更に対応
       existingRecord.visitCount++
       existingRecord.timestamp = timestamp
       record = existingRecord
@@ -80,9 +80,6 @@ export class UserVisitManager {
 
   /**
    * イベントリスナーを登録
-   * @param ruleId 監視するruleId
-   * @param listener コールバック関数
-   * @returns リスナー解除用の関数
    */
   onVisit(ruleId: string, listener: VisitEventListener): () => void {
     if (!this.listeners.has(ruleId)) {

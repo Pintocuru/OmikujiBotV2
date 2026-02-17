@@ -1,5 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/execute.ts
-import { GameStateType, GameStateSchema, GameLogType, UserStatsType } from './GameScriptSchema'
+import { GameStateType, GameStateSchema, GameLogType, UserStatsType } from '@/types/GameScript/'
 import { GameParams, GameParamsSchema } from './types'
 import { updateUserStats, createGameRecord } from './services/UserStatsService'
 import { createPostActions } from './services/MessageService'
