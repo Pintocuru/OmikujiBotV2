@@ -1,7 +1,7 @@
 // src/types/OmikujiData/ComponentsSettingsSchema.ts
 import { z } from 'zod'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
-import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema, themes, ThemeSchema } from '@shared/styles/DaisyUiTheme'
 import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 import { CharacterColorScheme } from './CharacterSchema'
 
@@ -46,6 +46,17 @@ export const SettingsToastSchema = z.object({
   showThumbnail: z.array(z.string()).default([]).catch([]), // サムネイルとして表示したいキャラクターのkeyを並べる(新設)
 })
 export type SettingsToastType = z.infer<typeof SettingsToastSchema>
+
+/**
+ * ニュースフラッシュ
+ */
+export const SettingsFlashBannerSchema = z.object({
+  iconSize: z.number().int().min(0).max(32).default(16).catch(16), // アイコンの表示サイズ (px)
+  showCharacterOnRight: z.boolean().default(false).catch(false), // キャラクターを右側に表示するか(falseで左側)
+  defaultCharacterKey: z.string().nullable().default(null).catch(null), // デフォルトキャラクター
+  defaultMessage: z.string().default('').catch(''), // デフォルトメッセージ(通常プレースホルダーのみ使用可)
+})
+export type SettingsFlashBannerType = z.infer<typeof SettingsFlashBannerSchema>
 
 /**
  * ランキング Ranking
@@ -167,6 +178,7 @@ export const ComponentsSettingsSchema = z.object({
   counter: SettingsCounterSchema.optional(),
   winnerGroup: SettingsWinnerGroupSchema.optional(),
   flightSeat: SettingsFlightSeatSchema.optional(),
+  flashBanner: SettingsFlashBannerSchema.optional(),
 })
 
 export type ComponentsSettings = z.infer<typeof ComponentsSettingsSchema>

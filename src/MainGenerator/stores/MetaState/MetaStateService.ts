@@ -26,7 +26,7 @@ export class MetaStateService {
       this.previous = this.current
       this.current = normalized
 
-      // 🔧 FIX: peakChanged を計算してから peak を更新
+      // peakChanged を計算してから peak を更新
       const peakChanged = this.updatePeak(normalized)
 
       this.notifySubscribers(peakChanged)
@@ -43,8 +43,7 @@ export class MetaStateService {
   }
 
   /**
-   * 🔧 FIX: peak を更新し、peakChanged フラグを返す
-   * このメソッドが peak を超えたかどうかを判定する唯一の場所
+   * peak を更新し、peakChanged フラグを返す
    */
   private updatePeak(meta: NormalizedMeta) {
     const peakChanged = {
@@ -60,7 +59,7 @@ export class MetaStateService {
   }
 
   /**
-   * 🔧 FIX: peakChanged を受け取るだけ（peak 値は不要）
+   * peakChanged を受け取る
    */
   private notifySubscribers(peakChanged: { upVote: boolean; viewer: boolean }) {
     const event: MetaUpdateEvent = {

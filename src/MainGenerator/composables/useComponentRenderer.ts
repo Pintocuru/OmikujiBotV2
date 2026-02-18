@@ -7,6 +7,7 @@ import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
 import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
 import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
 import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
+import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
 
 /**
  * ??
@@ -35,6 +36,9 @@ const COMPONENT_MAP: Record<ComponentKind, ComponentMapEntry> = {
   },
   flightSeat: {
     component: FlightSeat,
+  },
+  FlashBanner: {
+    component: FlashBanner,
   },
 } as const
 

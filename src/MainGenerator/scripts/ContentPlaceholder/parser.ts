@@ -3,15 +3,7 @@
 import { sanitizeText } from './context'
 
 /**
- * テキスト解析・パース用の純粋関数群
- * 状態を持たず、入力に対して常に同じ出力を返す
- */
-
-/**
  * ネストを考慮して、対応する閉じ括弧 >> の位置を返す
- * @param text 検索対象のテキスト
- * @param startPos 開始位置（<<の位置）
- * @returns 対応する>>の位置、見つからない場合は-1
  */
 export function findMatchingClosingBracket(text: string, startPos: number): number {
   let depth = 0

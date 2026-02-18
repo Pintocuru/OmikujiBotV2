@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha5",
-    "dataVersion": 2.09005,
+    "generatorVersion": "2.1.0",
+    "dataVersion": 2.1,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -3136,7 +3136,7 @@
       "name": "カペラテ",
       "description": "おみくじBOTのキャラクターです",
       "createdAt": "2025-10-07T06:53:31.101Z",
-      "updatedAt": "2025-10-07T06:57:55.124Z",
+      "updatedAt": "2026-02-18T12:43:53.901Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#E65100",
@@ -3163,9 +3163,9 @@
       },
       "color": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
+        "daisyUiTheme": "coffee",
         "backFrom": "primary",
-        "backTo": "primary",
+        "backTo": "secondary",
         "nameColor": "#FFB74D",
         "textColor": "#FFF3E0",
         "backgroundColor": "#F57C00"
@@ -3182,7 +3182,7 @@
       "key": "honjoFox",
       "name": "中仙道の村きつね",
       "createdAt": "2025-11-18T05:28:00.617Z",
-      "updatedAt": "2025-11-18T05:34:16.566Z",
+      "updatedAt": "2026-02-18T12:44:04.400Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -3210,13 +3210,13 @@
         "sleepy": []
       },
       "color": {
-        "isTheme": true,
+        "isTheme": false,
         "daisyUiTheme": "dark",
         "backFrom": "primary",
         "backTo": "primary",
-        "nameColor": "#90A4AE",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#455A64",
+        "nameColor": "#F48FB1",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#AD1457",
         "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
       },
       "displayOption": {
@@ -3332,6 +3332,14 @@
       {
         "slot": "extra",
         "kind": "counter"
+      },
+      {
+        "slot": "primary",
+        "kind": "FlashBanner"
+      },
+      {
+        "slot": "secondary",
+        "kind": "toast"
       }
     ],
     "commonStyle": {
@@ -3348,7 +3356,6 @@
     },
     "settings": {
       "bubble": {
-        "slotType": "primary",
         "showCharacters": {
           "center": [
             "chocolate",
@@ -3368,13 +3375,11 @@
         "bubbleTextSpeed": 50
       },
       "toast": {
-        "slotType": "secondary",
         "showToastsOnRight": true,
         "showToastsCharacter": false,
         "showThumbnail": []
       },
       "ranking": {
-        "slotType": "extra",
         "targetScriptKeys": [
           "basicList"
         ],
@@ -3385,9 +3390,8 @@
         "component": "rankStandard"
       },
       "counter": {
-        "slotType": "extra",
-        "ruleKey": "",
         "component": "counterUser",
+        "ruleKey": "",
         "target": "draw",
         "label": "Counter",
         "color": {
@@ -3398,8 +3402,10 @@
       },
       "winnerGroup": {
         "component": "valentineCoupling",
+        "ruleKey": "",
         "label": "ラッキーメンバーズ",
-        "color": "lofi"
+        "color": "lofi",
+        "queryString": "count=2&label=今日のラッキーさん"
       },
       "flightSeat": {
         "slotType": "extra",
@@ -3431,7 +3437,8 @@
       "counter",
       "flightSeat",
       "WinnerGroup",
-      "winnerGroup"
+      "winnerGroup",
+      "FlashBanner"
     ],
     "gameScripts": [
       "GoogolClover",
