@@ -1,8 +1,9 @@
+<!-- vue-draggable-plus の代替品 -->
 <template>
   <component
     :is="tag"
     ref="containerRef"
-    :class="class"
+    :class="classes"
     :data-drag-group="group"
     @dragover.prevent="handleContainerDragOver"
     @drop="handleDropOnContainer"
@@ -34,7 +35,7 @@
       modelValue: any[]
       itemKey: string
       tag?: string
-      class?: string | string[] | Record<string, boolean>
+      classes?: string | string[] | Record<string, boolean>
       group?: string
       disabled?: boolean
       animation?: number

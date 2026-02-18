@@ -2,7 +2,7 @@
 <template>
   <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
     <div class="flex flex-wrap gap-2 mb-2">
-      <VueDraggable v-model="internalValue" itemKey="key" group="tags" class="flex flex-wrap gap-2">
+      <VueDraggable v-model="internalValue" itemKey="key" group="tags" classes="flex flex-wrap gap-2">
         <template #item="{ element, index }">
           <span class="badge badge-sm badge-primary">
             {{ element }} <span class="cursor-pointer" @click="removeTag(index)">✕</span></span

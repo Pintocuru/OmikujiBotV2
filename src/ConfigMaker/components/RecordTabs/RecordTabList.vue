@@ -10,7 +10,7 @@
       item-key="key"
       @update:model-value="(value: any) => (draggableRules = value)"
       tag="div"
-      class="flex flex-wrap gap-1"
+      classes="flex flex-wrap gap-1"
       :disabled="!!store.searchQuery || store.isMultiSelectMode"
       :animation="200"
       ghost-class="opacity-50"

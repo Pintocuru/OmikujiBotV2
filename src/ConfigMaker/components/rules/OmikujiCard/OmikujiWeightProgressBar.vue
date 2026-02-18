@@ -29,7 +29,7 @@
         @update:modelValue="$emit('update:items', $event)"
         handle=".legend-drag-handle"
         :animation="200"
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
+        classes="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
       >
         <template #item="{ element: item, index }">
           <OmikujiLegendItem

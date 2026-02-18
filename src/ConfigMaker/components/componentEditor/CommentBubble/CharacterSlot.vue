@@ -11,7 +11,7 @@
       :model-value="items"
       item-key="key"
       group="characters"
-      :class="[
+      :classes="[
         'flex flex-wrap gap-2 p-2 min-h-[50px] rounded',
         showClear ? 'border border-dotted border-gray-400 bg-white' : 'border border-dashed border-gray-400',
       ]"
