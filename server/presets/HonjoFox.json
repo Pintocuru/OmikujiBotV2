@@ -1,17 +1,22 @@
 {
   "meta": {
-    "id": "1754884254510-shoywq",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.1",
+    "id": "HonjoFox-ver2026.02.18-2.1.0",
+    "name": "おみくじ BOT 中仙道の村きつね OmikujiBot HonjoFox",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.02.18-2.1.0",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.1.0",
     "dataVersion": 2.1,
-    "author": "Pintocuru",
+    "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "中仙道の村きつね"
+      "おみくじBOT",
+      "BOT",
+      "中仙道の村きつね",
+      "コメントチェック",
+      "初見判定ちゃん"
     ],
-    "license": "CC-BY 4.0"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7982286"
   },
   "jsonMerge": [],
   "comments": {
@@ -1686,7 +1691,9 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": [],
+          "center": [
+            "honjoFox_2d"
+          ],
           "slot1": [
             "honjoFox"
           ],

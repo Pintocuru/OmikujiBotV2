@@ -4,6 +4,7 @@ import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
+import { APP_VERSION, BUILD_DATE } from '@/version'
 
 /**
  * 共通のビルド設定を生成
@@ -11,6 +12,7 @@ import { processMerge } from '../JsonMerge/JsonMergeProcessor'
  */
 export function createCommonBuildConfig(packageRoot: string) {
   return {
+    version: `${BUILD_DATE}-${APP_VERSION}`,
     packageRoot,
     entryPoints: null,
 

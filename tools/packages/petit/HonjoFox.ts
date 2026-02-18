@@ -1,6 +1,5 @@
 // tools\packages\solo\HonjoFox.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
-import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
 /**
@@ -11,8 +10,7 @@ function project(packageRoot: string): ProjectConfig {
     ...createCommonBuildConfig(packageRoot),
 
     name: 'HonjoFox',
-    version: `${BUILD_DATE}-${APP_VERSION}`,
-    tags: ['おみくじBOT', 'リスト表示', 'winner', 'カップル', 'カップリング'],
+    tags: ['おみくじBOT', 'BOT', '中仙道の村きつね', 'コメントチェック', '初見判定ちゃん'],
 
     license: {
       basic: 'CC-BY 4.0',
@@ -33,7 +31,10 @@ function project(packageRoot: string): ProjectConfig {
     // アクセスレベル別設定
     accessLevels: {
       basic: {
-        filesToCopy: [{ from: 'assets/exported/thumb/thumb_HonjoFox.gif', to: 'thumb.gif' }],
+        filesToCopy: [
+          { from: 'assets/exported/thumb/thumb_HonjoFox.gif', to: 'thumb.gif' },
+          { from: 'assets/exported/Characters/HonjoFox/', to: 'Characters/HonjoFox/' },
+        ],
       },
     },
   }

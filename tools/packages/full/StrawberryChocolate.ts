@@ -1,6 +1,5 @@
 // tools\packages\full\StrawberryChocolate.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
-import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
 /**
@@ -11,8 +10,16 @@ function project(packageRoot: string): ProjectConfig {
     ...createCommonBuildConfig(packageRoot),
 
     name: 'StrawberryChocolate',
-    version: `${BUILD_DATE}-${APP_VERSION}`,
-    tags: ['おみくじBOT', 'ストロベリーショコラ', '占い', 'じゃんけん'],
+    tags: [
+      'おみくじBOT',
+      'BOT',
+      'ストロベリーショコラ',
+      'コメントチェック',
+      '初見判定ちゃん',
+      'おみくじ',
+      '占い',
+      'じゃんけん',
+    ],
     /**
      * CC-BY 4.0 (表示) : 表示義務 再配布OK ライセンス変更OK
      * 利用規約に従う
