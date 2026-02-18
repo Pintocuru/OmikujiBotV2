@@ -36,7 +36,8 @@ import RunicOracleProject from './packages/solo/RunicOracle'
 import TarotCardProject from './packages/solo/TarotCard'
 import ValentineCoupling from './packages/solo/ValentineCoupling'
 
-// syoken
+// petit
+import HonjoFoxProject from './packages/petit/HonjoFox'
 
 // .env からrootを取得
 const __filename = fileURLToPath(import.meta.url)
@@ -67,10 +68,6 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   */
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
-
   /**
    * full
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -102,11 +99,11 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
    */
-
   /**
-   * syoken
-  { project: '5percent_Dora', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+   * petit
+  { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
    */
+  { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
 ]
 
 /**
@@ -158,7 +155,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
       BigBangFortuneProject(packageRoot),
       ValentineCoupling(packageRoot),
 
-      // syoken
+      // petit
+      HonjoFoxProject(packageRoot),
     ])
 
     // 改良されたビルドを実行
