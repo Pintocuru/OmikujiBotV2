@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.02.17-2.1.0",
-    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate-PRO",
+    "id": "StrawberryChocolate-ver2026.02.18-2.1.0",
+    "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.17-2.1.0",
+    "version": "ver2026.02.18-2.1.0",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.1.0",
     "dataVersion": 2.1,
@@ -141,21 +141,6 @@
       ]
     },
     {
-      "0": "巫",
-      "1": "女",
-      "2": "さ",
-      "3": "ん",
-      "4": "の",
-      "5": "お",
-      "6": "み",
-      "7": "く",
-      "8": "じ",
-      "9": "(",
-      "10": "ノ",
-      "11": "ー",
-      "12": "マ",
-      "13": "ル",
-      "14": ")",
       "id": "a3a3cb54-e447-43d2-b506-8b18f23417a4",
       "key": "e4970825-0ccd-4a68-83f4-1cd37e8b135c",
       "name": "巫女さんのおみくじ(ノーマル)",
@@ -1660,6 +1645,10 @@
       {
         "slot": "secondary",
         "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
       }
     ],
     "commonStyle": {
@@ -1699,7 +1688,7 @@
         "targetScriptKeys": [
           "basicList"
         ],
-        "title": "🍉スイカランキング🍉",
+        "title": "🥠おみくじ履歴⛩️",
         "color": "lofi",
         "limit": 5,
         "sortOrder": "new",
@@ -1741,7 +1730,8 @@
     },
     "components": [
       "bubble",
-      "toast"
+      "toast",
+      "ranking"
     ],
     "gameScripts": [],
     "developer": {
@@ -1751,7 +1741,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "cupcake"
   }
 }

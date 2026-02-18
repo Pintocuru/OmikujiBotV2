@@ -69,6 +69,7 @@ const packageBuildTargets: PackageBuildTarget[] = [
   */
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
 
   /**
    * full
