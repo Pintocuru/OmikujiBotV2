@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-beta1",
-    "dataVersion": 2.091,
+    "generatorVersion": "2.1.0",
+    "dataVersion": 2.1,
     "author": "Pintocuru",
     "tags": [
       "中仙道の村きつね"
@@ -21,7 +21,7 @@
       "name": "コメント数表示:HonjoFox",
       "description": "トーストでさりげなく、そのユーザーの総合コメント数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-14T06:27:47.362Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -94,7 +94,7 @@
       "name": "ギフト:HonjoFox",
       "description": "ギフトを貰ったときの感謝コメント",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-14T06:29:55.353Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -172,7 +172,7 @@
       "name": "初見判定ちゃん:HonjoFox",
       "description": "初めてコメントをした方への挨拶",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-14T06:31:09.519Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -359,7 +359,7 @@
       "name": "コメントチェック:HonjoFox",
       "description": "配信でのコメントが50回ごとにトースト表示でお知らせ",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-14T06:35:01.418Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -498,7 +498,7 @@
       "name": "村きつねコメント",
       "description": "名前を呼ばれたときの返事",
       "createdAt": "2025-11-18T06:21:49.245Z",
-      "updatedAt": "2026-02-14T06:41:01.640Z",
+      "updatedAt": "2026-02-18T02:31:58.557Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -602,7 +602,11 @@
         "access": [],
         "gift": [],
         "comment": [
-          "きつね"
+          "きつね",
+          "キツネ",
+          "狐",
+          "fox",
+          "🦊"
         ]
       },
       "limits": {
@@ -620,7 +624,7 @@
       "name": "村きつね:ぼやき",
       "description": "2分経過でランダムにぼやきます",
       "createdAt": "2025-11-18T07:52:00.564Z",
-      "updatedAt": "2026-02-14T06:36:10.870Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -676,7 +680,7 @@
       "name": "閲覧数・高評価数表示(1min)",
       "description": "1分ごとにさりげなく視聴数や高評価数を教えてくれます",
       "createdAt": "2025-08-11T15:34:29.297Z",
-      "updatedAt": "2026-02-14T06:36:26.088Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
@@ -771,7 +775,7 @@
       "name": "高評価の増加",
       "description": "高評価がピーク時よりも多いとき、反応します",
       "createdAt": "2026-02-09T04:42:22.540Z",
-      "updatedAt": "2026-02-14T05:58:14.097Z",
+      "updatedAt": "2026-02-18T02:30:07.902Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -830,7 +834,7 @@
       "name": "視聴数の増加",
       "description": "視聴数がピーク時よりも多いとき、反応します",
       "createdAt": "2026-02-14T00:58:18.958Z",
-      "updatedAt": "2026-02-14T06:02:56.204Z",
+      "updatedAt": "2026-02-18T02:30:07.903Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
@@ -894,6 +898,7 @@
       "id": "HonjoFoxComment",
       "key": "HonjoFoxComment",
       "name": "村きつね:声掛け用",
+      "description": "<<user>>入り。",
       "createdAt": "2025-11-18T07:46:29.201Z",
       "updatedAt": "2026-02-14T06:41:13.605Z",
       "order": 1,
@@ -1116,13 +1121,13 @@
         "わっちは、<<user>>の歩みを静かに見守る。",
         "焦らず、自分のペースで進むのじゃ。",
         "わっちは、そなたの力になるぞ。"
-      ],
-      "description": "<<user>>入り。"
+      ]
     },
     "HonjoFoxTimer": {
       "id": "HonjoFoxTimer",
       "key": "HonjoFoxTimer",
       "name": "村きつね:タイマー用",
+      "description": "定時に表示されるぼやき用。",
       "createdAt": "2025-11-18T07:45:18.540Z",
       "updatedAt": "2026-02-14T06:41:35.867Z",
       "order": 2,
@@ -1542,8 +1547,7 @@
         "新しい出会いに、わくわくするのう。",
         "人の世のドラマは、尽きることがない。",
         "さあ、今日も観察を始めるぞ。"
-      ],
-      "description": "定時に表示されるぼやき用。"
+      ]
     }
   },
   "characters": {
@@ -1551,8 +1555,9 @@
       "id": "honjoFox",
       "key": "honjoFox",
       "name": "中仙道の村きつね",
+      "description": "宿場町の外れにひっそりと暮らす、齢を重ねた古いきつね。人々の営みを静かに見守り続けている。",
       "createdAt": "2025-11-18T05:28:00.617Z",
-      "updatedAt": "2026-02-14T06:42:52.741Z",
+      "updatedAt": "2026-02-18T02:29:45.977Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -1600,8 +1605,59 @@
         "imageBase64": "",
         "frameId": "",
         "rpgVoice": "rpg_voice_a5"
+      }
+    },
+    "honjoFox_2d": {
+      "id": "2558b57c-e957-4754-9edd-64a24305db7d",
+      "key": "honjoFox_2d",
+      "name": "中仙道の村きつね(イラスト)",
+      "description": "宿場町の外れにひっそりと暮らす、齢を重ねた古いきつね。人々の営みを静かに見守り続けている。",
+      "createdAt": "2026-02-18T02:29:56.657Z",
+      "updatedAt": "2026-02-18T02:30:57.961Z",
+      "order": 2,
+      "isEnabled": true,
+      "editorColor": "#FF9800",
+      "tags": [
+        "中仙道の村きつね"
+      ],
+      "accessLevel": "basic",
+      "version": "0.0.0",
+      "author": "Pintocuru",
+      "displayName": "きつね",
+      "image": {
+        "default": [
+          "honjoFox/2d-1.webp"
+        ],
+        "happy": [
+          "honjoFox/2d-1.webp"
+        ],
+        "excited": [],
+        "laughing": [],
+        "blushing": [],
+        "surprised": [],
+        "sad": [],
+        "angry": [],
+        "thinking": [],
+        "wink": [],
+        "singing": [],
+        "sleepy": []
       },
-      "description": "宿場町の外れにひっそりと暮らす、齢を重ねた古いきつね。人々の営みを静かに見守り続けている。"
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "halloween",
+        "backFrom": "primary",
+        "backTo": "primary",
+        "nameColor": "#90A4AE",
+        "textColor": "#ECEFF1",
+        "backgroundColor": "#455A64",
+        "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
+      },
+      "displayOption": {
+        "mode": "rpgVoice",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     }
   },
   "components": {
