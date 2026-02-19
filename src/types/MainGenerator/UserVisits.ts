@@ -4,7 +4,7 @@ import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
 
 /**
- * 全体の訪問情報
+ * ruleId別 訪問情報
  */
 export const UserVisitRecordSchema = z.object({
   ...UserNameSchema.shape,
@@ -14,7 +14,7 @@ export const UserVisitRecordSchema = z.object({
 export type UserVisitRecord = z.infer<typeof UserVisitRecordSchema>
 
 /**
- * ruleId別 訪問情報
+ * 全体の訪問情報
  */
 export const UserStatsRecordSchema = z.object({
   ...UserNameSchema.shape,

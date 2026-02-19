@@ -15,7 +15,8 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
       const isInit = await GetOmikenComments((omikens) => {
         // ユーザー記録
         for (const omiken of omikens) {
-          appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken))
+          const lc = omiken.meta.lc
+          appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken), lc)
         }
 
         // コメント処理

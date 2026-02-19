@@ -15,6 +15,7 @@ type VisitEventListener = (record: UserVisitRecord) => void
 export class UserVisitManager {
   private readonly userStats = new Map<string, UserStatsRecord>() // 全体の訪問情報
   private readonly userVisits = new Map<string, UserVisitRecord>() // ruleId別 訪問情報
+  private liveComments = 0 // その配信のコメント数
   private readonly listeners = new Map<string, Set<VisitEventListener>>() // イベントリスナー（ruleId別）
   private readonly sessionId: string // 配信用id
 
@@ -40,6 +41,7 @@ export class UserVisitManager {
    */
   resetSession(): void {
     this.userVisits.clear()
+    this.liveComments = 0
   }
 
   /**
@@ -74,8 +76,9 @@ export class UserVisitManager {
   /**
    * コメント受取時に呼び出す専用メソッド
    */
-  recordLiveComment(user: UserNameType): void {
+  recordLiveComment(user: UserNameType, lc: number): void {
     this.recordVisit(BOT_STATS_RULE_ID, user)
+    this.liveComments = lc
   }
 
   /**
