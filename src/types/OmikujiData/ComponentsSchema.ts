@@ -1,7 +1,9 @@
 // src/types/OmikujiData/ComponentsSchema.ts
 import { z } from 'zod'
-import { ComponentsCommonStyleSchema, ComponentsSettingsSchema } from './ComponentsSettingsSchema'
+import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
 import { COMPONENT_MAP, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
+import { fontFamilyOptions } from '../MainGenerator'
+import { CharacterColorScheme } from './CharacterSchema'
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
@@ -25,6 +27,15 @@ export const ComponentsConditionsSchema = z
   .max(3)
   .refine((v) => new Set(v.map((c) => c.slot)).size === v.length, { message: 'slot は重複不可' })
 export type ComponentsConditions = z.infer<typeof ComponentsConditionsSchema>
+
+/**
+ * 共通スタイル設定
+ */
+export const ComponentsCommonStyleSchema = z.object({
+  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+})
+export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
 
 /**
  * ComponentsSchema

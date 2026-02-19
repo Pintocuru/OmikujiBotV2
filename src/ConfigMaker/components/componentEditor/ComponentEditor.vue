@@ -37,21 +37,23 @@
   import CounterPreviewEditor from './CounterPreview/CounterPreviewEditor.vue'
   import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
   import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import FlashBannerEditor from './FlashBanner/FlashBannerEditor.vue'
+  import CommonStyleEditor from './CommonStyle/CommonStyleEditor.vue'
+  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
 
-  const activeSection = ref<string | null>('componentsSettings')
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
   const { isComment, isCharacter } = useVisibilityAccess()
+  const { isAdv } = useSettingMode()
+  const conditions = computed(() => data.value.components.conditions)
+
+  const activeSection = ref<string | null>('componentsSettings')
 
   const toggleSection = (section: string) => {
     activeSection.value = activeSection.value === section ? null : section
   }
-
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
-
-  const conditions = computed(() => data.value.components.conditions)
 
   const hasComponentKind = (kind: ComponentKind): boolean => conditions.value.some((c) => c.kind === kind)
 
@@ -73,6 +75,15 @@
       description: 'キャラクターの表示位置設定',
       component: BubbleCharacterEditor,
       shouldShow: hasComponentKind('bubble') && isCharacter.value,
+    },
+    // ニュースバナー
+    {
+      type: 'flashBanner',
+      icon: 'Megaphone',
+      title: 'ニュースアイテム',
+      description: 'ニュースバナー風のフキダシ設定',
+      component: FlashBannerEditor,
+      shouldShow: hasComponentKind('flashBanner'),
     },
     // トースト・サムネイル
     {
@@ -118,6 +129,15 @@
       description: '8時間フライト、どの席に座る？視聴者の座席配置表示',
       component: FlightSeatEditor,
       shouldShow: hasComponentKind('flightSeat') && isComment.value,
+    },
+    // フォントファミリー
+    {
+      type: 'commonStyle',
+      icon: 'Type',
+      title: 'フォント',
+      description: '各種アイテムのフォントを設定',
+      component: CommonStyleEditor,
+      shouldShow: isAdv.value,
     },
   ])
 </script>

@@ -3330,25 +3330,21 @@
   "components": {
     "conditions": [
       {
-        "slot": "extra",
-        "kind": "counter"
+        "slot": "secondary",
+        "kind": "toast"
       },
       {
         "slot": "primary",
-        "kind": "FlashBanner"
-      },
-      {
-        "slot": "secondary",
-        "kind": "toast"
+        "kind": "flashBanner"
       }
     ],
     "commonStyle": {
-      "fontFamily": "default",
+      "fontFamily": "mplus1p",
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary",
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "info",
+        "backTo": "info",
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
@@ -3418,6 +3414,13 @@
         "color": "synthwave",
         "allowReseating": false,
         "historyLimit": 10
+      },
+      "flashBanner": {
+        "label": "速報",
+        "iconSize": 12,
+        "showCharacterOnRight": false,
+        "defaultCharacterKey": null,
+        "defaultMessage": "チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>"
       }
     }
   },
@@ -3438,7 +3441,8 @@
       "flightSeat",
       "WinnerGroup",
       "winnerGroup",
-      "FlashBanner"
+      "FlashBanner",
+      "flashBanner"
     ],
     "gameScripts": [
       "GoogolClover",

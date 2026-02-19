@@ -17,7 +17,7 @@ export const COMPONENT_MAP = {
   counter: { slot: 'extra', label: 'カウンター' },
   winnerGroup: { slot: 'extra', label: 'ラッキーメンバーズ' },
   flightSeat: { slot: 'extra', label: 'フライトシート' },
-  FlashBanner: { slot: 'primary', label: 'ニュース' },
+  flashBanner: { slot: 'primary', label: 'ニュース' },
 } as const
 
 export type ComponentKind = keyof typeof COMPONENT_MAP

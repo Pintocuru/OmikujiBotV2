@@ -1,22 +1,6 @@
 // src/types/MainGenerator/useFontFamily.ts
 
-export const fontFamilyOptions = [
-  'default',
-  'mplus1p',
-  'shipporiMincho',
-  'kosugiMaru',
-  'kaiseiDecol',
-  'dotGothic',
-  'wdxlLubrifont',
-  'mochiyPop',
-  'kiwiMaru',
-  'hachiMaruPop',
-  'rocknrollOne',
-  'delaGothicOne',
-] as const
-export type FontFamilyType = (typeof fontFamilyOptions)[number]
-
-export const fontFamilyLabels: Record<FontFamilyType, string> = {
+export const fontFamilyLabels = {
   default: 'デフォルト(PC依存)',
   mplus1p: 'M PLUS 1p',
   kosugiMaru: '小杉丸',
@@ -30,6 +14,8 @@ export const fontFamilyLabels: Record<FontFamilyType, string> = {
   mochiyPop: 'モッチーポップ',
   delaGothicOne: 'デラゴシック',
 }
+export type FontFamilyType = keyof typeof fontFamilyLabels
+export const fontFamilyOptions = Object.keys(fontFamilyLabels) as FontFamilyType[]
 
 export function useFontFamily(font: FontFamilyType) {
   const mapping: Record<FontFamilyType, string> = {

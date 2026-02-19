@@ -19,7 +19,7 @@
     />
 
     <InformationCard>
-      <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
+      <p>デフォルトカラーは、メイン表示・サブ表示共通です。</p>
     </InformationCard>
   </template>
 
@@ -101,12 +101,14 @@
   import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isAdv } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
   const { characterArray } = useCharacterManager()
+  const { updateCommonStyleField } = useCommonStyleUpdate()
 
   const bubble = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
@@ -114,16 +116,6 @@
   // bubble設定の値を直接指定して更新する関数
   const updateFieldValue = <K extends keyof typeof bubble.value>(field: K, value: (typeof bubble.value)[K]) => {
     omikujiStore.updateComponentSettings('bubble', {
-      [field]: value,
-    })
-  }
-
-  // commonStyle の更新関数
-  const updateCommonStyleField = <K extends keyof typeof commonStyle.value>(
-    field: K,
-    value: (typeof commonStyle.value)[K]
-  ) => {
-    omikujiStore.updateComponentsCommonStyle({
       [field]: value,
     })
   }

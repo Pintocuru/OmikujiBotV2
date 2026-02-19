@@ -37,7 +37,7 @@ const COMPONENT_MAP: Record<ComponentKind, ComponentMapEntry> = {
   flightSeat: {
     component: FlightSeat,
   },
-  FlashBanner: {
+  flashBanner: {
     component: FlashBanner,
   },
 } as const

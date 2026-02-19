@@ -4,6 +4,7 @@
     <Transition name="banner-swap" mode="out-in">
       <FlashBannerItem
         :key="currentMessage?.id ?? 'empty'"
+        :label="settings.label"
         :message="currentMessage?.bubble?.message ?? ''"
         :layers="layers"
         :icon-size="settings.iconSize"
@@ -17,14 +18,14 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref, toRef } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useAppStore } from '@main/stores/useAppStore'
-  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
   import { BotMessageBubbleSchema, BotMessageBubbleType } from '@/types'
   import { SettingsFlashBannerSchema } from '@/types/OmikujiData/'
-  import FlashBannerItem from './FlashBannerItem.vue'
+  import FlashBannerItem from './parts/FlashBannerItem.vue'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
+  import { transformIconPlaceholders } from '@main/ui/CommentBubble/TransformIconPlaceholders'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
-  import { transformIconPlaceholders } from '../CommentBubble/TransformIconPlaceholders'
 
   // Store / Manager
   const appStore = useAppStore()
@@ -38,9 +39,10 @@
       raw ??
         // テスト用
         {
+          label: '速報',
           defaultCharacterKey: null,
-          defaultMessage: 'チャンネル登録・高評価、お願いします。視聴数<<viewer>> 高評価<<upVote>>',
-          iconSize: 0,
+          defaultMessage: 'チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>',
+          iconSize: 8,
           showCharacterOnRight: false,
         }
     )
@@ -64,10 +66,13 @@
 
     const defaultMessage = settings.value.defaultMessage
     const metaData = appStore.metaState.getCurrent()
+    const visitData = appStore.userVisitManager.getLiveComment()
 
     const converted: Record<string, string | number> = {
       upVote: metaData?.upVote ?? 0,
       viewer: metaData?.viewer ?? 0,
+      commenter: visitData?.commenter ?? 0,
+      winner: visitData?.winners[0].userName ?? '名無し',
     }
 
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)

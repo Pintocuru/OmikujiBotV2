@@ -3,7 +3,7 @@
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
 
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :data-theme="flightSeat.color">
+  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
     <SeatGrid
       :seats="previewSeats"
       :layout="flightSeat.layout"
@@ -150,7 +150,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flightSeatLayouts, SettingsFlightSeatSchema } from '@/types/'
+  import { flightSeatLayouts, SettingsFlightSeatSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
@@ -165,6 +165,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isComment } = useVisibilityAccess()
+  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
 

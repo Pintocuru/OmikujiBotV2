@@ -22,6 +22,7 @@
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
   import { CharacterColorScheme, CharacterColorType } from '@/types/OmikujiData/'
+  import { createUiMap } from '../composables/UiBubbleMap'
 
   const props = withDefaults(
     defineProps<{
@@ -48,59 +49,19 @@
   // Brightness
   const BRIGHTNESS_CLASSES = ['', 'brightness-90', 'brightness-75', 'brightness-50', 'brightness-[30%]'] as const
 
-  const mode = computed(() => ({
-    theme: props.color?.isTheme ?? false,
-    brightness: BRIGHTNESS_CLASSES[Math.min(props.brightnessLevel, BRIGHTNESS_CLASSES.length - 1)],
-  }))
-
-  const uiMap = computed(() => {
-    const isTheme = mode.value.theme
-    const bgColor = props.color?.backgroundColor || '#212121'
-
-    return {
-      themeDataAttr: isTheme ? props.color.daisyUiTheme : null,
-
-      bubble: {
-        class: [
-          props.customClasses,
-          mode.value.brightness,
-          ...(isTheme
-            ? [
-                `text-${props.color.backFrom}-content`,
-                'bg-gradient-to-br',
-                `from-${props.color.backFrom}`,
-                `to-${props.color.backTo}`,
-              ]
-            : []),
-        ],
-        style: isTheme
-          ? {}
-          : {
-              backgroundColor: bgColor,
-              '--bubble-bg': bgColor,
-            },
-      },
-
-      name: {
-        class: isTheme ? 'badge mb-2 text-base-content' : '',
-        style: isTheme ? {} : { color: props.color?.nameColor || '#ccc' },
-      },
-
-      text: {
-        class: mode.value.brightness,
-        style: isTheme ? {} : { color: props.color?.textColor || '#ccc' },
-      },
-
-      arrow: {
-        class: [
-          props.customArrowClasses,
-          mode.value.brightness,
-          ...(isTheme ? [`border-t-${props.color.backTo}`] : []),
-        ],
-        style: isTheme ? {} : { borderTopColor: 'var(--bubble-bg)' },
-      },
-    }
+  const brightness = computed(() => {
+    if (props.brightnessLevel == null) return undefined
+    return BRIGHTNESS_CLASSES[Math.min(props.brightnessLevel, BRIGHTNESS_CLASSES.length - 1)]
   })
+
+  const uiMap = computed(() =>
+    createUiMap({
+      color: props.color,
+      brightness: brightness.value,
+      customClasses: props.customClasses,
+      customArrowClasses: props.customArrowClasses,
+    })
+  )
 
   // アニメーション
   const displayedHtml = ref(props.animatedText ? '' : props.message)

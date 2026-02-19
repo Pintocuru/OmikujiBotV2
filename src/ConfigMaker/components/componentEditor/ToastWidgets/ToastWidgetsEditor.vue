@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
 <template>
   <!-- サンプル表示 -->
-  <div class="flex flex-col">
+  <div class="flex flex-col" :class="[fontFamily]">
     <!-- トーストサンプル -->
     <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
       <ToastBubbleItem
@@ -37,7 +37,7 @@
       @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
     <InformationCard>
-      <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
+      <p>デフォルトカラーは、メイン表示・サブ表示共通です。</p>
     </InformationCard>
   </template>
 
@@ -83,7 +83,7 @@
       :showReset="true"
       @reset="resetMap.showThumbnail"
     >
-      <CharacterBadgeSelector
+      <CharacterSelectorMulti
         :characters="data.characters"
         :selectedKeys="toastSettings.showThumbnail"
         @update:selectedKeys="(keys) => updateField('showThumbnail', keys)"
@@ -95,8 +95,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleSchema, SettingsToastSchema } from '@/types/'
-  import CharacterBadgeSelector from './CharacterBadgeSelector.vue'
+  import { BotMessageBubbleSchema, SettingsToastSchema, useFontFamily } from '@/types/'
+  import CharacterSelectorMulti from './CharacterSelectorMulti.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -105,11 +105,14 @@
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
   const { iconSrc, getCharacterColor } = useCharacterManager()
+  const { updateCommonStyleField } = useCommonStyleUpdate()
+  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
@@ -127,16 +130,6 @@
     value: (typeof toastSettings.value)[K]
   ) => {
     omikujiStore.updateComponentSettings('toast', {
-      [field]: value,
-    })
-  }
-
-  // commonStyle の更新関数（v2.1）
-  const updateCommonStyleField = <K extends keyof typeof commonStyle.value>(
-    field: K,
-    value: (typeof commonStyle.value)[K]
-  ) => {
-    omikujiStore.updateComponentsCommonStyle({
       [field]: value,
     })
   }

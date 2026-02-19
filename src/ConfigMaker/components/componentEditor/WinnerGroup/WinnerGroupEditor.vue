@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\WinnerGroup\WinnerGroupEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-96 overflow-y-hidden" :data-theme="winnerSetting.color">
+  <div class="max-h-96 overflow-y-hidden" :class="[fontFamily]" :data-theme="winnerSetting.color">
     <WinnerGroupRenderer
       :key="previewKey"
       :winnerSetting="winnerSetting"
@@ -87,7 +87,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsWinnerGroupSchema, winnerComponents } from '@/types/'
+  import { SettingsWinnerGroupSchema, useFontFamily, winnerComponents } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -102,6 +102,7 @@
   const { isPro } = useSettingMode()
   const previewKey = ref(0)
   const rulesComment = computed(() => data.value.comments)
+  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const winnerSetting = computed(
     () => data.value.components.settings.winnerGroup ?? SettingsWinnerGroupSchema.parse({})

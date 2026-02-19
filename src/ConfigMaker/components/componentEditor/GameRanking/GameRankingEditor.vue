@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
-  <div v-if="ranking.targetScriptKeys.length > 0" class="max-h-56 overflow-y-hidden">
+  <div v-if="ranking.targetScriptKeys.length > 0" class="max-h-56 overflow-y-hidden" :class="[fontFamily]">
     <GameRankingManager :botMessageExtras="[]" :settings="ranking" />
   </div>
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
@@ -116,7 +116,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, rankingComponents, rankingSortOrderLabels, SettingsRankingSchema } from '@/types/'
+  import { isDev, rankingComponents, rankingSortOrderLabels, SettingsRankingSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
@@ -128,6 +128,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro, isGod } = useSettingMode()
+  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const ranking = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
 

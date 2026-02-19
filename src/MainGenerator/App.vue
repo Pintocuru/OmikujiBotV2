@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontClass]" data-theme="transparent">
+  <div v-if="appStore.isInitialized" class="h-screen overflow-hidden" :class="[fontFamily]" data-theme="transparent">
     <!-- 動的コンポーネント表示 -->
     <template v-for="item in activeComponents" :key="item?.slot">
       <component v-if="item" :is="item.component" />
@@ -28,7 +28,7 @@
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
   const { isComment, isTimer } = useVisibilityAccess()
-  const fontClass = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
+  const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
   const { activeComponents } = useComponentRenderer(conditions, isComment, isTimer)
   const { initialize } = useAppInitializer(isComment)

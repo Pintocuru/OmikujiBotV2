@@ -3,7 +3,7 @@ import { AccessLevelType } from '@shared/types'
 
 // アイテム
 export const BASIC_COMPONENTS = [] as const
-export const PRO_COMPONENTS = ['bubble', 'toast', 'ranking', 'counter'] as const
+export const PRO_COMPONENTS = ['bubble', 'toast', 'ranking', 'counter', 'flashBanner'] as const
 export const GOD_COMPONENTS: string[] = []
 
 // 判定ロジック

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\GameScript\GameScriptBase.ts
+// src\types\GameScript\GameScriptBase.ts
 import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
 
 // store のマネージャ呼び出し

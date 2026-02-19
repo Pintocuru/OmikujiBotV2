@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\toast\CharacterBadgeSelector.vue -->
+<!-- src\ConfigMaker\components\componentEditor\toast\CharacterSelectorMulti.vue -->
 <template>
   <div class="flex flex-wrap gap-2">
     <div
@@ -11,7 +11,7 @@
       }"
       @click="toggleSelection(key as string)"
     >
-      {{ character.displayName }}
+      {{ character.name }}
     </div>
   </div>
 </template>

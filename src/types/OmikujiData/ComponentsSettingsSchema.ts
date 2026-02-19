@@ -2,17 +2,6 @@
 import { z } from 'zod'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes, ThemeSchema } from '@shared/styles/DaisyUiTheme'
-import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
-import { CharacterColorScheme } from './CharacterSchema'
-
-/**
- * 共通スタイル設定
- */
-export const ComponentsCommonStyleSchema = z.object({
-  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
-  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
-})
-export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
 
 /**
  * フキダシ・キャラクター
@@ -51,10 +40,14 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
  * ニュースフラッシュ
  */
 export const SettingsFlashBannerSchema = z.object({
-  iconSize: z.number().int().min(0).max(32).default(16).catch(16), // アイコンの表示サイズ (px)
+  label: z.string().default('速報').catch(''),
+  iconSize: z.number().int().min(0).max(24).default(12).catch(12), // アイコンの表示サイズ (px)
   showCharacterOnRight: z.boolean().default(false).catch(false), // キャラクターを右側に表示するか(falseで左側)
   defaultCharacterKey: z.string().nullable().default(null).catch(null), // デフォルトキャラクター
-  defaultMessage: z.string().default('').catch(''), // デフォルトメッセージ(通常プレースホルダーのみ使用可)
+  defaultMessage: z
+    .string()
+    .default('チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>')
+    .catch(''), // デフォルトメッセージ(通常プレースホルダーのみ使用可)
 })
 export type SettingsFlashBannerType = z.infer<typeof SettingsFlashBannerSchema>
 

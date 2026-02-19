@@ -1,7 +1,7 @@
-<!-- src\ConfigMaker\components\componentEditor\counter\CounterComponentEditor.vue -->
+<!-- src\ConfigMaker\components\componentEditor\CounterPreview\CounterPreviewEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden">
+  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]">
     <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyUserNames(100)" />
   </div>
 
@@ -83,7 +83,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { counterComponents, SettingsCounterSchema } from '@/types/'
+  import { counterComponents, SettingsCounterSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
@@ -94,6 +94,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
+  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const rulesComment = computed(() => data.value.comments)
 

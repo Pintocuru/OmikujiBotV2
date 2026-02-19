@@ -2,25 +2,23 @@
 <template>
   <div
     v-if="message"
-    class="flex items-center w-full min-h-12 rounded-lg shadow-lg overflow-hidden"
+    class="flex items-center w-full min-h-12 rounded-lg shadow-lg overflow-hidden gap-2 px-2"
     :data-theme="dataTheme"
     :class="[uiMap.bubble.class, showCharacterOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="uiMap.bubble.style"
   >
+    <!-- ラベル -->
+    <div v-if="label" class="font-bold">
+      {{ label }}
+    </div>
+
     <!-- アイコン -->
-    <div
-      v-if="iconSize > 0 && layers.length > 0"
-      class="flex-shrink-0 flex items-center"
-      :class="showCharacterOnRight ? 'pr-2' : 'pl-2'"
-    >
+    <div v-if="iconSize > 0 && layers.length > 0" class="flex-shrink-0 flex items-center">
       <LayerImage :layers="layers" :size="iconSize" />
     </div>
 
     <!-- スクロールテロップ -->
-    <div
-      ref="textContainerRef"
-      class="flex-1 overflow-hidden px-3 min-w-0 bg-base-200 text-base-content rounded-lg mx-2"
-    >
+    <div ref="textContainerRef" class="flex-1 overflow-hidden px-3 min-w-0 bg-base-200 text-base-content rounded-lg">
       <span
         ref="textRef"
         class="inline-block whitespace-nowrap font-bold text-xl"
@@ -37,9 +35,11 @@
   import { computed, ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
   import { CharacterColorType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import { createUiMap } from '../../CommentBubble/composables/UiBubbleMap'
 
   const props = withDefaults(
     defineProps<{
+      label: string
       message: string
       layers: string[]
       iconSize?: number
@@ -47,8 +47,9 @@
       showCharacterOnRight?: boolean
     }>(),
     {
+      label: '',
       iconSize: 16,
-      showCharacterOnRight: true,
+      showCharacterOnRight: false,
     }
   )
 
@@ -112,36 +113,7 @@
   // isTheme=true のときキャラ側の daisyUiTheme を data-theme に適用
   const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
 
-  const uiMap = computed(() => {
-    const isTheme = props.color?.isTheme ?? false
-    const bgColor = props.color?.backgroundColor || '#212121'
-
-    return {
-      bubble: {
-        class: [
-          ...(isTheme
-            ? [
-                `text-${props.color.backFrom}-content`,
-                'bg-gradient-to-br',
-                `from-${props.color.backFrom}`,
-                `to-${props.color.backTo}`,
-              ]
-            : []),
-        ],
-        style: isTheme
-          ? {}
-          : {
-              backgroundColor: bgColor,
-              '--bubble-bg': bgColor,
-            },
-      },
-
-      text: {
-        class: '',
-        style: isTheme ? {} : { color: props.color?.textColor || '#ccc' },
-      },
-    }
-  })
+  const uiMap = computed(() => createUiMap({ color: props.color }))
 </script>
 
 <style scoped>

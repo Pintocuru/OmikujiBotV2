@@ -86,8 +86,8 @@
   import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { AlignLeft, AlignJustify } from 'lucide-vue-next'
   import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { AlignLeft, AlignJustify } from 'lucide-vue-next'
 
   const props = defineProps<{
     action: PostActionMessageType
