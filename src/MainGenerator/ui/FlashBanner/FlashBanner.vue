@@ -74,7 +74,7 @@
       upVote: metaData?.upVote ?? 0,
       viewer: metaData?.viewer ?? 0,
       commenter: drawWinners.commenter ?? 0,
-      winner: drawWinners.winners[0].userName ?? '名無し',
+      winner: drawWinners.winners[0]?.userName ?? '名無し',
     }
 
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
