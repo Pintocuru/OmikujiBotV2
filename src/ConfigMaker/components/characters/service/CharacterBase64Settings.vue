@@ -46,7 +46,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
-  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
     selectedItemKey: string | null

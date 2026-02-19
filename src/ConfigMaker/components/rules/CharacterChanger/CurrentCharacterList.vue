@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
   defineProps<{
     characterKeys: string[]

@@ -30,37 +30,8 @@
 
   <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
   <SettingItem :label="isToast ? '📝 トースト内容' : '💬 フキダシ内容'" description="プレースホルダーが使えます">
-    <div class="relative w-full">
-      <!-- input -->
-      <input
-        v-model="bubbleText"
-        type="text"
-        class="input input-bordered input-sm w-full pr-10"
-        :placeholder="isToast ? 'トーストのメッセージを入力' : 'フキダシのメッセージを入力'"
-        :class="{ hidden: isTextarea }"
-      />
-
-      <!-- textarea -->
-      <textarea
-        v-model="bubbleText"
-        rows="3"
-        class="textarea textarea-bordered textarea-sm w-full pr-10"
-        :placeholder="isToast ? 'トーストのメッセージを入力' : 'フキダシのメッセージを入力'"
-        :class="{ hidden: !isTextarea }"
-      ></textarea>
-
-      <!-- 切り替えボタン -->
-      <button
-        type="button"
-        class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs"
-        @click="isTextarea = !isTextarea"
-      >
-        <AlignLeft v-if="!isTextarea" class="w-4 h-4" />
-        <AlignJustify v-else class="w-4 h-4" />
-      </button>
-    </div>
+    <MessageTextEditor v-model="bubbleText" />
   </SettingItem>
-
   <!-- 変数プレースホルダーチェッカー -->
   <VariableDeclarationChecker :text="bubbleText" />
 
@@ -79,15 +50,15 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { CharacterEmotionType, PostActionMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
   import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
-  import { AlignLeft, AlignJustify } from 'lucide-vue-next'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import MessageTextEditor from './MessageTextEditor.vue'
 
   const props = defineProps<{
     action: PostActionMessageType
@@ -100,8 +71,6 @@
   // キャラクターオプションの取得
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
-
-  const isTextarea = ref(true)
 
   const updateAction = (updates: Partial<PostActionMessageType>) => {
     emit('update:action', { ...props.action, ...updates })

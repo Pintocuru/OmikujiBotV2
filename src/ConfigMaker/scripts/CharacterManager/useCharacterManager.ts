@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
 import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
-import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { buildDefaultShowCharacters } from '@main/scripts/CharacterManager/CharacterManagerHelper'
 
 /**

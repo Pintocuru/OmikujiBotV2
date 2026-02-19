@@ -3420,7 +3420,7 @@
         "iconSize": 12,
         "showCharacterOnRight": false,
         "defaultCharacterKey": null,
-        "defaultMessage": "\n\n<<\n'チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>',\n'そうですね',\n'知っていたか'\n>>"
+        "defaultMessage": "<<\n'チャンネル登録・高評価、お願いします。',\n'現在の視聴数 <<viewer>> / 高評価 <<upVote>>',\n'知っていたか'\n>>"
       }
     }
   },

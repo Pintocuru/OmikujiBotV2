@@ -1,7 +1,7 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
 import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/'
-import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
 export function usePostActionsTab(
   actions: Ref<PostActionType[]>,

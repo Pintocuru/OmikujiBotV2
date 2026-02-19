@@ -92,35 +92,7 @@
 
   <!-- デフォルトで表示させるメッセージ -->
   <SettingItem label="デフォルトメッセージ" description="プレースホルダーが使えます">
-    <div class="relative w-full">
-      <!-- input -->
-      <input
-        v-model="bubbleText"
-        type="text"
-        class="input input-bordered input-sm w-full pr-10"
-        placeholder="デフォルトメッセージを入力"
-        :class="{ hidden: isTextarea }"
-      />
-
-      <!-- textarea -->
-      <textarea
-        v-model="bubbleText"
-        rows="3"
-        class="textarea textarea-bordered textarea-sm w-full pr-10"
-        placeholder="デフォルトメッセージを入力"
-        :class="{ hidden: !isTextarea }"
-      ></textarea>
-
-      <!-- 切り替えボタン -->
-      <button
-        type="button"
-        class="absolute right-2 top-1/2 -translate-y-1/2 btn btn-ghost btn-xs"
-        @click="isTextarea = !isTextarea"
-      >
-        <AlignLeft v-if="!isTextarea" class="w-4 h-4" />
-        <AlignJustify v-else class="w-4 h-4" />
-      </button>
-    </div>
+    <MessageTextEditor v-model="bubbleText" />
   </SettingItem>
 </template>
 
@@ -135,11 +107,11 @@
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import FlashBannerItem from '@main/ui/FlashBanner/parts/FlashBannerItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { AlignLeft, AlignJustify } from 'lucide-vue-next'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
+  import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -154,7 +126,6 @@
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // Blink Control (コンポーザブル使用)
-
   const { blinkClass, triggerBlink } = useDelayedBlink({
     transitionDuration: 0, // エディターではTransition待ちなし
     blinkDuration: 750,
@@ -188,7 +159,6 @@
   }
 
   // Message Text
-  const isTextarea = ref(true)
   const bubbleText = computed<string>({
     get: () => flashBanner.value.defaultMessage ?? '',
     set: (value) => {
