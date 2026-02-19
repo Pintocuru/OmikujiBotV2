@@ -1,15 +1,15 @@
 <!-- src\ConfigMaker\components\componentEditor\FlashBanner\FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]">
+  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="refreshDefaultMessage">
     <FlashBannerItem
-      :key="flashBanner.label"
       :label="flashBanner.label"
       :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
       :layers="iconSrc(flashBanner.defaultCharacterKey, 'default')"
       :icon-size="flashBanner.iconSize"
       :color="getCharacterColor(flashBanner.defaultCharacterKey)"
       :show-character-on-right="flashBanner.showCharacterOnRight"
+      :blink-trigger="defaultMessageRefreshKey"
     />
   </div>
 
@@ -185,6 +185,9 @@
 
   // デフォルトメッセージの更新トリガー
   const defaultMessageRefreshKey = ref(0)
+  const refreshDefaultMessage = () => {
+    defaultMessageRefreshKey.value++
+  }
 
   // デフォルトコメント(プレースホルダー適用)
   const defaultComment = computed(() => {

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/FlashBannerItem.vue -->
+<!-- src\MainGenerator\ui\FlashBanner\parts\FlashBannerItem.vue -->
 <template>
   <div
     v-if="message"
@@ -8,7 +8,7 @@
     :style="uiMap.bubble.style"
   >
     <!-- ラベル -->
-    <div v-if="label" class="font-bold">
+    <div v-if="label" class="font-bold" :class="{ 'blink-animation': isBlinking }" :style="uiMap.name.style">
       {{ label }}
     </div>
 
@@ -45,6 +45,7 @@
       iconSize?: number
       color: CharacterColorType
       showCharacterOnRight?: boolean
+      blinkTrigger?: number
     }>(),
     {
       label: '',
@@ -114,6 +115,22 @@
   const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
 
   const uiMap = computed(() => createUiMap({ color: props.color }))
+
+  const isBlinking = ref(false)
+
+  watch(
+    () => props.blinkTrigger,
+    async () => {
+      if (!props.blinkTrigger) return
+
+      isBlinking.value = true
+
+      // 3回点滅（500ms × 3）
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      isBlinking.value = false
+    }
+  )
 </script>
 
 <style scoped>
@@ -133,6 +150,20 @@
     }
     100% {
       transform: translateX(0);
+    }
+  }
+
+  .blink-animation {
+    animation: blink 0.5s ease-in-out 6;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
     }
   }
 </style>

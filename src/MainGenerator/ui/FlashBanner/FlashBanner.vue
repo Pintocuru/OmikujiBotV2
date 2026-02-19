@@ -3,20 +3,20 @@
   <div class="fixed top-0 w-full flex justify-center">
     <Transition name="banner-swap" mode="out-in">
       <FlashBannerItem
-        :key="currentMessage?.id ?? 'empty'"
         :label="settings.label"
         :message="currentMessage?.bubble?.message ?? ''"
         :layers="layers"
         :icon-size="settings.iconSize"
         :color="currentCharacterColor"
         :show-character-on-right="settings.showCharacterOnRight"
+        :blink-trigger="blinkTriggerKey"
       />
     </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, ref, toRef } from 'vue'
+  import { computed, onMounted, onUnmounted, ref, toRef, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { BotMessageBubbleSchema, BotMessageBubbleType } from '@/types'
   import { SettingsFlashBannerSchema } from '@/types/OmikujiData/'
@@ -72,7 +72,7 @@
       upVote: metaData?.upVote ?? 0,
       viewer: metaData?.viewer ?? 0,
       commenter: visitData?.commenter ?? 0,
-      winner: visitData?.winners[0].userName ?? '名無し',
+      winner: visitData?.winners[0]?.userName ?? '名無し',
     }
 
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
@@ -134,6 +134,20 @@
       refreshInterval = null
     }
   })
+
+  // バナー切り替えアニメーション
+  const blinkTriggerKey = ref(0)
+  watch(
+    () => currentMessage.value?.id,
+    (newId) => {
+      // defaultComment は id を持たない（または固定）
+      const isDefault = !announceMessages.value.find((m) => m.id === newId)
+
+      if (!isDefault) {
+        blinkTriggerKey.value++
+      }
+    }
+  )
 </script>
 
 <style scoped>
