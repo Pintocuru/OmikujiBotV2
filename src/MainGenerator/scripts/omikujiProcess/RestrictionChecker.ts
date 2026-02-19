@@ -57,8 +57,8 @@ function isCooldownBlocked(cooldownSeconds: number): boolean {
 
 function isRepeatBlocked(userId: string, ruleKey: string, allowedCount: number): boolean {
   if (allowedCount <= 0) return false
-  const { userVisitManager } = useAppStore()
-  const currentCount = userVisitManager.getVisitCount(userId, ruleKey)
+  const { userSession } = useAppStore()
+  const currentCount = userSession.visits.getCount(userId, ruleKey)
 
   return currentCount >= allowedCount
 }

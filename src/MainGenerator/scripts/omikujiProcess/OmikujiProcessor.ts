@@ -44,26 +44,19 @@ export class OmikujiProcessor {
    * special アクションの処理
    */
   private handleSpecialAction(actionItem: ActionSetType): BotMessageType[] {
-    const { userVisitManager } = this.store
+    const { userSession } = this.store
 
-    if (actionItem.special === 'return') {
-      return [BotMessageEmptySchema.parse({})]
-    }
-
-    if (actionItem.special === 'continue') {
-      return []
-    }
+    if (actionItem.special === 'return') return [BotMessageEmptySchema.parse({})]
+    if (actionItem.special === 'continue') return []
 
     if (actionItem.special === 'reset') {
-      const ruleKey = actionItem.key
-      userVisitManager.resetRuleVisits(ruleKey)
+      userSession.visits.resetRule(actionItem.key)
       return createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`)
     }
 
     if (actionItem.special === 'log') {
-      const ruleKey = actionItem.key
-      const totalVisits = userVisitManager.getTotalVisitsByRuleId(ruleKey)
-      const totalUnique = userVisitManager.getUniqueVisitorCountByRuleId(ruleKey)
+      const totalVisits = userSession.visits.getTotalByRuleId(actionItem.key)
+      const totalUnique = userSession.visits.getUniqueCountByRuleId(actionItem.key)
       return createFirstBotMessages(`${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`)
     }
 
@@ -126,9 +119,12 @@ export class OmikujiProcessor {
    */
   private getBasePlaceholders(): Record<ServiceMetaCondition, string | number> {
     const meta = this.metaStateService.getCurrent()
-    const { userVisitManager } = this.store
-    const { commenter, winners } = userVisitManager.getLiveComment()
+    const { userSession } = this.store
 
+    // commenter: コメントした全ユーザー数、winner: ランダム当選者
+    // getBasePlaceholders
+    const commenter = userSession.stats.getUniqueCount()
+    const { winners } = userSession.stats.drawWinners(1)
     const winner = winners[0]?.userName ?? 'Null'
 
     return DefaultPlaceholdersMetaSchema.parse({

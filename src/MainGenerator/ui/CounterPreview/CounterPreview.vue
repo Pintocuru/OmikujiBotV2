@@ -27,31 +27,24 @@
 
   const count = computed<number | null>(() => {
     const _ = previewTick.value
-    const setting = counterSetting.value
-    const ruleKey = setting.ruleKey ? setting.ruleKey : undefined
+    const { ruleKey, target } = counterSetting.value
+    const effectiveRuleKey = ruleKey ?? ''
 
-    return setting.target === 'draw'
-      ? appStore.userVisitManager.getTotalVisitsByRuleId(ruleKey)
-      : appStore.userVisitManager.getVisitsByRuleId(ruleKey).length
+    return target === 'draw'
+      ? appStore.userSession.visits.getTotalByRuleId(effectiveRuleKey)
+      : appStore.userSession.visits.getByRuleId(effectiveRuleKey).length
   })
 
-  const hasPreviewData = computed(() => {
-    return count.value !== null && count.value > 0
-  })
+  const hasPreviewData = computed(() => !!count.value && count.value > 0)
 
   const lastUserName = computed<UserVisitRecord | null>(() => {
     const _ = previewTick.value
-    const setting = counterSetting.value
-    const ruleKey = setting.ruleKey ? setting.ruleKey : undefined
-    return appStore.userVisitManager.getLatestVisitorByRuleId(ruleKey)
+    const effectiveRuleKey = counterSetting.value.ruleKey ?? ''
+    return appStore.userSession.visits.getLatestByRuleId(effectiveRuleKey)
   })
 
-  watch(
-    () => lastUserName.value,
-    (data: UserVisitRecord | null) => {
-      if (!data) return
-      if (userList.value.includes(data)) return
-      userList.value.push(data)
-    }
-  )
+  watch(lastUserName, (data: UserVisitRecord | null) => {
+    if (!data || userList.value.includes(data)) return
+    userList.value.push(data)
+  })
 </script>

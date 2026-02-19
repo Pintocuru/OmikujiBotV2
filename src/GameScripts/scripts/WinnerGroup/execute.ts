@@ -3,7 +3,7 @@ import { ScriptClass, ScriptResult, PostActionType, BotMessageExtraType, BotMess
 import { parseQueryString } from '@game/parseQueryString'
 import { PostActionMessageSchema } from '@/types/'
 import { GameParamsSchema } from './params'
-import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { getWinnersFromVisitManager } from './game'
@@ -16,7 +16,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
     const ruleKey = useRule ? omiken?.meta.ruleKey : null
     const user = prepareUserInfo(omiken)
 
-    const winners = getWinnersFromVisitManager(count, ruleKey, this.visitManager)
+    const winners = getWinnersFromVisitManager(count, ruleKey, this.userSession)
     const names = winners.map((w) => w.userName)
     const winnerText = names.length === 1 ? names[0] : names.join(' さん、') + ' さん'
 
@@ -60,7 +60,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
 export default new ExecuteScript()
 
 // 最大10名のslotを自動生成
-function buildSlots(winners: UserVisitRecord[]) {
+function buildSlots(winners: UserNameType[]) {
   const slots: Record<string, string | undefined> = {}
 
   for (let i = 0; i < 10; i++) {

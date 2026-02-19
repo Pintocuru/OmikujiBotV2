@@ -76,13 +76,13 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { Clock, History, Hash, User, Trash2, FileQuestion } from 'lucide-vue-next'
+  import { UserNameType } from '@shared/types'
 
   interface HistoryItem {
     id: string
     timestamp: string
-    users: UserVisitRecord[]
+    users: UserNameType[]
   }
 
   defineProps<{

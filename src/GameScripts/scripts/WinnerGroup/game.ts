@@ -1,34 +1,35 @@
 // src/game.ts
 import { candidateNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
-import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'
-import { UserVisitManager } from '@main/stores/UserVisitManager/UserVisitManager'
+import { UserManager } from '@/MainGenerator/stores/UserManager/UserManager'
+import { UserNameSchema, UserNameType } from '@shared/types'
 
-// ★ UserVisitManagerを外部から注入できるように変更
 export function getWinnersFromVisitManager(
   count: number,
   ruleKey?: string | null,
-  visitManager?: UserVisitManager
-): UserVisitRecord[] {
-  if (!visitManager) return getDummyWinners(count)
+  userSession?: UserManager
+): UserNameType[] {
+  if (!userSession) return getDummyWinners(count)
 
   try {
-    const winners = visitManager.getLiveComment(count, ruleKey ?? undefined).winners
+    const rawWinners = ruleKey
+      ? userSession.visits.drawWinners(ruleKey, count).winners // ruleKey あり → visits
+      : userSession.stats.drawWinners(count).winners // ruleKey なし → stats 全体
+
+    const winners = rawWinners.map((r) => UserNameSchema.parse(r))
     return winners.length > 0 ? winners : getDummyWinners(count)
   } catch {
     return getDummyWinners(count)
   }
 }
 
-function getDummyWinners(count: number): UserVisitRecord[] {
+function getDummyWinners(count: number): UserNameType[] {
   const max = Math.min(count, candidateNames.length)
   const shuffled = [...candidateNames].sort(() => Math.random() - 0.5)
 
   return shuffled.slice(0, max).map((name, index) =>
-    UserVisitRecordSchema.parse({
+    UserNameSchema.parse({
       userName: name,
       userId: `dummy-${index}`,
-      ruleId: 'dummy',
-      visitCount: 0,
     })
   )
 }

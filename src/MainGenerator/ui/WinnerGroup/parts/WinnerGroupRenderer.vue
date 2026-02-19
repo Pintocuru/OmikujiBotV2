@@ -8,13 +8,13 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { SettingsWinnerGroupType, WinnerComponent } from '@/types'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import ValentineCoupling from '../components/ValentineCoupling.vue'
   import TopStars from '../components/TopStars.vue'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
     winnerSetting: SettingsWinnerGroupType
-    users: UserVisitRecord[]
+    users: UserNameType[]
     isVisible: boolean
   }>()
 

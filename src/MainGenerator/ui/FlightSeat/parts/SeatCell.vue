@@ -30,10 +30,10 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
-    seat: UserVisitRecord | null
+    seat: UserNameType | null
     index: number
   }>()
 

@@ -110,7 +110,7 @@
 
   // userVisitManager にイベントリスナーを登録
   onMounted(() => {
-    unsubscribe = appStore.userVisitManager.onVisit('liveComments', registerUser)
+    unsubscribe = appStore.userSession.stats.onUpdate(registerUser)
   })
 
   // コンポーネント破棄時にリスナーを解除

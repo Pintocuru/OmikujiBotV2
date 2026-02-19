@@ -44,7 +44,7 @@ export function processUserComment(omiken: OmikenCommentType): BotMessageType[] 
  * 単一ルールの処理
  */
 function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
-  const { userVisitManager } = useAppStore()
+  const { userSession } = useAppStore()
 
   // 1. コメントルールの条件チェック
   if (!checkAllTriggers(omiken, rule.trigger)) {
@@ -63,11 +63,11 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   }
 
   // 3. おみくじ成功時に回数をインクリメント
-  omiken.meta.draws = userVisitManager.getVisitCount(omiken.userId, rule.key) + 1
+  omiken.meta.draws = userSession.visits.getCount(omiken.userId, rule.key) + 1
   omiken.meta.ruleKey = rule.key
 
   const userName = UserNameSchema.parse(omiken)
-  userVisitManager.recordVisit(rule.key, userName)
+  userSession.visits.record(rule.key, userName)
 
   // 4. おみくじ実行
   const omikujiProcessor = new OmikujiProcessor()

@@ -68,13 +68,13 @@
 
     const defaultMessage = settings.value.defaultMessage
     const metaData = appStore.metaState.getCurrent()
-    const visitData = appStore.userVisitManager.getLiveComment()
+    const drawWinners = appStore.userSession.stats.drawWinners()
 
     const placeholderValues: Record<string, string | number> = {
       upVote: metaData?.upVote ?? 0,
       viewer: metaData?.viewer ?? 0,
-      commenter: visitData?.commenter ?? 0,
-      winner: visitData?.winners[0]?.userName ?? '名無し',
+      commenter: drawWinners.commenter ?? 0,
+      winner: drawWinners.winners[0].userName ?? '名無し',
     }
 
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)

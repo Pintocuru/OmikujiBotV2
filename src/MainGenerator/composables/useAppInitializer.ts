@@ -16,7 +16,7 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
         // ユーザー記録
         for (const omiken of omikens) {
           const lc = omiken.meta.lc
-          appStore.userVisitManager.recordLiveComment(UserNameSchema.parse(omiken), lc)
+          appStore.userSession.stats.recordComment(UserNameSchema.parse(omiken), lc)
         }
 
         // コメント処理

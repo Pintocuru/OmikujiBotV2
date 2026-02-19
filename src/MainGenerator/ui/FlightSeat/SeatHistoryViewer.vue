@@ -46,11 +46,11 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import { SeatLayout } from '@/types'
-  import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import SeatGrid from './parts/SeatGrid.vue'
+  import { UserNameType } from '@shared/types'
 
   interface SeatHistory {
-    seats: (UserVisitRecord | null)[]
+    seats: (UserNameType | null)[]
     clearedAt: number
   }
 

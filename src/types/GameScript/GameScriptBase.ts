@@ -1,12 +1,12 @@
 // src\types\GameScript\GameScriptBase.ts
-import { UserVisitManager } from '@/MainGenerator/stores/UserVisitManager/UserVisitManager'
+import { UserManager } from '@/MainGenerator/stores/UserManager/UserManager'
 
 // store のマネージャ呼び出し
 export abstract class GameScriptBase {
-  protected visitManager?: UserVisitManager
+  protected userSession?: UserManager
 
   // 初期化メソッド(GameScriptManagerから呼ばれる)
-  initialize(visitManager?: UserVisitManager) {
-    this.visitManager = visitManager
+  initialize(userSession?: UserManager) {
+    this.userSession = userSession
   }
 }

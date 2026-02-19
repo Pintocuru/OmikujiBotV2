@@ -13,11 +13,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import SeatCell from './SeatCell.vue'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
-    seats: (UserVisitRecord | null)[]
+    seats: (UserNameType | null)[]
     rows: number
     cols: number
   }>()

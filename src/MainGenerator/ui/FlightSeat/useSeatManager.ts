@@ -1,9 +1,9 @@
 // src\MainGenerator\ui\FlightSeat\useSeatManager.ts
 import { ref, computed, type Ref } from 'vue'
-import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+import { UserNameType } from '@shared/types'
 
 interface SeatHistory {
-  seats: (UserVisitRecord | null)[]
+  seats: (UserNameType | null)[]
   clearedAt: number
 }
 
@@ -16,7 +16,7 @@ interface SeatManagerOptions {
 export function useSeatManager(options: SeatManagerOptions) {
   const { totalSeats, historyLimit, allowReseating } = options
 
-  const seats = ref<(UserVisitRecord | null)[]>([])
+  const seats = ref<(UserNameType | null)[]>([])
   const seatHistory = ref<SeatHistory[]>([])
   const debugLog = ref<string[]>([])
   const activeUserIds = ref<Set<string>>(new Set())
@@ -76,7 +76,7 @@ export function useSeatManager(options: SeatManagerOptions) {
   }
 
   // ユーザーが着席可能かどうかを判定
-  function canUserBeSeat(user: UserVisitRecord): { canSeat: boolean; reason?: string } {
+  function canUserBeSeat(user: UserNameType): { canSeat: boolean; reason?: string } {
     if (isAlreadySeated(user.userId)) {
       return { canSeat: false, reason: '既に着席中' }
     }
@@ -90,14 +90,14 @@ export function useSeatManager(options: SeatManagerOptions) {
   }
 
   // ユーザーを指定座席に配置
-  function assignToSeat(user: UserVisitRecord, seatIndex: number): void {
+  function assignToSeat(user: UserNameType, seatIndex: number): void {
     seats.value[seatIndex] = user
     activeUserIds.value.add(user.userId)
     addDebugLog(`${user.userName} が座席 ${seatIndex + 1} に着席`)
   }
 
   // 満席時の処理とリトライ
-  function handleFullSeats(user: UserVisitRecord): boolean {
+  function handleFullSeats(user: UserNameType): boolean {
     addDebugLog(`満席のため ${user.userName} を配置できません`)
     archiveAndReset()
 
@@ -111,7 +111,7 @@ export function useSeatManager(options: SeatManagerOptions) {
   }
 
   // ユーザーを座席に登録（メインエントリポイント）
-  function registerUser(user: UserVisitRecord): boolean {
+  function registerUser(user: UserNameType): boolean {
     initSeatsIfNeeded()
 
     // 着席可否チェック

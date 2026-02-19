@@ -18,17 +18,17 @@
 <script setup lang="ts">
   import { computed, onMounted, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageExtraType, SettingsWinnerGroupSchema } from '@/types'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { BotMessageExtraType, SettingsWinnerGroupSchema, UserStatsRecord } from '@/types'
   import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
   import HistoryButton from './components/HistoryButton.vue'
   import { useAppStore } from '@main/stores/useAppStore'
   import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
+  import { UserNameType } from '@shared/types'
 
   interface HistoryItem {
     id: string
     timestamp: string
-    users: UserVisitRecord[]
+    users: UserNameType[]
   }
 
   const TIMER = 30000
@@ -56,10 +56,8 @@
     return Object.values(latestExtra.value.slots).filter((id): id is string => !!id)
   })
 
-  const selectedUsers = computed<UserVisitRecord[]>(() =>
-    selectedUserIds.value
-      .map((id) => appStore.userVisitManager.getVisitRecord(id))
-      .filter((r): r is UserVisitRecord => !!r)
+  const selectedUsers = computed<UserNameType[]>(() =>
+    selectedUserIds.value.map((id) => appStore.userSession.stats.get(id)).filter((r): r is UserStatsRecord => !!r)
   )
 
   // 30秒後に非表示にする
@@ -80,7 +78,7 @@
   }
 
   // 履歴に追加
-  const addToHistory = (users: UserVisitRecord[]) => {
+  const addToHistory = (users: UserNameType[]) => {
     if (users.length === 0) return
 
     const newItem: HistoryItem = {
@@ -112,7 +110,7 @@
     })
 
     // 対象のユーザーがいないなら稼働しない
-    const visits = appStore.userVisitManager.getVisitsByRuleId(ruleKey.value)
+    const visits = appStore.userSession.visits.getByRuleId(ruleKey.value)
     if (visits.length === 0) return
 
     // わんコメにpost

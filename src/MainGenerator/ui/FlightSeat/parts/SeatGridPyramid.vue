@@ -20,12 +20,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { SeatLayout } from '@/types'
-  import type { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { calculateSeatLayout, calculateTotalSeats } from '../seatLayoutUtils'
   import SeatCell from './SeatCell.vue'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
-    seats: (UserVisitRecord | null)[]
+    seats: (UserNameType | null)[]
     layout: SeatLayout
     rows: number
     cols?: number
