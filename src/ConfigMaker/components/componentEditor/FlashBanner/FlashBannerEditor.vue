@@ -1,7 +1,7 @@
 <!-- src\ConfigMaker\components\componentEditor\FlashBanner\FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="refreshDefaultMessage">
+  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="handlePreviewClick">
     <FlashBannerItem
       :label="flashBanner.label"
       :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
@@ -9,7 +9,7 @@
       :icon-size="flashBanner.iconSize"
       :color="getCharacterColor(flashBanner.defaultCharacterKey)"
       :show-character-on-right="flashBanner.showCharacterOnRight"
-      :blink-trigger="defaultMessageRefreshKey"
+      :label-class="blinkClass"
     />
   </div>
 
@@ -139,6 +139,7 @@
   import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
+  import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -152,7 +153,20 @@
   const flashBanner = computed(() => data.value.components.settings.flashBanner ?? SettingsFlashBannerSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
-  // 更新関数
+  // Blink Control (コンポーザブル使用)
+
+  const { blinkClass, triggerBlink } = useDelayedBlink({
+    transitionDuration: 0, // エディターではTransition待ちなし
+    blinkDuration: 750,
+  })
+
+  /** プレビュークリック時にブリンク */
+  const handlePreviewClick = async () => {
+    defaultMessageRefreshKey.value++
+    await triggerBlink(false) // 遅延なしで即座にブリンク
+  }
+
+  // Field Updates
   const updateField = (field: keyof typeof flashBanner.value, value: any) => {
     omikujiStore.updateComponentSettings('flashBanner', {
       ...flashBanner.value,
@@ -160,7 +174,6 @@
     })
   }
 
-  // リセット関数
   const resetField = (field: keyof typeof flashBanner.value) => {
     const defaults = SettingsFlashBannerSchema.parse({})
     updateField(field, defaults[field])
@@ -174,7 +187,7 @@
     defaultMessage: () => resetField('defaultMessage'),
   }
 
-  // bubble フィールドの computed（メッセージ内容）
+  // Message Text
   const isTextarea = ref(true)
   const bubbleText = computed<string>({
     get: () => flashBanner.value.defaultMessage ?? '',
@@ -183,15 +196,10 @@
     },
   })
 
-  // デフォルトメッセージの更新トリガー
+  // Default Comment with Placeholders
   const defaultMessageRefreshKey = ref(0)
-  const refreshDefaultMessage = () => {
-    defaultMessageRefreshKey.value++
-  }
 
-  // デフォルトコメント(プレースホルダー適用)
   const defaultComment = computed(() => {
-    // refreshKey を参照することで再計算をトリガー
     void defaultMessageRefreshKey.value
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
     contentPlaceholder.updateResolvedValues(defaultPlaceholdersShortLabels)

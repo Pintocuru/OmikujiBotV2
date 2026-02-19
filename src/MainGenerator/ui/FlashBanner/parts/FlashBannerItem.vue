@@ -7,13 +7,13 @@
     :class="[uiMap.bubble.class, showCharacterOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="uiMap.bubble.style"
   >
-    <!-- ラベル -->
-    <div v-if="label" class="font-bold" :class="{ 'blink-animation': isBlinking }" :style="uiMap.name.style">
+    <!-- ラベル（親からクラスを受け取る） -->
+    <div v-if="label" class="font-bold" :class="labelClass" :style="uiMap.name.style">
       {{ label }}
     </div>
 
     <!-- アイコン -->
-    <div v-if="iconSize > 0 && layers.length > 0" class="flex-shrink-0 flex items-center">
+    <div v-if="shouldShowIcon" class="flex-shrink-0 flex items-center">
       <LayerImage :layers="layers" :size="iconSize" />
     </div>
 
@@ -22,7 +22,6 @@
       <span
         ref="textRef"
         class="inline-block whitespace-nowrap font-bold text-xl"
-        :key="message"
         :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
         :style="uiMap.text.style"
         v-html="message"
@@ -37,6 +36,7 @@
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '../../CommentBubble/composables/UiBubbleMap'
 
+  // Props
   const props = withDefaults(
     defineProps<{
       label: string
@@ -45,33 +45,33 @@
       iconSize?: number
       color: CharacterColorType
       showCharacterOnRight?: boolean
-      blinkTrigger?: number
+      labelClass?: string // 親から受け取るブリンククラス
     }>(),
     {
       label: '',
       iconSize: 16,
       showCharacterOnRight: false,
+      labelClass: '',
     }
   )
 
-  // テキスト要素とコンテナの参照
+  // UI Styling
+  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
+  const uiMap = computed(() => createUiMap({ color: props.color }))
+  const shouldShowIcon = computed(() => props.iconSize > 0 && props.layers.length > 0)
+
+  // Scroll Detection
   const textRef = ref<HTMLElement | null>(null)
   const textContainerRef = ref<HTMLElement | null>(null)
-
-  // スクロールが必要かどうかを判定
   const shouldScroll = ref(false)
 
-  // スクロール判定の閾値（ピクセル）
   const SCROLL_THRESHOLD = 20
+  const DOM_RENDER_DELAY = 50
 
-  /**
-   * テキストがコンテナに収まるか判定
-   */
+  /** テキストがコンテナに収まるか判定 */
   const checkScrollNeeded = async () => {
-    // DOMの更新を待つ
     await nextTick()
-    // レンダリングの完了をさらに待つ
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    await new Promise((resolve) => setTimeout(resolve, DOM_RENDER_DELAY))
 
     if (!textRef.value || !textContainerRef.value) {
       shouldScroll.value = false
@@ -81,25 +81,20 @@
     const textWidth = textRef.value.scrollWidth
     const containerWidth = textContainerRef.value.clientWidth
 
-    // テキストがコンテナより閾値以上長い場合にスクロール
     shouldScroll.value = textWidth > containerWidth + SCROLL_THRESHOLD
   }
 
-  // メッセージが変わったらスクロール判定
+  // メッセージ変更時にスクロール判定
   watch(() => props.message, checkScrollNeeded, { immediate: true })
 
-  // リサイズ対応
+  // Resize Observer
   let resizeObserver: ResizeObserver | null = null
 
   onMounted(() => {
-    // 初期判定
     checkScrollNeeded()
 
-    // コンテナのリサイズを監視（OBSのブラウザソースサイズ変更に対応）
     if (textContainerRef.value) {
-      resizeObserver = new ResizeObserver(() => {
-        checkScrollNeeded()
-      })
+      resizeObserver = new ResizeObserver(checkScrollNeeded)
       resizeObserver.observe(textContainerRef.value)
     }
   })
@@ -110,31 +105,10 @@
       resizeObserver = null
     }
   })
-
-  // isTheme=true のときキャラ側の daisyUiTheme を data-theme に適用
-  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
-
-  const uiMap = computed(() => createUiMap({ color: props.color }))
-
-  const isBlinking = ref(false)
-
-  watch(
-    () => props.blinkTrigger,
-    async () => {
-      if (!props.blinkTrigger) return
-
-      isBlinking.value = true
-
-      // 3回点滅（500ms × 3）
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      isBlinking.value = false
-    }
-  )
 </script>
 
 <style scoped>
-  /* 条件付きテロップスクロール */
+  /* テロップスクロール */
   .animate-scroll {
     animation: ticker-scroll 14s linear infinite;
   }
@@ -153,8 +127,9 @@
     }
   }
 
+  /* ラベルブリンク（親から適用される） */
   .blink-animation {
-    animation: blink 0.5s ease-in-out 6;
+    animation: blink 0.25s ease-in-out 3;
   }
 
   @keyframes blink {
@@ -163,7 +138,7 @@
       opacity: 1;
     }
     50% {
-      opacity: 0;
+      opacity: 0.2;
     }
   }
 </style>

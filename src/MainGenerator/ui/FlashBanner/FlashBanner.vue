@@ -3,13 +3,14 @@
   <div class="fixed top-0 w-full flex justify-center">
     <Transition name="banner-swap" mode="out-in">
       <FlashBannerItem
+        :key="transitionKey"
         :label="settings.label"
         :message="currentMessage?.bubble?.message ?? ''"
         :layers="layers"
         :icon-size="settings.iconSize"
         :color="currentCharacterColor"
         :show-character-on-right="settings.showCharacterOnRight"
-        :blink-trigger="blinkTriggerKey"
+        :label-class="blinkClass"
       />
     </Transition>
   </div>
@@ -26,49 +27,50 @@
   import { transformIconPlaceholders } from '@main/ui/CommentBubble/TransformIconPlaceholders'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
+  import { useDelayedBlink } from './parts/useDelayedBlink'
 
-  // Store / Manager
+  // Store & Managers
+
   const appStore = useAppStore()
   const { botMessages, data } = storeToRefs(appStore)
   const { getCharacterColor, getCharacterLayers } = useCharacterManager()
 
-  // 設定
+  // Settings
   const settings = computed(() => {
     const raw = appStore.data.components?.settings?.flashBanner
     return SettingsFlashBannerSchema.parse(
-      raw ??
-        // テスト用
-        {
-          label: '速報',
-          defaultCharacterKey: null,
-          defaultMessage: 'チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>',
-          iconSize: 8,
-          showCharacterOnRight: false,
-        }
+      raw ?? {
+        label: '速報',
+        defaultCharacterKey: null,
+        defaultMessage: 'チャンネル登録・高評価、お願いします。視聴数 <<viewer>> / 高評価 <<upVote>>',
+        iconSize: 8,
+        showCharacterOnRight: false,
+      }
     )
   })
 
-  // コメントフィルタリング
+  // Message Management
+
+  /** アナウンス対象のコメントをフィルタリング */
   const announceMessages = computed(() =>
     botMessages.value.filter((msg): msg is BotMessageBubbleType => msg.type === 'comment' && !msg.bubble.isToast)
   )
 
-  // 表示制御
+  /** 表示コメントの制御 */
   const { displayedComments, start, stop } = useBotDisplay(toRef(() => announceMessages.value))
 
-  // デフォルトメッセージの更新トリガー
+  // Default Message with Placeholders
   const defaultMessageRefreshKey = ref(0)
 
-  // デフォルトコメント(プレースホルダー適用)
+  /** プレースホルダーを解決したデフォルトメッセージ */
   const defaultComment = computed(() => {
-    // refreshKey を参照することで再計算をトリガー
-    void defaultMessageRefreshKey.value
+    void defaultMessageRefreshKey.value // 再計算トリガー
 
     const defaultMessage = settings.value.defaultMessage
     const metaData = appStore.metaState.getCurrent()
     const visitData = appStore.userVisitManager.getLiveComment()
 
-    const converted: Record<string, string | number> = {
+    const placeholderValues: Record<string, string | number> = {
       upVote: metaData?.upVote ?? 0,
       viewer: metaData?.viewer ?? 0,
       commenter: visitData?.commenter ?? 0,
@@ -76,13 +78,20 @@
     }
 
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
-    contentPlaceholder.updateResolvedValues(converted)
+    contentPlaceholder.updateResolvedValues(placeholderValues)
     return contentPlaceholder.processText(defaultMessage)
   })
 
-  // 最新の visible コメント、なければデフォルトメッセージ
+  /** 30秒ごとにデフォルトメッセージを更新 */
+  const DEFAULT_MESSAGE_REFRESH_INTERVAL = 30000
+  let refreshInterval: ReturnType<typeof setInterval> | null = null
+
+  // Current Display Message
+
+  /** 現在表示中のメッセージ（visible なコメント or デフォルト） */
   const currentMessage = computed(() => {
     const visibleMessage = displayedComments.value.find((m) => m.display?.visible)
+
     if (visibleMessage) {
       return {
         ...visibleMessage,
@@ -93,6 +102,7 @@
       }
     }
 
+    // デフォルトメッセージを返す
     return BotMessageBubbleSchema.parse({
       bubble: {
         message: defaultComment.value,
@@ -101,29 +111,63 @@
     })
   })
 
-  // 画像レイヤー
+  // Character Display
+
+  /** キャラクターの画像レイヤー */
   const layers = computed(() => {
     const messageData = currentMessage.value
     if (!messageData) return []
     return getCharacterLayers(messageData)
   })
 
-  // キャラクターカラー
+  /** キャラクターのカラー設定 */
   const currentCharacterColor = computed(() => {
     const key = currentMessage.value?.bubble?.characterKey ?? null
     return getCharacterColor(key)
   })
 
-  // 30秒ごとにデフォルトメッセージをリフレッシュ
-  let refreshInterval: ReturnType<typeof setInterval> | null = null
+  // Transition & Blink Control
+
+  /** Transition用のキー（デフォルト or コメントID） */
+  const transitionKey = computed(() => {
+    return currentMessage.value?.id ?? 'default'
+  })
+
+  /** ブリンク制御（コンポーザブル使用） */
+  const { blinkClass, triggerBlink } = useDelayedBlink({
+    transitionDuration: 350,
+    blinkDuration: 750,
+  })
+
+  const previousMessageId = ref<string | undefined>(undefined)
+
+  /** 新しいコメント表示時にブリンクアニメーションを実行 */
+  watch(
+    () => currentMessage.value?.id,
+    async (newId) => {
+      // デフォルトメッセージへの切り替えはブリンクしない
+      if (!newId) {
+        previousMessageId.value = newId
+        return
+      }
+
+      // 新しいコメントへの切り替え時のみブリンク
+      if (newId !== previousMessageId.value && previousMessageId.value !== undefined) {
+        await triggerBlink(true) // Transition完了後にブリンク
+      }
+
+      previousMessageId.value = newId
+    }
+  )
+
+  // Lifecycle
 
   onMounted(() => {
     start()
 
-    // 30秒ごとにリフレッシュキーを更新
     refreshInterval = setInterval(() => {
       defaultMessageRefreshKey.value++
-    }, 30000)
+    }, DEFAULT_MESSAGE_REFRESH_INTERVAL)
   })
 
   onUnmounted(() => {
@@ -134,20 +178,6 @@
       refreshInterval = null
     }
   })
-
-  // バナー切り替えアニメーション
-  const blinkTriggerKey = ref(0)
-  watch(
-    () => currentMessage.value?.id,
-    (newId) => {
-      // defaultComment は id を持たない（または固定）
-      const isDefault = !announceMessages.value.find((m) => m.id === newId)
-
-      if (!isDefault) {
-        blinkTriggerKey.value++
-      }
-    }
-  )
 </script>
 
 <style scoped>
@@ -155,6 +185,7 @@
   .banner-swap-enter-active {
     animation: banner-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
+
   .banner-swap-leave-active {
     animation: banner-out 0.2s ease-in both;
   }
