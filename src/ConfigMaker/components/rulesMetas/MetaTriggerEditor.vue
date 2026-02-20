@@ -73,7 +73,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import TriggerMetaCondition from './TriggerMetaCondition.vue'
-  import { metaTriggerConditionMap, MetaTriggerCondition, MetaTriggerType } from '@/types/OmikujiData/MetaTriggerSchema'
+  import { metaTriggerConditionMap, MetaTriggerCondition, MetaTriggerType } from '@/types/'
 
   const props = defineProps<{
     modelValue: MetaTriggerType

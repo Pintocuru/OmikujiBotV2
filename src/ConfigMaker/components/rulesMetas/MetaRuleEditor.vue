@@ -58,7 +58,8 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { MetaRuleType } from '@/types/OmikujiData/RulesSchema'
+  import { metaTriggerConditionMap } from '@/types/'
+  import { MetaRuleType } from '@/types/OmikujiData/'
   import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
   import CommentTriggerEditor from './MetaTriggerEditor.vue'
   import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
@@ -70,7 +71,6 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
-  import { metaTriggerConditionMap, MetaTriggerCondition } from '@/types/OmikujiData/MetaTriggerSchema'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null

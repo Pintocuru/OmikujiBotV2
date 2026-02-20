@@ -112,6 +112,8 @@ export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 /**
  * 8時間フライト flightSeat
  */
+export type SeatLayout = keyof typeof flightSeatLayoutMap
+
 export const SettingsFlightSeatSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'),
 
