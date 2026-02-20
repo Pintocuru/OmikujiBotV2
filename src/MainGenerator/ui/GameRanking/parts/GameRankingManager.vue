@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RankingComponent, SettingsRankingType } from '@/types/'
+  import { FlashComponent, SettingsRankingType } from '@/types/'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 
   // 各コンポーネントのインポート
@@ -23,7 +23,7 @@
   })
 
   // コンポーネントマッピング
-  const componentMap: Record<RankingComponent, any> = {
+  const componentMap: Record<FlashComponent, any> = {
     rankStandard: RankStandard,
   }
 

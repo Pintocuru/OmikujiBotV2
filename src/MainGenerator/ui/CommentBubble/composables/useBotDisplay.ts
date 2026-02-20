@@ -56,11 +56,18 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
       lastTime = now
 
       newComments.forEach((nextComment) => {
-        let totalLifeTime: number
+        let totalLifeTime: number | null = null
 
-        if (nextComment.bubble?.displaySeconds !== undefined) {
-          totalLifeTime = nextComment.bubble?.displaySeconds * 1000
+        const sec = nextComment.bubble?.displaySeconds
+
+        if (sec === null) {
+          // null → 無限表示
+          totalLifeTime = null
+        } else if (sec !== undefined) {
+          // 数値が入っている → 指定秒数
+          totalLifeTime = sec * 1000
         } else {
+          // undefined → 自動計算
           const commentLength = nextComment.bubble?.message?.length ?? 0
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
@@ -78,10 +85,11 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
         }, 50)
 
         // 指定時間後にLeaveアニメーションを開始
-        if (displayMessage.display)
+        if (displayMessage.display && totalLifeTime !== null) {
           displayMessage.display.hideTimeout = setTimeout(() => {
             hideComment(nextComment.id)
           }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
+        }
 
         displayedComments.value.unshift(displayMessage)
         processedMessageIds.add(nextComment.id)

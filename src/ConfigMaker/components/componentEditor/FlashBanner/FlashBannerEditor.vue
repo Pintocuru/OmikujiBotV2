@@ -2,13 +2,14 @@
 <template>
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="handlePreviewClick">
-    <FlashBannerItem
+    <FlashBannerRenderer
+      :component="flashBanner.component"
       :label="flashBanner.label"
       :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
       :layers="iconSrc(flashBanner.defaultCharacterKey, 'default')"
       :icon-size="flashBanner.iconSize"
       :color="getCharacterColor(flashBanner.defaultCharacterKey)"
-      :show-character-on-right="flashBanner.showCharacterOnRight"
+      :show-character-on-right="flashBanner.showItemOnRight"
       :label-class="blinkClass"
     />
   </div>
@@ -24,6 +25,21 @@
       <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
     </InformationCard>
   </template>
+
+  <!-- コンポーネント選択 -->
+  <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
+    <div class="flex flex-wrap gap-2">
+      <div
+        v-for="(style, key) in flashComponents"
+        :key="key"
+        class="badge cursor-pointer"
+        :class="flashBanner.component === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('component', key)"
+      >
+        {{ style }}
+      </div>
+    </div>
+  </SettingItem>
 
   <!-- タイトル -->
   <SettingItem label="タイトル" description="タイトルを設定します" :showReset="true" @reset="resetMap.label">
@@ -57,6 +73,42 @@
     </div>
   </SettingItem>
 
+  <!-- 表示時間 -->
+  <SettingItem
+    label="表示時間"
+    description="0で無限表示 / 1〜60秒で固定表示"
+    :showReset="true"
+    @reset="resetMap.displaySeconds"
+  >
+    <div class="flex flex-col gap-3">
+      <!-- null時：変更ボタン -->
+      <div v-if="flashBanner.displaySeconds === null">
+        <button type="button" class="btn btn-sm btn-outline" @click="updateField('displaySeconds', 30)">
+          表示を変更する
+        </button>
+      </div>
+
+      <!-- 数値時：スライダー表示 -->
+      <div v-else class="flex flex-col gap-3">
+        <div class="flex items-center gap-4">
+          <input
+            type="range"
+            min="0"
+            max="60"
+            step="3"
+            class="range range-primary flex-1"
+            :value="flashBanner.displaySeconds"
+            @input="(e) => updateField('displaySeconds', Number((e.target as HTMLInputElement).value))"
+          />
+
+          <div class="w-20 text-right">
+            {{ flashBanner.displaySeconds === 0 ? '∞' : flashBanner.displaySeconds + '秒' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </SettingItem>
+
   <!-- ラベル・キャラクターを右側にするか -->
   <SettingItem
     label="ラベル位置"
@@ -68,10 +120,10 @@
       <input
         type="checkbox"
         class="toggle toggle-primary"
-        v-model="flashBanner.showCharacterOnRight"
-        @change="(e) => updateField('showCharacterOnRight', (e.target as HTMLInputElement).checked)"
+        v-model="flashBanner.showItemOnRight"
+        @change="(e) => updateField('showItemOnRight', (e.target as HTMLInputElement).checked)"
       />
-      <span class="ml-2"> {{ flashBanner.showCharacterOnRight ? '右' : '左' }}側に表示する </span>
+      <span class="ml-2"> {{ flashBanner.showItemOnRight ? '右' : '左' }}側に表示する </span>
     </label>
   </SettingItem>
 
@@ -99,13 +151,13 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { defaultPlaceholdersShortLabels, SettingsFlashBannerSchema, useFontFamily } from '@/types/'
+  import { defaultPlaceholdersShortLabels, flashComponents, SettingsFlashBannerSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/components/componentEditor/ToastWidgets/CharacterSelectorSingle.vue'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import FlashBannerItem from '@main/ui/FlashBanner/parts/FlashBannerItem.vue'
+  import FlashBannerRenderer from '@main/ui/FlashBanner/FlashBannerRenderer.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
@@ -153,7 +205,8 @@
   const resetMap = {
     label: () => resetField('label'),
     iconSize: () => resetField('iconSize'),
-    showCharacterOnRight: () => resetField('showCharacterOnRight'),
+    displaySeconds: () => resetField('displaySeconds'),
+    showCharacterOnRight: () => resetField('showItemOnRight'),
     defaultCharacterKey: () => resetField('defaultCharacterKey'),
     defaultMessage: () => resetField('defaultMessage'),
   }

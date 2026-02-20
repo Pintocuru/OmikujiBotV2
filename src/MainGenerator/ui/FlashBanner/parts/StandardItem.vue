@@ -4,17 +4,17 @@
     v-if="message"
     class="flex items-center w-full min-h-12 rounded-lg shadow-lg overflow-hidden gap-2 px-2"
     :data-theme="dataTheme"
-    :class="[uiMap.bubble.class, showCharacterOnRight ? 'flex-row-reverse' : 'flex-row']"
+    :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="uiMap.bubble.style"
   >
     <!-- ラベル（親からクラスを受け取る） -->
-    <div v-if="label" class="font-bold" :class="labelClass" :style="uiMap.name.style">
-      {{ label }}
+    <div v-if="settings.label" class="font-bold" :class="labelClass" :style="uiMap.name.style">
+      {{ settings.label }}
     </div>
 
     <!-- アイコン -->
     <div v-if="shouldShowIcon" class="flex-shrink-0 flex items-center">
-      <LayerImage :layers="layers" :size="iconSize" />
+      <LayerImage :layers="layers" :size="settings.iconSize" />
     </div>
 
     <!-- スクロールテロップ -->
@@ -32,33 +32,23 @@
 
 <script setup lang="ts">
   import { computed, ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
-  import { CharacterColorType } from '@/types/OmikujiData/'
+  import { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { createUiMap } from '../../CommentBubble/composables/UiBubbleMap'
+  import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
 
   // Props
-  const props = withDefaults(
-    defineProps<{
-      label: string
-      message: string
-      layers: string[]
-      iconSize?: number
-      color: CharacterColorType
-      showCharacterOnRight?: boolean
-      labelClass?: string // 親から受け取るブリンククラス
-    }>(),
-    {
-      label: '',
-      iconSize: 16,
-      showCharacterOnRight: false,
-      labelClass: '',
-    }
-  )
+  const props = defineProps<{
+    settings: SettingsFlashBannerType
+    message: string
+    layers: string[]
+    color: CharacterColorType
+    labelClass?: string
+  }>()
 
   // UI Styling
   const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
   const uiMap = computed(() => createUiMap({ color: props.color }))
-  const shouldShowIcon = computed(() => props.iconSize > 0 && props.layers.length > 0)
+  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
 
   // Scroll Detection
   const textRef = ref<HTMLElement | null>(null)

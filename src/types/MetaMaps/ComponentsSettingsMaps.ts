@@ -1,6 +1,16 @@
 // src/types/MetaMaps/ComponentsSettingsMaps.ts
 
 /**
+ * ニュースフラッシュ コンポーネントの選択肢
+ */
+export const flashComponents = {
+  standard: 'シンプル',
+  ticker: 'ティッカー',
+  glass: 'ガラス',
+  arcade: 'アーケード',
+} as const
+
+/**
  * ランキング GameRanking
  */
 export const rankingSortOrderMap = {
@@ -10,7 +20,9 @@ export const rankingSortOrderMap = {
 } as const
 
 // ランキングコンポーネントの選択肢
-export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
+export const rankingComponents = {
+  rankStandard: 'カウンター+最後のユーザー',
+} as const
 
 /**
  * カウンターコンポーネントの表示名マップ

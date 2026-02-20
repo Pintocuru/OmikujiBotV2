@@ -2,12 +2,9 @@
 import { ref, watch } from 'vue'
 
 export interface UseDelayedBlinkOptions {
-  /** Transitionアニメーションの完了待ち時間（ミリ秒） */
-  transitionDuration?: number
-  /** ブリンクアニメーションの継続時間（ミリ秒） */
-  blinkDuration?: number
-  /** ブリンク用のCSSクラス名 */
-  blinkClassName?: string
+  transitionDuration?: number // Transitionアニメーションの完了待ち時間（ミリ秒）
+  blinkDuration?: number // ブリンクアニメーションの継続時間（ミリ秒）
+  blinkClassName?: string // ブリンク用のCSSクラス名
 }
 
 export function useDelayedBlink(options: UseDelayedBlinkOptions = {}) {
@@ -54,15 +51,10 @@ export function useDelayedBlink(options: UseDelayedBlinkOptions = {}) {
   }
 
   return {
-    /** ブリンク用CSSクラス（要素にバインド） */
-    blinkClass,
-    /** ブリンクトリガー値（props経由で渡す場合に使用） */
-    blinkTrigger,
-    /** 手動でブリンクを実行 */
-    triggerBlink,
-    /** トリガー値の監視を設定 */
-    setupBlinkWatcher,
-    /** トリガー値をインクリメント */
-    incrementTrigger,
+    blinkClass, // ブリンク用CSSクラス（要素にバインド）
+    blinkTrigger, // ブリンクトリガー値（props経由で渡す場合に使用）
+    triggerBlink, // 手動でブリンクを実行
+    setupBlinkWatcher, // トリガー値の監視を設定
+    incrementTrigger, // トリガー値をインクリメント
   }
 }

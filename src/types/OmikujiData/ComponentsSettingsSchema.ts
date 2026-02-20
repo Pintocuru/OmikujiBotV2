@@ -4,11 +4,13 @@ import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import {
   counterComponents,
+  flashComponents,
   flightSeatLayoutMap,
   rankingComponents,
   rankingSortOrderMap,
   winnerComponents,
 } from '../MetaMaps'
+import { normalizedObject } from './ParsedDefault'
 
 /**
  * フキダシ・キャラクター
@@ -25,7 +27,7 @@ export const ShowCharactersSchema = z.object({
 export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 
 export const SettingsBubbleSchema = z.object({
-  showCharacters: ShowCharactersSchema.default(ShowCharactersSchema.parse({})).catch(ShowCharactersSchema.parse({})),
+  showCharacters: normalizedObject(ShowCharactersSchema),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
@@ -46,10 +48,15 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 /**
  * ニュースフラッシュ FlashBanner
  */
+const flashComponentsEnum = Object.keys(flashComponents) as FlashComponent[]
+export type FlashComponent = keyof typeof flashComponents
+
 export const SettingsFlashBannerSchema = z.object({
+  component: z.enum(flashComponentsEnum).default('standard').catch('standard'),
   label: z.string().default('速報').catch(''),
   iconSize: z.number().int().min(0).max(24).default(12).catch(12), // アイコンの表示サイズ (px)
-  showCharacterOnRight: z.boolean().default(false).catch(false), // キャラクターを右側に表示するか(falseで左側)
+  displaySeconds: z.number().int().min(0).max(60).nullable().default(null).catch(null), // 表示時間
+  showItemOnRight: z.boolean().default(false).catch(false), // キャラクターを右側に表示するか(falseで左側)
   defaultCharacterKey: z.string().nullable().default(null).catch(null), // デフォルトキャラクター
   defaultMessage: z
     .string()
@@ -61,21 +68,19 @@ export type SettingsFlashBannerType = z.infer<typeof SettingsFlashBannerSchema>
 /**
  * ランキング GameRanking
  */
-export const RankingSortOrderSchema = z.enum(
-  Object.keys(rankingSortOrderMap) as [RankingSortOrder, ...RankingSortOrder[]]
-)
+const rankingSortOrder = Object.keys(rankingSortOrderMap) as RankingSortOrder[]
 export type RankingSortOrder = keyof typeof rankingSortOrderMap
 
-export type RankingComponent = (typeof rankingComponents)[number]['value']
-export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
+const rankingComponentsEnum = Object.keys(rankingComponents) as RankingComponent[]
+export type RankingComponent = keyof typeof rankingComponents
 
 export const SettingsRankingSchema = z.object({
   targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
   limit: z.number().min(1).max(20).default(5).catch(5),
-  sortOrder: RankingSortOrderSchema.default('new').catch('new'),
-  component: z.enum(rankingValues).default('rankStandard').catch('rankStandard'),
+  sortOrder: z.enum(rankingSortOrder).default('new').catch('new'),
+  component: z.enum(rankingComponentsEnum).default('rankStandard').catch('rankStandard'),
 })
 export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 

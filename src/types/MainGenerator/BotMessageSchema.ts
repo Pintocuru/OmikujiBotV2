@@ -23,7 +23,7 @@ const CommentBubbleSchema = z.object({
   isToast: z.boolean().default(false),
   characterKey: z.string().nullable().default(null),
   iconKey: CharacterEmotionSchema.default('default'),
-  displaySeconds: z.number().min(0).max(60).optional(),
+  displaySeconds: z.number().min(0).max(60).nullable().optional(),
 })
 
 const DisplayStatusSchema = z.object({
