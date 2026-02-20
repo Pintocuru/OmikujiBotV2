@@ -1,8 +1,11 @@
 // tools\UpdateTsFiles.ts
 import { promises as fs } from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
-const ROOT = path.resolve('root/src')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const ROOT = path.resolve(__dirname, '../src')
 
 async function getAllTsFiles(dir: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true })
