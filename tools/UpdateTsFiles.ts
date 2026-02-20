@@ -1,23 +1,26 @@
-// tools\UpdateTsFiles.ts
+// tools/UpdateTsFiles.ts
 import { promises as fs } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+// tools 配下にある前提
 const ROOT = path.resolve(__dirname, '../src')
 
-async function getAllTsFiles(dir: string): Promise<string[]> {
+async function getAllTargetFiles(dir: string): Promise<string[]> {
   const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = await Promise.all(
+
+  const results = await Promise.all(
     entries.map(async (entry) => {
       const fullPath = path.join(dir, entry.name)
 
       if (entry.isDirectory()) {
-        return getAllTsFiles(fullPath)
+        return getAllTargetFiles(fullPath)
       }
 
-      if (entry.isFile() && fullPath.endsWith('.ts')) {
+      if (entry.isFile() && (fullPath.endsWith('.ts') || fullPath.endsWith('.vue'))) {
         return [fullPath]
       }
 
@@ -25,7 +28,7 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
     })
   )
 
-  return files.flat()
+  return results.flat()
 }
 
 async function processFile(filePath: string) {
@@ -34,22 +37,26 @@ async function processFile(filePath: string) {
 
   const lines = content.split('\n')
 
-  // 1行目が // コメントなら削除
-  if (lines[0]?.trim().startsWith('//')) {
-    lines.shift()
+  if (filePath.endsWith('.ts')) {
+    if (lines[0]?.trim().startsWith('//')) {
+      lines.shift()
+    }
+    lines.unshift(`// src/${relativePath}`)
   }
 
-  // 先頭に相対パスを追加
-  lines.unshift(`// src/${relativePath}`)
+  if (filePath.endsWith('.vue')) {
+    if (lines[0]?.trim().startsWith('<!--')) {
+      lines.shift()
+    }
+    lines.unshift(`<!-- src/${relativePath} -->`)
+  }
 
   await fs.writeFile(filePath, lines.join('\n'), 'utf-8')
 }
 
 async function main() {
-  const files = await getAllTsFiles(ROOT)
-
+  const files = await getAllTargetFiles(ROOT)
   await Promise.all(files.map(processFile))
-
   console.log(`Processed ${files.length} files`)
 }
 
