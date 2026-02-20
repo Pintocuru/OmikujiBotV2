@@ -10,8 +10,8 @@
     <!-- 右側: 設定エリア -->
     <div class="col-span-2 space-y-4">
       <!-- Script ID -->
-      <div v-if="gameScriptMap[gameScripts.scriptId].banner !== ''">
-        <img :src="gameScriptMap[gameScripts.scriptId].banner" alt="banner" class="w-full rounded-lg shadow" />
+      <div v-if="gameScriptMap[gameScripts.scriptId]?.banner">
+        <img :src="gameScriptMap[gameScripts.scriptId]?.banner" alt="banner" class="w-full rounded-lg shadow" />
       </div>
       <div v-if="gameScriptMap[gameScripts.scriptId]?.url">
         <p class="text-sm">
@@ -94,7 +94,7 @@
   import GameScriptPreview from './GameScriptPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { gameScriptMap } from '@game/GameScriptsMap'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 

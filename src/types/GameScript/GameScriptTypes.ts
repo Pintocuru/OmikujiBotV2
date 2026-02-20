@@ -10,6 +10,7 @@ export interface ScriptPreset extends PresetMetadata {
   execute: ScriptClass // メイン実行クラス
 }
 
+// ran実行時の返り値
 export type ScriptResult = {
   actions: PostFlowType[]
   botMessageExtras: BotMessageExtraType[]

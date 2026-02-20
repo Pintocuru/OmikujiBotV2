@@ -3,8 +3,7 @@ import { z } from 'zod'
 import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
 import { CharacterColorScheme } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
-import { fontFamilyMap } from '../MetaMaps'
-import { uiKindMap, UiSlotMap } from '../MetaMaps/UiKindMaps'
+import { fontFamilyMap, uiKindMap, UiSlotMap } from '../MetaMaps'
 
 /**
  * スロット定義

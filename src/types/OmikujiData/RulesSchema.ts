@@ -2,9 +2,9 @@
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentTriggerSchema } from './CommentTriggerSchema'
-import { BaseRecordSchema } from '@shared/types/'
 import { MetaTriggerSchema } from './MetaTriggerSchema'
 import { normalizedObject } from './ParsedDefault'
+import { BaseRecordSchema } from '@shared/types/'
 
 /**
  * おみくじ制限設定のスキーマ
