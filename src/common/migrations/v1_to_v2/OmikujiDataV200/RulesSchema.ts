@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentThresholdSchema } from './old/CommentThresholdSchema'
-import { CommentTriggerSchema } from '@/types/OmikujiProcess/CommentTriggerSchema'
+import { CommentTriggerSchema } from '@/types/OmikujiData/CommentTriggerSchema'
 import { BaseRecordSchema } from '@shared/types/'
 
 /**

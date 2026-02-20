@@ -1,6 +1,5 @@
 // src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.ts
-import { MetaConditionType } from '@/types/OmikujiProcess/MetaTriggerSchema'
-import { MetaTriggerType } from '@/types/OmikujiProcess/MetaTriggerSchema'
+import { MetaConditionType, MetaTriggerType } from '@/types/OmikujiData/'
 import type { MetaUpdateEvent } from './MetaStateService'
 
 /**

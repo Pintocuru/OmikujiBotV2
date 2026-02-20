@@ -1,9 +1,9 @@
 // src\types\OmikujiData\RulesSchema.ts
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
-import { CommentTriggerSchema } from '../OmikujiProcess/CommentTriggerSchema'
+import { CommentTriggerSchema } from './CommentTriggerSchema'
 import { BaseRecordSchema } from '@shared/types/'
-import { MetaTriggerSchema } from '../OmikujiProcess/MetaTriggerSchema'
+import { MetaTriggerSchema } from './MetaTriggerSchema'
 
 /**
  * おみくじ制限設定のスキーマ

@@ -40,7 +40,7 @@
     MetaConditionType,
     metaComparisonConditionMap,
     MetaSimpleComparisonConditionMap,
-  } from '@/types/OmikujiProcess/MetaTriggerSchema'
+  } from '@/types/OmikujiData/MetaTriggerSchema'
 
   const props = defineProps<{
     modelValue?: MetaConditionType

@@ -70,7 +70,7 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
-  import { metaTriggerCondition, MetaTriggerCondition } from '@/types/OmikujiProcess/MetaTriggerSchema'
+  import { metaTriggerCondition, MetaTriggerCondition } from '@/types/OmikujiData/MetaTriggerSchema'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null

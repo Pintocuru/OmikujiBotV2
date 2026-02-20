@@ -74,7 +74,7 @@
     CommentTriggerCondition,
     commentTriggerConditionInfo,
     CommentTriggerType,
-  } from '@/types/OmikujiProcess/CommentTriggerSchema'
+  } from '@/types/OmikujiData/'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const props = defineProps<{
