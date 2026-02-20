@@ -1,4 +1,4 @@
-// src\Toolkit\migrations\v1_to_v2\OmikujiDataV1\migrateV130ToV200.ts
+// src/common/migrations/v1_to_v2/migrateV130ToV200.ts
 import {
   SettingsBubbleSchema,
   ComponentsSchema,

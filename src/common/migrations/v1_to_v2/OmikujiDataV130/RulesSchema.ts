@@ -1,4 +1,4 @@
-// src\types\OmikujiData\RulesSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/RulesSchema.ts
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types/'

@@ -1,4 +1,4 @@
-// src\ConfigMaker\scripts\OmikujiTestProcessor.ts
+// src/ConfigMaker/scripts/OmikujiTestProcessor.ts
 import { ActionSetSchema, ActionSetType, defaultPlaceholdersShortLabels, OmikujiDataType, PostFlowType } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'

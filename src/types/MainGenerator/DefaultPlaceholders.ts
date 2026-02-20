@@ -1,4 +1,4 @@
-// src\types\OmikujiProcess\DefaultPlaceholders.ts
+// src/types/MainGenerator/DefaultPlaceholders.ts
 import z from 'zod'
 import { defaultPlaceholderMap } from '../MetaMaps'
 

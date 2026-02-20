@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+// src/types/vite-env.d.ts

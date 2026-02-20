@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\BotCharacter\CharacterColorPreset.ts
+// src/ConfigMaker/components/common/ThemeColorPicker/CharacterColorPreset.ts
 import { CharacterColorType } from '@/types/'
 
 // デフォルトキャラクター用のカラーテーマ（マテリアルカラーベース、可読性重視）

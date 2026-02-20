@@ -1,4 +1,4 @@
-// src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
+// src/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
 import { PostFlowMessageSchema, PostFlowMessageType } from '@/types/'
 import { GameParams } from '../types'
 

@@ -1,4 +1,4 @@
-// src/configMaker/dev/devTypes.ts
+// src/ConfigMaker/dev/devTypes.ts
 import { Ref } from 'vue'
 
 export interface DevConfigStateType {

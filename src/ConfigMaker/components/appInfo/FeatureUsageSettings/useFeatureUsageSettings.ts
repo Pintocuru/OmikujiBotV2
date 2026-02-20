@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\appInfo\FeatureUsage\useFeatureUsageSettings.ts
+// src/ConfigMaker/components/appInfo/FeatureUsageSettings/useFeatureUsageSettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'

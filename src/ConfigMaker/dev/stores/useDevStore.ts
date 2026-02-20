@@ -1,4 +1,4 @@
-// src/configMaker/dev/stores/useDevStore.ts
+// src/ConfigMaker/dev/stores/useDevStore.ts
 import { defineStore } from 'pinia'
 import { useDevConfigState } from './useDevConfigState'
 import { useDevConfigActions } from './useDevConfigActions'

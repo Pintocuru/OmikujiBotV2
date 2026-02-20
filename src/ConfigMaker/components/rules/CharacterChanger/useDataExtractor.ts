@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/rules/CharacterChanger/composables/useDataExtractor.ts
+// src/ConfigMaker/components/rules/CharacterChanger/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
 import { RulesCategoryType, RuleType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
 import { categoryMap } from '@/types/'

@@ -1,4 +1,4 @@
-// src\types\MainGenerator\BotMessageSchema.ts
+// src/types/MainGenerator/BotMessageSchema.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'

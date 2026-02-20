@@ -1,4 +1,4 @@
-// src/migrations/v2_to_v3/v2_05_to_v2_10.ts
+// src/common/migrations/v2_to_v3/v2_05_to_v2_10.ts
 import { ComponentsSchema } from '@/types/OmikujiData/ComponentsSchema'
 import { CharacterColorScheme } from '@/types/OmikujiData/CharacterSchema'
 

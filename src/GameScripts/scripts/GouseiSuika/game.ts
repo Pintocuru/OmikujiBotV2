@@ -1,4 +1,4 @@
-// src/game.ts
+// src/GameScripts/scripts/GouseiSuika/game.ts
 import { PostFlowWordPartyType } from '@/types/'
 import { GAME_CONFIGS, GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
 import { GameParams } from './params'

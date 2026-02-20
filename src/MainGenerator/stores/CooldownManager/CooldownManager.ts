@@ -1,4 +1,4 @@
-// src/MainGenerator/script/omikujiProcess/CooldownManager.ts
+// src/MainGenerator/stores/CooldownManager/CooldownManager.ts
 
 /**
  * クールダウン管理クラス

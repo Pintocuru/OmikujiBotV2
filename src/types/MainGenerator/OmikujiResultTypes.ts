@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/OmikujiResult/OmikujiResultTypes.ts
+// src/types/MainGenerator/OmikujiResultTypes.ts
 import { CharacterEmotionType, PostFlowType } from '@/types/OmikujiData/'
 import { ExtraListsType, ExtraSlotsType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

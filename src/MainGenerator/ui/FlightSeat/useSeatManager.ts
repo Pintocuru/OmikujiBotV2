@@ -1,4 +1,4 @@
-// src\MainGenerator\ui\FlightSeat\useSeatManager.ts
+// src/MainGenerator/ui/FlightSeat/useSeatManager.ts
 import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 

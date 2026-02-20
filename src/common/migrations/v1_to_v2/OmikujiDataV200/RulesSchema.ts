@@ -1,4 +1,4 @@
-// src\types\OmikujiData\RulesSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/RulesSchema.ts
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentThresholdSchema } from './old/CommentThresholdSchema'

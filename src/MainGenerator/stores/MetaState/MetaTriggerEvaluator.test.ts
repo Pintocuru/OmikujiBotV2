@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/MetaState/__tests__/MetaTriggerEvaluator.test.ts
+// src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.test.ts
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { evaluateMetaTrigger, evaluateCondition, evaluateElapsedTime } from './MetaTriggerEvaluator'
 import type { MetaUpdateEvent } from './MetaStateService'

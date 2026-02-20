@@ -1,4 +1,4 @@
-// src/configMaker/components/placeholders/composables/usePlaceholders.ts
+// src/ConfigMaker/components/placeholders/composables/usePlaceholders.ts
 import { computed, Ref } from 'vue'
 import { PostFlowType } from '@/types/OmikujiData/'
 import { usePlaceholderData } from './usePlaceholderData'

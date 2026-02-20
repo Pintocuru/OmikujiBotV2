@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\KeyValue\KeyValueMap.ts
+// src/MainGenerator/scripts/KeyValue/KeyValueMap.ts
 
 export class KeyValueMap {
   protected values = new Map<string, string | number>()

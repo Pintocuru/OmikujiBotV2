@@ -1,4 +1,4 @@
-// src\types\env.ts
+// src/types/env.ts
 
 /**
  * image パスディレクトリ

@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useRecordSort.ts
+// src/ConfigMaker/stores/composables/useRecordSort.ts
 import { nextTick, Ref } from 'vue'
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/'

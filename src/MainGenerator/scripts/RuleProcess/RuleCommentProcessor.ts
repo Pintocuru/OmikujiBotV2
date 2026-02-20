@@ -1,4 +1,4 @@
-// src/MainGenerator/script/RuleProcess/RuleCommentProcessor.ts
+// src/MainGenerator/scripts/RuleProcess/RuleCommentProcessor.ts
 import { BotMessageType } from '@/types/'
 import { processUserComment } from '@main/scripts/RuleProcess/UserCommentProcessor'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'

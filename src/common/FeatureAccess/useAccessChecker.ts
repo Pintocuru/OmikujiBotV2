@@ -1,4 +1,4 @@
-// src\common\FeatureAccess\useAccessChecker.ts
+// src/common/FeatureAccess/useAccessChecker.ts
 import { computed, type Ref } from 'vue'
 import { OmikujiDataType } from '@/types/'
 import { useSettingModeFromHash } from './SettingMode'

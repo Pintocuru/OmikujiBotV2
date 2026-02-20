@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useCharacterSelection.ts
+// src/MainGenerator/ui/CommentBubble/composables/useCharacterSelection.ts
 import { computed, Ref } from 'vue'
 import { ShowCharacters, CharacterType, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
 import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'

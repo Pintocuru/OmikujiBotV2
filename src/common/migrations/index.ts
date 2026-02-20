@@ -1,4 +1,4 @@
-// src/migrations/index.ts
+// src/common/migrations/index.ts
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { OmikujiDataSchema as OmikujiDataSchemaV200 } from './v1_to_v2/OmikujiDataV200/OmikujiDataSchema'
 import { APP_VERSION, DATA_VERSION } from '@/version'

@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/BomberSpin/execute.ts
+// src/GameScripts/scripts/BomberSpin/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { playSlot } from './game'

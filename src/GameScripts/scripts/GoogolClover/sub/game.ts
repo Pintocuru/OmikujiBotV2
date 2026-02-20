@@ -1,4 +1,4 @@
-// src/GameScripts/GoogolClover/sub/game.ts
+// src/GameScripts/scripts/GoogolClover/sub/game.ts
 import type { UserState } from './types'
 import { executeSlotSpins } from './slotExecution'
 import { buildGameResult } from './resultBuilder'

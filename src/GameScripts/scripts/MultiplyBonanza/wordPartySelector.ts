@@ -1,4 +1,4 @@
-// src/wordPartySelector.ts
+// src/GameScripts/scripts/MultiplyBonanza/wordPartySelector.ts
 import { GameResult } from './gameConfig'
 import { PostFlowWordPartyType } from '@/types/'
 

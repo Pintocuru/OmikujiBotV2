@@ -1,4 +1,4 @@
-// src/GameScripts/GoogolClover/sub/postActionBuilder.ts
+// src/GameScripts/scripts/GoogolClover/sub/postActionBuilder.ts
 import { PostFlowType, PostFlowMessageSchema, BotMessageExtraType } from '@/types'
 
 /**

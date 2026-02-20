@@ -1,4 +1,4 @@
-// src/gameConfig.ts
+// src/GameScripts/scripts/MultiplyBonanza/gameConfig.ts
 
 // 支払いテーブルのインターフェース定義
 export interface GameResult {

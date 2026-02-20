@@ -1,4 +1,4 @@
-// src/gameConfig.ts
+// src/GameScripts/scripts/HugEmAll/gameConfig.ts
 
 // ゲーム設定
 export const MAX_WIN = 20000

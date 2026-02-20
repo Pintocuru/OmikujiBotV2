@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\presetsImport\composables\useImportManager.ts
+// src/ConfigMaker/components/presetsImport/composables/useImportManager.ts
 import { ref, computed } from 'vue'
 import { UiKind } from '@/types/'
 import { RecordCategoryType, OmikujiDataType } from '@/types/OmikujiData/'

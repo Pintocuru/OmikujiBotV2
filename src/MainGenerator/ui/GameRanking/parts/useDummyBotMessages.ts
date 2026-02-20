@@ -1,4 +1,4 @@
-// src/composables/useDummyBotMessages.ts
+// src/MainGenerator/ui/GameRanking/parts/useDummyBotMessages.ts
 import { ExtraListsSchema, SettingsRankingType } from '@/types/'
 import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import { UserVisitRecord, UserVisitRecordSchema } from '@/types/MainGenerator/UserVisits'

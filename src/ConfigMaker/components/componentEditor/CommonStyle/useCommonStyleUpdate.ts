@@ -1,4 +1,4 @@
-// src/ConfigMaker/scripts/useCommonStyleUpdate.ts
+// src/ConfigMaker/components/componentEditor/CommonStyle/useCommonStyleUpdate.ts
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import type { ComponentsCommonStyle } from '@/types/OmikujiData/'
 

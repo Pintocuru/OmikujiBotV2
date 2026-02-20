@@ -1,4 +1,4 @@
-// src/configMaker/dev/services/apiServiceUtils.ts
+// src/ConfigMaker/dev/services/apiServiceUtils.ts
 
 /**
  * 日付文字列をフォーマットする

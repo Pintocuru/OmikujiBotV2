@@ -1,4 +1,4 @@
-// src/configMaker/components/placeholders/composables/usePlaceholderData.ts
+// src/ConfigMaker/components/placeholders/composables/usePlaceholderData.ts
 import { computed, Ref } from 'vue'
 import { defaultPlaceholdersShortLabels, DefaultPlaceholders } from '@/types/'
 import { PlaceholderSchema, PlaceholderType, PostFlowType } from '@/types/OmikujiData/'

@@ -1,4 +1,4 @@
-//
+// src/MainGenerator/scripts/CharacterManager/CharacterManagerHelper.ts
 import { CharacterType, ShowCharactersSchema } from '@/types'
 
 export const buildDefaultShowCharacters = (characters: Record<string, CharacterType>) => {

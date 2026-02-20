@@ -1,4 +1,4 @@
-// src/shared/core.ts
+// src/core.ts
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'

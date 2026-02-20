@@ -1,4 +1,4 @@
-// src/configMaker/components/RecordTabs/composables/useInlineEdit.ts
+// src/ConfigMaker/components/RecordTabs/composables/useInlineEdit.ts
 import { ref, nextTick, ComponentPublicInstance } from 'vue'
 import { BaseRecordType } from '@shared/types'
 

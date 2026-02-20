@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\rules\composables\useWeightCalculation.ts
+// src/ConfigMaker/components/rules/composables/useWeightCalculation.ts
 import { computed, Ref } from 'vue'
 
 type WeightItem = {

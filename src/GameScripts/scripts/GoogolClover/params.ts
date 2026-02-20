@@ -1,4 +1,4 @@
-// src/params.ts
+// src/GameScripts/scripts/GoogolClover/params.ts
 import { z } from 'zod'
 
 /**

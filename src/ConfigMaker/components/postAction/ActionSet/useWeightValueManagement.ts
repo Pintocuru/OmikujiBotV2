@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/postAction/useWeightValueManagement.ts
+// src/ConfigMaker/components/postAction/ActionSet/useWeightValueManagement.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import {

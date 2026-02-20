@@ -1,4 +1,4 @@
-// src/MainPlugin/plugin.ts
+// src/EditorPlugin/plugin.ts
 import { pluginRequest } from '../../server/adapters/pluginAdapter'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { OnePlugin, PluginRequest, PluginResponse } from '@onecomme.com/onesdk/types/Plugin'

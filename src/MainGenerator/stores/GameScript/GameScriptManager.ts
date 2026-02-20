@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/omikujiProcess/GameScriptManager.ts
+// src/MainGenerator/stores/GameScript/GameScriptManager.ts
 import { GameScriptsType, ScriptClass, ScriptResult } from '@/types/'
 import { gameScriptMap, scriptGameKeys } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

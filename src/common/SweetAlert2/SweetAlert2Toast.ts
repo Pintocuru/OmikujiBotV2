@@ -1,3 +1,4 @@
+// src/common/SweetAlert2/SweetAlert2Toast.ts
 import Swal, { SweetAlertOptions } from 'sweetalert2'
 
 // SweetAlert2 toast 通知の共通設定

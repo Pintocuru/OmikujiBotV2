@@ -1,4 +1,4 @@
-// src/game.ts
+// src/GameScripts/scripts/BomberSpin/game.ts
 
 // ゲーム結果のインターフェース定義
 interface GameResult {

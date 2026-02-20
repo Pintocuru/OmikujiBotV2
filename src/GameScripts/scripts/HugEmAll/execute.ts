@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/HugEmAll/execute.ts
+// src/GameScripts/scripts/HugEmAll/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'

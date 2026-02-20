@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\OmikujiData\ParsedDefault.ts
+// src/types/OmikujiData/ParsedDefault.ts
 import { z } from 'zod'
 
 // Zod schema に default({}) + catch({}) を付けるヘルパー

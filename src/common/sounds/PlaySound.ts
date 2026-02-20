@@ -1,4 +1,4 @@
-// src/Toolkit/sounds/PlaySound.ts
+// src/common/sounds/PlaySound.ts
 import { RpgVoiceKeyType, SoundKeyType } from '@/types'
 import { rpgVoiceMap, soundMap } from './soundMap'
 

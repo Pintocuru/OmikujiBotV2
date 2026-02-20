@@ -1,4 +1,4 @@
-// src\MainGenerator\stores\createAppServices.ts
+// src/MainGenerator/stores/createAppServices.ts
 import { CooldownManager } from './CooldownManager/CooldownManager'
 import { UserManager } from './UserManager/UserManager'
 import { GameScriptManager } from './GameScript/GameScriptManager'

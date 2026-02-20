@@ -1,4 +1,4 @@
-// src\types\OmikujiData\CharacterSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'

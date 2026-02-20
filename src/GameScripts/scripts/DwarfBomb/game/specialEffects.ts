@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/DwarfBomb/specialEffects.ts
+// src/GameScripts/scripts/DwarfBomb/game/specialEffects.ts
 import { Dwarf } from './gameConfigs'
 
 /** 桁数に応じた絵文字文字列を返す（1桁は空白） */

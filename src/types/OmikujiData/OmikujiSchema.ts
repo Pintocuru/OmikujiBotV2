@@ -1,4 +1,4 @@
-// types/OmikujiBot/OmikujiSchema.ts
+// src/types/OmikujiData/OmikujiSchema.ts
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CriteriaThresholdSchema } from './CriteriaThresholdSchema'

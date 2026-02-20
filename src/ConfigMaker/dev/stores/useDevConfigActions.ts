@@ -1,4 +1,4 @@
-// src/configMaker/dev/stores/useDevConfigActions.ts
+// src/ConfigMaker/dev/stores/useDevConfigActions.ts
 import { useDevConfigStateActions } from './useDevConfigStateActions'
 import { useApiCore } from './useApiCore'
 import { useFileActions } from './useApiFileActions'

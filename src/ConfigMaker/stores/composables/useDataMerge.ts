@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useDataMerge.ts
+// src/ConfigMaker/stores/composables/useDataMerge.ts
 import { Ref } from 'vue'
 import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'

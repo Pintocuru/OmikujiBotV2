@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\parts\useKeyEditor\keyUpdateReferences.ts
+// src/ConfigMaker/components/KeyEditor/composables/keyUpdateReferences.ts
 import type { PostFlowType } from '@/types/OmikujiData/'
 import { rulesCategoryLabel } from '@/types/OmikujiData/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'

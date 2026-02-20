@@ -1,4 +1,4 @@
-// src/main.ts
+// src/GameScripts/scripts/MultiplyBonanza/main.ts
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
 import execute from './execute'
 

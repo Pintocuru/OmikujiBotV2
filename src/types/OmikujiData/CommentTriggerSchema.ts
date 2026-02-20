@@ -1,4 +1,4 @@
-// src\types\OmikujiProcess\CommentTriggerSchema.ts
+// src/types/OmikujiData/CommentTriggerSchema.ts
 import { z } from 'zod'
 import { GiftConditionSchema, SyokenConditionSchema } from '@shared/types/Threshold/'
 import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'

@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/useTestPost.ts
+// src/ConfigMaker/scripts/useTestPost.ts
 import { computed } from 'vue'
 import {
   PostFlowType,

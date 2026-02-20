@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useRecordProperties.ts
+// src/ConfigMaker/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
 import { WeightValuesArraySchema, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
 import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'

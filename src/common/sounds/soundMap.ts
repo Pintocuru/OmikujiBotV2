@@ -1,4 +1,4 @@
-// src\common\sounds\soundMap.ts
+// src/common/sounds/soundMap.ts
 import { RpgVoiceKeyType, SoundKeyType } from '@/types/OmikujiData/SoundKey'
 
 import f0 from '@assets/sounds/FreeSound/applause.mp3'

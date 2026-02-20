@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\MotionVariants\MotionVariantsBase.ts
+// src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsElastic.ts
 import { MotionVariants } from '@vueuse/motion'
 import { MotionType } from '../MotionVariants'
 

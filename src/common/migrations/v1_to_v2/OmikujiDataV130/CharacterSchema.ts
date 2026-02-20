@@ -1,4 +1,4 @@
-// shared/types/CharacterSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/CharacterSchema.ts
 import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
 

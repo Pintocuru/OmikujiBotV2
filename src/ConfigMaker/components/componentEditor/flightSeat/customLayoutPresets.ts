@@ -1,4 +1,4 @@
-// src/types/MainGenerator/customLayoutPresets.ts
+// src/ConfigMaker/components/componentEditor/FlightSeat/CustomLayoutPresets.ts
 
 export const customLayoutPresets = {
   pyramid5: { label: 'ピラミッド (5段)', layout: [1, 2, 3, 4, 5], emoji: '🔺' },

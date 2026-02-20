@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/scriptGame/GameScriptsMap.ts
+// src/GameScripts/GameScriptsMap.ts
 import { ScriptPreset } from '@/types/'
 import BomberSpin from './scripts/BomberSpin/main'
 import GouseiSuika from './scripts/GouseiSuika/main'

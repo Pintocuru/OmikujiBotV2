@@ -1,4 +1,4 @@
-// server/adapters/pluginAdapter.ts
+// src/EditorPlugin/scripts/hoge.ts
 
 import { OmikenCommentType } from '@shared/types'
 

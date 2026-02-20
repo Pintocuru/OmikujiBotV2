@@ -1,4 +1,4 @@
-// src\MainGenerator\ui\FlightSeat\seatLayoutUtils.ts
+// src/MainGenerator/ui/FlightSeat/seatLayoutUtils.ts
 import { SeatLayout } from '@/types'
 
 /**

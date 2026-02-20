@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/GoogolClover/execute.ts
+// src/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
 import { ScriptClass, PostFlowType, GameStateType, ScriptResult } from '@/types/'
 import { executeGame } from './sub/game'

@@ -1,4 +1,4 @@
-// src/ConfigMaker/composables/useClassGenerator.ts
+// src/ConfigMaker/components/characters/CustomClass/useClassGenerator.ts
 import { reactive } from 'vue'
 
 export interface Settings {

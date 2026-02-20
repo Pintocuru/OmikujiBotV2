@@ -1,4 +1,4 @@
-// shared/types/OmikujiBot/PlaceholderSchema.ts
+// src/types/OmikujiData/PlaceholderSchema.ts
 import { z } from 'zod'
 import { BaseRecordSchema } from '@shared/types'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'

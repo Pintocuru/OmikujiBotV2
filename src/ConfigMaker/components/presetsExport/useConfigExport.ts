@@ -1,4 +1,4 @@
-// src/configMaker/components/presets/useConfigExport.ts
+// src/ConfigMaker/components/presetsExport/useConfigExport.ts
 import { ref } from 'vue'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { generateJsContent, generateJsonContent } from './generateContent'

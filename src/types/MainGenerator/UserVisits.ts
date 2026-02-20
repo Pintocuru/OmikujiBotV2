@@ -1,4 +1,4 @@
-// src\types\MainGenerator\UserVisits.ts
+// src/types/MainGenerator/UserVisits.ts
 import { z } from 'zod'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'

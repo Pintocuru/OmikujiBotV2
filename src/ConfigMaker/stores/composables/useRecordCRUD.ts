@@ -1,4 +1,4 @@
-// src\ConfigMaker\stores\composables\useRecordCRUD.ts
+// src/ConfigMaker/stores/composables/useRecordCRUD.ts
 import { Ref } from 'vue'
 import {
   RecordCategorySchemaMap,

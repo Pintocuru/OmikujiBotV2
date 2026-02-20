@@ -1,4 +1,4 @@
-// types\OmikujiData\CategoryType.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/CategoryType.ts
 import { PlaceholderSchema, PlaceholderType } from './PlaceholderSchema'
 import { CharacterSchema, CharacterType } from './CharacterSchema'
 import {

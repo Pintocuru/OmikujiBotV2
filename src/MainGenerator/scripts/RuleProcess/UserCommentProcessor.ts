@@ -1,4 +1,4 @@
-// src/MainGenerator/script/RuleProcess/UserCommentProcessor.ts
+// src/MainGenerator/scripts/RuleProcess/UserCommentProcessor.ts
 import { BotMessageType, CommentRuleType } from '@/types/'
 import { buildRestrictionMessages } from './createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'

@@ -1,4 +1,4 @@
-// src/GameScripts/GoogolClover/game.test.ts
+// src/GameScripts/scripts/GoogolClover/sub/game.test.ts
 import { describe, it, expect, beforeEach } from 'vitest'
 import { playSlot } from './game'
 import type { UserState } from './types'

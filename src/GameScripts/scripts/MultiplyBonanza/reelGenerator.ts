@@ -1,4 +1,4 @@
-// src/reelGenerator.ts
+// src/GameScripts/scripts/MultiplyBonanza/reelGenerator.ts
 import { GAME_CONFIG, SYMBOLS, TOTAL_WEIGHT } from './gameConfig'
 
 /**

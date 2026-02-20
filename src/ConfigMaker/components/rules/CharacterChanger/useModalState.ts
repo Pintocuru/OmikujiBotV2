@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/rules/CharacterChanger/composables/useModalState.ts
+// src/ConfigMaker/components/rules/CharacterChanger/useModalState.ts
 import { ref, computed } from 'vue'
 
 /**

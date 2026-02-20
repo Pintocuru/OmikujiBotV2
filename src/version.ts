@@ -1,4 +1,4 @@
-// src\config\version.ts
+// src/version.ts
 import package_json from '../package.json'
 
 // アプリケーションのバージョン情報

@@ -1,4 +1,4 @@
-// src\types\OmikujiData\FeatureUsageSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/FeatureUsageSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
 

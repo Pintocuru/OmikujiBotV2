@@ -1,4 +1,4 @@
-// src\GameScripts\GameScriptsRules.ts
+// src/GameScripts/GameScriptsRules.ts
 import { AccessLevelType } from '@shared/types'
 
 // ゲームスクリプト

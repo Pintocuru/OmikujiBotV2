@@ -1,4 +1,4 @@
-// src/ConfigMaker/script/stores/composables/useDataIO.ts
+// src/ConfigMaker/stores/composables/useDataIO.ts
 import { Ref } from 'vue'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { normalizeData } from '@/common/migrations'

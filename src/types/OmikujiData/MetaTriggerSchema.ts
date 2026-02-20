@@ -1,4 +1,4 @@
-// src\types\OmikujiProcess\MetaTriggerSchema.ts
+// src/types/OmikujiData/MetaTriggerSchema.ts
 import { z } from 'zod'
 import { metaComparisonConditionMap, MetaSimpleComparisonConditionMap, metaTriggerConditionMap } from '../MetaMaps'
 

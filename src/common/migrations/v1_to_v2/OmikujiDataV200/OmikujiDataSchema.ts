@@ -1,4 +1,4 @@
-// src/types/OmikujiDataSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/OmikujiDataSchema.ts
 import { z } from 'zod'
 import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'

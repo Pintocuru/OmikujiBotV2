@@ -1,4 +1,4 @@
-// src/game.ts
+// src/GameScripts/scripts/MultiplyBonanza/game.ts
 import { GAME_CONFIG, GameResult, TOTAL_WEIGHT } from './gameConfig'
 import { ReelGenerator } from './reelGenerator'
 import { PayoutCalculator } from './payoutCalculator'

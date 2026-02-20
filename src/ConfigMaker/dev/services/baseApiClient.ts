@@ -1,4 +1,4 @@
-// src/configMaker/dev/services/baseApiClient.ts
+// src/ConfigMaker/dev/services/baseApiClient.ts
 import axios, { AxiosInstance, AxiosError } from 'axios'
 import { isDev, SERVER_EXPRESS_URL, SERVER_PLUGIN_URL } from '@/types'
 import { getErrorMessage, normalizeApiResponse, NormalizedResponse } from './apiServiceUtils'

@@ -1,4 +1,4 @@
-// src/configMaker/composables/useScrollBehavior.ts
+// src/ConfigMaker/components/appItems/useScrollBehavior.ts
 import { ref, onMounted, onUnmounted } from 'vue'
 
 export const useScrollBehavior = () => {

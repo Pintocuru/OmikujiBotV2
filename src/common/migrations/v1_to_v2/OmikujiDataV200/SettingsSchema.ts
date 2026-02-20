@@ -1,4 +1,4 @@
-// src\types\OmikujiData\SettingsSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/SettingsSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 

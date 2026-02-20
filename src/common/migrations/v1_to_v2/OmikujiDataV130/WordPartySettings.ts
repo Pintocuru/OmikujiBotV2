@@ -1,4 +1,4 @@
-// src\types\OmikujiData\WordPartySettings.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/WordPartySettings.ts
 import { z } from 'zod'
 
 // WordParty設定のスキーマ

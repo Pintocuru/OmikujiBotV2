@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\componentEditor\componentRules.ts
+// src/ConfigMaker/components/componentEditor/componentRules.ts
 import { AccessLevelType } from '@shared/types'
 
 // アイテム

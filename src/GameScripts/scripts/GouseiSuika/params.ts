@@ -1,4 +1,4 @@
-// src/params.ts
+// src/GameScripts/scripts/GouseiSuika/params.ts
 import { z } from 'zod'
 
 /**

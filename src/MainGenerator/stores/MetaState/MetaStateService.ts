@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/MetaState/MetaStateService.ts
+// src/MainGenerator/stores/MetaState/MetaStateService.ts
 import { GetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 

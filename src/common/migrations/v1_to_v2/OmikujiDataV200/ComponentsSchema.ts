@@ -1,4 +1,4 @@
-// src\types\OmikujiData\ComponentsSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/ComponentsSchema.ts
 import { z } from 'zod'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'

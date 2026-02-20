@@ -1,4 +1,4 @@
-// types\OmikujiData\CategoryType.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/CategoryType.ts
 import { ActionSetSchema, ActionSetType } from './ActionSet'
 import { PlaceholderSchema, PlaceholderType } from './PlaceholderSchema'
 import { CharacterSchema, CharacterType } from './CharacterSchema'

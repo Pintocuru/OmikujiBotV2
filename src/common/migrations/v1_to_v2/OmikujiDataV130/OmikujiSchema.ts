@@ -1,4 +1,4 @@
-// types/OmikujiBot/OmikujiSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/OmikujiSchema.ts
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'

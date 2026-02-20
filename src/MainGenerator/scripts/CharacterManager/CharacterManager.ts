@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\CharacterManager\CharacterManager.ts
+// src/MainGenerator/scripts/CharacterManager/CharacterManager.ts
 import { CharacterType, OmikujiDataType, CharacterEmotionType, CharacterColorType } from '@/types/OmikujiData/'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'

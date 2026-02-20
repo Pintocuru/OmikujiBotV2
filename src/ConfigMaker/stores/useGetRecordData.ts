@@ -1,4 +1,4 @@
-// src\ConfigMaker\stores\useGetRecordData.ts
+// src/ConfigMaker/stores/useGetRecordData.ts
 import { storeToRefs } from 'pinia'
 import { RecordCategoryType, RecordCategoryItemTypeMap } from '@/types/OmikujiData/'
 import { useOmikujiStore } from './useOmikujiStore'

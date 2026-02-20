@@ -1,4 +1,4 @@
-// src/configMaker/components/RecordTabs/composables/useRuleState.ts
+// src/ConfigMaker/components/RecordTabs/composables/useRuleState.ts
 import { ref, computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useNavigationStore } from '@config/stores/useNavigationStore'

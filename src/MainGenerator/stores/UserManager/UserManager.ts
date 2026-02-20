@@ -1,4 +1,4 @@
-// src/MainGenerator/script/omikujiProcess/UserManager.ts
+// src/MainGenerator/stores/UserManager/UserManager.ts
 import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserStatsManager } from './UserStatsManager'
 import { UserVisitManager } from './UserVisitManager'

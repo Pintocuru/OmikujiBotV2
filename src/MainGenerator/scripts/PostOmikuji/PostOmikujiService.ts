@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\PostOmikuji\PostOmikujiService.ts
+// src/MainGenerator/scripts/PostOmikuji/PostOmikujiService.ts
 import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'

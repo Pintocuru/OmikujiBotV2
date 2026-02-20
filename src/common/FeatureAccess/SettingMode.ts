@@ -1,4 +1,4 @@
-// src\common\FeatureAccess\SettingMode.ts
+// src/common/FeatureAccess/SettingMode.ts
 import { AccessLevelType } from '@shared/types'
 import { computed, Ref } from 'vue'
 

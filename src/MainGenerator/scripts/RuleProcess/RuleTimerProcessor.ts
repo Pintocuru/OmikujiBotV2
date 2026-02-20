@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\RuleProcess\RuleTimerProcessor.ts
+// src/MainGenerator/scripts/RuleProcess/RuleTimerProcessor.ts
 import { BotMessageType } from '@/types/'
 import { TimerRuleType, OmikujiDataType } from '@/types/OmikujiData/'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'

@@ -1,4 +1,4 @@
-// src/types/MainGenerator/useFontFamily.ts
+// src/types/MetaMaps/FontFamilyMaps.ts
 
 /**
  * fontFamilyMap

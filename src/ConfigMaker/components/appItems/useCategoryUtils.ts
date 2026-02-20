@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\appItems\useCategoryUtils.ts
+// src/ConfigMaker/components/appItems/useCategoryUtils.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { categoryMap, CategoryType } from '@/types/'

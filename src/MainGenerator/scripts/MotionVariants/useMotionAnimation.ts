@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\MotionVariants\useMotionAnimation.ts
+// src/MainGenerator/scripts/MotionVariants/useMotionAnimation.ts
 import { ref, computed, nextTick, Ref, ComputedRef } from 'vue'
 import { MotionVariants, useMotion } from '@vueuse/motion'
 import { MotionType, motionVariants } from './MotionVariants'

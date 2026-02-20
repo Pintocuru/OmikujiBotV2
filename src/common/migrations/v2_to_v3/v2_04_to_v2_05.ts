@@ -1,4 +1,4 @@
-// v2_04_to_v2_05.ts
+// src/common/migrations/v2_to_v3/v2_04_to_v2_05.ts
 import { v4 } from 'uuid'
 
 export function migrateV204ToV205(data: any) {

@@ -1,4 +1,4 @@
-// src\common\GameScripts\parseQueryString.ts
+// src/GameScripts/parseQueryString.ts
 
 // クエリをパラメータの形に変換する
 export function parseQueryString(queryString: string): Record<string, string> {

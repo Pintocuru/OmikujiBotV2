@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/DwarfBomb/rewards.ts
+// src/GameScripts/scripts/DwarfBomb/game/rewards.ts
 import { Dwarf, RewardType, GAME_CONFIG } from './gameConfigs'
 
 // ---- 重み付き抽選 ----

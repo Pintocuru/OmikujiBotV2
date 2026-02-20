@@ -1,4 +1,4 @@
-// src\ConfigMaker\components\parts\KeyEditor\keyEditorTypes.ts
+// src/ConfigMaker/components/KeyEditor/composables/keyEditorTypes.ts
 import { RecordCategoryType, RulesCategoryType } from '@/types/OmikujiData/'
 
 export type CharacterUsage = { [K in RulesCategoryType]: string[] }

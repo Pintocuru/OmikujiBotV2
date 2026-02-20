@@ -1,4 +1,4 @@
-// src/configMaker/dev/stores/api/useApiCore.ts
+// src/ConfigMaker/dev/stores/useApiCore.ts
 import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '../devTypes'
 

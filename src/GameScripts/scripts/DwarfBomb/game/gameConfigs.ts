@@ -1,4 +1,4 @@
-// src/gameConfigs.ts
+// src/GameScripts/scripts/DwarfBomb/game/gameConfigs.ts
 
 export interface GameResult {
   day: number

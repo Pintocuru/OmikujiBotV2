@@ -1,4 +1,4 @@
-// src/types/DisplaySettingsSchema.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV130/DisplaySettingsSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema, displaySize } from '@shared/types/'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'

@@ -1,4 +1,4 @@
-// src/common/GameScripts/scripts/DwarfBomb/game.ts
+// src/GameScripts/scripts/DwarfBomb/game/game.ts
 import { PostFlowWordPartyType } from '@/types/OmikujiData/'
 import { GameResult, GAME_CONFIG, RewardType } from './gameConfigs'
 import { createDwarfs, getTotalGold, createMessage } from './dwarfUtils'

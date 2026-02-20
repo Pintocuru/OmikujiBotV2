@@ -1,4 +1,4 @@
-// src/types/OmikujiDataNormalize.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/OmikujiDataNormalize.ts
 import { z } from 'zod'
 import { BaseRecordType } from '@shared/types'
 

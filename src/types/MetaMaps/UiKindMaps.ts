@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\types\MetaMaps\UiKindMaps.ts
+// src/types/MetaMaps/UiKindMaps.ts
 
 /**
  * スロット定義

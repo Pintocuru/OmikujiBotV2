@@ -1,4 +1,4 @@
-// src\types\OmikujiData\ActionSet.ts
+// src/common/migrations/v1_to_v2/OmikujiDataV200/ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
 import { soundList } from '@sounds/soundMap'

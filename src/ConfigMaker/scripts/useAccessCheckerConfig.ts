@@ -1,4 +1,4 @@
-// src\ConfigMaker\scripts\useAccessCheckerConfig.ts
+// src/ConfigMaker/scripts/useAccessCheckerConfig.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useSettingModeFromHash } from '@/common/FeatureAccess/SettingMode'

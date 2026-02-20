@@ -1,4 +1,4 @@
-// src\MainGenerator\scripts\PostMessage\PostMessageHelper.ts
+// src/MainGenerator/scripts/PostOmikuji/PostMessageHelper.ts
 import { CharacterType } from '@/types/'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'

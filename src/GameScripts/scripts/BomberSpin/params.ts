@@ -1,4 +1,4 @@
-// src/params.ts
+// src/GameScripts/scripts/BomberSpin/params.ts
 import { z } from 'zod'
 
 /**

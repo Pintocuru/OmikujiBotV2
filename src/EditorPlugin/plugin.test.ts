@@ -1,4 +1,4 @@
-// src/MainPlugin/plugin.test.ts
+// src/EditorPlugin/plugin.test.ts
 import { vi } from 'vitest'
 import plugin from './plugin'
 import { MockComment, MockCommentSchema } from '@shared/test-utils/CreateMockComment'

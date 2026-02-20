@@ -40,7 +40,7 @@ async function processFile(filePath: string) {
   }
 
   // 先頭に相対パスを追加
-  lines.unshift(`// ${relativePath}`)
+  lines.unshift(`// src/${relativePath}`)
 
   await fs.writeFile(filePath, lines.join('\n'), 'utf-8')
 }

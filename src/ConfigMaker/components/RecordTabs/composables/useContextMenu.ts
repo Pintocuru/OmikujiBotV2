@@ -1,4 +1,4 @@
-// src/configMaker/components/RecordTabs/composables/useContextMenu.ts
+// src/ConfigMaker/components/RecordTabs/composables/useContextMenu.ts
 import { ref } from 'vue'
 import type { useRuleState } from './useRuleState'
 import { BaseRecordType } from '@shared/types'

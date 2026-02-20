@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/OmikujiResult/botMessageHelpers.ts
+// src/MainGenerator/scripts/OmikujiResult/BotMessageHelpers.ts
 import { BotMessageBubbleSchema, BotMessageExtraSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { CharacterEmotionType, PostFlowMessageType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'

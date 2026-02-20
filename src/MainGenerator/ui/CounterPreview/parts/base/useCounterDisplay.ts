@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useCounterDisplay.ts
+// src/MainGenerator/ui/CounterPreview/parts/base/useCounterDisplay.ts
 import { ref, watch, computed } from 'vue'
 import { SettingsCounterType } from '@/types/'
 import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'

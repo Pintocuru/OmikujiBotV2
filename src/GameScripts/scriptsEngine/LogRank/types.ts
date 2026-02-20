@@ -1,4 +1,4 @@
-// src/common/GameScripts/scriptsEngine/LogRank/types.ts
+// src/GameScripts/scriptsEngine/LogRank/types.ts
 import { z } from 'zod'
 import { UserNameSchema } from '@shared/types'
 

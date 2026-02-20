@@ -1,4 +1,4 @@
-// src/game.ts
+// src/GameScripts/scripts/DwarfBomb/game.ts
 // ! 使用しない(バックアップ用)
 import { PostFlowWordPartyType } from '@/types/OmikujiData/'
 import { RewardType, Dwarf, GameResult, GAME_CONFIG } from './game/gameConfigs'

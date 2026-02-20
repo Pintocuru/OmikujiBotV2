@@ -1,4 +1,4 @@
-// src/configMaker/dev/services/omikujiApi.ts
+// src/ConfigMaker/dev/services/omikujiApi.ts
 import { BaseApiClient } from './baseApiClient'
 
 /**

@@ -3,13 +3,10 @@
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="handlePreviewClick">
     <FlashBannerRenderer
-      :component="flashBanner.component"
-      :label="flashBanner.label"
+      :settings="flashBanner"
       :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
       :layers="iconSrc(flashBanner.defaultCharacterKey, 'default')"
-      :icon-size="flashBanner.iconSize"
       :color="getCharacterColor(flashBanner.defaultCharacterKey)"
-      :show-character-on-right="flashBanner.showItemOnRight"
       :label-class="blinkClass"
     />
   </div>
@@ -157,7 +154,7 @@
   import CharacterSelectorSingle from '@config/components/componentEditor/ToastWidgets/CharacterSelectorSingle.vue'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import FlashBannerRenderer from '@main/ui/FlashBanner/FlashBannerRenderer.vue'
+  import FlashBannerRenderer from '@main/ui/FlashBanner/parts/FlashBannerRenderer.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
