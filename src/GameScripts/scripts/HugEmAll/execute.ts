@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/HugEmAll/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { GameEngine } from './game'
 import { parseQueryString } from '@game/parseQueryString'
@@ -106,11 +106,11 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
    * PostAction の構築
    */
   private buildPostActions(
-    postActions: PostActionType[] | null,
+    postActions: PostFlowType[] | null,
     characterKey: string | null,
     bubbleText: string
-  ): PostActionType[] {
-    const messageAction = PostActionMessageSchema.parse({
+  ): PostFlowType[] {
+    const messageAction = PostFlowMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
       message: {

@@ -14,9 +14,9 @@
         <select
           class="select select-sm w-full max-w-xs"
           :value="action.actionType"
-          @change="updateActionType(($event.target as HTMLSelectElement).value as PostActionTypes)"
+          @change="updateActionType(($event.target as HTMLSelectElement).value as ActionTagType)"
         >
-          <option v-for="t in postActionTypes" :key="t.type" :value="t.type">
+          <option v-for="t in postActionTypeMaps" :key="t.type" :value="t.type">
             {{ t.label }}
           </option>
         </select>
@@ -38,7 +38,7 @@
       <component
         v-if="currentComponent"
         :is="currentComponent"
-        v-bind="{ action: action as any, }"
+        v-bind="{ action: action as any }"
         @update:action="handleActionUpdate"
       />
     </div>
@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostActionSchema, PostActionType, PostActionTypes, postActionTypes } from '@/types/'
+  import { PostFlowSchema, PostFlowType, ActionTagType, postActionTypeMaps } from '@/types/'
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
@@ -57,7 +57,7 @@
 
   // Props
   const props = defineProps<{
-    action: PostActionType
+    action: PostFlowType
     index: number
   }>()
 
@@ -65,12 +65,12 @@
   const emit = defineEmits<{
     duplicate: [index: number]
     remove: [index: number]
-    'update:action': [value: PostActionType]
+    'update:action': [value: PostFlowType]
   }>()
 
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {
-    const componentMap: Record<PostActionTypes, any> = {
+    const componentMap: Record<ActionTagType, any> = {
       message: MessageSettings,
       sound: SoundSettings,
       wordParty: WordPartySettings,
@@ -87,10 +87,10 @@
   })
 
   // actionType 別の生データキャッシュ
-  const rawActionCache = ref<Partial<Record<PostActionTypes, any>>>({})
+  const rawActionCache = ref<Partial<Record<ActionTagType, any>>>({})
 
   // アクションタイプの更新
-  const updateActionType = (newType: PostActionTypes) => {
+  const updateActionType = (newType: ActionTagType) => {
     const currentType = props.action.actionType
 
     // ① 現在の状態を退避
@@ -110,7 +110,7 @@
 
     try {
       // ③ Zodで正規化
-      const newAction = PostActionSchema.parse({
+      const newAction = PostFlowSchema.parse({
         ...restored,
         actionType: newType,
       })
@@ -122,7 +122,7 @@
   }
 
   // アクション更新のハンドラー
-  const handleActionUpdate = (updatedAction: PostActionType) => {
+  const handleActionUpdate = (updatedAction: PostFlowType) => {
     emit('update:action', updatedAction)
   }
 </script>

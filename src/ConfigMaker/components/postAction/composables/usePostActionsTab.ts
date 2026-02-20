@@ -1,11 +1,11 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
-import { PostActionMessageSchema, PostActionMessageType, PostActionType } from '@/types/OmikujiData/'
+import { PostFlowMessageSchema, PostActionMessageType, PostFlowType } from '@/types/OmikujiData/'
 import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
 export function usePostActionsTab(
-  actions: Ref<PostActionType[]>,
-  emit: (event: 'update:actions', actions: PostActionType[]) => void
+  actions: Ref<PostFlowType[]>,
+  emit: (event: 'update:actions', actions: PostFlowType[]) => void
 ) {
   const { characterArray } = useCharacterManager()
 
@@ -32,7 +32,7 @@ export function usePostActionsTab(
   }
 
   // アクションの更新
-  const updateCurrentAction = (updatedAction: PostActionType) => {
+  const updateCurrentAction = (updatedAction: PostFlowType) => {
     const newActions = [...actions.value]
     newActions[activeTab.value] = updatedAction
     emit('update:actions', newActions)
@@ -40,7 +40,7 @@ export function usePostActionsTab(
 
   // 新しいアクションの追加
   const addNewAction = () => {
-    const newAction: PostActionMessageType = PostActionMessageSchema.parse({
+    const newAction: PostActionMessageType = PostFlowMessageSchema.parse({
       characterKey: characterArray.value[0]?.key ?? null,
       delaySeconds: actions.value.length > 0 ? Math.max(...actions.value.map((a) => a.delaySeconds)) + 1 : 0,
     })

@@ -9,6 +9,7 @@ import { ComponentsSchema } from './ComponentsSchema'
 import { FeatureUsageSchema } from './FeatureUsageSchema'
 import { SettingsSchema } from './SettingsSchema'
 import { ActionSetSchema } from './ActionSet'
+import { normalizedRecord, normalizedObject } from './ParsedDefault'
 
 /**
  * おみくじデータ全体のメインスキーマ
@@ -22,12 +23,37 @@ export const OmikujiDataSchema = z.object({
   actionSets: normalizedRecord(ActionSetSchema),
   placeholders: normalizedRecord(PlaceholderSchema),
   characters: normalizedRecord(CharacterSchema),
-  components: ComponentsSchema.catch(ComponentsSchema.parse({})),
-  featureUsage: FeatureUsageSchema.catch(FeatureUsageSchema.parse({})),
-  settings: SettingsSchema.catch(SettingsSchema.parse({})),
+  components: normalizedObject(ComponentsSchema),
+  featureUsage: normalizedObject(FeatureUsageSchema),
+  settings: normalizedObject(SettingsSchema),
 })
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>
 
-function normalizedRecord<T extends z.ZodTypeAny>(itemSchema: T) {
-  return z.record(z.string(), itemSchema).default({}).catch({})
-}
+/**
+// v3から
+export const OmikujiDataSchema = z.object({
+  ...PackageJsonSchema.shape,
+
+  // rules -> events
+  events: z.object({
+    comments: normalizedRecord(CommentRuleSchema),
+    timers: normalizedRecord(TimerRuleSchema),
+    // metas -> services
+    services: normalizedRecord(MetaRuleSchema),
+  }),
+
+  assets: z.object({
+    // actionSets -> actions
+    actions: normalizedRecord(ActionSetSchema),
+    placeholders: normalizedRecord(PlaceholderSchema),
+    characters: normalizedRecord(CharacterSchema),
+  }),
+
+  // components -> ui
+  ui: ComponentsSchema.catch(ComponentsSchema.parse({})),
+  // featureUsage -> flags
+  flags: FeatureUsageSchema.catch(FeatureUsageSchema.parse({})),
+  jsonMerge: JsonMergeSchema.catch([]),
+  settings: SettingsSchema.catch(SettingsSchema.parse({})),
+})
+ */

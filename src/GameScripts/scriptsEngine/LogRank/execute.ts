@@ -3,14 +3,14 @@ import { GameStateType, GameStateSchema, GameLogType, UserStatsType } from '@/ty
 import { GameParams, GameParamsSchema } from './types'
 import { updateUserStats, createGameRecord } from './services/UserStatsService'
 import { createPostActions } from './services/MessageService'
-import { PostActionType } from '@/types'
+import { PostFlowType } from '@/types'
 
 // ゲーム実行結果
 interface GameResult {
   gameLog: GameLogType
   userStats: UserStatsType
   isOverLimit: boolean
-  postActions: PostActionType[]
+  postActions: PostFlowType[]
 }
 
 export class LogRankScript {

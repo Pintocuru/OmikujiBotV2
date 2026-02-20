@@ -5,6 +5,7 @@ export * from './env'
 
 export * from './MainGenerator/index'
 export * from './GameScript/index'
+export * from './MetaMaps/index'
 export * from './OmikujiData/index'
 export * from './OmikujiProcess/index'
 export * from './ui/ComponentKind'

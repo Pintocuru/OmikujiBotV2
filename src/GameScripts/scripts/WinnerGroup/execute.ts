@@ -1,7 +1,7 @@
 // src/GameScripts/scripts/WinnerGroup/execute.ts
-import { ScriptClass, ScriptResult, PostActionType, BotMessageExtraType, BotMessageExtraSchema } from '@/types/'
+import { ScriptClass, ScriptResult, PostFlowType, BotMessageExtraType, BotMessageExtraSchema } from '@/types/'
 import { parseQueryString } from '@game/parseQueryString'
-import { PostActionMessageSchema } from '@/types/'
+import { PostFlowMessageSchema } from '@/types/'
 import { GameParamsSchema } from './params'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
@@ -22,7 +22,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
 
     const delaySeconds = 1 // delaySeconds
 
-    const messageAction: PostActionType = PostActionMessageSchema.parse({
+    const messageAction: PostFlowType = PostFlowMessageSchema.parse({
       delaySeconds,
       characterKey,
       message: {

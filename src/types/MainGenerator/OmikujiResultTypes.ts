@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultTypes.ts
-import { CharacterEmotionType, PostActionType } from '@/types/OmikujiData/'
+import { CharacterEmotionType, PostFlowType } from '@/types/OmikujiData/'
 import { ExtraListsType, ExtraSlotsType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -22,7 +22,7 @@ export interface VariablePlaceholderResult {
  * 処理済みのアクションと解析結果をセットにした型
  */
 export interface ProcessedPostAction {
-  action: PostActionType
+  action: PostFlowType
   variableResult?: VariablePlaceholderResult
 }
 

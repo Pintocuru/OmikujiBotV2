@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/GouseiSuika/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { GachaGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
@@ -90,11 +90,11 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
    */
   private buildPostActions(
     gameResult: ReturnType<GachaGame['play']>,
-    postActions: PostActionType[] | null,
+    postActions: PostFlowType[] | null,
     characterKey: string | null,
     bubbleText: string
-  ): PostActionType[] {
-    const messageAction = PostActionMessageSchema.parse({
+  ): PostFlowType[] {
+    const messageAction = PostFlowMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
       message: {

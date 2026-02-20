@@ -1,5 +1,5 @@
 // src/GameScripts/GoogolClover/sub/postActionBuilder.ts
-import { PostActionType, PostActionMessageSchema, BotMessageExtraType } from '@/types'
+import { PostFlowType, PostFlowMessageSchema, BotMessageExtraType } from '@/types'
 
 /**
  * PostActionの構築ロジック
@@ -14,11 +14,11 @@ interface PostActionBuildParams {
 /**
  * ゲーム結果に基づいてPostActionを構築
  */
-export function buildPostActions(params: PostActionBuildParams): PostActionType[] {
+export function buildPostActions(params: PostActionBuildParams): PostFlowType[] {
   const { bubble, score, characterKey } = params
 
   // メッセージアクション
-  const messageAction = PostActionMessageSchema.parse({
+  const messageAction = PostFlowMessageSchema.parse({
     delaySeconds: 3.5,
     characterKey,
     message: {
@@ -28,18 +28,18 @@ export function buildPostActions(params: PostActionBuildParams): PostActionType[
   })
 
   // 共通アクション
-  const commonActions: PostActionType[] = [
+  const commonActions: PostFlowType[] = [
     { actionType: 'wordParty', delaySeconds: -1, wordParty: 'MaidenOmikujiLottery' },
   ]
 
   // 成功時のアクション
-  const successActions: PostActionType[] = [
+  const successActions: PostFlowType[] = [
     { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
     { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
   ]
 
   // 失敗時のアクション
-  const failureActions: PostActionType[] = [
+  const failureActions: PostFlowType[] = [
     { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji08' },
     { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
     { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },

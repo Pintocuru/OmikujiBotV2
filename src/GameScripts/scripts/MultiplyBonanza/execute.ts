@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/MultiplyBonanza/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { GameEngine } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
@@ -110,7 +110,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
   /**
    * WordPartyの選択
    */
-  private selectWordParties(gameResult: ReturnType<GameEngine['playGame']>): PostActionType[] {
+  private selectWordParties(gameResult: ReturnType<GameEngine['playGame']>): PostFlowType[] {
     const selector = new WordPartySelector()
     return selector.selectWordParties(gameResult)
   }
@@ -123,11 +123,11 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
       result: ReturnType<GameEngine['playGame']>
       message: string
     },
-    wordPartyActions: PostActionType[],
-    postActions: PostActionType[] | null,
+    wordPartyActions: PostFlowType[],
+    postActions: PostFlowType[] | null,
     characterKey: string | null
-  ): PostActionType[] {
-    const messageAction = PostActionMessageSchema.parse({
+  ): PostFlowType[] {
+    const messageAction = PostFlowMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
       message: {

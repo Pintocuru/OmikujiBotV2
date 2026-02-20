@@ -5,13 +5,13 @@ import {
   defaultPlaceholdersLabels,
   defaultPlaceholdersShortLabels,
 } from '@/types/OmikujiProcess/DefaultPlaceholders'
-import { PlaceholderSchema, PlaceholderType, PostActionType } from '@/types/OmikujiData/'
+import { PlaceholderSchema, PlaceholderType, PostFlowType } from '@/types/OmikujiData/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 /**
  * プレースホルダーのデータ管理を担当するcomposable
  */
-export function usePlaceholderData(actions: Ref<PostActionType[]>) {
+export function usePlaceholderData(actions: Ref<PostFlowType[]>) {
   const { getCategoryArray } = useGetRecordData()
 
   // デフォルトプレースホルダーの設定

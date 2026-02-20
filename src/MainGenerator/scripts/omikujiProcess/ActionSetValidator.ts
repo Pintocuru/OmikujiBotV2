@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\OmikujiProcess\ActionSetValidator.ts
-import { PostActionType } from '@/types/'
+import { PostFlowType } from '@/types/'
 
 export interface CircularReferenceResult {
   hasCircular: boolean
@@ -11,7 +11,7 @@ export interface CircularReferenceResult {
  */
 export function checkCircularReference(
   targetKey: string,
-  actionSets: Record<string, { postActions: PostActionType[] }>,
+  actionSets: Record<string, { postActions: PostFlowType[] }>,
   currentKey?: string,
   visited: Set<string> = new Set()
 ): string[] | null {
@@ -54,7 +54,7 @@ export function checkCircularReference(
  */
 export function hasCircularReference(
   targetKey: string,
-  actionSets: Record<string, { postActions: PostActionType[] }>,
+  actionSets: Record<string, { postActions: PostFlowType[] }>,
   currentKey?: string
 ): boolean {
   return checkCircularReference(targetKey, actionSets, currentKey) !== null

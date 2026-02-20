@@ -20,18 +20,18 @@
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { PostActionType, PostActionSchema } from '@/types/OmikujiData/'
+  import { PostFlowType, PostFlowSchema } from '@/types/OmikujiData/'
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
+    modelValue: PostFlowType[]
   }>()
 
   // Emits
   const emit = defineEmits<{
-    'update:modelValue': [value: PostActionType[]]
+    'update:modelValue': [value: PostFlowType[]]
     close: []
   }>()
 
@@ -62,9 +62,9 @@
         throw new Error(msg)
       }
 
-      const validatedActions: PostActionType[] = parsed.map((action, index) => {
+      const validatedActions: PostFlowType[] = parsed.map((action, index) => {
         try {
-          return PostActionSchema.parse(action)
+          return PostFlowSchema.parse(action)
         } catch (error) {
           const msg = `${index + 1}番目の要素のバリデーションエラー: ${
             error instanceof Error ? error.message : '不明なエラー'

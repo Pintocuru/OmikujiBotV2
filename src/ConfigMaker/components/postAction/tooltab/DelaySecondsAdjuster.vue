@@ -25,18 +25,18 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/'
+  import { PostFlowType } from '@/types/OmikujiData/'
   import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
   import { Minus, Plus } from 'lucide-vue-next'
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
+    modelValue: PostFlowType[]
   }>()
 
   // Emits
   const emit = defineEmits<{
-    'update:modelValue': [value: PostActionType[]]
+    'update:modelValue': [value: PostFlowType[]]
   }>()
 
   // 下限値

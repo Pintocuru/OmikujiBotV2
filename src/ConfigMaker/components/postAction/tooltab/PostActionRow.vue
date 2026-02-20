@@ -22,19 +22,19 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType, postActionTypes } from '@/types/'
+  import { PostFlowType, postActionTypeMaps } from '@/types/'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
-    action: PostActionType
+    action: PostFlowType
   }>()
 
   const { isCharacter } = useVisibilityAccess()
   const { iconSrc } = useCharacterManager()
 
-  const iconMap = Object.fromEntries(postActionTypes.map((v) => [v.type, v.icon]))
+  const iconMap = Object.fromEntries(postActionTypeMaps.map((v) => [v.type, v.icon]))
 
   const icon = computed(() => iconMap[props.action.actionType])
 </script>

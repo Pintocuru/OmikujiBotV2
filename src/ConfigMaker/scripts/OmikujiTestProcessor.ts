@@ -1,11 +1,5 @@
 // src\ConfigMaker\scripts\OmikujiTestProcessor.ts
-import {
-  ActionSetSchema,
-  ActionSetType,
-  defaultPlaceholdersShortLabels,
-  OmikujiDataType,
-  PostActionType,
-} from '@/types/'
+import { ActionSetSchema, ActionSetType, defaultPlaceholdersShortLabels, OmikujiDataType, PostFlowType } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
@@ -30,7 +24,7 @@ export class OmikujiTestProcessor {
    * PostActionのみを実行（テスト用・簡易実行）
    * ルール情報やスクリプト実行なしで、PostActionを直接BotMessageに変換
    */
-  executePostActionsOnly(actions: PostActionType[], omiken?: OmikenCommentType): BotMessageType[] {
+  executePostActionsOnly(actions: PostFlowType[], omiken?: OmikenCommentType): BotMessageType[] {
     const actionItem: ActionSetType = ActionSetSchema.parse({ postActions: actions })
     return this.executeOmikujiDirect(actionItem, omiken)
   }

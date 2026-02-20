@@ -65,14 +65,14 @@
 
 <script setup lang="ts">
   import { toRef } from 'vue'
-  import { PostActionType } from '@/types/'
+  import { PostFlowType } from '@/types/'
   import { usePlaceholders } from './composables/usePlaceholders'
   import PlaceholderItem from './PlaceholderItem.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   // Props
   const props = defineProps<{
-    actions?: PostActionType[]
+    actions?: PostFlowType[]
     editorColor?: string // 新しく追加
   }>()
 

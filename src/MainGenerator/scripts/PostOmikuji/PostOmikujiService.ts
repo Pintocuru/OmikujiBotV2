@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\PostOmikuji\PostOmikujiService.ts
-import { PostActionType, CharacterType, PostActionMessageType, OmikujiDataType } from '@/types/'
+import { PostFlowType, CharacterType, PostActionMessageType, OmikujiDataType } from '@/types/'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
@@ -32,7 +32,7 @@ export class PostOmikujiService {
   /**
    * 複数の投稿アクションを並列実行
    */
-  async post(posts: PostActionType[]): Promise<void> {
+  async post(posts: PostFlowType[]): Promise<void> {
     try {
       // サービス一覧を取得・更新
       const services = await this.serviceAPI.getServices()
@@ -48,7 +48,7 @@ export class PostOmikujiService {
   /**
    * 単一の投稿アクションを処理
    */
-  private async processPost(post: PostActionType): Promise<void> {
+  private async processPost(post: PostFlowType): Promise<void> {
     const { delaySeconds = 0 } = post
 
     if (post.actionType === 'message' && !post.message.isToast) {

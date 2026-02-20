@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useCharacterStats.ts
 import { computed, ComputedRef } from 'vue'
-import { ActionSetType, PostActionType } from '@/types/OmikujiData/'
+import { ActionSetType, PostFlowType } from '@/types/OmikujiData/'
 import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 import { usePostActionCharacters } from './usePostActionCharacters'
 

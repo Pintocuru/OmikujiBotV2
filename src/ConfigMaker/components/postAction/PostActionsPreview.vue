@@ -21,14 +21,14 @@
 </template>
 
 <script setup lang="ts">
-  import { PostActionType } from '@/types/'
+  import { PostFlowType } from '@/types/'
   import PostActionRow from './tooltab/PostActionRow.vue'
 
   const props = defineProps<{
-    actions: PostActionType[]
+    actions: PostFlowType[]
   }>()
 
-  const displayText = (action: PostActionType) => {
+  const displayText = (action: PostFlowType) => {
     switch (action.actionType) {
       case 'message':
         return action.message.bubble || 'error'

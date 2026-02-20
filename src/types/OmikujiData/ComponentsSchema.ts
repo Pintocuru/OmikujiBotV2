@@ -4,6 +4,7 @@ import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
 import { COMPONENT_MAP, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
 import { fontFamilyOptions } from '../MainGenerator'
 import { CharacterColorScheme } from './CharacterSchema'
+import { normalizedObject } from './ParsedDefault'
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
@@ -49,13 +50,8 @@ export const ComponentsSchema = z.object({
     { slot: 'secondary', kind: 'toast' },
   ]),
 
-  commonStyle: ComponentsCommonStyleSchema.default(ComponentsCommonStyleSchema.parse({})).catch(
-    ComponentsCommonStyleSchema.parse({})
-  ),
-
-  settings: ComponentsSettingsSchema.default(ComponentsSettingsSchema.parse({})).catch(
-    ComponentsSettingsSchema.parse({})
-  ),
+  commonStyle: normalizedObject(ComponentsCommonStyleSchema),
+  settings: normalizedObject(ComponentsSettingsSchema),
 })
 
 export type ComponentsType = z.infer<typeof ComponentsSchema>

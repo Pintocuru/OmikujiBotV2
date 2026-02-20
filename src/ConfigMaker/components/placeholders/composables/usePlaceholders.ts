@@ -1,13 +1,13 @@
 // src/configMaker/components/placeholders/composables/usePlaceholders.ts
 import { computed, Ref } from 'vue'
-import { PostActionType } from '@/types/OmikujiData/'
+import { PostFlowType } from '@/types/OmikujiData/'
 import { usePlaceholderData } from './usePlaceholderData'
 import { usePlaceholderFilter } from './usePlaceholderFilter'
 
 /**
  * プレースホルダー機能の統合composable
  */
-export function usePlaceholders(actions: Ref<PostActionType[]>, editorColor?: Ref<string | undefined>) {
+export function usePlaceholders(actions: Ref<PostFlowType[]>, editorColor?: Ref<string | undefined>) {
   // データ管理
   const { allPlaceholders, usedPlaceholderIds, defaultPlaceholders } = usePlaceholderData(actions)
 

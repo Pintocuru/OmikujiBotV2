@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
-import { PostActionType, PlaceholderType, selectValue } from '@/types/'
+import { PostFlowType, PlaceholderType, selectValue } from '@/types/'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
 import { sanitizeText } from './context'
 
@@ -43,7 +43,7 @@ export class ContentPlaceholder {
   /**
    * PostAction配列のプレースホルダーを置換して返す
    */
-  processPostActions(postActions: PostActionType[]): PostActionType[] {
+  processPostActions(postActions: PostFlowType[]): PostFlowType[] {
     return postActions.map((action) => {
       if (action.actionType === 'message') {
         return { ...action, message: this.processObject(action.message) }

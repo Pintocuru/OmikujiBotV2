@@ -1,18 +1,18 @@
 // tools/JsonMerge/remaps.ts
 import type { OmikujiDataType } from '@/types/OmikujiData/'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/'
-import type { ActionSetType, PostActionType, GameScriptsType } from '@/types/OmikujiData/'
+import type { ActionSetType, PostFlowType, GameScriptsType } from '@/types/OmikujiData/'
 import { CharacterEmotionType, rulesCategoryLabel } from '@/types/OmikujiData'
 
 /**
  * PostActionの配列に対してリマップルールを適用
  */
-function remapPostActions(postActions: PostActionType[], remaps: JsonMergeRemapType[]): PostActionType[] {
+function remapPostActions(postActions: PostFlowType[], remaps: JsonMergeRemapType[]): PostFlowType[] {
   return postActions.map((action) => {
     // message以外のactionTypeは早期return
     if (action.actionType !== 'message') return action
 
-    let remappedAction: PostActionType = { ...action }
+    let remappedAction: PostFlowType = { ...action }
     let hasChanged = false
 
     for (const remap of remaps) {

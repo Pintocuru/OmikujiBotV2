@@ -1,5 +1,5 @@
 // shared/types/GameScriptTypes.ts
-import { PostActionType } from '../OmikujiData'
+import { PostFlowType } from '../OmikujiData'
 import { BotMessageExtraType } from '../MainGenerator'
 import { GameStateType } from './GameStateSchema'
 import { PresetMetadata } from '@shared/types/'
@@ -11,7 +11,7 @@ export interface ScriptPreset extends PresetMetadata {
 }
 
 export type ScriptResult = {
-  actions: PostActionType[]
+  actions: PostFlowType[]
   botMessageExtras: BotMessageExtraType[]
 }
 

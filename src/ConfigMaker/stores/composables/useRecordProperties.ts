@@ -6,7 +6,7 @@ import type { useRecordCRUD } from './useRecordCRUD'
 import {
   OmikujiDataType,
   OmikujiItemType,
-  PostActionType,
+  PostFlowType,
   RecordCategoryItemTypeMap,
   RecordCategoryType,
 } from '@/types/OmikujiData'
@@ -49,7 +49,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
     category: RulesCategoryType,
     ruleKey: string,
     omikujiIndex: number,
-    postActions: PostActionType[]
+    postActions: PostFlowType[]
   ) => {
     const record = data.value[category]?.[ruleKey] as RuleType
     if (!record?.omikuji?.[omikujiIndex]) {

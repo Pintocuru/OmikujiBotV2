@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, ScriptResult } from '@/types/'
 import { executeGame } from './sub/game'
 import { buildPostActions } from './sub/postActionBuilder'
 import { UserState } from './sub/types'

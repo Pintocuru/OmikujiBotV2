@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/DwarfBomb/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { BomberSpinGame } from './game'
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
@@ -108,12 +108,12 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
    * PostAction の構築
    */
   private buildPostActions(
-    postActions: PostActionType[] | null,
-    partyEffects: PostActionType[],
+    postActions: PostFlowType[] | null,
+    partyEffects: PostFlowType[],
     characterKey: string | null,
     bubbleText: string
-  ): PostActionType[] {
-    const messageAction = PostActionMessageSchema.parse({
+  ): PostFlowType[] {
+    const messageAction = PostFlowMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
       message: {

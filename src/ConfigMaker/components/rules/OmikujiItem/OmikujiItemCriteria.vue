@@ -83,15 +83,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { OmikujiItemType } from '@/types/OmikujiData/'
-  import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import {
+    OmikujiItemType,
     CriteriaThresholdCondition,
     criteriaThresholdConditionLabels,
     CriteriaThresholdSchema,
     CriteriaThresholdType,
-  } from '@/types/OmikujiProcess/CriteriaThresholdSchema'
+  } from '@/types/OmikujiData/'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import ThresholdGift from '@shared/components/threshold/ThresholdGift.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

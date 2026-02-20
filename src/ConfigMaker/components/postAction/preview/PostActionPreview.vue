@@ -70,7 +70,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { PostActionType, SettingsBubbleSchema, SettingsToastSchema } from '@/types/'
+  import { PostFlowType, SettingsBubbleSchema, SettingsToastSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
@@ -82,7 +82,7 @@
   import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
 
   const props = defineProps<{
-    action: PostActionType
+    action: PostFlowType
   }>()
 
   const omikujiStore = useOmikujiStore()

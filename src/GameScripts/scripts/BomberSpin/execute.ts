@@ -1,6 +1,6 @@
 // src/common/GameScripts/scripts/BomberSpin/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostActionType, GameStateType, PostActionMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
 import { playSlot } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
@@ -91,10 +91,10 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
    */
   private buildPostActions(
     gameResult: ReturnType<typeof playSlot>,
-    postActions: PostActionType[] | null,
+    postActions: PostFlowType[] | null,
     characterKey: string | null
-  ): PostActionType[] {
-    const messageAction = PostActionMessageSchema.parse({
+  ): PostFlowType[] {
+    const messageAction = PostFlowMessageSchema.parse({
       delaySeconds: 3.5,
       characterKey,
       message: {

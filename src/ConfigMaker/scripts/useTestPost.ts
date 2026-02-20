@@ -1,7 +1,7 @@
 // src/ConfigMaker/script/useTestPost.ts
 import { computed } from 'vue'
 import {
-  PostActionType,
+  PostFlowType,
   BotMessageType,
   OmikujiItemType,
   RuleType,
@@ -72,7 +72,7 @@ export function useTestPost() {
   }
 
   const postTestOmikujiItem = (
-    postActions: PostActionType[],
+    postActions: PostFlowType[],
     gameScripts?: GameScriptsType | null,
     drawOmikuji?: OmikujiItemType
   ) => {

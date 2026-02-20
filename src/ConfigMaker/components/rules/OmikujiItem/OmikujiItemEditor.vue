@@ -26,10 +26,10 @@
   <!-- サブタイトル -->
   <SubSectionHeader
     class="pt-4"
-    :icon="ActionSetMap[omikujiItem.type].icon"
+    :icon="actionCategoryMap[omikujiItem.type].icon"
     variant="warning"
-    :title="ActionSetMap[omikujiItem.type].label"
-    :description="ActionSetMap[omikujiItem.type].description"
+    :title="actionCategoryMap[omikujiItem.type].label"
+    :description="actionCategoryMap[omikujiItem.type].description"
   />
 
   <!-- GameScripts コンポーネント -->
@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
   import { computed, watch } from 'vue'
-  import { ActionSetCategory, ActionSetMap, PostActionType } from '@/types/OmikujiData/'
+  import { ActionSetCategory, actionCategoryMap, PostFlowType } from '@/types/'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
@@ -95,7 +95,7 @@
   // 利用可能な ActionSet を絞り込む
   const filteredActionSetMap = computed(() => {
     const result: Record<string, string> = {}
-    Object.entries(ActionSetMap).forEach(([key, value]) => {
+    Object.entries(actionCategoryMap).forEach(([key, value]) => {
       if (key === 'gameScripts' && !hasAvailableScripts.value) return
       if (key === 'special' && !canUseSpecial.value) return
       result[key] = value.label
@@ -113,7 +113,7 @@
     get: () => {
       return omikujiItem.value?.postActions || []
     },
-    set: (newActions: PostActionType[]) => {
+    set: (newActions: PostFlowType[]) => {
       if (!props.selectedItemKey) return
 
       const updatedOmikuji = [...omikujiSets.value]

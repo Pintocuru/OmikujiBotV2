@@ -4,6 +4,7 @@ import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentTriggerSchema } from './CommentTriggerSchema'
 import { BaseRecordSchema } from '@shared/types/'
 import { MetaTriggerSchema } from './MetaTriggerSchema'
+import { normalizedObject } from './ParsedDefault'
 
 /**
  * おみくじ制限設定のスキーマ
@@ -39,8 +40,8 @@ export const BaseRuleSchema = z.object({
 export const CommentRuleSchema = z.object({
   ...BaseRuleSchema.shape,
   ruleType: z.literal('comments').default('comments').catch('comments'),
-  trigger: CommentTriggerSchema.default(CommentTriggerSchema.parse({})).catch(CommentTriggerSchema.parse({})),
-  limits: OmikujiLimitsSchema.catch(OmikujiLimitsSchema.parse({})),
+  trigger: normalizedObject(CommentTriggerSchema),
+  limits: normalizedObject(OmikujiLimitsSchema),
 })
 export type CommentRuleType = z.infer<typeof CommentRuleSchema>
 
@@ -67,7 +68,7 @@ export type TimerRuleType = z.infer<typeof TimerRuleSchema>
 export const MetaRuleSchema = z.object({
   ...BaseRuleSchema.shape,
   ruleType: z.literal('metas').default('metas').catch('metas'),
-  trigger: MetaTriggerSchema.default(MetaTriggerSchema.parse({})).catch(MetaTriggerSchema.parse({})),
+  trigger: normalizedObject(MetaTriggerSchema),
 })
 export type MetaRuleType = z.infer<typeof MetaRuleSchema>
 

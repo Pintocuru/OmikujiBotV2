@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
-import { RulesCategoryType, RuleType, ActionSetType, PostActionType, OmikujiItemType } from '@/types/OmikujiData/'
+import { RulesCategoryType, RuleType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
 import { categoryLabels } from '@/types/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
@@ -54,7 +54,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
   /**
    * 全PostActionを平坦化して取得
    */
-  const allPostActions: ComputedRef<PostActionType[]> = computed(() => {
+  const allPostActions: ComputedRef<PostFlowType[]> = computed(() => {
     if (category === 'actionSets') {
       const items = allItems.value as ActionSetType[]
       return items.flatMap((item) => item.postActions)

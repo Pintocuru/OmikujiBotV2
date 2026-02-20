@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/'
+  import { GameScriptsType, PostFlowType } from '@/types/OmikujiData/'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
@@ -46,7 +46,7 @@
 
   // Props
   const props = defineProps<{
-    modelValue: PostActionType[]
+    modelValue: PostFlowType[]
     gameScripts: GameScriptsType | null
   }>()
 

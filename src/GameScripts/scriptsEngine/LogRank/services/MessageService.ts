@@ -1,5 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
-import { PostActionMessageSchema, PostActionMessageType } from '@/types/'
+import { PostFlowMessageSchema, PostActionMessageType } from '@/types/'
 import { GameParams } from '../types'
 
 /**
@@ -14,7 +14,7 @@ export const createPostActions = (
   const { user, characterKey } = params
 
   return [
-    PostActionMessageSchema.parse({
+    PostFlowMessageSchema.parse({
       delaySeconds: 8,
       characterKey,
       message: {

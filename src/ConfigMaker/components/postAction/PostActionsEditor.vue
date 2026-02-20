@@ -24,18 +24,18 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { GameScriptsType, PostActionType } from '@/types/OmikujiData/'
+  import { GameScriptsType, PostFlowType } from '@/types/OmikujiData/'
   import PostActionsTabs from './tooltab/PostActionsTabs.vue'
   import OmikujiItemToolbar from '@config/components/postAction/tooltab/OmikujiItemToolbar.vue'
   import PostActionsEditorJson from '@config/components/postAction/PostActionsEditorJson.vue'
 
   const props = defineProps<{
-    modelValue: PostActionType[]
+    modelValue: PostFlowType[]
     gameScripts: GameScriptsType | null
   }>()
 
   const emit = defineEmits<{
-    'update:modelValue': [value: PostActionType[]]
+    'update:modelValue': [value: PostFlowType[]]
   }>()
 
   // Refs
@@ -46,7 +46,7 @@
   }
 
   // PostActionsの更新
-  const updatePostActions = (newActions: PostActionType[]) => {
+  const updatePostActions = (newActions: PostFlowType[]) => {
     emit('update:modelValue', newActions)
   }
 </script>

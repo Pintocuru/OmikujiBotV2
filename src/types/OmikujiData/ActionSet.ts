@@ -3,11 +3,12 @@ import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
 import { WeightValueSchema } from './PlaceholderSchema'
 import { soundKeys } from './SoundKey'
+import { normalizedObject } from './ParsedDefault'
+import { actionCategoryMap, postActionTypeMaps, actionSpecialMap } from '../MetaMaps'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
-import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
-// PostAction delaySeconds
+// PostFlow delaySeconds
 const PostActionBaseSchema = z.object({
   delaySeconds: z
     .number()
@@ -16,7 +17,7 @@ const PostActionBaseSchema = z.object({
     .catch(0),
 })
 
-// PostAction message
+// PostFlow message
 export const PostActionMessageContentSchema = z.object({
   bubble: z.string().default('').catch(''),
   isToast: z.boolean().default(false).catch(false),
@@ -24,7 +25,7 @@ export const PostActionMessageContentSchema = z.object({
 
 export type PostActionMessageMessageType = z.infer<typeof PostActionMessageContentSchema>
 
-export const PostActionMessageSchema = z.object({
+export const PostFlowMessageSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('message').default('message'),
   characterKey: z.string().nullable().default(null).catch(null),
@@ -37,10 +38,10 @@ export const PostActionMessageSchema = z.object({
     PostActionMessageContentSchema.parse({})
   ),
 })
-export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
+export type PostActionMessageType = z.infer<typeof PostFlowMessageSchema>
 
-// PostAction sound
-export const PostActionSoundSchema = z.object({
+// PostFlow sound
+export const PostFlowSoundSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('sound').default('sound'),
   sound: z
@@ -48,50 +49,44 @@ export const PostActionSoundSchema = z.object({
     .default('')
     .catch(''),
 })
-export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
+export type PostActionSoundType = z.infer<typeof PostFlowSoundSchema>
 
-// PostAction WordParty
-export const PostActionWordPartySchema = z.object({
+// PostFlow WordParty
+export const PostFlowWordPartySchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('wordParty').default('wordParty'),
   wordPartyId: z.string().optional(),
   wordParty: z.string().default('').catch(''),
   repeat: z.union([z.number().int().min(1), z.enum(['viewer', 'upVote'])]).optional(),
 })
-export type PostActionWordPartyType = z.infer<typeof PostActionWordPartySchema>
+export type PostActionWordPartyType = z.infer<typeof PostFlowWordPartySchema>
 
-// PostAction actionSet
-export const PostActionActionSetSchema = z.object({
+// PostFlow actionSet
+export const PostFlowActionSetSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('actionSet').default('actionSet'),
   actionSetKeys: z.array(z.union([z.string(), WeightValueSchema])),
 })
 
-export type PostActionActionSetType = z.infer<typeof PostActionActionSetSchema>
+export type PostActionActionSetType = z.infer<typeof PostFlowActionSetSchema>
 
 // アクションタイプの定義
-export const postActionTypes = [
-  { type: 'message' as const, label: 'メッセージ', icon: MessageSquare },
-  { type: 'sound' as const, label: 'サウンド', icon: Volume2 },
-  { type: 'wordParty' as const, label: 'WordParty', icon: PartyPopper },
-  { type: 'actionSet' as const, label: 'アクションセット', icon: MessagesSquare },
-]
-export type PostActionTypes = (typeof postActionTypes)[number]['type']
+export type ActionTagType = (typeof postActionTypeMaps)[number]['type']
 
-// PostAction わんコメ・BOTちゃんに投稿する型定義
-export const PostActionSchema = z.discriminatedUnion('actionType', [
-  PostActionMessageSchema,
-  PostActionSoundSchema,
-  PostActionWordPartySchema,
-  PostActionActionSetSchema,
+// PostFlow わんコメ・BOTちゃんに投稿する型定義
+export const PostFlowSchema = z.discriminatedUnion('actionType', [
+  PostFlowMessageSchema,
+  PostFlowSoundSchema,
+  PostFlowWordPartySchema,
+  PostFlowActionSetSchema,
 ])
-export type PostActionType = z.infer<typeof PostActionSchema>
+export type PostFlowType = z.infer<typeof PostFlowSchema>
 
 /**
  * PostActionArray わんコメ・BOTちゃんに投稿する型定義
  */
-export const PostActionArraySchema = z
-  .array(PostActionSchema)
+export const PostFlowArraySchema = z
+  .array(PostFlowSchema)
   .default([])
   .catch([])
   .transform((actions) => {
@@ -112,64 +107,22 @@ export type GameScriptsType = z.infer<typeof GameScriptsSchema>
 /**
  * Special
  */
-export const specialActionMap = {
-  return: {
-    label: '処理を終了する(return)',
-    description: 'このルールで処理を終了し、以降のルールは実行されません。',
-    variant: 'warning',
-  },
-  continue: {
-    label: '次のルールへ進む(continue)',
-    description: '次のルールへ処理を進めます。通常の動作と同じです。',
-    variant: 'info',
-  },
-  log: {
-    label: 'ログを出力する(log)',
-    description: 'わんコメにおみくじ回数のログを投稿します。',
-    variant: 'success',
-  },
-  reset: {
-    label: 'おみくじ回数をリセットする(reset)',
-    description: 'おみくじの抽選回数をリセットします。',
-    variant: 'neutral',
-  },
-} as const
-
-export type ActionSetSpecialType = keyof typeof specialActionMap
-export const specialAction = Object.keys(specialActionMap) as ActionSetSpecialType[]
-
-export const SpecialActionSchema = z.enum(specialAction).default('return').catch('return')
-export type PostActionSpecialType = z.infer<typeof SpecialActionSchema>
+const actionSpecial = Object.keys(actionSpecialMap) as ActionSpecialType[]
+export const ActionSpecialSchema = z.enum(actionSpecial).default('return').catch('return')
+export type ActionSpecialType = keyof typeof actionSpecialMap
 
 /**
  * ActionSetSchema
  */
-export const ActionSetMap = {
-  postActions: {
-    label: 'BOTアクション',
-    description: '下記の内容をわんコメやジェネレーターで表示します',
-    icon: 'Bot',
-  },
-  gameScripts: {
-    label: 'ゲームスクリプト',
-    description: 'ゲームを実行し、結果をわんコメやジェネレーターで表示します',
-    icon: 'Gamepad2',
-  },
-  special: {
-    label: '特殊動作',
-    description: 'おみくじの実行フローを制御する特殊な処理',
-    icon: 'Zap',
-  },
-} as const
-
-export type ActionSetCategory = keyof typeof ActionSetMap
-export const actionSetCategory = Object.keys(ActionSetMap) as ActionSetCategory[]
+export const actionSetCategory = Object.keys(actionCategoryMap) as ActionSetCategory[]
+export type ActionSetCategory = keyof typeof actionCategoryMap
 
 export const ActionSetSchema = z.object({
   ...BaseRecordSchema.shape,
   type: z.enum(actionSetCategory).default('postActions').catch('postActions'),
-  postActions: PostActionArraySchema,
-  gameScripts: GameScriptsSchema.default(GameScriptsSchema.parse({})).catch(GameScriptsSchema.parse({})),
-  special: SpecialActionSchema.default(SpecialActionSchema.parse({})).catch(SpecialActionSchema.parse({})),
+  // TODO(v3) : postActions -> postFlows
+  postActions: PostFlowArraySchema,
+  gameScripts: normalizedObject(GameScriptsSchema),
+  special: normalizedObject(ActionSpecialSchema),
 })
 export type ActionSetType = z.infer<typeof ActionSetSchema>

@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionType } from '@/types/OmikujiData/'
+  import { PostFlowType } from '@/types/OmikujiData/'
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
@@ -72,11 +72,11 @@
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{
-    modelValue: PostActionType[]
+    modelValue: PostFlowType[]
   }>()
 
   const emit = defineEmits<{
-    'update:actions': [actions: PostActionType[]]
+    'update:actions': [actions: PostFlowType[]]
     'open-placeholder': [placeholderId: string, editorColor?: string | null]
   }>()
 

@@ -1,5 +1,5 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/usePostActionCharacters.ts
-import { PostActionType, ActionSetType } from '@/types/OmikujiData/'
+import { PostFlowType, ActionSetType } from '@/types/OmikujiData/'
 
 /**
  * PostAction内のキャラクター情報を扱うユーティリティ
@@ -54,9 +54,9 @@ export function usePostActionCharacters() {
    * キャラクターマッピングに基づいてPostAction配列を更新
    */
   const mapPostActionsCharacterKey = (
-    postActions: PostActionType[],
+    postActions: PostFlowType[],
     mappings: Record<string, string>
-  ): PostActionType[] => {
+  ): PostFlowType[] => {
     return postActions.map((action) => {
       if (action.actionType === 'message') {
         const newCharacterId = mappings[action.characterKey || '']

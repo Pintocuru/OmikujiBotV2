@@ -1,5 +1,5 @@
 // src\ConfigMaker\components\parts\useKeyEditor\keyUpdateReferences.ts
-import type { PostActionType } from '@/types/OmikujiData/'
+import type { PostFlowType } from '@/types/OmikujiData/'
 import { rulesCategoryLabel } from '@/types/OmikujiData/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -7,7 +7,7 @@ import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 /**
  * ルールカテゴリ（comments, timers）のpostActions更新
  */
-function updateRuleCategoriesPostActions(updateFn: (action: PostActionType) => PostActionType): void {
+function updateRuleCategoriesPostActions(updateFn: (action: PostFlowType) => PostFlowType): void {
   const { updateItem } = useOmikujiStore()
   const { getCategoryMap } = useGetRecordData()
 
@@ -26,7 +26,7 @@ function updateRuleCategoriesPostActions(updateFn: (action: PostActionType) => P
 /**
  * actionSetsカテゴリのpostActions更新
  */
-function updateActionSetsPostActions(updateFn: (action: PostActionType) => PostActionType): void {
+function updateActionSetsPostActions(updateFn: (action: PostFlowType) => PostFlowType): void {
   const { updateItem } = useOmikujiStore()
   const { getCategoryMap } = useGetRecordData()
   const actionSets = getCategoryMap('actionSets')
@@ -44,7 +44,7 @@ function updateActionSetsPostActions(updateFn: (action: PostActionType) => PostA
  * キャラクター参照の更新
  */
 export function updateCharacterReferences(oldKey: string, newKey: string): void {
-  const updateFn = (action: PostActionType): PostActionType =>
+  const updateFn = (action: PostFlowType): PostFlowType =>
     action.actionType === 'message' && action.characterKey === oldKey ? { ...action, characterKey: newKey } : action
 
   updateRuleCategoriesPostActions(updateFn)
@@ -72,7 +72,7 @@ export function updatePlaceholderReferences(oldKey: string, newKey: string): voi
   })
 
   // postActions更新関数
-  const updateFn = (action: PostActionType): PostActionType => {
+  const updateFn = (action: PostFlowType): PostFlowType => {
     if (action.actionType === 'message') {
       const newMessage = { ...action.message }
       ;(['bubble'] as const).forEach((field) => {
@@ -96,7 +96,7 @@ export function updatePlaceholderReferences(oldKey: string, newKey: string): voi
  * actionSet参照の更新
  */
 export function updateActionSetReferences(oldKey: string, newKey: string): void {
-  const updateFn = (action: PostActionType): PostActionType => {
+  const updateFn = (action: PostFlowType): PostFlowType => {
     if (action.actionType !== 'actionSet') return action
 
     const keys = Array.isArray(action.actionSetKeys) ? action.actionSetKeys : [action.actionSetKeys]

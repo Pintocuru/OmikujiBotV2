@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiDataType, ActionSetType, PostActionType, PostActionMessageType } from '@/types/OmikujiData/'
+import { OmikujiDataType, ActionSetType, PostFlowType, PostActionMessageType } from '@/types/OmikujiData/'
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
@@ -144,7 +144,7 @@ export class OmikujiResultProcessor {
   /**
    * 変数プレースホルダーを処理し、解析結果を保持する型に変換
    */
-  private processVariables(actions: PostActionType[]): ProcessedPostAction[] {
+  private processVariables(actions: PostFlowType[]): ProcessedPostAction[] {
     return actions.map((action): ProcessedPostAction => {
       // message以外、またはbubbleがない場合はそのまま
       if (action.actionType !== 'message' || !action.message.bubble) return { action }

@@ -1,6 +1,6 @@
 // src\types\OmikujiProcess\DefaultPlaceholders.ts
 import z from 'zod'
-import { serviceMetaCondition, serviceMetaConditionLabels, serviceMetaConditionMap } from '@shared/types/'
+import { serviceMetaCondition, serviceMetaConditionMap } from '@shared/types/'
 import { countUnitCondition, countUnitConditionMap } from '@shared/types/trigger'
 
 // デフォルトで利用可能なプレースホルダーの定数配列
