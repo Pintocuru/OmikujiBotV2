@@ -1,20 +1,18 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/ArcadeItem.vue -->
 <template>
   <div
-    v-if="message"
-    class="flex items-center w-full min-h-12 overflow-hidden gap-3 px-3"
-    :data-theme="dataTheme"
+    class="flex items-center min-h-12 overflow-hidden gap-2 px-2"
     :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="{ ...uiMap.bubble.style, ...arcadeContainer }"
   >
     <!-- ラベル：点滅ブロック風 -->
     <div
       v-if="settings.label"
-      class="shrink-0 font-black text-sm px-3 py-1 uppercase tracking-widest arcade-label"
-      :class="[labelClass, 'badge', uiMap.name.class]"
+      class="shrink-0 font-black text-sm px-2 py-1 uppercase tracking-widest arcade-label"
+      :class="[labelClass, 'badge']"
       :style="uiMap.name.style"
     >
-      ▶ {{ settings.label }}
+      {{ settings.label }}
     </div>
 
     <!-- アイコン -->
@@ -26,9 +24,8 @@
     <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0">
       <span
         ref="textRef"
-        class="inline-block whitespace-nowrap font-black text-xl arcade-text"
-        :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
-        :style="uiMap.text.style"
+        class="inline-block text-white whitespace-nowrap font-black text-xl arcade-text"
+        :class="[{ 'animate-scroll': shouldScroll }]"
         v-html="message"
       />
     </div>
@@ -50,7 +47,6 @@
     labelClass?: string
   }>()
 
-  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'dark')
   const uiMap = computed(() => createUiMap({ color: props.color }))
 
   // ピクセル風の枠線をインラインで追加（テーマカラーに依存しない装飾）

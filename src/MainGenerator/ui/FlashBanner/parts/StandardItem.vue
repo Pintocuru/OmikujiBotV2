@@ -1,9 +1,7 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/StandardItem.vue -->
 <template>
   <div
-    v-if="message"
-    class="flex items-center w-full min-h-12 rounded-lg shadow-lg overflow-hidden gap-2 px-2"
-    :data-theme="dataTheme"
+    class="flex items-center min-h-12 rounded-lg shadow-lg overflow-hidden gap-2 px-2"
     :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="uiMap.bubble.style"
   >
@@ -46,7 +44,6 @@
   }>()
 
   // UI Styling
-  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
   const uiMap = computed(() => createUiMap({ color: props.color }))
   const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
 

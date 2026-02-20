@@ -1,15 +1,14 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/TickerItem.vue -->
 <template>
   <div
-    v-if="message"
-    class="flex items-stretch w-full min-h-10 overflow-hidden shadow-lg"
-    :data-theme="dataTheme"
-    :style="uiMap.bubble.style"
+    class="flex items-center overflow-hidden px-2"
+    :class="[settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
   >
     <!-- ラベルブロック：強調カラー帯 -->
     <div
-      class="flex items-center justify-center px-4 font-black text-sm tracking-widest shrink-0 uppercase"
-      :class="[labelClass, uiMap.name.class]"
+      v-if="settings.label"
+      class="badge items-center justify-center font-bold"
+      :class="[labelClass]"
       :style="uiMap.name.style"
     >
       {{ settings.label }}
@@ -21,9 +20,8 @@
     </div>
 
     <!-- テキスト：常時スクロール -->
-    <!-- fade-mask で左右端をフェードアウトさせてワープを誤魔化す -->
     <div
-      class="flex-1 overflow-hidden flex items-center ticker-fade-mask"
+      class="flex-1 overflow-hidden flex items-center p-1 ticker-fade-mask"
       :class="uiMap.bubble.class"
       :style="uiMap.bubble.style"
     >
@@ -32,7 +30,7 @@
         <span
           v-for="i in repeat"
           :key="i"
-          class="inline-block whitespace-nowrap font-bold text-base"
+          class="inline-block whitespace-nowrap font-bold text-2xl"
           :class="uiMap.text.class"
           :style="spanStyle(i)"
           v-html="message"
@@ -76,24 +74,17 @@
     return 4
   })
 
-  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
   const uiMap = computed(() => createUiMap({ color: props.color }))
   const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
 
-  // 1セグメントあたりの文字数で速度を決める
-  // 短いテキスト → 遅め（ループが目立ちにくい）
-  // 長いテキスト → やや速め（情報が流れすぎない）
+  // 1文字あたりの移動時間（秒）
   const duration = computed(() => {
     const len = props.message.replace(/<[^>]*>/g, '').length
-    if (len < 15) return 38 // 遅め
-    if (len < 40) return 32
-    return 28
+    const perChar = 1
+    return len * perChar
   })
 
   // アニメーション：repeat 個並んだうちの 1セグメント分（1/repeat）だけ左にずらす
-  // こうすることで「何文字でも1セグメント分がループ単位」になり、
-  // -50% 固定による位置ズレを回避できる
-
   const tickerStyle = computed(() => ({
     willChange: 'transform',
     '--ticker-shift': `calc(-100% / ${repeat.value})`,

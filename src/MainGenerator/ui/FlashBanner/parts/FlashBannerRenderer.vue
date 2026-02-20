@@ -1,13 +1,15 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/FlashBannerRenderer.vue -->
 <template>
-  <component
-    :is="currentComponent"
-    :settings="settings"
-    :message="message"
-    :layers="layers"
-    :color="color"
-    :label-class="labelClass"
-  />
+  <div v-if="message" class="w-full bg-base-100" :data-theme="color?.daisyUiTheme">
+    <component
+      :is="currentComponent"
+      :settings="settings"
+      :message="message"
+      :layers="layers"
+      :color="color"
+      :label-class="labelClass"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

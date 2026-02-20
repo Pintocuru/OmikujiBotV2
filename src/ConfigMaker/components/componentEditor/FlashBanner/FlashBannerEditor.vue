@@ -49,18 +49,13 @@
   </SettingItem>
 
   <!-- アイコンサイズ -->
-  <SettingItem
-    label="アイコンサイズ"
-    description="アイコンの表示サイズ(px)を設定します"
-    :showReset="true"
-    @reset="resetMap.iconSize"
-  >
+  <SettingItem label="アイコンサイズ" description="表示サイズを設定します" :showReset="true" @reset="resetMap.iconSize">
     <div class="flex items-center gap-4">
       <input
         type="range"
         min="0"
         max="24"
-        step="4"
+        step="2"
         class="range range-primary flex-1"
         :value="flashBanner.iconSize"
         @input="(e) => updateField('iconSize', Number((e.target as HTMLInputElement).value))"

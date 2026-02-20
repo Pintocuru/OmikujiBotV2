@@ -1,9 +1,7 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/GlassItem.vue -->
 <template>
   <div
-    v-if="message"
-    class="flex items-center w-full min-h-12 rounded-3xl overflow-hidden gap-3 px-4"
-    :data-theme="dataTheme"
+    class="flex items-center min-h-12 rounded-3xl overflow-hidden gap-3 px-4"
     :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="{ ...uiMap.bubble.style, ...glassOverlay }"
   >
@@ -11,7 +9,7 @@
     <div
       v-if="settings.label"
       class="shrink-0 font-bold text-sm px-3 py-1 rounded-2xl opacity-80"
-      :class="[labelClass, 'badge', uiMap.name.class]"
+      :class="[labelClass, 'badge']"
       :style="uiMap.name.style"
     >
       {{ settings.label }}
@@ -23,10 +21,10 @@
     </div>
 
     <!-- メッセージ -->
-    <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0 px-2">
+    <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0">
       <span
         ref="textRef"
-        class="inline-block whitespace-nowrap font-semibold text-lg"
+        class="inline-block whitespace-nowrap font-bold text-2xl"
         :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
         :style="uiMap.text.style"
         v-html="message"
@@ -50,7 +48,6 @@
     labelClass?: string
   }>()
 
-  const dataTheme = computed(() => props.color?.daisyUiTheme ?? 'light')
   const uiMap = computed(() => createUiMap({ color: props.color }))
 
   // グラデーション背景はそのままに、ガラス感を上乗せ
