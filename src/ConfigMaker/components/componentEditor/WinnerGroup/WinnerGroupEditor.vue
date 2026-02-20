@@ -91,7 +91,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import WinnerGroupRenderer from '@main/ui/WinnerGroup/parts/WinnerGroupRenderer.vue'
   import { generateDummyWinnerUsers } from '@main/ui/GameRanking/parts/useDummyBotMessages'
   import { parseQueryString } from '@/GameScripts/parseQueryString'

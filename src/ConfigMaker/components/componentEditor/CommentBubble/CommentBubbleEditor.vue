@@ -45,8 +45,8 @@
       class="select bg-base text-base-content w-full max-w-xs"
       :disabled="!isAdv"
     >
-      <option v-for="font in fontFamilyOptions" :key="font" :value="font">
-        {{ fontFamilyLabels[font] }}
+      <option v-for="(font, key) in fontFamilyMap" :key="key" :value="key">
+        {{ font.label }}
       </option>
     </select>
   </SettingItem>
@@ -92,7 +92,7 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { SettingsBubbleSchema } from '@/types/'
-  import { fontFamilyOptions, fontFamilyLabels } from '@/types/MainGenerator/useFontFamily'
+  import { fontFamilyMap } from '@/types/MetaMaps/'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

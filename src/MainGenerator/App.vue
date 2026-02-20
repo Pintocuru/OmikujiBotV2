@@ -21,7 +21,7 @@
   import { useComponentRenderer } from '@main/composables/useComponentRenderer'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessorLifecycle } from '@main/composables/useRuleProcessorLifecycle'
-  import { useFontFamily } from '@/types/MainGenerator/useFontFamily'
+  import { useFontFamily } from '@/types/'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
 

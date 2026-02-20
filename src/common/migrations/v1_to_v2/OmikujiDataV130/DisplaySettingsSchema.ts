@@ -3,7 +3,6 @@ import { z } from 'zod'
 import { AccessLevelSchema, displaySize } from '@shared/types/'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { themes } from '@shared/styles/DaisyUiTheme'
-import { fontFamilyOptions } from '@/types/MainGenerator/useFontFamily'
 
 // BaseSettingsSchema
 // 通常の表示設定(おみくじBOT、ゲームスクリプトの両方に影響する設定)
@@ -14,7 +13,7 @@ export const BaseSettingsSchema = z.object({
   // 表示サイズ
   displaySize: z.enum(displaySize).default('md').catch('md'),
   // フォントファミリー
-  fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
+  fontFamily: z.string().default('default').catch('default'),
   // フキダシのアニメーション(開始・表示中)
   bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
   // フキダシのアニメーション(終了時)

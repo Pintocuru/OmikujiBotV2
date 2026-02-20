@@ -2,9 +2,9 @@
 import { z } from 'zod'
 import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
 import { COMPONENT_MAP, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
-import { fontFamilyOptions } from '../MainGenerator'
 import { CharacterColorScheme } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
+import { fontFamilyMap } from '../MetaMaps'
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
@@ -28,6 +28,13 @@ export const ComponentsConditionsSchema = z
   .max(3)
   .refine((v) => new Set(v.map((c) => c.slot)).size === v.length, { message: 'slot は重複不可' })
 export type ComponentsConditions = z.infer<typeof ComponentsConditionsSchema>
+
+/**
+ * fontFamilyMap
+ */
+const fontFamilyOptions = Object.keys(fontFamilyMap) as FontFamilyType[]
+export type FontFamilyType = keyof typeof fontFamilyMap
+export const useFontFamily = (font: FontFamilyType) => fontFamilyMap[font].className ?? ''
 
 /**
  * 共通スタイル設定

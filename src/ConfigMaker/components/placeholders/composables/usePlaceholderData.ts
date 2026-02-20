@@ -1,12 +1,10 @@
 // src/configMaker/components/placeholders/composables/usePlaceholderData.ts
 import { computed, Ref } from 'vue'
-import {
-  DefaultPlaceholders,
-  defaultPlaceholdersLabels,
-  defaultPlaceholdersShortLabels,
-} from '@/types/OmikujiProcess/DefaultPlaceholders'
+import { defaultPlaceholdersShortLabels, DefaultPlaceholders } from '@/types/'
 import { PlaceholderSchema, PlaceholderType, PostFlowType } from '@/types/OmikujiData/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
+import { defaultPlaceholderMap } from '@/types'
+import {} from '@/types/MainGenerator/'
 
 /**
  * プレースホルダーのデータ管理を担当するcomposable
@@ -19,11 +17,11 @@ export function usePlaceholderData(actions: Ref<PostFlowType[]>) {
 
   // デフォルトプレースホルダーを生成
   const defaultPlaceholders = computed((): PlaceholderType[] => {
-    return (Object.keys(defaultPlaceholdersLabels) as DefaultPlaceholders[]).map((key) => {
+    return (Object.keys(defaultPlaceholders) as DefaultPlaceholders[]).map((key) => {
       const contentValue = placeholderContentMap.get(key) ?? ''
       return PlaceholderSchema.parse({
         key,
-        name: defaultPlaceholdersLabels[key],
+        name: defaultPlaceholderMap[key].label,
         editorColor: '#FEFEFE',
         values: [{ content: contentValue }],
       })
