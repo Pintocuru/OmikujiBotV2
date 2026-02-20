@@ -57,26 +57,26 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostActionWordPartyType } from '@/types/'
+  import { PostFlowWordPartyType } from '@/types/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
 
   const props = defineProps<{
-    action: PostActionWordPartyType
+    action: PostFlowWordPartyType
   }>()
 
   const emit = defineEmits<{
-    'update:action': [action: PostActionWordPartyType]
+    'update:action': [action: PostFlowWordPartyType]
   }>()
 
   // 共通のupdateAction関数
-  const updateAction = (updates: Partial<PostActionWordPartyType>) => {
+  const updateAction = (updates: Partial<PostFlowWordPartyType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
 
   // WordPartyIdを削除してアクションを更新
-  const updateWithoutWordPartyId = (updates: Partial<PostActionWordPartyType>) => {
+  const updateWithoutWordPartyId = (updates: Partial<PostFlowWordPartyType>) => {
     const { wordPartyId, ...rest } = props.action
-    emit('update:action', { ...rest, ...updates } as PostActionWordPartyType)
+    emit('update:action', { ...rest, ...updates } as PostFlowWordPartyType)
   }
 
   // WordParty入力モード（text or id）

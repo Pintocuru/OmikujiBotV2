@@ -63,18 +63,18 @@
 
 <script setup lang="ts">
   import { WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
-  import { PostActionActionSetType } from '@/types/'
+  import { PostFlowCallType } from '@/types/'
   import { useWeightValueManagement } from './useWeightValueManagement'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
   const props = defineProps<{
-    action: PostActionActionSetType
+    action: PostFlowCallType
     currentKey?: string
   }>()
 
   const emit = defineEmits<{
-    'update:action': [action: PostActionActionSetType]
+    'update:action': [action: PostFlowCallType]
   }>()
 
   // actionSetKeys を取得

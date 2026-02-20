@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetExpander.ts
-import { ActionSetType, handelNormalizedValues, PostActionActionSetType, PostFlowType } from '@/types/OmikujiData/'
+import { ActionSetType, handelNormalizedValues, PostFlowCallType, PostFlowType } from '@/types/OmikujiData/'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
@@ -37,7 +37,7 @@ export class ActionSetExpander {
    *
    */
   private static expandSingleActionSet(
-    action: PostActionActionSetType,
+    action: PostFlowCallType,
     actionSets: Record<string, ActionSetType>,
     depth: number,
     visited: Set<string>

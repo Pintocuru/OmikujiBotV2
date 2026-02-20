@@ -1,5 +1,5 @@
 // src/gameConfigs.ts
-import { PostActionWordPartyType } from '@/types/'
+import { PostFlowWordPartyType } from '@/types/'
 
 /**
  * 型定義
@@ -22,7 +22,7 @@ export type GameConfigItem = {
 
 export interface GameResult {
   points: number
-  postArray: PostActionWordPartyType[]
+  postArray: PostFlowWordPartyType[]
 }
 
 // ゲーム関連の定数

@@ -1,6 +1,6 @@
 // src/configMaker/composables/usePostActionsTab.ts
 import { computed, ComputedRef, Ref, ref, watch } from 'vue'
-import { PostFlowMessageSchema, PostActionMessageType, PostFlowType } from '@/types/OmikujiData/'
+import { PostFlowMessageSchema, PostFlowMessageType, PostFlowType } from '@/types/OmikujiData/'
 import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
 
 export function usePostActionsTab(
@@ -40,7 +40,7 @@ export function usePostActionsTab(
 
   // 新しいアクションの追加
   const addNewAction = () => {
-    const newAction: PostActionMessageType = PostFlowMessageSchema.parse({
+    const newAction: PostFlowMessageType = PostFlowMessageSchema.parse({
       characterKey: characterArray.value[0]?.key ?? null,
       delaySeconds: actions.value.length > 0 ? Math.max(...actions.value.map((a) => a.delaySeconds)) + 1 : 0,
     })

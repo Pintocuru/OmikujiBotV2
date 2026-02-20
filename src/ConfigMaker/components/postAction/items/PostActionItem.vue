@@ -14,9 +14,9 @@
         <select
           class="select select-sm w-full max-w-xs"
           :value="action.actionType"
-          @change="updateActionType(($event.target as HTMLSelectElement).value as ActionTagType)"
+          @change="updateActionType(($event.target as HTMLSelectElement).value as PostFlowKind)"
         >
-          <option v-for="t in postActionTypeMaps" :key="t.type" :value="t.type">
+          <option v-for="t in PostFlowKindMaps" :key="t.type" :value="t.type">
             {{ t.label }}
           </option>
         </select>
@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostFlowSchema, PostFlowType, ActionTagType, postActionTypeMaps } from '@/types/'
+  import { PostFlowSchema, PostFlowType, PostFlowKind, PostFlowKindMaps } from '@/types/'
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
@@ -70,7 +70,7 @@
 
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {
-    const componentMap: Record<ActionTagType, any> = {
+    const componentMap: Record<PostFlowKind, any> = {
       message: MessageSettings,
       sound: SoundSettings,
       wordParty: WordPartySettings,
@@ -87,10 +87,10 @@
   })
 
   // actionType 別の生データキャッシュ
-  const rawActionCache = ref<Partial<Record<ActionTagType, any>>>({})
+  const rawActionCache = ref<Partial<Record<PostFlowKind, any>>>({})
 
   // アクションタイプの更新
-  const updateActionType = (newType: ActionTagType) => {
+  const updateActionType = (newType: PostFlowKind) => {
     const currentType = props.action.actionType
 
     // ① 現在の状態を退避

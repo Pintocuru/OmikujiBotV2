@@ -1,5 +1,5 @@
 // src\MainGenerator\scripts\PostOmikuji\PostOmikujiService.ts
-import { PostFlowType, CharacterType, PostActionMessageType, OmikujiDataType } from '@/types/'
+import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { createCommentRequest, isServiceExists, shouldPostAsComment, shouldPostAsVoice } from './PostMessageHelper'
@@ -87,7 +87,7 @@ export class PostOmikujiService {
   /**
    * メッセージ投稿を処理
    */
-  private async processMessagePost(post: PostActionMessageType, delaySeconds: number): Promise<void> {
+  private async processMessagePost(post: PostFlowMessageType, delaySeconds: number): Promise<void> {
     let { bubble } = post.message
     if (!bubble || bubble.trim() === '') return
 

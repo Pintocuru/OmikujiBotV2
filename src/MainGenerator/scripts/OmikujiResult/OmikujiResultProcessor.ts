@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { OmikujiDataType, ActionSetType, PostFlowType, PostActionMessageType } from '@/types/OmikujiData/'
+import { OmikujiDataType, ActionSetType, PostFlowType, PostFlowMessageType } from '@/types/OmikujiData/'
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
@@ -153,7 +153,7 @@ export class OmikujiResultProcessor {
       const result = this.variableProcessor.process(action.message.bubble)
 
       // 投稿用のデータを更新（bubbleを置換後のものに差し替え）
-      const updatedAction: PostActionMessageType = {
+      const updatedAction: PostFlowMessageType = {
         ...action,
         message: {
           ...action.message,

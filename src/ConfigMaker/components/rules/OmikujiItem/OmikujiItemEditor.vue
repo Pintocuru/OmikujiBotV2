@@ -16,7 +16,7 @@
         :key="key"
         class="badge cursor-pointer select-none"
         :class="omikujiItem.type === key ? 'badge-primary' : 'badge-ghost'"
-        @click="updateType(key as ActionSetCategory)"
+        @click="updateType(key as ActionSetKind)"
       >
         {{ option }}
       </span>
@@ -26,10 +26,10 @@
   <!-- サブタイトル -->
   <SubSectionHeader
     class="pt-4"
-    :icon="actionCategoryMap[omikujiItem.type].icon"
+    :icon="actionSetKindMap[omikujiItem.type].icon"
     variant="warning"
-    :title="actionCategoryMap[omikujiItem.type].label"
-    :description="actionCategoryMap[omikujiItem.type].description"
+    :title="actionSetKindMap[omikujiItem.type].label"
+    :description="actionSetKindMap[omikujiItem.type].description"
   />
 
   <!-- GameScripts コンポーネント -->
@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
   import { computed, watch } from 'vue'
-  import { ActionSetCategory, actionCategoryMap, PostFlowType } from '@/types/'
+  import { ActionSetKind, actionSetKindMap, PostFlowType } from '@/types/'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
@@ -95,7 +95,7 @@
   // 利用可能な ActionSet を絞り込む
   const filteredActionSetMap = computed(() => {
     const result: Record<string, string> = {}
-    Object.entries(actionCategoryMap).forEach(([key, value]) => {
+    Object.entries(actionSetKindMap).forEach(([key, value]) => {
       if (key === 'gameScripts' && !hasAvailableScripts.value) return
       if (key === 'special' && !canUseSpecial.value) return
       result[key] = value.label
@@ -129,7 +129,7 @@
 
   const gameScripts = computed(() => omikujiItem.value?.gameScripts || null)
 
-  const updateType = (value: ActionSetCategory) => {
+  const updateType = (value: ActionSetKind) => {
     if (props.index === -1 || !props.selectedItemKey) return
     updateOmikujiByIndex(props.category, props.selectedItemKey, props.index, (item) => ({
       ...item,
@@ -141,7 +141,7 @@
   watch(
     () => [filteredActionSetMap.value, omikujiItem.value],
     () => {
-      const availableTypes = Object.keys(filteredActionSetMap.value) as ActionSetCategory[]
+      const availableTypes = Object.keys(filteredActionSetMap.value) as ActionSetKind[]
 
       if (availableTypes.length === 1 && omikujiItem.value?.type !== availableTypes[0]) {
         updateType(availableTypes[0])

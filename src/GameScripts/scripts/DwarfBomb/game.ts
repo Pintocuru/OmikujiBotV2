@@ -1,8 +1,9 @@
 // src/game.ts
-import { PostActionWordPartyType } from '@/types/OmikujiData/'
-import { RewardType, Dwarf, GameResult, GAME_CONFIG } from './gameConfigs'
+// ! 使用しない(バックアップ用)
+import { PostFlowWordPartyType } from '@/types/OmikujiData/'
+import { RewardType, Dwarf, GameResult, GAME_CONFIG } from './game/gameConfigs'
 
-export class BomberSpinGame {
+export class DwarfBomb {
   playGame(userName: string, mode: string = ''): GameResult {
     const dwarfs = this.createDwarfs(mode)
     let life: number = GAME_CONFIG.INITIAL_LIFE
@@ -56,9 +57,9 @@ export class BomberSpinGame {
   /**
    * ゲーム結果に基づいて演出効果を生成する
    */
-  generatePartyEffects(gameResult: GameResult): PostActionWordPartyType[] {
-    const { dwarfs, items, day, specialEffectCount } = gameResult
-    const effects: PostActionWordPartyType[] = []
+  generatePartyEffects(gameResult: GameResult): PostFlowWordPartyType[] {
+    const { items, day } = gameResult
+    const effects: PostFlowWordPartyType[] = []
 
     // 共通 push 用ヘルパー
     const addEffect = (wordParty: string, times = 1) => {
@@ -281,20 +282,10 @@ export class BomberSpinGame {
   }
 
   private createMessage(user: string, day: number, dwarfs: Dwarf[], items: string, payout: number): string {
-    const hasSpecial = dwarfs.some((d) => d.hasDynamite || d.hasRed)
     const winType = GAME_CONFIG.WIN_THRESHOLDS.find(([threshold]) => payout >= threshold)?.[1] || '合計'
     const goldText = dwarfs.map((d, i) => (i === 2 ? `${d.gold + d.redChest}!` : `${d.gold + d.redChest}/`)).join('')
 
     let msg = `${user}は🐰${day}匹`
-    /**
-     * 消すかもしれない
-    if (hasSpecial) {
-      msg += 'と'
-      if (dwarfs.some((d) => d.hasDynamite)) msg += 'TNT🧨'
-      if (dwarfs.some((d) => d.hasDynamite && d.hasRed)) msg += 'と'
-      if (dwarfs.some((d) => d.hasRed)) msg += 'ツルハシ⛏️'
-    }
-    */
     msg += `と鉱山へ${items || '。'}${goldText}${winType}${payout}枚獲得!`
 
     return msg

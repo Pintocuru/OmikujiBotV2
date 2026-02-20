@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterEmotionType, PostActionMessageType, soundMetaMap } from '@/types/'
+  import { CharacterEmotionType, PostFlowMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
@@ -61,18 +61,18 @@
   import MessageTextEditor from './MessageTextEditor.vue'
 
   const props = defineProps<{
-    action: PostActionMessageType
+    action: PostFlowMessageType
   }>()
 
   const emit = defineEmits<{
-    'update:action': [action: PostActionMessageType]
+    'update:action': [action: PostFlowMessageType]
   }>()
 
   // キャラクターオプションの取得
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
 
-  const updateAction = (updates: Partial<PostActionMessageType>) => {
+  const updateAction = (updates: Partial<PostFlowMessageType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
 

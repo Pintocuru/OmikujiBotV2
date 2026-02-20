@@ -1,5 +1,5 @@
 // src/game.ts
-import { PostActionWordPartyType } from '@/types/'
+import { PostFlowWordPartyType } from '@/types/'
 import { GAME_CONFIGS, GAME_CONSTANTS, GameConfigDetails, GameConfigItem, GameResult } from './gameConfigs'
 import { GameParams } from './params'
 
@@ -8,7 +8,7 @@ import { GameParams } from './params'
  */
 export class GachaGame {
   private totalPoints = 0
-  private postArray: PostActionWordPartyType[] = []
+  private postArray: PostFlowWordPartyType[] = []
   private readonly gameConfig: GameConfigDetails
 
   constructor(private readonly params: GameParams) {

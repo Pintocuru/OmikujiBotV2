@@ -1,5 +1,5 @@
 // src/common/GameScripts/scriptsEngine/LogRank/services/MessageService.ts
-import { PostFlowMessageSchema, PostActionMessageType } from '@/types/'
+import { PostFlowMessageSchema, PostFlowMessageType } from '@/types/'
 import { GameParams } from '../types'
 
 /**
@@ -10,7 +10,7 @@ export const createPostActions = (
   score: number,
   isOverLimit: boolean,
   rank?: number
-): PostActionMessageType[] => {
+): PostFlowMessageType[] => {
   const { user, characterKey } = params
 
   return [

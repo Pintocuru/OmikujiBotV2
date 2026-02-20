@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/botMessageHelpers.ts
 import { BotMessageBubbleSchema, BotMessageExtraSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { CharacterEmotionType, PostActionMessageType } from '@/types/OmikujiData/'
+import { CharacterEmotionType, PostFlowMessageType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderExtra, VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
@@ -10,7 +10,7 @@ import { playRpgVoiceLoop } from '@/common/sounds'
  * PostActionからBotMessageを生成
  */
 export function createBotMessagesFromAction(
-  action: PostActionMessageType,
+  action: PostFlowMessageType,
   variableResult: VariablePlaceholderResult | undefined,
   delaySeconds: number,
   characterManager?: CharacterManager,
