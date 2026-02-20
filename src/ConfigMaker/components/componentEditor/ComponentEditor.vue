@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { ComponentKind } from '@/types/ui/ComponentKind'
+  import { UiKind } from '@/types/ui/ComponentKind'
   import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
   import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
   import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
@@ -55,7 +55,7 @@
     activeSection.value = activeSection.value === section ? null : section
   }
 
-  const hasComponentKind = (kind: ComponentKind): boolean => conditions.value.some((c) => c.kind === kind)
+  const hasComponentKind = (kind: UiKind): boolean => conditions.value.some((c) => c.kind === kind)
 
   const componentItems = computed(() => [
     // フキダシ

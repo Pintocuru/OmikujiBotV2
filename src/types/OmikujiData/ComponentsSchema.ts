@@ -1,21 +1,43 @@
 // src/types/OmikujiData/ComponentsSchema.ts
 import { z } from 'zod'
 import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
-import { COMPONENT_MAP, ComponentKindSchema, ComponentSlotSchema } from '../ui/ComponentKind'
 import { CharacterColorScheme } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
 import { fontFamilyMap } from '../MetaMaps'
+import { uiKindMap, UiSlotMap } from '../MetaMaps/UiKindMaps'
+
+/**
+ * スロット定義
+ */
+const uiSlots = Object.keys(UiSlotMap) as UiSlotType[]
+export type UiSlotType = keyof typeof UiSlotMap
+
+/**
+ * コンポーネント種類の定義
+ */
+const uiKinds = Object.keys(uiKindMap) as UiKind[]
+export type UiKind = keyof typeof uiKindMap
+
+/**
+ * ComponentSlotで使用可能なComponentKindを取得する
+ */
+export function getKindsForSlot(slot: UiSlotType): UiKind[] {
+  return Object.entries(uiKindMap)
+    .filter(([_, config]) => config.slot === slot)
+    .map(([kind]) => kind as UiKind)
+}
 
 /**
  * コンポーネント条件（スロットと種類の組み合わせ）
  * kindとslotの整合性をバリデーション
  */
+
 export const ComponentsConditionSchema = z
   .object({
-    slot: ComponentSlotSchema,
-    kind: ComponentKindSchema,
+    slot: z.enum(uiSlots),
+    kind: z.enum(uiKinds),
   })
-  .refine((data) => COMPONENT_MAP[data.kind].slot === data.slot, {
+  .refine((data) => uiKindMap[data.kind].slot === data.slot, {
     message: 'kindとslotの組み合わせが不正です',
   })
 export type ComponentsCondition = z.infer<typeof ComponentsConditionSchema>

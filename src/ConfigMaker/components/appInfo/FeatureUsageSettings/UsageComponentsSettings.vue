@@ -12,7 +12,7 @@
 
       <div class="grid grid-cols-1 gap-2">
         <label
-          v-for="(value, key) in COMPONENT_MAP"
+          v-for="(value, key) in uiKindMap"
           :key="key"
           class="label cursor-pointer justify-between p-2 rounded text-sm bg-base-300"
         >
@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
-  import { COMPONENT_MAP } from '@/types/'
+  import { uiKindMap } from '@/types/'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { BASIC_COMPONENTS, PRO_COMPONENTS } from '../../componentEditor/componentRules'
 

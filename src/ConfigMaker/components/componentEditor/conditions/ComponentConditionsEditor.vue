@@ -89,7 +89,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { ComponentSlot, ComponentKind, getKindsForSlot, COMPONENT_MAP } from '@/types/'
+  import { UiSlotType, UiKind, getKindsForSlot, uiKindMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -103,15 +103,14 @@
   const hasCounterSelected = computed(() => conditions.value.some((c) => c.kind === 'counter'))
 
   // 指定スロットに設定されているkindを取得
-  const getSlotKind = (slot: ComponentSlot): ComponentKind | '' =>
-    conditions.value.find((c) => c.slot === slot)?.kind ?? ''
+  const getSlotKind = (slot: UiSlotType): UiKind | '' => conditions.value.find((c) => c.slot === slot)?.kind ?? ''
 
   // 指定kindが他のスロットで使用されているかチェック
-  const isKindUsedInOtherSlot = (kind: ComponentKind, currentSlot: ComponentSlot): boolean =>
+  const isKindUsedInOtherSlot = (kind: UiKind, currentSlot: UiSlotType): boolean =>
     conditions.value.some((c) => c.kind === kind && c.slot !== currentSlot)
 
   // スロットで利用可能なコンポーネント一覧を取得
-  const getAvailableComponents = (slot: ComponentSlot) => {
+  const getAvailableComponents = (slot: UiSlotType) => {
     const { components } = data.value.featureUsage
     return getKindsForSlot(slot)
       .filter((kind) => components.includes(kind))
@@ -120,7 +119,7 @@
         const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
         return {
           kind,
-          label: COMPONENT_MAP[kind].label,
+          label: uiKindMap[kind].label,
           disabled: isCounterDisabled || isUsedInOther,
           disabledReason: isCounterDisabled ? '（利用不可）' : isUsedInOther ? '（他のスロットで使用中）' : '',
         }
@@ -128,8 +127,8 @@
   }
 
   // スロットの更新
-  const updateSlot = (slot: ComponentSlot, event: Event) => {
-    const newKind = (event.target as HTMLSelectElement).value as ComponentKind | ''
+  const updateSlot = (slot: UiSlotType, event: Event) => {
+    const newKind = (event.target as HTMLSelectElement).value as UiKind | ''
     const newConditions = conditions.value
       .filter((c) => c.slot !== slot && c.kind !== newKind) // 該当スロットと重複kindを除外
       .concat(newKind ? [{ slot, kind: newKind }] : []) // 新しい設定を追加

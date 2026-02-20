@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\presetsImport\composables\importHelpers.ts
 import { OmikujiDataType, RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/'
-import { ComponentKind } from '@/types/'
+import { UiKind } from '@/types/'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo } from '../ImportTypes'
 
 /**
@@ -72,14 +72,14 @@ export const generateCategoryPreview = (currentData: OmikujiDataType, importData
 export const generateComponentPreview = (
   currentData: OmikujiDataType,
   importData: OmikujiDataType
-): Record<ComponentKind, ComponentImportConfig> => {
-  const componentConfigs: Partial<Record<ComponentKind, ComponentImportConfig>> = {}
+): Record<UiKind, ComponentImportConfig> => {
+  const componentConfigs: Partial<Record<UiKind, ComponentImportConfig>> = {}
   const currentComponents = currentData.featureUsage.components || []
   const importComponents = importData.featureUsage.components || []
 
   currentComponents.forEach((compKey) => {
     if (importComponents.includes(compKey)) {
-      const key = compKey as ComponentKind
+      const key = compKey as UiKind
       componentConfigs[key] = {
         enabled: true,
         useImported: false,
@@ -87,5 +87,5 @@ export const generateComponentPreview = (
     }
   })
 
-  return componentConfigs as Record<ComponentKind, ComponentImportConfig>
+  return componentConfigs as Record<UiKind, ComponentImportConfig>
 }

@@ -1,7 +1,7 @@
 // src/types/OmikujiData/ComponentsSettingsSchema.ts
 import { z } from 'zod'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
-import { DaisyUiThemeFieldsSchema, themes, ThemeSchema } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import {
   counterComponents,
   flightSeatLayoutMap,

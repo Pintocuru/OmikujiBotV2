@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useComponentRenderer.ts
 import { computed, ComputedRef } from 'vue'
-import { ComponentsConditions, ComponentKind, ComponentSlot } from '@/types'
+import { ComponentsConditions, UiKind, UiSlotType } from '@/types'
 import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
 import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
 import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
@@ -17,7 +17,7 @@ interface ComponentMapEntry {
   shouldRender?: (ctx: { isComment: boolean; isTimer: boolean }) => boolean
 }
 
-const COMPONENT_MAP: Record<ComponentKind, ComponentMapEntry> = {
+const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
   bubble: {
     component: CommentBubble,
   },
@@ -71,7 +71,7 @@ export function useComponentRenderer(
           component: mapping.component,
         }
       })
-      .filter((item): item is { slot: ComponentSlot; component: any } => item !== null)
+      .filter((item): item is { slot: UiSlotType; component: any } => item !== null)
       .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
   })
 

@@ -1,6 +1,6 @@
 // src\types\OmikujiProcess\CommentTriggerSchema.ts
 import { z } from 'zod'
-import { GiftConditionSchema, SyokenConditionSchema, thresholdConditionMap } from '@shared/types/Threshold/'
+import { GiftConditionSchema, SyokenConditionSchema } from '@shared/types/Threshold/'
 import { AccessConditionSchema, CountConditionSchema } from '@shared/types/trigger'
 import { commentTriggerCondition } from '../MetaMaps'
 

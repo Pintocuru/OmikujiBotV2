@@ -13,7 +13,6 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
-import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Activity, Layers } from 'lucide-vue-next'
 
 /**
  * RecordCategory

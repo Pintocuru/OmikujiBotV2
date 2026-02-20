@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\presetsImport\composables\useImportManager.ts
 import { ref, computed } from 'vue'
-import { ComponentKind } from '@/types/'
+import { UiKind } from '@/types/'
 import { RecordCategoryType, OmikujiDataType } from '@/types/OmikujiData/'
 import { CategoryImportConfig, ComponentImportConfig, ImportPreview } from '../ImportTypes'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -130,7 +130,7 @@ export const useImportManager = () => {
   /**
    * コンポーネント設定を更新
    */
-  const updateComponentConfig = (component: ComponentKind, config: Partial<ComponentImportConfig>) => {
+  const updateComponentConfig = (component: UiKind, config: Partial<ComponentImportConfig>) => {
     if (!previewData.value?.componentConfigs[component]) return
 
     previewData.value.componentConfigs[component] = {
