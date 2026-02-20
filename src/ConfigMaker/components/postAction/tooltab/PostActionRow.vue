@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\PostActionRow.vue -->
+<!-- src/ConfigMaker/components/postAction/tooltab/PostActionRow.vue -->
 <template>
   <div class="flex items-center gap-2 p-1">
     <!-- 遅延秒数 -->

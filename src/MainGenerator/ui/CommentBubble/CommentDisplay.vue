@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/OmikujiBot/CommentDisplay.vue -->
+<!-- src/MainGenerator/ui/CommentBubble/CommentDisplay.vue -->
 <template>
   <div
     v-for="(item, index) in visibleComments"

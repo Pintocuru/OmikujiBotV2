@@ -1,4 +1,4 @@
-<!-- src\common\LayerImage\CharacterLayerImage.vue -->
+<!-- src/common/LayerImage/CharacterLayerImage.vue -->
 <template>
   <div
     class="rounded-full overflow-hidden"

@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/postAction/Message/MessageTextEditor.vue -->
 <template>
   <div class="relative w-full">
     <!-- input -->

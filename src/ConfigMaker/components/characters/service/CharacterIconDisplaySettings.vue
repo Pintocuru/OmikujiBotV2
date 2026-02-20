@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/CharacterIconDisplaySettings.vue -->
+<!-- src/ConfigMaker/components/characters/service/CharacterIconDisplaySettings.vue -->
 <template>
   <!-- mode  -->
   <SettingItem

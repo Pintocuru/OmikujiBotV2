@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\CounterPreview\CounterPreviewEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/CounterPreview/CounterPreviewEditor.vue -->
 <template>
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]">

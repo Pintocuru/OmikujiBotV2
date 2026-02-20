@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\wordPartySettings\SoundTestButton.vue -->
+<!-- src/ConfigMaker/components/postAction/preview/SoundTestButton.vue -->
 <template>
   <button @click="handleClick" :disabled="!props.pattern" class="btn btn-xs btn-secondary">
     {{ props.label }}

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsageInfo\FeatureUsageInfo.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageInfo/FeatureUsageInfo.vue -->
 <template>
   <div class="space-y-4">
     <!-- 基本機能 -->

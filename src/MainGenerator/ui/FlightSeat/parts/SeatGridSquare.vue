@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/SeatGridSquare.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridSquare.vue -->
 <template>
   <div
     class="grid gap-3 mx-auto"

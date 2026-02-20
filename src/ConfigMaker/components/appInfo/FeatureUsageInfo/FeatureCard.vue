@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsageInfo\FeatureCard.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageInfo/FeatureCard.vue -->
 <template>
   <div v-if="isVisible" class="card bg-base-200 border-2" :class="getAccessLevelClass(accessLevel)">
     <div class="card-body p-4">

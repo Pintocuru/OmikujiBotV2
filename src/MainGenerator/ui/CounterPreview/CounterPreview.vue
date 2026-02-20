@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/preview/CounterPreview.vue -->
+<!-- src/MainGenerator/ui/CounterPreview/CounterPreview.vue -->
 <template>
   <div class="overflow-hidden">
     <CounterPreviewManager

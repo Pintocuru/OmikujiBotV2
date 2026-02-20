@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/SeatCell.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/SeatCell.vue -->
 <template>
   <div
     class="aspect-square border-2 rounded-lg flex items-center justify-center p-2 transition-all duration-300"

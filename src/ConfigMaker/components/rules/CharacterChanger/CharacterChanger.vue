@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/rules/CharacterChanger/CharacterChanger.vue -->
+<!-- src/ConfigMaker/components/rules/CharacterChanger/CharacterChanger.vue -->
 <template>
   <!-- トリガーボタン -->
   <div

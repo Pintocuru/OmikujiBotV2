@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\MessageSettings.vue -->
+<!-- src/ConfigMaker/components/postAction/Message/MessageSettings.vue -->
 <template>
   <!-- キャラクター選択 -->
   <div v-if="isCharacter" class="space-y-2">

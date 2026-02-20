@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/appItems/AppHeader.vue -->
+<!-- src/ConfigMaker/components/appItems/AppHeader.vue -->
 <template>
   <h1
     class="flex justify-center text-2xl font-bold text-center relative"

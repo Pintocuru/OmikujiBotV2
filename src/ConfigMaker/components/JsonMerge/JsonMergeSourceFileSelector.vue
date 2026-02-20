@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/jsonMerge/JsonMergeSourceFileSelector.vue -->
+<!-- src/ConfigMaker/components/JsonMerge/JsonMergeSourceFileSelector.vue -->
 <template>
   <div class="space-y-3">
     <!-- マージ元ファイル -->

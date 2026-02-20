@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\FlashBanner\FlashBannerEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/FlashBanner/FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="handlePreviewClick">

@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RecordTabs/RuleHoverPreview.vue -->
+<!-- src/ConfigMaker/components/RecordTabs/RecordHoverPreview.vue -->
 <!-- !ホバー情報は不要かも -->
 <template>
   <div

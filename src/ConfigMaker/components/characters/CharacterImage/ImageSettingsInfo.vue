@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/parts/ImageSettingsInfo.vue -->
+<!-- src/ConfigMaker/components/characters/CharacterImage/ImageSettingsInfo.vue -->
 <template>
   <InformationCard>
     <p>

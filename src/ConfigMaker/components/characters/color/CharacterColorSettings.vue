@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\characters\color\CharacterColorSettings.vue -->
+<!-- src/ConfigMaker/components/characters/color/CharacterColorSettings.vue -->
 <template>
   <!-- プレビュー -->
   <div class="relative flex justify-center">

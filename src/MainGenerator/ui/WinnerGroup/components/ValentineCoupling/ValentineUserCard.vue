@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineUserCard.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/ValentineCoupling/ValentineUserCard.vue -->
 <template>
   <div v-motion :initial="initialAnimation" :enter="enterAnimation" :class="containerClass">
     <div :class="cardClass">

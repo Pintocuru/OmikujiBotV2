@@ -1,4 +1,4 @@
-<!-- src/configMaker/dev/components/DevFileList.vue -->
+<!-- src/ConfigMaker/dev/components/DevFileList.vue -->
 <template>
   <div class="card bg-base-200 p-2">
     <div v-if="devStore.availableFiles.length > 0">

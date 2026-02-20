@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\presetsImport\CategoryModeSelector.vue -->
+<!-- src/ConfigMaker/components/presetsImport/CategoryModeSelector.vue -->
 <template>
   <div class="flex items-center gap-4">
     <span class="text-sm">読み込み方法:</span>

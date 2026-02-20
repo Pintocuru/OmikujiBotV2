@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/CharacterChanger/components/CharacterMappingEditor.vue -->
+<!-- src/ConfigMaker/components/rules/CharacterChanger/CharacterMappingEditor.vue -->
 <template>
   <div class="space-y-3">
     <div class="flex items-center justify-between">

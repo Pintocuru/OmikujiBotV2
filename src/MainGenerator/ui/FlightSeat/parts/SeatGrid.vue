@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/SeatGrid.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/SeatGrid.vue -->
 <template>
   <component
     :is="gridComponent"

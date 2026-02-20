@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RecordTabs/RecordTabItem.vue -->
+<!-- src/ConfigMaker/components/RecordTabs/RecordTabItem.vue -->
 <template>
   <div
     class="relative group"

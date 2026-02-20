@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\scripts\MotionVariants\MotionWrapper.vue -->
+<!-- src/MainGenerator/scripts/MotionVariants/MotionWrapper.vue -->
 <template>
   <Transition :css="false" @leave="onLeave">
     <div

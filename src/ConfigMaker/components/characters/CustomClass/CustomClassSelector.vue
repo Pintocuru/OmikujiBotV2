@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\characters\CustomClassSelector.vue -->
+<!-- src/ConfigMaker/components/characters/CustomClass/CustomClassSelector.vue -->
 <template>
   <!-- プリセットボタン群 -->
   <div class="flex flex-wrap gap-2">

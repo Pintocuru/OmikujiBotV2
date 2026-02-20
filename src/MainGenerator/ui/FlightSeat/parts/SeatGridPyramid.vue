@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/SeatGridPyramid.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridPyramid.vue -->
 <template>
   <div class="flex flex-col gap-3 items-center">
     <div

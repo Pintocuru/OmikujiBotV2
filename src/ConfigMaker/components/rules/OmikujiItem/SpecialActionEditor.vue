@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\special\SpecialActionEditor.vue -->
+<!-- src/ConfigMaker/components/rules/OmikujiItem/SpecialActionEditor.vue -->
 <template>
   <div class="space-y-4">
     <SettingItem label="特殊動作の種類" description="実行する特殊動作を選択してください">

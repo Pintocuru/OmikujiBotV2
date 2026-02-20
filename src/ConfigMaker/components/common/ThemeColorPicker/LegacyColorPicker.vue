@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/characters/color/LegacyColorPicker.vue -->
+<!-- src/ConfigMaker/components/common/ThemeColorPicker/LegacyColorPicker.vue -->
 <template>
   <div class="bg-base-300 p-4 flex flex-col space-y-4">
     <!-- プリセットカラー -->

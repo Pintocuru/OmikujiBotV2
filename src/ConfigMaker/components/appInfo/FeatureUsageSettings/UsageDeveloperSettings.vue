@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageDeveloper.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageDeveloperSettings.vue -->
 <template>
   <SettingItem label="アイテム固有設定" description="特定アイテム内の要素の表示制御">
     <div class="space-y-3">

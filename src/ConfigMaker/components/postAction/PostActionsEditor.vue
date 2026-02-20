@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\PostActionsEditor.vue -->
+<!-- src/ConfigMaker/components/postAction/PostActionsEditor.vue -->
 <template>
   <div class="space-y-2">
     <!-- ツールバー -->

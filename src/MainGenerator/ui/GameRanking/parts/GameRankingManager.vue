@@ -1,4 +1,4 @@
-<!-- src\common\ui\GameRanking\GameRankingManager.vue -->
+<!-- src/MainGenerator/ui/GameRanking/parts/GameRankingManager.vue -->
 <template>
   <component :is="currentComponent" :botMessageExtra="targetRankingMessages" :settings="settings" />
 </template>

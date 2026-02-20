@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\preview\PostActionPreview.vue -->
+<!-- src/ConfigMaker/components/postAction/preview/PostActionPreview.vue -->
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->

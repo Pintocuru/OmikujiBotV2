@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling\Placeholder.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/ValentineCoupling/Placeholder.vue -->
 <template>
   <div class="relative space-y-3 z-10 flex items-center justify-center min-h-[200px]">
     <div class="text-center opacity-40">

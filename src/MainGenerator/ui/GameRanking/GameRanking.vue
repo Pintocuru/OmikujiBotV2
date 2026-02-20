@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\GameRanking\GameRanking.vue -->
+<!-- src/MainGenerator/ui/GameRanking/GameRanking.vue -->
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <!-- DEV preview trigger -->

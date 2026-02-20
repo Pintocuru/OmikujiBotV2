@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/JsonMergeRemapTypeEditor.vue -->
+<!-- src/ConfigMaker/components/JsonMerge/JsonMergeRemapEditor.vue -->
 <template>
   <div class="border-l-4 border-primary pl-4 py-2 mb-3 bg-base-200 rounded">
     <div class="flex justify-between items-center mb-2">

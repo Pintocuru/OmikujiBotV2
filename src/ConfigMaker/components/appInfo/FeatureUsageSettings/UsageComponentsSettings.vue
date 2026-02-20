@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageComponents.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageComponentsSettings.vue -->
 <template>
   <SettingItem label="アイテム設定" description="ジェネレーターのアイテム表示制御">
     <!-- 利用可能なアイテム -->

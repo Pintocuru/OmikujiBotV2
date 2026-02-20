@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/comments/OmikujiLimitsEditor.vue -->
+<!-- src/ConfigMaker/components/rulesComments/OmikujiLimitsEditor.vue -->
 <template>
   <SubSectionHeader
     icon="Ban"

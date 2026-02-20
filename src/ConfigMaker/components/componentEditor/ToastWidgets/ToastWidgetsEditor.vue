@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\toast\ToastComponentEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/ToastWidgets/ToastWidgetsEditor.vue -->
 <template>
   <!-- サンプル表示 -->
   <div class="flex flex-col" :class="[fontFamily]">

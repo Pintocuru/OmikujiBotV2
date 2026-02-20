@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\conditions\ComponentConditionsEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/conditions/ComponentConditionsEditor.vue -->
 <template>
   <!-- スロット別コンポーネント設定 -->
   <SettingItem label="表示するアイテム" description="各スロットに表示するコンポーネントを選択">

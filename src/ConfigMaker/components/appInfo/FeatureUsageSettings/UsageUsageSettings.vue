@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageUsage.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageUsageSettings.vue -->
 <template>
   <SettingItem label="Recordアイテム表示" description="アイテムの表示・非表示を制御">
     <div class="grid grid-cols-1 gap-2">

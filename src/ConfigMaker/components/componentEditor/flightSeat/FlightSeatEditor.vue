@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/componentEditor/FlightSeat/FlightSeatComponentEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/FlightSeat/FlightSeatEditor.vue -->
 <template>
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
 

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\gameScripts\GameScriptPreview.vue -->
+<!-- src/ConfigMaker/components/gameScripts/GameScriptPreview.vue -->
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->

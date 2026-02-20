@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\parts\HistoryButton.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/HistoryButton.vue -->
 <template>
   <div class="fixed top-4 right-4 z-50" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
     <!-- 履歴ボタン -->

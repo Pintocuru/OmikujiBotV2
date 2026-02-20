@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\WinnerGroup.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/WinnerGroup.vue -->
 <template>
   <div class="relative">
     <!-- 履歴ボタン -->

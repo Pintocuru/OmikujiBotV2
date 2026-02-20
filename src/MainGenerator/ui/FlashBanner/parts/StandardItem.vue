@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\FlashBanner\parts\FlashBannerItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/parts/StandardItem.vue -->
 <template>
   <div
     v-if="message"

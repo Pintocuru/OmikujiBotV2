@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\ranking\RankingComponentEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/GameRanking/GameRankingEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
   <div v-if="ranking.targetScriptKeys.length > 0" class="max-h-56 overflow-y-hidden" :class="[fontFamily]">

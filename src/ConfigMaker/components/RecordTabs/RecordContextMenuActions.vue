@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\RecordTabs\RecordContextMenuActions.vue -->
+<!-- src/ConfigMaker/components/RecordTabs/RecordContextMenuActions.vue -->
 <template>
   <!-- アクションボタン群（横並び） -->
   <div class="flex px-2 gap-1">

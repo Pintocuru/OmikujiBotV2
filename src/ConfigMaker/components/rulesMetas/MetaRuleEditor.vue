@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/metas/TimerRuleEditor.vue -->
+<!-- src/ConfigMaker/components/rulesMetas/MetaRuleEditor.vue -->
 <template>
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">

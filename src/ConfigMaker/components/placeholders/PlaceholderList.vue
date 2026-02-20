@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/placeholders/PlaceholderList.vue -->
+<!-- src/ConfigMaker/components/placeholders/PlaceholderList.vue -->
 <template>
   <div class="card card-body p-4 bg-base-200">
     <!-- カラーフィルター（editorColorが指定されていない場合のみ表示） -->

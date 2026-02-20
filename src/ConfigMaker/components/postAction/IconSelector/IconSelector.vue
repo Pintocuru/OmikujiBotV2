@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\IconSelector\IconSelector.vue -->
+<!-- src/ConfigMaker/components/postAction/IconSelector/IconSelector.vue -->
 <template>
   <div class="flex gap-1">
     <select v-model="localIconKey" class="select select-bordered select-sm flex-1">

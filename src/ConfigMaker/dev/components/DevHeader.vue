@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\dev\DevHeader.vue -->
+<!-- src/ConfigMaker/dev/components/DevHeader.vue -->
 <template>
   <div class="flex items-center justify-between">
     <div class="flex items-center gap-2">

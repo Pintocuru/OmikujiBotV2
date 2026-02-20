@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\tooltab\PostActionsTabs.vue -->
+<!-- src/ConfigMaker/components/postAction/tooltab/PostActionsTabs.vue -->
 <template>
   <!-- タブヘッダー -->
   <div class="tabs">

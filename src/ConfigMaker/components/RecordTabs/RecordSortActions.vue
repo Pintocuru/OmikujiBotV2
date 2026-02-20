@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RecordTabs/RecordSortActions.vue -->
+<!-- src/ConfigMaker/components/RecordTabs/RecordSortActions.vue -->
 <template>
   <div class="flex items-center gap-2 mb-3">
     <!-- 新規追加ボタン -->

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\SoundSettings.vue -->
+<!-- src/ConfigMaker/components/postAction/Sounds/SoundSettings.vue -->
 <template>
   <!-- サウンド -->
   <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">

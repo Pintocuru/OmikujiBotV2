@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\CommonStyle\CommonStyleEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/CommonStyle/CommonStyleEditor.vue -->
 <template>
   <!-- プレビュー表示 -->
   <div class="mb-6 p-4 rounded-box border bg-base-200" :class="[fontFamilyClass]">

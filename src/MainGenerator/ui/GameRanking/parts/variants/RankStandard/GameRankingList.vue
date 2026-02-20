@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/components/GameRankingViewer/GameRankingList.vue -->
+<!-- src/MainGenerator/ui/GameRanking/parts/variants/RankStandard/GameRankingList.vue -->
 <template>
   <div v-if="settings" :data-theme="settings.color" class="card shadow-xl">
     <div class="card-body p-2">

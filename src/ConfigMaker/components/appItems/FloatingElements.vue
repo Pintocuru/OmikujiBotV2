@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/FloatingElements.vue -->
+<!-- src/ConfigMaker/components/appItems/FloatingElements.vue -->
 <template>
   <!-- スクロールトップボタン -->
   <button

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/componentEditor/toast/CharacterSelectorSingle.vue -->
+<!-- src/ConfigMaker/components/componentEditor/ToastWidgets/CharacterSelectorSingle.vue -->
 <template>
   <div class="flex flex-wrap gap-2">
     <!-- null 選択肢 -->

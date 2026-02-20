@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\PlaceholderChecker.vue -->
+<!-- src/ConfigMaker/components/postAction/items/PlaceholderChecker.vue -->
 <template>
   <div class="space-y-2">
     <!-- 既存のプレースホルダー -->

@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\TopStars\placeholder.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/TopStars/placeholder.vue -->
 <template>
   <div class="relative z-10 flex items-center justify-center">
     <div class="text-center opacity-40">

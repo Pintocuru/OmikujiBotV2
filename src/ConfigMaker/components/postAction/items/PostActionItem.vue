@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\items\PostActionItem.vue -->
+<!-- src/ConfigMaker/components/postAction/items/PostActionItem.vue -->
 <template>
   <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
   <div class="grid grid-cols-3 gap-4">

@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\FlightSeat\SeatHistoryViewer.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/SeatHistoryViewer.vue -->
 <template>
   <div v-if="seatHistory.length > 0" class="space-y-4">
     <!-- ナビゲーション -->

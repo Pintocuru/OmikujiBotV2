@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/characters/EmotionImageItem.vue -->
+<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionImageItem.vue -->
 <template>
   <SettingItem
     :label="emotionLabel"

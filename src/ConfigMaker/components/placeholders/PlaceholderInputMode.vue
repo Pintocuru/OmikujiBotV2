@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/placeholders/PlaceholderInputMode.vue -->
+<!-- src/ConfigMaker/components/placeholders/PlaceholderInputMode.vue -->
 <template>
   <div v-if="displayValues.length > 0" class="space-y-1 max-h-128 overflow-y-auto">
     <div v-for="(value, index) in displayValues" :key="index" class="card bg-base-100 p-2">

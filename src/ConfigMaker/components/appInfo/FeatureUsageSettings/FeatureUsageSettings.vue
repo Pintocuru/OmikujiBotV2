@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\FeatureUsage\FeatureUsageSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/FeatureUsageSettings.vue -->
 <template>
   <div class="space-y-4">
     <!-- プリセットボタン -->

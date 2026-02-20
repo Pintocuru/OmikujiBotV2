@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling\content.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/ValentineCoupling/content.vue -->
 <template>
   <!-- ユーザーカード表示 -->
   <div v-if="users.length >= 2" class="relative">

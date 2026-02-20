@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\characters\CharacterBasicInfo.vue -->
+<!-- src/ConfigMaker/components/characters/basicInfo/CharacterBasicInfo.vue -->
 <template>
   <template v-if="currentData">
     <!-- Key表示 -->

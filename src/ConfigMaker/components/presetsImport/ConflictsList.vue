@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\presetsImport\ConflictsList.vue -->
+<!-- src/ConfigMaker/components/presetsImport/ConflictsList.vue -->
 <template>
   <div class="text-sm">
     <div class="text-warning pb-1">競合項目 ({{ conflicts.length }}件):</div>

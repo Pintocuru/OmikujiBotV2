@@ -1,4 +1,4 @@
-<!-- vue-draggable-plus の代替品 -->
+<!-- src/DraggableWrapper.vue -->
 <template>
   <component
     :is="tag"

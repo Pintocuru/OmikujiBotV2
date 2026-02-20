@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\tooltab\OmikujiItemToolbar.vue -->
+<!-- src/ConfigMaker/components/postAction/tooltab/OmikujiItemToolbar.vue -->
 <template>
   <div class="form-control">
     <div class="flex justify-between items-center mb-1">

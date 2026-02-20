@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\ValentineCoupling.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/ValentineCoupling.vue -->
 <template>
   <div class="relative p-4 bg-base-200">
     <!-- 枠線（absolute 背景） -->

@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/NavigationTabs.vue -->
+<!-- src/ConfigMaker/components/appItems/NavigationTabs.vue -->
 <template>
   <div class="flex w-full justify-center my-4 rounded-md border" :class="frameClass">
     <div class="tabs gap-2">

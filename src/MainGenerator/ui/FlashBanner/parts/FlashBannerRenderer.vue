@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/FlashBannerRenderer.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/parts/FlashBannerRenderer.vue -->
 <template>
   <component
     :is="currentComponent"

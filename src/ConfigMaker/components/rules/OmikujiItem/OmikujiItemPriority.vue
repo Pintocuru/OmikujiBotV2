@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\rules\OmikujiItemPriority.vue -->
+<!-- src/ConfigMaker/components/rules/OmikujiItem/OmikujiItemPriority.vue -->
 <template>
   <template v-if="omikujiItem">
     <!-- 追加発動条件の有効化 -->

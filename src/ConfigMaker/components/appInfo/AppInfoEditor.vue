@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appInfo\AppInfoEditor.vue -->
+<!-- src/ConfigMaker/components/appInfo/AppInfoEditor.vue -->
 <template>
   <div class="space-y-4">
     <!-- アプリ設定 -->

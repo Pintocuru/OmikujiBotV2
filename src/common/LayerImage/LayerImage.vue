@@ -1,4 +1,4 @@
-<!-- src\common\LayerImage\LayerImage.vue -->
+<!-- src/common/LayerImage/LayerImage.vue -->
 <template>
   <div class="relative overflow-hidden" :class="[sizeClass, round && 'rounded-full', border && 'border']">
     <template v-if="sources.length">

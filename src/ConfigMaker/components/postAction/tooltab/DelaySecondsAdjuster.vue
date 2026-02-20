@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\postAction\DelaySecondsAdjuster.vue -->
+<!-- src/ConfigMaker/components/postAction/tooltab/DelaySecondsAdjuster.vue -->
 <template>
   <div class="flex gap-1 items-center pr-2">
     <button

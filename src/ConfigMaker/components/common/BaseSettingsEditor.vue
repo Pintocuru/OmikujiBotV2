@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\common\BaseSettingsEditor.vue -->
+<!-- src/ConfigMaker/components/common/BaseSettingsEditor.vue -->
 <template>
   <!-- Key表示 -->
   <SettingItem v-if="isKey" label="キーの名前を変更する" description="他のデータと区別できるよう名前を付けます">

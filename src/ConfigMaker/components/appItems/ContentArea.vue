@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\appItems\ContentArea.vue -->
+<!-- src/ConfigMaker/components/appItems/ContentArea.vue -->
 <template>
   <!-- カテゴリ帯 -->
   <div class="flex items-center justify-between px-4 py-3 bg-primary text-primary-content">

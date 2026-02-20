@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/CharacterChanger/components/InvalidCharacterAlert.vue -->
+<!-- src/ConfigMaker/components/rules/CharacterChanger/InvalidCharacterAlert.vue -->
 <template>
   <div class="alert alert-error">
     <AlertTriangle class="w-4 h-4" />

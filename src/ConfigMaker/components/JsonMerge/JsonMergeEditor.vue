@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\JsonMerge\JsonMergeEditor.vue -->
+<!-- src/ConfigMaker/components/JsonMerge/JsonMergeEditor.vue -->
 <template>
   <!-- マージ設定がない場合のメッセージ -->
   <template v-if="merge.length === 0">

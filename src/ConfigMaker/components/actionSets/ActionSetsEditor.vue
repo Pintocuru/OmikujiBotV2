@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\actionSets\ActionSetsEditor.vue -->
+<!-- src/ConfigMaker/components/actionSets/ActionSetsEditor.vue -->
 <template>
   <div class="flex justify-end gap-2">
     <CharacterChanger category="actionSets" />

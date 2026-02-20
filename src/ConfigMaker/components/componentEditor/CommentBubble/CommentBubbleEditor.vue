@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\bubble\BubbleComponentEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/CommentBubble/CommentBubbleEditor.vue -->
 <template>
   <!-- プレビュー表示 -->
   <CommentBubblePreview

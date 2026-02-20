@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/presets/ConfigImport.vue -->
+<!-- src/ConfigMaker/components/presetsImport/ConfigImport.vue -->
 <template>
   <div class="flex-1">
     <input ref="fileInputRef" type="file" accept=".json" @change="handleFileSelection" class="hidden" />

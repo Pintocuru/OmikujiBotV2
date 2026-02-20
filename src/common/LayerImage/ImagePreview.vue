@@ -1,4 +1,4 @@
-<!-- src\common\LayerImage\ImagePreview.vue -->
+<!-- src/common/LayerImage/ImagePreview.vue -->
 <template>
   <div @click="showPreview = true" class="cursor-pointer">
     <LayerImage :layers="layers" :size="size" />

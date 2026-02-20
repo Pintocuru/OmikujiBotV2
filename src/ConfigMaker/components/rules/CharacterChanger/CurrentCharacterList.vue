@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/CharacterChanger/components/CurrentCharacterList.vue -->
+<!-- src/ConfigMaker/components/rules/CharacterChanger/CurrentCharacterList.vue -->
 <template>
   <div class="bg-base-200 p-4 rounded-lg">
     <p class="text-sm font-semibold text-gray-600 mb-3">現在使用されているキャラクター:</p>

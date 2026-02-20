@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\rules\OmikujiItemEditor.vue -->
+<!-- src/ConfigMaker/components/rules/OmikujiItem/OmikujiItemEditor.vue -->
 <template>
   <!-- ヘッダー(名前、メニュー) -->
   <OmikujiItemHeader

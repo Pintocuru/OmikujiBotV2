@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/RecordTabs/RecordTabButton.vue -->
+<!-- src/ConfigMaker/components/RecordTabs/RecordTabButton.vue -->
 <template>
   <button
     class="tab p-1 font-medium duration-200 gap-1 relative overflow-hidden"

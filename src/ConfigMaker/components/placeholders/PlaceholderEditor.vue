@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/placeholders/PlaceholderEditor.vue -->
+<!-- src/ConfigMaker/components/placeholders/PlaceholderEditor.vue -->
 <template>
   <!-- タブ部分 -->
   <RecordTabs />

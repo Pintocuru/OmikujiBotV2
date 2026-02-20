@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/placeholders/PlaceholderItem.vue -->
+<!-- src/ConfigMaker/components/placeholders/PlaceholderItem.vue -->
 <template>
   <div
     :class="cardClasses"

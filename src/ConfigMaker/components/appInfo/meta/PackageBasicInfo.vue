@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/meta/PackageBasicInfo.vue -->
+<!-- src/ConfigMaker/components/appInfo/meta/PackageBasicInfo.vue -->
 <template>
   <!-- このデータのid -->
   <SettingItem label="id" description="プラグインでは、この名称で保存されます">

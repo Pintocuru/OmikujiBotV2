@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\TopStars\content.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/TopStars/content.vue -->
 <template>
   <!-- 浮遊する星の装飾 -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">

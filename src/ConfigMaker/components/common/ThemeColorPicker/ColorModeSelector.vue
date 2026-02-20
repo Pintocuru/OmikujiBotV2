@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\common\ThemeColorPicker\ColorModeSelector.vue -->
+<!-- src/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue -->
 <template>
   <!-- モード切り替えヘッダー -->
   <div class="flex justify-end items-center gap-2">

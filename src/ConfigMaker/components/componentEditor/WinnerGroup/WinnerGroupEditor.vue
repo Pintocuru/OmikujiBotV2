@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\WinnerGroup\WinnerGroupEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/WinnerGroup/WinnerGroupEditor.vue -->
 <template>
   <!-- プレビュー -->
   <div class="max-h-96 overflow-y-hidden" :class="[fontFamily]" :data-theme="winnerSetting.color">

@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\gameScripts\GameScriptsEditor.vue -->
+<!-- src/ConfigMaker/components/gameScripts/GameScriptsEditor.vue -->
 <template>
   <!-- グリッドレイアウト: 左1/3がプレビュー、右2/3が設定 -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">

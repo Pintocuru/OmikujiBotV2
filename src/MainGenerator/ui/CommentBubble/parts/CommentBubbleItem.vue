@@ -1,4 +1,4 @@
-<!-- src\common\ui\CommentBubble\CommentBubbleItem.vue -->
+<!-- src/MainGenerator/ui/CommentBubble/parts/CommentBubbleItem.vue -->
 <template>
   <div
     class="relative inline-block max-w-3xl min-w-[10rem]"

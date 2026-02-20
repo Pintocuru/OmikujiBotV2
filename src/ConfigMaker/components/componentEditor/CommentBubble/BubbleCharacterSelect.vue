@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\componentEditor\bubble\BubbleCharactersEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/CommentBubble/BubbleCharacterSelect.vue -->
 <template>
   <div class="space-y-2">
     <!-- Center (固定表示) -->

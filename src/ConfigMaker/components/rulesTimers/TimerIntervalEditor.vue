@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/timers/TimerIntervalEditor.vue -->
+<!-- src/ConfigMaker/components/rulesTimers/TimerIntervalEditor.vue -->
 <template>
   <!-- プリセット選択 -->
   <SettingItem label="実行間隔(30秒～1時間)" description="設定した間隔で自動的におみくじが実行されます">

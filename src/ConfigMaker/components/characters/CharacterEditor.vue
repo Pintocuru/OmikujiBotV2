@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\characters\CharacterEditor.vue -->
+<!-- src/ConfigMaker/components/characters/CharacterEditor.vue -->
 <template>
   <!-- タブ -->
   <RecordTabs />

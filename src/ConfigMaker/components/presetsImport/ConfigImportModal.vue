@@ -1,4 +1,4 @@
-<!-- src\ConfigMaker\components\presetsImport\ConfigImportModal.vue -->
+<!-- src/ConfigMaker/components/presetsImport/ConfigImportModal.vue -->
 <template>
   <div class="modal modal-open">
     <div class="modal-box max-w-3xl">

@@ -1,4 +1,4 @@
-<!-- src\MainGenerator\ui\WinnerGroup\components\TopStars.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/components/TopStars.vue -->
 <template>
   <div class="relative p-4">
     <!-- 背景レイヤー -->

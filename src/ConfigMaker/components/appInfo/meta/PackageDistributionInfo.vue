@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/meta/PackageDistributionInfo.vue -->
+<!-- src/ConfigMaker/components/appInfo/meta/PackageDistributionInfo.vue -->
 <template>
   <!-- ライセンス (読み取り専用) -->
   <SettingItem label="ライセンス" description="omikujiData.js のライセンス。画像などは対象外です">

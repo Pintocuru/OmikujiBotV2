@@ -1,4 +1,4 @@
-<!-- src/configMaker/components/presets/ConfigExport.vue -->
+<!-- src/ConfigMaker/components/presetsExport/ConfigExport.vue -->
 <template>
   <div class="flex gap-2">
     <!-- ローカルのデータを読む -->

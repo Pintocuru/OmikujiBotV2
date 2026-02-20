@@ -1,4 +1,4 @@
-<!-- SeatGridCircle.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridCircle.vue -->
 <template>
   <div class="relative mx-auto" :style="{ width: diameter + 'px', height: diameter + 'px' }">
     <div v-for="(seat, i) in displaySeats" :key="i" class="absolute" :style="getSeatPosition(i)">

@@ -1,4 +1,4 @@
-<!-- src/configMaker/App.vue -->
+<!-- src/ConfigMaker/App.vue -->
 <template>
   <div class="p-4 max-w-6xl pb-32 overflow-x-hidden mx-auto space-y-4" :data-theme="data.settings.daisyUiTheme">
     <!-- タイトル -->
