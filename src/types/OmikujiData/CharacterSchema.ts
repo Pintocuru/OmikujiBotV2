@@ -3,29 +3,18 @@ import { z } from 'zod'
 import { PresetMetadataSchema } from '@shared/types'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { rpgVoiceKeys } from './SoundKey'
+import { characterEmotionMap, displayModeMap } from '../MetaMaps'
 
-// 感情ラベルマップ
-export const emotionLabels = {
-  default: 'デフォルト(default)',
-  happy: '嬉しい(happy)',
-  excited: 'ワクワク(excited)',
-  laughing: '笑い(laughing)',
-  blushing: '照れ(blushing)',
-  surprised: '驚き(surprised)',
-  sad: '悲しみ(sad)',
-  angry: '怒り(angry)',
-  thinking: '考え中(thinking)',
-  wink: 'おふざけ(wink)',
-  singing: '誇らしげ(singing)',
-  sleepy: '退屈(sleepy)',
-} as const
+/**
+ * CharacterEmotion 感情ラベル
+ */
+export const characterEmotionKeys = Object.keys(characterEmotionMap) as CharacterEmotionType[]
+export const CharacterEmotionSchema = z.enum(characterEmotionKeys)
+export type CharacterEmotionType = keyof typeof characterEmotionMap
 
-export const characterEmotionKeys = Object.keys(emotionLabels) as CharacterEmotionType[]
-export type CharacterEmotionType = keyof typeof emotionLabels
-export const CharacterEmotionSchema = z.enum(
-  Object.keys(emotionLabels) as [CharacterEmotionType, ...CharacterEmotionType[]]
-)
-
+/**
+ * CharacterColorSchema
+ */
 export const CharacterColorScheme = z.object({
   isTheme: z.boolean().default(true).catch(true), // DaisyUI テーマを使うかどうか
   ...DaisyUiThemeFieldsSchema.shape,
@@ -39,10 +28,12 @@ export const CharacterColorScheme = z.object({
 })
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 
-// 画像セットのスキーマ
+/**
+ * 画像セット
+ */
 const LayerSchema = z.array(z.string()).catch([])
 export const CharacterImageSetSchema = z.object(
-  Object.fromEntries(Object.keys(emotionLabels).map((key) => [key, LayerSchema])) as Record<
+  Object.fromEntries(Object.keys(characterEmotionMap).map((key) => [key, LayerSchema])) as Record<
     CharacterEmotionType,
     typeof LayerSchema
   >
@@ -50,18 +41,14 @@ export const CharacterImageSetSchema = z.object(
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>
 
 /**
+ * displayModes
+ */
+export const displayModes = Object.keys(displayModeMap) as DisplayModeType[]
+export type DisplayModeType = keyof typeof displayModeMap
+
+/**
  * DisplayOptionSchema
  */
-export const displayModes = ['comment', 'voice', 'rpgVoice', 'none'] as const
-export type DisplayModeType = (typeof displayModes)[number]
-
-export const displayModeLabels: Record<DisplayModeType, string> = {
-  comment: 'わんコメでの表示+読み上げ',
-  voice: '読み上げのみ',
-  rpgVoice: 'RPG風音声',
-  none: 'なし',
-}
-
 export const DisplayOptionSchema = z.object({
   mode: z.enum(displayModes).default('comment'),
   imageBase64: z.string().default('').catch(''), // 表示時のアイコン

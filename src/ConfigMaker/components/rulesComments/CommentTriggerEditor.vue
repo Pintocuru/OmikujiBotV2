@@ -72,9 +72,9 @@
   import {
     commentTriggerCondition,
     CommentTriggerCondition,
-    commentTriggerConditionInfo,
+    commentTriggerConditionMap,
     CommentTriggerType,
-  } from '@/types/OmikujiData/'
+  } from '@/types/'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const props = defineProps<{
@@ -110,8 +110,8 @@
     .filter((key) => key !== 'syoken' && key !== 'count')
     .map((key) => ({
       value: key,
-      label: commentTriggerConditionInfo[key].label,
-      description: commentTriggerConditionInfo[key].description,
+      label: commentTriggerConditionMap[key].label,
+      description: commentTriggerConditionMap[key].description,
     }))
 
   const deprecatedConditions = ['syoken', 'count'] as const
@@ -128,7 +128,7 @@
       if (props.modelValue[key] !== undefined) {
         list.push({
           value: key,
-          label: commentTriggerConditionInfo[key].label,
+          label: commentTriggerConditionMap[key].label,
         })
       }
     }

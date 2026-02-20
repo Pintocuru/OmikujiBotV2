@@ -1,7 +1,18 @@
 // src/types/MetaMaps/CriteriaThresholdMaps.ts
 import { thresholdConditionLabels, thresholdConditionDescriptions } from '@shared/types/Threshold/'
-import type { CriteriaThresholdCondition } from '../OmikujiProcess/CriteriaThresholdSchema'
-import { criteriaThresholdCondition } from '../OmikujiProcess/CriteriaThresholdSchema'
+
+/**
+ * criteria Threshold
+ */
+export const criteriaThresholdCondition = [
+  'username',
+  'access', // アクセスレベル(管理者権限など)
+  'gift', // プレミアムモードで使えるので
+  'syoken',
+  'count',
+  'comment', // 追加のコメント内容
+] as const
+export type CriteriaThresholdCondition = (typeof criteriaThresholdCondition)[number]
 
 /**
  * 条件ラベルマップ

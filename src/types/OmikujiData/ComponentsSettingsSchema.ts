@@ -2,6 +2,13 @@
 import { z } from 'zod'
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes, ThemeSchema } from '@shared/styles/DaisyUiTheme'
+import {
+  counterComponents,
+  flightSeatLayoutMap,
+  rankingComponents,
+  rankingSortOrderMap,
+  winnerComponents,
+} from '../MetaMaps'
 
 /**
  * フキダシ・キャラクター
@@ -27,7 +34,7 @@ export const SettingsBubbleSchema = z.object({
 export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
 
 /**
- * トースト・サムネイル
+ * トースト・サムネイル CommentBubble
  */
 export const SettingsToastSchema = z.object({
   showToastsOnRight: z.boolean().default(true).catch(true), // トースト・サムネイルを右側に表示するか(falseで左側)
@@ -37,7 +44,7 @@ export const SettingsToastSchema = z.object({
 export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 
 /**
- * ニュースフラッシュ
+ * ニュースフラッシュ FlashBanner
  */
 export const SettingsFlashBannerSchema = z.object({
   label: z.string().default('速報').catch(''),
@@ -52,20 +59,12 @@ export const SettingsFlashBannerSchema = z.object({
 export type SettingsFlashBannerType = z.infer<typeof SettingsFlashBannerSchema>
 
 /**
- * ランキング Ranking
+ * ランキング GameRanking
  */
-export const rankingSortOrderLabels = {
-  new: '新着順',
-  high: 'スコア高い順',
-  low: 'スコア低い順',
-} as const
 export const RankingSortOrderSchema = z.enum(
-  Object.keys(rankingSortOrderLabels) as [RankingSortOrder, ...RankingSortOrder[]]
+  Object.keys(rankingSortOrderMap) as [RankingSortOrder, ...RankingSortOrder[]]
 )
-export type RankingSortOrder = keyof typeof rankingSortOrderLabels
-
-// 現在は１つだけ…
-export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
+export type RankingSortOrder = keyof typeof rankingSortOrderMap
 
 export type RankingComponent = (typeof rankingComponents)[number]['value']
 export const rankingValues = rankingComponents.map((c) => c.value) as RankingComponent[]
@@ -83,15 +82,8 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 /**
  * カウンター・ユーザーリスト Counter
  */
-export const counterComponents = {
-  counterUser: 'カウンター+最後のユーザー',
-  counterTimer: '最後のユーザーからの経過時間',
-  userList: 'ユーザーリスト(バッジ)',
-  UserCardScroller: 'ユーザーリスト(縦型)',
-} as const
-
-export type CounterComponent = keyof typeof counterComponents
 const counterComponentValues = Object.keys(counterComponents) as CounterComponent[]
+export type CounterComponent = keyof typeof counterComponents
 
 export const SettingsCounterSchema = z.object({
   component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
@@ -105,11 +97,6 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 /**
  * ラッキーメンバーズ WinnerGroup
  */
-export const winnerComponents = {
-  valentineCoupling: 'バレンタイン・カップリング',
-  topStars: 'トップスターズ',
-} as const
-
 export type WinnerComponent = keyof typeof winnerComponents
 const winnerComponentValues = Object.keys(winnerComponents) as WinnerComponent[]
 
@@ -125,18 +112,11 @@ export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 /**
  * 8時間フライト flightSeat
  */
-export const flightSeatLayouts = {
-  square: '正方形グリッド',
-  circle: 'サークル',
-  custom: 'カスタム配列', // ピラミッド・ひな壇などを含む
-} as const
-export type SeatLayout = keyof typeof flightSeatLayouts
-
 export const SettingsFlightSeatSchema = z.object({
   slotType: z.literal('extra').default('extra').catch('extra'),
 
   layout: z
-    .enum(Object.keys(flightSeatLayouts) as [keyof typeof flightSeatLayouts])
+    .enum(Object.keys(flightSeatLayoutMap) as [keyof typeof flightSeatLayoutMap])
     .default('square')
     .catch('square'),
 

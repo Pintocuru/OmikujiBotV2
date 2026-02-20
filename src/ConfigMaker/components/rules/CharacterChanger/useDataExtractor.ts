@@ -1,7 +1,7 @@
 // src/ConfigMaker/components/rules/CharacterChanger/composables/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
 import { RulesCategoryType, RuleType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
-import { categoryLabels } from '@/types/'
+import { categoryMap } from '@/types/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 /**
@@ -27,7 +27,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
   // スコープに応じたラベル
   const scopeLabel = computed(() => {
     if (changeScope.value === 'single') return 'このルール'
-    return `${categoryLabels[category].label}全体`
+    return `${categoryMap[category].label}全体`
   })
 
   /**

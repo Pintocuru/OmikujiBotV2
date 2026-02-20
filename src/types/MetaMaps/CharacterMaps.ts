@@ -1,10 +1,9 @@
 // src/types/MetaMaps/CharacterMaps.ts
-import type { CharacterEmotionType, DisplayModeType } from '../OmikujiData/CharacterSchema'
 
 /**
  * 感情ラベルマップ
  */
-export const emotionLabels: Record<CharacterEmotionType, string> = {
+export const characterEmotionMap = {
   default: 'デフォルト(default)',
   happy: '嬉しい(happy)',
   excited: 'ワクワク(excited)',
@@ -17,14 +16,14 @@ export const emotionLabels: Record<CharacterEmotionType, string> = {
   wink: 'おふざけ(wink)',
   singing: '誇らしげ(singing)',
   sleepy: '退屈(sleepy)',
-}
+} as const
 
 /**
  * 表示モードのラベルマップ
  */
-export const displayModeLabels: Record<DisplayModeType, string> = {
+export const displayModeMap = {
   comment: 'わんコメでの表示+読み上げ',
   voice: '読み上げのみ',
   rpgVoice: 'RPG風音声',
   none: 'なし',
-}
+} as const

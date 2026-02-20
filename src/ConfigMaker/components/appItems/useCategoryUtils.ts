@@ -1,7 +1,7 @@
 // src\ConfigMaker\components\appItems\useCategoryUtils.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { categoryLabels, CategoryType } from '@/types/OmikujiData/'
+import { categoryMap, CategoryType } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
 import { isDev } from '@/types/'
@@ -25,7 +25,7 @@ export const useCategoryUtils = () => {
   /**
    * ナビゲーションの表示・非表示設定
    */
-  const filteredCategoryLabels = computed<Record<CategoryType, (typeof categoryLabels)[CategoryType]>>(() => {
+  const filteredCategoryLabels = computed<Record<CategoryType, (typeof categoryMap)[CategoryType]>>(() => {
     const { usage, developer } = data.value.featureUsage
 
     const excludeKeys: CategoryType[] = []
@@ -40,8 +40,8 @@ export const useCategoryUtils = () => {
     if (!hasAccess(usage.characters)) excludeKeys.push('characters')
 
     return Object.fromEntries(
-      Object.entries(categoryLabels).filter(([key]) => !excludeKeys.includes(key as CategoryType))
-    ) as Record<CategoryType, (typeof categoryLabels)[CategoryType]>
+      Object.entries(categoryMap).filter(([key]) => !excludeKeys.includes(key as CategoryType))
+    ) as Record<CategoryType, (typeof categoryMap)[CategoryType]>
   })
 
   return {

@@ -1,6 +1,6 @@
 // src\ConfigMaker\components\parts\KeyEditor\useKeyEditor.ts
 import { ref, computed, readonly } from 'vue'
-import { categoryLabels, RecordCategoryType, rulesCategoryLabel } from '@/types/OmikujiData/'
+import { categoryMap, RecordCategoryType, rulesCategoryLabel } from '@/types/'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
 import { CharacterUsage, UpdateResult } from './keyEditorTypes'
@@ -14,7 +14,7 @@ export function useKeyEditor() {
   const characterUsage = ref<CharacterUsage | null>(null)
 
   const hasError = computed(() => errorMessage.value !== '')
-  const dialogTitle = computed(() => categoryLabels[currentCategory.value].label || '')
+  const dialogTitle = computed(() => categoryMap[currentCategory.value].label || '')
 
   // 現在のカテゴリ（ダイアログで使用）
   const currentCategory = ref<RecordCategoryType>('comments')
@@ -125,7 +125,7 @@ export function useKeyEditor() {
    * アイテムタイプラベルを取得
    */
   function getItemTypeLabel(category: RecordCategoryType): string {
-    return categoryLabels[category].label
+    return categoryMap[category].label
   }
 
   // 公開API

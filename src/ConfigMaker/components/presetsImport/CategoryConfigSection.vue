@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CategoryType, RecordCategoryType, categoryLabels } from '@/types/OmikujiData/'
+  import { CategoryType, RecordCategoryType, categoryMap } from '@/types/'
   import { useImportManager } from './composables/useImportManager'
   import CategoryModeSelector from './CategoryModeSelector.vue'
   import ConflictsList from './ConflictsList.vue'
@@ -38,7 +38,7 @@
   }>()
 
   const getCategoryDisplayName = (category: CategoryType): string => {
-    return categoryLabels[category].label || category
+    return categoryMap[category].label || category
   }
 
   const handleEnabledChange = (event: Event) => {

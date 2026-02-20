@@ -1,11 +1,10 @@
 // src/types/MetaMaps/CategoryMaps.ts
 import { MessageSquare, Timer, Brackets, Users, LayoutGrid, Info, Zap, Activity, Layers } from 'lucide-vue-next'
-import type { CategoryType } from '../OmikujiData/CategoryType'
 
 /**
  * カテゴリのUI表示情報
  */
-export const categoryLabels: Record<CategoryType, { label: string; description: string; icon: any }> = {
+export const categoryMap = {
   jsonMerge: {
     label: 'JSONマージ(Dev)',
     description: 'ビルド時、jsonファイルをマージして出力します',
@@ -51,4 +50,4 @@ export const categoryLabels: Record<CategoryType, { label: string; description: 
     description: 'ライセンスや使用できる機能を確認できます',
     icon: Info,
   },
-}
+} as const

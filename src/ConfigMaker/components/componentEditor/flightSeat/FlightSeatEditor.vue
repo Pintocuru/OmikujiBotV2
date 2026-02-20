@@ -35,7 +35,7 @@
   <SettingItem label="座席配置" description="座席の並び方を選択します">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(label, key) in flightSeatLayouts"
+        v-for="(label, key) in flightSeatLayoutMap"
         :key="key"
         class="badge badge-lg cursor-pointer"
         :class="flightSeat.layout === key ? 'badge-primary' : 'badge-outline'"
@@ -150,7 +150,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flightSeatLayouts, SettingsFlightSeatSchema, useFontFamily } from '@/types/'
+  import { flightSeatLayoutMap, SettingsFlightSeatSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

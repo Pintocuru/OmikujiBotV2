@@ -81,7 +81,7 @@
     <SettingItem label="順位のソート" description="得点の高い順・低い順・新しい順から選べます">
       <div class="flex flex-wrap gap-2">
         <div
-          v-for="(order, key) in rankingSortOrderLabels"
+          v-for="(order, key) in rankingSortOrderMap"
           :key="key"
           class="badge badge-lg cursor-pointer"
           :class="ranking.sortOrder === key ? 'badge-primary' : 'badge-outline'"
@@ -116,7 +116,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, rankingComponents, rankingSortOrderLabels, SettingsRankingSchema, useFontFamily } from '@/types/'
+  import { isDev, rankingComponents, rankingSortOrderMap, SettingsRankingSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'

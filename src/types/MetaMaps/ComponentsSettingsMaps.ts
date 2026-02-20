@@ -1,20 +1,16 @@
 // src/types/MetaMaps/ComponentsSettingsMaps.ts
 
 /**
- * ランキング ソート順の表示名マップ
+ * ランキング GameRanking
  */
-export const rankingSortOrderLabels = {
+export const rankingSortOrderMap = {
   new: '新着順',
   high: 'スコア高い順',
   low: 'スコア低い順',
 } as const
 
-/**
- * ランキングコンポーネントの選択肢
- */
-export const rankingComponents = [
-  { value: 'rankStandard', label: 'カウンター+最後のユーザー' },
-] as const
+// ランキングコンポーネントの選択肢
+export const rankingComponents = [{ value: 'rankStandard', label: 'カウンター+最後のユーザー' }] as const
 
 /**
  * カウンターコンポーネントの表示名マップ
@@ -37,7 +33,7 @@ export const winnerComponents = {
 /**
  * フライトシートレイアウトの表示名マップ
  */
-export const flightSeatLayouts = {
+export const flightSeatLayoutMap = {
   square: '正方形グリッド',
   circle: 'サークル',
   custom: 'カスタム配列',

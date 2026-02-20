@@ -3,7 +3,7 @@
   <!-- 条件タイプ選択（単一選択） -->
   <SettingItem label="適用する発動条件" description="監視するメタデータを選択">
     <div class="flex flex-wrap gap-2">
-      <label v-for="(value, key) in metaTriggerCondition" :key="key" class="cursor-pointer">
+      <label v-for="(value, key) in metaTriggerConditionMap" :key="key" class="cursor-pointer">
         <input type="radio" class="hidden" :checked="selectedCondition === key" @change="setCondition(key)" />
         <span class="badge badge-lg select-none" :class="selectedCondition === key ? 'badge-primary' : 'badge-ghost'">
           {{ value }}
@@ -60,7 +60,7 @@
   <InformationCard v-if="selectedCondition === 'follower' || selectedCondition === 'elapsedMinutes'" variant="warning">
     <p class="leading-relaxed">
       ・この
-      <code class="label bg-accent text-accent-content">{{ metaTriggerCondition[selectedCondition] }}</code>
+      <code class="label bg-accent text-accent-content">{{ metaTriggerConditionMap[selectedCondition] }}</code>
       は現在テスト中の機能です。<br />
       ・今後のバージョンで仕様が変わったり、設定がリセットされる可能性があります。
     </p>
@@ -73,7 +73,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import TriggerMetaCondition from './TriggerMetaCondition.vue'
-  import { metaTriggerCondition, MetaTriggerCondition, MetaTriggerType } from '@/types/OmikujiData/MetaTriggerSchema'
+  import { metaTriggerConditionMap, MetaTriggerCondition, MetaTriggerType } from '@/types/OmikujiData/MetaTriggerSchema'
 
   const props = defineProps<{
     modelValue: MetaTriggerType

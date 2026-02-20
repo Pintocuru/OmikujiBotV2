@@ -11,7 +11,7 @@
       @change="updateDisplayField('mode', ($event.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
-      <option v-for="(value, key) in displayModeLabels" :key="key" :value="key">
+      <option v-for="(value, key) in displayModeMap" :key="key" :value="key">
         {{ value }}
       </option>
     </select>
@@ -73,7 +73,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { displayModeLabels, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMetaMap } from '@/types/'
+  import { displayModeMap, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMetaMap } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

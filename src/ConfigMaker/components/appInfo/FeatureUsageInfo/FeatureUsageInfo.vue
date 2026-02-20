@@ -9,10 +9,10 @@
           <FeatureCard
             v-for="(level, key) in usage"
             :key="key"
-            :title="categoryLabels[key]?.label || key"
-            :icon="categoryLabels[key]?.icon || Package"
+            :title="categoryMap[key]?.label || key"
+            :icon="categoryMap[key]?.icon || Package"
             :access-level="level"
-            :description="categoryLabels[key]?.description || ''"
+            :description="categoryMap[key]?.description || ''"
             :feature-key="key"
             @toggle="handleFeatureToggle"
           />
@@ -58,7 +58,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryLabels } from '@/types/OmikujiData/'
+  import { categoryMap } from '@/types/'
   import ComponentChip from './ComponentChip.vue'
   import FeatureCard from './FeatureCard.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

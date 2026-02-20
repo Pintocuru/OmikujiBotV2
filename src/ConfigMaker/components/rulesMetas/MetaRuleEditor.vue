@@ -70,7 +70,7 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
-  import { metaTriggerCondition, MetaTriggerCondition } from '@/types/OmikujiData/MetaTriggerSchema'
+  import { metaTriggerConditionMap, MetaTriggerCondition } from '@/types/OmikujiData/MetaTriggerSchema'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
@@ -101,6 +101,6 @@
   const thresholdSubTitle = computed(() => {
     if (!selectedItem.value) return ''
     const condition = selectedItem.value.trigger.condition
-    return `[${metaTriggerCondition[condition]}]`
+    return `[${metaTriggerConditionMap[condition]}]`
   })
 </script>

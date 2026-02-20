@@ -36,11 +36,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '../parts/SettingItem.vue'
-  import {
-    MetaConditionType,
-    metaComparisonConditionMap,
-    MetaSimpleComparisonConditionMap,
-  } from '@/types/OmikujiData/MetaTriggerSchema'
+  import { MetaConditionType, metaComparisonConditionMap, MetaSimpleComparisonConditionMap } from '@/types/'
 
   const props = defineProps<{
     modelValue?: MetaConditionType

@@ -6,7 +6,7 @@
   <!-- 各画像プレビュー -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
     <EmotionImageItem
-      v-for="(emotion, key) in emotionLabels"
+      v-for="(emotion, key) in characterEmotionMap"
       :key="key"
       :emotion-key="key"
       :emotion-label="emotion"
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterEmotionType, CharacterImageSetSchema, CharacterImageType, emotionLabels } from '@/types/'
+  import { CharacterEmotionType, CharacterImageSetSchema, CharacterImageType, characterEmotionMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ImageSettingsInfo from './ImageSettingsInfo.vue'
   import EmotionImageItem from './EmotionImageItem.vue'

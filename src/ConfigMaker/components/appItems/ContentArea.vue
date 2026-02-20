@@ -3,12 +3,12 @@
   <!-- カテゴリ帯 -->
   <div class="flex items-center justify-between px-4 py-3 bg-primary text-primary-content">
     <div class="flex items-center gap-2 text-lg font-bold">
-      <component :is="categoryLabels[selectedCategory].icon" class="w-6 h-6" />
-      {{ categoryLabels[selectedCategory].label }}
+      <component :is="categoryMap[selectedCategory].icon" class="w-6 h-6" />
+      {{ categoryMap[selectedCategory].label }}
     </div>
 
     <div class="text-sm opacity-80">
-      {{ categoryLabels[selectedCategory].description }}
+      {{ categoryMap[selectedCategory].description }}
     </div>
   </div>
 
@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
-  import { categoryLabels } from '@/types/OmikujiData/'
+  import { categoryMap } from '@/types/'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import CommentRuleEditor from '@config/components/rulesComments/CommentRuleEditor.vue'
   import TimerRuleEditor from '@config/components/rulesTimers/TimerRuleEditor.vue'

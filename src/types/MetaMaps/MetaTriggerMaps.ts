@@ -1,13 +1,9 @@
 // src/types/MetaMaps/MetaTriggerMaps.ts
-import type { MetaComparisonCondition, MetaTriggerCondition } from '../OmikujiProcess/MetaTriggerSchema'
 
 /**
  * 比較条件のUI表示情報（label + description）
  */
-export const metaComparisonConditionMap: Record<
-  MetaComparisonCondition,
-  { label: string; description: string }
-> = {
+export const metaComparisonConditionMap = {
   changed: {
     label: '変化した',
     description: '前回の値と異なる場合に条件を満たします',
@@ -40,7 +36,7 @@ export const metaComparisonConditionMap: Record<
     label: 'ループ',
     description: '指定値の倍数の時に条件を満たします（例：10増えるごと）',
   },
-}
+} as const
 
 /**
  * MetaSimpleComparisonCondition の部分マップ（greaterThanPeakを除く）
@@ -58,9 +54,9 @@ export const MetaSimpleComparisonConditionMap = {
 /**
  * トリガー条件の表示名マップ（絵文字付き）
  */
-export const metaTriggerConditionLabels: Record<MetaTriggerCondition, string> = {
+export const metaTriggerConditionMap = {
   upVote: '👍 高評価',
   viewer: '👀 視聴者数',
   follower: '⭐ 登録者数',
   elapsedMinutes: '⏱ 配信経過時間',
-}
+} as const
