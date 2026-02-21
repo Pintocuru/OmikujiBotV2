@@ -31,8 +31,8 @@
       @change="updateField('bubbleMotionEnter', $event)"
       class="select select-bordered w-full max-w-xs"
     >
-      <option v-for="animation in motionLabel" :key="animation" :value="animation">
-        {{ animation }}
+      <option v-for="(value, key) in enterMotionMap" :key="key" :value="key">
+        {{ value }}
       </option>
     </select>
   </SettingItem>
@@ -98,10 +98,10 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
+  import { enterMotionMap } from '@/types/MetaMaps/enterMotionMaps'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

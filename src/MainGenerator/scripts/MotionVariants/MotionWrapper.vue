@@ -17,15 +17,15 @@
 
 <script setup lang="ts">
   import { computed, watch, onMounted, onBeforeUnmount, nextTick, toRef } from 'vue'
-  import { MotionType } from './MotionVariants'
+  import { EnterMotionType } from './MotionVariants'
   import { useMotionAnimation, MotionAnimationEmits } from './useMotionAnimation'
 
   // Props定義
   const props = withDefaults(
     defineProps<{
       visible?: boolean
-      motion: MotionType
-      leaveMotion?: MotionType
+      motion: EnterMotionType
+      leaveMotion?: EnterMotionType
       motionKey?: string
       autoHide?: boolean
       hideDelay?: number

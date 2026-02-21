@@ -61,7 +61,7 @@
   import { CharacterColorType } from '@/types/OmikujiData/'
   import { FontFamilyType, useFontFamily } from '@/types/'
   import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
-  import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
+  import { EnterMotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
 
   const props = withDefaults(
@@ -71,7 +71,7 @@
       customClasses?: string
       isSlider?: boolean
       fontFamily?: FontFamilyType
-      bubbleMotionEnter?: MotionType
+      bubbleMotionEnter?: EnterMotionType
       animatedText?: boolean
       animatedTextSpeed?: number
     }>(),

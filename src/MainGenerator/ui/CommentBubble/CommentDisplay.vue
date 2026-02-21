@@ -38,7 +38,7 @@
   import { BotMessageBubbleType } from '@/types'
   import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
-  import { MotionType } from '@main/scripts/MotionVariants/MotionVariants'
+  import { EnterMotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { transformIconPlaceholders } from './TransformIconPlaceholders'
@@ -47,8 +47,8 @@
     defineProps<{
       displayedComments: BotMessageBubbleType[]
       removeComment: (id: string) => void
-      enterMotion?: MotionType
-      leaveMotion?: MotionType
+      enterMotion?: EnterMotionType
+      leaveMotion?: EnterMotionType
       animatedText?: boolean
     }>(),
     {

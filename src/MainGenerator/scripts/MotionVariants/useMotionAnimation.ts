@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/MotionVariants/useMotionAnimation.ts
 import { ref, computed, nextTick, Ref, ComputedRef } from 'vue'
 import { MotionVariants, useMotion } from '@vueuse/motion'
-import { MotionType, motionVariants } from './MotionVariants'
+import { EnterMotionType, motionVariants } from './MotionVariants'
 
 export interface MotionAnimationEmits {
   'update:visible': [value: boolean]
@@ -12,8 +12,8 @@ export interface MotionAnimationEmits {
 }
 
 export interface UseMotionAnimationOptions {
-  motion: ComputedRef<MotionType>
-  leaveMotion?: ComputedRef<MotionType | undefined> // undefined を許容
+  motion: ComputedRef<EnterMotionType>
+  leaveMotion?: ComputedRef<EnterMotionType | undefined> // undefined を許容
   visible: Ref<boolean>
   autoHide: boolean
   hideDelay: number

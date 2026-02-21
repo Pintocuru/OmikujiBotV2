@@ -1,6 +1,5 @@
 // src/common/migrations/v1_to_v2/OmikujiDataV200/ComponentsSchema.ts
 import { z } from 'zod'
-import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { CharacterColorScheme } from './CharacterSchema'
 
@@ -25,7 +24,7 @@ export const SettingsBubbleSchema = z.object({
   ),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅(新設)
   fontFamily: z.string().default('default').catch('default'),
-  bubbleMotionEnter: z.enum(motionLabel).default('slideUp'), // フキダシのアニメーション(開始・表示中)
+  bubbleMotionEnter: z.string().default('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
 })

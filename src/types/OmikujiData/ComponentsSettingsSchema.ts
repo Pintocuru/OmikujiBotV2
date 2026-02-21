@@ -1,7 +1,6 @@
 // src/types/OmikujiData/ComponentsSettingsSchema.ts
 import { z } from 'zod'
-// TODO:ここもMap化
-import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
+import { enterMotionKeys } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import {
   counterComponents,
@@ -31,7 +30,7 @@ export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 export const SettingsBubbleSchema = z.object({
   showCharacters: normalizedObject(ShowCharactersSchema),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅
-  bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
+  bubbleMotionEnter: z.enum(enterMotionKeys).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
 })

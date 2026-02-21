@@ -19,7 +19,6 @@
           :class="['w-12 h-12', 'rounded-full border border-base-100 shadow-lg']"
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
-          <!-- TODO:時間経過によって、default から変化してもいいね -->
           <CharacterLayerImage :layers="character.image?.default" :size="12" :color="character.color" />
         </div>
       </div>

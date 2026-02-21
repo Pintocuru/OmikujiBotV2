@@ -1,7 +1,6 @@
 // src/common/migrations/v1_to_v2/OmikujiDataV130/DisplaySettingsSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema, displaySize } from '@shared/types/'
-import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { themes } from '@shared/styles/DaisyUiTheme'
 
 // BaseSettingsSchema
@@ -15,9 +14,9 @@ export const BaseSettingsSchema = z.object({
   // フォントファミリー
   fontFamily: z.string().default('default').catch('default'),
   // フキダシのアニメーション(開始・表示中)
-  bubbleMotionEnter: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+  bubbleMotionEnter: z.string().default('slideUp').catch('slideUp'),
   // フキダシのアニメーション(終了時)
-  bubbleMotionLeave: z.enum(motionLabel).default('slideUp').catch('slideUp'),
+  bubbleMotionLeave: z.string().default('slideUp').catch('slideUp'),
   // フキダシの文字表示をアニメーションさせるか
   bubbleTextAnimate: z.boolean().default(false).catch(false),
   // 文字送りの速度

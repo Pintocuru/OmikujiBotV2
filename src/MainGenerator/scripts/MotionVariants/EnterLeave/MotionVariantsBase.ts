@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsBase.ts
 import { MotionVariants } from '@vueuse/motion'
-import { MotionType } from '../MotionVariants'
+import { EnterMotionType } from '../MotionVariants'
 
 // ベース・基本系
 export const baseVariants = {
