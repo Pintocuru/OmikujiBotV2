@@ -1,6 +1,6 @@
 // src/MainGenerator/stores/GameScript/GameScriptManager.ts
-import { GameScriptsType, ScriptClass, ScriptResult } from '@/types/'
-import { gameScriptMap, scriptGameKeys } from '@game/GameScriptsMap'
+import { GameScriptsType, ScriptClass, ScriptGameKey, scriptGameKeys, ScriptResult } from '@/types/'
+import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'
 
@@ -26,7 +26,7 @@ export class GameScriptManager {
       for (const scriptId of scriptGameKeys) {
         if (this.scriptInstances[scriptId]) continue
 
-        const scriptInstance = gameScriptMap[scriptId].execute
+        const scriptInstance = gameExecuteMap[scriptId]
         this.scriptInstances[scriptId] = scriptInstance
 
         // ★ visitManagerが既に設定されていれば注入
@@ -45,6 +45,7 @@ export class GameScriptManager {
   playScript = (gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult | null => {
     if (!gameScripts) return null
     const { scriptId, queryString, characterKey } = gameScripts
+    if (!scriptId) return null
 
     const scriptInstance = this.scriptInstances[scriptId]
     if (!scriptInstance) {
@@ -100,18 +101,15 @@ export class GameScriptManager {
   /**
    * 特定のスクリプトインスタンスをリセット
    */
-  reset(scriptKey: string): void {
+  reset(scriptKey: ScriptGameKey): void {
     if (!this.scriptInstances[scriptKey]) {
       console.warn(`リセット対象のスクリプトが見つかりません: ${scriptKey}`)
       return
     }
 
+    // 削除して再初期化
     delete this.scriptInstances[scriptKey]
-
-    // 再初期化
-    if (gameScriptMap[scriptKey]) {
-      this.scriptInstances[scriptKey] = gameScriptMap[scriptKey].execute
-    }
+    if (gameExecuteMap[scriptKey]) this.scriptInstances[scriptKey] = gameExecuteMap[scriptKey]
   }
 
   /**

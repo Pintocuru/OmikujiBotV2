@@ -1,6 +1,6 @@
 // src/GameScripts/GameScriptsRules.ts
 import { AccessLevelType } from '@shared/types'
-import { ScriptGameKey } from './GameScriptsMap'
+import { ScriptGameKey } from '@/types'
 
 // ゲームスクリプト
 export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza'] as const

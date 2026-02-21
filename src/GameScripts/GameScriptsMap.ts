@@ -1,24 +1,22 @@
 // src/GameScripts/GameScriptsMap.ts
-import { ScriptPreset } from '@/types/'
-import BomberSpin from './scripts/BomberSpin/main'
-import GouseiSuika from './scripts/GouseiSuika/main'
-import DwarfBomb from './scripts/DwarfBomb/main'
-import GoogolClover from './scripts/GoogolClover/main'
-import MultiplyBonanza from './scripts/MultiplyBonanza/main'
-import HugEmAll from './scripts/HugEmAll/main'
-import WinnerGroup from './scripts/WinnerGroup/main'
+import { ScriptClass, ScriptGameKey } from '@/types'
+import GouseiSuikaExecute from './scripts/GouseiSuika/execute'
+import BomberSpinExecute from './scripts/BomberSpin/execute'
+import DwarfBombExecute from './scripts/DwarfBomb/execute'
+import MultiplyBonanzaExecute from './scripts/MultiplyBonanza/execute'
+import GoogolCloverExecute from './scripts/GoogolClover/execute'
+import HugEmAllExecute from './scripts/HugEmAll/execute'
+import WinnerGroupExecute from './scripts/WinnerGroup/execute'
 
-// gameScriptMap
-export const gameScriptMap = {
-  GouseiSuika: GouseiSuika,
-  BomberSpin: BomberSpin,
-  DwarfBomb: DwarfBomb,
-  MultiplyBonanza: MultiplyBonanza,
-  GoogolClover: GoogolClover,
-  HugEmAll: HugEmAll,
-  WinnerGroup: WinnerGroup,
-} satisfies Record<string, ScriptPreset>
-
-// 自動的にキー一覧と型を抽出（TypeScriptのみ）
-export const scriptGameKeys = Object.keys(gameScriptMap)
-export type ScriptGameKey = keyof typeof gameScriptMap
+/**
+ * ゲーム実行map
+ */
+export const gameExecuteMap: Record<ScriptGameKey, ScriptClass> = {
+  GouseiSuika: GouseiSuikaExecute,
+  BomberSpin: BomberSpinExecute,
+  DwarfBomb: DwarfBombExecute,
+  MultiplyBonanza: MultiplyBonanzaExecute,
+  GoogolClover: GoogolCloverExecute,
+  HugEmAll: HugEmAllExecute,
+  WinnerGroup: WinnerGroupExecute,
+}

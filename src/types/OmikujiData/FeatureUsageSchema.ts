@@ -3,8 +3,8 @@ import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
 import { normalizedObject } from './ParsedDefault'
 import { UiKind } from './ComponentsSchema'
-import { uiKindMap } from '../MetaMaps'
-import { gameScriptMap, ScriptGameKey } from '@/GameScripts/GameScriptsMap'
+import { gameMetaMap, uiKindMap } from '../MetaMaps'
+import { ScriptGameKey, ScriptGameKeySchema } from './ActionSet'
 
 /**
  * 通常表示設定
@@ -38,8 +38,8 @@ export const FeatureUsageSchema = z.object({
     .transform((list) => list.filter((x): x is UiKind => x in uiKindMap))
     .default(['bubble', 'toast']),
   gameScripts: z
-    .array(z.enum(Object.keys(gameScriptMap) as [ScriptGameKey, ...ScriptGameKey[]]))
-    .transform((list) => list.filter((x): x is ScriptGameKey => x in gameScriptMap))
+    .array(ScriptGameKeySchema)
+    .transform((list) => list.filter((x): x is ScriptGameKey => x in gameMetaMap))
     .default([]),
   developer: normalizedObject(FeatureUsageDeveloperSchema),
 })

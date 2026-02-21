@@ -50,13 +50,13 @@
 
       <!-- ゲームスクリプト -->
       <div
-        v-for="script in enabledGameScriptMap"
-        :key="script.key"
+        v-for="(script, key) in enabledGameScriptMap"
+        :key="key"
         class="badge badge-lg cursor-pointer"
-        :class="ranking.targetScriptKeys.includes(script.key) ? 'badge-primary' : 'badge-outline'"
-        @click="toggleScriptKey(script.key)"
+        :class="ranking.targetScriptKeys.includes(key as ScriptGameKey) ? 'badge-primary' : 'badge-outline'"
+        @click="toggleScriptKey(key as ScriptGameKey)"
       >
-        {{ script.name }}
+        {{ script?.name }}
       </div>
     </div>
   </SettingItem>
@@ -116,12 +116,20 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, rankingComponents, rankingSortOrderMap, SettingsRankingSchema, useFontFamily } from '@/types/'
+  import {
+    gameMetaMap,
+    isDev,
+    rankingComponents,
+    rankingSortOrderMap,
+    ScriptGameKey,
+    scriptGameKeys,
+    SettingsRankingSchema,
+    useFontFamily,
+  } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import GameRankingManager from '@main/ui/GameRanking/parts/GameRankingManager.vue'
-  import { gameScriptMap } from '@game/GameScriptsMap'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
@@ -133,12 +141,18 @@
   const ranking = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
 
   // 利用可能なゲームスクリプトを取得
-  const enabledGameScriptMap = computed(() => {
-    const { gameScripts } = data.value.featureUsage
+  const enabledGameScriptMap = computed<Partial<Record<ScriptGameKey, (typeof gameMetaMap)[ScriptGameKey]>>>(() => {
+    const gameScripts = data.value?.featureUsage?.gameScripts ?? []
 
-    return Object.entries(gameScriptMap)
-      .filter(([scriptId]) => gameScripts.includes(scriptId))
-      .map(([, scriptPreset]) => scriptPreset)
+    return scriptGameKeys.reduce(
+      (acc, scriptId) => {
+        if (gameScripts.includes(scriptId)) {
+          acc[scriptId] = gameMetaMap[scriptId]
+        }
+        return acc
+      },
+      {} as Partial<Record<ScriptGameKey, (typeof gameMetaMap)[ScriptGameKey]>>
+    )
   })
 
   // 更新関数
@@ -150,7 +164,7 @@
   }
 
   // スクリプトIDの更新
-  const toggleScriptKey = (key: string) => {
+  const toggleScriptKey = (key: ScriptGameKey | 'basicList') => {
     const current = ranking.value.targetScriptKeys ?? []
     const next = current.includes(key) ? current.filter((k) => k !== key) : [...current, key]
     updateRankingField('targetScriptKeys', next)

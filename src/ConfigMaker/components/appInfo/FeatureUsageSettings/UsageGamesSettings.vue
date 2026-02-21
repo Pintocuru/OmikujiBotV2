@@ -12,12 +12,12 @@
 
       <div class="grid grid-cols-1 gap-2">
         <label
-          v-for="(scriptPreset, scriptId) in gameScriptMap"
-          :key="scriptId"
+          v-for="(value, key) in gameMetaMap"
+          :key="key"
           class="label cursor-pointer justify-between p-2 rounded text-sm bg-base-300"
         >
-          <span class="font-mono">{{ scriptPreset.name }} / {{ scriptId }}</span>
-          <input type="checkbox" class="toggle toggle-warning toggle-sm" :value="scriptId" v-model="gameScripts" />
+          <span class="font-mono">{{ value.name }} / {{ key }}</span>
+          <input type="checkbox" class="toggle toggle-warning toggle-sm" :value="key" v-model="gameScripts" />
         </label>
       </div>
     </div>
@@ -26,10 +26,10 @@
 
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { gameScriptMap } from '@game/GameScriptsMap'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
   import { PRO_SCRIPTS } from '@game/GameScriptsRules'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import { gameMetaMap } from '@/types/MetaMaps/'
 
   const { gameScripts } = useFeatureUsageSettings()
 </script>

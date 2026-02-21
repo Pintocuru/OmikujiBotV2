@@ -7,6 +7,7 @@ import { normalizedObject } from './ParsedDefault'
 import { actionSetKindMap, PostFlowKindMaps, actionSpecialMap } from '../MetaMaps'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { gameMetaMap } from '../MetaMaps/'
 
 // PostFlow delaySeconds
 const PostFlowBaseSchema = z.object({
@@ -100,9 +101,13 @@ export const PostFlowArraySchema = z
 /**
  * GameScriptsSchema ゲームスクリプト
  */
+export const scriptGameKeys = Object.keys(gameMetaMap) as ScriptGameKey[]
+export type ScriptGameKey = keyof typeof gameMetaMap
+export const ScriptGameKeySchema = z.enum(scriptGameKeys)
+
 export const GameScriptsSchema = z.object({
   // TODO(v3) : scriptId -> scriptKey
-  scriptId: z.string().default('').catch(''),
+  scriptId: ScriptGameKeySchema.nullish().default(null).catch(null),
   queryString: z.string().default('').catch(''),
   characterKey: z.string().nullish().default(null).catch(null),
 })

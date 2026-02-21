@@ -1,5 +1,6 @@
 // src/types/OmikujiData/ComponentsSettingsSchema.ts
 import { z } from 'zod'
+// TODO:ここもMap化
 import { motionLabel } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import {
@@ -11,6 +12,7 @@ import {
   winnerComponents,
 } from '../MetaMaps'
 import { normalizedObject } from './ParsedDefault'
+import { ScriptGameKeySchema } from './ActionSet'
 
 /**
  * フキダシ・キャラクター
@@ -75,7 +77,10 @@ const rankingComponentsEnum = Object.keys(rankingComponents) as RankingComponent
 export type RankingComponent = keyof typeof rankingComponents
 
 export const SettingsRankingSchema = z.object({
-  targetScriptKeys: z.array(z.string()).default(['basicList']).catch(['basicList']),
+  targetScriptKeys: z
+    .array(z.union([ScriptGameKeySchema, z.literal('basicList')]))
+    .default(['basicList'])
+    .catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
   limit: z.number().min(1).max(20).default(5).catch(5),

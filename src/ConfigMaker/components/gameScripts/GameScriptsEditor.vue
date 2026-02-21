@@ -9,14 +9,16 @@
 
     <!-- 右側: 設定エリア -->
     <div class="col-span-2 space-y-4">
-      <!-- Script ID -->
-      <div v-if="gameScriptMap[gameScripts.scriptId]?.banner">
-        <img :src="gameScriptMap[gameScripts.scriptId]?.banner" alt="banner" class="w-full rounded-lg shadow" />
+      <!-- Banner -->
+      <div v-if="gameScripts.scriptId && gameMetaMap[gameScripts.scriptId]?.banner">
+        <img :src="gameMetaMap[gameScripts.scriptId].banner" alt="banner" class="w-full rounded-lg shadow" />
       </div>
-      <div v-if="gameScriptMap[gameScripts.scriptId]?.url">
+
+      <!-- URL -->
+      <div v-if="gameScripts.scriptId && gameMetaMap[gameScripts.scriptId]?.url">
         <p class="text-sm">
           スクリプトクエリのチートシートはこちら →
-          <a :href="gameScriptMap[gameScripts.scriptId].url" target="_blank" class="link link-primary">
+          <a :href="gameMetaMap[gameScripts.scriptId].url" target="_blank" class="link link-primary">
             紹介ページを開く
           </a>
         </p>
@@ -31,15 +33,15 @@
       >
         <select
           :value="gameScripts.scriptId"
-          @change="updateScriptId(($event.target as HTMLSelectElement).value)"
+          @change="updateScriptId(($event.target as HTMLSelectElement).value as ScriptGameKey)"
           class="select select-bordered select-sm w-full"
           :disabled="!hasAvailableScripts"
         >
-          <option value="">
+          <option :value="null">
             {{ hasAvailableScripts ? '-- スクリプトを選択 --' : '-- 利用可能なスクリプトがありません --' }}
           </option>
-          <option v-for="scriptKey in availableGameScripts" :key="scriptKey" :value="scriptKey">
-            {{ getScriptName(scriptKey) }}
+          <option v-for="scriptId in availableGameScripts" :key="scriptId" :value="scriptId">
+            {{ getScriptName(scriptId) }}
           </option>
         </select>
       </SettingItem>
@@ -90,13 +92,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RulesCategoryType } from '@/types/OmikujiData/'
+  import { RulesCategoryType, ScriptGameKey } from '@/types/OmikujiData/'
   import GameScriptPreview from './GameScriptPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { gameScriptMap } from '@game/GameScriptsMap'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { gameMetaMap } from '@/types/MetaMaps/'
 
   const props = defineProps<{
     index: number
@@ -124,13 +126,13 @@
     () => omikujiItem.value?.gameScripts || { scriptId: '', queryString: '', characterKey: '' }
   )
 
-  const isScriptIdEmpty = computed(() => gameScripts.value.scriptId === '')
+  const isScriptIdEmpty = computed(() => gameScripts.value.scriptId === null)
   const isCharacterKeyEmpty = computed(() => gameScripts.value.characterKey === '')
 
   // Helper Functions
-  const getScriptName = (scriptKey: string): string => {
-    const script = gameScriptMap[scriptKey]
-    return script?.name || scriptKey
+  const getScriptName = (scriptId: ScriptGameKey): string => {
+    const script = gameMetaMap[scriptId]
+    return script?.name || scriptId
   }
 
   const updateGameScripts = (updater: (current: typeof gameScripts.value) => Partial<typeof gameScripts.value>) => {
@@ -146,8 +148,8 @@
   }
 
   // Update Functions
-  const updateScriptId = (value: string) => {
-    updateGameScripts(() => ({ scriptId: value || '' }))
+  const updateScriptId = (value: ScriptGameKey) => {
+    updateGameScripts(() => ({ scriptId: value || null }))
   }
 
   const updateCharacterKey = (value: string) => {
