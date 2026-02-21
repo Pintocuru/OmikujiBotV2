@@ -1,20 +1,26 @@
 <!-- src/ConfigMaker/components/characters/CustomClass/CustomClassSelector.vue -->
 <template>
-  <!-- プリセットボタン群 -->
-  <div class="flex flex-wrap gap-2">
-    <button
-      v-for="preset in PRESETS"
-      :key="preset.label"
-      type="button"
-      class="btn btn-sm"
-      @click="applyPreset(preset.classes)"
-    >
-      {{ preset.label }}
-    </button>
-  </div>
+  <!-- 廃止のお知らせ -->
+  <InformationCard variant="warning">
+    フキダシのカスタム設定機能は <strong>ver3 から廃止されます</strong>。<br />
+    ver3 以降は、今後「アイテム」から表示スタイルを選択する方式に変更されます。
+  </InformationCard>
 
   <!-- カスタム設定アコーディオン -->
   <SectionCard icon="Settings2" variant="primary" title="カスタム設定" description="フキダシの詳細設定を調整します">
+    <!-- プリセットボタン群 -->
+    <div class="flex flex-wrap gap-2">
+      <button
+        v-for="preset in PRESETS"
+        :key="preset.label"
+        type="button"
+        class="btn btn-sm"
+        @click="applyPreset(preset.classes)"
+      >
+        {{ preset.label }}
+      </button>
+    </div>
+
     <div class="pt-4 space-y-4">
       <!-- Padding設定 -->
       <SettingItem label="余白設定" description="要素の内側の余白を調整します">
@@ -106,6 +112,7 @@
     BORDER_COLOR_OPTIONS,
     BORDER_RADIUS_OPTIONS,
   } from './useClassGenerator'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
 
   // Props & Emits
   const props = defineProps<{ modelValue?: string }>()

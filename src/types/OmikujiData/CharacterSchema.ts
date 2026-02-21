@@ -21,6 +21,7 @@ export const CharacterColorScheme = z.object({
   nameColor: z.string().default('#212121').catch('#212121'),
   textColor: z.string().default('#212121').catch('#212121'),
   backgroundColor: z.string().default('#FAFAFA').catch('#FAFAFA'),
+  // TODO(v3): customClasses を廃止
   customClasses: z
     .string()
     .optional()
@@ -53,11 +54,7 @@ export const DisplayOptionSchema = z.object({
   mode: z.enum(displayModes).default('comment'),
   imageBase64: z.string().default('').catch(''), // 表示時のアイコン
   frameId: z.string().default('').catch(''), // わんコメの枠指定
-  // RPG音声モード
-  rpgVoice: z
-    .union([z.enum(rpgVoiceKeys), z.literal('')])
-    .default('')
-    .catch(''),
+  rpgVoice: z.enum(rpgVoiceKeys).default('rpg_voice_a5').catch('rpg_voice_a5'), // RPG音声モード
 })
 export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
 

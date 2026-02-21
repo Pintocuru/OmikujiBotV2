@@ -41,26 +41,16 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { ref } from 'vue'
   import { DisplayOptionType } from '@/types/OmikujiData/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { X, ImageIcon } from 'lucide-vue-next'
-  import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
-    selectedItemKey: string | null
     modelValue: DisplayOptionType
+    backgroundColor?: string // 透明部分の背景色。省略時は '#ccc'
+    onUpdate: (value: DisplayOptionType) => void
   }>()
-
-  // Pinia store
-  const { updateRecordProperty } = useOmikujiStore()
-  const { getItem } = useGetRecordData()
-
-  const backgroundColor = computed(() => {
-    if (!props.selectedItemKey) return '#ccc'
-    return getItem('characters', props.selectedItemKey)?.color.backgroundColor || '#ccc'
-  })
 
   // 画像サイズの設定 16 / 24 / 32
   const imageSize = 24
@@ -70,11 +60,7 @@
 
   // Base64画像のリセット
   const resetBase64Image = () => {
-    if (!props.selectedItemKey) return
-    updateRecordProperty('characters', props.selectedItemKey, 'displayOption', {
-      ...props.modelValue,
-      imageBase64: '',
-    })
+    props.onUpdate({ ...props.modelValue, imageBase64: '' })
     if (fileInput.value) fileInput.value.value = ''
   }
 
@@ -92,28 +78,23 @@
     reader.onload = (e) => {
       const img = new Image()
       img.onload = () => {
-        if (!props.selectedItemKey) return
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')
-
         if (!ctx) return
 
-        const size = imageSize
-        canvas.width = size
-        canvas.height = size
+        canvas.width = imageSize
+        canvas.height = imageSize
 
         // 白背景を描画(透明部分対策)
-        ctx.fillStyle = backgroundColor.value
-        ctx.fillRect(0, 0, size, size)
+        ctx.fillStyle = props.backgroundColor ?? '#ccc'
+        ctx.fillRect(0, 0, imageSize, imageSize)
 
         // 画像を指定サイズにリサイズして描画
-        ctx.drawImage(img, 0, 0, size, size)
+        ctx.drawImage(img, 0, 0, imageSize, imageSize)
 
-        // Base64データを取得
-        const base64Data = canvas.toDataURL('image/png')
-        updateRecordProperty('characters', props.selectedItemKey, 'displayOption', {
+        props.onUpdate({
           ...props.modelValue,
-          imageBase64: base64Data,
+          imageBase64: canvas.toDataURL('image/png'),
         })
       }
 

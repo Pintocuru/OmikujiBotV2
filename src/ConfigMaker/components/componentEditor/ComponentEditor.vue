@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { UiKind } from '@/types/ui/ComponentKind'
+  import { UiKind } from '@/types/'
   import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
   import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
   import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
@@ -38,7 +38,9 @@
   import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
   import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
   import FlashBannerEditor from './FlashBanner/FlashBannerEditor.vue'
-  import CommonStyleEditor from './CommonStyle/CommonStyleEditor.vue'
+  import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
+  import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
+
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
@@ -130,13 +132,22 @@
       component: FlightSeatEditor,
       shouldShow: hasComponentKind('flightSeat') && isComment.value,
     },
+    // デフォルトカラー
+    {
+      type: 'defaultColor',
+      icon: 'Palette',
+      title: 'デフォルトカラー',
+      description: 'キャラクターが設定されてない場合のデフォルトカラーを設定',
+      component: DefaultColorEditor,
+      shouldShow: !isCharacter.value,
+    },
     // フォントファミリー
     {
-      type: 'commonStyle',
+      type: 'fontFamily',
       icon: 'Type',
       title: 'フォント',
       description: '各種アイテムのフォントを設定',
-      component: CommonStyleEditor,
+      component: FontFamilyEditor,
       shouldShow: isAdv.value,
     },
   ])

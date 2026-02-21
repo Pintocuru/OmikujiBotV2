@@ -30,13 +30,17 @@
     <!-- BOTコメント表現設定 -->
     <SectionCard
       icon="MessageSquare"
-      :isOpen="activeSection === 'botComments'"
-      @toggle="toggleSection('botComments')"
+      :isOpen="activeSection === 'commentVoice'"
+      @toggle="toggleSection('commentVoice')"
       title="BOTコメント表現設定"
       :subTitle="``"
       description="BOTコメントを読み上げる方法を指定します"
     >
-      <CharacterIconDisplaySettings :modelValue="selectedItem.displayOption as any" />
+      <CommentVoiceSettings
+        :modelValue="selectedItem.displayOption"
+        :backgroundColor="selectedItem.color.backgroundColor"
+        :onUpdate="(value) => updateRecordProperty('characters', selectedItemKey!, 'displayOption', value)"
+      />
     </SectionCard>
 
     <!-- ジェネレーター用画像設定 -->
@@ -59,14 +63,15 @@
   import CharacterBasicInfo from './basicInfo/CharacterBasicInfo.vue'
   import CharacterColorSettings from './color/CharacterColorSettings.vue'
   import CharacterImageSettings from './CharacterImage/CharacterImageSettings.vue'
-  import CharacterIconDisplaySettings from './service/CharacterIconDisplaySettings.vue'
+  import CommentVoiceSettings from './service/CommentVoiceSettings.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
   // アクティブなセクションの管理
-  type SectionType = 'basicInfo' | 'colorSettings' | 'botComments' | 'serviceSettings' | 'imageSettings' | null
+  type SectionType = 'basicInfo' | 'colorSettings' | 'commentVoice' | 'serviceSettings' | 'imageSettings' | null
   const activeSection = ref<SectionType>('colorSettings') // 初期状態で基本情報を開く
 
   // セクションの切り替え
@@ -78,6 +83,7 @@
   const { getItem } = useGetRecordData()
   const navigationStore = useNavigationStore()
   const { selectedItemKey } = storeToRefs(navigationStore)
+  const { updateRecordProperty } = useOmikujiStore()
 
   // 選択されたキャラクターを取得（読み取り専用）
   const selectedItem = computed(() => {

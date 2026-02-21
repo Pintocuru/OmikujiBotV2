@@ -1,5 +1,11 @@
 // src/MainGenerator/scripts/CharacterManager/CharacterManager.ts
-import { CharacterType, OmikujiDataType, CharacterEmotionType, CharacterColorType } from '@/types/OmikujiData/'
+import {
+  CharacterType,
+  OmikujiDataType,
+  CharacterEmotionType,
+  CharacterColorType,
+  DisplayOptionType,
+} from '@/types/OmikujiData/'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
@@ -11,11 +17,13 @@ export class CharacterManager {
   readonly characterArray: CharacterType[]
   readonly isCharacterMode: boolean
   readonly defaultColor: CharacterColorType
+  readonly defaultVoice: DisplayOptionType
 
   constructor(omikujiData: OmikujiDataType) {
     this.isCharacterMode = checkIsCharacterMode(omikujiData)
     this.characterMap = this.createCharacterMap(omikujiData.characters)
     this.defaultColor = omikujiData.components.commonStyle.defaultColor
+    this.defaultVoice = omikujiData.components.commonStyle.defaultVoice
 
     // Mapから配列を生成（全キャラクターを含む）
     this.characterArray = Array.from(this.characterMap.values()).sort((a, b) => (a.order || 0) - (b.order || 0))
@@ -60,6 +68,12 @@ export class CharacterManager {
 
     const character = this.getCharacter(characterKey)
     return character?.color ?? this.defaultColor
+  }
+  /**
+   * characterKey = nullのときの音声を返す
+   */
+  getCharacterDefaultVoice(): DisplayOptionType {
+    return this.defaultVoice
   }
 
   /**

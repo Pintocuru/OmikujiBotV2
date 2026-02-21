@@ -44,9 +44,7 @@ export function createBotMessagesFromAction(
   }
 
   // Rankingメッセージ
-  if (hasRanking) {
-    messages.push(createRankingMessage(delaySeconds, extra!, omiken))
-  }
+  if (hasRanking) messages.push(createRankingMessage(delaySeconds, extra, omiken))
 
   return messages
 }
@@ -103,8 +101,10 @@ function playRpgVoiceForCharacter(
   delaySeconds: number,
   characterManager?: CharacterManager
 ): void {
-  const character = characterManager && characterManager.getCharacter(characterKey)
-  const displayOption = character?.displayOption
+  if (!characterManager) return
+
+  const character = characterManager.getCharacter(characterKey)
+  const displayOption = character ? character.displayOption : characterManager.getCharacterDefaultVoice()
 
   if (displayOption?.mode === 'rpgVoice' && displayOption.rpgVoice) {
     playRpgVoiceLoop(bubble, displayOption.rpgVoice, delaySeconds)

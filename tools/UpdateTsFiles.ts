@@ -20,7 +20,7 @@ async function getAllTargetFiles(dir: string): Promise<string[]> {
         return getAllTargetFiles(fullPath)
       }
 
-      if (entry.isFile() && (fullPath.endsWith('.ts') || fullPath.endsWith('.vue'))) {
+      if (entry.isFile() && ((fullPath.endsWith('.ts') && !fullPath.endsWith('.d.ts')) || fullPath.endsWith('.vue'))) {
         return [fullPath]
       }
 

@@ -1,9 +1,9 @@
 // src/types/OmikujiData/ComponentsSchema.ts
 import { z } from 'zod'
-import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
-import { CharacterColorScheme } from './CharacterSchema'
+import { CharacterColorScheme, DisplayOptionSchema } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
 import { fontFamilyMap, uiKindMap, UiSlotMap } from '../MetaMaps'
+import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
 
 /**
  * スロット定義
@@ -30,7 +30,6 @@ export function getKindsForSlot(slot: UiSlotType): UiKind[] {
  * コンポーネント条件（スロットと種類の組み合わせ）
  * kindとslotの整合性をバリデーション
  */
-
 export const ComponentsConditionSchema = z
   .object({
     slot: z.enum(uiSlots),
@@ -62,7 +61,8 @@ export const useFontFamily = (font: FontFamilyType) => fontFamilyMap[font].class
  */
 export const ComponentsCommonStyleSchema = z.object({
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
-  defaultColor: CharacterColorScheme.default(CharacterColorScheme.parse({})).catch(CharacterColorScheme.parse({})),
+  defaultColor: normalizedObject(CharacterColorScheme),
+  defaultVoice: normalizedObject(DisplayOptionSchema),
 })
 export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
 
@@ -78,7 +78,11 @@ export const ComponentsSchema = z.object({
     { slot: 'secondary', kind: 'toast' },
   ]),
 
-  commonStyle: normalizedObject(ComponentsCommonStyleSchema),
+  commonStyle: ComponentsCommonStyleSchema.default(
+    ComponentsCommonStyleSchema.parse({
+      defaultVoice: { mode: 'voice' },
+    })
+  ).catch(ComponentsCommonStyleSchema.parse({})),
   settings: normalizedObject(ComponentsSettingsSchema),
 })
 

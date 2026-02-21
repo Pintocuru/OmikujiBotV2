@@ -1,11 +1,7 @@
-<!-- src/ConfigMaker/components/characters/service/CharacterIconDisplaySettings.vue -->
+<!-- src/ConfigMaker/components/characters/service/CommentVoiceSettings.vue -->
 <template>
   <!-- mode  -->
-  <SettingItem
-    :variant="!useVisibilityAccess().canShowUsage('characters') ? 'error' : 'none'"
-    label="BOTコメント表現方法"
-    description="BOTの文章を表現する方法を指定します"
-  >
+  <SettingItem label="BOTコメント表現方法" description="BOTの文章を表現する方法を指定します">
     <select
       v-model="currentDisplayOption.mode"
       @change="updateDisplayField('mode', ($event.target as HTMLSelectElement).value)"
@@ -33,23 +29,19 @@
       </a>
       をお読みください。
     </InformationCard>
+
+    <!-- わんコメの枠を指定 -->
+    <SettingItem label="枠のID名" description="空白なら、わんコメの一番上の枠を使用します">
+      <input type="text" class="input w-full" v-model="currentDisplayOption.frameId" />
+    </SettingItem>
+
+    <!-- imageBase64 -->
+    <CharacterBase64Settings
+      :modelValue="currentDisplayOption"
+      :backgroundColor="backgroundColor"
+      :onUpdate="props.onUpdate"
+    />
   </template>
-
-  <!-- わんコメの枠を指定 -->
-  <SettingItem
-    v-if="currentDisplayOption.mode === 'comment'"
-    label="枠のID名"
-    description="わんコメに同じIDの枠がなければ新規作成されます"
-  >
-    <input type="text" class="input w-full" v-model="currentDisplayOption.frameId" />
-  </SettingItem>
-
-  <!-- imageBase64 -->
-  <CharacterBase64Settings
-    v-if="currentDisplayOption.mode === 'comment'"
-    :selectedItemKey="selectedItemKey"
-    :modelValue="currentDisplayOption"
-  />
 
   <!-- rpgVoice  -->
   <SettingItem
@@ -62,7 +54,6 @@
       @change="onSoundChange($event)"
       class="select select-bordered w-full max-w-xs"
     >
-      <option value="">なし</option>
       <option v-for="(value, key) in rpgVoiceMetaMap" :key="key" :value="key">
         {{ value }}
       </option>
@@ -72,40 +63,24 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { storeToRefs } from 'pinia'
   import { displayModeMap, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMetaMap } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { playRpgVoiceLoop } from '@/common/sounds'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { useNavigationStore } from '@config/stores/useNavigationStore'
 
   const props = defineProps<{
     modelValue: DisplayOptionType
+    backgroundColor?: string
+    onUpdate: (value: DisplayOptionType) => void
   }>()
 
-  // Pinia store
-  const { updateRecordProperty } = useOmikujiStore()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
-
-  // 現在の表示オプションを取得
   const currentDisplayOption = computed(() => props.modelValue)
 
-  // 表示オプションフィールドを更新する関数
   const updateDisplayField = (key: keyof DisplayOptionType, value: any) => {
-    if (!selectedItemKey.value) return
-
-    // storeを使って更新
-    updateRecordProperty('characters', selectedItemKey.value, 'displayOption', {
-      ...currentDisplayOption.value,
-      [key]: value,
-    })
+    props.onUpdate({ ...currentDisplayOption.value, [key]: value })
   }
 
-  // サウンド
   const onSoundChange = (event: Event) => {
     const soundName = (event.target as HTMLSelectElement).value as RpgVoiceKeyType
     if (soundName) {
