@@ -1,11 +1,12 @@
 // src/GameScripts/GameScriptsRules.ts
 import { AccessLevelType } from '@shared/types'
+import { ScriptGameKey } from './GameScriptsMap'
 
 // ゲームスクリプト
-export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza']
-export const GOD_SCRIPTS = ['GoogolClover', 'HugEmAll']
+export const PRO_SCRIPTS = ['GouseiSuika', 'BomberSpin', 'DwarfBomb', 'MultiplyBonanza'] as const
+export const GOD_SCRIPTS = ['GoogolClover', 'HugEmAll'] as const
 
-export function getAvailableScripts(mode: AccessLevelType, fallback: string[] = []) {
+export function getAvailableScripts(mode: AccessLevelType, fallback: ScriptGameKey[] = []): ScriptGameKey[] {
   switch (mode) {
     case 'godMode': {
       return Array.from(new Set([...PRO_SCRIPTS, ...GOD_SCRIPTS, ...fallback]))

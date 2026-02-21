@@ -1,6 +1,10 @@
 // src/types/OmikujiData/FeatureUsageSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
+import { normalizedObject } from './ParsedDefault'
+import { UiKind } from './ComponentsSchema'
+import { uiKindMap } from '../MetaMaps'
+import { gameScriptMap, ScriptGameKey } from '@/GameScripts/GameScriptsMap'
 
 /**
  * 通常表示設定
@@ -28,10 +32,16 @@ export type FeatureUsageDeveloperType = z.infer<typeof FeatureUsageDeveloperSche
  * FeatureUsageSchema
  */
 export const FeatureUsageSchema = z.object({
-  usage: FeatureUsageUsageSchema.catch(FeatureUsageUsageSchema.parse({})),
-  components: z.array(z.string()).default([]).catch([]),
-  gameScripts: z.array(z.string()).default([]).catch([]),
-  developer: FeatureUsageDeveloperSchema.catch(FeatureUsageDeveloperSchema.parse({})),
+  usage: normalizedObject(FeatureUsageUsageSchema),
+  components: z
+    .array(z.enum(Object.keys(uiKindMap) as [UiKind, ...UiKind[]]))
+    .transform((list) => list.filter((x): x is UiKind => x in uiKindMap))
+    .default([]),
+  gameScripts: z
+    .array(z.enum(Object.keys(gameScriptMap) as [ScriptGameKey, ...ScriptGameKey[]]))
+    .transform((list) => list.filter((x): x is ScriptGameKey => x in gameScriptMap))
+    .default([]),
+  developer: normalizedObject(FeatureUsageDeveloperSchema),
 })
 
 export type FeatureUsageType = z.infer<typeof FeatureUsageSchema>

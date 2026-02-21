@@ -80,7 +80,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
   }
 
   // スキーマで保証
-  const hoge = OmikujiDataSchema.parse({
+  const licensedData = OmikujiDataSchema.parse({
     ...updatedData,
     meta: {
       ...updatedData.meta,
@@ -90,12 +90,12 @@ export function normalizeData(data: unknown): OmikujiDataType {
   })
 
   // PRO,GOD-MODE だったときの FeatureUsageSchema 変更(Advは変更なし)
-  if (isDev) return hoge // devなら変更を行わない
+  if (isDev) return licensedData // devなら変更を行わない
 
-  const licenseKeyHash = hoge.settings.licenseKeyHash
+  const licenseKeyHash = licensedData.settings.licenseKeyHash
   const license = resolveSettingMode(licenseKeyHash)
-  hoge.featureUsage.components = getAvailableComponents(license, hoge.featureUsage.components)
-  hoge.featureUsage.gameScripts = getAvailableScripts(license, hoge.featureUsage.gameScripts)
+  licensedData.featureUsage.components = getAvailableComponents(license, licensedData.featureUsage.components)
+  licensedData.featureUsage.gameScripts = getAvailableScripts(license, licensedData.featureUsage.gameScripts)
 
-  return hoge
+  return licensedData
 }
