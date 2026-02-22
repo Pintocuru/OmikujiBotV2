@@ -24,7 +24,7 @@
   </template>
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
+  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="(style, key) in flashComponents"
