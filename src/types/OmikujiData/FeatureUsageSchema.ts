@@ -36,7 +36,7 @@ export const FeatureUsageSchema = z.object({
   components: z
     .array(z.enum(Object.keys(uiKindMap) as [UiKind, ...UiKind[]]))
     .transform((list) => list.filter((x): x is UiKind => x in uiKindMap))
-    .default(['bubble', 'toast']),
+    .default(['bubble', 'toast', 'flashBanner']),
   gameScripts: z
     .array(ScriptGameKeySchema)
     .transform((list) => list.filter((x): x is ScriptGameKey => x in gameMetaMap))

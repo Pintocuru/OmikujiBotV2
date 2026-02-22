@@ -1,33 +1,46 @@
 <!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageDeveloperSettings.vue -->
 <template>
-  <SettingItem label="アイテム固有設定" description="特定アイテム内の要素の表示制御">
-    <div class="space-y-3">
-      <template v-for="item in settings" :key="item.key">
-        <div class="bg-base-200 p-3 rounded">
-          <div class="flex items-center justify-between mb-2">
-            <span class="label-text font-medium">{{ item.label }}</span>
-          </div>
-          <div class="flex gap-2 flex-wrap">
-            <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
-              <input v-model="item.model.value" :value="level" type="radio" class="radio radio-warning radio-sm" />
-              <span class="label-text capitalize">{{ level }}</span>
-            </label>
-          </div>
-        </div>
-      </template>
-    </div>
-  </SettingItem>
+  <SubSectionHeader icon="Sliders" title="アイテム固有設定" description="特定アイテム内の要素の表示制御" />
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    <SettingItem
+      v-for="item in settings"
+      :key="item.key"
+      :label="item.label"
+      :description="item.key"
+      :variant="levelVariantMap[item.model.value]"
+    >
+      <div class="flex gap-2 flex-wrap">
+        <label v-for="level in AccessLevelLabels" :key="level" class="label cursor-pointer gap-2 text-sm">
+          <input v-model="item.model.value" :value="level" type="radio" class="radio radio-warning radio-sm" />
+          <span class="label-text capitalize">
+            {{ level }}
+          </span>
+        </label>
+      </div>
+    </SettingItem>
+  </div>
 </template>
 
 <script setup lang="ts">
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const { licenseVisible, jsonMergeSettings } = useFeatureUsageSettings()
 
   const settings = [
-    { key: 'licenseVisible', label: 'ライセンス記入表示 (licenseVisible)', model: licenseVisible },
-    { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev) (jsonMergeSettings)', model: jsonMergeSettings },
+    { key: 'licenseVisible', label: 'ライセンス記入表示 ', model: licenseVisible },
+    { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev)', model: jsonMergeSettings },
   ]
+
+  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant> = {
+    none: 'neutral',
+    basic: 'none',
+    adv: 'info',
+    pro: 'accent',
+    godMode: 'warning',
+  }
 </script>

@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.06-2.1.0-alpha2",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-beta1",
-    "dataVersion": 2.091,
+    "generatorVersion": "2.1.2-alpha2",
+    "dataVersion": 2.1101002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -200,7 +200,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -221,7 +221,7 @@
           "type": "special",
           "postActions": [],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -269,7 +269,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -356,7 +356,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -431,7 +431,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -501,7 +501,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -549,7 +549,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -597,7 +597,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -679,7 +679,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -725,7 +725,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -816,7 +816,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -861,7 +861,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -906,7 +906,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -951,7 +951,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -996,7 +996,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1041,7 +1041,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1086,7 +1086,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1131,7 +1131,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1219,7 +1219,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1318,7 +1318,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1429,7 +1429,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1539,7 +1539,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -1850,7 +1850,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2047,7 +2047,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2246,7 +2246,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2343,7 +2343,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2381,7 +2381,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2419,7 +2419,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2475,7 +2475,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2550,7 +2550,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2596,7 +2596,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2672,7 +2672,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2718,7 +2718,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2793,7 +2793,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2839,7 +2839,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -2921,7 +2921,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3004,7 +3004,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3039,7 +3039,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3132,7 +3132,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3167,7 +3167,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3223,7 +3223,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3258,7 +3258,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3314,7 +3314,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -3376,7 +3376,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": null
           },
@@ -3427,7 +3427,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3463,7 +3463,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3499,7 +3499,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3546,7 +3546,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3582,7 +3582,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3623,7 +3623,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3659,7 +3659,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3695,7 +3695,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3731,7 +3731,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3767,7 +3767,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3812,7 +3812,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3848,7 +3848,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3883,7 +3883,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3918,7 +3918,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3970,7 +3970,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4022,7 +4022,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4074,7 +4074,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4126,7 +4126,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4178,7 +4178,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4230,7 +4230,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4282,7 +4282,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4334,7 +4334,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4386,7 +4386,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4438,7 +4438,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4490,7 +4490,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4542,7 +4542,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4594,7 +4594,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4646,7 +4646,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4680,7 +4680,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4715,7 +4715,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -4758,7 +4758,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -7890,7 +7890,7 @@
         "mode": "comment",
         "imageBase64": "data:image/png;base64,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",
         "frameId": "StrawberryChocolat",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
@@ -7919,6 +7919,12 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "settings": {
@@ -7995,7 +8001,11 @@
     "components": [
       "bubble",
       "toast",
-      "ranking"
+      "ranking",
+      "counter",
+      "winnerGroup",
+      "flashBanner",
+      "flightSeat"
     ],
     "gameScripts": [
       "MultiplyBonanza",

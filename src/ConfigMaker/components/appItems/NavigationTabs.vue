@@ -10,7 +10,7 @@
           @click="navigateCategory(key)"
         >
           <div class="flex flex-col items-center justify-center space-y-1">
-            <component :is="tab.icon" class="w-8 h-8" />
+            <component :is="resolveLucideIcon(tab.icon)" class="w-8 h-8" />
             <span class="text-xs text-center whitespace-nowrap text-ellipsis">
               {{ tab.label }}
             </span>
@@ -35,7 +35,7 @@
       @click="navigateCategory(key)"
     >
       <div class="relative">
-        <component :is="tab.icon" class="w-8 h-8" />
+        <component :is="resolveLucideIcon(tab.icon)" class="w-8 h-8" />
         <span v-if="getCategoryItemCount(key) > 0" class="badge badge-xs badge-primary absolute -top-2 -right-2">
           {{ getCategoryItemCount(key) }}
         </span>
@@ -51,6 +51,7 @@
   import { useCategoryUtils } from './useCategoryUtils'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
+  import { resolveLucideIcon } from '../common/useLucideIcon'
 
   const navigationStore = useNavigationStore()
 

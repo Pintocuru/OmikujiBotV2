@@ -3,7 +3,7 @@
   <!-- カテゴリ帯 -->
   <div class="flex items-center justify-between px-4 py-3 bg-primary text-primary-content">
     <div class="flex items-center gap-2 text-lg font-bold">
-      <component :is="categoryMap[selectedCategory].icon" class="w-6 h-6" />
+      <component :is="resolveLucideIcon(categoryMap[selectedCategory].icon)" class="w-6 h-6" />
       {{ categoryMap[selectedCategory].label }}
     </div>
 
@@ -53,6 +53,7 @@
   import ComponentEditor from '@config/components/componentEditor/ComponentEditor.vue'
   import AppInfoEditor from '@config/components/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@config/components/JsonMerge/JsonMergeEditor.vue'
+  import { resolveLucideIcon } from '../common/useLucideIcon'
 
   const navigationStore = useNavigationStore()
   const { selectedCategory } = storeToRefs(navigationStore)

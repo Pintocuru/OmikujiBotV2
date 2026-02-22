@@ -1,27 +1,26 @@
 <!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageComponentsSettings.vue -->
 <template>
-  <SettingItem label="アイテム設定" description="ジェネレーターのアイテム表示制御">
-    <!-- 利用可能なアイテム -->
-    <div class="bg-base-200 p-3 rounded">
-      <InformationCard class="mb-4">
-        <p>デフォルトでは</p>
-        <p>basic:{{ BASIC_COMPONENTS.join(', ') }}</p>
-        <p>Pro: {{ PRO_COMPONENTS.join(', ') }}</p>
-        <p>GOD-MODE: 全種類表示されています</p>
-      </InformationCard>
+  <SubSectionHeader icon="LayoutGrid" title="アイテム設定" description="ジェネレーターのアイテム表示制御" />
 
-      <div class="grid grid-cols-1 gap-2">
-        <label
-          v-for="(value, key) in uiKindMap"
+  <div class="space-y-4">
+    <div v-for="group in groupedUiKinds" :key="group.slot" class="space-y-2">
+      <h3 class="text-sm font-bold uppercase">
+        {{ group.slot }}
+      </h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+        <SettingItem
+          v-for="[key, value] in group.items"
           :key="key"
-          class="label cursor-pointer justify-between p-2 rounded text-sm bg-base-300"
+          :label="value.label"
+          :description="key"
+          :variant="components.includes(key) ? undefined : 'neutral'"
         >
-          <span class="font-mono">{{ value.label }} / {{ key }}</span>
           <input type="checkbox" class="toggle toggle-warning toggle-sm" :value="key" v-model="components" />
-        </label>
+        </SettingItem>
       </div>
     </div>
-  </SettingItem>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -29,7 +28,17 @@
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
   import { uiKindMap } from '@/types/'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { BASIC_COMPONENTS, PRO_COMPONENTS } from '../../componentEditor/componentRules'
+  import { BASIC_COMPONENTS, PRO_COMPONENTS } from '@config/components/componentEditor/componentRules'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { computed } from 'vue'
 
   const { components } = useFeatureUsageSettings()
+
+  const slotOrder = ['primary', 'secondary', 'extra'] as const
+  const groupedUiKinds = computed(() => {
+    return slotOrder.map((slot) => ({
+      slot,
+      items: Object.entries(uiKindMap).filter(([, v]) => v.slot === slot),
+    }))
+  })
 </script>
