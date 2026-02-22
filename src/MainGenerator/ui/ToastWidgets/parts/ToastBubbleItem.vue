@@ -30,14 +30,15 @@
   import { computed } from 'vue'
   import type { CharacterColorType } from '@/types/OmikujiData/'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
-  import { transformIconPlaceholders } from '@main/ui/CommentBubble/TransformIconPlaceholders'
+  import { resolveIconPlaceholders } from '@main/ui/common/useFilteredBotMessages'
 
   const props = defineProps<{
     message: string
     color: CharacterColorType
     iconLayers?: string[]
     showToastsOnRight: boolean
+    getProfileImage?: (userId: string) => string | undefined
   }>()
 
-  const displayedHtml = computed(() => transformIconPlaceholders(props.message))
+  const displayedHtml = computed(() => resolveIconPlaceholders(props.message, props.getProfileImage))
 </script>

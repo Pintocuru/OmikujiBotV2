@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
 import { normalizedObject } from './ParsedDefault'
-import { UiKind } from './ComponentsSchema'
+import { UiKind } from './UiSchema'
 import { gameMetaMap, uiKindMap } from '../MetaMaps'
 import { ScriptGameKey, ScriptGameKeySchema } from './ActionSet'
 

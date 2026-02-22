@@ -4,9 +4,18 @@
  * スロット定義
  */
 export const UiSlotMap = {
-  primary: { label: 'メイン表示', description: 'BOTアクションの「フキダシ」モードを表示します' },
-  secondary: { label: 'サブ表示', description: 'BOTアクションの「トースト」モードを表示します' },
-  extra: { label: 'エクストラ', description: '主にゲームスクリプトのセリフを表示します。' },
+  primary: {
+    label: 'メイン表示',
+    description: 'わんコメでのコメント表示や読み上げの対象となります',
+  },
+  secondary: {
+    label: 'サブ表示',
+    description: 'わんコメでのコメント表示や読み上げの対象にはなりません。',
+  },
+  extra: {
+    label: 'エクストラ',
+    description: 'ゲームや演出の用途で使用されるアイテムです。',
+  },
 } as const
 
 /**

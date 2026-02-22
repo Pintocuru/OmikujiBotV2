@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0",
-    "dataVersion": 2.1,
+    "generatorVersion": "2.1.2-alpha3",
+    "dataVersion": 2.1101003,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -19,7 +19,7 @@
       "name": "幻獣ガチャ",
       "createdAt": "2025-09-02T03:46:12.548Z",
       "updatedAt": "2026-02-11T14:22:24.060Z",
-      "order": 1,
+      "order": 2,
       "isEnabled": true,
       "editorColor": "#FF9800",
       "tags": [],
@@ -61,7 +61,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -111,7 +111,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -166,7 +166,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -221,7 +221,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -258,7 +258,7 @@
       "description": "FallGuysクリエサバイバル用",
       "createdAt": "2025-08-11T03:50:57.708Z",
       "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 2,
+      "order": 3,
       "isEnabled": true,
       "editorColor": "#3B82F6",
       "tags": [],
@@ -295,7 +295,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -331,7 +331,7 @@
       "description": "スイカのリベンジ",
       "createdAt": "2025-09-13T23:27:51.403Z",
       "updatedAt": "2026-01-19T01:20:31.530Z",
-      "order": 3,
+      "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
       "tags": [],
@@ -361,7 +361,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -394,7 +394,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -427,7 +427,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -460,7 +460,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -493,7 +493,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -529,7 +529,7 @@
       "description": "19個の大吉と、1個の大凶",
       "createdAt": "2025-10-05T14:14:24.331Z",
       "updatedAt": "2026-02-10T00:26:03.833Z",
-      "order": 4,
+      "order": 5,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
       "tags": [],
@@ -643,7 +643,7 @@
       "name": "くいしんぼうライセンス",
       "createdAt": "2026-01-19T00:52:58.878Z",
       "updatedAt": "2026-01-19T01:20:31.531Z",
-      "order": 5,
+      "order": 6,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -672,7 +672,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -707,7 +707,7 @@
       "name": "バレンタイン・カップリング",
       "createdAt": "2026-02-11T14:15:32.212Z",
       "updatedAt": "2026-02-11T14:22:41.839Z",
-      "order": 6,
+      "order": 7,
       "isEnabled": true,
       "tags": [],
       "accessLevel": "basic",
@@ -764,6 +764,71 @@
         "isRepeatAllowed": 0,
         "repeatMessage": null
       }
+    },
+    "5029bb44-b06d-4c51-998a-85b043c0b8df": {
+      "id": "907e0399-d6e7-4c9f-be37-d37b8f288598",
+      "key": "5029bb44-b06d-4c51-998a-85b043c0b8df",
+      "name": "flag",
+      "createdAt": "2026-02-22T09:49:13.358Z",
+      "updatedAt": "2026-02-22T09:51:23.227Z",
+      "order": 1,
+      "isEnabled": true,
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "5f5ef40b-c4e6-4c5f-89a1-81a4ff33e459",
+          "key": "e50e8c3b-6c18-4897-a179-9cca4d71fad8",
+          "name": "",
+          "createdAt": "2026-02-22T09:48:40.461Z",
+          "updatedAt": "2026-02-22T09:48:40.465Z",
+          "order": 0,
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "chocolate",
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "{{var flag=true}}",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": null
+          },
+          "special": "return",
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [
+          "comment"
+        ],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": [
+          "おみくじ"
+        ]
+      },
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      },
+      "description": "アイテムにflagを渡してトリガーにするtest"
     }
   },
   "timers": {},
@@ -803,7 +868,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -851,7 +916,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -3127,7 +3192,7 @@
         "mode": "comment",
         "imageBase64": "data:image/png;base64,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",
         "frameId": "StrawberryChocolat",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "cafelatte": {
@@ -3174,7 +3239,7 @@
         "mode": "comment",
         "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEm0lEQVR4AZSVW2xURRjHf+eyl7O77W4vUNldWlpsuFhablpurSCJqFSMXH2QADEqBqMPPhgjJugbxoQQSHggJsSEByWoNGoUolRLW0hMKkhTWgpt09Ze6AXa7nZv54yztPWB7jY4ObNzZub7/r+Z830zq4YOI5K1+aMF4pOta8QXOyrF59srxMdbVojPqmT/tUpx6a2AGDpsiGun3hfd1WdF5MrPovOH06Lvypfi7w8LHvonNVJVlamSr3VwoLiRjt4BEqbA43ZhWnEQKhc7snAygdV7lfHxQWKRMA5VQSgwGolOKaRu/gMkp/M8UfaW3qN/eBRVCicVxsbC+NzZjNmDlFrX6O5q4sGDYdDtWKaFmTCTrmmr+uhMSe4QB1fcZiyUICyd2zvbUe0JTtRl0BZ4h1xjiPM/nUPR5Q4w5W7/JyAJzM+cYM+y2xTluTF0g3jYxO3LY1A1yFxcye69u+RO2tARuB06s5UZO5g2LjIG2ZbfRFFRAaHxEOs2PENZyVK8Xg92J+Qv9KMqFtmZsjPtlKJNC0jadvdHMU0Tn89L261mLE3GXFjJKTSbjiZJdRMlD/vpfmYF/Ni3AofhxGbXqNpZhZZMG2TqSDVTmWw3vfgCjeFiOZL6SQv4vm8VWR6V4ZEh4pbA6bBx7usLHP30OD2dvRJjyQjI2Mh0DpZvS60uR9MCBgZidPXcIxyaIBKNkVAiLF9VRlXVFu4PjNHadFcCJt1Ddh/9EbeUm/lMWswcJyvDSeCJAIFAEK98N02VwoIgxUsWsqA4SMA/DxkgCbFk4LNkluWkUIG0ACEg5vTwz3BUnokoqmqjof4vXIWVVDf0cH/UhRgbRZEn2TBkqq56k7hj7gxISkDM1PHGwO/K5OCRI7jsNpR4gnXrl/PtmROUL5pPRu8tFPmpGI+imAp48mgalrt6BJESMB5xoZkusgY7+OPoEZ7dsH4yLbHYVl7MAmuQDJcdRZMrV1SEiFFzsYGgV14hjwNQtQlGlAQPUIkaGrV19dRcvordIcG+bDT/XBR/LuR4UTPd3GltodxRT26i6xF5pMKMIfA54+xaWsfN0X4S8mCtrVjLk0uWElEMmvvuYfMHUOdkY0nx787X8FT7SeZEWlIopQFMWx4qa2dlfpzffq2l8Woj2QWLeHp9BTbdTjSWQLt5lipX9bR5ylZNOTo1mGNEWWlc40BJO91NDdz4vYbaC7/IQJ/lbnMrzs7LeNTQlHXqZlbAtItP9NKreDh97CS3b1yntm2Yk+f/5HRP5bRJ2vaxAKDQMuLgejSTr+rbaekb5wl5dWzdsYsOx3JmK48FOH7rOZmKOqvnutm35yWIx1i7rghfro2civ2cubMmLWNWwKnOzZxo2Yhhs9iSr7NpYyn79u/m0Bvb2fyyvF1VFc1wsfPd12ldfJgu3/OEhRPk2WCqzAoY6OmXtgKhCHRNZdmGjWhOB6/ufgXPHL/83zblx7PknM78hUG6jVKOjrzNpbJvqF9dzTH5nhYwogbkhZaHXQqriiIhYOk6yH5ycbrDjalqIFcrZEVVsBsO5i0rwSPPia+wkD3vfcC/AAAA//+01SleAAAABklEQVQDACgFrc/FXTPRAAAAAElFTkSuQmCC",
         "frameId": "cafelatte",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "honjoFox": {
@@ -3223,7 +3288,7 @@
         "mode": "rpgVoice",
         "imageBase64": "",
         "frameId": "",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken": {
@@ -3273,7 +3338,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken_2": {
@@ -3323,7 +3388,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
@@ -3348,6 +3413,12 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "settings": {
@@ -3416,9 +3487,11 @@
         "historyLimit": 10
       },
       "flashBanner": {
+        "component": "standard",
         "label": "速報",
         "iconSize": 12,
-        "showCharacterOnRight": false,
+        "displaySeconds": null,
+        "showItemOnRight": false,
         "defaultCharacterKey": null,
         "defaultMessage": "<<\n'チャンネル登録・高評価、お願いします。',\n'現在の視聴数 <<viewer>> / 高評価 <<upVote>>',\n'知っていたか'\n>>"
       }
@@ -3436,23 +3509,9 @@
     "components": [
       "bubble",
       "toast",
-      "ranking",
-      "counter",
-      "flightSeat",
-      "WinnerGroup",
-      "winnerGroup",
-      "FlashBanner",
       "flashBanner"
     ],
-    "gameScripts": [
-      "GoogolClover",
-      "HugEmAll",
-      "MultiplyBonanza",
-      "DwarfBomb",
-      "BomberSpin",
-      "GouseiSuika",
-      "WinnerGroup"
-    ],
+    "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "basic"

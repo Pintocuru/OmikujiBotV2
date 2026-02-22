@@ -185,7 +185,8 @@ export class VariablePlaceholderProcessor {
     }
 
     const hasSlots = Object.keys(slotEntries).length > 0
-    const hasListData = vars['text'] !== undefined
+    // TODO: flag = true としているが、これでいいんだろうか？
+    const hasListData = vars['text'] !== undefined || vars['flag'] === 'true'
 
     if (!hasSlots && !hasListData) {
       return {}

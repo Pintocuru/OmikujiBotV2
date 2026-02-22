@@ -1,10 +1,10 @@
 // src/common/migrations/v2_to_v3/v2_05_to_v2_10.ts
-import { ComponentsSchema } from '@/types/OmikujiData/ComponentsSchema'
+import { ComponentsSchema } from '@/types/OmikujiData/UiSchema'
 import { CharacterColorScheme } from '@/types/OmikujiData/CharacterSchema'
 
 /**
  * v2.0.5 → v2.1.0 マイグレーション
- * 
+ *
  * 変更内容:
  * - components.conditions を { slot, kind }[] 形式に変更
  * - components.commonStyle を新設 (fontFamily, defaultColor を分離)
@@ -16,7 +16,7 @@ export function migrateV205ToV210(data: any): any {
 
   // 旧形式の conditions を取得 (文字列配列)
   const oldConditions = oldComponents.conditions || ['bubble', 'toast']
-  
+
   // 旧形式の各設定を取得
   const oldBubble = oldComponents.bubble || {}
   const oldToast = oldComponents.toast || {}
@@ -39,12 +39,13 @@ export function migrateV205ToV210(data: any): any {
     .slice(0, 3) // 最大3つまで
 
   // conditionsが空の場合はデフォルト値
-  const finalConditions = newConditions.length > 0 
-    ? newConditions 
-    : [
-        { slot: 'primary', kind: 'bubble' },
-        { slot: 'secondary', kind: 'toast' },
-      ]
+  const finalConditions =
+    newConditions.length > 0
+      ? newConditions
+      : [
+          { slot: 'primary', kind: 'bubble' },
+          { slot: 'secondary', kind: 'toast' },
+        ]
 
   // 2. commonStyle を作成 (bubbleから分離)
   const commonStyle = {

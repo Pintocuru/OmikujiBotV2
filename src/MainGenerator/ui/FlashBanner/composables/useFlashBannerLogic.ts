@@ -1,16 +1,15 @@
 // src/MainGenerator/ui/FlashBanner/composables/useFlashBannerLogic.ts
 import { computed, ref, onMounted, onUnmounted } from 'vue'
-import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'
-import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
 import { useDelayedBlink } from '../parts/useDelayedBlink'
 import { SettingsFlashBannerSchema } from '@/types/OmikujiData/'
+import { usePlaceholderResolver } from '../../common/usePlaceholderResolver'
 
 const DEFAULT_MESSAGE_REFRESH_INTERVAL = 30000
 
 export function useFlashBannerLogic() {
   const appStore = useAppStore()
-  const { data } = storeToRefs(appStore)
+  const { resolveComment } = usePlaceholderResolver()
 
   const settings = computed(() =>
     SettingsFlashBannerSchema.parse(
@@ -35,21 +34,7 @@ export function useFlashBannerLogic() {
 
   const defaultComment = computed(() => {
     void refreshKey.value
-
-    const metaData = appStore.metaState.getCurrent()
-    const drawWinners = appStore.userSession.stats.drawWinners()
-
-    const placeholderValues: Record<string, string | number> = {
-      upVote: metaData?.upVote ?? 0,
-      viewer: metaData?.viewer ?? 0,
-      commenter: drawWinners.commenter ?? 0,
-      winner: drawWinners.winners[0]?.userName ?? '名無し',
-    }
-
-    const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
-    contentPlaceholder.updateResolvedValues(placeholderValues)
-
-    return contentPlaceholder.processText(settings.value.defaultMessage ?? '')
+    return resolveComment(settings.value.defaultMessage ?? '')
   })
 
   let refreshInterval: ReturnType<typeof setInterval> | null = null

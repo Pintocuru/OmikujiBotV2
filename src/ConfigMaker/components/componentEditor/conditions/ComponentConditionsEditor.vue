@@ -1,78 +1,39 @@
 <!-- src/ConfigMaker/components/componentEditor/conditions/ComponentConditionsEditor.vue -->
 <template>
   <!-- スロット別コンポーネント設定 -->
-  <SettingItem label="表示するアイテム" description="各スロットに表示するコンポーネントを選択">
-    <div class="space-y-4">
-      <!-- Primary Slot -->
-      <div class="flex items-center gap-2">
-        <span class="badge badge-primary" :class="{ 'opacity-40': !getSlotKind('primary') }"> メイン表示 </span>
-        <select
-          :value="getSlotKind('primary')"
-          @change="updateSlot('primary', $event)"
-          class="select select-bordered select-primary"
-        >
-          <option value="">(未使用)</option>
-          <option
-            v-for="comp in getAvailableComponents('primary')"
-            :key="comp.kind"
-            :value="comp.kind"
-            :disabled="comp.disabled"
-          >
-            {{ comp.label }}{{ comp.disabledReason }}
-          </option>
-        </select>
-      </div>
+  <SettingItem
+    v-for="{ slot, label } in slotConfigs"
+    :key="slot"
+    :label="label"
+    :description="UiSlotMap[slot].description"
+  >
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- 未使用バッジ -->
+      <span
+        class="badge badge-outline cursor-pointer select-none"
+        :class="{ 'badge-ghost opacity-40': getSlotKind(slot) !== '' }"
+        @click="updateSlotKind(slot, '')"
+      >
+        未使用
+      </span>
 
-      <!-- Secondary Slot -->
-      <div class="flex items-center gap-2">
-        <span class="badge badge-secondary" :class="{ 'opacity-40': !getSlotKind('secondary') }"> サブ表示 </span>
-        <select
-          :value="getSlotKind('secondary')"
-          @change="updateSlot('secondary', $event)"
-          class="select select-bordered select-secondary"
-        >
-          <option value="">(未使用)</option>
-          <option
-            v-for="comp in getAvailableComponents('secondary')"
-            :key="comp.kind"
-            :value="comp.kind"
-            :disabled="comp.disabled"
-          >
-            {{ comp.label }}{{ comp.disabledReason }}
-          </option>
-        </select>
-      </div>
-
-      <!-- Extra Slot -->
-      <div class="flex items-center gap-2">
-        <span class="badge badge-accent" :class="{ 'opacity-40': !getSlotKind('extra') }"> エクストラ </span>
-        <select
-          :value="getSlotKind('extra')"
-          @change="updateSlot('extra', $event)"
-          class="select select-bordered select-accent"
-        >
-          <option value="">(未使用)</option>
-          <option
-            v-for="comp in getAvailableComponents('extra')"
-            :key="comp.kind"
-            :value="comp.kind"
-            :disabled="comp.disabled"
-          >
-            {{ comp.label }}{{ comp.disabledReason }}
-          </option>
-        </select>
-      </div>
+      <!-- コンポーネント選択バッジ -->
+      <span
+        v-for="comp in getAvailableComponents(slot)"
+        :key="comp.kind"
+        class="badge cursor-pointer select-none"
+        :class="[
+          slotConfigs.find((s) => s.slot === slot)?.badgeClass,
+          getSlotKind(slot) === comp.kind ? 'opacity-100' : 'badge-outline opacity-40',
+          comp.disabled ? 'cursor-not-allowed' : '',
+        ]"
+        :title="comp.disabledReason || comp.label"
+        @click="!comp.disabled && updateSlotKind(slot, comp.kind)"
+      >
+        {{ comp.label }}
+      </span>
     </div>
   </SettingItem>
-
-  <!-- コメント機能OFFの警告 -->
-  <InformationCard v-if="!isComment && hasCounterSelected" variant="warning">
-    <p class="text-base">
-      <span class="label bg-warning text-warning-content">コメント機能がOFF</span
-      >のため、カウンターアイテムは使用できません。<br />
-      カウンターアイテムを使用する場合は、機能設定でコメント機能を有効にしてください。
-    </p>
-  </InformationCard>
 
   <!-- 条件未設定の警告 -->
   <InformationCard v-if="conditions.length === 0" variant="neutral" icon="warning">
@@ -89,7 +50,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { UiSlotType, UiKind, getKindsForSlot, uiKindMap } from '@/types/'
+  import { UiSlotType, UiKind, getKindsForSlot, uiKindMap, UiSlotMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -100,7 +61,18 @@
   const { isComment } = useVisibilityAccess()
 
   const conditions = computed(() => data.value.components.conditions)
-  const hasCounterSelected = computed(() => conditions.value.some((c) => c.kind === 'counter'))
+
+  // スロットごとの表示設定
+  const slotConfigs: { slot: UiSlotType; label: string; badgeClass: string; selectClass: string }[] = [
+    { slot: 'primary', label: UiSlotMap.primary.label, badgeClass: 'badge-primary', selectClass: 'select-primary' },
+    {
+      slot: 'secondary',
+      label: UiSlotMap.secondary.label,
+      badgeClass: 'badge-secondary',
+      selectClass: 'select-secondary',
+    },
+    { slot: 'extra', label: UiSlotMap.extra.label, badgeClass: 'badge-accent', selectClass: 'select-accent' },
+  ]
 
   // 指定スロットに設定されているkindを取得
   const getSlotKind = (slot: UiSlotType): UiKind | '' => conditions.value.find((c) => c.slot === slot)?.kind ?? ''
@@ -115,6 +87,7 @@
     return getKindsForSlot(slot)
       .filter((kind) => components.includes(kind))
       .map((kind) => {
+        // TODO この行だけ特別になってしまってるので、何らかの方法で共通化させたい
         const isCounterDisabled = kind === 'counter' && !isComment.value
         const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
         return {
@@ -127,11 +100,10 @@
   }
 
   // スロットの更新
-  const updateSlot = (slot: UiSlotType, event: Event) => {
-    const newKind = (event.target as HTMLSelectElement).value as UiKind | ''
+  const updateSlotKind = (slot: UiSlotType, newKind: UiKind | '') => {
     const newConditions = conditions.value
-      .filter((c) => c.slot !== slot && c.kind !== newKind) // 該当スロットと重複kindを除外
-      .concat(newKind ? [{ slot, kind: newKind }] : []) // 新しい設定を追加
+      .filter((c) => c.slot !== slot && c.kind !== newKind)
+      .concat(newKind ? [{ slot, kind: newKind }] : [])
 
     omikujiStore.updateComponentsConditions(newConditions)
   }

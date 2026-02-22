@@ -3,7 +3,7 @@
   <div class="fixed top-0 w-full flex justify-center">
     <Transition name="banner-swap" mode="out-in">
       <FlashBannerRenderer
-        :key="transitionKey"
+        :key="currentMessage?.id ?? 'default'"
         :settings="settings"
         :message="currentMessage?.bubble?.message ?? ''"
         :layers="layers"
@@ -16,54 +16,26 @@
 
 <script setup lang="ts">
   import { computed, ref, toRef, watch, onMounted, onUnmounted } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleSchema, BotMessageBubbleType } from '@/types'
+  import { BotMessageBubbleSchema } from '@/types'
   import FlashBannerRenderer from './parts/FlashBannerRenderer.vue'
-  import { useAppStore } from '@main/stores/useAppStore'
   import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
-  import { transformIconPlaceholders } from '@main/ui/CommentBubble/TransformIconPlaceholders'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { useFlashBannerLogic } from './composables/useFlashBannerLogic'
+  import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
 
-  const appStore = useAppStore()
-  const { botMessages } = storeToRefs(appStore)
   const { getCharacterColor, getCharacterLayers } = useCharacterManager()
 
   // Blink + DefaultComment（コンポーザブルに委譲）
   const { settings, blinkClass, triggerBlink, defaultComment } = useFlashBannerLogic()
 
-  // Message Management
-  const announceMessages = computed(() => {
-    const displaySeconds = settings.value.displaySeconds
-    return botMessages.value
-      .filter((msg): msg is BotMessageBubbleType => msg.type === 'comment' && !msg.bubble.isToast)
-      .map((msg) => {
-        if (displaySeconds === null) return msg
-        return {
-          ...msg,
-          bubble: {
-            ...msg.bubble,
-            displaySeconds: displaySeconds === 0 ? null : displaySeconds,
-          },
-        }
-      })
-  })
-
-  const { displayedComments, start, stop } = useBotDisplay(toRef(() => announceMessages.value))
+  const { messages } = useFilteredBotMessages('flashBanner', settings.value.displaySeconds)
+  const { displayedComments, start, stop } = useBotDisplay(toRef(() => messages.value))
 
   // Current Display Message
   const currentMessage = computed(() => {
+    // visible=true を優先
     const visibleMessage = displayedComments.value.find((m) => m.display?.visible)
-
-    if (visibleMessage) {
-      return {
-        ...visibleMessage,
-        bubble: {
-          ...visibleMessage.bubble,
-          message: transformIconPlaceholders(visibleMessage.bubble.message),
-        },
-      }
-    }
+    if (visibleMessage) return visibleMessage
 
     return BotMessageBubbleSchema.parse({
       bubble: {
@@ -83,9 +55,6 @@
     const key = currentMessage.value?.bubble?.characterKey ?? null
     return getCharacterColor(key)
   })
-
-  // Transition Key
-  const transitionKey = computed(() => currentMessage.value?.id ?? 'default')
 
   // Blink Watch
   const previousMessageId = ref<string | undefined>(undefined)

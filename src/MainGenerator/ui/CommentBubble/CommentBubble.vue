@@ -22,41 +22,32 @@
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleType, BotMessageType } from '@/types'
+  import type { BotMessageBubbleType } from '@/types'
   import CommentBubbleZero from './CommentBubbleZero.vue'
   import CommentBubblePersistent from './CommentBubblePersistent.vue'
   import { useCharacterSelection } from './composables/useCharacterSelection'
   import { useBotDisplay } from './composables/useBotDisplay'
-  import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
+  import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
 
-  const appStore = useAppStore()
-  const { botMessages } = storeToRefs(appStore)
   const { showCharacters, characterMap } = useCharacterManager()
 
-  const isToastEnabled = computed(() => appStore.data.featureUsage.components.includes('toast'))
+  // bubble kind をまとめて処理済みメッセージ取得
+  const { messages } = useFilteredBotMessages('bubble')
 
-  // 型ガードヘルパー: トーストでないコメントメッセージのみを抽出
-  const isDisplayableComment = (msg: BotMessageType): msg is BotMessageBubbleType => {
-    if (typeof msg !== 'object' || msg === null) return false
-    const m = msg as Partial<BotMessageBubbleType>
-    return m.type === 'comment' && !(isToastEnabled.value && m.bubble?.isToast)
-  }
-
-  // 0番地: 中央表示用メッセージ
-  const centerMessages = computed(() => {
+  // 0番地: 中央表示用
+  const centerMessages = computed<BotMessageBubbleType[]>(() => {
     const allowKeys = showCharacters.value.center
-    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
-      if (!isDisplayableComment(msg)) return false
+
+    return messages.value.filter((msg) => {
       const key = msg.bubble?.characterKey
-      // null の場合はキャラクター非表示モードなので表示
+      // null は中央表示
       return key === null || allowKeys.includes(key)
     })
   })
 
-  // 1-4番地: スロット表示用メッセージ
-  const indexMessages = computed(() => {
+  // 1-4番地: スロット用
+  const indexMessages = computed<BotMessageBubbleType[]>(() => {
     const allowKeys = [
       ...(showCharacters.value.slot1 ?? []),
       ...(showCharacters.value.slot2 ?? []),
@@ -66,26 +57,25 @@
 
     if (!allowKeys.length) return []
 
-    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
-      if (!isDisplayableComment(msg)) return false
+    return messages.value.filter((msg) => {
       const key = msg.bubble?.characterKey
-      // null は除外（0番地で表示）
+      // null は中央専用
       return key !== null && allowKeys.includes(key)
     })
   })
 
-  // 常時表示キャラクターの制御
+  // 常時表示キャラクター制御
   const { displayedComments, removeComment, start, stop } = useBotDisplay(indexMessages)
 
   // キャラクター選択
   const { latestCommenterKey, slotCharacters } = useCharacterSelection(displayedComments, showCharacters, characterMap)
 
-  // 特定キャラクターの表示中メッセージを取得
-  const getCharacterMessages = (characterKey: string) => {
+  // 表示中メッセージ取得
+  const getCharacterMessages = (characterKey: string): BotMessageBubbleType[] => {
     return displayedComments.value.filter((msg) => msg.bubble?.characterKey === characterKey && msg.display?.visible)
   }
 
-  // コメント削除ハンドラ
+  // コメント削除
   const handleRemoveComment = (messageId: string) => removeComment(messageId)
 
   onMounted(start)

@@ -20,6 +20,7 @@
               : []
           "
           :showToastsOnRight="toastSettings.showToastsOnRight"
+          :getProfileImage="(userId) => appStore.userSession.stats.get(userId)?.profileImage"
           @click="hideComment(message.id)"
         />
       </MotionWrapper>

@@ -1,6 +1,6 @@
 // src/common/FeatureAccess/useAccessChecker.ts
 import { computed, type Ref } from 'vue'
-import { OmikujiDataType } from '@/types/'
+import { OmikujiDataType, UiKind, UiSlotType } from '@/types/'
 import { useSettingModeFromHash } from './SettingMode'
 import { AccessLevelType } from '@shared/types'
 
@@ -41,13 +41,26 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
   const canShowUsage = (key: keyof typeof usage.value): boolean => hasAccess(usage.value[key])
   const canShowDeveloper = (key: keyof typeof developer.value): boolean => hasAccess(developer.value[key])
 
+  // Events
   const isComment = computed(() => hasAccess(usage.value.comments))
   const isTimer = computed(() => hasAccess(usage.value.timers))
   const isRules = computed(() => isComment.value || isTimer.value)
 
+  // assets
   const isActionSet = computed(() => hasAccess(usage.value.actionSets))
   const isPlaceholder = computed(() => hasAccess(usage.value.placeholders))
   const isCharacter = computed(() => hasAccess(usage.value.characters) && Object.keys(data.value.characters).length > 0)
+
+  // itemSlot
+  // TODO:必要に応じて新しい関数を用意すること。この関数はconfigでは使わないので。
+  const hasSlot = (slot: UiSlotType) => data.value.components.conditions.some((c) => c.slot === slot)
+  function hasCondition(slot: UiSlotType, kind: UiKind): boolean {
+    return data.value.components.conditions.some((c) => c.slot === slot && c.kind === kind)
+  }
+
+  const isPrimarySlot = computed(() => hasSlot('primary'))
+  const isSecondarySlot = computed(() => hasSlot('secondary'))
+  const isExtraSlot = computed(() => hasSlot('extra'))
 
   return {
     canShowUsage,
@@ -58,5 +71,11 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
     isActionSet,
     isPlaceholder,
     isCharacter,
+
+    // 別に移すかも
+    hasCondition,
+    isPrimarySlot,
+    isSecondarySlot,
+    isExtraSlot,
   }
 }
