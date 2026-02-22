@@ -12,8 +12,8 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
 
   const isKindEnabled = computed(() => data.value.components.conditions.some((c) => c.kind === kind))
 
-  const shouldInclude = (isToast: boolean): boolean =>
-    (hasCondition('primary', 'bubble') && !isToast) || (hasCondition('secondary', 'bubble') && isToast)
+  const shouldInclude = (isSecondary: boolean): boolean =>
+    (hasCondition('primary', kind) && !isSecondary) || (hasCondition('secondary', kind) && isSecondary)
 
   function buildMessage(bot: BotMessageBubbleType, rawMessage: string): BotMessageBubbleType {
     const message = resolveIconPlaceholders(

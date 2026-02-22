@@ -6,7 +6,9 @@ import { defaultPlaceholderMap } from '../MetaMaps'
 export const DefaultPlaceholdersMetaSchema = z.object({
   viewer: z.coerce.number().default(0),
   upVote: z.coerce.number().default(0),
+  // subscriber: z.coerce.number().default(0),
   commenter: z.coerce.number().default(0),
+  // syoken: z.coerce.number().default(0),
   winner: z.string().default('テストユーザー'),
 })
 

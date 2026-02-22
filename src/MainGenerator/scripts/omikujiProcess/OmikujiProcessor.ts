@@ -125,13 +125,13 @@ export class OmikujiProcessor {
     // getBasePlaceholders
     const commenter = userSession.stats.getUniqueCount()
     const { winners } = userSession.stats.drawWinners(1)
-    const winner = winners[0]?.userName ?? 'Null'
+    const firstWinner = winners[0]
 
     return DefaultPlaceholdersMetaSchema.parse({
       viewer: meta?.viewer ?? 0,
       upVote: meta?.upVote ?? 0,
       commenter,
-      winner,
+      winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
     })
   }
 }
