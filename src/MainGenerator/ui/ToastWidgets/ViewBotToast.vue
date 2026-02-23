@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/ToastWidgets/ViewBotToast.vue -->
 <template>
   <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
-    <div v-for="message in filteredToastComments.slice().reverse()" :key="message.id">
+    <div v-for="message in displayedComments.slice().reverse()" :key="message.id">
       <!-- ! を使用… -->
       <MotionWrapper
         v-model:visible="message.display!.visible"
@@ -12,7 +12,7 @@
       >
         <ToastBubbleItem
           :key="message.id"
-          :message="message.bubble?.isToast ? (message.bubble?.message ?? '(未記入)') : ''"
+          :message="message.bubble?.message"
           :color="getCharacterColor(message.bubble.characterKey)"
           :iconLayers="
             isCharacter && toastSettings.showToastsCharacter && message.bubble
@@ -52,10 +52,6 @@
 
   // コメント表示ロジック
   const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(messages)
-
-  const filteredToastComments = computed(() =>
-    displayedComments.value.filter((message) => message.bubble?.isToast !== false)
-  )
 
   onMounted(start)
   onUnmounted(stop)

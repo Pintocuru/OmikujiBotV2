@@ -19,11 +19,13 @@ export class PostOmikujiService {
   private readonly serviceAPI = ServiceAPI.getInstance()
   private readonly metaStateService = MetaStateService.getInstance()
   private readonly characterManager: CharacterManager
+  private readonly enableSecondary: boolean
   private services: Service[] = []
   private createdServiceIds = new Set<string>()
 
   constructor(omikujiData: OmikujiDataType) {
     this.characterManager = new CharacterManager(omikujiData)
+    this.enableSecondary = omikujiData.components.enableSecondary
   }
 
   /**
@@ -37,8 +39,9 @@ export class PostOmikujiService {
   // --- Private: ディスパッチ ---
 
   private async processPost(post: PostFlowType): Promise<void> {
-    // message であり Secondaryでないなら投稿
-    if (post.actionType === 'message' && !post.message.isToast) {
+    // enableSecondary が false なら全部投稿
+    // enableSecondary が true なら primary（isToast=false）のみ投稿
+    if (post.actionType === 'message' && (!this.enableSecondary || !post.message.isToast)) {
       await this.processMessagePost(post)
     }
 

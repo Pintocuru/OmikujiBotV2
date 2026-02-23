@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.2-alpha3",
-    "dataVersion": 2.1101003,
+    "generatorVersion": "2.3.0-alpha4",
+    "dataVersion": 2.20030001004,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -769,6 +769,7 @@
       "id": "907e0399-d6e7-4c9f-be37-d37b8f288598",
       "key": "5029bb44-b06d-4c51-998a-85b043c0b8df",
       "name": "flag",
+      "description": "アイテムにflagを渡してトリガーにするtest",
       "createdAt": "2026-02-22T09:49:13.358Z",
       "updatedAt": "2026-02-22T09:51:23.227Z",
       "order": 1,
@@ -827,8 +828,7 @@
         "cooldownMessage": null,
         "isRepeatAllowed": 0,
         "repeatMessage": null
-      },
-      "description": "アイテムにflagを渡してトリガーにするtest"
+      }
     }
   },
   "timers": {},
@@ -3395,14 +3395,11 @@
   "components": {
     "conditions": [
       {
-        "slot": "secondary",
-        "kind": "toast"
-      },
-      {
         "slot": "primary",
-        "kind": "flashBanner"
+        "kind": "toast"
       }
     ],
+    "enableSecondary": true,
     "commonStyle": {
       "fontFamily": "mplus1p",
       "defaultColor": {
@@ -3443,7 +3440,7 @@
       },
       "toast": {
         "showToastsOnRight": true,
-        "showToastsCharacter": false,
+        "showToastsCharacter": true,
         "showThumbnail": []
       },
       "ranking": {

@@ -1,6 +1,12 @@
 <!-- src/ConfigMaker/components/componentEditor/conditions/ComponentConditionsEditor.vue -->
 <template>
   <!-- スロット別コンポーネント設定 -->
+  <SubSectionHeader
+    icon="LayoutGrid"
+    title="スロット別アイテム設定"
+    description="ジェネレーター に表示するアイテムを選択します"
+  />
+
   <SettingItem
     v-for="{ slot, label } in slotConfigs"
     :key="slot"
@@ -35,8 +41,11 @@
     </div>
   </SettingItem>
 
+  <!-- ?? -->
+  <SubSectionHeader icon="ToggleRight" title="サブアイテムの使用設定" description="" />
+
   <!-- BOTコメントの投稿方法 -->
-  <SettingItem label="サブコンポーネントを使用する" description="secondary（サブ）側の表示を有効にします">
+  <SettingItem label="サブコンポーネントを使用する" description="BOTコメント（サブ）の表示を有効にするかを切り替えます">
     <label class="flex items-center gap-2 cursor-pointer">
       <input type="checkbox" class="toggle toggle-primary" :checked="enableSecondary" @change="handleEnableSecondary" />
       <span>{{ enableSecondary ? '使用する' : '使用しない' }}</span>
@@ -63,24 +72,29 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isComment } = useVisibilityAccess()
 
   const conditions = computed(() => data.value.components.conditions)
+  const enableSecondary = computed(() => data.value.components.enableSecondary)
 
-  // スロットごとの表示設定
-  const slotConfigs: { slot: UiSlotType; label: string; badgeClass: string; selectClass: string }[] = [
-    { slot: 'primary', label: UiSlotMap.primary.label, badgeClass: 'badge-primary', selectClass: 'select-primary' },
-    {
-      slot: 'secondary',
-      label: UiSlotMap.secondary.label,
-      badgeClass: 'badge-secondary',
-      selectClass: 'select-secondary',
-    },
-    { slot: 'extra', label: UiSlotMap.extra.label, badgeClass: 'badge-accent', selectClass: 'select-accent' },
-  ]
+  // スロットごとの表示設定（enableSecondary が false のとき secondary を非表示）
+  const slotConfigs = computed(() => {
+    const all: { slot: UiSlotType; label: string; badgeClass: string; selectClass: string }[] = [
+      { slot: 'primary', label: UiSlotMap.primary.label, badgeClass: 'badge-primary', selectClass: 'select-primary' },
+      {
+        slot: 'secondary',
+        label: UiSlotMap.secondary.label,
+        badgeClass: 'badge-secondary',
+        selectClass: 'select-secondary',
+      },
+      { slot: 'extra', label: UiSlotMap.extra.label, badgeClass: 'badge-accent', selectClass: 'select-accent' },
+    ]
+    return enableSecondary.value ? all : all.filter((s) => s.slot !== 'secondary')
+  })
 
   // 指定スロットに設定されているkindを取得
   const getSlotKind = (slot: UiSlotType): UiKind | '' => conditions.value.find((c) => c.slot === slot)?.kind ?? ''
@@ -95,14 +109,15 @@
     return getKindsForSlot(slot)
       .filter((kind) => components.includes(kind))
       .map((kind) => {
-        // TODO この行だけ特別になってしまってるので、何らかの方法で共通化させたい
-        const isCounterDisabled = kind === 'counter' && !isComment.value
+        const config = uiKindMap[kind]
+        // requiresComment フラグで機能制限を汎用的に判定
+        const isFeatureDisabled = 'requiresComment' in config && !!config.requiresComment && !isComment.value
         const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
         return {
           kind,
-          label: uiKindMap[kind].label,
-          disabled: isCounterDisabled || isUsedInOther,
-          disabledReason: isCounterDisabled ? '（利用不可）' : isUsedInOther ? '（他のスロットで使用中）' : '',
+          label: config.label,
+          disabled: isFeatureDisabled || isUsedInOther,
+          disabledReason: isFeatureDisabled ? '（利用不可）' : isUsedInOther ? '（他のスロットで使用中）' : '',
         }
       })
   }
@@ -120,6 +135,4 @@
     const checked = (e.target as HTMLInputElement).checked
     omikujiStore.updateComponents({ enableSecondary: checked })
   }
-
-  const enableSecondary = computed(() => data.value.components.enableSecondary)
 </script>

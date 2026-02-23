@@ -22,7 +22,7 @@ export type UiKind = keyof typeof uiKindMap
  */
 export function getKindsForSlot(slot: UiSlotType): UiKind[] {
   return Object.entries(uiKindMap)
-    .filter(([_, config]) => config.slot === slot)
+    .filter(([_, config]) => (config.slots as readonly string[]).includes(slot))
     .map(([kind]) => kind as UiKind)
 }
 
@@ -32,10 +32,10 @@ export function getKindsForSlot(slot: UiSlotType): UiKind[] {
  */
 export const ComponentsConditionSchema = z
   .object({
-    slot: z.enum(uiSlots),
-    kind: z.enum(uiKinds),
+    slot: z.enum(uiSlots as [UiSlotType, ...UiSlotType[]]),
+    kind: z.enum(uiKinds as [UiKind, ...UiKind[]]),
   })
-  .refine((data) => uiKindMap[data.kind].slot === data.slot, {
+  .refine((data) => (uiKindMap[data.kind].slots as readonly string[]).includes(data.slot), {
     message: 'kindとslotの組み合わせが不正です',
   })
 export type ComponentsCondition = z.infer<typeof ComponentsConditionSchema>

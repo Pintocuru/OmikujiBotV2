@@ -44,7 +44,7 @@ export function processUserComment(omiken: OmikenCommentType): BotMessageType[] 
  * 単一ルールの処理
  */
 function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
-  const { userSession } = useAppStore()
+  const { userSession, data } = useAppStore()
 
   // 1. コメントルールの条件チェック
   if (!checkAllTriggers(omiken, rule.trigger)) {
@@ -55,10 +55,12 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   const restrictionResult = checkRestrictions(omiken, rule)
   if (restrictionResult.isBlocked) {
     // 3. 制限チェックの結果からメッセージを生成
+    // Secondary=falseならメッセージを生成しない
+    const enableSecondary = data.components.enableSecondary
     const toastMessages = buildRestrictionMessages(restrictionResult, rule)
     return {
       isCommentTriggered: false,
-      botMessages: toastMessages,
+      botMessages: enableSecondary ? toastMessages : [],
     }
   }
 

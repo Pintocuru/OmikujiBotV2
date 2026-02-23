@@ -10,7 +10,8 @@ import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
 
 /**
- * ??
+ * 各UiKindに対応するVueコンポーネントと、レンダリング可否の条件を管理するマップ
+ * shouldRender が未定義の場合は常に表示する
  */
 interface ComponentMapEntry {
   component: any
@@ -45,7 +46,8 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
 const SLOT_PRIORITY = { primary: 2, secondary: 2, extra: 1 } as const
 
 /**
- * ??
+ * conditions に基づいてアクティブなコンポーネント一覧を返す
+ * shouldRender が false を返すエントリは除外される
  */
 export function useComponentRenderer(
   conditions: ComputedRef<ComponentsConditions>,

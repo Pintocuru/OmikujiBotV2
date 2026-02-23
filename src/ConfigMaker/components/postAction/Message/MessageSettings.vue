@@ -17,7 +17,7 @@
   </div>
 
   <!-- 読み上げ対象 -->
-  <SettingItem label="読み上げ対象" description="わんコメで読み上げするか">
+  <SettingItem v-if="enableSecondary" label="読み上げ対象" description="わんコメで読み上げするか">
     <label class="flex items-center gap-2 cursor-pointer">
       <input type="checkbox" class="toggle toggle-primary" :checked="!isToast" @change="handleTypeChangeSwitch" />
       <span>読み上げ対象 {{ !isToast ? 'ON' : 'OFF' }}</span>
@@ -55,6 +55,7 @@
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import MessageTextEditor from './MessageTextEditor.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
     action: PostFlowMessageType
@@ -65,8 +66,10 @@
   }>()
 
   // キャラクターオプションの取得
+  const { data } = useOmikujiStore()
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
+  const enableSecondary = computed(() => data.components.enableSecondary)
 
   const updateAction = (updates: Partial<PostFlowMessageType>) => {
     emit('update:action', { ...props.action, ...updates })
