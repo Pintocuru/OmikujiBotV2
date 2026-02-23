@@ -1,39 +1,41 @@
-// tools\packages\solo\HonjoFox.ts
+// tools/packages/solo/HonjoFox.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
-/**
- * プロジェクト設定
- */
-function project(packageRoot: string): ProjectConfig {
-  return {
-    ...createCommonBuildConfig(packageRoot),
+const PROJECT_KEY = 'HonjoFox'
+const PROJECT_TITLE = '中仙道の村きつね'
+const boothURLNumber = '7982286'
 
-    name: 'HonjoFox',
-    tags: ['おみくじBOT', 'BOT', '中仙道の村きつね', 'コメントチェック', '初見判定ちゃん'],
+function project(packageRoot: string): ProjectConfig {
+  const base = createCommonBuildConfig(packageRoot)
+
+  return {
+    ...base,
+
+    name: PROJECT_KEY,
+    tags: ['おみくじBOT', 'BOT', PROJECT_TITLE, 'コメントチェック', '初見判定ちゃん'],
 
     license: {
       basic: 'CC-BY 4.0',
     },
 
     template: {
-      name: 'おみくじ BOT 中仙道の村きつね OmikujiBot HonjoFox',
-      boothURL: 'https://pintocuru.booth.pm/items/7982286',
-      readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/petit/HonjoFox',
+      name: `おみくじ BOT ${PROJECT_TITLE} OmikujiBot ${PROJECT_KEY}`,
+      boothURL: `https://pintocuru.booth.pm/items/${boothURLNumber}`,
+      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/petit/${PROJECT_KEY}`,
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
     json: {
-      ...createCommonBuildConfig(packageRoot).json,
-      jsonPath: 'HonjoFox.json',
+      ...base.json,
+      jsonPath: `${PROJECT_KEY}.json`,
     },
 
-    // アクセスレベル別設定
     accessLevels: {
       basic: {
         filesToCopy: [
-          { from: 'assets/exported/thumb/thumb_HonjoFox.gif', to: 'thumb.gif' },
-          { from: 'assets/exported/Characters/HonjoFox/', to: 'Characters/HonjoFox/' },
+          { from: `assets/exported/thumb/thumb_${PROJECT_KEY}.gif`, to: 'thumb.gif' },
+          { from: `assets/exported/Characters/${PROJECT_KEY}/`, to: `Characters/${PROJECT_KEY}/` },
         ],
       },
     },

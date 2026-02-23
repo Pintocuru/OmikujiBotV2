@@ -38,6 +38,7 @@ import ValentineCoupling from './packages/solo/ValentineCoupling'
 
 // petit
 import HonjoFoxProject from './packages/petit/HonjoFox'
+import BreakingSyokenProject from './packages/petit/BreakingSyoken'
 
 // .env からrootを取得
 const __filename = fileURLToPath(import.meta.url)
@@ -104,6 +105,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
    */
+  { project: 'BreakingSyoken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyoken', type: 'JSON', accessLevel: 'basic' },
 ]
 
 /**
