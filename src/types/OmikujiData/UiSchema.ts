@@ -77,6 +77,7 @@ export const ComponentsSchema = z.object({
     { slot: 'primary', kind: 'bubble' },
     { slot: 'secondary', kind: 'toast' },
   ]),
+  enableSecondary: z.boolean().default(true).catch(true), // 表示形式 を使用するか
 
   commonStyle: ComponentsCommonStyleSchema.default(
     ComponentsCommonStyleSchema.parse({

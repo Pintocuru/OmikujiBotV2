@@ -3,7 +3,6 @@ import { ComputedRef } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
 import { generatorApi } from '@config/dev/services/generatorApi'
-import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 
 export function useAppInitializer(isComment: ComputedRef<boolean>) {
@@ -16,7 +15,8 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
         // ユーザー記録
         for (const omiken of omikens) {
           const lc = omiken.meta.lc
-          appStore.userSession.stats.recordComment(UserNameSchema.parse(omiken), lc)
+          const tc = omiken.meta.tc
+          appStore.userSession.stats.recordComment(omiken, tc, lc)
         }
 
         // コメント処理

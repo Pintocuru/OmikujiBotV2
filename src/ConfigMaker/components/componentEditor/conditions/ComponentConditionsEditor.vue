@@ -35,6 +35,14 @@
     </div>
   </SettingItem>
 
+  <!-- BOTコメントの投稿方法 -->
+  <SettingItem label="サブコンポーネントを使用する" description="secondary（サブ）側の表示を有効にします">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" class="toggle toggle-primary" :checked="enableSecondary" @change="handleEnableSecondary" />
+      <span>{{ enableSecondary ? '使用する' : '使用しない' }}</span>
+    </label>
+  </SettingItem>
+
   <!-- 条件未設定の警告 -->
   <InformationCard v-if="conditions.length === 0" variant="neutral" icon="warning">
     <p class="text-base">
@@ -107,4 +115,11 @@
 
     omikujiStore.updateComponentsConditions(newConditions)
   }
+
+  const handleEnableSecondary = (e: Event) => {
+    const checked = (e.target as HTMLInputElement).checked
+    omikujiStore.updateComponents({ enableSecondary: checked })
+  }
+
+  const enableSecondary = computed(() => data.value.components.enableSecondary)
 </script>

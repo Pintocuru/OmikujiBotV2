@@ -23,7 +23,7 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
 
     const bubble: BotMessageBubbleType['bubble'] = {
       ...bot.bubble!,
-      message: message ?? rawMessage,
+      message,
       ...(displaySeconds != null && applyDisplaySeconds(bot.bubble, displaySeconds)),
     }
 
@@ -46,11 +46,8 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
 /**
  * ユーザーアイコンを取得
  */
-export function resolveIconPlaceholders(
-  raw: string,
-  getProfileImage?: (userId: string) => string | undefined
-): string | null {
-  if (!getProfileImage) return null
+export function resolveIconPlaceholders(raw: string, getProfileImage?: (userId: string) => string | undefined): string {
+  if (!getProfileImage) return raw
   return raw.replace(/\{\{icon\s+([^\}]+)\}\}/g, (_, userId) => {
     const url = getProfileImage(userId)
     return url ? `<img class="inline-block w-6 h-6 rounded-full" src="${url}" />` : ''

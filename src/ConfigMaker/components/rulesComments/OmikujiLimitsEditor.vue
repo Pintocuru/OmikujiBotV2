@@ -16,7 +16,7 @@
   </SettingItem>
 
   <SettingItem
-    v-if="cooldownSeconds > 0"
+    v-if="enableSecondary && cooldownSeconds > 0"
     label="クールダウンメッセージ"
     description="未設定の場合はデフォルトメッセージになります"
     :showReset="true"
@@ -54,7 +54,7 @@
   </SettingItem>
 
   <SettingItem
-    v-if="isRepeatAllowed > 0"
+    v-if="enableSecondary && isRepeatAllowed > 0"
     label="連投制限メッセージ"
     description="未設定の場合はデフォルトメッセージになります"
     :showReset="true"
@@ -90,7 +90,8 @@
   }>()
 
   // Pinia store
-  const { updateRecordProperty } = useOmikujiStore()
+  const { updateRecordProperty, data } = useOmikujiStore()
+  const enableSecondary = computed(() => data.components.enableSecondary)
 
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof OmikujiLimitsType>(key: T) =>

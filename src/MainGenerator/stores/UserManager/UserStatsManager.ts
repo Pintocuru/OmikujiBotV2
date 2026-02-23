@@ -12,9 +12,11 @@ export class UserStatsManager {
   private readonly stats = new Map<string, UserStatsRecord>()
   private liveComments = 0
   private readonly listeners = new Set<StatsEventListener>()
+  private syoken = 0
 
   /** コメントを受け取った時に呼び出す */
-  recordComment(user: UserNameType, lc: number): UserStatsRecord {
+  recordComment(user: UserNameType, tc: number, lc: number): UserStatsRecord {
+    if (tc === 1) this.syoken++ // 1回目のコメントなら初見さん
     this.liveComments = lc
     const { userId, userName, profileImage, timestamp } = user
 
@@ -70,6 +72,11 @@ export class UserStatsManager {
   /** ユニークユーザー数（コメントしたことがある人） */
   getUniqueCount(): number {
     return this.stats.size
+  }
+
+  // 初見さんを返す
+  getSyoken(): number {
+    return this.syoken
   }
 
   /** 最新コメントユーザーを取得 */

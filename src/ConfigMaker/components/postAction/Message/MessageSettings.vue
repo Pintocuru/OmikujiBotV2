@@ -16,15 +16,11 @@
     </SettingItem>
   </div>
 
-  <!-- 表示形式の選択（単一） -->
-  <SettingItem label="表示形式" description="フキダシかトーストを選択してください">
-    <label class="mr-4">
-      <input type="radio" :value="false" :checked="!isToast" @change="handleTypeChange" />
-      💬 フキダシ
-    </label>
-    <label>
-      <input type="radio" :value="true" :checked="isToast" @change="handleTypeChange" />
-      📝 トースト
+  <!-- 読み上げ対象 -->
+  <SettingItem label="読み上げ対象" description="わんコメで読み上げするか">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" class="toggle toggle-primary" :checked="!isToast" @change="handleTypeChangeSwitch" />
+      <span>読み上げ対象 {{ !isToast ? 'ON' : 'OFF' }}</span>
     </label>
   </SettingItem>
 
@@ -108,9 +104,9 @@
   })
 
   // ラジオ切替：isToast を更新
-  const handleTypeChange = (event: Event) => {
-    const newValue = (event.target as HTMLInputElement).value === 'true'
-    isToast.value = newValue
+  function handleTypeChangeSwitch(e: Event) {
+    const checked = (e.target as HTMLInputElement).checked
+    isToast.value = !checked
   }
 
   const sound = computed({

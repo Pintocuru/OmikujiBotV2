@@ -5,11 +5,11 @@
  */
 export const UiSlotMap = {
   primary: {
-    label: 'メイン表示',
+    label: 'BOTコメント(メイン)',
     description: 'わんコメでのコメント表示や読み上げの対象となります',
   },
   secondary: {
-    label: 'サブ表示',
+    label: 'BOTコメント(サブ)',
     description: 'わんコメでのコメント表示や読み上げの対象にはなりません。',
   },
   extra: {

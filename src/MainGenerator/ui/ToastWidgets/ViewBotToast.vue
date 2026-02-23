@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ComputedRef, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
   import ToastBubbleItem from './parts/ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
@@ -37,26 +37,21 @@
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { BotMessageBubbleType, CharacterColorScheme, SettingsToastSchema } from '@/types'
+  import { SettingsToastSchema } from '@/types'
+  import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
-  const { data, botMessages } = storeToRefs(appStore)
+  const { data } = storeToRefs(appStore)
   const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
   // ライセンス状態で閲覧できないなら表示させない
   const { isCharacter } = useVisibilityAccess()
-
-  const toastMessages: ComputedRef<BotMessageBubbleType[]> = computed(() => {
-    return botMessages.value.filter((msg): msg is BotMessageBubbleType => {
-      if (msg.type !== 'comment') return false
-      return msg.bubble?.isToast
-    })
-  })
+  const { messages } = useFilteredBotMessages('toast')
 
   // コメント表示ロジック
-  const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(toastMessages)
+  const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(messages)
 
   const filteredToastComments = computed(() =>
     displayedComments.value.filter((message) => message.bubble?.isToast !== false)

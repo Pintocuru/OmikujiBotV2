@@ -2,13 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { 
-  ComponentsType, 
-  ComponentsConditions,
-  ComponentsCommonStyle,
-  FeatureUsageType, 
-  SettingsType 
-} from '@/types/'
+import { ComponentsType, ComponentsConditions, ComponentsCommonStyle, FeatureUsageType, SettingsType } from '@/types/'
 
 /**
  * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル
@@ -17,6 +11,17 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   // jsonMerge を更新する関数
   const updateJsonMerge = (newMerge: JsonMergeType) => {
     data.value.jsonMerge = newMerge
+    hasChanged.value = true
+  }
+
+  /**
+   * components を更新
+   */
+  const updateComponents = (updates: Partial<ComponentsType>) => {
+    data.value.components = {
+      ...data.value.components,
+      ...updates,
+    }
     hasChanged.value = true
   }
 
@@ -56,7 +61,6 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
-
   // featureUsage を更新
   const updateFeatureUsage = (updates: Partial<FeatureUsageType>) => {
     data.value.featureUsage = { ...data.value.featureUsage, ...updates }
@@ -86,6 +90,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     updateComponentsConditions,
     updateComponentsCommonStyle,
     updateComponentSettings,
+    updateComponents,
     updateFeatureUsage,
     updateNestedFeatureUsage,
     updateSettings,

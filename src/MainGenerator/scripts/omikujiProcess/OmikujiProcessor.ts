@@ -124,13 +124,16 @@ export class OmikujiProcessor {
     // commenter: コメントした全ユーザー数、winner: ランダム当選者
     // getBasePlaceholders
     const commenter = userSession.stats.getUniqueCount()
+    const syoken = userSession.stats.getSyoken()
     const { winners } = userSession.stats.drawWinners(1)
     const firstWinner = winners[0]
 
     return DefaultPlaceholdersMetaSchema.parse({
       viewer: meta?.viewer ?? 0,
       upVote: meta?.upVote ?? 0,
+      follower: meta?.follower ?? 0,
       commenter,
+      syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
     })
   }
