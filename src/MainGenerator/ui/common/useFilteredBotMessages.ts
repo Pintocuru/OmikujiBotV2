@@ -5,7 +5,7 @@ import { useAppStore } from '@main/stores/useAppStore'
 import type { BotMessageBubbleType, UiKind } from '@/types'
 import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 
-export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | null) {
+export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | null, iconSize?: number) {
   const appStore = useAppStore()
   const { botMessages, data } = storeToRefs(appStore)
   const { hasCondition } = useVisibilityAccess()
@@ -18,7 +18,8 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
   function buildMessage(bot: BotMessageBubbleType, rawMessage: string): BotMessageBubbleType {
     const message = resolveIconPlaceholders(
       rawMessage,
-      (userId) => appStore.userSession.stats.get(userId)?.profileImage
+      (userId) => appStore.userSession.stats.get(userId)?.profileImage,
+      iconSize
     )
 
     const bubble: BotMessageBubbleType['bubble'] = {
@@ -46,11 +47,15 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
 /**
  * ユーザーアイコンを取得
  */
-export function resolveIconPlaceholders(raw: string, getProfileImage?: (userId: string) => string | undefined): string {
+export function resolveIconPlaceholders(
+  raw: string,
+  getProfileImage?: (userId: string) => string | undefined,
+  iconSize = 6
+): string {
   if (!getProfileImage) return raw
   return raw.replace(/\{\{icon\s+([^\}]+)\}\}/g, (_, userId) => {
     const url = getProfileImage(userId)
-    return url ? `<img class="inline-block w-6 h-6 rounded-full" src="${url}" />` : ''
+    return url ? `<img class="inline-block w-${iconSize} h-${iconSize} rounded-full" src="${url}" />` : ''
   })
 }
 

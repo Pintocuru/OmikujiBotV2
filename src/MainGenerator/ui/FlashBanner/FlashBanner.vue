@@ -26,7 +26,7 @@
   const { settings, blinkClass, triggerBlink, defaultComment, commitIfPending, registerIntervalHook } =
     useFlashBannerLogic()
 
-  const { messages } = useFilteredBotMessages('flashBanner', settings.value.displaySeconds)
+  const { messages } = useFilteredBotMessages('flashBanner', settings.value.displaySeconds, 12)
   const { displayedComments, start, stop } = useBotDisplay(toRef(() => messages.value))
 
   // 現在デフォルト表示中かを返すヘルパー
