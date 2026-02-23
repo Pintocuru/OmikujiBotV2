@@ -1,17 +1,23 @@
 {
   "meta": {
-    "id": "HonjoFox-ver2026.02.18-2.1.0",
-    "name": "おみくじ BOT 速報初見さん OmikujiBot Breaking",
+    "id": "BreakingSyoken-ver2026.02.23-2.3.1",
+    "name": "おみくじ BOT 速報！初見さんいらっしゃい！ OmikujiBot BreakingSyoken",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.18-2.1.0",
+    "version": "ver2026.02.23-2.3.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.4.0-alpha1",
-    "dataVersion": 2.20040001001,
+    "generatorVersion": "2.3.2-alpha1",
+    "dataVersion": 2.20030021001,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
+      "おみくじ",
       "BOT",
-      "速報初見さん",
+      "ブラウザゲーム",
+      "ゲーム配信",
+      "雑談配信",
+      "朝活配信",
+      "わんコメ",
+      "初見歓迎",
       "コメントチェック",
       "初見判定ちゃん"
     ],
@@ -865,7 +871,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "daisyUiTheme": "light"
   }
 }

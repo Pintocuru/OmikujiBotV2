@@ -7,7 +7,7 @@
     <!-- ラベルブロック：強調カラー帯 -->
     <div
       v-if="settings.label"
-      class="badge items-center justify-center font-bold"
+      class="badge badge-xl items-center justify-center font-bold"
       :class="[labelClass]"
       :style="uiMap.name.style"
     >
@@ -21,19 +21,18 @@
 
     <!-- テキスト：常時スクロール -->
     <div
-      class="flex-1 overflow-hidden flex items-center p-1 ticker-fade-mask"
+      class="flex-1 overflow-hidden flex items-center p-2 ticker-fade-mask"
       :class="uiMap.bubble.class"
       :style="uiMap.bubble.style"
     >
-      <div class="flex items-center animate-ticker" :style="tickerStyle">
-        <!-- テキストを repeat 回繰り返してシームレスに流す -->
+      <div ref="wrapperRef" class="flex items-center animate-ticker" :style="tickerStyle">
         <span
           v-for="i in repeat"
           :key="i"
-          class="inline-block whitespace-nowrap font-bold text-2xl"
+          class="inline-block whitespace-nowrap font-bold text-5xl"
           :class="uiMap.text.class"
           :style="spanStyle(i)"
-          v-html="message"
+          v-html="displayMessage"
         />
       </div>
     </div>
@@ -45,6 +44,7 @@
   import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
+  import { useMessageTransition } from './useMessageTransition'
 
   // Props
   const props = defineProps<{
@@ -54,6 +54,8 @@
     color: CharacterColorType
     labelClass?: string
   }>()
+
+  const { displayMessage, wrapperRef } = useMessageTransition(() => props.message)
 
   // テキスト間の空白 (px)
   // 短いテキストでも密になりすぎないよう、文字数に応じて調整
@@ -121,10 +123,6 @@
     }
   }
 
-  /*
-    左右端をフェードアウトさせてワープの瞬間を隠す。
-    mask-image で両端 6% をフェード。
-  */
   .ticker-fade-mask {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);

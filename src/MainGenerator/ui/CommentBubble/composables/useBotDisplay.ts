@@ -8,6 +8,7 @@ const DISPLAY_CONFIG = {
   THRESHOLD: 30,
   EXTRA_TIME_PER_CHAR: 100,
   LEAVE_ANIMATION_DELAY: 200,
+  MAX_MESSAGE_LENGTH: 100,
 } as const
 
 // 共通の基底composable
@@ -68,7 +69,8 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
           totalLifeTime = sec * 1000
         } else {
           // undefined → 自動計算
-          const commentLength = nextComment.bubble?.message?.length ?? 0
+          const rawLength = nextComment.bubble?.message?.length ?? 0
+          const commentLength = Math.min(rawLength, DISPLAY_CONFIG.MAX_MESSAGE_LENGTH)
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }

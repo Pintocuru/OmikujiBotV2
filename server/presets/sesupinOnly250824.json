@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.3.0-alpha4",
-    "dataVersion": 2.20030001004,
+    "generatorVersion": "2.3.2-alpha1",
+    "dataVersion": 2.20030021001,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -3506,9 +3506,21 @@
     "components": [
       "bubble",
       "toast",
-      "flashBanner"
+      "flashBanner",
+      "ranking",
+      "winnerGroup",
+      "flightSeat",
+      "counter"
     ],
-    "gameScripts": [],
+    "gameScripts": [
+      "BomberSpin",
+      "MultiplyBonanza",
+      "HugEmAll",
+      "GouseiSuika",
+      "DwarfBomb",
+      "WinnerGroup",
+      "GoogolClover"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "basic"

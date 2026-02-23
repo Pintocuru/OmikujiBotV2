@@ -27,9 +27,9 @@
   <SettingItem label="フキダシアニメーション" description="フキダシの表示アニメーションを設定します" forceMode="pro">
     <select
       v-model="bubble.bubbleMotionEnter"
-      :disabled="!isAdv"
       @change="updateField('bubbleMotionEnter', $event)"
       class="select select-bordered w-full max-w-xs"
+      :disabled="!isPro"
     >
       <option v-for="(value, key) in enterMotionMap" :key="key" :value="key">
         {{ value }}
@@ -38,12 +38,11 @@
   </SettingItem>
 
   <!-- フォントファミリー -->
-  <SettingItem label="フォントファミリー" description="表示に使用するフォントを設定します" forceMode="pro">
+  <SettingItem v-if="isPro" label="フォントファミリー" description="表示に使用するフォントを設定します" forceMode="pro">
     <select
       :value="commonStyle.fontFamily"
       @change="updateFontFamily($event)"
       class="select bg-base text-base-content w-full max-w-xs"
-      :disabled="!isAdv"
     >
       <option v-for="(font, key) in fontFamilyMap" :key="key" :value="key">
         {{ font.label }}
@@ -105,7 +104,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv } = useSettingMode()
+  const { isAdv, isPro } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
   const { characterArray } = useCharacterManager()
   const { updateCommonStyleField } = useCommonStyleUpdate()

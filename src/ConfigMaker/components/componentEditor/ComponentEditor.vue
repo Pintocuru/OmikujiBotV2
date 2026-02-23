@@ -48,7 +48,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isComment, isCharacter } = useVisibilityAccess()
-  const { isAdv } = useSettingMode()
+  const { isPro } = useSettingMode()
   const conditions = computed(() => data.value.components.conditions)
 
   const activeSection = ref<string | null>('componentsSettings')
@@ -148,7 +148,7 @@
       title: 'フォント',
       description: '各種アイテムのフォントを設定',
       component: FontFamilyEditor,
-      shouldShow: isAdv.value,
+      shouldShow: isPro.value,
     },
   ])
 </script>

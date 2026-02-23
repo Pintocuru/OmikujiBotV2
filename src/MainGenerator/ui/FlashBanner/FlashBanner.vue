@@ -1,16 +1,14 @@
 <!-- src/MainGenerator/ui/FlashBanner/FlashBanner.vue -->
 <template>
   <div class="fixed top-0 w-full flex justify-center">
-    <Transition name="banner-swap" mode="out-in">
-      <FlashBannerRenderer
-        :key="currentMessage?.id ?? 'default'"
-        :settings="settings"
-        :message="currentMessage?.bubble?.message ?? ''"
-        :layers="layers"
-        :color="currentCharacterColor"
-        :label-class="blinkClass"
-      />
-    </Transition>
+    <FlashBannerRenderer
+      :key="currentMessage?.id ?? 'default'"
+      :settings="settings"
+      :message="currentMessage?.bubble?.message ?? ''"
+      :layers="layers"
+      :color="currentCharacterColor"
+      :label-class="blinkClass"
+    />
   </div>
 </template>
 
@@ -25,27 +23,35 @@
 
   const { getCharacterColor, getCharacterLayers } = useCharacterManager()
 
-  // Blink + DefaultComment（コンポーザブルに委譲）
-  const { settings, blinkClass, triggerBlink, defaultComment } = useFlashBannerLogic()
+  const { settings, blinkClass, triggerBlink, defaultComment, commitIfPending, registerIntervalHook } =
+    useFlashBannerLogic()
 
   const { messages } = useFilteredBotMessages('flashBanner', settings.value.displaySeconds)
   const { displayedComments, start, stop } = useBotDisplay(toRef(() => messages.value))
 
-  // Current Display Message
-  const currentMessage = computed(() => {
-    // visible=true を優先
-    const visibleMessage = displayedComments.value.find((m) => m.display?.visible)
-    if (visibleMessage) return visibleMessage
+  // 現在デフォルト表示中かを返すヘルパー
+  const isShowingDefault = () => !displayedComments.value.find((m) => m.display?.visible)
 
-    return BotMessageBubbleSchema.parse({
+  // インターバルのタイミングでデフォルト表示中なら即反映
+  registerIntervalHook(() => {
+    commitIfPending(isShowingDefault())
+  })
+
+  const defaultMessage = computed(() =>
+    BotMessageBubbleSchema.parse({
+      id: 'flash-default',
       bubble: {
         message: defaultComment.value,
         characterKey: settings.value.defaultCharacterKey,
       },
     })
+  )
+
+  const currentMessage = computed(() => {
+    const visibleMessage = displayedComments.value.find((m) => m.display?.visible)
+    return visibleMessage ?? defaultMessage.value
   })
 
-  // Character Display
   const layers = computed(() => {
     if (!currentMessage.value) return []
     return getCharacterLayers(currentMessage.value)
@@ -56,9 +62,9 @@
     return getCharacterColor(key)
   })
 
-  // Blink Watch
   const previousMessageId = ref<string | undefined>(undefined)
 
+  // 既存のid watchはそのまま維持（コメント←→デフォルト切り替え用）
   watch(
     () => currentMessage.value?.id,
     async (newId) => {
@@ -73,7 +79,18 @@
     }
   )
 
-  // Lifecycle（useBotDisplay の start/stop のみ残す）
+  // ★ 追加: デフォルト表示中のメッセージ内容変化を検知してblink
+  watch(
+    () => defaultComment.value,
+    async (newVal, oldVal) => {
+      if (newVal === oldVal) return
+      // デフォルト表示中のときだけ発火
+      if (isShowingDefault()) {
+        await triggerBlink(true)
+      }
+    }
+  )
+
   onMounted(() => start())
   onUnmounted(() => stop())
 </script>

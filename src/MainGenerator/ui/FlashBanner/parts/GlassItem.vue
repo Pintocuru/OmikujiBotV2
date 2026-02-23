@@ -1,15 +1,15 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/GlassItem.vue -->
 <template>
   <div
-    class="flex items-center min-h-12 rounded-3xl overflow-hidden gap-3 px-4"
+    class="flex items-center min-h-12 rounded-full overflow-hidden gap-3 px-4 py-2"
     :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="{ ...uiMap.bubble.style, ...glassOverlay }"
   >
     <!-- ラベル -->
     <div
       v-if="settings.label"
-      class="shrink-0 font-bold text-sm px-3 py-1 rounded-2xl opacity-80"
-      :class="[labelClass, 'badge']"
+      class="shrink-0 font-bold text-xl p-2 rounded-2xl opacity-80"
+      :class="[labelClass, 'badge badge-xl']"
       :style="uiMap.name.style"
     >
       {{ settings.label }}
@@ -22,13 +22,15 @@
 
     <!-- メッセージ -->
     <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0">
-      <span
-        ref="textRef"
-        class="inline-block whitespace-nowrap font-bold text-2xl"
-        :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
-        :style="uiMap.text.style"
-        v-html="message"
-      />
+      <div ref="wrapperRef">
+        <span
+          ref="textRef"
+          class="inline-block whitespace-nowrap font-bold text-5xl"
+          :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
+          :style="uiMap.text.style"
+          v-html="displayMessage"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -38,6 +40,7 @@
   import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
+  import { useMessageTransition } from './useMessageTransition'
 
   // Props
   const props = defineProps<{
@@ -76,7 +79,9 @@
     shouldScroll.value = textRef.value.scrollWidth > textContainerRef.value.clientWidth + 20
   }
 
-  watch(() => props.message, checkScrollNeeded, { immediate: true })
+  const { displayMessage, wrapperRef } = useMessageTransition(() => props.message)
+
+  watch(() => displayMessage.value, checkScrollNeeded, { immediate: true })
 
   let resizeObserver: ResizeObserver | null = null
   onMounted(() => {

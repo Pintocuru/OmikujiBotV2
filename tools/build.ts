@@ -160,6 +160,7 @@ const packageBuildTargets: PackageBuildTarget[] = [
 
       // petit
       HonjoFoxProject(packageRoot),
+      BreakingSyokenProject(packageRoot),
     ])
 
     // 改良されたビルドを実行

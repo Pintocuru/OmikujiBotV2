@@ -1,15 +1,15 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/ArcadeItem.vue -->
 <template>
   <div
-    class="flex items-center min-h-12 overflow-hidden gap-2 px-2"
+    class="flex items-center min-h-18 overflow-hidden gap-4 px-4"
     :class="[uiMap.bubble.class, settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']"
     :style="{ ...uiMap.bubble.style, ...arcadeContainer }"
   >
     <!-- ラベル：点滅ブロック風 -->
     <div
       v-if="settings.label"
-      class="shrink-0 font-black text-sm px-2 py-1 uppercase tracking-widest arcade-label"
-      :class="[labelClass, 'badge']"
+      class="shrink-0 font-black text-lg px-3 py-1 uppercase tracking-widest arcade-label"
+      :class="[labelClass, 'badge badge-xl']"
       :style="uiMap.name.style"
     >
       {{ settings.label }}
@@ -22,12 +22,14 @@
 
     <!-- メッセージ -->
     <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0">
-      <span
-        ref="textRef"
-        class="inline-block text-white whitespace-nowrap font-black text-xl arcade-text"
-        :class="[{ 'animate-scroll': shouldScroll }]"
-        v-html="message"
-      />
+      <div ref="wrapperRef">
+        <span
+          ref="textRef"
+          class="inline-block text-white whitespace-nowrap font-black text-5xl arcade-text"
+          :class="[{ 'animate-scroll': shouldScroll }]"
+          v-html="displayMessage"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +39,7 @@
   import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
+  import { useMessageTransition } from './useMessageTransition'
 
   // Props
   const props = defineProps<{
@@ -72,7 +75,9 @@
     shouldScroll.value = textRef.value.scrollWidth > textContainerRef.value.clientWidth + 20
   }
 
-  watch(() => props.message, checkScrollNeeded, { immediate: true })
+  const { displayMessage, wrapperRef } = useMessageTransition(() => props.message, 'slideInRight')
+
+  watch(() => displayMessage.value, checkScrollNeeded, { immediate: true })
 
   let resizeObserver: ResizeObserver | null = null
   onMounted(() => {
