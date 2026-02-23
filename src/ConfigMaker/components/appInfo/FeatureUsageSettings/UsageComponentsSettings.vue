@@ -27,8 +27,6 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useFeatureUsageSettings } from './useFeatureUsageSettings'
   import { uiKindMap } from '@/types/'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { BASIC_COMPONENTS, PRO_COMPONENTS } from '@config/components/componentEditor/componentRules'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { computed } from 'vue'
 
@@ -38,7 +36,7 @@
   const groupedUiKinds = computed(() => {
     return slotOrder.map((slot) => ({
       slot,
-      items: Object.entries(uiKindMap).filter(([, v]) => v.slot === slot),
+      items: Object.entries(uiKindMap).filter(([, v]) => v.primarySlot === slot),
     }))
   })
 </script>

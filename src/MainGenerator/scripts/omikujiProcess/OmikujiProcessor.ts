@@ -122,7 +122,7 @@ export class OmikujiProcessor {
     const { userSession } = this.store
 
     // commenter: コメントした全ユーザー数、winner: ランダム当選者
-    // getBasePlaceholders
+    const lc = userSession.stats.getLiveComments()
     const commenter = userSession.stats.getUniqueCount()
     const syoken = userSession.stats.getSyoken()
     const { winners } = userSession.stats.drawWinners(1)
@@ -132,6 +132,7 @@ export class OmikujiProcessor {
       viewer: meta?.viewer ?? 0,
       upVote: meta?.upVote ?? 0,
       follower: meta?.follower ?? 0,
+      lc,
       commenter,
       syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',

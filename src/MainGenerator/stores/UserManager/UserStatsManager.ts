@@ -54,11 +54,6 @@ export class UserStatsManager {
     return { commenter, winners: shuffled.slice(0, Math.min(count, 9)) }
   }
 
-  /** その配信の累計コメント数 */
-  getLiveComments(): number {
-    return this.liveComments
-  }
-
   /** 指定ユーザーの統計を取得 */
   get(userId: string): UserStatsRecord | null {
     return this.stats.get(userId) ?? null
@@ -67,6 +62,11 @@ export class UserStatsManager {
   /** 全ユーザーの統計一覧を取得 */
   getAll(): UserStatsRecord[] {
     return Array.from(this.stats.values())
+  }
+
+  /** 配信の累計コメント数 */
+  getLiveComments(): number {
+    return this.liveComments
   }
 
   /** ユニークユーザー数（コメントしたことがある人） */

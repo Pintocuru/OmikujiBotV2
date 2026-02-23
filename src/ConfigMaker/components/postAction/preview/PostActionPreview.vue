@@ -4,7 +4,7 @@
     <!-- メッセージアクション -->
     <div v-if="action.actionType === 'message'" class="w-full">
       <!-- フキダシ -->
-      <div v-if="action.message.isToast !== true" class="space-y-8 flex flex-col items-center">
+      <div v-if="!enableSecondary || action.message.isToast !== true" class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
           :key="messageKey"
           :botName="character ? character.displayName : null"
@@ -89,6 +89,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
 
+  const enableSecondary = computed(() => data.value.components.enableSecondary)
   const characters = computed(() => data.value.characters)
   const bubbleSettings = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
   const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))

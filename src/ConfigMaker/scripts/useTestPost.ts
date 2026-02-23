@@ -125,8 +125,8 @@ export function useTestPost() {
       return
     }
 
-    const unpriorityItems = omikujiSet.filter((item) => !item.isPriority)
-    const targetSet = unpriorityItems.length > 0 ? unpriorityItems : omikujiSet
+    const priorityItems = omikujiSet.filter((item) => !item.isPriority)
+    const targetSet = priorityItems.length > 0 ? priorityItems : omikujiSet
     const omikujisWithPercent = addWeightPercentages(targetSet)
     const omikujiItem = drawOmikuji(omikujisWithPercent)
 

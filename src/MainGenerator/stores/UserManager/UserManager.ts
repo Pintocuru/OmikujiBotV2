@@ -26,15 +26,6 @@ export class UserManager {
   }
 
   /**
-   * コメント受信時に呼び出す統合メソッド
-   * stats と visits の両方を更新する
-   */
-  recordComment(ruleId: string, user: UserNameType, lc: number): void {
-    this.stats.recordComment(user, lc)
-    this.visits.record(ruleId, user)
-  }
-
-  /**
    * セッションをリセット（新しい配信開始時などに使用）
    */
   resetSession(): void {

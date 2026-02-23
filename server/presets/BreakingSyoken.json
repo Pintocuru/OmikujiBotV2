@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.18-2.1.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.2-alpha3",
-    "dataVersion": 2.1101003,
+    "generatorVersion": "2.4.0-alpha1",
+    "dataVersion": 2.20040001001,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -760,6 +760,7 @@
         "kind": "flashBanner"
       }
     ],
+    "enableSecondary": false,
     "commonStyle": {
       "fontFamily": "default",
       "defaultColor": {
