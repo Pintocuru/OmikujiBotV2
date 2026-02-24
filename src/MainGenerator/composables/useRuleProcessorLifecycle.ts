@@ -6,7 +6,7 @@ import { useAppStore } from '@main/stores/useAppStore'
 export function useRuleProcessorLifecycle(isTimer: ComputedRef<boolean>) {
   watchEffect((onCleanup) => {
     const appStore = useAppStore()
-    if (!appStore.isInitialized) return
+    if (appStore.status !== 'initializing') return
 
     console.log('🔄 RuleProcessor起動')
 

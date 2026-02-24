@@ -12,13 +12,13 @@ const plugin: OnePlugin = {
   uid: PLUGIN_KEY,
   version: APP_VERSION,
   author: 'Pintocuru',
-  url: '', // TODO:あとで配布URLを入れる
+  url: 'https://pintocuru.booth.pm/items/8025642',
   permissions: ['filter.comment'],
   defaultState: {},
 
   async init(api, initialData) {
     try {
-      postSystemMessage(`【${PLUGIN_NAME}】がONだよ`, 'info')
+      postSystemMessage(`【${PLUGIN_NAME}】を起動しました`, 'info')
     } catch (error) {
       console.error('Plugin initialization failed:', error)
       postSystemMessage(`プラグインの初期化に失敗しました: ${error}`)
@@ -38,7 +38,7 @@ const plugin: OnePlugin = {
     return await pluginRequest(req)
   },
   destroy() {
-    postSystemMessage(`【${PLUGIN_NAME}】がOFFだよ`, 'info')
+    postSystemMessage(`【${PLUGIN_NAME}】を終了しました`, 'info')
   },
 }
 
