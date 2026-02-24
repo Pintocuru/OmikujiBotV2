@@ -1,4 +1,4 @@
-// tools\buildOptions\baseSettings.ts
+// tools/buildOptions/baseSettings.ts
 import path from 'path'
 import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'

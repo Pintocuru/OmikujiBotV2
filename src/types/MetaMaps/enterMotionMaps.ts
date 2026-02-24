@@ -1,4 +1,4 @@
-//
+// src/types/MetaMaps/enterMotionMaps.ts
 
 export const enterMotionMap = {
   none: 'なし',

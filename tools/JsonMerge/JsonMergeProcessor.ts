@@ -1,4 +1,4 @@
-// tools/JsonMerge/jsonMergeProcessor.ts
+// tools/JsonMerge/JsonMergeProcessor.ts
 import type { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { applyAccessLevel, applyOrderOffset } from './transforms'
 import { applyRemaps } from './remaps'

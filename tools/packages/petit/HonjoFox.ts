@@ -1,4 +1,4 @@
-// tools/packages/solo/HonjoFox.ts
+// tools/packages/petit/HonjoFox.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 

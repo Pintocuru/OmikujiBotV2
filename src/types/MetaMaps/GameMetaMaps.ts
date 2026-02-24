@@ -1,4 +1,4 @@
-// src/GameScripts/gameMetaMap.ts
+// src/types/MetaMaps/GameMetaMaps.ts
 
 const DOCS = 'https://github.com/Pintocuru/OmikujiBot-Docs'
 const MAIN = `${DOCS}/blob/main/solo`

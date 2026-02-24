@@ -1,4 +1,4 @@
-// src/types/MetaMaps/ComponentsSettingsMaps.ts
+// src/types/MetaMaps/UiSettingsMaps.ts
 
 /**
  * ニュースフラッシュ コンポーネントの選択肢

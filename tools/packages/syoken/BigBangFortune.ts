@@ -1,4 +1,4 @@
-// tools\packages\full\ReimuMarisa.ts
+// tools/packages/syoken/BigBangFortune.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'

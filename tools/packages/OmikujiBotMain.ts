@@ -1,4 +1,4 @@
-// tools\packages\OmikujiBotMain.ts
+// tools/packages/OmikujiBotMain.ts
 // MainGenerator のみをビルドするコアプロジェクト
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import { createCommonBuildConfig } from '../buildOptions/baseSettings'

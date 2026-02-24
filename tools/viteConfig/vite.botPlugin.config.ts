@@ -1,4 +1,4 @@
-// vite.config.ts
+// tools/viteConfig/vite.botPlugin.config.ts
 import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'

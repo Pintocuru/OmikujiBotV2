@@ -1,4 +1,4 @@
-<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\ConfigMaker\components\componentEditor\CommonStyle\FontFamilyEditor.vue -->
+<!-- src/ConfigMaker/components/componentEditor/CommonStyle/FontFamilyEditor.vue -->
 <template>
   <!-- プレビュー表示 -->
   <div class="mb-6 p-4 rounded-box border bg-base-200" :class="[fontFamilyClass]">

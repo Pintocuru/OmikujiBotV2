@@ -1,4 +1,4 @@
-// server/services/directoryService.ts
+// server/core/services/directoryService.ts
 import fs from 'fs/promises'
 
 /**

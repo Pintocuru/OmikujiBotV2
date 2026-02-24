@@ -1,4 +1,4 @@
-// tools/packages/solo/BreakingSyoken.ts
+// tools/packages/petit/BreakingSyoken.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 

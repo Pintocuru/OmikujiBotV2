@@ -1,4 +1,4 @@
-// server/services/fileSystemService.ts
+// server/core/services/fileSystemService.ts
 import fs from 'fs/promises'
 import path from 'path'
 import { FileItem } from '../types'

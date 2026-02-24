@@ -1,4 +1,4 @@
-// server/types.ts
+// server/core/types.ts
 export interface FileItem {
   name: string
   modified: string

@@ -1,4 +1,4 @@
-// C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\scripts\PostOmikuji\BotIcon.ts
+// src/MainGenerator/scripts/PostOmikuji/BotIcon.ts
 
 // androidのドロイド君のアイコン素材
 // https://icooon-mono.com/00053-android%E3%81%AE%E3%83%89%E3%83%AD%E3%82%A4%E3%83%89%E5%90%9B%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3%E7%B4%A0%E6%9D%90/

@@ -1,4 +1,4 @@
-// tools\packages\full\StrawberryChocolate.ts
+// tools/packages/full/StrawberryChocolate.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 

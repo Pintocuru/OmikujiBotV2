@@ -1,4 +1,4 @@
-// build.ts
+// tools/build.ts
 import { APP_VERSION, DATA_VERSION } from '@/version'
 
 import { CoreBuildTarget, PackageBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
