@@ -23,7 +23,7 @@
   import { useRuleProcessorLifecycle } from '@main/composables/useRuleProcessorLifecycle'
   import { useFontFamily } from '@/types/'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
-  import ErrorInitComponent from '@shared/components/error/ErrorInfo.vue'
+  import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
 
   const appStore = useAppStore()
   const conditions = computed(() => appStore.data.components.conditions)
