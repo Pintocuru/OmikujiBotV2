@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "BreakingSyoken-ver2026.02.24-2.3.2",
+    "id": "BreakingSyoken-ver2026.02.24-2.3.3",
     "name": "おみくじ BOT 速報！初見さんいらっしゃい！ OmikujiBot BreakingSyoken",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.24-2.3.2",
+    "version": "ver2026.02.24-2.3.3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.3.2",
-    "dataVersion": 2.20030024002,
+    "generatorVersion": "2.3.3",
+    "dataVersion": 2.20030034,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
