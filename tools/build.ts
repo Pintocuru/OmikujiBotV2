@@ -35,6 +35,8 @@ import LenormandOracleProject from './packages/solo/LenormandOracle'
 import RunicOracleProject from './packages/solo/RunicOracle'
 import TarotCardProject from './packages/solo/TarotCard'
 import ValentineCoupling from './packages/solo/ValentineCoupling'
+import MaidenOmikujiNormalProject from './packages/solo/MaidenOmikujiNormal'
+import FlowerFortuneProject from './packages/solo/FlowerFortune'
 
 // petit
 import HonjoFoxProject from './packages/petit/HonjoFox'
@@ -69,8 +71,6 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   */
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
   /**
    * full
   { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
@@ -101,14 +101,18 @@ const packageBuildTargets: PackageBuildTarget[] = [
   { project: 'LenormandOracle', type: 'JSON', accessLevel: 'adv' },
   { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
+  { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
    */
+  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+
   /**
    * petit
   { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
-   */
   { project: 'BreakingSyoken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BreakingSyoken', type: 'JSON', accessLevel: 'basic' },
+   */
 ]
 
 /**
@@ -159,6 +163,8 @@ const packageBuildTargets: PackageBuildTarget[] = [
       RunicOracleProject(packageRoot),
       BigBangFortuneProject(packageRoot),
       ValentineCoupling(packageRoot),
+      MaidenOmikujiNormalProject(packageRoot),
+      FlowerFortuneProject(packageRoot),
 
       // petit
       HonjoFoxProject(packageRoot),

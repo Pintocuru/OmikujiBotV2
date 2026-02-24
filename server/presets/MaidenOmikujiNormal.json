@@ -1,24 +1,21 @@
 {
   "meta": {
-    "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 OmikujiBot ReimuMarisa-PRO",
+    "id": "MaidenOmikujiNormal-ver2026.02.25-2.3.4",
+    "name": "おみくじ BOT 巫女さんのおみくじ OmikujiBot MaidenOmikujiNormal",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2026.02.25-2.3.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-beta1",
-    "dataVersion": 2.091,
+    "generatorVersion": "2.3.4",
+    "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
+      "BOT",
+      "巫女さんのおみくじ",
+      "おみくじ"
     ],
-    "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/5471598"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7982286"
   },
   "jsonMerge": [],
   "comments": {
@@ -28,7 +25,7 @@
       "name": "巫女さんのおみくじ(ノーマル)",
       "description": "巫女さん手製の、真面目なおみくじ。大吉・吉・中吉・小吉・末吉・凶・大凶が入っているよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-02-15T03:17:53.681Z",
+      "updatedAt": "2026-02-24T13:55:56.504Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
@@ -74,7 +71,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -119,7 +116,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -164,7 +161,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -209,7 +206,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -254,7 +251,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -299,7 +296,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -344,7 +341,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -389,7 +386,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -408,18 +405,12 @@
         "access": [],
         "gift": [],
         "comment": [
-          "^おみくじ",
+          "おみくじ ",
           "^みくじ",
           "^omikuji",
-          "^omikuzi",
           "^御神籤",
           "^運勢",
-          "^うんせい",
-          "^運",
-          "^吉",
-          "^凶",
-          "^神社",
-          "^じんじゃ"
+          "^うんせい"
         ]
       },
       "limits": {
@@ -779,7 +770,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken_2": {
@@ -829,7 +820,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
@@ -848,6 +839,7 @@
         "kind": "ranking"
       }
     ],
+    "enableSecondary": true,
     "commonStyle": {
       "fontFamily": "default",
       "defaultColor": {
@@ -858,6 +850,12 @@
         "nameColor": "#212121",
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "settings": {

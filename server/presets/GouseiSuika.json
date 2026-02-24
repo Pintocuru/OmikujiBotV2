@@ -1,16 +1,22 @@
 {
   "meta": {
-    "id": "1754926464640-roopmp",
+    "id": "GouseiSuika-ver2026.02.25-2.3.4",
     "name": "おみくじ BOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.12.05-v1.4.3",
+    "version": "ver2026.02.25-2.3.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.1",
-    "dataVersion": 2.011,
+    "generatorVersion": "2.3.4",
+    "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "ゲーム", "スイカゲーム", "カボチャゲーム", "クジラゲームオンライン"],
+    "tags": [
+      "おみくじBOT",
+      "ゲーム",
+      "スイカゲーム",
+      "カボチャゲーム",
+      "クジラゲームオンライン"
+    ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7730686"
+    "url": "https://pintocuru.booth.pm/items/5813323"
   },
   "jsonMerge": [],
   "comments": {
@@ -24,11 +30,16 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["ギフト", "スイカジェネレーター", "カボチャジェネレーター", "クジラジェネレーター"],
+      "tags": [
+        "ギフト",
+        "スイカジェネレーター",
+        "カボチャジェネレーター",
+        "クジラジェネレーター"
+      ],
       "accessLevel": "adv",
       "omikuji": [
         {
-          "id": "1767020159501",
+          "id": "5096f12f-e74d-43e0-9662-b2c7149b4038",
           "key": "1767020159501",
           "name": "スイカプレミアム",
           "createdAt": "2025-12-29T14:55:59.501Z",
@@ -49,7 +60,7 @@
           "criteria": null
         },
         {
-          "id": "f04e679a-a3c7-4a7f-9b83-94bd51a6a5d2",
+          "id": "54afdc20-ba69-4edd-9637-96cd1c68d31d",
           "key": "f04e679a-a3c7-4a7f-9b83-94bd51a6a5d2",
           "name": "カボチャプレミアム",
           "createdAt": "2025-12-29T14:55:59.501Z",
@@ -68,7 +79,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["comment"],
+            "conditions": [
+              "comment"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -78,11 +91,17 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": ["pumpkin", "かぼちゃ", "カボチャ", "南瓜", "🎃"]
+            "comment": [
+              "pumpkin",
+              "かぼちゃ",
+              "カボチャ",
+              "南瓜",
+              "🎃"
+            ]
           }
         },
         {
-          "id": "da8ffc2a-9a84-407b-96ca-1571a8d15744",
+          "id": "68222f23-ae5c-40d4-9a55-d1c1d9380f8b",
           "key": "da8ffc2a-9a84-407b-96ca-1571a8d15744",
           "name": "クジラプレミアム",
           "createdAt": "2025-12-29T14:55:59.501Z",
@@ -101,7 +120,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["comment"],
+            "conditions": [
+              "comment"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -111,17 +132,30 @@
               "unit": "lc",
               "value": 1
             },
-            "comment": ["whale", "くじら", "クジラ", "鯨", "🐋", "🐳"]
+            "comment": [
+              "whale",
+              "くじら",
+              "クジラ",
+              "鯨",
+              "🐋",
+              "🐳"
+            ]
           }
         }
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["gift"],
+        "conditions": [
+          "gift"
+        ],
         "userName": [],
         "access": [],
-        "gift": ["all"],
-        "comment": ["おみくじ"]
+        "gift": [
+          "all"
+        ],
+        "comment": [
+          "おみくじ"
+        ]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -136,15 +170,17 @@
       "name": "スイカジェネレーター",
       "description": "スイカゲーム風のおみくじ",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2026-01-17T03:21:38.983Z",
+      "updatedAt": "2026-02-24T14:04:14.714Z",
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター"],
+      "tags": [
+        "スイカジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "id": "4df704ed-ab99-4dce-950d-304079b0a2b9",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "name": "スイカ",
           "description": "",
@@ -167,7 +203,7 @@
           "criteria": null
         },
         {
-          "id": "1767024074139",
+          "id": "da8a08c5-cfd0-41d6-a785-5338fa2db235",
           "key": "1767024074139",
           "name": "回数超過",
           "createdAt": "2025-12-29T16:01:14.139Z",
@@ -190,7 +226,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -198,7 +234,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -214,11 +252,20 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
+        "comment": [
+          "スイカ",
+          "^すいか",
+          "^suika",
+          "^suica",
+          "^西瓜",
+          "🍉"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -233,15 +280,18 @@
       "name": "カボチャジェネレーター",
       "description": "スイカゲームのハロウィン仕様風のおみくじ",
       "createdAt": "2025-11-02T09:18:35.762Z",
-      "updatedAt": "2026-01-17T03:21:38.984Z",
+      "updatedAt": "2026-02-24T14:05:28.145Z",
       "order": 3,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター", "カボチャジェネレーター"],
+      "tags": [
+        "スイカジェネレーター",
+        "カボチャジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "id": "e7b52cd5-549a-42c8-8a98-f679e8bc02c2",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "name": "カボチャ",
           "description": "",
@@ -264,7 +314,7 @@
           "criteria": null
         },
         {
-          "id": "1767024194524",
+          "id": "a3b7e143-d6dc-4233-9c15-6d8cac6a3c42",
           "key": "1767024194524",
           "name": "回数超過",
           "createdAt": "2025-12-29T16:03:14.524Z",
@@ -287,7 +337,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -295,7 +345,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -311,11 +363,19 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
+        "comment": [
+          "カボチャ",
+          "^かぼちゃ",
+          "^pumpkin",
+          "南瓜",
+          "🎃"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -330,15 +390,18 @@
       "name": "クジラジェネレーター",
       "description": "クジラゲームオンライン風のおみくじ",
       "createdAt": "2025-11-02T09:21:18.863Z",
-      "updatedAt": "2026-01-17T03:21:38.984Z",
+      "updatedAt": "2026-02-24T14:05:47.605Z",
       "order": 4,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["スイカジェネレーター", "クジラジェネレーター"],
+      "tags": [
+        "スイカジェネレーター",
+        "クジラジェネレーター"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
+          "id": "2aceb85e-a49a-4b09-bc00-250d20ad1355",
           "key": "aa1ece5f-6985-4900-a2a4-e6b92f66a41f",
           "name": "クジラ",
           "description": "",
@@ -361,7 +424,7 @@
           "criteria": null
         },
         {
-          "id": "1767024253934",
+          "id": "fe3699c1-cdf9-4cb6-9af4-dbe97697a1ba",
           "key": "1767024253934",
           "name": "回数超過",
           "createdAt": "2025-12-29T16:04:13.934Z",
@@ -384,7 +447,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -392,7 +455,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -408,11 +473,20 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
+        "comment": [
+          "クジラ",
+          "^くじら",
+          "^whale",
+          "^鯨",
+          "🐋",
+          "🐳"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -423,6 +497,7 @@
     }
   },
   "timers": {},
+  "metas": {},
   "actionSets": {},
   "placeholders": {},
   "characters": {
@@ -436,7 +511,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -470,7 +548,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken_2": {
@@ -483,7 +561,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -517,20 +598,24 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
   "components": {
-    "conditions": ["toast", "ranking"],
-    "bubble": {
-      "showCharacters": {
-        "center": ["omiken", "omiken_2"],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+    "conditions": [
+      {
+        "slot": "secondary",
+        "kind": "toast"
       },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "enableSecondary": true,
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "forest",
@@ -540,34 +625,55 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": ["GouseiSuika"],
-      "title": "🍉スイカランキング🍉",
-      "color": "lofi",
-      "limit": 5,
-      "sortOrder": "high",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "omiken",
+            "omiken_2"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "GouseiSuika"
+        ],
+        "title": "🍉スイカランキング🍉",
+        "color": "lofi",
+        "limit": 5,
+        "sortOrder": "high",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -575,12 +681,18 @@
     "usage": {
       "comments": "basic",
       "timers": "none",
+      "metas": "none",
       "actionSets": "none",
       "placeholders": "none",
       "characters": "none"
     },
-    "components": ["toast", "ranking"],
-    "gameScripts": ["GouseiSuika"],
+    "components": [
+      "toast",
+      "ranking"
+    ],
+    "gameScripts": [
+      "GouseiSuika"
+    ],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "none"
@@ -588,7 +700,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "daisyUiTheme": "emerald"
   }
 }

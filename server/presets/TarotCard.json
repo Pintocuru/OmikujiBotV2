@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.3.4",
+    "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -25,7 +25,7 @@
       "name": "タロットカード",
       "description": "22枚の大アルカナを使ったタロット占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-01-17T00:34:25.316Z",
+      "updatedAt": "2026-02-24T13:53:44.403Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#9C27B0",
@@ -35,7 +35,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "1757800562314",
+          "id": "3992195a-00cb-468b-835a-a6743d27a805",
           "key": "1757800562314",
           "name": "タロット",
           "createdAt": "2025-09-13T21:56:02.314Z",
@@ -57,17 +57,18 @@
             },
             {
               "delaySeconds": 3.5,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "TarotCardResult"
-                }
-              ]
+              "actionType": "message",
+              "characterKey": null,
+              "iconKey": "default",
+              "sound": "collect",
+              "message": {
+                "bubble": "<<user>>さんは<<TarotCard>>",
+                "isToast": false
+              }
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -86,15 +87,12 @@
         "access": [],
         "gift": [],
         "comment": [
-          "^タロット",
+          "タロット",
           "^たろっと",
           "^tarot",
-          "^うらない",
-          "^うらなう",
-          "^占い",
-          "^占う",
-          "^fortune",
-          "タロットカード"
+          "^うらな[いう]",
+          "^占[いう]",
+          "^fortune"
         ]
       },
       "limits": {
@@ -106,6 +104,7 @@
     }
   },
   "timers": {},
+  "metas": {},
   "actionSets": {
     "TarotCardIntro": {
       "id": "TarotCardFirst",
@@ -146,43 +145,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
-        "queryString": "",
-        "characterKey": ""
-      },
-      "special": "return"
-    },
-    "TarotCardResult": {
-      "id": "mkc5pno89tdfl",
-      "key": "TarotCardResult",
-      "name": "タロットカード:占い部分",
-      "description": "結果をわんコメへ投稿します",
-      "createdAt": "2026-01-05T09:58:47.066Z",
-      "updatedAt": "2026-01-13T06:00:50.200Z",
-      "order": 2,
-      "isEnabled": true,
-      "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
-      "accessLevel": "basic",
-      "type": "postActions",
-      "postActions": [
-        {
-          "delaySeconds": 0,
-          "actionType": "message",
-          "characterKey": "omiken",
-          "iconKey": "default",
-          "sound": "collect",
-          "message": {
-            "bubble": "<<user>>さんは<<TarotCard>>",
-            "isToast": false
-          }
-        }
-      ],
-      "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1268,7 +1231,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken_2": {
@@ -1318,26 +1281,28 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [
-          "omiken"
-        ],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "enableSecondary": true,
+    "commonStyle": {
+      "fontFamily": "kaiseiDecol",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "dark",
@@ -1347,36 +1312,54 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "characterSize": 48,
-      "fontFamily": "kaiseiDecol",
-      "bubbleMotionEnter": "flipX",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
-      "title": "🔯タロット占い履歴🔮",
-      "color": "aqua",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "omiken"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "flipX",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🔯タロット占い履歴🔮",
+        "color": "aqua",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -1384,6 +1367,7 @@
     "usage": {
       "comments": "basic",
       "timers": "none",
+      "metas": "none",
       "actionSets": "basic",
       "placeholders": "basic",
       "characters": "none"
