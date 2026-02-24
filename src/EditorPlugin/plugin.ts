@@ -8,7 +8,7 @@ import { processOmikenComment } from '@shared/sdk/subscribe/OmikenComment/Omiken
 import { hoge } from './scripts/hoge'
 
 const plugin: OnePlugin = {
-  name: `${PLUGIN_NAME} ${PLUGIN_KEY}`,
+  name: `${PLUGIN_NAME}`,
   uid: PLUGIN_KEY,
   version: APP_VERSION,
   author: 'Pintocuru',

@@ -23,9 +23,9 @@ export default defineConfig(() => {
     build: {
       // ライブラリモードで構築
       lib: {
-        entry: path.resolve(projectRoot, 'src/BotPlugin/plugin.ts'),
+        entry: path.resolve(projectRoot, 'src/EditorPlugin/plugin.ts'),
         name: 'Plugin',
-        fileName: () => `omikujiBotPlugin-${APP_VERSION}/plugin.js`,
+        fileName: () => `EditorPlugin-${APP_VERSION}/plugin.js`,
         formats: ['cjs'], // 出力形式は CommonJS 指定
       },
 

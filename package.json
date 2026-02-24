@@ -12,7 +12,6 @@
     "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
     "lintLevel2:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "vitest run MetaTriggerEvaluator",
-    "build:omikujiBotVite": "vite build --config tools/viteConfig/vite.main.config.ts && vite build --config tools/viteConfig/vite.configmaker.config.ts",
     "build:omikujiBotPlugin": "vite build --config tools/viteConfig/vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx tools/build.ts"
   },
