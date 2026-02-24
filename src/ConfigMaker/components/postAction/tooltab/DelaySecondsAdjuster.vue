@@ -26,7 +26,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { PostFlowType } from '@/types/OmikujiData/'
-  import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+  import { POST_SETTINGS } from '@shared/sdk/PostSettings'
   import { Minus, Plus } from 'lucide-vue-next'
 
   // Props

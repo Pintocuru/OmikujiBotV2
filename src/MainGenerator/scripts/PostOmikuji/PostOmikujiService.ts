@@ -2,7 +2,7 @@
 import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType, DisplayOptionType } from '@/types/'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { Service } from '@onecomme.com/onesdk/types/Service'
 import { MetaStateService } from '@main/stores/MetaState/MetaStateService'

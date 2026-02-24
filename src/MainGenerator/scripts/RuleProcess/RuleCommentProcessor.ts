@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/RuleProcess/RuleCommentProcessor.ts
 import { BotMessageType } from '@/types/'
 import { processUserComment } from '@main/scripts/RuleProcess/UserCommentProcessor'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 const TIME_THRESHOLD = 10000 // これ以上経過した古いコメントは判定しない

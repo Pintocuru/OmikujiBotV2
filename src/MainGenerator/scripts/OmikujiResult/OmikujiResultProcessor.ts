@@ -13,7 +13,7 @@ import { ProcessedPostAction } from '@/types/MainGenerator/OmikujiResultTypes'
 import { CharacterManager, checkIsCharacterMode } from '../CharacterManager/CharacterManager'
 import { createBotMessagesFromAction } from './BotMessageHelpers'
 import { playSoundDelay } from '@sounds/PlaySound'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 
 /**
  * おみくじ結果の処理とBotMessage生成を担当

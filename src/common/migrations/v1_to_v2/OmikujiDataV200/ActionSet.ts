@@ -4,7 +4,7 @@ import { CharacterEmotionSchema } from './CharacterSchema'
 import { soundList } from '@sounds/soundMap'
 import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v2/OmikujiDataV130/OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types'
-import { POST_SETTINGS } from '@shared/sdk/postMessage/PostSettings'
+import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { WeightValueSchema } from './PlaceholderSchema'
 import { MessageSquare, PartyPopper, Volume2, MessagesSquare, Sparkles } from 'lucide-vue-next'
 
