@@ -9,8 +9,12 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
   const initialize = async () => {
     const appStore = useAppStore()
 
+    // 初期化開始を明示（status: 'initializing' はストア初期値のため呼び出し不要だが、
+    // 再初期化ケースに備えて明示的に設定する）
+    appStore.setStatus('initializing')
+
     try {
-      // コメント購読開始
+      // コメント購読開始（内部で PingOneSDK によるリトライ付き接続確認を実施）
       const isInit = await GetOmikenComments((omikens) => {
         // ユーザー記録
         for (const omiken of omikens) {
@@ -27,19 +31,27 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
         appStore.scheduleBotMessages(botMessages)
       })
 
-      appStore.setInitialized(isInit)
-
-      if (!isInit) return
+      if (!isInit) {
+        // PingOneSDK のリトライが全て失敗した場合のみ error に遷移
+        appStore.setStatus('error')
+        return
+      }
 
       // サーバ同期
       const isHealth = await generatorApi.getHealth()
-      if (!isHealth) return
+      if (!isHealth) {
+        appStore.setStatus('error')
+        return
+      }
 
       const serverData = await generatorApi.loadGeneratorConfig()
       if (serverData) appStore.loadData(serverData)
+
+      // 全て成功したら ready へ
+      appStore.setStatus('ready')
     } catch (error) {
       console.error('❌ 初期化エラー:', error)
-      appStore.setInitialized(false)
+      appStore.setStatus('error')
     }
   }
 
