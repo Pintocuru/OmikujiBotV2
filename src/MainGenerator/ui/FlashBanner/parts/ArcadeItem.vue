@@ -105,7 +105,7 @@
   }
   /* ラベルのカーソル点滅 */
   .arcade-label {
-    animation: cursor-blink 1s step-end infinite;
+    animation: cursor-blink 4s step-end infinite;
   }
   @keyframes cursor-blink {
     0%,
