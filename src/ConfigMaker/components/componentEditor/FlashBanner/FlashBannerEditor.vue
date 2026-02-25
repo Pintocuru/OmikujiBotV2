@@ -17,10 +17,6 @@
       :model-value="commonStyle.defaultColor"
       @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
-
-    <InformationCard>
-      <p>デフォルトカラーは、フキダシ・トースト共通です。</p>
-    </InformationCard>
   </template>
 
   <!-- コンポーネント選択 -->
@@ -49,7 +45,13 @@
   </SettingItem>
 
   <!-- アイコンサイズ -->
-  <SettingItem label="アイコンサイズ" description="表示サイズを設定します" :showReset="true" @reset="resetMap.iconSize">
+  <SettingItem
+    v-if="isCharacter"
+    label="アイコンサイズ"
+    description="表示サイズを設定します"
+    :showReset="true"
+    @reset="resetMap.iconSize"
+  >
     <div class="flex items-center gap-4">
       <input
         type="range"

@@ -44,7 +44,7 @@ export function createCommonBuildConfig(packageRoot: string) {
 /**
  * JSON設定（おみくじデータ）
  */
-export function createCommonBuildConfigRoot(packageRoot: string, jsonPath: string) {
+export function createCommonBuildConfigJson(packageRoot: string, jsonPath: string) {
   return {
     jsonPathRoot: path.resolve(packageRoot, 'server/presets/'),
     jsonPath,

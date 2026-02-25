@@ -4,7 +4,7 @@ import HonjoFoxProject from './HonjoFox'
 import BreakingSyokenProject from './BreakingSyoken'
 
 function projects(packageRoot: string): ProjectConfig[] {
-  return [HonjoFoxProject(packageRoot), BreakingSyokenProject(packageRoot)]
+  return [HonjoFoxProject(packageRoot), ...BreakingSyokenProject.getProjects(packageRoot)]
 }
 
 const targets: PackageBuildTarget[] = [
@@ -12,8 +12,7 @@ const targets: PackageBuildTarget[] = [
    * petit
   { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
-  { project: 'BreakingSyoken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyoken', type: 'JSON', accessLevel: 'basic' },
+  ...BreakingSyokenProject.buildTargets,
    */
 ]
 

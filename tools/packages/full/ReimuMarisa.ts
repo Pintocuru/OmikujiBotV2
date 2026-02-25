@@ -1,5 +1,5 @@
 // tools/packages/full/ReimuMarisa.ts
-import { createCommonBuildConfig, createCommonBuildConfigRoot } from '../../buildOptions/baseSettings'
+import { createCommonBuildConfig, createCommonBuildConfigJson } from '../../buildOptions/baseSettings'
 import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
@@ -26,7 +26,7 @@ function project(packageRoot: string): ProjectConfig {
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
-    json: createCommonBuildConfigRoot(packageRoot, 'ReimuMarisa.json'),
+    json: createCommonBuildConfigJson(packageRoot, 'ReimuMarisa.json'),
 
     // アクセスレベル別設定
     accessLevels: {

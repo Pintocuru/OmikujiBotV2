@@ -1,5 +1,5 @@
 // tools/packages/sesupin/StrawberryChocolate.ts
-import { createCommonBuildConfig, createCommonBuildConfigRoot } from '../../buildOptions/baseSettings'
+import { createCommonBuildConfig, createCommonBuildConfigJson } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
 /**
@@ -37,7 +37,7 @@ function project(packageRoot: string): ProjectConfig {
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
-    json: createCommonBuildConfigRoot(packageRoot, 'StrawberryChocolate.json'),
+    json: createCommonBuildConfigJson(packageRoot, 'StrawberryChocolate.json'),
 
     // アクセスレベル別設定
     accessLevels: {
