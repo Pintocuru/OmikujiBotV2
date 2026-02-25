@@ -1,4 +1,4 @@
-//
+// tools/packages/petit/index.ts
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import HonjoFoxProject from './HonjoFox'
 import BreakingSyokenProject from './BreakingSyoken'

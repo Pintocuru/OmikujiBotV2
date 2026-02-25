@@ -1,4 +1,4 @@
-// tools/packages/full/StrawberryChocolate.ts
+// tools/packages/sesupin/StrawberryChocolate.ts
 import { createCommonBuildConfig, createCommonBuildConfigRoot } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 

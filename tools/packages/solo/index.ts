@@ -1,4 +1,4 @@
-// full
+// tools/packages/solo/index.ts
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import percent_DoraProject from './5percent_Dora'
 import BigBangFortuneProject from './BigBangFortune'

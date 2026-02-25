@@ -1,4 +1,4 @@
-// sesupin
+// tools/packages/sesupin/index.ts
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import OmikujiBotSpecialProject from './OmikujiBotSpecial'
 import StrawberryChocolateProject from './StrawberryChocolate'

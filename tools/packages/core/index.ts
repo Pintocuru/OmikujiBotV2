@@ -1,4 +1,4 @@
-//
+// tools/packages/core/index.ts
 import OmikujiBotProject from './OmikujiBot'
 import OmikujiBotMainProject from './OmikujiBotMain'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'

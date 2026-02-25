@@ -1,4 +1,4 @@
-// tools/packages/OmikujiBotMain.ts
+// tools/packages/core/OmikujiBotMain.ts
 import path from 'path'
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'

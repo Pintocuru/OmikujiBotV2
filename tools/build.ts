@@ -1,4 +1,4 @@
-//
+// tools/build.ts
 import { CoreBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
 import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'

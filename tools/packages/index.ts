@@ -1,4 +1,4 @@
-//
+// tools/packages/index.ts
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import { getCoreProjects } from './core'
 import SesupinProjects from './sesupin'

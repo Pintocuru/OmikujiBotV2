@@ -1,4 +1,4 @@
-// full
+// tools/packages/full/index.ts
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import DivaMetanProject from './DivaMetan'
 import EveryoneZundaProject from './EveryoneZunda'
