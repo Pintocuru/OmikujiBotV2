@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/common/ThemeColorPicker/ColorModeSelector.vue -->
 <template>
   <!-- モード切り替えヘッダー -->
-  <div class="flex justify-end items-center gap-2">
+  <div v-if="isAdv || !colorValue.isTheme" class="flex justify-end items-center gap-2">
     <!-- 切り替えトグル -->
     <label class="label cursor-pointer gap-3">
       <span class="label-text">{{ colorValue.isTheme ? '旧カラー設定' : '新カラー設定' }}</span>
@@ -26,6 +26,8 @@
   import DaisyUiThemeEditor from './DaisyUiThemeEditor.vue'
   import LegacyColorPicker from './LegacyColorPicker.vue'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   const props = defineProps<{
     modelValue: CharacterColorType
@@ -34,6 +36,8 @@
   const emit = defineEmits<{
     'update:modelValue': [value: CharacterColorType]
   }>()
+
+  const { isAdv, isPro, isGod } = useSettingMode()
 
   const colorValue = computed(() => props.modelValue)
 
@@ -54,7 +58,15 @@
     updateColor(newValue)
   }
 
-  const toggleColorMode = () => {
+  const toggleColorMode = async () => {
+    // isAdvでないなら、確認
+    if (!isAdv.value) {
+      const result = await swalModal.confirmDelete({
+        title: `旧カラー設定には戻れません。変更してよろしいですか？`,
+        confirmButtonText: '変更する',
+      })
+      if (!result.isConfirmed) return
+    }
     updateColor({ isTheme: !colorValue.value.isTheme })
   }
 </script>

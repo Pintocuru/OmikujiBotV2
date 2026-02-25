@@ -8,11 +8,7 @@ const boothURLNumber = '8025815'
 
 // カラーバリエーション定義
 // PROJECT_COLOR が '' の場合はデフォルト（無印）扱い
-const COLOR_VARIANTS = [
-  '',
-  'Red',
-  // 'Blue', 'Green', 'Yellow', 'Premium'
-] as const
+const COLOR_VARIANTS = ['', 'Red', 'Blue', 'Green', 'Yellow', 'Premium'] as const
 type ColorVariant = (typeof COLOR_VARIANTS)[number]
 
 function createProject(packageRoot: string, color: ColorVariant): ProjectConfig {
@@ -52,19 +48,13 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
 
     accessLevels: {
       basic: {
-        filesToCopy: [
-          //  { from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
-        ],
+        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
       adv: {
-        filesToCopy: [
-          //{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
-        ],
+        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
       pro: {
-        filesToCopy: [
-          //{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
-        ],
+        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
     },
   }

@@ -76,6 +76,12 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
+  // featureUsage のarray
+  const updateFlagsArray = <T extends keyof FlagsType>(key: T, value: FlagsType[T]) => {
+    data.value.featureUsage[key] = value
+    hasChanged.value = true
+  }
+
   // settings を更新
   const updateSettings = (updates: Partial<SettingsType>) => {
     data.value.settings = { ...data.value.settings, ...updates }
@@ -90,6 +96,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     updateComponents,
     updateFlags,
     updateFlagsNested,
+    updateFlagsArray,
     updateSettings,
   }
 }

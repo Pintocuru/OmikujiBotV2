@@ -12,6 +12,7 @@ const targets: PackageBuildTarget[] = [
    * petit
   { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
+  ...BreakingSyokenProject.buildTargets,
    */
   ...BreakingSyokenProject.buildTargets,
 ]

@@ -4,11 +4,7 @@ import { OmikujiDataSchema as OmikujiDataSchemaV200 } from './v1_to_v2/OmikujiDa
 import { APP_VERSION, DATA_VERSION } from '@/version'
 import { migrateV100ToV130 } from './v1_to_v2/migrateV100ToV130'
 import { migrateV130ToV200 } from './v1_to_v2/migrateV130ToV200'
-import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
-import { getAvailableScripts } from '@game/GameScriptsRules'
-import { getAvailableComponents } from '@config/components/componentEditor/componentRules'
 import { swalToast } from '../SweetAlert2/SweetAlert2Toast'
-import { isDev } from '@/types'
 import { migrateV204ToV205 } from './v2_to_v3/v2_04_to_v2_05'
 import { migrateV205ToV210 } from './v2_to_v3/v2_05_to_v2_10'
 
@@ -80,7 +76,7 @@ export function normalizeData(data: unknown): OmikujiDataType {
   }
 
   // スキーマで保証
-  const licensedData = OmikujiDataSchema.parse({
+  return OmikujiDataSchema.parse({
     ...updatedData,
     meta: {
       ...updatedData.meta,
@@ -88,14 +84,4 @@ export function normalizeData(data: unknown): OmikujiDataType {
       dataVersion: DATA_VERSION,
     },
   })
-
-  // PRO,GOD-MODE だったときの FeatureUsageSchema 変更(Advは変更なし)
-  if (isDev) return licensedData // devなら変更を行わない
-
-  const licenseKeyHash = licensedData.settings.licenseKeyHash
-  const license = resolveSettingMode(licenseKeyHash)
-  licensedData.featureUsage.components = getAvailableComponents(license, licensedData.featureUsage.components)
-  licensedData.featureUsage.gameScripts = getAvailableScripts(license, licensedData.featureUsage.gameScripts)
-
-  return licensedData
 }
