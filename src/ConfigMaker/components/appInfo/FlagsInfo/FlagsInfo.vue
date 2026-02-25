@@ -96,7 +96,7 @@
   const hasGodModeFeature = computed(() => Object.values(usage.value).some((level) => level === 'godMode'))
 
   const handleFeatureToggle = (key: string, newLevel: AccessLevelType) => {
-    omikujiStore.updateNestedFeatureUsage('usage', {
+    omikujiStore.updateFlagsNested('usage', {
       [key]: newLevel,
     })
   }

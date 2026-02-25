@@ -23,17 +23,18 @@
 </template>
 
 <script setup lang="ts">
-  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
+  import { useFlagsSettings } from './useFlagsSettings'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
-  const { licenseVisible, jsonMergeSettings } = useFeatureUsageSettings()
+  const { licenseVisible, jsonMergeSettings, itemSlotEnabled } = useFlagsSettings()
 
   const settings = [
     { key: 'licenseVisible', label: 'ライセンス記入表示 ', model: licenseVisible },
     { key: 'jsonMergeSettings', label: 'Jsonマージ機能(Dev)', model: jsonMergeSettings },
+    { key: 'itemSlotEnabled', label: 'アイテム表示設定の表示', model: itemSlotEnabled },
   ]
 
   const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant> = {

@@ -1,29 +1,29 @@
-// src/ConfigMaker/components/appInfo/FeatureUsageSettings/useFeatureUsageSettings.ts
+// src/ConfigMaker/components/appInfo/FeatureUsageSettings/useFlagsSettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { FlagsDeveloperType, FlagsUsageType, RecordCategoryType } from '@/types/'
 
-export function useFeatureUsageSettings() {
+export function useFlagsSettings() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   // usage
-  const createFeatureUsageRef = <K extends keyof FlagsUsageType>(key: K) =>
+  const createUsageRef = <K extends keyof FlagsUsageType>(key: K) =>
     computed<FlagsUsageType[K]>({
       get: () => data.value.featureUsage.usage[key],
       set: (newValue) => {
-        omikujiStore.updateNestedFeatureUsage('usage', {
+        omikujiStore.updateFlagsNested('usage', {
           ...data.value.featureUsage.usage,
           [key]: newValue,
         })
       },
     })
-  const comments = createFeatureUsageRef('comments')
-  const timers = createFeatureUsageRef('timers')
-  const actionSets = createFeatureUsageRef('actionSets')
-  const placeholders = createFeatureUsageRef('placeholders')
-  const characters = createFeatureUsageRef('characters')
+  const comments = createUsageRef('comments')
+  const timers = createUsageRef('timers')
+  const actionSets = createUsageRef('actionSets')
+  const placeholders = createUsageRef('placeholders')
+  const characters = createUsageRef('characters')
 
   const categoryToUsageKey: Record<RecordCategoryType, keyof FlagsUsageType> = {
     comments: 'comments',
@@ -33,34 +33,35 @@ export function useFeatureUsageSettings() {
     placeholders: 'placeholders',
     characters: 'characters',
   }
-  const categoryVisibility = (category: RecordCategoryType) => createFeatureUsageRef(categoryToUsageKey[category])
+  const categoryVisibility = (category: RecordCategoryType) => createUsageRef(categoryToUsageKey[category])
 
   // string[] 直下プロパティ用（gameScripts / components）
-  const createStringArrayRef = <K extends 'gameScripts' | 'components'>(key: K) =>
+  const createArrayRef = <K extends 'gameScripts' | 'components'>(key: K) =>
     computed<string[]>({
       get: () => data.value.featureUsage[key],
       set: (newValue) => {
-        omikujiStore.updateFeatureUsage({
+        omikujiStore.updateFlags({
           [key]: newValue,
         })
       },
     })
-  const components = createStringArrayRef('components')
-  const gameScripts = createStringArrayRef('gameScripts')
+  const components = createArrayRef('components')
+  const gameScripts = createArrayRef('gameScripts')
 
   // developer
-  const createFeatureDeveloperRef = <K extends keyof FlagsDeveloperType>(key: K) =>
+  const createDeveloperRef = <K extends keyof FlagsDeveloperType>(key: K) =>
     computed<FlagsDeveloperType[K]>({
       get: () => data.value.featureUsage.developer[key],
       set: (newValue) => {
-        omikujiStore.updateNestedFeatureUsage('developer', {
+        omikujiStore.updateFlagsNested('developer', {
           ...data.value.featureUsage.developer,
           [key]: newValue,
         })
       },
     })
-  const licenseVisible = createFeatureDeveloperRef('licenseVisible')
-  const jsonMergeSettings = createFeatureDeveloperRef('jsonMergeSettings')
+  const licenseVisible = createDeveloperRef('licenseVisible')
+  const jsonMergeSettings = createDeveloperRef('jsonMergeSettings')
+  const itemSlotEnabled = createDeveloperRef('itemSlotEnabled')
 
   return {
     // 基本
@@ -76,5 +77,6 @@ export function useFeatureUsageSettings() {
     //
     licenseVisible,
     jsonMergeSettings,
+    itemSlotEnabled,
   }
 }

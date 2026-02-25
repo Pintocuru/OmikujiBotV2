@@ -61,14 +61,14 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
-  // featureUsage を更新
-  const updateFeatureUsage = (updates: Partial<FlagsType>) => {
+  // Flags 更新
+  const updateFlags = (updates: Partial<FlagsType>) => {
     data.value.featureUsage = { ...data.value.featureUsage, ...updates }
     hasChanged.value = true
   }
 
   // featureUsage のネスト更新
-  const updateNestedFeatureUsage = <T extends keyof FlagsType>(key: T, updates: Partial<FlagsType[T]>) => {
+  const updateFlagsNested = <T extends keyof FlagsType>(key: T, updates: Partial<FlagsType[T]>) => {
     data.value.featureUsage[key] = {
       ...data.value.featureUsage[key],
       ...updates,
@@ -88,8 +88,8 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     updateComponentsCommonStyle,
     updateComponentSettings,
     updateComponents,
-    updateFeatureUsage,
-    updateNestedFeatureUsage,
+    updateFlags,
+    updateFlagsNested,
     updateSettings,
   }
 }

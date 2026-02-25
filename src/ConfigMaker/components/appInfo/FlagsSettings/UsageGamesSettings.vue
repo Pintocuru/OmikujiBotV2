@@ -18,10 +18,10 @@
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
+  import { useFlagsSettings } from './useFlagsSettings'
   import { PRO_SCRIPTS } from '@game/GameScriptsRules'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { gameMetaMap } from '@/types/MetaMaps/'
 
-  const { gameScripts } = useFeatureUsageSettings()
+  const { gameScripts } = useFlagsSettings()
 </script>

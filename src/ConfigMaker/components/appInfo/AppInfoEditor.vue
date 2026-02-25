@@ -13,8 +13,8 @@
 
     <!-- 実績 -->
     <SectionCard icon="Sparkles" :isOpen="true" title="利用可能な機能" description="PRO版を使うと機能が増えます">
-      <FeatureUsageInfo v-if="!isGod" />
-      <FeatureUsageSettings v-else />
+      <FlagsInfo v-if="!isGod" />
+      <FlagsSettings v-else />
     </SectionCard>
 
     <!-- meta:基本情報 -->
@@ -54,8 +54,8 @@
 
 <script setup lang="ts">
   import SettingsEditor from './settings/SettingsEditor.vue'
-  import FeatureUsageInfo from './FeatureUsageInfo/FeatureUsageInfo.vue'
-  import FeatureUsageSettings from './FeatureUsageSettings/FeatureUsageSettings.vue'
+  import FlagsInfo from './FlagsInfo/FlagsInfo.vue'
+  import FlagsSettings from './FlagsSettings/FlagsSettings.vue'
   import PackageBasicInfo from './meta/PackageBasicInfo.vue'
   import PackageDistributionInfo from './meta/PackageDistributionInfo.vue'
   import PackageSystemInfo from './meta/PackageSystemInfo.vue'

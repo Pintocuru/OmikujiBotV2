@@ -31,11 +31,11 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { categoryMap, recordCategoryLabel, RecordCategoryType } from '@/types/'
   import { AccessLevelLabels } from '@shared/types'
-  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
+  import { useFlagsSettings } from './useFlagsSettings'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
-  const { categoryVisibility } = useFeatureUsageSettings()
+  const { categoryVisibility } = useFlagsSettings()
 
   const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant> = {
     none: 'neutral',

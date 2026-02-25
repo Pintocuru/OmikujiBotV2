@@ -856,12 +856,11 @@
       "timers": "none",
       "metas": "basic",
       "actionSets": "none",
-      "placeholders": "none",
+      "placeholders": "basic",
       "characters": "none"
     },
     "components": [
-      "flashBanner",
-      "bubble"
+      "flashBanner"
     ],
     "gameScripts": [],
     "developer": {

@@ -25,6 +25,7 @@ export type FlagsUsageType = z.infer<typeof FlagsUsageSchema>
 export const FlagsDeveloperSchema = z.object({
   licenseVisible: AccessLevelSchema.default('basic').catch('basic'),
   jsonMergeSettings: AccessLevelSchema.default('basic').catch('basic'),
+  itemSlotEnabled: AccessLevelSchema.default('basic').catch('basic'),
 })
 export type FlagsDeveloperType = z.infer<typeof FlagsDeveloperSchema>
 
