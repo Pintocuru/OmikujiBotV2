@@ -6,7 +6,7 @@
     "version": "ver2026.02.25-2.4.0",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.4.0",
-    "dataVersion": 2.20040003,
+    "dataVersion": 2.20040004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -127,7 +127,7 @@
       },
       "flashBanner": {
         "component": "standard",
-        "label": "速報",
+        "label": "ご案内",
         "iconSize": 12,
         "displaySeconds": null,
         "showItemOnRight": false,
