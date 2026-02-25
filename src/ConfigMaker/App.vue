@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/App.vue -->
 <template>
-  <div class="p-4 max-w-6xl pb-32 overflow-x-hidden mx-auto space-y-4" :data-theme="data.settings.daisyUiTheme">
+  <div class="p-4 max-w-6xl pb-32 overflow-x-hidden mx-auto space-y-4" :data-theme="daisyUiTheme">
     <!-- タイトル -->
     <AppHeader />
 
@@ -17,7 +17,10 @@
     </div>
 
     <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
-    <div v-if="isDev && Object.keys(data.comments).length === 0" class="hero bg-base-200 min-h-screen">
+    <div
+      v-if="isDev && Object.keys(data.comments).length === 0 && daisyUiTheme === 'dark'"
+      class="hero bg-base-200 min-h-screen"
+    >
       <div class="hero-content text-center">
         <div class="max-w-md space-y-4">
           <h1 class="text-5xl font-bold">Welcome to <br />"Dev World..."</h1>
@@ -43,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue'
+  import { onMounted, computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types/'
   import AppHeader from './components/appItems/AppHeader.vue'
@@ -65,8 +68,11 @@
   const devStore = useDevStore()
   const { data } = storeToRefs(omikujiStore)
   const { isServerConnected } = storeToRefs(devStore)
+
   // インポートマネージャー
   const importManager = useImportManager()
+
+  const daisyUiTheme = computed(() => data.value.settings.daisyUiTheme)
 
   // スクロール動作
   useScrollBehavior()

@@ -4,11 +4,15 @@ import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/Bu
 
 const PROJECT_KEY = 'BreakingSyoken'
 const PROJECT_TITLE = '速報！初見さんいらっしゃい！'
-const boothURLNumber = '7982286'
+const boothURLNumber = '8025815'
 
 // カラーバリエーション定義
 // PROJECT_COLOR が '' の場合はデフォルト（無印）扱い
-const COLOR_VARIANTS = ['', 'Red', 'Blue', 'Green', 'Yellow', 'Premium'] as const
+const COLOR_VARIANTS = [
+  '',
+  'Red',
+  // 'Blue', 'Green', 'Yellow', 'Premium'
+] as const
 type ColorVariant = (typeof COLOR_VARIANTS)[number]
 
 function createProject(packageRoot: string, color: ColorVariant): ProjectConfig {
@@ -48,13 +52,19 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
 
     accessLevels: {
       basic: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [
+          //  { from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
+        ],
       },
       adv: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [
+          //{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
+        ],
       },
       pro: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [
+          //{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }
+        ],
       },
     },
   }
@@ -70,15 +80,10 @@ const buildTargets: PackageBuildTarget[] = [
   { project: 'BreakingSyoken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'BreakingSyoken', type: 'JSON', accessLevel: 'basic' },
   { project: 'BreakingSyokenRed', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenRed', type: 'JSON', accessLevel: 'basic' },
   { project: 'BreakingSyokenBlue', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenBlue', type: 'JSON', accessLevel: 'basic' },
   { project: 'BreakingSyokenGreen', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenGreen', type: 'JSON', accessLevel: 'basic' },
   { project: 'BreakingSyokenYellow', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenYellow', type: 'JSON', accessLevel: 'basic' },
   { project: 'BreakingSyokenPremium', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenPremium', type: 'JSON', accessLevel: 'basic' },
 ]
 
 export default { getProjects, buildTargets }
