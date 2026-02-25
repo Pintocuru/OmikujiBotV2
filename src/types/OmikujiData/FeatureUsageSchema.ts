@@ -9,7 +9,7 @@ import { ScriptGameKey, ScriptGameKeySchema } from './ActionSet'
 /**
  * 通常表示設定
  */
-export const FeatureUsageUsageSchema = z.object({
+export const FlagsUsageSchema = z.object({
   comments: AccessLevelSchema.default('basic').catch('basic'),
   timers: AccessLevelSchema.default('basic').catch('basic'),
   metas: AccessLevelSchema.default('basic').catch('basic'),
@@ -17,22 +17,22 @@ export const FeatureUsageUsageSchema = z.object({
   placeholders: AccessLevelSchema.default('basic').catch('basic'),
   characters: AccessLevelSchema.default('basic').catch('basic'),
 })
-export type FeatureUsageUsageType = z.infer<typeof FeatureUsageUsageSchema>
+export type FlagsUsageType = z.infer<typeof FlagsUsageSchema>
 
 /**
  * 管理者用表示設定 GOD MODE でのみ設定可能(通常は不可視)
  */
-export const FeatureUsageDeveloperSchema = z.object({
+export const FlagsDeveloperSchema = z.object({
   licenseVisible: AccessLevelSchema.default('basic').catch('basic'),
   jsonMergeSettings: AccessLevelSchema.default('basic').catch('basic'),
 })
-export type FeatureUsageDeveloperType = z.infer<typeof FeatureUsageDeveloperSchema>
+export type FlagsDeveloperType = z.infer<typeof FlagsDeveloperSchema>
 
 /**
  * FeatureUsageSchema
  */
-export const FeatureUsageSchema = z.object({
-  usage: normalizedObject(FeatureUsageUsageSchema),
+export const FlagsSchema = z.object({
+  usage: normalizedObject(FlagsUsageSchema),
   components: z
     .array(z.enum(Object.keys(uiKindMap) as [UiKind, ...UiKind[]]))
     .transform((list) => list.filter((x): x is UiKind => x in uiKindMap))
@@ -41,7 +41,7 @@ export const FeatureUsageSchema = z.object({
     .array(ScriptGameKeySchema)
     .transform((list) => list.filter((x): x is ScriptGameKey => x in gameMetaMap))
     .default([]),
-  developer: normalizedObject(FeatureUsageDeveloperSchema),
+  developer: normalizedObject(FlagsDeveloperSchema),
 })
 
-export type FeatureUsageType = z.infer<typeof FeatureUsageSchema>
+export type FlagsType = z.infer<typeof FlagsSchema>

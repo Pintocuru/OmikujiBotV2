@@ -866,12 +866,12 @@
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "none"
+      "jsonMergeSettings": "basic"
     }
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
     "daisyUiTheme": "light"
   }
 }

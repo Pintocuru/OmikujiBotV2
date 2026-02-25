@@ -26,7 +26,7 @@
   import FeatureUsageDeveloper from './UsageDeveloperSettings.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { FeatureUsageType, isDev } from '@/types/'
+  import { FlagsType, isDev } from '@/types/'
 
   const { updateFeatureUsage } = useOmikujiStore()
   const { isGod } = useSettingMode()
@@ -35,7 +35,7 @@
    * 「full」プリセット
    */
   const setFullVisibility = () => {
-    const fullSettings: FeatureUsageType = {
+    const fullSettings: FlagsType = {
       usage: {
         comments: 'basic' as const,
         timers: 'basic' as const,
@@ -60,7 +60,7 @@
    * 「solo」プリセット
    */
   const setSoloVisibility = () => {
-    const soloSettings: FeatureUsageType = {
+    const soloSettings: FlagsType = {
       usage: {
         comments: 'basic' as const,
         timers: 'none' as const,

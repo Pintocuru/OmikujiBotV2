@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { ComponentsType, ComponentsConditions, ComponentsCommonStyle, FeatureUsageType, SettingsType } from '@/types/'
+import { ComponentsType, ComponentsConditions, ComponentsCommonStyle, FlagsType, SettingsType } from '@/types/'
 
 /**
  * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル
@@ -62,20 +62,17 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   }
 
   // featureUsage を更新
-  const updateFeatureUsage = (updates: Partial<FeatureUsageType>) => {
+  const updateFeatureUsage = (updates: Partial<FlagsType>) => {
     data.value.featureUsage = { ...data.value.featureUsage, ...updates }
     hasChanged.value = true
   }
 
   // featureUsage のネスト更新
-  const updateNestedFeatureUsage = <T extends keyof FeatureUsageType>(
-    key: T,
-    updates: Partial<FeatureUsageType[T]>
-  ) => {
+  const updateNestedFeatureUsage = <T extends keyof FlagsType>(key: T, updates: Partial<FlagsType[T]>) => {
     data.value.featureUsage[key] = {
       ...data.value.featureUsage[key],
       ...updates,
-    } as FeatureUsageType[T]
+    } as FlagsType[T]
     hasChanged.value = true
   }
 

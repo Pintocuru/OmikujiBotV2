@@ -2,15 +2,15 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { FeatureUsageDeveloperType, FeatureUsageUsageType, RecordCategoryType } from '@/types/'
+import { FlagsDeveloperType, FlagsUsageType, RecordCategoryType } from '@/types/'
 
 export function useFeatureUsageSettings() {
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
   // usage
-  const createFeatureUsageRef = <K extends keyof FeatureUsageUsageType>(key: K) =>
-    computed<FeatureUsageUsageType[K]>({
+  const createFeatureUsageRef = <K extends keyof FlagsUsageType>(key: K) =>
+    computed<FlagsUsageType[K]>({
       get: () => data.value.featureUsage.usage[key],
       set: (newValue) => {
         omikujiStore.updateNestedFeatureUsage('usage', {
@@ -25,7 +25,7 @@ export function useFeatureUsageSettings() {
   const placeholders = createFeatureUsageRef('placeholders')
   const characters = createFeatureUsageRef('characters')
 
-  const categoryToUsageKey: Record<RecordCategoryType, keyof FeatureUsageUsageType> = {
+  const categoryToUsageKey: Record<RecordCategoryType, keyof FlagsUsageType> = {
     comments: 'comments',
     timers: 'timers',
     metas: 'metas',
@@ -49,8 +49,8 @@ export function useFeatureUsageSettings() {
   const gameScripts = createStringArrayRef('gameScripts')
 
   // developer
-  const createFeatureDeveloperRef = <K extends keyof FeatureUsageDeveloperType>(key: K) =>
-    computed<FeatureUsageDeveloperType[K]>({
+  const createFeatureDeveloperRef = <K extends keyof FlagsDeveloperType>(key: K) =>
+    computed<FlagsDeveloperType[K]>({
       get: () => data.value.featureUsage.developer[key],
       set: (newValue) => {
         omikujiStore.updateNestedFeatureUsage('developer', {

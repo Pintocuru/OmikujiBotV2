@@ -155,7 +155,7 @@ export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
 /**
  * settings オブジェクトのスキーマ
  */
-export const ComponentsSettingsSchema = z.object({
+export const UiSettingsSchema = z.object({
   bubble: SettingsBubbleSchema.optional(),
   toast: SettingsToastSchema.optional(),
   ranking: SettingsRankingSchema.optional(),
@@ -165,4 +165,4 @@ export const ComponentsSettingsSchema = z.object({
   flashBanner: SettingsFlashBannerSchema.optional(),
 })
 
-export type ComponentsSettings = z.infer<typeof ComponentsSettingsSchema>
+export type UiSettingsType = z.infer<typeof UiSettingsSchema>

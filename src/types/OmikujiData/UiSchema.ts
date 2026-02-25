@@ -3,7 +3,7 @@ import { z } from 'zod'
 import { CharacterColorScheme, DisplayOptionSchema } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
 import { fontFamilyMap, uiKindMap, UiSlotMap } from '../MetaMaps'
-import { ComponentsSettingsSchema } from './ComponentsSettingsSchema'
+import { UiSettingsSchema } from './UiSettingsSchema'
 
 /**
  * スロット定義
@@ -84,7 +84,7 @@ export const ComponentsSchema = z.object({
       defaultVoice: { mode: 'voice' },
     })
   ).catch(ComponentsCommonStyleSchema.parse({})),
-  settings: normalizedObject(ComponentsSettingsSchema),
+  settings: normalizedObject(UiSettingsSchema),
 })
 
 export type ComponentsType = z.infer<typeof ComponentsSchema>
