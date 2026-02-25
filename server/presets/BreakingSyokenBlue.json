@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "BreakingSyokenBlue-ver2026.02.25-2.3.5",
+    "id": "BreakingSyokenBlue-ver2026.02.25-2.4.0",
     "name": "おみくじ BOT 速報！初見さんいらっしゃい！ Blue OmikujiBot BreakingSyokenBlue-ADV",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.25-2.3.5",
+    "version": "ver2026.02.25-2.4.0",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.3.5",
-    "dataVersion": 2.20030054,
+    "generatorVersion": "2.4.0",
+    "dataVersion": 2.20040003,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
