@@ -31,23 +31,20 @@ export function useAppInitializer(isComment: ComputedRef<boolean>) {
         appStore.scheduleBotMessages(botMessages)
       })
 
+      // PingOneSDK のリトライが全て失敗した場合のみ error に遷移
       if (!isInit) {
-        // PingOneSDK のリトライが全て失敗した場合のみ error に遷移
         appStore.setStatus('error')
         return
       }
 
-      // サーバ同期
+      // サーバ同期(オプション)
       const isHealth = await generatorApi.getHealth()
-      if (!isHealth) {
-        appStore.setStatus('error')
-        return
+      if (isHealth) {
+        const serverData = await generatorApi.loadGeneratorConfig()
+        if (serverData) appStore.loadData(serverData)
       }
 
-      const serverData = await generatorApi.loadGeneratorConfig()
-      if (serverData) appStore.loadData(serverData)
-
-      // 全て成功したら ready へ
+      // ready へ
       appStore.setStatus('ready')
     } catch (error) {
       console.error('❌ 初期化エラー:', error)

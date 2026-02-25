@@ -1,4 +1,4 @@
-// [Package] vite.config.ts
+// tools/viteConfig/vite.configmaker.config.ts
 import { defineConfig, mergeConfig, UserConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'

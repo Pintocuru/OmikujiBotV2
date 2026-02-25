@@ -96,7 +96,11 @@ export abstract class BaseApiClient {
    * ヘルスチェック
    */
   async getHealth(): Promise<boolean> {
-    const response = await this.get<any>('health')
-    return response.code === 200
+    try {
+      const response = await this.get<any>('health')
+      return response.code === 200
+    } catch {
+      return false
+    }
   }
 }

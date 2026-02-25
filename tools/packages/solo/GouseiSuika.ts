@@ -1,4 +1,4 @@
-// tools\packages\solo\GouseiSuika.ts
+// tools/packages/solo/GouseiSuika.ts
 import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
 import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
@@ -30,7 +30,7 @@ function project(packageRoot: string): ProjectConfig {
 
     template: {
       name: 'おみくじ BOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika',
-      boothURL: 'https://pintocuru.booth.pm/items/7730686',
+      boothURL: 'https://pintocuru.booth.pm/items/5813323',
       readmeURL: 'https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/solo/GouseiSuika/README.md',
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },

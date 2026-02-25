@@ -1,4 +1,4 @@
-// server/core/constants.ts
+// server/constants.ts
 import path from 'path'
 import { fileURLToPath } from 'url'
 

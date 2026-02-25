@@ -1,15 +1,17 @@
-// tools\packages\OmikujiBotMain.ts
-// MainGenerator のみをビルドするコアプロジェクト
-import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
-import { createCommonBuildConfig } from '../buildOptions/baseSettings'
-import { APP_VERSION } from '@/version'
+// tools/packages/core/OmikujiBot.ts
 import path from 'path'
+import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
+import { APP_VERSION } from '@/version'
 
+/**
+ * MainGenerator + ConfigMaker の両方をビルドするコアプロジェクト
+ */
 function project(packageRoot: string): ProjectConfig {
   return {
     ...createCommonBuildConfig(packageRoot),
 
-    name: 'OmikujiBotMain',
+    name: 'OmikujiBot',
     version: APP_VERSION,
     tags: ['おみくじBOT'],
 
@@ -17,9 +19,10 @@ function project(packageRoot: string): ProjectConfig {
       basic: 'CC-BY 4.0',
     },
 
-    // MainGenerator のみをビルド
+    // MainGenerator + ConfigMaker の両方をビルド
     entryPoints: {
       MainGenerator: path.resolve(packageRoot, 'src/MainGenerator/main.ts'),
+      ConfigMaker: path.resolve(packageRoot, 'src/ConfigMaker/main.ts'),
     },
 
     template: null,

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/FeatureUsageSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/FlagsSettings.vue -->
 <template>
   <div class="space-y-4">
     <!-- プリセットボタン -->
@@ -8,34 +8,34 @@
     </div>
 
     <!-- 基本アイテムの可視性 -->
-    <FeatureUsageUsage />
+    <FlagsUsage />
 
     <!-- アイテム・ゲームスクリプト設定 -->
-    <FeatureUsageComponents />
-    <FeatureUsageGames />
+    <FlagsComponents />
+    <FlagsGames />
 
     <!-- Dev用設定 -->
-    <FeatureUsageDeveloper />
+    <FlagsDeveloper />
   </div>
 </template>
 
 <script setup lang="ts">
-  import FeatureUsageUsage from './UsageUsageSettings.vue'
-  import FeatureUsageComponents from './UsageComponentsSettings.vue'
-  import FeatureUsageGames from './UsageGamesSettings.vue'
-  import FeatureUsageDeveloper from './UsageDeveloperSettings.vue'
+  import FlagsUsage from './UsageUsageSettings.vue'
+  import FlagsComponents from './UsageComponentsSettings.vue'
+  import FlagsGames from './UsageGamesSettings.vue'
+  import FlagsDeveloper from './UsageDeveloperSettings.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { FeatureUsageType, isDev } from '@/types/'
+  import { FlagsType, isDev } from '@/types/'
 
-  const { updateFeatureUsage } = useOmikujiStore()
+  const { updateFlags } = useOmikujiStore()
   const { isGod } = useSettingMode()
 
   /**
    * 「full」プリセット
    */
   const setFullVisibility = () => {
-    const fullSettings: FeatureUsageType = {
+    const fullSettings: FlagsType = {
       usage: {
         comments: 'basic' as const,
         timers: 'basic' as const,
@@ -50,17 +50,18 @@
       developer: {
         jsonMergeSettings: 'basic' as const,
         licenseVisible: 'basic' as const,
+        itemSlotEnabled: 'basic' as const,
       },
     }
 
-    updateFeatureUsage(fullSettings)
+    updateFlags(fullSettings)
   }
 
   /**
    * 「solo」プリセット
    */
   const setSoloVisibility = () => {
-    const soloSettings: FeatureUsageType = {
+    const soloSettings: FlagsType = {
       usage: {
         comments: 'basic' as const,
         timers: 'none' as const,
@@ -75,9 +76,10 @@
       developer: {
         licenseVisible: 'basic' as const,
         jsonMergeSettings: 'none' as const,
+        itemSlotEnabled: 'basic' as const,
       },
     }
 
-    updateFeatureUsage(soloSettings)
+    updateFlags(soloSettings)
   }
 </script>

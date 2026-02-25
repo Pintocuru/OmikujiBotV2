@@ -1,4 +1,4 @@
-// tools\buildOptions\processJsonData.ts
+// tools/buildOptions/processJsonData.ts
 import { OmikujiDataType, recordCategoryLabel, RecordCategoryType } from '@/types/OmikujiData/'
 import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { AccessLevelLabels, AccessLevelType } from '@shared/types'

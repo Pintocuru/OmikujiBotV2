@@ -1,4 +1,4 @@
-// tools\buildOptions\baseSettings.ts
+// tools/buildOptions/baseSettings.ts
 import path from 'path'
 import { getKey } from '@/common/FeatureAccess/SettingMode'
 import { generateJsContent } from '@config/components/presetsExport/generateContent'
@@ -38,5 +38,18 @@ export function createCommonBuildConfig(packageRoot: string) {
       generateJsContent,
       assembleJsonData: processMerge,
     },
+  }
+}
+
+/**
+ * JSON設定（おみくじデータ）
+ */
+export function createCommonBuildConfigJson(packageRoot: string, jsonPath: string) {
+  return {
+    jsonPathRoot: path.resolve(packageRoot, 'server/presets/'),
+    jsonPath,
+    generateAccessLevelData,
+    generateJsContent,
+    assembleJsonData: processMerge,
   }
 }

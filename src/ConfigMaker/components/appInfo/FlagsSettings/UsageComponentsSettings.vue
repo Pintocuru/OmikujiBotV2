@@ -25,12 +25,12 @@
 
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useFeatureUsageSettings } from './useFeatureUsageSettings'
+  import { useFlagsSettings } from './useFlagsSettings'
   import { uiKindMap } from '@/types/'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { computed } from 'vue'
 
-  const { components } = useFeatureUsageSettings()
+  const { components } = useFlagsSettings()
 
   const slotOrder = ['primary', 'secondary', 'extra'] as const
   const groupedUiKinds = computed(() => {

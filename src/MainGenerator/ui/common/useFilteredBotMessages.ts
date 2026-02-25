@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useFilteredBotMessages.ts
+// src/MainGenerator/ui/common/useFilteredBotMessages.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'

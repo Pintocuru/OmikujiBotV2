@@ -1,4 +1,4 @@
-// tools\viteConfig\createViteAliases.ts
+// tools/viteConfig/CreateViteAliases.ts
 import path from 'path'
 import tsconfig from '../../tsconfig.json'
 

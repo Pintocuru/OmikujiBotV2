@@ -1,4 +1,4 @@
-// tools\JsonMerge\KeySuffix.ts
+// tools/JsonMerge/KeySuffix.ts
 import { OmikujiDataType, rulesCategoryLabel, RulesCategoryType } from '@/types/OmikujiData'
 
 export function applyKeySuffix(data: OmikujiDataType, suffix?: string): OmikujiDataType {

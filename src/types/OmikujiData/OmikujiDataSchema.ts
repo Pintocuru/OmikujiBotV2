@@ -6,7 +6,7 @@ import { CommentRuleSchema, MetaRuleSchema, TimerRuleSchema } from './RulesSchem
 import { PackageJsonSchema } from '@shared/types'
 import { JsonMergeSchema } from './JsonMergeType'
 import { ComponentsSchema } from './UiSchema'
-import { FeatureUsageSchema } from './FeatureUsageSchema'
+import { FlagsSchema } from './FeatureUsageSchema'
 import { SettingsSchema } from './SettingsSchema'
 import { ActionSetSchema } from './ActionSet'
 import { normalizedRecord, normalizedObject } from './ParsedDefault'
@@ -24,7 +24,7 @@ export const OmikujiDataSchema = z.object({
   placeholders: normalizedRecord(PlaceholderSchema),
   characters: normalizedRecord(CharacterSchema),
   components: normalizedObject(ComponentsSchema),
-  featureUsage: normalizedObject(FeatureUsageSchema),
+  featureUsage: normalizedObject(FlagsSchema),
   settings: normalizedObject(SettingsSchema),
 })
 export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>

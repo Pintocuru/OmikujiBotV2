@@ -1,4 +1,4 @@
-// server/handlers/generatorHandler.ts
+// server/core/handlers/generatorHandler.ts
 import { RouteResult } from '../types'
 import * as fileSystem from '../services/fileSystemService'
 

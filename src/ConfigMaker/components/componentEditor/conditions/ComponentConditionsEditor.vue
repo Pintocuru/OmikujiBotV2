@@ -4,7 +4,7 @@
   <SubSectionHeader
     icon="LayoutGrid"
     title="スロット別アイテム設定"
-    description="ジェネレーター に表示するアイテムを選択します"
+    description="ジェネレーターに表示するアイテムを選択します"
   />
 
   <SettingItem

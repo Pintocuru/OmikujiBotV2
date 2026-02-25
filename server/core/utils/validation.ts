@@ -1,4 +1,4 @@
-// server/utils/validation.ts
+// server/core/utils/validation.ts
 
 /**
  * ファイル名のバリデーション

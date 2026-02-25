@@ -1,18 +1,17 @@
 {
   "name": "omikuji-bot",
-  "version": "2.3.2",
-  "data_version": 2.20030024002,
+  "version": "2.3.5-alpha1",
+  "data_version": 2.20030051001,
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
     "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
     "devHot:omikujiBot": "vite",
     "devApi:omikujiBot": "tsx server/start-dev-server.ts",
     "soundMake:omikujiBot": "tsx tools/genSound/genSoundIndex.ts",
-    "updateFilesName:omikujiBot": "tsx tools/UpdateTsFiles.ts",
+    "updateFilesName:omikujiBot": "tsx tools/fileName/UpdateTsFiles.ts",
     "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
     "lintLevel2:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "vitest run MetaTriggerEvaluator",
-    "build:omikujiBotVite": "vite build --config tools/viteConfig/vite.main.config.ts && vite build --config tools/viteConfig/vite.configmaker.config.ts",
     "build:omikujiBotPlugin": "vite build --config tools/viteConfig/vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx tools/build.ts"
   },

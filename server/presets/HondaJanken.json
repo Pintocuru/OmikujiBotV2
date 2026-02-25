@@ -5,8 +5,8 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.01.26-2.0.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.3.4",
+    "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -33,7 +33,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
+          "id": "cdff0850-4464-4dbd-b4b3-3428753fee77",
           "key": "8d2b99bc-9209-48a0-aefe-af206ffc999b",
           "name": "グー",
           "description": "",
@@ -61,7 +61,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -71,7 +71,7 @@
           "criteria": null
         },
         {
-          "id": "d7546009-ad4c-4808-830e-222ecf1d1b64",
+          "id": "242c21ad-4fe7-4d08-8d6c-5e1d9b36cfe0",
           "key": "d7546009-ad4c-4808-830e-222ecf1d1b64",
           "name": "チョキ",
           "description": "",
@@ -99,7 +99,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -109,7 +109,7 @@
           "criteria": null
         },
         {
-          "id": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
+          "id": "409808af-54c7-429b-aa1b-fac7f9455b9b",
           "key": "61a4d743-7b0a-48a3-a3b0-14e94c8ce911",
           "name": "パー",
           "description": "",
@@ -137,7 +137,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -147,7 +147,7 @@
           "criteria": null
         },
         {
-          "id": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
+          "id": "b688de07-d644-4127-bd3e-b2ed72fd89c3",
           "key": "acd7e5a8-a7dc-46c0-8912-db577cbc2eae",
           "name": "勝利",
           "description": "",
@@ -193,7 +193,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -240,7 +240,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "12857c74-9b42-4191-b548-9028fc82e1e8",
+          "id": "7af2597e-1573-43c1-9e47-f55595102049",
           "key": "12857c74-9b42-4191-b548-9028fc82e1e8",
           "name": "グー",
           "description": "",
@@ -268,7 +268,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -278,7 +278,7 @@
           "criteria": null
         },
         {
-          "id": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
+          "id": "816cb592-b6ef-4699-8f8f-6b5a0bdd9035",
           "key": "8acc4353-d3bd-4a5d-b96d-56142181eba6",
           "name": "グー勝利",
           "description": "",
@@ -314,7 +314,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -362,7 +362,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "958e6f84-07c2-4422-8fb0-dc81306a0799",
+          "id": "064baa39-2dd4-48a2-a044-572103f01e4b",
           "key": "958e6f84-07c2-4422-8fb0-dc81306a0799",
           "name": "チョキ",
           "description": "",
@@ -390,7 +390,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -400,7 +400,7 @@
           "criteria": null
         },
         {
-          "id": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
+          "id": "9b6fa18c-274e-4560-97e3-e02cf34f7ef0",
           "key": "f66eb02e-7dc7-4091-b477-d26332f68a6c",
           "name": "チョキ勝利",
           "description": "",
@@ -436,7 +436,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -483,7 +483,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
+          "id": "4a5cb593-ebc6-491d-a6fa-0d790e4230dd",
           "key": "f03e4b08-f297-4e62-a81a-f3b4c7e8d691",
           "name": "パー",
           "description": "",
@@ -511,7 +511,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -521,7 +521,7 @@
           "criteria": null
         },
         {
-          "id": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
+          "id": "279f8b69-9d05-4b66-91f1-451173af1f63",
           "key": "45d2613d-1b64-47ef-a9b1-fa0b7f4fddab",
           "name": "パー勝利",
           "description": "",
@@ -557,7 +557,7 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -591,6 +591,7 @@
     }
   },
   "timers": {},
+  "metas": {},
   "actionSets": {
     "HondaJankenReadyA": {
       "id": "HondaJankenReadyA",
@@ -621,7 +622,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -656,7 +657,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -708,7 +709,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -760,7 +761,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -812,7 +813,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -864,7 +865,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -916,7 +917,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -968,7 +969,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1020,7 +1021,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1072,7 +1073,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1124,7 +1125,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1176,7 +1177,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1228,7 +1229,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1280,7 +1281,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1332,7 +1333,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1384,7 +1385,7 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -1629,7 +1630,7 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     },
     "omiken_2": {
@@ -1687,27 +1688,28 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
   "components": {
     "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
-    "bubble": {
-      "showCharacters": {
-        "center": [],
-        "slot1": [
-          "omiken",
-          "omiken_2"
-        ],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "enableSecondary": true,
+    "commonStyle": {
+      "fontFamily": "default",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "cyberpunk",
@@ -1717,36 +1719,55 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "characterSize": 48,
-      "fontFamily": "default",
-      "bubbleMotionEnter": "slideUp",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
-      "title": "👊 じゃんけん 🖐️",
-      "color": "garden",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [],
+          "slot1": [
+            "omiken",
+            "omiken_2"
+          ],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "👊 じゃんけん 🖐️",
+        "color": "garden",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -1754,9 +1775,10 @@
     "usage": {
       "comments": "basic",
       "timers": "none",
+      "metas": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "none"
     },
     "components": [
       "toast",
@@ -1771,7 +1793,7 @@
   },
   "settings": {
     "commentType": "OneComme",
-    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
     "daisyUiTheme": "corporate"
   }
 }

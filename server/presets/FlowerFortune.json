@@ -1,24 +1,21 @@
 {
   "meta": {
-    "id": "1754926464640-roopmp",
-    "name": "おみくじBOT ゆっくり霊夢&魔理沙 ちょこんとバージョン OmikujiBot ReimuMarisaMate-PRO",
+    "id": "FlowerFortune-ver2026.02.25-2.3.4",
+    "name": "おみくじ BOT フラワー占い OmikujiBot FlowerFortune",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.09.11-v1.1.1",
+    "version": "ver2026.02.25-2.3.4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v2.0.0-beta1",
-    "dataVersion": 2.0001,
+    "generatorVersion": "2.3.4",
+    "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
+      "BOT",
+      "フラワー占い",
+      "おみくじ"
     ],
-    "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7366004"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/7982286"
   },
   "jsonMerge": [],
   "comments": {
@@ -28,7 +25,7 @@
       "name": "フラワー占い",
       "description": "ゆっくり魔理沙の花占い。時々キノコのうんちくが聞けるよ。",
       "createdAt": "2025-08-11T15:34:29.296Z",
-      "updatedAt": "2025-12-29T13:36:24.357Z",
+      "updatedAt": "2026-02-24T15:30:12.507Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
@@ -36,7 +33,7 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "5e5d2d59-a2a8-450d-963d-e338c3d7fd35",
+          "id": "a9b24b3c-d351-4bd1-a662-520b22bf201b",
           "key": "5e5d2d59-a2a8-450d-963d-e338c3d7fd35",
           "name": "フラワー:白色",
           "description": "",
@@ -46,11 +43,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -65,17 +65,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='白'}}【{{symbol}}色】<<FlowerWhite>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "daccba76-9c92-466b-bb58-217734027c5b",
+          "id": "ed5f6ed9-2dbe-4e45-9204-6e62a710684b",
           "key": "daccba76-9c92-466b-bb58-217734027c5b",
           "name": "フラワー:赤色",
           "description": "",
@@ -85,11 +90,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -104,17 +112,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='赤'}}【{{symbol}}色】<<FlowerRed>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "e568455b-1eb7-4a44-a7f9-64e54f8ce554",
+          "id": "ed596b10-98fa-4474-9c72-ee3bcb9486fe",
           "key": "e568455b-1eb7-4a44-a7f9-64e54f8ce554",
           "name": "フラワー:オレンジ色",
           "description": "",
@@ -124,11 +137,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -143,17 +159,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='オレンジ'}}【{{symbol}}色】<<FlowerOrange>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "d8fada65-e221-4d53-ac0c-6416208d3bf6",
+          "id": "559816d8-d9cb-476e-ac2f-37d35d0a67be",
           "key": "d8fada65-e221-4d53-ac0c-6416208d3bf6",
           "name": "フラワー:黄色",
           "description": "",
@@ -163,11 +184,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -182,17 +206,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='黄'}}【{{symbol}}色】<<FlowerYellow>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "7799628c-53b4-4c7e-b581-ff3d5c023a8f",
+          "id": "f94d364f-2c31-4624-be7c-de3ad0941a99",
           "key": "7799628c-53b4-4c7e-b581-ff3d5c023a8f",
           "name": "フラワー:緑色",
           "description": "",
@@ -202,11 +231,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -221,17 +253,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='緑'}}【{{symbol}}色】<<FlowerGreen>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "4fd3e408-f4a0-4a99-b0bd-6bd7157fe85c",
+          "id": "5fa209b6-4440-4797-9caa-f27dd134d472",
           "key": "4fd3e408-f4a0-4a99-b0bd-6bd7157fe85c",
           "name": "フラワー:青色",
           "description": "",
@@ -241,11 +278,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -260,17 +300,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='青'}}【{{symbol}}色】<<FlowerBlue>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "517e7ac7-fc59-4878-8554-b2e71ced876e",
+          "id": "92c9b8e2-2f12-443f-988d-90c5d7d9b82f",
           "key": "517e7ac7-fc59-4878-8554-b2e71ced876e",
           "name": "フラワー:紫色",
           "description": "",
@@ -280,11 +325,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -299,17 +347,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='紫'}}【{{symbol}}色】<<FlowerPurple>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "98c748a2-d791-4a14-8200-fe30560ea7fe",
+          "id": "e6253f07-5d24-4831-838b-09d90ffa58ee",
           "key": "98c748a2-d791-4a14-8200-fe30560ea7fe",
           "name": "フラワー:ピンク色",
           "description": "",
@@ -319,11 +372,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -338,17 +394,22 @@
               "sound": "decision",
               "message": {
                 "bubble": "<<user>>さんは{{var symbol='ピンク'}}【{{symbol}}色】<<FlowerPink>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
+          "id": "aed9dd60-eb9c-4ab8-a081-9a5d9e5dad4f",
           "key": "fcbafb8b-7fab-4ea1-bedf-92b295bf0865",
           "name": "フラワー:キノコ",
           "description": "",
@@ -358,11 +419,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -377,17 +441,22 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var symbol='キノコ'}} <<user>>さんは【{{symbol}}色】<<FlowerKinoko2>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
         },
         {
-          "id": "96e19942-4bc8-4e3a-9035-ddd4ebc93c0e",
+          "id": "d2f9dd2c-3bba-48db-8f0b-b3a56411d9e5",
           "key": "96e19942-4bc8-4e3a-9035-ddd4ebc93c0e",
           "name": "フラワー:毒キノコ",
           "description": "",
@@ -397,11 +466,14 @@
           "editorColor": "#3B82F6",
           "tags": [],
           "accessLevel": "basic",
+          "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKey": "FlowerFirst"
+              "actionSetKeys": [
+                "FlowerFirst"
+              ]
             },
             {
               "delaySeconds": 0,
@@ -416,11 +488,16 @@
               "sound": "bounce",
               "message": {
                 "bubble": "{{var symbol='毒キノコ'}} <<user>>さんは【{{symbol}}色】<<FlowerKinoko1>>",
-                "toast": ""
+                "isToast": false
               }
             }
           ],
-          "gameScripts": null,
+          "gameScripts": {
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
+          "special": "return",
           "weight": 2,
           "isPriority": false,
           "criteria": null
@@ -431,27 +508,20 @@
         "conditions": [
           "comment"
         ],
-        "syoken": [],
+        "userName": [],
         "access": [],
         "gift": [],
-        "count": {
-          "comparison": "lowerBound",
-          "unit": "lc",
-          "value": 1
-        },
         "comment": [
-          "^フラワー",
+          "フラワー",
           "^ふらわー",
           "^flower",
-          "^花",
-          "^はな$",
+          "^占い",
           "🌷",
           "🌹",
           "🌺",
           "🌻",
           "🌼"
-        ],
-        "userName": []
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -462,6 +532,7 @@
     }
   },
   "timers": {},
+  "metas": {},
   "actionSets": {
     "FlowerFirst": {
       "id": "FlowerFirst",
@@ -475,6 +546,7 @@
       "editorColor": "#FF9800",
       "tags": [],
       "accessLevel": "basic",
+      "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
@@ -487,7 +559,12 @@
           "wordParty": "FlowerFortuneCracker"
         }
       ],
-      "gameScripts": null
+      "gameScripts": {
+        "scriptId": null,
+        "queryString": "",
+        "characterKey": ""
+      },
+      "special": "return"
     }
   },
   "placeholders": {
@@ -852,115 +929,25 @@
       ]
     }
   },
-  "characters": {
-    "marisa": {
-      "id": "marisa",
-      "key": "marisa",
-      "name": "ゆっくり魔理沙",
-      "description": "花とキノコが好きな、ゆっくり魔理沙。じゃんけんはちょっと弱い。",
-      "createdAt": "2025-08-11T15:34:29.298Z",
-      "updatedAt": "2025-12-29T13:37:19.672Z",
-      "order": 1,
-      "isEnabled": true,
-      "editorColor": "#FF9800",
-      "tags": [
-        "Yukkuri",
-        "Marisa"
-      ],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "https://nagipon-sozai.studio.site/",
-      "displayName": "ゆっくり魔理沙",
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "data:image/png;base64,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",
-        "frameId": "OmikenMarisa",
-        "rpgVoice": ""
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "synthwave",
-        "backFrom": "warning",
-        "backTo": "accent",
-        "nameColor": "#FFE082",
-        "textColor": "#333333",
-        "backgroundColor": "#FF8F00",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "image": {
-        "default": [
-          "marisa/default.webp"
-        ],
-        "happy": [
-          "marisa/happy.webp"
-        ],
-        "excited": [
-          "marisa/excited.webp"
-        ],
-        "laughing": [
-          "marisa/laughing.webp"
-        ],
-        "blushing": [
-          "marisa/blushing.webp"
-        ],
-        "surprised": [
-          "marisa/surprised.webp"
-        ],
-        "sad": [
-          "marisa/sad.webp"
-        ],
-        "angry": [
-          "marisa/angry.webp"
-        ],
-        "thinking": [
-          "marisa/thinking.webp"
-        ],
-        "wink": [
-          "marisa/wink.webp"
-        ],
-        "singing": [
-          "marisa/singing.webp"
-        ],
-        "sleepy": [
-          "marisa/sleepy.webp"
-        ]
-      }
-    }
-  },
+  "characters": {},
   "components": {
     "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
+      {
+        "slot": "primary",
+        "kind": "bubble"
+      },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
     ],
-    "bubble": {
-      "showCharacters": {
-        "center": [
-          "marisa",
-          "omiken"
-        ],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
-      },
-      "defaultColor": {
-        "isTheme": true,
-        "daisyUiTheme": "acid",
-        "backFrom": "secondary",
-        "backTo": "warning",
-        "nameColor": "#212121",
-        "textColor": "#212121",
-        "backgroundColor": "#FAFAFA"
-      },
-      "characterSize": 48,
+    "enableSecondary": false,
+    "commonStyle": {
       "fontFamily": "kosugiMaru",
-      "bubbleMotionEnter": "zoomIn",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
-    },
-    "toast": {
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "acid",
@@ -970,45 +957,70 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "showToastsOnRight": true,
-      "showToastsCharacter": true,
-      "showThumbnail": []
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
-    "ranking": {
-      "scriptKey": "basicList",
-      "title": "✿フラワー占い履歴✿",
-      "limit": 5,
-      "sortOrder": "new",
-      "color": "cmyk"
-    },
-    "counter": {
-      "ruleKey": null,
-      "target": "draw",
-      "label": "Counter",
-      "showCounter": true,
-      "firstValue": 0,
-      "isDirectionUp": true,
-      "maxUsers": 1,
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "marisa"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "zoomIn",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "✿フラワー占い履歴✿",
+        "color": "cmyk",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "pro",
+      "timers": "none",
+      "metas": "none",
       "actionSets": "basic",
       "placeholders": "basic",
-      "characters": "basic"
+      "characters": "none"
     },
     "components": [
       "bubble",
       "toast",
-      "ranking",
-      "counter"
+      "ranking"
     ],
     "gameScripts": [
       "GouseiSuika",
@@ -1020,7 +1032,7 @@
     ],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "experimental"
+      "jsonMergeSettings": "none"
     }
   },
   "settings": {

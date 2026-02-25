@@ -2,6 +2,7 @@
 <template>
   <!-- アイテム表示設定 -->
   <SectionCard
+    v-if="hasAccess(itemSlotEnabled)"
     icon="LayoutGrid"
     :isOpen="true"
     title="アイテム表示設定"
@@ -41,13 +42,16 @@
   import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
   import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useAccessChecker, useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isComment, isCharacter } = useVisibilityAccess()
+  const { itemSlotEnabled } = useFlagsSettings()
+  const { hasAccess } = useAccessChecker()
   const { isPro } = useSettingMode()
   const conditions = computed(() => data.value.components.conditions)
 

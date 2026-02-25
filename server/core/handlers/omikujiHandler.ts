@@ -1,4 +1,4 @@
-// server/handlers/omikujiHandler.ts
+// server/core/handlers/omikujiHandler.ts
 import { RouteResult } from '../types'
 import * as fileSystem from '../services/fileSystemService'
 

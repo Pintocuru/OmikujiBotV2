@@ -1,4 +1,4 @@
-// server/handlers/configHandler.ts
+// server/core/handlers/configHandler.ts
 import { RouteResult } from '../types'
 import * as fileSystem from '../services/fileSystemService'
 import { validateFileName } from '../utils/validation'
