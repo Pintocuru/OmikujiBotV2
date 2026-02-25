@@ -1,10 +1,12 @@
 // tools/packages/OmikujiBot.ts
-// MainGenerator + ConfigMaker の両方をビルドするコアプロジェクト
-import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
-import { createCommonBuildConfig } from '../buildOptions/baseSettings'
-import { APP_VERSION } from '@/version'
 import path from 'path'
+import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
+import { APP_VERSION } from '@/version'
 
+/**
+ * MainGenerator + ConfigMaker の両方をビルドするコアプロジェクト
+ */
 function project(packageRoot: string): ProjectConfig {
   return {
     ...createCommonBuildConfig(packageRoot),

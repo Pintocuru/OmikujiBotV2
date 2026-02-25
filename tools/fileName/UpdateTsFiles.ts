@@ -6,8 +6,13 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// モノレポ用
 const TARGET_DIRS = ['src', 'tools', 'server']
 const ROOT = path.resolve(__dirname, '../..')
+
+// shared 用
+// const TARGET_DIRS = ['shared']
+// const ROOT = path.resolve(__dirname, '../../../..')
 
 async function getAllTargetFiles(dir: string): Promise<string[]> {
   let entries
